@@ -19,7 +19,7 @@
  "seed_reserved": [
   {"base": 24669400000, "note": "slot 684: the km3 smoke run 1 (rl/results/slow_report_smoke_2026-10-07/run1_complete_under_nohup; deck 07's sha lands here)"},
   {"base": 24669500000, "note": "slot 685: the km3 smoke run 2 (rl/results/slow_report_smoke_2026-10-07/run2_sigterm_and_resume)"},
-  {"base": 24669600000, "note": "slot 686: the km3 smoke run 3, the cloud route (rl/results/slow_report_smoke_2026-10-07/run3_cloud_route_rebuilt_registration)"}
+  {"base": 24669600000, "note": "slot 686: the km3 smoke run 3, the cloud route (rl/results/slow_report_smoke_2026-10-07/run3_cloud_route_real_rebuild_and_restart)"}
  ],
  "engine": "claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec (the frozen, tested development build), built on the laptop Oct 2; km3 240/240 v the official program, self-checks km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa; KX_EXTRA_LISTS unset",
  "pilot_provenance": "kx3 from claude/playout-pilot@d513e37b, frozen Oct 4-5",

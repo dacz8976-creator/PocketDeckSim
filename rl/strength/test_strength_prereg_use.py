@@ -15,11 +15,16 @@ What is pinned here:
   * `selfcheck_given`: a pinned program's self-check text recorded instead of playing the 12 games. Accepted only at stage `use` (the dev and held-out stages replay
     their own self-check), only with a program file whose sha256 was verified against program_sha256, and only when the config says the text was measured on exactly
     that program (selfcheck_given_program_sha256 is the program's actual sha256: a digest belongs to the binary it was measured on); described truthfully (copied
-    from the pin, which says it was measured on this exact program, or replayed by the wrapper on this machine just before registration); every one of those refusals
-    (and every other refusal that needs no file) comes before os.makedirs, so it leaves no run directory behind, not even an empty one or its parents;
+    from the pin, which says it was measured on this exact program, or replayed by the wrapper on the registering machine just before registration: the document is read
+    elsewhere and later, so it names that machine and not "this" one); every one of those refusals (and every other refusal that needs no file) comes before os.makedirs,
+    so it leaves no run directory behind, not even an empty one or its parents;
   * `slow_report`: a free block recorded in the manifest and named in PREREGISTRATION.md (which program route it took, the pinned program and harness hashes, the
-    engine ref and tree, the engine tree the checkout has, the school-morning choice), whose resume command replaces the bare program command; the '## Run' paragraph says in
-    words whether the school-morning rule applies (with its days) or was chosen off, and whether the program is the pinned one or a rebuild (RunParagraph);
+    engine ref and tree, whether the pin was the committed one (and why not), the machine that registered, the build record of a rebuild as one line of sorted JSON, the
+    school-morning choice; a null entry is said in words: `none` for the pin's detail and the build record, which have nothing to say when the pin is committed and for the
+    pinned binary, `not found` for every other), whose resume command replaces the bare program command; a replayed self-check text says what pin it was equal to by the
+    pin's state ("the committed pin", or "the pin file in use, which is NOT the committed pin: test use"); the '## Run' paragraph says in
+    words whether the school-morning rule applies (with its days) or was chosen off, and whether the program is the pinned one or a rebuild, and what a resume of a rebuild
+    needs (RunParagraph);
   * the module docstring describes every config entry the script reads, the self-check entries of the slow report included (ModuleDocstring).
 
 Every harness directory, repository and run directory here is built in a temporary folder with synthetic decks; no real run is read or written.
@@ -442,9 +447,9 @@ class SelfcheckGiven(World):
 
     GIVEN = {'km3': 'selfcheck pilot=km3 games=12 digest=aaaa', 'kx3': 'selfcheck pilot=kx3 games=12 digest=bbbb'}
     PIN_SOURCE = 'given in the config (copied from the pin, which says it was measured on this exact program sha256)'
-    REPLAYED_SOURCE = 'replayed by slow_report.py on this machine just before registration (equal to the committed pin)'
+    REPLAYED_SOURCE = 'replayed by slow_report.py on the registering machine just before registration (equal to the committed pin)'
     PIN_HOW = ' (given in the config, copied from the pin and not replayed: the pin says it was measured on this exact program, whose sha256 is named above)'
-    REPLAYED_HOW = ' (replayed by slow_report.py on this machine just before registration and equal to the committed pin)'
+    REPLAYED_HOW = ' (replayed by slow_report.py on the registering machine just before registration and equal to the committed pin)'
 
     def given_kw(self, p, **kw):
         """What the slow report's config carries for a pinned program: the program, its sha256, the text, and the sha256 the text was measured on (this program)."""
@@ -491,6 +496,51 @@ class SelfcheckGiven(World):
             self.assertIn(self.self_check_line(spec, self.REPLAYED_HOW), text)
         self.assertNotIn('not replayed', text)
         self.assertNotIn('given in the config', text)
+        self.assertEqual(text.count('on the registering machine'), 2, 'one line per pilot names the machine that registered, not "this" one: the document is read elsewhere, later')
+        self.assertNotIn('on this machine', text)
+        self.assertNotIn('on this machine', json.dumps(m))
+
+    COMMITTED = 'the committed pin'
+    NOT_COMMITTED = 'the pin file in use, which is NOT the committed pin: test use'
+
+    def replayed_registration(self, **block):
+        """Register a replayed text with a slow-report block that carries `block` besides the usual headline and pin; returns (manifest, document)."""
+        shutil.rmtree(self.out, ignore_errors=True)
+        p = self.fake_program()
+        slow = dict(version=1, headline='kx3 (d513e37b) on a-deck v km3 on the public panel', pin=dict(path='rl/strength/slow_report_pin.json', sha256='e' * 64), **block)
+        r = self.prereg(self.use_config(slow_report=slow, **self.given_kw(p, selfcheck_how='replayed')))
+        self.assertEqual(r.returncode, 0, r.stderr)
+        return self.manifest(), read(os.path.join(self.out, 'PREREGISTRATION.md'))
+
+    def test_a_replayed_text_says_which_pin_it_was_equal_to_by_the_state_of_the_pin(self):
+        """'Equal to the committed pin' is true only of the committed pin. The wrapper's block says what the pin was (pin_committed): 'yes' and no entry at all (a block from before
+        the state was recorded) say the committed pin; anything else says what the pin in use really is, in the manifest and in the document."""
+        for how, block, phrase in (('no entry', {}, self.COMMITTED), ('null', dict(pin_committed=None), self.COMMITTED), ('committed', dict(pin_committed='yes'), self.COMMITTED),
+                                   ('let through by the test variable', dict(pin_committed='bypassed'), self.NOT_COMMITTED), ('not committed', dict(pin_committed='no'), self.NOT_COMMITTED),
+                                   ('an empty text', dict(pin_committed=''), self.NOT_COMMITTED), ('something else', dict(pin_committed='maybe'), self.NOT_COMMITTED)):
+            with self.subTest(pin=how):
+                man, text = self.replayed_registration(**block)
+                source = f'replayed by slow_report.py on the registering machine just before registration (equal to {phrase})'
+                self.assertEqual(man['selfcheck_source'], {'km3': source, 'kx3': source})
+                for spec in ('km3', 'kx3'):
+                    self.assertIn(self.self_check_line(spec, f' (replayed by slow_report.py on the registering machine just before registration and equal to {phrase})'), text)
+                self.assertEqual(text.count('NOT the committed pin'), 2 if phrase == self.NOT_COMMITTED else 0, 'once for each pilot, and only when the pin is not the committed one')
+                self.assertEqual(json.dumps(man).count('NOT the committed pin'), 2 if phrase == self.NOT_COMMITTED else 0)
+
+    def test_a_text_copied_from_the_pin_is_described_the_same_whatever_the_state_of_the_pin(self):
+        """A copied text does not claim to equal the committed pin (it is the pin's own text, measured on this exact program), so the state of the pin changes nothing in it."""
+        p = self.fake_program()
+        for state in (None, 'yes', 'bypassed', 'no'):
+            with self.subTest(pin_committed=state):
+                shutil.rmtree(self.out, ignore_errors=True)
+                slow = dict(version=1, headline='kx3 (d513e37b) on a-deck v km3 on the public panel', pin=dict(path='rl/strength/slow_report_pin.json', sha256='e' * 64), pin_committed=state)
+                r = self.prereg(self.use_config(slow_report=slow, **self.given_kw(p)))
+                self.assertEqual(r.returncode, 0, r.stderr)
+                self.assertEqual(self.manifest()['selfcheck_source'], {'km3': self.PIN_SOURCE, 'kx3': self.PIN_SOURCE})
+                text = read(os.path.join(self.out, 'PREREGISTRATION.md'))
+                for spec in ('km3', 'kx3'):
+                    self.assertIn(self.self_check_line(spec, self.PIN_HOW), text)
+                self.assertNotIn('NOT the committed pin', text)
 
     def test_a_replayed_text_is_held_to_the_same_program_as_a_given_one(self):
         """The wrapper puts the program's actual sha256 there when it replayed the games; saying `replayed` does not excuse a text that names another program."""
@@ -676,12 +726,19 @@ class SlowReportBlock(World):
         self.assertNotIn('strength run --manifest', run, 'a use run is resumed through the wrapper, which scrubs the environment and keeps the school-morning rule')
 
     ROUTE_KEYS = ('program_route', 'pinned_program', 'pinned_program_sha256', 'harness_source_sha256', 'harness_source_checkout_sha256', 'engine_ref', 'engine_tree',
-                  'school_rule', 'school_days')
+                  'pin_committed', 'pin_committed_detail', 'registered_on', 'build_record', 'school_rule', 'school_days')
+    RECORD = dict(schema=1, program='/cloud/strength', program_sha256='a' * 64, engine_arg='d' * 40, engine=f"{'d' * 40} engine tree {'3' * 40}", engine_ref='d' * 40,
+                  engine_tree_archived='3' * 40, harness_source_sha256='b' * 64, rustc='rustc 1.99.0\nbinary: rustc\n', cargo='cargo 1.99.0', machine='Linux 6.1 x86_64', libc='ldd 2.39',
+                  host='cloud-box', home='/home/agent', cargo_home=None, build_dir='/home/agent/b', target_dir='/home/agent/t', jobs='8', built_at='2026-10-09T12:00:00Z',
+                  rebuild_command="env HOME=/home/agent bash /home/agent/repo/rl/strength/build.sh REF '/home/agent/it'\"'\"'s here/strength'", record_file='/cloud/strength.build.json',
+                  record_sha256='5' * 64)
     FULL = dict(BLOCK, deck_file='decks/a.txt', deck_file_sha256='1' * 64, deck_file_state='committed', deals=5, program_route='rebuilt', pinned_program='/home/x/kx/strength',
                 pinned_program_sha256='5' * 64, harness_source_sha256='b' * 64, harness_source_checkout_sha256='c' * 64, engine_ref='d' * 40, engine_tree='3' * 40,
+                pin_committed='bypassed', pin_committed_detail='HEAD has no pin; allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use)', registered_on='cloud-box', build_record=RECORD,
                 school_rule='off', school_days='mon,tue,wed,thu,fri')
 
     def block_lines(self, block):
+        shutil.rmtree(self.out, ignore_errors=True)
         r = self.prereg(self.use_config(slow_report=block))
         self.assertEqual(r.returncode, 0, r.stderr)
         section = read(os.path.join(self.out, 'PREREGISTRATION.md')).split('## Slow report\n')[1].split('\n## ')[0]
@@ -694,7 +751,48 @@ class SlowReportBlock(World):
         self.assertEqual([l.split(':')[0] for l in lines], ['- ' + k for k in ('deck_file', 'deck_file_sha256', 'deck_file_state', 'deals', 'paired', 'pin') + self.ROUTE_KEYS])
         self.assertEqual(lines[6:], ['- program_route: `rebuilt`', '- pinned_program: `/home/x/kx/strength`', f"- pinned_program_sha256: `{'5' * 64}`",
                                      f"- harness_source_sha256: `{'b' * 64}`", f"- harness_source_checkout_sha256: `{'c' * 64}`", f"- engine_ref: `{'d' * 40}`",
-                                     f"- engine_tree: `{'3' * 40}`", '- school_rule: `off`', '- school_days: `mon,tue,wed,thu,fri`'])
+                                     f"- engine_tree: `{'3' * 40}`", '- pin_committed: `bypassed`',
+                                     '- pin_committed_detail: `HEAD has no pin; allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use)`', '- registered_on: `cloud-box`',
+                                     '- build_record: `' + json.dumps(self.RECORD, sort_keys=True, ensure_ascii=False) + '`', '- school_rule: `off`', '- school_days: `mon,tue,wed,thu,fri`'])
+
+    def test_the_build_record_is_printed_as_one_line_of_sorted_json_and_a_null_entry_is_said_in_words(self):
+        """A mapping is printed sorted by key, on one line, readable back as the very record (a non-ASCII character as itself, not as an escape); an entry that is null (a
+        committed pin has no detail to give, the pinned binary has no build record) is said in words: `none` for those two (there is nothing to find), never the text None."""
+        record = dict(self.RECORD, host='Zürich-box', rustc='rustc 1.99.0 (é)\nbinary: rustc')
+        lines = self.block_lines(dict(self.FULL, build_record=record))
+        printed = next(l for l in lines if l.startswith('- build_record: '))
+        text = printed[len('- build_record: `'):-1]
+        self.assertNotIn('\n', printed)
+        self.assertEqual(json.loads(text), record)
+        self.assertEqual(text, json.dumps(record, sort_keys=True, ensure_ascii=False))
+        self.assertIn('Zürich-box', text)
+        self.assertLess(text.index('"built_at"'), text.index('"engine"'), 'sorted by key: built_at before engine')
+        self.assertLess(text.index('"engine_tree_archived"'), text.index('"harness_source_sha256"'))
+        backwards = self.block_lines(dict(self.FULL, build_record=dict(reversed(list(record.items())))))
+        self.assertIn(printed, backwards, 'the same record in another key order prints as the same line')
+        nulls = self.block_lines(dict(self.FULL, build_record=None, pin_committed='yes', pin_committed_detail=None))
+        self.assertIn('- build_record: `none`', nulls)
+        self.assertIn('- pin_committed: `yes`', nulls)
+        self.assertIn('- pin_committed_detail: `none`', nulls)
+        self.assertFalse([l for l in nulls if 'None' in l or 'not found' in l], 'these two are "none"; nothing else was null')
+
+    NOTHING_TO_SAY = ('pin_committed_detail', 'build_record')
+
+    def test_every_other_null_entry_is_still_said_as_not_found_and_only_those_two_are_none(self):
+        """A fact about the checkout that was not there (no ref, no tree, no machine name, no deck hash) is `not found`; `none` is for the two entries whose null means there is
+        nothing to say. The difference is per entry, so each null is tried alone."""
+        for key in self.ROUTE_KEYS + ('deck_file', 'deck_file_sha256', 'deck_file_state', 'deals'):
+            with self.subTest(null=key):
+                lines = self.block_lines(dict(self.FULL, **{key: None}))
+                self.assertEqual([l for l in lines if l.startswith(f'- {key}: ')], [f"- {key}: `{'none' if key in self.NOTHING_TO_SAY else 'not found'}`"])
+                self.assertFalse([l for l in lines if 'None' in l], 'never the text None')
+                self.assertEqual(sum(1 for l in lines if '`none`' in l or '`not found`' in l), 1, 'only the entry that is null is said so')
+
+    def test_the_manifest_carries_the_block_with_the_record_and_the_pin_state_as_given(self):
+        r = self.prereg(self.use_config(slow_report=self.FULL))
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertEqual(self.manifest()['slow_report'], self.FULL)
+        self.assertEqual(self.manifest()['slow_report']['build_record']['cargo_home'], None)
 
     def test_an_entry_the_block_does_not_have_is_not_printed(self):
         """A block from before these entries existed prints none of them (and a block with only some prints those)."""
@@ -731,7 +829,8 @@ class RunParagraph(World):
     ON = 'applies the school-morning rule as registered ({days})'
     OFF = 'does NOT apply the school-morning rule (chosen at registration: it never pauses for school mornings)'
     PINNED = 'the pinned program'
-    REBUILT = 'the program it was registered with, a REBUILD of the pinned source (accepted after both self-checks were replayed on that machine; a resume needs the same sha256)'
+    REBUILT = ('the program it was registered with, a rebuild of the pinned source by its build record (accepted after both self-checks were replayed on the registering machine; a resume '
+               'needs the same sha256, or a rebuild whose build record has the same engine tree and harness hash and whose two self-checks are replayed again)')
     WEEK = 'mon,tue,wed,thu,fri'
 
     def run_section(self, **block):
@@ -755,7 +854,9 @@ class RunParagraph(World):
                 self.assertIn(self.SENTENCE.format(rule=rule, program=program) + '\n\n```\n' + self.COMMAND + '\n```\n', run)
                 self.assertEqual(('does NOT apply' in run), rule == self.OFF)
                 self.assertEqual(('applies the school-morning rule' in run), rule != self.OFF)
-                self.assertEqual(('REBUILD' in run), program == self.REBUILT)
+                self.assertEqual(('a rebuild of the pinned source by its build record (accepted after both self-checks were replayed' in run), program == self.REBUILT)
+                self.assertNotIn('REBUILD', run, 'the paragraph does not claim the program IS a rebuild in capitals: the build record says so, and it is not signed')
+                self.assertEqual(('by its build record' in run), program == self.REBUILT, 'a rebuild is named by its record, the pinned program is not')
                 if rule == self.OFF:
                     self.assertNotIn('sat,sun', run, 'days of a rule that is off are not described as applied')
 
@@ -767,7 +868,7 @@ class RunParagraph(World):
         run = read(os.path.join(self.out, 'PREREGISTRATION.md')).split('## Run\n')[1]
         self.assertIn('strength run --manifest manifest.json --out .', run)
         self.assertNotIn('school-morning', run)
-        self.assertNotIn('REBUILD', run)
+        self.assertNotIn('rebuild', run.lower())
 
 
 class RefusalsLeaveNoRunDirectory(World):
@@ -810,7 +911,8 @@ class ModuleDocstring(unittest.TestCase):
         doc = ' '.join(P.__doc__.split())
         self.assertIn('Only at stage `use`', doc)
         self.assertIn('the exact binary it was measured on', doc)
-        self.assertIn("selfcheck_how 'replayed' makes the recorded source say the text was replayed on this machine (otherwise: copied from the pin)", doc)
+        self.assertIn("selfcheck_how 'replayed' makes the recorded source say the text was replayed on the registering machine (otherwise: copied from the pin)", doc)
+        self.assertNotIn('on this machine', doc)
 
     def test_every_config_entry_the_script_reads_is_documented(self):
         with open(PREREG, encoding='utf-8') as f:

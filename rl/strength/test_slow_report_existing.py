@@ -247,6 +247,15 @@ class QuestionOne(Sources):
             self.assertIn('That range does not include no gain', sec)
             self.assertIn(f'on these {n} paired games kx3 did {"better" if lo > 0 else "worse"} than km3', sec)
 
+    def test_the_width_of_the_gain_range_is_worked_out_from_the_two_ends_printed(self):
+        """'(the gain's range is W points wide)': W is the difference of the two ends as printed (each rounded once), so the page never disagrees with itself by a rounding step. The
+        width used to be twice the unrounded half, which printed 27.2 beside the ends +0.2 and +27.3 of this fixture."""
+        text = self.page()
+        a, b = re.search(r'probably between ([+-]\d+\.\d) and ([+-]\d+\.\d) points \(95% interval\)\. That range refers to the 80 paired games', text).groups()
+        width = re.search(r"the gain's range is (\d+\.\d) points wide", text).group(1)
+        self.assertEqual((a, b, width), ('+0.2', '+27.3', '27.1'))
+        self.assertAlmostEqual(float(width), float(b) - float(a), places=6)
+
     def test_a_results_folder_is_named_from_rl_results_on_wherever_the_checkout_sits(self):
         self.assertEqual(ex.rel('/mnt/c/Users/x y/Pocket Deck Sim/PocketDeckSim/rl/results/strength_2026-10-03_kx3_dev'), 'rl/results/strength_2026-10-03_kx3_dev')
         self.assertEqual(ex.rel('/tmp/elsewhere/run'), '/tmp/elsewhere/run')
@@ -307,6 +316,11 @@ class QuestionTwo(Sources):
         self.assertIn('3 of the 80 pairs had a different winner', sec)
         self.assertIn('+3.8 points', sec)  # 3 x 1 / 80
         self.assertNotIn('every one of the 80 on-minus-off differences was exactly 0', sec)
+
+    def test_the_closing_sentence_says_what_gate_3_pooled_in_paired_games_kx3_games_and_decks(self):
+        sec = self.page().split('## Question 2:')[1]
+        self.assertIn('(gate 3 pooled 80 paired games, 80 kx3 games with the rule on against the same deals with it off, over 1 deck on its own page)', sec)
+        self.assertNotIn('pooled 80 pairs', sec)
 
     def test_context_kx3_minus_km3_with_the_rule_on_and_off(self):
         text = self.page()

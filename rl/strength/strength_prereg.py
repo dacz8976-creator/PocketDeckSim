@@ -18,7 +18,7 @@ CONFIG.json (all keys but the first four optional):
   selfcheck_given         {pilot spec: self-check text}: recorded instead of playing the 12 self-check games. Only at stage `use`; only with a program file whose
                           sha256 was verified against program_sha256; and only when selfcheck_given_program_sha256 (the sha256 of the binary the text was
                           measured on: the pin's, or the program's own for a text replayed just now) equals that program's sha256, because a digest belongs to
-                          the exact binary it was measured on. selfcheck_how 'replayed' makes the recorded source say the text was replayed on this machine
+                          the exact binary it was measured on. selfcheck_how 'replayed' makes the recorded source say the text was replayed on the registering machine
                           (otherwise: copied from the pin). A spec not named here is still checked.
   selfcheck_given_program_sha256, selfcheck_how   see selfcheck_given
   slow_report             a free block recorded in the manifest and named in PREREGISTRATION.md (written by slow_report.py)
@@ -29,6 +29,8 @@ checks that the manifest still matches.
 import argparse, collections, hashlib, json, os, re, subprocess, sys, datetime
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+# variables that make git read ANOTHER repository whatever `git -C` says (a git hook or `rebase --exec` exports them); slow_report.py reads its git with them removed too
+GIT_REPO_VARS = ('GIT_DIR', 'GIT_WORK_TREE', 'GIT_INDEX_FILE', 'GIT_OBJECT_DIRECTORY', 'GIT_ALTERNATE_OBJECT_DIRECTORIES', 'GIT_COMMON_DIR', 'GIT_NAMESPACE', 'GIT_PREFIX')
 STAGES = ('dev', 'heldout', 'use')
 _WHITE_SPACE_RUN = re.compile('[\\t\\n\\x0b\\x0c\\r \\x85\\xa0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000]+')  # Rust's char::is_whitespace (Unicode White_Space), as the engine splits a line
 
@@ -185,11 +187,13 @@ def main():
     # provenance: the program's own hash, the repository commit, and a digest of 12 fixed games for each engine pilot (two builds that play
     # the same reference pilot must print the same digest)
     try:
-        repo_commit = subprocess.run(['git', '-C', root, 'rev-parse', 'HEAD'], capture_output=True, text=True).stdout.strip() or None
+        git_env = {k: v for k, v in os.environ.items() if k not in GIT_REPO_VARS}  # the checkout we were told about, not a repository named by an exported GIT_DIR (a git hook, rebase --exec)
+        repo_commit = subprocess.run(['git', '-C', root, 'rev-parse', 'HEAD'], capture_output=True, text=True, env=git_env).stdout.strip() or None
     except Exception:
         repo_commit = None
     selfcheck, selfcheck_source = {}, {}
-    given_source = ('replayed by slow_report.py on this machine just before registration (equal to the committed pin)' if cfg.get('selfcheck_how') == 'replayed'
+    pin_phrase = 'the committed pin' if (cfg.get('slow_report') or {}).get('pin_committed') in (None, 'yes') else 'the pin file in use, which is NOT the committed pin: test use'
+    given_source = (f'replayed by slow_report.py on the registering machine just before registration (equal to {pin_phrase})' if cfg.get('selfcheck_how') == 'replayed'
                     else 'given in the config (copied from the pin, which says it was measured on this exact program sha256)')
     if prog and os.path.isfile(prog):
         da, db = reg.get('t-altaria'), reg.get('t-suicune')
@@ -244,7 +248,7 @@ def main():
     for spec, txt in selfcheck.items():
         src = selfcheck_source.get(spec, '')
         how = (' (given in the config, copied from the pin and not replayed: the pin says it was measured on this exact program, whose sha256 is named above)' if src.startswith('given')
-               else ' (replayed by slow_report.py on this machine just before registration and equal to the committed pin)' if src.startswith('replayed') else '')
+               else f' (replayed by slow_report.py on the registering machine just before registration and equal to {pin_phrase})' if src.startswith('replayed') else '')
         L.append(f"- Self-check of `{spec}` on this build (12 fixed games, t-altaria v t-suicune): `{txt}`{how}. The same pilot code on another build must print the same digest.")
     if stage != 'use':
         L.append('- An `ext:` pilot is an external process asked for every decision (PROTOCOL.md); it may be as slow as it likes. Nothing is a failure for being slow.\n')
@@ -272,9 +276,15 @@ def main():
         L.append('## Slow report\n')
         L.append(f"**{sr.get('headline', 'slow report')}**. " + (sr.get('summary') or '') + '\n')
         for k in ('deck_file', 'deck_file_sha256', 'deck_file_state', 'deals', 'paired', 'pin', 'program_route', 'pinned_program', 'pinned_program_sha256',
-                  'harness_source_sha256', 'harness_source_checkout_sha256', 'engine_ref', 'engine_tree', 'engine_tree_in_checkout', 'school_rule', 'school_days'):
+                  'harness_source_sha256', 'harness_source_checkout_sha256', 'engine_ref', 'engine_tree', 'pin_committed', 'pin_committed_detail', 'registered_on',
+                  'build_record', 'school_rule', 'school_days'):
             if k in sr:
-                L.append(f"- {k}: `{'not found' if sr[k] is None else sr[k]}`")  # a null entry (the checkout had no such file or commit) is said in words, not as the text None
+                v = sr[k]
+                if isinstance(v, dict):
+                    v = json.dumps(v, sort_keys=True, ensure_ascii=False)
+                # a null entry is said in words, not as the text None: for a fact about the checkout it means the checkout had no such file or commit ('not found'); for the pin's
+                # detail (nothing to explain when it is committed) and for the build record (the pinned binary has none) it means there is nothing ('none')
+                L.append(f"- {k}: `{('none' if k in ('pin_committed_detail', 'build_record') else 'not found') if v is None else v}`")
         L.append('')
     L.append('## Analysis plan (fixed now)\n')
     if stage == 'use':
@@ -296,7 +306,7 @@ def main():
         days = srb.get('school_days')
         rule = ('applies the school-morning rule as registered' + (f' ({days})' if days else ' (no school days)' if days == '' else '') if srb.get('school_rule', 'on') == 'on'
                 else 'does NOT apply the school-morning rule (chosen at registration: it never pauses for school mornings)')
-        prog_txt = ('the program it was registered with, a REBUILD of the pinned source (accepted after both self-checks were replayed on that machine; a resume needs the same sha256)'
+        prog_txt = ('the program it was registered with, a rebuild of the pinned source by its build record (accepted after both self-checks were replayed on the registering machine; a resume needs the same sha256, or a rebuild whose build record has the same engine tree and harness hash and whose two self-checks are replayed again)'
                     if srb.get('program_route') == 'rebuilt' else 'the pinned program')
         L.append(f'A slow report is run and resumed through its wrapper, which removes the variables that would tune the pilot or change the rules from the program\'s environment, {rule}, '
                  f'and checks the registration, the deck files and {prog_txt} before every sitting:\n')

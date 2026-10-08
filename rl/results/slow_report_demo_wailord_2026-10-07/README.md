@@ -31,7 +31,7 @@ This is **not** the km3 floor check and does not touch its result: the floor che
 | km3 baseline replayed by the gate-3 build | 80 of 80 exactly | `PAIR_WITH_DEV.txt`: 400 of 400 over the five decks |
 
 The one difference, a half-width of 8.2 points (the page prints the two ends, -1.9 and +14.4, each rounded once from the unrounded numbers) against +- 8.1, is the interval rule only: the existing pages use 1.96 standard errors, this page (like the fresh slow report) uses the t value for
-79 degrees of freedom (1.99), which is a little wider for the same 80 deals. Nothing else differs.
+79 degrees of freedom (1.99), which is a little wider for the same 80 deals. Nothing else differs. The page's "the gain's range is 16.3 points wide" is worked out from the two printed ends (14.4 minus -1.9), so a reader can check it from the numbers on the page (twice the half-width, 16.4, would not match them).
 
 ## Regenerate
 

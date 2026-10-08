@@ -12,8 +12,8 @@ What is pinned:
   * stop_group: the polite stop reaches the whole process group, a program that ignores it is killed once the grace period is over, one that needs a moment
     gets it, a program that has already gone is not an error and is not signalled at all, and a process that shares the wrapper's own group is signalled alone
     (never the group, which holds the wrapper and whoever started it);
-  * the stop signals: SIGTERM and SIGHUP end the whole call (self-check, registration and run alike) with 128 + the signal number, the handlers that were
-    there before are back afterwards, and a thread other than the main one leaves the signals alone;
+  * the stop signals: SIGTERM and SIGHUP end the whole call (self-check, registration, the replay of a changed program on a resume, and run alike) with 128 + the signal number,
+    the handlers that were there before are back afterwards, and a thread other than the main one leaves the signals alone;
   * the program's process: no standard input, its log file closed when a sitting ends or is interrupted, a second Ctrl-C while the partial page is written is
     not swallowed and a failure to write it never hides the real error;
   * the run lock: what a refusal says when the holder's note is unreadable, a note nobody holds is replaced, a lock file that vanished or was replaced
@@ -27,8 +27,10 @@ What is pinned:
   * clean refusals instead of tracebacks: a missing deck file, a folder with no manifest, a pin without a key (or that cannot be read, or is not an object),
     a moved checkout, a file that has gone, a log file that does not exist, a seed picker with unreadable folders around it (or a manifest that is no object)
     and one with every slot taken, an explicit seed base on a slot in use;
-  * whether the deck file is committed as it is, asked without ever touching .git/index;
-  * the resume command (and the run folder in the other messages that name it) is quoted for the shell; the engineering report reads past a torn last line.
+  * whether the deck file is committed as it is, asked without ever touching .git/index, of the folder given and not of the repository a git hook has exported in GIT_DIR (and the
+    other variables that choose a repository: every git call is made with git_env());
+  * the resume command (and the run folder in the other messages that name it) is quoted for the shell; the engineering report reads past a torn last line;
+  * the log of a run after a torn last line: the next event is written on a line of its own (and a log that ends with a newline, an empty one and a missing one get no blank line).
 """
 import contextlib, datetime, errno, fcntl, io, json, os, shlex, shutil, signal, subprocess, sys, tempfile, textwrap, threading, time, types, unittest
 from unittest import mock
@@ -786,6 +788,48 @@ class SelfcheckOnTheCommandLine(SelfcheckWorld):
                 self.assertEqual(code, 0, err + out)
                 self.assertEqual(json.loads(read(os.path.join(self.rundir(), 'manifest.json')))['seed_base'], BLOCK[0] + 687 * STEP)
                 self.assertNotIn('note:', out, 'the slot decided before the self-check is the one decided after it')
+
+
+class ReplayOnResumeIsStoppable(Leftovers, T.RebuiltFixture):
+    """A resume whose program is another file replays both self-checks on it (hours for kx3) before the run goes on. That replay is stopped by SIGTERM and SIGHUP like the one at
+    the registration: the program it started goes, the run lock is let go, the call ends with 128 + the signal, and nothing is logged as accepted (the run can be resumed again)."""
+
+    def setUp(self):
+        super().setUp()
+        self.plant_stray_handlers()
+        self.give_up_after(30, 'a replay that should have been stopped kept running')
+
+    def test_a_stop_signal_during_the_replay_of_a_changed_program_stops_it_and_releases_the_lock(self):
+        for sig in STOP_SIGNALS:
+            with self.subTest(sig=sig.name):
+                self.make()
+                self.lay_out_harness()
+                code, out, err = self.cli('--deals', '1', '--max-games', '4', '--program', self.cloud)
+                self.assertEqual(code, 0, out + err)
+                d = self.rundir()
+                there = os.path.dirname(self.cloud)
+                self.put_program(self.cloud, SELFCHECK_PROGRAM)  # the rebuild after the restart: its self-check records itself and hangs
+                write(os.path.join(there, 'selfcheck_hangs'), '')
+                seen = os.path.join(there, 'seen_km3.json')
+                started = []
+
+                def go():
+                    started.append(wait_for(lambda: os.path.exists(seen), 30))
+                    signal.pthread_kill(threading.main_thread().ident, sig)
+                t = threading.Thread(target=go, daemon=True)
+                t.start()
+                self.addCleanup(t.join, 5)
+                events = [e['event'] for e in jsonl(os.path.join(d, 'slow_report_log.jsonl'))]
+                games = len(jsonl(os.path.join(d, 'games.jsonl')))
+                code, out, err = self.cli('--dir', d, deck=False)
+                self.assertEqual(started, [True], 'the replay really started')
+                self.kill_at_end(json.loads(read(seen))['pid'])  # (so that nothing is left sleeping when an assertion below fails)
+                self.assertEqual(code, 128 + sig)
+                self.assertTrue(wait_for(lambda: not alive(json.loads(read(seen))['pid'])), 'the program of the replay must not be left running')
+                self.assertFalse(os.path.exists(os.path.join(d, 'slow_report.lock')), 'the lock is released')
+                self.assertEqual([e['event'] for e in jsonl(os.path.join(d, 'slow_report_log.jsonl'))], events, 'nothing was logged: not as accepted, not as a sitting')
+                self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), games, 'and no game was played')
+                self.assertFalse(os.path.exists(os.path.join(there, 'seen_kx3.json')), 'the second self-check was never started')
 
 
 # ---------------------------------------------------------------------------------------------------------- stop signals reach the whole call
@@ -1598,6 +1642,58 @@ class DeckValidatorAndGitState(T.World):
         with mock.patch.dict(os.environ, {'PATH': nowhere}):
             self.assertEqual(sr.deck_state(plain, 'a.txt'), 'unknown (git not available)')
 
+    # ------------------------------------------------------------------------------------------------ the repository we were told about, whatever a git hook exported
+    def other_repo(self, content):
+        """Another repository holding decks/events/a.txt with `content`, committed: the one a git hook or `rebase --exec` leaves exported in GIT_DIR."""
+        other = os.path.join(self.tmp, 'other')
+        write(os.path.join(other, 'decks', 'events', 'a.txt'), content)
+        self.git(other, 'init', '-q')
+        self.git(other, 'add', '.')
+        self.git(other, 'commit', '-q', '-m', 'other')
+        return other
+
+    def test_a_deck_committed_in_the_repository_given_is_committed_whatever_a_git_hook_exported(self):
+        repo = self.committed_repo()
+        rel = 'decks/events/a.txt'
+        every = T.exported_git_variables(self.tmp, self.other_repo('something else\n'))
+        self.assertEqual(set(every), set(T.GIT_REPO_VARS), 'every one of the variables is exported in turn')
+        self.assertEqual(sr.deck_state(repo, rel), 'committed')
+        for name, value in every.items():
+            with self.subTest(name), mock.patch.dict(os.environ, {name: value}):
+                self.assertEqual(sr.deck_state(repo, rel), 'committed')
+                self.assertEqual(sr.deck_state(repo, 'decks/events/two words.txt'), 'committed')
+        with mock.patch.dict(os.environ, every):
+            self.assertEqual(sr.deck_state(repo, rel), 'committed', 'all of them at once')
+
+    def test_a_deck_that_is_committed_only_in_the_repository_a_hook_exported_is_not_committed_in_the_one_given(self):
+        """The dangerous direction: the deck file here was edited after the commit, the exported repository has it exactly as edited."""
+        repo = self.committed_repo()
+        rel = 'decks/events/a.txt'
+        write(os.path.join(repo, *rel.split('/')), 'edited since\n')
+        every = T.exported_git_variables(self.tmp, self.other_repo('edited since\n'))
+        self.assertEqual(sr.deck_state(repo, rel), 'not committed')
+        for name, value in every.items():
+            with self.subTest(name), mock.patch.dict(os.environ, {name: value}):
+                self.assertEqual(sr.deck_state(repo, rel), 'not committed')
+        with mock.patch.dict(os.environ, every):
+            self.assertEqual(sr.deck_state(repo, rel), 'not committed')
+            plain = os.path.join(self.tmp, 'not-a-repository')
+            write(os.path.join(plain, 'a.txt'), 'x\n')
+            self.assertEqual(sr.deck_state(plain, 'a.txt'), 'unknown (not a git repository)', 'a folder that is no repository is not the exported one either')
+
+    def test_every_git_call_for_a_deck_is_made_with_git_env_whatever_the_process_has_exported(self):
+        repo = self.committed_repo()
+        stub, calls = T.recording_git(self.tmp)
+        every = T.exported_git_variables(self.tmp, self.other_repo('x\n'))
+        with mock.patch.dict(os.environ, dict(stub, **every, GIT_OPTIONAL_LOCKS='1', GIT_AUTHOR_NAME='someone')):
+            self.assertEqual(sr.deck_state(repo, 'decks/events/a.txt'), 'committed', 'a git that answers the same everywhere')
+        made = calls()
+        self.assertEqual([args.split()[2] for args, env in made], ['rev-parse', 'ls-files', 'rev-parse', 'hash-object'])
+        for args, env in made:
+            for name in T.GIT_REPO_VARS:
+                self.assertNotIn(name, env, (args, name))
+            self.assertEqual((env['GIT_OPTIONAL_LOCKS'], env['GIT_AUTHOR_NAME']), ('0', 'someone'), args)
+
 
 # ---------------------------------------------------------------------------------------------------------- the resume command
 class ResumeCommandIsQuoted(T.World):
@@ -1636,7 +1732,8 @@ class ResumeCommandIsQuoted(T.World):
         d = self.rundir()
         self.assertIn(' ', d)
         line = [l for l in out.splitlines() if 'stopped after --max-games' in l]
-        self.assertEqual(line, [f'{T.HEADLINE_START}my-list v km3 on the public panel] stopped after --max-games 2; resume with: python3 rl/strength/slow_report.py --dir {shlex.quote(d)}'])
+        self.assertEqual(line, [f'{T.HEADLINE_START}my-list v km3 on the public panel] stopped after --max-games 2 (games across both arms, about half of them kx3 games); '
+                                f'resume with: python3 rl/strength/slow_report.py --dir {shlex.quote(d)}'])
         self.assertTrue(shlex.quote(d).startswith("'"), 'the path really needed quoting')
         self.assertEqual(shlex.split(line[0].split('resume with: ', 1)[1]), ['python3', 'rl/strength/slow_report.py', '--dir', d], 'a shell reads it back as the one folder')
 
@@ -1692,6 +1789,100 @@ class TornLastLines(unittest.TestCase):
             self.assertIn('1 game failed', text)
             self.assertIn('d1|o1|1|0|X', text)
             self.assertNotIn('d1|o1|2|0|X', text)
+
+
+# ---------------------------------------------------------------------------------------------------------- the log of a run after a line that was cut off
+class LogAfterATornLine(T.Timed):
+    """log_event appends one JSON line to slow_report_log.jsonl. A last line that lost its newline (a write cut short by a kill, a full disk) must not swallow the event that follows it: the
+    torn line stays what it was, unreadable, and the new event is on a line of its own."""
+    TORN = '{"at": "2026-10-10T10:00:00Z", "event": "slice_st'
+
+    def setUp(self):
+        super().setUp()
+        self.old = dict(sr._LOG_EXTRA)
+        sr._LOG_EXTRA.clear()
+        sr._LOG_EXTRA.update(pilot='kx3', reference='km3')
+        self.addCleanup(lambda: (sr._LOG_EXTRA.clear(), sr._LOG_EXTRA.update(self.old)))
+        self.dir = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, self.dir, True)
+        self.path = os.path.join(self.dir, 'slow_report_log.jsonl')
+
+    def raw(self):
+        with open(self.path, 'rb') as f:
+            return f.read().decode('utf-8')
+
+    def put(self, text):
+        with open(self.path, 'wb') as f:
+            f.write(text.encode('utf-8'))
+
+    GOOD = '{"at": "2026-10-10T09:00:00Z", "event": "registered"}\n'
+
+    def test_an_event_after_a_torn_last_line_is_on_a_line_of_its_own_and_the_torn_line_is_left_as_it_was(self):
+        self.put(self.GOOD + self.TORN)
+        sr.log_event(self.dir, 'slice_end', returncode=0, new_games=3)
+        lines = self.raw().split('\n')
+        self.assertEqual(lines[:2], [self.GOOD.rstrip('\n'), self.TORN], 'the torn line is unchanged and has no more text on it')
+        self.assertEqual(len(lines), 4, 'the good line, the torn line, the new event, and the end of the file')
+        self.assertEqual(lines[3], '')
+        event = json.loads(lines[2])
+        self.assertEqual((event['event'], event['returncode'], event['new_games'], event['pilot'], event['reference']), ('slice_end', 0, 3, 'kx3', 'km3'))
+        self.assertEqual([e['event'] for e in sr.load_jsonl(self.path)], ['registered', 'slice_end'], 'the torn line is skipped, the new event is read')
+        self.assertEqual([e['event'] for e in T.jsonl(self.path)], ['registered', 'slice_end'])
+
+    def test_a_last_line_that_is_whole_but_has_no_newline_is_not_joined_to_the_event_either(self):
+        self.put(self.GOOD + '{"at": "2026-10-10T09:30:00Z", "event": "slice_start"}')
+        sr.log_event(self.dir, 'slice_end')
+        self.assertEqual([e['event'] for e in sr.load_jsonl(self.path)], ['registered', 'slice_start', 'slice_end'], 'a whole line is still read')
+        self.assertEqual(len(self.raw().split('\n')), 4)
+
+    def test_a_file_that_is_only_a_torn_line_gets_the_event_after_a_newline(self):
+        self.put(self.TORN)
+        sr.log_event(self.dir, 'registered')
+        lines = self.raw().split('\n')
+        self.assertEqual((lines[0], len(lines), lines[2]), (self.TORN, 3, ''))
+        self.assertEqual(json.loads(lines[1])['event'], 'registered')
+
+    def test_a_log_that_ends_with_a_newline_gets_no_blank_line(self):
+        self.put(self.GOOD)
+        sr.log_event(self.dir, 'slice_start')
+        sr.log_event(self.dir, 'slice_end')
+        lines = self.raw().split('\n')
+        self.assertEqual(len(lines), 4, lines)
+        self.assertEqual((lines[0] + '\n', lines[3]), (self.GOOD, ''))
+        self.assertNotIn('\n\n', self.raw(), 'no blank line anywhere')
+        self.assertEqual([json.loads(l)['event'] for l in lines[:3]], ['registered', 'slice_start', 'slice_end'])
+
+    def test_an_empty_file_and_a_missing_file_get_the_event_as_the_first_line_with_nothing_before_it(self):
+        self.put('')
+        sr.log_event(self.dir, 'registered')
+        self.assertTrue(self.raw().startswith('{'), repr(self.raw()[:20]))
+        self.assertEqual(self.raw().count('\n'), 1)
+        os.remove(self.path)
+        sr.log_event(self.dir, 'registered')
+        self.assertTrue(self.raw().startswith('{'), repr(self.raw()[:20]))
+        self.assertEqual((self.raw().count('\n'), len(sr.load_jsonl(self.path))), (1, 1))
+
+    def test_only_the_first_event_after_a_torn_line_needs_the_newline_the_next_ones_are_ordinary(self):
+        self.put(self.TORN)
+        for name in ('registered', 'sitting_call', 'slice_start'):
+            sr.log_event(self.dir, name)
+        lines = self.raw().split('\n')
+        self.assertEqual((lines[0], len(lines)), (self.TORN, 5))
+        self.assertEqual([json.loads(l)['event'] for l in lines[1:4]], ['registered', 'sitting_call', 'slice_start'])
+        self.assertNotIn('\n\n', self.raw())
+
+
+class LogAfterATornLineOnAResume(T.World):
+    def test_a_torn_last_line_of_a_run_log_does_not_hide_the_events_the_next_call_logs(self):
+        """End to end, through the command line: the torn line is what a kill in the middle of a write leaves; the resume that follows logs its events after it, and every one of them is read."""
+        d = self.register()
+        log = os.path.join(d, 'slow_report_log.jsonl')
+        with open(log, 'a', encoding='utf-8') as f:
+            f.write(LogAfterATornLine.TORN)
+        code, out, err = self.cli('--dir', d, deck=False)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual([e['event'] for e in T.jsonl(log) if e['event'] != 'env_scrubbed'], ['registered', 'sitting_call', 'slice_start', 'slice_end', 'complete', 'report_written'])
+        self.assertEqual([l for l in T.read(log).splitlines() if 'slice_st' in l and not l.endswith('}')], [LogAfterATornLine.TORN], 'the torn line is still there, as it was, alone on its line')
 
 
 if __name__ == '__main__':

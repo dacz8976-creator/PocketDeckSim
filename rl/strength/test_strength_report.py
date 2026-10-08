@@ -5,7 +5,7 @@
 
 Every run directory here is built in a temporary folder; no real run is read or written.
 """
-import hashlib, json, os, subprocess, sys, tempfile, unittest
+import hashlib, json, os, shutil, subprocess, sys, tempfile, unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPORT = os.path.join(HERE, 'strength_report.py')
@@ -200,7 +200,7 @@ class SelfCheckSourceAnnotation(unittest.TestCase):
         self.assertNotIn('Self-check digests', self.report_of(selfcheck={}))
 
     def test_a_replayed_digest_says_so(self):
-        replayed = 'replayed by slow_report.py on this machine just before registration (equal to the committed pin)'
+        replayed = 'replayed by slow_report.py on the registering machine just before registration (equal to the committed pin)'
         text = self.report_of(selfcheck={'km3': 'selfcheck pilot=km3 digest=aaaa', 'kx': 'selfcheck pilot=kx digest=bbbb'}, selfcheck_source={'km3': replayed, 'kx': replayed})
         self.assertIn(f'registration: `selfcheck pilot=km3 digest=aaaa` ({replayed}); `selfcheck pilot=kx digest=bbbb` ({replayed})', text)
 
@@ -214,6 +214,72 @@ class SelfCheckSourceAnnotation(unittest.TestCase):
                 text = self.report_of(selfcheck=digests, **extra)
                 self.assertIn(plain, text)
                 self.assertNotIn('()', text.split('Self-check digests')[1].split('\n')[0])
+
+
+class RegistrationOfARebuiltProgram(unittest.TestCase):
+    """The report reads a manifest made by the real strength_prereg.py for a slow report on a rebuilt program (the slow-report block with the build record, the pin state and the
+    registering machine; self-check texts replayed on the registering machine): it prints the source text the registration recorded, word for word, and leaves the block alone."""
+
+    PREREG = os.path.join(HERE, 'strength_prereg.py')
+
+    def deck(self, tag):
+        return f'Energy: Fire\n2 Card{tag} X1 {100 + len(tag):03d}\n18 Filler X1 002\n'
+
+    COMMITTED_PIN = 'the committed pin'
+    UNCOMMITTED_PIN = 'the pin file in use, which is NOT the committed pin: test use'
+
+    def register(self, t, pin_committed='bypassed'):
+        harness, repo, out = (os.path.join(t, n) for n in ('harness', 'repo', 'run'))
+        os.makedirs(harness)
+        shutil.copy(self.PREREG, os.path.join(harness, 'strength_prereg.py'))
+        decks = {'a-deck': 'decks/a.txt', 't-1': 'decks/t1.txt', 't-2': 'decks/t2.txt', 'held': 'decks/held.txt'}
+        write(os.path.join(harness, 'decks.json'), json.dumps({'decks': decks}))
+        write(os.path.join(harness, 'groups.json'), json.dumps({'panel': ['t-1', 't-2']}))
+        write(os.path.join(harness, 'heldout.json'), json.dumps({'locked': True, 'unlocked_by': None, 'decks': ['held']}))
+        for name, rel in decks.items():
+            os.makedirs(os.path.join(repo, 'decks'), exist_ok=True)
+            write(os.path.join(repo, rel), self.deck(name))
+        program = os.path.join(t, 'rebuilt_strength')
+        write(program, 'a rebuilt program\n')
+        psha = hashlib.sha256(read(program, 'rb')).hexdigest()
+        record = dict(schema=1, program_sha256=psha, engine_tree_archived='3' * 40, harness_source_sha256='b' * 64, rustc='rustc 1.99.0\nbinary: rustc')
+        equal_to = self.COMMITTED_PIN if pin_committed == 'yes' else self.UNCOMMITTED_PIN
+        self.replayed = f'replayed by slow_report.py on the registering machine just before registration (equal to {equal_to})'
+        cfg = dict(name='rebuilt', question='q', pilot='kx3', reference='km3', decks=['a-deck'], opponent_groups=['panel'], deals=1, seats=[0], seed_base=24_600_000_000, stage='use',
+                   program=program, program_sha256=psha, selfcheck_given={'km3': 'selfcheck pilot=km3 digest=aaaa', 'kx3': 'selfcheck pilot=kx3 digest=bbbb'},
+                   selfcheck_given_program_sha256=psha, selfcheck_how='replayed',
+                   slow_report=dict(version=1, headline='kx3 (d513e37b) on a-deck v km3 on the public panel', pin=dict(path='rl/strength/slow_report_pin.json', sha256='e' * 64),
+                                    program_route='rebuilt', pin_committed=pin_committed, pin_committed_detail='HEAD has no pin' if pin_committed != 'yes' else None, registered_on='cloud-box',
+                                    build_record=record))
+        write(os.path.join(t, 'config.json'), json.dumps(cfg))
+        r = subprocess.run([sys.executable, '-B', os.path.join(harness, 'strength_prereg.py'), '--config', os.path.join(t, 'config.json'), '--out', out, '--repo', repo],
+                           capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        return out
+
+    def test_a_manifest_that_strength_prereg_made_for_a_rebuild_is_reported_with_the_source_it_recorded(self):
+        """The source text is whatever the registration recorded, word for word: with the committed pin 'equal to the committed pin', with a pin that is not the committed one 'equal to
+        the pin file in use, which is NOT the committed pin: test use' (the report must not tidy the second into the first)."""
+        for pin_committed, equal_to in (('yes', self.COMMITTED_PIN), ('bypassed', self.UNCOMMITTED_PIN)):
+            with self.subTest(pin_committed=pin_committed), tempfile.TemporaryDirectory() as t:
+                out = self.register(t, pin_committed)
+                man = json.loads(read(os.path.join(out, 'manifest.json')))
+                self.assertEqual(man['selfcheck_source'], {'km3': self.replayed, 'kx3': self.replayed}, 'what the registration recorded')
+                self.assertTrue(self.replayed.endswith(f'(equal to {equal_to})'), self.replayed)
+                self.assertEqual(man['slow_report']['build_record']['engine_tree_archived'], '3' * 40)
+                games = [dict(game(arm, 'deck' if arm == 'X' else 'opp'), key=f'a-deck|{opp}|0|0|{arm}', deck='a-deck', opp=opp, pilot_deck='kx3' if arm == 'X' else 'km3',
+                              started_at='2999-01-01T00:00:00Z') for opp in ('t-1', 't-2') for arm in ('X', 'ref')]
+                write(os.path.join(out, 'games.jsonl'), ''.join(json.dumps(g) + '\n' for g in games))
+                r = run_report(out)
+                self.assertEqual(r.returncode, 0, r.stderr)
+                text = read(os.path.join(out, 'REPORT.md'))
+                self.assertIn(f'registration: `selfcheck pilot=km3 digest=aaaa` ({self.replayed}); `selfcheck pilot=kx3 digest=bbbb` ({self.replayed})', text)
+                self.assertEqual(text.count('NOT the committed pin'), 2 if pin_committed != 'yes' else 0)
+                self.assertNotIn('replayed by slow_report.py on this machine', text)
+                self.assertNotIn('build_record', text, 'the engineering report is about the games; the block is the slow report page\'s')
+                self.assertIn('(matches the pre-registration)', text)
+                self.assertIn('(after registration)', text)
+                self.assertEqual(json.loads(read(os.path.join(out, 'report.json')))['registration_changed'], False)
 
 
 class PilotsAndErrors(unittest.TestCase):

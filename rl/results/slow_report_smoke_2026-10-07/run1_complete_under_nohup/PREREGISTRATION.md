@@ -1,6 +1,6 @@
 # Pre-registration: slow_report_smoke-held
 
-Written 2026-10-08T02:17:39Z, **before any game was played**. The manifest (`manifest.json`, sha256 `7cb7da5af4f4d6b09b7859532ebb30fb23803f902accbf9e6e0af23644b322a4`) is exactly what the program runs; the report refuses a run whose manifest no longer matches.
+Written 2026-10-08T07:20:06Z, **before any game was played**. The manifest (`manifest.json`, sha256 `8d0bf0a8f7d906cf1c84f0594bf29938a03f08650c52baecdbd8552e9cba5116`) is exactly what the program runs; the report refuses a run whose manifest no longer matches.
 
 ## Question
 
@@ -42,7 +42,7 @@ Stage `use`: a report on a deck, not development, so it is allowed on any deck a
 - deck_file_state: `unknown (not a git repository)`
 - deals: `2`
 - paired: `True`
-- pin: `{'path': '/home/dacz8976/slow_smoke2/pin_smoke.json', 'sha256': '97dcb802b5a051a87664366642a0d61437bec0a37cfa01fb70f7480d06de52c5'}`
+- pin: `{"path": "/home/dacz8976/slow_smoke2/pin_smoke.json", "sha256": "97dcb802b5a051a87664366642a0d61437bec0a37cfa01fb70f7480d06de52c5"}`
 - program_route: `pinned`
 - pinned_program: `/home/dacz8976/kx/strength`
 - pinned_program_sha256: `5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2`
@@ -50,7 +50,10 @@ Stage `use`: a report on a deck, not development, so it is allowed on any deck a
 - harness_source_checkout_sha256: `bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e`
 - engine_ref: `d513e37b473f2819075e1eb2439075a8a1e65c42`
 - engine_tree: `31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588`
-- engine_tree_in_checkout: `not found`
+- pin_committed: `bypassed`
+- pin_committed_detail: `HEAD has no rl/strength/slow_report_pin.json in /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/2007fbb0-8999-4f68-b5ad-afe643bc4e30/scratchpad/sr/work/repo (not a git repository, no commit, or the file is not committed); git said: fatal: not a git repository (or any parent up to mount point /mnt); allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use)`
+- registered_on: `Dustin-Laptop`
+- build_record: `none`
 - school_rule: `off`
 - school_days: `mon,tue,wed,thu,fri`
 

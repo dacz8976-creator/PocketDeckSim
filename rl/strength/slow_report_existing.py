@@ -168,7 +168,7 @@ def page(b):
     P(f'- Time: {pilot} took {SR.fmt_s(statistics.mean(walls))} a game on average on this deck (about {SR.human_time(statistics.mean(walls))}; slowest {SR.fmt_s(max(walls))}), '
       f'{b["dman"].get("threads", 2)} games at a time; the {ref} baseline games took {SR.fmt_s(statistics.mean(g["wall_s"] for g in rd.values()))} each.\n')
     gain_note = SR.gain_range_note(pilot, ref, gn, gm, gh) + ' ' if gn >= 2 and gsd > 0 else ''
-    gain_scale = f" (the gain's range is {200 * gh:.1f} points wide)" if gn >= 2 and gsd > 0 else ''
+    gain_scale = f" (the gain's range is {SR.range_width_points(gm, gh):.1f} points wide)" if gn >= 2 and gsd > 0 else ''
     P(f'What the {n}-game range can tell and cannot tell: it can tell whether {pilot} plays this deck near, clearly above or clearly below an even score against these {k} lists '
       f'({SR.pct1(lo)} to {SR.pct1(hi)} here), and it can tell a large gain over {ref} from none at all{gain_scale}. {gain_note}'
       f'It cannot tell a gain of a point or two from a gain of ten: {n} games decide only that much, and a wide range is a statement of how much {n} games decide, not an answer of "nothing". '
@@ -244,7 +244,8 @@ def page(b):
             'a question for more deals.' if win == 0 else f'and {"the one changed winner is" if win == 1 else f"the {win} changed winners are"} what the on-minus-off figure above counts, for or against the rule; '
             f'{"one is" if win == 1 else "they are"} too few to say more.')
     P(f'What this can tell and cannot tell: it can tell what the rule did on these {m} paired games ({dec} had a changed decision, {win} a changed winner), and it can put a bound on how often it changes a winner: {share}. '
-      f"It cannot tell what the rule does on other deals or other decks (gate 3 pooled {b['pooled_pairs']} pairs over {b['pooled_decks']} deck{'' if b['pooled_decks'] == 1 else 's'} on its own page), {tail}\n")
+      f"It cannot tell what the rule does on other deals or other decks (gate 3 pooled {b['pooled_pairs']} paired games, {kg(b['pooled_pairs'], pilot)} with the rule on against the same deals with it off, "
+      f"over {b['pooled_decks']} deck{'' if b['pooled_decks'] == 1 else 's'} on its own page), {tail}\n")
 
     # ------------------------------------------------------------------------------------------------ provenance
     P('## Where these games come from\n')

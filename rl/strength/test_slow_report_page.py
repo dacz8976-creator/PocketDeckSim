@@ -22,18 +22,25 @@ What is pinned:
   * the counts: every count names whose games it counts and is singular at one ("1 kx3 game", "80 cheap km3 baseline games", "1 paired game", "2 tries"), the gain is
     counted in paired games (a deal and seat played by both pilots), a banner or a running time says what the total is made of (kx3 games + baseline games), and the
     dry run of a folder says how many games of each pilot are played, planned and to go;
-  * what was run: the program (a rebuild is called one, and names the pinned binary), each self-check and how its text was obtained, the harness source, the school-morning
-    choice, checked on synthetic manifests and on real registrations (WhatWasRunEndToEnd);
+  * what was run: the program (one that is not the pinned binary is said to be NOT the pinned binary: it names the pinned binary and the registering machine, says that its build
+    record says it is a rebuild, that the record is not signed and that what stands behind the program is the replayed self-checks, equal to the committed pin's digests or, for a pin
+    let through for a test, to the pin file in use), its build record (an entry it does not have is "not recorded", and a toolchain it does not have "rustc not recorded", never None),
+    the pin and whether it is the committed one, each program change of the run with the games started before and after it (only a line that reverify_program could have written
+    for a run registered on the rebuilt route: a pinned run shows none, a forged or foreign line is left out), each self-check and how its text was obtained, the harness source,
+    the school-morning choice, checked on synthetic manifests and on real registrations (WhatWasRunEndToEnd);
   * the registration time: "before any game" only when no game started before the registration, on both pages (a game that started earlier is named);
   * the standing rule that nothing it prints or writes says pass or fail, in the words of a verdict or in plain sentences, on the page and on every line of the terminal;
   * the registered question, with each pilot in its own role, and each pilot's provenance beside that pilot;
-  * what the terminal says: the plan lines, the stop after --max-games, a failed engineering report, a partial page, the same headline on a resumed run;
-  * the log: every step is recorded, with both pilots and a UTC time, including what each call that plays games was asked to do (sitting_call, after the lock, before its sittings);
+  * what the terminal says: the plan lines (the school days, the pin line), the stop after --max-games (and that the limit counts games of both arms), a failed engineering report, a
+    partial page, the same headline on a resumed run;
+  * the log: every step is recorded, with both pilots and a UTC time, including what each call that plays games was asked to do (sitting_call, after the lock, before its sittings;
+    its school choice is an override only when it differs from the registered one, and the program it ran with);
   * the line that ends a --register-only (how to play what was registered) and the words for what an old manifest does not say (no harness source, no school days).
 It ends with the same kind of checks on the page built from games that already exist (slow_report_existing.py): the order of registration is claimed only for the games
-that were read (this deck's), the gain's range is given with its whole width in points, and the pairs and decks gate 3 pooled are counted from the gate-3 run.
+that were read (this deck's), the gain's range is given with its whole width in points (worked out from the two ends as printed, RangeWidth), and the pairs, kx3 games and decks
+gate 3 pooled are counted from the gate-3 run.
 """
-import fcntl, json, math, os, re, select, shlex, shutil, signal, statistics, subprocess, sys, tempfile, time, unittest
+import contextlib, fcntl, io, json, math, os, re, select, shlex, shutil, signal, socket, statistics, subprocess, sys, tempfile, time, unittest
 from unittest import mock
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -49,6 +56,13 @@ TAG = '[kx3 (d513e37b) on my-list v km3 on the public panel] '
 PASS_OR_FAIL = 'no pass or fail line'  # the one way the word pass may appear: saying there is none
 PAGE_QUESTION = 'Question: how does my-list do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?'
 PAGE_QUESTION_ALONE = 'Question: how does my-list do when kx3 plays it against the 8 public lists?'
+CUT_NOTE = ' (games across both arms, about half of them kx3 games)'  # what the line that says --max-games stopped the call adds to the count it names
+
+
+def bypassed_pin_line(world):
+    """The pin line of the plan for a World fixture: its temporary repository has no commit of the pin, World lets the hand-made pin through with the test-only variable, and the line says so."""
+    return (f'pin committed: bypassed (rl/strength/slow_report_pin.json sha256 {T.sha(world.pin_path)[:12]}; HEAD has no rl/strength/slow_report_pin.json in {world.repo} '
+            f'(not a git repository, no commit, or the file is not committed){T.git_said(world.repo)}; allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use))')
 
 
 def banner(counts, played, planned=64):
@@ -156,11 +170,14 @@ class PlainTimes(T.Timed):
 
 
 class PlanLines(T.World):
-    """The six lines a dry run prints (the question first), word for word, with the pin's rates replaced by round ones so the hours can be written down."""
+    """The seven lines a dry run prints (the question first), word for word, with the pin's rates replaced by round ones so the hours can be written down."""
     QUESTION = 'question: how does my-list do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?'
     QUESTION_ALONE = 'question: how does my-list do when kx3 plays it against the 8 public lists?'
-    SCHOOL_ON = 'on school days the run pauses from 5:15 am to 5 pm Chicago time (the school-morning rule), so the calendar time is longer'
+    SCHOOL_ON = 'on school days (mon,tue,wed,thu,fri) the run pauses from 5:15 am to 5 pm Chicago time (the school-morning rule), so the calendar time is longer'
     SCHOOL_OFF = ('school-morning rule: OFF for this run (it never pauses for school mornings; the choice is recorded in the registration and carried by the resume command)')
+
+    def pin_line(self):
+        return bypassed_pin_line(self)
 
     def with_rates(self, **rates):
         pin = json.loads(read(self.pin_path))
@@ -182,19 +199,20 @@ class PlanLines(T.World):
                 f'the time is for the {games} kx3 games: about {low} to {high} if the deck plays like most of his, '
                 f'about {wall} if it plays like the Wailord wall (measured with 2 games at a time)')
 
-    def test_the_dry_run_prints_exactly_these_six_lines(self):
+    def test_the_dry_run_prints_exactly_these_seven_lines(self):
         self.with_rates(typical_low=20, typical_high=40, wall=10)
         lines = self.plan('--deals', '3')
-        self.assertEqual(len(lines), 6, lines)
+        self.assertEqual(len(lines), 7, lines)
         self.assertEqual(lines[0], self.QUESTION)
         self.assertTrue(lines[1].startswith('plan: my-list (decks/events/my-list.txt, ') and lines[1].endswith('), 3 deals x 2 seats against the 8 public lists'), lines[1])
         self.assertEqual(lines[2], self.expected_time_line(48, '72 minutes', '2.4 hours', '4.8 hours'))
         self.assertEqual(lines[3], self.SCHOOL_ON)
+        self.assertEqual(lines[4], self.pin_line())
         slots = (BLOCK[1] - BLOCK[0] + 1) // STEP
         seed = BLOCK[0] + (int(T.sha(self.deck)[:8], 16) % slots) * STEP
-        self.assertEqual(lines[4], f"stage use (not development evidence; the held-out lock is untouched), seeds from {seed}, program {self.pin['program']} (pinned, sha256 "
+        self.assertEqual(lines[5], f"stage use (not development evidence; the held-out lock is untouched), seeds from {seed}, program {self.pin['program']} (pinned, sha256 "
                                    f"{self.pin['program_sha256'][:12]}), with the comparison with km3 on the same deals in the page, no pass or fail line")
-        self.assertEqual(lines[5], 'dry run: nothing written')
+        self.assertEqual(lines[6], 'dry run: nothing written')
 
     def test_the_question_comes_first_with_the_comparison_and_without_it(self):
         """The reporting rule is the question, then the size: the first line a new run prints is the question, in the words of the page's own, and it follows --no-paired."""
@@ -226,16 +244,27 @@ class PlanLines(T.World):
         self.assertNotIn('OFF', ' '.join(on))
         self.assertNotIn('pauses from 5:15', ' '.join(off))
 
+    def test_the_school_line_names_the_school_days_or_says_there_are_none(self):
+        """The line follows the days of this registration (the default Monday to Friday, or the ones given), and with no school days it says the rule never pauses the run."""
+        for days, want in (('mon,tue', 'on school days (mon,tue) the run pauses from 5:15 am to 5 pm Chicago time (the school-morning rule), so the calendar time is longer'),
+                           ('sat', 'on school days (sat) the run pauses from 5:15 am to 5 pm Chicago time (the school-morning rule), so the calendar time is longer'),
+                           ('', 'school-morning rule: on, but with no school days set it never pauses the run')):
+            with self.subTest(days=days):
+                lines = self.plan('--deals', '1', '--school-days', days, school='on')
+                self.assertEqual([l for l in lines if 'school' in l], [want])
+                self.assertEqual(lines.index(want), 3, 'in the same place as the other two forms of the line')
+        self.assertNotIn('pauses from 5:15', ' '.join(self.plan('--deals', '1', '--school-days', '', school='on')))
+
     def test_without_the_baseline_the_stage_line_says_without_and_the_size_line_says_the_games_are_still_played(self):
         self.with_rates(typical_low=20, typical_high=40, wall=10)
         lines = self.plan('--deals', '3', '--no-paired')
-        self.assertEqual(len(lines), 6, lines)
-        self.assertTrue(lines[4].endswith('), without the comparison with km3 on the same deals in the page, no pass or fail line'), lines[4])
-        self.assertNotIn('with the comparison', lines[4])
+        self.assertEqual(len(lines), 7, lines)
+        self.assertTrue(lines[5].endswith('), without the comparison with km3 on the same deals in the page, no pass or fail line'), lines[5])
+        self.assertNotIn('with the comparison', lines[5])
         self.assertEqual(lines[2], self.expected_time_line(48, '72 minutes', '2.4 hours', '4.8 hours', no_paired=True))
         paired = self.plan('--deals', '3')
         self.assertNotIn('--no-paired', paired[2], 'the note is only for a run without the comparison')
-        self.assertTrue(paired[4].endswith('), with the comparison with km3 on the same deals in the page, no pass or fail line'), paired[4])
+        self.assertTrue(paired[5].endswith('), with the comparison with km3 on the same deals in the page, no pass or fail line'), paired[5])
 
     def test_the_size_line_counts_both_pilots_games_and_says_the_time_is_for_the_kx3_games(self):
         self.with_rates(typical_low=20, typical_high=40, wall=10)
@@ -785,6 +814,28 @@ class RangePoints(T.Timed):
         self.assertNotIn('give or take', text)
 
 
+class RangeWidth(T.Timed):
+    """range_width_points(m, half): the width of the range range_points prints, worked out from the two ends as printed (each rounded once, cut at the scale), so a sentence
+    about the width never disagrees with the ends printed beside it."""
+
+    def test_the_width_is_the_difference_of_the_two_printed_ends(self):
+        for m, half in ((0.0625, 0.0815), (0.3, 0.1), (-0.3, 0.1), (0.05, 0.25), (0.04449, 0.03051), (0.0, 0.0), (0.1, 0.2), (0.0197, 0.02), (0.8, 0.3), (-0.8, 0.3), (0.5, 6.35)):
+            a, b = re.search(r'between ([+-]\d+\.\d) and ([+-]\d+\.\d) points', sr.range_points(m, half)).groups()
+            self.assertAlmostEqual(sr.range_width_points(m, half), float(b) - float(a), places=9, msg=(m, half))
+
+    def test_it_is_not_twice_the_unrounded_half_when_the_two_differ_at_the_first_decimal(self):
+        m, half = 0.045, 0.0306  # the ends are 1.44 and 7.56: they print as +1.4 and +7.6, 6.2 apart, where twice the half is 6.12 (6.1)
+        self.assertEqual(sr.range_points(m, half), 'probably between +1.4 and +7.6 points')
+        self.assertAlmostEqual(sr.range_width_points(m, half), 6.2, places=9)
+        self.assertEqual(f'{200 * half:.1f}', '6.1', 'the width the page used to print')
+
+    def test_a_range_cut_at_the_scale_is_as_wide_as_what_is_left_of_it(self):
+        self.assertAlmostEqual(sr.range_width_points(0.8, 0.3), 50.0, places=9)
+        self.assertAlmostEqual(sr.range_width_points(-0.8, 0.3), 50.0, places=9)
+        self.assertAlmostEqual(sr.range_width_points(0.5, 6.35), 200.0, places=9, msg='both ends past the scale: the whole scale')
+        self.assertAlmostEqual(sr.range_width_points(0.0, 1.0), 200.0, places=9)
+
+
 SYMMETRIC_RANGE_WORDS = ('give or take', 'plus or minus', '±', '+/-', '+-')  # a range that is cut at the scale, or built from a Wilson or a t interval, is not symmetric
 
 
@@ -1117,9 +1168,32 @@ class WhatWasRun(Pages):
 PIN_SHA = '5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2'
 HARNESS_SHA = 'bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e'
 GIVEN = 'given in the config (copied from the pin, which says it was measured on this exact program sha256)'
-REPLAYED = 'replayed by slow_report.py on this machine just before registration (equal to the committed pin)'
+REPLAYED = 'replayed by slow_report.py on the registering machine just before registration (equal to the committed pin)'
 HOW_GIVEN = 'copied from the pin, not replayed: the pin says it was measured on this exact binary'
-HOW_REPLAYED = 'replayed on this machine just before registration, equal to the committed pin'
+HOW_REPLAYED = 'replayed on the registering machine just before registration, equal to the committed pin'
+HOW_REPLAYED_FILE = 'replayed on the registering machine just before registration, equal to the pin file in use (NOT the committed pin: test use)'  # for a pin let through for a test
+COMMITTED_DIGESTS, FILE_DIGESTS = T.COMMITTED_DIGESTS, T.FILE_DIGESTS
+ENGINE_REF = 'd513e37b473f2819075e1eb2439075a8a1e65c42'
+ENGINE_TREE = '31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588'
+# the build record a rebuilt run carries in its slow_report block (what read_build_record returned at the registration)
+BUILD_RECORD = dict(schema=1, program='/cloud/build/strength', program_sha256='f' * 64, engine_arg=ENGINE_REF, engine=f'{ENGINE_REF} engine tree {ENGINE_TREE}', engine_ref=ENGINE_REF,
+                    engine_tree_archived=ENGINE_TREE, harness_source_sha256=HARNESS_SHA, rustc='rustc 1.90.0 (fake 2026-01-01)\nbinary: rustc\nhost: x86_64-unknown-linux-gnu',
+                    cargo='cargo 1.90.0 (fake 2026-01-01)', machine='Linux 6.1.0 x86_64', host='cloud-box-1', built_at='2026-10-09T22:00:00Z',
+                    rebuild_command='env HOME=/home/cloud STRENGTH_BUILD_DIR=/home/cloud/sb bash /home/cloud/repo/rl/strength/build.sh d513e37b /cloud/build/strength',
+                    record_file='/cloud/build/strength.build.json', record_sha256='b' * 64)
+REBUILD_PARAGRAPH = ("- The program is NOT the pinned binary (`{pinned}`, sha256 `{sha12}`): its build record says it is a rebuild of the pinned source, and it was accepted only "
+                     "because that record has the pinned engine tree and harness source and both self-checks were replayed on the registering machine{host} and equal {digests}, and the "
+                     "harness source in the checkout is the pinned build's. The record is written by the builder's own script and is not signed: what stands behind the program is those "
+                     "replayed self-checks (12 fixed games per pilot), not the record.")
+
+
+def rebuild_paragraph(host='', digests=COMMITTED_DIGESTS, pinned='/home/dacz8976/kx/strength', sha12='5a8f5c83a791'):
+    """The paragraph of the page for a program that is not the pinned binary: `host` is ' (name)' of the registering machine or empty, `digests` what the self-checks were equal to."""
+    return REBUILD_PARAGRAPH.format(host=host, digests=digests, pinned=pinned, sha12=sha12)
+BUILD_RECORD_LINE = ('- Build record `strength.build.json` sha256 `bbbbbbbbbbbb`: engine d513e37b473f2819075e1eb2439075a8a1e65c42 -> tree as archived `31dbd2e6e8ec` (the pin\'s is `31dbd2e6e8ec`), '
+                     'harness source `bf9c5d681400`, rustc 1.90.0 (fake 2026-01-01), cargo 1.90.0 (fake 2026-01-01), built 2026-10-09T22:00:00Z on cloud-box-1 (Linux 6.1.0 x86_64); '
+                     'to rebuild the same bytes after a restart: `env HOME=/home/cloud STRENGTH_BUILD_DIR=/home/cloud/sb bash /home/cloud/repo/rl/strength/build.sh d513e37b /cloud/build/strength`.')
+PIN_COMMITTED_LINE = "- Pin `rl/strength/slow_report_pin.json` sha256 `eeeeeeeeeeee`: committed (byte-equal to HEAD's file in the repository this run was registered from)."
 
 
 class WhatWasRunLines(Pages):
@@ -1160,12 +1234,14 @@ class WhatWasRunLines(Pages):
             '- 1 deal x 2 seats; seeds `24601000000 + p x 10000 + i` (p = opponent index, i = deal). The program plays each deal with each pilot on the deck, from one seed.'])
 
     def test_the_whole_section_for_a_rebuild_names_the_rebuild_the_pinned_binary_and_what_was_replayed(self):
-        t, text = self.page_with(source=REPLAYED, program=('/cloud/build/strength', 'f' * 64), program_route='rebuilt')
+        t, text = self.page_with(source=REPLAYED, program=('/cloud/build/strength', 'f' * 64), program_route='rebuilt', registered_on='cloud-box-1', build_record=BUILD_RECORD,
+                                 pin_committed='yes')
         msha = T.sha(os.path.join(t, 'manifest.json'))[:16]
         self.assertEqual(self.section(text), [
             '- Pilots: kx3 (d513e37b) on the deck, km3 on the public panel. Program `/cloud/build/strength` sha256 `ffffffffffff`.',
-            "- The program is a REBUILD of the pinned source, not the pinned binary (`/home/dacz8976/kx/strength`, sha256 `5a8f5c83a791`): it was accepted only because both self-checks "
-            "were replayed on this machine and equal the committed pin's digests, and the harness source in the checkout is the pinned build's.",
+            rebuild_paragraph(host=' (cloud-box-1)', digests=COMMITTED_DIGESTS),
+            BUILD_RECORD_LINE,
+            PIN_COMMITTED_LINE,
             f'- Self-check of `kx3`: `selfcheck pilot=kx3 digest=31d638dbc818b0fa` ({HOW_REPLAYED})',
             f'- Self-check of `km3`: `selfcheck pilot=km3 digest=81b572198c04d5d1` ({HOW_REPLAYED})',
             '- Build: claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec',
@@ -1179,15 +1255,18 @@ class WhatWasRunLines(Pages):
         for route in ('pinned', None):  # a run registered before the route was recorded is not called a rebuild either
             t, text = self.page_with(program_route=route)
             self.assertNotIn('REBUILD', text, route)
+            self.assertNotIn('NOT the pinned binary', text, route)
             self.assertNotIn('pinned source', text, route)
         t, text = self.page_with(program_route='rebuilt')
-        self.assertEqual(text.count('REBUILD'), 1)
-        self.assertEqual(text.count('The program is a REBUILD of the pinned source, not the pinned binary'), 1)
+        self.assertEqual(text.count('The program is NOT the pinned binary'), 1)
+        self.assertEqual(text.count('its build record says it is a rebuild of the pinned source'), 1)
+        self.assertNotIn('REBUILD', text, 'the page does not claim that the program IS a rebuild: the record says so, and the record is not signed')
+        self.assertIn('The record is written by the builder\'s own script and is not signed: what stands behind the program is those replayed self-checks (12 fixed games per pilot), not the record.', text)
 
     def test_the_rebuild_paragraph_names_the_pinned_binary_it_stands_in_for_not_the_program_it_used(self):
         t, text = self.page_with(program_route='rebuilt', program=('/cloud/build/strength', 'f' * 64), pinned_program='/pinned/elsewhere/strength', pinned_program_sha256='7' * 64)
-        line = [l for l in text.splitlines() if l.startswith('- The program is a REBUILD')][0]
-        self.assertIn('not the pinned binary (`/pinned/elsewhere/strength`, sha256 `777777777777`)', line)
+        line = [l for l in text.splitlines() if l.startswith('- The program is NOT the pinned binary')][0]
+        self.assertIn('is NOT the pinned binary (`/pinned/elsewhere/strength`, sha256 `777777777777`)', line)
         self.assertNotIn('/cloud/build/strength', line)
         self.assertIn('Program `/cloud/build/strength` sha256 `ffffffffffff`.', text)
 
@@ -1256,12 +1335,196 @@ class WhatWasRunLines(Pages):
                 self.assertNotIn('has the same', text)
                 self.assertNotIn('so the pinned binary was not built', text)
 
-    def test_the_lines_come_in_this_order_program_rebuild_self_checks_build_harness_school_deck_registration(self):
-        t, text = self.page_with(program_route='rebuilt', school_rule='off', source=REPLAYED)
+    def test_a_rebuild_page_without_the_machine_or_the_build_record_says_only_what_it_knows(self):
+        """A run registered before the record existed (no registered_on, no build_record, no pin_committed) is still described, without a gap or a None."""
+        t, text = self.page_with(program_route='rebuilt')
+        self.assertEqual([l for l in text.splitlines() if 'NOT the pinned binary' in l], [rebuild_paragraph()])
+        for absent in ('Build record', '- Pin ', 'None', '()'):
+            self.assertNotIn(absent, text)
+
+    def test_the_lines_come_in_this_order_program_rebuild_record_pin_self_checks_build_harness_school_deck_registration(self):
+        t, text = self.page_with(program_route='rebuilt', school_rule='off', source=REPLAYED, registered_on='cloud-box-1', build_record=BUILD_RECORD, pin_committed='yes')
         sec = self.section(text)
-        starts = ('- Pilots:', '- The program is a REBUILD', '- Self-check of `kx3`', '- Self-check of `km3`', '- Build:', '- Harness source', '- School-morning rule',
-                  '- Deck file', '- Registered', '- 1 deal')
+        starts = ('- Pilots:', '- The program is NOT the pinned binary', '- Build record', '- Pin ', '- Self-check of `kx3`', '- Self-check of `km3`', '- Build:', '- Harness source',
+                  '- School-morning rule', '- Deck file', '- Registered', '- 1 deal')
         self.assertEqual([next(i for i, l in enumerate(sec) if l.startswith(s)) for s in starts], list(range(len(starts))))
+
+    def test_the_pin_line_says_committed_or_not_in_these_words_and_only_when_the_registration_recorded_it(self):
+        t, text = self.page_with(pin_committed='yes')
+        self.assertEqual([l for l in text.splitlines() if l.startswith('- Pin ')], [PIN_COMMITTED_LINE])
+        self.assertNotIn('NOT the committed pin', text)
+        detail = 'HEAD has no rl/strength/slow_report_pin.json in /tmp/x/repo (not a git repository, no commit, or the file is not committed); allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use)'
+        t, text = self.page_with(pin_committed='bypassed', pin_committed_detail=detail)
+        self.assertEqual([l for l in text.splitlines() if l.startswith('- Pin ')],
+                         [f'- Pin `rl/strength/slow_report_pin.json` sha256 `eeeeeeeeeeee`: **NOT the committed pin** ({detail}): what this page says about the program rests on a pin that is not '
+                          'the committed one.'])
+        self.assertNotIn('byte-equal', text)
+        t, text = self.page_with(pin_committed='bypassed')  # no detail recorded: the state itself is named
+        self.assertIn('**NOT the committed pin** (bypassed): what this page says', text)
+        for value in (None, ''):
+            t, text = self.page_with(pin_committed=value)  # a manifest from before the check: no claim either way
+            self.assertNotIn('- Pin ', text)
+            self.assertNotIn('committed pin**', text)
+
+    def rebuilt_run(self, **kw):
+        """A run directory (32 games, every one started at 10:05:00) registered on the rebuilt route, with the facts reverify_program compares a program change with: the pin's engine tree
+        and harness source (KEYS) and the self-check texts of the manifest. Returns (folder, manifest, games)."""
+        t, man, games = self.run_dir(deals=1, **kw)
+        man['slow_report'].update(self.KEYS, program_route='rebuilt')
+        T.rewrite_manifest(t, man)
+        return t, man, games
+
+    @staticmethod
+    def put_log(t, *events, torn=None):
+        """The run's log as these events, one per line, then, if given, a last line torn by a kill."""
+        with open(os.path.join(t, 'slow_report_log.jsonl'), 'w', encoding='utf-8') as f:
+            f.write(''.join(json.dumps(e) + '\n' for e in events))
+            if torn:
+                f.write(torn)
+
+    def test_each_program_change_in_the_log_is_a_line_with_the_games_started_before_and_after_it(self):
+        t, man, games = self.rebuilt_run()
+        change = lambda new, **over: T.change_event_for(man, new, pin_committed=T.DROP, old_sha256='a' * 64, **over)  # (no pin state recorded: read as the committed pin)
+        events = [change('b' * 64, at='2026-10-10T10:05:01Z', record_sha256='c' * 64, replayed_on='cloud-box-2'),
+                  dict(at='2026-10-10T10:05:00Z', event='slice_end', returncode=0),
+                  change('d' * 64, at='2026-10-10T10:05:00Z', record_sha256='e' * 64, replayed_on='cloud-box-3')]
+        self.put_log(t, *events, torn='{"event": "program_changed", "at": "2026-10-1')  # a line torn by a kill
+        text = sr.write_slow_report(t)
+        changes = [l for l in self.section(text) if 'The program changed mid-run' in l]
+        self.assertEqual(changes, [
+            '- **The program changed mid-run** (2026-10-10T10:05:01Z): sha256 `aaaaaaaaaaaa` -> `bbbbbbbbbbbb` after a restart or rebuild; its build record has the pinned engine tree and '
+            "harness source (record `cccccccccccc`) and both self-checks were replayed again on cloud-box-2 and equal the committed pin's digests. 32 games of the 32 played so far were started before "
+            'this change and 0 after; the numbers above pool them.',
+            '- **The program changed mid-run** (2026-10-10T10:05:00Z): sha256 `aaaaaaaaaaaa` -> `dddddddddddd` after a restart or rebuild; its build record has the pinned engine tree and '
+            "harness source (record `eeeeeeeeeeee`) and both self-checks were replayed again on cloud-box-3 and equal the committed pin's digests. 0 games of the 32 played so far were started before "
+            'this change and 32 after; the numbers above pool them.'], 'in the order of the log, a game that started in the very second of the change is after it, other events and a torn line are not changes')
+        self.assertEqual(self.section(text)[2:4], changes, 'right after the pilots and the rebuild paragraph, there being no build record and no pin line here')
+        t, man, games = self.rebuilt_run()
+        self.assertNotIn('program changed', sr.write_slow_report(t).lower(), 'a run with no change in its log says nothing of one')
+
+    def test_a_program_changed_line_that_the_run_could_not_have_written_is_not_shown_as_a_change(self):
+        """The log is not covered by manifest.sha256, and the page shows a 'program_changed' line only by the test accepted_program_shas and program_in_use_before use (is_program_change): a
+        run registered on the rebuilt route and a line that reverify_program could have written for it. A line it could not have written is left out, and no None is printed for what it lacks."""
+        t, man, games = self.run_dir(deals=1)  # a run on the pinned route: reverify_program never ran on it
+        man['slow_report'].update(self.KEYS, program_route='pinned')
+        T.rewrite_manifest(t, man)
+        self.put_log(t, {'event': 'program_changed'})
+        text = sr.write_slow_report(t)
+        self.assertNotIn('The program changed mid-run', text)
+        self.assertNotIn('None', text)
+
+    def test_a_consistent_program_changed_line_without_the_entries_that_only_describe_it_is_shown_without_none(self):
+        """program_change_valid asks for the entries that tie a line to the registration (the program, its record, the self-check texts) and for 'at' (the games before and after are counted
+        from it); a line without 'old_sha256' or 'replayed_on' or the record's sha256 is still a program change, and the page says 'not recorded' for each of those, never the text None.
+        A line without 'at' is not a program change at all and is not shown."""
+        t, man, games = self.rebuilt_run()
+        self.put_log(t, T.change_event_for(man, 'c' * 64, pin_committed=T.DROP, replayed_on=T.DROP, old_sha256=T.DROP))
+        text = sr.write_slow_report(t)
+        self.assertNotIn('None', text)
+        line = next(l for l in text.splitlines() if 'The program changed mid-run' in l)
+        self.assertIn('sha256 `not recorded` -> `cccccccccccc`', line)
+        self.assertIn('replayed again on a machine not recorded', line)
+        t2, man2, games2 = self.rebuilt_run()
+        self.put_log(t2, T.change_event_for(man2, 'c' * 64, pin_committed=T.DROP, replayed_on=T.DROP, at=T.DROP, old_sha256=T.DROP))
+        text2 = sr.write_slow_report(t2)
+        self.assertNotIn('The program changed mid-run', text2)
+        self.assertNotIn('None', text2)
+
+    def test_the_page_of_a_pinned_run_shows_no_program_change_whatever_the_log_says_even_a_line_that_looks_just_right(self):
+        t, man, games = self.run_dir(deals=1)
+        for route in ('pinned', None, 'something else'):
+            with self.subTest(route):
+                block = dict(man['slow_report'], **{k: v for k, v in self.KEYS.items() if k != 'program_route'})
+                if route:
+                    block['program_route'] = route
+                ran = dict(man, slow_report=block)
+                T.rewrite_manifest(t, ran)
+                self.put_log(t, T.change_event_for(ran, 'b' * 64), {'event': 'program_changed'}, {'event': 'program_changed', 'new_sha256': 'c' * 64})
+                text = sr.write_slow_report(t)
+                self.assertNotIn('The program changed mid-run', text)
+                self.assertNotIn('changed mid-run', text)
+                self.assertNotIn('None', text)
+                self.assertNotIn('NOT the pinned binary', text, 'the page is that of a run that is not a rebuild, with or without a log line saying otherwise')
+
+    def test_the_page_of_a_rebuilt_run_shows_the_lines_the_run_could_have_written_and_no_others(self):
+        t, man, games = self.rebuilt_run()
+        good = lambda new, **over: T.change_event_for(man, new, pin_committed=T.DROP, old_sha256='a' * 64, record_sha256=new[:1] * 64, **over)
+        forged = [good('1' * 64, **over) for label, over in T.forged_overrides(man, '1' * 64)]
+        self.assertGreaterEqual(len(forged), 18)
+        events = forged[:9] + [good('2' * 64, at='2026-10-10T10:05:01Z', replayed_on='cloud-box-2')] + forged[9:] + [{'event': 'program_changed'}, dict(good('3' * 64), event='slice_end'),
+                                                                                                                    good('4' * 64, at='2026-10-10T10:05:02Z', replayed_on='cloud-box-3')]
+        self.put_log(t, *events, torn='{"event": "program_changed", "new_sha25')
+        text = sr.write_slow_report(t)
+        changes = [l for l in self.section(text) if 'The program changed mid-run' in l]
+        self.assertEqual(len(changes), 2, changes)
+        self.assertEqual([re.search(r'sha256 `(\w+)` -> `(\w+)`', l).groups() for l in changes], [('aaaaaaaaaaaa', '222222222222'), ('aaaaaaaaaaaa', '444444444444')])
+        self.assertIn('(record `222222222222`)', changes[0])
+        self.assertIn('(record `444444444444`)', changes[1])
+        self.assertNotIn('None', text)
+        self.assertEqual(text.count('changed mid-run'), 2)
+
+    def test_the_rebuild_paragraph_and_the_self_check_lines_say_what_the_pin_was(self):
+        """What the self-checks were equal to is the committed pin's digests for a committed pin (and for a run from before the state was recorded), and, for a pin let through for a
+        test, the pin file in use, said not to be the committed one."""
+        detail = 'HEAD has no rl/strength/slow_report_pin.json in /tmp/x/repo (not a git repository, no commit, or the file is not committed); allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use)'
+        for state, digests, how in ((None, COMMITTED_DIGESTS, HOW_REPLAYED), ('yes', COMMITTED_DIGESTS, HOW_REPLAYED), ('bypassed', FILE_DIGESTS, HOW_REPLAYED_FILE),
+                                    ('no', FILE_DIGESTS, HOW_REPLAYED_FILE)):
+            with self.subTest(state):
+                t, text = self.page_with(program_route='rebuilt', source=REPLAYED, pin_committed=state, pin_committed_detail=detail if state in ('bypassed', 'no') else None)
+                lines = text.splitlines()
+                self.assertEqual(lines.count(rebuild_paragraph(digests=digests)), 1)
+                self.assertEqual([l for l in lines if l.startswith('- Self-check of')],
+                                 [f'- Self-check of `kx3`: `selfcheck pilot=kx3 digest=31d638dbc818b0fa` ({how})', f'- Self-check of `km3`: `selfcheck pilot=km3 digest=81b572198c04d5d1` ({how})'])
+                if digests == COMMITTED_DIGESTS:
+                    self.assertNotIn('NOT the committed pin', text)
+                else:
+                    self.assertIn('equal to the pin file in use (NOT the committed pin: test use)', text)
+        t, text = self.page_with(source=GIVEN, pin_committed='bypassed', pin_committed_detail=detail)
+        self.assertEqual([l.rsplit(' (', 1)[1] for l in text.splitlines() if l.startswith('- Self-check of')], [HOW_GIVEN + ')'] * 2, 'a text copied from the pin does not claim a replay, whatever the pin was')
+
+    def test_a_program_change_says_what_the_replay_was_equal_to_by_the_pin_it_was_accepted_under(self):
+        t, man, games = self.run_dir(deals=1)
+        man['slow_report'].update(self.KEYS, program_route='rebuilt', pin_committed='yes')  # registered with a committed pin ...
+        T.rewrite_manifest(t, man)
+        events = [T.change_event_for(man, str(i) * 64, at=f'2026-10-10T10:05:0{i}Z', old_sha256='a' * 64, record_sha256='c' * 64, replayed_on='cloud-box-2', pin_committed=state)
+                  for i, state in ((1, 'yes'), (2, 'bypassed'), (3, T.DROP), (4, 'no'), (5, None))]
+        self.put_log(t, *events)
+        text = sr.write_slow_report(t)  # ... and the changes are each judged by the pin of their own replay
+        changes = [l for l in text.splitlines() if l.startswith('- **The program changed mid-run**')]
+        self.assertEqual([re.search(r' and equal (.*)\. \d+ games? of the \d+ played so far', l).group(1) for l in changes],
+                         [COMMITTED_DIGESTS, FILE_DIGESTS, COMMITTED_DIGESTS, FILE_DIGESTS, COMMITTED_DIGESTS], 'a replay with no state recorded is read as the committed pin, any other state is not')
+
+    def test_record_text_is_the_text_of_an_entry_or_not_recorded(self):
+        rec = dict(a='text', b='', c=None, d=5, e=['x'], f={}, g=True, h='two\nlines')
+        self.assertEqual([sr.record_text(rec, k) for k in 'abcdefgh'], ['text', 'not recorded', 'not recorded', 'not recorded', 'not recorded', 'not recorded', 'not recorded', 'two\nlines'])
+        self.assertEqual(sr.record_text(rec, 'missing'), 'not recorded')
+        self.assertEqual(sr.record_text({}, 'rustc'), 'not recorded')
+
+    def test_a_build_record_with_only_the_entries_that_were_checked_says_not_recorded_and_never_none(self):
+        checked = ('schema', 'program_sha256', 'engine_ref', 'engine_tree_archived', 'harness_source_sha256', 'record_file', 'record_sha256')
+        bare = {k: v for k, v in BUILD_RECORD.items() if k in checked}
+        want = ("- Build record `strength.build.json` sha256 `bbbbbbbbbbbb`: engine not recorded -> tree as archived `31dbd2e6e8ec` (the pin's is `31dbd2e6e8ec`), harness source `bf9c5d681400`, "
+                "rustc not recorded, not recorded, built not recorded on not recorded (not recorded); to rebuild the same bytes after a restart: `not recorded`.")
+        t, text = self.page_with(program_route='rebuilt', source=REPLAYED, pin_committed='yes', registered_on='cloud-box-1', build_record=bare)
+        self.assertEqual([l for l in text.splitlines() if l.startswith('- Build record')], [want])
+        self.assertNotIn('None', text)
+        self.assertNotIn('built with', text, 'the page says "rustc not recorded" for the toolchain, not the plan\'s "built with ..."')
+        self.assertNotIn(', not recorded)', text)
+        texts = ('engine_arg', 'engine', 'rustc', 'cargo', 'machine', 'host', 'built_at', 'rebuild_command')
+        for value in (None, '', 5, 1.5, True, [], ['x'], {}, {'a': 'b'}):  # (a manifest nobody should have edited, or a registration that predates the checks: said in words all the same)
+            with self.subTest(value=value):
+                t, text = self.page_with(program_route='rebuilt', source=REPLAYED, pin_committed='yes', registered_on='cloud-box-1', build_record=dict(BUILD_RECORD, **{k: value for k in texts}))
+                self.assertEqual([l for l in text.splitlines() if l.startswith('- Build record')], [want])
+                self.assertNotIn('None', text)
+        t, text = self.page_with(program_route='rebuilt', source=REPLAYED, build_record={k: v for k, v in BUILD_RECORD.items() if k != 'record_file'})
+        self.assertIn('- Build record `not recorded` sha256 `bbbbbbbbbbbb`:', text, 'a record whose file name is not known')
+        self.assertNotIn('None', text)
+
+    def test_the_pin_line_comes_after_the_program_lines_and_before_the_self_checks_on_the_pinned_route_too(self):
+        t, text = self.page_with(pin_committed='yes')
+        sec = self.section(text)
+        self.assertEqual(sec.index(PIN_COMMITTED_LINE), 1, 'right after the pilots and the program, there being no rebuild paragraph')
+        self.assertTrue(sec[2].startswith('- Self-check of `kx3`'))
 
 
 class WhatWasRunEndToEnd(T.World):
@@ -1283,6 +1546,14 @@ class WhatWasRunEndToEnd(T.World):
     def page(self):
         return read(os.path.join(self.rundir(), 'SLOW_REPORT.md'))
 
+    def write_record(self, program, pin, harness):
+        """The build record build.sh would have written beside `program`: a good rebuild of the pin's engine tree and the checkout's harness source. Returns it."""
+        rec = dict(schema=1, program=program, program_sha256=T.sha(program), engine_arg=pin['engine_ref'], engine=f"{pin['engine_ref']} engine tree {pin['engine_tree']}", engine_ref=pin['engine_ref'],
+                   engine_tree_archived=pin['engine_tree'], harness_source_sha256=harness, rustc='rustc 1.90.0 (fake)\nbinary: rustc', cargo='cargo 1.90.0 (fake)', machine='Linux 6.1.0 x86_64',
+                   host='cloud-box-1', built_at='2026-10-09T22:00:00Z', rebuild_command=f"env HOME=/home/cloud bash /home/cloud/repo/rl/strength/build.sh {pin['engine_ref']} {program}")
+        write(program + '.build.json', json.dumps(rec, indent=1) + '\n')
+        return rec
+
     def test_the_pinned_program_has_no_rebuild_paragraph_and_its_self_checks_were_copied_from_the_pin(self):
         here = self.with_harness_source()
         self.set_pin(harness_source_sha256=here)
@@ -1294,6 +1565,11 @@ class WhatWasRunEndToEnd(T.World):
         self.assertIn(f'- Harness source sha256 `{here[:12]}` (what rl/strength/build.sh prints); the checkout this run was registered from has the same.', lines)
         self.assertIn('- School-morning rule: off (chosen at registration, for a machine that is not the laptop).', lines)
         self.assertIn(f"- Pilots: kx3 (d513e37b) on the deck, km3 on the public panel. Program `{self.program}` sha256 `{self.pin['program_sha256'][:12]}`.", lines)
+        self.assertEqual([l for l in lines if l.startswith('- Pin ')],
+                         [f"- Pin `{self.pin_path}` sha256 `{T.sha(self.pin_path)[:12]}`: **NOT the committed pin** (HEAD has no rl/strength/slow_report_pin.json in {self.repo} (not a git repository, "
+                          f'no commit, or the file is not committed){T.git_said(self.repo)}; allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use)): what this page says about the program rests on '
+                          'a pin that is not the committed one.'], 'this fixture\'s hand-made pin got through only by the test-only variable, and the page says so')
+        self.assertEqual(sum(1 for l in lines if l.startswith('- Build record')), 0, 'the pinned binary has no build record')
 
     def test_a_checkout_that_is_not_the_pinned_source_is_said_so_on_the_page_of_a_pinned_run(self):
         here = self.with_harness_source()
@@ -1317,8 +1593,9 @@ class WhatWasRunEndToEnd(T.World):
         code, out, err = self.cli('--deals', '1', '--selfcheck')
         self.assertEqual(code, 0, out + err)
         lines = self.page().splitlines()
-        self.assertEqual(sum(1 for l in lines if l.startswith('- Self-check of') and f'({HOW_REPLAYED})' in l), 2, lines)
+        self.assertEqual(sum(1 for l in lines if l.startswith('- Self-check of') and f'({HOW_REPLAYED_FILE})' in l), 2, lines)  # (the fixture's hand-made pin is let through by the test-only variable)
         self.assertNotIn('REBUILD', '\n'.join(lines), 'replaying the self-checks on the pinned binary does not make it a rebuild')
+        self.assertNotIn('NOT the pinned binary', '\n'.join(lines))
 
     def test_the_school_morning_choice_on_the_page_is_the_one_registered_with_its_days(self):
         code, out, err = self.cli('--deals', '1', school='on')
@@ -1336,13 +1613,17 @@ class WhatWasRunEndToEnd(T.World):
     def test_a_rebuild_is_named_as_one_with_both_self_checks_replayed_and_the_program_it_ran(self):
         here = self.with_harness_source()
         pin = self.set_pin(program='/cloud/pinned/strength', program_sha256='5' * 64, harness_source_sha256=here, selfcheck=self.FAKE_CHECKS)
+        rec = self.write_record(self.program, pin, here)
         code, out, err = self.cli('--deals', '1', '--program', self.program)
         self.assertEqual(code, 0, out + err)
         lines = self.page().splitlines()
+        host = socket.gethostname()
         self.assertIn(f"- Pilots: kx3 (d513e37b) on the deck, km3 on the public panel. Program `{self.program}` sha256 `{T.sha(self.program)[:12]}`.", lines)
-        self.assertIn("- The program is a REBUILD of the pinned source, not the pinned binary (`/cloud/pinned/strength`, sha256 `555555555555`): it was accepted only because both "
-                      "self-checks were replayed on this machine and equal the committed pin's digests, and the harness source in the checkout is the pinned build's.", lines)
-        self.assertEqual(sum(1 for l in lines if l.startswith('- Self-check of') and f'({HOW_REPLAYED})' in l), 2, lines)
+        self.assertIn(rebuild_paragraph(host=f' ({host})', digests=FILE_DIGESTS, pinned='/cloud/pinned/strength', sha12='555555555555'), lines)
+        self.assertIn(f"- Build record `fake_kx3_strength.build.json` sha256 `{T.sha(self.program + '.build.json')[:12]}`: engine {rec['engine_arg']} -> tree as archived "
+                      f"`{pin['engine_tree'][:12]}` (the pin's is `{pin['engine_tree'][:12]}`), harness source `{here[:12]}`, rustc 1.90.0 (fake), cargo 1.90.0 (fake), built 2026-10-09T22:00:00Z "
+                      f"on cloud-box-1 (Linux 6.1.0 x86_64); to rebuild the same bytes after a restart: `{rec['rebuild_command']}`.", lines)
+        self.assertEqual(sum(1 for l in lines if l.startswith('- Self-check of') and f'({HOW_REPLAYED_FILE})' in l), 2, lines)
         self.assertIn(f'- Harness source sha256 `{here[:12]}` (what rl/strength/build.sh prints); the checkout this run was registered from has the same.', lines)
         self.assertNotIn(pin['program'], '\n'.join(l for l in lines if l.startswith('- Pilots')))
 
@@ -1503,19 +1784,20 @@ class WhatTheTerminalSays(T.World):
         self.assertTrue(all(l.startswith(TAG) for l in out.splitlines()))
         lines = [l[len(TAG):] for l in out.splitlines()]
         page = read(os.path.join(d, 'SLOW_REPORT.md'))
-        self.assertEqual(len(lines), 10 + len(sr.console_lines(page)), lines)
+        self.assertEqual(len(lines), 11 + len(sr.console_lines(page)), lines)
         self.assertEqual(lines[0], PlanLines.QUESTION, 'the question is the very first line a new run prints')
         self.assertTrue(lines[1].startswith('plan: my-list ('))
         self.assertTrue(lines[2].startswith('size: 16 kx3 games + 16 cheap km3 baseline games on the same deals (32 games in all; the km3 games take about a second each); '
                                             'the time is for the 16 kx3 games: about '), lines[2])
         self.assertEqual(lines[3], PlanLines.SCHOOL_OFF, 'the fixture registers with the rule off')
-        self.assertTrue(lines[4].startswith('stage use (not development evidence; the held-out lock is untouched), seeds from '))
-        self.assertTrue(lines[4].endswith(', with the comparison with km3 on the same deals in the page, no pass or fail line'), lines[4])
-        self.assertEqual(lines[5], f'pre-registered 32 games (8 pairs, 1 deal x 2 seats x 2 arms) in {d}', 'one deal is "1 deal", not "1 deals"')
-        self.assertRegex(lines[6], r'^manifest sha256 [0-9a-f]{64}$')
-        self.assertEqual(lines[7:10], [f'registered in {d} before any game', 'running: 32 games to go, 2 at a time', f'SLOW_REPORT.md written in {d}'])
-        self.assertEqual(lines[10:], sr.console_lines(page))
-        self.assertEqual(lines[10], PAGE_QUESTION, 'and the page it wrote starts with its question again')
+        self.assertEqual(lines[4], bypassed_pin_line(self), 'the pin line: the fixture\'s hand-made pin is let through by the test-only variable, and the plan says so')
+        self.assertTrue(lines[5].startswith('stage use (not development evidence; the held-out lock is untouched), seeds from '))
+        self.assertTrue(lines[5].endswith(', with the comparison with km3 on the same deals in the page, no pass or fail line'), lines[5])
+        self.assertEqual(lines[6], f'pre-registered 32 games (8 pairs, 1 deal x 2 seats x 2 arms) in {d}', 'one deal is "1 deal", not "1 deals"')
+        self.assertRegex(lines[7], r'^manifest sha256 [0-9a-f]{64}$')
+        self.assertEqual(lines[8:11], [f'registered in {d} before any game', 'running: 32 games to go, 2 at a time', f'SLOW_REPORT.md written in {d}'])
+        self.assertEqual(lines[11:], sr.console_lines(page))
+        self.assertEqual(lines[11], PAGE_QUESTION, 'and the page it wrote starts with its question again')
 
     def test_where_a_cut_run_stands_says_the_question_then_how_many_games_of_each_pilot_are_played_and_how_to_resume(self):
         outs, pages = self.session()
@@ -1681,20 +1963,30 @@ class ConsoleMessages(T.World):
     def test_a_run_cut_by_max_games_says_how_to_resume(self):
         code, out, err = self.cli('--deals', '2', '--max-games', '10')
         self.assertEqual(code, 0, out + err)
-        self.assertEqual(out.splitlines().count(f'{TAG}stopped after --max-games 10; resume with: python3 rl/strength/slow_report.py --dir {self.rundir()} --school-rule off'), 1)
+        self.assertEqual(out.splitlines().count(f'{TAG}stopped after --max-games 10{CUT_NOTE}; resume with: python3 rl/strength/slow_report.py --dir {self.rundir()} --school-rule off'), 1)
+
+    def test_a_run_cut_by_max_games_says_that_the_limit_counts_games_of_both_pilots(self):
+        """--max-games 10 is ten games of the two arms together, about five of them kx3 games: the line says so, so nobody reads it as ten kx3 games."""
+        code, out, err = self.cli('--deals', '2', '--max-games', '10')
+        self.assertEqual(code, 0, out + err)
+        line = [l for l in out.splitlines() if 'stopped after --max-games' in l]
+        self.assertEqual(len(line), 1, out)
+        self.assertIn(' (games across both arms, about half of them kx3 games); resume with: ', line[0])
+        played = jsonl(os.path.join(self.rundir(), 'games.jsonl'))
+        self.assertEqual((len(played), len([g for g in played if g['arm'] == 'X'])), (10, 5), 'ten games in all, five of them kx3 games')
 
     def test_a_run_cut_by_max_games_says_the_command_it_registered_with_the_school_choice_in_it(self):
         """The line is the registered resume command (the same as the dry run of the folder prints), not a made-up one: the school-morning choice is in it only when it was not the default."""
         code, out, err = self.cli('--deals', '2', '--max-games', '10', school='on')
         self.assertEqual(code, 0, out + err)
-        self.assertEqual(out.splitlines().count(f'{TAG}stopped after --max-games 10; resume with: python3 rl/strength/slow_report.py --dir {self.rundir()}'), 1, out)
+        self.assertEqual(out.splitlines().count(f'{TAG}stopped after --max-games 10{CUT_NOTE}; resume with: python3 rl/strength/slow_report.py --dir {self.rundir()}'), 1, out)
         code, out, err = self.cli('--dir', self.rundir(), '--dry-run', deck=False, school=None)
         self.assertEqual(code, 0, out + err)
         self.assertIn(f'(resume with: python3 rl/strength/slow_report.py --dir {self.rundir()})', out)
         shutil.rmtree(self.out_root)
         code, out, err = self.cli('--deals', '2', '--max-games', '10', '--school-days', 'mon,tue', school='on')  # (the fixture's clock is a Saturday: no wait)
         self.assertEqual(code, 0, out + err)
-        self.assertEqual(out.splitlines().count(f'{TAG}stopped after --max-games 10; resume with: python3 rl/strength/slow_report.py --dir {self.rundir()} --school-days mon,tue'), 1, out)
+        self.assertEqual(out.splitlines().count(f'{TAG}stopped after --max-games 10{CUT_NOTE}; resume with: python3 rl/strength/slow_report.py --dir {self.rundir()} --school-days mon,tue'), 1, out)
 
     def test_a_run_folder_with_a_space_in_its_path_is_quoted_in_the_line_that_says_how_to_resume(self):
         self.out_root = os.path.join(self.repo, 'rl', 'results', 'slow reports')
@@ -1702,7 +1994,7 @@ class ConsoleMessages(T.World):
         self.assertEqual(code, 0, out + err)
         folder = self.rundir()
         self.assertIn(' ', folder)
-        self.assertEqual(out.splitlines().count(f"{TAG}stopped after --max-games 10; resume with: python3 rl/strength/slow_report.py --dir '{folder}' --school-rule off"), 1, out)
+        self.assertEqual(out.splitlines().count(f"{TAG}stopped after --max-games 10{CUT_NOTE}; resume with: python3 rl/strength/slow_report.py --dir '{folder}' --school-rule off"), 1, out)
         self.assertNotIn(f'--dir {folder}', out)
 
     def test_a_run_that_finishes_never_says_it_stopped_after_max_games(self):
@@ -1782,7 +2074,7 @@ class LogEvents(T.World):
         by = {e['event']: e for e in events}
         self.assertEqual({k: v for k, v in by['sitting_call'].items() if k != 'at'},
                          {'event': 'sitting_call', 'pilot': 'kx3', 'reference': 'km3', 'school_rule': 'off', 'school_days': 'mon,tue,wed,thu,fri', 'threads': 2, 'max_games': None,
-                          'school_choice_overridden': False}, 'what the call was given and nothing else')
+                          'school_choice_overridden': False, 'program_sha256': T.sha(self.program)}, 'what the call was given, and the program it ran with, and nothing else')
         man = json.loads(read(os.path.join(d, 'manifest.json')))
         reg = by['registered']
         self.assertEqual((reg['deals'], reg['paired'], reg['threads'], reg['deck_file'], reg['deck_sha256'], reg['seed_base'], reg['manifest_sha256']),
@@ -1803,7 +2095,8 @@ class LogEvents(T.World):
         calls = (('plain, with a limit', ('--max-games', '4'), None, ('on', 'mon,tue', 3, 4, False)),
                  ('other threads and the rule off', ('--max-games', '4', '--threads', '5'), 'off', ('off', 'mon,tue', 5, 4, True)),
                  ('no school days', ('--max-games', '4', '--school-days', ''), None, ('on', '', 3, 4, True)),
-                 ('the registered rule spelled out', ('--max-games', '4'), 'on', ('on', 'mon,tue', 3, 4, True)),
+                 ('the registered rule spelled out is not an override', ('--max-games', '4'), 'on', ('on', 'mon,tue', 3, 4, False)),
+                 ('the registered days spelled out are not an override either', ('--max-games', '4', '--school-days', 'mon,tue'), None, ('on', 'mon,tue', 3, 4, False)),
                  ('plain, to the end', (), None, ('on', 'mon,tue', 3, None, False)))
         for label, extra, school, want in calls:
             with self.subTest(label):
@@ -1812,7 +2105,24 @@ class LogEvents(T.World):
                 self.assertEqual(self.asked_for(self.sitting_calls(d)[-1]), want)
         self.assertEqual([self.asked_for(c) for c in self.sitting_calls(d)], [c[3] for c in calls])
         self.assertEqual(self.names(d, skip=('env_scrubbed', 'report_written')),
-                         ['registered'] + ['sitting_call', 'slice_start', 'slice_end'] * 5 + ['complete'], 'one per call, each before the sitting it asks for')
+                         ['registered'] + ['sitting_call', 'slice_start', 'slice_end'] * 6 + ['complete'], 'one per call, each before the sitting it asks for')
+
+    def test_running_exactly_the_printed_resume_command_is_not_an_override_and_any_other_school_choice_is(self):
+        """The resume command a registration prints (and --max-games, the dry run and the page say again) carries the registered school choice: running it as it stands is not an
+        override, whatever the choice was. A choice that differs from the registered one is."""
+        for school, extra in (('off', ()), (None, ()), ('on', ('--school-days', 'sat,sun')), ('on', ('--school-days', '')), ('on', ('--school-days', 'mon, tue'))):
+            with self.subTest(school=school, extra=extra):
+                self.make()
+                d = self.register(*extra, school=school)
+                cmd = shlex.split(json.loads(read(os.path.join(d, 'manifest.json')))['slow_report']['resume_command'])
+                self.assertEqual(cmd[:4], ['python3', 'rl/strength/slow_report.py', '--dir', d])
+                code, out, err = self.cli(*cmd[2:], '--max-games', '2', deck=False, school=None)
+                self.assertEqual(code, 0, out + err)
+                self.assertIs(self.sitting_calls(d)[-1]['school_choice_overridden'], False, cmd)
+                other = 'off' if school != 'off' else 'on'
+                code, out, err = self.cli('--dir', d, '--max-games', '2', deck=False, school=other)
+                self.assertEqual(code, 0, out + err)
+                self.assertIs(self.sitting_calls(d)[-1]['school_choice_overridden'], True, other)
 
     def test_the_options_of_a_registration_that_goes_on_to_play_are_its_choice_and_not_an_override(self):
         code, out, err = self.cli('--deals', '1', '--threads', '3', '--max-games', '5', '--school-days', 'mon,tue', school='on')
@@ -1994,6 +2304,11 @@ class ExistingRuns(TE.Sources):
 
 
 class ExistingGainRange(ExistingRuns):
+    @staticmethod
+    def printed_width(m, half):
+        """The width of the gain's range as its two printed ends give it (each end rounded once from the unrounded number, cut at the ends of the scale), worked out here by hand."""
+        return f'{float(points(min(1.0, m + half))) - float(points(max(-1.0, m - half))):.1f}'
+
     def can_tell_paragraph(self):
         """What the 80-game range can tell and cannot tell, word for word, from the numbers worked out here: ((low, high) of the gain, the paragraph found, the paragraph wanted)."""
         text = self.page()
@@ -2008,7 +2323,7 @@ class ExistingGainRange(ExistingRuns):
             note = (f"That range does not include no gain: on these {n} paired games kx3 did {'better' if glo > 0 else 'worse'} than km3. "
                     f'It does not say by exactly how much: that part of the range is as wide as {n} paired games make it. ')
         want = (f"What the {len(xs)}-game range can tell and cannot tell: it can tell whether kx3 plays this deck near, clearly above or clearly below an even score against these 8 lists "
-                f"({pc(lo)} to {pc(hi)} here), and it can tell a large gain over km3 from none at all (the gain's range is {200 * half:.1f} points wide). {note}"
+                f"({pc(lo)} to {pc(hi)} here), and it can tell a large gain over km3 from none at all (the gain's range is {self.printed_width(m, half)} points wide). {note}"
                 f'It cannot tell a gain of a point or two from a gain of ten: {len(xs)} games decide only that much, and a wide range is a statement of how much {len(xs)} games decide, '
                 f'not an answer of "nothing". More deals narrow it (the cost table in the slow-report plan gives the hours).')
         return (glo, ghi), [l for l in text.splitlines() if l.startswith('What the ')], want
@@ -2047,9 +2362,19 @@ class ExistingGainRange(ExistingRuns):
             self.build(**kw)
             n, m, sd, half = self.stats(self.gain_over_km3())
             paragraph = [l for l in self.page().splitlines() if l.startswith('What the ')][0]
-            self.assertIn(f"(the gain's range is {200 * half:.1f} points wide)", paragraph)
+            self.assertIn(f"(the gain's range is {self.printed_width(m, half)} points wide)", paragraph)
             self.assertNotIn(f'{100 * half:.1f} points wide', paragraph)
             self.assertNotIn('plus or minus', paragraph)
+
+    def test_the_width_agrees_with_the_two_ends_printed_on_the_same_page(self):
+        """The width is worked out from the ends as printed (each rounded once), so 'between A and B points' and 'B minus A points wide' never disagree by a rounding step."""
+        for kw in (dict(), dict(win_x=lambda o, d, s: 'opp' if (o + d + s) % 4 else 'deck', win_ref=lambda o, d, s: 'deck' if (o + d + s) % 3 else 'opp'),
+                   dict(win_x=lambda o, d, s: 'deck' if (o + d + s) % 3 else 'opp', win_ref=lambda o, d, s: 'deck' if (o + d + 2 * s) % 3 else 'opp')):
+            self.build(**kw)
+            text = self.page()
+            a, b = re.search(r'^- The gain: .*? probably between ([+-]\d+\.\d) and ([+-]\d+\.\d) points \(95% interval\)', text, re.M).groups()
+            width = float(re.search(r"the gain's range is (\d+\.\d) points wide", text).group(1))
+            self.assertAlmostEqual(width, float(b) - float(a), places=6, msg=(a, b, width))
 
     def test_a_gain_that_is_the_same_in_every_paired_game_gets_no_range_no_width_and_no_note(self):
         same = lambda o, d, s: 'deck' if (o + d) % 2 else 'opp'
@@ -2206,7 +2531,8 @@ class ExistingQuestionTwo(ExistingRuns):
         p, wlo, whi = wilson95([1.0] * 3 + [0.0] * 77)
         closing = ('What this can tell and cannot tell: it can tell what the rule did on these 80 paired games (4 had a changed decision, 3 a changed winner), and it can put a bound on '
                    f'how often it changes a winner: 3 of 80 winners changed, which puts the share of deals whose winner the rule changes between about {100 * wlo:.1f} and {100 * whi:.1f} '
-                   'in 100 (95% Wilson range on 3 of 80). It cannot tell what the rule does on other deals or other decks (gate 3 pooled 80 pairs over 1 deck on its own page), '
+                   'in 100 (95% Wilson range on 3 of 80). It cannot tell what the rule does on other deals or other decks (gate 3 pooled 80 paired games, 80 kx3 games with the rule on '
+                   'against the same deals with it off, over 1 deck on its own page), '
                    'and the 3 changed winners are what the on-minus-off figure above counts, for or against the rule; they are too few to say more.')
         self.assertIn(closing, lines)
         self.assertNotIn('changes no winner', closing, 'winners did change here, so the sentence for "no winner changed" must not be on the page')
@@ -2222,7 +2548,8 @@ class ExistingQuestionTwo(ExistingRuns):
         p, wlo, whi = wilson95([0.0] * 80)
         closing = ('What this can tell and cannot tell: it can tell what the rule did on these 80 paired games (3 had a changed decision, 0 a changed winner), and it can put a bound on '
                    f'how often it changes a winner: no winner changed in 80 pairs, so the share of deals whose winner the rule changes is probably no more than about {100 * whi:.1f} in 100 '
-                   '(95% Wilson bound on 0 of 80). It cannot tell what the rule does on other deals or other decks (gate 3 pooled 80 pairs over 1 deck on its own page), '
+                   '(95% Wilson bound on 0 of 80). It cannot tell what the rule does on other deals or other decks (gate 3 pooled 80 paired games, 80 kx3 games with the rule on '
+                   'against the same deals with it off, over 1 deck on its own page), '
                    'and a rule that acts in 3 of 80 games but changes no winner has not been shown to be harmless or useful: whether it would ever change a result on a deck like this is '
                    'a question for more deals.')
         self.assertEqual([l for l in lines if l.startswith('What this can tell and cannot tell')], [closing])
@@ -2237,17 +2564,18 @@ class ExistingQuestionTwo(ExistingRuns):
         self.build(dev_decks=(TE.DECK, TE.OTHER, third), tool_decks=(TE.DECK, TE.OTHER, third), tool=drop_thirty)
         closing = [l for l in self.page().splitlines() if l.startswith('What this can tell and cannot tell')]
         self.assertEqual(len(closing), 1)
-        self.assertIn('It cannot tell what the rule does on other deals or other decks (gate 3 pooled 210 pairs over 3 decks on its own page), ', closing[0])
-        self.assertNotIn('400 pairs', closing[0])
+        self.assertIn('It cannot tell what the rule does on other deals or other decks (gate 3 pooled 210 paired games, 210 kx3 games with the rule on against the same deals with it off, '
+                      'over 3 decks on its own page), ', closing[0])
+        self.assertNotIn('400 ', closing[0])
         self.assertNotIn('5 decks', closing[0])
         self.assertIn('on these 80 paired games', closing[0], 'the pairs the page itself reports are this deck\'s 80, not the pooled ones')
 
     def test_the_pooled_sentence_is_singular_for_one_deck_and_plural_for_two(self):
         self.build()
-        self.assertIn('(gate 3 pooled 80 pairs over 1 deck on its own page)', self.page())
+        self.assertIn('(gate 3 pooled 80 paired games, 80 kx3 games with the rule on against the same deals with it off, over 1 deck on its own page)', self.page())
         self.build(tool_decks=(TE.DECK, TE.OTHER))
         text = self.page()
-        self.assertIn('(gate 3 pooled 160 pairs over 2 decks on its own page)', text)
+        self.assertIn('(gate 3 pooled 160 paired games, 160 kx3 games with the rule on against the same deals with it off, over 2 decks on its own page)', text)
         self.assertNotIn('1 decks', text)
 
     def test_one_changed_winner_is_still_counted_as_a_winner_changed_not_as_none(self):

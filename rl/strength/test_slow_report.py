@@ -28,14 +28,39 @@ What is pinned:
     run with the rule off needs no time zone database (SchoolChoiceIsRegistered, NoTimeZoneDatabase; the resume side is in test_slow_report_runloop.py);
   * the pin's reserved seed slots (the km3 smoke) are used slots, and registering a deck with an unfinished report of it already registered warns, without refusing
     (ReservedSeedSlots, UnfinishedRuns);
-  * the cloud route: `--program PATH`, a rebuild of the pinned source, accepted only with the pinned harness source, an engine tree equal to the pinned one (when the checkout can
-    say what it is) and both self-checks replayed on it equal to the committed pin's; the pinned binary's own path with other bytes is the overwritten frozen binary, never a
-    rebuild; a replay that exits with an error is not a match even when it printed the pinned text (CloudRoute);
+  * the cloud route: `--program PATH`, a rebuild of the pinned source, accepted only with the committed pin, the pinned harness source, its build record (PROGRAM.build.json, written
+    by rl/strength/build.sh) with the pinned engine tree (as archived) and harness source, and both self-checks replayed on it equal to the committed pin's; the pinned binary's own
+    path with other bytes is the overwritten frozen binary, never a rebuild; a replay that exits with an error is not a match even when it printed the pinned text (CloudRoute,
+    RebuiltFixture);
+  * the committed pin: the pin in use must be byte-equal to HEAD's rl/strength/slow_report_pin.json in the repository the run is made from, or a new registration, a dry run and a
+    register-only call are refused before anything is written; the test-only variable SLOW_REPORT_ALLOW_UNCOMMITTED_PIN lets a hand-made pin through and the plan, the registration
+    and the page say so (World sets it for every fixture; CommittedPin takes it away); a resume does not need it (CommittedPin); when git cannot find the pin the detail says what git
+    said (its first line, at most 200 characters) and, when git calls the folder unsafe (a checkout owned by another user), that this is not the pin being uncommitted, with the folder
+    quoted for the shell in the advice to trust it (CommittedPin, with a stub git on the PATH); git is read with git_env(), without the variables a git hook exports that choose another
+    repository (GIT_REPO_VARS) and with optional locks off, so the pin of the folder given is judged by that folder's HEAD (CommittedPin; the same for a deck file in
+    test_slow_report_process.py);
+  * the words follow the state of the pin: "the committed pin's digests" for a committed pin, "the digests of the pin file in use (NOT the committed pin: test use)" for a pin let
+    through, in the registered engine text, the plan, the console lines of a resume, the dry run of a folder, the page's paragraph on a program that is not the pinned binary, its
+    program-changed lines (by the pin each replay was made under) and its Self-check lines (Pin, CommittedPin, CloudRoute);
+  * the build record: every shape of refusal of read_build_record (a schema that is not the whole number 1, an entry that has to be text and is not), and that the registration carries
+    the record it read; a record with only the entries that are checked is described in words, never as None: "toolchain not recorded" in the engine text, "built with an unrecorded
+    toolchain" in the plan, "rustc not recorded" on the page (rustc_line gives the first non-empty line of the record's rustc or the words it is given) (BuildRecord, CloudRoute);
+  * a program that is another file when a rebuilt run is resumed (a container restart): judged by the pin the run was REGISTERED under (engine tree, harness hash, engine ref, self-check
+    texts: every difference refused, in the resume and in the dry run), then accepted only after the committed pin, the new program's record and both self-checks replayed again, logged as
+    'program_changed' (its old sha256 the program the previous sitting ran with: a second change reads B -> C, A -> B -> A -> C reads A -> C) and shown on the page, the accepted hashes
+    kept for the later calls and for the check before each sitting; only the lines of the log that reverify_program could have written for this run count (is_program_change: the event, the
+    rebuilt route, and a line consistent with the registration), in the accepted hashes, in the old program a later change is logged from and on the page, and only for a run registered
+    on the rebuilt route; a run with every game played writes its page and replays nothing; refused for a pinned run (in the pinned run's words: byte for byte or a new run), with
+    another problem too, without a record, with a replay that differs (ProgramChangedOnResume, and the stop signals in test_slow_report_process.py);
+  * the dry run of a folder (and the resume it stands for) with every game played: "complete" when the files are as registered, or when the only difference is a rebuilt run's program that
+    is there (nothing is replayed); "it would be refused: ..." with the report-only hint when a deck or panel list changed, a program of a pinned run changed or a program is missing; the
+    real resume's refusal gets its own report-only line then, and neither says it with games still to play; program_only_problem is the one test both make, and the dry run's refusal of
+    the replay is worded without a second "REFUSED:" (ProgramChangedOnResume, DryRunOfARegisteredRun in test_slow_report_runloop.py);
   * the time zone database: a missing one is a clear refusal at the registration and at the resume with the rule on and school days, and no problem without (NoTimeZoneDatabase);
   * a pin must list its reserved slots, and a typo in the list is refused (ReservedSeedSlots); an earlier unfinished report of the deck is warned about with its own resume
     command (UnfinishedRuns).
 """
-import contextlib, datetime, fcntl, hashlib, io, json, math, os, re, shlex, shutil, signal, statistics, subprocess, sys, tempfile, textwrap, time, unittest, zoneinfo
+import contextlib, datetime, fcntl, hashlib, inspect, io, json, math, os, re, shlex, shutil, signal, socket, statistics, subprocess, sys, tempfile, textwrap, time, unittest, zoneinfo
 from unittest import mock
 import builtins, importlib.util
 
@@ -49,6 +74,21 @@ PANEL = ['t-altaria', 't-blaziken', 't-hydreigon', 't-lucario', 't-sceptile', 't
 HEADLINE_START = '[kx3 (d513e37b) on '
 BLOCK = (24_601_000_000, 24_699_999_999)
 STEP = 100_000
+ALLOW_PIN_VAR = 'SLOW_REPORT_ALLOW_UNCOMMITTED_PIN'  # the test-only switch that lets a hand-made pin through (World sets it; CommittedPin takes it away)
+DROP = object()  # in a build record made by a test: leave this field out
+# what the refusal of a program of another sha256 tells a person to do, after "<path> has sha256 A, but this run was registered with the program at that path with sha256 B. ":
+# for a run registered on the rebuilt route (it may go on with a rebuild) and for a run registered on the pinned route (byte for byte or a new run)
+RESUME_NEEDS = ('A resume needs the same program, byte for byte, or a rebuild from the same pinned source whose build record (PROGRAM.build.json, written by rl/strength/build.sh) '
+                'has the same engine tree and harness hash and whose two self-checks are replayed again against the committed pin; rebuild with the "rebuild_command" in the '
+                "registration's build record (same toolchain, HOME, CARGO_HOME and build folders) to get the same bytes, or register a new run")
+RESUME_NEEDS_PINNED = ('A resume needs the same program, byte for byte (this run was registered on the pinned route, which has no build record and no rebuild; only a run registered with '
+                       '--program can go on with a rebuild), or a new run')
+# what the self-checks are said to be equal to, by the state of the pin (pin_digests): the committed pin's digests, or, for a hand-made pin let through by the test-only variable,
+# what it really is
+# the variables that make git read another repository, however `git -C repo` is spelled (a git hook or `rebase --exec` exports them): the tests' own list, not the code's
+GIT_REPO_VARS = ('GIT_DIR', 'GIT_WORK_TREE', 'GIT_INDEX_FILE', 'GIT_OBJECT_DIRECTORY', 'GIT_ALTERNATE_OBJECT_DIRECTORIES', 'GIT_COMMON_DIR', 'GIT_NAMESPACE', 'GIT_PREFIX')
+COMMITTED_DIGESTS = "the committed pin's digests"
+FILE_DIGESTS = 'the digests of the pin file in use (NOT the committed pin: test use)'
 
 
 def write(path, text, mode=None):
@@ -89,6 +129,66 @@ def write_bytes(path, data):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, 'wb') as f:
         f.write(data)
+
+
+def change_event_for(man, new_sha, record_sha256='e' * 64, **over):
+    """A 'program_changed' log event as reverify_program writes it for the run `man` (a manifest registered on the rebuilt route): the program it names, its build record (for that file,
+    with the registered engine tree and harness hash, and the sha256 `record_sha256` for the record file) and the self-check texts the run was registered with. `over` replaces entries
+    (a value of DROP removes one). Whether the run is on the rebuilt route is up to `man`: the page and the accepted hashes count the event only for a run that is."""
+    block = man['slow_report']
+    e = {'at': '2026-10-10T10:00:10Z', 'event': 'program_changed', 'pilot': man['pilot'], 'reference': man['reference'], 'old_sha256': man['program_sha256'], 'new_sha256': new_sha,
+         'build_record': {'schema': 1, 'program_sha256': new_sha, 'engine_tree_archived': block['engine_tree'], 'harness_source_sha256': block['harness_source_sha256'],
+                          'record_file': '/x/strength.build.json', 'record_sha256': record_sha256},
+         'selfcheck': dict(man['selfcheck']), 'pin_committed': 'bypassed', 'replayed_on': 'cloud-box-2'}
+    e.update(over)
+    return {k: v for k, v in e.items() if v is not DROP}
+
+
+def exported_git_variables(tmp, other):
+    """The variables that make git read ANOTHER repository (or fail), as a git hook or `rebase --exec` leaves them exported, set to values that send a read to the repository at `other` or to
+    a folder in `tmp` that does not exist: {name: value}, one for each of slow_report.GIT_REPO_VARS."""
+    return {'GIT_DIR': os.path.join(other, '.git'), 'GIT_WORK_TREE': other, 'GIT_INDEX_FILE': os.path.join(other, '.git', 'index'),
+            'GIT_OBJECT_DIRECTORY': os.path.join(tmp, 'no-objects-here'), 'GIT_ALTERNATE_OBJECT_DIRECTORIES': os.path.join(other, '.git', 'objects'),
+            'GIT_COMMON_DIR': os.path.join(other, '.git'), 'GIT_NAMESPACE': 'elsewhere', 'GIT_PREFIX': 'sub/'}
+
+
+def recording_git(tmp):
+    """A `git` found before the real one that appends the arguments and the environment of every call to seen.txt (one block per call, ended by a line '--') and prints abc, exit 0. Returns
+    (the PATH patch for mock.patch.dict(os.environ, ...), a function that gives the calls so far as [(arguments, {variable: value})])."""
+    folder = os.path.join(tmp, 'recording-git')
+    os.makedirs(folder, exist_ok=True)
+    seen = os.path.join(folder, 'seen.txt')
+    write(os.path.join(folder, 'git'), f'#!/bin/sh\n{{ echo "ARGS $*"; env; echo --; }} >> "{seen}"\nprintf abc\nexit 0\n', mode=0o755)
+
+    def calls():
+        out = []
+        for block in (read(seen) if os.path.exists(seen) else '').split('\n--\n'):
+            lines = block.splitlines()
+            if lines:
+                out.append((lines[0][len('ARGS '):], dict(l.split('=', 1) for l in lines[1:] if '=' in l)))
+        return out
+    return {'PATH': folder + os.pathsep + os.environ.get('PATH', '')}, calls
+
+
+def forged_overrides(man, new):
+    """(label, entries to replace in change_event_for(man, new)) for the lines of a log that the run could not have written: wrong, missing or foreign build record, other self-check
+    texts, no program hash. The log is not covered by manifest.sha256, so none of these may count as a change of the program, or be shown as one."""
+    record = change_event_for(man, new)['build_record']
+    sc = dict(man['selfcheck'])
+    return (('another engine tree', dict(build_record=dict(record, engine_tree_archived='1' * 40))),
+            ('no engine tree', dict(build_record={k: v for k, v in record.items() if k != 'engine_tree_archived'})),
+            ('another harness source', dict(build_record=dict(record, harness_source_sha256='2' * 64))),
+            ('no harness source', dict(build_record={k: v for k, v in record.items() if k != 'harness_source_sha256'})),
+            ('a record for another file', dict(build_record=dict(record, program_sha256='3' * 64))),
+            ('a record that does not say which file it is for', dict(build_record={k: v for k, v in record.items() if k != 'program_sha256'})),
+            ('no record', dict(build_record=DROP)), ('a record that is null', dict(build_record=None)), ('a record that is a list', dict(build_record=[record])),
+            ('a record that is text', dict(build_record='the record')),
+            ('another km3 self-check text', dict(selfcheck=dict(sc, km3='selfcheck pilot=km3 games=12 digest=0000'))),
+            ('another kx3 self-check text', dict(selfcheck=dict(sc, kx3='selfcheck pilot=kx3 games=12 digest=0000'))),
+            ('only one self-check', dict(selfcheck={'kx3': sc['kx3']})), ('a self-check more', dict(selfcheck=dict(sc, ext='selfcheck pilot=ext'))),
+            ('no self-checks', dict(selfcheck=DROP)), ('empty self-checks', dict(selfcheck={})),
+            ('no program hash', dict(new_sha256=DROP)), ('a program hash that is null', dict(new_sha256=None)),
+            ('a program hash that is a number', dict(new_sha256=7, build_record=dict(record, program_sha256=7))))
 
 
 # The synthetic registry of every World: the 8 panel lists and 3 held-out decks are made-up 20-card lists, each with Pokémon ids no other list has and the common Trainer
@@ -296,6 +396,11 @@ class World(Timed):
         old = dict(sr._LOG_EXTRA)  # a process-wide dict the log events draw their pilot names from: every test starts from an empty one
         sr._LOG_EXTRA.clear()
         self.addCleanup(lambda: (sr._LOG_EXTRA.clear(), sr._LOG_EXTRA.update(old)))
+        # a hand-made pin in a temporary folder (and a temporary repository with no commit of it) is not the committed pin: the test-only variable lets it through, and the
+        # tests of the committed-pin check itself (CommittedPin) take it away again. The subprocesses these tests start inherit it.
+        env = mock.patch.dict(os.environ, {ALLOW_PIN_VAR: '1'})
+        env.start()
+        self.addCleanup(env.stop)
         self.make()
 
     def set_program(self, text):
@@ -411,6 +516,30 @@ class Pin(World):
         code, out, err = self.cli()
         self.assertNotEqual(code, 0)
         self.assertFalse(os.path.exists(self.out_root))
+
+    def test_what_the_self_checks_are_equal_to_is_the_committed_pins_digests_unless_the_pin_was_let_through_for_a_test(self):
+        """pin_digests(state): the words every place that names the pin's digests uses. A pin that is not the committed one (let through by the test-only variable) is described as what
+        it is, so a report made on one never claims the committed pin."""
+        self.assertEqual(sr.pin_digests('yes'), COMMITTED_DIGESTS)
+        self.assertEqual(sr.pin_digests(None), COMMITTED_DIGESTS, 'a run from before the state was recorded makes no claim against the committed pin')
+        for state in ('bypassed', 'no', '', 'something else'):
+            self.assertEqual(sr.pin_digests(state), FILE_DIGESTS, state)
+        self.assertEqual(FILE_DIGESTS, 'the digests of the pin file in use (NOT the committed pin: test use)')
+
+    def test_how_a_self_check_text_was_obtained_follows_the_state_of_the_pin_too(self):
+        committed = {'given in the config (copied from the pin, which says it was measured on this exact program sha256)': 'copied from the pin, not replayed: the pin says it was measured on this exact binary',
+                     'given anyhow': 'copied from the pin, not replayed: the pin says it was measured on this exact binary',
+                     'replayed by slow_report.py on the registering machine just before registration (equal to the committed pin)':
+                         'replayed on the registering machine just before registration, equal to the committed pin',
+                     'run by strength_prereg.py': 'replayed at registration', 'something else': 'recorded at registration', '': 'recorded at registration', None: 'recorded at registration'}
+        for state in ('yes', None):
+            for source, how in committed.items():
+                self.assertEqual(sr.selfcheck_how(source, state), how, (source, state))
+                self.assertEqual(sr.selfcheck_how(source), how, 'the state is optional')
+        for state in ('bypassed', 'no'):
+            for source, how in committed.items():
+                want = 'replayed on the registering machine just before registration, equal to the pin file in use (NOT the committed pin: test use)' if (source or '').startswith('replayed by') else how
+                self.assertEqual(sr.selfcheck_how(source, state), want, (source, state))
 
 
 # ---------------------------------------------------------------------------------------------------------- seeds
@@ -800,8 +929,8 @@ class RegisterAndRun(World):
         self.assertIn('hours', out)
         self.assertIn('my-list', out)
         self.assertIn('5 deals', out)
-        self.assertIn('on school days the run pauses from 5:15 am to 5 pm Chicago time (the school-morning rule), so the calendar time is longer', out,
-                      'the plan says that the calendar time is longer on school days')
+        self.assertIn('on school days (mon,tue,wed,thu,fri) the run pauses from 5:15 am to 5 pm Chicago time (the school-morning rule), so the calendar time is longer', out,
+                      'the plan names the school days and says that the calendar time is longer on them')
         self.assertNotIn('OFF for this run', out)
 
     def test_dry_run_with_the_rule_off_says_so_and_that_the_choice_is_recorded(self):
@@ -878,8 +1007,7 @@ class RegisterAndRun(World):
         code, out, err = self.cli('--dir', d, deck=False)
         self.assertEqual(code, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n'
                                f'  {self.program} has sha256 {sha(self.program)[:12]}, but this run was registered with the program at that path with sha256 {registered[:12]}. '
-                               'A resume needs the same program, byte for byte: the same image and toolchain normally rebuild byte-identically (rl/strength/build.sh to the same path), '
-                               'a different build does not, and then this run cannot continue (register a new one)')
+                               + RESUME_NEEDS_PINNED)
         self.assertFalse(os.path.exists(os.path.join(d, 'fake_calls.jsonl')))
 
     def test_resume_refuses_a_program_that_is_gone_and_says_so(self):
@@ -887,7 +1015,7 @@ class RegisterAndRun(World):
         registered = sha(self.program)
         os.remove(self.program)
         code, out, err = self.cli('--dir', d, deck=False)
-        self.assertIn(f'  {self.program} is missing, but this run was registered with the program at that path with sha256 {registered[:12]}. A resume needs the same program, byte for byte:', str(code))
+        self.assertTrue(str(code).endswith(f'\n  {self.program} is missing, but this run was registered with the program at that path with sha256 {registered[:12]}. ' + RESUME_NEEDS_PINNED), code)
         self.assertFalse(os.path.exists(os.path.join(d, 'fake_calls.jsonl')))
 
     def test_the_program_is_checked_again_before_every_sitting(self):
@@ -1050,15 +1178,16 @@ class RegisterAndRun(World):
                 code, out, err = self.cli('--deals', '3', *([flag] if flag else []), '--dry-run')
                 self.assertEqual(code, 0, out + err)
                 lines = [l.split('] ', 1)[1] for l in out.splitlines()]  # without the headline that starts every line
-                self.assertEqual(len(lines), 6, lines)
+                self.assertEqual(len(lines), 7, lines)
                 self.assertEqual(lines[0], 'question: how does my-list do when kx3 plays it against the 8 public lists' + question_end, 'the question comes before the plan and the size')
                 self.assertTrue(lines[1].startswith('plan: my-list ('), lines[1])
                 self.assertEqual(lines[2], 'size: 48 kx3 games + 48 cheap km3 baseline games on the same deals (96 games in all; the km3 games take about a second each' + left_out + '); '
                                  'the time is for the 48 kx3 games: about 72 minutes to 2.4 hours if the deck plays like most of his, '
                                  'about 4.8 hours if it plays like the Wailord wall (measured with 2 games at a time)')
                 self.assertTrue(lines[3].startswith('school-morning rule: OFF for this run'), lines[3])
-                self.assertTrue(lines[4].endswith(f'), {stage_clause}, no pass or fail line'), lines[4])
-                self.assertEqual(lines[5], 'dry run: nothing written')
+                self.assertTrue(lines[4].startswith('pin committed: bypassed (rl/strength/slow_report_pin.json sha256 '), lines[4])
+                self.assertTrue(lines[5].endswith(f'), {stage_clause}, no pass or fail line'), lines[5])
+                self.assertEqual(lines[6], 'dry run: nothing written')
 
     def test_the_registered_question_says_whether_the_comparison_with_km3_is_part_of_the_page(self):
         paired_clause = 'with 95% ranges; and how much better kx3 plays this deck than km3 on the same deals. Realistic knowledge: '
@@ -1211,10 +1340,12 @@ class SelfcheckOption(World):
         d = self.rundir()
         man = json.loads(read(os.path.join(d, 'manifest.json')))
         self.assertEqual(man['selfcheck'], pin['selfcheck'])
-        for spec in ('km3', 'kx3'):
-            self.assertEqual(man['selfcheck_source'][spec], 'replayed by slow_report.py on this machine just before registration (equal to the committed pin)')
+        for spec in ('km3', 'kx3'):  # (the fixture's hand-made pin is let through by the test-only variable, and the words say what it is)
+            self.assertEqual(man['selfcheck_source'][spec], 'replayed by slow_report.py on the registering machine just before registration '
+                                                            '(equal to the pin file in use, which is NOT the committed pin: test use)')
         prereg = read(os.path.join(d, 'PREREGISTRATION.md'))
-        self.assertEqual(prereg.count('(replayed by slow_report.py on this machine just before registration and equal to the committed pin)'), 2)
+        self.assertEqual(prereg.count('(replayed by slow_report.py on the registering machine just before registration and equal to the pin file in use, which is NOT the committed pin: test use)'), 2)
+        self.assertNotIn('equal to the committed pin', prereg)
         self.assertNotIn('not replayed', prereg)
         self.assertEqual(json.loads(read(os.path.join(d, 'config.json')))['selfcheck_given_program_sha256'], sha(self.program),
                          'a replayed text was measured just now, on this program')
@@ -1429,7 +1560,7 @@ class NoTimeZoneDatabase(World):
         self.assertEqual(code, 0, err + out)
         self.assertEqual(asked, [], 'the replay is bound by the morning cut only when the rule is on')
         self.assertEqual(json.loads(read(os.path.join(self.rundir(), 'manifest.json')))['selfcheck_source']['kx3'],
-                         'replayed by slow_report.py on this machine just before registration (equal to the committed pin)')
+                         'replayed by slow_report.py on the registering machine just before registration (equal to the pin file in use, which is NOT the committed pin: test use)')
 
     def test_a_whole_registration_and_run_with_the_rule_off_never_asks_for_the_zone(self):
         asked = self.without_tzdata()
@@ -1899,14 +2030,27 @@ class UnfinishedRuns(World):
             self.assertEqual(sr.unfinished_runs(t, 'other'), [(os.path.join(t, 'e-another-deck'), 0, 8, resume + os.path.join(t, 'e-another-deck'))])
 
 
-class CloudRoute(World):
-    """--program PATH: a REBUILD of the pinned source (for example made on the cloud with rl/strength/build.sh) instead of the pinned binary. It is accepted only when this
-    checkout's harness source is the pinned build's and BOTH self-checks, replayed on it, equal the committed pin's digests; otherwise nothing is written. The pin of this class
-    holds the texts the fake programs print, and a harness source (src/*.rs and Cargo.toml) is laid out in the temporary repository, hashed in the pin."""
+class RebuiltFixture(World):
+    """The fixture of the cloud route (no tests of its own): the pin of this class holds the texts the fake programs print, a harness source (src/*.rs and Cargo.toml) is laid
+    out in the temporary repository and hashed in the pin, and the rebuilt copy self.cloud has the build record rl/strength/build.sh writes beside a program (PROGRAM.build.json:
+    the pin's engine tree and harness source, this file's sha256), so it is a good rebuild of the pinned source. self.replayed lists the self-checks that were replayed."""
     TEXT = 'selfcheck pilot=%s games=12 digest=fakefakefakefake'
     PRINT = "print('selfcheck pilot=%s games=12 digest=fakefakefakefake' % arg('--pilot'))"
-    REBUILD_LINE = ('The program is a REBUILD of the pinned source, not the pinned binary (`{pinned}`, sha256 `{sha12}`): it was accepted only because both self-checks were replayed '
-                    "on this machine and equal the committed pin's digests, and the harness source in the checkout is the pinned build's.")
+    # the paragraph of the page for a rebuild; {digests} is what the self-checks were equal to (pin_digests of the registered state of the pin)
+    REBUILD_LINE = ('The program is NOT the pinned binary (`{pinned}`, sha256 `{sha12}`): its build record says it is a rebuild of the pinned source, and it was accepted only because that record '
+                    'has the pinned engine tree and harness source and both self-checks were replayed on the registering machine ({host}) and equal {digests}, and the harness source in the '
+                    "checkout is the pinned build's. The record is written by the builder's own script and is not signed: what stands behind the program is those replayed self-checks "
+                    '(12 fixed games per pilot), not the record.')
+    RUSTC = 'rustc 1.90.0 (fake 2026-01-01)'
+
+    def rebuilt_engine_text(self, program, rec, digests=FILE_DIGESTS):
+        """The engine text the registration of a rebuild carries: the pin's, then what this program is, why it is not the pinned binary and what it was accepted on. The fixture's hand-made pin
+        is let through by the test-only variable, so `digests` is by default what pin_digests says of that; a test with a committed pin passes COMMITTED_DIGESTS."""
+        lines = [l for l in rec['rustc'].splitlines() if l.strip()] if isinstance(rec.get('rustc'), str) else []
+        rustc = lines[0] if lines else 'toolchain not recorded'  # (the first line of `rustc -vV` that says anything, or the engine text's own words for a record that has none)
+        return (self.pin['engine'] + f"; THIS PROGRAM ({program}, sha256 {sha(program)[:12]}) is NOT the pinned binary: its build record (written by rl/strength/build.sh, not signed) "
+                f"says it is a rebuild of that source (build record sha256 {rec['record_sha256'][:12]}: engine tree as archived {rec['engine_tree_archived'][:12]}, harness source "
+                f"{rec['harness_source_sha256'][:12]}, {rustc}), accepted because both self-checks were replayed on the registering machine and equal {digests}")
 
     def setUp(self):
         super().setUp()
@@ -1949,14 +2093,39 @@ class CloudRoute(World):
             data += f.read()
         return hashlib.sha256(data).hexdigest()
 
-    def rebuild_at(self, path, differs_for=None):
+    def build_record(self, path, **over):
+        """The record build.sh writes beside the program at `path`, for a good rebuild of the pinned source: schema 1, this file's sha256, the pin's engine ref, engine tree (as
+        archived) and harness source hash, and the toolchain and build paths of a made-up cloud machine. `over` replaces fields; a value of DROP removes the field (None stays: JSON null,
+        as build.sh writes for the engine ref of a folder and the CARGO_HOME it was not given)."""
+        ref, tree = self.pin['engine_ref'], self.pin['engine_tree']
+        rec = dict(schema=1, program=path, program_sha256=sha(path), engine_arg=ref, engine=f'{ref} engine tree {tree}', engine_ref=ref, engine_tree_archived=tree,
+                   harness_source_sha256=self.pin['harness_source_sha256'], rustc=f'{self.RUSTC}\nbinary: rustc\nhost: x86_64-unknown-linux-gnu', cargo='cargo 1.90.0 (fake 2026-01-01)',
+                   machine='Linux 6.1.0 x86_64', libc='ldd (Debian GLIBC 2.36-9) 2.36', host='cloud-box-1', home='/home/cloud', cargo_home=None, build_dir='/home/cloud/strength_build',
+                   target_dir='/home/cloud/strength_build/target', jobs='8', built_at='2026-10-09T22:00:00Z',
+                   rebuild_command=f'env HOME=/home/cloud CARGO_HOME=/home/cloud/.cargo STRENGTH_BUILD_DIR=/home/cloud/strength_build STRENGTH_TARGET_DIR=/home/cloud/strength_build/target '
+                                   f'STRENGTH_JOBS=8 STRENGTH_REPO=/home/cloud/repo bash /home/cloud/repo/rl/strength/build.sh {ref} {path}')
+        rec.update(over)
+        return {k: v for k, v in rec.items() if v is not DROP}
+
+    def write_record(self, path, **over):
+        """Write build_record(path, **over) beside the program, the way build.sh does (indented JSON, a final newline). Returns the record."""
+        rec = self.build_record(path, **over)
+        write(path + '.build.json', json.dumps(rec, indent=1) + '\n')
+        return rec
+
+    def put_program(self, path, text, **over):
+        """Write a program with its good build record (`over` as in build_record)."""
+        write(path, text, mode=0o755)
+        return self.write_record(path, **over)
+
+    def rebuild_at(self, path, differs_for=None, **over):
         """A program at `path` that is not the pinned binary (other bytes), plays like it, and prints the pin's self-check texts, except, with differs_for='km3' or 'kx3', for
-        that pilot."""
+        that pilot; its build record beside it (`over` as in build_record)."""
         text = FAKE_PROGRAM + '\n# built on the cloud\n'
         if differs_for:
             self.assertEqual(text.count(self.PRINT), 1)
             text = text.replace(self.PRINT, "print('selfcheck pilot=%s games=12 digest=%s' % (arg('--pilot'), 'changedchanged00' if arg('--pilot') == " + repr(differs_for) + " else 'fakefakefakefake'))")
-        write(path, text, mode=0o755)
+        return self.put_program(path, text, **over)
 
     def spawned(self):
         """A spawn that notes the program each sitting is started with."""
@@ -1971,10 +2140,39 @@ class CloudRoute(World):
     def manifest(self, d):
         return json.loads(read(os.path.join(d, 'manifest.json')))
 
+    def git(self, *a, repo=None):
+        r = subprocess.run(['git', '-C', repo or self.repo, '-c', 'user.name=t', '-c', 'user.email=t@t', '-c', 'commit.gpgsign=false', *a], capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        return r.stdout.strip()
+
+    def bytes_of(self, path):
+        with open(path, 'rb') as f:
+            return f.read()
+
+    def commit_pin(self, data=None, repo=None):
+        """Commit a pin as rl/strength/slow_report_pin.json in `repo` (the temporary repository; made a git repository first unless it is inside one): the bytes of the fixture's pin
+        file as it is now, or `data`. Returns the committed file."""
+        repo = repo or self.repo
+        path = os.path.join(repo, 'rl', 'strength', 'slow_report_pin.json')
+        write_bytes(path, self.bytes_of(self.pin_path) if data is None else data)
+        if subprocess.run(['git', '-C', repo, 'rev-parse', '--git-dir'], capture_output=True).returncode != 0:
+            self.git('init', '-q', repo=repo)
+        self.git('add', 'rl/strength/slow_report_pin.json', repo=repo)
+        self.git('commit', '-q', '-m', 'the pin', repo=repo)
+        return path
+
+
+class CloudRoute(RebuiltFixture):
+    """--program PATH: a REBUILD of the pinned source (for example made on the cloud with rl/strength/build.sh) instead of the pinned binary. It is accepted only when the pin in use
+    is the committed one, this checkout's harness source is the pinned build's, the program has its build record (PROGRAM.build.json) with the pinned engine tree and harness source
+    and BOTH self-checks, replayed on it, equal the committed pin's digests; otherwise nothing is written. (The build record's refusals are in BuildRecord, a resume with a changed
+    program in ProgramChangedOnResume, the committed pin in CommittedPin.)"""
+
     def test_the_pinned_binary_under_another_path_takes_the_pinned_route_and_replays_nothing(self):
         copy = os.path.join(self.tmp, 'copy', 'strength')
         write(copy, FAKE_PROGRAM, mode=0o755)
         self.assertEqual(sha(copy), sha(self.program))
+        self.assertFalse(os.path.exists(copy + '.build.json'), 'a copy of the pinned bytes needs no build record')
         spawn = self.spawned()
         code, out, err = self.cli('--deals', '1', '--program', copy, spawn=spawn)
         self.assertEqual(code, 0, err + out)
@@ -1986,15 +2184,20 @@ class CloudRoute(World):
         b = man['slow_report']
         self.assertEqual((man['program'], man['program_sha256']), (copy, sha(self.program)))
         self.assertEqual((b['program_route'], b['pinned_program'], b['pinned_program_sha256']), ('pinned', self.program, sha(self.program)))
+        self.assertIsNone(b['build_record'], 'the pinned bytes have no build record to carry')
+        self.assertNotIn('engine_tree_in_checkout', b, 'the checkout-based engine tree check is gone')
+        self.assertNotIn('- build_record: `{', read(os.path.join(d, 'PREREGISTRATION.md')))
         self.assertEqual(man['engine'], self.pin['engine'], 'the pinned program is described as the pin describes it, with nothing added')
         prereg_run = read(os.path.join(d, 'PREREGISTRATION.md')).split('## Run')[1]
         self.assertIn('and checks the registration, the deck files and the pinned program before every sitting:', prereg_run)
         self.assertNotIn('REBUILD', prereg_run)
+        self.assertNotIn('rebuild of the pinned source', prereg_run, 'the pinned binary is not called a rebuild, in either wording')
         self.assertEqual(man['selfcheck'], self.pin['selfcheck'])
         self.assertEqual(set(man['selfcheck_source'].values()), {'given in the config (copied from the pin, which says it was measured on this exact program sha256)'})
         self.assertEqual(set(spawn.seen), {copy}, 'the games are played by the program that was given')
         page = read(os.path.join(d, 'SLOW_REPORT.md'))
         self.assertNotIn('REBUILD', page)
+        self.assertNotIn('NOT the pinned binary', page)
         self.assertIn('(copied from the pin, not replayed: the pin says it was measured on this exact binary)', page)
         self.assertIn(f'Program `{copy}` sha256 `{sha(copy)[:12]}`.', page)
 
@@ -2013,11 +2216,15 @@ class CloudRoute(World):
         self.assertEqual((b['program_route'], b['pinned_program'], b['pinned_program_sha256']), ('rebuilt', self.program, sha(self.program)))
         self.assertEqual((b['harness_source_sha256'], b['harness_source_checkout_sha256']), (self.pin['harness_source_sha256'],) * 2)
         self.assertEqual((b['engine_ref'], b['engine_tree']), (self.pin['engine_ref'], self.pin['engine_tree']))
-        self.assertIsNone(b['engine_tree_in_checkout'], 'the temporary checkout is no git repository: the engine tree could not be compared, and that is said as nothing')
-        self.assertEqual(man['engine'], self.pin['engine'] + f"; THIS PROGRAM ({self.cloud}, sha256 {sha(self.cloud)[:12]}) IS A REBUILD of that source made on another machine, "
-                                                             "not the laptop binary, accepted because both self-checks were replayed on that machine and equal the committed pin's digests")
+        self.assertNotIn('engine_tree_in_checkout', b, 'the temporary checkout is no git repository, and the checkout-based engine tree check is gone: the build record says what was built')
+        rec = dict(self.build_record(self.cloud), record_file=self.cloud + '.build.json', record_sha256=sha(self.cloud + '.build.json'))
+        self.assertEqual(b['build_record'], rec, 'the registration carries the build record as it was read, with the record file and its sha256')
+        self.assertEqual(man['engine'], self.rebuilt_engine_text(self.cloud, rec))
+        self.assertIn('is NOT the pinned binary: its build record (written by rl/strength/build.sh, not signed) says it is a rebuild of that source', man['engine'])
+        self.assertNotIn('IS A REBUILD', man['engine'], 'the claim that the program IS a rebuild is gone: the record says so, and it is not signed')
         self.assertEqual(man['selfcheck'], {s: self.TEXT % s for s in ('km3', 'kx3')})
-        self.assertEqual(man['selfcheck_source'], {s: 'replayed by slow_report.py on this machine just before registration (equal to the committed pin)' for s in ('km3', 'kx3')})
+        self.assertEqual(man['selfcheck_source'], {s: 'replayed by slow_report.py on the registering machine just before registration (equal to the pin file in use, which is NOT the committed pin: test use)'
+                                                   for s in ('km3', 'kx3')})
         cfg = json.loads(read(os.path.join(d, 'config.json')))
         self.assertEqual((cfg['program'], cfg['program_sha256'], cfg['selfcheck_given_program_sha256'], cfg['selfcheck_how']), (self.cloud, sha(self.cloud), sha(self.cloud), 'replayed'))
         self.assertEqual(set(spawn.seen), {self.cloud}, 'the games are played by the rebuilt copy')
@@ -2027,16 +2234,25 @@ class CloudRoute(World):
         prereg = read(os.path.join(d, 'PREREGISTRATION.md'))
         for line in (f'- program_route: `rebuilt`', f'- pinned_program: `{self.program}`', f'- pinned_program_sha256: `{sha(self.program)}`',
                      f"- harness_source_sha256: `{self.pin['harness_source_sha256']}`", f"- harness_source_checkout_sha256: `{self.pin['harness_source_sha256']}`",
-                     f"- engine_ref: `{self.pin['engine_ref']}`", f"- engine_tree: `{self.pin['engine_tree']}`", '- school_rule: `off`', '- school_days: `mon,tue,wed,thu,fri`'):
+                     f"- engine_ref: `{self.pin['engine_ref']}`", f"- engine_tree: `{self.pin['engine_tree']}`", '- school_rule: `off`', '- school_days: `mon,tue,wed,thu,fri`',
+                     f'- build_record: `{json.dumps(rec, sort_keys=True, ensure_ascii=False)}`', f'- registered_on: `{socket.gethostname()}`'):
             self.assertIn('\n' + line + '\n', prereg)
+        self.assertNotIn('engine_tree_in_checkout', prereg)
         self.assertIn(f'Program: `{self.cloud}` sha256 `{sha(self.cloud)}`', prereg)
-        self.assertIn('and checks the registration, the deck files and the program it was registered with, a REBUILD of the pinned source (accepted after both self-checks were replayed '
-                      'on that machine; a resume needs the same sha256) before every sitting:', prereg.split('## Run')[1])
+        self.assertIn('and checks the registration, the deck files and the program it was registered with, a rebuild of the pinned source by its build record (accepted after both '
+                      'self-checks were replayed on the registering machine; a resume needs the same sha256, or a rebuild whose build record has the same engine tree and harness hash and '
+                      'whose two self-checks are replayed again) before every sitting:', prereg.split('## Run')[1])
+        self.assertNotIn('REBUILD', prereg, 'the registration does not claim the program IS a rebuild either: its build record says so')
         page = read(os.path.join(d, 'SLOW_REPORT.md'))
-        self.assertIn('\n- ' + self.REBUILD_LINE.format(pinned=self.program, sha12=sha(self.program)[:12]) + '\n', page)
+        self.assertIn('\n- ' + self.REBUILD_LINE.format(pinned=self.program, sha12=sha(self.program)[:12], host=socket.gethostname(), digests=FILE_DIGESTS) + '\n', page)
+        self.assertNotIn('REBUILD', page, 'the page does not say the program IS a rebuild: it says what the record says and what was replayed')
+        self.assertIn(f"\n- Build record `strength.build.json` sha256 `{rec['record_sha256'][:12]}`: engine {rec['engine_arg']} -> tree as archived `{self.pin['engine_tree'][:12]}` "
+                      f"(the pin's is `{self.pin['engine_tree'][:12]}`), harness source `{self.pin['harness_source_sha256'][:12]}`, {self.RUSTC}, {rec['cargo']}, built 2026-10-09T22:00:00Z on "
+                      f"cloud-box-1 (Linux 6.1.0 x86_64); to rebuild the same bytes after a restart: `{rec['rebuild_command']}`.\n", page)
         self.assertIn(f'Program `{self.cloud}` sha256 `{sha(self.cloud)[:12]}`.', page)
-        self.assertIn('\n- Build: ' + man['engine'] + '\n', page, 'the page says the build is a rebuild made on another machine, in the registered words')
-        self.assertEqual(page.count('(replayed on this machine just before registration, equal to the committed pin)'), 2)
+        self.assertIn('\n- Build: ' + man['engine'] + '\n', page, 'the page says the build is a rebuild, in the registered words')
+        self.assertEqual(page.count('(replayed on the registering machine just before registration, equal to the pin file in use (NOT the committed pin: test use))'), 2)
+        self.assertNotIn('equal to the committed pin', page)
         self.assertIn(f"- Harness source sha256 `{self.pin['harness_source_sha256'][:12]}` (what rl/strength/build.sh prints); the checkout this run was registered from has the same.", page)
 
     def test_the_whole_cloud_route_with_the_rule_off_needs_no_time_zone_database(self):
@@ -2070,7 +2286,7 @@ class CloudRoute(World):
                 self.assertFalse(os.path.exists(self.out_root), 'nothing was written')
 
     def test_a_rebuild_whose_self_check_crashes_is_refused_with_its_exit_code_and_nothing_is_written(self):
-        write(self.cloud, "#!/usr/bin/env python3\nimport sys\nsys.stderr.write('boom: no engine\\n')\nsys.exit(1)\n", mode=0o755)
+        self.put_program(self.cloud, "#!/usr/bin/env python3\nimport sys\nsys.stderr.write('boom: no engine\\n')\nsys.exit(1)\n")
         code, out, err = self.cli('--deals', '1', '--program', self.cloud)
         self.assertEqual(code, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the self-check of km3 on {self.cloud} exited with code 1 (boom: no engine); '
                                'a self-check that fails is not a match, whatever it printed. Nothing was written.')
@@ -2080,12 +2296,12 @@ class CloudRoute(World):
     def test_a_rebuild_whose_self_check_prints_the_pinned_text_but_exits_with_an_error_is_refused_too(self):
         text = FAKE_PROGRAM + '\n# built on the cloud\n'
         self.assertEqual(text.count("    sys.exit(0)\nman = json"), 1)
-        write(self.cloud, text.replace("    sys.exit(0)\nman = json", "    sys.exit(3)\nman = json"), mode=0o755)
+        self.put_program(self.cloud, text.replace("    sys.exit(0)\nman = json", "    sys.exit(3)\nman = json"))
         code, out, err = self.cli('--deals', '1', '--program', self.cloud)
         self.assertEqual(code, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the self-check of km3 on {self.cloud} exited with code 3 ({self.TEXT % "km3"}); '
                                'a self-check that fails is not a match, whatever it printed. Nothing was written.')
         self.assertFalse(os.path.exists(self.out_root))
-        write(self.cloud, "#!/usr/bin/env python3\nimport sys\nsys.exit(0)\n", mode=0o755)  # and one that exits cleanly and prints nothing does not match either
+        self.put_program(self.cloud, "#!/usr/bin/env python3\nimport sys\nsys.exit(0)\n")  # and one that exits cleanly and prints nothing does not match either
         code, out, err = self.cli('--deals', '1', '--program', self.cloud)
         self.assertIn(f"REFUSED: the self-check of km3 does not match the pin.\n  pinned: {self.TEXT % 'km3'}\n  got:    \nThe program is not behaving as the pinned build did; nothing was written.", str(code))
         self.assertFalse(os.path.exists(self.out_root))
@@ -2171,8 +2387,11 @@ class CloudRoute(World):
         code, out, err = self.cli('--deals', '1', '--program', self.cloud, '--dry-run')
         self.assertEqual(code, 0, err + out)
         lines = [l.split('] ', 1)[1] for l in out.splitlines()]
-        self.assertIn(f'program {self.cloud} (sha256 {sha(self.cloud)[:12]}) is a REBUILD, not the pinned binary (sha256 {sha(self.program)[:12]}): both self-checks will be replayed on this machine '
-                      "against the committed pin's digests before anything is registered (hours for kx3), and the checkout's harness source equals the pinned build's", lines)
+        self.assertEqual(lines[-3], f'program {self.cloud} (sha256 {sha(self.cloud)[:12]}) is NOT the pinned binary (sha256 {sha(self.program)[:12]}): its build record '
+                                    f"(strength.build.json, sha256 {sha(self.cloud + '.build.json')[:12]}) says it is a rebuild of the pinned source (engine tree as archived {self.pin['engine_tree'][:12]}, "
+                                    f"harness source {self.pin['harness_source_sha256'][:12]}, built with {self.RUSTC}); both self-checks will be replayed on this machine against {FILE_DIGESTS} "
+                                    "before anything is registered (hours for kx3), and the checkout's harness source equals the pinned build's")
+        self.assertTrue(lines[-4].startswith('pin committed: bypassed ('), 'the pin line comes first, then what the program is')
         self.assertTrue(lines[-2].startswith('stage use'), lines[-2])
         self.assertIn(f'program {self.cloud} (rebuilt, sha256 {sha(self.cloud)[:12]})', lines[-2])
         self.assertEqual(lines[-1], 'dry run: nothing written')
@@ -2184,6 +2403,8 @@ class CloudRoute(World):
         code, out, err = self.cli('--deals', '1', '--dry-run')
         self.assertEqual(code, 0, err + out)
         self.assertNotIn('REBUILD', out)
+        self.assertNotIn('NOT the pinned binary', out)
+        self.assertNotIn('rebuild of the pinned source', out)
         self.assertIn(f'program {self.program} (pinned, sha256 {sha(self.program)[:12]})', out)
 
     def test_a_dry_run_on_the_rebuilt_route_refuses_a_foreign_harness_source_too(self):
@@ -2201,7 +2422,7 @@ class CloudRoute(World):
         self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)], 'a resume does not replay the self-checks')
         self.assertEqual(set(spawn.seen), {self.cloud})
         self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), 32)
-        self.assertIn('REBUILD', read(os.path.join(d, 'SLOW_REPORT.md')))
+        self.assertIn('The program is NOT the pinned binary (', read(os.path.join(d, 'SLOW_REPORT.md')))
 
     def test_a_rebuilt_run_is_played_in_slices_with_the_command_each_slice_prints(self):
         d = self.register('--program', self.cloud)
@@ -2211,7 +2432,8 @@ class CloudRoute(World):
         for played in (10, 20, 30):
             code, out, err = self.cli('--dir', d, '--max-games', '10', deck=False, school=None, spawn=spawn)
             self.assertEqual(code, 0, err + out)
-            self.assertIn(f'{HEADLINE_START}my-list v km3 on the public panel] stopped after --max-games 10; resume with: {command}', out.splitlines())
+            self.assertIn(f'{HEADLINE_START}my-list v km3 on the public panel] stopped after --max-games 10 (games across both arms, about half of them kx3 games); resume with: {command}',
+                          out.splitlines())
             self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), played)
             self.assertIn('PARTIAL', read(os.path.join(d, 'SLOW_REPORT.md')))
         code, out, err = self.cli('--dir', d, '--max-games', '10', deck=False, school=None, spawn=spawn)
@@ -2220,7 +2442,7 @@ class CloudRoute(World):
         self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), 32)
         page = read(os.path.join(d, 'SLOW_REPORT.md'))
         self.assertNotIn('PARTIAL', page)
-        self.assertIn('REBUILD of the pinned source', page)
+        self.assertIn('its build record says it is a rebuild of the pinned source', page)
         self.assertEqual(set(spawn.seen), {self.cloud}, 'every slice is played by the rebuilt copy')
         self.assertEqual(len(spawn.seen), 4)
         self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)], 'the self-checks were replayed once, at the registration')
@@ -2236,22 +2458,19 @@ class CloudRoute(World):
         self.assertIn('PARTIAL', read(os.path.join(d, 'SLOW_REPORT.md')))
         self.assertEqual(len(jsonl(os.path.join(d, 'fake_calls.jsonl'))), calls, 'a report-only call starts no program')
 
-    def test_a_resume_with_a_rebuilt_copy_of_another_sha_is_refused_and_explained(self):
+    def test_a_resume_of_a_rebuilt_run_whose_program_is_gone_is_refused_and_explained(self):
         d = self.register('--program', self.cloud)
         registered = sha(self.cloud)
-        write(self.cloud, FAKE_PROGRAM + '\n# built again on the cloud, other bytes\n', mode=0o755)
-        problem = (f'{self.cloud} has sha256 {sha(self.cloud)[:12]}, but this run was registered with the program at that path with sha256 {registered[:12]}. '
-                   'A resume needs the same program, byte for byte: ')  # (the whole message is pinned once, in RegisterAndRun)
+        os.remove(self.cloud)  # the rebuilt copy is gone (its record is still beside it): there is nothing to replay the self-checks on, so a resume cannot take the program-changed route
+        self.assertTrue(os.path.exists(self.cloud + '.build.json'))
+        problem = f'{self.cloud} is missing, but this run was registered with the program at that path with sha256 {registered[:12]}. ' + RESUME_NEEDS
         code, out, err = self.cli('--dir', d, deck=False)
-        self.assertIn('so nothing is run:\n  ' + problem, str(code))
-        self.assertTrue(str(code).endswith('(register a new one)'), 'and it says what to do: a new registration')
+        self.assertEqual(code, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n  ' + problem)
         self.assertFalse(os.path.exists(os.path.join(d, 'fake_calls.jsonl')))
+        self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)], 'nothing was replayed again')
         code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
         self.assertEqual(code, 0)
-        self.assertIn('(it would be refused: ' + problem, out)
-        os.remove(self.cloud)
-        code, out, err = self.cli('--dir', d, deck=False)
-        self.assertIn(f'so nothing is run:\n  {self.cloud} is missing, but this run was registered with the program at that path with sha256 {registered[:12]}. A resume needs the same program, byte for byte: ', str(code))
+        self.assertIn('(it would be refused: ' + problem + ')', out)
 
     def test_selfcheck_and_program_together_replay_once_and_the_replay_is_bounded_by_the_school_morning(self):
         self.clock = FakeClock(chi(2026, 10, 7, 20, 0))  # a Wednesday evening
@@ -2369,12 +2588,7 @@ class CloudRoute(World):
         self.assertEqual((b['program_route'], self.manifest(d)['program']), ('pinned', self.program))
         self.assertEqual(self.replayed, [], 'the pinned bytes need no replay')
 
-    # ------------------------------------------------------------------------------------------------ the engine tree of the checkout
-    def git(self, *a):
-        r = subprocess.run(['git', '-C', self.repo, '-c', 'user.name=t', '-c', 'user.email=t@t', '-c', 'commit.gpgsign=false', *a], capture_output=True, text=True)
-        self.assertEqual(r.returncode, 0, r.stderr)
-        return r.stdout.strip()
-
+    # ------------------------------------------------------------------------------------------------ the checkout's git state no longer matters
     def commit_folder(self, folder, text):
         """Commit `text` in a file of `folder` in the temporary repository (made a git checkout the first time). Returns (the commit, the tree of its engine folder as `git ls-tree` prints it,
         or None when the commit has no engine folder)."""
@@ -2387,116 +2601,1982 @@ class CloudRoute(World):
         line = self.git('ls-tree', commit, 'engine')
         return commit, (line.split()[2] if line else None)
 
-    def test_the_engine_tree_in_the_checkout_is_the_tree_of_the_engine_folder_of_the_named_commit_or_nothing(self):
-        first, tree1 = self.commit_folder('engine', 'fn a() {}\n')
-        second, tree2 = self.commit_folder('engine', 'fn b() {}\n')
-        self.assertRegex(tree1, r'^[0-9a-f]{40}$')
-        self.assertNotEqual(tree1, tree2)
-        for ref, want in ((first, tree1), (second, tree2), (first[:10], tree1), ('HEAD', tree2), ('HEAD~1', tree1)):
-            self.assertEqual(sr.engine_tree_in_checkout(self.repo, ref), want, ref)
-        for label, repo, ref in (('a commit the checkout does not have', self.repo, '0' * 40), ('a name that is no commit', self.repo, 'no-such-branch'), ('no ref', self.repo, None),
-                                 ('an empty ref', self.repo, ''), ('no checkout', None, first), ('an empty checkout path', '', first),
-                                 ('a folder that is no repository', self.harness, first), ('a folder that does not exist', os.path.join(self.tmp, 'nowhere'), first)):
-            self.assertIsNone(sr.engine_tree_in_checkout(repo, ref), label)
-        self.git('rm', '-r', '-q', 'engine')
-        self.git('commit', '-q', '-m', 'no engine any more')
-        no_engine = self.git('rev-parse', 'HEAD')
-        self.assertIsNone(sr.engine_tree_in_checkout(self.repo, no_engine), 'a commit with no engine folder')
-        self.assertEqual(sr.engine_tree_in_checkout(self.repo, first), tree1, 'and the earlier commits still have theirs')
-        nowhere = os.path.join(self.tmp, 'empty-path')
-        os.makedirs(nowhere)
-        with mock.patch.dict(os.environ, {'PATH': nowhere}):
-            self.assertIsNone(sr.engine_tree_in_checkout(self.repo, first), 'a machine without git')
-
-    def test_a_rebuild_whose_checkout_has_the_pinned_engine_tree_is_accepted_and_both_trees_are_recorded(self):
-        commit, tree = self.commit_folder('engine', 'fn engine() {}\n')
-        self.edit_pin(engine_ref=commit, engine_tree=tree)
-        self.assertEqual(sr.check_program(self.pin, self.cloud, self.repo), ('rebuilt', sha(self.cloud)))
+    def test_the_checkout_based_engine_tree_check_is_gone(self):
+        self.assertFalse(hasattr(sr, 'engine_tree_in_checkout'), 'what was archived and compiled is what the build record says, not what a git checkout holds')
+        self.assertNotIn('engine_tree_checkout', inspect.signature(sr.build_config).parameters)
         d = self.register('--program', self.cloud)
-        b = self.manifest(d)['slow_report']
-        self.assertEqual((b['program_route'], b['engine_ref'], b['engine_tree'], b['engine_tree_in_checkout']), ('rebuilt', commit, tree, tree))
-        self.assertIn(f'\n- engine_tree_in_checkout: `{tree}`\n', read(os.path.join(d, 'PREREGISTRATION.md')))
-        self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)])
+        self.assertNotIn('engine_tree_in_checkout', self.manifest(d)['slow_report'])
+        self.assertNotIn('engine_tree_in_checkout', read(os.path.join(d, 'PREREGISTRATION.md')))
 
-    def test_a_rebuild_from_a_checkout_whose_engine_is_another_tree_is_refused_before_any_replay_and_names_both_trees(self):
-        first, tree1 = self.commit_folder('engine', 'fn engine() {}\n')
-        second, tree2 = self.commit_folder('engine', 'fn engine() { changed(); }\n')
-        self.edit_pin(engine_ref=second, engine_tree=tree1)  # the pin names a commit whose engine folder is not the tree it pins
-        want = (f"REFUSED: this checkout's {second[:8]}:engine tree is {tree2[:12]}, not the pinned {tree1[:12]}, so a build of it is not the pinned engine. Nothing was written.")
-        for extra in ((), ('--dry-run',), ('--register-only',)):
-            code, out, err = self.cli('--deals', '1', '--program', self.cloud, *extra)
-            self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + want, extra)
-            self.assertEqual(out, '', 'refused before the first line of the plan')
-            self.assertFalse(os.path.exists(self.out_root), 'nothing was written')
-        self.assertEqual(self.replayed, [], 'refused before the hours-long replay')
-        self.assertFalse(os.path.exists(os.path.join(os.path.dirname(self.cloud), 'selfcheck_env.json')))
-        with self.assertRaises(SystemExit) as cm:
-            sr.check_program(self.pin, self.cloud, self.repo)
-        self.assertEqual(cm.exception.code, want)
-        self.edit_pin(engine_tree=tree2)  # the same checkout against the tree it really has: accepted
-        self.assertEqual(sr.check_program(self.pin, self.cloud, self.repo), ('rebuilt', sha(self.cloud)))
-        self.assertEqual(self.cli('--deals', '1', '--program', self.cloud, '--register-only')[0], 0)
-
-    def test_a_checkout_that_cannot_say_what_its_engine_tree_is_does_not_hold_a_rebuild_back(self):
+    def test_a_rebuild_is_accepted_whatever_the_git_state_of_the_checkout_is_when_its_build_record_is_good(self):
         def no_git_repository():
-            return {}, None
+            return {}
+
+        def git_checkout_whose_engine_folder_is_another_tree_than_the_pins():
+            first, tree1 = self.commit_folder('engine', 'fn engine() {}\n')
+            second, tree2 = self.commit_folder('engine', 'fn engine() { changed(); }\n')
+            self.assertNotEqual(tree2, 'ab' * 20)
+            return {'engine_ref': second, 'engine_tree': 'ab' * 20}  # the pin names a commit whose engine folder is not the tree it pins: the old check refused this
 
         def git_checkout_without_the_pinned_commit():
             self.commit_folder('engine', 'fn engine() {}\n')  # (the pin's engine_ref is not a commit of this repository)
-            return {}, None
+            return {}
 
         def commit_with_no_engine_folder():
-            return {'engine_ref': self.commit_folder('other', 'fn other() {}\n')[0]}, None
+            return {'engine_ref': self.commit_folder('other', 'fn other() {}\n')[0]}
 
         def pin_with_no_engine_ref():
-            return {'engine_ref': None}, None
-
-        def pin_with_no_engine_tree():
-            commit, tree = self.commit_folder('engine', 'fn engine() {}\n')
-            return {'engine_ref': commit, 'engine_tree': None}, tree  # nothing to compare with: the checkout's tree is recorded all the same
-        for prepare in (no_git_repository, git_checkout_without_the_pinned_commit, commit_with_no_engine_folder, pin_with_no_engine_ref, pin_with_no_engine_tree):
+            return {'engine_ref': None}
+        for prepare in (no_git_repository, git_checkout_whose_engine_folder_is_another_tree_than_the_pins, git_checkout_without_the_pinned_commit, commit_with_no_engine_folder,
+                        pin_with_no_engine_ref):
             with self.subTest(prepare.__name__):
                 self.make()
                 self.lay_out_harness()
                 self.replayed.clear()
-                changes, tree = prepare()
-                self.edit_pin(**changes)
+                self.edit_pin(**prepare())
+                self.write_record(self.cloud)  # (the record is for the pin as it is now)
+                self.assertEqual(sr.check_program(self.pin, self.cloud, self.repo), ('rebuilt', sha(self.cloud)))
                 d = self.register('--program', self.cloud)
                 b = self.manifest(d)['slow_report']
-                self.assertEqual(b['program_route'], 'rebuilt')
-                self.assertEqual(b['engine_tree_in_checkout'], tree, 'recorded as nothing when it could not be told')
+                self.assertEqual((b['program_route'], b['engine_ref'], b['engine_tree']), ('rebuilt', self.pin['engine_ref'], self.pin['engine_tree']))
+                self.assertEqual(b['build_record']['engine_tree_archived'], self.pin['engine_tree'])
+                self.assertNotIn('engine_tree_in_checkout', b)
                 self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)])
 
-    def test_the_pinned_binary_is_not_held_to_the_engine_tree_but_the_checkouts_tree_is_still_recorded(self):
-        first, tree1 = self.commit_folder('engine', 'fn engine() {}\n')
-        second, tree2 = self.commit_folder('engine', 'fn engine() { changed(); }\n')
-        self.edit_pin(engine_ref=second, engine_tree=tree1)
-        d = self.register()  # the pinned program: its bytes are what the pin pins, whatever this checkout holds
+    def test_the_pinned_binary_needs_no_build_record_and_never_reads_one(self):
+        copy = os.path.join(self.tmp, 'copy', 'strength')
+        write(copy, FAKE_PROGRAM, mode=0o755)
+        write(copy + '.build.json', '{this is not json at all')  # not read: the pinned bytes are what the pin pins
+        d = self.register('--program', copy)
         b = self.manifest(d)['slow_report']
-        self.assertEqual((b['program_route'], b['engine_tree'], b['engine_tree_in_checkout']), ('pinned', tree1, tree2))
+        self.assertEqual((b['program_route'], b['build_record']), ('pinned', None))
         self.assertEqual(sr.check_program(self.pin, None, self.repo), ('pinned', sha(self.program)))
+        self.assertEqual(self.replayed, [])
 
-    def test_a_foreign_harness_source_is_refused_before_the_engine_tree_is_looked_at(self):
-        first, tree1 = self.commit_folder('engine', 'fn engine() {}\n')
-        second, tree2 = self.commit_folder('engine', 'fn engine() { changed(); }\n')
-        self.edit_pin(engine_ref=second, engine_tree=tree1)
+    def test_a_foreign_harness_source_is_refused_before_the_build_record_is_looked_at(self):
+        os.remove(self.cloud + '.build.json')
         write(os.path.join(self.repo, 'rl', 'strength', 'Cargo.toml'), '[package]\nname = "other"\n')
         with self.assertRaises(SystemExit) as cm:
             sr.check_program(self.pin, self.cloud, self.repo)
         self.assertIn('the harness source in this checkout', cm.exception.code)
-        self.assertNotIn('engine tree', cm.exception.code)
+        self.assertNotIn('build record', cm.exception.code)
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud)
+        self.assertIn('the harness source in this checkout', str(code))
+        self.assertNotIn('build record', str(code), 'the same order on the command line: the harness source first')
+        self.assertFalse(os.path.exists(self.out_root))
 
-    def test_build_config_describes_a_rebuild_in_the_engine_string_and_records_the_checkouts_engine_tree(self):
+    def test_build_config_describes_a_rebuild_in_the_engine_string_and_carries_the_build_record_and_the_pin_state(self):
         kw = dict(pin=self.pin, pin_path=self.pin_path, deck_rel='decks/events/my-list.txt', deck_name='my-list', deck_sha='a' * 64, deck_state='committed', deals=1, paired=True,
                   seed_base=BLOCK[0], threads=2, program_sha='b' * 64)
         pinned = sr.build_config(**kw)
         self.assertEqual(pinned['engine'], self.pin['engine'])
-        self.assertIsNone(pinned['slow_report']['engine_tree_in_checkout'])
-        rebuilt = sr.build_config(**kw, route='rebuilt', program='/cloud/strength', engine_tree_checkout='c' * 40)
-        self.assertEqual(rebuilt['engine'], self.pin['engine'] + "; THIS PROGRAM (/cloud/strength, sha256 bbbbbbbbbbbb) IS A REBUILD of that source made on another machine, "
-                                                                 "not the laptop binary, accepted because both self-checks were replayed on that machine and equal the committed pin's digests")
-        self.assertEqual(rebuilt['slow_report']['engine_tree_in_checkout'], 'c' * 40)
+        self.assertNotIn('engine_tree_in_checkout', pinned['slow_report'])
+        self.assertEqual([pinned['slow_report'][k] for k in ('build_record', 'pin_committed', 'pin_committed_detail', 'registered_on')], [None] * 4, 'nothing was passed, nothing is claimed')
+        rec = dict(self.build_record(self.cloud, rustc=f'{self.RUSTC}\nbinary: rustc\nhost: elsewhere'), record_file=self.cloud + '.build.json', record_sha256='d' * 64)
+        yes = dict(state='yes', sha256=sha(self.pin_path), detail='')
+        rebuilt = sr.build_config(**kw, route='rebuilt', program='/cloud/strength', build_record=rec, pin_state=yes, registered_on='cloud-box-9')
+
+        def engine_text(digests):
+            return (self.pin['engine'] + f"; THIS PROGRAM (/cloud/strength, sha256 bbbbbbbbbbbb) is NOT the pinned binary: its build record (written by rl/strength/build.sh, not signed) says it is a "
+                                         f"rebuild of that source (build record sha256 dddddddddddd: engine tree as archived {self.pin['engine_tree'][:12]}, harness source "
+                                         f"{self.pin['harness_source_sha256'][:12]}, {self.RUSTC}), accepted because both self-checks were replayed on the registering machine and equal {digests}")
+        self.assertEqual(rebuilt['engine'], engine_text(COMMITTED_DIGESTS))
+        b = rebuilt['slow_report']
+        self.assertEqual((b['build_record'], b['pin_committed'], b['pin_committed_detail'], b['registered_on']), (rec, 'yes', None, 'cloud-box-9'), 'no detail when the pin is the committed one')
+        no_head = dict(state='bypassed', sha256=sha(self.pin_path), detail='HEAD has no pin; allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use)')
+        b = sr.build_config(**kw, pin_state=no_head)['slow_report']
+        self.assertEqual((b['pin_committed'], b['pin_committed_detail']), ('bypassed', no_head['detail']))
         self.assertEqual(sr.build_config(**kw, route='rebuilt')['engine'].split('THIS PROGRAM (')[1].split(',')[0], self.pin['program'], 'with no program given, the pin\'s path')
+        # the words for what the self-checks were equal to follow the state of the pin: the committed pin's digests, or the pin file in use when it was let through for a test
+        for label, state, digests in (('a committed pin', yes, COMMITTED_DIGESTS), ('a pin let through', no_head, FILE_DIGESTS), ('no state recorded', None, COMMITTED_DIGESTS)):
+            with self.subTest(label):
+                engine = sr.build_config(**kw, route='rebuilt', program='/cloud/strength', build_record=rec, pin_state=state)['engine']
+                self.assertEqual(engine, engine_text(digests))
+                self.assertEqual(engine.count('NOT the committed pin'), 0 if digests == COMMITTED_DIGESTS else 1)
+        self.assertEqual(sr.build_config(**kw, route='pinned', pin_state=no_head)['engine'], self.pin['engine'], 'the pinned binary is described as the pin describes it, whatever the state')
+
+    def test_a_record_with_only_the_checked_entries_never_prints_none_in_the_engine_text_or_the_config(self):
+        """The engine text says what the record says of the toolchain; a record that leaves it out (a hand-made one, or one from before the entry existed) says 'toolchain not recorded', and
+        never ', not recorded)' (a clause with no subject)."""
+        kw = dict(pin=self.pin, pin_path=self.pin_path, deck_rel='decks/events/my-list.txt', deck_name='my-list', deck_sha='a' * 64, deck_state='committed', deals=1, paired=True,
+                  seed_base=BLOCK[0], threads=2, program_sha='b' * 64, route='rebuilt', program='/cloud/strength')
+        bare = dict(schema=1, program_sha256='b' * 64, engine_ref=self.pin['engine_ref'], engine_tree_archived=self.pin['engine_tree'], harness_source_sha256=self.pin['harness_source_sha256'],
+                    record_file='/cloud/strength.build.json', record_sha256='d' * 64)
+        for label, rec in (('only the checked entries', bare), ('null where text is expected', dict(bare, rustc=None, cargo=None, host=None)), ('an empty rustc', dict(bare, rustc='')),
+                           ('a rustc of blank lines only', dict(bare, rustc='\n  \n\t\n')), ('a rustc that is a number', dict(bare, rustc=5)), ('a rustc that is a list', dict(bare, rustc=['rustc 1.90.0']))):
+            with self.subTest(label):
+                engine = sr.build_config(**kw, build_record=rec)['engine']
+                self.assertNotIn('None', engine)
+                self.assertIn(f"harness source {self.pin['harness_source_sha256'][:12]}, toolchain not recorded), accepted because", engine)
+                self.assertNotIn(', not recorded)', engine)
+                self.assertNotIn('built with', engine, 'that is the wording of the plan line, not of the engine text')
+        full = sr.build_config(**kw, build_record=dict(bare, rustc='rustc 1.90.0 (fake)\nbinary: rustc'))['engine']
+        self.assertIn(f"harness source {self.pin['harness_source_sha256'][:12]}, rustc 1.90.0 (fake)), accepted because", full)
+        self.assertNotIn('not recorded', full, 'a recorded toolchain is printed, its first line')
+        blank_first = sr.build_config(**kw, build_record=dict(bare, rustc='\n   \nrustc 1.90.0 (fake)\nbinary: rustc'))['engine']
+        self.assertIn(f"harness source {self.pin['harness_source_sha256'][:12]}, rustc 1.90.0 (fake)), accepted because", blank_first, 'the first line that says anything, not an empty first line')
+        self.assertNotIn('not recorded', blank_first)
+
+    def test_a_rebuild_whose_record_has_only_the_checked_entries_is_described_with_not_recorded_in_the_plan_the_engine_text_and_the_page_and_never_as_none(self):
+        text_keys = ('engine_arg', 'engine', 'rustc', 'cargo', 'machine', 'host', 'built_at', 'rebuild_command')
+        everything_else = ('program', 'libc', 'home', 'cargo_home', 'build_dir', 'target_dir', 'jobs')
+        for label, over in (('entries left out', {k: DROP for k in text_keys + everything_else}), ('entries null', {k: None for k in text_keys}),
+                            ('entries empty', {k: '' for k in text_keys})):
+            with self.subTest(label):
+                self.make()
+                self.lay_out_harness()
+                self.replayed.clear()
+                self.write_record(self.cloud, **over)
+                code, out, err = self.cli('--deals', '1', '--program', self.cloud, '--register-only')
+                self.assertEqual(code, 0, out + err)
+                d = self.rundir()
+                man = self.manifest(d)
+                rec = man['slow_report']['build_record']
+                self.assertEqual(man['engine'], self.rebuilt_engine_text(self.cloud, rec))
+                self.assertIn(f"harness source {self.pin['harness_source_sha256'][:12]}, toolchain not recorded), accepted because", man['engine'])
+                lines = [l.split('] ', 1)[1] for l in out.splitlines()]
+                (plan,) = [l for l in lines if l.startswith(f'program {self.cloud} (sha256 ') and 'is NOT the pinned binary' in l]
+                self.assertIn(f"harness source {self.pin['harness_source_sha256'][:12]}, built with an unrecorded toolchain); both self-checks will be replayed", plan)
+                self.assertEqual(self.cli('--dir', d, '--report-only', deck=False)[0], 0)
+                page = read(os.path.join(d, 'SLOW_REPORT.md'))
+                self.assertIn(f"\n- Build record `strength.build.json` sha256 `{rec['record_sha256'][:12]}`: engine not recorded -> tree as archived `{self.pin['engine_tree'][:12]}` "
+                              f"(the pin's is `{self.pin['engine_tree'][:12]}`), harness source `{self.pin['harness_source_sha256'][:12]}`, rustc not recorded, not recorded, built not recorded on "
+                              "not recorded (not recorded); to rebuild the same bytes after a restart: `not recorded`.\n", page)
+                for what, text in (('the engine text', man['engine']), ('the plan', '\n'.join(lines)), ('the page', page.replace('repository commit `None`', ''))):  # (the fixture's repository has no commit)
+                    self.assertNotIn('None', text, what)
+                    self.assertNotIn('built with not recorded', text, what)
+                    self.assertNotIn(', not recorded)', text, what)
+                self.assertNotIn('built with', page, 'the plan\'s "built with ..." is not the page\'s wording')
+
+
+PIN_REL = 'rl/strength/slow_report_pin.json'  # where the committed pin lives in a checkout (the pin file of a real run is that file)
+RECORD_HINT = 'rl/strength/build.sh writes it beside the program it builds (build with it, to the path you pass here)'
+
+
+def git_said(repo):
+    """What follows the fixed words of the detail of a pin that git could not find in `repo` ('; git said: <the first line git printed>'), worked out by asking the installed git the
+    same question pin_commit_state asks (`git -C repo cat-file blob HEAD:./rl/strength/slow_report_pin.json`), so the line is git's own whatever its version. Empty when git printed
+    nothing. The folders of these tests are made by this user, so a safe.directory complaint is no part of it (the test says so instead of guessing)."""
+    r = subprocess.run(['git', '-C', repo, 'cat-file', 'blob', f'HEAD:./{PIN_REL}'], capture_output=True, env=dict(os.environ, GIT_OPTIONAL_LOCKS='0'))
+    said = r.stderr.decode('utf-8', 'replace').strip()
+    assert 'safe.directory' not in said, f'git itself calls {repo} unsafe: {said}'
+    return f'; git said: {said.splitlines()[0][:200]}' if said else ''
+
+
+class CommittedPin(RebuiltFixture):
+    """The pin in use must be the pin that is committed: byte-equal to HEAD's rl/strength/slow_report_pin.json in the repository the run is made from (pin_commit_state,
+    require_committed_pin). A hand-edited pin, `--pin copy.json`, a pin that was never committed, a folder that is no git repository and a machine without git are all refused before
+    anything is written, because everything a report says about the program rests on the pin. The test-only variable SLOW_REPORT_ALLOW_UNCOMMITTED_PIN lets a hand-made pin through,
+    and the plan, the registration and the page say so. World sets that variable for every test; the tests of this class take it away (except where it is the thing under test)."""
+    BYPASS = f'; allowed by {ALLOW_PIN_VAR} (test use)'
+
+    def setUp(self):
+        super().setUp()
+        os.environ.pop(ALLOW_PIN_VAR, None)  # (World's patch of os.environ puts it back as it was when the test ends)
+        self.original_pin = self.pin_path
+
+    def state(self, pin=None, repo=None):
+        return sr.pin_commit_state(repo or self.repo, pin or self.pin_path)
+
+    def not_in_head(self, repo=None):
+        """The detail of a pin git cannot find: the fixed words, then what git said (git_said: the installed git's own first line)."""
+        return f'HEAD has no {PIN_REL} in {repo or self.repo} (not a git repository, no commit, or the file is not committed)' + git_said(repo or self.repo)
+
+    def differs(self, pin, head_bytes):
+        return f'the pin file (sha256 {sha(pin)[:12]}) differs from the {PIN_REL} committed at HEAD (sha256 {hashlib.sha256(head_bytes).hexdigest()[:12]})'
+
+    def refusal(self, detail):
+        return (f'REFUSED: the pin is not the committed one: {detail}. A slow report trusts the pin for what the program is, so it uses only {PIN_REL} as committed at HEAD '
+                '(commit the pin, in the repository you run from; a hand-edited or copied pin is refused). Nothing was written.')
+
+    def tree(self):
+        """Every file and folder under the test's temporary folder, with size and modification time: a run that must write nothing leaves this as it was."""
+        out = []
+        for dp, dn, fn in os.walk(self.tmp):
+            for n in dn + fn:
+                st = os.lstat(os.path.join(dp, n))
+                out.append((os.path.relpath(os.path.join(dp, n), self.tmp), st.st_size, st.st_mtime_ns))
+        return sorted(out)
+
+    def scenarios(self):
+        """(label, repository, pin file, the detail of why it is not the committed pin): the ways a pin fails to be the committed one, each in a folder of its own."""
+        out = []
+
+        def place(name):
+            repo = os.path.join(self.tmp, 'scenario', name)
+            os.makedirs(repo)
+            return repo
+        a = place('no-git')
+        out.append(('not a git repository', a, self.original_pin, self.not_in_head(a)))
+        b = place('no-commit')
+        self.git('init', '-q', repo=b)
+        out.append(('a git repository with no commit', b, self.original_pin, self.not_in_head(b)))
+        c = place('other-file')
+        self.git('init', '-q', repo=c)
+        write(os.path.join(c, 'other.txt'), 'x\n')
+        self.git('add', 'other.txt', repo=c)
+        self.git('commit', '-q', '-m', 'x', repo=c)
+        out.append(('a commit without the pin', c, self.original_pin, self.not_in_head(c)))
+        d = place('staged-only')
+        self.git('init', '-q', repo=d)
+        write(os.path.join(d, 'other.txt'), 'x\n')
+        self.git('add', 'other.txt', repo=d)
+        self.git('commit', '-q', '-m', 'x', repo=d)
+        write_bytes(os.path.join(d, *PIN_REL.split('/')), self.bytes_of(self.original_pin))
+        self.git('add', PIN_REL, repo=d)
+        out.append(('the pin added but not committed', d, os.path.join(d, *PIN_REL.split('/')), self.not_in_head(d)))
+        e = place('edited')
+        head = self.bytes_of(self.original_pin)
+        path = self.commit_pin(repo=e)
+        edited = json.loads(head)
+        edited['threads'] = 7
+        write(path, json.dumps(edited, indent=1))
+        out.append(('the committed pin edited by hand', e, path, self.differs(path, head)))
+        gone = os.path.join(self.tmp, 'scenario', 'no-such-folder')
+        out.append(('a repository folder that does not exist', gone, self.original_pin, self.not_in_head(gone)))
+        return out
+
+    # ------------------------------------------------------------------------------------------------ pin_commit_state and require_committed_pin
+    def test_the_names_the_check_goes_by(self):
+        self.assertEqual(sr.ALLOW_UNCOMMITTED_PIN, ALLOW_PIN_VAR)
+        self.assertEqual(sr.PIN_REL, PIN_REL)
+        self.assertEqual(os.path.abspath(sr.DEFAULT_PIN), os.path.join(ROOT, *PIN_REL.split('/')), 'the default pin is the committed file')
+
+    def test_a_pin_byte_equal_to_the_committed_one_is_yes_whatever_its_path(self):
+        committed = self.commit_pin()
+        want = {'state': 'yes', 'sha256': sha(self.original_pin), 'detail': ''}
+        self.assertEqual(self.state(), want)
+        self.assertEqual(self.state(committed), want, 'the committed file itself, which is the pin of a real run')
+        copy = os.path.join(self.tmp, 'elsewhere', 'copy.json')
+        write_bytes(copy, self.bytes_of(self.original_pin))
+        self.assertEqual(self.state(copy), want, 'a byte-identical copy elsewhere: the bytes decide, not the path')
+        self.assertEqual(sr.require_committed_pin(self.repo, copy), want)
+
+    def test_one_changed_byte_makes_the_pin_not_the_committed_one(self):
+        self.commit_pin()
+        head = self.bytes_of(self.original_pin)
+        edited = json.loads(head)
+        edited['program_sha256'] = '1' * 64  # the edit that would make any program look pinned
+        copy = os.path.join(self.tmp, 'elsewhere', 'copy.json')
+        for label, data in (('a changed value', json.dumps(edited, indent=1).encode()), ('a trailing newline', head + b'\n'), ('Windows line ends', head.replace(b'\n', b'\r\n')),
+                            ('one byte less', head[:-1]), ('a space after the first brace', head.replace(b'{', b'{ ', 1))):
+            write_bytes(copy, data)
+            self.assertEqual(self.state(copy), {'state': 'no', 'sha256': sha(copy), 'detail': self.differs(copy, head)}, label)
+
+    def test_the_pin_is_compared_with_head_not_with_the_work_tree_or_the_index(self):
+        committed = self.commit_pin()
+        head = self.bytes_of(committed)
+        edited = json.loads(head)
+        edited['threads'] = 7
+        write(committed, json.dumps(edited, indent=1))
+        self.assertEqual(self.state(committed)['state'], 'no', 'edited in the work tree')
+        self.git('add', PIN_REL)
+        self.assertEqual(self.state(committed), {'state': 'no', 'sha256': sha(committed), 'detail': self.differs(committed, head)}, 'and staged: HEAD is what counts')
+        self.git('commit', '-q', '-m', 'the edit is committed')
+        self.assertEqual(self.state(committed), {'state': 'yes', 'sha256': sha(committed), 'detail': ''}, 'committed: now it is the one')
+
+    def test_a_pin_that_was_never_committed_is_no_in_every_shape_of_that(self):
+        for label, repo, pin, detail in self.scenarios():
+            with self.subTest(label):
+                self.assertEqual(self.state(pin, repo), {'state': 'no', 'sha256': sha(pin), 'detail': detail})
+                with self.assertRaises(SystemExit) as cm:
+                    sr.require_committed_pin(repo, pin)
+                self.assertEqual(cm.exception.code, self.refusal(detail))
+
+    def test_the_pin_is_looked_for_at_its_path_inside_the_folder_given_not_at_the_top_of_the_checkout(self):
+        top = os.path.join(self.tmp, 'top')
+        sub = os.path.join(top, 'sub')
+        os.makedirs(sub)
+        self.git('init', '-q', repo=top)
+        self.commit_pin(repo=sub)
+        self.assertEqual(self.state(repo=sub)['state'], 'yes', 'the checkout of a run can be a folder inside a larger repository')
+        self.assertEqual(self.state(repo=top), {'state': 'no', 'sha256': sha(self.original_pin), 'detail': self.not_in_head(top)}, 'the same pin is not committed at the top')
+
+    def test_without_git_the_committed_pin_cannot_be_read_and_the_pin_is_not_accepted(self):
+        self.commit_pin()
+        nowhere = os.path.join(self.tmp, 'empty-path')
+        os.makedirs(nowhere)
+        detail = 'git is not available, so the committed pin cannot be read'
+        with mock.patch.dict(os.environ, {'PATH': nowhere}):
+            self.assertEqual(self.state(), {'state': 'no', 'sha256': sha(self.original_pin), 'detail': detail})
+            with self.assertRaises(SystemExit) as cm:
+                sr.require_committed_pin(self.repo, self.original_pin)
+        self.assertEqual(cm.exception.code, self.refusal(detail))
+        with mock.patch.dict(os.environ, {'PATH': nowhere, ALLOW_PIN_VAR: '1'}):
+            self.assertEqual(self.state(), {'state': 'bypassed', 'sha256': sha(self.original_pin), 'detail': detail + self.BYPASS})
+
+    # ------------------------------------------------------------------------------------------------ what git said
+    def git_stub(self, stderr, code=128, stdout=b''):
+        """A `git` that is found before the real one (PATH of the returned environment patch): it prints `stdout`, then `stderr` on the error stream, and exits with `code`. Use it as
+        `with mock.patch.dict(os.environ, self.git_stub(...)):`."""
+        folder = os.path.join(self.tmp, 'stub-git')
+        os.makedirs(folder, exist_ok=True)
+        write_bytes(os.path.join(folder, 'said_out.bin'), stdout)
+        write_bytes(os.path.join(folder, 'said_err.txt'), stderr if isinstance(stderr, bytes) else stderr.encode('utf-8'))
+        write(os.path.join(folder, 'git'), f'#!/bin/sh\ncat "${{0%/*}}/said_out.bin"\ncat "${{0%/*}}/said_err.txt" >&2\nexit {code}\n', mode=0o755)
+        return {'PATH': folder + os.pathsep + os.environ.get('PATH', '')}
+
+    def dubious(self, repo=None):
+        repo = repo or self.repo
+        return (f"fatal: detected dubious ownership in repository at '{repo}'\nTo add an exception for this directory, call:\n\n\tgit config --global --add safe.directory {repo}\n")
+
+    def unsafe_detail(self, repo=None):
+        """The detail git's refusal of a folder owned by another user gets: git's own first line, then the explanation that this is not the pin being uncommitted."""
+        repo = repo or self.repo
+        return (f"HEAD has no {PIN_REL} in {repo} (not a git repository, no commit, or the file is not committed); git said: fatal: detected dubious ownership in repository at '{repo}' "
+                f'(git refuses this folder as unsafe, which is not the same as the pin being uncommitted; if you trust it: git config --global --add safe.directory {repo})')
+
+    def test_a_folder_git_refuses_as_unsafe_is_said_to_be_unsafe_and_not_uncommitted(self):
+        """A checkout owned by another user (a root container on the cloud): git exits non-zero for the pin that may well be committed, and the detail says what git said and that it is not the same."""
+        self.commit_pin()
+        with mock.patch.dict(os.environ, self.git_stub(self.dubious())):
+            self.assertEqual(self.state(), {'state': 'no', 'sha256': sha(self.original_pin), 'detail': self.unsafe_detail()})
+            with self.assertRaises(SystemExit) as cm:
+                sr.require_committed_pin(self.repo, self.original_pin)
+            self.assertEqual(cm.exception.code, self.refusal(self.unsafe_detail()))
+            self.assertIn(f'if you trust it: git config --global --add safe.directory {self.repo})', cm.exception.code)
+        with mock.patch.dict(os.environ, dict(self.git_stub(self.dubious()), **{ALLOW_PIN_VAR: '1'})):
+            self.assertEqual(self.state(), {'state': 'bypassed', 'sha256': sha(self.original_pin), 'detail': self.unsafe_detail() + self.BYPASS})
+        self.assertEqual(self.state()['state'], 'yes', 'with the real git the same folder and pin are fine')
+
+    def test_the_command_line_refuses_an_unsafe_folder_with_the_advice_and_writes_nothing(self):
+        with mock.patch.dict(os.environ, self.git_stub(self.dubious())):
+            before = self.tree()
+            for extra in ((), ('--dry-run',), ('--register-only',)):
+                code, out, err = self.cli('--deals', '1', *extra)
+                self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + self.refusal(self.unsafe_detail()), extra)
+                self.assertEqual((out, err), ('', ''))
+                self.assertFalse(os.path.exists(self.out_root))
+            self.assertEqual(self.tree(), before, 'nothing was written')
+
+    def test_the_advice_for_an_unsafe_folder_quotes_a_folder_name_with_a_space_so_it_can_be_pasted(self):
+        """The advice 'git config --global --add safe.directory <repo>' is a command to paste: a checkout under a path with a space (the laptop's 'Pocket Deck Sim' folder) is quoted for the
+        shell (shlex.quote), so git gets one argument; the folder is named unquoted in the words around it, and a path that needs no quoting is printed as it is."""
+        repo = os.path.join(self.tmp, 'a folder with spaces')
+        with mock.patch.dict(os.environ, self.git_stub(self.dubious(repo))):
+            detail = sr.pin_commit_state(repo, self.original_pin)['detail']
+        self.assertIn(f'git config --global --add safe.directory {shlex.quote(repo)})', detail)
+        self.assertEqual(detail, f"HEAD has no {PIN_REL} in {repo} (not a git repository, no commit, or the file is not committed); git said: fatal: detected dubious ownership in repository "
+                                 f"at '{repo}' (git refuses this folder as unsafe, which is not the same as the pin being uncommitted; if you trust it: git config --global --add safe.directory "
+                                 f"'{repo}')")
+        self.assertNotIn(f'safe.directory {repo})', detail, 'not the bare path, which git would read as several arguments')
+        self.assertEqual(shlex.quote(self.repo), self.repo, 'the folders of the other tests of this class need no quoting, and are printed as they are')
+
+    def test_the_advice_for_an_unsafe_folder_survives_a_shell_for_every_kind_of_name(self):
+        """Whatever the folder is called, the shell reads the end of the advice back as that one folder."""
+        for label, name in (('a space', 'my repo'), ('a single quote', "it's here"), ('a dollar sign', 'cost$HOME'), ('a semicolon', 'a;b'), ('a backtick', 'a`b'), ('an accent', 'café'),
+                            ('a leading dash', '-x'), ('two spaces and a tab', 'a  b\tc')):
+            repo = os.path.join(self.tmp, name)
+            with self.subTest(label), mock.patch.dict(os.environ, self.git_stub(self.dubious(repo))):
+                detail = sr.pin_commit_state(repo, self.original_pin)['detail']
+                tail = detail.split('git config --global --add safe.directory ', 1)[1]
+                self.assertTrue(tail.endswith(')'), tail)
+                self.assertEqual(shlex.split(tail[:-1]), [repo])
+
+    def test_a_folder_that_is_not_a_git_repository_gets_git_s_line_but_not_the_unsafe_advice(self):
+        said = 'fatal: not a git repository (or any of the parent directories): .git\n'
+        with mock.patch.dict(os.environ, self.git_stub(said)):
+            st = self.state()
+        self.assertEqual(st['detail'], f'HEAD has no {PIN_REL} in {self.repo} (not a git repository, no commit, or the file is not committed); git said: fatal: not a git repository '
+                                       '(or any of the parent directories): .git')
+        self.assertNotIn('unsafe', st['detail'])
+        self.assertNotIn('safe.directory', st['detail'])
+
+    def test_a_git_that_prints_nothing_adds_nothing(self):
+        for label, said in (('nothing', ''), ('only spaces and line ends', '  \n\n \t\n')):
+            with self.subTest(label), mock.patch.dict(os.environ, self.git_stub(said, code=1)):
+                self.assertEqual(self.state(), {'state': 'no', 'sha256': sha(self.original_pin), 'detail': self.not_in_head_words()})
+
+    def not_in_head_words(self, repo=None):
+        """The fixed words of the detail alone."""
+        return f'HEAD has no {PIN_REL} in {repo or self.repo} (not a git repository, no commit, or the file is not committed)'
+
+    def test_only_the_first_line_git_printed_is_said_and_at_most_200_characters_of_it(self):
+        words = self.not_in_head_words()
+        with mock.patch.dict(os.environ, self.git_stub('\n\nfatal: the first line\nand a second one\nand a third\n')):
+            self.assertEqual(self.state()['detail'], words + '; git said: fatal: the first line', 'blank lines before it are not counted, the lines after it are left out')
+        with mock.patch.dict(os.environ, self.git_stub('fatal: ' + 'x' * 300 + '\n')):
+            self.assertEqual(self.state()['detail'], words + '; git said: fatal: ' + 'x' * 193, 'cut at 200 characters of the line')
+        with mock.patch.dict(os.environ, self.git_stub('y' * 200 + '\n')):
+            self.assertEqual(self.state()['detail'], words + '; git said: ' + 'y' * 200, '200 characters are kept whole')
+        with mock.patch.dict(os.environ, self.git_stub('fatal: café – not here\n')):
+            self.assertEqual(self.state()['detail'], words + '; git said: fatal: café – not here', 'any text git prints is kept as it is')
+        with mock.patch.dict(os.environ, self.git_stub(b'fatal: \xff\xfe bytes\n')):
+            self.assertEqual(self.state()['detail'], words + '; git said: fatal: �� bytes', 'bytes that are not UTF-8 are read with replacement characters and never stop the check')
+
+    def test_the_unsafe_advice_is_added_when_the_word_is_anywhere_in_what_git_printed(self):
+        """Git puts the name of the setting on a later line than its first complaint: the advice follows the whole of what it printed, not its first line."""
+        repo = self.repo
+        advice = (f' (git refuses this folder as unsafe, which is not the same as the pin being uncommitted; if you trust it: git config --global --add safe.directory {repo})')
+        for label, said, first in (('on a later line', "fatal: detected dubious ownership in repository\nuse safe.directory to allow it\n", 'fatal: detected dubious ownership in repository'),
+                                   ('on the first line', 'fatal: add this folder to safe.directory\n', 'fatal: add this folder to safe.directory'),
+                                   ('beyond the 200 characters that are shown', 'fatal: ' + 'z' * 250 + ' safe.directory\n', 'fatal: ' + 'z' * 193)):
+            with self.subTest(label), mock.patch.dict(os.environ, self.git_stub(said)):
+                self.assertEqual(self.state()['detail'], self.not_in_head_words() + f'; git said: {first}' + advice)
+        with mock.patch.dict(os.environ, self.git_stub('fatal: detected dubious ownership in repository\nfatal: something else\n')):
+            self.assertNotIn('unsafe', self.state()['detail'], 'dubious ownership alone, without the name of the setting, is not the advice: git did not offer one')
+
+    def test_what_a_git_that_succeeds_printed_on_the_error_stream_is_not_said(self):
+        self.commit_pin()
+        with mock.patch.dict(os.environ, self.git_stub('warning: safe.directory is set oddly here\n', code=0, stdout=self.bytes_of(self.original_pin))):
+            self.assertEqual(self.state(), {'state': 'yes', 'sha256': sha(self.original_pin), 'detail': ''})
+        with mock.patch.dict(os.environ, self.git_stub('warning: safe.directory is set oddly here\n', code=0, stdout=b'another pin\n')):
+            st = self.state()
+        self.assertEqual(st['state'], 'no')
+        self.assertTrue(st['detail'].startswith(f'the pin file (sha256 {sha(self.original_pin)[:12]}) differs from the {PIN_REL} committed at HEAD (sha256 '), st['detail'])
+        self.assertNotIn('git said', st['detail'])
+        self.assertNotIn('safe.directory', st['detail'])
+
+    def test_the_test_only_variable_turns_every_no_into_bypassed_and_says_why(self):
+        scenarios = self.scenarios()
+        for value in ('1', 'yes', 'any text at all'):
+            with mock.patch.dict(os.environ, {ALLOW_PIN_VAR: value}):
+                for label, repo, pin, detail in scenarios:
+                    with self.subTest(label=label, value=value):
+                        st = self.state(pin, repo)
+                        self.assertEqual(st, {'state': 'bypassed', 'sha256': sha(pin), 'detail': detail + self.BYPASS})
+                        self.assertEqual(sr.require_committed_pin(repo, pin), st, 'a bypassed pin goes on (and is recorded as bypassed)')
+        with mock.patch.dict(os.environ, {ALLOW_PIN_VAR: ''}):
+            for label, repo, pin, detail in scenarios:
+                with self.subTest(label=label, value='empty'):
+                    self.assertEqual(self.state(pin, repo)['state'], 'no', 'an empty value is not a switch')
+
+    def test_the_variable_changes_nothing_for_a_pin_that_is_the_committed_one(self):
+        self.commit_pin()
+        with mock.patch.dict(os.environ, {ALLOW_PIN_VAR: '1'}):
+            self.assertEqual(self.state(), {'state': 'yes', 'sha256': sha(self.original_pin), 'detail': ''})
+
+    def test_the_refusal_is_in_these_words_and_only_a_no_is_refused(self):
+        with self.assertRaises(SystemExit) as cm:
+            sr.require_committed_pin(self.repo, self.original_pin)
+        self.assertEqual(cm.exception.code, self.refusal(self.not_in_head()))
+        self.commit_pin()
+        self.assertEqual(sr.require_committed_pin(self.repo, self.original_pin)['state'], 'yes')
+
+    # ------------------------------------------------------------------------------------------------ on the command line
+    def test_a_new_registration_a_dry_run_and_register_only_are_refused_when_the_pin_is_not_committed_and_nothing_is_written(self):
+        before = self.tree()
+        for extra in ((), ('--dry-run',), ('--register-only',)):
+            code, out, err = self.cli('--deals', '1', *extra)
+            self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + self.refusal(self.not_in_head()), extra)
+            self.assertEqual((out, err), ('', ''), 'refused before the first line of the plan')
+            self.assertFalse(os.path.exists(self.out_root), extra)
+        self.assertEqual(self.tree(), before, 'nothing was written anywhere')
+        self.assertEqual(self.replayed, [])
+
+    def test_the_pin_is_checked_before_the_program_is_looked_at(self):
+        write(self.program, FAKE_PROGRAM + '\n# changed\n', mode=0o755)  # not the pinned build: check_program would refuse it
+        code, out, err = self.cli('--deals', '1')
+        self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + self.refusal(self.not_in_head()))
+        os.remove(self.program)
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud)
+        self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + self.refusal(self.not_in_head()), 'and before the build record, the harness source and the self-check replays')
+        os.remove(self.cloud + '.build.json')
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud)
+        self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + self.refusal(self.not_in_head()))
+        self.assertEqual(self.replayed, [])
+        self.assertFalse(os.path.exists(self.out_root))
+
+    def test_a_hand_edited_pin_and_a_pin_copy_are_refused_and_a_byte_identical_copy_is_not(self):
+        self.commit_pin()
+        head = self.bytes_of(self.original_pin)
+        edited = json.loads(head)
+        edited['program_sha256'] = sha(self.program)  # (the edit that makes this program look pinned)
+        edited['threads'] = 3
+        hand = os.path.join(self.tmp, 'mine', 'pin.json')
+        write(hand, json.dumps(edited, indent=1))
+        self.pin_path = hand
+        code, out, err = self.cli('--deals', '1', '--dry-run')
+        self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + self.refusal(self.differs(hand, head)))
+        self.assertFalse(os.path.exists(self.out_root))
+        same = os.path.join(self.tmp, 'mine', 'copy.json')
+        write_bytes(same, head)
+        self.pin_path = same
+        code, out, err = self.cli('--deals', '1', '--dry-run')
+        self.assertEqual(code, 0, out + err)
+        self.assertIn(f'pin committed: yes ({PIN_REL} sha256 {sha(same)[:12]}; byte-equal to HEAD)', out)
+
+    def test_a_committed_pin_registers_and_the_plan_the_manifest_the_preregistration_and_the_page_say_so(self):
+        self.commit_pin()
+        psha = sha(self.original_pin)
+        with mock.patch.object(socket, 'gethostname', return_value='registering-box'):
+            code, out, err = self.cli('--deals', '1')
+        self.assertEqual(code, 0, out + err)
+        lines = [l.split('] ', 1)[1] for l in out.splitlines()]
+        want = f'pin committed: yes ({PIN_REL} sha256 {psha[:12]}; byte-equal to HEAD)'
+        self.assertEqual(lines.count(want), 1)
+        i = lines.index(want)
+        self.assertTrue(lines[i - 1].startswith('school-morning rule: OFF') and lines[i + 1].startswith('stage use'), 'after the size and school lines, before the stage line')
+        d = self.rundir()
+        b = self.manifest(d)['slow_report']
+        self.assertEqual((b['pin_committed'], b['pin_committed_detail'], b['registered_on']), ('yes', None, 'registering-box'), 'no detail for a pin that is the committed one')
+        self.assertEqual(b['pin'], {'path': self.original_pin, 'sha256': psha})
+        prereg = read(os.path.join(d, 'PREREGISTRATION.md'))
+        self.assertIn('\n- pin_committed: `yes`\n', prereg)
+        self.assertIn('\n- registered_on: `registering-box`\n', prereg)
+        page = read(os.path.join(d, 'SLOW_REPORT.md'))
+        self.assertIn(f"\n- Pin `{self.original_pin}` sha256 `{psha[:12]}`: committed (byte-equal to HEAD's file in the repository this run was registered from).\n", page)
+        self.assertNotIn('NOT the committed pin', page)
+
+    def test_a_pin_let_through_by_the_variable_is_registered_as_bypassed_and_the_plan_the_preregistration_and_the_page_say_so(self):
+        os.environ[ALLOW_PIN_VAR] = '1'
+        psha = sha(self.original_pin)
+        detail = self.not_in_head() + self.BYPASS
+        with mock.patch.object(socket, 'gethostname', return_value='registering-box'):
+            code, out, err = self.cli('--deals', '1')
+        self.assertEqual(code, 0, out + err)
+        lines = [l.split('] ', 1)[1] for l in out.splitlines()]
+        self.assertEqual(lines.count(f'pin committed: bypassed ({PIN_REL} sha256 {psha[:12]}; {detail})'), 1, lines)
+        d = self.rundir()
+        b = self.manifest(d)['slow_report']
+        self.assertEqual((b['pin_committed'], b['pin_committed_detail'], b['registered_on']), ('bypassed', detail, 'registering-box'))
+        prereg = read(os.path.join(d, 'PREREGISTRATION.md'))
+        for line in ('- pin_committed: `bypassed`', f'- pin_committed_detail: `{detail}`', '- registered_on: `registering-box`'):
+            self.assertIn('\n' + line + '\n', prereg)
+        page = read(os.path.join(d, 'SLOW_REPORT.md'))
+        self.assertIn(f'\n- Pin `{self.original_pin}` sha256 `{psha[:12]}`: **NOT the committed pin** ({detail}): what this page says about the program rests on a pin that is not the committed one.\n', page)
+        self.assertNotIn('byte-equal', page)
+
+    def test_a_rebuild_registered_with_the_committed_pin_says_the_committed_pins_digests_in_every_place_and_a_bypassed_pin_does_not(self):
+        """The engine text, the registered source of the self-check texts, PREREGISTRATION.md, the plan and the page all name what the self-checks were equal to by the state of the pin."""
+        for state, digests, committed in (('yes', COMMITTED_DIGESTS, True), ('bypassed', FILE_DIGESTS, False)):
+            with self.subTest(state):
+                self.make()
+                self.lay_out_harness()
+                self.replayed.clear()
+                if state == 'yes':
+                    self.commit_pin()
+                    os.environ.pop(ALLOW_PIN_VAR, None)
+                else:
+                    os.environ[ALLOW_PIN_VAR] = '1'
+                with mock.patch.object(socket, 'gethostname', return_value='registering-box'):
+                    code, out, err = self.cli('--deals', '1', '--program', self.cloud)
+                self.assertEqual(code, 0, (state, out + err))
+                d = self.rundir()
+                man = self.manifest(d)
+                rec = dict(self.build_record(self.cloud), record_file=self.cloud + '.build.json', record_sha256=sha(self.cloud + '.build.json'))
+                lines, prereg, page = [l.split('] ', 1)[1] for l in out.splitlines()], read(os.path.join(d, 'PREREGISTRATION.md')), read(os.path.join(d, 'SLOW_REPORT.md'))
+                self.assertEqual(man['slow_report']['pin_committed'], state)
+                self.assertEqual(man['engine'], self.rebuilt_engine_text(self.cloud, rec, digests))
+                phrase = 'the committed pin' if committed else 'the pin file in use, which is NOT the committed pin: test use'
+                self.assertEqual(man['selfcheck_source'], {s: f'replayed by slow_report.py on the registering machine just before registration (equal to {phrase})' for s in ('km3', 'kx3')})
+                self.assertEqual(prereg.count(f'(replayed by slow_report.py on the registering machine just before registration and equal to {phrase})'), 2, 'PREREGISTRATION.md')
+                plan = (f'program {self.cloud} (sha256 {sha(self.cloud)[:12]}) is NOT the pinned binary (sha256 {sha(self.program)[:12]}): its build record '
+                        f"(strength.build.json, sha256 {rec['record_sha256'][:12]}) says it is a rebuild of the pinned source (engine tree as archived {self.pin['engine_tree'][:12]}, "
+                        f"harness source {self.pin['harness_source_sha256'][:12]}, built with {self.RUSTC}); both self-checks will be replayed on this machine against {digests} "
+                        "before anything is registered (hours for kx3), and the checkout's harness source equals the pinned build's")
+                self.assertEqual(lines.count(plan), 1, 'the plan names what the replay will be compared with')
+                self.assertIn('\n- ' + self.REBUILD_LINE.format(pinned=self.program, sha12=sha(self.program)[:12], host='registering-box', digests=digests) + '\n', page)
+                how = 'replayed on the registering machine just before registration, equal to ' + ('the committed pin' if committed else 'the pin file in use (NOT the committed pin: test use)')
+                self.assertEqual(page.count(f'({how})'), 2, 'the Self-check lines')
+                self.assertNotIn('None', page.replace('repository commit `None`', ''), 'a repository with no commit has none to name: that line is the only place for the word')
+                for text in (man['engine'], prereg, page, '\n'.join(lines)):
+                    if committed:
+                        self.assertNotIn('NOT the committed pin', text)
+                    else:
+                        self.assertIn('NOT the committed pin', text)
+
+    def test_a_resume_a_report_only_and_a_dry_run_of_a_registered_run_do_not_need_the_committed_pin(self):
+        self.commit_pin()
+        self.assertEqual(self.cli('--deals', '1', '--max-games', '6')[0], 0)
+        d = self.rundir()
+        edited = json.loads(read(self.original_pin))
+        edited['threads'] = 5
+        write(self.original_pin, json.dumps(edited, indent=1))  # the pin on disk is no longer the committed one
+        self.assertEqual(self.state()['state'], 'no')
+        for extra in (('--dry-run',), ('--report-only',), ('--max-games', '6'), ()):
+            code, out, err = self.cli('--dir', d, *extra, deck=False)
+            self.assertEqual(code, 0, (extra, out, err))
+            self.assertNotIn('not the committed one', out + err)
+        self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), 32)
+
+    def test_the_check_reads_the_repository_and_writes_nothing_into_it(self):
+        self.commit_pin()
+        before = self.tree()
+        self.state()
+        code, out, err = self.cli('--deals', '1', '--dry-run')
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(self.tree(), before, 'git was asked to read and nothing was written, in .git or outside it')
+
+    # ------------------------------------------------------------------------------------------------ the repository we were told about, whatever a git hook exported
+    def other_repo_with(self, data):
+        """A second repository (the one a git hook or `rebase --exec` leaves exported in GIT_DIR) with `data` committed as its pin."""
+        other = os.path.join(self.tmp, 'other-repo')
+        os.makedirs(other)
+        self.commit_pin(data=data, repo=other)
+        return other
+
+    def exported(self, other):
+        return exported_git_variables(self.tmp, other)
+
+    def test_git_env_has_none_of_the_variables_that_choose_a_repository_and_has_optional_locks_off(self):
+        self.assertEqual(sr.GIT_REPO_VARS, GIT_REPO_VARS)
+        self.assertEqual(set(self.exported(self.tmp)), set(GIT_REPO_VARS), 'this test sets every one of them')
+        polluted = dict(self.exported(self.tmp), GIT_OPTIONAL_LOCKS='1', GIT_AUTHOR_NAME='someone', GIT_CONFIG_NOSYSTEM='1', KEEP_ME='yes')
+        with mock.patch.dict(os.environ, polluted):
+            env = sr.git_env()
+            for name in GIT_REPO_VARS:
+                self.assertNotIn(name, env, name)
+                self.assertIn(name, os.environ, f'{name}: the environment of this process itself is not changed')
+            self.assertEqual(env['GIT_OPTIONAL_LOCKS'], '0', 'optional locks are off, whatever the process had')
+            self.assertEqual(os.environ['GIT_OPTIONAL_LOCKS'], '1')
+            self.assertEqual({k: env.get(k) for k in ('GIT_AUTHOR_NAME', 'GIT_CONFIG_NOSYSTEM', 'KEEP_ME')}, {'GIT_AUTHOR_NAME': 'someone', 'GIT_CONFIG_NOSYSTEM': '1', 'KEEP_ME': 'yes'},
+                             'the other GIT_ variables and everything else are passed on')
+            self.assertEqual(env, dict({k: v for k, v in os.environ.items() if k not in GIT_REPO_VARS}, GIT_OPTIONAL_LOCKS='0'), 'nothing else is added or taken away')
+            env['KEEP_ME'] = 'changed'
+            self.assertEqual(os.environ['KEEP_ME'], 'yes', 'a copy: changing it changes nothing here')
+
+    def test_git_env_of_a_plain_environment_is_the_environment_and_optional_locks_off(self):
+        with mock.patch.dict(os.environ):
+            for name in GIT_REPO_VARS + ('GIT_OPTIONAL_LOCKS',):
+                os.environ.pop(name, None)
+            self.assertEqual(sr.git_env(), dict(os.environ, GIT_OPTIONAL_LOCKS='0'))
+
+    def recording_git(self):
+        return recording_git(self.tmp)
+
+    def test_the_pin_is_read_with_git_env_whatever_the_process_has_exported(self):
+        stub, calls = self.recording_git()
+        other = self.other_repo_with(b'{"another": "pin"}\n')
+        with mock.patch.dict(os.environ, dict(stub, **self.exported(other), GIT_OPTIONAL_LOCKS='1', GIT_AUTHOR_NAME='someone')):
+            self.state()
+        ((args, env),) = calls()
+        self.assertEqual(args, f'-C {self.repo} cat-file blob HEAD:./{PIN_REL}')
+        for name in GIT_REPO_VARS:
+            self.assertNotIn(name, env, name)
+        self.assertEqual((env['GIT_OPTIONAL_LOCKS'], env['GIT_AUTHOR_NAME']), ('0', 'someone'))
+
+    def test_the_variables_a_git_hook_exports_do_not_move_the_check_to_another_repository(self):
+        """`git -C repo` does not help when GIT_DIR is exported: a pin committed in this repository is judged by this repository's HEAD, not by the other one's."""
+        self.commit_pin()
+        other = self.other_repo_with(b'{"another": "pin"}\n')
+        want = {'state': 'yes', 'sha256': sha(self.original_pin), 'detail': ''}
+        self.assertEqual(self.state(), want)
+        every = self.exported(other)
+        for name, value in every.items():
+            with self.subTest(name), mock.patch.dict(os.environ, {name: value}):
+                self.assertEqual(self.state(), want)
+        with mock.patch.dict(os.environ, every):
+            self.assertEqual(self.state(), want, 'all of them at once')
+            self.assertEqual(sr.require_committed_pin(self.repo, self.original_pin), want)
+
+    def test_a_pin_committed_only_in_the_repository_a_hook_exported_is_not_committed_here(self):
+        """The dangerous direction: the pin is not committed in the repository given, but it is in the one GIT_DIR points to; it must not be taken as committed."""
+        other = self.other_repo_with(self.bytes_of(self.original_pin))
+        detail = self.not_in_head()  # (asked of the real git before anything is exported)
+        every = self.exported(other)
+        self.assertEqual(self.state(), {'state': 'no', 'sha256': sha(self.original_pin), 'detail': detail})
+        for name, value in every.items():
+            with self.subTest(name), mock.patch.dict(os.environ, {name: value}):
+                self.assertEqual(self.state(), {'state': 'no', 'sha256': sha(self.original_pin), 'detail': detail})
+        with mock.patch.dict(os.environ, every):
+            with self.assertRaises(SystemExit) as cm:
+                sr.require_committed_pin(self.repo, self.original_pin)
+            self.assertEqual(cm.exception.code, self.refusal(detail))
+
+    def test_the_command_line_judges_the_pin_by_the_repository_given_not_by_the_one_exported(self):
+        other = self.other_repo_with(self.bytes_of(self.original_pin))
+        detail = self.not_in_head()
+        with mock.patch.dict(os.environ, {'GIT_DIR': os.path.join(other, '.git')}):
+            before = self.tree()
+            for extra in ((), ('--dry-run',), ('--register-only',)):
+                code, out, err = self.cli('--deals', '1', *extra)
+                self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + self.refusal(detail), extra)
+                self.assertEqual((out, err), ('', ''))
+            self.assertEqual(self.tree(), before, 'nothing was written')
+        self.commit_pin()  # and now the pin is committed here, while the exported repository holds another one: the one committed here is the one that counts
+        elsewhere = os.path.join(self.tmp, 'elsewhere-repo')
+        os.makedirs(elsewhere)
+        self.commit_pin(data=b'{"another": "pin"}\n', repo=elsewhere)
+        with mock.patch.dict(os.environ, {'GIT_DIR': os.path.join(elsewhere, '.git')}):
+            code, out, err = self.cli('--deals', '1', '--dry-run')
+        self.assertEqual(code, 0, out + err)
+        self.assertIn(f'pin committed: yes ({PIN_REL} sha256 {sha(self.original_pin)[:12]}; byte-equal to HEAD)', out)
+
+
+class BuildRecord(RebuiltFixture):
+    """read_build_record(program, pin): the record rl/strength/build.sh writes beside a program (PROGRAM.build.json) must exist, be a schema 1 object, be for this exact file
+    (program_sha256), and carry the pin's engine tree (as archived), the pin's harness source and, when both name one, the pin's engine commit; every refusal says so in words and
+    ends 'Nothing was written.'. A rebuild without that record, or with another, is not the pinned source whatever its self-check says."""
+
+    def path(self):
+        return self.cloud + '.build.json'
+
+    def refusal(self, program=None, pin=None):
+        with self.assertRaises(SystemExit) as cm:
+            sr.read_build_record(program or self.cloud, pin or self.pin)
+        return cm.exception.code
+
+    def test_a_good_record_is_accepted_and_returned_with_its_file_and_its_sha256(self):
+        rec = self.build_record(self.cloud)
+        got = sr.read_build_record(self.cloud, self.pin)
+        self.assertEqual(got, dict(rec, record_file=self.path(), record_sha256=sha(self.path())))
+        self.write_record(self.cloud, host='another-host')  # the record file is another file now
+        again = sr.read_build_record(self.cloud, self.pin)
+        self.assertEqual((again['host'], again['record_sha256']), ('another-host', sha(self.path())))
+        self.assertNotEqual(again['record_sha256'], got['record_sha256'])
+
+    def test_only_the_fields_it_checks_are_needed(self):
+        drop = ('program', 'engine_arg', 'engine', 'rustc', 'cargo', 'machine', 'libc', 'host', 'home', 'cargo_home', 'build_dir', 'target_dir', 'jobs', 'built_at', 'rebuild_command')
+        self.write_record(self.cloud, **{k: DROP for k in drop})
+        got = sr.read_build_record(self.cloud, self.pin)
+        self.assertEqual(sorted(got), ['engine_ref', 'engine_tree_archived', 'harness_source_sha256', 'program_sha256', 'record_file', 'record_sha256', 'schema'])
+
+    def test_rustc_line_is_the_first_line_of_the_toolchain_that_says_anything_or_else_the_words_given(self):
+        """rustc_line(rec, missing): the first non-empty line of the record's `rustc -vV`, or `missing`, the words that fit the sentence it goes in (the registered engine text, the plan and
+        the page each word a record without a toolchain in their own way, and none of them prints 'None')."""
+        text = 'rustc 1.90.0 (fake 2026-01-01)\nbinary: rustc\nhost: x86_64-unknown-linux-gnu'
+        for rec, want in ((dict(rustc=text), 'rustc 1.90.0 (fake 2026-01-01)'), (dict(rustc='rustc 1.90.0 (one line)'), 'rustc 1.90.0 (one line)'),
+                          (dict(rustc='\n\n \nrustc 1.90.0 (late)\nbinary: rustc'), 'rustc 1.90.0 (late)'), (dict(rustc='rustc 1.90.0 (dos)\r\nbinary: rustc\r\n'), 'rustc 1.90.0 (dos)')):
+            for missing in ('toolchain not recorded', 'rustc not recorded', 'an unrecorded toolchain'):
+                self.assertEqual(sr.rustc_line(rec, missing), want, (rec, missing))
+        for label, rec in (('no entry', {}), ('null', dict(rustc=None)), ('empty', dict(rustc='')), ('only blank lines', dict(rustc='\n  \n\t\n')), ('a number', dict(rustc=5)),
+                           ('true', dict(rustc=True)), ('a list', dict(rustc=['rustc 1.90.0'])), ('an object', dict(rustc={'a': 'b'})), ('another entry only', dict(cargo='cargo 1.90.0'))):
+            for missing in ('toolchain not recorded', 'rustc not recorded', 'an unrecorded toolchain', 'x'):
+                self.assertEqual(sr.rustc_line(rec, missing), missing, (label, missing))
+
+    def test_a_program_without_a_record_is_refused_and_so_is_a_folder_in_its_place(self):
+        os.remove(self.path())
+        want = f'REFUSED: {self.cloud} has no build record ({self.path()}); {RECORD_HINT}. Nothing was written.'
+        self.assertEqual(self.refusal(), want)
+        os.makedirs(self.path())
+        self.assertEqual(self.refusal(), want)
+
+    def test_a_record_that_cannot_be_read_is_refused(self):
+        for label, data in (('half a file', b'{"schema": 1,'), ('an empty file', b''), ('bytes that are not UTF-8', b'\xff\xfe\x00{')):
+            write_bytes(self.path(), data)
+            msg = self.refusal()
+            self.assertTrue(msg.startswith(f'REFUSED: the build record {self.path()} cannot be read ('), (label, msg))
+            self.assertTrue(msg.endswith(f'); {RECORD_HINT}. Nothing was written.'), (label, msg))
+
+    def test_a_record_that_is_not_a_schema_1_object_is_refused(self):
+        rec = self.build_record(self.cloud)
+        for label, text in (('a list', '[1]'), ('null', 'null'), ('a string', '"schema 1"'), ('a number', '1'), ('schema 2', json.dumps(dict(rec, schema=2))),
+                            ('no schema', json.dumps({k: v for k, v in rec.items() if k != 'schema'})), ('schema as text', json.dumps(dict(rec, schema='1'))),
+                            ('schema true', json.dumps(dict(rec, schema=True))), ('schema 1.0', json.dumps(dict(rec, schema=1.0))), ('schema null', json.dumps(dict(rec, schema=None))),
+                            ('schema a list', json.dumps(dict(rec, schema=[1]))), ('schema 0', json.dumps(dict(rec, schema=0))), ('schema -1', json.dumps(dict(rec, schema=-1)))):
+            write(self.path(), text)
+            self.assertEqual(self.refusal(), f'REFUSED: the build record {self.path()} is not a schema 1 record; {RECORD_HINT}. Nothing was written.', label)
+        write(self.path(), json.dumps(dict(rec, schema=1)))
+        self.assertEqual(sr.read_build_record(self.cloud, self.pin)['schema'], 1, 'the whole number 1 is the schema')
+
+    def test_an_entry_that_the_page_prints_as_text_must_be_text_when_it_is_there(self):
+        """The page, the plan and the registered engine text print these entries as words: a record in which one is a number, a list or an object is damaged, not a build record. Null
+        means 'not recorded' and an empty text is text."""
+        path = self.path()
+        self.assertEqual(sr.BUILD_RECORD_TEXT_KEYS, ('program_sha256', 'engine_arg', 'engine', 'engine_ref', 'engine_tree_archived', 'harness_source_sha256', 'rustc', 'cargo', 'machine', 'host',
+                                                    'built_at', 'rebuild_command'))
+        for key in sr.BUILD_RECORD_TEXT_KEYS:
+            for value in (5, 1.5, True, False, [], ['x'], {}, {'a': 'b'}):
+                with self.subTest(key=key, value=value):
+                    self.write_record(self.cloud, **{key: value})
+                    self.assertEqual(self.refusal(), f'REFUSED: the build record {path} has an entry {key} that is not text; {RECORD_HINT}. Nothing was written.')
+        for key in ('engine_arg', 'engine', 'engine_ref', 'rustc', 'cargo', 'machine', 'host', 'built_at', 'rebuild_command'):
+            for value in (None, '') if key == 'engine_ref' else (None, '', 'text'):  # (an engine ref that is text has to be the pin's)
+                with self.subTest(key=key, value=value):
+                    self.write_record(self.cloud, **{key: value})
+                    self.assertEqual(sr.read_build_record(self.cloud, self.pin)[key], value, 'null, an empty text and a text are all accepted')
+
+    def test_the_text_of_the_entries_is_judged_after_the_schema_and_before_the_file_it_is_for(self):
+        rec = self.build_record(self.cloud, rustc=['x'], program_sha256='0' * 64)
+        write(self.path(), json.dumps(dict(rec, schema=2)))
+        self.assertIn('is not a schema 1 record', self.refusal())
+        write(self.path(), json.dumps(rec))
+        self.assertIn('has an entry rustc that is not text', self.refusal(), 'a damaged record is refused as damaged, whatever file it says it is for')
+        write(self.path(), json.dumps(dict(rec, rustc='rustc 1.90.0')))
+        self.assertIn('is for a program with sha256 000000000000', self.refusal())
+
+    def test_a_record_for_another_file_is_refused_and_names_both_hashes(self):
+        other = os.path.join(self.tmp, 'other', 'strength')
+        write(other, FAKE_PROGRAM + '\n# another program\n', mode=0o755)
+        write(self.path(), json.dumps(self.build_record(other)))  # the record of another program, copied beside this one
+        want = (f'REFUSED: the build record {self.path()} is for a program with sha256 {sha(other)[:12]}, but {self.cloud} has sha256 {sha(self.cloud)[:12]}: the record belongs to the '
+                'file it was written for. Nothing was written.')
+        self.assertEqual(self.refusal(), want)
+        self.write_record(self.cloud)
+        built12 = sha(self.cloud)[:12]
+        write(self.cloud, FAKE_PROGRAM + '\n# edited after it was built\n', mode=0o755)  # or the program was changed after its record was written
+        self.assertEqual(self.refusal(), f'REFUSED: the build record {self.path()} is for a program with sha256 {built12}, but {self.cloud} has sha256 {sha(self.cloud)[:12]}: '
+                                         'the record belongs to the file it was written for. Nothing was written.')
+        write(self.path(), json.dumps({k: v for k, v in self.build_record(self.cloud).items() if k != 'program_sha256'}))
+        self.assertIn('is for a program with sha256 None, but', self.refusal(), 'a record that does not say which file it is for is not for this one')
+
+    def test_a_record_with_another_engine_tree_harness_source_or_commit_is_refused_naming_both(self):
+        p = self.cloud
+        tree12, harness12, ref12 = self.pin['engine_tree'][:12], self.pin['harness_source_sha256'][:12], self.pin['engine_ref'][:12]
+        cases = (('another engine tree', dict(engine_tree_archived='1' * 40), f'REFUSED: the build record says the engine tree that went into {p} is 111111111111, not the pinned {tree12}, '
+                                                                                'so it is not a build of the pinned source. Nothing was written.'),
+                 ('no engine tree', dict(engine_tree_archived=DROP), f'REFUSED: the build record says the engine tree that went into {p} is None, not the pinned {tree12}, '
+                                                                     'so it is not a build of the pinned source. Nothing was written.'),
+                 ('another harness source', dict(harness_source_sha256='2' * 64), f'REFUSED: the build record says the harness source that went into {p} is 222222222222, not the pinned {harness12}, '
+                                                                                  'so it is not a build of the pinned source. Nothing was written.'),
+                 ('no harness source', dict(harness_source_sha256=DROP), f'REFUSED: the build record says the harness source that went into {p} is None, not the pinned {harness12}, '
+                                                                         'so it is not a build of the pinned source. Nothing was written.'),
+                 ('another engine commit', dict(engine_ref='3' * 40), f'REFUSED: the build record says the engine ref was 333333333333, not the pinned {ref12}. Nothing was written.'))
+        for label, over, want in cases:
+            with self.subTest(label):
+                self.write_record(self.cloud, **over)
+                self.assertEqual(self.refusal(), want)
+
+    def test_the_checks_are_made_in_this_order_file_schema_program_tree_harness_commit(self):
+        faults = dict(program_sha256='0' * 64, engine_tree_archived='1' * 40, harness_source_sha256='2' * 64, engine_ref='3' * 40)
+        rec = self.build_record(self.cloud, **faults)
+        write(self.path(), json.dumps(dict(rec, schema=2)))
+        self.assertIn('is not a schema 1 record', self.refusal())
+        write(self.path(), json.dumps(rec))
+        self.assertIn('is for a program with sha256 000000000000', self.refusal())
+        rec['program_sha256'] = sha(self.cloud)
+        write(self.path(), json.dumps(rec))
+        self.assertIn('the engine tree that went into', self.refusal())
+        rec['engine_tree_archived'] = self.pin['engine_tree']
+        write(self.path(), json.dumps(rec))
+        self.assertIn('the harness source that went into', self.refusal())
+        rec['harness_source_sha256'] = self.pin['harness_source_sha256']
+        write(self.path(), json.dumps(rec))
+        self.assertIn('the engine ref was 333333333333', self.refusal())
+        rec['engine_ref'] = self.pin['engine_ref']
+        write(self.path(), json.dumps(rec))
+        self.assertEqual(sr.read_build_record(self.cloud, self.pin)['engine_ref'], self.pin['engine_ref'])
+
+    def test_the_engine_commit_is_compared_only_when_the_record_and_the_pin_both_name_one(self):
+        for label, over in (('a build of a folder (null)', dict(engine_ref=None)), ('no engine_ref in the record', dict(engine_ref=DROP)), ('an empty one', dict(engine_ref=''))):
+            self.write_record(self.cloud, **over)
+            self.assertEqual(sr.read_build_record(self.cloud, self.pin)['program_sha256'], sha(self.cloud), label)
+        self.write_record(self.cloud, engine_ref='3' * 40)
+        for label, pin in (('a pin with none', {k: v for k, v in self.pin.items() if k != 'engine_ref'}), ('a null one', dict(self.pin, engine_ref=None)), ('an empty one', dict(self.pin, engine_ref=''))):
+            self.assertEqual(sr.read_build_record(self.cloud, pin)['engine_ref'], '3' * 40, label)
+
+    def test_a_pin_without_an_engine_tree_or_a_harness_hash_cannot_check_a_rebuild(self):
+        for key in ('engine_tree', 'harness_source_sha256'):
+            for label, pin in (('missing', {k: v for k, v in self.pin.items() if k != key}), ('null', dict(self.pin, **{key: None})), ('empty', dict(self.pin, **{key: ''}))):
+                self.assertEqual(self.refusal(pin=pin), f'REFUSED: the pin has no {key}, so a rebuild cannot be checked against it. Nothing was written.', (key, label))
+        bare = {k: v for k, v in self.pin.items() if k not in ('engine_tree', 'harness_source_sha256')}
+        self.assertIn('the pin has no engine_tree', self.refusal(pin=bare), 'the engine tree is asked for first')
+        self.write_record(self.cloud, engine_tree_archived='1' * 40)
+        self.assertIn('the build record says the engine tree that went into', self.refusal(pin={k: v for k, v in self.pin.items() if k != 'harness_source_sha256'}),
+                      'the engine tree is judged before the harness source is asked for')
+
+    def test_the_command_line_refuses_a_rebuild_with_a_bad_record_before_any_replay_and_writes_nothing(self):
+        cases = (('no record', lambda: os.remove(self.path()), lambda: f'REFUSED: {self.cloud} has no build record ({self.path()});'),
+                 ('another engine tree', lambda: self.write_record(self.cloud, engine_tree_archived='1' * 40), lambda: f'REFUSED: the build record says the engine tree that went into {self.cloud}'),
+                 ('another harness source', lambda: self.write_record(self.cloud, harness_source_sha256='2' * 64), lambda: f'REFUSED: the build record says the harness source that went into {self.cloud}'),
+                 ('the record of another file', lambda: self.write_record(self.cloud, program_sha256='4' * 64), lambda: f'REFUSED: the build record {self.path()} is for a program with sha256 444444444444'))
+        for label, prepare, want in cases:
+            with self.subTest(label):
+                self.make()
+                self.lay_out_harness()
+                self.replayed.clear()
+                prepare()
+                for extra in ((), ('--dry-run',), ('--register-only',)):
+                    code, out, err = self.cli('--deals', '1', '--program', self.cloud, *extra)
+                    self.assertTrue(str(code).startswith('[kx3 (d513e37b) v km3] ' + want()), (label, extra, code))
+                    self.assertTrue(str(code).endswith('Nothing was written.'), code)
+                    self.assertEqual(out, '', 'refused before the first line of the plan')
+                    self.assertFalse(os.path.exists(self.out_root), 'nothing was written')
+                self.assertEqual(self.replayed, [], 'refused before the hours-long replay')
+                self.assertFalse(os.path.exists(os.path.join(os.path.dirname(self.cloud), 'selfcheck_env.json')))
+
+
+class ProgramChangedOnResume(RebuiltFixture):
+    """A run registered on the rebuilt route whose program is another file when it is resumed (a container restart: the rebuild is a new file): the resume goes on only when the pin is
+    the committed one, the new program's build record is for it and has the pinned engine tree and harness source, and both self-checks are replayed again on it and equal the
+    committed pin; then a 'program_changed' event is logged, the page shows it, and the run goes on with the new sha256 accepted (a third one is refused by the check before each
+    sitting). A run registered on the pinned route, or with another problem too, is refused as before."""
+    NEW = FAKE_PROGRAM + '\n# built again after the restart, other bytes\n'
+
+    def setUp(self):
+        super().setUp()
+        self.spawn = self.spawned()
+
+    def started(self, max_games='10', *extra, **kw):
+        """Register on the rebuilt route (the fixture's rebuilt copy) and play `max_games` games; the folder, with the program still the registered one."""
+        code, out, err = self.cli('--deals', '1', '--max-games', max_games, '--program', self.cloud, *extra, spawn=self.spawn, **kw)
+        self.assertEqual(code, 0, out + err)
+        return self.rundir()
+
+    def rebuild_again(self, text=None, **over):
+        """The rebuild after the restart: other bytes at the same path, with its own build record. Returns the record."""
+        return self.put_program(self.cloud, text or self.NEW, **over)
+
+    def events(self, d, name=None):
+        ev = jsonl(os.path.join(d, 'slow_report_log.jsonl'))
+        return [e for e in ev if e['event'] == name] if name else ev
+
+    def snapshot(self, d):
+        return dict(calls=len(jsonl(os.path.join(d, 'fake_calls.jsonl'))), games=len(jsonl(os.path.join(d, 'games.jsonl'))), events=[e['event'] for e in self.events(d)],
+                    lock=os.path.exists(os.path.join(d, 'slow_report.lock')))
+
+    def refused_resume(self, d, *extra, **kw):
+        """Resume `d` and check that it is refused before a thing happens: no program started, no game, no event, no lock left. Returns the refusal."""
+        before, replayed = self.snapshot(d), list(self.replayed)
+        code, out, err = self.cli('--dir', d, *extra, deck=False, spawn=self.spawn, **kw)
+        self.assertIsInstance(code, str, out + err)
+        self.assertTrue(code.startswith(f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: '), code)
+        self.assertEqual(self.snapshot(d), before, 'nothing was played, logged or left locked')
+        self.last_replays = self.replayed[len(replayed):]
+        return code
+
+    def pin_down_times(self, d, before):
+        """The fake program stamps a game with the second it was played in and the event is stamped when it is logged: set them (the first `before` games 10:00:01, the rest 10:00:30,
+        the change 10:00:10) so that the page's count of games before and after it is certain."""
+        games = jsonl(os.path.join(d, 'games.jsonl'))
+        for i, g in enumerate(games):
+            g['started_at'] = '2026-10-10T10:00:01Z' if i < before else '2026-10-10T10:00:30Z'
+        write(os.path.join(d, 'games.jsonl'), ''.join(json.dumps(g) + '\n' for g in games))
+        log = self.events(d)
+        for e in log:
+            if e['event'] == 'program_changed':
+                e['at'] = '2026-10-10T10:00:10Z'
+        write(os.path.join(d, 'slow_report_log.jsonl'), ''.join(json.dumps(e) + '\n' for e in log))
+
+    # ------------------------------------------------------------------------------------------------ accepted
+    def test_a_rebuilt_copy_with_the_pinned_record_and_both_self_checks_equal_to_the_pin_is_accepted_and_logged(self):
+        d = self.started()
+        registered = sha(self.cloud)
+        manifest_before = (read(os.path.join(d, 'manifest.json')), read(os.path.join(d, 'manifest.sha256')))
+        rec = self.rebuild_again()
+        new = sha(self.cloud)
+        self.assertNotEqual(new, registered)
+        self.replayed.clear()
+        code, out, err = self.cli('--dir', d, deck=False, spawn=self.spawn)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)], 'both self-checks again, on the new file, km3 first')
+        lines = [l.split('] ', 1)[1] for l in out.splitlines()]
+        said = [f'the program at {self.cloud} has sha256 {new[:12]}, not the {registered[:12]} this run was registered with; its build record has the pinned engine tree and harness source, '
+                f'so both self-checks are replayed again against {FILE_DIGESTS} before the run goes on (hours for kx3)',
+                f'self-check of km3: 12 fixed games on {self.cloud} (this takes a while for kx3; run it when the machine is free)',
+                f'self-check of kx3: 12 fixed games on {self.cloud} (this takes a while for kx3; run it when the machine is free)',
+                f'program changed mid-run, accepted: both self-checks equal {FILE_DIGESTS}; logged as program_changed in slow_report_log.jsonl and shown on the page']
+        at = [lines.index(s) for s in said]
+        self.assertEqual(at, sorted(at), 'said in this order')
+        self.assertLess(at[3], lines.index('running: 22 games to go, 2 at a time'), 'and then the run goes on')
+        changed = self.events(d, 'program_changed')
+        self.assertEqual(len(changed), 1)
+        self.assertRegex(changed[0]['at'], r'^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$')
+        self.assertEqual({k: v for k, v in changed[0].items() if k != 'at'},
+                         {'event': 'program_changed', 'pilot': 'kx3', 'reference': 'km3', 'old_sha256': registered, 'new_sha256': new,
+                          'build_record': dict(rec, record_file=self.cloud + '.build.json', record_sha256=sha(self.cloud + '.build.json')),
+                          'selfcheck': {s: self.TEXT % s for s in ('km3', 'kx3')}, 'pin_committed': 'bypassed', 'replayed_on': socket.gethostname()})
+        self.assertEqual([e['event'] for e in self.events(d) if e['event'] != 'env_scrubbed'],
+                         ['registered', 'sitting_call', 'slice_start', 'slice_end', 'report_written', 'program_changed', 'sitting_call', 'slice_start', 'slice_end', 'complete', 'report_written'],
+                         'the change is logged after the replay and before the sitting that runs the new program')
+        self.assertEqual((read(os.path.join(d, 'manifest.json')), read(os.path.join(d, 'manifest.sha256'))), manifest_before, 'the registration is not touched')
+        self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), 32)
+        self.assertTrue(os.path.exists(os.path.join(os.path.dirname(self.cloud), 'selfcheck_env.json')))
+        self.assertFalse(os.path.exists(os.path.join(d, 'slow_report.lock')))
+
+    def test_the_page_shows_the_change_with_the_games_started_before_and_after_it(self):
+        d = self.started()
+        registered = sha(self.cloud)
+        self.rebuild_again()
+        new = sha(self.cloud)
+        record12 = sha(self.cloud + '.build.json')[:12]
+        self.assertEqual(self.cli('--dir', d, deck=False, spawn=self.spawn)[0], 0)
+        for before in (10, 0, 1, 32):
+            with self.subTest(before=before):
+                self.pin_down_times(d, before)
+                code, out, err = self.cli('--dir', d, '--report-only', deck=False)
+                self.assertEqual(code, 0, out + err)
+                lines = read(os.path.join(d, 'SLOW_REPORT.md')).splitlines()
+                games = f"{before} game{'' if before == 1 else 's'}"
+                want = (f'- **The program changed mid-run** (2026-10-10T10:00:10Z): sha256 `{registered[:12]}` -> `{new[:12]}` after a restart or rebuild; its build record has the pinned engine '
+                        f'tree and harness source (record `{record12}`) and both self-checks were replayed again on {socket.gethostname()} and equal {FILE_DIGESTS}. '
+                        f'{games} of the 32 played so far were started before this change and {32 - before} after; the numbers above pool them.')
+                self.assertEqual(lines.count(want), 1)
+                first_self_check = next(i for i, l in enumerate(lines) if l.startswith('- Self-check of'))
+                self.assertEqual(lines.index(want), first_self_check - 1, 'right before the self-checks, after the pin line')
+                self.assertTrue(lines[lines.index(want) - 1].startswith('- Pin '))
+
+    def test_the_accepted_program_is_accepted_by_every_later_call_without_another_replay(self):
+        d = self.started()
+        reg = sha(self.cloud)
+        self.rebuild_again()
+        new = sha(self.cloud)
+        self.assertEqual(self.cli('--dir', d, '--max-games', '10', deck=False, spawn=self.spawn)[0], 0)
+        replays = list(self.replayed)
+        self.assertEqual(len(replays), 4, 'two at the registration, two for the change')
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertIn(f'(resume with: python3 rl/strength/slow_report.py --dir {d} --school-rule off)', out, 'the dry run now sees nothing to replay')
+        self.assertNotIn('replay', out)
+        for played in (30, 32):
+            code, out, err = self.cli('--dir', d, '--max-games', '10', deck=False, spawn=self.spawn)
+            self.assertEqual(code, 0, out + err)
+            self.assertNotIn('has sha256', out)
+            self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), played)
+        self.assertEqual(self.cli('--dir', d, '--report-only', deck=False)[0], 0)
+        self.assertEqual(self.replayed, replays, 'no later call replays anything')
+        self.assertEqual([e['new_sha256'] for e in self.events(d, 'program_changed')], [new], 'and none logs the change again')
+        self.assertEqual(sr.accepted_program_shas(d, self.manifest(d)), {reg, new})
+
+    def test_a_second_change_is_replayed_and_logged_again_and_the_first_one_stays_accepted(self):
+        d = self.started('6')
+        reg = sha(self.cloud)
+        self.rebuild_again()
+        b = sha(self.cloud)
+        self.assertEqual(self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)[0], 0)
+        self.rebuild_again(FAKE_PROGRAM + '\n# a third build\n')
+        c = sha(self.cloud)
+        self.assertEqual(self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)[0], 0)
+        self.assertEqual(len(self.replayed), 6, 'a replay of both self-checks for each of the two changes')
+        self.assertEqual([e['new_sha256'] for e in self.events(d, 'program_changed')], [b, c])
+        self.assertEqual(sr.accepted_program_shas(d, self.manifest(d)), {reg, b, c})
+        self.assertEqual(read(os.path.join(d, 'SLOW_REPORT.md')).count('**The program changed mid-run**'), 2)
+        self.rebuild_again()  # back to the second build, which was accepted: no replay
+        code, out, err = self.cli('--dir', d, deck=False, spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(len(self.replayed), 6)
+        self.assertEqual(len(self.events(d, 'program_changed')), 2)
+
+    def change_event(self, man, new_sha, **over):
+        """A 'program_changed' event as reverify_program writes it for the run `man`: the program it names, its build record (for that file, with the registered engine tree and
+        harness hash), the self-check texts the run was registered with. `over` replaces entries (a value of DROP removes one)."""
+        return change_event_for(man, new_sha, **over)
+
+    def forgeries(self, man, new):
+        return forged_overrides(man, new)
+
+    def append_log(self, d, *events, torn=None):
+        """Add lines to the run's log, as a person (or a program with a bug) could: the events as JSON lines, then, if given, a last line torn by a kill."""
+        with open(os.path.join(d, 'slow_report_log.jsonl'), 'a', encoding='utf-8') as f:
+            for e in events:
+                f.write(json.dumps(e) + '\n')
+            if torn:
+                f.write(torn)
+
+    def test_accepted_program_shas_are_the_registered_one_and_each_logged_change(self):
+        d = self.started()
+        man = self.manifest(d)
+        reg = man['program_sha256']
+        self.assertEqual(sr.accepted_program_shas(d, man), {reg})
+        self.append_log(d, self.change_event(man, 'a' * 64), self.change_event(man, 'b' * 64, at='2026-10-10T10:00:20Z'), {'event': 'program_changed'},
+                        self.change_event(man, 5), dict(self.change_event(man, 'c' * 64), event='slice_end'), torn='{"event": "program_changed", "new_sha2')
+        self.assertEqual(sr.accepted_program_shas(d, man), {reg, 'a' * 64, 'b' * 64}, 'only a program_changed event that names a program, with its record and self-checks, counts')
+        os.remove(os.path.join(d, 'slow_report_log.jsonl'))
+        self.assertEqual(sr.accepted_program_shas(d, man), {reg}, 'no log: the registered one')
+
+    def test_verify_inputs_takes_the_set_of_program_hashes_the_run_may_continue_with(self):
+        d = self.started()
+        man = self.manifest(d)
+        reg = man['program_sha256']
+        self.assertEqual(sr.verify_inputs(man), [])
+        self.assertEqual(sr.verify_inputs(man, {reg}), [])
+        self.rebuild_again()
+        new = sha(self.cloud)
+        for accepted in (None, set(), {reg}):
+            problems = sr.verify_inputs(man, accepted)
+            self.assertEqual(problems, [f'{self.cloud} has sha256 {new[:12]}, {sr.PROGRAM_PROBLEM} {reg[:12]}. ' + RESUME_NEEDS], accepted)
+        self.assertEqual(sr.verify_inputs(man, {reg, new}), [], 'the new one is accepted once it is in the set')
+
+    # ------------------------------------------------------------------------------------------------ refused
+    def test_a_resume_without_a_build_record_is_refused_and_replays_nothing(self):
+        d = self.started()
+        self.rebuild_again()
+        os.remove(self.cloud + '.build.json')
+        msg = self.refused_resume(d)
+        self.assertTrue(msg.endswith(f'REFUSED: {self.cloud} has no build record ({self.cloud}.build.json); {RECORD_HINT}. Nothing was written.'), msg)
+        self.assertEqual(self.last_replays, [])
+
+    def test_a_resume_with_a_record_that_is_not_the_pinned_source_or_not_for_the_file_is_refused_and_replays_nothing(self):
+        for label, over, want in (('another engine tree', dict(engine_tree_archived='1' * 40), 'the build record says the engine tree that went into'),
+                                  ('another harness source', dict(harness_source_sha256='2' * 64), 'the build record says the harness source that went into'),
+                                  ('another engine commit', dict(engine_ref='3' * 40), 'the build record says the engine ref was 333333333333'),
+                                  ('the record of the program it replaces', dict(program_sha256='5' * 64), 'is for a program with sha256 555555555555')):
+            with self.subTest(label):
+                self.make()
+                self.lay_out_harness()
+                self.replayed.clear()
+                self.spawn = self.spawned()
+                d = self.started()
+                self.rebuild_again(**over)
+                msg = self.refused_resume(d)
+                self.assertIn(want, msg)
+                self.assertTrue(msg.endswith('Nothing was written.'), msg)
+                self.assertEqual(self.last_replays, [])
+
+    def test_the_old_record_beside_a_rebuilt_program_is_not_the_record_of_the_new_file(self):
+        d = self.started()
+        old_record = read(self.cloud + '.build.json')
+        registered = sha(self.cloud)
+        write(self.cloud, self.NEW, mode=0o755)  # rebuilt, but the record beside it is still the old program's
+        self.assertEqual(read(self.cloud + '.build.json'), old_record)
+        msg = self.refused_resume(d)
+        self.assertTrue(msg.endswith(f'is for a program with sha256 {registered[:12]}, but {self.cloud} has sha256 {sha(self.cloud)[:12]}: the record belongs to the file it was written for. '
+                                     'Nothing was written.'), msg)
+        self.assertEqual(self.last_replays, [])
+
+    def test_a_replay_that_differs_from_the_pin_for_either_pilot_is_refused_and_logs_nothing(self):
+        for pilot, tried in (('km3', ['km3']), ('kx3', ['km3', 'kx3'])):
+            with self.subTest(differs_for=pilot):
+                self.make()
+                self.lay_out_harness()
+                self.replayed.clear()
+                self.spawn = self.spawned()
+                d = self.started()
+                self.rebuild_at(self.cloud, differs_for=pilot)
+                msg = self.refused_resume(d)
+                self.assertTrue(msg.endswith(f'REFUSED: the self-check of {pilot} does not match the pin.\n  pinned: {self.TEXT % pilot}\n  got:    selfcheck pilot={pilot} games=12 '
+                                             'digest=changedchanged00\nThe program is not behaving as the pinned build did; nothing was written.'), msg)
+                self.assertEqual([s for s, p in self.last_replays], tried, 'km3 first, and it stops at the first difference')
+                self.assertEqual(self.events(d, 'program_changed'), [])
+
+    def test_a_refused_resume_can_be_tried_again_after_a_good_rebuild(self):
+        d = self.started()
+        self.rebuild_at(self.cloud, differs_for='kx3')
+        self.refused_resume(d)
+        self.rebuild_again()
+        new = sha(self.cloud)
+        code, out, err = self.cli('--dir', d, deck=False, spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual([e['new_sha256'] for e in self.events(d, 'program_changed')], [new], 'the refused one left nothing behind')
+
+    def test_a_run_registered_on_the_pinned_route_is_refused_as_before_even_with_a_record_beside_the_new_program(self):
+        code, out, err = self.cli('--deals', '1', '--max-games', '10', spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        d = self.rundir()
+        registered = sha(self.program)
+        write(self.program, FAKE_PROGRAM + '\n# a rebuild at the pinned path\n', mode=0o755)
+        self.write_record(self.program)
+        msg = self.refused_resume(d)
+        self.assertEqual(msg, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n'
+                              f'  {self.program} has sha256 {sha(self.program)[:12]}, but this run was registered with the program at that path with sha256 {registered[:12]}. ' + RESUME_NEEDS_PINNED)
+        self.assertEqual((self.last_replays, self.replayed), ([], []), 'no self-check is replayed for a pinned run')
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertEqual(code, 0)
+        self.assertIn('(it would be refused: ' + f'{self.program} has sha256 {sha(self.program)[:12]}, {sr.PROGRAM_PROBLEM} {registered[:12]}. ' + RESUME_NEEDS_PINNED + ')', out)
+        self.assertNotIn('a resume would replay', out, 'a pinned run is never offered the replay')
+
+    def test_a_changed_program_with_another_problem_too_is_refused_with_both_and_replays_nothing(self):
+        for label, change, line in (('the deck file', lambda: write(self.deck, DECK_TEXT.replace('Torchic', 'Treecko')), 'my-list ('),
+                                    ('a panel list', lambda: write(os.path.join(self.repo, 'decks', 'screen', 'opponents', 't-weezing.txt'),
+                                                                   read(os.path.join(self.repo, 'decks', 'screen', 'opponents', 't-weezing.txt')) + '# edited\n'), 't-weezing (')):
+            with self.subTest(label):
+                self.make()
+                self.lay_out_harness()
+                self.replayed.clear()
+                self.spawn = self.spawned()
+                d = self.started()
+                self.rebuild_again()
+                change()
+                msg = self.refused_resume(d)
+                problems = msg.split('so nothing is run:\n', 1)[1].split('\n  ')
+                self.assertEqual(len(problems), 2, problems)
+                self.assertIn(sr.PROGRAM_PROBLEM, problems[0])
+                self.assertIn(line, problems[1])
+                self.assertIn('has changed since registration', problems[1])
+                self.assertEqual(self.last_replays, [])
+                code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+                self.assertIn('(it would be refused: ' + problems[0].strip() + '; ', out)
+                self.assertNotIn('a resume would replay', out, 'with another problem the replay is not on offer')
+
+    def test_a_changed_program_whose_file_is_gone_is_refused_and_not_replayed(self):
+        d = self.started()
+        os.remove(self.cloud)
+        msg = self.refused_resume(d)
+        self.assertIn(f'{self.cloud} is missing, {sr.PROGRAM_PROBLEM}', msg)
+        self.assertEqual(self.last_replays, [])
+
+    def test_when_the_pin_is_not_the_committed_one_the_resume_is_refused_before_the_replay(self):
+        d = self.started()
+        registered = sha(self.cloud)
+        self.rebuild_again()
+        os.environ.pop(ALLOW_PIN_VAR, None)
+        msg = self.refused_resume(d)
+        self.assertTrue(msg.endswith('REFUSED: the pin is not the committed one: ' + f'HEAD has no {PIN_REL} in {self.repo} (not a git repository, no commit, or the file is not committed){git_said(self.repo)}. '
+                                     f'A slow report trusts the pin for what the program is, so it uses only {PIN_REL} as committed at HEAD (commit the pin, in the repository you run from; '
+                                     'a hand-edited or copied pin is refused). Nothing was written.'), msg)
+        self.assertEqual(self.last_replays, [])
+        # the same run, once the pin is committed in the repository it is resumed from: accepted, and the event says the pin was the committed one
+        self.commit_pin()
+        code, out, err = self.cli('--dir', d, deck=False, spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual([e['pin_committed'] for e in self.events(d, 'program_changed')], ['yes'])
+        said = [l.split('] ', 1)[1] for l in out.splitlines()]
+        self.assertIn(f"the program at {self.cloud} has sha256 {sha(self.cloud)[:12]}, not the {registered[:12]} this run was registered with; its build record has the pinned engine "
+                      f'tree and harness source, so both self-checks are replayed again against {COMMITTED_DIGESTS} before the run goes on (hours for kx3)', said)
+        self.assertIn(f'program changed mid-run, accepted: both self-checks equal {COMMITTED_DIGESTS}; logged as program_changed in slow_report_log.jsonl and shown on the page', said)
+        self.assertNotIn('NOT the committed pin', out, 'a committed pin is not described as a test pin')
+        page = read(os.path.join(d, 'SLOW_REPORT.md'))
+        self.assertIn(f'and both self-checks were replayed again on {socket.gethostname()} and equal {COMMITTED_DIGESTS}. ', page, 'the page follows the pin the change was accepted under (the event), not the registered one')
+        self.assertNotIn(FILE_DIGESTS, page.split('The program changed mid-run')[1].split('\n')[0])
+
+    def test_an_unrelated_change_of_the_pin_file_does_not_stop_a_changed_program_from_being_accepted(self):
+        """The pin file changes for reasons that say nothing about the program (a new entry in seed_reserved after every smoke run): the engine tree, harness source and self-check
+        texts the run was registered with are still the pin's, so the replay goes through, with the note that the pin file changed."""
+        d = self.started()
+        self.edit_pin(seed_reserved=self.pin['seed_reserved'] + [{'base': 24_601_000_000 + 99 * STEP, 'note': 'slot 99: a later smoke run'}])
+        self.rebuild_again()
+        code, out, err = self.cli('--dir', d, deck=False, spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        self.assertIn('note: the pin file has changed since this run was registered', out)
+        self.assertEqual(len(self.events(d, 'program_changed')), 1)
+
+    def test_a_later_pin_does_not_judge_the_changed_program_of_a_run_registered_under_an_earlier_one(self):
+        """A changed program is judged by the pin the run was REGISTERED under (the manifest's engine tree, harness hash, engine ref and self-check texts), not by whatever pin file is
+        there now: a run registered under one pin must not go on with a build of whatever a later pin names and pool its games with the first build's."""
+        d = self.started()
+        registered_tree = self.manifest(d)['slow_report']['engine_tree']
+        self.edit_pin(engine_tree='77' * 20)  # a later pin: another engine tree ...
+        self.rebuild_again()  # ... and a rebuild of that other source, with its own good record
+        self.assertNotEqual(json.loads(read(self.cloud + '.build.json'))['engine_tree_archived'], registered_tree)
+        msg = self.refused_resume(d)
+        self.assertIn(f'REFUSED: the pin in use is not the pin this run was registered under (engine_tree: registered {registered_tree[:12]}, pin now {"77" * 6})', msg)
+        self.assertEqual(self.last_replays, [])
+        self.assertEqual(self.events(d, 'program_changed'), [])
+
+    # ------------------------------------------------------------------------------------------------ the pin the run was registered under
+    PIN_CHANGES = ('the engine tree', 'the harness source', 'the engine ref', 'the km3 self-check text', 'the kx3 self-check text')
+
+    def pin_change(self, d, label):
+        """(an edit of the pin file, the words registered_vs_pin names it with) for one difference between the pin the run `d` was registered under and the pin in use."""
+        man, pin = self.manifest(d), self.pin
+        block, other = man['slow_report'], 'selfcheck pilot=%s games=12 digest=otherotherother0'
+        return {'the engine tree': (dict(engine_tree='77' * 20), f"engine_tree: registered {block['engine_tree'][:12]}, pin now {'77' * 6}"),
+                'the harness source': (dict(harness_source_sha256='88' * 32), f"harness_source_sha256: registered {block['harness_source_sha256'][:12]}, pin now {'88' * 6}"),
+                'the engine ref': (dict(engine_ref='99' * 20), f"engine_ref: registered {block['engine_ref'][:12]}, pin now {'99' * 6}"),
+                'the km3 self-check text': (dict(selfcheck=dict(pin['selfcheck'], km3=other % 'km3')),
+                                            f"the km3 self-check text differs (registered: {man['selfcheck']['km3']}; pin now: {other % 'km3'})"),
+                'the kx3 self-check text': (dict(selfcheck=dict(pin['selfcheck'], kx3=other % 'kx3')),
+                                            f"the kx3 self-check text differs (registered: {man['selfcheck']['kx3']}; pin now: {other % 'kx3'})")}[label]
+
+    def not_registered_under(self, *diffs):
+        return ('REFUSED: the pin in use is not the pin this run was registered under (' + '; '.join(diffs) + '), so a changed program cannot be judged by it: games of two builds would be '
+                'pooled. Make the pin the run was registered with the committed one again (for example revert the commit that changed rl/strength/slow_report_pin.json) and use a program '
+                'built for it, or register a new run.')
+
+    def would_be_refused(self, refusal):
+        """What the dry run of a folder says in the place of a refusal the real resume would give: 'it would be refused: ' and the message without its own 'REFUSED: ' (never the doubled
+        'refused: REFUSED:')."""
+        self.assertTrue(refusal.startswith('REFUSED: '), refusal)
+        return 'it would be refused: ' + refusal[len('REFUSED: '):]
+
+    def files_of(self, d):
+        return {n: read(os.path.join(d, n)) for n in os.listdir(d) if os.path.isfile(os.path.join(d, n))}
+
+    def test_every_difference_from_the_pin_a_run_was_registered_under_refuses_a_changed_program_and_the_dry_run_says_so(self):
+        for label in self.PIN_CHANGES:
+            with self.subTest(label):
+                self.make()
+                self.lay_out_harness()
+                self.replayed.clear()
+                self.spawn = self.spawned()
+                d = self.started()
+                original = dict(self.pin)
+                change, words = self.pin_change(d, label)
+                self.edit_pin(**change)
+                self.rebuild_again()  # a rebuild of what the pin in use names, with its own good record: the program is fine, the pin is not the one the run was registered under
+                msg = self.refused_resume(d)
+                self.assertEqual(msg, f'{HEADLINE_START}my-list v km3 on the public panel] ' + self.not_registered_under(words))
+                self.assertEqual(self.last_replays, [], 'refused before the hours-long replay')
+                self.assertEqual(self.events(d, 'program_changed'), [])
+                before = self.files_of(d)
+                code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+                self.assertEqual(code, 0, out + err)
+                lines = [l.split('] ', 1)[1] for l in out.splitlines()]
+                self.assertEqual(lines[1], self.played_line(self.would_be_refused(self.not_registered_under(words))), 'the dry run says what the resume would')
+                self.assertNotIn('REFUSED', out, 'in the dry run it is "it would be refused: ...", with no second "REFUSED:" inside')
+                self.assertNotIn('replay', out)
+                self.assertEqual(self.files_of(d), before, 'a dry run writes nothing')
+                self.assertEqual(len(self.replayed), 2, 'and replays nothing')
+                self.edit_pin(**{k: original[k] for k in change})  # the pin put back, with a rebuild of its source: the same run goes on
+                self.rebuild_again()
+                code, out, err = self.cli('--dir', d, deck=False, spawn=self.spawn)
+                self.assertEqual(code, 0, out + err)
+                self.assertEqual(len(self.events(d, 'program_changed')), 1)
+
+    def test_all_the_differences_are_named_together_in_the_order_tree_harness_ref_then_the_self_checks(self):
+        d = self.started()
+        everything = {}
+        words = []
+        for label in self.PIN_CHANGES[:3]:
+            change, said = self.pin_change(d, label)
+            everything.update(change)
+            words.append(said)
+        everything['selfcheck'] = {s: 'selfcheck pilot=%s games=12 digest=otherotherother0' % s for s in ('km3', 'kx3')}
+        self.edit_pin(**everything)
+        self.rebuild_again()
+        msg = self.refused_resume(d)
+        registered = self.manifest(d)['selfcheck']
+        self.assertEqual(msg, f'{HEADLINE_START}my-list v km3 on the public panel] ' + self.not_registered_under(
+            *words, *(f"the {s} self-check text differs (registered: {registered[s]}; pin now: selfcheck pilot={s} games=12 digest=otherotherother0)" for s in ('km3', 'kx3'))))
+
+    def test_an_empty_entry_and_a_missing_one_are_the_same_not_recorded_on_both_sides(self):
+        d = self.started()
+        man, pin = self.manifest(d), dict(self.pin)
+        blank = dict(man, slow_report=dict(man['slow_report'], engine_ref=''))
+        self.assertIsNone(sr.registered_vs_pin(blank, {k: v for k, v in pin.items() if k != 'engine_ref'}), 'blank registered, missing in the pin: no difference')
+        self.assertIsNone(sr.registered_vs_pin(blank, dict(pin, engine_ref=None)), 'blank registered, null in the pin: no difference')
+        with self.assertRaises(SystemExit) as cm:
+            sr.registered_vs_pin(blank, pin)
+        self.assertEqual(cm.exception.code, self.not_registered_under(f"engine_ref: registered not recorded, pin now {pin['engine_ref'][:12]}"), 'a real value against a blank one is still a difference')
+
+    def test_registered_vs_pin_names_the_differences_and_ignores_every_other_part_of_the_pin(self):
+        d = self.started()
+        man, pin = self.manifest(d), dict(self.pin)
+        self.assertIsNone(sr.registered_vs_pin(man, pin))
+        other_things = dict(program='/elsewhere/strength', program_sha256='0' * 64, selfcheck_measured_on_sha256='1' * 64, threads=9, games_per_hour={'typical_low': 1, 'typical_high': 2, 'wall': 1},
+                            pilot_label='kz9 (abc)', reference_label='kr1', panel_label='other', scrub_env_prefixes=['ZZ_'], seed_reserved=pin['seed_reserved'] + [{'base': 24_601_000_000 + 98 * STEP, 'note': 'slot 98'}],
+                            pilot_provenance='another', engine='another engine text')
+        self.assertIsNone(sr.registered_vs_pin(man, dict(pin, **other_things)), 'nothing about the program, the labels, the rates or the reserved seeds is judged')
+        for key, other in (('engine_tree', '5' * 40), ('harness_source_sha256', '6' * 64), ('engine_ref', '7' * 40)):
+            with self.assertRaises(SystemExit) as cm:
+                sr.registered_vs_pin(man, dict(pin, **{key: other}))
+            self.assertEqual(cm.exception.code, self.not_registered_under(f"{key}: registered {str(man['slow_report'][key])[:12]}, pin now {other[:12]}"), key)
+        with self.assertRaises(SystemExit) as cm:
+            sr.registered_vs_pin(man, {k: v for k, v in pin.items() if k not in ('engine_tree', 'engine_ref')})
+        self.assertEqual(cm.exception.code, self.not_registered_under(f"engine_tree: registered {man['slow_report']['engine_tree'][:12]}, pin now not recorded",
+                                                                      f"engine_ref: registered {man['slow_report']['engine_ref'][:12]}, pin now not recorded"), 'a pin without the entry is a different pin')
+        for label, gone in (('null', None), ('empty', '')):
+            with self.subTest(f'a pin whose entries are {label}'), self.assertRaises(SystemExit) as cm:
+                sr.registered_vs_pin(man, dict(pin, engine_tree=gone, harness_source_sha256=gone, engine_ref=gone))
+            self.assertEqual(cm.exception.code, self.not_registered_under(
+                *(f"{k}: registered {man['slow_report'][k][:12]}, pin now not recorded" for k in ('engine_tree', 'harness_source_sha256', 'engine_ref'))))
+            self.assertNotIn('None', cm.exception.code)
+        km3, kx3 = man['selfcheck']['km3'], man['selfcheck']['kx3']
+        with self.assertRaises(SystemExit) as cm:
+            sr.registered_vs_pin(man, dict(pin, selfcheck={'kx3': pin['selfcheck']['kx3']}))
+        self.assertEqual(cm.exception.code, self.not_registered_under(f'the km3 self-check text differs (registered: {km3}; pin now: none)'),
+                         'a pin that has no text for a pilot has another text than the registered one')
+        with self.assertRaises(SystemExit) as cm:
+            sr.registered_vs_pin(man, {k: v for k, v in pin.items() if k != 'selfcheck'})
+        self.assertEqual(cm.exception.code, self.not_registered_under(f'the km3 self-check text differs (registered: {km3}; pin now: none)',
+                                                                      f'the kx3 self-check text differs (registered: {kx3}; pin now: none)'))
+        with self.assertRaises(SystemExit) as cm:
+            sr.registered_vs_pin(man, dict(pin, selfcheck=None))
+        self.assertEqual(cm.exception.code, self.not_registered_under(f'the km3 self-check text differs (registered: {km3}; pin now: none)',
+                                                                      f'the kx3 self-check text differs (registered: {kx3}; pin now: none)'), 'a pin whose self-check entry is null has none either')
+        long_text = 'selfcheck pilot=kx3 games=12 digest=' + 'f' * 300
+        with self.assertRaises(SystemExit) as cm:
+            sr.registered_vs_pin(dict(man, selfcheck=dict(man['selfcheck'], kx3=long_text)), pin)
+        self.assertEqual(cm.exception.code, self.not_registered_under(f"the kx3 self-check text differs (registered: {long_text}; pin now: {pin['selfcheck']['kx3']})"), 'both texts whole, none cut short')
+        self.assertIsNone(sr.registered_vs_pin(dict(man, selfcheck={}), {k: v for k, v in pin.items() if k != 'selfcheck'}), 'a run with no registered self-check texts has none to compare')
+        self.assertIsNone(sr.registered_vs_pin(dict(man, selfcheck=None), pin))
+
+    def test_a_registration_that_did_not_record_an_entry_is_said_to_have_recorded_nothing_and_never_none(self):
+        """An old registration has no engine tree, harness hash or engine ref in its slow_report block (or no block at all): against a pin that has them, the difference reads 'registered not
+        recorded, pin now <12 characters>'; against a pin that has none either there is none."""
+        d = self.started()
+        man, pin = self.manifest(d), dict(self.pin)
+        keys = ('engine_tree', 'harness_source_sha256', 'engine_ref')
+        words = {k: f'{k}: registered not recorded, pin now {pin[k][:12]}' for k in keys}
+        for label, block, said in (('one entry left out', {k: v for k, v in man['slow_report'].items() if k != 'engine_tree'}, ['engine_tree']),
+                                   ('one entry null', dict(man['slow_report'], harness_source_sha256=None), ['harness_source_sha256']),
+                                   ('one entry empty', dict(man['slow_report'], engine_ref=''), ['engine_ref']),
+                                   ('all three left out', {k: v for k, v in man['slow_report'].items() if k not in keys}, list(keys)),
+                                   ('no block', None, list(keys))):
+            with self.subTest(label), self.assertRaises(SystemExit) as cm:
+                sr.registered_vs_pin({k: v for k, v in man.items() if k != 'slow_report'} if block is None else dict(man, slow_report=block), pin)
+            self.assertEqual(cm.exception.code, self.not_registered_under(*(words[k] for k in said)))
+            self.assertNotIn('None', cm.exception.code)
+        bare = {k: v for k, v in pin.items() if k not in keys}
+        self.assertIsNone(sr.registered_vs_pin(dict(man, slow_report={k: v for k, v in man['slow_report'].items() if k not in keys}), bare), 'nothing recorded and nothing in the pin: no difference')
+        with self.assertRaises(SystemExit) as cm:
+            sr.registered_vs_pin(man, bare)
+        self.assertEqual(cm.exception.code, self.not_registered_under(*(f"{k}: registered {man['slow_report'][k][:12]}, pin now not recorded" for k in keys)))
+
+    def test_an_unrelated_change_of_the_pin_file_does_not_stop_the_dry_run_from_offering_the_replay(self):
+        d = self.started()
+        self.edit_pin(seed_reserved=self.pin['seed_reserved'] + [{'base': 24_601_000_000 + 99 * STEP, 'note': 'slot 99: a later smoke run'}], threads=5)
+        self.rebuild_again()
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertEqual(code, 0, out + err)
+        self.assertIn('so a resume would replay both self-checks again against', out)
+        self.assertNotIn('it would be refused', out)
+
+    def test_the_pin_the_run_was_registered_under_is_judged_before_the_pin_is_asked_to_be_committed_or_the_record_is_read(self):
+        d = self.started()
+        change, words = self.pin_change(d, 'the engine tree')
+        self.edit_pin(**change)
+        self.rebuild_again()
+        os.remove(self.cloud + '.build.json')
+        os.environ.pop(ALLOW_PIN_VAR, None)  # the pin is not committed either, and the program has no record
+        msg = self.refused_resume(d)
+        self.assertEqual(msg, f'{HEADLINE_START}my-list v km3 on the public panel] ' + self.not_registered_under(words))
+        self.assertEqual(self.last_replays, [])
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertIn(self.would_be_refused(self.not_registered_under(words)), out)
+
+    def test_check_program_change_judges_the_pin_the_committed_pin_and_the_record_and_hands_back_the_state_the_record_and_the_deadline(self):
+        d = self.started()
+        man = self.manifest(d)
+        rec = self.rebuild_again()
+        want_record = dict(rec, record_file=self.cloud + '.build.json', record_sha256=sha(self.cloud + '.build.json'))
+
+        def check(rule='off', days=(), clock=None, pin=None, pin_path=None):
+            return sr.check_program_change(man, pin or self.pin, pin_path or self.pin_path, self.repo, rule, days, (clock or self.clock).now)
+        state, got, deadline = check()
+        self.assertEqual((state['state'], got, deadline), ('bypassed', want_record, None))
+        self.assertEqual(check('on', sr.SCHOOL_DAYS, FakeClock(chi(2026, 10, 7, 20, 0)))[2], chi(2026, 10, 8, 6, 30), "the next school morning's 6:30 cut")
+        self.assertIsNone(check('on', (), FakeClock(chi(2026, 10, 7, 12, 0)))[2], 'no school days: no cut')
+        with self.assertRaises(SystemExit) as cm:
+            check('on', sr.SCHOOL_DAYS, FakeClock(chi(2026, 10, 7, 10, 0)))
+        self.assertIn('REFUSED: the self-check runs for hours and it is school time', cm.exception.code)
+        with self.assertRaises(SystemExit) as cm:
+            check(pin=dict(self.pin, engine_tree='77' * 20))
+        self.assertIn('the pin in use is not the pin this run was registered under (engine_tree:', cm.exception.code)
+        os.remove(self.cloud + '.build.json')
+        with self.assertRaises(SystemExit) as cm:
+            check()
+        self.assertIn('has no build record', cm.exception.code)
+        os.environ.pop(ALLOW_PIN_VAR, None)
+        with self.assertRaises(SystemExit) as cm:
+            check()
+        self.assertIn('REFUSED: the pin is not the committed one:', cm.exception.code, 'the committed pin is asked for before the record is read')
+
+    def test_a_dry_run_at_school_time_with_the_rule_on_says_the_resume_would_be_refused_for_the_replay(self):
+        d = self.started()
+        self.rebuild_again()
+        self.clock = FakeClock(chi(2026, 10, 7, 10, 0))  # a Wednesday morning, the rule turned on for this call
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False, school='on')
+        self.assertEqual(code, 0, out + err)
+        lines = [l.split('] ', 1)[1] for l in out.splitlines()]
+        self.assertTrue(lines[1].endswith('(it would be refused: the self-check runs for hours and it is school time (the school-morning rule waits until Wed 17:00 Chicago time); '
+                                          'start it after that, or with --school-rule off)'), lines[1])
+        self.assertNotIn('REFUSED', out, 'one "refused", not "refused: REFUSED:"')
+        self.assertNotIn('a resume would replay', out)
+
+    def test_a_dry_run_says_it_would_be_refused_when_the_pin_is_not_the_committed_one(self):
+        d = self.started()
+        self.rebuild_again()
+        os.environ.pop(ALLOW_PIN_VAR, None)
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertEqual(code, 0, out + err)
+        lines = [l.split('] ', 1)[1] for l in out.splitlines()]
+        self.assertIn('(it would be refused: the pin is not the committed one: ' + f'HEAD has no {PIN_REL} in {self.repo} (not a git repository, no commit, or the file is not committed)', lines[1])
+        self.assertNotIn('REFUSED', out)
+        self.commit_pin()
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertIn(f'so a resume would replay both self-checks again against {COMMITTED_DIGESTS} (hours for kx3)', out, 'with the committed pin the dry run offers the replay in the committed pin\'s words')
+
+    # ------------------------------------------------------------------------------------------------ which program the previous sitting ran with
+    def test_a_second_change_reads_from_the_build_the_first_one_went_to(self):
+        d = self.started('6')
+        a = sha(self.cloud)
+        self.rebuild_again()
+        b = sha(self.cloud)
+        self.assertEqual(self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)[0], 0)
+        self.rebuild_again(FAKE_PROGRAM + '\n# a third build\n')
+        c = sha(self.cloud)
+        self.assertEqual(self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)[0], 0)
+        self.assertEqual([(e['old_sha256'], e['new_sha256']) for e in self.events(d, 'program_changed')], [(a, b), (b, c)], 'A -> B, then B -> C (not A -> C)')
+        self.assertEqual([e['program_sha256'] for e in self.events(d, 'sitting_call')], [a, b, c], 'each sitting call says which program it ran with')
+        lines = read(os.path.join(d, 'SLOW_REPORT.md')).splitlines()
+        self.assertEqual([l.split(' after a restart', 1)[0].split('): ', 1)[1] for l in lines if l.startswith('- **The program changed mid-run**')],
+                         [f'sha256 `{a[:12]}` -> `{b[:12]}`', f'sha256 `{b[:12]}` -> `{c[:12]}`'], 'the page prints each')
+
+    def test_going_back_to_an_earlier_build_and_on_to_a_new_one_reads_from_the_one_it_went_back_to(self):
+        d = self.started('6')
+        a = sha(self.cloud)
+        self.rebuild_again()
+        b = sha(self.cloud)
+        self.assertEqual(self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)[0], 0)
+        self.put_program(self.cloud, FAKE_PROGRAM + '\n# built on the cloud\n')  # the registered build again, byte for byte
+        self.assertEqual(sha(self.cloud), a)
+        replays = len(self.replayed)
+        self.assertEqual(self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)[0], 0)
+        self.assertEqual(len(self.replayed), replays, 'the registered build needs no replay')
+        self.assertEqual(len(self.events(d, 'program_changed')), 1, 'and is no change')
+        self.rebuild_again(FAKE_PROGRAM + '\n# a third build\n')
+        c = sha(self.cloud)
+        self.assertEqual(self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)[0], 0)
+        self.assertEqual([(e['old_sha256'], e['new_sha256']) for e in self.events(d, 'program_changed')], [(a, b), (a, c)], 'A -> B, back to A, then A -> C (not B -> C)')
+        self.assertEqual([e['program_sha256'] for e in self.events(d, 'sitting_call')], [a, b, a, c])
+        lines = read(os.path.join(d, 'SLOW_REPORT.md')).splitlines()
+        self.assertEqual([l.split(' after a restart', 1)[0].split('): ', 1)[1] for l in lines if l.startswith('- **The program changed mid-run**')],
+                         [f'sha256 `{a[:12]}` -> `{b[:12]}`', f'sha256 `{a[:12]}` -> `{c[:12]}`'])
+
+    def test_program_in_use_before_follows_the_log_the_last_change_or_sitting_wins(self):
+        d = self.started()
+        man = self.manifest(d)
+        reg = man['program_sha256']
+        log = os.path.join(d, 'slow_report_log.jsonl')
+        os.remove(log)
+        self.assertEqual(sr.program_in_use_before(d, man), reg, 'no log: the registered program')
+        self.assertEqual(sr.program_in_use_before(d, dict(man, program_sha256=None)), None)
+        change = lambda new: self.change_event(man, new)  # (a change as reverify_program writes it for this run: only such a line counts)
+        for label, events, want in (('a sitting that ran the registered build', [{'event': 'sitting_call', 'program_sha256': reg}], reg),
+                                    ('a change', [change('b' * 64)], 'b' * 64),
+                                    ('a sitting after a change', [change('b' * 64), {'event': 'sitting_call', 'program_sha256': 'c' * 64}], 'c' * 64),
+                                    ('a change after a sitting', [{'event': 'sitting_call', 'program_sha256': 'c' * 64}, change('b' * 64)], 'b' * 64),
+                                    ('a sitting that had no program (missing file)', [change('b' * 64), {'event': 'sitting_call', 'program_sha256': None}], 'b' * 64),
+                                    ('a sitting call from before the entry existed', [change('b' * 64), {'event': 'sitting_call', 'threads': 2}], 'b' * 64),
+                                    ('values that are not text', [{'event': 'sitting_call', 'program_sha256': 7}, change(['x'])], reg),
+                                    ('other events', [{'event': 'slice_end', 'program_sha256': 'd' * 64, 'new_sha256': 'e' * 64}], reg)):
+            with self.subTest(label):
+                write(log, ''.join(json.dumps(e) + '\n' for e in events) + '{"event": "sitting_call", "program_sha2')  # (and a last line torn by a kill)
+                self.assertEqual(sr.program_in_use_before(d, man), want)
+
+    def test_program_in_use_before_does_not_take_a_forged_or_foreign_line_for_a_change(self):
+        """The log is not covered by manifest.sha256: a 'program_changed' line the run could not have written (another engine tree, a record for another file, other self-check texts, on a
+        run that is not on the rebuilt route ...) must not set the 'old_sha256' the next real change is logged with, which the page prints."""
+        d = self.started()
+        man = self.manifest(d)
+        reg = man['program_sha256']
+        log = os.path.join(d, 'slow_report_log.jsonl')
+        for label, over in self.forgeries(man, 'f' * 64):
+            with self.subTest(label):
+                write(log, json.dumps({'event': 'sitting_call', 'program_sha256': 'c' * 64}) + '\n' + json.dumps(self.change_event(man, 'f' * 64, **over)) + '\n')
+                self.assertEqual(sr.program_in_use_before(d, man), 'c' * 64, 'the sitting before it is still the last word')
+                write(log, json.dumps(self.change_event(man, 'f' * 64, **over)) + '\n')
+                self.assertEqual(sr.program_in_use_before(d, man), reg, 'and with nothing before it, the registered program')
+        write(log, json.dumps({'event': 'program_changed'}) + '\n' + json.dumps({'event': 'program_changed', 'new_sha256': 'f' * 64}) + '\n')
+        self.assertEqual(sr.program_in_use_before(d, man), reg, 'a line with nothing but the name of the event, or only the new hash, is no change')
+        write(log, json.dumps(self.change_event(man, 'f' * 64)) + '\n')
+        self.assertEqual(sr.program_in_use_before(d, man), 'f' * 64, 'while the line a replay writes is one')
+        for route in ('pinned', None, 'something else'):  # a run that is not on the rebuilt route has no change at all, however good the line looks
+            block = {k: v for k, v in man['slow_report'].items() if k != 'program_route'}
+            other = dict(man, slow_report=dict(block, program_route=route) if route else block)
+            self.assertEqual(sr.program_in_use_before(d, other), reg, route)
+
+    # ------------------------------------------------------------------------------------------------ which lines of the log count
+    def test_a_program_changed_line_in_the_log_of_a_pinned_run_is_ignored_and_the_resume_is_refused_as_before(self):
+        code, out, err = self.cli('--deals', '1', '--max-games', '10', spawn=self.spawn)  # registered on the pinned route
+        self.assertEqual(code, 0, out + err)
+        d = self.rundir()
+        man = self.manifest(d)
+        registered = sha(self.program)
+        write(self.program, FAKE_PROGRAM + '\n# a rebuild at the pinned path\n', mode=0o755)
+        self.write_record(self.program)
+        new = sha(self.program)
+        self.append_log(d, self.change_event(man, new))  # a line that reverify_program could have written, in the log of a run that can never have one
+        self.assertEqual(man['slow_report']['program_route'], 'pinned')
+        self.assertEqual(sr.accepted_program_shas(d, man), {registered})
+        msg = self.refused_resume(d)
+        self.assertEqual(msg, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n'
+                              f'  {self.program} has sha256 {new[:12]}, but this run was registered with the program at that path with sha256 {registered[:12]}. ' + RESUME_NEEDS_PINNED)
+        self.assertEqual(self.replayed, [], 'no self-check is replayed for a pinned run')
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertIn('(it would be refused: ' + f'{self.program} has sha256 {new[:12]}, {sr.PROGRAM_PROBLEM} {registered[:12]}. ' + RESUME_NEEDS_PINNED + ')', out)
+
+    def test_forged_or_foreign_program_changed_lines_of_a_rebuilt_run_are_ignored_and_a_good_one_is_honoured(self):
+        d = self.started()
+        man = self.manifest(d)
+        reg = man['program_sha256']
+        new = 'b' * 64
+        good = self.change_event(man, new)
+        log = os.path.join(d, 'slow_report_log.jsonl')
+        self.append_log(d, good)
+        self.assertEqual(sr.accepted_program_shas(d, man), {reg, new}, 'the line a replay writes counts')
+        os.remove(log)
+        record = good['build_record']
+        for label, over in self.forgeries(man, new):
+            with self.subTest(label):
+                write(log, '')  # (a log of this line alone)
+                self.append_log(d, self.change_event(man, new, **over))
+                self.assertEqual(sr.accepted_program_shas(d, man), {reg})
+        write(log, '')
+        self.append_log(d, self.change_event(man, 'c' * 64, build_record=dict(record, program_sha256='c' * 64)), self.change_event(man, 'd' * 64, selfcheck={}),
+                        self.change_event(man, 'e' * 64, build_record=dict(record, program_sha256='e' * 64), pin_committed=DROP, replayed_on=DROP, old_sha256=DROP),
+                        self.change_event(man, 'f' * 64, build_record=dict(record, program_sha256='f' * 64), at=DROP))
+        self.assertEqual(sr.accepted_program_shas(d, man), {reg, 'c' * 64, 'e' * 64},
+                         'one bad line does not spoil the good ones around it; the entries that only describe the change are not needed, the time it was written is (the page counts games before and after it)')
+
+    def test_is_program_change_is_the_one_test_of_the_event_the_rebuilt_route_and_a_consistent_line(self):
+        """accepted_program_shas, program_in_use_before and the page all ask is_program_change: it needs the event 'program_changed', a run registered on the rebuilt route, and a line that
+        program_change_valid finds consistent with the registration (which says nothing of who wrote it)."""
+        d = self.started()
+        man = self.manifest(d)
+        self.assertEqual(man['slow_report']['program_route'], 'rebuilt')
+        good = self.change_event(man, 'b' * 64)
+        self.assertTrue(sr.is_program_change(good, man))
+        self.assertTrue(sr.program_change_valid(good, man))
+        self.assertFalse(sr.is_program_change(dict(good, event='slice_end'), man), 'another event, however much it looks like a change')
+        self.assertFalse(sr.is_program_change({k: v for k, v in good.items() if k != 'event'}, man), 'no event at all')
+        self.assertFalse(sr.is_program_change(dict(good, event=None), man))
+        for route in ('pinned', 'something else', None):
+            block = dict(man['slow_report'], program_route=route)
+            self.assertFalse(sr.is_program_change(good, dict(man, slow_report=block)), f'the route {route}: the run is byte for byte or nothing')
+            self.assertTrue(sr.program_change_valid(good, dict(man, slow_report=block)), 'whether the line is consistent does not depend on the route')
+        self.assertFalse(sr.is_program_change(good, {k: v for k, v in man.items() if k != 'slow_report'}), 'a manifest with no slow_report block has no route')
+        for label, over in self.forgeries(man, 'b' * 64):
+            with self.subTest(label):
+                line = self.change_event(man, 'b' * 64, **over)
+                self.assertFalse(sr.is_program_change(line, man))
+                self.assertFalse(sr.program_change_valid(line, man))
+        lean = self.change_event(man, 'c' * 64, pin_committed=DROP, replayed_on=DROP, old_sha256=DROP, pilot=DROP, reference=DROP)
+        self.assertTrue(sr.is_program_change(lean, man), 'what only describes the change is not needed')
+        for at in (DROP, None, '', 5):
+            with self.subTest(at=at):
+                self.assertFalse(sr.is_program_change(self.change_event(man, 'c' * 64, at=at), man), "without the time it was written the games before and after it cannot be counted: not a change")
+        self.assertIn('NOT authentication', sr.program_change_valid.__doc__, 'the check keeps stray lines out; it does not say who wrote one')
+
+    def test_a_forged_line_does_not_let_a_changed_program_skip_the_replay(self):
+        d = self.started('6')
+        man = self.manifest(d)
+        self.rebuild_again()
+        new = sha(self.cloud)
+        self.append_log(d, self.change_event(man, new, selfcheck={'km3': 'selfcheck pilot=km3 games=12 digest=0000', 'kx3': 'selfcheck pilot=kx3 games=12 digest=0000'}))
+        replays = len(self.replayed)
+        code, out, err = self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(len(self.replayed) - replays, 2, 'both self-checks were replayed: the forged line accepted nothing')
+        real = [e for e in self.events(d, 'program_changed') if e['selfcheck'] == man['selfcheck']]
+        self.assertEqual(len(real), 1)
+
+    def test_a_forged_line_does_not_become_the_old_program_of_the_next_real_change_or_a_line_on_the_page(self):
+        """The 'old' program of a change is the one the last sitting ran with. A line the run could not have written must not set it, and the page does not show it."""
+        d = self.started('6')
+        man = self.manifest(d)
+        reg = man['program_sha256']
+        forged = [self.change_event(man, 'f' * 64, **over) for label, over in self.forgeries(man, 'f' * 64)]
+        self.append_log(d, *forged, {'event': 'program_changed', 'new_sha256': 'e' * 64})
+        self.rebuild_again()
+        new = sha(self.cloud)
+        code, out, err = self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        (change,) = self.events(d, 'program_changed')[len(forged) + 1:]
+        self.assertEqual((change['old_sha256'], change['new_sha256']), (reg, new), 'from the registered program, not from a program a forged line named')
+        lines = [l for l in read(os.path.join(d, 'SLOW_REPORT.md')).splitlines() if l.startswith('- **The program changed mid-run**')]
+        self.assertEqual(len(lines), 1, lines)
+        self.assertIn(f'sha256 `{reg[:12]}` -> `{new[:12]}`', lines[0])
+        self.assertNotIn('None', read(os.path.join(d, 'SLOW_REPORT.md')).replace('repository commit `None`', ''))
+
+    def test_a_good_line_in_the_log_lets_the_program_it_names_go_on_without_a_replay(self):
+        d = self.started('6')
+        man = self.manifest(d)
+        rec = self.rebuild_again()
+        new = sha(self.cloud)
+        self.append_log(d, self.change_event(man, new, build_record=dict(rec, record_file=self.cloud + '.build.json', record_sha256=sha(self.cloud + '.build.json'))))
+        replays = len(self.replayed)
+        code, out, err = self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(len(self.replayed), replays, 'a program that was accepted in the log is not replayed again')
+        self.assertEqual(len(self.events(d, 'program_changed')), 1, 'and is not logged again')
+        self.assertEqual(self.events(d, 'sitting_call')[-1]['program_sha256'], new)
+        self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), 12)
+
+    # ------------------------------------------------------------------------------------------------ nothing left to play
+    def test_a_run_with_every_game_played_is_not_replayed_for_a_changed_program_and_still_gets_its_page(self):
+        d = self.started('32')
+        self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), 32)
+        registered = sha(self.cloud)
+        self.rebuild_again()
+        os.remove(os.path.join(d, 'SLOW_REPORT.md'))
+        before_manifest = (read(os.path.join(d, 'manifest.json')), read(os.path.join(d, 'manifest.sha256')))
+        before = self.snapshot(d)
+        replays, started = list(self.replayed), len(self.spawn.seen)
+        code, out, err = self.cli('--dir', d, deck=False, spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        lines = [l.split('] ', 1)[1] for l in out.splitlines()]
+        self.assertIn(f'all 32 games are played, so nothing is run: the program at {self.cloud} has another sha256 than registered, which the page does not depend on '
+                      '(no self-check is replayed and no program change is logged)', lines)
+        self.assertEqual(self.replayed, replays, 'no self-check was replayed')
+        self.assertEqual(self.events(d, 'program_changed'), [], 'and no program change was logged')
+        self.assertEqual(len(self.spawn.seen), started, 'no program was started')
+        after = self.snapshot(d)
+        self.assertEqual((after['calls'], after['games'], after['lock']), (before['calls'], before['games'], False))
+        self.assertEqual(after['events'], before['events'] + ['report_written'], 'no sitting was called, nothing was run: the page was written')
+        self.assertIn(f'SLOW_REPORT.md written in {d}', lines)
+        page = read(os.path.join(d, 'SLOW_REPORT.md'))
+        self.assertNotIn('PARTIAL', page)
+        self.assertNotIn('The program changed mid-run', page)
+        self.assertIn(f'Program `{self.cloud}` sha256 `{registered[:12]}`.', page, 'the page names the program the run was registered with')
+        self.assertEqual((read(os.path.join(d, 'manifest.json')), read(os.path.join(d, 'manifest.sha256'))), before_manifest)
+        self.assertFalse(any('running:' in l for l in lines))
+
+    def test_a_run_with_one_game_left_is_replayed_for_a_changed_program_before_the_last_game(self):
+        d = self.started('31')
+        self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), 31)
+        self.rebuild_again()
+        new = sha(self.cloud)
+        replays = len(self.replayed)
+        code, out, err = self.cli('--dir', d, deck=False, spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        self.assertNotIn('so nothing is run', out)
+        self.assertEqual(len(self.replayed) - replays, 2, 'one game to go: both self-checks are replayed')
+        self.assertEqual([e['new_sha256'] for e in self.events(d, 'program_changed')], [new])
+        self.assertIn('running: 1 game to go, 2 at a time', out)
+        self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), 32)
+
+    # ------------------------------------------------------------------------------------------------ what a refusal tells a person to do
+    def test_the_refusal_of_a_changed_program_says_a_pinned_run_cannot_go_on_with_a_rebuild_and_a_rebuilt_run_how_to_get_one(self):
+        self.assertEqual(sr.PROGRAM_PROBLEM, 'but this run was registered with the program at that path with sha256', 'the words every caller looks for are unchanged')
+        d = self.started()
+        man = self.manifest(d)
+        reg = man['program_sha256']
+        self.assertEqual(man['slow_report']['program_route'], 'rebuilt')
+        self.rebuild_again()
+        new = sha(self.cloud)
+        want_rebuilt = [f'{self.cloud} has sha256 {new[:12]}, {sr.PROGRAM_PROBLEM} {reg[:12]}. ' + RESUME_NEEDS]
+        self.assertEqual(sr.verify_inputs(man), want_rebuilt)
+        self.assertIn('rebuild with the "rebuild_command" in the registration\'s build record', want_rebuilt[0])
+        self.assertNotIn('registered on the pinned route', want_rebuilt[0])
+        pinned_words = ('(this run was registered on the pinned route, which has no build record and no rebuild; only a run registered with --program can go on with a rebuild)')
+        for label, block in (('the pinned route', dict(man['slow_report'], program_route='pinned')), ('no route recorded', {k: v for k, v in man['slow_report'].items() if k != 'program_route'}),
+                             ('a route that is not known', dict(man['slow_report'], program_route='something else')), ('no slow report block', None)):
+            with self.subTest(label):
+                other = dict(man, slow_report=block) if block is not None else {k: v for k, v in man.items() if k != 'slow_report'}
+                (problem,) = sr.verify_inputs(other)
+                self.assertEqual(problem, f'{self.cloud} has sha256 {new[:12]}, {sr.PROGRAM_PROBLEM} {reg[:12]}. ' + RESUME_NEEDS_PINNED)
+                self.assertIn(pinned_words, problem)
+                self.assertNotIn('rebuild_command', problem)
+                self.assertNotIn('PROGRAM.build.json', problem, 'no rebuild record is on offer')
+        os.remove(self.cloud)
+        self.assertEqual(sr.verify_inputs(man), [f'{self.cloud} is missing, {sr.PROGRAM_PROBLEM} {reg[:12]}. ' + RESUME_NEEDS])
+        self.assertEqual(sr.verify_inputs(dict(man, slow_report=dict(man['slow_report'], program_route='pinned'))), [f'{self.cloud} is missing, {sr.PROGRAM_PROBLEM} {reg[:12]}. ' + RESUME_NEEDS_PINNED])
+
+    def test_a_resume_that_is_locked_out_replays_nothing(self):
+        d = self.started()
+        self.rebuild_again()
+        fd = os.open(os.path.join(d, 'slow_report.lock'), os.O_CREAT | os.O_RDWR, 0o644)
+        self.addCleanup(os.close, fd)
+        fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)  # another wrapper is on this run
+        replayed = list(self.replayed)
+        code, out, err = self.cli('--dir', d, deck=False, spawn=self.spawn)
+        self.assertIn('REFUSED: another slow_report.py', str(code))
+        self.assertEqual(self.replayed, replayed, 'the hours-long replay is not started by a wrapper that does not hold the lock')
+        self.assertEqual(self.events(d, 'program_changed'), [])
+
+    def test_the_replay_is_bounded_by_the_school_morning_and_refused_at_school_time_like_the_one_at_registration(self):
+        d = self.started()
+        self.rebuild_again()
+        self.clock = FakeClock(chi(2026, 10, 7, 10, 0))  # a Wednesday morning, the rule turned on for this call (it was registered off)
+        msg = self.refused_resume(d, school='on')
+        self.assertIn('REFUSED: the self-check runs for hours and it is school time (the school-morning rule waits until Wed 17:00 Chicago time); start it after that, or with --school-rule off', msg)
+        self.assertEqual(self.last_replays, [])
+        self.clock = FakeClock(chi(2026, 10, 7, 20, 0))  # Wednesday evening: allowed, and over by the morning cut
+        self.deadlines.clear()
+        code, out, err = self.cli('--dir', d, '--max-games', '4', deck=False, school='on', spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(self.deadlines, [chi(2026, 10, 8, 6, 30)] * 2)
+        self.rebuild_again(FAKE_PROGRAM + '\n# once more\n')
+        self.deadlines.clear()
+        self.clock = FakeClock(chi(2026, 10, 7, 10, 0))
+        code, out, err = self.cli('--dir', d, '--max-games', '4', deck=False, school=None, spawn=self.spawn)  # the registered rule: off
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(self.deadlines, [None, None], 'with the rule off there is no cut to bound the replay by')
+
+    def test_a_third_program_during_the_resumed_run_is_still_refused_by_the_check_before_each_sitting(self):
+        self.clock = FakeClock(chi(2026, 10, 7, 5, 0))  # Wednesday 5:00 am: a sitting may start, and is cut at 6:30
+        d = self.started()
+        registered = sha(self.cloud)
+        self.rebuild_again()
+        b = sha(self.cloud)
+        swapped = []
+
+        def spawn(cmd, env, logfile):
+            p = sr.default_spawn(cmd, env, logfile)
+            if not swapped:
+                swapped.append(1)
+                self.rebuild_again(FAKE_PROGRAM + '\n# a third build, swapped in while the first resumed sitting ran\n')
+            return p
+        write(os.path.join(d, 'hang.flag'), '2')  # the program plays 2 games and then hangs on a third until the 6:30 cut
+        self.clock.gate, self.clock.gate_until = (lambda: os.path.exists(os.path.join(d, 'hanging.flag'))), chi(2026, 10, 7, 6, 30)  # the cut waits until the program is really hanging
+        calls = len(jsonl(os.path.join(d, 'fake_calls.jsonl')))
+        code, out, err = self.cli('--dir', d, '--poll-s', '60', school='on', spawn=spawn, deck=False)
+        self.assertEqual(code, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n'
+                               f'  {self.cloud} has sha256 {sha(self.cloud)[:12]}, but this run was registered with the program at that path with sha256 {registered[:12]}. ' + RESUME_NEEDS)
+        self.assertNotEqual(sha(self.cloud), b)
+        self.assertEqual(len(jsonl(os.path.join(d, 'fake_calls.jsonl'))), calls + 1, 'the second sitting was not started')
+        self.assertEqual([e['new_sha256'] for e in self.events(d, 'program_changed')], [b], 'the second change was never accepted, so it was never logged')
+        self.assertEqual(sr.accepted_program_shas(d, self.manifest(d)), {registered, b})
+
+    # ------------------------------------------------------------------------------------------------ the dry run of the folder
+    def played_line(self, status):
+        return ('played so far: 5 kx3 games + 5 cheap km3 baseline games of 16 kx3 games + 16 cheap km3 baseline games planned; '
+                f'11 kx3 games + 11 cheap km3 baseline games to go ({status})')
+
+    def test_the_dry_run_says_what_a_resume_would_do_with_a_changed_program_and_writes_and_replays_nothing(self):
+        d = self.started()
+        self.rebuild_again()
+        resume = f'python3 rl/strength/slow_report.py --dir {d} --school-rule off'
+        before = {n: read(os.path.join(d, n)) for n in os.listdir(d) if os.path.isfile(os.path.join(d, n))}
+        replayed = list(self.replayed)
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertEqual(code, 0, out + err)
+        lines = [l.split('] ', 1)[1] for l in out.splitlines()]
+        status = (f"the program at {self.cloud} has another sha256 than registered; its build record is for the pinned source, so a resume would replay both self-checks again against "
+                  f"{FILE_DIGESTS} (hours for kx3) and, if they match, go on and log it as 'program changed mid-run'; resume with: {resume}")
+        self.assertEqual(lines[1], self.played_line(status))
+        self.assertEqual(lines[2:], ['dry run: nothing written'])
+        self.assertEqual(self.replayed, replayed)
+        self.assertEqual({n: read(os.path.join(d, n)) for n in os.listdir(d) if os.path.isfile(os.path.join(d, n))}, before)
+
+    def test_the_dry_run_says_it_would_be_refused_when_the_record_of_the_changed_program_is_not_good(self):
+        d = self.started()
+        self.rebuild_again()
+        os.remove(self.cloud + '.build.json')
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertEqual(code, 0, out + err)
+        lines = [l.split('] ', 1)[1] for l in out.splitlines()]
+        self.assertEqual(lines[1], self.played_line(f'it would be refused: {self.cloud} has no build record ({self.cloud}.build.json); {RECORD_HINT}. Nothing was written.'))
+        self.rebuild_again(engine_tree_archived='1' * 40)
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertIn(f"(it would be refused: the build record says the engine tree that went into {self.cloud} is 111111111111, not the pinned {self.pin['engine_tree'][:12]}, "
+                      'so it is not a build of the pinned source. Nothing was written.)', out)
+        self.assertNotIn('REFUSED', out)
+
+    def test_the_dry_run_of_a_complete_run_says_complete_whatever_the_program(self):
+        d = self.started('32')
+        self.rebuild_again()
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertEqual(code, 0, out + err)
+        self.assertIn('0 kx3 games + 0 cheap km3 baseline games to go (complete)', out)
+
+    # ------------------------------------------------------------------------------------------------ a run whose games are all played: the dry run, the resume and --report-only
+    DRY_HINT = '; every game is played, so --report-only writes the page from them'
+    RESUME_HINT = '\n  Every game is played: --report-only writes the page from them without these files.'
+
+    def dry_status(self, d):
+        """The status in brackets that ends the second line of `--dir D --dry-run` (the line that says how many games are played, planned and to go), after checking the shape of the whole
+        output: the question, that line, 'dry run: nothing written'."""
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertEqual((code, err), (0, ''), out)
+        lines = [l.split('] ', 1)[1] for l in out.splitlines()]
+        self.assertEqual(len(lines), 3, lines)
+        self.assertTrue(lines[0].startswith('question: '), lines[0])
+        self.assertEqual(lines[2], 'dry run: nothing written')
+        self.assertTrue(lines[1].startswith('played so far: ') and lines[1].endswith(')'), lines[1])
+        return lines[1].split(' to go (', 1)[1][:-1]
+
+    def deck_problem(self, was):
+        return f'my-list ({self.deck}) has changed since registration (sha256 {sha(self.deck)[:12]} instead of {was[:12]})'
+
+    def edit_deck(self):
+        was = sha(self.deck)
+        write(self.deck, DECK_TEXT.replace('Torchic', 'Treecko'))
+        return was
+
+    def test_the_dry_run_of_a_finished_run_whose_deck_changed_says_it_would_be_refused_and_that_report_only_writes_the_page(self):
+        d = self.started('32')
+        self.assertEqual(self.manifest(d)['slow_report']['program_route'], 'rebuilt')
+        was = self.edit_deck()
+        status = self.dry_status(d)
+        self.assertEqual(status, 'it would be refused: ' + self.deck_problem(was) + self.DRY_HINT)
+        self.assertNotIn('complete', status)
+
+    def test_the_dry_run_of_a_run_with_games_to_go_whose_deck_changed_says_it_would_be_refused_without_the_report_only_hint(self):
+        d = self.started('10')
+        was = self.edit_deck()
+        self.assertEqual(self.dry_status(d), 'it would be refused: ' + self.deck_problem(was))
+
+    def test_a_finished_pinned_run_with_a_changed_program_is_refused_by_the_dry_run_and_the_resume_and_both_say_report_only_writes_the_page(self):
+        code, out, err = self.cli('--deals', '1', spawn=self.spawn)  # registered on the pinned route, every game played
+        self.assertEqual(code, 0, out + err)
+        d = self.rundir()
+        self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), 32)
+        reg = sha(self.program)
+        write(self.program, FAKE_PROGRAM + '\n# a rebuild at the pinned path\n', mode=0o755)
+        problem = f'{self.program} has sha256 {sha(self.program)[:12]}, {sr.PROGRAM_PROBLEM} {reg[:12]}. ' + RESUME_NEEDS_PINNED
+        self.assertEqual(self.dry_status(d), 'it would be refused: ' + problem + self.DRY_HINT, 'a pinned run is never "complete" with another program, and no replay is on offer')
+        msg = self.refused_resume(d)
+        self.assertEqual(msg, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n  {problem}'
+                              + self.RESUME_HINT)
+        self.assertEqual(self.replayed, [])
+        os.remove(os.path.join(d, 'SLOW_REPORT.md'))
+        code, out, err = self.cli('--dir', d, '--report-only', deck=False)
+        self.assertEqual(code, 0, out + err)
+        page = read(os.path.join(d, 'SLOW_REPORT.md'))
+        self.assertNotIn('PARTIAL', page)
+        self.assertIn(f'Program `{self.program}` sha256 `{reg[:12]}`.', page, 'the page of the games, from the program the run was registered with')
+
+    def test_a_finished_rebuilt_run_whose_program_is_gone_is_refused_by_the_dry_run_and_the_resume_and_both_say_report_only_writes_the_page(self):
+        d = self.started('32')
+        reg = sha(self.cloud)
+        os.remove(self.cloud)
+        problem = f'{self.cloud} is missing, {sr.PROGRAM_PROBLEM} {reg[:12]}. ' + RESUME_NEEDS
+        self.assertEqual(self.dry_status(d), 'it would be refused: ' + problem + self.DRY_HINT)
+        msg = self.refused_resume(d)
+        self.assertEqual(msg, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n  {problem}'
+                              + self.RESUME_HINT)
+        os.remove(os.path.join(d, 'SLOW_REPORT.md'))
+        self.assertEqual(self.cli('--dir', d, '--report-only', deck=False)[0], 0)
+        self.assertTrue(os.path.exists(os.path.join(d, 'SLOW_REPORT.md')))
+
+    def test_a_finished_rebuilt_run_with_a_changed_program_and_a_changed_deck_lists_both_and_then_the_report_only_hint(self):
+        d = self.started('32')
+        reg = sha(self.cloud)
+        self.rebuild_again()
+        was = self.edit_deck()
+        program = f'{self.cloud} has sha256 {sha(self.cloud)[:12]}, {sr.PROGRAM_PROBLEM} {reg[:12]}. ' + RESUME_NEEDS
+        self.assertEqual(self.dry_status(d), 'it would be refused: ' + program + '; ' + self.deck_problem(was) + self.DRY_HINT, 'the problems joined by "; ", the hint once, at the end')
+        msg = self.refused_resume(d)
+        self.assertEqual(msg, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n'
+                              f'  {program}\n  {self.deck_problem(was)}' + self.RESUME_HINT)
+        self.assertEqual(self.last_replays, [], 'nothing is replayed for a program when the deck is wrong too')
+
+    def test_the_report_only_hint_is_for_a_finished_run_only(self):
+        """With games still to play, --report-only would write a PARTIAL page and the run still has to be fixed or registered again: the refusal and the dry run say no more than the problems."""
+        d = self.started('10')
+        reg = sha(self.cloud)
+        self.rebuild_again()
+        was = self.edit_deck()
+        program = f'{self.cloud} has sha256 {sha(self.cloud)[:12]}, {sr.PROGRAM_PROBLEM} {reg[:12]}. ' + RESUME_NEEDS
+        self.assertEqual(self.dry_status(d), 'it would be refused: ' + program + '; ' + self.deck_problem(was))
+        msg = self.refused_resume(d)
+        self.assertTrue(msg.endswith(f'nothing is run:\n  {program}\n  {self.deck_problem(was)}'), msg)
+        self.assertNotIn('--report-only', msg)
+        os.remove(self.cloud)
+        self.assertNotIn('--report-only', self.dry_status(d))
+        self.assertNotIn('--report-only', self.refused_resume(d))
+
+    def test_a_finished_rebuilt_run_with_a_changed_program_that_is_there_is_complete_whatever_else_is_wrong_with_the_record_and_the_pin(self):
+        d = self.started('32')
+        self.rebuild_again()
+        os.remove(self.cloud + '.build.json')  # no record,
+        os.environ.pop(ALLOW_PIN_VAR, None)  # a pin that is not committed,
+        change, words = self.pin_change(d, 'the engine tree')
+        self.edit_pin(**change)  # and a pin that is not the one the run was registered under: nothing is replayed, so none of it matters
+        self.assertEqual(self.dry_status(d), 'complete')
+        os.remove(os.path.join(d, 'SLOW_REPORT.md'))
+        before = self.snapshot(d)
+        code, out, err = self.cli('--dir', d, deck=False, spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        self.assertIn(f'all 32 games are played, so nothing is run: the program at {self.cloud} has another sha256 than registered', out)
+        self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)], 'only the two of the registration')
+        self.assertEqual(self.snapshot(d)['events'], before['events'] + ['report_written'])
+
+    def test_program_only_problem_is_true_for_a_program_that_is_there_on_a_rebuilt_run_and_for_nothing_else(self):
+        """The one test the resume and `--dir --dry-run` both make for 'the only problem is a program of another sha256 that is there, on a run registered on the rebuilt route'."""
+        d = self.started()
+        man = self.manifest(d)
+        self.rebuild_again()
+        (program,) = sr.verify_inputs(man)
+        self.assertIn(sr.PROGRAM_PROBLEM, program)
+        deck = f'my-list ({self.deck}) has changed since registration (sha256 aaaaaaaaaaaa instead of bbbbbbbbbbbb)'
+        self.assertTrue(sr.program_only_problem(man, [program]))
+        self.assertTrue(sr.program_only_problem(man, [program, program]), 'every problem is that one')
+        for label, problems in (('no problem at all', []), ('the deck only', [deck]), ('the program and the deck', [program, deck]), ('the deck and the program', [deck, program])):
+            self.assertFalse(sr.program_only_problem(man, problems), label)
+        block = {k: v for k, v in man['slow_report'].items() if k != 'program_route'}
+        for route in ('pinned', 'something else', None):
+            self.assertFalse(sr.program_only_problem(dict(man, slow_report=dict(block, program_route=route)), [program]), f'a run registered on the route {route} has no rebuild to go on with')
+        self.assertFalse(sr.program_only_problem(dict(man, slow_report=block), [program]), 'no route recorded')
+        self.assertFalse(sr.program_only_problem({k: v for k, v in man.items() if k != 'slow_report'}, [program]), 'no slow_report block')
+        self.assertTrue(sr.program_only_problem(man, [program]))
+        os.remove(self.cloud)
+        (gone,) = sr.verify_inputs(man)
+        self.assertIn(sr.PROGRAM_PROBLEM, gone)
+        self.assertFalse(sr.program_only_problem(man, [gone]), 'a program that is not there cannot be replayed on')
+        os.makedirs(self.cloud)
+        self.assertFalse(sr.program_only_problem(man, [gone]), 'and a folder in its place is not a program either')
+
+    def test_the_dry_run_and_the_resume_both_ask_program_only_problem_and_do_what_it_says(self):
+        d = self.started()
+        reg = sha(self.cloud)
+        self.rebuild_again()
+        real = sr.program_only_problem
+        asked = []
+
+        def spy(man, problems):
+            asked.append(list(problems))
+            return real(man, problems)
+        with mock.patch.object(sr, 'program_only_problem', spy):
+            self.assertTrue(self.dry_status(d).startswith(f'the program at {self.cloud} has another sha256 than registered'))
+            self.assertEqual(len(asked), 1, 'the dry run asked once')
+            self.assertEqual(self.cli('--dir', d, '--max-games', '2', deck=False, spawn=self.spawn)[0], 0)
+        self.assertEqual(len(asked), 2, 'and the resume once')
+        self.assertEqual(asked[0], asked[1], 'about the same problems')
+        self.assertEqual(len(asked[0]), 1)
+        # told "no", both treat the changed program as a refusal like any other (and neither replays anything)
+        self.rebuild_again(FAKE_PROGRAM + '\n# once more\n')  # a third build: the first resume accepted the second
+        replays = list(self.replayed)
+        problem = f'{self.cloud} has sha256 {sha(self.cloud)[:12]}, {sr.PROGRAM_PROBLEM} {reg[:12]}. ' + RESUME_NEEDS
+        with mock.patch.object(sr, 'program_only_problem', lambda man, problems: False):
+            self.assertEqual(self.dry_status(d), 'it would be refused: ' + problem)
+            msg = self.refused_resume(d)
+        self.assertTrue(msg.endswith(f'nothing is run:\n  {problem}'), msg)
+        self.assertEqual(self.replayed, replays)
+        self.assertTrue(self.dry_status(d).startswith(f'the program at {self.cloud} has another sha256 than registered'), 'and told the truth again, it is the replay that is on offer')
 
 
 class unittest_patch:
@@ -3202,8 +5282,8 @@ class Page(Timed):
     def test_the_self_check_lines_say_how_the_text_was_obtained(self):
         for source, want in (('given in the config (copied from the pin, which says it was measured on this exact program sha256)',
                               'copied from the pin, not replayed: the pin says it was measured on this exact binary'),
-                             ('replayed by slow_report.py on this machine just before registration (equal to the committed pin)',
-                              'replayed on this machine just before registration, equal to the committed pin'),
+                             ('replayed by slow_report.py on the registering machine just before registration (equal to the committed pin)',
+                              'replayed on the registering machine just before registration, equal to the committed pin'),
                              ('run by strength_prereg.py', 'replayed at registration')):
             t = tempfile.mkdtemp()
             self.addCleanup(shutil.rmtree, t, True)
@@ -3409,6 +5489,25 @@ class Arguments(World):
         code, out, err = self.cli('--deals', '1', '--register-only', date=False)
         self.assertEqual(code, 0, err + out)
         self.assertTrue(os.path.isdir(self.rundir('2026-10-10_my-list')), os.listdir(self.out_root))
+
+    def help_text(self):
+        out = io.StringIO()
+        with mock.patch.dict(os.environ, {'COLUMNS': '10000'}), contextlib.redirect_stdout(out), self.assertRaises(SystemExit) as cm:  # (a wide terminal: no word is split at a line end)
+            sr.main(['--help'])
+        self.assertEqual(cm.exception.code, 0)
+        return ' '.join(out.getvalue().split())
+
+    def test_the_date_option_says_the_default_is_chicago_with_the_utc_date_as_the_fallback(self):
+        self.assertIn('--date DATE YYYY-MM-DD for the run directory name (default: today in Chicago, or the UTC date on a machine without the time zone database)', self.help_text())
+
+    def test_the_max_games_option_says_the_limit_counts_games_of_both_arms(self):
+        self.assertIn('--max-games MAX_GAMES play at most this many games in this call (counted across both arms: about half of them kx3 games), then write the page and stop', self.help_text())
+
+    def test_the_program_option_says_a_rebuild_needs_its_build_record_and_both_self_checks(self):
+        text = self.help_text()
+        for words in ('a REBUILD of the pinned build made with rl/strength/build.sh', 'it must have its build record (PROGRAM.build.json, written by build.sh) with the pinned engine tree and harness source',
+                      "both self-checks are replayed on this machine and must equal the committed pin's digests (this forces --selfcheck)"):
+            self.assertIn(words, text)
 
     def test_poll_seconds_must_be_positive(self):
         for bad in ('0', '-5'):

@@ -38,8 +38,8 @@ Each range refers only to the km3 games on its line; a few dozen games can show 
 
 ## The time it took
 
-km3 took 1.1 s a game on average, median 1.0 s, slowest 2.9 s, with 2 threads going at once. km3 playing this deck took 1.1 s a game.
-The run log has a sitting that did not close (for example the program was stopped by the 6:30 school-morning cut, or the run was interrupted), so the running time is estimated from the game times and the thread count: 36 s, for 64 games in all: 32 km3 games + 32 cheap km3 baseline games.
+km3 took 1.2 s a game on average, median 1.1 s, slowest 3.3 s, with 2 threads going at once. km3 playing this deck took 1.3 s a game.
+The run log has a sitting that did not close (for example the program was stopped by the 6:30 school-morning cut, or the run was interrupted), so the running time is estimated from the game times and the thread count: 40 s, for 64 games in all: 32 km3 games + 32 cheap km3 baseline games.
 
 ## What these numbers can and can't say
 
@@ -55,12 +55,13 @@ In more detail:
 ## What was run
 
 - Pilots: km3 (smoke, not kx3) on the deck, km3 on the public panel. Program `/home/dacz8976/kx/strength` sha256 `5a8f5c83a791`.
+- Pin `/home/dacz8976/slow_smoke2/pin_smoke.json` sha256 `97dcb802b5a0`: **NOT the committed pin** (HEAD has no rl/strength/slow_report_pin.json in /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/2007fbb0-8999-4f68-b5ad-afe643bc4e30/scratchpad/sr/work/repo (not a git repository, no commit, or the file is not committed); git said: fatal: not a git repository (or any parent up to mount point /mnt); allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use)): what this page says about the program rests on a pin that is not the committed one.
 - Self-check of `km3`: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (copied from the pin, not replayed: the pin says it was measured on this exact binary)
 - Build: claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec (the frozen, tested development build), built on the laptop Oct 2; km3 240/240 v the official program, self-checks km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa; KX_EXTRA_LISTS unset
 - Harness source sha256 `bf9c5d681400` (what rl/strength/build.sh prints); the checkout this run was registered from has the same.
 - School-morning rule: off (chosen at registration, for a machine that is not the laptop).
 - Deck file `decks/events/smoke-held.txt` sha256 `62006b682027`; the file is unknown (not a git repository).
 - Held-out decks in this run: smoke-held. Allowed because this is a `use` report, not development evidence; the held-out lock is unchanged.
-- Registered 2026-10-08T02:18:20Z, before any game; manifest sha256 `c5934221861a9a19`; repository commit `None`; pin `/home/dacz8976/slow_smoke2/pin_smoke.json`.
+- Registered 2026-10-08T07:20:47Z, before any game; manifest sha256 `10b59c8b90d8e611`; repository commit `None`; pin `/home/dacz8976/slow_smoke2/pin_smoke.json`.
 - 2 deals x 2 seats; seeds `24669500000 + p x 10000 + i` (p = opponent index, i = deal). The program plays each deal with each pilot on the deck, from one seed.
 - The engineering report with every number (paired differences, runtime, what more precision would cost) is `REPORT.md` beside this page.

@@ -19,13 +19,18 @@ What is pinned:
     the whole call (cuts included, the exact finish logged as complete, the message that says how to resume);
   * what is checked before every sitting: the program, the deck and the panel files, manifest.json; what a resume keeps from the registration (threads, headline,
     scrub list, and the school-morning choice, which an option on the resume overrides) and what a changed pin only gets a note; what `--dir --dry-run` says (the question,
-    then how many kx3 games and cheap km3 baseline games are played, planned and to go, and the registered resume command); a moved checkout;
+    then how many kx3 games and cheap km3 baseline games are played, planned and to go, and the registered resume command; with every game played, "complete" when the files are as
+    registered and "it would be refused: ..., every game is played, so --report-only writes the page from them" when a deck, a panel list or the program is not, the real resume's
+    refusal saying the same in its own words); a moved checkout;
   * the environment scrub on every sitting, a prefix and not a substring;
-  * what a stop leaves behind (the partial page and its console note) for Ctrl-C and for a failing program, a failing engineering report;
+  * what a stop leaves behind (the partial page and its console note) for Ctrl-C and for a failing program, a failing engineering report; the 6:30 stop is logged in Chicago time
+    even when the clock is UTC;
   * the lock file during a run: the process group of the program playing now is noted in it after every start, it is gone when the run is over, and it stays
     (with that group in it) when the wrapper leaves while a program it started is still running;
   * the self-check under the school rule (refused in school hours, bound by the morning cut, stopped on Ctrl-C, low priority, its own process group);
   * no school days at all is a choice, not "unset": at the registration, on the resume (as an option and as the registered value) and in the resume command;
+  * the school days of a resume are the same choice as the registered ones when they are the same days, however they are spelled or ordered (MON, TUE = tue,mon), and an override when
+    they are other days or the rule differs (the sitting_call event's school_choice_overridden);
   * the log of a call: one sitting_call per wrapper call, however many sittings it has.
 """
 import contextlib, datetime, io, json, os, shlex, shutil, signal, subprocess, sys, tempfile, threading, time, types, unittest
@@ -286,6 +291,23 @@ class HalfPastSixCut(RunLoop):
                          [(32, at(7, 6, 30).isoformat()), (29, at(8, 6, 30).isoformat())], 'each sitting is logged with what was left and when it will be cut')
         self.assertEqual(len(self.games(d)), 32)
 
+    def test_the_stop_is_logged_in_chicago_time_whatever_zone_the_clock_is_in(self):
+        """The clock of a real call is UTC (main's default), and the school-morning rule is Chicago time: the log says when the program was stopped in Chicago time, not +00:00."""
+        self.clock = QuickClock(at(7, 5, 0, 30))
+        self.clock.now = lambda: self.clock.t.astimezone(UTC)
+        d = self.register()
+        s = self.sittings(d, ('hang', 3), ('rest',))
+        code, out, err = self.go(d, s)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(s.stops[0].utcoffset(), datetime.timedelta(0), 'the clock really was in UTC')
+        logged = [e for e in T.jsonl(os.path.join(d, 'slow_report_log.jsonl')) if e['event'] == 'stopped_for_school']
+        self.assertEqual(len(logged), 1)
+        stamp = datetime.datetime.fromisoformat(logged[0]['at_local'])
+        self.assertEqual(stamp.utcoffset(), datetime.timedelta(hours=-5), 'October in Chicago is UTC-5')
+        self.assertTrue(logged[0]['at_local'].endswith('-05:00'), logged[0]['at_local'])
+        self.assertEqual(stamp, s.stops[0], 'the same instant as the stop')
+        self.assertEqual((stamp.hour, stamp.minute), (6, 30), 'a few seconds after 6:30 am Chicago time, not 11:30 UTC')
+
     def test_with_the_default_poll_the_cut_comes_within_half_a_minute(self):
         self.clock = QuickClock(at(7, 5, 3, 10))
         d = self.register()
@@ -472,7 +494,8 @@ class MaxGamesBudget(RunLoop):
         self.assertEqual(code, 0, out + err)
         self.assertEqual([c.max_games for c in s.calls], ['5', '2'], 'the second sitting gets what is left of the 5')
         self.assertEqual(len(self.games(d)), 5, '--max-games 5 plays 5 games in total, not 5 a sitting')
-        self.assertIn(f'{HEADLINE} stopped after --max-games 5; resume with: python3 rl/strength/slow_report.py --dir {d} --school-rule off', out.splitlines(),
+        self.assertIn(f'{HEADLINE} stopped after --max-games 5 (games across both arms, about half of them kx3 games); resume with: python3 rl/strength/slow_report.py --dir {d} --school-rule off',
+                      out.splitlines(),
                       'the command is the one registered (this run was registered with the rule off, though this call ran with it on)')
         self.assertIn(partial(5), self.page(d))
 
@@ -640,17 +663,73 @@ class DryRunOfARegisteredRun(RunLoop):
                       '16 kx3 games + 16 cheap km3 baseline games to go (it would be refused: my-list', out)
         self.assertIn('has changed since registration', out)
         self.assertNotIn('resume with', out)
+        self.assertNotIn('--report-only', out, 'with games to go the page would be partial: no hint about it')
         self.assertEqual({n: T.read(os.path.join(d, n)) for n in os.listdir(d)}, before, 'a dry run writes nothing')
 
-    def test_a_finished_run_is_complete_whatever_happened_to_the_files_since(self):
+    DONE = ('played so far: 16 kx3 games + 16 cheap km3 baseline games of 16 kx3 games + 16 cheap km3 baseline games planned; '
+            '0 kx3 games + 0 cheap km3 baseline games to go ({status})')
+    HINT = '; every game is played, so --report-only writes the page from them'
+
+    def finished(self):
         d = self.register()
         s = self.sittings(d, ('rest',))
         self.assertEqual(self.go(d, s, school='off')[0], 0)
-        T.write(self.deck, T.read(self.deck).replace('Torchic', 'Treecko'))
+        self.assertEqual(len(self.games(d)), 32)
+        return d
+
+    def dry_line(self, d):
         code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
         self.assertEqual(code, 0, err)
-        self.assertIn('played so far: 16 kx3 games + 16 cheap km3 baseline games of 16 kx3 games + 16 cheap km3 baseline games planned; '
-                      '0 kx3 games + 0 cheap km3 baseline games to go (complete)', out)
+        lines = out.splitlines()
+        self.assertEqual(len(lines), 3, out)
+        self.assertEqual(lines[2], f'{HEADLINE} dry run: nothing written')
+        self.assertTrue(lines[1].startswith(f'{HEADLINE} '), lines[1])
+        return lines[1][len(HEADLINE) + 1:]
+
+    def test_a_finished_run_is_complete_when_its_files_are_as_registered(self):
+        d = self.finished()
+        self.assertEqual(self.dry_line(d), self.DONE.format(status='complete'))
+
+    def test_a_finished_run_whose_deck_was_edited_since_is_not_complete_the_dry_run_says_it_would_be_refused_and_that_report_only_writes_the_page(self):
+        d = self.finished()
+        was = T.sha(self.deck)
+        T.write(self.deck, T.read(self.deck).replace('Torchic', 'Treecko'))
+        problem = f'my-list ({self.deck}) has changed since registration (sha256 {T.sha(self.deck)[:12]} instead of {was[:12]})'
+        self.assertEqual(self.dry_line(d), self.DONE.format(status='it would be refused: ' + problem + self.HINT))
+        # and the real resume does refuse, with the same hint in its own words, and plays nothing; --report-only then writes the page from the 32 games
+        second = self.sittings(d, ('rest',))
+        code, out, err = self.go(d, second, school='off')
+        self.assertEqual(code, f'{HEADLINE} REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n  {problem}\n'
+                               '  Every game is played: --report-only writes the page from them without these files.')
+        self.assertEqual(second.calls, [])
+        os.remove(os.path.join(d, 'SLOW_REPORT.md'))
+        code, out, err = self.go(d, second, '--report-only', school='off')
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(second.calls, [])
+        self.assertNotIn('PARTIAL', self.page(d))
+
+    def test_a_finished_run_whose_program_was_replaced_or_removed_is_not_complete_either_and_a_pinned_run_has_no_replay_on_offer(self):
+        d = self.finished()
+        registered = T.sha(self.program)
+        T.write(self.program, T.FAKE_PROGRAM + '\n# rebuilt at the pinned path\n', mode=0o755)
+        problem = f'{self.program} has sha256 {T.sha(self.program)[:12]}, {sr.PROGRAM_PROBLEM} {registered[:12]}. ' + T.RESUME_NEEDS_PINNED
+        self.assertEqual(self.dry_line(d), self.DONE.format(status='it would be refused: ' + problem + self.HINT))
+        os.remove(self.program)
+        problem = f'{self.program} is missing, {sr.PROGRAM_PROBLEM} {registered[:12]}. ' + T.RESUME_NEEDS_PINNED
+        self.assertEqual(self.dry_line(d), self.DONE.format(status='it would be refused: ' + problem + self.HINT))
+
+    def test_a_finished_run_with_several_changed_files_lists_them_all_joined_by_semicolons_and_the_hint_once(self):
+        d = self.finished()
+        was = T.sha(self.deck)
+        T.write(self.deck, T.read(self.deck).replace('Torchic', 'Treecko'))
+        panel = os.path.join(self.repo, 'decks', 'screen', 'opponents', 't-weezing.txt')
+        panel_was = T.sha(panel)
+        T.write(panel, T.read(panel) + '# edited\n')
+        line = self.dry_line(d)
+        deck = f'my-list ({self.deck}) has changed since registration (sha256 {T.sha(self.deck)[:12]} instead of {was[:12]})'
+        weezing = f't-weezing ({panel}) has changed since registration (sha256 {T.sha(panel)[:12]} instead of {panel_was[:12]})'
+        self.assertEqual(line, self.DONE.format(status='it would be refused: ' + deck + '; ' + weezing + self.HINT))
+        self.assertEqual(line.count('--report-only'), 1)
 
     def test_one_game_each_is_not_games_in_the_count(self):
         d = self.register()
@@ -789,6 +868,42 @@ class ResumeUsesTheRegisteredSchoolChoice(RunLoop):
         self.assertEqual(started, at(7, 12), 'turning the rule on again keeps the registered empty list of days')
         self.assertIsNone(flag(cmd, '--stop-after-min'))
 
+    def sitting_call_of(self, d, when, school, *extra):
+        """Start a resume of `d` at `when` with this school option and options (the pretended program is never really started) and return the sitting_call event it logged."""
+        before = len([e for e in T.jsonl(os.path.join(d, 'slow_report_log.jsonl')) if e['event'] == 'sitting_call'])
+        self.first_start(d, when, school, *extra)
+        calls = [e for e in T.jsonl(os.path.join(d, 'slow_report_log.jsonl')) if e['event'] == 'sitting_call']
+        self.assertEqual(len(calls), before + 1)
+        return calls[-1]
+
+    def test_a_resume_overrides_the_registered_school_choice_only_by_the_days_and_the_rule_and_not_by_how_the_days_are_written(self):
+        """school_choice_overridden (logged in the call's sitting_call) compares the SET of school days, parsed, and the rule: 'mon,tue', 'tue,mon', 'MON, TUE' and ' mon , tue ' are one choice."""
+        saturday_noon = at(10, 12)
+        d = self.register('--school-days', 'mon,tue', school='on')
+        for label, school, days, want in (('the registered text', None, 'mon,tue', False), ('the other order', None, 'tue,mon', False), ('capital letters', None, 'MON,TUE', False),
+                                          ('spaces after the comma', None, 'mon, tue', False), ('spaces everywhere', None, ' mon , tue ', False), ('a day twice', None, 'mon,tue,mon', False),
+                                          ('capitals, the other order and spaces', None, 'TUE , Mon', False), ('the rule given again', 'on', 'tue,mon', False),
+                                          ('one day more', None, 'mon,tue,wed', True), ('one day less', None, 'mon', True), ('another day for one', None, 'mon,wed', True),
+                                          ('other days altogether', None, 'sat,sun', True), ('no school days', None, '', True), ('the rule turned off', 'off', 'mon,tue', True),
+                                          ('the rule off and other days', 'off', 'tue', True), ('the rule off and the other order', 'off', 'tue,mon', True)):
+            with self.subTest(label):
+                call = self.sitting_call_of(d, saturday_noon, school, '--school-days', days)
+                self.assertIs(call['school_choice_overridden'], want, (school, days))
+                self.assertEqual((call['school_rule'], call['school_days']), (school or 'on', days), 'the log keeps the text the call was given')
+        call = self.sitting_call_of(d, saturday_noon, None)
+        self.assertEqual((call['school_choice_overridden'], call['school_days']), (False, 'mon,tue'), 'no option at all: the registered choice')
+
+    def test_the_default_school_days_in_any_order_are_the_registered_default_and_no_days_in_any_spelling_are_no_days(self):
+        d = self.register(school='on')  # the default days, mon to fri
+        for days, want in (('fri,thu,wed,tue,mon', False), ('MON,TUE,WED,THU,FRI', False), ('mon,tue,wed,thu', True), ('mon,tue,wed,thu,fri,sat', True), ('sat,sun', True), ('', True)):
+            with self.subTest(days=days):
+                self.assertIs(self.sitting_call_of(d, at(10, 12), None, '--school-days', days)['school_choice_overridden'], want)
+        self.make()
+        d = self.register('--school-days', '', school='on')  # registered with no school days at all
+        for days, want in (('', False), (' ', False), (',', False), (' , ,', False), ('mon', True), ('mon,tue,wed,thu,fri', True)):
+            with self.subTest(registered_without_days=days):
+                self.assertIs(self.sitting_call_of(d, at(10, 12), None, '--school-days', days)['school_choice_overridden'], want)
+
     def test_a_run_registered_before_the_choice_was_recorded_is_resumed_with_the_rule_on_for_school_days(self):
         d = self.register()
         man = json.loads(T.read(os.path.join(d, 'manifest.json')))
@@ -813,7 +928,7 @@ class ResumeUsesTheRegisteredSchoolChoice(RunLoop):
                 code, out, err = self.go(d, s, '--max-games', '2', school=None)
                 line = [l for l in out.splitlines() if 'stopped after --max-games' in l]
                 self.assertEqual(len(line), 1, out)
-                self.assertTrue(line[0].startswith(f'{HEADLINE} stopped after --max-games 2; resume with: '), line)
+                self.assertTrue(line[0].startswith(f'{HEADLINE} stopped after --max-games 2 (games across both arms, about half of them kx3 games); resume with: '), line)
                 self.assertEqual(shlex.split(line[0].split('resume with: ', 1)[1]), want, 'the message that --max-games stopped the call')
                 man = json.loads(T.read(os.path.join(d, 'manifest.json')))
                 del man['slow_report']['resume_command']

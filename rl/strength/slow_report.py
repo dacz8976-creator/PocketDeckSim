@@ -27,7 +27,7 @@ library; it calls strength_prereg.py, the pinned program and strength_report.py 
 """
 import sys
 sys.dont_write_bytecode = True  # a dry run must leave nothing behind in the repository
-import argparse, datetime, fcntl, hashlib, importlib.util, json, math, os, re, shlex, shutil, signal, statistics, subprocess, time
+import argparse, datetime, fcntl, hashlib, importlib.util, json, math, os, re, shlex, shutil, signal, socket, statistics, subprocess, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
@@ -186,21 +186,102 @@ def check_program(pin, program=None, repo=None):
         die(f'REFUSED: {p} has sha256 {actual[:12]}, not the pinned {pin["program_sha256"][:12]}, so it would have to be a rebuild of the pinned source; but the harness source in this checkout '
             f'({(here or "not found")[:12]}) is not the pinned build\'s ({pin["harness_source_sha256"][:12]}), so a build from here is not that program. Check out the commit the pin was made on, '
             'or make a new pin after its own gate.')
-    tree = engine_tree_in_checkout(repo, pin.get('engine_ref'))
-    if tree is not None and pin.get('engine_tree') and tree != pin['engine_tree']:
-        die(f'REFUSED: this checkout\'s {ref8}:engine tree is {tree[:12]}, not the pinned {pin["engine_tree"][:12]}, so a build of it is not the pinned engine. Nothing was written.')
     return 'rebuilt', actual
 
 
-def engine_tree_in_checkout(repo, ref):
-    """git's tree id of `<ref>:engine` in the checkout (what build.sh archives and prints), or None when the checkout has no such commit or no git: informational, then."""
-    if not repo or not ref:
-        return None
+GIT_REPO_VARS = PRE.GIT_REPO_VARS
+
+
+def git_env():
+    """The environment for a read of the repository we were told about: without the variables (a git hook or `rebase --exec` exports them) that make git read ANOTHER repository
+    whatever `git -C` says, and without optional locks, so a dry run writes nothing."""
+    env = {k: v for k, v in os.environ.items() if k not in GIT_REPO_VARS}
+    env['GIT_OPTIONAL_LOCKS'] = '0'
+    return env
+
+
+PIN_REL = 'rl/strength/slow_report_pin.json'
+ALLOW_UNCOMMITTED_PIN = 'SLOW_REPORT_ALLOW_UNCOMMITTED_PIN'  # test only: lets a hand-made pin through, and the registration says so
+
+
+def pin_commit_state(repo, pin_path):
+    """Whether the pin in use is the pin that is committed: byte-equal to HEAD's rl/strength/slow_report_pin.json in `repo`. Everything a report says about the program (it is
+    the pinned binary, its self-check texts were measured on it, a rebuild must replay them) rests on the pin, so a hand-edited pin, or `--pin copy.json`, could make any
+    program look pinned. Returns {'state': 'yes' | 'no' | 'bypassed', 'sha256': the pin file's, 'detail': why not}."""
+    psha = sha(pin_path)
+    detail = ''
     try:
-        r = subprocess.run(['git', '-C', repo, 'rev-parse', '--verify', '-q', f'{ref}:engine'], capture_output=True, text=True, env=dict(os.environ, GIT_OPTIONAL_LOCKS='0'))
+        r = subprocess.run(['git', '-C', repo, 'cat-file', 'blob', f'HEAD:./{PIN_REL}'], capture_output=True, env=git_env())
+        if r.returncode != 0:
+            said = r.stderr.decode('utf-8', 'replace').strip()
+            detail = f'HEAD has no {PIN_REL} in {repo} (not a git repository, no commit, or the file is not committed)'
+            if said:
+                detail += f'; git said: {said.splitlines()[0][:200]}'
+                if 'safe.directory' in said:  # a checkout made by another user (a root container on the cloud): git refuses it, the pin may well be committed
+                    detail += f' (git refuses this folder as unsafe, which is not the same as the pin being uncommitted; if you trust it: git config --global --add safe.directory {shlex.quote(repo)})'
+        elif hashlib.sha256(r.stdout).hexdigest() != psha:
+            detail = f'the pin file (sha256 {psha[:12]}) differs from the {PIN_REL} committed at HEAD (sha256 {hashlib.sha256(r.stdout).hexdigest()[:12]})'
     except OSError:
-        return None
-    return r.stdout.strip() or None if r.returncode == 0 else None
+        detail = 'git is not available, so the committed pin cannot be read'
+    if not detail:
+        return {'state': 'yes', 'sha256': psha, 'detail': ''}
+    if os.environ.get(ALLOW_UNCOMMITTED_PIN):
+        return {'state': 'bypassed', 'sha256': psha, 'detail': f'{detail}; allowed by {ALLOW_UNCOMMITTED_PIN} (test use)'}
+    return {'state': 'no', 'sha256': psha, 'detail': detail}
+
+
+def require_committed_pin(repo, pin_path):
+    st = pin_commit_state(repo, pin_path)
+    if st['state'] == 'no':
+        die(f'REFUSED: the pin is not the committed one: {st["detail"]}. A slow report trusts the pin for what the program is, so it uses only {PIN_REL} as committed at HEAD '
+            '(commit the pin, in the repository you run from; a hand-edited or copied pin is refused). Nothing was written.')
+    return st
+
+
+BUILD_RECORD_TEXT_KEYS = ('program_sha256', 'engine_arg', 'engine', 'engine_ref', 'engine_tree_archived', 'harness_source_sha256', 'rustc', 'cargo', 'machine', 'host', 'built_at', 'rebuild_command')
+
+
+def record_text(rec, key):
+    """A build record field as text for the page; the fields build.sh always writes can be missing only in a hand-made record, which then says 'not recorded'."""
+    v = rec.get(key)
+    return v if isinstance(v, str) and v else 'not recorded'
+
+
+def rustc_line(rec, missing):
+    """The first non-empty line of the record's `rustc -vV`, or `missing` (worded for the sentence it goes in)."""
+    t = rec.get('rustc')
+    return next((l for l in t.splitlines() if l.strip()), missing) if isinstance(t, str) else missing
+
+
+def read_build_record(program, pin):
+    """The record rl/strength/build.sh writes beside a program (PROGRAM.build.json), checked against the file and the pin: it must be for this exact file (program sha256), and the
+    engine tree it ARCHIVED (git's tree id of the extracted files, not read back from the ref), the harness source it compiled and, when it is a git ref, the commit must be the pin's. A
+    rebuild without that record, or with one that differs, is not the pinned source whatever its self-check says. Returns the record plus the record file's sha256."""
+    path = program + '.build.json'
+    hint = 'rl/strength/build.sh writes it beside the program it builds (build with it, to the path you pass here)'
+    if not os.path.isfile(path):
+        die(f'REFUSED: {program} has no build record ({path}); {hint}. Nothing was written.')
+    try:
+        rec = load_json(path)
+    except (OSError, ValueError) as e:
+        die(f'REFUSED: the build record {path} cannot be read ({e}); {hint}. Nothing was written.')
+    if not isinstance(rec, dict) or type(rec.get('schema')) is not int or rec['schema'] != 1:
+        die(f'REFUSED: the build record {path} is not a schema 1 record; {hint}. Nothing was written.')
+    for key in BUILD_RECORD_TEXT_KEYS:  # the page and the plan print these as text: a record with another type is damaged, not a build record
+        if rec.get(key) is not None and not isinstance(rec[key], str):
+            die(f'REFUSED: the build record {path} has an entry {key} that is not text; {hint}. Nothing was written.')
+    actual = sha(program)
+    if rec.get('program_sha256') != actual:
+        die(f'REFUSED: the build record {path} is for a program with sha256 {str(rec.get("program_sha256"))[:12]}, but {program} has sha256 {actual[:12]}: the record belongs to the file it was '
+            'written for. Nothing was written.')
+    for key, want, what in (('engine_tree_archived', pin.get('engine_tree'), 'engine tree'), ('harness_source_sha256', pin.get('harness_source_sha256'), 'harness source')):
+        if not want:
+            die(f'REFUSED: the pin has no {key if key != "engine_tree_archived" else "engine_tree"}, so a rebuild cannot be checked against it. Nothing was written.')
+        if rec.get(key) != want:
+            die(f'REFUSED: the build record says the {what} that went into {program} is {str(rec.get(key))[:12]}, not the pinned {want[:12]}, so it is not a build of the pinned source. Nothing was written.')
+    if rec.get('engine_ref') and pin.get('engine_ref') and rec['engine_ref'] != pin['engine_ref']:
+        die(f'REFUSED: the build record says the engine ref was {rec["engine_ref"][:12]}, not the pinned {pin["engine_ref"][:12]}. Nothing was written.')
+    return dict(rec, record_file=path, record_sha256=sha(path))
 
 
 # ------------------------------------------------------------------------------------------------------------------ the deck
@@ -231,7 +312,7 @@ def default_deck_check(deck_abs, root):
 def deck_state(repo, rel):
     """Whether the deck file is committed as it is: 'committed', 'not committed', or 'unknown (...)'."""
     def git(*a):  # only commands that never write .git/index (git diff would refresh it): a dry run writes nothing
-        return subprocess.run(['git', '-C', repo, *a], capture_output=True, text=True, env=dict(os.environ, GIT_OPTIONAL_LOCKS='0'))
+        return subprocess.run(['git', '-C', repo, *a], capture_output=True, text=True, env=git_env())
     try:
         if git('rev-parse', '--is-inside-work-tree').returncode != 0:
             return 'unknown (not a git repository)'
@@ -559,10 +640,14 @@ def headline_of(pin, deck_name):
 
 
 def build_config(*, pin, pin_path, deck_rel, deck_name, deck_sha, deck_state, deals, paired, seed_base, threads, program_sha, selfcheck_given='pin', selfcheck_how='pin',
-                 resume_command=None, program=None, route='pinned', harness_checkout=None, school_rule='on', school_days=DEFAULT_SCHOOL_DAYS, engine_tree_checkout=None):
+                 resume_command=None, program=None, route='pinned', harness_checkout=None, school_rule='on', school_days=DEFAULT_SCHOOL_DAYS, pin_state=None, build_record=None,
+                 registered_on=None):
     headline = headline_of(pin, deck_name)
-    engine = pin['engine'] + (f"; THIS PROGRAM ({(program or pin['program'])}, sha256 {program_sha[:12]}) IS A REBUILD of that source made on another machine, not the laptop binary, "
-                              'accepted because both self-checks were replayed on that machine and equal the committed pin\'s digests' if route == 'rebuilt' else '')
+    rec = build_record or {}
+    engine = pin['engine'] + (f"; THIS PROGRAM ({(program or pin['program'])}, sha256 {program_sha[:12]}) is NOT the pinned binary: its build record (written by rl/strength/build.sh, not signed) "
+                              f"says it is a rebuild of that source (build record sha256 {str(rec.get('record_sha256'))[:12]}: engine tree as archived {str(rec.get('engine_tree_archived'))[:12]}, harness source "
+                              f"{str(rec.get('harness_source_sha256'))[:12]}, {rustc_line(rec, 'toolchain not recorded')}), accepted because both self-checks were "
+                              f"replayed on the registering machine and equal {pin_digests((pin_state or {}).get('state'))}" if route == 'rebuilt' else '')
     et = expected_time(deals, pin)
     pilot, ref = pin['pilot'], pin['reference']
     baseline = (f'and how much better {pilot} plays this deck than {ref} on the same deals' if paired else
@@ -584,7 +669,9 @@ def build_config(*, pin, pin_path, deck_rel, deck_name, deck_sha, deck_state, de
                          scrub_env_prefixes=list(pin['scrub_env_prefixes']), resume_command=resume_command,
                          program_route=route, pinned_program=pin['program'], pinned_program_sha256=pin['program_sha256'],
                          harness_source_sha256=pin['harness_source_sha256'], harness_source_checkout_sha256=harness_checkout,
-                         engine_ref=pin.get('engine_ref'), engine_tree=pin.get('engine_tree'), engine_tree_in_checkout=engine_tree_checkout,
+                         engine_ref=pin.get('engine_ref'), engine_tree=pin.get('engine_tree'),
+                         pin_committed=pin_state['state'] if pin_state else None, pin_committed_detail=(pin_state or {}).get('detail') or None, registered_on=registered_on,
+                         build_record=build_record,
                          school_rule=school_rule, school_days=school_days,
                          expected_hours=dict(typical_low=et['typical_hours'][0], typical_high=et['typical_hours'][1], wall=et['wall_hours'])),
     )
@@ -635,6 +722,78 @@ def run_selfcheck(pin, repo, spec, say, deadline=None, now=None):
     return got
 
 
+def selfcheck_deadline(school_rule, school_days, now):
+    """When a self-check replay (hours for kx3) must be over: the next school morning's 6:30 cut, or None with the rule off / no school days. Refuses at school time."""
+    if school_rule != 'on' or not school_days:
+        return None
+    act = school_action(now(), school_days)
+    if act['kind'] == 'wait':
+        die(f"REFUSED: the self-check runs for hours and it is school time (the school-morning rule waits until {act['until'].astimezone(chicago()).strftime('%a %H:%M')} Chicago time); "
+            'start it after that, or with --school-rule off')
+    return act['hard_stop']
+
+
+def pin_digests(state):
+    """'the committed pin's digests', or, for a pin that was let through by the test-only variable, what it really is."""
+    return "the committed pin's digests" if state in (None, 'yes') else 'the digests of the pin file in use (NOT the committed pin: test use)'
+
+
+def registered_vs_pin(man, pin):
+    """A changed program is judged by the pin the run was REGISTERED under, not by whatever pin file is there now: a later pin (another build, another digest) must not let a run
+    go on with a program of a different pilot version, which would pool games of two builds in one report. Refuses when the registered engine tree, harness hash, engine ref or
+    self-check texts are not the pin's."""
+    sr = man.get('slow_report') or {}
+    diffs = []
+    for key in ('engine_tree', 'harness_source_sha256', 'engine_ref'):
+        if (sr.get(key) or None) != (pin.get(key) or None):  # '' and a missing entry are both "not recorded"
+            diffs.append(f'{key}: registered {str(sr.get(key))[:12] if sr.get(key) else "not recorded"}, pin now {str(pin.get(key))[:12] if pin.get(key) else "not recorded"}')
+    for spec, text in (man.get('selfcheck') or {}).items():
+        if (pin.get('selfcheck') or {}).get(spec) != text:
+            diffs.append(f"the {spec} self-check text differs (registered: {text}; pin now: {(pin.get('selfcheck') or {}).get(spec, 'none')})")
+    if diffs:
+        die('REFUSED: the pin in use is not the pin this run was registered under (' + '; '.join(diffs) + '), so a changed program cannot be judged by it: games of two builds would be pooled. '
+            'Make the pin the run was registered with the committed one again (for example revert the commit that changed rl/strength/slow_report_pin.json) and use a program built for it, '
+            'or register a new run.')
+
+
+def check_program_change(man, pin, pin_path, repo, school_rule, school_days, now):
+    """Everything that is checked before the self-checks are replayed on a program of another sha256 (the real resume and --dry-run both use it, so the dry run does not promise what
+    the resume refuses): the pin is the one the run was registered under and is the committed one, the program's build record has the pinned tree and harness, and the school-morning
+    rule leaves time. Returns (committed-pin state, the build record, the replay deadline)."""
+    registered_vs_pin(man, pin)
+    st = require_committed_pin(repo, pin_path)
+    rec = read_build_record(man['program'], pin)
+    return st, rec, selfcheck_deadline(school_rule, school_days, now)
+
+
+def program_in_use_before(rundir, man):
+    """The sha256 of the program the last sitting ran with: the registered one, then each accepted change and each sitting's own record (a run can go back to an earlier accepted build)."""
+    cur = man.get('program_sha256')
+    for e in load_jsonl(os.path.join(rundir, 'slow_report_log.jsonl')):
+        if e.get('event') == 'program_changed' and is_program_change(e, man):
+            cur = e['new_sha256']
+        elif e.get('event') == 'sitting_call' and isinstance(e.get('program_sha256'), str):
+            cur = e['program_sha256']
+    return cur
+
+
+def reverify_program(rundir, man, pin, pin_path, repo, say, school_rule, school_days, now):
+    """A resume (a container restart) finds a program of another sha256 than the run was registered with. Only a run registered on the rebuilt route may go on, and only because
+    (0) the pin in use is the pin it was registered under, (1) that pin is the committed one, (2) the program's build record (PROGRAM.build.json) has the pinned engine tree and harness
+    source, and (3) both self-checks are replayed again on it and equal the committed pin's digests. The change is logged as a 'program_changed' event (the page shows it); the
+    registration is not touched. Returns the new sha256."""
+    prog = man['program']
+    new = sha(prog)
+    st, rec, deadline = check_program_change(man, pin, pin_path, repo, school_rule, school_days, now)
+    say(f"the program at {prog} has sha256 {new[:12]}, not the {str(man.get('program_sha256'))[:12]} this run was registered with; its build record has the pinned engine tree and harness source, "
+        f"so both self-checks are replayed again against {pin_digests(st['state'])} before the run goes on (hours for kx3)")
+    pin_run = dict(pin, program=prog)
+    texts = {spec: run_selfcheck(pin_run, repo, spec, say, deadline=deadline, now=now) for spec in sorted({man['pilot'], man['reference']})}
+    log_event(rundir, 'program_changed', old_sha256=program_in_use_before(rundir, man), new_sha256=new, build_record=rec, selfcheck=texts, pin_committed=st['state'], replayed_on=socket.gethostname())
+    say(f"program changed mid-run, accepted: both self-checks equal {pin_digests(st['state'])}; logged as program_changed in slow_report_log.jsonl and shown on the page")
+    return new
+
+
 # ------------------------------------------------------------------------------------------------------------------ a registered run
 def load_registered(rundir):
     """manifest.json of a run, refused unless it is the pre-registered file."""
@@ -654,14 +813,57 @@ def load_registered(rundir):
     return load_json(mp), msha
 
 
-def verify_inputs(man):
-    """Problems with the files this run was registered with: the program, the deck and the panel lists (exactly as the program will read them)."""
+PROGRAM_PROBLEM = 'but this run was registered with the program at that path with sha256'
+
+
+def program_change_valid(e, man):
+    """Whether a 'program_changed' event of the (unprotected) log is what reverify_program writes for THIS run: for the program it names, a build record with the registered engine
+    tree and harness hash, and the self-check texts the run was registered with. This keeps a stray, stale or foreign line out; it is NOT authentication: every value it compares is
+    public in the manifest, and whoever can write to the run folder can also rewrite manifest.json and manifest.sha256 (the pushed commit of the registration is the tamper evidence)."""
+    sr = man.get('slow_report') or {}
+    rec = e.get('build_record')
+    return (isinstance(e.get('new_sha256'), str) and isinstance(e.get('at'), str) and e['at'] != '' and isinstance(rec, dict) and rec.get('program_sha256') == e['new_sha256']
+            and rec.get('engine_tree_archived') == sr.get('engine_tree') and rec.get('harness_source_sha256') == sr.get('harness_source_sha256')
+            and e.get('selfcheck') == man.get('selfcheck'))
+
+
+def is_program_change(e, man):
+    """A 'program_changed' log line this run honours and shows: only a run registered on the rebuilt route has any (a pinned-route run is byte for byte or nothing), and it must pass
+    program_change_valid."""
+    return e.get('event') == 'program_changed' and (man.get('slow_report') or {}).get('program_route') == 'rebuilt' and program_change_valid(e, man)
+
+
+def accepted_program_shas(rundir, man):
+    """The program sha256 values this run may continue with: the registered one, plus, on a run registered on the rebuilt route only, any later one that was accepted after both
+    self-checks were replayed again (the 'program_changed' events of slow_report_log.jsonl, written by reverify_program, each checked against the registration: the log is not
+    covered by manifest.sha256, and a run registered on the pinned route is byte for byte or nothing)."""
+    shas = {man.get('program_sha256')}
+    for e in load_jsonl(os.path.join(rundir, 'slow_report_log.jsonl')):
+        if is_program_change(e, man):
+            shas.add(e['new_sha256'])
+    return shas
+
+
+def program_only_problem(man, problems):
+    """Whether the only thing wrong with the inputs is a program of another sha256 that is there, on a run registered on the rebuilt route: the one case a resume may go on with (after
+    the checks and the replay of reverify_program). Used by the real resume and by --dry-run, so that they cannot drift apart."""
+    return (bool(problems) and all(PROGRAM_PROBLEM in p for p in problems) and (man.get('slow_report') or {}).get('program_route') == 'rebuilt'
+            and os.path.isfile(man['program']))
+
+
+def verify_inputs(man, accepted=None):
+    """Problems with the files this run was registered with: the program, the deck and the panel lists (exactly as the program will read them). `accepted` is the set of
+    program sha256 values the run may continue with (default: the registered one only)."""
     problems = []
     prog = man['program']
-    if not os.path.isfile(prog) or sha(prog) != man.get('program_sha256'):
-        problems.append(f'{prog} {"is missing" if not os.path.isfile(prog) else f"has sha256 {sha(prog)[:12]}"}, but this run was registered with the program at that path with sha256 '
-                        f'{str(man.get("program_sha256"))[:12]}. A resume needs the same program, byte for byte: the same image and toolchain normally rebuild byte-identically '
-                        f'(rl/strength/build.sh to the same path), a different build does not, and then this run cannot continue (register a new one)')
+    ok_shas = set(accepted) if accepted else {man.get('program_sha256')}
+    if not os.path.isfile(prog) or sha(prog) not in ok_shas:
+        how = ('A resume needs the same program, byte for byte (this run was registered on the pinned route, which has no build record and no rebuild; only a run registered with --program '
+               'can go on with a rebuild), or a new run' if (man.get('slow_report') or {}).get('program_route') != 'rebuilt' else
+               'A resume needs the same program, byte for byte, or a rebuild from the same pinned source whose build record (PROGRAM.build.json, written by rl/strength/build.sh) has the same '
+               'engine tree and harness hash and whose two self-checks are replayed again against the committed pin; rebuild with the "rebuild_command" in the registration\'s build record '
+               '(same toolchain, HOME, CARGO_HOME and build folders) to get the same bytes, or register a new run')
+        problems.append(f'{prog} {"is missing" if not os.path.isfile(prog) else f"has sha256 {sha(prog)[:12]}"}, {PROGRAM_PROBLEM} {str(man.get("program_sha256"))[:12]}. {how}')
     root = man.get('repo_root') or '.'
     if man.get('repo_root') and not os.path.isdir(root):
         problems.append(f'the repository this run was registered in ({root}) is not there: the run records the path of its checkout, so a moved or renamed checkout cannot resume it '
@@ -699,11 +901,21 @@ def load_games(rundir):
 
 
 def log_event(rundir, event, **kw):
-    with open(os.path.join(rundir, 'slow_report_log.jsonl'), 'a', encoding='utf-8') as f:
-        f.write(json.dumps(dict(at=utc_iso(), event=event, **_LOG_EXTRA, **kw), default=str) + '\n')
+    path = os.path.join(rundir, 'slow_report_log.jsonl')
+    lead = ''
+    try:  # a last line that lost its newline (a write cut short) must not swallow the event that follows it
+        with open(path, 'rb') as f:
+            f.seek(0, os.SEEK_END)
+            if f.tell() > 0:
+                f.seek(-1, os.SEEK_END)
+                lead = '' if f.read(1) == b'\n' else '\n'
+    except OSError:
+        pass
+    with open(path, 'a', encoding='utf-8') as f:
+        f.write(lead + json.dumps(dict(at=utc_iso(), event=event, **_LOG_EXTRA, **kw), default=str) + '\n')
 
 
-def run_games(rundir, man, scrub_prefixes, *, threads, max_games, school_on, school_days, now, sleep, spawn, poll_s, say):
+def run_games(rundir, man, scrub_prefixes, *, threads, max_games, school_on, school_days, now, sleep, spawn, poll_s, say, accepted_shas=None):
     """Play the games still missing, in sittings. With the school rule on, a sitting is told to start no new game after the next school morning's 5:15,
     is killed at 6:30 if a game is still going, and the run waits for 5 pm. The program, the deck and the panel files are checked before every sitting.
     Returns 'complete' or 'limit' (max_games reached); raises SystemExit on a failing program, changed inputs, or repeated cuts with no progress."""
@@ -718,7 +930,7 @@ def run_games(rundir, man, scrub_prefixes, *, threads, max_games, school_on, sch
     while True:
         if load_registered(rundir)[0] != man:  # the program re-reads manifest.json every sitting, so it is checked every sitting (a changed one refuses inside)
             die('REFUSED: manifest.json is not the one this run started with, so nothing is run.')
-        problems = verify_inputs(man)
+        problems = verify_inputs(man, accepted_shas)
         if problems:
             die('REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n  ' + '\n  '.join(problems))
         have = {g['key'] for g in load_games(rundir)}
@@ -774,7 +986,7 @@ def run_games(rundir, man, scrub_prefixes, *, threads, max_games, school_on, sch
             budget -= new
         left_over = remaining - new
         if killed:
-            log_event(rundir, 'stopped_for_school', at_local=now().isoformat())
+            log_event(rundir, 'stopped_for_school', at_local=now().astimezone(chicago()).isoformat())  # the clock is UTC by default: the field is Chicago time
             say('school-morning rule: the program was stopped at 6:30; the game it was in the middle of will be played again')
             cuts_without_progress = 0 if new else cuts_without_progress + 1
             if cuts_without_progress >= MAX_CUTS_WITHOUT_PROGRESS:
@@ -853,6 +1065,11 @@ def range_points(m, half):
     return f'probably between {signed_points(max(-1.0, lo))} and {signed_points(min(1.0, hi))} points{cut}'
 
 
+def range_width_points(m, half):
+    """The width of the range range_points prints, worked out from the two ends as printed (each rounded once), so a sentence about the width never disagrees with them."""
+    return round(100 * min(1.0, m + half), 1) - round(100 * max(-1.0, m - half), 1)
+
+
 def gain_range_note(pilot, ref, n, m, half):
     """In plain words what the paired-gain range m +- half (fractions of a score, over n paired games; the range itself is printed by range_points just before) does
     and does not include; never waves a wide range away."""
@@ -892,14 +1109,14 @@ def unfinished_errors(rundir, finished_keys):
 
 
 SELFCHECK_HOW = (('given', 'copied from the pin, not replayed: the pin says it was measured on this exact binary'),
-                 ('replayed by slow_report', 'replayed on this machine just before registration, equal to the committed pin'),
+                 ('replayed by slow_report', 'replayed on the registering machine just before registration, equal to the committed pin'),
                  ('run by strength_prereg', 'replayed at registration'))
 
 
-def selfcheck_how(source):
+def selfcheck_how(source, pin_state=None):
     for prefix, text in SELFCHECK_HOW:
         if (source or '').startswith(prefix):
-            return text
+            return text if pin_state in (None, 'yes') else text.replace('the committed pin', 'the pin file in use (NOT the committed pin: test use)')
     return 'recorded at registration'
 
 
@@ -1047,10 +1264,29 @@ def write_slow_report(rundir, out=None):
     P('## What was run\n')
     P(f"- Pilots: {sr['pilot_label']} on the deck, {sr['reference_label']} on {sr['panel_label']}. Program `{man.get('program')}` sha256 `{str(man.get('program_sha256'))[:12]}`.")
     if sr.get('program_route') == 'rebuilt':
-        P(f"- The program is a REBUILD of the pinned source, not the pinned binary (`{sr.get('pinned_program')}`, sha256 `{str(sr.get('pinned_program_sha256'))[:12]}`): it was accepted only because "
-          f"both self-checks were replayed on this machine and equal the committed pin's digests, and the harness source in the checkout is the pinned build's.")
+        host_ = f" ({sr['registered_on']})" if sr.get('registered_on') else ''
+        P(f"- The program is NOT the pinned binary (`{sr.get('pinned_program')}`, sha256 `{str(sr.get('pinned_program_sha256'))[:12]}`): its build record says it is a rebuild of the pinned source, and it was accepted only because "
+          f"that record has the pinned engine tree and harness source and both self-checks were replayed on the registering machine{host_} and equal {pin_digests(sr.get('pin_committed'))}, "
+          f"and the harness source in the checkout is the pinned build's. The record is written by the builder's own script and is not signed: what stands behind the program is those replayed self-checks "
+          f"(12 fixed games per pilot), not the record.")
+        rec_ = sr.get('build_record') or {}
+        if rec_:
+            P(f"- Build record `{os.path.basename(record_text(rec_, 'record_file'))}` sha256 `{str(rec_.get('record_sha256'))[:12]}`: engine {record_text(rec_, 'engine_arg')} -> tree as archived "
+              f"`{str(rec_.get('engine_tree_archived'))[:12]}` (the pin's is `{str(sr.get('engine_tree'))[:12]}`), harness source `{str(rec_.get('harness_source_sha256'))[:12]}`, "
+              f"{rustc_line(rec_, 'rustc not recorded')}, {record_text(rec_, 'cargo')}, built {record_text(rec_, 'built_at')} on {record_text(rec_, 'host')} ({record_text(rec_, 'machine')}); "
+              f"to rebuild the same bytes after a restart: `{record_text(rec_, 'rebuild_command')}`.")
+    if sr.get('pin_committed'):
+        P(f"- Pin `{sr['pin']['path']}` sha256 `{sr['pin']['sha256'][:12]}`: " + (
+            'committed (byte-equal to HEAD\'s file in the repository this run was registered from).' if sr['pin_committed'] == 'yes' else
+            f"**NOT the committed pin** ({sr.get('pin_committed_detail') or sr['pin_committed']}): what this page says about the program rests on a pin that is not the committed one."))
+    for e in [e for e in load_jsonl(os.path.join(rundir, 'slow_report_log.jsonl')) if is_program_change(e, man)]:  # a line the run could not have written is not shown as a fact
+        before = sum(1 for g in games if (g.get('started_at') or '') < (e.get('at') or ''))
+        nr = lambda v: str(v)[:12] if v else 'not recorded'  # a line without these entries (hand-made, or from an older version) never prints the text None
+        P(f"- **The program changed mid-run** ({e['at']}): sha256 `{nr(e.get('old_sha256'))}` -> `{nr(e.get('new_sha256'))}` after a restart or rebuild; its build record has the pinned engine tree and harness source "
+          f"(record `{nr(e['build_record'].get('record_sha256'))}`) and both self-checks were replayed again on {e.get('replayed_on') or 'a machine not recorded'} and equal {pin_digests(e.get('pin_committed'))}. "
+          f"{plural(before, 'game')} of the {len(games)} played so far were started before this change and {len(games) - before} after; the numbers above pool them.")
     for spec, txt in (man.get('selfcheck') or {}).items():
-        P(f"- Self-check of `{spec}`: `{txt}` ({selfcheck_how((man.get('selfcheck_source') or {}).get(spec))})")
+        P(f"- Self-check of `{spec}`: `{txt}` ({selfcheck_how((man.get('selfcheck_source') or {}).get(spec), sr.get('pin_committed'))})")
     if man.get('engine'):
         P(f"- Build: {man['engine']}")
     if sr.get('harness_source_sha256'):
@@ -1124,17 +1360,18 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
     ap.add_argument('--repo', default=ROOT)
     ap.add_argument('--pin', default=DEFAULT_PIN)
     ap.add_argument('--out-root', help='where run directories go (default: <repo>/rl/results/slow_reports)')
-    ap.add_argument('--date', help="YYYY-MM-DD for the run directory name (default: today in Chicago)")
+    ap.add_argument('--date', help="YYYY-MM-DD for the run directory name (default: today in Chicago, or the UTC date on a machine without the time zone database)")
     ap.add_argument('--seed-base', type=int)
     ap.add_argument('--selfcheck', action='store_true', help='replay the pinned self-check games instead of recording the pinned text (hours for kx3)')
-    ap.add_argument('--program', help='a REBUILD of the pinned build (for example on the cloud, with rl/strength/build.sh), used instead of the pin\'s path; when its sha256 is not the pinned '
-                                      'one, both self-checks are replayed on this machine and must equal the committed pin\'s digests (this forces --selfcheck)')
+    ap.add_argument('--program', help='a REBUILD of the pinned build made with rl/strength/build.sh (for example on the cloud), used instead of the pin\'s path; when its sha256 is not the pinned '
+                                      'one it must have its build record (PROGRAM.build.json, written by build.sh) with the pinned engine tree and harness source, and both self-checks are '
+                                      'replayed on this machine and must equal the committed pin\'s digests (this forces --selfcheck)')
     ap.add_argument('--register-only', action='store_true')
     ap.add_argument('--report-only', action='store_true', help='with --dir: write the page from the games so far and play nothing')
     ap.add_argument('--dry-run', action='store_true', help='print the plan (or, with --dir, where the run stands); write nothing')
     ap.add_argument('--school-rule', choices=('on', 'off'), help='the school-morning rule (default on at registration; a resume keeps the registered choice). Off for a machine that is not the laptop, e.g. the cloud')
     ap.add_argument('--school-days', help=f'the school days (default {DEFAULT_SCHOOL_DAYS} at registration; a resume keeps the registered choice)')
-    ap.add_argument('--max-games', type=int, help='play at most this many games in this call, then write the page and stop')
+    ap.add_argument('--max-games', type=int, help='play at most this many games in this call (counted across both arms: about half of them kx3 games), then write the page and stop')
     ap.add_argument('--poll-s', type=float, default=20.0)
     a = ap.parse_args(argv)
     now = now or (lambda: datetime.datetime.now(UTC))
@@ -1168,15 +1405,22 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
         ctx['tag'] = man['slow_report']['headline']
         _LOG_EXTRA.update(pilot=man['pilot'], reference=man['reference'])
         reg_days = man['slow_report'].get('school_days')
-        school_rule = a.school_rule or man['slow_report'].get('school_rule') or 'on'
-        school_days_text = a.school_days if a.school_days is not None else (reg_days if reg_days is not None else DEFAULT_SCHOOL_DAYS)  # '' is a choice (no school days), not "unset"
+        reg_rule = man['slow_report'].get('school_rule') or 'on'
+        reg_days_text = reg_days if reg_days is not None else DEFAULT_SCHOOL_DAYS
+        school_rule = a.school_rule or reg_rule
+        school_days_text = a.school_days if a.school_days is not None else reg_days_text  # '' is a choice (no school days), not "unset"
+        # logged as an override only when it differs from what was registered: running exactly the printed resume command is not one
+        school_choice_overridden = school_rule != reg_rule or set(parse_days(school_days_text)) != set(parse_days(reg_days_text))  # the days, not their spelling or order (MON, TUE = tue,mon)
     else:
         if a.report_only:
             die('--report-only needs --dir RUNDIR (a run that is already registered)')
         school_rule = a.school_rule or 'on'
         school_days_text = a.school_days if a.school_days is not None else DEFAULT_SCHOOL_DAYS
+        school_choice_overridden = False
+        pin_state = require_committed_pin(repo, a.pin)  # before anything below trusts the pin
         program_path = os.path.abspath(a.program) if a.program else None
         route, program_sha = check_program(pin, program_path, repo)
+        build_rec = read_build_record(program_path, pin) if route == 'rebuilt' else None  # a rebuild must come with the record of what was archived and compiled
         pin_run = dict(pin, program=program_path or pin['program'])  # the pin as this run uses it: the program's path may be a rebuilt copy's
         harness_here = harness_source_sha256(repo)
         deck_abs = os.path.abspath(a.deckfile)
@@ -1239,14 +1483,19 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
             f"a second each{'; with --no-paired they are still played and the page leaves them out' if a.no_paired else ''}); "
             f"the time is for the {kg(et['kx3_games'], pilot_)}: about {hours_text(et['typical_hours'][0])} to "
             f"{hours_text(et['typical_hours'][1])} if the deck plays like most of his, about {hours_text(et['wall_hours'])} if it plays like the Wailord wall (measured with 2 games at a time)")
-        if school_rule == 'on':
-            say('on school days the run pauses from 5:15 am to 5 pm Chicago time (the school-morning rule), so the calendar time is longer')
+        if school_rule == 'on' and school_days:
+            say(f'on school days ({school_days_text}) the run pauses from 5:15 am to 5 pm Chicago time (the school-morning rule), so the calendar time is longer')
+        elif school_rule == 'on':
+            say('school-morning rule: on, but with no school days set it never pauses the run')
         else:
             say('school-morning rule: OFF for this run (it never pauses for school mornings; the choice is recorded in the registration and carried by the resume command)')
         replay = a.selfcheck or route == 'rebuilt'
+        say(f"pin committed: {pin_state['state']} (rl/strength/slow_report_pin.json sha256 {pin_state['sha256'][:12]}" + ('; byte-equal to HEAD' if pin_state['state'] == 'yes' else f"; {pin_state['detail']}") + ')')
         if route == 'rebuilt':
-            say(f"program {pin_run['program']} (sha256 {program_sha[:12]}) is a REBUILD, not the pinned binary (sha256 {pin['program_sha256'][:12]}): both self-checks will be replayed on this machine "
-                'against the committed pin\'s digests before anything is registered (hours for kx3), and the checkout\'s harness source equals the pinned build\'s')
+            say(f"program {pin_run['program']} (sha256 {program_sha[:12]}) is NOT the pinned binary (sha256 {pin['program_sha256'][:12]}): its build record "
+                f"({os.path.basename(build_rec['record_file'])}, sha256 {build_rec['record_sha256'][:12]}) says it is a rebuild of the pinned source (engine tree as archived {build_rec['engine_tree_archived'][:12]}, "
+                f"harness source {build_rec['harness_source_sha256'][:12]}, built with {rustc_line(build_rec, 'an unrecorded toolchain')}); both self-checks will be replayed on this machine "
+                f"against {pin_digests(pin_state['state'])} before anything is registered (hours for kx3), and the checkout's harness source equals the pinned build's")
         say(f"stage use (not development evidence; the held-out lock is untouched), seeds from {seed_base}, program {pin_run['program']} "
             f"({'pinned' if route == 'pinned' else 'rebuilt'}, sha256 {program_sha[:12]}), "
             f"{'without' if a.no_paired else 'with'} the comparison with {ref_} on the same deals in the page, no pass or fail line")
@@ -1255,13 +1504,7 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
             return 0
         given, how = 'pin', 'pin'
         if replay:
-            deadline = None
-            if school_rule == 'on' and school_days:
-                act = school_action(now(), school_days)
-                if act['kind'] == 'wait':
-                    die(f"REFUSED: the self-check runs for hours and it is school time (the school-morning rule waits until {act['until'].astimezone(chicago()).strftime('%a %H:%M')} Chicago time); "
-                        'start it after that, or with --school-rule off')
-                deadline = act['hard_stop']
+            deadline = selfcheck_deadline(school_rule, school_days, now)
             given, how = {spec: run_selfcheck(pin_run, repo, spec, say, deadline=deadline, now=now) for spec in sorted({pin['pilot'], pin['reference']})}, 'replayed'
             if os.path.exists(rundir):  # hours may have passed: what was decided before the self-check is decided again
                 die(f'REFUSED: the run directory {rundir} appeared while the self-check ran; resume it with --dir {shlex.quote(rundir)} (or pick another --date)')
@@ -1272,8 +1515,8 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
         cfg = build_config(pin=pin, pin_path=a.pin, deck_rel=rel, deck_name=name, deck_sha=dsha, deck_state=state, deals=deals, paired=not a.no_paired, seed_base=seed_base,
                            threads=threads, program_sha=program_sha, selfcheck_given=given, selfcheck_how=how,
                            resume_command=resume_command_for(rundir, school_rule, school_days_text), program=pin_run['program'], route=route,
-                           harness_checkout=harness_here, school_rule=school_rule, school_days=school_days_text,
-                           engine_tree_checkout=engine_tree_in_checkout(repo, pin.get('engine_ref')))
+                           harness_checkout=harness_here, school_rule=school_rule, school_days=school_days_text, pin_state=pin_state, build_record=build_rec,
+                           registered_on=socket.gethostname())
         made_root = not os.path.exists(out_root)
 
         def cleanup():
@@ -1314,11 +1557,20 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
         planned_x, planned_r = sum(1 for k in keys if k.endswith('|X')), sum(1 for k in keys if k.endswith('|ref'))
         done = {g['key'] for g in load_games(rundir)}
         have_x, have_r = sum(1 for k in done if k.endswith('|X')), sum(1 for k in done if k.endswith('|ref'))
-        problems = verify_inputs(man)
-        if have_x + have_r >= len(keys):
+        problems = verify_inputs(man, accepted_program_shas(rundir, man))
+        program_only = program_only_problem(man, problems)  # the same test the real resume makes below
+        finished = have_x + have_r >= len(keys)
+        if problems and not program_only:
+            status = 'it would be refused: ' + '; '.join(problems) + ('; every game is played, so --report-only writes the page from them' if finished else '')
+        elif finished:
             status = 'complete'
-        elif problems:
-            status = 'it would be refused: ' + '; '.join(problems)
+        elif program_only:
+            try:
+                st_, _rec, _deadline = check_program_change(man, pin, a.pin, repo, school_rule, school_days, now)  # the checks the real resume makes before it replays anything
+                status = (f"the program at {man['program']} has another sha256 than registered; its build record is for the pinned source, so a resume would replay both self-checks again "
+                          f"against {pin_digests(st_['state'])} (hours for kx3) and, if they match, go on and log it as 'program changed mid-run'; resume with: {resume_cmd}")
+            except SystemExit as e:
+                status = 'it would be refused: ' + re.sub(r'^REFUSED: ', '', str(e.code))
         else:
             status = 'resume with: ' + resume_cmd
         say(f"question: how does {sr_block['deck_name']} do when {man['pilot']} plays it against the {len(man['opponents'])} public lists" + (f", and is that better than when {man['reference']} plays the same deck on the same deals?" if sr_block.get('paired') else '?'))
@@ -1330,24 +1582,40 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
     if a.dir and sr_block.get('pin', {}).get('sha256') and os.path.isfile(a.pin) and sha(a.pin) != sr_block['pin']['sha256']:
         say('note: the pin file has changed since this run was registered; the run continues with the program, settings and scrub list it was registered with')
     if not a.report_only:
-        problems = verify_inputs(man)
-        if problems:
-            die('REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n  ' + '\n  '.join(problems))
-        lock = acquire_lock(rundir, say)
-        try:
-            log_event(rundir, 'sitting_call', school_rule=school_rule, school_days=school_days_text, threads=a.threads or man.get('threads') or pin['threads'], max_games=a.max_games,
-                      school_choice_overridden=bool(a.dir and (a.school_rule or a.school_days is not None)))
+        accepted = accepted_program_shas(rundir, man)
+        problems = verify_inputs(man, accepted)
+        # a program of another sha256 is not fatal on a run registered on the rebuilt route (below, once this call holds the lock); anything else wrong is
+        program_only = program_only_problem(man, problems)
+        keys_, done_ = planned_keys(man), {g['key'] for g in load_games(rundir)}
+        finished = sum(1 for k in done_ if k.endswith('|X')) + sum(1 for k in done_ if k.endswith('|ref')) >= len(keys_)
+        if problems and not program_only:
+            die('REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n  ' + '\n  '.join(problems)
+                + ('\n  Every game is played: --report-only writes the page from them without these files.' if finished else ''))
+        if program_only and finished:
+            # nothing is left to play: the page is written from the games, so a replay of both self-checks (hours for kx3) and a 'program changed' note would be for nothing
+            say(f"all {len(keys_)} games are played, so nothing is run: the program at {man['program']} has another sha256 than registered, which the page does not depend on "
+                '(no self-check is replayed and no program change is logged)')
+        else:
+            lock = acquire_lock(rundir, say)
             try:
-                status = run_games(rundir, man, sr_block.get('scrub_env_prefixes') or pin['scrub_env_prefixes'],
-                                   threads=a.threads or man.get('threads') or pin['threads'], max_games=a.max_games,
-                                   school_on=school_rule == 'on', school_days=school_days, now=now, sleep=sleep, spawn=spawn, poll_s=a.poll_s, say=say)
-            except (SystemExit, KeyboardInterrupt):
-                best_effort_pages(rundir, say)
-                raise
-        finally:
-            release_lock(lock)
-        if status == 'limit':
-            say(f'stopped after --max-games {a.max_games}; resume with: {resume_cmd}')
+                if program_only:
+                    accepted = set(accepted) | {reverify_program(rundir, man, pin, a.pin, repo, say, school_rule, school_days, now)}
+                    problems = verify_inputs(man, accepted)
+                    if problems:
+                        die('REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n  ' + '\n  '.join(problems))
+                log_event(rundir, 'sitting_call', school_rule=school_rule, school_days=school_days_text, threads=a.threads or man.get('threads') or pin['threads'], max_games=a.max_games,
+                          school_choice_overridden=school_choice_overridden, program_sha256=sha(man['program']) if os.path.isfile(man['program']) else None)
+                try:
+                    status = run_games(rundir, man, sr_block.get('scrub_env_prefixes') or pin['scrub_env_prefixes'],
+                                       threads=a.threads or man.get('threads') or pin['threads'], max_games=a.max_games, accepted_shas=accepted,
+                                       school_on=school_rule == 'on', school_days=school_days, now=now, sleep=sleep, spawn=spawn, poll_s=a.poll_s, say=say)
+                except (SystemExit, KeyboardInterrupt):
+                    best_effort_pages(rundir, say)
+                    raise
+            finally:
+                release_lock(lock)
+            if status == 'limit':
+                say(f'stopped after --max-games {a.max_games} (games across both arms, about half of them kx3 games); resume with: {resume_cmd}')
     # the engineering report (REPORT.md) first, so the page can point at it; a failure there never blocks the page
     rr = subprocess.run([sys.executable, '-B', REPORT, '--dir', rundir], capture_output=True, text=True)
     if rr.returncode != 0:
