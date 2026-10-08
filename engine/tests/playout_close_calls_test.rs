@@ -22,7 +22,8 @@
 //!   16 rounds is extended and wins at R_max (B-210952-t16);
 //! - the equal-exclusion (the Oct 7 addendum on it): a move tied with the best in every round (km3's move when it is the
 //!   best, or a best that is another move) joins an extension already running for a non-tied close move, but ties alone
-//!   never start one, so a settled decision is not extended (B-214254-t10's Lucky Ice Pop, dev04's Tool placement);
+//!   never start one, so a settled decision is not extended (B-214254-t10's Lucky Ice Pop, dev04's Tool placement); a
+//!   move tied with the best through 16 rounds is extended and can overtake it at R_max (dev04 as stored: Psychic);
 //! - `_tools _zs3 _m64` together: at km3's attacks the extension and the skip bar act as above; at a Tool placement the
 //!   Tool tie-break comes after the extension's decision and looks at every candidate, so it may play a placement left at
 //!   R rounds.
@@ -407,6 +408,41 @@ fn a_move_tied_with_km3s_best_move_joins_the_extension() {
             assert_eq!(ext.candidates[ext.chosen].rounds, 64, "{name}: the tie-break's placement on 64 rounds: {}", ext.reason);
         }
     }
+}
+
+/// A move tied with the best through 16 rounds is extended and can overtake it at R_max (Fable via Dustin, Oct 7, with
+/// the fix round accepted). dev04 as stored (deck 05 v t-sceptile, seed 24,200,002,004, `_tools _zs3`, LAB, cap 12, z
+/// 2): after 16 rounds km3's Protective Poncho is the best move and Psychic ties it round for round. A move within the
+/// noise starts the extension, Psychic joins it, scores more than the Poncho over the 64 rounds and is played. (At
+/// 76cd08f4, where a tie with the best never joined, Psychic kept its 16 rounds and the Poncho was played: gate 2's
+/// data, combined/gate2 at that head.)
+#[test]
+fn a_move_tied_with_the_best_through_16_rounds_can_overtake_at_r_max() {
+    let (deck05, sceptile) = ("../decks/dustin/05-indeedee-stoutland.txt", "../decks/screen/opponents/t-sceptile.txt");
+    let dev04: State =
+        serde_json::from_str(&std::fs::read_to_string("../rl/results/playout_tool_rule_2026-10-06/gate2/states/dev04.json").unwrap()).unwrap();
+    let seed = 24_200_002_004;
+    let r16 = gate_decision(&dev04, deck05, sceptile, seed, None);
+    let best = (0..r16.candidates.len()).fold(r16.km3, |b, c| if r16.candidates[c].score > r16.candidates[b].score { c } else { b });
+    assert_eq!(best, r16.km3, "km3's move is the best after 16 rounds: {}", r16.reason);
+    assert!(r16.candidates[r16.km3].label.starts_with("Play { trainer_card: B2 147 Protective Poncho"), "{}", r16.candidates[r16.km3].label);
+    let psychic = r16
+        .candidates
+        .iter()
+        .position(|c| matches!(&c.action.action, SimpleAction::Attack(attack) if attack.title == "Psychic"))
+        .expect("Psychic is a candidate");
+    let p = &r16.candidates[psychic];
+    assert!(p.diff == 0.0 && p.se == 0.0, "Psychic ties the best round for round: {} {}", p.diff, p.se);
+    let ext = gate_decision(&dev04, deck05, sceptile, seed, Some(64));
+    assert_eq!(ext.failed_rounds, 0);
+    assert_eq!(ext.candidates[psychic].rounds, 64, "Psychic joins the extension: {}", ext.reason);
+    assert!(
+        ext.candidates[psychic].score > ext.candidates[ext.km3].score,
+        "and overtakes the best: {} v {}",
+        ext.candidates[psychic].score,
+        ext.candidates[ext.km3].score
+    );
+    assert_eq!(ext.chosen, psychic, "and is played: {}", ext.reason);
 }
 
 // `_tools _zs3 _m64` together.
