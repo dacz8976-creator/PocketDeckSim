@@ -12,13 +12,27 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **A sixth file, `engine/src/move_generation/move_generation_trainer.rs`:** a Fossil can be played under an Item lock (the Item check at 65 skips the Fossil type). Its premise is that a Fossil's printed type is Item (rules/01, rules/04 §6; the local database can't show it).
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
-1. **Current task, and the instruction that set it.** P2 on `claude/coin-prevention-round2` (Fable via Dustin, Oct 8,
-   "for AFTER the draft A Wallace slow report is done"; main PLAN.md section 0 part 3, 7fa6cdb7): return damage left by an
-   attack (Cursed Jewel, Spike Armor, Bristling Spikes, Needle Lariat, Shell Trap) takes Weakness; Rocky Helmet's and an
-   Ability's stay flat. Tests first, then the engine commit on top of 57c65860; an exact and an off-gate counter in
-   instrument_scan.py, proven on constructed boards; the full suite at P2; the readiness inventory rerun with the five
-   attacks' ids; `handle_attack_retaliation` for the equivalence reading; README. Then one sentence in
-   `claude/playout-pilot`'s close-calls README: the ties rule is a sampling shortcut, not proof the moves are equivalent.
+1. **Current task, and the instruction that set it.** None; waiting for the next instruction. **P2 is done** (Fable via
+   Dustin, Oct 8, "for AFTER the draft A Wallace slow report is done"; main PLAN.md section 0 part 3 and precondition (h),
+   7fa6cdb7), pushed to `claude/coin-prevention-round2`, head b7e3bc00. Read "P2" in
+   `rl/results/coin_prevention_round2_2026-10-01/README.md`.
+   - **The change.** Return damage left by an attack (Cursed Jewel, Spike Armor, Bristling Spikes, Needle Lariat, Shell Trap)
+     takes +20 when the Attacking Pokémon is weak to the holder's type and still Active. Rocky Helmet's and an Ability's stay
+     flat.
+   - **Commits.** Tests first, d3739b7d: 17 tests, 13 failing on the engine as it was. Then P2, 5543a4ba: all 17 pass;
+     `handle_attack_retaliation`, `hooks/counterattack.rs`, `hooks/core.rs` and `hooks/mod.rs`, with `players/` unchanged.
+   - **Full suite at P2:** 2,056 passed, 0 failed (2,039 + 17).
+   - **Counters.** `attack_return_weakness` (exact) and `offgate_return_by_source` (off the gate) in instrument_scan.py.
+     - The probe: 78 checks, 0 failures on P2; on the engine before P2 exactly the 11 exact rows read off the gate. An
+       independent review caught a gap in the first draft (a hit back landing under an empty held-back frame), fixed before
+       the commit.
+     - A smoke, km3, 200 games (seeds 20,960,000,000+): the counters change no play; the exact counter fired in 7 games v
+       t-altaria. P2 changed 3 games, all in the bots' look-ahead (traced: a different choice from the same board).
+   - **Inventory on main b77652d6.** Only brew-07 and brew-09 hold the five attacks, and no list holds a copier. The table,
+     new-17, B2e, carriers and 7c: 0. The screen and floor: brew-07 and brew-09 v t-altaria (Espeon).
+   - **Equivalence.** The entry for `handle_attack_retaliation` and its callers is in the README; step 4's allowed list
+     becomes 21 files.
+   - **The close-calls sentence** is on `claude/playout-pilot` (057ee2fb).
    **The slow report before it: done** (pushed to `claude/slow-report-draft-a-wallace`, last commit 22226eec; read
    `rl/results/slow_reports/2026-10-08_draft-A-wallace/SLOW_REPORT.md`).
    - **Result.** Draft A (Wallace) piloted by kx3 against the 8 public lists: **66.2%** over 160 games (95% range 58.6%
@@ -334,10 +348,8 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
    - **Laptop time** (from the smoke): about 204 × 4 / T seconds per pilot game on T threads; a development comparison of one deck × 8 panel lists × 25 deals × 2 seats is about 23 hours on 4 threads, 6 on 16; the pre-registration's kx self-check about 1½ hours on 4 threads (estimate); the position runner about 1½ hours on 4 threads.
    **The data pipeline stopped where it was** (branch `claude/planning-pilot-data`, head 22d56999; `rl/results/planning_pilot_data_2026-10-02/README.md`, "Where it stopped"): the first pass done (9,600 games, 467,146 rows; held-out log loss 0.525 against 0.631 for km's value alone; the Bench Energy feature's sign negative), the second pass cancelled; Dustin's 04, 08 and 11 are in its pool but in the locked final-exam list, so their rows must be dropped before development use.
    **Earlier jobs, done** (the readiness jobs, the card-text follow-up and step 8c read and accepted): the round-2 readiness jobs (57c65860, `rl/results/round2_readiness_2026-10-02/README.md`), the card-text follow-up (20e2651) and the card-text job, step 8c, step 8b's rows (3a107f4), F8, and the later round of coin-flip prevention (`claude/coin-prevention-round2`); details in their READMEs and the log below.
-2. **What is running now, and when it ends.** P2's builds and tests on `claude/coin-prevention-round2`, from about
-   21:45 UTC: the tests alone first (most should fail on the engine as it is), then the engine commit, the counters'
-   probe at P and at P2, and the full suite (about an hour). The slow report's driver has finished; nothing else runs.
-3. **Files I expect to change.** P2, on `claude/coin-prevention-round2` only: `engine/src/actions/apply_action_helpers.rs`,
+2. **What is running now, and when it ends.** Nothing.
+3. **Files I expect to change.** None. P2 changed, on `claude/coin-prevention-round2` only: `engine/src/actions/apply_action_helpers.rs`,
    `engine/src/hooks/counterattack.rs`, `engine/src/hooks/core.rs`, `engine/src/hooks/mod.rs`, the new
    `engine/tests/rules_repair_return_damage_weakness.rs`; `rl/results/coin_prevention_round2_2026-10-01/` (README, logs),
    `rl/results/coin_prevention_repair_2026-09-30/instrument_scan.py`, `rl/results/round2_readiness_2026-10-02/` (probe,
@@ -348,6 +360,14 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
    724e581a9c51711f for the exact code and 8c1244aec5c8419d for the `_lab` form. Now: the run itself. Its pre-registration self-check of the exact code should print the cloud's digest (item 2).
    Earlier: its examples run on d513e37b (not interrupted); a look at rounds 2 to 4 (head eefa24d0) when it suits.
 5. **Open questions.**
+   - (d) For Dustin, from P2 (each pinned by a test; none has been seen in a game or can change a recorded one):
+     - Under Bounded Field the hit back's extra stays +20 (not x2).
+     - Steelix's Metal Defender doesn't protect it from the hit back on the same attack.
+     - Ledian's Swift doesn't stop the hit back or its Weakness.
+     - A Benched attacker (after U-turn) takes it flat.
+     - Open, with nothing built: whether the attacker's own reductions, Guts, Hala and the like apply to an attack's hit back.
+     - For the go: coin_probe v2 needs a P2 condition (look-ahead changes, as in all 3 of the smoke's) and (e) a P2 revert
+       switch.
    - (a) For Dustin, still open from before: remove the Pocket Shot List rows `chase-order-carefree-steps` and `carefree-steps-snipe`? Nothing is done until he answers.
    - (b) Answered by round 4: the pool is widened (35 lists) and unfamiliar opponents are inferred. Still open, for the coordinator or Dustin: add the scoreboard's Limitless lists to the wide pool?
    - (c) Answered by the laptop's round 2: decks/dustin is refused too, by path and by content.
