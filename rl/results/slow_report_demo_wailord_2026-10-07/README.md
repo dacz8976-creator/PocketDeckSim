@@ -14,7 +14,7 @@ This is **not** the km3 floor check and does not touch its result: the floor che
 1. **How does the deck do with kx3, and is that better than with km3?** 80 kx3 games + 80 cheap km3 baseline games: kx3 scored 80.6% (probably 70.6% to 87.8%), km3 on the
    same deals 74.4%, a gain of +6.2 points, probably between -1.9 and +14.4 (95%). That range includes no gain at all: the 80 paired games (each a deal and seat played by both pilots)
    do not show kx3 better on this deck and do not show it worse. They do argue against a gain much larger than 14.4 points or a loss much larger than 1.9. More deals narrow it
-   (about 16 kx3 games per deal; the plan's cost table gives the hours).
+   (each added deal against every list is 16 more kx3 games, 2 seats against each of the 8 lists, about 1¾ hours on this deck at its 9 games an hour; the plan's cost table gives the totals: a wall deck like this one takes about three times as long as a typical deck).
 2. **Does the Tool tie-break change what kx3 does with this deck?** 80 kx3 games with the rule on + the 80 existing games with it off, on the same deals: the rule changed a logged
    decision in 15 of the 80 games, changed points or turns in 12, and changed the winner in none (on minus off exactly +0.0 points over 80 deals). That bounds the share of
    deals whose winner it changes at about 4.6 in 100 or less (95%); it does not show the rule useful or harmless on other decks or in more games.
