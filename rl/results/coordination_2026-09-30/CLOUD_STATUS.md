@@ -21,8 +21,13 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
    - **Step 0.** The cargo cache was filled with `CARGO_HOME=$HOME/.cargo`, as in the correction.
    - **Step 1, the build.** It printed the engine tree as archived `31dbd2e6e8ec…` and the harness source `bf9c5d68…`,
      both as required. The program sha256 is c2fe1d35… (a rebuild), and `strength.build.json` is beside it.
-   - **Step 2.** The dry run passed ("pin committed: yes"). `--register-only` has been running since 14:18 UTC, replaying
-     both self-checks. km3 is through; kx3's 12 games are playing.
+   - **Step 2.** The dry run passed ("pin committed: yes"). Registered at 15:40 UTC. Both self-checks were replayed on
+     this machine and equal the pin, full line and digest: kx3 `31d638dbc818b0fa` (5-7, 138 turns) and km3
+     `81b572198c04d5d1` (8-4, 127 turns). Manifest sha256 4c833f24…. Nothing was refused.
+   - **Step 3.** The registration is pushed to `claude/slow-report-draft-a-wallace` (3e6dbad7).
+   - **The fixed path is a self-contained clone.** After the registration (the checkout untouched while it ran), its
+     git metadata was replaced by a clone of the same branch. That way a re-clone of `/home/user/PocketDeckSim` can't
+     break a resume; the path, HEAD, pin and harness hash are unchanged.
    **The combined-code round before it (done, accepted):** below.
    **The fix round, as it was reported:** The skip bar and close calls combined (Fable via Dustin, Oct 7,
    from the laptop's review of 7d3639d0), its addenda ((c) dropped; ties with the best join a running extension), and
@@ -311,9 +316,12 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
    - **Laptop time** (from the smoke): about 204 × 4 / T seconds per pilot game on T threads; a development comparison of one deck × 8 panel lists × 25 deals × 2 seats is about 23 hours on 4 threads, 6 on 16; the pre-registration's kx self-check about 1½ hours on 4 threads (estimate); the position runner about 1½ hours on 4 threads.
    **The data pipeline stopped where it was** (branch `claude/planning-pilot-data`, head 22d56999; `rl/results/planning_pilot_data_2026-10-02/README.md`, "Where it stopped"): the first pass done (9,600 games, 467,146 rows; held-out log loss 0.525 against 0.631 for km's value alone; the Bench Energy feature's sign negative), the second pass cancelled; Dustin's 04, 08 and 11 are in its pool but in the locked final-exam list, so their rows must be dropped before development use.
    **Earlier jobs, done** (the readiness jobs, the card-text follow-up and step 8c read and accepted): the round-2 readiness jobs (57c65860, `rl/results/round2_readiness_2026-10-02/README.md`), the card-text follow-up (20e2651) and the card-text job, step 8c, step 8b's rows (3a107f4), F8, and the later round of coin-flip prevention (`claude/coin-prevention-round2`); details in their READMEs and the log below.
-2. **What is running now, and when it ends.** The slow report's registration (`slow_report.py ... --register-only`),
-   replaying the kx3 self-check (12 games, about 1.5 to 2 hours, from 14:18 UTC). Then the folder is pushed to the branch,
-   and the 8 slices of 40 games follow (one panel list each, 20 kx3 + 20 km3 games), pushed between slices.
+2. **What is running now, and when it ends.** The slow report's slices (step 4), from 15:42 UTC. A driver
+   (`/root/slow_report_kx3/drive.sh`) plays `slow_report.py --dir ... --school-rule off --max-games 40` eight times; each
+   slice is one panel list, 20 kx3 + 20 km3 games. After each slice it checks the exit code, the 40 new games, an empty
+   errors file and that the lock is gone, then commits and pushes the folder to `claude/slow-report-draft-a-wallace`. It
+   stops at the first thing that isn't as expected. The tool's estimate is 4.7 to 6.2 hours of kx3 games in all;
+   Fable's is about 13 hours.
 3. **Files I expect to change.** None. The play-out job changed, on its branch only: `engine/src/players/mod.rs` (12 lines), new `engine/src/players/playout_player.rs`, `engine/src/players/playout_pool.rs`, `engine/tests/playout_pilot_test.rs`, `engine/examples/playout_smoke.rs`, `rl/results/playout_pilot_2026-10-02/`, and START_HERE's seed table (one row: 24,200,000,000-24,200,099,999).
 4. **Waiting on the laptop or Sonnet.** The laptop: registering the combined development run on the fixed head (code
    4e7d8ce5; not 54209409/76cd08f4, where ties with the best never joined). Done: the laptop registered it on 172cbe9c
