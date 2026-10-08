@@ -10,27 +10,28 @@ Pre-registration order: registered 2026-10-08T15:40:39Z; first game started 2026
 
 Self-check digests recorded at registration: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (replayed by slow_report.py on the registering machine just before registration (equal to the committed pin)); `selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa` (replayed by slow_report.py on the registering machine just before registration (equal to the committed pin))
 
-- Planned 320 games; finished 40; complete pairs 20 (= 40 games); unpaired games 0; errors 0.
+- Planned 320 games; finished 80; complete pairs 40 (= 80 games); unpaired games 0; errors 0.
 - Paired difference = score(arm X) − score(arm ref) per (deck, opponent, deal, seat), in percentage points of score (win 1, tie ½). Intervals are mean ± 1.96·sd/√n over paired games. No pass/fail threshold.
 
 ## Result
 
-**Pooled over all 20 paired games: +0.0 ± 20.1 points** (arm X 40.0% vs arm ref 40.0% score).
+**Pooled over all 40 paired games: +2.5 ± 11.1 points** (arm X 52.5% vs arm ref 50.0% score).
 
 
 ### Per deck, pooled over its opponents
 
 | deck | paired games | arm X score | arm ref score | paired difference (points) | went first: diff | went second: diff |
 |---|---|---|---|---|---|---|
-| draft-A-wallace | 20 | 40.0% | 40.0% | +0.0 ± 20.1 | -9.1 ± 31.9 | +11.1 ± 21.8 |
+| draft-A-wallace | 40 | 52.5% | 50.0% | +2.5 ± 11.1 | -5.0 ± 17.3 | +10.0 ± 13.5 |
 
-Overall by who went first (identical in both arms): deck first -9.1 ± 31.9 (n=11); deck second +11.1 ± 21.8 (n=9).
+Overall by who went first (identical in both arms): deck first -5.0 ± 17.3 (n=20); deck second +10.0 ± 13.5 (n=20).
 
 ### Per (deck, opponent) pair
 
 | deck | opponent | n | arm X | arm ref | paired difference (points) |
 |---|---|---|---|---|---|
 | draft-A-wallace | t-altaria | 20 | 40.0% | 40.0% | +0.0 ± 20.1 |
+| draft-A-wallace | t-blaziken | 20 | 65.0% | 60.0% | +5.0 ± 9.8 |
 
 ## Runtime and cost
 
@@ -38,12 +39,12 @@ Wall time is per game on this machine with the threads the run used; it includes
 
 | arm | role | pilot | games | wall per game: mean / median / p95 / max | games per second (1 thread) | decisions per game | ms per decision: mean / median / p95 / max | decision time per game |
 |---|---|---|---|---|---|---|---|---|
-| X | deck seat | `kx3` | 20 | 468.85 / 420.95 / 1006.29 / 1006.29 s | 0.00 | 27.9 | 16818.5 / 16783.6 / 32175.8 / 46575.7 | 8 min |
-| X | opponent seat | `km3` | 20 |  |  | 28.3 | 15.4 / 7.0 / 54.2 / 242.2 | 0.43 s |
-| ref | deck seat | `km3` | 20 | 0.54 / 0.44 / 1.13 / 1.13 s | 1.84 | 27.1 | 7.4 / 3.4 / 30.4 / 128.1 | 0.20 s |
-| ref | opponent seat | `km3` | 20 |  |  | 27.9 | 11.9 / 6.1 / 43.0 / 128.6 | 0.33 s |
+| X | deck seat | `kx3` | 40 | 373.92 / 352.64 / 864.90 / 1006.29 s | 0.00 | 25.6 | 14565.5 / 13571.6 / 30647.8 / 46575.7 | 6 min |
+| X | opponent seat | `km3` | 40 |  |  | 26.8 | 11.2 / 5.2 / 40.1 / 242.2 | 0.30 s |
+| ref | deck seat | `km3` | 40 | 0.42 / 0.38 / 1.12 / 1.13 s | 2.37 | 24.7 | 7.5 / 3.4 / 29.5 / 128.1 | 0.19 s |
+| ref | opponent seat | `km3` | 40 |  |  | 26.4 | 8.6 / 3.6 / 32.3 / 128.6 | 0.23 s |
 
-One paired game (both arms) took 8 min on average; the run used 4 thread(s).
+One paired game (both arms) took 6 min on average; the run used 4 thread(s).
 
 ## What more precision would take
 
@@ -51,8 +52,8 @@ At the sd reached, the number of paired games for a given half-width is `(1.96·
 
 | scope | paired games so far | sd | interval now (points) | for ±5 points: total / more games, time | for ±3 points: total / more games, time |
 |---|---|---|---|---|---|
-| all decks pooled | 20 | 45.9 | +0.0 ± 20.1 | 324 / 304, 9.9 h | 899 / 879, 28.7 h |
-| draft-A-wallace | 20 | 45.9 | +0.0 ± 20.1 | 324 / 304, 9.9 h | 899 / 879, 28.7 h |
+| all decks pooled | 40 | 35.7 | +2.5 ± 11.1 | 197 / 157, 4.1 h | 545 / 505, 13.1 h |
+| draft-A-wallace | 40 | 35.7 | +2.5 ± 11.1 | 197 / 157, 4.1 h | 545 / 505, 13.1 h |
 
 ## Intended lines
 
