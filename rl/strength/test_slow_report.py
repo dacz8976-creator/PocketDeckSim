@@ -5105,6 +5105,73 @@ class LockAndSignals(World):
         self.assertEqual(signal.pthread_sigmask(signal.SIG_BLOCK, ()), before, 'also when the program could not be started')
         self.assertFalse(os.path.exists(os.path.join(d, 'slow_report.lock')), 'and the lock is released')
 
+    def test_two_different_stop_signals_that_come_while_the_program_is_being_started_still_stop_it(self):
+        """SIGHUP and SIGTERM, held together, arrive together when they are let in. The second handler used to raise at the entry of stop_group, before the program had been signalled,
+        and the program was left running with the lock held. Only the first signal raises; the later one is noted."""
+        self.set_program(HANG_PROGRAM)
+        d = self.register()
+        started = []
+
+        def spawn(cmd, env, logfile):
+            proc = sr.default_spawn(cmd, env, logfile)
+            started.append(proc)
+            os.kill(os.getpid(), signal.SIGHUP)
+            os.kill(os.getpid(), signal.SIGTERM)
+            return proc
+        try:
+            code, out, err = self.cli('--dir', d, '--max-games', '2', deck=False, spawn=spawn)
+            self.assertEqual(code, 128 + signal.SIGHUP, 'the first signal ends the call, the second one does not replace it: ' + out + err)
+            self.assertEqual(len(started), 1)
+            self.assertIsNotNone(started[0].poll(), 'the program the wrapper started is stopped, not left running')
+            self.assertIn('interrupted', [e['event'] for e in jsonl(os.path.join(d, 'slow_report_log.jsonl'))])
+            self.assertFalse(os.path.exists(os.path.join(d, 'slow_report.lock')), 'and the lock is released')
+        finally:
+            for p in started:
+                if p.poll() is None:
+                    p.kill()
+                    p.wait()
+
+    def test_the_signals_are_not_left_blocked_when_the_call_that_blocks_them_fails_and_a_program_started_after_it_is_stopped(self):
+        before = signal.pthread_sigmask(signal.SIG_BLOCK, ())
+        real = signal.pthread_sigmask
+        self.set_program(HANG_PROGRAM)
+        d = self.register()
+        spawned = []
+
+        def blocks_then_fails(how, mask):
+            old = real(how, mask)
+            if how == signal.SIG_BLOCK and mask:
+                raise OSError('the signals were blocked, and then the call failed')
+            return old
+        with mock.patch.object(sr.signal, 'pthread_sigmask', blocks_then_fails):
+            with self.assertRaises(OSError):
+                self.cli('--dir', d, deck=False, spawn=lambda *a: spawned.append(a))
+        self.assertEqual(real(signal.SIG_BLOCK, ()), before, 'the signals are not left blocked')
+        self.assertEqual(spawned, [], 'and no program was started')
+        self.assertFalse(os.path.exists(os.path.join(d, 'slow_report.lock')), 'the lock is released')
+        started = []
+
+        def spawn(cmd, env, logfile):
+            started.append(sr.default_spawn(cmd, env, logfile))
+            return started[-1]
+
+        def cannot_note(proc):
+            if proc is not None:
+                raise RuntimeError('the program was started, and then something failed')
+        try:
+            with mock.patch.object(sr, 'note_program', cannot_note):
+                with self.assertRaises(RuntimeError):
+                    self.cli('--dir', d, '--max-games', '2', deck=False, spawn=spawn)
+            self.assertEqual(real(signal.SIG_BLOCK, ()), before, 'the signals are let in again')
+            self.assertEqual(len(started), 1)
+            self.assertIsNotNone(started[0].poll(), 'a program that was started and then failed is not left running')
+            self.assertFalse(os.path.exists(os.path.join(d, 'slow_report.lock')), 'and the lock is released')
+        finally:
+            for p in started:
+                if p.poll() is None:
+                    p.kill()
+                    p.wait()
+
     def has_ended(self, pid):
         """Whether the process no longer runs (a zombie that waits to be collected has ended too, and its descriptors, the lock among them, are closed)."""
         try:

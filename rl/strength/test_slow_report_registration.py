@@ -3809,10 +3809,34 @@ class ReadmeCloudRoute(unittest.TestCase):
         self.assertIn('git fetch origin claude/playout-pilot', self.step(1), 'and step 1 is where they were first needed')
         self.assertIn('cargo fetch', self.step(1))
         pinned = self.pin()['engine_ref'][:8]
-        self.assertIn(f'mkdir -p /tmp/d513 && git archive {pinned} engine | tar -x -C /tmp/d513 && (cd /tmp/d513/engine && cargo fetch --locked)', self.step(1),
-                      "the dependencies are fetched against the pinned commit's lock file, not that of whatever checkout one is in")
-        self.assertIn("the same `cargo fetch --locked` on the pinned commit's lock file as in step 1", step5)
+        self.assertIn(f'mkdir -p /tmp/d513 && git archive {pinned} engine | tar -x -C /tmp/d513 && (cd /tmp/d513/engine && env CARGO_HOME=$HOME/.cargo cargo fetch --locked)', self.step(1),
+                      "the dependencies are fetched against the pinned commit's lock file, not that of whatever checkout one is in, into the cache the build reads")
+        self.assertIn("the same `env CARGO_HOME=$HOME/.cargo cargo fetch --locked` on the pinned commit's lock file as in step 1", step5)
         self.assertNotIn('against `engine/Cargo.lock`', self.section())
+
+    def test_the_readme_says_what_a_stop_signal_does_while_a_program_is_being_started_and_when_two_come_together(self):
+        text = read(os.path.join(HERE, 'README.md'))
+        self.assertIn('also when the signal arrives while the program is being started (the signals wait until the program can be stopped), and when SIGTERM and SIGHUP arrive together the first '
+                      'ends the call and the other is only noted;', text)
+        code = read(os.path.join(HERE, 'slow_report.py'))
+        for words in ('signal.pthread_sigmask(signal.SIG_BLOCK, STOP_SIGNALS)', 'signals_stop_the_program.later', 'preexec_fn=_clear_signal_mask'):
+            self.assertIn(words, code)
+
+    def test_every_cargo_fetch_names_the_cargo_home_the_build_reads(self):
+        """build.sh builds offline with CARGO_HOME=$HOME/.cargo (the README's build command), but an image may set its own CARGO_HOME (the rust Docker images use /usr/local/cargo): a bare
+        `cargo fetch` would then fill another cache and the offline build would find nothing. Every fetch the section gives names the cache of the build command."""
+        env, ref, out = readme_build_command()
+        self.assertEqual(env['CARGO_HOME'], '$HOME/.cargo', 'the build command names the cache the fetches must fill')
+        build = read(os.path.join(HERE, 'build.sh'))
+        self.assertIn("cargo_home = e['BR_CARGO_HOME'] or os.path.join(e['BR_HOME'], '.cargo')", build, 'and build.sh reads that CARGO_HOME (HOME/.cargo only when none is set)')
+        section = self.section()
+        fetches = [m.start() for m in re.finditer(r'cargo fetch', section)]
+        self.assertEqual(len(fetches), 2, 'one fetch in step 1 and the same one in step 5')
+        for at in fetches:
+            self.assertTrue(section[:at].endswith(f'env CARGO_HOME={env["CARGO_HOME"]} '), f'the fetch at {at} does not say which cargo cache it fills: ...{section[max(0, at - 60):at + 25]}')
+        for n in (1, 5):
+            self.assertIn(f'env CARGO_HOME={env["CARGO_HOME"]} cargo fetch --locked', self.step(n))
+        self.assertIn('/usr/local/cargo', self.step(1), 'and step 1 says why (the images that set their own)')
 
     def test_step_1_says_what_the_build_file_system_has_to_do_with_the_tree_and_the_file_modes(self):
         """The archived tree includes the file modes, which build.sh takes from the file system (core.fileMode=true in its scratch repository): a build folder on a Windows drive under
@@ -4107,7 +4131,7 @@ class ReadmeCloudRoute(unittest.TestCase):
         self.assertIn(f"The commit `{pin['engine_ref']}` is on the branch `origin/{branch}`", section)
         self.assertIn(f'git fetch origin {branch}', section)
         self.assertIn(f"fetch them first, with network, against the lock file of the pinned commit and not of whatever checkout you are in: `mkdir -p /tmp/d513 && git archive {pin['engine_ref'][:8]} engine | "
-                      'tar -x -C /tmp/d513 && (cd /tmp/d513/engine && cargo fetch --locked)`', section)
+                      'tar -x -C /tmp/d513 && (cd /tmp/d513/engine && env CARGO_HOME=$HOME/.cargo cargo fetch --locked)`', section)
         self.assertIn('cp "$W/tree/engine/Cargo.lock" "$W/tree/rl/strength/Cargo.lock"', build, 'the lock file the section says to fetch against is the one build.sh builds with: the engine\'s, of the archived ref')
 
 

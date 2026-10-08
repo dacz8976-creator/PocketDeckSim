@@ -73,6 +73,17 @@ def stray_signal(signum, frame):
     raise AssertionError(f'signal {signum} reached the handler that was there before the call')
 
 
+def run_pending_handlers():
+    """CPython runs the Python handler of a second signal that arrived together with a first one (whose handler raised) only when the interpreter is next asked to look at its signals,
+    which can be much later. A harmless signal with a handler of its own asks it now."""
+    old = signal.signal(signal.SIGUSR1, lambda signum, frame: None)
+    try:
+        os.kill(os.getpid(), signal.SIGUSR1)
+        time.sleep(0.05)
+    finally:
+        signal.signal(signal.SIGUSR1, old)
+
+
 @contextlib.contextmanager
 def pipe_as_stdin():
     """This process's own stdin is a pipe inside the block, so that only a deliberate /dev/null can show in a program started there."""
@@ -316,6 +327,39 @@ class WrapperSignals(Leftovers, T.World):
                         time.sleep(2)
                 self.assertEqual(cm.exception.code, want)
 
+    def test_only_the_first_of_two_stop_signals_that_arrive_together_raises_and_the_later_one_is_noted(self):
+        """Two held signals are let in together. The second handler used to raise inside the cleanup of the first (at the entry of stop_group), so the program was never signalled."""
+        for first, second in ((signal.SIGHUP, signal.SIGTERM), (signal.SIGTERM, signal.SIGHUP)):
+            with self.subTest(first=first.name):
+                with sr.signals_stop_the_program():
+                    self.assertEqual((sr.signals_stop_the_program.stopping, sr.signals_stop_the_program.later), (None, []), 'a new call starts with nothing noted')
+                    held = signal.pthread_sigmask(signal.SIG_BLOCK, STOP_SIGNALS)
+                    try:
+                        os.kill(os.getpid(), first)
+                        os.kill(os.getpid(), second)
+                        with self.assertRaises(SystemExit) as cm:
+                            signal.pthread_sigmask(signal.SIG_SETMASK, held)
+                            time.sleep(0.05)
+                    finally:
+                        signal.pthread_sigmask(signal.SIG_SETMASK, held)
+                    run_pending_handlers()  # (the later signal's handler runs here, and must not raise)
+                    self.assertEqual(cm.exception.code, 128 + min(first, second), 'the lower-numbered signal is dealt with first, and it is the one that ends the call')
+                    self.assertEqual(sr.signals_stop_the_program.later, [max(first, second)], 'the other one is noted, and did not raise')
+
+    def test_what_a_call_noted_is_forgotten_when_it_ends_but_not_by_a_call_that_installed_nothing(self):
+        with sr.signals_stop_the_program():
+            sr.signals_stop_the_program.stopping = signal.SIGHUP  # a stop signal has been dealt with in this call
+            sr.signals_stop_the_program.later = [signal.SIGTERM]
+
+            def go():
+                with sr.signals_stop_the_program():  # off the main thread: installs nothing
+                    pass
+            t = threading.Thread(target=go)
+            t.start()
+            t.join(10)
+            self.assertEqual((sr.signals_stop_the_program.stopping, sr.signals_stop_the_program.later), (signal.SIGHUP, [signal.SIGTERM]), 'a call that installed nothing wipes nothing')
+        self.assertEqual((sr.signals_stop_the_program.stopping, sr.signals_stop_the_program.later), (None, []), 'the next call starts afresh')
+
     def test_the_wrappers_handlers_are_in_place_during_the_call_and_the_old_ones_are_back_after_every_way_out(self):
         during = []
         ours = {s: sr.signals_stop_the_program.handler for s in STOP_SIGNALS}
@@ -356,7 +400,8 @@ if sys.argv[1] == 'selfcheck':
     spec = sys.argv[sys.argv.index('--pilot') + 1]
     mine = os.path.join(here, 'seen_' + spec + '.json')
     with open(mine + '.tmp', 'w') as f:
-        json.dump({'pid': os.getpid(), 'pgid': os.getpgrp(), 'stdin': os.readlink('/proc/self/fd/0'), 'argv': sys.argv[1:]}, f)
+        sigblk = [l.split()[1] for l in open('/proc/self/status') if l.startswith('SigBlk:')][0]  # the signals this program has blocked: those the wrapper held when it was started
+        json.dump({'pid': os.getpid(), 'pgid': os.getpgrp(), 'stdin': os.readlink('/proc/self/fd/0'), 'argv': sys.argv[1:], 'sigblk': sigblk}, f)
     os.replace(mine + '.tmp', mine)
     todo = os.path.join(here, 'while_selfchecking.json')  # things that happen meanwhile: directories made, files written
     if os.path.exists(todo):
@@ -507,6 +552,93 @@ class SelfcheckProcess(SelfcheckWorld):
         self.assertEqual(started, [True])
         self.assertEqual(cm.exception.code, 128 + signal.SIGTERM, 'the interrupt is passed on, not turned into a refusal')
         self.assertTrue(wait_for(lambda: not alive(self.seen('km3')['pid'])), 'the program must not be left running')
+
+    def signalled_when_made(self, *sigs):
+        """Popen made to send this process `sigs` the instant the program exists, as a container stop does between the start of a program and the try that stops it. The processes made
+        (the first is the one that sends); whatever is left running is killed at the end."""
+        made = []
+        real = subprocess.Popen
+
+        def popen(*a, **kw):
+            p = real(*a, **kw)
+            first = not made
+            made.append(p)
+            if first:
+                for s in sigs:
+                    os.kill(os.getpid(), s)
+            return p
+        patcher = mock.patch.object(sr.subprocess, 'Popen', popen)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+        def kill_what_is_left():
+            for p in made:
+                if p.poll() is None:
+                    try:
+                        os.killpg(p.pid, signal.SIGKILL)
+                    except OSError:
+                        pass
+                    p.wait()
+        self.addCleanup(kill_what_is_left)
+        return made
+
+    def test_a_stop_signal_that_comes_right_after_the_program_was_made_still_stops_it(self):
+        """A replay is hours for kx3. The program was made with a bare Popen before the try that stops it: a SIGTERM in that gap raised outside every cleanup and left it running (holding
+        the lock it inherits). The stop signals wait until the program is made and are let in as the first thing inside the try."""
+        self.flag('selfcheck_hangs')
+        self.plant_stray_handlers()
+        made = self.signalled_when_made(signal.SIGTERM)
+        with sr.signals_stop_the_program():
+            with self.assertRaises(SystemExit) as cm:
+                self.selfcheck('km3')
+        self.assertEqual(cm.exception.code, 128 + signal.SIGTERM, 'the interrupt is passed on')
+        self.assertEqual(len(made), 1)
+        self.assertIsNotNone(made[0].poll(), 'the program is stopped, not left running')
+        self.assertTrue(wait_for(lambda: not alive(made[0].pid)), 'the program must not be left running')
+        self.assert_pipes_closed(made, 'a signal in the gap')
+
+    def test_two_different_stop_signals_that_came_while_the_program_was_made_still_stop_it(self):
+        """Held together, SIGHUP and SIGTERM arrive together when they are let in. The second handler used to raise at the entry of stop_group, before the program had been signalled."""
+        self.flag('selfcheck_hangs')
+        self.plant_stray_handlers()
+        made = self.signalled_when_made(signal.SIGHUP, signal.SIGTERM)
+        with sr.signals_stop_the_program():
+            with self.assertRaises(SystemExit) as cm:
+                self.selfcheck('km3')
+            run_pending_handlers()  # (a handler that raised here would end the test with the second signal's code)
+            self.assertEqual(sr.signals_stop_the_program.later, [signal.SIGTERM], 'the second signal was noted, and did not raise')
+        self.assertEqual(cm.exception.code, 128 + signal.SIGHUP, 'the first signal ends the call')
+        self.assertIsNotNone(made[0].poll(), 'the program is stopped, not left running')
+        self.assertTrue(wait_for(lambda: not alive(made[0].pid)), 'the program must not be left running')
+
+    def test_the_program_of_a_self_check_has_no_blocked_signal_and_the_wrapper_gets_its_mask_back(self):
+        """The wrapper holds the stop signals while it makes the program, and a child inherits the mask: without an empty mask in the child it would not hear the SIGTERM that stops it."""
+        before = signal.pthread_sigmask(signal.SIG_BLOCK, ())
+        self.selfcheck('km3')
+        self.assertEqual(self.seen('km3')['sigblk'], '0000000000000000', 'nothing is blocked in the program')
+        self.assertEqual(signal.pthread_sigmask(signal.SIG_BLOCK, ()), before, 'the wrapper has its mask back')
+
+    def test_a_mask_that_could_not_be_set_or_a_program_that_could_not_be_made_leaves_the_mask_as_it_was(self):
+        before = signal.pthread_sigmask(signal.SIG_BLOCK, ())
+        real = signal.pthread_sigmask
+
+        def blocks_then_fails(how, mask):
+            old = real(how, mask)
+            if how == signal.SIG_BLOCK and mask:
+                raise OSError('the signals were blocked, and then the call failed')
+            return old
+        with mock.patch.object(sr.signal, 'pthread_sigmask', blocks_then_fails):
+            with self.assertRaises(OSError):
+                self.selfcheck('km3')
+        self.assertEqual(real(signal.SIG_BLOCK, ()), before, 'the signals are not left blocked when the call that blocks them fails')
+        self.assertFalse(os.path.exists(self.seen_path('km3')), 'and no program was made')
+
+        def cannot_make(*a, **kw):
+            raise OSError('no such program')
+        with mock.patch.object(sr.subprocess, 'Popen', cannot_make):
+            with self.assertRaises(OSError):
+                self.selfcheck('km3')
+        self.assertEqual(real(signal.SIG_BLOCK, ()), before, 'nor when the program cannot be made')
 
     @staticmethod
     def refusal(spec, pinned, shown):

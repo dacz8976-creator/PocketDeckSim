@@ -77,11 +77,12 @@ def deck_signature(path):
         return 'raw:' + sha(path)
 
 
-def committed_pin(root, sr):
-    """(the pin, 'yes' | 'bypassed') for a `use` config that gives a self-check text: the pin the slow-report block names (by its sha256) must be the rl/strength/slow_report_pin.json
+def committed_pin(root, sr, asked):
+    """(the pin, 'yes' | 'bypassed') for a `use` config whose slow-report block asks for the pin: the pin the block names (by its sha256) must be the rl/strength/slow_report_pin.json
     committed at HEAD of the repository `root` (git read without GIT_DIR and its relatives), or, only with the test-only variable SLOW_REPORT_ALLOW_UNCOMMITTED_PIN, the file the
-    block's path names with that sha256 ('bypassed'). A text 'copied from the pin' or 'replayed and equal to the pin' means something only against the committed pin: a config written
-    by hand and run through this script directly must not be able to claim it. Exits with a REFUSED message (before anything is written) otherwise."""
+    block's path names with that sha256 ('bypassed'). A text 'copied from the pin' or 'replayed and equal to the pin', a pin state and a program route mean something only against the
+    committed pin: a config written by hand and run through this script directly must not be able to claim them. `asked` names (as 'a self-check text', 'a pin_committed entry', 'a
+    program_route') what in the config asks for it, for the refusal, which exits with a REFUSED message (before anything is written) otherwise."""
     entry = (sr or {}).get('pin') if isinstance((sr or {}).get('pin'), dict) else {}
     want, rel = entry.get('sha256'), entry.get('path')
     env = {k: v for k, v in os.environ.items() if k not in GIT_REPO_VARS}
@@ -109,8 +110,9 @@ def committed_pin(root, sr):
                 except (OSError, ValueError) as e:
                     why += f'; {p} cannot be read ({e})'
         why += f'; no pin file with sha256 {want[:12]} at {rel} either (allowed by {ALLOW_UNCOMMITTED_PIN}, test use)'
-    sys.exit(f'REFUSED: the pin the config names is not the committed one: {why}. A given self-check text is the pin\'s own, so the pin must be the {PIN_REL} committed at HEAD of the repository '
-             '(commit it, or leave the text out and let the script play the self-check). Nothing was written.')
+    names = ', '.join(asked[:-1]) + ' and ' + asked[-1] if len(asked) > 1 else asked[0]  # (a lone entry, or the entries joined as a sentence would)
+    sys.exit(f'REFUSED: the pin the config names is not the committed one: {why}. {names[0].upper() + names[1:]} {"is" if len(asked) == 1 else "are"} held to the pin, so the pin must be the '
+             f'{PIN_REL} committed at HEAD of the repository (commit the pin, or leave {names} out of the config). Nothing was written.')
 
 
 def route_problem(route, prog, prog_sha, pin, block):
@@ -265,7 +267,8 @@ def main():
     if block and (given or block.get('pin_committed') is not None or block.get('program_route') is not None):
         # a given text, a pin state and a program route are claims about the pin: held to the committed pin, so that no config can claim pinned provenance for a text, a state or a
         # program the pin does not have (slow_report.py's own configs always pass this)
-        pin, pin_state = committed_pin(root, block)
+        pin, pin_state = committed_pin(root, block, [what for what, there in (('a self-check text', bool(given)), ('a pin_committed entry', block.get('pin_committed') is not None),
+                                                                              ('a program_route', block.get('program_route') is not None)) if there])
         claimed = block.get('pin_committed')
         if claimed is not None and claimed != pin_state:
             sys.exit(f'REFUSED: the config says the pin is {claimed!r} but strength_prereg.py finds it is {pin_state!r}. Nothing was written.')
