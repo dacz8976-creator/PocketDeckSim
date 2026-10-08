@@ -1,8 +1,60 @@
 # Engine switch plan: the second rules switch, the round-2 package (for Dustin's decision)
 
-> **Parked, Oct 2 (Dustin's direction, RUN5 "Where things stand").** This plan is a finished draft and is not scheduled.
-> - The work turned to a pilot built for playing strength on an experimental branch. The official engine (main-8626a35) and km3 stay the reference.
-> - The questions in section 9 wait until Dustin takes the plan up again.
+> **Unparked Oct 7, scheduled after the combined run** (Dustin's decision on Astra's review, relayed by the coordinator; `rl/RUN5.md` (E), 2bfb1b73). Section 0 below is the Oct 8 update: the scope now has a third part, Cursed Jewel's Weakness. Preparation is read-only while the combined run holds the laptop (pre-registered 143e2b51, expected to end Saturday night or Sunday, Oct 10-11). Sections 1-9 are the Oct 2 draft. Where section 0 differs, section 0 wins. The questions in section 9 still need Dustin's answers at the go.
+>
+> *History: parked Oct 2 (Dustin's direction, RUN5 "Where things stand"), when the work turned to the planning pilot.*
+
+## 0. The Oct 8 update (the laptop; read-only preparation)
+
+**Scope: three parts.**
+1. **The round-2 coin package**, as in section 2: P = 20e2651, or the cloud's later engine commit (re-fetch first; the branch tip `origin/claude/coin-prevention-round2` is still 57c65860, Oct 2 19:04 UTC).
+2. **The card-text job and its follow-up**, as in section 2. These include Trap Territory (two Ariados: deck 12 and h-whimsicott), Will, Victory Star, Guts, Perish Body, Luxury Coin and the Fossil lock.
+3. **New: return damage set up by an attack takes Weakness** (`rules/02_damage_knockouts_points.md` §2; RUN5, Oct 6).
+   - Five attacks read "During your opponent's next turn, if this Pokémon is damaged by an attack, do X damage to the Attacking Pokémon":
+     - Mega Sableye ex's Cursed Jewel 40 (B3b 041/081/088);
+     - Alolan Sandslash's Spike Armor 40 (A3 039);
+     - Togedemaru's Bristling Spikes 30 (A3b 048, P-A 090);
+     - Chesnaught's Needle Lariat 80 (B2 010);
+     - Turtonator's Shell Trap 20 (B1 047).
+   - The hit back takes +20 when the Attacking Pokémon is weak to the defender's type.
+   - **Tools and Abilities stay flat**: Rocky Helmet's 20; Iron Jugulis's Automated Combat and the Druddigon family. The engine already does that.
+   - Evidence:
+     - 183108 @308 and @386: Cursed Jewel did 60 to a Darkness-weak Houndstone, twice;
+     - 215749 @99 and @161: Rocky Helmet did a flat 20;
+     - 20261006_220700000: Automated Combat did a flat 20 five times to Darkness-weak attackers;
+     - Dustin, Oct 6: "It is from an attack the return damage is done, not from an ability."
+   - **The engine today:** `handle_attack_retaliation` (`apply_action_helpers.rs`:614-633) adds no Weakness to any return damage. **No code for this part exists yet.**
+
+**New and changed preconditions** (section 4's table gains (h) and (i); the rest stand):
+- **(h) The Cursed Jewel change**, built by the cloud, tests first, as its own engine commit on top of P (call it P2). The tests:
+  - each of the five attacks against a weak and a not-weak attacker, including a hit back that Knocks the attacker Out;
+  - Rocky Helmet stays flat;
+  - an Ability's return damage stays flat (Automated Combat and Rough Skin);
+  - a Tool and an attack's return damage on the same defender, each judged by its own rule.
+  - The suite at P2.
+  - Step 4's allowed file list then takes P2's files. `players/` stays unchanged: the bots' look-ahead runs the engine, so it sees the new damage without a pricing change. Say so in P2's README.
+- **(c) gains** an exact counter for "an attack's return damage took Weakness" and an off-gate counter for the rewritten retaliation lines running and giving the old answer. Both are proven on constructed boards, since no table list holds the five attacks.
+- **(f) gains** `handle_attack_retaliation` (and any caller that P2 changes) for the two equivalence readers. It runs on every attack into a defender with any retaliation.
+- **(i) The affected-game inventory, rerun.** The cloud reruns its readiness inventory (`round2_readiness_2026-10-02/`) with the five attacks' ids added, on main at the go, and names every recorded set that holds them.
+  - A first look by the laptop (Oct 8, a scan of all 135 committed deck lists by set and number) found exactly two lists:
+    - `decks/brews/brew-07-hoopa-darkrai-sableye.txt` (1 Mega Sableye ex);
+    - `decks/brews/brew-09-sableye-obstagoon.txt` (2 Mega Sableye ex).
+  - None of the frozen k3/kp3 table lists, the identity sets' lists, km3's coverage and research lists, the 8 panel lists, the kx3 pools, Dustin's 15 decks or the drafts holds one of the five.
+  - So the new part can change only games with brew 07 or 09, and only when an attacker weak to Darkness hits their Mega Sableye ex in the turn after Cursed Jewel.
+
+**What it changes in recorded games** (adds to section 3's table):
+
+| Recorded set | Expected | What happens |
+|---|---|---|
+| Every identity set and the frozen table | **0** from the new part | As in section 3: a change is a stop. |
+| brew 07's and brew 09's floor pages (`floor_brews_2026-09-28/`, `floor_dustin_2026-09-30/`, Sept 28 and 30 engines) | **can change** (rows against Darkness-weak panel attackers) | After the pin, step 15 gains their two new pages (2 × 1,920 games, under 30 minutes). Until then **their conclusions are provisional** (Dustin, Oct 7). |
+| Any screen, CLI or goldfish row with brew 07 or 09 (the inventory names them) | can change | Named in the stop rule's expected rows, judged by the exact counter (their floor games have no watch build: section 3's limit). |
+
+**Other things that moved since Oct 2:**
+- **The laptop's schedule:** the school-morning rule (RUN5: no new game after 5:15 am Central on a school day, stopped by 6:30, pushed by 7:00) replaces section 8's "away hours". Friday Oct 9 is a school day. The sittings go on nights and weekends after the combined run, and Dustin names the nights (question 4).
+- **The laptop's other work:** the combined run, then its reading. The cloud's draft-A-wallace slow report runs on the cloud and doesn't touch the laptop.
+- **Not affected:** the combined run and every kx3 result so far use the official engine (main-8626a35). No development deck, panel list or kx3 pool list holds the five attacks, so the new part changes none of them. The round-2 package's Trap Territory and Will rows are as section 3 says.
+- **Section 8's dates** (the earliest sitting "the night of Oct 3") are history. The new earliest is the night after the combined run ends and preconditions (a)-(i) are met.
 
 Checked Oct 2 at origin/main 64e6d87 and rechecked at **26342a7** (its three later commits add draft A's Wallace list and the floor drafts' addendum; `engine/` is still the pinned tree 38af8b0, the same as main-8626a35's). The cloud's branch `origin/claude/coin-prevention-round2`, fetched, is at tip **57c6586** (19:04 UTC; the first draft read da08620). The package's engine is **20e2651** (`engine/` tree f95925c). Every later commit on the branch touches only `rl/results/` or merges main. Drafted by a planning workflow (three readers and one writer, reading only), then corrected after two reviews (accuracy and clarity). Nothing was built or played for this plan.
 

@@ -70,7 +70,7 @@ interval uses the exam's measured spread (sd 0.47).
 So:
 - a quick look at one deck (N = 5) takes an evening;
 - a careful one (N = 10) takes a night;
-- a wall deck needs about twice that.
+- a wall deck needs about three times that (about 9 hours at N = 5 and about 18 at N = 10, against 2½-3 and 5-6: 9 games an hour against 26-34).
 
 For comparison, Dustin's own testing at 10 minutes a game: 80 games is about 13 hours of his time, and 160 about 27.
 
