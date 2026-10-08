@@ -162,9 +162,9 @@ pub struct PlayoutParams {
     pub z_skip: Option<f64>,
     /// Close calls (`_m<R_max>`; Oct 7; off by default): when the decision after the R rounds is a close call (`close_call`:
     /// the best leads km<depth>'s move within the bar that decides the switch, or another candidate is within z standard
-    /// errors of the best), the best, the candidates close to it and km<depth>'s move play rounds R to R_max, from the same
-    /// worlds and seeds a larger R would use, and the decision is made once, at the end, among them on their rounds. Above
-    /// R; not with a time budget.
+    /// errors of the best), the best, the candidates close to it, those tied with it in every round and km<depth>'s move
+    /// play rounds R to R_max, from the same worlds and seeds a larger R would use, and the decision is made once, at the
+    /// end, among them on their rounds. Above R; not with a time budget.
     pub max_rounds: Option<usize>,
 }
 
@@ -466,8 +466,10 @@ fn paired(a: &[(f64, bool)], b: &[(f64, bool)]) -> (f64, f64, bool) {
 /// - km's move, when the best is another move whose lead over it is within the bar that would decide that switch (the
 ///   decision's own bar, `decision_bar`: z_skip from km's attack to a line that skips it, z_attack, or z);
 /// - another move the best leads by no more than z standard errors (paired), unless the two are equal in every round.
-/// If any is close: those, the best and km's move, in order; else none. A move tied with km's in every round so far is
-/// treated like any other (rare draws or events can separate them later).
+/// If any is close: those, the best, km's move, and every move tied with the best in every round, in order; else none. A
+/// tie with the best joins an extension that a move within the noise starts, but never starts one, so a settled decision
+/// (every candidate won, or lost, every play-out) isn't extended. A move tied with km's in every round, when the best is
+/// another move, is treated like any other (rare draws or events can separate tied moves later).
 pub fn close_call(per: &[Vec<(f64, bool)>], candidates: &[Action], params: &PlayoutParams) -> Vec<usize> {
     let full = per[0].len();
     if full < 2 {
@@ -493,6 +495,7 @@ pub fn close_call(per: &[Vec<(f64, bool)>], candidates: &[Action], params: &Play
     let mut set: BTreeSet<usize> = close.into_iter().collect();
     set.insert(best);
     set.insert(0);
+    set.extend((0..per.len()).filter(|&c| paired(&per[best], &per[c]).2));
     set.into_iter().collect()
 }
 
