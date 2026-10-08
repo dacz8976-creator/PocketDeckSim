@@ -87,6 +87,16 @@ EXACT:
 - "fossil_item_lock" (the follow-up): at a main-phase choice (EndTurn offered) the mover holds a Fossil that its own builder
   offers (`trainer_move_generation_implementation`), NoItemCards is in force and NoTrainerCards isn't: the old move generation
   offered it.
+- "attack_return_weakness" (P2, Oct 8): the chosen move runs the hit back (`handle_attack_retaliation`) on a damaged opposing
+  Active that carries an attack's return damage (CardEffect::Counterattack: Cursed Jewel, Spike Armor, Bristling Spikes,
+  Needle Lariat, Shell Trap), and its forecast leaves a different board with the Attacking Pokemon's printed Weakness taken
+  away. The moves that run it: Attack, ApplyDamage from an attack into the opposing Active, ApplyQueuedAttackDamage,
+  KeepAttackCoinResults and RerollAttackCoins (Victory Star), and ResolveAttackRetaliation (the held-back hit back; its
+  defender is `damaged_refs`' first). Only forecast branches where the hit back has landed count: not one still paused for
+  Victory Star, not one where the move left a new ResolveAttackRetaliation frame (that hit back is counted at the tick that
+  resolves it; frames already on the stack before the move, such as the empty one under a "1 of your opponent's Pokemon"
+  choice, don't count), and not one where the defender took no damage. Taking the Weakness away moves nothing else here: an attack's self-damage is a flat
+  `apply_damage`. The old engine gave the hit back no Weakness, so it never fired.
 OFF THE GATE (the rewritten lines ran and gave the old answer: the proof that a table runs them):
 - "offgate_by_attack" {attack: ticks}: a plain choice (no coin-Ability target) offered after an attack whose queued damage the
   later round rewrote (R2_SITES: its seven sites, and the first round's helpers and Chase Order, whose constructor it rewrote).
@@ -99,6 +109,10 @@ OFF THE GATE (the rewritten lines ran and gave the old answer: the proof that a 
 - "offgate_trap_territory_one": one Ariados in play against an Active (the rewritten loop adds 1, as before).
 - "offgate_luxury_coin_offered": a Luxury Coin reroll offered (`luxury_coin_covers` let it through).
 - "offgate_fossil_offered": a Fossil offered (the Item-lock check let it through).
+- "offgate_return_by_source" {sources: ticks} (P2): every other such tick on a defender with a return-damage source, keyed by its
+  sources joined with "+" ("attack", "Rocky Helmet", "Ability", "attack+Rocky Helmet", ...). A defender with no source is not
+  counted. "attack" here means the hit back took no Weakness: the attacker isn't weak to the holder, it is Benched (U-turn), or
+  it is Knocked Out either way.
 The coin split on the attack's opponent side keeps the counters above ("coin_cut_recorded", "coin_full_prevention"); they are A4's
 off-gate too.
 SUPERSET: "trap_territory_two_in_play": two or more Ariados in play against an Active (the gate held: the Retreat Cost is one more
@@ -231,6 +245,44 @@ fn r2_board(s: &State) -> String {
         out += &format!("discard {} {:?} | ", s.discard_piles[q].len(), s.discard_energies[q]);
     }
     out
+}
+
+/// The return damage an attack left on the Pokemon (CardEffect::Counterattack, summed), read through serde.
+fn r2_attack_return(p: &PlayedCard) -> u32 {
+    serde_json::to_value(p)
+        .ok()
+        .and_then(|v| v["effects"].as_array().cloned())
+        .unwrap_or_default()
+        .iter()
+        .filter_map(|e| e[0]["Counterattack"]["amount"].as_u64())
+        .sum::<u64>() as u32
+}
+
+/// `state` with the printed Weakness of the Pokemon at (player, idx) taken away, nothing else changed.
+fn r2_strip_weakness(state: &State, player: usize, idx: usize) -> State {
+    let mut s = state.clone();
+    if let Some(p) = s.in_play_pokemon[player][idx].as_mut() {
+        if let Card::Pokemon(c) = &mut p.card {
+            c.weakness = None;
+        }
+    }
+    s
+}
+
+/// The Pokemon's return-damage sources joined with "+": an attack's (P2 gives it Weakness), Rocky Helmet's (by text, so a
+/// reprint counts) and an Ability's (both flat). "" for none.
+fn r2_return_sources(p: &PlayedCard) -> String {
+    let mut sources = Vec::new();
+    if r2_attack_return(p) > 0 {
+        sources.push("attack");
+    }
+    if deckgym::tools::has_tool(p, deckgym::card_ids::CardId::A2148RockyHelmet) {
+        sources.push("Rocky Helmet");
+    }
+    if r2_ability(p).starts_with("CounterattackDamage") {
+        sources.push("Ability");
+    }
+    sources.join("+")
 }
 
 /// One tick's firings: (counter, key), the key None for an unkeyed counter. `actions` are the moves the tick offered,
@@ -445,6 +497,65 @@ fn r2_tick(
     if actions.iter().any(|a| matches!(&a.action, SimpleAction::Place(c, _) if is_fossil(c))) {
         out.push(("offgate_fossil_offered", None));
     }
+
+    // P2: return damage an attack left takes Weakness. The chosen move runs the hit back on a damaged opposing Active: (the
+    // Attacking Pokemon, the defender, whether the damage landed at an earlier tick). Exact: the defender carries an attack's
+    // return damage and a branch where the hit back landed leaves a different board with the attacker's printed Weakness taken
+    // away. Off the gate: any other such tick on a defender with a return-damage source, by source.
+    let gate = match &chosen.action {
+        SimpleAction::Attack(_)
+        | SimpleAction::ApplyQueuedAttackDamage { .. }
+        | SimpleAction::KeepAttackCoinResults
+        | SimpleAction::RerollAttackCoins { .. } => Some(((actor, 0), (opp, 0), false)),
+        SimpleAction::ApplyDamage { attacking_ref, targets, is_from_active_attack: true }
+            if targets.iter().any(|(d, q, i)| *d > 0 && *q == 1 - attacking_ref.0 && *i == 0) =>
+        {
+            Some((*attacking_ref, (1 - attacking_ref.0, 0), false))
+        }
+        SimpleAction::ResolveAttackRetaliation { attacking_ref, damaged_refs, .. } => {
+            damaged_refs.first().map(|&d| (*attacking_ref, d, true))
+        }
+        _ => None,
+    };
+    if let Some(((aq, ai), (dq, di), held)) = gate {
+        if let Some(defender) = at(dq, di) {
+            let sources = r2_return_sources(defender);
+            if !sources.is_empty() {
+                let (id, hp) = (defender.card.get_id(), defender.get_remaining_hp());
+                // Held-back hit backs on the stack. The move holds its own back when it leaves more than it found (the
+                // ResolveAttackRetaliation it resolves counts as one fewer); frames from earlier moves don't count.
+                let frames = |s: &State| {
+                    s.move_generation_stack
+                        .iter()
+                        .flat_map(|(_, frame)| frame.iter())
+                        .filter(|a| matches!(a, SimpleAction::ResolveAttackRetaliation { .. }))
+                        .count()
+                };
+                let frames_before = frames(before);
+                let landed = |s: &State| {
+                    s.pending_attack_coin_choice.is_none()
+                        && frames(s) + held as usize <= frames_before
+                        && (held
+                            || s.in_play_pokemon[dq][di]
+                                .as_ref()
+                                .is_none_or(|p| p.card.get_id() != id || p.get_remaining_hp() < hp))
+                };
+                let with = r2_branches(before, chosen);
+                let live: Vec<usize> = (0..with.len()).filter(|&k| landed(&with[k].1)).collect();
+                if !live.is_empty() {
+                    let exact = r2_attack_return(defender) > 0 && {
+                        let without = r2_branches(&r2_strip_weakness(before, aq, ai), chosen);
+                        without.len() != with.len() || live.iter().any(|&k| r2_board(&with[k].1) != r2_board(&without[k].1))
+                    };
+                    if exact {
+                        out.push(("attack_return_weakness", None));
+                    } else {
+                        out.push(("offgate_return_by_source", Some(sources)));
+                    }
+                }
+            }
+        }
+    }
     out
 }
 '''
@@ -454,8 +565,9 @@ R2_COUNTERS = ["will_confused_attack", "will_block_coin_attack", "vs_block_coin_
                "luxury_coin_opp_stadium", "fossil_item_lock",
                "offgate_plain_attack_damage", "offgate_guts_opponent_split", "offgate_confused_attack",
                "offgate_block_coin_attack", "offgate_vs_ungated_built", "offgate_trap_territory_one",
-               "offgate_luxury_coin_offered", "offgate_fossil_offered", "trap_territory_two_in_play"]
-R2_KEYED = ["coin_queued_by_attack", "coin_plain_damage_by_attack", "offgate_by_attack"]
+               "offgate_luxury_coin_offered", "offgate_fossil_offered", "trap_territory_two_in_play",
+               "attack_return_weakness"]
+R2_KEYED = ["coin_queued_by_attack", "coin_plain_damage_by_attack", "offgate_by_attack", "offgate_return_by_source"]
 if sys.argv[1:2] == ["--emit-fns"]:
     open(sys.argv[2], "w", encoding="utf-8").write(R2_FNS)
     print("wrote", sys.argv[2])

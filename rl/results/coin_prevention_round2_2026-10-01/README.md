@@ -1,4 +1,4 @@
-Decision this informs: none yet. This is a drafted engine repair for a later engine switch (the Fable coordinator via Dustin, Oct 1). It stacks on Sonnet's R (1abdbe8, `origin/sonnet/rules-fixes`) on its own branch, `claude/coin-prevention-round2`, and is not merged or pinned. **It stays out of the current rules switch, whose scope is fixed, and goes in the next one** (the coordinator, Oct 1). No table game, carrier game or identity replay was played. **No independent audit of the patch has been done yet.** **Since Oct 2 it also carries the card-text job** (the coordinator via Dustin, Oct 1 evening): see "The card-text job" below and `TEXT_AUDIT.md`.
+Decision this informs: none yet. This is a drafted engine repair for a later engine switch (the Fable coordinator via Dustin, Oct 1). It stacks on Sonnet's R (1abdbe8, `origin/sonnet/rules-fixes`) on its own branch, `claude/coin-prevention-round2`, and is not merged or pinned. **It stays out of the current rules switch, whose scope is fixed, and goes in the next one** (the coordinator, Oct 1). No table game, carrier game or identity replay was played. **No independent audit of the patch has been done yet.** **Since Oct 2 it also carries the card-text job** (the coordinator via Dustin, Oct 1 evening): see "The card-text job" below and `TEXT_AUDIT.md`. **Since Oct 8 it also carries P2**, return damage left by an attack taking Weakness: see "P2" below.
 
 Seeds: no table deal. The smoke check used 20,980,000,000 + pairing × 10,000 + i, on scratch decks only (Claude Code's diagnostic block, outside START_HERE's ranges). The unit tests' seeds are their own, as in the first round.
 
@@ -125,6 +125,196 @@ One in-crate test in `attack_outcome.rs` was updated to the Guts split's new (si
 **The suite** (`suite_followup.log`), at `3090abb`, the last engine commit: **2,039 passed, 0 failed, 0 ignored**: the 2,035 above plus the 5 tests added here, less the one pin replaced.
 
 **The engine diff from the official engine** (main-8626a35) is now 17 files: `apply_action.rs`, `apply_attack_action.rs`, `attack_outcome.rs`, `hooks/core.rs`, `state/mod.rs` (the five); `hooks/retreat.rs` (Trap Territory); `trainer_coin_plan.rs`, `move_generation_trainer.rs`, `card_validation.rs` (allowed for this follow-up); and 8 test files. Nothing in `players/` or `Cargo.lock` changed.
+
+## P2 (Oct 8): return damage left by an attack takes Weakness
+
+The coordinator via Dustin, Oct 8 (main `rl/results/engine_switch_rules2_2026-10/PLAN.md`, section 0: part 3 and precondition (h),
+:29; 7fa6cdb7): its own engine commit on this branch, tests first, after the draft A slow report.
+
+### In plain words
+
+- **Five attacks** read "During your opponent's next turn, if this Pokémon is damaged by an attack, do X damage to the Attacking
+  Pokémon":
+  - Mega Sableye ex's Cursed Jewel, 40 (B3b 041, 081, 088);
+  - Alolan Sandslash's Spike Armor, 40 (A3 039);
+  - Togedemaru's Bristling Spikes, 30 (A3b 048, P-A 090);
+  - Chesnaught's Needle Lariat, 80 (B2 010);
+  - Turtonator's Shell Trap, 20 (B1 047).
+- **That hit back is the attack's own damage, so it now takes Weakness:** +20 when the Attacking Pokémon is weak to the holder's
+  type and is still in the Active Spot. Before, it was always flat.
+- **Rocky Helmet's 20 and every Ability's return damage stay flat**, as before: Rough Skin, Steel Spikes, Automated Combat and the
+  rest of the `CounterattackDamage` Abilities.
+- **The evidence** (main `rules/02_damage_knockouts_points.md`, section 2; `rl/results/new_pause_games_triage_2026-10-06/TRIAGE.md`,
+  2.1; this branch's own `rules/02` doesn't have the row yet):
+  - your recording 183108 @306-308 and @384-386: Cursed Jewel did 60 to a Darkness-weak Houndstone, twice, the second time with
+    the Mega Knocked Out by the same attack;
+  - 215749 @99 and @161: Rocky Helmet did a flat 20 to a Fire-weak Tinkatink;
+  - 20261006_220700000: Automated Combat did a flat 20 to Darkness-weak attackers, five times.
+- **Three readings the tests pin, for you to confirm or overrule.** None has been seen in a game, and none can change a recorded
+  game (see "Which games can change").
+  1. **Bounded Field** leaves the hit back's extra at +20: Bounded Field's ×2 isn't applied to it.
+  2. **Steelix's Metal Defender** ("During your opponent's next turn, this Pokémon has no Weakness") doesn't protect Steelix from
+     the hit back on the attack that uses it. The engine adds the effect before the hit back lands, but the card covers only the
+     opponent's next turn.
+  3. **Ledian's Swift** ("This attack's damage isn't affected by Weakness or by any effects on your opponent's Active Pokémon")
+     doesn't stop the hit back or its Weakness: that text is about Swift's own damage.
+- **A Benched attacker takes the hit back flat**: one that switched itself to the Bench with U-turn before the hit back landed.
+  This follows rules/02's [OFFICIAL] "Don't apply Weakness for Benched Pokémon"; it hasn't been seen for return damage.
+
+### Commits
+
+- The log line first, on the coordination branch (e532aade).
+- `d3739b7`: the 17 tests, 13 of them failing on the engine as it was (`tests_before_fix_p2.log`).
+- `5543a4b`: P2, the engine change; all 17 pass (`tests_after_fix_p2.log`).
+- Then the suite, the counters, the inventory and this README.
+
+### Tests
+
+`engine/tests/rules_repair_return_damage_weakness.rs`. The boards are constructed, not replays. Where an attack's return damage is
+armed, the attack is used for real so the engine arms it; the two tests marked "constructed" add the `Counterattack` directly
+instead. The attacker under test then replaces the stand-in Snorlax that took the setup hit, so that hit can't add Weakness of its
+own.
+
+| test | before (`57c6586`'s engine) | after (P2) |
+|---|---|---|
+| `each_attack_hits_back_with_weakness_on_a_weak_attacker` (all 8 printings) | fails: Houndstone 90, not 70 | passes |
+| `each_attack_hits_back_flat_on_an_attacker_not_weak_to_it` (Snorlax) | passes | passes |
+| `weakness_decides_the_knockout_by_the_hit_back` (X + 20 HP Knocked Out, X + 21 left at 1, no Bench loses) | fails | passes |
+| `recording_183108_t8_cursed_jewel_returns_60` | fails: 90, not 70 | passes |
+| `recording_183108_t10_hit_back_lands_when_the_holder_is_knocked_out` | fails: 80, not 60 | passes |
+| `double_knockout_by_the_hit_back_the_attacker_promotes_first` | fails: Bulbasaur left at 20 | passes |
+| `rocky_helmet_stays_flat_on_a_weak_attacker` (A2 148, A4b 322, A4b 323) | passes | passes |
+| `ability_return_damage_stays_flat` (Automated Combat, Steel Spikes; Rough Skin on a constructed Dragon Weakness, since no card is weak to Dragon) | passes | passes |
+| `tool_and_attack_return_on_one_defender_each_by_its_own_rule` | fails: 70, not 50 | passes |
+| `ability_and_attack_return_on_one_defender` (constructed) | fails: 90, not 70 | passes |
+| `held_back_hit_back_takes_weakness` (Psy Turbo's Attach first, then `ResolveAttackRetaliation`) | fails: 90, not 70 | passes |
+| `apply_damage_path_takes_weakness` (`handle_damage`) | fails: 90, not 70 | passes |
+| `perish_body_branch_hit_back_takes_weakness` (the `ApplyDamage` coin branch, constructed) | fails: a tails Tauros at 60, not 40 | passes |
+| `hit_back_on_a_benched_attacker_stays_flat` (U-turn) | passes | passes |
+| `metal_defender_does_not_shield_its_own_hit_back` | fails: 130, not 110 | passes |
+| `swift_does_not_shield_the_hit_back` | fails: 60, not 40 | passes |
+| `bounded_field_keeps_the_hit_back_extra_at_20` | fails: Stonjourner 40, not 20 | passes |
+
+### How (line numbers at `5543a4b`)
+
+- `hooks/counterattack.rs`: the stored `Counterattack` sum moves into `attack_counterattack_damage` (:34), the part an attack
+  left. `get_counterattack_damage` (:13) calls it and keeps its value (Rocky Helmet + attack + Ability).
+- `hooks/core.rs`: `attack_return_weakness_extra` (:1535). It gives 20 when the Attacking Pokémon's printed Weakness is one of the
+  holder's types, read through `pokemon_energy_types` (so Double Type counts, as in `printed_weakness_application`, :1503), and 0
+  otherwise. It reads no `NoWeakness` and no Bounded Field: the two stated choices.
+- `hooks/mod.rs`: the two exports (:34-35).
+- `handle_attack_retaliation` (`actions/apply_action_helpers.rs`:616): the extra (:625) goes into the same `apply_damage` (:637).
+  It is computed only when the attacker is in the Active Spot (`attacking_ref.1 == 0`) and the defender carries an attack's
+  return damage.
+
+### The suite
+
+`suite_p2.log`, at `5543a4b`: **2,056 passed, 0 failed, 0 ignored**, 102 targets (101 test binaries and the doc-tests). That is
+the 2,039 at `3090abb` plus the 17 tests added here; no existing test changed. (`suite_followup.log`'s "104 targets" counted three
+test names that begin with "result"; its totals are right.)
+
+**The engine diff from the official engine** (main-8626a35) is now 21 files: the 17 above, plus `apply_action_helpers.rs`,
+`hooks/counterattack.rs`, `hooks/mod.rs` and the new test file (`hooks/core.rs` was already in it). Nothing in `players/` or
+`Cargo.lock` changed.
+
+### Which games can change
+
+From `../round2_readiness_2026-10-02/inventory_output_p2.txt`, run on main b77652d6:
+- **Only two lists hold one of the five attacks:** brew-07 (1 Mega Sableye ex) and brew-09 (2).
+- **No list holds a copy attack that could use one:** Mew ex's Genome Hacking, Mimikyu's Try to Imitate, Clefairy's
+  Mini-Metronome, Mew's Miraculous Memory. Ditto's copies are Colorless, and no card is weak to Colorless.
+- A scan of the other 58 twenty-card lists in the checkout finds none either. That agrees with the laptop's scan
+  (`return_damage_scan.txt`: 2 of 135 files).
+- **So:** the table, the new-17 cells, B2e, the carriers and 7c are 0. On the screen and floor, only brew-07 v t-altaria and
+  brew-09 v t-altaria can change: t-altaria's Espeon is the only Darkness-weak Pokémon on the 8 panel lists. That is one row of 8
+  on each list's floor pages (`floor_brews_2026-09-28`, `floor_dustin_2026-09-30`).
+- The inventory page also names every other file that names the two lists, by file name or by label: the X Speed census, the
+  screen pages under `decks/screen/` and the goldfish pages among them.
+
+**In real games** (`../round2_readiness_2026-10-02/counter_smoke_p2/`). km3 played both sides of 50 deals each:
+- brew-07 v t-altaria;
+- brew-09 v t-altaria;
+- brew-09 v t-sceptile (no Darkness-weak attacker);
+- brew-07 v t-blaziken (Rocky Helmet).
+
+Each deal was played on the engine before P2 and on P2, seeds 20,960,000,000 + pairing × 10,000 + i (Claude Code's diagnostic
+block).
+- **P2 changed 3 of the 200 games, 1 of them in its result. All three changed in look-ahead.** At the first differing tick the bot
+  chose a different move from the same board, before any hit back had taken Weakness (`first_difference_output.txt`). In deal
+  1:21 a flat hit back had already landed earlier, on an Eevee.
+  - In deals 0:31 and 1:8 the armed Mega Sableye ex faced an Active Espeon.
+  - In 1:21 it faced Mega Altaria ex, and the choice was whether to retreat into the Benched Espeon.
+
+  km3's search runs the engine, so it sees the +20 coming and plays around it.
+- **The exact counter fired in 7 games (7 ticks), all v t-altaria:** Espeon hit an armed Sableye and took 60. In those 7 games the
+  moves stayed the same; the +20 changed HP, not the play that followed.
+- **v t-sceptile and v t-blaziken nothing changed.** Only the off-gate counter fired there: the hit back stays flat on attackers
+  not weak to Darkness, and Rocky Helmet is flat.
+- **The counters change no play:** the P2 scan with and without them gives the same moves in 200 of 200 games.
+
+### `players/` is unchanged
+
+- **The bots see the +20 without a pricing change.** Their look-ahead forecasts each move through the engine
+  (`expectiminimax_player.rs`:457, `try_forecast_action`).
+- **public_reply never meets the change.** It calls the engine's own `handle_attack_retaliation` (`public_reply.rs`:564), and it
+  gives up on any board whose Pokémon carries a stored effect other than PreventAllDamageAndEffects (:632-638).
+- **kt switch 3's `counter_cut` still prices return damage flat** (`value_functions.rs`:1928-1948, through
+  `get_counterattack_damage`). So it under-prices a weak attacker's hit back by 20. Only kt and ktc turn switch 3 on (:479-480,
+  :486), and both are diagnostic; km3 and kta3 don't read it (:482, :488).
+
+### For the equivalence readers
+
+Main PLAN.md precondition (f) adds `handle_attack_retaliation`. In the format of
+`rl/results/engine_switch_rules_2026-10/EQUIVALENCE_opus.md`:
+
+| Hunk at `5543a4b` | Callers | Old | New on the table path | Why it's the same |
+|---|---|---|---|---|
+| `handle_attack_retaliation` (`apply_action_helpers.rs`:614-645) | `handle_damage` (:529; `ApplyDamage`'s plain branch, `apply_action.rs`:908), the immediate outcome (`attack_outcome.rs`:281), the held-back `ResolveAttackRetaliation` (`apply_action.rs`:627), the Guts and Perish Body branches (`apply_action.rs`:948), public_reply (`public_reply.rs`:564) | `apply_damage(get_counterattack_damage(..))` | `apply_damage(get_counterattack_damage(..) + weakness_extra)` | `weakness_extra` is 0 unless the damaged defender carries a `CardEffect::Counterattack`. Without one, the same number is applied in the same branch, with no new draws and no new frames. |
+| `counterattack.rs` (:13-42) | `get_counterattack_damage`: `handle_attack_retaliation`; `value_functions.rs`:1936 (kt's `counter_cut`) and :5038 (a test) | the stored `Counterattack` sum inline | the same sum, through `attack_counterattack_damage` | the same expression, moved |
+| `core.rs` (:1530-1548) | the new function only | — | — | no existing function changes |
+| `mod.rs` (:34-35) | two `use` lines | — | — | — |
+
+- **The function runs on every attack that damages the opposing Active**, not only into a defender with any retaliation
+  (PLAN.md:37's wording). So the reading covers the zero case for all attacks; the row above does.
+- **The root fact.** `CardEffect::Counterattack` is made only by the five attacks' text (`effect_mechanic_map.rs`:526-550 and
+  :2537-2544), on the attacker's own Active (`apply_attack_action.rs`:3721-3754), or by a copy attack using one. No table,
+  identity, coverage or panel list holds the eight ids or a copier (the inventory above).
+- **Step 4's allowed file list** (PLAN.md:222, "exactly the 17 engine files") **and (f)'s list gain**
+  `engine/src/actions/apply_action_helpers.rs`, `engine/src/hooks/counterattack.rs`, `engine/src/hooks/mod.rs` and
+  `engine/tests/rules_repair_return_damage_weakness.rs`: 21 in all. `hooks/core.rs` is already listed.
+
+### Open points (none changes a recorded game)
+
+1. **For Dustin:** the three readings above (Bounded Field +20, Metal Defender, Swift) and the Bench.
+2. **The hit back as attack damage, beyond Weakness.** P2 gives it only Weakness. The engine applies it as a plain `apply_damage`,
+   so none of these touch it:
+   - the Attacking Pokémon's own damage reductions, Disguise or full prevention;
+   - Guts, Hala, Rescue Scarf or Lucky Egg when it Knocks the attacker Out;
+   - the attacker's own Rocky Helmet or Rough Skin.
+
+   Whether Pocket applies any of them is open. rules/02 section 4 says an Ability's return damage triggers none; for an attack's
+   it isn't recorded. Spiritomb's Final Scream (B2 103), an on-Knock-Out Ability, stays flat.
+3. **A holder that the same attack moves to the Bench or devolves** loses its `Counterattack` before the hit back, so nothing
+   lands (a knock-back or devolving attack). This is existing behaviour, not P2's, and it hasn't been seen in a game.
+4. **Other damage an attack leaves stays flat:** Galarian Stunfisk's Snapping Trap (B2 117: "this attack does 40 damage to the
+   new Active Pokémon", `apply_action.rs`:1675) and the delayed damage effects (`hooks/core.rs`:441 and :496). They are outside
+   P2's rule; Snapping Trap's wording is the nearest relative.
+5. **main rules/02:60 has Rocky Helmet's roles swapped** ("a Fire Torchic hitting Metal Tinkatink"). TRIAGE.md :73 and :105 and
+   the card types say Torchic held the Helmet and Tinkatink attacked. That is a one-line fix on main, outside this branch.
+6. **For the go** (PLAN (a) and (e)):
+   - coin_probe v2 needs a P2 condition. A bot's search sees Cursed Jewel's +20, so a brew-07 or brew-09 v t-altaria game can
+     change in look-ahead before any hit back lands, and would read UNEXPLAINED. The smoke shows this is the usual case: all 3
+     of its changed games changed in look-ahead.
+   - (e) needs a P2 revert switch.
+   - Neither is built here.
+
+### For the laptop
+
+- **The counters:** `attack_return_weakness` (exact) and `offgate_return_by_source` {sources} (off the gate), in
+  `../coin_prevention_repair_2026-09-30/instrument_scan.py`. The probe has 78 checks (49 before) and passes at P2.
+- **The equivalence list** is above.
+- **The files:** the four engine files named under "How" (`apply_action_helpers.rs`, `hooks/core.rs`, `hooks/counterattack.rs`,
+  `hooks/mod.rs`) and the test file named under "Tests".
 
 ## Reach per card (`reach.py`, `reach_output.txt`)
 
@@ -293,6 +483,9 @@ The engine diff from R is four files:
 - `suite.log`: the full unit suite at `29e126a`.
 - The card-text job: `TEXT_AUDIT.md`; `tests_before_fix_will.log`, `tests_after_fix_will.log`; `tests_before_fix_text.log`, `tests_after_fix_text.log`; `tests_before_fix_trap_territory.log`, `tests_after_fix_trap_territory.log`; `suite_card_text.log` (the full suite at `5155ff7`).
 - The follow-up: `tests_before_fix_followup.log`, `tests_after_fix_followup.log`, `suite_followup.log` (the full suite at `3090abb`).
+- P2: `tests_before_fix_p2.log`, `tests_after_fix_p2.log`, `suite_p2.log` (the full suite at `5543a4b`).
+  - Its counters are in `../coin_prevention_repair_2026-09-30/instrument_scan.py`.
+  - Its probe, inventory and smoke are in `../round2_readiness_2026-10-02/`.
 - `reach.py`, `reach_output.txt`: reach per card.
 - `counter_probe_round2.rs`, `counter_probe_round2_output.txt`: the counters on constructed boards.
 - `smoke/`: the smoke check.

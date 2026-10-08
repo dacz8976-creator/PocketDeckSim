@@ -156,6 +156,21 @@ fn moltres_board(seed: u64, confused: bool, block: bool, will: bool, victini: bo
     moltres_game(seed, confused, block, will, victini).get_state_clone()
 }
 
+/// The Pokemon with an attack's return damage armed, as Cursed Jewel and the others leave it (P2's boards).
+fn armed(mut p: PlayedCard, amount: u32) -> PlayedCard {
+    p.add_effect(CardEffect::Counterattack { amount }, 1);
+    p
+}
+
+/// Player 0's `attacker` side to move against player 1's `defender` side (P2's boards).
+fn duel_game(attacker: Vec<PlayedCard>, defender: Vec<PlayedCard>) -> Game<'static> {
+    get_initialized_game_with_board(0, 0, 5, attacker, defender)
+}
+
+fn duel(attacker: Vec<PlayedCard>, defender: Vec<PlayedCard>) -> State {
+    duel_game(attacker, defender).get_state_clone()
+}
+
 fn main() {
     let (meowth, bulbasaur) = (CardId::B2124Meowth, CardId::A1001Bulbasaur);
     let mut r = Report { lines: vec![], failures: 0 };
@@ -351,6 +366,132 @@ fn main() {
         r.check(&format!("player 0's main phase with a Fossil in hand, {}", if locked { "under an Item lock" } else { "no lock" }),
             fired(&state, &end_turn, None), set(&want));
     }
+
+    // 9. P2 (Oct 8): return damage an attack left takes Weakness. Player 0 attacks player 1's Active, armed as the attack leaves
+    //    it (Counterattack, duration 1). Exact against an attacker weak to the holder; off the gate, keyed by the source, against
+    //    one that isn't, for a Tool or an Ability, when the attacker is Knocked Out either way, and on the Bench (U-turn). At the
+    //    Attack tick of a move whose hit back waits (on Psy Turbo's Attach, U-turn's switch) neither fires, nor at the Attach or
+    //    the switch; the ResolveAttackRetaliation tick after them counts. An attack that does its damage through a "1 of your
+    //    opponent's Pokemon" choice (Azelf's Psychic Arrow) leaves an empty ResolveAttackRetaliation frame under the choice;
+    //    the hit back lands at the ApplyDamage tick and counts there.
+    let snorlax = || with(CardId::A1211Snorlax, vec![EnergyType::Colorless; 4]);
+    let houndstone = || with(CardId::B3a024Houndstone, vec![EnergyType::Psychic; 3]);
+    let helmet = || get_card_by_enum(CardId::A2148RockyHelmet);
+    let holders: Vec<(CardId, u32, PlayedCard, &str)> = vec![
+        (CardId::B3b041MegaSableyeEx, 40, houndstone(), "Spooky Shot"),
+        (CardId::A3039AlolanSandslash, 40, with(CardId::A1044Magmar, vec![EnergyType::Fire; 2]), "Magma Punch"),
+        (CardId::A3b048Togedemaru, 30, with(CardId::A2a020Snover, vec![EnergyType::Water, EnergyType::Colorless]), "Corkscrew Punch"),
+        (CardId::B2010Chesnaught, 80, with(CardId::A1a048Stonjourner, vec![EnergyType::Fighting; 3]), "Mega Kick"),
+        (CardId::B1047Turtonator, 20, with(CardId::A1001Bulbasaur, vec![EnergyType::Grass, EnergyType::Colorless]), "Vine Whip"),
+    ];
+    for (holder, amount, weak, title) in holders {
+        let state = duel(vec![weak], vec![armed(mon(holder), amount)]);
+        r.check(&format!("{title} into an armed {holder:?}, weak to it"), fired(&state, &attack_named(&state, title), None),
+            set(&["attack_return_weakness"]));
+        let state = duel(vec![snorlax()], vec![armed(mon(holder), amount)]);
+        r.check(&format!("Rollout into an armed {holder:?}"), fired(&state, &attack_named(&state, "Rollout"), None),
+            set(&["offgate_return_by_source[attack]"]));
+    }
+    for (hp, want) in [(50, "attack_return_weakness"), (30, "offgate_return_by_source[attack]")] {
+        let state = duel(vec![houndstone().with_remaining_hp(hp), mon(bulbasaur)], vec![armed(mon(CardId::B3b041MegaSableyeEx), 40)]);
+        r.check(&format!("Spooky Shot into an armed Mega Sableye ex, Houndstone at {hp} HP"),
+            fired(&state, &attack_named(&state, "Spooky Shot"), None), set(&[want]));
+    }
+    let state = duel(vec![with(CardId::A2b052Tinkatink, vec![EnergyType::Metal])], vec![mon(CardId::B1033Torchic).with_tool(helmet())]);
+    r.check("Corkscrew Punch into a Torchic with Rocky Helmet", fired(&state, &attack_named(&state, "Corkscrew Punch"), None),
+        set(&["offgate_return_by_source[Rocky Helmet]"]));
+    let state = duel(vec![with(CardId::A1129MewtwoEx, vec![EnergyType::Psychic, EnergyType::Colorless])], vec![mon(CardId::B3a046IronJugulis)]);
+    r.check("Psychic Sphere into Iron Jugulis", fired(&state, &attack_named(&state, "Psychic Sphere"), None),
+        set(&["offgate_return_by_source[Ability]"]));
+    let state = duel(vec![snorlax()], vec![mon(CardId::A1a056Druddigon)]);
+    r.check("Rollout into Druddigon", fired(&state, &attack_named(&state, "Rollout"), None), set(&["offgate_return_by_source[Ability]"]));
+    for (attacker, title, want) in [(houndstone(), "Spooky Shot", "attack_return_weakness"),
+                                    (snorlax(), "Rollout", "offgate_return_by_source[attack+Rocky Helmet]")] {
+        let state = duel(vec![attacker], vec![armed(mon(CardId::B3b041MegaSableyeEx).with_tool(helmet()), 40)]);
+        r.check(&format!("{title} into an armed Mega Sableye ex with Rocky Helmet"), fired(&state, &attack_named(&state, title), None),
+            set(&[want]));
+    }
+    let state = duel(vec![snorlax()], vec![mon(bulbasaur)]);
+    r.check("Rollout into Bulbasaur (no return damage)", fired(&state, &attack_named(&state, "Rollout"), None), set(&[]));
+
+    // The held-back hit back: Gardevoir's Psy Turbo (an Attach choice after the damage) into an armed Mega Sableye ex.
+    let mut game = duel_game(
+        vec![with(CardId::B2065Gardevoir, vec![EnergyType::Psychic; 2]), mon(CardId::A1130Ralts)],
+        vec![armed(mon(CardId::B3b041MegaSableyeEx), 40)],
+    );
+    let psy_turbo = attack_named(&game.get_state_clone(), "Psy Turbo");
+    r.check("Psy Turbo into an armed Mega Sableye ex, the Attack tick", fired(&game.get_state_clone(), &psy_turbo, None), set(&[]));
+    game.apply_action(&psy_turbo);
+    let attach = offered(&game.get_state_clone(), |a| matches!(a, SimpleAction::Attach { .. })).expect("Psy Turbo's Attach");
+    r.check("Psy Turbo into an armed Mega Sableye ex, the Attach tick", fired(&game.get_state_clone(), &attach, None), set(&[]));
+    game.apply_action(&attach);
+    let state = game.get_state_clone();
+    let resolve = offered(&state, |a| matches!(a, SimpleAction::ResolveAttackRetaliation { .. })).expect("the held-back hit back");
+    r.check("Psy Turbo into an armed Mega Sableye ex, the ResolveAttackRetaliation tick", fired(&state, &resolve, None),
+        set(&["attack_return_weakness"]));
+
+    // ApplyDamage from an attack (`handle_damage`): Houndstone's Active into the armed Mega.
+    let state = duel(vec![houndstone()], vec![armed(mon(CardId::B3b041MegaSableyeEx), 40)]);
+    let apply = Action {
+        actor: 0,
+        action: SimpleAction::ApplyDamage { attacking_ref: (0, 0), targets: vec![(10, 1, 0)], is_from_active_attack: true },
+        is_stack: false,
+    };
+    r.check("ApplyDamage from Houndstone's Active into an armed Mega Sableye ex", fired(&state, &apply, None),
+        set(&["attack_return_weakness", "offgate_plain_attack_damage"]));
+
+    // U-turn: Scyther (weak Fire) switches itself to the Bench before Shell Trap's hit back lands, flat.
+    let mut game = duel_game(
+        vec![with(CardId::B2b001Scyther, vec![EnergyType::Colorless]), mon(bulbasaur)],
+        vec![armed(mon(CardId::B1047Turtonator), 20)],
+    );
+    let u_turn = attack_named(&game.get_state_clone(), "U-turn");
+    r.check("U-turn into an armed Turtonator, the Attack tick", fired(&game.get_state_clone(), &u_turn, None), set(&[]));
+    game.apply_action(&u_turn);
+    let switch = offered(&game.get_state_clone(), |a| matches!(a, SimpleAction::Activate { player: 0, in_play_idx: 1 })).expect("U-turn's switch");
+    r.check("U-turn into an armed Turtonator, the switch tick", fired(&game.get_state_clone(), &switch, None), set(&[]));
+    game.apply_action(&switch);
+    let state = game.get_state_clone();
+    let resolve = offered(&state, |a| matches!(a, SimpleAction::ResolveAttackRetaliation { .. })).expect("the held-back hit back");
+    r.check("U-turn into an armed Turtonator, the ResolveAttackRetaliation tick (Scyther Benched)", fired(&state, &resolve, None),
+        set(&["offgate_return_by_source[attack]"]));
+
+    // Psychic Arrow: Azelf (Psychic, weak Darkness) does its 20 through a choice; the empty frame under it doesn't hide the hit
+    // back at the ApplyDamage tick (the plain-choice counters fire there too, Psychic Arrow being one of R2_SITES' attacks).
+    let mut game = duel_game(vec![with(CardId::A2077Azelf, vec![EnergyType::Psychic])], vec![armed(mon(CardId::B3b041MegaSableyeEx), 40)]);
+    let arrow = attack_named(&game.get_state_clone(), "Psychic Arrow");
+    let Card::Pokemon(azelf) = get_card_by_enum(CardId::A2077Azelf) else { unreachable!() };
+    r.check("Psychic Arrow into an armed Mega Sableye ex, the Attack tick", fired(&game.get_state_clone(), &arrow, None), set(&[]));
+    game.apply_action(&arrow);
+    let state = game.get_state_clone();
+    let into_active = offered(&state, |a| matches!(a, SimpleAction::ApplyDamage { targets, .. } if targets.iter().any(|t| t.1 == 1 && t.2 == 0)))
+        .expect("Psychic Arrow's choice of the Active");
+    r.check("Psychic Arrow into an armed Mega Sableye ex, the ApplyDamage tick", fired(&state, &into_active, Some(&azelf.attacks[0])),
+        set(&["attack_return_weakness", "offgate_by_attack[Psychic Arrow]", "offgate_plain_attack_damage"]));
+    game.apply_action(&into_active);
+    let state = game.get_state_clone();
+    if let Some(leftover) = offered(&state, |a| matches!(a, SimpleAction::ResolveAttackRetaliation { .. })) {
+        r.check("Psychic Arrow, the empty frame left under the choice", fired(&state, &leftover, None), set(&[]));
+    }
+
+    // Victory Star: Heat Rotom (Fire, weak Water; Heat Breath, a coin) with Victini into an armed Alolan Sandslash (Water). The
+    // damage and the hit back land at the Keep tick.
+    let paused = (0..40u64).find_map(|seed| {
+        let mut game = get_initialized_game_with_board(
+            seed,
+            0,
+            5,
+            vec![with(CardId::A2030HeatRotom, vec![EnergyType::Fire, EnergyType::Colorless]), mon(CardId::B3025Victini)],
+            vec![armed(sturdy(CardId::A3039AlolanSandslash, 400), 40)],
+        );
+        let attack = attack_named(&game.get_state_clone(), "Heat Breath");
+        game.apply_action(&attack);
+        let after = game.get_state_clone();
+        after.pending_attack_coin_choice.is_some().then_some(after)
+    }).expect("a Victory Star pause in 40 seeds");
+    let keep = offered(&paused, |a| matches!(a, SimpleAction::KeepAttackCoinResults)).expect("Keep");
+    r.check("Heat Breath into an armed Alolan Sandslash, the Victory Star Keep tick", fired(&paused, &keep, None),
+        set(&["attack_return_weakness"]));
 
     for line in &r.lines {
         println!("{line}");

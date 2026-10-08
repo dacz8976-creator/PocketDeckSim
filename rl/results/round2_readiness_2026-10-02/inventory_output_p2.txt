@@ -1,0 +1,216 @@
+origin/main b77652d6: the lists below are read from this checkout.
+main: 70 deck lists under decks/ (of its 85 .txt files; the rest are coverage and check pages), and 14 lists outside it named by the pairing files.
+
+== the card sets, from the card text
+coin Abilities (5 printings): Bastiodon, Hisuian Goodra, Meowth, Togekiss
+block-coin attacks (9 printings): Magmortar, Magnezone, Manectric, Octillery, Sandaconda, Sandygast, Skuntank, Weezing
+Confusion of the opponent's Active (54 printings): Alolan Muk ex, Aromatisse, Chatot, Cherrim, Dustox, Girafarig, Hattrem, Jynx, Kirlia, Kricketune, Lanturn ex, Maractus, Mega Lopunny ex, Meowstic, Misdreavus, Mismagius ex, Oricorio, Psyduck, Rabsca, Ralts, Seismitoad, Slowbro, Spinda, Spiritomb, Swoobat, Team Rocket's Master Plan, Team Rocket's Weezing ex, Umbreon, Volbeat, Xurkitree
+self-Confusion (14 printings): Bellossom, Bewear, Klawf, Psyduck, Spinda, Team Rocket's Master Plan
+own-side damage attacks (18 printings): Diggersby, Emolga, Forretress, Great Tusk, Groudon, Luxray, Mamoswine, Mimikyu, Team Rocket's Articuno ex, Whiscash, Zapdos
+own-Bench choice attacks (6 printings): Emolga, Luxray, Zapdos
+Item-lock attacks (4 printings): Chingling, Cryogonal, Exploud, Vikavolt
+Fossils (14 printings): Armor Fossil, Claw Fossil, Cover Fossil, Dome Fossil, Helix Fossil, Jaw Fossil, Old Amber, Plume Fossil, Root Fossil, Sail Fossil, Skull Fossil
+Guts (2 printings): Conkeldurr, Ursaluna
+Perish Body (1 printings): Galarian Cursola
+P2 return-damage attacks (8 printings): Alolan Sandslash, Chesnaught, Mega Sableye ex, Togedemaru, Turtonator
+P2 Psychic copy attacks (14 printings): Clefairy, Mew, Mew ex, Mimikyu
+Colorless copy attacks (Ditto; no card is weak to Colorless) (5 printings): Ditto
+
+== which lists hold the cards each mechanic reads (every list, the pairing files' included)
+
+coin round 2: Wild Swing [later coin round (Oct 1); the attacker ['A4 045', 'A4 215'] v a coin Ability]: 6 lists
+  decks/computer/blastoise-wailord-deluxe.txt (supplies what it acts on)
+  decks/screen/panel_ladder_2026-09-26/l-sharpedo.txt (can use it against some list)
+  rl/results/engine_switch_rules_2026-10/carriers/alternates/hisuian_goodra.txt (supplies what it acts on)
+  rl/results/engine_switch_rules_2026-10/carriers/alternates/togekiss_meowth.txt (supplies what it acts on)
+  rl/results/engine_switch_rules_2026-10/carriers/garchomp_meowth.txt (supplies what it acts on)
+  rl/results/engine_switch_rules_2026-10/scratch_8b/meowth_carefree.txt (supplies what it acts on)
+
+coin round 2: Wellspring Dance [later coin round (Oct 1); the attacker ['B2 048'] v a coin Ability]: 0 lists
+
+coin round 2: Tornado Shot [later coin round (Oct 1); the attacker ['B3 051'] v a coin Ability]: 0 lists
+
+coin round 2: Double Splash [later coin round (Oct 1); the attacker ['B1a 019'] v a coin Ability]: 0 lists
+
+coin round 2: Triple Bombardment [later coin round (Oct 1); the attacker ['B1a 020', 'B1a 078', 'B1a 084'] v a coin Ability]: 5 lists
+  decks/computer/blastoise-wailord-deluxe.txt (can use it against some list; supplies what it acts on)
+  rl/results/engine_switch_rules_2026-10/carriers/alternates/hisuian_goodra.txt (supplies what it acts on)
+  rl/results/engine_switch_rules_2026-10/carriers/alternates/togekiss_meowth.txt (supplies what it acts on)
+  rl/results/engine_switch_rules_2026-10/carriers/garchomp_meowth.txt (supplies what it acts on)
+  rl/results/engine_switch_rules_2026-10/scratch_8b/meowth_carefree.txt (supplies what it acts on)
+
+coin round 2: second punch [later coin round (Oct 1); the attacker ['B2 127', 'B2 189', 'B2 202', 'B4 231'] v a coin Ability]: 0 lists
+
+coin round 2: Mischievous Ring [later coin round (Oct 1); the attacker ['B4 077'] v a coin Ability]: 0 lists
+
+coin round 2: Litter [later coin round (Oct 1); the attacker ['A4a 018'] v a coin Ability]: 0 lists
+
+Will with a Confused attacker (and Victory Star) [card text, item 1; Will, a coin attack, and a Confusion source (the opponent's, or the list's own self-Confusion)]: 13 lists
+  decks/brews/brew-01-arceus-crobat-xatu.txt (can use it against some list)
+  decks/brews/brew-04-xatu-slowking.txt (can use it against some list; supplies what it acts on)
+  decks/brews/brew-05-meowstic-hatterene-confusion.txt (supplies what it acts on)
+  decks/brews/brew-05b-meowstic-hatterene-comfey.txt (supplies what it acts on)
+  decks/brews/drafts_2026-10-01/draft-C-meowstic-hatterene-v2.txt (supplies what it acts on)
+  decks/dustin/10-xatu-oricorio-tr-weezing.txt (can use it against some list; supplies what it acts on)
+  decks/gauntlet_2026-09-26/v-weezing_2.txt (supplies what it acts on)
+  decks/gauntlet_2026-09-26/v-weezing_swap1.txt (supplies what it acts on)
+  decks/gauntlet_2026-09-26/v-weezing_swap2.txt (supplies what it acts on)
+  decks/research/weezing.txt (supplies what it acts on)
+  decks/screen/opponents/t-weezing.txt (supplies what it acts on)
+  rl/results/engine_switch_rules_2026-10/scratch_8b/meowth_carefree.txt (supplies what it acts on)
+  rl/results/engine_switch_rules_2026-10/scratch_8b/psychic_confuse.txt (supplies what it acts on)
+
+Victory Star with a block coin [card text, A1; Victini and a [R] coin attacker v a block-coin attack]: 0 lists
+
+Will with a block coin [card text, A2; Will v a block-coin attack]: 0 lists
+
+coin Abilities on your own Pokemon [card text, A4; an own-side damage attack and a coin Ability in the same list]: 0 lists
+
+the opponent's Active in an own-Bench choice [card text, A4; an own-Bench choice attack (Raging Thunder, Flash Impact) v a coin Ability]: 0 lists
+
+a copied discard attack [card text, A5; Ditto (Copy Anything v Chase Order or Wild Swing; Copy a Friend with its own Wild Swing) v a coin Ability]: 0 lists
+
+Trap Territory, two Ariados [card text, item 4; two or more Ariados in the list]: 2 lists
+  decks/dustin/12-ariados-whimsicott-ogerpon.txt (uses it)
+  rl/results/b2e_card_check_2026-09-26/decks/h-whimsicott.txt (uses it)
+
+Luxury Coin on the opponent's Stadium [follow-up; Gholdengo v Mesagoza or Arcade]: 0 lists
+
+a Fossil under an Item lock [follow-up; a Fossil v an Item-lock attack]: 0 lists
+
+Guts on your own Pokemon (E1) [follow-up; a Guts Pokemon and an own-side damage attack in the same list]: 0 lists
+
+Perish Body on a plain queued hit (E2) [follow-up; any list v Galarian Cursola (the attacker side is not narrowed)]: 0 lists
+
+P2: return damage from an attack takes Weakness [P2 (Oct 8); a return-damage attack (or a Psychic copier v a list holding one) v a Pokémon weak to its user's type]: 20 lists
+  decks/brews/brew-01-arceus-crobat-xatu.txt (supplies what it acts on)
+  decks/brews/brew-04-xatu-slowking.txt (supplies what it acts on)
+  decks/brews/brew-05-meowstic-hatterene-confusion.txt (supplies what it acts on)
+  decks/brews/brew-05b-meowstic-hatterene-comfey.txt (supplies what it acts on)
+  decks/brews/brew-06-pyukumuku-silvally-payback.txt (supplies what it acts on)
+  decks/brews/brew-07-hoopa-darkrai-sableye.txt (can use it against some list)
+  decks/brews/brew-09-sableye-obstagoon.txt (can use it against some list)
+  decks/brews/brew-10-diancie-giratina.txt (supplies what it acts on)
+  decks/brews/drafts_2026-10-01/draft-C-meowstic-hatterene-v2.txt (supplies what it acts on)
+  decks/dustin/03-wailord-indeedee-wall.txt (supplies what it acts on)
+  decks/dustin/05-indeedee-stoutland.txt (supplies what it acts on)
+  decks/dustin/07-skarmory-stall.txt (supplies what it acts on)
+  decks/dustin/10-xatu-oricorio-tr-weezing.txt (supplies what it acts on)
+  decks/dustin/14-comfey-raticate-hypno.txt (supplies what it acts on)
+  decks/gauntlet_2026-09-26/g-mega_altaria_greninja.txt (supplies what it acts on)
+  decks/research/altaria.txt (supplies what it acts on)
+  decks/screen/opponents/t-altaria.txt (supplies what it acts on)
+  decks/variants-2026-09-23/altaria_jlng_pmpt44_2026-08-29.txt (supplies what it acts on)
+  decks/variants-2026-09-23/altaria_lanora_blockdragon_2026-09-10.txt (supplies what it acts on)
+  rl/results/engine_switch_rules_2026-10/scratch_8b/psychic_confuse.txt (supplies what it acts on)
+
+== the pairings EXPECTED to change
+
+table, 28 cells: 0 of 28
+
+new-17 cells: 0 of 17
+
+B2e, 96: 16 of 96
+  h-whimsicott v t-lucario: Trap Territory, two Ariados (first list)
+  h-whimsicott v t-altaria: Trap Territory, two Ariados (first list)
+  h-whimsicott v t-sceptile: Trap Territory, two Ariados (first list)
+  h-whimsicott v t-vespiquen: Trap Territory, two Ariados (first list)
+  h-whimsicott v t-suicune: Trap Territory, two Ariados (first list)
+  h-whimsicott v t-hydreigon: Trap Territory, two Ariados (first list)
+  h-whimsicott v t-weezing: Trap Territory, two Ariados (first list)
+  h-whimsicott v t-blaziken: Trap Territory, two Ariados (first list)
+  12-ariados-whimsicott-ogerpon v t-lucario: Trap Territory, two Ariados (first list)
+  12-ariados-whimsicott-ogerpon v t-altaria: Trap Territory, two Ariados (first list)
+  12-ariados-whimsicott-ogerpon v t-sceptile: Trap Territory, two Ariados (first list)
+  12-ariados-whimsicott-ogerpon v t-vespiquen: Trap Territory, two Ariados (first list)
+  12-ariados-whimsicott-ogerpon v t-suicune: Trap Territory, two Ariados (first list)
+  12-ariados-whimsicott-ogerpon v t-hydreigon: Trap Territory, two Ariados (first list)
+  12-ariados-whimsicott-ogerpon v t-weezing: Trap Territory, two Ariados (first list)
+  12-ariados-whimsicott-ogerpon v t-blaziken: Trap Territory, two Ariados (first list)
+
+carriers, steps 8 and 8b (pairs_8.tsv, 36): 1 of 36
+  l-sharpedo v meowth_carefree: coin round 2: Wild Swing (first list)
+
+Dustin's decks v the panel, step 7c (pairs_7c.tsv): 0 of 32
+
+screen and floor (each list v the 8 panel lists; * = floor pages on record):
+  decks/brews/brew-01-arceus-crobat-xatu.txt: 1 of 8: v t-weezing: Will with a Confused attacker (and Victory Star) (first list)
+  decks/brews/brew-04-xatu-slowking.txt: 1 of 8: v t-weezing: Will with a Confused attacker (and Victory Star) (first list)
+  decks/brews/brew-07-hoopa-darkrai-sableye.txt*: 1 of 8: v t-altaria: P2: return damage from an attack takes Weakness (first list)
+  decks/brews/brew-09-sableye-obstagoon.txt*: 1 of 8: v t-altaria: P2: return damage from an attack takes Weakness (first list)
+  decks/dustin/10-xatu-oricorio-tr-weezing.txt*: 1 of 8: v t-weezing: Will with a Confused attacker (and Victory Star) (first list)
+  decks/dustin/12-ariados-whimsicott-ogerpon.txt*: 8 of 8: v t-altaria: Trap Territory, two Ariados (first list); v t-blaziken: Trap Territory, two Ariados (first list); v t-hydreigon: Trap Territory, two Ariados (first list); v t-lucario: Trap Territory, two Ariados (first list); v t-sceptile: Trap Territory, two Ariados (first list); v t-suicune: Trap Territory, two Ariados (first list); v t-vespiquen: Trap Territory, two Ariados (first list); v t-weezing: Trap Territory, two Ariados (first list)
+  screen pairings expected to change: 13 (over 62 lists x 8)
+
+total named pairings expected to change (table, new-17, B2e, carriers, 7c): 17
+
+== P2: every list in this inventory (decks/ and the pairing files' lists) holding a return-damage attack or a copy attack,
+either side, and the files in the checkout that name it: floor pages by folder; files that hold the list's file name; and
+files that name it only by a label ("brew 07", "07 Hoopa ex / ..."), by folder and file count
+
+decks/brews/brew-07-hoopa-darkrai-sableye.txt: 1x Mega Sableye ex B3b 041
+  floor pages (brew-07-hoopa-darkrai-sableye_games.jsonl and its page): floor_brews_2026-09-28, floor_dustin_2026-09-30
+  42 files hold the file name:
+    decks/consistency_2026-09-25: 3
+    decks/screen/panel_ladder_2026-09-26: 2
+    rl/results/b2e_card_check_2026-09-26: 2
+    rl/results/brew_pilot_check_2026-09-25: 2
+    rl/results/coin_prevention_repair_2026-09-30: 1
+    rl/results/engine_switch_rules2_2026-10: 2
+    rl/results/floor_brews_2026-09-28: 4
+    rl/results/floor_dustin_2026-09-30: 4
+    rl/results/kt_carrier_census_2026-09-26: 8
+    rl/results/opening_active_census_2026-09-26: 4
+    rl/results/trainer_audit_2026-09-25: 4
+    rl/results/trainer_audit_2026-09-25/blower_stadium: 2
+    rl/results/xspeed_census_2026-09-27: 4
+  26 more files name it only by a label (case-insensitive /brew[ _-]?0?7\b|\b0?7\b.{0,24}\bhoopa/; a few may be other uses of the number):
+    decks/brews/drafts_2026-10-01: 1
+    decks/screen: 1
+    decks/screen/panel_ladder_2026-09-26: 1
+    docs: 1
+    rl/engine-2026-09-25: 1
+    rl/results/b4b_prep_2026-09-26: 1
+    rl/results/coin_prevention_repair_2026-09-30: 1
+    rl/results/error_attribution_2026-09-29: 1
+    rl/results/fable_reviews_2026-09-26: 1
+    rl/results/floor_brews_2026-09-28: 1
+    rl/results/floor_dustin_2026-09-30: 1
+    rl/results/km_build_2026-09-30: 1
+    rl/results/km_tables_2026-09-30: 1
+    rl/results/koh_2026-09-28/laptop_reading: 1
+    rl/results/kt_carrier_census_2026-09-26: 3
+    rl/results/limitless_skill_model_2026-09-25: 2
+    rl/results/opening_active_census_2026-09-26: 3
+    rl/results/overnight_2026-09-28: 1
+    rl/results/postfreeze_2026-09-27: 1
+    rl/results/strength_2026-10-05_kx3_exam: 1
+    rl/results/trainer_audit_2026-09-25: 1
+
+decks/brews/brew-09-sableye-obstagoon.txt: 2x Mega Sableye ex B3b 041
+  floor pages (brew-09-sableye-obstagoon_games.jsonl and its page): floor_brews_2026-09-28, floor_dustin_2026-09-30
+  32 files hold the file name:
+    decks/consistency_2026-09-25: 3
+    decks/screen/panel_ladder_2026-09-26: 3
+    rl/results/brew_pilot_check_2026-09-25: 1
+    rl/results/engine_switch_rules2_2026-10: 2
+    rl/results/floor_brews_2026-09-28: 4
+    rl/results/floor_dustin_2026-09-30: 4
+    rl/results/kt_carrier_census_2026-09-26: 4
+    rl/results/opening_active_census_2026-09-26: 4
+    rl/results/pause_games_decisions_2026-10-02/reconstructed_decks: 1
+    rl/results/trainer_audit_2026-09-25: 4
+    rl/results/trainer_audit_2026-09-25/blower_stadium: 2
+  15 more files name it only by a label (case-insensitive /brew[ _-]?0?9\b|\b0?9\b.{0,24}\bsableye/; a few may be other uses of the number):
+    decks/screen: 1
+    decks/screen/panel_ladder_2026-09-26: 3
+    engine/tests/video_evidence: 1
+    rl: 1
+    rl/results/floor_brews_2026-09-28: 1
+    rl/results/floor_dustin_2026-09-30: 1
+    rl/results/kt_carrier_census_2026-09-26: 3
+    rl/results/limitless_skill_model_2026-09-25: 2
+    rl/results/opening_active_census_2026-09-26: 1
+    rl/results/trainer_audit_2026-09-25: 1
+
+the rest of the checkout: 58 more 20-card lists (tracked .txt files outside this inventory); 0 hold a return-damage attack or a copy attack.

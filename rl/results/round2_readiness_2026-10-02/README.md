@@ -2,7 +2,7 @@
 
 Three short jobs to make the round-2 package (everything `claude/coin-prevention-round2` adds to the official engine: the
 later coin round, the card-text job and its follow-up) ready for the next rules switch. There were no table games and no
-`players/` change.
+`players/` change. P2 (Oct 8, return damage left by an attack takes Weakness) adds to sections 1 and 2.
 
 ## 1. Which lists and pairings the package can change
 
@@ -47,6 +47,22 @@ So the switch costs 17 named pairings: 16 B2e and 1 carrier. The table and score
 The amended draft D (one Mega Houndoom ex) doesn't change this. D holds no Will. Its Victini changes only against a block-coin
 attacker, and no list holds one. Draft D's Victini against a Confused attacker is the official engine's Victory Star repair,
 not the round-2 package.
+
+**P2 (Oct 8): return damage left by an attack takes Weakness** (`../coin_prevention_round2_2026-10-01/README.md`, "P2").
+`inventory.py` now also builds the five attacks' eight printings (asserted from the card text) and the copy attacks that can use
+one, adds the mechanic, and names every file that names a list holding them. It was rerun on main b77652d6:
+`inventory_output_p2.txt`. `inventory_output.txt` stays as this section's Oct 2 page.
+- **Lists:** brew-07 (1 Mega Sableye ex) and brew-09 (2) are the only lists that hold one of the five attacks. No list holds a
+  copy attack, and the other 58 twenty-card lists in the checkout hold none of either.
+- **Pairings expected to change through P2:**
+  - table 0, new-17 0, B2e 0, carriers 0, 7c 0;
+  - screen and floor: brew-07 v `t-altaria` and brew-09 v `t-altaria`. Espeon is the only Darkness-weak Pokémon on the 8 panel
+    lists. Both lists have floor pages on record (`floor_brews_2026-09-28`, `floor_dustin_2026-09-30`).
+- **The package's totals on main b77652d6:** 17 named pairings (unchanged). 13 screen pairings over 6 lists: the 11 above plus
+  P2's 2.
+- **The files that name the two lists** are listed on the page, by file name and by label: the X Speed census, the screen pages
+  under `decks/screen/`, the goldfish pages and more.
+- The page's first line names the checkout it read. `--root` and `--out` choose the checkout and the page.
 
 ## 2. Counters for every repaired mechanic
 
@@ -103,6 +119,59 @@ later round's scratch deck v its Meowth deck. km3 played both sides, 20 games a 
 - **Silent here:** the Will lists never attacked while Confused in these 40 games, so their counters read 0 (the inventory's
   "can act" is not "will act"). No list has a block coin, own-side coin, Guts, Perish Body, Gholdengo or a Fossil, so those
   counters are proven on the probe's boards only.
+
+**P2 (Oct 8): two more counters** (the docstring in `instrument_scan.py` has the details).
+
+| Mechanic | Exact counter (fires when the repaired path runs) | Off the gate (the rewritten lines ran and gave the old answer) |
+|---|---|---|
+| P2: return damage left by an attack takes Weakness | `attack_return_weakness`: the chosen move runs the hit back on a damaged opposing Active that carries an attack's return damage, and its forecast leaves a different board with the attacker's printed Weakness taken away | `offgate_return_by_source` {sources: ticks}: every other such tick on a defender with a return-damage source ("attack", "Rocky Helmet", "Ability", or a combination joined with "+") |
+
+- **The method is the same,** with the attacker's printed Weakness taken away instead of an Ability.
+- **The moves that run the hit back:**
+  - Attack, ApplyDamage from an attack into the opposing Active, and ApplyQueuedAttackDamage;
+  - Victory Star's Keep and Reroll;
+  - the held-back ResolveAttackRetaliation.
+- **Only forecast branches where the hit back has landed count.** A hit back the move holds behind a choice (Psy Turbo's Attach,
+  U-turn's switch) is counted at its ResolveAttackRetaliation tick. A held-back frame an earlier move left doesn't hide one: an
+  attack that does its damage through a choice leaves an empty frame under it.
+- **A defender with no return-damage source isn't counted,** so the 49 checks above keep their sets.
+- **An independent review caught a gap in the first draft.** It missed a hit back landing at an ApplyDamage tick while that empty
+  frame from the same attack was still on the stack (Azelf's Psychic Arrow). It was fixed before the commit, and the probe has
+  that board.
+
+**The probe** gains 29 checks, 78 in all:
+- each of the five attacks against a weak attacker (exact) and against Snorlax (off the gate, [attack]);
+- a Knock Out only through Weakness (exact) and one either way (off the gate);
+- Rocky Helmet, Iron Jugulis and Druddigon (off the gate);
+- the Helmet with Cursed Jewel (exact; [attack+Rocky Helmet] against Snorlax);
+- no source (nothing);
+- Psy Turbo and U-turn: nothing at the Attack tick and at the Attach or switch tick; at the ResolveAttackRetaliation tick, exact,
+  or off the gate for U-turn's Benched attacker;
+- ApplyDamage from an attack (exact);
+- Azelf's Psychic Arrow: exact at the ApplyDamage tick, nothing at the empty frame left under the choice;
+- Heat Rotom with Victini at the Keep tick (exact).
+
+**The probe's result:**
+- On P2: **78 checks, 0 failures** (`counter_probe_readiness_output.txt`).
+- On the engine before P2, the same 78 boards give 11 failures, exactly the 11 exact rows, each read off the gate
+  (`counter_probe_readiness_output_at_P.txt`). So the counter sees the change and isn't true by construction.
+
+Both watch scripts still apply alone and in either order (the same sorted lines), and the scan instrumented with both compiles on
+P2.
+
+**P2's smoke** (`counter_smoke_p2/`: `run_smoke_p2.sh`, `pairs.tsv`, `compare.py`, `compare_output.txt`, `run_output.txt` with
+the three scans' sha256s; `trace_patch.py`, `trace_P.txt`, `trace_P2.txt`, `first_difference.py`, `first_difference_output.txt`).
+km3 played both sides of 50 deals of brew-07 and brew-09 v `t-altaria`, brew-09 v `t-sceptile` and brew-07 v `t-blaziken`. Each
+deal was played on the engine before P2, on P2, and on P2 with both watch scripts, seeds 20,960,000,000 + pairing × 10,000 + i
+(Claude Code's diagnostic block). No table game was played.
+- **The counters change no play:** the same moves in 200 of 200 games.
+- **P2 changed 3 games, all v `t-altaria` and all in look-ahead.** `first_difference.py` reads the traces of the three deals on
+  both engines. Each first differs at a choice made from the same board, before any hit back had taken Weakness. In deal 1:21 a
+  flat one had already landed, on an Eevee.
+  - In deals 0:31 and 1:8 the armed Mega Sableye ex faced an Active Espeon.
+  - In 1:21 it faced Mega Altaria ex, and the choice was whether to retreat into the Benched Espeon.
+- **The exact counter fired in 7 games v `t-altaria`.** The off-gate counter fired in every pairing: [attack] where the hit back
+  stayed flat, and [Rocky Helmet] v `t-blaziken`.
 
 ## 3. coin_probe v2 and the classifier, checked on the Oct 1 hand-off
 

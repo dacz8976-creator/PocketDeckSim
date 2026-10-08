@@ -47,33 +47,33 @@ ok   UseStadium on player 0's own Arcade: {}
 ok   the Luxury Coin choice on player 0's own Arcade: {"offgate_luxury_coin_offered"}
 ok   player 0's main phase with a Fossil in hand, under an Item lock: {"fossil_item_lock"}
 ok   player 0's main phase with a Fossil in hand, no lock: {"offgate_fossil_offered"}
-ok   Spooky Shot into an armed B3b041MegaSableyeEx, weak to it: {"attack_return_weakness"}
+FAIL Spooky Shot into an armed B3b041MegaSableyeEx, weak to it: {"offgate_return_by_source[attack]"} (wanted {"attack_return_weakness"})
 ok   Rollout into an armed B3b041MegaSableyeEx: {"offgate_return_by_source[attack]"}
-ok   Magma Punch into an armed A3039AlolanSandslash, weak to it: {"attack_return_weakness"}
+FAIL Magma Punch into an armed A3039AlolanSandslash, weak to it: {"offgate_return_by_source[attack]"} (wanted {"attack_return_weakness"})
 ok   Rollout into an armed A3039AlolanSandslash: {"offgate_return_by_source[attack]"}
-ok   Corkscrew Punch into an armed A3b048Togedemaru, weak to it: {"attack_return_weakness"}
+FAIL Corkscrew Punch into an armed A3b048Togedemaru, weak to it: {"offgate_return_by_source[attack]"} (wanted {"attack_return_weakness"})
 ok   Rollout into an armed A3b048Togedemaru: {"offgate_return_by_source[attack]"}
-ok   Mega Kick into an armed B2010Chesnaught, weak to it: {"attack_return_weakness"}
+FAIL Mega Kick into an armed B2010Chesnaught, weak to it: {"offgate_return_by_source[attack]"} (wanted {"attack_return_weakness"})
 ok   Rollout into an armed B2010Chesnaught: {"offgate_return_by_source[attack]"}
-ok   Vine Whip into an armed B1047Turtonator, weak to it: {"attack_return_weakness"}
+FAIL Vine Whip into an armed B1047Turtonator, weak to it: {"offgate_return_by_source[attack]"} (wanted {"attack_return_weakness"})
 ok   Rollout into an armed B1047Turtonator: {"offgate_return_by_source[attack]"}
-ok   Spooky Shot into an armed Mega Sableye ex, Houndstone at 50 HP: {"attack_return_weakness"}
+FAIL Spooky Shot into an armed Mega Sableye ex, Houndstone at 50 HP: {"offgate_return_by_source[attack]"} (wanted {"attack_return_weakness"})
 ok   Spooky Shot into an armed Mega Sableye ex, Houndstone at 30 HP: {"offgate_return_by_source[attack]"}
 ok   Corkscrew Punch into a Torchic with Rocky Helmet: {"offgate_return_by_source[Rocky Helmet]"}
 ok   Psychic Sphere into Iron Jugulis: {"offgate_return_by_source[Ability]"}
 ok   Rollout into Druddigon: {"offgate_return_by_source[Ability]"}
-ok   Spooky Shot into an armed Mega Sableye ex with Rocky Helmet: {"attack_return_weakness"}
+FAIL Spooky Shot into an armed Mega Sableye ex with Rocky Helmet: {"offgate_return_by_source[attack+Rocky Helmet]"} (wanted {"attack_return_weakness"})
 ok   Rollout into an armed Mega Sableye ex with Rocky Helmet: {"offgate_return_by_source[attack+Rocky Helmet]"}
 ok   Rollout into Bulbasaur (no return damage): {}
 ok   Psy Turbo into an armed Mega Sableye ex, the Attack tick: {}
 ok   Psy Turbo into an armed Mega Sableye ex, the Attach tick: {}
-ok   Psy Turbo into an armed Mega Sableye ex, the ResolveAttackRetaliation tick: {"attack_return_weakness"}
-ok   ApplyDamage from Houndstone's Active into an armed Mega Sableye ex: {"attack_return_weakness", "offgate_plain_attack_damage"}
+FAIL Psy Turbo into an armed Mega Sableye ex, the ResolveAttackRetaliation tick: {"offgate_return_by_source[attack]"} (wanted {"attack_return_weakness"})
+FAIL ApplyDamage from Houndstone's Active into an armed Mega Sableye ex: {"offgate_plain_attack_damage", "offgate_return_by_source[attack]"} (wanted {"attack_return_weakness", "offgate_plain_attack_damage"})
 ok   U-turn into an armed Turtonator, the Attack tick: {}
 ok   U-turn into an armed Turtonator, the switch tick: {}
 ok   U-turn into an armed Turtonator, the ResolveAttackRetaliation tick (Scyther Benched): {"offgate_return_by_source[attack]"}
 ok   Psychic Arrow into an armed Mega Sableye ex, the Attack tick: {}
-ok   Psychic Arrow into an armed Mega Sableye ex, the ApplyDamage tick: {"attack_return_weakness", "offgate_by_attack[Psychic Arrow]", "offgate_plain_attack_damage"}
+FAIL Psychic Arrow into an armed Mega Sableye ex, the ApplyDamage tick: {"offgate_by_attack[Psychic Arrow]", "offgate_plain_attack_damage", "offgate_return_by_source[attack]"} (wanted {"attack_return_weakness", "offgate_by_attack[Psychic Arrow]", "offgate_plain_attack_damage"})
 ok   Psychic Arrow, the empty frame left under the choice: {}
-ok   Heat Breath into an armed Alolan Sandslash, the Victory Star Keep tick: {"attack_return_weakness"}
-78 checks, 0 failures
+FAIL Heat Breath into an armed Alolan Sandslash, the Victory Star Keep tick: {"offgate_return_by_source[attack]"} (wanted {"attack_return_weakness"})
+78 checks, 11 failures

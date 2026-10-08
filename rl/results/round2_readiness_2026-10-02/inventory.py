@@ -16,14 +16,25 @@ the rules switch's steps 8 and 8b. The pairings:
             (decks/screen/floor.py) plays the same 8 pairings per list, so one answer covers both; the lists with floor pages
             on record are marked;
   carriers  rl/results/engine_switch_rules_2026-10/pairs_8.tsv (36: step 8's 32 and 8b's 4) and pairs_7c.tsv.
-Usage: python3 inventory.py   (from anywhere in the repository; writes inventory_output.txt here)"""
-import json, re, subprocess
+P2 (Oct 8) adds return damage left by an attack taking Weakness (the five attacks' eight printings, and the copy attacks that can
+use one), a section naming every list in this inventory that holds them, on either side, with the files that name it, and a scan
+of every other 20-card list in the checkout for them.
+Usage: python3 inventory.py [--root CHECKOUT] [--out FILE]   (the lists are read from CHECKOUT, by default this repository; the
+page goes to FILE, by default inventory_output_p2.txt here. P2's run: --root <a worktree of origin/main>.) inventory_output.txt is
+job 1's page (Oct 2, main 7c1b62f), written by this script as of 69471480 (`git show 69471480:<this file>` reruns it); the
+script now folds P2 into the mechanics and tallies, so it no longer reproduces that page."""
+import argparse, json, re, subprocess
 from collections import Counter, defaultdict
 from itertools import combinations
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
-ROOT = Path(subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True, text=True, cwd=HERE).stdout.strip())
+ARGS = argparse.ArgumentParser()
+ARGS.add_argument("--root", default=None)
+ARGS.add_argument("--out", default=str(HERE / "inventory_output_p2.txt"))
+ARGS = ARGS.parse_args()
+ROOT = Path(ARGS.root).resolve() if ARGS.root else Path(
+    subprocess.run(["git", "rev-parse", "--show-toplevel"], capture_output=True, text=True, cwd=HERE).stdout.strip())
 DB = [next(iter(e.items())) for e in json.load(open(ROOT / "engine" / "database.json", encoding="utf-8"))]
 RS = ROOT / "rl/results/engine_switch_rules_2026-10"
 
@@ -76,10 +87,31 @@ FOSSIL = {d["id"] for kind, d in DB if kind != "Pokemon" and d.get("trainer_card
 ITEM_LOCK = ids_where(lambda k, d, l, t, a: a and "can't play any Item cards" in t)
 GUTS = ids_where(lambda k, d, l, t, a: l.startswith("Ability") and "would be Knocked Out by damage from an attack, flip a coin" in t)
 PERISH = ids_where(lambda k, d, l, t, a: l.startswith("Ability") and "the Attacking Pokémon is Knocked Out" in t)
+# P2: the five attacks that leave return damage, and the copy attacks that can use one (the copier then holds it, as its type).
+RETURN = ids_where(lambda k, d, l, t, a: a and re.fullmatch(
+    r"During your opponent's next turn, if this Pokémon is damaged by an attack, do \d+ damage to the Attacking Pokémon\.", t))
+assert RETURN == {"B3b 041", "B3b 081", "B3b 088", "A3 039", "A3b 048", "P-A 090", "B2 010", "B1 047"}, sorted(RETURN)
+TYPE = {d["id"]: d.get("energy_type") for kind, d in DB if kind == "Pokemon"}
+WEAK = {d["id"]: d.get("weakness") for kind, d in DB if kind == "Pokemon"}
+COPY = ids_where(lambda k, d, l, t, a: a and re.search(r"use (it|the chosen attack) as this attack", t))
+PSY_COPY = {i for i in COPY if TYPE[i] == "Psychic"}
+assert all(TYPE[i] in ("Psychic", "Colorless") for i in COPY), sorted((i, TYPE[i]) for i in COPY)
 
 
 def has(deck, ids, n=1):
     return sum(c for i, c in deck.items() if i in ids) >= n
+
+
+def weak_to(deck, types):
+    """The list holds a Pokémon whose printed Weakness is one of `types`."""
+    return any(WEAK.get(i) in types for i in deck)
+
+
+def p2_trigger(u, o):
+    """The user list's return-damage attack, or a Psychic copier using the other list's, against a Pokémon weak to its user.
+    No card is weak to Colorless, so Ditto's copies never take Weakness."""
+    own = {TYPE[i] for i in u if i in RETURN}
+    return (bool(own) and weak_to(o, own)) or (has(u, PSY_COPY) and has(o, RETURN) and weak_to(o, {"Psychic"}))
 
 
 # Each mechanic: (name, where it was repaired, trigger(user, other) -> bool, the cards it reads). A one-sided trigger (the user's
@@ -109,6 +141,8 @@ MECHANICS = [(f"coin round 2: {site}", "later coin round (Oct 1)",
      "a Guts Pokemon and an own-side damage attack in the same list"),
     ("Perish Body on a plain queued hit (E2)", "follow-up", lambda u, o: has(o, PERISH),
      "any list v Galarian Cursola (the attacker side is not narrowed)"),
+    ("P2: return damage from an attack takes Weakness", "P2 (Oct 8)", p2_trigger,
+     "a return-damage attack (or a Psychic copier v a list holding one) v a Pokémon weak to its user's type"),
 ]
 
 
@@ -157,12 +191,22 @@ def why(a, b):
 L = []
 say = L.append
 n_txt = len([f for f in subprocess.run(["git", "ls-files", "decks"], capture_output=True, text=True, cwd=ROOT).stdout.split() if f.endswith(".txt")])
+def git(*a):
+    return subprocess.run(["git", *a], capture_output=True, text=True, cwd=ROOT).stdout.strip()
+
+
+sha, main_sha, branch = git("rev-parse", "HEAD"), git("rev-parse", "origin/main"), git("rev-parse", "--abbrev-ref", "HEAD")
+where = (f"origin/main {sha[:8]}" if sha == main_sha else
+         f"checkout {sha[:8]} ({'detached' if branch == 'HEAD' else 'branch ' + branch}), not origin/main ({main_sha[:8]})")
+say(f"{where}: the lists below are read from this checkout.")
 say(f"main: {len(lists)} deck lists under decks/ (of its {n_txt} .txt files; the rest are coverage and check pages), and "
     f"{len(extra)} lists outside it named by the pairing files.")
 say("\n== the card sets, from the card text")
 for label, ids in (("coin Abilities", COIN), ("block-coin attacks", BLOCK), ("Confusion of the opponent's Active", CONFUSE_OPP),
                    ("self-Confusion", CONFUSE_SELF), ("own-side damage attacks", OWN_SIDE), ("own-Bench choice attacks", OWN_CHOICE),
-                   ("Item-lock attacks", ITEM_LOCK), ("Fossils", FOSSIL), ("Guts", GUTS), ("Perish Body", PERISH)):
+                   ("Item-lock attacks", ITEM_LOCK), ("Fossils", FOSSIL), ("Guts", GUTS), ("Perish Body", PERISH),
+                   ("P2 return-damage attacks", RETURN), ("P2 Psychic copy attacks", PSY_COPY),
+                   ("Colorless copy attacks (Ditto; no card is weak to Colorless)", COPY - PSY_COPY)):
     names = sorted({name_of(i) for i in ids})
     say(f"{label} ({len(ids)} printings): {', '.join(names)}")
 
@@ -203,5 +247,44 @@ for p in sorted(lists):
         say(f"  {p}{star}: {len(hit)} of 8: " + "; ".join(f"v {o}: {', '.join(w)}" for o, w in hit))
 say(f"  screen pairings expected to change: {n_screen} (over {len([p for p in lists if p not in PANEL])} lists x 8)")
 say(f"\ntotal named pairings expected to change (table, new-17, B2e, carriers, 7c): {total}")
-(HERE / "inventory_output.txt").write_text("\n".join(L) + "\n", encoding="utf-8")
+
+say("\n== P2: every list in this inventory (decks/ and the pairing files' lists) holding a return-damage attack or a copy attack,")
+say("either side, and the files in the checkout that name it: floor pages by folder; files that hold the list's file name; and")
+say("files that name it only by a label (\"brew 07\", \"07 Hoopa ex / ...\"), by folder and file count")
+
+
+def by_folder(files):
+    return Counter(str(Path(f).parent) for f in files)
+
+
+for p, deck in sorted(decks.items()):
+    held = sorted(i for i in deck if i in RETURN | COPY)
+    if not held:
+        continue
+    stem = Path(p).stem
+    say(f"\n{p}: " + ", ".join(f"{deck[i]}x {name_of(i)} {i}" for i in held))
+    floors = sorted(d.name for d in (ROOT / "rl/results").glob("floor*") if (d / f"{stem}_games.jsonl").exists())
+    say(f"  floor pages ({stem}_games.jsonl and its page): {', '.join(floors) if floors else 'none'}")
+    by_name = set(git("grep", "-l", "-F", "-e", stem, "--", ".", f":!{p}").split())
+    say(f"  {len(by_name)} files hold the file name:")
+    for folder, n in sorted(by_folder(by_name).items()):
+        say(f"    {folder}: {n}")
+    m = re.match(r"brew-(\d+)-([a-z]+)", stem)
+    if m:
+        n, word = int(m[1]), m[2]
+        label = rf"brew[ _-]?0?{n}\b|\b0?{n}\b.{{0,24}}\b{word}"
+        by_label = set(git("grep", "-l", "-i", "-E", "-e", label, "--", ".", f":!{p}").split()) - by_name
+        say(f"  {len(by_label)} more files name it only by a label (case-insensitive /{label}/; a few may be other uses of the number):")
+        for folder, k in sorted(by_folder(by_label).items()):
+            say(f"    {folder}: {k}")
+
+# Every other 20-card list in the checkout (rl/results' deck lists, engine/example_decks and the like), read the same way.
+others = [f for f in git("ls-files", "*.txt").split() if f not in decks and sum(read_list(f).values()) == 20]
+holders = [(f, sorted(i for i in read_list(f) if i in RETURN | COPY)) for f in others]
+holders = [(f, ids) for f, ids in holders if ids]
+say(f"\nthe rest of the checkout: {len(others)} more 20-card lists (tracked .txt files outside this inventory); "
+    f"{len(holders)} hold a return-damage attack or a copy attack" + (":" if holders else "."))
+for f, ids in holders:
+    say(f"  {f}: {', '.join(ids)}")
+Path(ARGS.out).write_text("\n".join(L) + "\n", encoding="utf-8")
 print("\n".join(L))
