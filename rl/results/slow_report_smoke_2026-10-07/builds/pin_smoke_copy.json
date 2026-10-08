@@ -1,0 +1,41 @@
+{
+ "_note": "The pin of the opt-in slow report (rl/results/kx3_slow_report_plan_2026-10-06/PLAN.md): the one frozen kx3 build a report may use. slow_report.py refuses any program whose sha256 is not the one below, before it writes a file. A later frozen version (for example kx3 with the Tool tie-break) replaces this one only by a new pin: a reviewed edit of this file, after its own gate. The self-check texts are what the frozen build printed when it was registered (rl/results/strength_2026-10-05_kx3_exam/PREREGISTRATION.md); the digest belongs to that exact binary (selfcheck_measured_on_sha256), so a report on that binary records them instead of replaying the 12 games (kx3 both sides takes hours), and strength_prereg refuses them for any other binary. `slow_report.py --selfcheck` replays them and refuses on any difference. A REBUILD of the same source (for example on the cloud: rl/strength/build.sh <engine_ref> OUT prints the engine tree, the program sha256 and the harness source hash, which must be engine_tree and harness_source_sha256 below) is accepted only through `--program PATH`, which replays BOTH self-checks on that machine against the digests above. seed_reserved lists seed slots used by committed runs outside rl/results/slow_reports (the km3 smoke).",
+ "pilot": "km3",
+ "reference": "km3",
+ "pilot_label": "km3 (smoke, not kx3)",
+ "reference_label": "km3",
+ "panel_label": "the public panel",
+ "panel_group": "panel8",
+ "program": "/home/dacz8976/kx/strength",
+ "program_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2",
+ "selfcheck": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kx3": "selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa"
+ },
+ "selfcheck_measured_on_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2",
+ "harness_source_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+ "engine_ref": "d513e37b473f2819075e1eb2439075a8a1e65c42",
+ "engine_tree": "31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588",
+ "seed_reserved": [],
+ "engine": "claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec (the frozen, tested development build), built on the laptop Oct 2; km3 240/240 v the official program, self-checks km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa; KX_EXTRA_LISTS unset",
+ "pilot_provenance": "kx3 from claude/playout-pilot@d513e37b, frozen Oct 4-5",
+ "reference_provenance": "km3 in the same build; it equals the pinned km3 (step 10's 240 games field for field, self-check 81b572198c04d5d1)",
+ "threads": 2,
+ "seed_block": [
+  24601000000,
+  24699999999
+ ],
+ "seed_step": 100000,
+ "games_per_hour": {
+  "typical_low": 26,
+  "typical_high": 34,
+  "wall": 9
+ },
+ "scrub_env_prefixes": [
+  "KX_",
+  "PDL_",
+  "DECKGYM_",
+  "JEV_",
+  "PG_"
+ ]
+}
