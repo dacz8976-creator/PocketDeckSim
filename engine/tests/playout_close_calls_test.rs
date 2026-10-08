@@ -20,6 +20,9 @@
 //! - (c) dropped (the Oct 7 addendum, Fable via Dustin): a move tied with km3's in every round so far is extended like
 //!   any other move close to the best, since rare draws or events can separate them later; a move tied with km3's through
 //!   16 rounds is extended and wins at R_max (B-210952-t16);
+//! - the equal-exclusion (the Oct 7 addendum on it): a move tied with the best in every round (km3's move when it is the
+//!   best, or a best that is another move) joins an extension already running for a non-tied close move, but ties alone
+//!   never start one, so a settled decision is not extended (B-214254-t10's Lucky Ice Pop, dev04's Tool placement);
 //! - `_tools _zs3 _m64` together: at km3's attacks the extension and the skip bar act as above; at a Tool placement the
 //!   Tool tie-break comes after the extension's decision and looks at every candidate, so it may play a placement left at
 //!   R rounds.
@@ -103,7 +106,8 @@ const SEEDS: [u64; 8] = [
 /// and the best after 4 rounds are extended to 20 rounds, each extended candidate's play-outs are a plain 20-round run's
 /// (scores, and differences from km3's move, alike), the others keep their 4 rounds as in the plain run, the reason says so,
 /// and the choice is an extended candidate; a move tied with km3's in each of the 4 rounds is extended whenever km3's move
-/// is close to a best that is another move (the tied move is then exactly as close). Both kinds of decision come up.
+/// is close to a best that is another move (the tied move is then exactly as close), and whenever km3's move is the best
+/// and an extension runs (it joins). Both kinds of decision come up.
 #[test]
 fn close_calls_are_played_out_further_on_the_same_worlds() {
     let (mut extended, mut clear) = (0, 0);
@@ -126,6 +130,9 @@ fn close_calls_are_played_out_further_on_the_same_worlds() {
         for (c, p) in plain.candidates.iter().enumerate() {
             if c != plain.km3 && p.diff == 0.0 && p.se == 0.0 && best4 != plain.km3 && lead4.diff <= 2.0 * lead4.se {
                 assert_eq!(ext.candidates[c].rounds, 20, "seed {seed}: {} ties km3's move in every round, extended as it is", p.label);
+            }
+            if c != plain.km3 && p.diff == 0.0 && p.se == 0.0 && best4 == plain.km3 {
+                assert_eq!(ext.candidates[c].rounds, 20, "seed {seed}: {} ties km3's best move, and joins the extension", p.label);
             }
         }
         assert_eq!(ext.candidates[best4].rounds, 20, "seed {seed}: the best after 4 rounds extended");
@@ -247,8 +254,8 @@ fn a_close_call_is_tested_against_the_bar_that_decides() {
     assert_eq!(close_call(&near, &three, &zs), vec![0, 1, 2]);
 }
 
-/// (c) dropped: a move tied with km3's in every round is extended, as close to the best as km3's move is; a move equal to
-/// the best in every round is no close call (as in the first version).
+/// (c) dropped: a move tied with km3's in every round, when the best is another move, is extended, as close to the best as
+/// km3's move is.
 #[test]
 fn a_move_tied_with_km3s_in_every_round_is_still_extended() {
     let (attack, end, retreat1, retreat2) = moves();
@@ -257,9 +264,34 @@ fn a_move_tied_with_km3s_in_every_round_is_still_extended() {
     let per = vec![rounds(&km, false), rounds(&[1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0], false), rounds(&km, true)];
     let candidates = vec![end.clone(), retreat1.clone(), attack.clone()];
     assert_eq!(close_call(&per, &candidates, &z), vec![0, 1, 2], "the best leads both by 1 standard error; the attack, tied with km3's move, too");
+}
+
+/// The equal-exclusion (the Oct 7 addendum on it): a move tied with the best in every round joins an extension already
+/// running for a non-tied close move, whether the best is another move or km3's own; ties alone never start one, so a
+/// settled decision, where every candidate won (or lost) every play-out, is not extended.
+#[test]
+fn a_move_tied_with_the_best_joins_a_running_extension_but_never_starts_one() {
+    let (attack, end, retreat1, retreat2) = moves();
+    let z = PlayoutParams { z: 2.0, ..PlayoutParams::new(3) };
+    let none: Vec<usize> = Vec::new();
     let lead = [1.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0];
-    let per = vec![rounds(&[0.0; 8], false), rounds(&lead, false), rounds(&lead, false)];
-    assert_eq!(close_call(&per, &[end, retreat1, retreat2], &z), Vec::<usize>::new(), "equal to the best: no close call");
+    let near = [1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0];
+    let four = [end.clone(), retreat1.clone(), retreat2.clone(), attack.clone()];
+    // The best is another move: Retreat 1 leads km3's End Turn by 2.65 standard errors, and Retreat 2 ties it.
+    let tied = vec![rounds(&[0.0; 8], false), rounds(&lead, false), rounds(&lead, false)];
+    assert_eq!(close_call(&tied, &four[..3], &z), none, "a tie with the best alone starts no extension");
+    let tied_near = vec![rounds(&[0.0; 8], false), rounds(&lead, false), rounds(&lead, false), rounds(&near, true)];
+    assert_eq!(close_call(&tied_near, &four, &z), vec![0, 1, 2, 3], "the attack, 1 standard error behind the best, starts one; the tie joins");
+    // km3's End Turn is the best, and Retreat 1 ties it.
+    let km_best = vec![rounds(&lead, false), rounds(&lead, false), rounds(&[0.0; 8], false)];
+    assert_eq!(close_call(&km_best, &four[..3], &z), none, "a tie with km3's best move alone starts no extension");
+    let km_best_near = vec![rounds(&lead, false), rounds(&lead, false), rounds(&near, false)];
+    assert_eq!(close_call(&km_best_near, &four[..3], &z), vec![0, 1, 2], "Retreat 2, 1 standard error behind, starts one; the tie joins");
+    // Settled decisions: every candidate won every play-out, or lost every one.
+    for score in [1.0, 0.0] {
+        let settled: Vec<Vec<(f64, bool)>> = (0..4).map(|_| rounds(&[score; 8], false)).collect();
+        assert_eq!(close_call(&settled, &four, &z), none, "every candidate scored {score} in every round: settled");
+    }
 }
 
 /// (c) dropped: a move tied with km3's through the first 16 rounds is extended and can win at R_max. The continuation
@@ -303,6 +335,78 @@ fn a_move_tied_with_km3s_through_16_rounds_is_extended_and_can_win() {
     assert_eq!(ext.candidates[water].rounds, 64, "the tied move is extended: {}", ext.reason);
     assert_eq!(ext.chosen, water, "and wins at R_max: {}", ext.reason);
     assert!(ext.reason.contains("close call: play-outs extended from 16 to 64 rounds"), "{}", ext.reason);
+}
+
+/// The combined code at R = 16 (LAB, cap 12, z 2, `_tools _zs3`), with or without R_max 64, from a stored position: its
+/// state, the side's list and the opponent's, and the decision's seed.
+fn gate_decision(state: &State, list: &str, opponent: &str, seed: u64, max_rounds: Option<usize>) -> DecisionReport {
+    let (me, actions) = state.generate_possible_actions();
+    let observation = PlayerObservation::from_state(state, me, &RevealedKnowledge::default());
+    let params = PlayoutParams {
+        rollouts: 16,
+        cap: 12,
+        z: 2.0,
+        knowledge: Knowledge::Lab,
+        tools: true,
+        z_skip: Some(3.0),
+        max_rounds,
+        ..PlayoutParams::new(3)
+    };
+    PlayoutPlayer::with_extra_lists(deck(list), deck(opponent), params, Vec::new()).evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions)
+}
+
+/// km3's move is the best after 16 rounds, a move ties it in every one of them, and an extension runs for the moves within
+/// the noise of it: the tied move joins and plays the 64 rounds. Two of gate 2's decisions, with `_tools _zs3 _m64`:
+/// - B-214254-t10 (Shark tempo v Blastoise-Wailord, seed 24,200,001,001): km3's Irida and the Lucky Ice Pop both score
+///   0.938, round for round;
+/// - dev04 at its Tool placement (deck 05 v t-sceptile, seed 24,200,002,004, the Protective Poncho just played): km3's
+///   Poncho on the Active and the Poncho on Bench spot 3 both score 0.688, round for round, and the Tool tie-break plays
+///   spot 3; it is now compared with km3's move on 64 rounds.
+#[test]
+fn a_move_tied_with_km3s_best_move_joins_the_extension() {
+    let shark = "../decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt";
+    let blastoise = "../decks/computer/blastoise-wailord-deluxe.txt";
+    let path = "../rl/results/playout_continuation_2026-10-05/states/B-214254-t10.json";
+    let t10: State = serde_json::from_str(&std::fs::read_to_string(path).unwrap()).unwrap();
+    // dev04, advanced by playing its Protective Poncho (km3 on both sides, the position's seed), as gate 2 does.
+    let (deck05, sceptile) = ("../decks/dustin/05-indeedee-stoutland.txt", "../decks/screen/opponents/t-sceptile.txt");
+    let stored: State =
+        serde_json::from_str(&std::fs::read_to_string("../rl/results/playout_tool_rule_2026-10-06/gate2/states/dev04.json").unwrap()).unwrap();
+    let (me, legal) = stored.generate_possible_actions();
+    let poncho = legal
+        .iter()
+        .find(|a| matches!(&a.action, SimpleAction::Play { trainer_card } if trainer_card.name == "Protective Poncho"))
+        .unwrap()
+        .clone();
+    let (d0, d1) = if me == 0 { (deck(deck05), deck(sceptile)) } else { (deck(sceptile), deck(deck05)) };
+    let code = PlayerCode::KM { max_depth: 3 };
+    let mut game = Game::from_state(stored, create_players(d0, d1, vec![code.clone(), code]), 24_200_002_004);
+    game.apply_action(&poncho);
+    let dev04 = game.get_state_clone();
+    let cases = [
+        ("B-214254-t10", &t10, shark, blastoise, 24_200_001_001u64, "Play { trainer_card: B2 145 Lucky Ice Pop"),
+        ("dev04, the placement", &dev04, deck05, sceptile, 24_200_002_004, "AttachTool { in_play_idx: 3,"),
+    ];
+    for (name, state, list, opponent, seed, tied_move) in cases {
+        let r16 = gate_decision(state, list, opponent, seed, None);
+        let best = (0..r16.candidates.len()).fold(r16.km3, |b, c| if r16.candidates[c].score > r16.candidates[b].score { c } else { b });
+        assert_eq!(best, r16.km3, "{name}: km3's move is the best after 16 rounds");
+        let t = r16.candidates.iter().position(|c| c.label.starts_with(tied_move)).unwrap_or_else(|| panic!("{name}: {tied_move}"));
+        let tied = &r16.candidates[t];
+        assert!(t != r16.km3 && tied.diff == 0.0 && tied.se == 0.0, "{name}: {} ties km3's move round for round", tied.label);
+        let ext = gate_decision(state, list, opponent, seed, Some(64));
+        assert_eq!(ext.failed_rounds, 0, "{name}");
+        assert_eq!(ext.rounds, 64, "{name}: an extension runs: {}", ext.reason);
+        let started = (0..ext.candidates.len()).any(|c| {
+            let p = &r16.candidates[c];
+            c != r16.km3 && ext.candidates[c].rounds == 64 && !(p.diff == 0.0 && p.se == 0.0)
+        });
+        assert!(started, "{name}: a move that isn't tied is extended");
+        assert_eq!(ext.candidates[t].rounds, 64, "{name}: {} joins the extension: {}", tied.label, ext.reason);
+        if ext.reason.starts_with("tie-break: Tool effect") {
+            assert_eq!(ext.candidates[ext.chosen].rounds, 64, "{name}: the tie-break's placement on 64 rounds: {}", ext.reason);
+        }
+    }
 }
 
 // `_tools _zs3 _m64` together.
@@ -393,6 +497,9 @@ fn the_tools_rule_the_skip_bar_and_close_calls_combine() {
         for (c, p) in plain.candidates.iter().enumerate() {
             if c != plain.km3 && p.diff == 0.0 && p.se == 0.0 && best8 != plain.km3 && lead.diff <= 2.0 * lead.se {
                 assert_eq!(comb.candidates[c].rounds, 64, "seed {seed}: {} ties km3's attack in every round, extended", p.label);
+            }
+            if c != plain.km3 && p.diff == 0.0 && p.se == 0.0 && best8 == plain.km3 && comb.rounds == 64 {
+                assert_eq!(comb.candidates[c].rounds, 64, "seed {seed}: {} ties km3's best attack, and joins the extension", p.label);
             }
         }
         if comb.rounds == 8 {
