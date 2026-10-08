@@ -131,12 +131,19 @@ def write_bytes(path, data):
         f.write(data)
 
 
+def manifest_text_sha256(man):
+    """The sha256 of manifest.json as strength_prereg.py writes `man` (indent 1, not ASCII-only, no final newline): the run a 'program_changed' line is written for. A test that
+    rewrote the manifest some other way passes the real file's sha256 itself (sha of the file)."""
+    return hashlib.sha256(json.dumps(man, indent=1, ensure_ascii=False).encode('utf-8')).hexdigest()
+
+
 def change_event_for(man, new_sha, record_sha256='e' * 64, **over):
     """A 'program_changed' log event as reverify_program writes it for the run `man` (a manifest registered on the rebuilt route): the program it names, its build record (for that file,
     with the registered engine tree and harness hash, and the sha256 `record_sha256` for the record file) and the self-check texts the run was registered with. `over` replaces entries
     (a value of DROP removes one). Whether the run is on the rebuilt route is up to `man`: the page and the accepted hashes count the event only for a run that is."""
     block = man['slow_report']
     e = {'at': '2026-10-10T10:00:10Z', 'event': 'program_changed', 'pilot': man['pilot'], 'reference': man['reference'], 'old_sha256': man['program_sha256'], 'new_sha256': new_sha,
+         'manifest_sha256': manifest_text_sha256(man),
          'build_record': {'schema': 1, 'program_sha256': new_sha, 'engine_tree_archived': block['engine_tree'], 'harness_source_sha256': block['harness_source_sha256'],
                           'record_file': '/x/strength.build.json', 'record_sha256': record_sha256},
          'selfcheck': dict(man['selfcheck']), 'pin_committed': 'bypassed', 'replayed_on': 'cloud-box-2'}
@@ -187,6 +194,8 @@ def forged_overrides(man, new):
             ('another kx3 self-check text', dict(selfcheck=dict(sc, kx3='selfcheck pilot=kx3 games=12 digest=0000'))),
             ('only one self-check', dict(selfcheck={'kx3': sc['kx3']})), ('a self-check more', dict(selfcheck=dict(sc, ext='selfcheck pilot=ext'))),
             ('no self-checks', dict(selfcheck=DROP)), ('empty self-checks', dict(selfcheck={})),
+            ('a line written for another run', dict(manifest_sha256='9' * 64)), ('a run that is null', dict(manifest_sha256=None)),
+            ('a run that is a number', dict(manifest_sha256=12345)),  # (a line with no manifest_sha256 at all is the format of the earlier version: see the tests of that)
             ('no program hash', dict(new_sha256=DROP)), ('a program hash that is null', dict(new_sha256=None)),
             ('a program hash that is a number', dict(new_sha256=7, build_record=dict(record, program_sha256=7))))
 
@@ -521,9 +530,8 @@ class Pin(World):
         """pin_digests(state): the words every place that names the pin's digests uses. A pin that is not the committed one (let through by the test-only variable) is described as what
         it is, so a report made on one never claims the committed pin."""
         self.assertEqual(sr.pin_digests('yes'), COMMITTED_DIGESTS)
-        self.assertEqual(sr.pin_digests(None), COMMITTED_DIGESTS, 'a run from before the state was recorded makes no claim against the committed pin')
-        for state in ('bypassed', 'no', '', 'something else'):
-            self.assertEqual(sr.pin_digests(state), FILE_DIGESTS, state)
+        for state in (None, 'bypassed', 'no', '', 'something else'):
+            self.assertEqual(sr.pin_digests(state), FILE_DIGESTS, f'{state!r}: only a state of "yes" is the committed pin; a state that is missing is not recorded as committed')
         self.assertEqual(FILE_DIGESTS, 'the digests of the pin file in use (NOT the committed pin: test use)')
 
     def test_how_a_self_check_text_was_obtained_follows_the_state_of_the_pin_too(self):
@@ -532,11 +540,9 @@ class Pin(World):
                      'replayed by slow_report.py on the registering machine just before registration (equal to the committed pin)':
                          'replayed on the registering machine just before registration, equal to the committed pin',
                      'run by strength_prereg.py': 'replayed at registration', 'something else': 'recorded at registration', '': 'recorded at registration', None: 'recorded at registration'}
-        for state in ('yes', None):
-            for source, how in committed.items():
-                self.assertEqual(sr.selfcheck_how(source, state), how, (source, state))
-                self.assertEqual(sr.selfcheck_how(source), how, 'the state is optional')
-        for state in ('bypassed', 'no'):
+        for source, how in committed.items():
+            self.assertEqual(sr.selfcheck_how(source, 'yes'), how, (source, 'yes'))
+        for state in ('bypassed', 'no', None, '', 'maybe'):  # (a state that is missing, or none of the known ones, is not "yes": the committed pin is claimed only of a pin recorded as committed)
             for source, how in committed.items():
                 want = 'replayed on the registering machine just before registration, equal to the pin file in use (NOT the committed pin: test use)' if (source or '').startswith('replayed by') else how
                 self.assertEqual(sr.selfcheck_how(source, state), want, (source, state))
@@ -2688,7 +2694,7 @@ class CloudRoute(RebuiltFixture):
         self.assertEqual((b['pin_committed'], b['pin_committed_detail']), ('bypassed', no_head['detail']))
         self.assertEqual(sr.build_config(**kw, route='rebuilt')['engine'].split('THIS PROGRAM (')[1].split(',')[0], self.pin['program'], 'with no program given, the pin\'s path')
         # the words for what the self-checks were equal to follow the state of the pin: the committed pin's digests, or the pin file in use when it was let through for a test
-        for label, state, digests in (('a committed pin', yes, COMMITTED_DIGESTS), ('a pin let through', no_head, FILE_DIGESTS), ('no state recorded', None, COMMITTED_DIGESTS)):
+        for label, state, digests in (('a committed pin', yes, COMMITTED_DIGESTS), ('a pin let through', no_head, FILE_DIGESTS), ('no state recorded', None, FILE_DIGESTS)):  # (not "committed" either)
             with self.subTest(label):
                 engine = sr.build_config(**kw, route='rebuilt', program='/cloud/strength', build_record=rec, pin_state=state)['engine']
                 self.assertEqual(engine, engine_text(digests))
@@ -3555,6 +3561,7 @@ class ProgramChangedOnResume(RebuiltFixture):
         self.assertRegex(changed[0]['at'], r'^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$')
         self.assertEqual({k: v for k, v in changed[0].items() if k != 'at'},
                          {'event': 'program_changed', 'pilot': 'kx3', 'reference': 'km3', 'old_sha256': registered, 'new_sha256': new,
+                          'manifest_sha256': hashlib.sha256(manifest_before[0].encode('utf-8')).hexdigest(),
                           'build_record': dict(rec, record_file=self.cloud + '.build.json', record_sha256=sha(self.cloud + '.build.json')),
                           'selfcheck': {s: self.TEXT % s for s in ('km3', 'kx3')}, 'pin_committed': 'bypassed', 'replayed_on': socket.gethostname()})
         self.assertEqual([e['event'] for e in self.events(d) if e['event'] != 'env_scrubbed'],
@@ -3626,6 +3633,154 @@ class ProgramChangedOnResume(RebuiltFixture):
         self.assertEqual(code, 0, out + err)
         self.assertEqual(len(self.replayed), 6)
         self.assertEqual(len(self.events(d, 'program_changed')), 2)
+
+    ORIGINAL = FAKE_PROGRAM + '\n# built on the cloud\n'  # the text of the rebuilt copy the fixture registers with (rebuild_at)
+
+    def swapping_during_replay(self, after_spec, action):
+        """Run `action` once the self-check of `after_spec` has been replayed (hours into a real replay, the program or its record is replaced)."""
+        real = sr.run_selfcheck  # (the spy of the fixture, which notes the replay)
+
+        def swap(pin, repo, spec, say, **kw):
+            out = real(pin, repo, spec, say, **kw)
+            if spec == after_spec:
+                action()
+            return out
+        patcher = mock.patch.object(sr, 'run_selfcheck', swap)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def test_a_program_replaced_while_the_self_checks_ran_is_refused_and_the_change_is_not_logged(self):
+        """The sha256 and the record are read before the replay (hours for kx3) and read again after it: what the self-checks checked must be what is there now."""
+        d = self.started()
+        self.rebuild_again()
+        first = sha(self.cloud)
+        self.swapping_during_replay('kx3', lambda: self.rebuild_again(FAKE_PROGRAM + '\n# swapped in during the replay\n'))
+        code = self.refused_resume(d)
+        self.assertEqual(code, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the program at {self.cloud} changed while the self-checks were replayed '
+                               f'(sha256 {first[:12]} -> {sha(self.cloud)[:12]}): what they checked is not what is there now. Nothing was played.')
+        self.assertEqual(self.events(d, 'program_changed'), [])
+        self.assertEqual(sr.accepted_program_shas(d, self.manifest(d)), {self.manifest(d)['program_sha256']})
+
+    def test_a_build_record_rewritten_while_the_self_checks_ran_is_refused_too(self):
+        d = self.started()
+        rec = self.rebuild_again()
+        self.swapping_during_replay('km3', lambda: write(self.cloud + '.build.json', json.dumps(dict(rec, built_at='2031-01-01T00:00:00Z'), indent=1) + '\n'))
+        code = self.refused_resume(d)
+        self.assertEqual(code, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the build record {self.cloud}.build.json changed while the self-checks were replayed: '
+                               'what was checked is not what is there now. Nothing was played.')
+        self.assertEqual(self.events(d, 'program_changed'), [])
+
+    def test_a_program_that_stays_put_during_the_replay_is_accepted_as_before(self):
+        d = self.started()
+        self.rebuild_again()
+        self.swapping_during_replay('kx3', lambda: write(self.cloud + '.unrelated', 'a file beside the program that is none of its business'))
+        code, out, err = self.cli('--dir', d, deck=False, spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(len(self.events(d, 'program_changed')), 1)
+
+    def test_a_line_copied_from_the_log_of_another_run_is_not_this_runs_change(self):
+        """The change is logged with the sha256 of the manifest.json of the run it is for: the same line in the log of another run (a copied folder, a pasted log) is not a change of
+        that run, even when its program, record and self-check texts are what that run could have."""
+        a = self.started('6')
+        self.rebuild_again()
+        self.assertEqual(self.cli('--dir', a, '--max-games', '6', deck=False, spawn=self.spawn)[0], 0)
+        line = self.events(a, 'program_changed')[0]
+        self.assertEqual(line['manifest_sha256'], sha(os.path.join(a, 'manifest.json')))
+        self.put_program(self.cloud, self.ORIGINAL)  # the run B is registered with the original rebuild, like A was
+        code, out, err = self.cli('--deals', '1', '--register-only', '--program', self.cloud, '--date', '2026-10-11', date=False)
+        self.assertEqual(code, 0, out + err)
+        b = self.rundir('2026-10-11_my-list')
+        man_b = self.manifest(b)
+        self.assertNotEqual(sha(os.path.join(b, 'manifest.json')), line['manifest_sha256'])
+        self.append_log(b, line)
+        self.assertEqual(sr.accepted_program_shas(b, man_b), {man_b['program_sha256']}, "A's line names A's run")
+        self.assertEqual(sr.accepted_program_shas(a, self.manifest(a)), {self.manifest(a)['program_sha256'], line['new_sha256']}, 'and it is still A\'s')
+        self.rebuild_again()  # B's program is now the program A changed to: B has not replayed anything for it
+        code, out, err = self.cli('--dir', b, '--dry-run', deck=False)
+        self.assertIn('so a resume would replay both self-checks again', out, "B still has to replay: A's line did not accept the program for B")
+
+    def test_the_page_shows_a_return_to_an_earlier_accepted_build_once(self):
+        """A sitting that runs a build accepted earlier (the registered one, or an earlier change) needs no replay and logs no change; the page says the program went back, at which
+        sitting, with the games before and after."""
+        d = self.started('6')
+        reg = sha(self.cloud)
+        self.rebuild_again()
+        b = sha(self.cloud)
+        self.assertEqual(self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)[0], 0)
+        replays = len(self.replayed)
+        self.put_program(self.cloud, self.ORIGINAL)
+        self.assertEqual(sha(self.cloud), reg, 'the registered build again')
+        self.assertEqual(self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)[0], 0)
+        self.assertEqual(len(self.replayed), replays, 'an accepted build needs no replay')
+        self.assertEqual(len(self.events(d, 'program_changed')), 1)
+        self.assertEqual([e.get('program_sha256') for e in self.events(d, 'sitting_call')], [reg, b, reg], 'each sitting says which program it ran')
+        back = re.compile(r'^- \*\*The program went back to an earlier accepted build\*\* \((\S+)\): sha256 `([0-9a-f]{12})` -> `([0-9a-f]{12})` '
+                          r'\(the registered program or one accepted before, so no new replay was needed\); (\d+) games? of the (\d+) played so far were started before this and (\d+) after\.$')
+        lines = read(os.path.join(d, 'SLOW_REPORT.md')).splitlines()
+        found = [back.match(l) for l in lines if 'went back to an earlier accepted build' in l]
+        self.assertEqual(len(found), 1, lines)
+        at, was, now, before, played, after = found[0].groups()
+        self.assertEqual((was, now), (b[:12], reg[:12]))
+        self.assertEqual((int(before) + int(after), int(played)), (int(played), 18), 'the games of the three sittings')
+        change = next(i for i, l in enumerate(lines) if 'The program changed mid-run' in l)
+        self.assertLess(change, next(i for i, l in enumerate(lines) if 'went back to an earlier accepted build' in l), 'in the order it happened')
+        self.assertEqual(self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)[0], 0)  # one more sitting on the same build: nothing new to say
+        self.assertEqual(read(os.path.join(d, 'SLOW_REPORT.md')).count('went back to an earlier accepted build'), 1)
+        self.assertEqual(read(os.path.join(d, 'SLOW_REPORT.md')).count('**The program changed mid-run**'), 1)
+
+    def test_a_run_that_never_changed_its_program_says_nothing_about_one(self):
+        d = self.started('6')
+        self.assertEqual(self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)[0], 0)
+        page = read(os.path.join(d, 'SLOW_REPORT.md'))
+        self.assertNotIn('went back to an earlier accepted build', page)
+        self.assertNotIn('changed mid-run', page)
+
+    def rewrite_log(self, d, edit):
+        """The log of `d` with its events passed through edit(list of dicts) -> list of dicts."""
+        events = self.events(d)
+        write(os.path.join(d, 'slow_report_log.jsonl'), ''.join(json.dumps(e) + '\n' for e in edit(events)))
+
+    def test_a_line_of_an_earlier_version_that_does_not_name_its_run_counts_when_the_log_was_started_for_this_run(self):
+        """c28dfb8a wrote 'program_changed' lines without manifest_sha256. They are still this run's own when the first line of the log, 'registered', names this run's manifest (a log
+        pasted from another run names another one), so the committed runs of that version keep their change on a regenerated page and a resume does not replay it again."""
+        d = self.started('6')
+        man = self.manifest(d)
+        reg = man['program_sha256']
+        legacy = self.change_event(man, 'b' * 64, manifest_sha256=DROP)
+        self.assertNotIn('manifest_sha256', legacy)
+        self.append_log(d, legacy)
+        self.assertEqual(self.events(d)[0]['manifest_sha256'], sha(os.path.join(d, 'manifest.json')), 'the registered line names the run')
+        self.assertEqual(sr.accepted_program_shas(d, man), {reg, 'b' * 64})
+        self.assertEqual(sr.program_in_use_before(d, man), 'b' * 64)
+        page = sr.write_slow_report(d)
+        self.assertEqual(page.count('**The program changed mid-run**'), 1)
+        self.assertIn(f'sha256 `{reg[:12]}` -> `{"b" * 12}`', page)
+        original = self.events(d)
+        for how, edit in (('the registered line names another run', lambda ev: [dict(e, manifest_sha256='9' * 64) if e['event'] == 'registered' else e for e in ev]),
+                          ('the registered line names no run', lambda ev: [{k: v for k, v in e.items() if k != 'manifest_sha256'} if e['event'] == 'registered' else e for e in ev]),
+                          ('there is no registered line', lambda ev: [e for e in ev if e['event'] != 'registered'])):
+            with self.subTest(how):
+                self.rewrite_log(d, edit)
+                self.assertEqual(sr.accepted_program_shas(d, man), {reg}, 'a line that cannot be tied to this run is left out')
+                self.assertNotIn('The program changed mid-run', sr.write_slow_report(d))
+                self.rewrite_log(d, lambda ev: original)
+        self.rewrite_log(d, lambda ev: [e for e in original if e['event'] != 'program_changed'] + [self.change_event(man, 'c' * 64, manifest_sha256='9' * 64)])
+        self.assertEqual(sr.accepted_program_shas(d, man), {reg}, 'a line that names ANOTHER run is not this run\'s, whatever the log says')
+        self.rewrite_log(d, lambda ev: [e for e in original if e['event'] != 'program_changed'] + [self.change_event(man, 'c' * 64, manifest_sha256=None)])
+        self.assertEqual(sr.accepted_program_shas(d, man), {reg}, 'and a line that names no run because the name is null is not an old line either')
+
+    def test_a_resume_after_a_change_logged_by_the_earlier_version_does_not_replay_it_again(self):
+        d = self.started('6')
+        man = self.manifest(d)
+        self.rebuild_again()
+        new = sha(self.cloud)
+        # the change as the earlier version logged it: no manifest_sha256
+        self.append_log(d, self.change_event(man, new, manifest_sha256=DROP))
+        replays = len(self.replayed)
+        code, out, err = self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(len(self.replayed), replays, 'the accepted program needs no new replay')
+        self.assertEqual(len(self.events(d, 'program_changed')), 1, 'and no change is logged twice')
 
     def change_event(self, man, new_sha, **over):
         """A 'program_changed' event as reverify_program writes it for the run `man`: the program it names, its build record (for that file, with the registered engine tree and
@@ -4175,28 +4330,32 @@ class ProgramChangedOnResume(RebuiltFixture):
         program_change_valid finds consistent with the registration (which says nothing of who wrote it)."""
         d = self.started()
         man = self.manifest(d)
+        ms = sha(os.path.join(d, 'manifest.json'))  # (the run a line is written for: the sha256 of its manifest.json)
+        self.assertEqual(ms, manifest_text_sha256(man), 'the helper that writes the lines of these tests names the run the way the log does')
         self.assertEqual(man['slow_report']['program_route'], 'rebuilt')
         good = self.change_event(man, 'b' * 64)
-        self.assertTrue(sr.is_program_change(good, man))
-        self.assertTrue(sr.program_change_valid(good, man))
-        self.assertFalse(sr.is_program_change(dict(good, event='slice_end'), man), 'another event, however much it looks like a change')
-        self.assertFalse(sr.is_program_change({k: v for k, v in good.items() if k != 'event'}, man), 'no event at all')
-        self.assertFalse(sr.is_program_change(dict(good, event=None), man))
+        self.assertTrue(sr.is_program_change(good, man, ms))
+        self.assertTrue(sr.program_change_valid(good, man, ms))
+        self.assertFalse(sr.is_program_change(dict(good, event='slice_end'), man, ms), 'another event, however much it looks like a change')
+        self.assertFalse(sr.is_program_change({k: v for k, v in good.items() if k != 'event'}, man, ms), 'no event at all')
+        self.assertFalse(sr.is_program_change(dict(good, event=None), man, ms))
         for route in ('pinned', 'something else', None):
             block = dict(man['slow_report'], program_route=route)
-            self.assertFalse(sr.is_program_change(good, dict(man, slow_report=block)), f'the route {route}: the run is byte for byte or nothing')
-            self.assertTrue(sr.program_change_valid(good, dict(man, slow_report=block)), 'whether the line is consistent does not depend on the route')
-        self.assertFalse(sr.is_program_change(good, {k: v for k, v in man.items() if k != 'slow_report'}), 'a manifest with no slow_report block has no route')
+            self.assertFalse(sr.is_program_change(good, dict(man, slow_report=block), ms), f'the route {route}: the run is byte for byte or nothing')
+            self.assertTrue(sr.program_change_valid(good, dict(man, slow_report=block), ms), 'whether the line is consistent does not depend on the route')
+        self.assertFalse(sr.is_program_change(good, {k: v for k, v in man.items() if k != 'slow_report'}, ms), 'a manifest with no slow_report block has no route')
         for label, over in self.forgeries(man, 'b' * 64):
             with self.subTest(label):
                 line = self.change_event(man, 'b' * 64, **over)
-                self.assertFalse(sr.is_program_change(line, man))
-                self.assertFalse(sr.program_change_valid(line, man))
+                self.assertFalse(sr.is_program_change(line, man, ms))
+                self.assertFalse(sr.program_change_valid(line, man, ms))
         lean = self.change_event(man, 'c' * 64, pin_committed=DROP, replayed_on=DROP, old_sha256=DROP, pilot=DROP, reference=DROP)
-        self.assertTrue(sr.is_program_change(lean, man), 'what only describes the change is not needed')
+        self.assertTrue(sr.is_program_change(lean, man, ms), 'what only describes the change is not needed')
         for at in (DROP, None, '', 5):
             with self.subTest(at=at):
-                self.assertFalse(sr.is_program_change(self.change_event(man, 'c' * 64, at=at), man), "without the time it was written the games before and after it cannot be counted: not a change")
+                self.assertFalse(sr.is_program_change(self.change_event(man, 'c' * 64, at=at), man, ms), "without the time it was written the games before and after it cannot be counted: not a change")
+        self.assertFalse(sr.program_change_valid(good, man, None), 'a caller that does not know the run cannot vouch for a line')
+        self.assertFalse(sr.program_change_valid(good, man, '9' * 64), 'a line is for one run: the sha256 of its manifest.json')
         self.assertIn('NOT authentication', sr.program_change_valid.__doc__, 'the check keeps stray lines out; it does not say who wrote one')
 
     def test_a_forged_line_does_not_let_a_changed_program_skip_the_replay(self):
@@ -4579,6 +4738,187 @@ class ProgramChangedOnResume(RebuiltFixture):
         self.assertTrue(self.dry_status(d).startswith(f'the program at {self.cloud} has another sha256 than registered'), 'and told the truth again, it is the replay that is on offer')
 
 
+class ManifestProvenance(RebuiltFixture):
+    """What a registration says about the program has to agree with itself whenever the run is read again (--dir): a manifest that says the run used the pinned binary must carry that
+    binary's sha256, and one that says it used a rebuild must carry a build record for that very program with the engine tree and harness source the registration names. A manifest that
+    does not (written by hand with a matching manifest.sha256, or by an older version) is refused for a resume or a dry run and flagged on the page of a --report-only; a manifest with no
+    route at all makes no claim and passes. The check reads the manifest alone, so it holds whatever pin is in use now."""
+
+    def registered(self, rebuilt):
+        code, out, err = self.cli('--deals', '1', '--register-only', *(('--program', self.cloud) if rebuilt else ()))
+        self.assertEqual(code, 0, out + err)
+        return self.rundir()
+
+    def tampered(self, d, block=None, **top):
+        """Rewrite the manifest of `d` (with its matching sha256) with these slow_report entries changed (DROP removes one) and these top-level entries changed."""
+        man = self.manifest(d)
+        entries = dict(man['slow_report'], **(block or {}))
+        man['slow_report'] = {k: v for k, v in entries.items() if v is not DROP}
+        man.update(top)
+        rewrite_manifest(d, man)
+        return man
+
+    def test_a_registration_made_by_this_code_agrees_with_itself_on_either_route(self):
+        for rebuilt in (False, True):
+            with self.subTest(rebuilt=rebuilt):
+                shutil.rmtree(self.out_root, ignore_errors=True)
+                d = self.registered(rebuilt)
+                self.assertEqual(sr.manifest_provenance_problems(self.manifest(d)), [])
+                self.assertEqual(self.manifest(d)['slow_report']['program_route'], 'rebuilt' if rebuilt else 'pinned')
+
+    def pinned_claim(self, prog12, pin12):
+        return f'the registration says the run used the pinned binary (sha256 {pin12}), but its program has sha256 {prog12}'
+
+    def test_a_pinned_route_manifest_must_carry_the_pinned_programs_sha256(self):
+        d = self.registered(False)
+        pinned = self.manifest(d)['slow_report']['pinned_program_sha256']
+        self.assertEqual(pinned, self.manifest(d)['program_sha256'])
+        man = self.tampered(d, program_sha256='f' * 64)  # (the top-level program hash only: the registration now names a program that is not the pinned one)
+        self.assertEqual(sr.manifest_provenance_problems(man), [self.pinned_claim('f' * 12, pinned[:12])])
+        man = self.tampered(d, block=dict(pinned_program_sha256='e' * 64), program_sha256=pinned)
+        self.assertEqual(sr.manifest_provenance_problems(man), [self.pinned_claim(pinned[:12], 'e' * 12)])
+        for how, gone in (('no entry', DROP), ('null', None), ('empty', '')):
+            man = self.tampered(d, block=dict(pinned_program_sha256=gone), program_sha256=pinned)
+            self.assertEqual(sr.manifest_provenance_problems(man), ['the registration says the run used the pinned binary but does not name the pinned program\'s sha256'], how)
+
+    def test_a_rebuilt_route_manifest_must_carry_the_build_record_of_that_program(self):
+        d = self.registered(True)
+        man = self.manifest(d)
+        rec, block = man['slow_report']['build_record'], man['slow_report']
+        prog = man['program_sha256']
+        want = {
+            'no record': (dict(build_record=DROP), 'the registration says the run used a rebuild but carries no build record'),
+            'a null record': (dict(build_record=None), 'the registration says the run used a rebuild but carries no build record'),
+            'a record that is a list': (dict(build_record=[rec]), 'the registration says the run used a rebuild but carries no build record'),
+            'a record for another program': (dict(build_record=dict(rec, program_sha256='d' * 64)),
+                                             f'the build record in the registration is for a program with sha256 {"d" * 12}, not the {prog[:12]} of the run'),
+            'a record that does not say which': (dict(build_record={k: v for k, v in rec.items() if k != 'program_sha256'}),
+                                                 f'the build record in the registration is for a program with sha256 None, not the {prog[:12]} of the run'),
+            'another engine tree': (dict(build_record=dict(rec, engine_tree_archived='c' * 40)),
+                                    f"the build record in the registration has the engine tree {'c' * 12} as archived, but the registration names {block['engine_tree'][:12]} as the pinned one"),
+            'another harness source': (dict(build_record=dict(rec, harness_source_sha256='b' * 64)),
+                                       f"the build record in the registration has the harness source {'b' * 12}, but the registration names {block['harness_source_sha256'][:12]} as the pinned one"),
+        }
+        for how, (change, problem) in want.items():
+            with self.subTest(how):
+                self.assertEqual(sr.manifest_provenance_problems(self.tampered(d, block=change)), [problem])
+        both = sr.manifest_provenance_problems(self.tampered(d, block=dict(build_record=dict(rec, engine_tree_archived='c' * 40, harness_source_sha256='b' * 64))))
+        self.assertEqual(len(both), 2, 'both differences are named, the tree first')
+        self.assertTrue(both[0].startswith('the build record in the registration has the engine tree'))
+        self.assertTrue(both[1].startswith('the build record in the registration has the harness source'))
+
+    def test_a_route_that_is_not_one_of_ours_is_a_problem_and_no_route_makes_no_claim(self):
+        d = self.registered(False)
+        for route in ('mystery', '', 5, ['pinned']):
+            with self.subTest(route=route):
+                self.assertEqual(sr.manifest_provenance_problems(self.tampered(d, block=dict(program_route=route))), [f'the registration names no known program route ({route!r})'])
+        for how, gone in (('no entry', DROP), ('null', None)):
+            with self.subTest(route=how):
+                self.assertEqual(sr.manifest_provenance_problems(self.tampered(d, block=dict(program_route=gone))), [], 'a registration from before the route was recorded claims nothing about it')
+
+    def test_a_manifest_with_no_slow_report_block_has_nothing_to_check(self):
+        self.assertEqual(sr.manifest_provenance_problems({'program_sha256': 'a' * 64}), [])
+        self.assertEqual(sr.manifest_provenance_problems({'slow_report': None}), [])
+
+    def test_a_resume_and_a_dry_run_refuse_a_manifest_whose_claims_do_not_hold_and_nothing_is_played_or_written(self):
+        d = self.registered(True)
+        rec = self.manifest(d)['slow_report']['build_record']
+        self.tampered(d, block=dict(build_record=dict(rec, engine_tree_archived='c' * 40)))
+        problem = f"the build record in the registration has the engine tree {'c' * 12} as archived, but the registration names {self.manifest(d)['slow_report']['engine_tree'][:12]} as the pinned one"
+        before = (sorted(os.listdir(d)), read(os.path.join(d, 'manifest.json')))
+        for extra in ((), ('--dry-run',), ('--max-games', '4')):
+            with self.subTest(extra=extra):
+                code, out, err = self.cli('--dir', d, *extra, deck=False, spawn=self.spawned())
+                self.assertEqual(code, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: what the registration says about the program does not hold, so nothing is run: '
+                                       f'{problem}. This is not a slow report of the pinned build; register a new run.')
+                self.assertEqual((sorted(os.listdir(d)), read(os.path.join(d, 'manifest.json'))), before, 'not a file made, not a line logged')
+        self.assertEqual(self.replayed[2:], [], 'and no self-check was replayed')
+
+    def test_the_page_of_a_report_only_flags_each_problem_and_a_good_run_has_no_such_line(self):
+        d = self.registered(False)
+        self.assertEqual(self.cli('--dir', d, '--report-only', deck=False)[0], 0)
+        self.assertNotIn('does not hold', read(os.path.join(d, 'SLOW_REPORT.md')))
+        pinned = self.manifest(d)['slow_report']['pinned_program_sha256']
+        self.tampered(d, program_sha256='f' * 64)
+        code, out, err = self.cli('--dir', d, '--report-only', deck=False)
+        self.assertEqual(code, 0, out + err)
+        page = read(os.path.join(d, 'SLOW_REPORT.md'))
+        want = (f"- **What the registration says about the program does not hold**: {self.pinned_claim('f' * 12, pinned[:12])}. "
+                'This page reports whatever program ran; it is not a report on the pinned build.')
+        self.assertEqual(page.splitlines().count(want), 1)
+        self.assertIn(want, page.split('## What was run')[1], 'in the section that says what was run')
+        self.assertEqual(sr.write_slow_report(d).count('does not hold'), 1)
+
+    def test_the_pin_the_registration_was_made_under_is_asked_too_while_it_is_still_in_use(self):
+        """A registration can agree with itself and still name a pinned program, engine tree or harness source that is not the pin's: while the pin file in use is the one the manifest names
+        (same sha256) its entries are the registration's to match; a later pin (another file) is not asked, a run keeps the pin it was registered under."""
+        d = self.registered(False)
+        self.tampered(d, block=dict(pinned_program_sha256='f' * 64), program_sha256='f' * 64)  # (consistent: the program is the one the registration calls pinned)
+        man = self.manifest(d)
+        self.assertEqual(sr.manifest_provenance_problems(man), [])
+        want = f"the registration names {'f' * 12} as the pinned program sha256, but the pin it was made under (still in use) says {self.pin['program_sha256'][:12]}"
+        self.assertEqual(sr.pin_provenance_problems(man, self.pin, self.pin_path), [want])
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertEqual(code, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: what the registration says about the program does not hold, so nothing is run: {want}. '
+                               'This is not a slow report of the pinned build; register a new run.')
+        self.assertEqual(self.cli('--dir', d, '--report-only', deck=False)[0], 0)
+        self.assertIn(f'- **What the registration says about the program does not hold**: {want}. This page reports whatever program ran; it is not a report on the pinned build.',
+                      read(os.path.join(d, 'SLOW_REPORT.md')).splitlines())
+        later = dict(self.pin, program_sha256='1' * 64, engine_tree='2' * 40, harness_source_sha256='3' * 64)
+        write(self.pin_path, json.dumps(later))  # a later pin: another file than the one the manifest names
+        self.assertEqual(sr.pin_provenance_problems(man, later, self.pin_path), [], 'not asked')
+        self.assertEqual(self.cli('--dir', d, '--dry-run', deck=False)[0], 0, 'and a resume is not refused for it')
+
+    def test_the_self_check_texts_the_registration_records_must_be_the_pins_while_that_pin_is_in_use(self):
+        d = self.registered(True)
+        man = self.manifest(d)
+        self.assertEqual(sr.pin_provenance_problems(man, self.pin, self.pin_path), [], 'a registration made by this code records the pin\'s own texts')
+        self.tampered(d, selfcheck=dict(man['selfcheck'], km3='selfcheck pilot=km3 games=12 digest=0000000000000000'))
+        man = self.manifest(d)
+        want = (f"the registration records the km3 self-check text selfcheck pilot=km3 games=12 digest=0000000000000000, but the pin it was made under (still in use) says "
+                f"{self.pin['selfcheck']['km3']}")
+        self.assertEqual(sr.pin_provenance_problems(man, self.pin, self.pin_path), [want])
+        self.assertEqual(sr.manifest_provenance_problems(man), [], 'the manifest alone cannot tell: it is the pin that knows the texts')
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertIn(want, str(code))
+        self.assertIn('REFUSED: what the registration says about the program does not hold', str(code))
+        self.tampered(d, selfcheck=dict(man['selfcheck'], ext='selfcheck pilot=ext'))  # a text for a pilot the pin has none for
+        self.assertTrue(any('the registration records the ext self-check text' in p and 'says none' in p for p in sr.pin_provenance_problems(self.manifest(d), self.pin, self.pin_path)))
+        later = dict(self.pin, selfcheck={'km3': 'x', 'kx3': 'y'})
+        write(self.pin_path, json.dumps(later))  # a later pin: another file
+        self.assertEqual(sr.pin_provenance_problems(self.manifest(d), later, self.pin_path), [], 'not asked')
+
+    def test_the_pin_is_asked_for_the_engine_tree_and_the_harness_source_of_a_rebuild_too(self):
+        d = self.registered(True)
+        rec = self.manifest(d)['slow_report']['build_record']
+        self.tampered(d, block=dict(engine_tree='c' * 40, harness_source_sha256='b' * 64, build_record=dict(rec, engine_tree_archived='c' * 40, harness_source_sha256='b' * 64)))
+        man = self.manifest(d)
+        self.assertEqual(sr.manifest_provenance_problems(man), [], 'the registration agrees with itself')
+        self.assertEqual(sr.pin_provenance_problems(man, self.pin, self.pin_path),
+                         [f"the registration names {'c' * 12} as the pinned engine tree, but the pin it was made under (still in use) says {self.pin['engine_tree'][:12]}",
+                          f"the registration names {'b' * 12} as the pinned harness source, but the pin it was made under (still in use) says {self.pin['harness_source_sha256'][:12]}"])
+        self.assertTrue(str(self.cli('--dir', d, '--max-games', '4', deck=False, spawn=self.spawned())[0]).startswith(
+            f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: what the registration says about the program does not hold, so nothing is run: the registration names'))
+
+    def test_a_registration_made_by_this_code_agrees_with_its_pin_on_either_route(self):
+        for rebuilt in (False, True):
+            with self.subTest(rebuilt=rebuilt):
+                shutil.rmtree(self.out_root, ignore_errors=True)
+                d = self.registered(rebuilt)
+                self.assertEqual(sr.pin_provenance_problems(self.manifest(d), self.pin, self.pin_path), [])
+        self.assertEqual(sr.pin_provenance_problems({'slow_report': {'program_route': None, 'pin': {'sha256': 'a' * 64}}}, self.pin, self.pin_path), [], 'a route that claims nothing is not asked')
+        self.assertEqual(sr.pin_provenance_problems({'slow_report': {'program_route': 'pinned'}}, self.pin, self.pin_path), [], 'a registration that names no pin cannot be asked of it')
+        self.assertEqual(sr.pin_provenance_problems({}, self.pin, self.pin_path), [])
+        self.assertEqual(sr.pin_provenance_problems({'slow_report': {'program_route': 'pinned', 'pin': {'sha256': 'a' * 64}}}, self.pin, os.path.join(self.tmp, 'no-such-pin.json')), [])
+
+    def test_two_problems_are_two_lines(self):
+        d = self.registered(True)
+        rec = self.manifest(d)['slow_report']['build_record']
+        self.tampered(d, block=dict(build_record=dict(rec, engine_tree_archived='c' * 40, harness_source_sha256='b' * 64)))
+        page = sr.write_slow_report(d)
+        self.assertEqual(len([l for l in page.splitlines() if l.startswith('- **What the registration says about the program does not hold**')]), 2)
+
+
 class unittest_patch:
     """mock.patch.object as a tiny context manager (kept local so the file reads top to bottom)."""
 
@@ -4712,6 +5052,58 @@ class LockAndSignals(World):
         code, out, err = self.cli('--dir', d, deck=False)
         self.assertEqual(code, 0, err + out)
         self.assertFalse(os.path.exists(os.path.join(d, 'slow_report.lock')))
+
+    def test_a_signal_that_arrives_while_the_program_is_being_started_still_stops_it(self):
+        """The container is stopped just as a sitting starts: SIGTERM must not raise between the start of the program and the code that stops it (that left the program running,
+        holding the lock, after its wrapper had gone). The signal waits until the loop that watches the program can stop it."""
+        self.set_program(HANG_PROGRAM)
+        d = self.register()
+        started = []
+
+        def spawn(cmd, env, logfile):
+            proc = sr.default_spawn(cmd, env, logfile)
+            started.append(proc)
+            os.kill(os.getpid(), signal.SIGTERM)  # arrives right after the program was started, before spawn has even returned it
+            return proc
+        try:
+            code, out, err = self.cli('--dir', d, '--max-games', '2', deck=False, spawn=spawn)
+            self.assertEqual(code, 128 + signal.SIGTERM, out + err)
+            self.assertEqual(len(started), 1)
+            self.assertIsNotNone(started[0].poll(), 'the program the wrapper started is stopped, not left running')
+            self.assertIn('interrupted', [e['event'] for e in jsonl(os.path.join(d, 'slow_report_log.jsonl'))])
+            self.assertFalse(os.path.exists(os.path.join(d, 'slow_report.lock')), 'and the lock is released')
+        finally:
+            for p in started:
+                if p.poll() is None:
+                    p.kill()
+                    p.wait()
+
+    def test_the_program_does_not_inherit_the_signals_the_wrapper_holds_while_it_starts_it(self):
+        """A child inherits the signal mask of the process that starts it: a program started while SIGTERM is held would never hear the SIGTERM that stops it (it would be killed only after
+        the grace period). default_spawn gives the program an empty mask."""
+        d = self.register()
+        held = signal.pthread_sigmask(signal.SIG_BLOCK, (signal.SIGTERM, signal.SIGHUP, signal.SIGINT))
+        try:
+            self.assertNotEqual(signal.pthread_sigmask(signal.SIG_BLOCK, ()), set(), 'the test holds the signals, as run_games does while it starts a program')
+            log = os.path.join(d, 'mask.log')
+            p = sr.default_spawn([sys.executable, '-c', 'print(open("/proc/self/status").read())'], dict(os.environ), log)
+        finally:
+            signal.pthread_sigmask(signal.SIG_SETMASK, held)
+        p.wait(timeout=30)
+        p._logfh.close()
+        self.assertIn('\nSigBlk:\t0000000000000000\n', read(log), 'nothing is blocked in the program')
+
+    def test_the_signals_are_not_left_blocked_after_a_sitting_is_started(self):
+        before = signal.pthread_sigmask(signal.SIG_BLOCK, ())
+        d = self.register()
+        self.assertEqual(self.cli('--dir', d, '--max-games', '2', deck=False)[0], 0)
+        self.assertEqual(signal.pthread_sigmask(signal.SIG_BLOCK, ()), before, 'the signal mask is what it was')
+        def failing(cmd, env, logfile):
+            raise OSError('no such program')
+        with self.assertRaises(OSError):
+            self.cli('--dir', d, deck=False, spawn=failing)
+        self.assertEqual(signal.pthread_sigmask(signal.SIG_BLOCK, ()), before, 'also when the program could not be started')
+        self.assertFalse(os.path.exists(os.path.join(d, 'slow_report.lock')), 'and the lock is released')
 
     def has_ended(self, pid):
         """Whether the process no longer runs (a zombie that waits to be collected has ended too, and its descriptors, the lock among them, are closed)."""
@@ -5145,7 +5537,8 @@ class Page(Timed):
             self.assertIn(needle, section)
         self.assertNotIn('never told', section)
         self.assertNotIn('within the noise', text, 'a wide range is explained, never waved away')
-        width = f'{100 * (wilson95(x_scores(games))[2] - wilson95(x_scores(games))[1]):.1f} points here'
+        _p, _lo, _hi = wilson95(x_scores(games))
+        width = f'{float(pc(_hi)[:-1]) - float(pc(_lo)[:-1]):.1f} points here'  # (from the two ends as printed)
         self.assertIn('It can tell whether kx3 plays my-list clearly above or clearly below an even score against these 8 lists', section)
         self.assertIn(f'it cannot tell two decks apart whose scores differ by less than the width of such a range ({width}), and more deals narrow it', section)
 
@@ -5288,6 +5681,8 @@ class Page(Timed):
             t = tempfile.mkdtemp()
             self.addCleanup(shutil.rmtree, t, True)
             man, games = synth_run(t, selfcheck_source={'kx3': source, 'km3': source})
+            man['slow_report']['pin_committed'] = 'yes'  # (a replay is said to be equal to the committed pin only of a pin recorded as committed)
+            rewrite_manifest(t, man)
             text = sr.write_slow_report(t)
             self.assertIn(f'Self-check of `kx3`: `selfcheck pilot=kx3 digest=31d638dbc818b0fa` ({want})', text)
         t, man, games, text = self.build()

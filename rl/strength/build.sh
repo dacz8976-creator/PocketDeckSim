@@ -77,7 +77,12 @@ fi
 # git's tree id of the files that were just extracted (what is about to be compiled), in a scratch repository: .gitignore patterns are overridden (-f) and nothing is converted
 SCRATCH_GIT="$W/engine_tree.git"; rm -rf "$SCRATCH_GIT"
 git --git-dir="$SCRATCH_GIT" init -q
-ENGINE_TREE_ARCHIVED=$(git --git-dir="$SCRATCH_GIT" --work-tree="$W/tree/engine" -c core.autocrlf=false -c core.safecrlf=false -c core.fileMode=true add -A -f >/dev/null && git --git-dir="$SCRATCH_GIT" write-tree)
+# attributes are neutralised: a .gitattributes in the engine, the machine's attributes file and this repository's own would otherwise change the object stored for a file (CRLF turned to
+# LF by `text`, `$Id: ... $` collapsed by `ident`, a filter) and so the id: it must be the id of the bytes that are compiled. core.fileMode=true takes the executable bit from the file system
+# (a build folder on a Windows drive under WSL reports every file as executable, and the id then differs from the ref's: the record says which kind of file system, build_fs).
+mkdir -p "$SCRATCH_GIT/info"
+printf '* -text -eol -ident -filter -working-tree-encoding\n' > "$SCRATCH_GIT/info/attributes"
+ENGINE_TREE_ARCHIVED=$(git --git-dir="$SCRATCH_GIT" --work-tree="$W/tree/engine" -c core.autocrlf=false -c core.safecrlf=false -c core.fileMode=true -c core.attributesFile=/dev/null add -A -f >/dev/null && git --git-dir="$SCRATCH_GIT" write-tree)
 find "$W/tree" -type f -exec touch {} +   # git archive gives every file the same mtime: touch so cargo rebuilds what changed
 cp -r "$HERE/src" "$HERE/Cargo.toml" "$W/tree/rl/strength/"
 # the engine's own lock file pins every dependency; the harness adds only itself
@@ -97,7 +102,8 @@ fi
 grep -E "^(error|warning: unused)|-->|^\s+\|" "$CARGO_LOG" | head -60 || true
 cp "$TARGET/release/strength" "$OUT"
 PROGRAM_SHA=$(sha256sum "$OUT" | cut -d' ' -f1)
-HARNESS_SHA=$(LC_ALL=C; cat "$HERE"/src/*.rs "$HERE/Cargo.toml" | sha256sum | cut -d' ' -f1)
+HARNESS_SHA=$(LC_ALL=C; cat "$W"/tree/rl/strength/src/*.rs "$W/tree/rl/strength/Cargo.toml" | sha256sum | cut -d' ' -f1)   # of the copies that were compiled, not of the checkout as it is now
+BUILD_FS=$(stat -f -c %T "$W" 2>/dev/null || echo unknown)
 echo "engine: $ENGINE_ID"
 echo "engine tree as archived: $ENGINE_TREE_ARCHIVED"
 echo "program: $OUT"
@@ -105,7 +111,7 @@ echo "program sha256: $PROGRAM_SHA"
 echo "harness source sha256: $HARNESS_SHA"
 # the build record beside the program (JSON written by python3 from the shell's values, so nothing needs escaping)
 BR_OUT="$OUT" BR_REF="$REF" BR_ENGINE_ID="$ENGINE_ID" BR_REF_RESOLVED="$ENGINE_REF_RESOLVED" BR_TREE="$ENGINE_TREE_ARCHIVED" BR_PROGRAM_SHA="$PROGRAM_SHA" BR_HARNESS="$HARNESS_SHA" \
-    BR_W="$W" BR_TARGET="$TARGET" BR_JOBS="${STRENGTH_JOBS:-8}" BR_CARGO_HOME="${CARGO_HOME:-}" BR_HOME="$HOME" BR_REPO="$REPO" BR_UNSET="$BUILD_ENV_UNSET" \
+    BR_W="$W" BR_TARGET="$TARGET" BR_JOBS="${STRENGTH_JOBS:-8}" BR_CARGO_HOME="${CARGO_HOME:-}" BR_HOME="$HOME" BR_REPO="$REPO" BR_HERE="$HERE" BR_FS="$BUILD_FS" BR_UNSET="$BUILD_ENV_UNSET" \
     BR_RUSTC="$(env ${UNSET_ARGS[@]+"${UNSET_ARGS[@]}"} rustc -vV 2>&1 || true)" BR_CARGO="$(env ${UNSET_ARGS[@]+"${UNSET_ARGS[@]}"} cargo -V 2>&1 || true)" BR_UNAME="$(uname -srm 2>&1 || true)" BR_LIBC="$( (ldd --version 2>&1 || true) | head -1)" BR_HOST="$(hostname 2>/dev/null || true)" \
     python3 - <<'EOF'
 import datetime, hashlib, json, os, shlex
@@ -138,10 +144,10 @@ def cargo_config_files():
 
 rec = dict(schema=1, program=e['BR_OUT'], program_sha256=e['BR_PROGRAM_SHA'], engine_arg=e['BR_REF'], engine=e['BR_ENGINE_ID'], engine_ref=e['BR_REF_RESOLVED'] or None,
            engine_tree_archived=e['BR_TREE'], harness_source_sha256=e['BR_HARNESS'], rustc=e['BR_RUSTC'], cargo=e['BR_CARGO'], machine=e['BR_UNAME'], libc=e['BR_LIBC'],
-           host=e['BR_HOST'], home=e['BR_HOME'], cargo_home=e['BR_CARGO_HOME'] or None, build_dir=e['BR_W'], target_dir=e['BR_TARGET'], jobs=e['BR_JOBS'],
+           host=e['BR_HOST'], home=e['BR_HOME'], cargo_home=e['BR_CARGO_HOME'] or None, build_dir=e['BR_W'], target_dir=e['BR_TARGET'], build_fs=e['BR_FS'], jobs=e['BR_JOBS'],
            build_env_unset=sorted(e['BR_UNSET'].split()), cargo_config_files=cargo_config_files(),
            built_at=datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ'),
-           rebuild_command='env ' + ' '.join(env_part) + ' bash ' + shlex.quote(os.path.join(e['BR_REPO'], 'rl', 'strength', 'build.sh')) + ' ' + shlex.quote(e['BR_REF']) + ' ' + shlex.quote(e['BR_OUT']))
+           rebuild_command='env ' + ' '.join(env_part) + ' bash ' + shlex.quote(os.path.join(e['BR_HERE'], 'build.sh')) + ' ' + shlex.quote(e['BR_REF']) + ' ' + shlex.quote(e['BR_OUT']))
 with open(e['BR_OUT'] + '.build.json', 'w', encoding='utf-8', newline='\n') as f:
     json.dump(rec, f, indent=1)
     f.write('\n')

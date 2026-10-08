@@ -776,7 +776,7 @@ class RegistrationRecords(T.World):
         self.assertNotIn('REBUILD', pin['engine'])
         self.assertEqual(self.build()['engine'], pin['engine'])
         self.assertEqual(self.build(route='pinned', program='/elsewhere/strength')['engine'], pin['engine'], 'the pinned bytes under another path are still the pinned program')
-        rebuilt = self.build(route='rebuilt', program='/cloud/strength', program_sha='ab' * 32, build_record=self.RECORD)
+        rebuilt = self.build(route='rebuilt', program='/cloud/strength', program_sha='ab' * 32, build_record=self.RECORD, pin_state={'state': 'yes', 'sha256': 'e' * 64, 'detail': ''})
         self.assertEqual(rebuilt['engine'], pin['engine'] + self.REBUILD_SENTENCE.format(path='/cloud/strength', sha12='abababababab', rec12='555555555555', tree12='333333333333',
                                                                                          harness12='bbbbbbbbbbbb', rustc='rustc 1.99.0 (abc 2026-01-01)', digests=DIGESTS_COMMITTED),
                          'the record is named by its own sha256, the engine tree it archived, the harness source and the first line of rustc -vV')
@@ -794,9 +794,9 @@ class RegistrationRecords(T.World):
             self.assertNotIn(gone, engine)
 
     def test_the_registered_engine_text_names_the_pin_by_its_state_and_never_calls_an_uncommitted_pin_the_committed_one(self):
-        """pin_state None (unknown) and 'yes' say 'the committed pin's digests'; anything else (here the test-only 'bypassed', and 'no', which a registration never reaches) says what
-        the pin in use really is."""
-        for how, state, want in (('no state given', None, DIGESTS_COMMITTED), ('committed', {'state': 'yes', 'sha256': 'e' * 64, 'detail': ''}, DIGESTS_COMMITTED),
+        """Only a pin_state of 'yes' says 'the committed pin's digests'; anything else (no state given, which is not "yes" either; the test-only 'bypassed'; and 'no', which a
+        registration never reaches) says what the pin in use really is."""
+        for how, state, want in (('no state given', None, DIGESTS_UNCOMMITTED), ('committed', {'state': 'yes', 'sha256': 'e' * 64, 'detail': ''}, DIGESTS_COMMITTED),
                                  ('let through by the test variable', {'state': 'bypassed', 'sha256': 'e' * 64, 'detail': 'x'}, DIGESTS_UNCOMMITTED),
                                  ('not committed', {'state': 'no', 'sha256': 'e' * 64, 'detail': 'x'}, DIGESTS_UNCOMMITTED)):
             with self.subTest(pin=how):
@@ -806,7 +806,7 @@ class RegistrationRecords(T.World):
                 self.assertEqual('NOT the committed pin' in engine, want == DIGESTS_UNCOMMITTED)
 
     def test_the_two_phrases_for_the_pin_in_use_are_chosen_by_its_state_alone(self):
-        for state, want in ((None, DIGESTS_COMMITTED), ('yes', DIGESTS_COMMITTED), ('bypassed', DIGESTS_UNCOMMITTED), ('no', DIGESTS_UNCOMMITTED), ('', DIGESTS_UNCOMMITTED),
+        for state, want in ((None, DIGESTS_UNCOMMITTED), ('yes', DIGESTS_COMMITTED), ('bypassed', DIGESTS_UNCOMMITTED), ('no', DIGESTS_UNCOMMITTED), ('', DIGESTS_UNCOMMITTED),
                             ('maybe', DIGESTS_UNCOMMITTED)):
             with self.subTest(state=state):
                 self.assertEqual(sr.pin_digests(state), want)
@@ -2282,7 +2282,8 @@ class CommittedPin(unittest.TestCase):
         """The recipe in words: src/*.rs then Cargo.toml, no separators, and the file names sorted the C way (the glob is expanded under LC_ALL=C, because the wrapper sorts by
         code point). BuildScript runs it for real, with names that sort differently in the two orders."""
         build = read(os.path.join(HERE, 'build.sh'))
-        self.assertIn('HARNESS_SHA=$(LC_ALL=C; cat "$HERE"/src/*.rs "$HERE/Cargo.toml" | sha256sum | cut -d\' \' -f1)', build)
+        self.assertIn('HARNESS_SHA=$(LC_ALL=C; cat "$W"/tree/rl/strength/src/*.rs "$W/tree/rl/strength/Cargo.toml" | sha256sum | cut -d\' \' -f1)', build,
+                      'of the copies that were compiled (in the build folder), not of the checkout as it is when the build ends')
         self.assertIn('echo "harness source sha256: $HARNESS_SHA"', build, 'printed')
         self.assertIn('BR_HARNESS="$HARNESS_SHA"', build, 'and the very same value goes into the build record')
 
@@ -2346,6 +2347,25 @@ class CommittedPin(unittest.TestCase):
         self.assertIn('slots 684, 685 and 686', rows[0])
         self.assertIn('seed_reserved', rows[0], 'the row says the pin lists them too')
 
+    def test_the_program_change_in_the_committed_smoke_run_is_still_accepted_and_shown_by_the_current_code(self):
+        """Run 3 of the smoke was made by the version before a change was tied to its run (its 'program_changed' line carries no manifest_sha256, its 'registered' line names the run):
+        a regenerated page still shows the change, the program it changed to is still accepted (a resume would not replay it again), and the run's claims about its program hold."""
+        run3 = os.path.join(ROOT, 'rl', 'results', 'slow_report_smoke_2026-10-07', 'run3_cloud_route_real_rebuild_and_restart')
+        with tempfile.TemporaryDirectory() as t:
+            d = os.path.join(t, 'run3')
+            shutil.copytree(run3, d)
+            man = json.loads(read(os.path.join(d, 'manifest.json')))
+            events = [json.loads(l) for l in read(os.path.join(d, 'slow_report_log.jsonl')).splitlines()]
+            changes = [e for e in events if e['event'] == 'program_changed']
+            self.assertEqual(len(changes), 1)
+            self.assertNotIn('manifest_sha256', changes[0], 'written before the line named its run')
+            self.assertEqual(events[0]['manifest_sha256'], sha(os.path.join(d, 'manifest.json')), 'and the first line of the log names the run')
+            self.assertEqual(sr.accepted_program_shas(d, man), {man['program_sha256'], changes[0]['new_sha256']})
+            self.assertEqual(sr.manifest_provenance_problems(man), [])
+            page = sr.write_slow_report(d)
+            self.assertEqual(page.count('**The program changed mid-run**'), 1)
+            self.assertIn(f'sha256 `{man["program_sha256"][:12]}` -> `{changes[0]["new_sha256"][:12]}`', page)
+
     def test_the_smoke_runs_hold_exactly_the_reserved_seeds(self):
         pin = self.pin()
         smoke = os.path.join(ROOT, 'rl', 'results', 'slow_report_smoke_2026-10-07')
@@ -2388,7 +2408,7 @@ def cloud_section():
 # the assignments build.sh writes, in this order, into the rebuild command of its record (README step 1 gives the first four)
 REBUILD_ENV = ('HOME', 'CARGO_HOME', 'STRENGTH_BUILD_DIR', 'STRENGTH_TARGET_DIR', 'STRENGTH_JOBS', 'STRENGTH_REPO')
 RECORD_FIELDS = ('schema', 'program', 'program_sha256', 'engine_arg', 'engine', 'engine_ref', 'engine_tree_archived', 'harness_source_sha256', 'rustc', 'cargo', 'machine', 'libc', 'host',
-                 'home', 'cargo_home', 'build_dir', 'target_dir', 'jobs', 'build_env_unset', 'cargo_config_files', 'built_at', 'rebuild_command')
+                 'home', 'cargo_home', 'build_dir', 'target_dir', 'build_fs', 'jobs', 'build_env_unset', 'cargo_config_files', 'built_at', 'rebuild_command')
 LIST_FIELDS = ('build_env_unset', 'cargo_config_files')  # the two that are lists (of names, and of {path, sha256}); every other field but schema, engine_ref and cargo_home is text
 
 
@@ -3195,6 +3215,31 @@ class BuildRecordFile(BuildWorld):
         self.assertNotIn(b'\r', text)
         self.assertFalse(text.startswith(b'\xef\xbb\xbf'))
 
+    def test_the_rebuild_command_names_the_script_that_ran_not_the_one_in_the_repository_the_ref_was_read_from(self):
+        """STRENGTH_REPO says where the git objects are (a smoke or a build in a checkout other than the script's); the command that repeats the build runs the script that made the
+        record, wherever that is, with STRENGTH_REPO as one of its assignments."""
+        elsewhere = os.path.join(self.tmp, 'some other checkout')
+        out, rec, printed = self.build(STRENGTH_REPO=elsewhere)
+        words = shlex.split(rec['rebuild_command'])
+        at = words.index('bash')
+        self.assertEqual(words[at + 1], os.path.join(self.here, 'build.sh'), 'the script that ran')
+        self.assertNotIn(os.path.join(elsewhere, 'rl', 'strength', 'build.sh'), words)
+        self.assertIn(f'STRENGTH_REPO={elsewhere}', words)
+        self.assertEqual(words[at + 2:], [self.engine, out])
+        out2, rec2, _ = self.build(out=os.path.join(self.tmp, 'again', 'strength'))  # (no STRENGTH_REPO: the checkout of the script)
+        self.assertEqual(shlex.split(rec2['rebuild_command'])[shlex.split(rec2['rebuild_command']).index('bash') + 1], os.path.join(self.here, 'build.sh'))
+        self.assertIn(f'STRENGTH_REPO={self.tmp}', shlex.split(rec2['rebuild_command']))
+
+    def test_the_harness_hash_is_of_the_copies_that_were_compiled_not_of_the_checkout_after_the_build(self):
+        """A source file edited while cargo runs (or between the copy and the end of the build) must not change what the record says was compiled."""
+        before = sr.harness_source_sha256(self.tmp)
+        edited = os.path.join(self.here, 'src', 'B.rs')
+        self.write_stub('cargo', self.CARGO_V + self.CARGO_NOTES + f'echo "// edited while cargo ran" >> "{edited}"\n' + self.CARGO_BUILDS)
+        out, rec, printed = self.build()
+        self.assertNotEqual(sr.harness_source_sha256(self.tmp), before, 'the checkout was edited during the build')
+        self.assertEqual(rec['harness_source_sha256'], before, 'the record has the hash of the source that was compiled')
+        self.assertIn(f'harness source sha256: {before}', printed)
+
     def test_the_defaults_when_nothing_is_set_are_recorded_as_what_the_build_used(self):
         """No CARGO_HOME (cargo's own default is HOME/.cargo, but the record says nothing was set), no STRENGTH_JOBS (8), no STRENGTH_TARGET_DIR (under the build folder)."""
         out, rec, printed = self.build()
@@ -3258,6 +3303,47 @@ class BuildRecordFile(BuildWorld):
         step('the executable file, one line more')
         write_bytes(os.path.join(self.engine, 'crlf.txt'), b'a\r\nb\r\n')
         step('a file with CRLF line ends')
+
+    def raw_tree(self, folder):
+        """git's tree id of the files of a flat folder exactly as their bytes are, whatever attributes any repository would put on them: each file hashed with hash-object --no-filters,
+        then mktree."""
+        scratch = os.path.join(self.tmp, 'raw-tree-repo')
+        subprocess.run(['git', 'init', '-q', scratch], check=True, env=self.env())
+        entries = []
+        for n in sorted(os.listdir(folder)):
+            blob = subprocess.run(['git', '-C', scratch, 'hash-object', '-w', '--no-filters', os.path.join(folder, n)], check=True, capture_output=True, text=True, env=self.env()).stdout.strip()
+            mode = '100755' if os.access(os.path.join(folder, n), os.X_OK) else '100644'
+            entries.append(f'{mode} blob {blob}\t{n}')
+        return subprocess.run(['git', '-C', scratch, 'mktree'], input='\n'.join(entries) + '\n', check=True, capture_output=True, text=True, env=self.env()).stdout.strip()
+
+    def test_attributes_in_the_engine_or_on_the_machine_do_not_change_the_tree_that_is_recorded(self):
+        """The tree id is of the bytes that are compiled. A .gitattributes in the engine (text normalisation, ident) or an attributes file of the machine would otherwise change the
+        object git stores for a file (CRLF turned to LF, `$Id: ... $` collapsed to `$Id$`) and so the id, and the record would name a tree that is not what was compiled."""
+        write(os.path.join(self.engine, '.gitattributes'), '* text\n*.id ident\n')
+        write_bytes(os.path.join(self.engine, 'crlf.txt'), b'a\r\nb\r\n')
+        write_bytes(os.path.join(self.engine, 'with.id'), b'$Id: not collapsed to the short form $\n')
+        write_bytes(os.path.join(self.engine, 'second.dat'), b'$Id: second $\n')
+        xdg = os.path.join(self.tmp, 'xdg')
+        write(os.path.join(xdg, 'git', 'attributes'), '*.dat ident\n')  # (the machine's own attributes file, where git looks without being told)
+        want = self.raw_tree(self.engine)
+        # the conversions are real: add the same files to a repository the way an unprotected script would and the tree is another
+        converted = os.path.join(self.tmp, 'converted.git')
+        subprocess.run(['git', '--git-dir', converted, 'init', '-q'], check=True, env=self.env(XDG_CONFIG_HOME=xdg))
+        subprocess.run(['git', '--git-dir', converted, '--work-tree', self.engine, '-c', 'core.autocrlf=false', 'add', '-A', '-f'], check=True, env=self.env(XDG_CONFIG_HOME=xdg))
+        naive = subprocess.run(['git', '--git-dir', converted, 'write-tree'], check=True, capture_output=True, text=True, env=self.env(XDG_CONFIG_HOME=xdg)).stdout.strip()
+        self.assertNotEqual(naive, want, 'these attributes do change the objects git stores')
+        out, rec, printed = self.build(ref=self.engine, XDG_CONFIG_HOME=xdg)
+        self.assertEqual(rec['engine_tree_archived'], want)
+        self.assertIn(f'engine tree as archived: {want}', printed)
+
+    def test_the_record_says_which_kind_of_file_system_the_build_ran_on(self):
+        """Under WSL a build folder on a Windows drive reports every file as executable, so the archived tree could not equal the ref's: the record says what kind of file system
+        the build folder is on (stat -f), so a refused rebuild can be explained."""
+        if not shutil.which('stat'):
+            self.skipTest('needs stat')
+        out, rec, printed = self.build()
+        self.assertEqual(rec['build_fs'], self.shell(f'stat -f -c %T "{os.path.join(self.tmp, "build")}"'))
+        self.assertTrue(rec['build_fs'], 'a name, not an empty text')
 
     def test_the_tree_is_worked_out_from_the_files_that_were_extracted_not_read_back_from_the_ref(self):
         """A stub tar that changes a file after the real one has extracted the archive: what is compiled is not what the ref says, and the record must say so (its tree is of the
@@ -3690,6 +3776,51 @@ class ReadmeCloudRoute(unittest.TestCase):
     def script(self, *argv):
         return subprocess.run([sys.executable, '-B', os.path.join(HERE, 'slow_report.py'), *argv], capture_output=True, text=True)
 
+    def step(self, number):
+        """The text of step `number` of the numbered list of the cloud section (up to the next step)."""
+        return re.split(rf'\n{number}\. ', self.section(), maxsplit=1)[1].split(f'\n{number + 1}. ')[0]
+
+    def test_the_section_says_a_given_self_check_text_is_held_to_the_pin_and_a_registration_is_checked_against_itself_and_its_pin(self):
+        section, prereg = self.section(), read(os.path.join(HERE, 'strength_prereg.py'))
+        for sentence, code_words in (
+                ("The same holds for a hand-written `use` config run through `strength_prereg.py` directly: a self-check text it gives must be the committed pin's own text for that pilot "
+                 '(a copied one must also be one the pin says was measured on this program), or it is refused before anything is written. A text said to be replayed needs a program route '
+                 'that fits the program (the pinned binary, or a rebuild whose build record is on disk beside it and is the one the block carries), and the committed pin is asked for '
+                 'whenever the block carries a pin state or a route, with a text or without.',
+                 ["REFUSED: the self-check text given for {spec} is not the text the pin has for it", "REFUSED: the pin says its self-check texts were measured on a program with sha256",
+                  "if given and cfg.get('selfcheck_how') != 'replayed':", "REFUSED: a replayed self-check text needs a program route (pinned or rebuilt)", 'def route_problem(route, prog, prog_sha, pin, block):',
+                  "block.get('pin_committed') is not None or block.get('program_route') is not None"]),
+                ("Whenever a registered run is read again (`--dir`), what its registration says about the program is checked against itself (a pinned-route registration must carry the pinned binary's "
+                 "sha256 as its program's, a rebuilt-route one a build record for that very program with the engine tree as archived and the harness source the registration names) and, while the pin "
+                 'file in use is the one the registration was made under, against that pin (a later pin is not asked): a resume or a dry run refuses a registration that fails, and a '
+                 '`--report-only` page flags it in "What was run".',
+                 ['def manifest_provenance_problems(man):', 'def pin_provenance_problems(man, pin, pin_path):', 'What the registration says about the program does not hold'])):
+            with self.subTest(sentence=sentence[:60]):
+                self.assertIn(sentence, section)
+                for words in code_words:
+                    self.assertIn(words, read(os.path.join(HERE, 'slow_report.py')) + prereg)
+
+    def test_step_5_says_a_restarted_container_needs_the_fetches_again(self):
+        """A restart brings back a container with a clean checkout and cargo cache: the branch with the pinned commit and the dependencies have to be fetched again, with network,
+        before the rebuild."""
+        step5 = self.step(5)
+        self.assertIn('git fetch origin claude/playout-pilot', step5)
+        self.assertIn('cargo fetch', step5)
+        self.assertIn('git fetch origin claude/playout-pilot', self.step(1), 'and step 1 is where they were first needed')
+        self.assertIn('cargo fetch', self.step(1))
+        pinned = self.pin()['engine_ref'][:8]
+        self.assertIn(f'mkdir -p /tmp/d513 && git archive {pinned} engine | tar -x -C /tmp/d513 && (cd /tmp/d513/engine && cargo fetch --locked)', self.step(1),
+                      "the dependencies are fetched against the pinned commit's lock file, not that of whatever checkout one is in")
+        self.assertIn("the same `cargo fetch --locked` on the pinned commit's lock file as in step 1", step5)
+        self.assertNotIn('against `engine/Cargo.lock`', self.section())
+
+    def test_step_1_says_what_the_build_file_system_has_to_do_with_the_tree_and_the_file_modes(self):
+        """The archived tree includes the file modes, which build.sh takes from the file system (core.fileMode=true in its scratch repository): a build folder on a Windows drive under
+        WSL (DrvFs, no metadata) reports every file as executable, the tree is then not the ref's, and the rebuild is refused rather than wrong. The record says the kind (build_fs)."""
+        step1 = self.step(1)
+        for phrase in ('core.fileMode', '`build_fs`', 'Windows', 'refused'):
+            self.assertIn(phrase, step1)
+
     def test_the_flags_the_section_uses_exist_in_the_parser(self):
         section, helped = self.section(), self.script('--help')
         self.assertEqual(helped.returncode, 0, helped.stderr)
@@ -3813,9 +3944,15 @@ class ReadmeCloudRoute(unittest.TestCase):
                  ['so nothing is run: the program at', '(no self-check is replayed and no program change is logged)']),
                 ('A run registered on the pinned route needs the same program byte for byte.', ['this run was registered on the pinned route, which has no build record and no rebuild']),
                 ('Anything else is refused, naming both sha256 values', ['{PROGRAM_PROBLEM} {str(man.get("program_sha256"))[:12]}']),
-                ('The `program_changed` lines of `slow_report_log.jsonl` are checked against the registration (rebuilt route, build record with the registered engine tree and harness hash, the registered '
-                 'self-check texts), so a stray or foreign line is neither honoured nor shown on the page',
-                 ["(man.get('slow_report') or {}).get('program_route') == 'rebuilt' and program_change_valid(e, man)", "rec.get('engine_tree_archived') == sr.get('engine_tree')",
+                ('The program and its build record are read again after the replay, and the change is refused if either is not what was replayed.',
+                 ['changed while the self-checks were replayed (sha256', 'if not os.path.isfile(rec[\'record_file\']) or sha(rec[\'record_file\']) != rec[\'record_sha256\']']),
+                ('The page also says when a sitting went back to an earlier accepted build (the registered one or an earlier change: no replay is needed, no change is logged).',
+                 ['The program went back to an earlier accepted build', 'so no new replay was needed']),
+                ('The `program_changed` lines of `slow_report_log.jsonl` are checked against the registration (rebuilt route, written for this run: the sha256 of its `manifest.json` is in the line, '
+                 'build record with the registered engine tree and harness hash, the registered self-check texts), so a stray, foreign or pasted line is neither honoured nor shown on the page '
+                 "(a line written before lines named their run counts when the `registered` line of the log names this run's manifest)",
+                 ["(man.get('slow_report') or {}).get('program_route') == 'rebuilt' and program_change_valid(e, man, msha, legacy)", "e.get('manifest_sha256') == msha", "'manifest_sha256' not in e",
+                  "def log_started_for(events, msha):", "rec.get('engine_tree_archived') == sr.get('engine_tree')",
                   "rec.get('harness_source_sha256') == sr.get('harness_source_sha256')", "e.get('selfcheck') == man.get('selfcheck')"]),
                 ('that is a consistency check, not authentication (whoever can write the run folder can rewrite `manifest.json` and `manifest.sha256` as well): the pushed commit of the registration '
                  'is the tamper evidence', ['it is NOT authentication', 'whoever can write to the run folder can also rewrite manifest.json and manifest.sha256 (the pushed commit of the registration is the tamper evidence)']))
@@ -3916,7 +4053,8 @@ class ReadmeCloudRoute(unittest.TestCase):
         self.assertNotIn('energy types', self.readme().lower())
 
     # the options the sections write that belong to another program: cargo's, and git's in the one command that fixes a folder git refuses as unsafe
-    FOREIGN = {'--offline': 'cargo --offline', '--global': 'git config --global --add safe.directory', '--add': 'git config --global --add safe.directory', '--exec': '`rebase --exec`'}
+    FOREIGN = {'--offline': 'cargo --offline', '--global': 'git config --global --add safe.directory', '--add': 'git config --global --add safe.directory', '--exec': '`rebase --exec`',
+               '--locked': 'cargo fetch --locked'}
 
     def test_every_flag_the_section_writes_is_an_option_of_the_script_except_the_ones_it_gives_to_cargo_and_to_git(self):
         section = self.section()
@@ -3936,7 +4074,7 @@ class ReadmeCloudRoute(unittest.TestCase):
         """The cloud section is checked above; this is the rest of the slow report's part (from its heading to 'Files'), which also names the options of slow_report_existing.py."""
         text = self.readme()
         part = text.split('## The slow report (opt-in)')[1].split('\n## Files')[0]
-        flags = set(re.findall(r'(?<![\w-])--[a-z][a-z-]*', part))
+        flags = set(re.findall(r'(?<![\w-])--[a-z][a-z-]*', part))  # (--locked is cargo's, in the command that fetches the dependencies: FOREIGN)
         options = ''
         for script in ('slow_report.py', 'slow_report_existing.py'):
             helped = subprocess.run([sys.executable, '-B', os.path.join(HERE, script), '--help'], capture_output=True, text=True)
@@ -3968,8 +4106,9 @@ class ReadmeCloudRoute(unittest.TestCase):
         self.assertEqual(branch, 'claude/playout-pilot', 'the pin\'s own text names the branch the commit is on')
         self.assertIn(f"The commit `{pin['engine_ref']}` is on the branch `origin/{branch}`", section)
         self.assertIn(f'git fetch origin {branch}', section)
-        self.assertIn('`cargo fetch` against `engine/Cargo.lock`', section)
-        self.assertIn('cp "$W/tree/engine/Cargo.lock" "$W/tree/rl/strength/Cargo.lock"', build, 'the lock file the section says to fetch against is the one build.sh builds with')
+        self.assertIn(f"fetch them first, with network, against the lock file of the pinned commit and not of whatever checkout you are in: `mkdir -p /tmp/d513 && git archive {pin['engine_ref'][:8]} engine | "
+                      'tar -x -C /tmp/d513 && (cd /tmp/d513/engine && cargo fetch --locked)`', section)
+        self.assertIn('cp "$W/tree/engine/Cargo.lock" "$W/tree/rl/strength/Cargo.lock"', build, 'the lock file the section says to fetch against is the one build.sh builds with: the engine\'s, of the archived ref')
 
 
 class ReadmeCloudRouteBehaviour(T.World):

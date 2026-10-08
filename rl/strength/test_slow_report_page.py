@@ -59,6 +59,11 @@ PAGE_QUESTION_ALONE = 'Question: how does my-list do when kx3 plays it against t
 CUT_NOTE = ' (games across both arms, about half of them kx3 games)'  # what the line that says --max-games stopped the call adds to the count it names
 
 
+def printed_width(lo, hi):
+    """The width of a Wilson range in points as a reader gets it from the two ends the page prints (each rounded to a tenth of a percent): their difference, to a tenth."""
+    return f'{float(pc(hi)[:-1]) - float(pc(lo)[:-1]):.1f}'
+
+
 def bypassed_pin_line(world):
     """The pin line of the plan for a World fixture: its temporary repository has no commit of the pin, World lets the hand-made pin through with the test-only variable, and the line says so."""
     return (f'pin committed: bypassed (rl/strength/slow_report_pin.json sha256 {T.sha(world.pin_path)[:12]}; HEAD has no rl/strength/slow_report_pin.json in {world.repo} '
@@ -1272,10 +1277,12 @@ class WhatWasRunLines(Pages):
 
     def test_each_self_check_line_says_how_its_text_was_obtained_in_these_words(self):
         for source, how in ((GIVEN, HOW_GIVEN), (REPLAYED, HOW_REPLAYED), ('run by strength_prereg.py', 'replayed at registration'), ('something else', 'recorded at registration'), (None, 'recorded at registration')):
-            t, text = self.page_with(source=source)
+            t, text = self.page_with(source=source, pin_committed='yes')  # (a replay is said to be equal to the committed pin only of a pin recorded as committed)
             self.assertEqual([l for l in text.splitlines() if l.startswith('- Self-check of `kx3`')],
                              [f'- Self-check of `kx3`: `selfcheck pilot=kx3 digest=31d638dbc818b0fa` ({how})'], source)
         t, man, games = self.run_dir(deals=1, selfcheck_source={'kx3': GIVEN, 'km3': REPLAYED})
+        man['slow_report']['pin_committed'] = 'yes'
+        T.rewrite_manifest(t, man)
         text = sr.write_slow_report(t)
         self.assertIn(f'`selfcheck pilot=kx3 digest=31d638dbc818b0fa` ({HOW_GIVEN})', text, 'each pilot has its own source')
         self.assertIn(f'`selfcheck pilot=km3 digest=81b572198c04d5d1` ({HOW_REPLAYED})', text)
@@ -1336,14 +1343,16 @@ class WhatWasRunLines(Pages):
                 self.assertNotIn('so the pinned binary was not built', text)
 
     def test_a_rebuild_page_without_the_machine_or_the_build_record_says_only_what_it_knows(self):
-        """A run registered before the record existed (no registered_on, no build_record, no pin_committed) is still described, without a gap or a None."""
+        """A run registered before the record existed (no registered_on, no build_record, no pin_committed) is still described, without a gap or a None: the self-checks are said to be
+        equal to the pin file in use (a state that was not recorded is not "committed"), and the missing build record is flagged by the provenance line."""
         t, text = self.page_with(program_route='rebuilt')
-        self.assertEqual([l for l in text.splitlines() if 'NOT the pinned binary' in l], [rebuild_paragraph()])
+        self.assertEqual([l for l in text.splitlines() if 'NOT the pinned binary' in l], [rebuild_paragraph(digests=FILE_DIGESTS)])
         for absent in ('Build record', '- Pin ', 'None', '()'):
             self.assertNotIn(absent, text)
 
     def test_the_lines_come_in_this_order_program_rebuild_record_pin_self_checks_build_harness_school_deck_registration(self):
-        t, text = self.page_with(program_route='rebuilt', school_rule='off', source=REPLAYED, registered_on='cloud-box-1', build_record=BUILD_RECORD, pin_committed='yes')
+        t, text = self.page_with(program_route='rebuilt', school_rule='off', source=REPLAYED, registered_on='cloud-box-1', build_record=BUILD_RECORD, pin_committed='yes',
+                                 program=('/cloud/build/strength', 'f' * 64))  # (the record is for this program: nothing for the provenance line to flag)
         sec = self.section(text)
         starts = ('- Pilots:', '- The program is NOT the pinned binary', '- Build record', '- Pin ', '- Self-check of `kx3`', '- Self-check of `km3`', '- Build:', '- Harness source',
                   '- School-morning rule', '- Deck file', '- Registered', '- 1 deal')
@@ -1384,7 +1393,7 @@ class WhatWasRunLines(Pages):
 
     def test_each_program_change_in_the_log_is_a_line_with_the_games_started_before_and_after_it(self):
         t, man, games = self.rebuilt_run()
-        change = lambda new, **over: T.change_event_for(man, new, pin_committed=T.DROP, old_sha256='a' * 64, **over)  # (no pin state recorded: read as the committed pin)
+        change = lambda new, **over: T.change_event_for(man, new, pin_committed='yes', old_sha256='a' * 64, **over)
         events = [change('b' * 64, at='2026-10-10T10:05:01Z', record_sha256='c' * 64, replayed_on='cloud-box-2'),
                   dict(at='2026-10-10T10:05:00Z', event='slice_end', returncode=0),
                   change('d' * 64, at='2026-10-10T10:05:00Z', record_sha256='e' * 64, replayed_on='cloud-box-3')]
@@ -1398,7 +1407,7 @@ class WhatWasRunLines(Pages):
             '- **The program changed mid-run** (2026-10-10T10:05:00Z): sha256 `aaaaaaaaaaaa` -> `dddddddddddd` after a restart or rebuild; its build record has the pinned engine tree and '
             "harness source (record `eeeeeeeeeeee`) and both self-checks were replayed again on cloud-box-3 and equal the committed pin's digests. 0 games of the 32 played so far were started before "
             'this change and 32 after; the numbers above pool them.'], 'in the order of the log, a game that started in the very second of the change is after it, other events and a torn line are not changes')
-        self.assertEqual(self.section(text)[2:4], changes, 'right after the pilots and the rebuild paragraph, there being no build record and no pin line here')
+        self.assertEqual(self.section(text)[3:5], changes, 'right after the pilots, the line that flags the missing build record and the rebuild paragraph, there being no build record line and no pin line here')
         t, man, games = self.rebuilt_run()
         self.assertNotIn('program changed', sr.write_slow_report(t).lower(), 'a run with no change in its log says nothing of one')
 
@@ -1464,10 +1473,10 @@ class WhatWasRunLines(Pages):
         self.assertEqual(text.count('changed mid-run'), 2)
 
     def test_the_rebuild_paragraph_and_the_self_check_lines_say_what_the_pin_was(self):
-        """What the self-checks were equal to is the committed pin's digests for a committed pin (and for a run from before the state was recorded), and, for a pin let through for a
-        test, the pin file in use, said not to be the committed one."""
+        """What the self-checks were equal to is the committed pin's digests only for a pin recorded as committed; for a pin let through for a test, or for a run whose registration did
+        not record the state (which is not "committed" either), it is the pin file in use, said not to be the committed one."""
         detail = 'HEAD has no rl/strength/slow_report_pin.json in /tmp/x/repo (not a git repository, no commit, or the file is not committed); allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use)'
-        for state, digests, how in ((None, COMMITTED_DIGESTS, HOW_REPLAYED), ('yes', COMMITTED_DIGESTS, HOW_REPLAYED), ('bypassed', FILE_DIGESTS, HOW_REPLAYED_FILE),
+        for state, digests, how in ((None, FILE_DIGESTS, HOW_REPLAYED_FILE), ('yes', COMMITTED_DIGESTS, HOW_REPLAYED), ('bypassed', FILE_DIGESTS, HOW_REPLAYED_FILE),
                                     ('no', FILE_DIGESTS, HOW_REPLAYED_FILE)):
             with self.subTest(state):
                 t, text = self.page_with(program_route='rebuilt', source=REPLAYED, pin_committed=state, pin_committed_detail=detail if state in ('bypassed', 'no') else None)
@@ -1492,7 +1501,7 @@ class WhatWasRunLines(Pages):
         text = sr.write_slow_report(t)  # ... and the changes are each judged by the pin of their own replay
         changes = [l for l in text.splitlines() if l.startswith('- **The program changed mid-run**')]
         self.assertEqual([re.search(r' and equal (.*)\. \d+ games? of the \d+ played so far', l).group(1) for l in changes],
-                         [COMMITTED_DIGESTS, FILE_DIGESTS, COMMITTED_DIGESTS, FILE_DIGESTS, COMMITTED_DIGESTS], 'a replay with no state recorded is read as the committed pin, any other state is not')
+                         [COMMITTED_DIGESTS, FILE_DIGESTS, FILE_DIGESTS, FILE_DIGESTS, FILE_DIGESTS], 'only a replay recorded as made under the committed pin says so; a replay with no state recorded does not')
 
     def test_record_text_is_the_text_of_an_entry_or_not_recorded(self):
         rec = dict(a='text', b='', c=None, d=5, e=['x'], f={}, g=True, h='two\nlines')
@@ -1733,7 +1742,7 @@ class NothingSaysPassOrFail(Pages):
                 "- The 8 lists count equally here, not by how common they are on the ladder.\n"
                 "- The range covers only the luck of the shuffles and coin flips in these 32 games; it does not cover how true to the real game the simulator is. "
                 "It can tell whether kx3 plays my-list clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by "
-                f"less than the width of such a range ({100 * (hi - lo):.1f} points here), and more deals narrow it.\n"
+                f"less than the width of such a range ({printed_width(lo, hi)} points here), and more deals narrow it.\n"
                 "- There is no pass or fail line: whether my-list is worth playing is a call for the player.")
         self.assertEqual(self.part(text, "## What these numbers can and can't say").strip(), want)
 
@@ -1741,9 +1750,22 @@ class NothingSaysPassOrFail(Pages):
         for kw in (dict(deals=1), dict(deals=5, win=lambda o, d, s: 'deck')):  # a symmetric range and a lopsided one clipped at 100%
             t, man, games, text = self.build(**kw)
             p, lo, hi = wilson95(T.x_scores(games))
-            width = f'{100 * (hi - lo):.1f}'
+            width = printed_width(lo, hi)
             self.assertIn(f'less than the width of such a range ({width} points here)', text)
             self.assertNotIn(f'({100 * (hi - lo) / 2:.1f} points here)', text)
+
+    def test_the_width_is_worked_out_from_the_two_ends_the_page_prints_so_it_never_disagrees_with_them(self):
+        """The ends are printed rounded to a tenth; a width from the unrounded numbers can differ from the difference of the printed ones by a tenth (30.449 and 50.451 print as 30.4%
+        and 50.5%, 20.0 apart before rounding and 20.1 as printed). The page says the width a reader gets from the two numbers in front of them."""
+        t, man, games, text = self.build(deals=2)
+        with mock.patch.object(sr, 'wilson_range', lambda xs: (0.4, 0.30449, 0.50451)):
+            text = sr.write_slow_report(t)
+        self.assertIn('probably between 30.4% and 50.5%', text)
+        self.assertIn('less than the width of such a range (20.1 points here), and more deals narrow it.', text)
+        self.assertNotIn('(20.0 points here)', text)
+        self.assertEqual(sr.wilson_width_points(0.30449, 0.50451), '20.1')
+        for lo, hi, want in ((0.0, 1.0, '100.0'), (0.7061, 0.8782, '17.2'), (0.2, 0.2, '0.0'), (0.0, 0.3641, '36.4'), (0.28, 0.72, '44.0')):
+            self.assertEqual(sr.wilson_width_points(lo, hi), want, (lo, hi))
 
 
 class WhatTheTerminalSays(T.World):
@@ -2193,6 +2215,20 @@ def children_of(pid):
     return out
 
 
+def processes_running_from(folder):
+    """The pids (Linux /proc) of the processes, other than this one, whose command line names `folder`: what a test left running from its own temporary folder."""
+    out = []
+    for p in os.listdir('/proc'):
+        if p.isdigit() and int(p) != os.getpid():
+            try:
+                with open(f'/proc/{p}/cmdline', 'rb') as f:
+                    if folder.encode() in f.read():
+                        out.append(int(p))
+            except OSError:
+                pass
+    return out
+
+
 class LinesComeAsTheyAreSaid(T.World):
     def test_each_line_reaches_the_terminal_while_the_run_is_still_going(self):
         """A report runs for hours under nohup and its log is read while it plays: a line must not wait in a buffer until the wrapper ends."""
@@ -2227,11 +2263,13 @@ class LinesComeAsTheyAreSaid(T.World):
                 proc.kill()
                 proc.wait()
             proc.stdout.close()
-            for pid in kids:  # only what this wrapper started, and only if it is somehow still there
+            left = processes_running_from(self.tmp)  # the program the wrapper started may not have been a child yet when `kids` was read: anything still running from this test's own folder
+            for pid in set(kids) | set(left):  # only what this wrapper started, and only if it is somehow still there
                 try:
                     os.kill(pid, signal.SIGKILL)
                 except ProcessLookupError:
                     pass
+        self.assertEqual(left, [], 'SIGTERM stopped the program the wrapper had started: nothing of this test is left running')
 
 
 # ---------------------------------------------------------------------------------------------------------- the page built from games that already exist

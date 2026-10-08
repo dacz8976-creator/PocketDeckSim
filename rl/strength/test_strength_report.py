@@ -245,15 +245,30 @@ class RegistrationOfARebuiltProgram(unittest.TestCase):
         record = dict(schema=1, program_sha256=psha, engine_tree_archived='3' * 40, harness_source_sha256='b' * 64, rustc='rustc 1.99.0\nbinary: rustc')
         equal_to = self.COMMITTED_PIN if pin_committed == 'yes' else self.UNCOMMITTED_PIN
         self.replayed = f'replayed by slow_report.py on the registering machine just before registration (equal to {equal_to})'
+        # a given text is held to the committed pin (or, with the test-only variable, to the pin file named): the pin of this repository has these texts
+        texts = {'km3': 'selfcheck pilot=km3 digest=aaaa', 'kx3': 'selfcheck pilot=kx3 digest=bbbb'}
+        pin_path = os.path.join(repo, 'rl', 'strength', 'slow_report_pin.json')
+        os.makedirs(os.path.dirname(pin_path), exist_ok=True)
+        write(pin_path, json.dumps(dict(selfcheck=texts, selfcheck_measured_on_sha256='c' * 64, program_sha256='c' * 64, engine_tree='3' * 40, harness_source_sha256='b' * 64), indent=1) + '\n')
+        record_file = program + '.build.json'  # the build record beside the rebuilt program (a rebuild is checked by it)
+        write(record_file, json.dumps(record, indent=1) + '\n')
+        record = dict(record, record_file=record_file, record_sha256=hashlib.sha256(read(record_file, 'rb')).hexdigest())
+        env = {k: v for k, v in os.environ.items() if k != 'SLOW_REPORT_ALLOW_UNCOMMITTED_PIN'}
+        if pin_committed == 'yes':  # the pin is committed in the repository
+            for args in (('init', '-q'), ('add', '-A'), ('commit', '-q', '-m', 'everything')):
+                subprocess.run(['git', '-C', repo, '-c', 'user.name=t', '-c', 'user.email=t@t', '-c', 'commit.gpgsign=false', *args], check=True, capture_output=True,
+                               env=dict(env, GIT_CONFIG_GLOBAL=os.devnull, GIT_CONFIG_NOSYSTEM='1'))
+        else:
+            env['SLOW_REPORT_ALLOW_UNCOMMITTED_PIN'] = '1'
         cfg = dict(name='rebuilt', question='q', pilot='kx3', reference='km3', decks=['a-deck'], opponent_groups=['panel'], deals=1, seats=[0], seed_base=24_600_000_000, stage='use',
-                   program=program, program_sha256=psha, selfcheck_given={'km3': 'selfcheck pilot=km3 digest=aaaa', 'kx3': 'selfcheck pilot=kx3 digest=bbbb'},
+                   program=program, program_sha256=psha, selfcheck_given=texts,
                    selfcheck_given_program_sha256=psha, selfcheck_how='replayed',
-                   slow_report=dict(version=1, headline='kx3 (d513e37b) on a-deck v km3 on the public panel', pin=dict(path='rl/strength/slow_report_pin.json', sha256='e' * 64),
+                   slow_report=dict(version=1, headline='kx3 (d513e37b) on a-deck v km3 on the public panel', pin=dict(path='rl/strength/slow_report_pin.json', sha256=hashlib.sha256(read(pin_path, 'rb')).hexdigest()),
                                     program_route='rebuilt', pin_committed=pin_committed, pin_committed_detail='HEAD has no pin' if pin_committed != 'yes' else None, registered_on='cloud-box',
                                     build_record=record))
         write(os.path.join(t, 'config.json'), json.dumps(cfg))
         r = subprocess.run([sys.executable, '-B', os.path.join(harness, 'strength_prereg.py'), '--config', os.path.join(t, 'config.json'), '--out', out, '--repo', repo],
-                           capture_output=True, text=True)
+                           capture_output=True, text=True, env=env)
         self.assertEqual(r.returncode, 0, r.stderr)
         return out
 

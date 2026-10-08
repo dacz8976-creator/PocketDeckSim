@@ -20,6 +20,14 @@ CONFIG.json (all keys but the first four optional):
                           measured on: the pin's, or the program's own for a text replayed just now) equals that program's sha256, because a digest belongs to
                           the exact binary it was measured on. selfcheck_how 'replayed' makes the recorded source say the text was replayed on the registering machine
                           (otherwise: copied from the pin). A spec not named here is still checked.
+                          A given text is held to the committed pin: the pin that the slow_report block names (path and sha256) must be the
+                          rl/strength/slow_report_pin.json committed at HEAD of --repo (only the test-only variable SLOW_REPORT_ALLOW_UNCOMMITTED_PIN lets the
+                          file with that sha256 through), every given text must be the pin's own text for that pilot, and a copied (not replayed) text must be
+                          one the pin says was measured on this program (selfcheck_measured_on_sha256). The block's pin_committed is what the script found
+                          ('yes' or 'bypassed'); a config that says another state is refused. The same pin is asked for whenever the block carries a
+                          pin_committed or a program_route, text or no text; a program_route is checked against a program that is there ('pinned': the
+                          pin's program; 'rebuilt': PROGRAM.build.json on disk is for this program and the pin's engine tree and harness source, and the
+                          block's build_record is that file's), and a text said to be replayed (selfcheck_how) needs such a route.
   selfcheck_given_program_sha256, selfcheck_how   see selfcheck_given
   slow_report             a free block recorded in the manifest and named in PREREGISTRATION.md (written by slow_report.py)
 
@@ -31,6 +39,8 @@ import argparse, collections, hashlib, json, os, re, subprocess, sys, datetime
 HERE = os.path.dirname(os.path.abspath(__file__))
 # variables that make git read ANOTHER repository whatever `git -C` says (a git hook or `rebase --exec` exports them); slow_report.py reads its git with them removed too
 GIT_REPO_VARS = ('GIT_DIR', 'GIT_WORK_TREE', 'GIT_INDEX_FILE', 'GIT_OBJECT_DIRECTORY', 'GIT_ALTERNATE_OBJECT_DIRECTORIES', 'GIT_COMMON_DIR', 'GIT_NAMESPACE', 'GIT_PREFIX')
+PIN_REL = 'rl/strength/slow_report_pin.json'
+ALLOW_UNCOMMITTED_PIN = 'SLOW_REPORT_ALLOW_UNCOMMITTED_PIN'  # test only (see slow_report.py): lets a hand-made pin through, and the registration says so
 STAGES = ('dev', 'heldout', 'use')
 _WHITE_SPACE_RUN = re.compile('[\\t\\n\\x0b\\x0c\\r \\x85\\xa0\\u1680\\u2000-\\u200a\\u2028\\u2029\\u202f\\u205f\\u3000]+')  # Rust's char::is_whitespace (Unicode White_Space), as the engine splits a line
 
@@ -65,6 +75,84 @@ def deck_signature(path):
         return hashlib.sha256(json.dumps(sorted(cards.items())).encode('utf-8')).hexdigest()
     except Exception:
         return 'raw:' + sha(path)
+
+
+def committed_pin(root, sr):
+    """(the pin, 'yes' | 'bypassed') for a `use` config that gives a self-check text: the pin the slow-report block names (by its sha256) must be the rl/strength/slow_report_pin.json
+    committed at HEAD of the repository `root` (git read without GIT_DIR and its relatives), or, only with the test-only variable SLOW_REPORT_ALLOW_UNCOMMITTED_PIN, the file the
+    block's path names with that sha256 ('bypassed'). A text 'copied from the pin' or 'replayed and equal to the pin' means something only against the committed pin: a config written
+    by hand and run through this script directly must not be able to claim it. Exits with a REFUSED message (before anything is written) otherwise."""
+    entry = (sr or {}).get('pin') if isinstance((sr or {}).get('pin'), dict) else {}
+    want, rel = entry.get('sha256'), entry.get('path')
+    env = {k: v for k, v in os.environ.items() if k not in GIT_REPO_VARS}
+    env['GIT_OPTIONAL_LOCKS'] = '0'
+    why = ''
+    try:
+        r = subprocess.run(['git', '-C', root, 'cat-file', 'blob', f'HEAD:./{PIN_REL}'], capture_output=True, env=env)
+        if r.returncode != 0:
+            said = r.stderr.decode('utf-8', 'replace').strip()
+            why = f'HEAD has no {PIN_REL} in {root}' + (f' (git said: {said.splitlines()[0][:200]})' if said else '')
+        elif not isinstance(want, str) or hashlib.sha256(r.stdout).hexdigest() != want:
+            why = f'the pin the config names (sha256 {str(want)[:12]}) is not the {PIN_REL} committed at HEAD (sha256 {hashlib.sha256(r.stdout).hexdigest()[:12]})'
+        else:
+            try:
+                return json.loads(r.stdout.decode('utf-8')), 'yes'
+            except ValueError as e:
+                why = f'the {PIN_REL} committed at HEAD cannot be read ({e})'
+    except OSError:
+        why = 'git is not available, so the committed pin cannot be read'
+    if os.environ.get(ALLOW_UNCOMMITTED_PIN) and isinstance(want, str) and isinstance(rel, str) and rel:
+        for p in ([rel] if os.path.isabs(rel) else [os.path.join(root, rel), os.path.join(HERE, '..', '..', rel)]):
+            if os.path.isfile(p) and sha(p) == want:
+                try:
+                    return load_json_file(p), 'bypassed'
+                except (OSError, ValueError) as e:
+                    why += f'; {p} cannot be read ({e})'
+        why += f'; no pin file with sha256 {want[:12]} at {rel} either (allowed by {ALLOW_UNCOMMITTED_PIN}, test use)'
+    sys.exit(f'REFUSED: the pin the config names is not the committed one: {why}. A given self-check text is the pin\'s own, so the pin must be the {PIN_REL} committed at HEAD of the repository '
+             '(commit it, or leave the text out and let the script play the self-check). Nothing was written.')
+
+
+def route_problem(route, prog, prog_sha, pin, block):
+    """None, or why the program at `prog` does not fit the route the slow_report block names. 'pinned': it is the pin's program (sha256). 'rebuilt': its build record, PROG.build.json, is
+    on disk and is for this program (schema 1, its sha256) and the pin's engine tree and harness source, and the record the block carries is that file's (its sha256 and the same entries).
+    This is what stands behind 'a rebuild of the pinned source' on the page: a hand-written block can no longer say it without the file."""
+    if route == 'pinned':
+        if prog_sha != pin.get('program_sha256'):
+            return (f'the config says the program is the pinned binary (route pinned), but the program at {prog} has sha256 {str(prog_sha)[:12]} and the pin\'s program has '
+                    f'{str(pin.get("program_sha256"))[:12]}')
+        return None
+    path = prog + '.build.json'
+    if not os.path.isfile(path):
+        return f'the config says the program is a rebuild (route rebuilt), but {path} is not there: the build record that build.sh writes beside a program is what a rebuild is checked by'
+    try:
+        rec = load_json_file(path)
+    except (OSError, ValueError) as e:
+        return f'the build record {path} cannot be read ({e})'
+    if not isinstance(rec, dict):
+        return f'the build record {path} cannot be read (it is not an object)'
+    diffs = []
+    if type(rec.get('schema')) is not int or rec['schema'] != 1:
+        diffs.append(f'schema {rec.get("schema")}, not 1')
+    if rec.get('program_sha256') != prog_sha:
+        diffs.append(f'program_sha256 {str(rec.get("program_sha256"))[:12]}, not {str(prog_sha)[:12]}')
+    for key in ('engine_tree_archived', 'harness_source_sha256'):
+        want = pin.get('engine_tree' if key == 'engine_tree_archived' else key)
+        if not want or rec.get(key) != want:
+            diffs.append(f'{key} {str(rec.get(key))[:12]}, not the pin\'s {str(want)[:12]}')
+    if diffs:
+        return f'the build record {path} is not for this program and the pinned source ({"; ".join(diffs)})'
+    held = block.get('build_record')
+    if not isinstance(held, dict):
+        return 'the block carries no build record, and so cannot say which one the rebuild has'
+    if held.get('record_sha256') != sha(path) or any(held.get(k) != rec.get(k) for k in ('program_sha256', 'engine_tree_archived', 'harness_source_sha256')):
+        return f'the build record in the block is not the one at {path}'
+    return None
+
+
+def load_json_file(path):
+    with open(path, encoding='utf-8') as f:
+        return json.load(f)
 
 
 def main():
@@ -173,6 +261,35 @@ def main():
     if given and cfg.get('selfcheck_given_program_sha256') != prog_sha:
         sys.exit(f'REFUSED: the self-check text was measured on a program with sha256 {str(cfg.get("selfcheck_given_program_sha256"))[:12]}, but the program at {prog} has sha256 '
                  f'{str(prog_sha)[:12]}: a digest belongs to the exact binary it was measured on, so the text cannot be recorded for this one (replay the self-check on it instead)')
+    block = cfg.get('slow_report') if stage == 'use' else None
+    if block and (given or block.get('pin_committed') is not None or block.get('program_route') is not None):
+        # a given text, a pin state and a program route are claims about the pin: held to the committed pin, so that no config can claim pinned provenance for a text, a state or a
+        # program the pin does not have (slow_report.py's own configs always pass this)
+        pin, pin_state = committed_pin(root, block)
+        claimed = block.get('pin_committed')
+        if claimed is not None and claimed != pin_state:
+            sys.exit(f'REFUSED: the config says the pin is {claimed!r} but strength_prereg.py finds it is {pin_state!r}. Nothing was written.')
+        block['pin_committed'] = pin_state  # what this script found, whatever the config said (or left out)
+        route = block.get('program_route')
+        if given and cfg.get('selfcheck_how') == 'replayed' and route not in ('pinned', 'rebuilt'):
+            sys.exit('REFUSED: a replayed self-check text needs a program route (pinned or rebuilt) in the slow_report block, so that what it was replayed on can be checked. Nothing was written.')
+        if route in ('pinned', 'rebuilt') and prog and os.path.isfile(prog):
+            problem = route_problem(route, prog, prog_sha, pin, block)
+            if problem:
+                sys.exit(f'REFUSED: {problem}. Nothing was written.')
+        for spec, text in given.items():
+            pin_text = (pin.get('selfcheck') or {}).get(spec) if isinstance(pin.get('selfcheck'), dict) else None
+            if pin_text != text:
+                sys.exit(f'REFUSED: the self-check text given for {spec} is not the text the pin has for it (given: {text}; pin: {pin_text if pin_text is not None else "none"}): '
+                         'a text that is not the pin\'s cannot be recorded as the pin\'s. Nothing was written.')
+        if given and cfg.get('selfcheck_how') != 'replayed':  # a replayed text is a rebuild's own (slow_report.py checked it equals the pin's); a copied one belongs to the pinned binary
+            measured_on = pin.get('selfcheck_measured_on_sha256')
+            if not measured_on:
+                sys.exit(f'REFUSED: the pin does not say which program its self-check texts were measured on, so they cannot be copied for the program at {prog} (a rebuild replays the self-checks instead). '
+                         'Nothing was written.')
+            if cfg.get('selfcheck_given_program_sha256') != measured_on or prog_sha != measured_on:
+                sys.exit(f'REFUSED: the pin says its self-check texts were measured on a program with sha256 {str(measured_on)[:12]}, but this config copies them for the program at {prog} '
+                         f'(sha256 {str(prog_sha)[:12]}): a copied text belongs to the binary it was measured on (a rebuild replays the self-checks instead). Nothing was written.')
     os.makedirs(a.out, exist_ok=True)
     if os.path.exists(os.path.join(a.out, 'games.jsonl')):
         sys.exit('this run directory already holds games; pre-registration comes first')
@@ -192,7 +309,8 @@ def main():
     except Exception:
         repo_commit = None
     selfcheck, selfcheck_source = {}, {}
-    pin_phrase = 'the committed pin' if (cfg.get('slow_report') or {}).get('pin_committed') in (None, 'yes') else 'the pin file in use, which is NOT the committed pin: test use'
+    # only a pin recorded as committed is called the committed pin: a state that is missing is not "yes" (a given text always has it, found above)
+    pin_phrase = 'the committed pin' if (cfg.get('slow_report') or {}).get('pin_committed') == 'yes' else 'the pin file in use, which is NOT the committed pin: test use'
     given_source = (f'replayed by slow_report.py on the registering machine just before registration (equal to {pin_phrase})' if cfg.get('selfcheck_how') == 'replayed'
                     else 'given in the config (copied from the pin, which says it was measured on this exact program sha256)')
     if prog and os.path.isfile(prog):
