@@ -12,7 +12,19 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **A sixth file, `engine/src/move_generation/move_generation_trainer.rs`:** a Fossil can be played under an Item lock (the Item check at 65 skips the Fossil type). Its premise is that a Fossil's printed type is Item (rules/01, rules/04 §6; the local database can't show it).
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
-1. **Current task, and the instruction that set it.** The skip bar and close calls combined (Fable via Dustin, Oct 7,
+1. **Current task, and the instruction that set it.** The first slow report (Fable via Dustin, Oct 8, with its
+   correction): draft A (Wallace) v the 8 public panel lists, piloted by the frozen kx3 (d513e37b), with km3 on the same
+   deals; 160 kx3 + 160 km3 games (10 deals x 8 lists x 2 seats).
+   - **Where.** A fixed checkout, `/home/user/PocketDeckSim-slow-report`, on branch `claude/slow-report-draft-a-wallace`
+     (from main b888bb09; pushed only to that branch, never main). The run folder will be
+     `rl/results/slow_reports/2026-10-08_draft-A-wallace/`.
+   - **Step 0.** The cargo cache was filled with `CARGO_HOME=$HOME/.cargo`, as in the correction.
+   - **Step 1, the build.** It printed the engine tree as archived `31dbd2e6e8ec…` and the harness source `bf9c5d68…`,
+     both as required. The program sha256 is c2fe1d35… (a rebuild), and `strength.build.json` is beside it.
+   - **Step 2.** The dry run passed ("pin committed: yes"). `--register-only` has been running since 14:18 UTC, replaying
+     both self-checks. km3 is through; kx3's 12 games are playing.
+   **The combined-code round before it (done, accepted):** below.
+   **The fix round, as it was reported:** The skip bar and close calls combined (Fable via Dustin, Oct 7,
    from the laptop's review of 7d3639d0), its addenda ((c) dropped; ties with the best join a running extension), and
    the acceptance message (54209409 accepted; the skip-bar finding accepted, nothing to build; a test that a tie with the
    best can overtake). Done and pushed. Tests first, gates 1-2, km3 untouched, no table games.
@@ -299,7 +311,9 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
    - **Laptop time** (from the smoke): about 204 × 4 / T seconds per pilot game on T threads; a development comparison of one deck × 8 panel lists × 25 deals × 2 seats is about 23 hours on 4 threads, 6 on 16; the pre-registration's kx self-check about 1½ hours on 4 threads (estimate); the position runner about 1½ hours on 4 threads.
    **The data pipeline stopped where it was** (branch `claude/planning-pilot-data`, head 22d56999; `rl/results/planning_pilot_data_2026-10-02/README.md`, "Where it stopped"): the first pass done (9,600 games, 467,146 rows; held-out log loss 0.525 against 0.631 for km's value alone; the Bench Energy feature's sign negative), the second pass cancelled; Dustin's 04, 08 and 11 are in its pool but in the locked final-exam list, so their rows must be dropped before development use.
    **Earlier jobs, done** (the readiness jobs, the card-text follow-up and step 8c read and accepted): the round-2 readiness jobs (57c65860, `rl/results/round2_readiness_2026-10-02/README.md`), the card-text follow-up (20e2651) and the card-text job, step 8c, step 8b's rows (3a107f4), F8, and the later round of coin-flip prevention (`claude/coin-prevention-round2`); details in their READMEs and the log below.
-2. **What is running now, and when it ends.** Nothing.
+2. **What is running now, and when it ends.** The slow report's registration (`slow_report.py ... --register-only`),
+   replaying the kx3 self-check (12 games, about 1.5 to 2 hours, from 14:18 UTC). Then the folder is pushed to the branch,
+   and the 8 slices of 40 games follow (one panel list each, 20 kx3 + 20 km3 games), pushed between slices.
 3. **Files I expect to change.** None. The play-out job changed, on its branch only: `engine/src/players/mod.rs` (12 lines), new `engine/src/players/playout_player.rs`, `engine/src/players/playout_pool.rs`, `engine/tests/playout_pilot_test.rs`, `engine/examples/playout_smoke.rs`, `rl/results/playout_pilot_2026-10-02/`, and START_HERE's seed table (one row: 24,200,000,000-24,200,099,999).
 4. **Waiting on the laptop or Sonnet.** The laptop: registering the combined development run on the fixed head (code
    4e7d8ce5; not 54209409/76cd08f4, where ties with the best never joined). Done: the laptop registered it on 172cbe9c
