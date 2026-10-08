@@ -10,21 +10,21 @@ Pre-registration order: registered 2026-10-08T15:40:39Z; first game started 2026
 
 Self-check digests recorded at registration: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (replayed by slow_report.py on the registering machine just before registration (equal to the committed pin)); `selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa` (replayed by slow_report.py on the registering machine just before registration (equal to the committed pin))
 
-- Planned 320 games; finished 160; complete pairs 80 (= 160 games); unpaired games 0; errors 0.
+- Planned 320 games; finished 200; complete pairs 100 (= 200 games); unpaired games 0; errors 0.
 - Paired difference = score(arm X) − score(arm ref) per (deck, opponent, deal, seat), in percentage points of score (win 1, tie ½). Intervals are mean ± 1.96·sd/√n over paired games. No pass/fail threshold.
 
 ## Result
 
-**Pooled over all 80 paired games: +12.5 ± 9.5 points** (arm X 66.2% vs arm ref 53.8% score).
+**Pooled over all 100 paired games: +13.0 ± 8.7 points** (arm X 64.0% vs arm ref 51.0% score).
 
 
 ### Per deck, pooled over its opponents
 
 | deck | paired games | arm X score | arm ref score | paired difference (points) | went first: diff | went second: diff |
 |---|---|---|---|---|---|---|
-| draft-A-wallace | 80 | 66.2% | 53.8% | +12.5 ± 9.5 | +10.5 ± 14.4 | +14.3 ± 12.6 |
+| draft-A-wallace | 100 | 64.0% | 51.0% | +13.0 ± 8.7 | +14.3 ± 12.8 | +11.8 ± 11.8 |
 
-Overall by who went first (identical in both arms): deck first +10.5 ± 14.4 (n=38); deck second +14.3 ± 12.6 (n=42).
+Overall by who went first (identical in both arms): deck first +14.3 ± 12.8 (n=49); deck second +11.8 ± 11.8 (n=51).
 
 ### Per (deck, opponent) pair
 
@@ -34,6 +34,7 @@ Overall by who went first (identical in both arms): deck first +10.5 ± 14.4 (n=
 | draft-A-wallace | t-blaziken | 20 | 65.0% | 60.0% | +5.0 ± 9.8 |
 | draft-A-wallace | t-hydreigon | 20 | 80.0% | 65.0% | +15.0 ± 21.4 |
 | draft-A-wallace | t-lucario | 20 | 80.0% | 50.0% | +30.0 ± 20.6 |
+| draft-A-wallace | t-sceptile | 20 | 55.0% | 40.0% | +15.0 ± 21.4 |
 
 ## Runtime and cost
 
@@ -41,12 +42,12 @@ Wall time is per game on this machine with the threads the run used; it includes
 
 | arm | role | pilot | games | wall per game: mean / median / p95 / max | games per second (1 thread) | decisions per game | ms per decision: mean / median / p95 / max | decision time per game |
 |---|---|---|---|---|---|---|---|---|
-| X | deck seat | `kx3` | 80 | 365.56 / 350.61 / 847.65 / 1006.29 s | 0.00 | 24.0 | 15196.5 / 14400.7 / 31142.0 / 58672.7 | 6 min |
-| X | opponent seat | `km3` | 80 |  |  | 25.2 | 10.2 / 4.8 / 38.9 / 242.2 | 0.26 s |
-| ref | deck seat | `km3` | 80 | 0.38 / 0.35 / 0.94 / 1.13 s | 2.64 | 23.6 | 7.3 / 3.4 / 27.5 / 128.1 | 0.17 s |
-| ref | opponent seat | `km3` | 80 |  |  | 25.1 | 7.8 / 3.6 / 27.2 / 128.6 | 0.20 s |
+| X | deck seat | `kx3` | 100 | 403.58 / 368.17 / 847.65 / 1006.29 s | 0.00 | 24.9 | 16197.2 / 15541.3 / 32313.5 / 67331.8 | 7 min |
+| X | opponent seat | `km3` | 100 |  |  | 25.4 | 10.1 / 4.7 / 38.8 / 242.2 | 0.26 s |
+| ref | deck seat | `km3` | 100 | 0.40 / 0.38 / 0.94 / 1.13 s | 2.51 | 24.4 | 8.0 / 3.7 / 29.2 / 155.8 | 0.19 s |
+| ref | opponent seat | `km3` | 100 |  |  | 25.3 | 7.7 / 3.6 / 27.1 / 128.6 | 0.19 s |
 
-One paired game (both arms) took 6 min on average; the run used 4 thread(s).
+One paired game (both arms) took 7 min on average; the run used 4 thread(s).
 
 ## What more precision would take
 
@@ -54,8 +55,8 @@ At the sd reached, the number of paired games for a given half-width is `(1.96·
 
 | scope | paired games so far | sd | interval now (points) | for ±5 points: total / more games, time | for ±3 points: total / more games, time |
 |---|---|---|---|---|---|
-| all decks pooled | 80 | 43.2 | +12.5 ± 9.5 | 287 / 207, 5.3 h | 797 / 717, 18.2 h |
-| draft-A-wallace | 80 | 43.2 | +12.5 ± 9.5 | 287 / 207, 5.3 h | 797 / 717, 18.2 h |
+| all decks pooled | 100 | 44.2 | +13.0 ± 8.7 | 300 / 200, 5.6 h | 833 / 733, 20.6 h |
+| draft-A-wallace | 100 | 44.2 | +13.0 ± 8.7 | 300 / 200, 5.6 h | 833 / 733, 20.6 h |
 
 ## Intended lines
 
