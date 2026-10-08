@@ -48,6 +48,8 @@ What each part shows (all in `smoke_console.txt`, as run; the commands are `smok
    - Three refusals, each with nothing written: `/bin/true` (no build record beside it), a program whose build record says another engine tree
      (`builds/forged_for_the_refusal.build.json`), and a pin that points at the rebuilt copy without `--program` (the message points at `--program`).
 
+These builds were made by `build.sh` as it was at dc403ed7. Four small changes were made to it afterwards and are tested with stub tools only (no real build was repeated, because the laptop was busy with a long run): the `rebuild_command` in a record names the script that ran (here the records name the main checkout's `build.sh`, because the smoke built with `STRENGTH_REPO` pointing there), the harness hash is taken from the copies that were compiled, the scratch repository that computes the tree id has attributes switched off, and the record gained `build_fs` (so the records in `builds/` have no such entry).
+
 Not shown here: the school-morning cut against the real program (covered by the unit tests with a fake program and clock), a real kx3 game or a real kx3 self-check replay (hours),
 whether the kx3 digest comes out the same on another CPU or libm (untested: the first cloud registration will say, and is refused if it does not match), the `build.sh` lock, failed-cargo
 and environment-removal behaviour (covered by the unit tests with stub tools; the real builds here had nothing to remove and nothing failed), and what the build record cannot prove
