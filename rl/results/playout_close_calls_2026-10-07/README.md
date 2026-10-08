@@ -85,8 +85,9 @@ does. Everything below is at 4e7d8ce5 unless it says otherwise.
   - in the `_lab` form, `kx3_r2_c3_lab_tools_zs3_m64`: **8c1244aec5c8419d** (2 games). It was 2284c591ed14a534 before
     ties joined. At R = 2 a tie with the best is common, so the extensions grow and the games change.
   - the exact code, `kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64`, 12 games as the laptop's pre-registration runs
-    it: **724e581a9c51711f** (9-3, 132 turns, 3 h 44 min on 4 cores, at 4e7d8ce5). The laptop's pre-registration must
-    print the same; if it doesn't, stop and report: the build isn't this one.
+    it: **724e581a9c51711f** (9-3, 132 turns, 3 h 44 min on 4 cores, at 4e7d8ce5). The laptop's pre-registration
+    (`rl/results/strength_2026-10-08_kx3_combined` on main, built from 172cbe9c, the same code) printed the same
+    digest, and the same `_lab` digest 8c1244aec5c8419d.
 - **The Tool tie-break** comes after the extension's decision and looks at every candidate, so it can play a placement
   the extension left at 16 rounds. At gate 2 that happened at 1 of its 19 tie-breaks (dev06's Heavy Helmet), where it
   changed the choice.
