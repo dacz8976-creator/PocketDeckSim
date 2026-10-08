@@ -1004,6 +1004,45 @@ class SelfcheckGiven(World):
         r = self.prereg(self.use_config(program=p, slow_report=self.block(pin_committed='bypassed', program_route='pinned')))
         self.refused_naming(r, "the config says the pin is 'bypassed' but strength_prereg.py finds it is 'yes'")
 
+    def test_the_refusal_names_the_entries_of_the_config_that_ask_for_the_committed_pin_and_the_way_out_that_fits(self):
+        """A given text is not the only thing that asks for the committed pin: a pin_committed entry and a program_route do, with no text at all. The refusal says which of them the config
+        carries (it used to say 'a given self-check text is the pin's own' and 'leave the text out' to a config that gave none)."""
+        self.registry_with_altaria()
+        p = self.fake_program()
+        self.lay_pin(p)
+        self.bypass = False
+        no_pin = f'REFUSED: the pin the config names is not the committed one: HEAD has no {self.PIN_REL} in {self.repo}'
+        def tail(who, names):
+            return f'. {who}, so the pin must be the {self.PIN_REL} committed at HEAD of the repository (commit the pin, or leave {names} out of the config). Nothing was written.'
+        for how, entries, who, names in (
+                ('a route', dict(program_route='pinned'), 'A program_route is held to the pin', 'a program_route'),
+                ('a state', dict(pin_committed='yes'), 'A pin_committed entry is held to the pin', 'a pin_committed entry'),
+                ('a state and a route', dict(pin_committed='yes', program_route='pinned'), 'A pin_committed entry and a program_route are held to the pin',
+                 'a pin_committed entry and a program_route')):
+            with self.subTest(claims=how):
+                shutil.rmtree(self.out, ignore_errors=True)
+                r = self.prereg(self.use_config(program=p, slow_report=self.block(**entries)))
+                self.refused_naming(r, no_pin)
+                self.assertIn(tail(who, names), r.stderr)
+                self.assertNotIn('self-check text', r.stderr, 'the config gave no text')
+                self.assertNotIn('leave the text out', r.stderr)
+        shutil.rmtree(self.out, ignore_errors=True)
+        r = self.prereg(self.use_config(**self.given_kw(p)))  # (a config that comes with a pin of its own also carries the route)
+        self.refused_naming(r, no_pin)
+        self.assertIn(tail('A self-check text and a program_route are held to the pin', 'a self-check text and a program_route'), r.stderr)
+        shutil.rmtree(self.out, ignore_errors=True)
+        r = self.prereg(self.use_config(**self.given_kw(p), slow_report=self.block(pin_committed='yes')))
+        self.refused_naming(r, no_pin)
+        self.assertIn(tail('A self-check text and a pin_committed entry are held to the pin', 'a self-check text and a pin_committed entry'), r.stderr)
+        shutil.rmtree(self.out, ignore_errors=True)
+        r = self.prereg(self.use_config(**self.given_kw(p), slow_report=self.block(pin_committed='yes', program_route='pinned')))
+        self.refused_naming(r, no_pin)
+        self.assertIn(tail('A self-check text, a pin_committed entry and a program_route are held to the pin', 'a self-check text, a pin_committed entry and a program_route'), r.stderr)
+        shutil.rmtree(self.out, ignore_errors=True)
+        r = self.prereg(self.use_config(**self.given_kw(p), slow_report=self.block()))
+        self.refused_naming(r, no_pin)
+        self.assertIn(tail('A self-check text is held to the pin', 'a self-check text'), r.stderr)
+
     def test_every_refusal_of_the_given_text_leaves_no_run_directory_and_the_same_path_registers_once_the_config_is_right(self):
         """The checks of the given text and its program come before os.makedirs: a refused registration used to leave an empty run directory (and its parents) that the next
         try, or a person, had to notice and remove."""

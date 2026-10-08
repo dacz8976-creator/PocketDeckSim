@@ -483,6 +483,9 @@ def default_spawn(cmd, env, logfile):
     return proc
 
 
+STOP_SIGNALS = (signal.SIGTERM, signal.SIGHUP, signal.SIGINT)  # held while a program is started (see run_games and run_selfcheck)
+
+
 def stop_group(proc, grace_s=30):
     """SIGTERM the program's whole process group (it leads its own: start_new_session), SIGKILL it after `grace_s`. A program that has ended is left alone, and a
     process that does not lead its own group (never this wrapper's group) is signalled on its own."""
@@ -609,7 +612,11 @@ def release_lock(lock):
 
 class signals_stop_the_program:
     """SIGTERM and SIGHUP raise SystemExit, so the run loop's cleanup stops the program (and the lock is released) instead of orphaning it. A SIGHUP that was
-    ignored when the wrapper started (`nohup`) stays ignored: the launcher asked for the run to outlive its terminal."""
+    ignored when the wrapper started (`nohup`) stays ignored: the launcher asked for the run to outlive its terminal.
+    Only the first stop signal raises. Two different signals that were held together (while a program is started) arrive together when they are released: the second handler
+    would raise at the entry of stop_group, before the program had been signalled, and leave it running. A later signal is recorded in `later` and does nothing: the run is already stopping."""
+    stopping = None  # the signal that is stopping the run (class-level: the handler is one function for every signal)
+    later = []
 
     def __enter__(self):
         self.old = {}
@@ -623,11 +630,21 @@ class signals_stop_the_program:
 
     @staticmethod
     def handler(signum, frame):
+        cls = signals_stop_the_program
+        if cls.stopping is not None:
+            cls.later.append(signum)
+            return
+        cls.stopping = signum
         raise SystemExit(128 + signum)
 
     def __exit__(self, *a):
-        for sig, h in self.old.items():
-            signal.signal(sig, h)
+        try:
+            for sig, h in self.old.items():
+                signal.signal(sig, h)
+        finally:
+            if self.old:  # the next call starts afresh (a call that installed nothing, off the main thread, has nothing to forget and must not wipe the state of one that did)
+                signals_stop_the_program.stopping = None
+                signals_stop_the_program.later = []
 
 
 # ------------------------------------------------------------------------------------------------------------------ the plan
@@ -703,8 +720,22 @@ def run_selfcheck(pin, repo, spec, say, deadline=None, now=None):
     env, _ = scrub_env(dict(os.environ), pin['scrub_env_prefixes'])
     say(f'self-check of {spec}: 12 fixed games on {pin["program"]} (this takes a while for kx3; run it when the machine is free)')
     cmd = nice_prefix() + [pin['program'], 'selfcheck', '--root', repo, '--pilot', spec, '--deck-a', reg['t-altaria'], '--deck-b', reg['t-suicune'], '--games', '12']
-    proc = subprocess.Popen(cmd, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding='utf-8', errors='replace', env=env, start_new_session=True)
+    # the stop signals are held while the program is started (a replay is hours for kx3): a SIGTERM that comes between the start of the program and the try that stops it must not leave it running
+    held = signal.pthread_sigmask(signal.SIG_BLOCK, ())
+    proc = None
     try:
+        signal.pthread_sigmask(signal.SIG_BLOCK, STOP_SIGNALS)
+        proc = subprocess.Popen(cmd, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding='utf-8', errors='replace', env=env, start_new_session=True,
+                                preexec_fn=_clear_signal_mask)
+    except BaseException:
+        try:
+            if proc is not None:
+                stop_group(proc)
+        finally:
+            signal.pthread_sigmask(signal.SIG_SETMASK, held)
+        raise
+    try:
+        signal.pthread_sigmask(signal.SIG_SETMASK, held)  # (inside this try: a signal that waited is delivered here, and the program is stopped)
         timeout = None if deadline is None else max(0.0, (deadline.astimezone(UTC) - now().astimezone(UTC)).total_seconds())
         out, err = proc.communicate(timeout=timeout)
     except subprocess.TimeoutExpired:
@@ -1047,13 +1078,19 @@ def run_games(rundir, man, scrub_prefixes, *, threads, max_games, school_on, sch
         say(f"running: {plural(remaining, 'game')} to go, {threads} at a time" + (f', no new game after the school-morning cut ({soft:.0f} min from now)' if soft is not None else ''))
         # a SIGTERM / SIGHUP / SIGINT that comes while the program is being started waits until the loop below can stop it: it must not raise between the start of the program and the
         # try that stops it, which would leave the program running (holding the lock) after its wrapper has gone
-        held = signal.pthread_sigmask(signal.SIG_BLOCK, (signal.SIGTERM, signal.SIGHUP, signal.SIGINT))
+        held = signal.pthread_sigmask(signal.SIG_BLOCK, ())  # the mask as it is, read first: the try below restores it, whatever happens to the call that blocks
+        proc = None
         try:
+            signal.pthread_sigmask(signal.SIG_BLOCK, STOP_SIGNALS)
             proc = spawn(cmd, env, out_log)
             _PROGRAMS.append(proc)
             note_program(proc)
         except BaseException:
-            signal.pthread_sigmask(signal.SIG_SETMASK, held)
+            try:
+                if proc is not None:  # the program was started and what came after failed: it is not left running (stopped before the signals are let in again)
+                    stop_group(proc)
+            finally:
+                signal.pthread_sigmask(signal.SIG_SETMASK, held)
             raise
         killed = False
         try:
