@@ -302,8 +302,9 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 2. **What is running now, and when it ends.** Nothing.
 3. **Files I expect to change.** None. The play-out job changed, on its branch only: `engine/src/players/mod.rs` (12 lines), new `engine/src/players/playout_player.rs`, `engine/src/players/playout_pool.rs`, `engine/tests/playout_pilot_test.rs`, `engine/examples/playout_smoke.rs`, `rl/results/playout_pilot_2026-10-02/`, and START_HERE's seed table (one row: 24,200,000,000-24,200,099,999).
 4. **Waiting on the laptop or Sonnet.** The laptop: registering the combined development run on the fixed head (code
-   4e7d8ce5, head 9547749e; not 54209409/76cd08f4, where ties with the best never joined). Its self-check of the exact
-   code should print 724e581a9c51711f. Its pre-registration self-check of the exact code should print the cloud's digest (item 2).
+   4e7d8ce5; not 54209409/76cd08f4, where ties with the best never joined). Done: the laptop registered it on 172cbe9c
+   (`rl/results/strength_2026-10-08_kx3_combined`, 03:27), and its self-checks print the cloud's digests,
+   724e581a9c51711f for the exact code and 8c1244aec5c8419d for the `_lab` form. Now: the run itself. Its pre-registration self-check of the exact code should print the cloud's digest (item 2).
    Earlier: its examples run on d513e37b (not interrupted); a look at rounds 2 to 4 (head eefa24d0) when it suits.
 5. **Open questions.**
    - (a) For Dustin, still open from before: remove the Pocket Shot List rows `chase-order-carefree-steps` and `carefree-steps-snipe`? Nothing is done until he answers.
