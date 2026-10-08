@@ -85,7 +85,8 @@ does. Everything below is at 4e7d8ce5 unless it says otherwise.
   - in the `_lab` form, `kx3_r2_c3_lab_tools_zs3_m64`: **8c1244aec5c8419d** (2 games). It was 2284c591ed14a534 before
     ties joined. At R = 2 a tie with the best is common, so the extensions grow and the games change.
   - the exact code, `kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64`, 12 games as the laptop's pre-registration runs
-    it: running at 4e7d8ce5 (from 02:13 UTC on Oct 8). It will be added here and in CLOUD_STATUS.md.
+    it: **724e581a9c51711f** (9-3, 132 turns, 3 h 44 min on 4 cores, at 4e7d8ce5). The laptop's pre-registration must
+    print the same; if it doesn't, stop and report: the build isn't this one.
 - **The Tool tie-break** comes after the extension's decision and looks at every candidate, so it can play a placement
   the extension left at 16 rounds. At gate 2 that happened at 1 of its 19 tie-breaks (dev06's Heavy Helmet), where it
   changed the choice.
@@ -277,9 +278,12 @@ LAB, cap 12, z 2. kx3 decides with `_tools_zs3` at R = 16 and with `_tools_zs3_m
     - At ec283c53 and 76cd08f4 it was 2284c591ed14a534.
     - At R = 2 a tie with the best is common, so ties joining grows the extensions and changes the games.
 - **The exact code** (`strength_selfcheck_exact.txt`): `kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64`, 12 games,
-  t-altaria v t-suicune, as `strength_prereg.py` runs it. Running at 4e7d8ce5, from 02:13 UTC on Oct 8. The same
-  without `_zs3_m64` took 2 h 8 min on the slower container. The digest will be added here and in CLOUD_STATUS.md. Runs
-  at ec283c53 and 76cd08f4 were stopped when their rule changed.
+  t-altaria v t-suicune, as `strength_prereg.py` runs it, at 4e7d8ce5:
+  `selfcheck pilot=kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64 games=12 seat0_wins=9 seat1_wins=3 ties=0 turns=132
+  digest=724e581a9c51711f`.
+  - It took 13,445 s (3 h 44 min), 02:13 to 05:57 UTC on Oct 8, on the faster container. The same code without
+    `_zs3_m64` took 2 h 8 min on the slower one.
+  - Runs at ec283c53 and 76cd08f4 were stopped when their rule changed.
 
 ### The Tool tie-break and the extension
 

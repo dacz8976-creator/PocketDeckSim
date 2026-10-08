@@ -1,0 +1,4 @@
+The combined code's self-check as strength_prereg.py runs it, on the harness built from claude/playout-pilot 4e7d8ce5's engine/ (see strength_selfcheck.txt for its sha256), 4 cores, from 2026-10-08T02:13:14Z:
+$ strength selfcheck --pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64 --deck-a decks/screen/opponents/t-altaria.txt --deck-b decks/screen/opponents/t-suicune.txt --games 12
+selfcheck pilot=kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64 games=12 seat0_wins=9 seat1_wins=3 ties=0 turns=132 digest=724e581a9c51711f
+(13445 s, to 2026-10-08T05:57:19Z)
