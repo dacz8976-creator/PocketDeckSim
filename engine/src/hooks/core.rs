@@ -1527,6 +1527,26 @@ fn printed_weakness_application(
     WeaknessApplication::None
 }
 
+/// Return damage an attack left takes Weakness (`rules/02` section 2): +20 when `receiver`, the Attacking Pokémon it
+/// hits back, has a printed Weakness that is one of `holder`'s types (Double Type counts, as in
+/// `printed_weakness_application`), else 0. Two stated choices: the receiver's `NoWeakness` isn't read (only Metal
+/// Defender and Adamantine Rolling give it, to their own user, and they add it before this hit back lands though it
+/// covers only the opponent's next turn), and Bounded Field leaves the extra at +20.
+pub(crate) fn attack_return_weakness_extra(state: &State, holder: &PlayedCard, receiver: &PlayedCard) -> u32 {
+    let Card::Pokemon(receiver_card) = &receiver.card else {
+        return 0;
+    };
+    let holder_types = state.pokemon_energy_types(holder);
+    if receiver_card
+        .weakness
+        .is_some_and(|weakness| holder_types.contains(&weakness))
+    {
+        20
+    } else {
+        0
+    }
+}
+
 fn get_future_booster_damage_bonus(attacking_pokemon: &PlayedCard) -> u32 {
     if has_tool(attacking_pokemon, CardId::B3a070FutureBoosterEnergyCapsule)
         && is_future_pokemon(&attacking_pokemon.get_name())

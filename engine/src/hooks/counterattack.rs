@@ -17,14 +17,7 @@ pub(crate) fn get_counterattack_damage(state: &State, card: &PlayedCard) -> u32 
     }
 
     // Temporary counterattack effects (e.g. Alolan Sandslash's Spike Armor).
-    total_damage += card
-        .get_active_effects()
-        .iter()
-        .filter_map(|effect| match effect {
-            CardEffect::Counterattack { amount } => Some(*amount),
-            _ => None,
-        })
-        .sum::<u32>();
+    total_damage += attack_counterattack_damage(card);
 
     if let Some(AbilityMechanic::CounterattackDamage { amount }) =
         get_in_play_ability_mechanic(state, card)
@@ -33,6 +26,19 @@ pub(crate) fn get_counterattack_damage(state: &State, card: &PlayedCard) -> u32 
     }
 
     total_damage
+}
+
+/// The part of a Pokémon's return damage that an attack left (`CardEffect::Counterattack`: Cursed Jewel, Spike Armor,
+/// Bristling Spikes, Needle Lariat, Shell Trap). It is the attack's damage, so it takes Weakness
+/// (`attack_return_weakness_extra`); Rocky Helmet's and an Ability's stay flat.
+pub(crate) fn attack_counterattack_damage(card: &PlayedCard) -> u32 {
+    card.get_active_effects()
+        .iter()
+        .filter_map(|effect| match effect {
+            CardEffect::Counterattack { amount } => Some(*amount),
+            _ => None,
+        })
+        .sum::<u32>()
 }
 
 /// Jellicent's Bouncy Body: "If this Pokémon is in the Active Spot and is damaged by an attack from

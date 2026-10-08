@@ -31,6 +31,8 @@ pub(crate) use core::on_evolve;
 pub(crate) use core::on_knockout;
 pub use core::to_playable_card;
 pub(crate) use core::DamageModifierContext;
+pub(crate) use core::attack_return_weakness_extra;
+pub(crate) use counterattack::attack_counterattack_damage;
 pub(crate) use counterattack::get_counterattack_damage;
 pub(crate) use counterattack::maybe_attach_energy_on_damaged;
 pub(crate) use counterattack::maybe_shuffle_attacker_hand_card_on_damaged;

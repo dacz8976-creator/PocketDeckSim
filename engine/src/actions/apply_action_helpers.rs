@@ -14,6 +14,7 @@ use crate::{
     card_ids::CardId,
     effects::{CardEffect, TurnEffect},
     hooks::{
+        attack_counterattack_damage, attack_return_weakness_extra,
         get_counterattack_damage, maybe_attach_energy_on_damaged,
         maybe_shuffle_attacker_hand_card_on_damaged, modify_damage, on_attack_knockout,
         on_end_turn, on_knockout, should_poison_attacker, DamageModifierContext,
@@ -610,7 +611,8 @@ pub(crate) fn handle_damage_only(
     damaged_actives
 }
 
-/// Resolve reactions only after the attack's own effects, using the current Ability state.
+/// Resolve reactions only after the attack's own effects, using the current Ability state. Return damage an attack left
+/// takes Weakness while the Attacking Pokémon is Active; a Tool's and an Ability's stay flat.
 pub(crate) fn handle_attack_retaliation(
     state: &mut State,
     attacking_ref: (usize, usize),
@@ -620,9 +622,19 @@ pub(crate) fn handle_attack_retaliation(
     for &(target_player, target_idx) in damaged_actives {
         let Some(target) = state.in_play_pokemon[target_player][target_idx].as_ref() else { continue; };
         let counter_damage = get_counterattack_damage(state, target);
+        let weakness_extra = if attacking_ref.1 == 0 && attack_counterattack_damage(target) > 0 {
+            state.in_play_pokemon[attacking_player][0]
+                .as_ref()
+                .map_or(0, |attacker| attack_return_weakness_extra(state, target, attacker))
+        } else {
+            0
+        };
+        if weakness_extra > 0 {
+            debug!("Return damage left by an attack takes Weakness: +{weakness_extra}");
+        }
         let should_poison = should_poison_attacker(state, target);
         if let Some(attacker) = state.in_play_pokemon[attacking_player][attacking_ref.1].as_mut() {
-            attacker.apply_damage(counter_damage);
+            attacker.apply_damage(counter_damage + weakness_extra);
         }
         if should_poison && attacking_ref.1 == 0 {
             state.apply_status_condition(attacking_player, attacking_ref.1, StatusCondition::Poisoned);
