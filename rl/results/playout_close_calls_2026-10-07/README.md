@@ -35,7 +35,8 @@ that a move equal to the best in every round is no close call. Deleting it would
 that are already settled (every candidate won, or lost, every play-out), adding time for nothing. Instead, a move tied
 with the best in every round joins an extension already running for a non-tied close move; ties alone never start one.
 That covers a move tied with km3's move when km3's is the best, and one tied with a best that is another move. Built in
-4e7d8ce5, tests first (6b5b713d).
+4e7d8ce5, tests first (6b5b713d). The ties rule is a sampling shortcut, not proof that those moves are equivalent:
+a move tied with the best so far has only not been told apart yet.
 
 **The fix round accepted (Fable via Dustin, Oct 7):** 54209409 is accepted, (c)'s removal and its test included. The
 skip-bar finding (km3's attack kept at 7 of 9 true skips alone, 2 of 9 under `_m64`) is accepted as a finding, with
@@ -55,7 +56,8 @@ does. Everything below is at 4e7d8ce5 unless it says otherwise.
     - At the continuation position B-210952-t16, the turn's Water to the Active ties km3's move in all 16 rounds. Over
       64 rounds it leads km3's move by +0.125 (3.0 standard errors) and is played.
     - With (c) it wasn't extended, and Binding Snow was played instead.
-  - Ties with the best join a running extension but never start one.
+  - Ties with the best join a running extension but never start one. This is a sampling shortcut, not proof that the
+    tied moves are equivalent.
     - At B-214254-t10 km3's Irida is the best after 16 rounds and the Lucky Ice Pop ties it round for round. 7 other
       candidates are extended for moves within the noise, and the Lucky Ice Pop now joins them.
     - At dev04's Tool placement, the Poncho on Bench spot 3 ties km3's Poncho on the Active. It joins, and over 64
