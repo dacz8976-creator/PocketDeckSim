@@ -249,7 +249,10 @@ class RegistrationOfARebuiltProgram(unittest.TestCase):
         texts = {'km3': 'selfcheck pilot=km3 digest=aaaa', 'kx3': 'selfcheck pilot=kx3 digest=bbbb'}
         pin_path = os.path.join(repo, 'rl', 'strength', 'slow_report_pin.json')
         os.makedirs(os.path.dirname(pin_path), exist_ok=True)
-        write(pin_path, json.dumps(dict(selfcheck=texts, selfcheck_measured_on_sha256='c' * 64), indent=1) + '\n')
+        write(pin_path, json.dumps(dict(selfcheck=texts, selfcheck_measured_on_sha256='c' * 64, program_sha256='c' * 64, engine_tree='3' * 40, harness_source_sha256='b' * 64), indent=1) + '\n')
+        record_file = program + '.build.json'  # the build record beside the rebuilt program (a rebuild is checked by it)
+        write(record_file, json.dumps(record, indent=1) + '\n')
+        record = dict(record, record_file=record_file, record_sha256=hashlib.sha256(read(record_file, 'rb')).hexdigest())
         env = {k: v for k, v in os.environ.items() if k != 'SLOW_REPORT_ALLOW_UNCOMMITTED_PIN'}
         if pin_committed == 'yes':  # the pin is committed in the repository
             for args in (('init', '-q'), ('add', '-A'), ('commit', '-q', '-m', 'everything')):

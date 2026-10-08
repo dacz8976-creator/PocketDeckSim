@@ -470,9 +470,15 @@ _LOCK_PATHS = {}  # fd -> the lock file's path (to record the program's process 
 _PROGRAMS = []   # programs this wrapper started: the lock file is not removed while one of them is still alive
 
 
+def _clear_signal_mask():
+    """In the new program, between fork and exec: no signal blocked. The wrapper holds SIGTERM, SIGHUP and SIGINT while it starts a program (run_games), and a child inherits the
+    mask, so without this the program would not hear the SIGTERM that stops it."""
+    signal.pthread_sigmask(signal.SIG_SETMASK, ())
+
+
 def default_spawn(cmd, env, logfile):
     fh = open(logfile, 'ab')
-    proc = subprocess.Popen(cmd, env=env, stdin=subprocess.DEVNULL, stdout=fh, stderr=fh, start_new_session=True, pass_fds=tuple(_LOCK_FDS))
+    proc = subprocess.Popen(cmd, env=env, stdin=subprocess.DEVNULL, stdout=fh, stderr=fh, start_new_session=True, pass_fds=tuple(_LOCK_FDS), preexec_fn=_clear_signal_mask)
     proc._logfh = fh
     return proc
 
@@ -770,8 +776,10 @@ def program_in_use_before(rundir, man):
     """The sha256 of the program the last sitting ran with: the registered one, then each accepted change and each sitting's own record (a run can go back to an earlier accepted build)."""
     cur = man.get('program_sha256')
     msha = manifest_sha256(rundir)
-    for e in load_jsonl(os.path.join(rundir, 'slow_report_log.jsonl')):
-        if e.get('event') == 'program_changed' and is_program_change(e, man, msha):
+    events = load_jsonl(os.path.join(rundir, 'slow_report_log.jsonl'))
+    legacy = log_started_for(events, msha)
+    for e in events:
+        if e.get('event') == 'program_changed' and is_program_change(e, man, msha, legacy):
             cur = e['new_sha256']
         elif e.get('event') == 'sitting_call' and isinstance(e.get('program_sha256'), str):
             cur = e['program_sha256']
@@ -830,23 +838,31 @@ def manifest_sha256(rundir):
     return sha(os.path.join(rundir, 'manifest.json'))
 
 
-def program_change_valid(e, man, msha):
+def log_started_for(events, msha):
+    """Whether the log was started for the run whose manifest.json has sha256 `msha`: its 'registered' event (the first thing logged, with the manifest's sha256 since the first version)
+    names it. A log pasted from another run names another manifest."""
+    first = next((e for e in events if e.get('event') == 'registered'), None)
+    return bool(first) and first.get('manifest_sha256') == msha
+
+
+def program_change_valid(e, man, msha, legacy=False):
     """Whether a 'program_changed' event of the (unprotected) log is what reverify_program writes for THIS run (`msha`: the sha256 of its manifest.json, which the line names): for the
     program it names, a build record with the registered engine tree and harness hash, and the self-check texts the run was registered with. This keeps a stray, stale or foreign line
     out (a log pasted from another run names another manifest); it is NOT authentication: every value it compares is public in the manifest, and
-    whoever can write to the run folder can also rewrite manifest.json and manifest.sha256 (the pushed commit of the registration is the tamper evidence)."""
+    whoever can write to the run folder can also rewrite manifest.json and manifest.sha256 (the pushed commit of the registration is the tamper evidence). Lines written before they
+    named their run (the version of c28dfb8a) have no manifest_sha256: with `legacy` (the log was started for this run, log_started_for) they count too."""
     sr = man.get('slow_report') or {}
     rec = e.get('build_record')
-    return (isinstance(msha, str) and e.get('manifest_sha256') == msha and isinstance(e.get('new_sha256'), str) and isinstance(e.get('at'), str) and e['at'] != ''
+    return (isinstance(msha, str) and (e.get('manifest_sha256') == msha or (legacy and 'manifest_sha256' not in e)) and isinstance(e.get('new_sha256'), str) and isinstance(e.get('at'), str) and e['at'] != ''
             and isinstance(rec, dict) and rec.get('program_sha256') == e['new_sha256']
             and rec.get('engine_tree_archived') == sr.get('engine_tree') and rec.get('harness_source_sha256') == sr.get('harness_source_sha256')
             and e.get('selfcheck') == man.get('selfcheck'))
 
 
-def is_program_change(e, man, msha):
+def is_program_change(e, man, msha, legacy=False):
     """A 'program_changed' log line this run honours and shows: only a run registered on the rebuilt route has any (a pinned-route run is byte for byte or nothing), and it must pass
-    program_change_valid for this run."""
-    return e.get('event') == 'program_changed' and (man.get('slow_report') or {}).get('program_route') == 'rebuilt' and program_change_valid(e, man, msha)
+    program_change_valid for this run (`legacy`: see there)."""
+    return e.get('event') == 'program_changed' and (man.get('slow_report') or {}).get('program_route') == 'rebuilt' and program_change_valid(e, man, msha, legacy)
 
 
 def accepted_program_shas(rundir, man):
@@ -855,15 +871,18 @@ def accepted_program_shas(rundir, man):
     covered by manifest.sha256, and a run registered on the pinned route is byte for byte or nothing)."""
     shas = {man.get('program_sha256')}
     msha = manifest_sha256(rundir)
-    for e in load_jsonl(os.path.join(rundir, 'slow_report_log.jsonl')):
-        if is_program_change(e, man, msha):
+    events = load_jsonl(os.path.join(rundir, 'slow_report_log.jsonl'))
+    legacy = log_started_for(events, msha)
+    for e in events:
+        if is_program_change(e, man, msha, legacy):
             shas.add(e['new_sha256'])
     return shas
 
 
 def pin_provenance_problems(man, pin, pin_path):
     """The same claims against the PIN, when the pin file in use is the one the registration was made under (its sha256 is the one the manifest names): the pinned program's sha256, the
-    engine tree and the harness source the registration names must be the pin's. A later pin (another file) is not asked: a run keeps the pin it was registered under. [problem, ...]"""
+    engine tree and the harness source the registration names, and each self-check text it records, must be the pin's. A later pin (another file) is not asked: a run keeps the pin it
+    was registered under. [problem, ...]"""
     sr = man.get('slow_report') if isinstance(man.get('slow_report'), dict) else None
     named = (sr.get('pin') or {}).get('sha256') if sr and isinstance(sr.get('pin'), dict) else None
     if not sr or sr.get('program_route') not in ('pinned', 'rebuilt') or not named or not os.path.isfile(pin_path) or sha(pin_path) != named:
@@ -873,6 +892,10 @@ def pin_provenance_problems(man, pin, pin_path):
         pin_key = 'program_sha256' if key == 'pinned_program_sha256' else key
         if sr.get(key) != pin.get(pin_key):
             problems.append(f'the registration names {str(sr.get(key))[:12]} as the {what}, but the pin it was made under (still in use) says {str(pin.get(pin_key))[:12]}')
+    pin_texts = pin.get('selfcheck') if isinstance(pin.get('selfcheck'), dict) else {}
+    for spec, text in (man.get('selfcheck') or {}).items():
+        if pin_texts.get(spec) != text:
+            problems.append(f"the registration records the {spec} self-check text {text}, but the pin it was made under (still in use) says {pin_texts.get(spec, 'none')}")
     return problems
 
 
@@ -1022,11 +1045,19 @@ def run_games(rundir, man, scrub_prefixes, *, threads, max_games, school_on, sch
             cmd += ['--max-games', str(budget)]
         log_event(rundir, 'slice_start', remaining_games=remaining, stop_after_min=soft, hard_stop=hard.isoformat() if hard else None, threads=threads)
         say(f"running: {plural(remaining, 'game')} to go, {threads} at a time" + (f', no new game after the school-morning cut ({soft:.0f} min from now)' if soft is not None else ''))
-        proc = spawn(cmd, env, out_log)
-        _PROGRAMS.append(proc)
-        note_program(proc)
+        # a SIGTERM / SIGHUP / SIGINT that comes while the program is being started waits until the loop below can stop it: it must not raise between the start of the program and the
+        # try that stops it, which would leave the program running (holding the lock) after its wrapper has gone
+        held = signal.pthread_sigmask(signal.SIG_BLOCK, (signal.SIGTERM, signal.SIGHUP, signal.SIGINT))
+        try:
+            proc = spawn(cmd, env, out_log)
+            _PROGRAMS.append(proc)
+            note_program(proc)
+        except BaseException:
+            signal.pthread_sigmask(signal.SIG_SETMASK, held)
+            raise
         killed = False
         try:
+            signal.pthread_sigmask(signal.SIG_SETMASK, held)  # (inside this try: a signal that waited is delivered here, and the program is stopped)
             while proc.poll() is None:
                 if hard is not None and now() >= hard:
                     stop_group(proc)
@@ -1356,9 +1387,11 @@ def write_slow_report(rundir, out=None, pin_check=None):
             f"**NOT the committed pin** ({sr.get('pin_committed_detail') or sr['pin_committed']}): what this page says about the program rests on a pin that is not the committed one."))
     nr = lambda v: str(v)[:12] if v else 'not recorded'  # a line without these entries (hand-made, or from an older version) never prints the text None
     in_use, accepted = man.get('program_sha256'), {man.get('program_sha256')}
-    for e in load_jsonl(os.path.join(rundir, 'slow_report_log.jsonl')):  # in the order it happened; a line the run could not have written is not shown as a fact
+    log = load_jsonl(os.path.join(rundir, 'slow_report_log.jsonl'))
+    legacy = log_started_for(log, msha)
+    for e in log:  # in the order it happened; a line the run could not have written is not shown as a fact
         before = sum(1 for g in games if (g.get('started_at') or '') < (e.get('at') or ''))
-        if is_program_change(e, man, msha):
+        if is_program_change(e, man, msha, legacy):
             P(f"- **The program changed mid-run** ({e['at']}): sha256 `{nr(e.get('old_sha256'))}` -> `{nr(e.get('new_sha256'))}` after a restart or rebuild; its build record has the pinned engine tree and harness source "
               f"(record `{nr(e['build_record'].get('record_sha256'))}`) and both self-checks were replayed again on {e.get('replayed_on') or 'a machine not recorded'} and equal {pin_digests(e.get('pin_committed'))}. "
               f"{plural(before, 'game')} of the {len(games)} played so far were started before this change and {len(games) - before} after; the numbers above pool them.")

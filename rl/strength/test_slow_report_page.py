@@ -2215,6 +2215,20 @@ def children_of(pid):
     return out
 
 
+def processes_running_from(folder):
+    """The pids (Linux /proc) of the processes, other than this one, whose command line names `folder`: what a test left running from its own temporary folder."""
+    out = []
+    for p in os.listdir('/proc'):
+        if p.isdigit() and int(p) != os.getpid():
+            try:
+                with open(f'/proc/{p}/cmdline', 'rb') as f:
+                    if folder.encode() in f.read():
+                        out.append(int(p))
+            except OSError:
+                pass
+    return out
+
+
 class LinesComeAsTheyAreSaid(T.World):
     def test_each_line_reaches_the_terminal_while_the_run_is_still_going(self):
         """A report runs for hours under nohup and its log is read while it plays: a line must not wait in a buffer until the wrapper ends."""
@@ -2249,11 +2263,13 @@ class LinesComeAsTheyAreSaid(T.World):
                 proc.kill()
                 proc.wait()
             proc.stdout.close()
-            for pid in kids:  # only what this wrapper started, and only if it is somehow still there
+            left = processes_running_from(self.tmp)  # the program the wrapper started may not have been a child yet when `kids` was read: anything still running from this test's own folder
+            for pid in set(kids) | set(left):  # only what this wrapper started, and only if it is somehow still there
                 try:
                     os.kill(pid, signal.SIGKILL)
                 except ProcessLookupError:
                     pass
+        self.assertEqual(left, [], 'SIGTERM stopped the program the wrapper had started: nothing of this test is left running')
 
 
 # ---------------------------------------------------------------------------------------------------------- the page built from games that already exist

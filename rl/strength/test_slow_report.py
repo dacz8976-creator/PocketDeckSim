@@ -194,8 +194,8 @@ def forged_overrides(man, new):
             ('another kx3 self-check text', dict(selfcheck=dict(sc, kx3='selfcheck pilot=kx3 games=12 digest=0000'))),
             ('only one self-check', dict(selfcheck={'kx3': sc['kx3']})), ('a self-check more', dict(selfcheck=dict(sc, ext='selfcheck pilot=ext'))),
             ('no self-checks', dict(selfcheck=DROP)), ('empty self-checks', dict(selfcheck={})),
-            ('a line written for another run', dict(manifest_sha256='9' * 64)), ('a line that names no run', dict(manifest_sha256=DROP)), ('a run that is null', dict(manifest_sha256=None)),
-            ('a run that is a number', dict(manifest_sha256=12345)),
+            ('a line written for another run', dict(manifest_sha256='9' * 64)), ('a run that is null', dict(manifest_sha256=None)),
+            ('a run that is a number', dict(manifest_sha256=12345)),  # (a line with no manifest_sha256 at all is the format of the earlier version: see the tests of that)
             ('no program hash', dict(new_sha256=DROP)), ('a program hash that is null', dict(new_sha256=None)),
             ('a program hash that is a number', dict(new_sha256=7, build_record=dict(record, program_sha256=7))))
 
@@ -3735,6 +3735,53 @@ class ProgramChangedOnResume(RebuiltFixture):
         self.assertNotIn('went back to an earlier accepted build', page)
         self.assertNotIn('changed mid-run', page)
 
+    def rewrite_log(self, d, edit):
+        """The log of `d` with its events passed through edit(list of dicts) -> list of dicts."""
+        events = self.events(d)
+        write(os.path.join(d, 'slow_report_log.jsonl'), ''.join(json.dumps(e) + '\n' for e in edit(events)))
+
+    def test_a_line_of_an_earlier_version_that_does_not_name_its_run_counts_when_the_log_was_started_for_this_run(self):
+        """c28dfb8a wrote 'program_changed' lines without manifest_sha256. They are still this run's own when the first line of the log, 'registered', names this run's manifest (a log
+        pasted from another run names another one), so the committed runs of that version keep their change on a regenerated page and a resume does not replay it again."""
+        d = self.started('6')
+        man = self.manifest(d)
+        reg = man['program_sha256']
+        legacy = self.change_event(man, 'b' * 64, manifest_sha256=DROP)
+        self.assertNotIn('manifest_sha256', legacy)
+        self.append_log(d, legacy)
+        self.assertEqual(self.events(d)[0]['manifest_sha256'], sha(os.path.join(d, 'manifest.json')), 'the registered line names the run')
+        self.assertEqual(sr.accepted_program_shas(d, man), {reg, 'b' * 64})
+        self.assertEqual(sr.program_in_use_before(d, man), 'b' * 64)
+        page = sr.write_slow_report(d)
+        self.assertEqual(page.count('**The program changed mid-run**'), 1)
+        self.assertIn(f'sha256 `{reg[:12]}` -> `{"b" * 12}`', page)
+        original = self.events(d)
+        for how, edit in (('the registered line names another run', lambda ev: [dict(e, manifest_sha256='9' * 64) if e['event'] == 'registered' else e for e in ev]),
+                          ('the registered line names no run', lambda ev: [{k: v for k, v in e.items() if k != 'manifest_sha256'} if e['event'] == 'registered' else e for e in ev]),
+                          ('there is no registered line', lambda ev: [e for e in ev if e['event'] != 'registered'])):
+            with self.subTest(how):
+                self.rewrite_log(d, edit)
+                self.assertEqual(sr.accepted_program_shas(d, man), {reg}, 'a line that cannot be tied to this run is left out')
+                self.assertNotIn('The program changed mid-run', sr.write_slow_report(d))
+                self.rewrite_log(d, lambda ev: original)
+        self.rewrite_log(d, lambda ev: [e for e in original if e['event'] != 'program_changed'] + [self.change_event(man, 'c' * 64, manifest_sha256='9' * 64)])
+        self.assertEqual(sr.accepted_program_shas(d, man), {reg}, 'a line that names ANOTHER run is not this run\'s, whatever the log says')
+        self.rewrite_log(d, lambda ev: [e for e in original if e['event'] != 'program_changed'] + [self.change_event(man, 'c' * 64, manifest_sha256=None)])
+        self.assertEqual(sr.accepted_program_shas(d, man), {reg}, 'and a line that names no run because the name is null is not an old line either')
+
+    def test_a_resume_after_a_change_logged_by_the_earlier_version_does_not_replay_it_again(self):
+        d = self.started('6')
+        man = self.manifest(d)
+        self.rebuild_again()
+        new = sha(self.cloud)
+        # the change as the earlier version logged it: no manifest_sha256
+        self.append_log(d, self.change_event(man, new, manifest_sha256=DROP))
+        replays = len(self.replayed)
+        code, out, err = self.cli('--dir', d, '--max-games', '6', deck=False, spawn=self.spawn)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(len(self.replayed), replays, 'the accepted program needs no new replay')
+        self.assertEqual(len(self.events(d, 'program_changed')), 1, 'and no change is logged twice')
+
     def change_event(self, man, new_sha, **over):
         """A 'program_changed' event as reverify_program writes it for the run `man`: the program it names, its build record (for that file, with the registered engine tree and
         harness hash), the self-check texts the run was registered with. `over` replaces entries (a value of DROP removes one)."""
@@ -4822,6 +4869,25 @@ class ManifestProvenance(RebuiltFixture):
         self.assertEqual(sr.pin_provenance_problems(man, later, self.pin_path), [], 'not asked')
         self.assertEqual(self.cli('--dir', d, '--dry-run', deck=False)[0], 0, 'and a resume is not refused for it')
 
+    def test_the_self_check_texts_the_registration_records_must_be_the_pins_while_that_pin_is_in_use(self):
+        d = self.registered(True)
+        man = self.manifest(d)
+        self.assertEqual(sr.pin_provenance_problems(man, self.pin, self.pin_path), [], 'a registration made by this code records the pin\'s own texts')
+        self.tampered(d, selfcheck=dict(man['selfcheck'], km3='selfcheck pilot=km3 games=12 digest=0000000000000000'))
+        man = self.manifest(d)
+        want = (f"the registration records the km3 self-check text selfcheck pilot=km3 games=12 digest=0000000000000000, but the pin it was made under (still in use) says "
+                f"{self.pin['selfcheck']['km3']}")
+        self.assertEqual(sr.pin_provenance_problems(man, self.pin, self.pin_path), [want])
+        self.assertEqual(sr.manifest_provenance_problems(man), [], 'the manifest alone cannot tell: it is the pin that knows the texts')
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertIn(want, str(code))
+        self.assertIn('REFUSED: what the registration says about the program does not hold', str(code))
+        self.tampered(d, selfcheck=dict(man['selfcheck'], ext='selfcheck pilot=ext'))  # a text for a pilot the pin has none for
+        self.assertTrue(any('the registration records the ext self-check text' in p and 'says none' in p for p in sr.pin_provenance_problems(self.manifest(d), self.pin, self.pin_path)))
+        later = dict(self.pin, selfcheck={'km3': 'x', 'kx3': 'y'})
+        write(self.pin_path, json.dumps(later))  # a later pin: another file
+        self.assertEqual(sr.pin_provenance_problems(self.manifest(d), later, self.pin_path), [], 'not asked')
+
     def test_the_pin_is_asked_for_the_engine_tree_and_the_harness_source_of_a_rebuild_too(self):
         d = self.registered(True)
         rec = self.manifest(d)['slow_report']['build_record']
@@ -4986,6 +5052,58 @@ class LockAndSignals(World):
         code, out, err = self.cli('--dir', d, deck=False)
         self.assertEqual(code, 0, err + out)
         self.assertFalse(os.path.exists(os.path.join(d, 'slow_report.lock')))
+
+    def test_a_signal_that_arrives_while_the_program_is_being_started_still_stops_it(self):
+        """The container is stopped just as a sitting starts: SIGTERM must not raise between the start of the program and the code that stops it (that left the program running,
+        holding the lock, after its wrapper had gone). The signal waits until the loop that watches the program can stop it."""
+        self.set_program(HANG_PROGRAM)
+        d = self.register()
+        started = []
+
+        def spawn(cmd, env, logfile):
+            proc = sr.default_spawn(cmd, env, logfile)
+            started.append(proc)
+            os.kill(os.getpid(), signal.SIGTERM)  # arrives right after the program was started, before spawn has even returned it
+            return proc
+        try:
+            code, out, err = self.cli('--dir', d, '--max-games', '2', deck=False, spawn=spawn)
+            self.assertEqual(code, 128 + signal.SIGTERM, out + err)
+            self.assertEqual(len(started), 1)
+            self.assertIsNotNone(started[0].poll(), 'the program the wrapper started is stopped, not left running')
+            self.assertIn('interrupted', [e['event'] for e in jsonl(os.path.join(d, 'slow_report_log.jsonl'))])
+            self.assertFalse(os.path.exists(os.path.join(d, 'slow_report.lock')), 'and the lock is released')
+        finally:
+            for p in started:
+                if p.poll() is None:
+                    p.kill()
+                    p.wait()
+
+    def test_the_program_does_not_inherit_the_signals_the_wrapper_holds_while_it_starts_it(self):
+        """A child inherits the signal mask of the process that starts it: a program started while SIGTERM is held would never hear the SIGTERM that stops it (it would be killed only after
+        the grace period). default_spawn gives the program an empty mask."""
+        d = self.register()
+        held = signal.pthread_sigmask(signal.SIG_BLOCK, (signal.SIGTERM, signal.SIGHUP, signal.SIGINT))
+        try:
+            self.assertNotEqual(signal.pthread_sigmask(signal.SIG_BLOCK, ()), set(), 'the test holds the signals, as run_games does while it starts a program')
+            log = os.path.join(d, 'mask.log')
+            p = sr.default_spawn([sys.executable, '-c', 'print(open("/proc/self/status").read())'], dict(os.environ), log)
+        finally:
+            signal.pthread_sigmask(signal.SIG_SETMASK, held)
+        p.wait(timeout=30)
+        p._logfh.close()
+        self.assertIn('\nSigBlk:\t0000000000000000\n', read(log), 'nothing is blocked in the program')
+
+    def test_the_signals_are_not_left_blocked_after_a_sitting_is_started(self):
+        before = signal.pthread_sigmask(signal.SIG_BLOCK, ())
+        d = self.register()
+        self.assertEqual(self.cli('--dir', d, '--max-games', '2', deck=False)[0], 0)
+        self.assertEqual(signal.pthread_sigmask(signal.SIG_BLOCK, ()), before, 'the signal mask is what it was')
+        def failing(cmd, env, logfile):
+            raise OSError('no such program')
+        with self.assertRaises(OSError):
+            self.cli('--dir', d, deck=False, spawn=failing)
+        self.assertEqual(signal.pthread_sigmask(signal.SIG_BLOCK, ()), before, 'also when the program could not be started')
+        self.assertFalse(os.path.exists(os.path.join(d, 'slow_report.lock')), 'and the lock is released')
 
     def has_ended(self, pid):
         """Whether the process no longer runs (a zombie that waits to be collected has ended too, and its descriptors, the lock among them, are closed)."""

@@ -2347,6 +2347,25 @@ class CommittedPin(unittest.TestCase):
         self.assertIn('slots 684, 685 and 686', rows[0])
         self.assertIn('seed_reserved', rows[0], 'the row says the pin lists them too')
 
+    def test_the_program_change_in_the_committed_smoke_run_is_still_accepted_and_shown_by_the_current_code(self):
+        """Run 3 of the smoke was made by the version before a change was tied to its run (its 'program_changed' line carries no manifest_sha256, its 'registered' line names the run):
+        a regenerated page still shows the change, the program it changed to is still accepted (a resume would not replay it again), and the run's claims about its program hold."""
+        run3 = os.path.join(ROOT, 'rl', 'results', 'slow_report_smoke_2026-10-07', 'run3_cloud_route_real_rebuild_and_restart')
+        with tempfile.TemporaryDirectory() as t:
+            d = os.path.join(t, 'run3')
+            shutil.copytree(run3, d)
+            man = json.loads(read(os.path.join(d, 'manifest.json')))
+            events = [json.loads(l) for l in read(os.path.join(d, 'slow_report_log.jsonl')).splitlines()]
+            changes = [e for e in events if e['event'] == 'program_changed']
+            self.assertEqual(len(changes), 1)
+            self.assertNotIn('manifest_sha256', changes[0], 'written before the line named its run')
+            self.assertEqual(events[0]['manifest_sha256'], sha(os.path.join(d, 'manifest.json')), 'and the first line of the log names the run')
+            self.assertEqual(sr.accepted_program_shas(d, man), {man['program_sha256'], changes[0]['new_sha256']})
+            self.assertEqual(sr.manifest_provenance_problems(man), [])
+            page = sr.write_slow_report(d)
+            self.assertEqual(page.count('**The program changed mid-run**'), 1)
+            self.assertIn(f'sha256 `{man["program_sha256"][:12]}` -> `{changes[0]["new_sha256"][:12]}`', page)
+
     def test_the_smoke_runs_hold_exactly_the_reserved_seeds(self):
         pin = self.pin()
         smoke = os.path.join(ROOT, 'rl', 'results', 'slow_report_smoke_2026-10-07')
@@ -3765,9 +3784,12 @@ class ReadmeCloudRoute(unittest.TestCase):
         section, prereg = self.section(), read(os.path.join(HERE, 'strength_prereg.py'))
         for sentence, code_words in (
                 ("The same holds for a hand-written `use` config run through `strength_prereg.py` directly: a self-check text it gives must be the committed pin's own text for that pilot "
-                 '(a copied one must also be one the pin says was measured on this program), or it is refused before anything is written.',
+                 '(a copied one must also be one the pin says was measured on this program), or it is refused before anything is written. A text said to be replayed needs a program route '
+                 'that fits the program (the pinned binary, or a rebuild whose build record is on disk beside it and is the one the block carries), and the committed pin is asked for '
+                 'whenever the block carries a pin state or a route, with a text or without.',
                  ["REFUSED: the self-check text given for {spec} is not the text the pin has for it", "REFUSED: the pin says its self-check texts were measured on a program with sha256",
-                  "if cfg.get('selfcheck_how') != 'replayed':"]),
+                  "if given and cfg.get('selfcheck_how') != 'replayed':", "REFUSED: a replayed self-check text needs a program route (pinned or rebuilt)", 'def route_problem(route, prog, prog_sha, pin, block):',
+                  "block.get('pin_committed') is not None or block.get('program_route') is not None"]),
                 ("Whenever a registered run is read again (`--dir`), what its registration says about the program is checked against itself (a pinned-route registration must carry the pinned binary's "
                  "sha256 as its program's, a rebuilt-route one a build record for that very program with the engine tree as archived and the harness source the registration names) and, while the pin "
                  'file in use is the one the registration was made under, against that pin (a later pin is not asked): a resume or a dry run refuses a registration that fails, and a '
@@ -3786,6 +3808,11 @@ class ReadmeCloudRoute(unittest.TestCase):
         self.assertIn('cargo fetch', step5)
         self.assertIn('git fetch origin claude/playout-pilot', self.step(1), 'and step 1 is where they were first needed')
         self.assertIn('cargo fetch', self.step(1))
+        pinned = self.pin()['engine_ref'][:8]
+        self.assertIn(f'mkdir -p /tmp/d513 && git archive {pinned} engine | tar -x -C /tmp/d513 && (cd /tmp/d513/engine && cargo fetch --locked)', self.step(1),
+                      "the dependencies are fetched against the pinned commit's lock file, not that of whatever checkout one is in")
+        self.assertIn("the same `cargo fetch --locked` on the pinned commit's lock file as in step 1", step5)
+        self.assertNotIn('against `engine/Cargo.lock`', self.section())
 
     def test_step_1_says_what_the_build_file_system_has_to_do_with_the_tree_and_the_file_modes(self):
         """The archived tree includes the file modes, which build.sh takes from the file system (core.fileMode=true in its scratch repository): a build folder on a Windows drive under
@@ -3922,8 +3949,10 @@ class ReadmeCloudRoute(unittest.TestCase):
                 ('The page also says when a sitting went back to an earlier accepted build (the registered one or an earlier change: no replay is needed, no change is logged).',
                  ['The program went back to an earlier accepted build', 'so no new replay was needed']),
                 ('The `program_changed` lines of `slow_report_log.jsonl` are checked against the registration (rebuilt route, written for this run: the sha256 of its `manifest.json` is in the line, '
-                 'build record with the registered engine tree and harness hash, the registered self-check texts), so a stray, foreign or pasted line is neither honoured nor shown on the page',
-                 ["(man.get('slow_report') or {}).get('program_route') == 'rebuilt' and program_change_valid(e, man, msha)", "e.get('manifest_sha256') == msha", "rec.get('engine_tree_archived') == sr.get('engine_tree')",
+                 'build record with the registered engine tree and harness hash, the registered self-check texts), so a stray, foreign or pasted line is neither honoured nor shown on the page '
+                 "(a line written before lines named their run counts when the `registered` line of the log names this run's manifest)",
+                 ["(man.get('slow_report') or {}).get('program_route') == 'rebuilt' and program_change_valid(e, man, msha, legacy)", "e.get('manifest_sha256') == msha", "'manifest_sha256' not in e",
+                  "def log_started_for(events, msha):", "rec.get('engine_tree_archived') == sr.get('engine_tree')",
                   "rec.get('harness_source_sha256') == sr.get('harness_source_sha256')", "e.get('selfcheck') == man.get('selfcheck')"]),
                 ('that is a consistency check, not authentication (whoever can write the run folder can rewrite `manifest.json` and `manifest.sha256` as well): the pushed commit of the registration '
                  'is the tamper evidence', ['it is NOT authentication', 'whoever can write to the run folder can also rewrite manifest.json and manifest.sha256 (the pushed commit of the registration is the tamper evidence)']))
@@ -4024,7 +4053,8 @@ class ReadmeCloudRoute(unittest.TestCase):
         self.assertNotIn('energy types', self.readme().lower())
 
     # the options the sections write that belong to another program: cargo's, and git's in the one command that fixes a folder git refuses as unsafe
-    FOREIGN = {'--offline': 'cargo --offline', '--global': 'git config --global --add safe.directory', '--add': 'git config --global --add safe.directory', '--exec': '`rebase --exec`'}
+    FOREIGN = {'--offline': 'cargo --offline', '--global': 'git config --global --add safe.directory', '--add': 'git config --global --add safe.directory', '--exec': '`rebase --exec`',
+               '--locked': 'cargo fetch --locked'}
 
     def test_every_flag_the_section_writes_is_an_option_of_the_script_except_the_ones_it_gives_to_cargo_and_to_git(self):
         section = self.section()
@@ -4044,7 +4074,7 @@ class ReadmeCloudRoute(unittest.TestCase):
         """The cloud section is checked above; this is the rest of the slow report's part (from its heading to 'Files'), which also names the options of slow_report_existing.py."""
         text = self.readme()
         part = text.split('## The slow report (opt-in)')[1].split('\n## Files')[0]
-        flags = set(re.findall(r'(?<![\w-])--[a-z][a-z-]*', part))
+        flags = set(re.findall(r'(?<![\w-])--[a-z][a-z-]*', part))  # (--locked is cargo's, in the command that fetches the dependencies: FOREIGN)
         options = ''
         for script in ('slow_report.py', 'slow_report_existing.py'):
             helped = subprocess.run([sys.executable, '-B', os.path.join(HERE, script), '--help'], capture_output=True, text=True)
@@ -4076,8 +4106,9 @@ class ReadmeCloudRoute(unittest.TestCase):
         self.assertEqual(branch, 'claude/playout-pilot', 'the pin\'s own text names the branch the commit is on')
         self.assertIn(f"The commit `{pin['engine_ref']}` is on the branch `origin/{branch}`", section)
         self.assertIn(f'git fetch origin {branch}', section)
-        self.assertIn('`cargo fetch` against `engine/Cargo.lock`', section)
-        self.assertIn('cp "$W/tree/engine/Cargo.lock" "$W/tree/rl/strength/Cargo.lock"', build, 'the lock file the section says to fetch against is the one build.sh builds with')
+        self.assertIn(f"fetch them first, with network, against the lock file of the pinned commit and not of whatever checkout you are in: `mkdir -p /tmp/d513 && git archive {pin['engine_ref'][:8]} engine | "
+                      'tar -x -C /tmp/d513 && (cd /tmp/d513/engine && cargo fetch --locked)`', section)
+        self.assertIn('cp "$W/tree/engine/Cargo.lock" "$W/tree/rl/strength/Cargo.lock"', build, 'the lock file the section says to fetch against is the one build.sh builds with: the engine\'s, of the archived ref')
 
 
 class ReadmeCloudRouteBehaviour(T.World):

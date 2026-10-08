@@ -57,6 +57,13 @@ def sha(path):
         return hashlib.sha256(f.read()).hexdigest()
 
 
+# A pin of fixed content, laid in every World's repository (a test that needs texts and programs lays its own with lay_pin): the slow-report blocks of the tests that only look at what is
+# recorded and printed name it by this sha256, since a block that claims a pin state or a program route is held to the pin it names.
+FIXED_PIN = json.dumps({'program': '/pinned/strength', 'program_sha256': 'a' * 64, 'selfcheck': {}, 'selfcheck_measured_on_sha256': 'a' * 64, 'engine_ref': 'd' * 40, 'engine_tree': '3' * 40,
+                        'harness_source_sha256': 'b' * 64}, indent=1) + '\n'
+FIXED_PIN_SHA = hashlib.sha256(FIXED_PIN.encode()).hexdigest()
+
+
 def card_id(tag):
     """A card id of the form `X1 NNN` that is different for every tag: the held-out guard compares cards by id (the engine ignores printed names)."""
     return f"X1 {int(hashlib.md5(tag.encode()).hexdigest()[:6], 16) % 800 + 100:03d}"
@@ -102,6 +109,7 @@ class World(unittest.TestCase):
         write(os.path.join(self.harness, 'heldout.json'), json.dumps({'locked': locked, 'unlocked_by': None if locked else 'test', 'decks': ['held-1', 'held-2']}))
         for n, p in decks.items():
             write(os.path.join(self.repo, p), deck_text(n))
+        write(os.path.join(self.repo, 'rl', 'strength', 'slow_report_pin.json'), FIXED_PIN)
         return self
 
     def setUp(self):
@@ -121,12 +129,24 @@ class World(unittest.TestCase):
         """A pin in the repository, the file the slow-report block names: the texts the pin has for each pilot (default GIVEN) and the sha256 of the program they were measured on (default:
         `program`'s). Returns the block's pin entry (path and the file's sha256) and remembers it as self.pin_ref, which use_config puts in the slow-report block."""
         pin = dict(program=program, program_sha256=sha(program), selfcheck=dict(self.GIVEN if selfcheck is None else selfcheck),
-                   selfcheck_measured_on_sha256=sha(program) if measured_on is None else measured_on)
+                   selfcheck_measured_on_sha256=sha(program) if measured_on is None else measured_on, engine_ref='d' * 40, engine_tree='3' * 40, harness_source_sha256='b' * 64)
         pin.update(extra)
         path = os.path.join(self.repo, *self.PIN_REL.split('/'))
         write(path, json.dumps(pin, indent=1) + '\n')
         self.pin_ref = dict(path=self.PIN_REL, sha256=sha(path))
         return self.pin_ref
+
+    def write_record(self, program, **over):
+        """The build record build.sh writes beside `program` (PROGRAM.build.json) for a good rebuild of the pin lay_pin made: this program's sha256, the pin's engine tree and harness
+        source. Returns the entry the slow-report block carries (the record, its file and its sha256); `over` replaces fields of the record on disk (a value of None removes one)."""
+        rec = dict(schema=1, program=program, program_sha256=sha(program), engine_arg='d' * 40, engine='d' * 40 + ' engine tree ' + '3' * 40, engine_ref='d' * 40, engine_tree_archived='3' * 40,
+                   harness_source_sha256='b' * 64, rustc='rustc 1.99.0\nbinary: rustc', cargo='cargo 1.99.0', machine='Linux x86_64', host='cloud-box', built_at='2026-10-09T12:00:00Z',
+                   rebuild_command='env bash build.sh REF OUT')
+        rec.update(over)
+        rec = {k: v for k, v in rec.items() if v is not None}
+        path = program + '.build.json'
+        write(path, json.dumps(rec, indent=1) + '\n')
+        return dict(rec, record_file=path, record_sha256=sha(path))
 
     def git(self, *args, env=None):
         r = subprocess.run(['git', '-C', self.repo, '-c', 'user.name=t', '-c', 'user.email=t@t', '-c', 'commit.gpgsign=false', *args], capture_output=True, text=True,
@@ -144,8 +164,10 @@ class World(unittest.TestCase):
     bypass = True  # the test-only variable that lets a pin that is not committed through; the tests of the committed-pin check itself turn it off
 
     def use_config(self, **kw):
-        kw.setdefault('slow_report', dict(version=1, headline='kx3 (d513e37b) on a-deck v km3 on the public panel',
-                                          pin=dict(self.pin_ref or dict(path=self.PIN_REL, sha256='e' * 64))))
+        block = dict(version=1, headline='kx3 (d513e37b) on a-deck v km3 on the public panel', pin=dict(self.pin_ref or dict(path=self.PIN_REL, sha256=FIXED_PIN_SHA)))
+        if self.pin_ref:  # a config that comes with a pin of its own is a slow report on the pinned program, unless a test says otherwise
+            block['program_route'] = 'pinned'
+        kw.setdefault('slow_report', block)
         return self.config(stage='use', **kw)
 
     def prereg(self, cfg, env=None):
@@ -553,7 +575,7 @@ class SelfcheckGiven(World):
         kw = self.given_kw(p, selfcheck_how='replayed')
         if committed:
             self.commit_repo()
-        slow = dict(version=1, headline='kx3 (d513e37b) on a-deck v km3 on the public panel', pin=dict(self.pin_ref), **block)
+        slow = dict(version=1, headline='kx3 (d513e37b) on a-deck v km3 on the public panel', pin=dict(self.pin_ref), program_route='pinned', **block)
         r = self.prereg(self.use_config(slow_report=slow, **kw))
         self.assertEqual(r.returncode, 0, r.stderr)
         return self.manifest(), read(os.path.join(self.out, 'PREREGISTRATION.md'))
@@ -586,7 +608,7 @@ class SelfcheckGiven(World):
                 kw = self.given_kw(p, selfcheck_how='replayed')
                 if committed:
                     self.commit_repo()
-                slow = dict(version=1, headline='kx3 (d513e37b) on a-deck v km3 on the public panel', pin=dict(self.pin_ref), pin_committed=said)
+                slow = dict(version=1, headline='kx3 (d513e37b) on a-deck v km3 on the public panel', pin=dict(self.pin_ref), program_route='pinned', pin_committed=said)
                 r = self.prereg(self.use_config(slow_report=slow, **kw))
                 self.assertEqual(r.returncode, 1, r.stderr)
                 self.assertIn(f"the config says the pin is {said!r} but strength_prereg.py finds it is {'yes' if committed else 'bypassed'!r}", r.stderr)
@@ -743,6 +765,12 @@ class SelfcheckGiven(World):
     }
 
     # ---- a given text is held to the committed pin (a config written by hand, run through strength_prereg.py directly, must not be able to claim pinned provenance)
+    def forget_that_the_program_was_asked(self):
+        """For a test that registers (the script plays the self-check of a program with no given text) and then checks a refusal: the marker the fake program leaves is cleared."""
+        marker = os.path.join(self.tmp, 'selfcheck_was_run')
+        if os.path.exists(marker):
+            os.remove(marker)
+
     def refused_naming(self, r, phrase):
         self.assertEqual(r.returncode, 1, r.stderr)
         self.assertIn(phrase, r.stderr)
@@ -876,6 +904,106 @@ class SelfcheckGiven(World):
         r = self.prereg(self.use_config(**kw), env={'GIT_DIR': os.path.join(other, '.git')})  # (with GIT_DIR alone git takes the folder it is run in for the work tree and reads that repository's HEAD)
         self.refused_naming(r, 'REFUSED: the pin the config names is not the committed one: ')
 
+    # ---- a replayed text, a route and a pin state are claims too: each is checked against the pin, the program and the build record
+    def block(self, **entries):
+        """A slow-report block on the pin lay_pin made (self.pin_ref), with these entries."""
+        return dict(version=1, headline='kx3 (d513e37b) on a-deck v km3 on the public panel', pin=dict(self.pin_ref), **entries)
+
+    def test_a_replayed_text_needs_a_program_route_in_the_block(self):
+        p = self.fake_program()
+        kw = self.given_kw(p, selfcheck_how='replayed')
+        for how, entries in (('no route', {}), ('a null route', dict(program_route=None)), ('a route that is none of ours', dict(program_route='mystery')), ('an empty route', dict(program_route=''))):
+            with self.subTest(route=how):
+                shutil.rmtree(self.out, ignore_errors=True)
+                r = self.prereg(self.use_config(slow_report=self.block(**entries), **kw))
+                self.refused_naming(r, 'REFUSED: a replayed self-check text needs a program route (pinned or rebuilt) in the slow_report block, so that what it was replayed on can be checked')
+
+    def test_a_replayed_text_on_the_pinned_route_must_be_on_the_pinned_program(self):
+        """The pinned route says the program is the pinned binary: its sha256 is the pin's. A hand-written config that says 'replayed' and 'pinned' for another program is refused."""
+        p = self.fake_program()
+        kw = self.given_kw(p, selfcheck_how='replayed')
+        r = self.prereg(self.use_config(slow_report=self.block(program_route='pinned'), **kw))
+        self.assertEqual(r.returncode, 0, r.stderr)
+        for pin_program, how in (('f' * 64, 'a pin that names another program'), (None, 'a pin that names none')):
+            with self.subTest(pin=how):
+                shutil.rmtree(self.out, ignore_errors=True)
+                self.lay_pin(p, program_sha256=pin_program)
+                r = self.prereg(self.use_config(slow_report=self.block(program_route='pinned'), **kw))
+                self.refused_naming(r, f'REFUSED: the config says the program is the pinned binary (route pinned), but the program at {p} has sha256 {sha(p)[:12]} and the pin\'s program has '
+                                       f'{(pin_program or "None")[:12]}')
+
+    def test_a_replayed_text_on_the_rebuilt_route_needs_the_build_record_on_disk_and_the_block_to_match_it(self):
+        p = self.fake_program()
+        kw = self.given_kw(p, selfcheck_how='replayed')
+        rec = self.write_record(p)
+        r = self.prereg(self.use_config(slow_report=self.block(program_route='rebuilt', build_record=rec), **kw))
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertEqual(self.manifest()['slow_report']['build_record'], rec)
+        bad_record = f'REFUSED: the build record {p}.build.json is not for this program and the pinned source'
+        cases = (
+            ('no build record on disk', lambda: os.remove(p + '.build.json'), rec, f'REFUSED: the config says the program is a rebuild (route rebuilt), but {p}.build.json is not there'),
+            ('a record for another program', lambda: self.write_record(p, program_sha256='a' * 64), rec, bad_record + ' (program_sha256 aaaaaaaaaaaa, not ' + sha(p)[:12] + ')'),
+            ('a record with another engine tree', lambda: self.write_record(p, engine_tree_archived='c' * 40), rec, bad_record + ' (engine_tree_archived cccccccccccc, not the pin\'s 333333333333)'),
+            ('a record with another harness source', lambda: self.write_record(p, harness_source_sha256='a' * 64), rec, bad_record + ' (harness_source_sha256 aaaaaaaaaaaa, not the pin\'s bbbbbbbbbbbb)'),
+            ('a record that is not JSON', lambda: write(p + '.build.json', '{not json'), rec, f'REFUSED: the build record {p}.build.json cannot be read'),
+            ('a record of another schema', lambda: self.write_record(p, schema=2), rec, bad_record + ' (schema 2, not 1)'),
+            ('a block with no build record', lambda: self.write_record(p), None, 'REFUSED: the block carries no build record, and so cannot say which one the rebuild has'),
+            ('a block whose record is not the file\'s', lambda: self.write_record(p), dict(rec, record_sha256='a' * 64), f'REFUSED: the build record in the block is not the one at {p}.build.json'),
+            ('a block whose record is for another tree', lambda: self.write_record(p), dict(rec, engine_tree_archived='c' * 40), f'REFUSED: the build record in the block is not the one at {p}.build.json'))
+        for how, change, in_block, phrase in cases:
+            with self.subTest(case=how):
+                shutil.rmtree(self.out, ignore_errors=True)
+                change()
+                entries = dict(program_route='rebuilt')
+                if in_block is not None:
+                    entries['build_record'] = in_block
+                r = self.prereg(self.use_config(slow_report=self.block(**entries), **kw))
+                self.refused_naming(r, phrase)
+
+    def test_a_route_is_checked_for_a_program_that_is_there_even_when_no_text_is_given(self):
+        """The page and the PREREGISTRATION describe the program by the route: a block that says 'pinned' or 'rebuilt' for a program that is neither is refused whether or not it
+        brings a text. (The self-check is played by the script here.)"""
+        self.registry_with_altaria()
+        p = self.fake_program()
+        self.lay_pin(p)
+        r = self.prereg(self.use_config(program=p, slow_report=self.block(program_route='pinned')))
+        self.assertEqual(r.returncode, 0, r.stderr)
+        shutil.rmtree(self.out, ignore_errors=True)
+        self.forget_that_the_program_was_asked()
+        self.lay_pin(p, program_sha256='f' * 64)
+        r = self.prereg(self.use_config(program=p, slow_report=self.block(program_route='pinned')))
+        self.refused_naming(r, f'REFUSED: the config says the program is the pinned binary (route pinned), but the program at {p} has sha256 {sha(p)[:12]}')
+        r = self.prereg(self.use_config(program=p, slow_report=self.block(program_route='rebuilt')))
+        self.refused_naming(r, f'REFUSED: the config says the program is a rebuild (route rebuilt), but {p}.build.json is not there')
+        shutil.rmtree(self.out, ignore_errors=True)
+        r = self.prereg(self.use_config(slow_report=self.block(program_route='rebuilt')))  # no program file at all: nothing to check it against
+        self.assertEqual(r.returncode, 0, r.stderr)
+
+    def test_a_block_that_carries_a_pin_state_or_a_route_loads_the_committed_pin_even_with_no_text_given(self):
+        """The pin is asked for whenever the block claims something about it: a pin_committed or a program_route. A block with neither (and no text) claims nothing and needs no pin."""
+        self.registry_with_altaria()
+        p = self.fake_program()
+        self.lay_pin(p)
+        self.bypass = False
+        for how, entries in (('a pin state', dict(pin_committed='yes')), ('a route', dict(program_route='pinned')), ('both', dict(pin_committed='yes', program_route='pinned'))):
+            with self.subTest(claims=how):
+                shutil.rmtree(self.out, ignore_errors=True)
+                r = self.prereg(self.use_config(program=p, slow_report=self.block(**entries)))
+                self.refused_naming(r, f'REFUSED: the pin the config names is not the committed one: HEAD has no {self.PIN_REL} in {self.repo}')
+        shutil.rmtree(self.out, ignore_errors=True)
+        r = self.prereg(self.use_config(program=p, slow_report=self.block()))
+        self.assertEqual(r.returncode, 0, 'no claim, no pin: ' + r.stderr)
+        self.assertNotIn('pin_committed', self.manifest()['slow_report'])
+        self.commit_repo()
+        shutil.rmtree(self.out, ignore_errors=True)
+        r = self.prereg(self.use_config(program=p, slow_report=self.block(pin_committed='yes', program_route='pinned')))
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertEqual(self.manifest()['slow_report']['pin_committed'], 'yes')
+        shutil.rmtree(self.out, ignore_errors=True)
+        self.forget_that_the_program_was_asked()
+        r = self.prereg(self.use_config(program=p, slow_report=self.block(pin_committed='bypassed', program_route='pinned')))
+        self.refused_naming(r, "the config says the pin is 'bypassed' but strength_prereg.py finds it is 'yes'")
+
     def test_every_refusal_of_the_given_text_leaves_no_run_directory_and_the_same_path_registers_once_the_config_is_right(self):
         """The checks of the given text and its program come before os.makedirs: a refused registration used to leave an empty run directory (and its parents) that the next
         try, or a person, had to notice and remove."""
@@ -911,7 +1039,7 @@ class SelfcheckGiven(World):
 
 class SlowReportBlock(World):
     BLOCK = {'version': 1, 'deck_name': 'a-deck', 'paired': True, 'headline': 'kx3 (d513e37b) on a-deck v km3 on the public panel',
-             'pin': {'path': 'rl/strength/slow_report_pin.json', 'sha256': 'e' * 64}}
+             'pin': {'path': 'rl/strength/slow_report_pin.json', 'sha256': FIXED_PIN_SHA}}
 
     def test_the_block_is_recorded_and_named_in_the_preregistration(self):
         r = self.prereg(self.use_config(slow_report=self.BLOCK))
@@ -974,6 +1102,8 @@ class SlowReportBlock(World):
         self.assertLess(text.index('"engine_tree_archived"'), text.index('"harness_source_sha256"'))
         backwards = self.block_lines(dict(self.FULL, build_record=dict(reversed(list(record.items())))))
         self.assertIn(printed, backwards, 'the same record in another key order prints as the same line')
+        self.commit_repo()  # (the committed pin: the state the block says, 'yes', is the one the script finds)
+        self.bypass = False
         nulls = self.block_lines(dict(self.FULL, build_record=None, pin_committed='yes', pin_committed_detail=None))
         self.assertIn('- build_record: `none`', nulls)
         self.assertIn('- pin_committed: `yes`', nulls)
@@ -986,6 +1116,10 @@ class SlowReportBlock(World):
         """A fact about the checkout that was not there (no ref, no tree, no machine name, no deck hash) is `not found`; `none` is for the two entries whose null means there is
         nothing to say. The difference is per entry, so each null is tried alone."""
         for key in self.ROUTE_KEYS + ('deck_file', 'deck_file_sha256', 'deck_file_state', 'deals'):
+            if key == 'pin_committed':  # not left null: a block that claims a route is held to the pin, and the script records the state it finds (tested with the pin)
+                lines = self.block_lines(dict(self.FULL, pin_committed=None))
+                self.assertEqual([l for l in lines if l.startswith('- pin_committed: ')], ['- pin_committed: `bypassed`'])
+                continue
             with self.subTest(null=key):
                 lines = self.block_lines(dict(self.FULL, **{key: None}))
                 self.assertEqual([l for l in lines if l.startswith(f'- {key}: ')], [f"- {key}: `{'none' if key in self.NOTHING_TO_SAY else 'not found'}`"])
@@ -1005,7 +1139,8 @@ class SlowReportBlock(World):
             with self.subTest(block=how):
                 shutil.rmtree(self.out, ignore_errors=True)
                 keys = [l.split(':')[0][2:] for l in self.block_lines(block)]
-                self.assertEqual(keys, ['paired', 'pin'] + [k for k in self.ROUTE_KEYS if k in block])
+                self.assertEqual(keys, ['paired', 'pin'] + [k for k in self.ROUTE_KEYS if k in block or (k == 'pin_committed' and 'program_route' in block)],
+                                 "(a block that names a route is held to the pin, and the state the script finds is recorded)")
 
     def test_an_entry_the_block_has_is_printed_even_when_it_says_no(self):
         self.assertIn('- paired: `False`', self.block_lines(dict(self.BLOCK, paired=False)))
@@ -1027,7 +1162,7 @@ class RunParagraph(World):
 
     COMMAND = 'python3 rl/strength/slow_report.py --dir rl/results/slow_reports/2026-10-10_a-deck'
     BLOCK = dict(version=1, deck_name='a-deck', paired=True, headline='kx3 (d513e37b) on a-deck v km3 on the public panel',
-                 pin=dict(path='rl/strength/slow_report_pin.json', sha256='e' * 64), resume_command=COMMAND)
+                 pin=dict(path='rl/strength/slow_report_pin.json', sha256=FIXED_PIN_SHA), resume_command=COMMAND)
     SENTENCE = ("A slow report is run and resumed through its wrapper, which removes the variables that would tune the pilot or change the rules from the program's environment, "
                 "{rule}, and checks the registration, the deck files and {program} before every sitting:")
     ON = 'applies the school-morning rule as registered ({days})'
