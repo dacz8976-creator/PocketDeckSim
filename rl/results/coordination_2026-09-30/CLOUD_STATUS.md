@@ -13,39 +13,42 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
 1. **Current task, and the instruction that set it.** The skip bar and close calls combined (Fable via Dustin, Oct 7,
-   from the laptop's review of 7d3639d0), with the addendum that drops (c): done and pushed, except the exact code's
-   12-game self-check (item 2). Tests first, gates 1-2, km3 untouched, no table games.
-   **The fix round, (c) dropped.**
-   - **Where.** Branch claude/playout-pilot: tests first c0a36092, code ec283c53; the addendum's tests ce1a0b13, code
-     76cd08f4; results and README 54209409. Read "The fix round" at the top of
-     `rl/results/playout_close_calls_2026-10-07/README.md`.
-   - **Fixed.**
+   from the laptop's review of 7d3639d0), its addenda ((c) dropped; ties with the best join a running extension), and
+   the acceptance message (54209409 accepted; the skip-bar finding accepted, nothing to build; a test that a tie with the
+   best can overtake). Done and pushed, except the exact code's 12-game self-check (item 2). Tests first, gates 1-2, km3
+   untouched, no table games.
+   **The head for the laptop's registration: claude/playout-pilot 172cbe9c (code 4e7d8ce5).**
+   - **Where.**
+     - The fix: tests first c0a36092, code ec283c53.
+     - (c) dropped: tests ce1a0b13, code 76cd08f4.
+     - Ties join: tests 6b5b713d, code 4e7d8ce5.
+     - The overtake test: 72be60e8. Results and README: 172cbe9c.
+     - Read "The fix round" at the top of `rl/results/playout_close_calls_2026-10-07/README.md`.
+   - **The rule now.**
      - (a) km3's move is close to the best when the best's lead is within the bar the decision will use: z_skip for a
        switch from km3's attack to a line that skips it.
      - (b) Every extended candidate plays to R_max, and the decision is made once, at the end.
-     - (c) Built in ec283c53, then removed in 76cd08f4: a move tied with km3's is now extended like any other.
-     - **The addendum's test:** at B-210952-t16, the turn's Water to the Active ties km3's move in all 16 rounds. It is
-       extended to 64 rounds and played, with a lead of +0.125 at 3.0 SE. With (c), Binding Snow was played. Before the
-       change, 4 of the 8 tests failed.
-     - **Still standing, flagged:** the first version's rule that a move equal to the best in every round is no close
-       call. It covers a move tied with km3's when km3's move is the best, and rests on the same reasoning. Not changed
-       without a word.
-   - **The 26 development-run cases with `kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64`:**
-     - **The 9 true skips:** km3's attack is kept at 2. The skip bar alone kept 7.
-     - **The 17 moves before an attack:** 6 of the 15 that reproduce are touched, 4 back to km3's attack and 2 to another
-       move. The skip bar alone touched none.
-     - **Why:** 64 rounds halve the standard error. 5 of the skips the bar kept now lead km3's attack by 3.2 to 6.2
-       SE. The bar measures confidence, not size. Q12 is still kept (+0.094, 1.1 SE).
-     - **For Fable and Dustin, before the combined development run:** with `_m64`, the skip bar keeps km3's attack only
-       where the skip's lead is small. A bar on size (a minimum lead) would be a different parameter. Nothing is built.
-   - **Dropping (c)** changed none of the 26 choices, and one gate-2 choice (B-210952-t16).
-   - **Gate 1** at 76cd08f4: suite 2,092/0; km3 240/240; self-checks unchanged with the parameters off.
-   - **Digests:** `kx3_r2_c3_lab_tools_zs3_m64` gives 2284c591ed14a534, the same with (c) or without it. The exact code's
-     12 games are running (item 2).
-   - **Gate 2** (`_tools_zs3` v `_tools_zs3_m64`, 64 decisions): 37 extended to 64 rounds, 7 choices change, x2.5 the
+     - (c) is gone: a move tied with km3's is extended like any other.
+     - A move tied with the best (km3's move or another) joins an extension that a non-tied move within the noise
+       starts, but ties never start one. A settled decision (all won, all lost) isn't extended.
+   - **Message order.** The acceptance message drops the equal-exclusion outright. It arrived after the addendum that
+     answers it, "do NOT simply delete... ties join, never start". So the addendum's version stands.
+   - **Tests.**
+     - B-210952-t16: a move tied with km3's wins.
+     - B-214254-t10 and dev04's placement: a tie with km3's best move joins.
+     - dev04 as stored: Psychic ties km3's best Poncho through 16 rounds, overtakes it over 64 (0.641 v 0.578) and is
+       played.
+   - **The 26 development-run cases:** km3's attack kept at 2 of the 9 true skips (the skip bar alone: 7), and 6 of the
+     15 attack-later moves touched. Neither addendum changed any of them.
+   - **Gate 1** at 4e7d8ce5: suite 2,094/0; km3 240/240; self-checks unchanged with the parameters off.
+   - **Digests.** `kx3_r2_c3_lab_tools_zs3_m64` gives 8c1244aec5c8419d. It was 2284c591ed14a534 before ties joined: at
+     R = 2, ties with the best are common. The exact code's 12 games are running (item 2).
+   - **Gate 2** (`_tools_zs3` v `_tools_zs3_m64`, 64 decisions): 37 extended to 64 rounds, 9 choices change, x2.6 the
      time.
-   - **The `_tools` tie-break** can play a placement the extension left at 16 rounds. That happened at 3 of its 20
-     tie-breaks at gate 2, and at dev06's Heavy Helmet it changed the choice.
+     - The two new changes are dev04 (Psychic) and dev04's placement (km3's Poncho now kept on 64 rounds).
+     - The `_tools` tie-break played a placement left at 16 rounds at 1 of its 19.
+   - **Timing note.** The container restarted in the night and runs faster since, so compare ratios, not seconds, with
+     earlier runs.
    **The two builds after quiz 4 (Oct 7) are done, as below.**
    **The skip bar (`_zs<z>`): the narrower "attack when you can".**
    - **Where.** Branch claude/playout-pilot: tests first 094962a1, code f03780eb, results b704f32e. Read
@@ -294,11 +297,12 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
    **Earlier jobs, done** (the readiness jobs, the card-text follow-up and step 8c read and accepted): the round-2 readiness jobs (57c65860, `rl/results/round2_readiness_2026-10-02/README.md`), the card-text follow-up (20e2651) and the card-text job, step 8c, step 8b's rows (3a107f4), F8, and the later round of coin-flip prevention (`claude/coin-prevention-round2`); details in their READMEs and the log below.
 2. **What is running now, and when it ends.** The exact combined code's self-check, as the laptop's pre-registration
    runs it: `strength selfcheck --pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64 --games 12` (t-altaria v
-   t-suicune), on the harness built from 76cd08f4. It started at 22:25 and takes about 5 hours, so it should end near
-   03:30 on Oct 8. Its digest goes into the close-calls README and here. The run on ec283c53 (with (c)) was stopped.
+   t-suicune), on the harness built from 4e7d8ce5. It started at 02:13 on Oct 8. It took over 5 hours before the
+   restart; the container is faster now, so expect about 3 to 5 hours. Its digest goes into the close-calls README and
+   here. The runs at ec283c53 and 76cd08f4 were stopped when their rule changed.
 3. **Files I expect to change.** None. The play-out job changed, on its branch only: `engine/src/players/mod.rs` (12 lines), new `engine/src/players/playout_player.rs`, `engine/src/players/playout_pool.rs`, `engine/tests/playout_pilot_test.rs`, `engine/examples/playout_smoke.rs`, `rl/results/playout_pilot_2026-10-02/`, and START_HERE's seed table (one row: 24,200,000,000-24,200,099,999).
 4. **Waiting on the laptop or Sonnet.** The laptop: registering the combined development run on the fixed head (code
-   76cd08f4, head 54209409; not ec283c53, which still had (c)). Its pre-registration self-check of the exact code should print the cloud's digest (item 2).
+   4e7d8ce5, head 172cbe9c; not 54209409/76cd08f4, where ties with the best never joined). Its pre-registration self-check of the exact code should print the cloud's digest (item 2).
    Earlier: its examples run on d513e37b (not interrupted); a look at rounds 2 to 4 (head eefa24d0) when it suits.
 5. **Open questions.**
    - (a) For Dustin, still open from before: remove the Pocket Shot List rows `chase-order-carefree-steps` and `carefree-steps-snipe`? Nothing is done until he answers.
