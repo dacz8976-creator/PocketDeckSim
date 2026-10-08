@@ -10,21 +10,21 @@ Pre-registration order: registered 2026-10-08T15:40:39Z; first game started 2026
 
 Self-check digests recorded at registration: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (replayed by slow_report.py on the registering machine just before registration (equal to the committed pin)); `selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa` (replayed by slow_report.py on the registering machine just before registration (equal to the committed pin))
 
-- Planned 320 games; finished 280; complete pairs 140 (= 280 games); unpaired games 0; errors 0.
+- Planned 320 games; finished 320; complete pairs 160 (= 320 games); unpaired games 0; errors 0.
 - Paired difference = score(arm X) − score(arm ref) per (deck, opponent, deal, seat), in percentage points of score (win 1, tie ½). Intervals are mean ± 1.96·sd/√n over paired games. No pass/fail threshold.
 
 ## Result
 
-**Pooled over all 140 paired games: +17.1 ± 7.7 points** (arm X 65.0% vs arm ref 47.9% score).
+**Pooled over all 160 paired games: +18.1 ± 7.3 points** (arm X 66.2% vs arm ref 48.1% score).
 
 
 ### Per deck, pooled over its opponents
 
 | deck | paired games | arm X score | arm ref score | paired difference (points) | went first: diff | went second: diff |
 |---|---|---|---|---|---|---|
-| draft-A-wallace | 140 | 65.0% | 47.9% | +17.1 ± 7.7 | +20.3 ± 11.1 | +14.1 ± 10.6 |
+| draft-A-wallace | 160 | 66.2% | 48.1% | +18.1 ± 7.3 | +22.8 ± 10.6 | +13.6 ± 10.2 |
 
-Overall by who went first (identical in both arms): deck first +20.3 ± 11.1 (n=69); deck second +14.1 ± 10.6 (n=71).
+Overall by who went first (identical in both arms): deck first +22.8 ± 10.6 (n=79); deck second +13.6 ± 10.2 (n=81).
 
 ### Per (deck, opponent) pair
 
@@ -37,6 +37,7 @@ Overall by who went first (identical in both arms): deck first +20.3 ± 11.1 (n=
 | draft-A-wallace | t-sceptile | 20 | 55.0% | 40.0% | +15.0 ± 21.4 |
 | draft-A-wallace | t-suicune | 20 | 70.0% | 50.0% | +20.0 ± 22.9 |
 | draft-A-wallace | t-vespiquen | 20 | 65.0% | 30.0% | +35.0 ± 21.4 |
+| draft-A-wallace | t-weezing | 20 | 75.0% | 50.0% | +25.0 ± 24.1 |
 
 ## Runtime and cost
 
@@ -44,10 +45,10 @@ Wall time is per game on this machine with the threads the run used; it includes
 
 | arm | role | pilot | games | wall per game: mean / median / p95 / max | games per second (1 thread) | decisions per game | ms per decision: mean / median / p95 / max | decision time per game |
 |---|---|---|---|---|---|---|---|---|
-| X | deck seat | `kx3` | 140 | 536.35 / 439.56 / 1272.86 / 1678.10 s | 0.00 | 26.1 | 20537.4 / 18598.5 / 45483.5 / 95727.7 | 9 min |
-| X | opponent seat | `km3` | 140 |  |  | 27.2 | 11.5 / 5.5 / 44.6 / 242.2 | 0.31 s |
-| ref | deck seat | `km3` | 140 | 0.48 / 0.42 / 1.14 / 1.42 s | 2.07 | 25.4 | 9.2 / 4.2 / 33.5 / 178.3 | 0.23 s |
-| ref | opponent seat | `km3` | 140 |  |  | 27.0 | 8.9 / 4.3 / 31.8 / 128.6 | 0.24 s |
+| X | deck seat | `kx3` | 160 | 515.57 / 417.28 / 1261.80 / 1678.10 s | 0.00 | 25.9 | 19908.4 / 17928.5 / 44696.6 / 95727.7 | 9 min |
+| X | opponent seat | `km3` | 160 |  |  | 27.0 | 11.2 / 5.3 / 43.0 / 242.2 | 0.30 s |
+| ref | deck seat | `km3` | 160 | 0.47 / 0.42 / 1.13 / 1.42 s | 2.11 | 25.2 | 9.1 / 4.1 / 33.1 / 178.3 | 0.23 s |
+| ref | opponent seat | `km3` | 160 |  |  | 27.0 | 8.7 / 4.3 / 31.5 / 128.6 | 0.24 s |
 
 One paired game (both arms) took 9 min on average; the run used 4 thread(s).
 
@@ -57,8 +58,8 @@ At the sd reached, the number of paired games for a given half-width is `(1.96·
 
 | scope | paired games so far | sd | interval now (points) | for ±5 points: total / more games, time | for ±3 points: total / more games, time |
 |---|---|---|---|---|---|
-| all decks pooled | 140 | 46.4 | +17.1 ± 7.7 | 331 / 191, 7.1 h | 918 / 778, 29.0 h |
-| draft-A-wallace | 140 | 46.4 | +17.1 ± 7.7 | 331 / 191, 7.1 h | 918 / 778, 29.0 h |
+| all decks pooled | 160 | 47.4 | +18.1 ± 7.3 | 346 / 186, 6.7 h | 960 / 800, 28.7 h |
+| draft-A-wallace | 160 | 47.4 | +18.1 ± 7.3 | 346 / 186, 6.7 h | 960 / 800, 28.7 h |
 
 ## Intended lines
 
