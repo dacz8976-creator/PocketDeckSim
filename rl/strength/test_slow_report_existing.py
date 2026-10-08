@@ -228,7 +228,9 @@ class QuestionOne(Sources):
         d = [SC[g['winner']] - SC[self.dev_games[k[: -len('X')] + 'ref']['winner']] for k, g in self.dev_games.items() if g['deck'] == DECK and g['arm'] == 'X']
         m, sd, n = statistics.mean(d), statistics.stdev(d), len(d)
         half = sr.t_crit(n - 1) * sd / math.sqrt(n)
-        self.assertIn(f'{100 * m:+.1f} points** compared with km3 on the same deals, give or take {100 * half:.1f} points', text)
+        self.assertIn(f'{100 * m:+.1f} points** compared with km3 on the same deals, probably between {100 * (m - half):+.1f} and {100 * (m + half):+.1f} points (95% interval)', text)
+        self.assertNotIn('give or take', text)
+        self.assertNotIn('plus or minus', text)
 
     def test_the_gain_range_says_in_plain_words_whether_it_includes_no_gain(self):
         text = self.page()
@@ -237,12 +239,12 @@ class QuestionOne(Sources):
         m, sd, n = statistics.mean(d), statistics.stdev(d), len(d)
         half = sr.t_crit(n - 1) * sd / math.sqrt(n)
         lo, hi = m - half, m + half
-        self.assertIn(f'That range runs from {100 * lo:+.1f} to {100 * hi:+.1f} points', sec)
+        self.assertNotIn('That range runs', sec, 'the note does not repeat the numbers of the range before it')
         if lo <= 0 <= hi:
-            self.assertIn('which includes no gain at all', sec)
+            self.assertIn('That range includes no gain at all', sec)
             self.assertIn(f'these {n} paired games do not show that kx3 plays this deck better than km3, and do not show that it plays it worse', sec)
         else:
-            self.assertIn('which does not include no gain', sec)
+            self.assertIn('That range does not include no gain', sec)
             self.assertIn(f'on these {n} paired games kx3 did {"better" if lo > 0 else "worse"} than km3', sec)
 
     def test_a_results_folder_is_named_from_rl_results_on_wherever_the_checkout_sits(self):
@@ -340,7 +342,7 @@ class Provenance(Sources):
         text = self.page()
         sec = text.split('## Where these games come from')[1]
         for needle in ('strength_dev', 'strength_tool', sha(os.path.join(self.dev, 'games.jsonl'))[:12], sha(os.path.join(self.tool, 'games.jsonl'))[:12], '5a8f5c83a791',
-                       'registered before any game', 'stage dev', 'only deck 03-wailord-indeedee-wall'):
+                       "registered before the first of this deck's games", 'stage dev', 'only deck 03-wailord-indeedee-wall'):
             self.assertIn(needle, sec)
 
     def test_a_source_whose_manifest_changed_is_refused(self):

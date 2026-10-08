@@ -12,9 +12,15 @@ What is pinned here:
     guard cannot read is a clean REFUSED with the deck's name, never a traceback;
   * the registration is complete only when manifest.sha256 exists: it is written last, after PREREGISTRATION.md;
   * `deck_files`: a deck given by file path (name = file stem), really inside the repository (symlinks are followed), hashed like a registered deck;
-  * `selfcheck_given`: a pinned program's self-check text recorded instead of playing the 12 games, only when the program's sha256 was verified, and
-    described truthfully (copied from the pin, or replayed by the wrapper);
-  * `slow_report`: a free block recorded in the manifest and named in PREREGISTRATION.md, whose resume command replaces the bare program command.
+  * `selfcheck_given`: a pinned program's self-check text recorded instead of playing the 12 games. Accepted only at stage `use` (the dev and held-out stages replay
+    their own self-check), only with a program file whose sha256 was verified against program_sha256, and only when the config says the text was measured on exactly
+    that program (selfcheck_given_program_sha256 is the program's actual sha256: a digest belongs to the binary it was measured on); described truthfully (copied
+    from the pin, which says it was measured on this exact program, or replayed by the wrapper on this machine just before registration); every one of those refusals
+    (and every other refusal that needs no file) comes before os.makedirs, so it leaves no run directory behind, not even an empty one or its parents;
+  * `slow_report`: a free block recorded in the manifest and named in PREREGISTRATION.md (which program route it took, the pinned program and harness hashes, the
+    engine ref and tree, the engine tree the checkout has, the school-morning choice), whose resume command replaces the bare program command; the '## Run' paragraph says in
+    words whether the school-morning rule applies (with its days) or was chosen off, and whether the program is the pinned one or a rebuild (RunParagraph);
+  * the module docstring describes every config entry the script reads, the self-check entries of the slow report included (ModuleDocstring).
 
 Every harness directory, repository and run directory here is built in a temporary folder with synthetic decks; no real run is read or written.
 """
@@ -423,59 +429,154 @@ class DealsAgainstStride(World):
 
 
 class SelfcheckGiven(World):
+    """`selfcheck_given`, the slow report's way of recording a pinned self-check text instead of playing the 12 games for hours. A digest belongs to the exact binary it was
+    measured on, so the text is accepted only at stage `use`, only with a program file whose sha256 was checked, and only when the config says it was measured on that very
+    program (selfcheck_given_program_sha256 equals the program's actual sha256). Every refusal comes before anything is written, the run directory included, and names what
+    is wrong: the checks run before os.makedirs, so a refused config can be corrected and registered at the very same path."""
+
     def fake_program(self):
         p = os.path.join(self.tmp, 'fake_strength')
         write(p, "#!/usr/bin/env python3\nimport sys, os\nopen(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'selfcheck_was_run'), 'a').write(' '.join(sys.argv[1:]) + '\\n')\nprint('selfcheck pilot=' + sys.argv[sys.argv.index('--pilot') + 1] + ' digest=0123456789abcdef')\n")
         os.chmod(p, os.stat(p).st_mode | stat.S_IXUSR)
         return p
 
-    PIN_SOURCE = 'given in the config (copied from the pin; the program sha256 is the one named there)'
+    GIVEN = {'km3': 'selfcheck pilot=km3 games=12 digest=aaaa', 'kx3': 'selfcheck pilot=kx3 games=12 digest=bbbb'}
+    PIN_SOURCE = 'given in the config (copied from the pin, which says it was measured on this exact program sha256)'
+    REPLAYED_SOURCE = 'replayed by slow_report.py on this machine just before registration (equal to the committed pin)'
+    PIN_HOW = ' (given in the config, copied from the pin and not replayed: the pin says it was measured on this exact program, whose sha256 is named above)'
+    REPLAYED_HOW = ' (replayed by slow_report.py on this machine just before registration and equal to the committed pin)'
+
+    def given_kw(self, p, **kw):
+        """What the slow report's config carries for a pinned program: the program, its sha256, the text, and the sha256 the text was measured on (this program)."""
+        cfg = dict(program=p, program_sha256=sha(p), selfcheck_given=dict(self.GIVEN), selfcheck_given_program_sha256=sha(p))
+        cfg.update(kw)
+        return cfg
+
+    def self_check_line(self, spec, how):
+        return f"- Self-check of `{spec}` on this build (12 fixed games, t-altaria v t-suicune): `{self.GIVEN[spec]}`{how}. The same pilot code on another build must print the same digest."
+
+    def asked(self):
+        return os.path.exists(os.path.join(self.tmp, 'selfcheck_was_run'))
+
+    def nothing_written(self):
+        """A refusal writes no file and makes no run directory (the checks come before os.makedirs)."""
+        self.assertFalse(os.path.exists(self.out), 'a refusal leaves no run directory behind')
 
     def test_given_text_is_recorded_and_the_program_is_not_asked(self):
         p = self.fake_program()
-        given = {'km3': 'selfcheck pilot=km3 games=12 digest=aaaa', 'kx3': 'selfcheck pilot=kx3 games=12 digest=bbbb'}
-        r = self.prereg(self.config(program=p, program_sha256=sha(p), selfcheck_given=given))
+        r = self.prereg(self.use_config(**self.given_kw(p)))
         self.assertEqual(r.returncode, 0, r.stderr)
         m = self.manifest()
-        self.assertEqual(m['selfcheck'], given)
+        self.assertEqual(m['selfcheck'], self.GIVEN)
         self.assertEqual(m['selfcheck_source'], {'km3': self.PIN_SOURCE, 'kx3': self.PIN_SOURCE})
-        self.assertFalse(os.path.exists(os.path.join(self.tmp, 'selfcheck_was_run')), 'no self-check game may be played when the text is given')
+        self.assertEqual((m['stage'], m['program'], m['program_sha256']), ('use', p, sha(p)))
+        self.assertFalse(self.asked(), 'no self-check game may be played when the text is given')
         text = read(os.path.join(self.out, 'PREREGISTRATION.md'))
-        self.assertIn('digest=bbbb', text)
-        self.assertIn('given in the config', text)
-        self.assertIn('not replayed', text)
+        for spec in ('km3', 'kx3'):
+            self.assertIn(self.self_check_line(spec, self.PIN_HOW), text)
+        self.assertEqual(text.count('not replayed'), 2)
+        self.assertNotIn('replayed by slow_report.py', text)
+        self.assertIn(f'sha256 `{sha(p)}`', text.split('## Design')[0], "'whose sha256 is named above' must be true: the program's sha256 is in the Pilots section")
 
     def test_a_replayed_selfcheck_is_described_as_replayed(self):
         p = self.fake_program()
-        given = {'km3': 'selfcheck pilot=km3 games=12 digest=aaaa', 'kx3': 'selfcheck pilot=kx3 games=12 digest=bbbb'}
-        r = self.prereg(self.config(program=p, program_sha256=sha(p), selfcheck_given=given, selfcheck_how='replayed'))
+        r = self.prereg(self.use_config(**self.given_kw(p, selfcheck_how='replayed')))
         self.assertEqual(r.returncode, 0, r.stderr)
         m = self.manifest()
-        self.assertEqual(m['selfcheck_source']['kx3'], 'replayed by slow_report.py just before registration (equal to the pin)')
+        self.assertEqual(m['selfcheck'], self.GIVEN)
+        self.assertEqual(m['selfcheck_source'], {'km3': self.REPLAYED_SOURCE, 'kx3': self.REPLAYED_SOURCE})
+        self.assertFalse(self.asked())
         text = read(os.path.join(self.out, 'PREREGISTRATION.md'))
-        self.assertIn('replayed by slow_report.py', text)
+        for spec in ('km3', 'kx3'):
+            self.assertIn(self.self_check_line(spec, self.REPLAYED_HOW), text)
         self.assertNotIn('not replayed', text)
+        self.assertNotIn('given in the config', text)
+
+    def test_a_replayed_text_is_held_to_the_same_program_as_a_given_one(self):
+        """The wrapper puts the program's actual sha256 there when it replayed the games; saying `replayed` does not excuse a text that names another program."""
+        p = self.fake_program()
+        r = self.prereg(self.use_config(**self.given_kw(p, selfcheck_how='replayed', selfcheck_given_program_sha256='a' * 64)))
+        self.assertEqual(r.returncode, 1)
+        self.assertIn(f'measured on a program with sha256 aaaaaaaaaaaa, but the program at {p} has sha256 {sha(p)[:12]}', r.stderr)
+        self.nothing_written()
+
+    def test_given_text_at_stage_dev_or_heldout_is_refused_and_nothing_is_written(self):
+        """A development or held-out run replays its own self-check: the text a pin carries is for the slow report only, even when it names this very program."""
+        for stage in ('dev', 'heldout'):
+            for how, extra in {'a text measured on this program': {}, 'a text said to be replayed': dict(selfcheck_how='replayed')}.items():
+                with self.subTest(stage=stage, text=how):
+                    self.make(locked=stage != 'heldout')
+                    p = self.fake_program()
+                    r = self.prereg(self.config(stage=stage, **self.given_kw(p, **extra)))
+                    self.assertEqual(r.returncode, 1)
+                    self.assertEqual(r.stderr, 'REFUSED: selfcheck_given is only for stage use (the slow report, which pins one frozen build); a development or held-out run replays its own self-check\n')
+                    self.assertEqual(r.stdout, '')
+                    self.nothing_written()
+                    self.assertFalse(self.asked(), 'refused before any self-check game')
 
     def test_given_text_needs_the_program_sha256(self):
         p = self.fake_program()
-        r = self.prereg(self.config(program=p, selfcheck_given={'km3': 'x', 'kx3': 'y'}))
-        self.assertNotEqual(r.returncode, 0)
-        self.assertIn('program_sha256', r.stderr)
-        self.assertTrue(self.no_manifest())
+        for how, kw in {'no program_sha256 in the config': dict(program_sha256=None), 'a program that is not there': dict(program=os.path.join(self.tmp, 'nope'))}.items():
+            with self.subTest(case=how):
+                shutil.rmtree(self.out, ignore_errors=True)
+                cfg = self.use_config(**self.given_kw(p, **kw))
+                if cfg['program_sha256'] is None:
+                    del cfg['program_sha256']
+                r = self.prereg(cfg)
+                self.assertEqual(r.returncode, 1)
+                self.assertIn('selfcheck_given is only accepted with a program file and its program_sha256 in the config', r.stderr)
+                self.nothing_written()
+                self.assertFalse(self.asked())
 
     def test_given_text_with_the_wrong_program_sha256_is_refused(self):
         p = self.fake_program()
-        r = self.prereg(self.config(program=p, program_sha256='0' * 64, selfcheck_given={'km3': 'x', 'kx3': 'y'}))
-        self.assertNotEqual(r.returncode, 0)
-        self.assertIn('program_sha256', r.stderr)
+        r = self.prereg(self.use_config(**self.given_kw(p, program_sha256='0' * 64)))
+        self.assertEqual(r.returncode, 1)
+        self.assertIn(f'program_sha256 in the config (000000000000) is not the program at {p} ({sha(p)[:12]})', r.stderr)
+        self.nothing_written()
 
     def test_given_text_must_be_a_mapping_of_text_to_text(self):
         p = self.fake_program()
         for bad in (['km3'], {'km3': 3}, 'text', {'km3': ['a']}):
-            r = self.prereg(self.config(program=p, program_sha256=sha(p), selfcheck_given=bad))
-            self.assertNotEqual(r.returncode, 0, repr(bad))
-            self.assertIn('selfcheck_given', r.stderr)
-            self.assertNotIn('Traceback', r.stderr)
+            with self.subTest(given=bad):
+                r = self.prereg(self.use_config(**self.given_kw(p, selfcheck_given=bad)))
+                self.assertEqual(r.returncode, 1, repr(bad))
+                self.assertEqual(r.stderr, 'selfcheck_given must be a mapping of pilot spec to self-check text\n')
+                self.nothing_written()
+
+    def test_a_text_measured_on_another_program_is_refused_naming_both_sha256_values(self):
+        """The text is tied to a binary: a pin edited to a new program without re-measuring (or a text for a program that is not the one given) is a refusal, not a
+        quiet record of a digest that belongs to something else. The whole 64-digit sha256 is compared."""
+        p = self.fake_program()
+        real = sha(p)
+        for how, measured in {'another program': 'a' * 64, 'no sha256 given at all': None, 'only the first 12 digits of the right one': real[:12], 'the right one and more': real + '0',
+                              'an empty text': '', 'a number': 123456789012345, 'a list': [real]}.items():
+            with self.subTest(measured_on=how):
+                shutil.rmtree(self.out, ignore_errors=True)
+                cfg = self.use_config(**self.given_kw(p))
+                if measured is None:
+                    del cfg['selfcheck_given_program_sha256']
+                else:
+                    cfg['selfcheck_given_program_sha256'] = measured
+                r = self.prereg(cfg)
+                self.assertEqual(r.returncode, 1)
+                self.assertNotIn('Traceback', r.stderr)
+                self.assertIn(f'REFUSED: the self-check text was measured on a program with sha256 {str(measured)[:12]}, but the program at {p} has sha256 {real[:12]}: ', r.stderr)
+                self.assertIn('so the text cannot be recorded for this one (replay the self-check on it instead)', r.stderr)
+                self.nothing_written()
+                self.assertFalse(self.asked(), 'the refusal is not a reason to play the games')
+
+    def test_the_tie_to_the_program_holds_when_the_text_is_given_for_one_pilot_only(self):
+        """A text for one pilot is held to the program too, before the other pilot's games are played; the matching one is recorded and the other pilot is played."""
+        self.registry_with_altaria()
+        p = self.fake_program()
+        r = self.prereg(self.use_config(**self.given_kw(p, selfcheck_given={'km3': self.GIVEN['km3']}, selfcheck_given_program_sha256='b' * 64)))
+        self.assertEqual(r.returncode, 1)
+        self.assertIn('measured on a program with sha256 bbbbbbbbbbbb', r.stderr)
+        self.assertFalse(self.asked(), 'the one pilot not given is not played either: the registration is refused first')
+        shutil.rmtree(self.out, ignore_errors=True)
+        r = self.prereg(self.use_config(**self.given_kw(p, selfcheck_given={'km3': self.GIVEN['km3']})))
+        self.assertEqual(r.returncode, 0, r.stderr)
 
     def registry_with_altaria(self):
         write(os.path.join(self.harness, 'decks.json'), json.dumps({'decks': {'a-deck': 'decks/a.txt', 'held-1': 'decks/held1.txt', 'held-2': 'decks/held2.txt',
@@ -494,15 +595,64 @@ class SelfcheckGiven(World):
     def test_given_text_for_only_one_pilot_runs_the_other(self):
         self.registry_with_altaria()
         p = self.fake_program()
-        r = self.prereg(self.config(program=p, program_sha256=sha(p), selfcheck_given={'km3': 'selfcheck pilot=km3 digest=aaaa'}))
+        r = self.prereg(self.use_config(**self.given_kw(p, selfcheck_given={'km3': 'selfcheck pilot=km3 digest=aaaa'})))
         self.assertEqual(r.returncode, 0, r.stderr)
         m = self.manifest()
         self.assertEqual(m['selfcheck']['km3'], 'selfcheck pilot=km3 digest=aaaa')
         self.assertIn('digest=0123456789abcdef', m['selfcheck']['kx3'])
-        self.assertEqual(m['selfcheck_source']['kx3'], 'run by strength_prereg.py')
+        self.assertEqual(m['selfcheck_source'], {'km3': self.PIN_SOURCE, 'kx3': 'run by strength_prereg.py'})
         ran = read(os.path.join(self.tmp, 'selfcheck_was_run'))
         self.assertIn('--pilot kx3', ran)
         self.assertNotIn('--pilot km3', ran)
+
+    REFUSED_GIVEN_TEXT = {
+        'a development run': (True, lambda s, p: s.config(stage='dev', **s.given_kw(p)), 'REFUSED: selfcheck_given is only for stage use'),
+        'a held-out run': (False, lambda s, p: s.config(stage='heldout', decks=['held-1'], **s.given_kw(p)), 'REFUSED: selfcheck_given is only for stage use'),
+        'a text that is not a mapping': (True, lambda s, p: s.use_config(**s.given_kw(p, selfcheck_given=['km3'])), 'selfcheck_given must be a mapping of pilot spec to self-check text'),
+        'a text whose value is not text': (True, lambda s, p: s.use_config(**s.given_kw(p, selfcheck_given={'km3': 3})), 'selfcheck_given must be a mapping of pilot spec to self-check text'),
+        'no program_sha256 in the config': (True, lambda s, p: {k: v for k, v in s.use_config(**s.given_kw(p)).items() if k != 'program_sha256'},
+                                            'selfcheck_given is only accepted with a program file and its program_sha256 in the config'),
+        'a program file that is not there': (True, lambda s, p: s.use_config(**s.given_kw(p, program=os.path.join(s.tmp, 'nope'))),
+                                             'selfcheck_given is only accepted with a program file and its program_sha256 in the config'),
+        'a program_sha256 that is not the program\'s': (True, lambda s, p: s.use_config(**s.given_kw(p, program_sha256='0' * 64)),
+                                                        'program_sha256 in the config (000000000000) is not the program at {p} ({sha})'),
+        'a text measured on another program': (True, lambda s, p: s.use_config(**s.given_kw(p, selfcheck_given_program_sha256='a' * 64)),
+                                               'REFUSED: the self-check text was measured on a program with sha256 aaaaaaaaaaaa, but the program at {p} has sha256 {sha}'),
+        'a text with no program to tie it to': (True, lambda s, p: {k: v for k, v in s.use_config(**s.given_kw(p)).items() if k != 'selfcheck_given_program_sha256'},
+                                                'REFUSED: the self-check text was measured on a program with sha256 None, but the program at {p} has sha256 {sha}'),
+    }
+
+    def test_every_refusal_of_the_given_text_leaves_no_run_directory_and_the_same_path_registers_once_the_config_is_right(self):
+        """The checks of the given text and its program come before os.makedirs: a refused registration used to leave an empty run directory (and its parents) that the next
+        try, or a person, had to notice and remove."""
+        for how, (locked, make_cfg, phrase) in self.REFUSED_GIVEN_TEXT.items():
+            with self.subTest(refused=how):
+                self.make(locked=locked)
+                self.out = os.path.join(self.tmp, 'deep', 'er', 'run')
+                p = self.fake_program()
+                r = self.prereg(make_cfg(self, p))
+                self.assertEqual(r.returncode, 1, r.stderr)
+                self.assertIn(phrase.replace('{p}', p).replace('{sha}', sha(p)[:12]), r.stderr)
+                self.assertNotIn('Traceback', r.stderr)
+                self.assertEqual(r.stdout, '')
+                self.assertFalse(os.path.exists(os.path.join(self.tmp, 'deep')), 'no run directory, no parent of one')
+                self.assertFalse(self.asked(), 'and no self-check game')
+                r = self.prereg(self.use_config(**self.given_kw(p)))  # the config put right, at the very same path
+                self.assertEqual(r.returncode, 0, r.stderr)
+                self.assertTrue(os.path.isfile(os.path.join(self.out, 'manifest.sha256')))
+
+    def test_a_refusal_leaves_a_run_directory_that_was_already_there_exactly_as_it_was(self):
+        p = self.fake_program()
+        for how, files in (('an empty one', {}), ('one with a file of its own', {'notes.txt': 'mine'})):
+            with self.subTest(directory=how):
+                shutil.rmtree(self.out, ignore_errors=True)
+                os.makedirs(self.out)
+                for n, text in files.items():
+                    write(os.path.join(self.out, n), text)
+                r = self.prereg(self.use_config(**self.given_kw(p, selfcheck_given_program_sha256='b' * 64)))
+                self.assertEqual(r.returncode, 1)
+                self.assertIn('measured on a program with sha256 bbbbbbbbbbbb', r.stderr)
+                self.assertEqual({n: read(os.path.join(self.out, n)) for n in os.listdir(self.out)}, files)
 
 
 class SlowReportBlock(World):
@@ -525,6 +675,39 @@ class SlowReportBlock(World):
         self.assertIn('slow_report.py --dir', run)
         self.assertNotIn('strength run --manifest', run, 'a use run is resumed through the wrapper, which scrubs the environment and keeps the school-morning rule')
 
+    ROUTE_KEYS = ('program_route', 'pinned_program', 'pinned_program_sha256', 'harness_source_sha256', 'harness_source_checkout_sha256', 'engine_ref', 'engine_tree',
+                  'school_rule', 'school_days')
+    FULL = dict(BLOCK, deck_file='decks/a.txt', deck_file_sha256='1' * 64, deck_file_state='committed', deals=5, program_route='rebuilt', pinned_program='/home/x/kx/strength',
+                pinned_program_sha256='5' * 64, harness_source_sha256='b' * 64, harness_source_checkout_sha256='c' * 64, engine_ref='d' * 40, engine_tree='3' * 40,
+                school_rule='off', school_days='mon,tue,wed,thu,fri')
+
+    def block_lines(self, block):
+        r = self.prereg(self.use_config(slow_report=block))
+        self.assertEqual(r.returncode, 0, r.stderr)
+        section = read(os.path.join(self.out, 'PREREGISTRATION.md')).split('## Slow report\n')[1].split('\n## ')[0]
+        return [l for l in section.splitlines() if l.startswith('- ')]
+
+    def test_the_preregistration_prints_route_hashes_engine_and_school_choice_after_the_pin(self):
+        """Each is printed as a line of its own, once, in this order and after the pin, so a person reading the document can tell which program ran, what it was
+        built from and whether the school-morning rule was on."""
+        lines = self.block_lines(self.FULL)
+        self.assertEqual([l.split(':')[0] for l in lines], ['- ' + k for k in ('deck_file', 'deck_file_sha256', 'deck_file_state', 'deals', 'paired', 'pin') + self.ROUTE_KEYS])
+        self.assertEqual(lines[6:], ['- program_route: `rebuilt`', '- pinned_program: `/home/x/kx/strength`', f"- pinned_program_sha256: `{'5' * 64}`",
+                                     f"- harness_source_sha256: `{'b' * 64}`", f"- harness_source_checkout_sha256: `{'c' * 64}`", f"- engine_ref: `{'d' * 40}`",
+                                     f"- engine_tree: `{'3' * 40}`", '- school_rule: `off`', '- school_days: `mon,tue,wed,thu,fri`'])
+
+    def test_an_entry_the_block_does_not_have_is_not_printed(self):
+        """A block from before these entries existed prints none of them (and a block with only some prints those)."""
+        for how, block in {'none of them': self.BLOCK, 'the route only': dict(self.BLOCK, program_route='pinned'),
+                           'the school choice only': dict(self.BLOCK, school_rule='on', school_days='sat,sun')}.items():
+            with self.subTest(block=how):
+                shutil.rmtree(self.out, ignore_errors=True)
+                keys = [l.split(':')[0][2:] for l in self.block_lines(block)]
+                self.assertEqual(keys, ['paired', 'pin'] + [k for k in self.ROUTE_KEYS if k in block])
+
+    def test_an_entry_the_block_has_is_printed_even_when_it_says_no(self):
+        self.assertIn('- paired: `False`', self.block_lines(dict(self.BLOCK, paired=False)))
+
     def test_a_development_run_still_gets_the_program_command(self):
         self.prereg(self.config())
         self.assertIn('strength run --manifest', read(os.path.join(self.out, 'PREREGISTRATION.md')).split('## Run')[1])
@@ -533,6 +716,107 @@ class SlowReportBlock(World):
         self.prereg(self.config())
         self.assertNotIn('slow_report', self.manifest())
         self.assertNotIn('## Slow report', read(os.path.join(self.out, 'PREREGISTRATION.md')))
+
+
+class RunParagraph(World):
+    """The '## Run' paragraph of PREREGISTRATION.md for a slow report says in words how the run is played and what the wrapper checks before every sitting: whether the
+    school-morning rule applies (as registered, with its days) or was chosen off, and which program (the pinned one, or the rebuild the run was registered with). It is part
+    of what was pre-registered, so it has to say what the registration says."""
+
+    COMMAND = 'python3 rl/strength/slow_report.py --dir rl/results/slow_reports/2026-10-10_a-deck'
+    BLOCK = dict(version=1, deck_name='a-deck', paired=True, headline='kx3 (d513e37b) on a-deck v km3 on the public panel',
+                 pin=dict(path='rl/strength/slow_report_pin.json', sha256='e' * 64), resume_command=COMMAND)
+    SENTENCE = ("A slow report is run and resumed through its wrapper, which removes the variables that would tune the pilot or change the rules from the program's environment, "
+                "{rule}, and checks the registration, the deck files and {program} before every sitting:")
+    ON = 'applies the school-morning rule as registered ({days})'
+    OFF = 'does NOT apply the school-morning rule (chosen at registration: it never pauses for school mornings)'
+    PINNED = 'the pinned program'
+    REBUILT = 'the program it was registered with, a REBUILD of the pinned source (accepted after both self-checks were replayed on that machine; a resume needs the same sha256)'
+    WEEK = 'mon,tue,wed,thu,fri'
+
+    def run_section(self, **block):
+        shutil.rmtree(self.out, ignore_errors=True)
+        r = self.prereg(self.use_config(slow_report=dict(self.BLOCK, **block)))
+        self.assertEqual(r.returncode, 0, r.stderr)
+        return read(os.path.join(self.out, 'PREREGISTRATION.md')).split('## Run\n')[1]
+
+    def test_the_paragraph_for_each_school_morning_choice_and_each_program_route(self):
+        for how, block, rule, program in (
+                ('rule on, the default days, the pinned program', dict(school_rule='on', school_days=self.WEEK, program_route='pinned'), self.ON.format(days=self.WEEK), self.PINNED),
+                ('rule on, other days', dict(school_rule='on', school_days='sat,sun', program_route='pinned'), self.ON.format(days='sat,sun'), self.PINNED),
+                ('rule on, no school days', dict(school_rule='on', school_days='', program_route='pinned'), self.ON.format(days='no school days'), self.PINNED),
+                ('rule off', dict(school_rule='off', school_days=self.WEEK, program_route='pinned'), self.OFF, self.PINNED),
+                ('rule off, other days named', dict(school_rule='off', school_days='sat,sun', program_route='pinned'), self.OFF, self.PINNED),
+                ('rule off, a block from before the days and the route were recorded', dict(school_rule='off'), self.OFF, self.PINNED),
+                ('a rebuilt program, rule off (the cloud)', dict(school_rule='off', school_days=self.WEEK, program_route='rebuilt'), self.OFF, self.REBUILT),
+                ('a rebuilt program, rule on', dict(school_rule='on', school_days=self.WEEK, program_route='rebuilt'), self.ON.format(days=self.WEEK), self.REBUILT)):
+            with self.subTest(case=how):
+                run = self.run_section(**block)
+                self.assertIn(self.SENTENCE.format(rule=rule, program=program) + '\n\n```\n' + self.COMMAND + '\n```\n', run)
+                self.assertEqual(('does NOT apply' in run), rule == self.OFF)
+                self.assertEqual(('applies the school-morning rule' in run), rule != self.OFF)
+                self.assertEqual(('REBUILD' in run), program == self.REBUILT)
+                if rule == self.OFF:
+                    self.assertNotIn('sat,sun', run, 'days of a rule that is off are not described as applied')
+
+    def test_a_block_with_no_resume_command_gets_the_programs_own_command_whatever_the_choice(self):
+        block = {k: v for k, v in self.BLOCK.items() if k != 'resume_command'}
+        shutil.rmtree(self.out, ignore_errors=True)
+        r = self.prereg(self.use_config(slow_report=dict(block, school_rule='off', program_route='rebuilt')))
+        self.assertEqual(r.returncode, 0, r.stderr)
+        run = read(os.path.join(self.out, 'PREREGISTRATION.md')).split('## Run\n')[1]
+        self.assertIn('strength run --manifest manifest.json --out .', run)
+        self.assertNotIn('school-morning', run)
+        self.assertNotIn('REBUILD', run)
+
+
+class RefusalsLeaveNoRunDirectory(World):
+    """Whatever the reason for a refusal, it comes before the run directory is made: not an empty folder, and not the parents of one either."""
+
+    def test_each_refusal_before_the_files_are_written_leaves_no_run_directory(self):
+        program = os.path.join(self.tmp, 'fake_strength')
+        write(program, '#!/bin/sh\nexit 0\n')
+        outside = os.path.join(self.tmp, 'elsewhere.txt')
+        write(outside, deck_text('x'))
+        self.out = os.path.join(self.tmp, 'a', 'b', 'run')
+        for how, cfg, phrase in (
+                ('an unknown stage', self.config(stage='exam'), 'unknown stage'),
+                ('stage use without the slow report block', self.config(stage='use'), 'stage `use` is only for the slow report'),
+                ('a held-out deck in a development run', self.config(decks=['held-1']), 'held-1 is a held-out deck'),
+                ('stage heldout while the lock is on', self.config(stage='heldout'), 'heldout.json is still locked'),
+                ('deals above the stride', self.config(deals=10001, pair_stride=10000), 'pair_stride'),
+                ('a deck file that is not there', self.use_config(decks=[], deck_files=['decks/nope.txt']), 'deck file decks/nope.txt not found'),
+                ('a deck file outside the repository', self.use_config(decks=[], deck_files=[outside]), 'inside the repository'),
+                ('a program_sha256 that is not the program\'s (no text given)', self.config(program=program, program_sha256='0' * 64),
+                 f'program_sha256 in the config (000000000000) is not the program at {program}')):
+            with self.subTest(refused=how):
+                r = self.prereg(cfg)
+                self.assertNotEqual(r.returncode, 0)
+                self.assertIn(phrase, r.stderr)
+                self.assertNotIn('Traceback', r.stderr)
+                self.assertFalse(os.path.exists(os.path.join(self.tmp, 'a')), 'no run directory, no parent of one')
+
+
+class ModuleDocstring(unittest.TestCase):
+    """The docstring is the only description of the config file that strength_prereg.py reads: every entry it reads is described, the ones the slow report added included."""
+
+    def mentions(self, key):
+        return re.search(r'(?<!\w)' + key + r'(?!\w)', P.__doc__) is not None
+
+    def test_it_documents_the_self_check_text_the_slow_report_gives_and_what_ties_it_to_a_program(self):
+        for key in ('selfcheck_given', 'selfcheck_given_program_sha256', 'selfcheck_how'):
+            with self.subTest(entry=key):
+                self.assertTrue(self.mentions(key), key)
+        doc = ' '.join(P.__doc__.split())
+        self.assertIn('Only at stage `use`', doc)
+        self.assertIn('the exact binary it was measured on', doc)
+        self.assertIn("selfcheck_how 'replayed' makes the recorded source say the text was replayed on this machine (otherwise: copied from the pin)", doc)
+
+    def test_every_config_entry_the_script_reads_is_documented(self):
+        with open(PREREG, encoding='utf-8') as f:
+            keys = set(re.findall(r"cfg(?:\.get\(|\[)'(\w+)'", f.read()))
+        self.assertGreaterEqual(len(keys), 25, sorted(keys))
+        self.assertEqual([k for k in sorted(keys) if not self.mentions(k)], [])
 
 
 class UseNeedsTheSlowReportBlock(World):

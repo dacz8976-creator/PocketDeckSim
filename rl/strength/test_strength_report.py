@@ -185,10 +185,12 @@ class SelfCheckSourceAnnotation(unittest.TestCase):
             self.assertEqual(run_report(d).returncode, 0)
             return read(os.path.join(d, 'REPORT.md'))
 
+    PIN_SOURCE = 'given in the config (copied from the pin, which says it was measured on this exact program sha256)'  # what strength_prereg.py records for a pinned text
+
     def test_each_digest_is_followed_by_its_source(self):
         text = self.report_of(selfcheck={'km3': 'selfcheck pilot=km3 digest=aaaa', 'kx': 'selfcheck pilot=kx digest=bbbb'},
-                              selfcheck_source={'km3': 'given in the config (copied from the pin; the program sha256 is the one named there)', 'kx': 'run by strength_prereg.py'})
-        self.assertIn('Self-check digests recorded at registration: `selfcheck pilot=km3 digest=aaaa` (given in the config (copied from the pin; the program sha256 is the one named there)); '
+                              selfcheck_source={'km3': self.PIN_SOURCE, 'kx': 'run by strength_prereg.py'})
+        self.assertIn(f'Self-check digests recorded at registration: `selfcheck pilot=km3 digest=aaaa` ({self.PIN_SOURCE}); '
                       '`selfcheck pilot=kx digest=bbbb` (run by strength_prereg.py)', text)
 
     def test_a_digest_with_no_recorded_source_is_printed_plainly_and_no_digest_means_no_line(self):
@@ -198,7 +200,7 @@ class SelfCheckSourceAnnotation(unittest.TestCase):
         self.assertNotIn('Self-check digests', self.report_of(selfcheck={}))
 
     def test_a_replayed_digest_says_so(self):
-        replayed = 'replayed by slow_report.py just before registration (equal to the pin)'
+        replayed = 'replayed by slow_report.py on this machine just before registration (equal to the committed pin)'
         text = self.report_of(selfcheck={'km3': 'selfcheck pilot=km3 digest=aaaa', 'kx': 'selfcheck pilot=kx digest=bbbb'}, selfcheck_source={'km3': replayed, 'kx': replayed})
         self.assertIn(f'registration: `selfcheck pilot=km3 digest=aaaa` ({replayed}); `selfcheck pilot=kx digest=bbbb` ({replayed})', text)
 

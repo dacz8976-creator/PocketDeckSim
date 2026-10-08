@@ -1,14 +1,14 @@
 # Strength report: slow_report_smoke-held
 
-Pilot **km3** against reference **km3**, stage `use`. Manifest sha256 `af361717b158cdd3` (matches the pre-registration); registered 2026-10-07T23:09:22Z.
+Pilot **km3** against reference **km3**, stage `use`. Manifest sha256 `7cb7da5af4f4d6b0` (matches the pre-registration); registered 2026-10-08T02:17:39Z.
 
 > km3 (smoke, not kx3) on smoke-held v km3 on the public panel. A slow report on one deck, not development: how does smoke-held do when the strong, slow pilot km3 plays it against the eight public panel lists played by km3, 2 deals x 2 seats each? Primary: the deck's score (win 1, tie 1/2, loss 0) overall and against each list, with 95% ranges; and how much better km3 plays this deck than km3 on the same deals. Realistic knowledge: km3 plays the deck knowing its own cards; the deck is never one of the lists km3 guesses its opponent from, and the panel side is never handed it. No pass or fail line; time per game is reported as a fact.
 
 **Stage `use`: this is a report on a deck, not development evidence.** Nothing in it may be used to tune or choose a pilot, and it does not lift the held-out lock. This engineering report uses mean ± 1.96·sd/√n intervals; the slow report page (`SLOW_REPORT.md`) uses Wilson ranges for scores and Student t for the paired gain, and is the one to quote.
 
-Pre-registration order: registered 2026-10-07T23:09:22Z; first game started 2026-10-07T23:09:22Z (after registration).
+Pre-registration order: registered 2026-10-08T02:17:39Z; first game started 2026-10-08T02:17:39Z (after registration).
 
-Self-check digests recorded at registration: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (given in the config (copied from the pin; the program sha256 is the one named there))
+Self-check digests recorded at registration: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (given in the config (copied from the pin, which says it was measured on this exact program sha256))
 
 - Planned 64 games; finished 64; complete pairs 32 (= 64 games); unpaired games 0; errors 0.
 - Paired difference = score(arm X) − score(arm ref) per (deck, opponent, deal, seat), in percentage points of score (win 1, tie ½). Intervals are mean ± 1.96·sd/√n over paired games. No pass/fail threshold.
@@ -47,12 +47,12 @@ Wall time is per game on this machine with the threads the run used; it includes
 
 | arm | role | pilot | games | wall per game: mean / median / p95 / max | games per second (1 thread) | decisions per game | ms per decision: mean / median / p95 / max | decision time per game |
 |---|---|---|---|---|---|---|---|---|
-| X | deck seat | `km3` | 32 | 0.81 / 0.68 / 2.03 / 2.12 s | 1.23 | 28.1 | 12.4 / 5.2 / 53.0 / 143.9 | 0.35 s |
-| X | opponent seat | `km3` | 32 |  |  | 31.4 | 14.4 / 6.3 / 60.6 / 211.4 | 0.45 s |
-| ref | deck seat | `km3` | 32 | 0.80 / 0.69 / 2.08 / 2.13 s | 1.25 | 28.1 | 12.1 / 4.9 / 51.5 / 230.6 | 0.34 s |
-| ref | opponent seat | `km3` | 32 |  |  | 31.4 | 14.3 / 6.2 / 55.9 / 437.2 | 0.45 s |
+| X | deck seat | `km3` | 32 | 1.04 / 0.92 / 2.50 / 2.70 s | 0.96 | 28.1 | 15.8 / 6.8 / 63.7 / 230.3 | 0.44 s |
+| X | opponent seat | `km3` | 32 |  |  | 31.4 | 18.6 / 8.5 / 77.2 / 197.5 | 0.58 s |
+| ref | deck seat | `km3` | 32 | 1.01 / 0.93 / 2.04 / 2.74 s | 0.99 | 28.1 | 15.4 / 7.0 / 62.1 / 214.0 | 0.43 s |
+| ref | opponent seat | `km3` | 32 |  |  | 31.4 | 17.9 / 7.6 / 74.3 / 183.6 | 0.56 s |
 
-One paired game (both arms) took 1.61 s on average; the run used 2 thread(s).
+One paired game (both arms) took 2.06 s on average; the run used 2 thread(s).
 
 ## What more precision would take
 

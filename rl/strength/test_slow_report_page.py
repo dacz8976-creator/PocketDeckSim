@@ -12,19 +12,28 @@ only after StudentT has checked it against the true values.
 What is pinned:
   * the numbers: the t table (all 30 values and the expansion beyond), the lengths of time, the gain and its range in each of its three cases, who went first,
     the median and the mean of the game times, the counts of a partial run, the width of a range in points;
-  * the words: the question first, then the size, every interval saying which games it refers to, the error paragraph, the held-out sentence ("the held-out lock is
-    unchanged"), the section of what the numbers can and cannot say, whole and word for word;
+  * the words: the question first (on the page, on the terminal, in the plan and in the dry run of a folder), then a PARTIAL banner and the error paragraph when there are
+    any, then the size, then the numbers; every interval saying which games it refers to, the held-out sentence ("the held-out lock is unchanged"), the section of what
+    the numbers can and cannot say, whole and word for word;
+  * the ranges: every 95% interval is written "probably between A and B" (range_points: both ends rounded once from the unrounded numbers, signed, never "-0.0", cut at
+    -100 and +100 with a clause that says so) and never as "give or take", on both pages and in every case; the note under the gain's range (gain_range_note) says what
+    the range does and does not include without repeating its numbers, case by case: too wide for the scale, cut at its ends, "only just" (a nearer end less than 0.05
+    points from no gain), wholly above or below zero, including zero;
   * the counts: every count names whose games it counts and is singular at one ("1 kx3 game", "80 cheap km3 baseline games", "1 paired game", "2 tries"), the gain is
     counted in paired games (a deal and seat played by both pilots), a banner or a running time says what the total is made of (kx3 games + baseline games), and the
-    sentences about the gain's range are checked case by case: too wide for the scale, cut at its ends, "just above +0.0", wholly above or below zero, including zero;
+    dry run of a folder says how many games of each pilot are played, planned and to go;
+  * what was run: the program (a rebuild is called one, and names the pinned binary), each self-check and how its text was obtained, the harness source, the school-morning
+    choice, checked on synthetic manifests and on real registrations (WhatWasRunEndToEnd);
   * the registration time: "before any game" only when no game started before the registration, on both pages (a game that started earlier is named);
   * the standing rule that nothing it prints or writes says pass or fail, in the words of a verdict or in plain sentences, on the page and on every line of the terminal;
   * the registered question, with each pilot in its own role, and each pilot's provenance beside that pilot;
   * what the terminal says: the plan lines, the stop after --max-games, a failed engineering report, a partial page, the same headline on a resumed run;
-  * the log: every step is recorded, with both pilots and a UTC time.
-It ends with the same kind of checks on the page built from games that already exist (slow_report_existing.py).
+  * the log: every step is recorded, with both pilots and a UTC time, including what each call that plays games was asked to do (sitting_call, after the lock, before its sittings);
+  * the line that ends a --register-only (how to play what was registered) and the words for what an old manifest does not say (no harness source, no school days).
+It ends with the same kind of checks on the page built from games that already exist (slow_report_existing.py): the order of registration is claimed only for the games
+that were read (this deck's), the gain's range is given with its whole width in points, and the pairs and decks gate 3 pooled are counted from the gate-3 run.
 """
-import json, math, os, re, select, shutil, signal, statistics, subprocess, sys, tempfile, time, unittest
+import fcntl, json, math, os, re, select, shlex, shutil, signal, statistics, subprocess, sys, tempfile, time, unittest
 from unittest import mock
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -38,6 +47,14 @@ PANEL, SC, BLOCK, STEP = T.PANEL, T.SC, T.BLOCK, T.STEP
 read, write, jsonl, wilson95, pc = T.read, T.write, T.jsonl, T.wilson95, T.pc
 TAG = '[kx3 (d513e37b) on my-list v km3 on the public panel] '
 PASS_OR_FAIL = 'no pass or fail line'  # the one way the word pass may appear: saying there is none
+PAGE_QUESTION = 'Question: how does my-list do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?'
+PAGE_QUESTION_ALONE = 'Question: how does my-list do when kx3 plays it against the 8 public lists?'
+
+
+def banner(counts, played, planned=64):
+    """The PARTIAL banner of the page, word for word: the pilots' counts first, then how many of the planned games they make up. Its one wording is pinned here."""
+    return (f"**PARTIAL: {counts} so far ({played} of the {planned} games planned; both pilots' games count in the {planned}). "
+            'The numbers below will move; read them as a snapshot.**')
 
 
 def student_t_95(df, steps=200):
@@ -139,15 +156,19 @@ class PlainTimes(T.Timed):
 
 
 class PlanLines(T.World):
-    """The five lines a dry run prints, word for word, with the pin's rates replaced by round ones so the hours can be written down."""
+    """The six lines a dry run prints (the question first), word for word, with the pin's rates replaced by round ones so the hours can be written down."""
+    QUESTION = 'question: how does my-list do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?'
+    QUESTION_ALONE = 'question: how does my-list do when kx3 plays it against the 8 public lists?'
+    SCHOOL_ON = 'on school days the run pauses from 5:15 am to 5 pm Chicago time (the school-morning rule), so the calendar time is longer'
+    SCHOOL_OFF = ('school-morning rule: OFF for this run (it never pauses for school mornings; the choice is recorded in the registration and carried by the resume command)')
 
     def with_rates(self, **rates):
         pin = json.loads(read(self.pin_path))
         pin['games_per_hour'] = rates
         write(self.pin_path, json.dumps(pin))
 
-    def plan(self, *extra):
-        code, out, err = self.cli(*extra, '--dry-run')
+    def plan(self, *extra, school='on'):
+        code, out, err = self.cli(*extra, '--dry-run', school=school)
         self.assertEqual(code, 0, out + err)
         lines = out.splitlines()
         for l in lines:
@@ -161,48 +182,79 @@ class PlanLines(T.World):
                 f'the time is for the {games} kx3 games: about {low} to {high} if the deck plays like most of his, '
                 f'about {wall} if it plays like the Wailord wall (measured with 2 games at a time)')
 
-    def test_the_dry_run_prints_exactly_these_five_lines(self):
+    def test_the_dry_run_prints_exactly_these_six_lines(self):
         self.with_rates(typical_low=20, typical_high=40, wall=10)
         lines = self.plan('--deals', '3')
-        self.assertEqual(len(lines), 5, lines)
-        self.assertTrue(lines[0].startswith('plan: my-list (decks/events/my-list.txt, ') and lines[0].endswith('), 3 deals x 2 seats against the 8 public lists'), lines[0])
-        self.assertEqual(lines[1], self.expected_time_line(48, '72 minutes', '2.4 hours', '4.8 hours'))
-        self.assertEqual(lines[2], 'on school days the run pauses from 5:15 am to 5 pm Chicago time (the school-morning rule), so the calendar time is longer')
+        self.assertEqual(len(lines), 6, lines)
+        self.assertEqual(lines[0], self.QUESTION)
+        self.assertTrue(lines[1].startswith('plan: my-list (decks/events/my-list.txt, ') and lines[1].endswith('), 3 deals x 2 seats against the 8 public lists'), lines[1])
+        self.assertEqual(lines[2], self.expected_time_line(48, '72 minutes', '2.4 hours', '4.8 hours'))
+        self.assertEqual(lines[3], self.SCHOOL_ON)
         slots = (BLOCK[1] - BLOCK[0] + 1) // STEP
         seed = BLOCK[0] + (int(T.sha(self.deck)[:8], 16) % slots) * STEP
-        self.assertEqual(lines[3], f"stage use (not development evidence; the held-out lock is untouched), seeds from {seed}, program {self.pin['program']} (pinned, sha256 "
+        self.assertEqual(lines[4], f"stage use (not development evidence; the held-out lock is untouched), seeds from {seed}, program {self.pin['program']} (pinned, sha256 "
                                    f"{self.pin['program_sha256'][:12]}), with the comparison with km3 on the same deals in the page, no pass or fail line")
-        self.assertEqual(lines[4], 'dry run: nothing written')
+        self.assertEqual(lines[5], 'dry run: nothing written')
+
+    def test_the_question_comes_first_with_the_comparison_and_without_it(self):
+        """The reporting rule is the question, then the size: the first line a new run prints is the question, in the words of the page's own, and it follows --no-paired."""
+        self.assertEqual(self.plan('--deals', '3')[0], self.QUESTION)
+        self.assertEqual(self.plan('--deals', '3', '--no-paired')[0], self.QUESTION_ALONE)
+        for lines in (self.plan('--deals', '3'), self.plan('--deals', '3', '--no-paired')):
+            first = {kind: min(i for i, l in enumerate(lines) if l.startswith(kind)) for kind in ('question: ', 'plan: ', 'size: ', 'stage use')}
+            self.assertEqual(sorted(first, key=first.get), ['question: ', 'plan: ', 'size: ', 'stage use'])
+            self.assertEqual(sum(1 for l in lines if l.startswith('question: ')), 1)
+
+    def test_the_question_names_the_deck_and_the_pilots_the_pin_gives(self):
+        pin = json.loads(read(self.pin_path))
+        pin.update(pilot='kz9', reference='kr1', pilot_label='kz9 (abc)', reference_label='kr1 (def)', panel_label='the test panel')
+        write(self.pin_path, json.dumps(pin))
+        code, out, err = self.cli('--deals', '1', '--dry-run', school='on')
+        self.assertEqual(code, 0, out + err)
+        first = out.splitlines()[0]
+        self.assertEqual(first, '[kz9 (abc) on my-list v kr1 (def) on the test panel] question: how does my-list do when kz9 plays it against the 8 public lists, '
+                                'and is that better than when kr1 plays the same deck on the same deals?')
+        self.assertNotIn('kx3', first)
+        self.assertNotIn('km3', first)
+
+    def test_the_school_morning_rule_line_says_whether_the_rule_is_on_or_off(self):
+        on, off = self.plan('--deals', '1', school='on'), self.plan('--deals', '1', school='off')
+        self.assertEqual([l for l in on if 'school' in l], [self.SCHOOL_ON])
+        self.assertEqual([l for l in off if 'school' in l], [self.SCHOOL_OFF])
+        self.assertEqual(len(on), len(off), 'one line either way, in the same place')
+        self.assertEqual(on.index(self.SCHOOL_ON), off.index(self.SCHOOL_OFF))
+        self.assertNotIn('OFF', ' '.join(on))
+        self.assertNotIn('pauses from 5:15', ' '.join(off))
 
     def test_without_the_baseline_the_stage_line_says_without_and_the_size_line_says_the_games_are_still_played(self):
         self.with_rates(typical_low=20, typical_high=40, wall=10)
         lines = self.plan('--deals', '3', '--no-paired')
-        self.assertEqual(len(lines), 5, lines)
-        self.assertTrue(lines[3].endswith('), without the comparison with km3 on the same deals in the page, no pass or fail line'), lines[3])
-        self.assertNotIn('with the comparison', lines[3])
-        self.assertEqual(lines[1], self.expected_time_line(48, '72 minutes', '2.4 hours', '4.8 hours', no_paired=True))
+        self.assertEqual(len(lines), 6, lines)
+        self.assertTrue(lines[4].endswith('), without the comparison with km3 on the same deals in the page, no pass or fail line'), lines[4])
+        self.assertNotIn('with the comparison', lines[4])
+        self.assertEqual(lines[2], self.expected_time_line(48, '72 minutes', '2.4 hours', '4.8 hours', no_paired=True))
         paired = self.plan('--deals', '3')
-        self.assertNotIn('--no-paired', paired[1], 'the note is only for a run without the comparison')
-        self.assertTrue(paired[3].endswith('), with the comparison with km3 on the same deals in the page, no pass or fail line'), paired[3])
+        self.assertNotIn('--no-paired', paired[2], 'the note is only for a run without the comparison')
+        self.assertTrue(paired[4].endswith('), with the comparison with km3 on the same deals in the page, no pass or fail line'), paired[4])
 
     def test_the_size_line_counts_both_pilots_games_and_says_the_time_is_for_the_kx3_games(self):
         self.with_rates(typical_low=20, typical_high=40, wall=10)
         for deals in (1, 2, 7):
-            line = self.plan('--deals', str(deals))[1]
+            line = self.plan('--deals', str(deals))[2]
             g = 16 * deals
             self.assertTrue(line.startswith(f'size: {g} kx3 games + {g} cheap km3 baseline games on the same deals ({2 * g} games in all; '), line)
             self.assertIn(f'the time is for the {g} kx3 games: about ', line)
-        self.assertEqual(self.plan('--deals', '1')[0].rsplit('), ', 1)[1], '1 deal x 2 seats against the 8 public lists', 'one deal is not pluralised')
+        self.assertEqual(self.plan('--deals', '1')[1].rsplit('), ', 1)[1], '1 deal x 2 seats against the 8 public lists', 'one deal is not pluralised')
 
     def test_the_expected_time_is_in_minutes_below_two_hours_and_in_hours_from_two(self):
         self.with_rates(typical_low=20, typical_high=40, wall=10)
-        self.assertEqual(self.plan('--deals', '1')[1], self.expected_time_line(16, '24 minutes', '48 minutes', '96 minutes'))
-        self.assertEqual(self.plan('--deals', '5')[1], self.expected_time_line(80, '2.0 hours', '4.0 hours', '8.0 hours'))
+        self.assertEqual(self.plan('--deals', '1')[2], self.expected_time_line(16, '24 minutes', '48 minutes', '96 minutes'))
+        self.assertEqual(self.plan('--deals', '5')[2], self.expected_time_line(80, '2.0 hours', '4.0 hours', '8.0 hours'))
 
     def test_the_default_is_five_deals(self):
         lines = self.plan()
-        self.assertTrue(lines[0].endswith('), 5 deals x 2 seats against the 8 public lists'), lines[0])
-        self.assertTrue(lines[1].startswith('size: 80 kx3 games + 80 cheap km3 baseline games on the same deals (160 games in all; '), lines[1])
+        self.assertTrue(lines[1].endswith('), 5 deals x 2 seats against the 8 public lists'), lines[1])
+        self.assertTrue(lines[2].startswith('size: 80 kx3 games + 80 cheap km3 baseline games on the same deals (160 games in all; '), lines[2])
 
 
 # ---------------------------------------------------------------------------------------------------------- the registered question
@@ -304,14 +356,16 @@ class TopOfThePage(Pages):
         rows = [l.split(' | ')[0][2:] for l in lines if l.startswith('| t-')]
         self.assertEqual(rows, order, 'the table follows the registered order too')
 
-    def test_a_finished_run_has_no_partial_banner_and_a_partial_one_has_it_right_below_the_headline(self):
+    def test_a_finished_run_has_no_partial_banner_and_a_partial_one_has_it_right_below_the_question(self):
         t, man, games, text = self.build(deals=2)
         self.assertNotIn('PARTIAL', text)
         t, man, games = self.run_dir(deals=2)
         text = self.rewrite(t, games[:37])
-        banner = ('**PARTIAL: 37 of 64 games played so far (18 kx3 games + 19 cheap km3 baseline games; both count in the 64). '
-                  'The numbers below will move; read them as a snapshot.**')
-        self.assertEqual(text.splitlines()[4], banner)
+        lines = text.splitlines()
+        self.assertEqual(lines[4], '## What it says')
+        self.assertEqual(lines[6], PAGE_QUESTION, 'the question is the first thing the section says')
+        self.assertEqual(lines[8], banner('18 kx3 games + 19 cheap km3 baseline games', 37), 'the banner comes right after it')
+        self.assertTrue(lines[10].startswith('Size: '), 'and the size after the banner')
         self.assertEqual(text.count('PARTIAL'), 1)
 
     def test_the_partial_banner_counts_each_pilots_games_in_the_singular_and_at_zero(self):
@@ -321,15 +375,38 @@ class TopOfThePage(Pages):
         for keep, counts in (([games[1]], '1 kx3 game + 0 cheap km3 baseline games'), ([games[0]], '0 kx3 games + 1 cheap km3 baseline game'),
                              (both, '1 kx3 game + 1 cheap km3 baseline game'), (games[:3], '1 kx3 game + 2 cheap km3 baseline games')):
             text = self.rewrite(t, keep)
-            self.assertEqual(text.splitlines()[4], f'**PARTIAL: {len(keep)} of 64 games played so far ({counts}; both count in the 64). '
-                                                    'The numbers below will move; read them as a snapshot.**', counts)
+            self.assertEqual(text.splitlines()[8], banner(counts, len(keep)), counts)
 
     def test_a_run_without_the_comparison_still_counts_the_baseline_games_in_its_banner(self):
         """The program plays the km3 games whether or not the page reports the comparison, and they are in the total, so the banner says what the total is made of."""
         t, man, games = self.run_dir(deals=2, paired=False)
         text = self.rewrite(t, games[:37])
-        self.assertEqual(text.splitlines()[4], '**PARTIAL: 37 of 64 games played so far (18 kx3 games + 19 cheap km3 baseline games; both count in the 64). '
-                                               'The numbers below will move; read them as a snapshot.**')
+        self.assertEqual(text.splitlines()[6], PAGE_QUESTION_ALONE)
+        self.assertEqual(text.splitlines()[8], banner('18 kx3 games + 19 cheap km3 baseline games', 37))
+
+    def test_the_question_comes_first_then_the_banner_then_the_error_note_then_the_size_then_any_number(self):
+        """The order of 'What it says', on the page and on the terminal: the question, a PARTIAL banner, the note about games that failed, the size, and only then a number."""
+        k2 = 'my-list|t-altaria|0|0|X'
+        cases = (('a finished run', dict(), 64, [], ['question', 'size', 'number']),
+                 ('a cut run', dict(), 37, [], ['question', 'banner', 'size', 'number']),
+                 ('a cut run without the comparison', dict(paired=False), 37, [], ['question', 'banner', 'size', 'number']),
+                 ('a cut run with a game that failed', dict(errors=[(k2, 'x'), (k2, 'y')]), 37, [k2], ['question', 'banner', 'errors', 'size', 'number']),
+                 ('a run with no kx3 game yet', dict(), -16, [], ['question', 'banner', 'size', 'none yet']))
+        for label, kw, keep, drop, order in cases:
+            t, man, games = self.run_dir(deals=2, **kw)
+            if keep < 0:
+                text = self.rewrite(t, [g for g in games if g['arm'] == 'ref'][:-keep])
+            else:
+                text = self.rewrite(t, [g for g in games[:keep] if g['key'] not in drop])
+            sec = self.part(text, '## What it says')
+
+            def kind(line):
+                return ('question' if line.startswith('Question: ') else 'banner' if line.lstrip('*').startswith('PARTIAL: ') else 'errors' if 'could not be finished' in line
+                        else 'size' if line.startswith('Size: ') else 'none yet' if line.startswith('No kx3 game has finished yet') else 'number' if re.search(r'\d+\.\d%', line) else None)
+            kinds = [kind(l) for l in sec.splitlines() if l.strip() and not l.startswith('#')]
+            self.assertEqual([k for k in kinds if k][:len(order)], order, label)
+            self.assertEqual([kind(l) for l in sr.console_lines(text)][:len(order)], order, label + ' (the terminal)')
+            self.assertEqual(kinds.count('question'), 1, label)
 
     def test_the_question_and_the_size_each_appear_once_in_every_case(self):
         q_paired = 'Question: how does my-list do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?'
@@ -408,45 +485,56 @@ class TopOfThePage(Pages):
 
 # ---------------------------------------------------------------------------------------------------------- the gain over km3
 class TheGain(Pages):
-    def head(self, games):
+    def head(self, games, ends=None, cut=False):
+        """The gain paragraph, word for word: the figure, who scored what over how many paired games, then the range as `probably between A and B points` (A and B as
+        given in `ends`, or rounded once from m -+ half), `(cut at the ends of the possible scale)` when `cut`, and which games the 95% interval refers to."""
         n, m, half, sx, sref = gain(games)
+        lo, hi = ends or (points(m - half), points(m + half))
         return (f'On the same deals, kx3 scored **{points(m)} points** compared with km3 piloting this deck (kx3 {pc(sx)}, km3 on this deck {pc(sref)}, over {n} paired games: '
                 f'each a deal and seat played by both pilots, so {n} kx3 games + {n} cheap km3 baseline games), '
-                f'give or take {100 * half:.1f} points (95% interval; this range refers to those {n} paired games).')
+                f"probably between {lo} and {hi} points{' (cut at the ends of the possible scale)' if cut else ''} (95% interval; this range refers to those {n} paired games).")
 
-    def range_runs(self, games):
+    def range_ends(self, games):
         n, m, half, sx, sref = gain(games)
-        return n, m - half, m + half, f'That range runs from {points(m - half)} to {points(m + half)} points, '
+        return n, m - half, m + half
 
     def gain_section(self, text):
         return text.split('### How much better')[1].split('\n## ')[0]
 
+    def note_after_head(self, text, head):
+        """The line two lines below the gain paragraph (a blank line between them): the note about what the range does and does not include."""
+        lines = text.splitlines()
+        self.assertEqual(lines.count(head), 1, head)
+        i = lines.index(head)
+        self.assertEqual(lines[i + 1], '')
+        return lines[i + 2]
+
     def test_a_range_that_includes_no_gain_says_what_the_games_do_and_do_not_show(self):
         t, man, games, text = self.build(deals=3)
-        n, lo, hi, run = self.range_runs(games)
+        n, lo, hi = self.range_ends(games)
         self.assertTrue(lo <= 0 <= hi, 'this data is meant to include no gain')
-        self.assertEqual(text.splitlines().count(self.head(games)), 1)
-        self.assertEqual(text.splitlines().count(
-            run + f'which includes no gain at all: these {n} paired games do not show that kx3 plays this deck better than km3, and do not show that it plays it worse. '
-                  f'They do argue against a gain much larger than {100 * hi:.1f} points or a loss much larger than {100 * abs(lo):.1f} points; a smaller difference needs more deals.'), 1)
+        self.assertEqual(self.note_after_head(text, self.head(games)),
+                         f'That range includes no gain at all: these {n} paired games do not show that kx3 plays this deck better than km3, and do not show that it plays it worse. '
+                         f'They do argue against a gain much larger than {100 * hi:.1f} points or a loss much larger than {100 * abs(lo):.1f} points; a smaller difference needs more deals.')
+        self.assertNotIn('give or take', text)
 
     def test_a_range_wholly_above_zero_says_better_and_does_not_say_by_how_much(self):
         t, man, games, text = self.build(deals=3, win=lambda o, d, s: 'deck' if (o + d) % 5 else 'opp', ref_win=lambda o, d, s: 'opp' if (o + d + s) % 4 else 'deck')
-        n, lo, hi, run = self.range_runs(games)
+        n, lo, hi = self.range_ends(games)
         self.assertTrue(lo > 0, 'this data is meant to be a clear gain')
-        self.assertEqual(text.splitlines().count(self.head(games)), 1)
-        self.assertEqual(text.splitlines().count(run + f'which does not include no gain: on these {n} paired games kx3 did better than km3. '
-                                                       f'It does not say by exactly how much: that part of the range is as wide as {n} paired games make it.'), 1)
+        self.assertEqual(self.note_after_head(text, self.head(games)),
+                         f'That range does not include no gain: on these {n} paired games kx3 did better than km3. '
+                         f'It does not say by exactly how much: that part of the range is as wide as {n} paired games make it.')
 
     def test_a_range_wholly_below_zero_says_worse(self):
         t, man, games, text = self.build(deals=3, win=lambda o, d, s: 'opp' if (o + d) % 5 else 'deck', ref_win=lambda o, d, s: 'deck' if (o + d + s) % 4 else 'opp')
-        n, lo, hi, run = self.range_runs(games)
+        n, lo, hi = self.range_ends(games)
         self.assertTrue(hi < 0, 'this data is meant to be a clear loss')
-        self.assertEqual(text.splitlines().count(self.head(games)), 1)
-        self.assertEqual(text.splitlines().count(run + f'which does not include no gain: on these {n} paired games kx3 did worse than km3. '
-                                                       f'It does not say by exactly how much: that part of the range is as wide as {n} paired games make it.'), 1)
+        self.assertEqual(self.note_after_head(text, self.head(games)),
+                         f'That range does not include no gain: on these {n} paired games kx3 did worse than km3. '
+                         f'It does not say by exactly how much: that part of the range is as wide as {n} paired games make it.')
 
-    def test_a_range_wider_than_the_whole_scale_says_the_paired_games_are_too_few_and_prints_no_range(self):
+    def test_a_range_wider_than_the_whole_scale_says_the_paired_games_are_too_few_and_the_range_is_the_whole_scale(self):
         t, man, games = self.run_dir(deals=1, win=lambda o, d, s: 'deck', ref_win=lambda o, d, s: 'deck' if s == 0 else 'opp')
         two = [g for g in games if g['opp'] == PANEL[0]]  # both seats, both arms: two paired games, the differences 0 and +1
         text = self.rewrite(t, two)
@@ -454,10 +542,10 @@ class TheGain(Pages):
         self.assertEqual((n, m), (2, 0.5))
         self.assertGreater(2 * half, 2, 'this data is meant to give a range wider than the whole possible scale')
         sec = self.gain_section(text)
-        self.assertIn(self.head(two), sec.splitlines(), 'the figure and its give-or-take are still shown')
+        self.assertIn(self.head(two, ends=('-100.0', '+100.0'), cut=True), sec.splitlines(), 'the figure is still shown, its range cut at the ends of the scale')
         self.assertEqual([l for l in sec.splitlines() if l.startswith('That range')],
                          ['That range is wider than the whole possible scale (-100 to +100 points): 2 paired games are too few to say anything about the gain yet.'])
-        for s in ('That range runs', 'includes no gain', 'does not include', 'cut at the ends', 'argue against', 'did better', 'did worse'):
+        for s in ('That range runs', 'includes no gain', 'does not include', 'argue against', 'did better', 'did worse', 'give or take'):
             self.assertNotIn(s, sec)
 
     def test_a_range_that_runs_past_the_top_of_the_scale_is_cut_there_and_says_so(self):
@@ -466,9 +554,10 @@ class TheGain(Pages):
         n, m, half, sx, sref = gain(games)
         self.assertEqual(n, 16)
         self.assertTrue(m + half > 1 and 2 * half < 2, 'this data is meant to run past +100 without being wider than the whole scale')
-        self.assertEqual([l for l in self.gain_section(text).splitlines() if l.startswith('That range')],
-                         [f'That range runs from {points(m - half)} to +100.0 points (cut at the ends of the possible scale), which does not include no gain: on these 16 paired games '
-                          'kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 16 paired games make it.'])
+        head = self.head(games, ends=(points(m - half), '+100.0'), cut=True)
+        self.assertEqual(self.note_after_head(text, head), 'That range does not include no gain: on these 16 paired games kx3 did better than km3. '
+                                                           'It does not say by exactly how much: that part of the range is as wide as 16 paired games make it.')
+        self.assertEqual(text.count('(cut at the ends of the possible scale)'), 1, 'said once, beside the range it cuts')
         self.assertNotIn('+102', text)
 
     def test_a_range_that_runs_past_the_bottom_of_the_scale_is_cut_there_and_says_so(self):
@@ -476,14 +565,15 @@ class TheGain(Pages):
         n, m, half, sx, sref = gain(games)
         self.assertEqual(n, 16)
         self.assertTrue(m - half < -1 and 2 * half < 2)
-        self.assertEqual([l for l in self.gain_section(text).splitlines() if l.startswith('That range')],
-                         [f'That range runs from -100.0 to {points(m + half)} points (cut at the ends of the possible scale), which does not include no gain: on these 16 paired games '
-                          'kx3 did worse than km3. It does not say by exactly how much: that part of the range is as wide as 16 paired games make it.'])
+        head = self.head(games, ends=('-100.0', points(m + half)), cut=True)
+        self.assertEqual(self.note_after_head(text, head), 'That range does not include no gain: on these 16 paired games kx3 did worse than km3. '
+                                                           'It does not say by exactly how much: that part of the range is as wide as 16 paired games make it.')
+        self.assertEqual(text.count('(cut at the ends of the possible scale)'), 1)
         self.assertNotIn('-102', text)
 
     def test_a_range_inside_the_scale_is_not_said_to_be_cut_nor_too_wide(self):
         t, man, games, text = self.build(deals=3)
-        n, lo, hi, run = self.range_runs(games)
+        n, lo, hi = self.range_ends(games)
         self.assertTrue(-1 < lo < hi < 1)
         self.assertNotIn('cut at the ends', text)
         self.assertNotIn('wider than the whole', text)
@@ -499,7 +589,8 @@ class TheGain(Pages):
                                 f"km3 on this deck {pc(SC[one[0]['winner']])}, over 1 paired game: each a deal and seat played by both pilots, so 1 kx3 game + 1 cheap km3 baseline game); "
                                 'with one comparison no interval can be given.'])
         self.assertNotIn('every one of the', text)
-        self.assertNotIn('give or take', text.split('### How much better')[1].split('\n## ')[0])
+        self.assertNotIn('give or take', text)
+        self.assertNotIn('probably between', self.gain_section(text), 'one comparison gives no range at all')
         self.assertNotIn('That range', text)
 
     def test_no_spread_at_all_is_said_as_such_and_gets_no_range(self):
@@ -508,7 +599,9 @@ class TheGain(Pages):
         self.assertEqual(line, ['On the same deals, kx3 scored **+0.0 points** compared with km3 piloting this deck (kx3 100.0%, km3 on this deck 100.0%, over 48 paired games: '
                                 'each a deal and seat played by both pilots, so 48 kx3 games + 48 cheap km3 baseline games); '
                                 'every one of the 48 comparisons gave the same difference, so no spread can be estimated from them.'])
-        self.assertNotIn('That range runs', text)
+        self.assertNotIn('That range', text)
+        self.assertNotIn('probably between', self.gain_section(text), 'no spread, no range')
+        self.assertNotIn('give or take', text)
 
     def test_without_the_baseline_the_gain_is_not_mentioned_at_all(self):
         t, man, games, text = self.build(deals=3, paired=False)
@@ -533,24 +626,34 @@ class TheGain(Pages):
 
 class GainRangeNote(T.Timed):
     """The sentences about the paired-gain range, word for word, from the one function that writes them for both pages (gain_range_note(pilot, ref, n, mean, half): the
-    range is mean +- half, in fractions of a score, over n paired games), with round numbers so that each case can be written down."""
+    range is mean +- half, in fractions of a score, over n paired games), with round numbers so that each case can be written down. The note does not repeat the range's
+    numbers: range_points prints them just before (RangePoints below), and the note says only what that range does and does not include."""
 
     def note(self, n, m, half):
         return sr.gain_range_note('kx3', 'km3', n, m, half)
 
     BETTER = 'It does not say by exactly how much: that part of the range is as wide as {n} paired games make it.'
+    ONLY_JUST = ' (only just: its nearer end is less than 0.05 points from no gain)'
 
     def test_a_range_that_includes_zero_says_the_games_show_neither_a_gain_nor_a_loss(self):
         self.assertEqual(self.note(50, 0.05, 0.25),
-                         'That range runs from -20.0 to +30.0 points, which includes no gain at all: these 50 paired games do not show that kx3 plays this deck better than km3, '
+                         'That range includes no gain at all: these 50 paired games do not show that kx3 plays this deck better than km3, '
                          'and do not show that it plays it worse. They do argue against a gain much larger than 30.0 points or a loss much larger than 20.0 points; '
                          'a smaller difference needs more deals.')
 
     def test_a_range_wholly_above_zero_says_better_and_one_wholly_below_says_worse(self):
-        self.assertEqual(self.note(50, 0.3, 0.1), 'That range runs from +20.0 to +40.0 points, which does not include no gain: on these 50 paired games kx3 did better than km3. '
-                                                  + self.BETTER.format(n=50))
-        self.assertEqual(self.note(50, -0.3, 0.1), 'That range runs from -40.0 to -20.0 points, which does not include no gain: on these 50 paired games kx3 did worse than km3. '
-                                                   + self.BETTER.format(n=50))
+        self.assertEqual(self.note(50, 0.3, 0.1), 'That range does not include no gain: on these 50 paired games kx3 did better than km3. ' + self.BETTER.format(n=50))
+        self.assertEqual(self.note(50, -0.3, 0.1), 'That range does not include no gain: on these 50 paired games kx3 did worse than km3. ' + self.BETTER.format(n=50))
+
+    def test_the_note_never_repeats_the_numbers_of_the_range_it_follows(self):
+        for n, m, half in ((50, 0.3, 0.1), (50, -0.3, 0.1), (16, 0.8, 0.3), (50, 0.05, 0.25), (7, 0.0, 0.999)):
+            text = self.note(n, m, half)
+            self.assertNotIn('runs from', text, (n, m, half))
+            self.assertNotIn('give or take', text, (n, m, half))
+            self.assertNotIn('probably between', text, (n, m, half))
+        for n, m, half in ((50, 0.3, 0.1), (50, -0.3, 0.1), (16, 0.8, 0.3)):
+            self.assertEqual(re.findall(r'\d+\.\d', self.note(n, m, half)), [], 'a range that excludes no gain has no figure in its note')
+        self.assertEqual(re.findall(r'\d+\.\d', self.note(50, 0.05, 0.25)), ['30.0', '20.0'], 'only the two bounds of "argue against" (a gain larger than, a loss larger than)')
 
     def test_the_pilots_in_the_sentence_are_the_ones_given(self):
         text = sr.gain_range_note('kz9', 'kr1', 12, 0.3, 0.1)
@@ -566,54 +669,158 @@ class GainRangeNote(T.Timed):
         self.assertEqual(self.note(7, 0.0, 1.0), wider.format(n=7), 'a range exactly as wide as the scale is already too wide to say anything')
         self.assertEqual(self.note(3, -0.4, 3.0), wider.format(n=3), 'wherever it sits')
         just_inside = self.note(7, 0.0, 0.999)
-        self.assertTrue(just_inside.startswith('That range runs from -99.9 to +99.9 points, which includes no gain at all'), just_inside)
+        self.assertTrue(just_inside.startswith('That range includes no gain at all'), just_inside)
+        self.assertIn('a gain much larger than 99.9 points or a loss much larger than 99.9 points', just_inside)
         self.assertNotIn('wider than', just_inside)
-        self.assertNotIn('cut at the ends', just_inside)
 
-    def test_a_range_past_an_end_of_the_scale_is_cut_there_and_says_so(self):
+    def test_a_range_past_an_end_of_the_scale_is_cut_there_and_the_note_takes_its_figures_from_the_cut_end(self):
         top = self.note(16, 0.8, 0.3)
-        self.assertEqual(top, 'That range runs from +50.0 to +100.0 points (cut at the ends of the possible scale), which does not include no gain: on these 16 paired games '
-                              'kx3 did better than km3. ' + self.BETTER.format(n=16))
+        self.assertEqual(top, 'That range does not include no gain: on these 16 paired games kx3 did better than km3. ' + self.BETTER.format(n=16))
         bottom = self.note(16, -0.8, 0.3)
-        self.assertEqual(bottom, 'That range runs from -100.0 to -50.0 points (cut at the ends of the possible scale), which does not include no gain: on these 16 paired games '
-                                 'kx3 did worse than km3. ' + self.BETTER.format(n=16))
-        across = self.note(16, 0.5, 0.6)  # the cut end is also what the "argue against" figure is taken from
-        self.assertEqual(across, 'That range runs from -10.0 to +100.0 points (cut at the ends of the possible scale), which includes no gain at all: these 16 paired games '
-                                 'do not show that kx3 plays this deck better than km3, and do not show that it plays it worse. They do argue against a gain much larger than '
-                                 '100.0 points or a loss much larger than 10.0 points; a smaller difference needs more deals.')
+        self.assertEqual(bottom, 'That range does not include no gain: on these 16 paired games kx3 did worse than km3. ' + self.BETTER.format(n=16))
+        across = self.note(16, 0.5, 0.6)  # the range is -10 to +110 points: the cut end (+100) is what the "argue against" figure is taken from
+        self.assertEqual(across, 'That range includes no gain at all: these 16 paired games do not show that kx3 plays this deck better than km3, and do not show that it plays it worse. '
+                                 'They do argue against a gain much larger than 100.0 points or a loss much larger than 10.0 points; a smaller difference needs more deals.')
+        below = self.note(16, -0.5, 0.6)
+        self.assertEqual(below, 'That range includes no gain at all: these 16 paired games do not show that kx3 plays this deck better than km3, and do not show that it plays it worse. '
+                                'They do argue against a gain much larger than 10.0 points or a loss much larger than 100.0 points; a smaller difference needs more deals.')
+
+    def test_a_range_that_ends_exactly_at_an_end_of_the_scale_is_not_too_wide_and_includes_no_gain(self):
+        text = self.note(16, 0.5, 0.5)  # 0 to +100 points
+        self.assertTrue(text.startswith('That range includes no gain at all'), text)
+        self.assertIn('a gain much larger than 100.0 points or a loss much larger than 0.0 points', text)
+        text = self.note(16, -0.5, 0.5)  # -100 to 0 points
+        self.assertTrue(text.startswith('That range includes no gain at all'), text)
+        self.assertIn('a gain much larger than 0.0 points or a loss much larger than 100.0 points', text)
+
+    def test_a_lower_bound_that_rounds_to_plus_zero_is_called_only_just_above_no_gain(self):
+        text = self.note(50, 0.0203, 0.02)  # the range starts at +0.03 points
+        self.assertEqual(text, f'That range does not include no gain{self.ONLY_JUST}: on these 50 paired games kx3 did better than km3. ' + self.BETTER.format(n=50))
+        near = self.note(50, 0.0212, 0.02)  # +0.12 points rounds to +0.1, which is a number and is printed as one
+        self.assertEqual(near, 'That range does not include no gain: on these 50 paired games kx3 did better than km3. ' + self.BETTER.format(n=50))
+        self.assertNotIn('only just', near)
+
+    def test_an_upper_bound_that_rounds_to_plus_zero_is_called_only_just_below_no_gain(self):
+        text = self.note(50, -0.0203, 0.02)  # the range ends at -0.03 points
+        self.assertEqual(text, f'That range does not include no gain{self.ONLY_JUST}: on these 50 paired games kx3 did worse than km3. ' + self.BETTER.format(n=50))
+        near = self.note(50, -0.0212, 0.02)
+        self.assertEqual(near, 'That range does not include no gain: on these 50 paired games kx3 did worse than km3. ' + self.BETTER.format(n=50))
+        self.assertNotIn('only just', near)
+
+    def test_only_just_starts_at_five_hundredths_of_a_point_from_no_gain(self):
+        for m, only_just in ((0.02049, True), (0.02051, False)):  # the nearer end is +0.049 points and +0.051 points: the second prints as +0.1
+            self.assertEqual('only just' in self.note(50, m, 0.02), only_just, m)
+            self.assertEqual('only just' in self.note(50, -m, 0.02), only_just, -m)
+        self.assertNotIn('only just', self.note(50, 0.3, 0.1), 'a range far from no gain is not "only just"')
+        self.assertNotIn('only just', self.note(50, 0.0197, 0.02), 'a range that includes no gain has no nearer end to speak of')
+
+    def test_the_note_says_only_just_exactly_when_the_printed_range_ends_at_plus_zero(self):
+        """The note and the figure printed just before it never disagree: 'only just' where the nearer end prints as +0.0, and never where it prints as a number."""
+        for hundredths in range(1, 41):  # the nearer end 0.01 .. 0.40 points from no gain
+            end = hundredths / 10000
+            above = sr.range_points(end + 0.02, 0.02)  # 'probably between +0.0 and +4.0 points'
+            below = sr.range_points(-end - 0.02, 0.02)
+            self.assertEqual('only just' in self.note(50, end + 0.02, 0.02), above.split(' and ')[0].endswith('+0.0'), (hundredths, above))
+            self.assertEqual('only just' in self.note(50, -end - 0.02, 0.02), below.split(' and ')[1].startswith('+0.0'), (hundredths, below))
+
+    def test_a_range_that_just_includes_zero_is_not_called_only_just_and_never_prints_minus_zero(self):
+        text = self.note(50, 0.0197, 0.02)  # the range starts at -0.03 points
+        self.assertTrue(text.startswith('That range includes no gain at all'), text)
+        self.assertIn('a loss much larger than 0.0 points', text)
+        self.assertNotIn('-0.0', text)
+        self.assertNotIn('only just', text)
+        text = self.note(50, -0.0197, 0.02)
+        self.assertTrue(text.startswith('That range includes no gain at all'), text)
+        self.assertIn('a gain much larger than 0.0 points', text)
+        self.assertNotIn('-0.0', text)
+
+
+class RangePoints(T.Timed):
+    """range_points(m, half): the range m -+ half (fractions of a score) as `probably between A and B points`, A and B signed with one decimal, rounded ONCE from the
+    unrounded ends, and cut at the ends of the possible scale (-100 to +100 points) with a clause that says so."""
+
+    def test_the_two_ends_are_signed_and_written_with_one_decimal(self):
+        self.assertEqual(sr.range_points(0.0625, 0.0815), 'probably between -1.9 and +14.4 points')
+        self.assertEqual(sr.range_points(0.3, 0.1), 'probably between +20.0 and +40.0 points')
+        self.assertEqual(sr.range_points(-0.3, 0.1), 'probably between -40.0 and -20.0 points')
+        self.assertEqual(sr.range_points(0.05, 0.25), 'probably between -20.0 and +30.0 points')
+
+    def test_the_ends_are_rounded_once_from_the_unrounded_numbers_not_from_a_rounded_figure_and_a_rounded_half(self):
+        m, half = 0.04449, 0.03051  # the figure prints as +4.4 and the half as 3.1, whose difference (+1.3) is not the lower end (0.01398: +1.4)
+        self.assertEqual(sr.signed_points(m), '+4.4')
+        self.assertEqual(f'{100 * half:.1f}', '3.1')
+        self.assertEqual(sr.range_points(m, half), 'probably between +1.4 and +7.5 points')
+        m, half = 0.0446, 0.0306  # the figure prints as +4.5 and the half as 3.1, whose sum (+7.6) is not the upper end (0.0752: +7.5)
+        self.assertEqual(sr.signed_points(m), '+4.5')
+        self.assertEqual(f'{100 * half:.1f}', '3.1')
+        self.assertEqual(sr.range_points(m, half), 'probably between +1.4 and +7.5 points')
+
+    def test_no_end_ever_prints_as_minus_zero_and_zero_is_plus_zero(self):
+        self.assertEqual(sr.range_points(0.0, 0.0), 'probably between +0.0 and +0.0 points')
+        self.assertEqual(sr.range_points(-0.00001, 0.0002), 'probably between +0.0 and +0.0 points')  # -0.021 and +0.019 points
+        self.assertEqual(sr.range_points(0.0, 0.1), 'probably between -10.0 and +10.0 points')
+        self.assertEqual(sr.range_points(0.0197, 0.02), 'probably between +0.0 and +4.0 points')  # the lower end is -0.03 points
+        self.assertEqual(sr.range_points(-0.0197, 0.02), 'probably between -4.0 and +0.0 points')
+        for m in (x / 1000 for x in range(-300, 301, 7)):
+            self.assertNotIn('-0.0 ', sr.range_points(m, 0.0123) + ' ', m)
+
+    def test_an_end_past_the_scale_is_cut_at_it_and_the_clause_says_so_once(self):
+        cut = ' (cut at the ends of the possible scale)'
+        self.assertEqual(sr.range_points(0.8, 0.3), 'probably between +50.0 and +100.0 points' + cut)
+        self.assertEqual(sr.range_points(-0.8, 0.3), 'probably between -100.0 and -50.0 points' + cut)
+        self.assertEqual(sr.range_points(0.5, 0.6), 'probably between -10.0 and +100.0 points' + cut)
+        self.assertEqual(sr.range_points(0.5, 6.35), 'probably between -100.0 and +100.0 points' + cut, 'both ends past the scale: one clause')
+        self.assertEqual(sr.range_points(0.0, 3.0).count('(cut at the ends'), 1)
 
     def test_a_range_that_ends_exactly_at_an_end_of_the_scale_is_not_called_cut(self):
-        text = self.note(16, 0.5, 0.5)
-        self.assertTrue(text.startswith('That range runs from +0.0 to +100.0 points, which includes no gain at all'), text)
-        self.assertNotIn('cut at the ends', text)
-        text = self.note(16, -0.5, 0.5)
-        self.assertTrue(text.startswith('That range runs from -100.0 to +0.0 points, which includes no gain at all'), text)
-        self.assertNotIn('cut at the ends', text)
+        self.assertEqual(sr.range_points(0.5, 0.5), 'probably between +0.0 and +100.0 points')
+        self.assertEqual(sr.range_points(-0.5, 0.5), 'probably between -100.0 and +0.0 points')
+        self.assertEqual(sr.range_points(0.0, 1.0), 'probably between -100.0 and +100.0 points')
+        self.assertEqual(sr.range_points(0.0, 1.0001), 'probably between -100.0 and +100.0 points (cut at the ends of the possible scale)', 'a hundredth of a point past is past')
 
-    def test_a_lower_bound_that_rounds_to_plus_zero_is_called_just_above_it(self):
-        text = self.note(50, 0.0203, 0.02)  # the range starts at +0.03 points
-        self.assertEqual(text, 'That range runs from just above +0.0 to +4.0 points, which does not include no gain: on these 50 paired games kx3 did better than km3. '
-                               + self.BETTER.format(n=50))
-        near = self.note(50, 0.0212, 0.02)  # +0.12 points rounds to +0.1, which is a number and is printed as one
-        self.assertTrue(near.startswith('That range runs from +0.1 to +4.1 points, which does not include no gain'), near)
-        self.assertNotIn('just above', near)
+    def test_a_range_inside_the_scale_has_no_clause_and_no_give_or_take(self):
+        text = sr.range_points(0.1, 0.2)
+        self.assertEqual(text, 'probably between -10.0 and +30.0 points')
+        self.assertNotIn('cut', text)
+        self.assertNotIn('give or take', text)
 
-    def test_an_upper_bound_that_rounds_to_plus_zero_is_called_just_below_it(self):
-        text = self.note(50, -0.0203, 0.02)
-        self.assertEqual(text, 'That range runs from -4.0 to just below +0.0 points, which does not include no gain: on these 50 paired games kx3 did worse than km3. '
-                               + self.BETTER.format(n=50))
-        near = self.note(50, -0.0212, 0.02)
-        self.assertTrue(near.startswith('That range runs from -4.1 to -0.1 points, which does not include no gain'), near)
-        self.assertNotIn('just below', near)
 
-    def test_a_range_that_just_includes_zero_never_prints_minus_zero(self):
-        text = self.note(50, 0.0197, 0.02)  # the range starts at -0.03 points
-        self.assertTrue(text.startswith('That range runs from +0.0 to +4.0 points, which includes no gain at all'), text)
-        self.assertNotIn('-0.0', text)
-        self.assertNotIn('just above', text)
-        text = self.note(50, -0.0197, 0.02)
-        self.assertTrue(text.startswith('That range runs from -4.0 to +0.0 points, which includes no gain at all'), text)
-        self.assertNotIn('-0.0 ', text)
+SYMMETRIC_RANGE_WORDS = ('give or take', 'plus or minus', '±', '+/-', '+-')  # a range that is cut at the scale, or built from a Wilson or a t interval, is not symmetric
+
+
+class NoGiveOrTake(Pages):
+    """No page says 'give or take' (or any other symmetric spelling) in any of its cases: every range is 'probably between A and B'."""
+
+    def check(self, text, label):
+        for words in SYMMETRIC_RANGE_WORDS:
+            self.assertNotIn(words, text, f'{label}: {words!r}')
+        self.assertIn('probably between', text, label)
+        ranged = re.findall(r'probably between [+-]?\d+\.\d%? and [+-]?\d+\.\d%?(?: points)?(?: \(cut at the ends of the possible scale\))? \(95% interval', text)
+        self.assertEqual(len(ranged), text.count('(95% interval'), f'{label}: every 95% interval is written as "probably between A and B"')
+
+    def test_a_finished_page_of_every_size_and_every_kind_of_result(self):
+        for deals in (1, 2, 3, 5):
+            for label, kw in (('mixed', {}), ('all ties', dict(win=lambda o, d, s: 'tie')), ('wins', dict(win=lambda o, d, s: 'deck')), ('losses', dict(win=lambda o, d, s: 'opp')),
+                              ('no baseline', dict(paired=False)), ('no spread', dict(win=lambda o, d, s: 'deck', ref_win=lambda o, d, s: 'deck')),
+                              ('a clear gain', dict(win=lambda o, d, s: 'deck' if (o + d) % 5 else 'opp', ref_win=lambda o, d, s: 'opp' if (o + d + s) % 4 else 'deck')),
+                              ('a clear loss', dict(win=lambda o, d, s: 'opp' if (o + d) % 5 else 'deck', ref_win=lambda o, d, s: 'deck' if (o + d + s) % 4 else 'opp')),
+                              ('cut at the top', dict(win=lambda o, d, s: 'deck', ref_win=lambda o, d, s: 'deck' if (o < 3 and s == 0) else 'opp'))):
+                t, man, games, text = self.build(deals=deals, **kw)
+                self.check(text, f'{deals} deals, {label}')
+
+    def test_a_partial_page_with_few_games_and_with_a_game_that_failed(self):
+        k2 = 'my-list|t-altaria|0|0|X'
+        t, man, games = self.run_dir(deals=2, errors=[(k2, 'x'), (k2, 'y')])
+        for keep in (4, 5, 9, 17, 37, 63):  # (the first kx3 game, k2, is the one that failed)
+            self.check(self.rewrite(t, [g for g in games[:keep] if g['key'] != k2]), f'{keep} games')
+
+    def test_the_gain_in_every_one_of_its_cases(self):
+        t, man, games = self.run_dir(deals=1, win=lambda o, d, s: 'deck', ref_win=lambda o, d, s: 'deck' if s == 0 else 'opp')
+        one = [g for g in games if g['opp'] == PANEL[0] and g['seat'] == 0]
+        for label, keep in (('one comparison', one), ('too wide for the scale', [g for g in games if g['opp'] == PANEL[0]]), ('no games of the baseline', [g for g in games if g['arm'] == 'X'])):
+            text = self.rewrite(t, keep)
+            for words in SYMMETRIC_RANGE_WORDS:
+                self.assertNotIn(words, text, f'{label}: {words!r}')
 
 
 class CountsNameTheirPilot(T.Timed):
@@ -780,12 +987,22 @@ class ErrorParagraph(Pages):
         self.assertIn('a' * 150 + 'b' * 50 + ')', text)
         self.assertNotIn('b' * 51, text)
 
-    def test_the_note_is_the_first_thing_the_console_shows_after_the_banner(self):
+    def test_the_note_is_the_first_thing_the_console_shows_after_the_question_and_the_banner(self):
         text = self.with_errors([(self.K2, 'x'), (self.K2, 'y')], {self.K2})
         lines = sr.console_lines(text)
-        self.assertTrue(lines[0].startswith('PARTIAL: 63 of 64 games played so far'), lines[0])
-        self.assertTrue(lines[1].startswith('1 game could not be finished and is left out of every number below (first: ' + self.K2), lines[1])
-        self.assertNotIn('`', lines[1])
+        self.assertEqual(lines[0], PAGE_QUESTION)
+        self.assertTrue(lines[1].startswith('PARTIAL: 31 kx3 games + 32 cheap km3 baseline games so far (63 of the 64 games planned; '), lines[1])
+        self.assertTrue(lines[2].startswith('1 game could not be finished and is left out of every number below (first: ' + self.K2), lines[2])
+        self.assertTrue(lines[3].startswith('Size: '), lines[3])
+        self.assertNotIn('`', lines[2])
+
+    def test_the_note_sits_between_the_banner_and_the_size_on_the_page_too(self):
+        text = self.with_errors([(self.K2, 'x'), (self.K2, 'y')], {self.K2})
+        sec = self.part(text, '## What it says').strip().split('\n\n')
+        self.assertEqual(sec[0], PAGE_QUESTION)
+        self.assertEqual(sec[1], banner('31 kx3 games + 32 cheap km3 baseline games', 63))
+        self.assertTrue(sec[2].startswith('1 game could not be finished and is left out of every number below'), sec[2])
+        self.assertTrue(sec[3].startswith('Size: 31 kx3 games + 32 cheap km3 baseline games so far, of 32 kx3 games + 32 cheap km3 baseline games planned.'), sec[3])
 
 
 class DuplicatesAndTornLines(Pages):
@@ -897,6 +1114,239 @@ class WhatWasRun(Pages):
         self.assertIn('**but a game started at 2026-10-09T23:00:00Z, BEFORE the registration time**', self.registered_line(t, text))
 
 
+PIN_SHA = '5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2'
+HARNESS_SHA = 'bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e'
+GIVEN = 'given in the config (copied from the pin, which says it was measured on this exact program sha256)'
+REPLAYED = 'replayed by slow_report.py on this machine just before registration (equal to the committed pin)'
+HOW_GIVEN = 'copied from the pin, not replayed: the pin says it was measured on this exact binary'
+HOW_REPLAYED = 'replayed on this machine just before registration, equal to the committed pin'
+
+
+class WhatWasRunLines(Pages):
+    """The lines of 'What was run' that say which program, which source and which school-morning choice a run had: the whole section, word for word, for the pinned
+    program and for a rebuild, and each line on its own for the cases around it."""
+    KEYS = dict(program_route='pinned', pinned_program='/home/dacz8976/kx/strength', pinned_program_sha256=PIN_SHA, harness_source_sha256=HARNESS_SHA,
+                harness_source_checkout_sha256=HARNESS_SHA, engine_ref='d513e37b473f2819075e1eb2439075a8a1e65c42', engine_tree='31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588',
+                school_rule='on', school_days='mon,tue,wed,thu,fri')
+
+    def page_with(self, source=GIVEN, program=None, **slow):
+        """The page of a run whose slow_report block carries the registration's facts (KEYS, changed by `slow`; a value None drops the key)."""
+        t, man, games = self.run_dir(deals=1, selfcheck_source={'kx3': source, 'km3': source})
+        block = dict(self.KEYS, **slow)
+        man['slow_report'].update({k: v for k, v in block.items() if v is not None})
+        for k, v in block.items():
+            if v is None:
+                man['slow_report'].pop(k, None)
+        if program:
+            man['program'], man['program_sha256'] = program
+        T.rewrite_manifest(t, man)
+        return t, sr.write_slow_report(t)
+
+    def section(self, text):
+        return self.part(text, '## What was run').strip().splitlines()
+
+    def test_the_whole_section_for_the_pinned_program_in_these_words(self):
+        t, text = self.page_with()
+        msha = T.sha(os.path.join(t, 'manifest.json'))[:16]
+        self.assertEqual(self.section(text), [
+            '- Pilots: kx3 (d513e37b) on the deck, km3 on the public panel. Program `/home/dacz8976/kx/strength` sha256 `5a8f5c83a791`.',
+            f'- Self-check of `kx3`: `selfcheck pilot=kx3 digest=31d638dbc818b0fa` ({HOW_GIVEN})',
+            f'- Self-check of `km3`: `selfcheck pilot=km3 digest=81b572198c04d5d1` ({HOW_GIVEN})',
+            '- Build: claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec',
+            '- Harness source sha256 `bf9c5d681400` (what rl/strength/build.sh prints); the checkout this run was registered from has the same.',
+            '- School-morning rule: on (mon,tue,wed,thu,fri).',
+            '- Deck file `decks/events/my-list.txt` sha256 `cccccccccccc`; the file is committed.',
+            f'- Registered 2026-10-10T10:00:00Z, before any game; manifest sha256 `{msha}`; repository commit `abc123`; pin `rl/strength/slow_report_pin.json`.',
+            '- 1 deal x 2 seats; seeds `24601000000 + p x 10000 + i` (p = opponent index, i = deal). The program plays each deal with each pilot on the deck, from one seed.'])
+
+    def test_the_whole_section_for_a_rebuild_names_the_rebuild_the_pinned_binary_and_what_was_replayed(self):
+        t, text = self.page_with(source=REPLAYED, program=('/cloud/build/strength', 'f' * 64), program_route='rebuilt')
+        msha = T.sha(os.path.join(t, 'manifest.json'))[:16]
+        self.assertEqual(self.section(text), [
+            '- Pilots: kx3 (d513e37b) on the deck, km3 on the public panel. Program `/cloud/build/strength` sha256 `ffffffffffff`.',
+            "- The program is a REBUILD of the pinned source, not the pinned binary (`/home/dacz8976/kx/strength`, sha256 `5a8f5c83a791`): it was accepted only because both self-checks "
+            "were replayed on this machine and equal the committed pin's digests, and the harness source in the checkout is the pinned build's.",
+            f'- Self-check of `kx3`: `selfcheck pilot=kx3 digest=31d638dbc818b0fa` ({HOW_REPLAYED})',
+            f'- Self-check of `km3`: `selfcheck pilot=km3 digest=81b572198c04d5d1` ({HOW_REPLAYED})',
+            '- Build: claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec',
+            '- Harness source sha256 `bf9c5d681400` (what rl/strength/build.sh prints); the checkout this run was registered from has the same.',
+            '- School-morning rule: on (mon,tue,wed,thu,fri).',
+            '- Deck file `decks/events/my-list.txt` sha256 `cccccccccccc`; the file is committed.',
+            f'- Registered 2026-10-10T10:00:00Z, before any game; manifest sha256 `{msha}`; repository commit `abc123`; pin `rl/strength/slow_report_pin.json`.',
+            '- 1 deal x 2 seats; seeds `24601000000 + p x 10000 + i` (p = opponent index, i = deal). The program plays each deal with each pilot on the deck, from one seed.'])
+
+    def test_the_rebuild_paragraph_is_there_only_for_a_rebuild(self):
+        for route in ('pinned', None):  # a run registered before the route was recorded is not called a rebuild either
+            t, text = self.page_with(program_route=route)
+            self.assertNotIn('REBUILD', text, route)
+            self.assertNotIn('pinned source', text, route)
+        t, text = self.page_with(program_route='rebuilt')
+        self.assertEqual(text.count('REBUILD'), 1)
+        self.assertEqual(text.count('The program is a REBUILD of the pinned source, not the pinned binary'), 1)
+
+    def test_the_rebuild_paragraph_names_the_pinned_binary_it_stands_in_for_not_the_program_it_used(self):
+        t, text = self.page_with(program_route='rebuilt', program=('/cloud/build/strength', 'f' * 64), pinned_program='/pinned/elsewhere/strength', pinned_program_sha256='7' * 64)
+        line = [l for l in text.splitlines() if l.startswith('- The program is a REBUILD')][0]
+        self.assertIn('not the pinned binary (`/pinned/elsewhere/strength`, sha256 `777777777777`)', line)
+        self.assertNotIn('/cloud/build/strength', line)
+        self.assertIn('Program `/cloud/build/strength` sha256 `ffffffffffff`.', text)
+
+    def test_each_self_check_line_says_how_its_text_was_obtained_in_these_words(self):
+        for source, how in ((GIVEN, HOW_GIVEN), (REPLAYED, HOW_REPLAYED), ('run by strength_prereg.py', 'replayed at registration'), ('something else', 'recorded at registration'), (None, 'recorded at registration')):
+            t, text = self.page_with(source=source)
+            self.assertEqual([l for l in text.splitlines() if l.startswith('- Self-check of `kx3`')],
+                             [f'- Self-check of `kx3`: `selfcheck pilot=kx3 digest=31d638dbc818b0fa` ({how})'], source)
+        t, man, games = self.run_dir(deals=1, selfcheck_source={'kx3': GIVEN, 'km3': REPLAYED})
+        text = sr.write_slow_report(t)
+        self.assertIn(f'`selfcheck pilot=kx3 digest=31d638dbc818b0fa` ({HOW_GIVEN})', text, 'each pilot has its own source')
+        self.assertIn(f'`selfcheck pilot=km3 digest=81b572198c04d5d1` ({HOW_REPLAYED})', text)
+
+    def test_the_harness_line_says_whether_the_checkout_has_the_pinned_source(self):
+        same = '- Harness source sha256 `bf9c5d681400` (what rl/strength/build.sh prints); the checkout this run was registered from has the same.'
+        t, text = self.page_with()
+        self.assertIn(same, text.splitlines())
+        t, text = self.page_with(harness_source_checkout_sha256='0123456789abcdef' * 4)
+        self.assertIn('- Harness source sha256 `bf9c5d681400` (what rl/strength/build.sh prints); the checkout this run was registered from has `0123456789ab` '
+                      '(so the pinned binary was not built from exactly that source).', text.splitlines())
+        self.assertNotIn('has the same', text)
+        t, text = self.page_with(harness_source_sha256=None, harness_source_checkout_sha256=None)
+        self.assertNotIn('Harness source', text, 'a run registered before the source hash was recorded has no such line')
+
+    def test_the_school_morning_rule_line_says_on_with_its_days_or_off_and_that_it_was_chosen(self):
+        t, text = self.page_with(school_rule='on', school_days='mon,tue')
+        self.assertEqual([l for l in text.splitlines() if l.startswith('- School-morning rule')], ['- School-morning rule: on (mon,tue).'])
+        t, text = self.page_with(school_rule='off')
+        self.assertEqual([l for l in text.splitlines() if l.startswith('- School-morning rule')],
+                         ['- School-morning rule: off (chosen at registration, for a machine that is not the laptop).'])
+        self.assertNotIn('mon,tue,wed,thu,fri', ' '.join(self.section(text)), 'the days mean nothing with the rule off')
+        t, text = self.page_with(school_rule=None, school_days=None)
+        self.assertNotIn('School-morning', text, 'a run registered before the choice was recorded has no such line')
+
+    def test_the_school_morning_rule_line_for_a_run_with_no_school_days_and_for_a_manifest_that_does_not_say(self):
+        def rule_line(text):
+            return [l for l in text.splitlines() if l.startswith('- School-morning rule')]
+        t, text = self.page_with(school_rule='on', school_days='')
+        self.assertEqual(rule_line(text), ['- School-morning rule: on (no school days, so it never pauses).'], 'no school days is a choice, said as one')
+        t, text = self.page_with(school_rule='on', school_days=None)  # an old manifest: no days recorded
+        self.assertEqual(rule_line(text), ['- School-morning rule: on.'], 'nothing in parentheses when the manifest does not say')
+        man = json.loads(read(os.path.join(t, 'manifest.json')))
+        man['slow_report']['school_days'] = None
+        T.rewrite_manifest(t, man)
+        text = sr.write_slow_report(t)
+        self.assertEqual(rule_line(text), ['- School-morning rule: on.'], 'and the same when it says null')
+        self.assertNotIn('None', text)
+        for days in ('', None):
+            t, text = self.page_with(school_rule='off', school_days=days)
+            self.assertEqual(rule_line(text), ['- School-morning rule: off (chosen at registration, for a machine that is not the laptop).'], 'the days mean nothing with the rule off')
+
+    def test_the_harness_line_says_in_words_that_the_checkout_had_no_harness_source_and_never_prints_none(self):
+        want = ('- Harness source sha256 `bf9c5d681400` (what rl/strength/build.sh prints); the checkout this run was registered from has no harness source (rl/strength/src), '
+                'so this could not be compared.')
+        t, text = self.page_with(harness_source_checkout_sha256=None)  # the key is missing
+        pages = {'a missing hash': text}
+        man = json.loads(read(os.path.join(t, 'manifest.json')))
+        man['slow_report']['harness_source_checkout_sha256'] = None  # or null
+        T.rewrite_manifest(t, man)
+        pages['a null hash'] = sr.write_slow_report(t)
+        pages['an empty hash'] = self.page_with(harness_source_checkout_sha256='')[1]
+        for label, text in pages.items():
+            with self.subTest(label):
+                self.assertIn(want, text.splitlines())
+                self.assertNotIn('None', text)
+                self.assertNotIn('has the same', text)
+                self.assertNotIn('so the pinned binary was not built', text)
+
+    def test_the_lines_come_in_this_order_program_rebuild_self_checks_build_harness_school_deck_registration(self):
+        t, text = self.page_with(program_route='rebuilt', school_rule='off', source=REPLAYED)
+        sec = self.section(text)
+        starts = ('- Pilots:', '- The program is a REBUILD', '- Self-check of `kx3`', '- Self-check of `km3`', '- Build:', '- Harness source', '- School-morning rule',
+                  '- Deck file', '- Registered', '- 1 deal')
+        self.assertEqual([next(i for i, l in enumerate(sec) if l.startswith(s)) for s in starts], list(range(len(starts))))
+
+
+class WhatWasRunEndToEnd(T.World):
+    """The facts the page prints are the ones the registration wrote: a real registration (the fake program, a synthetic repository with harness source) and the page
+    read back. The rebuilt route takes `--program` and replays both self-checks, which the fake program answers the way the pin says."""
+    FAKE_CHECKS = {'kx3': 'selfcheck pilot=kx3 games=12 digest=fakefakefakefake', 'km3': 'selfcheck pilot=km3 games=12 digest=fakefakefakefake'}
+
+    def with_harness_source(self):
+        for name, text in (('src/main.rs', 'fn main() {}\n'), ('src/lib.rs', '// lib\n'), ('Cargo.toml', '[package]\nname = "x"\n')):
+            write(os.path.join(self.repo, 'rl', 'strength', *name.split('/')), text)
+        return sr.harness_source_sha256(self.repo)
+
+    def set_pin(self, **kw):
+        pin = json.loads(read(self.pin_path))
+        pin.update(kw)
+        write(self.pin_path, json.dumps(pin))
+        return pin
+
+    def page(self):
+        return read(os.path.join(self.rundir(), 'SLOW_REPORT.md'))
+
+    def test_the_pinned_program_has_no_rebuild_paragraph_and_its_self_checks_were_copied_from_the_pin(self):
+        here = self.with_harness_source()
+        self.set_pin(harness_source_sha256=here)
+        code, out, err = self.cli('--deals', '1')
+        self.assertEqual(code, 0, out + err)
+        lines = self.page().splitlines()
+        self.assertNotIn('REBUILD', '\n'.join(lines))
+        self.assertEqual(sum(1 for l in lines if l.startswith('- Self-check of') and f'({HOW_GIVEN})' in l), 2, lines)
+        self.assertIn(f'- Harness source sha256 `{here[:12]}` (what rl/strength/build.sh prints); the checkout this run was registered from has the same.', lines)
+        self.assertIn('- School-morning rule: off (chosen at registration, for a machine that is not the laptop).', lines)
+        self.assertIn(f"- Pilots: kx3 (d513e37b) on the deck, km3 on the public panel. Program `{self.program}` sha256 `{self.pin['program_sha256'][:12]}`.", lines)
+
+    def test_a_checkout_that_is_not_the_pinned_source_is_said_so_on_the_page_of_a_pinned_run(self):
+        here = self.with_harness_source()
+        self.set_pin(harness_source_sha256='9' * 64)
+        code, out, err = self.cli('--deals', '1')
+        self.assertEqual(code, 0, out + err)
+        self.assertIn(f'- Harness source sha256 `999999999999` (what rl/strength/build.sh prints); the checkout this run was registered from has `{here[:12]}` '
+                      '(so the pinned binary was not built from exactly that source).', self.page().splitlines())
+
+    def test_a_checkout_with_no_harness_source_is_said_so_on_the_page_of_a_pinned_run(self):
+        self.assertIsNone(sr.harness_source_sha256(self.repo), 'the fixture\'s checkout has no rl/strength/src')
+        code, out, err = self.cli('--deals', '1')
+        self.assertEqual(code, 0, out + err)
+        self.assertIn(f"- Harness source sha256 `{self.pin['harness_source_sha256'][:12]}` (what rl/strength/build.sh prints); the checkout this run was registered from has no harness source "
+                      '(rl/strength/src), so this could not be compared.', self.page().splitlines())
+        self.assertNotIn('None', ' '.join(l for l in self.page().splitlines() if 'Harness source' in l))
+
+    def test_a_replayed_self_check_on_the_pinned_program_is_said_to_be_replayed(self):
+        here = self.with_harness_source()
+        self.set_pin(harness_source_sha256=here, selfcheck=self.FAKE_CHECKS)
+        code, out, err = self.cli('--deals', '1', '--selfcheck')
+        self.assertEqual(code, 0, out + err)
+        lines = self.page().splitlines()
+        self.assertEqual(sum(1 for l in lines if l.startswith('- Self-check of') and f'({HOW_REPLAYED})' in l), 2, lines)
+        self.assertNotIn('REBUILD', '\n'.join(lines), 'replaying the self-checks on the pinned binary does not make it a rebuild')
+
+    def test_the_school_morning_choice_on_the_page_is_the_one_registered_with_its_days(self):
+        code, out, err = self.cli('--deals', '1', school='on')
+        self.assertEqual(code, 0, out + err)
+        self.assertIn('- School-morning rule: on (mon,tue,wed,thu,fri).', self.page().splitlines())
+        shutil.rmtree(self.out_root)
+        code, out, err = self.cli('--deals', '1', '--school-days', 'mon,tue', school='on')  # (the fixture's clock is a Saturday: no wait)
+        self.assertEqual(code, 0, out + err)
+        self.assertIn('- School-morning rule: on (mon,tue).', self.page().splitlines())
+        shutil.rmtree(self.out_root)
+        code, out, err = self.cli('--deals', '1', school='off')
+        self.assertEqual(code, 0, out + err)
+        self.assertIn('- School-morning rule: off (chosen at registration, for a machine that is not the laptop).', self.page().splitlines())
+
+    def test_a_rebuild_is_named_as_one_with_both_self_checks_replayed_and_the_program_it_ran(self):
+        here = self.with_harness_source()
+        pin = self.set_pin(program='/cloud/pinned/strength', program_sha256='5' * 64, harness_source_sha256=here, selfcheck=self.FAKE_CHECKS)
+        code, out, err = self.cli('--deals', '1', '--program', self.program)
+        self.assertEqual(code, 0, out + err)
+        lines = self.page().splitlines()
+        self.assertIn(f"- Pilots: kx3 (d513e37b) on the deck, km3 on the public panel. Program `{self.program}` sha256 `{T.sha(self.program)[:12]}`.", lines)
+        self.assertIn("- The program is a REBUILD of the pinned source, not the pinned binary (`/cloud/pinned/strength`, sha256 `555555555555`): it was accepted only because both "
+                      "self-checks were replayed on this machine and equal the committed pin's digests, and the harness source in the checkout is the pinned build's.", lines)
+        self.assertEqual(sum(1 for l in lines if l.startswith('- Self-check of') and f'({HOW_REPLAYED})' in l), 2, lines)
+        self.assertIn(f'- Harness source sha256 `{here[:12]}` (what rl/strength/build.sh prints); the checkout this run was registered from has the same.', lines)
+        self.assertNotIn(pin['program'], '\n'.join(l for l in lines if l.startswith('- Pilots')))
+
+
 class HeldOutRunEndToEnd(T.LiveWorld):
     """With the real registry and copies of the real lists (LiveWorld): the synthetic registry of World holds made-up held-out decks, which the real held-out deck is not."""
 
@@ -928,20 +1378,31 @@ class ConsoleEcho(Pages):
         self.assertTrue(lines[1].startswith('Size: 32 kx3 games + 32 cheap km3 baseline games ('), lines[1])
         self.assertTrue(lines[2].startswith(f'my-list scored {pc(p)} over 32 games (2 deals x 2 seats against each of the 8 public lists): probably between {pc(lo)} and {pc(hi)} ('), lines[2])
         self.assertTrue(lines[3].startswith('On the same deals, kx3 scored +'), lines[3])
-        self.assertTrue(lines[4].startswith('That range runs from '), lines[4])
+        self.assertTrue(lines[4].startswith('That range includes no gain at all') or lines[4].startswith('That range does not include no gain'), lines[4])
         for l in lines:
             self.assertNotIn('**', l)
             self.assertNotIn('`', l)
             self.assertFalse(l.startswith(('#', '|', '- ')), l)
 
-    def test_a_partial_page_starts_with_its_banner_and_echoes_nothing_from_the_tables(self):
+    def test_a_partial_page_starts_with_its_question_then_its_banner_and_echoes_nothing_from_the_tables(self):
         t, man, games = self.run_dir(deals=2)
         lines = sr.console_lines(self.rewrite(t, games[:37]))
-        self.assertEqual(lines[0], 'PARTIAL: 37 of 64 games played so far (18 kx3 games + 19 cheap km3 baseline games; both count in the 64). '
-                                   'The numbers below will move; read them as a snapshot.')
-        self.assertTrue(lines[1].startswith('Question: '))
+        self.assertEqual(lines[0], PAGE_QUESTION)
+        self.assertEqual(lines[1], banner('18 kx3 games + 19 cheap km3 baseline games', 37).replace('**', ''))
+        self.assertTrue(lines[2].startswith('Size: 18 kx3 games + 19 cheap km3 baseline games so far, of 32 kx3 games'), lines[2])
         self.assertEqual(len(lines), 6, lines)
         self.assertEqual([l for l in lines if l.startswith('|') or 'When my-list' in l or 'took' in l], [])
+
+    def test_the_terminal_gets_exactly_the_lines_of_what_it_says_and_nothing_else(self):
+        """console_lines is the lines of the section '## What it says' (the sub-heading dropped, markdown removed), whole or partial, with an error note or without."""
+        k2 = 'my-list|t-altaria|0|0|X'
+        for kw, keep in ((dict(), 64), (dict(paired=False), 64), (dict(), 37), (dict(paired=False), 37), (dict(errors=[(k2, 'x')]), 37)):
+            t, man, games = self.run_dir(deals=2, **kw)
+            text = self.rewrite(t, [g for g in games[:keep] if g['key'] != k2] if 'errors' in kw else games[:keep])
+            sec = self.part(text, '## What it says')
+            want = [l.replace('**', '').replace('`', '').strip() for l in sec.splitlines() if l.strip() and not l.startswith('#')]
+            self.assertEqual(sr.console_lines(text), want, (kw, keep))
+        self.assertEqual(sr.console_lines('# no such section\n\nonly text\n'), [])
 
     def test_a_run_that_stops_early_writes_the_partial_page_and_says_so(self):
         t, man, games = self.run_dir(deals=2, complete=False)
@@ -952,7 +1413,7 @@ class ConsoleEcho(Pages):
         with mock.patch.object(sr, 'REPORT', quiet):
             sr.best_effort_pages(t, said.append)
         self.assertEqual(said, ['SLOW_REPORT.md (partial) written before stopping'])
-        self.assertIn('**PARTIAL: 32 of 64 games played so far (16 kx3 games + 16 cheap km3 baseline games; both count in the 64).', read(os.path.join(t, 'SLOW_REPORT.md')))
+        self.assertIn(banner('16 kx3 games + 16 cheap km3 baseline games', 32), read(os.path.join(t, 'SLOW_REPORT.md')).splitlines())
 
     def test_when_even_the_partial_page_cannot_be_written_it_says_why_and_does_not_raise(self):
         empty = tempfile.mkdtemp()
@@ -1042,41 +1503,198 @@ class WhatTheTerminalSays(T.World):
         self.assertTrue(all(l.startswith(TAG) for l in out.splitlines()))
         lines = [l[len(TAG):] for l in out.splitlines()]
         page = read(os.path.join(d, 'SLOW_REPORT.md'))
-        self.assertEqual(len(lines), 9 + len(sr.console_lines(page)), lines)
-        self.assertTrue(lines[0].startswith('plan: my-list ('))
-        self.assertTrue(lines[1].startswith('size: 16 kx3 games + 16 cheap km3 baseline games on the same deals (32 games in all; the km3 games take about a second each); '
-                                            'the time is for the 16 kx3 games: about '), lines[1])
-        self.assertTrue(lines[2].startswith('on school days the run pauses from 5:15 am to 5 pm'))
-        self.assertTrue(lines[3].startswith('stage use (not development evidence; the held-out lock is untouched), seeds from '))
-        self.assertTrue(lines[3].endswith(', with the comparison with km3 on the same deals in the page, no pass or fail line'), lines[3])
-        self.assertEqual(lines[4], f'pre-registered 32 games (8 pairs, 1 deal x 2 seats x 2 arms) in {d}', 'one deal is "1 deal", not "1 deals"')
-        self.assertRegex(lines[5], r'^manifest sha256 [0-9a-f]{64}$')
-        self.assertEqual(lines[6:9], [f'registered in {d} before any game', 'running: 32 games to go, 2 at a time', f'SLOW_REPORT.md written in {d}'])
-        self.assertEqual(lines[9:], sr.console_lines(page))
+        self.assertEqual(len(lines), 10 + len(sr.console_lines(page)), lines)
+        self.assertEqual(lines[0], PlanLines.QUESTION, 'the question is the very first line a new run prints')
+        self.assertTrue(lines[1].startswith('plan: my-list ('))
+        self.assertTrue(lines[2].startswith('size: 16 kx3 games + 16 cheap km3 baseline games on the same deals (32 games in all; the km3 games take about a second each); '
+                                            'the time is for the 16 kx3 games: about '), lines[2])
+        self.assertEqual(lines[3], PlanLines.SCHOOL_OFF, 'the fixture registers with the rule off')
+        self.assertTrue(lines[4].startswith('stage use (not development evidence; the held-out lock is untouched), seeds from '))
+        self.assertTrue(lines[4].endswith(', with the comparison with km3 on the same deals in the page, no pass or fail line'), lines[4])
+        self.assertEqual(lines[5], f'pre-registered 32 games (8 pairs, 1 deal x 2 seats x 2 arms) in {d}', 'one deal is "1 deal", not "1 deals"')
+        self.assertRegex(lines[6], r'^manifest sha256 [0-9a-f]{64}$')
+        self.assertEqual(lines[7:10], [f'registered in {d} before any game', 'running: 32 games to go, 2 at a time', f'SLOW_REPORT.md written in {d}'])
+        self.assertEqual(lines[10:], sr.console_lines(page))
+        self.assertEqual(lines[10], PAGE_QUESTION, 'and the page it wrote starts with its question again')
 
-    def test_where_a_cut_run_stands_says_how_many_games_are_played_and_how_to_resume(self):
+    def test_where_a_cut_run_stands_says_the_question_then_how_many_games_of_each_pilot_are_played_and_how_to_resume(self):
         outs, pages = self.session()
         self.assertEqual(outs['where the run stands'].splitlines(),
-                         [TAG + f'10 of 64 games played; 54 games to go (resume with: python3 rl/strength/slow_report.py --dir {self.rundir()})', TAG + 'dry run: nothing written'])
+                         [TAG + PlanLines.QUESTION,
+                          TAG + 'played so far: 5 kx3 games + 5 cheap km3 baseline games of 32 kx3 games + 32 cheap km3 baseline games planned; '
+                                '27 kx3 games + 27 cheap km3 baseline games to go '
+                                f'(resume with: python3 rl/strength/slow_report.py --dir {self.rundir()} --school-rule off)',
+                          TAG + 'dry run: nothing written'])
 
-    def test_a_cut_run_echoes_its_banner_and_a_finished_one_echoes_the_page_it_wrote(self):
+    def test_a_cut_run_echoes_its_question_and_its_banner_and_a_finished_one_echoes_the_page_it_wrote(self):
         outs, pages = self.session()
         cut = outs['a registration and the first games'].splitlines()
-        self.assertIn(TAG + 'PARTIAL: 10 of 64 games played so far (5 kx3 games + 5 cheap km3 baseline games; both count in the 64). '
-                            'The numbers below will move; read them as a snapshot.', cut)
+        self.assertIn(TAG + banner('5 kx3 games + 5 cheap km3 baseline games', 10).replace('**', ''), cut)
+        self.assertLess(cut.index(TAG + PAGE_QUESTION), cut.index(TAG + banner('5 kx3 games + 5 cheap km3 baseline games', 10).replace('**', '')))
         self.assertIn(TAG + f'pre-registered 64 games (8 pairs, 2 deals x 2 seats x 2 arms) in {self.rundir()}', cut)
         done = outs['the rest of the games'].splitlines()
         tail = done[done.index(TAG + f'SLOW_REPORT.md written in {self.rundir()}') + 1:]
         self.assertEqual(tail, [TAG + l for l in sr.console_lines(pages['the rest of the games'])])
-        self.assertTrue(tail[0].startswith(TAG + 'Question: how does my-list do when kx3 plays it against the 8 public lists, and is that better than when km3'), tail[0])
+        self.assertEqual(tail[0], TAG + PAGE_QUESTION)
         self.assertNotIn('PARTIAL', outs['the rest of the games'])
+
+
+class PlayItWith(T.World):
+    """`--register-only` ends by saying how to play what it registered: the resume command of the registration (carrying the school-morning choice, quoted for the shell), and that
+    --max-games plays it in slices."""
+    CASES = [  # (--school-rule given, other options), what the command adds
+        (('off', ()), ' --school-rule off'),
+        ((None, ()), ''),
+        (('on', ('--school-days', 'sat,sun')), ' --school-days sat,sun'),
+        (('on', ('--school-days', '')), " --school-days ''"),
+        (('on', ('--school-days', 'mon, tue')), " --school-days 'mon, tue'"),
+    ]
+
+    def last_lines(self, school, extra):
+        code, out, err = self.cli('--deals', '1', '--register-only', *extra, school=school)
+        self.assertEqual(code, 0, out + err)
+        return out.splitlines()
+
+    def test_a_registration_only_ends_with_the_command_that_plays_it_with_the_school_choice_in_it(self):
+        for (school, extra), added in self.CASES:
+            with self.subTest(school=school, extra=extra):
+                self.make()
+                lines = self.last_lines(school, extra)
+                d = self.rundir()
+                self.assertEqual(lines[-2:], [TAG + f'registered in {d} before any game',
+                                              TAG + f'play it with: python3 rl/strength/slow_report.py --dir {d}{added} (add --max-games N to play in slices)'])
+                self.assertEqual(sum(1 for l in lines if 'play it with' in l), 1)
+                command = lines[-1][len(TAG + 'play it with: '):-len(' (add --max-games N to play in slices)')]
+                self.assertEqual(command, json.loads(read(os.path.join(d, 'manifest.json')))['slow_report']['resume_command'], 'the registered command, word for word')
+
+    def test_the_folder_of_a_registration_is_quoted_for_the_shell_in_that_line(self):
+        self.out_root = os.path.join(self.tmp, 'results with a space')
+        lines = self.last_lines('off', ())
+        d = self.rundir()
+        self.assertEqual(lines[-1], TAG + f"play it with: python3 rl/strength/slow_report.py --dir {shlex.quote(d)} --school-rule off (add --max-games N to play in slices)")
+        self.assertTrue(shlex.quote(d).startswith("'"), 'the path really needed quoting')
+
+    def test_a_registration_without_a_recorded_command_is_given_one_made_from_the_choice_it_registered(self):
+        real = sr.build_config
+        with mock.patch.object(sr, 'build_config', lambda **kw: real(**dict(kw, resume_command=None))):
+            lines = self.last_lines('off', ())
+        d = self.rundir()
+        self.assertIsNone(json.loads(read(os.path.join(d, 'manifest.json')))['slow_report']['resume_command'])
+        self.assertEqual(lines[-1], TAG + f'play it with: python3 rl/strength/slow_report.py --dir {d} --school-rule off (add --max-games N to play in slices)')
+
+    def test_only_a_registration_that_stops_there_says_how_to_play_it(self):
+        for label, extra in (('a plan', ('--dry-run',)), ('a run', ()), ('a run in slices', ('--max-games', '3'))):
+            with self.subTest(label):
+                self.make()
+                code, out, err = self.cli('--deals', '1', *extra)
+                self.assertEqual(code, 0, out + err)
+                self.assertNotIn('play it with', out)
+        d = self.rundir()
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertNotIn('play it with', out)
+
+
+class WhereARunStands(T.World):
+    """`--dir RUNDIR --dry-run`: the question, then how many games of each pilot are played against what was planned, how many are left, and what a resume would do."""
+    RESUME = 'python3 rl/strength/slow_report.py --dir {d} --school-rule off'
+
+    def stands(self, d):
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False, school=None)
+        self.assertEqual(code, 0, out + err)
+        lines = out.splitlines()
+        for l in lines:
+            self.assertTrue(l.startswith(TAG), l)
+        self.assertEqual(lines[-1], TAG + 'dry run: nothing written')
+        return [l[len(TAG):] for l in lines[:-1]]
+
+    def played_so_far(self, played, to_go, status, planned='16 kx3 games + 16 cheap km3 baseline games'):
+        return f'played so far: {played} of {planned} planned; {to_go} to go ({status})'
+
+    def test_before_any_game_it_says_the_question_then_nothing_played_and_everything_to_go(self):
+        d = self.register()
+        self.assertEqual(self.stands(d), [PlanLines.QUESTION, self.played_so_far('0 kx3 games + 0 cheap km3 baseline games', '16 kx3 games + 16 cheap km3 baseline games',
+                                                                                  'resume with: ' + self.RESUME.format(d=d))])
+
+    def test_each_pilots_games_are_counted_by_themselves_and_singular_at_one(self):
+        d = self.register()
+        code, out, err = self.cli('--dir', d, '--max-games', '3', deck=False)  # the program plays a km3 game, then the kx3 game of that deal and seat, then the next km3 game
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(self.stands(d), [PlanLines.QUESTION, self.played_so_far('1 kx3 game + 2 cheap km3 baseline games', '15 kx3 games + 14 cheap km3 baseline games',
+                                                                                  'resume with: ' + self.RESUME.format(d=d))])
+        code, out, err = self.cli('--dir', d, '--max-games', '28', deck=False)  # 31 in all: all 16 km3 games and 15 of the kx3 games
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(self.stands(d), [PlanLines.QUESTION, self.played_so_far('15 kx3 games + 16 cheap km3 baseline games', '1 kx3 game + 0 cheap km3 baseline games',
+                                                                                  'resume with: ' + self.RESUME.format(d=d))])
+
+    def test_a_finished_run_says_complete_and_nothing_to_go(self):
+        d = self.register()
+        self.assertEqual(self.cli('--dir', d, deck=False)[0], 0)
+        self.assertEqual(self.stands(d), [PlanLines.QUESTION, self.played_so_far('16 kx3 games + 16 cheap km3 baseline games', '0 kx3 games + 0 cheap km3 baseline games', 'complete')])
+
+    def test_all_the_kx3_games_without_the_baseline_games_is_not_complete(self):
+        """Complete is every planned game of both pilots: the cheap km3 games are in the plan whether or not the page reports the comparison."""
+        d = self.register()
+        self.assertEqual(self.cli('--dir', d, deck=False)[0], 0)
+        games = os.path.join(d, 'games.jsonl')
+        kept = [l for l in read(games).splitlines() if json.loads(l)['arm'] == 'X']
+        self.assertEqual(len(kept), 16)
+        write(games, ''.join(l + '\n' for l in kept))
+        self.assertEqual(self.stands(d), [PlanLines.QUESTION, self.played_so_far('16 kx3 games + 0 cheap km3 baseline games', '0 kx3 games + 16 cheap km3 baseline games',
+                                                                                  'resume with: ' + self.RESUME.format(d=d))])
+
+    def test_a_run_whose_inputs_changed_says_it_would_be_refused_and_why_instead_of_how_to_resume(self):
+        d = self.register()
+        write(self.deck, T.DECK_TEXT + '\n')
+        lines = self.stands(d)
+        self.assertEqual(lines[0], PlanLines.QUESTION)
+        self.assertTrue(lines[1].startswith('played so far: 0 kx3 games + 0 cheap km3 baseline games of 16 kx3 games + 16 cheap km3 baseline games planned; '
+                                            '16 kx3 games + 16 cheap km3 baseline games to go (it would be refused: my-list ('), lines[1])
+        self.assertIn(') has changed since registration (sha256 ', lines[1])
+        self.assertNotIn('resume with', lines[1])
+
+    def test_a_run_registered_without_the_comparison_asks_the_shorter_question_and_still_counts_both_pilots(self):
+        shutil.rmtree(self.out_root, ignore_errors=True)
+        code, out, err = self.cli('--deals', '1', '--no-paired', '--register-only')
+        self.assertEqual(code, 0, out + err)
+        d = self.rundir()
+        self.assertEqual(self.stands(d), [PlanLines.QUESTION_ALONE, self.played_so_far('0 kx3 games + 0 cheap km3 baseline games', '16 kx3 games + 16 cheap km3 baseline games',
+                                                                                        'resume with: ' + self.RESUME.format(d=d))])
+
+    def test_the_question_names_the_pilots_the_run_was_registered_with_not_the_pins_today(self):
+        d = self.register()
+        pin = json.loads(read(self.pin_path))
+        pin.update(pilot='kz9', reference='kr1', pilot_label='kz9 (abc)', reference_label='kr1 (def)')
+        write(self.pin_path, json.dumps(pin))
+        lines = self.stands(d)
+        self.assertEqual(lines[0], PlanLines.QUESTION)
+        self.assertTrue(lines[1].startswith('played so far: 0 kx3 games + 0 cheap km3 baseline games of 16 kx3 games'), lines[1])
+
+    def test_the_resume_command_is_the_registered_one_so_a_default_school_rule_adds_no_flag(self):
+        shutil.rmtree(self.out_root, ignore_errors=True)
+        code, out, err = self.cli('--deals', '1', '--register-only', school='on')
+        self.assertEqual(code, 0, out + err)
+        d = self.rundir()
+        self.assertTrue(self.stands(d)[1].endswith(f'(resume with: python3 rl/strength/slow_report.py --dir {d})'))
 
 
 class ConsoleMessages(T.World):
     def test_a_run_cut_by_max_games_says_how_to_resume(self):
         code, out, err = self.cli('--deals', '2', '--max-games', '10')
         self.assertEqual(code, 0, out + err)
-        self.assertEqual(out.splitlines().count(f'{TAG}stopped after --max-games 10; resume with --dir {self.rundir()}'), 1)
+        self.assertEqual(out.splitlines().count(f'{TAG}stopped after --max-games 10; resume with: python3 rl/strength/slow_report.py --dir {self.rundir()} --school-rule off'), 1)
+
+    def test_a_run_cut_by_max_games_says_the_command_it_registered_with_the_school_choice_in_it(self):
+        """The line is the registered resume command (the same as the dry run of the folder prints), not a made-up one: the school-morning choice is in it only when it was not the default."""
+        code, out, err = self.cli('--deals', '2', '--max-games', '10', school='on')
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(out.splitlines().count(f'{TAG}stopped after --max-games 10; resume with: python3 rl/strength/slow_report.py --dir {self.rundir()}'), 1, out)
+        code, out, err = self.cli('--dir', self.rundir(), '--dry-run', deck=False, school=None)
+        self.assertEqual(code, 0, out + err)
+        self.assertIn(f'(resume with: python3 rl/strength/slow_report.py --dir {self.rundir()})', out)
+        shutil.rmtree(self.out_root)
+        code, out, err = self.cli('--deals', '2', '--max-games', '10', '--school-days', 'mon,tue', school='on')  # (the fixture's clock is a Saturday: no wait)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(out.splitlines().count(f'{TAG}stopped after --max-games 10; resume with: python3 rl/strength/slow_report.py --dir {self.rundir()} --school-days mon,tue'), 1, out)
 
     def test_a_run_folder_with_a_space_in_its_path_is_quoted_in_the_line_that_says_how_to_resume(self):
         self.out_root = os.path.join(self.repo, 'rl', 'results', 'slow reports')
@@ -1084,7 +1702,7 @@ class ConsoleMessages(T.World):
         self.assertEqual(code, 0, out + err)
         folder = self.rundir()
         self.assertIn(' ', folder)
-        self.assertEqual(out.splitlines().count(f"{TAG}stopped after --max-games 10; resume with --dir '{folder}'"), 1, out)
+        self.assertEqual(out.splitlines().count(f"{TAG}stopped after --max-games 10; resume with: python3 rl/strength/slow_report.py --dir '{folder}' --school-rule off"), 1, out)
         self.assertNotIn(f'--dir {folder}', out)
 
     def test_a_run_that_finishes_never_says_it_stopped_after_max_games(self):
@@ -1138,16 +1756,33 @@ class LogEvents(T.World):
             sr._LOG_EXTRA.update(saved)
         self.addCleanup(restore)
 
+    def events(self, d=None):
+        return jsonl(os.path.join(d or self.rundir(), 'slow_report_log.jsonl'))
+
+    def names(self, d=None, skip=('env_scrubbed',)):
+        return [e['event'] for e in self.events(d) if e['event'] not in skip]
+
+    def sitting_calls(self, d=None):
+        return [e for e in self.events(d) if e['event'] == 'sitting_call']
+
+    @staticmethod
+    def asked_for(call):
+        """What a sitting_call event says about the call, in this order: the school-morning rule and days, the threads, the game limit, whether the school choice was overridden."""
+        return (call['school_rule'], call['school_days'], call['threads'], call['max_games'], call['school_choice_overridden'])
+
     def test_a_full_run_logs_each_step_in_order_with_both_pilots_and_a_utc_time(self):
         code, out, err = self.cli('--deals', '1')
         self.assertEqual(code, 0, out + err)
         d = self.rundir()
         events = jsonl(os.path.join(d, 'slow_report_log.jsonl'))
-        self.assertEqual([e['event'] for e in events if e['event'] != 'env_scrubbed'], ['registered', 'slice_start', 'slice_end', 'complete', 'report_written'])
+        self.assertEqual([e['event'] for e in events if e['event'] != 'env_scrubbed'], ['registered', 'sitting_call', 'slice_start', 'slice_end', 'complete', 'report_written'])
         for e in events:
             self.assertEqual((e['pilot'], e['reference']), ('kx3', 'km3'), e)
             self.assertRegex(e['at'], r'^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$')
         by = {e['event']: e for e in events}
+        self.assertEqual({k: v for k, v in by['sitting_call'].items() if k != 'at'},
+                         {'event': 'sitting_call', 'pilot': 'kx3', 'reference': 'km3', 'school_rule': 'off', 'school_days': 'mon,tue,wed,thu,fri', 'threads': 2, 'max_games': None,
+                          'school_choice_overridden': False}, 'what the call was given and nothing else')
         man = json.loads(read(os.path.join(d, 'manifest.json')))
         reg = by['registered']
         self.assertEqual((reg['deals'], reg['paired'], reg['threads'], reg['deck_file'], reg['deck_sha256'], reg['seed_base'], reg['manifest_sha256']),
@@ -1161,6 +1796,77 @@ class LogEvents(T.World):
         self.assertEqual(self.cli('--deals', '1', '--no-paired', '--register-only')[0], 0)
         reg = [e for e in jsonl(os.path.join(self.rundir(), 'slow_report_log.jsonl')) if e['event'] == 'registered']
         self.assertEqual([e['paired'] for e in reg], [False])
+
+    def test_each_call_that_plays_logs_one_sitting_call_before_its_sittings_saying_what_it_was_given(self):
+        d = self.register('--threads', '3', '--school-days', 'mon,tue', school='on')  # (the fixture's clock is a Saturday: no school wait)
+        self.assertEqual(self.names(d), ['registered'], 'registering alone plays nothing and logs no sitting')
+        calls = (('plain, with a limit', ('--max-games', '4'), None, ('on', 'mon,tue', 3, 4, False)),
+                 ('other threads and the rule off', ('--max-games', '4', '--threads', '5'), 'off', ('off', 'mon,tue', 5, 4, True)),
+                 ('no school days', ('--max-games', '4', '--school-days', ''), None, ('on', '', 3, 4, True)),
+                 ('the registered rule spelled out', ('--max-games', '4'), 'on', ('on', 'mon,tue', 3, 4, True)),
+                 ('plain, to the end', (), None, ('on', 'mon,tue', 3, None, False)))
+        for label, extra, school, want in calls:
+            with self.subTest(label):
+                code, out, err = self.cli('--dir', d, *extra, deck=False, school=school)
+                self.assertEqual(code, 0, out + err)
+                self.assertEqual(self.asked_for(self.sitting_calls(d)[-1]), want)
+        self.assertEqual([self.asked_for(c) for c in self.sitting_calls(d)], [c[3] for c in calls])
+        self.assertEqual(self.names(d, skip=('env_scrubbed', 'report_written')),
+                         ['registered'] + ['sitting_call', 'slice_start', 'slice_end'] * 5 + ['complete'], 'one per call, each before the sitting it asks for')
+
+    def test_the_options_of_a_registration_that_goes_on_to_play_are_its_choice_and_not_an_override(self):
+        code, out, err = self.cli('--deals', '1', '--threads', '3', '--max-games', '5', '--school-days', 'mon,tue', school='on')
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(self.names(), ['registered', 'sitting_call', 'slice_start', 'slice_end', 'report_written'])
+        self.assertEqual([self.asked_for(c) for c in self.sitting_calls()], [('on', 'mon,tue', 3, 5, False)])
+
+    def test_a_call_that_finds_nothing_left_to_play_still_logs_the_sitting_call_before_complete(self):
+        self.assertEqual(self.cli('--deals', '1')[0], 0)
+        d = self.rundir()
+        code, out, err = self.cli('--dir', d, deck=False)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(self.names(d, skip=('env_scrubbed', 'report_written'))[-2:], ['sitting_call', 'complete'])
+        self.assertEqual(len(self.sitting_calls(d)), 2)
+
+    def test_no_sitting_call_is_logged_by_a_call_that_plays_nothing_or_is_refused_before_it_may_play(self):
+        d = self.register()
+        for extra in (('--dry-run',), ('--report-only',)):
+            self.assertEqual(self.cli('--dir', d, *extra, deck=False)[0], 0, extra)
+        self.assertEqual(self.names(d), ['registered', 'report_written'], 'only the page was written')
+        original = read(self.deck)
+        write(self.deck, original + '\n')  # the deck is no longer the registered one: refused before the lock
+        code, out, err = self.cli('--dir', d, deck=False)
+        self.assertIn('REFUSED: the files this run was registered with are not the ones on disk', str(code))
+        write(self.deck, original)
+        lock = os.path.join(d, 'slow_report.lock')
+        fd = os.open(lock, os.O_CREAT | os.O_RDWR)  # another wrapper holds the run
+        self.addCleanup(os.close, fd)
+        fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        code, out, err = self.cli('--dir', d, deck=False)
+        self.assertIn('REFUSED: another slow_report.py', str(code))
+        self.assertEqual(self.names(d), ['registered', 'report_written'], 'the call that was refused the lock logged no sitting')
+        self.assertEqual(self.sitting_calls(d), [])
+
+    def test_the_sitting_call_is_logged_with_the_lock_already_held_and_before_the_first_sitting(self):
+        d = self.register()
+        seen = []
+        real = sr.log_event
+
+        def spy(rundir, event, **kw):
+            if event in ('sitting_call', 'slice_start'):
+                probe = os.open(os.path.join(rundir, 'slow_report.lock'), os.O_RDWR)
+                try:
+                    fcntl.flock(probe, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    held = False
+                except BlockingIOError:
+                    held = True
+                finally:
+                    os.close(probe)
+                seen.append((event, held))
+            return real(rundir, event, **kw)
+        with mock.patch.object(sr, 'log_event', spy):
+            self.assertEqual(self.cli('--dir', d, '--max-games', '2', deck=False)[0], 0)
+        self.assertEqual(seen, [('sitting_call', True), ('slice_start', True)])
 
 
 def children_of(pid):
@@ -1200,7 +1906,8 @@ class LinesComeAsTheyAreSaid(T.World):
             self.assertIn(b'running: 32 games to go', got, 'the lines of a run that is still going must already be on the terminal')
             self.assertIsNone(proc.poll(), 'the wrapper is still running, waiting for the program')
             lines = got.decode('utf-8').splitlines()
-            self.assertTrue(lines[0].startswith(TAG + 'plan: my-list ('), lines)
+            self.assertEqual(lines[0], TAG + PlanLines.QUESTION, lines)
+            self.assertTrue(lines[1].startswith(TAG + 'plan: my-list ('), lines)
             self.assertIn(TAG + 'running: 32 games to go, 2 at a time', lines)
         finally:
             proc.terminate()  # SIGTERM: the wrapper stops the program, writes the partial page and exits
@@ -1256,17 +1963,18 @@ class ExistingRuns(TE.Sources):
         write(os.path.join(d, 'manifest.json'), json.dumps(man, indent=1))
         write(os.path.join(d, 'manifest.sha256'), T.sha(os.path.join(d, 'manifest.json')) + '  manifest.json\n')
 
-    def build(self, win_x=None, win_ref=None, dev=None, tool=None):
-        """dev(rows) and tool(rows) edit the game records of that run before they are written; the gate-3 run is made from the edited development games."""
+    def build(self, win_x=None, win_ref=None, dev=None, tool=None, dev_decks=(TE.DECK, TE.OTHER), tool_decks=(TE.DECK,)):
+        """dev(rows) and tool(rows) edit the game records of that run before they are written (in place: rows[:] = ... may drop games); the gate-3 run is made from the
+        edited development games. dev_decks and tool_decks are the decks each run holds (the gate-3 run's decks are among the development run's)."""
         with mock.patch.object(TE, 'win_x', win_x or TE.win_x), mock.patch.object(TE, 'win_ref', win_ref or TE.win_ref):
-            self.dev, _ = TE.make_run(self.tmp, 'strength_dev', pilot='kx3')
+            self.dev, _ = TE.make_run(self.tmp, 'strength_dev', pilot='kx3', decks=dev_decks)
         rows = self.rows(self.dev)
         if dev:
             dev(rows)
             self.put_rows(self.dev, rows)
         self.dev_games = {r['key']: r for r in rows}
         self.tool, _ = TE.make_run(self.tmp, 'strength_tool', pilot='kx3_r16_c12_z2_real_t0_poolmeta_tools', program='/home/dacz8976/kx/strength_tools',
-                                   program_sha='cf73b2a4e858' + '0' * 52, decks=(TE.DECK,), base=self.dev_games)
+                                   program_sha='cf73b2a4e858' + '0' * 52, decks=tool_decks, base=self.dev_games)
         rows = self.rows(self.tool)
         if tool:
             tool(rows)
@@ -1293,15 +2001,14 @@ class ExistingGainRange(ExistingRuns):
         p, lo, hi = wilson95(xs)
         n, m, sd, half = self.stats(self.gain_over_km3())
         glo, ghi = m - half, m + half
-        run = f"That range runs from {points(glo)} to {points(ghi)} points, which "
         if glo <= 0 <= ghi:
-            note = (run + f'includes no gain at all: these {n} paired games do not show that kx3 plays this deck better than km3, and do not show that it plays it worse. '
-                          f'They do argue against a gain much larger than {100 * ghi:.1f} points or a loss much larger than {100 * abs(glo):.1f} points; a smaller difference needs more deals. ')
+            note = (f'That range includes no gain at all: these {n} paired games do not show that kx3 plays this deck better than km3, and do not show that it plays it worse. '
+                    f'They do argue against a gain much larger than {100 * ghi:.1f} points or a loss much larger than {100 * abs(glo):.1f} points; a smaller difference needs more deals. ')
         else:
-            note = (run + f"does not include no gain: on these {n} paired games kx3 did {'better' if glo > 0 else 'worse'} than km3. "
-                          f'It does not say by exactly how much: that part of the range is as wide as {n} paired games make it. ')
+            note = (f"That range does not include no gain: on these {n} paired games kx3 did {'better' if glo > 0 else 'worse'} than km3. "
+                    f'It does not say by exactly how much: that part of the range is as wide as {n} paired games make it. ')
         want = (f"What the {len(xs)}-game range can tell and cannot tell: it can tell whether kx3 plays this deck near, clearly above or clearly below an even score against these 8 lists "
-                f"({pc(lo)} to {pc(hi)} here), and it can tell a large gain over km3 from none at all (the gain's range is plus or minus {100 * half:.1f} points). {note}"
+                f"({pc(lo)} to {pc(hi)} here), and it can tell a large gain over km3 from none at all (the gain's range is {200 * half:.1f} points wide). {note}"
                 f'It cannot tell a gain of a point or two from a gain of ten: {len(xs)} games decide only that much, and a wide range is a statement of how much {len(xs)} games decide, '
                 f'not an answer of "nothing". More deals narrow it (the cost table in the slow-report plan gives the hours).')
         return (glo, ghi), [l for l in text.splitlines() if l.startswith('What the ')], want
@@ -1312,7 +2019,7 @@ class ExistingGainRange(ExistingRuns):
         self.assertGreater(glo, 0)
         self.assertEqual(found, [want])
         n, m, sd, half = self.stats(self.gain_over_km3())
-        self.assertIn(f'- The gain: kx3 scored **{points(m)} points** compared with km3 on the same deals, give or take {100 * half:.1f} points '
+        self.assertIn(f'- The gain: kx3 scored **{points(m)} points** compared with km3 on the same deals, probably between {points(m - half)} and {points(m + half)} points '
                       f'(95% interval). That range refers to the {n} paired games, each a deal and seat played by both pilots: {n} kx3 games + {n} cheap km3 baseline games.',
                       self.page().splitlines())
 
@@ -1324,7 +2031,7 @@ class ExistingGainRange(ExistingRuns):
         n, m, sd, half = self.stats(self.gain_over_km3())
         self.assertLess(m, 0)
         lines = self.page().splitlines()
-        self.assertIn(f'- The gain: kx3 scored **{points(m)} points** compared with km3 on the same deals, give or take {100 * half:.1f} points '
+        self.assertIn(f'- The gain: kx3 scored **{points(m)} points** compared with km3 on the same deals, probably between {points(m - half)} and {points(m + half)} points '
                       f'(95% interval). That range refers to the {n} paired games, each a deal and seat played by both pilots: {n} kx3 games + {n} cheap km3 baseline games.', lines)
         self.assertEqual([l for l in lines if l.startswith('- The gain:') and ('more than' in l or 'less than' in l)], [],
                          'a negative gain is "compared with km3" too: never "more than" or "less than" it')
@@ -1334,6 +2041,28 @@ class ExistingGainRange(ExistingRuns):
         (glo, ghi), found, want = self.can_tell_paragraph()
         self.assertTrue(glo <= 0 <= ghi and abs(glo) != ghi)
         self.assertEqual(found, [want])
+
+    def test_the_width_of_the_gain_range_is_the_whole_width_in_points_not_half_of_it(self):
+        for kw in (dict(), dict(win_x=lambda o, d, s: 'opp' if (o + d + s) % 4 else 'deck', win_ref=lambda o, d, s: 'deck' if (o + d + s) % 3 else 'opp')):
+            self.build(**kw)
+            n, m, sd, half = self.stats(self.gain_over_km3())
+            paragraph = [l for l in self.page().splitlines() if l.startswith('What the ')][0]
+            self.assertIn(f"(the gain's range is {200 * half:.1f} points wide)", paragraph)
+            self.assertNotIn(f'{100 * half:.1f} points wide', paragraph)
+            self.assertNotIn('plus or minus', paragraph)
+
+    def test_a_gain_that_is_the_same_in_every_paired_game_gets_no_range_no_width_and_no_note(self):
+        same = lambda o, d, s: 'deck' if (o + d) % 2 else 'opp'
+        self.build(win_x=same, win_ref=same)
+        lines = self.page().splitlines()
+        self.assertIn('- The gain: kx3 scored **+0.0 points** compared with km3 on the same deals; every one of the 80 paired games gave the same difference, '
+                      'so no spread can be estimated from them.', lines)
+        paragraph = [l for l in lines if l.startswith('What the ')]
+        self.assertEqual(len(paragraph), 1)
+        self.assertIn('and it can tell a large gain over km3 from none at all. It cannot tell a gain of a point or two from a gain of ten:', paragraph[0])
+        for s in ('points wide', 'That range', 'includes no gain', 'does not include', 'argue against'):
+            self.assertNotIn(s, paragraph[0])
+        self.assertEqual([l for l in lines if l.startswith('- The gain') and 'probably between' in l], [])
 
 
 class ExistingSizeTimeAndRegistration(ExistingRuns):
@@ -1391,21 +2120,38 @@ class ExistingSizeTimeAndRegistration(ExistingRuns):
         sec = self.page().split('## Where these games come from')[1]
         dev_line, tool_line = [l for l in sec.splitlines() if l.startswith(('- Development run', '- Gate 3'))]
         self.assertIn('first 03-wailord-indeedee-wall game started 2026-10-03T12:00:00Z (**NOT registered before the games**); games.jsonl sha256', dev_line)
-        self.assertNotIn('registered before any game', dev_line)
-        self.assertIn('2026-10-03T12:00:00Z (registered before any game); games.jsonl sha256', tool_line)
+        self.assertNotIn("registered before the first of this deck's games", dev_line)
+        self.assertIn("2026-10-03T12:00:00Z (registered before the first of this deck's games); games.jsonl sha256", tool_line)
 
     HEAD = ('**Existing development evidence, not a fresh test.** Nothing was played for this page: it reads games that were already played, by the kx3 development run (2026-10-03) '
             'and by gate 3 of the Tool tie-break (2026-10-03), ')
+    BOTH_ON_TIME = "both registered before the first of this deck's games (only 03-wailord-indeedee-wall's games were read, so that is all that was checked)."
 
-    def test_the_top_of_the_page_says_both_registered_before_any_game_only_when_both_were(self):
+    def test_the_top_of_the_page_says_both_registered_before_the_first_of_this_decks_games_only_when_both_were(self):
         self.build()
-        self.assertEqual(self.page().splitlines()[2], self.HEAD + 'both registered before any game.')
+        self.assertEqual(self.page().splitlines()[2], self.HEAD + self.BOTH_ON_TIME)
         self.put_manifest(self.dev, created_at='2026-10-03T12:00:00Z')  # the very second the first game started: still before it
-        self.assertEqual(self.page().splitlines()[2], self.HEAD + 'both registered before any game.')
+        self.assertEqual(self.page().splitlines()[2], self.HEAD + self.BOTH_ON_TIME)
         self.put_manifest(self.dev, created_at='2026-10-03T12:00:01Z')  # one second after
         text = self.page()
         self.assertEqual(text.splitlines()[2], self.HEAD + '**but not both were registered before their games: see "Where these games come from".**')
-        self.assertNotIn('both registered before any game', text)
+        self.assertNotIn('both registered before', text)
+
+    def test_the_page_says_the_registration_check_covers_only_this_decks_games_and_never_claims_every_game(self):
+        """The runs hold other decks' games, which this page does not read, so 'before any game' would say more than was checked: it is 'before the first of this deck's games'
+        wherever the page speaks of the order, at the top and below, whichever way the order came out."""
+        self.build()
+        for label, edit in (('both on time', lambda: None), ('the development run late', lambda: self.put_manifest(self.dev, created_at='2026-10-03T13:00:00Z')),
+                            ('no start times', lambda: [self.put_rows(d, [{k: v for k, v in r.items() if k != 'started_at'} for r in self.rows(d)]) for d in (self.dev, self.tool)])):
+            edit()
+            text = self.page()
+            self.assertNotIn('before any game', text, label)
+            self.assertNotIn('registered before any', text, label)
+        self.build()
+        text = self.page()
+        self.assertEqual(text.count("registered before the first of this deck's games"), 3, 'once at the top and once for each run below')
+        self.assertEqual(text.count("only 03-wailord-indeedee-wall's games were read, so that is all that was checked"), 1)
+        self.assertIn('only deck 03-wailord-indeedee-wall was read (160 games).', text)
 
     def test_either_run_registered_late_is_enough_to_say_so_at_the_top_and_only_that_run_is_named_below(self):
         self.build()
@@ -1413,7 +2159,7 @@ class ExistingSizeTimeAndRegistration(ExistingRuns):
         text = self.page()
         self.assertEqual(text.splitlines()[2], self.HEAD + '**but not both were registered before their games: see "Where these games come from".**')
         dev_line, tool_line = [l for l in text.split('## Where these games come from')[1].splitlines() if l.startswith(('- Development run', '- Gate 3'))]
-        self.assertIn('2026-10-03T12:00:00Z (registered before any game); games.jsonl sha256', dev_line)
+        self.assertIn("2026-10-03T12:00:00Z (registered before the first of this deck's games); games.jsonl sha256", dev_line)
         self.assertIn('registered 2026-10-03T12:30:00Z, first 03-wailord-indeedee-wall game started 2026-10-03T12:00:00Z (**NOT registered before the games**); games.jsonl sha256', tool_line)
 
     def test_games_with_no_start_time_are_said_to_be_unconfirmed_at_the_top_and_below_never_as_on_time(self):
@@ -1449,18 +2195,18 @@ class ExistingQuestionTwo(ExistingRuns):
         n, m, sd, half = self.stats([SC[self.tool_games[k]['winner']] - SC[self.dev_games[k]['winner']] for k in keys])
         self.assertEqual(n, 80)
         self.assertGreater(sd, 0)
-        self.assertIn(f'- On minus off: **{points(m)} points**, give or take {100 * half:.1f} points '
+        self.assertIn(f'- On minus off: **{points(m)} points**, probably between {points(m - half)} and {points(m + half)} points '
                       '(95% interval; this range refers to the 80 paired games played with the Tool tie-break on and off).', lines)
         refs = {k: SC[self.dev_games[k[:-1] + 'ref']['winner']] for k in keys}
         _, m_on, _, h_on = self.stats([SC[self.tool_games[k]['winner']] - refs[k] for k in keys])
         _, m_off, _, h_off = self.stats([SC[self.dev_games[k]['winner']] - refs[k] for k in keys])
         self.assertNotEqual(points(m_on), points(m_off), 'the rule must make a difference to the context line, or a swap of on and off cannot show')
-        self.assertIn(f'- For context, kx3 minus km3 on the same deals: with the Tool tie-break on {points(m_on)} points (give or take {100 * h_on:.1f}), off {points(m_off)} points '
-                      f'(give or take {100 * h_off:.1f}); each range refers to the 80 paired games.', lines)
+        self.assertIn(f'- For context, kx3 minus km3 on the same deals: with the Tool tie-break on {points(m_on)} points (probably between {points(m_on - h_on)} and {points(m_on + h_on)} points), '
+                      f'off {points(m_off)} points (probably between {points(m_off - h_off)} and {points(m_off + h_off)} points); each range refers to the 80 paired games.', lines)
         p, wlo, whi = wilson95([1.0] * 3 + [0.0] * 77)
         closing = ('What this can tell and cannot tell: it can tell what the rule did on these 80 paired games (4 had a changed decision, 3 a changed winner), and it can put a bound on '
                    f'how often it changes a winner: 3 of 80 winners changed, which puts the share of deals whose winner the rule changes between about {100 * wlo:.1f} and {100 * whi:.1f} '
-                   'in 100 (95% Wilson range on 3 of 80). It cannot tell what the rule does on other deals or other decks (gate 3 pooled 400 pairs over 5 decks on its own page), '
+                   'in 100 (95% Wilson range on 3 of 80). It cannot tell what the rule does on other deals or other decks (gate 3 pooled 80 pairs over 1 deck on its own page), '
                    'and the 3 changed winners are what the on-minus-off figure above counts, for or against the rule; they are too few to say more.')
         self.assertIn(closing, lines)
         self.assertNotIn('changes no winner', closing, 'winners did change here, so the sentence for "no winner changed" must not be on the page')
@@ -1476,11 +2222,33 @@ class ExistingQuestionTwo(ExistingRuns):
         p, wlo, whi = wilson95([0.0] * 80)
         closing = ('What this can tell and cannot tell: it can tell what the rule did on these 80 paired games (3 had a changed decision, 0 a changed winner), and it can put a bound on '
                    f'how often it changes a winner: no winner changed in 80 pairs, so the share of deals whose winner the rule changes is probably no more than about {100 * whi:.1f} in 100 '
-                   '(95% Wilson bound on 0 of 80). It cannot tell what the rule does on other deals or other decks (gate 3 pooled 400 pairs over 5 decks on its own page), '
+                   '(95% Wilson bound on 0 of 80). It cannot tell what the rule does on other deals or other decks (gate 3 pooled 80 pairs over 1 deck on its own page), '
                    'and a rule that acts in 3 of 80 games but changes no winner has not been shown to be harmless or useful: whether it would ever change a result on a deck like this is '
                    'a question for more deals.')
         self.assertEqual([l for l in lines if l.startswith('What this can tell and cannot tell')], [closing])
         self.assertNotIn('changed winners are what', closing)
+
+    def test_the_pooled_pairs_and_decks_of_the_closing_sentence_are_counted_from_the_gate_3_run(self):
+        third = '12-third-deck'
+
+        def drop_thirty(rows):  # gate 3 holds all of the development run's decks, the third one with 30 of its 80 kx3 games gone: 80 + 80 + 50 pairs
+            gone = [r['key'] for r in rows if r['deck'] == third and r['arm'] == 'X'][:30]
+            rows[:] = [r for r in rows if r['key'] not in gone]
+        self.build(dev_decks=(TE.DECK, TE.OTHER, third), tool_decks=(TE.DECK, TE.OTHER, third), tool=drop_thirty)
+        closing = [l for l in self.page().splitlines() if l.startswith('What this can tell and cannot tell')]
+        self.assertEqual(len(closing), 1)
+        self.assertIn('It cannot tell what the rule does on other deals or other decks (gate 3 pooled 210 pairs over 3 decks on its own page), ', closing[0])
+        self.assertNotIn('400 pairs', closing[0])
+        self.assertNotIn('5 decks', closing[0])
+        self.assertIn('on these 80 paired games', closing[0], 'the pairs the page itself reports are this deck\'s 80, not the pooled ones')
+
+    def test_the_pooled_sentence_is_singular_for_one_deck_and_plural_for_two(self):
+        self.build()
+        self.assertIn('(gate 3 pooled 80 pairs over 1 deck on its own page)', self.page())
+        self.build(tool_decks=(TE.DECK, TE.OTHER))
+        text = self.page()
+        self.assertIn('(gate 3 pooled 160 pairs over 2 decks on its own page)', text)
+        self.assertNotIn('1 decks', text)
 
     def test_one_changed_winner_is_still_counted_as_a_winner_changed_not_as_none(self):
         def tool(rows):
@@ -1550,15 +2318,17 @@ class ExistingQuestionTwo(ExistingRuns):
         n, m_on, sd, h_on = self.stats([SC[self.tool_games[k]['winner']] - refs[k] for k in keys])
         self.assertGreater(sd, 0)
         context = [l for l in self.page().splitlines() if l.startswith('- For context')]
-        self.assertEqual(context, [f'- For context, kx3 minus km3 on the same deals: with the Tool tie-break on {points(m_on)} points (give or take {100 * h_on:.1f}), '
+        self.assertEqual(context, [f'- For context, kx3 minus km3 on the same deals: with the Tool tie-break on {points(m_on)} points '
+                                   f'(probably between {points(m_on - h_on)} and {points(m_on + h_on)} points), '
                                    'off +0.0 points (no spread to give: every difference is the same); each range refers to the 80 paired games.'])
 
     def test_the_context_line_gives_its_ranges_when_the_differences_vary(self):
         self.build(tool=gate_3_changes)
         context = [l for l in self.page().splitlines() if l.startswith('- For context')]
         self.assertEqual(len(context), 1)
-        self.assertRegex(context[0], r'^- For context, kx3 minus km3 on the same deals: with the Tool tie-break on [+-]\d+\.\d points \(give or take \d+\.\d\), off [+-]\d+\.\d points '
-                                     r'\(give or take \d+\.\d\); each range refers to the 80 paired games\.$')
+        end = r'[+-]\d+\.\d'
+        self.assertRegex(context[0], r'^- For context, kx3 minus km3 on the same deals: with the Tool tie-break on [+-]\d+\.\d points \(probably between ' + end + ' and ' + end
+                         + r' points\), off [+-]\d+\.\d points \(probably between ' + end + ' and ' + end + r' points\); each range refers to the 80 paired games\.$')
         self.assertNotIn('no spread to give', context[0])
 
 
@@ -1597,3 +2367,37 @@ class ExistingConsole(ExistingRuns):
         at = [got.index(self.TAG + l) for l in required]
         self.assertEqual(at, sorted(at), 'in the order of the page')
         self.assertEqual([l for l in got if 'For context' in l or 'Time:' in l or 'ended with different points' in l], [])
+
+
+class ExistingNoGiveOrTake(ExistingRuns):
+    def test_no_variant_of_the_page_or_of_the_terminal_says_give_or_take_and_every_range_is_probably_between(self):
+        def all_lost(rows):
+            for r in rows:
+                if r['deck'] == TE.DECK:
+                    r['winner'] = 'opp'
+
+        def all_won_with_the_rule(rows):
+            for r in rows:
+                if r['arm'] == 'X':
+                    r['winner'] = 'deck'
+
+        def every_third_won(rows):
+            for i, r in enumerate([r for r in rows if r['arm'] == 'X']):
+                r['winner'] = 'deck' if i % 3 == 0 else 'opp'
+        same = lambda o, d, s: 'deck' if (o + d) % 2 else 'opp'
+        cases = (('the default', {}), ('some decisions, winners and turns changed', dict(tool=gate_3_changes)),
+                 ('the gain clearly positive', dict(win_x=lambda o, d, s: 'deck' if (o + d) % 5 else 'opp', win_ref=lambda o, d, s: 'opp' if (o + d + s) % 4 else 'deck')),
+                 ('the gain clearly negative', dict(win_x=lambda o, d, s: 'opp' if (o + d + s) % 4 else 'deck', win_ref=lambda o, d, s: 'deck' if (o + d + s) % 3 else 'opp')),
+                 ('no spread in the gain', dict(win_x=same, win_ref=same)), ('no spread anywhere but the rule', dict(dev=all_lost, tool=all_won_with_the_rule)),
+                 ('spread with the rule on only', dict(dev=all_lost, tool=every_third_won)),
+                 ('three decks in gate 3', dict(dev_decks=(TE.DECK, TE.OTHER, '12-third-deck'), tool_decks=(TE.DECK, TE.OTHER, '12-third-deck'))))
+        for label, kw in cases:
+            self.build(**kw)
+            code, out, err = self.go()
+            self.assertEqual(code, 0, label + err)
+            text = read(os.path.join(self.out, 'SLOW_REPORT_EXISTING.md'))
+            for words in SYMMETRIC_RANGE_WORDS:
+                self.assertNotIn(words, text + out, f'{label}: {words!r}')
+            self.assertIn('probably between', text, label)
+            ranged = re.findall(r'probably between [+-]?\d+\.\d%? and [+-]?\d+\.\d%?(?: points)?(?: \(cut at the ends of the possible scale\))? \(95% interval', text)
+            self.assertEqual(len(ranged), text.count('(95% interval'), f'{label}: every 95% interval is written as "probably between A and B"')

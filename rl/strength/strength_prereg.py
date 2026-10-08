@@ -15,14 +15,18 @@ CONFIG.json (all keys but the first four optional):
                           (the manifest lists no held-out names for the program's own guard, and keeps them under heldout_registry / heldout_in_run)
   intended_lines          path of the intended-lines file (default rl/strength/intended_lines.json)
   program, program_sha256, engine, pilot_provenance, reference_provenance   free text recorded as given (build.sh prints them)
-  selfcheck_given         {pilot spec: self-check text}: recorded instead of playing the 12 self-check games, only with a program whose sha256 was
-                          verified against program_sha256 (the digest belongs to that exact binary); a spec not named here is still checked
+  selfcheck_given         {pilot spec: self-check text}: recorded instead of playing the 12 self-check games. Only at stage `use`; only with a program file whose
+                          sha256 was verified against program_sha256; and only when selfcheck_given_program_sha256 (the sha256 of the binary the text was
+                          measured on: the pin's, or the program's own for a text replayed just now) equals that program's sha256, because a digest belongs to
+                          the exact binary it was measured on. selfcheck_how 'replayed' makes the recorded source say the text was replayed on this machine
+                          (otherwise: copied from the pin). A spec not named here is still checked.
+  selfcheck_given_program_sha256, selfcheck_how   see selfcheck_given
   slow_report             a free block recorded in the manifest and named in PREREGISTRATION.md (written by slow_report.py)
 
 Refuses to write into a run directory that already holds games. The manifest's sha256 is written beside it and into the README; the report
 checks that the manifest still matches.
 """
-import argparse, collections, hashlib, json, os, re, sys, datetime
+import argparse, collections, hashlib, json, os, re, subprocess, sys, datetime
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 STAGES = ('dev', 'heldout', 'use')
@@ -149,6 +153,24 @@ def main():
     stride = int(cfg.get('pair_stride', 10000))
     if deals > stride:
         sys.exit(f'deals ({deals}) must not exceed pair_stride ({stride}), or the seeds of neighbouring pairs overlap')
+    # the program and the self-check text it may be given are validated before anything is created: a refusal leaves no run directory behind
+    prog = cfg.get('program')
+    prog_sha = cfg.get('program_sha256')
+    if prog and os.path.isfile(prog):
+        actual = sha(prog)
+        if prog_sha and prog_sha != actual:
+            sys.exit(f'program_sha256 in the config ({prog_sha[:12]}) is not the program at {prog} ({actual[:12]})')
+        prog_sha = actual
+    given = cfg.get('selfcheck_given') or {}
+    if given and stage != 'use':
+        sys.exit('REFUSED: selfcheck_given is only for stage use (the slow report, which pins one frozen build); a development or held-out run replays its own self-check')
+    if given and not (isinstance(given, dict) and all(isinstance(k, str) and isinstance(v, str) for k, v in given.items())):
+        sys.exit('selfcheck_given must be a mapping of pilot spec to self-check text')
+    if given and not (cfg.get('program_sha256') and prog and os.path.isfile(prog)):
+        sys.exit('selfcheck_given is only accepted with a program file and its program_sha256 in the config (the digest belongs to that exact binary, and its sha256 is checked)')
+    if given and cfg.get('selfcheck_given_program_sha256') != prog_sha:
+        sys.exit(f'REFUSED: the self-check text was measured on a program with sha256 {str(cfg.get("selfcheck_given_program_sha256"))[:12]}, but the program at {prog} has sha256 '
+                 f'{str(prog_sha)[:12]}: a digest belongs to the exact binary it was measured on, so the text cannot be recorded for this one (replay the self-check on it instead)')
     os.makedirs(a.out, exist_ok=True)
     if os.path.exists(os.path.join(a.out, 'games.jsonl')):
         sys.exit('this run directory already holds games; pre-registration comes first')
@@ -162,26 +184,13 @@ def main():
 
     # provenance: the program's own hash, the repository commit, and a digest of 12 fixed games for each engine pilot (two builds that play
     # the same reference pilot must print the same digest)
-    import subprocess
-    prog = cfg.get('program')
-    prog_sha = cfg.get('program_sha256')
-    if prog and os.path.isfile(prog):
-        actual = sha(prog)
-        if prog_sha and prog_sha != actual:
-            sys.exit(f'program_sha256 in the config ({prog_sha[:12]}) is not the program at {prog} ({actual[:12]})')
-        prog_sha = actual
     try:
         repo_commit = subprocess.run(['git', '-C', root, 'rev-parse', 'HEAD'], capture_output=True, text=True).stdout.strip() or None
     except Exception:
         repo_commit = None
     selfcheck, selfcheck_source = {}, {}
-    given = cfg.get('selfcheck_given') or {}
-    if given and not (isinstance(given, dict) and all(isinstance(k, str) and isinstance(v, str) for k, v in given.items())):
-        sys.exit('selfcheck_given must be a mapping of pilot spec to self-check text')
-    if given and not (cfg.get('program_sha256') and prog and os.path.isfile(prog)):
-        sys.exit('selfcheck_given is only accepted with a program file and its program_sha256 in the config (the digest belongs to that exact binary, and its sha256 is checked)')
-    given_source = ('replayed by slow_report.py just before registration (equal to the pin)' if cfg.get('selfcheck_how') == 'replayed'
-                    else 'given in the config (copied from the pin; the program sha256 is the one named there)')
+    given_source = ('replayed by slow_report.py on this machine just before registration (equal to the committed pin)' if cfg.get('selfcheck_how') == 'replayed'
+                    else 'given in the config (copied from the pin, which says it was measured on this exact program sha256)')
     if prog and os.path.isfile(prog):
         da, db = reg.get('t-altaria'), reg.get('t-suicune')
         for spec in sorted({cfg['pilot'], cfg['reference']}):
@@ -234,8 +243,8 @@ def main():
     L.append(f"- Program: `{cfg.get('program')}` sha256 `{prog_sha}`; engine: {cfg.get('engine')}; repository commit: `{repo_commit}`")
     for spec, txt in selfcheck.items():
         src = selfcheck_source.get(spec, '')
-        how = (' (given in the config, copied from the pin and not replayed: the digest belongs to the exact program whose sha256 is named above)' if src.startswith('given')
-               else ' (replayed by slow_report.py just before registration and equal to the pin)' if src.startswith('replayed') else '')
+        how = (' (given in the config, copied from the pin and not replayed: the pin says it was measured on this exact program, whose sha256 is named above)' if src.startswith('given')
+               else ' (replayed by slow_report.py on this machine just before registration and equal to the committed pin)' if src.startswith('replayed') else '')
         L.append(f"- Self-check of `{spec}` on this build (12 fixed games, t-altaria v t-suicune): `{txt}`{how}. The same pilot code on another build must print the same digest.")
     if stage != 'use':
         L.append('- An `ext:` pilot is an external process asked for every decision (PROTOCOL.md); it may be as slow as it likes. Nothing is a failure for being slow.\n')
@@ -262,9 +271,10 @@ def main():
         sr = cfg['slow_report']
         L.append('## Slow report\n')
         L.append(f"**{sr.get('headline', 'slow report')}**. " + (sr.get('summary') or '') + '\n')
-        for k in ('deck_file', 'deck_file_sha256', 'deck_file_state', 'deals', 'paired', 'pin'):
+        for k in ('deck_file', 'deck_file_sha256', 'deck_file_state', 'deals', 'paired', 'pin', 'program_route', 'pinned_program', 'pinned_program_sha256',
+                  'harness_source_sha256', 'harness_source_checkout_sha256', 'engine_ref', 'engine_tree', 'engine_tree_in_checkout', 'school_rule', 'school_days'):
             if k in sr:
-                L.append(f"- {k}: `{sr[k]}`")
+                L.append(f"- {k}: `{'not found' if sr[k] is None else sr[k]}`")  # a null entry (the checkout had no such file or commit) is said in words, not as the text None
         L.append('')
     L.append('## Analysis plan (fixed now)\n')
     if stage == 'use':
@@ -281,9 +291,16 @@ def main():
     L.append(f"- Intended-line rates from `{lines_path}`" + (f" (sha256 `{lines_sha[:12]}`)" if lines_sha else ' (file not found when registered)') + ': per game and per use, per arm, with the paired difference where it is per game.')
     L.append('- No pass/fail threshold is set by this document. A slow pilot is reported with its time and cost, not rejected.\n')
     L.append('## Run\n')
-    if (cfg.get('slow_report') or {}).get('resume_command'):
-        L.append('A slow report is run and resumed through its wrapper, which removes the variables that would tune the pilot or change the rules from the program\'s environment, keeps the school-morning rule and checks the registration, the deck files and the pinned program before every sitting:\n')
-        L.append('```\n' + cfg['slow_report']['resume_command'] + '\n```')
+    srb = cfg.get('slow_report') or {}
+    if srb.get('resume_command'):
+        days = srb.get('school_days')
+        rule = ('applies the school-morning rule as registered' + (f' ({days})' if days else ' (no school days)' if days == '' else '') if srb.get('school_rule', 'on') == 'on'
+                else 'does NOT apply the school-morning rule (chosen at registration: it never pauses for school mornings)')
+        prog_txt = ('the program it was registered with, a REBUILD of the pinned source (accepted after both self-checks were replayed on that machine; a resume needs the same sha256)'
+                    if srb.get('program_route') == 'rebuilt' else 'the pinned program')
+        L.append(f'A slow report is run and resumed through its wrapper, which removes the variables that would tune the pilot or change the rules from the program\'s environment, {rule}, '
+                 f'and checks the registration, the deck files and {prog_txt} before every sitting:\n')
+        L.append('```\n' + srb['resume_command'] + '\n```')
     else:
         L.append('```\nstrength run --manifest manifest.json --out .   # add --max-games N or --stop-after-min M to stop early; run it again to resume\npython3 strength_report.py --dir .\n```')
     with open(os.path.join(a.out, 'PREREGISTRATION.md'), 'w', encoding='utf-8') as f:

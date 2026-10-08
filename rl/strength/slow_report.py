@@ -27,7 +27,7 @@ library; it calls strength_prereg.py, the pinned program and strength_report.py 
 """
 import sys
 sys.dont_write_bytecode = True  # a dry run must leave nothing behind in the repository
-import argparse, datetime, fcntl, hashlib, importlib.util, json, math, os, re, shlex, shutil, signal, statistics, subprocess, time, zoneinfo
+import argparse, datetime, fcntl, hashlib, importlib.util, json, math, os, re, shlex, shutil, signal, statistics, subprocess, time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.abspath(os.path.join(HERE, '..', '..'))
@@ -38,9 +38,42 @@ import strength_prereg as PRE  # noqa: E402  (deck_signature: what a deck file s
 DEFAULT_PIN = os.path.join(HERE, 'slow_report_pin.json')
 PREREG = os.path.join(HERE, 'strength_prereg.py')
 REPORT = os.path.join(HERE, 'strength_report.py')
-CHICAGO = zoneinfo.ZoneInfo('America/Chicago')
 UTC = datetime.timezone.utc
+_TZ = {}
+
+
+class NoTimeZoneDatabase(RuntimeError):
+    pass
+
+
+def chicago():
+    """America/Chicago, loaded on first use: importing this module never needs the time zone database, and a run with --school-rule off needs it only to date its folder
+    (local_date falls back to the UTC date without it)."""
+    if 'chicago' not in _TZ:
+        try:
+            import zoneinfo
+            _TZ['chicago'] = zoneinfo.ZoneInfo('America/Chicago')
+        except Exception as e:  # ZoneInfoNotFoundError (no tzdata on a slim image), ModuleNotFoundError
+            raise NoTimeZoneDatabase(f'the time zone database (America/Chicago) is not available here ({type(e).__name__}): install tzdata, or turn the school-morning rule off with --school-rule off') from None
+    return _TZ['chicago']
+
+
+def __getattr__(name):  # sr.CHICAGO still works for callers, loaded when first asked for
+    if name == 'CHICAGO':
+        return chicago()
+    raise AttributeError(f'module {__name__!r} has no attribute {name!r}')
+
+
+def local_date(t):
+    """The date for a run folder's name: today in Chicago, or the UTC date on a machine without the time zone database (a run with --school-rule off needs nothing else from it)."""
+    try:
+        return t.astimezone(chicago()).strftime('%Y-%m-%d')
+    except NoTimeZoneDatabase:
+        return t.astimezone(UTC).strftime('%Y-%m-%d')
+
+
 SCHOOL_DAYS = (0, 1, 2, 3, 4)  # Monday to Friday (datetime.weekday)
+DEFAULT_SCHOOL_DAYS = 'mon,tue,wed,thu,fri'
 SOFT_STOP, HARD_STOP, RESUME = (5, 15), (6, 30), (17, 0)
 NAME_RE = re.compile(r'^[A-Za-z0-9][A-Za-z0-9._-]*$')
 DAY_NAMES = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun']
@@ -97,22 +130,77 @@ def load_pin(path):
         die(f'cannot read the pin {path}: {e}')
     if not isinstance(pin, dict):
         die(f'the pin {path} is not a JSON object')
-    for k in ('pilot', 'reference', 'pilot_label', 'reference_label', 'panel_label', 'panel_group', 'program', 'program_sha256', 'selfcheck', 'engine',
-              'pilot_provenance', 'reference_provenance', 'seed_block', 'seed_step', 'games_per_hour', 'scrub_env_prefixes', 'threads'):
+    for k in ('pilot', 'reference', 'pilot_label', 'reference_label', 'panel_label', 'panel_group', 'program', 'program_sha256', 'selfcheck', 'selfcheck_measured_on_sha256',
+              'harness_source_sha256', 'engine', 'pilot_provenance', 'reference_provenance', 'seed_block', 'seed_step', 'games_per_hour', 'scrub_env_prefixes', 'threads',
+              'seed_reserved'):
         if k not in pin:
             die(f'the pin {path} has no {k!r}')
+    block, step, reserved = pin['seed_block'], pin['seed_step'], pin['seed_reserved']
+    if not (isinstance(block, list) and len(block) == 2 and all(type(x) is int for x in block) and block[0] <= block[1] and type(step) is int and step >= 1):
+        die(f'the pin {path}: seed_block must be [first seed, last seed] (two whole numbers) and seed_step a whole number of at least 1')
+    lo, hi = block
+    if not isinstance(reserved, list) or not all(isinstance(r, dict) and type(r.get('base')) is int and isinstance(r.get('note'), str) and lo <= r['base'] and r['base'] + step - 1 <= hi
+                                                 and (r['base'] - lo) % step == 0 for r in reserved):
+        die(f'the pin {path}: seed_reserved must be a list of {{"base": the first seed of a slot inside the seed block, "note": text}}; a typo there would hand out a slot a committed run already used')
     return pin
 
 
-def check_program(pin):
-    """Refuse (before anything is written) a program that is not the pinned build."""
-    p = pin['program']
+def harness_source_sha256(repo):
+    """What rl/strength/build.sh prints as the harness source hash: sha256 of rl/strength/src/*.rs (in name order) followed by Cargo.toml, or None when the checkout has no
+    harness source (a test repository)."""
+    d = os.path.join(repo, 'rl', 'strength')
+    try:
+        names = sorted(n for n in os.listdir(os.path.join(d, 'src')) if n.endswith('.rs'))
+        data = b''
+        for n in names:
+            with open(os.path.join(d, 'src', n), 'rb') as f:
+                data += f.read()
+        with open(os.path.join(d, 'Cargo.toml'), 'rb') as f:
+            data += f.read()
+    except OSError:
+        return None
+    return hashlib.sha256(data).hexdigest()
+
+
+def check_program(pin, program=None, repo=None):
+    """Refuse (before anything is written) a program that is not the pinned build, and say which route it takes: ('pinned', sha) for the pinned binary, or, when a
+    `program` path was given and its sha256 differs, ('rebuilt', sha): a rebuild of the pinned source (for example on the cloud with build.sh), accepted only because the
+    caller then replays BOTH self-checks on it against the committed pin's digests, and only when this checkout's harness source is the pinned build's."""
+    p = program or pin['program']
+    ref8 = (pin.get('engine_ref') or '')[:8] or 'the pinned source'
     if not os.path.isfile(p):
-        die(f'REFUSED: the pinned program {p} does not exist, so no slow report can run. A different build needs a new pin (rl/strength/slow_report_pin.json), after its own gate.')
+        die(f'REFUSED: the program {p} does not exist, so no slow report can run. A different build needs a new pin (rl/strength/slow_report_pin.json), after its own gate; a REBUILD of '
+            f'{ref8} (for example on the cloud, with rl/strength/build.sh) goes through --program PATH.')
     actual = sha(p)
-    if actual != pin['program_sha256']:
-        die(f'REFUSED: {p} (sha256 {actual[:12]}) is not the pinned build (sha256 {pin["program_sha256"][:12]}). A slow report uses only the exact tested version; '
-            'a later version replaces it by a new pin, after its own gate.')
+    if actual == pin['program_sha256']:
+        return 'pinned', actual
+    if not program:
+        die(f'REFUSED: {p} (sha256 {actual[:12]}) is not the pinned build (sha256 {pin["program_sha256"][:12]}). A slow report uses only the exact tested version. If this is a rebuild of '
+            f'{ref8} (for example on the cloud, with rl/strength/build.sh), pass it with --program PATH: both self-checks are then replayed on this machine '
+            'and must equal the committed pin\'s digests. A later version replaces the pin only after its own gate.')
+    if os.path.realpath(p) == os.path.realpath(pin['program']):
+        die(f'REFUSED: {p} is the pinned binary\'s own path, but the file there has sha256 {actual[:12]}, not the pinned {pin["program_sha256"][:12]}: the frozen binary has been overwritten '
+            '(do not build over it; build.sh to another path). A rebuild is accepted at any other path, after its self-checks are replayed.')
+    here = harness_source_sha256(repo) if repo else None
+    if here != pin['harness_source_sha256']:
+        die(f'REFUSED: {p} has sha256 {actual[:12]}, not the pinned {pin["program_sha256"][:12]}, so it would have to be a rebuild of the pinned source; but the harness source in this checkout '
+            f'({(here or "not found")[:12]}) is not the pinned build\'s ({pin["harness_source_sha256"][:12]}), so a build from here is not that program. Check out the commit the pin was made on, '
+            'or make a new pin after its own gate.')
+    tree = engine_tree_in_checkout(repo, pin.get('engine_ref'))
+    if tree is not None and pin.get('engine_tree') and tree != pin['engine_tree']:
+        die(f'REFUSED: this checkout\'s {ref8}:engine tree is {tree[:12]}, not the pinned {pin["engine_tree"][:12]}, so a build of it is not the pinned engine. Nothing was written.')
+    return 'rebuilt', actual
+
+
+def engine_tree_in_checkout(repo, ref):
+    """git's tree id of `<ref>:engine` in the checkout (what build.sh archives and prints), or None when the checkout has no such commit or no git: informational, then."""
+    if not repo or not ref:
+        return None
+    try:
+        r = subprocess.run(['git', '-C', repo, 'rev-parse', '--verify', '-q', f'{ref}:engine'], capture_output=True, text=True, env=dict(os.environ, GIT_OPTIONAL_LOCKS='0'))
+    except OSError:
+        return None
+    return r.stdout.strip() or None if r.returncode == 0 else None
 
 
 # ------------------------------------------------------------------------------------------------------------------ the deck
@@ -171,12 +259,17 @@ def panel_signatures(repo, pin):
 
 
 # ------------------------------------------------------------------------------------------------------------------ seeds
-def pick_seed_base(deck_sha, out_root, block, step, explicit=None):
+def pick_seed_base(deck_sha, out_root, block, step, explicit=None, reserved=()):
     """A seed base from the registered block (24,601,000,000 - 24,699,999,999; the exam's seeds spill past its own block up to 24,600,070,002, so slot 0 starts
-    above that): the deck's own slot, the next free one if another slow report took it. An explicit base must be the start of a slot inside the block."""
+    above that): the deck's own slot, the next free one if another slow report took it. An explicit base must be the start of a slot inside the block. `reserved` is
+    the pin's list of slots already used by committed runs that are not in out_root (the km3 smoke), [{'base': ..., 'note': ...}]."""
     lo, hi = block
     slots = (hi - lo + 1) // step
-    used = {}  # slot -> the run folder that holds it
+    used = {}  # slot -> the run folder (or the reserved note) that holds it
+    for r in reserved:
+        b = r.get('base') if isinstance(r, dict) else None
+        if isinstance(b, int) and lo <= b <= hi:
+            used.setdefault((b - lo) // step, r.get('note') or 'a reserved slot')
     if os.path.isdir(out_root):
         for n in sorted(os.listdir(out_root)):
             mp = os.path.join(out_root, n, 'manifest.json')
@@ -192,7 +285,7 @@ def pick_seed_base(deck_sha, out_root, block, step, explicit=None):
         if not (lo <= explicit and explicit + step - 1 <= hi and (explicit - lo) % step == 0):
             die(f'REFUSED: --seed-base {explicit} is not the start of a seed slot inside the registered block {lo}-{hi} (slots are {step} wide: {lo} + k x {step})')
         if (explicit - lo) // step in used:
-            die(f'REFUSED: --seed-base {explicit} is the seed slot of {used[(explicit - lo) // step]} in {out_root}; two reports would play the same deals')
+            die(f'REFUSED: --seed-base {explicit} is a seed slot that is already used ({used[(explicit - lo) // step]}); two reports would play the same deals')
         return explicit
     start = int(deck_sha[:8], 16) % slots
     for k in range(slots):
@@ -200,6 +293,40 @@ def pick_seed_base(deck_sha, out_root, block, step, explicit=None):
         if s not in used:
             return lo + s * step
     die(f'REFUSED: every seed slot in {lo}-{hi} is already used by a slow report')
+
+
+def resume_command_for(rundir, school_rule, school_days_text):
+    """The command that continues a run as it was registered: it carries the school-morning choice, so a cloud resume does not silently idle 5:15 am to 5 pm Chicago time."""
+    cmd = ['python3', 'rl/strength/slow_report.py', '--dir', rundir]
+    if school_rule == 'off':
+        cmd += ['--school-rule', 'off']
+    elif school_days_text != DEFAULT_SCHOOL_DAYS:
+        cmd += ['--school-days', school_days_text]
+    return shlex.join(cmd)
+
+
+def unfinished_runs(out_root, deck_name):
+    """[(folder, games played, games planned, the command that resumes it as it was registered)] for registered slow reports of this deck in out_root that have not played
+    all their games: registering a new one next to them is usually a mistake (resume the old one). An odd folder (a stray file, a half-written manifest) is skipped."""
+    out = []
+    try:
+        names = sorted(os.listdir(out_root))
+    except OSError:
+        return out
+    for n in names:
+        d = os.path.join(out_root, n)
+        try:
+            m = load_json(os.path.join(d, 'manifest.json'))
+            block = m.get('slow_report') if isinstance(m, dict) else None
+            if not isinstance(block, dict) or block.get('deck_name') != deck_name or not isinstance(m.get('planned_games'), int):
+                continue
+            played = len({g['key'] for g in load_games(d)})
+            if played < m['planned_games']:
+                days = block.get('school_days')  # '' is a choice (no school days), only a missing entry means the default
+                out.append((d, played, m['planned_games'], block.get('resume_command') or resume_command_for(d, block.get('school_rule') or 'on', days if days is not None else DEFAULT_SCHOOL_DAYS)))
+        except (OSError, ValueError, TypeError, KeyError):
+            continue
+    return out
 
 
 # ------------------------------------------------------------------------------------------------------------------ the school-morning rule
@@ -210,10 +337,11 @@ def school_action(now, school_days=SCHOOL_DAYS, soft=SOFT_STOP, hard=HARD_STOP, 
     (real minutes, so a clock change is counted); with no school days there is no limit."""
     if not school_days:
         return {'kind': 'run', 'stop_after_min': None, 'hard_stop': None}
-    local = now.astimezone(CHICAGO)
+    tz = chicago()
+    local = now.astimezone(tz)
 
     def at(d, hm):
-        return datetime.datetime(d.year, d.month, d.day, hm[0], hm[1], tzinfo=CHICAGO)
+        return datetime.datetime(d.year, d.month, d.day, hm[0], hm[1], tzinfo=tz)
 
     today = local.date()
     if local.weekday() in school_days and at(today, soft) <= local < at(today, resume):
@@ -431,8 +559,10 @@ def headline_of(pin, deck_name):
 
 
 def build_config(*, pin, pin_path, deck_rel, deck_name, deck_sha, deck_state, deals, paired, seed_base, threads, program_sha, selfcheck_given='pin', selfcheck_how='pin',
-                 resume_command=None):
+                 resume_command=None, program=None, route='pinned', harness_checkout=None, school_rule='on', school_days=DEFAULT_SCHOOL_DAYS, engine_tree_checkout=None):
     headline = headline_of(pin, deck_name)
+    engine = pin['engine'] + (f"; THIS PROGRAM ({(program or pin['program'])}, sha256 {program_sha[:12]}) IS A REBUILD of that source made on another machine, not the laptop binary, "
+                              'accepted because both self-checks were replayed on that machine and equal the committed pin\'s digests' if route == 'rebuilt' else '')
     et = expected_time(deals, pin)
     pilot, ref = pin['pilot'], pin['reference']
     baseline = (f'and how much better {pilot} plays this deck than {ref} on the same deals' if paired else
@@ -446,18 +576,24 @@ def build_config(*, pin, pin_path, deck_rel, deck_name, deck_sha, deck_state, de
                   f'No pass or fail line; time per game is reported as a fact.'),
         pilot=pilot, reference=ref, stage='use',
         deck_files=[deck_rel], opponent_groups=[pin['panel_group']], deals=deals, seats=[0, 1], seed_base=seed_base, pair_stride=PAIR_STRIDE, threads=threads, log_level='deck',
-        program=pin['program'], program_sha256=program_sha, engine=pin['engine'], pilot_provenance=pin['pilot_provenance'], reference_provenance=pin['reference_provenance'],
+        program=program or pin['program'], program_sha256=program_sha, engine=engine, pilot_provenance=pin['pilot_provenance'], reference_provenance=pin['reference_provenance'],
         slow_report=dict(version=1, headline=headline, summary=f'Stage use. {plural(deals, "deal")} x 2 seats against each of the eight public lists. No pass or fail line; not development evidence.',
                          deck_name=deck_name, deck_file=deck_rel, deck_file_sha256=deck_sha, deck_file_state=deck_state, deals=deals, paired=bool(paired),
                          pin=dict(path=os.path.relpath(pin_path, ROOT).replace(os.sep, '/') if os.path.abspath(pin_path).startswith(ROOT + os.sep) else pin_path, sha256=sha(pin_path)),
                          pilot_label=pin['pilot_label'], reference_label=pin['reference_label'], panel_label=pin['panel_label'],
                          scrub_env_prefixes=list(pin['scrub_env_prefixes']), resume_command=resume_command,
+                         program_route=route, pinned_program=pin['program'], pinned_program_sha256=pin['program_sha256'],
+                         harness_source_sha256=pin['harness_source_sha256'], harness_source_checkout_sha256=harness_checkout,
+                         engine_ref=pin.get('engine_ref'), engine_tree=pin.get('engine_tree'), engine_tree_in_checkout=engine_tree_checkout,
+                         school_rule=school_rule, school_days=school_days,
                          expected_hours=dict(typical_low=et['typical_hours'][0], typical_high=et['typical_hours'][1], wall=et['wall_hours'])),
     )
     if selfcheck_given == 'pin':
         cfg['selfcheck_given'] = dict(pin['selfcheck'])
+        cfg['selfcheck_given_program_sha256'] = pin['selfcheck_measured_on_sha256']  # the binary these texts were measured on: strength_prereg checks it is the program
     elif selfcheck_given:
         cfg['selfcheck_given'] = dict(selfcheck_given)
+        cfg['selfcheck_given_program_sha256'] = program_sha  # measured just now, on this program
         cfg['selfcheck_how'] = selfcheck_how
     return cfg
 
@@ -467,11 +603,12 @@ def run_prereg(cfg_path, rundir, repo):
 
 
 def run_selfcheck(pin, repo, spec, say, deadline=None, now=None):
-    """Replay the 12 fixed self-check games on the pinned program (scrubbed environment, low priority) and refuse on any difference from the pin. The program
-    runs in its own process group, which is stopped if this wrapper is interrupted or if `deadline` (the school-morning 6:30 cut) comes first."""
+    """Replay the 12 fixed self-check games on the program (pin['program'], which the caller sets to the rebuilt copy's path on the --program route) in a scrubbed
+    environment at low priority, and refuse on any difference from the committed pin's digest. The program runs in its own process group, which is stopped if this
+    wrapper is interrupted or if `deadline` (the school-morning 6:30 cut) comes first."""
     reg = load_json(os.path.join(HERE, 'decks.json'))['decks']
     env, _ = scrub_env(dict(os.environ), pin['scrub_env_prefixes'])
-    say(f'self-check of {spec}: 12 fixed games on the pinned program (this takes a while for kx3; run it when the laptop is free)')
+    say(f'self-check of {spec}: 12 fixed games on {pin["program"]} (this takes a while for kx3; run it when the machine is free)')
     cmd = nice_prefix() + [pin['program'], 'selfcheck', '--root', repo, '--pilot', spec, '--deck-a', reg['t-altaria'], '--deck-b', reg['t-suicune'], '--games', '12']
     proc = subprocess.Popen(cmd, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE, encoding='utf-8', errors='replace', env=env, start_new_session=True)
     try:
@@ -479,7 +616,7 @@ def run_selfcheck(pin, repo, spec, say, deadline=None, now=None):
         out, err = proc.communicate(timeout=timeout)
     except subprocess.TimeoutExpired:
         stop_group(proc)
-        die(f'REFUSED: the self-check of {spec} did not finish before the school-morning cut at {deadline.astimezone(CHICAGO).strftime("%a %H:%M")} Chicago time; nothing was written. '
+        die(f'REFUSED: the self-check of {spec} did not finish before the school-morning cut at {deadline.astimezone(chicago()).strftime("%a %H:%M")} Chicago time; nothing was written. '
             'Start it earlier in the evening or on a weekend (or with --school-rule off).')
     except BaseException:
         stop_group(proc)
@@ -489,6 +626,9 @@ def run_selfcheck(pin, repo, spec, say, deadline=None, now=None):
             if pipe:
                 pipe.close()
     got = out.strip()
+    if proc.returncode != 0:
+        die(f'REFUSED: the self-check of {spec} on {pin["program"]} exited with code {proc.returncode} ({(err.strip()[-200:] or got[-200:] or "no output")}); a self-check that fails is not a match, '
+            'whatever it printed. Nothing was written.')
     if got != pin['selfcheck'][spec]:
         die(f'REFUSED: the self-check of {spec} does not match the pin.\n  pinned: {pin["selfcheck"][spec]}\n  got:    {got[-300:] or err.strip()[-200:]}\n'
             'The program is not behaving as the pinned build did; nothing was written.')
@@ -519,7 +659,9 @@ def verify_inputs(man):
     problems = []
     prog = man['program']
     if not os.path.isfile(prog) or sha(prog) != man.get('program_sha256'):
-        problems.append(f'{prog} is not the program this run was registered with (sha256 {str(man.get("program_sha256"))[:12]})')
+        problems.append(f'{prog} {"is missing" if not os.path.isfile(prog) else f"has sha256 {sha(prog)[:12]}"}, but this run was registered with the program at that path with sha256 '
+                        f'{str(man.get("program_sha256"))[:12]}. A resume needs the same program, byte for byte: the same image and toolchain normally rebuild byte-identically '
+                        f'(rl/strength/build.sh to the same path), a different build does not, and then this run cannot continue (register a new one)')
     root = man.get('repo_root') or '.'
     if man.get('repo_root') and not os.path.isdir(root):
         problems.append(f'the repository this run was registered in ({root}) is not there: the run records the path of its checkout, so a moved or renamed checkout cannot resume it '
@@ -703,21 +845,27 @@ def games_word(n):
     return plural(n, 'game')
 
 
+def range_points(m, half):
+    """'probably between -1.9 and +14.4 points' for a difference of scores m +- half (fractions), cut at the ends of the possible scale (-100 to +100 points). The two
+    ends are rounded once, from the unrounded numbers, so the sentence never disagrees with itself."""
+    lo, hi = m - half, m + half
+    cut = ' (cut at the ends of the possible scale)' if lo < -1 or hi > 1 else ''
+    return f'probably between {signed_points(max(-1.0, lo))} and {signed_points(min(1.0, hi))} points{cut}'
+
+
 def gain_range_note(pilot, ref, n, m, half):
-    """In plain words what the paired-gain range m +- half (fractions of a score, over n paired games) does and does not include; never waves a wide range away."""
+    """In plain words what the paired-gain range m +- half (fractions of a score, over n paired games; the range itself is printed by range_points just before) does
+    and does not include; never waves a wide range away."""
     glo, ghi = m - half, m + half
     if ghi - glo >= 2:
         return f"That range is wider than the whole possible scale (-100 to +100 points): {plural(n, 'paired game')} are too few to say anything about the gain yet."
-    clipped = glo < -1 or ghi > 1
     glo, ghi = max(-1.0, glo), min(1.0, ghi)
-    lo_txt = 'just above +0.0' if glo > 0 and signed_points(glo) == '+0.0' else signed_points(glo)
-    hi_txt = 'just below +0.0' if ghi < 0 and signed_points(ghi) == '+0.0' else signed_points(ghi)
-    cut = ' (cut at the ends of the possible scale)' if clipped else ''
     if glo <= 0 <= ghi:
-        return (f"That range runs from {lo_txt} to {hi_txt} points{cut}, which includes no gain at all: these {n} paired games do not show that {pilot} plays this deck "
+        return (f"That range includes no gain at all: these {n} paired games do not show that {pilot} plays this deck "
                 f"better than {ref}, and do not show that it plays it worse. They do argue against a gain much larger than {100 * ghi:.1f} points or a loss much larger "
                 f"than {100 * abs(glo):.1f} points; a smaller difference needs more deals.")
-    return (f"That range runs from {lo_txt} to {hi_txt} points{cut}, which does not include no gain: on these {n} paired games {pilot} did "
+    only_just = (' (only just: its nearer end is less than 0.05 points from no gain)' if 0 <= round(100 * min(abs(glo), abs(ghi)), 1) < 0.1 else '')
+    return (f"That range does not include no gain{only_just}: on these {n} paired games {pilot} did "
             f"{'better' if glo > 0 else 'worse'} than {ref}. It does not say by exactly how much: that part of the range is as wide as {n} paired games make it.")
 
 
@@ -743,7 +891,8 @@ def unfinished_errors(rundir, finished_keys):
     return [(k, attempts[k], first[k]) for k in first if k not in finished_keys]
 
 
-SELFCHECK_HOW = (('given', 'copied from the pin, not replayed'), ('replayed by slow_report', 'replayed just before registration, equal to the pin'),
+SELFCHECK_HOW = (('given', 'copied from the pin, not replayed: the pin says it was measured on this exact binary'),
+                 ('replayed by slow_report', 'replayed on this machine just before registration, equal to the committed pin'),
                  ('run by strength_prereg', 'replayed at registration'))
 
 
@@ -774,8 +923,15 @@ def write_slow_report(rundir, out=None):
     P = L.append
     P(f'# Slow report: {deck}\n')
     P(f'**{sr["headline"]}** ({k} public lists: {", ".join(panel)}). Stage `use`: a report on one deck, not development evidence.\n')
-    if partial:
-        P(f"**PARTIAL: {len(games)} of {planned} games played so far ({kg(len(xg), pilot)} + {kg(len(rg), ref, True)}; both count in the {planned}). "
+    P('## What it says\n')
+    paired_on = bool(sr.get('paired'))
+    planned_x = len(panel) * deals * 2
+    if paired_on:
+        P(f'Question: how does {deck} do when {pilot} plays it against the {k} public lists, and is that better than when {ref} plays the same deck on the same deals?\n')
+    else:
+        P(f'Question: how does {deck} do when {pilot} plays it against the {k} public lists?\n')
+    if partial:  # after the question, before any size or number
+        P(f"**PARTIAL: {kg(len(xg), pilot)} + {kg(len(rg), ref, True)} so far ({len(games)} of the {planned} games planned; both pilots' games count in the {planned}). "
           f"The numbers below will move; read them as a snapshot.**\n")
     if errors:
         n = len(errors)
@@ -784,14 +940,6 @@ def write_slow_report(rundir, out=None):
         P(f"{n} game{'' if n == 1 else 's'} could not be finished and {'is' if n == 1 else 'are'} left out of every number below (first: `{key}`, {att} {'try' if att == 1 else 'tries'}: {msg}). "
           f"A game that crashes is not a loss, so if the same card crashes {'them' if n > 1 else 'it'} the score leans towards games without it. "
           + ('At least one failed every time it was tried, so resuming will not fix it.' if every else f"A resumed run tries {'them' if n > 1 else 'it'} again.") + '\n')
-
-    P('## What it says\n')
-    paired_on = bool(sr.get('paired'))
-    planned_x = len(panel) * deals * 2
-    if paired_on:
-        P(f'Question: how does {deck} do when {pilot} plays it against the {k} public lists, and is that better than when {ref} plays the same deck on the same deals?')
-    else:
-        P(f'Question: how does {deck} do when {pilot} plays it against the {k} public lists?')
     size = kg(len(xg), pilot) + (f' + {kg(len(rg), ref, True)}' if paired_on else '')
     if partial:
         P(f'Size: {size} so far, of {kg(planned_x, pilot)}' + (f' + {kg(planned_x, ref, True)}' if paired_on else '') + ' planned.\n')
@@ -828,7 +976,7 @@ def write_slow_report(rundir, out=None):
                 P(head + f'; every one of the {n} comparisons gave the same difference, so no spread can be estimated from them.\n')
             else:
                 half = t_crit(n - 1) * sd / math.sqrt(n)
-                P(head + f', give or take {100 * half:.1f} points (95% interval; this range refers to {"that" if n == 1 else "those"} {plural(n, "paired game")}).\n')
+                P(head + f', {range_points(m, half)} (95% interval; this range refers to those {plural(n, "paired game")}).\n')
                 P(gain_range_note(pilot, ref, n, m, half) + '\n')
 
     P('## Against each public list\n')
@@ -898,10 +1046,22 @@ def write_slow_report(rundir, out=None):
 
     P('## What was run\n')
     P(f"- Pilots: {sr['pilot_label']} on the deck, {sr['reference_label']} on {sr['panel_label']}. Program `{man.get('program')}` sha256 `{str(man.get('program_sha256'))[:12]}`.")
+    if sr.get('program_route') == 'rebuilt':
+        P(f"- The program is a REBUILD of the pinned source, not the pinned binary (`{sr.get('pinned_program')}`, sha256 `{str(sr.get('pinned_program_sha256'))[:12]}`): it was accepted only because "
+          f"both self-checks were replayed on this machine and equal the committed pin's digests, and the harness source in the checkout is the pinned build's.")
     for spec, txt in (man.get('selfcheck') or {}).items():
         P(f"- Self-check of `{spec}`: `{txt}` ({selfcheck_how((man.get('selfcheck_source') or {}).get(spec))})")
     if man.get('engine'):
         P(f"- Build: {man['engine']}")
+    if sr.get('harness_source_sha256'):
+        here_ = sr.get('harness_source_checkout_sha256')
+        P(f"- Harness source sha256 `{sr['harness_source_sha256'][:12]}` (what rl/strength/build.sh prints); " + (
+            'the checkout this run was registered from has the same.' if here_ == sr['harness_source_sha256'] else
+            'the checkout this run was registered from has no harness source (rl/strength/src), so this could not be compared.' if not here_ else
+            f"the checkout this run was registered from has `{here_[:12]}` (so the pinned binary was not built from exactly that source)."))
+    if sr.get('school_rule'):
+        days_ = sr.get('school_days')
+        P(f"- School-morning rule: {sr['school_rule']}" + ((f" ({days_})" if days_ else ' (no school days, so it never pauses)' if days_ == '' else '') if sr['school_rule'] == 'on' else ' (chosen at registration, for a machine that is not the laptop)') + '.')
     P(f"- Deck file `{sr['deck_file']}` sha256 `{sr['deck_file_sha256'][:12]}`; the file is {sr['deck_file_state']}.")
     if man.get('heldout_in_run'):
         P(f"- Held-out decks in this run: {', '.join(man['heldout_in_run'])}. Allowed because this is a `use` report, not development evidence; the held-out lock is unchanged.")
@@ -919,11 +1079,9 @@ def write_slow_report(rundir, out=None):
 
 
 def console_lines(text):
-    """The lines worth echoing to the terminal: the PARTIAL banner, the error note and 'What it says', without markdown."""
+    """The lines worth echoing to the terminal: 'What it says' (the question first, then the PARTIAL banner and the error note when there are any, then the size and the
+    numbers), without markdown."""
     out = []
-    for line in text.splitlines():
-        if line.startswith('**PARTIAL') or ('could not be finished' in line and line[:1].isdigit()):
-            out.append(line)
     if '## What it says' in text:
         sec = text.split('## What it says')[1].split('\n## ')[0]
         out += [l for l in sec.splitlines() if l.strip() and not l.startswith('#')]
@@ -948,6 +1106,8 @@ def main(argv=None, *, now=None, sleep=None, spawn=None, deck_check=None):
     try:
         with signals_stop_the_program():  # over the whole call: the self-check, the registration and the run all stop their child process (and clean up) on SIGTERM / SIGHUP
             return _main(argv, ctx, now=now, sleep=sleep, spawn=spawn, deck_check=deck_check)
+    except NoTimeZoneDatabase as e:
+        raise SystemExit(f"[{ctx['tag']}] REFUSED: {e}") from None
     except SystemExit as e:
         if isinstance(e.code, str) and not e.code.startswith('['):
             raise SystemExit(f"[{ctx['tag']}] {e.code}") from None
@@ -967,15 +1127,17 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
     ap.add_argument('--date', help="YYYY-MM-DD for the run directory name (default: today in Chicago)")
     ap.add_argument('--seed-base', type=int)
     ap.add_argument('--selfcheck', action='store_true', help='replay the pinned self-check games instead of recording the pinned text (hours for kx3)')
+    ap.add_argument('--program', help='a REBUILD of the pinned build (for example on the cloud, with rl/strength/build.sh), used instead of the pin\'s path; when its sha256 is not the pinned '
+                                      'one, both self-checks are replayed on this machine and must equal the committed pin\'s digests (this forces --selfcheck)')
     ap.add_argument('--register-only', action='store_true')
     ap.add_argument('--report-only', action='store_true', help='with --dir: write the page from the games so far and play nothing')
     ap.add_argument('--dry-run', action='store_true', help='print the plan (or, with --dir, where the run stands); write nothing')
-    ap.add_argument('--school-rule', choices=('on', 'off'), default='on')
-    ap.add_argument('--school-days', default='mon,tue,wed,thu,fri')
+    ap.add_argument('--school-rule', choices=('on', 'off'), help='the school-morning rule (default on at registration; a resume keeps the registered choice). Off for a machine that is not the laptop, e.g. the cloud')
+    ap.add_argument('--school-days', help=f'the school days (default {DEFAULT_SCHOOL_DAYS} at registration; a resume keeps the registered choice)')
     ap.add_argument('--max-games', type=int, help='play at most this many games in this call, then write the page and stop')
     ap.add_argument('--poll-s', type=float, default=20.0)
     a = ap.parse_args(argv)
-    now = now or (lambda: datetime.datetime.now(CHICAGO))
+    now = now or (lambda: datetime.datetime.now(UTC))
     sleep = sleep or time.sleep
     spawn = spawn or default_spawn
     deck_check = deck_check or default_deck_check
@@ -983,7 +1145,8 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
     pin = load_pin(a.pin)
     _LOG_EXTRA.update(pilot=pin['pilot'], reference=pin['reference'])
     ctx['tag'] = f"{pin['pilot_label']} v {pin['reference_label']}"
-    school_days = parse_days(a.school_days)
+    if a.school_days is not None:
+        parse_days(a.school_days)  # refuse a bad day name before anything else
 
     if a.dir and a.deckfile:
         die('give a deck file or --dir, not both')
@@ -995,7 +1158,7 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
 
     if a.dir:
         for flag, given in (('--deals', a.deals is not None), ('--no-paired', a.no_paired), ('--date', a.date is not None), ('--seed-base', a.seed_base is not None),
-                            ('--selfcheck', a.selfcheck), ('--register-only', a.register_only)):
+                            ('--selfcheck', a.selfcheck), ('--register-only', a.register_only), ('--program', a.program is not None)):
             if given:
                 die(f'{flag} belongs to a new registration; a run that is already registered keeps what it was registered with, so it cannot be used with --dir')
         rundir = os.path.abspath(a.dir)
@@ -1004,10 +1167,18 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
             die(f'{rundir} is not a slow report run (its manifest has no slow_report block)')
         ctx['tag'] = man['slow_report']['headline']
         _LOG_EXTRA.update(pilot=man['pilot'], reference=man['reference'])
+        reg_days = man['slow_report'].get('school_days')
+        school_rule = a.school_rule or man['slow_report'].get('school_rule') or 'on'
+        school_days_text = a.school_days if a.school_days is not None else (reg_days if reg_days is not None else DEFAULT_SCHOOL_DAYS)  # '' is a choice (no school days), not "unset"
     else:
         if a.report_only:
             die('--report-only needs --dir RUNDIR (a run that is already registered)')
-        check_program(pin)
+        school_rule = a.school_rule or 'on'
+        school_days_text = a.school_days if a.school_days is not None else DEFAULT_SCHOOL_DAYS
+        program_path = os.path.abspath(a.program) if a.program else None
+        route, program_sha = check_program(pin, program_path, repo)
+        pin_run = dict(pin, program=program_path or pin['program'])  # the pin as this run uses it: the program's path may be a rebuilt copy's
+        harness_here = harness_source_sha256(repo)
         deck_abs = os.path.abspath(a.deckfile)
         name = deck_name_of(deck_abs)
         ctx['tag'] = headline_of(pin, name)
@@ -1015,6 +1186,9 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
         if not 1 <= deals <= MAX_DEALS:
             die(f'REFUSED: --deals must be between 1 and {MAX_DEALS}')
 
+    school_days = parse_days(school_days_text)
+    if school_rule == 'on' and school_days and not a.report_only:
+        chicago()  # fail now, with the clear message, not on the first school-morning check hours into a run (NoTimeZoneDatabase becomes a REFUSED in main)
     if a.threads is not None and a.threads < 1:
         die('REFUSED: --threads must be at least 1')
     if a.max_games is not None and a.max_games < 1:
@@ -1041,8 +1215,9 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
         dsha = sha(deck_abs)
         state = deck_state(repo, rel)
         out_root = os.path.abspath(a.out_root) if a.out_root else os.path.join(repo, 'rl', 'results', 'slow_reports')
-        seed_base = pick_seed_base(dsha, out_root, tuple(pin['seed_block']), pin['seed_step'], a.seed_base)
-        date = a.date if a.date is not None else now().astimezone(CHICAGO).strftime('%Y-%m-%d')
+        reserved = pin.get('seed_reserved') or []
+        seed_base = pick_seed_base(dsha, out_root, tuple(pin['seed_block']), pin['seed_step'], a.seed_base, reserved)
+        date = a.date if a.date is not None else local_date(now())
         try:
             if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', date):
                 raise ValueError(date)
@@ -1054,36 +1229,51 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
             die(f'REFUSED: the run directory {rundir} already exists; resume it with --dir {shlex.quote(rundir)} (or pick another --date)')
         threads = a.threads or pin['threads']
         et = expected_time(deals, pin)
+        pilot_, ref_ = pin['pilot'], pin['reference']
+        say(f"question: how does {name} do when {pilot_} plays it against the {len(panel_names)} public lists" + (f', and is that better than when {ref_} plays the same deck on the same deals?' if not a.no_paired else '?'))
+        for d_, played_, planned_, cmd_ in unfinished_runs(out_root, name):
+            say(f"WARNING: an unfinished slow report of {name} already exists: {d_} ({played_} of {planned_} games played). Resume it ({cmd_}) "
+                'instead of registering a second one, unless you mean to.')
         say(f"plan: {name} ({rel}, {state}), {plural(deals, 'deal')} x 2 seats against the {len(panel_names)} public lists")
-        say(f"size: {kg(et['kx3_games'], pin['pilot'])} + {kg(et['kx3_games'], pin['reference'], True)} on the same deals ({2 * et['kx3_games']} games in all; the {pin['reference']} games take about "
+        say(f"size: {kg(et['kx3_games'], pilot_)} + {kg(et['kx3_games'], ref_, True)} on the same deals ({2 * et['kx3_games']} games in all; the {ref_} games take about "
             f"a second each{'; with --no-paired they are still played and the page leaves them out' if a.no_paired else ''}); "
-            f"the time is for the {kg(et['kx3_games'], pin['pilot'])}: about {hours_text(et['typical_hours'][0])} to "
+            f"the time is for the {kg(et['kx3_games'], pilot_)}: about {hours_text(et['typical_hours'][0])} to "
             f"{hours_text(et['typical_hours'][1])} if the deck plays like most of his, about {hours_text(et['wall_hours'])} if it plays like the Wailord wall (measured with 2 games at a time)")
-        say('on school days the run pauses from 5:15 am to 5 pm Chicago time (the school-morning rule), so the calendar time is longer')
-        say(f"stage use (not development evidence; the held-out lock is untouched), seeds from {seed_base}, program {pin['program']} (pinned, sha256 {pin['program_sha256'][:12]}), "
-            f"{'without' if a.no_paired else 'with'} the comparison with {pin['reference']} on the same deals in the page, no pass or fail line")
+        if school_rule == 'on':
+            say('on school days the run pauses from 5:15 am to 5 pm Chicago time (the school-morning rule), so the calendar time is longer')
+        else:
+            say('school-morning rule: OFF for this run (it never pauses for school mornings; the choice is recorded in the registration and carried by the resume command)')
+        replay = a.selfcheck or route == 'rebuilt'
+        if route == 'rebuilt':
+            say(f"program {pin_run['program']} (sha256 {program_sha[:12]}) is a REBUILD, not the pinned binary (sha256 {pin['program_sha256'][:12]}): both self-checks will be replayed on this machine "
+                'against the committed pin\'s digests before anything is registered (hours for kx3), and the checkout\'s harness source equals the pinned build\'s')
+        say(f"stage use (not development evidence; the held-out lock is untouched), seeds from {seed_base}, program {pin_run['program']} "
+            f"({'pinned' if route == 'pinned' else 'rebuilt'}, sha256 {program_sha[:12]}), "
+            f"{'without' if a.no_paired else 'with'} the comparison with {ref_} on the same deals in the page, no pass or fail line")
         if a.dry_run:
             say('dry run: nothing written')
             return 0
         given, how = 'pin', 'pin'
-        if a.selfcheck:
+        if replay:
             deadline = None
-            if a.school_rule == 'on' and school_days:
+            if school_rule == 'on' and school_days:
                 act = school_action(now(), school_days)
                 if act['kind'] == 'wait':
-                    die(f"REFUSED: the self-check runs for hours and it is school time (the school-morning rule waits until {act['until'].strftime('%a %H:%M')} Chicago time); "
+                    die(f"REFUSED: the self-check runs for hours and it is school time (the school-morning rule waits until {act['until'].astimezone(chicago()).strftime('%a %H:%M')} Chicago time); "
                         'start it after that, or with --school-rule off')
                 deadline = act['hard_stop']
-            given, how = {spec: run_selfcheck(pin, repo, spec, say, deadline=deadline, now=now) for spec in sorted({pin['pilot'], pin['reference']})}, 'replayed'
+            given, how = {spec: run_selfcheck(pin_run, repo, spec, say, deadline=deadline, now=now) for spec in sorted({pin['pilot'], pin['reference']})}, 'replayed'
             if os.path.exists(rundir):  # hours may have passed: what was decided before the self-check is decided again
                 die(f'REFUSED: the run directory {rundir} appeared while the self-check ran; resume it with --dir {shlex.quote(rundir)} (or pick another --date)')
-            again = pick_seed_base(dsha, out_root, tuple(pin['seed_block']), pin['seed_step'], a.seed_base)
+            again = pick_seed_base(dsha, out_root, tuple(pin['seed_block']), pin['seed_step'], a.seed_base, reserved)
             if again != seed_base:
                 say(f'note: seed slot {seed_base} was taken while the self-check ran; using {again}')
                 seed_base = again
         cfg = build_config(pin=pin, pin_path=a.pin, deck_rel=rel, deck_name=name, deck_sha=dsha, deck_state=state, deals=deals, paired=not a.no_paired, seed_base=seed_base,
-                           threads=threads, program_sha=pin['program_sha256'], selfcheck_given=given, selfcheck_how=how,
-                           resume_command=shlex.join(['python3', 'rl/strength/slow_report.py', '--dir', rundir]))
+                           threads=threads, program_sha=program_sha, selfcheck_given=given, selfcheck_how=how,
+                           resume_command=resume_command_for(rundir, school_rule, school_days_text), program=pin_run['program'], route=route,
+                           harness_checkout=harness_here, school_rule=school_rule, school_days=school_days_text,
+                           engine_tree_checkout=engine_tree_in_checkout(repo, pin.get('engine_ref')))
         made_root = not os.path.exists(out_root)
 
         def cleanup():
@@ -1114,20 +1304,26 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
             raise
         say(f'registered in {rundir} before any game')
         if a.register_only:
+            say(f"play it with: {man['slow_report'].get('resume_command') or resume_command_for(rundir, school_rule, school_days_text)} (add --max-games N to play in slices)")
             return 0
 
     sr_block = man['slow_report']
+    resume_cmd = sr_block.get('resume_command') or resume_command_for(rundir, school_rule, school_days_text)
     if a.dir and a.dry_run:
-        planned = len(planned_keys(man))
-        have = len({g['key'] for g in load_games(rundir)})
+        keys = planned_keys(man)
+        planned_x, planned_r = sum(1 for k in keys if k.endswith('|X')), sum(1 for k in keys if k.endswith('|ref'))
+        done = {g['key'] for g in load_games(rundir)}
+        have_x, have_r = sum(1 for k in done if k.endswith('|X')), sum(1 for k in done if k.endswith('|ref'))
         problems = verify_inputs(man)
-        if have >= planned:
+        if have_x + have_r >= len(keys):
             status = 'complete'
         elif problems:
             status = 'it would be refused: ' + '; '.join(problems)
         else:
-            status = 'resume with: ' + (sr_block.get('resume_command') or shlex.join(['python3', 'rl/strength/slow_report.py', '--dir', rundir]))
-        say(f"{have} of {planned} games played; {plural(planned - have, 'game')} to go ({status})")
+            status = 'resume with: ' + resume_cmd
+        say(f"question: how does {sr_block['deck_name']} do when {man['pilot']} plays it against the {len(man['opponents'])} public lists" + (f", and is that better than when {man['reference']} plays the same deck on the same deals?" if sr_block.get('paired') else '?'))
+        say(f"played so far: {kg(have_x, man['pilot'])} + {kg(have_r, man['reference'], True)} of {kg(planned_x, man['pilot'])} + {kg(planned_r, man['reference'], True)} planned; "
+            f"{kg(planned_x - have_x, man['pilot'])} + {kg(planned_r - have_r, man['reference'], True)} to go ({status})")
         say('dry run: nothing written')
         return 0
 
@@ -1139,17 +1335,19 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
             die('REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n  ' + '\n  '.join(problems))
         lock = acquire_lock(rundir, say)
         try:
+            log_event(rundir, 'sitting_call', school_rule=school_rule, school_days=school_days_text, threads=a.threads or man.get('threads') or pin['threads'], max_games=a.max_games,
+                      school_choice_overridden=bool(a.dir and (a.school_rule or a.school_days is not None)))
             try:
                 status = run_games(rundir, man, sr_block.get('scrub_env_prefixes') or pin['scrub_env_prefixes'],
                                    threads=a.threads or man.get('threads') or pin['threads'], max_games=a.max_games,
-                                   school_on=a.school_rule == 'on', school_days=school_days, now=now, sleep=sleep, spawn=spawn, poll_s=a.poll_s, say=say)
+                                   school_on=school_rule == 'on', school_days=school_days, now=now, sleep=sleep, spawn=spawn, poll_s=a.poll_s, say=say)
             except (SystemExit, KeyboardInterrupt):
                 best_effort_pages(rundir, say)
                 raise
         finally:
             release_lock(lock)
         if status == 'limit':
-            say(f'stopped after --max-games {a.max_games}; resume with --dir {shlex.quote(rundir)}')
+            say(f'stopped after --max-games {a.max_games}; resume with: {resume_cmd}')
     # the engineering report (REPORT.md) first, so the page can point at it; a failure there never blocks the page
     rr = subprocess.run([sys.executable, '-B', REPORT, '--dir', rundir], capture_output=True, text=True)
     if rr.returncode != 0:

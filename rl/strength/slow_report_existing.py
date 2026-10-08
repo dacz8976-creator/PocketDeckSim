@@ -108,7 +108,10 @@ def build(deck, dev_dir, tool_dir, pin):
     if deal_bad:
         SR.die(f'THE PAIRING IS VOID: {deal_bad} of the {want} {pin["pilot"]} games in the gate-3 run did not start from the development run\'s deal (seed or first player differ), so on-minus-off '
                'would compare different games. Nothing was written.')
-    return dict(deck=deck, dev_dir=dev_dir, tool_dir=tool_dir, dman=dman, dmsha=dmsha, tman=tman, tmsha=tmsha, dg=dg, tg=tg, panel=panel, pin=pin, ref_same=want)
+    pooled_pairs = sum(1 for g in tall.values() if g['arm'] == 'X')  # what gate 3 pooled on its own page: every kx3 game of the run, all of its decks
+    pooled_decks = len({g['deck'] for g in tall.values()})
+    return dict(deck=deck, dev_dir=dev_dir, tool_dir=tool_dir, dman=dman, dmsha=dmsha, tman=tman, tmsha=tmsha, dg=dg, tg=tg, panel=panel, pin=pin, ref_same=want,
+                pooled_pairs=pooled_pairs, pooled_decks=pooled_decks)
 
 
 def mean_half(xs):
@@ -135,7 +138,7 @@ def page(b):
     reg_before = [registered_first(g_, m_) for g_, m_ in ((dg, b['dman']), (b['tg'], b['tman']))]
     P(f'**Existing development evidence, not a fresh test.** Nothing was played for this page: it reads games that were already played, by the {pilot} development run '
       f'({b["dman"]["created_at"][:10]}) and by gate 3 of the Tool tie-break ({b["tman"]["created_at"][:10]}), ' +
-      ('both registered before any game.' if all(r is True for r in reg_before) else
+      (f"both registered before the first of this deck's games (only {deck}'s games were read, so that is all that was checked)." if all(r is True for r in reg_before) else
        '**but not both were registered before their games: see "Where these games come from".**' if False in reg_before else
        '**but the order of registration and games could not be confirmed for both (a game has no start time): see "Where these games come from".**') + '\n')
     P(f'**{headline}** ({k} public lists: {", ".join(panel)}). This is not the km3 floor check, which has its own page and its own result and is not changed by anything here; there is no pass or fail line.\n')
@@ -159,13 +162,13 @@ def page(b):
     elif gsd == 0:
         P(f'- The gain: {pilot} scored **{SR.signed_points(gm)} points** compared with {ref} on the same deals; every one of the {gn} paired games gave the same difference, so no spread can be estimated from them.')
     else:
-        P(f'- The gain: {pilot} scored **{SR.signed_points(gm)} points** compared with {ref} on the same deals, give or take {100 * gh:.1f} points '
+        P(f'- The gain: {pilot} scored **{SR.signed_points(gm)} points** compared with {ref} on the same deals, {SR.range_points(gm, gh)} '
           f'(95% interval). That range refers to the {paired_games}.')
     walls = [g['wall_s'] for g in xd.values()]
     P(f'- Time: {pilot} took {SR.fmt_s(statistics.mean(walls))} a game on average on this deck (about {SR.human_time(statistics.mean(walls))}; slowest {SR.fmt_s(max(walls))}), '
       f'{b["dman"].get("threads", 2)} games at a time; the {ref} baseline games took {SR.fmt_s(statistics.mean(g["wall_s"] for g in rd.values()))} each.\n')
     gain_note = SR.gain_range_note(pilot, ref, gn, gm, gh) + ' ' if gn >= 2 and gsd > 0 else ''
-    gain_scale = f" (the gain's range is plus or minus {100 * gh:.1f} points)" if gn >= 2 and gsd > 0 else ''
+    gain_scale = f" (the gain's range is {200 * gh:.1f} points wide)" if gn >= 2 and gsd > 0 else ''
     P(f'What the {n}-game range can tell and cannot tell: it can tell whether {pilot} plays this deck near, clearly above or clearly below an even score against these {k} lists '
       f'({SR.pct1(lo)} to {SR.pct1(hi)} here), and it can tell a large gain over {ref} from none at all{gain_scale}. {gain_note}'
       f'It cannot tell a gain of a point or two from a gain of ten: {n} games decide only that much, and a wide range is a statement of how much {n} games decide, not an answer of "nothing". '
@@ -219,14 +222,14 @@ def page(b):
     elif dn < 2 or dsd == 0:
         P(f'- On minus off: **{SR.signed_points(dm)} points** over the {dn} paired games played with the Tool tie-break on and off; no spread can be estimated from them.')
     else:
-        P(f'- On minus off: **{SR.signed_points(dm)} points**, give or take {100 * dh:.1f} points (95% interval; this range refers to the {dn} paired games played with the Tool tie-break on and off).')
+        P(f'- On minus off: **{SR.signed_points(dm)} points**, {SR.range_points(dm, dh)} (95% interval; this range refers to the {dn} paired games played with the Tool tie-break on and off).')
     on_km = [x[5] - SC[rd[x[7][: -len('X')] + 'ref']['winner']] for x in pairs]
     off_km = [x[6] - SC[rd[x[7][: -len('X')] + 'ref']['winner']] for x in pairs]
     n1, m1, s1, h1_ = mean_half(on_km)
     n2, m2, s2, h2_ = mean_half(off_km)
     def with_spread(mean, sd, half, which):
         # a range only where the paired differences vary; where every one of them is the same there is no spread to estimate from them
-        return (f'{which} {SR.signed_points(mean)} points (give or take {100 * half:.1f})' if n1 >= 2 and sd > 0
+        return (f'{which} {SR.signed_points(mean)} points ({SR.range_points(mean, half)})' if n1 >= 2 and sd > 0
                 else f'{which} {SR.signed_points(mean)} points (no spread to give: every difference is the same)')
     P(f'- For context, {pilot} minus {ref} on the same deals: {with_spread(m1, s1, h1_, "with the Tool tie-break on")}, {with_spread(m2, s2, h2_, "off")}; '
       f'each range refers to the {n1} paired games.\n')
@@ -241,7 +244,7 @@ def page(b):
             'a question for more deals.' if win == 0 else f'and {"the one changed winner is" if win == 1 else f"the {win} changed winners are"} what the on-minus-off figure above counts, for or against the rule; '
             f'{"one is" if win == 1 else "they are"} too few to say more.')
     P(f'What this can tell and cannot tell: it can tell what the rule did on these {m} paired games ({dec} had a changed decision, {win} a changed winner), and it can put a bound on how often it changes a winner: {share}. '
-      f'It cannot tell what the rule does on other deals or other decks (gate 3 pooled 400 pairs over 5 decks on its own page), {tail}\n')
+      f"It cannot tell what the rule does on other deals or other decks (gate 3 pooled {b['pooled_pairs']} pairs over {b['pooled_decks']} deck{'' if b['pooled_decks'] == 1 else 's'} on its own page), {tail}\n")
 
     # ------------------------------------------------------------------------------------------------ provenance
     P('## Where these games come from\n')
@@ -251,7 +254,7 @@ def page(b):
         before = registered_first(games, man)
         P(f"- {label}: `{rel(d_)}`; stage {man['stage']}; pilot `{man['pilot']}` against `{man['reference']}`; program `{man.get('program')}` sha256 `{str(man.get('program_sha256'))[:12]}`; "
           f"manifest sha256 `{msha[:16]}` (matches manifest.sha256); registered {man['created_at']}, first {deck} game started {started or 'at a time that is not recorded'}"
-          + (' (registered before any game)' if before else ' (**NOT registered before the games**)' if before is False else ' (**order of registration and games not confirmed**)')
+          + (" (registered before the first of this deck's games)" if before else ' (**NOT registered before the games**)' if before is False else ' (**order of registration and games not confirmed**)')
           + f"; games.jsonl sha256 `{file_sha(gp)[:12]}`; only deck {deck} was read ({len(games)} games).")
     P(f"- The pinned build for fresh reports is `{pin['program']}` sha256 `{pin['program_sha256'][:12]}` ({pin['pilot_label']}); the development run was played by that build.")
     P(f'- Seeds {b["dman"]["seed_base"]} + p x {b["dman"]["pair_stride"]} + i; the gate-3 run used the same deals.\n')

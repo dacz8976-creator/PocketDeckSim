@@ -21,7 +21,8 @@ What is pinned:
     group to stop), removed when none is, and a failed remove is no error; a lock file that cannot be opened or locked is refused in words; a lock that was
     opened on descriptor 0, 1 or 2 is moved up so the program inherits it;
   * the self-check run: its own process group, stopped on interrupt or at the school-morning cut, refused in school hours, a mismatch writes nothing (and shows
-    at most the end of what was printed, in any bytes), its pipes are closed however it ends, and what was decided before the hours-long replay (run folder,
+    at most the end of what was printed, in any bytes), an exit with an error code is no match even when the pinned text was printed (and shows the end of the error
+    stream, else of the output, else a word), its pipes are closed however it ends, and what was decided before the hours-long replay (run folder,
     seed slot) is decided again after it;
   * clean refusals instead of tracebacks: a missing deck file, a folder with no manifest, a pin without a key (or that cannot be read, or is not an object),
     a moved checkout, a file that has gone, a log file that does not exist, a seed picker with unreadable folders around it (or a manifest that is no object)
@@ -347,7 +348,7 @@ class WrapperSignals(Leftovers, T.World):
 
 # ---------------------------------------------------------------------------------------------------------- a pinned program that records how it was started
 SELFCHECK_PROGRAM = r'''#!/usr/bin/env python3
-import json, os, sys, time
+import json, os, signal, sys, time
 here = os.path.dirname(os.path.abspath(__file__))
 if sys.argv[1] == 'selfcheck':
     spec = sys.argv[sys.argv.index('--pilot') + 1]
@@ -368,13 +369,26 @@ if sys.argv[1] == 'selfcheck':
     if os.path.exists(os.path.join(here, 'selfcheck_crashes')):
         sys.stderr.write('boom: the engine could not start\n')
         sys.exit(1)
+    exit_file = os.path.join(here, 'selfcheck_exit')  # the exit code to end with, whatever was printed (a flag file: the code in it)
+    final = int(open(exit_file).read()) if os.path.exists(exit_file) else None
+
+    def finish(code):
+        err_file = os.path.join(here, 'selfcheck_stderr')  # bytes for the error stream, next to whatever was printed
+        if os.path.exists(err_file):
+            sys.stderr.flush()
+            sys.stderr.buffer.write(open(err_file, 'rb').read())
+            sys.stderr.buffer.flush()
+        if os.path.exists(os.path.join(here, 'selfcheck_killed')):  # killed by a signal after printing
+            os.kill(os.getpid(), signal.SIGKILL)
+        sys.exit(code if final is None else final)
     for name, stream, code in (('selfcheck_says', sys.stdout, 0), ('selfcheck_crash_says', sys.stderr, 1)):  # exactly these bytes, whatever they are
         if os.path.exists(os.path.join(here, name)):
             stream.flush()
             stream.buffer.write(open(os.path.join(here, name), 'rb').read())
             stream.buffer.flush()
-            sys.exit(code)
-    print('selfcheck pilot=%s games=12 digest=fakefakefakefake' % spec)
+            finish(code)
+    print('selfcheck pilot=%s games=12 digest=fakefakefakefake' % spec, flush=True)
+    finish(0)
 '''
 
 
@@ -408,6 +422,18 @@ class SelfcheckWorld(Leftovers, T.World):
 
     def flag(self, name):
         write(os.path.join(self.tmp, name), '')
+
+    def flag_with(self, name, text):
+        write(os.path.join(self.tmp, name), text)
+
+    def exits_with(self, code):
+        """The program ends with this exit code, whatever else it does (and prints the pinned text unless told otherwise)."""
+        self.flag_with('selfcheck_exit', str(code))
+
+    def failed(self, spec, code, shown):
+        """What a self-check that exited with an error code is refused with, whatever it printed."""
+        return (f'REFUSED: the self-check of {spec} on {self.pin["program"]} exited with code {code} ({shown}); a self-check that fails is not a match, whatever it printed. '
+                'Nothing was written.')
 
     def says(self, data, name='selfcheck_says'):
         """The program prints exactly these bytes (to its output, or with name='selfcheck_crash_says' to its error stream and exits with 1)."""
@@ -502,7 +528,44 @@ class SelfcheckProcess(SelfcheckWorld):
 
     def test_error_text_that_is_not_text_is_shown_with_replacement_characters_when_nothing_was_printed(self):
         self.says(b'boom \xff\xfe at the end', name='selfcheck_crash_says')
-        self.assertEqual(self.refused('kx3'), self.refusal('kx3', SELFCHECK_TEXT % 'kx3', 'boom �� at the end'))
+        self.assertEqual(self.refused('kx3'), self.failed('kx3', 1, 'boom �� at the end'))
+
+    def test_a_self_check_that_prints_the_pinned_text_and_then_exits_with_an_error_is_not_a_match(self):
+        self.exits_with(3)
+        self.assertEqual(self.refused('kx3'), self.failed('kx3', 3, SELFCHECK_TEXT % 'kx3'), 'with nothing on the error stream, the end of what it printed is shown')
+        self.assertTrue(os.path.exists(self.seen_path('kx3')), 'it did run')
+        self.exits_with(1)
+        self.says((SELFCHECK_TEXT % 'kx3').encode())
+        self.assertEqual(self.refused('kx3'), self.failed('kx3', 1, SELFCHECK_TEXT % 'kx3'), 'the same through the other way of printing the text')
+        self.flag_with('selfcheck_stderr', 'warning: the engine exited badly\n')
+        self.assertEqual(self.refused('kx3'), self.failed('kx3', 1, 'warning: the engine exited badly'), 'the error stream comes first when it has something to say')
+
+    def test_what_is_shown_of_a_failed_self_check_is_the_end_of_its_error_stream_else_of_its_output_else_a_word(self):
+        self.exits_with(2)
+        for n in (1, 199, 200, 201, 700):
+            with self.subTest(printed=n):
+                printed = ''.join(chr(ord('a') + i % 26) for i in range(n))
+                self.says(printed.encode())
+                self.flag_with('selfcheck_stderr', '')
+                self.assertEqual(self.refused('kx3'), self.failed('kx3', 2, printed[-200:]), 'nothing on the error stream: the last 200 characters of what was printed')
+                self.flag_with('selfcheck_stderr', '\n  ' + printed + '  \n')
+                self.assertEqual(self.refused('kx3'), self.failed('kx3', 2, printed[-200:]), 'the last 200 characters of the error stream, which come first, without the blank space around them')
+        self.says(b'')
+        self.flag_with('selfcheck_stderr', '')
+        self.assertEqual(self.refused('kx3'), self.failed('kx3', 2, 'no output'))
+        self.flag_with('selfcheck_stderr', ' \n\n')
+        self.assertEqual(self.refused('kx3'), self.failed('kx3', 2, 'no output'), 'blank space is no output')
+
+    def test_a_self_check_killed_by_a_signal_after_printing_the_pinned_text_is_not_a_match(self):
+        self.flag('selfcheck_killed')
+        self.assertEqual(self.refused('kx3'), self.failed('kx3', -signal.SIGKILL, SELFCHECK_TEXT % 'kx3'))
+
+    def test_a_self_check_that_exits_cleanly_is_a_match_whatever_it_wrote_to_the_error_stream(self):
+        self.flag_with('selfcheck_stderr', 'warning: a deprecated option\n')
+        text, said = self.selfcheck('kx3')
+        self.assertEqual(text, SELFCHECK_TEXT % 'kx3')
+        self.exits_with(0)
+        self.assertEqual(self.selfcheck('km3')[0], SELFCHECK_TEXT % 'km3')
 
     def test_a_mismatch_shows_at_most_the_last_300_characters_of_what_was_printed(self):
         for n in (1, 299, 300, 301, 1000):
@@ -513,12 +576,12 @@ class SelfcheckProcess(SelfcheckWorld):
         self.says(b'\n\n  ' + b'x' * 400 + b'  \n')
         self.assertEqual(self.refused('kx3'), self.refusal('kx3', SELFCHECK_TEXT % 'kx3', 'x' * 300), 'the blank space around the output is not part of it')
 
-    def test_with_nothing_printed_the_error_stream_stands_in_with_at_most_its_last_200_characters(self):
+    def test_a_self_check_that_crashes_shows_at_most_the_last_200_characters_of_its_error_stream(self):
         for n in (199, 200, 201, 800):
             with self.subTest(written=n):
                 written = ''.join(chr(ord('a') + i % 26) for i in range(n))
                 self.says(written.encode() + b'\n', name='selfcheck_crash_says')
-                self.assertEqual(self.refused('kx3'), self.refusal('kx3', SELFCHECK_TEXT % 'kx3', written[-200:]))
+                self.assertEqual(self.refused('kx3'), self.failed('kx3', 1, written[-200:]))
 
     def popen_recorder(self):
         """Every process run_selfcheck starts, kept so that the test can look at its pipes afterwards."""
@@ -611,9 +674,20 @@ class SelfcheckOnTheCommandLine(SelfcheckWorld):
     def test_a_self_check_that_crashes_refuses_with_the_end_of_its_message_and_writes_nothing(self):
         self.flag('selfcheck_crashes')
         code, out, err = self.cli('--deals', '1', '--selfcheck')
-        self.assertIn('REFUSED: the self-check of km3 does not match the pin.', str(code))
-        self.assertIn('got:    boom: the engine could not start', str(code))
+        self.assertEqual(code, f'{T.HEADLINE_START}my-list v km3 on the public panel] ' + self.failed('km3', 1, 'boom: the engine could not start'))
+        self.assertFalse(os.path.exists(self.seen_path('kx3')), 'and the next pilot is not tried')
         self.assertFalse(os.path.exists(self.out_root))
+
+    def test_a_self_check_that_prints_the_pinned_text_but_exits_with_an_error_refuses_and_writes_nothing(self):
+        self.exits_with(1)
+        for extra in (('--selfcheck',), ('--selfcheck', '--register-only')):
+            code, out, err = self.cli('--deals', '1', *extra)
+            self.assertEqual(code, f'{T.HEADLINE_START}my-list v km3 on the public panel] ' + self.failed('km3', 1, SELFCHECK_TEXT % 'km3'), 'the text matched; the exit code did not')
+            self.assertFalse(os.path.exists(self.seen_path('kx3')), 'km3 first, and it stops there')
+            self.assertFalse(os.path.exists(self.out_root), 'nothing was written')
+        os.remove(os.path.join(self.tmp, 'selfcheck_exit'))
+        code, out, err = self.cli('--deals', '1', '--selfcheck', '--register-only')  # without the error the same replay is accepted
+        self.assertEqual(code, 0, err + out)
 
     def test_a_matching_self_check_changes_nothing_else(self):
         code, out, err = self.cli('--deals', '1', '--selfcheck', '--register-only')
@@ -700,8 +774,18 @@ class SelfcheckOnTheCommandLine(SelfcheckWorld):
         taken = BLOCK[0] + slot * STEP
         self.meanwhile(['write', os.path.join(self.out_root, '2026-10-09_other', 'manifest.json'), json.dumps({'seed_base': taken})])
         code, out, err = self.cli('--deals', '1', '--selfcheck', '--seed-base', str(taken))
-        self.assertIn(f'REFUSED: --seed-base {taken} is the seed slot of 2026-10-09_other', str(code))
+        self.assertIn(f'REFUSED: --seed-base {taken} is a seed slot that is already used (2026-10-09_other); two reports would play the same deals', str(code))
         self.assertFalse(os.path.exists(self.rundir()))
+
+    def test_a_reserved_slot_stays_reserved_when_the_seed_is_decided_again_after_the_self_check(self):
+        for slot in (684, 685, 686):
+            with self.subTest(slot=slot):
+                write(self.deck, T.deck_text_in_slot(slot))  # a deck that would land in a slot the pin reserves
+                shutil.rmtree(self.out_root, ignore_errors=True)
+                code, out, err = self.cli('--deals', '1', '--selfcheck', '--register-only')
+                self.assertEqual(code, 0, err + out)
+                self.assertEqual(json.loads(read(os.path.join(self.rundir(), 'manifest.json')))['seed_base'], BLOCK[0] + 687 * STEP)
+                self.assertNotIn('note:', out, 'the slot decided before the self-check is the one decided after it')
 
 
 # ---------------------------------------------------------------------------------------------------------- stop signals reach the whole call
@@ -1199,8 +1283,9 @@ class CleanRefusals(T.World):
 
     def test_a_pin_without_a_required_key_is_refused_naming_the_key(self):
         committed = json.loads(read(os.path.join(HERE, 'slow_report_pin.json')))
-        keys = ['pilot', 'reference', 'pilot_label', 'reference_label', 'panel_label', 'panel_group', 'program', 'program_sha256', 'selfcheck', 'engine',
-                'pilot_provenance', 'reference_provenance', 'seed_block', 'seed_step', 'games_per_hour', 'scrub_env_prefixes', 'threads']
+        keys = ['pilot', 'reference', 'pilot_label', 'reference_label', 'panel_label', 'panel_group', 'program', 'program_sha256', 'selfcheck', 'selfcheck_measured_on_sha256',
+                'harness_source_sha256', 'engine', 'pilot_provenance', 'reference_provenance', 'seed_block', 'seed_step', 'games_per_hour', 'scrub_env_prefixes', 'threads',
+                'seed_reserved']
         path = os.path.join(self.tmp, 'one-key-short.json')
         self.assertEqual(sr.load_pin(sr.DEFAULT_PIN)['pilot'], 'kx3', 'the committed pin has every key')
         for key in keys:
@@ -1391,7 +1476,7 @@ class SeedPickerRefusals(T.Timed):
             self.folder(t, '2026-10-09_older', json.dumps({'seed_base': mine}))
             with self.assertRaises(SystemExit) as cm:
                 sr.pick_seed_base('ab' * 32, t, BLOCK, STEP, explicit=mine)
-            self.assertEqual(cm.exception.code, f'REFUSED: --seed-base {mine} is the seed slot of 2026-10-09_older in {t}; two reports would play the same deals')
+            self.assertEqual(cm.exception.code, f'REFUSED: --seed-base {mine} is a seed slot that is already used (2026-10-09_older); two reports would play the same deals')
             self.assertEqual(sr.pick_seed_base('ab' * 32, t, BLOCK, STEP, explicit=mine + STEP), mine + STEP, 'the next slot is free')
 
 
@@ -1401,7 +1486,7 @@ class ExplicitSeedBaseOnTheCommandLine(T.World):
         first = self.register('--seed-base', str(slot))
         before = sorted(os.listdir(self.out_root))
         code, out, err = self.cli('--deals', '1', '--register-only', '--date', '2026-10-11', '--seed-base', str(slot), date=False)
-        self.assertIn(f'REFUSED: --seed-base {slot} is the seed slot of {os.path.basename(first)} in {self.out_root}', str(code))
+        self.assertIn(f'REFUSED: --seed-base {slot} is a seed slot that is already used ({os.path.basename(first)}); two reports would play the same deals', str(code))
         self.assertEqual(sorted(os.listdir(self.out_root)), before)
         code, out, err = self.cli('--deals', '1', '--register-only', '--date', '2026-10-11', '--seed-base', str(slot + STEP), date=False)
         self.assertEqual(code, 0, err + out)
@@ -1525,23 +1610,35 @@ class ResumeCommandIsQuoted(T.World):
         return shlex.split(line.split('(resume with: ', 1)[1].rstrip(')'))
 
     def test_the_command_recorded_at_registration_works_in_a_shell_for_a_folder_with_a_space(self):
-        d = self.register()
+        d = self.register(school=None)
         self.assertIn(' ', d)
         cmd = json.loads(read(os.path.join(d, 'manifest.json')))['slow_report']['resume_command']
+        self.assertEqual(cmd, f"python3 rl/strength/slow_report.py --dir {shlex.quote(d)}")
         self.assertEqual(shlex.split(cmd), ['python3', 'rl/strength/slow_report.py', '--dir', d])
-        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False, school=None)
         self.assertEqual(code, 0)
         self.assertEqual(self.command_in(out), ['python3', 'rl/strength/slow_report.py', '--dir', d])
 
+    def test_the_school_choice_the_command_carries_is_quoted_for_the_shell_too(self):
+        d = self.register('--school-days', 'mon, tue', school='on')  # (the spaces are allowed in the list)
+        cmd = json.loads(read(os.path.join(d, 'manifest.json')))['slow_report']['resume_command']
+        self.assertEqual(cmd, f"python3 rl/strength/slow_report.py --dir {shlex.quote(d)} --school-days 'mon, tue'")
+        self.assertEqual(shlex.split(cmd), ['python3', 'rl/strength/slow_report.py', '--dir', d, '--school-days', 'mon, tue'])
+        self.make()
+        self.out_root = os.path.join(self.tmp, 'results with a space')
+        d = self.register(school='off')
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False, school=None)
+        self.assertEqual(self.command_in(out), ['python3', 'rl/strength/slow_report.py', '--dir', d, '--school-rule', 'off'])
+
     def test_the_message_that_a_run_was_cut_by_max_games_quotes_the_folder_for_the_shell(self):
-        code, out, err = self.cli('--deals', '1', '--max-games', '2')
+        code, out, err = self.cli('--deals', '1', '--max-games', '2', school=None)
         self.assertEqual(code, 0, out + err)
         d = self.rundir()
         self.assertIn(' ', d)
         line = [l for l in out.splitlines() if 'stopped after --max-games' in l]
-        self.assertEqual(line, [f'{T.HEADLINE_START}my-list v km3 on the public panel] stopped after --max-games 2; resume with --dir {shlex.quote(d)}'])
+        self.assertEqual(line, [f'{T.HEADLINE_START}my-list v km3 on the public panel] stopped after --max-games 2; resume with: python3 rl/strength/slow_report.py --dir {shlex.quote(d)}'])
         self.assertTrue(shlex.quote(d).startswith("'"), 'the path really needed quoting')
-        self.assertEqual(shlex.split(line[0].split('resume with --dir ', 1)[1]), [d], 'a shell reads it back as the one folder')
+        self.assertEqual(shlex.split(line[0].split('resume with: ', 1)[1]), ['python3', 'rl/strength/slow_report.py', '--dir', d], 'a shell reads it back as the one folder')
 
     def test_the_refusal_to_register_over_an_existing_run_quotes_the_folder_for_the_shell(self):
         d = self.register()
@@ -1559,11 +1656,11 @@ class ResumeCommandIsQuoted(T.World):
         self.assertTrue(str(code).endswith(f'already exists; resume it with --dir {d} (or pick another --date)'), code)
 
     def test_a_run_registered_without_a_recorded_command_is_given_a_quoted_one(self):
-        d = self.register()
+        d = self.register(school=None)
         man = json.loads(read(os.path.join(d, 'manifest.json')))
         del man['slow_report']['resume_command']
         T.rewrite_manifest(d, man)
-        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False, school=None)
         self.assertEqual(code, 0, out + err)
         self.assertEqual(self.command_in(out), ['python3', 'rl/strength/slow_report.py', '--dir', d])
 

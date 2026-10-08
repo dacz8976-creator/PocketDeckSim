@@ -1,6 +1,6 @@
 # Pre-registration: slow_report_smoke-held
 
-Written 2026-10-07T23:09:22Z, **before any game was played**. The manifest (`manifest.json`, sha256 `af361717b158cdd3c7c9aa2e4d0f7c2d20ca5e35d9f72178b0aa205e9fa97c1f`) is exactly what the program runs; the report refuses a run whose manifest no longer matches.
+Written 2026-10-08T02:17:39Z, **before any game was played**. The manifest (`manifest.json`, sha256 `7cb7da5af4f4d6b09b7859532ebb30fb23803f902accbf9e6e0af23644b322a4`) is exactly what the program runs; the report refuses a run whose manifest no longer matches.
 
 ## Question
 
@@ -11,7 +11,7 @@ km3 (smoke, not kx3) on smoke-held v km3 on the public panel. A slow report on o
 - **Pilot under test (arm X):** `km3` (kx3 from claude/playout-pilot@d513e37b, frozen Oct 4-5)
 - **Reference (arm ref, and the opponent in both arms):** `km3` (km3 in the same build; it equals the pinned km3 (step 10's 240 games field for field, self-check 81b572198c04d5d1))
 - Program: `/home/dacz8976/kx/strength` sha256 `5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2`; engine: claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec (the frozen, tested development build), built on the laptop Oct 2; km3 240/240 v the official program, self-checks km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa; KX_EXTRA_LISTS unset; repository commit: `None`
-- Self-check of `km3` on this build (12 fixed games, t-altaria v t-suicune): `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (given in the config, copied from the pin and not replayed: the digest belongs to the exact program whose sha256 is named above). The same pilot code on another build must print the same digest.
+- Self-check of `km3` on this build (12 fixed games, t-altaria v t-suicune): `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (given in the config, copied from the pin and not replayed: the pin says it was measured on this exact program, whose sha256 is named above). The same pilot code on another build must print the same digest.
 
 ## Design
 
@@ -42,7 +42,17 @@ Stage `use`: a report on a deck, not development, so it is allowed on any deck a
 - deck_file_state: `unknown (not a git repository)`
 - deals: `2`
 - paired: `True`
-- pin: `{'path': '/home/dacz8976/slow_smoke2/pin_smoke.json', 'sha256': '0a0d9f57ee3b1037d5b6744f264d1124ed881151c14c8859658395af067f6c88'}`
+- pin: `{'path': '/home/dacz8976/slow_smoke2/pin_smoke.json', 'sha256': '97dcb802b5a051a87664366642a0d61437bec0a37cfa01fb70f7480d06de52c5'}`
+- program_route: `pinned`
+- pinned_program: `/home/dacz8976/kx/strength`
+- pinned_program_sha256: `5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2`
+- harness_source_sha256: `bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e`
+- harness_source_checkout_sha256: `bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e`
+- engine_ref: `d513e37b473f2819075e1eb2439075a8a1e65c42`
+- engine_tree: `31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588`
+- engine_tree_in_checkout: `not found`
+- school_rule: `off`
+- school_days: `mon,tue,wed,thu,fri`
 
 ## Analysis plan (fixed now)
 
@@ -54,8 +64,8 @@ Stage `use`: a report on a deck, not development, so it is allowed on any deck a
 
 ## Run
 
-A slow report is run and resumed through its wrapper, which removes the variables that would tune the pilot or change the rules from the program's environment, keeps the school-morning rule and checks the registration, the deck files and the pinned program before every sitting:
+A slow report is run and resumed through its wrapper, which removes the variables that would tune the pilot or change the rules from the program's environment, does NOT apply the school-morning rule (chosen at registration: it never pauses for school mornings), and checks the registration, the deck files and the pinned program before every sitting:
 
 ```
-python3 rl/strength/slow_report.py --dir /home/dacz8976/slow_smoke2/runs/2026-10-07_smoke-held
+python3 rl/strength/slow_report.py --dir /home/dacz8976/slow_smoke2/runs/2026-10-07_smoke-held --school-rule off
 ```

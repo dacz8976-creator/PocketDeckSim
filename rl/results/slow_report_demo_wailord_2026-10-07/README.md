@@ -12,8 +12,9 @@ This is **not** the km3 floor check and does not touch its result: the floor che
 ## What the page answers
 
 1. **How does the deck do with kx3, and is that better than with km3?** 80 kx3 games + 80 cheap km3 baseline games: kx3 scored 80.6% (probably 70.6% to 87.8%), km3 on the
-   same deals 74.4%, a gain of +6.2 points give or take 8.2. That range runs from -1.9 to +14.4, so it includes no gain at all: the 80 games do not show kx3 better on this deck
-   and do not show it worse. They do not support a large gain or a large loss. More deals narrow it (about 16 kx3 games per deal; the plan's cost table gives the hours).
+   same deals 74.4%, a gain of +6.2 points, probably between -1.9 and +14.4 (95%). That range includes no gain at all: the 80 paired games (each a deal and seat played by both pilots)
+   do not show kx3 better on this deck and do not show it worse. They do argue against a gain much larger than 14.4 points or a loss much larger than 1.9. More deals narrow it
+   (about 16 kx3 games per deal; the plan's cost table gives the hours).
 2. **Does the Tool tie-break change what kx3 does with this deck?** 80 kx3 games with the rule on + the 80 existing games with it off, on the same deals: the rule changed a logged
    decision in 15 of the 80 games, changed points or turns in 12, and changed the winner in none (on minus off exactly +0.0 points over 80 deals). That bounds the share of
    deals whose winner it changes at about 4.6 in 100 or less (95%); it does not show the rule useful or harmless on other decks or in more games.
@@ -24,12 +25,12 @@ This is **not** the km3 floor check and does not touch its result: the floor che
 |---|---|---|
 | kx3 score, deck 03 | 80.6% | `strength_2026-10-03_kx3_dev/REPORT.md`: 80.6% |
 | km3 score, same deals | 74.4% | the same file: 74.4% |
-| gain, kx3 minus km3 | +6.2 +- 8.2 | the same file and `PAIR_WITH_DEV.txt`: +6.2 +- 8.1 |
+| gain, kx3 minus km3 | +6.2, probably between -1.9 and +14.4 (t interval, half-width 8.2) | the same file and `PAIR_WITH_DEV.txt`: +6.2 +- 8.1 |
 | games whose logged decisions, points or turns differ with the rule on | 15 of 80 (page counts the three kinds separately: decisions 15, winners 0, points or turns 12) | `PAIR_WITH_DEV.txt`: "differ at all 15 of 80" |
 | on minus off | +0.0, all 80 differences exactly 0 | `PAIR_WITH_DEV.txt`: +0.0 +- 0.0 |
 | km3 baseline replayed by the gate-3 build | 80 of 80 exactly | `PAIR_WITH_DEV.txt`: 400 of 400 over the five decks |
 
-The one difference, +- 8.2 against +- 8.1, is the interval rule only: the existing pages use 1.96 standard errors, this page (like the fresh slow report) uses the t value for
+The one difference, a half-width of 8.2 points (the page prints the two ends, -1.9 and +14.4, each rounded once from the unrounded numbers) against +- 8.1, is the interval rule only: the existing pages use 1.96 standard errors, this page (like the fresh slow report) uses the t value for
 79 degrees of freedom (1.99), which is a little wider for the same 80 deals. Nothing else differs.
 
 ## Regenerate

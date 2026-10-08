@@ -13,6 +13,12 @@ REF=${1:-origin/main}
 OUT=${2:-$HOME/strength_build/strength}
 W=${STRENGTH_BUILD_DIR:-$HOME/strength_build}
 TARGET=${STRENGTH_TARGET_DIR:-$W/target}
+# never build over the slow report's pinned (frozen) binary: a rebuild is a different file even from the same source, and the original cannot be recovered
+PIN_PROGRAM=$(sed -n 's/^ *"program": *"\([^"]*\)".*/\1/p' "$HERE/slow_report_pin.json" 2>/dev/null | head -1)
+if [ -n "$PIN_PROGRAM" ] && { [ "$(readlink -m "$OUT")" = "$(readlink -m "$PIN_PROGRAM")" ] || [ "$OUT" -ef "$PIN_PROGRAM" ]; }; then  # -m: no component has to exist; -ef: a hard link too
+    echo "build.sh: refusing to overwrite the slow report's pinned program $PIN_PROGRAM (slow_report_pin.json); build to another path" >&2
+    exit 2
+fi
 rm -rf "$W/tree" && mkdir -p "$W/tree/rl/strength" "$(dirname "$OUT")"
 if [ -d "$REF" ]; then
     cp -r "$REF" "$W/tree/engine"; ENGINE_ID="dir:$REF"
@@ -30,4 +36,4 @@ cp "$TARGET/release/strength" "$OUT"
 echo "engine: $ENGINE_ID"
 echo "program: $OUT"
 echo "program sha256: $(sha256sum "$OUT" | cut -d' ' -f1)"
-echo "harness source sha256: $(cat "$HERE"/src/*.rs "$HERE/Cargo.toml" | sha256sum | cut -d' ' -f1)"
+echo "harness source sha256: $(LC_ALL=C; cat "$HERE"/src/*.rs "$HERE/Cargo.toml" | sha256sum | cut -d' ' -f1)"

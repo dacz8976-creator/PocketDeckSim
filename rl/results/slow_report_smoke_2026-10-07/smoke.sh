@@ -13,6 +13,7 @@ import json, sys
 p = json.load(open('slow_report_pin.json'))
 p['pilot'] = 'km3'; p['pilot_label'] = 'km3 (smoke, not kx3)'
 p['reference'] = 'km3'; p['reference_label'] = 'km3'
+p['seed_reserved'] = []  # the real pin reserves the slots THESE smoke runs take (684-686); the smoke's own copy must not skip them
 json.dump(p, open(sys.argv[1] + '/pin_smoke.json', 'w'), indent=1)
 print('pin program sha:', p['program_sha256'][:12], 'program', p['program'])
 EOF
@@ -65,4 +66,37 @@ m = json.load(open(sys.argv[1]))
 print({k: m[k] for k in ('stage','heldout_decks','heldout_registry','heldout_in_run','heldout_locked','planned_games','seed_base','selfcheck_source')})
 print('paired:', m['slow_report']['paired'], 'resume_command:', m['slow_report']['resume_command'])
 EOF
+echo "== 5. the cloud route: --program with a REBUILT copy (the pinned binary plus one trailing byte: another sha256, the same behaviour), school rule off, register only"
+cp /home/dacz8976/kx/strength "$SM/rebuilt_strength"; printf 'x' >> "$SM/rebuilt_strength"; chmod +x "$SM/rebuilt_strength"
+echo "rebuilt copy sha256: $(sha256sum "$SM/rebuilt_strength" | cut -c1-12) (the pinned binary is 5a8f5c83a791)"
+python3 -B slow_report.py "$R/decks/events/smoke-held.txt" --repo "$R" --pin "$PIN" --out-root "$SM/runs" --date 2026-10-09 --deals 2 --program "$SM/rebuilt_strength" --school-rule off --register-only
+echo "exit: $?"
+D3="$SM/runs/2026-10-09_smoke-held"
+echo "-- manifest: program, route, self-check sources, school choice, resume command"
+python3 - "$D3/manifest.json" <<'EOF'
+import json, sys
+m = json.load(open(sys.argv[1]))
+s = m['slow_report']
+print({'program': m['program'], 'program_sha256': m['program_sha256'][:12], 'program_route': s['program_route'], 'pinned_program_sha256': s['pinned_program_sha256'][:12],
+       'selfcheck_source': m['selfcheck_source'], 'school_rule': s['school_rule'], 'school_days': s['school_days'], 'harness_source_sha256': s['harness_source_sha256'][:12],
+       'harness_checkout': (s['harness_source_checkout_sha256'] or '')[:12], 'engine_tree_in_checkout': s['engine_tree_in_checkout']})
+print('resume_command:', s['resume_command'])
+print('engine:', m['engine'][-260:])
+EOF
+echo "-- PREREGISTRATION.md: the slow-report lines and the Run paragraph"
+grep -E "program_route|pinned_program|harness_source|school_rule|school_days|Self-check of|A slow report is run" "$D3/PREREGISTRATION.md"
+echo "-- the dry run of that registered run (no school flag: the registered choice is used)"
+python3 -B slow_report.py --dir "$D3" --repo "$R" --pin "$PIN" --dry-run
+echo "-- the same rebuild is refused when the replay does not match: a program that prints nothing (/bin/true)"
+python3 -B slow_report.py "$R/decks/events/smoke-held.txt" --repo "$R" --pin "$PIN" --out-root "$SM/runs" --date 2026-10-12 --deals 2 --program /bin/true --school-rule off --register-only
+echo "exit: $?  (folder written? $(ls "$SM/runs" | grep -c 2026-10-12))"
+echo "-- and without --program a program of another sha256 is refused (the pin pointing at the rebuilt copy)"
+python3 - "$SM" <<'EOF'
+import json, sys
+p = json.load(open(sys.argv[1] + '/pin_smoke.json'))
+p['program'] = sys.argv[1] + '/rebuilt_strength'
+json.dump(p, open(sys.argv[1] + '/pin_moved.json', 'w'), indent=1)
+EOF
+python3 -B slow_report.py "$R/decks/events/smoke-held.txt" --repo "$R" --pin "$SM/pin_moved.json" --out-root "$SM/runs" --date 2026-10-13 --deals 2 --register-only
+echo "exit: $?"
 echo "== done; runs kept in $SM/runs"

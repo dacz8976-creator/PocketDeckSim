@@ -23,9 +23,19 @@ What is pinned:
   * the run: checkpoint and resume, one wrapper per run directory, a signal stops the program, the program never sees KX_EXTRA_LISTS or any other tuning variable;
   * the page: the deck's score with Wilson 95% ranges (never a zero-width interval), plain words, never pass or fail, both pilots named in every line printed and in
     the page, honest about partial runs, errors, ties and what the interval covers;
-  * refusals that write nothing: an unpinned program, a bad deck, a deck outside the repository (symlinks followed), a registration that changed.
+  * refusals that write nothing: an unpinned program, a bad deck, a deck outside the repository (symlinks followed), a registration that changed;
+  * the school-morning choice (rule on or off, school days) is made at the registration and recorded in the manifest, PREREGISTRATION.md, the page and the resume command, and a
+    run with the rule off needs no time zone database (SchoolChoiceIsRegistered, NoTimeZoneDatabase; the resume side is in test_slow_report_runloop.py);
+  * the pin's reserved seed slots (the km3 smoke) are used slots, and registering a deck with an unfinished report of it already registered warns, without refusing
+    (ReservedSeedSlots, UnfinishedRuns);
+  * the cloud route: `--program PATH`, a rebuild of the pinned source, accepted only with the pinned harness source, an engine tree equal to the pinned one (when the checkout can
+    say what it is) and both self-checks replayed on it equal to the committed pin's; the pinned binary's own path with other bytes is the overwritten frozen binary, never a
+    rebuild; a replay that exits with an error is not a match even when it printed the pinned text (CloudRoute);
+  * the time zone database: a missing one is a clear refusal at the registration and at the resume with the rule on and school days, and no problem without (NoTimeZoneDatabase);
+  * a pin must list its reserved slots, and a typo in the list is refused (ReservedSeedSlots); an earlier unfinished report of the deck is warned about with its own resume
+    command (UnfinishedRuns).
 """
-import contextlib, datetime, fcntl, hashlib, io, json, math, os, re, shutil, signal, statistics, subprocess, sys, tempfile, textwrap, time, unittest, zoneinfo
+import contextlib, datetime, fcntl, hashlib, io, json, math, os, re, shlex, shutil, signal, statistics, subprocess, sys, tempfile, textwrap, time, unittest, zoneinfo
 from unittest import mock
 import builtins, importlib.util
 
@@ -186,6 +196,22 @@ with open(os.path.join(out, 'run_log.jsonl'), 'a') as f:
 HANG_PROGRAM = '#!/usr/bin/env python3\nimport sys, time\nif sys.argv[1] == "run":\n    time.sleep(3600)\n'
 
 DECK_TEXT = "Energy: Fire\n2 Torchic B1 033\n2 Combusken B1 034\n16 Filler X1 002\n"
+_IN_SLOT = {}
+
+
+def deck_text_in_slot(slot):
+    """A deck text (not one of the panel lists) whose sha256 puts it in this seed slot: the first 8 hex digits of the file's sha256, modulo the number of slots, is the slot
+    the deck gets (found by trying other set codes for the Filler card; about a thousand tries)."""
+    slots = (BLOCK[1] - BLOCK[0] + 1) // STEP
+    if slot not in _IN_SLOT:
+        for n in range(1, 500_000):
+            text = f'Energy: Fire\n2 Torchic B1 033\n2 Combusken B1 034\n16 Filler Z{n} 002\n'
+            if int(hashlib.sha256(text.encode()).hexdigest()[:8], 16) % slots == slot:
+                _IN_SLOT[slot] = text
+                break
+        else:
+            raise AssertionError(f'no deck text lands in slot {slot}')
+    return _IN_SLOT[slot]
 
 
 class FakeClock:
@@ -257,7 +283,7 @@ class World(Timed):
         write(self.program, FAKE_PROGRAM, mode=0o755)
         pin = json.loads(read(os.path.join(HERE, 'slow_report_pin.json')))
         pin['program'] = self.program
-        pin['program_sha256'] = sha(self.program)
+        pin['program_sha256'] = pin['selfcheck_measured_on_sha256'] = sha(self.program)  # the fake program is "the pinned binary" the self-check texts were measured on
         self.pin_path = os.path.join(self.tmp, 'pin.json')
         write(self.pin_path, json.dumps(pin, indent=1))
         self.pin = pin
@@ -275,7 +301,7 @@ class World(Timed):
     def set_program(self, text):
         write(self.program, text, mode=0o755)
         pin = json.loads(read(self.pin_path))
-        pin['program_sha256'] = sha(self.program)
+        pin['program_sha256'] = pin['selfcheck_measured_on_sha256'] = sha(self.program)
         write(self.pin_path, json.dumps(pin))
 
     def argv(self, *extra, deck=True, school='off', date=True):
@@ -315,10 +341,28 @@ class World(Timed):
     def rundir(self, name='2026-10-10_my-list'):
         return os.path.join(self.out_root, name)
 
-    def register(self, *extra):
-        code, out, err = self.cli('--deals', '1', '--register-only', *extra)
+    def register(self, *extra, school='off'):
+        """Register (only) the deck with one deal. school is the --school-rule given ('off' by default, so a registered run does not pause for school mornings; None gives
+        no option at all, which registers the default: the rule on, Monday to Friday)."""
+        code, out, err = self.cli('--deals', '1', '--register-only', *extra, school=school)
         self.assertEqual(code, 0, out + err)
         return self.rundir()
+
+    def without_tzdata(self):
+        """zoneinfo.ZoneInfo fails the way it does on a machine with no time zone database, and the zone cached by earlier tests is forgotten (and put back at the end).
+        Returns the list of keys asked for."""
+        asked = []
+
+        def missing(key, *a, **kw):
+            asked.append(key)
+            raise zoneinfo.ZoneInfoNotFoundError(f'No time zone found with key {key}')
+        old = dict(sr._TZ)
+        sr._TZ.clear()
+        self.addCleanup(lambda: (sr._TZ.clear(), sr._TZ.update(old)))
+        patcher = mock.patch.object(zoneinfo, 'ZoneInfo', missing)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+        return asked
 
 
 class LiveWorld(World):
@@ -715,7 +759,9 @@ class RegisterAndRun(World):
         self.assertTrue(BLOCK[0] <= man['seed_base'] <= BLOCK[1])
         self.assertEqual(man['program_sha256'], self.pin['program_sha256'])
         self.assertEqual(man['selfcheck'], self.pin['selfcheck'])
-        self.assertEqual(man['selfcheck_source']['kx3'], 'given in the config (copied from the pin; the program sha256 is the one named there)')
+        self.assertEqual(man['selfcheck_source']['kx3'], 'given in the config (copied from the pin, which says it was measured on this exact program sha256)')
+        self.assertEqual((man['program'], man['slow_report']['program_route']), (self.program, 'pinned'))
+        self.assertEqual((man['slow_report']['school_rule'], man['slow_report']['school_days']), ('off', 'mon,tue,wed,thu,fri'))
         games = jsonl(os.path.join(d, 'games.jsonl'))
         self.assertEqual(len(games), 64)
         self.assertEqual({g['arm'] for g in games}, {'X', 'ref'})
@@ -723,7 +769,7 @@ class RegisterAndRun(World):
         self.assertEqual({g['pilot_opp'] for g in games}, {'km3'})
         self.assertEqual(man['slow_report']['deck_file'], self.deck_rel)
         self.assertEqual(man['slow_report']['deck_file_sha256'], sha(self.deck))
-        self.assertEqual(man['slow_report']['resume_command'], f'python3 rl/strength/slow_report.py --dir {d}')
+        self.assertEqual(man['slow_report']['resume_command'], f'python3 rl/strength/slow_report.py --dir {d} --school-rule off', 'a run registered with the rule off resumes with it off')
         self.assertIn('REPORT.md', read(os.path.join(d, 'SLOW_REPORT.md')))
         rep = json.loads(read(os.path.join(d, 'report.json')))
         self.assertEqual((rep['pilot'], rep['reference']), ('kx3', 'km3'))
@@ -747,14 +793,23 @@ class RegisterAndRun(World):
         self.assertEqual(read(os.path.join(self.rundir(), 'manifest.json')), before)
 
     def test_dry_run_writes_nothing_and_prints_the_plan_and_the_expected_time(self):
-        code, out, err = self.cli('--deals', '5', '--dry-run')
+        code, out, err = self.cli('--deals', '5', '--dry-run', school=None)
         self.assertEqual(code, 0, err)
         self.assertFalse(os.path.exists(self.out_root))
         self.assertIn('80 kx3 games', out)
         self.assertIn('hours', out)
         self.assertIn('my-list', out)
         self.assertIn('5 deals', out)
-        self.assertIn('school-morning', out, 'the plan mentions that the calendar time is longer on school days')
+        self.assertIn('on school days the run pauses from 5:15 am to 5 pm Chicago time (the school-morning rule), so the calendar time is longer', out,
+                      'the plan says that the calendar time is longer on school days')
+        self.assertNotIn('OFF for this run', out)
+
+    def test_dry_run_with_the_rule_off_says_so_and_that_the_choice_is_recorded(self):
+        code, out, err = self.cli('--deals', '5', '--dry-run', school='off')
+        self.assertEqual(code, 0, err)
+        self.assertIn('school-morning rule: OFF for this run (it never pauses for school mornings; the choice is recorded in the registration and carried by the resume command)', out)
+        self.assertNotIn('on school days the run pauses', out)
+        self.assertFalse(os.path.exists(self.out_root))
 
     def test_resume_continues_a_stopped_run_without_repeating_games(self):
         code, out, err = self.cli('--deals', '2', '--max-games', '10')
@@ -818,10 +873,21 @@ class RegisterAndRun(World):
 
     def test_resume_refuses_a_program_that_changed_since_registration(self):
         d = self.register()
+        registered = sha(self.program)
         write(self.program, FAKE_PROGRAM + '\n# a rebuilt binary\n', mode=0o755)
         code, out, err = self.cli('--dir', d, deck=False)
-        self.assertNotEqual(code, 0)
-        self.assertIn('not the program', str(code) + err)
+        self.assertEqual(code, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n'
+                               f'  {self.program} has sha256 {sha(self.program)[:12]}, but this run was registered with the program at that path with sha256 {registered[:12]}. '
+                               'A resume needs the same program, byte for byte: the same image and toolchain normally rebuild byte-identically (rl/strength/build.sh to the same path), '
+                               'a different build does not, and then this run cannot continue (register a new one)')
+        self.assertFalse(os.path.exists(os.path.join(d, 'fake_calls.jsonl')))
+
+    def test_resume_refuses_a_program_that_is_gone_and_says_so(self):
+        d = self.register()
+        registered = sha(self.program)
+        os.remove(self.program)
+        code, out, err = self.cli('--dir', d, deck=False)
+        self.assertIn(f'  {self.program} is missing, but this run was registered with the program at that path with sha256 {registered[:12]}. A resume needs the same program, byte for byte:', str(code))
         self.assertFalse(os.path.exists(os.path.join(d, 'fake_calls.jsonl')))
 
     def test_the_program_is_checked_again_before_every_sitting(self):
@@ -839,7 +905,7 @@ class RegisterAndRun(World):
             return p
         code, out, err = self.cli('--dir', d, '--poll-s', '60', school='on', spawn=spawn, deck=False)
         self.assertNotEqual(code, 0)
-        self.assertIn('not the program', str(code) + err)
+        self.assertIn('A resume needs the same program, byte for byte', str(code) + err)
         self.assertEqual(len(jsonl(os.path.join(d, 'fake_calls.jsonl'))), 1, 'the second sitting must not start')
 
     def test_report_only_writes_a_partial_page_from_the_games_so_far_and_says_so_on_the_console(self):
@@ -862,11 +928,14 @@ class RegisterAndRun(World):
 
     def test_a_resume_refuses_every_option_that_belongs_to_a_new_registration(self):
         d = self.register()
-        for extra in (('--deals', '3'), ('--no-paired',), ('--date', '2026-10-11'), ('--seed-base', str(BLOCK[0])), ('--selfcheck',), ('--register-only',)):
+        for extra in (('--deals', '3'), ('--no-paired',), ('--date', '2026-10-11'), ('--seed-base', str(BLOCK[0])), ('--selfcheck',), ('--register-only',),
+                      ('--program', self.program)):
             code, out, err = self.cli('--dir', d, *extra, deck=False)
             self.assertNotEqual(code, 0, extra)
             self.assertIn('--dir', str(code) + err, extra)
+            self.assertIn(f'{extra[0]} belongs to a new registration; a run that is already registered keeps what it was registered with', str(code) + err, extra)
             self.assertFalse(os.path.exists(os.path.join(d, 'games.jsonl')), extra)
+            self.assertFalse(os.path.exists(os.path.join(d, 'fake_calls.jsonl')), extra)
 
     def test_a_deck_file_and_a_run_directory_together_are_refused(self):
         d = self.register()
@@ -888,10 +957,21 @@ class RegisterAndRun(World):
         before = {n: read(os.path.join(d, n)) for n in os.listdir(d) if os.path.isfile(os.path.join(d, n))}
         code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
         self.assertEqual(code, 0, err)
-        self.assertIn('6 of 32', out)
-        self.assertIn('26 games to go', out)
+        lines = [l.split('] ', 1)[1] for l in out.splitlines()]  # without the headline that starts every line
+        self.assertEqual(lines[0], 'question: how does my-list do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?',
+                         'the question comes first, then the size')
+        self.assertEqual(lines[1], 'played so far: 3 kx3 games + 3 cheap km3 baseline games of 16 kx3 games + 16 cheap km3 baseline games planned; '
+                                   f'13 kx3 games + 13 cheap km3 baseline games to go (resume with: python3 rl/strength/slow_report.py --dir {d} --school-rule off)')
+        self.assertEqual(lines[2:], ['dry run: nothing written'])
+        self.assertNotIn('6 of 32', out, 'the count names the pilots; "x of y games" does not say whose games')
         after = {n: read(os.path.join(d, n)) for n in os.listdir(d) if os.path.isfile(os.path.join(d, n))}
         self.assertEqual(before, after)
+
+    def test_dry_run_on_a_registered_run_without_the_comparison_asks_the_shorter_question(self):
+        d = self.register('--no-paired')
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertEqual(code, 0, err)
+        self.assertEqual(out.splitlines()[0].split('] ', 1)[1], 'question: how does my-list do when kx3 plays it against the 8 public lists?')
 
     def test_threads_default_to_two_and_can_be_set_and_zero_is_refused(self):
         self.assertEqual(self.cli('--deals', '1', '--max-games', '2')[0], 0)
@@ -962,17 +1042,23 @@ class RegisterAndRun(World):
 
     def test_the_size_line_counts_both_pilots_games_and_the_time_is_only_for_the_slow_pilots_games(self):
         self.with_rates(typical_low=20, typical_high=40, wall=10)
-        for flag, left_out, stage_clause in ((None, '', 'with the comparison with km3 on the same deals in the page'),
-                                             ('--no-paired', '; with --no-paired they are still played and the page leaves them out', 'without the comparison with km3 on the same deals in the page')):
+        for flag, question_end, left_out, stage_clause in ((None, ', and is that better than when km3 plays the same deck on the same deals?', '',
+                                                            'with the comparison with km3 on the same deals in the page'),
+                                                           ('--no-paired', '?', '; with --no-paired they are still played and the page leaves them out',
+                                                            'without the comparison with km3 on the same deals in the page')):
             with self.subTest(flag):
                 code, out, err = self.cli('--deals', '3', *([flag] if flag else []), '--dry-run')
                 self.assertEqual(code, 0, out + err)
                 lines = [l.split('] ', 1)[1] for l in out.splitlines()]  # without the headline that starts every line
-                self.assertEqual(len(lines), 5, lines)
-                self.assertEqual(lines[1], 'size: 48 kx3 games + 48 cheap km3 baseline games on the same deals (96 games in all; the km3 games take about a second each' + left_out + '); '
+                self.assertEqual(len(lines), 6, lines)
+                self.assertEqual(lines[0], 'question: how does my-list do when kx3 plays it against the 8 public lists' + question_end, 'the question comes before the plan and the size')
+                self.assertTrue(lines[1].startswith('plan: my-list ('), lines[1])
+                self.assertEqual(lines[2], 'size: 48 kx3 games + 48 cheap km3 baseline games on the same deals (96 games in all; the km3 games take about a second each' + left_out + '); '
                                  'the time is for the 48 kx3 games: about 72 minutes to 2.4 hours if the deck plays like most of his, '
                                  'about 4.8 hours if it plays like the Wailord wall (measured with 2 games at a time)')
-                self.assertTrue(lines[3].endswith(f'), {stage_clause}, no pass or fail line'), lines[3])
+                self.assertTrue(lines[3].startswith('school-morning rule: OFF for this run'), lines[3])
+                self.assertTrue(lines[4].endswith(f'), {stage_clause}, no pass or fail line'), lines[4])
+                self.assertEqual(lines[5], 'dry run: nothing written')
 
     def test_the_registered_question_says_whether_the_comparison_with_km3_is_part_of_the_page(self):
         paired_clause = 'with 95% ranges; and how much better kx3 plays this deck than km3 on the same deals. Realistic knowledge: '
@@ -1125,13 +1211,44 @@ class SelfcheckOption(World):
         d = self.rundir()
         man = json.loads(read(os.path.join(d, 'manifest.json')))
         self.assertEqual(man['selfcheck'], pin['selfcheck'])
-        self.assertEqual(man['selfcheck_source']['kx3'], 'replayed by slow_report.py just before registration (equal to the pin)')
-        self.assertNotIn('not replayed', read(os.path.join(d, 'PREREGISTRATION.md')))
+        for spec in ('km3', 'kx3'):
+            self.assertEqual(man['selfcheck_source'][spec], 'replayed by slow_report.py on this machine just before registration (equal to the committed pin)')
+        prereg = read(os.path.join(d, 'PREREGISTRATION.md'))
+        self.assertEqual(prereg.count('(replayed by slow_report.py on this machine just before registration and equal to the committed pin)'), 2)
+        self.assertNotIn('not replayed', prereg)
+        self.assertEqual(json.loads(read(os.path.join(d, 'config.json')))['selfcheck_given_program_sha256'], sha(self.program),
+                         'a replayed text was measured just now, on this program')
+
+    def test_texts_the_pin_says_were_measured_on_another_binary_are_not_recorded_for_this_one(self):
+        self.edit_pin(selfcheck_measured_on_sha256='a' * 64)
+        code, out, err = self.cli('--deals', '1', '--register-only')
+        self.assertIn('REFUSED by strength_prereg.py (nothing was written):', str(code))
+        self.assertIn(f'the self-check text was measured on a program with sha256 aaaaaaaaaaaa, but the program at {self.program} has sha256 {sha(self.program)[:12]}', str(code))
+        self.assertFalse(os.path.exists(self.out_root))
+        pin = json.loads(read(self.pin_path))
+        pin['selfcheck'] = {s: f'selfcheck pilot={s} games=12 digest=fakefakefakefake' for s in ('km3', 'kx3')}
+        write(self.pin_path, json.dumps(pin))
+        code, out, err = self.cli('--deals', '1', '--register-only', '--selfcheck')
+        self.assertEqual(code, 0, 'a replayed text needs no claim about another binary: ' + str(code) + err)
+
+    def edit_pin(self, **kw):
+        pin = json.loads(read(self.pin_path))
+        pin.update(kw)
+        write(self.pin_path, json.dumps(pin))
 
     def test_the_default_does_not_replay_the_self_check(self):
         d = self.register()
         self.assertFalse(os.path.exists(os.path.join(d, 'fake_calls.jsonl')))
         self.assertFalse(os.path.exists(os.path.join(self.tmp, 'selfcheck_env.json')), 'registering must not play a single game')
+        for spec in ('km3', 'kx3'):
+            self.assertEqual(json.loads(read(os.path.join(d, 'manifest.json')))['selfcheck_source'][spec],
+                             'given in the config (copied from the pin, which says it was measured on this exact program sha256)')
+        prereg = read(os.path.join(d, 'PREREGISTRATION.md'))
+        self.assertEqual(prereg.count('(given in the config, copied from the pin and not replayed: the pin says it was measured on this exact program, whose sha256 is named above)'), 2)
+        self.assertNotIn('replayed by slow_report', prereg)
+        cfg = json.loads(read(os.path.join(d, 'config.json')))
+        self.assertEqual(cfg['selfcheck_given_program_sha256'], self.pin['selfcheck_measured_on_sha256'], 'the config names the program the texts were measured on')
+        self.assertNotIn('selfcheck_how', cfg)
 
 
 # ---------------------------------------------------------------------------------------------------------- the school-morning run, the lock, signals
@@ -1196,8 +1313,8 @@ class SchoolMorningRun(World):
         def spawn(cmd, env, logfile):
             spawned.append(self.clock.now())
             return sr.default_spawn(cmd, env, logfile)
-        d = self.register()
-        code, out, err = self.cli('--dir', d, school=None, spawn=spawn, deck=False)  # no --school-rule option at all
+        d = self.register(school=None)  # registered with no --school-rule option at all: the default is the rule on
+        code, out, err = self.cli('--dir', d, school=None, spawn=spawn, deck=False)  # and resumed with none: the registered choice
         self.assertEqual(code, 0, err + out)
         self.assertEqual(spawned[0], chi(2026, 10, 7, 17, 0))
 
@@ -1236,6 +1353,1150 @@ class SchoolMorningRun(World):
         self.make()
         self.assertEqual(self.cli('--deals', '1', '--max-games', '5')[0], 0)
         self.assertEqual(len(jsonl(os.path.join(self.rundir(), 'games.jsonl'))), 5)
+
+
+class SchoolChoiceIsRegistered(World):
+    """The school-morning choice (the rule on or off, and the school days) is made when a run is registered and then kept: in the manifest, in PREREGISTRATION.md, on the page
+    and in the resume command. (test_slow_report_runloop.py pins what a resume does with it.)"""
+    CASES = [  # (--school-rule given, other options), (rule, days) recorded, what the resume command adds
+        ((None, ()), ('on', 'mon,tue,wed,thu,fri'), []),
+        (('off', ()), ('off', 'mon,tue,wed,thu,fri'), ['--school-rule', 'off']),
+        (('on', ('--school-days', 'sat,sun')), ('on', 'sat,sun'), ['--school-days', 'sat,sun']),
+        (('off', ('--school-days', 'sat,sun')), ('off', 'sat,sun'), ['--school-rule', 'off']),  # nothing to say about days when the rule is off
+        (('on', ('--school-days', 'mon,tue,wed,thu,fri')), ('on', 'mon,tue,wed,thu,fri'), []),  # the default spelled out is still the default
+        (('on', ('--school-days', '')), ('on', ''), ['--school-days', '']),  # no school days at all is a choice, not the default: recorded, and carried by the resume command
+        (('off', ('--school-days', '')), ('off', ''), ['--school-rule', 'off']),
+    ]
+
+    def test_the_choice_is_recorded_in_the_manifest_the_preregistration_the_page_and_the_resume_command(self):
+        for (school, extra), (rule, days), added in self.CASES:
+            with self.subTest(school=school, extra=extra):
+                self.make()
+                d = self.register(*extra, school=school)
+                block = json.loads(read(os.path.join(d, 'manifest.json')))['slow_report']
+                self.assertEqual((block['school_rule'], block['school_days']), (rule, days))
+                self.assertEqual(shlex.split(block['resume_command']), ['python3', 'rl/strength/slow_report.py', '--dir', d] + added)
+                prereg = read(os.path.join(d, 'PREREGISTRATION.md'))
+                self.assertIn(f'- school_rule: `{rule}`\n- school_days: `{days}`\n', prereg)
+                self.assertIn('```\n' + block['resume_command'] + '\n```', prereg.split('## Run')[1], 'the registration shows the command that carries the choice')
+                self.assertIn('applies the school-morning rule as registered (' + (days or 'no school days') + ')' if rule == 'on'
+                              else 'does NOT apply the school-morning rule (chosen at registration: it never pauses for school mornings)', prereg.split('## Run')[1])
+                code, out, err = self.cli('--dir', d, '--report-only', deck=False, school=None)
+                self.assertEqual(code, 0, err + out)
+                page = read(os.path.join(d, 'SLOW_REPORT.md'))
+                want = (('- School-morning rule: on (no school days, so it never pauses).' if days == '' else f'- School-morning rule: on ({days}).') if rule == 'on'
+                        else '- School-morning rule: off (chosen at registration, for a machine that is not the laptop).')
+                self.assertIn('\n' + want + '\n', page)
+
+    def test_resume_command_for_adds_only_what_is_not_the_default(self):
+        f = sr.resume_command_for
+        base = 'python3 rl/strength/slow_report.py --dir '
+        self.assertEqual(f('/r/x', 'on', 'mon,tue,wed,thu,fri'), base + '/r/x')
+        self.assertEqual(f('/r/x', 'off', 'mon,tue,wed,thu,fri'), base + '/r/x --school-rule off')
+        self.assertEqual(f('/r/x', 'off', 'sat,sun'), base + '/r/x --school-rule off', 'with the rule off the days do not matter')
+        self.assertEqual(f('/r/x', 'on', 'sat,sun'), base + '/r/x --school-days sat,sun')
+        self.assertEqual(f('/r/x', 'on', 'mon,tue,thu,fri'), base + '/r/x --school-days mon,tue,thu,fri')
+        self.assertEqual(f('/r/x', 'on', ''), base + "/r/x --school-days ''", 'no school days at all is a choice too, quoted so that a shell hands it over as an empty word')
+        self.assertEqual(f('/r/a b', 'on', 'mon, tue'), base + "'/r/a b' --school-days 'mon, tue'", 'every word is quoted for the shell')
+        self.assertEqual(shlex.split(f('/r/a b', 'off', 'mon')), ['python3', 'rl/strength/slow_report.py', '--dir', '/r/a b', '--school-rule', 'off'])
+
+    def test_the_default_days_are_monday_to_friday(self):
+        self.assertEqual(sr.DEFAULT_SCHOOL_DAYS, 'mon,tue,wed,thu,fri')
+        self.assertEqual(sr.parse_days(sr.DEFAULT_SCHOOL_DAYS), sr.SCHOOL_DAYS)
+        self.assertEqual(sr.parse_days(sr.DEFAULT_SCHOOL_DAYS), (0, 1, 2, 3, 4))
+        self.assertEqual(sr.parse_days(' SAT , sun,'), (5, 6), 'spaces, capitals and a trailing comma do not matter')
+        self.assertEqual(sr.parse_days(''), ())
+        with self.assertRaises(SystemExit):
+            sr.parse_days('mon,someday')
+
+    def test_a_bad_day_name_is_refused_before_anything_is_written(self):
+        for extra in (('--deals', '1'), ('--deals', '1', '--dry-run')):
+            code, out, err = self.cli(*extra, '--school-days', 'mon,funday')
+            self.assertIn("unknown day 'funday' in --school-days", str(code))
+            self.assertFalse(os.path.exists(self.out_root))
+
+
+class NoTimeZoneDatabase(World):
+    """A run with --school-rule off needs nothing from the time zone database (a machine without tzdata, for example a slim cloud image): the zone is loaded the first time it
+    is asked for, and the run folder's date falls back to the UTC date."""
+
+    def test_a_self_check_replay_with_the_rule_off_never_asks_for_the_zone(self):
+        asked = self.without_tzdata()
+        pin = json.loads(read(self.pin_path))
+        pin['selfcheck'] = {s: f'selfcheck pilot={s} games=12 digest=fakefakefakefake' for s in ('km3', 'kx3')}
+        write(self.pin_path, json.dumps(pin))
+        code, out, err = self.cli('--deals', '1', '--selfcheck', '--register-only', school='off')
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(asked, [], 'the replay is bound by the morning cut only when the rule is on')
+        self.assertEqual(json.loads(read(os.path.join(self.rundir(), 'manifest.json')))['selfcheck_source']['kx3'],
+                         'replayed by slow_report.py on this machine just before registration (equal to the committed pin)')
+
+    def test_a_whole_registration_and_run_with_the_rule_off_never_asks_for_the_zone(self):
+        asked = self.without_tzdata()
+        code, out, err = self.cli('--deals', '1', school='off')
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(asked, [], 'with --date given and the rule off the time zone is not needed anywhere')
+        d = self.rundir()
+        self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), 32)
+        self.assertTrue(os.path.exists(os.path.join(d, 'SLOW_REPORT.md')))
+
+    def test_without_the_database_the_run_folder_is_named_by_the_utc_date(self):
+        asked = self.without_tzdata()
+        self.clock = FakeClock(datetime.datetime(2026, 10, 11, 3, 0, tzinfo=datetime.timezone.utc).astimezone(CHI))  # Oct 10, 22:00 in Chicago; Oct 11 in UTC
+        code, out, err = self.cli('--deals', '1', '--register-only', date=False)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(os.listdir(self.out_root), ['2026-10-11_my-list'])
+        self.assertIn('America/Chicago', asked, 'it did try the database first')
+
+    def test_local_date_is_the_chicago_date_and_falls_back_to_the_utc_date(self):
+        late = datetime.datetime(2026, 10, 11, 3, 0, tzinfo=datetime.timezone.utc)
+        self.assertEqual(sr.local_date(late), '2026-10-10', 'Chicago is five hours behind UTC in October')
+        self.assertEqual(sr.local_date(late.astimezone(CHI)), '2026-10-10')
+        self.assertEqual(sr.local_date(datetime.datetime(2026, 10, 11, 6, 0, tzinfo=datetime.timezone.utc)), '2026-10-11')
+        self.assertEqual(sr.local_date(datetime.datetime(2027, 1, 1, 5, 59, tzinfo=datetime.timezone.utc)), '2026-12-31', 'and six in winter')
+        self.without_tzdata()
+        self.assertEqual(sr.local_date(late), '2026-10-11')
+        self.assertEqual(sr.local_date(late.astimezone(CHI)), '2026-10-11', 'the UTC date of the same moment, whatever zone it comes in')
+
+    def test_the_zone_is_loaded_when_first_asked_for_and_the_old_name_still_works(self):
+        old = dict(sr._TZ)
+        sr._TZ.clear()
+        self.addCleanup(lambda: (sr._TZ.clear(), sr._TZ.update(old)))
+        self.assertNotIn('chicago', sr._TZ)
+        zone = sr.CHICAGO
+        self.assertEqual(str(zone), 'America/Chicago')
+        self.assertIn('chicago', sr._TZ)
+        self.assertIs(sr.chicago(), zone, 'loaded once')
+        self.assertIs(sr.CHICAGO, zone)
+        self.assertTrue(hasattr(sr, 'CHICAGO'))
+        with self.assertRaises(AttributeError):
+            sr.NO_SUCH_THING
+        self.assertFalse(hasattr(sr, 'NO_SUCH_THING'))
+
+    def test_the_rule_with_no_school_days_never_needs_the_zone_and_with_days_it_does(self):
+        asked = self.without_tzdata()
+        self.assertEqual(sr.school_action(chi(2026, 10, 7, 12, 0), ()), {'kind': 'run', 'stop_after_min': None, 'hard_stop': None})
+        self.assertEqual(asked, [])
+        with self.assertRaises(sr.NoTimeZoneDatabase):
+            sr.school_action(chi(2026, 10, 7, 12, 0), (0, 1, 2, 3, 4))
+        self.assertEqual(asked, ['America/Chicago'])
+
+    # (what a missing database does on the command line: registration, resume, --report-only, main's REFUSED line)
+    TAG = '[kx3 (d513e37b) on my-list v km3 on the public panel] '
+    MISSING = ('REFUSED: the time zone database (America/Chicago) is not available here (ZoneInfoNotFoundError): install tzdata, or turn the school-morning rule off with '
+               '--school-rule off')
+
+    def test_the_missing_database_is_a_clear_runtime_error_in_words_whatever_went_wrong_loading_it(self):
+        self.assertTrue(issubclass(sr.NoTimeZoneDatabase, RuntimeError))
+        self.assertFalse(issubclass(sr.NoTimeZoneDatabase, SystemExit), 'a refusal is made of it only by main')
+        asked = self.without_tzdata()
+        with self.assertRaises(sr.NoTimeZoneDatabase) as cm:
+            sr.chicago()
+        self.assertEqual(str(cm.exception), self.MISSING[len('REFUSED: '):])
+        self.assertEqual(asked, ['America/Chicago'])
+        self.assertNotIn('chicago', sr._TZ, 'a failure is not remembered as a zone')
+        with mock.patch.dict(sys.modules, {'zoneinfo': None}):  # a machine where the module itself cannot be imported
+            with self.assertRaises(sr.NoTimeZoneDatabase) as cm:
+                sr.chicago()
+        self.assertRegex(str(cm.exception), r'\((ImportError|ModuleNotFoundError)\): install tzdata')
+        with mock.patch.object(zoneinfo, 'ZoneInfo', mock.Mock(side_effect=ValueError('a broken tzdata file'))):  # whatever else can go wrong reading it
+            with self.assertRaises(sr.NoTimeZoneDatabase) as cm:
+                sr.chicago()
+        self.assertIn('(ValueError)', str(cm.exception))
+        with mock.patch.object(zoneinfo, 'ZoneInfo', type(CHI)):
+            self.assertEqual(str(sr.chicago()), 'America/Chicago', 'and with the database back it works')
+
+    def test_a_registration_with_the_rule_on_and_school_days_is_refused_in_words_before_anything_is_written(self):
+        self.without_tzdata()
+        for label, extra, school in (('the default rule', (), None), ('the rule on', (), 'on'), ('only registering', ('--register-only',), 'on'),
+                                     ('other school days', ('--school-days', 'sat,sun'), 'on')):
+            with self.subTest(label):
+                with mock.patch.object(sr, 'run_prereg', side_effect=AssertionError('nothing may be registered')):
+                    code, out, err = self.cli('--deals', '1', *extra, school=school)
+                self.assertEqual(code, self.TAG + self.MISSING)
+                self.assertFalse(os.path.exists(self.out_root), 'nothing was written')
+        with mock.patch.object(sr, 'run_selfcheck', side_effect=AssertionError('no self-check may start')):  # before the hours of a replay, not after
+            code, out, err = self.cli('--deals', '1', '--selfcheck', school='on')
+        self.assertEqual(code, self.TAG + self.MISSING)
+        self.assertEqual(out, '', 'and before the first line of the plan')
+
+    def test_a_registration_that_needs_no_zone_goes_through_where_the_database_is_missing(self):
+        asked = self.without_tzdata()
+        for label, extra, school in (('the rule off', (), 'off'), ('the rule on and no school days', ('--school-days', ''), 'on')):
+            with self.subTest(label):
+                self.make()
+                code, out, err = self.cli('--deals', '1', '--register-only', *extra, school=school)
+                self.assertEqual(code, 0, err + out)
+                self.assertEqual(asked, [], 'with --date given, nothing asks for the time zone')
+                self.assertTrue(os.path.exists(os.path.join(self.rundir(), 'manifest.sha256')))
+        self.make()
+        self.clock = FakeClock(datetime.datetime(2026, 10, 11, 3, 0, tzinfo=datetime.timezone.utc).astimezone(CHI))
+        code, out, err = self.cli('--deals', '1', '--register-only', '--school-days', '', date=False, school='on')
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(os.listdir(self.out_root), ['2026-10-11_my-list'], 'only the name of the folder asks for the zone, and falls back to the UTC date')
+
+    def test_a_resume_with_the_rule_on_and_school_days_is_refused_in_words_and_starts_nothing(self):
+        d = self.register(school='on')
+        self.without_tzdata()
+        started = []
+        for label, extra in (('as registered', ()), ('other days', ('--school-days', 'mon,tue')), ('the rule turned on again', ('--school-rule', 'on'))):
+            with self.subTest(label):
+                code, out, err = self.cli('--dir', d, *extra, deck=False, school=None, spawn=lambda cmd, env, logfile: started.append(cmd))
+                self.assertEqual(code, self.TAG + self.MISSING)
+                self.assertEqual(started, [], 'no program was started')
+                self.assertFalse(os.path.exists(os.path.join(d, 'slow_report.lock')), 'no lock was taken')
+                self.assertFalse(os.path.exists(os.path.join(d, 'fake_calls.jsonl')))
+                self.assertNotIn('sitting_call', [e['event'] for e in jsonl(os.path.join(d, 'slow_report_log.jsonl'))], 'and no sitting was logged')
+
+    def test_a_resume_that_needs_no_zone_plays_where_the_database_is_missing(self):
+        d = self.register(school='on')
+        asked = self.without_tzdata()
+        played = 0
+        for label, extra, more in (('the rule turned off', ('--school-rule', 'off'), 4), ('no school days', ('--school-days', ''), 4),
+                                   ('only the page, with the rule on', ('--report-only',), 0)):
+            with self.subTest(label):
+                code, out, err = self.cli('--dir', d, '--max-games', '4', *extra, deck=False, school=None)
+                self.assertEqual(code, 0, err + out)
+                played += more
+                self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), played)
+                self.assertTrue(os.path.exists(os.path.join(d, 'SLOW_REPORT.md')))
+        self.assertEqual(asked, [])
+        self.make()
+        d = self.register(school='off')  # and a run registered with the rule off is resumed with no option
+        code, out, err = self.cli('--dir', d, '--max-games', '4', deck=False, school=None)
+        self.assertEqual((code, len(jsonl(os.path.join(d, 'games.jsonl')))), (0, 4), err + out)
+        self.assertEqual(asked, [])
+
+    def test_main_makes_a_refusal_of_a_missing_database_wherever_it_comes_up(self):
+        def lost(argv, ctx, **kw):
+            ctx['tag'] = 'kx3 on a deck'
+            raise sr.NoTimeZoneDatabase('the zone is gone')
+        with mock.patch.object(sr, '_main', lost):
+            with self.assertRaises(SystemExit) as cm:
+                sr.main([])
+        self.assertEqual(cm.exception.code, '[kx3 on a deck] REFUSED: the zone is gone', 'with the headline the call had reached, not a traceback')
+        with mock.patch.object(sr, '_main', side_effect=RuntimeError('some other failure')):
+            with self.assertRaises(RuntimeError):
+                sr.main([])
+
+    def test_the_utc_date_stands_in_only_for_a_missing_database(self):
+        late = datetime.datetime(2026, 10, 11, 3, 0, tzinfo=datetime.timezone.utc)
+        with mock.patch.object(sr, 'chicago', side_effect=sr.NoTimeZoneDatabase('gone')):
+            self.assertEqual(sr.local_date(late), '2026-10-11')
+        with mock.patch.object(sr, 'chicago', side_effect=RuntimeError('a different failure')):
+            with self.assertRaises(RuntimeError):
+                sr.local_date(late)
+        with mock.patch.object(sr, 'chicago', side_effect=ValueError('and a different one')):
+            with self.assertRaises(ValueError):
+                sr.local_date(late)
+
+    def test_importing_the_module_works_where_zoneinfo_cannot_be_imported(self):
+        code = ("import sys\nsys.modules['zoneinfo'] = None\nsys.path.insert(0, %r)\nimport datetime\nimport slow_report as sr\nprint('imported')\n"
+                "print(sr.local_date(datetime.datetime(2026, 10, 11, 3, 0, tzinfo=datetime.timezone.utc)))\n"
+                "print(sr.school_action(datetime.datetime(2026, 10, 7, 12, 0, tzinfo=datetime.timezone.utc), ())['kind'])\n" % HERE)
+        r = subprocess.run([sys.executable, '-B', '-c', code], capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertEqual(r.stdout.split(), ['imported', '2026-10-11', 'run'])
+
+    def test_the_real_script_makes_its_plan_with_the_rule_off_where_zoneinfo_cannot_be_imported(self):
+        write(os.path.join(self.repo, 'lib', 'deck_check.py'), 'def parse(path):\n    return "Fire", []\n\n\ndef check(name, cards):\n    return []\n')
+        runner = "import runpy, sys\nsys.modules['zoneinfo'] = None\nsys.argv = sys.argv[1:]\nrunpy.run_path(sys.argv[0], run_name='__main__')\n"
+        r = subprocess.run([sys.executable, '-B', '-c', runner, os.path.join(HERE, 'slow_report.py'), self.deck, '--repo', self.repo, '--pin', self.pin_path,
+                            '--out-root', self.out_root, '--school-rule', 'off', '--dry-run'], capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        self.assertIn('school-morning rule: OFF for this run', r.stdout)
+        self.assertTrue(r.stdout.rstrip().endswith('dry run: nothing written'), r.stdout)
+        self.assertFalse(os.path.exists(self.out_root))
+
+
+class ReservedSeedSlots(World):
+    """The pin's seed_reserved slots (committed runs outside rl/results/slow_reports, the km3 smoke) are used slots: the automatic pick skips them and an explicit base on one
+    is refused with the pin's note."""
+    RESERVED = [{'base': BLOCK[0] + 684 * STEP, 'note': 'slot 684: a smoke run'}, {'base': BLOCK[0] + 685 * STEP, 'note': 'slot 685: another smoke run'}]
+
+    @staticmethod
+    def head(slot):
+        return f'{slot:08x}' + '0' * 56  # int(head[:8], 16) % 990 == slot for every slot below 990
+
+    def pick(self, slot, reserved=(), explicit=None, folders=()):
+        with tempfile.TemporaryDirectory() as t:
+            for base in folders:
+                write(os.path.join(t, f'run{base}', 'manifest.json'), json.dumps({'seed_base': base}))
+            return sr.pick_seed_base(self.head(slot), t, BLOCK, STEP, explicit=explicit, reserved=reserved)
+
+    def test_the_automatic_pick_skips_a_reserved_slot_and_the_next_free_one_is_taken(self):
+        for slot, want in ((684, 686), (685, 686), (683, 683), (686, 686), (0, 0)):
+            self.assertEqual(self.pick(slot, self.RESERVED), BLOCK[0] + want * STEP, slot)
+        self.assertEqual(self.pick(684), BLOCK[0] + 684 * STEP, 'without the reservation the deck would have had it')
+        self.assertEqual(self.pick(684, self.RESERVED, folders=[BLOCK[0] + 686 * STEP]), BLOCK[0] + 687 * STEP, 'a reserved slot and a used folder both count')
+        self.assertEqual(self.pick(989, [{'base': BLOCK[0] + 989 * STEP}]), BLOCK[0], 'past the last slot it starts again at the first')
+
+    def test_an_explicit_base_on_a_reserved_slot_is_refused_with_its_note(self):
+        for r in self.RESERVED:
+            with self.assertRaises(SystemExit, msg=r['note']) as cm:
+                self.pick(5, self.RESERVED, explicit=r['base'])
+            self.assertEqual(cm.exception.code, f"REFUSED: --seed-base {r['base']} is a seed slot that is already used ({r['note']}); two reports would play the same deals")
+        self.assertEqual(self.pick(5, self.RESERVED, explicit=BLOCK[0] + 686 * STEP), BLOCK[0] + 686 * STEP, 'its neighbour is free')
+        self.assertEqual(self.pick(5, self.RESERVED, explicit=BLOCK[0] + 683 * STEP), BLOCK[0] + 683 * STEP)
+
+    def test_a_reserved_slot_without_a_note_is_still_named_and_a_base_inside_the_slot_reserves_it(self):
+        with self.assertRaises(SystemExit) as cm:
+            self.pick(5, [{'base': BLOCK[0] + 10 * STEP}], explicit=BLOCK[0] + 10 * STEP)
+        self.assertIn('is a seed slot that is already used (a reserved slot);', cm.exception.code)
+        with self.assertRaises(SystemExit):
+            self.pick(5, [{'base': BLOCK[0] + 10 * STEP + 777, 'note': 'inside'}], explicit=BLOCK[0] + 10 * STEP)
+        self.assertEqual(self.pick(10, [{'base': BLOCK[0] + 10 * STEP + 777}]), BLOCK[0] + 11 * STEP)
+
+    def test_entries_that_are_not_slots_of_the_block_are_ignored(self):
+        junk = [{'base': 'x', 'note': 'text'}, {'base': 1.5}, {'base': True}, {'note': 'no base'}, 5, 'text', None, [], {'base': BLOCK[1] + 1, 'note': 'above'},
+                {'base': BLOCK[0] - 1, 'note': 'below'}]
+        self.assertEqual(self.pick(10, junk), BLOCK[0] + 10 * STEP)
+        self.assertEqual(self.pick(5, junk, explicit=BLOCK[0]), BLOCK[0])
+        self.assertEqual(self.pick(5, explicit=BLOCK[0]), BLOCK[0])
+
+    def test_a_deck_that_lands_on_a_reserved_slot_gets_the_next_free_one_end_to_end(self):
+        for slot in (684, 685, 686):
+            with self.subTest(slot=slot):
+                self.make(deck_text=deck_text_in_slot(slot))
+                self.assertEqual(self.pin['seed_reserved'][slot - 684]['base'], BLOCK[0] + slot * STEP, 'the pin of this test is the committed one')
+                d = self.register()
+                self.assertEqual(json.loads(read(os.path.join(d, 'manifest.json')))['seed_base'], BLOCK[0] + 687 * STEP, 'the first slot after the three the smoke used')
+                shutil.rmtree(self.out_root)
+                pin = json.loads(read(self.pin_path))
+                pin['seed_reserved'] = []  # a pin that reserves nothing: the deck's own slot
+                write(self.pin_path, json.dumps(pin))
+                d = self.register()
+                self.assertEqual(json.loads(read(os.path.join(d, 'manifest.json')))['seed_base'], BLOCK[0] + slot * STEP)
+                shutil.rmtree(self.out_root)
+
+    def test_a_pin_must_list_its_reserved_slots_and_a_typo_in_the_list_is_refused_not_ignored(self):
+        """A reservation that was left out or mistyped would hand out a slot a committed run already used (the pin's seed_reserved is required and checked as a list of slots)."""
+        good = BLOCK[0] + 684 * STEP
+        refusal = 'seed_reserved must be a list of {"base": the first seed of a slot inside the seed block, "note": text}; a typo there would hand out a slot a committed run already used'
+        pin = json.loads(read(self.pin_path))
+        del pin['seed_reserved']
+        write(self.pin_path, json.dumps(pin))
+        code, out, err = self.cli('--deals', '1', '--register-only')
+        self.assertEqual(code, f"[slow report] the pin {self.pin_path} has no 'seed_reserved'", 'an older pin is not a pin with nothing reserved')
+        self.assertFalse(os.path.exists(self.out_root))
+        bad = [('null', None), ('a number', 5), ('text', 'slots'), ('an object', {'base': good, 'note': 'x'}), ('an entry that is no object', [good]), ('no base', [{'note': 'x'}]),
+               ('no note', [{'base': good}]), ('a base in text', [{'base': str(good), 'note': 'x'}]), ('a base with a fraction', [{'base': good + 0.5, 'note': 'x'}]),
+               ('a base that is true', [{'base': True, 'note': 'x'}]), ('a note that is no text', [{'base': good, 'note': 5}]), ('a base inside a slot', [{'base': good + 1, 'note': 'x'}]),
+               ('a base below the block', [{'base': BLOCK[0] - STEP, 'note': 'x'}]), ('a base past the last slot', [{'base': BLOCK[1] + 1, 'note': 'x'}]),
+               ('one good and one bad', [{'base': good, 'note': 'x'}, {'base': good + 7, 'note': 'y'}])]
+        for label, value in bad:
+            with self.subTest(label):
+                pin['seed_reserved'] = value
+                write(self.pin_path, json.dumps(pin))
+                code, out, err = self.cli('--deals', '1', '--register-only')
+                self.assertEqual(code, f'[slow report] the pin {self.pin_path}: {refusal}')
+                self.assertFalse(os.path.exists(self.out_root), 'nothing was written')
+        tiny = os.path.join(self.tmp, 'tiny-block-pin.json')  # in a block that starts at 0 the number True (which is 1 to Python) would be a slot, and is still no number
+        for label, value, loads in (('true', True, False), ('one', 1, True)):
+            with self.subTest('a tiny block: ' + label):
+                write(tiny, json.dumps(dict(pin, seed_block=[0, 9], seed_step=1, seed_reserved=[{'base': value, 'note': 'x'}])))
+                if loads:
+                    self.assertEqual(sr.load_pin(tiny)['seed_reserved'], [{'base': 1, 'note': 'x'}])
+                else:
+                    with self.assertRaises(SystemExit) as cm:
+                        sr.load_pin(tiny)
+                    self.assertEqual(cm.exception.code, f'the pin {tiny}: {refusal}')
+        last = BLOCK[0] + (BLOCK[1] - BLOCK[0] + 1) // STEP * STEP - STEP
+        for label, value in (('none', []), ('two', self.RESERVED), ('the last slot', [{'base': last, 'note': 'the last one'}]), ('the first slot', [{'base': BLOCK[0], 'note': 'the first one'}])):
+            with self.subTest('good: ' + label):
+                pin['seed_reserved'] = value
+                write(self.pin_path, json.dumps(pin))
+                self.assertEqual(sr.load_pin(self.pin_path)['seed_reserved'], value)
+
+    def test_an_explicit_seed_base_on_a_reserved_slot_is_refused_on_the_command_line_and_nothing_is_written(self):
+        for r in self.pin['seed_reserved']:
+            code, out, err = self.cli('--deals', '1', '--register-only', '--seed-base', str(r['base']))
+            self.assertEqual(code, f"{HEADLINE_START}my-list v km3 on the public panel] REFUSED: --seed-base {r['base']} is a seed slot that is already used ({r['note']}); "
+                                   'two reports would play the same deals')
+            self.assertFalse(os.path.exists(self.out_root))
+        free = self.pin['seed_reserved'][-1]['base'] + STEP
+        d = self.register('--seed-base', str(free))
+        self.assertEqual(json.loads(read(os.path.join(d, 'manifest.json')))['seed_base'], free)
+
+    def test_the_committed_pin_reserves_the_three_smoke_slots(self):
+        pin = json.loads(read(os.path.join(HERE, 'slow_report_pin.json')))
+        self.assertEqual([r['base'] for r in pin['seed_reserved']], [24669400000, 24669500000, 24669600000])
+        for r in pin['seed_reserved']:
+            self.assertTrue(r['note'].strip())
+            self.assertTrue(BLOCK[0] <= r['base'] and (r['base'] - BLOCK[0]) % STEP == 0)
+
+
+class UnfinishedRuns(World):
+    """Registering a deck while an earlier slow report of it still has games to play prints a WARNING that names the run and how to resume it; it does not refuse."""
+
+    def warning(self, d, played=0, planned=32, deck='my-list', command=None):
+        return (f'WARNING: an unfinished slow report of {deck} already exists: {d} ({played} of {planned} games played). '
+                f'Resume it ({command or "python3 rl/strength/slow_report.py --dir " + d}) instead of registering a second one, unless you mean to.')
+
+    def lines(self, out):
+        return [l.split('] ', 1)[1] for l in out.splitlines()]
+
+    def second(self, *extra, date='2026-10-11'):
+        return self.cli('--deals', '1', *extra, '--date', date, date=False, school=None)
+
+    def other_deck(self):
+        path = os.path.join(self.repo, 'decks', 'events', 'other-list.txt')
+        write(path, DECK_TEXT.replace('Torchic', 'Treecko'))
+        return path
+
+    def test_a_second_registration_of_an_unfinished_deck_warns_after_the_question_and_still_registers(self):
+        first = self.register(school=None)
+        code, out, err = self.second('--register-only')
+        self.assertEqual(code, 0, err + out)
+        lines = self.lines(out)
+        self.assertEqual(lines.count(self.warning(first)), 1)
+        i = lines.index(self.warning(first))
+        self.assertTrue(lines[i - 1].startswith('question: '), 'the question is first')
+        self.assertTrue(lines[i + 1].startswith('plan: '), 'the plan follows')
+        self.assertTrue(os.path.exists(os.path.join(self.rundir('2026-10-11_my-list'), 'manifest.sha256')), 'a warning is not a refusal')
+        self.assertEqual(sorted(os.listdir(self.out_root)), ['2026-10-10_my-list', '2026-10-11_my-list'])
+
+    def test_the_fallback_command_of_a_manifest_without_one_keeps_an_empty_list_of_school_days(self):
+        """'' is a choice (no school days), only a missing entry means the default: the command rebuilt for an old manifest says so (found by a test writer)."""
+        d = os.path.join(self.out_root, '2026-10-01_my-list')
+        write(os.path.join(d, 'manifest.json'), json.dumps({'planned_games': 4, 'slow_report': {'deck_name': 'my-list', 'school_rule': 'on', 'school_days': ''}}))
+        write(os.path.join(d, 'games.jsonl'), '')
+        self.assertEqual(sr.unfinished_runs(self.out_root, 'my-list'), [(d, 0, 4, sr.resume_command_for(d, 'on', ''))])
+        self.assertIn("--school-days ''", sr.unfinished_runs(self.out_root, 'my-list')[0][3])
+        write(os.path.join(d, 'manifest.json'), json.dumps({'planned_games': 4, 'slow_report': {'deck_name': 'my-list'}}))  # an entry that is missing is the default
+        self.assertEqual(sr.unfinished_runs(self.out_root, 'my-list'), [(d, 0, 4, sr.resume_command_for(d, 'on', sr.DEFAULT_SCHOOL_DAYS))])
+        self.assertNotIn('--school-days', sr.unfinished_runs(self.out_root, 'my-list')[0][3])
+
+    def test_a_dry_run_warns_too_and_writes_nothing(self):
+        first = self.register(school=None)
+        before = sorted(os.listdir(first))
+        code, out, err = self.second('--dry-run')
+        self.assertEqual(code, 0, err + out)
+        self.assertIn(self.warning(first), self.lines(out))
+        self.assertEqual(os.listdir(self.out_root), ['2026-10-10_my-list'])
+        self.assertEqual(sorted(os.listdir(first)), before)
+
+    def test_the_warning_counts_the_games_played_so_far(self):
+        self.assertEqual(self.cli('--deals', '1', '--max-games', '5', school=None)[0], 0)
+        first = self.rundir()
+        code, out, err = self.second('--register-only')
+        self.assertEqual(code, 0, err + out)
+        self.assertIn(self.warning(first, played=5), self.lines(out))
+
+    def test_every_unfinished_run_of_the_deck_gets_its_own_line_in_folder_order(self):
+        older = self.register(school=None)
+        code, out, err = self.second('--register-only', date='2026-10-11')
+        self.assertEqual(code, 0, err + out)
+        newer = self.rundir('2026-10-11_my-list')
+        code, out, err = self.second('--register-only', date='2026-10-12')
+        self.assertEqual(code, 0, err + out)
+        warnings = [l for l in self.lines(out) if l.startswith('WARNING')]
+        self.assertEqual(warnings, [self.warning(older), self.warning(newer)])
+
+    def test_there_is_no_warning_for_a_finished_run(self):
+        self.assertEqual(self.cli('--deals', '1', school=None)[0], 0)
+        self.assertEqual(len(jsonl(os.path.join(self.rundir(), 'games.jsonl'))), 32)
+        code, out, err = self.second('--register-only')
+        self.assertEqual(code, 0, err + out)
+        self.assertNotIn('WARNING', out)
+
+    def test_there_is_no_warning_for_another_decks_run_either_way_round(self):
+        other = self.other_deck()
+        code, out, err = self.cli_path(other, '--deals', '1', '--register-only', school=None)
+        self.assertEqual(code, 0, err + out)
+        code, out, err = self.cli('--deals', '1', '--register-only', school=None)
+        self.assertEqual(code, 0, err + out)
+        self.assertNotIn('WARNING', out)
+        code, out, err = self.cli_path(other, '--deals', '1', '--register-only', '--date', '2026-10-11', school=None)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual([l for l in self.lines(out) if l.startswith('WARNING')], [self.warning(self.rundir('2026-10-10_other-list'), deck='other-list')])
+
+    def test_there_is_no_warning_for_a_folder_that_is_not_a_slow_report(self):
+        first = self.register(school=None)
+        man = json.loads(read(os.path.join(first, 'manifest.json')))
+        del man['slow_report']
+        rewrite_manifest(first, man)
+        code, out, err = self.second('--register-only')
+        self.assertEqual(code, 0, err + out)
+        self.assertNotIn('WARNING', out)
+
+    def test_a_warning_names_the_command_that_resumes_that_run_as_it_was_registered_not_one_built_from_this_calls_options(self):
+        a = self.register(school='off')  # registered with the rule off: its command says so
+        a_cmd = f'python3 rl/strength/slow_report.py --dir {a} --school-rule off'
+        self.assertEqual(json.loads(read(os.path.join(a, 'manifest.json')))['slow_report']['resume_command'], a_cmd)
+        code, out, err = self.second('--register-only', '--school-days', 'sat,sun', date='2026-10-11')  # this call: the rule on (the default), other days
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual([l for l in self.lines(out) if l.startswith('WARNING')], [self.warning(a, command=a_cmd)], 'not the plain command, not one with sat,sun')
+        b = self.rundir('2026-10-11_my-list')
+        b_cmd = f'python3 rl/strength/slow_report.py --dir {b} --school-days sat,sun'
+        self.assertEqual(json.loads(read(os.path.join(b, 'manifest.json')))['slow_report']['resume_command'], b_cmd)
+        code, out, err = self.cli('--deals', '1', '--register-only', '--date', '2026-10-12', date=False, school='off')  # this call: the rule off
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual([l for l in self.lines(out) if l.startswith('WARNING')], [self.warning(a, command=a_cmd), self.warning(b, command=b_cmd)],
+                         "each run's own command: the second one is not told --school-rule off")
+
+    def test_a_run_with_no_recorded_command_gets_one_made_from_the_school_choice_it_recorded(self):
+        def folder(name, block):
+            write(os.path.join(t, name, 'manifest.json'), json.dumps({'planned_games': 8, 'slow_report': dict({'deck_name': 'my-list'}, **block)}))
+        base = 'python3 rl/strength/slow_report.py --dir '
+        with tempfile.TemporaryDirectory() as t:
+            for name, block, added in (('a-nothing-recorded', {}, ''), ('b-the-rule-off', {'school_rule': 'off', 'school_days': 'mon'}, ' --school-rule off'),
+                                       ('c-other-days', {'school_rule': 'on', 'school_days': 'sat,sun'}, ' --school-days sat,sun'),
+                                       ('d-the-default-spelled-out', {'school_rule': 'on', 'school_days': 'mon,tue,wed,thu,fri'}, ''),
+                                       ('e-only-the-rule', {'school_rule': 'off'}, ' --school-rule off'),
+                                       ('f-a-null-command', {'resume_command': None, 'school_rule': 'off'}, ' --school-rule off'),
+                                       ('g-its-own-command', {'resume_command': 'python3 somewhere/else.py --dir g', 'school_rule': 'off'}, None)):
+                folder(name, block)
+            got = {os.path.basename(d): (played, planned, cmd) for d, played, planned, cmd in sr.unfinished_runs(t, 'my-list')}
+            self.assertEqual(len(got), 7)
+            for name, added in (('a-nothing-recorded', ''), ('b-the-rule-off', ' --school-rule off'), ('c-other-days', ' --school-days sat,sun'), ('d-the-default-spelled-out', ''),
+                                ('e-only-the-rule', ' --school-rule off'), ('f-a-null-command', ' --school-rule off')):
+                self.assertEqual(got[name], (0, 8, base + os.path.join(t, name) + added), name)
+            self.assertEqual(got['g-its-own-command'], (0, 8, 'python3 somewhere/else.py --dir g'), 'the command the registration recorded is the one given')
+
+    def test_unfinished_runs_lists_the_registered_runs_of_the_deck_that_still_have_games_to_go(self):
+        def folder(root, name, manifest, keys=(), raw=None):
+            if isinstance(manifest, bytes):
+                write_bytes(os.path.join(root, name, 'manifest.json'), manifest)
+            else:
+                write(os.path.join(root, name, 'manifest.json'), manifest if isinstance(manifest, str) else json.dumps(manifest))
+            if keys or raw:
+                write(os.path.join(root, name, 'games.jsonl'), ''.join(json.dumps({'key': k}) + '\n' for k in keys) + (raw or ''))
+        mine = {'deck_name': 'my-list'}
+        resume = 'python3 rl/strength/slow_report.py --dir '
+        with tempfile.TemporaryDirectory() as t:
+            self.assertEqual(sr.unfinished_runs(os.path.join(t, 'nothing-here'), 'my-list'), [])
+            self.assertEqual(sr.unfinished_runs(t, 'my-list'), [])
+            write(os.path.join(t, 'a-file-not-a-folder'), 'x')
+            self.assertEqual(sr.unfinished_runs(os.path.join(t, 'a-file-not-a-folder'), 'my-list'), [], 'an output folder that is a file')
+            folder(t, 'c-three-of-32', {'planned_games': 32, 'slow_report': mine}, ['k1', 'k2', 'k2', 'k3'], raw='{"key": "k4", "de')  # a repeated key and a torn line count for nothing
+            folder(t, 'a-none-of-8', {'planned_games': 8, 'slow_report': mine})
+            folder(t, 'b-finished', {'planned_games': 3, 'slow_report': mine}, ['k1', 'k2', 'k3'])
+            folder(t, 'd-more-than-planned', {'planned_games': 2, 'slow_report': mine}, ['k1', 'k2', 'k3'])
+            folder(t, 'e-another-deck', {'planned_games': 8, 'slow_report': {'deck_name': 'other'}})
+            folder(t, 'f-no-block', {'planned_games': 8})
+            folder(t, 'g-null-block', {'planned_games': 8, 'slow_report': None})
+            folder(t, 'h-no-plan', {'slow_report': mine})
+            folder(t, 'i-plan-is-text', {'planned_games': '8', 'slow_report': mine})
+            folder(t, 'j-not-json', '{not json')
+            folder(t, 'k-a-list', '[]')
+            folder(t, 'l-null', 'null')
+            os.makedirs(os.path.join(t, 'm-no-manifest'))
+            write(os.path.join(t, 'n-a-file'), 'x')
+            folder(t, 'o-half-written', '{"planned_games": 8, "slow_report": {"deck_name": "my-li')  # the manifest of a registration that was cut off
+            folder(t, 'p-not-text', b'\xff\xfe{"planned_games": 8}')
+            os.makedirs(os.path.join(t, 'q-manifest-is-a-folder', 'manifest.json'))
+            folder(t, 'r-block-is-a-list', {'planned_games': 8, 'slow_report': ['my-list']})
+            folder(t, 's-block-is-text', {'planned_games': 8, 'slow_report': 'my-list'})
+            folder(t, 't-plan-is-a-fraction', {'planned_games': 8.0, 'slow_report': mine})
+            folder(t, 'u-plan-is-null', {'planned_games': None, 'slow_report': mine})
+            folder(t, 'v-deck-name-is-a-list', {'planned_games': 8, 'slow_report': {'deck_name': ['my-list']}})
+            folder(t, 'w-school-days-is-a-number', {'planned_games': 8, 'slow_report': dict(mine, school_days=5)})  # no command can be made from it
+            write(os.path.join(t, 'x-key-is-a-list', 'games.jsonl'), '{"key": ["a"]}\n')
+            folder(t, 'x-key-is-a-list', {'planned_games': 8, 'slow_report': mine})
+            self.assertEqual(sr.unfinished_runs(t, 'my-list'), [(os.path.join(t, 'a-none-of-8'), 0, 8, resume + os.path.join(t, 'a-none-of-8')),
+                                                                (os.path.join(t, 'c-three-of-32'), 3, 32, resume + os.path.join(t, 'c-three-of-32'))])
+            self.assertEqual(sr.unfinished_runs(t, 'other'), [(os.path.join(t, 'e-another-deck'), 0, 8, resume + os.path.join(t, 'e-another-deck'))])
+
+
+class CloudRoute(World):
+    """--program PATH: a REBUILD of the pinned source (for example made on the cloud with rl/strength/build.sh) instead of the pinned binary. It is accepted only when this
+    checkout's harness source is the pinned build's and BOTH self-checks, replayed on it, equal the committed pin's digests; otherwise nothing is written. The pin of this class
+    holds the texts the fake programs print, and a harness source (src/*.rs and Cargo.toml) is laid out in the temporary repository, hashed in the pin."""
+    TEXT = 'selfcheck pilot=%s games=12 digest=fakefakefakefake'
+    PRINT = "print('selfcheck pilot=%s games=12 digest=fakefakefakefake' % arg('--pilot'))"
+    REBUILD_LINE = ('The program is a REBUILD of the pinned source, not the pinned binary (`{pinned}`, sha256 `{sha12}`): it was accepted only because both self-checks were replayed '
+                    "on this machine and equal the committed pin's digests, and the harness source in the checkout is the pinned build's.")
+
+    def setUp(self):
+        super().setUp()
+        self.lay_out_harness()
+        self.replayed, self.deadlines = [], []
+        real = sr.run_selfcheck
+
+        def spy(pin, repo, spec, say, **kw):
+            self.replayed.append((spec, pin['program']))
+            self.deadlines.append(kw.get('deadline'))
+            return real(pin, repo, spec, say, **kw)
+        patcher = mock.patch.object(sr, 'run_selfcheck', spy)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    def lay_out_harness(self):
+        """A harness source in the temporary repository, a pin that names its hash and the fake programs' self-check texts, and the rebuilt copy self.cloud."""
+        for name, text in (('src/main.rs', 'fn main() {}\n'), ('src/lib.rs', '// the library\n'), ('src/notes.txt', 'not Rust: left out of the hash\n'),
+                           ('Cargo.toml', '[package]\nname = "strength"\n')):
+            write(os.path.join(self.repo, 'rl', 'strength', name), text)
+        self.edit_pin(harness_source_sha256=self.harness_hash(), selfcheck={s: self.TEXT % s for s in ('km3', 'kx3')})
+        self.cloud = os.path.join(self.tmp, 'cloud', 'strength')
+        self.rebuild_at(self.cloud)
+
+    def edit_pin(self, **kw):
+        pin = json.loads(read(self.pin_path))
+        pin.update(kw)
+        write(self.pin_path, json.dumps(pin, indent=1))
+        self.pin = pin
+
+    def harness_hash(self):
+        """The hash build.sh prints, worked out here by hand: sha256 of src/*.rs in name order, then Cargo.toml."""
+        d = os.path.join(self.repo, 'rl', 'strength')
+        data = b''
+        for n in sorted(os.listdir(os.path.join(d, 'src'))):
+            if n.endswith('.rs'):
+                with open(os.path.join(d, 'src', n), 'rb') as f:
+                    data += f.read()
+        with open(os.path.join(d, 'Cargo.toml'), 'rb') as f:
+            data += f.read()
+        return hashlib.sha256(data).hexdigest()
+
+    def rebuild_at(self, path, differs_for=None):
+        """A program at `path` that is not the pinned binary (other bytes), plays like it, and prints the pin's self-check texts, except, with differs_for='km3' or 'kx3', for
+        that pilot."""
+        text = FAKE_PROGRAM + '\n# built on the cloud\n'
+        if differs_for:
+            self.assertEqual(text.count(self.PRINT), 1)
+            text = text.replace(self.PRINT, "print('selfcheck pilot=%s games=12 digest=%s' % (arg('--pilot'), 'changedchanged00' if arg('--pilot') == " + repr(differs_for) + " else 'fakefakefakefake'))")
+        write(path, text, mode=0o755)
+
+    def spawned(self):
+        """A spawn that notes the program each sitting is started with."""
+        seen = []
+
+        def spawn(cmd, env, logfile):
+            seen.append(cmd[len(sr.nice_prefix())])
+            return sr.default_spawn(cmd, env, logfile)
+        spawn.seen = seen
+        return spawn
+
+    def manifest(self, d):
+        return json.loads(read(os.path.join(d, 'manifest.json')))
+
+    def test_the_pinned_binary_under_another_path_takes_the_pinned_route_and_replays_nothing(self):
+        copy = os.path.join(self.tmp, 'copy', 'strength')
+        write(copy, FAKE_PROGRAM, mode=0o755)
+        self.assertEqual(sha(copy), sha(self.program))
+        spawn = self.spawned()
+        code, out, err = self.cli('--deals', '1', '--program', copy, spawn=spawn)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.replayed, [])
+        for here in (self.tmp, os.path.dirname(copy)):
+            self.assertFalse(os.path.exists(os.path.join(here, 'selfcheck_env.json')), 'no self-check was run')
+        d = self.rundir()
+        man = self.manifest(d)
+        b = man['slow_report']
+        self.assertEqual((man['program'], man['program_sha256']), (copy, sha(self.program)))
+        self.assertEqual((b['program_route'], b['pinned_program'], b['pinned_program_sha256']), ('pinned', self.program, sha(self.program)))
+        self.assertEqual(man['engine'], self.pin['engine'], 'the pinned program is described as the pin describes it, with nothing added')
+        prereg_run = read(os.path.join(d, 'PREREGISTRATION.md')).split('## Run')[1]
+        self.assertIn('and checks the registration, the deck files and the pinned program before every sitting:', prereg_run)
+        self.assertNotIn('REBUILD', prereg_run)
+        self.assertEqual(man['selfcheck'], self.pin['selfcheck'])
+        self.assertEqual(set(man['selfcheck_source'].values()), {'given in the config (copied from the pin, which says it was measured on this exact program sha256)'})
+        self.assertEqual(set(spawn.seen), {copy}, 'the games are played by the program that was given')
+        page = read(os.path.join(d, 'SLOW_REPORT.md'))
+        self.assertNotIn('REBUILD', page)
+        self.assertIn('(copied from the pin, not replayed: the pin says it was measured on this exact binary)', page)
+        self.assertIn(f'Program `{copy}` sha256 `{sha(copy)[:12]}`.', page)
+
+    def test_a_rebuild_is_accepted_when_both_self_checks_equal_the_pin_and_is_recorded_as_a_rebuild(self):
+        spawn = self.spawned()
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud, spawn=spawn)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)], 'both pilots, on the rebuilt copy, km3 first')
+        self.assertTrue(os.path.exists(os.path.join(os.path.dirname(self.cloud), 'selfcheck_env.json')), 'the rebuilt copy ran the self-check')
+        self.assertFalse(os.path.exists(os.path.join(self.tmp, 'selfcheck_env.json')), 'and the pinned binary did not')
+        d = self.rundir()
+        man = self.manifest(d)
+        b = man['slow_report']
+        self.assertNotEqual(sha(self.cloud), sha(self.program))
+        self.assertEqual((man['program'], man['program_sha256']), (self.cloud, sha(self.cloud)), 'the manifest names the rebuilt copy, not the pin')
+        self.assertEqual((b['program_route'], b['pinned_program'], b['pinned_program_sha256']), ('rebuilt', self.program, sha(self.program)))
+        self.assertEqual((b['harness_source_sha256'], b['harness_source_checkout_sha256']), (self.pin['harness_source_sha256'],) * 2)
+        self.assertEqual((b['engine_ref'], b['engine_tree']), (self.pin['engine_ref'], self.pin['engine_tree']))
+        self.assertIsNone(b['engine_tree_in_checkout'], 'the temporary checkout is no git repository: the engine tree could not be compared, and that is said as nothing')
+        self.assertEqual(man['engine'], self.pin['engine'] + f"; THIS PROGRAM ({self.cloud}, sha256 {sha(self.cloud)[:12]}) IS A REBUILD of that source made on another machine, "
+                                                             "not the laptop binary, accepted because both self-checks were replayed on that machine and equal the committed pin's digests")
+        self.assertEqual(man['selfcheck'], {s: self.TEXT % s for s in ('km3', 'kx3')})
+        self.assertEqual(man['selfcheck_source'], {s: 'replayed by slow_report.py on this machine just before registration (equal to the committed pin)' for s in ('km3', 'kx3')})
+        cfg = json.loads(read(os.path.join(d, 'config.json')))
+        self.assertEqual((cfg['program'], cfg['program_sha256'], cfg['selfcheck_given_program_sha256'], cfg['selfcheck_how']), (self.cloud, sha(self.cloud), sha(self.cloud), 'replayed'))
+        self.assertEqual(set(spawn.seen), {self.cloud}, 'the games are played by the rebuilt copy')
+        self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), 32)
+        self.assertEqual(out.splitlines().count(f'{HEADLINE_START}my-list v km3 on the public panel] self-check of km3: 12 fixed games on {self.cloud} '
+                                                '(this takes a while for kx3; run it when the machine is free)'), 1)
+        prereg = read(os.path.join(d, 'PREREGISTRATION.md'))
+        for line in (f'- program_route: `rebuilt`', f'- pinned_program: `{self.program}`', f'- pinned_program_sha256: `{sha(self.program)}`',
+                     f"- harness_source_sha256: `{self.pin['harness_source_sha256']}`", f"- harness_source_checkout_sha256: `{self.pin['harness_source_sha256']}`",
+                     f"- engine_ref: `{self.pin['engine_ref']}`", f"- engine_tree: `{self.pin['engine_tree']}`", '- school_rule: `off`', '- school_days: `mon,tue,wed,thu,fri`'):
+            self.assertIn('\n' + line + '\n', prereg)
+        self.assertIn(f'Program: `{self.cloud}` sha256 `{sha(self.cloud)}`', prereg)
+        self.assertIn('and checks the registration, the deck files and the program it was registered with, a REBUILD of the pinned source (accepted after both self-checks were replayed '
+                      'on that machine; a resume needs the same sha256) before every sitting:', prereg.split('## Run')[1])
+        page = read(os.path.join(d, 'SLOW_REPORT.md'))
+        self.assertIn('\n- ' + self.REBUILD_LINE.format(pinned=self.program, sha12=sha(self.program)[:12]) + '\n', page)
+        self.assertIn(f'Program `{self.cloud}` sha256 `{sha(self.cloud)[:12]}`.', page)
+        self.assertIn('\n- Build: ' + man['engine'] + '\n', page, 'the page says the build is a rebuild made on another machine, in the registered words')
+        self.assertEqual(page.count('(replayed on this machine just before registration, equal to the committed pin)'), 2)
+        self.assertIn(f"- Harness source sha256 `{self.pin['harness_source_sha256'][:12]}` (what rl/strength/build.sh prints); the checkout this run was registered from has the same.", page)
+
+    def test_the_whole_cloud_route_with_the_rule_off_needs_no_time_zone_database(self):
+        asked = self.without_tzdata()
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud, school='off')
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(asked, [])
+        self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)])
+        self.assertEqual(len(jsonl(os.path.join(self.rundir(), 'games.jsonl'))), 32)
+
+    def test_a_relative_program_path_is_recorded_as_an_absolute_one(self):
+        old = os.getcwd()
+        os.chdir(self.tmp)
+        self.addCleanup(os.chdir, old)
+        d = self.register('--program', os.path.join('cloud', 'strength'))
+        man = self.manifest(d)
+        self.assertEqual(man['program'], self.cloud, 'a resume from another folder must still find it')
+        self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)])
+
+    def test_a_rebuild_whose_self_check_differs_for_either_pilot_is_refused_and_nothing_is_written(self):
+        for pilot, tried in (('km3', ['km3']), ('kx3', ['km3', 'kx3'])):
+            with self.subTest(differs_for=pilot):
+                self.replayed.clear()
+                self.rebuild_at(self.cloud, differs_for=pilot)
+                code, out, err = self.cli('--deals', '1', '--program', self.cloud)
+                self.assertIn(f'REFUSED: the self-check of {pilot} does not match the pin.', str(code))
+                self.assertIn(f"  pinned: {self.TEXT % pilot}\n  got:    selfcheck pilot={pilot} games=12 digest=changedchanged00\n", str(code))
+                self.assertTrue(str(code).endswith('nothing was written.'), code)
+                self.assertEqual([s for s, p in self.replayed], tried, 'km3 first, and it stops at the first difference')
+                self.assertEqual({p for s, p in self.replayed}, {self.cloud})
+                self.assertFalse(os.path.exists(self.out_root), 'nothing was written')
+
+    def test_a_rebuild_whose_self_check_crashes_is_refused_with_its_exit_code_and_nothing_is_written(self):
+        write(self.cloud, "#!/usr/bin/env python3\nimport sys\nsys.stderr.write('boom: no engine\\n')\nsys.exit(1)\n", mode=0o755)
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud)
+        self.assertEqual(code, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the self-check of km3 on {self.cloud} exited with code 1 (boom: no engine); '
+                               'a self-check that fails is not a match, whatever it printed. Nothing was written.')
+        self.assertEqual([s for s, p in self.replayed], ['km3'], 'and it stops there')
+        self.assertFalse(os.path.exists(self.out_root))
+
+    def test_a_rebuild_whose_self_check_prints_the_pinned_text_but_exits_with_an_error_is_refused_too(self):
+        text = FAKE_PROGRAM + '\n# built on the cloud\n'
+        self.assertEqual(text.count("    sys.exit(0)\nman = json"), 1)
+        write(self.cloud, text.replace("    sys.exit(0)\nman = json", "    sys.exit(3)\nman = json"), mode=0o755)
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud)
+        self.assertEqual(code, f'{HEADLINE_START}my-list v km3 on the public panel] REFUSED: the self-check of km3 on {self.cloud} exited with code 3 ({self.TEXT % "km3"}); '
+                               'a self-check that fails is not a match, whatever it printed. Nothing was written.')
+        self.assertFalse(os.path.exists(self.out_root))
+        write(self.cloud, "#!/usr/bin/env python3\nimport sys\nsys.exit(0)\n", mode=0o755)  # and one that exits cleanly and prints nothing does not match either
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud)
+        self.assertIn(f"REFUSED: the self-check of km3 does not match the pin.\n  pinned: {self.TEXT % 'km3'}\n  got:    \nThe program is not behaving as the pinned build did; nothing was written.", str(code))
+        self.assertFalse(os.path.exists(self.out_root))
+
+    def test_a_rebuild_from_another_harness_source_is_refused_before_any_replay(self):
+        edits = (('a source file changed', lambda: write(os.path.join(self.repo, 'rl', 'strength', 'src', 'main.rs'), 'fn main() { 1; }\n')),
+                 ('Cargo.toml changed', lambda: write(os.path.join(self.repo, 'rl', 'strength', 'Cargo.toml'), '[package]\nname = "other"\n')),
+                 ('another Rust file added', lambda: write(os.path.join(self.repo, 'rl', 'strength', 'src', 'extra.rs'), '// new\n')),
+                 ('a Rust file removed', lambda: os.remove(os.path.join(self.repo, 'rl', 'strength', 'src', 'lib.rs'))),
+                 ('no harness source at all', lambda: shutil.rmtree(os.path.join(self.repo, 'rl', 'strength'))))
+        for label, edit in edits:
+            with self.subTest(label):
+                self.make()  # a fresh world each time, with the harness source laid out again
+                self.lay_out_harness()
+                edit()
+                here = sr.harness_source_sha256(self.repo)
+                self.assertNotEqual(here, self.pin['harness_source_sha256'])
+                code, out, err = self.cli('--deals', '1', '--program', self.cloud)
+                self.assertEqual(code, f"[kx3 (d513e37b) v km3] REFUSED: {self.cloud} has sha256 {sha(self.cloud)[:12]}, not the pinned {sha(self.program)[:12]}, "
+                                       'so it would have to be a rebuild of the pinned source; but the harness source in this checkout '
+                                       f"({(here or 'not found')[:12]}) is not the pinned build's ({self.pin['harness_source_sha256'][:12]}), so a build from here is not that program. "
+                                       'Check out the commit the pin was made on, or make a new pin after its own gate.')
+                self.assertEqual(self.replayed, [], 'refused before the hours-long replay')
+                self.assertFalse(os.path.exists(os.path.join(os.path.dirname(self.cloud), 'selfcheck_env.json')))
+                self.assertFalse(os.path.exists(self.out_root))
+
+    def test_the_pinned_route_records_the_checkouts_harness_source_but_does_not_depend_on_it(self):
+        write(os.path.join(self.repo, 'rl', 'strength', 'src', 'main.rs'), 'fn main() { 2; }\n')
+        here = self.harness_hash()
+        self.assertNotEqual(here, self.pin['harness_source_sha256'])
+        d = self.register()
+        b = self.manifest(d)['slow_report']
+        self.assertEqual((b['program_route'], b['harness_source_sha256'], b['harness_source_checkout_sha256']), ('pinned', self.pin['harness_source_sha256'], here))
+        self.assertIn(f"- harness_source_checkout_sha256: `{here}`\n", read(os.path.join(d, 'PREREGISTRATION.md')))
+        self.assertEqual(self.cli('--dir', d, '--report-only', deck=False)[0], 0)
+        self.assertIn(f"the checkout this run was registered from has `{here[:12]}` (so the pinned binary was not built from exactly that source).", read(os.path.join(d, 'SLOW_REPORT.md')))
+
+    def test_a_different_program_without_the_program_option_is_refused_and_the_message_points_to_it(self):
+        write(self.program, FAKE_PROGRAM + '\n# a rebuild at the pinned path\n', mode=0o755)
+        code, out, err = self.cli('--deals', '1')
+        msg = str(code)
+        self.assertIn(f'REFUSED: {self.program} (sha256 {sha(self.program)[:12]}) is not the pinned build (sha256 {self.pin["program_sha256"][:12]}). A slow report uses only the exact tested version.', msg)
+        self.assertIn(f'If this is a rebuild of {self.pin["engine_ref"][:8]} (for example on the cloud, with rl/strength/build.sh), pass it with --program PATH', msg)
+        self.assertIn("both self-checks are then replayed on this machine and must equal the committed pin's digests.", msg)
+        self.assertEqual(self.replayed, [])
+        self.assertFalse(os.path.exists(self.out_root))
+
+    def test_program_with_a_run_directory_is_refused(self):
+        d = self.register()
+        code, out, err = self.cli('--dir', d, '--program', self.cloud, deck=False)
+        self.assertEqual(code, '[kx3 (d513e37b) v km3] --program belongs to a new registration; a run that is already registered keeps what it was registered with, '
+                               'so it cannot be used with --dir')
+        self.assertEqual(self.replayed, [])
+        self.assertFalse(os.path.exists(os.path.join(d, 'games.jsonl')))
+
+    def test_a_program_file_that_is_not_there_is_refused(self):
+        gone = os.path.join(self.tmp, 'cloud', 'not-built-yet')
+        code, out, err = self.cli('--deals', '1', '--program', gone)
+        self.assertEqual(code, f'[kx3 (d513e37b) v km3] REFUSED: the program {gone} does not exist, so no slow report can run. A different build needs a new pin '
+                               '(rl/strength/slow_report_pin.json), after its own gate; a REBUILD of d513e37b (for example on the cloud, with rl/strength/build.sh) goes through --program PATH.')
+        self.assertFalse(os.path.exists(self.out_root))
+        os.remove(self.program)
+        code, out, err = self.cli('--deals', '1')
+        self.assertIn(f'the program {self.program} does not exist', str(code), 'the pinned path is checked the same way')
+        self.assertIn('goes through --program PATH.', str(code), 'and says how a rebuild is given')
+
+    def test_the_pinned_source_is_named_by_the_first_8_characters_of_its_ref_or_in_words_when_the_pin_has_none(self):
+        gone = os.path.join(self.tmp, 'cloud', 'not-built-yet')
+        write(self.program, FAKE_PROGRAM + '\n# changed\n', mode=0o755)
+        for label, pin, named in (('a ref', dict(self.pin, engine_ref='0123456789abcdef0123456789abcdef01234567'), '01234567'), ('a short ref', dict(self.pin, engine_ref='abc'), 'abc'),
+                                  ('no ref', {k: v for k, v in self.pin.items() if k != 'engine_ref'}, 'the pinned source'), ('a ref that is null', dict(self.pin, engine_ref=None), 'the pinned source'),
+                                  ('an empty ref', dict(self.pin, engine_ref=''), 'the pinned source')):
+            with self.subTest(label):
+                with self.assertRaises(SystemExit) as cm:
+                    sr.check_program(pin, gone, self.repo)
+                self.assertTrue(cm.exception.code.endswith(f'after its own gate; a REBUILD of {named} (for example on the cloud, with rl/strength/build.sh) goes through --program PATH.'), cm.exception.code)
+                with self.assertRaises(SystemExit) as cm:
+                    sr.check_program(pin, None, self.repo)
+                self.assertIn(f'If this is a rebuild of {named} (for example on the cloud, with rl/strength/build.sh), pass it with --program PATH:', cm.exception.code)
+                self.assertNotIn('None', cm.exception.code)
+
+    def test_a_dry_run_on_the_rebuilt_route_says_it_is_a_rebuild_and_replays_nothing(self):
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud, '--dry-run')
+        self.assertEqual(code, 0, err + out)
+        lines = [l.split('] ', 1)[1] for l in out.splitlines()]
+        self.assertIn(f'program {self.cloud} (sha256 {sha(self.cloud)[:12]}) is a REBUILD, not the pinned binary (sha256 {sha(self.program)[:12]}): both self-checks will be replayed on this machine '
+                      "against the committed pin's digests before anything is registered (hours for kx3), and the checkout's harness source equals the pinned build's", lines)
+        self.assertTrue(lines[-2].startswith('stage use'), lines[-2])
+        self.assertIn(f'program {self.cloud} (rebuilt, sha256 {sha(self.cloud)[:12]})', lines[-2])
+        self.assertEqual(lines[-1], 'dry run: nothing written')
+        self.assertEqual(self.replayed, [], 'a dry run replays nothing')
+        self.assertFalse(os.path.exists(os.path.join(os.path.dirname(self.cloud), 'selfcheck_env.json')))
+        self.assertFalse(os.path.exists(self.out_root))
+
+    def test_a_dry_run_on_the_pinned_route_does_not_talk_of_a_rebuild(self):
+        code, out, err = self.cli('--deals', '1', '--dry-run')
+        self.assertEqual(code, 0, err + out)
+        self.assertNotIn('REBUILD', out)
+        self.assertIn(f'program {self.program} (pinned, sha256 {sha(self.program)[:12]})', out)
+
+    def test_a_dry_run_on_the_rebuilt_route_refuses_a_foreign_harness_source_too(self):
+        write(os.path.join(self.repo, 'rl', 'strength', 'Cargo.toml'), '[package]\nname = "other"\n')
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud, '--dry-run')
+        self.assertIn('is not the pinned build\'s', str(code))
+        self.assertEqual(out, '')
+
+    def test_a_rebuild_run_is_resumed_with_the_rebuilt_copy_and_replays_nothing_again(self):
+        d = self.register('--program', self.cloud)
+        self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)])
+        spawn = self.spawned()
+        code, out, err = self.cli('--dir', d, deck=False, spawn=spawn)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)], 'a resume does not replay the self-checks')
+        self.assertEqual(set(spawn.seen), {self.cloud})
+        self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), 32)
+        self.assertIn('REBUILD', read(os.path.join(d, 'SLOW_REPORT.md')))
+
+    def test_a_rebuilt_run_is_played_in_slices_with_the_command_each_slice_prints(self):
+        d = self.register('--program', self.cloud)
+        command = f'python3 rl/strength/slow_report.py --dir {d} --school-rule off'
+        self.assertEqual(self.manifest(d)['slow_report']['resume_command'], command, 'the command PREREGISTRATION.md shows carries the choice for a machine that is not the laptop')
+        spawn = self.spawned()
+        for played in (10, 20, 30):
+            code, out, err = self.cli('--dir', d, '--max-games', '10', deck=False, school=None, spawn=spawn)
+            self.assertEqual(code, 0, err + out)
+            self.assertIn(f'{HEADLINE_START}my-list v km3 on the public panel] stopped after --max-games 10; resume with: {command}', out.splitlines())
+            self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), played)
+            self.assertIn('PARTIAL', read(os.path.join(d, 'SLOW_REPORT.md')))
+        code, out, err = self.cli('--dir', d, '--max-games', '10', deck=False, school=None, spawn=spawn)
+        self.assertEqual(code, 0, err + out)
+        self.assertNotIn('stopped after', out)
+        self.assertEqual(len(jsonl(os.path.join(d, 'games.jsonl'))), 32)
+        page = read(os.path.join(d, 'SLOW_REPORT.md'))
+        self.assertNotIn('PARTIAL', page)
+        self.assertIn('REBUILD of the pinned source', page)
+        self.assertEqual(set(spawn.seen), {self.cloud}, 'every slice is played by the rebuilt copy')
+        self.assertEqual(len(spawn.seen), 4)
+        self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)], 'the self-checks were replayed once, at the registration')
+
+    def test_the_games_of_a_run_whose_rebuilt_copy_changed_can_still_be_reported_on(self):
+        self.assertEqual(self.cli('--deals', '1', '--max-games', '6', '--program', self.cloud)[0], 0)
+        d = self.rundir()
+        write(self.cloud, FAKE_PROGRAM + '\n# another rebuild, other bytes\n', mode=0o755)
+        calls = len(jsonl(os.path.join(d, 'fake_calls.jsonl')))
+        os.remove(os.path.join(d, 'SLOW_REPORT.md'))
+        code, out, err = self.cli('--dir', d, '--report-only', deck=False)
+        self.assertEqual(code, 0, err + out)
+        self.assertIn('PARTIAL', read(os.path.join(d, 'SLOW_REPORT.md')))
+        self.assertEqual(len(jsonl(os.path.join(d, 'fake_calls.jsonl'))), calls, 'a report-only call starts no program')
+
+    def test_a_resume_with_a_rebuilt_copy_of_another_sha_is_refused_and_explained(self):
+        d = self.register('--program', self.cloud)
+        registered = sha(self.cloud)
+        write(self.cloud, FAKE_PROGRAM + '\n# built again on the cloud, other bytes\n', mode=0o755)
+        problem = (f'{self.cloud} has sha256 {sha(self.cloud)[:12]}, but this run was registered with the program at that path with sha256 {registered[:12]}. '
+                   'A resume needs the same program, byte for byte: ')  # (the whole message is pinned once, in RegisterAndRun)
+        code, out, err = self.cli('--dir', d, deck=False)
+        self.assertIn('so nothing is run:\n  ' + problem, str(code))
+        self.assertTrue(str(code).endswith('(register a new one)'), 'and it says what to do: a new registration')
+        self.assertFalse(os.path.exists(os.path.join(d, 'fake_calls.jsonl')))
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertEqual(code, 0)
+        self.assertIn('(it would be refused: ' + problem, out)
+        os.remove(self.cloud)
+        code, out, err = self.cli('--dir', d, deck=False)
+        self.assertIn(f'so nothing is run:\n  {self.cloud} is missing, but this run was registered with the program at that path with sha256 {registered[:12]}. A resume needs the same program, byte for byte: ', str(code))
+
+    def test_selfcheck_and_program_together_replay_once_and_the_replay_is_bounded_by_the_school_morning(self):
+        self.clock = FakeClock(chi(2026, 10, 7, 20, 0))  # a Wednesday evening
+        code, out, err = self.cli('--deals', '1', '--register-only', '--program', self.cloud, '--selfcheck', school='on')
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)], 'forced by --program: once each, not twice')
+        self.assertEqual(self.deadlines, [chi(2026, 10, 8, 6, 30)] * 2, "both replays must end by the next morning's 6:30 cut")
+
+    def test_a_rebuild_is_not_replayed_in_school_hours(self):
+        self.clock = FakeClock(chi(2026, 10, 7, 10, 0))  # a Wednesday morning
+        code, out, err = self.cli('--deals', '1', '--register-only', '--program', self.cloud, school='on')
+        self.assertIn('REFUSED: the self-check runs for hours and it is school time (the school-morning rule waits until Wed 17:00 Chicago time)', str(code))
+        self.assertEqual(self.replayed, [])
+        self.assertFalse(os.path.exists(self.out_root))
+        code, out, err = self.cli('--deals', '1', '--register-only', school='on')
+        self.assertEqual(code, 0, 'the pinned binary needs no replay, so school hours do not matter for it' + str(code) + err)
+
+    def test_harness_source_sha256_is_the_hash_build_sh_prints(self):
+        self.assertEqual(sr.harness_source_sha256(self.repo), self.harness_hash())
+        by_hand = hashlib.sha256(b'// the library\n' + b'fn main() {}\n' + b'[package]\nname = "strength"\n').hexdigest()
+        self.assertEqual(sr.harness_source_sha256(self.repo), by_hand, 'src/*.rs in name order (lib.rs before main.rs), then Cargo.toml, no separators')
+        write(os.path.join(self.repo, 'rl', 'strength', 'src', 'notes.txt'), 'changed, but not Rust\n')
+        self.assertEqual(sr.harness_source_sha256(self.repo), by_hand, 'only .rs files')
+        write(os.path.join(self.repo, 'rl', 'strength', 'src', 'a.rs'), '// first by name\n')
+        self.assertEqual(sr.harness_source_sha256(self.repo), hashlib.sha256(b'// first by name\n' + b'// the library\n' + b'fn main() {}\n' + b'[package]\nname = "strength"\n').hexdigest())
+        os.remove(os.path.join(self.repo, 'rl', 'strength', 'Cargo.toml'))
+        self.assertIsNone(sr.harness_source_sha256(self.repo), 'no Cargo.toml: no harness source')
+        self.assertIsNone(sr.harness_source_sha256(os.path.join(self.tmp, 'nowhere')))
+
+    def test_check_program_says_which_route_a_program_takes(self):
+        pin = dict(self.pin)
+        same_bytes = os.path.join(self.tmp, 'copy', 'strength')
+        write(same_bytes, FAKE_PROGRAM, mode=0o755)
+        pinned = ('pinned', sha(self.program))
+        self.assertEqual(sr.check_program(pin), pinned)
+        self.assertEqual(sr.check_program(pin, None, self.repo), pinned)
+        self.assertEqual(sr.check_program(pin, self.program, self.repo), pinned)
+        self.assertEqual(sr.check_program(pin, same_bytes, self.repo), pinned, 'the pinned bytes under another path are the pinned program')
+        self.assertEqual(sr.check_program(pin, same_bytes), pinned, 'and need no checkout to compare')
+        self.assertEqual(sr.check_program(pin, self.cloud, self.repo), ('rebuilt', sha(self.cloud)))
+        with self.assertRaises(SystemExit) as cm:
+            sr.check_program(pin, self.cloud)
+        self.assertIn('the harness source in this checkout (not found) is not the pinned build\'s', cm.exception.code, 'a rebuild is not accepted without a checkout to compare')
+        with self.assertRaises(SystemExit) as cm:
+            sr.check_program(dict(pin, harness_source_sha256='0' * 64), self.cloud, self.repo)
+        self.assertIn(f'({sr.harness_source_sha256(self.repo)[:12]}) is not the pinned build\'s (000000000000)', cm.exception.code)
+        with self.assertRaises(SystemExit) as cm:
+            sr.check_program(pin, os.path.join(self.tmp, 'nowhere'), self.repo)
+        self.assertEqual(cm.exception.code, f'REFUSED: the program {os.path.join(self.tmp, "nowhere")} does not exist, so no slow report can run. A different build needs a new pin '
+                                            '(rl/strength/slow_report_pin.json), after its own gate; a REBUILD of d513e37b (for example on the cloud, with rl/strength/build.sh) goes through '
+                                            '--program PATH.')
+        write(self.program, FAKE_PROGRAM + '\n# changed\n', mode=0o755)
+        with self.assertRaises(SystemExit) as cm:
+            sr.check_program(pin, None, self.repo)
+        self.assertIn('--program PATH', cm.exception.code)
+        with self.assertRaises(SystemExit) as cm:
+            sr.check_program(pin, self.program, self.repo)
+        self.assertIn('the frozen binary has been overwritten (do not build over it; build.sh to another path)', cm.exception.code, 'the same path given explicitly is not a rebuild either')
+        os.remove(self.program)
+        with self.assertRaises(SystemExit) as cm:
+            sr.check_program(pin, None, self.repo)
+        self.assertIn(f'the program {self.program} does not exist', cm.exception.code)
+
+    # ------------------------------------------------------------------------------------------------ the pinned binary's own path
+    def overwritten(self, path, sha12):
+        return (f"{path} is the pinned binary's own path, but the file there has sha256 {sha12}, not the pinned {self.pin['program_sha256'][:12]}: the frozen binary has been "
+                'overwritten (do not build over it; build.sh to another path). A rebuild is accepted at any other path, after its self-checks are replayed.')
+
+    def test_a_program_at_the_pinned_path_with_other_bytes_is_the_overwritten_frozen_binary_and_never_a_rebuild(self):
+        write(self.program, FAKE_PROGRAM + '\n# built over the frozen binary\n', mode=0o755)
+        other12 = sha(self.program)[:12]
+        self.assertNotEqual(other12, self.pin['program_sha256'][:12])
+        for extra in ((), ('--dry-run',), ('--register-only',)):
+            code, out, err = self.cli('--deals', '1', '--program', self.program, *extra)
+            self.assertEqual(code, '[kx3 (d513e37b) v km3] REFUSED: ' + self.overwritten(self.program, other12), extra)
+            self.assertEqual(out, '', 'refused before the first line of the plan')
+            self.assertFalse(os.path.exists(self.out_root), 'nothing was written')
+        self.assertEqual(self.replayed, [], 'and refused before the hours-long replay, not after it')
+        self.assertFalse(os.path.exists(os.path.join(self.tmp, 'selfcheck_env.json')))
+        with self.assertRaises(SystemExit) as cm:
+            sr.check_program(self.pin, self.program)
+        self.assertEqual(cm.exception.code, 'REFUSED: ' + self.overwritten(self.program, other12), 'refused without a checkout to look at too, ahead of the harness source')
+        code, out, err = self.cli('--deals', '1')  # and no --program at all: the plain refusal, not the rebuild route
+        self.assertIn('is not the pinned build (sha256 ', str(code))
+        self.assertNotIn('overwritten', str(code))
+
+    def test_the_pinned_path_is_the_pinned_path_however_it_is_spelled(self):
+        write(self.program, FAKE_PROGRAM + '\n# built over the frozen binary\n', mode=0o755)
+        other12 = sha(self.program)[:12]
+        link = os.path.join(self.tmp, 'cloud', 'looks-like-a-rebuild')
+        os.symlink(self.program, link)
+        dotted = os.path.join(self.tmp, 'cloud', '..', os.path.basename(self.program))
+        for label, spelled, shown in (('a symlink to it', link, link), ('a path with ..', dotted, self.program)):
+            with self.subTest(label):
+                code, out, err = self.cli('--deals', '1', '--program', spelled)
+                self.assertEqual(code, '[kx3 (d513e37b) v km3] REFUSED: ' + self.overwritten(shown, other12))
+                self.assertFalse(os.path.exists(self.out_root))
+        os.remove(self.program)  # the pinned path is itself a link to the rebuilt copy: it is the same file, whichever way round it is named
+        os.symlink(self.cloud, self.program)
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud)
+        self.assertEqual(code, '[kx3 (d513e37b) v km3] REFUSED: ' + self.overwritten(self.cloud, sha(self.cloud)[:12]))
+        self.assertEqual(self.replayed, [])
+        self.assertFalse(os.path.exists(self.out_root))
+
+    def test_where_the_pinned_binary_does_not_exist_at_all_a_rebuild_at_another_path_is_accepted(self):
+        os.remove(self.program)  # a cloud machine: the laptop's path is not there
+        self.assertEqual(sr.check_program(self.pin, self.cloud, self.repo), ('rebuilt', sha(self.cloud)))
+        d = self.register('--program', self.cloud)
+        self.assertEqual(self.manifest(d)['slow_report']['program_route'], 'rebuilt')
+        self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)])
+
+    def test_the_pinned_binary_itself_is_the_pinned_route_even_when_named_by_its_own_path(self):
+        d = self.register('--program', self.program)
+        b = self.manifest(d)['slow_report']
+        self.assertEqual((b['program_route'], self.manifest(d)['program']), ('pinned', self.program))
+        self.assertEqual(self.replayed, [], 'the pinned bytes need no replay')
+
+    # ------------------------------------------------------------------------------------------------ the engine tree of the checkout
+    def git(self, *a):
+        r = subprocess.run(['git', '-C', self.repo, '-c', 'user.name=t', '-c', 'user.email=t@t', '-c', 'commit.gpgsign=false', *a], capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        return r.stdout.strip()
+
+    def commit_folder(self, folder, text):
+        """Commit `text` in a file of `folder` in the temporary repository (made a git checkout the first time). Returns (the commit, the tree of its engine folder as `git ls-tree` prints it,
+        or None when the commit has no engine folder)."""
+        write(os.path.join(self.repo, folder, 'src', 'lib.rs'), text)
+        if not os.path.isdir(os.path.join(self.repo, '.git')):
+            self.git('init', '-q')
+        self.git('add', folder)
+        self.git('commit', '-q', '-m', f'{folder} {text}')
+        commit = self.git('rev-parse', 'HEAD')
+        line = self.git('ls-tree', commit, 'engine')
+        return commit, (line.split()[2] if line else None)
+
+    def test_the_engine_tree_in_the_checkout_is_the_tree_of_the_engine_folder_of_the_named_commit_or_nothing(self):
+        first, tree1 = self.commit_folder('engine', 'fn a() {}\n')
+        second, tree2 = self.commit_folder('engine', 'fn b() {}\n')
+        self.assertRegex(tree1, r'^[0-9a-f]{40}$')
+        self.assertNotEqual(tree1, tree2)
+        for ref, want in ((first, tree1), (second, tree2), (first[:10], tree1), ('HEAD', tree2), ('HEAD~1', tree1)):
+            self.assertEqual(sr.engine_tree_in_checkout(self.repo, ref), want, ref)
+        for label, repo, ref in (('a commit the checkout does not have', self.repo, '0' * 40), ('a name that is no commit', self.repo, 'no-such-branch'), ('no ref', self.repo, None),
+                                 ('an empty ref', self.repo, ''), ('no checkout', None, first), ('an empty checkout path', '', first),
+                                 ('a folder that is no repository', self.harness, first), ('a folder that does not exist', os.path.join(self.tmp, 'nowhere'), first)):
+            self.assertIsNone(sr.engine_tree_in_checkout(repo, ref), label)
+        self.git('rm', '-r', '-q', 'engine')
+        self.git('commit', '-q', '-m', 'no engine any more')
+        no_engine = self.git('rev-parse', 'HEAD')
+        self.assertIsNone(sr.engine_tree_in_checkout(self.repo, no_engine), 'a commit with no engine folder')
+        self.assertEqual(sr.engine_tree_in_checkout(self.repo, first), tree1, 'and the earlier commits still have theirs')
+        nowhere = os.path.join(self.tmp, 'empty-path')
+        os.makedirs(nowhere)
+        with mock.patch.dict(os.environ, {'PATH': nowhere}):
+            self.assertIsNone(sr.engine_tree_in_checkout(self.repo, first), 'a machine without git')
+
+    def test_a_rebuild_whose_checkout_has_the_pinned_engine_tree_is_accepted_and_both_trees_are_recorded(self):
+        commit, tree = self.commit_folder('engine', 'fn engine() {}\n')
+        self.edit_pin(engine_ref=commit, engine_tree=tree)
+        self.assertEqual(sr.check_program(self.pin, self.cloud, self.repo), ('rebuilt', sha(self.cloud)))
+        d = self.register('--program', self.cloud)
+        b = self.manifest(d)['slow_report']
+        self.assertEqual((b['program_route'], b['engine_ref'], b['engine_tree'], b['engine_tree_in_checkout']), ('rebuilt', commit, tree, tree))
+        self.assertIn(f'\n- engine_tree_in_checkout: `{tree}`\n', read(os.path.join(d, 'PREREGISTRATION.md')))
+        self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)])
+
+    def test_a_rebuild_from_a_checkout_whose_engine_is_another_tree_is_refused_before_any_replay_and_names_both_trees(self):
+        first, tree1 = self.commit_folder('engine', 'fn engine() {}\n')
+        second, tree2 = self.commit_folder('engine', 'fn engine() { changed(); }\n')
+        self.edit_pin(engine_ref=second, engine_tree=tree1)  # the pin names a commit whose engine folder is not the tree it pins
+        want = (f"REFUSED: this checkout's {second[:8]}:engine tree is {tree2[:12]}, not the pinned {tree1[:12]}, so a build of it is not the pinned engine. Nothing was written.")
+        for extra in ((), ('--dry-run',), ('--register-only',)):
+            code, out, err = self.cli('--deals', '1', '--program', self.cloud, *extra)
+            self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + want, extra)
+            self.assertEqual(out, '', 'refused before the first line of the plan')
+            self.assertFalse(os.path.exists(self.out_root), 'nothing was written')
+        self.assertEqual(self.replayed, [], 'refused before the hours-long replay')
+        self.assertFalse(os.path.exists(os.path.join(os.path.dirname(self.cloud), 'selfcheck_env.json')))
+        with self.assertRaises(SystemExit) as cm:
+            sr.check_program(self.pin, self.cloud, self.repo)
+        self.assertEqual(cm.exception.code, want)
+        self.edit_pin(engine_tree=tree2)  # the same checkout against the tree it really has: accepted
+        self.assertEqual(sr.check_program(self.pin, self.cloud, self.repo), ('rebuilt', sha(self.cloud)))
+        self.assertEqual(self.cli('--deals', '1', '--program', self.cloud, '--register-only')[0], 0)
+
+    def test_a_checkout_that_cannot_say_what_its_engine_tree_is_does_not_hold_a_rebuild_back(self):
+        def no_git_repository():
+            return {}, None
+
+        def git_checkout_without_the_pinned_commit():
+            self.commit_folder('engine', 'fn engine() {}\n')  # (the pin's engine_ref is not a commit of this repository)
+            return {}, None
+
+        def commit_with_no_engine_folder():
+            return {'engine_ref': self.commit_folder('other', 'fn other() {}\n')[0]}, None
+
+        def pin_with_no_engine_ref():
+            return {'engine_ref': None}, None
+
+        def pin_with_no_engine_tree():
+            commit, tree = self.commit_folder('engine', 'fn engine() {}\n')
+            return {'engine_ref': commit, 'engine_tree': None}, tree  # nothing to compare with: the checkout's tree is recorded all the same
+        for prepare in (no_git_repository, git_checkout_without_the_pinned_commit, commit_with_no_engine_folder, pin_with_no_engine_ref, pin_with_no_engine_tree):
+            with self.subTest(prepare.__name__):
+                self.make()
+                self.lay_out_harness()
+                self.replayed.clear()
+                changes, tree = prepare()
+                self.edit_pin(**changes)
+                d = self.register('--program', self.cloud)
+                b = self.manifest(d)['slow_report']
+                self.assertEqual(b['program_route'], 'rebuilt')
+                self.assertEqual(b['engine_tree_in_checkout'], tree, 'recorded as nothing when it could not be told')
+                self.assertEqual(self.replayed, [('km3', self.cloud), ('kx3', self.cloud)])
+
+    def test_the_pinned_binary_is_not_held_to_the_engine_tree_but_the_checkouts_tree_is_still_recorded(self):
+        first, tree1 = self.commit_folder('engine', 'fn engine() {}\n')
+        second, tree2 = self.commit_folder('engine', 'fn engine() { changed(); }\n')
+        self.edit_pin(engine_ref=second, engine_tree=tree1)
+        d = self.register()  # the pinned program: its bytes are what the pin pins, whatever this checkout holds
+        b = self.manifest(d)['slow_report']
+        self.assertEqual((b['program_route'], b['engine_tree'], b['engine_tree_in_checkout']), ('pinned', tree1, tree2))
+        self.assertEqual(sr.check_program(self.pin, None, self.repo), ('pinned', sha(self.program)))
+
+    def test_a_foreign_harness_source_is_refused_before_the_engine_tree_is_looked_at(self):
+        first, tree1 = self.commit_folder('engine', 'fn engine() {}\n')
+        second, tree2 = self.commit_folder('engine', 'fn engine() { changed(); }\n')
+        self.edit_pin(engine_ref=second, engine_tree=tree1)
+        write(os.path.join(self.repo, 'rl', 'strength', 'Cargo.toml'), '[package]\nname = "other"\n')
+        with self.assertRaises(SystemExit) as cm:
+            sr.check_program(self.pin, self.cloud, self.repo)
+        self.assertIn('the harness source in this checkout', cm.exception.code)
+        self.assertNotIn('engine tree', cm.exception.code)
+
+    def test_build_config_describes_a_rebuild_in_the_engine_string_and_records_the_checkouts_engine_tree(self):
+        kw = dict(pin=self.pin, pin_path=self.pin_path, deck_rel='decks/events/my-list.txt', deck_name='my-list', deck_sha='a' * 64, deck_state='committed', deals=1, paired=True,
+                  seed_base=BLOCK[0], threads=2, program_sha='b' * 64)
+        pinned = sr.build_config(**kw)
+        self.assertEqual(pinned['engine'], self.pin['engine'])
+        self.assertIsNone(pinned['slow_report']['engine_tree_in_checkout'])
+        rebuilt = sr.build_config(**kw, route='rebuilt', program='/cloud/strength', engine_tree_checkout='c' * 40)
+        self.assertEqual(rebuilt['engine'], self.pin['engine'] + "; THIS PROGRAM (/cloud/strength, sha256 bbbbbbbbbbbb) IS A REBUILD of that source made on another machine, "
+                                                                 "not the laptop binary, accepted because both self-checks were replayed on that machine and equal the committed pin's digests")
+        self.assertEqual(rebuilt['slow_report']['engine_tree_in_checkout'], 'c' * 40)
+        self.assertEqual(sr.build_config(**kw, route='rebuilt')['engine'].split('THIS PROGRAM (')[1].split(',')[0], self.pin['program'], 'with no program given, the pin\'s path')
 
 
 class unittest_patch:
@@ -1707,22 +2968,25 @@ class Page(Timed):
         sec = text.split('### How much better')[1].split('\n## ')[0]
         self.assertIn('On the same deals', sec)
         self.assertIn(f'{100 * m:+.1f} points', sec)
-        self.assertIn(f'give or take {100 * half:.1f} points (95% interval; this range refers to those {n} paired games)', sec)
+        lo, hi = m - half, m + half
+        self.assertIn(f'probably between {100 * lo:+.1f} and {100 * hi:+.1f} points (95% interval; this range refers to those {n} paired games).', sec)
+        self.assertNotIn('give or take', sec, 'the t range is not symmetric once it is cut at the scale, so it is never given as give-or-take')
         self.assertIn('km3 on this deck', sec)
         self.assertIn(f'over {n} paired games: each a deal and seat played by both pilots, so {n} kx3 games + {n} cheap km3 baseline games)', sec)
         self.assertNotIn('played both ways', sec, 'the gain is counted in paired games now')
-        lo, hi = m - half, m + half
-        self.assertIn(f'That range runs from {100 * lo:+.1f} to {100 * hi:+.1f} points', sec)
+        self.assertNotIn('That range runs', sec, 'the note under the range does not repeat its numbers')
         if lo <= 0 <= hi:
-            self.assertIn('which includes no gain at all', sec)
+            self.assertIn('That range includes no gain at all', sec)
             self.assertIn(f'these {n} paired games do not show that kx3 plays this deck better than km3, and do not show that it plays it worse', sec)
         else:
-            self.assertIn('which does not include no gain', sec)
+            self.assertIn('That range does not include no gain', sec)
 
     def test_a_gain_with_no_spread_is_not_dressed_up_as_certain(self):
         t, man, games, text = self.build(deals=3, paired=True, win=lambda o, d, s: 'deck', ref_win=lambda o, d, s: 'deck')
         sec = text.split('### How much better')[1].split('\n## ')[0]
-        self.assertNotIn('give or take 0.0', sec)
+        self.assertNotIn('give or take', sec)
+        self.assertNotIn('probably between', sec, 'with no spread there is no range to print')
+        self.assertNotIn('That range', sec)
         self.assertIn('every one of the 48 comparisons', sec)
         self.assertIn('+0.0 points', sec)
 
@@ -1737,7 +3001,7 @@ class Page(Timed):
 
     def test_without_paired_the_page_does_not_report_the_gain(self):
         t, man, games, text = self.build(deals=3, paired=False)
-        for s in ('same deals', 'km3 on this deck', 'How much better', 'played both ways', 'paired game', 'That range runs'):
+        for s in ('same deals', 'km3 on this deck', 'How much better', 'played both ways', 'paired game', 'That range'):
             self.assertNotIn(s, text)
 
     def test_who_went_first_is_split_out_with_ranges_and_a_caution(self):
@@ -1833,23 +3097,26 @@ class Page(Timed):
         self.assertIn('this range refers to those 48 paired games', text)
         self.assertIn("Each row's range refers only to the kx3 games against that list", text)
         self.assertIn('Each range refers only to the kx3 games on its line', text)
+        self.assertNotIn('give or take', text)
 
     def test_a_gain_range_that_excludes_zero_says_so_and_does_not_overreach(self):
         t, man, games, text = self.build(deals=3, win=lambda o, d, s: 'deck' if (o + d) % 5 else 'opp', ref_win=lambda o, d, s: 'opp' if (o + d + s) % 4 else 'deck')
         sec = text.split('### How much better')[1].split('\n## ')[0]
-        self.assertIn('which does not include no gain', sec)
+        self.assertIn('That range does not include no gain', sec)
         self.assertIn('on these 48 paired games kx3 did better than km3', sec)
-        self.assertNotIn('which includes no gain at all', sec)
+        self.assertNotIn('includes no gain at all', sec)
         t, man, games, text = self.build(deals=3, win=lambda o, d, s: 'opp' if (o + d) % 5 else 'deck', ref_win=lambda o, d, s: 'deck' if (o + d + s) % 4 else 'opp')
         sec = text.split('### How much better')[1].split('\n## ')[0]
-        self.assertIn('which does not include no gain', sec)
+        self.assertIn('That range does not include no gain', sec)
         self.assertIn('on these 48 paired games kx3 did worse than km3', sec)
 
     def test_a_partial_run_says_so_near_the_top_and_describes_what_it_has(self):
         t, man, games, text = self.build(deals=2, complete=False)
-        self.assertIn('PARTIAL', '\n'.join(text.splitlines()[:8]))
-        self.assertRegex(text, r'\d+ of 64 games')
+        self.assertIn('PARTIAL', '\n'.join(text.splitlines()[:10]))
+        self.assertRegex(text, r'\d+ of the 64 games planned')
         sec = text.split('## What it says')[1].split('\n## ')[0]
+        self.assertLess(sec.index('Question: '), sec.index('PARTIAL'), 'the question first')
+        self.assertLess(sec.index('PARTIAL'), sec.index('Size: '), 'then the banner, then the size')
         shape = [l for l in sec.splitlines() if 'scored' in l][0]
         self.assertNotIn('against each of the 8 public lists', shape)
         self.assertRegex(shape, r'games from \d of the 8 public lists so far')
@@ -1865,7 +3132,7 @@ class Page(Timed):
         text = sr.write_slow_report(t)
         self.assertIn('PARTIAL', text)
         nx, nr = sum(1 for g in keep if g['arm'] == 'X'), sum(1 for g in keep if g['arm'] == 'ref')
-        self.assertIn(f'**PARTIAL: {len(keep)} of 64 games played so far ({nx} kx3 games + {nr} cheap km3 baseline games; both count in the 64). ', text)
+        self.assertIn(f"**PARTIAL: {nx} kx3 games + {nr} cheap km3 baseline games so far ({len(keep)} of the 64 games planned; both pilots' games count in the 64). ", text)
         both = {(g['opp'], g['deal'], g['seat']) for g in keep if g['arm'] == 'X'} & {(g['opp'], g['deal'], g['seat']) for g in keep if g['arm'] == 'ref'}
         self.assertIn(f'over {len(both)} paired games: each a deal and seat played by both pilots, so {len(both)} kx3 games + {len(both)} cheap km3 baseline games)', text)
         self.assertNotIn('nan', text.lower())
@@ -1933,8 +3200,10 @@ class Page(Timed):
         self.assertIn('32 games', text, 'the duplicate is not counted twice and the torn line is not counted at all')
 
     def test_the_self_check_lines_say_how_the_text_was_obtained(self):
-        for source, want in (('given in the config (copied from the pin; the program sha256 is the one named there)', 'copied from the pin, not replayed'),
-                             ('replayed by slow_report.py just before registration (equal to the pin)', 'replayed just before registration, equal to the pin'),
+        for source, want in (('given in the config (copied from the pin, which says it was measured on this exact program sha256)',
+                              'copied from the pin, not replayed: the pin says it was measured on this exact binary'),
+                             ('replayed by slow_report.py on this machine just before registration (equal to the committed pin)',
+                              'replayed on this machine just before registration, equal to the committed pin'),
                              ('run by strength_prereg.py', 'replayed at registration')):
             t = tempfile.mkdtemp()
             self.addCleanup(shutil.rmtree, t, True)
@@ -2082,6 +3351,30 @@ class BothPilotsEverywhere(World):
         self.assertEqual(code, 0, err)
         self.assertIn('PARTIAL', out)
         self.assertNotIn('**', out)
+
+    def test_the_console_of_a_partial_run_gives_the_question_then_the_banner_then_the_size(self):
+        code, out, err = self.cli('--deals', '2', '--max-games', '10')
+        self.assertEqual(code, 0, err)
+        lines = [l.split('] ', 1)[1] for l in out.splitlines()]
+        written = lines.index(f'SLOW_REPORT.md written in {self.rundir()}')
+        page = lines[written + 1:]
+        self.assertEqual(page[0], 'Question: how does my-list do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?')
+        self.assertEqual(page[1], "PARTIAL: 5 kx3 games + 5 cheap km3 baseline games so far (10 of the 64 games planned; both pilots' games count in the 64). "
+                                  'The numbers below will move; read them as a snapshot.')
+        self.assertEqual(page[2], 'Size: 5 kx3 games + 5 cheap km3 baseline games so far, of 32 kx3 games + 32 cheap km3 baseline games planned.')
+        self.assertTrue(page[3].startswith('my-list scored '), page[3])
+        text = read(os.path.join(self.rundir(), 'SLOW_REPORT.md'))
+        self.assertEqual(page, [l.replace('**', '').replace('`', '').strip() for l in text.split('## What it says')[1].split('\n## ')[0].splitlines()
+                               if l.strip() and not l.startswith('#')], 'the console shows the lines of "What it says" and nothing else')
+
+    def test_the_console_of_a_finished_run_has_the_question_and_the_size_and_no_banner(self):
+        code, out, err = self.cli('--deals', '1')
+        self.assertEqual(code, 0, err)
+        lines = [l.split('] ', 1)[1] for l in out.splitlines()]
+        page = lines[lines.index(f'SLOW_REPORT.md written in {self.rundir()}') + 1:]
+        self.assertEqual(page[0][:10], 'Question: ')
+        self.assertEqual(page[1], 'Size: 16 kx3 games + 16 cheap km3 baseline games (1 deal x 2 seats against each of the 8 public lists; the baseline games are the same deals with km3 on the deck).')
+        self.assertNotIn('PARTIAL', out)
 
 
 class Arguments(World):
