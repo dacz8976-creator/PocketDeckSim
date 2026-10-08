@@ -15,14 +15,13 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 1. **Current task, and the instruction that set it.** The skip bar and close calls combined (Fable via Dustin, Oct 7,
    from the laptop's review of 7d3639d0), its addenda ((c) dropped; ties with the best join a running extension), and
    the acceptance message (54209409 accepted; the skip-bar finding accepted, nothing to build; a test that a tie with the
-   best can overtake). Done and pushed, except the exact code's 12-game self-check (item 2). Tests first, gates 1-2, km3
-   untouched, no table games.
-   **The head for the laptop's registration: claude/playout-pilot 172cbe9c (code 4e7d8ce5).**
+   best can overtake). Done and pushed. Tests first, gates 1-2, km3 untouched, no table games.
+   **The head for the laptop's registration: claude/playout-pilot 9547749e (code 4e7d8ce5).**
    - **Where.**
      - The fix: tests first c0a36092, code ec283c53.
      - (c) dropped: tests ce1a0b13, code 76cd08f4.
      - Ties join: tests 6b5b713d, code 4e7d8ce5.
-     - The overtake test: 72be60e8. Results and README: 172cbe9c.
+     - The overtake test: 72be60e8. Results and README: 172cbe9c. The exact code's digest: 9547749e.
      - Read "The fix round" at the top of `rl/results/playout_close_calls_2026-10-07/README.md`.
    - **The rule now.**
      - (a) km3's move is close to the best when the best's lead is within the bar the decision will use: z_skip for a
@@ -41,8 +40,13 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
    - **The 26 development-run cases:** km3's attack kept at 2 of the 9 true skips (the skip bar alone: 7), and 6 of the
      15 attack-later moves touched. Neither addendum changed any of them.
    - **Gate 1** at 4e7d8ce5: suite 2,094/0; km3 240/240; self-checks unchanged with the parameters off.
-   - **Digests.** `kx3_r2_c3_lab_tools_zs3_m64` gives 8c1244aec5c8419d. It was 2284c591ed14a534 before ties joined: at
-     R = 2, ties with the best are common. The exact code's 12 games are running (item 2).
+   - **Digests.**
+     - The exact code, `kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64`, 12 games as `strength_prereg.py` runs them (t-altaria
+       v t-suicune): **724e581a9c51711f** (9-3, 132 turns, 3 h 44 min). The laptop's pre-registration must print the
+       same; if it doesn't, stop: the build isn't this one.
+     - Its `_lab` form, `kx3_r2_c3_lab_tools_zs3_m64`: **8c1244aec5c8419d** (2 games). It was 2284c591ed14a534 before
+       ties joined: at R = 2, ties with the best are common.
+     - km3 81b572198c04d5d1 and `kx3_r2_c3_lab` 3a2eb43bd9053639, unchanged.
    - **Gate 2** (`_tools_zs3` v `_tools_zs3_m64`, 64 decisions): 37 extended to 64 rounds, 9 choices change, x2.6 the
      time.
      - The two new changes are dev04 (Psychic) and dev04's placement (km3's Poncho now kept on 64 rounds).
@@ -295,14 +299,11 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
    - **Laptop time** (from the smoke): about 204 × 4 / T seconds per pilot game on T threads; a development comparison of one deck × 8 panel lists × 25 deals × 2 seats is about 23 hours on 4 threads, 6 on 16; the pre-registration's kx self-check about 1½ hours on 4 threads (estimate); the position runner about 1½ hours on 4 threads.
    **The data pipeline stopped where it was** (branch `claude/planning-pilot-data`, head 22d56999; `rl/results/planning_pilot_data_2026-10-02/README.md`, "Where it stopped"): the first pass done (9,600 games, 467,146 rows; held-out log loss 0.525 against 0.631 for km's value alone; the Bench Energy feature's sign negative), the second pass cancelled; Dustin's 04, 08 and 11 are in its pool but in the locked final-exam list, so their rows must be dropped before development use.
    **Earlier jobs, done** (the readiness jobs, the card-text follow-up and step 8c read and accepted): the round-2 readiness jobs (57c65860, `rl/results/round2_readiness_2026-10-02/README.md`), the card-text follow-up (20e2651) and the card-text job, step 8c, step 8b's rows (3a107f4), F8, and the later round of coin-flip prevention (`claude/coin-prevention-round2`); details in their READMEs and the log below.
-2. **What is running now, and when it ends.** The exact combined code's self-check, as the laptop's pre-registration
-   runs it: `strength selfcheck --pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64 --games 12` (t-altaria v
-   t-suicune), on the harness built from 4e7d8ce5. It started at 02:13 on Oct 8. It took over 5 hours before the
-   restart; the container is faster now, so expect about 3 to 5 hours. Its digest goes into the close-calls README and
-   here. The runs at ec283c53 and 76cd08f4 were stopped when their rule changed.
+2. **What is running now, and when it ends.** Nothing.
 3. **Files I expect to change.** None. The play-out job changed, on its branch only: `engine/src/players/mod.rs` (12 lines), new `engine/src/players/playout_player.rs`, `engine/src/players/playout_pool.rs`, `engine/tests/playout_pilot_test.rs`, `engine/examples/playout_smoke.rs`, `rl/results/playout_pilot_2026-10-02/`, and START_HERE's seed table (one row: 24,200,000,000-24,200,099,999).
 4. **Waiting on the laptop or Sonnet.** The laptop: registering the combined development run on the fixed head (code
-   4e7d8ce5, head 172cbe9c; not 54209409/76cd08f4, where ties with the best never joined). Its pre-registration self-check of the exact code should print the cloud's digest (item 2).
+   4e7d8ce5, head 9547749e; not 54209409/76cd08f4, where ties with the best never joined). Its self-check of the exact
+   code should print 724e581a9c51711f. Its pre-registration self-check of the exact code should print the cloud's digest (item 2).
    Earlier: its examples run on d513e37b (not interrupted); a look at rounds 2 to 4 (head eefa24d0) when it suits.
 5. **Open questions.**
    - (a) For Dustin, still open from before: remove the Pocket Shot List rows `chase-order-carefree-steps` and `carefree-steps-snipe`? Nothing is done until he answers.
