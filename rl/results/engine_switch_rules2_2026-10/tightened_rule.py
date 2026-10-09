@@ -1,4 +1,21 @@
-"""tightened_rule v2 (the cloud, Oct 2; round-2 readiness, job 3). v1 is `../engine_switch_rules_2026-10/tightened_rule.py`,
+"""tightened_rule for rules switch 2 (the cloud, Oct 9; switch-2 PLAN.md precondition (b), "the classifier's prefix fix"): v2 (below)
+with the length case finished and round 2's counter names.
+  - A "length" difference (one game a prefix of the other, or the two the same tick for tick) is a board difference: its k is the first
+    tick only the longer game has (the common length) and its cause k - 1, the last tick both games have, whose move had a different
+    effect (it ended one game and not the other, or decided a different result). So `counter_hits` explains it as it explains a "state"
+    difference: an exact counter at the cause tick, or at or before k in k's turn. That covers the new game shorter (the case v2 left
+    open: a +20 hit back that Knocks Out the last Pokemon ends the new game at the attack's tick, its last), longer (as v2's
+    `extra_tick_hits`, which stays) and as long (only the last move's effect differs).
+  - `counter_hits` reads k's turn from the rows that exist: the rows it is given (the new game's) when they reach k, else the longer
+    game's row at k that `first_difference` returns (x for the old game, y for the new), else the last row given.
+  - `round2_reach` gives round 2's exact counter names from instrument_scan.py's lists (R2_COUNTERS and R2_KEYED less the off-gate and
+    superset ones), and `reach_row` flattens the keyed ones ({key: [ticks]}) into counter_hits' {"ticks"} form, leaving out of
+    coin_queued_by_attack the first round's coin sites, which build the same choice on both engines (ROUND2_QUEUED: the later round's
+    eight attacks). validate_v2.py kept round 1's names, right for the Oct 1 hand-off it checks.
+  Tests: test_tightened_rule.py (this folder).
+
+v2's docstring follows.
+tightened_rule v2 (the cloud, Oct 2; round-2 readiness, job 3). v1 is `../engine_switch_rules_2026-10/tightened_rule.py`,
 unchanged. One change, for the "length" kind (one game is a prefix of the other): v1 had no tick to look at and every such game
 was unexplained. When R's game is the longer one, its first extra tick k is a move the old engine never offered (its game ended
 at k). `extra_tick_hits` explains it ON THE BOARD when an exact counter of a repaired mechanic fires AT that tick k (step 8c's two
@@ -34,7 +51,11 @@ Anything that is not on the board and is a "lookahead" difference needs BOTH hal
 code, as the scripts' docstrings say) and a probe that finds the gate's condition inside kog3's three plies at tick k. A "movegen",
 "state" or "length" difference without a counter is UNEXPLAINED, and that stops the switch.
 """
-import gzip, json
+import ast, gzip, json, re
+
+# The later coin round's sites, by attack title (card text, lib/card.py): the keys of coin_queued_by_attack that the switch changes.
+ROUND2_QUEUED = frozenset({"Wild Swing", "Wellspring Dance", "Tornado Shot", "Double Splash", "Triple Bombardment", "Mischievous Ring",
+                           "Litter", "Double-Punching Family"})
 
 
 def load_trace(path):
@@ -60,8 +81,10 @@ def first_difference(a, b):
     k_moves = next((t for t in range(m) if _moves(a[t]) != _moves(b[t])), None)
     if k_state is None and k_moves is None:
         longer = "new" if len(b) > len(a) else "old" if len(a) > len(b) else None
-        return {"kind": "length", "detail": f"one game is a prefix of the other ({len(a)} and {len(b)} ticks)", "k": m,
-                "cause": None, "longer": longer, "x": None, "y": b[m] if len(b) > m else None}
+        detail = (f"one game is a prefix of the other ({len(a)} and {len(b)} ticks)" if longer
+                  else f"the two games are the same tick for tick ({m} ticks); only the last move's effect differs")
+        return {"kind": "length", "detail": detail, "k": m, "cause": m - 1 if m else None, "longer": longer,
+                "x": a[m] if len(a) > m else None, "y": b[m] if len(b) > m else None}
     if k_moves is not None and (k_state is None or k_moves < k_state):
         x, y = a[k_moves], b[k_moves]
         if x["n"] != y["n"] or x["offered"] != y["offered"]:
@@ -80,7 +103,7 @@ def counter_hits(watch_row, names, rows, d, after=False, literal=False):
     `first_difference`): at or before its tick k and in the same turn as k, or at its cause tick (`literal`: only the first
     kind). `after`: the ticks strictly after k in the same turn instead. `rows` is R's trace of the game (its rows carry the turn)."""
     k, cause = d["k"], d["cause"]
-    turn = rows[k]["turn"]
+    turn = (rows[k] if k < len(rows) else d.get("x") or d.get("y") or rows[-1])["turn"]
     out = {}
     for name in names:
         ticks = []
@@ -103,6 +126,27 @@ def extra_tick_hits(watch_row, names, d):
         return {}
     k = d["k"]
     return {name: [k] for name in names if k in watch_row[name]["ticks"]}
+
+
+def round2_reach(instrument_scan_text):
+    """Round 2's exact counter names, in instrument_scan.py's order: R2_COUNTERS, then R2_KEYED, less the off-gate counters and the
+    superset trap_territory_two_in_play (the gate held, whether or not anything reads it)."""
+    names = lambda var: ast.literal_eval(re.search(rf"^{var} = (\[.*?\])", instrument_scan_text, re.S | re.M)[1])
+    keep = lambda n: not n.startswith("offgate_") and n != "trap_territory_two_in_play"
+    return tuple(n for n in names("R2_COUNTERS") if keep(n)) + tuple(n for n in names("R2_KEYED") if keep(n))
+
+
+KEYED = ("coin_queued_by_attack", "coin_plain_damage_by_attack")
+
+
+def reach_row(watch_row, keyed=KEYED):
+    """The watch row with each keyed exact counter's ticks put together in counter_hits' {"ticks"} form (coin_queued_by_attack: the
+    later round's attacks only); the other counters as they are."""
+    out = dict(watch_row)
+    for name in keyed:
+        keep = (lambda key: key in ROUND2_QUEUED) if name == "coin_queued_by_attack" else (lambda key: True)
+        out[name] = {"ticks": sorted({t for key, ticks in (watch_row.get(name) or {}).items() if keep(key) for t in ticks})}
+    return out
 
 
 def short(s, n=150):
