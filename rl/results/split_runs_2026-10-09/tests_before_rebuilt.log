@@ -1,0 +1,52 @@
+.24 and 24 games; game for game (content, not timing) EQUAL
+.24 and 24 games; game for game (content, not timing) DIFFERENT; 1 differ: ['line 6: d1|o1|1|0|X v d1|o1|1|0|X']
+.............INCOMPLETE: 23 of 24 games; 1 problem(s); see /tmp/tmpwiu6h1qe/merged/MERGE_RECORD.md
+..FFF.....COMPLETE: 24 of 24 games; 0 problem(s); see /tmp/tmp_5u6xyho/merged/MERGE_RECORD.md
+..stamped /tmp/tmpbvlov_qv/w1: manifest d6a29dacb39d, program 9a3a45d01531, slice ['d1', 'd3']
+.stamp: not decks of this registration: ['nope'] (its decks: ['d1', 'd2', 'd3'])
+.
+======================================================================
+FAIL: test_a_rebuilt_program_with_another_self_check_is_a_problem (test_split_collect.Merge.test_a_rebuilt_program_with_another_self_check_is_a_problem)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 243, in test_a_rebuilt_program_with_another_self_check_is_a_problem
+    self.assertIn("k3", res["problems"][0]["detail"])
+AssertionError: 'k3' not found in "program sha256 efefefefefef, not the registration's abababababab"
+
+======================================================================
+FAIL: test_a_rebuilt_program_with_the_registrations_self_checks_is_a_note_not_a_problem (test_split_collect.Merge.test_a_rebuilt_program_with_the_registrations_self_checks_is_a_note_not_a_problem)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 232, in test_a_rebuilt_program_with_the_registrations_self_checks_is_a_note_not_a_problem
+    self.assertEqual(res["problems"], [])
+AssertionError: Lists differ: [{'kind': 'program', 'worker': 'w2', 'key'[81 chars]ab"}] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+{'kind': 'program', 'worker': 'w2', 'key': None, 'detail': "program sha256 efefefefefef, not the registration's abababababab"}
+
++ []
+- [{'detail': "program sha256 efefefefefef, not the registration's abababababab",
+-   'key': None,
+-   'kind': 'program',
+-   'worker': 'w2'}]
+
+======================================================================
+FAIL: test_a_worker_on_another_engine_tree_is_flagged (test_split_collect.Merge.test_a_worker_on_another_engine_tree_is_flagged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 255, in test_a_worker_on_another_engine_tree_is_flagged
+    self.assertEqual([(p["kind"], p["worker"]) for p in res["problems"]], [("engine", "w1")])
+AssertionError: Lists differ: [] != [('engine', 'w1')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('engine', 'w1')
+
+- []
++ [('engine', 'w1')]
+
+----------------------------------------------------------------------
+Ran 29 tests in 0.316s
+
+FAILED (failures=3)

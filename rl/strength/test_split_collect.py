@@ -9,12 +9,17 @@ import split_collect as sc  # noqa: E402
 PROGRAM_SHA = "ab" * 32
 
 
+SELF = {"km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+        "k3": "selfcheck pilot=k3 games=12 seat0_wins=7 seat1_wins=5 ties=0 turns=130 digest=0123456789abcdef"}
+
+
 def manifest(decks=("d1", "d2", "d3"), opps=("o1",), deals=2, seats=(0, 1), pilot="km3", reference="k3", program_sha256=PROGRAM_SHA):
     return {"name": "t", "pilot": pilot, "reference": reference,
             "decks": [{"name": d, "path": f"decks/{d}.txt", "sha256": "0" * 64} for d in decks],
             "opponents": [{"name": o, "path": f"decks/{o}.txt", "sha256": "0" * 64} for o in opps],
             "deals": deals, "seats": list(seats), "seed_base": 21_000_000_000, "pair_stride": 10_000,
-            "program_sha256": program_sha256, "engine": "tree 38af8b0", "planned_games": None}
+            "program_sha256": program_sha256, "engine": "main-8626a35, engine tree 38af8b0cc4f3", "planned_games": None,
+            "selfcheck": dict(SELF)}
 
 
 def record(job, winner="deck", wall=1.25, started="2026-10-09T22:00:00Z", ms=(3.5, 4.0)):
@@ -41,7 +46,7 @@ class Scratch(unittest.TestCase):
             json.dump(m, f, indent=1)
         return path
 
-    def worker(self, name, mpath, records, only=(), program_sha256=PROGRAM_SHA, manifest_sha256=None, tail=""):
+    def worker(self, name, mpath, records, only=(), program_sha256=PROGRAM_SHA, manifest_sha256=None, tail="", selfcheck=None, engine_tree="38af8b0"):
         w = os.path.join(self.d, name)
         os.makedirs(w)
         with open(os.path.join(w, "games.jsonl"), "w") as f:
@@ -49,7 +54,9 @@ class Scratch(unittest.TestCase):
                 f.write(json.dumps(r) + "\n")
             f.write(tail)
         stamp = {"worker": name, "manifest_sha256": manifest_sha256 or sc.sha256_file(mpath), "program_sha256": program_sha256,
-                 "only_deck": list(only), "engine_tree": "38af8b0"}
+                 "only_deck": list(only), "engine_tree": engine_tree}
+        if selfcheck is not None:
+            stamp["selfcheck"] = selfcheck
         with open(os.path.join(w, "worker.json"), "w") as f:
             json.dump(stamp, f)
         return w
@@ -217,6 +224,35 @@ class Merge(Scratch):
         kinds = sorted((p["kind"], p.get("worker")) for p in res["problems"])
         self.assertEqual(kinds, [("manifest", "w1"), ("program", "w2")])
         self.assertFalse(res["complete"])
+
+    def test_a_rebuilt_program_with_the_registrations_self_checks_is_a_note_not_a_problem(self):
+        w1 = self.worker("w1", self.mpath, [record(j) for j in self.by_deck["d1"] + self.by_deck["d3"]], only=("d1", "d3"))
+        w2 = self.worker("w2", self.mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",), program_sha256="ef" * 32, selfcheck=dict(SELF))
+        res = sc.collect(self.mpath, [w1, w2])
+        self.assertEqual(res["problems"], [])
+        self.assertTrue(res["complete"])
+        self.assertEqual([(n["kind"], n["worker"]) for n in res["notes"]], [("rebuilt", "w2")])
+        self.assertIn("rebuilt", sc.merge_record(res))
+
+    def test_a_rebuilt_program_with_another_self_check_is_a_problem(self):
+        other = dict(SELF, k3=SELF["k3"].replace("0123456789abcdef", "fedcba9876543210"))
+        w1 = self.worker("w1", self.mpath, [record(j) for j in self.by_deck["d1"] + self.by_deck["d3"]], only=("d1", "d3"))
+        w2 = self.worker("w2", self.mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",), program_sha256="ef" * 32, selfcheck=other)
+        res = sc.collect(self.mpath, [w1, w2])
+        self.assertEqual([(p["kind"], p["worker"]) for p in res["problems"]], [("program", "w2")])
+        self.assertIn("k3", res["problems"][0]["detail"])
+
+    def test_a_rebuilt_program_missing_a_pilots_self_check_is_a_problem(self):
+        w1 = self.worker("w1", self.mpath, [record(j) for j in self.by_deck["d1"] + self.by_deck["d3"]], only=("d1", "d3"))
+        w2 = self.worker("w2", self.mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",), program_sha256="ef" * 32, selfcheck={"km3": SELF["km3"]})
+        res = sc.collect(self.mpath, [w1, w2])
+        self.assertEqual([(p["kind"], p["worker"]) for p in res["problems"]], [("program", "w2")])
+
+    def test_a_worker_on_another_engine_tree_is_flagged(self):
+        w1 = self.worker("w1", self.mpath, [record(j) for j in self.by_deck["d1"] + self.by_deck["d3"]], only=("d1", "d3"), engine_tree="1234567abcdef")
+        w2 = self.worker("w2", self.mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",))
+        res = sc.collect(self.mpath, [w1, w2])
+        self.assertEqual([(p["kind"], p["worker"]) for p in res["problems"]], [("engine", "w1")])
 
     def test_with_no_program_in_the_manifest_the_workers_must_agree(self):
         m = manifest(program_sha256=None)
