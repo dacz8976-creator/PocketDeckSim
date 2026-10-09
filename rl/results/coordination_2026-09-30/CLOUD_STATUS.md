@@ -21,6 +21,16 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
        (6b111ba7): the inverted test is `bounded_field_doubles_the_hit_back_x2`, and a Mega ex control was added. The fix is
        b0dc4844, and the off-switch still gives the flat path. No list on main holds Bounded Field;
      - the suite at b0dc4844: 2,073 passed, 0 failed (`suite_p1.log`).
+   - **The split-run collector: done**, pushed to `claude/pensive-ptolemy-spwc0b` (head 9919de55). Read
+     `rl/results/split_runs_2026-10-09/README.md`.
+     - `rl/strength/split_collect.py` stamps each worker's folder, merges the folders, and flags every gap. It has 31 tests,
+       written first, and all pass.
+     - **The proof passed.** 12 games were played straight, then as two `--only-deck` workers (8 + 4). The merge is COMPLETE
+       and equal to the straight run, game for game (content, not timing). With worker 2 left out, the merge is INCOMPLETE and
+       names its 4 missing games.
+     - **One fix along the way.** `compare` now pairs games by key: a straight run with threads writes games in the order they
+       finish.
+     - The recipe for a Sonnet or Haiku worker is in the README.
    - **Now:** (b), then (a) and (e).
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
