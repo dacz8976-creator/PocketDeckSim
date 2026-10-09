@@ -1,5 +1,3 @@
-Laptop checked at 2026-10-09T21:39Z: 1 run(s) on the watch list, 1 not done.
-2026-10-09T21:39Z combined: 608 of 1120 games (303 kx3), +0 in 12 min, last game 20:37Z; RUNNING (pid 29189)
+2026-10-09T21:57Z combined: 608 of 1120 games (303 kx3), +0 in 17 min, last game 20:37Z; RUNNING (pid 29189)
 
-Updated every 30 minutes by the Windows task "PocketDeckSim laptop status" while a run is not done, and every 6 hours
-otherwise. If the check time above is much older than that, the laptop is off or asleep, or WSL is down.
+Written by rl/strength/run_watch.sh on the laptop. If the newest time above is much older than the watcher's interval, the laptop or its WSL is down.
