@@ -958,3 +958,445 @@ fn carefree_steps_flips_for_a_copied_discard_attack() {
         assert!(prevented > 10 && hit > 10, "{title}: {prevented} prevented, {hit} hit: the coin must flip");
     }
 }
+
+// ---- Revert switches (rules switch 2, PLAN (e); the coordinator's brief of Oct 9). Each `revert_*` test re-runs a scenario
+// above with a gate's switch off and asserts the engine before that gate (the official engine, main-8626a35), and with the
+// switch on, the current result. Old values: `rl/results/coin_prevention_round2_2026-10-01/tests_before_fix*.log`.
+
+/// G1 (the plain-hit coin) and G2 (the seven sites) together. The seven sites' old numbers need both: G2 alone restores
+/// the plain `ApplyDamage`, and G1 would still flip the coin inside it.
+fn seven_sites<R>(on: bool, f: impl FnOnce() -> R) -> R {
+    use deckgym::actions::{with_plain_hit_coin, with_queued_site_coin};
+    with_plain_hit_coin(on, || with_queued_site_coin(on, f))
+}
+
+/// The three cases of `carefree_steps_flips_for_your_own_attacks_damage_to_your_own_meowth` (player 0's own Meowth on the
+/// Bench): (title, prevented, hit) over 60 seeds each.
+fn own_meowth_counts() -> Vec<(&'static str, usize, usize)> {
+    let cases = [
+        ("Raging Thunder", PlayedCard::from_id(CardId::A1103Zapdos).with_energy(vec![EnergyType::Lightning; 3]), CardId::A1103Zapdos),
+        ("Shadow Hit", PlayedCard::from_id(CardId::A3083Mimikyu).with_energy(vec![EnergyType::Psychic; 2]), CardId::A3083Mimikyu),
+        ("Earthquake", PlayedCard::from_id(CardId::A3b039Whiscash).with_energy(vec![EnergyType::Fighting; 4]), CardId::A3b039Whiscash),
+    ];
+    cases
+        .into_iter()
+        .map(|(title, attacker, card_id)| {
+            let (prevented, hit) = own_coin_counts(
+                vec![attacker, meowth()],
+                (card_id, 0),
+                vec![PlayedCard::from_id(CardId::A1036CharizardEx)],
+                "Meowth",
+            );
+            (title, prevented, hit)
+        })
+        .collect()
+}
+
+/// G1, the plain-hit coin (`with_plain_hit_coin(false, ..)`): a queued plain `ApplyDamage` flips no coin, so the
+/// opponent's Active Meowth always takes Raging Thunder's 100 in the own-Bench choice of
+/// `carefree_steps_flips_for_the_active_hit_of_an_own_bench_choice`. Old: 0 prevented, 60 hit
+/// (`tests_before_fix_text.log:857`).
+#[test]
+fn revert_g1_plain_hit_coin_gives_the_old_hit_for_an_own_bench_choice() {
+    use deckgym::actions::with_plain_hit_coin;
+    let counts = || {
+        carefree_steps_counts(
+            vec![PlayedCard::from_id(CardId::A1103Zapdos).with_energy(vec![EnergyType::Lightning; 3]), bulbasaur()],
+            (CardId::A1103Zapdos, 0),
+            vec![meowth()],
+            false,
+        )
+    };
+    assert_eq!(with_plain_hit_coin(false, counts), (0, 60), "switch off: no coin for the queued plain hit");
+    let (prevented, hit) = with_plain_hit_coin(true, counts);
+    assert!(prevented > 10 && hit > 10, "switch on: {prevented} prevented, {hit} hit: the coin must flip");
+}
+
+/// G1: a copied discard attack's damage is queued as a plain `ApplyDamage` (the attack is not among Ditto's printed
+/// attacks), so with the plain-hit coin off neither copy of `carefree_steps_flips_for_a_copied_discard_attack` flips
+/// Meowth's coin, and the discard is still offered on every seed. Old: Chase Order 0 prevented, 60 hit
+/// (`tests_before_fix_text.log:852`, the first case); README.md:71 gives "0 of 60" for the test, Wild Swing included.
+#[test]
+fn revert_g1_plain_hit_coin_gives_the_old_hit_for_a_copied_discard_attack() {
+    use deckgym::actions::with_plain_hit_coin;
+    /// (prevented, hit, discard offered) over 60 seeds, as in `carefree_steps_flips_for_a_copied_discard_attack`.
+    fn copied(title: &str) -> (usize, usize, usize) {
+        let (attacker, ditto, defender) = match title {
+            "Chase Order" => (
+                vec![PlayedCard::from_id(CardId::A1205Ditto).with_energy(vec![EnergyType::Grass; 2]), bulbasaur()],
+                CardId::A1205Ditto,
+                vec![meowth(), PlayedCard::from_id(CardId::B4011VespiquenEx)],
+            ),
+            _ => (
+                vec![
+                    PlayedCard::from_id(CardId::B1a055Ditto).with_energy(vec![EnergyType::Water; 2]),
+                    PlayedCard::from_id(CardId::A4045Gyarados),
+                    PlayedCard::from_id(CardId::A1053Squirtle),
+                ],
+                CardId::B1a055Ditto,
+                vec![meowth()],
+            ),
+        };
+        let (mut prevented, mut hit, mut discarded) = (0, 0, 0);
+        for seed in 0..60u64 {
+            let mut game: Game = get_initialized_game_with_board(seed, 0, 5, attacker.clone(), defender.clone());
+            let before = game.get_state_clone().get_active(1).get_remaining_hp();
+            game.apply_action(&Action { actor: 0, action: attack_action(ditto, 0), is_stack: false });
+            for _ in 0..10 {
+                let state = game.get_state_clone();
+                if state.move_generation_stack.is_empty() {
+                    break;
+                }
+                let (actor, choices) = state.generate_possible_actions();
+                if actor != 0 || choices.is_empty() {
+                    break;
+                }
+                let copy = choices
+                    .iter()
+                    .find(|choice| matches!(&choice.action, SimpleAction::Attack(attack) if attack.title == title));
+                let discard = choices.iter().find(|choice| {
+                    matches!(&choice.action, SimpleAction::DiscardOwnBenchedThenDamage { in_play_idxs, .. } if !in_play_idxs.is_empty())
+                });
+                discarded += discard.is_some() as usize;
+                game.apply_action(copy.or(discard).unwrap_or(&choices[0]));
+            }
+            let unhurt = game
+                .get_state_clone()
+                .enumerate_in_play_pokemon(1)
+                .any(|(idx, p)| idx == 0 && p.get_name() == "Meowth" && p.get_remaining_hp() == before);
+            if unhurt {
+                prevented += 1;
+            } else {
+                hit += 1;
+            }
+        }
+        (prevented, hit, discarded)
+    }
+    for title in ["Chase Order", "Wild Swing"] {
+        assert_eq!(with_plain_hit_coin(false, || copied(title)), (0, 60, 60), "{title}: switch off, (prevented, hit, discards)");
+        let (prevented, hit, discarded) = with_plain_hit_coin(true, || copied(title));
+        assert_eq!(discarded, 60, "{title}: switch on");
+        assert!(prevented > 10 && hit > 10, "{title}: switch on: {prevented} prevented, {hit} hit: the coin must flip");
+    }
+}
+
+/// G1 with your own Meowth (`carefree_steps_flips_for_your_own_attacks_damage_to_your_own_meowth`): Raging Thunder and
+/// Shadow Hit queue the hit on your own Bench as a plain `ApplyDamage`, so with the plain-hit coin off they flip no coin.
+/// Old: 0 prevented, 60 hit (`tests_before_fix_text.log:862` for Raging Thunder, the first case; README.md:68 gives
+/// "0 prevented of 60" for the test). Earthquake's hit is in the attack's outcome, G3's place, so G1 alone leaves its coin
+/// flipping.
+#[test]
+fn revert_g1_plain_hit_coin_gives_the_old_hit_on_your_own_meowth_through_a_queued_choice() {
+    use deckgym::actions::with_plain_hit_coin;
+    for (title, prevented, hit) in with_plain_hit_coin(false, own_meowth_counts) {
+        if title == "Earthquake" {
+            assert!(prevented > 10 && hit > 10, "switch off, {title}: {prevented} prevented, {hit} hit: not G1's place");
+        } else {
+            assert_eq!((prevented, hit), (0, 60), "switch off, {title}: no coin for the queued plain hit");
+        }
+    }
+    for (title, prevented, hit) in with_plain_hit_coin(true, own_meowth_counts) {
+        assert!(prevented > 10 && hit > 10, "switch on, {title}: {prevented} prevented, {hit} hit: the coin must flip");
+    }
+}
+
+/// G3, the own side (`with_own_side_coin(false, ..)`): the coin Abilities of the attacker's own Pokémon never flip, in the
+/// attack's outcome (Earthquake) or in a queued plain hit (Raging Thunder, Shadow Hit). Old: 0 prevented, 60 hit for each
+/// (`tests_before_fix_text.log:862` for Raging Thunder, the first case; README.md:68 gives "0 prevented of 60" for the
+/// test).
+#[test]
+fn revert_g3_own_side_coin_gives_the_old_hit_on_your_own_meowth() {
+    use deckgym::actions::with_own_side_coin;
+    for (title, prevented, hit) in with_own_side_coin(false, own_meowth_counts) {
+        assert_eq!((prevented, hit), (0, 60), "switch off, {title}: no coin on your own Pokémon");
+    }
+    for (title, prevented, hit) in with_own_side_coin(true, own_meowth_counts) {
+        assert!(prevented > 10 && hit > 10, "switch on, {title}: {prevented} prevented, {hit} hit: the coin must flip");
+    }
+}
+
+/// G3: Securely Sheltered never cuts your own Shaking Stomp on your own Benched Hisuian Goodra
+/// (`securely_sheltered_cuts_your_own_shaking_stomp_on_your_benched_goodra`). Old: 0 prevented, 60 hit
+/// (`tests_before_fix_text.log:867`).
+#[test]
+fn revert_g3_own_side_coin_gives_the_old_hit_on_your_own_goodra() {
+    use deckgym::actions::with_own_side_coin;
+    let counts = || {
+        own_coin_counts(
+            vec![
+                PlayedCard::from_id(CardId::B3a034GreatTusk).with_energy(vec![EnergyType::Fighting; 2]),
+                PlayedCard::from_id(CardId::B3b050HisuianGoodra),
+            ],
+            (CardId::B3a034GreatTusk, 0),
+            vec![PlayedCard::from_id(CardId::A1036CharizardEx)],
+            "Hisuian Goodra",
+        )
+    };
+    assert_eq!(with_own_side_coin(false, counts), (0, 60), "switch off: no cut on your own Goodra");
+    let (prevented, hit) = with_own_side_coin(true, counts);
+    assert!(prevented > 10 && hit > 10, "switch on: {prevented} prevented, {hit} hit: the coin must flip");
+}
+
+/// G1 + G2, Gyarados's Wild Swing (`carefree_steps_flips_for_wild_swing`), with and without the discard. Old: 0
+/// prevented, 60 hit, verbatim from the pin removed at 8626a358 (`wild_swing_into_carefree_steps_pins_todays_behaviour_
+/// no_coin`, meowth_carefree_steps_test.rs:390-403 there); `tests_before_fix.log:136` shows the case without the discard.
+#[test]
+fn revert_g1_g2_wild_swing_gives_the_old_hit() {
+    let counts = |discard: bool| {
+        carefree_steps_counts(
+            vec![
+                PlayedCard::from_id(CardId::A4045Gyarados).with_energy(vec![EnergyType::Water; 2]),
+                PlayedCard::from_id(CardId::A1053Squirtle),
+            ],
+            (CardId::A4045Gyarados, 0),
+            vec![PlayedCard::from_id(CardId::B2124Meowth)],
+            discard,
+        )
+    };
+    for discard in [false, true] {
+        assert_eq!(seven_sites(false, || counts(discard)), (0, 60), "discard {discard}: Wild Swing is not repaired yet");
+        let (prevented, hit) = seven_sites(true, || counts(discard));
+        assert!(prevented > 10 && hit > 10, "switches on, discard {discard}: {prevented} prevented, {hit} hit");
+    }
+}
+
+/// G1 + G2, Wellspring Dance on its heads (`carefree_steps_flips_for_wellspring_dance_on_its_heads`). Old, Meowth on the
+/// Bench: 0 prevented, 39 hit on the heads (`tests_before_fix.log:147`). With Meowth in the Active Spot the old run had
+/// stopped, so only "none prevented" is asserted there (old aaa:5747-5754 at 8626a358 queued a plain `ApplyDamage`).
+#[test]
+fn revert_g1_g2_wellspring_dance_gives_the_old_hit_on_its_heads() {
+    /// (prevented, hit) over the seeds of 0..80 whose attack coin was heads.
+    fn heads_counts(defender: Vec<PlayedCard>) -> (usize, usize) {
+        let attacker = vec![PlayedCard::from_id(CardId::B2048WellspringMaskOgerpon).with_energy(vec![EnergyType::Water; 2])];
+        let (mut prevented, mut hit) = (0, 0);
+        for seed in 0..80u64 {
+            match carefree_steps_seed(seed, &attacker, (CardId::B2048WellspringMaskOgerpon, 0), &defender, false, &[]) {
+                (true, true) => prevented += 1,
+                (true, false) => hit += 1,
+                (false, _) => {}
+            }
+        }
+        (prevented, hit)
+    }
+    assert_eq!(seven_sites(false, || heads_counts(vec![bulbasaur(), meowth()])), (0, 39), "switches off, Meowth on the Bench");
+    let (prevented, hit) = seven_sites(false, || heads_counts(vec![meowth(), bulbasaur()]));
+    assert!(prevented == 0 && hit > 5, "switches off, Meowth Active: {prevented} prevented, {hit} hit on the heads");
+    for defender in [vec![bulbasaur(), meowth()], vec![meowth(), bulbasaur()]] {
+        let (prevented, hit) = seven_sites(true, || heads_counts(defender));
+        assert!(prevented > 5 && hit > 5, "switches on: {prevented} prevented, {hit} hit on the heads");
+    }
+}
+
+/// G1 + G2, Rapid Strike Urshifu's Tornado Shot (`carefree_steps_flips_for_tornado_shot`). Old: 0 prevented, 60 hit
+/// (`tests_before_fix.log:98`, Meowth on the Bench, the first case; with Meowth Active the old code, aaa:3888-3892 at
+/// 8626a358, queued the same plain `ApplyDamage`).
+#[test]
+fn revert_g1_g2_tornado_shot_gives_the_old_hit() {
+    let counts = |defender: Vec<PlayedCard>| {
+        carefree_steps_counts(
+            vec![PlayedCard::from_id(CardId::B3051RapidStrikeUrshifu).with_energy(vec![EnergyType::Water; 2])],
+            (CardId::B3051RapidStrikeUrshifu, 0),
+            defender,
+            false,
+        )
+    };
+    for defender in [vec![bulbasaur(), meowth()], vec![meowth(), bulbasaur()]] {
+        assert_eq!(seven_sites(false, || counts(defender.clone())), (0, 60), "switches off: {defender:?}");
+        let (prevented, hit) = seven_sites(true, || counts(defender));
+        assert!(prevented > 10 && hit > 10, "switches on: {prevented} prevented, {hit} hit");
+    }
+}
+
+/// G1 + G2, Blastoise's Double Splash and Mega Blastoise ex's Triple Bombardment
+/// (`carefree_steps_flips_for_double_splash_and_triple_bombardment`). Old: 0 prevented, 60 hit (`tests_before_fix.log:74`,
+/// Double Splash with Meowth on the Bench, the first case; the other three cases queue the same plain `ApplyDamage` in the
+/// old code, aaa:6122 at 8626a358).
+#[test]
+fn revert_g1_g2_double_splash_and_triple_bombardment_give_the_old_hit() {
+    let counts = |attacker: PlayedCard, card: CardId, defender: Vec<PlayedCard>| {
+        carefree_steps_counts(vec![attacker], (card, 0), defender, false)
+    };
+    let blastoise = || PlayedCard::from_id(CardId::B1a019Blastoise).with_energy(vec![EnergyType::Water; 5]);
+    let mega = || PlayedCard::from_id(CardId::B1a020MegaBlastoiseEx).with_energy(vec![EnergyType::Water; 6]);
+    for defender in [vec![bulbasaur(), meowth(), bulbasaur()], vec![meowth(), bulbasaur(), bulbasaur()]] {
+        for (attacker, card) in [(blastoise(), CardId::B1a019Blastoise), (mega(), CardId::B1a020MegaBlastoiseEx)] {
+            let off = seven_sites(false, || counts(attacker.clone(), card, defender.clone()));
+            assert_eq!(off, (0, 60), "switches off, {card:?}");
+            let (prevented, hit) = seven_sites(true, || counts(attacker, card, defender.clone()));
+            assert!(prevented > 10 && hit > 10, "switches on, {card:?}: {prevented} prevented, {hit} hit");
+        }
+    }
+}
+
+/// G1 + G2, Hoopa's Mischievous Ring (`carefree_steps_flips_for_mischievous_ring`). Old: 0 prevented, 60 hit
+/// (`tests_before_fix.log:86`).
+#[test]
+fn revert_g1_g2_mischievous_ring_gives_the_old_hit() {
+    let counts = || {
+        carefree_steps_counts(
+            vec![PlayedCard::from_id(CardId::B4077Hoopa).with_energy(vec![EnergyType::Psychic])],
+            (CardId::B4077Hoopa, 0),
+            vec![meowth(), bulbasaur().with_tool(get_card_by_enum(CardId::A2147GiantCape))],
+            false,
+        )
+    };
+    assert_eq!(seven_sites(false, counts), (0, 60), "switches off");
+    let (prevented, hit) = seven_sites(true, counts);
+    assert!(prevented > 10 && hit > 10, "switches on: {prevented} prevented, {hit} hit");
+}
+
+/// G1 + G2, Slowking's Litter (`carefree_steps_flips_for_litter`): the damage is still queued at Meowth on every seed.
+/// Old: 0 prevented, 60 hit (`tests_before_fix.log:110`).
+#[test]
+fn revert_g1_g2_litter_gives_the_old_hit() {
+    fn counts() -> (usize, usize) {
+        let attacker = vec![PlayedCard::from_id(CardId::A4a018Slowking).with_energy(vec![EnergyType::Water])];
+        let hand = [CardId::A2147GiantCape, CardId::A2148RockyHelmet];
+        let (mut prevented, mut hit) = (0, 0);
+        for seed in 0..60u64 {
+            match carefree_steps_seed(seed, &attacker, (CardId::A4a018Slowking, 0), &[meowth(), bulbasaur()], false, &hand) {
+                (true, true) => prevented += 1,
+                (true, false) => hit += 1,
+                (false, _) => panic!("seed {seed}: Litter's damage is queued at Meowth"),
+            }
+        }
+        (prevented, hit)
+    }
+    assert_eq!(seven_sites(false, counts), (0, 60), "switches off");
+    let (prevented, hit) = seven_sites(true, counts);
+    assert!(prevented > 10 && hit > 10, "switches on: {prevented} prevented, {hit} hit");
+}
+
+/// G1 + G2, Mega Kangaskhan ex's second punch. Togekiss's Celestial Blessing never prevents it
+/// (`celestial_blessing_flips_for_both_punches_of_double_punching_family`; old: second punch 0 prevented, 60 hit,
+/// `tests_before_fix_kangaskhan.log:87`), and neither does Meowth promoted after the first punch's Knock Out
+/// (`carefree_steps_flips_for_the_second_punch_after_a_knock_out`; old: 0 prevented, 60 hit, `:76`).
+#[test]
+fn revert_g1_g2_second_punch_gives_the_old_hit() {
+    /// Over 60 seeds into Togekiss: (second punch prevented, second punch hit).
+    fn into_togekiss() -> (usize, usize) {
+        let (mut second_prevented, mut second_hit) = (0, 0);
+        for seed in 0..60u64 {
+            let mut game = get_initialized_game_with_board(
+                seed,
+                0,
+                5,
+                vec![PlayedCard::from_id(CardId::B2127MegaKangaskhanEx).with_energy(vec![EnergyType::Colorless; 3])],
+                vec![PlayedCard::from_id(CardId::A4080Togekiss), bulbasaur()],
+            );
+            game.apply_action(&Action { actor: 0, action: attack_action(CardId::B2127MegaKangaskhanEx, 0), is_stack: false });
+            for _ in 0..10 {
+                let state = game.get_state_clone();
+                let (actor, choices) = state.generate_possible_actions();
+                if state.move_generation_stack.is_empty() || actor != 0 || choices.is_empty() {
+                    break;
+                }
+                game.apply_action(&choices[0]);
+            }
+            let togekiss = game.get_state_clone().in_play_pokemon[1][0].clone().expect("Togekiss survives 120");
+            match 140 - togekiss.get_remaining_hp() {
+                0 | 80 => second_prevented += 1,
+                40 | 120 => second_hit += 1,
+                other => panic!("seed {seed}: {other} damage"),
+            }
+        }
+        (second_prevented, second_hit)
+    }
+    /// Over 60 seeds, Bulbasaur Knocked Out by the first punch and Meowth promoted: (prevented, hit).
+    fn after_a_knock_out() -> (usize, usize) {
+        let (mut prevented, mut hit) = (0, 0);
+        for seed in 0..60u64 {
+            let mut game = get_initialized_game_with_board(
+                seed,
+                0,
+                5,
+                vec![PlayedCard::from_id(CardId::B2127MegaKangaskhanEx).with_energy(vec![EnergyType::Colorless; 3])],
+                vec![bulbasaur(), meowth()],
+            );
+            game.apply_action(&Action { actor: 0, action: attack_action(CardId::B2127MegaKangaskhanEx, 0), is_stack: false });
+            let mut promoted = false;
+            for _ in 0..10 {
+                let state = game.get_state_clone();
+                if state.move_generation_stack.is_empty() {
+                    break;
+                }
+                let (actor, choices) = state.generate_possible_actions();
+                if choices.is_empty() {
+                    break;
+                }
+                if actor == 1 {
+                    let promote = choices
+                        .iter()
+                        .find(|choice| matches!(choice.action, SimpleAction::Promote { player: 1, in_play_idx: 1 }))
+                        .expect("player 1 promotes Meowth");
+                    promoted = true;
+                    game.apply_action(promote);
+                    continue;
+                }
+                if matches!(choices[0].action, SimpleAction::ApplyDamage { .. } | SimpleAction::ApplyQueuedAttackDamage { .. }) {
+                    assert!(promoted, "seed {seed}: the second punch waits for the new Active");
+                }
+                game.apply_action(&choices[0]);
+            }
+            assert!(promoted, "seed {seed}: the first punch Knocks Out Bulbasaur");
+            let state = game.get_state_clone();
+            assert_eq!(state.get_active(1).get_name(), "Meowth", "seed {seed}");
+            if state.get_active(1).get_remaining_hp() == 50 {
+                prevented += 1;
+            } else {
+                hit += 1;
+            }
+        }
+        (prevented, hit)
+    }
+    assert_eq!(seven_sites(false, into_togekiss), (0, 60), "switches off: the second punch into Togekiss");
+    assert_eq!(seven_sites(false, after_a_knock_out), (0, 60), "switches off: the second punch after a Knock Out");
+    for (label, (prevented, hit)) in
+        [("into Togekiss", seven_sites(true, into_togekiss)), ("after a Knock Out", seven_sites(true, after_a_knock_out))]
+    {
+        assert!(prevented > 10 && hit > 10, "switches on, {label}: {prevented} prevented, {hit} hit");
+    }
+}
+
+/// G2 alone (`with_queued_site_coin(false, ..)`) restores the choice kinds of
+/// `only_a_choice_that_hits_a_coin_ability_pokemon_takes_the_coin_path_in_the_later_round`: Tornado Shot queues every
+/// choice as a plain `ApplyDamage`. Old, Meowth on the Bench: [("ApplyDamage", 1), ("ApplyDamage", 2)]
+/// (`tests_before_fix.log:122`); with Meowth Active the old code (aaa:3888-3892 at 8626a358) built the same plain choices.
+#[test]
+fn revert_g2_queued_site_coin_gives_the_old_choice_kinds() {
+    use deckgym::actions::with_queued_site_coin;
+    fn kinds(defender: Vec<PlayedCard>) -> Vec<(&'static str, usize)> {
+        let mut game = get_initialized_game_with_board(
+            0,
+            0,
+            5,
+            vec![PlayedCard::from_id(CardId::B3051RapidStrikeUrshifu).with_energy(vec![EnergyType::Water; 2])],
+            defender,
+        );
+        game.apply_action(&Action { actor: 0, action: attack_action(CardId::B3051RapidStrikeUrshifu, 0), is_stack: false });
+        let (_, choices) = game.get_state_clone().generate_possible_actions();
+        choices
+            .iter()
+            .filter_map(|choice| match &choice.action {
+                SimpleAction::ApplyDamage { targets, .. } => Some(("ApplyDamage", targets[1].2)),
+                SimpleAction::ApplyQueuedAttackDamage { targets, .. } => Some(("ApplyQueuedAttackDamage", targets[1].2)),
+                _ => None,
+            })
+            .collect()
+    }
+    let plain = vec![("ApplyDamage", 1), ("ApplyDamage", 2)];
+    let benched = || kinds(vec![bulbasaur(), bulbasaur(), meowth()]);
+    let active = || kinds(vec![meowth(), bulbasaur(), bulbasaur()]);
+    assert_eq!(with_queued_site_coin(false, benched), plain, "switch off, Meowth Benched");
+    assert_eq!(with_queued_site_coin(false, active), plain, "switch off, Meowth Active");
+    assert_eq!(
+        with_queued_site_coin(true, benched),
+        vec![("ApplyDamage", 1), ("ApplyQueuedAttackDamage", 2)],
+        "switch on, Meowth Benched"
+    );
+    assert_eq!(
+        with_queued_site_coin(true, active),
+        vec![("ApplyQueuedAttackDamage", 1), ("ApplyQueuedAttackDamage", 2)],
+        "switch on, Meowth Active"
+    );
+}

@@ -879,3 +879,13 @@ fn switch_scoping() {
         assert_eq!(houndstone(), 90);
     });
 }
+
+/// `with_round2(false, ..)` turns every round-2 gate off, P2's return-damage Weakness included (the coordinator's brief of
+/// Oct 9, section 4: "every gate above, P2 included"). The 183108 t8 hit back is a flat 40 again: Houndstone at 90, as in
+/// `switch_off_gives_the_engine_before_p2`; with the round on, 70.
+#[test]
+fn revert_round2_off_turns_p2_off_too() {
+    use deckgym::actions::with_round2;
+    assert_eq!(hp(&with_round2(false, recording_t8), 0, 0), 90, "round 2 off: the flat hit back");
+    assert_eq!(hp(&with_round2(true, recording_t8), 0, 0), 70, "round 2 on: the hit back with Weakness");
+}

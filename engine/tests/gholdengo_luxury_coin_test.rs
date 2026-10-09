@@ -377,3 +377,45 @@ fn pending_state_and_actions_round_trip_and_old_state_defaults_new_fields() {
     assert!(old.pending_trainer_coin_choice.is_none());
     assert_eq!(old.luxury_coin_used_this_turn, [false; 2]);
 }
+
+/// Revert switch G9, Luxury Coin (rules switch 2, PLAN (e); the coordinator's brief of Oct 9). With
+/// `with_luxury_coin_own_stadium_only(false, ..)` Luxury Coin covers any Stadium, as before the gate (the official engine,
+/// main-8626a35): the scenario of `luxury_coin_is_offered_only_on_the_players_own_stadium` pauses for the offer whoever
+/// played the Arcade. The pin removed at 8626a358 (`activated_stadium_records_placer_but_eligibility_belongs_to_actor`,
+/// gholdengo_luxury_coin_test.rs:177-200 there), verbatim inside the switch; `tests_before_fix_followup.log:22` shows the
+/// old offer on the opponent's Arcade.
+#[test]
+fn revert_g9_luxury_coin_is_offered_on_any_stadium() {
+    use deckgym::actions::with_luxury_coin_own_stadium_only;
+    let use_arcade = |owner: Option<usize>| {
+        let mut game = setup(7, CardId::B4a109Gholdengo);
+        let mut state = game.get_state_clone();
+        state.active_stadium = Some(get_card_by_enum(CardId::B4a072Arcade));
+        state.active_stadium_owner = owner;
+        state.decks[0].cards = vec![get_card_by_enum(CardId::A1033Charmander); 8];
+        game.set_state(state);
+        game.apply_action(&Action {
+            actor: 0,
+            action: SimpleAction::UseStadium,
+            is_stack: false,
+        });
+        game.get_state_clone()
+    };
+    with_luxury_coin_own_stadium_only(false, || {
+        for owner in [None, Some(0), Some(1)] {
+            let paused = use_arcade(owner);
+            assert!(paused.has_used_stadium[0]);
+            let pending = paused.pending_trainer_coin_choice.unwrap();
+            assert_eq!(pending.flips.len(), 3);
+            assert!(matches!(
+                pending.route,
+                Some(TrainerCoinEffectRoute::Stadium { played_by, .. }) if played_by == owner
+            ));
+        }
+    });
+    with_luxury_coin_own_stadium_only(true, || {
+        let after = use_arcade(Some(1));
+        assert!(after.pending_trainer_coin_choice.is_none(), "switch on: no offer on the opponent's Arcade");
+        assert!(!after.luxury_coin_used_this_turn[0]);
+    });
+}

@@ -826,3 +826,66 @@ fn test_shaymin_sky_support_reduces_active_basic_retreat_cost() {
         .iter()
         .any(|action| matches!(action.action, SimpleAction::Retreat(2))));
 }
+
+// ---- Revert switch (rules switch 2, PLAN (e); the coordinator's brief of Oct 9) for G6, Trap Territory. With
+// `with_trap_territory_each(false, ..)` the engine is the one before the gate (the official engine, main-8626a35): the
+// opponent's Ariados add 1 once, however many there are (8626a358 hooks/retreat.rs:251-262: one push, then `break`).
+
+/// G6 (`trap_territory_adds_one_to_the_retreat_cost_for_each_ariados`): with the switch off, two Ariados make Bulbasaur's
+/// Retreat Cost 2, not 3. Old: retreating with 2 Energy was legal (`tests_before_fix_trap_territory.log:830`, "2 Ariados:
+/// a Retreat Cost of 3, one Energy short" failed); the 0 and 1 Ariados cases passed in that run.
+#[test]
+fn revert_g6_trap_territory_counts_once_for_two_ariados() {
+    use deckgym::actions::with_trap_territory_each;
+    fn can_retreat(ariados: usize, energy: usize) -> bool {
+        let mut opponent = vec![PlayedCard::from_id(CardId::A1001Bulbasaur)];
+        opponent.extend((0..ariados).map(|_| PlayedCard::from_id(CardId::B1a006Ariados)));
+        let game = get_test_game_with_board(
+            vec![
+                PlayedCard::from_id(CardId::A1001Bulbasaur).with_energy(vec![EnergyType::Grass; energy]),
+                PlayedCard::from_id(CardId::A1053Squirtle),
+            ],
+            opponent,
+        );
+        let (_actor, actions) = game.get_state_clone().generate_possible_actions();
+        actions
+            .iter()
+            .any(|action| matches!(action.action, SimpleAction::Retreat(1)))
+    }
+    with_trap_territory_each(false, || {
+        for (ariados, cost) in [(0, 1), (1, 2), (2, 2)] {
+            assert!(can_retreat(ariados, cost), "switch off, {ariados} Ariados: a Retreat Cost of {cost}, paid in full");
+            assert!(!can_retreat(ariados, cost - 1), "switch off, {ariados} Ariados: a Retreat Cost of {cost}, 1 short");
+        }
+    });
+    with_trap_territory_each(true, || {
+        assert!(can_retreat(2, 3), "switch on, 2 Ariados: a Retreat Cost of 3, paid in full");
+        assert!(!can_retreat(2, 2), "switch on, 2 Ariados: a Retreat Cost of 3, one Energy short");
+    });
+}
+
+/// G6 (`grass_knot_reads_one_more_retreat_cost_for_each_ariados`): with the switch off, Grass Knot into Charizard ex reads
+/// one more Retreat Cost once: 100, 130, 130 with zero, one and two Ariados. Old: 130, not 160, with two
+/// (`tests_before_fix_trap_territory.log:824-825`; README.md:73 of that folder, "fails: 130, not 160").
+#[test]
+fn revert_g6_grass_knot_reads_trap_territory_once() {
+    use deckgym::actions::with_trap_territory_each;
+    fn grass_knot(ariados: usize) -> u32 {
+        let mut attacker = vec![PlayedCard::from_id(CardId::B1016WhimsicottEx)
+            .with_energy(vec![EnergyType::Grass, EnergyType::Grass])];
+        attacker.extend((0..ariados).map(|_| PlayedCard::from_id(CardId::B1a006Ariados)));
+        let mut game = get_test_game_with_board(attacker, vec![PlayedCard::from_id(CardId::A1036CharizardEx)]);
+        game.apply_action(&Action {
+            actor: 0,
+            action: attack_action(CardId::B1016WhimsicottEx, 0),
+            is_stack: false,
+        });
+        180 - game.get_state_clone().get_active(1).get_remaining_hp()
+    }
+    with_trap_territory_each(false, || {
+        for (ariados, damage) in [(0, 100), (1, 130), (2, 130)] {
+            assert_eq!(grass_knot(ariados), damage, "switch off, {ariados} Ariados");
+        }
+    });
+    assert_eq!(with_trap_territory_each(true, || grass_knot(2)), 160, "switch on, 2 Ariados");
+}

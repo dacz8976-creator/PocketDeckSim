@@ -666,3 +666,257 @@ fn fossil_treasure_collecting_takes_a_fossil() {
         );
     }
 }
+
+// ---- Revert switches (rules switch 2, PLAN (e); the coordinator's brief of Oct 9) for G10 (the Fossil lock) and G11 (P3:
+// a Fossil counts as an Item). Each `revert_*` test re-runs a scenario above with the gate's switch off and asserts the
+// engine before it (the official engine, main-8626a35), and with the switch on, the current result. Old values:
+// `rl/results/coin_prevention_round2_2026-10-01/tests_before_fix_followup.log` and `tests_before_fix_p3.log`.
+
+/// G10 (`with_fossil_item_lock(false, ..)`): an Item lock doesn't stop a Fossil. In the scenario of
+/// `an_item_lock_stops_a_fossil`, Jingly Noise stops Poke Ball but Helix Fossil can still be placed. Old: the Fossil offered
+/// under the lock (`tests_before_fix_followup.log:863-864`: "locked true: the Fossil can be placed only without the Item
+/// lock", right: false); the Poke Ball assertion before it passed.
+#[test]
+fn revert_g10_an_item_lock_does_not_stop_a_fossil() {
+    use deckgym::actions::with_fossil_item_lock;
+    /// (Poke Ball playable, Helix Fossil placeable) on player 0's turn, after Jingly Noise when `locked`.
+    fn offers(locked: bool) -> (bool, bool) {
+        use deckgym::{
+            models::Card,
+            test_support::{attack_action, get_initialized_game_with_board},
+        };
+        let mut game = get_initialized_game_with_board(
+            0,
+            1,
+            3,
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+            vec![
+                PlayedCard::from_id(CardId::B1109Chingling),
+                PlayedCard::from_id(CardId::A1033Charmander),
+            ],
+        );
+        let mut state = game.get_state_clone();
+        state.hands[0] = vec![get_card_by_enum(CardId::A1216HelixFossil), get_card_by_enum(CardId::PA005PokeBall)];
+        game.set_state(state);
+        if locked {
+            game.apply_action(&Action { actor: 1, action: attack_action(CardId::B1109Chingling, 0), is_stack: false });
+            game.play_until_stable();
+        }
+        let (actor, actions) = game.get_state_clone().generate_possible_actions();
+        if actor == 1 {
+            let end_turn = actions
+                .iter()
+                .find(|choice| matches!(choice.action, SimpleAction::EndTurn))
+                .expect("player 1 can end the turn")
+                .clone();
+            game.apply_action(&end_turn);
+            game.play_until_stable();
+        }
+        let (actor, actions) = game.get_state_clone().generate_possible_actions();
+        assert_eq!(actor, 0, "locked {locked}: player 0's turn");
+        let fossil = actions.iter().any(|choice| {
+            matches!(&choice.action, SimpleAction::Place(Card::Trainer(card), _) if card.name == "Helix Fossil")
+        });
+        let poke_ball = actions.iter().any(|choice| {
+            matches!(&choice.action, SimpleAction::Play { trainer_card } if trainer_card.name == "Poké Ball")
+        });
+        (poke_ball, fossil)
+    }
+    with_fossil_item_lock(false, || {
+        for locked in [false, true] {
+            assert_eq!(offers(locked), (!locked, true), "switch off, locked {locked}: (Poke Ball, Fossil)");
+        }
+    });
+    with_fossil_item_lock(true, || {
+        for locked in [false, true] {
+            assert_eq!(offers(locked), (!locked, !locked), "switch on, locked {locked}: (Poke Ball, Fossil)");
+        }
+    });
+}
+
+/// G11 (`with_fossil_as_item(false, ..)`), the attacks that read an Item card miss the Fossil again. Old, from
+/// `tests_before_fix_p3.log` (the failing line of this file, then the logged value): Scrounge-and-Scarf still does its 50
+/// but discards nothing (:487, left []; the HP assertion before it passed); Junk Spark 40 (B4 055 Rotom ex, :567, left
+/// 140); Crackling Snap 30 (B4 054 Pachirisu, :588, left 150); Scavenge recovers nothing (:609, left []), and with a Potion
+/// beside the Fossil only the Potion ever comes back (:625, left {"Potion"}). Only the first printing of each attack is
+/// asserted, as the old run stopped there. The controls (Past Friends, Crackling Snap with a Supporter on top) hold either
+/// way.
+#[test]
+fn revert_g11_attacks_miss_a_fossil() {
+    use deckgym::actions::with_fossil_as_item;
+    let scrounge = || {
+        fossil_attack(0, CardId::A3107AlolanRaticate, vec![EnergyType::Darkness; 2], |state| {
+            state.hands[1] = vec![get_card_by_enum(CardId::A1219Erika), fossil()];
+        })
+    };
+    let junk_spark = || {
+        let state = fossil_attack(0, CardId::B4055RotomEx, vec![EnergyType::Lightning; 2], |state| {
+            state.discard_piles[0] = vec![fossil(), get_card_by_enum(CardId::PA005PokeBall)];
+        });
+        state.get_active(1).get_remaining_hp()
+    };
+    let crackling_snap = || {
+        let state = fossil_attack(0, CardId::B4054Pachirisu, vec![EnergyType::Lightning], |state| {
+            state.decks[0].cards.insert(0, fossil())
+        });
+        state.get_active(1).get_remaining_hp()
+    };
+    let scavenge = || {
+        let state = fossil_attack(0, CardId::B4a025TeamRocketsSlowpoke, vec![EnergyType::Psychic], |state| {
+            state.discard_piles[0] = vec![fossil()]
+        });
+        state.hands[0].clone()
+    };
+    let scavenge_or_potion = || {
+        let potion = get_card_by_enum(CardId::PA001Potion);
+        let mut taken = BTreeSet::new();
+        for seed in 0..80 {
+            let state = fossil_attack(seed, CardId::B4a025TeamRocketsSlowpoke, vec![EnergyType::Psychic], |state| {
+                state.discard_piles[0] = vec![potion.clone(), fossil()]
+            });
+            assert_eq!(state.hands[0].len(), 1, "seed {seed}: one card recovered");
+            taken.insert(state.hands[0][0].get_name());
+        }
+        taken
+    };
+    let controls = || {
+        let past_friends = fossil_attack(0, CardId::B2069Chandelure, vec![EnergyType::Psychic; 2], |state| {
+            state.discard_piles[0] =
+                vec![get_card_by_enum(CardId::A2152Cynthia), fossil(), get_card_by_enum(CardId::PA001Potion)];
+        });
+        let supporter_on_top = fossil_attack(0, CardId::B4054Pachirisu, vec![EnergyType::Lightning], |state| {
+            state.decks[0].cards.insert(0, get_card_by_enum(CardId::A2152Cynthia))
+        });
+        (past_friends.get_active(1).get_remaining_hp(), supporter_on_top.get_active(1).get_remaining_hp())
+    };
+    let potion_only = BTreeSet::from([get_card_by_enum(CardId::PA001Potion).get_name()]);
+    with_fossil_as_item(false, || {
+        let state = scrounge();
+        assert_eq!(state.get_active(1).get_remaining_hp(), 130, "switch off, Scrounge-and-Scarf: the damage");
+        assert!(state.discard_piles[1].is_empty(), "switch off, Scrounge-and-Scarf: no Item card, nothing discarded");
+        assert_eq!(junk_spark(), 140, "switch off, Junk Spark: the Poke Ball only, 30 + 10");
+        assert_eq!(crackling_snap(), 150, "switch off, Crackling Snap: a Fossil on top is not an Item, 30");
+        assert!(scavenge().is_empty(), "switch off, Scavenge: nothing recovered");
+        assert_eq!(scavenge_or_potion(), potion_only, "switch off, Scavenge: only the Potion");
+        assert_eq!(controls(), (180 - 80, 180 - 30), "switch off: the controls hold either way");
+    });
+    with_fossil_as_item(true, || {
+        assert_eq!(scrounge().discard_piles[1], vec![fossil()], "switch on, Scrounge-and-Scarf");
+        assert_eq!(junk_spark(), 180 - 50, "switch on, Junk Spark");
+        assert_eq!(crackling_snap(), 180 - 50, "switch on, Crackling Snap");
+        assert_eq!(scavenge(), vec![fossil()], "switch on, Scavenge");
+        assert_eq!(scavenge_or_potion().len(), 2, "switch on, Scavenge: either can come back");
+        assert_eq!(controls(), (180 - 80, 180 - 30), "switch on: the controls");
+    });
+}
+
+/// G11, the Trainers that read an Item card miss the Fossil again. Old (`tests_before_fix_p3.log`): Team Rocket's
+/// Thieving Machine is not offered with only a Fossil in the opponent's discard pile (the panic "should be offered" from
+/// rules_repair_trainers.rs:36), and with a Potion beside it only the Potion is ever taken (left {"Potion"} at :522);
+/// Order Pad and Arven take nothing from a deck holding only a Fossil ("heads 0, tails 30" at :546 for each; the per-seed
+/// assertions of the tails branch passed).
+#[test]
+fn revert_g11_trainers_miss_a_fossil() {
+    use deckgym::actions::with_fossil_as_item;
+    let machine = CardId::B4a067TeamRocketsThievingMachine;
+    let lone_fossil_offered = || {
+        let mut game = setup(0);
+        let mut state = game.get_state_clone();
+        state.hands[0] = vec![get_card_by_enum(machine)];
+        state.discard_piles[1] = vec![get_card_by_enum(CardId::A2152Cynthia), fossil()];
+        game.set_state(state);
+        offered_play(&game.get_state_clone(), machine).is_some()
+    };
+    let machine_takes = || {
+        let potion = get_card_by_enum(CardId::PA001Potion);
+        let mut taken = BTreeSet::new();
+        for seed in 0..60 {
+            let mut game = setup(seed);
+            let mut state = game.get_state_clone();
+            state.hands[0] = vec![get_card_by_enum(machine)];
+            state.discard_piles[1] = vec![potion.clone(), fossil()];
+            game.set_state(state);
+            play(&mut game, machine);
+            let state = game.get_state_clone();
+            assert_eq!(state.hands[0].len(), 1, "seed {seed}: one card taken");
+            taken.insert(state.hands[0][0].get_name());
+        }
+        taken
+    };
+    // (heads, tails) as `fossil_deck_search` counts them, over 30 seeds.
+    let deck_search = |card: CardId| {
+        let (mut heads, mut tails) = (0, 0);
+        for seed in 0..30 {
+            let mut game = setup(seed);
+            let mut state = game.get_state_clone();
+            state.hands[0] = vec![get_card_by_enum(card)];
+            state.decks[0].cards = vec![fossil()];
+            game.set_state(state);
+            play(&mut game, card);
+            let state = game.get_state_clone();
+            if state.hands[0] == vec![fossil()] {
+                heads += 1;
+                assert!(state.decks[0].cards.is_empty(), "seed {seed}: the Fossil left the deck");
+            } else {
+                tails += 1;
+                assert!(state.hands[0].is_empty(), "seed {seed}: nothing taken");
+                assert_eq!(state.decks[0].cards, vec![fossil()], "seed {seed}: the Fossil stays");
+            }
+        }
+        (heads, tails)
+    };
+    let potion_only = BTreeSet::from([get_card_by_enum(CardId::PA001Potion).get_name()]);
+    with_fossil_as_item(false, || {
+        assert!(!lone_fossil_offered(), "switch off: Thieving Machine finds no Item card, so it is not offered");
+        assert_eq!(machine_takes(), potion_only, "switch off: Thieving Machine takes only the Potion");
+        for card in [CardId::B4145OrderPad, CardId::B2a091Arven] {
+            assert_eq!(deck_search(card), (0, 30), "switch off, {card:?}: the Fossil is never taken");
+        }
+    });
+    with_fossil_as_item(true, || {
+        assert!(lone_fossil_offered(), "switch on: Thieving Machine is offered");
+        assert_eq!(machine_takes().len(), 2, "switch on: either card can be taken");
+        for card in [CardId::B4145OrderPad, CardId::B2a091Arven] {
+            let (heads, tails) = deck_search(card);
+            assert!(heads > 0 && tails > 0, "switch on, {card:?}: heads {heads}, tails {tails}");
+        }
+    });
+}
+
+/// G11, Raticate's Treasure Collecting (`fossil_treasure_collecting_takes_a_fossil`, B4 130): with the switch off only the
+/// Potion of the top 4 is an Item card. Old: the hand [Potion] (`tests_before_fix_p3.log`, left at
+/// rules_repair_trainers.rs:657). Only the first printing is asserted, as the old run stopped there.
+#[test]
+fn revert_g11_treasure_collecting_leaves_a_fossil() {
+    use deckgym::actions::with_fossil_as_item;
+    let hand = || {
+        let mut game = get_initialized_game(0);
+        let mut state = game.get_state_clone();
+        state.turn_count = 3;
+        state.current_player = 0;
+        state.set_board(vec![PlayedCard::from_id(CardId::A1189Rattata)], vec![PlayedCard::from_id(CardId::A1001Bulbasaur)]);
+        let evolution = get_card_by_enum(CardId::B4130Raticate);
+        state.hands[0] = vec![evolution.clone()];
+        state.decks[0].cards = vec![
+            fossil(),
+            get_card_by_enum(CardId::PA001Potion),
+            get_card_by_enum(CardId::A2152Cynthia),
+            get_card_by_enum(CardId::A1001Bulbasaur),
+            get_card_by_enum(CardId::A1033Charmander),
+        ];
+        game.set_state(state);
+        game.apply_action(&Action {
+            actor: 0,
+            action: SimpleAction::Evolve { evolution, in_play_idx: 0, from_deck: false },
+            is_stack: false,
+        });
+        game.apply_action(&Action { actor: 0, action: SimpleAction::UseAbility { in_play_idx: 0 }, is_stack: true });
+        game.get_state_clone().hands[0].clone()
+    };
+    assert_eq!(with_fossil_as_item(false, hand), vec![get_card_by_enum(CardId::PA001Potion)], "switch off: the Potion only");
+    assert_eq!(
+        with_fossil_as_item(true, hand),
+        vec![fossil(), get_card_by_enum(CardId::PA001Potion)],
+        "switch on: the Fossil and the Potion"
+    );
+}

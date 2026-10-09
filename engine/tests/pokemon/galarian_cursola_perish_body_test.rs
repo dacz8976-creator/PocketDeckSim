@@ -228,3 +228,67 @@ fn perish_body_flips_for_a_plain_queued_hit_at_the_active() {
         "{attacker_knocked_out} attackers Knocked Out, {attacker_survived} survived: the Perish Body coin must flip"
     );
 }
+
+/// Revert switch G8, Perish Body on a queued hit (rules switch 2, PLAN (e); the coordinator's brief of Oct 9). With
+/// `with_perish_on_queued_hit(false, ..)` a queued `ApplyDamage` never flips Perish Body, as before the gate (the official
+/// engine, main-8626a35): in the scenario of `perish_body_flips_for_a_plain_queued_hit_at_the_active` Cursola is Knocked
+/// Out on every seed and Vespiquen ex never is. Old: 0 attackers Knocked Out, 60 survived
+/// (`tests_before_fix_followup.log:838`).
+#[test]
+fn revert_g8_perish_body_never_flips_for_a_plain_queued_hit() {
+    use deckgym::actions::with_perish_on_queued_hit;
+    /// Over 60 seeds: (attacker Knocked Out, attacker survived).
+    fn chase_order_into_cursola() -> (usize, usize) {
+        let (mut attacker_knocked_out, mut attacker_survived) = (0, 0);
+        for seed in 0..60u64 {
+            let mut game = get_initialized_game_with_board(
+                seed,
+                0,
+                3,
+                vec![
+                    PlayedCard::from_id(CardId::B4011VespiquenEx).with_energy(vec![EnergyType::Grass; 2]),
+                    PlayedCard::from_id(CardId::A1001Bulbasaur),
+                    PlayedCard::from_id(CardId::A1001Bulbasaur),
+                ],
+                vec![
+                    PlayedCard::from_id(CardId::A4a035GalarianCursola),
+                    PlayedCard::from_id(CardId::A1033Charmander),
+                ],
+            );
+            game.apply_action(&Action {
+                actor: 0,
+                action: attack_action(CardId::B4011VespiquenEx, 0),
+                is_stack: false,
+            });
+            for _ in 0..10 {
+                let state = game.get_state_clone();
+                if state.move_generation_stack.is_empty() {
+                    break;
+                }
+                let (actor, choices) = state.generate_possible_actions();
+                if actor != 0 || choices.is_empty() {
+                    break;
+                }
+                let discard = choices.iter().find(|choice| {
+                    matches!(&choice.action, SimpleAction::DiscardOwnBenchedThenDamage { in_play_idxs, .. } if !in_play_idxs.is_empty())
+                });
+                game.apply_action(discard.unwrap_or(&choices[0]));
+            }
+            game.play_until_stable();
+            let state = game.get_state_clone();
+            assert_eq!(state.points[0], 1, "seed {seed}: Cursola is Knocked Out either way");
+            if state.points[1] == 2 {
+                attacker_knocked_out += 1;
+            } else {
+                attacker_survived += 1;
+            }
+        }
+        (attacker_knocked_out, attacker_survived)
+    }
+    assert_eq!(with_perish_on_queued_hit(false, chase_order_into_cursola), (0, 60), "switch off: no Perish Body coin");
+    let (knocked_out, survived) = with_perish_on_queued_hit(true, chase_order_into_cursola);
+    assert!(
+        knocked_out > 10 && survived > 10,
+        "switch on: {knocked_out} attackers Knocked Out, {survived} survived: the Perish Body coin must flip"
+    );
+}

@@ -247,3 +247,47 @@ fn guts_flips_for_your_own_attacks_damage_to_your_own_ursaluna() {
     }
     assert!(survived > 10 && knocked_out > 10, "{survived} survived, {knocked_out} Knocked Out: the Guts coin must flip");
 }
+
+/// Revert switch G7, Guts on the own side (rules switch 2, PLAN (e); the coordinator's brief of Oct 9). With
+/// `with_own_side_guts(false, ..)` Guts flips only for the opponent's Pokémon, as before the gate (the official engine,
+/// main-8626a35), so your own Benched Ursaluna at 10 HP is always Knocked Out by your own Earthquake in the scenario of
+/// `guts_flips_for_your_own_attacks_damage_to_your_own_ursaluna`. Old: 0 survived, 60 Knocked Out
+/// (`tests_before_fix_followup.log:843`).
+#[test]
+fn revert_g7_own_side_guts_never_flips_for_your_own_attack() {
+    use deckgym::actions::with_own_side_guts;
+    /// Over 60 seeds: (survived at 10 HP, Knocked Out).
+    fn earthquake_into_your_own_ursaluna() -> (usize, usize) {
+        let (mut survived, mut knocked_out) = (0, 0);
+        for seed in 0..60u64 {
+            let mut game = get_initialized_game_with_board(
+                seed,
+                0,
+                3,
+                vec![
+                    PlayedCard::from_id(CardId::A3b039Whiscash).with_energy(vec![EnergyType::Fighting; 4]),
+                    PlayedCard::from_id(CardId::B3b058Ursaluna).with_remaining_hp(10),
+                ],
+                vec![PlayedCard::from_id(CardId::A1036CharizardEx)],
+            );
+            game.apply_action(&Action {
+                actor: 0,
+                action: attack_action(CardId::A3b039Whiscash, 0),
+                is_stack: false,
+            });
+            game.play_until_stable();
+            let state = game.get_state_clone();
+            match state.enumerate_in_play_pokemon(0).find(|(_, p)| p.get_name() == "Ursaluna") {
+                Some((_, ursaluna)) => {
+                    assert_eq!(ursaluna.get_remaining_hp(), 10, "seed {seed}: a Guts heads leaves 10 HP");
+                    survived += 1;
+                }
+                None => knocked_out += 1,
+            };
+        }
+        (survived, knocked_out)
+    }
+    assert_eq!(with_own_side_guts(false, earthquake_into_your_own_ursaluna), (0, 60), "switch off: always Knocked Out");
+    let (survived, knocked_out) = with_own_side_guts(true, earthquake_into_your_own_ursaluna);
+    assert!(survived > 10 && knocked_out > 10, "switch on: {survived} survived, {knocked_out} Knocked Out: the coin must flip");
+}
