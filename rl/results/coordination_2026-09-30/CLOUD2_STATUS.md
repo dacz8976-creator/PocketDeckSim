@@ -8,7 +8,7 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
    - Not to be run: brew-07 and brew-09 (their rules are being repaired).
    - Rules I work under: never call `strength_prereg.py` directly; never set `SLOW_REPORT_ALLOW_UNCOMMITTED_PIN`; never use `--pin`; the pin is not edited; if anything is refused I STOP and write the message here.
    - Branch note: the session's branch is `claude/slow-reports-runner-xlsxu0` (the paste block says `claude/slow-reports-runner`); I push only to the one I was given.
-2. **What is running now, and when it ends.** Setup: one fixed clone path (`/home/user/PocketDeckSim`), main merged (branch is level with main b77652d), cargo cache for the pinned commit, then the build into `$HOME/slow_report_kx3/strength`. Then the dry run and the registration (the kx3 and km3 self-check replay, hours). Nothing is playing yet.
+2. **What is running now, and when it ends.** Setup is done (Oct 9): the program is built at `/root/slow_report_kx3/strength` (sha256 c3d51c4be7ff, rustc 1.97.0; engine tree 31dbd2e6e8ec and harness source bf9c5d68 as the pin needs), and the dry run for brew 08 passed (pin committed: yes; seeds from 24,628,600,000; 160 kx3 + 160 km3 games; plan says about 4.7 to 6.2 hours of kx3 play if it plays like most decks, 4 threads). Now: `--register-only` for brew 08, which replays both self-checks (kx3's takes hours) and must give kx3 31d638dbc818b0fa and km3 81b572198c04d5d1. No game is played until that is registered and pushed.
 3. **Files I expect to change.** This file; the report folders `rl/results/slow_reports/<date>_brew-08-entei-rainbow-cave/` and, later, `<date>_13-a-ninetales-raticate/`. Nothing else (no pin, no engine, no scripts).
 4. **Waiting on the laptop or Sonnet.** Nothing.
 5. **Open questions for Dustin.** None yet.
@@ -16,3 +16,4 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
 ## Log (one line per new job, added and pushed before it starts)
 
 - 2026-10-09: setup for the slow reports (Fable via Dustin): cargo cache for d513e37b, build of the pinned source into `$HOME/slow_report_kx3/strength` (must print engine tree 31dbd2e6e8ec and harness source bf9c5d68), no games.
+- 2026-10-09: report 1, brew 08 (Entei, Rainbow Cave): registration only, `--deals 10 --threads 4 --school-rule off`; replays both self-checks (hours), then the registered folder is pushed before any game.
