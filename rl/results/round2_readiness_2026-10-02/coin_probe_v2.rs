@@ -47,6 +47,7 @@
 //! `coin_lookahead.py` (this folder) drives it over every changed game of a smoke and checks it against S3's hand-traced ticks.
 use deckgym::actions::{try_forecast_action, Action, SimpleAction};
 use deckgym::card_ids::CardId;
+use deckgym::effects::CardEffect;
 use deckgym::models::{EnergyType, PlayedCard};
 use deckgym::players::{create_players, parse_player_code};
 use deckgym::test_support::get_initialized_game_with_board;
@@ -160,6 +161,8 @@ struct Least {
     queued: Option<usize>,
     cut: Option<usize>,
     queued_free: bool,
+    /// P2's condition (Oct 9): the ply of the first move found whose hit back takes Weakness.
+    ret: Option<usize>,
 }
 
 impl Found {
@@ -308,7 +311,7 @@ fn explore(state: &State, actor: usize, plies: usize, root: bool, path: &mut Vec
 
 /// Prints the result and returns the shortest ply of each condition, if any.
 fn report(found: &Found, label: &str) -> Least {
-    let mut least = Least { queued: None, cut: None, queued_free: false };
+    let mut least = Least { queued: None, cut: None, queued_free: false, ret: None };
     for (kind, by_ply) in &found.by_kind {
         let ply = *by_ply.keys().next().unwrap();
         match *kind {
@@ -316,22 +319,27 @@ fn report(found: &Found, label: &str) -> Least {
                 least.queued = Some(ply);
                 least.queued_free = found.pure_plies.contains(&ply);
             }
-            _ => least.cut = Some(ply),
+            "CUT" => least.cut = Some(ply),
+            "RETURN" => least.ret = Some(ply),
+            other => unreachable!("{other}"),
         }
         let inside = if *kind == "QUEUED" && ply == SEARCH_PLIES && !found.pure_plies.contains(&ply) {
             "inside the tree but AT THE LEAF (a mixed frame: offered, never applied: a judgment)"
         } else if *kind == "QUEUED" && ply == SEARCH_PLIES {
             "INSIDE THE SEARCH (at the leaf, but a pure frame: resolved without a ply)"
         } else if ply <= SEARCH_PLIES { "INSIDE THE SEARCH" } else { "beyond the search" };
-        let what = if *kind == "QUEUED" { format!("a queued coin-path choice is offered after {ply} move(s)") }
-                   else { format!("a finite heads cut is recorded by the move chosen at ply {ply}") };
+        let what = match *kind {
+            "QUEUED" => format!("a queued coin-path choice is offered after {ply} move(s)"),
+            "CUT" => format!("a finite heads cut is recorded by the move chosen at ply {ply}"),
+            _ => format!("the hit back of an attack's return damage takes Weakness (P2) in the move chosen at ply {ply}"),
+        };
         println!("{label}{kind}: {what}: {inside}");
         for (path, detail) in by_ply.values().next().unwrap() {
             println!("    after [{}] {detail}", path.join(" ; "));
         }
     }
     if found.by_kind.is_empty() {
-        println!("{label}NOT FOUND: neither a queued coin-path choice nor a finite heads cut within {SEARCH_PLIES} plies ({SEEDS} chance samples per move; not a proof of absence)");
+        println!("{label}NOT FOUND: no queued coin-path choice, finite heads cut or hit back taking Weakness within {SEARCH_PLIES} plies ({SEEDS} chance samples per move; not a proof of absence)");
     }
     if found.truncated {
         println!("{label}(the search stopped at {} nodes)", limit());
@@ -350,10 +358,19 @@ fn probe_state(state: &State, label: &str) -> Least {
 
 fn selftest() {
     let mon = PlayedCard::from_id;
-    let check = |name: &str, got: Least, want: (Option<usize>, Option<usize>)| {
-        println!("{} {name}: queued {:?} (free {}), cut {:?}", if (got.queued, got.cut) == want { "ok  " } else { "FAIL" }, got.queued, got.queued_free, got.cut);
-        assert_eq!((got.queued, got.cut), want, "{name}");
+    // Every check runs and prints; the failures are counted and asserted at the end (so a failing run lists them all).
+    let (checks, failures) = (std::cell::Cell::new(0), std::cell::Cell::new(0));
+    let tally = |ok: bool| {
+        checks.set(checks.get() + 1);
+        failures.set(failures.get() + usize::from(!ok));
+        if ok { "ok  " } else { "FAIL" }
     };
+    // (queued, cut, return)
+    let check = |name: &str, got: Least, want: (Option<usize>, Option<usize>, Option<usize>)| {
+        let mark = tally((got.queued, got.cut, got.ret) == want);
+        println!("{mark} {name}: queued {:?} (free {}), cut {:?}, return {:?}", got.queued, got.queued_free, got.cut, got.ret);
+    };
+    let frame = |name: &str, ok: bool| println!("{} {name}", tally(ok));
     let board = |attacker: PlayedCard, defenders: Vec<PlayedCard>| {
         let mut game = get_initialized_game_with_board(5, 1, 5, defenders, vec![attacker]);
         let mut state = game.get_state_clone();
@@ -363,26 +380,26 @@ fn selftest() {
     };
     // A: Fire Claws into Bastiodon's Active: the attack itself records the finite cut, chosen at ply 1; nothing is queued.
     let claws = PlayedCard::from_id(CardId::A1034Charmeleon).with_energy(vec![EnergyType::Fire; 3]);
-    check("Fire Claws into Bastiodon", probe_state(&board(claws.clone(), vec![mon(CardId::A2114Bastiodon)]), "  A "), (None, Some(1)));
+    check("Fire Claws into Bastiodon", probe_state(&board(claws.clone(), vec![mon(CardId::A2114Bastiodon)]), "  A "), (None, Some(1), None));
     // B: Tongue Whip with Bastiodon on the Bench: the attack (ply 1) offers the queued choice at a state of depth 1, and choosing it
     // (ply 2) records the cut. A Togekiss on the Bench queues the same way and records no finite cut.
     let whip = || PlayedCard::from_id(CardId::B1044Heatmor).with_energy(vec![EnergyType::Fire]);
     let b = probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur), mon(CardId::A2114Bastiodon)]), "  B ");
-    check("Tongue Whip, Bastiodon on the Bench", b, (Some(1), Some(2)));
-    assert!(!b.queued_free, "the frame has a plain ApplyDamage beside the queued choice: a mixed frame");
+    check("Tongue Whip, Bastiodon on the Bench", b, (Some(1), Some(2), None));
+    frame("B: the frame has a plain ApplyDamage beside the queued choice: a mixed frame", !b.queued_free);
     check("Tongue Whip, Togekiss on the Bench",
-        probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur), mon(CardId::A4080Togekiss)]), "  C "), (Some(1), None));
+        probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur), mon(CardId::A4080Togekiss)]), "  C "), (Some(1), None, None));
     // F: a lone Togekiss on the Bench: every choice of the frame is queued, a pure frame the bots resolve without a ply.
     let f = probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A4080Togekiss)]), "  F ");
-    check("Tongue Whip, a lone Togekiss on the Bench (a pure frame)", f, (Some(1), None));
-    assert!(f.queued_free, "every choice is a queued one: a pure frame");
+    check("Tongue Whip, a lone Togekiss on the Bench (a pure frame)", f, (Some(1), None, None));
+    frame("F: every choice is a queued one: a pure frame", f.queued_free);
     // G (v2): a lone Bastiodon on the Bench: a pure frame, whose queued choice costs no ply, so its finite cut is at ply 1 (v1: 2).
     let g = probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A2114Bastiodon)]), "  G ");
-    check("Tongue Whip, a lone Bastiodon on the Bench (a pure frame: the cut costs no ply)", g, (Some(1), Some(1)));
-    assert!(g.queued_free, "every choice is a queued one: a pure frame");
+    check("Tongue Whip, a lone Bastiodon on the Bench (a pure frame: the cut costs no ply)", g, (Some(1), Some(1), None));
+    frame("G: every choice is a queued one: a pure frame", g.queued_free);
     // D: nothing to find without a coin Pokemon.
     check("Tongue Whip, no coin Pokemon",
-        probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur)]), "  D "), (None, None));
+        probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur)]), "  D "), (None, None, None));
     // E: the queued choice already offered at the tick (the state after the attack): depth 0, the S3 pattern.
     let mut game = get_initialized_game_with_board(5, 1, 5,
         vec![mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur), mon(CardId::A4080Togekiss)], vec![whip()]);
@@ -392,8 +409,45 @@ fn selftest() {
     let attack = state.generate_possible_actions().1.into_iter()
         .find(|a| matches!(&a.action, SimpleAction::Attack(x) if x.title == "Tongue Whip")).expect("Tongue Whip");
     game.apply_action(&attack);
-    check("the state after Tongue Whip (the choice is on the table)", probe_state(&game.get_state_clone(), "  E "), (Some(0), None));
-    println!("selftest: 7 checks and 3 frame checks, 0 failures");
+    check("the state after Tongue Whip (the choice is on the table)", probe_state(&game.get_state_clone(), "  E "), (Some(0), None, None));
+
+    // P2 (Oct 9): RETURN, the hit back of an attack's return damage taking Weakness, found in the search. Player 0 attacks from
+    // its Active into player 1's Mega Sableye ex (Darkness) armed as Cursed Jewel leaves it (40 back), as
+    // counter_probe_readiness.rs's boards. With P2 off (DECKGYM_FLAT_RETURN_DAMAGE=1) the four with a return ply fail.
+    let with = |id: CardId, n: usize, energy: EnergyType| PlayedCard::from_id(id).with_energy(vec![energy; n]);
+    let armed = |amount: u32| {
+        let mut p = mon(CardId::B3b041MegaSableyeEx);
+        p.add_effect(CardEffect::Counterattack { amount }, 1);
+        p
+    };
+    let duel = |attacker: Vec<PlayedCard>, defender: PlayedCard| {
+        get_initialized_game_with_board(0, 0, 5, attacker, vec![defender]).get_state_clone()
+    };
+    let houndstone = || with(CardId::B3a024Houndstone, 3, EnergyType::Psychic);
+    // H: Spooky Shot (70) from Houndstone (Psychic, weak Darkness): the attack itself, chosen at ply 1, runs the hit back.
+    check("Spooky Shot into an armed Mega Sableye ex (Houndstone weak to it)",
+        probe_state(&duel(vec![houndstone()], armed(40)), "  H "), (None, None, Some(1)));
+    // I: Espeon's Hypnoblast (40), one Energy.
+    check("Hypnoblast into an armed Mega Sableye ex (Espeon weak to it)",
+        probe_state(&duel(vec![with(CardId::B3a020Espeon, 1, EnergyType::Psychic)], armed(40)), "  I "), (None, None, Some(1)));
+    // J: Psy Turbo holds the hit back until its Attach is chosen (ply 2); the ResolveAttackRetaliation after it is forced (free).
+    check("Psy Turbo into an armed Mega Sableye ex, Ralts on the Bench (the held-back hit back)",
+        probe_state(&duel(vec![with(CardId::B2065Gardevoir, 2, EnergyType::Psychic), mon(CardId::A1130Ralts)], armed(40)), "  J "),
+        (None, None, Some(2)));
+    // K: Snorlax (weak Fighting): the hit back lands flat, as before P2.
+    check("Rollout into an armed Mega Sableye ex (Snorlax not weak to it)",
+        probe_state(&duel(vec![with(CardId::A1211Snorlax, 4, EnergyType::Colorless)], armed(40)), "  K "), (None, None, None));
+    // L: Houndstone at 30 HP is Knocked Out by the 40 either way: the same board.
+    check("Spooky Shot into an armed Mega Sableye ex, Houndstone at 30 HP (Knocked Out either way)",
+        probe_state(&duel(vec![houndstone().with_remaining_hp(30)], armed(40)), "  L "), (None, None, None));
+    // M: at 50 HP the 40 leaves it 10 and the 60 Knocks it Out.
+    check("Spooky Shot into an armed Mega Sableye ex, Houndstone at 50 HP",
+        probe_state(&duel(vec![houndstone().with_remaining_hp(50)], armed(40)), "  M "), (None, None, Some(1)));
+    // N: nothing armed: no hit back.
+    check("Spooky Shot into an unarmed Mega Sableye ex",
+        probe_state(&duel(vec![houndstone()], mon(CardId::B3b041MegaSableyeEx)), "  N "), (None, None, None));
+    println!("selftest: {} checks and {} frame checks, {} failures", checks.get() - 3, 3, failures.get());
+    assert_eq!(failures.get(), 0, "selftest failures");
 }
 
 fn main() {
@@ -424,4 +478,5 @@ fn main() {
     let least = probe_state(&game.get_state_clone(), "  ");
     let show = |p: Option<usize>| p.map_or("none".to_string(), |p| p.to_string());
     println!("RESULT queued={} cut={} free={}", show(least.queued), show(least.cut), least.queued_free);
+    println!("RESULT_P2 ret={}", show(least.ret));
 }
