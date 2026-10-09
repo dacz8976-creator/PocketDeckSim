@@ -180,6 +180,24 @@ class ProbeOutput(unittest.TestCase):
         with self.assertRaises(ValueError):
             tr.parse_probe(PROBE_OUT.replace(PROBE_OUT.splitlines()[-1], ""))
 
+    def test_a_title_the_probe_cut_short_is_read_as_the_later_round_attack_it_begins(self):
+        # The probe cuts each action to 87 characters and "...": Mega Kangaskhan ex's attack loses its closing quote.
+        cut = ('Attack(Attack { energy_required: [Colorless, Colorless, Colorless], title: "Double-Punching Family"')[:87] + "..."
+        out = PROBE_OUT.replace('Attack(Attack { energy_required: [Water, Water], title: "Wild Swing", fixed_damage: 20,...', cut)
+        self.assertEqual(tr.parse_probe(out)["queued_attacks"], ["Double-Punching Family"])
+
+    def test_a_cut_title_that_begins_no_later_round_attack_is_kept_as_cut(self):
+        out = PROBE_OUT.replace('title: "Wild Swing", fixed_damage: 20,...', 'title: "Tongue Wh...')
+        self.assertEqual(tr.parse_probe(out)["queued_attacks"], ["Tongue Wh..."])
+
+    def test_a_negative_control_needs_no_coin_round_or_return_condition(self):
+        # Round 2's kinds and trapleaf can be found in a game that didn't change (a Will in hand, two Ariados in play): they are listed,
+        # not a failure, as step 8b's controls were; the probe's own self-test holds round 2's negatives.
+        self.assertTrue(tr.control_clean(probe(trapleaf=2, will=2)))
+        self.assertFalse(tr.control_clean(probe(queued=2)))
+        self.assertFalse(tr.control_clean(probe(cut=1)))
+        self.assertFalse(tr.control_clean(probe(ret=3)))
+
     def test_nothing_found(self):
         self.assertTrue(tr.nothing_found(probe()))
         self.assertFalse(tr.nothing_found(probe(trapleaf=2)))
@@ -243,6 +261,13 @@ class Golden(unittest.TestCase):
         self.assertTrue(tr.golden_ok("coin_queued_by_attack", probe(queued=0)))
         self.assertTrue(tr.golden_ok("coin_queued_by_attack", probe(cut=1)))
         self.assertFalse(tr.golden_ok("coin_queued_by_attack", probe(queued=1)))
+
+    def test_mega_kangaskhan_s_second_punch_has_no_golden_check(self):
+        # Its queued choice is built when any of the opponent's Pokemon has a coin Ability (apply_attack_action.rs: any_coin_target),
+        # the probe's QUEUED only when a target has one: a plain Active with Meowth on the Bench is a queued choice it doesn't see.
+        self.assertIsNone(tr.golden_ok("coin_queued_by_attack", probe(), keys=["Double-Punching Family"]))
+        self.assertFalse(tr.golden_ok("coin_queued_by_attack", probe(), keys=["Double-Punching Family", "Wild Swing"]))
+        self.assertTrue(tr.golden_ok("coin_queued_by_attack", probe(queued=0), keys=["Wild Swing"]))
 
     def test_a_counter_the_probe_has_no_condition_for_has_no_golden_check(self):
         for name in ("luxury_coin_opp_stadium", "fossil_item_lock"):
