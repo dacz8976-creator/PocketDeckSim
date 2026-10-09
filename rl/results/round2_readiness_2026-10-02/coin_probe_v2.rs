@@ -17,6 +17,36 @@
 //! --features test-utils --example coin_probe_v2), in a scratch copy of the official engine (main-8626a35).
 //!   coin_probe_v2 --a <list> --b <list> --seed-base <n> --pairing <n> --bot km3 --deal <i> --tick <t> [--node-limit <n>]
 //!
+//! P2's check (the cloud, Oct 9; claude/coin-prevention-round2): a third condition, RETURN, for rules switch 2's P2 (return
+//! damage left by an attack takes Weakness). The probe must then be built on the candidate engine (the P2 head or later): on
+//! main-8626a35 RETURN can never fire. QUEUED and CUT are unchanged.
+//!   RETURN: a move the search applies runs the hit back of an attack's return damage (CardEffect::Counterattack: Cursed Jewel,
+//!     Spike Armor, Bristling Spikes, Needle Lariat, Shell Trap) on a damaged opposing Active, and its forecast leaves a different
+//!     board with the Attacking Pokemon's printed Weakness taken away. That is the exact counter "attack_return_weakness": the
+//!     counter's own lines (`r2_tick` and its helpers, written out by `../coin_prevention_repair_2026-09-30/instrument_scan.py
+//!     --emit-fns`, the text the script puts into legality_scan.rs) are included below, so the trace proves the condition the
+//!     counter counts. It is asked of every move the search applies, at the ply the move is charged (the root's move 1, an
+//!     ordinary move plies + 1, a forced or free move none: Psy Turbo's held-back hit back, resolved by the forced
+//!     ResolveAttackRetaliation after the Attach chosen at ply 2, reads 2), and of the moves of a QUEUED frame (which is not
+//!     expanded) at the ply they would be chosen. Only moves that can run the hit back are asked (Attack,
+//!     ApplyQueuedAttackDamage, KeepAttackCoinResults, RerollAttackCoins, ApplyDamage from an attack,
+//!     ResolveAttackRetaliation), and only while some Pokemon in play carries an attack's return damage. An attack never applied
+//!     is never asked, so there is no leaf case.
+//!   The code gate (the other half), read in the P2 engine (5543a4ba; line numbers at 35e6acfd): `handle_attack_retaliation`
+//!     (actions/apply_action_helpers.rs:649-677) adds `attack_return_weakness_extra` (hooks/core.rs:1535, 20 when the
+//!     Attacking Pokemon's printed Weakness is one of the holder's types) to the hit back when the switch is on, the Attacking
+//!     Pokemon is Active (`attacking_ref.1 == 0`) and the target carries an attack's return damage
+//!     (`attack_counterattack_damage`, hooks/counterattack.rs:34) (:658-663); a Tool's and an Ability's stay flat. It is
+//!     reached from `handle_damage` (apply_action_helpers.rs:531), ResolveAttackRetaliation (apply_action.rs:627), the coin-cut
+//!     branch (apply_action.rs:948) and an attack's immediate outcome (attack_outcome.rs:281); the bots' public reply
+//!     (players/public_reply.rs:564) prices the opponent's attack, beyond this search.
+//!   Output: a RETURN block as the others, and a last line `RESULT_P2 ret=<n|none>`. The RESULT line is unchanged (three scripts
+//!     parse it with an end anchor).
+//!   Built on the candidate, in a scratch copy (git archive) of its engine:
+//!     python3 ../coin_prevention_repair_2026-09-30/instrument_scan.py --emit-fns engine/examples/r2_counter_fns.rs
+//!     cp coin_probe_v2.rs engine/examples/ && (cd engine && cargo build --release --locked --features test-utils --example coin_probe_v2)
+//!   The self-test adds boards H-N; with P2 off (DECKGYM_FLAT_RETURN_DAMAGE=1) exactly the four with a return ply fail.
+//!
 //! v1's notes follow.
 //! Step 8c of the rules switch, the coin repair's side (Oct 1; scratch, diagnosis only; no change in engine/). The counterpart of
 //! `vs_probe.rs` (victory_star_repair_2026-09-30/smoke/rerun_R/): "in lookahead only" counts as an explanation of a changed game only
@@ -48,12 +78,15 @@
 use deckgym::actions::{try_forecast_action, Action, SimpleAction};
 use deckgym::card_ids::CardId;
 use deckgym::effects::CardEffect;
-use deckgym::models::{EnergyType, PlayedCard};
+use deckgym::models::{Card, EnergyType, PlayedCard, TrainerType};
 use deckgym::players::{create_players, parse_player_code};
 use deckgym::test_support::get_initialized_game_with_board;
 use deckgym::{Deck, Game, State};
 use rand::{rngs::StdRng, SeedableRng};
 use std::collections::BTreeMap;
+
+// The exact counters' lines (P2's RETURN uses "attack_return_weakness"); every name in it starts with r2_.
+include!("r2_counter_fns.rs");
 
 const FINITE: [&str; 2] = ["A2 114", "B3b 050"];
 const FULL: [&str; 3] = ["A4 080", "B2 124", "B2 204"];
@@ -117,6 +150,21 @@ fn finite_cut_slots(state: &State, action: &Action) -> Vec<usize> {
     }
     out
 }
+
+/// P2's RETURN: applying `a` at `state` runs the hit back of an attack's return damage, and the Attacking Pokemon's printed
+/// Weakness changes what it leaves (the exact counter "attack_return_weakness"). `actions` are the moves `state` offers.
+fn hit_back_takes_weakness(state: &State, actions: &[Action], a: &Action) -> bool {
+    matches!(a.action, SimpleAction::Attack(_)
+        | SimpleAction::ApplyQueuedAttackDamage { .. }
+        | SimpleAction::KeepAttackCoinResults
+        | SimpleAction::RerollAttackCoins { .. }
+        | SimpleAction::ApplyDamage { is_from_active_attack: true, .. }
+        | SimpleAction::ResolveAttackRetaliation { .. })
+        && state.in_play_pokemon.iter().flatten().flatten().any(|p| r2_attack_return(p) > 0)
+        && r2_tick(state, actions, a, None).iter().any(|(name, _)| *name == "attack_return_weakness")
+}
+
+const RETURN_DETAIL: &str = "the hit back of an attack's return damage takes the Attacking Pokemon's Weakness";
 
 /// States reached by `action` from `state`, one per sampled chance outcome, deduplicated by their serialised form.
 fn successors(state: &State, action: &Action) -> Vec<State> {
@@ -264,11 +312,25 @@ fn explore(state: &State, actor: usize, plies: usize, root: bool, path: &mut Vec
                         found.add("CUT", plies + cost, &p, format!("the queued choice's finite cut at slot(s) {slots:?}"));
                     }
                 }
+                // P2: the frame is not expanded, so its moves are asked here, at the ply they would be chosen.
+                for a in ordered(&actions) {
+                    if hit_back_takes_weakness(state, &actions, a) {
+                        let mut p = path.clone();
+                        p.push(if cost == 0 { format!("(free) {}", short(a)) } else { short(a) });
+                        found.add("RETURN", plies + cost, &p, RETURN_DETAIL.to_string());
+                    }
+                }
             }
             return;
         }
     }
     let step = |a: &Action, next_plies: usize, label: String, path: &mut Vec<String>, found: &mut Found| {
+        // P2: every move applied is asked, at the ply it is charged.
+        if hit_back_takes_weakness(state, &actions, a) {
+            path.push(label.clone());
+            found.add("RETURN", next_plies, path, RETURN_DETAIL.to_string());
+            path.pop();
+        }
         for next in successors(state, a) {
             path.push(label.clone());
             explore(&next, actor, next_plies, false, path, found);
