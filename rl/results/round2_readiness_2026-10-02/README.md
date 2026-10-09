@@ -234,10 +234,11 @@ halves)", tests first. It is a third condition in `coin_probe_v2.rs`, beside QUE
   move costs none. Psy Turbo holds its hit back until its Energy is attached: the Attach is ply 2, and the forced
   ResolveAttackRetaliation after it is free, so the hit back reads 2.
 - **The code-gate half** is written in the probe's docstring: `handle_attack_retaliation` adds the +20 only while the switch is
-  on, the Attacking Pokémon is Active, and the defender carries an attack's return damage. Its four callers are named there.
+  on, the Attacking Pokémon is Active, and the defender carries an attack's return damage. Its four engine callers, and the bots' public reply, are named there.
 - **It must be built on the candidate engine** (P2 or later). On main-8626a35 it can never fire.
 - **The output:** a RETURN block like the others, and a new last line `RESULT_P2 ret=<n|none>`. The `RESULT` line is unchanged,
-  since three scripts read it with an end anchor.
+  since scripts read it with an end anchor (`validate_v2.py` and step 8b's `classify_8b.py` for v2; `coin_lookahead.py` and
+  `classify_8c.py` for v1's).
 
 **Commits**
 

@@ -23,7 +23,9 @@ rule v2)". Played by the cloud on branch `claude/coin-prevention-round2`; nothin
     inside their 3 plies:
     - the 17 in pairing 35 find Wild Swing's queued coin choice 3 moves ahead, in a frame the bots resolve for free;
     - the 4 in pairing 37 find P2's RETURN, the hit back with Weakness, 1 or 3 moves ahead.
-  - The code-gate halves are written in the probe's docstring (RETURN) and in `coin_lookahead.py`'s (the coin path).
+  - The code-gate halves, read in the code: for RETURN, the probe's docstring (`handle_attack_retaliation`); for Wild Swing's
+    queued choice, `coin_gated_choice` (`engine/src/actions/apply_attack_action.rs`:365 at `140c0be`, reached from the
+    discard-then-damage path at :422; switch-2 PLAN.md line 112, and "The gates" in the round-2 README).
 - **Every file check passes.** The pinned official `legality_scan` equals the "old" built from source on every field (240 of
   240, both bots). For pairings 32-35 it also equals Oct 1's recorded rows on main (`5a18d31_8b_new_<bot>.jsonl`, 160 of 160):
   that is the side the laptop reuses as "old". The watch build equals the plain one on every field (240 of 240).
@@ -60,7 +62,8 @@ rule v2)". Played by the cloud on branch `claude/coin-prevention-round2`; nothin
 
 It is Oct 1's classifier (on `claude/pensive-ptolemy-spwc0b`), with tightened rule v2 and coin_probe v2.
 - **The first difference** comes from both engines' traces (`vs_trace`). Every trace's move fingerprint equals its scan row.
-  The two engines' state hashes are comparable: an unchanged game hashes the same at every tick on both.
+  The two engines' state hashes are comparable: in all 25 changed games the hash is the same on both engines at every tick
+  before the first difference (and a spot check of an unchanged game, pairing 32 deal 0 km3, matched at all 80 ticks; not kept).
 - **ON THE BOARD:** an exact counter of a mechanic this switch changes fired at or before the first differing tick in its turn,
   or at the cause tick. The counters are `instrument_scan.py`'s EXACT list: the round-2 and P2 ones. The first round's counters
   are left out, since both engines have the first round.
@@ -76,8 +79,8 @@ It is Oct 1's classifier (on `claude/pensive-ptolemy-spwc0b`), with tightened ru
   old one (tightened rule v2's open case). No game here was a "length" case.
 - **Golden checks:** at the explaining tick, `attack_return_weakness` must read RETURN 1 and `coin_queued_by_attack` QUEUED 0.
   All 4 pass.
-- **Negative controls:** 2 per bot, unchanged games of pairing 33 at a mid-game tick with no Meowth in play. Nothing is found
-  in any of the 4.
+- **Negative controls:** 2 per bot, unchanged games of pairing 33, at the first tick from 8 on (turn 1 or 2) with two or more
+  offered moves and no Meowth in play. Nothing is found in any of the 4.
 
 | Pairing | km3 changed | k3 changed | On the board | Look-ahead, both halves | Hand |
 |---|---:|---:|---:|---:|---:|

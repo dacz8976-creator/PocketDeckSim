@@ -43,8 +43,8 @@
 //!     apply_action.rs:908), ResolveAttackRetaliation (apply_action.rs:627), forecast_apply_damage_after_coins' Guts / Perish
 //!     Body coin branch (apply_action.rs:948) and an attack's immediate outcome (attack_outcome.rs:281); the bots' public reply
 //!     (players/public_reply.rs:564) prices the opponent's attack, beyond this search.
-//!   Output: a RETURN block as the others, and a last line `RESULT_P2 ret=<n|none>`. The RESULT line is unchanged (three scripts
-//!     parse it with an end anchor).
+//!   Output: a RETURN block as the others, and a last line `RESULT_P2 ret=<n|none>`. The RESULT line is unchanged (scripts read it with an end
+//!     anchor: validate_v2.py and the switch-2 classify_8b.py for v2; coin_lookahead.py and classify_8c.py for v1's).
 //!   Built on the candidate, in a scratch copy (git archive) of its engine:
 //!     python3 ../coin_prevention_repair_2026-09-30/instrument_scan.py --emit-fns engine/examples/r2_counter_fns.rs
 //!     cp coin_probe_v2.rs engine/examples/ && (cd engine && cargo build --release --locked --features test-utils --example coin_probe_v2)
