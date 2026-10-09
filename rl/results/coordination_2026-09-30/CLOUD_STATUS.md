@@ -42,7 +42,13 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      board difference, read round 2's 16 counters and the probe's RESULT_R2. A review's 7 findings fixed, tests first; 43 of 43 tests.
      - On step 8b's games: 25 of 25 verdicts as classify_8b's, 11 of 11 for coin_lookahead; controls clean, no golden mismatch.
      - None of those games is a shorter game, so that case rests on the tests. README: `classify_check_8b/README.md`.
-   - **Now:** (e), whose gate run is under way.
+   - **(e): done**, pushed to `claude/coin-prevention-round2` (switches 31616338; results 31380294). Each of round 2's 11 gates has
+     its own off switch, and `DECKGYM_ROUND2_OFF=1` turns them all off, P2 included.
+     - On by default, nothing changes. All off, the 8b rows and 240 deckgym games equal the official engine's, byte for byte.
+     - The revert check gives the official move and scores at all 21 look-ahead ticks; the 4 controls match.
+     - Full suite: 2,102 of 2,102 pass. With round 2 off, only the 51 tests added since 8626a358 fail.
+     - Three coverage gaps are listed in `rl/results/coin_prevention_round2_2026-10-01/revert_switches/README.md`.
+   - **Now:** nothing queued; (a), (b) and (e) wait for the laptop's review.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
    63c28e6e. Read "Oct 9" in that branch's `rl/results/coin_prevention_round2_2026-10-01/README.md`, section 3's end in
