@@ -81,9 +81,10 @@
 use deckgym::actions::{try_forecast_action, Action, SimpleAction};
 use deckgym::card_ids::CardId;
 use deckgym::effects::CardEffect;
-use deckgym::models::{Card, EnergyType, PlayedCard, TrainerType};
+use deckgym::database::get_card_by_enum;
+use deckgym::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType};
 use deckgym::players::{create_players, parse_player_code};
-use deckgym::test_support::get_initialized_game_with_board;
+use deckgym::test_support::{get_initialized_game_with_board, get_test_game_with_board};
 use deckgym::{Deck, Game, State};
 use rand::{rngs::StdRng, SeedableRng};
 use std::collections::BTreeMap;
@@ -196,6 +197,8 @@ struct Found {
     /// The plies at which a QUEUED state was found whose frame is pure (every offered move is an ApplyQueuedAttackDamage or a
     /// ChooseRandomEvolutionTarget), which the bots resolve at once, without spending a ply.
     pure_plies: std::collections::BTreeSet<usize>,
+    /// The least depth of a leaf (a node where the search stops) whose mover's Active faces two or more opposing Ariados.
+    trapleaf: Option<usize>,
     nodes: usize,
     truncated: bool,
 }
@@ -214,7 +217,18 @@ struct Least {
     queued_free: bool,
     /// P2's condition (Oct 9): the ply of the first move found whose hit back takes Weakness.
     ret: Option<usize>,
+    /// Round 2's conditions (Oct 9), in R2_KINDS' order: the least ply each was recorded at (4: just beyond the search).
+    r2: [Option<usize>; 7],
+    /// The least depth of a leaf of the search where the mover's Active faces two or more opposing Ariados.
+    trapleaf: Option<usize>,
 }
+
+/// Round 2's kinds, in the RESULT_R2 line's order, with the field name each gets there.
+const R2_KINDS: [(&str, &str); 7] =
+    [("WILL", "will"), ("VS", "vs"), ("TRAP", "trap"), ("OWN", "own"), ("GUTS", "guts"), ("PLAIN", "plain"), ("PERISH", "perish")];
+
+/// The attack each seat chose last, with the turn it chose it in (r2_tick's `last_attack`, read only in that turn).
+type Last = [Option<(u8, Attack)>; 2];
 
 impl Found {
     fn add(&mut self, kind: &'static str, ply: usize, path: &[String], detail: String) {
@@ -376,35 +390,52 @@ fn explore(state: &State, actor: usize, plies: usize, root: bool, path: &mut Vec
 
 /// Prints the result and returns the shortest ply of each condition, if any.
 fn report(found: &Found, label: &str) -> Least {
-    let mut least = Least { queued: None, cut: None, queued_free: false, ret: None };
+    let mut least = Least { queued: None, cut: None, queued_free: false, ret: None, r2: [None; 7], trapleaf: found.trapleaf };
     for (kind, by_ply) in &found.by_kind {
         let ply = *by_ply.keys().next().unwrap();
-        match *kind {
-            "QUEUED" => {
+        let r2 = R2_KINDS.iter().position(|(k, _)| k == kind);
+        match (*kind, r2) {
+            ("QUEUED", _) => {
                 least.queued = Some(ply);
                 least.queued_free = found.pure_plies.contains(&ply);
             }
-            "CUT" => least.cut = Some(ply),
-            "RETURN" => least.ret = Some(ply),
-            other => unreachable!("{other}"),
+            ("CUT", _) => least.cut = Some(ply),
+            ("RETURN", _) => least.ret = Some(ply),
+            (_, Some(i)) => least.r2[i] = Some(ply),
+            (other, None) => unreachable!("{other}"),
         }
         let inside = if *kind == "QUEUED" && ply == SEARCH_PLIES && !found.pure_plies.contains(&ply) {
             "inside the tree but AT THE LEAF (a mixed frame: offered, never applied: a judgment)"
         } else if *kind == "QUEUED" && ply == SEARCH_PLIES {
             "INSIDE THE SEARCH (at the leaf, but a pure frame: resolved without a ply)"
-        } else if ply <= SEARCH_PLIES { "INSIDE THE SEARCH" } else { "beyond the search" };
+        } else if ply <= SEARCH_PLIES { "INSIDE THE SEARCH" } else if r2.is_some() {
+            "beyond the search (offered at a leaf, never applied)"
+        } else { "beyond the search" };
         let what = match *kind {
             "QUEUED" => format!("a queued coin-path choice is offered after {ply} move(s)"),
             "CUT" => format!("a finite heads cut is recorded by the move chosen at ply {ply}"),
-            _ => format!("the hit back of an attack's return damage takes Weakness (P2) in the move chosen at ply {ply}"),
+            "RETURN" => format!("the hit back of an attack's return damage takes Weakness (P2) in the move chosen at ply {ply}"),
+            "WILL" => format!("Will's heads reaches a Confused attacker's or a block coin's attack (round 2) in the move chosen at ply {ply}"),
+            "VS" => format!("Victory Star pauses after a block coin (round 2) in the move chosen at ply {ply}"),
+            "TRAP" => format!("two Ariados' Trap Territory changes the moves offered or a move's outcome (round 2) in the move chosen at ply {ply}"),
+            "OWN" => format!("a coin Ability on the attacker's own side splits its attack (round 2) in the move chosen at ply {ply}"),
+            "GUTS" => format!("Guts on the attacker's own side splits its attack (round 2) in the move chosen at ply {ply}"),
+            "PLAIN" => format!("a coin Ability splits an attack's plain damage choice (round 2) in the move chosen at ply {ply}"),
+            _ => format!("Perish Body's coin is built by an attack's plain damage choice (round 2) in the move chosen at ply {ply}"),
         };
         println!("{label}{kind}: {what}: {inside}");
         for (path, detail) in by_ply.values().next().unwrap() {
             println!("    after [{}] {detail}", path.join(" ; "));
         }
     }
+    if let Some(d) = found.trapleaf {
+        println!("{label}TRAPLEAF: a leaf of the search at depth {d} scores the mover's Active facing two or more Ariados (its Retreat \
+            Cost, read by the leaf's value, is one more than before; no counter sees it: a judgment)");
+    }
     if found.by_kind.is_empty() {
-        println!("{label}NOT FOUND: no queued coin-path choice, finite heads cut or hit back taking Weakness within {SEARCH_PLIES} plies ({SEEDS} chance samples per move; not a proof of absence)");
+        println!("{label}NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, \
+            Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within {SEARCH_PLIES} plies ({SEEDS} chance \
+            samples per move; not a proof of absence)");
     }
     if found.truncated {
         println!("{label}(the search stopped at {} nodes)", limit());
@@ -412,13 +443,129 @@ fn report(found: &Found, label: &str) -> Least {
     least
 }
 
-fn probe_state(state: &State, label: &str) -> Least {
+/// The RESULT_R2 line's fields.
+fn r2_fields(least: &Least) -> String {
+    let show = |p: Option<usize>| p.map_or("none".to_string(), |p| p.to_string());
+    let mut out: Vec<String> = R2_KINDS.iter().zip(least.r2).map(|((_, f), p)| format!("{f}={}", show(p))).collect();
+    out.push(format!("trapleaf={}", show(least.trapleaf)));
+    out.join(" ")
+}
+
+/// `last`: the attack each seat chose last (r2_tick's key), for a probe started inside a turn.
+fn probe_state(state: &State, label: &str, last: &Last) -> Least {
     let (actor, offered) = state.generate_possible_actions();
     println!("{label}mover seat {actor}, turn {}; Active {}; {} offered moves", state.turn_count,
         state.maybe_get_active(actor).map_or("-".to_string(), |p| p.get_name()), offered.len());
     let mut found = Found::default();
+    let _ = last; // (tests first: no round-2 detection yet)
     explore(state, actor, 0, true, &mut vec![], &mut found);
     report(&found, label)
+}
+
+/// No attack chosen yet in the probed turn.
+const NO_LAST: Last = [None, None];
+
+// The self-test's round-2 boards (Oct 9): these helpers are counter_probe_readiness.rs's (:34-45, :52-96, :123-157), copied.
+fn attack_named(state: &State, title: &str) -> Action {
+    state
+        .generate_possible_actions()
+        .1
+        .into_iter()
+        .find(|a| matches!(&a.action, SimpleAction::Attack(x) if x.title == title))
+        .unwrap_or_else(|| panic!("{title} is not offered"))
+}
+
+fn offered(state: &State, pick: impl Fn(&SimpleAction) -> bool) -> Option<Action> {
+    state.generate_possible_actions().1.into_iter().find(|a| pick(&a.action))
+}
+
+/// Player 1 uses `title` from `attacker` into `defenders` (with `hand` as its hand), choosing the copied attack `copy` when
+/// one is offered and the largest discard whenever one is offered, until a frame of damage choices is offered to it with no
+/// discard beside it; seeds are tried until one offers it. Returns that state and the last attack player 1 chose.
+fn damage_frame(
+    attacker: &[PlayedCard],
+    defenders: &[PlayedCard],
+    hand: &[CardId],
+    title: &str,
+    copy: Option<&str>,
+) -> (State, Attack) {
+    for seed in 0..40u64 {
+        let mut game = get_initialized_game_with_board(seed, 1, 5, defenders.to_vec(), attacker.to_vec());
+        let mut state = game.get_state_clone();
+        state.current_player = 1;
+        state.hands[1] = hand.iter().map(|id| get_card_by_enum(*id)).collect();
+        game.set_state(state.clone());
+        let attack = attack_named(&state, title);
+        let SimpleAction::Attack(mut last) = attack.action.clone() else { unreachable!() };
+        game.apply_action(&attack);
+        for _ in 0..5 {
+            let state = game.get_state_clone();
+            let (actor, choices) = state.generate_possible_actions();
+            if actor != 1 || state.move_generation_stack.is_empty() {
+                break;
+            }
+            if let Some(copied) = choices.iter().find(|a| matches!(&a.action, SimpleAction::Attack(x) if Some(x.title.as_str()) == copy)) {
+                let SimpleAction::Attack(x) = &copied.action else { unreachable!() };
+                last = x.clone();
+                game.apply_action(&copied.clone());
+                continue;
+            }
+            let size = |a: &&Action| match &a.action {
+                SimpleAction::DiscardOwnBenchedThenDamage { in_play_idxs, .. } => in_play_idxs.len(),
+                SimpleAction::DiscardOwnCardsForAttackDamage { cards, .. } => cards.len(),
+                _ => 0,
+            };
+            if let Some(discard) = choices.iter().filter(|a| size(a) > 0).max_by_key(size) {
+                game.apply_action(&discard.clone());
+                continue;
+            }
+            if choices.iter().any(|a| matches!(a.action, SimpleAction::ApplyDamage { .. } | SimpleAction::ApplyQueuedAttackDamage { .. })) {
+                return (state, last);
+            }
+            game.apply_action(&choices[0].clone());
+        }
+    }
+    panic!("{title}: no damage choices offered in 40 seeds");
+}
+
+fn mon(id: CardId) -> PlayedCard {
+    PlayedCard::from_id(id)
+}
+
+/// A Pokemon with `hp` HP and no damage.
+fn sturdy(id: CardId, hp: u32) -> PlayedCard {
+    PlayedCard::new(get_card_by_enum(id), 0, hp, vec![], false, vec![])
+}
+
+/// Player 0 plays Will (A4 156) from its hand.
+fn play_will(game: &mut Game) {
+    let will = get_card_by_enum(CardId::A4156Will);
+    let Card::Trainer(trainer_card) = will.clone() else { unreachable!() };
+    let mut state = game.get_state_clone();
+    state.hands[0].push(will);
+    game.set_state(state);
+    game.apply_action(&Action { actor: 0, action: SimpleAction::Play { trainer_card }, is_stack: false });
+}
+
+/// Team Rocket's Moltres ex (Heat Charged: flip 3 coins) for player 0 against a 400-HP Mega Latios ex, with the gates asked.
+fn moltres_game(seed: u64, confused: bool, block: bool, will: bool, victini: bool) -> Game<'static> {
+    let mut attacker = PlayedCard::from_id(CardId::B4a007TeamRocketsMoltresEx).with_energy(vec![EnergyType::Fire]);
+    if confused {
+        attacker = attacker.with_status_condition(StatusCondition::Confused);
+    }
+    if block {
+        attacker.add_effect(CardEffect::CoinFlipToBlockAttack, 1);
+    }
+    let bench = mon(if victini { CardId::B3025Victini } else { CardId::A1001Bulbasaur });
+    let mut game = get_initialized_game_with_board(seed, 0, 3, vec![attacker, bench], vec![sturdy(CardId::PB024MegaLatiosEx, 400)]);
+    if will {
+        play_will(&mut game);
+    }
+    game
+}
+
+fn moltres_board(seed: u64, confused: bool, block: bool, will: bool, victini: bool) -> State {
+    moltres_game(seed, confused, block, will, victini).get_state_clone()
 }
 
 fn selftest() {
@@ -430,11 +577,20 @@ fn selftest() {
         failures.set(failures.get() + usize::from(!ok));
         if ok { "ok  " } else { "FAIL" }
     };
-    // (queued, cut, return)
-    let check = |name: &str, got: Least, want: (Option<usize>, Option<usize>, Option<usize>)| {
-        let mark = tally((got.queued, got.cut, got.ret) == want);
-        println!("{mark} {name}: queued {:?} (free {}), cut {:?}, return {:?}", got.queued, got.queued_free, got.cut, got.ret);
+    // (queued, cut, return), and round 2's fields (Oct 9): the (kind, ply) of each that must be found and the trapleaf depth;
+    // every other round-2 field must read none.
+    let check_r2 = |name: &str, got: Least, want: (Option<usize>, Option<usize>, Option<usize>), r2: &[(&str, usize)], trapleaf: Option<usize>| {
+        let mut wanted = Least { queued: want.0, cut: want.1, queued_free: false, ret: want.2, r2: [None; 7], trapleaf };
+        for (kind, ply) in r2 {
+            wanted.r2[R2_KINDS.iter().position(|(k, _)| k == kind).expect("a round-2 kind")] = Some(*ply);
+        }
+        let ok = (got.queued, got.cut, got.ret) == want && got.r2 == wanted.r2 && got.trapleaf == trapleaf;
+        let mark = tally(ok);
+        println!("{mark} {name}: queued {:?} (free {}), cut {:?}, return {:?}; {}{}", got.queued, got.queued_free, got.cut, got.ret,
+            r2_fields(&got), if ok { String::new() } else { format!(" (wanted queued {:?}, cut {:?}, return {:?}; {})", want.0, want.1, want.2, r2_fields(&wanted)) });
     };
+    // Boards A-N: every round-2 field none.
+    let check = |name: &str, got: Least, want: (Option<usize>, Option<usize>, Option<usize>)| check_r2(name, got, want, &[], None);
     let frame = |name: &str, ok: bool| println!("{} {name}", tally(ok));
     let board = |attacker: PlayedCard, defenders: Vec<PlayedCard>| {
         let mut game = get_initialized_game_with_board(5, 1, 5, defenders, vec![attacker]);
@@ -445,26 +601,26 @@ fn selftest() {
     };
     // A: Fire Claws into Bastiodon's Active: the attack itself records the finite cut, chosen at ply 1; nothing is queued.
     let claws = PlayedCard::from_id(CardId::A1034Charmeleon).with_energy(vec![EnergyType::Fire; 3]);
-    check("Fire Claws into Bastiodon", probe_state(&board(claws.clone(), vec![mon(CardId::A2114Bastiodon)]), "  A "), (None, Some(1), None));
+    check("Fire Claws into Bastiodon", probe_state(&board(claws.clone(), vec![mon(CardId::A2114Bastiodon)]), "  A ", &NO_LAST), (None, Some(1), None));
     // B: Tongue Whip with Bastiodon on the Bench: the attack (ply 1) offers the queued choice at a state of depth 1, and choosing it
     // (ply 2) records the cut. A Togekiss on the Bench queues the same way and records no finite cut.
     let whip = || PlayedCard::from_id(CardId::B1044Heatmor).with_energy(vec![EnergyType::Fire]);
-    let b = probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur), mon(CardId::A2114Bastiodon)]), "  B ");
+    let b = probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur), mon(CardId::A2114Bastiodon)]), "  B ", &NO_LAST);
     check("Tongue Whip, Bastiodon on the Bench", b, (Some(1), Some(2), None));
     frame("B: the frame has a plain ApplyDamage beside the queued choice: a mixed frame", !b.queued_free);
     check("Tongue Whip, Togekiss on the Bench",
-        probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur), mon(CardId::A4080Togekiss)]), "  C "), (Some(1), None, None));
+        probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur), mon(CardId::A4080Togekiss)]), "  C ", &NO_LAST), (Some(1), None, None));
     // F: a lone Togekiss on the Bench: every choice of the frame is queued, a pure frame the bots resolve without a ply.
-    let f = probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A4080Togekiss)]), "  F ");
+    let f = probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A4080Togekiss)]), "  F ", &NO_LAST);
     check("Tongue Whip, a lone Togekiss on the Bench (a pure frame)", f, (Some(1), None, None));
     frame("F: every choice is a queued one: a pure frame", f.queued_free);
     // G (v2): a lone Bastiodon on the Bench: a pure frame, whose queued choice costs no ply, so its finite cut is at ply 1 (v1: 2).
-    let g = probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A2114Bastiodon)]), "  G ");
+    let g = probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A2114Bastiodon)]), "  G ", &NO_LAST);
     check("Tongue Whip, a lone Bastiodon on the Bench (a pure frame: the cut costs no ply)", g, (Some(1), Some(1), None));
     frame("G: every choice is a queued one: a pure frame", g.queued_free);
     // D: nothing to find without a coin Pokemon.
     check("Tongue Whip, no coin Pokemon",
-        probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur)]), "  D "), (None, None, None));
+        probe_state(&board(whip(), vec![mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur)]), "  D ", &NO_LAST), (None, None, None));
     // E: the queued choice already offered at the tick (the state after the attack): depth 0, the S3 pattern.
     let mut game = get_initialized_game_with_board(5, 1, 5,
         vec![mon(CardId::A1001Bulbasaur), mon(CardId::A1001Bulbasaur), mon(CardId::A4080Togekiss)], vec![whip()]);
@@ -474,7 +630,7 @@ fn selftest() {
     let attack = state.generate_possible_actions().1.into_iter()
         .find(|a| matches!(&a.action, SimpleAction::Attack(x) if x.title == "Tongue Whip")).expect("Tongue Whip");
     game.apply_action(&attack);
-    check("the state after Tongue Whip (the choice is on the table)", probe_state(&game.get_state_clone(), "  E "), (Some(0), None, None));
+    check("the state after Tongue Whip (the choice is on the table)", probe_state(&game.get_state_clone(), "  E ", &NO_LAST), (Some(0), None, None));
 
     // P2 (Oct 9): RETURN, the hit back of an attack's return damage taking Weakness, found in the search. Player 0 attacks from
     // its Active into player 1's Mega Sableye ex (Darkness) armed as Cursed Jewel leaves it (40 back), as
@@ -491,26 +647,141 @@ fn selftest() {
     let houndstone = || with(CardId::B3a024Houndstone, 3, EnergyType::Psychic);
     // H: Spooky Shot (70) from Houndstone (Psychic, weak Darkness): the attack itself, chosen at ply 1, runs the hit back.
     check("Spooky Shot into an armed Mega Sableye ex (Houndstone weak to it)",
-        probe_state(&duel(vec![houndstone()], armed(40)), "  H "), (None, None, Some(1)));
+        probe_state(&duel(vec![houndstone()], armed(40)), "  H ", &NO_LAST), (None, None, Some(1)));
     // I: Espeon's Hypnoblast (40), one Energy.
     check("Hypnoblast into an armed Mega Sableye ex (Espeon weak to it)",
-        probe_state(&duel(vec![with(CardId::B3a020Espeon, 1, EnergyType::Psychic)], armed(40)), "  I "), (None, None, Some(1)));
+        probe_state(&duel(vec![with(CardId::B3a020Espeon, 1, EnergyType::Psychic)], armed(40)), "  I ", &NO_LAST), (None, None, Some(1)));
     // J: Psy Turbo holds the hit back until its Attach is chosen (ply 2); the ResolveAttackRetaliation after it is forced (free).
     check("Psy Turbo into an armed Mega Sableye ex, Ralts on the Bench (the held-back hit back)",
-        probe_state(&duel(vec![with(CardId::B2065Gardevoir, 2, EnergyType::Psychic), mon(CardId::A1130Ralts)], armed(40)), "  J "),
+        probe_state(&duel(vec![with(CardId::B2065Gardevoir, 2, EnergyType::Psychic), mon(CardId::A1130Ralts)], armed(40)), "  J ", &NO_LAST),
         (None, None, Some(2)));
     // K: Snorlax (weak Fighting): the hit back lands flat, as before P2.
     check("Rollout into an armed Mega Sableye ex (Snorlax not weak to it)",
-        probe_state(&duel(vec![with(CardId::A1211Snorlax, 4, EnergyType::Colorless)], armed(40)), "  K "), (None, None, None));
+        probe_state(&duel(vec![with(CardId::A1211Snorlax, 4, EnergyType::Colorless)], armed(40)), "  K ", &NO_LAST), (None, None, None));
     // L: Houndstone at 30 HP is Knocked Out by the 40 either way: the same board.
     check("Spooky Shot into an armed Mega Sableye ex, Houndstone at 30 HP (Knocked Out either way)",
-        probe_state(&duel(vec![houndstone().with_remaining_hp(30)], armed(40)), "  L "), (None, None, None));
+        probe_state(&duel(vec![houndstone().with_remaining_hp(30)], armed(40)), "  L ", &NO_LAST), (None, None, None));
     // M: at 50 HP the 40 leaves it 10 and the 60 Knocks it Out.
     check("Spooky Shot into an armed Mega Sableye ex, Houndstone at 50 HP",
-        probe_state(&duel(vec![houndstone().with_remaining_hp(50)], armed(40)), "  M "), (None, None, Some(1)));
+        probe_state(&duel(vec![houndstone().with_remaining_hp(50)], armed(40)), "  M ", &NO_LAST), (None, None, Some(1)));
     // N: nothing armed: no hit back.
     check("Spooky Shot into an unarmed Mega Sableye ex",
-        probe_state(&duel(vec![houndstone()], mon(CardId::B3b041MegaSableyeEx)), "  N "), (None, None, None));
+        probe_state(&duel(vec![houndstone()], mon(CardId::B3b041MegaSableyeEx)), "  N ", &NO_LAST), (None, None, None));
+    // Round 2 (Oct 9): the round-2 package's conditions, on counter_probe_readiness.rs's boards (its line numbers cited; helpers
+    // copied from it). Each lists only the round-2 fields it must find; every other one, QUEUED, CUT and RETURN included, none.
+    let none = (None, None, None);
+    // The gate coins: Team Rocket's Moltres ex's Heat Charged (3 coins) for player 0 against a 400-HP Mega Latios ex (:270-285). The
+    // probe's root move is the Attack CPR verified, so the chosen counters read ply 1.
+    for (label, confused, block, will, victini, want) in [
+        ("Confused, Will pending", true, false, true, false, vec![("WILL", 1)]),
+        ("Confused, Will pending, Victini (WILL, not VS: no block coin)", true, false, true, true, vec![("WILL", 1)]),
+        ("Confused, no Will", true, false, false, false, vec![]),
+        ("Confused, no Will, Victini", true, false, false, true, vec![]),
+        ("a block coin, Will pending", false, true, true, false, vec![("WILL", 1)]),
+        ("a block coin, Will pending, Confused", true, true, true, false, vec![("WILL", 1)]),
+        ("a block coin, no Will", false, true, false, false, vec![]),
+        ("a block coin, no Will, Victini", false, true, false, true, vec![("VS", 1)]),
+        ("a block coin, Will pending, Victini", false, true, true, true, vec![("WILL", 1), ("VS", 1)]),
+        ("no gate coin, Victini", false, false, false, true, vec![]),
+        ("no gate coin, Will pending", false, false, true, false, vec![]),
+    ] {
+        check_r2(&format!("Heat Charged, {label}"), probe_state(&moltres_board(0, confused, block, will, victini), "  O ", &NO_LAST),
+            none, &want, None);
+    }
+    // The Victory Star pause after a block coin's heads (:287-294), probed at the pause: Keep or Reroll offered at the root.
+    let paused = (0..40u64).find_map(|seed| {
+        let mut game = moltres_game(seed, false, true, false, true);
+        let attack = attack_named(&game.get_state_clone(), "Heat Charged");
+        game.apply_action(&attack);
+        let after = game.get_state_clone();
+        after.pending_attack_coin_choice.is_some().then_some(after)
+    }).expect("a block coin heads in 40 seeds");
+    check_r2("the Victory Star choice after a block coin's heads", probe_state(&paused, "  P ", &NO_LAST), none, &[("VS", 1)], None);
+    // Trap Territory, the moves offered (:297-311): player 0's Active Bulbasaur against player 1's Ariados. With two, the root's
+    // offer changes (2 Energy: Retreat is offered only on the old count) or Retreat's outcome does (4 Energy: 3 Grass discarded,
+    // not 2; brief pitfall 3); either way the leaf at the turn boundary (depth 1) scores the Active facing them. One: nothing.
+    for (label, energy, ariados, want, leaf) in [
+        ("2 Energy, two Ariados", 2, 2, vec![("TRAP", 1)], Some(1)),
+        ("4 Energy, two Ariados", 4, 2, vec![("TRAP", 1)], Some(1)),
+        ("2 Energy, one Ariados", 2, 1, vec![], None),
+    ] {
+        let mut opponent = vec![mon(CardId::A1001Bulbasaur)];
+        opponent.extend((0..ariados).map(|_| mon(CardId::B1a006Ariados)));
+        let state = get_test_game_with_board(
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur).with_energy(vec![EnergyType::Grass; energy]), mon(CardId::A1053Squirtle)], opponent)
+            .get_state_clone();
+        check_r2(&format!("Bulbasaur against Ariados, {label}"), probe_state(&state, "  T ", &NO_LAST), none, &want, leaf);
+    }
+    // The outcome (:312-317): Whimsicott ex's Grass Knot (160 with two Ariados, 130 with one) into Charizard ex. The holder's own
+    // leaves don't read Trap Territory (its Active faces none): no trapleaf.
+    for (ariados, want) in [(2, vec![("TRAP", 1)]), (1, vec![])] {
+        let mut attacker = vec![PlayedCard::from_id(CardId::B1016WhimsicottEx).with_energy(vec![EnergyType::Grass; 2])];
+        attacker.extend((0..ariados).map(|_| mon(CardId::B1a006Ariados)));
+        let state = get_test_game_with_board(attacker, vec![mon(CardId::A1036CharizardEx)]).get_state_clone();
+        check_r2(&format!("Grass Knot into Charizard ex, {ariados} Ariados"), probe_state(&state, "  K ", &NO_LAST), none, &want, None);
+    }
+    // An attack's own outcome (:249-265): Whiscash's Earthquake (10 to each of its own Benched Pokemon).
+    let whiscash = || PlayedCard::from_id(CardId::A3b039Whiscash).with_energy(vec![EnergyType::Fighting; 4]);
+    for (label, bench, defender, want) in [
+        ("its own Benched Meowth", mon(CardId::B2124Meowth), mon(CardId::A1036CharizardEx), vec![("OWN", 1)]),
+        ("its own Benched Bulbasaur", mon(CardId::A1001Bulbasaur), mon(CardId::A1036CharizardEx), vec![]),
+        ("its own Benched Ursaluna at 10 HP", mon(CardId::B3b058Ursaluna).with_remaining_hp(10), mon(CardId::A1036CharizardEx),
+            vec![("GUTS", 1)]),
+        ("its own Benched Ursaluna at 160 HP", mon(CardId::B3b058Ursaluna), mon(CardId::A1036CharizardEx), vec![]),
+        ("into the opponent's Active Ursaluna at 10 HP (off the gate)", mon(CardId::A1001Bulbasaur),
+            mon(CardId::B3b058Ursaluna).with_remaining_hp(10), vec![]),
+    ] {
+        let state = get_initialized_game_with_board(0, 0, 3, vec![whiscash(), bench], vec![defender]).get_state_clone();
+        check_r2(&format!("Earthquake, {label}"), probe_state(&state, "  Q ", &NO_LAST), none, &want, None);
+    }
+    // The plain-hit coins, the frame state (the damage choice on the table; r2_tick's key, the attack chosen last, passed in):
+    // Zapdos's Raging Thunder (:214-223), Ditto's copied Chase Order (:224-233), Vespiquen ex's Chase Order with the discard into
+    // an 80-HP Galarian Cursola, which it Knocks Out (:235-247).
+    let at_frame = |(state, last): (State, Attack), label: &str| {
+        let turn = state.turn_count;
+        probe_state(&state, label, &[None, Some((turn, last))])
+    };
+    let bulbasaur = || mon(CardId::A1001Bulbasaur);
+    let zapdos = vec![PlayedCard::from_id(CardId::A1103Zapdos).with_energy(vec![EnergyType::Lightning; 3]), bulbasaur()];
+    for (defender, want) in [(CardId::B2124Meowth, vec![("PLAIN", 1)]), (CardId::A1001Bulbasaur, vec![])] {
+        check_r2(&format!("Raging Thunder into an Active {defender:?}, the frame state"),
+            at_frame(damage_frame(&zapdos, &[mon(defender)], &[], "Raging Thunder", None), "  Z "), none, &want, None);
+    }
+    let ditto = vec![PlayedCard::from_id(CardId::A1205Ditto).with_energy(vec![EnergyType::Grass; 2]), bulbasaur()];
+    for (defender, want) in [(CardId::B2124Meowth, vec![("PLAIN", 1)]), (CardId::A1001Bulbasaur, vec![])] {
+        check_r2(&format!("a copied Chase Order (Copy Anything) into an Active {defender:?}, the frame state"),
+            at_frame(damage_frame(&ditto, &[mon(defender), mon(CardId::B4011VespiquenEx)], &[], "Copy Anything", Some("Chase Order")), "  Y "),
+            none, &want, None);
+    }
+    let vespiquen = vec![PlayedCard::from_id(CardId::B4011VespiquenEx).with_energy(vec![EnergyType::Grass; 2]), bulbasaur(), bulbasaur()];
+    for (cursola, want) in [(mon(CardId::A4a035GalarianCursola), vec![("PERISH", 1)]), (sturdy(CardId::A4a035GalarianCursola, 400), vec![])] {
+        let hp = cursola.get_remaining_hp();
+        check_r2(&format!("Chase Order with the discard into an Active Galarian Cursola, {hp} HP, the frame state"),
+            at_frame(damage_frame(&vespiquen, &[cursola, mon(CardId::A1033Charmander)], &[], "Chase Order", None), "  V "), none, &want, None);
+    }
+    // One or more plies deep (the brief's predictions). Before the attack, as damage_frame builds it (player 1, an empty hand):
+    // Raging Thunder is ply 1 and its single damage choice, an ordinary costed frame, ply 2.
+    let before_attack = |attacker: &[PlayedCard], defenders: &[PlayedCard]| {
+        let mut state = get_initialized_game_with_board(0, 1, 5, defenders.to_vec(), attacker.to_vec()).get_state_clone();
+        state.current_player = 1;
+        state.hands[1] = vec![];
+        state
+    };
+    check_r2("Raging Thunder into an Active Meowth, before the attack",
+        probe_state(&before_attack(&zapdos, &[mon(CardId::B2124Meowth)]), "  Z2 ", &NO_LAST), none, &[("PLAIN", 2)], None);
+    // Chase Order: the Attack 1; the frame {ApplyDamage 70, discard, discard}: the discard 2 (the 70 doesn't Knock Out the 80-HP
+    // Cursola); the 140 ApplyDamage 3.
+    check_r2("Chase Order into an Active 80-HP Galarian Cursola, before the attack",
+        probe_state(&before_attack(&vespiquen, &[mon(CardId::A4a035GalarianCursola), mon(CardId::A1033Charmander)]), "  V2 ", &NO_LAST),
+        none, &[("PERISH", 3)], None);
+    // Will in hand, not played (Play Will 1, Heat Charged 2), on the Confused Moltres; Victini in hand (Place 1, the attack 2) with
+    // the block coin. Without the card in hand they are the boards "Confused, no Will" and "a block coin, no Will" above.
+    let mut state = moltres_board(0, true, false, false, false);
+    state.hands[0].push(get_card_by_enum(CardId::A4156Will));
+    check_r2("Heat Charged, Confused, Will in hand", probe_state(&state, "  W2 ", &NO_LAST), none, &[("WILL", 2)], None);
+    let mut state = moltres_board(0, false, true, false, false);
+    state.hands[0].push(get_card_by_enum(CardId::B3025Victini));
+    check_r2("Heat Charged, a block coin, Victini in hand", probe_state(&state, "  S2 ", &NO_LAST), none, &[("VS", 2)], None);
     println!("selftest: {} checks and {} frame checks, {} failures", checks.get() - 3, 3, failures.get());
     assert_eq!(failures.get(), 0, "selftest failures");
 }
@@ -535,13 +806,20 @@ fn main() {
     let (d0, d1) = if first_seat == 0 { (&deck_a, &deck_b) } else { (&deck_b, &deck_a) };
     let code = || parse_player_code(&bot).unwrap();
     let mut game = Game::new(create_players(d0.clone(), d1.clone(), vec![code(), code()]), seed);
+    // The attack each seat chose last, with its turn (the scan's r2_last: any chosen Attack, a copied one included).
+    let mut last: Last = [None, None];
     for _ in 0..tick {
         assert!(!game.is_game_over(), "the game ended before tick {tick}");
-        game.play_tick();
+        let turn = game.get_state_clone().turn_count;
+        let chosen = game.play_tick();
+        if let SimpleAction::Attack(x) = &chosen.action {
+            last[chosen.actor] = Some((turn, x.clone()));
+        }
     }
     println!("deal {i}, tick {tick}:");
-    let least = probe_state(&game.get_state_clone(), "  ");
+    let least = probe_state(&game.get_state_clone(), "  ", &last);
     let show = |p: Option<usize>| p.map_or("none".to_string(), |p| p.to_string());
     println!("RESULT queued={} cut={} free={}", show(least.queued), show(least.cut), least.queued_free);
     println!("RESULT_P2 ret={}", show(least.ret));
+    println!("RESULT_R2 {}", r2_fields(&least));
 }

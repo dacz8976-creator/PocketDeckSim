@@ -1,0 +1,169 @@
+  A mover seat 1, turn 5; Active Charmeleon; 5 offered moves
+  A CUT: a finite heads cut is recorded by the move chosen at ply 1: INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Fire, Colorless, Colorless], title: "Fire Claws", fix...] the attack's own damage, finite cut at slot(s) [0]
+ok   Fire Claws into Bastiodon: queued None (free false), cut Some(1), return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  B mover seat 1, turn 5; Active Heatmor; 6 offered moves
+  B CUT: a finite heads cut is recorded by the move chosen at ply 2: INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect:... ; ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip...] the queued choice's finite cut at slot(s) [2]
+  B QUEUED: a queued coin-path choice is offered after 1 move(s): INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect:...] offers ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip... (a mixed frame: an ordinary move)
+ok   Tongue Whip, Bastiodon on the Bench: queued Some(1) (free false), cut Some(2), return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+ok   B: the frame has a plain ApplyDamage beside the queued choice: a mixed frame
+  C mover seat 1, turn 5; Active Heatmor; 6 offered moves
+  C QUEUED: a queued coin-path choice is offered after 1 move(s): INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect:...] offers ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip... (a mixed frame: an ordinary move)
+ok   Tongue Whip, Togekiss on the Bench: queued Some(1) (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  F mover seat 1, turn 5; Active Heatmor; 6 offered moves
+  F QUEUED: a queued coin-path choice is offered after 1 move(s): INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect:...] offers ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip... (a pure frame: the bots resolve it without spending a ply)
+ok   Tongue Whip, a lone Togekiss on the Bench (a pure frame): queued Some(1) (free true), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+ok   F: every choice is a queued one: a pure frame
+  G mover seat 1, turn 5; Active Heatmor; 6 offered moves
+  G CUT: a finite heads cut is recorded by the move chosen at ply 1: INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect:... ; ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip...] the queued choice's finite cut at slot(s) [1]
+  G QUEUED: a queued coin-path choice is offered after 1 move(s): INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Fire], title: "Tongue Whip", fixed_damage: 0, effect:...] offers ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip... (a pure frame: the bots resolve it without spending a ply)
+ok   Tongue Whip, a lone Bastiodon on the Bench (a pure frame: the cut costs no ply): queued Some(1) (free true), cut Some(1), return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+ok   G: every choice is a queued one: a pure frame
+  D mover seat 1, turn 5; Active Heatmor; 6 offered moves
+  D NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Tongue Whip, no coin Pokemon: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  E mover seat 1, turn 5; Active Heatmor; 2 offered moves
+  E QUEUED: a queued coin-path choice is offered after 0 move(s): INSIDE THE SEARCH
+    after [] offers ApplyQueuedAttackDamage { attack: Attack { energy_required: [Fire], title: "Tongue Whip... (a mixed frame: an ordinary move)
+ok   the state after Tongue Whip (the choice is on the table): queued Some(0) (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  H mover seat 0, turn 5; Active Houndstone; 2 offered moves
+  H RETURN: the hit back of an attack's return damage takes Weakness (P2) in the move chosen at ply 1: INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Psychic, Colorless, Colorless], title: "Spooky Shot",...] the hit back of an attack's return damage takes the Attacking Pokemon's Weakness
+ok   Spooky Shot into an armed Mega Sableye ex (Houndstone weak to it): queued None (free false), cut None, return Some(1); will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  I mover seat 0, turn 5; Active Espeon; 2 offered moves
+  I RETURN: the hit back of an attack's return damage takes Weakness (P2) in the move chosen at ply 1: INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Psychic], title: "Hypnoblast", fixed_damage: 40, effe...] the hit back of an attack's return damage takes the Attacking Pokemon's Weakness
+ok   Hypnoblast into an armed Mega Sableye ex (Espeon weak to it): queued None (free false), cut None, return Some(1); will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  J mover seat 0, turn 5; Active Gardevoir; 3 offered moves
+  J RETURN: the hit back of an attack's return damage takes Weakness (P2) in the move chosen at ply 2: INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Psychic, Psychic], title: "Psy Turbo", fixed_damage: ... ; Attach { attachments: [(1, Psychic, 1), (1, Psychic, 1)], is_turn_energy: false } ; (free) ResolveAttackRetaliation { attacking_ref: (0, 0), perish_body_heads: false, point_denia...] the hit back of an attack's return damage takes the Attacking Pokemon's Weakness
+ok   Psy Turbo into an armed Mega Sableye ex, Ralts on the Bench (the held-back hit back): queued None (free false), cut None, return Some(2); will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  K mover seat 0, turn 5; Active Snorlax; 2 offered moves
+  K NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Rollout into an armed Mega Sableye ex (Snorlax not weak to it): queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  L mover seat 0, turn 5; Active Houndstone; 2 offered moves
+  L NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Spooky Shot into an armed Mega Sableye ex, Houndstone at 30 HP (Knocked Out either way): queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  M mover seat 0, turn 5; Active Houndstone; 2 offered moves
+  M RETURN: the hit back of an attack's return damage takes Weakness (P2) in the move chosen at ply 1: INSIDE THE SEARCH
+    after [Attack(Attack { energy_required: [Psychic, Colorless, Colorless], title: "Spooky Shot",...] the hit back of an attack's return damage takes the Attacking Pokemon's Weakness
+ok   Spooky Shot into an armed Mega Sableye ex, Houndstone at 50 HP: queued None (free false), cut None, return Some(1); will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  N mover seat 0, turn 5; Active Houndstone; 2 offered moves
+  N NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Spooky Shot into an unarmed Mega Sableye ex: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  O mover seat 0, turn 3; Active Team Rocket's Moltres ex; 2 offered moves
+  O NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Heat Charged, Confused, Will pending: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=1 vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none)
+  O mover seat 0, turn 3; Active Team Rocket's Moltres ex; 2 offered moves
+  O NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Heat Charged, Confused, Will pending, Victini (WILL, not VS: no block coin): queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=1 vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none)
+  O mover seat 0, turn 3; Active Team Rocket's Moltres ex; 2 offered moves
+  O NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Heat Charged, Confused, no Will: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  O mover seat 0, turn 3; Active Team Rocket's Moltres ex; 2 offered moves
+  O NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Heat Charged, Confused, no Will, Victini: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  O mover seat 0, turn 3; Active Team Rocket's Moltres ex; 2 offered moves
+  O NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Heat Charged, a block coin, Will pending: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=1 vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none)
+  O mover seat 0, turn 3; Active Team Rocket's Moltres ex; 2 offered moves
+  O NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Heat Charged, a block coin, Will pending, Confused: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=1 vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none)
+  O mover seat 0, turn 3; Active Team Rocket's Moltres ex; 2 offered moves
+  O NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Heat Charged, a block coin, no Will: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  O mover seat 0, turn 3; Active Team Rocket's Moltres ex; 2 offered moves
+  O NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Heat Charged, a block coin, no Will, Victini: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=none vs=1 trap=none own=none guts=none plain=none perish=none trapleaf=none)
+  O mover seat 0, turn 3; Active Team Rocket's Moltres ex; 2 offered moves
+  O NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Heat Charged, a block coin, Will pending, Victini: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=1 vs=1 trap=none own=none guts=none plain=none perish=none trapleaf=none)
+  O mover seat 0, turn 3; Active Team Rocket's Moltres ex; 2 offered moves
+  O NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Heat Charged, no gate coin, Victini: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  O mover seat 0, turn 3; Active Team Rocket's Moltres ex; 2 offered moves
+  O NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Heat Charged, no gate coin, Will pending: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  P mover seat 0, turn 3; Active Team Rocket's Moltres ex; 2 offered moves
+  P NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL the Victory Star choice after a block coin's heads: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=none vs=1 trap=none own=none guts=none plain=none perish=none trapleaf=none)
+  T mover seat 0, turn 3; Active Bulbasaur; 2 offered moves
+  T NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Bulbasaur against Ariados, 2 Energy, two Ariados: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=none vs=none trap=1 own=none guts=none plain=none perish=none trapleaf=1)
+  T mover seat 0, turn 3; Active Bulbasaur; 3 offered moves
+  T NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Bulbasaur against Ariados, 4 Energy, two Ariados: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=none vs=none trap=1 own=none guts=none plain=none perish=none trapleaf=1)
+  T mover seat 0, turn 3; Active Bulbasaur; 3 offered moves
+  T NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Bulbasaur against Ariados, 2 Energy, one Ariados: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  K mover seat 0, turn 3; Active Whimsicott ex; 4 offered moves
+  K NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Grass Knot into Charizard ex, 2 Ariados: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=none vs=none trap=1 own=none guts=none plain=none perish=none trapleaf=none)
+  K mover seat 0, turn 3; Active Whimsicott ex; 3 offered moves
+  K NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Grass Knot into Charizard ex, 1 Ariados: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  Q mover seat 0, turn 3; Active Whiscash; 3 offered moves
+  Q NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Earthquake, its own Benched Meowth: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=none vs=none trap=none own=1 guts=none plain=none perish=none trapleaf=none)
+  Q mover seat 0, turn 3; Active Whiscash; 3 offered moves
+  Q NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Earthquake, its own Benched Bulbasaur: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  Q mover seat 0, turn 3; Active Whiscash; 3 offered moves
+  Q NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Earthquake, its own Benched Ursaluna at 10 HP: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=none vs=none trap=none own=none guts=1 plain=none perish=none trapleaf=none)
+  Q mover seat 0, turn 3; Active Whiscash; 3 offered moves
+  Q NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Earthquake, its own Benched Ursaluna at 160 HP: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  Q mover seat 0, turn 3; Active Whiscash; 3 offered moves
+  Q NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Earthquake, into the opponent's Active Ursaluna at 10 HP (off the gate): queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  Z mover seat 1, turn 5; Active Zapdos; 1 offered moves
+  Z NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Raging Thunder into an Active B2124Meowth, the frame state: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=none vs=none trap=none own=none guts=none plain=1 perish=none trapleaf=none)
+  Z mover seat 1, turn 5; Active Zapdos; 1 offered moves
+  Z NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Raging Thunder into an Active A1001Bulbasaur, the frame state: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  Y mover seat 1, turn 5; Active Ditto; 1 offered moves
+  Y NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL a copied Chase Order (Copy Anything) into an Active B2124Meowth, the frame state: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=none vs=none trap=none own=none guts=none plain=1 perish=none trapleaf=none)
+  Y mover seat 1, turn 5; Active Ditto; 1 offered moves
+  Y NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   a copied Chase Order (Copy Anything) into an Active A1001Bulbasaur, the frame state: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  V mover seat 1, turn 5; Active Vespiquen ex; 1 offered moves
+  V NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Chase Order with the discard into an Active Galarian Cursola, 80 HP, the frame state: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=1 trapleaf=none)
+  V mover seat 1, turn 5; Active Vespiquen ex; 1 offered moves
+  V NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+ok   Chase Order with the discard into an Active Galarian Cursola, 400 HP, the frame state: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none
+  Z2 mover seat 1, turn 5; Active Zapdos; 3 offered moves
+  Z2 NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Raging Thunder into an Active Meowth, before the attack: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=none vs=none trap=none own=none guts=none plain=2 perish=none trapleaf=none)
+  V2 mover seat 1, turn 5; Active Vespiquen ex; 4 offered moves
+  V2 NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Chase Order into an Active 80-HP Galarian Cursola, before the attack: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=3 trapleaf=none)
+  W2 mover seat 0, turn 3; Active Team Rocket's Moltres ex; 3 offered moves
+  W2 NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Heat Charged, Confused, Will in hand: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=2 vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none)
+  S2 mover seat 0, turn 3; Active Team Rocket's Moltres ex; 4 offered moves
+  S2 NOT FOUND: no queued coin-path choice, finite heads cut, hit back taking Weakness or round-2 condition (Will, Victory Star, Trap Territory, own-side coin or Guts, plain-hit coin or Perish Body) within 3 plies (12 chance samples per move; not a proof of absence)
+FAIL Heat Charged, a block coin, Victini in hand: queued None (free false), cut None, return None; will=none vs=none trap=none own=none guts=none plain=none perish=none trapleaf=none (wanted queued None, cut None, return None; will=none vs=2 trap=none own=none guts=none plain=none perish=none trapleaf=none)
+selftest: 46 checks and 3 frame checks, 19 failures
+
+thread 'main' (11470) panicked at examples/coin_probe_v2.rs:786:5:
+assertion `left == right` failed: selftest failures
+  left: 19
+ right: 0
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: coin_probe_v2::selftest
+   5: coin_probe_v2::main
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
