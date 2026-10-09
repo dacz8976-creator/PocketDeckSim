@@ -1,3 +1,7 @@
-2026-10-09T21:57Z combined: 608 of 1120 games (303 kx3), +0 in 17 min, last game 20:37Z; RUNNING (pid 29189)
+Laptop checked at 2026-10-09T22:05Z: 1 run(s) on the watch list, 1 not done.
+2026-10-09T22:05Z combined: 608 of 1120 games (303 kx3), +0 in 8 min, last game 20:37Z (87 min ago); RUNNING (pid 29189)
 
-Written by rl/strength/run_watch.sh on the laptop. If the newest time above is much older than the watcher's interval, the laptop or its WSL is down.
+Times are UTC (the Z). Rewritten every 30 minutes while a run above is not done, and every 6 hours otherwise.
+If the check time is much older than that, the laptop could not report: off or asleep (the run is paused),
+restarted and not signed in yet (the run stopped; nothing runs until sign-in), offline, or the push is failing
+(the reason is in ~/runs/watch_all.log in WSL).
