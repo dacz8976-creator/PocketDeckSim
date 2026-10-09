@@ -1,0 +1,15 @@
+{
+ "worker": "w1",
+ "manifest_sha256": "7dc6b85af3abe9befb904ae52e5fc1f356f68a6c38118b210266ab3a3228ac20",
+ "program_sha256": "9d45a1586615e5bfc77b4f164a23d16551e9f090335b97cecacfcba83b8afaf2",
+ "only_deck": [
+  "t-altaria",
+  "t-suicune"
+ ],
+ "engine_tree": "38af8b0cc4f35fdccc647ed540a56ec8f5e6c1d5",
+ "selfcheck": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1"
+ },
+ "manifest": "/home/user/PocketDeckSim/rl/results/split_runs_2026-10-09/registration/manifest.json",
+ "program": "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct9/split/strength"
+}

@@ -19,7 +19,7 @@ worker played what, with which build, and every gap. The exit status is 0 only f
 
   split_collect.py stamp --manifest M/manifest.json --program PATH --worker NAME --out W [--only-deck NAME]... [--root REPO] [--no-selfcheck]
   split_collect.py merge --manifest M/manifest.json --worker W1 --worker W2 ... --out OUT
-  split_collect.py compare A.jsonl B.jsonl     (game for game, the content without the timing fields; exit 0 when equal)
+  split_collect.py compare A.jsonl B.jsonl     (game for game by key, the content without the timing fields; exit 0 when equal)
 """
 import argparse, hashlib, json, os, subprocess, sys
 
@@ -287,7 +287,15 @@ def main(argv):
             print("usage: split_collect.py compare A.jsonl B.jsonl", file=sys.stderr)
             return 2
         (ga, bad_a), (gb, bad_b) = read_games(rest[0]), read_games(rest[1])
-        diffs = [f"line {i + 1}: {ra[1]['key']} v {rb[1]['key']}" for i, (ra, rb) in enumerate(zip(ga, gb)) if content(ra[1]) != content(rb[1])]
+        # paired by key, not by line: a straight run with several threads writes its games in the order they finish
+        by_a, by_b = {}, {}
+        for side, games in ((by_a, ga), (by_b, gb)):
+            for _, rec in games:
+                side.setdefault(rec["key"], []).append(rec)
+        diffs = [f"{k}: {len(by_a.get(k, []))} and {len(by_b.get(k, []))} record(s)" for k in sorted(set(by_a) | set(by_b))
+                 if len(by_a.get(k, [])) != 1 or len(by_b.get(k, [])) != 1]
+        diffs += [f"{k}: content differs" for k in sorted(set(by_a) & set(by_b))
+                  if len(by_a[k]) == 1 == len(by_b[k]) and content(by_a[k][0]) != content(by_b[k][0])]
         ok = not diffs and not bad_a and not bad_b and len(ga) == len(gb)
         print(f"{len(ga)} and {len(gb)} games; game for game (content, not timing) {'EQUAL' if ok else 'DIFFERENT'}"
               + (f"; {len(diffs)} differ: {diffs[:10]}" if diffs else "") + (f"; unreadable lines {len(bad_a)}, {len(bad_b)}" if bad_a or bad_b else ""))

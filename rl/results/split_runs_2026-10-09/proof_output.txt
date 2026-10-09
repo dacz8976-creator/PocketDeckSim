@@ -1,0 +1,28 @@
+engine: 8626a358 engine tree 38af8b0cc4f35fdccc647ed540a56ec8f5e6c1d5
+engine tree as archived: 38af8b0cc4f35fdccc647ed540a56ec8f5e6c1d5
+program sha256: 9d45a1586615e5bfc77b4f164a23d16551e9f090335b97cecacfcba83b8afaf2
+harness source sha256: bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e
+self-check: selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1
+== straight
+stamped /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct9/split/straight: manifest 7dc6b85af3ab, program 9d45a1586615, slice (all)
+== worker 1 (t-altaria, t-suicune) and worker 2 (t-hydreigon), each into its own folder
+stamped /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct9/split/w1: manifest 7dc6b85af3ab, program 9d45a1586615, slice ['t-altaria', 't-suicune']
+stamped /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct9/split/w2: manifest 7dc6b85af3ab, program 9d45a1586615, slice ['t-hydreigon']
+straight: 12 games, errors: 0
+w1: 8 games, errors: 0
+w2: 4 games, errors: 0
+== merge
+COMPLETE: 12 of 12 games; 0 problem(s); see /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct9/split/merged/MERGE_RECORD.md
+== the merge against the straight run
+12 and 12 games; game for game (content, not timing) EQUAL
+keys in the same order: False
+whole lines byte for byte (timing included, so expected to differ): 0 of 12
+== the straight run, merged alone (one worker)
+COMPLETE: 12 of 12 games; 0 problem(s); see /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct9/split/merged_straight/MERGE_RECORD.md
+== negative: worker 1 alone
+INCOMPLETE: 8 of 12 games; 4 problem(s); see /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct9/split/merged_w1_only/MERGE_RECORD.md
+**INCOMPLETE**: 8 of 12 expected games merged; 4 problem(s).
+- **missing** game `t-hydreigon|t-blaziken|0|0|ref`: no worker played it
+- **missing** game `t-hydreigon|t-blaziken|0|0|X`: no worker played it
+- **missing** game `t-hydreigon|t-blaziken|0|1|ref`: no worker played it
+- **missing** game `t-hydreigon|t-blaziken|0|1|X`: no worker played it
