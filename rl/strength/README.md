@@ -13,6 +13,25 @@ Dustin (Oct 2): quality first, and the time and cost to get it are reported for 
 
 Keep run directories under `rl/results/strength_<date>_<name>/`, not here. Run from the repository root of a clean tree of the commit you register (a `git archive` or a worktree: the deck files are read and hashed from it).
 
+## Long runs on the laptop: start them with `launch_detached.sh`, watch them with `run_watch.sh`
+
+**Every long laptop run starts through `launch_detached.sh`**: strength runs, slow reports, floor and screen runs, and the chain scripts that restart them. Use nothing else. On Oct 8 a forced app update ended the Claude session's process tree, and the run it had started died with it. The launcher gives the run its own session and process group, so it no longer depends on the window, session or app that started it:
+- `bash rl/strength/launch_detached.sh start NAME --dir REPO -- nice -n 19 PROGRAM ARGS...` starts it, and refuses if NAME is already running;
+- `status [NAME]` and `stop NAME` check it and stop it (SIGTERM to the whole group; the game that is cut off is played again on resume);
+- the pid file and the log are `~/runs/NAME.pid` and `~/runs/NAME.log`.
+
+Rules for the run itself:
+- It must be resumable (`strength run` and `slow_report.py` are).
+- Keep a chain script in the repository or under `$HOME`, never in a session's scratchpad.
+
+The launcher doesn't keep WSL itself alive. That is the job of the "Pocket Deck Lab WSL On Demand" scheduled task, which holds `wsl.exe --exec sleep infinity` outside the Claude app. If WSL shuts down, start the same command again and the run resumes.
+
+**`run_watch.sh`** writes one status line for a run, with no Claude session needed:
+- what it reports: games written, games since the last look, the time of the last game, and RUNNING, WAITING (the chain waits out the school-morning rule), STALLED? or STOPPED;
+- with `--push`, it puts the latest lines on the branch `laptop-status` (`STATUS.txt`) by git plumbing, so main's index and working tree are never touched;
+- started with `launch_detached.sh` and `--every 30`, it repeats until the run is done;
+- if the branch's newest line is much older than 30 minutes, the laptop or its WSL is down.
+
 ## The design in detail
 
 - **Pairing.** A job is (deck, opponent, deal, seat, arm). Deal `i` of the pair at position `p = deck index x 1000 + opponent index` has seed `seed_base + p x pair_stride + i`; each deal is played with the deck in each of `seats`. Both arms of a job share the seed and seat. The report checks that the two arms of every pair started from the same deal (same seed, same first player) and excludes any that did not. A pilot's own search randomness comes from the engine's per-decision seeds (game seed, seat, decision count), never from the gameplay RNG, so a deterministic pilot repeats exactly: **km3 v km3 gives a paired difference of exactly 0** (tested), and the harness's km3 replays 200 games of the official draft A v Fire run game for game, plies included (`rl/results/strength_harness_tests_2026-10-02/CROSSCHECK.md`).
@@ -56,7 +75,7 @@ The pinned binary lives on the laptop; the cloud builds its own copy of the same
 
 ## Files
 
-`Cargo.toml`, `src/main.rs` (run, selfcheck), `src/ext.rs` (external pilots), `build.sh`, `strength_prereg.py`, `strength_report.py`, `slow_report.py` and `slow_report_pin.json` (the opt-in slow report), `slow_report_existing.py` (its page from games that already exist), `decks.json` (name to path; the 8 panel lists, Dustin's 15, the drafts), `groups.json` (panel8, aggro, setup, dustin_all, drafts, raticate), `heldout.json`, `intended_lines.json`, `config_default.json`, `PROTOCOL.md`, `ext_pilot_example.py`. Tests and their outputs: `rl/results/strength_harness_tests_2026-10-02/`; the tests of the report refusal, the `use` stage, the slow report and its page from existing games are `test_strength_report.py`, `test_strength_prereg_use.py`, `test_slow_report.py` (with `test_slow_report_runloop.py`, `_process.py`, `_page.py` and `_registration.py`) and `test_slow_report_existing.py` beside the scripts, and the slow report's real-program smoke is `rl/results/slow_report_smoke_2026-10-07/`.
+`Cargo.toml`, `src/main.rs` (run, selfcheck), `src/ext.rs` (external pilots), `build.sh`, `strength_prereg.py`, `strength_report.py`, `slow_report.py` and `slow_report_pin.json` (the opt-in slow report), `slow_report_existing.py` (its page from games that already exist), `launch_detached.sh` and `run_watch.sh` (long laptop runs), `decks.json` (name to path; the 8 panel lists, Dustin's 15, the drafts), `groups.json` (panel8, aggro, setup, dustin_all, drafts, raticate), `heldout.json`, `intended_lines.json`, `config_default.json`, `PROTOCOL.md`, `ext_pilot_example.py`. Tests and their outputs: `rl/results/strength_harness_tests_2026-10-02/`; the tests of the report refusal, the `use` stage, the slow report and its page from existing games are `test_strength_report.py`, `test_strength_prereg_use.py`, `test_slow_report.py` (with `test_slow_report_runloop.py`, `_process.py`, `_page.py` and `_registration.py`) and `test_slow_report_existing.py` beside the scripts, and the slow report's real-program smoke is `rl/results/slow_report_smoke_2026-10-07/`.
 
 ## Limits
 
