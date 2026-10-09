@@ -694,9 +694,10 @@ fn swift_does_not_shield_the_hit_back() {
 }
 
 /// Bounded Field: "When applying the opponent's Active Pokémon's Weakness to damage from attacks used by
-/// Pokémon in play ... that aren't Mega Evolution Pokémon ex, apply Weakness as ×2." A stated choice for
-/// Dustin to rule on: P2 gives the hit back a flat +20 under Bounded Field too (Chesnaught's 80 becomes
-/// 100, not 160). Nothing recorded shows it.
+/// Pokémon in play ... that aren't Mega Evolution Pokémon ex, apply Weakness as ×2." The hit back is the
+/// attack's own damage (P2), so by the plain text its Weakness is ×2 under Bounded Field: Chesnaught's 80
+/// becomes 160 (the coordinator via Dustin's card-text rule, Oct 9; P2's first choice was a flat +20).
+/// Nothing recorded shows it.
 fn bounded_field() -> State {
     use EnergyType::*;
     let chesnaught = with_energy(CardId::B2010Chesnaught, &[Grass, Grass, Grass, Grass]);
@@ -715,14 +716,30 @@ fn bounded_field() -> State {
 }
 
 #[test]
-fn bounded_field_keeps_the_hit_back_extra_at_20() {
+fn bounded_field_doubles_the_hit_back_x2() {
     let state = bounded_field();
     assert_eq!(hp(&state, 1, 0), 70);
     assert_eq!(
         state.in_play_pokemon[0][0].as_ref().map(|p| p.get_remaining_hp()),
-        Some(20),
-        "Needle Lariat's 80 + 20 under Bounded Field; a x2 reading (160, or 80 + 40) would Knock Out Stonjourner (120 HP)"
+        None,
+        "Needle Lariat's 80 x2 = 160 under Bounded Field Knocks Out Stonjourner (120 HP); the flat +20 left it at 20"
     );
+    assert_eq!(state.points[1], 1, "the Knock Out's point goes to Chesnaught's side");
+}
+
+/// The Mega ex exception: Bounded Field doubles Weakness only for attacks used by Pokémon that aren't Mega
+/// Evolution Pokémon ex, and Cursed Jewel is Mega Sableye ex's attack, so its hit back keeps +20 under Bounded
+/// Field: 40 + 20 = 60 to Darkness-weak Houndstone (130 HP), not 80.
+#[test]
+fn bounded_field_keeps_plus_20_for_a_mega_ex_holder() {
+    use EnergyType::*;
+    let sableye = with_energy(CardId::B3b041MegaSableyeEx, &[Darkness, Darkness]);
+    let houndstone = with_energy(CardId::B3a024Houndstone, &[Psychic, Psychic, Psychic]);
+    let mut game = armed_against(sableye, "Cursed Jewel", 40, houndstone, vec![], vec![], Some(CardId::B3155BoundedField));
+    apply_attack(&mut game, "Spooky Shot");
+    let state = game.get_state_clone();
+    assert_eq!(hp(&state, 1, 0), 170 - 70);
+    assert_eq!(hp(&state, 0, 0), 130 - 60, "40 + 20 under Bounded Field: the holder is a Mega ex");
 }
 
 /// The Perish Body branch of `ApplyDamage` (coin outcomes). Constructed: a Galarian Cursola (Psychic;
