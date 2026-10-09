@@ -6,24 +6,24 @@
 
 Question: how does brew-08-entei-rainbow-cave do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
 
-**PARTIAL: 20 kx3 games + 20 cheap km3 baseline games so far (40 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
+**PARTIAL: 40 kx3 games + 40 cheap km3 baseline games so far (80 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
 
-Size: 20 kx3 games + 20 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
+Size: 40 kx3 games + 40 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
 
-brew-08-entei-rainbow-cave scored **65.0%** over **20 games** (games from 1 of the 8 public lists so far): probably between 43.3% and 81.9% (95% interval; this range refers to these 20 kx3 games). A win counts 1, a tie 1/2, a loss 0.
+brew-08-entei-rainbow-cave scored **52.5%** over **40 games** (games from 2 of the 8 public lists so far): probably between 37.5% and 67.1% (95% interval; this range refers to these 40 kx3 games). A win counts 1, a tie 1/2, a loss 0.
 
 ### How much better kx3 plays this deck than km3
 
-On the same deals, kx3 scored **+20.0 points** compared with km3 piloting this deck (kx3 65.0%, km3 on this deck 45.0%, over 20 paired games: each a deal and seat played by both pilots, so 20 kx3 games + 20 cheap km3 baseline games), probably between -4.5 and +44.5 points (95% interval; this range refers to those 20 paired games).
+On the same deals, kx3 scored **+10.0 points** compared with km3 piloting this deck (kx3 52.5%, km3 on this deck 42.5%, over 40 paired games: each a deal and seat played by both pilots, so 40 kx3 games + 40 cheap km3 baseline games), probably between -5.9 and +25.9 points (95% interval; this range refers to those 40 paired games).
 
-That range includes no gain at all: these 20 paired games do not show that kx3 plays this deck better than km3, and do not show that it plays it worse. They do argue against a gain much larger than 44.5 points or a loss much larger than 4.5 points; a smaller difference needs more deals.
+That range includes no gain at all: these 40 paired games do not show that kx3 plays this deck better than km3, and do not show that it plays it worse. They do argue against a gain much larger than 25.9 points or a loss much larger than 5.9 points; a smaller difference needs more deals.
 
 ## Against each public list
 
 | opponent (km3) | kx3 games | score | 95% range |
 |---|---|---|---|
 | t-altaria | 20 | 65.0% | 43.3% to 81.9% |
-| t-blaziken | 0 | n/a | n/a |
+| t-blaziken | 20 | 40.0% | 21.9% to 61.3% |
 | t-hydreigon | 0 | n/a | n/a |
 | t-lucario | 0 | n/a | n/a |
 | t-sceptile | 0 | n/a | n/a |
@@ -35,25 +35,25 @@ Each row's range refers only to the kx3 games against that list (the row's games
 
 ## Who went first
 
-- When brew-08-entei-rainbow-cave went first: 42.9% over 7 games (15.8% to 75.0%)
-- When brew-08-entei-rainbow-cave went second: 76.9% over 13 games (49.7% to 91.8%)
+- When brew-08-entei-rainbow-cave went first: 42.1% over 19 games (23.1% to 63.7%)
+- When brew-08-entei-rainbow-cave went second: 61.9% over 21 games (40.9% to 79.2%)
 
 Each range refers only to the kx3 games on its line; a few dozen games can show a large first-or-second difference, not a small one.
 
 ## The time it took
 
-kx3 took 536 s a game on average (about 9 min), median 541 s, slowest 796 s, with 4 threads going at once. km3 playing this deck took 0.7 s a game.
-Running time from the run log: 46 min over 1 sitting, for 40 games in all: 20 kx3 games + 20 cheap km3 baseline games.
+kx3 took 420 s a game on average (about 7 min), median 390 s, slowest 796 s, with 4 threads going at once. km3 playing this deck took 0.5 s a game.
+Running time from the run log: 72 min over 2 sittings, for 80 games in all: 40 kx3 games + 40 cheap km3 baseline games.
 
 ## What these numbers can and can't say
 
-**These numbers say how brew-08-entei-rainbow-cave did in simulated games with kx3 playing it against the 8 public lists, probably between 43.3% and 81.9%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
+**These numbers say how brew-08-entei-rainbow-cave did in simulated games with kx3 playing it against the 8 public lists, probably between 37.5% and 67.1%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
 
 In more detail:
 
 - kx3, a strong but slow pilot, plays your deck knowing its own cards. It does not know which of the 8 public lists it faces, but its opponent is always one of them and always plays like the program kx3 imagines when it looks ahead, so it is better informed here than it would be against a person on the ladder or a deck outside the 8 lists. Read the score as the optimistic end.
 - The 8 lists count equally here, not by how common they are on the ladder.
-- The range covers only the luck of the shuffles and coin flips in these 20 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays brew-08-entei-rainbow-cave clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (38.6 points here), and more deals narrow it.
+- The range covers only the luck of the shuffles and coin flips in these 40 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays brew-08-entei-rainbow-cave clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (29.6 points here), and more deals narrow it.
 - There is no pass or fail line: whether brew-08-entei-rainbow-cave is worth playing is a call for the player.
 
 ## What was run
