@@ -17,9 +17,14 @@
 //! The boards are constructed, not replays: each attack is used for real so the engine arms it, then a
 //! stand-in Snorlax that took the setup hit is swapped for the attacker under test, so that hit can't add
 //! Weakness of its own. `players/` is unchanged by P2.
+//!
+//! P2's off-switch (rules switch 2, PLAN (e); the coordinator via Dustin, Oct 9): with it off
+//! (`with_return_weakness(false, ..)`, or `DECKGYM_FLAT_RETURN_DAMAGE=1` for a whole process), every
+//! scenario here gives the engine before P2's numbers, and where P2 doesn't act the board is the same
+//! with the switch on or off.
 
 use deckgym::{
-    actions::{Action, SimpleAction},
+    actions::{with_return_weakness, Action, SimpleAction},
     card_ids::CardId,
     database::get_card_by_enum,
     effects::CardEffect,
@@ -335,8 +340,7 @@ fn set_psychic_discard(game: &mut Game<'static>, ralts: usize) {
 /// for each [P] Pokémon in your discard pile.") hits the Cursed-Jewel Mega Sableye ex from 170 to 40 and
 /// ends at 70/130: it took 60. Four Psychic Pokémon in the discard make the 130. The old engine left
 /// Houndstone at 90.
-#[test]
-fn recording_183108_t8_cursed_jewel_returns_60() {
+fn recording_t8() -> State {
     let sableye =
         with_energy(CardId::B3b041MegaSableyeEx, &[EnergyType::Darkness, EnergyType::Darkness]);
     let mut game = armed_against(
@@ -350,7 +354,12 @@ fn recording_183108_t8_cursed_jewel_returns_60() {
     );
     set_psychic_discard(&mut game, 4);
     apply_attack(&mut game, "Last Respects");
-    let state = game.get_state_clone();
+    game.get_state_clone()
+}
+
+#[test]
+fn recording_183108_t8_cursed_jewel_returns_60() {
+    let state = recording_t8();
     assert_eq!(hp(&state, 1, 0), 40);
     assert_eq!(hp(&state, 0, 0), 70);
 }
@@ -358,8 +367,7 @@ fn recording_183108_t8_cursed_jewel_returns_60() {
 /// 183108 turn 10, @384-386: Houndstone at 120/130 Knocks Out the Mega at 80 HP and ends at 60/130: the
 /// hit back lands with Weakness even though the holder is Knocked Out by the same attack. The old engine
 /// left Houndstone at 80.
-#[test]
-fn recording_183108_t10_hit_back_lands_when_the_holder_is_knocked_out() {
+fn recording_t10() -> State {
     let sableye =
         with_energy(CardId::B3b041MegaSableyeEx, &[EnergyType::Darkness, EnergyType::Darkness])
             .with_remaining_hp(80);
@@ -374,7 +382,12 @@ fn recording_183108_t10_hit_back_lands_when_the_holder_is_knocked_out() {
     );
     set_psychic_discard(&mut game, 2);
     apply_attack(&mut game, "Last Respects");
-    let state = game.get_state_clone();
+    game.get_state_clone()
+}
+
+#[test]
+fn recording_183108_t10_hit_back_lands_when_the_holder_is_knocked_out() {
+    let state = recording_t10();
     assert!(state.in_play_pokemon[1][0].is_none());
     assert_eq!(state.points, [3, 0]);
     assert_eq!(state.winner, Some(GameOutcome::Win(0)));
@@ -385,8 +398,7 @@ fn recording_183108_t10_hit_back_lands_when_the_holder_is_knocked_out() {
 /// 20 + 20 hit back Knocks Bulbasaur Out too. Both sides take a point and, after a double Knock Out, the
 /// attacker promotes first (`RULES_FOR_AGENTS.md`, Dustin + a recording). The old engine left Bulbasaur
 /// at 20 with points [1, 0].
-#[test]
-fn double_knockout_by_the_hit_back_the_attacker_promotes_first() {
+fn double_knockout() -> State {
     let turtonator = with_energy(CardId::B1047Turtonator, &[EnergyType::Fire, EnergyType::Fire])
         .with_remaining_hp(40);
     let bulbasaur = with_energy(CardId::A1001Bulbasaur, &[EnergyType::Grass, EnergyType::Colorless])
@@ -401,7 +413,12 @@ fn double_knockout_by_the_hit_back_the_attacker_promotes_first() {
         None,
     );
     apply_attack(&mut game, "Vine Whip");
-    let state = game.get_state_clone();
+    game.get_state_clone()
+}
+
+#[test]
+fn double_knockout_by_the_hit_back_the_attacker_promotes_first() {
+    let state = double_knockout();
     assert_eq!(
         state.in_play_pokemon[0][0].as_ref().map(|p| p.get_remaining_hp()),
         None,
@@ -491,32 +508,32 @@ fn ability_return_damage_stays_flat() {
 /// Darkness-weak Houndstone the Helmet's 20 stays flat and Cursed Jewel's 40 takes +20 (80 in all; the old
 /// engine did 60); against Snorlax both are flat (60). With the Helmet test, this rules out "+20 per
 /// source" and "+20 on any return damage".
+fn helmet_and_cursed_jewel(houndstone: bool) -> State {
+    use EnergyType::*;
+    let (attacker, attack) = if houndstone {
+        (with_energy(CardId::B3a024Houndstone, &[Psychic, Psychic, Psychic]), "Spooky Shot")
+    } else {
+        (snorlax(), "Rollout")
+    };
+    let start = attacker.get_remaining_hp();
+    let sableye = with_energy(CardId::B3b041MegaSableyeEx, &[Darkness, Darkness])
+        .with_tool(get_card_by_enum(CardId::A2148RockyHelmet));
+    let mut game = armed_against(sableye, "Cursed Jewel", 40, attacker, vec![], vec![], None);
+    assert_eq!(hp(&game.get_state_clone(), 0, 0), start);
+    apply_attack(&mut game, attack);
+    game.get_state_clone()
+}
+
 #[test]
 fn tool_and_attack_return_on_one_defender_each_by_its_own_rule() {
-    use EnergyType::*;
-    for (attacker, attack, start, expected) in [
-        (
-            with_energy(CardId::B3a024Houndstone, &[Psychic, Psychic, Psychic]),
-            "Spooky Shot",
-            130,
-            50,
-        ),
-        (snorlax(), "Rollout", 150, 90),
-    ] {
-        let sableye = with_energy(CardId::B3b041MegaSableyeEx, &[Darkness, Darkness])
-            .with_tool(get_card_by_enum(CardId::A2148RockyHelmet));
-        let mut game = armed_against(sableye, "Cursed Jewel", 40, attacker, vec![], vec![], None);
-        assert_eq!(hp(&game.get_state_clone(), 0, 0), start);
-        apply_attack(&mut game, attack);
-        assert_eq!(hp(&game.get_state_clone(), 0, 0), expected, "{attack}");
-    }
+    assert_eq!(hp(&helmet_and_cursed_jewel(true), 0, 0), 50, "Spooky Shot");
+    assert_eq!(hp(&helmet_and_cursed_jewel(false), 0, 0), 90, "Rollout");
 }
 
 /// Constructed: an Iron Jugulis carrying both its Ability and an attack's `Counterattack { amount: 40 }`.
 /// Against Mewtwo ex (weak Darkness) the Ability's 20 stays flat and the attack's 40 takes +20: Mewtwo ex
 /// ends at 150 - 20 - 60 = 70. The old engine left it at 90.
-#[test]
-fn ability_and_attack_return_on_one_defender() {
+fn jugulis_with_cursed_effect() -> State {
     let mut jugulis = PlayedCard::from_id(CardId::B3a046IronJugulis);
     jugulis.add_effect(CardEffect::Counterattack { amount: 40 }, 1);
     let mut game = game_with_board(
@@ -526,7 +543,12 @@ fn ability_and_attack_return_on_one_defender() {
         SEED,
     );
     apply_attack(&mut game, "Psychic Sphere");
-    let state = game.get_state_clone();
+    game.get_state_clone()
+}
+
+#[test]
+fn ability_and_attack_return_on_one_defender() {
+    let state = jugulis_with_cursed_effect();
     assert_eq!(hp(&state, 1, 0), 50);
     assert_eq!(hp(&state, 0, 0), 70);
 }
@@ -535,8 +557,7 @@ fn ability_and_attack_return_on_one_defender() {
 /// Energy Zone and attach it to 1 of your Benched [P] Pokémon.") leaves an Attach choice after its damage,
 /// so the hit back waits for it. Gardevoir (Psychic, weak Darkness) then takes 40 + 20; the old engine
 /// did 40.
-#[test]
-fn held_back_hit_back_takes_weakness() {
+fn held_back() -> State {
     use EnergyType::*;
     let sableye = with_energy(CardId::B3b041MegaSableyeEx, &[Darkness, Darkness]);
     let gardevoir = with_energy(CardId::B2065Gardevoir, &[Psychic, Psychic]);
@@ -562,15 +583,19 @@ fn held_back_hit_back_takes_weakness() {
         matches!(choice, SimpleAction::ResolveAttackRetaliation { .. })
     });
     game.apply_action(&resolve);
-    let state = game.get_state_clone();
+    game.get_state_clone()
+}
+
+#[test]
+fn held_back_hit_back_takes_weakness() {
+    let state = held_back();
     assert_eq!(hp(&state, 0, 0), 70);
     assert_eq!(hp(&state, 1, 0), 110);
 }
 
 /// The `ApplyDamage` path (`handle_damage`): a constructed 10-damage attack hit from Houndstone's Active
 /// into the armed Mega. Houndstone takes 40 + 20; the old engine did 40.
-#[test]
-fn apply_damage_path_takes_weakness() {
+fn apply_damage_path() -> State {
     use EnergyType::*;
     let sableye = with_energy(CardId::B3b041MegaSableyeEx, &[Darkness, Darkness]);
     let houndstone = with_energy(CardId::B3a024Houndstone, &[Psychic, Psychic, Psychic]);
@@ -584,7 +609,12 @@ fn apply_damage_path_takes_weakness() {
         },
         is_stack: false,
     });
-    let state = game.get_state_clone();
+    game.get_state_clone()
+}
+
+#[test]
+fn apply_damage_path_takes_weakness() {
+    let state = apply_damage_path();
     assert_eq!(hp(&state, 1, 0), 160);
     assert_eq!(hp(&state, 0, 0), 70);
 }
@@ -593,8 +623,7 @@ fn apply_damage_path_takes_weakness() {
 /// for Benched Pokémon"). Scyther (Grass, weak Fire) uses U-turn ("Switch this Pokémon with 1 of your
 /// Benched Pokémon.") into an armed Turtonator (Fire): the hit back waits for the switch and then lands
 /// on the Benched Scyther flat. The same before and after P2; not yet seen in a recording.
-#[test]
-fn hit_back_on_a_benched_attacker_stays_flat() {
+fn benched_attacker() -> State {
     let turtonator = with_energy(CardId::B1047Turtonator, &[EnergyType::Fire, EnergyType::Fire]);
     let scyther = with_energy(CardId::B2b001Scyther, &[EnergyType::Colorless]);
     let mut game = armed_against(
@@ -615,7 +644,12 @@ fn hit_back_on_a_benched_attacker_stays_flat() {
         matches!(choice, SimpleAction::ResolveAttackRetaliation { .. })
     });
     game.apply_action(&resolve);
-    let state = game.get_state_clone();
+    game.get_state_clone()
+}
+
+#[test]
+fn hit_back_on_a_benched_attacker_stays_flat() {
+    let state = benched_attacker();
     assert_eq!(hp(&state, 1, 0), 100);
     assert_eq!(state.get_active(0).get_name(), "Bulbasaur");
     assert_eq!(hp(&state, 0, 1), 50, "Benched: flat 20");
@@ -625,14 +659,18 @@ fn hit_back_on_a_benched_attacker_stays_flat() {
 /// starts with the opponent's next turn, so it doesn't cover the hit back on Steelix's own attack. Steelix
 /// (Metal, weak Fire) into an armed Turtonator (Fire) takes 20 + 20. The engine adds `NoWeakness` before
 /// the hit back, so P2 doesn't read it there; the old engine did 20.
-#[test]
-fn metal_defender_does_not_shield_its_own_hit_back() {
+fn metal_defender() -> State {
     use EnergyType::*;
     let turtonator = with_energy(CardId::B1047Turtonator, &[Fire, Fire]);
     let steelix = with_energy(CardId::B1a051Steelix, &[Metal, Metal, Colorless, Colorless]);
     let mut game = armed_against(turtonator, "Shell Trap", 20, steelix, vec![], vec![], None);
     apply_attack(&mut game, "Metal Defender");
-    let state = game.get_state_clone();
+    game.get_state_clone()
+}
+
+#[test]
+fn metal_defender_does_not_shield_its_own_hit_back() {
+    let state = metal_defender();
     assert_eq!(hp(&state, 1, 0), 10);
     assert_eq!(hp(&state, 0, 0), 110);
 }
@@ -640,13 +678,17 @@ fn metal_defender_does_not_shield_its_own_hit_back() {
 /// Ledian's Swift: "This attack's damage isn't affected by Weakness or by any effects on your opponent's
 /// Active Pokémon." That covers Swift's own damage, not the hit back, which is Shell Trap's: Ledian
 /// (Grass, weak Fire) takes 20 + 20. A reading, stated in the README; the old engine did 20.
-#[test]
-fn swift_does_not_shield_the_hit_back() {
+fn swift() -> State {
     let turtonator = with_energy(CardId::B1047Turtonator, &[EnergyType::Fire, EnergyType::Fire]);
     let ledian = with_energy(CardId::B2002Ledian, &[EnergyType::Colorless]);
     let mut game = armed_against(turtonator, "Shell Trap", 20, ledian, vec![], vec![], None);
     apply_attack(&mut game, "Swift");
-    let state = game.get_state_clone();
+    game.get_state_clone()
+}
+
+#[test]
+fn swift_does_not_shield_the_hit_back() {
+    let state = swift();
     assert_eq!(hp(&state, 1, 0), 70);
     assert_eq!(hp(&state, 0, 0), 40);
 }
@@ -655,8 +697,7 @@ fn swift_does_not_shield_the_hit_back() {
 /// Pokémon in play ... that aren't Mega Evolution Pokémon ex, apply Weakness as ×2." A stated choice for
 /// Dustin to rule on: P2 gives the hit back a flat +20 under Bounded Field too (Chesnaught's 80 becomes
 /// 100, not 160). Nothing recorded shows it.
-#[test]
-fn bounded_field_keeps_the_hit_back_extra_at_20() {
+fn bounded_field() -> State {
     use EnergyType::*;
     let chesnaught = with_energy(CardId::B2010Chesnaught, &[Grass, Grass, Grass, Grass]);
     let stonjourner = with_energy(CardId::A1a048Stonjourner, &[Fighting, Fighting, Fighting]);
@@ -670,7 +711,12 @@ fn bounded_field_keeps_the_hit_back_extra_at_20() {
         Some(CardId::B3155BoundedField),
     );
     apply_attack(&mut game, "Mega Kick");
-    let state = game.get_state_clone();
+    game.get_state_clone()
+}
+
+#[test]
+fn bounded_field_keeps_the_hit_back_extra_at_20() {
+    let state = bounded_field();
     assert_eq!(hp(&state, 1, 0), 70);
     assert_eq!(
         state.in_play_pokemon[0][0].as_ref().map(|p| p.get_remaining_hp()),
@@ -683,9 +729,9 @@ fn bounded_field_keeps_the_hit_back_extra_at_20() {
 /// Perish Body) carrying `Counterattack { amount: 40 }` is Knocked Out by Paldean Tauros (Fighting, weak
 /// Psychic). On tails Tauros survives with 40 + 20 taken; on heads Perish Body Knocks it Out. The old
 /// engine left a tails Tauros at 60.
-#[test]
-fn perish_body_branch_hit_back_takes_weakness() {
-    let (mut tails, mut heads) = (0, 0);
+/// Tauros's remaining HP after each seed's coin (`None` where Perish Body's heads Knocked it Out).
+fn perish_body_branch() -> Vec<Option<u32>> {
+    let mut out = vec![];
     for seed in 0..32 {
         let mut cursola = PlayedCard::from_id(CardId::A4a035GalarianCursola).with_remaining_hp(40);
         cursola.add_effect(CardEffect::Counterattack { amount: 40 }, 1);
@@ -710,13 +756,109 @@ fn perish_body_branch_hit_back_takes_weakness() {
         });
         let state = game.get_state_clone();
         assert!(state.in_play_pokemon[1][0].is_none(), "seed {seed}: Cursola Knocked Out");
-        match state.in_play_pokemon[0][0].as_ref() {
-            Some(tauros) => {
-                tails += 1;
-                assert_eq!(tauros.get_remaining_hp(), 40, "seed {seed}");
-            }
-            None => heads += 1,
-        }
+        out.push(state.in_play_pokemon[0][0].as_ref().map(|tauros| tauros.get_remaining_hp()));
     }
-    assert!(tails > 0 && heads > 0, "tails {tails}, heads {heads}");
+    out
+}
+
+#[test]
+fn perish_body_branch_hit_back_takes_weakness() {
+    let tauros = perish_body_branch();
+    let tails: Vec<u32> = tauros.iter().flatten().copied().collect();
+    assert!(!tails.is_empty() && tails.len() < tauros.len(), "both coins seen: {tauros:?}");
+    assert!(tails.iter().all(|&hp| hp == 40), "{tauros:?}");
+}
+
+// ---- P2's off-switch (rules switch 2, PLAN (e); the coordinator via Dustin, Oct 9). Off is the engine before P2: the
+// "before" column of `tests_before_fix_p2.log` for every scenario P2 changes, and the same board where it doesn't act.
+
+fn off<R>(f: impl FnOnce() -> R) -> R {
+    with_return_weakness(false, f)
+}
+
+/// With the switch off, each attack's hit back on a weak attacker is X flat again, and the Knock Out it decided is gone.
+#[test]
+fn switch_off_each_attack_hits_back_flat_again() {
+    for row in rows() {
+        let state = off(|| hit_back_once(&row, row.weak_attacker.clone(), row.weak_attack, vec![]));
+        assert_eq!(hp(&state, 1, 0), row.holder_hp - row.weak_damage, "{}", row.title);
+        assert_eq!(hp(&state, 0, 0), row.weak_attacker_hp - row.amount, "{}: flat with the switch off", row.title);
+
+        let at = row.weak_attacker.clone().with_remaining_hp(row.amount + 20);
+        let state = off(|| hit_back_once(&row, at, row.weak_attack, vec![PlayedCard::from_id(CardId::A1130Ralts)]));
+        assert_eq!(hp(&state, 0, 0), 20, "{}: survives at 20", row.title);
+        assert_eq!(state.points, [0, 0], "{}", row.title);
+    }
+}
+
+/// With the switch off, every other scenario P2 changes gives the engine before P2's number (tests_before_fix_p2.log).
+#[test]
+fn switch_off_gives_the_engine_before_p2() {
+    assert_eq!(hp(&off(recording_t8), 0, 0), 90, "183108 t8");
+    let t10 = off(recording_t10);
+    assert_eq!(hp(&t10, 0, 0), 80, "183108 t10");
+    assert_eq!(t10.points, [3, 0]);
+    let double = off(double_knockout);
+    assert_eq!(double.in_play_pokemon[0][0].as_ref().map(|p| p.get_remaining_hp()), Some(20), "double Knock Out");
+    assert_eq!(double.points, [1, 0]);
+    assert_eq!(hp(&off(|| helmet_and_cursed_jewel(true)), 0, 0), 70, "Helmet and Cursed Jewel");
+    assert_eq!(hp(&off(jugulis_with_cursed_effect), 0, 0), 90, "Automated Combat and an attack's 40");
+    assert_eq!(hp(&off(held_back), 0, 0), 90, "held back (Psy Turbo)");
+    assert_eq!(hp(&off(apply_damage_path), 0, 0), 90, "ApplyDamage");
+    assert_eq!(hp(&off(metal_defender), 0, 0), 130, "Metal Defender");
+    assert_eq!(hp(&off(swift), 0, 0), 60, "Swift");
+    assert_eq!(off(bounded_field).in_play_pokemon[0][0].as_ref().map(|p| p.get_remaining_hp()), Some(40), "Bounded Field");
+    let tauros = off(perish_body_branch);
+    let tails: Vec<u32> = tauros.iter().flatten().copied().collect();
+    assert!(!tails.is_empty() && tails.iter().all(|&hp| hp == 60), "Perish Body branch, tails: {tauros:?}");
+    // The same seeds give the same coins on and off: the switch draws nothing.
+    assert_eq!(tauros.iter().map(Option::is_some).collect::<Vec<_>>(),
+               perish_body_branch().iter().map(Option::is_some).collect::<Vec<_>>());
+}
+
+/// Where P2 doesn't act (an attacker not weak to the holder, a Tool's or an Ability's return damage, a Benched attacker),
+/// the board is the same with the switch on and off.
+#[test]
+fn switch_changes_nothing_where_p2_does_not_act() {
+    for row in rows() {
+        let run = |on: bool| with_return_weakness(on, || hit_back_once(&row, snorlax(), "Rollout", vec![]));
+        assert_eq!(run(true), run(false), "{}", row.title);
+    }
+    assert_eq!(with_return_weakness(true, || helmet_and_cursed_jewel(false)), off(|| helmet_and_cursed_jewel(false)));
+    assert_eq!(with_return_weakness(true, benched_attacker), off(benched_attacker));
+    let helmet_and_ability = || {
+        let mut out = vec![];
+        let torchic = PlayedCard::from_id(CardId::B1033Torchic).with_tool(get_card_by_enum(CardId::A2148RockyHelmet));
+        let mut game = game_with_board(vec![with_energy(CardId::A2b052Tinkatink, &[EnergyType::Metal])], vec![torchic], 0, SEED);
+        apply_attack(&mut game, "Corkscrew Punch");
+        out.push(game.get_state_clone());
+        let mut game = game_with_board(
+            vec![with_energy(CardId::A1129MewtwoEx, &[EnergyType::Psychic, EnergyType::Colorless])],
+            vec![PlayedCard::from_id(CardId::B3a046IronJugulis)],
+            0,
+            SEED,
+        );
+        apply_attack(&mut game, "Psychic Sphere");
+        out.push(game.get_state_clone());
+        out
+    };
+    assert_eq!(with_return_weakness(true, helmet_and_ability), off(helmet_and_ability));
+}
+
+/// The switch is on by default, an inner call overrides an outer one for its length, the setting comes back after a
+/// return and after a panic, and another thread keeps its own setting.
+#[test]
+fn switch_scoping() {
+    let houndstone = || hp(&recording_t8(), 0, 0);
+    assert_eq!(houndstone(), 70, "on by default");
+    assert_eq!(off(|| with_return_weakness(true, houndstone)), 70, "inner on");
+    assert_eq!(off(|| (houndstone(), with_return_weakness(true, houndstone), houndstone())), (90, 70, 90));
+    assert_eq!(houndstone(), 70, "restored after a return");
+    let caught = std::panic::catch_unwind(|| off(|| -> u32 { panic!("inside the switch") }));
+    assert!(caught.is_err());
+    assert_eq!(houndstone(), 70, "restored after a panic");
+    off(|| {
+        assert_eq!(std::thread::spawn(houndstone).join().unwrap(), 70, "another thread keeps the default");
+        assert_eq!(houndstone(), 90);
+    });
 }
