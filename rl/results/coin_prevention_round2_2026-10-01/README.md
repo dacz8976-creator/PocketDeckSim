@@ -1,4 +1,6 @@
-Decision this informs: none yet. This is a drafted engine repair for a later engine switch (the Fable coordinator via Dustin, Oct 1). It stacks on Sonnet's R (1abdbe8, `origin/sonnet/rules-fixes`) on its own branch, `claude/coin-prevention-round2`, and is not merged or pinned. **It stays out of the current rules switch, whose scope is fixed, and goes in the next one** (the coordinator, Oct 1). No table game, carrier game or identity replay was played. **No independent audit of the patch has been done yet.** **Since Oct 2 it also carries the card-text job** (the coordinator via Dustin, Oct 1 evening): see "The card-text job" below and `TEXT_AUDIT.md`. **Since Oct 8 it also carries P2**, return damage left by an attack taking Weakness: see "P2" below.
+Decision this informs: none yet. This is a drafted engine repair for a later engine switch (the Fable coordinator via Dustin, Oct 1). It stacks on Sonnet's R (1abdbe8, `origin/sonnet/rules-fixes`) on its own branch, `claude/coin-prevention-round2`, and is not merged or pinned. **It stays out of the current rules switch, whose scope is fixed, and goes in the next one** (the coordinator, Oct 1). No table game, carrier game or identity replay was played. **No independent audit of the patch has been done yet.** **Since Oct 2 it also carries the card-text job** (the coordinator via Dustin, Oct 1 evening): see "The card-text job" below and `TEXT_AUDIT.md`. **Since Oct 8 it also carries P2**, return damage left by an attack taking Weakness: see "P2" below. **Since Oct 9 it also
+carries P2's off-switch and P3** (a Fossil is an Item card at seven more places), with the full suite at the final engine commit
+`140c0be`: see "Oct 9" below. Step 8b's rows on that engine are in `../engine_switch_rules2_2026-10/early_warning_8b/`.
 
 Seeds: no table deal. The smoke check used 20,980,000,000 + pairing × 10,000 + i, on scratch decks only (Claude Code's diagnostic block, outside START_HERE's ranges). The unit tests' seeds are their own, as in the first round.
 
@@ -306,7 +308,8 @@ Main PLAN.md precondition (f) adds `handle_attack_retaliation`. In the format of
      change in look-ahead before any hit back lands, and would read UNEXPLAINED. The smoke shows this is the usual case: all 3
      of its changed games changed in look-ahead.
    - (e) needs a P2 revert switch.
-   - Neither is built here.
+   - Neither is built here. **Both built Oct 9:** the probe's RETURN check (`../round2_readiness_2026-10-02/`, README section 3)
+     and the off-switch (below).
 
 ### For the laptop
 
@@ -315,6 +318,124 @@ Main PLAN.md precondition (f) adds `handle_attack_retaliation`. In the format of
 - **The equivalence list** is above.
 - **The files:** the four engine files named under "How" (`apply_action_helpers.rs`, `hooks/core.rs`, `hooks/counterattack.rs`,
   `hooks/mod.rs`) and the test file named under "Tests".
+
+## Oct 9: P2's off-switch, P3 and the suite
+
+The coordinator via Dustin, Oct 9 (decisions 12 and 14, and "the remaining 7 Fossil-as-Item places"): on this branch, tests
+first, gates 1-2 as before.
+
+### P2's off-switch
+
+**In plain words**
+
+- **P2 can now be turned off.** Off, the engine plays as it did before P2: an attack's hit back is flat again. On is the
+  default, so every program built from this branch plays P2 unless asked otherwise.
+- **Two ways to turn it off:**
+  - for a whole program, the environment variable `DECKGYM_FLAT_RETURN_DAMAGE=1` (or `true`), read once, as
+    `DECKGYM_UNBOUNDED_ENERGY_MOVES` is;
+  - for one piece of code on one thread, `deckgym::actions::with_return_weakness(false, || ...)`. The setting comes back
+    afterwards, even after a panic. This is what a revert check needs: one decision decided as the engine before P2 would.
+- **What it is for:** the switch plan's precondition (e), the revert check.
+
+**Commits**
+
+- `14abfb0`: the 4 tests first. They don't compile without the switch (`tests_before_switch.log`).
+- `35e6acf`: the switch, in `actions/apply_action_helpers.rs` (`handle_attack_retaliation` asks it before adding the +20),
+  exported from `actions/mod.rs`. All 21 tests in `rules_repair_return_damage_weakness.rs` pass (`tests_after_switch.log`).
+- `e51a151`: gates 1 and 2 (`switch_gates/`).
+
+**Tests** (in `engine/tests/rules_repair_return_damage_weakness.rs`)
+
+- `switch_off_each_attack_hits_back_flat_again`: the five attacks hit back flat again, and the Knock Out the +20 decided is gone.
+- `switch_off_gives_the_engine_before_p2`: every other board P2 changes gives the number it gave before P2
+  (`tests_before_fix_p2.log`).
+- `switch_changes_nothing_where_p2_does_not_act`: an attacker not weak to the holder, Rocky Helmet, an Ability, a Benched
+  attacker: the whole state is the same on and off.
+- `switch_scoping`: on by default; an inner call wins for its length; the setting comes back after a return and after a
+  panic; another thread keeps its own.
+
+**Gates** (`switch_gates/run_switch_gates.sh`; output `switch_gates/run_output.txt`; every program built from `git archive`)
+
+- **Gate 1, on (the default) is P2:**
+  - P2's smoke, 200 games (`../round2_readiness_2026-10-02/counter_smoke_p2/`): byte for byte `games_p2_plain.jsonl`;
+  - km3 v km3, 240 games of altaria v blaziken at seed 7100: game for game the official program's, and equal to the pinned
+    record `5a18d31_10_cli_km3.txt` except its wall-time line;
+  - the counter probe prints `counter_probe_readiness_output.txt` exactly (78 checks, 0 failures).
+- **Gate 2, off is the engine before P2** (`d3739b7`):
+  - the same 200 games: byte for byte `games_p_plain.jsonl`;
+  - the same 240 games: equal again;
+  - the probe prints `counter_probe_readiness_output_at_P.txt` exactly (78 checks, 11 failures: the 11 P2 rows);
+  - **the revert check at the three games P2 changed** (all in look-ahead). At the first differing tick, the P2 head decides
+    that one move with the switch off. The scores come from main's print-only `dg_patch.py`, applied to both engines
+    (`switch_gates/revert_dumps/`).
+
+    | Game | Before P2 | P2 | P2, switch off for that move | Every candidate's score as before P2 (within 1e-9) |
+    |---|---|---|---|---|
+    | pairing 0, deal 31, tick 44 (5 candidates) | Attach a Psychic Energy to the Active | Small Balloon | the same Attach | yes |
+    | pairing 1, deal 21, tick 84 (9 candidates) | Retreat (Bench slot 1 comes in) | Attach a Psychic Energy to Bench slot 2 | Retreat | yes |
+    | pairing 1, deal 8, tick 43 (8 candidates) | Place Darkrai | Sabrina | Place Darkrai | yes |
+
+- **Order with P3.** P3 came after the switch, so from P3 on "off" is the engine before P2 with P3 in it. P3 changes only
+  boards with a Fossil, and no replayed list holds one.
+- **Step 4's allowed list** gains `actions/mod.rs` (the export): 22 files with P2.
+
+### P3: a Fossil is an Item card at seven more places
+
+**In plain words**
+
+- **A Fossil's printed kind is Item** (rules/01, rules/04 §6; Dustin's Sail Fossil screenshot, Oct 2). The Item lock already
+  reads it that way (the follow-up, `3090abb`). Seven more places look for "an Item card" and missed a Fossil. Now they find it:
+  - Alolan Raticate's Scrounge-and-Scarf (A3 107): "Discard a random Item card from your opponent's hand";
+  - Team Rocket's Thieving Machine (B4a 067): its effect, and whether it can be played (a discard pile holding only a Fossil
+    now counts);
+  - Arven (B2a 091, 108, 115) and Order Pad (B4 145): the Item card found on heads;
+  - Rotom ex's Junk Spark (B4 055, 184, 202): 10 more for each Item card in your discard pile;
+  - Pachirisu's Crackling Snap (B4 054, P-B 085): 20 more if the discarded top card is an Item;
+  - Team Rocket's Slowpoke's Scavenge (B4a 025): a random Item card from your discard pile;
+  - Raticate's Treasure Collecting (B4 130, 178, 221): every Item card in the top 4.
+- **How.** One helper in `models/card.rs`: `TrainerType::is_printed_as` (a Fossil is printed as Item; every other kind matches
+  only itself), and `Card::is_item`. Everything else about a Fossil stays as it was: a 40-HP Basic in play, can't retreat,
+  placed rather than played. The mechanic maps keep `TrainerType::Item`. Chandelure's Past Friends shares Junk Spark's code but
+  counts Supporters, and still counts only Supporters.
+- **Which lists hold a Fossil: none in any replayed set.** Checked on main 1163ebb7 and on this branch: no list under
+  `decks/` and none of the lists the pairing files name. In the whole repository two lists do, and neither is replayed:
+  `engine/example_decks/donphan.txt` (2 Old Amber, an upstream example) and
+  `rl/results/kt_carrier_census_2026-09-26/decks/c-dragonair_mega_rayquaza_ex.txt` (1 Skull Fossil).
+- **So no recorded game changes.** Every change only widens a check to also accept a Fossil, so a game without one plays as
+  before. The smoke confirms it (`p3_smoke/`): brew-04 (the only replayed list holding one of these cards, 2 Team Rocket's
+  Slowpoke) and the Skull Fossil list, each v the 8 panel lists, km3, 40 deals, seeds 20,920,000,000 + pairing × 10,000 + i:
+  640 of 640 games the same before and after P3.
+
+**Commits**
+
+- `c17e415`: 12 tests first (`engine/tests/rules_repair_trainers.rs`, names starting `fossil_`). 10 fail, and the 2 controls
+  pass (Past Friends, and a Supporter on top of Crackling Snap's deck): `tests_before_fix_p3.log`.
+- `140c0be`: P3. All 22 tests in the file pass (`tests_after_fix_p3.log`).
+
+**Files.** 8 engine sites in 6 files:
+- `models/card.rs`: the helper;
+- `actions/apply_attack_action.rs`: Scrounge-and-Scarf, Scavenge, Junk Spark, Crackling Snap;
+- `actions/apply_trainer_action.rs`: Thieving Machine's effect;
+- `move_generation/move_generation_trainer.rs`: Thieving Machine's playability (not among the plan's seven; it must change
+  with the effect);
+- `actions/shared_mutations.rs`: Arven and Order Pad;
+- `actions/apply_abilities_action.rs`: Treasure Collecting.
+
+Step 4's allowed list gains `apply_trainer_action.rs`, `shared_mutations.rs`, `apply_abilities_action.rs` and `models/card.rs`;
+the other two were already in it. The two map files the plan named (`effect_mechanic_map.rs`, `effect_ability_mechanic_map.rs`)
+don't change. Each changed line keeps its file's own line endings.
+
+**Open (none changes a recorded game)**
+
+- The bots' own Junk Spark estimate (`players/value_functions.rs`:2385) still counts with `==`, so it reads 10 low for each
+  Fossil in the discard pile. `players/` stays unchanged. No list holds both Rotom ex and a Fossil.
+- Aside, existing behaviour: Treasure Collecting puts the cards in hand with no 10-card cap, unlike the deck searches.
+
+### The suite at the final engine commit
+
+`suite_final.log`, at `140c0be`: **2,072 passed, 0 failed, 0 ignored**, 102 targets. That is P2's 2,056 plus the 4 switch
+tests and the 12 Fossil tests. The engine diff from the official engine (main-8626a35) is now 26 files: 17 in `engine/src/`
+and 9 test files. Nothing in `players/`, `Cargo.lock` or `Cargo.toml` changed.
 
 ## Reach per card (`reach.py`, `reach_output.txt`)
 
@@ -486,6 +607,10 @@ The engine diff from R is four files:
 - P2: `tests_before_fix_p2.log`, `tests_after_fix_p2.log`, `suite_p2.log` (the full suite at `5543a4b`).
   - Its counters are in `../coin_prevention_repair_2026-09-30/instrument_scan.py`.
   - Its probe, inventory and smoke are in `../round2_readiness_2026-10-02/`.
+- Oct 9: `tests_before_switch.log`, `tests_after_switch.log` (the off-switch); `switch_gates/` (its gates: `run_switch_gates.sh`,
+  `run_output.txt`, `compare_simulate.py`, `score_dump_p2.rs`, the three simulate pages and `revert_dumps/`);
+  `tests_before_fix_p3.log`, `tests_after_fix_p3.log` (P3); `p3_smoke/` (`pairs.tsv`, `run_p3_smoke.sh`, `run_output.txt`,
+  `games_p3.jsonl`, which equals the run before P3 byte for byte); `suite_final.log` (the full suite at `140c0be`).
 - `reach.py`, `reach_output.txt`: reach per card.
 - `counter_probe_round2.rs`, `counter_probe_round2_output.txt`: the counters on constructed boards.
 - `smoke/`: the smoke check.
