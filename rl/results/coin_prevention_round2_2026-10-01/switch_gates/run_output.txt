@@ -1,0 +1,41 @@
+== builds (35e6acfd = 35e6acfd, d3739b7d = d3739b7d)
+    Finished `release` profile [optimized] target(s) in 4m 19s
+    Finished `release` profile [optimized] target(s) in 4m 27s
+    Finished `release` profile [optimized] target(s) in 3m 51s
+    Finished `release` profile [optimized] target(s) in 4m 06s
+    Finished `release` profile [optimized] target(s) in 4m 21s
+legality_scan sha256 42e59186f8aac81dd64ef98e61769e2b5db12591c34adbb73bbc07f549226a3c; deckgym sha256 89501e18a6e2fd9645b06cf5f845e6247bb22895a40ec546589db491b102fcf2; counter_probe_readiness sha256 9a0ffc62faa38f5317344b9625f8868a9bf5a60f004e2a3a186d64365bfd0e18
+official deckgym sha256 2f7e5fd6e0ae21fffcb9a4df6e70dc3302e2a372f1fde1eb2bb1aa106747a62e
+== gate 1(a) and 2(a): the P2 smoke's 200 deals
+switch on (default): byte for byte games_p2_plain.jsonl (200 games)
+switch off: byte for byte games_p_plain.jsonl, the engine before P2 (200 games)
+== gate 1(b) and 2(b): km3 v km3, 240 games, altaria v blaziken, seed 7100
+official: equal to the pinned record 5a18d31_10_cli_km3.txt on every line but line 6 (the wall time)
+on: equal to the pinned record 5a18d31_10_cli_km3.txt on every line but line 6 (the wall time)
+off: equal to the pinned record 5a18d31_10_cli_km3.txt on every line but line 6 (the wall time)
+games: official 240, on 240; equal game for game (matched by game seed): 240; different: 0 []
+digest official: 59dd3e38108dd725
+digest on: 59dd3e38108dd725
+games: official 240, off 240; equal game for game (matched by game seed): 240; different: 0 []
+digest official: 59dd3e38108dd725
+digest off: 59dd3e38108dd725
+== gate 1(c) and 2(c): the counter probe
+switch on: counter_probe_readiness_output.txt exactly (78 checks, 0 failures)
+switch off: counter_probe_readiness_output_at_P.txt exactly (78 checks, 11 failures)
+== gate 2(d): the revert check at the three games P2 changed
+pairing 0 deal 31 tick 44: 5 candidates
+  before P2: Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }
+  P2:        Play { trainer_card: B3b 064 Small Balloon }
+  P2, switch off for this decision: Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }
+  P2 changed the choice: yes; the switch gives the old choice back: yes; every candidate's score equal to the old engine's: yes
+pairing 1 deal 21 tick 84: 9 candidates
+  before P2: Retreat(1)
+  P2:        Attach { attachments: [(1, Psychic, 2)], is_turn_energy: true }
+  P2, switch off for this decision: Retreat(1)
+  P2 changed the choice: yes; the switch gives the old choice back: yes; every candidate's score equal to the old engine's: yes
+pairing 1 deal 8 tick 43: 8 candidates
+  before P2: Place(Pokemon(B2b 040 Darkrai), 1)
+  P2:        Play { trainer_card: A1 225 Sabrina }
+  P2, switch off for this decision: Place(Pokemon(B2b 040 Darkrai), 1)
+  P2 changed the choice: yes; the switch gives the old choice back: yes; every candidate's score equal to the old engine's: yes
+exit 0

@@ -1,0 +1,14 @@
+PGBOARD coin seat0=[] seat1=[]
+PGTICK 44 (the decision asked about)
+PGCAND EndTurn
+PGCAND Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }
+PGCAND Attach { attachments: [(1, Psychic, 2)], is_turn_energy: true }
+PGCAND Attach { attachments: [(1, Psychic, 3)], is_turn_energy: true }
+PGCAND Play { trainer_card: B3b 064 Small Balloon }
+PGDUMP actor=0 candidates=5
+PGDUMP     -12003.166666666666060 EndTurn
+PGDUMP     -10199.833333333333940 Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }
+PGDUMP     -11994.166666666666060 Attach { attachments: [(1, Psychic, 2)], is_turn_energy: true }
+PGDUMP     -11804.166666666666060 Attach { attachments: [(1, Psychic, 3)], is_turn_energy: true }
+PGDUMP     -10204.166666666666060 Play { trainer_card: B3b 064 Small Balloon }
+deal 31, tick 44: chose Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }

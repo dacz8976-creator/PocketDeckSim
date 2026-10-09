@@ -1,0 +1,22 @@
+PGBOARD coin seat0=[] seat1=[]
+PGTICK 84 (the decision asked about)
+PGCAND EndTurn
+PGCAND Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }
+PGCAND Attach { attachments: [(1, Psychic, 1)], is_turn_energy: true }
+PGCAND Attach { attachments: [(1, Psychic, 2)], is_turn_energy: true }
+PGCAND Attach { attachments: [(1, Psychic, 3)], is_turn_energy: true }
+PGCAND Attack(Attack { energy_required: [Psychic, Psychic], title: "Mega Harmony", fixed_damage: 40, effect: Some("This attack does 30 more damage for each of your Benched Pokémon.") })
+PGCAND Retreat(1)
+PGCAND Retreat(2)
+PGCAND Retreat(3)
+PGDUMP actor=0 candidates=9
+PGDUMP     -20666.633333333331393 EndTurn
+PGDUMP     -20645.633333333331393 Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }
+PGDUMP     -20513.299999999999272 Attach { attachments: [(1, Psychic, 1)], is_turn_energy: true }
+PGDUMP     -20566.633333333331393 Attach { attachments: [(1, Psychic, 2)], is_turn_energy: true }
+PGDUMP     -20666.633333333331393 Attach { attachments: [(1, Psychic, 3)], is_turn_energy: true }
+PGDUMP    -100000.000000000000000 Attack(Attack { energy_required: [Psychic, Psychic], title: "Mega Harmony", fixed_damage: 40, effect: Some("This attack does 30 more damage for each of your Benched Pokémon.") })
+PGDUMP     -20513.299999999999272 Retreat(1)
+PGDUMP     -20977.633333333331393 Retreat(2)
+PGDUMP     -20645.633333333331393 Retreat(3)
+deal 21, tick 84: chose Retreat(1)
