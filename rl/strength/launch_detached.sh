@@ -23,12 +23,20 @@ mkdir -p "$RUNS"
 now() { date -u +%FT%TZ; }
 starttime() { awk '{print $22}' "/proc/$1/stat" 2>/dev/null; }   # clock ticks after boot: tells a reused pid apart
 
-# alive NAME: 0 if the pid file's process is running and is the same process (same start time), else 1
+# alive NAME: 0 if the run is still going, else 1. Going means the pid file's process is running and is the same process
+# (same start time), or, when that leader has died, a process of its group still carries the run's tag (the environment
+# variable LAUNCH_DETACHED_RUN, inherited by everything the run starts), so a reused group number is never taken for it.
 alive() {
-  local f="$RUNS/$1.pid" pid st
+  local f="$RUNS/$1.pid" pid st pgid tag p
   [ -e "$f" ] || return 1
   pid=$(sed -n 's/^pid=//p' "$f"); st=$(sed -n 's/^starttime=//p' "$f")
-  [ -n "$pid" ] && [ -d "/proc/$pid" ] && [ "$(starttime "$pid")" = "$st" ]
+  pgid=$(sed -n 's/^pgid=//p' "$f"); tag=$(sed -n 's/^tag=//p' "$f")
+  [ -n "$pid" ] && [ -d "/proc/$pid" ] && [ "$(starttime "$pid")" = "$st" ] && return 0
+  [ -n "$pgid" ] && [ -n "$tag" ] || return 1
+  for p in $(pgrep -g "$pgid"); do
+    { tr '\0' '\n' < "/proc/$p/environ"; } 2> /dev/null | grep -qx "LAUNCH_DETACHED_RUN=$tag" && return 0
+  done
+  return 1
 }
 
 status_one() {
@@ -56,13 +64,14 @@ case "${1:-}" in
     echo "[$(now)] launch_detached: start $NAME in $DIR: $*" >> "$LOG"
     # Started in the background of a non-interactive shell, the child is not a group leader, so setsid makes it the
     # leader of a new session and group without forking: $! is the run's own pid, and its pid is its group id.
-    setsid nohup "$@" >> "$LOG" 2>&1 < /dev/null &
+    TAG="$NAME-$(date -u +%s)-$$"
+    LAUNCH_DETACHED_RUN="$TAG" setsid nohup "$@" >> "$LOG" 2>&1 < /dev/null &
     PID=$!
     sleep 1
     if [ ! -d "/proc/$PID" ]; then echo "STOP: $NAME ended within a second; see $LOG"; tail -n 5 "$LOG"; exit 4; fi
     PGID=$(ps -o pgid= -p "$PID" | tr -d ' ')
     { echo "name=$NAME"; echo "pid=$PID"; echo "pgid=$PGID"; echo "starttime=$(starttime "$PID")"
-      echo "started=$(now)"; echo "dir=$DIR"; echo "cmd=$*"; } > "$RUNS/$NAME.pid"
+      echo "tag=$TAG"; echo "started=$(now)"; echo "dir=$DIR"; echo "cmd=$*"; } > "$RUNS/$NAME.pid"
     status_one "$NAME"
     [ "$PGID" = "$PID" ] || echo "note: the run is in group $PGID, not its own; stop will signal that group"
     ;;
@@ -87,5 +96,5 @@ case "${1:-}" in
     echo "$NAME: stopped"
     ;;
   *)
-    sed -n '2,20p' "$0"; exit 2 ;;
+    sed -n '2,19p' "$0"; exit 2 ;;
 esac

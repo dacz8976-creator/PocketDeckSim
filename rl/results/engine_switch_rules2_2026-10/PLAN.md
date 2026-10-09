@@ -21,6 +21,18 @@
 > - **Readers for (c) and (f), on the final engine commit:**
 >   - reader one: the laptop session's read-only Opus subagent;
 >   - reader two: Sonnet, local, read-only, with no cargo.
+> - **Dustin's answers to the package (Oct 9, about 4:50 pm Central): "1-3 sure."** So: (1) go, "update if everything passes",
+>   with the two stricter checks; (2) the scope as recommended; (3) the new reference games as recommended. **(4) the laptop,
+>   over the weekend** (Oct 9, about 5:15 pm Central, after the laptop-or-cloud comparison: "Alright it is fine to use the laptop over
+>   the weekend"). He doesn't need it until Monday morning, Oct 12, so the sittings may run without a break from the combined run's
+>   end. The school-morning rule applies on Monday: no new game after 5:15 am Central; a step still going pauses cleanly and resumes
+>   Monday evening. The pin still waits for his word on any judgment call.
+> - **Shot List (Dustin's cleanup, Oct 9):** rows 23-33 came off the list. The four Cursed Jewel readings (rows 30-33) now rest on the
+>   card text and their tests alone; the hit-back sub-cases stay in `P2_EVIDENCE_sonnet.md`. One row is kept: the hit-back against
+>   Heavy Helmet (was row 22, now the list's only row). The old rows are in `rules/_research_notes/shot_list_archive_2026-10-09.json`.
+> - **The cloud, 21:45 UTC:** P1 and Bounded Field ×2 done on `claude/coin-prevention-round2` (b8a8621a, b0dc4844; the suite at
+>   b0dc4844, 2,073 passed and 0 failed, 5ec11518). Now (b), then (a) and (e). The readings stay with the two readers above
+>   (the cloud's item 3 dropped by the coordinator's amendment).
 > - **Recorded, not acted on:**
 >   - the hit back as attack damage beyond Weakness (Sonnet's `P2_EVIDENCE_sonnet.md`, shot-list rows 22-29);
 >   - Hala's own-turn risk;

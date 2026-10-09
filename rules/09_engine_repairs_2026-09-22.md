@@ -58,7 +58,7 @@ Lethal Knock Back finishes its switch before the target is Knocked Out on the Be
 These rules remain source questions and were not settled by the code work:
 
 - the winner when a player's last Pokémon is Knocked Out in the exchange that gives that player a third point;
-- whether Burn precedes a Checkup healing Ability (Poison before Blessed Salt is observed; Burn order remains inferred), although all Checkup Knock Outs now wait until Checkup effects finish;
+- whether Burn precedes a Checkup healing Ability (settled since: Poison, then Burn and its coin, then Blessed Salt, observed in 010316 T15, `rules/03`), although all Checkup Knock Outs now wait until Checkup effects finish;
 - promotion order after a Checkup double Knock Out;
 - what happens when a card effect returns a card to an already full hand;
 - whether Weakness applies when an attack's damage has been reduced to zero before Weakness;
