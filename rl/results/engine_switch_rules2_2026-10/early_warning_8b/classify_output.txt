@@ -1,0 +1,76 @@
+exact counters (REACH): will_confused_attack, will_block_coin_attack, vs_block_coin_built, vs_block_coin_choice_offered, coin_own_side_split, coin_plain_damage_chosen, perish_plain_hit_offered, perish_plain_hit_chosen, guts_own_side_split, trap_territory_offer_changed, trap_territory_outcome_changed, luxury_coin_opp_stadium, fossil_item_lock, attack_return_weakness, coin_queued_by_attack, coin_plain_damage_by_attack
+
+=== km3
+checks: pinned official legality_scan v old built from source, every field: 240 of 240 equal; pinned v Oct 1's recorded rows (main's 5a18d31_8b_new_km3.jsonl), pairings 32-35, every field: 160 of 160 equal; watch v new on every field new records: 240 of 240 equal; first seat by i's parity: 240 of 240
+changed games (new v old on any field old records): 13 of 240; moves differ in 13
+
+pairing 32, fire_victini v psychic_confuse: 0 changed of 40
+
+pairing 33, fire_heatmor v meowth_carefree: 0 changed of 40
+
+pairing 34, t-vespiquen v meowth_carefree: 0 changed of 40
+
+pairing 35, l-sharpedo v meowth_carefree: 11 changed of 40: [2, 3, 10, 13, 14, 26, 30, 31, 35, 37, 38]
+  i =  2: first difference at tick 89 (turn 13; lookahead: the same state, the same offered moves, a different choice; cause tick 89); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [93]}; coin_probe v2 at tick 89: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i =  3: first difference at tick 44 (turn 6; lookahead: the same state, the same offered moves, a different choice; cause tick 44); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [47]}; coin_probe v2 at tick 44: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i = 10: first difference at tick 43 (turn 6; lookahead: the same state, the same offered moves, a different choice; cause tick 43); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [47]}; coin_probe v2 at tick 43: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i = 13: first difference at tick 60 (turn 8; lookahead: the same state, the same offered moves, a different choice; cause tick 60); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [63]}; coin_probe v2 at tick 60: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i = 14: first difference at tick 41 (turn 5; lookahead: the same state, the same offered moves, a different choice; cause tick 41); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [46]}; coin_probe v2 at tick 41: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i = 26: first difference at tick 44 (turn 5; lookahead: the same state, the same offered moves, a different choice; cause tick 44); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [49]}; coin_probe v2 at tick 44: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i = 30: first difference at tick 38 (turn 5; lookahead: the same state, the same offered moves, a different choice; cause tick 38); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [42]}; coin_probe v2 at tick 38: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i = 31: first difference at tick 58 (turn 7; lookahead: the same state, the same offered moves, a different choice; cause tick 58); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [62]}; coin_probe v2 at tick 58: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i = 35: first difference at tick 90 (turn 14; lookahead: the same state, the same offered moves, a different choice; cause tick 90); exact counters at or before it in its turn, or at the cause tick: none; coin_probe v2 at tick 90: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i = 37: first difference at tick 48 (turn 7; lookahead: the same state, the same offered moves, a different choice; cause tick 48); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [56]}; coin_probe v2 at tick 48: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i = 38: first difference at tick 69 (turn 11; lookahead: the same state, the same offered moves, a different choice; cause tick 69); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [72]}; coin_probe v2 at tick 69: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+
+pairing 36, brew-07-hoopa-darkrai-sableye v altaria: 0 changed of 40
+
+pairing 37, brew-09-sableye-obstagoon v altaria: 2 changed of 40: [0, 15]
+  i =  0: first difference at tick 43 (turn 6; state: the state differs after identical moves up to the tick before; cause tick 42); exact counters at or before it in its turn, or at the cause tick: {'attack_return_weakness': [42]}; golden probe for attack_return_weakness at tick 42: {'queued': None, 'cut': None, 'free': False, 'ret': 1} (on the table) => ON THE BOARD
+  i = 15: first difference at tick 51 (turn 9; lookahead: the same state, the same offered moves, a different choice; cause tick 51); exact counters at or before it in its turn, or at the cause tick: none; coin_probe v2 at tick 51: {'queued': None, 'cut': None, 'free': False, 'ret': 1} => LOOKAHEAD ONLY, both halves hold
+control (coin_probe v2), pairing 33 i 1 tick 9, an unchanged game: {'queued': None, 'cut': None, 'free': False, 'ret': None} (nothing found)
+control (coin_probe v2), pairing 33 i 3 tick 8, an unchanged game: {'queued': None, 'cut': None, 'free': False, 'ret': None} (nothing found)
+
+km3 verdicts: {"LOOKAHEAD ONLY, both halves hold": 12, "ON THE BOARD": 1}; of the lookahead ones, resting only on a first-round coin site (UNEXPLAINED under the strict reading): 0; controls that found something: 0
+
+=== k3
+checks: pinned official legality_scan v old built from source, every field: 240 of 240 equal; pinned v Oct 1's recorded rows (main's 5a18d31_8b_new_k3.jsonl), pairings 32-35, every field: 160 of 160 equal; watch v new on every field new records: 240 of 240 equal; first seat by i's parity: 240 of 240
+changed games (new v old on any field old records): 12 of 240; moves differ in 12
+
+pairing 32, fire_victini v psychic_confuse: 0 changed of 40
+
+pairing 33, fire_heatmor v meowth_carefree: 0 changed of 40
+
+pairing 34, t-vespiquen v meowth_carefree: 0 changed of 40
+
+pairing 35, l-sharpedo v meowth_carefree: 7 changed of 40: [9, 10, 13, 14, 19, 26, 30]
+  i =  9: first difference at tick 46 (turn 6; state: the state differs after identical moves up to the tick before; cause tick 45); exact counters at or before it in its turn, or at the cause tick: {'coin_queued_by_attack': [46]} (by key: {'coin_queued_by_attack': {'Wild Swing': [46]}}); golden probe for coin_queued_by_attack at tick 46: {'queued': 0, 'cut': None, 'free': True, 'ret': None} (on the table) => ON THE BOARD
+  i = 10: first difference at tick 40 (turn 6; lookahead: the same state, the same offered moves, a different choice; cause tick 40); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [43]}; coin_probe v2 at tick 40: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i = 13: first difference at tick 59 (turn 8; lookahead: the same state, the same offered moves, a different choice; cause tick 59); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [62]}; coin_probe v2 at tick 59: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i = 14: first difference at tick 42 (turn 5; lookahead: the same state, the same offered moves, a different choice; cause tick 42); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [45]}; coin_probe v2 at tick 42: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i = 19: first difference at tick 35 (turn 4; lookahead: the same state, the same offered moves, a different choice; cause tick 35); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [40]}; coin_probe v2 at tick 35: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i = 26: first difference at tick 41 (turn 5; lookahead: the same state, the same offered moves, a different choice; cause tick 41); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [45]}; coin_probe v2 at tick 41: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+  i = 30: first difference at tick 38 (turn 5; lookahead: the same state, the same offered moves, a different choice; cause tick 38); exact counters at or before it in its turn, or at the cause tick: none; same turn after it (never an explanation): {'coin_queued_by_attack': [42]}; coin_probe v2 at tick 38: {'queued': 3, 'cut': None, 'free': True, 'ret': None, 'queued_attacks': ['Wild Swing']} => LOOKAHEAD ONLY, both halves hold
+
+pairing 36, brew-07-hoopa-darkrai-sableye v altaria: 0 changed of 40
+
+pairing 37, brew-09-sableye-obstagoon v altaria: 5 changed of 40: [0, 23, 25, 34, 35]
+  i =  0: first difference at tick 43 (turn 6; state: the state differs after identical moves up to the tick before; cause tick 42); exact counters at or before it in its turn, or at the cause tick: {'attack_return_weakness': [42]}; golden probe for attack_return_weakness at tick 42: {'queued': None, 'cut': None, 'free': False, 'ret': 1} (on the table) => ON THE BOARD
+  i = 23: first difference at tick 77 (turn 13; lookahead: the same state, the same offered moves, a different choice; cause tick 77); exact counters at or before it in its turn, or at the cause tick: none; coin_probe v2 at tick 77: {'queued': None, 'cut': None, 'free': False, 'ret': 3} => LOOKAHEAD ONLY, both halves hold
+  i = 25: first difference at tick 34 (turn 5; state: the state differs after identical moves up to the tick before; cause tick 33); exact counters at or before it in its turn, or at the cause tick: {'attack_return_weakness': [33]}; golden probe for attack_return_weakness at tick 33: {'queued': None, 'cut': None, 'free': False, 'ret': 1} (on the table) => ON THE BOARD
+  i = 34: first difference at tick 48 (turn 7; lookahead: the same state, the same offered moves, a different choice; cause tick 48); exact counters at or before it in its turn, or at the cause tick: none; coin_probe v2 at tick 48: {'queued': None, 'cut': None, 'free': False, 'ret': 3} => LOOKAHEAD ONLY, both halves hold
+  i = 35: first difference at tick 68 (turn 10; lookahead: the same state, the same offered moves, a different choice; cause tick 68); exact counters at or before it in its turn, or at the cause tick: none; coin_probe v2 at tick 68: {'queued': None, 'cut': None, 'free': False, 'ret': 1} => LOOKAHEAD ONLY, both halves hold
+control (coin_probe v2), pairing 33 i 1 tick 9, an unchanged game: {'queued': None, 'cut': None, 'free': False, 'ret': None} (nothing found)
+control (coin_probe v2), pairing 33 i 3 tick 8, an unchanged game: {'queued': None, 'cut': None, 'free': False, 'ret': None} (nothing found)
+
+k3 verdicts: {"ON THE BOARD": 3, "LOOKAHEAD ONLY, both halves hold": 9}; of the lookahead ones, resting only on a first-round coin site (UNEXPLAINED under the strict reading): 0; controls that found something: 0
+
+=== the share and the implied trace load for step 8
+deals: 480 (old v new; 1440 games over the three builds, and the pinned check); changed: 25; no exact counter explains on the board: 21; of those, settled by the probe (lookahead only, both halves): 21; needing a hand trace or a judgment (UNEXPLAINED or NEEDS A JUDGMENT): 0
+per bot: km3: changed 13/240, no counter 12, hand 0; k3: changed 12/240, no counter 9, hand 0
+implied for step 8 (km3 17,500 and k3 8,750 deals; each bot's share of its 240 deals times its step 8 deals):
+  changed games no exact counter explains: 1203
+  of them needing a hand trace or a judgment after the probe: 0; under the strict reading (a first-round coin site doesn't explain a change): 0
+TRACE LOAD 0   (the line for trace_load.txt, with the commit of these results; strict reading 0)
+
+problems: none
