@@ -17,7 +17,7 @@ fn arg(args: &[String], name: &str) -> Option<String> {
 }
 
 /// Run `f` with every gate in `gates` off, the first outermost.
-fn with_off<'a, R>(gates: &'a [String], f: Box<dyn FnOnce() -> R + 'a>) -> R {
+fn with_off<'a, R: 'a>(gates: &'a [String], f: Box<dyn FnOnce() -> R + 'a>) -> R {
     let Some((gate, rest)) = gates.split_first() else {
         return f();
     };
