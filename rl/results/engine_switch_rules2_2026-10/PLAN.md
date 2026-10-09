@@ -27,6 +27,10 @@
 >   the weekend"). He doesn't need it until Monday morning, Oct 12, so the sittings may run without a break from the combined run's
 >   end. The school-morning rule applies on Monday: no new game after 5:15 am Central; a step still going pauses cleanly and resumes
 >   Monday evening. The pin still waits for his word on any judgment call.
+> - **Open rules question answered (Oct 9, Dustin's recording 20261009_223237000):** a hit back counts as attack damage for the
+>   attacker's Heavy Helmet (Bristling Spikes' 30 cut to 10). The engine applies no cut, before or after this switch. It stays
+>   **outside this switch's scope** (Dustin approved the scope without it; no list we play reaches it). It goes to the next rules
+>   round, with the other cards by their own wording (`rules/09`, open bugs). It goes into this switch only if Dustin asks for it.
 > - **Shot List (Dustin's cleanup, Oct 9):** rows 23-33 came off the list. The four Cursed Jewel readings (rows 30-33) now rest on the
 >   card text and their tests alone; the hit-back sub-cases stay in `P2_EVIDENCE_sonnet.md`. One row is kept: the hit-back against
 >   Heavy Helmet (was row 22, now the list's only row). The old rows are in `rules/_research_notes/shot_list_archive_2026-10-09.json`.
