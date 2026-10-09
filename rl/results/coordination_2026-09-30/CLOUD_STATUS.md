@@ -366,9 +366,24 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      - Steelix's Metal Defender doesn't protect it from the hit back on the same attack.
      - Ledian's Swift doesn't stop the hit back or its Weakness.
      - A Benched attacker (after U-turn) takes it flat.
-     - Open, with nothing built: whether the attacker's own reductions, Guts, Hala and the like apply to an attack's hit back.
+     - Open, with nothing built: whether the attacker's own reductions, Guts, Hala and the like apply to an attack's hit back;
+       and whether a holder that the same attack knocks to the Bench or devolves still hits back (today it doesn't).
      - For the go: coin_probe v2 needs a P2 condition (look-ahead changes, as in all 3 of the smoke's) and (e) a P2 revert
        switch.
+   - (e) For the coordinator, routing for rules switch 2 (main PLAN.md section 0 adds P2 to (c), (f), (h) and (i) only):
+     - who builds coin_probe v2's P2 condition and a P2 revert switch (preconditions (a) and (e));
+     - whether the rest of Sonnet's items go to the cloud (PLAN.md:206-212), given Dustin's Oct 7 rule that preparation
+       doesn't use the laptop's cores while the combined run holds them;
+     - when the cloud's own remaining jobs come: (d) step 8b's rows on P2 with the TRACE LOAD line, the 8c cross-check, and
+       the suite at the final P if P1 or question 2a moves it.
+   - (f) For Dustin and the coordinator, seeds not recorded on main:
+     - main's START_HERE seed table lacks the play-out pilot's block (24,200,000,000 - 24,200,099,999; the row is only on
+       `claude/playout-pilot`);
+     - the Wallace slow report's slot 804 (24,681,400,000) is known only on its branch. Main has no
+       `rl/results/slow_reports/` and the pin reserves only slots 684-686, so a slow report run from main could pick 804 again.
+     - Bringing the report folder or the rows to main needs Dustin's yes; the cloud doesn't edit the pin.
+   - (g) For the coordinator: main rules/02:60 has Rocky Helmet's roles swapped ("a Fire Torchic hitting Metal Tinkatink";
+     TRIAGE.md :73 and :105: Torchic held the Helmet, Tinkatink attacked). A one-line edit on main.
    - (a) Settled: the Shot List rows `chase-order-carefree-steps` and `carefree-steps-snipe` stay as optional proof, low
      priority, with nothing waiting on them (main `rl/results/rules_recordings_2026-10-01/READOUT.md`:326; Dustin, Oct 9:
      "taken care of a long time ago").
