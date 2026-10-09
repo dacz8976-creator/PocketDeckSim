@@ -31,6 +31,16 @@ pub(crate) use apply_action_helpers::handle_damage;
 pub(crate) use apply_action_helpers::handle_damage_only;
 pub(crate) use apply_action_helpers::handle_knockouts;
 pub use apply_action_helpers::with_return_weakness;
+pub use apply_action_helpers::{
+    with_fossil_as_item, with_fossil_item_lock, with_luxury_coin_own_stadium_only, with_own_side_coin, with_own_side_guts,
+    with_perish_on_queued_hit, with_plain_hit_coin, with_queued_site_coin, with_round2, with_trap_territory_each,
+    with_victory_star_after_block_coin, with_will_on_gate_coins,
+};
+pub(crate) use apply_action_helpers::{
+    fossil_as_item_on, fossil_item_lock_on, luxury_coin_own_stadium_only_on, own_side_coin_on, own_side_guts_on,
+    perish_on_queued_hit_on, plain_hit_coin_on, queued_site_coin_on, trap_territory_each_on, victory_star_after_block_coin_on,
+    will_on_gate_coins_on,
+};
 pub use apply_trainer_action::may_effect;
 pub(crate) use effect_ability_mechanic_map::abilities_switched_off;
 pub use effect_ability_mechanic_map::ability_mechanic_from_effect;

@@ -41,8 +41,10 @@ fn luxury_coin_source(state: &State, actor: usize) -> Option<usize> {
 /// of the player who played it: the opponent's Stadium is not covered (the card-text follow-up,
 /// Oct 2; TEXT_AUDIT.md A6b). A Stadium with no recorded player (a board set up without playing
 /// it) stays covered, as before.
+/// G9 (Luxury Coin) of rules switch 2's revert switches: off, every Stadium is covered, as before.
 fn luxury_coin_covers(state: &State, action: &Action) -> bool {
-    !matches!(action.action, SimpleAction::UseStadium)
+    !crate::actions::luxury_coin_own_stadium_only_on()
+        || !matches!(action.action, SimpleAction::UseStadium)
         || state.active_stadium_owner != Some((action.actor + 1) % 2)
 }
 

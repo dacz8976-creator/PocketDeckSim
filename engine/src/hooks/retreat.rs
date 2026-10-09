@@ -252,12 +252,26 @@ fn get_retreat_cost_for_player_internal(
         // Ariados in the OPPONENT's play adds its own 1, as the text on each says (Recording_QA
         // 213034: with two Ariados, Grass Knot read 2 more; the card-text job, Oct 2).
         let opponent = (player + 1) % 2;
-        for (_idx, pokemon) in state.enumerate_in_play_pokemon(opponent).filter(|_| is_active) {
-            if let Some(AbilityMechanic::IncreaseRetreatCostForOpponentActive { amount }) =
-                get_in_play_ability_mechanic(state, pokemon)
-            {
-                for _ in 0..*amount {
+        if !crate::actions::trap_territory_each_on() {
+            // G6 (Trap Territory) of rules switch 2's revert switches: off, one 1 for any number of
+            // Ariados, as before.
+            for (_idx, pokemon) in state.enumerate_in_play_pokemon(opponent).filter(|_| is_active) {
+                if matches!(
+                    get_in_play_ability_mechanic(state, pokemon),
+                    Some(AbilityMechanic::IncreaseRetreatCostForOpponentActive { amount: 1 })
+                ) {
                     normal_cost.push(EnergyType::Colorless);
+                    break;
+                }
+            }
+        } else {
+            for (_idx, pokemon) in state.enumerate_in_play_pokemon(opponent).filter(|_| is_active) {
+                if let Some(AbilityMechanic::IncreaseRetreatCostForOpponentActive { amount }) =
+                    get_in_play_ability_mechanic(state, pokemon)
+                {
+                    for _ in 0..*amount {
+                        normal_cost.push(EnergyType::Colorless);
+                    }
                 }
             }
         }

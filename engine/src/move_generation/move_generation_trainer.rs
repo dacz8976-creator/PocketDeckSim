@@ -64,7 +64,9 @@ pub fn generate_possible_trainer_actions(
     }
     // A Fossil's printed type is Item, so an Item lock stops it too ("they can't play any Item
     // cards from their hand"; the card-text follow-up, Oct 2; rules/04 §6).
-    if matches!(trainer_card.trainer_card_type, TrainerType::Item | TrainerType::Fossil)
+    // G10 (the Fossil lock) of rules switch 2's revert switches: off, an Item only, as before.
+    if (trainer_card.trainer_card_type == TrainerType::Item
+        || (crate::actions::fossil_item_lock_on() && trainer_card.trainer_card_type == TrainerType::Fossil))
         && !can_play_item(state)
     {
         return cannot_play_trainer(); // cant play item cards

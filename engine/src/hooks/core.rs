@@ -2074,7 +2074,10 @@ pub(crate) fn modify_damage(
     // Sept 30): an effect on the Defending Pokémon like the reductions below. Only an attack outcome whose coin came
     // up heads puts one in force (`with_heads_coin_cuts`); everywhere else it is 0. It applies to the attacker's own
     // Pokémon hit by its own attack as well ("If any damage is done to this Pokémon by attacks"; TEXT_AUDIT.md A4).
-    let heads_coin_cut = if is_from_active_attack {
+    // G3 (the own side) of rules switch 2's revert switches: off, the opponent's Pokémon only, as before.
+    let heads_coin_cut = if is_from_active_attack
+        && (attacking_player != target_player || crate::actions::own_side_coin_on())
+    {
         crate::actions::attack_outcome::heads_coin_cut((target_player, target_idx))
     } else {
         0

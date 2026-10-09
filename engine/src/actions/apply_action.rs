@@ -204,6 +204,14 @@ fn try_forecast_victory_star_attack(state: &State, action: &Action) -> Option<Ou
     );
     let will_on_block =
         apply_attack_action::will_goes_to_the_block_coin(action.actor, state, action.is_stack);
+    // G5 (the block coin) and G4 (Will) of rules switch 2's revert switches: off, a gate coin that
+    // Victory Star does not stage keeps the legacy resolution, as before.
+    if gates_first
+        && !apply_attack_action::victory_star_stages_gate_coins(action.actor, state, action.is_stack)
+    {
+        debug!("Victory Star attack-effect pause skipped for unverified attacker coin gate");
+        return None;
+    }
 
     let base = apply_attack_action::forecast_attack_effect(action.actor, state, attack);
     if !base.all_branches_have_coin_paths() {
@@ -367,7 +375,7 @@ fn forecast_victory_star_choice(state: &State, action: &Action) -> Outcomes {
 
     // An attacker with gate coins (Confusion, a block coin) reaches this choice only through their
     // heads (staged in `try_forecast_victory_star_attack`), so no second gate coin follows.
-    let outcomes = if apply_attack_action::victory_star_waits_for_gate_heads(
+    let outcomes = if apply_attack_action::victory_star_stages_gate_coins(
         pending.actor,
         state,
         pending.original_is_stack,
@@ -789,9 +797,11 @@ fn forecast_apply_damage(
     for (damage, player, idx) in targets {
         *raw.entry((*player, *idx)).or_insert(0) += damage;
     }
-    let coin_targets: Vec<((usize, usize), u32)> = if is_from_active_attack {
+    // G1 (the plain-hit coin) and G3 (the own side) of rules switch 2's revert switches: off, no coin flips here, as before.
+    let coin_targets: Vec<((usize, usize), u32)> = if is_from_active_attack && crate::actions::plain_hit_coin_on() {
         raw.iter()
             .filter(|(_, total)| **total > 0)
+            .filter(|(&(player, _), _)| player != attacking_ref.0 || crate::actions::own_side_coin_on())
             .filter_map(|(&(player, idx), _)| {
                 let pokemon = state.in_play_pokemon[player][idx].as_ref()?;
                 apply_attack_action::coin_damage_prevention(state, pokemon)
@@ -865,7 +875,8 @@ fn forecast_apply_damage_after_coins(
         *damage_map.entry((*player, *idx)).or_insert(0) += damage;
     }
     let defender = (attacking_ref.0 + 1) % 2;
-    let perish_body = is_from_active_attack
+    let perish_body = crate::actions::perish_on_queued_hit_on() // G8: off, no Perish Body flip on a plain queued hit, as before
+        && is_from_active_attack
         && state.in_play_pokemon[defender][0].as_ref().is_some_and(|pokemon| {
             matches!(
                 get_in_play_ability_mechanic(state, pokemon),

@@ -112,7 +112,11 @@ impl TrainerType {
     /// rules/04 §6): it is an "Item card" wherever a card text says so, though the engine plays it as a 40-HP Basic.
     /// Every other type matches only itself.
     pub fn is_printed_as(&self, printed: &TrainerType) -> bool {
-        self == printed || (*printed == TrainerType::Item && *self == TrainerType::Fossil)
+        // G11 (P3) of rules switch 2's revert switches: off, every type matches only itself, as before.
+        self == printed
+            || (crate::actions::fossil_as_item_on()
+                && *printed == TrainerType::Item
+                && *self == TrainerType::Fossil)
     }
 }
 

@@ -1425,8 +1425,10 @@ impl State {
                         *attacking_ref == (player_with_empty_active, 0)
                         || targets.iter().any(|(_, player, idx)|
                             *player == player_with_empty_active && *idx == 0),
+                    // G2 of rules switch 2's revert switches: off, no arm for a queued hit, as before.
                     SimpleAction::ApplyQueuedAttackDamage { targets, .. } =>
-                        (*actor + 1) % 2 == player_with_empty_active
+                        crate::actions::queued_site_coin_on()
+                        && (*actor + 1) % 2 == player_with_empty_active
                         && targets.iter().any(|(_, is_opponent, idx)| *is_opponent && *idx == 0),
                     _ => false,
                 })).map_or(0, |idx| idx + 1);

@@ -130,6 +130,23 @@ pub(crate) fn will_goes_to_the_block_coin(
     !is_sub_attack
         && has_block_coin(state.get_active(acting_player))
         && state.has_pending_will_first_heads()
+        // G4 (Will) of rules switch 2's revert switches: off, the block coin is flipped fairly, as before.
+        && crate::actions::will_on_gate_coins_on()
+}
+
+/// Whether Victory Star stages the gate coins first (`victory_star_waits_for_gate_heads`), under rules switch 2's
+/// revert switches: with G5 (the block coin) off, a block coin keeps the legacy resolution, and with G4 (Will) off, so
+/// does a pending Will. With both off this is the official engine's `victory_star_waits_for_confusion_heads`: a
+/// Confused attacker's own attack, with no block coin and no pending Will.
+pub(crate) fn victory_star_stages_gate_coins(
+    acting_player: usize,
+    state: &State,
+    is_sub_attack: bool,
+) -> bool {
+    victory_star_waits_for_gate_heads(acting_player, state, is_sub_attack)
+        && !(has_block_coin(state.get_active(acting_player))
+            && !crate::actions::victory_star_after_block_coin_on())
+        && !(state.has_pending_will_first_heads() && !crate::actions::will_on_gate_coins_on())
 }
 
 /// The chance that every gate coin of `victory_star_waits_for_gate_heads` comes up heads: 1/2 for
@@ -187,7 +204,12 @@ fn apply_attack_common_modifiers(
     // heads (the Confusion coin is not "for the effect of an attack"). The forcing has to go on before
     // the Confusion gate drops their coin paths; `finish_forecast` then finds none and leaves it.
     // With a block coin as well, Will goes to the block coin instead (below).
-    if active.is_confused() && !has_block_effect && state.has_pending_will_first_heads() {
+    // G4 (Will) of rules switch 2's revert switches: off, no Will step here, as before.
+    if active.is_confused()
+        && !has_block_effect
+        && state.has_pending_will_first_heads()
+        && crate::actions::will_on_gate_coins_on()
+    {
         outcomes = match outcomes.force_first_heads_using_will() {
             Ok(forced) => forced,
             Err(original) => original,
@@ -278,7 +300,8 @@ fn apply_defender_damage_prevention_if_needed(
         .filter_map(|(idx, pokemon)| {
             coin_damage_prevention(state, pokemon).map(|reduction| (true, idx, reduction))
         })
-        .chain(state.enumerate_in_play_pokemon(acting_player).filter_map(|(idx, pokemon)| {
+        // G3 (the own side) of rules switch 2's revert switches: off, the opponent's Pokémon only, as before.
+        .chain(state.enumerate_in_play_pokemon(acting_player).filter(|_| crate::actions::own_side_coin_on()).filter_map(|(idx, pokemon)| {
             coin_damage_prevention(state, pokemon).map(|reduction| (false, idx, reduction))
         }))
         .collect();
@@ -356,6 +379,16 @@ fn any_coin_target(state: &State, opponent: usize, idxs: impl IntoIterator<Item 
     })
 }
 
+/// `coin_gated_choice` at the later round's sites (Tornado Shot, Wellspring Dance, Double Splash and Triple Bombardment,
+/// Mischievous Ring): with G2 of rules switch 2's revert switches off, the choice as it is, as before.
+fn site_coin_gated_choice(state: &State, attack: &Attack, choice: SimpleAction) -> SimpleAction {
+    if crate::actions::queued_site_coin_on() {
+        coin_gated_choice(state, attack, choice)
+    } else {
+        choice
+    }
+}
+
 /// The later round's gate (Oct 1; the first round's README, "Recorded for a later round"), for a
 /// queued choice of `attack` built as `ApplyDamage` from the Active: when every target is one of
 /// the opponent's Pokémon and any of them has a coin-flip damage Ability, it is queued through
@@ -389,11 +422,9 @@ fn coin_gated_choice(state: &State, attack: &Attack, choice: SimpleAction) -> Si
 /// Otherwise it is queued exactly as before.
 pub(crate) fn discard_then_damage_choice(state: &State, actor: usize, damage: u32) -> SimpleAction {
     chosen_damage_choice(state, actor, damage, |mechanic| {
-        matches!(
-            mechanic,
-            Mechanic::OptionalDiscardBenchedBasicForExtraDamage { .. }
-                | Mechanic::DiscardOwnBenchedTypeForDamage { .. }
-        )
+        matches!(mechanic, Mechanic::OptionalDiscardBenchedBasicForExtraDamage { .. })
+            // G2 (the seven sites): off, Wild Swing's damage is queued exactly as before.
+            || (crate::actions::queued_site_coin_on() && matches!(mechanic, Mechanic::DiscardOwnBenchedTypeForDamage { .. }))
     })
 }
 
@@ -402,7 +433,8 @@ pub(crate) fn discard_then_damage_choice(state: &State, actor: usize, damage: u3
 /// `discard_then_damage_choice` (the later round, Oct 1).
 pub(crate) fn discard_tools_then_damage_choice(state: &State, actor: usize, damage: u32) -> SimpleAction {
     chosen_damage_choice(state, actor, damage, |mechanic| {
-        matches!(mechanic, Mechanic::DiscardToolsFromHandForDamage { .. })
+        // G2 (the seven sites): off, Litter's damage is queued exactly as before.
+        crate::actions::queued_site_coin_on() && matches!(mechanic, Mechanic::DiscardToolsFromHandForDamage { .. })
     })
 }
 
@@ -466,9 +498,11 @@ fn apply_defender_guts_if_needed(
         .enumerate_in_play_pokemon(opponent)
         .filter(|(_, pokemon)| has_guts(pokemon))
         .map(|(idx, _)| (true, idx))
+        // G7 (Guts) of rules switch 2's revert switches: off, the opponent's Pokémon only, as before.
         .chain(
             state
                 .enumerate_in_play_pokemon(acting_player)
+                .filter(|_| crate::actions::own_side_guts_on())
                 .filter(|(_, pokemon)| has_guts(pokemon))
                 .map(|(idx, _)| (false, idx)),
         )
@@ -2245,8 +2279,9 @@ fn mega_kangaskhan_ex_double_punching_family(attack: &Attack) -> AttackOutcomes 
         // (rules/09; the later round, Oct 1). It lands on whichever Pokémon is Active then, the one
         // hit now or the one promoted if this hit Knocks it Out, so the gate is any of the
         // opponent's Pokémon, and the coin is read on the Active when the damage resolves.
-        let coin_in_play =
-            any_coin_target(state, opponent, 0..state.in_play_pokemon[opponent].len());
+        // G2 (the seven sites): off, the second punch is a plain queued hit, as before.
+        let coin_in_play = crate::actions::queued_site_coin_on()
+            && any_coin_target(state, opponent, 0..state.in_play_pokemon[opponent].len());
         let second = queued_attack_damage_choice(action.actor, &attack, 40, 0, coin_in_play);
 
         // .insert(0 damage to purposely do after the K.O. promotions
@@ -3994,7 +4029,7 @@ fn self_discard_energy_and_choice_bench_damage(
                 (active_damage, opponent, 0),
                 (bench_damage, opponent, in_play_idx),
             ];
-            coin_gated_choice(
+            site_coin_gated_choice(
                 state,
                 attack,
                 SimpleAction::ApplyDamage {
@@ -5857,7 +5892,7 @@ fn coin_flip_also_choice_bench_damage(
     let choices: Vec<_> = state
         .enumerate_bench_pokemon(bench_target)
         .map(|(in_play_idx, _)| {
-            coin_gated_choice(
+            site_coin_gated_choice(
                 state,
                 attack,
                 SimpleAction::ApplyDamage {
@@ -6239,7 +6274,7 @@ fn conditional_bench_damage_attack(
 
             let choices: Vec<_> = choices
                 .into_iter()
-                .map(|choice| coin_gated_choice(state, attack, choice))
+                .map(|choice| site_coin_gated_choice(state, attack, choice))
                 .collect();
             AttackOutcomes::single_effect(move |_, state, action| {
                 if !choices.is_empty() {
@@ -8564,7 +8599,7 @@ fn shuffle_opponent_tools_into_deck_before_damage(attack: &Attack) -> AttackOutc
         if state.in_play_pokemon[opponent][0].is_none() {
             return;
         }
-        let queued = coin_gated_choice(
+        let queued = site_coin_gated_choice(
             state,
             &attack,
             SimpleAction::ApplyDamage {
