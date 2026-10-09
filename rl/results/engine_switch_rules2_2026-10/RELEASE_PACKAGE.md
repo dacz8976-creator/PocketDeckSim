@@ -25,7 +25,7 @@ The bots' own code doesn't change.
   - 18 by Wild Swing now triggering Meowth's coin;
   - 7 by Cursed Jewel's +20.
 - **A correction to what I told you at 3:37 pm:** not all the preparation is done. It is now going to the cloud, so the laptop stays free and cool, as you asked tonight.
-  - The cloud fixes one line of Gholdengo's note in the card list (text only, no game changes).
+  - The cloud fixes one line of Gholdengo's note in the card list (text only, no game changes), and makes Bounded Field double a hit back's Weakness, as its text reads (no game we play changes).
   - The cloud finishes the checking tools:
     - the probe learns round 2's cases (Will, Ariados, the coin on your own Pokémon, Guts and Perish Body);
     - the sorting script learns the case where the new game is the shorter one;
@@ -93,9 +93,10 @@ All of this comes before the B4b merge trial is locked in.
 - **Steelix's Metal Defender** doesn't block the hit back on the turn it's used. The card says "your opponent's next turn", and the hit back lands on Steelix's own turn. (Shot list, row 30.)
 - **Ledian's Swift** doesn't stop the hit back. Its text covers "this attack's damage", and the hit back is the other attack's damage. (Row 31.)
 - **An attacker that U-turned to the Bench** takes the hit back flat. Weakness never applies on the Bench (official). (Row 32.)
-- **Bounded Field** doesn't double the hit back's +20.
-  - **This one is not the plain reading.** Bounded Field doubles Weakness for "damage from attacks used by Pokémon in play", and a hit back fits that. So by your card-text rule, the simulator should double it.
-  - No list we play has Bounded Field with one of these attacks, so no game changes either way. I've asked the coordinator whether the cloud should switch it now, with the Gholdengo line. (Row 33.)
+- **Bounded Field** doubles the hit back's Weakness (×2), like any attack's.
+  - It doubles Weakness for "damage from attacks used by Pokémon in play", and a hit back fits that.
+  - The cloud's first version kept +20. It is being switched to the plain reading now, with the Gholdengo line (your card-text rule; the coordinator, Oct 9).
+  - No list we play has Bounded Field with one of these attacks, so no game changes. (Row 33.)
 
 **Open rules questions:**
 - **Does a hit back count as attack damage for other cards?** Those cards are Heavy Helmet's −20, Disguise, Guts, Rescue Scarf, Lucky Egg and the attacker's own Rocky Helmet.

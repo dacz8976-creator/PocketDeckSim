@@ -16,12 +16,15 @@
 >   - **(a)** the probe's round-2 conditions;
 >   - **(b)** the shorter-game case, round 2's counter names in `validate_v2.py`, and the synthetic tests;
 >   - **(e)** one revert switch per gate.
-> - **Two readers do (c) and (f).** Sonnet reads on the laptop, read-only, with no cargo.
+> - **Also sent to the cloud:** Bounded Field doubles a hit back's Weakness (×2), as its text reads. The test `bounded_field_keeps_the_hit_back_extra_at_20` is inverted, and the off switch stays (the coordinator, Oct 9).
+> - **The Opus cloud only builds.**
+> - **Readers for (c) and (f), on the final engine commit:**
+>   - reader one: the laptop session's read-only Opus subagent;
+>   - reader two: Sonnet, local, read-only, with no cargo.
 > - **Recorded, not acted on:**
 >   - the hit back as attack damage beyond Weakness (Sonnet's `P2_EVIDENCE_sonnet.md`, shot-list rows 22-29);
 >   - Hala's own-turn risk;
->   - the four P2 readings (shot-list rows 30-33).
->   - Bounded Field's +20 is not the plain reading. The card text reads as ×2 for the hit back.
+>   - the four P2 readings as defaults (shot-list rows 30-33).
 
 ## 0. The Oct 8 update (the laptop; read-only preparation)
 
