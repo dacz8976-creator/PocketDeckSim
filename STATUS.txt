@@ -1,6 +1,5 @@
-Laptop checked at 2026-10-09T21:39Z: 2 run(s) on the watch list, 1 not done.
-2026-10-09T21:39Z small: 608 of 5 games (303 kx3), +0 in 0 min, last game 20:37Z; DONE
-2026-10-09T21:39Z bad: the watch list's line could not be read (run_watch.sh exit 2)
+Laptop checked at 2026-10-09T21:39Z: 1 run(s) on the watch list, 1 not done.
+2026-10-09T21:39Z combined: 608 of 1120 games (303 kx3), +0 in 12 min, last game 20:37Z; RUNNING (pid 29189)
 
 Updated every 30 minutes by the Windows task "PocketDeckSim laptop status" while a run is not done, and every 6 hours
 otherwise. If the check time above is much older than that, the laptop is off or asleep, or WSL is down.
