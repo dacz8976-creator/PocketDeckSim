@@ -1,0 +1,21 @@
+.24 and 24 games; game for game (content, not timing) DIFFERENT; 1 differ: ['line 24: d3|o1|1|1|X v d1|o1|0|0|ref']
+.24 and 24 games; game for game (content, not timing) EQUAL
+.24 and 24 games; game for game (content, not timing) DIFFERENT; 1 differ: ['line 6: d1|o1|1|0|X v d1|o1|1|0|X']
+.24 and 24 games; game for game (content, not timing) DIFFERENT; 2 differ: ['line 7: d1|o1|1|1|ref v d1|o1|1|1|X', 'line 8: d1|o1|1|1|X v d1|o1|1|1|ref']
+F............INCOMPLETE: 23 of 24 games; 1 problem(s); see /tmp/tmpixlo921_/merged/MERGE_RECORD.md
+..........COMPLETE: 24 of 24 games; 0 problem(s); see /tmp/tmpktnrkfaf/merged/MERGE_RECORD.md
+..stamped /tmp/tmpg53_djan/w1: manifest d6a29dacb39d, program 9a3a45d01531, slice ['d1', 'd3']
+.stamp: not decks of this registration: ['nope'] (its decks: ['d1', 'd2', 'd3'])
+.
+======================================================================
+FAIL: test_the_same_games_in_another_order_are_equal (test_split_collect.Compare.test_the_same_games_in_another_order_are_equal)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 320, in test_the_same_games_in_another_order_are_equal
+    self.assertEqual(sc.main(["compare", a, b]), 0)
+AssertionError: 1 != 0
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.144s
+
+FAILED (failures=1)

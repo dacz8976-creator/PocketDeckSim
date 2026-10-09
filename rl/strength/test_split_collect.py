@@ -309,6 +309,24 @@ class Compare(Scratch):
         a, b = self.files(change=5)
         self.assertEqual(sc.main(["compare", a, b]), 1)
 
+    def test_the_same_games_in_another_order_are_equal(self):
+        # a straight run with several threads writes its games as they finish, the merge in the job list's order
+        a, b = self.files()
+        with open(b) as f:
+            lines = f.readlines()
+        lines[6], lines[7] = lines[7], lines[6]
+        with open(b, "w") as f:
+            f.writelines(lines)
+        self.assertEqual(sc.main(["compare", a, b]), 0)
+
+    def test_a_game_missing_from_one_side_fails(self):
+        a, b = self.files()
+        with open(b) as f:
+            lines = f.readlines()
+        with open(b, "w") as f:
+            f.writelines(lines[:-1] + [lines[0]])
+        self.assertEqual(sc.main(["compare", a, b]), 1)
+
 
 class Stamp(Scratch):
     def test_the_stamp_records_the_manifest_and_program_sha256(self):
