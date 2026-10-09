@@ -12,10 +12,10 @@ i = 35: first difference at tick  90 (turn 14; lookahead: the same state, the sa
 i = 37: first difference at tick  48 (turn 7; lookahead: the same state, the same offered moves, a different choice; cause tick 48); counters at or before tick 48 in its turn, at the cause tick or at the new game's first extra tick: none; same turn after tick 48: {'coin_queued_by_attack': [56]}; probe at tick 48: queued 3 (a pure frame), cut None, ret None, the queued path names ['Wild Swing'] => LOOKAHEAD ONLY, both halves hold
 i = 38: first difference at tick  69 (turn 11; lookahead: the same state, the same offered moves, a different choice; cause tick 69); counters at or before tick 69 in its turn, at the cause tick or at the new game's first extra tick: none; same turn after tick 69: {'coin_queued_by_attack': [72]}; probe at tick 69: queued 3 (a pure frame), cut None, ret None, the queued path names ['Wild Swing'] => LOOKAHEAD ONLY, both halves hold
 
-negative control (unchanged games, a mid-game tick with no Meowth in play on either side: the probe must find nothing):
-  i = 0, tick 8: queued None, cut None, ret None  (nothing found, as it must be)
-  i = 5, tick 8: queued None, cut None, ret None  (nothing found, as it must be)
-  i = 8, tick 8: queued None, cut None, ret None  (nothing found, as it must be)
+negative control (unchanged games, a mid-game tick with no Meowth in play on either side: no queued choice, cut or return ply):
+  i = 0, tick 8: queued None, cut None, ret None  (clean, as it must be)
+  i = 5, tick 8: queued None, cut None, ret None  (clean, as it must be)
+  i = 8, tick 8: queued None, cut None, ret None  (clean, as it must be)
 
 kinds of first difference: {'lookahead': [2, 3, 10, 13, 14, 26, 30, 31, 35, 37, 38]}
 verdicts: {"LOOKAHEAD ONLY, both halves hold": 11} ; under the strict reading: {"LOOKAHEAD ONLY, both halves hold": 11}

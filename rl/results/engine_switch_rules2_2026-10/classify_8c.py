@@ -16,9 +16,11 @@ classify_8c.py` (Sonnet's, Oct 1), changed only where switch 2 differs:
     (validate_v2.py's rule). vs_probe is not run: its gate (repair A's Confusion-first branch) is the first round's, on both engines;
   - the golden check runs at the last explaining tick of every exact counter the probe has a condition for (`golden_ok`: the counter's
     kind at ply 1, RETURN at ply 1, a queued choice after 0 moves or a cut at ply 1); luxury_coin_opp_stadium and fossil_item_lock
-    have none and are listed as such;
-  - CONDITION 3 rows are the changed rows where no reach counter fired and an off-gate counter did (the hand-off's offgate_counters
-    column), listed in condition3.tsv as before;
+    have none and are listed as such, and so has coin_queued_by_attack at a tick where it fired only for Mega Kangaskhan ex's
+    Double-Punching Family (the keys that fired there, from the row's raw exact counters; `golden_ok`'s docstring says why);
+  - CONDITION 3 rows are the changed rows where no reach counter fired anywhere in the game and an off-gate counter did (the hand-off's
+    offgate_counters column), listed in condition3.tsv as before;
+  - the negative controls require no queued coin-path choice, cut or return ply (`control_clean`, step 8b's requirement);
   - "In lookahead" also needs the revert check (PLAN.md's change 3, precondition (e)): this script doesn't run it; every lookahead
     verdict is listed in lookahead.tsv for it.
 For each changed row (step, bot, pairing, i) of the hand-off: vs_trace on both engines (each trace's move fingerprint must equal the
@@ -40,7 +42,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from tightened_rule import (load_trace, first_difference, counter_hits, board_hits, round2_reach, watch_from_counters,  # noqa: E402
-                            parse_probe, nothing_found, lookahead_verdict, golden_ok, ROUND2_QUEUED, R2_KINDS, BOTH_HALVES, JUDGMENT)
+                            parse_probe, nothing_found, control_clean, lookahead_verdict, golden_ok, ROUND2_QUEUED, R2_KINDS, BOTH_HALVES, JUDGMENT)
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--work", required=True)
@@ -58,7 +60,7 @@ ap.add_argument("--chunk", type=int, default=20, help="deals per vs_trace call")
 a = ap.parse_args()
 if a.controls_from and not a.controls_tag:
     sys.exit("--controls-from needs --controls-tag")
-W, OUT = Path(a.work), Path(a.out)
+W, OUT = Path(a.work).resolve(), Path(a.out)
 OUT.mkdir(parents=True, exist_ok=True)
 (W / "traces").mkdir(exist_ok=True)
 
@@ -171,6 +173,14 @@ def watch_of(row):
     return watch_from_counters(json.loads(row["exact_counters"] or "{}"), REACH)
 
 
+def fired_keys(row, name, tick):
+    """The round-2 keys a keyed exact counter fired for at `tick`, from the hand-off row's raw exact counters (() for a plain one)."""
+    v = json.loads(row["exact_counters"] or "{}").get(name)
+    if not isinstance(v, dict):
+        return ()
+    return tuple(sorted(k for k, ticks in v.items() if tick in ticks and (name != "coin_queued_by_attack" or k in ROUND2_QUEUED)))
+
+
 def has_offgate(row):
     try:
         v = json.loads(row.get("offgate_counters") or "{}")
@@ -200,7 +210,7 @@ for r in rows:
     else:
         rec["verdict"] = rec["strict"] = "UNEXPLAINED"
         rec["note"] = f"{d['kind']}: {d['detail']}, no reach counter"
-    rec["condition3"] = not rec["hits"] and has_offgate(r)
+    rec["condition3"] = not any(v["ticks"] for v in w.values()) and has_offgate(r)
     recs.append(rec)
 
 # ---- probe jobs: every lookahead game at k; golden probes at the last explaining tick of each counter the probe has a condition for ----
@@ -245,13 +255,13 @@ for rec in recs:
     if rec["verdict"] == "ON THE BOARD":
         for name, ticks in rec["hits"].items():
             g = p.get(f"golden_{max(ticks)}")
-            ok = golden_ok(name, g) if g else None
+            ok = golden_ok(name, g, fired_keys(r, name, max(ticks))) if g else None
             if ok is None:
                 no_golden[name] += 1
             elif not ok:
                 golden_bad.append((rec["key"], name, g))
 
-# ---- negative controls: unchanged games, a mid-game tick, nothing may be found ----
+# ---- negative controls: unchanged games, a mid-game tick, no queued coin-path choice, cut or return ply (control_clean) ----
 controls = []
 if a.controls_from:
     for bot in sorted({r["bot"] for r in rows}):
@@ -270,7 +280,7 @@ if a.controls_from:
             if tick is None:
                 continue
             res = probe(bot, pg, held, panel, i, tick)
-            controls.append({"bot": bot, "pairing": pg, "i": i, "tick": tick, "result": res, "nothing": nothing_found(res)})
+            controls.append({"bot": bot, "pairing": pg, "i": i, "tick": tick, "result": res, "nothing": control_clean(res)})
             found += 1
 control_bad = [c for c in controls if not c["nothing"]]
 
@@ -289,7 +299,7 @@ def turn_at(rec, k):
     if k < len(t):
         return t[k]["turn"]
     row = rec["d"].get("x") or rec["d"].get("y")
-    return row["turn"] if row else ""
+    return row["turn"] if row else (t[-1]["turn"] if t else "")
 
 
 def line(rec):
@@ -349,6 +359,7 @@ with open(OUT / "judgment.md", "w", encoding="utf-8") as f:
                 f"turn {y['turn']}, tick {d['k']}: the old engine chose `{x['chosen'][:110]}` and the new one chose `{y['chosen'][:110]}` "
                 f"from the same position. Probe: {rec['probes'].get('probe')}.\n")
 unexpl = [rec for rec in recs if rec["verdict"] == "UNEXPLAINED" or rec["strict"] == "UNEXPLAINED"]
+(OUT / "UNEXPLAINED.md").unlink(missing_ok=True)
 if unexpl:
     with open(OUT / "UNEXPLAINED.md", "w", encoding="utf-8") as f:
         f.write(f"# STOP: {len(unexpl)} unexplained games (the strict reading included)\n\n" + "\n".join("- " + line(rec) for rec in unexpl) + "\n")

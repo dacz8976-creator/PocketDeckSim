@@ -7,9 +7,10 @@ hand-off's many pairings are classify_8c.py's (this folder). Changed only where 
     ones put together by `reach_row` (coin_queued_by_attack: the later round's eight attacks only), not repair B's three;
   - the probe is coin_probe v2 with round 2's conditions (`parse_probe`, `lookahead_verdict`: inside the search, only at its leaf, and
     the strict reading of a queued choice that may be a first-round site, both printed);
-  - the golden check runs at the last explaining tick of each counter the probe has a condition for (`golden_ok`); S3's four hand-traced
-    games were the first switch's (--s3, empty by default);
-  - the negative controls require that nothing at all is found (`nothing_found`), round 2's kinds and trapleaf included.
+  - the golden check runs at the last explaining tick of each counter the probe has a condition for (`golden_ok`, with the keys that
+    fired there: not for coin_queued_by_attack fired only for Double-Punching Family); S3's four hand-traced games were the first
+    switch's (--s3, empty by default);
+  - the negative controls require no queued coin-path choice, cut or return ply (`control_clean`, step 8b's requirement).
 "In lookahead" also needs the revert check (precondition (e)), which this script doesn't run.
 
   python3 coin_lookahead.py --dir SMOKE_DIR --a A.txt --b B.txt --seed-base N --probe PATH/coin_probe_v2 [--bot km3] [--pairing 0]
@@ -23,7 +24,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 from tightened_rule import (load_trace, first_difference, counter_hits, board_hits, round2_reach, reach_row, parse_probe,  # noqa: E402
-                            nothing_found, lookahead_verdict, golden_ok, ROUND2_QUEUED, R2_KINDS)
+                            nothing_found, control_clean, lookahead_verdict, golden_ok, ROUND2_QUEUED, R2_KINDS)
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--dir", required=True)
@@ -47,7 +48,8 @@ LISTS_REACH_ROUND2 = any(re.search(rf"\b{re.escape(c)}\s*$", Path(p).read_text(e
 
 old, old_done = load_trace(glob.glob(str(D / "trace_old_*.jsonl.gz"))[0])
 new, new_done = load_trace(D / "trace_R.jsonl.gz")
-watch = {r["i"]: reach_row(r) for r in map(json.loads, open(D / "watch_R.jsonl"))}
+raw = {r["i"]: r for r in map(json.loads, open(D / "watch_R.jsonl"))}
+watch = {i: reach_row(r) for i, r in raw.items()}
 changed = [i for i in sorted(old_done) if old_done[i]["moves"] != new_done[i]["moves"]]
 print(f"{len(changed)} changed games of {len(old_done)}: {changed}")
 print(f"reach counters: {', '.join(REACH)}")
@@ -63,6 +65,13 @@ def probe(deal, tick, limit=None):
     if c.get("truncated") and limit is None and nothing_found(c):
         return probe(deal, tick, RETRY_LIMIT) | {"retried": RETRY_LIMIT}
     return c
+
+
+def fired_keys(i, name, tick):
+    v = raw[i].get(name)
+    if not isinstance(v, dict) or "ticks" in v:
+        return ()
+    return tuple(sorted(k for k, ticks in v.items() if tick in ticks and (name != "coin_queued_by_attack" or k in ROUND2_QUEUED)))
 
 
 def show(c):
@@ -83,7 +92,7 @@ for i in changed:
     hits = board_hits(watch[i], REACH, y, d)
     literal = counter_hits(watch[i], REACH, y, d, literal=True)
     later = counter_hits(watch[i], REACH, y, d, after=True)
-    turn = (y[k] if k < len(y) else d.get("x") or y[-1])["turn"]
+    turn = (y[k] if k < len(y) else d.get("x") or d.get("y") or y[-1])["turn"]
     counters = f"counters at or before tick {k} in its turn, at the cause tick or at the new game's first extra tick: {hits or 'none'}" \
         + ("" if literal == hits else f" (only the first clause: {literal or 'none'})") \
         + (f"; same turn after tick {k}: {later}" if later else "")
@@ -95,7 +104,7 @@ for i in changed:
         for tick in sorted({max(t) for n, t in hits.items() if golden_ok(n, EMPTY) is not None}):
             c = probe(i, tick)
             names = [n for n, t in hits.items() if max(t) == tick and golden_ok(n, EMPTY) is not None]
-            ok = all(golden_ok(n, c) for n in names)
+            ok = all(golden_ok(n, c, fired_keys(i, n, tick)) is not False for n in names)
             bad += not ok
             gold.append(f"golden probe at tick {tick} for {names}: {show(c)} ({'on the table' if ok else 'NOT ON THE TABLE'})")
             golden[i] = (k, c)
@@ -120,7 +129,7 @@ if a.s3:
         bad += not ok
         print(f"  i = {i}: traced tick {tick}; first difference here {k}; verdict {verdicts.get(i)}  ({'match' if ok else 'DIFFERENT'})")
 
-print("\nnegative control (unchanged games, a mid-game tick with no Meowth in play on either side: the probe must find nothing):")
+print("\nnegative control (unchanged games, a mid-game tick with no Meowth in play on either side: no queued choice, cut or return ply):")
 controls = []
 for i in sorted(set(old) - set(changed)):
     for t, r in enumerate(old[i][:60]):
@@ -131,9 +140,9 @@ for i in sorted(set(old) - set(changed)):
         break
 for i, t in controls:
     c = probe(i, t)
-    ok = nothing_found(c)
+    ok = control_clean(c)
     bad += not ok
-    print(f"  i = {i}, tick {t}: {show(c)}  ({'nothing found, as it must be' if ok else 'FOUND SOMETHING'})")
+    print(f"  i = {i}, tick {t}: {show(c)}  ({'clean, as it must be' if ok else 'FOUND SOMETHING'})")
 
 tally, strict_tally = {}, {}
 for i in verdicts:

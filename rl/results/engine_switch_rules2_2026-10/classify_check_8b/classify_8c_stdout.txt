@@ -35,16 +35,16 @@
   "lookahead / LOOKAHEAD ONLY, both halves hold": 21,
   "state / ON THE BOARD": 4
  },
- "condition3": 18,
+ "condition3": 2,
  "condition3_verdicts": {
-  "LOOKAHEAD ONLY, both halves hold": 18
+  "LOOKAHEAD ONLY, both halves hold": 2
  },
  "golden_mismatches": 0,
  "explaining_counters_without_a_golden_check": {},
  "lookahead_for_the_revert_check": 21,
  "control_failures": 0,
  "problems": [],
- "tightened_rule_sha256": "3464ee9c1a21b18b1edd5085d85e58b46879e75493db73be633f68adc5d2f280"
+ "tightened_rule_sha256": "f61a34fc4aea356513ed8ced84e97cb31c3e42ed528ec7451bfec832e2911b1d"
 }
 
-CONDITION 3 rows: 18; verdicts {'LOOKAHEAD ONLY, both halves hold': 18}
+CONDITION 3 rows: 2; verdicts {'LOOKAHEAD ONLY, both halves hold': 2}

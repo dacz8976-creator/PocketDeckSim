@@ -15,7 +15,8 @@ with the length case finished and round 2's counter names.
   - Shared by the switch-2 copies of classify_8c.py and coin_lookahead.py (this folder; Oct 9, later): `board_hits` (counter_hits and
     extra_tick_hits together), `watch_from_counters` (a hand-off row's counters as a watch row), `parse_probe` (coin_probe v2's
     RESULT, RESULT_P2 and RESULT_R2 lines), `lookahead_verdict` (with round 2's kinds, and the strict reading of a queued choice that
-    may be a first-round site), `golden_ok` and `nothing_found`. Read their docstrings.
+    may be a first-round site), `golden_ok`, `nothing_found` (the probe's retry) and `control_clean` (the negative controls). Read
+    their docstrings.
   Tests: test_tightened_rule.py (this folder).
 
 v2's docstring follows.
@@ -202,7 +203,8 @@ def parse_probe(out):
     c = {"queued": num(m[1]), "cut": num(m[2]), "free": m[3] == "true", "ret": num(p2[1]),
          "r2": {k: num(r2[j + 1]) for j, k in enumerate(R2_KINDS)}, "trapleaf": num(r2[len(R2_KINDS) + 1])}
     block = re.search(r"^ *QUEUED: .*\n((?: {4}after .*\n?)+)", out, re.M)
-    titles = sorted({t for line in (block[1].splitlines() if block else []) for t in re.findall(r'title: "([^"]+)"', line.split("] offers")[0])})
+    titles = sorted({_title(t, end) for line in (block[1].splitlines() if block else [])
+                     for t, end in re.findall(r'title: "([^"]*?)("|\.\.\.)', line.split("] offers")[0])})
     if titles:
         c["queued_attacks"] = titles
     if "search stopped at" in out:
@@ -210,10 +212,27 @@ def parse_probe(out):
     return c
 
 
+def _title(t, end):
+    """An attack title on a probe path. The probe cuts each action to 87 characters and "...", which can cut a title short (Mega
+    Kangaskhan ex's "Double-Punching Family"): a cut title that begins one of ROUND2_QUEUED's attacks is read as that attack, any
+    other is kept with its "..."."""
+    if end == '"':
+        return t
+    return next((name for name in sorted(ROUND2_QUEUED) if t and name.startswith(t)), t + "...")
+
+
 def nothing_found(c):
     """The probe found no condition at all (a negative control's requirement)."""
     return (c["queued"] is None and c["cut"] is None and c["ret"] is None and c["trapleaf"] is None
             and all(v is None for v in c["r2"].values()))
+
+
+def control_clean(c):
+    """A negative control's requirement (an unchanged game, a mid-game tick without Meowth): no queued coin-path choice, cut or
+    return ply, as step 8b's controls required. Round 2's kinds and trapleaf are not required to be absent: a Will in hand or two
+    Ariados in play can be found in a game that didn't change, and the board summary doesn't show a hand; the probe's self-test holds
+    round 2's negatives (13 boards)."""
+    return c["queued"] is None and c["cut"] is None and c["ret"] is None
 
 
 def lookahead_verdict(c, round2_queued):
@@ -238,15 +257,20 @@ def lookahead_verdict(c, round2_queued):
     return (leaf, leaf) if leaf else ("UNEXPLAINED", "UNEXPLAINED")
 
 
-def golden_ok(name, c):
+def golden_ok(name, c, keys=()):
     """The golden check for an exact counter that explains a game on the board, from the probe run at the counter's last explaining
     tick: its condition must be on the table there (a round-2 kind or RETURN at ply 1; a queued choice after 0 moves or a cut at
-    ply 1). None for a counter the probe has no condition for (luxury_coin_opp_stadium, fossil_item_lock)."""
+    ply 1). None for a counter the probe has no condition for (luxury_coin_opp_stadium, fossil_item_lock), and for
+    coin_queued_by_attack when the attacks it fired for at that tick (`keys`) are only Mega Kangaskhan ex's Double-Punching Family:
+    the engine queues its second punch when any of the opponent's Pokemon has a coin Ability (any_coin_target), the probe's QUEUED
+    only when a target has one."""
     if name in R2_COUNTER_KIND:
         return c["r2"][R2_COUNTER_KIND[name]] == 1
     if name == "attack_return_weakness":
         return c["ret"] == 1
     if name == "coin_queued_by_attack":
+        if keys and set(keys) <= {"Double-Punching Family"}:
+            return None
         return c["queued"] == 0 or c["cut"] == 1
     return None
 
