@@ -3,6 +3,25 @@
 > **Unparked Oct 7, scheduled after the combined run** (Dustin's decision on Astra's review, relayed by the coordinator; `rl/RUN5.md` (E), 2bfb1b73). Section 0 below is the Oct 8 update: the scope now has a third part, Cursed Jewel's Weakness. Preparation is read-only while the combined run holds the laptop (pre-registered 143e2b51, expected to end Saturday night or Sunday, Oct 10-11). Sections 1-9 are the Oct 2 draft. Where section 0 differs, section 0 wins. The questions in section 9 still need Dustin's answers at the go.
 >
 > *History: parked Oct 2 (Dustin's direction, RUN5 "Where things stand"), when the work turned to the planning pilot.*
+>
+> **Oct 9 status** (the package for Dustin is `RELEASE_PACKAGE.md`):
+> - **Done:**
+>   - P2 with its off-switch and gates, and P3, the seven Fossil places (question 2a);
+>   - the suite at the final engine commit **140c0be2** (tree 8d71f693), 2,072 passed and 0 failed;
+>   - the inventory rerun (i): brews 07 and 09 only;
+>   - step 8b on the cloud: 25 of 480 deals changed, **TRACE LOAD 0** (precondition d; `early_warning_8b/` on `claude/coin-prevention-round2` 63c28e6e);
+>   - the probe's P2 check (RETURN).
+> - **Open, sent to the cloud by the coordinator (Oct 9):**
+>   - **P1** (`card_validation.rs`:102 at 140c0be2 still says "regardless of who played the Stadium");
+>   - **(a)** the probe's round-2 conditions;
+>   - **(b)** the shorter-game case, round 2's counter names in `validate_v2.py`, and the synthetic tests;
+>   - **(e)** one revert switch per gate.
+> - **Two readers do (c) and (f).** Sonnet reads on the laptop, read-only, with no cargo.
+> - **Recorded, not acted on:**
+>   - the hit back as attack damage beyond Weakness (Sonnet's `P2_EVIDENCE_sonnet.md`, shot-list rows 22-29);
+>   - Hala's own-turn risk;
+>   - the four P2 readings (shot-list rows 30-33).
+>   - Bounded Field's +20 is not the plain reading. The card text reads as ×2 for the hit back.
 
 ## 0. The Oct 8 update (the laptop; read-only preparation)
 
