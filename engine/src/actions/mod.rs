@@ -30,6 +30,7 @@ pub(crate) use apply_action_helpers::handle_attack_retaliation;
 pub(crate) use apply_action_helpers::handle_damage;
 pub(crate) use apply_action_helpers::handle_damage_only;
 pub(crate) use apply_action_helpers::handle_knockouts;
+pub use apply_action_helpers::with_return_weakness;
 pub use apply_trainer_action::may_effect;
 pub(crate) use effect_ability_mechanic_map::abilities_switched_off;
 pub use effect_ability_mechanic_map::ability_mechanic_from_effect;

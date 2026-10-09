@@ -1,0 +1,72 @@
+   Compiling deckgym v0.1.0-pdl.rules4 (/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/engine)
+warning: unused import: `TrainerType`
+  --> src/players/value_functions.rs:21:76
+   |
+21 | use crate::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType, BASIC_STAGE};
+   |                                                                            ^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> src/actions/energy_moves.rs:187:9
+    |
+187 |     let mut take = |pools: &mut Vec<(usize, Vec<EnergyType>)>,
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: associated function `geometric_until_tails` is never used
+   --> src/actions/attack_outcome.rs:487:12
+    |
+311 | impl AttackOutcomes {
+    | ------------------- associated function in this implementation
+...
+487 |     pub fn geometric_until_tails(
+    |            ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `estimated_attack_damage` is never used
+    --> src/players/value_functions.rs:2232:4
+     |
+2232 | fn estimated_attack_damage(attack: &Attack, slot: &PlayedCard, state: &State, player: usize) -> f64 {
+     |    ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `best_attack_value` is never used
+    --> src/players/value_functions.rs:2528:4
+     |
+2528 | fn best_attack_value(slot: &PlayedCard, form: &Card, state: &State, player: usize) -> f64 {
+     |    ^^^^^^^^^^^^^^^^^
+
+warning: `deckgym` (lib) generated 5 warnings (run `cargo fix --lib -p deckgym` to apply 2 suggestions)
+    Finished `release` profile [optimized] target(s) in 3m 11s
+     Running tests/rules_repair_return_damage_weakness.rs (/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2tgt/release/deps/rules_repair_return_damage_weakness-4a5f40acd3ac9cfb)
+
+running 21 tests
+test ability_and_attack_return_on_one_defender ... ok
+test ability_return_damage_stays_flat ... ok
+test bounded_field_keeps_the_hit_back_extra_at_20 ... ok
+test apply_damage_path_takes_weakness ... ok
+test held_back_hit_back_takes_weakness ... ok
+test double_knockout_by_the_hit_back_the_attacker_promotes_first ... ok
+test hit_back_on_a_benched_attacker_stays_flat ... ok
+test metal_defender_does_not_shield_its_own_hit_back ... ok
+test recording_183108_t10_hit_back_lands_when_the_holder_is_knocked_out ... ok
+test each_attack_hits_back_with_weakness_on_a_weak_attacker ... ok
+test each_attack_hits_back_flat_on_an_attacker_not_weak_to_it ... ok
+test recording_183108_t8_cursed_jewel_returns_60 ... ok
+test rocky_helmet_stays_flat_on_a_weak_attacker ... ok
+test swift_does_not_shield_the_hit_back ... ok
+test perish_body_branch_hit_back_takes_weakness ... ok
+test switch_off_each_attack_hits_back_flat_again ... ok
+test tool_and_attack_return_on_one_defender_each_by_its_own_rule ... ok
+test switch_off_gives_the_engine_before_p2 ... ok
+test switch_changes_nothing_where_p2_does_not_act ... ok
+test weakness_decides_the_knockout_by_the_hit_back ... ok
+test switch_scoping ... ok
+
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.12s
+
+exit 0

@@ -1,4 +1,6 @@
+use std::cell::Cell;
 use std::collections::HashMap;
+use std::sync::LazyLock;
 
 use log::debug;
 use rand::rngs::StdRng;
@@ -611,8 +613,39 @@ pub(crate) fn handle_damage_only(
     damaged_actives
 }
 
+/// P2's off-switch (rules switch 2, PLAN (e)). On, return damage an attack left takes Weakness (`handle_attack_retaliation`);
+/// off, it is flat again: the engine before P2 in behaviour, the same number in the same branch. On by default.
+/// `DECKGYM_FLAT_RETURN_DAMAGE=1` (or `true`) turns it off for the whole process, read once; `with_return_weakness` sets it
+/// for one call on this thread (a single decision of the revert check, or a test).
+static FLAT_RETURN_DAMAGE: LazyLock<bool> = LazyLock::new(|| {
+    std::env::var("DECKGYM_FLAT_RETURN_DAMAGE").is_ok_and(|v| v == "1" || v.eq_ignore_ascii_case("true"))
+});
+
+thread_local! {
+    /// `with_return_weakness`'s setting on this thread, while it runs; `None` everywhere else.
+    static RETURN_WEAKNESS: Cell<Option<bool>> = const { Cell::new(None) };
+}
+
+fn return_weakness_on() -> bool {
+    RETURN_WEAKNESS.with(Cell::get).unwrap_or(!*FLAT_RETURN_DAMAGE)
+}
+
+/// Run `f` with P2's return-damage Weakness `on` or off on this thread, then restore what was there before (also on a
+/// panic). An inner call overrides the outer one for its length. Other threads keep their own setting.
+pub fn with_return_weakness<R>(on: bool, f: impl FnOnce() -> R) -> R {
+    struct Restore(Option<bool>);
+    impl Drop for Restore {
+        fn drop(&mut self) {
+            RETURN_WEAKNESS.with(|setting| setting.set(self.0));
+        }
+    }
+    let _restore = Restore(RETURN_WEAKNESS.with(|setting| setting.replace(Some(on))));
+    f()
+}
+
 /// Resolve reactions only after the attack's own effects, using the current Ability state. Return damage an attack left
-/// takes Weakness while the Attacking Pokémon is Active; a Tool's and an Ability's stay flat.
+/// takes Weakness while the Attacking Pokémon is Active (P2, unless its off-switch is off); a Tool's and an Ability's stay
+/// flat.
 pub(crate) fn handle_attack_retaliation(
     state: &mut State,
     attacking_ref: (usize, usize),
@@ -622,7 +655,7 @@ pub(crate) fn handle_attack_retaliation(
     for &(target_player, target_idx) in damaged_actives {
         let Some(target) = state.in_play_pokemon[target_player][target_idx].as_ref() else { continue; };
         let counter_damage = get_counterattack_damage(state, target);
-        let weakness_extra = if attacking_ref.1 == 0 && attack_counterattack_damage(target) > 0 {
+        let weakness_extra = if return_weakness_on() && attacking_ref.1 == 0 && attack_counterattack_damage(target) > 0 {
             state.in_play_pokemon[attacking_player][0]
                 .as_ref()
                 .map_or(0, |attacker| attack_return_weakness_extra(state, target, attacker))
