@@ -31,7 +31,13 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      - **One fix along the way.** `compare` now pairs games by key: a straight run with threads writes games in the order they
        finish.
      - The recipe for a Sonnet or Haiku worker is in the README.
-   - **Now:** (b), then (a) and (e).
+   - **(a): done**, pushed to `claude/coin-prevention-round2` (tests first 77aa8e3d; the check 056158c3). coin_probe v2 now also
+     finds round 2's gates inside the bots' search and prints `RESULT_R2` (Will, Victory Star, Trap Territory, own-side coin,
+     own-side Guts, plain queued sites, Perish Body, and trapleaf). Read "Round 2's conditions" in
+     `rl/results/round2_readiness_2026-10-02/README.md`.
+     - Self-test: 46 boards and 3 frame checks, 0 failures; before the check, exactly the 19 new positives failed.
+     - P2's checks and step 8b's 25 ticks read as before; RESULT_R2 is none in all of them (no round-2 cards in those decks).
+   - **Now:** (e), whose gate run is under way, then (b).
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
    63c28e6e. Read "Oct 9" in that branch's `rl/results/coin_prevention_round2_2026-10-01/README.md`, section 3's end in
