@@ -1,0 +1,176 @@
+EE...EEEE.FFFEEE
+======================================================================
+ERROR: test_a_counter_in_an_earlier_turn_never_explains_it (test_tightened_rule.CounterHits.test_a_counter_in_an_earlier_turn_never_explains_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 84, in test_a_counter_in_an_earlier_turn_never_explains_it
+    self.assertEqual(self.hits(old, new, watch(will_confused_attack=[2, 3])), {})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 66, in hits
+    return tr.counter_hits(w, list(w), new, d, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/tightened_rule.py", line 83, in counter_hits
+    turn = rows[k]["turn"]
+           ~~~~^^^
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_counter_hits_reads_the_turn_from_a_list_of_turns_only (test_tightened_rule.CounterHits.test_counter_hits_reads_the_turn_from_a_list_of_turns_only)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 114, in test_counter_hits_reads_the_turn_from_a_list_of_turns_only
+    self.assertEqual(tr.counter_hits(watch(attack_return_weakness=[5]), ["attack_return_weakness"], turns, d), {"attack_return_weakness": [5]})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/tightened_rule.py", line 83, in counter_hits
+    turn = rows[k]["turn"]
+           ~~~~^^^
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_the_new_game_shorter_a_counter_at_its_last_tick_explains_it (test_tightened_rule.CounterHits.test_the_new_game_shorter_a_counter_at_its_last_tick_explains_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 71, in test_the_new_game_shorter_a_counter_at_its_last_tick_explains_it
+    self.assertEqual(self.hits(old, new, watch(attack_return_weakness=[5])), {"attack_return_weakness": [5]})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 66, in hits
+    return tr.counter_hits(w, list(w), new, d, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/tightened_rule.py", line 83, in counter_hits
+    turn = rows[k]["turn"]
+           ~~~~^^^
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_the_new_game_shorter_a_counter_earlier_in_the_same_turn_explains_it (test_tightened_rule.CounterHits.test_the_new_game_shorter_a_counter_earlier_in_the_same_turn_explains_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 75, in test_the_new_game_shorter_a_counter_earlier_in_the_same_turn_explains_it
+    self.assertEqual(self.hits(old, new, watch(trap_territory_offer_changed=[4])), {"trap_territory_offer_changed": [4]})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 66, in hits
+    return tr.counter_hits(w, list(w), new, d, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/tightened_rule.py", line 83, in counter_hits
+    turn = rows[k]["turn"]
+           ~~~~^^^
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_the_new_game_shorter_with_no_counter_nothing_explains_it (test_tightened_rule.CounterHits.test_the_new_game_shorter_with_no_counter_nothing_explains_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 79, in test_the_new_game_shorter_with_no_counter_nothing_explains_it
+    self.assertEqual(self.hits(old, new, watch(attack_return_weakness=[])), {})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 66, in hits
+    return tr.counter_hits(w, list(w), new, d, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/tightened_rule.py", line 83, in counter_hits
+    turn = rows[k]["turn"]
+           ~~~~^^^
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_the_same_length_a_counter_at_the_last_tick_explains_it (test_tightened_rule.CounterHits.test_the_same_length_a_counter_at_the_last_tick_explains_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 100, in test_the_same_length_a_counter_at_the_last_tick_explains_it
+    self.assertEqual(self.hits(old, new, watch(attack_return_weakness=[5])), {"attack_return_weakness": [5]})
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 66, in hits
+    return tr.counter_hits(w, list(w), new, d, **kw)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/tightened_rule.py", line 83, in counter_hits
+    turn = rows[k]["turn"]
+           ~~~~^^^
+IndexError: list index out of range
+
+======================================================================
+ERROR: test_a_keyed_counter_is_flattened_and_a_first_round_coin_site_is_left_out (test_tightened_rule.Round2Reach.test_a_keyed_counter_is_flattened_and_a_first_round_coin_site_is_left_out)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 136, in test_a_keyed_counter_is_flattened_and_a_first_round_coin_site_is_left_out
+    flat = tr.reach_row(row)
+           ^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'reach_row'
+
+======================================================================
+ERROR: test_a_keyed_counter_missing_from_the_row_is_empty (test_tightened_rule.Round2Reach.test_a_keyed_counter_missing_from_the_row_is_empty)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 142, in test_a_keyed_counter_missing_from_the_row_is_empty
+    self.assertEqual(tr.reach_row({})["coin_queued_by_attack"], {"ticks": []})
+                     ^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'reach_row'
+
+======================================================================
+ERROR: test_the_exact_names_leave_out_the_off_gate_and_superset_counters (test_tightened_rule.Round2Reach.test_the_exact_names_leave_out_the_off_gate_and_superset_counters)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 128, in test_the_exact_names_leave_out_the_off_gate_and_superset_counters
+    self.assertEqual(tr.round2_reach(INSTRUMENT_TEXT),
+                     ^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'round2_reach'
+
+======================================================================
+FAIL: test_the_new_game_longer_k_is_its_first_extra_tick_and_the_cause_the_tick_before (test_tightened_rule.FirstDifference.test_the_new_game_longer_k_is_its_first_extra_tick_and_the_cause_the_tick_before)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 44, in test_the_new_game_longer_k_is_its_first_extra_tick_and_the_cause_the_tick_before
+    self.assertEqual((d["kind"], d["k"], d["cause"], d["longer"]), ("length", 6, 5, "new"))
+AssertionError: Tuples differ: ('length', 6, None, 'new') != ('length', 6, 5, 'new')
+
+First differing element 2:
+None
+5
+
+- ('length', 6, None, 'new')
+?               ^^^^
+
++ ('length', 6, 5, 'new')
+?               ^
+
+
+======================================================================
+FAIL: test_the_new_game_shorter_k_is_the_old_games_first_extra_tick_and_the_cause_the_new_games_last (test_tightened_rule.FirstDifference.test_the_new_game_shorter_k_is_the_old_games_first_extra_tick_and_the_cause_the_new_games_last)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 51, in test_the_new_game_shorter_k_is_the_old_games_first_extra_tick_and_the_cause_the_new_games_last
+    self.assertEqual((d["kind"], d["k"], d["cause"], d["longer"]), ("length", 6, 5, "old"))
+AssertionError: Tuples differ: ('length', 6, None, 'old') != ('length', 6, 5, 'old')
+
+First differing element 2:
+None
+5
+
+- ('length', 6, None, 'old')
+?               ^^^^
+
++ ('length', 6, 5, 'old')
+?               ^
+
+
+======================================================================
+FAIL: test_the_same_length_the_cause_is_the_last_tick (test_tightened_rule.FirstDifference.test_the_same_length_the_cause_is_the_last_tick)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<scratch>/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 58, in test_the_same_length_the_cause_is_the_last_tick
+    self.assertEqual((d["kind"], d["k"], d["cause"], d["longer"]), ("length", 6, 5, None))
+AssertionError: Tuples differ: ('length', 6, None, None) != ('length', 6, 5, None)
+
+First differing element 2:
+None
+5
+
+- ('length', 6, None, None)
+?               ^^^^
+
++ ('length', 6, 5, None)
+?               ^
+
+
+----------------------------------------------------------------------
+Ran 16 tests in 0.004s
+
+FAILED (failures=3, errors=9)
