@@ -384,6 +384,20 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
           - Conclusions on brews 07 and 09 (Mega Sableye ex decks) are provisional until it's pinned.
         - **The first cloud slow report** is draft A's Wallace version (`decks/brews/drafts_2026-10-01/draft-A-wallace.txt`) against the 8 panel lists, at a size the cloud can finish.
         - **The setup-deck demonstration** is Wailord (deck 03), built from its existing 80 development-run kx3 games and the Tool comparison, labelled "existing development evidence, not a fresh test". Fresh games wait for the laptop.
+        - **Oct 9 (the coordinator, after the cloud's 19-question sweep and Astra's response):**
+          - Rules switch 2 goes to Dustin as ONE release package (PLAN.md section 9, in his words), with Astra's follow-through: after the pin, kx3 is rebuilt on the new engine, checked and re-pinned. Until then the brew-07/09 slow reports are provisional.
+          - The cloud's P2 (Cursed Jewel's Weakness) is in: `claude/coin-prevention-round2` b7e3bc00, suite 2,056/0, the inventory finds only brews 07 and 09.
+          - Housekeeping decisions:
+            - (12) the cloud builds coin_probe v2's P2 check and the P2 off-switch;
+            - (13) while the combined run holds the laptop, anything of Sonnet's that needs cargo runs on the cloud or waits;
+            - (14) the cloud runs the suite at the final engine commit and the 8b rows on P2, and the 8c cross-check at the hand-off;
+            - (15) the Wallace slow report comes onto main, and START_HERE's seed table records slot 804 and the pilot's 24.2B block;
+            - (16) rules/02's Rocky Helmet roles are corrected (Torchic held it, Tinkatink attacked).
+          - Items 10-11 are research for Sonnet; 17-19 stay parked.
+        - **The combined run, Oct 8-9:**
+          - A forced app update killed the session chain on the night of Oct 8, at 532 games. The program was relaunched bare at 03:02Z; the results are unaffected.
+          - The halfway look (information only): candidate − frozen **+3.6 ± 3.8** over 302 kx3 pairs (fast decks +4.6 ± 4.4, Wailord ±0 over 62). All 304 km3 games replay the development run. The candidate takes ×2.7 the frozen kx3's time.
+          - Stopped for school on Friday morning; it resumes at 17:00 CT under the chain.
         - **Reporting rule (Astra):**
           - Never dismiss evidence because its interval is wide (±11 still says something).
           - State the question first, then the size.
