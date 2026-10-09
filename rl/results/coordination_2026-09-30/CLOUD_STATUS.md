@@ -12,7 +12,47 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **A sixth file, `engine/src/move_generation/move_generation_trainer.rs`:** a Fossil can be played under an Item lock (the Item check at 65 skips the Fossil type). Its premise is that a Fossil's printed type is Item (rules/01, rules/04 §6; the local database can't show it).
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
-1. **Current task, and the instruction that set it.** None; waiting for the next instruction. **P2 is done** (Fable via
+1. **Current task, and the instruction that set it.** None; waiting for the next instruction. **The Oct 9 job is done**
+   (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
+   63c28e6e. Read "Oct 9" in that branch's `rl/results/coin_prevention_round2_2026-10-01/README.md`, section 3's end in
+   `rl/results/round2_readiness_2026-10-02/README.md`, and `rl/results/engine_switch_rules2_2026-10/early_warning_8b/README.md`.
+   - **P2's off-switch** (tests first 14abfb04; the switch 35e6acfd; gates e51a151b). `DECKGYM_FLAT_RETURN_DAMAGE=1` turns it
+     off for a whole program, `deckgym::actions::with_return_weakness(false, ..)` for one decision; on by default. Gates 1
+     and 2 pass:
+     - P2's smoke, 200 games: byte for byte the P2 games with it on, and the games before P2 with it off;
+     - km3 v km3, 240 games: equal to the official program both ways;
+     - the counter probe: both outputs exact;
+     - at the smoke's three changed games, P2 decided with the switch off for that one move gives the old choice and every
+       candidate's score.
+   - **coin_probe v2's P2 check, RETURN** (tests first 51911601; the check 2d3eec44; its checks 421b6da3). It runs the exact
+     counter's own lines on every move the bots' 3-ply search applies.
+     - Self-test 14 checks, 0 failures. With P2 off, exactly the four P2 boards fail.
+     - The smoke's three changed games read 2, 3 and 2 plies (none with P2 off). The 7 golden games read 1; 4 controls none.
+     - The RESULT line is unchanged; `RESULT_P2 ret=` is a new line.
+   - **P3** (tests first c17e415d: 10 fail, 2 controls pass; P3 140c0be2): a Fossil is an Item card at the seven other places,
+     8 engine sites.
+     - **Which lists hold a Fossil: none in any replayed set** (main 1163ebb7). In the whole repository only
+       `engine/example_decks/donphan.txt` (2 Old Amber) and the carrier list `c-dragonair_mega_rayquaza_ex.txt`
+       (1 Skull Fossil) hold one.
+     - The smoke (brew-04 and that carrier list v the 8 panel lists, km3, 640 games): 640 of 640 the same.
+   - **The suite at the final engine commit 140c0be2:** 2,072 passed, 0 failed (2,056 + 4 + 12).
+     - The engine diff from the official engine is 26 files: 17 in `src/` and 9 tests. `players/` and `Cargo.lock` are
+       unchanged.
+     - Step 4's allowed list gains `actions/mod.rs` (the switch) and P3's `apply_trainer_action.rs`,
+       `shared_mutations.rs`, `apply_abilities_action.rs` and `models/card.rs`. The two map files PLAN named don't change.
+   - **Step 8b's rows** (19a20e1a): pairings 32-35 (Oct 1's seeds) and 36-37 (brew-07 and brew-09 v t-altaria), km3 and k3,
+     40 deals.
+     - 25 of 480 deals changed: 35 (Wild Swing) km3 11, k3 7; 37 (P2) km3 2, k3 5; none in 32-34 or 36.
+     - 4 on the board, 21 look-ahead with both halves (Wild Swing's queued choice 3 moves ahead, or P2's RETURN), 0 for a
+       hand trace.
+     - **The line for the switch-2 folder's `trace_load.txt`: `TRACE LOAD 0 cloud 19a20e1a`.**
+     - The pinned official program equals "old" on every field, and equals Oct 1's recorded rows for 32-35 (160 of 160 each
+       bot).
+   - **Reviews.** An Opus workflow reviewed P3, the probe and the 8b scripts before the classification ran. Its 9 confirmed
+     findings are fixed, the main one in the classifier: a first-round coin site no longer counts as an explanation. A
+     fact-check of the READMEs made 5 wording corrections. No result changed.
+   - **Not done here, as decided:** the 8c cross-check (when the laptop hands off). Items 15 and 16 are done on main 1163ebb7.
+   **P2 before it: done** (Fable via
    Dustin, Oct 8, "for AFTER the draft A Wallace slow report is done"; main PLAN.md section 0 part 3 and precondition (h),
    7fa6cdb7), pushed to `claude/coin-prevention-round2`, head b7e3bc00. Read "P2" in
    `rl/results/coin_prevention_round2_2026-10-01/README.md`.
@@ -349,7 +389,13 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
    **The data pipeline stopped where it was** (branch `claude/planning-pilot-data`, head 22d56999; `rl/results/planning_pilot_data_2026-10-02/README.md`, "Where it stopped"): the first pass done (9,600 games, 467,146 rows; held-out log loss 0.525 against 0.631 for km's value alone; the Bench Energy feature's sign negative), the second pass cancelled; Dustin's 04, 08 and 11 are in its pool but in the locked final-exam list, so their rows must be dropped before development use.
    **Earlier jobs, done** (the readiness jobs, the card-text follow-up and step 8c read and accepted): the round-2 readiness jobs (57c65860, `rl/results/round2_readiness_2026-10-02/README.md`), the card-text follow-up (20e2651) and the card-text job, step 8c, step 8b's rows (3a107f4), F8, and the later round of coin-flip prevention (`claude/coin-prevention-round2`); details in their READMEs and the log below.
 2. **What is running now, and when it ends.** Nothing.
-3. **Files I expect to change.** None. P2 changed, on `claude/coin-prevention-round2` only: `engine/src/actions/apply_action_helpers.rs`,
+3. **Files I expect to change.** None. The Oct 9 job changed, on `claude/coin-prevention-round2` only:
+   `engine/src/actions/apply_action_helpers.rs` and `engine/src/actions/mod.rs` (the switch); `engine/src/models/card.rs`,
+   `actions/apply_attack_action.rs`, `actions/apply_trainer_action.rs`, `move_generation/move_generation_trainer.rs`,
+   `actions/shared_mutations.rs`, `actions/apply_abilities_action.rs` (P3); `engine/tests/rules_repair_return_damage_weakness.rs`
+   and `engine/tests/rules_repair_trainers.rs`; `rl/results/coin_prevention_round2_2026-10-01/` (README, logs, `switch_gates/`,
+   `p3_smoke/`), `rl/results/round2_readiness_2026-10-02/` (`coin_probe_v2.rs`, its checks, README), and the new
+   `rl/results/engine_switch_rules2_2026-10/early_warning_8b/`. Before it, P2 changed, on `claude/coin-prevention-round2` only: `engine/src/actions/apply_action_helpers.rs`,
    `engine/src/hooks/counterattack.rs`, `engine/src/hooks/core.rs`, `engine/src/hooks/mod.rs`, the new
    `engine/tests/rules_repair_return_damage_weakness.rs`; `rl/results/coin_prevention_round2_2026-10-01/` (README, logs),
    `rl/results/coin_prevention_repair_2026-09-30/instrument_scan.py`, `rl/results/round2_readiness_2026-10-02/` (probe,
@@ -368,22 +414,22 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      - A Benched attacker (after U-turn) takes it flat.
      - Open, with nothing built: whether the attacker's own reductions, Guts, Hala and the like apply to an attack's hit back;
        and whether a holder that the same attack knocks to the Bench or devolves still hits back (today it doesn't).
-     - For the go: coin_probe v2 needs a P2 condition (look-ahead changes, as in all 3 of the smoke's) and (e) a P2 revert
-       switch.
-   - (e) For the coordinator, routing for rules switch 2 (main PLAN.md section 0 adds P2 to (c), (f), (h) and (i) only):
-     - who builds coin_probe v2's P2 condition and a P2 revert switch (preconditions (a) and (e));
-     - whether the rest of Sonnet's items go to the cloud (PLAN.md:206-212), given Dustin's Oct 7 rule that preparation
-       doesn't use the laptop's cores while the combined run holds them;
-     - when the cloud's own remaining jobs come: (d) step 8b's rows on P2 with the TRACE LOAD line, the 8c cross-check, and
-       the suite at the final P if P1 or question 2a moves it.
-   - (f) For Dustin and the coordinator, seeds not recorded on main:
-     - main's START_HERE seed table lacks the play-out pilot's block (24,200,000,000 - 24,200,099,999; the row is only on
-       `claude/playout-pilot`);
-     - the Wallace slow report's slot 804 (24,681,400,000) is known only on its branch. Main has no
-       `rl/results/slow_reports/` and the pin reserves only slots 684-686, so a slow report run from main could pick 804 again.
-     - Bringing the report folder or the rows to main needs Dustin's yes; the cloud doesn't edit the pin.
-   - (g) For the coordinator: main rules/02:60 has Rocky Helmet's roles swapped ("a Fire Torchic hitting Metal Tinkatink";
-     TRIAGE.md :73 and :105: Torchic held the Helmet, Tinkatink attacked). A one-line edit on main.
+     - For the go: coin_probe v2's P2 condition and the P2 off-switch for (e) are built (Oct 9, item 1).
+   - (e) Answered by the Oct 9 decisions (12-16). Still to come for the cloud: the 8c cross-check when the laptop hands off.
+   - (f) and (g) Settled on main 1163ebb7: the seed table has the play-out pilot's block and slot 804, the Wallace report
+     folder is on main, and rules/02:60 has Rocky Helmet's roles right.
+   - (h) For the coordinator, the seeds of step 8b's rows 36-37: 23,100,360,000-039 and 23,100,370,000-039.
+     - They sit in the 23.1B block, this rules-switch work's own, at pairings the table doesn't name yet (row 142 names 0-31,
+       32-35 and 40-71).
+     - Switch 2's PLAN.md line 218 asked for new 8b rows on a fresh block (for example 23,300,000,000). The decision's
+       "pairings 36-37" is the 23.1B numbering, so they were played there.
+     - Either keep them (row 142 then names 36-37) or have the cloud replay 36-37 on 23.3B, which takes minutes. The laptop's
+       36-37 rows must use the same seeds.
+     - For the record: P3's smoke used 20,920,000,000 + pairing x 10,000 + i (pairings 0-15, i < 40), in Claude Code's
+       diagnostic range.
+   - (i) For the record, from P3: the bots' own Junk Spark estimate (`players/value_functions.rs`:2385) counts Item cards
+     with `==`, so it reads 10 low for each Fossil in the discard pile. `players/` stays unchanged, and no list holds both
+     Rotom ex and a Fossil.
    - (a) Settled: the Shot List rows `chase-order-carefree-steps` and `carefree-steps-snipe` stay as optional proof, low
      priority, with nothing waiting on them (main `rl/results/rules_recordings_2026-10-01/READOUT.md`:326; Dustin, Oct 9:
      "taken care of a long time ago").
