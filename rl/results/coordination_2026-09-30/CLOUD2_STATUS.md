@@ -18,3 +18,4 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
 - 2026-10-09: setup for the slow reports (Fable via Dustin): cargo cache for d513e37b, build of the pinned source into `$HOME/slow_report_kx3/strength` (must print engine tree 31dbd2e6e8ec and harness source bf9c5d68), no games.
 - 2026-10-09: report 1, brew 08 (Entei, Rainbow Cave): registration only, `--deals 10 --threads 4 --school-rule off`; replays both self-checks (hours), then the registered folder is pushed before any game.
 - 2026-10-09: report 1, brew 08: playing the 320 registered games in slices of --max-games 40 (8 slices), report folder pushed between slices; the question, the size and the final numbers go in the folder's SLOW_REPORT.md.
+- Direct route test received 2026-10-09T21:19Z; I am the Sonnet cloud; my session id is session_01LbhnEkPxKLoYA6VUG1N33k
