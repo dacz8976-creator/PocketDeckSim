@@ -12,6 +12,10 @@ with the length case finished and round 2's counter names.
     superset ones), and `reach_row` flattens the keyed ones ({key: [ticks]}) into counter_hits' {"ticks"} form, leaving out of
     coin_queued_by_attack the first round's coin sites, which build the same choice on both engines (ROUND2_QUEUED: the later round's
     eight attacks). validate_v2.py kept round 1's names, right for the Oct 1 hand-off it checks.
+  - Shared by the switch-2 copies of classify_8c.py and coin_lookahead.py (this folder; Oct 9, later): `board_hits` (counter_hits and
+    extra_tick_hits together), `watch_from_counters` (a hand-off row's counters as a watch row), `parse_probe` (coin_probe v2's
+    RESULT, RESULT_P2 and RESULT_R2 lines), `lookahead_verdict` (with round 2's kinds, and the strict reading of a queued choice that
+    may be a first-round site), `golden_ok` and `nothing_found`. Read their docstrings.
   Tests: test_tightened_rule.py (this folder).
 
 v2's docstring follows.
@@ -147,6 +151,104 @@ def reach_row(watch_row, keyed=KEYED):
         keep = (lambda key: key in ROUND2_QUEUED) if name == "coin_queued_by_attack" else (lambda key: True)
         out[name] = {"ticks": sorted({t for key, ticks in (watch_row.get(name) or {}).items() if keep(key) for t in ticks})}
     return out
+
+
+def board_hits(watch_row, names, rows, d):
+    """What explains a first difference `d` on the board, whatever its kind: counter_hits' ticks, and for a "length" difference whose
+    longer game is the new one, extra_tick_hits' tick k as well."""
+    out = {n: list(t) for n, t in counter_hits(watch_row, names, rows, d).items()}
+    for n, ticks in extra_tick_hits(watch_row, names, d).items():
+        out[n] = sorted(set(out.get(n, [])) | set(ticks))
+    return out
+
+
+def watch_from_counters(exact, names, keyed=KEYED):
+    """A hand-off row's exact counters ({name: [ticks]}; a keyed one {name: {key: [ticks]}}, instrument_scan.py's form) as the watch
+    row counter_hits reads, through reach_row. A keyed counter given as a plain list is refused: its first-round keys can't be left out."""
+    row = {}
+    for n in names:
+        v = exact.get(n)
+        if n in keyed:
+            if isinstance(v, list):
+                raise ValueError(f"{n}: a keyed counter given as a list of ticks, without its keys")
+            row[n] = v or {}
+        else:
+            row[n] = {"ticks": list(v or [])}
+    return reach_row(row, keyed=[n for n in keyed if n in names])
+
+
+# coin_probe v2 (../round2_readiness_2026-10-02/coin_probe_v2.rs). Its round-2 kinds, in the RESULT_R2 line's order, and the exact
+# counters each is made of (the probe's docstring: WILL ... PERISH); RETURN is attack_return_weakness, QUEUED coin_queued_by_attack.
+R2_KINDS = ("will", "vs", "trap", "own", "guts", "plain", "perish")
+R2_COUNTER_KIND = {"will_confused_attack": "will", "will_block_coin_attack": "will", "vs_block_coin_built": "vs",
+                   "vs_block_coin_choice_offered": "vs", "trap_territory_offer_changed": "trap", "trap_territory_outcome_changed": "trap",
+                   "coin_own_side_split": "own", "guts_own_side_split": "guts", "coin_plain_damage_chosen": "plain",
+                   "coin_plain_damage_by_attack": "plain", "perish_plain_hit_chosen": "perish", "perish_plain_hit_offered": "perish"}
+SEARCH_PLIES = 3
+BOTH_HALVES = "LOOKAHEAD ONLY, both halves hold"
+JUDGMENT = "NEEDS A JUDGMENT"
+
+
+def parse_probe(out):
+    """coin_probe v2's output: queued, cut, free (RESULT), ret (RESULT_P2), r2 {kind: ply} and trapleaf (RESULT_R2), the attacks named
+    on the shortest QUEUED paths ("queued_attacks", when any) and "truncated" when the search stopped at its node limit. An output
+    without the RESULT_R2 line (a probe built before precondition (a)) is refused, not read as nothing found."""
+    m = re.search(r"^RESULT queued=(\S+) cut=(\S+) free=(true|false)$", out, re.M)
+    p2 = re.search(r"^RESULT_P2 ret=(\S+)$", out, re.M)
+    r2 = re.search(r"^RESULT_R2 " + " ".join(f"{k}=(\\S+)" for k in R2_KINDS) + r" trapleaf=(\S+)$", out, re.M)
+    if not (m and p2 and r2):
+        raise ValueError("coin_probe v2's RESULT, RESULT_P2 and RESULT_R2 lines are not all there")
+    num = lambda s: None if s == "none" else int(s)
+    c = {"queued": num(m[1]), "cut": num(m[2]), "free": m[3] == "true", "ret": num(p2[1]),
+         "r2": {k: num(r2[j + 1]) for j, k in enumerate(R2_KINDS)}, "trapleaf": num(r2[len(R2_KINDS) + 1])}
+    block = re.search(r"^ *QUEUED: .*\n((?: {4}after .*\n?)+)", out, re.M)
+    titles = sorted({t for line in (block[1].splitlines() if block else []) for t in re.findall(r'title: "([^"]+)"', line.split("] offers")[0])})
+    if titles:
+        c["queued_attacks"] = titles
+    if "search stopped at" in out:
+        c["truncated"] = True
+    return c
+
+
+def nothing_found(c):
+    """The probe found no condition at all (a negative control's requirement)."""
+    return (c["queued"] is None and c["cut"] is None and c["ret"] is None and c["trapleaf"] is None
+            and all(v is None for v in c["r2"].values()))
+
+
+def lookahead_verdict(c, round2_queued):
+    """A "lookahead" first difference with no exact counter, read from the probe at its tick k: (the verdict, the verdict under the
+    strict reading). BOTH_HALVES when the probe finds, inside the bots' 3 plies, a return ply (P2), a round-2 kind, or a queued
+    coin-path choice or cut that is not only at the leaf of a mixed frame; JUDGMENT when what it finds is only at the leaf: a queued
+    choice offered at ply 3 in a mixed frame, a round-2 kind only beyond the search (4: offered at a depth-3 leaf, never applied), or
+    trapleaf (a leaf's value reads a Retreat Cost Trap Territory raised; no counter sees it); else UNEXPLAINED. The strict reading
+    counts a queued choice or cut only when `round2_queued` (it is a later-round site: the path names one of ROUND2_QUEUED's attacks,
+    or, when it names none, a list holds a later-round attacker), since both engines build the first round's."""
+    inside_r2 = any(v is not None and v <= SEARCH_PLIES for v in c["r2"].values())
+    beyond_r2 = any(v is not None and v > SEARCH_PLIES for v in c["r2"].values())
+    coin = c["queued"] is not None or c["cut"] is not None
+    leaf_only = coin and c["queued"] == SEARCH_PLIES and not c["free"] and (c["cut"] is None or c["cut"] > SEARCH_PLIES)
+    if c["ret"] is not None or inside_r2:
+        return BOTH_HALVES, BOTH_HALVES
+    leaf = JUDGMENT if beyond_r2 or c["trapleaf"] is not None else None
+    if coin and not leaf_only:
+        return BOTH_HALVES, BOTH_HALVES if round2_queued else leaf or "UNEXPLAINED"
+    if leaf_only:
+        return JUDGMENT, JUDGMENT if round2_queued else leaf or "UNEXPLAINED"
+    return (leaf, leaf) if leaf else ("UNEXPLAINED", "UNEXPLAINED")
+
+
+def golden_ok(name, c):
+    """The golden check for an exact counter that explains a game on the board, from the probe run at the counter's last explaining
+    tick: its condition must be on the table there (a round-2 kind or RETURN at ply 1; a queued choice after 0 moves or a cut at
+    ply 1). None for a counter the probe has no condition for (luxury_coin_opp_stadium, fossil_item_lock)."""
+    if name in R2_COUNTER_KIND:
+        return c["r2"][R2_COUNTER_KIND[name]] == 1
+    if name == "attack_return_weakness":
+        return c["ret"] == 1
+    if name == "coin_queued_by_attack":
+        return c["queued"] == 0 or c["cut"] == 1
+    return None
 
 
 def short(s, n=150):

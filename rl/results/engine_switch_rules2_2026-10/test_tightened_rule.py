@@ -249,7 +249,8 @@ class Golden(unittest.TestCase):
             self.assertIsNone(tr.golden_ok(name, probe()))
 
     def test_every_exact_name_but_those_two_has_a_golden_check(self):
-        text = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "coin_prevention_repair_2026-09-30", "instrument_scan.py")).read()
+        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "coin_prevention_repair_2026-09-30", "instrument_scan.py")) as f:
+            text = f.read()
         missing = [n for n in tr.round2_reach(text) if tr.golden_ok(n, probe()) is None]
         self.assertEqual(missing, ["luxury_coin_opp_stadium", "fossil_item_lock"])
 
