@@ -13,8 +13,10 @@
 //! A finite cut recorded by a move in a free frame is reported at the ply already spent (the move costs none). Everything else is
 //! v1's: the conditions, the 12 chance samples per move, the node limit (60,000; `--node-limit N` sets another, for a search
 //! that stops there) and the output format.
-//! Built as v1 is (below), from this file: cp coin_probe_v2.rs engine/examples/ && (cd engine && cargo build --release --locked
-//! --features test-utils --example coin_probe_v2), in a scratch copy of the official engine (main-8626a35).
+//! Built from this file and the counters' lines it includes (since Oct 9; the P2 paragraph below), in a scratch copy of the
+//! engine: python3 ../coin_prevention_repair_2026-09-30/instrument_scan.py --emit-fns engine/examples/r2_counter_fns.rs &&
+//! cp coin_probe_v2.rs engine/examples/ && (cd engine && cargo build --release --locked --features test-utils --example
+//! coin_probe_v2). Oct 2's runs used the official engine (main-8626a35), before the include.
 //!   coin_probe_v2 --a <list> --b <list> --seed-base <n> --pairing <n> --bot km3 --deal <i> --tick <t> [--node-limit <n>]
 //!
 //! P2's check (the cloud, Oct 9; claude/coin-prevention-round2): a third condition, RETURN, for rules switch 2's P2 (return
@@ -37,8 +39,9 @@
 //!     Attacking Pokemon's printed Weakness is one of the holder's types) to the hit back when the switch is on, the Attacking
 //!     Pokemon is Active (`attacking_ref.1 == 0`) and the target carries an attack's return damage
 //!     (`attack_counterattack_damage`, hooks/counterattack.rs:34) (:658-663); a Tool's and an Ability's stay flat. It is
-//!     reached from `handle_damage` (apply_action_helpers.rs:531), ResolveAttackRetaliation (apply_action.rs:627), the coin-cut
-//!     branch (apply_action.rs:948) and an attack's immediate outcome (attack_outcome.rs:281); the bots' public reply
+//!     reached from `handle_damage` (apply_action_helpers.rs:531; a queued or plain ApplyDamage, coin cut or not, through
+//!     apply_action.rs:908), ResolveAttackRetaliation (apply_action.rs:627), forecast_apply_damage_after_coins' Guts / Perish
+//!     Body coin branch (apply_action.rs:948) and an attack's immediate outcome (attack_outcome.rs:281); the bots' public reply
 //!     (players/public_reply.rs:564) prices the opponent's attack, beyond this search.
 //!   Output: a RETURN block as the others, and a last line `RESULT_P2 ret=<n|none>`. The RESULT line is unchanged (three scripts
 //!     parse it with an end anchor).

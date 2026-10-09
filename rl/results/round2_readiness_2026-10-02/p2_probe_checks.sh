@@ -14,6 +14,7 @@ HERE=$(cd "$(dirname "$0")" && pwd)
 REPO=$(git -C "$HERE" rev-parse --show-toplevel)
 W=$1
 REV=$2
+mkdir -p "$W" && W=$(cd "$W" && pwd)   # absolute: the build and the probes run from inside it
 SM=$HERE/counter_smoke_p2
 rm -rf "${W:?}/src"
 mkdir -p "$W/src"
@@ -21,7 +22,9 @@ git -C "$REPO" archive "$REV" engine | tar -x -C "$W/src"
 python3 "$HERE/../coin_prevention_repair_2026-09-30/instrument_scan.py" --emit-fns "$W/src/engine/examples/r2_counter_fns.rs" > /dev/null
 cp "$HERE/coin_probe_v2.rs" "$W/src/engine/examples/"
 echo "== build: $(git -C "$REPO" rev-parse --short "$REV")'s engine, coin_probe_v2.rs sha256 $(sha256sum < "$HERE/coin_probe_v2.rs" | cut -c1-64)"
-(cd "$W/src/engine" && CARGO_TARGET_DIR="$W/target" cargo build --release --locked --features test-utils --example coin_probe_v2 2>&1 | grep -E "Finished|^error")
+rm -f "$W/target/release/examples/coin_probe_v2"   # never run an earlier build
+(cd "$W/src/engine" && CARGO_TARGET_DIR="$W/target" cargo build --release --locked --features test-utils --example coin_probe_v2 2>&1 | grep -E "Finished|^error") \
+    || { echo "the build failed; stopping"; exit 1; }
 PROBE=$W/target/release/examples/coin_probe_v2
 
 echo "== 1. the self-test"

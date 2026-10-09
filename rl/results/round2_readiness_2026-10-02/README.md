@@ -2,7 +2,8 @@
 
 Three short jobs to make the round-2 package (everything `claude/coin-prevention-round2` adds to the official engine: the
 later coin round, the card-text job and its follow-up) ready for the next rules switch. There were no table games and no
-`players/` change. P2 (Oct 8, return damage left by an attack takes Weakness) adds to sections 1 and 2.
+`players/` change. P2 (Oct 8, return damage left by an attack takes Weakness) adds to sections 1 and 2, and its check in
+coin_probe v2 (Oct 9) to section 3.
 
 ## 1. Which lists and pairings the package can change
 
@@ -183,7 +184,8 @@ km3's and k3's own search does on the official engine (`expectiminimax_player.rs
 - The search stops where the bots stop: when the current player isn't the mover, and after 3 plies.
 - Everything else is v1's. The one addition is `--node-limit`: the default stays at v1's 60,000, and any other limit is named
   on the command line.
-- Its self-test (`coin_probe_v2_selftest.txt`) passes: 7 checks and 3 frame checks, 0 failures.
+- Its self-test passed on Oct 2: 7 checks and 3 frame checks, 0 failures. `coin_probe_v2_selftest.txt` now holds the Oct 9 run,
+  with P2's boards added (below): 14 checks and 3 frame checks, 0 failures.
 
 **tightened_rule v2** (`tightened_rule_v2.py`; v1 unchanged) changes one thing.
 - When one game is a prefix of the other and R's game is the longer one, R's first extra tick is a move the old engine never
@@ -214,3 +216,53 @@ Star probe results.
 - Against v1 on the 1,397 lookahead games (the smallest ply found): 1,382 the same, 1 smaller, 5 found only by v2 (the
   promotion games), 0 found only by v1.
   - 9 games have no coin path in either probe. All 9 are Victory Star games, explained by the Victory Star probe as in step 8c.
+
+### P2's check, RETURN (Oct 9)
+
+The coordinator via Dustin, Oct 9, decision 12: "coin_probe v2's P2 check (the return-damage gate inside the search, both
+halves)", tests first. It is a third condition in `coin_probe_v2.rs`, beside QUEUED and CUT, which are unchanged.
+
+**In plain words**
+
+- **What it finds:** a move inside the bots' 3-ply search that makes an attack's hit back (Cursed Jewel and the other four)
+  land on a weak Attacking Pokémon, so that P2's +20 changes the board. That is the gate a P2 look-ahead game needs: the bot
+  saw the +20 while it searched.
+- **How it decides:** it runs the exact counter `attack_return_weakness`'s own lines on each move it applies (the same text
+  `instrument_scan.py --emit-fns` puts into the watch build, included in the probe). So the trace half proves the same thing the
+  counter counts on the board.
+- **Where it counts the ply:** the same as the bots. The root move is ply 1, an ordinary move costs a ply, and a forced or free
+  move costs none. Psy Turbo holds its hit back until its Energy is attached: the Attach is ply 2, and the forced
+  ResolveAttackRetaliation after it is free, so the hit back reads 2.
+- **The code-gate half** is written in the probe's docstring: `handle_attack_retaliation` adds the +20 only while the switch is
+  on, the Attacking Pokémon is Active, and the defender carries an attack's return damage. Its four callers are named there.
+- **It must be built on the candidate engine** (P2 or later). On main-8626a35 it can never fire.
+- **The output:** a RETURN block like the others, and a new last line `RESULT_P2 ret=<n|none>`. The `RESULT` line is unchanged,
+  since three scripts read it with an end anchor.
+
+**Commits**
+
+- `5191160`: tests first. Seven self-test boards, H-N, are added. The four with a return ply fail, because nothing searches
+  for RETURN yet (`coin_probe_v2_selftest_before_return.txt`). The self-test now counts its failures and asserts at the end,
+  so a failing run lists them all.
+- `2d3eec4`: the check.
+
+**Checks** (`p2_probe_checks.sh`, output `p2_probe_checks_output.txt`; built at `140c0be`)
+
+- **Self-test:** 14 checks and 3 frame checks, 0 failures (`coin_probe_v2_selftest.txt`). A-G read as before. The new boards:
+  - Spooky Shot (Houndstone) into an armed Mega Sableye ex: 1;
+  - Hypnoblast (Espeon): 1;
+  - Psy Turbo (Gardevoir, Ralts on the Bench): 2;
+  - Houndstone at 50 HP (the +20 Knocks it Out): 1;
+  - Rollout (Snorlax, not weak to Darkness): none;
+  - Houndstone at 30 HP (Knocked Out either way): none;
+  - an unarmed Mega Sableye ex: none.
+- **The control:** with P2 off (`DECKGYM_FLAT_RETURN_DAMAGE=1`) exactly the four boards with a return ply fail.
+- **The three games P2's smoke changed** (all in look-ahead, `counter_smoke_p2/first_difference_output.txt`), at the first
+  differing tick:
+  - pairing 0, deal 31, tick 44: 2 (Attach, then Hypnoblast);
+  - pairing 1, deal 21, tick 84: 3 (Attach, Retreat, then Hypnoblast);
+  - pairing 1, deal 8, tick 43: 2 (Attach, then Hypnoblast).
+  With P2 off, none.
+- **Golden:** the seven smoke games where the exact counter fired, at its tick: 1 in all seven, none with P2 off.
+- **Controls:** four ticks of Mega Sableye ex v t-sceptile and t-blaziken (neither weak to Darkness) where only the off-gate
+  counter fired: none in all four.
