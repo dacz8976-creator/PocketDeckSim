@@ -1,0 +1,16 @@
+# Cloud 3 status (branch claude/slow-reports-runner-2)
+
+Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The third cloud session, the second slow-report runner; CLOUD_STATUS.md and CLOUD2_STATUS.md are not edited here. Times are UTC.
+
+1. **Current task, and the instruction that set it.** Slow deck reports with the frozen kx3, one deck at a time, run exactly as the first two were (recipe: CLOUD2_STATUS.md on branch claude/slow-reports-runner-xlsxu0). Set by the Fable coordinator via the direct CLI route, Oct 9.
+   - Slow reports only. No engine change, no bot change, no pin edit. Never brew 07 or brew 09 (they wait for rules switch 2).
+   - First deck: draft D (`decks/brews/drafts_2026-10-01/`). I do not register until a commit on main reserving draft D's seed rows exists (its message names draft D).
+   - Rules I work under: never call `strength_prereg.py` directly; never set `SLOW_REPORT_ALLOW_UNCOMMITTED_PIN`; never use `--pin`; if anything is refused I STOP and write the message here.
+2. **What is running now.** Setup: the cargo cache and the build of the pinned source (step 1), then the replay of both self-checks (step 2), no other games.
+3. **Files I expect to change.** This file; later the report folder `rl/results/slow_reports/<date>_<draft-D>/`. Nothing else.
+4. **Waiting on the laptop.** The main commit that reserves draft D's seed rows.
+5. **Open questions for Dustin.** None yet.
+
+## Log (one line per step, added and pushed before it starts)
+
+- 2026-10-09: setup step 1: cargo cache for the pinned source d513e37b, build into `$HOME/slow_report_kx3/strength` (must print engine tree 31dbd2e6e8ec and harness source bf9c5d68), no games.
