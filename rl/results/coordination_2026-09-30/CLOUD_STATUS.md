@@ -12,7 +12,17 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
 - **A sixth file, `engine/src/move_generation/move_generation_trainer.rs`:** a Fossil can be played under an Item lock (the Item check at 65 skips the Fossil type). Its premise is that a Fossil's printed type is Item (rules/01, rules/04 §6; the local database can't show it).
 - **In the five files but outside rules/09, rules/04 and the caveats:** Guts on the attacker's own Pokémon in an attack's outcome (E1), and Perish Body on a plain queued hit at the Active (E2). Both are decided by their text. Fix them in this job, or leave them listed?
 
-1. **Current task, and the instruction that set it.** None; waiting for the next instruction. **The Oct 9 job is done**
+1. **Current task, and the instruction that set it.** Fable's Oct 9 queue (direct route; the log): P1, then rules switch 2's
+   (a), (b) and (e), then the split-run collector. Item (3), the readings, was dropped by Fable's amendment.
+   - **P1: done**, pushed to `claude/coin-prevention-round2` (head 5ec11518):
+     - `card_validation.rs`:102, Gholdengo's caveat, now gives the agreed reading: Luxury Coin isn't offered on the opponent's
+       Arcade or Mesagoza (b8a8621a, text only);
+     - Bounded Field doubles the hit back's Weakness (x2), unless the holder is a Mega Evolution Pokémon ex. The tests came first
+       (6b111ba7): the inverted test is `bounded_field_doubles_the_hit_back_x2`, and a Mega ex control was added. The fix is
+       b0dc4844, and the off-switch still gives the flat path. No list on main holds Bounded Field;
+     - the suite at b0dc4844: 2,073 passed, 0 failed (`suite_p1.log`).
+   - **Now:** (b), then (a) and (e).
+   **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
    63c28e6e. Read "Oct 9" in that branch's `rl/results/coin_prevention_round2_2026-10-01/README.md`, section 3's end in
    `rl/results/round2_readiness_2026-10-02/README.md`, and `rl/results/engine_switch_rules2_2026-10/early_warning_8b/README.md`.
