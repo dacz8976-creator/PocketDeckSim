@@ -37,7 +37,12 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      `rl/results/round2_readiness_2026-10-02/README.md`.
      - Self-test: 46 boards and 3 frame checks, 0 failures; before the check, exactly the 19 new positives failed.
      - P2's checks and step 8b's 25 ticks read as before; RESULT_R2 is none in all of them (no round-2 cards in those decks).
-   - **Now:** (e), whose gate run is under way, then (b).
+   - **(b): done**, pushed to `claude/coin-prevention-round2` (8106a900). The sorting scripts' switch-2 copies (`classify_8c.py`,
+     `coin_lookahead.py`, `tightened_rule.py` in `rl/results/engine_switch_rules2_2026-10/`) judge a shorter game like any other
+     board difference, read round 2's 16 counters and the probe's RESULT_R2. A review's 7 findings fixed, tests first; 43 of 43 tests.
+     - On step 8b's games: 25 of 25 verdicts as classify_8b's, 11 of 11 for coin_lookahead; controls clean, no golden mismatch.
+     - None of those games is a shorter game, so that case rests on the tests. README: `classify_check_8b/README.md`.
+   - **Now:** (e), whose gate run is under way.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
    63c28e6e. Read "Oct 9" in that branch's `rl/results/coin_prevention_round2_2026-10-01/README.md`, section 3's end in
