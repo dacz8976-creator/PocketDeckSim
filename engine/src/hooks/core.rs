@@ -1527,23 +1527,18 @@ fn printed_weakness_application(
     WeaknessApplication::None
 }
 
-/// Return damage an attack left takes Weakness (`rules/02` section 2): +20 when `receiver`, the Attacking Pokémon it
-/// hits back, has a printed Weakness that is one of `holder`'s types (Double Type counts, as in
-/// `printed_weakness_application`), else 0. Two stated choices: the receiver's `NoWeakness` isn't read (only Metal
-/// Defender and Adamantine Rolling give it, to their own user, and they add it before this hit back lands though it
-/// covers only the opponent's next turn), and Bounded Field leaves the extra at +20.
+/// Return damage an attack left takes Weakness (`rules/02` section 2): `printed_weakness_application` with `holder` as the
+/// Attacking Pokémon of the attack that left it, for `receiver`, the Attacking Pokémon it hits back. +20 when `receiver`'s
+/// printed Weakness is one of `holder`'s types (Double Type counts), and under Bounded Field the attack's return damage
+/// doubled (x2) unless `holder` is a Mega Evolution Pokémon ex: the card's text, since the hit back is that attack's own
+/// damage (the coordinator via Dustin's card-text rule, Oct 9; P2 first chose a flat +20). Else 0. A stated choice: the
+/// receiver's `NoWeakness` isn't read (only Metal Defender and Adamantine Rolling give it, to their own user, and they add
+/// it before this hit back lands though it covers only the opponent's next turn).
 pub(crate) fn attack_return_weakness_extra(state: &State, holder: &PlayedCard, receiver: &PlayedCard) -> u32 {
-    let Card::Pokemon(receiver_card) = &receiver.card else {
-        return 0;
-    };
-    let holder_types = state.pokemon_energy_types(holder);
-    if receiver_card
-        .weakness
-        .is_some_and(|weakness| holder_types.contains(&weakness))
-    {
-        20
-    } else {
-        0
+    match printed_weakness_application(state, receiver, holder) {
+        WeaknessApplication::None => 0,
+        WeaknessApplication::Flat(extra) => extra,
+        WeaknessApplication::Double => super::counterattack::attack_counterattack_damage(holder),
     }
 }
 

@@ -154,7 +154,11 @@ The coordinator via Dustin, Oct 8 (main `rl/results/engine_switch_rules2_2026-10
   - 20261006_220700000: Automated Combat did a flat 20 to Darkness-weak attackers, five times.
 - **Three readings the tests pin, for you to confirm or overrule.** None has been seen in a game, and none can change a recorded
   game (see "Which games can change").
-  1. **Bounded Field** leaves the hit back's extra at +20: Bounded Field's ×2 isn't applied to it.
+  1. **Bounded Field** left the hit back's extra at +20: Bounded Field's ×2 wasn't applied to it. **Replaced Oct 9 by the plain
+     reading** (the coordinator via Dustin's card-text rule; `6b111ba` tests first, then the fix): the hit back is the attack's own
+     damage, so under Bounded Field its Weakness is ×2 unless the holder is a Mega Evolution Pokémon ex (Chesnaught's 80 becomes
+     160; Mega Sableye ex's Cursed Jewel keeps +20). The off-switch still gives the flat path. No recorded game reaches it, and
+     shot-list rows 30-33 hold the four readings.
   2. **Steelix's Metal Defender** ("During your opponent's next turn, this Pokémon has no Weakness") doesn't protect Steelix from
      the hit back on the attack that uses it. The engine adds the effect before the hit back lands, but the card covers only the
      opponent's next turn.
@@ -195,7 +199,7 @@ own.
 | `hit_back_on_a_benched_attacker_stays_flat` (U-turn) | passes | passes |
 | `metal_defender_does_not_shield_its_own_hit_back` | fails: 130, not 110 | passes |
 | `swift_does_not_shield_the_hit_back` | fails: 60, not 40 | passes |
-| `bounded_field_keeps_the_hit_back_extra_at_20` | fails: Stonjourner 40, not 20 | passes |
+| `bounded_field_keeps_the_hit_back_extra_at_20` (Oct 9: `bounded_field_doubles_the_hit_back_x2`, Stonjourner Knocked Out; and `bounded_field_keeps_plus_20_for_a_mega_ex_holder`) | fails: Stonjourner 40, not 20 | passes |
 
 ### How (line numbers at `5543a4b`)
 
@@ -203,7 +207,8 @@ own.
   left. `get_counterattack_damage` (:13) calls it and keeps its value (Rocky Helmet + attack + Ability).
 - `hooks/core.rs`: `attack_return_weakness_extra` (:1535). It gives 20 when the Attacking Pokémon's printed Weakness is one of the
   holder's types, read through `pokemon_energy_types` (so Double Type counts, as in `printed_weakness_application`, :1503), and 0
-  otherwise. It reads no `NoWeakness` and no Bounded Field: the two stated choices.
+  otherwise. It reads no `NoWeakness` and no Bounded Field: the two stated choices. (Oct 9: it now reads Bounded Field through
+  `printed_weakness_application`, ×2 of the attack's return damage for a holder that isn't a Mega ex.)
 - `hooks/mod.rs`: the two exports (:34-35).
 - `handle_attack_retaliation` (`actions/apply_action_helpers.rs`:616): the extra (:625) goes into the same `apply_damage` (:637).
   It is computed only when the attacker is in the Active Spot (`attacking_ref.1 == 0`) and the defender carries an attack's
@@ -287,7 +292,8 @@ Main PLAN.md precondition (f) adds `handle_attack_retaliation`. In the format of
 
 ### Open points (none changes a recorded game)
 
-1. **For Dustin:** the three readings above (Bounded Field +20, Metal Defender, Swift) and the Bench.
+1. **For Dustin:** the readings above (Metal Defender, Swift) and the Bench. Bounded Field's is replaced by the plain reading, ×2
+   (Oct 9).
 2. **The hit back as attack damage, beyond Weakness.** P2 gives it only Weakness. The engine applies it as a plain `apply_damage`,
    so none of these touch it:
    - the Attacking Pokémon's own damage reductions, Disguise or full prevention;
