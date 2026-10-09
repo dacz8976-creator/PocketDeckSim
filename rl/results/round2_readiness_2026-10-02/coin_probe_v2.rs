@@ -43,12 +43,54 @@
 //!     apply_action.rs:908), ResolveAttackRetaliation (apply_action.rs:627), forecast_apply_damage_after_coins' Guts / Perish
 //!     Body coin branch (apply_action.rs:948) and an attack's immediate outcome (attack_outcome.rs:281); the bots' public reply
 //!     (players/public_reply.rs:564) prices the opponent's attack, beyond this search.
-//!   Output: a RETURN block as the others, and a last line `RESULT_P2 ret=<n|none>`. The RESULT line is unchanged (scripts read it with an end
+//!   Output: a RETURN block as the others, and a line `RESULT_P2 ret=<n|none>` (since round 2's check, below, RESULT_R2
+//!     follows it). The RESULT line is unchanged (scripts read it with an end
 //!     anchor: validate_v2.py and the switch-2 classify_8b.py for v2; coin_lookahead.py and classify_8c.py for v1's).
 //!   Built on the candidate, in a scratch copy (git archive) of its engine:
 //!     python3 ../coin_prevention_repair_2026-09-30/instrument_scan.py --emit-fns engine/examples/r2_counter_fns.rs
 //!     cp coin_probe_v2.rs engine/examples/ && (cd engine && cargo build --release --locked --features test-utils --example coin_probe_v2)
 //!   The self-test adds boards H-N; with P2 off (DECKGYM_FLAT_RETURN_DAMAGE=1) exactly the four with a return ply fail.
+//!
+//! Round 2's check (the cloud, Oct 9; claude/coin-prevention-round2): rules switch 2's precondition (a), seven more conditions,
+//! one per kind of round-2 gate. Each is the exact counters of `r2_tick` that it names (IS below is
+//! ../coin_prevention_repair_2026-09-30/instrument_scan.py: its EXACT list :63-99, r2_tick :290-560), included as RETURN's are:
+//!   WILL    will_confused_attack and will_block_coin_attack (IS:403-408): Will's heads reaches a Confused attacker's or a block
+//!           coin's attack (Confusion, Will and Victini together is WILL, not VS);
+//!   VS      vs_block_coin_built (:409-411) and vs_block_coin_choice_offered (:424-428): Victory Star pauses after a block coin;
+//!   TRAP    trap_territory_offer_changed (:449-454) and trap_territory_outcome_changed (:455-458): two Ariados' Trap Territory
+//!           changes the moves offered to the side facing them, or a move's outcome (Grass Knot, a retreat's Energy);
+//!   OWN     coin_own_side_split (:372-381), and GUTS guts_own_side_split (:382-384): a coin Ability or Guts on the attacker's
+//!           own side splits its Attack or queued choice;
+//!   PLAIN   coin_plain_damage_chosen and coin_plain_damage_by_attack (:348-361; the key ignored), and PERISH
+//!           perish_plain_hit_chosen and perish_plain_hit_offered (:353-364): an attack's plain damage choice at a coin Ability
+//!           (either side) or at a defending Active with Perish Body.
+//!   Not counted: the superset trap_territory_two_in_play, every offgate_* counter, coin_queued_by_attack (it includes first-round
+//!     sites; QUEUED covers it by card id), and luxury_coin_opp_stadium and fossil_item_lock (exact, but not in PLAN's (a)); see
+//!     r2_kind (:217).
+//!   Plies: a counter that reads the chosen move is recorded at the ply the move is charged, RETURN's rule (1 at the root, plies + 1
+//!     for an ordinary move, none more in a forced, free or promotion frame). One that reads the moves offered is recorded at the
+//!     ply they would be chosen: 1 at the root, the ply already spent in a forced, free or promotion frame, plies + 1 otherwise,
+//!     and 4 ("beyond the search") at a costed node of depth 3, whose moves the bots never apply (they score it with
+//!     static_eval). Nodes past the turn boundary are skipped (the bots never search them); the opponent's frames during the
+//!     mover's turn count, and the detail names the frame's seat. r2_tick is asked once per applied move (r2_fire, :281, its
+//!     result shared with RETURN) and once per node for the offered moves (offered_read, :309), each only when a cheap fact
+//!     holds (chosen_fact, :262; offered_read's own), with the attack each seat chose last this turn as its `last_attack`
+//!     (kept in main's replay from play_tick's chosen Action, and down the search's path; it only keys PLAIN's offered counter).
+//!   trapleaf: the least depth of a leaf of the search (where it stops: the turn boundary or depth 3; a QUEUED frame, which the
+//!     probe doesn't expand, gives the ply its moves would be chosen at, at most 3) whose mover's Active faces two or more
+//!     opposing Ariados (leaf, :324). The leaf's value reads the Active's Retreat Cost (value_functions.rs's
+//!     active_retreat_cost, through retreat.rs's Ariados loop), which Trap Territory now raises by one more, and no counter sees
+//!     it: on its own it is a judgment (precondition (e)'s revert switch settles it). The side holding the Ariados never shows it.
+//!   Skipped: a ChooseRetreatEnergy while two Ariados face an Active is never asked. r2_tick's outcome check would forecast it
+//!     on the old count's board, paying the new count's Energy there, and panic (apply_action.rs:1652-1657 at 31616338, a
+//!     mixed-Energy retreat against two Ariados); no exact counter reads that move otherwise, and its Retreat is asked as usual.
+//!     The watch build's own r2_tick still has this panic.
+//!   Output: a block per kind found (the detail names the counter, its key and the frame's seat), a TRAPLEAF line, and a last
+//!     line `RESULT_R2 will=<n|none> vs=<n|none> trap=<n|none> own=<n|none> guts=<n|none> plain=<n|none> perish=<n|none>
+//!     trapleaf=<d|none>`; RESULT and RESULT_P2 are unchanged. A field not found is not a proof of absence (12 chance samples per
+//!     move; r2_tick's forecasts use seed 0, the probe's successors 1000 + s).
+//!   The self-test adds 32 boards, counter_probe_readiness.rs's (its helpers copied): the positives at ply 1, four deeper ones
+//!     (plain 2, perish 3, will 2, vs 2) and the negatives; boards A-N must read none in every round-2 field.
 //!
 //! v1's notes follow.
 //! Step 8c of the rules switch, the coin repair's side (Oct 1; scratch, diagnosis only; no change in engine/). The counterpart of
@@ -155,9 +197,10 @@ fn finite_cut_slots(state: &State, action: &Action) -> Vec<usize> {
     out
 }
 
-/// P2's RETURN: applying `a` at `state` runs the hit back of an attack's return damage, and the Attacking Pokemon's printed
-/// Weakness changes what it leaves (the exact counter "attack_return_weakness"). `actions` are the moves `state` offers.
-fn hit_back_takes_weakness(state: &State, actions: &[Action], a: &Action) -> bool {
+/// P2's RETURN, its prefilter: `a` is a move that can run the hit back of an attack's return damage, and some Pokemon in play
+/// carries one. Whether the Attacking Pokemon's printed Weakness changes what it leaves is the exact counter
+/// "attack_return_weakness", asked through r2_fire.
+fn return_fact(state: &State, a: &Action) -> bool {
     matches!(a.action, SimpleAction::Attack(_)
         | SimpleAction::ApplyQueuedAttackDamage { .. }
         | SimpleAction::KeepAttackCoinResults
@@ -165,7 +208,123 @@ fn hit_back_takes_weakness(state: &State, actions: &[Action], a: &Action) -> boo
         | SimpleAction::ApplyDamage { is_from_active_attack: true, .. }
         | SimpleAction::ResolveAttackRetaliation { .. })
         && state.in_play_pokemon.iter().flatten().flatten().any(|p| r2_attack_return(p) > 0)
-        && r2_tick(state, actions, a, None).iter().any(|(name, _)| *name == "attack_return_weakness")
+}
+
+/// Round 2 (Oct 9): the kind of an exact r2_tick counter, and whether it reads the moves offered (true) or the move chosen
+/// (false). Every other counter maps to none: attack_return_weakness (RETURN's, above), coin_queued_by_attack (first-round sites
+/// too; QUEUED covers it by card id), luxury_coin_opp_stadium and fossil_item_lock (not in PLAN's precondition (a)), the
+/// superset trap_territory_two_in_play and every offgate_* counter. A keyed counter matches on its name; the key is ignored.
+fn r2_kind(counter: &str) -> Option<(&'static str, bool)> {
+    Some(match counter {
+        "will_confused_attack" | "will_block_coin_attack" => ("WILL", false),
+        "vs_block_coin_built" => ("VS", false),
+        "vs_block_coin_choice_offered" => ("VS", true),
+        "trap_territory_offer_changed" => ("TRAP", true),
+        "trap_territory_outcome_changed" => ("TRAP", false),
+        "coin_own_side_split" => ("OWN", false),
+        "guts_own_side_split" => ("GUTS", false),
+        "coin_plain_damage_chosen" => ("PLAIN", false),
+        "coin_plain_damage_by_attack" => ("PLAIN", true),
+        "perish_plain_hit_chosen" => ("PERISH", false),
+        "perish_plain_hit_offered" => ("PERISH", true),
+        _ => return None,
+    })
+}
+
+/// The Pokemon of seat `p` whose printed Ability is Trap Territory (r2_tick's test; suppression is not read).
+fn trap_holders(state: &State, p: usize) -> usize {
+    state.in_play_pokemon[p].iter().flatten()
+        .filter(|x| r2_ability(x).starts_with("IncreaseRetreatCostForOpponentActive")).count()
+}
+
+/// TRAP's fact: some side has two or more Ariados and the other side an Active.
+fn trap_fact(state: &State) -> bool {
+    (0..2).any(|p| trap_holders(state, p) >= 2 && state.in_play_pokemon[1 - p][0].is_some())
+}
+
+/// The leaf fact (trapleaf): `actor`'s Active faces two or more opposing Ariados.
+fn faces_traps(state: &State, actor: usize) -> bool {
+    state.in_play_pokemon[actor][0].is_some() && trap_holders(state, 1 - actor) >= 2
+}
+
+/// PLAIN's and PERISH's fact: `a` is an attack's plain damage choice that does damage to a Pokemon with a coin Ability (either
+/// side), or to the defending Active with Perish Body.
+fn plain_fact(state: &State, a: &Action) -> bool {
+    let SimpleAction::ApplyDamage { attacking_ref, targets, is_from_active_attack: true } = &a.action else { return false };
+    let at = |q: usize, i: usize| state.in_play_pokemon[q].get(i).and_then(|p| p.as_ref());
+    targets.iter().any(|&(d, q, i)| d > 0 && (at(q, i).is_some_and(r2_is_coin)
+        || (q == 1 - attacking_ref.0 && i == 0 && at(q, 0).is_some_and(|p| r2_ability(p) == "CoinFlipToKnockOutAttackerOnKnockout"))))
+}
+
+/// The prefilter for a chosen move (any one fact asks r2_tick): WILL and VS, a non-stack Attack from an Active that is Confused
+/// or has a block coin; TRAP's fact; OWN and GUTS, an Attack or a queued choice with a coin Ability or Guts on the actor's own
+/// side; PLAIN and PERISH, plain_fact; RETURN, return_fact.
+fn chosen_fact(state: &State, a: &Action) -> bool {
+    let own = &state.in_play_pokemon[a.actor];
+    (matches!(a.action, SimpleAction::Attack(_)) && !a.is_stack
+        && own[0].as_ref().is_some_and(|p| p.is_confused() || r2_has_block_coin(p)))
+        || trap_fact(state)
+        || (matches!(a.action, SimpleAction::Attack(_) | SimpleAction::ApplyQueuedAttackDamage { .. })
+            && own.iter().flatten().any(|p| r2_is_coin(p) || r2_ability(p) == "CoinFlipToSurviveKnockOut"))
+        || plain_fact(state, a)
+        || return_fact(state, a)
+}
+
+/// The attack `seat` chose last in `state`'s turn (r2_tick's `last_attack`; only the key of coin_plain_damage_by_attack reads it).
+fn last_for<'a>(state: &State, last: &'a Last, seat: usize) -> Option<&'a Attack> {
+    last[seat].as_ref().filter(|(t, _)| *t == state.turn_count).map(|(_, x)| x)
+}
+
+/// The exact counters r2_tick finds when `a` is chosen at `state` (`actions`: the moves `state` offers), when the prefilter holds.
+/// Never for a ChooseRetreatEnergy while two Ariados face an Active: r2_tick's outcome check would pay the new count's Energy on
+/// the old count's board and panic (apply_action.rs:1646); no exact counter reads that move otherwise.
+fn r2_fire(state: &State, actions: &[Action], a: &Action, last: &Last) -> Vec<(&'static str, Option<String>)> {
+    if !chosen_fact(state, a) || (matches!(a.action, SimpleAction::ChooseRetreatEnergy { .. }) && trap_fact(state)) {
+        return vec![];
+    }
+    r2_tick(state, actions, a, last_for(state, last, a.actor))
+}
+
+fn r2_detail(name: &str, key: &Option<String>, actor: usize, offered: bool) -> String {
+    format!("the exact counter {name}{}, {} (the frame is seat {actor}'s)", key.as_ref().map_or(String::new(), |k| format!("[{k}]")),
+        if offered { "read from the moves offered there" } else { "read from this move" })
+}
+
+/// Records the chosen move's round-2 kinds (and RETURN) from `fired`, at `ply`, after `path` (which ends with the move).
+fn record_chosen(fired: &[(&'static str, Option<String>)], actor: usize, ply: usize, path: &[String], found: &mut Found) {
+    if fired.iter().any(|(name, _)| *name == "attack_return_weakness") {
+        found.add("RETURN", ply, path, RETURN_DETAIL.to_string());
+    }
+    for (name, key) in fired {
+        if let Some((kind, false)) = r2_kind(name) {
+            found.add(kind, ply, path, r2_detail(name, key, actor, false));
+        }
+    }
+}
+
+/// The round-2 counters that read the moves offered at `state`, recorded at `ply`, the ply those moves would be chosen at. r2_tick
+/// is asked with one of them as the chosen move (they share the frame's actor, which is all these counters read of it), never a
+/// ChooseRetreatEnergy (a frame of only those offers nothing these counters read), and only when a fact holds: an attack's plain
+/// damage choice at a coin Ability or Perish Body, Keep or Reroll beside a block coin on the actor's Active, or TRAP's fact.
+fn offered_read(state: &State, actions: &[Action], ply: usize, last: &Last, path: &[String], found: &mut Found) {
+    let Some(any) = actions.iter().find(|a| !matches!(a.action, SimpleAction::ChooseRetreatEnergy { .. })) else { return };
+    let keep = actions.iter().any(|a| matches!(a.action, SimpleAction::KeepAttackCoinResults | SimpleAction::RerollAttackCoins { .. }))
+        && state.in_play_pokemon[any.actor][0].as_ref().is_some_and(r2_has_block_coin);
+    if !(keep || trap_fact(state) || actions.iter().any(|a| plain_fact(state, a))) {
+        return;
+    }
+    for (name, key) in r2_tick(state, actions, any, last_for(state, last, any.actor)) {
+        if let Some((kind, true)) = r2_kind(name) {
+            found.add(kind, ply, path, r2_detail(name, &key, any.actor, true));
+        }
+    }
+}
+
+/// A leaf of the search: where it scores `state` with the value function, which reads the Active's Retreat Cost.
+fn leaf(state: &State, actor: usize, depth: usize, found: &mut Found) {
+    if faces_traps(state, actor) && found.trapleaf.is_none_or(|d| depth < d) {
+        found.trapleaf = Some(depth);
+    }
 }
 
 const RETURN_DETAIL: &str = "the hit back of an attack's return damage takes the Attacking Pokemon's Weakness";
@@ -295,8 +454,9 @@ fn ordered(actions: &[Action]) -> Vec<&Action> {
     out
 }
 
-/// `plies`: the plies the bots have spent to reach `state`; `root`: the probed state itself (its every move costs a ply).
-fn explore(state: &State, actor: usize, plies: usize, root: bool, path: &mut Vec<String>, found: &mut Found) {
+/// `plies`: the plies the bots have spent to reach `state`; `root`: the probed state itself (its every move costs a ply); `last`:
+/// the attack each seat chose last (round 2's key).
+fn explore(state: &State, actor: usize, plies: usize, root: bool, last: &Last, path: &mut Vec<String>, found: &mut Found) {
     found.nodes += 1;
     if found.nodes > limit() {
         found.truncated = true;
@@ -320,6 +480,10 @@ fn explore(state: &State, actor: usize, plies: usize, root: bool, path: &mut Vec
             found.add("QUEUED", plies, path, format!("offers {} ({})", queued.iter().map(|a| short(a)).collect::<Vec<_>>().join(" | "),
                 if pure { "a pure frame: the bots resolve it without spending a ply" } else { "a mixed frame: an ordinary move" }));
             let cost = if pure && !root { 0 } else { 1 };
+            // Round 2: the frame's offered moves, at the ply they would be chosen; the bots' leaves under it are at that depth
+            // or deeper, and at most 3.
+            offered_read(state, &actions, plies + cost, last, path, found);
+            leaf(state, actor, (plies + cost).min(SEARCH_PLIES), found);
             if plies + cost <= SEARCH_PLIES {
                 for a in &queued {
                     let slots = finite_cut_slots(state, a);
@@ -329,12 +493,13 @@ fn explore(state: &State, actor: usize, plies: usize, root: bool, path: &mut Vec
                         found.add("CUT", plies + cost, &p, format!("the queued choice's finite cut at slot(s) {slots:?}"));
                     }
                 }
-                // P2: the frame is not expanded, so its moves are asked here, at the ply they would be chosen.
+                // P2 and round 2: the frame is not expanded, so its moves are asked here, at the ply they would be chosen.
                 for a in ordered(&actions) {
-                    if hit_back_takes_weakness(state, &actions, a) {
+                    let fired = r2_fire(state, &actions, a, last);
+                    if !fired.is_empty() {
                         let mut p = path.clone();
                         p.push(if cost == 0 { format!("(free) {}", short(a)) } else { short(a) });
-                        found.add("RETURN", plies + cost, &p, RETURN_DETAIL.to_string());
+                        record_chosen(&fired, a.actor, plies + cost, &p, found);
                     }
                 }
             }
@@ -342,19 +507,22 @@ fn explore(state: &State, actor: usize, plies: usize, root: bool, path: &mut Vec
         }
     }
     let step = |a: &Action, next_plies: usize, label: String, path: &mut Vec<String>, found: &mut Found| {
-        // P2: every move applied is asked, at the ply it is charged.
-        if hit_back_takes_weakness(state, &actions, a) {
-            path.push(label.clone());
-            found.add("RETURN", next_plies, path, RETURN_DETAIL.to_string());
-            path.pop();
+        // P2 and round 2: every move applied is asked (one r2_tick call), at the ply it is charged.
+        path.push(label.clone());
+        record_chosen(&r2_fire(state, &actions, a, last), a.actor, next_plies, path, found);
+        path.pop();
+        let mut next_last = last.clone();
+        if let SimpleAction::Attack(x) = &a.action {
+            next_last[a.actor] = Some((state.turn_count, x.clone()));
         }
         for next in successors(state, a) {
             path.push(label.clone());
-            explore(&next, actor, next_plies, false, path, found);
+            explore(&next, actor, next_plies, false, &next_last, path, found);
             path.pop();
         }
     };
     if root {
+        offered_read(state, &actions, plies + 1, last, path, found);
         if mover == actor {
             attack_cuts(state, &actions, plies + 1, path, found);
         }
@@ -365,12 +533,14 @@ fn explore(state: &State, actor: usize, plies: usize, root: bool, path: &mut Vec
     }
     if forced_continuation(state) && actions.len() == 1 {
         if path.iter().filter(|m| m.starts_with("(free)")).count() < 16 {
+            offered_read(state, &actions, plies, last, path, found);
             step(&actions[0], plies, format!("(free) {}", short(&actions[0])), path, found);
         }
         return;
     }
     if free_frame(state, &actions) || promotion_frame(state, mover, &actions) {
         if path.iter().filter(|m| m.starts_with("(free)")).count() < 16 {
+            offered_read(state, &actions, plies, last, path, found);
             for a in ordered(&actions) {
                 step(a, plies, format!("(free) {}", short(a)), path, found);
             }
@@ -378,8 +548,15 @@ fn explore(state: &State, actor: usize, plies: usize, root: bool, path: &mut Vec
         return;
     }
     if state.current_player != actor || plies >= SEARCH_PLIES {
+        // A leaf (the bots score it with static_eval). Past the turn boundary nothing is searched; at depth 3 the offered moves
+        // are recorded at 4, just beyond the search.
+        leaf(state, actor, plies, found);
+        if state.current_player == actor {
+            offered_read(state, &actions, plies + 1, last, path, found);
+        }
         return;
     }
+    offered_read(state, &actions, plies + 1, last, path, found);
     if mover == actor {
         attack_cuts(state, &actions, plies + 1, path, found);
     }
@@ -457,15 +634,14 @@ fn probe_state(state: &State, label: &str, last: &Last) -> Least {
     println!("{label}mover seat {actor}, turn {}; Active {}; {} offered moves", state.turn_count,
         state.maybe_get_active(actor).map_or("-".to_string(), |p| p.get_name()), offered.len());
     let mut found = Found::default();
-    let _ = last; // (tests first: no round-2 detection yet)
-    explore(state, actor, 0, true, &mut vec![], &mut found);
+    explore(state, actor, 0, true, last, &mut vec![], &mut found);
     report(&found, label)
 }
 
 /// No attack chosen yet in the probed turn.
 const NO_LAST: Last = [None, None];
 
-// The self-test's round-2 boards (Oct 9): these helpers are counter_probe_readiness.rs's (:34-45, :52-96, :123-157), copied.
+// The self-test's round-2 boards (Oct 9): these helpers are counter_probe_readiness.rs's (:34-41, :52-96, :115-157), copied.
 fn attack_named(state: &State, title: &str) -> Action {
     state
         .generate_possible_actions()
@@ -473,10 +649,6 @@ fn attack_named(state: &State, title: &str) -> Action {
         .into_iter()
         .find(|a| matches!(&a.action, SimpleAction::Attack(x) if x.title == title))
         .unwrap_or_else(|| panic!("{title} is not offered"))
-}
-
-fn offered(state: &State, pick: impl Fn(&SimpleAction) -> bool) -> Option<Action> {
-    state.generate_possible_actions().1.into_iter().find(|a| pick(&a.action))
 }
 
 /// Player 1 uses `title` from `attacker` into `defenders` (with `hand` as its hand), choosing the copied attack `copy` when
@@ -718,7 +890,7 @@ fn selftest() {
         let mut attacker = vec![PlayedCard::from_id(CardId::B1016WhimsicottEx).with_energy(vec![EnergyType::Grass; 2])];
         attacker.extend((0..ariados).map(|_| mon(CardId::B1a006Ariados)));
         let state = get_test_game_with_board(attacker, vec![mon(CardId::A1036CharizardEx)]).get_state_clone();
-        check_r2(&format!("Grass Knot into Charizard ex, {ariados} Ariados"), probe_state(&state, "  K ", &NO_LAST), none, &want, None);
+        check_r2(&format!("Grass Knot into Charizard ex, {ariados} Ariados"), probe_state(&state, "  X ", &NO_LAST), none, &want, None);
     }
     // An attack's own outcome (:249-265): Whiscash's Earthquake (10 to each of its own Benched Pokemon).
     let whiscash = || PlayedCard::from_id(CardId::A3b039Whiscash).with_energy(vec![EnergyType::Fighting; 4]);

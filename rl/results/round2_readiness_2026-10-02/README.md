@@ -267,3 +267,47 @@ halves)", tests first. It is a third condition in `coin_probe_v2.rs`, beside QUE
 - **Golden:** the seven smoke games where the exact counter fired, at its tick: 1 in all seven, none with P2 off.
 - **Controls:** four ticks of Mega Sableye ex v t-sceptile and t-blaziken (neither weak to Darkness) where only the off-gate
   counter fired: none in all four.
+
+### Round 2's conditions, RESULT_R2 (Oct 9)
+
+Fable's Oct 9 queue (direct route), rules switch 2's precondition (a): coin_probe v2 also looks for round 2's other gates inside the
+search (Will, Victory Star after a block coin, Trap Territory, the own-side coin, own-side Guts, the plain queued sites, Perish Body on
+a queued hit), tests first. QUEUED, CUT and RETURN are unchanged.
+
+**In plain words**
+
+- **What it finds:** a move inside the bots' 3-ply search where one of round 2's changed rules decides what happens. That is the gate
+  a round-2 look-ahead game needs, the same as QUEUED and RETURN for round 1 and P2.
+- **How it decides:** it runs the exact counters' own lines (`r2_tick`, the watch build's text) on each move it applies, sorted into
+  seven kinds by `r2_kind` (:217). Some counters read the move chosen (counted at the ply that move costs, as RETURN does); the
+  Trap Territory counter reads the moves offered (read once per search node: 1 at the root, ply+1 below it, 4 for "beyond the search"
+  at a depth-3 leaf).
+- **Left out:** `trap_territory_two_in_play` (it counts boards, not decisions), the `offgate_*` counters, `coin_queued_by_attack`
+  (QUEUED already covers it), and `luxury_coin_opp_stadium` and `fossil_item_lock` (not in PLAN's (a)).
+- **trapleaf:** the least depth of a search leaf where the mover's Active faces two or more opposing Ariados, so the search ended
+  inside Trap Territory's reach.
+- **One skip:** the probe never calls `r2_tick` on a ChooseRetreatEnergy while two Ariados face the Active. The watch build's
+  `r2_tick` panics there on a mixed-Energy retreat (apply_action.rs:1652-1657 at 31616338); the watch build itself still has that panic.
+- **It must be built on the round-2 engine** (31616338 or later).
+- **The output:** a block per kind found, and a new last line `RESULT_R2 will= vs= trap= own= guts= plain= perish= trapleaf=`. The
+  `RESULT` and `RESULT_P2` lines are unchanged.
+
+**Commits**
+
+- `77aa8e3d`: tests first. 32 new self-test boards (19 positives, 13 negatives); the 14 old boards now also expect none in every
+  round-2 field. Before the check, exactly the 19 positives fail (`coin_probe_v2_selftest_before_r2.txt`).
+- The next commit: the check (`coin_probe_v2.rs` sha256 `edfa1efc...`), self-test 46 checks and 3 frame checks, 0 failures
+  (`coin_probe_v2_selftest.txt`).
+
+**Checks** (built on 31616338's engine)
+
+- **The deeper boards** read the plies the brief predicted: Raging Thunder before the attack, plain=2 (Attack, then the damage
+  choice); Chase Order into an 80-HP Cursola, perish=3 (Attack, the Bench discard, the damage choice); Will in hand, will=2 (Will,
+  then Heat Charged); Victini in hand, vs=2 (Victini, then Heat Charged). Ariados: 2 Energy, trap=1 from the moves offered; 4
+  Energy, trap=1 from the Retreat's outcome; Grass Knot from the Ariados side, trap=1 and trapleaf none.
+- **P2's checks again** (`p2_probe_checks_nobuild_r2.sh`, output `p2_probe_checks_output_r2.txt`): with P2 off, still exactly the
+  four boards H, I, J and M fail. Every RESULT and RESULT_P2 line is as in `p2_probe_checks_output.txt`; RESULT_R2 reads all none in
+  all 24 runs (those decks have no Will, Ariados, own-side coin or Guts).
+- **Step 8b's 21 look-ahead ticks and 4 controls** (`early_warning_8b_ticks_r2.sh`, output `early_warning_8b_ticks_r2.txt`; decks
+  from 1163ebb7, seed base 23,100,000,000): every run exits 0 without the node limit; RESULT and RESULT_P2 match
+  `classify_output.txt` in every row; RESULT_R2 is all none, trapleaf included.
