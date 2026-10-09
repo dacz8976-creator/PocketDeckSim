@@ -678,7 +678,7 @@ fn forecast_effect_attack_by_mechanic(
             AttackOutcomes::from_effect_outcomes(discard_search_outcomes_with_filter(
                 state.current_player,
                 state,
-                move |card| matches!(card, Card::Trainer(trainer) if trainer.trainer_card_type == trainer_type),
+                move |card| matches!(card, Card::Trainer(trainer) if trainer.trainer_card_type.is_printed_as(&trainer_type)),
             ))
         }
         Mechanic::SearchToHandByEvolvesFrom { name } => AttackOutcomes::from_effect_outcomes(
@@ -5519,9 +5519,7 @@ fn choose_opponent_hand_card_to_shuffle_into_deck(damage: u32) -> AttackOutcomes
 fn matches_hand_card_kind(card: &Card, kind: HandCardKind) -> bool {
     match kind {
         HandCardKind::Any => true,
-        HandCardKind::Item => {
-            matches!(card, Card::Trainer(trainer) if trainer.trainer_card_type == TrainerType::Item)
-        }
+        HandCardKind::Item => card.is_item(),
         HandCardKind::Tool => is_tool_card(card),
     }
 }
@@ -7030,7 +7028,7 @@ fn extra_damage_per_trainer_type_in_discard_attack(
         .filter(|card| {
             matches!(
                 card,
-                Card::Trainer(trainer) if trainer.trainer_card_type == trainer_type
+                Card::Trainer(trainer) if trainer.trainer_card_type.is_printed_as(&trainer_type)
             )
         })
         .count() as u32;
@@ -8451,7 +8449,7 @@ fn discard_top_self_deck_extra_damage_if_trainer_type(
     extra_damage: u32,
 ) -> AttackOutcomes {
     let top_matches = state.decks[state.current_player].cards.first().is_some_and(
-        |card| matches!(card, Card::Trainer(t) if t.trainer_card_type == trainer_type),
+        |card| matches!(card, Card::Trainer(t) if t.trainer_card_type.is_printed_as(&trainer_type)),
     );
     let damage = if top_matches {
         base_damage + extra_damage

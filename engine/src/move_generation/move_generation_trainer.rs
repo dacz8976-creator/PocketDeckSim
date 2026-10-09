@@ -356,7 +356,7 @@ fn can_play_team_rockets_thieving_machine(
     let opponent = (state.current_player + 1) % 2;
     if state.discard_piles[opponent].iter().any(|card| {
         matches!(card, Card::Trainer(t)
-            if t.trainer_card_type == TrainerType::Item
+            if t.trainer_card_type.is_printed_as(&TrainerType::Item)
                 && t.name != "Team Rocket's Thieving Machine")
     }) {
         can_play_trainer(state, trainer_card)

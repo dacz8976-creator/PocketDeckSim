@@ -389,7 +389,7 @@ fn team_rockets_thieving_machine_outcomes(acting_player: usize, state: &State) -
         .iter()
         .filter(|card| {
             matches!(card, Card::Trainer(t)
-                if t.trainer_card_type == TrainerType::Item
+                if t.trainer_card_type.is_printed_as(&TrainerType::Item)
                     && t.name != "Team Rocket's Thieving Machine")
         })
         .cloned()

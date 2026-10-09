@@ -107,6 +107,15 @@ pub enum TrainerType {
     Stadium,
 }
 
+impl TrainerType {
+    /// Whether a card of this type is a card of the printed kind `printed`. A Fossil's printed kind is Item (rules/01,
+    /// rules/04 §6): it is an "Item card" wherever a card text says so, though the engine plays it as a 40-HP Basic.
+    /// Every other type matches only itself.
+    pub fn is_printed_as(&self, printed: &TrainerType) -> bool {
+        self == printed || (*printed == TrainerType::Item && *self == TrainerType::Fossil)
+    }
+}
+
 /// Represents the data of a single trainer card.
 #[derive(Clone, Serialize, Deserialize)]
 pub struct TrainerCard {
@@ -252,6 +261,11 @@ impl Card {
             Card::Trainer(trainer_card) => trainer_card.trainer_card_type == TrainerType::Fossil,
             _ => false,
         }
+    }
+
+    /// An Item card, a Fossil included (its printed kind; `TrainerType::is_printed_as`).
+    pub fn is_item(&self) -> bool {
+        matches!(self, Card::Trainer(t) if t.trainer_card_type.is_printed_as(&TrainerType::Item))
     }
 
     pub fn as_trainer(&self) -> TrainerCard {
