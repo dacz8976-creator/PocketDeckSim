@@ -13,11 +13,11 @@ Dustin (Oct 2): quality first, and the time and cost to get it are reported for 
 
 Keep run directories under `rl/results/strength_<date>_<name>/`, not here. Run from the repository root of a clean tree of the commit you register (a `git archive` or a worktree: the deck files are read and hashed from it).
 
-## Long runs on the laptop: start them with `launch_detached.sh`, watch them with `run_watch.sh`
+## Long runs on the laptop: start them with `launch_detached.sh`, list them for `watch_all.sh`
 
 **Every long laptop run starts through `launch_detached.sh`**: strength runs, slow reports, floor and screen runs, and the chain scripts that restart them. Use nothing else. On Oct 8 a forced app update ended the Claude session's process tree, and the run it had started died with it. The launcher gives the run its own session and process group, so it no longer depends on the window, session or app that started it:
 - `bash rl/strength/launch_detached.sh start NAME --dir REPO -- nice -n 19 PROGRAM ARGS...` starts it, and refuses if NAME is already running;
-- `status [NAME]` and `stop NAME` check it and stop it (SIGTERM to the whole group; the game that is cut off is played again on resume);
+- `status [NAME]` and `stop NAME` check it and stop it (SIGTERM to the whole group; the game that is cut off is played again on resume). A run counts as going while its leader runs, or, if the leader died, while a process of its group still carries the run's tag (`LAUNCH_DETACHED_RUN`), so a second start is refused and `stop` still reaches it;
 - the pid file and the log are `~/runs/NAME.pid` and `~/runs/NAME.log`.
 
 Rules for the run itself:
@@ -26,11 +26,12 @@ Rules for the run itself:
 
 The launcher doesn't keep WSL itself alive. That is the job of the "Pocket Deck Lab WSL On Demand" scheduled task, which holds `wsl.exe --exec sleep infinity` outside the Claude app. If WSL shuts down, start the same command again and the run resumes.
 
-**`run_watch.sh`** writes one status line for a run, with no Claude session needed:
-- what it reports: games written, games since the last look, the time of the last game, and RUNNING, WAITING (the chain waits out the school-morning rule), STALLED? or STOPPED;
-- with `--push`, it puts the latest lines on the branch `laptop-status` (`STATUS.txt`) by git plumbing, so main's index and working tree are never touched;
-- started with `launch_detached.sh` and `--every 30`, it repeats until the run is done;
-- if the branch's newest line is much older than 30 minutes, the laptop or its WSL is down.
+**The status page.** Every 30 minutes the Windows task "PocketDeckSim laptop status" (Dustin approved it, Oct 9) runs `watch_all.sh` in WSL from outside the Claude app. It looks at every run on `~/runs/watch.list` and rewrites `STATUS.txt` on the branch `laptop-status` of origin, readable on GitHub from a phone. **Add a line to the watch list when a long laptop run starts** (`NAME|RUN_DIR|TOTAL|PATTERN|CHAIN|STALL_MIN|X_LABEL`, the header of `watch_all.sh`), and take it out some time after the run is done.
+- Each line comes from `run_watch.sh`: games written (complete records only), games since the last look, the last game's time and age, and one state: RUNNING; DONE; WAITING (the chain script runs, the program doesn't: the school-morning pause), or WAITING TOO LONG? past `--wait-max` (900 min); LONG GAMES? (no new game for `--stall-min` while the program is busy) or STALLED? (the same while it is idle); STOPPED; NO RUN FOLDER (a wrong watch-list line). A running program whose chain script has died is marked too.
+- The page is rewritten at every look while a run is not done, once more when the last one finishes, and every 6 hours otherwise. Times are UTC. A page much older than that means the laptop could not report: off or asleep, restarted and not signed in yet (the task runs only while Dustin is signed in), offline, or a failing push. `~/runs/watch_all.log` says which.
+- The commit is made by git plumbing on a remote-tracking ref only: main's index and working tree are never touched, and no local `laptop-status` branch is made. Read the page on github.com (pick the branch on the web page); don't switch to `laptop-status` in GitHub Desktop, since its only file is `STATUS.txt`.
+- **One watcher per run.** `run_watch.sh --push --every MIN`, started with `launch_detached.sh`, is only for a run the task doesn't watch: two watchers of one NAME share its state file and push over each other.
+- Tests: `KX_NO_PUSH=1 KX_RUNS_DIR=/tmp/somewhere bash rl/strength/watch_all.sh` looks without pushing; with the default `~/runs` a test would move the real run's "+N in M min" starting point.
 
 ## The design in detail
 
@@ -75,7 +76,7 @@ The pinned binary lives on the laptop; the cloud builds its own copy of the same
 
 ## Files
 
-`Cargo.toml`, `src/main.rs` (run, selfcheck), `src/ext.rs` (external pilots), `build.sh`, `strength_prereg.py`, `strength_report.py`, `slow_report.py` and `slow_report_pin.json` (the opt-in slow report), `slow_report_existing.py` (its page from games that already exist), `launch_detached.sh` and `run_watch.sh` (long laptop runs), `decks.json` (name to path; the 8 panel lists, Dustin's 15, the drafts), `groups.json` (panel8, aggro, setup, dustin_all, drafts, raticate), `heldout.json`, `intended_lines.json`, `config_default.json`, `PROTOCOL.md`, `ext_pilot_example.py`. Tests and their outputs: `rl/results/strength_harness_tests_2026-10-02/`; the tests of the report refusal, the `use` stage, the slow report and its page from existing games are `test_strength_report.py`, `test_strength_prereg_use.py`, `test_slow_report.py` (with `test_slow_report_runloop.py`, `_process.py`, `_page.py` and `_registration.py`) and `test_slow_report_existing.py` beside the scripts, and the slow report's real-program smoke is `rl/results/slow_report_smoke_2026-10-07/`.
+`Cargo.toml`, `src/main.rs` (run, selfcheck), `src/ext.rs` (external pilots), `build.sh`, `strength_prereg.py`, `strength_report.py`, `slow_report.py` and `slow_report_pin.json` (the opt-in slow report), `slow_report_existing.py` (its page from games that already exist), `launch_detached.sh`, `run_watch.sh` and `watch_all.sh` (long laptop runs and the status page), `decks.json` (name to path; the 8 panel lists, Dustin's 15, the drafts), `groups.json` (panel8, aggro, setup, dustin_all, drafts, raticate), `heldout.json`, `intended_lines.json`, `config_default.json`, `PROTOCOL.md`, `ext_pilot_example.py`. Tests and their outputs: `rl/results/strength_harness_tests_2026-10-02/`; the tests of the report refusal, the `use` stage, the slow report and its page from existing games are `test_strength_report.py`, `test_strength_prereg_use.py`, `test_slow_report.py` (with `test_slow_report_runloop.py`, `_process.py`, `_page.py` and `_registration.py`) and `test_slow_report_existing.py` beside the scripts, and the slow report's real-program smoke is `rl/results/slow_report_smoke_2026-10-07/`.
 
 ## Limits
 
