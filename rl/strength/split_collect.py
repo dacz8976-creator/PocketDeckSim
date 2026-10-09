@@ -8,17 +8,20 @@ them). This script then merges the folders and proves the merge is the registere
     seat, the arms ref and X) appears exactly once, with the inputs the manifest gives it: deck, opponent, deal, seat, arm, seed, the
     pilot of each side;
   - every worker played this manifest (byte for byte, by sha256) with the registration's program (the manifest's program_sha256, or, when
-    the manifest names none, the same program as every other worker), and only the decks of its own slice;
+    the manifest names none, the same program as every other worker), on the registration's engine tree, and only the decks of its own
+    slice. A program rebuilt on another machine has another sha256 (build.sh: the same bytes need the same machine setup); it is accepted,
+    as a note, only when its stamp replayed the manifest's 12-game self-check for every pilot the manifest records one for and every
+    digest line is equal (slow_report.py's rule for a rebuild), and the run's pilots are all engine pilots;
   - anything else is flagged: a missing game, a duplicate (the same content: kept once; different content: a conflict, neither kept), a
     game with other inputs or not in the registration, an errored game (errors.jsonl), an unreadable line (a run stopped mid-write).
 The merged games.jsonl holds each kept game's line exactly as its worker wrote it, in the job list's order. MERGE_RECORD.md says which
 worker played what, with which build, and every gap. The exit status is 0 only for a complete, clean merge.
 
-  split_collect.py stamp --manifest M/manifest.json --program PATH --worker NAME --out W [--only-deck NAME]...
+  split_collect.py stamp --manifest M/manifest.json --program PATH --worker NAME --out W [--only-deck NAME]... [--root REPO] [--no-selfcheck]
   split_collect.py merge --manifest M/manifest.json --worker W1 --worker W2 ... --out OUT
   split_collect.py compare A.jsonl B.jsonl     (game for game, the content without the timing fields; exit 0 when equal)
 """
-import argparse, hashlib, json, os, sys
+import argparse, hashlib, json, os, subprocess, sys
 
 INPUTS = ("deck", "opp", "deal", "seat", "arm", "seed", "pilot_deck", "pilot_opp")
 TIMING = ("wall_s", "started_at")   # and moves_*'s total_s and ms, and each log entry's ms: see content()
@@ -30,6 +33,33 @@ def sha256_file(path):
         for block in iter(lambda: f.read(1 << 20), b""):
             h.update(block)
     return h.hexdigest()
+
+
+def engine_pilots(m):
+    """The run's pilots (pilot and reference) that are engine codes; an `ext:` pilot has no self-check."""
+    return {p for p in (m.get("pilot"), m.get("reference")) if p and not p.startswith("ext:")}
+
+
+def rebuilt_ok(m, stamp):
+    """None when a worker's program, rebuilt with another sha256, may stand for the registration's: every pilot is an engine pilot and the
+    stamp's replayed self-check equals the manifest's for each; else the reason it may not."""
+    if any(p.startswith("ext:") for p in (m.get("pilot"), m.get("reference")) if p):
+        return "an external pilot has no self-check to replay"
+    want = {p: t for p, t in (m.get("selfcheck") or {}).items() if p in engine_pilots(m)}
+    if not want or set(want) != engine_pilots(m):
+        return "the manifest records no self-check for every pilot, so a rebuild can't be checked"
+    got = stamp.get("selfcheck") or {}
+    bad = [p for p in sorted(want) if got.get(p) != want[p]]
+    return f"its self-check differs from the manifest's for {', '.join(bad)}" if bad else None
+
+
+def registered_tree(m):
+    """The engine tree id the manifest's `engine` text names ("... engine tree 38af8b0cc4f3"), if it names one."""
+    words = str(m.get("engine") or "").replace(",", " ").split()
+    for i, w in enumerate(words[:-1]):
+        if w == "tree" and all(c in "0123456789abcdef" for c in words[i + 1]) and len(words[i + 1]) >= 7:
+            return words[i + 1]
+    return None
 
 
 def expected_jobs(m):
@@ -86,7 +116,7 @@ def collect(manifest_path, worker_dirs):
     msha = sha256_file(manifest_path)
     jobs = expected_jobs(m)
     by_key = {j["key"]: j for j in jobs}
-    problems, workers, seen = [], [], {}   # seen: key -> [(worker, line, record)]
+    problems, notes, workers, seen = [], [], [], {}   # seen: key -> [(worker, line, record)]
     programs = {}
     for wdir in worker_dirs:
         name = os.path.basename(os.path.normpath(wdir))
@@ -105,8 +135,18 @@ def collect(manifest_path, worker_dirs):
             psha = stamp.get("program_sha256")
             programs[name] = psha
             if m.get("program_sha256") and psha != m["program_sha256"]:
-                problems.append({"kind": "program", "worker": name, "key": None,
-                                 "detail": f"program sha256 {str(psha)[:12]}, not the registration's {m['program_sha256'][:12]}"})
+                why = rebuilt_ok(m, stamp)
+                if why is None:
+                    notes.append({"kind": "rebuilt", "worker": name, "key": None,
+                                  "detail": f"program sha256 {str(psha)[:12]}, not the registration's {m['program_sha256'][:12]}: a rebuild, "
+                                            f"accepted because its replayed self-checks equal the manifest's ({', '.join(sorted(engine_pilots(m)))})"})
+                else:
+                    problems.append({"kind": "program", "worker": name, "key": None,
+                                     "detail": f"program sha256 {str(psha)[:12]}, not the registration's {m['program_sha256'][:12]}; {why}"})
+            tree, wanted = stamp.get("engine_tree"), registered_tree(m)
+            if tree and wanted and not (tree.startswith(wanted) or wanted.startswith(tree)):
+                problems.append({"kind": "engine", "worker": name, "key": None,
+                                 "detail": f"engine tree {tree[:12]}, not the registration's {wanted[:12]} ({m.get('engine')})"})
         games, bad = read_games(os.path.join(wdir, "games.jsonl"))
         for n, text in bad:
             problems.append({"kind": "unreadable", "worker": name, "key": None, "detail": f"games.jsonl line {n} does not parse: {text!r}"})
@@ -152,7 +192,7 @@ def collect(manifest_path, worker_dirs):
             problems.append({"kind": "duplicate", "worker": None, "key": job["key"], "detail": f"{len(copies)} copies ({who}), the same content: the first kept"})
         lines.append(copies[0][1])
     return {"manifest": m, "manifest_sha256": msha, "manifest_path": os.path.abspath(manifest_path), "expected": len(jobs), "lines": lines,
-            "workers": workers, "problems": problems, "complete": not problems and len(lines) == len(jobs)}
+            "workers": workers, "problems": problems, "notes": notes, "complete": not problems and len(lines) == len(jobs)}
 
 
 def merge_record(res):
@@ -167,6 +207,10 @@ def merge_record(res):
            "| Worker | Slice (--only-deck) | Games | Program sha256 | Manifest sha256 | Engine tree |", "|---|---|---:|---|---|---|"]
     for w in res["workers"]:
         out.append(f"| {w['worker']} | {', '.join(w['slice']) or '(all)'} | {w['games']} | `{w['program_sha256']}` | `{w['manifest_sha256']}` | {w['engine_tree']} |")
+    if res.get("notes"):
+        out += ["", "## Notes", ""]
+        for n in res["notes"]:
+            out.append(f"- **{n['kind']}** worker {n['worker']}: {n['detail']}")
     out += ["", "## Problems", ""]
     if not res["problems"]:
         out.append("None: every expected game appears exactly once, with its registered inputs, from a worker on this manifest and program.")
@@ -188,6 +232,8 @@ def main(argv):
         ap.add_argument("--worker", required=True)
         ap.add_argument("--out", required=True)
         ap.add_argument("--only-deck", action="append", default=[])
+        ap.add_argument("--root", default=os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..")))
+        ap.add_argument("--no-selfcheck", action="store_true")
         a = ap.parse_args(rest)
         with open(a.manifest, encoding="utf-8") as f:
             m = json.load(f)
@@ -201,9 +247,22 @@ def main(argv):
         if os.path.isfile(record):
             with open(record, encoding="utf-8") as f:
                 tree = json.load(f).get("engine_tree_archived")
+        selfcheck = {}
+        if not a.no_selfcheck:
+            # the manifest's self-check, replayed as strength_prereg.py runs it: 12 games of t-altaria v t-suicune per engine pilot
+            with open(os.path.join(a.root, "rl", "strength", "decks.json"), encoding="utf-8") as f:
+                reg = json.load(f)["decks"]
+            for spec in sorted(p for p in (m.get("selfcheck") or {}) if p in engine_pilots(m)):
+                try:
+                    r = subprocess.run([a.program, "selfcheck", "--root", a.root, "--pilot", spec, "--deck-a", reg["t-altaria"], "--deck-b",
+                                        reg["t-suicune"], "--games", "12"], capture_output=True, text=True)
+                    selfcheck[spec] = r.stdout.strip() or ("failed: " + r.stderr.strip()[-200:])
+                except OSError as e:   # a program that can't run: recorded, so the merge flags it rather than this step crashing
+                    selfcheck[spec] = f"failed: {e}"
         os.makedirs(a.out, exist_ok=True)
         stamp = {"worker": a.worker, "manifest_sha256": sha256_file(a.manifest), "program_sha256": sha256_file(a.program),
-                 "only_deck": a.only_deck, "engine_tree": tree, "manifest": os.path.abspath(a.manifest), "program": os.path.abspath(a.program)}
+                 "only_deck": a.only_deck, "engine_tree": tree, "selfcheck": selfcheck,
+                 "manifest": os.path.abspath(a.manifest), "program": os.path.abspath(a.program)}
         with open(os.path.join(a.out, "worker.json"), "w", encoding="utf-8") as f:
             json.dump(stamp, f, indent=1)
             f.write("\n")
