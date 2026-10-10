@@ -1,0 +1,54 @@
+--- a/rl/results/engine_switch_rules2_2026-10/tightened_rule.py
++++ b/rl/results/engine_switch_rules2_2026-10/tightened_rule.py
+@@ -228,11 +228,11 @@
+ 
+ 
+ def control_clean(c):
+-    """A negative control's requirement (an unchanged game, a mid-game tick without Meowth): no queued coin-path choice, cut or
+-    return ply, as step 8b's controls required. Round 2's kinds and trapleaf are not required to be absent: a Will in hand or two
+-    Ariados in play can be found in a game that didn't change, and the board summary doesn't show a hand; the probe's self-test holds
+-    round 2's negatives (13 boards)."""
+-    return c["queued"] is None and c["cut"] is None and c["ret"] is None
++    """A negative control's requirement (an unchanged game, a mid-game tick without Meowth): the probe finds nothing at all, no queued
++    coin-path choice, cut or return ply and none of round 2's seven kinds or trapleaf (the laptop's spec for the revert-check driver,
++    Oct 10, item 2). Before, round 2's kinds and trapleaf were not required to be absent (a Will in hand or two Ariados in play can
++    be found in a game that didn't change); a control that finds one now fails, and is looked at."""
++    return nothing_found(c)
+ 
+ 
+ def lookahead_verdict(c, round2_queued):
+--- a/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py
++++ b/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py
+@@ -190,13 +190,28 @@
+         out = PROBE_OUT.replace('title: "Wild Swing", fixed_damage: 20,...', 'title: "Tongue Wh...')
+         self.assertEqual(tr.parse_probe(out)["queued_attacks"], ["Tongue Wh..."])
+ 
+-    def test_a_negative_control_needs_no_coin_round_or_return_condition(self):
+-        # Round 2's kinds and trapleaf can be found in a game that didn't change (a Will in hand, two Ariados in play): they are listed,
+-        # not a failure, as step 8b's controls were; the probe's own self-test holds round 2's negatives.
+-        self.assertTrue(tr.control_clean(probe(trapleaf=2, will=2)))
++    def test_a_negative_control_finds_nothing(self):
++        # Oct 10 (the laptop's spec for the revert-check driver, item 2): a control, an unchanged game at a mid-game tick without
++        # Meowth, must find no condition at all: no QUEUED, CUT or RETURN, none of round 2's seven kinds, no trapleaf. Before, a Will
++        # in hand or two Ariados in play were listed and not a failure; now a control that finds one is a failure to look at.
++        self.assertTrue(tr.control_clean(probe()))
++        self.assertTrue(tr.control_clean(probe(free=True)))        # `free` is not a condition
+         self.assertFalse(tr.control_clean(probe(queued=2)))
+         self.assertFalse(tr.control_clean(probe(cut=1)))
+         self.assertFalse(tr.control_clean(probe(ret=3)))
++        self.assertFalse(tr.control_clean(probe(trapleaf=2)))
++
++    def test_a_negative_control_fails_on_each_round_two_kind_alone_at_any_ply(self):
++        for kind in tr.R2_KINDS:
++            for ply in (1, 3, 4):
++                self.assertFalse(tr.control_clean(probe(**{kind: ply})), (kind, ply))
++        self.assertFalse(tr.control_clean(probe(trapleaf=2, will=2)))
++
++    def test_a_negative_control_is_clean_exactly_when_nothing_is_found(self):
++        boards = [probe(), probe(free=True), probe(queued=0), probe(cut=3), probe(ret=1), probe(trapleaf=4), probe(will=2),
++                  probe(queued=2, will=2), probe(plain=1, perish=4), probe(free=True, guts=3)]
++        for c in boards:
++            self.assertEqual(tr.control_clean(c), tr.nothing_found(c), c)
+ 
+     def test_nothing_found(self):
+         self.assertTrue(tr.nothing_found(probe()))
