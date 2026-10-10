@@ -48,7 +48,12 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      - The revert check gives the official move and scores at all 21 look-ahead ticks; the 4 controls match.
      - Full suite: 2,102 of 2,102 pass. With round 2 off, only the 51 tests added since 8626a358 fail.
      - Three coverage gaps are listed in `rl/results/coin_prevention_round2_2026-10-01/revert_switches/README.md`.
-   - **Now:** nothing queued; (a), (b) and (e) wait for the laptop's review.
+   - **The laptop's two asks (Oct 10): done**, pushed to `claude/coin-prevention-round2` (232622de).
+     - Suite at P: `SUITE_AT_P=232622de:rl/results/coin_prevention_round2_2026-10-01/revert_switches/suite_at_P.txt`. One line: P
+       31616338 in full, engine tree 639d2f80, "TOTAL: 2102 passed, 0 failed". The runner's suite check passes on it.
+     - Magnezone card check: not done before; done now, PASS, 15 of 15, no games.
+       `MAGNEZONE_CARD_CHECK=232622de:rl/results/engine_switch_rules2_2026-10/card_check_magnezone_2026-10-10/README.md`.
+   - **Now:** idle.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
    63c28e6e. Read "Oct 9" in that branch's `rl/results/coin_prevention_round2_2026-10-01/README.md`, section 3's end in
