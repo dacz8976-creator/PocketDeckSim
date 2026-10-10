@@ -1,0 +1,28 @@
+# TO FINALIZE WHEN P LANDS. As of 31616338 (also the tip 056158c3): git log --format=%H 8626a35..<P> -- engine/ (24), oldest first.
+# kind: tests = touches only engine/tests/ under engine/ (each such file in allowed_engine_files.tsv); src = touches engine/src/;
+# merge = two parents. No non-merge commit touches anything outside engine/ and rl/results/. The runners check each kind.
+commit	kind	subject
+99f5bc4a8b9b40f19e4e5a363de7ce2de87aaa9c	tests	Coin-flip prevention, the later round: failing tests first (six sites and the gate), plus a control
+e0ecf19f2ac990c7503f1a60927362f6906d853d	src	Coin-flip prevention, the later round: six sites flip the coin for their queued damage (gated)
+9145eb38406c50617a01afe14faa5a923bd5dfdc	tests	Mega Kangaskhan ex's second punch: failing tests first (the non-knockout case and the knockout-then-promotion case)
+29e126a820067cead03ee6348fd4a2eaaeb4aac3	src	Mega Kangaskhan ex's second punch flips the coin (gated); state/mod.rs's pending-hit check sees it
+ce151c79f04dbe9209f7795e0e0e7970277739a2	merge	Merge R (f8cfa9c, origin/sonnet/rules-fixes) into the later round's branch
+59c7c2aed410a1daabc9557d1145462fd3c1fed6	tests	Card-text job, item 1: Will with a Confused attacker, tests first (both fail on the engine as it is)
+27a0c37df0f9619900633967565129357f267fc7	src	Card-text job, item 1: Will goes to a Confused attacker's own first coin; Victory Star still offered
+7e131325e32f1c4556c22fda9c339cf89699f6dd	tests	Card-text job, item 3: tests first for the four text-decided cases (all seven fail on the engine as it is)
+46953bf3538e02d78b41ef2decb40d0880ea0bad	src	Card-text job, item 3: the four text-decided fixes in the five files
+05eb84921de765ea4c8424b38563da3bed93b06b	tests	Card-text job, item 4: Trap Territory tests first (both fail at two Ariados)
+5155ff7a5c9f9587d437519e540c7a3009ef9300	src	Card-text job, item 4: Trap Territory counts once for each Ariados
+53a3cca1915efd41613778ebfcee0f878ce71af7	tests	Card-text follow-up: tests first for the five approved changes (all five fail on the engine as it is)
+3090abbb98e5954266dfca0effe03e69f320f60b	src	Card-text follow-up: the five approved changes
+d3739b7d9351c59285a97b4b58cac311888627fb	tests	P2: tests first, return damage left by an attack takes Weakness (13 of 17 fail on the engine as it is)
+5543a4bab99c32750f866f3fa4faf83b05337b12	src	P2: return damage left by an attack takes Weakness on an Active attacker; Tools and Abilities stay flat
+14abfb040533b12c037a7034a69cb03d33e06196	tests	P2's off-switch: tests first (they don't compile without the switch)
+35e6acfdc19a8f6fa451af059412474d85a8c3d7	src	P2's off-switch: a parameter, on by default; off is the engine before P2 in behaviour
+c17e415d031efa3cfcfee8d19ad22a6460478a45	tests	P3: tests first (a Fossil is an Item card at seven more places; 10 fail, 2 controls pass)
+140c0be26ec02b34b4c6271e1c47888d0d28053e	src	P3: a Fossil is an Item card at the seven other places that read one (8 engine sites)
+b8a8621a8ea52facaa817e04903912618ed284de	src	P1: Gholdengo's caveat says the agreed reading: Luxury Coin isn't offered on the opponent's Arcade or Mesagoza (text only)
+6b111ba76aee976c70015a94aa46b4a853036fe5	tests	Bounded Field doubles the hit back's Weakness: tests first (the x2 test fails; the Mega ex control passes)
+b0dc48443fe6d009d8adb44f7b40d2ff9d565b32	src	Bounded Field doubles the hit back's Weakness (x2), unless the holder is a Mega ex: the plain reading replaces P2's +20
+ade211508ea7907dd35a18a7ebffb2422ccb7279	tests	Switch 2 (e): tests first for the revert switches, one per gate (28 tests and with_round2's)
+316163384641dfba546e22e967cf1be8f0a80d5e	src	Switch 2 (e): one revert switch per gate of the round-2 package (G1-G11), as P2's

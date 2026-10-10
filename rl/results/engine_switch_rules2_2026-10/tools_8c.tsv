@@ -1,0 +1,16 @@
+# TO FINALIZE WHEN P LANDS (and when the cloud's (a) and (b) are final). The 8c tools the hand-off names, each pinned by the commit it
+# is taken from and its blob there (sitting2.sh refuses unless <commit>:<path> is that blob; the commit need not be the candidate's,
+# so the tools that landed after P's last engine commit are named exactly). As of the tip 056158c3: (a), coin_probe v2's round-2
+# conditions, landed after 31616338 (77aa8e3d, 056158c3), so the probe is the tip's blob, not P's; (b), the classifier's
+# shorter-game case and round 2's counter names, is tightened_rule.py at 384d91dc (the same blob at the tip).
+# Left out: rl/results/round2_readiness_2026-10-02/validate_v2.py (unchanged at the tip: it reads round 1's REACH names, lines 30-32,
+# and Oct 1's pairs_8.tsv and seed block; PLAN.md section 6 change 1 says those never count). Add a round-2 driver here if the 8c
+# tools gain one; coin_probe_v2's --node-limit gives the 600,000-node retry.
+role	path	commit	blob
+classifier	rl/results/engine_switch_rules2_2026-10/tightened_rule.py	056158c3dd7fc3e691dc10b90c734615b392c751	1451a0c651957f23c8cae5f1386e47f0f08145a2
+classifier_tests	rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py	056158c3dd7fc3e691dc10b90c734615b392c751	f0c87c2c1743c1ad94c78ba05af7cf610074be21
+classify_8b	rl/results/engine_switch_rules2_2026-10/early_warning_8b/classify_8b.py	056158c3dd7fc3e691dc10b90c734615b392c751	18a7cc14f846455d832699a93eb3f518b91f9ee8
+probe	rl/results/round2_readiness_2026-10-02/coin_probe_v2.rs	056158c3dd7fc3e691dc10b90c734615b392c751	318578349f3e138ccac2e23a32f413d5948ce5ff
+tracer	rl/results/victory_star_repair_2026-09-30/smoke/rerun_R/vs_trace.rs	056158c3dd7fc3e691dc10b90c734615b392c751	3fbc20d27e656d7134666bb54d0cbfdc8458fa51
+revert_check	rl/results/coin_prevention_round2_2026-10-01/revert_switches/run_revert_gates.sh	056158c3dd7fc3e691dc10b90c734615b392c751	0c7c2b90ed2614d96e92591c4285700de77f324b
+revert_score_dump	rl/results/coin_prevention_round2_2026-10-01/revert_switches/score_dump_round2.rs	056158c3dd7fc3e691dc10b90c734615b392c751	35374de6009b8cc09795e468248a56b76a4556ff
