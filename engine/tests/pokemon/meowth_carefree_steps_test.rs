@@ -1358,6 +1358,72 @@ fn revert_g1_g2_second_punch_gives_the_old_hit() {
     }
 }
 
+/// G2, the attacker's side of the promotion arm (EQUIVALENCE_reader1_opus.md F1). Mew ex copies Mega Kangaskhan ex's
+/// Double-Punching Family (Genome Hacking); Rocky Helmet Knocks Out Mew ex (20 HP left) after the first punch, and Meowth on
+/// the Kangaskhan side's Bench puts the second punch on the coin path. Mew's player must promote before the second punch,
+/// which then comes from the new Active (Bulbasaur, 40 to Kangaskhan): 80 + 40 = 120 damage, as the official engine
+/// (switches off). Before the fix, with the switches on, the promotion went under the punch and `modify_damage` panicked
+/// on the empty Active.
+#[test]
+fn g2_copied_second_punch_waits_for_the_copiers_promotion_after_rocky_helmet() {
+    fn play() -> Vec<u32> {
+        let mut damage = vec![];
+        for seed in 0..5u64 {
+            let mut game = get_initialized_game_with_board(
+                seed,
+                0,
+                5,
+                vec![
+                    PlayedCard::from_id(CardId::A1a032MewEx).with_energy(vec![EnergyType::Psychic; 3]).with_remaining_hp(20),
+                    bulbasaur(),
+                ],
+                vec![
+                    PlayedCard::from_id(CardId::B2127MegaKangaskhanEx).with_tool(get_card_by_enum(CardId::A2148RockyHelmet)),
+                    meowth(),
+                ],
+            );
+            game.apply_action(&Action { actor: 0, action: attack_action(CardId::A1a032MewEx, 1), is_stack: false });
+            let (_, choices) = game.get_state_clone().generate_possible_actions();
+            let copy = choices
+                .iter()
+                .find(|c| matches!(&c.action, SimpleAction::Attack(a) if a.title == "Double-Punching Family"))
+                .expect("Genome Hacking offers Double-Punching Family")
+                .clone();
+            game.apply_action(&copy);
+            let mut promoted = false;
+            for _ in 0..12 {
+                let state = game.get_state_clone();
+                if state.move_generation_stack.is_empty() {
+                    break;
+                }
+                let (actor, choices) = state.generate_possible_actions();
+                if choices.is_empty() {
+                    break;
+                }
+                if let Some(promote) =
+                    choices.iter().find(|c| matches!(c.action, SimpleAction::Promote { player: 0, in_play_idx: 1 }))
+                {
+                    assert_eq!(actor, 0, "seed {seed}");
+                    promoted = true;
+                    game.apply_action(promote);
+                    continue;
+                }
+                if matches!(choices[0].action, SimpleAction::ApplyDamage { .. } | SimpleAction::ApplyQueuedAttackDamage { .. }) {
+                    assert!(promoted, "seed {seed}: the second punch waits for Mew's player's new Active");
+                }
+                game.apply_action(&choices[0]);
+            }
+            let state = game.get_state_clone();
+            assert!(promoted, "seed {seed}: Rocky Helmet Knocks Out Mew ex");
+            assert_eq!(state.get_active(0).get_name(), "Bulbasaur", "seed {seed}");
+            damage.push(180 - state.get_active(1).get_remaining_hp());
+        }
+        damage
+    }
+    assert_eq!(seven_sites(false, play), vec![120; 5], "switches off (the official engine)");
+    assert_eq!(seven_sites(true, play), vec![120; 5], "switches on");
+}
+
 /// G2 alone (`with_queued_site_coin(false, ..)`) restores the choice kinds of
 /// `only_a_choice_that_hits_a_coin_ability_pokemon_takes_the_coin_path_in_the_later_round`: Tornado Shot queues every
 /// choice as a plain `ApplyDamage`. Old, Meowth on the Bench: [("ApplyDamage", 1), ("ApplyDamage", 2)]

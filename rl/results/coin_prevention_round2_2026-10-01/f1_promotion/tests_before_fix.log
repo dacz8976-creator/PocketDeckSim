@@ -1,0 +1,6 @@
+test meowth_carefree_steps_test::carefree_steps_flips_for_the_second_punch_after_a_knock_out ... ok
+test meowth_carefree_steps_test::g2_copied_second_punch_waits_for_the_copiers_promotion_after_rocky_helmet ... FAILED
+test meowth_carefree_steps_test::revert_g1_g2_second_punch_gives_the_old_hit ... ok
+thread 'meowth_carefree_steps_test::g2_copied_second_punch_waits_for_the_copiers_promotion_after_rocky_helmet' (1375) panicked at tests/pokemon/meowth_carefree_steps_test.rs:1412:21:
+seed 0: the second punch waits for Mew's player's new Active
+test result: FAILED. 2 passed; 1 failed; 0 ignored; 0 measured; 821 filtered out; finished in 0.19s
