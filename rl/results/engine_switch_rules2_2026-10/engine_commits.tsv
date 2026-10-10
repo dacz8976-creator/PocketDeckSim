@@ -1,4 +1,4 @@
-# TO FINALIZE WHEN P LANDS. As of c7a25df4 (the F1 fix, Oct 10; before it 31616338): git log --format=%H 8626a35..<P> -- engine/ (26), oldest first.
+# Final (Oct 10, the laptop session; rows from the cloud's ddbc88e6). As of c7a25df4 (the F1 fix, Oct 10; before it 31616338): git log --format=%H 8626a35..<P> -- engine/ (26), oldest first.
 # kind: tests = touches only engine/tests/ under engine/ (each such file in allowed_engine_files.tsv); src = touches engine/src/;
 # merge = two parents. No non-merge commit touches anything outside engine/ and rl/results/. The runners check each kind.
 commit	kind	subject

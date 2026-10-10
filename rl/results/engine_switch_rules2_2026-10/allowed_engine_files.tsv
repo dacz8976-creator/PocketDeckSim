@@ -1,4 +1,14 @@
-# TO FINALIZE WHEN P LANDS. As of 31616338 (also the tip 056158c3's engine/): git diff --no-renames --name-status 8626a35 <P> -- engine/ (26 rows: 17 source, 9 tests).
+# Final (Oct 10, the laptop session): P = c7a25df4 (31616338 plus F1: state/mod.rs and meowth_carefree_steps_test.rs, both already
+# rows here). git diff --no-renames --name-status 8626a35 <P> -- engine/ (26 rows: 17 source, 9 tests). Approved at 26 files by the
+# coordinator (Oct 9, decision 3) on the condition that both equivalence readers cover every file. The mapping:
+#   17 source files: reader one (EQUIVALENCE_reader1_opus.md, its two parts, the diff of every hunk at 31616338) and reader two
+#     (EQUIVALENCE_reader2_sonnet.md section 1, the full diff at c7a25df4 and every caller). F1's hunk in state/mod.rs at c7a25df4:
+#     reader two, and the laptop session's re-read (PLAN.md, Oct 10 status).
+#   9 test files: reader two (section 1: names, diff-stat and every removed line) and reader one's second read of (e)
+#     (SECOND_READ_reader1_opus.md: the 51 tests that fail with round 2 off are exactly the new ones). Tests are not built into the
+#     programs.
+#   Reader two found git diff 8626a35..c7a25df4 -- engine/ equal to these 26 rows, with players/ and Cargo.* unchanged.
+# As of 31616338 (the scope notes below):
 # The runners check this list against that diff, so the check itself cannot catch a file outside the approved scope: the approval is
 # the finalizing of this file. Before the marker line goes, the coordinator (or the laptop session with the coordinator's word) checks
 # each row's scope below against PLAN.md and records the word for the rows PLAN.md does not name.
