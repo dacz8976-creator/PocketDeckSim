@@ -74,6 +74,17 @@
 >     - the revert check on real games ran for G1+G2, P2 and all switches off only, never G3-G8 alone;
 >     - there is no revert evidence for F1's G2 arm.
 >   - Its file mapping covers all 26 files, so `allowed_engine_files.tsv` is final.
+>   - **Closed, Oct 10:**
+>     - **The remake at P.** The cloud's 04f2b6f7 remade the probe's self-test, the P2 checks, the 8b ticks and the gate run at
+>       c7a25df4, and every result is unchanged. On the 8b deals, G1+G2 off returns every queued-kind change to the official
+>       engine (km3 11 of 13, k3 7 of 12), and P2 off returns every RETURN change (km3 2, k3 5). Every other single gate leaves
+>       them as P plays them, and no deal plays as neither engine.
+>     - **control_clean = nothing_found:** Sonnet's 8c tools at main 486e146f, pinned in `tools_8c.tsv` at b29480f6.
+>     - **F1's revert evidence.** The cloud's 1f995293 traced the test's play on the official engine and at c7a25df4 with G1+G2
+>       off, and the two traces are identical byte for byte (promotion, then the second punch, 120 on seeds 0-4). Before the
+>       fix, the split test shows the off call passing and the on call failing.
+>   - **The per-gate revert check on 8c's own games** is `tools_8c/revert_8c.py` (Sonnet), run in 8c. It runs every game's
+>     gates plus all switches off, and a root holding a pending continuation goes to Dustin.
 > - **Shot List (Dustin's cleanup, Oct 9):** rows 23-33 came off the list. The four Cursed Jewel readings (rows 30-33) now rest on the
 >   card text and their tests alone; the hit-back sub-cases stay in `P2_EVIDENCE_sonnet.md`. One row is kept: the hit-back against
 >   Heavy Helmet (was row 22, now the list's only row). The old rows are in `rules/_research_notes/shot_list_archive_2026-10-09.json`.
