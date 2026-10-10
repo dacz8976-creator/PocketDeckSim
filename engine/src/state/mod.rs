@@ -1425,11 +1425,14 @@ impl State {
                         *attacking_ref == (player_with_empty_active, 0)
                         || targets.iter().any(|(_, player, idx)|
                             *player == player_with_empty_active && *idx == 0),
-                    // G2 of rules switch 2's revert switches: off, no arm for a queued hit, as before.
+                    // G2 of rules switch 2's revert switches: off, no arm for a queued hit, as before. On, as the
+                    // `ApplyDamage` arm: the hit's own attacker has left the Active Spot (a copied second punch whose
+                    // copier Rocky Helmet Knocked Out; EQUIVALENCE_reader1_opus.md F1), or its target has.
                     SimpleAction::ApplyQueuedAttackDamage { targets, .. } =>
                         crate::actions::queued_site_coin_on()
-                        && (*actor + 1) % 2 == player_with_empty_active
-                        && targets.iter().any(|(_, is_opponent, idx)| *is_opponent && *idx == 0),
+                        && (*actor == player_with_empty_active
+                            || ((*actor + 1) % 2 == player_with_empty_active
+                                && targets.iter().any(|(_, is_opponent, idx)| *is_opponent && *idx == 0))),
                     _ => false,
                 })).map_or(0, |idx| idx + 1);
             self.move_generation_stack
