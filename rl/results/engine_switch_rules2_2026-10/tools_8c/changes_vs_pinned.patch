@@ -1,0 +1,131 @@
+--- a/rl/results/engine_switch_rules2_2026-10/tightened_rule.py
++++ b/rl/results/engine_switch_rules2_2026-10/tools_8c/tightened_rule.py
+@@ -228,11 +228,11 @@
+ 
+ 
+ def control_clean(c):
+-    """A negative control's requirement (an unchanged game, a mid-game tick without Meowth): no queued coin-path choice, cut or
+-    return ply, as step 8b's controls required. Round 2's kinds and trapleaf are not required to be absent: a Will in hand or two
+-    Ariados in play can be found in a game that didn't change, and the board summary doesn't show a hand; the probe's self-test holds
+-    round 2's negatives (13 boards)."""
+-    return c["queued"] is None and c["cut"] is None and c["ret"] is None
++    """A negative control's requirement (an unchanged game, a mid-game tick without Meowth): the probe finds nothing at all, no queued
++    coin-path choice, cut or return ply and none of round 2's seven kinds or trapleaf (the laptop's spec for the revert-check driver,
++    Oct 10, item 2). Before, round 2's kinds and trapleaf were not required to be absent (a Will in hand or two Ariados in play can
++    be found in a game that didn't change); a control that finds one now fails, and is looked at."""
++    return nothing_found(c)
+ 
+ 
+ def lookahead_verdict(c, round2_queued):
+--- a/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py
++++ b/rl/results/engine_switch_rules2_2026-10/tools_8c/test_tightened_rule.py
+@@ -190,13 +190,28 @@
+         out = PROBE_OUT.replace('title: "Wild Swing", fixed_damage: 20,...', 'title: "Tongue Wh...')
+         self.assertEqual(tr.parse_probe(out)["queued_attacks"], ["Tongue Wh..."])
+ 
+-    def test_a_negative_control_needs_no_coin_round_or_return_condition(self):
+-        # Round 2's kinds and trapleaf can be found in a game that didn't change (a Will in hand, two Ariados in play): they are listed,
+-        # not a failure, as step 8b's controls were; the probe's own self-test holds round 2's negatives.
+-        self.assertTrue(tr.control_clean(probe(trapleaf=2, will=2)))
++    def test_a_negative_control_finds_nothing(self):
++        # Oct 10 (the laptop's spec for the revert-check driver, item 2): a control, an unchanged game at a mid-game tick without
++        # Meowth, must find no condition at all: no QUEUED, CUT or RETURN, none of round 2's seven kinds, no trapleaf. Before, a Will
++        # in hand or two Ariados in play were listed and not a failure; now a control that finds one is a failure to look at.
++        self.assertTrue(tr.control_clean(probe()))
++        self.assertTrue(tr.control_clean(probe(free=True)))        # `free` is not a condition
+         self.assertFalse(tr.control_clean(probe(queued=2)))
+         self.assertFalse(tr.control_clean(probe(cut=1)))
+         self.assertFalse(tr.control_clean(probe(ret=3)))
++        self.assertFalse(tr.control_clean(probe(trapleaf=2)))
++
++    def test_a_negative_control_fails_on_each_round_two_kind_alone_at_any_ply(self):
++        for kind in tr.R2_KINDS:
++            for ply in (1, 3, 4):
++                self.assertFalse(tr.control_clean(probe(**{kind: ply})), (kind, ply))
++        self.assertFalse(tr.control_clean(probe(trapleaf=2, will=2)))
++
++    def test_a_negative_control_is_clean_exactly_when_nothing_is_found(self):
++        boards = [probe(), probe(free=True), probe(queued=0), probe(cut=3), probe(ret=1), probe(trapleaf=4), probe(will=2),
++                  probe(queued=2, will=2), probe(plain=1, perish=4), probe(free=True, guts=3)]
++        for c in boards:
++            self.assertEqual(tr.control_clean(c), tr.nothing_found(c), c)
+ 
+     def test_nothing_found(self):
+         self.assertTrue(tr.nothing_found(probe()))
+@@ -274,7 +289,7 @@
+             self.assertIsNone(tr.golden_ok(name, probe()))
+ 
+     def test_every_exact_name_but_those_two_has_a_golden_check(self):
+-        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "coin_prevention_repair_2026-09-30", "instrument_scan.py")) as f:
++        with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "coin_prevention_repair_2026-09-30", "instrument_scan.py")) as f:
+             text = f.read()
+         missing = [n for n in tr.round2_reach(text) if tr.golden_ok(n, probe()) is None]
+         self.assertEqual(missing, ["luxury_coin_opp_stadium", "fossil_item_lock"])
+--- a/rl/results/engine_switch_rules2_2026-10/classify_8c.py
++++ b/rl/results/engine_switch_rules2_2026-10/tools_8c/classify_8c.py
+@@ -20,9 +20,13 @@
+     Double-Punching Family (the keys that fired there, from the row's raw exact counters; `golden_ok`'s docstring says why);
+   - CONDITION 3 rows are the changed rows where no reach counter fired anywhere in the game and an off-gate counter did (the hand-off's
+     offgate_counters column), listed in condition3.tsv as before;
+-  - the negative controls require no queued coin-path choice, cut or return ply (`control_clean`, step 8b's requirement);
++  - the negative controls require that the probe finds nothing at all (`control_clean` is `nothing_found`: no QUEUED, CUT or RETURN,
++    none of round 2's kinds, no trapleaf; the laptop's spec for the 8c tools, Oct 10, item 2);
+   - "In lookahead" also needs the revert check (PLAN.md's change 3, precondition (e)): this script doesn't run it; every lookahead
+     verdict is listed in lookahead.tsv for it.
++(Oct 10, Sonnet, for the laptop: this copy is in tools_8c/, beside the tightened_rule.py it imports, which is the pinned one with
++`control_clean` changed to `nothing_found`; it differs from the copy on P's path only in that controls line, the --instrument
++default's path (one folder further up) and this note. Run it from tools_8c/ or the pinned copy imports P's tightened_rule.py.)
+ For each changed row (step, bot, pairing, i) of the hand-off: vs_trace on both engines (each trace's move fingerprint must equal the
+ row's), first_difference, then ON THE BOARD (board_hits), else for a "lookahead" difference the probe at k (LOOKAHEAD ONLY, both halves
+ hold / NEEDS A JUDGMENT / UNEXPLAINED), else UNEXPLAINED. UNEXPLAINED stops the switch; so does it under the strict reading, which is
+@@ -34,7 +38,7 @@
+ built in: their working directories), and bin_old_vs_trace, bin_new_vs_trace and bin_probe_coin_probe_v2. The hand-off's
+ exact_counters column holds {name: [ticks]}, a keyed counter {name: {key: [ticks]}}. --controls-from DIR reads DIR/TAG_old_<bot>.jsonl
+ and DIR/TAG_new_<bot>.jsonl (legality_scan rows) for the negative controls. --instrument is the watch build's coin script
+-(default: ../coin_prevention_repair_2026-09-30/instrument_scan.py beside this folder). Only the first differing rows and each game's
++(default: ../../coin_prevention_repair_2026-09-30/instrument_scan.py: this copy is in tools_8c/). Only the first differing rows and each game's
+ turn list are kept in memory, never a whole trace."""
+ import argparse, collections, concurrent.futures as cf, csv, gzip, hashlib, json, re, subprocess, sys
+ from pathlib import Path
+@@ -55,7 +59,7 @@
+ ap.add_argument("--controls-from", default=None)
+ ap.add_argument("--controls-tag", default=None)
+ ap.add_argument("--seed-base", default="23100000000")
+-ap.add_argument("--instrument", default=str(HERE.parent / "coin_prevention_repair_2026-09-30" / "instrument_scan.py"))
++ap.add_argument("--instrument", default=str(HERE.parent.parent / "coin_prevention_repair_2026-09-30" / "instrument_scan.py"))
+ ap.add_argument("--chunk", type=int, default=20, help="deals per vs_trace call")
+ a = ap.parse_args()
+ if a.controls_from and not a.controls_tag:
+--- a/rl/results/engine_switch_rules2_2026-10/coin_lookahead.py
++++ b/rl/results/engine_switch_rules2_2026-10/tools_8c/coin_lookahead.py
+@@ -10,14 +10,18 @@
+   - the golden check runs at the last explaining tick of each counter the probe has a condition for (`golden_ok`, with the keys that
+     fired there: not for coin_queued_by_attack fired only for Double-Punching Family); S3's four hand-traced games were the first
+     switch's (--s3, empty by default);
+-  - the negative controls require no queued coin-path choice, cut or return ply (`control_clean`, step 8b's requirement).
++  - the negative controls require that the probe finds nothing at all (`control_clean` is `nothing_found`: no QUEUED, CUT or RETURN,
++    none of round 2's kinds, no trapleaf; the laptop's spec for the 8c tools, Oct 10, item 2).
++(Oct 10, Sonnet, for the laptop: this copy is in tools_8c/, beside the tightened_rule.py it imports, which is the pinned one with
++`control_clean` changed to `nothing_found`; it differs from the copy on P's path only in that controls line, the --instrument
++default's path (one folder further up) and this note. Run it from tools_8c/ or the pinned copy imports P's tightened_rule.py.)
+ "In lookahead" also needs the revert check (precondition (e)), which this script doesn't run.
+ 
+   python3 coin_lookahead.py --dir SMOKE_DIR --a A.txt --b B.txt --seed-base N --probe PATH/coin_probe_v2 [--bot km3] [--pairing 0]
+                             [--instrument PATH] [--s3 deal:tick,...]
+ SMOKE_DIR holds trace_old_*.jsonl.gz, trace_R.jsonl.gz (vs_trace.rs on the old engine and on the candidate) and watch_R.jsonl (the
+-watch build's legality_scan rows). --instrument is the watch build's coin script (default: ../coin_prevention_repair_2026-09-30/
+-instrument_scan.py beside this folder). The probe runs in the current directory."""
++watch build's legality_scan rows). --instrument is the watch build's coin script (default: ../../coin_prevention_repair_2026-09-30/
++instrument_scan.py: this copy is in tools_8c/). The probe runs in the current directory."""
+ import argparse, glob, json, re, subprocess, sys
+ from pathlib import Path
+ 
+@@ -34,7 +38,7 @@
+ ap.add_argument("--probe", required=True)
+ ap.add_argument("--bot", default="km3")
+ ap.add_argument("--pairing", default="0")
+-ap.add_argument("--instrument", default=str(HERE.parent / "coin_prevention_repair_2026-09-30" / "instrument_scan.py"))
++ap.add_argument("--instrument", default=str(HERE.parent.parent / "coin_prevention_repair_2026-09-30" / "instrument_scan.py"))
+ ap.add_argument("--s3", default="", help="golden: deal:first differing tick pairs traced by hand, with a queued choice on the table there")
+ a = ap.parse_args()
+ D = Path(a.dir)
