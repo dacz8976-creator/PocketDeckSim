@@ -1,0 +1,20 @@
+1369c1369,1375
+<     fn play() -> Vec<u32> {
+---
+>     let play = g2_play;
+>     assert_eq!(seven_sites(false, play), vec![120; 5], "switches off (the official engine)");
+> }
+> 
+> // F1 evidence (Oct 10, scratch): the switches-off call alone above; the body below.
+> fn g2_play() -> Vec<u32> {
+>     {
+1423,1424c1429,1434
+<     assert_eq!(seven_sites(false, play), vec![120; 5], "switches off (the official engine)");
+<     assert_eq!(seven_sites(true, play), vec![120; 5], "switches on");
+---
+> }
+> 
+> // F1 evidence (Oct 10, scratch): the same body, the switches-on call in its own test.
+> #[test]
+> fn g2_copied_second_punch_switches_on() {
+>     assert_eq!(seven_sites(true, g2_play), vec![120; 5], "switches on");

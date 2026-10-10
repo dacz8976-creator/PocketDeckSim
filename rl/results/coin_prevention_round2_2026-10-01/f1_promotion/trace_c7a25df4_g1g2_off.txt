@@ -1,0 +1,40 @@
+seed 0
+  step 0: actor 0 takes Attack (Genome Hacking)
+  step 1: actor 0, 1 choices, takes Attack (Double-Punching Family)
+  step 2: actor 0, choices [ResolveAttackRetaliation], takes ResolveAttackRetaliation { attacking_ref: (0, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [(1, 0)] }
+  step 3: actor 0, choices [ResolveAttackRetaliation], takes ResolveAttackRetaliation { attacking_ref: (0, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [] }
+  step 4: actor 0, choices [Promote], takes Promote { player: 0, in_play_idx: 1 }
+  step 5: actor 0, choices [ApplyDamage], takes ApplyDamage { attacking_ref: (0, 0), targets: [(40, 1, 0)], is_from_active_attack: true }
+  end: player 0's Active Bulbasaur, damage to player 1's Active 120
+seed 1
+  step 0: actor 0 takes Attack (Genome Hacking)
+  step 1: actor 0, 1 choices, takes Attack (Double-Punching Family)
+  step 2: actor 0, choices [ResolveAttackRetaliation], takes ResolveAttackRetaliation { attacking_ref: (0, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [(1, 0)] }
+  step 3: actor 0, choices [ResolveAttackRetaliation], takes ResolveAttackRetaliation { attacking_ref: (0, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [] }
+  step 4: actor 0, choices [Promote], takes Promote { player: 0, in_play_idx: 1 }
+  step 5: actor 0, choices [ApplyDamage], takes ApplyDamage { attacking_ref: (0, 0), targets: [(40, 1, 0)], is_from_active_attack: true }
+  end: player 0's Active Bulbasaur, damage to player 1's Active 120
+seed 2
+  step 0: actor 0 takes Attack (Genome Hacking)
+  step 1: actor 0, 1 choices, takes Attack (Double-Punching Family)
+  step 2: actor 0, choices [ResolveAttackRetaliation], takes ResolveAttackRetaliation { attacking_ref: (0, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [(1, 0)] }
+  step 3: actor 0, choices [ResolveAttackRetaliation], takes ResolveAttackRetaliation { attacking_ref: (0, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [] }
+  step 4: actor 0, choices [Promote], takes Promote { player: 0, in_play_idx: 1 }
+  step 5: actor 0, choices [ApplyDamage], takes ApplyDamage { attacking_ref: (0, 0), targets: [(40, 1, 0)], is_from_active_attack: true }
+  end: player 0's Active Bulbasaur, damage to player 1's Active 120
+seed 3
+  step 0: actor 0 takes Attack (Genome Hacking)
+  step 1: actor 0, 1 choices, takes Attack (Double-Punching Family)
+  step 2: actor 0, choices [ResolveAttackRetaliation], takes ResolveAttackRetaliation { attacking_ref: (0, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [(1, 0)] }
+  step 3: actor 0, choices [ResolveAttackRetaliation], takes ResolveAttackRetaliation { attacking_ref: (0, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [] }
+  step 4: actor 0, choices [Promote], takes Promote { player: 0, in_play_idx: 1 }
+  step 5: actor 0, choices [ApplyDamage], takes ApplyDamage { attacking_ref: (0, 0), targets: [(40, 1, 0)], is_from_active_attack: true }
+  end: player 0's Active Bulbasaur, damage to player 1's Active 120
+seed 4
+  step 0: actor 0 takes Attack (Genome Hacking)
+  step 1: actor 0, 1 choices, takes Attack (Double-Punching Family)
+  step 2: actor 0, choices [ResolveAttackRetaliation], takes ResolveAttackRetaliation { attacking_ref: (0, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [(1, 0)] }
+  step 3: actor 0, choices [ResolveAttackRetaliation], takes ResolveAttackRetaliation { attacking_ref: (0, 0), perish_body_heads: false, point_denial_flips: [], damaged_refs: [] }
+  step 4: actor 0, choices [Promote], takes Promote { player: 0, in_play_idx: 1 }
+  step 5: actor 0, choices [ApplyDamage], takes ApplyDamage { attacking_ref: (0, 0), targets: [(40, 1, 0)], is_from_active_attack: true }
+  end: player 0's Active Bulbasaur, damage to player 1's Active 120
