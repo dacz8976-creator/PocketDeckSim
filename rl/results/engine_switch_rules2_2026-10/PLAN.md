@@ -58,9 +58,22 @@
 >
 >   When the probe walks past queued frames and uses R's own frame definition, it finds the gate in 1,126 of 1,126 games and in
 >   none of the 279 controls. Its `queued` and `free` verdicts are unchanged in all 1,405 games. The test checks that the probe
->   sees what the bots' search sees, and the refined reading shows exactly that. 8c's look-ahead verdict uses `queued`
->   (with the code gate and the revert check), never `free`. So the as-worded miss changes no verdict, and no judgment call
->   goes to Dustin. The official probe stays as pinned in `tools_8c.tsv`.
+>   sees what the bots' search sees, and the refined reading shows exactly that.
+>
+>   **Correction (reader two, Oct 10):** an earlier version of this note said 8c never reads `free`. It does, in one case:
+>   `tightened_rule.py`:249 reads `free` when the condition is found at ply 3. There, a pure frame the probe misses makes the
+>   game a JUDGMENT for Dustin, never "explained". So the as-worded miss can only send a game to Dustin, never pass one. No call
+>   is needed now. The official probe stays as pinned in `tools_8c.tsv`.
+> - **Reader two (Sonnet, sonnet/switch2-reader2 6cd65dac, integrated here):**
+>   - **(f): equivalent.** One note, C1: F1's new arm also reaches the official engine's `ApplyQueuedAttackDamage` frames. No
+>     producer in today's card database leaves one pending across a Knock Out; the exposing input is named in the file.
+>   - **The second reads don't all match PLAN's wording.** These open items are for 8c (the revert-check driver), not sittings
+>     1-2:
+>     - the probe's self-test, P2 checks, 8b ticks and gate runs were made at 31616338, not P: rerun them at P;
+>     - `control_clean` (negative controls) doesn't require round 2's kinds or trapleaf to be absent;
+>     - the revert check on real games ran for G1+G2, P2 and all switches off only, never G3-G8 alone;
+>     - there is no revert evidence for F1's G2 arm.
+>   - Its file mapping covers all 26 files, so `allowed_engine_files.tsv` is final.
 > - **Shot List (Dustin's cleanup, Oct 9):** rows 23-33 came off the list. The four Cursed Jewel readings (rows 30-33) now rest on the
 >   card text and their tests alone; the hit-back sub-cases stay in `P2_EVIDENCE_sonnet.md`. One row is kept: the hit-back against
 >   Heavy Helmet (was row 22, now the list's only row). The old rows are in `rules/_research_notes/shot_list_archive_2026-10-09.json`.
