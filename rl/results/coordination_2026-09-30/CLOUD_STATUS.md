@@ -61,7 +61,15 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      - Suite at the new P: 2,103 passed, 0 failed.
        `SUITE_AT_P=fc6307c0:rl/results/coin_prevention_round2_2026-10-01/f1_promotion/suite_at_P.txt`.
      - `engine_commits.tsv` (on this branch, against main's): two rows added (f601abcb tests, c7a25df4 src), now 26.
-   - **Now:** PLAN item (a)'s open test (free exactly where gate_R > 0, the 1,126 games).
+   - **PLAN (a)'s open test: run.** As worded it fails. With the probe walking past queued frames and counting R's own gate
+     frame, it matches exactly: 1,126 of 1,126 and 0 of 279. Pushed to `claude/coin-prevention-round2` (43ccdd1d).
+     - "free" is true in 540 of the 1,126 gate_R > 0 games and in none of the 279 others. free reads only the shortest queued
+       frame, and each walk stops there. R's gate counts any pure coin-target frame in the search.
+     - The fix was a scratch copy of the probe that goes on past queued frames and uses `dg_patch.py`'s gate definition. The
+       official probe and the engine are unchanged.
+     - Whether the official probe gains this reading or PLAN's sentence is reworded is the coordinator's call.
+       `OPEN_TEST_A=43ccdd1d:rl/results/round2_readiness_2026-10-02/open_test_gate_R/README.md`.
+   - **Now:** idle until Monday. Collector findings F1-F4 wait, as asked.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
    63c28e6e. Read "Oct 9" in that branch's `rl/results/coin_prevention_round2_2026-10-01/README.md`, section 3's end in
