@@ -1,0 +1,84 @@
+== builds: switches c7a25df4, before them 384d91dc, official 8626a358
+legality_scan sha256 a4ad3a638b90693f5ba475f734ce4962e1e3e68052e79ba2ffca01042c61c4ba; deckgym sha256 d93dd764048249d72ffbaff40e6992a408318790931e998cbca8064ac311a74d; before the switches: legality_scan sha256 6c455c829cf2a31caf0ec2c48f3072c06e64792019e4dafb99519c05f0d63b5e
+official deckgym sha256 2f7e5fd6e0ae21fffcb9a4df6e70dc3302e2a372f1fde1eb2bb1aa106747a62e (SHA256SUMS verify)
+== 1. the 8b deals
+km3: 240 deals; the official engine and the round-2 head differ in 13: [(35, 2), (35, 3), (35, 10), (35, 13), (35, 14), (35, 26), (35, 30), (35, 31), (35, 35), (35, 37), (35, 38), (37, 0), (37, 15)]
+  default: byte for byte the recorded new rows: True; and the engine before the switches: True
+  all off (DECKGYM_ROUND2_OFF=1): byte for byte the recorded old rows: True
+  g1_g2 off: as the official engine in 11 of the 13 changed deals [(35, 2), (35, 3), (35, 10), (35, 13), (35, 14), (35, 26), (35, 30), (35, 31), (35, 35), (35, 37), (35, 38)]; as neither engine in 0 []; every other deal as the round-2 head
+  p2 off: as the official engine in 2 of the 13 changed deals [(37, 0), (37, 15)]; as neither engine in 0 []; every other deal as the round-2 head
+  g1 off: as the official engine in 0 of the 13 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g2 off: as the official engine in 11 of the 13 changed deals [(35, 2), (35, 3), (35, 10), (35, 13), (35, 14), (35, 26), (35, 30), (35, 31), (35, 35), (35, 37), (35, 38)]; as neither engine in 0 []; every other deal as the round-2 head
+  g3 off: as the official engine in 0 of the 13 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g4 off: as the official engine in 0 of the 13 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g5 off: as the official engine in 0 of the 13 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g6 off: as the official engine in 0 of the 13 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g7 off: as the official engine in 0 of the 13 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g8 off: as the official engine in 0 of the 13 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g9 off: as the official engine in 0 of the 13 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g10 off: as the official engine in 0 of the 13 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g11 off: as the official engine in 0 of the 13 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+k3: 240 deals; the official engine and the round-2 head differ in 12: [(35, 9), (35, 10), (35, 13), (35, 14), (35, 19), (35, 26), (35, 30), (37, 0), (37, 23), (37, 25), (37, 34), (37, 35)]
+  default: byte for byte the recorded new rows: True; and the engine before the switches: True
+  all off (DECKGYM_ROUND2_OFF=1): byte for byte the recorded old rows: True
+  g1_g2 off: as the official engine in 7 of the 12 changed deals [(35, 9), (35, 10), (35, 13), (35, 14), (35, 19), (35, 26), (35, 30)]; as neither engine in 0 []; every other deal as the round-2 head
+  p2 off: as the official engine in 5 of the 12 changed deals [(37, 0), (37, 23), (37, 25), (37, 34), (37, 35)]; as neither engine in 0 []; every other deal as the round-2 head
+  g1 off: as the official engine in 0 of the 12 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g2 off: as the official engine in 6 of the 12 changed deals [(35, 10), (35, 13), (35, 14), (35, 19), (35, 26), (35, 30)]; as neither engine in 1 [(35, 9)]; every other deal as the round-2 head
+  g3 off: as the official engine in 0 of the 12 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g4 off: as the official engine in 0 of the 12 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g5 off: as the official engine in 0 of the 12 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g6 off: as the official engine in 0 of the 12 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g7 off: as the official engine in 0 of the 12 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g8 off: as the official engine in 0 of the 12 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g9 off: as the official engine in 0 of the 12 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g10 off: as the official engine in 0 of the 12 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+  g11 off: as the official engine in 0 of the 12 changed deals []; as neither engine in 0 []; every other deal as the round-2 head
+== 2. the later round's smoke
+== 3. the counter smoke
+== 4. the P3 smoke
+2. every gate off v games_r_plain.jsonl (R 1abdbe8): 80 games against 80; equal on the 17 fields both record in 80; different: []
+2. every gate off but G2 v games_round2_plain.jsonl (29e126a): 80 games against 80; equal on the 17 fields both record in 80; different: []
+3. P2 and G11 off v the counter smoke's games_round2_plain.jsonl (3090abb): 120 games against 120; equal on the 17 fields both record in 120; different: []
+4. default v games_p3.jsonl: 640 games against 640; equal on the 17 fields both record in 640; different: []
+4. G11 off v games_p3.jsonl: 640 games against 640; equal on the 17 fields both record in 640; different: []
+== 5. km3 v km3, 240 games, altaria v blaziken, seed 7100
+official: equal to the pinned record 5a18d31_10_cli_km3.txt on every line but line 6 (the wall time)
+default: equal to the pinned record 5a18d31_10_cli_km3.txt on every line but line 6 (the wall time)
+all: equal to the pinned record 5a18d31_10_cli_km3.txt on every line but line 6 (the wall time)
+games: official 240, default 240; equal game for game (matched by game seed): 240; different: 0 []
+digest official: 59dd3e38108dd725
+digest default: 59dd3e38108dd725
+games: official 240, all 240; equal game for game (matched by game seed): 240; different: 0 []
+digest official: 59dd3e38108dd725
+digest all: 59dd3e38108dd725
+== 6. the revert check
+km3 pairing 35 deal 2 tick 89: 12 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+km3 pairing 35 deal 3 tick 44: 6 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+km3 pairing 35 deal 10 tick 43: 10 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+km3 pairing 35 deal 13 tick 60: 7 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+km3 pairing 35 deal 14 tick 41: 7 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+km3 pairing 35 deal 26 tick 44: 10 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+km3 pairing 35 deal 30 tick 38: 10 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+km3 pairing 35 deal 31 tick 58: 11 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+km3 pairing 35 deal 35 tick 90: 7 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+km3 pairing 35 deal 37 tick 48: 12 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+km3 pairing 35 deal 38 tick 69: 12 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+k3 pairing 35 deal 10 tick 40: 10 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+k3 pairing 35 deal 13 tick 59: 8 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+k3 pairing 35 deal 14 tick 42: 7 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+k3 pairing 35 deal 19 tick 35: 5 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+k3 pairing 35 deal 26 tick 41: 10 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+k3 pairing 35 deal 30 tick 38: 10 candidates; the round-2 head changed the choice: yes; g1,g2 off: the official choice and every score yes; all off: the official choice and every score yes
+km3 pairing 37 deal 15 tick 51: 5 candidates; the round-2 head changed the choice: yes; p2 off: the official choice and every score yes; all off: the official choice and every score yes
+k3 pairing 37 deal 23 tick 77: 11 candidates; the round-2 head changed the choice: yes; p2 off: the official choice and every score yes; all off: the official choice and every score yes
+k3 pairing 37 deal 34 tick 48: 2 candidates; the round-2 head changed the choice: yes; p2 off: the official choice and every score yes; all off: the official choice and every score yes
+k3 pairing 37 deal 35 tick 68: 4 candidates; the round-2 head changed the choice: yes; p2 off: the official choice and every score yes; all off: the official choice and every score yes
+pairing 35, g1,g2 off for the one decision: 17 of 17 give the official choice and scores
+pairing 35, all off for the one decision: 17 of 17 give the official choice and scores
+pairing 37, p2 off for the one decision: 4 of 4 give the official choice and scores
+pairing 37, all off for the one decision: 4 of 4 give the official choice and scores
+control km3 pairing 33 deal 1 tick 9: 5 candidates; the head, every gate off alone and all off give the official choice and scores: yes
+control km3 pairing 33 deal 3 tick 8: 4 candidates; the head, every gate off alone and all off give the official choice and scores: yes
+control k3 pairing 33 deal 1 tick 9: 5 candidates; the head, every gate off alone and all off give the official choice and scores: yes
+control k3 pairing 33 deal 3 tick 8: 4 candidates; the head, every gate off alone and all off give the official choice and scores: yes
