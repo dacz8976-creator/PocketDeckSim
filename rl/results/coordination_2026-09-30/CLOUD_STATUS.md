@@ -79,6 +79,16 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      - The test's play, traced without its asserts on 8626a35 and at c7a25df4 with G1 + G2 off, is identical step for step
        on seeds 0-4: Rocky Helmet's two steps, Promote, then the second punch. 120 damage each time.
      - Before the fix, split into two tests: off passes, on fails at seed 0 (the punch is offered before the promotion).
+   - **Remade at the final P = c7a25df4 (tree 70652fff), as reader two asked: every result unchanged from 31616338's.** Pushed
+     to `claude/coin-prevention-round2` (04f2b6f7, files named `_at_c7a25df4`).
+     - Gate run: only the build lines (commit and binary hashes) differ. The 8b rows match the recorded rows byte for byte, so TRACE LOAD 0 stands.
+     - Revert check 21 of 21 (17 of 17 with G1 + G2 off, 4 of 4 with P2 off), controls 4 of 4.
+     - P2 checks: unchanged, still exactly H, I, J and M fail with P2 off. Probe self-test: 46 checks and 3 frame checks,
+       0 failures. 8b ticks: 25 of 25 lines identical.
+   - **F1 evidence (the laptop's ask): the official engine promotes first too.** Pushed (1f995293, `f1_promotion/README.md`).
+     - The test's play, traced without its asserts on 8626a35 and at c7a25df4 with G1 + G2 off, is identical step for step
+       on seeds 0-4: Rocky Helmet's two steps, Promote, then the second punch. 120 damage each time.
+     - Before the fix, split into two tests: off passes, on fails at seed 0 (the punch is offered before the promotion).
    - **Now:** idle until Monday. Collector findings F1-F4 wait, as asked.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
