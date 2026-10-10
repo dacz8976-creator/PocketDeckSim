@@ -31,6 +31,19 @@
 >   attacker's Heavy Helmet (Bristling Spikes' 30 cut to 10). The engine applies no cut, before or after this switch. It stays
 >   **outside this switch's scope** (Dustin approved the scope without it; no list we play reaches it). It goes to the next rules
 >   round, with the other cards by their own wording (`rules/09`, open bugs). It goes into this switch only if Dustin asks for it.
+> - **The runners (main a5f2e7e5; the coordinator's decisions on six points, Oct 9 evening):**
+>   1. **A changed game where no counter fired** passes only after 8c. 8c's probe must show the new rule inside the search at
+>      the first differing move or its cause tick, and the pin counts the game as traced. Anything 8c can't show is
+>      unexplained and stops.
+>   2. **7c's deck 10 v t-weezing watch row** is named as allowed to change, under the same explanation rule (every changed game
+>      shows Will acting). It goes on the "expected to change" list reported to Dustin, since the package named only the floor row.
+>   3. **Step 4's allowed list at P** is approved at 26 files as listed in `allowed_engine_files.tsv`, on one condition: every file
+>      on it is covered by both readers' equivalence reading. A file neither reader covered is read before any start. The mapping
+>      is recorded in this folder before the TO FINALIZE marker comes off.
+>   4. **floor.py** is accepted with the pinned-diff check (only the ATTACKERS table may differ).
+>   5. **Step 8b** is 2,800 games, with brew-07/09 v t-altaria on the 23,100,000,000 block. The laptop's rows must equal the
+>      cloud's.
+>   6. **ALLOW_DAYTIME=auto**: Dustin's word covers Saturday and Sunday, and Monday's school-morning rule still applies.
 > - **Shot List (Dustin's cleanup, Oct 9):** rows 23-33 came off the list. The four Cursed Jewel readings (rows 30-33) now rest on the
 >   card text and their tests alone; the hit-back sub-cases stay in `P2_EVIDENCE_sonnet.md`. One row is kept: the hit-back against
 >   Heavy Helmet (was row 22, now the list's only row). The old rows are in `rules/_research_notes/shot_list_archive_2026-10-09.json`.

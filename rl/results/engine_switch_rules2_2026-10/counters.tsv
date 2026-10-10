@@ -1,0 +1,50 @@
+# TO FINALIZE WHEN P LANDS. 42 counters: the watch build's (the Victory Star script cd8fe70b, the coin script at P: 306f1f69 as of 31616338 and the tip). Checked against both scripts' names at the candidate.
+# ROUND2_QUEUED	Wild Swing|Wellspring Dance|Tornado Shot|Double Splash|Triple Bombardment|Mischievous Ring|Litter|Double-Punching Family
+# (the queued attacks of round 2's seven sites, the same eight as the cloud's tightened_rule.py at the tip, line 62)
+# revert_switch: the environment variable(s) that turn the counter's gate off, read from the G1-G11 and P2 comments of
+# engine/src/actions/apply_action_helpers.rs at 31616338 (lines 618 and 692-745). A '+' joins switches a gate needs together:
+# G2 (the seven sites) says "The old damage needs G1 off too". DECKGYM_ROUND2_OFF turns every gate off at once; G11
+# (DECKGYM_FOSSIL_NOT_ITEM, P3) has no counter. Hand-off text and the pin's check of the names; the runners never set one.
+name	script	shape	role	mechanic	revert_switch
+coin_queued_by_attack	coin	keyed	reach2	sites	DECKGYM_PLAIN_QUEUED_SITES+DECKGYM_NO_PLAIN_HIT_COIN
+coin_plain_damage_by_attack	coin	keyed	reach2	plain_hit	DECKGYM_NO_PLAIN_HIT_COIN
+coin_plain_damage_chosen	coin	exact	reach2	plain_hit	DECKGYM_NO_PLAIN_HIT_COIN
+perish_plain_hit_offered	coin	exact	reach2	perish	DECKGYM_NO_PERISH_ON_QUEUED_HIT
+perish_plain_hit_chosen	coin	exact	reach2	perish	DECKGYM_NO_PERISH_ON_QUEUED_HIT
+coin_own_side_split	coin	exact	reach2	own_side_coin	DECKGYM_NO_OWN_SIDE_COIN
+guts_own_side_split	coin	exact	reach2	own_side_guts	DECKGYM_NO_OWN_SIDE_GUTS
+will_confused_attack	coin	exact	reach2	will	DECKGYM_WILL_SKIPS_GATE_COINS
+will_block_coin_attack	coin	exact	reach2	will	DECKGYM_WILL_SKIPS_GATE_COINS
+vs_block_coin_built	coin	exact	reach2	vs_block	DECKGYM_NO_VICTORY_STAR_AFTER_BLOCK_COIN
+vs_block_coin_choice_offered	coin	exact	reach2	vs_block	DECKGYM_NO_VICTORY_STAR_AFTER_BLOCK_COIN
+trap_territory_offer_changed	coin	exact	reach2	trap	DECKGYM_TRAP_TERRITORY_ONCE
+trap_territory_outcome_changed	coin	exact	reach2	trap	DECKGYM_TRAP_TERRITORY_ONCE
+luxury_coin_opp_stadium	coin	exact	reach2	luxury	DECKGYM_LUXURY_COIN_ANY_STADIUM
+fossil_item_lock	coin	exact	reach2	fossil_lock	DECKGYM_FOSSIL_UNDER_ITEM_LOCK
+attack_return_weakness	coin	exact	reach2	return	DECKGYM_FLAT_RETURN_DAMAGE
+offgate_by_attack	coin	keyed	offgate2	sites	-
+offgate_plain_attack_damage	coin	exact	offgate2	plain_hit	-
+offgate_guts_opponent_split	coin	exact	offgate2	own_side_guts	-
+offgate_confused_attack	coin	exact	offgate2	will	-
+offgate_block_coin_attack	coin	exact	offgate2	vs_block	-
+offgate_vs_ungated_built	coin	exact	offgate2	vs_block	-
+offgate_trap_territory_one	coin	exact	offgate2	trap	-
+offgate_luxury_coin_offered	coin	exact	offgate2	luxury	-
+offgate_fossil_offered	coin	exact	offgate2	fossil_lock	-
+offgate_return_by_source	coin	keyed	offgate2	return	-
+trap_territory_two_in_play	coin	exact	superset2	trap	-
+vs_confusion_first_built	vs	exact	r1_exact	-	-
+vs_confused_choice_chosen	vs	exact	r1_exact	-	-
+vs_confused_choice_offered	vs	exact	r1_exact	-	-
+coin_cut_recorded	coin	exact	r1_exact	-	-
+coin_full_prevention	coin	exact	r1_exact	-	-
+coin_queued_offered	coin	exact	r1_exact	-	-
+coin_queued_offered_any	coin	exact	r1_exact	-	-
+vs_confused_choice	vs	int	r1_heads	-	-
+vs_confused_choice_first	vs	int_or_null	r1_heads	-	-
+offgate_helper_choice	coin	exact	r1_offgate	-	-
+offgate_discard_then_damage	coin	exact	r1_offgate	-	-
+offgate_helper_by_mechanic	coin	keyed	r1_offgate	-	-
+vs_confused_attack	vs	int	r1_superset	-	-
+coin_defender_attack	coin	int	r1_superset	-	-
+coin_queued_attack_damage	coin	int	r1_superset	-	-

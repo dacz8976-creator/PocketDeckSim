@@ -1,0 +1,55 @@
+# TO FINALIZE WHEN P LANDS. As of 31616338 (also the tip 056158c3's engine/): git diff --no-renames --name-status 8626a35 <P> -- engine/ (26 rows: 17 source, 9 tests).
+# The runners check this list against that diff, so the check itself cannot catch a file outside the approved scope: the approval is
+# the finalizing of this file. Before the marker line goes, the coordinator (or the laptop session with the coordinator's word) checks
+# each row's scope below against PLAN.md and records the word for the rows PLAN.md does not name.
+# Scope of each file (the commits that touch it, 8626a35..31616338):
+#   apply_abilities_action.rs        P3 140c0be2                                   (NOT named by PLAN.md step 4 / question 2a)
+#   apply_action.rs                  round 2 e0ecf19f; card text 27a0c37d 46953bf3 3090abbb; (e) 31616338   (20e2651's 17)
+#   apply_action_helpers.rs          P2 5543a4ba; P2 switch 35e6acfd; (e) 31616338  (P2's file: section 0 (h))
+#   apply_attack_action.rs           round 2 e0ecf19f 29e126a8; card text 27a0c37d 46953bf3 3090abbb; P3 140c0be2; (e) 31616338   (17)
+#   apply_trainer_action.rs          P3 140c0be2                                   (question 2a's list)
+#   attack_outcome.rs                card text 27a0c37d 46953bf3 3090abbb          (17)
+#   actions/mod.rs                   P2 switch 35e6acfd; (e) 31616338              (P2's file: section 0 (h))
+#   shared_mutations.rs              P3 140c0be2                                   (question 2a's list)
+#   trainer_coin_plan.rs             card text 3090abbb; (e) 31616338              (17)
+#   card_validation.rs               card text 3090abbb; P1 b8a8621a               (17)
+#   hooks/core.rs                    merge ce151c79; card text 46953bf3; P2 5543a4ba; Bounded Field b0dc4844; (e) 31616338   (17)
+#   hooks/counterattack.rs           P2 5543a4ba                                   (P2's file: section 0 (h))
+#   hooks/mod.rs                     P2 5543a4ba                                   (P2's file: section 0 (h))
+#   hooks/retreat.rs                 card text 5155ff7a; (e) 31616338              (17)
+#   models/card.rs                   P3 140c0be2; (e) 31616338                     (NOT named by PLAN.md step 4 / question 2a)
+#   move_generation_trainer.rs       card text 3090abbb; P3 140c0be2; (e) 31616338 (17)
+#   state/mod.rs                     round 2 29e126a8; (e) 31616338                (17)
+#   tests: b4a_attack_batch2_test, gholdengo_luxury_coin_test, galarian_cursola_perish_body_test, legacy_ability_logic_test,
+#   meowth_carefree_steps_test, ursaluna_guts_test, rules_repair_trainers, victini_victory_star_test (17's 8 tests; P3 and (e) add
+#   to some), rules_repair_return_damage_weakness.rs (status A: P2 d3739b7d, P2 switch 14abfb04, Bounded Field 6b111ba7, (e) ade21150).
+# PLAN.md step 4 names effect_mechanic_map.rs and effect_ability_mechanic_map.rs for question 2a; P touches neither (P3's commit
+# says it fixed the seven places at 8 engine sites, through apply_abilities_action.rs and models/card.rs). (e) (31616338) is not in
+# PLAN.md's list at all: it adds the revert switches to 10 source files already listed (precondition (e)).
+status	path
+M	engine/src/actions/apply_abilities_action.rs
+M	engine/src/actions/apply_action.rs
+M	engine/src/actions/apply_action_helpers.rs
+M	engine/src/actions/apply_attack_action.rs
+M	engine/src/actions/apply_trainer_action.rs
+M	engine/src/actions/attack_outcome.rs
+M	engine/src/actions/mod.rs
+M	engine/src/actions/shared_mutations.rs
+M	engine/src/actions/trainer_coin_plan.rs
+M	engine/src/card_validation.rs
+M	engine/src/hooks/core.rs
+M	engine/src/hooks/counterattack.rs
+M	engine/src/hooks/mod.rs
+M	engine/src/hooks/retreat.rs
+M	engine/src/models/card.rs
+M	engine/src/move_generation/move_generation_trainer.rs
+M	engine/src/state/mod.rs
+M	engine/tests/b4a_attack_batch2_test.rs
+M	engine/tests/gholdengo_luxury_coin_test.rs
+M	engine/tests/pokemon/galarian_cursola_perish_body_test.rs
+M	engine/tests/pokemon/legacy_ability_logic_test.rs
+M	engine/tests/pokemon/meowth_carefree_steps_test.rs
+M	engine/tests/pokemon/ursaluna_guts_test.rs
+A	engine/tests/rules_repair_return_damage_weakness.rs
+M	engine/tests/rules_repair_trainers.rs
+M	engine/tests/victini_victory_star_test.rs
