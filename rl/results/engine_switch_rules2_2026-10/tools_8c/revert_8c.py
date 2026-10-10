@@ -13,7 +13,17 @@ score dump (score_dump_round2.rs, `revert_score_dump` in tools_8c.tsv) for the d
 
 PASS = gate_off chooses the official engine's move AND its candidate list (the scores and the texts, as Oct 1's revert_check.py
 compared them) equals the official one's AND all_off reproduces the official move and scores too. Anything else is FAIL, and any FAIL
-is a stop that goes to Dustin through the laptop session. The gate comes from counters.tsv's revert_switch column through the
+is a stop that goes to Dustin through the laptop session.
+
+The root guard (reader one's N3): a switch flipped at a root that already holds a continuation made under the other setting evaluates
+a state the official engine never reaches. When any of the four runs' root candidates is an `ApplyQueuedAttackDamage` or `ApplyDamage`
+(a queued hit or punch frame), or a `KeepAttackCoinResults` or `RerollAttackCoins` (a pending attack coin choice, Victory Star's
+pause), the game is neither PASS nor FAIL but ROOT_CONTINUATION: not reproduced, and it goes to Dustin through the laptop session as a
+FAIL does. The dump prints only the root's candidates, not the stack below them, so a continuation under another frame (a queued
+punch under a promotion) is not seen; the classifier's "hash equal before the first difference" precondition (F10) is what covers
+those. A game whose program failed is a FAIL (process) before this, since its root was not seen.
+
+The gate comes from counters.tsv's revert_switch column through the
 counter names of the probe's finding (queued/cut -> coin_queued_by_attack, a return ply -> attack_return_weakness, trapleaf and each
 of round 2's seven kinds -> their counters), never from a hand-written name; a game with several findings gets the union of their
 gates (reader one's N5, mixed frames); a finding, counter or switch this script does not know is a refusal, not a guess.
@@ -29,8 +39,8 @@ Usage (all of it required; there are no defaults, so nothing is guessed):
       --p-program PATH --p-cwd DIR --p-sha256 HEX64 --official-program PATH --official-cwd DIR --official-sha256 HEX64
       --out DIR [--jobs N]
 Writes OUT/revert_8c.tsv (one row per lookahead game), OUT/revert_8c_summary.txt (the one line `revert R of L reproduced` for
-8c_RESULT.txt), OUT/revert_8c.json (inputs and programs, with their sha256) and OUT/raw/ (the raw dump of every failed game).
-Exit 0: R == L. Exit 1: a game failed (a stop). Exit 2: a refusal (nothing was run, or no program started)."""
+8c_RESULT.txt), OUT/revert_8c.json (inputs and programs, with their sha256) and OUT/raw/ (the raw dump of every game that is not a PASS).
+Exit 0: R == L. Exit 1: a game failed or is a ROOT_CONTINUATION (a stop). Exit 2: a refusal (nothing was run, or no program started)."""
 import argparse, collections, concurrent.futures as cf, csv, hashlib, json, os, re, subprocess, sys
 from pathlib import Path
 
@@ -59,8 +69,13 @@ ALL_OFF = "all"
 UNSET_IN_CALLER = ("PDL_EQUIV_DEALS", "GOLDFISH_TRACE", "PG_DUMP")     # with every DECKGYM_*: sitting2.sh's check, and the dump's own switch
 COUNTERS_HEADER = ["name", "script", "shape", "role", "mechanic", "revert_switch"]
 LOOKAHEAD_HEADER = ["step", "bot", "pairing", "i", "seed", "k", "turn", "verdict", "strict", "probe"]
+ROOT_CONTINUATION = "ROOT_CONTINUATION"
+# The root candidates (the action's name, as the dump prints it) that mean the decision is a continuation of an attack already in
+# progress: a queued hit or punch frame (ApplyQueuedAttackDamage, ApplyDamage), a pending attack coin choice (Victory Star's pause:
+# KeepAttackCoinResults, RerollAttackCoins; state.pending_attack_coin_choice, apply_action.rs:268-282).
+CONTINUATION_KINDS = ("ApplyQueuedAttackDamage", "ApplyDamage", "KeepAttackCoinResults", "RerollAttackCoins")
 TSV_HEADER = ["step", "bot", "pairing", "i", "k", "verdict", "kind", "gates", "tokens", "official_move", "p_move", "gate_off_move",
-              "all_off_move", "replay_ok", "move_equal", "scores_equal", "all_off_equal", "process_ok", "result", "reason"]
+              "all_off_move", "replay_ok", "move_equal", "scores_equal", "all_off_equal", "process_ok", "root_holds", "result", "reason"]
 
 
 class Refuse(Exception):
@@ -196,6 +211,18 @@ def parse_dump(rc, stdout, stderr):
     return {"rc": rc, "chosen": chosen, "cands": cands, "ok": rc == 0 and chosen is not None and bool(cands), "stdout": stdout, "stderr": stderr}
 
 
+def root_holds(dumps):
+    """The continuation kinds among the root candidates of any of the runs (the candidates are the root's: PG_DUMP prints them only for
+    the decision asked about), sorted; empty when the root is an ordinary decision."""
+    found = set()
+    for d in dumps.values():
+        for _, text in d["cands"]:
+            m = re.match(r"\w+", text)
+            if m and m[0] in CONTINUATION_KINDS:
+                found.add(m[0])
+    return sorted(found)
+
+
 def same_scores(x, y):
     """Oct 1's rule: the same number of candidates, each score within 1e-9 and each candidate text equal."""
     return len(x) == len(y) and all(abs(p[0] - q[0]) < 1e-9 and p[1] == q[1] for p, q in zip(x, y))
@@ -288,7 +315,14 @@ def check_game(g, programs, runner, env):
     t["all_off_equal"] = d["all_off"]["chosen"] == off["chosen"] and same_scores(off["cands"], d["all_off"]["cands"])
     failed = [n for n, flag in (("process", t["process_ok"]), ("replay", t["replay_ok"]), ("move", t["move_equal"]),
                                 ("scores", t["scores_equal"]), ("all_off", t["all_off_equal"])) if not flag]
-    return {"game": g, "dumps": d, "tests": t, "result": "PASS" if not failed else "FAIL", "reason": ",".join(failed)}
+    held = root_holds(d)
+    if not t["process_ok"]:                  # a program that failed did not show its root: FAIL, whatever the other runs say
+        result, reason = "FAIL", ",".join(failed)
+    elif held:                               # neither PASS nor FAIL: the comparison above is kept in the row, and decides nothing
+        result, reason = ROOT_CONTINUATION, "root holds " + ",".join(held)
+    else:
+        result, reason = "PASS" if not failed else "FAIL", ",".join(failed)
+    return {"game": g, "dumps": d, "tests": t, "held": held, "result": result, "reason": reason}
 
 
 # ---- outputs ----
@@ -311,9 +345,10 @@ def write_outputs(out, results, inputs, programs, argv):
             f.write("\t".join(cell(x) for x in [
                 step, bot, pairing, i, g["k"], g["verdict"], "+".join(g["labels"]), ",".join(g["envs"]), ",".join(g["tokens"]),
                 d["official"]["chosen"], d["p"]["chosen"], d["gate_off"]["chosen"], d["all_off"]["chosen"], yes(t["replay_ok"]),
-                yes(t["move_equal"]), yes(t["scores_equal"]), yes(t["all_off_equal"]), yes(t["process_ok"]), r["result"], r["reason"]]) + "\n")
+                yes(t["move_equal"]), yes(t["scores_equal"]), yes(t["all_off_equal"]), yes(t["process_ok"]), ",".join(r["held"]),
+                r["result"], r["reason"]]) + "\n")
     for r in results:
-        if r["result"] == "FAIL":
+        if r["result"] != "PASS":
             step, bot, pairing, i = r["game"]["key"]
             with open(out / "raw" / f"{step}_{bot}_{pairing}_{i}.txt", "w", encoding="utf-8", newline="\n") as f:
                 for name, x in r["dumps"].items():
@@ -324,6 +359,7 @@ def write_outputs(out, results, inputs, programs, argv):
     (out / "revert_8c_summary.txt").write_text(line + "\n", encoding="utf-8", newline="\n")
     info = {"summary": line, "games": len(results), "passed": passed,
             "failed": [list(r["game"]["key"]) + [r["reason"]] for r in results if r["result"] == "FAIL"],
+            "root_continuation": [list(r["game"]["key"]) + [r["reason"]] for r in results if r["result"] == ROOT_CONTINUATION],
             "by_kind": dict(collections.Counter("+".join(r["game"]["labels"]) for r in results)),
             "inputs": inputs, "programs": {p.label: {"path": p.path, "cwd": p.cwd, "sha256": p.sha256} for p in programs.values()},
             "driver_sha256": sha256_of(__file__), "argv": argv}
@@ -367,11 +403,13 @@ def run(argv, environ=None, runner=run_program, log=print):
     inputs["seed_bases"] = sorted(set(a.seed_base))
     line, passed = write_outputs(a.out, results, inputs, programs, argv)
     log(line)
-    bad = [r for r in results if r["result"] == "FAIL"]
+    bad = [r for r in results if r["result"] != "PASS"]
     for r in bad:
-        log(f"  FAIL {r['game']['key']} ({'+'.join(r['game']['labels'])}; gates {','.join(r['game']['tokens'])}): {r['reason']}")
+        log(f"  {r['result']} {r['game']['key']} ({'+'.join(r['game']['labels'])}; gates {','.join(r['game']['tokens'])}): {r['reason']}")
     if bad:
-        log(f"STOP: {len(bad)} game(s) failed the revert check; this goes to Dustin through the laptop session (raw dumps in {a.out}/raw)")
+        failed, held = sum(r["result"] == "FAIL" for r in bad), sum(r["result"] == ROOT_CONTINUATION for r in bad)
+        log(f"STOP: {failed} game(s) failed the revert check and {held} are a ROOT_CONTINUATION (not decided: the root holds a pending attack "
+            f"continuation); both count as not reproduced and go to Dustin through the laptop session (raw dumps in {a.out}/raw)")
         return 1
     return 0
 

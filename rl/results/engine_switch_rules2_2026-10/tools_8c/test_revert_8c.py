@@ -1,13 +1,14 @@
 """Tests for revert_8c.py, the step 8c revert-check driver (rules switch 2; the laptop's spec, Oct 10), with fakes: no program, no deck
 and no game of the real run is used. A fake runner stands in for the two score dumps and prints what score_dump_round2.rs prints (the
 `PGTICK ... asked about` line, the `PGDUMP score text` lines and `deal i, tick t: chose X`); the decks, programs, hand-off and
-lookahead.tsv are made in a temporary folder. counters.tsv is the real one beside this file.
+lookahead.tsv are made in a temporary folder. counters.tsv is the real one, one folder up.
 Run: python3 -m unittest test_revert_8c   (from this folder)"""
 import contextlib, hashlib, json, os, stat, sys, tempfile, unittest
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
+COUNTERS_TSV = HERE.parent / "counters.tsv"          # the folder's own counters.tsv, one level up
 import revert_8c as rv  # noqa: E402
 
 SEED_BASE = 23100000000
@@ -103,7 +104,7 @@ class Case(unittest.TestCase):
             self.files()
         runner = runner or FakeRunner()
         logs = []
-        argv = ["--lookahead", str(self.tmp / "lookahead.tsv"), "--counters", str(counters or HERE / "counters.tsv"),
+        argv = ["--lookahead", str(self.tmp / "lookahead.tsv"), "--counters", str(counters or COUNTERS_TSV),
                 "--handoff", str(self.tmp / "handoff_8c.tsv"), "--root", str(self.tmp / "root"),
                 "--p-program", str(self.progs["p"][0]), "--p-cwd", str(self.progs["p"][1]), "--p-sha256", p_sha or self.progs["p"][2],
                 "--official-program", str(self.progs["official"][0]), "--official-cwd", str(self.progs["official"][1]),
@@ -187,7 +188,7 @@ class Reproduced(Case):
         info = json.loads((self.out / "revert_8c.json").read_text(encoding="utf-8"))
         self.assertEqual((info["summary"], info["games"], info["passed"], info["failed"]), ("revert 1 of 1 reproduced", 1, 1, []))
         self.assertEqual(info["inputs"]["lookahead"]["sha256"], hashlib.sha256((self.tmp / "lookahead.tsv").read_bytes()).hexdigest())
-        self.assertEqual(info["inputs"]["counters"]["sha256"], hashlib.sha256((HERE / "counters.tsv").read_bytes()).hexdigest())
+        self.assertEqual(info["inputs"]["counters"]["sha256"], hashlib.sha256((COUNTERS_TSV).read_bytes()).hexdigest())
         self.assertEqual(info["programs"]["p"]["sha256"], self.progs["p"][2])
         self.assertEqual(info["programs"]["official"]["sha256"], self.progs["official"][2])
         self.assertEqual(info["driver_sha256"], hashlib.sha256((HERE / "revert_8c.py").read_bytes()).hexdigest())
@@ -262,6 +263,92 @@ class Failures(Case):
         self.assertFalse((self.out / "raw" / "8_km3_35_2.txt").exists())
 
 
+def with_root(text, only=None):
+    """`over` for the FakeRunner: the four runs as usual (a PASS game), each with one more root candidate, `text`."""
+    base = {"official": (0, CHOSEN_A, SCORES_A), "p": (0, CHOSEN_B, SCORES_B), "gate_off": (0, CHOSEN_A, SCORES_A), "all_off": (0, CHOSEN_A, SCORES_A)}
+    return {n: (rc, chosen, cands + [("-9700.5", text)]) for n, (rc, chosen, cands) in base.items() if only is None or n in only}
+
+
+class RootGuard(Case):
+    """Reader one's N3 (the laptop's addition, Oct 10): a root that holds a pending attack continuation (a queued hit or punch frame, a
+    pending attack coin choice) is neither PASS nor FAIL: ROOT_CONTINUATION, not reproduced, and a stop that goes to Dustin."""
+    KINDS = {"ApplyQueuedAttackDamage": 'ApplyQueuedAttackDamage { attack: Attack { title: "Wild Swing" } }',
+             "ApplyDamage": "ApplyDamage { targets: [(20, 1, 1)] }",
+             "KeepAttackCoinResults": "KeepAttackCoinResults",
+             "RerollAttackCoins": "RerollAttackCoins { victory_star_in_play_idx: 0 }"}
+
+    def test_each_continuation_kind_among_the_roots_candidates_is_not_a_pass(self):
+        for kind, text in self.KINDS.items():
+            self._tmp.cleanup(), self.setUp()
+            self.add()
+            code, _ = self.go(runner=FakeRunner(with_root(text)))
+            self.assertEqual(code, 1, (kind, self.logs))
+            (row,) = self.rows()
+            self.assertEqual((row["result"], row["root_holds"], row["reason"]), ("ROOT_CONTINUATION", kind, f"root holds {kind}"), kind)
+            self.assertEqual((row["move_equal"], row["scores_equal"], row["all_off_equal"]), ("yes", "yes", "yes"), "the comparison is kept")
+            self.assertEqual(self.summary(), "revert 0 of 1 reproduced\n")
+            self.assertTrue((self.out / "raw" / "8_km3_35_2.txt").is_file())
+            self.assertIn("ROOT_CONTINUATION", self.logs)
+            self.assertIn("STOP", self.logs)
+
+    def test_it_is_not_a_fail_either_when_the_comparison_would_have_failed(self):
+        over = with_root(self.KINDS["ApplyQueuedAttackDamage"])
+        over["gate_off"] = (0, CHOSEN_B, over["gate_off"][2])
+        self.add()
+        code, _ = self.go(runner=FakeRunner(over))
+        self.assertEqual(code, 1)
+        (row,) = self.rows()
+        self.assertEqual((row["result"], row["move_equal"]), ("ROOT_CONTINUATION", "NO"))
+
+    def test_a_continuation_in_one_run_only_is_enough(self):
+        for only in ("official", "p", "gate_off", "all_off"):
+            self._tmp.cleanup(), self.setUp()
+            self.add()
+            code, _ = self.go(runner=FakeRunner(with_root(self.KINDS["KeepAttackCoinResults"], only=(only,))))
+            self.assertEqual((code, self.rows()[0]["result"]), (1, "ROOT_CONTINUATION"), only)
+
+    def test_several_kinds_are_all_named(self):
+        over = with_root("RerollAttackCoins { victory_star_in_play_idx: 0 }")
+        over = {n: (rc, ch, cands + [("-9701.5", "KeepAttackCoinResults")]) for n, (rc, ch, cands) in over.items()}
+        self.add()
+        self.go(runner=FakeRunner(over))
+        self.assertEqual(self.rows()[0]["root_holds"], "KeepAttackCoinResults,RerollAttackCoins")
+
+    def test_an_ordinary_root_is_not_touched(self):
+        # Turn menus (Attach, Play, Place, EndTurn), and an action that only begins with a continuation kind's name, are ordinary.
+        extra = [("-9800.0", "Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }"), ("-9801.0", "Play { trainer_card: A1 225 Sabrina }"),
+                 ("-9802.0", "ApplyDamageLater { targets: [] }"), ("-9803.0", "Retreat(2)")]
+        over = {n: (rc, ch, cands + extra) for n, (rc, ch, cands) in with_root("EndTurn").items()}
+        self.add()
+        code, _ = self.go(runner=FakeRunner(over))
+        self.assertEqual(code, 0, self.logs)
+        (row,) = self.rows()
+        self.assertEqual((row["result"], row["root_holds"]), ("PASS", ""))
+
+    def test_a_program_that_failed_did_not_show_its_root_and_is_a_fail(self):
+        over = with_root(self.KINDS["ApplyDamage"])
+        over["official"] = (1, CHOSEN_A, over["official"][2])
+        self.add()
+        self.go(runner=FakeRunner(over))
+        (row,) = self.rows()
+        self.assertEqual((row["result"], row["reason"].split(",")[0]), ("FAIL", "process"))
+
+    def test_among_several_games_only_the_passes_are_counted(self):
+        for i in (2, 3, 4):
+            self.add(i=i)
+        runner = FakeRunner(over_deal={3: with_root(self.KINDS["RerollAttackCoins"]), 4: {"gate_off": (0, CHOSEN_B, SCORES_B)}})
+        code, _ = self.go(runner=runner)
+        self.assertEqual(code, 1)
+        self.assertEqual(self.summary(), "revert 1 of 3 reproduced\n")
+        self.assertEqual([(r["i"], r["result"]) for r in self.rows()], [("2", "PASS"), ("3", "ROOT_CONTINUATION"), ("4", "FAIL")])
+        self.assertIn("1 game(s) failed the revert check and 1 are a ROOT_CONTINUATION", self.logs)
+        info = json.loads((self.out / "revert_8c.json").read_text(encoding="utf-8"))
+        self.assertEqual([k[:4] for k in info["root_continuation"]], [["8", "km3", 35, 3]])
+        self.assertEqual([k[:4] for k in info["failed"]], [["8", "km3", 35, 4]])
+        self.assertTrue((self.out / "raw" / "8_km3_35_3.txt").is_file() and (self.out / "raw" / "8_km3_35_4.txt").is_file())
+        self.assertFalse((self.out / "raw" / "8_km3_35_2.txt").exists())
+
+
 class Refusals(Case):
     def test_an_unknown_round_two_kind_in_the_probe_is_refused(self):
         self.add(pr=dict(probe(queued=2, tick=89), r2=dict(NONE_R2, mystery=2)))
@@ -300,7 +387,7 @@ class Refusals(Case):
         self.assertRefused(FakeRunner())
 
     def test_a_counter_the_table_does_not_know_a_switch_it_does_not_know_or_none_is_refused(self):
-        real = (HERE / "counters.tsv").read_text(encoding="utf-8")
+        real = (COUNTERS_TSV).read_text(encoding="utf-8")
         queued_row = next(ln for ln in real.splitlines() if ln.startswith("coin_queued_by_attack\t"))
         edits = {"an unknown switch": real.replace(queued_row, queued_row.replace("DECKGYM_PLAIN_QUEUED_SITES", "DECKGYM_SOMETHING_ELSE")),
                  "no switch": real.replace(queued_row, queued_row.rsplit("\t", 1)[0] + "\t-"),
@@ -314,7 +401,7 @@ class Refusals(Case):
             self.assertRefused(FakeRunner(), counters=path)
 
     def test_two_counters_of_one_kind_naming_different_switches_are_refused(self):
-        real = (HERE / "counters.tsv").read_text(encoding="utf-8")
+        real = (COUNTERS_TSV).read_text(encoding="utf-8")
         row = next(ln for ln in real.splitlines() if ln.startswith("will_block_coin_attack\t"))
         self.add(pr=probe(will=2, tick=89))
         path = self.tmp / "counters.tsv"
@@ -447,7 +534,7 @@ exit 0
 
 class GatesFromCountersTsv(unittest.TestCase):
     """The real counters.tsv, beside this file: each finding's gate is what its revert_switch column names."""
-    counters = rv.read_counters(HERE / "counters.tsv")
+    counters = rv.read_counters(COUNTERS_TSV)
 
     def test_each_finding_picks_its_gate(self):
         expected = {"queued": ["g1", "g2"], "cut": ["g1", "g2"], "return": ["p2"], "will": ["g4"], "vs": ["g5"], "trap": ["g6"],
