@@ -14,7 +14,10 @@ made-up rows.
 | `changes_vs_pinned.patch` | what differs from the four pinned files, for reading (not for applying) | |
 
 Tests, from this folder: `python3 -m unittest test_revert_8c test_handoff_for_classify test_tightened_rule` (49 + 20 + 45). The
-driver's tests read `../counters.tsv`; the adapter's read `../sitting2_check.py` (its header) and `classify_8c.py`.
+driver's tests read `../counters.tsv`; the adapter's read `../sitting2_check.py` (its header) and `classify_8c.py`. One classifier test,
+`test_every_exact_name_but_those_two_has_a_golden_check`, reads `../../coin_prevention_repair_2026-09-30/instrument_scan.py`, and wants
+the round-2 one (blob 306f1f69, `COIN_SCRIPT_BLOB`), which is on P's branch: against main's older file (df6e9d5e, no `R2_COUNTERS`) that
+one test errors, as the original on P's path would. With P's branch merged it is 45 of 45 (checked here against the cloud tip's file).
 
 ## Running it in 8c (the order)
 
