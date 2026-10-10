@@ -1,0 +1,8 @@
+games: 1405 (default run), 1405 (walk run); gate_R > 0 in 1126; probe errors 0
+1. PLAN's test as written, free = true exactly where gate_R > 0: {'gate_R>0, free=true': 540, 'gate_R=0, free=false': 279, 'gate_R>0, free=false': 586}
+2. the default probe, a pure queued frame at any ply (PURE_PLIES not empty) against gate_R > 0: {'gate_R>0, pure=True': 543, 'gate_R=0, pure=False': 279, 'gate_R>0, pure=False': 583}
+3. the walk run, R's gate frame found (GATE_PLIES not empty) against gate_R > 0: {'gate_R>0, gate=True': 1126, 'gate_R=0, gate=False': 279}
+walk run's queued and free equal to the default run's: 1405 of 1405
+walk run, first gate ply: [(1, 98), (2, 671), (3, 357)]
+walk run, retried at 600,000 nodes: [('8', 'k3', '12', '69'), ('8', 'km3', '12', '69')]
+walk run, stopped at the node limit (having found something): [(('8', 'k3', '12', '96'), '0', '-'), (('8', 'k3', '12', '177'), '0', '-'), (('8', 'km3', '12', '148'), '4', '3')]

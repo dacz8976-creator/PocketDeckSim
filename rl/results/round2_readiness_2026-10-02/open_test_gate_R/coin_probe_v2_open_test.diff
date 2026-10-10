@@ -1,0 +1,45 @@
+--- probe_57c.rs	2026-10-10 01:04:31.917211508 +0000
++++ coin_probe_v2.rs	2026-10-10 01:23:07.644040269 +0000
+@@ -144,6 +144,7 @@
+     /// The plies at which a QUEUED state was found whose frame is pure (every offered move is an ApplyQueuedAttackDamage or a
+     /// ChooseRandomEvolutionTarget), which the bots resolve at once, without spending a ply.
+     pure_plies: std::collections::BTreeSet<usize>,
++    gate_plies: std::collections::BTreeSet<usize>,
+     nodes: usize,
+     truncated: bool,
+ }
+@@ -242,6 +243,14 @@
+         return;
+     }
+     let pure = pure_queued_frame(&actions);
++    // Open test (scratch): R's PGGATE, a pure queued frame of any mover with a coin Pokemon of either side among its targets.
++    if pure && actions.iter().any(|a| match &a.action {
++        SimpleAction::ApplyQueuedAttackDamage { targets, .. } =>
++            targets.iter().any(|(_, is_opp, i)| is_coin(state, if *is_opp { 1 - mover } else { mover }, *i)),
++        _ => false,
++    }) {
++        found.gate_plies.insert(plies);
++    }
+     // QUEUED: the actor's frame offers a queued coin-path choice, after `plies` plies.
+     if mover == actor {
+         let queued: Vec<&Action> = actions.iter().filter(|a| is_queued_coin(state, actor, a)).collect();
+@@ -262,7 +271,9 @@
+                     }
+                 }
+             }
+-            return;
++            if std::env::var_os("GATE_WALK").is_none() {
++                return;
++            }
+         }
+     }
+     let step = |a: &Action, next_plies: usize, label: String, path: &mut Vec<String>, found: &mut Found| {
+@@ -309,6 +320,8 @@
+ /// Prints the result and returns the shortest ply of each condition, if any.
+ fn report(found: &Found, label: &str) -> Least {
+     let mut least = Least { queued: None, cut: None, queued_free: false };
++    println!("{label}PURE_PLIES {:?}", found.pure_plies);
++    println!("{label}GATE_PLIES {:?}", found.gate_plies);
+     for (kind, by_ply) in &found.by_kind {
+         let ply = *by_ply.keys().next().unwrap();
+         match *kind {
