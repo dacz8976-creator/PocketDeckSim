@@ -53,7 +53,15 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
        31616338 in full, engine tree 639d2f80, "TOTAL: 2102 passed, 0 failed". The runner's suite check passes on it.
      - Magnezone card check: not done before; done now, PASS, 15 of 15, no games.
        `MAGNEZONE_CARD_CHECK=232622de:rl/results/engine_switch_rules2_2026-10/card_check_magnezone_2026-10-10/README.md`.
-   - **Now:** idle.
+   - **F1 (reader one's EQUIVALENCE F1): fixed, tests first. The new P is c7a25df4** (engine tree 70652fff), pushed to
+     `claude/coin-prevention-round2` (tip fc6307c0). G2's queued-hit promotion arm now also floors the promotion when the hit's
+     own attacker left the Active Spot, as the `ApplyDamage` arm does (the laptop's form).
+     - Test: Mew ex copies Double-Punching Family, and Rocky Helmet Knocks it Out before the second punch. Before the fix (f601abcb)
+       it failed with switches on (the punch came before the promotion); after, both settings give 120 damage.
+     - Suite at the new P: 2,103 passed, 0 failed.
+       `SUITE_AT_P=fc6307c0:rl/results/coin_prevention_round2_2026-10-01/f1_promotion/suite_at_P.txt`.
+     - `engine_commits.tsv` (on this branch, against main's): two rows added (f601abcb tests, c7a25df4 src), now 26.
+   - **Now:** PLAN item (a)'s open test (free exactly where gate_R > 0, the 1,126 games).
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
    63c28e6e. Read "Oct 9" in that branch's `rl/results/coin_prevention_round2_2026-10-01/README.md`, section 3's end in
