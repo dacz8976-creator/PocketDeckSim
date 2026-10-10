@@ -44,6 +44,23 @@
 >   5. **Step 8b** is 2,800 games, with brew-07/09 v t-altaria on the 23,100,000,000 block. The laptop's rows must equal the
 >      cloud's.
 >   6. **ALLOW_DAYTIME=auto**: Dustin's word covers Saturday and Sunday, and Monday's school-morning rule still applies.
+> - **Oct 10: the final P is c7a25df4** (engine tree 70652fff). It is 31616338 plus the F1 fix: the cloud's f601abcb tests
+>   first, then c7a25df4. G2's queued-hit promotion arm now also floors the promotion when the hit's own attacker has left the
+>   Active Spot, the case reader one found. I re-read the hunk: it matches the `ApplyDamage` arm, and with G2 off nothing changes.
+>   The suite at P passes 2,103 with 0 failed (fc6307c0). The c-magnezone card check passes 15 of 15 (232622de).
+>   `trace_load.txt` gives the cloud's TRACE LOAD 0 (19a20e1a). Every data file is final except `allowed_engine_files.tsv`,
+>   whose marker waits for reader two's file mapping (decision 3 above).
+> - **Precondition (a)'s open test is closed** (the laptop session's reading, Oct 10; the cloud's 43ccdd1d,
+>   `round2_readiness_2026-10-02/open_test_gate_R/`). As worded, "free exactly where gate_R > 0" holds in 540 of 1,126 games. The
+>   two sides measure different things:
+>   - the probe's `free` asks whether the *shortest* queued coin path is pure;
+>   - R's gate counts *any* pure queued coin-target frame in the search.
+>
+>   When the probe walks past queued frames and uses R's own frame definition, it finds the gate in 1,126 of 1,126 games and in
+>   none of the 279 controls. Its `queued` and `free` verdicts are unchanged in all 1,405 games. The test checks that the probe
+>   sees what the bots' search sees, and the refined reading shows exactly that. 8c's look-ahead verdict uses `queued`
+>   (with the code gate and the revert check), never `free`. So the as-worded miss changes no verdict, and no judgment call
+>   goes to Dustin. The official probe stays as pinned in `tools_8c.tsv`.
 > - **Shot List (Dustin's cleanup, Oct 9):** rows 23-33 came off the list. The four Cursed Jewel readings (rows 30-33) now rest on the
 >   card text and their tests alone; the hit-back sub-cases stay in `P2_EVIDENCE_sonnet.md`. One row is kept: the hit-back against
 >   Heavy Helmet (was row 22, now the list's only row). The old rows are in `rules/_research_notes/shot_list_archive_2026-10-09.json`.

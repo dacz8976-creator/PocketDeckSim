@@ -1,4 +1,4 @@
-# TO FINALIZE WHEN P LANDS. As of 31616338 (also the tip 056158c3): git log --format=%H 8626a35..<P> -- engine/ (24), oldest first.
+# Final (Oct 10, the laptop session; rows from the cloud's ddbc88e6). As of c7a25df4 (the F1 fix, Oct 10; before it 31616338): git log --format=%H 8626a35..<P> -- engine/ (26), oldest first.
 # kind: tests = touches only engine/tests/ under engine/ (each such file in allowed_engine_files.tsv); src = touches engine/src/;
 # merge = two parents. No non-merge commit touches anything outside engine/ and rl/results/. The runners check each kind.
 commit	kind	subject
@@ -26,3 +26,5 @@ b8a8621a8ea52facaa817e04903912618ed284de	src	P1: Gholdengo's caveat says the agr
 b0dc48443fe6d009d8adb44f7b40d2ff9d565b32	src	Bounded Field doubles the hit back's Weakness (x2), unless the holder is a Mega ex: the plain reading replaces P2's +20
 ade211508ea7907dd35a18a7ebffb2422ccb7279	tests	Switch 2 (e): tests first for the revert switches, one per gate (28 tests and with_round2's)
 316163384641dfba546e22e967cf1be8f0a80d5e	src	Switch 2 (e): one revert switch per gate of the round-2 package (G1-G11), as P2's
+f601abcb8b218c87b353daa634544c6ba4f4369f	tests	Switch 2, F1: tests first, a copied second punch must wait for the copier's promotion after Rocky Helmet (fails with G2 on; passes off)
+c7a25df49e0b4acdc61f8b78f2cab599d86f5c76	src	Switch 2, F1: G2's queued-hit promotion arm also floors the promotion when the hit's own attacker left the Active Spot (a copied second punch after Rocky Helmet); no panic
