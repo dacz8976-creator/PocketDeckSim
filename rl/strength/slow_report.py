@@ -3,6 +3,7 @@
 
   slow_report.py DECKFILE [--deals N] [--no-paired] [--threads T]    register, run and report on one deck
   slow_report.py --dir RUNDIR [--report-only | --dry-run]            resume a registered run, or just rewrite its page, or say where it stands
+  slow_report.py --selfcheck-only --program PATH                     replay both self-checks of a rebuilt program (a game at a time, resumable) and write their record
 
 DECKFILE is a deck file inside the repository (`Energy: <Type>` and one `N Name SET NNN` line per card). The deck is played by kx3 against the 8
 public panel lists played by km3, N deals (default 5) x 2 seats per opponent, so 16 x N kx3 games; the frozen program also plays km3 on the deck
@@ -20,6 +21,14 @@ What it keeps (the plan):
     environment (the list registered with the run is the one used), and the log says which were removed;
   * the school-morning rule (rl/RUN5.md, Oct 4): on school days no new game after 5:15 am, a program still running at 6:30 am is stopped (the game it was
     in replays), and the run resumes from 5 pm; weekends are free. Committing and pushing the result is the runner's job: this script never touches git.
+
+The self-check replay of a rebuilt program (--program PATH; hours for kx3 if it is one run of 12 games) is played a game at a time: `strength selfcheck --games 1 --seed-base 24900000000+i`,
+each game kept as it ends in <out-root>/.selfcheck_state/ (a run's own .selfcheck_state when a resume replays it; a .gitignore of `*` inside), keyed by the program's sha256, the pilot, the seed,
+the whole command and the two deck files, so that a restart goes on from the next game. A game alone prints the digest of its own string, which is recovered (the one outcome and points whose
+FNV-1a equals it) and the twelve are chained into the 12-game line, which must equal the committed pin's text character for character; a game that cannot be taken apart again falls back to
+the 12-game replay (--whole-selfcheck asks for it), and a line that differs is refused, as before. A successful replay of a rebuilt program writes a record, rl/results/slow_report_selfcheck_records/
+selfcheck_<sha12>_<time>.json (program path and sha256, both texts, the checkout's commit, the time, the host and boot id), for the runner to commit: a registration of a program with that very sha256, from
+a checkout whose HEAD has the record unedited and with the pin's two texts, replays nothing and names the record (--selfcheck replays regardless).
 
 One wrapper per run directory (a kernel lock, flock, that the program inherits, so it holds even if the wrapper is killed outright while the program plays on);
 a SIGTERM or SIGHUP stops the program before the wrapper exits, except a SIGHUP that was ignored at launch (`nohup`), which stays ignored. Pure standard
@@ -664,13 +673,22 @@ def headline_of(pin, deck_name):
 
 def build_config(*, pin, pin_path, deck_rel, deck_name, deck_sha, deck_state, deals, paired, seed_base, threads, program_sha, selfcheck_given='pin', selfcheck_how='pin',
                  resume_command=None, program=None, route='pinned', harness_checkout=None, school_rule='on', school_days=DEFAULT_SCHOOL_DAYS, pin_state=None, build_record=None,
-                 registered_on=None):
+                 registered_on=None, selfcheck_record=None):
+    """`selfcheck_record` (committed_selfcheck_record's answer) says the texts in `selfcheck_given` were not replayed for this registration but accepted from a committed record of an earlier
+    replay; strength_prereg.py is still told they are 'replayed' (the only way it takes a rebuild's texts), and the record is named here: in the engine text, the summary and two entries of the
+    slow_report block (selfcheck_how 'record <path> <commit>', selfcheck_record)."""
     headline = headline_of(pin, deck_name)
     rec = build_record or {}
+    digests = pin_digests((pin_state or {}).get('state'))
+    how_checked = (f"were replayed on the registering machine and equal {digests}" if not selfcheck_record else
+                   f"equal {digests}: replayed by slow_report.py on {selfcheck_record.get('host') or 'a machine not recorded'} and recorded in {selfcheck_record['path']} "
+                   f"(commit {selfcheck_record['commit'][:12]}), for a program with this same sha256; the record is a committed file, not signed, and this registration did not replay them again. "
+                   "Where this document, manifest.json (selfcheck_source) and REPORT.md say \"replayed by slow_report.py on the registering machine just before registration\" (strength_prereg.py's "
+                   "fixed wording for a rebuild), that means the earlier replay named here, not a replay at this registration")
     engine = pin['engine'] + (f"; THIS PROGRAM ({(program or pin['program'])}, sha256 {program_sha[:12]}) is NOT the pinned binary: its build record (written by rl/strength/build.sh, not signed) "
                               f"says it is a rebuild of that source (build record sha256 {str(rec.get('record_sha256'))[:12]}: engine tree as archived {str(rec.get('engine_tree_archived'))[:12]}, harness source "
-                              f"{str(rec.get('harness_source_sha256'))[:12]}, {rustc_line(rec, 'toolchain not recorded')}), accepted because both self-checks were "
-                              f"replayed on the registering machine and equal {pin_digests((pin_state or {}).get('state'))}" if route == 'rebuilt' else '')
+                              f"{str(rec.get('harness_source_sha256'))[:12]}, {rustc_line(rec, 'toolchain not recorded')}), accepted because both self-checks "
+                              f"{how_checked}" if route == 'rebuilt' else '')
     et = expected_time(deals, pin)
     pilot, ref = pin['pilot'], pin['reference']
     baseline = (f'and how much better {pilot} plays this deck than {ref} on the same deals' if paired else
@@ -685,7 +703,9 @@ def build_config(*, pin, pin_path, deck_rel, deck_name, deck_sha, deck_state, de
         pilot=pilot, reference=ref, stage='use',
         deck_files=[deck_rel], opponent_groups=[pin['panel_group']], deals=deals, seats=[0, 1], seed_base=seed_base, pair_stride=PAIR_STRIDE, threads=threads, log_level='deck',
         program=program or pin['program'], program_sha256=program_sha, engine=engine, pilot_provenance=pin['pilot_provenance'], reference_provenance=pin['reference_provenance'],
-        slow_report=dict(version=1, headline=headline, summary=f'Stage use. {plural(deals, "deal")} x 2 seats against each of the eight public lists. No pass or fail line; not development evidence.',
+        slow_report=dict(version=1, headline=headline, summary=f'Stage use. {plural(deals, "deal")} x 2 seats against each of the eight public lists. No pass or fail line; not development evidence.'
+                         + (f" Self-check: accepted from the committed record {selfcheck_record['path']} (commit {selfcheck_record['commit'][:12]}), not replayed at registration."
+                            if selfcheck_record else ''),
                          deck_name=deck_name, deck_file=deck_rel, deck_file_sha256=deck_sha, deck_file_state=deck_state, deals=deals, paired=bool(paired),
                          pin=dict(path=os.path.relpath(pin_path, ROOT).replace(os.sep, '/') if os.path.abspath(pin_path).startswith(ROOT + os.sep) else pin_path, sha256=sha(pin_path)),
                          pilot_label=pin['pilot_label'], reference_label=pin['reference_label'], panel_label=pin['panel_label'],
@@ -705,6 +725,9 @@ def build_config(*, pin, pin_path, deck_rel, deck_name, deck_sha, deck_state, de
         cfg['selfcheck_given'] = dict(selfcheck_given)
         cfg['selfcheck_given_program_sha256'] = program_sha  # measured just now, on this program
         cfg['selfcheck_how'] = selfcheck_how
+    if selfcheck_record:
+        cfg['slow_report']['selfcheck_how'] = f"record {selfcheck_record['path']} {selfcheck_record['commit']}"
+        cfg['slow_report']['selfcheck_record'] = dict(selfcheck_record)
     return cfg
 
 
@@ -712,14 +735,13 @@ def run_prereg(cfg_path, rundir, repo):
     return subprocess.run([sys.executable, '-B', PREREG, '--config', cfg_path, '--out', rundir, '--repo', repo], capture_output=True, text=True)
 
 
-def run_selfcheck(pin, repo, spec, say, deadline=None, now=None):
-    """Replay the 12 fixed self-check games on the program (pin['program'], which the caller sets to the rebuilt copy's path on the --program route) in a scrubbed
-    environment at low priority, and refuse on any difference from the committed pin's digest. The program runs in its own process group, which is stopped if this
-    wrapper is interrupted or if `deadline` (the school-morning 6:30 cut) comes first."""
-    reg = load_json(os.path.join(HERE, 'decks.json'))['decks']
-    env, _ = scrub_env(dict(os.environ), pin['scrub_env_prefixes'])
-    say(f'self-check of {spec}: 12 fixed games on {pin["program"]} (this takes a while for kx3; run it when the machine is free)')
-    cmd = nice_prefix() + [pin['program'], 'selfcheck', '--root', repo, '--pilot', spec, '--deck-a', reg['t-altaria'], '--deck-b', reg['t-suicune'], '--games', '12']
+class SelfcheckLate(Exception):
+    """The school-morning cut came before a self-check program ended; the program has been stopped."""
+
+
+def run_held(cmd, env, deadline, now):
+    """Run one self-check program to its end in its own process group and return (exit code, stdout, stderr). The group is stopped if this wrapper is interrupted, and if `deadline`
+    (the school-morning 6:30 cut) comes first, which raises SelfcheckLate."""
     # the stop signals are held while the program is started (a replay is hours for kx3): a SIGTERM that comes between the start of the program and the try that stops it must not leave it running
     held = signal.pthread_sigmask(signal.SIG_BLOCK, ())
     proc = None
@@ -740,8 +762,7 @@ def run_selfcheck(pin, repo, spec, say, deadline=None, now=None):
         out, err = proc.communicate(timeout=timeout)
     except subprocess.TimeoutExpired:
         stop_group(proc)
-        die(f'REFUSED: the self-check of {spec} did not finish before the school-morning cut at {deadline.astimezone(chicago()).strftime("%a %H:%M")} Chicago time; nothing was written. '
-            'Start it earlier in the evening or on a weekend (or with --school-rule off).')
+        raise SelfcheckLate() from None
     except BaseException:
         stop_group(proc)
         raise
@@ -749,14 +770,360 @@ def run_selfcheck(pin, repo, spec, say, deadline=None, now=None):
         for pipe in (proc.stdout, proc.stderr):
             if pipe:
                 pipe.close()
+    return proc.returncode, out, err
+
+
+# ------------------------------------------------------------------------------------------------------------------ the self-check, a game at a time
+# rl/strength/src/main.rs `selfcheck --games N --seed-base B` plays game i with seed B + i (B defaults to 24_900_000_000) and chains FNV-1a 64 (basis 0xcbf29ce484222325) over one string
+# per game, "{seed}|{outcome:?}|{points:?}|{turn count}", printing `selfcheck pilot=P games=N seat0_wins=A seat1_wins=B ties=T turns=S digest=H` (a tie and a game without a
+# result both count as a tie). A game played alone prints the digest of its own string, so the string can be recovered from that line, and twelve of them chained are the 12-game line.
+SELFCHECK_GAMES = 12
+SELFCHECK_SEED_BASE = 24_900_000_000
+SELFCHECK_FNV_BASIS = 0xcbf29ce484222325
+SELFCHECK_FNV_PRIME = 0x100000001b3
+SELFCHECK_MAX_POINTS = 20  # a game's two point totals are looked for from 0 to this
+SELFCHECK_LINE = re.compile(r'selfcheck pilot=(\S+) games=(\d+) seat0_wins=(\d+) seat1_wins=(\d+) ties=(\d+) turns=(\d+) digest=([0-9a-f]{16})')
+STATE_DIR_NAME = '.selfcheck_state'
+CHECKPOINT_VERSION = 1
+
+
+def fnv1a(h, data):
+    """FNV-1a 64 of `data` (bytes), continuing from the hash `h` (the harness's `fnv`)."""
+    for b in data:
+        h ^= b
+        h = (h * SELFCHECK_FNV_PRIME) & 0xFFFFFFFFFFFFFFFF
+    return h
+
+
+def parse_selfcheck_line(text):
+    """The parts of a self-check line, or None when `text` is not exactly one."""
+    m = SELFCHECK_LINE.fullmatch(text) if isinstance(text, str) else None
+    if not m:
+        return None
+    pilot, games, w0, w1, ties, turns, digest = m.groups()
+    return dict(pilot=pilot, games=int(games), seat0_wins=int(w0), seat1_wins=int(w1), ties=int(ties), turns=int(turns), digest=int(digest, 16))
+
+
+def recover_game_string(seed, text):
+    """(game, None) for the line a single self-check game printed, or (None, why). The game is the string the harness hashed for it ('{seed}|{outcome}|[{a}, {b}]|{turns}'), found as
+    the one candidate (outcome, points) whose FNV-1a equals the printed digest, with the counts and the pilot as printed. No candidate, or more than one, is no answer: the caller then
+    replays the 12 games in one run."""
+    p = parse_selfcheck_line(text)
+    if p is None:
+        return None, 'its output is not one self-check line'
+    if p['games'] != 1:
+        return None, f"its output is for {p['games']} games, not one"
+    counts = (p['seat0_wins'], p['seat1_wins'], p['ties'])
+    outcomes = {(1, 0, 0): ['Some(Win(0))'], (0, 1, 0): ['Some(Win(1))'], (0, 0, 1): ['Some(Tie)', 'None']}.get(counts)
+    if outcomes is None:
+        return None, 'its counts are not those of one game'
+    if p['turns'] > 255:
+        return None, 'its turn count does not fit the harness\'s one byte'
+    found = [s for s in (f"{seed}|{out}|[{a}, {b}]|{p['turns']}" for out in outcomes for a in range(SELFCHECK_MAX_POINTS + 1) for b in range(SELFCHECK_MAX_POINTS + 1))
+             if fnv1a(SELFCHECK_FNV_BASIS, s.encode()) == p['digest']]
+    if not found:
+        return None, f'no (outcome, points) up to {SELFCHECK_MAX_POINTS} points makes its digest'
+    if len(found) > 1:
+        return None, 'more than one (outcome, points) makes its digest'
+    return dict(string=found[0], pilot=p['pilot'], seat0_wins=counts[0], seat1_wins=counts[1], ties=counts[2], turns=p['turns']), None
+
+
+def chain_selfcheck_line(pilot, games):
+    """The line the harness prints for these games (as recover_game_string gives them, in order) played in one run."""
+    h = SELFCHECK_FNV_BASIS
+    for g in games:
+        h = fnv1a(h, g['string'].encode())
+    return (f"selfcheck pilot={pilot} games={len(games)} seat0_wins={sum(g['seat0_wins'] for g in games)} seat1_wins={sum(g['seat1_wins'] for g in games)} "
+            f"ties={sum(g['ties'] for g in games)} turns={sum(g['turns'] for g in games)} digest={h:016x}")
+
+
+def write_atomic(path, data):
+    """Write `data` (bytes) to `path` so that the file is the old one or the whole new one, never half: a temporary file in the same folder, forced to disk, renamed over the target, and the
+    folder forced to disk."""
+    folder = os.path.dirname(path)
+    os.makedirs(folder, exist_ok=True)
+    tmp = f'{path}.tmp{os.getpid()}'
+    try:
+        with open(tmp, 'wb') as f:
+            f.write(data)
+            f.flush()
+            os.fsync(f.fileno())
+        os.replace(tmp, path)
+    except BaseException:
+        try:
+            os.remove(tmp)
+        except OSError:
+            pass
+        raise
+    try:
+        fd = os.open(folder, os.O_RDONLY)
+        try:
+            os.fsync(fd)
+        finally:
+            os.close(fd)
+    except OSError:
+        pass
+
+
+def ensure_state_dir(state_dir):
+    """The checkpoint folder, made on first use with a .gitignore of `*`: what is kept there is working state, never something a `git add` of the folder around it should pick up."""
+    os.makedirs(state_dir, exist_ok=True)
+    ignore = os.path.join(state_dir, '.gitignore')
+    if not os.path.exists(ignore):
+        write_atomic(ignore, b'*\n')
+
+
+def selfcheck_command(pin, repo, spec, deck_a, deck_b):
+    return [pin['program'], 'selfcheck', '--root', repo, '--pilot', spec, '--deck-a', deck_a, '--deck-b', deck_b]
+
+
+def checkpoint_name(spec, program_sha, i):
+    return f"{re.sub(r'[^A-Za-z0-9._-]', '_', spec)}_{program_sha[:16]}_{i:02d}.json"
+
+
+def load_checkpoint(path, key, seed, spec):
+    """The recovered game of a checkpoint file, or None: the file must be JSON, its key must equal `key` exactly (program sha256, pilot, game, seed, the whole command, the deck files), and its
+    output must make its own digest again (it is read afresh, the stored string is not trusted)."""
+    try:
+        data = load_json(path)
+    except (OSError, ValueError):
+        return None
+    if not isinstance(data, dict) or data.get('key') != key or not isinstance(data.get('output'), str):
+        return None
+    game, _why = recover_game_string(seed, data['output'])
+    return game if game is not None and game['pilot'] == spec else None
+
+
+def file_sha_or_none(path):
+    try:
+        return sha(path)
+    except OSError:
+        return None
+
+
+def selfcheck_per_game(pin, repo, spec, say, deadline, now, state_dir, env, deck_a, deck_b):
+    """The 12 self-check games one at a time (`--games 1 --seed-base 24900000000+i`), each kept in `state_dir` as it ends (a stop or a restart loses at most the game in flight), rebuilt into
+    the 12-game line. Returns the pin's text when the rebuilt line equals it, character for character; refuses when it does not (the 12-game replay would too: the games do not depend on each
+    other); returns None, after saying why, when a game's output cannot be taken apart again, and the caller replays the 12 games in one run."""
+    program = pin['program']
+    program_sha = sha(program)
+    deck_files = (os.path.join(repo, deck_a), os.path.join(repo, deck_b))
+    decks = tuple(file_sha_or_none(p) for p in deck_files)
+    base_cmd = selfcheck_command(pin, repo, spec, deck_a, deck_b)
+    games, kept = [], 0  # (`kept`: the games that are in the folder, taken from it or written to it; a write that fails is said and not counted)
+
+    def kept_note():
+        if kept == len(games):
+            return f'{kept} of the {SELFCHECK_GAMES} games are kept in {state_dir}, so starting it again goes on from game {kept + 1}'
+        return f'only {kept} of the {len(games)} games played could be kept in {state_dir}, so starting it again takes those and plays the others again'
+    for i in range(SELFCHECK_GAMES):
+        seed = SELFCHECK_SEED_BASE + i
+        command = base_cmd + ['--games', '1', '--seed-base', str(seed)]
+        key = dict(version=CHECKPOINT_VERSION, program_sha256=program_sha, spec=spec, game=i, games=SELFCHECK_GAMES, seed=seed, command=command, deck_a_sha256=decks[0], deck_b_sha256=decks[1])
+        path = os.path.join(state_dir, checkpoint_name(spec, program_sha, i))
+        game = load_checkpoint(path, key, seed, spec)
+        if game is not None:
+            say(f'self-check of {spec}: game {i + 1} of {SELFCHECK_GAMES} taken from the checkpoint ({os.path.basename(path)})')
+            games.append(game)
+            kept += 1
+            continue
+        started = time.monotonic()
+        try:
+            code, out, err = run_held(nice_prefix() + command, env, deadline, now)
+        except SelfcheckLate:
+            die(f'REFUSED: the self-check of {spec} did not finish before the school-morning cut at {deadline.astimezone(chicago()).strftime("%a %H:%M")} Chicago time; '
+                f'{kept_note()}. Nothing was registered. Start it earlier in the evening or on a weekend (or with --school-rule off).')
+        got = out.strip()
+        if code != 0:
+            die(f'REFUSED: the self-check of {spec} on {program} exited with code {code} ({(err.strip()[-200:] or got[-200:] or "no output")}); a self-check that fails is not a match, '
+                f'whatever it printed. Nothing was registered; {kept_note()}.')
+        # the key names the program and the decks by their sha256, read before the first game: a game is kept only when they are still what the key says (hours pass over the 12 games)
+        after = (file_sha_or_none(program),) + tuple(file_sha_or_none(p) for p in deck_files)
+        if after != (program_sha,) + decks:
+            die(f'REFUSED: the program at {program} or a self-check deck changed while game {i + 1} of the self-check of {spec} was played (sha256 of the program {program_sha[:12]} -> '
+                f'{after[0][:12] if after[0] else "gone"}): that game is not kept, because what it checked is not what the checkpoint would name. Nothing was registered; {kept_note()}.')
+        game, why = recover_game_string(seed, got)
+        if game is None or game['pilot'] != spec:
+            say(f'self-check of {spec}: game {i + 1}: {why or "its output names another pilot"}; the {SELFCHECK_GAMES} games are replayed in one run instead (not resumable)')
+            return None
+        games.append(game)
+        try:
+            ensure_state_dir(state_dir)
+            write_atomic(path, (json.dumps(dict(key=key, output=got, at=utc_iso(), host=socket.gethostname()), indent=1) + '\n').encode('utf-8'))
+            kept += 1
+        except OSError as e:
+            say(f'self-check of {spec}: game {i + 1} could not be kept in {state_dir} ({e.strerror or e}); the replay goes on, but a restart would play it again')
+        say(f'self-check of {spec}: game {i + 1} of {SELFCHECK_GAMES} played ({time.monotonic() - started:.0f} s)')
+    line = chain_selfcheck_line(spec, games)
+    if line != pin['selfcheck'][spec]:
+        die(f'REFUSED: the self-check of {spec} does not match the pin.\n  pinned: {pin["selfcheck"][spec]}\n  got:    {line}\n'
+            f'The program is not behaving as the pinned build did; nothing was registered. (Rebuilt from the {SELFCHECK_GAMES} games played one at a time, {kept} of them kept in {state_dir}; '
+            f'--whole-selfcheck replays all {SELFCHECK_GAMES} in one run, as before.)')
+    return line
+
+
+def selfcheck_whole(pin, spec, deadline, now, env, command):
+    """The 12 self-check games in one run of the program (hours for kx3, and lost if the run is): the text it printed, refused on any difference from the pin's."""
+    try:
+        code, out, err = run_held(nice_prefix() + command, env, deadline, now)
+    except SelfcheckLate:
+        die(f'REFUSED: the self-check of {spec} did not finish before the school-morning cut at {deadline.astimezone(chicago()).strftime("%a %H:%M")} Chicago time; nothing was written. '
+            'Start it earlier in the evening or on a weekend (or with --school-rule off).')
     got = out.strip()
-    if proc.returncode != 0:
-        die(f'REFUSED: the self-check of {spec} on {pin["program"]} exited with code {proc.returncode} ({(err.strip()[-200:] or got[-200:] or "no output")}); a self-check that fails is not a match, '
+    if code != 0:
+        die(f'REFUSED: the self-check of {spec} on {pin["program"]} exited with code {code} ({(err.strip()[-200:] or got[-200:] or "no output")}); a self-check that fails is not a match, '
             'whatever it printed. Nothing was written.')
     if got != pin['selfcheck'][spec]:
         die(f'REFUSED: the self-check of {spec} does not match the pin.\n  pinned: {pin["selfcheck"][spec]}\n  got:    {got[-300:] or err.strip()[-200:]}\n'
             'The program is not behaving as the pinned build did; nothing was written.')
     return got
+
+
+class ReplayPin(dict):
+    """The pin as a replay uses it: the pin's entries, with `program` set to the file to replay, and how the replay is played. `state_dir` is the folder where the games are kept as they end
+    (None: nothing is kept and the 12 games are one run), `whole` plays the 12 games in one run even so, and `routes` (a dict) is told which route each pilot's replay took. They ride on the
+    pin, so that run_selfcheck keeps its call (pin, repo, spec, say, deadline, now) and the tests that stand in for it by that call keep working."""
+    state_dir = None
+    whole = False
+    routes = None
+
+
+def run_selfcheck(pin, repo, spec, say, deadline=None, now=None):
+    """Replay the 12 fixed self-check games on the program (pin['program'], which the caller sets to the rebuilt copy's path on the --program route) in a scrubbed environment at low
+    priority, and refuse on any difference from the committed pin's text. The program runs in its own process group, which is stopped if this wrapper is interrupted or if `deadline` (the
+    school-morning 6:30 cut) comes first.
+
+    A pin that is a ReplayPin with a `state_dir` has the games played one at a time and kept as they end, so that a restart goes on from the next game (selfcheck_per_game); that needs the
+    pin's text for `spec` to be a 12-game line of that pilot. Any other pin, a ReplayPin with `whole`, or a game whose output cannot be taken apart again, has the 12 games run as one run
+    of the program (selfcheck_whole). The pin's `routes` (a dict) is told which was used, per pilot: 'per-game' or 'whole'."""
+    state_dir, whole, routes = getattr(pin, 'state_dir', None), getattr(pin, 'whole', False), getattr(pin, 'routes', None)
+    reg = load_json(os.path.join(HERE, 'decks.json'))['decks']
+    env, _ = scrub_env(dict(os.environ), pin['scrub_env_prefixes'])
+    say(f'self-check of {spec}: 12 fixed games on {pin["program"]} (this takes a while for kx3; run it when the machine is free)')
+    deck_a, deck_b = reg['t-altaria'], reg['t-suicune']
+    pinned = parse_selfcheck_line((pin.get('selfcheck') or {}).get(spec))
+    if state_dir and not whole and pinned is not None and pinned['games'] == SELFCHECK_GAMES and pinned['pilot'] == spec:
+        got = selfcheck_per_game(pin, repo, spec, say, deadline, now, state_dir, env, deck_a, deck_b)
+        if got is not None:
+            if routes is not None:
+                routes[spec] = 'per-game'
+            return got
+    if routes is not None:
+        routes[spec] = 'whole'
+    return selfcheck_whole(pin, spec, deadline, now, env, selfcheck_command(pin, repo, spec, deck_a, deck_b) + ['--games', str(SELFCHECK_GAMES)])
+
+
+# ------------------------------------------------------------------------------------------------------------------ the record of a replay
+RECORDS_REL = 'rl/results/slow_report_selfcheck_records'
+RECORD_KIND = 'slow_report_selfcheck_record'
+
+
+def read_boot_id():
+    try:
+        with open('/proc/sys/kernel/random/boot_id', encoding='utf-8') as f:
+            return f.read().strip() or None
+    except OSError:
+        return None
+
+
+def head_commit(repo):
+    """The commit at HEAD of `repo`, or None (not a git repository, no commit, no git)."""
+    try:
+        r = subprocess.run(['git', '-C', repo, 'rev-parse', 'HEAD'], capture_output=True, text=True, env=git_env())
+    except OSError:
+        return None
+    out = r.stdout.strip()
+    return out if r.returncode == 0 and re.fullmatch(r'[0-9a-f]{40}', out) else None
+
+
+def write_selfcheck_record(repo, program, program_sha, texts, routes, now):
+    """After a successful replay of the self-checks on `program`: the record file rl/results/slow_report_selfcheck_records/selfcheck_<sha12>_<time>.json (a new file every time) with the
+    program's path and sha256, both texts, the checkout's commit (the tool's), the time, the host and the boot id, and how each pilot was replayed. The runner commits it to its branch;
+    once committed, a registration of a program with this sha256 replays nothing (committed_selfcheck_record). Returns the path."""
+    t = now()
+    folder = os.path.join(repo, *RECORDS_REL.split('/'))
+    stamp = t.astimezone(UTC).strftime('%Y%m%dT%H%M%SZ')
+    path, n = os.path.join(folder, f'selfcheck_{program_sha[:12]}_{stamp}.json'), 1
+    while os.path.exists(path):
+        n += 1
+        path = os.path.join(folder, f'selfcheck_{program_sha[:12]}_{stamp}-{n}.json')
+    rec = dict(schema=1, kind=RECORD_KIND, program=program, program_sha256=program_sha, selfcheck=dict(texts), tool_commit=head_commit(repo), replayed_at=utc_iso(t),
+               host=socket.gethostname(), boot_id=read_boot_id(), routes=dict(routes))
+    write_atomic(path, (json.dumps(rec, indent=1, ensure_ascii=False) + '\n').encode('utf-8'))
+    return path
+
+
+def record_fits(rec, program_sha, pin_texts, specs):
+    """Whether a parsed record file says: schema 1, of this kind, made for a program with exactly this sha256, with both self-check texts (for `specs`) equal to the pin's."""
+    if not isinstance(rec, dict) or type(rec.get('schema')) is not int or rec['schema'] != 1 or rec.get('kind') != RECORD_KIND:
+        return False
+    if not isinstance(rec.get('program_sha256'), str) or rec['program_sha256'] != program_sha or not isinstance(rec.get('selfcheck'), dict):
+        return False
+    return all(isinstance(pin_texts.get(s), str) and rec['selfcheck'].get(s) == pin_texts[s] for s in specs)
+
+
+def commit_with_file(repo, rel, raw):
+    """The commit that last changed `rel` when HEAD of `repo` has the file with exactly the bytes `raw` (so it is committed and unedited), else None. Git is read with git_env()."""
+    try:
+        r = subprocess.run(['git', '-C', repo, 'cat-file', 'blob', f'HEAD:./{rel}'], capture_output=True, env=git_env())
+        if r.returncode != 0 or r.stdout != raw:
+            return None
+        log = subprocess.run(['git', '-C', repo, 'log', '-n', '1', '--format=%H', 'HEAD', '--', rel], capture_output=True, text=True, env=git_env())
+    except OSError:
+        return None
+    out = log.stdout.strip()
+    return out if log.returncode == 0 and re.fullmatch(r'[0-9a-f]{40}', out) else None
+
+
+def committed_selfcheck_record(repo, program_sha, pin, specs):
+    """The record to accept in place of replaying the self-checks: a COMMITTED file in rl/results/slow_report_selfcheck_records/ of `repo` (byte-equal to HEAD's), made for a program with
+    exactly this sha256 and carrying the pin's text for each of `specs`. Keyed by the sha256 alone: the path the program was at, or the build record beside it, play no part. Of several, the
+    latest replay. Returns {'path', 'commit', 'file_sha256', 'program_sha256', 'replayed_at', 'host', 'boot_id', 'tool_commit'} or None."""
+    folder = os.path.join(repo, *RECORDS_REL.split('/'))
+    try:
+        names = sorted(n for n in os.listdir(folder) if n.endswith('.json'))
+    except OSError:
+        return None
+    texts = pin.get('selfcheck') if isinstance(pin.get('selfcheck'), dict) else {}
+    best = None
+    for name in names:
+        rel = f'{RECORDS_REL}/{name}'
+        try:
+            with open(os.path.join(folder, name), 'rb') as f:
+                raw = f.read()
+            rec = json.loads(raw.decode('utf-8'))
+        except (OSError, ValueError):
+            continue
+        if not record_fits(rec, program_sha, texts, specs):
+            continue
+        commit = commit_with_file(repo, rel, raw)
+        if commit is None:
+            continue
+        when = rec.get('replayed_at') if isinstance(rec.get('replayed_at'), str) else ''
+        if best is None or (when, name) > best[0]:
+            best = ((when, name), dict(path=rel, commit=commit, file_sha256=hashlib.sha256(raw).hexdigest(), program_sha256=program_sha, replayed_at=rec.get('replayed_at'),
+                                       host=rec.get('host'), boot_id=rec.get('boot_id'), tool_commit=rec.get('tool_commit')))
+    return best[1] if best else None
+
+
+def keep_record(repo, program, program_sha, texts, routes, now, say):
+    """write_selfcheck_record for a replay that succeeded; a record that cannot be written is said, never fatal (the replay is what counts)."""
+    try:
+        path = write_selfcheck_record(repo, program, program_sha, texts, routes, now)
+    except OSError as e:
+        say(f'note: the record of this replay could not be written ({e.strerror or e}); a later registration of this program will replay the self-checks again')
+        return None
+    rel = os.path.relpath(path, repo).replace(os.sep, '/')
+    say(f'the replay is recorded in {rel}: commit that file to your branch, and a registration of this exact program (sha256 {program_sha[:12]}) from a checkout that has it replays nothing')
+    return rel
+
+
+def refuse_if_program_changed(program, expected_sha, nothing_done):
+    """After a replay (hours for kx3): what the self-checks checked must be what is there now. Refuses, with `nothing_done` as its last sentence, when `program` is gone or has another sha256."""
+    after = sha(program) if os.path.isfile(program) else None
+    if after != expected_sha:
+        die(f'REFUSED: the program at {program} changed while the self-checks were replayed (sha256 {expected_sha[:12]} -> {after[:12] if after else "gone"}): what they checked is not '
+            f'what is there now. {nothing_done}')
 
 
 def selfcheck_deadline(school_rule, school_days, now):
@@ -817,25 +1184,26 @@ def program_in_use_before(rundir, man):
     return cur
 
 
-def reverify_program(rundir, man, pin, pin_path, repo, say, school_rule, school_days, now):
+def reverify_program(rundir, man, pin, pin_path, repo, say, school_rule, school_days, now, whole=False):
     """A resume (a container restart) finds a program of another sha256 than the run was registered with. Only a run registered on the rebuilt route may go on, and only because
     (0) the pin in use is the pin it was registered under, (1) that pin is the committed one, (2) the program's build record (PROGRAM.build.json) has the pinned engine tree and harness
-    source, and (3) both self-checks are replayed again on it and equal the committed pin's digests. The change is logged as a 'program_changed' event (the page shows it); the
-    registration is not touched. Returns the new sha256."""
+    source, and (3) both self-checks are replayed again on it (a game at a time, kept in the run's .selfcheck_state, unless `whole`) and equal the committed pin's digests. The change is
+    logged as a 'program_changed' event (the page shows it); the registration is not touched. The replay is recorded (keep_record). Returns the new sha256."""
     prog = man['program']
     new = sha(prog)
     st, rec, deadline = check_program_change(man, pin, pin_path, repo, school_rule, school_days, now)
     say(f"the program at {prog} has sha256 {new[:12]}, not the {str(man.get('program_sha256'))[:12]} this run was registered with; its build record has the pinned engine tree and harness source, "
         f"so both self-checks are replayed again against {pin_digests(st['state'])} before the run goes on (hours for kx3)")
-    pin_run = dict(pin, program=prog)
-    texts = {spec: run_selfcheck(pin_run, repo, spec, say, deadline=deadline, now=now) for spec in sorted({man['pilot'], man['reference']})}
+    pin_run = ReplayPin(pin, program=prog)
+    routes = pin_run.routes = {}
+    pin_run.state_dir, pin_run.whole = os.path.join(rundir, STATE_DIR_NAME), whole
+    texts = {spec: run_selfcheck(pin_run, repo, spec, say, deadline=deadline, now=now)
+             for spec in sorted({man['pilot'], man['reference']})}
     # the replay took hours for kx3: what was checked must be what is there now (the program and its record are read again, as they were before the replay)
-    after = sha(prog) if os.path.isfile(prog) else None
-    if after != new:
-        die(f'REFUSED: the program at {prog} changed while the self-checks were replayed (sha256 {new[:12]} -> {after[:12] if after else "gone"}): what they checked is not what is there now. '
-            'Nothing was played.')
+    refuse_if_program_changed(prog, new, 'Nothing was played.')
     if not os.path.isfile(rec['record_file']) or sha(rec['record_file']) != rec['record_sha256']:
         die(f'REFUSED: the build record {rec["record_file"]} changed while the self-checks were replayed: what was checked is not what is there now. Nothing was played.')
+    keep_record(repo, prog, new, texts, routes, now, say)
     log_event(rundir, 'program_changed', old_sha256=program_in_use_before(rundir, man), new_sha256=new, manifest_sha256=manifest_sha256(rundir), build_record=rec, selfcheck=texts,
               pin_committed=st['state'], replayed_on=socket.gethostname())
     say(f"program changed mid-run, accepted: both self-checks equal {pin_digests(st['state'])}; logged as program_changed in slow_report_log.jsonl and shown on the page")
@@ -960,6 +1328,13 @@ def manifest_provenance_problems(man):
                                 f'but the registration names {str(sr.get("harness_source_sha256"))[:12]} as the pinned one')
     else:
         problems.append(f'the registration names no known program route ({route!r})')
+    how = sr.get('selfcheck_how')
+    if (isinstance(how, str) and how.startswith('record ')) or 'selfcheck_record' in sr:  # texts said to come from a committed record of a replay: it has to be a record for this very program
+        rec = sr.get('selfcheck_record')
+        if not isinstance(rec, dict):
+            problems.append('the registration says its self-checks were accepted from a record but carries none')
+        elif rec.get('program_sha256') != prog:
+            problems.append(f'the registration says its self-checks were accepted from a record for a program with sha256 {str(rec.get("program_sha256"))[:12]}, not the {str(prog)[:12]} of the run')
     return problems
 
 
@@ -1252,7 +1627,14 @@ SELFCHECK_HOW = (('given', 'copied from the pin, not replayed: the pin says it w
                  ('run by strength_prereg', 'replayed at registration'))
 
 
-def selfcheck_how(source, pin_state=None):
+def selfcheck_how(source, pin_state=None, record=None):
+    """How a self-check text came to be in the registration, for the page. `record` (the registration's selfcheck_record) says it was accepted from a committed record of an earlier replay, and
+    then the manifest's own source line ('replayed ... just before registration', which strength_prereg.py writes for every text it is told was replayed) is not what happened."""
+    if isinstance(record, dict) and record.get('path'):
+        text = (f"accepted from the committed record `{record['path']}` (commit {str(record.get('commit'))[:12]}): replayed there by slow_report.py on "
+                f"{record.get('host') or 'a machine not recorded'} at {record.get('replayed_at') or 'a time not recorded'} on a program with this sha256, equal to the committed pin; "
+                'the record is a committed file, not signed, and this registration did not replay them again')
+        return text if pin_state == 'yes' else text.replace('the committed pin', 'the pin file in use (NOT the committed pin: test use)')
     for prefix, text in SELFCHECK_HOW:
         if (source or '').startswith(prefix):
             return text if pin_state == 'yes' else text.replace('the committed pin', 'the pin file in use (NOT the committed pin: test use)')  # (a state that is missing is not "yes" either)
@@ -1408,8 +1790,11 @@ def write_slow_report(rundir, out=None, pin_check=None):
         P(f"- **What the registration says about the program does not hold**: {problem}. This page reports whatever program ran; it is not a report on the pinned build.")
     if sr.get('program_route') == 'rebuilt':
         host_ = f" ({sr['registered_on']})" if sr.get('registered_on') else ''
+        rr_ = sr.get('selfcheck_record') if isinstance(sr.get('selfcheck_record'), dict) else None
+        replayed_ = (f"were replayed earlier by slow_report.py (committed record `{rr_.get('path')}`, commit {str(rr_.get('commit'))[:12]}, on {rr_.get('host') or 'a machine not recorded'})" if rr_
+                     else f"were replayed on the registering machine{host_}")
         P(f"- The program is NOT the pinned binary (`{sr.get('pinned_program')}`, sha256 `{str(sr.get('pinned_program_sha256'))[:12]}`): its build record says it is a rebuild of the pinned source, and it was accepted only because "
-          f"that record has the pinned engine tree and harness source and both self-checks were replayed on the registering machine{host_} and equal {pin_digests(sr.get('pin_committed'))}, "
+          f"that record has the pinned engine tree and harness source and both self-checks {replayed_} and equal {pin_digests(sr.get('pin_committed'))}, "
           f"and the harness source in the checkout is the pinned build's. The record is written by the builder's own script and is not signed: what stands behind the program is those replayed self-checks "
           f"(12 fixed games per pilot), not the record.")
         rec_ = sr.get('build_record') or {}
@@ -1440,7 +1825,7 @@ def write_slow_report(rundir, out=None, pin_check=None):
               f"{plural(before, 'game')} of the {len(games)} played so far were started before this and {len(games) - before} after.")
             in_use = e['program_sha256']
     for spec, txt in (man.get('selfcheck') or {}).items():
-        P(f"- Self-check of `{spec}`: `{txt}` ({selfcheck_how((man.get('selfcheck_source') or {}).get(spec), sr.get('pin_committed'))})")
+        P(f"- Self-check of `{spec}`: `{txt}` ({selfcheck_how((man.get('selfcheck_source') or {}).get(spec), sr.get('pin_committed'), sr.get('selfcheck_record'))})")
     if man.get('engine'):
         P(f"- Build: {man['engine']}")
     if sr.get('harness_source_sha256'):
@@ -1504,6 +1889,48 @@ def main(argv=None, *, now=None, sleep=None, spawn=None, deck_check=None):
         raise
 
 
+def selfcheck_only(a, pin, repo, say, now):
+    """--selfcheck-only [--program PATH]: the replay of both self-checks on a rebuild of the pinned build, and nothing else is registered or played. Every checked thing a registration checks
+    first is checked here (the committed pin, the build record, the harness source), the games are played one at a time and kept (run_selfcheck with a state folder), and when both texts equal the
+    committed pin's the record of the replay is written for the runner to commit (keep_record): a registration of this exact program from a checkout that has the committed record then
+    replays nothing. The pinned binary has nothing to replay. A committed record of this program that is already there is said, and nothing is replayed unless --selfcheck is given."""
+    pin_state = require_committed_pin(repo, a.pin)
+    program_path = os.path.abspath(a.program) if a.program else None
+    route, program_sha = check_program(pin, program_path, repo)
+    pin_run = ReplayPin(pin, program=program_path or pin['program'])
+    if route == 'pinned':
+        say(f"{pin_run['program']} (sha256 {program_sha[:12]}) is the pinned binary: its self-check texts are the pin's, measured on exactly this file, so there is nothing to replay and no record "
+            'is needed (a registration with --selfcheck replays them anyway)')
+        return 0
+    build_rec = read_build_record(program_path, pin)
+    specs = sorted({pin['pilot'], pin['reference']})
+    school_rule = a.school_rule or 'on'
+    school_days = parse_days(a.school_days if a.school_days is not None else DEFAULT_SCHOOL_DAYS)
+    if school_rule == 'on' and school_days:
+        chicago()  # fail now, with the clear message, not hours in (NoTimeZoneDatabase becomes a REFUSED in main)
+    existing = None if a.selfcheck else committed_selfcheck_record(repo, program_sha, pin, specs)
+    if existing:
+        say(f"already recorded: the committed record `{existing['path']}` (commit {existing['commit'][:12]}) is for a program with this sha256 ({program_sha[:12]}) and has both self-check texts of "
+            f"{pin_digests(pin_state['state'])}, so a registration of {pin_run['program']} replays nothing; nothing was replayed here (--selfcheck replays anyway)")
+        return 0
+    say(f"program {pin_run['program']} (sha256 {program_sha[:12]}) is NOT the pinned binary (sha256 {pin['program_sha256'][:12]}): its build record "
+        f"({os.path.basename(build_rec['record_file'])}, sha256 {build_rec['record_sha256'][:12]}) says it is a rebuild of the pinned source; both self-checks "
+        + ('would be' if a.dry_run else 'will be') + f" replayed on this machine against {pin_digests(pin_state['state'])} (hours for kx3), a game at a time unless --whole-selfcheck, and "
+        f"recorded in {RECORDS_REL}/ when both equal it")
+    if a.dry_run:
+        say('dry run: nothing written')
+        return 0
+    deadline = selfcheck_deadline(school_rule, school_days, now)
+    out_root = os.path.abspath(a.out_root) if a.out_root else os.path.join(repo, 'rl', 'results', 'slow_reports')
+    routes = pin_run.routes = {}
+    pin_run.state_dir, pin_run.whole = os.path.join(out_root, STATE_DIR_NAME), a.whole_selfcheck
+    texts = {spec: run_selfcheck(pin_run, repo, spec, say, deadline=deadline, now=now)
+             for spec in specs}
+    refuse_if_program_changed(pin_run['program'], program_sha, 'Nothing was recorded.')
+    say(f"both self-checks equal {pin_digests(pin_state['state'])}")
+    return 0 if keep_record(repo, pin_run['program'], program_sha, texts, routes, now, say) else 1
+
+
 def _main(argv, ctx, *, now, sleep, spawn, deck_check):
     ap = argparse.ArgumentParser(description='The opt-in slow report: kx3 on one deck v km3 on the public panel (see the module docstring).')
     ap.add_argument('deckfile', nargs='?', help='a deck file inside the repository')
@@ -1516,10 +1943,18 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
     ap.add_argument('--out-root', help='where run directories go (default: <repo>/rl/results/slow_reports)')
     ap.add_argument('--date', help="YYYY-MM-DD for the run directory name (default: today in Chicago, or the UTC date on a machine without the time zone database)")
     ap.add_argument('--seed-base', type=int)
-    ap.add_argument('--selfcheck', action='store_true', help='replay the pinned self-check games instead of recording the pinned text (hours for kx3)')
+    ap.add_argument('--selfcheck', action='store_true', help='replay the pinned self-check games instead of recording the pinned text (hours for kx3), even when a committed record of the program has them')
     ap.add_argument('--program', help='a REBUILD of the pinned build made with rl/strength/build.sh (for example on the cloud), used instead of the pin\'s path; when its sha256 is not the pinned '
                                       'one it must have its build record (PROGRAM.build.json, written by build.sh) with the pinned engine tree and harness source, and both self-checks are '
-                                      'replayed on this machine and must equal the committed pin\'s digests (this forces --selfcheck)')
+                                      'replayed on this machine and must equal the committed pin\'s digests (this forces --selfcheck), unless a COMMITTED record of such a replay of a program '
+                                      f'with this very sha256 is in {RECORDS_REL}/ (written by --selfcheck-only, or by any replay): then they are not replayed again')
+    ap.add_argument('--selfcheck-only', action='store_true',
+                    help=f'replay both self-checks of --program PATH (a rebuild of the pinned build) and register nothing: a game at a time, kept as it ends (a restart goes on from the next game), and, '
+                         f'when both equal the committed pin, write their record in {RECORDS_REL}/ for the runner to commit; a registration of that exact program (sha256) from a checkout that has the '
+                         f'committed record then replays nothing. Takes no deck file and no --dir')
+    ap.add_argument('--whole-selfcheck', action='store_true',
+                    help='replay the 12 self-check games of each pilot in one run of the program, as before (not resumable), instead of a game at a time; a game that cannot be taken apart again '
+                         'falls back to this by itself. Says how, not whether: a committed record of the program is still taken (--selfcheck replays regardless)')
     ap.add_argument('--register-only', action='store_true')
     ap.add_argument('--report-only', action='store_true', help='with --dir: write the page from the games so far and play nothing')
     ap.add_argument('--dry-run', action='store_true', help='print the plan (or, with --dir, where the run stands); write nothing')
@@ -1539,13 +1974,17 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
     if a.school_days is not None:
         parse_days(a.school_days)  # refuse a bad day name before anything else
 
+    def say(msg):
+        print(f"[{ctx['tag']}] {msg}", flush=True)
+
+    if a.selfcheck_only:
+        if a.deckfile or a.dir or a.register_only or a.report_only:
+            die('--selfcheck-only replays the self-checks of a program and writes their record; it takes no deck file, no --dir and no --register-only or --report-only')
+        return selfcheck_only(a, pin, repo, say, now)
     if a.dir and a.deckfile:
         die('give a deck file or --dir, not both')
     if not a.dir and not a.deckfile:
         die('give a deck file to report on, or --dir RUNDIR to resume a registered run')
-
-    def say(msg):
-        print(f"[{ctx['tag']}] {msg}", flush=True)
 
     if a.dir:
         for flag, given in (('--deals', a.deals is not None), ('--no-paired', a.no_paired), ('--date', a.date is not None), ('--seed-base', a.seed_base is not None),
@@ -1578,7 +2017,7 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
         program_path = os.path.abspath(a.program) if a.program else None
         route, program_sha = check_program(pin, program_path, repo)
         build_rec = read_build_record(program_path, pin) if route == 'rebuilt' else None  # a rebuild must come with the record of what was archived and compiled
-        pin_run = dict(pin, program=program_path or pin['program'])  # the pin as this run uses it: the program's path may be a rebuilt copy's
+        pin_run = ReplayPin(pin, program=program_path or pin['program'])  # the pin as this run uses it: the program's path may be a rebuilt copy's
         harness_here = harness_source_sha256(repo)
         deck_abs = os.path.abspath(a.deckfile)
         name = deck_name_of(deck_abs)
@@ -1646,13 +2085,19 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
             say('school-morning rule: on, but with no school days set it never pauses the run')
         else:
             say('school-morning rule: OFF for this run (it never pauses for school mornings; the choice is recorded in the registration and carried by the resume command)')
-        replay = a.selfcheck or route == 'rebuilt'
+        specs = sorted({pin['pilot'], pin['reference']})
+        # a rebuild whose very sha256 has a COMMITTED record of both self-checks replayed, equal to the committed pin's texts, is not replayed again (--selfcheck replays regardless)
+        record = committed_selfcheck_record(repo, program_sha, pin, specs) if route == 'rebuilt' and not a.selfcheck else None
+        replay = (a.selfcheck or route == 'rebuilt') and record is None
         say(f"pin committed: {pin_state['state']} (rl/strength/slow_report_pin.json sha256 {pin_state['sha256'][:12]}" + ('; byte-equal to HEAD' if pin_state['state'] == 'yes' else f"; {pin_state['detail']}") + ')')
         if route == 'rebuilt':
+            checked = (f"both self-checks will be accepted from the committed record {record['path']} (commit {record['commit'][:12]}), made for a program with this sha256: nothing is replayed"
+                       if record else
+                       f"both self-checks will be replayed on this machine against {pin_digests(pin_state['state'])} before anything is registered (hours for kx3)")
             say(f"program {pin_run['program']} (sha256 {program_sha[:12]}) is NOT the pinned binary (sha256 {pin['program_sha256'][:12]}): its build record "
                 f"({os.path.basename(build_rec['record_file'])}, sha256 {build_rec['record_sha256'][:12]}) says it is a rebuild of the pinned source (engine tree as archived {build_rec['engine_tree_archived'][:12]}, "
-                f"harness source {build_rec['harness_source_sha256'][:12]}, built with {rustc_line(build_rec, 'an unrecorded toolchain')}); both self-checks will be replayed on this machine "
-                f"against {pin_digests(pin_state['state'])} before anything is registered (hours for kx3), and the checkout's harness source equals the pinned build's")
+                f"harness source {build_rec['harness_source_sha256'][:12]}, built with {rustc_line(build_rec, 'an unrecorded toolchain')}); {checked}, "
+                f"and the checkout's harness source equals the pinned build's")
         say(f"stage use (not development evidence; the held-out lock is untouched), seeds from {seed_base}, program {pin_run['program']} "
             f"({'pinned' if route == 'pinned' else 'rebuilt'}, sha256 {program_sha[:12]}), "
             f"{'without' if a.no_paired else 'with'} the comparison with {ref_} on the same deals in the page, no pass or fail line")
@@ -1660,9 +2105,20 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
             say('dry run: nothing written')
             return 0
         given, how = 'pin', 'pin'
-        if replay:
+        made_root = not os.path.exists(out_root)
+        if record:
+            given, how = {spec: pin['selfcheck'][spec] for spec in specs}, 'replayed'  # (strength_prereg.py takes a rebuild's texts only so; build_config names the record)
+            say(f"self-check: accepted from the committed record `{record['path']}` (commit {record['commit'][:12]}): replayed by slow_report.py on {record.get('host') or 'a machine not recorded'} "
+                f"at {record.get('replayed_at') or 'a time not recorded'} on a program with this sha256, and equal to {pin_digests(pin_state['state'])}; not replayed again")
+        elif replay:
             deadline = selfcheck_deadline(school_rule, school_days, now)
-            given, how = {spec: run_selfcheck(pin_run, repo, spec, say, deadline=deadline, now=now) for spec in sorted({pin['pilot'], pin['reference']})}, 'replayed'
+            routes = pin_run.routes = {}
+            pin_run.state_dir, pin_run.whole = os.path.join(out_root, STATE_DIR_NAME), a.whole_selfcheck
+            given, how = {spec: run_selfcheck(pin_run, repo, spec, say, deadline=deadline, now=now)
+                          for spec in specs}, 'replayed'
+            if route == 'rebuilt':
+                refuse_if_program_changed(pin_run['program'], program_sha, 'Nothing was recorded or registered.')  # (a record names the program by its sha256: it is written only for the bytes that were replayed)
+                keep_record(repo, pin_run['program'], program_sha, given, routes, now, say)
             if os.path.exists(rundir):  # hours may have passed: what was decided before the self-check is decided again
                 die(f'REFUSED: the run directory {rundir} appeared while the self-check ran; resume it with --dir {shlex.quote(rundir)} (or pick another --date)')
             again = pick_seed_base(dsha, out_root, tuple(pin['seed_block']), pin['seed_step'], a.seed_base, reserved)
@@ -1673,8 +2129,7 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
                            threads=threads, program_sha=program_sha, selfcheck_given=given, selfcheck_how=how,
                            resume_command=resume_command_for(rundir, school_rule, school_days_text), program=pin_run['program'], route=route,
                            harness_checkout=harness_here, school_rule=school_rule, school_days=school_days_text, pin_state=pin_state, build_record=build_rec,
-                           registered_on=socket.gethostname())
-        made_root = not os.path.exists(out_root)
+                           registered_on=socket.gethostname(), selfcheck_record=record)
 
         def cleanup():
             shutil.rmtree(rundir, ignore_errors=True)
@@ -1756,7 +2211,7 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
             lock = acquire_lock(rundir, say)
             try:
                 if program_only:
-                    accepted = set(accepted) | {reverify_program(rundir, man, pin, a.pin, repo, say, school_rule, school_days, now)}
+                    accepted = set(accepted) | {reverify_program(rundir, man, pin, a.pin, repo, say, school_rule, school_days, now, whole=a.whole_selfcheck)}
                     problems = verify_inputs(man, accepted)
                     if problems:
                         die('REFUSED: the files this run was registered with are not the ones on disk, so nothing is run:\n  ' + '\n  '.join(problems))

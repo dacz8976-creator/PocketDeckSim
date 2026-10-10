@@ -6011,5 +6011,1197 @@ class Arguments(World):
         self.assertEqual(ours, [], 'importing the script and its siblings must not write bytecode')
 
 
+# ---------------------------------------------------------------------------------------------------------- a self-check that can be resumed, and a record of one
+# A fake program that prints the REAL self-check line (rl/strength/src/main.rs `selfcheck`): `selfcheck pilot=P games=N seat0_wins=A seat1_wins=B ties=T turns=S digest=H`, where H is
+# FNV-1a 64 (basis 0xcbf29ce484222325, prime 0x100000001b3) chained over one string per game, "{seed}|{outcome:?}|{points:?}|{turns}", seed = --seed-base (default 24900000000) + the game's
+# number, outcome `Some(Win(0))`, `Some(Win(1))`, `Some(Tie)` or `None` (a tie counts the same as no result), points `[a, b]`. Its games depend only on the seed and the pilot, as the real
+# ones do. selfcheck_flags.json beside it (written by a test) makes it hang at one seed ("slow"), crash there ("crash"), play that one game differently ("wrong"), print that one game
+# in a way that cannot be taken apart again when played alone ("garble"), or name another pilot in the line of that one game when played alone ("otherpilot"). selfcheck_calls.jsonl
+# beside it lists what it was called with.
+REAL_SELFCHECK_BRANCH = r'''if cmd == 'selfcheck':
+    BASIS, PRIME, MASK = 0xcbf29ce484222325, 0x100000001b3, (1 << 64) - 1
+    OUTS = ['Some(Win(0))', 'Some(Win(1))', 'Some(Win(0))', 'Some(Tie)', 'None', 'Some(Win(1))', 'Some(Win(0))']
+
+    def fnv(h, data):
+        for b in data:
+            h ^= b
+            h = (h * PRIME) & MASK
+        return h
+
+    def play(seed, pilot):
+        x = ((seed + sum(map(ord, pilot))) * 6364136223846793005 + 1442695040888963407) & MASK
+        out = OUTS[(x >> 20) % len(OUTS)]
+        lo, hi = (x >> 30) % 3, 3 + (x >> 34) % 3
+        points = [hi, lo] if out == 'Some(Win(0))' else [lo, hi] if out == 'Some(Win(1))' else [lo, lo]
+        return out, points, 4 + (x >> 40) % 40
+    flags = {}
+    if os.path.exists(os.path.join(here, 'selfcheck_flags.json')):
+        flags = json.load(open(os.path.join(here, 'selfcheck_flags.json')))
+    pilot, n = arg('--pilot', 'km3'), int(arg('--games', '20'))
+    base = int(arg('--seed-base', '24900000000'))
+    with open(os.path.join(here, 'selfcheck_calls.jsonl'), 'a') as f:
+        f.write(json.dumps({'argv': sys.argv[1:], 'pid': os.getpid()}) + '\n')
+    with open(os.path.join(here, 'selfcheck_env.json'), 'w') as f:
+        json.dump(envrec, f)
+    h, w0, w1, ties, turns = BASIS, 0, 0, 0, 0
+    for i in range(n):
+        seed = base + i
+        if flags.get('slow') == seed:
+            time.sleep(3600)
+        if flags.get('crash') == seed:
+            sys.stderr.write('boom: engine panicked\n')
+            sys.exit(101)
+        out, points, t = play(seed, pilot)
+        if flags.get('wrong') == seed:
+            t += 1
+        if flags.get('garble') == seed and n == 1:
+            points = [30, 30]
+        if out == 'Some(Win(0))':
+            w0 += 1
+        elif out == 'Some(Win(1))':
+            w1 += 1
+        else:
+            ties += 1
+        turns += t
+        h = fnv(h, ('%d|%s|[%d, %d]|%d' % (seed, out, points[0], points[1], t)).encode())
+    if flags.get('otherpilot') == base and n == 1:
+        pilot = 'km3' if pilot != 'km3' else 'kx3'  # (the game was played for the pilot asked for; the line names another)
+    print('selfcheck pilot=%s games=%d seat0_wins=%d seat1_wins=%d ties=%d turns=%d digest=%016x' % (pilot, n, w0, w1, ties, turns, h))
+    sys.exit(0)
+'''
+FAKE_SELFCHECK_BRANCH = ("if cmd == 'selfcheck':\n"
+                         "    with open(os.path.join(here, 'selfcheck_env.json'), 'w') as f:\n"
+                         "        json.dump(envrec, f)\n"
+                         "    print('selfcheck pilot=%s games=12 digest=fakefakefakefake' % arg('--pilot'))\n"
+                         "    sys.exit(0)\n")
+REAL_FORMAT_PROGRAM = FAKE_PROGRAM.replace(FAKE_SELFCHECK_BRANCH, REAL_SELFCHECK_BRANCH)  # (the game-playing part is the fake program's)
+RECORDS_DIR = 'rl/results/slow_report_selfcheck_records'
+GAME0 = 24_900_000_000
+SAMPLE = {  # recorded once from the program above: the 12-game line, then the 12 lines of the games played one at a time (seeds 24900000000 + 0..11)
+    'km3': ('selfcheck pilot=km3 games=12 seat0_wins=3 seat1_wins=6 ties=3 turns=318 digest=b4d0466101b5b0c6',
+            [
+             'selfcheck pilot=km3 games=1 seat0_wins=0 seat1_wins=1 ties=0 turns=24 digest=deb0c596185fb1fa',
+             'selfcheck pilot=km3 games=1 seat0_wins=1 seat1_wins=0 ties=0 turns=12 digest=1bd5e64cfca894f0',
+             'selfcheck pilot=km3 games=1 seat0_wins=1 seat1_wins=0 ties=0 turns=25 digest=13f193c56132a4d2',
+             'selfcheck pilot=km3 games=1 seat0_wins=0 seat1_wins=0 ties=1 turns=13 digest=80110ffb8f4d5476',
+             'selfcheck pilot=km3 games=1 seat0_wins=0 seat1_wins=1 ties=0 turns=41 digest=a8f3bfdf2a02229b',
+             'selfcheck pilot=km3 games=1 seat0_wins=0 seat1_wins=1 ties=0 turns=13 digest=26bca17b7fb4b705',
+             'selfcheck pilot=km3 games=1 seat0_wins=0 seat1_wins=1 ties=0 turns=41 digest=8149ff8ae642cf54',
+             'selfcheck pilot=km3 games=1 seat0_wins=0 seat1_wins=0 ties=1 turns=29 digest=dae0b91eac46621f',
+             'selfcheck pilot=km3 games=1 seat0_wins=0 seat1_wins=0 ties=1 turns=42 digest=2fe341e282f6ad51',
+             'selfcheck pilot=km3 games=1 seat0_wins=1 seat1_wins=0 ties=0 turns=30 digest=5436a96f903a4dda',
+             'selfcheck pilot=km3 games=1 seat0_wins=0 seat1_wins=1 ties=0 turns=18 digest=1b35292af491e362',
+             'selfcheck pilot=km3 games=1 seat0_wins=0 seat1_wins=1 ties=0 turns=30 digest=f19397c75c4a24cf',
+            ]),
+    'kx3': ('selfcheck pilot=kx3 games=12 seat0_wins=8 seat1_wins=2 ties=2 turns=261 digest=5db26d0f00b4e102',
+            [
+             'selfcheck pilot=kx3 games=1 seat0_wins=0 seat1_wins=1 ties=0 turns=30 digest=5c8f121b3ceb6995',
+             'selfcheck pilot=kx3 games=1 seat0_wins=1 seat1_wins=0 ties=0 turns=18 digest=c2c3ae7c4c8b1728',
+             'selfcheck pilot=kx3 games=1 seat0_wins=1 seat1_wins=0 ties=0 turns=6 digest=36bf3a09225bad61',
+             'selfcheck pilot=kx3 games=1 seat0_wins=1 seat1_wins=0 ties=0 turns=19 digest=29be700e03e77bc7',
+             'selfcheck pilot=kx3 games=1 seat0_wins=0 seat1_wins=0 ties=1 turns=7 digest=3a18ef5536642645',
+             'selfcheck pilot=kx3 games=1 seat0_wins=1 seat1_wins=0 ties=0 turns=35 digest=6e42a099714b94be',
+             'selfcheck pilot=kx3 games=1 seat0_wins=1 seat1_wins=0 ties=0 turns=7 digest=35d922cd479bd575',
+             'selfcheck pilot=kx3 games=1 seat0_wins=1 seat1_wins=0 ties=0 turns=35 digest=92da95d93c817d5e',
+             'selfcheck pilot=kx3 games=1 seat0_wins=1 seat1_wins=0 ties=0 turns=8 digest=06c3602807c6da99',
+             'selfcheck pilot=kx3 games=1 seat0_wins=0 seat1_wins=0 ties=1 turns=36 digest=c9c10d80b54f9d86',
+             'selfcheck pilot=kx3 games=1 seat0_wins=0 seat1_wins=1 ties=0 turns=24 digest=1e00a7e47026299d',
+             'selfcheck pilot=kx3 games=1 seat0_wins=1 seat1_wins=0 ties=0 turns=36 digest=3448dea4bd8e1f18',
+            ]),
+}
+
+
+class SelfcheckArithmetic(Timed):
+    """What a self-check game played alone says about itself, and how twelve of them make the line of the 12-game self-check: the arithmetic of the per-game route (the harness's own
+    chain is in rl/strength/src/main.rs, `selfcheck`)."""
+
+    def test_the_real_format_program_is_a_different_program_from_the_fake_one(self):
+        self.assertNotEqual(REAL_FORMAT_PROGRAM, FAKE_PROGRAM)
+        self.assertNotIn('fakefakefakefake', REAL_FORMAT_PROGRAM)
+        self.assertIn("man = json.load(open(arg('--manifest')))", REAL_FORMAT_PROGRAM, 'it still plays the fake games')
+
+    def test_twelve_recorded_games_rebuild_the_recorded_12_game_line(self):
+        for spec, (whole, singles) in SAMPLE.items():
+            with self.subTest(spec=spec):
+                games = []
+                for i, line in enumerate(singles):
+                    game, why = sr.recover_game_string(GAME0 + i, line)
+                    self.assertIsNone(why)
+                    self.assertTrue(game['string'].startswith(f'{GAME0 + i}|'), game)
+                    games.append(game)
+                self.assertEqual(sr.chain_selfcheck_line(spec, games), whole)
+
+    def test_a_game_that_ended_without_a_winner_is_told_from_a_tie_by_its_digest(self):
+        """Both print ties=1; the string the digest was made of says which it was."""
+        outcomes = set()
+        for spec, (whole, singles) in SAMPLE.items():
+            for i, line in enumerate(singles):
+                game, why = sr.recover_game_string(GAME0 + i, line)
+                self.assertIsNone(why)
+                if game['ties']:
+                    outcomes.add(game['string'].split('|')[1])
+                    self.assertEqual((game['seat0_wins'], game['seat1_wins']), (0, 0))
+                else:
+                    self.assertIn(game['string'].split('|')[1], ('Some(Win(0))', 'Some(Win(1))'))
+        self.assertEqual(outcomes, {'Some(Tie)', 'None'}, 'the sample has games of both kinds, and each was recovered as what it was')
+
+    def test_the_string_is_the_one_the_harness_hashes(self):
+        game, why = sr.recover_game_string(GAME0 + 4, SAMPLE['km3'][1][4])
+        self.assertIsNone(why)
+        self.assertEqual(sr.fnv1a(sr.SELFCHECK_FNV_BASIS, game['string'].encode()), int(SAMPLE['km3'][1][4].rsplit('digest=', 1)[1], 16))
+        self.assertEqual(sr.SELFCHECK_FNV_BASIS, 0xcbf29ce484222325)
+        self.assertEqual(sr.fnv1a(sr.SELFCHECK_FNV_BASIS, b''), 0xcbf29ce484222325)
+        self.assertEqual(sr.fnv1a(sr.SELFCHECK_FNV_BASIS, b'a'), 0xaf63dc4c8601ec8c, 'FNV-1a 64 of "a", from the published test vectors')
+
+    def test_a_line_that_cannot_be_taken_apart_says_why_and_is_never_guessed_at(self):
+        good = SAMPLE['km3'][1][0]
+        digest = good.rsplit('digest=', 1)[1]
+        cases = (('not a self-check line', 'hello'),
+                 ('a 12-game line, not one game', SAMPLE['km3'][0]),
+                 ('a line with a digest no candidate makes', good.replace(digest, '0' * 16)),
+                 ('counts that are not one game', good.replace('seat1_wins=1', 'seat1_wins=2')),
+                 ('no result and no tie counted', good.replace('seat1_wins=1', 'seat1_wins=0')),
+                 ('a line with extra words', good + ' extra'),
+                 ('two lines', good + '\n' + good),
+                 ('a turn count the harness cannot print', good.replace('turns=24', 'turns=256')))
+        for label, text in cases:
+            with self.subTest(label):
+                game, why = sr.recover_game_string(GAME0, text)
+                self.assertIsNone(game)
+                self.assertIsInstance(why, str)
+                self.assertTrue(why)
+
+    def test_a_line_names_its_pilot_and_the_digest_does_not_contain_it(self):
+        """The pilot is the caller's to compare (the digest is of the game's string alone): recover_game_string returns the one the line names."""
+        good = SAMPLE['km3'][1][0]
+        game, why = sr.recover_game_string(GAME0, good.replace('pilot=km3', 'pilot=kx3'))
+        self.assertIsNone(why)
+        self.assertEqual(game['pilot'], 'kx3')
+        self.assertEqual(game['string'], sr.recover_game_string(GAME0, good)[0]['string'])
+
+    def test_points_outside_the_candidates_are_not_matched(self):
+        """A game printed in a way that the 0..20 points candidates cannot make (here a digest made of [30, 30]) is no match: the caller then replays the 12 games in one run."""
+        s = f'{GAME0}|Some(Win(0))|[30, 30]|9'
+        h = sr.fnv1a(sr.SELFCHECK_FNV_BASIS, s.encode())
+        line = f'selfcheck pilot=km3 games=1 seat0_wins=1 seat1_wins=0 ties=0 turns=9 digest={h:016x}'
+        game, why = sr.recover_game_string(GAME0, line)
+        self.assertIsNone(game)
+        self.assertIn('no (outcome, points) up to 20 points makes its digest', why)
+
+    def test_a_turn_count_the_harness_cannot_print_has_no_answer(self):
+        line = SAMPLE['km3'][1][0].replace('turns=24', 'turns=256')
+        game, why = sr.recover_game_string(GAME0, line)
+        self.assertIsNone(game)
+        self.assertIn('one byte', why)
+
+    def test_a_digest_that_two_candidates_make_has_no_answer(self):
+        line = SAMPLE['km3'][1][3]  # a tie
+        digest = int(line.rsplit('digest=', 1)[1], 16)
+        with mock.patch.object(sr, 'fnv1a', lambda h, data: digest):  # every candidate "makes" it
+            game, why = sr.recover_game_string(GAME0 + 3, line)
+        self.assertIsNone(game)
+        self.assertIn('more than one', why)
+
+    def test_the_real_pin_names_two_12_game_lines_that_the_per_game_route_can_rebuild(self):
+        pin = json.loads(read(os.path.join(HERE, 'slow_report_pin.json')))
+        for spec in ('km3', 'kx3'):
+            parsed = sr.parse_selfcheck_line(pin['selfcheck'][spec])
+            self.assertIsNotNone(parsed, pin['selfcheck'][spec])
+            self.assertEqual((parsed['pilot'], parsed['games']), (spec, 12))
+            self.assertEqual(parsed['seat0_wins'] + parsed['seat1_wins'] + parsed['ties'], 12)
+        self.assertEqual(sr.parse_selfcheck_line('selfcheck pilot=km3 games=12 digest=fakefakefakefake'), None, 'the fakes of the other tests are not such lines')
+
+    @staticmethod
+    def bytes_of(path):
+        with open(path, 'rb') as f:
+            return f.read()
+
+    def test_the_checkpoint_writer_leaves_the_old_file_or_the_whole_new_one_never_half(self):
+        folder = os.path.join(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, folder, True)
+        path = os.path.join(folder, 'sub', 'game.json')
+        synced = []
+        real_fsync = os.fsync
+        with mock.patch.object(os, 'fsync', lambda fd: (synced.append(fd), real_fsync(fd))[1]):
+            sr.write_atomic(path, b'one')
+        self.assertEqual(self.bytes_of(path), b'one')
+        self.assertGreaterEqual(len(synced), 2, 'the bytes were forced to disk before the rename, and the folder after it')
+        with mock.patch.object(os, 'replace', side_effect=OSError('disk gone')):
+            with self.assertRaises(OSError):
+                sr.write_atomic(path, b'two')
+        self.assertEqual(self.bytes_of(path), b'one', 'a write that failed before the rename changed nothing')
+        self.assertEqual(os.listdir(os.path.dirname(path)), ['game.json'], 'and left no half file behind')
+
+
+class PerGameFixture(RebuiltFixture):
+    """The fixture of the per-game self-check (no tests of its own): the pinned program and its rebuilt copy are the fake that prints the real line (REAL_FORMAT_PROGRAM), and the pin's
+    texts are what it prints for 12 games. self.state is a state folder for run_selfcheck, self.said what it said."""
+
+    def lay_out_harness(self):
+        for name, text in (('src/main.rs', 'fn main() {}\n'), ('src/lib.rs', '// the library\n'), ('src/notes.txt', 'not Rust: left out of the hash\n'),
+                           ('Cargo.toml', '[package]\nname = "strength"\n')):
+            write(os.path.join(self.repo, 'rl', 'strength', name), text)
+        self.set_program(REAL_FORMAT_PROGRAM)  # the "pinned binary" prints the real format too
+        self.edit_pin(harness_source_sha256=self.harness_hash(), selfcheck={s: self.fake_line(self.program, s, 12) for s in ('km3', 'kx3')})
+        self.cloud = os.path.join(self.tmp, 'cloud', 'strength')
+        self.put_program(self.cloud, REAL_FORMAT_PROGRAM + '\n# built on the cloud\n')
+        self.forget_calls()
+        self.state = os.path.join(self.tmp, 'selfcheck_state')
+        self.said = []
+
+    def fake_line(self, program, spec, games):
+        r = subprocess.run([program, 'selfcheck', '--pilot', spec, '--games', str(games)], capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        return r.stdout.strip()
+
+    def calls(self, program=None):
+        """What the fake was asked, in order: [{pilot, games, seed_base (None when not given)}]."""
+        out = []
+        for c in jsonl(os.path.join(os.path.dirname(program or self.cloud), 'selfcheck_calls.jsonl')):
+            a = c['argv']
+            out.append(dict(pilot=a[a.index('--pilot') + 1], games=int(a[a.index('--games') + 1]), seed_base=int(a[a.index('--seed-base') + 1]) if '--seed-base' in a else None))
+        return out
+
+    def seeds(self, program=None):
+        return [c['seed_base'] for c in self.calls(program)]
+
+    def forget_calls(self):
+        for p in (self.program, self.cloud):
+            f = os.path.join(os.path.dirname(p), 'selfcheck_calls.jsonl')
+            if os.path.exists(f):
+                os.remove(f)
+
+    def set_flags(self, program=None, **flags):
+        write(os.path.join(os.path.dirname(program or self.cloud), 'selfcheck_flags.json'), json.dumps(flags))
+
+    def pin_run(self, program=None, state_dir=None, whole=False, routes=None):
+        pin = sr.ReplayPin(self.pin, program=program or self.cloud)
+        pin.state_dir, pin.whole, pin.routes = state_dir, whole, routes
+        return pin
+
+    OWN_STATE = object()  # (replay's default: the fixture's state folder)
+
+    def replay(self, spec, program=None, state_dir=OWN_STATE, whole=False, routes=None, **kw):
+        """run_selfcheck on the rebuilt copy, with the fixture's state folder unless `state_dir` is given (None: the 12 games in one run, as before)."""
+        pin = self.pin_run(program, self.state if state_dir is self.OWN_STATE else state_dir, whole, routes)
+        return sr.run_selfcheck(pin, self.repo, spec, self.said.append, **kw)
+
+    def checkpoints(self, state=None):
+        """[(path, parsed)] of the *.json files in the state folder."""
+        state = state or self.state
+        if not os.path.isdir(state):
+            return []
+        return [(os.path.join(state, n), json.loads(read(os.path.join(state, n)))) for n in sorted(os.listdir(state)) if n.endswith('.json')]
+
+    def game_lines(self):
+        return [m for m in self.said if ' of 12' in m and m.startswith('self-check of ')]
+
+    BUILT = REAL_FORMAT_PROGRAM + '\n# built on the cloud\n'  # the text of the rebuilt copy as the fixture lays it out
+    SWAPPED = REAL_FORMAT_PROGRAM + '\n# swapped during the replay\n'
+
+    def after_game(self, k, action):
+        """A context in which `action` is run once the game with index k has been played (the other bytes, or the other deck, are there when the next game starts)."""
+        real, played = sr.run_held, [0]
+
+        def held(*a, **kw):
+            out = real(*a, **kw)
+            if played[0] == k:
+                action()
+            played[0] += 1
+            return out
+        return mock.patch.object(sr, 'run_held', held)
+
+    def swapping_after(self, spec_name, action):
+        """A context in which `action` is run once the whole replay of `spec_name` is over (hours into a real registration, the program is replaced)."""
+        real = sr.run_selfcheck  # (the fixture's spy, which notes the replay)
+
+        def swap(pin, repo, spec, say, **kw):
+            out = real(pin, repo, spec, say, **kw)
+            if spec == spec_name:
+                action()
+            return out
+        return mock.patch.object(sr, 'run_selfcheck', swap)
+
+
+class PerGameSelfcheck(PerGameFixture):
+    """run_selfcheck with a state folder: the 12 self-check games one at a time (`--games 1 --seed-base 24900000000+i`), each kept as it ends, rebuilt into the pinned 12-game line, resumed
+    from the games kept, and refused whenever the 12-game replay would be."""
+
+    # ------------------------------------------------------------------------------------------------ the route
+    def test_twelve_games_one_at_a_time_rebuild_the_pinned_line(self):
+        got = self.replay('kx3')
+        self.assertEqual(got, self.pin['selfcheck']['kx3'])
+        self.assertEqual(self.calls(), [dict(pilot='kx3', games=1, seed_base=GAME0 + i) for i in range(12)], 'one program run per game, in order, with its own seed')
+        self.assertEqual(len(self.checkpoints()), 12)
+        self.assertEqual(read(os.path.join(self.state, '.gitignore')), '*\n', 'the state folder is never committed by a `git add` of its parent')
+        self.assertEqual([n for n in os.listdir(self.state) if n not in ('.gitignore',) and not n.endswith('.json')], [], 'no half-written file is left')
+        self.assertEqual(self.said[0], f'self-check of kx3: 12 fixed games on {self.cloud} (this takes a while for kx3; run it when the machine is free)')
+        self.assertEqual(len(self.game_lines()), 12)
+        self.assertTrue(os.path.exists(os.path.join(os.path.dirname(self.cloud), 'selfcheck_env.json')), 'the games ran in the scrubbed environment of the program')
+
+    def test_the_games_are_played_with_the_command_of_the_12_game_replay_apart_from_the_count_and_the_seed(self):
+        self.replay('km3')
+        calls = jsonl(os.path.join(os.path.dirname(self.cloud), 'selfcheck_calls.jsonl'))
+        reg = json.loads(read(os.path.join(self.harness, 'decks.json')))['decks']
+        self.assertEqual(calls[0]['argv'], ['selfcheck', '--root', self.repo, '--pilot', 'km3', '--deck-a', reg['t-altaria'], '--deck-b', reg['t-suicune'], '--games', '1', '--seed-base', str(GAME0)])
+
+    def test_both_pilots_rebuild_their_own_pinned_lines(self):
+        for spec in ('km3', 'kx3'):
+            with self.subTest(spec=spec):
+                self.assertEqual(self.replay(spec), self.pin['selfcheck'][spec])
+        self.assertNotEqual(self.pin['selfcheck']['km3'], self.pin['selfcheck']['kx3'])
+        self.assertEqual(len(self.checkpoints()), 24)
+
+    def test_the_line_rebuilt_from_single_games_is_the_line_of_the_12_game_run(self):
+        """The same program, the same pin text, two ways: one run of 12 games, and 12 runs of one."""
+        whole = self.replay('km3', whole=True)
+        self.assertEqual(self.calls(), [dict(pilot='km3', games=12, seed_base=None)])
+        self.forget_calls()
+        self.assertEqual(self.replay('km3'), whole)
+
+    def test_whole_replays_the_12_games_in_one_run_and_writes_no_state(self):
+        got = self.replay('kx3', whole=True)
+        self.assertEqual(got, self.pin['selfcheck']['kx3'])
+        self.assertEqual(self.calls(), [dict(pilot='kx3', games=12, seed_base=None)])
+        self.assertFalse(os.path.exists(self.state))
+
+    def test_without_a_state_folder_it_is_the_12_game_replay_as_before(self):
+        got = self.replay('kx3', state_dir=None)
+        self.assertEqual(got, self.pin['selfcheck']['kx3'])
+        self.assertEqual(self.calls(), [dict(pilot='kx3', games=12, seed_base=None)])
+        self.assertFalse(os.path.exists(self.state))
+
+    # ------------------------------------------------------------------------------------------------ stop and resume
+    def stopped_at_game_5(self):
+        """A replay that is stopped by the school-morning cut while game number 5 (the sixth) is in flight: five games kept. The clock says "an hour left" for the first five games, and
+        shows the cut only once the sixth game has really started (the program logged its call), so how busy the machine is does not decide what the test sees."""
+        self.set_flags(slow=GAME0 + 5)
+        deadline = self.clock.now() + datetime.timedelta(hours=1)
+        reads = [0]
+
+        def now():
+            reads[0] += 1  # (run_held reads the clock once for each game it plays, after it has started the program)
+            if reads[0] <= 5:
+                return self.clock.now()
+            end = time.time() + 60
+            while time.time() < end and len(self.seeds()) < 6:
+                time.sleep(0.02)
+            return deadline
+        with self.assertRaises(SystemExit) as cm:
+            self.replay('kx3', deadline=deadline, now=now)
+        return str(cm.exception.code)
+
+    def test_a_stop_part_way_loses_only_the_game_in_flight_and_the_restart_reuses_the_rest(self):
+        said = self.stopped_at_game_5()
+        self.assertIn('did not finish before the school-morning cut', said)
+        self.assertIn('5 of the 12 games are kept', said)
+        self.assertIn(self.state, said)
+        self.assertIn('Nothing was registered', said)
+        self.assertEqual(self.seeds(), [GAME0 + i for i in range(6)], 'five games ended, the sixth was cut')
+        self.assertEqual(len(self.checkpoints()), 5)
+        self.set_flags()  # the restart: nothing hangs now
+        got = self.replay('kx3')
+        self.assertEqual(got, self.pin['selfcheck']['kx3'])
+        self.assertEqual(self.seeds(), [GAME0 + i for i in range(6)] + [GAME0 + i for i in range(5, 12)], 'the restart plays games 5 to 11 only')
+        taken = [m for m in self.said if 'from the checkpoint' in m]
+        self.assertEqual(len(taken), 5)
+        self.assertEqual(len(self.checkpoints()), 12)
+
+    def test_the_program_that_was_cut_is_not_left_running(self):
+        self.stopped_at_game_5()
+        pid = jsonl(os.path.join(os.path.dirname(self.cloud), 'selfcheck_calls.jsonl'))[5]['pid']  # the sixth game's program, the one that hung
+        with self.assertRaises(ProcessLookupError, msg='the hung program was stopped (and waited for)'):
+            os.kill(pid, 0)
+
+    def test_a_crash_in_one_game_is_refused_with_its_exit_code_and_the_games_before_it_are_kept(self):
+        self.set_flags(crash=GAME0 + 6)
+        with self.assertRaises(SystemExit) as cm:
+            self.replay('kx3')
+        said = str(cm.exception.code)
+        self.assertIn(f'REFUSED: the self-check of kx3 on {self.cloud} exited with code 101 (boom: engine panicked)', said)
+        self.assertIn('a self-check that fails is not a match', said)
+        self.assertEqual(len(self.checkpoints()), 6)
+        self.set_flags()
+        self.forget_calls()
+        self.assertEqual(self.replay('kx3'), self.pin['selfcheck']['kx3'])
+        self.assertEqual(self.seeds(), [GAME0 + i for i in range(6, 12)])
+
+    def test_a_program_of_another_sha256_ignores_the_old_checkpoints(self):
+        self.stopped_at_game_5()
+        self.put_program(self.cloud, REAL_FORMAT_PROGRAM + '\n# built again after a restart, other bytes\n')
+        self.set_flags()
+        self.forget_calls()
+        got = self.replay('kx3')
+        self.assertEqual(got, self.pin['selfcheck']['kx3'])
+        self.assertEqual(self.seeds(), [GAME0 + i for i in range(12)], 'every game again: the old ones were played by another file')
+        self.assertEqual(len(self.checkpoints()), 12 + 5, 'and the old ones are left alone, each under its own program')
+
+    def test_a_program_that_is_replaced_while_the_games_are_played_is_refused_and_that_game_is_not_kept(self):
+        """The key names the program by the sha256 read before the first game: a game played after another file took its place must not be filed under the old name."""
+        with self.after_game(5, lambda: self.put_program(self.cloud, self.SWAPPED)):  # the file is replaced while game 6 (index 5) is played
+            with self.assertRaises(SystemExit) as cm:
+                self.replay('kx3')
+        said = str(cm.exception.code)
+        self.assertIn('changed while game 6 of the self-check of kx3 was played', said)
+        self.assertIn('that game is not kept', said)
+        self.assertIn('Nothing was registered', said)
+        self.assertIn('5 of the 12 games are kept', said, 'the five before it, played by the bytes the key names')
+        self.assertEqual(len(self.checkpoints()), 5)
+        self.put_program(self.cloud, self.BUILT)  # the bytes come back
+        self.forget_calls()
+        self.assertEqual(self.replay('kx3'), self.pin['selfcheck']['kx3'])
+        self.assertEqual(self.seeds(), [GAME0 + i for i in range(5, 12)], 'games 5 to 11 are played, by the file that is there; the five kept are the ones the old bytes played')
+
+    def test_a_program_that_is_gone_while_the_games_are_played_is_refused_too(self):
+        with self.after_game(2, lambda: os.remove(self.cloud)):
+            with self.assertRaises(SystemExit) as cm:
+                self.replay('km3')
+        self.assertIn('changed while game 3 of the self-check of km3 was played', str(cm.exception.code))
+        self.assertIn('-> gone', str(cm.exception.code))
+        self.assertEqual(len(self.checkpoints()), 2)
+
+    def test_a_deck_that_changes_while_the_games_are_played_is_refused_and_that_game_is_not_kept(self):
+        deck = os.path.join(self.repo, *self.registry['t-suicune'].split('/'))
+        with self.after_game(3, lambda: write(deck, read(deck) + '1 Another Card 099\n')):
+            with self.assertRaises(SystemExit) as cm:
+                self.replay('kx3')
+        self.assertIn('changed while game 4 of the self-check of kx3 was played', str(cm.exception.code))
+        self.assertEqual(len(self.checkpoints()), 3)
+
+    def test_a_state_folder_that_cannot_be_written_does_not_stop_the_replay(self):
+        with mock.patch.object(sr, 'write_atomic', side_effect=OSError(13, 'Permission denied')):
+            got = self.replay('kx3')
+        self.assertEqual(got, self.pin['selfcheck']['kx3'])
+        self.assertEqual(self.seeds(), [GAME0 + i for i in range(12)])
+        self.assertEqual(len([m for m in self.said if 'could not be kept' in m and 'Permission denied' in m]), 12)
+        self.assertEqual(self.checkpoints(), [])
+
+    def test_a_refusal_does_not_say_games_are_kept_that_could_not_be_written(self):
+        """The three refusals that name the state folder count the games that are really in it."""
+        with mock.patch.object(sr, 'write_atomic', side_effect=OSError(13, 'Permission denied')):
+            said = self.stopped_at_game_5()
+            self.assertIn('only 0 of the 5 games played could be kept', said)
+            self.assertNotIn('goes on from game', said)
+            self.assertNotIn('5 of the 12 games are kept', said)
+            self.set_flags(crash=GAME0 + 6)
+            with self.assertRaises(SystemExit) as cm:
+                self.replay('kx3')
+            self.assertIn('only 0 of the 6 games played could be kept', str(cm.exception.code))
+            self.set_flags(wrong=GAME0 + 7)
+            with self.assertRaises(SystemExit) as cm:
+                self.replay('kx3')
+            self.assertIn('0 of them kept in', str(cm.exception.code))
+
+    def test_a_refusal_counts_the_games_taken_from_the_folder_as_kept(self):
+        self.stopped_at_game_5()  # five kept
+        self.set_flags(crash=GAME0 + 8)
+        with self.assertRaises(SystemExit) as cm:
+            self.replay('kx3')
+        self.assertIn('8 of the 12 games are kept', str(cm.exception.code), 'five taken from the folder, three played and written')
+
+    def test_every_game_runs_scrubbed_and_niced_like_the_12_game_replay(self):
+        names = {'KX_EXTRA_LISTS': 'sneaky=/tmp/x.txt', 'PG_DUMP': '/tmp/d', 'JEV_MODEL': 'x'}
+        seen, real = [], sr.run_held
+
+        def held(cmd, env, deadline, now):
+            seen.append((cmd, env))
+            return real(cmd, env, deadline, now)
+        with mock.patch.dict(os.environ, names), mock.patch.object(sr, 'run_held', held):
+            self.replay('km3')
+        self.assertEqual(len(seen), 12)
+        prefix = sr.nice_prefix()
+        for cmd, env in seen:
+            self.assertEqual(cmd[:len(prefix)], prefix, 'at low priority')
+            for k in names:
+                self.assertNotIn(k, env)
+            self.assertIn('PATH', env)
+        saw = json.loads(read(os.path.join(os.path.dirname(self.cloud), 'selfcheck_env.json')))
+        for k in names:
+            self.assertNotIn(k, saw, 'and the program itself never saw it')
+
+    def test_a_checkpoint_is_reused_only_on_an_exact_match_of_its_key(self):
+        """Every part of the key, changed in one game's file, makes that one game play again, and nothing else."""
+        for field, change in (('program_sha256', lambda v: '0' * 64), ('spec', lambda v: 'km3'), ('seed', lambda v: v + 1), ('game', lambda v: v + 1), ('games', lambda v: 13),
+                              ('command', lambda v: v + ['--extra']), ('deck_a_sha256', lambda v: '1' * 64), ('deck_b_sha256', lambda v: '2' * 64), ('version', lambda v: 2)):
+            with self.subTest(field=field):
+                shutil.rmtree(self.state, ignore_errors=True)
+                self.forget_calls()
+                self.replay('kx3')
+                path, data = next((p, d) for p, d in self.checkpoints() if d['key']['seed'] == GAME0 + 3)
+                self.assertIn(field, data['key'])
+                data['key'][field] = change(data['key'][field])
+                write(path, json.dumps(data))
+                self.forget_calls()
+                self.assertEqual(self.replay('kx3'), self.pin['selfcheck']['kx3'])
+                self.assertEqual(self.seeds(), [GAME0 + 3], 'only that game')
+
+    def test_a_checkpoint_whose_output_does_not_make_its_digest_is_not_trusted(self):
+        self.replay('kx3')
+        others = {d['key']['seed']: d['output'] for p, d in self.checkpoints()}
+        for label, output in (('another digest', None), ('the output of another game', others[GAME0 + 4]), ('not a line', 'hello'), ('nothing', ''), ('not text', 7)):
+            with self.subTest(label):
+                shutil.rmtree(self.state, ignore_errors=True)
+                self.forget_calls()
+                self.replay('kx3')
+                path, data = next((p, d) for p, d in self.checkpoints() if d['key']['seed'] == GAME0 + 3)
+                data['output'] = data['output'].rsplit('digest=', 1)[0] + 'digest=' + '0' * 16 if output is None else output
+                write(path, json.dumps(data))
+                self.forget_calls()
+                self.assertEqual(self.replay('kx3'), self.pin['selfcheck']['kx3'])
+                self.assertEqual(self.seeds(), [GAME0 + 3])
+
+    def test_a_checkpoint_that_is_damaged_is_played_again(self):
+        self.replay('kx3')
+        for label, text in (('not JSON', 'not json at all'), ('cut off', '{"key": {"program_sha'), ('a list', '[]'), ('empty', ''), ('no key', '{"output": "x"}')):
+            with self.subTest(label):
+                shutil.rmtree(self.state, ignore_errors=True)
+                self.forget_calls()
+                self.replay('kx3')
+                path, data = next((p, d) for p, d in self.checkpoints() if d['key']['seed'] == GAME0 + 8)
+                write(path, text)
+                self.forget_calls()
+                self.assertEqual(self.replay('kx3'), self.pin['selfcheck']['kx3'])
+                self.assertEqual(self.seeds(), [GAME0 + 8])
+
+    def test_a_checkpoint_whose_output_names_another_pilot_is_played_again(self):
+        """The key says kx3 and the digest is right, but the line kept says km3: the file was not written for this pilot, so that game is played again."""
+        self.replay('kx3')
+        path, data = next((p, d) for p, d in self.checkpoints() if d['key']['seed'] == GAME0 + 3)
+        self.assertIn('pilot=kx3 ', data['output'])
+        data['output'] = data['output'].replace('pilot=kx3 ', 'pilot=km3 ')
+        write(path, json.dumps(data))
+        self.forget_calls()
+        self.assertEqual(self.replay('kx3'), self.pin['selfcheck']['kx3'])
+        self.assertEqual(self.seeds(), [GAME0 + 3])
+
+    def test_a_game_whose_line_names_another_pilot_falls_back_to_the_12_game_replay(self):
+        self.set_flags(otherpilot=GAME0 + 3)
+        self.assertEqual(self.replay('kx3'), self.pin['selfcheck']['kx3'], 'the 12-game replay decides, and it passes')
+        self.assertEqual(self.calls(), [dict(pilot='kx3', games=1, seed_base=GAME0 + i) for i in range(4)] + [dict(pilot='kx3', games=12, seed_base=None)])
+        why = [m for m in self.said if 'replayed in one run instead' in m]
+        self.assertEqual(len(why), 1, self.said)
+        self.assertIn('game 4', why[0])
+        self.assertIn('names another pilot', why[0])
+
+    def test_a_deck_file_that_changed_makes_every_old_checkpoint_stale(self):
+        for name in ('t-altaria', 't-suicune'):  # the two decks the self-check plays
+            with self.subTest(deck=name):
+                shutil.rmtree(self.state, ignore_errors=True)
+                self.replay('kx3')
+                deck = os.path.join(self.repo, *self.registry[name].split('/'))
+                write(deck, read(deck) + f'1 Another Card {name} 099\n')
+                self.forget_calls()
+                self.assertEqual(self.replay('kx3'), self.pin['selfcheck']['kx3'])
+                self.assertEqual(self.seeds(), [GAME0 + i for i in range(12)])
+
+    def test_a_different_command_makes_every_old_checkpoint_stale(self):
+        """The same program and decks, asked from another checkout (so another --root): the command is part of the key, so nothing is reused."""
+        self.replay('kx3')
+        other = os.path.join(self.tmp, 'repo_b')
+        shutil.copytree(self.repo, other)
+        self.forget_calls()
+        got = sr.run_selfcheck(self.pin_run(state_dir=self.state), other, 'kx3', self.said.append)
+        self.assertEqual(got, self.pin['selfcheck']['kx3'])
+        self.assertEqual(self.seeds(), [GAME0 + i for i in range(12)])
+
+    def test_a_checkpoint_of_another_pilot_is_not_used_for_this_one(self):
+        self.replay('km3')
+        self.forget_calls()
+        self.assertEqual(self.replay('kx3'), self.pin['selfcheck']['kx3'])
+        self.assertEqual(self.seeds(), [GAME0 + i for i in range(12)])
+
+    def test_a_complete_set_of_checkpoints_plays_nothing(self):
+        self.replay('kx3')
+        self.forget_calls()
+        self.said.clear()
+        self.assertEqual(self.replay('kx3'), self.pin['selfcheck']['kx3'])
+        self.assertEqual(self.calls(), [])
+        self.assertEqual(len([m for m in self.said if 'from the checkpoint' in m]), 12)
+
+    # ------------------------------------------------------------------------------------------------ falling back, and refusing
+    def test_a_game_that_cannot_be_taken_apart_falls_back_to_the_12_game_replay(self):
+        self.set_flags(garble=GAME0 + 3)
+        got = self.replay('kx3')
+        self.assertEqual(got, self.pin['selfcheck']['kx3'], 'the 12-game replay decides, and it passes')
+        self.assertEqual(self.calls(), [dict(pilot='kx3', games=1, seed_base=GAME0 + i) for i in range(4)] + [dict(pilot='kx3', games=12, seed_base=None)])
+        why = [m for m in self.said if 'replayed in one run instead' in m]
+        self.assertEqual(len(why), 1, self.said)
+        self.assertIn('game 4', why[0])
+        self.assertEqual(self.said.count(f'self-check of kx3: 12 fixed games on {self.cloud} (this takes a while for kx3; run it when the machine is free)'), 1, 'said once, not again for the fallback')
+
+    def test_a_game_with_two_candidates_falls_back_to_the_12_game_replay(self):
+        first = int(SAMPLE['kx3'][1][0].rsplit('digest=', 1)[1], 16)
+        with mock.patch.object(sr, 'fnv1a', lambda h, data: first):
+            got = self.replay('kx3')
+        self.assertEqual(got, self.pin['selfcheck']['kx3'])
+        self.assertEqual(self.calls(), [dict(pilot='kx3', games=1, seed_base=GAME0), dict(pilot='kx3', games=12, seed_base=None)])
+        self.assertTrue(any('more than one' in m for m in self.said), self.said)
+
+    def test_a_pin_text_that_is_not_a_12_game_line_goes_straight_to_the_12_game_replay(self):
+        self.put_program(self.cloud, FAKE_PROGRAM + '\n# the fake of the other tests\n')
+        self.edit_pin(selfcheck={s: self.TEXT % s for s in ('km3', 'kx3')})
+        self.assertEqual(self.replay('kx3'), self.TEXT % 'kx3')
+        self.assertFalse(os.path.exists(self.state), 'no single game was tried and nothing kept')
+        self.assertEqual(self.said, [f'self-check of kx3: 12 fixed games on {self.cloud} (this takes a while for kx3; run it when the machine is free)'])
+
+    def test_a_pin_text_for_another_pilot_or_count_goes_straight_to_the_12_game_replay(self):
+        for label, text in (('another count', self.pin['selfcheck']['kx3'].replace('games=12', 'games=11')), ('another pilot', self.pin['selfcheck']['kx3'].replace('pilot=kx3', 'pilot=km3'))):
+            with self.subTest(label):
+                self.edit_pin(selfcheck=dict(self.pin['selfcheck'], kx3=text))
+                with self.assertRaises(SystemExit) as cm:
+                    self.replay('kx3')
+                self.assertIn('does not match the pin', str(cm.exception.code))
+                self.assertEqual(self.calls()[-1]['games'], 12)
+                self.assertEqual([c for c in self.calls() if c['games'] == 1], [], 'no single game was tried')
+                self.forget_calls()
+
+    def test_a_program_that_plays_one_game_differently_is_refused_by_both_routes(self):
+        self.set_flags(wrong=GAME0 + 7)
+        with self.assertRaises(SystemExit) as cm:
+            self.replay('kx3')
+        said = str(cm.exception.code)
+        self.assertTrue(said.startswith('REFUSED: the self-check of kx3 does not match the pin.\n'), said)
+        self.assertIn(f"  pinned: {self.pin['selfcheck']['kx3']}\n  got:    selfcheck pilot=kx3 games=12 ", said)
+        self.assertIn('nothing was registered', said)
+        self.assertIn('--whole-selfcheck', said)
+        self.assertIn(self.state, said)
+        self.assertEqual(len(self.checkpoints()), 12)
+        # the same program, the 12 games in one run: refused as well, so the per-game route passes nothing the other would refuse
+        with self.assertRaises(SystemExit) as cm2:
+            self.replay('kx3', whole=True)
+        self.assertTrue(str(cm2.exception.code).startswith('REFUSED: the self-check of kx3 does not match the pin.\n'), cm2.exception.code)
+
+    def test_a_pinned_text_has_to_be_equal_character_for_character(self):
+        pinned = self.pin['selfcheck']['kx3']
+        self.edit_pin(selfcheck=dict(self.pin['selfcheck'], kx3=pinned + ' '))  # (a trailing space the program does not print)
+        with self.assertRaises(SystemExit) as cm:
+            self.replay('kx3')
+        self.assertIn('does not match the pin', str(cm.exception.code))
+
+    def test_a_pin_text_that_differs_in_the_last_digit_is_refused_by_the_per_game_route_too(self):
+        pinned = self.pin['selfcheck']['kx3']
+        other = pinned[:-1] + ('0' if pinned[-1] != '0' else '1')
+        self.edit_pin(selfcheck=dict(self.pin['selfcheck'], kx3=other))
+        with self.assertRaises(SystemExit) as cm:
+            self.replay('kx3')
+        self.assertIn(f'  pinned: {other}\n  got:    {pinned}', str(cm.exception.code))
+        self.assertEqual(len(self.calls()), 12, 'twelve single games, no 12-game run: the per-game route is what refused')
+
+
+class PerGameRegistration(PerGameFixture):
+    """The same through the command line: a registration (and a resume after a program change) replays game by game into a state folder next to the runs, and a stopped one goes on from its
+    checkpoints. (The fakes of the other tests whose pin texts are not 12-game lines, RebuiltFixture and the process and run-loop worlds, take the 12-game route straight away. The plain World
+    keeps the real pin's texts, so its `--selfcheck` tests do enter this route: the fake's first game prints something that is not a self-check line, and the replay falls back to the 12 games
+    in one run, one program call later.)"""
+
+    def test_a_rebuild_is_registered_after_24_single_games_and_the_texts_are_the_pins(self):
+        code, out, err = self.cli('--deals', '1', '--register-only', '--program', self.cloud)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.calls(), [dict(pilot=p, games=1, seed_base=GAME0 + i) for p in ('km3', 'kx3') for i in range(12)], 'km3 first, then kx3, a game at a time')
+        man = self.manifest(self.rundir())
+        self.assertEqual(man['selfcheck'], self.pin['selfcheck'])
+        self.assertEqual(set(man['selfcheck_source'].values()), {'replayed by slow_report.py on the registering machine just before registration (equal to the pin file in use, which is NOT the committed pin: test use)'})
+        state = os.path.join(self.out_root, '.selfcheck_state')
+        self.assertEqual(len(self.checkpoints(state)), 24, 'the checkpoints are next to the runs, not in a run (the run does not exist yet)')
+        self.assertEqual(read(os.path.join(state, '.gitignore')), '*\n')
+        self.assertFalse(os.path.exists(os.path.join(self.rundir(), '.selfcheck_state')))
+
+    def test_the_record_of_a_registration_says_how_each_pilot_was_replayed(self):
+        folder = os.path.join(self.repo, *RECORDS_DIR.split('/'))
+        for argv, routes in (((), {'km3': 'per-game', 'kx3': 'per-game'}), (('--whole-selfcheck',), {'km3': 'whole', 'kx3': 'whole'})):
+            with self.subTest(argv=argv):
+                shutil.rmtree(self.out_root, ignore_errors=True)
+                shutil.rmtree(folder, ignore_errors=True)
+                code, out, err = self.cli('--deals', '1', '--register-only', '--program', self.cloud, *argv)
+                self.assertEqual(code, 0, err + out)
+                names = os.listdir(folder)
+                self.assertEqual(len(names), 1, names)
+                rec = json.loads(read(os.path.join(folder, names[0])))
+                self.assertEqual(rec['routes'], routes)
+                self.assertEqual((rec['program_sha256'], rec['selfcheck']), (sha(self.cloud), self.pin['selfcheck']))
+
+    def test_a_program_that_changed_while_the_self_checks_were_replayed_is_refused_and_no_record_is_written(self):
+        """A record names the program by its sha256 and a committed one spares the replay for good: it is written only for the bytes that were replayed."""
+        folder = os.path.join(self.repo, *RECORDS_DIR.split('/'))
+        for after in ('km3', 'kx3'):
+            with self.subTest(replaced_after=after):
+                shutil.rmtree(self.out_root, ignore_errors=True)
+                shutil.rmtree(folder, ignore_errors=True)
+                self.put_program(self.cloud, self.BUILT)
+                with self.swapping_after(after, lambda: self.put_program(self.cloud, self.SWAPPED)):
+                    code, out, err = self.cli('--deals', '1', '--register-only', '--program', self.cloud)
+                self.assertIn('changed while the self-checks were replayed', str(code))
+                self.assertIn('Nothing was recorded or registered.', str(code))
+                self.assertFalse(os.path.exists(folder), 'no record')
+                self.assertFalse(os.path.exists(self.rundir()), 'and nothing registered')
+
+    def test_the_pinned_binary_replaced_by_a_selfcheck_is_still_caught_by_the_preregistration(self):
+        """(Unchanged: the pinned route writes no record, so the later check of strength_prereg.py is what refuses a program that changed under --selfcheck.)"""
+        folder = os.path.join(self.repo, *RECORDS_DIR.split('/'))
+        with self.swapping_after('kx3', lambda: self.put_program(self.program, REAL_FORMAT_PROGRAM + '\n# swapped\n')):
+            code, out, err = self.cli('--deals', '1', '--register-only', '--selfcheck')
+        self.assertNotEqual(code, 0)
+        self.assertFalse(os.path.exists(folder))
+        self.assertFalse(os.path.exists(self.rundir()))
+
+    def test_a_registration_that_was_stopped_goes_on_from_the_games_kept(self):
+        self.set_flags(crash=GAME0 + 7)
+        code, out, err = self.cli('--deals', '1', '--register-only', '--program', self.cloud)
+        self.assertIn('exited with code 101', str(code))
+        self.assertFalse(os.path.exists(self.rundir()), 'nothing was registered')
+        self.assertEqual(self.seeds(), [GAME0 + i for i in range(8)], 'km3 stopped at its 8th game')
+        state = os.path.join(self.out_root, '.selfcheck_state')
+        self.assertEqual(len(self.checkpoints(state)), 7)
+        self.assertEqual(os.listdir(self.out_root), ['.selfcheck_state'], 'only the state folder was left')
+        self.set_flags()
+        self.forget_calls()
+        code, out, err = self.cli('--deals', '1', '--register-only', '--program', self.cloud)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.calls(), [dict(pilot='km3', games=1, seed_base=GAME0 + i) for i in range(7, 12)] + [dict(pilot='kx3', games=1, seed_base=GAME0 + i) for i in range(12)])
+        self.assertEqual(self.manifest(self.rundir())['selfcheck'], self.pin['selfcheck'])
+
+    def test_whole_selfcheck_replays_each_pilot_in_one_run(self):
+        code, out, err = self.cli('--deals', '1', '--register-only', '--program', self.cloud, '--whole-selfcheck')
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.calls(), [dict(pilot='km3', games=12, seed_base=None), dict(pilot='kx3', games=12, seed_base=None)])
+        self.assertFalse(os.path.exists(os.path.join(self.out_root, '.selfcheck_state')))
+
+    def test_explicit_selfcheck_on_the_pinned_binary_also_goes_game_by_game(self):
+        code, out, err = self.cli('--deals', '1', '--register-only', '--selfcheck')
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.calls(self.program), [dict(pilot=p, games=1, seed_base=GAME0 + i) for p in ('km3', 'kx3') for i in range(12)])
+
+    def test_a_refusal_keeps_the_games_and_says_so(self):
+        self.set_flags(wrong=GAME0 + 9)
+        code, out, err = self.cli('--deals', '1', '--register-only', '--program', self.cloud)
+        self.assertIn('REFUSED: the self-check of km3 does not match the pin.', str(code))
+        self.assertFalse(os.path.exists(self.rundir()))
+        self.assertEqual(len(self.checkpoints(os.path.join(self.out_root, '.selfcheck_state'))), 12)
+
+    def test_a_resume_with_a_rebuilt_program_replays_game_by_game_into_the_run_folder_and_goes_on(self):
+        spawn = self.spawned()
+        code, out, err = self.cli('--deals', '1', '--max-games', '4', '--program', self.cloud, spawn=spawn)
+        self.assertEqual(code, 0, err + out)
+        d = self.rundir()
+        self.put_program(self.cloud, REAL_FORMAT_PROGRAM + '\n# built again after the restart, other bytes\n')
+        self.forget_calls()
+        code, out, err = self.cli('--dir', d, '--max-games', '4', deck=False, spawn=spawn)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.calls(), [dict(pilot=p, games=1, seed_base=GAME0 + i) for p in ('km3', 'kx3') for i in range(12)])
+        state = os.path.join(d, '.selfcheck_state')
+        self.assertEqual(len(self.checkpoints(state)), 24)
+        self.assertEqual(read(os.path.join(state, '.gitignore')), '*\n')
+        self.assertEqual(len([e for e in jsonl(os.path.join(d, 'slow_report_log.jsonl')) if e['event'] == 'program_changed']), 1)
+
+    def test_a_dry_run_of_a_resume_with_a_changed_program_plays_nothing_and_writes_no_state(self):
+        spawn = self.spawned()
+        self.assertEqual(self.cli('--deals', '1', '--max-games', '4', '--program', self.cloud, spawn=spawn)[0], 0)
+        d = self.rundir()
+        self.put_program(self.cloud, REAL_FORMAT_PROGRAM + '\n# built again after the restart, other bytes\n')
+        self.forget_calls()
+        code, out, err = self.cli('--dir', d, '--dry-run', deck=False)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.calls(), [])
+        self.assertFalse(os.path.exists(os.path.join(d, '.selfcheck_state')))
+
+    def test_whole_selfcheck_is_allowed_with_dir_and_selfcheck_only_is_not(self):
+        spawn = self.spawned()
+        self.assertEqual(self.cli('--deals', '1', '--max-games', '4', '--program', self.cloud, spawn=spawn)[0], 0)
+        d = self.rundir()
+        self.put_program(self.cloud, REAL_FORMAT_PROGRAM + '\n# built again after the restart, other bytes\n')
+        self.forget_calls()
+        code, out, err = self.cli('--dir', d, '--max-games', '4', '--whole-selfcheck', deck=False, spawn=spawn)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.calls(), [dict(pilot='km3', games=12, seed_base=None), dict(pilot='kx3', games=12, seed_base=None)])
+        code, out, err = self.cli('--dir', d, '--selfcheck-only', deck=False)
+        self.assertIn('--selfcheck-only replays the self-checks of a program', str(code))
+        self.assertIn('no --dir', str(code))
+
+
+class SelfcheckRecords(PerGameFixture):
+    """The record of a replay: a successful replay by slow_report.py (a registration, a resume with a changed program, or --selfcheck-only) writes a JSON file in
+    rl/results/slow_report_selfcheck_records/ for the program's sha256; once it is COMMITTED, a registration of a program with that sha256 and the same two texts as the committed pin
+    replays nothing and names the record. Any difference replays as before."""
+    NAME = 'selfcheck_x.json'
+
+    def setUp(self):
+        super().setUp()
+        self.commit_pin()  # the repository is a git repository whose HEAD has the pin the tests use: the pin is "committed" (so the words say the committed pin's digests)
+        self.head = self.git('rev-parse', 'HEAD')
+
+    def records_dir(self):
+        return os.path.join(self.repo, *RECORDS_DIR.split('/'))
+
+    def record_json(self, program=None, **over):
+        """A record as a replay writes it (built here by hand, so that no replay is needed for a test of the use of one)."""
+        rec = {'schema': 1, 'kind': 'slow_report_selfcheck_record', 'program': program or self.cloud, 'program_sha256': sha(program or self.cloud),
+               'selfcheck': dict(self.pin['selfcheck']), 'tool_commit': 'a' * 40, 'replayed_at': '2026-10-09T22:30:00Z', 'host': 'cloud-box-1', 'boot_id': 'b' * 36,
+               'routes': {'km3': 'per-game', 'kx3': 'per-game'}}
+        rec.update(over)
+        return {k: v for k, v in rec.items() if v is not DROP}
+
+    def put_record(self, name=None, text=None, commit=True, **over):
+        """Write a record file (a good one unless `over`/`text` say otherwise) and, with commit=True, commit it. Returns (path relative to the repository, the commit that has it or None)."""
+        name = name or self.NAME
+        rel = f'{RECORDS_DIR}/{name}'
+        write(os.path.join(self.repo, *rel.split('/')), json.dumps(self.record_json(**over), indent=1) + '\n' if text is None else text)
+        if not commit:
+            return rel, None
+        self.git('add', rel)
+        self.git('commit', '-q', '-m', f'record {name}')
+        return rel, self.git('rev-parse', 'HEAD')
+
+    def register(self, *extra, **kw):
+        return self.cli('--deals', '1', '--register-only', '--program', self.cloud, *extra, **kw)
+
+    def assert_replayed(self, code, out, err):
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual([s for s, p in self.replayed], ['km3', 'kx3'])
+        self.assertEqual(len(self.calls()), 24)
+        self.assertNotIn('selfcheck_record', self.manifest(self.rundir())['slow_report'])
+
+    # ------------------------------------------------------------------------------------------------ writing one
+    def test_selfcheck_only_replays_both_pilots_and_writes_the_record(self):
+        code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, deck=False)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.calls(), [dict(pilot=p, games=1, seed_base=GAME0 + i) for p in ('km3', 'kx3') for i in range(12)])
+        files = sorted(os.listdir(self.records_dir()))
+        self.assertEqual(len(files), 1, files)
+        self.assertRegex(files[0], r'^selfcheck_' + sha(self.cloud)[:12] + r'_\d{8}T\d{6}Z\.json$')
+        rec = json.loads(read(os.path.join(self.records_dir(), files[0])))
+        boot = read('/proc/sys/kernel/random/boot_id').strip() if os.path.exists('/proc/sys/kernel/random/boot_id') else None
+        self.assertRegex(rec.pop('replayed_at'), r'^\d{4}-\d\d-\d\dT\d\d:\d\d:\d\dZ$')
+        self.assertEqual(rec, {'schema': 1, 'kind': 'slow_report_selfcheck_record', 'program': self.cloud, 'program_sha256': sha(self.cloud), 'selfcheck': self.pin['selfcheck'],
+                               'tool_commit': self.head, 'host': socket.gethostname(), 'boot_id': boot, 'routes': {'km3': 'per-game', 'kx3': 'per-game'}})
+        self.assertIn(f'{RECORDS_DIR}/{files[0]}', out)
+        self.assertIn('commit', out.split(files[0])[1], 'it says what to do with the file')
+        self.assertFalse(os.path.exists(self.rundir()), 'nothing was registered')
+
+    def test_a_registration_that_replays_writes_the_record_too(self):
+        code, out, err = self.register()
+        self.assertEqual(code, 0, err + out)
+        files = os.listdir(self.records_dir())
+        self.assertEqual(len(files), 1)
+        self.assertEqual(json.loads(read(os.path.join(self.records_dir(), files[0])))['program_sha256'], sha(self.cloud))
+
+    def test_a_whole_replay_records_that_it_was_whole(self):
+        self.assertEqual(self.cli('--selfcheck-only', '--program', self.cloud, '--whole-selfcheck', deck=False)[0], 0)
+        rec = json.loads(read(os.path.join(self.records_dir(), os.listdir(self.records_dir())[0])))
+        self.assertEqual(rec['routes'], {'km3': 'whole', 'kx3': 'whole'})
+
+    def test_the_replay_of_a_resume_with_a_changed_program_writes_the_record_of_the_new_one(self):
+        spawn = self.spawned()
+        self.assertEqual(self.cli('--deals', '1', '--max-games', '4', '--program', self.cloud, spawn=spawn)[0], 0)
+        first = sha(self.cloud)
+        self.put_program(self.cloud, REAL_FORMAT_PROGRAM + '\n# built again after the restart, other bytes\n')
+        new = sha(self.cloud)
+        self.assertEqual(self.cli('--dir', self.rundir(), '--max-games', '4', deck=False, spawn=spawn)[0], 0)
+        recorded = sorted(json.loads(read(os.path.join(self.records_dir(), n)))['program_sha256'] for n in os.listdir(self.records_dir()))
+        self.assertEqual(recorded, sorted([first, new]), 'the registration wrote the first, the resume the second')
+
+    def test_a_replay_that_is_refused_writes_no_record(self):
+        self.set_flags(wrong=GAME0 + 9)
+        code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, deck=False)
+        self.assertIn('does not match the pin', str(code))
+        self.assertFalse(os.path.exists(self.records_dir()))
+
+    def test_the_pinned_binary_needs_no_replay_and_no_record(self):
+        code, out, err = self.cli('--selfcheck-only', deck=False)
+        self.assertEqual(code, 0, err + out)
+        self.assertIn('is the pinned binary', out)
+        self.assertEqual((self.calls(self.program), os.path.exists(self.records_dir())), ([], False))
+
+    def test_selfcheck_only_with_a_committed_record_says_so_and_replays_nothing_unless_told_to(self):
+        self.put_record()
+        code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, deck=False)
+        self.assertEqual(code, 0, err + out)
+        self.assertIn('already recorded', out)
+        self.assertEqual(self.calls(), [])
+        code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, '--selfcheck', deck=False)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(len(self.calls()), 24)
+
+    def test_selfcheck_only_refuses_a_rebuild_without_its_build_record(self):
+        os.remove(self.cloud + '.build.json')
+        code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, deck=False)
+        self.assertIn('has no build record', str(code))
+        self.assertEqual(self.calls(), [])
+
+    def test_selfcheck_only_refuses_a_checkout_whose_harness_source_is_not_the_pinned_one(self):
+        write(os.path.join(self.repo, 'rl', 'strength', 'src', 'main.rs'), 'fn main() { 2; }\n')
+        code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, deck=False)
+        self.assertIn("is not the pinned build's", str(code))
+        self.assertEqual(self.calls(), [])
+        self.assertFalse(os.path.exists(self.records_dir()))
+
+    def test_selfcheck_only_takes_no_deck_and_no_dir(self):
+        code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, deck=True)
+        self.assertIn('--selfcheck-only', str(code))
+        self.assertEqual(self.calls(), [])
+
+    def test_selfcheck_only_dry_run_plays_and_writes_nothing(self):
+        code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, '--dry-run', deck=False)
+        self.assertEqual(code, 0, err + out)
+        self.assertIn('would be', out)
+        self.assertIn('dry run: nothing written', out)
+        self.assertEqual(self.calls(), [])
+        self.assertFalse(os.path.exists(self.records_dir()))
+        self.assertFalse(os.path.exists(self.out_root))
+
+    def test_selfcheck_only_refuses_a_program_that_changed_while_it_was_replayed(self):
+        with self.swapping_after('kx3', lambda: self.put_program(self.cloud, self.SWAPPED)):
+            code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, deck=False)
+        self.assertIn('changed while the self-checks were replayed', str(code))
+        self.assertIn('Nothing was recorded.', str(code))
+        self.assertFalse(os.path.exists(self.records_dir()))
+
+    def test_selfcheck_only_keeps_the_school_morning_rule(self):
+        self.clock = FakeClock(chi(2026, 10, 7, 10, 0))  # a Wednesday morning
+        code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, deck=False, school='on')
+        self.assertIn('REFUSED: the self-check runs for hours and it is school time', str(code))
+        self.assertEqual(self.calls(), [])
+        self.assertFalse(os.path.exists(self.records_dir()))
+        self.clock = FakeClock(chi(2026, 10, 7, 20, 0))  # that evening it runs, and the next morning's cut is its deadline
+        seen, real = [], sr.run_held
+
+        def held(cmd, env, deadline, now):
+            seen.append(deadline)
+            return real(cmd, env, deadline, now)
+        with mock.patch.object(sr, 'run_held', held):
+            code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, deck=False, school='on')
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(set(seen), {chi(2026, 10, 8, 6, 30)})
+        self.assertEqual(len(seen), 24)
+
+    def test_selfcheck_only_without_a_time_zone_database_refuses_before_it_plays(self):
+        self.without_tzdata()
+        code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, deck=False, school='on')
+        self.assertIn('REFUSED', str(code))
+        self.assertEqual(self.calls(), [])
+        self.assertFalse(os.path.exists(self.records_dir()))
+
+    def test_a_record_that_cannot_be_written_is_said_and_never_fatal(self):
+        with mock.patch.object(sr, 'write_selfcheck_record', side_effect=OSError(28, 'No space left on device')):
+            code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, deck=False)
+            self.assertEqual(code, 1, 'the replay passed, but there is nothing to commit: --selfcheck-only says so by its exit code')
+            self.assertIn('the record of this replay could not be written (No space left on device)', out)
+            shutil.rmtree(self.out_root, ignore_errors=True)
+            code, out, err = self.register()
+        self.assertEqual(code, 0, 'a registration does not depend on the record')
+        self.assertIn('the record of this replay could not be written', out)
+
+    def test_two_replays_in_the_same_second_write_two_records(self):
+        for _ in range(2):
+            self.assertEqual(self.cli('--selfcheck-only', '--program', self.cloud, '--selfcheck', deck=False)[0], 0)
+        files = sorted(os.listdir(self.records_dir()))
+        self.assertEqual(len(files), 2, files)
+        self.assertRegex(files[0], r'^selfcheck_' + sha(self.cloud)[:12] + r'_\d{8}T\d{6}Z-2\.json$')  # ('-' sorts before '.')
+        self.assertRegex(files[1], r'^selfcheck_' + sha(self.cloud)[:12] + r'_\d{8}T\d{6}Z\.json$')
+        self.assertEqual(sorted(json.loads(read(os.path.join(self.records_dir(), n)))['program_sha256'] for n in files), [sha(self.cloud)] * 2)
+
+    def test_a_record_is_for_the_bytes_not_for_the_path(self):
+        rel, commit = self.put_record()
+        elsewhere = os.path.join(self.tmp, 'cloud_b', 'strength')
+        self.put_program(elsewhere, self.BUILT)  # the same bytes at another path, with their own build record
+        self.assertEqual(sha(elsewhere), sha(self.cloud))
+        code, out, err = self.cli('--deals', '1', '--register-only', '--program', elsewhere)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.replayed, [])
+        self.assertEqual(self.manifest(self.rundir())['slow_report']['selfcheck_how'], f'record {rel} {commit}')
+
+    # ------------------------------------------------------------------------------------------------ using one
+    def test_a_committed_record_for_this_sha256_makes_the_registration_replay_nothing_and_names_the_record(self):
+        rel, commit = self.put_record()
+        code, out, err = self.register()
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.replayed, [], 'no replay')
+        self.assertEqual(self.calls(), [], 'no program run at all')
+        d = self.rundir()
+        man = self.manifest(d)
+        b = man['slow_report']
+        self.assertEqual(man['selfcheck'], self.pin['selfcheck'])
+        self.assertEqual(b['selfcheck_how'], f'record {rel} {commit}')
+        self.assertEqual(b['selfcheck_record'], {'path': rel, 'commit': commit, 'file_sha256': sha(os.path.join(self.repo, *rel.split('/'))), 'program_sha256': sha(self.cloud),
+                                                   'replayed_at': '2026-10-09T22:30:00Z', 'host': 'cloud-box-1', 'boot_id': 'b' * 36, 'tool_commit': 'a' * 40})
+        cfg = json.loads(read(os.path.join(d, 'config.json')))
+        self.assertEqual((cfg['selfcheck_given'], cfg['selfcheck_given_program_sha256'], cfg['selfcheck_how']), (self.pin['selfcheck'], sha(self.cloud), 'replayed'))
+        self.assertEqual(b['program_route'], 'rebuilt')
+        self.assertIn(f'accepted because both self-checks equal {COMMITTED_DIGESTS}: replayed by slow_report.py on cloud-box-1 and recorded in {rel} (commit {commit[:12]}), '
+                      'for a program with this same sha256; the record is a committed file, not signed, and this registration did not replay them again', man['engine'])
+        self.assertNotIn('were replayed on the registering machine', man['engine'])
+        prereg = read(os.path.join(d, 'PREREGISTRATION.md'))
+        self.assertIn(f'Self-check: accepted from the committed record {rel} (commit {commit[:12]})', prereg, 'the registration says it in the summary line')
+        self.assertIn(f'accepted from the committed record `{rel}`', out)
+        self.assertEqual(sr.manifest_provenance_problems(man), [])
+        # strength_prereg.py (not changed) words every rebuild's texts "replayed ... just before registration"; the same document says what that means here
+        wording = 'replayed by slow_report.py on the registering machine just before registration'
+        for spec in ('km3', 'kx3'):
+            self.assertIn(wording, man['selfcheck_source'][spec])
+            self.assertRegex(prereg, r'(?m)^- .*' + spec + r'.*' + re.escape(wording))  # (the line of the pre-registration that carries it)
+        self.assertIn(f'Where this document, manifest.json (selfcheck_source) and REPORT.md say "{wording}" (strength_prereg.py\'s fixed wording for a rebuild), that means the earlier replay '
+                      'named here, not a replay at this registration', man['engine'])
+        self.assertIn(man['engine'], prereg, 'and the pre-registration carries that sentence, next to the lines it explains')
+
+    def test_the_whole_run_with_a_record_writes_a_page_that_names_it(self):
+        rel, commit = self.put_record()
+        spawn = self.spawned()
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud, spawn=spawn)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.replayed, [])
+        page = read(os.path.join(self.rundir(), 'SLOW_REPORT.md'))
+        how = (f'accepted from the committed record `{rel}` (commit {commit[:12]}): replayed there by slow_report.py on cloud-box-1 at 2026-10-09T22:30:00Z on a program with this '
+               f'sha256, equal to the committed pin; the record is a committed file, not signed, and this registration did not replay them again')
+        for spec in ('km3', 'kx3'):
+            self.assertIn(f"- Self-check of `{spec}`: `{self.pin['selfcheck'][spec]}` ({how})", page)
+        self.assertIn(f'both self-checks were replayed earlier by slow_report.py (committed record `{rel}`, commit {commit[:12]}, on cloud-box-1) and equal {COMMITTED_DIGESTS}', page)
+        self.assertNotIn('replayed on the registering machine', page)
+        self.assertEqual(self.cli('--dir', self.rundir(), '--report-only', deck=False)[0], 0, 'and a later call of the run accepts such a registration')
+
+    def test_the_page_words_for_a_record_under_a_pin_that_is_not_the_committed_one_say_so(self):
+        record = dict(path='rl/results/x.json', commit='c' * 40, host='box', replayed_at='2026-10-09T22:30:00Z')
+        yes, no = sr.selfcheck_how('replayed', 'yes', record), sr.selfcheck_how('replayed', 'no', record)
+        self.assertIn('equal to the committed pin;', yes)
+        self.assertNotIn('NOT the committed pin', yes)
+        self.assertIn('equal to the pin file in use (NOT the committed pin: test use);', no)
+        self.assertNotIn('equal to the committed pin', no)
+
+    def test_the_dry_run_says_which_it_will_do(self):
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud, '--dry-run')
+        self.assertEqual(code, 0, err + out)
+        self.assertIn('both self-checks will be replayed on this machine', out)
+        self.assertNotIn('accepted from the committed record', out)
+        rel, commit = self.put_record()
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud, '--dry-run')
+        self.assertEqual(code, 0, err + out)
+        self.assertIn(f'both self-checks will be accepted from the committed record {rel} (commit {commit[:12]}), made for a program with this sha256: nothing is replayed', out)
+        self.assertNotIn('both self-checks will be replayed', out)
+        self.assertEqual(self.calls(), [])
+        self.assertFalse(os.path.exists(self.out_root))
+
+    def test_the_record_is_taken_whatever_the_file_is_called(self):
+        rel, commit = self.put_record(name='anything-at-all.json')
+        self.assertEqual(self.register()[0], 0)
+        self.assertEqual(self.manifest(self.rundir())['slow_report']['selfcheck_how'], f'record {rel} {commit}')
+
+    def test_of_two_good_records_the_later_replay_is_named(self):
+        self.put_record(name='a.json', replayed_at='2026-10-09T21:00:00Z')
+        rel, commit = self.put_record(name='b.json', replayed_at='2026-10-09T23:00:00Z')
+        self.put_record(name='c.json', replayed_at='2026-10-09T22:00:00Z')
+        self.assertEqual(self.register()[0], 0)
+        self.assertEqual(self.manifest(self.rundir())['slow_report']['selfcheck_how'], f'record {rel} {commit}')
+
+    def test_the_commit_named_is_the_one_that_has_the_record_not_head(self):
+        rel, commit = self.put_record()
+        write(os.path.join(self.repo, 'unrelated.txt'), 'x\n')
+        self.git('add', 'unrelated.txt')
+        self.git('commit', '-q', '-m', 'something else')
+        self.assertNotEqual(self.git('rev-parse', 'HEAD'), commit)
+        self.assertEqual(self.register()[0], 0)
+        self.assertEqual(self.manifest(self.rundir())['slow_report']['selfcheck_how'], f'record {rel} {commit}')
+
+    # ------------------------------------------------------------------------------------------------ not using one
+    def test_a_record_that_is_not_committed_is_not_used(self):
+        self.put_record(commit=False)
+        self.assert_replayed(*self.register())
+
+    def test_a_record_that_was_edited_after_it_was_committed_is_not_used(self):
+        rel, commit = self.put_record()
+        path = os.path.join(self.repo, *rel.split('/'))
+        write(path, read(path).replace('cloud-box-1', 'cloud-box-2'))
+        self.assert_replayed(*self.register())
+
+    def test_a_record_for_another_sha256_is_not_used(self):
+        self.put_record()
+        self.put_program(self.cloud, REAL_FORMAT_PROGRAM + '\n# built again, other bytes\n')
+        self.assert_replayed(*self.register())
+
+    def test_a_record_whose_texts_are_not_the_pins_is_not_used(self):
+        for spec in ('km3', 'kx3'):
+            with self.subTest(spec=spec):
+                self.put_record(name=f'other_{spec}.json', selfcheck=dict(self.pin['selfcheck'], **{spec: self.pin['selfcheck'][spec].replace('digest=', 'digest=0')}))
+        self.assert_replayed(*self.register())
+
+    def test_a_record_that_lacks_a_text_is_not_used(self):
+        self.put_record(name='one.json', selfcheck={'kx3': self.pin['selfcheck']['kx3']})
+        self.put_record(name='none.json', selfcheck=DROP)
+        self.put_record(name='empty.json', selfcheck={})
+        self.put_record(name='null.json', selfcheck=None)
+        self.assert_replayed(*self.register())
+
+    def test_a_record_of_another_kind_or_schema_or_shape_is_not_used(self):
+        self.put_record(name='schema2.json', schema=2)
+        self.put_record(name='schema_text.json', schema='1')
+        self.put_record(name='schema_true.json', schema=True)
+        self.put_record(name='kind.json', kind='build_record')
+        self.put_record(name='nokind.json', kind=DROP)
+        self.put_record(name='nosha.json', program_sha256=DROP)
+        self.put_record(name='numsha.json', program_sha256=7)
+        self.put_record(name='list.json', text='[]\n')
+        self.put_record(name='nojson.json', text='this is not json\n')
+        self.put_record(name='empty.json', text='')
+        self.assert_replayed(*self.register())
+
+    def test_a_record_with_the_right_sha_but_a_wrong_case_or_prefix_is_not_used(self):
+        self.put_record(name='upper.json', program_sha256=sha(self.cloud).upper())
+        self.put_record(name='prefix.json', program_sha256=sha(self.cloud)[:12])
+        self.assert_replayed(*self.register())
+
+    def test_an_explicit_selfcheck_replays_even_with_a_good_record(self):
+        self.put_record()
+        self.assert_replayed(*self.register('--selfcheck'))
+
+    def test_a_pin_that_changed_since_the_record_is_judged_by_the_pin_in_use(self):
+        self.put_record()
+        pinned = self.pin['selfcheck']['kx3']
+        self.edit_pin(selfcheck=dict(self.pin['selfcheck'], kx3=pinned[:-1] + ('0' if pinned[-1] != '0' else '1')))
+        self.commit_pin()
+        code, out, err = self.register()
+        self.assertIn('does not match the pin', str(code), 'the record no longer equals the pin, so both are replayed, and the program fails the new pin')
+        self.assertEqual(len(self.calls()), 24, 'both pilots were replayed, 12 games each')
+
+    def test_a_directory_that_is_not_a_git_repository_has_no_committed_record(self):
+        shutil.rmtree(os.path.join(self.repo, '.git'))
+        self.put_record(commit=False)
+        with mock.patch.dict(os.environ, {ALLOW_PIN_VAR: '1'}):
+            self.assert_replayed(*self.register())
+
+    def test_git_variables_in_the_environment_do_not_send_the_record_check_to_another_repository(self):
+        rel, commit = self.put_record()
+        other = os.path.join(self.tmp, 'other')
+        os.makedirs(other)
+        subprocess.run(['git', '-C', other, 'init', '-q'], check=True)
+        with mock.patch.dict(os.environ, exported_git_variables(self.tmp, other)):
+            code, out, err = self.register()
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual(self.manifest(self.rundir())['slow_report']['selfcheck_how'], f'record {rel} {commit}')
+
+    def test_a_registration_that_names_a_record_for_another_program_is_flagged(self):
+        rel, commit = self.put_record()
+        self.assertEqual(self.register()[0], 0)
+        man = self.manifest(self.rundir())
+        self.assertEqual(sr.manifest_provenance_problems(man), [])
+        bad = json.loads(json.dumps(man))
+        bad['slow_report']['selfcheck_record']['program_sha256'] = '3' * 64
+        problems = sr.manifest_provenance_problems(bad)
+        self.assertEqual(len(problems), 1, problems)
+        self.assertIn('self-checks were accepted from a record for a program with sha256 333333333333', problems[0])
+        gone = json.loads(json.dumps(man))
+        gone['slow_report']['selfcheck_record'] = None
+        self.assertEqual(len(sr.manifest_provenance_problems(gone)), 1, 'a registration that says "record" but carries none')
+
+    def test_the_pinned_route_never_looks_for_a_record(self):
+        self.put_record(program=self.program)
+        code, out, err = self.cli('--deals', '1', '--register-only')
+        self.assertEqual(code, 0, err + out)
+        self.assertNotIn('selfcheck_record', self.manifest(self.rundir())['slow_report'])
+        self.assertEqual(self.manifest(self.rundir())['slow_report']['program_route'], 'pinned')
+
+    def test_the_help_names_the_new_options(self):
+        r = subprocess.run([sys.executable, os.path.join(HERE, 'slow_report.py'), '--help'], capture_output=True, text=True)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        for word in ('--selfcheck-only', '--whole-selfcheck', RECORDS_DIR):
+            self.assertIn(word, r.stdout)
+
+
 if __name__ == '__main__':
     unittest.main()
