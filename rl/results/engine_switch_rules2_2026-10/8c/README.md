@@ -54,3 +54,13 @@ word on it (`../8c_DECISION.md`).
 - **Correction 2:** the first revert check built the two score dumps on plain engine copies, so they printed no candidates and all 621
   games were FAIL (process), with every move as expected. `s2_8c_dump.sh` builds them as run_revert_gates.sh does (each in its own engine
   copy patched with b77652d6's print-only dg_patch.py): 621 of 621. `revert/` is that second run.
+
+## The engine the candidate's programs were built on (added after the coordinator's audit, Oct 11)
+
+The "new" programs (vs_trace, the score dump and coin_probe_v2) were built from `git archive 08a9b3ae engine`, and 08a9b3ae's engine/ is
+tree `70652fff03af511e32a169e16209e158a998dda6`: P's own tree (c7a25df4's engine/), byte for byte. `s2_8c_run.sh` checked this before any
+build and refuses otherwise (`[ "$(git rev-parse "$NEW:engine")" = 70652fff... ]`); its log printed "candidate
+08a9b3ae607c904e7df9f6e999d3f830eccc930f (engine 70652ff)". The candidate adds nothing under engine/ beyond P: main's other changes since
+8626a35 are outside engine/ (sitting 1's step 4 check). The only files added to each build copy are the tools themselves under
+engine/examples/ (vs_trace.rs, score_dump.rs, coin_probe_v2.rs with its emitted r2_counter_fns.rs) and, for the two score dumps, dg_patch.py's
+print-only lines. `builds.txt` names the commit of each build; the tree is the one above.
