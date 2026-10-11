@@ -563,6 +563,83 @@ class SelfcheckGiven(World):
         self.assertNotIn('on this machine', text)
         self.assertNotIn('on this machine', json.dumps(m))
 
+    RECORD_PATH = 'rl/results/slow_report_selfcheck_records/selfcheck_c3d51c4be7ff_20261009T223000Z.json'
+    RECORD_COMMIT = 'c' * 40
+
+    def record_how(self):
+        return f'record {self.RECORD_PATH} {self.RECORD_COMMIT}'
+
+    def record_source(self, phrase):
+        return (f'accepted from the committed record {self.RECORD_PATH} (commit {self.RECORD_COMMIT[:12]}): an earlier replay by slow_report.py of a program with this sha256, '
+                f'equal to {phrase}; not replayed at this registration')
+
+    def record_registration(self, how=None, committed=True, slow=True, **kw):
+        """Register a text said to be accepted from a committed record (selfcheck_how 'record <path> <commit>'), with the slow-report block of a pinned program."""
+        self.make()
+        self.bypass = not committed
+        p = self.fake_program()
+        kw = self.given_kw(p, selfcheck_how=self.record_how() if how is None else how, **kw)
+        if committed:
+            self.commit_repo()
+        block = dict(version=1, headline='kx3 (d513e37b) on a-deck v km3 on the public panel', pin=dict(self.pin_ref), **({'program_route': 'pinned'} if slow else {}))
+        return self.prereg(self.use_config(slow_report=block, **kw))
+
+    def test_a_text_accepted_from_a_record_says_so_and_not_that_it_was_replayed(self):
+        """selfcheck_how 'record <path> <commit>' (the laptop's addition, Oct 11): the same checks as 'replayed', and its own honest wording in the manifest and the document."""
+        r = self.record_registration()
+        self.assertEqual(r.returncode, 0, r.stderr)
+        m = self.manifest()
+        source = self.record_source(self.COMMITTED)
+        self.assertEqual(m['selfcheck'], self.GIVEN)
+        self.assertEqual(m['selfcheck_source'], {'km3': source, 'kx3': source})
+        self.assertFalse(self.asked(), 'no self-check game is played')
+        self.assertEqual(m['slow_report']['pin_committed'], 'yes')
+        text = read(os.path.join(self.out, 'PREREGISTRATION.md'))
+        for spec in ('km3', 'kx3'):
+            self.assertIn(self.self_check_line(spec, f' ({source})'), text)
+        self.assertNotIn('replayed by slow_report.py on the registering machine', text)
+        self.assertNotIn('replayed by slow_report.py on the registering machine', json.dumps(m))
+        self.assertNotIn('given in the config', text)
+
+    def test_a_text_accepted_from_a_record_under_a_pin_that_is_not_the_committed_one_says_so(self):
+        r = self.record_registration(committed=False)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        m = self.manifest()
+        source = self.record_source(self.NOT_COMMITTED)
+        self.assertEqual(m['selfcheck_source'], {'km3': source, 'kx3': source})
+        self.assertEqual(m['slow_report']['pin_committed'], 'bypassed')
+        self.assertEqual(read(os.path.join(self.out, 'PREREGISTRATION.md')).count('NOT the committed pin'), 2)
+
+    def test_a_text_accepted_from_a_record_is_held_to_every_check_a_replayed_one_meets(self):
+        r = self.record_registration(slow=False)
+        self.assertEqual(r.returncode, 1)
+        self.assertIn('needs a program route (pinned or rebuilt)', r.stderr)
+        self.nothing_written()
+        r = self.record_registration(selfcheck_given={'km3': 'selfcheck pilot=km3 games=12 digest=0000', 'kx3': self.GIVEN['kx3']})
+        self.assertEqual(r.returncode, 1)
+        self.assertIn('is not the text the pin has for it', r.stderr)
+        self.nothing_written()
+        r = self.record_registration(selfcheck_given_program_sha256='a' * 64)
+        self.assertEqual(r.returncode, 1)
+        self.assertIn('measured on a program with sha256 aaaaaaaaaaaa', r.stderr)
+        self.nothing_written()
+        self.make(locked=True)
+        p = self.fake_program()
+        r = self.prereg(self.config(stage='dev', **self.given_kw(p, selfcheck_how=self.record_how())))
+        self.assertEqual(r.returncode, 1)
+        self.assertIn('selfcheck_given is only for stage use', r.stderr)
+        self.nothing_written()
+        self.assertFalse(self.asked())
+
+    def test_a_selfcheck_how_that_is_not_a_record_path_and_commit_is_refused(self):
+        for bad in ('record ', 'record x', 'record x abc', 'record x ' + 'g' * 40, 'record x ' + 'c' * 39, 'record x ' + 'c' * 41, 'record x ' + 'C' * 40,
+                    'record x y ' + 'c' * 40, 'record  ' + 'c' * 40):
+            with self.subTest(how=bad):
+                r = self.record_registration(how=bad)
+                self.assertEqual(r.returncode, 1, r.stderr)
+                self.assertIn("is not 'record <path> <40-hex commit>'", r.stderr)
+                self.nothing_written()
+
     COMMITTED = 'the committed pin'
     NOT_COMMITTED = 'the pin file in use, which is NOT the committed pin: test use'
 
