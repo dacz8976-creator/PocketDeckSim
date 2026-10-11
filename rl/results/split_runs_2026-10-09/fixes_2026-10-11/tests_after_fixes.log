@@ -1,0 +1,19 @@
+.24 and 24 games; game for game (content, not timing) DIFFERENT; 2 differ: ['d1|o1|0|0|ref: 1 and 2 record(s)', 'd3|o1|1|1|X: 1 and 0 record(s)']
+.24 and 24 games; game for game (content, not timing) EQUAL
+.24 and 24 games; game for game (content, not timing) DIFFERENT; 1 differ: ['d1|o1|1|0|X: content differs']
+.24 and 24 games; game for game (content, not timing) EQUAL
+.............INCOMPLETE: 23 of 24 games; 1 problem(s); see /tmp/tmp5t581vz8/merged/MERGE_RECORD.md
+..........COMPLETE: 24 of 24 games; 0 problem(s); see /tmp/tmpz65yv0g0/merged/MERGE_RECORD.md
+...INCOMPLETE: 16 of 24 games; 8 problem(s); see /tmp/tmpu4iww6to/merged/MERGE_RECORD.md
+.merge: REFUSED: /tmp/tmp0z3l9nj6/merged/games.jsonl exists; a merge never writes over one. Nothing was written.
+........stamped /tmp/tmpwsok69l4/w1: manifest 48e3ef41acfe, program 9a3a45d01531, slice (all)
+sealed /tmp/tmpwsok69l4/w1: 1 games, games.jsonl 6c2cc7350822, program 9a3a45d01531
+.seal: REFUSED: /tmp/tmpjqideegu/w has no worker.json; stamp it before it plays. Nothing was written.
+.stamp: REFUSED: /tmp/tmp1o28g0qw/played already holds play (games.jsonl); a worker is stamped before it plays. Nothing was written.
+...........stamped /tmp/tmpg_yje3qe/w1: manifest d6a29dacb39d, program 9a3a45d01531, slice ['d1', 'd3']
+.stamp: not decks of this registration: ['nope'] (its decks: ['d1', 'd2', 'd3'])
+.
+----------------------------------------------------------------------
+Ran 54 tests in 0.250s
+
+OK
