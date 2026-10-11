@@ -31,6 +31,7 @@ REAL = dict(deckgym="0a9199bca480acf6f862342e042b7f36bb885416659eafeef24485c1783
 REAL_P = "c7a25df49e0b4acdc61f8b78f2cab599d86f5c76"
 REAL_TREE = "70652fff03af511e32a169e16209e158a998dda6"
 REAL_OLDC = "2d7082cf9fccfd8ae7976c508320f1c8ca4e6b4f"
+REAL_REFC = "9630c0dc1a942c533cb7cfdf856315ce5e0895e6"
 REAL_DFIRST = "4821877fa5d202a3470f9b76d424f750d1883fee1516ecbce2a33937c8d49585"
 BUILT = {"deckgym": "/home/dacz8976/engine-rules2-08a9b3a/engine/target/release/deckgym",
          "legality_scan": "/home/dacz8976/engine-rules2-08a9b3a/engine/target/release/examples/legality_scan",
@@ -274,9 +275,9 @@ class Fake:
     def _runners(self):
         """The real runner sources with the fake hashes put in; each replacement must happen."""
         pairs = [(REAL[k], self.fake[k]) for k in REAL] + [(REAL_P, self.p), (REAL_TREE, self.tree), (REAL_OLDC, self.oldc),
-                                                           (REAL_DFIRST, self.fake_dfirst)]
+                                                           (REAL_DFIRST, self.fake_dfirst), (REAL_REFC, self.oldc)]
         need = {"run_check.sh": [REAL[k] for k in REAL] + [REAL_P, REAL_TREE, REAL_OLDC],
-                "run_pages.sh": [REAL["goldfish"], REAL_DFIRST]}
+                "run_pages.sh": [REAL["goldfish"], REAL_DFIRST, REAL_REFC]}
         fake_of = dict(pairs)
         for name in ("run_check.sh", "run_pages.sh"):
             text = open(os.path.join(RUNNER_DIR, name), encoding="utf-8").read()
@@ -364,7 +365,10 @@ class RealConstants(unittest.TestCase):
                      REAL_OLDC, 'SUPERSEDED = "main-8626a35"', 'OLD = "rl/results/floor_recheck_2026-10"', "-ge 1015", "-lt 2200",
                      'OCT2 = {"brew-06": 125, "brew-06b": 262, "control": 196, "brew-05b": 577, "deck-07": 1098}'):
             self.assertIn(want, s)
-        self.assertIn(REAL_DFIRST, open(os.path.join(RUNNER_DIR, "run_pages.sh"), encoding="utf-8").read())
+        pg = open(os.path.join(RUNNER_DIR, "run_pages.sh"), encoding="utf-8").read()
+        self.assertIn(REAL_DFIRST, pg)
+        self.assertIn(f'REF_COMMIT = "{REAL_REFC}"', pg)
+        self.assertIn("nice -n 10 python3 \"$PG/D_victini-passive/run_copy.py\"", pg)
 
     def test_real_record_names_sitting_1s_builds(self):
         rec = open(os.path.join(REAL_ROOT, SW, "programs.sha256"), encoding="utf-8").read()
@@ -473,6 +477,16 @@ class PartA(Base):
         rc, out = f.run("run_check.sh")
         self.assertEqual(rc, 1, out)
         self.assertIn("NOT MET brew-06: plain run_screen.py", self.verdicts())
+
+    def test_a_crash_in_the_verdict_script_exits_3(self):
+        f = self.mk()
+        write(f.fix + "/new/brew-05b-meowstic-hatterene-comfey.md", b"\xff\xfe\n")          # not UTF-8: an exception the script does not catch
+        rc, out = f.run("run_check.sh")
+        self.assertEqual(rc, 3, out)
+        self.assertIn("Traceback", out)
+        self.assertNotIn("RECHECK STOPPED", out)
+        self.assertNotIn("RESULT", out)
+        self.assertFalse(os.path.exists(f.D + "/verdicts.txt"))
 
     def test_a_missing_output_file(self):
         f = self.mk()
@@ -838,6 +852,14 @@ class PartB(Base):
         f = self.mkb(post_hook=other)
         self.assertRefused(f.run("run_pages.sh"), "d_first's list is not the 9cc6667 blob")
 
+    def test_a_reference_file_changed_after_the_named_commit_stops_part_b(self):
+        for rel in (f"{OLD2}/draft-D_amended/{DNAME}.md", f"{OLD30}/12-ariados-whimsicott-ogerpon.md"):
+            def edit(fk, rel=rel):
+                write(f"{fk.repo}/{rel}", open(f"{fk.repo}/{rel}", encoding="utf-8").read() + "later edit\n")
+                git(fk.repo, "add", "-A"); git(fk.repo, "commit", "-qm", "later")     # committed, so only the named commit catches it
+            f = self.mkb(post_hook=edit)
+            self.assertRefused(f.run("run_pages.sh"), f"not as at {f.oldc[:8]}")
+
     def test_floor_py_without_the_roles_anchor(self):
         def edit(fk):
             p = fk.repo + "/decks/screen/floor.py"
@@ -847,12 +869,11 @@ class PartB(Base):
         self.assertRefused(f.run("run_pages.sh"), "ROLES table no longer ends")
 
     def test_the_copy_differs_from_floor_py_by_exactly_oct2s_line(self):
-        f = self.mkb(post_hook=lambda fk: None)
-        # Oct 2's diff names a different added line: the rebuilt copy must be refused
-        p = f"{f.repo}/{OLD2}/draft-D_victini-passive/floor_copy.diff"
-        write(p, open(p).read().replace("Victini", "Victini2"))
-        git(f.repo, "add", "-A"); git(f.repo, "commit", "-qm", "x")
-        self.before = f.files()
+        # Oct 2's diff names a different added line (at the pinned commit too): the rebuilt copy must be refused
+        def other(fk):
+            p = f"{fk.repo}/{OLD2}/draft-D_victini-passive/floor_copy.diff"
+            write(p, open(p).read().replace("Victini", "Victini2"))
+        f = self.mkb(ref_hook=other)
         rc, out = f.run("run_pages.sh")
         self.assertEqual(rc, 1, out)
         self.assertIn("is not Oct 2's", out)
@@ -904,6 +925,9 @@ def mutations():
         ("run_pages.sh", "the ROLES anchor is not checked", '    if src.count(ANCHOR) != 1:', '    if False:'),
         ("run_pages.sh", "committed inputs are not checked", "    if bad:\n        die(\"not committed", "    if False:\n        die(\"not committed"),
         ("run_pages.sh", "the 9cc6667 list is not checked", "    if sha(f\"{SW}/floor_7c/d_first/{DNAME}.txt\") != D_FIRST_SHA:", "    if False:"),
+        ("run_pages.sh", "reference files are not pinned to the named commit", "    if badref:", "    if False:"),
+        ("run_pages.sh", "the D copy is not run at nice 10", 't D_victini-passive nice -n 10 python3', 't D_victini-passive python3'),
+        ("run_check.sh", "a crash in the verdict script exits 1", "    os._exit(3)", "    os._exit(1)"),
         ("run_pages.sh", "a stop is not logged", "PAGES STOPPED in $stage", "pages in $stage"),
         ("run_pages.sh", "the DECKGYM check is gone", "if [ -n \"$(env | grep -E '^DECKGYM_' || true)\" ]; then", "if false; then"),
         ("run_pages.sh", "the clock is ignored", "-ge 1015", "-ge 3000"),

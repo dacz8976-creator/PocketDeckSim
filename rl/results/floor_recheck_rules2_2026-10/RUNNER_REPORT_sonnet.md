@@ -43,7 +43,7 @@ unchanged, else STOP). An `OLD_PAGE.txt` beside each page names its old page, it
 
 ## Tests
 
-53 tests, all pass (`python3 -W ignore test_runners.py`, about 35 s). They run the real runner sources in a fake repository (git, committed
+55 tests, all pass (`python3 -W ignore test_runners.py`, about 35 s). They run the real runner sources in a fake repository (git, committed
 references, fake programs, fake floor.py/run_screen.py/goldfish that copy canned pages); only the engine hashes, P, its tree, 2d7082cf and D's
 first-list sha256 are replaced by the fake ones (every replacement is asserted). `RealConstants` also checks the real file holds the spec's values.
 Covered: the happy path; an engine line twice; a changed byte elsewhere; a missing file; a RESULT line first in both outcomes; games/coverage with no
@@ -51,9 +51,9 @@ exceptions; wins, the control, run_screen against the floor; a mid-run stop (no 
 22:00, DECKGYM, not detached, earlier outputs, PLAN/runner changed or uncommitted, reference file changed/missing, program hash/SHA256SUMS/executable/
 uncommitted, programs record, manifest name/superseded/source commit, P not in the source, wrong tree, pricing file, resolve, pilot); dry runs before
 and after the pin writing nothing (files and folders); Part B's stops (a differing victini-passive game or page, a non-Victini coverage difference, Victini
-unflagged, a floor failure, a non-floor page, an old-engine page, uncommitted inputs, the d_first blob, a changed ROLES anchor, a wrong copy diff).
+unflagged, a floor failure, a non-floor page, an old-engine page, uncommitted inputs, the d_first blob, a changed ROLES anchor, a wrong copy diff, a Part B reference file changed after 9630c0dc and committed), and a crash in Part A's verdict script (exit 3).
 
-## Broken on purpose (`python3 test_runners.py --mutations`): 51 of 51 fail a test
+## Broken on purpose (`python3 test_runners.py --mutations`): 54 of 54 fail a test
 
 Each is one change to a runner copy; the first failing test is named.
 
@@ -89,6 +89,9 @@ run_check.sh: the programs record is not checked -> PartA.test_the_programs_reco
 run_check.sh: the window closes at 21:00 -> PartA.test_clock_window
 run_check.sh: the window opens at 10:30 -> PartA.test_clock_window
 run_check.sh: wins need not equal Oct 2's -> PartA.test_wins_differ_from_oct2
+run_check.sh: a crash in the verdict script exits 1 -> PartA.test_a_crash_in_the_verdict_script_exits_3
+run_pages.sh: reference files are not pinned to the named commit -> PartB.test_a_reference_file_changed_after_the_named_commit_stops_part_b
+run_pages.sh: the D copy is not run at nice 10 -> RealConstants.test_the_runner_holds_the_specs_values
 run_pages.sh: Part A's result is not required -> PartB.test_refuses_without_a_passed_part_a
 run_pages.sh: Victini's caveat is not replaced -> PartB.test_happy_path
 run_pages.sh: Victini-passive games are not compared -> PartB.test_a_victini_passive_game_that_differs_is_a_stop
@@ -128,8 +131,12 @@ Oct 2's only in the added line, the engine line, Victini's caveat and the covera
 1. **PLAN.md is not in this branch** (the pin installs it), so "committed unchanged" is checked only at run time; it can't be shown here beyond the
    tests. It checks `git ls-files` and `git diff HEAD` for PLAN.md, run_check.sh and run_pages.sh.
 2. **"Its source commit is on main"** is implemented as "an ancestor of HEAD", as Oct 2's runner did. Run it from main after the pin.
-3. **Part B's Oct 2 references have no named commit** in the PLAN or spec, so they are checked as the committed (HEAD) blobs, not at a fixed
-   commit like Part A's 2d7082cf. If the laptop wants a named commit for them, it is one constant.
+3. **Part B's references are now pinned** (laptop's required change): `REF_COMMIT` = main 9630c0dc (full hash in `run_pages.sh`); every file read under
+   `floor_drafts_2026-10-02/` and `floor_dustin_2026-09-30/` must equal its blob at that commit, checked before any game (the HEAD-blob check stays
+   too). Test and mutation added. The 7c files, floor.py and the lists are still checked as HEAD blobs (outside that instruction).
+   Also done (laptop's optional items): (a) an uncaught exception in Part A's verdict script exits 3 with no RESULT line and no RECHECK STOPPED
+   (NOT PASSED stays exit 1); (b) D's victini-passive copy runs at `nice -n 10`, as Oct 2 did (neither conflicts with the PLAN, which isn't here to
+   read: the pin installs it; the other floor runs stay unniced, as Oct 2's Part A was).
 4. **The victini-passive page**: Oct 2's page carried a 6-line note added after its run; the new page gets the equivalent note after the comparison (the
    comparison strips Oct 2's note first). The rebuilt copy, its diff and its path change are in `pages/D_victini-passive/` and the log. Oct 2's runner
    also asserted floor.py's sha256; the PLAN says "today's floor.py", so mine checks only that the ROLES anchor is there once and the diff is exactly the

@@ -46,6 +46,7 @@ SW = "rl/results/engine_switch_rules2_2026-10"
 OLD2 = "rl/results/floor_drafts_2026-10-02"
 OLD30 = "rl/results/floor_dustin_2026-09-30"
 DNAME = "draft-D-entei-grimhound"
+REF_COMMIT = "9630c0dc1a942c533cb7cfdf856315ce5e0895e6"   # main: the commit the reference pages of OLD2 and OLD30 are pinned to
 # the PLAN's lists: page name -> (old page, expected change)
 OLDPAGES = {
     "12": (f"{OLD30}/12-ariados-whimsicott-ogerpon.md",
@@ -96,6 +97,11 @@ def git(*a):
 
 def committed(path):          # the file on disk is HEAD's blob
     rc, want = git("rev-parse", "--verify", "--quiet", f"HEAD:{path}")
+    return rc == 0 and os.path.isfile(path) and git("hash-object", "--", path)[1] == want
+
+
+def at_ref(path):             # the file on disk is the blob at REF_COMMIT, byte for byte
+    rc, want = git("rev-parse", "--verify", "--quiet", f"{REF_COMMIT}:{path}")
     return rc == 0 and os.path.isfile(path) and git("hash-object", "--", path)[1] == want
 
 
@@ -209,6 +215,9 @@ def cmd_refcheck(_):
     bad = [p for p in need if not committed(p)]
     if bad:
         die("not committed as they are on disk: " + ", ".join(bad))
+    badref = [p for p in need if p.startswith((OLD2 + "/", OLD30 + "/")) and not at_ref(p)]
+    if badref:
+        die(f"not as at {REF_COMMIT[:8]}: " + ", ".join(badref))
     if sha(f"{SW}/floor_7c/d_first/{DNAME}.txt") != D_FIRST_SHA:
         die(f"d_first's list is not the 9cc6667 blob (sha256 {D_FIRST_SHA[:8]}...)")
     for p in ("decks/dustin/12-ariados-whimsicott-ogerpon.txt", "decks/brews/brew-07-hoopa-darkrai-sableye.txt",
@@ -405,7 +414,7 @@ run() {
   py mkcopy "$PG/D_victini-passive/floor_victini_passive.py" "$DFIRST"
   diff -u decks/screen/floor.py "$PG/D_victini-passive/floor_victini_passive.py" > "$PG/D_victini-passive/floor_copy.diff" || true
   cp "$OLD2/draft-D_victini-passive/run_copy.py" "$PG/D_victini-passive/run_copy.py"
-  t D_victini-passive python3 "$PG/D_victini-passive/run_copy.py" "$PG/D_victini-passive/floor_victini_passive.py" \
+  t D_victini-passive nice -n 10 python3 "$PG/D_victini-passive/run_copy.py" "$PG/D_victini-passive/floor_victini_passive.py" \
     "$R/decks/screen/floor.py" "$DFIRST" --out "$PG/D_victini-passive"
   py checkpage D_victini-passive "$PG/D_victini-passive/draft-D-entei-grimhound.md"
   py cmpvictini "$PG/D_victini-passive" "$DFIRST"

@@ -10,7 +10,8 @@
 #                                  ends "BEFORE THE PIN: a real run would refuse on ..." (exit 0); a failure that is not the
 #                                  pin's own exits 2.
 #   bash run_check.sh --engine-check   only the engine and reference checks (run_pages.sh calls this); exit 0 or 2.
-# Exit 0: RESULT PASSED. Exit 1: RESULT NOT PASSED. Exit 2: refused to start; no file was written.
+# Exit 0: RESULT PASSED. Exit 1: RESULT NOT PASSED. Exit 2: refused to start; no file was written. Exit 3: the verdict script
+# itself crashed (an uncaught exception): no RESULT line and no RECHECK STOPPED, so it is not mistaken for NOT PASSED.
 # A stop mid-run exits with the failing program's code and logs RECHECK STOPPED, with no RESULT line: not a result.
 # It writes only in this folder. Never rerun over existing outputs: move them aside, named, first.
 set -euo pipefail
@@ -240,8 +241,17 @@ run() {
   echo "$(date -u +%F\ %T) FLOOR RECHECK DONE" >> "$D/timing.txt"
   stage=
   python3 - "$D" <<'VERDICT'
-import json, os, re, sys
+import json, os, re, sys, traceback
 D = sys.argv[1]
+
+
+def _crash(*e):             # an uncaught exception: exit 3, no RESULT line (not a verdict; NOT PASSED is exit 1)
+    traceback.print_exception(*e)
+    sys.stdout.flush()
+    os._exit(3)
+
+
+sys.excepthook = _crash
 OLD = "rl/results/floor_recheck_2026-10"
 NEW_GYM, NEW_GF = "rl/engine-2026-10-12/deckgym", "rl/engine-2026-10-12/goldfish"
 NEW_GF_SHA = "d8cfb7799770e16623c5d5ddc47b3ce55a714d66ec541fa8eb476a77fcf79a84"
