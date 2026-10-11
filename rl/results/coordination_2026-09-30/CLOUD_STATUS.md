@@ -89,7 +89,14 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      - The test's play, traced without its asserts on 8626a35 and at c7a25df4 with G1 + G2 off, is identical step for step
        on seeds 0-4: Rocky Helmet's two steps, Promote, then the second punch. 120 damage each time.
      - Before the fix, split into two tests: off passes, on fails at seed 0 (the punch is offered before the promotion).
-   - **Now:** idle until Monday. Collector findings F1-F4 wait, as asked.
+   - **Split-run collector, reader one's F1-F4 (Oct 11): fixed, tests first** (23 of 54 failing before, 54 of 54 after; 6b22ee5a,
+     1b8a1aa2). The two-worker proof was re-run (1809a506): COMPLETE, EQUAL to the straight run and to Oct 9's games.
+     - F2: stamp before play (a played folder is refused), seal after (records, program, manifest and deck hashes).
+     - F1: a flagged worker's games don't merge; no `games.jsonl` unless complete. F3: the engine tree fails closed.
+       F4: deck sha256s are checked.
+     - The harness still writes no hash into each game record; the stamp-plus-seal is the binding (README, "Reader one's four findings").
+     - `SPLIT_COLLECTOR=1809a506:rl/results/split_runs_2026-10-09/README.md`.
+   - **Now:** idle. The next job is the candidate exam in shards, after Monday.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
    63c28e6e. Read "Oct 9" in that branch's `rl/results/coin_prevention_round2_2026-10-01/README.md`, section 3's end in
