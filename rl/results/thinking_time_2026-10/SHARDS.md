@@ -6,18 +6,18 @@ They are estimates until the first slices finish.
 
 | slice | registration | deck | est. wall h |
 |---|---|---|---:|
-| 1 | think_m32_b | 05-indeedee-stoutland | 14.9 |
-| 2 | think_m32_b | 01-muk-glimmora-kingambit-regigigas | 13.9 |
-| 3 | think_m16_b | 05-indeedee-stoutland | 9.4 |
-| 4 | think_m16_b | 01-muk-glimmora-kingambit-regigigas | 8.8 |
-| 5 | think_m32_b | draft-A-shark-tempo | 7.1 |
-| 6 | think_m32_a | 10-xatu-oricorio-tr-weezing | 5.5 |
-| 7 | think_m16_b | draft-A-shark-tempo | 4.4 |
-| 8 | think_m32_a | 09-mega-manectric-heliolisk | 4.3 |
-| 9 | think_m32_a | 06-mega-blaziken-tournament-list | 3.8 |
-| 10 | think_m16_a | 10-xatu-oricorio-tr-weezing | 3.5 |
-| 11 | think_m16_a | 09-mega-manectric-heliolisk | 2.6 |
-| 12 | think_m16_a | 06-mega-blaziken-tournament-list | 2.4 |
+| 1 | reg_m32_b | 05-indeedee-stoutland | 14.9 |
+| 2 | reg_m32_b | 01-muk-glimmora-kingambit-regigigas | 13.9 |
+| 3 | reg_m16_b | 05-indeedee-stoutland | 9.4 |
+| 4 | reg_m16_b | 01-muk-glimmora-kingambit-regigigas | 8.8 |
+| 5 | reg_m32_b | draft-A-shark-tempo | 7.1 |
+| 6 | reg_m32_a | 10-xatu-oricorio-tr-weezing | 5.5 |
+| 7 | reg_m16_b | draft-A-shark-tempo | 4.4 |
+| 8 | reg_m32_a | 09-mega-manectric-heliolisk | 4.3 |
+| 9 | reg_m32_a | 06-mega-blaziken-tournament-list | 3.8 |
+| 10 | reg_m16_a | 10-xatu-oricorio-tr-weezing | 3.5 |
+| 11 | reg_m16_a | 09-mega-manectric-heliolisk | 2.6 |
+| 12 | reg_m16_a | 06-mega-blaziken-tournament-list | 2.4 |
 
 | worker | slices, in this order | est. wall h (+ about 1 h setup) |
 |---|---|---:|
