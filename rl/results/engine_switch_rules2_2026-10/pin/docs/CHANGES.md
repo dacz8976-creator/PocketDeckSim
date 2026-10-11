@@ -115,3 +115,11 @@ Abbreviations: **PLAN**, **STATUS**, **PIN_STATUS**, **RELEASE**, **8c/README**,
 5. **If RUN5 or another target changes before the pin** (RUN5 moves often), the pin stops on its BASE hash: re-draft that file, re-review it, and rewrite both lists.
 6. **The date** (above).
 7. **Extras that can be dropped without a stop:** `rules/02` (a noted document) and READOUT's §3b line.
+
+## Oct 11, after the drafting (the laptop session, on the coordinator's decisions)
+
+- `rl/results/floor_recheck_rules2_2026-10/PLAN.md`, Part B item 4: one line added. Each of draft D's root and amended text pages says that
+  its games are step 7c's replays, equal to Oct 2's, and that no game was played for it. This is the coordinator's decision (d), Oct 11: assemble
+  from 7c's replays plus the coverage, no new replay. `DOCS.sha256` was updated for this file only.
+- The coordinator's other decisions, Oct 11: (a) the Heavy Helmet hit-back entry stays open in `rules/09`; (b) the `rules/02` §2 line stays,
+  NOTEd at the pin as beyond PLAN's list; (c) km3's new B2e reference stays recorded in `km_tables_2026-09-30/READING.md`.

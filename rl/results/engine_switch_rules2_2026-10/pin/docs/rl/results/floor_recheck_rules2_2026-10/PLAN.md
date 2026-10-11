@@ -97,6 +97,7 @@ Each page is `floor.py`'s own call with its defaults (km3 on both sides, the off
    - Their games are step 7c's replays (`../engine_switch_rules2_2026-10/floor_7c/D_root/` and `D_amended/`), equal to Oct 2's pages: clears, 693 and 597 of 1,920 (`../floor_drafts_2026-10-02/draft-D-entei-grimhound.md` and `draft-D_amended/`).
    - Those replays took their coverage from the old goldfish, since the manifest still named it then. So the new page is the replay's page with the new engine named and with Victini's row and the coverage file from the new goldfish (`--games 0 --coverage`, no game).
    - Expected: only the engine lines and Victini's caveat text differ from Oct 2's pages.
+   - Each of the two pages carries one line saying so: its games are step 7c's replays on the new engine, equal to Oct 2's, and no game was played for it (the coordinator, Oct 11: draft D has no expected change, and the Victini caveat is text).
 5. **Deck 10: no new page.** Step 7c's page check found its t-weezing row unchanged (0 of 240 games differ, wins 8 to 8; the switch's `STATUS.txt`, STEP 7c), so its Sept 30 page stands (`../floor_dustin_2026-09-30/10-xatu-oricorio-tr-weezing.md`: fails, 324 of 1,920).
 
 Part B plays 7,680 games (deck 12, brews 07 and 09, and D's victini-passive page, 1,920 each), a few minutes a page. With Part A that is 21,120 games, under an hour at Oct 2's pace.
