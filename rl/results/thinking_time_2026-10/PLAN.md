@@ -25,6 +25,11 @@ by its place in the list (`rl/strength/src/main.rs:229-233`), each setting is tw
 `make_think_configs.py` writes the four configs (`configs/`) and checked that all 960 keys of a setting get the development run's seed. The
 seeds are the development run's own, reused on purpose for the pairing: no new seed block.
 
+**Registration.** On the laptop, from the repository root, `python3 rl/strength/strength_prereg.py --config rl/results/thinking_time_2026-10/configs/config_<setting>_<slice>.json
+--out rl/results/thinking_time_2026-10/reg_<setting>_<slice> --repo .`. `--repo .` records `repo_root` as `.`, so each worker's harness and stamp read the decks in its own
+checkout (the harness loads decks under the manifest's repo_root). Each registration plays the 12-game self-check for km3 and its setting, on
+the combined run's program (sha256 f5a6ae95...).
+
 **Build check.** Every km3 game must replay the development run's game for game (`split_collect.py compare`, by key), or the pairing is void.
 
 **PRIMARY.** For each setting S: S − frozen, in game score (win 1, tie ½, loss 0), on the same (deck, opponent, deal, seat): mean ± 1.96

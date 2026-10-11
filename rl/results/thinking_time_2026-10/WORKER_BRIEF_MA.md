@@ -4,6 +4,8 @@ The same work as `WORKER_BRIEF.md`, for a Managed Agents sandbox with no push ac
 WORKER. You play only your slices (`SHARDS.md`), never change a registration, never play another worker's deck, and never set any
 `DECKGYM_*` variable. Nobody answers questions mid-run, so when something doesn't fit, stop and write what you saw (step 5).
 
+0. **Run every command below from the root of your clone.** The registrations record `repo_root` as `.`, so the harness and the stamp read
+   the decks from your own checkout.
 1. **Checkout (read-only).** Clone the public repository and check out main at MAIN_COMMIT. Fetch `claude/playout-pilot`.
 2. **Build, once.** `rl/strength/build.sh 172cbe9ce0f2cb7946b489422b56d3fce5ca6219 $HOME/kxc/172cbe9c/strength`. It must print engine tree
    `69a5a4419da2...` and harness source `bf9c5d6814007f1f`. Copy the program's `.build.json` record to `/mnt/session/outputs/WORKER_build.json`.

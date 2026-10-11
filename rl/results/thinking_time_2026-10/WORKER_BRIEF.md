@@ -3,6 +3,8 @@
 You are worker WORKER. You play only your slices (`SHARDS.md`): each slice is one deck of one registration. You never change a
 registration, never play another worker's deck, and never set any `DECKGYM_*` variable.
 
+0. **Run every command below from the root of your clone.** The registrations record `repo_root` as `.`, so the harness and the stamp read
+   the decks from your own checkout (`rl/strength/src/main.rs:194`; `split_collect.py`'s deck hashes).
 1. **Checkout.** Clone or fetch the repository and check out main at MAIN_COMMIT (it has the registrations under
    `rl/results/thinking_time_2026-10/reg_*/` and the collector `rl/strength/split_collect.py`). Fetch `claude/playout-pilot`.
 2. **Build, once.** `rl/strength/build.sh 172cbe9ce0f2cb7946b489422b56d3fce5ca6219 $HOME/kxc/172cbe9c/strength`. It must print engine tree
