@@ -1,0 +1,21 @@
+Rules switch 2's step 7c new rows (sitting1.sh, step 7c-seeds), recorded and committed before any 7c game.
+Pairs file: rl/results/engine_switch_rules2_2026-10/pairs_7c2.tsv (24 rows, sitting1_check.py pairs7c2; pairs_7c.tsv's columns, block rules2_7c).
+Block: 23,300,000,000 + pairing x 10,000 + i (rules switch 2's block, in START_HERE's seed table), i < 60, km3 in both seats; first_seat = i % 2:
+  pairings 0-7: 10-xatu-oricorio-tr-weezing (decks/dustin/10-xatu-oricorio-tr-weezing.txt): deck 10 (its row v t-weezing, pairing 7, is named: its changed games go to 8c); v the 8 panel lists in sorted order, seeds 23,300,000,000 - 23,300,070,059
+  pairings 8-15: draft-D-first (rl/results/engine_switch_rules2_2026-10/floor_7c/d_first/draft-D-entei-grimhound.txt): draft D's first list (the 9cc6667 blob b15acdd1, copied byte for byte by sitting1.sh at 7c-seeds); v the 8 panel lists in sorted order, seeds 23,300,080,000 - 23,300,150,059
+  pairings 16-23: draft-D-amended (decks/brews/drafts_2026-10-01/draft-D-entei-grimhound.txt): draft D as amended at 9e139e6 (today's list); v the 8 panel lists in sorted order, seeds 23,300,160,000 - 23,300,230,059
+Pairings 24-39, 47-59 and 63-99 of this block are unused here (40-46: step 8b's new rows; 60-62: step 8's Will rows; sitting2.sh).
+Oct 1's 32 rows (pairings 40-71 of 23,100,000,000, decks 02, 06, 08 and 14) are replayed from rl/results/engine_switch_rules_2026-10/pairs_7c.tsv in place (blob d747cf5f).
+The floor replays use floor.py's own seeds: 7,100 + 1,000 x opponent (seat 0) and + 500 (seat 1), as recorded.
+Deck files (repository path, git blob id of the bytes on disk):
+  decks/brews/drafts_2026-10-01/draft-D-entei-grimhound.txt 1d32ead74f0f3fe0f08c038a345d97fa10678065
+  decks/dustin/10-xatu-oricorio-tr-weezing.txt cee34f8420703b028f08377e98d9721f623566dd
+  decks/screen/opponents/t-altaria.txt bde3ec8bead0c7292ec9879cf058e826195d42b0
+  decks/screen/opponents/t-blaziken.txt 83fdf96504271e0074b3a93a2b2c9c1f99c12b1c
+  decks/screen/opponents/t-hydreigon.txt 8dbc3bd03649858f753719a5ea7425e1c3d7c06e
+  decks/screen/opponents/t-lucario.txt 45a643d6cc167fe88bb72aec5062d7d721f48193
+  decks/screen/opponents/t-sceptile.txt 12477c2422b898ca57beaec32e50b73c37fdd4b0
+  decks/screen/opponents/t-suicune.txt 4de2246fc6f88665bdbf7c82c28cbdefe50f8f8c
+  decks/screen/opponents/t-vespiquen.txt fb36fa1fe15cbacb8740ad1c1d5f2beb5f166dd0
+  decks/screen/opponents/t-weezing.txt 54e9e222b4bd1f3670f39f5c6779c3950b88a362
+  rl/results/engine_switch_rules2_2026-10/floor_7c/d_first/draft-D-entei-grimhound.txt b15acdd100cfd216d180ad12bd2da659a0226807
