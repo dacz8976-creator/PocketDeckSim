@@ -2,6 +2,7 @@
 # The split-run proof (the coordinator's job of Oct 9, item 2): one small registration played straight, and again as two workers that each
 # play a slice (--only-deck) into their own folder; split_collect.py merges the two, and the merge must equal the straight run game for game
 # (content, not timing). Also: the merge with one worker left out is flagged INCOMPLETE, naming the missing games.
+# Since Oct 11 (reader one's F1-F4): every folder is stamped before it plays and sealed after; a stamp on a played folder is refused.
 # The registration (registration/manifest.json) is written here, not by strength_prereg.py (which is the slow report's to call): it has
 # strength_prereg.py's fields, with the 12 self-check games it records (t-altaria v t-suicune, km3) run by this script the same way.
 # 12 games: 3 decks (t-altaria, t-suicune, t-hydreigon) v t-blaziken, 1 deal, both seats, the arms ref and X, km3 v km3; seeds 20,910,000,000
@@ -22,7 +23,7 @@ PSHA=$(sha256sum < "$PROG" | cut -c1-64)
 TREE=$(python3 -c "import json,sys; print(json.load(open(sys.argv[1]))['engine_tree_archived'])" "$PROG.build.json")
 
 REG=$HERE/registration
-rm -rf "$REG" "$W/straight" "$W/w1" "$W/w2" "$W/merged" "$W/merged_w1_only"
+rm -rf "$REG" "$W/straight" "$W/w1" "$W/w2" "$W/merged" "$W/merged_w1_only" "$W/merged_straight" "$W/w2_edited" "$W/merged_edited" "$W/straight_worker_before.json"
 mkdir -p "$REG"
 SELF=$("$PROG" selfcheck --root "$REPO" --pilot km3 --deck-a decks/screen/opponents/t-altaria.txt --deck-b decks/screen/opponents/t-suicune.txt --games 12)
 echo "self-check: $SELF"
@@ -50,14 +51,21 @@ run() {  # <out dir> [--only-deck NAME]...
     mkdir -p "$out"
     nice -n 19 "$PROG" run --manifest "$M" --out "$out" --threads 2 "$@" 2> "$out/stderr.txt"
 }
-echo "== straight"
-run "$W/straight"
+echo "== straight (stamped before it plays, sealed after)"
 python3 "$SC" stamp --manifest "$M" --program "$PROG" --worker straight --out "$W/straight"
+run "$W/straight"
+python3 "$SC" seal --manifest "$M" --program "$PROG" --out "$W/straight"
+echo "== negative: stamping the played straight folder again is refused"
+cp "$W/straight/worker.json" "$W/straight_worker_before.json"
+python3 "$SC" stamp --manifest "$M" --program "$PROG" --worker straight --out "$W/straight" --no-selfcheck && echo "NOT REFUSED" || echo "refused (exit $?)"
+cmp -s "$W/straight/worker.json" "$W/straight_worker_before.json" && echo "worker.json unchanged"
 echo "== worker 1 (t-altaria, t-suicune) and worker 2 (t-hydreigon), each into its own folder"
 python3 "$SC" stamp --manifest "$M" --program "$PROG" --worker w1 --out "$W/w1" --only-deck t-altaria --only-deck t-suicune
 run "$W/w1" --only-deck t-altaria --only-deck t-suicune
+python3 "$SC" seal --manifest "$M" --program "$PROG" --out "$W/w1"
 python3 "$SC" stamp --manifest "$M" --program "$PROG" --worker w2 --out "$W/w2" --only-deck t-hydreigon
 run "$W/w2" --only-deck t-hydreigon
+python3 "$SC" seal --manifest "$M" --program "$PROG" --out "$W/w2"
 for d in straight w1 w2; do echo "$d: $(wc -l < "$W/$d/games.jsonl") games, errors: $(cat "$W/$d/errors.jsonl" 2>/dev/null | wc -l)"; done
 echo "== merge"
 python3 "$SC" merge --manifest "$M" --worker "$W/w1" --worker "$W/w2" --out "$W/merged" || true
@@ -77,9 +85,16 @@ python3 "$SC" merge --manifest "$M" --worker "$W/straight" --out "$W/merged_stra
 echo "== negative: worker 1 alone"
 python3 "$SC" merge --manifest "$M" --worker "$W/w1" --out "$W/merged_w1_only" || true
 grep -E "^\*\*|missing" "$W/merged_w1_only/MERGE_RECORD.md" | head -6
+ls "$W/merged_w1_only"
+echo "== negative: worker 2's games edited after its seal (a copy)"
+cp -r "$W/w2" "$W/w2_edited"
+sed -i '1s/"winner":"[a-z]*"/"winner":"tie"/' "$W/w2_edited/games.jsonl"
+python3 "$SC" merge --manifest "$M" --worker "$W/w1" --worker "$W/w2_edited" --out "$W/merged_edited" || true
+grep -E "^\*\*|\*\*seal" "$W/merged_edited/MERGE_RECORD.md" | head -4
 mkdir -p "$HERE/proof"
 cp "$W/merged/games.jsonl" "$HERE/proof/merged_games.jsonl"
 cp "$W/merged/MERGE_RECORD.md" "$HERE/proof/MERGE_RECORD.md"
 cp "$W/straight/games.jsonl" "$HERE/proof/straight_games.jsonl"
 cp "$W/merged_w1_only/MERGE_RECORD.md" "$HERE/proof/MERGE_RECORD_w1_only.md"
-for d in w1 w2 straight; do cp "$W/$d/worker.json" "$HERE/proof/worker_$d.json"; done
+for d in w1 w2 straight; do cp "$W/$d/worker.json" "$HERE/proof/worker_$d.json"; cp "$W/$d/worker_seal.json" "$HERE/proof/worker_seal_$d.json"; done
+cp "$W/merged_edited/MERGE_RECORD.md" "$HERE/proof/MERGE_RECORD_w2_edited.md"

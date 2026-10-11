@@ -1,14 +1,14 @@
 {
  "name": "split_proof",
  "question": "Split-run proof: the merge of two --only-deck workers equals the straight run, game for game.",
- "repo_commit": "07373069f5438ff275e77c949c6acd0c9ab5336e",
+ "repo_commit": "1b8a1aa2e7d77d7db5a097d3db056974eddcb72b",
  "selfcheck": {
   "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1"
  },
  "selfcheck_source": {
   "km3": "run by run_proof.sh as strength_prereg.py runs it (t-altaria v t-suicune, 12 games)"
  },
- "created_at": "2026-10-09T22:36:02Z",
+ "created_at": "2026-10-11T15:25:53Z",
  "stage": "dev",
  "repo_root": "/home/user/PocketDeckSim",
  "pilot": "km3",
@@ -49,8 +49,8 @@
  "ext_timeout_s": null,
  "heldout_decks": [],
  "heldout_locked": true,
- "program": "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct9/split/strength",
- "program_sha256": "9d45a1586615e5bfc77b4f164a23d16551e9f090335b97cecacfcba83b8afaf2",
+ "program": "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct11_proof/strength",
+ "program_sha256": "6f137b74d52480999a57db47f38a9e428ddbf6e4103a1765ba618526be8fd487",
  "engine": "main-8626a35, engine tree 38af8b0cc4f35fdccc647ed540a56ec8f5e6c1d5",
  "planned_pairs": 3,
  "planned_games": 12
