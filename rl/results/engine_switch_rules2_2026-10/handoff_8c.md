@@ -105,6 +105,16 @@ The rows: `handoff_8c.tsv` (columns: step, bot, pairing, i, seed, held_file, hel
 - `engine_switch_rules2_2026-10/08a9b3a_8b_new2_old_k3.jsonl`: 280 games, sha256 5644fe9f0274af2f55453855184c5a79ca8f18d4d17a130930e103ee51910396
 - `engine_switch_rules2_2026-10/08a9b3a_8b_new2_new_k3.jsonl`: 280 games, sha256 a489361a8697fd805ae49a617b58589ff59c31340d38146cacaf4011e0a52738
 - `engine_switch_rules2_2026-10/08a9b3a_8b_new2_watch_k3.jsonl`: 280 games, sha256 2e2ccc8a32bf2bdc9935b7dc42bba7a37cb50b0345efdd97e22e742d2c0b0698
+- `engine_switch_rules2_2026-10/08a9b3a_8_new_km3.jsonl`: 16000 games, sha256 22ac692917ecbd0cc0f29b05165cb68a49ea58854d0cd4b05d8a59485f508f71
+- `engine_switch_rules2_2026-10/08a9b3a_8_watch_km3.jsonl`: 16000 games, sha256 adbc4df46783418a0fc9bac2942740826952ad059354b42f58cfba61c9f18061
+- `engine_switch_rules2_2026-10/08a9b3a_8_will_old_km3.jsonl`: 1500 games, sha256 64ef9e482034118bb1686d2f703de69a5f04078f3a524b50c897380bc7fc33a1
+- `engine_switch_rules2_2026-10/08a9b3a_8_will_new_km3.jsonl`: 1500 games, sha256 64ef9e482034118bb1686d2f703de69a5f04078f3a524b50c897380bc7fc33a1
+- `engine_switch_rules2_2026-10/08a9b3a_8_will_watch_km3.jsonl`: 1500 games, sha256 887f87d53eb7a8811b808210847f2530517045472a7d29c80f1acd7cee6b28fe
+- `engine_switch_rules2_2026-10/08a9b3a_8_new_k3.jsonl`: 8000 games, sha256 64dc6dcc38711279ab5332850d388a0d7840f85e8de1875c99a43bc8b7cc68b3
+- `engine_switch_rules2_2026-10/08a9b3a_8_watch_k3.jsonl`: 8000 games, sha256 7ac23c23d5304071548f41f1f30519e4b352347e7398419c482f55b8738d16ac
+- `engine_switch_rules2_2026-10/08a9b3a_8_will_old_k3.jsonl`: 750 games, sha256 a6b99d059067906f10b292217abf27ff1dff78875b92bd5140de2895e1363b2d
+- `engine_switch_rules2_2026-10/08a9b3a_8_will_new_k3.jsonl`: 750 games, sha256 a6b99d059067906f10b292217abf27ff1dff78875b92bd5140de2895e1363b2d
+- `engine_switch_rules2_2026-10/08a9b3a_8_will_watch_k3.jsonl`: 750 games, sha256 0b7f8ca7cb42a5d6d6e9b31fc145a3b599eee9d089b1361277537ef8e6355cf2
 - `engine_switch_rules_2026-10/5a18d31_8_new_km3.jsonl`: 16000 games, sha256 22ac692917ecbd0cc0f29b05165cb68a49ea58854d0cd4b05d8a59485f508f71
 - `engine_switch_rules_2026-10/5a18d31_8_new_k3.jsonl`: 8000 games, sha256 64dc6dcc38711279ab5332850d388a0d7840f85e8de1875c99a43bc8b7cc68b3
 - `engine_switch_rules_2026-10/5a18d31_8b_new_km3.jsonl`: 160 games, sha256 bf5405377a887ac9afb379b1a45573647720c07928ea989b1d56698c07577eff
