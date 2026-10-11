@@ -28,7 +28,10 @@ the whole command and the two deck files, so that a restart goes on from the nex
 FNV-1a equals it) and the twelve are chained into the 12-game line, which must equal the committed pin's text character for character; a game that cannot be taken apart again falls back to
 the 12-game replay (--whole-selfcheck asks for it), and a line that differs is refused, as before. A successful replay of a rebuilt program writes a record, rl/results/slow_report_selfcheck_records/
 selfcheck_<sha12>_<time>.json (program path and sha256, both texts, the checkout's commit, the time, the host and boot id), for the runner to commit: a registration of a program with that very sha256, from
-a checkout whose HEAD has the record unedited and with the pin's two texts, replays nothing and names the record (--selfcheck replays regardless).
+a checkout whose HEAD has the record unedited and with the pin's two texts, replays nothing and names the record (--selfcheck replays regardless). A COMMITTED REGISTRATION folder of rl/results/slow_reports/
+(config.json, manifest.json and manifest.sha256 unedited at HEAD; config selfcheck_how 'replayed' against the committed pin; both texts the pin's; the config's and the manifest's program sha256 this
+program's) is taken the same way when no record file is: the registration of an earlier slow report on that very program already replayed them. The registration then names it, and
+strength_prereg.py words the texts 'accepted from the committed record <path> (commit <sha>)', not 'replayed ... just before registration'.
 
 One wrapper per run directory (a kernel lock, flock, that the program inherits, so it holds even if the wrapper is killed outright while the program plays on);
 a SIGTERM or SIGHUP stops the program before the wrapper exits, except a SIGHUP that was ignored at launch (`nohup`), which stays ignored. Pure standard
@@ -674,17 +677,22 @@ def headline_of(pin, deck_name):
 def build_config(*, pin, pin_path, deck_rel, deck_name, deck_sha, deck_state, deals, paired, seed_base, threads, program_sha, selfcheck_given='pin', selfcheck_how='pin',
                  resume_command=None, program=None, route='pinned', harness_checkout=None, school_rule='on', school_days=DEFAULT_SCHOOL_DAYS, pin_state=None, build_record=None,
                  registered_on=None, selfcheck_record=None):
-    """`selfcheck_record` (committed_selfcheck_record's answer) says the texts in `selfcheck_given` were not replayed for this registration but accepted from a committed record of an earlier
-    replay; strength_prereg.py is still told they are 'replayed' (the only way it takes a rebuild's texts), and the record is named here: in the engine text, the summary and two entries of the
-    slow_report block (selfcheck_how 'record <path> <commit>', selfcheck_record)."""
+    """`selfcheck_record` (accepted_selfcheck_record's answer) says the texts in `selfcheck_given` were not replayed for this registration but accepted from a committed record of an earlier
+    replay (a record file, or the committed registration of an earlier slow report); `selfcheck_how` is then 'record <path> <commit>', which strength_prereg.py takes for a rebuild's texts
+    and words as accepted from that record, and the record is named here too: in the engine text, the summary and two entries of the slow_report block (selfcheck_how, selfcheck_record)."""
     headline = headline_of(pin, deck_name)
     rec = build_record or {}
     digests = pin_digests((pin_state or {}).get('state'))
-    how_checked = (f"were replayed on the registering machine and equal {digests}" if not selfcheck_record else
-                   f"equal {digests}: replayed by slow_report.py on {selfcheck_record.get('host') or 'a machine not recorded'} and recorded in {selfcheck_record['path']} "
-                   f"(commit {selfcheck_record['commit'][:12]}), for a program with this same sha256; the record is a committed file, not signed, and this registration did not replay them again. "
-                   "Where this document, manifest.json (selfcheck_source) and REPORT.md say \"replayed by slow_report.py on the registering machine just before registration\" (strength_prereg.py's "
-                   "fixed wording for a rebuild), that means the earlier replay named here, not a replay at this registration")
+    host_ = (selfcheck_record or {}).get('host') or 'a machine not recorded'
+    if not selfcheck_record:
+        how_checked = f"were replayed on the registering machine and equal {digests}"
+    elif selfcheck_record.get('kind') == 'registration':
+        how_checked = (f"equal {digests}: replayed by slow_report.py on {host_} for the slow report registered in {selfcheck_record['path']} "
+                       f"(commit {selfcheck_record['commit'][:12]}), for a program with this same sha256; that registration's config.json and manifest.json are committed files, not signed, "
+                       "and this registration did not replay them again")
+    else:
+        how_checked = (f"equal {digests}: replayed by slow_report.py on {host_} and recorded in {selfcheck_record['path']} "
+                       f"(commit {selfcheck_record['commit'][:12]}), for a program with this same sha256; the record is a committed file, not signed, and this registration did not replay them again")
     engine = pin['engine'] + (f"; THIS PROGRAM ({(program or pin['program'])}, sha256 {program_sha[:12]}) is NOT the pinned binary: its build record (written by rl/strength/build.sh, not signed) "
                               f"says it is a rebuild of that source (build record sha256 {str(rec.get('record_sha256'))[:12]}: engine tree as archived {str(rec.get('engine_tree_archived'))[:12]}, harness source "
                               f"{str(rec.get('harness_source_sha256'))[:12]}, {rustc_line(rec, 'toolchain not recorded')}), accepted because both self-checks "
@@ -704,7 +712,7 @@ def build_config(*, pin, pin_path, deck_rel, deck_name, deck_sha, deck_state, de
         deck_files=[deck_rel], opponent_groups=[pin['panel_group']], deals=deals, seats=[0, 1], seed_base=seed_base, pair_stride=PAIR_STRIDE, threads=threads, log_level='deck',
         program=program or pin['program'], program_sha256=program_sha, engine=engine, pilot_provenance=pin['pilot_provenance'], reference_provenance=pin['reference_provenance'],
         slow_report=dict(version=1, headline=headline, summary=f'Stage use. {plural(deals, "deal")} x 2 seats against each of the eight public lists. No pass or fail line; not development evidence.'
-                         + (f" Self-check: accepted from the committed record {selfcheck_record['path']} (commit {selfcheck_record['commit'][:12]}), not replayed at registration."
+                         + (f" Self-check: accepted from the {record_label(selfcheck_record)} {selfcheck_record['path']} (commit {selfcheck_record['commit'][:12]}), not replayed at registration."
                             if selfcheck_record else ''),
                          deck_name=deck_name, deck_file=deck_rel, deck_file_sha256=deck_sha, deck_file_state=deck_state, deals=deals, paired=bool(paired),
                          pin=dict(path=os.path.relpath(pin_path, ROOT).replace(os.sep, '/') if os.path.abspath(pin_path).startswith(ROOT + os.sep) else pin_path, sha256=sha(pin_path)),
@@ -1104,6 +1112,75 @@ def committed_selfcheck_record(repo, program_sha, pin, specs):
             best = ((when, name), dict(path=rel, commit=commit, file_sha256=hashlib.sha256(raw).hexdigest(), program_sha256=program_sha, replayed_at=rec.get('replayed_at'),
                                        host=rec.get('host'), boot_id=rec.get('boot_id'), tool_commit=rec.get('tool_commit')))
     return best[1] if best else None
+
+
+REGISTRATIONS_REL = 'rl/results/slow_reports'
+
+
+def record_label(rec):
+    """What a record found by accepted_selfcheck_record is: a committed record file of a replay, or the committed registration of an earlier slow report."""
+    return 'committed registration' if rec.get('kind') == 'registration' else 'committed record'
+
+
+def registration_fits(cfg, man, program_sha, pin_texts, specs):
+    """Whether a registration folder's config.json and manifest.json say: a stage-use registration whose two self-check texts were REPLAYED for it (config selfcheck_how 'replayed'; the slow_report
+    block does not say they came from a record, because a registration that only used a record is not a replay of its own), against the committed pin (the block's pin_committed is 'yes'), on a
+    program with exactly this sha256 (the config's program_sha256 and selfcheck_given_program_sha256, the manifest's program_sha256), with the pin's text for each of `specs` in the config's
+    selfcheck_given and the manifest's selfcheck, and the manifest's own source line for each saying 'replayed by slow_report'."""
+    if not isinstance(cfg, dict) or not isinstance(man, dict) or cfg.get('stage') != 'use' or man.get('stage') != 'use' or cfg.get('selfcheck_how') != 'replayed':
+        return False
+    block = cfg.get('slow_report')
+    if not isinstance(block, dict) or block.get('pin_committed') != 'yes' or 'selfcheck_record' in block or str(block.get('selfcheck_how') or '').startswith('record '):
+        return False
+    if not all(isinstance(x, str) and x == program_sha for x in (cfg.get('program_sha256'), cfg.get('selfcheck_given_program_sha256'), man.get('program_sha256'))):
+        return False
+    given, seen, source = cfg.get('selfcheck_given'), man.get('selfcheck'), man.get('selfcheck_source')
+    if not (isinstance(given, dict) and isinstance(seen, dict) and isinstance(source, dict)):
+        return False
+    return all(isinstance(pin_texts.get(s), str) and given.get(s) == pin_texts[s] and seen.get(s) == pin_texts[s]
+               and isinstance(source.get(s), str) and source[s].startswith('replayed by slow_report') for s in specs)
+
+
+def committed_registration_record(repo, program_sha, pin, specs):
+    """A committed registration that can stand in for a replay: a folder of rl/results/slow_reports/ of `repo` whose config.json, manifest.json and manifest.sha256 are all committed and unedited
+    (byte-equal to HEAD's), whose manifest.sha256 is the sha256 of its manifest.json, and for which registration_fits says its two texts were replayed on a program with exactly this sha256 and are the
+    pin's. Keyed by the sha256 alone, as committed_selfcheck_record is. Of several, the latest registration (the manifest's created_at). Returns {'kind': 'registration', 'path' (the folder),
+    'commit' (the one that last changed its config.json), 'file_sha256' (of config.json), 'manifest_sha256', 'program_sha256', 'replayed_at' (the registration's created_at: it followed the replay),
+    'host' (where it was registered), 'boot_id': None, 'tool_commit' (the checkout it was registered from)} or None."""
+    folder = os.path.join(repo, *REGISTRATIONS_REL.split('/'))
+    try:
+        names = sorted(n for n in os.listdir(folder) if os.path.isdir(os.path.join(folder, n)))
+    except OSError:
+        return None
+    texts = pin.get('selfcheck') if isinstance(pin.get('selfcheck'), dict) else {}
+    best = None
+    for name in names:
+        rel, raws = f'{REGISTRATIONS_REL}/{name}', {}
+        try:
+            for f in ('config.json', 'manifest.json', 'manifest.sha256'):
+                with open(os.path.join(folder, name, f), 'rb') as fh:
+                    raws[f] = fh.read()
+            cfg, man = json.loads(raws['config.json'].decode('utf-8')), json.loads(raws['manifest.json'].decode('utf-8'))
+        except (OSError, ValueError):
+            continue
+        words = raws['manifest.sha256'].decode('utf-8', 'replace').split()
+        if not words or words[0] != hashlib.sha256(raws['manifest.json']).hexdigest() or not registration_fits(cfg, man, program_sha, texts, specs):
+            continue
+        commits = [commit_with_file(repo, f'{rel}/{f}', raw) for f, raw in raws.items()]
+        if None in commits:
+            continue
+        when = man.get('created_at') if isinstance(man.get('created_at'), str) else ''
+        if best is None or (when, name) > best[0]:
+            best = ((when, name), dict(kind='registration', path=rel, commit=commits[0], file_sha256=hashlib.sha256(raws['config.json']).hexdigest(), manifest_sha256=words[0],
+                                       program_sha256=program_sha, replayed_at=man.get('created_at'), host=cfg['slow_report'].get('registered_on'), boot_id=None,
+                                       tool_commit=man.get('repo_commit')))
+    return best[1] if best else None
+
+
+def accepted_selfcheck_record(repo, program_sha, pin, specs):
+    """The committed evidence that stands in for a replay of both self-checks: a record file of one (committed_selfcheck_record), else the committed registration of an earlier slow report on this
+    very program (committed_registration_record). None when there is neither."""
+    return committed_selfcheck_record(repo, program_sha, pin, specs) or committed_registration_record(repo, program_sha, pin, specs)
 
 
 def keep_record(repo, program, program_sha, texts, routes, now, say):
@@ -1630,6 +1707,11 @@ SELFCHECK_HOW = (('given', 'copied from the pin, not replayed: the pin says it w
 def selfcheck_how(source, pin_state=None, record=None):
     """How a self-check text came to be in the registration, for the page. `record` (the registration's selfcheck_record) says it was accepted from a committed record of an earlier replay, and
     then the manifest's own source line ('replayed ... just before registration', which strength_prereg.py writes for every text it is told was replayed) is not what happened."""
+    if isinstance(record, dict) and record.get('path') and record.get('kind') == 'registration':
+        text = (f"accepted from the committed registration `{record['path']}` (commit {str(record.get('commit'))[:12]}): replayed there by slow_report.py on "
+                f"{record.get('host') or 'a machine not recorded'} and registered at {record.get('replayed_at') or 'a time not recorded'} for a program with this sha256, equal to the committed pin; "
+                'its config.json and manifest.json are committed files, not signed, and this registration did not replay them again')
+        return text if pin_state == 'yes' else text.replace('the committed pin', 'the pin file in use (NOT the committed pin: test use)')
     if isinstance(record, dict) and record.get('path'):
         text = (f"accepted from the committed record `{record['path']}` (commit {str(record.get('commit'))[:12]}): replayed there by slow_report.py on "
                 f"{record.get('host') or 'a machine not recorded'} at {record.get('replayed_at') or 'a time not recorded'} on a program with this sha256, equal to the committed pin; "
@@ -1791,7 +1873,7 @@ def write_slow_report(rundir, out=None, pin_check=None):
     if sr.get('program_route') == 'rebuilt':
         host_ = f" ({sr['registered_on']})" if sr.get('registered_on') else ''
         rr_ = sr.get('selfcheck_record') if isinstance(sr.get('selfcheck_record'), dict) else None
-        replayed_ = (f"were replayed earlier by slow_report.py (committed record `{rr_.get('path')}`, commit {str(rr_.get('commit'))[:12]}, on {rr_.get('host') or 'a machine not recorded'})" if rr_
+        replayed_ = (f"were replayed earlier by slow_report.py ({record_label(rr_)} `{rr_.get('path')}`, commit {str(rr_.get('commit'))[:12]}, on {rr_.get('host') or 'a machine not recorded'})" if rr_
                      else f"were replayed on the registering machine{host_}")
         P(f"- The program is NOT the pinned binary (`{sr.get('pinned_program')}`, sha256 `{str(sr.get('pinned_program_sha256'))[:12]}`): its build record says it is a rebuild of the pinned source, and it was accepted only because "
           f"that record has the pinned engine tree and harness source and both self-checks {replayed_} and equal {pin_digests(sr.get('pin_committed'))}, "
@@ -1908,9 +1990,9 @@ def selfcheck_only(a, pin, repo, say, now):
     school_days = parse_days(a.school_days if a.school_days is not None else DEFAULT_SCHOOL_DAYS)
     if school_rule == 'on' and school_days:
         chicago()  # fail now, with the clear message, not hours in (NoTimeZoneDatabase becomes a REFUSED in main)
-    existing = None if a.selfcheck else committed_selfcheck_record(repo, program_sha, pin, specs)
+    existing = None if a.selfcheck else accepted_selfcheck_record(repo, program_sha, pin, specs)
     if existing:
-        say(f"already recorded: the committed record `{existing['path']}` (commit {existing['commit'][:12]}) is for a program with this sha256 ({program_sha[:12]}) and has both self-check texts of "
+        say(f"already recorded: the {record_label(existing)} `{existing['path']}` (commit {existing['commit'][:12]}) is for a program with this sha256 ({program_sha[:12]}) and has both self-check texts of "
             f"{pin_digests(pin_state['state'])}, so a registration of {pin_run['program']} replays nothing; nothing was replayed here (--selfcheck replays anyway)")
         return 0
     say(f"program {pin_run['program']} (sha256 {program_sha[:12]}) is NOT the pinned binary (sha256 {pin['program_sha256'][:12]}): its build record "
@@ -1943,7 +2025,7 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
     ap.add_argument('--out-root', help='where run directories go (default: <repo>/rl/results/slow_reports)')
     ap.add_argument('--date', help="YYYY-MM-DD for the run directory name (default: today in Chicago, or the UTC date on a machine without the time zone database)")
     ap.add_argument('--seed-base', type=int)
-    ap.add_argument('--selfcheck', action='store_true', help='replay the pinned self-check games instead of recording the pinned text (hours for kx3), even when a committed record of the program has them')
+    ap.add_argument('--selfcheck', action='store_true', help='replay the pinned self-check games instead of recording the pinned text (hours for kx3), even when a committed record of the program (or the committed registration of an earlier slow report on it) has them')
     ap.add_argument('--program', help='a REBUILD of the pinned build made with rl/strength/build.sh (for example on the cloud), used instead of the pin\'s path; when its sha256 is not the pinned '
                                       'one it must have its build record (PROGRAM.build.json, written by build.sh) with the pinned engine tree and harness source, and both self-checks are '
                                       'replayed on this machine and must equal the committed pin\'s digests (this forces --selfcheck), unless a COMMITTED record of such a replay of a program '
@@ -1954,7 +2036,7 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
                          f'committed record then replays nothing. Takes no deck file and no --dir')
     ap.add_argument('--whole-selfcheck', action='store_true',
                     help='replay the 12 self-check games of each pilot in one run of the program, as before (not resumable), instead of a game at a time; a game that cannot be taken apart again '
-                         'falls back to this by itself. Says how, not whether: a committed record of the program is still taken (--selfcheck replays regardless)')
+                         'falls back to this by itself. Says how, not whether: a committed record of the program, or the committed registration of an earlier slow report on it, is still taken (--selfcheck replays regardless)')
     ap.add_argument('--register-only', action='store_true')
     ap.add_argument('--report-only', action='store_true', help='with --dir: write the page from the games so far and play nothing')
     ap.add_argument('--dry-run', action='store_true', help='print the plan (or, with --dir, where the run stands); write nothing')
@@ -2087,11 +2169,11 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
             say('school-morning rule: OFF for this run (it never pauses for school mornings; the choice is recorded in the registration and carried by the resume command)')
         specs = sorted({pin['pilot'], pin['reference']})
         # a rebuild whose very sha256 has a COMMITTED record of both self-checks replayed, equal to the committed pin's texts, is not replayed again (--selfcheck replays regardless)
-        record = committed_selfcheck_record(repo, program_sha, pin, specs) if route == 'rebuilt' and not a.selfcheck else None
+        record = accepted_selfcheck_record(repo, program_sha, pin, specs) if route == 'rebuilt' and not a.selfcheck else None
         replay = (a.selfcheck or route == 'rebuilt') and record is None
         say(f"pin committed: {pin_state['state']} (rl/strength/slow_report_pin.json sha256 {pin_state['sha256'][:12]}" + ('; byte-equal to HEAD' if pin_state['state'] == 'yes' else f"; {pin_state['detail']}") + ')')
         if route == 'rebuilt':
-            checked = (f"both self-checks will be accepted from the committed record {record['path']} (commit {record['commit'][:12]}), made for a program with this sha256: nothing is replayed"
+            checked = (f"both self-checks will be accepted from the {record_label(record)} {record['path']} (commit {record['commit'][:12]}), made for a program with this sha256: nothing is replayed"
                        if record else
                        f"both self-checks will be replayed on this machine against {pin_digests(pin_state['state'])} before anything is registered (hours for kx3)")
             say(f"program {pin_run['program']} (sha256 {program_sha[:12]}) is NOT the pinned binary (sha256 {pin['program_sha256'][:12]}): its build record "
@@ -2107,8 +2189,8 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
         given, how = 'pin', 'pin'
         made_root = not os.path.exists(out_root)
         if record:
-            given, how = {spec: pin['selfcheck'][spec] for spec in specs}, 'replayed'  # (strength_prereg.py takes a rebuild's texts only so; build_config names the record)
-            say(f"self-check: accepted from the committed record `{record['path']}` (commit {record['commit'][:12]}): replayed by slow_report.py on {record.get('host') or 'a machine not recorded'} "
+            given, how = {spec: pin['selfcheck'][spec] for spec in specs}, f"record {record['path']} {record['commit']}"  # (strength_prereg.py words these as accepted from the record)
+            say(f"self-check: accepted from the {record_label(record)} `{record['path']}` (commit {record['commit'][:12]}): replayed by slow_report.py on {record.get('host') or 'a machine not recorded'} "
                 f"at {record.get('replayed_at') or 'a time not recorded'} on a program with this sha256, and equal to {pin_digests(pin_state['state'])}; not replayed again")
         elif replay:
             deadline = selfcheck_deadline(school_rule, school_days, now)

@@ -7024,7 +7024,7 @@ class SelfcheckRecords(PerGameFixture):
         self.assertEqual(b['selfcheck_record'], {'path': rel, 'commit': commit, 'file_sha256': sha(os.path.join(self.repo, *rel.split('/'))), 'program_sha256': sha(self.cloud),
                                                    'replayed_at': '2026-10-09T22:30:00Z', 'host': 'cloud-box-1', 'boot_id': 'b' * 36, 'tool_commit': 'a' * 40})
         cfg = json.loads(read(os.path.join(d, 'config.json')))
-        self.assertEqual((cfg['selfcheck_given'], cfg['selfcheck_given_program_sha256'], cfg['selfcheck_how']), (self.pin['selfcheck'], sha(self.cloud), 'replayed'))
+        self.assertEqual((cfg['selfcheck_given'], cfg['selfcheck_given_program_sha256'], cfg['selfcheck_how']), (self.pin['selfcheck'], sha(self.cloud), f'record {rel} {commit}'))
         self.assertEqual(b['program_route'], 'rebuilt')
         self.assertIn(f'accepted because both self-checks equal {COMMITTED_DIGESTS}: replayed by slow_report.py on cloud-box-1 and recorded in {rel} (commit {commit[:12]}), '
                       'for a program with this same sha256; the record is a committed file, not signed, and this registration did not replay them again', man['engine'])
@@ -7033,14 +7033,15 @@ class SelfcheckRecords(PerGameFixture):
         self.assertIn(f'Self-check: accepted from the committed record {rel} (commit {commit[:12]})', prereg, 'the registration says it in the summary line')
         self.assertIn(f'accepted from the committed record `{rel}`', out)
         self.assertEqual(sr.manifest_provenance_problems(man), [])
-        # strength_prereg.py (not changed) words every rebuild's texts "replayed ... just before registration"; the same document says what that means here
-        wording = 'replayed by slow_report.py on the registering machine just before registration'
+        # strength_prereg.py takes selfcheck_how 'record <path> <commit>' and words the texts as accepted from the record, not as "replayed ... just before registration"
+        source = (f'accepted from the committed record {rel} (commit {commit[:12]}): an earlier replay by slow_report.py of a program with this sha256, '
+                  'equal to the committed pin; not replayed at this registration')
+        self.assertEqual(man['selfcheck_source'], {'km3': source, 'kx3': source})
         for spec in ('km3', 'kx3'):
-            self.assertIn(wording, man['selfcheck_source'][spec])
-            self.assertRegex(prereg, r'(?m)^- .*' + spec + r'.*' + re.escape(wording))  # (the line of the pre-registration that carries it)
-        self.assertIn(f'Where this document, manifest.json (selfcheck_source) and REPORT.md say "{wording}" (strength_prereg.py\'s fixed wording for a rebuild), that means the earlier replay '
-                      'named here, not a replay at this registration', man['engine'])
-        self.assertIn(man['engine'], prereg, 'and the pre-registration carries that sentence, next to the lines it explains')
+            self.assertRegex(prereg, r'(?m)^- .*' + spec + r'.*' + re.escape(f'({source})'))  # (the line of the pre-registration that carries it)
+        self.assertNotIn('replayed by slow_report.py on the registering machine', prereg + json.dumps(man))
+        self.assertNotIn('Where this document', man['engine'], 'the old sentence that explained the wording is not needed')
+        self.assertIn(man['engine'], prereg)
 
     def test_the_whole_run_with_a_record_writes_a_page_that_names_it(self):
         rel, commit = self.put_record()
@@ -7201,6 +7202,305 @@ class SelfcheckRecords(PerGameFixture):
         self.assertEqual(r.returncode, 0, r.stderr)
         for word in ('--selfcheck-only', '--whole-selfcheck', RECORDS_DIR):
             self.assertIn(word, r.stdout)
+
+
+class RegistrationRecords(PerGameFixture):
+    """The committed registration of an earlier slow report as the record (Oct 11): a registration of a rebuilt program whose very sha256 already has a COMMITTED registration folder in
+    rl/results/slow_reports/ (config.json, manifest.json and manifest.sha256 unedited at HEAD, config selfcheck_how 'replayed' against the committed pin, both texts the pin's, the config's and the
+    manifest's program sha256 this program's) replays nothing and names that registration. Any difference replays as before. The folder is a real one: the first registration of each test is a
+    genuine replay, with the fake program."""
+    FOLDER = '2026-10-10_my-list'
+    REL = f'rl/results/slow_reports/{FOLDER}'
+    LATER = '2026-10-11_my-list'
+
+    def setUp(self):
+        super().setUp()
+        self.commit_pin()
+
+    def first(self, commit=True):
+        """A genuine replay registration (both pilots replayed, 24 games), committed with the folder as the registration wrote it. The record file that replay also wrote is removed, so that
+        the registration is the only thing a later registration can find."""
+        code, out, err = self.cli('--deals', '1', '--register-only', '--program', self.cloud)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual([s for s, p in self.replayed], ['km3', 'kx3'])
+        shutil.rmtree(os.path.join(self.repo, *RECORDS_DIR.split('/')))
+        self.replayed.clear()
+        self.forget_calls()
+        if commit:
+            self.git('add', self.REL)
+            self.git('commit', '-q', '-m', 'the first slow report, registered')
+
+    def later(self, *extra, date='2026-10-11', **kw):
+        """Another registration of the same deck on another date (another run directory), with the same rebuilt program."""
+        return self.cli('--deals', '1', '--register-only', '--program', self.cloud, '--date', date, *extra, date=False, **kw)
+
+    def folder_path(self, *parts):
+        return os.path.join(self.repo, *self.REL.split('/'), *parts)
+
+    def edit_json(self, name, fn, commit=True, resha=False):
+        path = self.folder_path(name)
+        data = json.loads(read(path))
+        fn(data)
+        write(path, json.dumps(data, indent=1, ensure_ascii=False) + '\n')
+        if resha:
+            write(self.folder_path('manifest.sha256'), sha(self.folder_path('manifest.json')) + '  manifest.json\n')
+        if commit:
+            self.git('add', '-A', self.REL)
+            self.git('commit', '-q', '-m', f'edit {name}')
+
+    def config_commit(self):
+        return self.git('log', '-n', '1', '--format=%H', '--', f'{self.REL}/config.json')
+
+    def assert_replays(self, *extra, date='2026-10-11'):
+        code, out, err = self.later(*extra, date=date)
+        self.assertEqual(code, 0, out + err)
+        self.assertEqual([s for s, p in self.replayed], ['km3', 'kx3'], 'both pilots were replayed (the games the first registration kept are reused: the calls to the program are not counted)')
+        self.assertNotIn('selfcheck_record', self.manifest(self.rundir(f'{date}_my-list'))['slow_report'])
+        self.assertEqual(json.loads(read(os.path.join(self.rundir(f'{date}_my-list'), 'config.json')))['selfcheck_how'], 'replayed')
+
+    # ------------------------------------------------------------------------------------------------ using one
+    def test_a_committed_registration_for_this_sha256_makes_the_next_registration_replay_nothing_and_names_it(self):
+        self.first()
+        code, out, err = self.later()
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.replayed, [], 'no replay')
+        self.assertEqual(self.calls(), [], 'no program run at all')
+        man, first = self.manifest(self.rundir(self.LATER)), self.manifest(self.rundir(self.FOLDER))
+        b, commit = man['slow_report'], self.config_commit()
+        self.assertEqual(man['selfcheck'], self.pin['selfcheck'])
+        self.assertEqual(b['selfcheck_how'], f'record {self.REL} {commit}')
+        self.assertEqual(b['selfcheck_record'], {'kind': 'registration', 'path': self.REL, 'commit': commit, 'file_sha256': sha(self.folder_path('config.json')),
+                                                   'manifest_sha256': sha(self.folder_path('manifest.json')), 'program_sha256': sha(self.cloud), 'replayed_at': first['created_at'],
+                                                   'host': socket.gethostname(), 'boot_id': None, 'tool_commit': first['repo_commit']})
+        cfg = json.loads(read(os.path.join(self.rundir(self.LATER), 'config.json')))
+        self.assertEqual((cfg['selfcheck_given'], cfg['selfcheck_given_program_sha256'], cfg['selfcheck_how']), (self.pin['selfcheck'], sha(self.cloud), f'record {self.REL} {commit}'))
+        self.assertEqual(b['program_route'], 'rebuilt')
+        self.assertIn(f'accepted because both self-checks equal {COMMITTED_DIGESTS}: replayed by slow_report.py on {socket.gethostname()} for the slow report registered in {self.REL} '
+                      f'(commit {commit[:12]}), for a program with this same sha256; that registration\'s config.json and manifest.json are committed files, not signed, and this registration '
+                      'did not replay them again', man['engine'])
+        prereg = read(os.path.join(self.rundir(self.LATER), 'PREREGISTRATION.md'))
+        self.assertIn(f'Self-check: accepted from the committed registration {self.REL} (commit {commit[:12]})', prereg)
+        source = (f'accepted from the committed record {self.REL} (commit {commit[:12]}): an earlier replay by slow_report.py of a program with this sha256, '
+                  'equal to the committed pin; not replayed at this registration')
+        self.assertEqual(man['selfcheck_source'], {'km3': source, 'kx3': source})
+        self.assertNotIn('replayed by slow_report.py on the registering machine', prereg + json.dumps(man))
+        self.assertIn(f'accepted from the committed registration `{self.REL}`', out)
+        self.assertEqual(sr.manifest_provenance_problems(man), [])
+
+    def test_the_whole_run_writes_a_page_that_names_the_registration(self):
+        self.first()
+        code, out, err = self.cli('--deals', '1', '--program', self.cloud, '--date', '2026-10-12', date=False, spawn=self.spawned())
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.replayed, [])
+        commit = self.config_commit()
+        page = read(os.path.join(self.rundir('2026-10-12_my-list'), 'SLOW_REPORT.md'))
+        how = (f'accepted from the committed registration `{self.REL}` (commit {commit[:12]}): replayed there by slow_report.py on {socket.gethostname()} and registered at '
+               f'{self.manifest(self.rundir(self.FOLDER))["created_at"]} for a program with this sha256, equal to the committed pin; its config.json and manifest.json are committed files, '
+               'not signed, and this registration did not replay them again')
+        for spec in ('km3', 'kx3'):
+            self.assertIn(f"- Self-check of `{spec}`: `{self.pin['selfcheck'][spec]}` ({how})", page)
+        self.assertIn(f'both self-checks were replayed earlier by slow_report.py (committed registration `{self.REL}`, commit {commit[:12]}, on {socket.gethostname()}) and equal {COMMITTED_DIGESTS}', page)
+        self.assertNotIn('replayed on the registering machine', page)
+        self.assertEqual(self.cli('--dir', self.rundir('2026-10-12_my-list'), '--report-only', deck=False)[0], 0, 'and a later call of the run accepts such a registration')
+
+    def test_the_page_words_for_a_registration_under_a_pin_that_is_not_the_committed_one_say_so(self):
+        record = dict(kind='registration', path='rl/results/slow_reports/x', commit='c' * 40, host='box', replayed_at='2026-10-09T22:30:00Z')
+        yes, no = sr.selfcheck_how('replayed', 'yes', record), sr.selfcheck_how('replayed', 'no', record)
+        self.assertIn('equal to the committed pin;', yes)
+        self.assertNotIn('NOT the committed pin', yes)
+        self.assertIn('equal to the pin file in use (NOT the committed pin: test use);', no)
+
+    def test_selfcheck_only_and_the_dry_run_say_it_is_already_recorded_by_the_registration(self):
+        self.first()
+        code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, deck=False)
+        self.assertEqual(code, 0, err + out)
+        self.assertIn(f'already recorded: the committed registration `{self.REL}` (commit {self.config_commit()[:12]})', out)
+        self.assertEqual(self.calls(), [])
+        code, out, err = self.later('--dry-run')
+        self.assertEqual(code, 0, err + out)
+        self.assertIn(f'both self-checks will be accepted from the committed registration {self.REL} (commit {self.config_commit()[:12]}), made for a program with this sha256: nothing is replayed', out)
+        self.assertEqual(self.calls(), [])
+        self.assertFalse(os.path.exists(self.rundir(self.LATER)))
+        code, out, err = self.cli('--selfcheck-only', '--program', self.cloud, '--selfcheck', deck=False)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual([s for s, p in self.replayed], ['km3', 'kx3'], '--selfcheck replays anyway')
+
+    def test_the_registration_is_for_the_bytes_not_for_the_path(self):
+        self.first()
+        elsewhere = os.path.join(self.tmp, 'cloud_b', 'strength')
+        self.put_program(elsewhere, self.BUILT)
+        self.assertEqual(sha(elsewhere), sha(self.cloud))
+        code, out, err = self.cli('--deals', '1', '--register-only', '--program', elsewhere, '--date', '2026-10-11', date=False)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.replayed, [])
+        self.assertEqual(self.manifest(self.rundir(self.LATER))['slow_report']['selfcheck_how'], f'record {self.REL} {self.config_commit()}')
+
+    def test_a_record_file_is_taken_before_a_registration(self):
+        self.first()
+        rel = f'{RECORDS_DIR}/selfcheck_x.json'
+        rec = {'schema': 1, 'kind': 'slow_report_selfcheck_record', 'program': self.cloud, 'program_sha256': sha(self.cloud), 'selfcheck': dict(self.pin['selfcheck']),
+               'tool_commit': 'a' * 40, 'replayed_at': '2026-10-09T22:30:00Z', 'host': 'cloud-box-1', 'boot_id': 'b' * 36, 'routes': {'km3': 'per-game', 'kx3': 'per-game'}}
+        write(os.path.join(self.repo, *rel.split('/')), json.dumps(rec, indent=1) + '\n')
+        self.git('add', rel)
+        self.git('commit', '-q', '-m', 'a record')
+        self.assertEqual(self.later()[0], 0)
+        b = self.manifest(self.rundir(self.LATER))['slow_report']
+        self.assertEqual(b['selfcheck_how'], f'record {rel} {self.git("rev-parse", "HEAD")}')
+        self.assertNotIn('kind', b['selfcheck_record'], 'the record file, not the registration')
+
+    def test_of_two_good_registrations_the_later_is_named(self):
+        self.first()
+        self.assertEqual(self.later('--selfcheck')[0], 0, 'a second genuine replay registration')
+        self.assertEqual([s for s, p in self.replayed], ['km3', 'kx3'])
+        self.replayed.clear()
+        shutil.rmtree(os.path.join(self.repo, *RECORDS_DIR.split('/')))
+        self.git('add', f'rl/results/slow_reports/{self.LATER}')
+        self.git('commit', '-q', '-m', 'the second slow report, registered')
+        self.assertEqual(self.later(date='2026-10-12')[0], 0)
+        self.assertEqual(self.replayed, [])
+        rec = self.manifest(self.rundir('2026-10-12_my-list'))['slow_report']['selfcheck_record']
+        self.assertEqual(rec['path'], f'rl/results/slow_reports/{self.LATER}')
+
+    def test_a_registration_that_only_used_a_record_is_not_a_replay_of_its_own(self):
+        self.first()
+        self.assertEqual(self.later()[0], 0)
+        self.assertEqual(self.replayed, [])
+        self.git('add', f'rl/results/slow_reports/{self.LATER}')
+        self.git('rm', '-r', '-q', self.REL)
+        self.git('commit', '-q', '-m', 'only the derived registration is left')
+        self.assert_replays(date='2026-10-12')
+
+    # ------------------------------------------------------------------------------------------------ not using one
+    def test_a_registration_that_is_not_committed_is_not_used(self):
+        self.first(commit=False)
+        self.assert_replays()
+
+    def test_a_registration_whose_config_was_edited_after_it_was_committed_is_not_used(self):
+        self.first()
+        write(self.folder_path('config.json'), read(self.folder_path('config.json')) + ' ')
+        self.assert_replays()
+
+    def test_a_registration_whose_manifest_was_edited_after_it_was_committed_is_not_used(self):
+        self.first()
+        write(self.folder_path('manifest.json'), read(self.folder_path('manifest.json')) + ' ')
+        self.assert_replays()
+
+    def test_a_registration_whose_manifest_and_hash_file_were_edited_together_but_not_committed_is_not_used(self):
+        self.first()
+        write(self.folder_path('manifest.json'), read(self.folder_path('manifest.json')).replace('"stage": "use"', '"stage": "use" '))
+        write(self.folder_path('manifest.sha256'), sha(self.folder_path('manifest.json')) + '  manifest.json\n')
+        self.assert_replays()
+
+    def test_a_registration_without_its_manifest_hash_file_is_not_used(self):
+        self.first()
+        self.git('rm', '-q', f'{self.REL}/manifest.sha256')
+        self.git('commit', '-q', '-m', 'without manifest.sha256')
+        self.assert_replays()
+
+    def test_a_manifest_that_is_not_the_one_its_hash_file_names_is_not_used(self):
+        self.first()
+        write(self.folder_path('manifest.sha256'), 'f' * 64 + '  manifest.json\n')
+        self.git('add', '-A', self.REL)
+        self.git('commit', '-q', '-m', 'a wrong manifest.sha256')
+        self.assert_replays()
+
+    def test_a_registration_of_another_sha256_is_not_used(self):
+        self.first()
+        self.put_program(self.cloud, REAL_FORMAT_PROGRAM + '\n# built again, other bytes\n')
+        self.assert_replays()
+
+    def test_a_folder_that_is_not_a_registration_or_is_not_json_is_not_used(self):
+        self.first()
+        write(os.path.join(self.repo, 'rl', 'results', 'slow_reports', 'x', 'config.json'), 'not json\n')
+        write(os.path.join(self.repo, 'rl', 'results', 'slow_reports', 'y', 'readme.txt'), 'nothing\n')
+        write(os.path.join(self.repo, 'rl', 'results', 'slow_reports', 'z.txt'), 'a file, not a folder\n')
+        self.git('add', '-A', 'rl/results/slow_reports')
+        self.git('commit', '-q', '-m', 'junk beside a good registration')
+        code, out, err = self.later()
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.replayed, [], 'the good registration is still found beside them')
+
+    def test_an_explicit_selfcheck_replays_even_with_a_good_registration(self):
+        self.first()
+        self.assert_replays('--selfcheck')
+
+    def test_a_pin_that_changed_since_the_registration_is_judged_by_the_pin_in_use(self):
+        self.first()
+        pinned = self.pin['selfcheck']['kx3']
+        self.edit_pin(selfcheck=dict(self.pin['selfcheck'], kx3=pinned[:-1] + ('0' if pinned[-1] != '0' else '1')))
+        self.commit_pin()
+        code, out, err = self.later()
+        self.assertIn('does not match the pin', str(code), 'the registration no longer equals the pin, so both are replayed, and the program fails the new pin')
+        self.assertTrue(self.replayed, 'the self-checks were replayed, not accepted')
+
+    def test_the_pinned_route_never_looks_for_a_registration(self):
+        self.first()
+        code, out, err = self.cli('--deals', '1', '--register-only', '--date', '2026-10-11', date=False)
+        self.assertEqual(code, 0, err + out)
+        self.assertEqual(self.manifest(self.rundir(self.LATER))['slow_report']['program_route'], 'pinned')
+        self.assertNotIn('selfcheck_record', self.manifest(self.rundir(self.LATER))['slow_report'])
+
+    def test_a_registration_that_names_a_registration_for_another_program_is_flagged(self):
+        self.first()
+        self.assertEqual(self.later()[0], 0)
+        man = self.manifest(self.rundir(self.LATER))
+        self.assertEqual(sr.manifest_provenance_problems(man), [])
+        bad = json.loads(json.dumps(man))
+        bad['slow_report']['selfcheck_record']['program_sha256'] = '3' * 64
+        problems = sr.manifest_provenance_problems(bad)
+        self.assertEqual(len(problems), 1, problems)
+        self.assertIn('self-checks were accepted from a record for a program with sha256 333333333333', problems[0])
+
+
+class RealRegistration(unittest.TestCase):
+    """The registration the change is for: Runner 1's rebuilt kx3 (build c3d51c4be7ff), brew 08, committed in rl/results/slow_reports/. Skipped in a checkout that does not have the folder."""
+    REL = 'rl/results/slow_reports/2026-10-09_brew-08-entei-rainbow-cave'
+
+    def test_the_committed_brew_08_registration_stands_in_for_a_replay_of_the_pins_texts_on_its_program(self):
+        folder = os.path.join(sr.ROOT, *self.REL.split('/'))
+        if not os.path.isdir(folder):
+            self.skipTest(f'{self.REL} is not in this checkout')
+        cfg, man = json.loads(read(os.path.join(folder, 'config.json'))), json.loads(read(os.path.join(folder, 'manifest.json')))
+        pin = json.loads(read(os.path.join(HERE, 'slow_report_pin.json')))
+        prog = cfg['program_sha256']
+        self.assertTrue(prog.startswith('c3d51c4be7ff'), prog)
+        specs = sorted({pin['pilot'], pin['reference']})
+        self.assertTrue(sr.registration_fits(cfg, man, prog, pin['selfcheck'], specs), 'the real folder is accepted for the program it was registered with')
+        self.assertFalse(sr.registration_fits(cfg, man, '3' * 64, pin['selfcheck'], specs), 'and for no other')
+        with open(os.path.join(folder, 'manifest.json'), 'rb') as f:
+            self.assertEqual(hashlib.sha256(f.read()).hexdigest(), read(os.path.join(folder, 'manifest.sha256')).split()[0], 'its manifest.sha256 is the hash of its manifest.json')
+
+
+def _not_used(file_name, edit):
+    def test(self):
+        self.first()
+        self.edit_json(file_name, edit, resha=file_name == 'manifest.json')
+        self.assert_replays()
+    return test
+
+
+_other_text = lambda key: (lambda d: d[key].update(kx3=d[key]['kx3'].replace('digest=', 'digest=0')))
+# one test each: a committed registration that differs from a good one in this one thing is not used, and both pilots are replayed as before
+NOT_USED = {
+    'the_configs_program_sha256_is_another': ('config.json', lambda d: d.update(program_sha256='3' * 64)),
+    'the_configs_selfcheck_given_program_sha256_is_another': ('config.json', lambda d: d.update(selfcheck_given_program_sha256='3' * 64)),
+    'the_manifests_program_sha256_is_another': ('manifest.json', lambda d: d.update(program_sha256='3' * 64)),
+    'a_text_in_the_config_is_not_the_pins': ('config.json', _other_text('selfcheck_given')),
+    'a_text_in_the_manifest_is_not_the_pins': ('manifest.json', _other_text('selfcheck')),
+    'a_text_is_missing_from_the_config': ('config.json', lambda d: d['selfcheck_given'].pop('km3')),
+    'selfcheck_how_is_not_replayed': ('config.json', lambda d: d.update(selfcheck_how='pin')),
+    'there_is_no_selfcheck_how': ('config.json', lambda d: d.pop('selfcheck_how')),
+    'the_block_says_the_texts_came_from_a_record': ('config.json', lambda d: d['slow_report'].update(selfcheck_how='record x ' + 'c' * 40)),
+    'the_block_carries_a_record': ('config.json', lambda d: d['slow_report'].update(selfcheck_record={'path': 'x'})),
+    'the_manifest_says_strength_prereg_ran_them': ('manifest.json', lambda d: d['selfcheck_source'].update(kx3='run by strength_prereg.py')),
+    'the_manifest_has_no_sources': ('manifest.json', lambda d: d.pop('selfcheck_source')),
+    'the_pin_was_not_the_committed_one': ('config.json', lambda d: d['slow_report'].update(pin_committed='bypassed')),
+    'there_is_no_slow_report_block': ('config.json', lambda d: d.pop('slow_report')),
+    'the_config_is_stage_dev': ('config.json', lambda d: d.update(stage='dev')),
+    'the_manifest_is_stage_dev': ('manifest.json', lambda d: d.update(stage='dev')),
+}
+for _name, (_file, _edit) in NOT_USED.items():
+    setattr(RegistrationRecords, f'test_a_registration_is_not_used_when_{_name}', _not_used(_file, _edit))
 
 
 if __name__ == '__main__':
