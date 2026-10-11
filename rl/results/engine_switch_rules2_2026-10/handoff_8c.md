@@ -2,7 +2,7 @@
 
 Rebuilt by sitting2.sh (`sitting2_check.py handoff`) at every checkpoint from the per-scan-set rows (`handoff_<set>_<bot>.tsv`); every changed game is a row of `handoff_8c.tsv`. Nothing here is a verdict: 8c decides each row by the rule below (PLAN.md step 8c: (a) coin_probe v2, (b) the classifier, (e) the revert check, then hand traces for whatever the rule can't settle).
 
-**CONDITION 3 (the Oct 1 ruling, carried by Dustin's yes to question 1, PLAN.md section 6's precedents and section 9, question 1: a changed game where only round 2's off-gate counters fired): 2 games (changed, an off-gate counter fired, no reach2 counter); each needs a trace meeting both halves in 8c; a pin-gate item, never a stop here.**
+**CONDITION 3 (the Oct 1 ruling, carried by Dustin's yes to question 1, PLAN.md section 6's precedents and section 9, question 1: a changed game where only round 2's off-gate counters fired): 111 games (changed, an off-gate counter fired, no reach2 counter); each needs a trace meeting both halves in 8c; a pin-gate item, never a stop here.**
 
 ## Totals
 
@@ -12,6 +12,7 @@ Every changed game needs its first difference placed (tick k, its turn, the caus
 |---|---|---:|---:|---:|---:|---:|---:|
 | 8b | km3 | 45 | 45 | 43 | 2 | 0 | 0 |
 | 8b | k3 | 44 | 44 | 43 | 0 | 0 | 1 |
+| 9 | km3 | 1044 | 1042 | 935 | 109 | 0 | 0 |
 
 Changed games in which each reach2 counter fired (anywhere in the game; 8c places it against the first difference):
 
@@ -19,6 +20,7 @@ Changed games in which each reach2 counter fired (anywhere in the game; 8c place
 |---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
 | 8b | km3 | 34 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 6 | 6 | 0 | 2 | 0 | 0 | 1 |
 | 8b | k3 | 31 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 6 | 6 | 2 | 0 | 0 | 0 | 4 |
+| 9 | km3 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 521 | 763 | 0 | 0 | 0 |
 
 ## The engines
 
@@ -115,6 +117,8 @@ The rows: `handoff_8c.tsv` (columns: step, bot, pairing, i, seed, held_file, hel
 - `engine_switch_rules2_2026-10/08a9b3a_8_will_old_k3.jsonl`: 750 games, sha256 a6b99d059067906f10b292217abf27ff1dff78875b92bd5140de2895e1363b2d
 - `engine_switch_rules2_2026-10/08a9b3a_8_will_new_k3.jsonl`: 750 games, sha256 a6b99d059067906f10b292217abf27ff1dff78875b92bd5140de2895e1363b2d
 - `engine_switch_rules2_2026-10/08a9b3a_8_will_watch_k3.jsonl`: 750 games, sha256 0b7f8ca7cb42a5d6d6e9b31fc145a3b599eee9d089b1361277537ef8e6355cf2
+- `engine_switch_rules2_2026-10/08a9b3a_cov_b2e_km3.jsonl`: 48000 games, sha256 84247fb4a3a2ed69aa6c9c5622b34b488422d544b7a7b02b704882f70081eca1
+- `engine_switch_rules2_2026-10/08a9b3a_9_watch_b2e_km3.jsonl`: 8000 games, sha256 fec6a5b8d43b9bb80a9a4cd6d199e678fd137881059c7d5e80b21d3631ef4905
 - `engine_switch_rules_2026-10/5a18d31_8_new_km3.jsonl`: 16000 games, sha256 22ac692917ecbd0cc0f29b05165cb68a49ea58854d0cd4b05d8a59485f508f71
 - `engine_switch_rules_2026-10/5a18d31_8_new_k3.jsonl`: 8000 games, sha256 64dc6dcc38711279ab5332850d388a0d7840f85e8de1875c99a43bc8b7cc68b3
 - `engine_switch_rules_2026-10/5a18d31_8b_new_km3.jsonl`: 160 games, sha256 bf5405377a887ac9afb379b1a45573647720c07928ea989b1d56698c07577eff
