@@ -7,6 +7,8 @@ sys.path.insert(0, HERE)
 import split_collect as sc  # noqa: E402
 
 PROGRAM_SHA = "ab" * 32
+STAMPED = "2026-10-09T21:00:00Z"   # before every record's started_at
+SEALED = "2026-10-11T00:00:00Z"    # after them
 
 
 SELF = {"km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
@@ -32,6 +34,17 @@ def record(job, winner="deck", wall=1.25, started="2026-10-09T22:00:00Z", ms=(3.
             "log": [{"t": 1, "o": 1, "a": "EndTurn", "n": 1, "ms": ms[0], "p": [0, 0], "act": "", "b": 0}]}
 
 
+def reseal(w):
+    """Seals a worker folder again after a test changed its files during 'play'."""
+    with open(os.path.join(w, "worker_seal.json")) as f:
+        seal = json.load(f)
+    seal["games_sha256"] = sc.sha256_file(os.path.join(w, "games.jsonl"))
+    errs = os.path.join(w, "errors.jsonl")
+    seal["errors_sha256"] = sc.sha256_file(errs) if os.path.isfile(errs) else None
+    with open(os.path.join(w, "worker_seal.json"), "w") as f:
+        json.dump(seal, f)
+
+
 class Scratch(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -46,19 +59,34 @@ class Scratch(unittest.TestCase):
             json.dump(m, f, indent=1)
         return path
 
-    def worker(self, name, mpath, records, only=(), program_sha256=PROGRAM_SHA, manifest_sha256=None, tail="", selfcheck=None, engine_tree="38af8b0"):
+    def worker(self, name, mpath, records, only=(), program_sha256=PROGRAM_SHA, manifest_sha256=None, tail="", selfcheck=None, engine_tree="38af8b0",
+               stamped_at=STAMPED, decks=None, build_sha=None, seal=True, seal_changes=None):
+        """A worker folder as the recipe leaves it: stamped before play (worker.json), played (games.jsonl), sealed after (worker_seal.json)."""
         w = os.path.join(self.d, name)
         os.makedirs(w)
         with open(os.path.join(w, "games.jsonl"), "w") as f:
             for r in records:
                 f.write(json.dumps(r) + "\n")
             f.write(tail)
+        with open(mpath) as f:
+            m = json.load(f)
+        if decks is None:
+            decks = {d["name"]: d["sha256"] for d in m["decks"] + m["opponents"]}
         stamp = {"worker": name, "manifest_sha256": manifest_sha256 or sc.sha256_file(mpath), "program_sha256": program_sha256,
-                 "only_deck": list(only), "engine_tree": engine_tree}
+                 "only_deck": list(only), "engine_tree": engine_tree, "stamped_at": stamped_at, "decks_sha256": decks,
+                 "build_record_program_sha256": build_sha or program_sha256}
+        if stamped_at is None:
+            del stamp["stamped_at"]
         if selfcheck is not None:
             stamp["selfcheck"] = selfcheck
         with open(os.path.join(w, "worker.json"), "w") as f:
             json.dump(stamp, f)
+        if seal:
+            sealed = {"worker": name, "sealed_at": SEALED, "games_sha256": sc.sha256_file(os.path.join(w, "games.jsonl")), "errors_sha256": None,
+                      "manifest_sha256": stamp["manifest_sha256"], "program_sha256": program_sha256, "decks_sha256": dict(decks)}
+            sealed.update(seal_changes or {})
+            with open(os.path.join(w, "worker_seal.json"), "w") as f:
+                json.dump(sealed, f)
         return w
 
 
@@ -214,15 +242,19 @@ class Merge(Scratch):
         w1 = self.worker("w1", self.mpath, [record(j) for j in self.by_deck["d1"] + self.by_deck["d3"]], only=("d1",))
         w2 = self.worker("w2", self.mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",))
         res = sc.collect(self.mpath, [w1, w2])
-        self.assertEqual({p["kind"] for p in res["problems"]}, {"outside slice"})
+        self.assertEqual({p["kind"] for p in res["problems"]}, {"outside slice", "missing"})
         self.assertEqual(len([p for p in res["problems"] if p["kind"] == "outside slice"]), 8)
+        # F1: a game a worker played outside its slice is not merged
+        self.assertEqual(len([p for p in res["problems"] if p["kind"] == "missing"]), 8)
+        self.assertEqual(len(res["lines"]), 16)
 
     def test_a_worker_on_another_registration_or_program_is_flagged(self):
         w1 = self.worker("w1", self.mpath, [record(j) for j in self.by_deck["d1"] + self.by_deck["d3"]], only=("d1", "d3"), manifest_sha256="cd" * 32)
         w2 = self.worker("w2", self.mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",), program_sha256="ef" * 32)
         res = sc.collect(self.mpath, [w1, w2])
-        kinds = sorted((p["kind"], p.get("worker")) for p in res["problems"])
+        kinds = sorted((p["kind"], p.get("worker")) for p in res["problems"] if p["kind"] != "missing")
         self.assertEqual(kinds, [("manifest", "w1"), ("program", "w2")])
+        self.assertEqual(res["lines"], [])   # F1: neither worker's games are merged
         self.assertFalse(res["complete"])
 
     def test_a_rebuilt_program_with_the_registrations_self_checks_is_a_note_not_a_problem(self):
@@ -239,20 +271,21 @@ class Merge(Scratch):
         w1 = self.worker("w1", self.mpath, [record(j) for j in self.by_deck["d1"] + self.by_deck["d3"]], only=("d1", "d3"))
         w2 = self.worker("w2", self.mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",), program_sha256="ef" * 32, selfcheck=other)
         res = sc.collect(self.mpath, [w1, w2])
-        self.assertEqual([(p["kind"], p["worker"]) for p in res["problems"]], [("program", "w2")])
+        self.assertEqual([(p["kind"], p["worker"]) for p in res["problems"] if p["kind"] != "missing"], [("program", "w2")])
         self.assertIn("k3", res["problems"][0]["detail"])
+        self.assertEqual(len(res["lines"]), 16)   # F1: w2's 8 games are not merged
 
     def test_a_rebuilt_program_missing_a_pilots_self_check_is_a_problem(self):
         w1 = self.worker("w1", self.mpath, [record(j) for j in self.by_deck["d1"] + self.by_deck["d3"]], only=("d1", "d3"))
         w2 = self.worker("w2", self.mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",), program_sha256="ef" * 32, selfcheck={"km3": SELF["km3"]})
         res = sc.collect(self.mpath, [w1, w2])
-        self.assertEqual([(p["kind"], p["worker"]) for p in res["problems"]], [("program", "w2")])
+        self.assertEqual([(p["kind"], p["worker"]) for p in res["problems"] if p["kind"] != "missing"], [("program", "w2")])
 
     def test_a_worker_on_another_engine_tree_is_flagged(self):
         w1 = self.worker("w1", self.mpath, [record(j) for j in self.by_deck["d1"] + self.by_deck["d3"]], only=("d1", "d3"), engine_tree="1234567abcdef")
         w2 = self.worker("w2", self.mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",))
         res = sc.collect(self.mpath, [w1, w2])
-        self.assertEqual([(p["kind"], p["worker"]) for p in res["problems"]], [("engine", "w1")])
+        self.assertEqual([(p["kind"], p["worker"]) for p in res["problems"] if p["kind"] != "missing"], [("engine", "w1")])
 
     def test_with_no_program_in_the_manifest_the_workers_must_agree(self):
         m = manifest(program_sha256=None)
@@ -280,8 +313,224 @@ class Merge(Scratch):
         workers = self.two_workers()
         with open(os.path.join(workers[1], "errors.jsonl"), "w") as f:
             f.write(json.dumps({"key": self.by_deck["d2"][0]["key"], "error": "boom", "at": "x"}) + "\n")
+        reseal(workers[1])   # the errors file is written during play, before the seal
         res = sc.collect(self.mpath, workers)
         self.assertEqual([(p["kind"], p["key"]) for p in res["problems"]], [("error", self.by_deck["d2"][0]["key"])])
+
+
+class Provenance(Scratch):
+    """Reader one's collector findings (SECOND_READ_reader1_opus.md, appendix), Oct 11: F2 the stamp and the records, F1 a flagged worker's
+    games, F3 the engine tree, F4 the decks."""
+
+    def setUp(self):
+        super().setUp()
+        self.m = manifest()
+        self.mpath = self.write_manifest(self.m)
+        self.jobs = sc.expected_jobs(self.m)
+        self.by_deck = {d: [j for j in self.jobs if j["deck"] == d] for d in ("d1", "d2", "d3")}
+
+    def clean_w2(self):
+        return self.worker("w2", self.mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",))
+
+    def w1(self, **kw):
+        return self.worker("w1", self.mpath, [record(j) for j in self.by_deck["d1"] + self.by_deck["d3"]], only=("d1", "d3"), **kw)
+
+    def kinds(self, res):
+        return sorted({(p["kind"], p.get("worker")) for p in res["problems"] if p["kind"] != "missing"})
+
+    # F2: the stamp comes before play and is bound to the records by a seal after play
+    def test_f2_a_stamp_later_than_a_game_is_refused_and_its_games_are_not_merged(self):
+        res = sc.collect(self.mpath, [self.w1(stamped_at="2026-10-09T22:30:00Z"), self.clean_w2()])
+        self.assertEqual(self.kinds(res), [("stamp after play", "w1")])
+        self.assertEqual(len(res["lines"]), 8)
+        self.assertFalse(res["complete"])
+
+    def test_f2_a_stamp_later_than_the_runs_first_start_is_refused(self):
+        w1 = self.w1()
+        with open(os.path.join(w1, "run_log.jsonl"), "w") as f:
+            f.write(json.dumps({"event": "start", "at": "2026-10-09T20:00:00Z"}) + "\n")
+        res = sc.collect(self.mpath, [w1, self.clean_w2()])
+        self.assertEqual(self.kinds(res), [("stamp after play", "w1")])
+
+    def test_f2_a_stamp_without_its_time_is_refused(self):
+        res = sc.collect(self.mpath, [self.w1(stamped_at=None), self.clean_w2()])
+        self.assertEqual(self.kinds(res), [("stamp after play", "w1")])
+
+    def test_f2_a_worker_without_a_seal_is_refused(self):
+        res = sc.collect(self.mpath, [self.w1(seal=False), self.clean_w2()])
+        self.assertEqual(self.kinds(res), [("seal", "w1")])
+        self.assertEqual(len(res["lines"]), 8)
+
+    def test_f2_records_changed_after_the_seal_are_refused(self):
+        w1 = self.w1()
+        with open(os.path.join(w1, "games.jsonl"), "a") as f:
+            f.write("\n")
+        res = sc.collect(self.mpath, [w1, self.clean_w2()])
+        self.assertEqual(self.kinds(res), [("seal", "w1")])
+
+    def test_f2_a_program_changed_between_stamp_and_seal_is_refused(self):
+        res = sc.collect(self.mpath, [self.w1(seal_changes={"program_sha256": "ef" * 32}), self.clean_w2()])
+        self.assertEqual(self.kinds(res), [("seal", "w1")])
+
+    def test_f2_a_seal_older_than_the_last_game_is_refused(self):
+        res = sc.collect(self.mpath, [self.w1(seal_changes={"sealed_at": "2026-10-09T21:30:00Z"}), self.clean_w2()])
+        self.assertEqual(self.kinds(res), [("seal", "w1")])
+
+    def test_f2_the_stamp_command_refuses_a_folder_already_played(self):
+        mpath, prog = self.mpath, os.path.join(self.d, "strength")
+        with open(prog, "wb") as f:
+            f.write(b"binary")
+        out = os.path.join(self.d, "played")
+        os.makedirs(out)
+        with open(os.path.join(out, "games.jsonl"), "w") as f:
+            f.write(json.dumps(record(self.jobs[0])) + "\n")
+        self.assertEqual(sc.main(["stamp", "--manifest", mpath, "--program", prog, "--worker", "w", "--out", out, "--no-selfcheck"]), 2)
+        self.assertFalse(os.path.exists(os.path.join(out, "worker.json")))
+
+    def test_f2_stamp_then_seal_binds_the_records_to_the_program_and_manifest(self):
+        root = os.path.join(self.d, "repo")
+        for d in ("d1", "d2", "d3", "o1"):
+            os.makedirs(os.path.join(root, "decks"), exist_ok=True)
+            with open(os.path.join(root, "decks", f"{d}.txt"), "w") as f:
+                f.write(f"list {d}\n")
+        m = dict(self.m, repo_root=root)
+        for d in m["decks"] + m["opponents"]:
+            d["sha256"] = sc.sha256_file(os.path.join(root, d["path"]))
+        mpath = self.write_manifest(m)
+        prog = os.path.join(self.d, "strength")
+        with open(prog, "wb") as f:
+            f.write(b"binary")
+        out = os.path.join(self.d, "w1")
+        self.assertEqual(sc.main(["stamp", "--manifest", mpath, "--program", prog, "--worker", "w1", "--out", out, "--no-selfcheck"]), 0)
+        with open(os.path.join(out, "worker.json")) as f:
+            stamp = json.load(f)
+        self.assertTrue(stamp["stamped_at"].endswith("Z"))
+        self.assertEqual(stamp["decks_sha256"], {d["name"]: d["sha256"] for d in m["decks"] + m["opponents"]})
+        with open(os.path.join(out, "games.jsonl"), "w") as f:
+            f.write(json.dumps(record(self.jobs[0], started="2099-01-01T00:00:00Z")) + "\n")
+        self.assertEqual(sc.main(["seal", "--manifest", mpath, "--program", prog, "--out", out]), 0)
+        with open(os.path.join(out, "worker_seal.json")) as f:
+            seal = json.load(f)
+        self.assertEqual(seal["games_sha256"], sc.sha256_file(os.path.join(out, "games.jsonl")))
+        self.assertEqual((seal["program_sha256"], seal["manifest_sha256"]), (stamp["program_sha256"], stamp["manifest_sha256"]))
+        self.assertEqual(seal["decks_sha256"], stamp["decks_sha256"])
+
+    def test_f2_the_seal_command_refuses_an_unstamped_folder(self):
+        prog = os.path.join(self.d, "strength")
+        with open(prog, "wb") as f:
+            f.write(b"binary")
+        out = os.path.join(self.d, "w")
+        os.makedirs(out)
+        self.assertEqual(sc.main(["seal", "--manifest", self.mpath, "--program", prog, "--out", out]), 2)
+
+    # F1: a flagged worker's games are not merged, and an incomplete merge writes no games.jsonl
+    def test_f1_a_worker_on_another_program_contributes_no_games(self):
+        res = sc.collect(self.mpath, [self.w1(), self.worker("w2", self.mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",),
+                                                              program_sha256="ef" * 32)])
+        self.assertEqual(self.kinds(res), [("program", "w2")])
+        self.assertEqual(len(res["lines"]), 16)
+        self.assertEqual(len([p for p in res["problems"] if p["kind"] == "missing"]), 8)
+
+    def test_f1_an_incomplete_merge_writes_no_games_jsonl(self):
+        out = os.path.join(self.d, "merged")
+        code = sc.main(["merge", "--manifest", self.mpath, "--out", out, "--worker", self.w1()])
+        self.assertEqual(code, 1)
+        self.assertFalse(os.path.exists(os.path.join(out, "games.jsonl")))
+        self.assertTrue(os.path.exists(os.path.join(out, "games_INCOMPLETE.jsonl")))
+        with open(os.path.join(out, "MERGE_RECORD.md")) as f:
+            self.assertIn("INCOMPLETE", f.read())
+
+    def test_f1_merge_never_overwrites_a_games_jsonl(self):
+        out = os.path.join(self.d, "merged")
+        os.makedirs(out)
+        with open(os.path.join(out, "games.jsonl"), "w") as f:
+            f.write("keep me\n")
+        code = sc.main(["merge", "--manifest", self.mpath, "--out", out, "--worker", self.w1(), "--worker", self.clean_w2()])
+        self.assertEqual(code, 2)
+        with open(os.path.join(out, "games.jsonl")) as f:
+            self.assertEqual(f.read(), "keep me\n")
+
+    # F3: the engine tree fails closed; the build record belongs to the program
+    def test_f3_a_manifest_naming_no_engine_tree_fails_closed(self):
+        m = dict(self.m, engine="claude/playout-pilot b96296a5 (fix round 2) engine tree, built on the laptop Oct 3-4")
+        mpath = self.write_manifest(m)
+        w1 = self.worker("w1", mpath, [record(j) for j in self.by_deck["d1"] + self.by_deck["d3"]], only=("d1", "d3"))
+        w2 = self.worker("w2", mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",))
+        res = sc.collect(mpath, [w1, w2])
+        self.assertEqual(self.kinds(res), [("engine", None)])
+        self.assertFalse(res["complete"])
+        self.assertEqual(res["lines"], [])
+
+    def test_f3_the_tree_named_on_the_merge_command_is_used_and_recorded(self):
+        m = dict(self.m, engine="claude/playout-pilot b96296a5 (fix round 2) engine tree, built on the laptop Oct 3-4")
+        mpath = self.write_manifest(m)
+        w1 = self.worker("w1", mpath, [record(j) for j in self.by_deck["d1"] + self.by_deck["d3"]], only=("d1", "d3"))
+        w2 = self.worker("w2", mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",))
+        res = sc.collect(mpath, [w1, w2], engine_tree="38af8b0cc4f35fdc")
+        self.assertTrue(res["complete"])
+        self.assertIn("named on the merge command", sc.merge_record(res))
+        res = sc.collect(mpath, [w1, w2], engine_tree="1234567")
+        self.assertEqual(self.kinds(res), [("engine", "w1"), ("engine", "w2")])
+
+    def test_f3_a_manifest_engine_tree_field_is_read(self):
+        m = dict(self.m, engine="free text, no tree", engine_tree="38af8b0cc4f35fdccc647ed540a56ec8f5e6c1d5")
+        self.assertEqual(sc.registered_tree(m), "38af8b0cc4f35fdccc647ed540a56ec8f5e6c1d5")
+        m = dict(self.m, engine="free text", slow_report={"engine_tree": "31dbd2e6e8ecd39f"})
+        self.assertEqual(sc.registered_tree(m), "31dbd2e6e8ecd39f")
+
+    def test_f3_a_worker_whose_stamp_names_no_engine_tree_is_refused(self):
+        res = sc.collect(self.mpath, [self.w1(engine_tree=None), self.clean_w2()])
+        self.assertEqual(self.kinds(res), [("engine", "w1")])
+        self.assertEqual(len(res["lines"]), 8)
+
+    def test_f3_a_build_record_for_another_program_is_refused(self):
+        res = sc.collect(self.mpath, [self.w1(build_sha="ef" * 32), self.clean_w2()])
+        self.assertEqual(self.kinds(res), [("program", "w1")])
+
+    def test_f3_a_rebuild_must_be_of_the_registered_harness_source(self):
+        m = dict(self.m, slow_report={"harness_source_sha256": "aa" * 32})
+        mpath = self.write_manifest(m)
+        w1 = self.worker("w1", mpath, [record(j) for j in self.by_deck["d1"] + self.by_deck["d3"]], only=("d1", "d3"))
+        w2 = self.worker("w2", mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",), program_sha256="ef" * 32, selfcheck=dict(SELF))
+        with open(os.path.join(w2, "worker.json")) as f:
+            stamp = json.load(f)
+        stamp["harness_source_sha256"] = "bb" * 32
+        with open(os.path.join(w2, "worker.json"), "w") as f:
+            json.dump(stamp, f)
+        res = sc.collect(mpath, [w1, w2])
+        self.assertEqual(self.kinds(res), [("program", "w2")])
+        self.assertIn("harness source", [p for p in res["problems"] if p["kind"] == "program"][0]["detail"])
+
+    # F4: the deck files a worker loads are the manifest's, by sha256
+    def test_f4_an_edited_deck_under_the_same_name_is_refused(self):
+        decks = {d["name"]: d["sha256"] for d in self.m["decks"] + self.m["opponents"]}
+        decks["d3"] = "9" * 64
+        res = sc.collect(self.mpath, [self.w1(decks=decks), self.clean_w2()])
+        self.assertEqual(self.kinds(res), [("decks", "w1")])
+        self.assertIn("d3", [p for p in res["problems"] if p["kind"] == "decks"][0]["detail"])
+        self.assertEqual(len(res["lines"]), 8)
+
+    def test_f4_an_opponent_list_edited_is_refused(self):
+        decks = {d["name"]: d["sha256"] for d in self.m["decks"] + self.m["opponents"]}
+        decks["o1"] = "9" * 64
+        res = sc.collect(self.mpath, [self.w1(), self.worker("w2", self.mpath, [record(j) for j in self.by_deck["d2"]], only=("d2",), decks=decks)])
+        self.assertEqual(self.kinds(res), [("decks", "w2")])
+
+    def test_f4_a_stamp_without_deck_hashes_is_refused(self):
+        w1 = self.w1()
+        with open(os.path.join(w1, "worker.json")) as f:
+            stamp = json.load(f)
+        del stamp["decks_sha256"]
+        with open(os.path.join(w1, "worker.json"), "w") as f:
+            json.dump(stamp, f)
+        res = sc.collect(self.mpath, [w1, self.clean_w2()])
+        self.assertEqual(self.kinds(res), [("decks", "w1")])
+
+    def test_f4_decks_changed_between_stamp_and_seal_are_refused(self):
+        decks = {d["name"]: d["sha256"] for d in self.m["decks"] + self.m["opponents"]}
+        decks["d1"] = "9" * 64
+        res = sc.collect(self.mpath, [self.w1(seal_changes={"decks_sha256": decks}), self.clean_w2()])
+        self.assertEqual(self.kinds(res), [("seal", "w1")])
 
 
 class Compare(Scratch):
