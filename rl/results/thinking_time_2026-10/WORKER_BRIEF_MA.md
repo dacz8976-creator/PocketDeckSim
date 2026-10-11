@@ -7,7 +7,10 @@ WORKER. You play only your slices (`SHARDS.md`), never change a registration, ne
 0. **Run every command below from the root of your clone.** The registrations record `repo_root` as `.`, so the harness and the stamp read
    the decks from your own checkout.
 1. **Checkout (read-only).** Clone the public repository and check out main at MAIN_COMMIT. Fetch `claude/playout-pilot`.
-2. **Build, once.** `rl/strength/build.sh 172cbe9ce0f2cb7946b489422b56d3fce5ca6219 $HOME/kxc/172cbe9c/strength`. It must print engine tree
+2. **Build, once.** First `cargo fetch` (with network) in the clone's `engine/`: an offline cargo finds no crates. Then build in the
+   background, with the default STRENGTH_JOBS (a command limit kills a long foreground build):
+   `nohup rl/strength/build.sh 172cbe9ce0f2cb7946b489422b56d3fce5ca6219 $HOME/kxc/172cbe9c/strength > /mnt/session/outputs/WORKER_build.log 2>&1 &`,
+   and wait for it to end. It must print engine tree
    `69a5a4419da2...` and harness source `bf9c5d6814007f1f`. Copy the program's `.build.json` record to `/mnt/session/outputs/WORKER_build.json`.
 3. **For each slice, in your order**, with `OUT=/mnt/session/outputs/WORKER_REGNAME_DECK` (a new folder per slice):
    1. **Stamp before play** (gate 1 and the self-check):
@@ -20,11 +23,16 @@ WORKER. You play only your slices (`SHARDS.md`), never change a registration, ne
    3. **Seal after play**, only when the slice shows 160 games (80 kx3, 80 km3) and `errors.jsonl` is empty or absent:
       `python3 rl/strength/split_collect.py seal --manifest REG/manifest.json --program $HOME/kxc/172cbe9c/strength --out $OUT`.
       After the seal, never touch `$OUT` again.
+   4. **Pack it for the hand-off** (the export flattens folders): with `S=WORKER_REGNAME_DECK`, run
+      `tar -C /mnt/session/outputs -cf /mnt/session/outputs/$S.tar $S/` and then
+      `(cd /mnt/session/outputs && sha256sum $S.tar > $S.tar.sha256)`. The tar only reads the folder, so the seal still holds.
 4. **Status.** After each step, and every 2 hours while a slice plays, add one line to `/mnt/session/outputs/STATUS_WORKER.txt`:
    `<UTC time> WORKER <registration> <deck>: <stamp ok|STOP: why> <n>/160 games, <e> errors, sealed <yes|no>`
 5. **Stopping.** On any refusal, hash mismatch, failed program or anything unexpected, write a line starting `STOP:` to the status file
    with exactly what you saw, leave every file as it is, and end the session. Don't work around it.
-6. **Hand-off.** When your slices are sealed, write `DONE` as the last status line and end. The laptop side collects
-   `/mnt/session/outputs/` and commits each slice folder unchanged (byte for byte) under `rl/results/thinking_time_2026-10/workers/`.
+6. **Hand-off.** When your slices are sealed and packed, write `DONE` as the last status line and end. The laptop side collects each
+   `<slice>.tar`, checks its `.tar.sha256`, extracts it and re-checks the seal, then commits each slice folder unchanged (byte for byte)
+   under `rl/results/thinking_time_2026-10/workers/`. Empty files are not exported, so never use an empty file as a signal: the status
+   lines are the signals.
    The seal binds the games to the program, manifest and deck files, so the merge (`split_collect.py merge`) proves nothing changed in
    transit. You read no results and report none to Dustin.
