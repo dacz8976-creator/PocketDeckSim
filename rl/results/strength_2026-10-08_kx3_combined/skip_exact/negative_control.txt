@@ -1,22 +1,4 @@
-negative control (Oct 12, after the first run): 20 candidate records of 20+ decisions, each with its first logged attack changed to EndTurn
-replayed exactly (not caught): 2 of 20
-09-mega-manectric-heliolisk|t-altaria|0|0|X CAUGHT: decision 25: logged turn 7 with 3 legal moves, replayed turn 7 with 2
-09-mega-manectric-heliolisk|t-altaria|1|1|X CAUGHT: decision 22: logged turn 10 with 5 legal moves, replayed turn 10 with 3
-09-mega-manectric-heliolisk|t-altaria|2|0|X CAUGHT: decision 4: logged turn 6 with 10 legal moves, replayed turn 6 with 8
-09-mega-manectric-heliolisk|t-blaziken|0|1|X CAUGHT: ending differs (turns 10, points [2, 4], winner opp)
-09-mega-manectric-heliolisk|t-blaziken|0|0|X CAUGHT: decision 18: logged turn 8 with 7 legal moves, replayed turn 8 with 6
-09-mega-manectric-heliolisk|t-blaziken|1|0|X CAUGHT: decision 22: logged turn 9 with 10 legal moves, replayed turn 9 with 11
-09-mega-manectric-heliolisk|t-blaziken|1|1|X CAUGHT: decision 11: logged turn 6 with 7 legal moves, replayed turn 6 with 6
-09-mega-manectric-heliolisk|t-blaziken|2|1|X CAUGHT: decision 8: logged turn 3 with 2 legal moves, replayed turn 4 with 10
-09-mega-manectric-heliolisk|t-blaziken|2|0|X CAUGHT: decision 23: asked beyond the log (23 decisions logged)
-09-mega-manectric-heliolisk|t-blaziken|3|1|X CAUGHT: decision 13: logged turn 5 with 3 legal moves, replayed turn 6 with 8
-09-mega-manectric-heliolisk|t-blaziken|4|0|X CAUGHT: decision 12: logged turn 5 with 11 legal moves, replayed turn 4 with 2
-09-mega-manectric-heliolisk|t-blaziken|4|1|X replayed_exactly
-09-mega-manectric-heliolisk|t-hydreigon|0|1|X CAUGHT: decision 16: logged turn 4 with 3 legal moves, replayed turn 5 with 10
-09-mega-manectric-heliolisk|t-hydreigon|1|0|X CAUGHT: decision 13: logged turn 5 with 10 legal moves, replayed turn 4 with 2
-09-mega-manectric-heliolisk|t-hydreigon|1|1|X CAUGHT: decision 12: logged turn 6 with 10 legal moves, replayed turn 5 with 2
-09-mega-manectric-heliolisk|t-hydreigon|4|1|X CAUGHT: decision 20: asked beyond the log (20 decisions logged)
-09-mega-manectric-heliolisk|t-lucario|0|0|X replayed_exactly
-09-mega-manectric-heliolisk|t-lucario|3|0|X CAUGHT: ending differs (turns 8, points [1, 4], winner opp)
-09-mega-manectric-heliolisk|t-lucario|3|1|X CAUGHT: decision 14: 'Play:Professor's Research' matched no legal move
-09-mega-manectric-heliolisk|t-sceptile|1|1|X CAUGHT: decision 17: logged turn 7 with 11 legal moves, replayed turn 6 with 2
+Negative controls (Oct 12): 2 records per deck and arm (candidate, km3, frozen kx3), each changed one way; every one must fail.
+a wrong seed (+1): 42 records, caught 42, not caught 0 []
+a wrong opponent pilot (km2): 42 records, caught 39, not caught 3 ['05-indeedee-stoutland|t-lucario|2|1|X', '10-xatu-oricorio-tr-weezing|t-weezing|1|0|X', 'draft-A-shark-tempo|t-blaziken|3|0|X']
+one logged move replaced by another label of the same game: 42 records, caught 42, not caught 0 []

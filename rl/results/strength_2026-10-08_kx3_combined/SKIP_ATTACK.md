@@ -2,8 +2,9 @@
 
 > **Oct 12: the exact measure now exists:** `SKIP_ATTACK_EXACT.md` in this folder (the cloud). It replays every game move for move
 > on the program that played it and reads the legal moves at each decision. In short, the share of turns with a legal attack where no
-> attack was made: candidate 5.0%, frozen kx3 3.7%, km3 2.3%; candidate − frozen +1.3 ± 1.1 points. The proxy counts below stand as
-> what the records alone could show.
+> attack was made: candidate 5.0%, frozen kx3 3.7%, km3 2.3%; candidate − frozen +1.3 ± 1.1 points. The pre-registered measure (km3
+> proposed an attack and none followed) is there too: candidate 8 turns, frozen kx3 8, km3 0; candidate − frozen +0.0 ± 0.4 points.
+> The proxy counts below stand as what the records alone could show.
 
 Sonnet "Opus agents progress", for the laptop and Fable; produced by `skip_attack.py` in this folder from the two `games.jsonl` files
 (this run's and the development run's). Nothing was run: no engine, no cargo, no new games. The pre-registration (line 7) promised

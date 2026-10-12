@@ -104,7 +104,7 @@ B=(--boards "$OUT/skip_turns.tsv")
 "$W/target_frozen/release/examples/skip_replay" --games "$DEV/games.jsonl" --manifest "$DEV/manifest.json" --arm X --out "$OUT/pass2_frozen.jsonl" --check "$OUT/pass2c_frozen.jsonl" --km3 "${B[@]}" --bot frozen --boards-out "$OUT/boards_frozen.jsonl" 2> /dev/null
 cat "$OUT"/boards_candidate.jsonl "$OUT"/boards_frozen.jsonl "$OUT"/boards_km3.jsonl > "$OUT/skip_boards.jsonl"
 echo "skip_boards.jsonl: $(wc -l < "$OUT/skip_boards.jsonl") records ($(cat "$OUT/boards_candidate.jsonl" | wc -l) candidate, $(cat "$OUT/boards_frozen.jsonl" | wc -l) frozen, $(cat "$OUT/boards_km3.jsonl" | wc -l) km3), replayed exactly $(grep -c '"replayed_exactly":true' "$OUT/skip_boards.jsonl")"
-gzip -9 -c "$OUT/skip_boards.jsonl" > "$HERE/skip_boards.jsonl.gz"
+cp "$OUT/skip_boards.jsonl" "$HERE/skip_boards.jsonl"
 cp "$OUT"/exact_summary.txt "$OUT"/negative_control.txt "$OUT"/skip_turns.tsv "$OUT"/check_candidate.jsonl "$OUT"/check_frozen.jsonl "$OUT"/check_km3.jsonl "$HERE/"
 gzip -9 -c "$OUT/skip_decisions.tsv" > "$HERE/skip_decisions.tsv.gz"
 for b in candidate frozen km3; do gzip -9 -c "$OUT/decisions_$b.jsonl" > "$HERE/decisions_$b.jsonl.gz"; done
