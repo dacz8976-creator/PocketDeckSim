@@ -1,0 +1,91 @@
+{
+ "positions": 121,
+ "left_out": [
+  {
+   "game": "20261004_214518000_iOS",
+   "turn": null,
+   "reason": "game not converted: ValueError('no 20-card list in DECK_USED.json')"
+  },
+  {
+   "game": "20261004_214731000_iOS",
+   "turn": null,
+   "reason": "game not converted: ValueError('no 20-card list in DECK_USED.json')"
+  },
+  {
+   "game": "261004_215749000",
+   "turn": 1,
+   "reason": "hand not fully named or unmapped: ['Combusken', 'Copycat', 'Flame Patch', 'Rocky Helmet', 'Poké Ball'] count=5"
+  },
+  {
+   "game": "261004_215749000",
+   "turn": 3,
+   "reason": "hand not fully named or unmapped: ['Flame Patch', \"Professor's Research\", \"Professor's Research\", 'Combusken'] count=4"
+  },
+  {
+   "game": "261004_215749000",
+   "turn": 5,
+   "reason": "board: 'no card id for Combusken (80)'"
+  },
+  {
+   "game": "20261005_034229000_iOS",
+   "turn": null,
+   "reason": "game not converted: ValueError('no 20-card list in DECK_USED.json')"
+  },
+  {
+   "game": "20261006_012140000_iOS",
+   "turn": null,
+   "reason": "game not converted: ValueError('no 20-card list in DECK_USED.json')"
+  },
+  {
+   "game": "261006_020518000",
+   "turn": 13,
+   "reason": "board: 'Gurdurr'"
+  },
+  {
+   "game": "261010_014541000",
+   "turn": 9,
+   "reason": "hand not fully named or unmapped: ['Kingdra ex', 'Elegant Cape', 'Soothing Shore', \"Team Rocket's Weezing ex\"] count=4"
+  },
+  {
+   "game": "261010_014541000",
+   "turn": 11,
+   "reason": "hand not fully named or unmapped: ['Kingdra ex', 'Elegant Cape', 'Soothing Shore', \"Team Rocket's Koffing\"] count=4"
+  }
+ ],
+ "plans_with_unresolved_targets": [
+  {
+   "game": "261005_032857000",
+   "turn": 4,
+   "reason": "unresolved plan targets (plan kept)",
+   "detail": [
+    "Rare Candy target 'Honedge'",
+    "tool target 'Aegislash'",
+    "attach target 'Aegislash'"
+   ]
+  },
+  {
+   "game": "261010_014541000",
+   "turn": 3,
+   "reason": "unresolved plan targets (plan kept)",
+   "detail": [
+    "retreat target \"Team Rocket's Koffing → Kingdra ex\" / 'Free retreat with Small Balloon; no Energy discarded'"
+   ]
+  },
+  {
+   "game": "261010_021629000",
+   "turn": 4,
+   "reason": "unresolved plan targets (plan kept)",
+   "detail": [
+    "tool target 'W1'"
+   ]
+  },
+  {
+   "game": "261010_021629000",
+   "turn": 6,
+   "reason": "unresolved plan targets (plan kept)",
+   "detail": [
+    "attach target 'B'"
+   ]
+  }
+ ]
+}
