@@ -1,0 +1,24 @@
+{
+ "manifest_sha256": "f3dacac4e1315d8c83b75bb8b035f2a9e82aa581db6487d8aa9157a4bccbda02",
+ "stage": "use",
+ "pilot": "kx3",
+ "reference": "km3",
+ "registration_changed": false,
+ "registration_problems": [],
+ "paired_games": 20,
+ "pooled": {
+  "n": 20,
+  "mean": 0.2,
+  "sd": 0.523148363780597,
+  "half": 0.22927987953131596
+ },
+ "per_deck": {
+  "13-a-ninetales-raticate": {
+   "n": 20,
+   "mean": 0.2,
+   "sd": 0.523148363780597,
+   "half": 0.22927987953131596
+  }
+ },
+ "exactly_zero": false
+}
