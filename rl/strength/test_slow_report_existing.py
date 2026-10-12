@@ -27,6 +27,7 @@ PANEL = ['t-altaria', 't-blaziken', 't-hydreigon', 't-lucario', 't-sceptile', 't
 DECK = '03-wailord-indeedee-wall'
 OTHER = '09-mega-manectric-heliolisk'
 PIN = json.loads(open(os.path.join(HERE, 'slow_report_pin.json'), encoding='utf-8').read())
+PILOT_LABEL = PIN['pilot_label']  # whatever the pin in use names the pilot as
 SC = {'deck': 1.0, 'tie': 0.5, 'opp': 0.0}
 
 
@@ -145,7 +146,7 @@ class Label(Sources):
         head = '\n'.join(text.splitlines()[:10])
         self.assertTrue(text.startswith(f'# Slow report from existing games: {DECK}'))
         self.assertIn('**Existing development evidence, not a fresh test.**', head)
-        self.assertIn(f'**kx3 (d513e37b) on {DECK} v km3 on the public panel**', head)
+        self.assertIn(f'**{PILOT_LABEL} on {DECK} v km3 on the public panel**', head)
         self.assertIn('Nothing was played for this page', head)
         self.assertIn('not the km3 floor check', head)
         self.assertIn('no pass or fail line', head)
@@ -156,7 +157,7 @@ class Label(Sources):
         lines = [l for l in out.splitlines() if l.strip()]
         self.assertTrue(lines)
         for l in lines:
-            self.assertTrue(l.startswith(f'[kx3 (d513e37b) on {DECK} v km3 on the public panel; existing development evidence, not a fresh test]'), l)
+            self.assertTrue(l.startswith(f'[{PILOT_LABEL} on {DECK} v km3 on the public panel; existing development evidence, not a fresh test]'), l)
 
     def test_nothing_in_the_sources_is_changed(self):
         before = {os.path.join(dp, f): sha(os.path.join(dp, f)) for r in (self.dev, self.tool) for dp, dn, fn in os.walk(r) for f in fn}
@@ -355,7 +356,7 @@ class Provenance(Sources):
     def test_the_sources_and_their_hashes_are_listed(self):
         text = self.page()
         sec = text.split('## Where these games come from')[1]
-        for needle in ('strength_dev', 'strength_tool', sha(os.path.join(self.dev, 'games.jsonl'))[:12], sha(os.path.join(self.tool, 'games.jsonl'))[:12], '5a8f5c83a791',
+        for needle in ('strength_dev', 'strength_tool', sha(os.path.join(self.dev, 'games.jsonl'))[:12], sha(os.path.join(self.tool, 'games.jsonl'))[:12], PIN['program_sha256'][:12],
                        "registered before the first of this deck's games", 'stage dev', 'only deck 03-wailord-indeedee-wall'):
             self.assertIn(needle, sec)
 
@@ -405,7 +406,7 @@ class Provenance(Sources):
 class WholeDesign(Sources):
     """The page states the full design (deals x seats x lists kx3 games and as many km3 baseline games, in both runs), so a deck that does not have it is refused, and the
     pairing is void unless gate 3 replays the development run: every baseline game exactly, every kx3 game from the development run's own deal. Nothing is written then."""
-    HEAD = f'[kx3 (d513e37b) on {DECK} v km3 on the public panel; existing development evidence, not a fresh test] '
+    HEAD = f'[{PILOT_LABEL} on {DECK} v km3 on the public panel; existing development evidence, not a fresh test] '
 
     def rows(self, d):
         return [json.loads(l) for l in read(os.path.join(d, 'games.jsonl')).splitlines()]

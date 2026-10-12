@@ -71,7 +71,13 @@ import slow_report as sr  # noqa: E402
 
 CHI = zoneinfo.ZoneInfo('America/Chicago')
 PANEL = ['t-altaria', 't-blaziken', 't-hydreigon', 't-lucario', 't-sceptile', 't-suicune', 't-vespiquen', 't-weezing']
-HEADLINE_START = '[kx3 (d513e37b) on '
+# The committed pin, read as it is. What it names (the label every printed line carries, the program and its hashes, the engine) is whatever the pin in use says: a test that is
+# not about those values takes them from here, so a new pin (a rebuild on another engine) does not break it. The values a test must see in a pin it MAKES are its own fixtures.
+with open(os.path.join(HERE, 'slow_report_pin.json'), encoding='utf-8') as _pin_file:
+    LIVE_PIN = json.load(_pin_file)
+PILOT_LABEL = LIVE_PIN['pilot_label']  # e.g. 'kx3 (d513e37b)'
+PIN_REF8 = LIVE_PIN['engine_ref'][:8]  # the engine commit the pin names, as the refusals that tell a person to rebuild it spell it
+HEADLINE_START = f'[{PILOT_LABEL} on '
 BLOCK = (24_601_000_000, 24_699_999_999)
 STEP = 100_000
 ALLOW_PIN_VAR = 'SLOW_REPORT_ALLOW_UNCOMMITTED_PIN'  # the test-only switch that lets a hand-made pin through (World sets it; CommittedPin takes it away)
@@ -498,8 +504,9 @@ class Pin(World):
         pin = json.loads(read(os.path.join(HERE, 'slow_report_pin.json')))
         self.assertEqual(pin['pilot'], 'kx3')
         self.assertEqual(pin['reference'], 'km3')
-        self.assertEqual(pin['program'], '/home/dacz8976/kx/strength')
-        self.assertEqual(pin['program_sha256'], '5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2')
+        self.assertTrue(os.path.isabs(pin['program']) and pin['program'].endswith('/strength'), pin['program'])
+        self.assertRegex(pin['program_sha256'], r'^[0-9a-f]{64}$')
+        self.assertEqual(pin['selfcheck_measured_on_sha256'], pin['program_sha256'], 'the self-check texts were measured on the pinned binary itself')
         self.assertIn('digest=31d638dbc818b0fa', pin['selfcheck']['kx3'])
         self.assertIn('digest=81b572198c04d5d1', pin['selfcheck']['km3'])
         self.assertIn('d513e37b', pin['pilot_label'])
@@ -835,7 +842,7 @@ class Config(World):
         self.assertEqual(cfg['engine'], pin['engine'])
         block = cfg['slow_report']
         self.assertEqual(block['paired'], True)
-        self.assertEqual(block['headline'], 'kx3 (d513e37b) on my-list v km3 on the public panel')
+        self.assertEqual(block['headline'], f'{PILOT_LABEL} on my-list v km3 on the public panel')
         self.assertEqual(block['scrub_env_prefixes'], pin['scrub_env_prefixes'])
         self.assertEqual(block['resume_command'], 'python3 rl/strength/slow_report.py --dir X')
         self.assertTrue(block['pin']['sha256'])
@@ -1619,7 +1626,7 @@ class NoTimeZoneDatabase(World):
         self.assertEqual(asked, ['America/Chicago'])
 
     # (what a missing database does on the command line: registration, resume, --report-only, main's REFUSED line)
-    TAG = '[kx3 (d513e37b) on my-list v km3 on the public panel] '
+    TAG = f'[{PILOT_LABEL} on my-list v km3 on the public panel] '
     MISSING = ('REFUSED: the time zone database (America/Chicago) is not available here (ZoneInfoNotFoundError): install tzdata, or turn the school-morning rule off with '
                '--school-rule off')
 
@@ -2326,7 +2333,7 @@ class CloudRoute(RebuiltFixture):
                 here = sr.harness_source_sha256(self.repo)
                 self.assertNotEqual(here, self.pin['harness_source_sha256'])
                 code, out, err = self.cli('--deals', '1', '--program', self.cloud)
-                self.assertEqual(code, f"[kx3 (d513e37b) v km3] REFUSED: {self.cloud} has sha256 {sha(self.cloud)[:12]}, not the pinned {sha(self.program)[:12]}, "
+                self.assertEqual(code, f"[{PILOT_LABEL} v km3] REFUSED: {self.cloud} has sha256 {sha(self.cloud)[:12]}, not the pinned {sha(self.program)[:12]}, "
                                        'so it would have to be a rebuild of the pinned source; but the harness source in this checkout '
                                        f"({(here or 'not found')[:12]}) is not the pinned build's ({self.pin['harness_source_sha256'][:12]}), so a build from here is not that program. "
                                        'Check out the commit the pin was made on, or make a new pin after its own gate.')
@@ -2358,7 +2365,7 @@ class CloudRoute(RebuiltFixture):
     def test_program_with_a_run_directory_is_refused(self):
         d = self.register()
         code, out, err = self.cli('--dir', d, '--program', self.cloud, deck=False)
-        self.assertEqual(code, '[kx3 (d513e37b) v km3] --program belongs to a new registration; a run that is already registered keeps what it was registered with, '
+        self.assertEqual(code, f'[{PILOT_LABEL} v km3] --program belongs to a new registration; a run that is already registered keeps what it was registered with, '
                                'so it cannot be used with --dir')
         self.assertEqual(self.replayed, [])
         self.assertFalse(os.path.exists(os.path.join(d, 'games.jsonl')))
@@ -2366,8 +2373,8 @@ class CloudRoute(RebuiltFixture):
     def test_a_program_file_that_is_not_there_is_refused(self):
         gone = os.path.join(self.tmp, 'cloud', 'not-built-yet')
         code, out, err = self.cli('--deals', '1', '--program', gone)
-        self.assertEqual(code, f'[kx3 (d513e37b) v km3] REFUSED: the program {gone} does not exist, so no slow report can run. A different build needs a new pin '
-                               '(rl/strength/slow_report_pin.json), after its own gate; a REBUILD of d513e37b (for example on the cloud, with rl/strength/build.sh) goes through --program PATH.')
+        self.assertEqual(code, f'[{PILOT_LABEL} v km3] REFUSED: the program {gone} does not exist, so no slow report can run. A different build needs a new pin '
+                               f'(rl/strength/slow_report_pin.json), after its own gate; a REBUILD of {PIN_REF8} (for example on the cloud, with rl/strength/build.sh) goes through --program PATH.')
         self.assertFalse(os.path.exists(self.out_root))
         os.remove(self.program)
         code, out, err = self.cli('--deals', '1')
@@ -2526,7 +2533,7 @@ class CloudRoute(RebuiltFixture):
         with self.assertRaises(SystemExit) as cm:
             sr.check_program(pin, os.path.join(self.tmp, 'nowhere'), self.repo)
         self.assertEqual(cm.exception.code, f'REFUSED: the program {os.path.join(self.tmp, "nowhere")} does not exist, so no slow report can run. A different build needs a new pin '
-                                            '(rl/strength/slow_report_pin.json), after its own gate; a REBUILD of d513e37b (for example on the cloud, with rl/strength/build.sh) goes through '
+                                            f'(rl/strength/slow_report_pin.json), after its own gate; a REBUILD of {PIN_REF8} (for example on the cloud, with rl/strength/build.sh) goes through '
                                             '--program PATH.')
         write(self.program, FAKE_PROGRAM + '\n# changed\n', mode=0o755)
         with self.assertRaises(SystemExit) as cm:
@@ -2551,7 +2558,7 @@ class CloudRoute(RebuiltFixture):
         self.assertNotEqual(other12, self.pin['program_sha256'][:12])
         for extra in ((), ('--dry-run',), ('--register-only',)):
             code, out, err = self.cli('--deals', '1', '--program', self.program, *extra)
-            self.assertEqual(code, '[kx3 (d513e37b) v km3] REFUSED: ' + self.overwritten(self.program, other12), extra)
+            self.assertEqual(code, f'[{PILOT_LABEL} v km3] REFUSED: ' + self.overwritten(self.program, other12), extra)
             self.assertEqual(out, '', 'refused before the first line of the plan')
             self.assertFalse(os.path.exists(self.out_root), 'nothing was written')
         self.assertEqual(self.replayed, [], 'and refused before the hours-long replay, not after it')
@@ -2572,12 +2579,12 @@ class CloudRoute(RebuiltFixture):
         for label, spelled, shown in (('a symlink to it', link, link), ('a path with ..', dotted, self.program)):
             with self.subTest(label):
                 code, out, err = self.cli('--deals', '1', '--program', spelled)
-                self.assertEqual(code, '[kx3 (d513e37b) v km3] REFUSED: ' + self.overwritten(shown, other12))
+                self.assertEqual(code, f'[{PILOT_LABEL} v km3] REFUSED: ' + self.overwritten(shown, other12))
                 self.assertFalse(os.path.exists(self.out_root))
         os.remove(self.program)  # the pinned path is itself a link to the rebuilt copy: it is the same file, whichever way round it is named
         os.symlink(self.cloud, self.program)
         code, out, err = self.cli('--deals', '1', '--program', self.cloud)
-        self.assertEqual(code, '[kx3 (d513e37b) v km3] REFUSED: ' + self.overwritten(self.cloud, sha(self.cloud)[:12]))
+        self.assertEqual(code, f'[{PILOT_LABEL} v km3] REFUSED: ' + self.overwritten(self.cloud, sha(self.cloud)[:12]))
         self.assertEqual(self.replayed, [])
         self.assertFalse(os.path.exists(self.out_root))
 
@@ -2950,7 +2957,7 @@ class CommittedPin(RebuiltFixture):
             before = self.tree()
             for extra in ((), ('--dry-run',), ('--register-only',)):
                 code, out, err = self.cli('--deals', '1', *extra)
-                self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + self.refusal(self.unsafe_detail()), extra)
+                self.assertEqual(code, f'[{PILOT_LABEL} v km3] ' + self.refusal(self.unsafe_detail()), extra)
                 self.assertEqual((out, err), ('', ''))
                 self.assertFalse(os.path.exists(self.out_root))
             self.assertEqual(self.tree(), before, 'nothing was written')
@@ -3064,7 +3071,7 @@ class CommittedPin(RebuiltFixture):
         before = self.tree()
         for extra in ((), ('--dry-run',), ('--register-only',)):
             code, out, err = self.cli('--deals', '1', *extra)
-            self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + self.refusal(self.not_in_head()), extra)
+            self.assertEqual(code, f'[{PILOT_LABEL} v km3] ' + self.refusal(self.not_in_head()), extra)
             self.assertEqual((out, err), ('', ''), 'refused before the first line of the plan')
             self.assertFalse(os.path.exists(self.out_root), extra)
         self.assertEqual(self.tree(), before, 'nothing was written anywhere')
@@ -3073,13 +3080,13 @@ class CommittedPin(RebuiltFixture):
     def test_the_pin_is_checked_before_the_program_is_looked_at(self):
         write(self.program, FAKE_PROGRAM + '\n# changed\n', mode=0o755)  # not the pinned build: check_program would refuse it
         code, out, err = self.cli('--deals', '1')
-        self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + self.refusal(self.not_in_head()))
+        self.assertEqual(code, f'[{PILOT_LABEL} v km3] ' + self.refusal(self.not_in_head()))
         os.remove(self.program)
         code, out, err = self.cli('--deals', '1', '--program', self.cloud)
-        self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + self.refusal(self.not_in_head()), 'and before the build record, the harness source and the self-check replays')
+        self.assertEqual(code, f'[{PILOT_LABEL} v km3] ' + self.refusal(self.not_in_head()), 'and before the build record, the harness source and the self-check replays')
         os.remove(self.cloud + '.build.json')
         code, out, err = self.cli('--deals', '1', '--program', self.cloud)
-        self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + self.refusal(self.not_in_head()))
+        self.assertEqual(code, f'[{PILOT_LABEL} v km3] ' + self.refusal(self.not_in_head()))
         self.assertEqual(self.replayed, [])
         self.assertFalse(os.path.exists(self.out_root))
 
@@ -3093,7 +3100,7 @@ class CommittedPin(RebuiltFixture):
         write(hand, json.dumps(edited, indent=1))
         self.pin_path = hand
         code, out, err = self.cli('--deals', '1', '--dry-run')
-        self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + self.refusal(self.differs(hand, head)))
+        self.assertEqual(code, f'[{PILOT_LABEL} v km3] ' + self.refusal(self.differs(hand, head)))
         self.assertFalse(os.path.exists(self.out_root))
         same = os.path.join(self.tmp, 'mine', 'copy.json')
         write_bytes(same, head)
@@ -3287,7 +3294,7 @@ class CommittedPin(RebuiltFixture):
             before = self.tree()
             for extra in ((), ('--dry-run',), ('--register-only',)):
                 code, out, err = self.cli('--deals', '1', *extra)
-                self.assertEqual(code, '[kx3 (d513e37b) v km3] ' + self.refusal(detail), extra)
+                self.assertEqual(code, f'[{PILOT_LABEL} v km3] ' + self.refusal(detail), extra)
                 self.assertEqual((out, err), ('', ''))
             self.assertEqual(self.tree(), before, 'nothing was written')
         self.commit_pin()  # and now the pin is committed here, while the exported repository holds another one: the one committed here is the one that counts
@@ -3475,7 +3482,7 @@ class BuildRecord(RebuiltFixture):
                 prepare()
                 for extra in ((), ('--dry-run',), ('--register-only',)):
                     code, out, err = self.cli('--deals', '1', '--program', self.cloud, *extra)
-                    self.assertTrue(str(code).startswith('[kx3 (d513e37b) v km3] ' + want()), (label, extra, code))
+                    self.assertTrue(str(code).startswith(f'[{PILOT_LABEL} v km3] ' + want()), (label, extra, code))
                     self.assertTrue(str(code).endswith('Nothing was written.'), code)
                     self.assertEqual(out, '', 'refused before the first line of the plan')
                     self.assertFalse(os.path.exists(self.out_root), 'nothing was written')
@@ -5849,7 +5856,7 @@ class BothPilotsEverywhere(World):
     def test_refusals_name_both_pilots_too(self):
         os.remove(self.program)
         code, out, err = self.cli('--deals', '1')
-        self.assertTrue(str(code).startswith('[kx3 (d513e37b) v km3]'), code)
+        self.assertTrue(str(code).startswith(f'[{PILOT_LABEL} v km3]'), code)
         self.make()
         code, out, err = self.cli('--deals', '1', '--threads', '0')
         self.assertTrue(str(code).startswith(HEADLINE_START + 'my-list v km3 on the public panel]'), code)
@@ -5857,7 +5864,7 @@ class BothPilotsEverywhere(World):
     def test_the_preregistration_the_log_and_report_json_name_both_pilots(self):
         d = self.register()
         text = read(os.path.join(d, 'PREREGISTRATION.md'))
-        self.assertIn('kx3 (d513e37b) on my-list v km3 on the public panel', text)
+        self.assertIn(f'{PILOT_LABEL} on my-list v km3 on the public panel', text)
         self.assertIn('Stage `use`', text)
         self.assertIn('no pass or fail', text.lower())
         events = jsonl(os.path.join(d, 'slow_report_log.jsonl'))
