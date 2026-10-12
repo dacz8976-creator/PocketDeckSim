@@ -662,6 +662,108 @@ class AuditFixes(unittest.TestCase):
         self.assertTrue(any(a['name'] == 'Spritzee' and a.get('under') == 'Aromatisse' for a in p['opp_ambiguous']), p['opp_ambiguous'])
 
 
+# ------------------------------------------------------------------------------------------------------------- the opponent's discard and deck, the laptop's verify panel
+def opp_row(n, plays, start, after, **extra):
+    r = {'turn_number': n, 'who_played': 'opponent', 'plays_in_order': plays, 'board_at_start': {'owner': board(None), 'opponent': start}, 'board_after': {'owner': board(None), 'opponent': after}}
+    r.update(extra)
+    return r
+
+
+class OpponentDiscard(unittest.TestCase):
+    def three(self, opp_start, opp_after, opp_plays, own=None, **opp_extra):
+        """his turn 2, the opponent's turn 3 (start -> after), his turn 4: the position at turn 4"""
+        own = own or board(mon('Timburr', 60), [])
+        t2 = owner_turn(2, ['Wally', 'Poké Ball'], own, opp_start, [play('end_turn')])
+        t2['board_after']['opponent'] = opp_start
+        t4 = owner_turn(4, ['Wally'], own, opp_after, [play('end_turn')])
+        game = MadeUpGame(self, fighting_deck(), [t2, opp_row(3, opp_plays, opp_start, opp_after, **opp_extra), t4])
+        return next(p for p in game.convert(GLOBAL)[0] if p['turn_count'] == 4)
+
+    def test_a_pokemon_of_his_that_left_the_board_is_in_his_discard_with_its_stack_tool_and_energy(self):
+        start = board(mon('Stakataka', 110, energy={'Metal': 2}), [mon('Seadra', 70, energy={'Water': 1}, tool='Small Balloon', pos=1)])
+        after = board(mon('Stakataka', 110, energy={'Metal': 2}), [])
+        p = self.three(start, after, [play('card_play', 'Professor’s Research', 'owner deck', 'draw 2'), play('item', 'Poké Ball', 'owner deck', 'found Horsea'), play('end_turn')])
+        names = sorted(x.rsplit(' ', 2)[0] for x in p['opp']['discard'])
+        self.assertEqual(names, ['Horsea', 'Poké Ball', 'Professor’s Research'.replace('’', "'"), 'Seadra', 'Small Balloon'])
+        self.assertEqual(p['opp']['discard_energy'], ['Water'])
+        self.assertNotIn('discard_n', p['opp'])
+        self.assertNotIn('Stakataka', ' '.join(p['opp']['discard']))
+
+    def test_cards_the_ledger_names_as_paid_to_attack_are_in_the_discard_and_unreadable_ones_are_counted_not_guessed(self):
+        b = board(mon('Stakataka', 110, energy={'Metal': 2}), [])
+        plays = [{'kind': 'attack', 'card_name': 'Gourgeist / Soul Shot', 'target': 'Active', 'result': 'Discards Chingling; damage 70',
+                  'nested_events_in_order': [{'kind': 'attack_cost_discard', 'card_name': 'Chingling'}]},
+                 {'kind': 'attack', 'card_name': 'Gourgeist / Soul Shot', 'target': 'Active', 'result': 'Hidden discard cost',
+                  'nested_events_in_order': [{'kind': 'attack_cost_discard', 'card_name': None, 'limit_reason': 'Identity not readable'}]}]
+        p = self.three(b, b, plays, automatic_events_in_order=[{'order': 1, 'event': 'Discard1 opponent hand card after attack selection. New top pile preview is Klefki.'}])
+        self.assertEqual(sorted(x.rsplit(' ', 2)[0] for x in p['opp']['discard']), ['Chingling', 'Klefki'])
+        self.assertEqual(p['opp']['discard_hidden'], 1)
+        self.assertIn('lower bound', p['notes'])
+        self.assertIn('hidden in the ledger', p['approximate_reason'])
+
+    def test_a_lucky_ice_pop_that_came_back_and_a_cancelled_card_are_not_in_his_discard(self):
+        b = board(mon('Stakataka', 110), [])
+        p = self.three(b, b, [play('item', 'Lucky Ice Pop', 'Active', 'Heal 20; Heads at158; returns'), play('card_play_attempt', 'Poké Ball', 'owner deck', 'cancelled'), play('end_turn')])
+        self.assertEqual(p['opp']['discard'], [])
+
+    def test_his_stadium_replaced_by_another_goes_to_his_discard_and_an_energy_paid_to_retreat_too(self):
+        b = board(mon('Stakataka', 110), [mon('Cubone', 60, pos=1)])
+        t2 = owner_turn(2, ['Wally', 'Poké Ball'], board(mon('Timburr', 60), []), b, [play('end_turn')], stadium={'name': 'Hiking Trail', 'played_by': 'opponent'})
+        t2['board_after']['opponent'] = b
+        r3 = opp_row(3, [play('retreat', None, 'Stakataka', 'pays one Metal; Cubone promoted', energy={'retreat_payment_by_type': {'Metal': 1}})], b, b)
+        r3['board_at_start']['stadium'] = {'name': 'Hiking Trail', 'played_by': 'opponent'}
+        t4 = owner_turn(4, ['Wally'], board(mon('Timburr', 60), []), b, [play('end_turn')], stadium={'name': 'Arena of Antiquity', 'played_by': 'owner'})
+        p = next(x for x in MadeUpGame(self, fighting_deck(), [t2, r3, t4]).convert(GLOBAL)[0] if x['turn_count'] == 4)
+        self.assertEqual([x.rsplit(' ', 2)[0] for x in p['opp']['discard']], ['Hiking Trail'])
+        self.assertEqual(p['opp']['discard_energy'], ['Metal'])
+
+    def test_an_empty_deck_the_ledger_reports_is_a_deck_count_of_zero_for_the_side_it_names(self):
+        b = board(mon('Stakataka', 110), [])
+        p = self.three(b, b, [play('end_turn')], draws_and_searches=[{'kind': 'normal_draw_failed', 'limit_reason': 'Empty deck notice; no gained card'}])
+        self.assertEqual(p['opp']['deck_count'], 0)
+        self.assertNotIn('deck_count', p['me'])
+        t4 = owner_turn(4, ['Wally'], board(mon('Timburr', 60), []), b, [play('end_turn')])
+        t4['draws_and_searches'] = [{'kind': 'normal_draw_failed', 'limit_reason': 'Deck empty; normal draw yields zero cards.'}]
+        t2 = owner_turn(2, ['Wally', 'Poké Ball'], board(mon('Timburr', 60), []), b, [play('end_turn')])
+        pos = MadeUpGame(self, fighting_deck(), [t2, opp_row(3, [], b, b), t4]).convert(GLOBAL)[0]
+        self.assertEqual(next(x for x in pos if x['turn_count'] == 4)['me']['deck_count'], 0)
+
+    def test_the_opponent_s_rare_candy_leaves_no_stage_1_under_his_stage_2(self):
+        start = board(mon('Dratini', 70), [])
+        after = board(mon('Dragonite', 150), [])
+        p = self.three(start, after, [play('item', 'Rare Candy', 'Dratini Active', 'Evolve Dratini directly into Dragonite'), play('end_turn')])
+        drag = p['opp']['board'][0]
+        self.assertEqual([x.rsplit(' ', 2)[0] for x in drag['behind']], ['Dratini'])
+        self.assertIn('Rare Candy', ' '.join(p['opp']['discard']))
+
+    def test_an_eevee_ex_that_became_a_glaceon_ex_is_an_evolution_not_a_knock_out(self):
+        pairs, kos = L.match_boards([mon('Eevee ex', 90, pos=1)], [mon('Glaceon ex', 140, pos=1)])
+        self.assertEqual(kos, [])
+        self.assertEqual(len(pairs), 1)
+
+
+class HandTextAndMill(unittest.TestCase):
+    def test_a_hand_card_written_with_its_attack_after_the_name_is_that_function(self):
+        deck = real_deck(('Aegislash', 'B1 172', 1), ('Aegislash', 'B2 120', 1), ('Honedge', 'B2 118', 2))
+        t = owner_turn(2, ['Aegislash', 'Aegislash'], board(mon('Honedge', 70), []), board(mon('Stakataka', 110), []), [play('end_turn')])
+        t['hand_at_start'] = {'count': 2, 'cards_left_to_right': ['Aegislash (Cursed Metal / Slicing Blade)', 'Aegislash [B2 120 Superb Shield]']}
+        p = MadeUpGame(self, deck, [t]).convert({})[0][0]
+        self.assertEqual(p['me']['hand'], ['Aegislash B1 172', 'Aegislash B2 120'])
+        self.assertNotIn('not told by the ledger', p['notes'])
+
+    def test_a_card_the_opponent_s_attack_milled_and_the_ledger_shows_is_in_his_discard(self):
+        b = board(mon('Stakataka', 110), [])
+        t2 = owner_turn(2, ['Wally', 'Poké Ball'], board(mon('Timburr', 60), []), b, [play('end_turn')])
+        t2['board_after']['opponent'] = b
+        mill = {'kind': 'attack', 'card_name': 'Mega Gyarados ex', 'target': 'owner', 'result': 'Mega Blaster140; discard top3 owner deck',
+                'nested_events_in_order': [{'kind': 'deck_mill', 'destination': 'Owner discard', 'count': 3, 'cards_in_reveal_order': [None, None, None], 'visible_final_discard_top': 'Copycat'}]}
+        r3 = opp_row(3, [mill], b, b)
+        t4 = owner_turn(4, ['Wally'], board(mon('Timburr', 60), []), b, [play('end_turn')])
+        p = next(x for x in MadeUpGame(self, fighting_deck(), [t2, r3, t4]).convert(GLOBAL)[0] if x['turn_count'] == 4)
+        self.assertIn('Copycat B1 225', p['me']['discard'])
+        self.assertIn('the other 2 are not known', p['notes'])
+
+
 # ------------------------------------------------------------------------------------------------------------- the review's named examples, against the real ledgers
 @unittest.skipUnless(os.path.isdir(QA), 'the Recording_QA folder is not on this machine')
 class ReviewExamples(unittest.TestCase):

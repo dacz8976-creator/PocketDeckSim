@@ -90,15 +90,17 @@ def position_cards(p):
 
 def same_content(a, b):
     """is the new position the old one? (his cards, boards, discard, Energy, Stadium, effects and plan; notes and flags do not count)"""
-    keys = [('me', 'hand'), ('me', 'discard'), ('me', 'board'), ('me', 'energy_now'), ('me', 'energy_next'), ('opp', 'board'), ('opp', 'hand_count')]
+    keys = [('me', 'hand'), ('me', 'discard'), ('me', 'discard_energy'), ('me', 'board'), ('me', 'energy_now'), ('me', 'energy_next'), ('me', 'deck_count'),
+            ('opp', 'board'), ('opp', 'hand_count'), ('opp', 'discard'), ('opp', 'discard_energy'), ('opp', 'deck_count')]
     for k1, k2 in keys:
-        x, y = a[k1][k2], b[k1][k2]
-        if k2 in ('hand', 'discard'):
-            x, y = sorted(x), sorted(y)
+        # (the first version had no opponent discard list, only a count of 0: an absent list is an empty one)
+        x, y = a[k1].get(k2), b[k1].get(k2)
+        if k2 in ('hand', 'discard', 'discard_energy'):
+            x, y = sorted(x or []), sorted(y or [])
         if x != y:
             return False, f'{k1}.{k2} differs'
-    for k in ('points', 'stadium', 'his_plan', 'turn_count'):
-        if a.get(k) != b.get(k):
+    for k in ('points', 'stadium', 'his_plan', 'turn_count', 'turn_effects'):
+        if (a.get(k) or ([] if k == 'turn_effects' else None)) != (b.get(k) or ([] if k == 'turn_effects' else None)):
             return False, f'{k} differs'
     return True, ''
 

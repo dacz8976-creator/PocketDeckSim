@@ -30,7 +30,7 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -59,7 +59,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -118,8 +118,12 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373"
+   ],
+   "discard_energy": [
+    "Grass"
+   ],
    "board": [
     {
      "card": "Budew B3 013",
@@ -156,7 +160,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -216,8 +220,13 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Budew B3 013"
+   ],
+   "discard_energy": [
+    "Grass"
+   ],
    "board": [
     {
      "card": "Pinsir A1 026",
@@ -256,7 +265,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Metapod stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Metapod stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -320,8 +329,13 @@
   },
   "opp": {
    "hand_count": 5,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Budew B3 013"
+   ],
+   "discard_energy": [
+    "Grass"
+   ],
    "board": [
     {
      "card": "Pinsir A1 026",
@@ -361,7 +375,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Butterfree stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Butterfree stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -426,8 +440,14 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Budew B3 013",
+    "Pinsir A1 026"
+   ],
+   "discard_energy": [
+    "Grass"
+   ],
    "board": [
     {
      "card": "Vespiquen ex B4 011",
@@ -470,7 +490,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Accelgor stack taken from the printed evolution line (the ledger gives none); Metapod stack taken from the printed evolution line (the ledger gives none); Vespiquen ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Butterfree. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Accelgor stack taken from the printed evolution line (the ledger gives none); Metapod stack taken from the printed evolution line (the ledger gives none); Vespiquen ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Butterfree. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -535,8 +555,15 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Budew B3 013",
+    "Pinsir A1 026",
+    "Exeggcute A1 021"
+   ],
+   "discard_energy": [
+    "Grass"
+   ],
    "board": [
     {
      "card": "Vespiquen ex B4 011",
@@ -579,7 +606,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Accelgor stack taken from the printed evolution line (the ledger gives none); Vespiquen ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it); knocked out between turns: Butterfree. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Accelgor stack taken from the printed evolution line (the ledger gives none); Vespiquen ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it); knocked out between turns: Butterfree. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -619,7 +646,7 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -646,7 +673,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -694,7 +721,9 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Red Card P-A 006"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -724,7 +753,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -783,7 +812,11 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Red Card P-A 006",
+    "Professor's Research A4b 373",
+    "Potion P-A 001"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -823,7 +856,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Combusken stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Combusken stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -863,7 +896,7 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -890,7 +923,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -938,7 +971,9 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Klefki A3 121"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -972,12 +1007,21 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [],
+  "opp_ambiguous": [
+   {
+    "name": "Klefki",
+    "used": "A3 121",
+    "could_also_be": [
+     "B1 120"
+    ],
+    "where": "discard"
+   }
+  ],
   "usable": true,
   "usable_reason": null
  },
@@ -1029,8 +1073,14 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Klefki A3 121",
+    "Professor's Research A4b 373",
+    "Houndstone B2a 053"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
    "board": [
     {
      "card": "Gourgeist B2 072",
@@ -1068,12 +1118,21 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [],
+  "opp_ambiguous": [
+   {
+    "name": "Klefki",
+    "used": "A3 121",
+    "could_also_be": [
+     "B1 120"
+    ],
+    "where": "discard"
+   }
+  ],
   "usable": true,
   "usable_reason": null
  },
@@ -1137,8 +1196,17 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Klefki A3 121",
+    "Professor's Research A4b 373",
+    "Houndstone B2a 053",
+    "Poké Ball A2b 111",
+    "Poké Ball A2b 111",
+    "Pumpkaboo B2 071"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
    "board": [
     {
      "card": "Gourgeist B2 072",
@@ -1183,12 +1251,21 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [],
+  "opp_ambiguous": [
+   {
+    "name": "Klefki",
+    "used": "A3 121",
+    "could_also_be": [
+     "B1 120"
+    ],
+    "where": "discard"
+   }
+  ],
   "usable": true,
   "usable_reason": null
  },
@@ -1257,8 +1334,18 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Klefki A3 121",
+    "Professor's Research A4b 373",
+    "Houndstone B2a 053",
+    "Poké Ball A2b 111",
+    "Poké Ball A2b 111",
+    "Pumpkaboo B2 071",
+    "Gourgeist B2 072"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
    "board": [
     {
      "card": "Gourgeist B2 072",
@@ -1306,12 +1393,21 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Houndstone stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Houndstone stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [],
+  "opp_ambiguous": [
+   {
+    "name": "Klefki",
+    "used": "A3 121",
+    "could_also_be": [
+     "B1 120"
+    ],
+    "where": "discard"
+   }
+  ],
   "usable": true,
   "usable_reason": null
  },
@@ -1371,12 +1467,25 @@
     }
    ],
    "energy_now": "Water",
-   "energy_next": "Water"
+   "energy_next": "Water",
+   "deck_count": 0
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Klefki A3 121",
+    "Professor's Research A4b 373",
+    "Houndstone B2a 053",
+    "Poké Ball A2b 111",
+    "Poké Ball A2b 111",
+    "Pumpkaboo B2 071",
+    "Gourgeist B2 072"
+   ],
+   "discard_energy": [
+    "Psychic",
+    "Psychic",
+    "Psychic"
+   ],
    "board": [
     {
      "card": "Houndstone B2a 053",
@@ -1422,12 +1531,21 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Houndstone stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Wailord. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Houndstone stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Wailord. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [],
+  "opp_ambiguous": [
+   {
+    "name": "Klefki",
+    "used": "A3 121",
+    "could_also_be": [
+     "B1 120"
+    ],
+    "where": "discard"
+   }
+  ],
   "usable": true,
   "usable_reason": null
  },
@@ -1496,12 +1614,26 @@
     }
    ],
    "energy_now": "Water",
-   "energy_next": "Water"
+   "energy_next": "Water",
+   "deck_count": 0
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Klefki A3 121",
+    "Professor's Research A4b 373",
+    "Houndstone B2a 053",
+    "Poké Ball A2b 111",
+    "Poké Ball A2b 111",
+    "Pumpkaboo B2 071",
+    "Gourgeist B2 072",
+    "Pokémon Center Lady A2b 070"
+   ],
+   "discard_energy": [
+    "Psychic",
+    "Psychic",
+    "Psychic"
+   ],
    "board": [
     {
      "card": "Houndstone B2a 053",
@@ -1549,12 +1681,21 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Houndstone stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Houndstone stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [],
+  "opp_ambiguous": [
+   {
+    "name": "Klefki",
+    "used": "A3 121",
+    "could_also_be": [
+     "B1 120"
+    ],
+    "where": "discard"
+   }
+  ],
   "usable": true,
   "usable_reason": null
  },
@@ -1589,7 +1730,7 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -1617,7 +1758,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -1671,7 +1812,9 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Rare Candy A3 144"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -1686,8 +1829,7 @@
      "card": "Greninja A1 089",
      "hp": 120,
      "behind": [
-      "Froakie A1 087",
-      "Frogadier A1 088"
+      "Froakie A1 087"
      ]
     }
    ],
@@ -1707,21 +1849,12 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Greninja stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "the opponent's Greninja: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [
-   {
-    "name": "Frogadier",
-    "used": "A1 088",
-    "could_also_be": [
-     "B1 072"
-    ],
-    "under": "Greninja"
-   }
-  ],
+  "opp_ambiguous": [],
   "usable": true,
   "usable_reason": null
  },
@@ -1780,7 +1913,10 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Rare Candy A3 144",
+    "Electric Generator B2a 086"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -1800,8 +1936,7 @@
      "card": "Greninja A1 089",
      "hp": 120,
      "behind": [
-      "Froakie A1 087",
-      "Frogadier A1 088"
+      "Froakie A1 087"
      ]
     }
    ],
@@ -1821,21 +1956,12 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Aromatisse stack taken from the printed evolution line (the ledger gives none); Greninja stack taken from the printed evolution line (the ledger gives none); Hattrem stack taken from the printed evolution line (the ledger gives none); Tapu Koko ex is Confused (not represented: the harness has no condition field). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Aromatisse stack taken from the printed evolution line (the ledger gives none); Hattrem stack taken from the printed evolution line (the ledger gives none); Tapu Koko ex is Confused (not represented: the harness has no condition field); the opponent's Greninja: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [
-   {
-    "name": "Frogadier",
-    "used": "A1 088",
-    "could_also_be": [
-     "B1 072"
-    ],
-    "under": "Greninja"
-   }
-  ],
+  "opp_ambiguous": [],
   "usable": true,
   "usable_reason": null
  },
@@ -1870,7 +1996,9 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -1906,7 +2034,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -1968,7 +2096,9 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -2008,7 +2138,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Wugtrio ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Wugtrio ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2078,7 +2208,10 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Lucky Ice Pop B2 145"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -2120,7 +2253,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Wugtrio ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Wugtrio ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2192,7 +2325,11 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Lucky Ice Pop B2 145",
+    "X Speed P-A 002"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -2238,7 +2375,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Wugtrio ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Wugtrio ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2311,8 +2448,14 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Poké Ball A2b 111",
+    "Lucky Ice Pop B2 145",
+    "X Speed P-A 002"
+   ],
+   "discard_energy": [
+    "Water"
+   ],
    "board": [
     {
      "card": "Wugtrio ex A2b 019",
@@ -2361,7 +2504,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Wugtrio ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Honedge. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Wugtrio ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Honedge. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2435,8 +2578,14 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Poké Ball A2b 111",
+    "Lucky Ice Pop B2 145",
+    "X Speed P-A 002"
+   ],
+   "discard_energy": [
+    "Water"
+   ],
    "board": [
     {
      "card": "Wugtrio ex A2b 019",
@@ -2489,7 +2638,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Metal Core Barrier left Honedge between the turns (discarded); Wugtrio ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Metal Core Barrier left Honedge between the turns (discarded); Wugtrio ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2541,7 +2690,9 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Serena B1a 069"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -2566,7 +2717,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2616,7 +2767,10 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Serena B1a 069",
+    "Quick-Grow Extract B1a 067"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -2651,7 +2805,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Ivysaur stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Ivysaur stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2705,7 +2859,11 @@
   },
   "opp": {
    "hand_count": 5,
-   "discard_n": 0,
+   "discard": [
+    "Serena B1a 069",
+    "Quick-Grow Extract B1a 067",
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -2743,7 +2901,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Aegislash is Poisoned (not represented: the harness has no condition field); Aegislash: a Rare Candy evolved it, so no Stage 1 is under it; Mega Venusaur ex stack taken from the printed evolution line (the ledger gives none); Metal Core Barrier left Aegislash between the turns (discarded). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Aegislash is Poisoned (not represented: the harness has no condition field); Aegislash: a Rare Candy evolved it, so no Stage 1 is under it; Mega Venusaur ex stack taken from the printed evolution line (the ledger gives none); Metal Core Barrier left Aegislash between the turns (discarded). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2796,7 +2954,12 @@
   },
   "opp": {
    "hand_count": 5,
-   "discard_n": 0,
+   "discard": [
+    "Serena B1a 069",
+    "Quick-Grow Extract B1a 067",
+    "Professor's Research A4b 373",
+    "Sabrina A1 225"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -2832,7 +2995,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Aegislash: a Rare Candy evolved it, so no Stage 1 is under it; Mega Venusaur ex stack taken from the printed evolution line (the ledger gives none); Metal Core Barrier left Aegislash between the turns (discarded); knocked out between turns: Team Rocket's Tinkatink. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Aegislash: a Rare Candy evolved it, so no Stage 1 is under it; Mega Venusaur ex stack taken from the printed evolution line (the ledger gives none); Metal Core Barrier left Aegislash between the turns (discarded); knocked out between turns: Team Rocket's Tinkatink. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2875,7 +3038,7 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -2893,7 +3056,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Aegislash: which of B1 172, B2 120 it is is not told by the ledger. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2945,7 +3108,10 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -2976,7 +3142,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Aegislash: which of B1 172, B2 120 it is is not told by the ledger. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -3042,7 +3208,11 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -3087,7 +3257,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Mega Lucario ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Mega Lucario ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -3166,7 +3336,13 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Lucky Ice Pop B2 145",
+    "Copycat B1 225"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -3215,7 +3391,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Doublade stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Doublade stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -3304,8 +3480,17 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Lucky Ice Pop B2 145",
+    "Copycat B1 225",
+    "Hitmonlee A1 154"
+   ],
+   "discard_energy": [
+    "Fighting"
+   ],
    "board": [
     {
      "card": "Mega Lucario ex B3 081",
@@ -3349,7 +3534,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Aegislash stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Skarmory ex. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Aegislash stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Skarmory ex. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -3370,6 +3555,14 @@
     "could_also_be": [
      "B3 079"
     ]
+   },
+   {
+    "name": "Hitmonlee",
+    "used": "A1 154",
+    "could_also_be": [
+     "A2b 040"
+    ],
+    "where": "discard"
    }
   ],
   "usable": true,
@@ -3406,7 +3599,11 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -3440,7 +3637,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -3490,7 +3687,12 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -3531,7 +3733,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Fraxure stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Fraxure stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -3589,7 +3791,12 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -3632,7 +3839,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Fraxure stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Fraxure stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -3694,7 +3901,12 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -3741,7 +3953,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Haxorus stack taken from the printed evolution line (the ledger gives none); Magneton stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Haxorus stack taken from the printed evolution line (the ledger gives none); Magneton stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -3805,7 +4017,12 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -3858,7 +4075,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Haxorus stack taken from the printed evolution line (the ledger gives none); Magneton stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Haxorus stack taken from the printed evolution line (the ledger gives none); Magneton stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -3921,7 +4138,12 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -3975,7 +4197,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Doublade stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Magneton. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Doublade stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Magneton. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -4040,8 +4262,20 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Poké Ball A2b 111",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Professor's Research A4b 373",
+    "Haxorus B2b 056",
+    "Axew B2b 054",
+    "Fraxure B2b 055"
+   ],
+   "discard_energy": [
+    "Fighting",
+    "Metal",
+    "Metal"
+   ],
    "board": [
     {
      "card": "Happiny B4a 063",
@@ -4109,7 +4343,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Aegislash stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Aegislash stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -4183,8 +4417,21 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Poké Ball A2b 111",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Professor's Research A4b 373",
+    "Haxorus B2b 056",
+    "Axew B2b 054",
+    "Fraxure B2b 055",
+    "Happiny B4a 063"
+   ],
+   "discard_energy": [
+    "Fighting",
+    "Metal",
+    "Metal"
+   ],
    "board": [
     {
      "card": "Haxorus B2b 056",
@@ -4225,7 +4472,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Aegislash stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Aegislash stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -4271,7 +4518,7 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -4292,7 +4539,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -4341,7 +4588,10 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -4378,7 +4628,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -4433,8 +4683,17 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Ralts B4 071",
+    "Rare Candy A3 144",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
    "board": [
     {
      "card": "Mega Gardevoir ex B2 066",
@@ -4443,8 +4702,7 @@
       "Psychic"
      ],
      "behind": [
-      "Ralts B4 071",
-      "Kirlia A1 131"
+      "Ralts B4 071"
      ]
     },
     {
@@ -4470,24 +4728,12 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Mega Gardevoir ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "the opponent's Mega Gardevoir ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [
-   {
-    "name": "Kirlia",
-    "used": "A1 131",
-    "could_also_be": [
-     "A2 069",
-     "B2 064",
-     "B3 064",
-     "B4 072"
-    ],
-    "under": "Mega Gardevoir ex"
-   }
-  ],
+  "opp_ambiguous": [],
   "usable": true,
   "usable_reason": null
  },
@@ -4540,8 +4786,17 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Ralts B4 071",
+    "Rare Candy A3 144",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
    "board": [
     {
      "card": "Mega Gardevoir ex B2 066",
@@ -4551,8 +4806,7 @@
       "Psychic"
      ],
      "behind": [
-      "Ralts B4 071",
-      "Kirlia A1 131"
+      "Ralts B4 071"
      ]
     },
     {
@@ -4587,24 +4841,12 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Mega Gardevoir ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Nidoran♂. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "knocked out between turns: Nidoran♂; the opponent's Mega Gardevoir ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [
-   {
-    "name": "Kirlia",
-    "used": "A1 131",
-    "could_also_be": [
-     "A2 069",
-     "B2 064",
-     "B3 064",
-     "B4 072"
-    ],
-    "under": "Mega Gardevoir ex"
-   }
-  ],
+  "opp_ambiguous": [],
   "usable": true,
   "usable_reason": null
  },
@@ -4661,8 +4903,17 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Ralts B4 071",
+    "Rare Candy A3 144",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
    "board": [
     {
      "card": "Mega Gardevoir ex B2 066",
@@ -4672,8 +4923,7 @@
       "Psychic"
      ],
      "behind": [
-      "Ralts B4 071",
-      "Kirlia A1 131"
+      "Ralts B4 071"
      ]
     },
     {
@@ -4709,24 +4959,12 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Mega Gardevoir ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it); knocked out between turns: Nihilego. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "a Poké Ball that found nothing is left out of his plan (the engine does not offer it); knocked out between turns: Nihilego; the opponent's Mega Gardevoir ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [
-   {
-    "name": "Kirlia",
-    "used": "A1 131",
-    "could_also_be": [
-     "A2 069",
-     "B2 064",
-     "B3 064",
-     "B4 072"
-    ],
-    "under": "Mega Gardevoir ex"
-   }
-  ],
+  "opp_ambiguous": [],
   "usable": true,
   "usable_reason": null
  },
@@ -4764,7 +5002,7 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -4789,7 +5027,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -4835,7 +5073,7 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -4868,7 +5106,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -4920,7 +5158,11 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "May B1 223",
+    "Team Rocket's Thieving Machine B4a 067",
+    "Poké Ball A2b 111"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -4965,7 +5207,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Charmeleon stack taken from the printed evolution line (the ledger gives none); Entei ex is Poisoned (not represented: the harness has no condition field); knocked out between turns: Nidoran♂. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Charmeleon stack taken from the printed evolution line (the ledger gives none); Entei ex is Poisoned (not represented: the harness has no condition field); knocked out between turns: Nidoran♂. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -5021,7 +5263,12 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "May B1 223",
+    "Team Rocket's Thieving Machine B4a 067",
+    "Poké Ball A2b 111",
+    "Poké Ball A2b 111"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -5068,7 +5315,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Charmeleon stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Nidoran♂. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Charmeleon stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Nidoran♂. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -5108,7 +5355,7 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -5126,7 +5373,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -5167,7 +5414,9 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -5200,7 +5449,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -5250,7 +5499,11 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Professor's Research A4b 373",
+    "Chingling B1 109"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -5296,7 +5549,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Whirlipede stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Whirlipede stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -5348,7 +5601,11 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Professor's Research A4b 373",
+    "Chingling B1 109"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -5381,7 +5638,8 @@
      ]
     }
    ],
-   "energy_next": "Psychic"
+   "energy_next": "Psychic",
+   "discard_hidden": 1
   },
   "stadium": {
    "card": "Peculiar Plaza B2 155",
@@ -5398,9 +5656,9 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Houndstone stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Scolipede. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Houndstone stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Scolipede; the opponent's discard also holds 1 card(s) whose identity the ledger says is not readable: not in the list, so the count is a lower bound. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
-  "approximate_reason": "opponent's list unknown",
+  "approximate_reason": "opponent's list unknown; part of his discard is hidden in the ledger",
   "heldout": false,
   "plan_truncated_at": null,
   "opp_ambiguous": [],
@@ -5452,8 +5710,16 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Professor's Research A4b 373",
+    "Chingling B1 109",
+    "Gourgeist B2 072",
+    "Pumpkaboo B2 071"
+   ],
+   "discard_energy": [
+    "Psychic"
+   ],
    "board": [
     {
      "card": "Houndstone B2a 053",
@@ -5478,7 +5744,8 @@
      "hp": 10
     }
    ],
-   "energy_next": "Psychic"
+   "energy_next": "Psychic",
+   "discard_hidden": 1
   },
   "stadium": {
    "card": "Peculiar Plaza B2 155",
@@ -5497,9 +5764,9 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Houndstone stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Houndstone stack taken from the printed evolution line (the ledger gives none); the opponent's discard also holds 1 card(s) whose identity the ledger says is not readable: not in the list, so the count is a lower bound. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
-  "approximate_reason": "opponent's list unknown",
+  "approximate_reason": "opponent's list unknown; part of his discard is hidden in the ledger",
   "heldout": false,
   "plan_truncated_at": null,
   "opp_ambiguous": [],
@@ -5537,7 +5804,7 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -5565,7 +5832,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -5619,7 +5886,10 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Rare Candy A3 144",
+    "Wally B4 153"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -5633,8 +5903,7 @@
       "Protective Poncho B2 147"
      ],
      "behind": [
-      "Gible B4a 052",
-      "Gabite A2 122"
+      "Gible B4a 052"
      ]
     }
    ],
@@ -5655,22 +5924,12 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Garchomp stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "the opponent's Garchomp: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [
-   {
-    "name": "Gabite",
-    "used": "A2 122",
-    "could_also_be": [
-     "A2a 046",
-     "B4a 053"
-    ],
-    "under": "Garchomp"
-   }
-  ],
+  "opp_ambiguous": [],
   "usable": true,
   "usable_reason": null
  },
@@ -5727,7 +5986,11 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Rare Candy A3 144",
+    "Wally B4 153",
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -5742,8 +6005,7 @@
       "Protective Poncho B2 147"
      ],
      "behind": [
-      "Gible B4a 052",
-      "Gabite A2 122"
+      "Gible B4a 052"
      ],
      "effects": [
       {
@@ -5770,22 +6032,12 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Garchomp stack taken from the printed evolution line (the ledger gives none); Persian stack taken from the printed evolution line (the ledger gives none); Silvally stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Meowth. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Persian stack taken from the printed evolution line (the ledger gives none); Silvally stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Meowth; the opponent's Garchomp: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [
-   {
-    "name": "Gabite",
-    "used": "A2 122",
-    "could_also_be": [
-     "A2a 046",
-     "B4a 053"
-    ],
-    "under": "Garchomp"
-   }
-  ],
+  "opp_ambiguous": [],
   "usable": true,
   "usable_reason": null
  },
@@ -5841,7 +6093,13 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Rare Candy A3 144",
+    "Wally B4 153",
+    "Professor's Research A4b 373",
+    "Protective Poncho B2 147",
+    "Copycat B1 225"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -5854,8 +6112,7 @@
       "Colorless"
      ],
      "behind": [
-      "Gible B4a 052",
-      "Gabite A2 122"
+      "Gible B4a 052"
      ],
      "effects": [
       {
@@ -5882,22 +6139,12 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Garchomp stack taken from the printed evolution line (the ledger gives none); Silvally stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Persian. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Silvally stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Persian; the opponent's Garchomp: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [
-   {
-    "name": "Gabite",
-    "used": "A2 122",
-    "could_also_be": [
-     "A2a 046",
-     "B4a 053"
-    ],
-    "under": "Garchomp"
-   }
-  ],
+  "opp_ambiguous": [],
   "usable": true,
   "usable_reason": null
  },
@@ -5958,8 +6205,17 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Rare Candy A3 144",
+    "Wally B4 153",
+    "Professor's Research A4b 373",
+    "Protective Poncho B2 147",
+    "Copycat B1 225",
+    "Poké Ball A2b 111"
+   ],
+   "discard_energy": [
+    "Water"
+   ],
    "board": [
     {
      "card": "Happiny B4a 063",
@@ -5979,8 +6235,7 @@
       "Colorless"
      ],
      "behind": [
-      "Gible B4a 052",
-      "Gabite A2 122"
+      "Gible B4a 052"
      ]
     }
    ],
@@ -6024,22 +6279,12 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Garchomp stack taken from the printed evolution line (the ledger gives none); Silvally stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Silvally stack taken from the printed evolution line (the ledger gives none); the opponent's Garchomp: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [
-   {
-    "name": "Gabite",
-    "used": "A2 122",
-    "could_also_be": [
-     "A2a 046",
-     "B4a 053"
-    ],
-    "under": "Garchomp"
-   }
-  ],
+  "opp_ambiguous": [],
   "usable": true,
   "usable_reason": null
  },
@@ -6077,7 +6322,7 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -6103,7 +6348,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Sandslash: which of A1 138, B2 078 it is is not told by the ledger. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -6147,7 +6392,9 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -6185,7 +6432,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -6236,8 +6483,13 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Team Rocket's Tinkatink B4a 048"
+   ],
+   "discard_energy": [
+    "Metal"
+   ],
    "board": [
     {
      "card": "Stakataka A3a 053",
@@ -6268,7 +6520,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -6323,8 +6575,13 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Team Rocket's Tinkatink B4a 048"
+   ],
+   "discard_energy": [
+    "Metal"
+   ],
    "board": [
     {
      "card": "Stakataka A3a 053",
@@ -6371,7 +6628,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -6428,8 +6685,13 @@
   },
   "opp": {
    "hand_count": 5,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Team Rocket's Tinkatink B4a 048"
+   ],
+   "discard_energy": [
+    "Metal"
+   ],
    "board": [
     {
      "card": "Stakataka A3a 053",
@@ -6480,7 +6742,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -6545,8 +6807,13 @@
   },
   "opp": {
    "hand_count": 6,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Team Rocket's Tinkatink B4a 048"
+   ],
+   "discard_energy": [
+    "Metal"
+   ],
    "board": [
     {
      "card": "Stakataka A3a 053",
@@ -6600,7 +6867,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -6671,8 +6938,17 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Team Rocket's Tinkatink B4a 048",
+    "Stakataka A3a 053",
+    "May B1 223"
+   ],
+   "discard_energy": [
+    "Metal",
+    "Metal",
+    "Metal"
+   ],
    "board": [
     {
      "card": "Copperajah B4a 047",
@@ -6712,7 +6988,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -6778,8 +7054,17 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Team Rocket's Tinkatink B4a 048",
+    "Stakataka A3a 053",
+    "May B1 223"
+   ],
+   "discard_energy": [
+    "Metal",
+    "Metal",
+    "Metal"
+   ],
    "board": [
     {
      "card": "Copperajah B4a 047",
@@ -6829,7 +7114,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Conkeldurr: which of A3 096 it is is not told by the ledger; Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none); Team Rocket's Tinkatuff stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Conkeldurr. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none); Team Rocket's Tinkatuff stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Conkeldurr. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -6901,8 +7186,17 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Professor's Research A4b 373",
+    "Team Rocket's Tinkatink B4a 048",
+    "Stakataka A3a 053",
+    "May B1 223"
+   ],
+   "discard_energy": [
+    "Metal",
+    "Metal",
+    "Metal"
+   ],
    "board": [
     {
      "card": "Copperajah B4a 047",
@@ -6950,7 +7244,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Conkeldurr: which of A3 096 it is is not told by the ledger; Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash: which of A1 138 it is is not told by the ledger; Team Rocket's Tinkaton stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Sandslash. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Team Rocket's Tinkaton stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Sandslash. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -6993,7 +7287,7 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -7015,7 +7309,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -7064,7 +7358,10 @@
   },
   "opp": {
    "hand_count": 1,
-   "discard_n": 0,
+   "discard": [
+    "Copycat B1 225",
+    "Poké Ball A2b 111"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -7104,7 +7401,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -7159,7 +7456,11 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Copycat B1 225",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -7199,7 +7500,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; a Poké Ball that found nothing is left out of his plan (the engine does not offer it); knocked out between turns: Nacli. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; a Poké Ball that found nothing is left out of his plan (the engine does not offer it); knocked out between turns: Nacli. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -7260,7 +7561,11 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Copycat B1 225",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -7304,7 +7609,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Naclstack stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Naclstack stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -7364,7 +7669,12 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Copycat B1 225",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Lucky Ice Pop B2 145"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -7409,7 +7719,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Conkeldurr: which of B4 089 it is is not told by the ledger; Naclstack stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Conkeldurr. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Naclstack stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Conkeldurr. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -7473,7 +7783,12 @@
   },
   "opp": {
    "hand_count": 5,
-   "discard_n": 0,
+   "discard": [
+    "Copycat B1 225",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Lucky Ice Pop B2 145"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -7521,7 +7836,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Gurdurr stack taken from the printed evolution line (the ledger gives none); Naclstack stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Gurdurr stack taken from the printed evolution line (the ledger gives none); Naclstack stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -7561,7 +7876,7 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -7591,7 +7906,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -7639,7 +7954,9 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -7680,7 +7997,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -7740,7 +8057,12 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Order Pad B4 145"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -7786,7 +8108,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Gurdurr stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Gurdurr stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -7852,7 +8174,12 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Order Pad B4 145"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -7905,7 +8232,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Gurdurr stack taken from the printed evolution line (the ledger gives none); Naclstack stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Gurdurr stack taken from the printed evolution line (the ledger gives none); Naclstack stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -7975,7 +8302,12 @@
   },
   "opp": {
    "hand_count": 5,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Order Pad B4 145"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -8028,7 +8360,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Gurdurr stack taken from the printed evolution line (the ledger gives none); Naclstack stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Gurdurr stack taken from the printed evolution line (the ledger gives none); Naclstack stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -8093,7 +8425,12 @@
   },
   "opp": {
    "hand_count": 6,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Order Pad B4 145"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -8146,7 +8483,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Garganacl stack taken from the printed evolution line (the ledger gives none); Gurdurr stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Conkeldurr. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Garganacl stack taken from the printed evolution line (the ledger gives none); Gurdurr stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Conkeldurr. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -8209,7 +8546,14 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Order Pad B4 145",
+    "Rare Candy A3 144",
+    "Wally B4 153"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -8221,8 +8565,7 @@
       "Colorless"
      ],
      "behind": [
-      "Team Rocket's Tinkatink B4a 048",
-      "Team Rocket's Tinkatuff B4a 049"
+      "Team Rocket's Tinkatink B4a 048"
      ]
     },
     {
@@ -8273,7 +8616,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Garganacl stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); Team Rocket's Tinkaton stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Gurdurr. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Garganacl stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Gurdurr; the opponent's Team Rocket's Tinkaton: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -8360,7 +8703,16 @@
   },
   "opp": {
    "hand_count": 1,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Order Pad B4 145",
+    "Rare Candy A3 144",
+    "Wally B4 153",
+    "Rare Candy A3 144",
+    "Copycat B1 225"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -8372,8 +8724,7 @@
       "Colorless"
      ],
      "behind": [
-      "Team Rocket's Tinkatink B4a 048",
-      "Team Rocket's Tinkatuff B4a 049"
+      "Team Rocket's Tinkatink B4a 048"
      ]
     },
     {
@@ -8385,8 +8736,7 @@
       "Metal"
      ],
      "behind": [
-      "Team Rocket's Tinkatink B4a 048",
-      "Team Rocket's Tinkatuff B4a 049"
+      "Team Rocket's Tinkatink B4a 048"
      ]
     },
     {
@@ -8428,7 +8778,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Garganacl stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); Team Rocket's Tinkaton stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Garganacl stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); the opponent's Team Rocket's Tinkaton: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -8471,7 +8821,7 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -8493,7 +8843,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -8541,7 +8891,10 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Sabrina A1 225"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -8577,7 +8930,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -8635,7 +8988,10 @@
   },
   "opp": {
    "hand_count": 1,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Sabrina A1 225"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -8679,7 +9035,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -8739,7 +9095,10 @@
   },
   "opp": {
    "hand_count": 1,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Sabrina A1 225"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -8789,7 +9148,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Milotic stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Milotic stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -8832,7 +9191,7 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -8861,7 +9220,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -8920,7 +9279,9 @@
   },
   "opp": {
    "hand_count": 5,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -8954,7 +9315,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9002,7 +9363,7 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -9024,7 +9385,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9078,8 +9439,13 @@
   },
   "opp": {
    "hand_count": 6,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373"
+   ],
+   "discard_energy": [
+    "Water"
+   ],
    "board": [
     {
      "card": "Suicune ex A4a 020",
@@ -9109,7 +9475,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9173,8 +9539,14 @@
   },
   "opp": {
    "hand_count": 5,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Frigibax B2a 034"
+   ],
+   "discard_energy": [
+    "Water"
+   ],
    "board": [
     {
      "card": "Suicune ex A4a 020",
@@ -9211,7 +9583,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9223,6 +9595,14 @@
     "could_also_be": [
      "P-B 037"
     ]
+   },
+   {
+    "name": "Frigibax",
+    "used": "B2a 034",
+    "could_also_be": [
+     "P-B 037"
+    ],
+    "where": "discard"
    }
   ],
   "usable": true,
@@ -9259,7 +9639,9 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -9292,7 +9674,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9348,7 +9730,11 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Field Blower B3 147"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -9390,7 +9776,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Small Balloon left Team Rocket's Koffing between the turns (discarded); Team Rocket's Raticate ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Horsea. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Small Balloon left Team Rocket's Koffing between the turns (discarded); Team Rocket's Raticate ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Horsea. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9456,7 +9842,12 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Field Blower B3 147",
+    "Red Card P-A 006"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -9503,7 +9894,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Team Rocket's Raticate ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Raticate ex stack taken from the printed evolution line (the ledger gives none); Team Rocket's Tinkatuff stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Team Rocket's Raticate ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Raticate ex stack taken from the printed evolution line (the ledger gives none); Team Rocket's Tinkatuff stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9577,8 +9968,19 @@
   },
   "opp": {
    "hand_count": 1,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Field Blower B3 147",
+    "Red Card P-A 006",
+    "Team Rocket's Raticate ex B4a 059",
+    "Team Rocket's Rattata B4a 058",
+    "Field Blower B3 147"
+   ],
+   "discard_energy": [
+    "Water",
+    "Metal"
+   ],
    "board": [
     {
      "card": "Team Rocket's Tinkaton B4a 050",
@@ -9613,7 +10015,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Team Rocket's Tinkaton stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Team Rocket's Tinkaton stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9661,7 +10063,9 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -9694,7 +10098,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9749,7 +10153,10 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -9789,7 +10196,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9853,7 +10260,12 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Leaf A1a 068",
+    "Team Rocket's Master Plan B4a 070"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -9892,7 +10304,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Seadra is Confused (not represented: the harness has no condition field); Seadra stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Seadra is Confused (not represented: the harness has no condition field); Seadra stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9932,7 +10344,9 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -9959,7 +10373,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -10003,7 +10417,10 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -10052,7 +10469,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -10109,7 +10526,11 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Soothing Shore B4 154"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -10155,7 +10576,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -10221,7 +10642,11 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Soothing Shore B4 154"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -10267,7 +10692,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Snorlax ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Snorlax ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -10339,7 +10764,11 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Soothing Shore B4 154"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -10385,7 +10814,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Seadra stack taken from the printed evolution line (the ledger gives none); Snorlax ex is Poisoned/Asleep (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Seadra stack taken from the printed evolution line (the ledger gives none); Snorlax ex is Poisoned/Asleep (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -10459,7 +10888,11 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Soothing Shore B4 154"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -10512,7 +10945,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Seadra stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Seadra stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -10589,7 +11022,11 @@
   },
   "opp": {
    "hand_count": 5,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Soothing Shore B4 154"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -10642,7 +11079,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -10724,7 +11161,12 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Soothing Shore B4 154",
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -10779,7 +11221,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -10865,7 +11307,13 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Soothing Shore B4 154",
+    "Professor's Research A4b 373",
+    "Lucky Ice Pop B2 145"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -10922,7 +11370,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Snorlax ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Snorlax ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -11008,11 +11456,18 @@
     }
    ],
    "energy_now": "Water",
-   "energy_next": "Water"
+   "energy_next": "Water",
+   "deck_count": 0
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Soothing Shore B4 154",
+    "Professor's Research A4b 373",
+    "Lucky Ice Pop B2 145"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -11051,7 +11506,8 @@
      ]
     }
    ],
-   "energy_next": "Water"
+   "energy_next": "Water",
+   "deck_count": 0
   },
   "stadium": {
    "card": "Soothing Shore B4 154",
@@ -11068,7 +11524,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Snorlax ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Snorlax ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -11155,11 +11611,18 @@
     }
    ],
    "energy_now": "Water",
-   "energy_next": "Water"
+   "energy_next": "Water",
+   "deck_count": 0
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Soothing Shore B4 154",
+    "Professor's Research A4b 373",
+    "Lucky Ice Pop B2 145"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -11198,7 +11661,8 @@
      ]
     }
    ],
-   "energy_next": "Psychic"
+   "energy_next": "Psychic",
+   "deck_count": 0
   },
   "stadium": {
    "card": "Soothing Shore B4 154",
@@ -11215,7 +11679,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Snorlax ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Snorlax ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -11296,11 +11760,18 @@
     }
    ],
    "energy_now": "Water",
-   "energy_next": "Water"
+   "energy_next": "Water",
+   "deck_count": 0
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111",
+    "Soothing Shore B4 154",
+    "Professor's Research A4b 373",
+    "Lucky Ice Pop B2 145"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -11342,7 +11813,8 @@
      ]
     }
    ],
-   "energy_next": "Psychic"
+   "energy_next": "Psychic",
+   "deck_count": 0
   },
   "stadium": {
    "card": "Soothing Shore B4 154",
@@ -11358,7 +11830,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Snorlax ex is Poisoned/Asleep (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Kingdra ex. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Snorlax ex is Poisoned/Asleep (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Kingdra ex. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -11401,7 +11873,7 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -11421,7 +11893,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -11468,7 +11940,9 @@
   },
   "opp": {
    "hand_count": 5,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -11500,7 +11974,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -11557,7 +12031,9 @@
   },
   "opp": {
    "hand_count": 5,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -11595,7 +12071,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Dragonair stack taken from the printed evolution line (the ledger gives none); Seadra stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Dragonair stack taken from the printed evolution line (the ledger gives none); Seadra stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -11659,7 +12135,11 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Pichu A4 066",
+    "May B1 223"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -11697,7 +12177,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Dragonite stack taken from the printed evolution line (the ledger gives none); Kingdra ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Team Rocket's Koffing. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Dragonite stack taken from the printed evolution line (the ledger gives none); Kingdra ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Team Rocket's Koffing. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -11763,7 +12243,11 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Pichu A4 066",
+    "May B1 223"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -11804,7 +12288,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Dragonite is Poisoned (not represented: the harness has no condition field); Dragonite stack taken from the printed evolution line (the ledger gives none); Kingdra ex stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Horsea. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Dragonite is Poisoned (not represented: the harness has no condition field); Dragonite stack taken from the printed evolution line (the ledger gives none); Kingdra ex stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Horsea. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -11874,8 +12358,20 @@
   },
   "opp": {
    "hand_count": 5,
-   "discard_n": 0,
-   "discard_energy": [],
+   "discard": [
+    "Poké Ball A2b 111",
+    "Pichu A4 066",
+    "May B1 223",
+    "Dragonite A1 185",
+    "Dratini B4 116",
+    "Dragonair B4 117"
+   ],
+   "discard_energy": [
+    "Water",
+    "Lightning",
+    "Lightning",
+    "Lightning"
+   ],
    "board": [
     {
      "card": "Dratini B4 116",
@@ -11899,7 +12395,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -11939,7 +12435,7 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -11968,7 +12464,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -12019,7 +12515,7 @@
   },
   "opp": {
    "hand_count": 5,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -12051,7 +12547,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -12091,7 +12587,7 @@
   },
   "opp": {
    "hand_count": 4,
-   "discard_n": 0,
+   "discard": [],
    "discard_energy": [],
    "board": [
     {
@@ -12114,7 +12610,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -12169,7 +12665,9 @@
   },
   "opp": {
    "hand_count": 2,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -12213,7 +12711,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -12285,7 +12783,11 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Soothing Shore B4 154",
+    "Irida A2a 072"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -12332,7 +12834,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Glaceon ex stack taken from the printed evolution line (the ledger gives none); Mega Gyarados ex is Poisoned/Burned (not represented: the harness has no condition field); Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Glaceon ex stack taken from the printed evolution line (the ledger gives none); Mega Gyarados ex is Poisoned/Burned (not represented: the harness has no condition field); Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -12432,7 +12934,11 @@
   },
   "opp": {
    "hand_count": 3,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Soothing Shore B4 154",
+    "Irida A2a 072"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -12494,7 +13000,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Glaceon ex stack taken from the printed evolution line (the ledger gives none); Mega Gyarados ex is Poisoned (not represented: the harness has no condition field); Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none); Milotic ex stack taken from the printed evolution line (the ledger gives none); Seadra stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Glaceon ex stack taken from the printed evolution line (the ledger gives none); Mega Gyarados ex is Poisoned (not represented: the harness has no condition field); Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none); Milotic ex stack taken from the printed evolution line (the ledger gives none); Seadra stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -12561,7 +13067,8 @@
    ],
    "discard": [
     "Poké Ball A2b 111",
-    "Copycat B1 225"
+    "Copycat B1 225",
+    "Soothing Shore B4 154"
    ],
    "discard_energy": [
     "Water",
@@ -12604,7 +13111,12 @@
   },
   "opp": {
    "hand_count": 5,
-   "discard_n": 0,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Soothing Shore B4 154",
+    "Irida A2a 072",
+    "Professor's Research A4b 373"
+   ],
    "discard_energy": [],
    "board": [
     {
@@ -12659,7 +13171,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Glaceon ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex is Poisoned (not represented: the harness has no condition field); Kingdra ex stack taken from the printed evolution line (the ledger gives none); Mega Gyarados ex is Poisoned (not represented: the harness has no condition field); Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none); Milotic ex stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); the opponent's attack discarded the top 3 cards of his deck (which ones is not known: they stay in the deck here). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
+  "notes": "Glaceon ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex is Poisoned (not represented: the harness has no condition field); Kingdra ex stack taken from the printed evolution line (the ledger gives none); Mega Gyarados ex is Poisoned (not represented: the harness has no condition field); Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none); Milotic ex stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); the opponent's attack discarded the top 3 cards of his deck: Soothing Shore named by the ledger and put in his discard; the other 2 are not known (they stay in the deck here). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,

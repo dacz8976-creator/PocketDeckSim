@@ -178,6 +178,12 @@ def pair_cost(a, n):
     return sum(((ea - en) + (en - ea)).values()) + 0.5 * (tool_of(a) != tool_of(n)) + 0.05 * (bpos(a) != bpos(n))
 
 
+def evolves_into(below, above):
+    """is `above` an evolution of `below`, by the printed line? An Eevee ex counts as an Eevee (the ledger shows Eevee ex becoming Glaceon ex)"""
+    line = chain_names(above)
+    return below in line or (below.endswith(' ex') and below[:-3] in line)
+
+
 def match_boards(after, now):
     """-> (pairs [(Pokemon after his turn, the same Pokemon at his next turn start)], knocked_out [the after-Pokemon with no counterpart]).
     The same Pokemon is told by its instance id when the ledger gives one; else by being its evolution; else, among Pokemon of one name, by what is on
@@ -204,7 +210,7 @@ def match_boards(after, now):
             for i, j in zip(best[1], best[2]):
                 link(i, j)
     # what is left: a Pokemon that is now its own evolution (a name that is gone because it evolved is not a knock-out)
-    evo = sorted((pair_cost(after[i], now[j]), i, j) for i in ua for j in un if nname(after[i]['name']) in chain_names(nname(now[j]['name'])))
+    evo = sorted((pair_cost(after[i], now[j]), i, j) for i in ua for j in un if evolves_into(nname(after[i]['name']), nname(now[j]['name'])))
     for _, i, j in evo:
         if i in ua and j in un:
             link(i, j)
@@ -477,6 +483,130 @@ def carried_effects(prev_opp_row, prev_owner_active, my_active_name, opp_active_
     return out, notes
 
 
+# ---------------------------------------------------------------------------------------------------------------- the opponent's discard, as the ledger names it
+
+STAGE2 = {n for n, cs in C.BYNAME.items() if any(C.is_pokemon(c) and c.get('stage') == 2 for c in cs)}
+EMPTY_DECK = re.compile(r'empty deck|deck (?:is )?empty|no cards? (?:left )?in (?:the |his |her |their )?deck', re.I)
+TOP_PILE = re.compile(r'top pile (?:preview )?(?:is|shows?) ([^.;,]+?)\s*(?:[.;,]|$)', re.I)
+GONE = ('none', 'null', 'empty', 'no stadium', '')
+
+
+def stage2_in(text):
+    """the Stage 2 Pokemon a ledger text names ('... directly into Dragonite'): the longest such name, or None"""
+    t = str(text or '').lower()
+    hits = [n for n in STAGE2 if n.lower() in t]
+    return max(hits, key=len) if hits else None
+
+
+def rc_count(counter, name):
+    """how many Rare Candy evolutions the ledger gave for a Pokemon of this name: under its own name, or under the bare name the ledger wrote ('Tinkaton' for "Team Rocket's Tinkaton")"""
+    return sum(n for k, n in counter.items() if n > 0 and (k == name or name.endswith(' ' + k)))
+
+
+def rc_take(counter, name):
+    """one of those evolutions is used up (the Pokemon it made left the board)"""
+    k = next((k for k, n in counter.items() if n > 0 and (k == name or name.endswith(' ' + k))), None)
+    if k is not None:
+        counter[k] -= 1
+
+
+def is_trainer_item(name):
+    """a Trainer card that goes to the discard when played (not a Tool, which stays attached, nor a Stadium, which stays in play)"""
+    cs = C.BYNAME.get(name)
+    return bool(cs) and not any(C.is_pokemon(c) for c in cs) and not any(('Tool' in str(c.get('trainer_card_type', ''))) or ('Stadium' in str(c.get('trainer_card_type', ''))) for c in cs)
+
+
+def opp_history(led):
+    """-> {turn_number: what the ledger says of the OPPONENT's discard and deck BEFORE that row}: {'cards': [(name, variant text, printed HP)], 'energy': [types], 'hidden': n cards
+    whose identity the ledger says is not readable, 'deck_empty': bool, 'rc_ids', 'rc_names': Pokemon of his a Rare Candy evolved (no Stage 1 under them)}.
+    Taken from: his Pokemon that left the board (knocked out: with the cards under it, its Tool and its Energy), the Items and Supporters he played, his Stadium when another one
+    replaced it, Energy he paid to retreat or that an attack of mine discarded off a Pokemon that is still there, a Tool of his that left a Pokemon that is still there, the
+    cards the ledger names as discarded to pay an attack ('attack_cost_discard', "New top pile preview is X"), and a deck the ledger says is empty"""
+    st = {'cards': [], 'energy': [], 'hidden': 0, 'deck_empty': False, 'rc_ids': set(), 'rc_names': collections.Counter(), 'ko_points': 0}
+    out, prev_stad, stad_by = {}, None, {}
+    for r in led['turns']:
+        is_owner = str(r.get('who_played', '')).startswith('owner')
+        b0, b1 = r.get('board_at_start') or {}, r.get('board_after') or {}
+        # the Stadium: one of his that is gone from play by this row went to his discard
+        sd = b0.get('stadium')
+        played_by = str(sd.get('played_by') or '').lower() if isinstance(sd, dict) else ''
+        sname = sd.get('name') if isinstance(sd, dict) else sd
+        cur = nname(sname) if sname and str(sname).strip().lower() not in GONE else None
+        if prev_stad and prev_stad[0] != cur and prev_stad[1] and C.BYNAME.get(prev_stad[0]):
+            st['cards'].append((prev_stad[0], None, None))
+        by = ('opp' if 'opp' in played_by else 'own') if played_by else stad_by.get(cur)
+        prev_stad = (cur, by == 'opp') if cur else None
+        # (the Stadium change above happened before this row: it is part of the state a position at this row starts from)
+        out[r['turn_number']] = {'cards': list(st['cards']), 'energy': list(st['energy']), 'hidden': st['hidden'], 'deck_empty': st['deck_empty'],
+                                 'rc_ids': set(st['rc_ids']), 'rc_names': collections.Counter(st['rc_names']), 'ko_points': st['ko_points']}
+        if not is_owner:
+            for p in r.get('plays_in_order') or []:
+                kind = nk(re.sub(r'^opponent[_ ]', '', str(p.get('kind') or ''), flags=re.I))
+                card, res = nname(p.get('card_name')), str(p.get('result') or '')
+                if kind == 'attempt':
+                    continue
+                if kind == 'stadium' and card:
+                    stad_by[card] = 'opp'
+                if kind == 'attack':
+                    for ev in p.get('nested_events_in_order') or []:
+                        if isinstance(ev, dict) and re.search(r'discard', str(ev.get('kind') or ''), re.I) and 'mill' not in str(ev.get('kind')).lower():
+                            nm = nname(ev.get('card_name')) if ev.get('card_name') else None
+                            if nm and C.BYNAME.get(nm):
+                                st['cards'].append((nm, None, None))
+                            else:
+                                st['hidden'] += 1
+                elif kind == 'retreat':
+                    st['energy'] += [t_ for t_, n_ in retreat_pay(p) for _ in range(n_)]
+                elif 'rare candy' in str(p.get('card_name') or '').lower():
+                    # (the ledger also writes it as "Rare Candy + Mega Gardevoir ex", as an evolution row)
+                    st['cards'].append(('Rare Candy', None, None))
+                    tg_ = str(p.get('target') or '').strip()
+                    if tg_ and len(tg_) <= 3:
+                        st['rc_ids'].add(tg_)
+                    else:
+                        evo = stage2_in(str(p.get('card_name') or '') + ' ' + tg_ + ' ' + res)
+                        if evo:
+                            st['rc_names'][evo] += 1
+                elif kind in ('card_play', 'item_evolution') and is_trainer_item(card) and not (card == 'Lucky Ice Pop' and pop_returned(res)):
+                    st['cards'].append((card, None, None))
+            for ev in r.get('automatic_events_in_order') or []:
+                txt = str(ev.get('event') or ev.get('description') or '') if isinstance(ev, dict) else str(ev)
+                m = TOP_PILE.search(txt)
+                if m and 'opponent' in txt.lower():
+                    nm = nname(m.group(1))
+                    if C.BYNAME.get(nm):
+                        st['cards'].append((nm, None, None))
+            if any(isinstance(d, dict) and EMPTY_DECK.search(json.dumps(d, ensure_ascii=False)) for d in r.get('draws_and_searches') or []):
+                st['deck_empty'] = True
+        # what left his board during this row
+        if (b1.get('opponent') or {}) and (b0.get('opponent') or {}):
+            start, after = instances(b0['opponent']), instances(b1['opponent'])
+            pairs, kos = match_boards(start, after)
+            for p in kos:
+                nm = nname(p['name'])
+                stk = stack_under(p)
+                if stk is None:
+                    stk = chain_names(nm)
+                    ids = pids(p)
+                    n_named = sum(1 for q in start if nname(q['name']) == nm)
+                    if stk and ((ids and ids & st['rc_ids']) or (not ids and rc_count(st['rc_names'], nm) > 0 and n_named <= rc_count(st['rc_names'], nm))):
+                        stk = stk[:1]
+                if not pids(p):
+                    rc_take(st['rc_names'], nm)
+                st['cards'] += [(nm, str(p.get('variant') or ''), p.get('hp_max'))] + [(s, None, None) for s in stk]
+                st['ko_points'] += 3 if (nm.startswith('Mega ') and nm.endswith(' ex')) else (2 if nm.endswith(' ex') else 1)      # what knocking it out scores (used to check the list)
+                if tool_of(p) and C.BYNAME.get(tool_of(p)):
+                    st['cards'].append((tool_of(p), None, None))
+                st['energy'] += [t_ for t_, n_ in ebt(p) for _ in range(int(n_ or 0))]
+            if is_owner:
+                for a, n in pairs:
+                    st['energy'] += list((collections.Counter(dict(ebt(a))) - collections.Counter(dict(ebt(n)))).elements())
+                    ta = tool_of(a)
+                    if ta and n.get('tool') is not None and tool_of(n) != ta and C.BYNAME.get(ta):
+                        st['cards'].append((ta, None, None))
+    return out
+
+
 # ---------------------------------------------------------------------------------------------------------------- one game
 
 def convert_game(gdir, global_entities):
@@ -503,8 +633,9 @@ def convert_game(gdir, global_entities):
     STADIUMS = {n for n, t in trainer_type.items() if 'Stadium' in t}
     TRAINER_DISCARD = set(trainer_type)
     opp_ev = opp_texts(led)
+    opp_hist = opp_history(led)
     turns = led['turns']
-    owner_idx = [i for i, t in enumerate(turns) if str(t.get('who_played', '')).startswith('owner')]
+    owner_idx =[i for i, t in enumerate(turns) if str(t.get('who_played', '')).startswith('owner')]
     if not owner_idx:
         return [], [], deck_info
     first_player = turns[owner_idx[0]]['turn_number'] == 1
@@ -516,6 +647,7 @@ def convert_game(gdir, global_entities):
     rc_ids = set()      # instance ids of Pokemon of his that a Rare Candy evolved: they have no Stage 1 under them
     rc_names = collections.Counter()      # the same for a Rare Candy whose target the ledger gives no id for: the name it evolved into
     mill_total = 0
+    me_deck_empty = False
     ev_cache = {}
 
     def ev_for(name):
@@ -549,6 +681,9 @@ def convert_game(gdir, global_entities):
         own_inst, opp_inst = instances(b['owner']), instances(b['opponent'])
         pt = turns[owner_idx[k - 1]] if k > 0 else None
         lost_mine = False
+        milled_named = []      # cards of his the opponent's last attack milled that the ledger shows
+        if any(isinstance(d, dict) and EMPTY_DECK.search(json.dumps(d, ensure_ascii=False)) for d in t.get('draws_and_searches') or []):
+            me_deck_empty = True
         if pt is not None:
             for p in pt.get('plays_in_order') or []:
                 card = nname(p.get('card_name'))
@@ -612,6 +747,15 @@ def convert_game(gdir, global_entities):
                         moved.remove(mvd)
                 disc_energy += en_
                 notes.append(f'knocked out between turns: {nm}')
+            for x in between:
+                for p in x.get('plays_in_order') or []:
+                    for ev in p.get('nested_events_in_order') or []:
+                        if isinstance(ev, dict) and str(ev.get('kind') or '').lower() == 'deck_mill' and 'owner' in str(ev.get('destination') or 'owner').lower():
+                            shown = [c.get('name') if isinstance(c, dict) else c for c in ev.get('cards_in_reveal_order') or []] + [ev.get('visible_final_discard_top')]
+                            for nm in dict.fromkeys(nname(c) for c in shown if c):
+                                milled_named.append(nm)
+                                if nm in names_in_deck:
+                                    disc.append((nm, None, None))
             for a_, n_ in pairs:
                 # a Tool that was on a Pokemon of his when his turn ended and is gone from the Pokemon that is still there (Field Blower, a Tool that discards itself)
                 ta = tool_of(a_)
@@ -622,12 +766,25 @@ def convert_game(gdir, global_entities):
         hs = t.get('hand_at_start') or {}
         raw = hs.get('cards_left_to_right') or []
         names = [nname(c.get('name') if isinstance(c, dict) else c) for c in raw]
-        hvars = [str(c.get('variant') or '') if isinstance(c, dict) else '' for c in raw]      # what the ledger reads on a card of the hand ('B1 172; Superb Shield 80, HP140')
+        # what the ledger reads on a card of the hand: its variant ('B1 172; Superb Shield 80, HP140') and what is written after its name ("Aegislash (Cursed Metal / Slicing Blade)",
+        # "Conkeldurr [A3 096 Guts / Mega Punch]")
+        hvars = []
+        for c in raw:
+            nm_raw = str(c.get('name') if isinstance(c, dict) else c)
+            paren = re.search(r'[\(\[](.*)[\)\]]\s*$', nm_raw)
+            hvars.append(' '.join(x for x in (str(c.get('variant') or '') if isinstance(c, dict) else '', paren.group(1) if paren else '') if x))
         if not raw or any(n is None or n not in names_in_deck for n in names) or (hs.get('count') is not None and hs['count'] != len(names)):
             skipped.append({'game': short, 'turn': tn, 'reason': f'hand not fully named or unmapped: {names} count={hs.get("count")}'})
             continue
         alloc = Alloc(spec)
         opp_alts = []
+        ohist = opp_hist.get(tn) or {'cards': [], 'energy': [], 'hidden': 0, 'deck_empty': False, 'rc_ids': set(), 'rc_names': collections.Counter()}
+
+        def opp_rc_flag(p, name, n_named):
+            ids = pids(p)
+            if ids:
+                return bool(ids & ohist['rc_ids'])
+            return rc_count(ohist['rc_names'], name) > 0 and n_named <= rc_count(ohist['rc_names'], name)
         try:
             def mk(p, mine):
                 name = nname(p['name'])
@@ -660,6 +817,9 @@ def convert_game(gdir, global_entities):
                     if under and mine and rc_flag(p, name, sum(1 for q in own_inst if nname(q['name']) == name)):
                         under = under[:1]    # a Rare Candy took it from the Basic to its Stage 2
                         notes.append(f'{name}: a Rare Candy evolved it, so no Stage 1 is under it')
+                    elif under and not mine and opp_rc_flag(p, name, sum(1 for q in opp_inst if nname(q['name']) == name)):
+                        under = under[:1]    # the opponent's Rare Candy: the Stage 1 was skipped
+                        notes.append(f'the opponent\'s {name}: a Rare Candy evolved it, so no Stage 1 is under it')
                     elif under:
                         notes.append(f'{name} stack taken from the printed evolution line (the ledger gives none)')
                 if under and mine and derived:
@@ -767,7 +927,14 @@ def convert_game(gdir, global_entities):
         for p in (prev_opp or {}).get('plays_in_order') or []:
             mm = re.search(r'discards?\s+(?:the\s+)?top\s*(\d+)[^.;]*(?:owner|your)\s*deck', str(p.get('result') or ''), re.I)
             if mm:
-                notes.append(f'the opponent\'s attack discarded the top {mm.group(1)} cards of his deck (which ones is not known: they stay in the deck here)')
+                named_here = list(dict.fromkeys(milled_named))
+                if named_here:
+                    unlisted = [x for x in named_here if x not in names_in_deck]
+                    notes.append(f'the opponent\'s attack discarded the top {mm.group(1)} cards of his deck: {", ".join(named_here)} named by the ledger'
+                                 + (f' ({", ".join(unlisted)} not in his list: left out)' if unlisted else ' and put in his discard')
+                                 + f'; the other {max(0, int(mm.group(1)) - len(named_here))} are not known (they stay in the deck here)')
+                else:
+                    notes.append(f'the opponent\'s attack discarded the top {mm.group(1)} cards of his deck (which ones is not known: they stay in the deck here)')
         for side, nm_, e_, turns_n in eff:
             board = me_board if side == 'me' else opp_board
             tgt = next((pk for pk in board[:1] if pk['_name'] == nm_), None) or next((pk for pk in board if pk['_name'] == nm_), None)
@@ -938,18 +1105,39 @@ def convert_game(gdir, global_entities):
         my_next = etype((a_zone.get('next') or {}).get('type')) or (zone_now(turns[owner_idx[k + 1]]) if k + 1 < len(owner_idx) else None) or (etype(nxt.get('type')) if etype(this.get('type')) else None)
         o_zone = b['opponent'].get('energy_zone') or {}
         o_next = etype((o_zone.get('next') or {}).get('type')) or etype((o_zone.get('this_turn') or {}).get('type')) or decks_energy
+        # the opponent's discard: the cards the ledger names (his Pokemon that left the board with what was under them, the Items and Supporters he played, ...)
+        opp_disc = []
+        for nm_, tx_, hp_ in ohist['cards']:
+            cs_ = C.BYNAME.get(nm_) or []
+            if any(C.is_pokemon(c) for c in cs_):
+                cid_, alts_ = opp_pick(nm_, hp_, ([tx_] if tx_ else []) + opp_ev.get(nm_, []))
+                if alts_:
+                    opp_alts.append({'name': nm_, 'used': cid_, 'could_also_be': alts_, 'where': 'discard'})
+                opp_disc.append(f'{nm_} {cid_}')
+            elif cs_:
+                opp_disc.append(f'{nm_} {cs_[0]["id"]}')
+        if ohist['hidden']:
+            notes.append(f'the opponent\'s discard also holds {ohist["hidden"]} card(s) whose identity the ledger says is not readable: not in the list, so the count is a lower bound')
         pid = f'KW-{short}-t{tn:02d}'
-        pos = {
-            'id': pid, 'game': 'kw-' + short, 'his_turn': k + 1, 'deck': 'KW' + short, 'turn_count': tn, 'points': [pts_me, pts_opp],
-            'me': {'hand': hand, 'discard': pdisc, 'discard_energy': list(disc_energy), 'board': me_board,
+        me_side = {'hand': hand, 'discard': pdisc, 'discard_energy': list(disc_energy), 'board': me_board,
                    # the zone Energy is there every turn except the first player's first (the ledger's `available` flag is unreliable at the turn boundary)
                    'energy_now': None if (first_player and tn == 1) else (my_now or decks_energy),
-                   'energy_next': my_next or decks_energy},
-            'opp': {'hand_count': opp_hand, 'discard_n': 0, 'discard_energy': [], 'board': opp_board, 'energy_next': o_next},
+                   'energy_next': my_next or decks_energy}
+        opp_side = {'hand_count': opp_hand, 'discard': opp_disc, 'discard_energy': list(ohist['energy']), 'board': opp_board, 'energy_next': o_next}
+        if me_deck_empty:
+            me_side['deck_count'] = 0      # the ledger says his deck is empty: the position runner checks this against the list minus what it shows
+        if ohist['deck_empty']:
+            opp_side['deck_count'] = 0
+        if ohist['hidden']:
+            opp_side['discard_hidden'] = ohist['hidden']
+        pos = {
+            'id': pid, 'game': 'kw-' + short, 'his_turn': k + 1, 'deck': 'KW' + short, 'turn_count': tn, 'points': [pts_me, pts_opp],
+            'me': me_side,
+            'opp': opp_side,
             'stadium': stadium, 'turn_effects': turn_fx, 'his_plan': plan, 'his_plan_ended': bool(ended), 'hand_source': 'codex', 'decision_maker': 'Dustin',
             'exact_list': False, 'milestones': [], 'unresolved': unresolved,
-            'notes': ('; '.join(sorted(set(notes))) + '. ' if notes else '') + "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
-            'approximate': True, 'approximate_reason': "opponent's list unknown", 'heldout': False, 'plan_truncated_at': known_prefix,
+            'notes': ('; '.join(sorted(set(notes))) + '. ' if notes else '') + "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+            'approximate': True, 'approximate_reason': "opponent's list unknown" + ('; part of his discard is hidden in the ledger' if ohist['hidden'] else ''), 'heldout': False, 'plan_truncated_at': known_prefix,
             'opp_ambiguous': opp_alts, 'usable': not spec.version_unverified,
             'usable_reason': None if not spec.version_unverified else f"DECK_USED says the deck list is not this game's version ({spec.status})",
         }
