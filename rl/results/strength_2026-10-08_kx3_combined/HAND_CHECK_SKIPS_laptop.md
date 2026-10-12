@@ -52,6 +52,16 @@ There are 9 mistakes, 2 defensible turns and 2 unclear ones (8 mistakes, 1 defen
 - The opponent-threat forecasts ignore missing Energy, and take the first option of any optional choice. For example, Chase Order
   shows 70 where it can do 140.
 
+## Dustin's ruling (Oct 12, verbatim, through the coordinator), for the next pilot round's design
+
+"Keep the current evaluation unchanged and carry this into the next pilot's design. The gate should test both directions: prevent
+clearly wasteful passes and preserve justified passes. Define 'free' by the attack's consequences as well as its cost, and judge 'needed
+elsewhere' using information the bot could actually know at that moment. Treat 'never' as the proposed rule to test, not something the
+hand-check has already proved universally correct. No additional work needs to start now."
+
+So the rule below is a proposal for the next round, tested both ways (the 6 + 6 mistakes it should prevent, the 2 + 2 defensible
+skips it must keep). Nothing starts before that round opens.
+
 ## What it suggests (not tested)
 
 A rule of the form "never end the turn while a legal attack costs nothing and the attacker isn't needed elsewhere" would remove most of
