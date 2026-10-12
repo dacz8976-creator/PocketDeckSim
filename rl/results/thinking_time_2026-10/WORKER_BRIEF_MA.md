@@ -15,8 +15,9 @@ WORKER. You play only your slices (`SHARDS.md`), never change a registration, ne
 3. **For each slice, in your order**, with `OUT=/mnt/session/outputs/WORKER_REGNAME_DECK` (a new folder per slice):
    1. **Stamp before play** (gate 1 and the self-check):
       `python3 rl/strength/split_collect.py stamp --manifest REG/manifest.json --program $HOME/kxc/172cbe9c/strength --worker WORKER --out $OUT --only-deck DECK`.
-      Run it in the background (nohup) and wait: its 12 kx3 games run one after another on one core, with no output until the
-      end, which takes up to 4 hours for m32 and 2.5 for m16 on a 4-core sandbox. A live process using one core is not a hang. Keep
+      Run it in the background (nohup) and wait: its 12 kx3 games run one after another (each using several cores for its
+      play-outs), with no output until the end, which takes up to 4 hours for m32 and 2.5 for m16 on a 4-core sandbox. A live
+      process using CPU is not a hang. Keep
       checking at least every 30 minutes until the step ends: an idle session can lose its sandbox, and the stamp then starts again from zero.
       Every replayed self-check digest must equal the manifest's, and km3's must be `81b572198c04d5d1`. A mismatch or any refusal:
       stop, play nothing (step 5).
