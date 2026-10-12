@@ -120,15 +120,33 @@ class Keys(unittest.TestCase):
         self.assertEqual(se.group("draft-A-shark-tempo"), "middle")
 
 
+FULL = {"checked": list(se.CHECKED), "ambiguous_unresolved": 0}
+
+
 class Gate(unittest.TestCase):
+    def test_a_check_without_the_laptops_fields_stops_the_comparison(self):
+        # Oct 12 (the laptop's review, item b): each decision's p, act and b, and each game's plies and moves_opp.n, are compared too
+        checks = [{"key": "a|b|0|0|X", "replayed_exactly": True, "checked": ["label", "turn", "n"], "ambiguous_unresolved": 0}]
+        with self.assertRaises(SystemExit):
+            se.require_exact(checks, "candidate", 1)
+
+    def test_an_ambiguous_label_the_pilot_did_not_resolve_stops_the_comparison(self):
+        # Oct 12: a label that fits several moves is resolved by asking the pilot that played; a game matched only by trial is refused
+        checks = [dict(FULL, key="a|b|0|0|X", replayed_exactly=True, ambiguous_unresolved=1)]
+        with self.assertRaises(SystemExit):
+            se.require_exact(checks, "candidate", 1)
+
+    def test_a_full_check_passes(self):
+        se.require_exact([dict(FULL, key="a|b|0|0|X", replayed_exactly=True)], "candidate", 1)
+
     def test_a_game_not_replayed_exactly_stops_the_comparison(self):
-        checks = [{"key": "a|b|0|0|X", "replayed_exactly": True}, {"key": "a|b|0|1|X", "replayed_exactly": False}]
+        checks = [dict(FULL, key="a|b|0|0|X", replayed_exactly=True), dict(FULL, key="a|b|0|1|X", replayed_exactly=False)]
         with self.assertRaises(SystemExit):
             se.require_exact(checks, "candidate", 2)
 
     def test_a_missing_game_stops_the_comparison(self):
         with self.assertRaises(SystemExit):
-            se.require_exact([{"key": "a|b|0|0|X", "replayed_exactly": True}], "candidate", 2)
+            se.require_exact([dict(FULL, key="a|b|0|0|X", replayed_exactly=True)], "candidate", 2)
 
 
 if __name__ == "__main__":
