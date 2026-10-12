@@ -1,0 +1,28 @@
+P3 (Oct 9): cargo test --release --features test-utils --test rules_repair_trainers, at 140c0be2 (P3). All 22 pass: the 12
+new fossil_ tests (10 failed before the fix, tests_before_fix_p3.log) and the 10 that were there.
+
+     Running tests/rules_repair_trainers.rs (<scratch>/r2tgt/release/deps/rules_repair_trainers-a4b9905f92822d18)
+running 22 tests
+test fossil_crackling_snap_counts_a_fossil_on_top ... ok
+test an_item_lock_stops_a_fossil ... ok
+test every_confirmed_deck_taking_trainer_is_blocked_when_the_deck_is_empty ... ok
+test fossil_crackling_snap_without_an_item_on_top ... ok
+test fossil_past_friends_still_counts_only_supporters ... ok
+test fossil_junk_spark_counts_a_fossil ... ok
+test fossil_scavenge_recovers_a_fossil ... ok
+test fossil_scrounge_and_scarf_discards_a_fossil_from_the_opponents_hand ... ok
+test fossil_arven_finds_a_fossil_on_heads ... ok
+test fossil_thieving_machine_takes_a_lone_fossil ... ok
+test fossil_treasure_collecting_takes_a_fossil ... ok
+test healing_trainers_offer_only_damaged_targets ... ok
+test hidden_deck_contents_do_not_block_searches_but_an_empty_deck_does ... ok
+test mythical_slab_keeps_any_stage_psychic_and_bottoms_a_non_psychic_basic ... ok
+test fossil_order_pad_finds_a_fossil_on_heads ... ok
+test quick_grow_extract_lets_the_user_choose_the_target_before_random_evolution ... ok
+test stadium_play_limit_is_separate_from_using_the_stadium ... ok
+test fossil_thieving_machine_can_take_a_fossil_or_a_potion ... ok
+test stadium_searches_follow_visible_nonempty_deck_legality ... ok
+test fossil_scavenge_can_recover_a_fossil_or_a_potion ... ok
+test wallace_uses_effective_max_hp_and_randomizes_only_after_target_choice ... ok
+test piers_discards_random_energy_without_replacement ... ok
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s

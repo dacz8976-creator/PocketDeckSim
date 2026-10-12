@@ -1527,6 +1527,21 @@ fn printed_weakness_application(
     WeaknessApplication::None
 }
 
+/// Return damage an attack left takes Weakness (`rules/02` section 2): `printed_weakness_application` with `holder` as the
+/// Attacking Pokémon of the attack that left it, for `receiver`, the Attacking Pokémon it hits back. +20 when `receiver`'s
+/// printed Weakness is one of `holder`'s types (Double Type counts), and under Bounded Field the attack's return damage
+/// doubled (x2) unless `holder` is a Mega Evolution Pokémon ex: the card's text, since the hit back is that attack's own
+/// damage (the coordinator via Dustin's card-text rule, Oct 9; P2 first chose a flat +20). Else 0. A stated choice: the
+/// receiver's `NoWeakness` isn't read (only Metal Defender and Adamantine Rolling give it, to their own user, and they add
+/// it before this hit back lands though it covers only the opponent's next turn).
+pub(crate) fn attack_return_weakness_extra(state: &State, holder: &PlayedCard, receiver: &PlayedCard) -> u32 {
+    match printed_weakness_application(state, receiver, holder) {
+        WeaknessApplication::None => 0,
+        WeaknessApplication::Flat(extra) => extra,
+        WeaknessApplication::Double => super::counterattack::attack_counterattack_damage(holder),
+    }
+}
+
 fn get_future_booster_damage_bonus(attacking_pokemon: &PlayedCard) -> u32 {
     if has_tool(attacking_pokemon, CardId::B3a070FutureBoosterEnergyCapsule)
         && is_future_pokemon(&attacking_pokemon.get_name())
@@ -1598,11 +1613,11 @@ pub(crate) enum DefenderHit {
 /// through the defender's attack modifiers: the damage an attack carries in its outcome, the direct-damage attacks
 /// (`DirectDamage`, `DirectDamageAndSelfCardEffect`, `DirectDamageIfDamaged`), whose damage lands through a queued
 /// choice that now runs those modifiers, and Chase Order's discard branch (`discard_then_damage_choice`). Both orders
-/// were engine bugs until Sept 30 (rules/09, "Open engine bugs"). The engine still skips the coin at the other sites
-/// that deliver damage through a queued choice (Wild Swing, the own-Bench branch of `also_choice_bench_damage`, a
-/// copied Chase Order's discard branch, and the rest of that rules/09 entry's list): kd prices the coin there, as the
-/// card text says, so kd and the engine disagree at those sites, as they did before F1, until the engine is fixed.
-/// Tests pin the repaired orders.
+/// were engine bugs until Sept 30 (rules/09, "Open engine bugs"). The engine now flips the coin at the other sites
+/// that deliver an attack's damage through a queued choice too: the later coin round (Oct 1) took Wild Swing and the
+/// rest of that rules/09 entry's list, and the card-text job (Oct 2; TEXT_AUDIT.md A4, A5) the own-Bench branch of
+/// `also_choice_bench_damage` and a copied attack's discard branch. kd prices the coin at those sites, as the card
+/// text says, so kd and the engine agree there now. Tests pin the repaired orders.
 ///
 /// It runs `modify_damage`'s own stages, in its order, restricted to what stays on the board:
 /// - `base_damage == 0` does nothing;
@@ -2057,8 +2072,12 @@ pub(crate) fn modify_damage(
     };
     // Guarded Grill's and Securely Sheltered's cut on heads (rules/02, step 4; rules/09, "Open engine bugs", repaired
     // Sept 30): an effect on the Defending Pokémon like the reductions below. Only an attack outcome whose coin came
-    // up heads puts one in force (`with_heads_coin_cuts`); everywhere else it is 0.
-    let heads_coin_cut = if is_from_active_attack && attacking_player != target_player {
+    // up heads puts one in force (`with_heads_coin_cuts`); everywhere else it is 0. It applies to the attacker's own
+    // Pokémon hit by its own attack as well ("If any damage is done to this Pokémon by attacks"; TEXT_AUDIT.md A4).
+    // G3 (the own side) of rules switch 2's revert switches: off, the opponent's Pokémon only, as before.
+    let heads_coin_cut = if is_from_active_attack
+        && (attacking_player != target_player || crate::actions::own_side_coin_on())
+    {
         crate::actions::attack_outcome::heads_coin_cut((target_player, target_idx))
     } else {
         0

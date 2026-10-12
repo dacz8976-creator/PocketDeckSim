@@ -3788,7 +3788,7 @@ class ReadmeCloudRoute(unittest.TestCase):
                  'that fits the program (the pinned binary, or a rebuild whose build record is on disk beside it and is the one the block carries), and the committed pin is asked for '
                  'whenever the block carries a pin state or a route, with a text or without.',
                  ["REFUSED: the self-check text given for {spec} is not the text the pin has for it", "REFUSED: the pin says its self-check texts were measured on a program with sha256",
-                  "if given and cfg.get('selfcheck_how') != 'replayed':", "REFUSED: a replayed self-check text needs a program route (pinned or rebuilt)", 'def route_problem(route, prog, prog_sha, pin, block):',
+                  "if given and not replayed_like:", "REFUSED: a replayed self-check text needs a program route (pinned or rebuilt)", 'def route_problem(route, prog, prog_sha, pin, block):',
                   "block.get('pin_committed') is not None or block.get('program_route') is not None"]),
                 ("Whenever a registered run is read again (`--dir`), what its registration says about the program is checked against itself (a pinned-route registration must carry the pinned binary's "
                  "sha256 as its program's, a rebuilt-route one a build record for that very program with the engine tree as archived and the harness source the registration names) and, while the pin "

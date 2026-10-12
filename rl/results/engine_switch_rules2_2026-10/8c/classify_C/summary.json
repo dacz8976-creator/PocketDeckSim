@@ -1,0 +1,212 @@
+{
+ "rows": 1044,
+ "steps": "9",
+ "reach": [
+  "will_confused_attack",
+  "will_block_coin_attack",
+  "vs_block_coin_built",
+  "vs_block_coin_choice_offered",
+  "coin_own_side_split",
+  "coin_plain_damage_chosen",
+  "perish_plain_hit_offered",
+  "perish_plain_hit_chosen",
+  "guts_own_side_split",
+  "trap_territory_offer_changed",
+  "trap_territory_outcome_changed",
+  "luxury_coin_opp_stadium",
+  "fossil_item_lock",
+  "attack_return_weakness",
+  "coin_queued_by_attack",
+  "coin_plain_damage_by_attack"
+ ],
+ "tally": {
+  "LOOKAHEAD ONLY, both halves hold": 585,
+  "ON THE BOARD": 458,
+  "UNEXPLAINED": 1
+ },
+ "strict_tally": {
+  "LOOKAHEAD ONLY, both halves hold": 585,
+  "ON THE BOARD": 458,
+  "UNEXPLAINED": 1
+ },
+ "by_bot_pairing": {
+  "km3/32": {
+   "LOOKAHEAD ONLY, both halves hold": 45,
+   "ON THE BOARD": 18
+  },
+  "km3/33": {
+   "LOOKAHEAD ONLY, both halves hold": 21,
+   "ON THE BOARD": 19
+  },
+  "km3/34": {
+   "LOOKAHEAD ONLY, both halves hold": 77,
+   "ON THE BOARD": 35,
+   "UNEXPLAINED": 1
+  },
+  "km3/35": {
+   "ON THE BOARD": 68,
+   "LOOKAHEAD ONLY, both halves hold": 94
+  },
+  "km3/36": {
+   "LOOKAHEAD ONLY, both halves hold": 36,
+   "ON THE BOARD": 48
+  },
+  "km3/37": {
+   "ON THE BOARD": 46,
+   "LOOKAHEAD ONLY, both halves hold": 38
+  },
+  "km3/38": {
+   "LOOKAHEAD ONLY, both halves hold": 8,
+   "ON THE BOARD": 4
+  },
+  "km3/39": {
+   "LOOKAHEAD ONLY, both halves hold": 31,
+   "ON THE BOARD": 6
+  },
+  "km3/80": {
+   "LOOKAHEAD ONLY, both halves hold": 30,
+   "ON THE BOARD": 16
+  },
+  "km3/81": {
+   "ON THE BOARD": 21,
+   "LOOKAHEAD ONLY, both halves hold": 17
+  },
+  "km3/82": {
+   "ON THE BOARD": 24,
+   "LOOKAHEAD ONLY, both halves hold": 34
+  },
+  "km3/83": {
+   "ON THE BOARD": 58,
+   "LOOKAHEAD ONLY, both halves hold": 59
+  },
+  "km3/84": {
+   "ON THE BOARD": 52,
+   "LOOKAHEAD ONLY, both halves hold": 22
+  },
+  "km3/85": {
+   "ON THE BOARD": 37,
+   "LOOKAHEAD ONLY, both halves hold": 49
+  },
+  "km3/86": {
+   "ON THE BOARD": 3,
+   "LOOKAHEAD ONLY, both halves hold": 2
+  },
+  "km3/87": {
+   "LOOKAHEAD ONLY, both halves hold": 22,
+   "ON THE BOARD": 3
+  }
+ },
+ "kind_by_verdict": {
+  "length (old) / ON THE BOARD": 12,
+  "lookahead / LOOKAHEAD ONLY, both halves hold": 585,
+  "lookahead / ON THE BOARD": 82,
+  "lookahead / UNEXPLAINED": 1,
+  "movegen / ON THE BOARD": 250,
+  "state / ON THE BOARD": 114
+ },
+ "condition3": 109,
+ "condition3_verdicts": {
+  "LOOKAHEAD ONLY, both halves hold": 108,
+  "UNEXPLAINED": 1
+ },
+ "golden_mismatches": 0,
+ "explaining_counters_without_a_golden_check": {},
+ "lookahead_for_the_revert_check": 585,
+ "controls": [
+  {
+   "bot": "km3",
+   "pairing": 32,
+   "i": 0,
+   "tick": 8,
+   "result": {
+    "queued": null,
+    "cut": null,
+    "free": false,
+    "ret": null,
+    "r2": {
+     "will": null,
+     "vs": null,
+     "trap": null,
+     "own": null,
+     "guts": null,
+     "plain": null,
+     "perish": null
+    },
+    "trapleaf": null
+   },
+   "nothing": true
+  },
+  {
+   "bot": "km3",
+   "pairing": 32,
+   "i": 1,
+   "tick": 8,
+   "result": {
+    "queued": null,
+    "cut": null,
+    "free": false,
+    "ret": null,
+    "r2": {
+     "will": null,
+     "vs": null,
+     "trap": null,
+     "own": null,
+     "guts": null,
+     "plain": null,
+     "perish": null
+    },
+    "trapleaf": null
+   },
+   "nothing": true
+  },
+  {
+   "bot": "km3",
+   "pairing": 32,
+   "i": 2,
+   "tick": 8,
+   "result": {
+    "queued": null,
+    "cut": null,
+    "free": false,
+    "ret": null,
+    "r2": {
+     "will": null,
+     "vs": null,
+     "trap": null,
+     "own": null,
+     "guts": null,
+     "plain": null,
+     "perish": null
+    },
+    "trapleaf": null
+   },
+   "nothing": true
+  },
+  {
+   "bot": "km3",
+   "pairing": 32,
+   "i": 4,
+   "tick": 8,
+   "result": {
+    "queued": null,
+    "cut": null,
+    "free": false,
+    "ret": null,
+    "r2": {
+     "will": null,
+     "vs": null,
+     "trap": null,
+     "own": null,
+     "guts": null,
+     "plain": null,
+     "perish": null
+    },
+    "trapleaf": null
+   },
+   "nothing": true
+  }
+ ],
+ "control_failures": 0,
+ "problems": [],
+ "tightened_rule_sha256": "a1822f75b27f140309d2467e67ba8e16c40ad5be246b286237474b1176a640f3"
+}

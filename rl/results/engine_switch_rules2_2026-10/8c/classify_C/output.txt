@@ -1,0 +1,73 @@
+1044 changed rows, 60 chunks x 2 engines, 12 jobs; reach counters: will_confused_attack, will_block_coin_attack, vs_block_coin_built, vs_block_coin_choice_offered, coin_own_side_split, coin_plain_damage_chosen, perish_plain_hit_offered, perish_plain_hit_chosen, guts_own_side_split, trap_territory_offer_changed, trap_territory_outcome_changed, luxury_coin_opp_stadium, fossil_item_lock, attack_return_weakness, coin_queued_by_attack, coin_plain_damage_by_attack
+  traced and compared 10/60 chunks
+  traced and compared 20/60 chunks
+  traced and compared 30/60 chunks
+  traced and compared 40/60 chunks
+  traced and compared 50/60 chunks
+  traced and compared 60/60 chunks
+1044 probe runs
+  probed 100/1044
+  probed 200/1044
+  probed 300/1044
+  probed 400/1044
+  probed 500/1044
+  probed 600/1044
+  probed 700/1044
+  probed 800/1044
+  probed 900/1044
+  probed 1000/1044
+  probed 1044/1044
+{
+ "rows": 1044,
+ "steps": "9",
+ "reach": [
+  "will_confused_attack",
+  "will_block_coin_attack",
+  "vs_block_coin_built",
+  "vs_block_coin_choice_offered",
+  "coin_own_side_split",
+  "coin_plain_damage_chosen",
+  "perish_plain_hit_offered",
+  "perish_plain_hit_chosen",
+  "guts_own_side_split",
+  "trap_territory_offer_changed",
+  "trap_territory_outcome_changed",
+  "luxury_coin_opp_stadium",
+  "fossil_item_lock",
+  "attack_return_weakness",
+  "coin_queued_by_attack",
+  "coin_plain_damage_by_attack"
+ ],
+ "tally": {
+  "LOOKAHEAD ONLY, both halves hold": 585,
+  "ON THE BOARD": 458,
+  "UNEXPLAINED": 1
+ },
+ "strict_tally": {
+  "LOOKAHEAD ONLY, both halves hold": 585,
+  "ON THE BOARD": 458,
+  "UNEXPLAINED": 1
+ },
+ "kind_by_verdict": {
+  "length (old) / ON THE BOARD": 12,
+  "lookahead / LOOKAHEAD ONLY, both halves hold": 585,
+  "lookahead / ON THE BOARD": 82,
+  "lookahead / UNEXPLAINED": 1,
+  "movegen / ON THE BOARD": 250,
+  "state / ON THE BOARD": 114
+ },
+ "condition3": 109,
+ "condition3_verdicts": {
+  "LOOKAHEAD ONLY, both halves hold": 108,
+  "UNEXPLAINED": 1
+ },
+ "golden_mismatches": 0,
+ "explaining_counters_without_a_golden_check": {},
+ "lookahead_for_the_revert_check": 585,
+ "control_failures": 0,
+ "problems": [],
+ "tightened_rule_sha256": "a1822f75b27f140309d2467e67ba8e16c40ad5be246b286237474b1176a640f3"
+}
+
+CONDITION 3 rows: 109; verdicts {'LOOKAHEAD ONLY, both halves hold': 108, 'UNEXPLAINED': 1}
+STOP: 1 UNEXPLAINED games, the strict reading included (see UNEXPLAINED.md)

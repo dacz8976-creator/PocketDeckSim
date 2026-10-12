@@ -62,7 +62,13 @@ pub fn generate_possible_trainer_actions(
     if trainer_card.trainer_card_type == TrainerType::Supporter && !can_play_support(state) {
         return cannot_play_trainer(); // dont even check which type it is
     }
-    if trainer_card.trainer_card_type == TrainerType::Item && !can_play_item(state) {
+    // A Fossil's printed type is Item, so an Item lock stops it too ("they can't play any Item
+    // cards from their hand"; the card-text follow-up, Oct 2; rules/04 §6).
+    // G10 (the Fossil lock) of rules switch 2's revert switches: off, an Item only, as before.
+    if (trainer_card.trainer_card_type == TrainerType::Item
+        || (crate::actions::fossil_item_lock_on() && trainer_card.trainer_card_type == TrainerType::Fossil))
+        && !can_play_item(state)
+    {
         return cannot_play_trainer(); // cant play item cards
     }
 
@@ -352,7 +358,7 @@ fn can_play_team_rockets_thieving_machine(
     let opponent = (state.current_player + 1) % 2;
     if state.discard_piles[opponent].iter().any(|card| {
         matches!(card, Card::Trainer(t)
-            if t.trainer_card_type == TrainerType::Item
+            if t.trainer_card_type.is_printed_as(&TrainerType::Item)
                 && t.name != "Team Rocket's Thieving Machine")
     }) {
         can_play_trainer(state, trainer_card)

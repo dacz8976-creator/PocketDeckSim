@@ -1,0 +1,18 @@
+deal 0:31: 70 ticks before P2, 62 on P2; first difference at tick 44
+  a different move from the same board (in look-ahead):
+    before P2: TRACE 0:31 turn 6 actor 0 chose Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }
+    P2:        TRACE 0:31 turn 6 actor 0 chose Play { trainer_card: B3b 064 Small Balloon }
+    the board both chose from: side 0: pts 0 | B3a 020 90 [] Array [] ; - ; A4a 059 30 [] Array [] ; B1 102 190 [] Array [] | hand ["B1 225", "B3a 020", "B3b 064"] | deck 5 | discard 7
+                               side 1: pts 1 | B3b 041 170 [Darkness, Darkness] Array [Array [Object {"Counterattack": Object {"amount": Number(40)}}, Number(0)]] ; - ; - ; A2 110 140 [] Array [] | hand ["A2 150", "A3a 064", "B2 145"] | deck 9 | discard 5
+deal 1:21: 98 ticks before P2, 88 on P2; first difference at tick 84
+  a different move from the same board (in look-ahead):
+    before P2: TRACE 1:21 turn 14 actor 0 chose Retreat(1)
+    P2:        TRACE 1:21 turn 14 actor 0 chose Attach { attachments: [(1, Psychic, 2)], is_turn_energy: true }
+    the board both chose from: side 0: pts 0 | B1 102 30 [Psychic, Psychic] Array [] ; B3a 020 90 [] Array [] ; B2b 040 100 [] Array [] ; A4a 059 30 [] Array [] | hand ["B3a 020"] | deck 4 | discard 8
+                               side 1: pts 2 | B3b 041 190 [Darkness, Darkness] Array [Array [Object {"Counterattack": Object {"amount": Number(40)}}, Number(0)]] ; B4 095 70 [] Array [] ; B4 095 70 [Darkness] Array [] ; B3b 041 30 [] Array [] | hand ["A2 150", "B2 100", "B3 147", "P-A 005"] | deck 4 | discard 7
+deal 1:8: 74 ticks before P2, 74 on P2; first difference at tick 43
+  a different move from the same board (in look-ahead):
+    before P2: TRACE 1:8 turn 8 actor 1 chose Place(Pokemon(B2b 040 Darkrai), 1)
+    P2:        TRACE 1:8 turn 8 actor 1 chose Play { trainer_card: A1 225 Sabrina }
+    the board both chose from: side 0: pts 1 | B3b 041 170 [Darkness, Darkness] Array [Array [Object {"Counterattack": Object {"amount": Number(40)}}, Number(0)]] ; - ; B4 095 70 [] Array [] ; B3b 041 170 [Darkness] Array [] | hand ["A2 150", "A2b 070", "B2 100", "B2 100"] | deck 9 | discard 3
+                               side 1: pts 0 | B3a 020 80 [] Array [] ; - ; B1 196 50 [] Array [] ; B1 102 190 [Psychic, Psychic] Array [] | hand ["A1 225", "B1 184", "B2 153", "B2b 040", "B3a 020"] | deck 6 | discard 4
