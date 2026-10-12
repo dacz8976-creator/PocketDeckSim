@@ -1,0 +1,131 @@
+﻿== 1. completeness ==
+records 1056 planned 1056
+winner values Counter({'opp': 608, 'deck': 447, 'tie': 1})
+arm values Counter({'ref': 528, 'X': 528})
+duplicate (deck,opp,seed,seat,arm): 0
+duplicate key field: 0
+planned 1056 missing 0 extra 0
+seed != base + p*stride + deal: 0
+complete pairs 528
+pairs with different first player: 0 | deal idx: 0 | first decision (n options, o, t): 0
+first player counts (X arm): Counter({'deck': 269, 'opp': 259})
+
+== 4. sanity ==
+pilot_deck by arm: Counter({('ref', 'km3'): 528, ('X', 'kx3'): 528})
+pilot_opp by arm: Counter({('ref', 'km3'): 528, ('X', 'km3'): 528})
+decks in games == manifest: True | opps: True
+games per deck: [('02-arceus-crobat', 96)] 96
+seats: Counter({0: 528, 1: 528}) deals: Counter({0: 352, 1: 352, 2: 352})
+seed range 24500000000 24600070002
+games with empty log: 2
+    {'arm': 'ref', 'deck': '13-a-ninetales-raticate', 'opp': 't-altaria', 'seed': 24560000001, 'seat': 0, 'first': 'opp', 'winner': 'opp', 'turns': 1, 'plies': 12, 'points': [0, 1]} moves_deck n 0 moves_opp n 7
+     partner: {'arm': 'X', 'winner': 'opp', 'turns': 1, 'first': 'opp'} log len 0 first atk (0, False)
+    {'arm': 'X', 'deck': '13-a-ninetales-raticate', 'opp': 't-altaria', 'seed': 24560000001, 'seat': 0, 'first': 'opp', 'winner': 'opp', 'turns': 1, 'plies': 12, 'points': [0, 1]} moves_deck n 0 moves_opp n 7
+     partner: {'arm': 'ref', 'winner': 'opp', 'turns': 1, 'first': 'opp'} log len 0 first atk (0, False)
+log entries where t != own-turn mapping: 1221
+
+== 2. score ==
+pooled d (points): +21.3 ± 4.0 (sd 46.57, n 528)
+diff counts Counter({0.0: 389, 1.0: 125, -1.0: 13, 0.5: 1})
+score rate X 53.03  ref 31.72
+winner counts X Counter({'deck': 280, 'opp': 248}) ref Counter({'opp': 360, 'deck': 167, 'tie': 1})
+equal-deck-weight: +21.31  (±3.95 from per-deck var; ±5.13 from sd of deck means)
+  02-arceus-crobat                   +14.6 ± 11.7 (sd 41.20, n 48)  X 58.3% ref 43.8%
+  04-absol-hoopa-darkrai             +25.0 ± 13.7 (sd 48.38, n 48)  X 58.3% ref 33.3%
+  07-skarmory-stall                  +20.8 ± 11.6 (sd 41.04, n 48)  X 75.0% ref 54.2%
+  08-garchomp-toolbox                +21.9 ± 13.0 (sd 46.02, n 48)  X 39.6% ref 17.7%
+  11-archaludon-haxorus-dragonair    +18.8 ± 11.2 (sd 39.44, n 48)  X 35.4% ref 16.7%
+  12-ariados-whimsicott-ogerpon      +35.4 ± 16.0 (sd 56.45, n 48)  X 62.5% ref 27.1%
+  13-a-ninetales-raticate            +18.8 ± 13.9 (sd 49.06, n 48)  X 72.9% ref 54.2%
+  14-comfey-raticate-hypno           +25.0 ± 13.7 (sd 48.38, n 48)  X 35.4% ref 10.4%
+  15-jolteon-oricorio-raticate       +31.2 ± 13.3 (sd 46.84, n 48)  X 66.7% ref 35.4%
+  draft-C-meowstic-hatterene-v2      +20.8 ± 11.6 (sd 41.04, n 48)  X 33.3% ref 12.5%
+  draft-D-entei-grimhound            +2.1 ± 13.7 (sd 48.33, n 48)  X 45.8% ref 43.8%
+by first player:
+  deck first: +22.9 ± 5.7 (sd 47.78, n 269)
+  deck second: +19.7 ± 5.5 (sd 45.31, n 259)
+by seat:
+  seat 0: +16.7 ± 5.3 (sd 43.89, n 264)
+  seat 1: +25.9 ± 5.9 (sd 48.74, n 264)
+  pairs needed for ±3: 926 total (≈398 more pairs, 2.3 more deals per pair)
+  pairs needed for ±5: 333 total (≈-195 more pairs, -1.1 more deals per pair)
+  arm X: wall_s mean 207.43, deck decisions/game 24.9, moves_deck.total_s mean 207.047
+  arm ref: wall_s mean 0.99, deck decisions/game 24.7, moves_deck.total_s mean 0.516
+
+== 3. groups ==
+  rank  1 draft-D-entei-grimhound            ref mean turns 8.896
+  rank  2 12-ariados-whimsicott-ogerpon      ref mean turns 9.417
+  rank  3 15-jolteon-oricorio-raticate       ref mean turns 9.562
+  rank  4 14-comfey-raticate-hypno           ref mean turns 9.667
+  rank  5 02-arceus-crobat                   ref mean turns 9.854
+  rank  6 04-absol-hoopa-darkrai             ref mean turns 10.083
+  rank  7 08-garchomp-toolbox                ref mean turns 10.188
+  rank  8 13-a-ninetales-raticate            ref mean turns 10.354
+  rank  9 11-archaludon-haxorus-dragonair    ref mean turns 10.833
+  rank 10 draft-C-meowstic-hatterene-v2      ref mean turns 12.042
+  rank 11 07-skarmory-stall                  ref mean turns 13.583
+  fast: ['draft-D-entei-grimhound', '12-ariados-whimsicott-ogerpon', '15-jolteon-oricorio-raticate', '14-comfey-raticate-hypno']
+  middle: ['02-arceus-crobat', '04-absol-hoopa-darkrai', '08-garchomp-toolbox']
+  setup: ['13-a-ninetales-raticate', '11-archaludon-haxorus-dragonair', 'draft-C-meowstic-hatterene-v2', '07-skarmory-stall']
+  fast   score +23.4 ± 7.3 (sd 51.40, n 192)
+         turns +0.27 ± 0.31 (sd 2.194, n 192)   [X 9.65 ref 9.39]
+         first-attack own turn +0.10 ± 0.07 (sd 0.507, n 192)   [X 2.23 ref 2.14; no-attack games X 8 ref 8]
+  middle score +20.5 ± 7.4 (sd 45.19, n 144)
+         turns -0.17 ± 0.33 (sd 2.021, n 144)   [X 9.88 ref 10.04]
+         first-attack own turn +0.04 ± 0.07 (sd 0.441, n 144)   [X 1.86 ref 1.82; no-attack games X 3 ref 4]
+  setup  score +19.8 ± 6.0 (sd 42.49, n 192)
+         turns +0.19 ± 0.35 (sd 2.459, n 192)   [X 11.89 ref 11.70]
+         first-attack own turn +0.09 ± 0.09 (sd 0.612, n 192)   [X 2.61 ref 2.52; no-attack games X 5 ref 8]
+  all    score +21.3 ± 4.0 (sd 46.57, n 528)
+         turns +0.12 ± 0.19 (sd 2.253, n 528)   [X 10.53 ref 10.41]
+         first-attack own turn +0.08 ± 0.05 (sd 0.531, n 528)   [X 2.27 ref 2.19; no-attack games X 16 ref 20]
+  per deck:
+   draft-D-entei-grimhound            score +2.1 ± 13.7 (sd 48.33, n 48) | turns -0.44 ± 0.56 (sd 1.967, n 48) | 1st atk +0.17 ± 0.17 (sd 0.595, n 48)
+   12-ariados-whimsicott-ogerpon      score +35.4 ± 16.0 (sd 56.45, n 48) | turns +0.27 ± 0.62 (sd 2.190, n 48) | 1st atk +0.23 ± 0.17 (sd 0.592, n 48)
+   15-jolteon-oricorio-raticate       score +31.2 ± 13.3 (sd 46.84, n 48) | turns +1.02 ± 0.63 (sd 2.226, n 48) | 1st atk -0.02 ± 0.11 (sd 0.385, n 48)
+   14-comfey-raticate-hypno           score +25.0 ± 13.7 (sd 48.38, n 48) | turns +0.21 ± 0.62 (sd 2.202, n 48) | 1st atk +0.02 ± 0.11 (sd 0.385, n 48)
+   02-arceus-crobat                   score +14.6 ± 11.7 (sd 41.20, n 48) | turns +0.02 ± 0.62 (sd 2.207, n 48) | 1st atk +0.04 ± 0.13 (sd 0.459, n 48)
+   04-absol-hoopa-darkrai             score +25.0 ± 13.7 (sd 48.38, n 48) | turns -0.08 ± 0.43 (sd 1.528, n 48) | 1st atk +0.00 ± 0.08 (sd 0.292, n 48)
+   08-garchomp-toolbox                score +21.9 ± 13.0 (sd 46.02, n 48) | turns -0.44 ± 0.64 (sd 2.259, n 48) | 1st atk +0.08 ± 0.15 (sd 0.539, n 48)
+   13-a-ninetales-raticate            score +18.8 ± 13.9 (sd 49.06, n 48) | turns +0.02 ± 0.78 (sd 2.740, n 48) | 1st atk +0.06 ± 0.16 (sd 0.561, n 48)
+   11-archaludon-haxorus-dragonair    score +18.8 ± 11.2 (sd 39.44, n 48) | turns -0.40 ± 0.48 (sd 1.710, n 48) | 1st atk +0.17 ± 0.28 (sd 0.996, n 48)
+   draft-C-meowstic-hatterene-v2      score +20.8 ± 11.6 (sd 41.04, n 48) | turns +0.33 ± 0.54 (sd 1.894, n 48) | 1st atk +0.06 ± 0.09 (sd 0.320, n 48)
+   07-skarmory-stall                  score +20.8 ± 11.6 (sd 41.04, n 48) | turns +0.79 ± 0.88 (sd 3.128, n 48) | 1st atk +0.06 ± 0.09 (sd 0.320, n 48)
+
+== extras ==
+Attack entries 3752 with t off the own-turn mapping: 0 | off-mapping kinds: [('Promote', 1018), ('Activate', 203)]
+per deck, by who went first (deck first / deck second):
+   02-arceus-crobat                   +4.2 ± 14.3 (sd 35.86, n 24) | +25.0 ± 17.7 (sd 44.23, n 24)
+   04-absol-hoopa-darkrai             +26.9 ± 20.5 (sd 53.35, n 26) | +22.7 ± 17.9 (sd 42.89, n 22)
+   07-skarmory-stall                  +22.7 ± 17.9 (sd 42.89, n 22) | +19.2 ± 15.4 (sd 40.19, n 26)
+   08-garchomp-toolbox                +22.0 ± 16.1 (sd 41.03, n 25) | +21.7 ± 21.2 (sd 51.84, n 23)
+   11-archaludon-haxorus-dragonair    +29.2 ± 18.6 (sd 46.43, n 24) | +8.3 ± 11.3 (sd 28.23, n 24)
+   12-ariados-whimsicott-ogerpon      +31.0 ± 19.7 (sd 54.14, n 29) | +42.1 ± 27.3 (sd 60.70, n 19)
+   13-a-ninetales-raticate            +13.0 ± 18.7 (sd 45.77, n 23) | +24.0 ± 20.5 (sd 52.28, n 25)
+   14-comfey-raticate-hypno           +37.5 ± 19.8 (sd 49.45, n 24) | +12.5 ± 17.9 (sd 44.84, n 24)
+   15-jolteon-oricorio-raticate       +31.8 ± 19.9 (sd 47.67, n 22) | +30.8 ± 18.1 (sd 47.07, n 26)
+   draft-C-meowstic-hatterene-v2      +23.1 ± 16.5 (sd 42.97, n 26) | +18.2 ± 16.5 (sd 39.48, n 22)
+   draft-D-entei-grimhound            +8.3 ± 23.3 (sd 58.36, n 24) | -4.2 ± 14.3 (sd 35.86, n 24)
+per pair rows: compared with REPORT.md table below
+  arm X: wall mean 207.43 median 189.11 max 768.10; deck ms/decision mean 8313.4 median 7022.6 max 53413.7; opp decisions/game 24.7, opp ms mean 15.0
+  arm ref: wall mean 0.99 median 0.87 max 4.97; deck ms/decision mean 20.9 median 8.1 max 971.5; opp decisions/game 24.7, opp ms mean 18.8
+  pair rows: mine 88, REPORT 88, differing 0
+  games with a 'Thieving Incisors' label: {('13-a-ninetales-raticate', 'X'): '33/48', ('13-a-ninetales-raticate', 'ref'): '34/48', ('14-comfey-raticate-hypno', 'X'): '36/48', ('14-comfey-raticate-hypno', 'ref'): '35/48', ('15-jolteon-oricorio-raticate', 'X'): '41/48', ('15-jolteon-oricorio-raticate', 'ref'): '38/48'}
+
+== dev run comparison ==
+dev records 1120 pairs 560 decks ['01-muk-glimmora-kingambit-regigigas', '03-wailord-indeedee-wall', '05-indeedee-stoutland', '06-mega-blaziken-tournament-list', '09-mega-manectric-heliolisk', '10-xatu-oricorio-tr-weezing', 'draft-A-shark-tempo']
+  aggro ['06-mega-blaziken-tournament-list', '09-mega-manectric-heliolisk', '10-xatu-oricorio-tr-weezing']
+     score +12.5 ± 4.8 (sd 37.86, n 240) | turns +0.14 ± 0.21 (sd 1.690, n 240) | 1st atk +0.05 ± 0.05 (sd 0.380, n 240)
+  setup ['01-muk-glimmora-kingambit-regigigas', '03-wailord-indeedee-wall', '05-indeedee-stoutland']
+     score +20.4 ± 5.8 (sd 46.19, n 240) | turns +0.42 ± 0.44 (sd 3.501, n 240) | 1st atk +0.40 ± 0.19 (sd 1.497, n 240)
+  draftA ['draft-A-shark-tempo']
+     score +17.5 ± 9.7 (sd 44.37, n 80) | turns -0.03 ± 0.71 (sd 3.218, n 80) | 1st atk -0.04 ± 0.19 (sd 0.849, n 80)
+  all dev: score +16.6 ± 3.5 (sd 42.62, n 560) | turns +0.24 ± 0.23 (sd 2.820, n 560) | 1st atk +0.18 ± 0.09 (sd 1.075, n 560)
+   01-muk-glimmora-kingambit-regigigas  score +28.7 ± 11.1 (sd 50.80, n 80) | turns -0.45 ± 0.64 (sd 2.903, n 80) | 1st atk +0.10 ± 0.20 (sd 0.922, n 80)
+   03-wailord-indeedee-wall             score +6.2 ± 8.1 (sd 36.78, n 80) | turns +0.89 ± 1.01 (sd 4.589, n 80) | 1st atk +0.75 ± 0.49 (sd 2.247, n 80)
+   05-indeedee-stoutland                score +26.2 ± 10.3 (sd 47.05, n 80) | turns +0.84 ± 0.56 (sd 2.533, n 80) | 1st atk +0.34 ± 0.18 (sd 0.810, n 80)
+   06-mega-blaziken-tournament-list     score +15.0 ± 8.6 (sd 39.30, n 80) | turns +0.15 ± 0.39 (sd 1.758, n 80) | 1st atk +0.10 ± 0.10 (sd 0.439, n 80)
+   09-mega-manectric-heliolisk          score +16.2 ± 8.1 (sd 37.12, n 80) | turns +0.40 ± 0.44 (sd 1.991, n 80) | 1st atk -0.05 ± 0.08 (sd 0.386, n 80)
+   10-xatu-oricorio-tr-weezing          score +6.2 ± 8.1 (sd 36.78, n 80) | turns -0.14 ± 0.26 (sd 1.199, n 80) | 1st atk +0.09 ± 0.06 (sd 0.284, n 80)
+   draft-A-shark-tempo                  score +17.5 ± 9.7 (sd 44.37, n 80) | turns -0.03 ± 0.71 (sd 3.218, n 80) | 1st atk -0.04 ± 0.19 (sd 0.849, n 80)
+  dev pilots: Counter({('ref', 'km3', 'km3'): 560, ('X', 'kx3', 'km3'): 560})

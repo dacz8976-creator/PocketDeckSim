@@ -1,0 +1,57 @@
+21 | use crate::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType, BASIC_STAGE};
+187 |     let mut take = |pools: &mut Vec<(usize, Vec<EnergyType>)>,
+298 | impl AttackOutcomes {
+...
+474 |     pub fn geometric_until_tails(
+2232 | fn estimated_attack_damage(attack: &Attack, slot: &PlayedCard, state: &State, player: usize) -> f64 {
+2528 | fn best_attack_value(slot: &PlayedCard, form: &Card, state: &State, player: usize) -> f64 {
+running 16 tests
+test coin_flip_to_block_attack_keeps_its_resolution_without_a_victory_star_offer ... ok
+test coin_flip_to_block_attack_result_is_the_old_paths ... ok
+test confusion_with_will_pending_forces_the_attacks_first_coin_without_victory_star ... ok
+test draconic_slam_loses_one_hundred_damage_only_when_regidrago_is_damaged ... ok
+test effect_only_heat_charged_does_not_consume_the_defenders_first_damage_shield ... ok
+test evil_inspiration_draws_one_from_active_once_per_turn_for_all_reprints ... ok
+test evil_inspiration_requires_active_spot_and_a_card_to_draw ... ok
+test confused_heat_charged_flips_confusion_first_then_offers_victory_star_on_its_own_coins ... ok
+test hand_kinesis_adds_twenty_damage_per_card_in_hand_for_all_reprints ... ok
+test second_strike_adds_seventy_only_when_the_defender_is_already_damaged ... ok
+test victory_star_pauses_heat_charged_before_energy_and_keep_commits_once ... ok
+test victory_star_reroll_discards_heat_charged_first_batch_instead_of_double_attaching ... ok
+test will_forces_heat_charged_first_flip_and_is_consumed_before_victory_star_choice ... ok
+test a_victory_star_reroll_after_confusion_heads_resolves_with_no_second_confusion_check ... ok
+test confusion_with_will_pending_forces_the_attacks_first_coin_and_still_offers_victory_star ... ok
+test heat_charged_attaches_one_fire_energy_per_head_for_all_reprints ... ok
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.43s
+running 19 tests
+test both_victini_printings_are_passive_and_do_not_break_move_generation ... ok
+test copied_attack_stack_is_not_popped_until_commit_and_is_popped_once ... ok
+test defender_coin_is_resolved_after_choice_and_never_becomes_the_pending_batch ... ok
+test confusion_coin_comes_before_the_attack_effect_pause_and_tails_does_nothing ... ok
+test a_confusion_tails_on_the_victory_star_path_ends_the_attack_and_the_turn_moves_on ... ok
+test keep_after_confusion_heads_takes_guarded_grills_cut_after_weakness ... ok
+test keep_and_reroll_inherit_the_original_attacks_hidden_information_cutoff ... ok
+test non_fire_attacker_does_not_receive_victory_star_prompt ... ok
+test pending_result_is_public_but_only_controller_receives_choice_payload ... ok
+test keep_and_reroll_after_confusion_heads_take_securely_sheltered_as_a_finite_cut ... ok
+test reroll_sets_global_once_per_turn_flag_and_it_resets_on_next_own_turn ... ok
+test favorable_result_can_be_voluntarily_replaced_by_a_worse_binding_result ... ok
+test reroll_after_confusion_heads_takes_guarded_grills_cut_after_weakness_over_the_whole_batch ... ok
+test search_players_resolve_the_pause_instead_of_scoring_it_as_zero_damage ... ok
+test two_victini_offer_one_reroll_with_deterministic_source_attribution ... ok
+test same_game_seed_reproduces_sample_choice_and_replacement_despite_search_work ... ok
+test sampled_result_pauses_without_damage_then_keep_commits_exactly_once ... ok
+test a_confused_attack_that_flips_no_coins_keeps_the_old_path ... ok
+test will_forces_first_batch_only_and_is_consumed_before_reroll ... ok
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+running 7 tests
+test test_will_forces_heads_for_mesagoza_coin_flip ... ok
+test test_will_forces_heads_for_lucky_ice_pop_coin_flip ... ok
+test test_will_forces_heads_for_coin_flip_effect_attack ... ok
+test test_will_forces_heads_for_single_coin_damage_attack ... ok
+test test_will_not_consumed_by_non_coin_trainer_then_forces_electric_generator ... ok
+test test_will_only_forces_first_coin_on_multi_coin_attack ... ok
+test test_will_does_not_force_enemy_coin_flips_meowth ... ok
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.22s
+--- cargo test --release --features test-utils --lib
+test result: ok. 414 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 41.74s

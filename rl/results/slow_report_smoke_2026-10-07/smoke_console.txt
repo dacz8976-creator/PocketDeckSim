@@ -1,0 +1,241 @@
+pin program sha: 5a8f5c83a791 program /home/dacz8976/kx/strength
+== 1. dry run
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] question: how does smoke-held do when km3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] plan: smoke-held (decks/events/smoke-held.txt, unknown (not a git repository)), 2 deals x 2 seats against the 8 public lists
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] size: 32 km3 games + 32 cheap km3 baseline games on the same deals (64 games in all; the km3 games take about a second each); the time is for the 32 km3 games: about 56 minutes to 74 minutes if the deck plays like most of his, about 3.6 hours if it plays like the Wailord wall (measured with 2 games at a time)
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] on school days (mon,tue,wed,thu,fri) the run pauses from 5:15 am to 5 pm Chicago time (the school-morning rule), so the calendar time is longer
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] pin committed: bypassed (rl/strength/slow_report_pin.json sha256 97dcb802b5a0; HEAD has no rl/strength/slow_report_pin.json in /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/2007fbb0-8999-4f68-b5ad-afe643bc4e30/scratchpad/sr/work/repo (not a git repository, no commit, or the file is not committed); git said: fatal: not a git repository (or any parent up to mount point /mnt); allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use))
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] stage use (not development evidence; the held-out lock is untouched), seeds from 24669400000, program /home/dacz8976/kx/strength (pinned, sha256 5a8f5c83a791), with the comparison with km3 on the same deals in the page, no pass or fail line
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] dry run: nothing written
+exit: 0
+== 2. real run under nohup, SIGHUP sent in the middle, a second wrapper refused meanwhile
+wrapper still alive after SIGHUP (nohup honoured)
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] REFUSED: another slow_report.py (pid 624290, started 2026-10-08T07:20:06Z) or the program it started is already running /home/dacz8976/slow_smoke2/runs/2026-10-07_smoke-held; two wrappers on one run would play the same games twice. If its wrapper was killed, the program plays on until its sitting ends or you stop it (kill -TERM -624308).
+second wrapper exit: 1
+first wrapper exit: 0
+games: 64 (planned 64)
+total 272
+drwxr-xr-x 2 dacz8976 dacz8976   4096 Oct  8 02:20 .
+drwxr-xr-x 3 dacz8976 dacz8976   4096 Oct  8 02:20 ..
+-rw-r--r-- 1 dacz8976 dacz8976   7038 Oct  8 02:20 PREREGISTRATION.md
+-rw-r--r-- 1 dacz8976 dacz8976   5181 Oct  8 02:20 REPORT.md
+-rw-r--r-- 1 dacz8976 dacz8976   5787 Oct  8 02:20 SLOW_REPORT.md
+-rw-r--r-- 1 dacz8976 dacz8976   4081 Oct  8 02:20 config.json
+-rw-r--r-- 1 dacz8976 dacz8976      0 Oct  8 02:20 errors.jsonl
+-rw-r--r-- 1 dacz8976 dacz8976 210143 Oct  8 02:20 games.jsonl
+-rw-r--r-- 1 dacz8976 dacz8976   6382 Oct  8 02:20 manifest.json
+-rw-r--r-- 1 dacz8976 dacz8976     80 Oct  8 02:20 manifest.sha256
+-rw-r--r-- 1 dacz8976 dacz8976    419 Oct  8 02:20 report.json
+-rw-r--r-- 1 dacz8976 dacz8976    215 Oct  8 02:20 run_log.jsonl
+-rw-r--r-- 1 dacz8976 dacz8976    246 Oct  8 02:20 run_output.log
+-rw-r--r-- 1 dacz8976 dacz8976   1275 Oct  8 02:20 slow_report_log.jsonl
+== log
+{"at": "2026-10-08T07:20:06Z", "event": "registered", "pilot": "km3", "reference": "km3", "manifest_sha256": "8d0bf0a8f7d906cf1c84f0594bf29938a03f08650c52baecdbd8552e9cba5116", "seed_base": 24669400000, "deals": 2, "paired": true, "threads": 2, "deck_file": "decks/events/smoke-held.txt", "deck_sha256": "62006b682027c4737111d789e342100db506809a71e5fe0962042bb6b77ca209"}
+{"at": "2026-10-08T07:20:06Z", "event": "sitting_call", "pilot": "km3", "reference": "km3", "school_rule": "off", "school_days": "mon,tue,wed,thu,fri", "threads": 2, "max_games": null, "school_choice_overridden": false, "program_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2"}
+{"at": "2026-10-08T07:20:06Z", "event": "slice_start", "pilot": "km3", "reference": "km3", "remaining_games": 64, "stop_after_min": null, "hard_stop": null, "threads": 2}
+{"at": "2026-10-08T07:20:46Z", "event": "slice_end", "pilot": "km3", "reference": "km3", "returncode": 0, "killed_for_school": false, "new_games": 64}
+{"at": "2026-10-08T07:20:47Z", "event": "complete", "pilot": "km3", "reference": "km3", "games": 64}
+{"at": "2026-10-08T07:20:47Z", "event": "report_written", "pilot": "km3", "reference": "km3", "path": "/home/dacz8976/slow_smoke2/runs/2026-10-07_smoke-held/SLOW_REPORT.md"}
+== SLOW_REPORT.md
+# Slow report: smoke-held
+
+**km3 (smoke, not kx3) on smoke-held v km3 on the public panel** (8 public lists: t-altaria, t-blaziken, t-hydreigon, t-lucario, t-sceptile, t-suicune, t-vespiquen, t-weezing). Stage `use`: a report on one deck, not development evidence.
+
+## What it says
+
+Question: how does smoke-held do when km3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
+
+Size: 32 km3 games + 32 cheap km3 baseline games (2 deals x 2 seats against each of the 8 public lists; the baseline games are the same deals with km3 on the deck).
+
+smoke-held scored **59.4%** over **32 games** (2 deals x 2 seats against each of the 8 public lists): probably between 42.3% and 74.5% (95% interval; this range refers to these 32 km3 games). A win counts 1, a tie 1/2, a loss 0.
+
+### How much better km3 plays this deck than km3
+
+On the same deals, km3 scored **+0.0 points** compared with km3 piloting this deck (km3 59.4%, km3 on this deck 59.4%, over 32 paired games: each a deal and seat played by both pilots, so 32 km3 games + 32 cheap km3 baseline games); every one of the 32 comparisons gave the same difference, so no spread can be estimated from them.
+
+## Against each public list
+
+| opponent (km3) | km3 games | score | 95% range |
+|---|---|---|---|
+| t-altaria | 4 | 50.0% | 15.0% to 85.0% |
+| t-blaziken | 4 | 25.0% | 4.6% to 69.9% |
+| t-hydreigon | 4 | 50.0% | 15.0% to 85.0% |
+| t-lucario | 4 | 50.0% | 15.0% to 85.0% |
+| t-sceptile | 4 | 50.0% | 15.0% to 85.0% |
+| t-suicune | 4 | 100.0% | 51.0% to 100.0% |
+| t-vespiquen | 4 | 50.0% | 15.0% to 85.0% |
+| t-weezing | 4 | 100.0% | 51.0% to 100.0% |
+
+Each row's range refers only to the km3 games against that list (the row's games column); with so few games it can tell a very easy or a very hard list from an even one, not two similar lists from each other.
+
+## Who went first
+
+- When smoke-held went first: 76.5% over 17 games (52.7% to 90.4%)
+- When smoke-held went second: 40.0% over 15 games (19.8% to 64.3%)
+
+Each range refers only to the km3 games on its line; a few dozen games can show a large first-or-second difference, not a small one.
+
+## The time it took
+
+km3 took 1.2 s a game on average, median 1.0 s, slowest 3.0 s, with 2 threads going at once. km3 playing this deck took 1.1 s a game.
+Running time from the run log: 37 s over 1 sitting, for 64 games in all: 32 km3 games + 32 cheap km3 baseline games.
+
+## What these numbers can and can't say
+
+**These numbers say how smoke-held did in simulated games with km3 playing it against the 8 public lists, probably between 42.3% and 74.5%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
+
+In more detail:
+
+- km3, a strong but slow pilot, plays your deck knowing its own cards. It does not know which of the 8 public lists it faces, but its opponent is always one of them and always plays like the program km3 imagines when it looks ahead, so it is better informed here than it would be against a person on the ladder or a deck outside the 8 lists. Read the score as the optimistic end.
+- The 8 lists count equally here, not by how common they are on the ladder.
+- The range covers only the luck of the shuffles and coin flips in these 32 games; it does not cover how true to the real game the simulator is. It can tell whether km3 plays smoke-held clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (32.2 points here), and more deals narrow it.
+- There is no pass or fail line: whether smoke-held is worth playing is a call for the player.
+
+## What was run
+
+- Pilots: km3 (smoke, not kx3) on the deck, km3 on the public panel. Program `/home/dacz8976/kx/strength` sha256 `5a8f5c83a791`.
+- Pin `/home/dacz8976/slow_smoke2/pin_smoke.json` sha256 `97dcb802b5a0`: **NOT the committed pin** (HEAD has no rl/strength/slow_report_pin.json in /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/2007fbb0-8999-4f68-b5ad-afe643bc4e30/scratchpad/sr/work/repo (not a git repository, no commit, or the file is not committed); git said: fatal: not a git repository (or any parent up to mount point /mnt); allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use)): what this page says about the program rests on a pin that is not the committed one.
+- Self-check of `km3`: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (copied from the pin, not replayed: the pin says it was measured on this exact binary)
+- Build: claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec (the frozen, tested development build), built on the laptop Oct 2; km3 240/240 v the official program, self-checks km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa; KX_EXTRA_LISTS unset
+- Harness source sha256 `bf9c5d681400` (what rl/strength/build.sh prints); the checkout this run was registered from has the same.
+- School-morning rule: off (chosen at registration, for a machine that is not the laptop).
+- Deck file `decks/events/smoke-held.txt` sha256 `62006b682027`; the file is unknown (not a git repository).
+- Held-out decks in this run: smoke-held. Allowed because this is a `use` report, not development evidence; the held-out lock is unchanged.
+- Registered 2026-10-08T07:20:06Z, before any game; manifest sha256 `8d0bf0a8f7d906cf`; repository commit `None`; pin `/home/dacz8976/slow_smoke2/pin_smoke.json`.
+- 2 deals x 2 seats; seeds `24669400000 + p x 10000 + i` (p = opponent index, i = deal). The program plays each deal with each pilot on the deck, from one seed.
+- The engineering report with every number (paired differences, runtime, what more precision would cost) is `REPORT.md` beside this page.
+== 3. a second run, SIGTERM in the middle, then resume
+wrapper exit after SIGTERM: 143 (143 expected)
+games after SIGTERM: 6
+program processes left running: 0 (0 expected)
+PREREGISTRATION.md REPORT.md SLOW_REPORT.md config.json errors.jsonl games.jsonl manifest.json manifest.sha256 report.json run_log.jsonl run_output.log slow_report_log.jsonl 
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] Question: how does smoke-held do when km3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] Size: 32 km3 games + 32 cheap km3 baseline games (2 deals x 2 seats against each of the 8 public lists; the baseline games are the same deals with km3 on the deck).
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] smoke-held scored 53.1% over 32 games (2 deals x 2 seats against each of the 8 public lists): probably between 36.4% and 69.1% (95% interval; this range refers to these 32 km3 games). A win counts 1, a tie 1/2, a loss 0.
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] On the same deals, km3 scored +0.0 points compared with km3 piloting this deck (km3 53.1%, km3 on this deck 53.1%, over 32 paired games: each a deal and seat played by both pilots, so 32 km3 games + 32 cheap km3 baseline games); every one of the 32 comparisons gave the same difference, so no spread can be estimated from them.
+games after resume: 64
+distinct keys 64 of 64 lines
+== 4. manifest keys of interest
+{'stage': 'use', 'heldout_decks': [], 'heldout_registry': ['02-arceus-crobat', '04-absol-hoopa-darkrai', '07-skarmory-stall', '08-garchomp-toolbox', '11-archaludon-haxorus-dragonair', '12-ariados-whimsicott-ogerpon', '13-a-ninetales-raticate', '14-comfey-raticate-hypno', '15-jolteon-oricorio-raticate', 'draft-C-meowstic-hatterene-v2', 'draft-D-entei-grimhound'], 'heldout_in_run': ['smoke-held'], 'heldout_locked': True, 'planned_games': 64, 'seed_base': 24669400000, 'selfcheck_source': {'km3': 'given in the config (copied from the pin, which says it was measured on this exact program sha256)'}}
+paired: True resume_command: python3 rl/strength/slow_report.py --dir /home/dacz8976/slow_smoke2/runs/2026-10-07_smoke-held --school-rule off
+== 5. the cloud route with a REAL rebuild: rl/strength/build.sh builds the pinned source (engine ref d513e37b) to a path of its own and writes the build record beside it
+     |
+     |    ^^^^^^^^^^^^^^^^^
+engine: d513e37b473f2819075e1eb2439075a8a1e65c42 engine tree 31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588
+engine tree as archived: 31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588
+program: /home/dacz8976/slow_smoke2/rebuilt/strength
+program sha256: c06238fbef317a1357663a2280f68cb15bebb2b213cfd3216721d5b62338074b
+harness source sha256: bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e
+build record: /home/dacz8976/slow_smoke2/rebuilt/strength.build.json
+
+real	7m15.644s
+user	14m26.855s
+sys	0m30.210s
+-- build record (selected)
+{'schema': 1, 'engine_arg': 'd513e37b473f', 'engine_ref': 'd513e37b473f', 'engine_tree_archived': '31dbd2e6e8ec', 'harness_source_sha256': 'bf9c5d681400', 'program_sha256': 'c06238fbef31', 'jobs': '8', 'built_at': '2026-10-08T07:28:49Z'}
+rustc: rustc 1.93.1 (01f6ddf75 2026-02-11) (built from a source tarball) | cargo: cargo 1.93.1 (083ac5135 2025-12-15) (built from a source tarball) | machine: Linux 6.18.33.2-microsoft-standard-WSL2 x86_64 | host: Dustin-Laptop
+pin engine_tree 31dbd2e6e8ec equal: True | pin harness equal: True | program is the pinned sha: False
+rebuild_command: env HOME=/home/dacz8976 CARGO_HOME=/home/dacz8976/.cargo STRENGTH_BUILD_DIR=/home/dacz8976/slow_smoke2/build1 STRENGTH_TARGET_DIR=/home/dacz8976/slow_smoke2/target1 STRENGTH_JOBS=8 STRENGTH_REPO='/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim' bash '/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/strength/build.sh' d513e37b473f2819075e1eb2439075a8a1e65c42 /home/dacz8976/slow_smoke2/rebuilt/strength
+-- registering with --program (the rebuild), school rule off, register only; the pin is the smoke copy, not the committed one: refused first, then with the test-only variable
+[km3 (smoke, not kx3) v km3] REFUSED: the pin is not the committed one: HEAD has no rl/strength/slow_report_pin.json in /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/2007fbb0-8999-4f68-b5ad-afe643bc4e30/scratchpad/sr/work/repo (not a git repository, no commit, or the file is not committed); git said: fatal: not a git repository (or any parent up to mount point /mnt). A slow report trusts the pin for what the program is, so it uses only rl/strength/slow_report_pin.json as committed at HEAD (commit the pin, in the repository you run from; a hand-edited or copied pin is refused). Nothing was written.
+exit: 1 (refused: the pin is not the committed one)
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] question: how does smoke-held do when km3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] plan: smoke-held (decks/events/smoke-held.txt, unknown (not a git repository)), 2 deals x 2 seats against the 8 public lists
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] size: 32 km3 games + 32 cheap km3 baseline games on the same deals (64 games in all; the km3 games take about a second each); the time is for the 32 km3 games: about 56 minutes to 74 minutes if the deck plays like most of his, about 3.6 hours if it plays like the Wailord wall (measured with 2 games at a time)
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] school-morning rule: OFF for this run (it never pauses for school mornings; the choice is recorded in the registration and carried by the resume command)
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] pin committed: bypassed (rl/strength/slow_report_pin.json sha256 97dcb802b5a0; HEAD has no rl/strength/slow_report_pin.json in /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/2007fbb0-8999-4f68-b5ad-afe643bc4e30/scratchpad/sr/work/repo (not a git repository, no commit, or the file is not committed); git said: fatal: not a git repository (or any parent up to mount point /mnt); allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use))
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] program /home/dacz8976/slow_smoke2/rebuilt/strength (sha256 c06238fbef31) is NOT the pinned binary (sha256 5a8f5c83a791): its build record (strength.build.json, sha256 503b9bec331b) says it is a rebuild of the pinned source (engine tree as archived 31dbd2e6e8ec, harness source bf9c5d681400, built with rustc 1.93.1 (01f6ddf75 2026-02-11) (built from a source tarball)); both self-checks will be replayed on this machine against the digests of the pin file in use (NOT the committed pin: test use) before anything is registered (hours for kx3), and the checkout's harness source equals the pinned build's
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] stage use (not development evidence; the held-out lock is untouched), seeds from 24669600000, program /home/dacz8976/slow_smoke2/rebuilt/strength (rebuilt, sha256 c06238fbef31), with the comparison with km3 on the same deals in the page, no pass or fail line
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] self-check of km3: 12 fixed games on /home/dacz8976/slow_smoke2/rebuilt/strength (this takes a while for kx3; run it when the machine is free)
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] pre-registered 64 games (8 pairs, 2 deals x 2 seats x 2 arms) in /home/dacz8976/slow_smoke2/runs/2026-10-09_smoke-held
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] manifest sha256 76ec59241ce1222ce8ff4cb2b071d74d7a1b74b538d1800915439a3240a0323c
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] registered in /home/dacz8976/slow_smoke2/runs/2026-10-09_smoke-held before any game
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] play it with: python3 rl/strength/slow_report.py --dir /home/dacz8976/slow_smoke2/runs/2026-10-09_smoke-held --school-rule off (add --max-games N to play in slices)
+exit: 0
+-- manifest: program, route, pin state, self-check sources, school choice, resume command, build record
+{'program': '/home/dacz8976/slow_smoke2/rebuilt/strength', 'program_sha256': 'c06238fbef31', 'program_route': 'rebuilt', 'pinned_program_sha256': '5a8f5c83a791', 'pin_committed': 'bypassed', 'registered_on': 'Dustin-Laptop', 'selfcheck_source': {'km3': 'replayed by slow_report.py on the registering machine just before registration (equal to the pin file in use, which is NOT the committed pin: test use)'}, 'school_rule': 'off', 'school_days': 'mon,tue,wed,thu,fri', 'harness_source_sha256': 'bf9c5d681400', 'harness_checkout': 'bf9c5d681400', 'build_record': {'program_sha256': 'c06238fbef31', 'engine_tree_archived': '31dbd2e6e8ec', 'harness_source_sha256': 'bf9c5d681400', 'host': 'Dustin-Laptop', 'built_at': '2026-10-08T07:28:49Z', 'record_sha256': '503b9bec331b'}}
+resume_command: python3 rl/strength/slow_report.py --dir /home/dacz8976/slow_smoke2/runs/2026-10-09_smoke-held --school-rule off
+engine: s build record (written by rl/strength/build.sh, not signed) says it is a rebuild of that source (build record sha256 503b9bec331b: engine tree as archived 31dbd2e6e8ec, harness source bf9c5d681400, rustc 1.93.1 (01f6ddf75 2026-02-11) (built from a source tarball)), accepted because both self-checks were replayed on the registering machine and equal the digests of the pin file in use (NOT the committed pin: test use)
+-- PREREGISTRATION.md: the slow-report lines and the Run paragraph
+- Self-check of `km3` on this build (12 fixed games, t-altaria v t-suicune): `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (replayed by slow_report.py on the registering machine just before registration and equal to the pin file in use, which is NOT the committed pin: test use)
+- program_route: `rebuilt`
+- pinned_program: `/home/dacz8976/kx/strength`
+- pinned_program_sha256: `5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2`
+- harness_source_sha256: `bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e`
+- harness_source_checkout_sha256: `bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e`
+- pin_committed: `bypassed`
+- pin_committed_detail: `HEAD has no rl/strength/slow_report_pin.json in /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/2007fbb0-8999-4f68-b5ad-afe643bc4e30/scratchpad/sr/work/repo (not a git repository, no commit, or the file is not committed); git said: fatal: not a git repository (or any parent up to mou
+- registered_on: `Dustin-Laptop`
+- build_record: `{"build_dir": "/home/dacz8976/slow_smoke2/build1", "build_env_unset": [], "built_at": "2026-10-08T07:28:49Z", "cargo": "cargo 1.93.1 (083ac5135 2025-12-15) (built from a source tarball)", "cargo_config_files": [], "cargo_home": "/home/dacz8976/.cargo", "engine": "d513e37b473f2819075e1eb2439075a8a1e65c42 engine t
+- school_rule: `off`
+- school_days: `mon,tue,wed,thu,fri`
+A slow report is run and resumed through its wrapper, which removes the variables that would tune the pilot or change the rules from the program's environment, does NOT apply the school-morning rule (chosen at registration: it never pauses for school mornings), and checks the registration, the deck files and the program it was r
+-- the dry run of that registered run (no school flag: the registered choice is used)
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] question: how does smoke-held do when km3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] played so far: 0 km3 games + 0 cheap km3 baseline games of 32 km3 games + 32 cheap km3 baseline games planned; 32 km3 games + 32 cheap km3 baseline games to go (resume with: python3 rl/strength/slow_report.py --dir /home/dacz8976/slow_smoke2/runs/2026-10-09_smoke-held --school-rule off)
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] dry run: nothing written
+== 6. a restart: the same build command in OTHER build folders (to the same output path), then the resume
+program sha256: 18f39c0b9a4e48ff64d6a9a4c05ed50a4647f15ced9600c2bb7d788d15aacc0f
+harness source sha256: bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e
+build record: /home/dacz8976/slow_smoke2/rebuilt/strength.build.json
+
+real	7m12.979s
+user	14m35.063s
+sys	0m28.486s
+first build sha256:  c06238fbef31
+second build sha256: 18f39c0b9a4e  (registered: c06238fbef31)
+-- dry run of the resume
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] question: how does smoke-held do when km3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] played so far: 0 km3 games + 0 cheap km3 baseline games of 32 km3 games + 32 cheap km3 baseline games planned; 32 km3 games + 32 cheap km3 baseline games to go (the program at /home/dacz8976/slow_smoke2/rebuilt/strength has another sha256 than registered; its build record is for the pinned source, so a resume would replay both self-checks again against the digests of the pin file in use (NOT the committed pin: test use) (hours for kx3) and, if they match, go on and log it as 'program changed mid-run'; resume with: python3 rl/strength/slow_report.py --dir /home/dacz8976/slow_smoke2/runs/2026-10-09_smoke-held --school-rule off)
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] dry run: nothing written
+-- the resume itself, a slice of 8 games
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] the program at /home/dacz8976/slow_smoke2/rebuilt/strength has sha256 18f39c0b9a4e, not the c06238fbef31 this run was registered with; its build record has the pinned engine tree and harness source, so both self-checks are replayed again against the digests of the pin file in use (NOT the committed pin: test use) before the run goes on
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] self-check of km3: 12 fixed games on /home/dacz8976/slow_smoke2/rebuilt/strength (this takes a while for kx3; run it when the machine is free)
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] program changed mid-run, accepted: both self-checks equal the digests of the pin file in use (NOT the committed pin: test use); logged as program_changed in slow_report_log.jsonl and shown on the page
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] running: 64 games to go, 2 at a time
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] stopped after --max-games 8 (games across both arms, about half of them kx3 games); resume with: python3 rl/strength/slow_report.py --dir /home/dacz8976/slow_smoke2/runs/2026-10-09_smoke-held --school-rule off
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] SLOW_REPORT.md written in /home/dacz8976/slow_smoke2/runs/2026-10-09_smoke-held
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] Question: how does smoke-held do when km3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] PARTIAL: 4 km3 games + 4 cheap km3 baseline games so far (8 of the 64 games planned; both pilots' games count in the 64). The numbers below will move; read them as a snapshot.
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] Size: 4 km3 games + 4 cheap km3 baseline games so far, of 32 km3 games + 32 cheap km3 baseline games planned.
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] smoke-held scored 50.0% over 4 games (games from 1 of the 8 public lists so far): probably between 15.0% and 85.0% (95% interval; this range refers to these 4 km3 games). A win counts 1, a tie 1/2, a loss 0.
+[km3 (smoke, not kx3) on smoke-held v km3 on the public panel] On the same deals, km3 scored +0.0 points compared with km3 piloting this deck (km3 50.0%, km3 on this deck 50.0%, over 4 paired games: each a deal and seat played by both pilots, so 4 km3 games + 4 cheap km3 baseline games); every one of the 4 comparisons gave the same difference, so no spread can be estimated from them.
+exit: 0
+-- the log: the sitting call and, if the bytes changed, the program_changed event
+2026-10-08T07:29:05Z registered {}
+2026-10-08T07:36:36Z program_changed {'old_sha256': 'c06238fbef31', 'new_sha256': '18f39c0b9a4e', 'selfcheck': {'km3': 'selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1'}, 'replayed_on': 'Dustin-Laptop'}
+2026-10-08T07:36:36Z sitting_call {'school_rule': 'off', 'max_games': 8, 'school_choice_overridden': False}
+2026-10-08T07:36:36Z slice_start {}
+2026-10-08T07:36:56Z slice_end {'new_games': 8}
+2026-10-08T07:36:57Z report_written {}
+-- the page says what happened to the program
+- Build record `strength.build.json` sha256 `503b9bec331b`: engine d513e37b473f2819075e1eb2439075a8a1e65c42 -> tree as archived `31dbd2e6e8ec` (the pin's is `31dbd2e6e8ec`), harness source `bf9c5d681400`, rustc 1.93.1 (01f6ddf75 2026-02-11) (built from a source tarball), cargo 1.93.1 (083ac5135 2025-12-15) (built from a source tarball), built 2026-10-08T07:28:49Z on Dustin-Laptop (Linux 6.18.33.2-microsoft-standard-WSL2 x86_64); to rebuild the same bytes after a restart: `env HOME=/home/dacz8976
+- Pin `/home/dacz8976/slow_smoke2/pin_smoke.json` sha256 `97dcb802b5a0`: **NOT the committed pin** (HEAD has no rl/strength/slow_report_pin.json in /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/2007fbb0-8999-4f68-b5ad-afe643bc4e30/scratchpad/sr/work/repo (not a git repository, no commit, or the file is not committed); git said: fatal: not a git repository (or any parent up to mount point /mnt); allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use)): what this page says a
+- **The program changed mid-run** (2026-10-08T07:36:36Z): sha256 `c06238fbef31` -> `18f39c0b9a4e` after a restart or rebuild; its build record has the pinned engine tree and harness source (record `26893dc24648`) and both self-checks were replayed again on Dustin-Laptop and equal the digests of the pin file in use (NOT the committed pin: test use). 0 games of the 8 played so far were started before this change and 8 after; the numbers above pool them.
+== 6b. the SAME build command again, from scratch (build and target folders removed): are the bytes the first build's?
+command: env HOME=/home/dacz8976 CARGO_HOME=/home/dacz8976/.cargo STRENGTH_BUILD_DIR=/home/dacz8976/slow_smoke2/build1 STRENGTH_TARGET_DIR=/home/dacz8976/slow_smoke2/target1 STRENGTH_JOBS=8 STRENGTH_REPO='/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim' bash /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/2007fbb0-8999-4f68-b5ad-afe643bc4e30/scratchpad/sr/work/repo/rl/strength/build.sh d513e37b473f2819075e1eb2439075a8a1e65c42 /home/dacz8976/slow_smoke2/rebuilt/strength.third
+engine: d513e37b473f2819075e1eb2439075a8a1e65c42 engine tree 31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588
+engine tree as archived: 31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588
+program: /home/dacz8976/slow_smoke2/rebuilt/strength.third
+program sha256: c06238fbef317a1357663a2280f68cb15bebb2b213cfd3216721d5b62338074b
+harness source sha256: bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e
+build record: /home/dacz8976/slow_smoke2/rebuilt/strength.third.build.json
+
+real	7m16.751s
+user	14m16.250s
+sys	0m29.913s
+first build sha256:  c06238fbef317a13
+third build sha256:  c06238fbef317a13  (same command, same folders, built again from scratch)
+IDENTICAL BYTES
+records differ in: ['built_at', 'program', 'rebuild_command']
+== 7. refusals, each with nothing written
+-- a program with no build record (/bin/true)
+[km3 (smoke, not kx3) v km3] REFUSED: /bin/true has no build record (/bin/true.build.json); rl/strength/build.sh writes it beside the program it builds (build with it, to the path you pass here). Nothing was written.
+exit: 1  (folder written? 0)
+-- the rebuild with a build record whose engine tree is not the pinned one
+[km3 (smoke, not kx3) v km3] REFUSED: the build record says the engine tree that went into /home/dacz8976/slow_smoke2/forged/strength is 000000000000, not the pinned 31dbd2e6e8ec, so it is not a build of the pinned source. Nothing was written.
+exit: 1
+-- a pin that points at the rebuilt copy, without --program
+[km3 (smoke, not kx3) v km3] REFUSED: /home/dacz8976/slow_smoke2/rebuilt/strength (sha256 18f39c0b9a4e) is not the pinned build (sha256 5a8f5c83a791). A slow report uses only the exact tested version. If this is a rebuild of d513e37b (for example on the cloud, with rl/strength/build.sh), pass it wit
+exit: 1
+== done; runs kept in /home/dacz8976/slow_smoke2/runs

@@ -1,0 +1,57 @@
+build check: 560 reference games replay the dev run exactly, 0 differ
+
+PRIMARY, pooled: candidate - frozen +3.9 +- 3.1 (n 560) points; every deck weighted equally +3.9 points over 7 decks
+
+all: candidate - frozen +3.9 +- 3.1 (n 560) points; pairs that differ at all 384 of 560
+  pace: turns per game +0.12 +- 0.24 (n 560); first-attack own turn +0.05 +- 0.09 (n 560)
+  context: candidate - km3 +20.5 +- 3.9 (n 560); frozen - km3 +16.6 +- 3.5 (n 560)
+
+fast: candidate - frozen +4.6 +- 4.4 (n 240) points; pairs that differ at all 140 of 240
+  pace: turns per game -0.07 +- 0.22 (n 240); first-attack own turn +0.14 +- 0.07 (n 240)
+  context: candidate - km3 +17.1 +- 5.4 (n 240); frozen - km3 +12.5 +- 4.8 (n 240)
+
+setup: candidate - frozen +2.5 +- 4.9 (n 240) points; pairs that differ at all 186 of 240
+  pace: turns per game +0.32 +- 0.44 (n 240); first-attack own turn +0.02 +- 0.19 (n 240)
+  context: candidate - km3 +22.9 +- 6.2 (n 240); frozen - km3 +20.4 +- 5.8 (n 240)
+
+middle: candidate - frozen +6.2 +- 8.8 (n 80) points; pairs that differ at all 58 of 80
+  pace: turns per game +0.07 +- 0.78 (n 80); first-attack own turn -0.11 +- 0.17 (n 80)
+  context: candidate - km3 +23.8 +- 11.7 (n 80); frozen - km3 +17.5 +- 9.7 (n 80)
+
+01-muk-glimmora-kingambit-regigigas (setup): candidate - frozen +3.8 +- 10.1 (n 80) points; pairs that differ at all 58 of 80
+  pace: turns per game +0.16 +- 0.49 (n 80); first-attack own turn +0.11 +- 0.22 (n 80)
+  context: candidate - km3 +32.5 +- 10.9 (n 80); frozen - km3 +28.7 +- 11.1 (n 80)
+
+03-wailord-indeedee-wall (setup): candidate - frozen +0.0 +- 6.8 (n 80) points; pairs that differ at all 63 of 80
+  pace: turns per game +0.24 +- 1.04 (n 80); first-attack own turn -0.03 +- 0.45 (n 80)
+  context: candidate - km3 +6.2 +- 9.9 (n 80); frozen - km3 +6.2 +- 8.1 (n 80)
+
+05-indeedee-stoutland (setup): candidate - frozen +3.8 +- 8.1 (n 80) points; pairs that differ at all 65 of 80
+  pace: turns per game +0.56 +- 0.66 (n 80); first-attack own turn -0.04 +- 0.26 (n 80)
+  context: candidate - km3 +30.0 +- 10.7 (n 80); frozen - km3 +26.2 +- 10.3 (n 80)
+
+06-mega-blaziken-tournament-list (fast): candidate - frozen +0.0 +- 7.8 (n 80) points; pairs that differ at all 52 of 80
+  pace: turns per game -0.07 +- 0.38 (n 80); first-attack own turn +0.11 +- 0.12 (n 80)
+  context: candidate - km3 +15.0 +- 9.3 (n 80); frozen - km3 +15.0 +- 8.6 (n 80)
+
+09-mega-manectric-heliolisk (fast): candidate - frozen +7.5 +- 6.8 (n 80) points; pairs that differ at all 46 of 80
+  pace: turns per game +0.04 +- 0.45 (n 80); first-attack own turn +0.17 +- 0.10 (n 80)
+  context: candidate - km3 +23.8 +- 10.0 (n 80); frozen - km3 +16.2 +- 8.1 (n 80)
+
+10-xatu-oricorio-tr-weezing (fast): candidate - frozen +6.2 +- 8.1 (n 80) points; pairs that differ at all 42 of 80
+  pace: turns per game -0.19 +- 0.34 (n 80); first-attack own turn +0.12 +- 0.12 (n 80)
+  context: candidate - km3 +12.5 +- 8.8 (n 80); frozen - km3 +6.2 +- 8.1 (n 80)
+
+draft-A-shark-tempo (middle): candidate - frozen +6.2 +- 8.8 (n 80) points; pairs that differ at all 58 of 80
+  pace: turns per game +0.07 +- 0.78 (n 80); first-attack own turn -0.11 +- 0.17 (n 80)
+  context: candidate - km3 +23.8 +- 11.7 (n 80); frozen - km3 +17.5 +- 9.7 (n 80)
+
+Time, kx3 games only (wall seconds per game on the laptop, 2 games at a time):
+  01-muk-glimmora-kingambit-regigigas: candidate 997 s, frozen 313 s, x3.19 (80 kx3 games)
+  03-wailord-indeedee-wall: candidate 2099 s, frozen 770 s, x2.73 (80 kx3 games)
+  05-indeedee-stoutland: candidate 888 s, frozen 335 s, x2.65 (80 kx3 games)
+  06-mega-blaziken-tournament-list: candidate 287 s, frozen 87 s, x3.32 (80 kx3 games)
+  09-mega-manectric-heliolisk: candidate 314 s, frozen 96 s, x3.26 (80 kx3 games)
+  10-xatu-oricorio-tr-weezing: candidate 349 s, frozen 124 s, x2.82 (80 kx3 games)
+  draft-A-shark-tempo: candidate 451 s, frozen 159 s, x2.83 (80 kx3 games)
+  all: candidate x2.86 the frozen kx3's time; this run: 560 kx3 games + 560 km3 games = 1120 games

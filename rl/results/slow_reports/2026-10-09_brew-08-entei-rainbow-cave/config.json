@@ -1,0 +1,103 @@
+{
+ "name": "slow_report_brew-08-entei-rainbow-cave",
+ "question": "kx3 (d513e37b) on brew-08-entei-rainbow-cave v km3 on the public panel. A slow report on one deck, not development: how does brew-08-entei-rainbow-cave do when the strong, slow pilot kx3 plays it against the eight public panel lists played by km3, 10 deals x 2 seats each? Primary: the deck's score (win 1, tie 1/2, loss 0) overall and against each list, with 95% ranges; and how much better kx3 plays this deck than km3 on the same deals. Realistic knowledge: kx3 plays the deck knowing its own cards; the deck is never one of the lists kx3 guesses its opponent from, and the panel side is never handed it. No pass or fail line; time per game is reported as a fact.",
+ "pilot": "kx3",
+ "reference": "km3",
+ "stage": "use",
+ "deck_files": [
+  "decks/brews/brew-08-entei-rainbow-cave.txt"
+ ],
+ "opponent_groups": [
+  "panel8"
+ ],
+ "deals": 10,
+ "seats": [
+  0,
+  1
+ ],
+ "seed_base": 24628600000,
+ "pair_stride": 10000,
+ "threads": 4,
+ "log_level": "deck",
+ "program": "/root/slow_report_kx3/strength",
+ "program_sha256": "c3d51c4be7ff27615359db71d09b2de0867aed773b0c8434d46dea7b7e73a9de",
+ "engine": "claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec (the frozen, tested development build), built on the laptop Oct 2; km3 240/240 v the official program, self-checks km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa; KX_EXTRA_LISTS unset; THIS PROGRAM (/root/slow_report_kx3/strength, sha256 c3d51c4be7ff) is NOT the pinned binary: its build record (written by rl/strength/build.sh, not signed) says it is a rebuild of that source (build record sha256 c368b19fc39f: engine tree as archived 31dbd2e6e8ec, harness source bf9c5d681400, rustc 1.97.0 (2d8144b78 2026-07-07)), accepted because both self-checks were replayed on the registering machine and equal the committed pin's digests",
+ "pilot_provenance": "kx3 from claude/playout-pilot@d513e37b, frozen Oct 4-5",
+ "reference_provenance": "km3 in the same build; it equals the pinned km3 (step 10's 240 games field for field, self-check 81b572198c04d5d1)",
+ "slow_report": {
+  "version": 1,
+  "headline": "kx3 (d513e37b) on brew-08-entei-rainbow-cave v km3 on the public panel",
+  "summary": "Stage use. 10 deals x 2 seats against each of the eight public lists. No pass or fail line; not development evidence.",
+  "deck_name": "brew-08-entei-rainbow-cave",
+  "deck_file": "decks/brews/brew-08-entei-rainbow-cave.txt",
+  "deck_file_sha256": "b3392d82475130e400887897b75e1add156ca4151f3ce85b38042233bd7336a0",
+  "deck_file_state": "committed",
+  "deals": 10,
+  "paired": true,
+  "pin": {
+   "path": "rl/strength/slow_report_pin.json",
+   "sha256": "2d1a3ac4735671772efe2767d0f0d305af8d3e02b99e3f4a851eaebcb25a092c"
+  },
+  "pilot_label": "kx3 (d513e37b)",
+  "reference_label": "km3",
+  "panel_label": "the public panel",
+  "scrub_env_prefixes": [
+   "KX_",
+   "PDL_",
+   "DECKGYM_",
+   "JEV_",
+   "PG_"
+  ],
+  "resume_command": "python3 rl/strength/slow_report.py --dir /home/user/PocketDeckSim/rl/results/slow_reports/2026-10-09_brew-08-entei-rainbow-cave --school-rule off",
+  "program_route": "rebuilt",
+  "pinned_program": "/home/dacz8976/kx/strength",
+  "pinned_program_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2",
+  "harness_source_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+  "harness_source_checkout_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+  "engine_ref": "d513e37b473f2819075e1eb2439075a8a1e65c42",
+  "engine_tree": "31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588",
+  "pin_committed": "yes",
+  "pin_committed_detail": null,
+  "registered_on": "vm",
+  "build_record": {
+   "schema": 1,
+   "program": "/root/slow_report_kx3/strength",
+   "program_sha256": "c3d51c4be7ff27615359db71d09b2de0867aed773b0c8434d46dea7b7e73a9de",
+   "engine_arg": "d513e37b473f2819075e1eb2439075a8a1e65c42",
+   "engine": "d513e37b473f2819075e1eb2439075a8a1e65c42 engine tree 31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588",
+   "engine_ref": "d513e37b473f2819075e1eb2439075a8a1e65c42",
+   "engine_tree_archived": "31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588",
+   "harness_source_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+   "rustc": "rustc 1.97.0 (2d8144b78 2026-07-07)\nbinary: rustc\ncommit-hash: 2d8144b7880597b6e6d3dfd63a9a9efae3f533d3\ncommit-date: 2026-07-07\nhost: x86_64-unknown-linux-gnu\nrelease: 1.97.0\nLLVM version: 22.1.6",
+   "cargo": "cargo 1.97.0 (c980f4866 2026-06-30)",
+   "machine": "Linux 6.18.44-fc-v80 x86_64",
+   "libc": "ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39",
+   "host": "vm",
+   "home": "/root",
+   "cargo_home": "/root/.cargo",
+   "build_dir": "/root/slow_report_kx3/build",
+   "target_dir": "/root/slow_report_kx3/target",
+   "build_fs": "ext2/ext3",
+   "jobs": "8",
+   "build_env_unset": [],
+   "cargo_config_files": [],
+   "built_at": "2026-10-09T13:36:20Z",
+   "rebuild_command": "env HOME=/root CARGO_HOME=/root/.cargo STRENGTH_BUILD_DIR=/root/slow_report_kx3/build STRENGTH_TARGET_DIR=/root/slow_report_kx3/target STRENGTH_JOBS=8 STRENGTH_REPO=/home/user/PocketDeckSim bash /home/user/PocketDeckSim/rl/strength/build.sh d513e37b473f2819075e1eb2439075a8a1e65c42 /root/slow_report_kx3/strength",
+   "record_file": "/root/slow_report_kx3/strength.build.json",
+   "record_sha256": "c368b19fc39f2d6a9223183534bfa9d258a811d97ffcb5ad8f5805da1b8a35c7"
+  },
+  "school_rule": "off",
+  "school_days": "mon,tue,wed,thu,fri",
+  "expected_hours": {
+   "typical_low": 4.705882352941177,
+   "typical_high": 6.153846153846154,
+   "wall": 17.77777777777778
+  }
+ },
+ "selfcheck_given": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kx3": "selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa"
+ },
+ "selfcheck_given_program_sha256": "c3d51c4be7ff27615359db71d09b2de0867aed773b0c8434d46dea7b7e73a9de",
+ "selfcheck_how": "replayed"
+}

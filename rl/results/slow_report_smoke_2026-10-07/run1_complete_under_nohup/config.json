@@ -1,0 +1,76 @@
+{
+ "name": "slow_report_smoke-held",
+ "question": "km3 (smoke, not kx3) on smoke-held v km3 on the public panel. A slow report on one deck, not development: how does smoke-held do when the strong, slow pilot km3 plays it against the eight public panel lists played by km3, 2 deals x 2 seats each? Primary: the deck's score (win 1, tie 1/2, loss 0) overall and against each list, with 95% ranges; and how much better km3 plays this deck than km3 on the same deals. Realistic knowledge: km3 plays the deck knowing its own cards; the deck is never one of the lists km3 guesses its opponent from, and the panel side is never handed it. No pass or fail line; time per game is reported as a fact.",
+ "pilot": "km3",
+ "reference": "km3",
+ "stage": "use",
+ "deck_files": [
+  "decks/events/smoke-held.txt"
+ ],
+ "opponent_groups": [
+  "panel8"
+ ],
+ "deals": 2,
+ "seats": [
+  0,
+  1
+ ],
+ "seed_base": 24669400000,
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "program": "/home/dacz8976/kx/strength",
+ "program_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2",
+ "engine": "claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec (the frozen, tested development build), built on the laptop Oct 2; km3 240/240 v the official program, self-checks km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa; KX_EXTRA_LISTS unset",
+ "pilot_provenance": "kx3 from claude/playout-pilot@d513e37b, frozen Oct 4-5",
+ "reference_provenance": "km3 in the same build; it equals the pinned km3 (step 10's 240 games field for field, self-check 81b572198c04d5d1)",
+ "slow_report": {
+  "version": 1,
+  "headline": "km3 (smoke, not kx3) on smoke-held v km3 on the public panel",
+  "summary": "Stage use. 2 deals x 2 seats against each of the eight public lists. No pass or fail line; not development evidence.",
+  "deck_name": "smoke-held",
+  "deck_file": "decks/events/smoke-held.txt",
+  "deck_file_sha256": "62006b682027c4737111d789e342100db506809a71e5fe0962042bb6b77ca209",
+  "deck_file_state": "unknown (not a git repository)",
+  "deals": 2,
+  "paired": true,
+  "pin": {
+   "path": "/home/dacz8976/slow_smoke2/pin_smoke.json",
+   "sha256": "97dcb802b5a051a87664366642a0d61437bec0a37cfa01fb70f7480d06de52c5"
+  },
+  "pilot_label": "km3 (smoke, not kx3)",
+  "reference_label": "km3",
+  "panel_label": "the public panel",
+  "scrub_env_prefixes": [
+   "KX_",
+   "PDL_",
+   "DECKGYM_",
+   "JEV_",
+   "PG_"
+  ],
+  "resume_command": "python3 rl/strength/slow_report.py --dir /home/dacz8976/slow_smoke2/runs/2026-10-07_smoke-held --school-rule off",
+  "program_route": "pinned",
+  "pinned_program": "/home/dacz8976/kx/strength",
+  "pinned_program_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2",
+  "harness_source_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+  "harness_source_checkout_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+  "engine_ref": "d513e37b473f2819075e1eb2439075a8a1e65c42",
+  "engine_tree": "31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588",
+  "pin_committed": "bypassed",
+  "pin_committed_detail": "HEAD has no rl/strength/slow_report_pin.json in /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/2007fbb0-8999-4f68-b5ad-afe643bc4e30/scratchpad/sr/work/repo (not a git repository, no commit, or the file is not committed); git said: fatal: not a git repository (or any parent up to mount point /mnt); allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use)",
+  "registered_on": "Dustin-Laptop",
+  "build_record": null,
+  "school_rule": "off",
+  "school_days": "mon,tue,wed,thu,fri",
+  "expected_hours": {
+   "typical_low": 0.9411764705882353,
+   "typical_high": 1.2307692307692308,
+   "wall": 3.5555555555555554
+  }
+ },
+ "selfcheck_given": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kx3": "selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa"
+ },
+ "selfcheck_given_program_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2"
+}

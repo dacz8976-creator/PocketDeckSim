@@ -1,0 +1,50 @@
+64 changed rows, 9 chunks x 2 engines, 12 jobs; reach counters: will_confused_attack, will_block_coin_attack, vs_block_coin_built, vs_block_coin_choice_offered, coin_own_side_split, coin_plain_damage_chosen, perish_plain_hit_offered, perish_plain_hit_chosen, guts_own_side_split, trap_territory_offer_changed, trap_territory_outcome_changed, luxury_coin_opp_stadium, fossil_item_lock, attack_return_weakness, coin_queued_by_attack, coin_plain_damage_by_attack
+  traced and compared 9/9 chunks
+76 probe runs
+  probed 76/76
+{
+ "rows": 64,
+ "steps": "8b",
+ "reach": [
+  "will_confused_attack",
+  "will_block_coin_attack",
+  "vs_block_coin_built",
+  "vs_block_coin_choice_offered",
+  "coin_own_side_split",
+  "coin_plain_damage_chosen",
+  "perish_plain_hit_offered",
+  "perish_plain_hit_chosen",
+  "guts_own_side_split",
+  "trap_territory_offer_changed",
+  "trap_territory_outcome_changed",
+  "luxury_coin_opp_stadium",
+  "fossil_item_lock",
+  "attack_return_weakness",
+  "coin_queued_by_attack",
+  "coin_plain_damage_by_attack"
+ ],
+ "tally": {
+  "ON THE BOARD": 49,
+  "LOOKAHEAD ONLY, both halves hold": 15
+ },
+ "strict_tally": {
+  "ON THE BOARD": 49,
+  "LOOKAHEAD ONLY, both halves hold": 15
+ },
+ "kind_by_verdict": {
+  "lookahead / LOOKAHEAD ONLY, both halves hold": 15,
+  "lookahead / ON THE BOARD": 2,
+  "movegen / ON THE BOARD": 1,
+  "state / ON THE BOARD": 46
+ },
+ "condition3": 0,
+ "condition3_verdicts": {},
+ "golden_mismatches": 0,
+ "explaining_counters_without_a_golden_check": {},
+ "lookahead_for_the_revert_check": 15,
+ "control_failures": 0,
+ "problems": [],
+ "tightened_rule_sha256": "a1822f75b27f140309d2467e67ba8e16c40ad5be246b286237474b1176a640f3"
+}
+
+CONDITION 3 rows: 0; verdicts {}

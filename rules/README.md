@@ -12,7 +12,7 @@ brought in line with it on 2026-09-21, and the opening-hand line was updated on 
 
 ## Where things stand (2026-09-22, evening)
 
-- **Settled:** damage order (official FAQ + Dustin's Skarmory game), end-of-turn and Checkup order (Burn versus Checkup healing and the order of other Checkup Abilities remain open; Poison before Blessed Salt is observed), all five Special
+- **Settled:** damage order (official FAQ + Dustin's Skarmory game), end-of-turn and Checkup order (Poison, then Burn, before Blessed Salt is observed; the order of other Checkup Abilities remains open), all five Special
   Conditions, winning by points or an empty board, turn-limit ties and timers (other simultaneous finishes remain open —
   see below), setup and first turn, **how the opening hand is dealt (new: two statistical studies)**, mid-turn Knock
   Outs, double-KO promotion after an attack (attacker first), when a card can be played (Dustin's rule + the 1.7.0

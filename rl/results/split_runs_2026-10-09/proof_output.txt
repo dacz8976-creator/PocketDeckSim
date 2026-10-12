@@ -1,0 +1,41 @@
+engine: 8626a358 engine tree 38af8b0cc4f35fdccc647ed540a56ec8f5e6c1d5
+engine tree as archived: 38af8b0cc4f35fdccc647ed540a56ec8f5e6c1d5
+program sha256: 6f137b74d52480999a57db47f38a9e428ddbf6e4103a1765ba618526be8fd487
+harness source sha256: bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e
+self-check: selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1
+== straight (stamped before it plays, sealed after)
+stamped /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct11_proof/straight: manifest 39e0fb661352, program 6f137b74d524, slice (all)
+sealed /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct11_proof/straight: 12 games, games.jsonl 93af2cb5acc8, program 6f137b74d524
+== negative: stamping the played straight folder again is refused
+stamp: REFUSED: /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct11_proof/straight already holds play (games.jsonl, run_log.jsonl); a worker is stamped before it plays. Nothing was written.
+refused (exit 2)
+worker.json unchanged
+== worker 1 (t-altaria, t-suicune) and worker 2 (t-hydreigon), each into its own folder
+stamped /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct11_proof/w1: manifest 39e0fb661352, program 6f137b74d524, slice ['t-altaria', 't-suicune']
+sealed /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct11_proof/w1: 8 games, games.jsonl bdfe51b98961, program 6f137b74d524
+stamped /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct11_proof/w2: manifest 39e0fb661352, program 6f137b74d524, slice ['t-hydreigon']
+sealed /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct11_proof/w2: 4 games, games.jsonl e272f0868164, program 6f137b74d524
+straight: 12 games, errors: 0
+w1: 8 games, errors: 0
+w2: 4 games, errors: 0
+== merge
+COMPLETE: 12 of 12 games; 0 problem(s); see /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct11_proof/merged/MERGE_RECORD.md
+== the merge against the straight run
+12 and 12 games; game for game (content, not timing) EQUAL
+keys in the same order: False
+whole lines byte for byte (timing included, so expected to differ): 0 of 12
+== the straight run, merged alone (one worker)
+COMPLETE: 12 of 12 games; 0 problem(s); see /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct11_proof/merged_straight/MERGE_RECORD.md
+== negative: worker 1 alone
+INCOMPLETE: 8 of 12 games; 4 problem(s); see /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct11_proof/merged_w1_only/MERGE_RECORD.md
+**INCOMPLETE**: 8 of 12 expected games merged; 4 problem(s).
+- **missing** game `t-hydreigon|t-blaziken|0|0|ref`: no worker played it
+- **missing** game `t-hydreigon|t-blaziken|0|0|X`: no worker played it
+- **missing** game `t-hydreigon|t-blaziken|0|1|ref`: no worker played it
+- **missing** game `t-hydreigon|t-blaziken|0|1|X`: no worker played it
+MERGE_RECORD.md
+games_INCOMPLETE.jsonl
+== negative: worker 2's games edited after its seal (a copy)
+INCOMPLETE: 8 of 12 games; 5 problem(s); see /tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct11_proof/merged_edited/MERGE_RECORD.md
+**INCOMPLETE**: 8 of 12 expected games merged; 5 problem(s).
+- **seal** worker w2: games.jsonl changed after the seal

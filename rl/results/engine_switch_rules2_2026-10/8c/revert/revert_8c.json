@@ -1,0 +1,78 @@
+{
+ "argv": [
+  "--lookahead",
+  "/home/dacz8976/runs/s2_8c/out/lookahead_all.tsv",
+  "--counters",
+  "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/engine_switch_rules2_2026-10/counters.tsv",
+  "--handoff",
+  "/home/dacz8976/runs/s2_8c/handoff_for_classify.tsv",
+  "--root",
+  "/home/dacz8976/runs/s2_8c/root",
+  "--seed-base",
+  "23100000000",
+  "--seed-base",
+  "23300000000",
+  "--seed-base",
+  "21106000000",
+  "--p-program",
+  "/home/dacz8976/runs/s2_8c/bin_dump_new_score_dump",
+  "--p-cwd",
+  "/home/dacz8976/runs/s2_8c/dump_new/engine",
+  "--p-sha256",
+  "3c33eb518266b085e60d0c49c085abc7d9e1f331829c4f58524fdbe9a2c9da4f",
+  "--official-program",
+  "/home/dacz8976/runs/s2_8c/bin_dump_old_score_dump",
+  "--official-cwd",
+  "/home/dacz8976/runs/s2_8c/dump_old/engine",
+  "--official-sha256",
+  "290d2be4d115e85d54a66833f60d08262c92e6b1ee4a517728323e562259283c",
+  "--out",
+  "/home/dacz8976/runs/s2_8c/out/revert",
+  "--jobs",
+  "12"
+ ],
+ "by_kind": {
+  "queued": 31,
+  "return": 4,
+  "trap": 272,
+  "trap+trapleaf": 314
+ },
+ "driver_sha256": "26dd92aeabb8632d412cc3641b3132a2b87ec5f2e80c49377b3b0cb17b7f2dc9",
+ "failed": [],
+ "games": 621,
+ "inputs": {
+  "counters": {
+   "path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/engine_switch_rules2_2026-10/counters.tsv",
+   "sha256": "dfcb89115a3048c7f4a7fb2e4cc70365306a4be09c5534fb70a69ac98b0e1435"
+  },
+  "handoff": {
+   "path": "/home/dacz8976/runs/s2_8c/handoff_for_classify.tsv",
+   "sha256": "fbe48c9a7e900604befe0e86acbdd3c60f095fafc8585cef6d0752eb03b69630"
+  },
+  "lookahead": {
+   "path": "/home/dacz8976/runs/s2_8c/out/lookahead_all.tsv",
+   "sha256": "6c20c7b9fd78b6c0e0562832260fe10f74214be44a2bbca07c478bbaba72f4aa"
+  },
+  "root": "/home/dacz8976/runs/s2_8c/root",
+  "seed_bases": [
+   21106000000,
+   23100000000,
+   23300000000
+  ]
+ },
+ "passed": 621,
+ "programs": {
+  "official": {
+   "cwd": "/home/dacz8976/runs/s2_8c/dump_old/engine",
+   "path": "/home/dacz8976/runs/s2_8c/bin_dump_old_score_dump",
+   "sha256": "290d2be4d115e85d54a66833f60d08262c92e6b1ee4a517728323e562259283c"
+  },
+  "p": {
+   "cwd": "/home/dacz8976/runs/s2_8c/dump_new/engine",
+   "path": "/home/dacz8976/runs/s2_8c/bin_dump_new_score_dump",
+   "sha256": "3c33eb518266b085e60d0c49c085abc7d9e1f331829c4f58524fdbe9a2c9da4f"
+  }
+ },
+ "root_continuation": [],
+ "summary": "revert 621 of 621 reproduced"
+}

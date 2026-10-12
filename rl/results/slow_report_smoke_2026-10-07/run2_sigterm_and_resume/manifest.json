@@ -1,0 +1,152 @@
+{
+ "name": "slow_report_smoke-held",
+ "question": "km3 (smoke, not kx3) on smoke-held v km3 on the public panel. A slow report on one deck, not development: how does smoke-held do when the strong, slow pilot km3 plays it against the eight public panel lists played by km3, 2 deals x 2 seats each? Primary: the deck's score (win 1, tie 1/2, loss 0) overall and against each list, with 95% ranges; and how much better km3 plays this deck than km3 on the same deals. Realistic knowledge: km3 plays the deck knowing its own cards; the deck is never one of the lists km3 guesses its opponent from, and the panel side is never handed it. No pass or fail line; time per game is reported as a fact.",
+ "repo_commit": null,
+ "selfcheck": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1"
+ },
+ "selfcheck_source": {
+  "km3": "given in the config (copied from the pin, which says it was measured on this exact program sha256)"
+ },
+ "created_at": "2026-10-08T07:20:47Z",
+ "stage": "use",
+ "repo_root": "/mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/2007fbb0-8999-4f68-b5ad-afe643bc4e30/scratchpad/sr/work/repo",
+ "pilot": "km3",
+ "reference": "km3",
+ "decks": [
+  {
+   "name": "smoke-held",
+   "path": "decks/events/smoke-held.txt",
+   "sha256": "62006b682027c4737111d789e342100db506809a71e5fe0962042bb6b77ca209"
+  }
+ ],
+ "opponents": [
+  {
+   "name": "t-altaria",
+   "path": "decks/screen/opponents/t-altaria.txt",
+   "sha256": "c3a57b9c835be77ba864514e2636645885c4f22d75028c5f29e2686edcbe171f"
+  },
+  {
+   "name": "t-blaziken",
+   "path": "decks/screen/opponents/t-blaziken.txt",
+   "sha256": "d88a70e56dae8f8500d539348223b5fee5eaba705667578a8fcbca95963fd7ed"
+  },
+  {
+   "name": "t-hydreigon",
+   "path": "decks/screen/opponents/t-hydreigon.txt",
+   "sha256": "18688bd9ab09f2638538006590767a5750abe763572c0fb636c47eec93155f3b"
+  },
+  {
+   "name": "t-lucario",
+   "path": "decks/screen/opponents/t-lucario.txt",
+   "sha256": "76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634"
+  },
+  {
+   "name": "t-sceptile",
+   "path": "decks/screen/opponents/t-sceptile.txt",
+   "sha256": "fe0b7fc4de2f9dff0268a65d30dd39bfd5b73e7e5115b48e59f3975777018cd2"
+  },
+  {
+   "name": "t-suicune",
+   "path": "decks/screen/opponents/t-suicune.txt",
+   "sha256": "639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783"
+  },
+  {
+   "name": "t-vespiquen",
+   "path": "decks/screen/opponents/t-vespiquen.txt",
+   "sha256": "8356844fd2d143a44c547356ff5a32b74977478fbb1f9fc2a716a7f2233f8255"
+  },
+  {
+   "name": "t-weezing",
+   "path": "decks/screen/opponents/t-weezing.txt",
+   "sha256": "26cb869fe5f2c7cd79f8b974bf7667f802837bdb6ec9442db5360aef490ce5a1"
+  }
+ ],
+ "deals": 2,
+ "seats": [
+  0,
+  1
+ ],
+ "seed_base": 24669500000,
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "heldout_decks": [],
+ "heldout_locked": true,
+ "heldout_registry": [
+  "02-arceus-crobat",
+  "04-absol-hoopa-darkrai",
+  "07-skarmory-stall",
+  "08-garchomp-toolbox",
+  "11-archaludon-haxorus-dragonair",
+  "12-ariados-whimsicott-ogerpon",
+  "13-a-ninetales-raticate",
+  "14-comfey-raticate-hypno",
+  "15-jolteon-oricorio-raticate",
+  "draft-C-meowstic-hatterene-v2",
+  "draft-D-entei-grimhound"
+ ],
+ "heldout_in_run": [
+  "smoke-held"
+ ],
+ "intended_lines": "rl/strength/intended_lines.json",
+ "intended_lines_sha256": "80778f3c4a58aa11d8a10fd96196110177dcc20d240d24f9351798eda4dae5a1",
+ "program": "/home/dacz8976/kx/strength",
+ "program_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2",
+ "engine": "claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec (the frozen, tested development build), built on the laptop Oct 2; km3 240/240 v the official program, self-checks km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa; KX_EXTRA_LISTS unset",
+ "pilot_provenance": "kx3 from claude/playout-pilot@d513e37b, frozen Oct 4-5",
+ "reference_provenance": "km3 in the same build; it equals the pinned km3 (step 10's 240 games field for field, self-check 81b572198c04d5d1)",
+ "planned_pairs": 8,
+ "planned_games": 64,
+ "deck_files": [
+  {
+   "name": "smoke-held",
+   "path": "decks/events/smoke-held.txt"
+  }
+ ],
+ "slow_report": {
+  "version": 1,
+  "headline": "km3 (smoke, not kx3) on smoke-held v km3 on the public panel",
+  "summary": "Stage use. 2 deals x 2 seats against each of the eight public lists. No pass or fail line; not development evidence.",
+  "deck_name": "smoke-held",
+  "deck_file": "decks/events/smoke-held.txt",
+  "deck_file_sha256": "62006b682027c4737111d789e342100db506809a71e5fe0962042bb6b77ca209",
+  "deck_file_state": "unknown (not a git repository)",
+  "deals": 2,
+  "paired": true,
+  "pin": {
+   "path": "/home/dacz8976/slow_smoke2/pin_smoke.json",
+   "sha256": "97dcb802b5a051a87664366642a0d61437bec0a37cfa01fb70f7480d06de52c5"
+  },
+  "pilot_label": "km3 (smoke, not kx3)",
+  "reference_label": "km3",
+  "panel_label": "the public panel",
+  "scrub_env_prefixes": [
+   "KX_",
+   "PDL_",
+   "DECKGYM_",
+   "JEV_",
+   "PG_"
+  ],
+  "resume_command": "python3 rl/strength/slow_report.py --dir /home/dacz8976/slow_smoke2/runs/2026-10-08_smoke-held --school-rule off",
+  "program_route": "pinned",
+  "pinned_program": "/home/dacz8976/kx/strength",
+  "pinned_program_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2",
+  "harness_source_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+  "harness_source_checkout_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+  "engine_ref": "d513e37b473f2819075e1eb2439075a8a1e65c42",
+  "engine_tree": "31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588",
+  "pin_committed": "bypassed",
+  "pin_committed_detail": "HEAD has no rl/strength/slow_report_pin.json in /mnt/c/Users/dacz8/AppData/Local/Temp/claude/C--Users-dacz8-Projects/2007fbb0-8999-4f68-b5ad-afe643bc4e30/scratchpad/sr/work/repo (not a git repository, no commit, or the file is not committed); git said: fatal: not a git repository (or any parent up to mount point /mnt); allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use)",
+  "registered_on": "Dustin-Laptop",
+  "build_record": null,
+  "school_rule": "off",
+  "school_days": "mon,tue,wed,thu,fri",
+  "expected_hours": {
+   "typical_low": 0.9411764705882353,
+   "typical_high": 1.2307692307692308,
+   "wall": 3.5555555555555554
+  }
+ }
+}

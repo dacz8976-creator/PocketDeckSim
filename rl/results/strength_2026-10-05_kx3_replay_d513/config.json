@@ -1,0 +1,30 @@
+{
+    "name":  "kx3_replay_d513",
+    "question":  "The build check the freeze needs (the k3 check pre-registration addendum, item 2). With the d513e37b program, replay 56 of run A\u0027s kx3 games (strength_2026-10-04_kx3_v_k3: deal 0, seat 0, every pair, same seeds, k3 the opponent and reference). Every game must equal run A\u0027s: winner, points, turns, plies and every logged decision. If any differs: hold the freeze and rerun the k3 check on d513e37b. Compared by compare_with_run_a.py in this folder.",
+    "pilot":  "kx3",
+    "reference":  "k3",
+    "stage":  "dev",
+    "deck_groups":  [
+                        "aggro",
+                        "setup",
+                        "draftA"
+                    ],
+    "opponent_groups":  [
+                            "panel8"
+                        ],
+    "deals":  1,
+    "seats":  [
+                  0
+              ],
+    "seed_base":  24400000000,
+    "pair_stride":  10000,
+    "threads":  2,
+    "log_level":  "deck",
+    "ext_timeout_s":  null,
+    "intended_lines":  "rl/strength/intended_lines.json",
+    "program":  "/home/dacz8976/kx/strength",
+    "program_sha256":  "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2",
+    "engine":  "claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec (the tested development build), built on the laptop Oct 2; KX_EXTRA_LISTS unset",
+    "pilot_provenance":  "kx3 from claude/playout-pilot@d513e37b",
+    "reference_provenance":  "k3 in the same build"
+}

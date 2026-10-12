@@ -1,0 +1,126 @@
+{
+ "name": "km3_v_k3",
+ "question": "Run B (km3 on the deck, k3 the opponent and the reference). The exploit check of the kx3 development result (+16.6 +- 3.5 against km3, rl/results/strength_2026-10-03_kx3_dev). kx3 plays its play-outs with km3 on both sides, so against a km3 opponent its model of the opponent is exact. Here the opponent is k3, a different pilot, on the first 3 of the same deals (same seeds, both seats). Two paired runs share their reference arm (k3 v k3): run A has kx3 on the deck, run B has km3 on the deck. The pre-registered reading is the per-deal difference between the two runs' X arms, kx3 minus km3 against k3, pooled with mean +- 1.96 sd/sqrt(n) and printed per deck; each run's own report is read too. If the gain against k3 is near the gain against km3, kx3's edge is not just exploiting km3; if it is much smaller, part of it was. REALISTIC mode; development decks only; held-out decks locked out.",
+ "repo_commit": "5aa09f60ca95f6b15c83a6dd0a6471d28ae9fed8",
+ "selfcheck": {
+  "k3": "selfcheck pilot=k3 games=12 seat0_wins=9 seat1_wins=3 ties=0 turns=121 digest=bd62fa9645b3002d",
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1"
+ },
+ "created_at": "2026-10-04T14:19:19Z",
+ "stage": "dev",
+ "repo_root": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim",
+ "pilot": "km3",
+ "reference": "k3",
+ "decks": [
+  {
+   "name": "09-mega-manectric-heliolisk",
+   "path": "decks/dustin/09-mega-manectric-heliolisk.txt",
+   "sha256": "48ca6b6c6aeefb36678abff741896ad4931ae101e9e4a698f1faefb3f3e4f91e"
+  },
+  {
+   "name": "06-mega-blaziken-tournament-list",
+   "path": "decks/dustin/06-mega-blaziken-tournament-list.txt",
+   "sha256": "69c521a33339a45633c5770b3e4acad5b8912f9367288a3044147e7fa45d5800"
+  },
+  {
+   "name": "10-xatu-oricorio-tr-weezing",
+   "path": "decks/dustin/10-xatu-oricorio-tr-weezing.txt",
+   "sha256": "a9cf8f1998a56316ceb466e7d9ec479f103c757fdfce89a91151248f641624af"
+  },
+  {
+   "name": "03-wailord-indeedee-wall",
+   "path": "decks/dustin/03-wailord-indeedee-wall.txt",
+   "sha256": "7d367c7ce81b398cc78cb1f12299b5035ba5477d8ff9e2d3baeb121a81dd57c6"
+  },
+  {
+   "name": "01-muk-glimmora-kingambit-regigigas",
+   "path": "decks/dustin/01-muk-glimmora-kingambit-regigigas.txt",
+   "sha256": "49d135c6e09e375a531e5e82e7d1c3887f9c8f1b9a9c988e587623d0bde35785"
+  },
+  {
+   "name": "05-indeedee-stoutland",
+   "path": "decks/dustin/05-indeedee-stoutland.txt",
+   "sha256": "0524e3595c49ded4c55380c72726890d8d730bf1eeb035cdc460f26b30f4339c"
+  },
+  {
+   "name": "draft-A-shark-tempo",
+   "path": "decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt",
+   "sha256": "3f39092ba6680cc5b8013b961e2f5a0f07bc779816ade7a6891983082b2e7417"
+  }
+ ],
+ "opponents": [
+  {
+   "name": "t-altaria",
+   "path": "decks/screen/opponents/t-altaria.txt",
+   "sha256": "c3a57b9c835be77ba864514e2636645885c4f22d75028c5f29e2686edcbe171f"
+  },
+  {
+   "name": "t-blaziken",
+   "path": "decks/screen/opponents/t-blaziken.txt",
+   "sha256": "d88a70e56dae8f8500d539348223b5fee5eaba705667578a8fcbca95963fd7ed"
+  },
+  {
+   "name": "t-hydreigon",
+   "path": "decks/screen/opponents/t-hydreigon.txt",
+   "sha256": "18688bd9ab09f2638538006590767a5750abe763572c0fb636c47eec93155f3b"
+  },
+  {
+   "name": "t-lucario",
+   "path": "decks/screen/opponents/t-lucario.txt",
+   "sha256": "76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634"
+  },
+  {
+   "name": "t-sceptile",
+   "path": "decks/screen/opponents/t-sceptile.txt",
+   "sha256": "fe0b7fc4de2f9dff0268a65d30dd39bfd5b73e7e5115b48e59f3975777018cd2"
+  },
+  {
+   "name": "t-suicune",
+   "path": "decks/screen/opponents/t-suicune.txt",
+   "sha256": "639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783"
+  },
+  {
+   "name": "t-vespiquen",
+   "path": "decks/screen/opponents/t-vespiquen.txt",
+   "sha256": "8356844fd2d143a44c547356ff5a32b74977478fbb1f9fc2a716a7f2233f8255"
+  },
+  {
+   "name": "t-weezing",
+   "path": "decks/screen/opponents/t-weezing.txt",
+   "sha256": "26cb869fe5f2c7cd79f8b974bf7667f802837bdb6ec9442db5360aef490ce5a1"
+  }
+ ],
+ "deals": 3,
+ "seats": [
+  0,
+  1
+ ],
+ "seed_base": 24400000000,
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "heldout_decks": [
+  "02-arceus-crobat",
+  "04-absol-hoopa-darkrai",
+  "07-skarmory-stall",
+  "08-garchomp-toolbox",
+  "11-archaludon-haxorus-dragonair",
+  "12-ariados-whimsicott-ogerpon",
+  "13-a-ninetales-raticate",
+  "14-comfey-raticate-hypno",
+  "15-jolteon-oricorio-raticate",
+  "draft-C-meowstic-hatterene-v2",
+  "draft-D-entei-grimhound"
+ ],
+ "heldout_locked": true,
+ "intended_lines": "rl/strength/intended_lines.json",
+ "intended_lines_sha256": "80778f3c4a58aa11d8a10fd96196110177dcc20d240d24f9351798eda4dae5a1",
+ "program": "/home/dacz8976/kx2/strength",
+ "program_sha256": "4f6fa88af31dd689dc76820e157aaffb6968a2d89bcb172df90354de7c061a42",
+ "engine": "claude/playout-pilot b96296a5 (fix round 2) engine tree, built on the laptop Oct 3-4; km3 240/240 v the official program, self-checks km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa (equal to the d513e37b build), suite 2,042/0; KX_EXTRA_LISTS unset",
+ "pilot_provenance": "km3 from claude/playout-pilot@b96296a5",
+ "reference_provenance": "k3 in the same build (the original depth-3 pilot, a different scoring formula from km3)",
+ "planned_pairs": 56,
+ "planned_games": 672
+}

@@ -1,0 +1,553 @@
+[
+ {
+  "id": "LR-021327-t02",
+  "game": "ladder-20260908_021327000",
+  "his_turn": 1,
+  "deck": "R0908HYPNO",
+  "turn_count": 2,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Researcher B4a 069",
+    "Comfey A3 080",
+    "Team Rocket's Rattata B4a 058",
+    "Professor's Research P-A 007",
+    "Team Rocket's Raticate ex B4a 059"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Team Rocket's Drowzee B4a 027",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    },
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Place:Team Rocket's Rattata",
+   "Place:Comfey",
+   "Play:Professor's Research",
+   "(then: Psychic from the Zone to Drowzee, bench the second Rattata that Research drew, Pokémon Flute inspected but not played, no attack)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Going second, so the Zone gives Psychic; draw Team Rocket's Raticate ex. He benches a Rattata and Comfey, plays Research (draws Pokémon Flute and a second Rattata), attaches Psychic to Drowzee, benches the second Rattata and ends the turn without attacking. Opponent hand 4 (Codex count); its discard is the one Poké Ball it played (a count, no card list); its Jigglypuff printing is a guess (HP 60 seen, attack never shown).",
+  "milestones": []
+ },
+ {
+  "id": "LR-021327-t04",
+  "game": "ladder-20260908_021327000",
+  "his_turn": 2,
+  "deck": "R0908HYPNO",
+  "turn_count": 4,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Researcher B4a 069",
+    "Team Rocket's Raticate ex B4a 059",
+    "Pokémon Flute A1a 064",
+    "Team Rocket's Raticate ex B4a 059"
+   ],
+   "discard": [
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Team Rocket's Drowzee B4a 027",
+     "hp": 60,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 70
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Team Rocket's Raticate ex@2",
+   "(Thieving Incisors moves the opponent Active's Psychic to the new Raticate ex)",
+   "Play:Team Rocket's Researcher",
+   "(coin flips: tails at once, no card found)",
+   "Attach:1Psychic@0 zone",
+   "Attack:Mumble"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw the second Raticate ex. The opponent attached a Psychic to its Active Jigglypuff and passed (hand 5, Codex count). He evolves the center Rattata into Raticate ex (Thieving Incisors takes that Psychic), plays Researcher (tails, nothing found), attaches Psychic to Drowzee and Mumble hits for 40 (Jigglypuff 60 -> 20).",
+  "milestones": []
+ },
+ {
+  "id": "LR-021327-t06",
+  "game": "ladder-20260908_021327000",
+  "his_turn": 3,
+  "deck": "R0908HYPNO",
+  "turn_count": 6,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Pokémon Flute A1a 064",
+    "Team Rocket's Raticate ex B4a 059",
+    "Professor's Research P-A 007"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Team Rocket's Researcher B4a 069"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Team Rocket's Drowzee B4a 027",
+     "hp": 60,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 70
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 1,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 20,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Evolve:Team Rocket's Raticate ex@3",
+   "(Thieving Incisors takes the opponent Active's Psychic)",
+   "Play:Professor's Research",
+   "(then: Psychic from the Zone to the center Raticate ex, Mumble 40 knocks out the 20-HP Jigglypuff and he scores the first point)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Professor's Research. The opponent attached another Psychic to its Active Jigglypuff (20 HP left; hand 6, Codex count) and passed. He evolves the right Rattata into Raticate ex (Thieving Incisors takes the Psychic), plays Research (draws Sightseer and the second Drowzee), Psychic to the center Raticate ex, Mumble knocks out the Jigglypuff (1-0).",
+  "milestones": []
+ },
+ {
+  "id": "LR-021327-t08",
+  "game": "ladder-20260908_021327000",
+  "his_turn": 4,
+  "deck": "R0908HYPNO",
+  "turn_count": 8,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Pokémon Flute A1a 064",
+    "Sightseer B2 150",
+    "Team Rocket's Drowzee B4a 027",
+    "Copycat B1 225"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Team Rocket's Drowzee B4a 027",
+     "hp": 60,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 70
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard_n": 3,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    },
+    {
+     "card": "Mewtwo ex A1 129",
+     "hp": 150,
+     "energy": [
+      "Psychic"
+     ]
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Sightseer",
+   "(takes Team Rocket's Hypno from the top four)",
+   "Evolve:Team Rocket's Hypno@0",
+   "Play:Pokémon Flute",
+   "(returns the knocked-out Jigglypuff to the opponent's Bench)",
+   "Attach:1Psychic@1 zone",
+   "Attack:Entrap",
+   "(Entrap drags the benched Mewtwo ex Active for 50; Copycat and the second Drowzee stay in hand)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Copycat. The opponent promoted its second Jigglypuff and benched a Mewtwo ex with one Psychic (hand 6, Codex count). He plays Sightseer (finds Hypno), evolves Drowzee, plays Flute (the knocked-out Jigglypuff comes back to the opponent's Bench), puts the Zone Psychic on Comfey and Entraps the Mewtwo ex Active for 50 (150 -> 100).",
+  "milestones": []
+ },
+ {
+  "id": "LR-021327-t10",
+  "game": "ladder-20260908_021327000",
+  "his_turn": 5,
+  "deck": "R0908HYPNO",
+  "turn_count": 10,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Drowzee B4a 027",
+    "Copycat B1 225",
+    "Team Rocket's Goo-zooka B4a 068"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007",
+    "Sightseer B2 150",
+    "Pokémon Flute A1a 064"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Team Rocket's Hypno B4a 028",
+     "hp": 90,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Drowzee B4a 027"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 70,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 3,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mewtwo ex A1 129",
+     "hp": 110,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "tools": [
+      "Leftovers A3b 067"
+     ]
+    },
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    },
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Team Rocket's Goo-zooka",
+   "Play:Copycat",
+   "(then: Copycat draws Elegant Cape, two Poké Balls, Hypno, Drowzee; both Poké Balls find no Basic in the deck; Retreat:2 (Hypno retreats, two Psychic discarded, the center Raticate ex becomes Active); Elegant Cape on that Raticate ex; Zone Psychic to the benched Hypno; Attack:Boost Dash 70, Mewtwo ex 110 -> 40)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Goo-zooka. The opponent's Team Rocket's Master Plan left its own Mewtwo ex Confused (Flower Shield kept Hypno clear), it attached a second Psychic and Leftovers, and the confused Psychic Sphere failed (110 HP after Leftovers); the Confusion is not representable here and Goo-zooka is not in force yet (the ledger lists it at the turn start, a recording quirk). Opponent hand 5 (Codex count, matches the Copycat's five cards).",
+  "milestones": []
+ },
+ {
+  "id": "LR-021327-t12",
+  "game": "ladder-20260908_021327000",
+  "his_turn": 6,
+  "deck": "R0908HYPNO",
+  "turn_count": 12,
+  "points": [
+   1,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Team Rocket's Hypno B4a 028",
+    "Team Rocket's Drowzee B4a 027",
+    "Cyrus A2 150"
+   ],
+   "discard": [
+    "Professor's Research P-A 007",
+    "Team Rocket's Researcher B4a 069",
+    "Professor's Research P-A 007",
+    "Sightseer B2 150",
+    "Pokémon Flute A1a 064",
+    "Team Rocket's Goo-zooka B4a 068",
+    "Copycat B1 225",
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [
+    "Psychic",
+    "Psychic"
+   ],
+   "board": [
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 150,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    },
+    {
+     "card": "Comfey A3 080",
+     "hp": 70,
+     "energy": [
+      "Psychic"
+     ]
+    },
+    {
+     "card": "Team Rocket's Hypno B4a 028",
+     "hp": 90,
+     "energy": [
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Drowzee B4a 027"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Psychic"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    }
+   ],
+   "energy_now": "Psychic",
+   "energy_next": "Psychic"
+  },
+  "opp": {
+   "hand_count": 5,
+   "discard_n": 4,
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mewtwo ex A1 129",
+     "hp": 70,
+     "energy": [
+      "Psychic",
+      "Psychic"
+     ],
+     "tools": [
+      "Leftovers A3b 067"
+     ]
+    },
+    {
+     "card": "Team Rocket's Slowpoke B4a 025",
+     "hp": 80
+    },
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    },
+    {
+     "card": "Jigglypuff A1 193",
+     "hp": 60
+    }
+   ],
+   "energy_next": "Psychic"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "(no play: he inspected the Active Raticate ex's attack menu and Cyrus, then the 'End your turn? Energy can be attached' warning appeared; the opponent conceded before any response)"
+  ],
+  "hand_source": "codex",
+  "list_source": "reconstructed: 20 of 20 cards seen, 0 inferred (see reconstructed_decks/R0908HYPNO.json)",
+  "approximate": true,
+  "notes": "Draw Cyrus (cannot be played: no damaged opposing Benched Pokémon). The opponent benched Team Rocket's Slowpoke, healed the Mewtwo ex with Potion (40 -> 60, Leftovers +10 = 70) and its Confused attack failed; the Mewtwo ex is still Confused (not representable). The opponent conceded before Dustin played anything, so his plan is empty by evidence; opponent hand counted 5 by Codex (bookkeeping gives 4). Boost Dash (70) from the Active Raticate ex (two Psychic) would have knocked out the 70-HP Mewtwo ex: two points, 1 -> 3, the game. The empty plan only means nothing was resolved before the concession (he had the attack menu open), not that he chose to pass.",
+  "milestones": [
+   "recognising an immediate win"
+  ]
+ }
+]

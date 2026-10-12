@@ -1,0 +1,38 @@
+PGTICK 68 (the decision asked about; gates off for it: [])
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack(Attack { energy_required: [Grass, Colorless], title: "Grass Knot", fixed_damage: 40, effect: Some("This attack does 30 more damage for each Energy in your opponent's Active Pokémon's Retreat Cost.") })
+PGCAND Play { trainer_card: P-A 007 Professor's Research }
+PGDUMP actor=1 candidates=4
+PGDUMP       -283.199999999999989 EndTurn
+PGDUMP        367.800000000000011 UseStadium
+PGDUMP        316.800000000000011 Attack(Attack { energy_required: [Grass, Colorless], title: "Grass Knot", fixed_damage: 40, effect: Some("This attack does 30 more damage for each Energy in your opponent's Active Pokémon's Retreat Cost.") })
+PGDUMP      10819.100000000000364 Play { trainer_card: P-A 007 Professor's Research }
+PGTREE candidate 0
+PGTREE A EndTurn value=-283.200000
+PGTREE   S actor=0 p=1.0000 value=-283.200000 (0 moves)
+PGTREE candidate 1
+PGTREE A UseStadium value=367.800000
+PGTREE   S actor=1 p=1.0000 value=367.800000 (4 moves)
+PGTREE     A Place(Pokemon(B1 015 Cottonee), 1) value=367.800000
+PGTREE       S actor=1 p=1.0000 value=367.800000 (3 moves)
+PGTREE         A Attack(Attack { energy_required: [Grass, Colorless], title: "Grass Knot", fixed_damage: 40, effect: Some("This attack does 30 more damage for each Energy in your opponent's Active Pokémon's Retreat Cost.") }) value=367.800000
+PGTREE           S actor=1 p=1.0000 value=367.800000 (1 moves)
+PGTREE             A EndTurn value=367.800000
+PGTREE               S actor=0 p=1.0000 value=367.800000 (0 moves)
+PGTREE candidate 2
+PGTREE A Attack(Attack { energy_required: [Grass, Colorless], title: "Grass Knot", fixed_damage: 40, effect: Some("This attack does 30 more damage for each Energy in your opponent's Active Pokémon's Retreat Cost.") }) value=316.800000
+PGTREE   S actor=1 p=1.0000 value=316.800000 (1 moves)
+PGTREE     A EndTurn value=316.800000
+PGTREE       S actor=0 p=1.0000 value=316.800000 (0 moves)
+PGTREE candidate 3
+PGTREE A Play { trainer_card: P-A 007 Professor's Research } value=10819.100000
+PGTREE   S actor=1 p=1.0000 value=10819.100000 (4 moves)
+PGTREE     A Evolve { evolution: Pokemon(B1a 006 Ariados), in_play_idx: 3, from_deck: false } value=10819.100000
+PGTREE       S actor=1 p=1.0000 value=10819.100000 (3 moves)
+PGTREE         A Attack(Attack { energy_required: [Grass, Colorless], title: "Grass Knot", fixed_damage: 40, effect: Some("This attack does 30 more damage for each Energy in your opponent's Active Pokémon's Retreat Cost.") }) value=10819.100000
+PGTREE           S actor=0 p=1.0000 value=10819.100000 (1 moves)
+PGTREE             A Promote { player: 0, in_play_idx: 2 } value=10819.100000
+PGTREE               S actor=1 p=1.0000 value=10819.100000 (1 moves)
+PGTREE                 A EndTurn value=10819.100000
+deal 449, tick 68: chose Play { trainer_card: P-A 007 Professor's Research }

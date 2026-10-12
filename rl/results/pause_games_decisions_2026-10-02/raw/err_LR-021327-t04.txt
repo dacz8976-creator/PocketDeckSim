@@ -1,0 +1,839 @@
+PGSTEP LR-021327-t04 seed 1 free 0
+PGDUMP actor=0 candidates=14
+PGDUMP        389.100000000000023 EndTurn
+PGDUMP       1608.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1468.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP        528.000000000000000 Play:Pokémon Flute
+PGDUMP       1398.849999999999682 Play:Team Rocket's Researcher
+PGDUMP        898.100000000000023 Retreat:1
+PGDUMP       1139.099999999999909 Retreat:2
+PGDUMP       1139.099999999999909 Retreat:3
+PGSTEP LR-021327-t04 seed 1 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP       1477.099999999999909 Noop
+PGDUMP       1788.099999999999909 Ability@3
+PGSTEP LR-021327-t04 seed 1 free 2
+PGDUMP actor=0 candidates=11
+PGDUMP       1398.099999999999909 EndTurn
+PGDUMP       1867.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1593.266666666666197 Attach:1Psychic@1 zone
+PGDUMP       1597.849999999999909 Attach:1Psychic@2 zone
+PGDUMP      11769.200000000000728 Attach:1Psychic@3 zone
+PGDUMP       1867.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1447.000000000000000 Play:Pokémon Flute
+PGDUMP       1846.349999999999682 Play:Team Rocket's Researcher
+PGDUMP       1297.099999999999909 Retreat:1
+PGDUMP       1438.099999999999909 Retreat:2
+PGDUMP      11769.200000000000728 Retreat:3
+PGSTEP LR-021327-t04 seed 1 free 3
+PGDUMP actor=0 candidates=8
+PGDUMP       1139.099999999999909 EndTurn
+PGDUMP      11948.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1388.849999999999909 Attach:1Psychic@1 zone
+PGDUMP       1438.849999999999909 Attach:1Psychic@2 zone
+PGDUMP       1378.849999999999909 Attach:1Psychic@3 zone
+PGDUMP      11948.200000000000728 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1438.000000000000000 Play:Pokémon Flute
+PGDUMP      11769.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 1 free 4
+PGDUMP actor=0 candidates=7
+PGDUMP       1318.099999999999909 EndTurn
+PGDUMP      11948.949999999998909 Attach:1Psychic@0 zone
+PGDUMP       1400.933333333333394 Attach:1Psychic@1 zone
+PGDUMP       1450.933333333333167 Attach:1Psychic@2 zone
+PGDUMP       1403.433333333333167 Attach:1Psychic@3 zone
+PGDUMP       1617.000000000000000 Play:Pokémon Flute
+PGDUMP      11948.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 1 free 5
+PGDUMP actor=0 candidates=6
+PGDUMP       1317.099999999999909 EndTurn
+PGDUMP      11947.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1387.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1437.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1377.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1616.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 1 free 6
+PGDUMP actor=0 candidates=3
+PGDUMP       1787.099999999999909 EndTurn
+PGDUMP      11947.200000000000728 Attack:Boost Dash
+PGDUMP      11766.100000000000364 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 2 free 0
+PGDUMP actor=0 candidates=14
+PGDUMP        389.100000000000023 EndTurn
+PGDUMP       1608.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1468.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP        528.000000000000000 Play:Pokémon Flute
+PGDUMP       1398.849999999999682 Play:Team Rocket's Researcher
+PGDUMP        898.100000000000023 Retreat:1
+PGDUMP       1139.099999999999909 Retreat:2
+PGDUMP       1139.099999999999909 Retreat:3
+PGSTEP LR-021327-t04 seed 2 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP       1477.099999999999909 Noop
+PGDUMP       1788.099999999999909 Ability@3
+PGSTEP LR-021327-t04 seed 2 free 2
+PGDUMP actor=0 candidates=11
+PGDUMP       1398.099999999999909 EndTurn
+PGDUMP       1867.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1593.266666666666197 Attach:1Psychic@1 zone
+PGDUMP       1597.849999999999909 Attach:1Psychic@2 zone
+PGDUMP      11769.200000000000728 Attach:1Psychic@3 zone
+PGDUMP       1867.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1447.000000000000000 Play:Pokémon Flute
+PGDUMP       1846.349999999999682 Play:Team Rocket's Researcher
+PGDUMP       1297.099999999999909 Retreat:1
+PGDUMP       1438.099999999999909 Retreat:2
+PGDUMP      11769.200000000000728 Retreat:3
+PGSTEP LR-021327-t04 seed 2 free 3
+PGDUMP actor=0 candidates=8
+PGDUMP       1139.099999999999909 EndTurn
+PGDUMP      11948.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1388.849999999999909 Attach:1Psychic@1 zone
+PGDUMP       1438.849999999999909 Attach:1Psychic@2 zone
+PGDUMP       1378.849999999999909 Attach:1Psychic@3 zone
+PGDUMP      11948.200000000000728 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1438.000000000000000 Play:Pokémon Flute
+PGDUMP      11769.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 2 free 4
+PGDUMP actor=0 candidates=7
+PGDUMP       1318.099999999999909 EndTurn
+PGDUMP      11948.949999999998909 Attach:1Psychic@0 zone
+PGDUMP       1400.933333333333394 Attach:1Psychic@1 zone
+PGDUMP       1450.933333333333167 Attach:1Psychic@2 zone
+PGDUMP       1403.433333333333167 Attach:1Psychic@3 zone
+PGDUMP       1617.000000000000000 Play:Pokémon Flute
+PGDUMP      11948.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 2 free 5
+PGDUMP actor=0 candidates=8
+PGDUMP       1323.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1422.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1472.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1442.099999999999909 Attach:1Psychic@3 zone
+PGDUMP      11982.200000000000728 Evolve:Team Rocket's Hypno@3
+PGDUMP      11982.200000000000728 Evolve:Team Rocket's Hypno@3
+PGDUMP       1622.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 2 free 6
+PGDUMP actor=0 candidates=6
+PGDUMP       1352.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1422.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1472.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1442.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1651.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 2 free 7
+PGDUMP actor=0 candidates=3
+PGDUMP       1822.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attack:Boost Dash
+PGDUMP      11801.100000000000364 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 3 free 0
+PGDUMP actor=0 candidates=14
+PGDUMP        389.100000000000023 EndTurn
+PGDUMP       1608.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1468.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP        528.000000000000000 Play:Pokémon Flute
+PGDUMP       1398.849999999999682 Play:Team Rocket's Researcher
+PGDUMP        898.100000000000023 Retreat:1
+PGDUMP       1139.099999999999909 Retreat:2
+PGDUMP       1139.099999999999909 Retreat:3
+PGSTEP LR-021327-t04 seed 3 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP       1477.099999999999909 Noop
+PGDUMP       1788.099999999999909 Ability@3
+PGSTEP LR-021327-t04 seed 3 free 2
+PGDUMP actor=0 candidates=11
+PGDUMP       1398.099999999999909 EndTurn
+PGDUMP       1867.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1593.266666666666197 Attach:1Psychic@1 zone
+PGDUMP       1597.849999999999909 Attach:1Psychic@2 zone
+PGDUMP      11769.200000000000728 Attach:1Psychic@3 zone
+PGDUMP       1867.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1447.000000000000000 Play:Pokémon Flute
+PGDUMP       1846.349999999999682 Play:Team Rocket's Researcher
+PGDUMP       1297.099999999999909 Retreat:1
+PGDUMP       1438.099999999999909 Retreat:2
+PGDUMP      11769.200000000000728 Retreat:3
+PGSTEP LR-021327-t04 seed 3 free 3
+PGDUMP actor=0 candidates=8
+PGDUMP       1139.099999999999909 EndTurn
+PGDUMP      11948.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1388.849999999999909 Attach:1Psychic@1 zone
+PGDUMP       1438.849999999999909 Attach:1Psychic@2 zone
+PGDUMP       1378.849999999999909 Attach:1Psychic@3 zone
+PGDUMP      11948.200000000000728 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1438.000000000000000 Play:Pokémon Flute
+PGDUMP      11769.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 3 free 4
+PGDUMP actor=0 candidates=7
+PGDUMP       1318.099999999999909 EndTurn
+PGDUMP      11948.949999999998909 Attach:1Psychic@0 zone
+PGDUMP       1400.933333333333394 Attach:1Psychic@1 zone
+PGDUMP       1450.933333333333167 Attach:1Psychic@2 zone
+PGDUMP       1403.433333333333167 Attach:1Psychic@3 zone
+PGDUMP       1617.000000000000000 Play:Pokémon Flute
+PGDUMP      11948.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 3 free 5
+PGDUMP actor=0 candidates=8
+PGDUMP       1323.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1422.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1472.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1442.099999999999909 Attach:1Psychic@3 zone
+PGDUMP      11982.200000000000728 Evolve:Team Rocket's Hypno@3
+PGDUMP      11982.200000000000728 Evolve:Team Rocket's Hypno@3
+PGDUMP       1622.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 3 free 6
+PGDUMP actor=0 candidates=6
+PGDUMP       1352.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1422.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1472.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1442.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1651.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 3 free 7
+PGDUMP actor=0 candidates=3
+PGDUMP       1822.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attack:Boost Dash
+PGDUMP      11801.100000000000364 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 4 free 0
+PGDUMP actor=0 candidates=14
+PGDUMP        389.100000000000023 EndTurn
+PGDUMP       1608.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1468.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP        528.000000000000000 Play:Pokémon Flute
+PGDUMP       1398.849999999999682 Play:Team Rocket's Researcher
+PGDUMP        898.100000000000023 Retreat:1
+PGDUMP       1139.099999999999909 Retreat:2
+PGDUMP       1139.099999999999909 Retreat:3
+PGSTEP LR-021327-t04 seed 4 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP       1477.099999999999909 Noop
+PGDUMP       1788.099999999999909 Ability@3
+PGSTEP LR-021327-t04 seed 4 free 2
+PGDUMP actor=0 candidates=11
+PGDUMP       1398.099999999999909 EndTurn
+PGDUMP       1867.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1593.266666666666197 Attach:1Psychic@1 zone
+PGDUMP       1597.849999999999909 Attach:1Psychic@2 zone
+PGDUMP      11769.200000000000728 Attach:1Psychic@3 zone
+PGDUMP       1867.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1447.000000000000000 Play:Pokémon Flute
+PGDUMP       1846.349999999999682 Play:Team Rocket's Researcher
+PGDUMP       1297.099999999999909 Retreat:1
+PGDUMP       1438.099999999999909 Retreat:2
+PGDUMP      11769.200000000000728 Retreat:3
+PGSTEP LR-021327-t04 seed 4 free 3
+PGDUMP actor=0 candidates=8
+PGDUMP       1139.099999999999909 EndTurn
+PGDUMP      11948.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1388.849999999999909 Attach:1Psychic@1 zone
+PGDUMP       1438.849999999999909 Attach:1Psychic@2 zone
+PGDUMP       1378.849999999999909 Attach:1Psychic@3 zone
+PGDUMP      11948.200000000000728 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1438.000000000000000 Play:Pokémon Flute
+PGDUMP      11769.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 4 free 4
+PGDUMP actor=0 candidates=7
+PGDUMP       1318.099999999999909 EndTurn
+PGDUMP      11948.949999999998909 Attach:1Psychic@0 zone
+PGDUMP       1400.933333333333394 Attach:1Psychic@1 zone
+PGDUMP       1450.933333333333167 Attach:1Psychic@2 zone
+PGDUMP       1403.433333333333167 Attach:1Psychic@3 zone
+PGDUMP       1617.000000000000000 Play:Pokémon Flute
+PGDUMP      11948.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 4 free 5
+PGDUMP actor=0 candidates=6
+PGDUMP       1317.099999999999909 EndTurn
+PGDUMP      11947.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1387.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1437.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1377.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1616.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 4 free 6
+PGDUMP actor=0 candidates=3
+PGDUMP       1787.099999999999909 EndTurn
+PGDUMP      11947.200000000000728 Attack:Boost Dash
+PGDUMP      11766.100000000000364 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 5 free 0
+PGDUMP actor=0 candidates=14
+PGDUMP        389.100000000000023 EndTurn
+PGDUMP       1608.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1468.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP        528.000000000000000 Play:Pokémon Flute
+PGDUMP       1398.849999999999682 Play:Team Rocket's Researcher
+PGDUMP        898.100000000000023 Retreat:1
+PGDUMP       1139.099999999999909 Retreat:2
+PGDUMP       1139.099999999999909 Retreat:3
+PGSTEP LR-021327-t04 seed 5 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP       1477.099999999999909 Noop
+PGDUMP       1788.099999999999909 Ability@3
+PGSTEP LR-021327-t04 seed 5 free 2
+PGDUMP actor=0 candidates=11
+PGDUMP       1398.099999999999909 EndTurn
+PGDUMP       1867.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1593.266666666666197 Attach:1Psychic@1 zone
+PGDUMP       1597.849999999999909 Attach:1Psychic@2 zone
+PGDUMP      11769.200000000000728 Attach:1Psychic@3 zone
+PGDUMP       1867.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1447.000000000000000 Play:Pokémon Flute
+PGDUMP       1846.349999999999682 Play:Team Rocket's Researcher
+PGDUMP       1297.099999999999909 Retreat:1
+PGDUMP       1438.099999999999909 Retreat:2
+PGDUMP      11769.200000000000728 Retreat:3
+PGSTEP LR-021327-t04 seed 5 free 3
+PGDUMP actor=0 candidates=8
+PGDUMP       1139.099999999999909 EndTurn
+PGDUMP      11948.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1388.849999999999909 Attach:1Psychic@1 zone
+PGDUMP       1438.849999999999909 Attach:1Psychic@2 zone
+PGDUMP       1378.849999999999909 Attach:1Psychic@3 zone
+PGDUMP      11948.200000000000728 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1438.000000000000000 Play:Pokémon Flute
+PGDUMP      11769.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 5 free 4
+PGDUMP actor=0 candidates=7
+PGDUMP       1318.099999999999909 EndTurn
+PGDUMP      11948.949999999998909 Attach:1Psychic@0 zone
+PGDUMP       1400.933333333333394 Attach:1Psychic@1 zone
+PGDUMP       1450.933333333333167 Attach:1Psychic@2 zone
+PGDUMP       1403.433333333333167 Attach:1Psychic@3 zone
+PGDUMP       1617.000000000000000 Play:Pokémon Flute
+PGDUMP      11948.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 5 free 5
+PGDUMP actor=0 candidates=8
+PGDUMP       1323.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1422.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1472.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1442.099999999999909 Attach:1Psychic@3 zone
+PGDUMP      11982.200000000000728 Evolve:Team Rocket's Hypno@3
+PGDUMP      11982.200000000000728 Evolve:Team Rocket's Hypno@3
+PGDUMP       1622.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 5 free 6
+PGDUMP actor=0 candidates=6
+PGDUMP       1352.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1422.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1472.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1442.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1651.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 5 free 7
+PGDUMP actor=0 candidates=3
+PGDUMP       1822.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attack:Boost Dash
+PGDUMP      11801.100000000000364 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 6 free 0
+PGDUMP actor=0 candidates=14
+PGDUMP        389.100000000000023 EndTurn
+PGDUMP       1608.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1468.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP        528.000000000000000 Play:Pokémon Flute
+PGDUMP       1398.849999999999682 Play:Team Rocket's Researcher
+PGDUMP        898.100000000000023 Retreat:1
+PGDUMP       1139.099999999999909 Retreat:2
+PGDUMP       1139.099999999999909 Retreat:3
+PGSTEP LR-021327-t04 seed 6 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP       1477.099999999999909 Noop
+PGDUMP       1788.099999999999909 Ability@3
+PGSTEP LR-021327-t04 seed 6 free 2
+PGDUMP actor=0 candidates=11
+PGDUMP       1398.099999999999909 EndTurn
+PGDUMP       1867.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1593.266666666666197 Attach:1Psychic@1 zone
+PGDUMP       1597.849999999999909 Attach:1Psychic@2 zone
+PGDUMP      11769.200000000000728 Attach:1Psychic@3 zone
+PGDUMP       1867.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1447.000000000000000 Play:Pokémon Flute
+PGDUMP       1846.349999999999682 Play:Team Rocket's Researcher
+PGDUMP       1297.099999999999909 Retreat:1
+PGDUMP       1438.099999999999909 Retreat:2
+PGDUMP      11769.200000000000728 Retreat:3
+PGSTEP LR-021327-t04 seed 6 free 3
+PGDUMP actor=0 candidates=8
+PGDUMP       1139.099999999999909 EndTurn
+PGDUMP      11948.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1388.849999999999909 Attach:1Psychic@1 zone
+PGDUMP       1438.849999999999909 Attach:1Psychic@2 zone
+PGDUMP       1378.849999999999909 Attach:1Psychic@3 zone
+PGDUMP      11948.200000000000728 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1438.000000000000000 Play:Pokémon Flute
+PGDUMP      11769.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 6 free 4
+PGDUMP actor=0 candidates=7
+PGDUMP       1318.099999999999909 EndTurn
+PGDUMP      11948.949999999998909 Attach:1Psychic@0 zone
+PGDUMP       1400.933333333333394 Attach:1Psychic@1 zone
+PGDUMP       1450.933333333333167 Attach:1Psychic@2 zone
+PGDUMP       1403.433333333333167 Attach:1Psychic@3 zone
+PGDUMP       1617.000000000000000 Play:Pokémon Flute
+PGDUMP      11948.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 6 free 5
+PGDUMP actor=0 candidates=6
+PGDUMP       1319.099999999999909 EndTurn
+PGDUMP      11949.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1389.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1439.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1379.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 6 free 6
+PGDUMP actor=0 candidates=3
+PGDUMP       1789.099999999999909 EndTurn
+PGDUMP      11949.200000000000728 Attack:Boost Dash
+PGDUMP      11768.100000000000364 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 7 free 0
+PGDUMP actor=0 candidates=14
+PGDUMP        389.100000000000023 EndTurn
+PGDUMP       1608.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1468.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP        528.000000000000000 Play:Pokémon Flute
+PGDUMP       1398.849999999999682 Play:Team Rocket's Researcher
+PGDUMP        898.100000000000023 Retreat:1
+PGDUMP       1139.099999999999909 Retreat:2
+PGDUMP       1139.099999999999909 Retreat:3
+PGSTEP LR-021327-t04 seed 7 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP       1477.099999999999909 Noop
+PGDUMP       1788.099999999999909 Ability@3
+PGSTEP LR-021327-t04 seed 7 free 2
+PGDUMP actor=0 candidates=11
+PGDUMP       1398.099999999999909 EndTurn
+PGDUMP       1867.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1593.266666666666197 Attach:1Psychic@1 zone
+PGDUMP       1597.849999999999909 Attach:1Psychic@2 zone
+PGDUMP      11769.200000000000728 Attach:1Psychic@3 zone
+PGDUMP       1867.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1447.000000000000000 Play:Pokémon Flute
+PGDUMP       1846.349999999999682 Play:Team Rocket's Researcher
+PGDUMP       1297.099999999999909 Retreat:1
+PGDUMP       1438.099999999999909 Retreat:2
+PGDUMP      11769.200000000000728 Retreat:3
+PGSTEP LR-021327-t04 seed 7 free 3
+PGDUMP actor=0 candidates=8
+PGDUMP       1139.099999999999909 EndTurn
+PGDUMP      11948.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1388.849999999999909 Attach:1Psychic@1 zone
+PGDUMP       1438.849999999999909 Attach:1Psychic@2 zone
+PGDUMP       1378.849999999999909 Attach:1Psychic@3 zone
+PGDUMP      11948.200000000000728 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1438.000000000000000 Play:Pokémon Flute
+PGDUMP      11769.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 7 free 4
+PGDUMP actor=0 candidates=7
+PGDUMP       1318.099999999999909 EndTurn
+PGDUMP      11948.949999999998909 Attach:1Psychic@0 zone
+PGDUMP       1400.933333333333394 Attach:1Psychic@1 zone
+PGDUMP       1450.933333333333167 Attach:1Psychic@2 zone
+PGDUMP       1403.433333333333167 Attach:1Psychic@3 zone
+PGDUMP       1617.000000000000000 Play:Pokémon Flute
+PGDUMP      11948.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 7 free 5
+PGDUMP actor=0 candidates=8
+PGDUMP       1323.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1422.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1472.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1442.099999999999909 Attach:1Psychic@3 zone
+PGDUMP      11982.200000000000728 Evolve:Team Rocket's Hypno@3
+PGDUMP      11982.200000000000728 Evolve:Team Rocket's Hypno@3
+PGDUMP       1622.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 7 free 6
+PGDUMP actor=0 candidates=6
+PGDUMP       1352.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1422.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1472.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1442.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1651.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 7 free 7
+PGDUMP actor=0 candidates=3
+PGDUMP       1822.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attack:Boost Dash
+PGDUMP      11801.100000000000364 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 8 free 0
+PGDUMP actor=0 candidates=14
+PGDUMP        389.100000000000023 EndTurn
+PGDUMP       1608.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1468.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP        528.000000000000000 Play:Pokémon Flute
+PGDUMP       1398.849999999999682 Play:Team Rocket's Researcher
+PGDUMP        898.100000000000023 Retreat:1
+PGDUMP       1139.099999999999909 Retreat:2
+PGDUMP       1139.099999999999909 Retreat:3
+PGSTEP LR-021327-t04 seed 8 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP       1477.099999999999909 Noop
+PGDUMP       1788.099999999999909 Ability@3
+PGSTEP LR-021327-t04 seed 8 free 2
+PGDUMP actor=0 candidates=11
+PGDUMP       1398.099999999999909 EndTurn
+PGDUMP       1867.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1593.266666666666197 Attach:1Psychic@1 zone
+PGDUMP       1597.849999999999909 Attach:1Psychic@2 zone
+PGDUMP      11769.200000000000728 Attach:1Psychic@3 zone
+PGDUMP       1867.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1447.000000000000000 Play:Pokémon Flute
+PGDUMP       1846.349999999999682 Play:Team Rocket's Researcher
+PGDUMP       1297.099999999999909 Retreat:1
+PGDUMP       1438.099999999999909 Retreat:2
+PGDUMP      11769.200000000000728 Retreat:3
+PGSTEP LR-021327-t04 seed 8 free 3
+PGDUMP actor=0 candidates=8
+PGDUMP       1139.099999999999909 EndTurn
+PGDUMP      11948.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1388.849999999999909 Attach:1Psychic@1 zone
+PGDUMP       1438.849999999999909 Attach:1Psychic@2 zone
+PGDUMP       1378.849999999999909 Attach:1Psychic@3 zone
+PGDUMP      11948.200000000000728 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1438.000000000000000 Play:Pokémon Flute
+PGDUMP      11769.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 8 free 4
+PGDUMP actor=0 candidates=7
+PGDUMP       1318.099999999999909 EndTurn
+PGDUMP      11948.949999999998909 Attach:1Psychic@0 zone
+PGDUMP       1400.933333333333394 Attach:1Psychic@1 zone
+PGDUMP       1450.933333333333167 Attach:1Psychic@2 zone
+PGDUMP       1403.433333333333167 Attach:1Psychic@3 zone
+PGDUMP       1617.000000000000000 Play:Pokémon Flute
+PGDUMP      11948.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 8 free 5
+PGDUMP actor=0 candidates=6
+PGDUMP       1319.099999999999909 EndTurn
+PGDUMP      11949.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1389.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1439.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1379.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 8 free 6
+PGDUMP actor=0 candidates=3
+PGDUMP       1789.099999999999909 EndTurn
+PGDUMP      11949.200000000000728 Attack:Boost Dash
+PGDUMP      11768.100000000000364 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 9 free 0
+PGDUMP actor=0 candidates=14
+PGDUMP        389.100000000000023 EndTurn
+PGDUMP       1608.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1468.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP        528.000000000000000 Play:Pokémon Flute
+PGDUMP       1398.849999999999682 Play:Team Rocket's Researcher
+PGDUMP        898.100000000000023 Retreat:1
+PGDUMP       1139.099999999999909 Retreat:2
+PGDUMP       1139.099999999999909 Retreat:3
+PGSTEP LR-021327-t04 seed 9 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP       1477.099999999999909 Noop
+PGDUMP       1788.099999999999909 Ability@3
+PGSTEP LR-021327-t04 seed 9 free 2
+PGDUMP actor=0 candidates=11
+PGDUMP       1398.099999999999909 EndTurn
+PGDUMP       1867.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1593.266666666666197 Attach:1Psychic@1 zone
+PGDUMP       1597.849999999999909 Attach:1Psychic@2 zone
+PGDUMP      11769.200000000000728 Attach:1Psychic@3 zone
+PGDUMP       1867.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1447.000000000000000 Play:Pokémon Flute
+PGDUMP       1846.349999999999682 Play:Team Rocket's Researcher
+PGDUMP       1297.099999999999909 Retreat:1
+PGDUMP       1438.099999999999909 Retreat:2
+PGDUMP      11769.200000000000728 Retreat:3
+PGSTEP LR-021327-t04 seed 9 free 3
+PGDUMP actor=0 candidates=8
+PGDUMP       1139.099999999999909 EndTurn
+PGDUMP      11948.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1388.849999999999909 Attach:1Psychic@1 zone
+PGDUMP       1438.849999999999909 Attach:1Psychic@2 zone
+PGDUMP       1378.849999999999909 Attach:1Psychic@3 zone
+PGDUMP      11948.200000000000728 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1438.000000000000000 Play:Pokémon Flute
+PGDUMP      11769.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 9 free 4
+PGDUMP actor=0 candidates=7
+PGDUMP       1318.099999999999909 EndTurn
+PGDUMP      11948.949999999998909 Attach:1Psychic@0 zone
+PGDUMP       1400.933333333333394 Attach:1Psychic@1 zone
+PGDUMP       1450.933333333333167 Attach:1Psychic@2 zone
+PGDUMP       1403.433333333333167 Attach:1Psychic@3 zone
+PGDUMP       1617.000000000000000 Play:Pokémon Flute
+PGDUMP      11948.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 9 free 5
+PGDUMP actor=0 candidates=6
+PGDUMP       1317.099999999999909 EndTurn
+PGDUMP      11947.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1387.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1437.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1377.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1616.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 9 free 6
+PGDUMP actor=0 candidates=3
+PGDUMP       1787.099999999999909 EndTurn
+PGDUMP      11947.200000000000728 Attack:Boost Dash
+PGDUMP      11766.100000000000364 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 10 free 0
+PGDUMP actor=0 candidates=14
+PGDUMP        389.100000000000023 EndTurn
+PGDUMP       1608.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1468.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP        528.000000000000000 Play:Pokémon Flute
+PGDUMP       1398.849999999999682 Play:Team Rocket's Researcher
+PGDUMP        898.100000000000023 Retreat:1
+PGDUMP       1139.099999999999909 Retreat:2
+PGDUMP       1139.099999999999909 Retreat:3
+PGSTEP LR-021327-t04 seed 10 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP       1477.099999999999909 Noop
+PGDUMP       1788.099999999999909 Ability@3
+PGSTEP LR-021327-t04 seed 10 free 2
+PGDUMP actor=0 candidates=11
+PGDUMP       1398.099999999999909 EndTurn
+PGDUMP       1867.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1593.266666666666197 Attach:1Psychic@1 zone
+PGDUMP       1597.849999999999909 Attach:1Psychic@2 zone
+PGDUMP      11769.200000000000728 Attach:1Psychic@3 zone
+PGDUMP       1867.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1447.000000000000000 Play:Pokémon Flute
+PGDUMP       1846.349999999999682 Play:Team Rocket's Researcher
+PGDUMP       1297.099999999999909 Retreat:1
+PGDUMP       1438.099999999999909 Retreat:2
+PGDUMP      11769.200000000000728 Retreat:3
+PGSTEP LR-021327-t04 seed 10 free 3
+PGDUMP actor=0 candidates=8
+PGDUMP       1139.099999999999909 EndTurn
+PGDUMP      11948.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1388.849999999999909 Attach:1Psychic@1 zone
+PGDUMP       1438.849999999999909 Attach:1Psychic@2 zone
+PGDUMP       1378.849999999999909 Attach:1Psychic@3 zone
+PGDUMP      11948.200000000000728 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1438.000000000000000 Play:Pokémon Flute
+PGDUMP      11769.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 10 free 4
+PGDUMP actor=0 candidates=7
+PGDUMP       1318.099999999999909 EndTurn
+PGDUMP      11948.949999999998909 Attach:1Psychic@0 zone
+PGDUMP       1400.933333333333394 Attach:1Psychic@1 zone
+PGDUMP       1450.933333333333167 Attach:1Psychic@2 zone
+PGDUMP       1403.433333333333167 Attach:1Psychic@3 zone
+PGDUMP       1617.000000000000000 Play:Pokémon Flute
+PGDUMP      11948.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 10 free 5
+PGDUMP actor=0 candidates=8
+PGDUMP       1323.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1422.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1472.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1442.099999999999909 Attach:1Psychic@3 zone
+PGDUMP      11982.200000000000728 Evolve:Team Rocket's Hypno@3
+PGDUMP      11982.200000000000728 Evolve:Team Rocket's Hypno@3
+PGDUMP       1622.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 10 free 6
+PGDUMP actor=0 candidates=6
+PGDUMP       1352.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1422.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1472.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1442.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1651.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 10 free 7
+PGDUMP actor=0 candidates=3
+PGDUMP       1822.099999999999909 EndTurn
+PGDUMP      11982.200000000000728 Attack:Boost Dash
+PGDUMP      11801.100000000000364 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 11 free 0
+PGDUMP actor=0 candidates=14
+PGDUMP        389.100000000000023 EndTurn
+PGDUMP       1608.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1468.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP        528.000000000000000 Play:Pokémon Flute
+PGDUMP       1398.849999999999682 Play:Team Rocket's Researcher
+PGDUMP        898.100000000000023 Retreat:1
+PGDUMP       1139.099999999999909 Retreat:2
+PGDUMP       1139.099999999999909 Retreat:3
+PGSTEP LR-021327-t04 seed 11 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP       1477.099999999999909 Noop
+PGDUMP       1788.099999999999909 Ability@3
+PGSTEP LR-021327-t04 seed 11 free 2
+PGDUMP actor=0 candidates=11
+PGDUMP       1398.099999999999909 EndTurn
+PGDUMP       1867.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1593.266666666666197 Attach:1Psychic@1 zone
+PGDUMP       1597.849999999999909 Attach:1Psychic@2 zone
+PGDUMP      11769.200000000000728 Attach:1Psychic@3 zone
+PGDUMP       1867.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1447.000000000000000 Play:Pokémon Flute
+PGDUMP       1846.349999999999682 Play:Team Rocket's Researcher
+PGDUMP       1297.099999999999909 Retreat:1
+PGDUMP       1438.099999999999909 Retreat:2
+PGDUMP      11769.200000000000728 Retreat:3
+PGSTEP LR-021327-t04 seed 11 free 3
+PGDUMP actor=0 candidates=8
+PGDUMP       1139.099999999999909 EndTurn
+PGDUMP      11948.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1388.849999999999909 Attach:1Psychic@1 zone
+PGDUMP       1438.849999999999909 Attach:1Psychic@2 zone
+PGDUMP       1378.849999999999909 Attach:1Psychic@3 zone
+PGDUMP      11948.200000000000728 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1438.000000000000000 Play:Pokémon Flute
+PGDUMP      11769.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 11 free 4
+PGDUMP actor=0 candidates=7
+PGDUMP       1318.099999999999909 EndTurn
+PGDUMP      11948.949999999998909 Attach:1Psychic@0 zone
+PGDUMP       1400.933333333333394 Attach:1Psychic@1 zone
+PGDUMP       1450.933333333333167 Attach:1Psychic@2 zone
+PGDUMP       1403.433333333333167 Attach:1Psychic@3 zone
+PGDUMP       1617.000000000000000 Play:Pokémon Flute
+PGDUMP      11948.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 11 free 5
+PGDUMP actor=0 candidates=6
+PGDUMP       1319.099999999999909 EndTurn
+PGDUMP      11949.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1389.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1439.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1379.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 11 free 6
+PGDUMP actor=0 candidates=3
+PGDUMP       1789.099999999999909 EndTurn
+PGDUMP      11949.200000000000728 Attack:Boost Dash
+PGDUMP      11768.100000000000364 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 12 free 0
+PGDUMP actor=0 candidates=14
+PGDUMP        389.100000000000023 EndTurn
+PGDUMP       1608.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1468.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1618.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP       1618.099999999999909 Evolve:Team Rocket's Raticate ex@3
+PGDUMP        528.000000000000000 Play:Pokémon Flute
+PGDUMP       1398.849999999999682 Play:Team Rocket's Researcher
+PGDUMP        898.100000000000023 Retreat:1
+PGDUMP       1139.099999999999909 Retreat:2
+PGDUMP       1139.099999999999909 Retreat:3
+PGSTEP LR-021327-t04 seed 12 free 1
+PGDUMP actor=0 candidates=2
+PGDUMP       1477.099999999999909 Noop
+PGDUMP       1788.099999999999909 Ability@3
+PGSTEP LR-021327-t04 seed 12 free 2
+PGDUMP actor=0 candidates=11
+PGDUMP       1398.099999999999909 EndTurn
+PGDUMP       1867.099999999999909 Attach:1Psychic@0 zone
+PGDUMP       1593.266666666666197 Attach:1Psychic@1 zone
+PGDUMP       1597.849999999999909 Attach:1Psychic@2 zone
+PGDUMP      11769.200000000000728 Attach:1Psychic@3 zone
+PGDUMP       1867.099999999999909 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1447.000000000000000 Play:Pokémon Flute
+PGDUMP       1846.349999999999682 Play:Team Rocket's Researcher
+PGDUMP       1297.099999999999909 Retreat:1
+PGDUMP       1438.099999999999909 Retreat:2
+PGDUMP      11769.200000000000728 Retreat:3
+PGSTEP LR-021327-t04 seed 12 free 3
+PGDUMP actor=0 candidates=8
+PGDUMP       1139.099999999999909 EndTurn
+PGDUMP      11948.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1388.849999999999909 Attach:1Psychic@1 zone
+PGDUMP       1438.849999999999909 Attach:1Psychic@2 zone
+PGDUMP       1378.849999999999909 Attach:1Psychic@3 zone
+PGDUMP      11948.200000000000728 Evolve:Team Rocket's Raticate ex@2
+PGDUMP       1438.000000000000000 Play:Pokémon Flute
+PGDUMP      11769.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 12 free 4
+PGDUMP actor=0 candidates=7
+PGDUMP       1318.099999999999909 EndTurn
+PGDUMP      11948.949999999998909 Attach:1Psychic@0 zone
+PGDUMP       1400.933333333333394 Attach:1Psychic@1 zone
+PGDUMP       1450.933333333333167 Attach:1Psychic@2 zone
+PGDUMP       1403.433333333333167 Attach:1Psychic@3 zone
+PGDUMP       1617.000000000000000 Play:Pokémon Flute
+PGDUMP      11948.949999999998909 Play:Team Rocket's Researcher
+PGSTEP LR-021327-t04 seed 12 free 5
+PGDUMP actor=0 candidates=7
+PGDUMP       1319.099999999999909 EndTurn
+PGDUMP      11978.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1418.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1468.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1438.099999999999909 Attach:1Psychic@3 zone
+PGDUMP      11978.200000000000728 Evolve:Team Rocket's Hypno@3
+PGDUMP       1618.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 12 free 6
+PGDUMP actor=0 candidates=6
+PGDUMP       1348.099999999999909 EndTurn
+PGDUMP      11978.200000000000728 Attach:1Psychic@0 zone
+PGDUMP       1418.099999999999909 Attach:1Psychic@1 zone
+PGDUMP       1468.099999999999909 Attach:1Psychic@2 zone
+PGDUMP       1438.099999999999909 Attach:1Psychic@3 zone
+PGDUMP       1647.000000000000000 Play:Pokémon Flute
+PGSTEP LR-021327-t04 seed 12 free 7
+PGDUMP actor=0 candidates=3
+PGDUMP       1818.099999999999909 EndTurn
+PGDUMP      11978.200000000000728 Attack:Boost Dash
+PGDUMP      11797.100000000000364 Play:Pokémon Flute

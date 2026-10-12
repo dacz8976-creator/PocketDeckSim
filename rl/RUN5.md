@@ -355,6 +355,62 @@ sides with k3 still available; the 0.7.2 wheel and its run identities are untouc
     5. the 34 pause-game positions are development examples, not an exam; agreement with Auto doesn't establish Auto-level strength;
     6. the report brings back improved decisions and remaining failures.
     - The cloud writes the code on `claude/playout-pilot`; the laptop reviews it once, builds it beside the pinned engine (km3 in that build must reproduce the pinned self-check and the official games), runs the development positions, then sizes and launches the unattended development run in the strength harness.
+  - **The first results and the freeze, Oct 3-4.**
+    - The development run (`results/strength_2026-10-03_kx3_dev/`, d513e37b): kx3 beat km3 by +16.6 ± 3.5 points on Dustin's 7 development decks against the panel, and every deck went up. kx3 games take about 4½ minutes; km3's take under a second.
+    - The position examples (`results/playout_pilot_positions_2026-10-04/`) show little human-like change. kx3 overrides km3 on about 3% of decisions; one strong improvement; signs that km3's later play inside the play-outs hides good first moves, and none that the pilot sees them.
+    - **Dustin approved a conditional freeze and the exam, Oct 4 (relayed by the coordinator; verbatim):** "yes approved". Astra's three tightenings are conditions of it.
+    - The rule is recorded before the result, in `results/strength_2026-10-04_kx3_v_k3/PREREGISTRATION.md`'s addendum: kx3 − km3 against k3, 95% interval above zero → freeze d513e37b; crossing zero → hold.
+    - The freeze is labelled "a promising experimental baseline, not the finished planning bot".
+    - **The exam (Oct 6):** kx3 (d513e37b) v km3 on the 11 held-out decks: +21.3 ± 4.0 (53.0% v 31.7%), every deck positive (`results/strength_2026-10-05_kx3_exam/`; a second reader agrees).
+    - **After the exam (Oct 6; Dustin: "Yes to the quiz"; Astra's review adopted as his input; relayed by the coordinator):**
+      - (A) **Quiz 4** uses positions where kx3 (d513e37b) and km3 disagree: setup decks first (build-up situations), fast decks for the tempo ones. It hides which bot chose which answer. It offers "both reasonable" and "neither" beside the two choices, so planning disagreements separate from harmless move-order differences. The key stays private. The laptop builds it; Sonnet may assemble.
+      - (B) **kx3 in the tools**, after gate 3 and the Tool-rule decision:
+        - opt-in only; the defaults (screen and floor) stay km3;
+        - the exact tested version, with both pilots named in every output;
+        - a separate "slow report" with results and their uncertainty, NOT run through the floor's pass/fail cutoffs;
+        - no prerequisite of passing km3's screen: any deck can go straight to kx3.
+      - (C) The Tool filter becomes a within-noise **tie-break**, never a dropped candidate (Poncho on the Active can protect after a retreat). Gate 3 waits for that version and includes decks 05 and 03.
+        - **Gate 3 (Oct 7, `results/strength_2026-10-06_kx3_tools_gate3/`):** the rule on − off, paired on the development run's deals: **+0.2 ± 1.5 points** (400 pairs). Per deck: 01 +0.0, 03 +0.0, 05 +1.2, 06 +1.2, 10 −1.2. No harm, and no gain this size can see. All 400 km3 games replayed the development run exactly.
+          - It changed a decision in 83 of the 400 games (50 of them deck 05's), and the result in 9.
+          - It costs about 13% more time a game (06 +43%, 10 +23%, the others about even).
+          - The rule stays in the next candidate.
+      - (C2) **Next candidate (coordinator, Oct 7):** one combined run instead of a gate per feature: kx3 with `_tools _zs3 _m64` against the frozen d513e37b, on the development decks and deals, paired. It waits for the cloud's fix of the review's two findings: the close-call extension tests the bar that will decide, and it decides at the end. The opt-in tools ship d513e37b now.
+        - **Dustin chose the full run (Oct 7):** 7 development decks × 80 kx3 games, about 44-55 hours on the laptop (21.8 h of the Tool version's time × 2.0-2.5 for the extension). A halfway look is shown for information only; the decision is read at the end. Friday Oct 9 is a school day, so the school-morning rule applies that morning.
+        - The cloud's fix drops "don't extend a candidate tied with km3's move in every round" (Astra, Oct 7: tied through 16 rounds isn't tied for good). A test must show such a candidate can still be extended and win.
+      - (E) **Dustin's decisions, Oct 7 (on Astra's review, relayed by the coordinator):**
+        - **Rules switch 2 is unparked**, scheduled after the combined run.
+          - Scope: round 2, the card-text fixes, and Cursed Jewel's Weakness on an attack's return damage (Tools and Abilities stay flat), with the recording evidence. The plan is `results/engine_switch_rules2_2026-10/PLAN.md`.
+          - Its registration is prepared while the run goes, without using the laptop's cores.
+          - Conclusions on brews 07 and 09 (Mega Sableye ex decks) are provisional until it's pinned.
+        - **The first cloud slow report** is draft A's Wallace version (`decks/brews/drafts_2026-10-01/draft-A-wallace.txt`) against the 8 panel lists, at a size the cloud can finish.
+        - **The setup-deck demonstration** is Wailord (deck 03), built from its existing 80 development-run kx3 games and the Tool comparison, labelled "existing development evidence, not a fresh test". Fresh games wait for the laptop.
+        - **Oct 9 (the coordinator, after the cloud's 19-question sweep and Astra's response):**
+          - Rules switch 2 goes to Dustin as ONE release package (PLAN.md section 9, in his words), with Astra's follow-through: after the pin, kx3 is rebuilt on the new engine, checked and re-pinned. Until then the brew-07/09 slow reports are provisional.
+          - The cloud's P2 (Cursed Jewel's Weakness) is in: `claude/coin-prevention-round2` b7e3bc00, suite 2,056/0, the inventory finds only brews 07 and 09.
+          - Housekeeping decisions:
+            - (12) the cloud builds coin_probe v2's P2 check and the P2 off-switch;
+            - (13) while the combined run holds the laptop, anything of Sonnet's that needs cargo runs on the cloud or waits;
+            - (14) the cloud runs the suite at the final engine commit and the 8b rows on P2, and the 8c cross-check at the hand-off;
+            - (15) the Wallace slow report comes onto main, and START_HERE's seed table records slot 804 and the pilot's 24.2B block;
+            - (16) rules/02's Rocky Helmet roles are corrected (Torchic held it, Tinkatink attacked).
+          - Items 10-11 are research for Sonnet; 17-19 stay parked.
+        - **The combined run, Oct 8-9:**
+          - A forced app update killed the session chain on the night of Oct 8, at 532 games. The program was relaunched bare at 03:02Z; the results are unaffected.
+          - The halfway look (information only): candidate − frozen **+3.6 ± 3.8** over 302 kx3 pairs (fast decks +4.6 ± 4.4, Wailord ±0 over 62). All 304 km3 games replay the development run. The candidate takes ×2.7 the frozen kx3's time.
+          - Stopped for school on Friday morning; it resumes at 17:00 CT under the chain.
+        - **Reporting rule (Astra):**
+          - Never dismiss evidence because its interval is wide (±11 still says something).
+          - State the question first, then the size.
+          - In every time and precision figure, say how many are kx3 games and how many are total games.
+      - (D) The unfamiliar-opponent version stays separate until it is measured against out-of-pool opponents.
+    - **Rules finding queued for the next rules switch (Oct 6):** return damage set up by an attack takes Weakness. Dustin, verbatim: "I know it is the case for sableye. It is from an attack the return damage is done, not from an ability."
+      - It covers the 5 attacks with "During your opponent's next turn, if this Pokémon is damaged by an attack, do X damage to the Attacking Pokémon".
+      - Tools and Abilities stay flat. Iron Jugulis's Automated Combat did a flat 20, five times, to attackers weak to Darkness (shot-list row T15, video 20261006_220700000, Oct 6). The engine already does that, so only the 5 attacks change.
+      - The engine adds no Weakness today. See `rules/02_damage_knockouts_points.md` §2 and `results/new_pause_games_triage_2026-10-06/`.
+    - **Deck dependence (Dustin, Oct 5, relayed by the coordinator; verbatim):** "It's deck dependent when building the bench is helpful. Some decks are meant to play fast. Some reward buildup."
+      - So results are reported by deck group (fast v setup) and per deck, with how kx3 changes each deck's pace (turns per game, first-attack turn).
+      - Build-up positions and quiz items come from the setup decks (Wailord, Muk, Indeedee/Stoutland, Skarmory), and tempo ones from the fast decks (draft A, Manectric, Xatu/Weezing).
+    - **Laptop schedule (Dustin, Oct 4, via the coordinator):** Monday Oct 5 is a full school day. The laptop is away about 7 am-5 pm Central and closed at 7:15 with no warning. So the exam checkpoints game by game and starts no new game after 5:15 am. Anything still running at 6:30 is stopped (a cut-off game replays on resume). The run is committed and pushed with main = origin/main by 7:00, and resumes from 5 pm. The same rule applies on any weekday morning until he says otherwise.
   - **Token budget until the weekly reset (Mon Oct 5, 7:00 am CDT; usage 82% on Oct 2, coordinator's rule):** no multi-agent workflows or reviewer fan-outs (one agent, one pass); no subagents for images or re-verification; prefer compute over tokens (unattended runs); the token-heavy coding of the first prototype lands after the reset unless Dustin says otherwise.
 - **Official engine:** `rl/engine-2026-10-02/`, main-8626a35 (pinned Oct 2; a rules switch: the Sept 30 engine plus Victory Star after a Confusion heads (A), coin-flip damage prevention with Chase Order (B), kd's follow-ons and F1-F7; `engine/src/players/` unchanged). kta3, km3, k3, kp3 and kog3 (and kq3, kpr3 and kd3) replay their recorded games game for game, k3 and kp3 on all 45 cells, and every changed carrier game is accounted for (`results/engine_switch_rules_2026-10/`). kt3, ktb3 and ktc3 are kog-based: diagnostic, no identity claim. The Sept 30 engine (`rl/engine-2026-09-30/`, main-d363ba8) and the Sept 28 engine (`rl/engine-2026-09-28/`, main-9b4df9b) are kept; the Sept 28 one's kp-based kt presets replay the Sept 26-28 kt records.
 - **Pilot:** km3 = kta3 + N2 (the Stadium damage bonus in the clock); kta3 = kog3 + switch 1 (the Tool cut); kog3 = kp3 + koa's opening switch A + kpg's discard-Energy credit F.
