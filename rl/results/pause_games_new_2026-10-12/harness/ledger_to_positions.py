@@ -86,6 +86,16 @@ NUMW = {'one': 1, 'two': 2, 'three': 3, 'four': 4}
 NOTHING_FOUND = re.compile(r'no[\s-]*effect|no[\s-]*target|no eligible|nothing|no card', re.I)
 
 
+def pop_returned(result):
+    """did a Lucky Ice Pop come back to his hand? Heads brings it back, tails discards it, however the ledger glues the word ('Heads213 returns Pop', 'coinHeads', 'heads at158');
+    when it names neither coin (or both), 'return' without 'discard' decides"""
+    t = str(result or '').lower()
+    heads, tails = 'heads' in t, 'tails' in t
+    if heads != tails:
+        return heads
+    return 'return' in t and 'discard' not in t
+
+
 def is_stadium_card(name):
     return any('Stadium' in str(c.get('trainer_card_type', '')) for c in C.BYNAME.get(nname(name), []))
 
@@ -379,19 +389,54 @@ EFFECT_TEXTS = {
 }
 
 
-def attacker_of(row, cn):
-    """(Pokemon name, attack title) of an attack play of the OPPONENT: the ledger writes 'Stakataka: Brass Rock', or just 'Land Crush'; then the attacker is his Active Pokemon
-    of that turn that has such an attack"""
+TURN_EFFECT_TEXTS = {
+    # attack effect text -> the engine's TurnEffect for the player whose attack it was (the engine's `turn_effects`: [{turn, effect}])
+    "During your next turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon.":
+        lambda player: {'IncreasedDamageForPlayer': {'amount': 20, 'player': player, 'energy_type': None}},      # Happiny's Chubby Cheer
+}
+LASTING = re.compile(r'during your next turn|until this pok', re.I)      # an attack effect that is still there at the attacker's next turn
+
+
+def attacker_of(row, cn, side='opponent'):
+    """(Pokemon name, attack title) of an attack play of one side (the OPPONENT's by default): the ledger writes 'Stakataka: Brass Rock', or just 'Land Crush'; then the
+    attacker is that side's Active Pokemon of that turn that has such an attack"""
     if ':' in cn:
         return nname(cn.split(':')[0]), cn.split(':', 1)[1].strip()
     name = nname(cn)
     if any(C.is_pokemon(c) for c in C.BYNAME.get(name, [])):
         return name, None
     for key in ('board_after', 'board_at_start'):
-        act = (((row or {}).get(key) or {}).get('opponent') or {}).get('active')
+        act = (((row or {}).get(key) or {}).get(side) or {}).get('active')
         if _real(act) and any(cn.strip() in C.attack_titles(c) for c in C.BYNAME.get(nname(act['name']), []) if C.is_pokemon(c)):
             return nname(act['name']), cn.strip()
     return name, None
+
+
+def lasting_turn_effects(prev_opp_row, prev_own_row, tn):
+    """-> ([{turn, effect}], notes): what an attack left for a LATER turn, as the engine's `turn_effects` (a player-wide effect), and notes on lasting effects that are not modelled.
+    The opponent's attack on turn tn-1 reaches its owner's next turn tn+1 (the engine files it under tn too, where it counts only for the player it names); an attack of his
+    on his previous turn reaches tn"""
+    tfx, notes, seen = [], [], set()
+    for row, side, player, turns in ((prev_opp_row, 'opponent', 1, (tn, tn + 1)), (prev_own_row, 'owner', 0, (tn,))):
+        for p in (row or {}).get('plays_in_order') or []:
+            if nk(p.get('kind')) != 'attack':
+                continue
+            cn, res = str(p.get('card_name') or ''), str(p.get('result') or '')
+            att_name, title = attacker_of(row, cn, side)
+            for c in (c for c in C.BYNAME.get(att_name, []) if C.is_pokemon(c)):
+                for a in c.get('attacks') or []:
+                    if not ((title and a.get('title') == title) or (not title and a.get('title') and C.norm_text(a['title']) in C.norm_text(cn + res))):
+                        continue
+                    eff = a.get('effect') or ''
+                    if eff in TURN_EFFECT_TEXTS:
+                        for tk in turns:
+                            x = {'turn': tk, 'effect': TURN_EFFECT_TEXTS[eff](player)}
+                            if json.dumps(x, sort_keys=True) not in seen:
+                                seen.add(json.dumps(x, sort_keys=True))
+                                tfx.append(x)
+                    elif eff not in EFFECT_TEXTS and LASTING.search(eff):
+                        notes.append(f'{att_name} {a.get("title")}: "{eff}" is not carried into the position')
+    return tfx, notes
 
 
 def carried_effects(prev_opp_row, prev_owner_active, my_active_name, opp_active_name, my_lost_pokemon):
@@ -516,8 +561,7 @@ def convert_game(gdir, global_entities):
                         evo_ = evolved_into(tg_ + ' ' + res_)
                         if evo_:
                             rc_names[evo_] += 1
-                heads, tails = re.search(r'\bheads\b', res_, re.I), re.search(r'\btails\b', res_, re.I)
-                returns = card == 'Lucky Ice Pop' and heads and not tails
+                returns = card == 'Lucky Ice Pop' and pop_returned(res_)
                 nothing = NOTHING_FOUND.search(res_) and card == 'Poké Ball'
                 if nk(p.get('kind')) in ('card_play', 'item_evolution') and card in TRAINER_DISCARD and card not in TOOLS and card not in STADIUMS and not returns:
                     disc.append((card, None, None))
@@ -718,6 +762,8 @@ def convert_game(gdir, global_entities):
         opp_active_name = opp_board[0]['_name'] if opp_board else None
         eff, eff_notes = carried_effects(prev_opp, prev_owner_active, my_active_name, opp_active_name, lost_mine)
         notes += eff_notes
+        turn_fx, turn_fx_notes = lasting_turn_effects(prev_opp, pt, tn)
+        notes += turn_fx_notes
         for p in (prev_opp or {}).get('plays_in_order') or []:
             mm = re.search(r'discards?\s+(?:the\s+)?top\s*(\d+)[^.;]*(?:owner|your)\s*deck', str(p.get('result') or ''), re.I)
             if mm:
@@ -900,7 +946,7 @@ def convert_game(gdir, global_entities):
                    'energy_now': None if (first_player and tn == 1) else (my_now or decks_energy),
                    'energy_next': my_next or decks_energy},
             'opp': {'hand_count': opp_hand, 'discard_n': 0, 'discard_energy': [], 'board': opp_board, 'energy_next': o_next},
-            'stadium': stadium, 'turn_effects': [], 'his_plan': plan, 'his_plan_ended': bool(ended), 'hand_source': 'codex', 'decision_maker': 'Dustin',
+            'stadium': stadium, 'turn_effects': turn_fx, 'his_plan': plan, 'his_plan_ended': bool(ended), 'hand_source': 'codex', 'decision_maker': 'Dustin',
             'exact_list': False, 'milestones': [], 'unresolved': unresolved,
             'notes': ('; '.join(sorted(set(notes))) + '. ' if notes else '') + "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0).",
             'approximate': True, 'approximate_reason': "opponent's list unknown", 'heldout': False, 'plan_truncated_at': known_prefix,

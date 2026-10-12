@@ -4075,7 +4075,28 @@
    "card": "Rainbow Cave B4 155",
    "owner": 1
   },
-  "turn_effects": [],
+  "turn_effects": [
+   {
+    "turn": 14,
+    "effect": {
+     "IncreasedDamageForPlayer": {
+      "amount": 20,
+      "player": 1,
+      "energy_type": null
+     }
+    }
+   },
+   {
+    "turn": 15,
+    "effect": {
+     "IncreasedDamageForPlayer": {
+      "amount": 20,
+      "player": 1,
+      "energy_type": null
+     }
+    }
+   }
+  ],
   "his_plan": [
    "Place:Honedge",
    "Play:Steel Apron",
@@ -5969,7 +5990,28 @@
    "card": "Rainbow Cave B4 155",
    "owner": 1
   },
-  "turn_effects": [],
+  "turn_effects": [
+   {
+    "turn": 10,
+    "effect": {
+     "IncreasedDamageForPlayer": {
+      "amount": 20,
+      "player": 1,
+      "energy_type": null
+     }
+    }
+   },
+   {
+    "turn": 11,
+    "effect": {
+     "IncreasedDamageForPlayer": {
+      "amount": 20,
+      "player": 1,
+      "energy_type": null
+     }
+    }
+   }
+  ],
   "his_plan": [
    "UseStadium",
    "Play:Lucky Ice Pop",

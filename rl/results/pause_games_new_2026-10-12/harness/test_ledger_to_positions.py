@@ -630,6 +630,24 @@ class AuditFixes(unittest.TestCase):
         p = MadeUpGame(self, fighting_deck(), [p1, t]).convert(GLOBAL)[0][0]
         self.assertEqual(p['me']['board'][0].get('effects'), [{'effect': 'NoAbilities', 'turns': 255}])
 
+    # the panel's Chubby Cheer: a player-wide effect that reaches the opponent's NEXT turn
+    def test_chubby_cheer_is_a_turn_effect_for_the_opponent_s_next_turn_and_other_lasting_effects_are_named(self):
+        def with_attack(card_name):
+            p1 = opp_turn(3, [play('attack', card_name, 'owner Active', '10 damage')], opp_board=board(mon('Happiny', 40), []))
+            t = owner_turn(4, ['Wally'], board(mon('Timburr', 60), []), board(mon('Happiny', 40), []), [play('end_turn')])
+            return MadeUpGame(self, fighting_deck(), [owner_turn(2, ['Wally'], board(mon('Timburr', 60), []), board(mon('Happiny', 40), []), [play('end_turn')]), p1, t]).convert(GLOBAL)[0][-1]
+        p = with_attack('Happiny: Chubby Cheer')
+        want = [{'turn': tk, 'effect': {'IncreasedDamageForPlayer': {'amount': 20, 'player': 1, 'energy_type': None}}} for tk in (4, 5)]
+        self.assertEqual(p['turn_effects'], want)
+        p = with_attack('Leafeon: Leafy Cyclone')
+        self.assertEqual(p['turn_effects'], [])
+        self.assertIn('is not carried into the position', p['notes'])
+
+    def test_a_lucky_ice_pop_is_back_in_hand_on_heads_in_every_wording_the_ledgers_glue_it_in(self):
+        for text, back in (('Heal110→130; Heads213 returns Pop to hand', True), ('Heals20 Mega40→60; coinHeads; same Item returned to hand.', True), ('Heal20:50→70. Heads at158; card returns to hand.', True),
+                           ('Heals20 Mega60→80; coinTails; discarded.', False), ('Tails271 discards Pop', False), ('Heal 10; returns to hand', True), ('Heal 10; discarded', False), ('', False)):
+            self.assertEqual(L.pop_returned(text), back, text)
+
     # (n) a search that found nothing, however the ledger hyphenates it
     def test_a_poke_ball_that_found_nothing_is_recognised_in_every_wording_the_ledgers_use(self):
         for text in ('No effect: no target in deck', 'No eligible Basic remains in deck: visible no-target message at268; card discarded', 'Unsuccessful search; nothing found'):
@@ -749,6 +767,12 @@ class ReviewExamples(unittest.TestCase):
         self.assertIn('Kingdra ex A4 043', p24['me']['discard'])
         self.assertNotIn('Seadra A1 071', p24['me']['discard'])
         self.assertEqual(p24['me']['board'][0]['behind'], ['Horsea A4 041', 'Seadra A1 071'])
+
+    def test_audit_183108_the_opponent_possible_column_does_not_list_his_own_promoted_pokemon(self):
+        rows = json.load(open(os.path.join(HERE, '..', 'position_list.json'), encoding='utf-8'))
+        r = next(r for r in rows if r['position_id'] == 'KW-261005_183108000-t01')
+        self.assertEqual(r['switch2_opponent_possible'], '')
+        self.assertEqual(r['switch2_flag'], 'yes')      # Mega Sableye ex (Cursed Jewel) is in his own deck
 
     def test_audit_012927_the_energy_zone_is_read_as_the_turn_ended(self):
         got = [(self.position('20261006_012927000', t)['me']['energy_now'], self.position('20261006_012927000', t)['me']['energy_next']) for t in (4, 6, 8)]

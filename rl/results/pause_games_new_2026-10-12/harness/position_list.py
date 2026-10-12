@@ -135,6 +135,9 @@ def main():
                         seen.add(C.nname(p['name']))
             if not str(t.get('who_played', '')).startswith('owner'):
                 for p in t.get('plays_in_order') or []:
+                    # the opponent's rows also log HIS answers (a forced promotion or replacement of his Pokemon, a concession, a prompt): not the opponent's cards
+                    if re.search(r'promot|replacement|conced|prompt', str(p.get('kind') or ''), re.I):
+                        continue
                     if p.get('card_name'):
                         seen.add(C.nname(p['card_name']).split(':')[0])
                     txt = json.dumps(p, ensure_ascii=False)
