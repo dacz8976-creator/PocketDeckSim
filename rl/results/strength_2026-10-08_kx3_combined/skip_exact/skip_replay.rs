@@ -31,6 +31,14 @@
 //!     `try_forecast_action` gives an attack's branches and their probabilities (`apply_action` samples one of them in play);
 //!     each branch is applied to a copy of the board and its queued choices are resolved (the first offered each time), and the
 //!     damage is read off the Active it hit.
+//! Oct 12, the laptop's review (REVIEW_SKIP_EXACT_laptop.md on main):
+//!   - A label that names more than one legal move (DiscardOwnCards, ApplyDamage, DiscardToolFromPokemon,
+//!     MoveRandomOpponentEnergyToActive) is now resolved by asking the pilot that played (the record's `pilot_deck`, built as the
+//!     harness builds it) from the same observation and search randomness: km3 and kx3 keep no memory between decisions, so its
+//!     answer is the move it made in play. Only if the pilot's move isn't one of the label's moves does the old trial order apply;
+//!     such a game is counted in `ambiguous_unresolved`.
+//!   - The check also compares each logged decision's points (`p`), Active (`act`) and Bench count (`b`), and the game's plies and
+//!     the opponent's number of decisions (`moves_opp.n`). The opponent's pilot is the record's `pilot_opp`.
 //!   skip_replay --games <games.jsonl> --manifest <manifest.json> --arm X|ref --out decisions.jsonl --check check.jsonl
 //!               [--threads N] [--limit N] [--km3 | --km3-all] [--boards skip_turns.tsv --bot NAME --boards-out boards.jsonl]
 //! Run from the repository root the manifest's deck paths are relative to.
@@ -98,6 +106,9 @@ struct Logged {
     label: String,
     turn: u64,
     n: u64,
+    p: Value,
+    act: String,
+    b: u64,
 }
 
 /// What a scripted replay saw.
@@ -106,6 +117,8 @@ struct ScriptLog {
     used: usize,
     missing: Vec<String>,
     ambiguous: Vec<(usize, usize)>,
+    resolved_by_pilot: usize,
+    unresolved: usize,
     decisions: Vec<Value>,
     boards: Vec<Value>,
 }
@@ -220,6 +233,8 @@ struct Scripted {
     km: Option<Box<dyn Player>>,
     km_all: bool,
     board_turns: BTreeSet<u64>,
+    /// The pilot that played this side, asked only where a label names more than one legal move.
+    pilot: Box<dyn Player>,
 }
 
 impl Player for Scripted {
@@ -239,6 +254,13 @@ impl Player for Scripted {
             log.missing.push(format!("decision {k}: logged turn {} with {} legal moves, replayed turn {} with {}", want.turn, want.n,
                                      state.turn_count, actions.len()));
         }
+        let me = self.seat;
+        let p = json!([state.points[me], state.points[1 - me]]);
+        let act = state.in_play_pokemon[me][0].as_ref().map(|c| c.get_name()).unwrap_or_default();
+        let b = state.in_play_pokemon[me][1..].iter().filter(|c| c.is_some()).count() as u64;
+        if want.p != p || want.act != act || want.b != b {
+            log.missing.push(format!("decision {k}: logged p {} act '{}' b {}, replayed p {p} act '{act}' b {b}", want.p, want.act, want.b));
+        }
         let mut distinct: Vec<Action> = Vec::new();
         for (a, l) in actions.iter().zip(&labels) {
             if *l == want.label && !distinct.contains(a) {
@@ -253,8 +275,16 @@ impl Player for Scripted {
             1 => distinct.remove(0),
             n => {
                 log.ambiguous.push((k, n));
-                let i = self.forced.get(&k).copied().unwrap_or(0).min(n - 1);
-                distinct.remove(i)
+                // the pilot that played, asked from this decision's own observation and search randomness
+                let asked = self.pilot.decision_fn(&mut _rng.clone(), observation, actions);
+                if let Some(i) = distinct.iter().position(|a| *a == asked) {
+                    log.resolved_by_pilot += 1;
+                    distinct.remove(i)
+                } else {
+                    log.unresolved += 1;
+                    let i = self.forced.get(&k).copied().unwrap_or(0).min(n - 1);
+                    distinct.remove(i)
+                }
             }
         };
         let attacks: Vec<String> = actions.iter().zip(&labels).filter(|(a, _)| is_attack(a)).map(|(_, l)| l.clone()).collect();
@@ -303,7 +333,14 @@ fn replay(g: &Value, lists: &BTreeMap<String, Deck>, opt: &Options) -> (Value, V
         .as_array()
         .expect("the record has no deck-side log (log_level none): nothing to replay from")
         .iter()
-        .map(|e| Logged { label: e["a"].as_str().unwrap().to_string(), turn: e["t"].as_u64().unwrap(), n: e["n"].as_u64().unwrap() })
+        .map(|e| Logged {
+            label: e["a"].as_str().unwrap().to_string(),
+            turn: e["t"].as_u64().unwrap(),
+            n: e["n"].as_u64().unwrap(),
+            p: e["p"].clone(),
+            act: e["act"].as_str().unwrap_or("").to_string(),
+            b: e["b"].as_u64().unwrap_or(u64::MAX),
+        })
         .collect();
     let winner_of = |end: &State| match end.winner {
         Some(GameOutcome::Win(w)) if w == seat => "deck",
@@ -320,15 +357,22 @@ fn replay(g: &Value, lists: &BTreeMap<String, Deck>, opt: &Options) -> (Value, V
         let truth = Arc::new(Mutex::new(None));
         let km: Option<Box<dyn Player>> = (opt.km3 || opt.km3_all)
             .then(|| create_players(d0.clone(), d1.clone(), vec![parse_player_code("km3").unwrap(), parse_player_code("km3").unwrap()]).remove(seat));
+        let pilot_code = parse_player_code(g["pilot_deck"].as_str().unwrap()).unwrap();
+        let codes = if seat == 0 { vec![pilot_code, opp_code.clone()] } else { vec![opp_code.clone(), pilot_code] };
+        let pilot = create_players(d0.clone(), d1.clone(), codes).remove(seat);
         players[seat] = Box::new(Scripted {
             logged: logged.clone(), next: 0, deck: dd.clone(), forced: forced.clone(), log: log.clone(), truth: truth.clone(), seat,
             decks: (d0.clone(), d1.clone()), km, km_all: opt.km3_all,
             board_turns: opt.board_turns.get(g["key"].as_str().unwrap()).cloned().unwrap_or_default(),
+            pilot,
         });
         let mut game = Game::new(players, seed);
-        let mut ticks = 0usize;
+        let (mut ticks, mut opp_asked) = (0usize, 0u64);
         while !game.is_game_over() && ticks < 20_000 {
-            *truth.lock().unwrap() = Some(game.get_state_clone());
+            let st = game.get_state_clone();
+            let (actor, acts) = st.generate_possible_actions();
+            opp_asked += (actor != seat && acts.len() > 1) as u64;
+            *truth.lock().unwrap() = Some(st);
             game.play_tick();
             ticks += 1;
         }
@@ -338,12 +382,17 @@ fn replay(g: &Value, lists: &BTreeMap<String, Deck>, opt: &Options) -> (Value, V
             && log.used == logged.len()
             && g["points"] == json!([end.points[seat], end.points[1 - seat]])
             && g["turns"].as_u64() == Some(end.turn_count as u64)
-            && g["winner"] == winner_of(&end);
+            && g["winner"] == winner_of(&end)
+            && g["plies"].as_u64() == Some(ticks as u64)
+            && g["moves_opp"]["n"].as_u64() == Some(opp_asked);
         let next = log.ambiguous.iter().rev().find(|(d, n)| forced.get(d).copied().unwrap_or(0) + 1 < *n).copied();
         if same || next.is_none() || attempts >= 64 {
             let check = json!({"key": g["key"], "arm": g["arm"], "pilot_deck": g["pilot_deck"], "replayed_exactly": same,
                                "decisions_logged": logged.len(), "decisions_used": log.used, "missing": log.missing,
-                               "ambiguous": log.ambiguous.len(), "attempts": attempts,
+                               "ambiguous": log.ambiguous.len(), "ambiguous_resolved_by_pilot": log.resolved_by_pilot,
+                               "ambiguous_unresolved": log.unresolved, "attempts": attempts,
+                               "checked": ["label", "turn", "n", "p", "act", "b", "points", "turns", "winner", "plies", "moves_opp_n"],
+                               "plies": ticks, "moves_opp_n": opp_asked,
                                "turns": end.turn_count, "points": [end.points[seat], end.points[1 - seat]], "winner": winner_of(&end)});
             let rows = log
                 .decisions
@@ -398,7 +447,6 @@ fn main() {
         .filter(|g| g["arm"] == arm.as_str())
         .take(limit)
         .collect();
-    assert!(records.iter().all(|g| g["pilot_opp"] == "km3"), "the opponent must be km3");
     let mut board_turns: BTreeMap<String, BTreeSet<u64>> = BTreeMap::new();
     if let Some(path) = arg(&args, "--boards") {
         let bot = arg(&args, "--bot").expect("--bot with --boards");

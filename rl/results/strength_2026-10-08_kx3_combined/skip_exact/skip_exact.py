@@ -38,10 +38,21 @@ def group(deck):
     raise ValueError(deck)
 
 
+# What the replay compares with the record (Oct 12, the laptop's review, item b): each logged decision's move label, game turn, number
+# of legal moves, points, Active and Bench count; the game's points, turns, winner, plies and the opponent's number of decisions.
+CHECKED = ("label", "turn", "n", "p", "act", "b", "points", "turns", "winner", "plies", "moves_opp_n")
+
+
 def require_exact(checks, bot, expected):
     bad = [c["key"] for c in checks if not c.get("replayed_exactly")]
     if len(checks) != expected or bad:
         sys.exit(f"STOP: {bot}: {len(checks)} games checked (expected {expected}), {len(bad)} not replayed exactly: {bad[:5]}")
+    weak = [c["key"] for c in checks if not set(CHECKED) <= set(c.get("checked") or [])]
+    if weak:
+        sys.exit(f"STOP: {bot}: {len(weak)} games were not checked on every field {CHECKED}: {weak[:5]}")
+    trial = [c["key"] for c in checks if c.get("ambiguous_unresolved", 1) != 0]
+    if trial:
+        sys.exit(f"STOP: {bot}: {len(trial)} games have a label the pilot that played did not resolve (matched by trial only): {trial[:5]}")
 
 
 def per_game(rows):
