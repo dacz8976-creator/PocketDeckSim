@@ -1434,7 +1434,7 @@ class CleanRefusals(T.World):
     def test_a_deck_file_that_does_not_exist_is_refused_by_name_and_nothing_is_written(self):
         gone = os.path.join(self.repo, 'decks', 'events', 'nothing-here.txt')
         code, out, err = self.cli_with_deck(gone, '--deals', '1')
-        self.assertEqual(code, f'[kx3 (d513e37b) on nothing-here v km3 on the public panel] REFUSED: deck file {gone} not found')
+        self.assertEqual(code, f'[{T.PILOT_LABEL} on nothing-here v km3 on the public panel] REFUSED: deck file {gone} not found')
         self.assertFalse(os.path.exists(self.out_root))
 
     def test_a_deck_file_name_that_is_not_filename_safe_is_refused_by_the_wrapper(self):
