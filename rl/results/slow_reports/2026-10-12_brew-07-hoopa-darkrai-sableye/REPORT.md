@@ -10,21 +10,21 @@ Pre-registration order: registered 2026-10-12T20:49:33Z; first game started 2026
 
 Self-check digests recorded at registration: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit 381f955b7f7c): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration); `selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit 381f955b7f7c): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration)
 
-- Planned 320 games; finished 80; complete pairs 40 (= 80 games); unpaired games 0; errors 0.
+- Planned 320 games; finished 120; complete pairs 60 (= 120 games); unpaired games 0; errors 0.
 - Paired difference = score(arm X) − score(arm ref) per (deck, opponent, deal, seat), in percentage points of score (win 1, tie ½). Intervals are mean ± 1.96·sd/√n over paired games. No pass/fail threshold.
 
 ## Result
 
-**Pooled over all 40 paired games: +17.5 ± 13.4 points** (arm X 85.0% vs arm ref 67.5% score).
+**Pooled over all 60 paired games: +15.8 ± 10.0 points** (arm X 85.0% vs arm ref 69.2% score).
 
 
 ### Per deck, pooled over its opponents
 
 | deck | paired games | arm X score | arm ref score | paired difference (points) | went first: diff | went second: diff |
 |---|---|---|---|---|---|---|
-| brew-07-hoopa-darkrai-sableye | 40 | 85.0% | 67.5% | +17.5 ± 13.4 | +16.7 ± 22.4 | +18.2 ± 16.5 |
+| brew-07-hoopa-darkrai-sableye | 60 | 85.0% | 69.2% | +15.8 ± 10.0 | +15.5 ± 15.5 | +16.1 ± 13.2 |
 
-Overall by who went first (identical in both arms): deck first +16.7 ± 22.4 (n=18); deck second +18.2 ± 16.5 (n=22).
+Overall by who went first (identical in both arms): deck first +15.5 ± 15.5 (n=29); deck second +16.1 ± 13.2 (n=31).
 
 ### Per (deck, opponent) pair
 
@@ -32,6 +32,7 @@ Overall by who went first (identical in both arms): deck first +16.7 ± 22.4 (n=
 |---|---|---|---|---|---|
 | brew-07-hoopa-darkrai-sableye | t-altaria | 20 | 80.0% | 80.0% | +0.0 ± 12.3 |
 | brew-07-hoopa-darkrai-sableye | t-blaziken | 20 | 90.0% | 55.0% | +35.0 ± 21.4 |
+| brew-07-hoopa-darkrai-sableye | t-hydreigon | 20 | 85.0% | 72.5% | +12.5 ± 14.0 |
 
 ## Runtime and cost
 
@@ -39,12 +40,12 @@ Wall time is per game on this machine with the threads the run used; it includes
 
 | arm | role | pilot | games | wall per game: mean / median / p95 / max | games per second (1 thread) | decisions per game | ms per decision: mean / median / p95 / max | decision time per game |
 |---|---|---|---|---|---|---|---|---|
-| X | deck seat | `kx3` | 40 | 506.51 / 477.07 / 943.25 / 955.62 s | 0.00 | 25.2 | 20084.2 / 18456.1 / 40925.5 / 89230.0 | 8 min |
-| X | opponent seat | `km3` | 40 |  |  | 25.1 | 14.9 / 6.3 / 58.6 / 363.3 | 0.37 s |
-| ref | deck seat | `km3` | 40 | 0.57 / 0.53 / 1.22 / 1.34 s | 1.75 | 23.5 | 11.0 / 5.3 / 40.3 / 255.0 | 0.26 s |
-| ref | opponent seat | `km3` | 40 |  |  | 24.0 | 12.5 / 5.4 / 48.2 / 257.8 | 0.30 s |
+| X | deck seat | `kx3` | 60 | 537.89 / 529.74 / 955.62 / 979.11 s | 0.00 | 26.2 | 20515.2 / 18914.5 / 41293.2 / 102293.0 | 9 min |
+| X | opponent seat | `km3` | 60 |  |  | 25.8 | 14.6 / 6.6 / 56.4 / 363.3 | 0.38 s |
+| ref | deck seat | `km3` | 60 | 0.56 / 0.48 / 1.25 / 1.34 s | 1.80 | 24.6 | 10.1 / 4.9 / 37.5 / 255.0 | 0.25 s |
+| ref | opponent seat | `km3` | 60 |  |  | 24.8 | 11.8 / 5.2 / 45.5 / 257.8 | 0.29 s |
 
-One paired game (both arms) took 8 min on average; the run used 4 thread(s).
+One paired game (both arms) took 9 min on average; the run used 4 thread(s).
 
 ## What more precision would take
 
@@ -52,8 +53,8 @@ At the sd reached, the number of paired games for a given half-width is `(1.96·
 
 | scope | paired games so far | sd | interval now (points) | for ±5 points: total / more games, time | for ±3 points: total / more games, time |
 |---|---|---|---|---|---|
-| all decks pooled | 40 | 43.2 | +17.5 ± 13.4 | 287 / 247, 8.7 h | 797 / 757, 26.7 h |
-| brew-07-hoopa-darkrai-sableye | 40 | 43.2 | +17.5 ± 13.4 | 287 / 247, 8.7 h | 797 / 757, 26.7 h |
+| all decks pooled | 60 | 39.6 | +15.8 ± 10.0 | 241 / 181, 6.8 h | 669 / 609, 22.8 h |
+| brew-07-hoopa-darkrai-sableye | 60 | 39.6 | +15.8 ± 10.0 | 241 / 181, 6.8 h | 669 / 609, 22.8 h |
 
 ## Intended lines
 
