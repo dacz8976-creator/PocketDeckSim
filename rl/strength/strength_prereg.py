@@ -19,7 +19,9 @@ CONFIG.json (all keys but the first four optional):
                           sha256 was verified against program_sha256; and only when selfcheck_given_program_sha256 (the sha256 of the binary the text was
                           measured on: the pin's, or the program's own for a text replayed just now) equals that program's sha256, because a digest belongs to
                           the exact binary it was measured on. selfcheck_how 'replayed' makes the recorded source say the text was replayed on the registering machine
-                          (otherwise: copied from the pin). A spec not named here is still checked.
+                          (otherwise: copied from the pin); selfcheck_how 'record <path> <40-hex commit>' says it was accepted from a committed record (a record file
+                          or an earlier registration) of a replay by slow_report.py, not replayed at this registration, and is held to every check 'replayed' is.
+                          A spec not named here is still checked.
                           A given text is held to the committed pin: the pin that the slow_report block names (path and sha256) must be the
                           rl/strength/slow_report_pin.json committed at HEAD of --repo (only the test-only variable SLOW_REPORT_ALLOW_UNCOMMITTED_PIN lets the
                           file with that sha256 through), every given text must be the pin's own text for that pilot, and a copied (not replayed) text must be
@@ -263,6 +265,11 @@ def main():
     if given and cfg.get('selfcheck_given_program_sha256') != prog_sha:
         sys.exit(f'REFUSED: the self-check text was measured on a program with sha256 {str(cfg.get("selfcheck_given_program_sha256"))[:12]}, but the program at {prog} has sha256 '
                  f'{str(prog_sha)[:12]}: a digest belongs to the exact binary it was measured on, so the text cannot be recorded for this one (replay the self-check on it instead)')
+    how = cfg.get('selfcheck_how')
+    record_how = isinstance(how, str) and how.startswith('record ')
+    if record_how and not re.fullmatch(r'record \S+ [0-9a-f]{40}', how):
+        sys.exit(f"REFUSED: selfcheck_how {how!r} is not 'record <path> <40-hex commit>' (the committed record the text was accepted from, and the commit that has it). Nothing was written.")
+    replayed_like = how == 'replayed' or record_how  # a rebuild's own text, replayed just now or accepted from a committed record of a replay: held to the same checks
     block = cfg.get('slow_report') if stage == 'use' else None
     if block and (given or block.get('pin_committed') is not None or block.get('program_route') is not None):
         # a given text, a pin state and a program route are claims about the pin: held to the committed pin, so that no config can claim pinned provenance for a text, a state or a
@@ -274,7 +281,7 @@ def main():
             sys.exit(f'REFUSED: the config says the pin is {claimed!r} but strength_prereg.py finds it is {pin_state!r}. Nothing was written.')
         block['pin_committed'] = pin_state  # what this script found, whatever the config said (or left out)
         route = block.get('program_route')
-        if given and cfg.get('selfcheck_how') == 'replayed' and route not in ('pinned', 'rebuilt'):
+        if given and replayed_like and route not in ('pinned', 'rebuilt'):
             sys.exit('REFUSED: a replayed self-check text needs a program route (pinned or rebuilt) in the slow_report block, so that what it was replayed on can be checked. Nothing was written.')
         if route in ('pinned', 'rebuilt') and prog and os.path.isfile(prog):
             problem = route_problem(route, prog, prog_sha, pin, block)
@@ -285,7 +292,7 @@ def main():
             if pin_text != text:
                 sys.exit(f'REFUSED: the self-check text given for {spec} is not the text the pin has for it (given: {text}; pin: {pin_text if pin_text is not None else "none"}): '
                          'a text that is not the pin\'s cannot be recorded as the pin\'s. Nothing was written.')
-        if given and cfg.get('selfcheck_how') != 'replayed':  # a replayed text is a rebuild's own (slow_report.py checked it equals the pin's); a copied one belongs to the pinned binary
+        if given and not replayed_like:  # a replayed text is a rebuild's own (slow_report.py checked it equals the pin's); a copied one belongs to the pinned binary
             measured_on = pin.get('selfcheck_measured_on_sha256')
             if not measured_on:
                 sys.exit(f'REFUSED: the pin does not say which program its self-check texts were measured on, so they cannot be copied for the program at {prog} (a rebuild replays the self-checks instead). '
@@ -314,8 +321,14 @@ def main():
     selfcheck, selfcheck_source = {}, {}
     # only a pin recorded as committed is called the committed pin: a state that is missing is not "yes" (a given text always has it, found above)
     pin_phrase = 'the committed pin' if (cfg.get('slow_report') or {}).get('pin_committed') == 'yes' else 'the pin file in use, which is NOT the committed pin: test use'
-    given_source = (f'replayed by slow_report.py on the registering machine just before registration (equal to {pin_phrase})' if cfg.get('selfcheck_how') == 'replayed'
-                    else 'given in the config (copied from the pin, which says it was measured on this exact program sha256)')
+    if record_how:
+        rec_path, rec_commit = how.split(' ')[1:]
+        given_source = (f'accepted from the committed record {rec_path} (commit {rec_commit[:12]}): an earlier replay by slow_report.py of a program with this sha256, '
+                        f'equal to {pin_phrase}; not replayed at this registration')
+    elif how == 'replayed':
+        given_source = f'replayed by slow_report.py on the registering machine just before registration (equal to {pin_phrase})'
+    else:
+        given_source = 'given in the config (copied from the pin, which says it was measured on this exact program sha256)'
     if prog and os.path.isfile(prog):
         da, db = reg.get('t-altaria'), reg.get('t-suicune')
         for spec in sorted({cfg['pilot'], cfg['reference']}):
@@ -369,7 +382,8 @@ def main():
     for spec, txt in selfcheck.items():
         src = selfcheck_source.get(spec, '')
         how = (' (given in the config, copied from the pin and not replayed: the pin says it was measured on this exact program, whose sha256 is named above)' if src.startswith('given')
-               else f' (replayed by slow_report.py on the registering machine just before registration and equal to {pin_phrase})' if src.startswith('replayed') else '')
+               else f' (replayed by slow_report.py on the registering machine just before registration and equal to {pin_phrase})' if src.startswith('replayed')
+               else f' ({src})' if src.startswith('accepted from the committed record') else '')
         L.append(f"- Self-check of `{spec}` on this build (12 fixed games, t-altaria v t-suicune): `{txt}`{how}. The same pilot code on another build must print the same digest.")
     if stage != 'use':
         L.append('- An `ext:` pilot is an external process asked for every decision (PROTOCOL.md); it may be as slow as it likes. Nothing is a failure for being slow.\n')

@@ -1,0 +1,23 @@
+{
+ "worker": "w2",
+ "stamped_at": "2026-10-11T15:26:43Z",
+ "manifest_sha256": "39e0fb661352be861eec12d297d6e0bdb99539eddcd7f80370cfaaaee7cbb448",
+ "program_sha256": "6f137b74d52480999a57db47f38a9e428ddbf6e4103a1765ba618526be8fd487",
+ "only_deck": [
+  "t-hydreigon"
+ ],
+ "engine_tree": "38af8b0cc4f35fdccc647ed540a56ec8f5e6c1d5",
+ "build_record_program_sha256": "6f137b74d52480999a57db47f38a9e428ddbf6e4103a1765ba618526be8fd487",
+ "harness_source_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+ "decks_sha256": {
+  "t-altaria": "c3a57b9c835be77ba864514e2636645885c4f22d75028c5f29e2686edcbe171f",
+  "t-suicune": "639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783",
+  "t-hydreigon": "18688bd9ab09f2638538006590767a5750abe763572c0fb636c47eec93155f3b",
+  "t-blaziken": "d88a70e56dae8f8500d539348223b5fee5eaba705667578a8fcbca95963fd7ed"
+ },
+ "selfcheck": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1"
+ },
+ "manifest": "/home/user/PocketDeckSim/rl/results/split_runs_2026-10-09/registration/manifest.json",
+ "program": "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/oct11_proof/strength"
+}

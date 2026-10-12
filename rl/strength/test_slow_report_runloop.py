@@ -43,7 +43,7 @@ import test_slow_report as T  # noqa: E402  (World: a temporary repository with 
 
 UTC = datetime.timezone.utc
 ALARM_S = 10
-HEADLINE = '[kx3 (d513e37b) on my-list v km3 on the public panel]'
+HEADLINE = f'[{T.PILOT_LABEL} on my-list v km3 on the public panel]'
 
 
 def at(day, hour, minute=0, second=0, month=10):

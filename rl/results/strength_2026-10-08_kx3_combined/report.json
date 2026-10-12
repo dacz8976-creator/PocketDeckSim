@@ -1,0 +1,60 @@
+{
+ "manifest_sha256": "16fe75ad9e7c30a776202a2023d6f2b6b1e92be0189ab90928bec4029dd27c9a",
+ "stage": "dev",
+ "pilot": "kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64",
+ "reference": "km3",
+ "registration_changed": false,
+ "registration_problems": [],
+ "paired_games": 560,
+ "pooled": {
+  "n": 560,
+  "mean": 0.20535714285714285,
+  "sd": 0.4726583909237259,
+  "half": 0.0391479865119875
+ },
+ "per_deck": {
+  "09-mega-manectric-heliolisk": {
+   "n": 80,
+   "mean": 0.2375,
+   "sd": 0.45683972205311746,
+   "half": 0.10010941798662228
+  },
+  "06-mega-blaziken-tournament-list": {
+   "n": 80,
+   "mean": 0.15,
+   "sd": 0.4239656064388218,
+   "half": 0.09290555977967455
+  },
+  "10-xatu-oricorio-tr-weezing": {
+   "n": 80,
+   "mean": 0.125,
+   "sd": 0.40173673601413545,
+   "half": 0.08803444377707649
+  },
+  "03-wailord-indeedee-wall": {
+   "n": 80,
+   "mean": 0.0625,
+   "sd": 0.4526644047096472,
+   "half": 0.0991944612326742
+  },
+  "01-muk-glimmora-kingambit-regigigas": {
+   "n": 80,
+   "mean": 0.325,
+   "sd": 0.49746191254243755,
+   "half": 0.10901114796087066
+  },
+  "05-indeedee-stoutland": {
+   "n": 80,
+   "mean": 0.3,
+   "sd": 0.4878264891785846,
+   "half": 0.1068996927207813
+  },
+  "draft-A-shark-tempo": {
+   "n": 80,
+   "mean": 0.2375,
+   "sd": 0.5335277862812556,
+   "half": 0.11691443100496698
+  }
+ },
+ "exactly_zero": false
+}

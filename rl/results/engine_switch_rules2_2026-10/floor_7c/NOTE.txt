@@ -1,0 +1,12 @@
+Replays for rules switch 2's step 7c (sitting1.sh): floor.py's own call, unchanged, on the candidate's new deckgym
+(floor_with.py), one folder per page of floor_7c.tsv, compared with the recorded pages: floor_dustin_2026-09-30's km3 pages
+(02, 06, 08, 14 and 10, made on the Sept 30 engine), draft D's root page (floor_drafts_2026-10-02, made on rl/engine-2026-10-02
+from D's first list, copied here to d_first/ from the 9cc6667 blob) and D amended (floor_drafts_2026-10-02/draft-D_amended, today's
+list). Evidence only: these are not floor pages and carry no verdict to use. Their '- Engine:' line names the new program, a
+difference allowed by design; so is their '- Coverage from' line: the Sept 30 pages name rl/engine-2026-09-30/goldfish, while
+floor.py now takes the manifest's goldfish, rl/engine-2026-10-02/'s, so the replays name that one (the coverage files themselves
+are compared byte for byte). Deck 10's games against t-weezing may differ (Will with a Confused Xatu): reported, and a new page
+in step 15. The comparison is on every field of floor.py's per-game summary record (seed, seat, result, points, turns and the
+like), not on moves or decisions: the scans beside them carry those. Run as the recorded runs ran: no RAYON_NUM_THREADS (rayon's
+default, every logical CPU: 16 here); nice 10 (nice changes no game). A page that differs is
+replayed on the old deckgym too, into <page>/oldengine/ (PLAN.md step 7c).

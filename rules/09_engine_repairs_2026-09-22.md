@@ -58,7 +58,7 @@ Lethal Knock Back finishes its switch before the target is Knocked Out on the Be
 These rules remain source questions and were not settled by the code work:
 
 - the winner when a player's last Pokémon is Knocked Out in the exchange that gives that player a third point;
-- whether Burn precedes a Checkup healing Ability (Poison before Blessed Salt is observed; Burn order remains inferred), although all Checkup Knock Outs now wait until Checkup effects finish;
+- whether Burn precedes a Checkup healing Ability (settled since: Poison, then Burn and its coin, then Blessed Salt, observed in 010316 T15, `rules/03`), although all Checkup Knock Outs now wait until Checkup effects finish;
 - promotion order after a Checkup double Knock Out;
 - what happens when a card effect returns a card to an already full hand;
 - whether Weakness applies when an attack's damage has been reduced to zero before Weakness;
@@ -83,6 +83,10 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
      - The fork's `knock_back_attack` (`engine/src/actions/apply_attack_action.rs:4952`) has no lethal check.
      - **Not taken** (Dustin, Sept 30, the rules switch's question 10). It contradicts the official JP ruling the fork follows: a Pokémon moved to the Bench by a lethal Knock Back is Knocked Out on the Bench (`06_sources.md:124`; "Lethal Knock Back finishes its switch" above). It would also break `rules_repair_retaliation_timing.rs:136`.
 
+- **A hit back left by an attack ignores the Attacking Pokémon's own cards (found Oct 9; outside rules switch 2, for the next rules round).** The five "During your opponent's next turn, if this Pokémon is damaged by an attack, do X damage to the Attacking Pokémon" attacks (Cursed Jewel, Spike Armor, Bristling Spikes, Needle Lariat, Shell Trap) hit back with damage the game counts as damage from an attack for the attacker's own cut: Heavy Helmet cut Togedemaru's Bristling Spikes hit back from 30 to 10 [OBSERVED 20261009_223237000, Oct 9, a Solo rules test: Wailmer, Retreat Cost 3, Helmet attached; control in the same game, Spikes' own attack did 10 to it (03:05-03:10); after Wave Splash the Helmet glowed and the hit back showed 10 (03:32.5), Wailmer 90 to 80; no healing, evolution, retreat or Stadium in between; Shot List, captured Oct 9]. The engine applies every hit back as plain damage (`handle_attack_retaliation`, `engine/src/actions/apply_action_helpers.rs`:774 at main-c045ede, outside `modify_damage`), so no cut applies. Rules switch 2 (main-c045ede) added only Weakness (`02` §2): Dustin approved its scope without this case, which stays here unless he asks for it (`../rl/results/engine_switch_rules2_2026-10/PLAN.md`, Oct 9 status). By Dustin's card-text rule the same reading extends, each by its own wording, to the attacker's Disguise, Guts, Rescue Scarf, Lucky Egg and Rocky Helmet (`../rl/results/coin_prevention_round2_2026-10-01/P2_EVIDENCE_sonnet.md`, question 10); only Heavy Helmet is seen. The release package records that no list we play reaches it.
+
+## Fixed Oct 12 (rules switch 2, main-c045ede; plan and evidence in `rl/results/engine_switch_rules2_2026-10/`; the hit-back entry above stays open)
+
 - **What the Oct 1 rules switch left open: bugs against the plain card text, for the next rules switch.** The switch (main-8626a35) fixed the parts under "Fixed Oct 1" below; these remain. Dustin's rule (Oct 1, `../rl/RUN5.md`): "if there is a plain reading of the text, the engine build should go with that, unless there is contradicting evidence. Not the other way around". So each case is built on its card's plain text, and none waits for footage. Line numbers are at main-8626a35, whose `engine/` is the candidate 5a18d31's.
   1. **Some attacks still never flip a coin-flip damage Ability.** Carefree Steps, Celestial Blessing, Guarded Grill and Securely Sheltered read "If any damage is done to this Pokémon by attacks, flip a coin". These attacks still queue their damage as a plain `ApplyDamage` choice, which never flips it:
      - **Gyarados's Wild Swing**, whenever it can discard a Benched [W] Pokémon, with or without the discard. `discard_then_damage_choice` (`engine/src/actions/apply_attack_action.rs:311`) takes the coin path only for Chase Order. The game flips [OBSERVED 213822 T6, 150-154, Oct 1: Wild Swing into Meowth, Carefree Steps' coin, tails, 100 damage; DUSTIN: "Coin still applies. It is an attack"]. Pinned today by `wild_swing_into_carefree_steps_pins_todays_behaviour_no_coin` (`engine/tests/pokemon/meowth_carefree_steps_test.rs:390`).
@@ -96,8 +100,22 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   4. **Will is wasted on a Confused attacker.** Will reads "The next time you flip any number of coins for the effect of an attack, Ability, or Trainer card after using this card on this turn, the first coin flip will definitely be heads." The Confusion check is none of those, so Will waits for the attack's own first coin, and the game does exactly that [OBSERVED 210403 T14: the Confusion coin "Heads!" at 342.0-342.75, then Will's banner on Heat Charged's own coin screen at 347.25-347.95, and 3 heads at 352; DUSTIN: "Will does not apply on a re-roll or on confusion. It does apply on an attack after the confusion coin flip"]. The engine drops the coin record behind the Confusion coin (`prepend_nullifying_coin_gate`, `engine/src/actions/attack_outcome.rs:590-604`), so Will finds no coin to force (`outcomes.rs:489-491`; `apply_action.rs:675-688`), isn't used, and lapses at the end of the turn. This happens with or without Victini; it is older behaviour that the switch didn't touch. Fix it together with item 3: Will forces the attack's first coin, and a Victory Star reroll stays a fresh flip with no second Confusion check.
   5. **Two Ariados count as one.** Trap Territory reads "Your opponent's Active Pokémon's Retreat Cost is 1 more." on each Ariados, so two add 2 (same-name passive Abilities stack, `04` §5). The engine adds one Colorless for any number of them (`engine/src/hooks/retreat.rs:251-262`, the `break` at 260). The same capped cost feeds retreat, Heavy Helmet and attacks that count the Retreat Cost. In 213034 (T5, 117-124, Oct 1) Grass Knot did 160 to a Team Rocket's Moltres ex with two Ariados on the attacker's Bench: 40 + 30 × (printed 2 + 1 + 1), the only reading that fits (arithmetic, not a shown breakdown); the engine would deal 130. Every Ariados test uses one Ariados. Exposed: Dustin's deck 12 (two Ariados). Fix it with a two-Ariados test. It is outside the switch.
   - Sources: `../rl/results/rules_recordings_2026-10-01/READOUT.md` (§3b and §4); `../rl/results/engine_switch_rules_2026-10/PLAN.md` ("Known limits", repair A's "Still to do"); `../rl/results/engine_switch_rules_2026-10/README.md` (Dustin's rule on card text).
+  **Fixed in main-c045ede (Oct 12; rules switch 2, whose engine commit P is c7a25df4 on `claude/coin-prevention-round2`; each fix had its failing tests first), all five, each on its card's plain text:**
+  1. Wild Swing and the six other sites now flip the coin. Wild Swing, Wellspring Dance, Tornado Shot, Double Splash and Triple Bombardment, Mischievous Ring and Litter go through `coin_gated_choice` (e0ecf19f). Mega Kangaskhan ex's second punch does too, and the promotion still comes before it (29e126a8; F1, c7a25df4, for a copied punch). Any other attack's queued plain hit now flips as well (`forecast_apply_damage`, 46953bf3): that covers the own-Bench form's hit on the opponent's Active and a copied Chase Order or Wild Swing. The coin Abilities and Guts also answer an attack's damage to its own side's Pokémon (46953bf3; Guts, 3090abbb).
+  2. A block coin is a gate coin like the Confusion coin: flipped first and never offered for a reroll. On its heads, Victory Star is offered on the attack's own coins (46953bf3).
+  3. and 4. The Will carve-out is gone. Will waits through the Confusion coin and forces the attack's own first coin, and Victory Star is still offered with Will pending (27a0c37d). With a block coin, Will makes the block coin heads (it is flipped for the effect of an attack), and the attack's own coins stay fair (46953bf3).
+  5. Each Ariados adds its own 1 to the Retreat Cost, so two add 2 to retreat, Heavy Helmet and Grass Knot (`engine/src/hooks/retreat.rs`, 5155ff7a, with two-Ariados tests).
+  - Evidence: rules switch 2's replays and step 8c (`../rl/results/engine_switch_rules2_2026-10/README.md`). Every changed game was in a row named in advance, and each was accounted for. Each fix has a revert switch for that check (31616338); none is ever set in a recorded run.
 
-## Fixed Oct 1 (the rules switch, main-8626a35; plan and evidence in `rl/results/engine_switch_rules_2026-10/`; what stays open is the entry above)
+- **Also fixed in rules switch 2 (main-c045ede, Oct 12), with no entry here before**, each on its card's plain text (`../rl/results/engine_switch_rules2_2026-10/PLAN.md` sections 0 and 2; the commits in `engine_commits.tsv` there):
+  - **Guts** (Ursaluna B3b 058, Conkeldurr A3 096: "If this Pokémon would be Knocked Out by damage from an attack, flip a coin") flips for its own side's attack too (3090abbb).
+  - **Perish Body** (Galarian Cursola A4a 035) flips for an attack's plain queued hit that would Knock it Out in the Active Spot (3090abbb).
+  - **Luxury Coin** (Gholdengo B4a 051: "when you flip any coins for an effect of your Trainer cards") is no longer offered on the opponent's Stadium; a Stadium with no recorded player keeps the offer (3090abbb; its caveat text, P1, b8a8621a).
+  - **Fossils are Item cards** (`01`; `04` §6). An Item lock stops them (3090abbb), and the seven other places that read "Item card" count them (P3, 140c0be2): Scrounge-and-Scarf's hand discard, Team Rocket's Thieving Machine, the Item search of Arven and Order Pad, Junk Spark, Crackling Snap, Scavenge and Treasure Collecting. The bots' own Junk Spark estimate is unchanged, since `engine/src/players/` is.
+  - **Return damage left by an attack takes Weakness** (`02` §2; P2, 5543a4ba). The hit back from Cursed Jewel, Spike Armor, Bristling Spikes, Needle Lariat and Shell Trap gets +20 on an Active attacker weak to the holder's type, or is doubled under Bounded Field unless the holder is a Mega Evolution Pokémon ex (b0dc4844). A Tool's or an Ability's return damage stays flat.
+  - Victini's card-status caveat says what is implemented (3090abbb).
+
+## Fixed Oct 1 (the rules switch, main-8626a35; plan and evidence in `rl/results/engine_switch_rules_2026-10/`; what it left open was fixed Oct 12, the section above)
 
 - **Coin-flip damage cuts come off before Weakness** (found Sept 25, in the kd review). Guarded Grill (Bastiodon A2
   114, heads: −100) and Securely Sheltered (Hisuian Goodra B3b 050, heads: −80) are Abilities. The engine takes their
@@ -145,7 +163,7 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   Checkup damage still never flip. kd followed (F1, 160a9d4): its test is now
   `a_direct_damage_snipe_on_togekiss_flips_celestial_blessing`. Seen in Pocket on Oct 2 [OBSERVED 20261002_161342000,
   86-94 s; Codex/Sol review, Astra checked; DUSTIN]: Heatmor's Tongue Whip at a Benched Meowth (50 HP) brought up Carefree
-  Steps' coin, which landed heads, and Meowth took no damage. Still open (the entry above): Wild Swing,
+  Steps' coin, which landed heads, and Meowth took no damage. Left open then, and fixed Oct 12 (above): Wild Swing,
   `also_choice_bench_damage`'s own-Bench form, six other sites (seven attacks) and a copied Chase Order's discard
   branch. Sources:
   `../rl/results/coin_prevention_repair_2026-09-30/HELPERS.md` (the census) and
@@ -169,8 +187,8 @@ The accepted 225430 segment revealed that a zero-HP attacker was discarded befor
   does nothing and nothing is offered; on heads Victory Star is offered on the attack's own coins, with no second
   Confusion check (`victory_star_waits_for_confusion_heads`, `engine/src/actions/apply_attack_action.rs:117`). Seen a
   third time on Oct 1, the first time with a 0-heads original [OBSERVED 204634 T4, 184-205]. F2 (d479f01) rewrote
-  Victini's card-status caveat to match. Still open (the entry above): CoinFlipToBlockAttack and a pending Will, which
-  this switch kept on the old path; both are now plain-text bugs.
+  Victini's card-status caveat to match. Left open then: CoinFlipToBlockAttack and a pending Will, which this switch
+  kept on the old path; both were fixed Oct 12 on their plain text (above).
 
 ## Fixed Sept 26 (cloud branch `claude/pensive-ptolemy-spwc0b`; each its own commit, replays in `rl/results/rules09_fixes_2026-09-26/`; the laptop's repair list items 1 to 10)
 

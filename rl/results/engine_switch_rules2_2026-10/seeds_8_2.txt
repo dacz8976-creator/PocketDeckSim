@@ -1,0 +1,85 @@
+Rules switch 2, sitting 2's seeds (sitting2.sh, step 8-seeds), recorded and committed before any 8b or 8 game. seed = block + pairing x 10,000 + i, the same bot in both seats, the held list in seat 0 on even i (legality_scan --pairs; START_HERE's seed table: 23,100,000,000 for Oct 1's carriers and the cloud's 8b rows 32-37, 23,300,000,000 for switch 2's new rows).
+Rows by step (pairs file; held list v opponent; the row's block; seed ranges by bot):
+8b, the cloud's rows (engine_switch_rules2_2026-10/pairs_8b_cloud.tsv, pairings 32-37):
+  32: rl/results/engine_switch_rules_2026-10/scratch_8b/fire_victini.txt v rl/results/engine_switch_rules_2026-10/scratch_8b/psychic_confuse.txt (block 23,100,000,000): km3 i < 40: 23,100,320,000 - 23,100,320,039; k3 i < 40: 23,100,320,000 - 23,100,320,039
+  33: rl/results/engine_switch_rules_2026-10/scratch_8b/fire_heatmor.txt v rl/results/engine_switch_rules_2026-10/scratch_8b/meowth_carefree.txt (block 23,100,000,000): km3 i < 40: 23,100,330,000 - 23,100,330,039; k3 i < 40: 23,100,330,000 - 23,100,330,039
+  34: decks/screen/opponents/t-vespiquen.txt v rl/results/engine_switch_rules_2026-10/scratch_8b/meowth_carefree.txt (block 23,100,000,000): km3 i < 40: 23,100,340,000 - 23,100,340,039; k3 i < 40: 23,100,340,000 - 23,100,340,039
+  35: decks/screen/panel_ladder_2026-09-26/l-sharpedo.txt v rl/results/engine_switch_rules_2026-10/scratch_8b/meowth_carefree.txt (block 23,100,000,000): km3 i < 40: 23,100,350,000 - 23,100,350,039; k3 i < 40: 23,100,350,000 - 23,100,350,039
+  36: decks/brews/brew-07-hoopa-darkrai-sableye.txt v decks/screen/opponents/t-altaria.txt (block 23,100,000,000): km3 i < 40: 23,100,360,000 - 23,100,360,039; k3 i < 40: 23,100,360,000 - 23,100,360,039
+  37: decks/brews/brew-09-sableye-obstagoon.txt v decks/screen/opponents/t-altaria.txt (block 23,100,000,000): km3 i < 40: 23,100,370,000 - 23,100,370,039; k3 i < 40: 23,100,370,000 - 23,100,370,039
+8b, the new rows (engine_switch_rules2_2026-10/pairs_8b2.tsv, pairings 40-46):
+  40: decks/dustin/12-ariados-whimsicott-ogerpon.txt v decks/screen/opponents/t-weezing.txt (block 23,300,000,000): km3 i < 40: 23,300,400,000 - 23,300,400,039; k3 i < 40: 23,300,400,000 - 23,300,400,039
+  41: decks/dustin/12-ariados-whimsicott-ogerpon.txt v decks/screen/opponents/t-lucario.txt (block 23,300,000,000): km3 i < 40: 23,300,410,000 - 23,300,410,039; k3 i < 40: 23,300,410,000 - 23,300,410,039
+  42: decks/dustin/10-xatu-oricorio-tr-weezing.txt v decks/screen/opponents/t-weezing.txt (block 23,300,000,000): km3 i < 40: 23,300,420,000 - 23,300,420,039; k3 i < 40: 23,300,420,000 - 23,300,420,039
+  43: decks/brews/brew-04-xatu-slowking.txt v decks/screen/opponents/t-weezing.txt (block 23,300,000,000): km3 i < 40: 23,300,430,000 - 23,300,430,039; k3 i < 40: 23,300,430,000 - 23,300,430,039
+  44: rl/results/engine_switch_rules2_2026-10/scratch_8b2/water_round2.txt v rl/results/engine_switch_rules_2026-10/scratch_8b/meowth_carefree.txt (block 23,300,000,000): km3 i < 40: 23,300,440,000 - 23,300,440,039; k3 i < 40: 23,300,440,000 - 23,300,440,039
+  45: rl/results/engine_switch_rules_2026-10/carriers/alternates/houndoom_victini.txt v rl/results/kt_carrier_census_2026-09-26/decks/c-magnezone_ex_magnezone.txt (block 23,300,000,000): km3 i < 40: 23,300,450,000 - 23,300,450,039; k3 i < 40: 23,300,450,000 - 23,300,450,039
+  46: decks/dustin/10-xatu-oricorio-tr-weezing.txt v rl/results/kt_carrier_census_2026-09-26/decks/c-magnezone_ex_magnezone.txt (block 23,300,000,000): km3 i < 40: 23,300,460,000 - 23,300,460,039; k3 i < 40: 23,300,460,000 - 23,300,460,039
+8, Oct 1's carriers (engine_switch_rules_2026-10/pairs_8.tsv, pairings 0-31):
+  0: rl/results/engine_switch_rules_2026-10/carriers/garchomp_meowth.txt v decks/screen/opponents/t-altaria.txt (block 23,100,000,000): km3 i < 500: 23,100,000,000 - 23,100,000,499; k3 i < 250: 23,100,000,000 - 23,100,000,249
+  1: rl/results/engine_switch_rules_2026-10/carriers/garchomp_meowth.txt v decks/screen/opponents/t-blaziken.txt (block 23,100,000,000): km3 i < 500: 23,100,010,000 - 23,100,010,499; k3 i < 250: 23,100,010,000 - 23,100,010,249
+  2: rl/results/engine_switch_rules_2026-10/carriers/garchomp_meowth.txt v decks/screen/opponents/t-hydreigon.txt (block 23,100,000,000): km3 i < 500: 23,100,020,000 - 23,100,020,499; k3 i < 250: 23,100,020,000 - 23,100,020,249
+  3: rl/results/engine_switch_rules_2026-10/carriers/garchomp_meowth.txt v decks/screen/opponents/t-lucario.txt (block 23,100,000,000): km3 i < 500: 23,100,030,000 - 23,100,030,499; k3 i < 250: 23,100,030,000 - 23,100,030,249
+  4: rl/results/engine_switch_rules_2026-10/carriers/garchomp_meowth.txt v decks/screen/opponents/t-sceptile.txt (block 23,100,000,000): km3 i < 500: 23,100,040,000 - 23,100,040,499; k3 i < 250: 23,100,040,000 - 23,100,040,249
+  5: rl/results/engine_switch_rules_2026-10/carriers/garchomp_meowth.txt v decks/screen/opponents/t-suicune.txt (block 23,100,000,000): km3 i < 500: 23,100,050,000 - 23,100,050,499; k3 i < 250: 23,100,050,000 - 23,100,050,249
+  6: rl/results/engine_switch_rules_2026-10/carriers/garchomp_meowth.txt v decks/screen/opponents/t-vespiquen.txt (block 23,100,000,000): km3 i < 500: 23,100,060,000 - 23,100,060,499; k3 i < 250: 23,100,060,000 - 23,100,060,249
+  7: rl/results/engine_switch_rules_2026-10/carriers/garchomp_meowth.txt v decks/screen/opponents/t-weezing.txt (block 23,100,000,000): km3 i < 500: 23,100,070,000 - 23,100,070,499; k3 i < 250: 23,100,070,000 - 23,100,070,249
+  8: rl/results/engine_switch_rules_2026-10/carriers/alternates/togekiss_meowth.txt v decks/screen/opponents/t-altaria.txt (block 23,100,000,000): km3 i < 500: 23,100,080,000 - 23,100,080,499; k3 i < 250: 23,100,080,000 - 23,100,080,249
+  9: rl/results/engine_switch_rules_2026-10/carriers/alternates/togekiss_meowth.txt v decks/screen/opponents/t-blaziken.txt (block 23,100,000,000): km3 i < 500: 23,100,090,000 - 23,100,090,499; k3 i < 250: 23,100,090,000 - 23,100,090,249
+  10: rl/results/engine_switch_rules_2026-10/carriers/alternates/togekiss_meowth.txt v decks/screen/opponents/t-hydreigon.txt (block 23,100,000,000): km3 i < 500: 23,100,100,000 - 23,100,100,499; k3 i < 250: 23,100,100,000 - 23,100,100,249
+  11: rl/results/engine_switch_rules_2026-10/carriers/alternates/togekiss_meowth.txt v decks/screen/opponents/t-lucario.txt (block 23,100,000,000): km3 i < 500: 23,100,110,000 - 23,100,110,499; k3 i < 250: 23,100,110,000 - 23,100,110,249
+  12: rl/results/engine_switch_rules_2026-10/carriers/alternates/togekiss_meowth.txt v decks/screen/opponents/t-sceptile.txt (block 23,100,000,000): km3 i < 500: 23,100,120,000 - 23,100,120,499; k3 i < 250: 23,100,120,000 - 23,100,120,249
+  13: rl/results/engine_switch_rules_2026-10/carriers/alternates/togekiss_meowth.txt v decks/screen/opponents/t-suicune.txt (block 23,100,000,000): km3 i < 500: 23,100,130,000 - 23,100,130,499; k3 i < 250: 23,100,130,000 - 23,100,130,249
+  14: rl/results/engine_switch_rules_2026-10/carriers/alternates/togekiss_meowth.txt v decks/screen/opponents/t-vespiquen.txt (block 23,100,000,000): km3 i < 500: 23,100,140,000 - 23,100,140,499; k3 i < 250: 23,100,140,000 - 23,100,140,249
+  15: rl/results/engine_switch_rules_2026-10/carriers/alternates/togekiss_meowth.txt v decks/screen/opponents/t-weezing.txt (block 23,100,000,000): km3 i < 500: 23,100,150,000 - 23,100,150,499; k3 i < 250: 23,100,150,000 - 23,100,150,249
+  16: rl/results/engine_switch_rules_2026-10/carriers/alternates/hisuian_goodra.txt v decks/screen/opponents/t-altaria.txt (block 23,100,000,000): km3 i < 500: 23,100,160,000 - 23,100,160,499; k3 i < 250: 23,100,160,000 - 23,100,160,249
+  17: rl/results/engine_switch_rules_2026-10/carriers/alternates/hisuian_goodra.txt v decks/screen/opponents/t-blaziken.txt (block 23,100,000,000): km3 i < 500: 23,100,170,000 - 23,100,170,499; k3 i < 250: 23,100,170,000 - 23,100,170,249
+  18: rl/results/engine_switch_rules_2026-10/carriers/alternates/hisuian_goodra.txt v decks/screen/opponents/t-hydreigon.txt (block 23,100,000,000): km3 i < 500: 23,100,180,000 - 23,100,180,499; k3 i < 250: 23,100,180,000 - 23,100,180,249
+  19: rl/results/engine_switch_rules_2026-10/carriers/alternates/hisuian_goodra.txt v decks/screen/opponents/t-lucario.txt (block 23,100,000,000): km3 i < 500: 23,100,190,000 - 23,100,190,499; k3 i < 250: 23,100,190,000 - 23,100,190,249
+  20: rl/results/engine_switch_rules_2026-10/carriers/alternates/hisuian_goodra.txt v decks/screen/opponents/t-sceptile.txt (block 23,100,000,000): km3 i < 500: 23,100,200,000 - 23,100,200,499; k3 i < 250: 23,100,200,000 - 23,100,200,249
+  21: rl/results/engine_switch_rules_2026-10/carriers/alternates/hisuian_goodra.txt v decks/screen/opponents/t-suicune.txt (block 23,100,000,000): km3 i < 500: 23,100,210,000 - 23,100,210,499; k3 i < 250: 23,100,210,000 - 23,100,210,249
+  22: rl/results/engine_switch_rules_2026-10/carriers/alternates/hisuian_goodra.txt v decks/screen/opponents/t-vespiquen.txt (block 23,100,000,000): km3 i < 500: 23,100,220,000 - 23,100,220,499; k3 i < 250: 23,100,220,000 - 23,100,220,249
+  23: rl/results/engine_switch_rules_2026-10/carriers/alternates/hisuian_goodra.txt v decks/screen/opponents/t-weezing.txt (block 23,100,000,000): km3 i < 500: 23,100,230,000 - 23,100,230,499; k3 i < 250: 23,100,230,000 - 23,100,230,249
+  24: rl/results/engine_switch_rules_2026-10/carriers/alternates/houndoom_victini.txt v decks/screen/opponents/t-altaria.txt (block 23,100,000,000): km3 i < 500: 23,100,240,000 - 23,100,240,499; k3 i < 250: 23,100,240,000 - 23,100,240,249
+  25: rl/results/engine_switch_rules_2026-10/carriers/alternates/houndoom_victini.txt v decks/screen/opponents/t-blaziken.txt (block 23,100,000,000): km3 i < 500: 23,100,250,000 - 23,100,250,499; k3 i < 250: 23,100,250,000 - 23,100,250,249
+  26: rl/results/engine_switch_rules_2026-10/carriers/alternates/houndoom_victini.txt v decks/screen/opponents/t-hydreigon.txt (block 23,100,000,000): km3 i < 500: 23,100,260,000 - 23,100,260,499; k3 i < 250: 23,100,260,000 - 23,100,260,249
+  27: rl/results/engine_switch_rules_2026-10/carriers/alternates/houndoom_victini.txt v decks/screen/opponents/t-lucario.txt (block 23,100,000,000): km3 i < 500: 23,100,270,000 - 23,100,270,499; k3 i < 250: 23,100,270,000 - 23,100,270,249
+  28: rl/results/engine_switch_rules_2026-10/carriers/alternates/houndoom_victini.txt v decks/screen/opponents/t-sceptile.txt (block 23,100,000,000): km3 i < 500: 23,100,280,000 - 23,100,280,499; k3 i < 250: 23,100,280,000 - 23,100,280,249
+  29: rl/results/engine_switch_rules_2026-10/carriers/alternates/houndoom_victini.txt v decks/screen/opponents/t-suicune.txt (block 23,100,000,000): km3 i < 500: 23,100,290,000 - 23,100,290,499; k3 i < 250: 23,100,290,000 - 23,100,290,249
+  30: rl/results/engine_switch_rules_2026-10/carriers/alternates/houndoom_victini.txt v decks/screen/opponents/t-vespiquen.txt (block 23,100,000,000): km3 i < 500: 23,100,300,000 - 23,100,300,499; k3 i < 250: 23,100,300,000 - 23,100,300,249
+  31: rl/results/engine_switch_rules_2026-10/carriers/alternates/houndoom_victini.txt v decks/screen/opponents/t-weezing.txt (block 23,100,000,000): km3 i < 500: 23,100,310,000 - 23,100,310,499; k3 i < 250: 23,100,310,000 - 23,100,310,249
+8, the Will rows (engine_switch_rules2_2026-10/pairs_will.tsv, pairings 60-62):
+  60: decks/dustin/10-xatu-oricorio-tr-weezing.txt v decks/screen/opponents/t-weezing.txt (block 23,300,000,000): km3 i < 500: 23,300,600,000 - 23,300,600,499; k3 i < 250: 23,300,600,000 - 23,300,600,249
+  61: decks/brews/brew-01-arceus-crobat-xatu.txt v decks/screen/opponents/t-weezing.txt (block 23,300,000,000): km3 i < 500: 23,300,610,000 - 23,300,610,499; k3 i < 250: 23,300,610,000 - 23,300,610,249
+  62: decks/brews/brew-04-xatu-slowking.txt v decks/screen/opponents/t-weezing.txt (block 23,300,000,000): km3 i < 500: 23,300,620,000 - 23,300,620,499; k3 i < 250: 23,300,620,000 - 23,300,620,249
+Deck files (repository path, git blob id of the bytes on disk):
+  decks/brews/brew-01-arceus-crobat-xatu.txt 6df57fc0bf82a62c2425c65b6ba4f4414d3428dc
+  decks/brews/brew-04-xatu-slowking.txt fab9c8884c077647e8bd47cc042188c447dd529c
+  decks/brews/brew-07-hoopa-darkrai-sableye.txt ce1506978b1f25a8ab8f219f5eb43bf5afc1bf9d
+  decks/brews/brew-09-sableye-obstagoon.txt 65162e7ff888197d97b9307be12ae0527d1ce668
+  decks/dustin/10-xatu-oricorio-tr-weezing.txt cee34f8420703b028f08377e98d9721f623566dd
+  decks/dustin/12-ariados-whimsicott-ogerpon.txt dbc90f3387ae44f98badf88ba7535da0f8a040a8
+  decks/screen/opponents/t-altaria.txt bde3ec8bead0c7292ec9879cf058e826195d42b0
+  decks/screen/opponents/t-blaziken.txt 83fdf96504271e0074b3a93a2b2c9c1f99c12b1c
+  decks/screen/opponents/t-hydreigon.txt 8dbc3bd03649858f753719a5ea7425e1c3d7c06e
+  decks/screen/opponents/t-lucario.txt 45a643d6cc167fe88bb72aec5062d7d721f48193
+  decks/screen/opponents/t-sceptile.txt 12477c2422b898ca57beaec32e50b73c37fdd4b0
+  decks/screen/opponents/t-suicune.txt 4de2246fc6f88665bdbf7c82c28cbdefe50f8f8c
+  decks/screen/opponents/t-vespiquen.txt fb36fa1fe15cbacb8740ad1c1d5f2beb5f166dd0
+  decks/screen/opponents/t-weezing.txt 54e9e222b4bd1f3670f39f5c6779c3950b88a362
+  decks/screen/panel_ladder_2026-09-26/l-sharpedo.txt 34c28791effe9036451cd4901f97d517052ffc48
+  rl/results/engine_switch_rules2_2026-10/scratch_8b2/water_round2.txt 08cf5ecb9653a1f3b00e9bc8c04d45cd29c82ba7
+  rl/results/engine_switch_rules_2026-10/carriers/alternates/hisuian_goodra.txt f21212d6ef071322c22bdb1bc0a61639562a8bb6
+  rl/results/engine_switch_rules_2026-10/carriers/alternates/houndoom_victini.txt e78530111c591a249bfad650781a1890e280c32b
+  rl/results/engine_switch_rules_2026-10/carriers/alternates/togekiss_meowth.txt 14af182c3b0fecb75dcd6ee28d011c28e86a5f8f
+  rl/results/engine_switch_rules_2026-10/carriers/garchomp_meowth.txt ab8af3aee5de2cedac4b972bcf4ab8e5e83cbc2e
+  rl/results/engine_switch_rules_2026-10/scratch_8b/fire_heatmor.txt b40d1db3415abafed2b98166c4572a757de1dea2
+  rl/results/engine_switch_rules_2026-10/scratch_8b/fire_victini.txt 2589ce563d09eedcf11faa0d7e9f1d5a0d14ddf6
+  rl/results/engine_switch_rules_2026-10/scratch_8b/meowth_carefree.txt 26815670db336f3d49c642d0ddaf2abf7c00bc64
+  rl/results/engine_switch_rules_2026-10/scratch_8b/psychic_confuse.txt cc8e6b8f7bf6bbff0d29a2bb02c22d4ba9e6672f
+  rl/results/kt_carrier_census_2026-09-26/decks/c-magnezone_ex_magnezone.txt a976b0db9ece7e4116603e61ae2c9462b5f3fcbe
+Reused games, the old side of step 8's carriers and 8b's rows 32-35 (Oct 1's recorded new-engine games, reuse.tsv; path, sha256 read now, games, bot, pairings, deals):
+  rl/results/engine_switch_rules_2026-10/5a18d31_8_new_km3.jsonl 22ac692917ecbd0cc0f29b05165cb68a49ea58854d0cd4b05d8a59485f508f71 16000 games, km3, pairings 0-31, i < 500
+  rl/results/engine_switch_rules_2026-10/5a18d31_8_new_k3.jsonl 64dc6dcc38711279ab5332850d388a0d7840f85e8de1875c99a43bc8b7cc68b3 8000 games, k3, pairings 0-31, i < 250
+  rl/results/engine_switch_rules_2026-10/5a18d31_8b_new_km3.jsonl bf5405377a887ac9afb379b1a45573647720c07928ea989b1d56698c07577eff 160 games, km3, pairings 32-35, i < 40
+  rl/results/engine_switch_rules_2026-10/5a18d31_8b_new_k3.jsonl 2d4ad0b4fa2d500b3c220c64cdacbfe967259250268da9fbe1721036442b65ec 160 games, k3, pairings 32-35, i < 40

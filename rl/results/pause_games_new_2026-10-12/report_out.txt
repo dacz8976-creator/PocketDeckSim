@@ -1,0 +1,196 @@
+121 positions; 115 with a recorded plan; {'differ': 52, 'agree': 55, 'split': 8} ; same plan in >=10/12: 32
+  37  Supporter/Item choice or order
+  36  same plan
+   9  evolution timing/target
+   8  Energy attachment timing
+   7  bench development
+   6  retreat/promotion
+   6  same actions, different order
+   2  attack vs another action
+   1  attack choice
+   1  Energy attachment target
+   1  Tool placement
+   1  ability use
+by kind (a position can carry several):
+  39  Supporter/Item choice or order
+  28  Energy attachment timing
+  20  attack vs another action
+  19  evolution timing/target
+  15  retreat/promotion
+  14  Energy attachment target
+  14  Tool placement
+  11  ability use
+   8  bench development
+   5  attack choice
+first point where the modal plan parts from his (his step kind -> km3 step kind):
+  17  his Play      -> km3 Play
+   6  his Evolve    -> km3 Retreat
+   5  his Play      -> km3 Evolve
+   5  his Play      -> km3 Attach
+   5  his Attach    -> km3 Play
+   5  his Play      -> km3 Place
+   5  his Evolve    -> km3 Evolve
+   4  his Attach    -> km3 Attack
+   3  his Evolve    -> km3 Play
+   3  his Play      -> km3 Retreat
+   2  his Place     -> km3 Evolve
+   2  his Place     -> km3 Play
+   2  his Retreat   -> km3 Attach
+   2  his Attach    -> km3 Attach
+   1  his Attach    -> km3 Evolve
+   1  his Place     -> km3 Attach
+   1  his Attach    -> km3 Retreat
+   1  his Place     -> km3 Place
+   1  his Attach    -> km3 Place
+   1  his Attach    -> km3 other
+   1  his Ability   -> km3 Place
+   1  his end       -> km3 Attack
+   1  his Play      -> km3 end
+   1  his Tool      -> km3 Tool
+   1  his Attach    -> km3 Ability
+   1  his Attack    -> km3 Play
+   1  his Retreat   -> km3 Attack
+positions where the plans agree entirely (modal): 36
+attack, where both plans run to the end of the turn:
+  60  unknown (a plan is cut before its end)
+  27  same attack
+  13  neither attacks
+   7  km3 attacks, he does not
+   5  different attack
+   3  he attacks, km3 does not
+first action, his kind -> km3 modal first kind (positions where the first actions differ in more than 2/12 seeds of agreement):
+  17  his Play      -> km3 Play
+   5  his Play      -> km3 Evolve
+   5  his Evolve    -> km3 Retreat
+   5  his Play      -> km3 Place
+   4  his Evolve    -> km3 Evolve
+   3  his Evolve    -> km3 Play
+   3  his Attach    -> km3 Play
+   2  his Place     -> km3 Evolve
+   2  his Place     -> km3 Play
+   2  his Retreat   -> km3 Attach
+   2  his Play      -> km3 Attach
+   2  his Play      -> km3 Retreat
+   1  his Attach    -> km3 Evolve
+   1  his Place     -> km3 Attach
+   1  his Attach    -> km3 Retreat
+   1  his Place     -> km3 Place
+   1  his Attach    -> km3 Place
+   1  his Ability   -> km3 Place
+   1  his Retreat   -> km3 Attack
+   1  his Attach    -> km3 Attack
+KW-261004_213625000-t01      differ  first  2/12 plan  2/12 | Supporter/Item choice or order | his [-] ↔ km3 [Play:Fragrant Forest, Play:Lucky Ice Pop]
+KW-261004_213625000-t03      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [-] ↔ km3 [Play:Lucky Ice Pop]
+KW-261004_213625000-t05      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Poké Ball] ↔ km3 [Evolve:Butterfree@0, Ability, Attach:1Grass@0 zone, UseStadium]
+KW-261004_213625000-t07      differ  first  0/12 plan  0/12 | evolution timing/target | his [Evolve:Accelgor@1, Attach:1Grass@1 zone, Attack:Gust] ↔ km3 [Retreat:1, Evolve:Accelgor@0, Attach:1Grass@0 zone, Ability, Attack:Deck and Cover, ShuffleInP
+KW-261004_213625000-t09      agree   first 12/12 plan  0/12 | retreat/promotion | his [-] ↔ km3 [Attach:1Grass@0 zone, Ability, Retreat:1, UseStadium]; his [Attach:1Grass@0 zone, Attack:Gust] ↔ km3 [-]
+KW-261004_213625000-t11      differ  first  0/12 plan  0/12 | Energy attachment timing | his [Attach:1Grass@1 zone] ↔ km3 [-]; his [Play:Poké Ball] ↔ km3 [Play:Professor's Research]
+KW-261005_003547000-t01      split   first  6/12 plan  6/12 | same plan | 
+KW-261005_003547000-t03      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Wallace] ↔ km3 [Evolve:Mega Sharpedo ex@1]; his [Play:Lucky Ice Pop, Attach:1Water@0 zone] ↔ km3 [Play:Copycat]
+KW-261005_003547000-t05      split   first  4/12 plan  0/12 | Supporter/Item choice or order | his [Play:Lucky Ice Pop, Play:Lucky Ice Pop] ↔ km3 [-]
+KW-261005_003547000-t07      differ  first  0/12 plan  0/12 | evolution timing/target | his [Evolve:Wailord@2] ↔ km3 [-]
+KW-261005_003547000-t09      differ  first  0/12 plan  0/12 | same actions, different order | order: his Attach:1Water@0 zone → Play:Irida → Attack:Whale Pump | km3 Play:Irida → Attach:1Water@0 zone → Attack:Whale Pump
+KW-261005_003547000-t11      differ  first  0/12 plan  0/12 | bench development | his [Place:Carvanha] ↔ km3 [-]; his [-] ↔ km3 [Place:Suicune ex]; his [-] ↔ km3 [Attach:1Water@1 fx]
+KW-261005_003547000-t13      differ  first  0/12 plan  0/12 | retreat/promotion | his [-] ↔ km3 [Retreat:2]; his [Retreat:1] ↔ km3 [-]; his [Attack:Turbo Shark] ↔ km3 [-]
+KW-261005_031138000-t02      agree   first 12/12 plan 10/12 | same plan | 
+KW-261005_031138000-t04      agree   first 12/12 plan 12/12 | same plan | 
+KW-261005_031138000-t06      differ  first  0/12 plan  0/12 | same actions, different order | order: his Place:Togepi → Evolve:Hatterene@1 → Retreat:1 → Attach:1Psychic@0 zone → Attack:Mental Crush | km3 Evolve:Hatterene@1 → Retreat:1 → Place:Togepi → At
+KW-261005_032023000-t02      agree   first 12/12 plan 12/12 | same plan | 
+KW-261005_032023000-t04      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [-] ↔ km3 [Play:Lucky Ice Pop]; his [Play:Lucky Ice Pop, Attach:1Metal@1 zone] ↔ km3 [Attach:1Metal@0 zone, Play:Metal Core Barrier, Tool:Metal Core Barrier
+KW-261005_032023000-t06      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Poké Ball] ↔ km3 [Play:Lucky Ice Pop, Attach:1Metal@0 zone, Play:Metal Core Barrier, Tool:Metal Core Barrier@0, Attack:Lunge Out]
+KW-261005_032023000-t08      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Attach:1Metal@2 zone, Attack:Lunge Out] ↔ km3 [Retreat:1, Attach:1Metal@0 zone, Play:Metal Core Barrier, Tool:Metal Core Barrier@0, Attack:Pierce]
+KW-261005_032023000-t10      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Retreat:1, Play:Lucky Ice Pop, Play:Lucky Ice Pop, Play:Lucky Ice Pop] ↔ km3 [Attach:1Metal@0 zone]; his [Attach:1Metal@2 zone, Attack:Pierce] ↔ km3 [Attac
+KW-261005_032023000-t12      agree   first 12/12 plan 12/12 | same plan | 
+KW-261005_032857000-t02      agree   first 12/12 plan 12/12 | same plan | 
+KW-261005_032857000-t04      agree   first 12/12 plan 12/12 | same plan | 
+KW-261005_032857000-t06      agree   first 12/12 plan  0/12 | Supporter/Item choice or order | his [-] ↔ km3 [Play:Lucky Ice Pop, Play:Lucky Ice Pop, Attach:1Metal@0 zone]; his [Attach:1Metal@0 zone] ↔ km3 [-]
+KW-261005_032857000-t08      agree   first 12/12 plan 12/12 | same plan | 
+KW-261005_033529000-t03      agree   first 12/12 plan 12/12 | same plan | 
+KW-261005_033529000-t05      agree   first 12/12 plan 12/12 | same plan | 
+KW-261005_033529000-t07      agree   first 12/12 plan  0/12 | Energy attachment timing | his [Attach:1Metal@2 zone] ↔ km3 [-]
+KW-261005_033529000-t09      differ  first  0/12 plan  0/12 | same actions, different order | order: his Place:Honedge → Play:Lucky Ice Pop → Play:Lucky Ice Pop → Play:Metal Core Barrier → Tool:Metal Core Barrier@0 → Attach:1Metal@0 zone → Attack:Steel W
+KW-261005_034953000-t02      differ  first  0/12 plan  0/12 | same actions, different order | order: his Place:Meltan → Place:Honedge → Attach:1Metal@0 zone → Attack:Tackle | km3 Place:Honedge → Place:Meltan → Attach:1Metal@0 zone → Attack:Tackle
+KW-261005_034953000-t04      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [-] ↔ km3 [Play:Steel Apron, Tool:Steel Apron@0]; his [Play:Steel Apron, Tool:Steel Apron@2] ↔ km3 [-]
+KW-261005_034953000-t06      differ  first  0/12 plan  0/12 | evolution timing/target | his [Evolve:Magneton@0, Attach:1Metal@2 zone] ↔ km3 [Retreat:2, Evolve:Magneton@2, Attach:1Metal@0 zone]
+KW-261005_034953000-t08      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Attach:1Metal@0 zone, Attack:Rolling Attack] ↔ km3 [Play:Steel Apron, Tool:Steel Apron@0, Attach:1Metal@2 zone]
+KW-261005_034953000-t10      differ  first  0/12 plan  0/12 | retreat/promotion | his [-] ↔ km3 [Retreat:2]; his [Attach:1Metal@2 zone, Attack:Rolling Attack] ↔ km3 [Attach:1Metal@0 zone, Attack:Headbutt]
+KW-261005_034953000-t12      agree   first 12/12 plan  0/12 | attack choice | his [Attach:1Metal@0 zone, Attack:Metal Arms] ↔ km3 [Attach:1Metal@1 zone, Attack:Headbutt]
+KW-261005_034953000-t14      agree   first 12/12 plan  0/12 | Supporter/Item choice or order | his [Play:Steel Apron, Tool:Steel Apron@2, Attach:1Metal@2 zone] ↔ km3 [Attach:1Metal@1 zone]
+KW-261005_123812000-t01      agree   first 12/12 plan 12/12 | same plan | 
+KW-261005_123812000-t03      differ  first  0/12 plan  0/12 | bench development | his [-] ↔ km3 [Place:Darkrai ex]; his [Play:Poison Barb, Tool:Poison Barb@1] ↔ km3 [-]
+KW-261005_123812000-t05      differ  first  0/12 plan  0/12 | bench development | his [-] ↔ km3 [Place:Darkrai ex]
+KW-261005_123812000-t07      split   first  4/12 plan  4/12 | bench development | his [-] ↔ km3 [Place:Darkrai ex]
+KW-261005_123812000-t09      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Poké Ball] ↔ km3 [Place:Darkrai ex, Attach:1Darkness@3 zone, Play:Heavy Helmet, Tool:Heavy Helmet@0, Attack:Peck]
+KW-261005_124532000-t01      agree   first 12/12 plan 12/12 | same plan | 
+KW-261005_124532000-t03      agree   first 12/12 plan 12/12 | same plan | 
+KW-261005_124532000-t05      agree   first 12/12 plan 12/12 | same plan | 
+KW-261005_124532000-t07      agree   first 12/12 plan 12/12 | same plan | 
+KW-261005_183108000-t03      agree   first 12/12 plan  0/12 | Supporter/Item choice or order | his [Attach:1Darkness@0 zone, Attack:Poison Sting] ↔ km3 [Play:Copycat]
+KW-261005_183108000-t05      agree   first 12/12 plan  0/12 | Supporter/Item choice or order | his [Play:Wally, Play:Deceptive Needle, Tool:Deceptive Needle@1, Attach:1Darkness@1 zone, Attack:Venoshock] ↔ km3 [Play:Copycat]
+KW-261005_183108000-t07      agree   first 12/12 plan  8/12 | same plan | 
+KW-261005_183108000-t09      differ  first  0/12 plan  0/12 | bench development | his [-] ↔ km3 [Place:Mega Sableye ex]; his [Place:Mega Sableye ex, Attach:1Darkness@1 zone] ↔ km3 [Attach:1Darkness@3 zone]
+KW-261006_012927000-t02      agree   first 12/12 plan 12/12 | same plan | 
+KW-261006_012927000-t04      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [-] ↔ km3 [Evolve:Persian@0, Play:Lucky Ice Pop]; his [Evolve:Persian@1, Play:Copycat] ↔ km3 [Attach:1Darkness@0 zone, Attack:Shadow Claw]
+KW-261006_012927000-t06      agree   first 12/12 plan  0/12 | Energy attachment target | his [Attach:1Grass@1 zone] ↔ km3 [DiscardToolFromPokemon, Attach:1Grass@0 zone]
+KW-261006_012927000-t08      agree   first 12/12 plan 12/12 | same plan | 
+KW-261006_012927000-t10      differ  first  0/12 plan  0/12 | bench development | his [Ability] ↔ km3 [Place:Type: Null]; his [Retreat:1] ↔ km3 [-]; his [Place:Type: Null] ↔ km3 [Attack:Prism Impact]
+KW-261006_020518000-t03      differ  first  0/12 plan  0/12 | same actions, different order | order: his Play:Lucky Ice Pop → Evolve:Sandslash@0 → Attach:1Fighting@0 zone → Attack:Fury Swipes | km3 Evolve:Sandslash@0 → Play:Lucky Ice Pop → Attach:1Fighti
+KW-261006_020518000-t05      agree   first 12/12 plan 12/12 | same plan | 
+KW-261006_020518000-t07      agree   first 12/12 plan  0/12 | Energy attachment timing | his [Attach:1Fighting@0 zone] ↔ km3 [-]
+KW-261006_020518000-t09      agree   first 12/12 plan 12/12 | same plan | 
+KW-261006_020518000-t11      agree   first 12/12 plan  0/12 | Energy attachment timing | his [-] ↔ km3 [Attach:1Fighting@2 zone]; his [Attach:1Fighting@2 zone] ↔ km3 [Attach:1Colorless@2 fx]
+KW-261006_020518000-t15      agree   first 12/12 plan 12/12 | same plan | 
+KW-261006_020518000-t17      agree   first 12/12 plan 12/12 | same plan | 
+KW-261010_012303000-t01      agree   first 12/12 plan 12/12 | same plan | 
+KW-261010_012303000-t03      agree   first 12/12 plan  0/12 | attack vs another action | his [Attach:1Fighting@2 zone] ↔ km3 [Attach:1Fighting@0 zone, Attack:Headbutt]
+KW-261010_012303000-t05      agree   first 12/12 plan 12/12 | same plan | 
+KW-261010_012303000-t07      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Wally, Attach:1Fighting@2 zone] ↔ km3 [Attach:1Fighting@0 zone]
+KW-261010_012303000-t09      agree   first 12/12 plan  0/12 | attack vs another action | his [-] ↔ km3 [Attack:Strength]
+KW-261010_012303000-t11      differ  first  0/12 plan  0/12 | same actions, different order | order: his Evolve:Garganacl@1 → Evolve:Conkeldurr@0 → Attach:1Fighting@0 zone → Attack:Mega Punch | km3 Evolve:Conkeldurr@0 → Evolve:Garganacl@1 → Attach:1Fight
+KW-261010_013009000-t01      split   first  9/12 plan  9/12 | same plan | 
+KW-261010_013009000-t03      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Evolve:Gurdurr@0] ↔ km3 [Play:Rare Candy, Evolve:Conkeldurr@0, Evolve:Gurdurr@1]; his [Play:Rare Candy, Evolve:Conkeldurr@1, Play:Copycat] ↔ km3 [-]
+KW-261010_013009000-t05      split   first  3/12 plan  3/12 | Supporter/Item choice or order | his [Play:Professor's Research] ↔ km3 [Play:Wally, Attach:1Colorless@1 fx, Attach:1Fighting@0 zone, Attack:Strength]
+KW-261010_013009000-t07      differ  first  0/12 plan  0/12 | retreat/promotion | his [Retreat:1] ↔ km3 [-]; his [-] ↔ km3 [Attach:1Colorless@1 fx, Attack:Strength]
+KW-261010_013009000-t09      agree   first 12/12 plan 12/12 | same plan | 
+KW-261010_013009000-t11      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Wally] ↔ km3 [Play:Arena of Antiquity]; his [Play:Arena of Antiquity] ↔ km3 [-]
+KW-261010_013009000-t13      agree   first 12/12 plan  0/12 | Supporter/Item choice or order | his [Play:Wally] ↔ km3 [-]
+KW-261010_013009000-t15      differ  first  0/12 plan  0/12 | Energy attachment timing | his [-] ↔ km3 [Attach:1Fighting@0 zone]; his [Attach:1Fighting@0 zone] ↔ km3 [Attack:Land Crush]
+KW-261010_014541000-t01      agree   first 12/12 plan  0/12 | Tool placement | his [Tool:Small Balloon@1] ↔ km3 [Tool:Small Balloon@0]
+KW-261010_014541000-t03      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Poké Ball] ↔ km3 [Retreat:1]
+KW-261010_014541000-t05      agree   first 12/12 plan 12/12 | same plan | 
+KW-261010_014541000-t07      agree   first 12/12 plan 12/12 | same plan | 
+KW-261010_015452000-t01      split   first  5/12 plan  5/12 | Supporter/Item choice or order | his [-] ↔ km3 [Play:Small Balloon, Tool:Small Balloon@0]
+KW-261010_015452000-t03      agree   first 12/12 plan  0/12 | evolution timing/target | his [Evolve:Team Rocket's Weezing ex@1] ↔ km3 [Evolve:Team Rocket's Weezing ex@2, Ability]
+KW-261010_015821000-t01      split   first  6/12 plan  6/12 | Supporter/Item choice or order | his [-] ↔ km3 [Play:Small Balloon, Tool:Small Balloon@0]
+KW-261010_015821000-t03      agree   first 12/12 plan  0/12 | Supporter/Item choice or order | his [Play:Sabrina] ↔ km3 [Retreat:3, Evolve:Team Rocket's Weezing ex@3, Ability, Attach:1Water@0 zone, Attack:Hook]
+KW-261010_015821000-t05      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [-] ↔ km3 [Play:Rare Candy, Evolve:Kingdra ex@0]
+KW-261010_020258000-t02      differ  first  1/12 plan  0/12 | Supporter/Item choice or order | his [Play:Small Balloon, Tool:Small Balloon@0, Play:Hiking Trail] ↔ km3 [-]
+KW-261010_020258000-t04      agree   first 12/12 plan  0/12 | ability use | his [-] ↔ km3 [Ability]
+KW-261010_020258000-t06      differ  first  0/12 plan  0/12 | bench development | his [-] ↔ km3 [Place:Team Rocket's Koffing]
+KW-261010_020258000-t08      agree   first 12/12 plan 12/12 | same plan | 
+KW-261010_020908000-t02      agree   first 12/12 plan  0/12 | Supporter/Item choice or order | his [-] ↔ km3 [Play:Soothing Shore]
+KW-261010_020908000-t04      differ  first  0/12 plan  0/12 | evolution timing/target | his [Evolve:Seadra@0, Evolve:Team Rocket's Weezing ex@1] ↔ km3 [Evolve:Team Rocket's Weezing ex@2, Ability, Evolve:Seadra@3]; his [-] ↔ km3 [Attack:Hook]
+KW-261010_020908000-t06      differ  first  0/12 plan  0/12 | evolution timing/target | his [-] ↔ km3 [Evolve:Kingdra ex@0]
+KW-261010_021629000-t02      agree   first 12/12 plan  0/12 | Supporter/Item choice or order | his [-] ↔ km3 [Play:Small Balloon, Tool:Small Balloon@0]
+KW-261010_021629000-t04      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Poké Ball] ↔ km3 [Play:Rare Candy]
+KW-261010_021629000-t06      agree   first 12/12 plan 12/12 | same plan | 
+KW-261010_021629000-t08      agree   first 12/12 plan 12/12 | same plan | 
+KW-261010_021629000-t10      agree   first 12/12 plan 12/12 | same plan | 
+KW-261010_021629000-t12      differ  first  0/12 plan  0/12 | evolution timing/target | his [Evolve:Kingdra ex@2, Attach:1Water@0 zone] ↔ km3 [-]; his [-] ↔ km3 [Evolve:Kingdra ex@0, Attach:1Water@2 zone]
+KW-261010_021629000-t14      agree   first 12/12 plan  0/12 | Energy attachment timing | his [Attach:1Water@2 zone] ↔ km3 [-]
+KW-261010_021629000-t16      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Poké Ball] ↔ km3 [Evolve:Team Rocket's Weezing ex@3, Ability, Attack:Stormy Prison]
+KW-261010_021629000-t18      agree   first 12/12 plan 12/12 | same plan | 
+KW-261010_021629000-t20      agree   first 12/12 plan  0/12 | Energy attachment timing | his [Attach:1Water@0 zone] ↔ km3 [-]
+KW-261010_021629000-t22      differ  first  0/12 plan  0/12 | retreat/promotion | his [Retreat:2, Attach:1Water@0 zone] ↔ km3 [-]
+KW-261010_021629000-t24      differ  first  0/12 plan  0/12 | Energy attachment timing | his [Attach:1Water@2 zone] ↔ km3 [-]
+KW-261012_003458000-t01      split   first  7/12 plan  7/12 | same plan | 
+KW-261012_003458000-t03      differ  first  0/12 plan  0/12 | evolution timing/target | his [Evolve:Seadra@0, Attach:1Water@0 zone] ↔ km3 [Evolve:Seadra@1]
+KW-261012_003458000-t05      differ  first  0/12 plan  0/12 | retreat/promotion | his [-] ↔ km3 [Retreat:1]
+KW-261012_003458000-t07      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Hiking Trail, Evolve:Team Rocket's Weezing ex@2, Ability, Attach:1Water@1 zone, Attack:Stormy Prison] ↔ km3 [Play:Sabrina]
+KW-261012_003458000-t09      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Attach:1Water@1 zone, Attack:Stormy Prison] ↔ km3 [Play:Sabrina]
+KW-261012_004128000-t02      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Soothing Shore] ↔ km3 [-]
+KW-261012_004128000-t04      agree   first 12/12 plan 12/12 | same plan | 
+KW-261012_004435000-t02      agree   first 12/12 plan 12/12 | same plan | 
+KW-261012_004435000-t04      agree   first 12/12 plan  0/12 | Supporter/Item choice or order | his [Evolve:Team Rocket's Weezing ex@0, Attach:1Water@1 zone, Play:Hiking Trail] ↔ km3 [Retreat:3, Evolve:Team Rocket's Weezing ex@3, Ability, Attach:1Water@0 z
+KW-261012_004435000-t06      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [-] ↔ km3 [Play:Rare Candy, Evolve:Kingdra ex@1]
+KW-261012_004435000-t08      differ  first  0/12 plan  0/12 | evolution timing/target | his [-] ↔ km3 [Evolve:Kingdra ex@1, Attach:1Water@0 zone, Retreat:1]; his [Evolve:Kingdra ex@1] ↔ km3 [-]

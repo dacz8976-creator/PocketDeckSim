@@ -209,6 +209,8 @@ These are seen unless marked. Engine references are at 5a18d31 and unchanged on 
 
 ### 3b. The simulator differs (each a candidate repair; none is part of this switch)
 
+**All four are fixed since main-c045ede (rules switch 2, Oct 12; `rules/09`, "Fixed Oct 12").** The status lines below are as of Oct 1.
+
 1. **Victory Star offer, Confused attacker with Will pending**
    - Where: 210403 T14, 354-355. Seen.
    - Simulator: no offer, today and in the switch.
@@ -282,6 +284,8 @@ The plain text decides, and the engine already follows it. The replacement wordi
 
 ### At the pin's step 13 (documents)
 
+**Done at the Oct 1 pin** (24374a00, main-8626a35; `../engine_switch_rules_2026-10/pin/docs/CHANGES.md`). The list below is what it asked for.
+
 **rules/09**, the three entries at lines 85-128:
 - Mark these fixed: Victory Star after a Confusion heads (A), the cut's order, the six helpers' queued choices, and Chase Order.
 - The open entry keeps the switch's list, with today's evidence added:
@@ -315,6 +319,7 @@ The plain text decides, and the engine already follows it. The replacement wordi
 - The F4 test's comment (b4a_attack_batch2_test.rs ~432-433, "which coin Will turns to heads there has not been seen in Pocket") now has its Confusion-coin half answered.
 - card_validation.rs:97's caveat.
 - Both sit in switch files. Leave them for the next switch, not R.
+- **Done in rules switch 2 (main-c045ede, Oct 12).** The F4 test and its comment are gone: `confusion_with_will_pending_forces_the_attacks_first_coin_and_still_offers_victory_star` (`b4a_attack_batch2_test.rs`:456 there) tests the answered case. Victini's caveat (`card_validation.rs`:97-98 there) now says what is implemented: the gate coins first, Will to a block coin or else to the attack's own first coin, and a reroll as a fresh batch.
 
 ### Shot-list rows worth adding or updating
 
@@ -327,6 +332,8 @@ Under Dustin's Oct 1 rule, plain card text decides, so no new rows are needed to
 - **guarded-grill-after-weakness** asks about an order no card states (a heads cut against Weakness), so it stays a real question.
 
 ### Open cases for the next rules switch
+
+**All four are done in rules switch 2 (main-c045ede, Oct 12; `rules/09`, "Fixed Oct 12").** Its plan checked its list against this one (`../engine_switch_rules2_2026-10/PLAN.md` section 2, "The Oct 1 recordings' open items are all covered"). The list below is as of Oct 1.
 
 1. **Lift the Will carve-out** at apply_attack_action.rs:131, and **make Will force the first coin of a Confused attacker's own attack** after a Confusion heads, with or without Victini. Keep the reroll a fresh flip, with no second Confusion check. Evidence: the plain text; 210403 T14 (347.25-347.95 and 354-355); 203626; Dustin.
 2. **Wild Swing's coin** (the 78af4e8 fix), with 213822 as in-game evidence.

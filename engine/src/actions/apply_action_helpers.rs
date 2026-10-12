@@ -1,4 +1,6 @@
+use std::cell::Cell;
 use std::collections::HashMap;
+use std::sync::LazyLock;
 
 use log::debug;
 use rand::rngs::StdRng;
@@ -14,6 +16,7 @@ use crate::{
     card_ids::CardId,
     effects::{CardEffect, TurnEffect},
     hooks::{
+        attack_counterattack_damage, attack_return_weakness_extra,
         get_counterattack_damage, maybe_attach_energy_on_damaged,
         maybe_shuffle_attacker_hand_card_on_damaged, modify_damage, on_attack_knockout,
         on_end_turn, on_knockout, should_poison_attacker, DamageModifierContext,
@@ -610,7 +613,164 @@ pub(crate) fn handle_damage_only(
     damaged_actives
 }
 
-/// Resolve reactions only after the attack's own effects, using the current Ability state.
+/// P2's off-switch (rules switch 2, PLAN (e)). On, return damage an attack left takes Weakness (`handle_attack_retaliation`);
+/// off, it is flat again: the engine before P2 in behaviour, the same number in the same branch. On by default.
+/// `DECKGYM_FLAT_RETURN_DAMAGE=1` (or `true`) turns it off for the whole process, read once; `with_return_weakness` sets it
+/// for one call on this thread (a single decision of the revert check, or a test).
+static FLAT_RETURN_DAMAGE: LazyLock<bool> = LazyLock::new(|| {
+    std::env::var("DECKGYM_FLAT_RETURN_DAMAGE").is_ok_and(|v| v == "1" || v.eq_ignore_ascii_case("true"))
+});
+
+thread_local! {
+    /// `with_return_weakness`'s setting on this thread, while it runs; `None` everywhere else.
+    static RETURN_WEAKNESS: Cell<Option<bool>> = const { Cell::new(None) };
+}
+
+fn return_weakness_on() -> bool {
+    RETURN_WEAKNESS.with(Cell::get).unwrap_or(!(*FLAT_RETURN_DAMAGE || *ROUND2_OFF))
+}
+
+/// Run `f` with P2's return-damage Weakness `on` or off on this thread, then restore what was there before (also on a
+/// panic). An inner call overrides the outer one for its length. Other threads keep their own setting.
+pub fn with_return_weakness<R>(on: bool, f: impl FnOnce() -> R) -> R {
+    struct Restore(Option<bool>);
+    impl Drop for Restore {
+        fn drop(&mut self) {
+            RETURN_WEAKNESS.with(|setting| setting.set(self.0));
+        }
+    }
+    let _restore = Restore(RETURN_WEAKNESS.with(|setting| setting.replace(Some(on))));
+    f()
+}
+
+/// Rules switch 2's revert switches (PLAN (e); the cloud, Oct 9), one per gate of the round-2 package, made as P2's above. Each
+/// gate is on by default (the current rule). Its environment variable (`=1` or `true`, read once) turns it off for the whole
+/// process, and its `with_*` function sets it on this thread for one call (a decision of the revert check, or a test) and restores
+/// it afterwards, also on a panic; an inner call overrides an outer one. Off is the official engine (main-8626a35) at that gate.
+/// `DECKGYM_ROUND2_OFF` and `with_round2` turn every gate off together, P2 included. A process-wide variable is what
+/// `deckgym simulate` needs: its games run on worker threads, which don't see this thread's setting.
+fn env_flag(name: &str) -> bool {
+    std::env::var(name).is_ok_and(|v| v == "1" || v.eq_ignore_ascii_case("true"))
+}
+
+static ROUND2_OFF: LazyLock<bool> = LazyLock::new(|| env_flag("DECKGYM_ROUND2_OFF"));
+
+type Setting = std::thread::LocalKey<Cell<Option<bool>>>;
+
+/// Run `f` with every setting in `settings` at `on`, then put each back as it was (in reverse order), also on a panic.
+fn scoped<R>(settings: &[&'static Setting], on: bool, f: impl FnOnce() -> R) -> R {
+    struct Restore(Vec<(&'static Setting, Option<bool>)>);
+    impl Drop for Restore {
+        fn drop(&mut self) {
+            for (setting, before) in self.0.iter().rev() {
+                setting.with(|cell| cell.set(*before));
+            }
+        }
+    }
+    let _restore = Restore(settings.iter().map(|setting| (*setting, setting.with(|cell| cell.replace(Some(on))))).collect());
+    f()
+}
+
+macro_rules! round2_switch {
+    ($(#[$doc:meta])* $env:literal, $setting:ident, $off:ident, $on:ident, $with:ident) => {
+        static $off: LazyLock<bool> = LazyLock::new(|| env_flag($env));
+        thread_local! {
+            static $setting: Cell<Option<bool>> = const { Cell::new(None) };
+        }
+        $(#[$doc])*
+        pub(crate) fn $on() -> bool {
+            $setting.with(Cell::get).unwrap_or(!(*$off || *ROUND2_OFF))
+        }
+        /// Run `f` with this gate `on` (the current rule) or off (the official engine's) on this thread, then restore it.
+        pub fn $with<R>(on: bool, f: impl FnOnce() -> R) -> R {
+            scoped(&[&$setting], on, f)
+        }
+    };
+}
+
+round2_switch!(
+    /// G1, the plain-hit coin: an attack's plain queued hit (`forecast_apply_damage`) flips a target's coin-flip damage
+    /// Ability. Off: no coin there (`DECKGYM_NO_PLAIN_HIT_COIN`).
+    "DECKGYM_NO_PLAIN_HIT_COIN", PLAIN_HIT_COIN, NO_PLAIN_HIT_COIN, plain_hit_coin_on, with_plain_hit_coin
+);
+round2_switch!(
+    /// G2, the seven sites: Wild Swing, Litter, Tornado Shot, Wellspring Dance, Double Splash and Triple Bombardment,
+    /// Mischievous Ring and the second punch queue a coin target's hit as the attack's own damage, and the pending-hit check
+    /// sees a queued hit. Off: a plain `ApplyDamage`, as before (`DECKGYM_PLAIN_QUEUED_SITES`). The old damage needs G1 off too.
+    "DECKGYM_PLAIN_QUEUED_SITES", QUEUED_SITE_COIN, PLAIN_QUEUED_SITES, queued_site_coin_on, with_queued_site_coin
+);
+round2_switch!(
+    /// G3, the own side: a coin-flip damage Ability on the attacker's own side flips for its own attack's damage. Off: only the
+    /// opponent's (`DECKGYM_NO_OWN_SIDE_COIN`).
+    "DECKGYM_NO_OWN_SIDE_COIN", OWN_SIDE_COIN, NO_OWN_SIDE_COIN, own_side_coin_on, with_own_side_coin
+);
+round2_switch!(
+    /// G4, Will on the gate coins: a pending Will goes before Confusion's coin and onto a block coin. Off: neither
+    /// (`DECKGYM_WILL_SKIPS_GATE_COINS`).
+    "DECKGYM_WILL_SKIPS_GATE_COINS", WILL_ON_GATE_COINS, WILL_SKIPS_GATE_COINS, will_on_gate_coins_on, with_will_on_gate_coins
+);
+round2_switch!(
+    /// G5, the Victory Star gate: Victory Star is staged after a block coin's heads, as after Confusion's. Off: no pause with a
+    /// block coin (`DECKGYM_NO_VICTORY_STAR_AFTER_BLOCK_COIN`).
+    "DECKGYM_NO_VICTORY_STAR_AFTER_BLOCK_COIN", VICTORY_STAR_AFTER_BLOCK_COIN, NO_VICTORY_STAR_AFTER_BLOCK_COIN,
+    victory_star_after_block_coin_on, with_victory_star_after_block_coin
+);
+round2_switch!(
+    /// G6, Trap Territory: each Ariados adds its 1 to the Retreat Cost. Off: one, however many (`DECKGYM_TRAP_TERRITORY_ONCE`).
+    "DECKGYM_TRAP_TERRITORY_ONCE", TRAP_TERRITORY_EACH, TRAP_TERRITORY_ONCE, trap_territory_each_on, with_trap_territory_each
+);
+round2_switch!(
+    /// G7, Guts on the own side: Guts flips when an attack's outcome would Knock Out the attacker's own Guts Pokemon. Off: only
+    /// the opponent's (`DECKGYM_NO_OWN_SIDE_GUTS`).
+    "DECKGYM_NO_OWN_SIDE_GUTS", OWN_SIDE_GUTS, NO_OWN_SIDE_GUTS, own_side_guts_on, with_own_side_guts
+);
+round2_switch!(
+    /// G8, Perish Body on a queued hit: a plain queued hit at the defending Active flips its Perish Body. Off: no flip there
+    /// (`DECKGYM_NO_PERISH_ON_QUEUED_HIT`).
+    "DECKGYM_NO_PERISH_ON_QUEUED_HIT", PERISH_ON_QUEUED_HIT, NO_PERISH_ON_QUEUED_HIT, perish_on_queued_hit_on,
+    with_perish_on_queued_hit
+);
+round2_switch!(
+    /// G9, Luxury Coin only on the player's own Stadium. Off: on any Stadium (`DECKGYM_LUXURY_COIN_ANY_STADIUM`).
+    "DECKGYM_LUXURY_COIN_ANY_STADIUM", LUXURY_COIN_OWN_STADIUM_ONLY, LUXURY_COIN_ANY_STADIUM, luxury_coin_own_stadium_only_on,
+    with_luxury_coin_own_stadium_only
+);
+round2_switch!(
+    /// G10, a Fossil under an Item lock: an Item lock stops a Fossil. Off: it can be placed (`DECKGYM_FOSSIL_UNDER_ITEM_LOCK`).
+    "DECKGYM_FOSSIL_UNDER_ITEM_LOCK", FOSSIL_ITEM_LOCK, FOSSIL_UNDER_ITEM_LOCK, fossil_item_lock_on, with_fossil_item_lock
+);
+round2_switch!(
+    /// G11, P3: a Fossil is an Item card wherever a card reads "Item card". Off: only the Item lock reads it so
+    /// (`DECKGYM_FOSSIL_NOT_ITEM`).
+    "DECKGYM_FOSSIL_NOT_ITEM", FOSSIL_AS_ITEM, FOSSIL_NOT_ITEM, fossil_as_item_on, with_fossil_as_item
+);
+
+/// Run `f` with every round-2 gate `on` or off on this thread, P2's return-damage Weakness included (off: the official engine,
+/// main-8626a35, in behaviour), then restore each.
+pub fn with_round2<R>(on: bool, f: impl FnOnce() -> R) -> R {
+    scoped(
+        &[
+            &RETURN_WEAKNESS,
+            &PLAIN_HIT_COIN,
+            &QUEUED_SITE_COIN,
+            &OWN_SIDE_COIN,
+            &WILL_ON_GATE_COINS,
+            &VICTORY_STAR_AFTER_BLOCK_COIN,
+            &TRAP_TERRITORY_EACH,
+            &OWN_SIDE_GUTS,
+            &PERISH_ON_QUEUED_HIT,
+            &LUXURY_COIN_OWN_STADIUM_ONLY,
+            &FOSSIL_ITEM_LOCK,
+            &FOSSIL_AS_ITEM,
+        ],
+        on,
+        f,
+    )
+}
+
+/// Resolve reactions only after the attack's own effects, using the current Ability state. Return damage an attack left
+/// takes Weakness while the Attacking Pokémon is Active (P2, unless its off-switch is off); a Tool's and an Ability's stay
+/// flat.
 pub(crate) fn handle_attack_retaliation(
     state: &mut State,
     attacking_ref: (usize, usize),
@@ -620,9 +780,19 @@ pub(crate) fn handle_attack_retaliation(
     for &(target_player, target_idx) in damaged_actives {
         let Some(target) = state.in_play_pokemon[target_player][target_idx].as_ref() else { continue; };
         let counter_damage = get_counterattack_damage(state, target);
+        let weakness_extra = if return_weakness_on() && attacking_ref.1 == 0 && attack_counterattack_damage(target) > 0 {
+            state.in_play_pokemon[attacking_player][0]
+                .as_ref()
+                .map_or(0, |attacker| attack_return_weakness_extra(state, target, attacker))
+        } else {
+            0
+        };
+        if weakness_extra > 0 {
+            debug!("Return damage left by an attack takes Weakness: +{weakness_extra}");
+        }
         let should_poison = should_poison_attacker(state, target);
         if let Some(attacker) = state.in_play_pokemon[attacking_player][attacking_ref.1].as_mut() {
-            attacker.apply_damage(counter_damage);
+            attacker.apply_damage(counter_damage + weakness_extra);
         }
         if should_poison && attacking_ref.1 == 0 {
             state.apply_status_condition(attacking_player, attacking_ref.1, StatusCondition::Poisoned);

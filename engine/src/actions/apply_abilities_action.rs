@@ -434,7 +434,8 @@ fn forecast_ability_by_mechanic(
                 let mut taken = Vec::new();
                 let mut kept = Vec::new();
                 for card in deck.drain(..window) {
-                    if matches!(&card, Card::Trainer(t) if t.trainer_card_type == trainer_type) {
+                    if matches!(&card, Card::Trainer(t) if t.trainer_card_type.is_printed_as(&trainer_type))
+                    {
                         taken.push(card);
                     } else {
                         kept.push(card);

@@ -1,0 +1,65 @@
+step	bot	pairing	i	seed	kind	longer	k	turn	cause	reach_counters_that_explain	verdict	strict	probe	condition3	fingerprints_ok
+8b	k3	40	12	23300400012	movegen		42	6	42	{"trap_territory_offer_changed": [42]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	41	27	23300410027	lookahead		47	6	47	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": false, "queued": null, "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": 2, "vs": null, "will": null}, "ret": null, "tick": 47, "trapleaf": 1}		yes
+8b	k3	44	0	23300440000	state		104	18	103	{"coin_queued_by_attack": [104]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	2	23300440002	state		42	7	41	{"coin_queued_by_attack": [42]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	3	23300440003	state		77	11	76	{"coin_queued_by_attack": [77]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	4	23300440004	state		33	4	32	{"coin_queued_by_attack": [33]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	5	23300440005	state		121	21	120	{"coin_queued_by_attack": [121]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	6	23300440006	state		75	11	74	{"coin_queued_by_attack": [75]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	8	23300440008	state		48	9	47	{"coin_queued_by_attack": [48]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	9	23300440009	state		59	9	58	{"coin_queued_by_attack": [59]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	10	23300440010	state		22	2	21	{"coin_queued_by_attack": [22]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	11	23300440011	lookahead		41	5	41	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": true, "queued": 2, "queued_attacks": ["Tornado Shot"], "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": null, "vs": null, "will": null}, "ret": null, "tick": 41, "trapleaf": null}		yes
+8b	k3	44	12	23300440012	state		17	2	16	{"coin_queued_by_attack": [17]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	13	23300440013	state		60	9	59	{"coin_queued_by_attack": [60]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	17	23300440017	state		52	7	51	{"coin_queued_by_attack": [52]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	18	23300440018	state		40	7	39	{"coin_queued_by_attack": [40]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	20	23300440020	state		88	14	87	{"coin_queued_by_attack": [88]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	21	23300440021	state		28	4	27	{"coin_queued_by_attack": [28]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	24	23300440024	state		33	4	32	{"coin_queued_by_attack": [33]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	25	23300440025	state		26	4	25	{"coin_queued_by_attack": [26]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	28	23300440028	state		97	21	96	{"coin_queued_by_attack": [97]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	31	23300440031	state		14	2	13	{"coin_queued_by_attack": [14]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	33	23300440033	state		37	5	36	{"coin_queued_by_attack": [37]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	44	36	23300440036	lookahead		28	5	28	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": true, "queued": 1, "queued_attacks": ["Wellspring Dance"], "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": null, "vs": null, "will": null}, "ret": null, "tick": 28, "trapleaf": null}		yes
+8b	k3	44	37	23300440037	lookahead		28	4	28	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": true, "queued": 2, "queued_attacks": ["Wellspring Dance"], "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": null, "vs": null, "will": null}, "ret": null, "tick": 28, "trapleaf": null}		yes
+8b	k3	44	38	23300440038	state		40	6	39	{"coin_queued_by_attack": [40]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	45	3	23300450003	state		57	7	56	{"vs_block_coin_built": [56], "vs_block_coin_choice_offered": [57]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	45	4	23300450004	state		66	10	65	{"vs_block_coin_built": [65], "vs_block_coin_choice_offered": [66]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	45	7	23300450007	state		87	13	86	{"vs_block_coin_built": [86], "vs_block_coin_choice_offered": [87]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	45	12	23300450012	state		85	11	84	{"vs_block_coin_built": [84], "vs_block_coin_choice_offered": [85]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	45	13	23300450013	state		79	12	78	{"vs_block_coin_built": [78], "vs_block_coin_choice_offered": [79]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	k3	45	23	23300450023	state		84	10	83	{"vs_block_coin_built": [83], "vs_block_coin_choice_offered": [84]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	40	6	23300400006	lookahead		54	7	54	{"trap_territory_outcome_changed": [54]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	40	16	23300400016	lookahead		67	9	67	{"trap_territory_outcome_changed": [67]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	44	3	23300440003	lookahead		94	13	94	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": true, "queued": 3, "queued_attacks": ["Wild Swing"], "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": null, "vs": null, "will": null}, "ret": null, "tick": 94, "trapleaf": null}		yes
+8b	km3	44	4	23300440004	state		28	4	27	{"coin_queued_by_attack": [28]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	44	5	23300440005	state		121	21	120	{"coin_queued_by_attack": [121]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	44	6	23300440006	lookahead		83	13	83	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": true, "queued": 3, "queued_attacks": ["Wild Swing"], "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": null, "vs": null, "will": null}, "ret": null, "tick": 83, "trapleaf": null}		yes
+8b	km3	44	7	23300440007	lookahead		47	9	47	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": true, "queued": 2, "queued_attacks": ["Wellspring Dance"], "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": null, "vs": null, "will": null}, "ret": null, "tick": 47, "trapleaf": null}		yes
+8b	km3	44	8	23300440008	lookahead		38	7	38	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": true, "queued": 2, "queued_attacks": ["Tornado Shot"], "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": null, "vs": null, "will": null}, "ret": null, "tick": 38, "trapleaf": null}		yes
+8b	km3	44	9	23300440009	state		59	9	58	{"coin_queued_by_attack": [59]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	44	10	23300440010	lookahead		14	2	14	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": true, "queued": 2, "queued_attacks": ["Mischievous Ring"], "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": null, "vs": null, "will": null}, "ret": null, "tick": 14, "trapleaf": null}		yes
+8b	km3	44	11	23300440011	lookahead		42	5	42	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": true, "queued": 2, "queued_attacks": ["Tornado Shot"], "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": null, "vs": null, "will": null}, "ret": null, "tick": 42, "trapleaf": null}		yes
+8b	km3	44	12	23300440012	state		17	2	16	{"coin_queued_by_attack": [17]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	44	13	23300440013	state		91	15	90	{"coin_queued_by_attack": [91]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	44	17	23300440017	state		52	7	51	{"coin_queued_by_attack": [52]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	44	18	23300440018	state		40	7	39	{"coin_queued_by_attack": [40]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	44	20	23300440020	lookahead		28	4	28	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": true, "queued": 2, "queued_attacks": ["Wellspring Dance"], "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": null, "vs": null, "will": null}, "ret": null, "tick": 28, "trapleaf": null}		yes
+8b	km3	44	22	23300440022	state		153	27	152	{"coin_queued_by_attack": [153]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	44	24	23300440024	state		33	4	32	{"coin_queued_by_attack": [33]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	44	25	23300440025	state		23	4	22	{"coin_queued_by_attack": [23]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	44	28	23300440028	state		106	23	105	{"coin_queued_by_attack": [106]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	44	31	23300440031	lookahead		8	2	8	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": true, "queued": 2, "queued_attacks": ["Mischievous Ring"], "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": null, "vs": null, "will": null}, "ret": null, "tick": 8, "trapleaf": null}		yes
+8b	km3	44	33	23300440033	state		37	5	36	{"coin_queued_by_attack": [37]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	44	36	23300440036	lookahead		29	5	29	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": true, "queued": 1, "queued_attacks": ["Wellspring Dance"], "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": null, "vs": null, "will": null}, "ret": null, "tick": 29, "trapleaf": null}		yes
+8b	km3	44	37	23300440037	lookahead		29	4	29	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": true, "queued": 2, "queued_attacks": ["Wellspring Dance"], "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": null, "vs": null, "will": null}, "ret": null, "tick": 29, "trapleaf": null}		yes
+8b	km3	44	38	23300440038	lookahead		21	4	21	{}	LOOKAHEAD ONLY, both halves hold	LOOKAHEAD ONLY, both halves hold	{"cut": null, "free": true, "queued": 2, "queued_attacks": ["Wellspring Dance"], "r2": {"guts": null, "own": null, "perish": null, "plain": null, "trap": null, "vs": null, "will": null}, "ret": null, "tick": 21, "trapleaf": null}		yes
+8b	km3	44	39	23300440039	state		48	8	47	{"coin_queued_by_attack": [48]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	45	3	23300450003	state		61	7	60	{"vs_block_coin_built": [60], "vs_block_coin_choice_offered": [61]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	45	5	23300450005	state		63	9	62	{"vs_block_coin_built": [62], "vs_block_coin_choice_offered": [63]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	45	6	23300450006	state		102	15	101	{"vs_block_coin_built": [101], "vs_block_coin_choice_offered": [102]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	45	12	23300450012	state		85	11	84	{"vs_block_coin_built": [84], "vs_block_coin_choice_offered": [85]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	45	23	23300450023	state		88	10	87	{"vs_block_coin_built": [87], "vs_block_coin_choice_offered": [88]}	ON THE BOARD	ON THE BOARD	{}		yes
+8b	km3	45	26	23300450026	state		77	10	76	{"vs_block_coin_built": [76], "vs_block_coin_choice_offered": [77]}	ON THE BOARD	ON THE BOARD	{}		yes

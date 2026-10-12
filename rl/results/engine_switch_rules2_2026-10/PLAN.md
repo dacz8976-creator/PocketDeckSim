@@ -3,6 +3,98 @@
 > **Unparked Oct 7, scheduled after the combined run** (Dustin's decision on Astra's review, relayed by the coordinator; `rl/RUN5.md` (E), 2bfb1b73). Section 0 below is the Oct 8 update: the scope now has a third part, Cursed Jewel's Weakness. Preparation is read-only while the combined run holds the laptop (pre-registered 143e2b51, expected to end Saturday night or Sunday, Oct 10-11). Sections 1-9 are the Oct 2 draft. Where section 0 differs, section 0 wins. The questions in section 9 still need Dustin's answers at the go.
 >
 > *History: parked Oct 2 (Dustin's direction, RUN5 "Where things stand"), when the work turned to the planning pilot.*
+>
+> **Oct 9 status** (the package for Dustin is `RELEASE_PACKAGE.md`):
+> - **Done:**
+>   - P2 with its off-switch and gates, and P3, the seven Fossil places (question 2a);
+>   - the suite at the final engine commit **140c0be2** (tree 8d71f693), 2,072 passed and 0 failed;
+>   - the inventory rerun (i): brews 07 and 09 only;
+>   - step 8b on the cloud: 25 of 480 deals changed, **TRACE LOAD 0** (precondition d; `early_warning_8b/` on `claude/coin-prevention-round2` 63c28e6e);
+>   - the probe's P2 check (RETURN).
+> - **Open, sent to the cloud by the coordinator (Oct 9):**
+>   - **P1** (`card_validation.rs`:102 at 140c0be2 still says "regardless of who played the Stadium");
+>   - **(a)** the probe's round-2 conditions;
+>   - **(b)** the shorter-game case, round 2's counter names in `validate_v2.py`, and the synthetic tests;
+>   - **(e)** one revert switch per gate.
+> - **Also sent to the cloud:** Bounded Field doubles a hit back's Weakness (×2), as its text reads. The test `bounded_field_keeps_the_hit_back_extra_at_20` is inverted, and the off switch stays (the coordinator, Oct 9).
+> - **The Opus cloud only builds.**
+> - **Readers for (c) and (f), on the final engine commit:**
+>   - reader one: the laptop session's read-only Opus subagent;
+>   - reader two: Sonnet, local, read-only, with no cargo.
+> - **Dustin's answers to the package (Oct 9, about 4:50 pm Central): "1-3 sure."** So: (1) go, "update if everything passes",
+>   with the two stricter checks; (2) the scope as recommended; (3) the new reference games as recommended. **(4) the laptop,
+>   over the weekend** (Oct 9, about 5:15 pm Central, after the laptop-or-cloud comparison: "Alright it is fine to use the laptop over
+>   the weekend"). He doesn't need it until Monday morning, Oct 12, so the sittings may run without a break from the combined run's
+>   end. The school-morning rule applies on Monday: no new game after 5:15 am Central; a step still going pauses cleanly and resumes
+>   Monday evening. The pin still waits for his word on any judgment call.
+> - **Open rules question answered (Oct 9, Dustin's recording 20261009_223237000):** a hit back counts as attack damage for the
+>   attacker's Heavy Helmet (Bristling Spikes' 30 cut to 10). The engine applies no cut, before or after this switch. It stays
+>   **outside this switch's scope** (Dustin approved the scope without it; no list we play reaches it). It goes to the next rules
+>   round, with the other cards by their own wording (`rules/09`, open bugs). It goes into this switch only if Dustin asks for it.
+> - **The runners (main a5f2e7e5; the coordinator's decisions on six points, Oct 9 evening):**
+>   1. **A changed game where no counter fired** passes only after 8c. 8c's probe must show the new rule inside the search at
+>      the first differing move or its cause tick, and the pin counts the game as traced. Anything 8c can't show is
+>      unexplained and stops.
+>   2. **7c's deck 10 v t-weezing watch row** is named as allowed to change, under the same explanation rule (every changed game
+>      shows Will acting). It goes on the "expected to change" list reported to Dustin, since the package named only the floor row.
+>   3. **Step 4's allowed list at P** is approved at 26 files as listed in `allowed_engine_files.tsv`, on one condition: every file
+>      on it is covered by both readers' equivalence reading. A file neither reader covered is read before any start. The mapping
+>      is recorded in this folder before the TO FINALIZE marker comes off.
+>   4. **floor.py** is accepted with the pinned-diff check (only the ATTACKERS table may differ).
+>   5. **Step 8b** is 2,800 games, with brew-07/09 v t-altaria on the 23,100,000,000 block. The laptop's rows must equal the
+>      cloud's.
+>   6. **ALLOW_DAYTIME=auto**: Dustin's word covers Saturday and Sunday, and Monday's school-morning rule still applies.
+> - **Oct 10: the final P is c7a25df4** (engine tree 70652fff). It is 31616338 plus the F1 fix: the cloud's f601abcb tests
+>   first, then c7a25df4. G2's queued-hit promotion arm now also floors the promotion when the hit's own attacker has left the
+>   Active Spot, the case reader one found. I re-read the hunk: it matches the `ApplyDamage` arm, and with G2 off nothing changes.
+>   The suite at P passes 2,103 with 0 failed (fc6307c0). The c-magnezone card check passes 15 of 15 (232622de).
+>   `trace_load.txt` gives the cloud's TRACE LOAD 0 (19a20e1a). Every data file is final except `allowed_engine_files.tsv`,
+>   whose marker waits for reader two's file mapping (decision 3 above).
+> - **Precondition (a)'s open test is closed** (the laptop session's reading, Oct 10; the cloud's 43ccdd1d,
+>   `round2_readiness_2026-10-02/open_test_gate_R/`). As worded, "free exactly where gate_R > 0" holds in 540 of 1,126 games. The
+>   two sides measure different things:
+>   - the probe's `free` asks whether the *shortest* queued coin path is pure;
+>   - R's gate counts *any* pure queued coin-target frame in the search.
+>
+>   When the probe walks past queued frames and uses R's own frame definition, it finds the gate in 1,126 of 1,126 games and in
+>   none of the 279 controls. Its `queued` and `free` verdicts are unchanged in all 1,405 games. The test checks that the probe
+>   sees what the bots' search sees, and the refined reading shows exactly that.
+>
+>   **Correction (reader two, Oct 10):** an earlier version of this note said 8c never reads `free`. It does, in one case:
+>   `tightened_rule.py`:249 reads `free` when the condition is found at ply 3. There, a pure frame the probe misses makes the
+>   game a JUDGMENT for Dustin, never "explained". So the as-worded miss can only send a game to Dustin, never pass one. No call
+>   is needed now. The official probe stays as pinned in `tools_8c.tsv`.
+> - **Reader two (Sonnet, sonnet/switch2-reader2 6cd65dac, integrated here):**
+>   - **(f): equivalent.** One note, C1: F1's new arm also reaches the official engine's `ApplyQueuedAttackDamage` frames. No
+>     producer in today's card database leaves one pending across a Knock Out; the exposing input is named in the file.
+>   - **The second reads don't all match PLAN's wording.** These open items are for 8c (the revert-check driver), not sittings
+>     1-2:
+>     - the probe's self-test, P2 checks, 8b ticks and gate runs were made at 31616338, not P: rerun them at P;
+>     - `control_clean` (negative controls) doesn't require round 2's kinds or trapleaf to be absent;
+>     - the revert check on real games ran for G1+G2, P2 and all switches off only, never G3-G8 alone;
+>     - there is no revert evidence for F1's G2 arm.
+>   - Its file mapping covers all 26 files, so `allowed_engine_files.tsv` is final.
+>   - **Closed, Oct 10:**
+>     - **The remake at P.** The cloud's 04f2b6f7 remade the probe's self-test, the P2 checks, the 8b ticks and the gate run at
+>       c7a25df4, and every result is unchanged. On the 8b deals, G1+G2 off returns every queued-kind change to the official
+>       engine (km3 11 of 13, k3 7 of 12), and P2 off returns every RETURN change (km3 2, k3 5). Every other single gate leaves
+>       them as P plays them, and no deal plays as neither engine.
+>     - **control_clean = nothing_found:** Sonnet's 8c tools at main 486e146f, pinned in `tools_8c.tsv` at b29480f6.
+>     - **F1's revert evidence.** The cloud's 1f995293 traced the test's play on the official engine and at c7a25df4 with G1+G2
+>       off, and the two traces are identical byte for byte (promotion, then the second punch, 120 on seeds 0-4). Before the
+>       fix, the split test shows the off call passing and the on call failing.
+>   - **The per-gate revert check on 8c's own games** is `tools_8c/revert_8c.py` (Sonnet), run in 8c. It runs every game's
+>     gates plus all switches off, and a root holding a pending continuation goes to Dustin.
+> - **Shot List (Dustin's cleanup, Oct 9):** rows 23-33 came off the list. The four Cursed Jewel readings (rows 30-33) now rest on the
+>   card text and their tests alone; the hit-back sub-cases stay in `P2_EVIDENCE_sonnet.md`. One row is kept: the hit-back against
+>   Heavy Helmet (was row 22, now the list's only row). The old rows are in `rules/_research_notes/shot_list_archive_2026-10-09.json`.
+> - **The cloud, 21:45 UTC:** P1 and Bounded Field ×2 done on `claude/coin-prevention-round2` (b8a8621a, b0dc4844; the suite at
+>   b0dc4844, 2,073 passed and 0 failed, 5ec11518). Now (b), then (a) and (e). The readings stay with the two readers above
+>   (the cloud's item 3 dropped by the coordinator's amendment).
+> - **Recorded, not acted on:**
+>   - the hit back as attack damage beyond Weakness (Sonnet's `P2_EVIDENCE_sonnet.md`, shot-list rows 22-29);
+>   - Hala's own-turn risk;
+>   - the four P2 readings as defaults (shot-list rows 30-33).
 
 ## 0. The Oct 8 update (the laptop; read-only preparation)
 

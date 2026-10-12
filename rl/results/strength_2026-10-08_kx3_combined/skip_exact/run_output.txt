@@ -1,0 +1,23 @@
+== the deck files against both manifests (by sha256)
+strength_2026-10-08_kx3_combined decks: all equal
+strength_2026-10-03_kx3_dev decks: all equal
+== builds
+    Finished `release` profile [optimized] target(s) in 3m 00s
+combined: commit 172cbe9ce0f2, engine tree 69a5a4419da2, skip_replay sha256 866aea9f28db057b
+    Finished `release` profile [optimized] target(s) in 2m 46s
+frozen: commit d513e37b473f, engine tree 31dbd2e6e8ec, skip_replay sha256 d86fd9455736b9a7
+== replays
+skip_replay: arm X: 560 games, replayed exactly 560; 15825 deck-side decisions
+skip_replay: arm ref: 560 games, replayed exactly 560; 15355 deck-side decisions
+skip_replay: arm X: 560 games, replayed exactly 560; 15603 deck-side decisions
+== also: the development run's km3 games on the frozen build (they equal this run's arm ref)
+skip_replay: arm ref: 560 games, replayed exactly 560; 15355 deck-side decisions
+the km3 decisions are byte for byte the same on both builds
+== negative control: one candidate record with one logged move changed must not replay
+changed 09-mega-manectric-heliolisk|t-altaria|0|1|X decision 3 to EndTurn
+skip_replay: arm X: 1 games, replayed exactly 1; 4 deck-side decisions
+negative control replayed_exactly: True ; missing: []
+== the comparison
+candidate: 560 games, 560 replayed exactly
+frozen: 560 games, 560 replayed exactly
+km3: 560 games, 560 replayed exactly

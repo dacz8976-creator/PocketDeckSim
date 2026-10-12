@@ -1,0 +1,68 @@
+15 distinct cards: B1a 024, A1 098, B3 054, B1a 026, A3 066, B2 017, P-A 007, B1 226, B1a 068, B1 225, A2b 070, A1 225, A2 150, P-A 005, B2 147
+
+== B1a 024: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags none; same as Sept 26's coverage: True
+   == B1a 024: 1 printings, 1 distinct
+   Magnemite  [B1a 024]  Lightning  Stage 0  HP 50  weak Fighting  retreat 1
+     [L] Electro Ball 30
+== A1 098: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags none; same as Sept 26's coverage: True
+   == A1 098: 1 printings, 1 distinct
+   Magneton  [A1 098]  Lightning  Stage 1 (from Magnemite)  HP 80  weak Fighting  retreat 2
+     Ability Volt Charge: Once during your turn, you may take a [L] Energy from your Energy Zone and attach it to this Pokémon.
+     [LCCC] Spinning Attack 60
+== B3 054: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags none; same as Sept 26's coverage: True
+   == B3 054: 1 printings, 1 distinct
+   Magnezone ex  [B3 054]  Lightning  Stage 2 (from Magneton)  HP 180  weak Fighting  retreat 2
+     [LLL] Storm Blade 130 — Discard a [L] Energy from this Pokémon.
+== B1a 026: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags {'pays_off_on_opponent_turn': ['attack Mirror Shot']}; same as Sept 26's coverage: True
+   == B1a 026: 1 printings, 1 distinct
+   Magnezone  [B1a 026]  Lightning  Stage 2 (from Magneton)  HP 150  weak Fighting  retreat 2
+     [LCC] Mirror Shot 90 — During your opponent's next turn, if the Defending Pokémon tries to use an attack, your opponent flips a coin. If tails, that attack doesn't happen.
+== A3 066: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags none; same as Sept 26's coverage: True
+   == A3 066: 1 printings, 1 distinct
+   Oricorio  [A3 066]  Lightning  Stage 0  HP 70  weak Fighting  retreat 1
+     Ability Safeguard: Prevent all damage done to this Pokémon by attacks from your opponent's Pokémon ex.
+     [LC] Zzzap 50
+== B2 017: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags none; same as Sept 26's coverage: True
+   == B2 017: 1 printings, 1 distinct
+   Teal Mask Ogerpon ex  [B2 017]  Grass  Stage 0  HP 130  weak Fire  retreat 1
+     Ability Soothing Wind: Each of your Pokémon that has any Energy attached recovers from all Special Conditions and can't be affected by any Special Conditions.
+     [GG] Energized Leaves 60 — If the amount of Energy attached to both Active Pokémon is 5 or more, this attack does 60 more damage.
+== P-A 007: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags none; same as Sept 26's coverage: True
+   == P-A 007: 1 printings, 1 distinct
+   Professor's Research  [P-A 007]  Trainer
+     Draw 2 cards.
+== B1 226: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags none; same as Sept 26's coverage: True
+   == B1 226: 1 printings, 1 distinct
+   Lisia  [B1 226]  Trainer
+     Put 2 random Basic Pokémon with 50 HP or less from your deck into your hand.
+== B1a 068: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags none; same as Sept 26's coverage: True
+   == B1a 068: 1 printings, 1 distinct
+   Clemont  [B1a 068]  Trainer
+     Put 2 random cards from among Magneton, Heliolisk, and Clemont's Backpack from your deck into your hand.
+== B1 225: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags {'unpriced_text_rule': ['its effect']}; same as Sept 26's coverage: True
+   == B1 225: 1 printings, 1 distinct
+   Copycat  [B1 225]  Trainer
+     Shuffle your hand into your deck. Draw a card for each card in your opponent's hand.
+== A2b 070: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags none; same as Sept 26's coverage: True
+   == A2b 070: 1 printings, 1 distinct
+   Pokémon Center Lady  [A2b 070]  Trainer
+     Heal 30 damage from 1 of your Pokémon, and it recovers from all Special Conditions.
+== A1 225: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags none; same as Sept 26's coverage: True
+   == A1 225: 1 printings, 1 distinct
+   Sabrina  [A1 225]  Trainer
+     Switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)
+== A2 150: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags none; same as Sept 26's coverage: True
+   == A2 150: 1 printings, 1 distinct
+   Cyrus  [A2 150]  Trainer
+     Switch in 1 of your opponent's Benched Pokémon that has damage on it to the Active Spot.
+== P-A 005: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags none; same as Sept 26's coverage: True
+   == P-A 005: 1 printings, 1 distinct
+   Poké Ball  [P-A 005]  Trainer
+     Put a random Basic Pokémon from your deck into your hand.
+== B2 147: PASS; lib/card.py entry = P's engine/database.json entry: True; card_status: Complete, limitations []; goldfish coverage Fully implemented, flags none; same as Sept 26's coverage: True
+   == B2 147: 1 printings, 1 distinct
+   Protective Poncho  [B2 147]  Trainer
+     As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent's attacks and Abilities.
+
+coverage ids beyond the list (or missing): none
+RESULT: 15 of 15 cards pass; PASS
