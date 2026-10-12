@@ -6,17 +6,17 @@
 
 Question: how does 13-a-ninetales-raticate do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
 
-**PARTIAL: 42 kx3 games + 42 cheap km3 baseline games so far (84 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
+**PARTIAL: 62 kx3 games + 62 cheap km3 baseline games so far (124 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
 
-Size: 42 kx3 games + 42 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
+Size: 62 kx3 games + 62 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
 
-13-a-ninetales-raticate scored **59.5%** over **42 games** (games from 3 of the 8 public lists so far): probably between 44.5% and 73.0% (95% interval; this range refers to these 42 kx3 games). A win counts 1, a tie 1/2, a loss 0.
+13-a-ninetales-raticate scored **64.5%** over **62 games** (games from 4 of the 8 public lists so far): probably between 52.1% and 75.3% (95% interval; this range refers to these 62 kx3 games). A win counts 1, a tie 1/2, a loss 0.
 
 ### How much better kx3 plays this deck than km3
 
-On the same deals, kx3 scored **+16.7 points** compared with km3 piloting this deck (kx3 59.5%, km3 on this deck 42.9%, over 42 paired games: each a deal and seat played by both pilots, so 42 kx3 games + 42 cheap km3 baseline games), probably between +3.0 and +30.3 points (95% interval; this range refers to those 42 paired games).
+On the same deals, kx3 scored **+21.0 points** compared with km3 piloting this deck (kx3 64.5%, km3 on this deck 43.5%, over 62 paired games: each a deal and seat played by both pilots, so 62 kx3 games + 62 cheap km3 baseline games), probably between +9.6 and +32.4 points (95% interval; this range refers to those 62 paired games).
 
-That range does not include no gain: on these 42 paired games kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 42 paired games make it.
+That range does not include no gain: on these 62 paired games kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 62 paired games make it.
 
 ## Against each public list
 
@@ -24,8 +24,8 @@ That range does not include no gain: on these 42 paired games kx3 did better tha
 |---|---|---|---|
 | t-altaria | 20 | 40.0% | 21.9% to 61.3% |
 | t-blaziken | 20 | 75.0% | 53.1% to 88.8% |
-| t-hydreigon | 2 | 100.0% | 34.2% to 100.0% |
-| t-lucario | 0 | n/a | n/a |
+| t-hydreigon | 20 | 80.0% | 58.4% to 91.9% |
+| t-lucario | 2 | 50.0% | 9.5% to 90.5% |
 | t-sceptile | 0 | n/a | n/a |
 | t-suicune | 0 | n/a | n/a |
 | t-vespiquen | 0 | n/a | n/a |
@@ -35,25 +35,25 @@ Each row's range refers only to the kx3 games against that list (the row's games
 
 ## Who went first
 
-- When 13-a-ninetales-raticate went first: 57.9% over 19 games (36.3% to 76.9%)
-- When 13-a-ninetales-raticate went second: 60.9% over 23 games (40.8% to 77.8%)
+- When 13-a-ninetales-raticate went first: 65.5% over 29 games (47.3% to 80.1%)
+- When 13-a-ninetales-raticate went second: 63.6% over 33 games (46.6% to 77.8%)
 
 Each range refers only to the kx3 games on its line; a few dozen games can show a large first-or-second difference, not a small one.
 
 ## The time it took
 
-kx3 took 470 s a game on average (about 8 min), median 398 s, slowest 1274 s, with 4 threads going at once. km3 playing this deck took 0.6 s a game.
-The run log has a sitting that did not close (for example the program was stopped by the 6:30 school-morning cut, or the run was interrupted), so the running time is estimated from the game times and the thread count: 82 min, for 84 games in all: 42 kx3 games + 42 cheap km3 baseline games.
+kx3 took 437 s a game on average (about 7 min), median 391 s, slowest 1274 s, with 4 threads going at once. km3 playing this deck took 0.5 s a game.
+The run log has a sitting that did not close (for example the program was stopped by the 6:30 school-morning cut, or the run was interrupted), so the running time is estimated from the game times and the thread count: 1.9 h, for 124 games in all: 62 kx3 games + 62 cheap km3 baseline games.
 
 ## What these numbers can and can't say
 
-**These numbers say how 13-a-ninetales-raticate did in simulated games with kx3 playing it against the 8 public lists, probably between 44.5% and 73.0%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
+**These numbers say how 13-a-ninetales-raticate did in simulated games with kx3 playing it against the 8 public lists, probably between 52.1% and 75.3%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
 
 In more detail:
 
 - kx3, a strong but slow pilot, plays your deck knowing its own cards. It does not know which of the 8 public lists it faces, but its opponent is always one of them and always plays like the program kx3 imagines when it looks ahead, so it is better informed here than it would be against a person on the ladder or a deck outside the 8 lists. Read the score as the optimistic end.
 - The 8 lists count equally here, not by how common they are on the ladder.
-- The range covers only the luck of the shuffles and coin flips in these 42 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays 13-a-ninetales-raticate clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (28.5 points here), and more deals narrow it.
+- The range covers only the luck of the shuffles and coin flips in these 62 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays 13-a-ninetales-raticate clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (23.2 points here), and more deals narrow it.
 - There is no pass or fail line: whether 13-a-ninetales-raticate is worth playing is a call for the player.
 
 ## What was run
