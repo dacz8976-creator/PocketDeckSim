@@ -1,0 +1,1254 @@
+﻿[
+    {
+        "id":  "KW-261012_003458000-t01",
+        "game":  "kw-261012_003458000",
+        "his_turn":  1,
+        "deck":  "KW261012_003458000",
+        "turn_count":  1,
+        "points":  [
+                       0,
+                       0
+                   ],
+        "me":  {
+                   "hand":  [
+                                "Copycat B1 225",
+                                "Small Balloon B3b 064",
+                                "Professor\u0027s Research A4b 373",
+                                "Rare Candy A3 144"
+                            ],
+                   "discard":  [
+
+                               ],
+                   "discard_energy":  [
+
+                                      ],
+                   "board":  [
+                                 {
+                                     "card":  "Horsea A4 041",
+                                     "hp":  50
+                                 },
+                                 {
+                                     "card":  "Horsea A4 041",
+                                     "hp":  50
+                                 }
+                             ],
+                   "energy_now":  null,
+                   "energy_next":  "Water"
+               },
+        "opp":  {
+                    "hand_count":  4,
+                    "discard_n":  0,
+                    "discard_energy":  [
+
+                                       ],
+                    "board":  [
+                                  {
+                                      "card":  "Pichu A4 066",
+                                      "hp":  30
+                                  }
+                              ],
+                    "energy_next":  "Lightning"
+                },
+        "stadium":  null,
+        "turn_effects":  [
+
+                         ],
+        "his_plan":  [
+                         "Play:Professor\u0027s Research"
+                     ],
+        "hand_source":  "codex",
+        "decision_maker":  "Dustin",
+        "exact_list":  false,
+        "milestones":  [
+
+                       ],
+        "notes":  "The opponent\u0027s list is unknown (his hidden cards are filled from the pilot\u0027s own list); his discard is not tracked (0); printings chosen by the HP shown.",
+        "approximate":  true,
+        "approximate_reason":  "opponent\u0027s list unknown",
+        "heldout":  false,
+        "plan_truncated_at":  null
+    },
+    {
+        "id":  "KW-261012_003458000-t03",
+        "game":  "kw-261012_003458000",
+        "his_turn":  2,
+        "deck":  "KW261012_003458000",
+        "turn_count":  3,
+        "points":  [
+                       0,
+                       0
+                   ],
+        "me":  {
+                   "hand":  [
+                                "Copycat B1 225",
+                                "Small Balloon B3b 064",
+                                "Rare Candy A3 144",
+                                "Professor\u0027s Research A4b 373",
+                                "Seadra A1 071",
+                                "Team Rocket\u0027s Weezing ex B4a 043"
+                            ],
+                   "discard":  [
+                                   "Professor\u0027s Research A4b 373"
+                               ],
+                   "discard_energy":  [
+
+                                      ],
+                   "board":  [
+                                 {
+                                     "card":  "Horsea A4 041",
+                                     "hp":  50
+                                 },
+                                 {
+                                     "card":  "Horsea A4 041",
+                                     "hp":  50
+                                 }
+                             ],
+                   "energy_now":  "Water",
+                   "energy_next":  "Water"
+               },
+        "opp":  {
+                    "hand_count":  5,
+                    "discard_n":  0,
+                    "discard_energy":  [
+
+                                       ],
+                    "board":  [
+                                  {
+                                      "card":  "Pichu A4 066",
+                                      "hp":  30
+                                  },
+                                  {
+                                      "card":  "Dratini B4 116",
+                                      "hp":  60,
+                                      "energy":  [
+                                                     "Lightning",
+                                                     "Lightning"
+                                                 ]
+                                  }
+                              ],
+                    "energy_next":  "Water"
+                },
+        "stadium":  null,
+        "turn_effects":  [
+
+                         ],
+        "his_plan":  [
+                         "Evolve:Seadra@0",
+                         "Attach:1Water@0 zone",
+                         "Play:Professor\u0027s Research",
+                         "Play:Small Balloon",
+                         "Tool:Small Balloon@0"
+                     ],
+        "hand_source":  "codex",
+        "decision_maker":  "Dustin",
+        "exact_list":  false,
+        "milestones":  [
+
+                       ],
+        "notes":  "The opponent\u0027s list is unknown (his hidden cards are filled from the pilot\u0027s own list); his discard is not tracked (0); printings chosen by the HP shown.",
+        "approximate":  true,
+        "approximate_reason":  "opponent\u0027s list unknown",
+        "heldout":  false,
+        "plan_truncated_at":  null
+    },
+    {
+        "id":  "KW-261012_003458000-t05",
+        "game":  "kw-261012_003458000",
+        "his_turn":  3,
+        "deck":  "KW261012_003458000",
+        "turn_count":  5,
+        "points":  [
+                       0,
+                       0
+                   ],
+        "me":  {
+                   "hand":  [
+                                "Copycat B1 225",
+                                "Rare Candy A3 144",
+                                "Team Rocket\u0027s Weezing ex B4a 043",
+                                "Team Rocket\u0027s Weezing ex B4a 043",
+                                "Sabrina A1 225",
+                                "Poké Ball A2b 111"
+                            ],
+                   "discard":  [
+                                   "Professor\u0027s Research A4b 373",
+                                   "Professor\u0027s Research A4b 373"
+                               ],
+                   "discard_energy":  [
+
+                                      ],
+                   "board":  [
+                                 {
+                                     "card":  "Seadra A1 071",
+                                     "hp":  70,
+                                     "energy":  [
+                                                    "Water"
+                                                ],
+                                     "tools":  [
+                                                   "Small Balloon B3b 064"
+                                               ],
+                                     "behind":  [
+                                                    "Horsea A4 041"
+                                                ]
+                                 },
+                                 {
+                                     "card":  "Horsea A4 041",
+                                     "hp":  50
+                                 }
+                             ],
+                   "energy_now":  "Water",
+                   "energy_next":  "Water"
+               },
+        "opp":  {
+                    "hand_count":  5,
+                    "discard_n":  0,
+                    "discard_energy":  [
+
+                                       ],
+                    "board":  [
+                                  {
+                                      "card":  "Pichu A4 066",
+                                      "hp":  30
+                                  },
+                                  {
+                                      "card":  "Dragonair B2b 052",
+                                      "hp":  80,
+                                      "energy":  [
+                                                     "Water",
+                                                     "Lightning",
+                                                     "Lightning"
+                                                 ],
+                                      "behind":  [
+                                                     "Dratini A1 183"
+                                                 ]
+                                  }
+                              ],
+                    "energy_next":  "Lightning"
+                },
+        "stadium":  null,
+        "turn_effects":  [
+
+                         ],
+        "his_plan":  [
+                         "Play:Poké Ball",
+                         "Place:Team Rocket\u0027s Koffing",
+                         "Play:Copycat",
+                         "Place:Team Rocket\u0027s Koffing",
+                         "Evolve:Kingdra ex@0",
+                         "Attach:1Water@0 zone",
+                         "Attack:Stormy Prison"
+                     ],
+        "hand_source":  "codex",
+        "decision_maker":  "Dustin",
+        "exact_list":  false,
+        "milestones":  [
+
+                       ],
+        "notes":  "Dragonair stack taken from the printed evolution line (the ledger gives none); Seadra stack taken from the printed evolution line (the ledger gives none). The opponent\u0027s list is unknown (his hidden cards are filled from the pilot\u0027s own list); his discard is not tracked (0); printings chosen by the HP shown.",
+        "approximate":  true,
+        "approximate_reason":  "opponent\u0027s list unknown",
+        "heldout":  false,
+        "plan_truncated_at":  null
+    },
+    {
+        "id":  "KW-261012_003458000-t07",
+        "game":  "kw-261012_003458000",
+        "his_turn":  4,
+        "deck":  "KW261012_003458000",
+        "turn_count":  7,
+        "points":  [
+                       1,
+                       1
+                   ],
+        "me":  {
+                   "hand":  [
+                                "Kingdra ex A4 043",
+                                "Sabrina A1 225",
+                                "Team Rocket\u0027s Weezing ex B4a 043",
+                                "Hiking Trail B2b 069"
+                            ],
+                   "discard":  [
+                                   "Professor\u0027s Research A4b 373",
+                                   "Professor\u0027s Research A4b 373",
+                                   "Poké Ball A2b 111",
+                                   "Copycat B1 225",
+                                   "Team Rocket\u0027s Koffing B4a 042"
+                               ],
+                   "discard_energy":  [
+
+                                      ],
+                   "board":  [
+                                 {
+                                     "card":  "Kingdra ex A4 043",
+                                     "hp":  170,
+                                     "energy":  [
+                                                    "Water",
+                                                    "Water"
+                                                ],
+                                     "tools":  [
+                                                   "Small Balloon B3b 064"
+                                               ],
+                                     "behind":  [
+                                                    "Horsea A4 041",
+                                                    "Seadra A1 071"
+                                                ]
+                                 },
+                                 {
+                                     "card":  "Horsea A4 041",
+                                     "hp":  50
+                                 },
+                                 {
+                                     "card":  "Team Rocket\u0027s Koffing B4a 042",
+                                     "hp":  10
+                                 }
+                             ],
+                   "energy_now":  "Water",
+                   "energy_next":  "Water"
+               },
+        "opp":  {
+                    "hand_count":  3,
+                    "discard_n":  0,
+                    "discard_energy":  [
+
+                                       ],
+                    "board":  [
+                                  {
+                                      "card":  "Dragonite A1 185",
+                                      "hp":  160,
+                                      "energy":  [
+                                                     "Water",
+                                                     "Lightning",
+                                                     "Lightning",
+                                                     "Lightning"
+                                                 ],
+                                      "behind":  [
+                                                     "Dratini A1 183",
+                                                     "Dragonair A1 184"
+                                                 ]
+                                  },
+                                  {
+                                      "card":  "Dratini B4 116",
+                                      "hp":  60
+                                  }
+                              ],
+                    "energy_next":  "Water"
+                },
+        "stadium":  null,
+        "turn_effects":  [
+
+                         ],
+        "his_plan":  [
+                         "Play:Hiking Trail",
+                         "Evolve:Team Rocket\u0027s Weezing ex@2",
+                         "Ability:Accept Boiler Smog and make Dragonite Po@2",
+                         "Attach:1Water@1 zone",
+                         "Attack:Stormy Prison"
+                     ],
+        "hand_source":  "codex",
+        "decision_maker":  "Dustin",
+        "exact_list":  false,
+        "milestones":  [
+
+                       ],
+        "notes":  "Dragonite stack taken from the printed evolution line (the ledger gives none); Kingdra ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Team Rocket\u0027s Koffing. The opponent\u0027s list is unknown (his hidden cards are filled from the pilot\u0027s own list); his discard is not tracked (0); printings chosen by the HP shown.",
+        "approximate":  true,
+        "approximate_reason":  "opponent\u0027s list unknown",
+        "heldout":  false,
+        "plan_truncated_at":  null
+    },
+    {
+        "id":  "KW-261012_003458000-t09",
+        "game":  "kw-261012_003458000",
+        "his_turn":  5,
+        "deck":  "KW261012_003458000",
+        "turn_count":  9,
+        "points":  [
+                       1,
+                       2
+                   ],
+        "me":  {
+                   "hand":  [
+                                "Kingdra ex A4 043",
+                                "Sabrina A1 225",
+                                "Rare Candy A3 144",
+                                "Rare Candy A3 144"
+                            ],
+                   "discard":  [
+                                   "Professor\u0027s Research A4b 373",
+                                   "Professor\u0027s Research A4b 373",
+                                   "Poké Ball A2b 111",
+                                   "Copycat B1 225",
+                                   "Team Rocket\u0027s Koffing B4a 042",
+                                   "Horsea A4 041"
+                               ],
+                   "discard_energy":  [
+                                          "Water"
+                                      ],
+                   "board":  [
+                                 {
+                                     "card":  "Kingdra ex A4 043",
+                                     "hp":  20,
+                                     "energy":  [
+                                                    "Water",
+                                                    "Water"
+                                                ],
+                                     "tools":  [
+                                                   "Small Balloon B3b 064"
+                                               ],
+                                     "behind":  [
+                                                    "Horsea A4 041",
+                                                    "Seadra A1 071"
+                                                ]
+                                 },
+                                 {
+                                     "card":  "Team Rocket\u0027s Weezing ex B4a 043",
+                                     "hp":  90,
+                                     "behind":  [
+                                                    "Team Rocket\u0027s Koffing B4a 042"
+                                                ]
+                                 }
+                             ],
+                   "energy_now":  "Water",
+                   "energy_next":  "Water"
+               },
+        "opp":  {
+                    "hand_count":  4,
+                    "discard_n":  0,
+                    "discard_energy":  [
+
+                                       ],
+                    "board":  [
+                                  {
+                                      "card":  "Dragonite A1 185",
+                                      "hp":  30,
+                                      "energy":  [
+                                                     "Water",
+                                                     "Lightning",
+                                                     "Lightning",
+                                                     "Lightning"
+                                                 ],
+                                      "behind":  [
+                                                     "Dratini A1 183",
+                                                     "Dragonair A1 184"
+                                                 ]
+                                  },
+                                  {
+                                      "card":  "Dratini B4 116",
+                                      "hp":  60,
+                                      "energy":  [
+                                                     "Water"
+                                                 ]
+                                  }
+                              ],
+                    "energy_next":  "Lightning"
+                },
+        "stadium":  {
+                        "card":  "Hiking Trail B2b 069",
+                        "owner":  0
+                    },
+        "turn_effects":  [
+
+                         ],
+        "his_plan":  [
+                         "Attach:1Water@1 zone",
+                         "Attack:Stormy Prison"
+                     ],
+        "hand_source":  "codex",
+        "decision_maker":  "Dustin",
+        "exact_list":  false,
+        "milestones":  [
+
+                       ],
+        "notes":  "Dragonite is Poisoned (not represented: the harness has no condition field); Dragonite stack taken from the printed evolution line (the ledger gives none); Kingdra ex stack taken from the printed evolution line (the ledger gives none); Team Rocket\u0027s Weezing ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Horsea. The opponent\u0027s list is unknown (his hidden cards are filled from the pilot\u0027s own list); his discard is not tracked (0); printings chosen by the HP shown.",
+        "approximate":  true,
+        "approximate_reason":  "opponent\u0027s list unknown",
+        "heldout":  false,
+        "plan_truncated_at":  null
+    },
+    {
+        "id":  "KW-261012_003458000-t11",
+        "game":  "kw-261012_003458000",
+        "his_turn":  6,
+        "deck":  "KW261012_003458000",
+        "turn_count":  11,
+        "points":  [
+                       2,
+                       2
+                   ],
+        "me":  {
+                   "hand":  [
+                                "Kingdra ex A4 043",
+                                "Sabrina A1 225",
+                                "Rare Candy A3 144",
+                                "Rare Candy A3 144",
+                                "Team Rocket\u0027s Weezing ex B4a 043"
+                            ],
+                   "discard":  [
+                                   "Professor\u0027s Research A4b 373",
+                                   "Professor\u0027s Research A4b 373",
+                                   "Poké Ball A2b 111",
+                                   "Copycat B1 225",
+                                   "Team Rocket\u0027s Koffing B4a 042",
+                                   "Horsea A4 041"
+                               ],
+                   "discard_energy":  [
+                                          "Water"
+                                      ],
+                   "board":  [
+                                 {
+                                     "card":  "Kingdra ex A4 043",
+                                     "hp":  20,
+                                     "energy":  [
+                                                    "Water",
+                                                    "Water"
+                                                ],
+                                     "tools":  [
+                                                   "Small Balloon B3b 064"
+                                               ],
+                                     "behind":  [
+                                                    "Horsea A4 041",
+                                                    "Seadra A1 071"
+                                                ]
+                                 },
+                                 {
+                                     "card":  "Team Rocket\u0027s Weezing ex B4a 043",
+                                     "hp":  90,
+                                     "energy":  [
+                                                    "Water"
+                                                ],
+                                     "behind":  [
+                                                    "Team Rocket\u0027s Koffing B4a 042"
+                                                ]
+                                 }
+                             ],
+                   "energy_now":  "Water",
+                   "energy_next":  "Water"
+               },
+        "opp":  {
+                    "hand_count":  5,
+                    "discard_n":  0,
+                    "discard_energy":  [
+
+                                       ],
+                    "board":  [
+                                  {
+                                      "card":  "Dratini B4 116",
+                                      "hp":  60,
+                                      "energy":  [
+                                                     "Water",
+                                                     "Lightning"
+                                                 ]
+                                  }
+                              ],
+                    "energy_next":  "Lightning"
+                },
+        "stadium":  {
+                        "card":  "Hiking Trail B2b 069",
+                        "owner":  0
+                    },
+        "turn_effects":  [
+
+                         ],
+        "his_plan":  [
+
+                     ],
+        "hand_source":  "codex",
+        "decision_maker":  "Dustin",
+        "exact_list":  false,
+        "milestones":  [
+
+                       ],
+        "notes":  "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Team Rocket\u0027s Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent\u0027s list is unknown (his hidden cards are filled from the pilot\u0027s own list); his discard is not tracked (0); printings chosen by the HP shown.",
+        "approximate":  true,
+        "approximate_reason":  "opponent\u0027s list unknown",
+        "heldout":  false,
+        "plan_truncated_at":  null
+    },
+    {
+        "id":  "KW-261012_004128000-t02",
+        "game":  "kw-261012_004128000",
+        "his_turn":  1,
+        "deck":  "KW261012_004128000",
+        "turn_count":  2,
+        "points":  [
+                       0,
+                       0
+                   ],
+        "me":  {
+                   "hand":  [
+                                "Kingdra ex A4 043",
+                                "Small Balloon B3b 064",
+                                "Soothing Shore B4 154",
+                                "Copycat B1 225",
+                                "Professor\u0027s Research A4b 373"
+                            ],
+                   "discard":  [
+
+                               ],
+                   "discard_energy":  [
+
+                                      ],
+                   "board":  [
+                                 {
+                                     "card":  "Horsea A4 041",
+                                     "hp":  50
+                                 }
+                             ],
+                   "energy_now":  "Water",
+                   "energy_next":  "Water"
+               },
+        "opp":  {
+                    "hand_count":  4,
+                    "discard_n":  0,
+                    "discard_energy":  [
+
+                                       ],
+                    "board":  [
+                                  {
+                                      "card":  "Slowpoke B2b 015",
+                                      "hp":  90,
+                                      "tools":  [
+                                                    "Giant Cape A2 147"
+                                                ]
+                                  }
+                              ],
+                    "energy_next":  "Water"
+                },
+        "stadium":  null,
+        "turn_effects":  [
+
+                         ],
+        "his_plan":  [
+                         "Play:Soothing Shore",
+                         "Play:Professor\u0027s Research",
+                         "Place:Team Rocket\u0027s Koffing",
+                         "Attach:1Water@0 zone",
+                         "Play:Small Balloon",
+                         "Tool:Small Balloon@1",
+                         "Attack:Hook"
+                     ],
+        "hand_source":  "codex",
+        "decision_maker":  "Dustin",
+        "exact_list":  false,
+        "milestones":  [
+
+                       ],
+        "notes":  "The opponent\u0027s list is unknown (his hidden cards are filled from the pilot\u0027s own list); his discard is not tracked (0); printings chosen by the HP shown.",
+        "approximate":  true,
+        "approximate_reason":  "opponent\u0027s list unknown",
+        "heldout":  false,
+        "plan_truncated_at":  null
+    },
+    {
+        "id":  "KW-261012_004128000-t04",
+        "game":  "kw-261012_004128000",
+        "his_turn":  2,
+        "deck":  "KW261012_004128000",
+        "turn_count":  4,
+        "points":  [
+                       0,
+                       0
+                   ],
+        "me":  {
+                   "hand":  [
+                                "Kingdra ex A4 043",
+                                "Copycat B1 225",
+                                "Rare Candy A3 144",
+                                "Sabrina A1 225"
+                            ],
+                   "discard":  [
+                                   "Professor\u0027s Research A4b 373"
+                               ],
+                   "discard_energy":  [
+
+                                      ],
+                   "board":  [
+                                 {
+                                     "card":  "Horsea A4 041",
+                                     "hp":  50,
+                                     "energy":  [
+                                                    "Water"
+                                                ]
+                                 },
+                                 {
+                                     "card":  "Team Rocket\u0027s Koffing B4a 042",
+                                     "hp":  60,
+                                     "tools":  [
+                                                   "Small Balloon B3b 064"
+                                               ]
+                                 }
+                             ],
+                   "energy_now":  "Water",
+                   "energy_next":  "Water"
+               },
+        "opp":  {
+                    "hand_count":  5,
+                    "discard_n":  0,
+                    "discard_energy":  [
+
+                                       ],
+                    "board":  [
+                                  {
+                                      "card":  "Slowpoke B2b 015",
+                                      "hp":  80,
+                                      "energy":  [
+                                                     "Water"
+                                                 ],
+                                      "tools":  [
+                                                    "Giant Cape A2 147"
+                                                ]
+                                  }
+                              ],
+                    "energy_next":  "Water"
+                },
+        "stadium":  {
+                        "card":  "Soothing Shore B4 154",
+                        "owner":  0
+                    },
+        "turn_effects":  [
+
+                         ],
+        "his_plan":  [
+                         "Play:Rare Candy",
+                         "Evolve:Kingdra ex@0",
+                         "Attach:1Water@0 zone",
+                         "Attack:Stormy Prison"
+                     ],
+        "hand_source":  "codex",
+        "decision_maker":  "Dustin",
+        "exact_list":  false,
+        "milestones":  [
+
+                       ],
+        "notes":  "The opponent\u0027s list is unknown (his hidden cards are filled from the pilot\u0027s own list); his discard is not tracked (0); printings chosen by the HP shown.",
+        "approximate":  true,
+        "approximate_reason":  "opponent\u0027s list unknown",
+        "heldout":  false,
+        "plan_truncated_at":  null
+    },
+    {
+        "id":  "KW-261012_004435000-t02",
+        "game":  "kw-261012_004435000",
+        "his_turn":  1,
+        "deck":  "KW261012_004435000",
+        "turn_count":  2,
+        "points":  [
+                       0,
+                       0
+                   ],
+        "me":  {
+                   "hand":  [
+                                "Kingdra ex A4 043",
+                                "Hiking Trail B2b 069",
+                                "Team Rocket\u0027s Weezing ex B4a 043",
+                                "Rare Candy A3 144",
+                                "Seadra A1 071"
+                            ],
+                   "discard":  [
+
+                               ],
+                   "discard_energy":  [
+
+                                      ],
+                   "board":  [
+                                 {
+                                     "card":  "Team Rocket\u0027s Koffing B4a 042",
+                                     "hp":  60
+                                 }
+                             ],
+                   "energy_now":  "Water",
+                   "energy_next":  "Water"
+               },
+        "opp":  {
+                    "hand_count":  4,
+                    "discard_n":  0,
+                    "discard_energy":  [
+
+                                       ],
+                    "board":  [
+                                  {
+                                      "card":  "Magikarp A1 077",
+                                      "hp":  30,
+                                      "tools":  [
+                                                    "Poison Barb A3 146"
+                                                ]
+                                  }
+                              ],
+                    "energy_next":  "Water"
+                },
+        "stadium":  null,
+        "turn_effects":  [
+
+                         ],
+        "his_plan":  [
+                         "Attach:1Water@0 zone"
+                     ],
+        "hand_source":  "codex",
+        "decision_maker":  "Dustin",
+        "exact_list":  false,
+        "milestones":  [
+
+                       ],
+        "notes":  "The opponent\u0027s list is unknown (his hidden cards are filled from the pilot\u0027s own list); his discard is not tracked (0); printings chosen by the HP shown.",
+        "approximate":  true,
+        "approximate_reason":  "opponent\u0027s list unknown",
+        "heldout":  false,
+        "plan_truncated_at":  null
+    },
+    {
+        "id":  "KW-261012_004435000-t04",
+        "game":  "kw-261012_004435000",
+        "his_turn":  2,
+        "deck":  "KW261012_004435000",
+        "turn_count":  4,
+        "points":  [
+                       0,
+                       0
+                   ],
+        "me":  {
+                   "hand":  [
+                                "Kingdra ex A4 043",
+                                "Hiking Trail B2b 069",
+                                "Team Rocket\u0027s Weezing ex B4a 043",
+                                "Rare Candy A3 144",
+                                "Seadra A1 071",
+                                "Horsea A4 041"
+                            ],
+                   "discard":  [
+
+                               ],
+                   "discard_energy":  [
+
+                                      ],
+                   "board":  [
+                                 {
+                                     "card":  "Team Rocket\u0027s Koffing B4a 042",
+                                     "hp":  60,
+                                     "energy":  [
+                                                    "Water"
+                                                ]
+                                 }
+                             ],
+                   "energy_now":  "Water",
+                   "energy_next":  "Water"
+               },
+        "opp":  {
+                    "hand_count":  2,
+                    "discard_n":  0,
+                    "discard_energy":  [
+
+                                       ],
+                    "board":  [
+                                  {
+                                      "card":  "Mega Gyarados ex B1 052",
+                                      "hp":  210,
+                                      "energy":  [
+                                                     "Water"
+                                                 ],
+                                      "tools":  [
+                                                    "Poison Barb A3 146"
+                                                ],
+                                      "behind":  [
+                                                     "Magikarp A1 077"
+                                                 ]
+                                  },
+                                  {
+                                      "card":  "Eevee ex A3b 056",
+                                      "hp":  90
+                                  },
+                                  {
+                                      "card":  "Feebas A4a 021",
+                                      "hp":  30
+                                  }
+                              ],
+                    "energy_next":  "Water"
+                },
+        "stadium":  {
+                        "card":  "Soothing Shore B4 154",
+                        "owner":  1
+                    },
+        "turn_effects":  [
+
+                         ],
+        "his_plan":  [
+                         "Place:Horsea",
+                         "Evolve:Team Rocket\u0027s Weezing ex@0",
+                         "Attach:1Water@1 zone",
+                         "Play:Hiking Trail"
+                     ],
+        "hand_source":  "codex",
+        "decision_maker":  "Dustin",
+        "exact_list":  false,
+        "milestones":  [
+
+                       ],
+        "notes":  "Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none). The opponent\u0027s list is unknown (his hidden cards are filled from the pilot\u0027s own list); his discard is not tracked (0); printings chosen by the HP shown.",
+        "approximate":  true,
+        "approximate_reason":  "opponent\u0027s list unknown",
+        "heldout":  false,
+        "plan_truncated_at":  null
+    },
+    {
+        "id":  "KW-261012_004435000-t06",
+        "game":  "kw-261012_004435000",
+        "his_turn":  3,
+        "deck":  "KW261012_004435000",
+        "turn_count":  6,
+        "points":  [
+                       0,
+                       0
+                   ],
+        "me":  {
+                   "hand":  [
+                                "Kingdra ex A4 043",
+                                "Rare Candy A3 144",
+                                "Seadra A1 071",
+                                "Poké Ball A2b 111"
+                            ],
+                   "discard":  [
+
+                               ],
+                   "discard_energy":  [
+
+                                      ],
+                   "board":  [
+                                 {
+                                     "card":  "Team Rocket\u0027s Weezing ex B4a 043",
+                                     "hp":  140,
+                                     "energy":  [
+                                                    "Water"
+                                                ],
+                                     "behind":  [
+                                                    "Team Rocket\u0027s Koffing B4a 042"
+                                                ]
+                                 },
+                                 {
+                                     "card":  "Horsea A4 041",
+                                     "hp":  50,
+                                     "energy":  [
+                                                    "Water"
+                                                ]
+                                 }
+                             ],
+                   "energy_now":  "Water",
+                   "energy_next":  "Water"
+               },
+        "opp":  {
+                    "hand_count":  3,
+                    "discard_n":  0,
+                    "discard_energy":  [
+
+                                       ],
+                    "board":  [
+                                  {
+                                      "card":  "Mega Gyarados ex B1 052",
+                                      "hp":  180,
+                                      "energy":  [
+                                                     "Water",
+                                                     "Water"
+                                                 ],
+                                      "tools":  [
+                                                    "Poison Barb A3 146"
+                                                ],
+                                      "behind":  [
+                                                     "Magikarp A1 077"
+                                                 ]
+                                  },
+                                  {
+                                      "card":  "Glaceon ex A2a 022",
+                                      "hp":  140,
+                                      "behind":  [
+                                                     "Eevee A1 206"
+                                                 ]
+                                  },
+                                  {
+                                      "card":  "Feebas A4a 021",
+                                      "hp":  30
+                                  }
+                              ],
+                    "energy_next":  "Water"
+                },
+        "stadium":  {
+                        "card":  "Hiking Trail B2b 069",
+                        "owner":  0
+                    },
+        "turn_effects":  [
+
+                         ],
+        "his_plan":  [
+                         "Play:Poké Ball",
+                         "Place:Team Rocket\u0027s Koffing",
+                         "Evolve:Seadra@1",
+                         "Attach:1Water@1 zone"
+                     ],
+        "hand_source":  "codex",
+        "decision_maker":  "Dustin",
+        "exact_list":  false,
+        "milestones":  [
+
+                       ],
+        "notes":  "Glaceon ex stack taken from the printed evolution line (the ledger gives none); Mega Gyarados ex is Poisoned/Burned (not represented: the harness has no condition field); Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none); Team Rocket\u0027s Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent\u0027s list is unknown (his hidden cards are filled from the pilot\u0027s own list); his discard is not tracked (0); printings chosen by the HP shown.",
+        "approximate":  true,
+        "approximate_reason":  "opponent\u0027s list unknown",
+        "heldout":  false,
+        "plan_truncated_at":  null
+    },
+    {
+        "id":  "KW-261012_004435000-t08",
+        "game":  "kw-261012_004435000",
+        "his_turn":  4,
+        "deck":  "KW261012_004435000",
+        "turn_count":  8,
+        "points":  [
+                       0,
+                       0
+                   ],
+        "me":  {
+                   "hand":  [
+                                "Kingdra ex A4 043",
+                                "Rare Candy A3 144",
+                                "Horsea A4 041",
+                                "Copycat B1 225"
+                            ],
+                   "discard":  [
+                                   "Poké Ball A2b 111"
+                               ],
+                   "discard_energy":  [
+
+                                      ],
+                   "board":  [
+                                 {
+                                     "card":  "Team Rocket\u0027s Weezing ex B4a 043",
+                                     "hp":  140,
+                                     "energy":  [
+                                                    "Water"
+                                                ],
+                                     "behind":  [
+                                                    "Team Rocket\u0027s Koffing B4a 042"
+                                                ]
+                                 },
+                                 {
+                                     "card":  "Seadra A1 071",
+                                     "hp":  70,
+                                     "energy":  [
+                                                    "Water",
+                                                    "Water"
+                                                ],
+                                     "behind":  [
+                                                    "Horsea A4 041"
+                                                ]
+                                 },
+                                 {
+                                     "card":  "Team Rocket\u0027s Koffing B4a 042",
+                                     "hp":  60
+                                 }
+                             ],
+                   "energy_now":  "Water",
+                   "energy_next":  "Water"
+               },
+        "opp":  {
+                    "hand_count":  3,
+                    "discard_n":  0,
+                    "discard_energy":  [
+
+                                       ],
+                    "board":  [
+                                  {
+                                      "card":  "Mega Gyarados ex B1 052",
+                                      "hp":  140,
+                                      "energy":  [
+                                                     "Water",
+                                                     "Water",
+                                                     "Water"
+                                                 ],
+                                      "tools":  [
+                                                    "Poison Barb A3 146"
+                                                ],
+                                      "behind":  [
+                                                     "Magikarp A1 077"
+                                                 ]
+                                  },
+                                  {
+                                      "card":  "Glaceon ex A2a 022",
+                                      "hp":  140,
+                                      "behind":  [
+                                                     "Eevee A1 206"
+                                                 ]
+                                  },
+                                  {
+                                      "card":  "Milotic ex B3b 015",
+                                      "hp":  140,
+                                      "energy":  [
+                                                     "Water"
+                                                 ],
+                                      "behind":  [
+                                                     "Feebas A4a 021"
+                                                 ]
+                                  },
+                                  {
+                                      "card":  "Pyukumuku A3 054",
+                                      "hp":  60
+                                  }
+                              ],
+                    "energy_next":  "Water"
+                },
+        "stadium":  {
+                        "card":  "Hiking Trail B2b 069",
+                        "owner":  0
+                    },
+        "turn_effects":  [
+
+                         ],
+        "his_plan":  [
+                         "Place:Horsea",
+                         "Evolve:Kingdra ex@1",
+                         "Play:Copycat",
+                         "Play:Small Balloon",
+                         "Tool:Small Balloon@0",
+                         "Attach:1Water@0 zone",
+                         "Retreat:1",
+                         "Attack:Stormy Prison"
+                     ],
+        "hand_source":  "codex",
+        "decision_maker":  "Dustin",
+        "exact_list":  false,
+        "milestones":  [
+
+                       ],
+        "notes":  "Glaceon ex stack taken from the printed evolution line (the ledger gives none); Mega Gyarados ex is Poisoned (not represented: the harness has no condition field); Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none); Milotic ex stack taken from the printed evolution line (the ledger gives none); Seadra stack taken from the printed evolution line (the ledger gives none); Team Rocket\u0027s Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent\u0027s list is unknown (his hidden cards are filled from the pilot\u0027s own list); his discard is not tracked (0); printings chosen by the HP shown.",
+        "approximate":  true,
+        "approximate_reason":  "opponent\u0027s list unknown",
+        "heldout":  false,
+        "plan_truncated_at":  null
+    },
+    {
+        "id":  "KW-261012_004435000-t10",
+        "game":  "kw-261012_004435000",
+        "his_turn":  5,
+        "deck":  "KW261012_004435000",
+        "turn_count":  10,
+        "points":  [
+                       0,
+                       0
+                   ],
+        "me":  {
+                   "hand":  [
+                                "Professor\u0027s Research A4b 373",
+                                "Kingdra ex A4 043",
+                                "Rare Candy A3 144",
+                                "Team Rocket\u0027s Weezing ex B4a 043"
+                            ],
+                   "discard":  [
+                                   "Poké Ball A2b 111",
+                                   "Copycat B1 225"
+                               ],
+                   "discard_energy":  [
+                                          "Water",
+                                          "Water"
+                                      ],
+                   "board":  [
+                                 {
+                                     "card":  "Kingdra ex A4 043",
+                                     "hp":  10,
+                                     "energy":  [
+                                                    "Water",
+                                                    "Water"
+                                                ],
+                                     "behind":  [
+                                                    "Horsea A4 041",
+                                                    "Seadra A1 071"
+                                                ]
+                                 },
+                                 {
+                                     "card":  "Team Rocket\u0027s Weezing ex B4a 043",
+                                     "hp":  140,
+                                     "tools":  [
+                                                   "Small Balloon B3b 064"
+                                               ],
+                                     "behind":  [
+                                                    "Team Rocket\u0027s Koffing B4a 042"
+                                                ]
+                                 },
+                                 {
+                                     "card":  "Horsea A4 041",
+                                     "hp":  50
+                                 },
+                                 {
+                                     "card":  "Team Rocket\u0027s Koffing B4a 042",
+                                     "hp":  60
+                                 }
+                             ],
+                   "energy_now":  "Water",
+                   "energy_next":  "Water"
+               },
+        "opp":  {
+                    "hand_count":  5,
+                    "discard_n":  0,
+                    "discard_energy":  [
+
+                                       ],
+                    "board":  [
+                                  {
+                                      "card":  "Mega Gyarados ex B1 052",
+                                      "hp":  30,
+                                      "energy":  [
+                                                     "Water",
+                                                     "Water",
+                                                     "Water",
+                                                     "Water"
+                                                 ],
+                                      "tools":  [
+                                                    "Poison Barb A3 146"
+                                                ],
+                                      "behind":  [
+                                                     "Magikarp A1 077"
+                                                 ]
+                                  },
+                                  {
+                                      "card":  "Glaceon ex A2a 022",
+                                      "hp":  140,
+                                      "behind":  [
+                                                     "Eevee A1 206"
+                                                 ]
+                                  },
+                                  {
+                                      "card":  "Milotic ex B3b 015",
+                                      "hp":  140,
+                                      "energy":  [
+                                                     "Water",
+                                                     "Water"
+                                                 ],
+                                      "behind":  [
+                                                     "Feebas A4a 021"
+                                                 ]
+                                  },
+                                  {
+                                      "card":  "Pyukumuku A3 054",
+                                      "hp":  60
+                                  }
+                              ],
+                    "energy_next":  "Water"
+                },
+        "stadium":  {
+                        "card":  "Hiking Trail B2b 069",
+                        "owner":  0
+                    },
+        "turn_effects":  [
+
+                         ],
+        "his_plan":  [
+
+                     ],
+        "hand_source":  "codex",
+        "decision_maker":  "Dustin",
+        "exact_list":  false,
+        "milestones":  [
+
+                       ],
+        "notes":  "Glaceon ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex is Poisoned (not represented: the harness has no condition field); Kingdra ex stack taken from the printed evolution line (the ledger gives none); Mega Gyarados ex is Poisoned (not represented: the harness has no condition field); Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none); Milotic ex stack taken from the printed evolution line (the ledger gives none); Team Rocket\u0027s Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent\u0027s list is unknown (his hidden cards are filled from the pilot\u0027s own list); his discard is not tracked (0); printings chosen by the HP shown.",
+        "approximate":  true,
+        "approximate_reason":  "opponent\u0027s list unknown",
+        "heldout":  false,
+        "plan_truncated_at":  null
+    }
+]

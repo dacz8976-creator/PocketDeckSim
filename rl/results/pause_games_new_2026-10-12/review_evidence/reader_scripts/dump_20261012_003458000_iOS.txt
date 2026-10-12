@@ -1,0 +1,330 @@
+top keys: ['is_template', 'schema', 'game_id', 'sources', 'limits']
+====================================================================================================
+TURN 1 who=owner keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits']
+ hand_at_start: count=4 status=observed_with_recording_limits lim=No unzoomed four-card pre-play view: 44s has drawn Rare Candy zoom; 45s has selected Research zoom; 46s is after Research leaves hand. cards=[(1, 'Copycat', None, None), (2, 'Small Balloon', None, None), (3, 'Professor’s Research', None, None), (4, 'Rare Candy', None, None)]
+ owner_hand_start: count=4 status=observed_with_recording_limits lim=No unzoomed four-card pre-play view: 44s has drawn Rare Candy zoom; 45s has selected Research zoom; 46s is after Research leaves hand. cards=[(1, 'Copycat', None, None), (2, 'Small Balloon', None, None), (3, 'Professor’s Research', None, None), (4, 'Rare Candy', None, None)]
+ opp_hand_at_owner_start: {"count": 4, "supported_range": null, "count_method": "Count distinct upper/right card edges and card backs in the native top fan", "basis": "observed native top fan", "evidence_ids": ["N046p000"], "limit_reason": null}
+ draw: kind=normal_draw by=turn start cards=['Rare Candy'] hc 3->4 ret=None lim=None
+ draw: kind=supporter_draw by=Professor’s Research cards=['Professor’s Research', 'Seadra'] hc 3->5 ret=None lim=None
+ play 1: kind=card_play card=Professor’s Research target=None energy=null result=Draw two cards prompt=None resp=None nested=[] hc=None t=46 lim=None
+ play 2: kind=end_turn card=None target=None energy=null result=End turn with no Energy generated on first turn prompt=None resp=None nested=[] hc=None t=53 lim=None
+ board_at_start: displayed_turn=1 stadium="none" shared=[]
+  owner: points=0 status=observed lim=None
+    A: Horsea [Hook 30; 50 HP] bp=None hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Pichu [Crackly Toss; 30 HP] bp=None hp=30/30(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Lightning', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=2 stadium="none" shared=[]
+  owner: points=0 status=observed lim=None
+    A: Horsea [Hook 30; 50 HP] bp=None hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Pichu [Crackly Toss; 30 HP] bp=None hp=30/30(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Lightning', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": [{"position": 1, "name": "Copycat", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N053p000"], "limit_reason": null}, {"position": 2, "name": "Small Balloon", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N053p000"], "limit_reason": null}, {"position": 3, "name": "Rare Candy", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N053p000"], "limit_reason": null}, {"position": 4, "name": "Professor’s Research", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N053p000"], "limit_reason": null}, {"position": 5, "name": "Seadra", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N053p000"], "limit_reason": null}], "count": 5, "basis": "observed native exposed hand", "evidence_ids": ["N053p000"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": ["discard_not_opened_owner", "discard_not_opened_opponent"], "turn_evidence_ids": ["N045p000", "N054p000"], "limits": ["T1 +1/+3/+6 candidates are all after Research starts. N044/N045 qualify the four-card pre-play hand; they do not meet the ideal unzoomed criterion."]}
+====================================================================================================
+TURN 2 who=opponent keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits']
+ hand_at_start: count=None status=hidden lim=Required observed opponent fan counts are preserved independently at owner-turn starts. No arithmetic count substitutes for a fan. cards=[]
+ owner_hand_start: count=None status=not_applicable lim=See preceding owner ending hand; no owner card plays during opponent turn. cards=[]
+ opp_hand_at_owner_start: {"count": null, "supported_range": null, "count_method": "Count distinct upper/right card edges and card backs in the native top fan", "basis": "not applicable to opponent turn", "evidence_ids": [], "limit_reason": "Required count is at owner turn start."}
+ play 1: kind=card_play card=Poké Ball target=None energy=null result=One hidden Basic search result; Dratini subsequently played prompt=None resp=None nested=[] hc=None t=64 lim=None
+ play 2: kind=card_play card=Dratini target=opponent Bench 3 energy=null result=Place Dratini in right Bench position prompt=None resp=None nested=[] hc=None t=72 lim=None
+ play 3: kind=energy_attachment card=None target=Dratini Bench 3 energy={"type": "Lightning", "count": 1, "destination": "Dratini Bench 3", "retreat_payment_by_type": null} result=Attach one Lightning to Dratini prompt=None resp=None nested=[] hc=None t=76 lim=None
+ play 4: kind=attack card=Pichu target=Dratini Bench 3 energy=null result=Crackly Toss attaches another Lightning to benched Dratini prompt=None resp=None nested=[{'event': 'Crackly Toss generated Lightning attachment', 'energy_type': 'Lightning', 'count': 1, 'result': 'Dratini ends with two Lightning'}] hc=None t=78 lim=None
+ auto: {"event": "normal draw", "cards_added": 1, "identities": null, "limit": "Opponent draw/search faces hidden; do not infer search identity from later play."}
+ board_at_start: displayed_turn=2 stadium="none" shared=[]
+  owner: points=0 status=observed lim=None
+    A: Horsea [Hook 30; 50 HP] bp=None hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Pichu [Crackly Toss; 30 HP] bp=None hp=30/30(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': 'Lightning', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=2 stadium="none" shared=[]
+  owner: points=0 status=observed lim=None
+    A: Horsea [Hook 30; 50 HP] bp=None hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Pichu [Crackly Toss; 30 HP] bp=None hp=30/30(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Dratini [Slam 20x; 60 HP] bp=3 hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=2:{"Lightning": 2} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": null, "count": null, "basis": "Owner did not take a turn", "status": "not_applicable", "evidence_ids": ["N082p000"], "limit_reason": "Named owner end-hand is recorded on owner rows."}, "discard_snapshot_ids": ["discard_not_opened_owner", "discard_not_opened_opponent"], "turn_evidence_ids": ["N060p000", "N082p000"], "limits": []}
+====================================================================================================
+TURN 3 who=owner keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits']
+ hand_at_start: count=6 status=observed lim=None cards=[(1, 'Copycat', None, None), (2, 'Small Balloon', None, None), (3, 'Rare Candy', None, None), (4, 'Professor’s Research', None, None), (5, 'Seadra', None, None), (6, 'Team Rocket’s Weezing ex', None, None)]
+ owner_hand_start: count=6 status=observed lim=None cards=[(1, 'Copycat', None, None), (2, 'Small Balloon', None, None), (3, 'Rare Candy', None, None), (4, 'Professor’s Research', None, None), (5, 'Seadra', None, None), (6, 'Team Rocket’s Weezing ex', None, None)]
+ opp_hand_at_owner_start: {"count": 5, "supported_range": null, "count_method": "Count distinct upper/right card edges and card backs in the native top fan", "basis": "observed native top fan", "evidence_ids": ["N086p000"], "limit_reason": null}
+ draw: kind=normal_draw by=turn start cards=['Team Rocket’s Weezing ex'] hc 5->6 ret=None lim=None
+ draw: kind=supporter_draw by=Professor’s Research cards=['Team Rocket’s Weezing ex', 'Sabrina'] hc 4->6 ret=None lim=None
+ play 1: kind=evolution card=Seadra target=owner Active energy=null result=Evolve Active Horsea into Seadra 70 HP prompt=None resp=None nested=[] hc=None t=90 lim=None
+ play 2: kind=energy_attachment card=None target=Seadra energy={"type": "Water", "count": 1, "destination": "Active Seadra", "retreat_payment_by_type": null} result=Attach Water to Active Seadra prompt=None resp=None nested=[] hc=None t=92 lim=None
+ play 3: kind=card_play card=Professor’s Research target=None energy=null result=Draw two cards prompt=None resp=None nested=[] hc=None t=96 lim=None
+ play 4: kind=tool card=Small Balloon target=Seadra energy=null result=Attach Small Balloon to Active Seadra prompt=None resp=None nested=[] hc=None t=106 lim=None
+ play 5: kind=end_turn card=None target=None energy=null result=End turn; Water Arrow requires three Water and is not used prompt=None resp=None nested=[] hc=None t=107 lim=None
+ board_at_start: displayed_turn=3 stadium="none" shared=[]
+  owner: points=0 status=observed lim=None
+    A: Horsea [Hook 30; 50 HP] bp=None hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Pichu [Crackly Toss; 30 HP] bp=None hp=30/30(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Dratini [Slam 20x; 60 HP] bp=3 hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=2:{"Lightning": 2} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=3 stadium="none" shared=[]
+  owner: points=0 status=observed lim=None
+    A: Seadra [Water Arrow 50; 70 HP] bp=None hp=70/70(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=1:{"Water": 1} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Pichu [Crackly Toss; 30 HP] bp=None hp=30/30(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Dratini [Slam 20x; 60 HP] bp=3 hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=2:{"Lightning": 2} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": [{"position": 1, "name": "Copycat", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N106p000"], "limit_reason": null}, {"position": 2, "name": "Rare Candy", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N106p000"], "limit_reason": null}, {"position": 3, "name": "Team Rocket’s Weezing ex", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N106p000"], "limit_reason": null}, {"position": 4, "name": "Team Rocket’s Weezing ex", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N106p000"], "limit_reason": null}, {"position": 5, "name": "Sabrina", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N106p000"], "limit_reason": null}], "count": 5, "basis": "observed native exposed hand", "evidence_ids": ["N106p000"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": ["discard_not_opened_owner", "discard_not_opened_opponent"], "turn_evidence_ids": ["N088p000", "N107p000"], "limits": []}
+====================================================================================================
+TURN 4 who=opponent keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits']
+ hand_at_start: count=None status=hidden lim=Required observed opponent fan counts are preserved independently at owner-turn starts. No arithmetic count substitutes for a fan. cards=[]
+ owner_hand_start: count=None status=not_applicable lim=See preceding owner ending hand; no owner card plays during opponent turn. cards=[]
+ opp_hand_at_owner_start: {"count": null, "supported_range": null, "count_method": "Count distinct upper/right card edges and card backs in the native top fan", "basis": "not applicable to opponent turn", "evidence_ids": [], "limit_reason": "Required count is at owner turn start."}
+ play 1: kind=evolution card=Dragonair target=opponent Bench 3 energy=null result=Evolve right Bench Dratini into Dragonair 80 HP prompt=None resp=None nested=[] hc=None t=122 lim=None
+ play 2: kind=energy_attachment card=None target=Dragonair Bench 3 energy={"type": "Water", "count": 1, "destination": "Dragonair Bench 3", "retreat_payment_by_type": null} result=Attach Water to Dragonair, leaving Water + two Lightning prompt=None resp=None nested=[] hc=None t=126 lim=None
+ play 3: kind=attack card=Pichu target=None energy=null result=Crackly Toss animation is shown; no additional Energy attachment resolves prompt=None resp=None nested=[{'event': 'no-effect attack resolution', 'basis': 'No Benched Basic remains; only Dragonair is benched and board remains at three Energy. Current zone had already been consumed.'}] hc=None t=130 lim=None
+ auto: {"event": "normal draw", "cards_added": 1, "identities": null}
+ board_at_start: displayed_turn=4 stadium="none" shared=[]
+  owner: points=0 status=observed lim=None
+    A: Seadra [Water Arrow 50; 70 HP] bp=None hp=70/70(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=1:{"Water": 1} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Pichu [Crackly Toss; 30 HP] bp=None hp=30/30(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Dratini [Slam 20x; 60 HP] bp=3 hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=2:{"Lightning": 2} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Lightning', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=4 stadium="none" shared=[]
+  owner: points=0 status=observed lim=None
+    A: Seadra [Water Arrow 50; 70 HP] bp=None hp=70/70(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=1:{"Water": 1} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Pichu [Crackly Toss; 30 HP] bp=None hp=30/30(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Dragonair [Dragon’s Blessing / Draconic Whip 40; 80 HP] bp=3 hp=80/80(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=3:{"Water": 1, "Lightning": 2} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Lightning', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": null, "count": null, "basis": "Owner did not take a turn", "status": "not_applicable", "evidence_ids": ["N134p000"], "limit_reason": "Named owner end-hand is recorded on owner rows."}, "discard_snapshot_ids": ["discard_not_opened_owner", "discard_not_opened_opponent"], "turn_evidence_ids": ["D112p000", "D132p000"], "limits": []}
+====================================================================================================
+TURN 5 who=owner keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits']
+ hand_at_start: count=6 status=observed lim=None cards=[(1, 'Copycat', None, None), (2, 'Rare Candy', None, None), (3, 'Team Rocket’s Weezing ex', None, None), (4, 'Team Rocket’s Weezing ex', None, None), (5, 'Sabrina', None, None), (6, 'Poké Ball', None, None)]
+ owner_hand_start: count=6 status=observed lim=None cards=[(1, 'Copycat', None, None), (2, 'Rare Candy', None, None), (3, 'Team Rocket’s Weezing ex', None, None), (4, 'Team Rocket’s Weezing ex', None, None), (5, 'Sabrina', None, None), (6, 'Poké Ball', None, None)]
+ opp_hand_at_owner_start: {"count": 5, "supported_range": null, "count_method": "Count distinct upper/right card edges and card backs in the native top fan", "basis": "observed native top fan", "evidence_ids": ["N136p000"], "limit_reason": null}
+ draw: kind=normal_draw by=turn start cards=['Poké Ball'] hc 5->6 ret=None lim=None
+ draw: kind=search by=Poké Ball cards=['Team Rocket’s Koffing'] hc 5->6 ret=None lim=None
+ draw: kind=supporter_draw by=Copycat cards=['Kingdra ex', 'Kingdra ex', 'Team Rocket’s Koffing', 'Sabrina', 'Team Rocket’s Weezing ex'] hc 5->5 ret={'names': ['Rare Candy', 'Team Rocket’s Weezing ex', 'Team Rocket’s Weezing ex', 'Sabrina'], 'basis': 'exposed selection/return animation at152 before redraw'} lim=None
+ play 1: kind=card_play card=Poké Ball target=None energy=null result=Find Team Rocket’s Koffing; add to hand prompt=None resp=None nested=[] hc=None t=137 lim=None
+ play 2: kind=card_play card=Team Rocket’s Koffing target=owner Bench 3 energy=null result=Place found Koffing in right Bench prompt=None resp=None nested=[] hc=None t=140 lim=None
+ play 3: kind=card_play card=Copycat target=None energy=null result=Shuffle four remaining cards into deck; draw five cards matching opponent hand count prompt=None resp=None nested=[{'event': 'Copycat consumed', 'hand_count_before_play': 5, 'hand_count_after_consumption': 4}, {'order': 1, 'event': 'return Rare Candy, two Weezing ex and Sabrina to deck'}, {'order': 2, 'event': 'five individual reveals recorded below'}] hc=None t=150 lim=None
+ play 4: kind=card_play card=Team Rocket’s Koffing target=owner Bench 2 energy=null result=Place second Koffing into middle Bench prompt=None resp=None nested=[] hc=None t=162 lim=None
+ play 5: kind=evolution card=Kingdra ex target=owner Active energy=null result=Evolve Active Seadra into Kingdra ex 170 HP prompt=None resp=None nested=[] hc=None t=166 lim=None
+ play 6: kind=energy_attachment card=None target=Kingdra ex energy={"type": "Water", "count": 1, "destination": "Active Kingdra ex", "retreat_payment_by_type": null} result=Attach second Water to Active Kingdra ex prompt=None resp=None nested=[] hc=None t=170 lim=None
+ play 7: kind=attack card=Kingdra ex target=Pichu energy=null result=Stormy Prison 90 knocks out Pichu; owner gains one point prompt=None resp=None nested=[] hc=None t=174 lim=None
+ auto: {"event": "Pichu knocked out", "owner_point_change": 1, "source_seconds": 178}
+ auto: {"event": "opponent promotes only benched Dragonair", "source_seconds": 184}
+ board_at_start: displayed_turn=5 stadium="none" shared=[]
+  owner: points=0 status=observed lim=None
+    A: Seadra [Water Arrow 50; 70 HP] bp=None hp=70/70(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=1:{"Water": 1} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Pichu [Crackly Toss; 30 HP] bp=None hp=30/30(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Dragonair [Dragon’s Blessing / Draconic Whip 40; 80 HP] bp=3 hp=80/80(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=3:{"Water": 1, "Lightning": 2} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Lightning', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=6 stadium="none" shared=[]
+  owner: points=1 status=observed lim=None
+    A: Kingdra ex [Stormy Prison 90; 170 HP] bp=None hp=170/170(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=2:{"Water": 2} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Koffing [Reverse Thrust 10; 60 HP] bp=2 hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Koffing [Reverse Thrust 10; 60 HP] bp=3 hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Dragonair [Dragon’s Blessing / Draconic Whip 40; 80 HP] bp=None hp=80/80(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=3:{"Water": 1, "Lightning": 2} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': 'Lightning', 'count': 1, 'available': True} next={'type': None, 'count': None, 'available': False} lim=Small next icon is unreadable during generation glare.
+ other: {"owner_hand_end": {"cards_left_to_right": [{"position": 1, "name": "Kingdra ex", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N174p000"], "limit_reason": null}, {"position": 2, "name": "Sabrina", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N174p000"], "limit_reason": null}, {"position": 3, "name": "Team Rocket’s Weezing ex", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N174p000"], "limit_reason": null}], "count": 3, "basis": "observed native exposed hand", "evidence_ids": ["N174p000"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": ["discard_not_opened_owner", "discard_not_opened_opponent"], "turn_evidence_ids": ["N136p000", "N190p000"], "limits": ["Owner begins Poké Ball before +1-second candidate; use native136 hand before play. Candidate137 already shows the Item play.", "End boundary uses190s after Dragonair replacement; turn6 banner/generation has begun, but no opponent voluntary move yet. Small opponent next symbol remains unreadable until194s."]}
+====================================================================================================
+TURN 6 who=opponent keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits']
+ hand_at_start: count=None status=hidden lim=Required observed opponent fan counts are preserved independently at owner-turn starts. No arithmetic count substitutes for a fan. cards=[]
+ owner_hand_start: count=None status=not_applicable lim=See preceding owner ending hand; no owner card plays during opponent turn. cards=[]
+ opp_hand_at_owner_start: {"count": null, "supported_range": null, "count_method": "Count distinct upper/right card edges and card backs in the native top fan", "basis": "not applicable to opponent turn", "evidence_ids": [], "limit_reason": "Required count is at owner turn start."}
+ play 1: kind=card_play card=May target=None energy=null result=Put two random Pokémon into hidden opponent hand and choose two Pokémon to shuffle back; identities are hidden prompt=None resp=None nested=[{'event': 'two hidden searches and two hidden returns', 'limit': 'No reveal faces available; cannot name them from subsequent Dragonite or Dratini play.'}] hc=None t=196 lim=None
+ play 2: kind=energy_attachment card=None target=Dragonair energy={"type": "Lightning", "count": 1, "destination": "Active Dragonair", "retreat_payment_by_type": null} result=Attach Lightning to Active Dragonair prompt=None resp=None nested=[] hc=None t=208 lim=None
+ play 3: kind=evolution card=Dragonite target=opponent Active energy=null result=Evolve Active Dragonair into Dragonite 160 HP prompt=None resp=None nested=[] hc=None t=212 lim=None
+ play 4: kind=card_play card=Dratini target=opponent Bench 3 energy=null result=Place Dratini in right Bench prompt=None resp=None nested=[] hc=None t=214 lim=None
+ play 5: kind=attack card=Dragonite target=owner board energy=null result=Draco Meteor distributes 200 damage: middle Koffing receives 150 and is knocked out; right Koffing receives 50 and remains at10HP prompt=None resp=None nested=[{'event': 'four random 50-damage allocations', 'middle_Koffing': 150, 'right_Koffing': 50, 'basis': 'resolved board plus filmed attack sequence; individual allocation order not separately reconstructable'}] hc=None t=218 lim=None
+ auto: {"event": "normal draw", "cards_added": 1, "identities": null}
+ auto: {"event": "middle Koffing knocked out", "opponent_point_change": 1, "source_seconds": 226}
+ board_at_start: displayed_turn=6 stadium="none" shared=[]
+  owner: points=1 status=observed lim=None
+    A: Kingdra ex [Stormy Prison 90; 170 HP] bp=None hp=170/170(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=2:{"Water": 2} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Koffing [Reverse Thrust 10; 60 HP] bp=2 hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Koffing [Reverse Thrust 10; 60 HP] bp=3 hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Dragonair [Dragon’s Blessing / Draconic Whip 40; 80 HP] bp=None hp=80/80(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=3:{"Water": 1, "Lightning": 2} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': 'Lightning', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=7 stadium="none" shared=[]
+  owner: points=1 status=observed lim=None
+    A: Kingdra ex [Stormy Prison 90; 170 HP] bp=None hp=170/170(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=2:{"Water": 2} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Koffing [Reverse Thrust 10; 60 HP] bp=3 hp=10/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=50 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=1 status=observed lim=None
+    A: Dragonite [Draco Meteor; 160 HP] bp=None hp=160/160(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=4:{"Water": 1, "Lightning": 3} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Dratini [Slam 20x; 60 HP] bp=3 hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": null, "count": null, "basis": "Owner did not take a turn", "status": "not_applicable", "evidence_ids": ["N229p000"], "limit_reason": "Named owner end-hand is recorded on owner rows."}, "discard_snapshot_ids": ["discard_not_opened_owner", "discard_not_opened_opponent"], "turn_evidence_ids": ["N194p000", "N229p000"], "limits": ["Evolution and Dratini bench animations occur close together; exact subsecond boundary is approximate. May does not reveal the searched/returned Pokémon identities."]}
+====================================================================================================
+TURN 7 who=owner keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits']
+ hand_at_start: count=4 status=observed lim=None cards=[(1, 'Kingdra ex', None, None), (2, 'Sabrina', None, None), (3, 'Team Rocket’s Weezing ex', None, None), (4, 'Hiking Trail', None, None)]
+ owner_hand_start: count=4 status=observed lim=None cards=[(1, 'Kingdra ex', None, None), (2, 'Sabrina', None, None), (3, 'Team Rocket’s Weezing ex', None, None), (4, 'Hiking Trail', None, None)]
+ opp_hand_at_owner_start: {"count": 3, "supported_range": null, "count_method": "Count distinct upper/right card edges and card backs in the native top fan", "basis": "observed native top fan", "evidence_ids": ["N232p000"], "limit_reason": null}
+ draw: kind=normal_draw by=turn start cards=['Hiking Trail'] hc 3->4 ret=None lim=None
+ draw: kind=stadium_draw by=Hiking Trail cards=['Rare Candy'] hc 2->3 ret=None lim=None
+ play 1: kind=stadium card=Hiking Trail target=None energy=null result=Put Hiking Trail into play prompt=None resp=None nested=[] hc=None t=233 lim=None
+ play 2: kind=evolution card=Team Rocket’s Weezing ex target=owner Bench 3 energy=null result=Evolve right Bench Koffing carrying50damage into Weezing ex90/140HP prompt=None resp=None nested=[] hc=None t=238 lim=None
+ play 3: kind=ability card=Team Rocket’s Weezing ex target=Dragonite energy=null result=Accept Boiler Smog and make Dragonite Poisoned and Burned prompt=None resp=None nested=[{'event': 'evolution-triggered ability chosen', 'source_seconds': 242}] hc=None t=242 lim=None
+ play 4: kind=energy_attachment card=None target=Horsea Bench 1 energy={"type": "Water", "count": 1, "destination": "Horsea Bench 1", "retreat_payment_by_type": null} result=Attach Water to benched Horsea prompt=None resp=None nested=[] hc=None t=250 lim=None
+ play 5: kind=attack card=Kingdra ex target=Dragonite energy=null result=Confirm Stormy Prison attack; accept offered Supporter warning and decline using a Supporter. Deal90 to Dragonite and impose retreat block prompt=End your turn? A Supporter card can be used resp=OK nested=[{'event': 'warning confirmation', 'source_seconds': 254, 'response': 'OK'}, {'event': 'Stormy Prison damage', 'source_seconds': 257, 'damage': 90}, {'event': 'Can’t retreat status message', 'source_seconds': 260, 'limit': 'Attack effect announcement, not a failed owner retreat.'}] hc=None t=254 lim=None
+ auto: {"event": "Hiking Trail end draw", "source_seconds": 262, "card": "Rare Candy"}
+ auto: {"event": "Poison and Burn checkup", "damage": 30, "Dragonite_hp_after": 40, "source_seconds": 264}
+ auto: {"event": "Burn coin heads; Burn clears, Poison remains", "source_seconds": 266}
+ board_at_start: displayed_turn=7 stadium="none" shared=[]
+  owner: points=1 status=observed lim=None
+    A: Kingdra ex [Stormy Prison 90; 170 HP] bp=None hp=170/170(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=2:{"Water": 2} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Koffing [Reverse Thrust 10; 60 HP] bp=3 hp=10/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=50 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=1 status=observed lim=None
+    A: Dragonite [Draco Meteor; 160 HP] bp=None hp=160/160(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=4:{"Water": 1, "Lightning": 3} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Dratini [Slam 20x; 60 HP] bp=3 hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=8 stadium="Hiking Trail" shared=[]
+  owner: points=1 status=observed lim=None
+    A: Kingdra ex [Stormy Prison 90; 170 HP] bp=None hp=170/170(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=2:{"Water": 2} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=1:{"Water": 1} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Weezing ex [Boiler Smog / Confusion Gas 60; 140 HP] bp=3 hp=90/140(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=50 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=1 status=observed lim=None
+    A: Dragonite [Draco Meteor; 160 HP] bp=None hp=40/160(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=120 E=4:{"Water": 1, "Lightning": 3} tool=none cond=['Poisoned'] eff=[{'name': 'Stormy Prison', 'source': 'Kingdra ex', 'restriction': 'cannot retreat', 'affected': 'opponent Active Dragonite', 'expires': 'end of opponent turn 8'}] stack=None ids=None/None st=observed lim=None
+    B: Dratini [Slam 20x; 60 HP] bp=3 hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": [{"position": 1, "name": "Kingdra ex", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N270p000"], "limit_reason": null}, {"position": 2, "name": "Sabrina", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N270p000"], "limit_reason": null}, {"position": 3, "name": "Rare Candy", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N270p000"], "limit_reason": null}], "count": 3, "basis": "observed native exposed hand", "evidence_ids": ["N270p000"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": ["discard_not_opened_owner", "discard_not_opened_opponent"], "turn_evidence_ids": ["N232p000", "N270p000"], "limits": ["Scheduled +3 and +6 candidates show played Stadium/evolution, so selected native232 is the pre-play hand."]}
+====================================================================================================
+TURN 8 who=opponent keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits']
+ hand_at_start: count=None status=hidden lim=Required observed opponent fan counts are preserved independently at owner-turn starts. No arithmetic count substitutes for a fan. cards=[]
+ owner_hand_start: count=None status=not_applicable lim=See preceding owner ending hand; no owner card plays during opponent turn. cards=[]
+ opp_hand_at_owner_start: {"count": null, "supported_range": null, "count_method": "Count distinct upper/right card edges and card backs in the native top fan", "basis": "not applicable to opponent turn", "evidence_ids": [], "limit_reason": "Required count is at owner turn start."}
+ play 1: kind=energy_attachment card=None target=Dratini Bench 3 energy={"type": "Water", "count": 1, "destination": "Dratini Bench 3", "retreat_payment_by_type": null} result=Attach Water to benched Dratini prompt=None resp=None nested=[] hc=None t=280 lim=None
+ play 2: kind=attack card=Dragonite target=owner board energy=null result=Draco Meteor:150 damage to Active Kingdra ex, leaving20HP;50 to benched Horsea, knocking it out prompt=None resp=None nested=[] hc=None t=290 lim=None
+ auto: {"event": "normal draw", "cards_added": 1, "identities": null}
+ auto: {"event": "Horsea knocked out", "opponent_point_change": 1, "source_seconds": 296}
+ auto: {"event": "Poison checkup on Dragonite", "damage": 10, "Dragonite_hp_after": 30, "source_seconds": 298}
+ auto: {"event": "Stormy Prison retreat block expires at end of turn8"}
+ board_at_start: displayed_turn=8 stadium="Hiking Trail" shared=[]
+  owner: points=1 status=observed lim=None
+    A: Kingdra ex [Stormy Prison 90; 170 HP] bp=None hp=170/170(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=2:{"Water": 2} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Horsea [Hook 30; 50 HP] bp=1 hp=50/50(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=1:{"Water": 1} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Weezing ex [Boiler Smog / Confusion Gas 60; 140 HP] bp=3 hp=90/140(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=50 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=1 status=observed lim=None
+    A: Dragonite [Draco Meteor; 160 HP] bp=None hp=40/160(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=120 E=4:{"Water": 1, "Lightning": 3} tool=none cond=['Poisoned'] eff=[{'name': 'Stormy Prison', 'source': 'Kingdra ex', 'restriction': 'cannot retreat', 'affected': 'opponent Active Dragonite', 'expires': 'end of opponent turn 8'}] stack=None ids=None/None st=observed lim=None
+    B: Dratini [Slam 20x; 60 HP] bp=3 hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': None, 'count': None, 'available': False} lim=N272 generation is starting; no settled current token and small next symbol is unreadable.
+ board_after: displayed_turn=9 stadium="Hiking Trail" shared=[]
+  owner: points=1 status=observed lim=None
+    A: Kingdra ex [Stormy Prison 90; 170 HP] bp=None hp=20/170(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=150 E=2:{"Water": 2} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Weezing ex [Boiler Smog / Confusion Gas 60; 140 HP] bp=3 hp=90/140(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=50 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=2 status=observed lim=None
+    A: Dragonite [Draco Meteor; 160 HP] bp=None hp=30/160(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=130 E=4:{"Water": 1, "Lightning": 3} tool=none cond=['Poisoned'] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Dratini [Slam 20x; 60 HP] bp=3 hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=1:{"Water": 1} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Lightning', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": null, "count": null, "basis": "Owner did not take a turn", "status": "not_applicable", "evidence_ids": ["N301p000"], "limit_reason": "Named owner end-hand is recorded on owner rows."}, "discard_snapshot_ids": ["discard_not_opened_owner", "discard_not_opened_opponent"], "turn_evidence_ids": ["N272p000", "N301p000"], "limits": []}
+====================================================================================================
+TURN 9 who=owner keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits']
+ hand_at_start: count=4 status=observed lim=None cards=[(1, 'Kingdra ex', None, None), (2, 'Sabrina', None, None), (3, 'Rare Candy', None, None), (4, 'Rare Candy', None, None)]
+ owner_hand_start: count=4 status=observed lim=None cards=[(1, 'Kingdra ex', None, None), (2, 'Sabrina', None, None), (3, 'Rare Candy', None, None), (4, 'Rare Candy', None, None)]
+ opp_hand_at_owner_start: {"count": 4, "supported_range": null, "count_method": "Count distinct upper/right card edges and card backs in the native top fan", "basis": "observed native top fan", "evidence_ids": ["N303p000"], "limit_reason": null}
+ draw: kind=normal_draw by=turn start cards=['Rare Candy'] hc 3->4 ret=None lim=None
+ play 1: kind=energy_attachment card=None target=Weezing ex Bench 3 energy={"type": "Water", "count": 1, "destination": "Weezing ex Bench 3", "retreat_payment_by_type": null} result=Attach one Water to benched Weezing ex prompt=None resp=None nested=[] hc=None t=307 lim=None
+ play 2: kind=attack card=Kingdra ex target=Dragonite energy=null result=Stormy Prison90 knocks out Dragonite30HP; owner reaches two points prompt=End your turn? A Supporter card can be used resp=OK nested=[{'event': 'offered Supporter warning', 'source_seconds': 309, 'evidence_ids': ['N309p000'], 'response': 'OK confirms attack while declining to use a Supporter'}, {'event': 'Stormy Prison attack resolves', 'source_seconds': 312, 'evidence_ids': ['N312p000']}] hc=None t=310 lim=None
+ auto: {"event": "Dragonite knocked out", "owner_point_change": 1, "source_seconds": 318}
+ auto: {"event": "opponent promotes only Dratini", "source_seconds": 322}
+ auto: {"event": "Hiking Trail draws zero; owner already has four cards"}
+ board_at_start: displayed_turn=9 stadium="Hiking Trail" shared=[]
+  owner: points=1 status=observed lim=None
+    A: Kingdra ex [Stormy Prison 90; 170 HP] bp=None hp=20/170(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=150 E=2:{"Water": 2} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Weezing ex [Boiler Smog / Confusion Gas 60; 140 HP] bp=3 hp=90/140(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=50 E=0:{} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=2 status=observed lim=None
+    A: Dragonite [Draco Meteor; 160 HP] bp=None hp=30/160(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=130 E=4:{"Water": 1, "Lightning": 3} tool=none cond=['Poisoned'] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Dratini [Slam 20x; 60 HP] bp=3 hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=1:{"Water": 1} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Lightning', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=10 stadium="Hiking Trail" shared=[]
+  owner: points=2 status=observed lim=None
+    A: Kingdra ex [Stormy Prison 90; 170 HP] bp=None hp=20/170(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=150 E=2:{"Water": 2} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Weezing ex [Boiler Smog / Confusion Gas 60; 140 HP] bp=3 hp=90/140(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=50 E=1:{"Water": 1} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=2 status=observed lim=None
+    A: Dratini [Slam 20x; 60 HP] bp=None hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=1:{"Water": 1} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Lightning', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": [{"position": 1, "name": "Kingdra ex", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N322p000"], "limit_reason": null}, {"position": 2, "name": "Sabrina", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N322p000"], "limit_reason": null}, {"position": 3, "name": "Rare Candy", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N322p000"], "limit_reason": null}, {"position": 4, "name": "Rare Candy", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N322p000"], "limit_reason": null}], "count": 4, "basis": "observed native exposed hand", "evidence_ids": ["N322p000"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": ["discard_not_opened_owner", "discard_not_opened_opponent"], "turn_evidence_ids": ["N304p000", "N324p000"], "limits": []}
+====================================================================================================
+TURN 10 who=opponent keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits']
+ hand_at_start: count=None status=hidden lim=Required observed opponent fan counts are preserved independently at owner-turn starts. No arithmetic count substitutes for a fan. cards=[]
+ owner_hand_start: count=None status=not_applicable lim=See preceding owner ending hand; no owner card plays during opponent turn. cards=[]
+ opp_hand_at_owner_start: {"count": null, "supported_range": null, "count_method": "Count distinct upper/right card edges and card backs in the native top fan", "basis": "not applicable to opponent turn", "evidence_ids": [], "limit_reason": "Required count is at owner turn start."}
+ play 1: kind=energy_attachment card=None target=Dratini energy={"type": "Lightning", "count": 1, "destination": "Active Dratini", "retreat_payment_by_type": null} result=Attach Lightning to Active Dratini; it now has Water + Lightning prompt=None resp=None nested=[] hc=None t=334 lim=None
+ play 2: kind=attack card=Dratini target=Kingdra ex energy=null result=Slam flips two tails and deals zero damage. Kingdra ex stays20HP prompt=None resp=None nested=[{'event': 'coin results', 'heads': 0, 'tails': 2, 'source_seconds': 342}, {'event': 'damage display', 'damage': 0, 'source_seconds': 346}] hc=None t=338 lim=None
+ auto: {"event": "normal draw", "cards_added": 1, "identities": null}
+ auto: {"event": "Hiking Trail draws zero; opponent fan remains five"}
+ board_at_start: displayed_turn=10 stadium="Hiking Trail" shared=[]
+  owner: points=2 status=observed lim=None
+    A: Kingdra ex [Stormy Prison 90; 170 HP] bp=None hp=20/170(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=150 E=2:{"Water": 2} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Weezing ex [Boiler Smog / Confusion Gas 60; 140 HP] bp=3 hp=90/140(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=50 E=1:{"Water": 1} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=2 status=observed lim=None
+    A: Dratini [Slam 20x; 60 HP] bp=None hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=1:{"Water": 1} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': 'Lightning', 'count': 1, 'available': True} next={'type': 'Lightning', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=11 stadium="Hiking Trail" shared=[]
+  owner: points=2 status=observed lim=None
+    A: Kingdra ex [Stormy Prison 90; 170 HP] bp=None hp=20/170(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=150 E=2:{"Water": 2} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Weezing ex [Boiler Smog / Confusion Gas 60; 140 HP] bp=3 hp=90/140(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=50 E=1:{"Water": 1} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=2 status=observed lim=None
+    A: Dratini [Slam 20x; 60 HP] bp=None hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=2:{"Water": 1, "Lightning": 1} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Lightning', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": null, "count": null, "basis": "Owner did not take a turn", "status": "not_applicable", "evidence_ids": ["N348p000"], "limit_reason": "Named owner end-hand is recorded on owner rows."}, "discard_snapshot_ids": ["discard_not_opened_owner", "discard_not_opened_opponent"], "turn_evidence_ids": ["N328p000", "N348p000"], "limits": []}
+====================================================================================================
+TURN 11 who=owner keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits']
+ hand_at_start: count=5 status=observed lim=None cards=[(1, 'Kingdra ex', None, None), (2, 'Sabrina', None, None), (3, 'Rare Candy', None, None), (4, 'Rare Candy', None, None), (5, 'Team Rocket’s Weezing ex', None, None)]
+ owner_hand_start: count=5 status=observed lim=None cards=[(1, 'Kingdra ex', None, None), (2, 'Sabrina', None, None), (3, 'Rare Candy', None, None), (4, 'Rare Candy', None, None), (5, 'Team Rocket’s Weezing ex', None, None)]
+ opp_hand_at_owner_start: {"count": 5, "supported_range": null, "count_method": "Count distinct upper/right card edges and card backs in the native top fan", "basis": "observed native top fan", "evidence_ids": ["N351p000"], "limit_reason": null}
+ draw: kind=normal_draw by=turn start cards=['Team Rocket’s Weezing ex'] hc 4->5 ret=None lim=None
+ auto: {"event": "Your opponent conceded", "source_seconds": 353, "result": "owner win", "points_at_concession": [2, 2]}
+ board_at_start: displayed_turn=11 stadium="Hiking Trail" shared=[]
+  owner: points=2 status=observed lim=None
+    A: Kingdra ex [Stormy Prison 90; 170 HP] bp=None hp=20/170(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=150 E=2:{"Water": 2} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Weezing ex [Boiler Smog / Confusion Gas 60; 140 HP] bp=3 hp=90/140(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=50 E=1:{"Water": 1} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=2 status=observed lim=None
+    A: Dratini [Slam 20x; 60 HP] bp=None hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=2:{"Water": 1, "Lightning": 1} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Lightning', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=11 stadium="Hiking Trail" shared=[]
+  owner: points=2 status=observed lim=None
+    A: Kingdra ex [Stormy Prison 90; 170 HP] bp=None hp=20/170(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=150 E=2:{"Water": 2} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    B: Team Rocket’s Weezing ex [Boiler Smog / Confusion Gas 60; 140 HP] bp=3 hp=90/140(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=50 E=1:{"Water": 1} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=2 status=observed lim=None
+    A: Dratini [Slam 20x; 60 HP] bp=None hp=60/60(filmed printed HP and visible remaining HP; no maximum-HP modifiers shown) dmg=0 E=2:{"Water": 1, "Lightning": 1} tool=none cond=[] eff=[] stack=None ids=None/None st=observed lim=None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Lightning', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": [{"position": 1, "name": "Kingdra ex", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N353p000"], "limit_reason": null}, {"position": 2, "name": "Sabrina", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N353p000"], "limit_reason": null}, {"position": 3, "name": "Rare Candy", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N353p000"], "limit_reason": null}, {"position": 4, "name": "Rare Candy", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N353p000"], "limit_reason": null}, {"position": 5, "name": "Team Rocket’s Weezing ex", "variant": null, "basis": "observed native exposed hand", "evidence_ids": ["N353p000"], "limit_reason": null}], "count": 5, "basis": "observed native exposed hand", "evidence_ids": ["N353p000"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": ["discard_not_opened_owner", "discard_not_opened_opponent"], "turn_evidence_ids": ["N351p000", "N353p000"], "limits": ["Concession interrupts turn11 before any voluntary play. The +1/+3/+6 frames exist but latter frames are post-concession/transition, not turn-start choices. There is no End Turn action."]}
