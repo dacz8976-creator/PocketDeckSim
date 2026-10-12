@@ -38,10 +38,21 @@ def group(deck):
     raise ValueError(deck)
 
 
+# What the replay compares with the record (Oct 12, the laptop's review, item b): each logged decision's move label, game turn, number
+# of legal moves, points, Active and Bench count; the game's points, turns, winner, plies and the opponent's number of decisions.
+CHECKED = ("label", "turn", "n", "p", "act", "b", "points", "turns", "winner", "plies", "moves_opp_n")
+
+
 def require_exact(checks, bot, expected):
     bad = [c["key"] for c in checks if not c.get("replayed_exactly")]
     if len(checks) != expected or bad:
         sys.exit(f"STOP: {bot}: {len(checks)} games checked (expected {expected}), {len(bad)} not replayed exactly: {bad[:5]}")
+    weak = [c["key"] for c in checks if not set(CHECKED) <= set(c.get("checked") or [])]
+    if weak:
+        sys.exit(f"STOP: {bot}: {len(weak)} games were not checked on every field {CHECKED}: {weak[:5]}")
+    trial = [c["key"] for c in checks if c.get("ambiguous_unresolved", 1) != 0]
+    if trial:
+        sys.exit(f"STOP: {bot}: {len(trial)} games have a label the pilot that played did not resolve (matched by trial only): {trial[:5]}")
 
 
 def per_game(rows):
@@ -52,17 +63,29 @@ def per_game(rows):
     by_turn = defaultdict(list)
     for r in rows:
         by_turn[r["turn"]].append(r)
-    turns, skip_turns = 0, []
+    turns, skip_turns, km3_turns, km3_skip_turns = 0, [], 0, 0
     for t in sorted(by_turn):
         rs = by_turn[t]
+        attacked = any(r["taken_attack"] for r in rs)
+        # the pre-registration's measure: km3, asked at the same decision, proposed an attack (km3_attacked is None where it wasn't asked)
+        km3_proposed = any(r.get("km3_attacked") is True for r in rs)
+        if km3_proposed:
+            km3_turns += 1
+            km3_skip_turns += not attacked
         if any(r["attack_legal"] for r in rs):
             turns += 1
-            if not any(r["taken_attack"] for r in rs):
+            if not attacked:
                 skip_turns.append({"turn": t, "decisions": [r["decision"] for r in rs], "attacks": sorted({a for r in rs for a in r["attacks"]}),
-                                   "taken": [r["taken"] for r in rs]})
+                                   "taken": [r["taken"] for r in rs], "km3_moves": [r.get("km3_move") for r in rs], "km3_attacked": km3_proposed})
     skip_decisions = [r for r in rows if r["attack_legal"] and not r["taken_attack"]]
     return {"points": points, "skips": skips, "turns": turns, "skip_turns": len(skip_turns), "skip_turn_list": skip_turns,
-            "skip_decisions": skip_decisions}
+            "skip_decisions": skip_decisions, "km3_turns": km3_turns, "km3_skip_turns": km3_skip_turns}
+
+
+def km3_identity(rows):
+    """(decisions where km3 was asked, how many of them its proposal differs from the move taken): in km3's own games it must be 0."""
+    asked = [r for r in rows if r.get("km3_move") is not None]
+    return len(asked), sum(r["km3_move"] != r["taken"] for r in asked)
 
 
 def ratio(pairs):
@@ -103,6 +126,7 @@ def load(folder, bot):
         k = pair_key(c["key"])
         g = per_game(rows.get(k, []))
         g["key"], g["deck"] = c["key"], c["key"].split("|")[0]
+        g["rows"] = rows.get(k, [])
         games[k] = g
     return games
 
@@ -118,9 +142,15 @@ def main(folder):
     out = []
     subsets = [("all", keys)] + [(f"group {g}", [k for k in keys if group(k.split("|")[0]) == g]) for g in GROUPS] + \
               [(f"deck {d}", [k for k in keys if k.startswith(d + "|")]) for d in DECKS]
-    for level, (cnt, den) in (("decision", ("skips", "points")), ("turn", ("skip_turns", "turns"))):
-        what = ("attack chances (decisions with an attack legal) and the share where the move taken was not an attack" if level == "decision"
-                else "turns with an attack chance and the share with no attack taken that turn (skip turns)")
+    levels = [("decision", ("skips", "points")), ("turn", ("skip_turns", "turns"))]
+    if any(data[b][k]["km3_turns"] for b in BOTS for k in keys):
+        levels.append(("pre-registered", ("km3_skip_turns", "km3_turns")))
+    whats = {"decision": "attack chances (decisions with an attack legal) and the share where the move taken was not an attack",
+             "turn": "turns with an attack chance and the share with no attack taken that turn (skip turns)",
+             "pre-registered": "turns where km3, asked at the same decision, proposed an attack, and the share with no attack taken that turn "
+                               "(the pre-registration's measure; km3's own column is 0 by construction)"}
+    for level, (cnt, den) in levels:
+        what = whats[level]
         out += [f"## {level} level: {what}", "",
                 "| rows | games | " + " | ".join(f"{b} {den} / {cnt} / share %" for b in BOTS) + " | cand − frozen | cand − km3 | frozen − km3 |",
                 "|---|---:|" + "---|" * (len(BOTS) + 3)]
@@ -140,15 +170,23 @@ def main(folder):
         games_with = sum(1 for k in keys if data[b][k]["skip_turns"] > 0)
         out.append(f"- {b}: games with one or more skip turns {games_with} of {len(keys)}; skip turns per game "
                    f"{sum(data[b][k]['skip_turns'] for k in keys) / len(keys):.3f}")
+    km_rows = [r for g in data["km3"].values() for r in g.get("rows", [])]
+    if km_rows:
+        n, bad = km3_identity(km_rows)
+        out.append(f"- km3 identity: in km3's own games, km3 was asked at {n} decisions and proposed a move other than the one it played at {bad}")
+        if bad:
+            sys.exit("STOP: km3's proposal differs from its own recorded move: the proposal is not the one km3 would have made in play")
     with open(os.path.join(folder, "exact_summary.txt"), "w") as f:
         f.write("\n".join(out) + "\n")
     with open(os.path.join(folder, "skip_turns.tsv"), "w") as f:
-        f.write("bot\tkey\tturn\tdecisions\tlegal_attacks\tmoves_taken_that_turn\n")
+        f.write("bot\tkey\tturn\tdecisions\tlegal_attacks\tmoves_taken_that_turn\tkm3_moves\tkm3_attacked\n")
         for b in BOTS:
             for k in keys:
                 g = data[b][k]
                 for s in g["skip_turn_list"]:
-                    f.write(f"{b}\t{g['key']}\t{s['turn']}\t{','.join(map(str, s['decisions']))}\t{'; '.join(s['attacks'])}\t{' > '.join(s['taken'])}\n")
+                    km = " > ".join("-" if m is None else m for m in s["km3_moves"])
+                    f.write(f"{b}\t{g['key']}\t{s['turn']}\t{','.join(map(str, s['decisions']))}\t{'; '.join(s['attacks'])}\t{' > '.join(s['taken'])}"
+                            f"\t{km}\t{'yes' if s['km3_attacked'] else 'no'}\n")
     with open(os.path.join(folder, "skip_decisions.tsv"), "w") as f:
         f.write("bot\tkey\tturn\tdecision\tlegal_attacks\ttaken\tattack_later_that_turn\n")
         for b in BOTS:

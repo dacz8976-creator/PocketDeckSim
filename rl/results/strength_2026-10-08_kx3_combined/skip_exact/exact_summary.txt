@@ -30,6 +30,23 @@
 | deck 05-indeedee-stoutland | 80 | 312 / 33 / 10.6 ± 3.3 | 291 / 26 / 8.9 ± 3.0 | 262 / 20 / 7.6 ± 3.1 | +1.6 ± 3.5 | +2.9 ± 3.6 | +1.3 ± 2.4 |
 | deck draft-A-shark-tempo | 80 | 363 / 8 / 2.2 ± 1.6 | 354 / 12 / 3.4 ± 1.9 | 329 / 4 / 1.2 ± 1.2 | -1.2 ± 1.9 | +1.0 ± 2.1 | +2.2 ± 2.0 |
 
+## pre-registered level: turns where km3, asked at the same decision, proposed an attack, and the share with no attack taken that turn (the pre-registration's measure; km3's own column is 0 by construction)
+
+| rows | games | candidate km3_turns / km3_skip_turns / share % | frozen km3_turns / km3_skip_turns / share % | km3 km3_turns / km3_skip_turns / share % | cand − frozen | cand − km3 | frozen − km3 |
+|---|---:|---|---|---|---|---|---|
+| all | 560 | 1892 / 8 / 0.4 ± 0.3 | 1896 / 8 / 0.4 ± 0.3 | 1849 / 0 / 0.0 ± 0.0 | +0.0 ± 0.4 | +0.4 ± 0.3 | +0.4 ± 0.3 |
+| group fast | 240 | 768 / 5 / 0.7 ± 0.6 | 799 / 4 / 0.5 ± 0.5 | 801 / 0 / 0.0 ± 0.0 | +0.2 ± 0.7 | +0.7 ± 0.6 | +0.5 ± 0.5 |
+| group setup | 240 | 777 / 2 / 0.3 ± 0.4 | 757 / 3 / 0.4 ± 0.4 | 723 / 0 / 0.0 ± 0.0 | -0.1 ± 0.6 | +0.3 ± 0.4 | +0.4 ± 0.4 |
+| group middle | 80 | 347 / 1 / 0.3 ± 0.6 | 340 / 1 / 0.3 ± 0.6 | 325 / 0 / 0.0 ± 0.0 | -0.0 ± 0.0 | +0.3 ± 0.6 | +0.3 ± 0.6 |
+| deck 09-mega-manectric-heliolisk | 80 | 273 / 1 / 0.4 ± 0.7 | 283 / 2 / 0.7 ± 1.0 | 262 / 0 / 0.0 ± 0.0 | -0.3 ± 1.2 | +0.4 ± 0.7 | +0.7 ± 1.0 |
+| deck 06-mega-blaziken-tournament-list | 80 | 277 / 2 / 0.7 ± 1.0 | 284 / 1 / 0.4 ± 0.7 | 291 / 0 / 0.0 ± 0.0 | +0.4 ± 1.2 | +0.7 ± 1.0 | +0.4 ± 0.7 |
+| deck 10-xatu-oricorio-tr-weezing | 80 | 218 / 2 / 0.9 ± 1.2 | 232 / 1 / 0.4 ± 0.8 | 248 / 0 / 0.0 ± 0.0 | +0.5 ± 1.5 | +0.9 ± 1.2 | +0.4 ± 0.8 |
+| deck 03-wailord-indeedee-wall | 80 | 263 / 1 / 0.4 ± 0.7 | 254 / 1 / 0.4 ± 0.8 | 253 / 0 / 0.0 ± 0.0 | -0.0 ± 1.1 | +0.4 ± 0.7 | +0.4 ± 0.8 |
+| deck 01-muk-glimmora-kingambit-regigigas | 80 | 243 / 0 / 0.0 ± 0.0 | 239 / 1 / 0.4 ± 0.8 | 228 / 0 / 0.0 ± 0.0 | -0.4 ± 0.8 | +0.0 ± 0.0 | +0.4 ± 0.8 |
+| deck 05-indeedee-stoutland | 80 | 271 / 1 / 0.4 ± 0.7 | 264 / 1 / 0.4 ± 0.7 | 242 / 0 / 0.0 ± 0.0 | -0.0 ± 1.0 | +0.4 ± 0.7 | +0.4 ± 0.7 |
+| deck draft-A-shark-tempo | 80 | 347 / 1 / 0.3 ± 0.6 | 340 / 1 / 0.3 ± 0.6 | 325 / 0 / 0.0 ± 0.0 | -0.0 ± 0.0 | +0.3 ± 0.6 | +0.3 ± 0.6 |
+
 - candidate: games with one or more skip turns 83 of 560; skip turns per game 0.180
 - frozen: games with one or more skip turns 67 of 560; skip turns per game 0.130
 - km3: games with one or more skip turns 42 of 560; skip turns per game 0.077
+- km3 identity: in km3's own games, km3 was asked at 15355 decisions and proposed a move other than the one it played at 0
