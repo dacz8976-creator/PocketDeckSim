@@ -1,0 +1,214 @@
+P3 tests first (Oct 9): cargo test --release --features test-utils --test rules_repair_trainers fossil, at 35e6acfd plus the
+new tests (engine/src unchanged). 10 fail (the Fossil missed), the 2 controls and the earlier Item-lock test pass.
+
+warning: unused import: `TrainerType`
+  --> src/players/value_functions.rs:21:76
+   |
+21 | use crate::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType, BASIC_STAGE};
+   |                                                                            ^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> src/actions/energy_moves.rs:187:9
+    |
+187 |     let mut take = |pools: &mut Vec<(usize, Vec<EnergyType>)>,
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: associated function `geometric_until_tails` is never used
+   --> src/actions/attack_outcome.rs:487:12
+    |
+311 | impl AttackOutcomes {
+    | ------------------- associated function in this implementation
+...
+487 |     pub fn geometric_until_tails(
+    |            ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `estimated_attack_damage` is never used
+    --> src/players/value_functions.rs:2232:4
+     |
+2232 | fn estimated_attack_damage(attack: &Attack, slot: &PlayedCard, state: &State, player: usize) -> f64 {
+     |    ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `best_attack_value` is never used
+    --> src/players/value_functions.rs:2528:4
+     |
+2528 | fn best_attack_value(slot: &PlayedCard, form: &Card, state: &State, player: usize) -> f64 {
+     |    ^^^^^^^^^^^^^^^^^
+
+warning: `deckgym` (lib) generated 5 warnings (run `cargo fix --lib -p deckgym` to apply 2 suggestions)
+   Compiling deckgym v0.1.0-pdl.rules4 (/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/engine)
+    Finished `release` profile [optimized] target(s) in 6.68s
+     Running tests/rules_repair_trainers.rs (/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2tgt/release/deps/rules_repair_trainers-a4b9905f92822d18)
+
+running 13 tests
+test an_item_lock_stops_a_fossil ... ok
+test fossil_crackling_snap_without_an_item_on_top ... ok
+test fossil_crackling_snap_counts_a_fossil_on_top ... FAILED
+test fossil_junk_spark_counts_a_fossil ... FAILED
+test fossil_order_pad_finds_a_fossil_on_heads ... FAILED
+test fossil_arven_finds_a_fossil_on_heads ... FAILED
+test fossil_past_friends_still_counts_only_supporters ... ok
+test fossil_scavenge_recovers_a_fossil ... FAILED
+test fossil_scrounge_and_scarf_discards_a_fossil_from_the_opponents_hand ... FAILED
+test fossil_treasure_collecting_takes_a_fossil ... FAILED
+test fossil_thieving_machine_takes_a_lone_fossil ... FAILED
+test fossil_thieving_machine_can_take_a_fossil_or_a_potion ... FAILED
+test fossil_scavenge_can_recover_a_fossil_or_a_potion ... FAILED
+
+failures:
+
+---- fossil_crackling_snap_counts_a_fossil_on_top stdout ----
+
+thread 'fossil_crackling_snap_counts_a_fossil_on_top' (21276) panicked at tests/rules_repair_trainers.rs:588:9:
+assertion `left == right` failed: B4054Pachirisu
+  left: 150
+ right: 130
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- fossil_junk_spark_counts_a_fossil stdout ----
+
+thread 'fossil_junk_spark_counts_a_fossil' (21278) panicked at tests/rules_repair_trainers.rs:567:9:
+assertion `left == right` failed: B4055RotomEx
+  left: 140
+ right: 130
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- fossil_order_pad_finds_a_fossil_on_heads stdout ----
+
+thread 'fossil_order_pad_finds_a_fossil_on_heads' (21279) panicked at tests/rules_repair_trainers.rs:546:5:
+both coin results seen: heads 0, tails 30
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: rules_repair_trainers::fossil_deck_search
+   3: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- fossil_arven_finds_a_fossil_on_heads stdout ----
+
+thread 'fossil_arven_finds_a_fossil_on_heads' (21275) panicked at tests/rules_repair_trainers.rs:546:5:
+both coin results seen: heads 0, tails 30
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: rules_repair_trainers::fossil_deck_search
+   3: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- fossil_scavenge_recovers_a_fossil stdout ----
+
+thread 'fossil_scavenge_recovers_a_fossil' (21283) panicked at tests/rules_repair_trainers.rs:609:5:
+assertion `left == right` failed
+  left: []
+ right: [Trainer(A1 216 Helix Fossil)]
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- fossil_scrounge_and_scarf_discards_a_fossil_from_the_opponents_hand stdout ----
+
+thread 'fossil_scrounge_and_scarf_discards_a_fossil_from_the_opponents_hand' (21284) panicked at tests/rules_repair_trainers.rs:487:5:
+assertion `left == right` failed: the Fossil, an Item card, is discarded
+  left: []
+ right: [Trainer(A1 216 Helix Fossil)]
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- fossil_treasure_collecting_takes_a_fossil stdout ----
+
+thread 'fossil_treasure_collecting_takes_a_fossil' (21287) panicked at tests/rules_repair_trainers.rs:657:9:
+assertion `left == right` failed: B4130Raticate
+  left: [Trainer(P-A 001 Potion)]
+ right: [Trainer(A1 216 Helix Fossil), Trainer(P-A 001 Potion)]
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- fossil_thieving_machine_takes_a_lone_fossil stdout ----
+
+thread 'fossil_thieving_machine_takes_a_lone_fossil' (21286) panicked at tests/rules_repair_trainers.rs:36:28:
+Team Rocket's Thieving Machine should be offered
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: rules_repair_trainers::play::{{closure}}
+   3: rules_repair_trainers::play
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- fossil_thieving_machine_can_take_a_fossil_or_a_potion stdout ----
+
+thread 'fossil_thieving_machine_can_take_a_fossil_or_a_potion' (21285) panicked at tests/rules_repair_trainers.rs:522:5:
+assertion `left == right` failed: both Item cards can be taken
+  left: {"Potion"}
+ right: {"Helix Fossil", "Potion"}
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- fossil_scavenge_can_recover_a_fossil_or_a_potion stdout ----
+
+thread 'fossil_scavenge_can_recover_a_fossil_or_a_potion' (21282) panicked at tests/rules_repair_trainers.rs:625:5:
+assertion `left == right` failed: both Item cards can come back
+  left: {"Potion"}
+ right: {"Helix Fossil", "Potion"}
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+
+failures:
+    fossil_arven_finds_a_fossil_on_heads
+    fossil_crackling_snap_counts_a_fossil_on_top
+    fossil_junk_spark_counts_a_fossil
+    fossil_order_pad_finds_a_fossil_on_heads
+    fossil_scavenge_can_recover_a_fossil_or_a_potion
+    fossil_scavenge_recovers_a_fossil
+    fossil_scrounge_and_scarf_discards_a_fossil_from_the_opponents_hand
+    fossil_thieving_machine_can_take_a_fossil_or_a_potion
+    fossil_thieving_machine_takes_a_lone_fossil
+    fossil_treasure_collecting_takes_a_fossil
+
+test result: FAILED. 3 passed; 10 failed; 0 ignored; 0 measured; 9 filtered out; finished in 0.32s
+
+error: test failed, to rerun pass `--test rules_repair_trainers`

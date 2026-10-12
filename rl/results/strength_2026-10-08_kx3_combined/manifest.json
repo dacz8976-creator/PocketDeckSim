@@ -1,0 +1,126 @@
+{
+ "name": "kx3_combined_v_frozen",
+ "question": "THE COMBINED CANDIDATE against the frozen kx3 (coordinator, Oct 7; Dustin chose the full run, Oct 7; rl/RUN5.md). Does kx3 with `_tools _zs3 _m64` together play Dustin's 7 development decks better or worse than the frozen kx3 (d513e37b, the development run's pilot)? `_tools`: the Tool rule in the play-outs and the within-noise Tool tie-break at kx3's own decision (gate 3: +0.2 +- 1.5 against the rule off). `_zs3`: a switch away from km3's attack to a line that attacks this turn in fewer than half of its play-outs needs a lead of 3 standard errors, not 2. `_m64`: where the best moves are within the bar the decision will use after 16 play-outs, the best, the close moves and km3's move play on to 64 on the same worlds, and the decision is made once, at the end (claude/playout-pilot 172cbe9ce0f2cb7946b489422b56d3fce5ca6219; README rl/results/playout_close_calls_2026-10-07/README.md, the fix round). km3 is untouched. The manifest lists the seven development decks in the development run's order with its seed_base, so every deal is that run's (strength_2026-10-03_kx3_dev) and the frozen arm is that run's X arm, already played; this run plays the candidate (arm X) and km3 (arm ref) on all 7 decks: 1120 games = 560 kx3 games + 560 km3 games. Build check: every reference game here must replay the development run's game for game, or the pairing is void. PRIMARY: candidate - frozen in game score (win 1, tie 1/2, loss 0) on the same (deck, opponent, deal, seat), mean +- 1.96 sd/sqrt(n) over the 560 pairs, read by pair_combined.py in this folder; also every deck weighted equally, per group (fast 09, 06, 10; setup 03, 01, 05; draft A in the middle) and per deck, with pace (turns per game, first-attack own turn). READING, fixed now: if the pooled interval is entirely above zero, the candidate is recommended as the next frozen candidate (Dustin's word), and the held-out exam re-run decides; otherwise the frozen kx3 stays. A deck whose interval is entirely below zero is REPORTED, not a veto. Also reported, per arm: km3-attack skip turns per game (the deck's own turns where km3 proposed an attack, kx3 played something else and no attack followed that turn; trainer_habits scripted --attack-scan on the candidate arm, the existing scan for the frozen arm), the share of games with one or more, and the win rate of games with v without. Time is quoted for kx3 games only. A halfway look (the first 280 kx3 games' pairs, whatever decks they are) is shown to Dustin for information only; nothing is decided on it.",
+ "repo_commit": "2bfb1b7391797f5799312703b347f39ae8545a56",
+ "selfcheck": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64": "selfcheck pilot=kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64 games=12 seat0_wins=9 seat1_wins=3 ties=0 turns=132 digest=724e581a9c51711f"
+ },
+ "created_at": "2026-10-08T03:27:37Z",
+ "stage": "dev",
+ "repo_root": "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim",
+ "pilot": "kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64",
+ "reference": "km3",
+ "decks": [
+  {
+   "name": "09-mega-manectric-heliolisk",
+   "path": "decks/dustin/09-mega-manectric-heliolisk.txt",
+   "sha256": "48ca6b6c6aeefb36678abff741896ad4931ae101e9e4a698f1faefb3f3e4f91e"
+  },
+  {
+   "name": "06-mega-blaziken-tournament-list",
+   "path": "decks/dustin/06-mega-blaziken-tournament-list.txt",
+   "sha256": "69c521a33339a45633c5770b3e4acad5b8912f9367288a3044147e7fa45d5800"
+  },
+  {
+   "name": "10-xatu-oricorio-tr-weezing",
+   "path": "decks/dustin/10-xatu-oricorio-tr-weezing.txt",
+   "sha256": "a9cf8f1998a56316ceb466e7d9ec479f103c757fdfce89a91151248f641624af"
+  },
+  {
+   "name": "03-wailord-indeedee-wall",
+   "path": "decks/dustin/03-wailord-indeedee-wall.txt",
+   "sha256": "7d367c7ce81b398cc78cb1f12299b5035ba5477d8ff9e2d3baeb121a81dd57c6"
+  },
+  {
+   "name": "01-muk-glimmora-kingambit-regigigas",
+   "path": "decks/dustin/01-muk-glimmora-kingambit-regigigas.txt",
+   "sha256": "49d135c6e09e375a531e5e82e7d1c3887f9c8f1b9a9c988e587623d0bde35785"
+  },
+  {
+   "name": "05-indeedee-stoutland",
+   "path": "decks/dustin/05-indeedee-stoutland.txt",
+   "sha256": "0524e3595c49ded4c55380c72726890d8d730bf1eeb035cdc460f26b30f4339c"
+  },
+  {
+   "name": "draft-A-shark-tempo",
+   "path": "decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt",
+   "sha256": "3f39092ba6680cc5b8013b961e2f5a0f07bc779816ade7a6891983082b2e7417"
+  }
+ ],
+ "opponents": [
+  {
+   "name": "t-altaria",
+   "path": "decks/screen/opponents/t-altaria.txt",
+   "sha256": "c3a57b9c835be77ba864514e2636645885c4f22d75028c5f29e2686edcbe171f"
+  },
+  {
+   "name": "t-blaziken",
+   "path": "decks/screen/opponents/t-blaziken.txt",
+   "sha256": "d88a70e56dae8f8500d539348223b5fee5eaba705667578a8fcbca95963fd7ed"
+  },
+  {
+   "name": "t-hydreigon",
+   "path": "decks/screen/opponents/t-hydreigon.txt",
+   "sha256": "18688bd9ab09f2638538006590767a5750abe763572c0fb636c47eec93155f3b"
+  },
+  {
+   "name": "t-lucario",
+   "path": "decks/screen/opponents/t-lucario.txt",
+   "sha256": "76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634"
+  },
+  {
+   "name": "t-sceptile",
+   "path": "decks/screen/opponents/t-sceptile.txt",
+   "sha256": "fe0b7fc4de2f9dff0268a65d30dd39bfd5b73e7e5115b48e59f3975777018cd2"
+  },
+  {
+   "name": "t-suicune",
+   "path": "decks/screen/opponents/t-suicune.txt",
+   "sha256": "639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783"
+  },
+  {
+   "name": "t-vespiquen",
+   "path": "decks/screen/opponents/t-vespiquen.txt",
+   "sha256": "8356844fd2d143a44c547356ff5a32b74977478fbb1f9fc2a716a7f2233f8255"
+  },
+  {
+   "name": "t-weezing",
+   "path": "decks/screen/opponents/t-weezing.txt",
+   "sha256": "26cb869fe5f2c7cd79f8b974bf7667f802837bdb6ec9442db5360aef490ce5a1"
+  }
+ ],
+ "deals": 5,
+ "seats": [
+  0,
+  1
+ ],
+ "seed_base": 24400000000,
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "heldout_decks": [
+  "02-arceus-crobat",
+  "04-absol-hoopa-darkrai",
+  "07-skarmory-stall",
+  "08-garchomp-toolbox",
+  "11-archaludon-haxorus-dragonair",
+  "12-ariados-whimsicott-ogerpon",
+  "13-a-ninetales-raticate",
+  "14-comfey-raticate-hypno",
+  "15-jolteon-oricorio-raticate",
+  "draft-C-meowstic-hatterene-v2",
+  "draft-D-entei-grimhound"
+ ],
+ "heldout_locked": true,
+ "intended_lines": "rl/strength/intended_lines.json",
+ "intended_lines_sha256": "80778f3c4a58aa11d8a10fd96196110177dcc20d240d24f9351798eda4dae5a1",
+ "program": "/home/dacz8976/kxc/172cbe9c/strength",
+ "program_sha256": "f5a6ae95051c0c673d45a6a8be9d6d840827a97bbb2feaaa0fccb4cbb8076b58",
+ "engine": "claude/playout-pilot 172cbe9ce0f2cb7946b489422b56d3fce5ca6219 engine tree 69a5a4419da2 (kx3 with the Tool rule, the skip bar and close calls as fixed after the laptop's reviews; ties join a running extension but never start one), built on the laptop Oct 8 with rl/strength/build.sh (main's harness source bf9c5d6814007f1f); gate 1 here: km3 240/240 v the official program, km3 81b572198c04d5d1, the lab form kx3_r2_c3_lab_tools_zs3_m64 8c1244aec5c8419d as in the cloud's gate 1, suite passed with 0 failed; at 54209409 the same build steps gave the frozen code 31d638dbc818b0fa and the Tool code c426e4c860e836ed (the code with every new suffix off is unchanged); KX_EXTRA_LISTS unset",
+ "pilot_provenance": "kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64 from claude/playout-pilot 172cbe9ce0f2cb7946b489422b56d3fce5ca6219: the development run's kx3 (REALISTIC, the pool's 8 meta lists, 16 play-outs, cap 12, z 2) plus the Tool rule (gate 3), the skip bar and close calls as fixed after the laptop's review; gates 1-2 in the cloud (rl/results/playout_close_calls_2026-10-07/README.md), gate 1 on the laptop",
+ "reference_provenance": "km3 in the same build; it must equal the pinned km3 (self-check 81b572198c04d5d1) and replay the development run's ref games",
+ "planned_pairs": 56,
+ "planned_games": 1120
+}

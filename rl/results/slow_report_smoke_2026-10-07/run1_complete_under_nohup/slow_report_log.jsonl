@@ -1,0 +1,6 @@
+{"at": "2026-10-08T07:20:06Z", "event": "registered", "pilot": "km3", "reference": "km3", "manifest_sha256": "8d0bf0a8f7d906cf1c84f0594bf29938a03f08650c52baecdbd8552e9cba5116", "seed_base": 24669400000, "deals": 2, "paired": true, "threads": 2, "deck_file": "decks/events/smoke-held.txt", "deck_sha256": "62006b682027c4737111d789e342100db506809a71e5fe0962042bb6b77ca209"}
+{"at": "2026-10-08T07:20:06Z", "event": "sitting_call", "pilot": "km3", "reference": "km3", "school_rule": "off", "school_days": "mon,tue,wed,thu,fri", "threads": 2, "max_games": null, "school_choice_overridden": false, "program_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2"}
+{"at": "2026-10-08T07:20:06Z", "event": "slice_start", "pilot": "km3", "reference": "km3", "remaining_games": 64, "stop_after_min": null, "hard_stop": null, "threads": 2}
+{"at": "2026-10-08T07:20:46Z", "event": "slice_end", "pilot": "km3", "reference": "km3", "returncode": 0, "killed_for_school": false, "new_games": 64}
+{"at": "2026-10-08T07:20:47Z", "event": "complete", "pilot": "km3", "reference": "km3", "games": 64}
+{"at": "2026-10-08T07:20:47Z", "event": "report_written", "pilot": "km3", "reference": "km3", "path": "/home/dacz8976/slow_smoke2/runs/2026-10-07_smoke-held/SLOW_REPORT.md"}

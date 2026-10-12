@@ -1,0 +1,178 @@
+{
+ "name": "slow_report_draft-A-wallace",
+ "question": "kx3 (d513e37b) on draft-A-wallace v km3 on the public panel. A slow report on one deck, not development: how does draft-A-wallace do when the strong, slow pilot kx3 plays it against the eight public panel lists played by km3, 10 deals x 2 seats each? Primary: the deck's score (win 1, tie 1/2, loss 0) overall and against each list, with 95% ranges; and how much better kx3 plays this deck than km3 on the same deals. Realistic knowledge: kx3 plays the deck knowing its own cards; the deck is never one of the lists kx3 guesses its opponent from, and the panel side is never handed it. No pass or fail line; time per game is reported as a fact.",
+ "repo_commit": "b888bb092c44336f9831001542c4710e2e5a16c0",
+ "selfcheck": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kx3": "selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa"
+ },
+ "selfcheck_source": {
+  "km3": "replayed by slow_report.py on the registering machine just before registration (equal to the committed pin)",
+  "kx3": "replayed by slow_report.py on the registering machine just before registration (equal to the committed pin)"
+ },
+ "created_at": "2026-10-08T15:40:39Z",
+ "stage": "use",
+ "repo_root": "/home/user/PocketDeckSim-slow-report",
+ "pilot": "kx3",
+ "reference": "km3",
+ "decks": [
+  {
+   "name": "draft-A-wallace",
+   "path": "decks/brews/drafts_2026-10-01/draft-A-wallace.txt",
+   "sha256": "b5b66d02a0f20da6388ed90db83e6b72eb91134070795a0be36e6d5a3b0ab504"
+  }
+ ],
+ "opponents": [
+  {
+   "name": "t-altaria",
+   "path": "decks/screen/opponents/t-altaria.txt",
+   "sha256": "c3a57b9c835be77ba864514e2636645885c4f22d75028c5f29e2686edcbe171f"
+  },
+  {
+   "name": "t-blaziken",
+   "path": "decks/screen/opponents/t-blaziken.txt",
+   "sha256": "d88a70e56dae8f8500d539348223b5fee5eaba705667578a8fcbca95963fd7ed"
+  },
+  {
+   "name": "t-hydreigon",
+   "path": "decks/screen/opponents/t-hydreigon.txt",
+   "sha256": "18688bd9ab09f2638538006590767a5750abe763572c0fb636c47eec93155f3b"
+  },
+  {
+   "name": "t-lucario",
+   "path": "decks/screen/opponents/t-lucario.txt",
+   "sha256": "76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634"
+  },
+  {
+   "name": "t-sceptile",
+   "path": "decks/screen/opponents/t-sceptile.txt",
+   "sha256": "fe0b7fc4de2f9dff0268a65d30dd39bfd5b73e7e5115b48e59f3975777018cd2"
+  },
+  {
+   "name": "t-suicune",
+   "path": "decks/screen/opponents/t-suicune.txt",
+   "sha256": "639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783"
+  },
+  {
+   "name": "t-vespiquen",
+   "path": "decks/screen/opponents/t-vespiquen.txt",
+   "sha256": "8356844fd2d143a44c547356ff5a32b74977478fbb1f9fc2a716a7f2233f8255"
+  },
+  {
+   "name": "t-weezing",
+   "path": "decks/screen/opponents/t-weezing.txt",
+   "sha256": "26cb869fe5f2c7cd79f8b974bf7667f802837bdb6ec9442db5360aef490ce5a1"
+  }
+ ],
+ "deals": 10,
+ "seats": [
+  0,
+  1
+ ],
+ "seed_base": 24681400000,
+ "pair_stride": 10000,
+ "threads": 4,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "heldout_decks": [],
+ "heldout_locked": true,
+ "heldout_registry": [
+  "02-arceus-crobat",
+  "04-absol-hoopa-darkrai",
+  "07-skarmory-stall",
+  "08-garchomp-toolbox",
+  "11-archaludon-haxorus-dragonair",
+  "12-ariados-whimsicott-ogerpon",
+  "13-a-ninetales-raticate",
+  "14-comfey-raticate-hypno",
+  "15-jolteon-oricorio-raticate",
+  "draft-C-meowstic-hatterene-v2",
+  "draft-D-entei-grimhound"
+ ],
+ "heldout_in_run": [],
+ "intended_lines": "rl/strength/intended_lines.json",
+ "intended_lines_sha256": "80778f3c4a58aa11d8a10fd96196110177dcc20d240d24f9351798eda4dae5a1",
+ "program": "/root/slow_report_kx3/strength",
+ "program_sha256": "c2fe1d3599c25e265e94f6d62ac68c5ef6d90ecb9beb010d1f90fdb8b5952bc3",
+ "engine": "claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec (the frozen, tested development build), built on the laptop Oct 2; km3 240/240 v the official program, self-checks km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa; KX_EXTRA_LISTS unset; THIS PROGRAM (/root/slow_report_kx3/strength, sha256 c2fe1d3599c2) is NOT the pinned binary: its build record (written by rl/strength/build.sh, not signed) says it is a rebuild of that source (build record sha256 8efa31ace54b: engine tree as archived 31dbd2e6e8ec, harness source bf9c5d681400, rustc 1.94.1 (e408947bf 2026-03-25)), accepted because both self-checks were replayed on the registering machine and equal the committed pin's digests",
+ "pilot_provenance": "kx3 from claude/playout-pilot@d513e37b, frozen Oct 4-5",
+ "reference_provenance": "km3 in the same build; it equals the pinned km3 (step 10's 240 games field for field, self-check 81b572198c04d5d1)",
+ "planned_pairs": 8,
+ "planned_games": 320,
+ "deck_files": [
+  {
+   "name": "draft-A-wallace",
+   "path": "decks/brews/drafts_2026-10-01/draft-A-wallace.txt"
+  }
+ ],
+ "slow_report": {
+  "version": 1,
+  "headline": "kx3 (d513e37b) on draft-A-wallace v km3 on the public panel",
+  "summary": "Stage use. 10 deals x 2 seats against each of the eight public lists. No pass or fail line; not development evidence.",
+  "deck_name": "draft-A-wallace",
+  "deck_file": "decks/brews/drafts_2026-10-01/draft-A-wallace.txt",
+  "deck_file_sha256": "b5b66d02a0f20da6388ed90db83e6b72eb91134070795a0be36e6d5a3b0ab504",
+  "deck_file_state": "committed",
+  "deals": 10,
+  "paired": true,
+  "pin": {
+   "path": "rl/strength/slow_report_pin.json",
+   "sha256": "2d1a3ac4735671772efe2767d0f0d305af8d3e02b99e3f4a851eaebcb25a092c"
+  },
+  "pilot_label": "kx3 (d513e37b)",
+  "reference_label": "km3",
+  "panel_label": "the public panel",
+  "scrub_env_prefixes": [
+   "KX_",
+   "PDL_",
+   "DECKGYM_",
+   "JEV_",
+   "PG_"
+  ],
+  "resume_command": "python3 rl/strength/slow_report.py --dir /home/user/PocketDeckSim-slow-report/rl/results/slow_reports/2026-10-08_draft-A-wallace --school-rule off",
+  "program_route": "rebuilt",
+  "pinned_program": "/home/dacz8976/kx/strength",
+  "pinned_program_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2",
+  "harness_source_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+  "harness_source_checkout_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+  "engine_ref": "d513e37b473f2819075e1eb2439075a8a1e65c42",
+  "engine_tree": "31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588",
+  "pin_committed": "yes",
+  "pin_committed_detail": null,
+  "registered_on": "vm",
+  "build_record": {
+   "schema": 1,
+   "program": "/root/slow_report_kx3/strength",
+   "program_sha256": "c2fe1d3599c25e265e94f6d62ac68c5ef6d90ecb9beb010d1f90fdb8b5952bc3",
+   "engine_arg": "d513e37b473f2819075e1eb2439075a8a1e65c42",
+   "engine": "d513e37b473f2819075e1eb2439075a8a1e65c42 engine tree 31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588",
+   "engine_ref": "d513e37b473f2819075e1eb2439075a8a1e65c42",
+   "engine_tree_archived": "31dbd2e6e8ecd39f6756b15cdb86f48b1c8f8588",
+   "harness_source_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+   "rustc": "rustc 1.94.1 (e408947bf 2026-03-25)\nbinary: rustc\ncommit-hash: e408947bfd200af42db322daf0fadfe7e26d3bd1\ncommit-date: 2026-03-25\nhost: x86_64-unknown-linux-gnu\nrelease: 1.94.1\nLLVM version: 21.1.8",
+   "cargo": "cargo 1.94.1 (29ea6fb6a 2026-03-24)",
+   "machine": "Linux 6.18.44-fc-v80 x86_64",
+   "libc": "ldd (Ubuntu GLIBC 2.39-0ubuntu8.7) 2.39",
+   "host": "vm",
+   "home": "/root",
+   "cargo_home": "/root/.cargo",
+   "build_dir": "/root/slow_report_kx3/build",
+   "target_dir": "/root/slow_report_kx3/target",
+   "build_fs": "ext2/ext3",
+   "jobs": "8",
+   "build_env_unset": [],
+   "cargo_config_files": [],
+   "built_at": "2026-10-08T14:17:47Z",
+   "rebuild_command": "env HOME=/root CARGO_HOME=/root/.cargo STRENGTH_BUILD_DIR=/root/slow_report_kx3/build STRENGTH_TARGET_DIR=/root/slow_report_kx3/target STRENGTH_JOBS=8 STRENGTH_REPO=/home/user/PocketDeckSim-slow-report bash /home/user/PocketDeckSim-slow-report/rl/strength/build.sh d513e37b473f2819075e1eb2439075a8a1e65c42 /root/slow_report_kx3/strength",
+   "record_file": "/root/slow_report_kx3/strength.build.json",
+   "record_sha256": "8efa31ace54bda8e8770caf73e1ff4dc18ba1c6fdd2944701c0771c1acad99e6"
+  },
+  "school_rule": "off",
+  "school_days": "mon,tue,wed,thu,fri",
+  "expected_hours": {
+   "typical_low": 4.705882352941177,
+   "typical_high": 6.153846153846154,
+   "wall": 17.77777777777778
+  }
+ }
+}

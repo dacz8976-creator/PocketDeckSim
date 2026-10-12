@@ -1,0 +1,24 @@
+{
+ "manifest_sha256": "8d0bf0a8f7d906cf1c84f0594bf29938a03f08650c52baecdbd8552e9cba5116",
+ "stage": "use",
+ "pilot": "km3",
+ "reference": "km3",
+ "registration_changed": false,
+ "registration_problems": [],
+ "paired_games": 32,
+ "pooled": {
+  "n": 32,
+  "mean": 0.0,
+  "sd": 0.0,
+  "half": 0.0
+ },
+ "per_deck": {
+  "smoke-held": {
+   "n": 32,
+   "mean": 0.0,
+   "sd": 0.0,
+   "half": 0.0
+  }
+ },
+ "exactly_zero": true
+}

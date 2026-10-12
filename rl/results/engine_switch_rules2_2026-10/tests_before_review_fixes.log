@@ -1,0 +1,41 @@
+...................E...........EE.E........
+======================================================================
+ERROR: test_mega_kangaskhan_s_second_punch_has_no_golden_check (test_tightened_rule.Golden.test_mega_kangaskhan_s_second_punch_has_no_golden_check)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 268, in test_mega_kangaskhan_s_second_punch_has_no_golden_check
+    self.assertIsNone(tr.golden_ok("coin_queued_by_attack", probe(), keys=["Double-Punching Family"]))
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: golden_ok() got an unexpected keyword argument 'keys'
+
+======================================================================
+ERROR: test_a_cut_title_that_begins_no_later_round_attack_is_kept_as_cut (test_tightened_rule.ProbeOutput.test_a_cut_title_that_begins_no_later_round_attack_is_kept_as_cut)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 191, in test_a_cut_title_that_begins_no_later_round_attack_is_kept_as_cut
+    self.assertEqual(tr.parse_probe(out)["queued_attacks"], ["Tongue Wh..."])
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'queued_attacks'
+
+======================================================================
+ERROR: test_a_negative_control_needs_no_coin_round_or_return_condition (test_tightened_rule.ProbeOutput.test_a_negative_control_needs_no_coin_round_or_return_condition)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 196, in test_a_negative_control_needs_no_coin_round_or_return_condition
+    self.assertTrue(tr.control_clean(probe(trapleaf=2, will=2)))
+                    ^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'control_clean'
+
+======================================================================
+ERROR: test_a_title_the_probe_cut_short_is_read_as_the_later_round_attack_it_begins (test_tightened_rule.ProbeOutput.test_a_title_the_probe_cut_short_is_read_as_the_later_round_attack_it_begins)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 187, in test_a_title_the_probe_cut_short_is_read_as_the_later_round_attack_it_begins
+    self.assertEqual(tr.parse_probe(out)["queued_attacks"], ["Double-Punching Family"])
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'queued_attacks'
+
+----------------------------------------------------------------------
+Ran 43 tests in 0.005s
+
+FAILED (errors=4)

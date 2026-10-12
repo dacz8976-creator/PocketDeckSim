@@ -1,0 +1,8 @@
+The watch build of 08a9b3ae607c904e7df9f6e999d3f830eccc930f (/home/dacz8976/engine-rules2-watch-08a9b3a), rules switch 2's sitting1.sh step 6 (main c4f27f2 + P c7a25df). The two instrument_scan.py scripts, taken from the candidate (P's blobs, as switch2.env names them), applied in this order:
+  rl/results/victory_star_repair_2026-09-30/instrument_scan.py blob cd8fe70b291b9d5258a384bca444379a71601bb5 sha256 2fcf97407f31b00adebc44c3f453441e96b6cadb9f28a6653afd64190f2493a3
+  rl/results/coin_prevention_repair_2026-09-30/instrument_scan.py blob 306f1f6969af39c54bd09a164c8fab27a083c194 sha256 7cc1914e01e28ce601373d3992b46d215f04cec005a2e6a1183c986591cc62d0
+engine/examples/legality_scan.rs before: sha256 b9ce6d06d6866bfce7718604f12b81c5de3c12664c678c67f542c59fd9b0ef83
+instrumented /home/dacz8976/engine-rules2-watch-08a9b3a/engine/examples/legality_scan.rs
+instrumented /home/dacz8976/engine-rules2-watch-08a9b3a/engine/examples/legality_scan.rs
+engine/examples/legality_scan.rs after: sha256 b1d2934e6a6653e505f0e14e0265c5fe242d0e7b5899271a2217d1b00efbfffb, 703 lines added, 0 removed; it writes all 42 counters of counters.tsv (every firing tick kept); script-names: /home/dacz8976/engine-rules2-watch-08a9b3a/engine/examples/legality_scan.rs with /tmp/sitting1_rules2.4tHitc/watch/coin_prevention_repair_2026-09-30.py: all 42 counters of /tmp/sitting1_rules2.4tHitc/counters.tsv are written (a "name" string each); the coin script's R2_COUNTERS + R2_KEYED (27) are exactly its 27 round-2 rows, R2_KEYED its 4 keyed ones
+Its source differs from the plain build's (/home/dacz8976/engine-rules2-08a9b3a) in engine/examples/legality_scan.rs only (diff -rq, target/ aside); decks/ equal.

@@ -1,0 +1,29 @@
+P2 plain v P2 watch (the counters change no play): same moves in 200 of 200 games
+P v P2: 3 of 200 games play differently, 1 end differently (winner or points)
+
+pairing 0, brew-07-hoopa-darkrai-sableye v altaria (50 games):
+  attack_return_weakness: 1 games, 1 ticks
+  offgate_return_by_source[attack]: 8 games, 10 ticks
+  P v P2: 1 games play differently, 0 end differently
+  games P2 changed where the exact counter fired: 0 of 1; exact without a change: 1
+  CHANGED WITHOUT THE EXACT COUNTER: deals [31]
+
+pairing 1, brew-09-sableye-obstagoon v altaria (50 games):
+  attack_return_weakness: 6 games, 6 ticks
+  offgate_return_by_source[attack]: 21 games, 31 ticks
+  P v P2: 2 games play differently, 1 end differently
+  games P2 changed where the exact counter fired: 0 of 2; exact without a change: 6
+  CHANGED WITHOUT THE EXACT COUNTER: deals [8, 21]
+
+pairing 2, brew-09-sableye-obstagoon v sceptile (50 games):
+  attack_return_weakness: 0 games, 0 ticks
+  offgate_return_by_source[attack]: 42 games, 73 ticks
+  P v P2: 0 games play differently, 0 end differently
+  games P2 changed where the exact counter fired: 0 of 0; exact without a change: 0
+
+pairing 3, brew-07-hoopa-darkrai-sableye v blaziken (50 games):
+  attack_return_weakness: 0 games, 0 ticks
+  offgate_return_by_source[Rocky Helmet]: 8 games, 12 ticks
+  offgate_return_by_source[attack]: 7 games, 7 ticks
+  P v P2: 0 games play differently, 0 end differently
+  games P2 changed where the exact counter fired: 0 of 0; exact without a change: 0

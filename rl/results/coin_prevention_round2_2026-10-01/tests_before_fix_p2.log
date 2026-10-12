@@ -1,0 +1,264 @@
+warning: unused import: `TrainerType`
+  --> src/players/value_functions.rs:21:76
+   |
+21 | use crate::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType, BASIC_STAGE};
+   |                                                                            ^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> src/actions/energy_moves.rs:187:9
+    |
+187 |     let mut take = |pools: &mut Vec<(usize, Vec<EnergyType>)>,
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: associated function `geometric_until_tails` is never used
+   --> src/actions/attack_outcome.rs:487:12
+    |
+311 | impl AttackOutcomes {
+    | ------------------- associated function in this implementation
+...
+487 |     pub fn geometric_until_tails(
+    |            ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `estimated_attack_damage` is never used
+    --> src/players/value_functions.rs:2232:4
+     |
+2232 | fn estimated_attack_damage(attack: &Attack, slot: &PlayedCard, state: &State, player: usize) -> f64 {
+     |    ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `best_attack_value` is never used
+    --> src/players/value_functions.rs:2528:4
+     |
+2528 | fn best_attack_value(slot: &PlayedCard, form: &Card, state: &State, player: usize) -> f64 {
+     |    ^^^^^^^^^^^^^^^^^
+
+warning: `deckgym` (lib) generated 5 warnings (run `cargo fix --lib -p deckgym` to apply 2 suggestions)
+   Compiling deckgym v0.1.0-pdl.rules4 (/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/engine)
+    Finished `release` profile [optimized] target(s) in 2.45s
+     Running tests/rules_repair_return_damage_weakness.rs (/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2tgt/release/deps/rules_repair_return_damage_weakness-4a5f40acd3ac9cfb)
+
+running 17 tests
+test ability_return_damage_stays_flat ... ok
+test apply_damage_path_takes_weakness ... FAILED
+test bounded_field_keeps_the_hit_back_extra_at_20 ... FAILED
+test ability_and_attack_return_on_one_defender ... FAILED
+test double_knockout_by_the_hit_back_the_attacker_promotes_first ... FAILED
+test each_attack_hits_back_with_weakness_on_a_weak_attacker ... FAILED
+test held_back_hit_back_takes_weakness ... FAILED
+test metal_defender_does_not_shield_its_own_hit_back ... FAILED
+test hit_back_on_a_benched_attacker_stays_flat ... ok
+test perish_body_branch_hit_back_takes_weakness ... FAILED
+test each_attack_hits_back_flat_on_an_attacker_not_weak_to_it ... ok
+test rocky_helmet_stays_flat_on_a_weak_attacker ... ok
+test recording_183108_t8_cursed_jewel_returns_60 ... FAILED
+test recording_183108_t10_hit_back_lands_when_the_holder_is_knocked_out ... FAILED
+test swift_does_not_shield_the_hit_back ... FAILED
+test tool_and_attack_return_on_one_defender_each_by_its_own_rule ... FAILED
+test weakness_decides_the_knockout_by_the_hit_back ... FAILED
+
+failures:
+
+---- apply_damage_path_takes_weakness stdout ----
+
+thread 'apply_damage_path_takes_weakness' (23493) panicked at tests/rules_repair_return_damage_weakness.rs:589:5:
+assertion `left == right` failed
+  left: 90
+ right: 70
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- bounded_field_keeps_the_hit_back_extra_at_20 stdout ----
+
+thread 'bounded_field_keeps_the_hit_back_extra_at_20' (23494) panicked at tests/rules_repair_return_damage_weakness.rs:675:5:
+assertion `left == right` failed: Needle Lariat's 80 + 20 under Bounded Field; a x2 reading (160, or 80 + 40) would Knock Out Stonjourner (120 HP)
+  left: Some(40)
+ right: Some(20)
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- ability_and_attack_return_on_one_defender stdout ----
+
+thread 'ability_and_attack_return_on_one_defender' (23491) panicked at tests/rules_repair_return_damage_weakness.rs:531:5:
+assertion `left == right` failed
+  left: 90
+ right: 70
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- double_knockout_by_the_hit_back_the_attacker_promotes_first stdout ----
+
+thread 'double_knockout_by_the_hit_back_the_attacker_promotes_first' (23495) panicked at tests/rules_repair_return_damage_weakness.rs:405:5:
+assertion `left == right` failed: Bulbasaur (40 HP, weak Fire) is Knocked Out by Shell Trap's 20 + 20
+  left: Some(20)
+ right: None
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- each_attack_hits_back_with_weakness_on_a_weak_attacker stdout ----
+
+thread 'each_attack_hits_back_with_weakness_on_a_weak_attacker' (23497) panicked at tests/rules_repair_return_damage_weakness.rs:267:9:
+assertion `left == right` failed: Cursed Jewel: the hit back takes +20 on an attacker weak to the holder
+  left: 90
+ right: 70
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- held_back_hit_back_takes_weakness stdout ----
+
+thread 'held_back_hit_back_takes_weakness' (23498) panicked at tests/rules_repair_return_damage_weakness.rs:566:5:
+assertion `left == right` failed
+  left: 90
+ right: 70
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- metal_defender_does_not_shield_its_own_hit_back stdout ----
+
+thread 'metal_defender_does_not_shield_its_own_hit_back' (23500) panicked at tests/rules_repair_return_damage_weakness.rs:637:5:
+assertion `left == right` failed
+  left: 130
+ right: 110
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- perish_body_branch_hit_back_takes_weakness stdout ----
+
+thread 'perish_body_branch_hit_back_takes_weakness' (23501) panicked at tests/rules_repair_return_damage_weakness.rs:716:17:
+assertion `left == right` failed: seed 3
+  left: 60
+ right: 40
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- recording_183108_t8_cursed_jewel_returns_60 stdout ----
+
+thread 'recording_183108_t8_cursed_jewel_returns_60' (23503) panicked at tests/rules_repair_return_damage_weakness.rs:355:5:
+assertion `left == right` failed
+  left: 90
+ right: 70
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- recording_183108_t10_hit_back_lands_when_the_holder_is_knocked_out stdout ----
+
+thread 'recording_183108_t10_hit_back_lands_when_the_holder_is_knocked_out' (23502) panicked at tests/rules_repair_return_damage_weakness.rs:381:5:
+assertion `left == right` failed
+  left: 80
+ right: 60
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- swift_does_not_shield_the_hit_back stdout ----
+
+thread 'swift_does_not_shield_the_hit_back' (23505) panicked at tests/rules_repair_return_damage_weakness.rs:651:5:
+assertion `left == right` failed
+  left: 60
+ right: 40
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- tool_and_attack_return_on_one_defender_each_by_its_own_rule stdout ----
+
+thread 'tool_and_attack_return_on_one_defender_each_by_its_own_rule' (23506) panicked at tests/rules_repair_return_damage_weakness.rs:511:9:
+assertion `left == right` failed: Spooky Shot
+  left: 70
+ right: 50
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- weakness_decides_the_knockout_by_the_hit_back stdout ----
+
+thread 'weakness_decides_the_knockout_by_the_hit_back' (23507) panicked at tests/rules_repair_return_damage_weakness.rs:301:9:
+Cursed Jewel: Knocked Out
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+
+failures:
+    ability_and_attack_return_on_one_defender
+    apply_damage_path_takes_weakness
+    bounded_field_keeps_the_hit_back_extra_at_20
+    double_knockout_by_the_hit_back_the_attacker_promotes_first
+    each_attack_hits_back_with_weakness_on_a_weak_attacker
+    held_back_hit_back_takes_weakness
+    metal_defender_does_not_shield_its_own_hit_back
+    perish_body_branch_hit_back_takes_weakness
+    recording_183108_t10_hit_back_lands_when_the_holder_is_knocked_out
+    recording_183108_t8_cursed_jewel_returns_60
+    swift_does_not_shield_the_hit_back
+    tool_and_attack_return_on_one_defender_each_by_its_own_rule
+    weakness_decides_the_knockout_by_the_hit_back
+
+test result: FAILED. 4 passed; 13 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+
+error: test failed, to rerun pass `--test rules_repair_return_damage_weakness`

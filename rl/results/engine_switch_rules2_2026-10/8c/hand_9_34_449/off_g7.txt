@@ -1,0 +1,11 @@
+PGTICK 68 (the decision asked about; gates off for it: ["g7"])
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack(Attack { energy_required: [Grass, Colorless], title: "Grass Knot", fixed_damage: 40, effect: Some("This attack does 30 more damage for each Energy in your opponent's Active Pokémon's Retreat Cost.") })
+PGCAND Play { trainer_card: P-A 007 Professor's Research }
+PGDUMP actor=1 candidates=4
+PGDUMP       -283.199999999999989 EndTurn
+PGDUMP        367.800000000000011 UseStadium
+PGDUMP        316.800000000000011 Attack(Attack { energy_required: [Grass, Colorless], title: "Grass Knot", fixed_damage: 40, effect: Some("This attack does 30 more damage for each Energy in your opponent's Active Pokémon's Retreat Cost.") })
+PGDUMP      10819.100000000000364 Play { trainer_card: P-A 007 Professor's Research }
+deal 449, tick 68: chose Play { trainer_card: P-A 007 Professor's Research }

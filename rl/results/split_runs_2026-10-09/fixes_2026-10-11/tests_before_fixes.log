@@ -1,0 +1,313 @@
+.24 and 24 games; game for game (content, not timing) DIFFERENT; 2 differ: ['d1|o1|0|0|ref: 1 and 2 record(s)', 'd3|o1|1|1|X: 1 and 0 record(s)']
+.24 and 24 games; game for game (content, not timing) EQUAL
+.24 and 24 games; game for game (content, not timing) DIFFERENT; 1 differ: ['d1|o1|1|0|X: content differs']
+.24 and 24 games; game for game (content, not timing) EQUAL
+...........F.INCOMPLETE: 23 of 24 games; 1 problem(s); see /tmp/tmpa50d_28c/merged/MERGE_RECORD.md
+..........COMPLETE: 24 of 24 games; 0 problem(s); see /tmp/tmplrjibi5z/merged/MERGE_RECORD.md
+..FINCOMPLETE: 16 of 24 games; 8 problem(s); see /tmp/tmpoh1di38d/merged/MERGE_RECORD.md
+FCOMPLETE: 24 of 24 games; 0 problem(s); see /tmp/tmp4s3pt296/merged/MERGE_RECORD.md
+FFFFFFFFstamped /tmp/tmpkmlfryz7/w1: manifest a99640aac053, program 9a3a45d01531, slice (all)
+Eunknown command 'seal'; usage:
+  split_collect.py stamp --manifest M/manifest.json --program PATH --worker NAME --out W [--only-deck NAME]... [--root REPO] [--no-selfcheck]
+  split_collect.py merge --manifest M/manifest.json --worker W1 --worker W2 ... --out OUT
+  split_collect.py compare A.jsonl B.jsonl     (game for game by key, the content without the timing fields; exit 0 when equal)
+.stamped /tmp/tmpz4o5fivc/played: manifest d6a29dacb39d, program 9a3a45d01531, slice (all)
+FFFFFFEFFFFstamped /tmp/tmp4pvxp8ua/w1: manifest d6a29dacb39d, program 9a3a45d01531, slice ['d1', 'd3']
+.stamp: not decks of this registration: ['nope'] (its decks: ['d1', 'd2', 'd3'])
+.
+======================================================================
+ERROR: test_f2_stamp_then_seal_binds_the_records_to_the_program_and_manifest (test_split_collect.Provenance.test_f2_stamp_then_seal_binds_the_records_to_the_program_and_manifest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 393, in test_f2_stamp_then_seal_binds_the_records_to_the_program_and_manifest
+    self.assertTrue(stamp["stamped_at"].endswith("Z"))
+                    ~~~~~^^^^^^^^^^^^^^
+KeyError: 'stamped_at'
+
+======================================================================
+ERROR: test_f3_the_tree_named_on_the_merge_command_is_used_and_recorded (test_split_collect.Provenance.test_f3_the_tree_named_on_the_merge_command_is_used_and_recorded)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 455, in test_f3_the_tree_named_on_the_merge_command_is_used_and_recorded
+    res = sc.collect(mpath, [w1, w2], engine_tree="38af8b0cc4f35fdc")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: collect() got an unexpected keyword argument 'engine_tree'
+
+======================================================================
+FAIL: test_a_game_outside_the_workers_slice_is_flagged (test_split_collect.Merge.test_a_game_outside_the_workers_slice_is_flagged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 234, in test_a_game_outside_the_workers_slice_is_flagged
+    self.assertEqual({p["kind"] for p in res["problems"]}, {"outside slice", "missing"})
+AssertionError: Items in the second set but not the first:
+'missing'
+
+======================================================================
+FAIL: test_f1_a_worker_on_another_program_contributes_no_games (test_split_collect.Provenance.test_f1_a_worker_on_another_program_contributes_no_games)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 417, in test_f1_a_worker_on_another_program_contributes_no_games
+    self.assertEqual(len(res["lines"]), 16)
+AssertionError: 24 != 16
+
+======================================================================
+FAIL: test_f1_an_incomplete_merge_writes_no_games_jsonl (test_split_collect.Provenance.test_f1_an_incomplete_merge_writes_no_games_jsonl)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 424, in test_f1_an_incomplete_merge_writes_no_games_jsonl
+    self.assertFalse(os.path.exists(os.path.join(out, "games.jsonl")))
+AssertionError: True is not false
+
+======================================================================
+FAIL: test_f1_merge_never_overwrites_a_games_jsonl (test_split_collect.Provenance.test_f1_merge_never_overwrites_a_games_jsonl)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 435, in test_f1_merge_never_overwrites_a_games_jsonl
+    self.assertEqual(code, 2)
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_f2_a_program_changed_between_stamp_and_seal_is_refused (test_split_collect.Provenance.test_f2_a_program_changed_between_stamp_and_seal_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 359, in test_f2_a_program_changed_between_stamp_and_seal_is_refused
+    self.assertEqual(self.kinds(res), [("seal", "w1")])
+AssertionError: Lists differ: [] != [('seal', 'w1')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('seal', 'w1')
+
+- []
++ [('seal', 'w1')]
+
+======================================================================
+FAIL: test_f2_a_seal_older_than_the_last_game_is_refused (test_split_collect.Provenance.test_f2_a_seal_older_than_the_last_game_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 363, in test_f2_a_seal_older_than_the_last_game_is_refused
+    self.assertEqual(self.kinds(res), [("seal", "w1")])
+AssertionError: Lists differ: [] != [('seal', 'w1')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('seal', 'w1')
+
+- []
++ [('seal', 'w1')]
+
+======================================================================
+FAIL: test_f2_a_stamp_later_than_a_game_is_refused_and_its_games_are_not_merged (test_split_collect.Provenance.test_f2_a_stamp_later_than_a_game_is_refused_and_its_games_are_not_merged)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 330, in test_f2_a_stamp_later_than_a_game_is_refused_and_its_games_are_not_merged
+    self.assertEqual(self.kinds(res), [("stamp after play", "w1")])
+AssertionError: Lists differ: [] != [('stamp after play', 'w1')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('stamp after play', 'w1')
+
+- []
++ [('stamp after play', 'w1')]
+
+======================================================================
+FAIL: test_f2_a_stamp_later_than_the_runs_first_start_is_refused (test_split_collect.Provenance.test_f2_a_stamp_later_than_the_runs_first_start_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 339, in test_f2_a_stamp_later_than_the_runs_first_start_is_refused
+    self.assertEqual(self.kinds(res), [("stamp after play", "w1")])
+AssertionError: Lists differ: [] != [('stamp after play', 'w1')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('stamp after play', 'w1')
+
+- []
++ [('stamp after play', 'w1')]
+
+======================================================================
+FAIL: test_f2_a_stamp_without_its_time_is_refused (test_split_collect.Provenance.test_f2_a_stamp_without_its_time_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 343, in test_f2_a_stamp_without_its_time_is_refused
+    self.assertEqual(self.kinds(res), [("stamp after play", "w1")])
+AssertionError: Lists differ: [] != [('stamp after play', 'w1')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('stamp after play', 'w1')
+
+- []
++ [('stamp after play', 'w1')]
+
+======================================================================
+FAIL: test_f2_a_worker_without_a_seal_is_refused (test_split_collect.Provenance.test_f2_a_worker_without_a_seal_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 347, in test_f2_a_worker_without_a_seal_is_refused
+    self.assertEqual(self.kinds(res), [("seal", "w1")])
+AssertionError: Lists differ: [] != [('seal', 'w1')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('seal', 'w1')
+
+- []
++ [('seal', 'w1')]
+
+======================================================================
+FAIL: test_f2_records_changed_after_the_seal_are_refused (test_split_collect.Provenance.test_f2_records_changed_after_the_seal_are_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 355, in test_f2_records_changed_after_the_seal_are_refused
+    self.assertEqual(self.kinds(res), [("seal", "w1")])
+AssertionError: Lists differ: [] != [('seal', 'w1')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('seal', 'w1')
+
+- []
++ [('seal', 'w1')]
+
+======================================================================
+FAIL: test_f2_the_stamp_command_refuses_a_folder_already_played (test_split_collect.Provenance.test_f2_the_stamp_command_refuses_a_folder_already_played)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 373, in test_f2_the_stamp_command_refuses_a_folder_already_played
+    self.assertEqual(sc.main(["stamp", "--manifest", mpath, "--program", prog, "--worker", "w", "--out", out, "--no-selfcheck"]), 2)
+AssertionError: 0 != 2
+
+======================================================================
+FAIL: test_f3_a_build_record_for_another_program_is_refused (test_split_collect.Provenance.test_f3_a_build_record_for_another_program_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 474, in test_f3_a_build_record_for_another_program_is_refused
+    self.assertEqual(self.kinds(res), [("program", "w1")])
+AssertionError: Lists differ: [] != [('program', 'w1')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('program', 'w1')
+
+- []
++ [('program', 'w1')]
+
+======================================================================
+FAIL: test_f3_a_manifest_engine_tree_field_is_read (test_split_collect.Provenance.test_f3_a_manifest_engine_tree_field_is_read)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 463, in test_f3_a_manifest_engine_tree_field_is_read
+    self.assertEqual(sc.registered_tree(m), "38af8b0cc4f35fdccc647ed540a56ec8f5e6c1d5")
+AssertionError: None != '38af8b0cc4f35fdccc647ed540a56ec8f5e6c1d5'
+
+======================================================================
+FAIL: test_f3_a_manifest_naming_no_engine_tree_fails_closed (test_split_collect.Provenance.test_f3_a_manifest_naming_no_engine_tree_fails_closed)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 446, in test_f3_a_manifest_naming_no_engine_tree_fails_closed
+    self.assertEqual(self.kinds(res), [("engine", None)])
+AssertionError: Lists differ: [] != [('engine', None)]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('engine', None)
+
+- []
++ [('engine', None)]
+
+======================================================================
+FAIL: test_f3_a_rebuild_must_be_of_the_registered_harness_source (test_split_collect.Provenance.test_f3_a_rebuild_must_be_of_the_registered_harness_source)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 487, in test_f3_a_rebuild_must_be_of_the_registered_harness_source
+    self.assertEqual(self.kinds(res), [("program", "w2")])
+AssertionError: Lists differ: [] != [('program', 'w2')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('program', 'w2')
+
+- []
++ [('program', 'w2')]
+
+======================================================================
+FAIL: test_f3_a_worker_whose_stamp_names_no_engine_tree_is_refused (test_split_collect.Provenance.test_f3_a_worker_whose_stamp_names_no_engine_tree_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 469, in test_f3_a_worker_whose_stamp_names_no_engine_tree_is_refused
+    self.assertEqual(self.kinds(res), [("engine", "w1")])
+AssertionError: Lists differ: [] != [('engine', 'w1')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('engine', 'w1')
+
+- []
++ [('engine', 'w1')]
+
+======================================================================
+FAIL: test_f4_a_stamp_without_deck_hashes_is_refused (test_split_collect.Provenance.test_f4_a_stamp_without_deck_hashes_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 513, in test_f4_a_stamp_without_deck_hashes_is_refused
+    self.assertEqual(self.kinds(res), [("decks", "w1")])
+AssertionError: Lists differ: [] != [('decks', 'w1')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('decks', 'w1')
+
+- []
++ [('decks', 'w1')]
+
+======================================================================
+FAIL: test_f4_an_edited_deck_under_the_same_name_is_refused (test_split_collect.Provenance.test_f4_an_edited_deck_under_the_same_name_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 495, in test_f4_an_edited_deck_under_the_same_name_is_refused
+    self.assertEqual(self.kinds(res), [("decks", "w1")])
+AssertionError: Lists differ: [] != [('decks', 'w1')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('decks', 'w1')
+
+- []
++ [('decks', 'w1')]
+
+======================================================================
+FAIL: test_f4_an_opponent_list_edited_is_refused (test_split_collect.Provenance.test_f4_an_opponent_list_edited_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 503, in test_f4_an_opponent_list_edited_is_refused
+    self.assertEqual(self.kinds(res), [("decks", "w2")])
+AssertionError: Lists differ: [] != [('decks', 'w2')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('decks', 'w2')
+
+- []
++ [('decks', 'w2')]
+
+======================================================================
+FAIL: test_f4_decks_changed_between_stamp_and_seal_are_refused (test_split_collect.Provenance.test_f4_decks_changed_between_stamp_and_seal_are_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/strength/test_split_collect.py", line 519, in test_f4_decks_changed_between_stamp_and_seal_are_refused
+    self.assertEqual(self.kinds(res), [("seal", "w1")])
+AssertionError: Lists differ: [] != [('seal', 'w1')]
+
+Second list contains 1 additional elements.
+First extra element 0:
+('seal', 'w1')
+
+- []
++ [('seal', 'w1')]
+
+----------------------------------------------------------------------
+Ran 54 tests in 0.241s
+
+FAILED (failures=21, errors=2)

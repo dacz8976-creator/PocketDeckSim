@@ -1,0 +1,9 @@
+games.jsonl sha256 (runs 1 and 2 not copied: 200 KB each; run 3 is copied):
+775242852e1b39aed32f689ec286cc78a6ee96042fcb4b96f1082bcce7019f74  /home/dacz8976/slow_smoke2/runs/2026-10-07_smoke-held/games.jsonl
+07295904f3b4ceae7547f8dd55ad2295732debe8c9a3ed559c5307ac502a6618  /home/dacz8976/slow_smoke2/runs/2026-10-08_smoke-held/games.jsonl
+5d99da601b6fac3bc25ce4a4349f40b0783ecccc2e96c72474eeeb7041321380  /home/dacz8976/slow_smoke2/runs/2026-10-09_smoke-held/games.jsonl
+programs (sha256):
+5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2  pinned binary /home/dacz8976/kx/strength
+c06238fbef317a1357663a2280f68cb15bebb2b213cfd3216721d5b62338074b  first real rebuild (build.sh, build folders build1/target1)
+18f39c0b9a4e48ff64d6a9a4c05ed50a4647f15ced9600c2bb7d788d15aacc0f  second real rebuild (build.sh, other folders build2/target2)
+c06238fbef317a1357663a2280f68cb15bebb2b213cfd3216721d5b62338074b  third real rebuild (the first one's command again, from scratch)
