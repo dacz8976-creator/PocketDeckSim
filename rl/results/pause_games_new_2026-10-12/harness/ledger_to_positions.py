@@ -227,8 +227,10 @@ def _card_entries(v):
             out.append((nname(x), None))
         elif x.get('name'):
             var = x.get('variant')
-            var = var if isinstance(var, str) and re.fullmatch(r'[A-Za-z0-9\-]+ \d{3}', var.strip()) else None
-            out += [(nname(x['name']), var.strip() if var else None)] * (int(x['count']) if isinstance(x.get('count'), int) and 'position' not in x else 1)
+            # a QR entity can carry two printings ('A2a 053 / A2a 080'): the first one
+            alts = [a.strip() for a in str(var).split('/')] if isinstance(var, str) else []
+            var = next((a for a in alts if re.fullmatch(r'[A-Za-z0-9\-]+ \d{3}', a)), None)
+            out += [(nname(x['name']), var if var else None)] * (int(x['count']) if isinstance(x.get('count'), int) and 'position' not in x else 1)
         else:
             return None
     return out if len(out) == 20 else None
@@ -295,6 +297,21 @@ def convert_game(gdir):
     for (n, v), c in lines_by.items():
         MINE.setdefault(n, f'{n} {v}')
         by_name[n] += c
+    # the ledger often names the exact printing of his own Pokemon ('A2a 053; Tackle20, HP60'): it beats a guessed or name-matched printing
+    seen_ids = collections.defaultdict(collections.Counter)
+    for t_ in led['turns']:
+        if not str(t_.get('who_played', '')).startswith('owner'):
+            continue
+        for key_ in ('board_at_start', 'board_after'):
+            for p_ in instances((t_.get(key_) or {}).get('owner') or {}):
+                m_ = re.match(r'\s*([A-Za-z0-9\-]+ \d{3})\b', str(p_.get('variant') or ''))
+                if m_:
+                    seen_ids[nname(p_['name'])][m_.group(1)] += 1
+    for n_, c_ in seen_ids.items():
+        pid_ = c_.most_common(1)[0][0]
+        if n_ in MINE and MINE[n_] != f'{n_} {pid_}' and any(cid(x_) == f'{n_} {pid_}' for x_ in BYNAME.get(n_, [])):
+            notes_deck.append(f'{n_}: printing {MINE[n_][len(n_) + 1:]} -> {pid_} (named in the ledger)')
+            MINE[n_] = f'{n_} {pid_}'
     deck = {'energy_configuration_from_log': denergy or 'Water',
             'counts_by_name_and_variant': [{'name': n, 'variant': MINE[n][len(n) + 1:], 'count': c} for n, c in by_name.items()],
             'source_key': dsrc, 'printing_guessed_for': sorted(set(notes_deck))}
