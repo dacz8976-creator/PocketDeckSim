@@ -102,6 +102,16 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      - Turns with a legal attack and no attack that turn: candidate 5.0 ± 1.0%, frozen 3.7 ± 0.8%, km3 2.3 ± 0.7%; candidate − frozen
        +1.3 ± 1.1 points (fast group +2.0 ± 1.5; deck 10 +3.0 ± 2.7). Most skip turns include a Retreat.
      - The 217 skip turns are listed for the laptop's hand check (`skip_exact/skip_turns.tsv`). A pointer is in `SKIP_ATTACK.md`.
+   - **Skip measure follow-ups and the laptop's review (Oct 12): done** (b5d684d6; `SKIP_ATTACK_EXACT.md`, "Oct 12 update").
+     - Pre-registered count (km3 proposed an attack, none followed that turn): candidate 8 of 1,892 turns, frozen kx3 8 of 1,896 (the
+       dev-run scan's 8), km3 0. Candidate − frozen +0.0 ± 0.4 points. km3 is asked with the decision's own seed; in km3's own
+       games its answer equals its move at 15,355 of 15,355.
+     - Ambiguous labels (about 23% of games, matched by trial before) are now resolved by asking the pilot that played; none is
+       matched by trial. The 217 skip turns are unchanged. The laptop's sensitivity is quoted.
+     - The check also compares p, act, b, plies and moves_opp.n. Negative controls, 42 records each: wrong seed 42 caught, changed
+       label 42, wrong opponent pilot 39 (the other 3 change nothing the record holds).
+     - `skip_exact/skip_boards.jsonl`: the board at each of the 1,139 decisions in the 217 skip turns, with the engine's damage
+       forecasts both ways.
    - **Now:** idle.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head

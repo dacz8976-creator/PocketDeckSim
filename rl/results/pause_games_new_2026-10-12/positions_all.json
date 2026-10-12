@@ -2857,9 +2857,9 @@
   ],
   "me": {
    "hand": [
-    "Aegislash B1 172",
+    "Aegislash B2 120",
     "Honedge B1 170",
-    "Aegislash B1 172",
+    "Aegislash B2 120",
     "Melmetal ex B1 174",
     "Meltan A1 181"
    ],
@@ -2867,7 +2867,7 @@
    "discard_energy": [],
    "board": [
     {
-     "card": "Magnemite A1 097",
+     "card": "Magnemite A2a 053",
      "hp": 60
     }
    ],
@@ -2903,13 +2903,13 @@
    "Place:Meltan",
    "Place:Honedge",
    "Attach:1Metal@0 zone",
-   "Attack:Lightning Ball"
+   "Attack:Tackle"
   ],
   "hand_source": "codex",
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "attack title of Magnemite not named in the ledger: the last printed attack is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0); printings chosen by the HP shown.",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0); printings chosen by the HP shown.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2927,8 +2927,8 @@
   ],
   "me": {
    "hand": [
-    "Aegislash B1 172",
-    "Aegislash B1 172",
+    "Aegislash B2 120",
+    "Aegislash B2 120",
     "Melmetal ex B1 174",
     "Steel Apron A4 153"
    ],
@@ -2936,7 +2936,7 @@
    "discard_energy": [],
    "board": [
     {
-     "card": "Magnemite A1 097",
+     "card": "Magnemite A2a 053",
      "hp": 60,
      "energy": [
       "Metal"
@@ -2990,13 +2990,13 @@
    "Play:Steel Apron",
    "Tool:Steel Apron@2",
    "Attach:1Metal@2 zone",
-   "Attack:Lightning Ball"
+   "Attack:Tackle"
   ],
   "hand_source": "codex",
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Fraxure stack taken from the printed evolution line (the ledger gives none); attack title of Magnemite not named in the ledger: the last printed attack is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0); printings chosen by the HP shown.",
+  "notes": "Fraxure stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0); printings chosen by the HP shown.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -3014,15 +3014,15 @@
   ],
   "me": {
    "hand": [
-    "Aegislash B1 172",
-    "Aegislash B1 172",
+    "Aegislash B2 120",
+    "Aegislash B2 120",
     "Magneton A2a 054"
    ],
    "discard": [],
    "discard_energy": [],
    "board": [
     {
-     "card": "Magnemite A1 097",
+     "card": "Magnemite A2a 053",
      "hp": 60,
      "energy": [
       "Metal"
@@ -3111,8 +3111,8 @@
   ],
   "me": {
    "hand": [
-    "Aegislash B1 172",
-    "Aegislash B1 172",
+    "Aegislash B2 120",
+    "Aegislash B2 120",
     "Steel Apron A4 153"
    ],
    "discard": [],
@@ -3125,7 +3125,7 @@
       "Metal"
      ],
      "behind": [
-      "Magnemite A1 097"
+      "Magnemite A2a 053"
      ]
     },
     {
@@ -3216,8 +3216,8 @@
   ],
   "me": {
    "hand": [
-    "Aegislash B1 172",
-    "Aegislash B1 172",
+    "Aegislash B2 120",
+    "Aegislash B2 120",
     "Steel Apron A4 153",
     "Doublade B1 171"
    ],
@@ -3232,7 +3232,7 @@
       "Metal"
      ],
      "behind": [
-      "Magnemite A1 097"
+      "Magnemite A2a 053"
      ]
     },
     {
@@ -3329,14 +3329,14 @@
   ],
   "me": {
    "hand": [
-    "Aegislash B1 172",
-    "Aegislash B1 172",
+    "Aegislash B2 120",
+    "Aegislash B2 120",
     "Steel Apron A4 153",
     "Doublade B1 171"
    ],
    "discard": [
     "Magneton A2a 054",
-    "Magnemite A1 097"
+    "Magnemite A2a 053"
    ],
    "discard_energy": [
     "Metal",
@@ -3442,14 +3442,14 @@
   ],
   "me": {
    "hand": [
-    "Aegislash B1 172",
+    "Aegislash B2 120",
     "Steel Apron A4 153",
     "Doublade B1 171",
     "Honedge B1 170"
    ],
    "discard": [
     "Magneton A2a 054",
-    "Magnemite A1 097"
+    "Magnemite A2a 053"
    ],
    "discard_energy": [
     "Metal",
@@ -3473,7 +3473,7 @@
      ]
     },
     {
-     "card": "Aegislash B1 172",
+     "card": "Aegislash B2 120",
      "hp": 140,
      "behind": [
       "Honedge B1 170",
@@ -3551,13 +3551,13 @@
   ],
   "me": {
    "hand": [
-    "Aegislash B1 172",
+    "Aegislash B2 120",
     "Doublade B1 171",
     "Melmetal ex B1 174"
    ],
    "discard": [
     "Magneton A2a 054",
-    "Magnemite A1 097"
+    "Magnemite A2a 053"
    ],
    "discard_energy": [
     "Metal",
@@ -3581,7 +3581,7 @@
      ]
     },
     {
-     "card": "Aegislash B1 172",
+     "card": "Aegislash B2 120",
      "hp": 140,
      "behind": [
       "Honedge B1 170",
@@ -5291,17 +5291,17 @@
     "Wally B4 153",
     "Cyrus A2 150",
     "Lucky Ice Pop B2 145",
-    "Sandslash A1 138"
+    "Sandslash B2 078"
    ],
    "discard": [],
    "discard_energy": [],
    "board": [
     {
-     "card": "Sandshrew A1 137",
+     "card": "Sandshrew B2 077",
      "hp": 60
     },
     {
-     "card": "Sandshrew A1 137",
+     "card": "Sandshrew B2 077",
      "hp": 60
     }
    ],
@@ -5356,18 +5356,18 @@
     "Wally B4 153",
     "Cyrus A2 150",
     "Lucky Ice Pop B2 145",
-    "Sandslash A1 138",
+    "Sandslash B2 078",
     "Rare Candy A3 144"
    ],
    "discard": [],
    "discard_energy": [],
    "board": [
     {
-     "card": "Sandshrew A1 137",
+     "card": "Sandshrew B2 077",
      "hp": 40
     },
     {
-     "card": "Sandshrew A1 137",
+     "card": "Sandshrew B2 077",
      "hp": 60
     }
    ],
@@ -5407,7 +5407,7 @@
    "Play:Lucky Ice Pop",
    "Evolve:Sandslash@0",
    "Attach:1Fighting@0 zone",
-   "Attack:Slash"
+   "Attack:Fury Swipes"
   ],
   "hand_source": "codex",
   "decision_maker": "Dustin",
@@ -5442,17 +5442,17 @@
    "discard_energy": [],
    "board": [
     {
-     "card": "Sandslash A1 138",
+     "card": "Sandslash B2 078",
      "hp": 90,
      "energy": [
       "Fighting"
      ],
      "behind": [
-      "Sandshrew A1 137"
+      "Sandshrew B2 077"
      ]
     },
     {
-     "card": "Sandshrew A1 137",
+     "card": "Sandshrew B2 077",
      "hp": 60
     }
    ],
@@ -5486,7 +5486,7 @@
   "turn_effects": [],
   "his_plan": [
    "Attach:1Fighting@1 zone",
-   "Attack:Slash"
+   "Attack:Fury Swipes"
   ],
   "hand_source": "codex",
   "decision_maker": "Dustin",
@@ -5522,17 +5522,17 @@
    "discard_energy": [],
    "board": [
     {
-     "card": "Sandslash A1 138",
+     "card": "Sandslash B2 078",
      "hp": 50,
      "energy": [
       "Fighting"
      ],
      "behind": [
-      "Sandshrew A1 137"
+      "Sandshrew B2 077"
      ]
     },
     {
-     "card": "Sandshrew A1 137",
+     "card": "Sandshrew B2 077",
      "hp": 60,
      "energy": [
       "Fighting"
@@ -5575,7 +5575,7 @@
    "Play:Lucky Ice Pop",
    "Play:Lucky Ice Pop",
    "Attach:1Fighting@0 zone",
-   "Attack:Slash"
+   "Attack:Fury Swipes"
   ],
   "hand_source": "codex",
   "decision_maker": "Dustin",
@@ -5612,18 +5612,18 @@
    "discard_energy": [],
    "board": [
     {
-     "card": "Sandslash A1 138",
+     "card": "Sandslash B2 078",
      "hp": 50,
      "energy": [
       "Fighting",
       "Fighting"
      ],
      "behind": [
-      "Sandshrew A1 137"
+      "Sandshrew B2 077"
      ]
     },
     {
-     "card": "Sandshrew A1 137",
+     "card": "Sandshrew B2 077",
      "hp": 60,
      "energy": [
       "Fighting"
@@ -5670,7 +5670,7 @@
    "Place:Timburr",
    "Play:Lucky Ice Pop",
    "Attach:1Fighting@2 zone",
-   "Attack:Slash"
+   "Attack:Fury Swipes"
   ],
   "hand_source": "codex",
   "decision_maker": "Dustin",
@@ -5698,7 +5698,7 @@
     "Cyrus A2 150",
     "Rare Candy A3 144",
     "Rare Candy A3 144",
-    "Conkeldurr A3 096"
+    "Conkeldurr B4 089"
    ],
    "discard": [
     "Lucky Ice Pop B2 145",
@@ -5708,18 +5708,18 @@
    "discard_energy": [],
    "board": [
     {
-     "card": "Sandslash A1 138",
+     "card": "Sandslash B2 078",
      "hp": 30,
      "energy": [
       "Fighting",
       "Fighting"
      ],
      "behind": [
-      "Sandshrew A1 137"
+      "Sandshrew B2 077"
      ]
     },
     {
-     "card": "Sandshrew A1 137",
+     "card": "Sandshrew B2 077",
      "hp": 60,
      "energy": [
       "Fighting"
@@ -5775,13 +5775,13 @@
    "Play:Wally",
    "Attach:1Fighting@2 zone",
    "Retreat:2",
-   "Attack:Mega Punch"
+   "Attack:Bedrock Breaker"
   ],
   "hand_source": "codex",
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none); attack title of Conkeldurr not named in the ledger: the last printed attack is used; one Lucky Ice Pop taken out of the discard guess (the list holds too few). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0); printings chosen by the HP shown.",
+  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none); one Lucky Ice Pop taken out of the discard guess (the list holds too few). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0); printings chosen by the HP shown.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -5801,7 +5801,7 @@
    "hand": [
     "Cyrus A2 150",
     "Rare Candy A3 144",
-    "Conkeldurr A3 096",
+    "Conkeldurr B4 089",
     "Professor's Research A4b 373"
    ],
    "discard": [
@@ -5810,7 +5810,7 @@
     "Lucky Ice Pop B2 145",
     "Rare Candy A3 144",
     "Wally B4 153",
-    "Conkeldurr A3 096",
+    "Conkeldurr B4 089",
     "Timburr A3 094"
    ],
    "discard_energy": [
@@ -5822,17 +5822,17 @@
    ],
    "board": [
     {
-     "card": "Sandslash A1 138",
+     "card": "Sandslash B2 078",
      "hp": 30,
      "energy": [
       "Fighting"
      ],
      "behind": [
-      "Sandshrew A1 137"
+      "Sandshrew B2 077"
      ]
     },
     {
-     "card": "Sandshrew A1 137",
+     "card": "Sandshrew B2 077",
      "hp": 60,
      "energy": [
       "Fighting"
@@ -5888,7 +5888,7 @@
    "Place:Hitmonchan ex",
    "Place:Timburr",
    "Attach:1Fighting@3 zone",
-   "Attack:Slash"
+   "Attack:Fury Swipes"
   ],
   "hand_source": "codex",
   "decision_maker": "Dustin",
@@ -5914,8 +5914,8 @@
    "hand": [
     "Cyrus A2 150",
     "Rare Candy A3 144",
-    "Conkeldurr A3 096",
-    "Sandslash A1 138"
+    "Conkeldurr B4 089",
+    "Sandslash B2 078"
    ],
    "discard": [
     "Lucky Ice Pop B2 145",
@@ -5923,12 +5923,12 @@
     "Lucky Ice Pop B2 145",
     "Rare Candy A3 144",
     "Wally B4 153",
-    "Conkeldurr A3 096",
+    "Conkeldurr B4 089",
     "Timburr A3 094",
     "Professor's Research A4b 373",
     "Poké Ball A2b 111",
-    "Sandslash A1 138",
-    "Sandshrew A1 137"
+    "Sandslash B2 078",
+    "Sandshrew B2 077"
    ],
    "discard_energy": [
     "Fighting",
@@ -5944,7 +5944,7 @@
      "hp": 130
     },
     {
-     "card": "Sandshrew A1 137",
+     "card": "Sandshrew B2 077",
      "hp": 60,
      "energy": [
       "Fighting"
@@ -6581,7 +6581,7 @@
     "Gurdurr A3 095",
     "Copycat B1 225",
     "Rare Candy A3 144",
-    "Conkeldurr A3 096",
+    "Conkeldurr B4 089",
     "Professor's Research A4b 373"
    ],
    "discard": [],
@@ -6647,7 +6647,7 @@
     "Gurdurr A3 095",
     "Copycat B1 225",
     "Rare Candy A3 144",
-    "Conkeldurr A3 096",
+    "Conkeldurr B4 089",
     "Garganacl B3a 033",
     "Naclstack B3a 032"
    ],
@@ -6752,7 +6752,7 @@
      ]
     },
     {
-     "card": "Conkeldurr A3 096",
+     "card": "Conkeldurr B4 089",
      "hp": 150,
      "behind": [
       "Timburr A3 094"
@@ -6857,7 +6857,7 @@
      ]
     },
     {
-     "card": "Conkeldurr A3 096",
+     "card": "Conkeldurr B4 089",
      "hp": 150,
      "behind": [
       "Timburr A3 094"
@@ -6964,7 +6964,7 @@
    ],
    "board": [
     {
-     "card": "Conkeldurr A3 096",
+     "card": "Conkeldurr B4 089",
      "hp": 90,
      "energy": [
       "Fighting",
@@ -7040,13 +7040,13 @@
   "his_plan": [
    "Evolve:Garganacl@2",
    "Attach:1Fighting@0 zone",
-   "Attack:Mega Punch"
+   "Attack:Bedrock Breaker"
   ],
   "hand_source": "codex",
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Conkeldurr stack taken from the printed evolution line (the ledger gives none); Gurdurr left out of a derived evolution stack (the list holds too few: Rare Candy skipped it); Gurdurr stack taken from the printed evolution line (the ledger gives none); Naclstack stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); attack title of Conkeldurr not named in the ledger: the last printed attack is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0); printings chosen by the HP shown.",
+  "notes": "Conkeldurr stack taken from the printed evolution line (the ledger gives none); Gurdurr left out of a derived evolution stack (the list holds too few: Rare Candy skipped it); Gurdurr stack taken from the printed evolution line (the ledger gives none); Naclstack stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0); printings chosen by the HP shown.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -7076,7 +7076,7 @@
     "Poké Ball A2b 111",
     "Professor's Research A4b 373",
     "Wally B4 153",
-    "Conkeldurr A3 096",
+    "Conkeldurr B4 089",
     "Timburr A3 094"
    ],
    "discard_energy": [
@@ -7190,7 +7190,7 @@
     "Copycat B1 225",
     "Poké Ball A2b 111",
     "Professor's Research A4b 373",
-    "Conkeldurr A3 096",
+    "Conkeldurr B4 089",
     "Timburr A3 094",
     "Wally B4 153",
     "Gurdurr A3 095",
@@ -7311,7 +7311,7 @@
     "Copycat B1 225",
     "Poké Ball A2b 111",
     "Professor's Research A4b 373",
-    "Conkeldurr A3 096",
+    "Conkeldurr B4 089",
     "Timburr A3 094",
     "Wally B4 153",
     "Gurdurr A3 095",
