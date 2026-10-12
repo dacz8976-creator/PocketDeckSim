@@ -40,22 +40,25 @@ echo "== replays"
 echo "== also: the development run's km3 games on the frozen build (they equal this run's arm ref)"
 "$W/target_frozen/release/examples/skip_replay" --games "$DEV/games.jsonl" --manifest "$DEV/manifest.json" --arm ref --out "$OUT/decisions_km3_dev.jsonl" --check "$OUT/check_km3_dev.jsonl"
 cmp -s <(cut -d'"' -f1- "$OUT/decisions_km3.jsonl") "$OUT/decisions_km3_dev.jsonl" && echo "the km3 decisions are byte for byte the same on both builds" || echo "the km3 decisions DIFFER between the builds"
-echo "== negative control: one candidate record with one logged move changed must not replay"
-python3 - "$C/games.jsonl" "$OUT/negative.jsonl" <<'PY'
+echo "== negative control: 20 candidate records of 20+ decisions, each with its first logged attack changed to EndTurn"
+echo "   (a change that leaves every recorded field the same can't be caught; one that changes the game must be)"
+python3 - "$C/games.jsonl" "$OUT/negative20.jsonl" <<'PY'
 import json, sys
+out, n = open(sys.argv[2], "w"), 0
 for line in open(sys.argv[1]):
     g = json.loads(line)
-    if g["arm"] == "X" and any(e["a"].startswith("Attack:") for e in g["log"]):
-        i = next(i for i, e in enumerate(g["log"]) if e["a"].startswith("Attack:"))
-        g["log"][i]["a"] = "EndTurn"
-        open(sys.argv[2], "w").write(json.dumps(g) + "\n")
-        print("changed", g["key"], "decision", i, "to EndTurn")
-        break
+    att = [i for i, e in enumerate(g["log"]) if e["a"].startswith("Attack:")] if g["arm"] == "X" and len(g["log"]) >= 20 else []
+    if len(att) >= 2:
+        g["log"][att[0]]["a"] = "EndTurn"
+        out.write(json.dumps(g) + "\n")
+        n += 1
+        if n == 20:
+            break
 PY
-"$W/target_combined/release/examples/skip_replay" --games "$OUT/negative.jsonl" --manifest "$C/manifest.json" --arm X --out "$OUT/negative_dec.jsonl" --check "$OUT/negative_check.jsonl"
-python3 -c "import json,sys; c=json.loads(open(sys.argv[1]).readline()); print('negative control replayed_exactly:', c['replayed_exactly'], '; missing:', c['missing'][:2])" "$OUT/negative_check.jsonl"
+"$W/target_combined/release/examples/skip_replay" --games "$OUT/negative20.jsonl" --manifest "$C/manifest.json" --arm X --out "$OUT/neg20_dec.jsonl" --check "$OUT/neg20_check.jsonl"
 echo "== the comparison"
 python3 "$HERE/skip_exact.py" "$OUT" > /dev/null
-cp "$OUT"/exact_summary.txt "$OUT"/skip_turns.tsv "$OUT"/skip_decisions.tsv "$OUT"/check_candidate.jsonl "$OUT"/check_frozen.jsonl "$OUT"/check_km3.jsonl "$HERE/"
+cp "$OUT"/exact_summary.txt "$OUT"/skip_turns.tsv "$OUT"/check_candidate.jsonl "$OUT"/check_frozen.jsonl "$OUT"/check_km3.jsonl "$HERE/"
+gzip -9 -c "$OUT/skip_decisions.tsv" > "$HERE/skip_decisions.tsv.gz"
 for b in candidate frozen km3; do gzip -9 -c "$OUT/decisions_$b.jsonl" > "$HERE/decisions_$b.jsonl.gz"; done
 for b in candidate frozen km3; do echo "$b: $(python3 -c "import json,sys; c=[json.loads(l) for l in open(sys.argv[1])]; print(len(c), 'games,', sum(x['replayed_exactly'] for x in c), 'replayed exactly')" "$OUT/check_$b.jsonl")"; done
