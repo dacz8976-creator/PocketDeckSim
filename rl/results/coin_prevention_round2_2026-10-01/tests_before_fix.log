@@ -1,0 +1,168 @@
+warning: unused import: `TrainerType`
+  --> src/players/value_functions.rs:21:76
+   |
+21 | use crate::models::{Attack, Card, EnergyType, PlayedCard, StatusCondition, TrainerType, BASIC_STAGE};
+   |                                                                            ^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> src/actions/energy_moves.rs:187:9
+    |
+187 |     let mut take = |pools: &mut Vec<(usize, Vec<EnergyType>)>,
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: associated function `geometric_until_tails` is never used
+   --> src/actions/attack_outcome.rs:474:12
+    |
+298 | impl AttackOutcomes {
+    | ------------------- associated function in this implementation
+...
+474 |     pub fn geometric_until_tails(
+    |            ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `estimated_attack_damage` is never used
+    --> src/players/value_functions.rs:2232:4
+     |
+2232 | fn estimated_attack_damage(attack: &Attack, slot: &PlayedCard, state: &State, player: usize) -> f64 {
+     |    ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `best_attack_value` is never used
+    --> src/players/value_functions.rs:2528:4
+     |
+2528 | fn best_attack_value(slot: &PlayedCard, form: &Card, state: &State, player: usize) -> f64 {
+     |    ^^^^^^^^^^^^^^^^^
+
+warning: `deckgym` (lib) generated 5 warnings (run `cargo fix --lib -p deckgym` to apply 2 suggestions)
+
+running 23 tests
+test meowth_carefree_steps_test::carefree_steps_flips_for_chase_order_without_the_discard ... ok
+test meowth_carefree_steps_test::carefree_steps_flips_for_damage_after_discarding_all_energy_of_a_type ... ok
+test meowth_carefree_steps_test::carefree_steps_flips_for_a_direct_damage_snipe ... ok
+test meowth_carefree_steps_test::carefree_steps_flips_for_chase_order_with_the_discard ... ok
+test meowth_carefree_steps_test::carefree_steps_flips_for_damage_to_the_pokemon_switched_in ... ok
+test meowth_carefree_steps_test::carefree_steps_flips_for_damage_after_discarding_energy ... ok
+test meowth_carefree_steps_test::carefree_steps_flips_for_damage_per_energy_on_the_target ... ok
+test meowth_carefree_steps_test::carefree_steps_flips_for_direct_damage_to_a_damaged_pokemon ... ok
+test meowth_carefree_steps_test::carefree_steps_flips_for_double_splash_and_triple_bombardment ... FAILED
+test meowth_carefree_steps_test::carefree_steps_flips_for_mischievous_ring ... FAILED
+test meowth_carefree_steps_test::carefree_steps_flips_for_tornado_shot ... FAILED
+test meowth_carefree_steps_test::carefree_steps_flips_for_litter ... FAILED
+test meowth_carefree_steps_test::carefree_steps_never_flips_for_the_checkups_damage ... ok
+test meowth_carefree_steps_test::carefree_steps_never_flips_for_an_abilitys_damage ... ok
+test meowth_carefree_steps_test::chase_order_into_a_pokemon_without_a_coin_ability_is_unchanged ... ok
+test meowth_carefree_steps_test::only_a_choice_that_hits_a_coin_ability_pokemon_takes_the_coin_path_in_the_later_round ... FAILED
+test meowth_carefree_steps_test::only_a_snipe_at_a_coin_ability_pokemon_takes_the_coin_path ... ok
+test meowth_carefree_steps_test::celestial_blessing_never_flips_for_a_tools_damage ... ok
+test meowth_carefree_steps_test::carefree_steps_flips_for_wild_swing ... FAILED
+test meowth_carefree_steps_test::carefree_steps_flips_for_wellspring_dance_on_its_heads ... FAILED
+test meowth_carefree_steps_test::test_carefree_steps_applies_to_benched_meowth_with_independent_flips ... ok
+test meowth_carefree_steps_test::test_meowth_carefree_steps_prevents_only_damage_not_effects ... ok
+test meowth_carefree_steps_test::the_later_rounds_sites_into_pokemon_without_a_coin_ability_are_unchanged ... ok
+
+failures:
+
+---- meowth_carefree_steps_test::carefree_steps_flips_for_double_splash_and_triple_bombardment stdout ----
+
+thread 'meowth_carefree_steps_test::carefree_steps_flips_for_double_splash_and_triple_bombardment' (13520) panicked at tests/pokemon/meowth_carefree_steps_test.rs:173:5:
+0 prevented, 60 hit: the coin must flip
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: pokemon::meowth_carefree_steps_test::queued_damage_flips_carefree_steps
+   3: pokemon::meowth_carefree_steps_test::carefree_steps_flips_for_double_splash_and_triple_bombardment
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- meowth_carefree_steps_test::carefree_steps_flips_for_mischievous_ring stdout ----
+
+thread 'meowth_carefree_steps_test::carefree_steps_flips_for_mischievous_ring' (13522) panicked at tests/pokemon/meowth_carefree_steps_test.rs:173:5:
+0 prevented, 60 hit: the coin must flip
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: pokemon::meowth_carefree_steps_test::queued_damage_flips_carefree_steps
+   3: pokemon::meowth_carefree_steps_test::carefree_steps_flips_for_mischievous_ring
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- meowth_carefree_steps_test::carefree_steps_flips_for_tornado_shot stdout ----
+
+thread 'meowth_carefree_steps_test::carefree_steps_flips_for_tornado_shot' (13523) panicked at tests/pokemon/meowth_carefree_steps_test.rs:173:5:
+0 prevented, 60 hit: the coin must flip
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: pokemon::meowth_carefree_steps_test::queued_damage_flips_carefree_steps
+   3: pokemon::meowth_carefree_steps_test::carefree_steps_flips_for_tornado_shot
+   4: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- meowth_carefree_steps_test::carefree_steps_flips_for_litter stdout ----
+
+thread 'meowth_carefree_steps_test::carefree_steps_flips_for_litter' (13521) panicked at tests/pokemon/meowth_carefree_steps_test.rs:518:5:
+0 prevented, 60 hit: the coin must flip
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: pokemon::meowth_carefree_steps_test::carefree_steps_flips_for_litter
+   3: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- meowth_carefree_steps_test::only_a_choice_that_hits_a_coin_ability_pokemon_takes_the_coin_path_in_the_later_round stdout ----
+
+thread 'meowth_carefree_steps_test::only_a_choice_that_hits_a_coin_ability_pokemon_takes_the_coin_path_in_the_later_round' (13530) panicked at tests/pokemon/meowth_carefree_steps_test.rs:545:5:
+assertion `left == right` failed
+  left: [("ApplyDamage", 1), ("ApplyDamage", 2)]
+ right: [("ApplyDamage", 1), ("ApplyQueuedAttackDamage", 2)]
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: core::panicking::assert_failed_inner
+   3: core::panicking::assert_failed
+   4: pokemon::meowth_carefree_steps_test::only_a_choice_that_hits_a_coin_ability_pokemon_takes_the_coin_path_in_the_later_round
+   5: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- meowth_carefree_steps_test::carefree_steps_flips_for_wild_swing stdout ----
+
+thread 'meowth_carefree_steps_test::carefree_steps_flips_for_wild_swing' (13525) panicked at tests/pokemon/meowth_carefree_steps_test.rs:429:9:
+discard false: 0 prevented, 60 hit: the coin must flip
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: pokemon::meowth_carefree_steps_test::carefree_steps_flips_for_wild_swing
+   3: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+---- meowth_carefree_steps_test::carefree_steps_flips_for_wellspring_dance_on_its_heads stdout ----
+
+thread 'meowth_carefree_steps_test::carefree_steps_flips_for_wellspring_dance_on_its_heads' (13524) panicked at tests/pokemon/meowth_carefree_steps_test.rs:458:9:
+0 prevented, 39 hit on the heads: the coin must flip
+stack backtrace:
+   0: __rustc::rust_begin_unwind
+   1: core::panicking::panic_fmt
+   2: pokemon::meowth_carefree_steps_test::carefree_steps_flips_for_wellspring_dance_on_its_heads
+   3: core::ops::function::FnOnce::call_once
+note: Some details are omitted, run with `RUST_BACKTRACE=full` for a verbose backtrace.
+
+
+failures:
+    meowth_carefree_steps_test::carefree_steps_flips_for_double_splash_and_triple_bombardment
+    meowth_carefree_steps_test::carefree_steps_flips_for_litter
+    meowth_carefree_steps_test::carefree_steps_flips_for_mischievous_ring
+    meowth_carefree_steps_test::carefree_steps_flips_for_tornado_shot
+    meowth_carefree_steps_test::carefree_steps_flips_for_wellspring_dance_on_its_heads
+    meowth_carefree_steps_test::carefree_steps_flips_for_wild_swing
+    meowth_carefree_steps_test::only_a_choice_that_hits_a_coin_ability_pokemon_takes_the_coin_path_in_the_later_round
+
+test result: FAILED. 16 passed; 7 failed; 0 ignored; 0 measured; 773 filtered out; finished in 0.40s
+
+error: test failed, to rerun pass `--test pokemon`
+exit 101

@@ -1,0 +1,19 @@
+old 8626a358, new 140c0be2 (engine tree 8d71f693), main 1163ebb7, tools 2d3eec44
+bin_old_legality_scan sha256 e519e37786d148e221ab1285693266500580dcfdbf29a2d0cd088cf34a35f772 (8626a358)
+bin_old_vs_trace sha256 423586b35a488564c6eeac0636a7c89ae0baf0da875bd7a2ad4b12b81b07165c (8626a358)
+bin_new_legality_scan sha256 e9880dc6e04831f78a8e19142cedec32c03bb049ac51d365ba53d977135f38d1 (140c0be2)
+bin_new_vs_trace sha256 6c88ba30d0cd93e900d5d73c04c31c47553f67e0f1feb3ec4c59b11832dea1f9 (140c0be2)
+instrumented <scratch>/oct9/w8b/watch/engine/examples/legality_scan.rs
+instrumented <scratch>/oct9/w8b/watch/engine/examples/legality_scan.rs
+bin_watch_legality_scan sha256 6fa669cba560c99596cea4caca2249f7f02be2337738db586d4c8e9a35d098d6 (140c0be2)
+bin_probe_coin_probe_v2 sha256 d116b28dd87fc4781f33c395a0db77a0c2fca57f2b2743d84c07d8ab6b034b78 (140c0be2)
+selftest: 14 checks and 3 frame checks, 0 failures
+pinned official programs: SHA256SUMS verify
+8b_old_km3.jsonl: 240 games
+8b_new_km3.jsonl: 240 games
+8b_watch_km3.jsonl: 240 games
+8b_pinned_km3.jsonl: 240 games
+8b_old_k3.jsonl: 240 games
+8b_new_k3.jsonl: 240 games
+8b_watch_k3.jsonl: 240 games
+8b_pinned_k3.jsonl: 240 games

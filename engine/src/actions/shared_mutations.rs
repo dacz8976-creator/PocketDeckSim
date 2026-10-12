@@ -61,7 +61,7 @@ pub(crate) fn item_search_outcomes(acting_player: usize, state: &State) -> Outco
     card_search_outcomes_with_filter(
         acting_player,
         state,
-        |card: &&Card| matches!(card, Card::Trainer(t) if t.trainer_card_type == TrainerType::Item),
+        |card: &&Card| matches!(card, Card::Trainer(t) if t.trainer_card_type.is_printed_as(&TrainerType::Item)),
     )
 }
 

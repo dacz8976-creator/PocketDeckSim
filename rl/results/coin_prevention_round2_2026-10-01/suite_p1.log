@@ -1,0 +1,206 @@
+cargo test --release --features test-utils --no-fail-fast, at b0dc4844 (engine/ as committed: P2 with Bounded Field x2, its off-switch, P3, and P1's caveat text, on the official engine main-8626a35)
+     Running unittests src/lib.rs (<scratch>/r2tgt/release/deps/deckgym-1cc92af88c8c3c58)
+test result: ok. 414 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 42.31s
+     Running unittests src/bin/card_enum_generator.rs (<scratch>/r2tgt/release/deps/card_enum_generator-80cb189885d2d18c)
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running unittests src/bin/card_status.rs (<scratch>/r2tgt/release/deps/card_status-6f9bc6f0cc99c1d9)
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running unittests src/bin/card_test.rs (<scratch>/r2tgt/release/deps/card_test-cb023ca7759ac487)
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running unittests src/main.rs (<scratch>/r2tgt/release/deps/deckgym-8e77fe472e5aa5ad)
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running unittests src/bin/search.rs (<scratch>/r2tgt/release/deps/search-159daa045292f80b)
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running unittests src/bin/temp_deck_generator.rs (<scratch>/r2tgt/release/deps/temp_deck_generator-0ca2d5d1eba818fb)
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+     Running tests/ability_mechanic_examples_test.rs (<scratch>/r2tgt/release/deps/ability_mechanic_examples_test-92b720edc7991654)
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/ability_mechanic_migration_test.rs (<scratch>/r2tgt/release/deps/ability_mechanic_migration_test-49e22d8e5576d945)
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/active_energy_forecast_test.rs (<scratch>/r2tgt/release/deps/active_energy_forecast_test-0c19905b3844a4c1)
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/amnesia_forecast_branches_test.rs (<scratch>/r2tgt/release/deps/amnesia_forecast_branches_test-30576ad4e10de793)
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/attack_id_migration_test.rs (<scratch>/r2tgt/release/deps/attack_id_migration_test-1270926743d7273c)
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+     Running tests/b4a_attack_batch2_test.rs (<scratch>/r2tgt/release/deps/b4a_attack_batch2_test-3a3ac50e0305b38b)
+test result: ok. 17 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.84s
+     Running tests/b4a_basculegion_soul_counter_test.rs (<scratch>/r2tgt/release/deps/b4a_basculegion_soul_counter_test-b853d48b68771c6a)
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+     Running tests/b4a_batch3_simple_test.rs (<scratch>/r2tgt/release/deps/b4a_batch3_simple_test-385f1185730433e1)
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+     Running tests/b4a_hand_reveals_test.rs (<scratch>/r2tgt/release/deps/b4a_hand_reveals_test-8b0db2c00816844d)
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/b4a_retaliation_heal_retreat_test.rs (<scratch>/r2tgt/release/deps/b4a_retaliation_heal_retreat_test-20e943bd8fe0b80c)
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/b4a_simple_attack_effects_test.rs (<scratch>/r2tgt/release/deps/b4a_simple_attack_effects_test-ead1cd98cdf3d472)
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.18s
+     Running tests/b4a_trainer_batch2_test.rs (<scratch>/r2tgt/release/deps/b4a_trainer_batch2_test-df54d62e6a5a2711)
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+     Running tests/b4a_wobbuffet_rocket_frenzy_test.rs (<scratch>/r2tgt/release/deps/b4a_wobbuffet_rocket_frenzy_test-66e9c5f890e7cb8c)
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/b4a_zapdos_thunderclaw_test.rs (<scratch>/r2tgt/release/deps/b4a_zapdos_thunderclaw_test-29b71a266be7a63c)
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+     Running tests/boiler_smog_public_forecast_test.rs (<scratch>/r2tgt/release/deps/boiler_smog_public_forecast_test-5b04e5eaf5b10ef0)
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/card_qualification_test.rs (<scratch>/r2tgt/release/deps/card_qualification_test-83dc7096fa26cb56)
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/card_status_cli_test.rs (<scratch>/r2tgt/release/deps/card_status_cli_test-50a81c3352a12d80)
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+     Running tests/card_support_preflight_cli_test.rs (<scratch>/r2tgt/release/deps/card_support_preflight_cli_test-0f47fc2b66348ec2)
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+     Running tests/coin_flip_effect_test.rs (<scratch>/r2tgt/release/deps/coin_flip_effect_test-c6f1c3b958ef13be)
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/comfey_recovery_test.rs (<scratch>/r2tgt/release/deps/comfey_recovery_test-5d99524fdcdcbf56)
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/copied_attack_forecast_test.rs (<scratch>/r2tgt/release/deps/copied_attack_forecast_test-5de0d0daa3f26b57)
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/copied_attack_test.rs (<scratch>/r2tgt/release/deps/copied_attack_test-6bbbc7214b588542)
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/darkrai_bad_dreams_test.rs (<scratch>/r2tgt/release/deps/darkrai_bad_dreams_test-5d01d72ac02642b6)
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/decision_attribution_additional_test.rs (<scratch>/r2tgt/release/deps/decision_attribution_additional_test-27820a21a1cd2574)
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/decision_information_test.rs (<scratch>/r2tgt/release/deps/decision_information_test-cf6ba634f45744f8)
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/decision_observation_additional_test.rs (<scratch>/r2tgt/release/deps/decision_observation_additional_test-5f8c65f724ec37d1)
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/decision_randomness_additional_test.rs (<scratch>/r2tgt/release/deps/decision_randomness_additional_test-bedf20ad3e575a77)
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/decision_randomness_test.rs (<scratch>/r2tgt/release/deps/decision_randomness_test-876333f5f842bc90)
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/engine.rs (<scratch>/r2tgt/release/deps/engine-7403315a8c351b7c)
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.18s
+     Running tests/furfrou_continuous_steps_test.rs (<scratch>/r2tgt/release/deps/furfrou_continuous_steps_test-44bf318c9987fa4d)
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+     Running tests/game_result_export_test.rs (<scratch>/r2tgt/release/deps/game_result_export_test-7cc6264591e8bb26)
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.31s
+     Running tests/gholdengo_export_test.rs (<scratch>/r2tgt/release/deps/gholdengo_export_test-e7094b7c05239158)
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+     Running tests/gholdengo_luxury_coin_test.rs (<scratch>/r2tgt/release/deps/gholdengo_luxury_coin_test-e6f3a29bfdf52300)
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+     Running tests/global_energy_forecast_test.rs (<scratch>/r2tgt/release/deps/global_energy_forecast_test-f4820f884aefbdab)
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/great_tusk_test.rs (<scratch>/r2tgt/release/deps/great_tusk_test-bac365e78e479486)
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/independent_root_actions_test.rs (<scratch>/r2tgt/release/deps/independent_root_actions_test-f41f14bfb9aed87e)
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/independent_setup_visibility_test.rs (<scratch>/r2tgt/release/deps/independent_setup_visibility_test-9f68843b776aa700)
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/magmar_decision_test.rs (<scratch>/r2tgt/release/deps/magmar_decision_test-0d67b9d26e2c8d04)
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+     Running tests/magmar_evaluation_test.rs (<scratch>/r2tgt/release/deps/magmar_evaluation_test-d8cf477c3f895602)
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/mechanics.rs (<scratch>/r2tgt/release/deps/mechanics-fdcec744dc5225c4)
+test result: ok. 24 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+     Running tests/mega_scizor_ex_test.rs (<scratch>/r2tgt/release/deps/mega_scizor_ex_test-47b59cbecebbb136)
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/misty_precoin_target_test.rs (<scratch>/r2tgt/release/deps/misty_precoin_target_test-23025a31ccd8bc49)
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+     Running tests/misty_unbounded_test.rs (<scratch>/r2tgt/release/deps/misty_unbounded_test-967244620a0b6384)
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.93s
+     Running tests/observed_gameplay_outcomes_test.rs (<scratch>/r2tgt/release/deps/observed_gameplay_outcomes_test-f216b8ba2fa42ed7)
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/ogerpon_test.rs (<scratch>/r2tgt/release/deps/ogerpon_test-6fb16668623bf561)
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/paralysis_lifecycle_test.rs (<scratch>/r2tgt/release/deps/paralysis_lifecycle_test-6031cc5c99e722c3)
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/player_code_parser_test.rs (<scratch>/r2tgt/release/deps/player_code_parser_test-e0aae9ac82354d41)
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/pokemon.rs (<scratch>/r2tgt/release/deps/pokemon-6fb5480ef7df6f29)
+test result: ok. 806 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.72s
+     Running tests/pokemon_checkup_test.rs (<scratch>/r2tgt/release/deps/pokemon_checkup_test-99ccb356d5c72cc2)
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+     Running tests/public_leaf_clock_retreat_test.rs (<scratch>/r2tgt/release/deps/public_leaf_clock_retreat_test-4a80e943e89782fe)
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/public_reply_counterattack_test.rs (<scratch>/r2tgt/release/deps/public_reply_counterattack_test-152a858910150442)
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/public_reply_evidence_test.rs (<scratch>/r2tgt/release/deps/public_reply_evidence_test-4b813056a9d16b44)
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+     Running tests/public_reply_policy_test.rs (<scratch>/r2tgt/release/deps/public_reply_policy_test-56c6d7dd70ddf881)
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.55s
+     Running tests/public_reply_verifier_test.rs (<scratch>/r2tgt/release/deps/public_reply_verifier_test-82d34cbf2c32e039)
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/random_energy_forecast_branches_test.rs (<scratch>/r2tgt/release/deps/random_energy_forecast_branches_test-1fd96e40aa677d7a)
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/retreat_discount_horizon_test.rs (<scratch>/r2tgt/release/deps/retreat_discount_horizon_test-13498f678129de2b)
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/revavroom_assumptions_test.rs (<scratch>/r2tgt/release/deps/revavroom_assumptions_test-925bcb8c5fa29e5a)
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/revavroom_tools_test.rs (<scratch>/r2tgt/release/deps/revavroom_tools_test-621b921c16cff1de)
+test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/rocket_frenzy_evaluation_test.rs (<scratch>/r2tgt/release/deps/rocket_frenzy_evaluation_test-4013d4ecb3c2c89e)
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+     Running tests/rules4_t2_simultaneous_finish.rs (<scratch>/r2tgt/release/deps/rules4_t2_simultaneous_finish-22e503ffa16c5caa)
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/rules_repair_attacker_debuff.rs (<scratch>/r2tgt/release/deps/rules_repair_attacker_debuff-6b2722ea0e730866)
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/rules_repair_damage_opening.rs (<scratch>/r2tgt/release/deps/rules_repair_damage_opening-8816dbb8a5efaa59)
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/rules_repair_end_turn.rs (<scratch>/r2tgt/release/deps/rules_repair_end_turn-dc2adda827024b98)
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+     Running tests/rules_repair_energy_choice.rs (<scratch>/r2tgt/release/deps/rules_repair_energy_choice-ac6e9910f1895c4c)
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/rules_repair_retaliation_timing.rs (<scratch>/r2tgt/release/deps/rules_repair_retaliation_timing-4adbdc8b93e97797)
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+     Running tests/rules_repair_return_damage_weakness.rs (<scratch>/r2tgt/release/deps/rules_repair_return_damage_weakness-4a5f40acd3ac9cfb)
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.13s
+     Running tests/rules_repair_status_evolution.rs (<scratch>/r2tgt/release/deps/rules_repair_status_evolution-a8b2fb891b3e355a)
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/rules_repair_timing.rs (<scratch>/r2tgt/release/deps/rules_repair_timing-4b412a0f38653e5a)
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/rules_repair_trainers.rs (<scratch>/r2tgt/release/deps/rules_repair_trainers-a4b9905f92822d18)
+test result: ok. 22 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+     Running tests/s115_eval_probe.rs (<scratch>/r2tgt/release/deps/s115_eval_probe-7ad80510a0a805bf)
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/s116_diag_probe.rs (<scratch>/r2tgt/release/deps/s116_diag_probe-639241ec8a7329fa)
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/s116_estimated_damage_test.rs (<scratch>/r2tgt/release/deps/s116_estimated_damage_test-7d016ed0beeb9ee0)
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/s117_gtier_test.rs (<scratch>/r2tgt/release/deps/s117_gtier_test-02400cf22c6cb38e)
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/s180_e1_fixtures.rs (<scratch>/r2tgt/release/deps/s180_e1_fixtures-99f49c3a77d69439)
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/s182_e1_center_lady_targets.rs (<scratch>/r2tgt/release/deps/s182_e1_center_lady_targets-7483fe3b5beedcee)
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/s187_f017_professors_research.rs (<scratch>/r2tgt/release/deps/s187_f017_professors_research-f1690ff791b18faf)
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/s189_hidden_zone_eligibility.rs (<scratch>/r2tgt/release/deps/s189_hidden_zone_eligibility-cff1052b24972058)
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/setup_information_test.rs (<scratch>/r2tgt/release/deps/setup_information_test-d74cc599f3e02801)
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+     Running tests/soothing_wind_restoration_test.rs (<scratch>/r2tgt/release/deps/soothing_wind_restoration_test-dfbda00ef420ea72)
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/stadiums.rs (<scratch>/r2tgt/release/deps/stadiums-f964ea4a44fbe74d)
+test result: ok. 41 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/status_action_contract_test.rs (<scratch>/r2tgt/release/deps/status_action_contract_test-3e2b33ca4b381980)
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/status_action_restriction_test.rs (<scratch>/r2tgt/release/deps/status_action_restriction_test-bc847b81dda459dc)
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
+     Running tests/steel_apron_test.rs (<scratch>/r2tgt/release/deps/steel_apron_test-e31c48a9d140ea6f)
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/sunflora_test.rs (<scratch>/r2tgt/release/deps/sunflora_test-8434880d09273a04)
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/suppression_attribution_test.rs (<scratch>/r2tgt/release/deps/suppression_attribution_test-49213bd01d8dba21)
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+     Running tests/team_rockets_researcher_test.rs (<scratch>/r2tgt/release/deps/team_rockets_researcher_test-6b31caa2f2591441)
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+     Running tests/terminal_win_policy_test.rs (<scratch>/r2tgt/release/deps/terminal_win_policy_test-554a0a1b9c60b93d)
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.38s
+     Running tests/tool_energy_conservation_test.rs (<scratch>/r2tgt/release/deps/tool_energy_conservation_test-61e6cfb5cc5ae883)
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/tools.rs (<scratch>/r2tgt/release/deps/tools-c3e02c2668617793)
+test result: ok. 43 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.15s
+     Running tests/trainers.rs (<scratch>/r2tgt/release/deps/trainers-8cc60dfb54d8f4ca)
+test result: ok. 123 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+     Running tests/value_function_hidden_info_test.rs (<scratch>/r2tgt/release/deps/value_function_hidden_info_test-9fdb3853d3a9bb3c)
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+     Running tests/victini_victory_star_test.rs (<scratch>/r2tgt/release/deps/victini_victory_star_test-f5c447d04b768fd4)
+test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+     Running tests/video_evidence.rs (<scratch>/r2tgt/release/deps/video_evidence-96dfcd3b9cd2cd4e)
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+     Running tests/will_test.rs (<scratch>/r2tgt/release/deps/will_test-daeed74d950618f6)
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.29s
+   Doc-tests deckgym
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.16s
+TOTAL: 102 targets; 2073 passed; 0 failed; 0 ignored

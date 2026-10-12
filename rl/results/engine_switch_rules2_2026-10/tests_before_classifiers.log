@@ -1,0 +1,248 @@
+EEE.............EE/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py:252: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/../coin_prevention_repair_2026-09-30/instrument_scan.py' mode='r' encoding='utf-8'>
+  text = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "coin_prevention_repair_2026-09-30", "instrument_scan.py")).read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+EEEEEEEEEEEEEEEE...EE
+======================================================================
+ERROR: test_a_counter_in_an_earlier_turn_never_explains_it (test_tightened_rule.BoardHits.test_a_counter_in_an_earlier_turn_never_explains_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 289, in test_a_counter_in_an_earlier_turn_never_explains_it
+    self.assertEqual(tr.board_hits(watch(guts_own_side_split=[1]), ["guts_own_side_split"], new, d), {})
+                     ^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'board_hits'
+
+======================================================================
+ERROR: test_the_new_game_longer_at_the_extra_tick (test_tightened_rule.BoardHits.test_the_new_game_longer_at_the_extra_tick)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 284, in test_the_new_game_longer_at_the_extra_tick
+    self.assertEqual(tr.board_hits(watch(vs_block_coin_built=[6]), ["vs_block_coin_built"], new, d), {"vs_block_coin_built": [6]})
+                     ^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'board_hits'
+
+======================================================================
+ERROR: test_the_new_game_shorter (test_tightened_rule.BoardHits.test_the_new_game_shorter)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 278, in test_the_new_game_shorter
+    self.assertEqual(tr.board_hits(watch(attack_return_weakness=[5]), ["attack_return_weakness"], new, d), {"attack_return_weakness": [5]})
+                     ^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'board_hits'
+
+======================================================================
+ERROR: test_a_counter_the_probe_has_no_condition_for_has_no_golden_check (test_tightened_rule.Golden.test_a_counter_the_probe_has_no_condition_for_has_no_golden_check)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 249, in test_a_counter_the_probe_has_no_condition_for_has_no_golden_check
+    self.assertIsNone(tr.golden_ok(name, probe()))
+                      ^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'golden_ok'
+
+======================================================================
+ERROR: test_each_round_two_counter_needs_its_kind_at_ply_one (test_tightened_rule.Golden.test_each_round_two_counter_needs_its_kind_at_ply_one)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 235, in test_each_round_two_counter_needs_its_kind_at_ply_one
+    for name, kind in tr.R2_COUNTER_KIND.items():
+                      ^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'R2_COUNTER_KIND'
+
+======================================================================
+ERROR: test_every_exact_name_but_those_two_has_a_golden_check (test_tightened_rule.Golden.test_every_exact_name_but_those_two_has_a_golden_check)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 253, in test_every_exact_name_but_those_two_has_a_golden_check
+    missing = [n for n in tr.round2_reach(text) if tr.golden_ok(n, probe()) is None]
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 253, in <listcomp>
+    missing = [n for n in tr.round2_reach(text) if tr.golden_ok(n, probe()) is None]
+                                                   ^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'golden_ok'
+
+======================================================================
+ERROR: test_return_and_queued (test_tightened_rule.Golden.test_return_and_queued)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 241, in test_return_and_queued
+    self.assertTrue(tr.golden_ok("attack_return_weakness", probe(ret=1)))
+                    ^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'golden_ok'
+
+======================================================================
+ERROR: test_a_queued_choice_at_a_later_round_site_explains_it (test_tightened_rule.LookaheadVerdict.test_a_queued_choice_at_a_later_round_site_explains_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 214, in test_a_queued_choice_at_a_later_round_site_explains_it
+    self.assertEqual(self.v(probe(queued=1), round2_queued=True), (tr.BOTH_HALVES, tr.BOTH_HALVES))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 195, in v
+    return tr.lookahead_verdict(c, round2_queued)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'lookahead_verdict'
+
+======================================================================
+ERROR: test_a_queued_choice_at_the_leaf_of_a_pure_frame_explains_it (test_tightened_rule.LookaheadVerdict.test_a_queued_choice_at_the_leaf_of_a_pure_frame_explains_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 225, in test_a_queued_choice_at_the_leaf_of_a_pure_frame_explains_it
+    self.assertEqual(self.v(probe(queued=3, free=True), round2_queued=True), (tr.BOTH_HALVES, tr.BOTH_HALVES))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 195, in v
+    return tr.lookahead_verdict(c, round2_queued)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'lookahead_verdict'
+
+======================================================================
+ERROR: test_a_queued_choice_only_at_the_leaf_of_a_mixed_frame_needs_a_judgment (test_tightened_rule.LookaheadVerdict.test_a_queued_choice_only_at_the_leaf_of_a_mixed_frame_needs_a_judgment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 221, in test_a_queued_choice_only_at_the_leaf_of_a_mixed_frame_needs_a_judgment
+    self.assertEqual(self.v(probe(queued=3), round2_queued=True), (tr.JUDGMENT, tr.JUDGMENT))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 195, in v
+    return tr.lookahead_verdict(c, round2_queued)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'lookahead_verdict'
+
+======================================================================
+ERROR: test_a_queued_choice_that_may_be_a_first_round_site_is_unexplained_under_the_strict_reading (test_tightened_rule.LookaheadVerdict.test_a_queued_choice_that_may_be_a_first_round_site_is_unexplained_under_the_strict_reading)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 217, in test_a_queued_choice_that_may_be_a_first_round_site_is_unexplained_under_the_strict_reading
+    self.assertEqual(self.v(probe(queued=1)), (tr.BOTH_HALVES, "UNEXPLAINED"))
+                     ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 195, in v
+    return tr.lookahead_verdict(c, round2_queued)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'lookahead_verdict'
+
+======================================================================
+ERROR: test_a_return_ply_explains_it (test_tightened_rule.LookaheadVerdict.test_a_return_ply_explains_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 201, in test_a_return_ply_explains_it
+    self.assertEqual(self.v(probe(ret=2)), (tr.BOTH_HALVES, tr.BOTH_HALVES))
+                     ^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 195, in v
+    return tr.lookahead_verdict(c, round2_queued)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'lookahead_verdict'
+
+======================================================================
+ERROR: test_a_round_two_kind_inside_the_search_explains_it (test_tightened_rule.LookaheadVerdict.test_a_round_two_kind_inside_the_search_explains_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 205, in test_a_round_two_kind_inside_the_search_explains_it
+    self.assertEqual(self.v(probe(**{kind: 3})), (tr.BOTH_HALVES, tr.BOTH_HALVES), kind)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 195, in v
+    return tr.lookahead_verdict(c, round2_queued)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'lookahead_verdict'
+
+======================================================================
+ERROR: test_a_round_two_kind_only_beyond_the_search_needs_a_judgment (test_tightened_rule.LookaheadVerdict.test_a_round_two_kind_only_beyond_the_search_needs_a_judgment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 208, in test_a_round_two_kind_only_beyond_the_search_needs_a_judgment
+    self.assertEqual(self.v(probe(trap=4)), (tr.JUDGMENT, tr.JUDGMENT))
+                     ^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 195, in v
+    return tr.lookahead_verdict(c, round2_queued)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'lookahead_verdict'
+
+======================================================================
+ERROR: test_nothing_found_is_unexplained (test_tightened_rule.LookaheadVerdict.test_nothing_found_is_unexplained)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 198, in test_nothing_found_is_unexplained
+    self.assertEqual(self.v(probe()), ("UNEXPLAINED", "UNEXPLAINED"))
+                     ^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 195, in v
+    return tr.lookahead_verdict(c, round2_queued)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'lookahead_verdict'
+
+======================================================================
+ERROR: test_the_strongest_finding_decides (test_tightened_rule.LookaheadVerdict.test_the_strongest_finding_decides)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 228, in test_the_strongest_finding_decides
+    self.assertEqual(self.v(probe(queued=3, trapleaf=2, will=1)), (tr.BOTH_HALVES, tr.BOTH_HALVES))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 195, in v
+    return tr.lookahead_verdict(c, round2_queued)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'lookahead_verdict'
+
+======================================================================
+ERROR: test_trapleaf_alone_needs_a_judgment (test_tightened_rule.LookaheadVerdict.test_trapleaf_alone_needs_a_judgment)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 211, in test_trapleaf_alone_needs_a_judgment
+    self.assertEqual(self.v(probe(trapleaf=3)), (tr.JUDGMENT, tr.JUDGMENT))
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 195, in v
+    return tr.lookahead_verdict(c, round2_queued)
+           ^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'lookahead_verdict'
+
+======================================================================
+ERROR: test_a_probe_without_round_two_s_line_is_refused (test_tightened_rule.ProbeOutput.test_a_probe_without_round_two_s_line_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 181, in test_a_probe_without_round_two_s_line_is_refused
+    tr.parse_probe(PROBE_OUT.replace(PROBE_OUT.splitlines()[-1], ""))
+    ^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'parse_probe'
+
+======================================================================
+ERROR: test_nothing_found (test_tightened_rule.ProbeOutput.test_nothing_found)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 184, in test_nothing_found
+    self.assertTrue(tr.nothing_found(probe()))
+                    ^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'nothing_found'
+
+======================================================================
+ERROR: test_round_two_fields_and_a_stopped_search (test_tightened_rule.ProbeOutput.test_round_two_fields_and_a_stopped_search)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 175, in test_round_two_fields_and_a_stopped_search
+    c = tr.parse_probe(out)
+        ^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'parse_probe'
+
+======================================================================
+ERROR: test_the_three_result_lines_and_the_attack_on_the_queued_path (test_tightened_rule.ProbeOutput.test_the_three_result_lines_and_the_attack_on_the_queued_path)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 167, in test_the_three_result_lines_and_the_attack_on_the_queued_path
+    c = tr.parse_probe(PROBE_OUT)
+        ^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'parse_probe'
+
+======================================================================
+ERROR: test_a_keyed_counter_given_as_a_list_is_refused (test_tightened_rule.WatchFromCounters.test_a_keyed_counter_given_as_a_list_is_refused)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 269, in test_a_keyed_counter_given_as_a_list_is_refused
+    tr.watch_from_counters({"coin_queued_by_attack": [4, 7]}, ("coin_queued_by_attack",))
+    ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'watch_from_counters'
+
+======================================================================
+ERROR: test_plain_and_keyed_counters (test_tightened_rule.WatchFromCounters.test_plain_and_keyed_counters)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/claude-0/-home-user-PocketDeckSim/34d9e85d-3b01-5241-9ab7-1245e81714ba/scratchpad/r2/rl/results/engine_switch_rules2_2026-10/test_tightened_rule.py", line 262, in test_plain_and_keyed_counters
+    w = tr.watch_from_counters(ex, ("will_confused_attack", "coin_own_side_split", "coin_queued_by_attack", "coin_plain_damage_by_attack"))
+        ^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'tightened_rule' has no attribute 'watch_from_counters'
+
+----------------------------------------------------------------------
+Ran 39 tests in 0.010s
+
+FAILED (errors=23)

@@ -1,0 +1,20 @@
+PGBOARD coin seat0=[] seat1=[]
+PGTICK 43 (the decision asked about)
+PGCAND EndTurn
+PGCAND Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }
+PGCAND Attach { attachments: [(1, Psychic, 2)], is_turn_energy: true }
+PGCAND Attach { attachments: [(1, Psychic, 3)], is_turn_energy: true }
+PGCAND Place(Pokemon(B1 184 Eevee), 1)
+PGCAND Place(Pokemon(B2b 040 Darkrai), 1)
+PGCAND Play { trainer_card: A1 225 Sabrina }
+PGCAND Play { trainer_card: B2 153 Training Area }
+PGDUMP actor=1 candidates=8
+PGDUMP     -10503.366666666666788 EndTurn
+PGDUMP      -9664.366666666666788 Attach { attachments: [(1, Psychic, 0)], is_turn_energy: true }
+PGDUMP     -10194.366666666666788 Attach { attachments: [(1, Psychic, 2)], is_turn_energy: true }
+PGDUMP     -10244.366666666666788 Attach { attachments: [(1, Psychic, 3)], is_turn_energy: true }
+PGDUMP      -9821.033333333334667 Place(Pokemon(B1 184 Eevee), 1)
+PGDUMP      -9704.366666666666788 Place(Pokemon(B2b 040 Darkrai), 1)
+PGDUMP      -9664.366666666666788 Play { trainer_card: A1 225 Sabrina }
+PGDUMP      -9825.366666666666788 Play { trainer_card: B2 153 Training Area }
+deal 8, tick 43: chose Play { trainer_card: A1 225 Sabrina }
