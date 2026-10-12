@@ -1,0 +1,24 @@
+{
+ "manifest_sha256": "1536d72073d7573d9f4ffb1ebb6d5cbed2d49255d2c07b63fa9bf5389424b941",
+ "stage": "use",
+ "pilot": "kx3",
+ "reference": "km3",
+ "registration_changed": false,
+ "registration_problems": [],
+ "paired_games": 20,
+ "pooled": {
+  "n": 20,
+  "mean": 0.0,
+  "sd": 0.28097574347450816,
+  "half": 0.12314304903775844
+ },
+ "per_deck": {
+  "brew-07-hoopa-darkrai-sableye": {
+   "n": 20,
+   "mean": 0.0,
+   "sd": 0.28097574347450816,
+   "half": 0.12314304903775844
+  }
+ },
+ "exactly_zero": false
+}
