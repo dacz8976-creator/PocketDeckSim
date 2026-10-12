@@ -1,0 +1,19 @@
+E
+======================================================================
+ERROR: test_skip_exact (unittest.loader._FailedTest.test_skip_exact)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: test_skip_exact
+Traceback (most recent call last):
+  File "/usr/lib/python3.11/unittest/loader.py", line 162, in loadTestsFromName
+    module = __import__(module_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/PocketDeckSim/rl/results/strength_2026-10-08_kx3_combined/skip_exact/test_skip_exact.py", line 5, in <module>
+    import skip_exact as se  # noqa: E402
+    ^^^^^^^^^^^^^^^^^^^^^^^
+ModuleNotFoundError: No module named 'skip_exact'
+
+
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+FAILED (errors=1)
