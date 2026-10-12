@@ -1,5 +1,5 @@
 {
- "positions": 121,
+ "positions": 125,
  "left_out": [
   {
    "game": "20261004_214518000_iOS",
@@ -12,21 +12,6 @@
    "reason": "game not converted: ValueError('no 20-card list in DECK_USED.json')"
   },
   {
-   "game": "261004_215749000",
-   "turn": 1,
-   "reason": "hand not fully named or unmapped: ['Combusken', 'Copycat', 'Flame Patch', 'Rocky Helmet', 'Poké Ball'] count=5"
-  },
-  {
-   "game": "261004_215749000",
-   "turn": 3,
-   "reason": "hand not fully named or unmapped: ['Flame Patch', \"Professor's Research\", \"Professor's Research\", 'Combusken'] count=4"
-  },
-  {
-   "game": "261004_215749000",
-   "turn": 5,
-   "reason": "board: 'no card id for Combusken (80)'"
-  },
-  {
    "game": "20261005_034229000_iOS",
    "turn": null,
    "reason": "game not converted: ValueError('no 20-card list in DECK_USED.json')"
@@ -35,11 +20,6 @@
    "game": "20261006_012140000_iOS",
    "turn": null,
    "reason": "game not converted: ValueError('no 20-card list in DECK_USED.json')"
-  },
-  {
-   "game": "261006_020518000",
-   "turn": 13,
-   "reason": "board: 'Gurdurr'"
   },
   {
    "game": "261010_014541000",
@@ -52,40 +32,225 @@
    "reason": "hand not fully named or unmapped: ['Kingdra ex', 'Elegant Cape', 'Soothing Shore', \"Team Rocket's Koffing\"] count=4"
   }
  ],
- "plans_with_unresolved_targets": [
-  {
-   "game": "261005_032857000",
-   "turn": 4,
-   "reason": "unresolved plan targets (plan kept)",
-   "detail": [
-    "Rare Candy target 'Honedge'",
-    "tool target 'Aegislash'",
-    "attach target 'Aegislash'"
-   ]
+ "plans_with_unresolved_targets": [],
+ "decks": {
+  "261004_213625000": {
+   "source": "qr",
+   "energy": [
+    "Grass"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "baseline_live_list_missing_filmed_qr_verified"
   },
-  {
-   "game": "261010_014541000",
-   "turn": 3,
-   "reason": "unresolved plan targets (plan kept)",
-   "detail": [
-    "retreat target \"Team Rocket's Koffing → Kingdra ex\" / 'Free retreat with Small Balloon; no Energy discarded'"
-   ]
+  "261004_215749000": {
+   "source": "qr",
+   "energy": [
+    "Fire"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "exact_live_log_20_slot_snapshot_saved_but_game_version_conflict"
   },
-  {
-   "game": "261010_021629000",
-   "turn": 4,
-   "reason": "unresolved plan targets (plan kept)",
-   "detail": [
-    "tool target 'W1'"
-   ]
+  "261005_003547000": {
+   "source": "qr",
+   "energy": [
+    "Water"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "filmed_exact_semantic_QR_verified_but_matching_live_log_list_unavailable"
   },
-  {
-   "game": "261010_021629000",
-   "turn": 6,
-   "reason": "unresolved plan targets (plan kept)",
-   "detail": [
-    "attach target 'B'"
-   ]
+  "261005_031138000": {
+   "source": "log",
+   "energy": [
+    "Psychic"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "exact20_filmed_QR_and_prepared_new_log_entry_live_save_awaits_lead"
+  },
+  "261005_032023000": {
+   "source": "qr",
+   "energy": [
+    "Metal"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "filmed_QR_exact20_verified; live_log_snapshot_unavailable_for_this_new_variant"
+  },
+  "261005_032857000": {
+   "source": "qr",
+   "energy": [
+    "Metal"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "initial_live_snapshot_lacks_this_deck; exact_filmed_QR_verified"
+  },
+  "261005_033529000": {
+   "source": "qr",
+   "energy": [
+    "Metal"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "filmed_qr_exact_semantic_20_bound_to_game; matching_live_log_version_missing"
+  },
+  "261005_034953000": {
+   "source": "qr",
+   "energy": [
+    "Metal"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "filmed_QR_exact_semantic_list_verified_live_log_snapshot_missing"
+  },
+  "261005_123812000": {
+   "source": "qr",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "filmed_qr_exact_semantic_20; required live log snapshot pending root registration"
+  },
+  "261005_124532000": {
+   "source": "qr",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "filmed_QR_verified_live_log_version_missing"
+  },
+  "261005_183108000": {
+   "source": "log",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "exact_filmed_QR_definition_prepared_for_log"
+  },
+  "261006_012927000": {
+   "source": "qr",
+   "energy": [
+    "Grass",
+    "Darkness",
+    "Metal"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "missing_live_log_snapshot"
+  },
+  "261006_020518000": {
+   "source": "qr",
+   "energy": [
+    "Fighting"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "filmed_QR_exact20_resolved; matching_live_log_version_absent"
+  },
+  "261010_012303000": {
+   "source": "log",
+   "energy": [
+    "Fighting"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_live_list_and_filmed_qr_game_binding"
+  },
+  "261010_013009000": {
+   "source": "qr",
+   "energy": [
+    "Fighting"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_live_list_and_filmed_qr_game_binding"
+  },
+  "261010_014541000": {
+   "source": "log",
+   "energy": [
+    "Water"
+   ],
+   "notes": [],
+   "version_unverified": true,
+   "status": "verified_live_list_game_version_unverified"
+  },
+  "261010_015452000": {
+   "source": "qr",
+   "energy": [
+    "Water"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_live_list_and_filmed_qr_game_binding"
+  },
+  "261010_015821000": {
+   "source": "log",
+   "energy": [
+    "Water"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_live_list_and_filmed_qr_game_binding"
+  },
+  "261010_020258000": {
+   "source": "log",
+   "energy": [
+    "Water"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_live_list_and_filmed_qr_game_binding"
+  },
+  "261010_020908000": {
+   "source": "log",
+   "energy": [
+    "Water"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_live_list_and_filmed_qr_game_binding"
+  },
+  "261010_021629000": {
+   "source": "log",
+   "energy": [
+    "Water"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_live_list_and_filmed_qr_game_binding"
+  },
+  "261012_003458000": {
+   "source": "log",
+   "energy": [
+    "Water"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_log_snapshot_semantically_bound_by_filmed_qr"
+  },
+  "261012_004128000": {
+   "source": "log",
+   "energy": [
+    "Water"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_live_20_card_snapshot_with_exact_filmed_QR_match"
+  },
+  "261012_004435000": {
+   "source": "log",
+   "energy": [
+    "Water"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_20_slots_live_log_snapshot_and_matching_filmed_QR"
   }
- ]
+ }
 }

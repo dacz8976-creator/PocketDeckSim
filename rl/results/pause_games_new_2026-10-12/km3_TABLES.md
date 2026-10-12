@@ -1,3 +1,9 @@
+> **SUPERSEDED for 84 of the 125 positions (Oct 12, evening).** The laptop's review (`REVIEW_POSITIONS_laptop.md`) found wrong cards of Dustin's in these positions (two cards
+> that share a name had been merged) and plan steps missing. The positions were rebuilt (`CONVERTER_FIX_sonnet.md`). Everything below was measured on the first version of the
+> positions: `position_list.tsv`, column `km3_read`, says for each position whether its km3 read `stands` (the position is unchanged: 37), is `superseded` (the position changed:
+> 84) or has none (a position the first version did not have: 4). Do not quote the totals below. km3 was not rerun on the old harness: the kx3 position spec re-measures km3 on
+> the official engine.
+
 ## Game kw-261004_213625000: New deck 24; loss 2-3; opponent Noytamon
 
 | his turn | game turn | hand | his plan (to the first draw) | km3 first action over 12 seeds | same first | same plan | km3 modal plan (seeds) | category | what differs |
