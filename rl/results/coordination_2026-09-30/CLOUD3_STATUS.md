@@ -30,3 +30,4 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
 - 2026-10-12 21:50Z: deck 13 slice 1 of 8 done (20 kx3 games, 40 games across both arms). My poll script had a bug and began slice 2 right after slice 1 before the push; I stopped it with SIGTERM within a minute (4 more cheap km3 games were checkpointed, 44 games in all, 0 errors); the games are valid, the script is fixed. Folder pushed now; slice 2 next.
 - 2026-10-12 22:18Z: 2026-10-12_13-a-ninetales-raticate: slice done, 84 of 320 games on disk, folder pushed.
 - 2026-10-12 22:50Z: 2026-10-12_13-a-ninetales-raticate: slice done, 124 of 320 games on disk, folder pushed.
+- 2026-10-12 23:24Z: 2026-10-12_13-a-ninetales-raticate: slice done, 164 of 320 games on disk, folder pushed.
