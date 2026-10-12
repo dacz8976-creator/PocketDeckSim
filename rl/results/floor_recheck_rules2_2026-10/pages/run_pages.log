@@ -1,0 +1,62 @@
+2026-10-12T05:25:00Z PAGES START: run_pages.sh c8ecd28ff4466b03, PLAN.md fa7e8a839cf4409b (sha256; HEAD e495dc23); Part A: RESULT PASSED main-c045ede: the floor stays usable under km3 on rl/engine-2026-1
+engine main-c045ede (rl/engine-2026-10-12/deckgym): deckgym 0a9199bca480acf6, legality_scan bf9d75020558b843, goldfish d8cfb7799770e166, sitting 1's builds of 08a9b3a (rl/results/engine_switch_rules2_2026-10/programs.sha256), committed with SHA256SUMS; manifest committed; source commit c045ede on HEAD, P c7a25df in it, engine/ tree 70652ff; main-8626a35 superseded; current_engine.py resolves rl/engine-2026-10-12/deckgym; screen and floor default km3; engine/src/players/public_pricing_player.rs as at c045ede
+references: Oct 2's 16 files in rl/results/floor_recheck_2026-10/, each its blob at 2d7082c
+input (reported, not a gate) decks/screen/floor.py: sha256 763278659ea9a1ac, CHANGED since 2d7082c
+input (reported, not a gate) decks/screen/run_screen.py: sha256 d7bde1af80fa0b80, the one step 10 ran; as at 2d7082c
+input (reported, not a gate) current_engine.py: sha256 b05a59e875205643, as at 2d7082c
+input (reported, not a gate) lib/deckgym-database.json: sha256 2f48cb72966c23ba, as at 2d7082c
+input (reported, not a gate) lib/brew_pages.py: sha256 bfa3b363af41f644, as at 2d7082c
+input (reported, not a gate) engine/src/players/public_pricing_player.rs: sha256 c309aff9254d5a78, as at 2d7082c
+input (reported, not a gate) decks/brews/brew-06-pyukumuku-silvally-payback.txt: sha256 8276d298e8e9c7cb, as at 2d7082c
+input (reported, not a gate) decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt: sha256 bbe0a2cf838dd37f, as at 2d7082c
+input (reported, not a gate) decks/brews/brew-05b-meowstic-hatterene-comfey.txt: sha256 cf7e1a8a4449b1a5, as at 2d7082c
+input (reported, not a gate) decks/dustin/14-comfey-raticate-hypno.txt: sha256 8e6296a40e3d351d, as at 2d7082c
+input (reported, not a gate) decks/dustin/07-skarmory-stall.txt: sha256 62006b682027c473, as at 2d7082c
+input (reported, not a gate) decks/screen/opponents/t-altaria.txt: sha256 c3a57b9c835be77b, as at 2d7082c
+input (reported, not a gate) decks/screen/opponents/t-blaziken.txt: sha256 d88a70e56dae8f85, as at 2d7082c
+input (reported, not a gate) decks/screen/opponents/t-hydreigon.txt: sha256 18688bd9ab09f263, as at 2d7082c
+input (reported, not a gate) decks/screen/opponents/t-lucario.txt: sha256 76ad71c4d932da51, as at 2d7082c
+input (reported, not a gate) decks/screen/opponents/t-sceptile.txt: sha256 fe0b7fc4de2f9dff, as at 2d7082c
+input (reported, not a gate) decks/screen/opponents/t-suicune.txt: sha256 639778c3cdc05613, as at 2d7082c
+input (reported, not a gate) decks/screen/opponents/t-vespiquen.txt: sha256 8356844fd2d143a4, as at 2d7082c
+input (reported, not a gate) decks/screen/opponents/t-weezing.txt: sha256 26cb869fe5f2c7cd, as at 2d7082c
+Part B's inputs are the committed files; floor.py sha256 763278659ea9a1ac
+self-check passed: edges 349/350/418/419 (n 1,920) and 78/79/113/114 (n 480); untrusted rule; Supporter turns; ATTACKERS
+# Floor check: 12-ariados-whimsicott-ogerpon
+
+**Verdict: clears the floor.** 635 wins in 1920 games (33.07%) against the 8 lists in decks/screen/opponents. Bar 20% with the screen's own noise ±1.79 points at this n: 349 wins or fewer fail, 350-418 are borderline, 419 or more clear the floor.
+Flagged cards (the bot is known not to price them fully): Team Rocket's Goo-zooka as Trainer (played): used on 1827 of 5408 opportunities (33.8%); Whimsicott ex as attacker: used on 2134 of 2164 opportunities (98.6%). A share under 25% of at least 20 opportunities is a flag for a person to look at.
+Written: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/floor_recheck_rules2_2026-10/pages/12/12-ariados-whimsicott-ogerpon.md
+12: clears the floor, 635 of 1920
+12: was clears the floor 602/1920, now clears the floor 635/1920
+self-check passed: edges 349/350/418/419 (n 1,920) and 78/79/113/114 (n 480); untrusted rule; Supporter turns; ATTACKERS
+# Floor check: brew-07-hoopa-darkrai-sableye
+
+**Verdict: clears the floor.** 1168 wins in 1920 games (60.83%) against the 8 lists in decks/screen/opponents. Bar 20% with the screen's own noise ±1.79 points at this n: 349 wins or fewer fail, 350-418 are borderline, 419 or more clear the floor.
+Flagged cards (the bot is known not to price them fully): Mega Sableye ex as attacker: used on 1088 of 1195 opportunities (91.0%). A share under 25% of at least 20 opportunities is a flag for a person to look at.
+Written: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/floor_recheck_rules2_2026-10/pages/brew-07/brew-07-hoopa-darkrai-sableye.md
+brew-07: clears the floor, 1168 of 1920
+brew-07: was clears the floor 1168/1920, now clears the floor 1168/1920
+self-check passed: edges 349/350/418/419 (n 1,920) and 78/79/113/114 (n 480); untrusted rule; Supporter turns; ATTACKERS
+# Floor check: brew-09-sableye-obstagoon
+
+**Verdict: clears the floor.** 837 wins in 1920 games (43.59%) against the 8 lists in decks/screen/opponents. Bar 20% with the screen's own noise ±1.79 points at this n: 349 wins or fewer fail, 350-418 are borderline, 419 or more clear the floor.
+Flagged cards (the bot is known not to price them fully): Galarian Obstagoon as attacker: used on 1033 of 1048 opportunities (98.6%); Mega Sableye ex as attacker: used on 4322 of 4498 opportunities (96.1%). A share under 25% of at least 20 opportunities is a flag for a person to look at.
+Written: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/floor_recheck_rules2_2026-10/pages/brew-09/brew-09-sableye-obstagoon.md
+brew-09: clears the floor, 837 of 1920
+brew-09: was clears the floor 835/1920, now clears the floor 837/1920
+copy /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/floor_recheck_rules2_2026-10/pages/D_victini-passive/floor_victini_passive.py sha256 95477b52817aee4d: today's floor.py plus the one ROLES entry for rl/results/engine_switch_rules2_2026-10/floor_7c/d_first/draft-D-entei-grimhound.txt (Oct 2's, path changed)
+self-check passed: edges 349/350/418/419 (n 1,920) and 78/79/113/114 (n 480); untrusted rule; Supporter turns; ATTACKERS
+# Floor check: draft-D-entei-grimhound
+
+**Verdict: clears the floor.** 693 wins in 1920 games (36.09%) against the 8 lists in decks/screen/opponents. Bar 20% with the screen's own noise ±1.79 points at this n: 349 wins or fewer fail, 350-418 are borderline, 419 or more clear the floor.
+Flagged cards (the bot is known not to price them fully): Victini as bench piece/passive ability: used on 2332 of 2603 opportunities (89.6%). A share under 25% of at least 20 opportunities is a flag for a person to look at.
+Written: /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/floor_recheck_rules2_2026-10/pages/D_victini-passive/draft-D-entei-grimhound.md
+D_victini-passive: clears the floor, 693 of 1920
+D_victini-passive v Oct 2's: page equal but for the engine lines and Victini's caveat; games byte-equal; coverage equal but for Victini's entries ['B3 025']
+D_victini-passive: was clears the floor 693/1920, now clears the floor 693/1920
+D_root v Oct 2's: page equal but for the engine lines and Victini's caveat; games byte-equal; coverage equal but for Victini's entries ['B3 025']; Victini's caveat now: engine: Implemented with unverified rule boundaries; Victory Star supports printed attack-effect coin batches. The gate ...
+D_root: was clears the floor 693/1920, now clears the floor 693/1920
+D_amended v Oct 2's: page equal but for the engine lines and Victini's caveat; games byte-equal; coverage equal but for Victini's entries ['B3 025']; Victini's caveat now: engine: Implemented with unverified rule boundaries; Victory Star supports printed attack-effect coin batches. The gate ...
+D_amended: was clears the floor 597/1920, now clears the floor 597/1920
+2026-10-12 05:36:02 PAGES DONE: 6 pages in pages/ (12, brew-07, brew-09, D_victini-passive, D_root, D_amended), each with OLD_PAGE.txt; no deck 10 page
