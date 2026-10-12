@@ -96,7 +96,13 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
        F4: deck sha256s are checked.
      - The harness still writes no hash into each game record; the stamp-plus-seal is the binding (README, "Reader one's four findings").
      - `SPLIT_COLLECTOR=1809a506:rl/results/split_runs_2026-10-09/README.md`.
-   - **Now:** idle. The next job is the candidate exam in shards, after Monday.
+   - **The exact attack-skip measure of the combined run (Oct 12): done** (cf2f27ca, `strength_2026-10-08_kx3_combined/SKIP_ATTACK_EXACT.md`).
+     - An identity replay, not a re-run: every game move for move on the program that played it (172cbe9c; the frozen kx3 on d513e37b),
+       no play-outs. 560 of 560 replayed exactly for each bot.
+     - Turns with a legal attack and no attack that turn: candidate 5.0 ± 1.0%, frozen 3.7 ± 0.8%, km3 2.3 ± 0.7%; candidate − frozen
+       +1.3 ± 1.1 points (fast group +2.0 ± 1.5; deck 10 +3.0 ± 2.7). Most skip turns include a Retreat.
+     - The 217 skip turns are listed for the laptop's hand check (`skip_exact/skip_turns.tsv`). A pointer is in `SKIP_ATTACK.md`.
+   - **Now:** idle.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
    63c28e6e. Read "Oct 9" in that branch's `rl/results/coin_prevention_round2_2026-10-01/README.md`, section 3's end in
