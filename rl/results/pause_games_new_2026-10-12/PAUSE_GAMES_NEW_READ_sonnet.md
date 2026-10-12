@@ -45,7 +45,7 @@ This is the same reading as the Oct 2 set (`rl/results/pause_games_decisions_202
 | he attacks, km3 does not | 6 |
 | neither attacks | 13 |
 
-The "he attacks, km3 does not" turns need a card check before anyone trusts them: three are in the Aegislash / Melmetal ex / Magnezone game (20261005_034953), where the filmed deck lists a printing of Magnemite whose attack cost may not match the card he used.
+The "he attacks, km3 does not" turns need a card check before anyone trusts them: three are in the Aegislash / Melmetal ex / Magnezone game (20261005_034953). Its list says Magnemite A1 097, a Lightning-type card whose Lightning Ball costs a Lightning Energy, and the game's Energy is Metal only. So either the list's printing is not the card he played or the ledger's attack name is off. I did not change the list.
 
 ### Examples from the three newest games (Kingdra ex / Team Rocket's Weezing ex)
 
