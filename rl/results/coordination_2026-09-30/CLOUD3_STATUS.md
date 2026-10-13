@@ -35,3 +35,4 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
 - 2026-10-13 01:14Z: 2026-10-12_13-a-ninetales-raticate: slice done, 244 of 320 games on disk, folder pushed.
 - 2026-10-13 03:18Z: 2026-10-12_13-a-ninetales-raticate: slice done, 284 of 320 games on disk, folder pushed.
 - 2026-10-13 03:43Z: 2026-10-12_13-a-ninetales-raticate: slice done, 320 of 320 games on disk, folder pushed.
+- 2026-10-12/13: deck 13 slow report FINISHED (03:45Z Oct 13): all 320 games, 0 errors, 6.6 h; kx3 70.6% over 160 games (63.2% to 77.1%), km3 on the same deals 51.2%, kx3 adds +19.4 points (12.9 to 25.8; no-gain not in range); weakest list t-altaria 40%. Folder pushed (17464bd4). Reported to Dustin in chat. Next: draft D (decks/brews/drafts_2026-10-01/draft-D-entei-grimhound.txt), dry run first, seed_base must be 24,663,900,000.
