@@ -1,0 +1,5 @@
+The new harness (pg_pos.rs dfcd968259ce93ea, Special Conditions and the knock-out count; main 28df6315), for PART 2 (the Oct 13 set):
+pg_pos_F_cond sha256 5c4859949a88a28b0688fd0aad284c49110f92f14c7bcf1c86c4d85a6e5f3ac0 (cd20a97a; engine tree 4ebb30a9; pgd_patch 01b17932001c57f0)
+pg_pos_C_cond sha256 6e36ae1847a19850c36bcc4890e3b55b16b779f399160dd64f9391fc02e177eb (9a0bc5ac; engine tree 5d557d35; pgd_patch 01b17932001c57f0)
+Gates on the laptop (Oct 13-14): km3 at seeds 1-12 equal to the committed runs_km3 on 034953 t02/t04/t08/t10/t16 (5/5, C_cond), and equal to
+Sonnet's committed v2/runs_km3 on the 8 positions of shards/S8.txt (8/8 for each build), in RUN_BRIEF_MA.md's exact commands.
