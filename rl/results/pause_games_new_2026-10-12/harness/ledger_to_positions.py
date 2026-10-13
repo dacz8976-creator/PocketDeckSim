@@ -609,6 +609,15 @@ def opp_history(led):
 
 # ---------------------------------------------------------------------------------------------------------------- one game
 
+# the ledger's wordings of a Special Condition -> the engine's name (StatusCondition in engine/src/models/card.rs)
+CONDITIONS = {'asleep': 'Asleep', 'sleep': 'Asleep', 'paralyzed': 'Paralyzed', 'paralysed': 'Paralyzed', 'paralysis': 'Paralyzed',
+              'confused': 'Confused', 'confusion': 'Confused', 'poisoned': 'Poisoned', 'poison': 'Poisoned', 'burned': 'Burned', 'burn': 'Burned'}
+
+
+def condition_key(x):
+    return str(x).strip().lower()
+
+
 def convert_game(gdir, global_entities):
     gname = os.path.basename(gdir.rstrip('/'))
     short = gname.replace('_iOS', '')[2:]
@@ -673,6 +682,7 @@ def convert_game(gdir, global_entities):
         if ids:
             return bool(ids & rc_ids)
         return rc_names[name] > 0 and n_named <= rc_names[name]
+    knockouts = 0      # his own Pokemon knocked out so far this game (Kingambit's Overlord's Blade; pg_pos.rs reads me.knockouts), Oct 13
     for k, ti in enumerate(owner_idx):
         t = turns[ti]
         tn = t['turn_number']
@@ -729,6 +739,7 @@ def convert_game(gdir, global_entities):
                 if nm not in names_in_deck:
                     continue
                 lost_mine = True
+                knockouts += 1
                 st = stack_under(p)
                 if st is None:
                     st = chain_names(nm)
@@ -840,9 +851,15 @@ def convert_game(gdir, global_entities):
                                 opp_alts.append({'name': u, 'used': uid, 'could_also_be': alts_u, 'under': name})
                             behind.append(f'{u} {uid}')
                     d['behind'] = list(reversed(behind))
+                # Special Conditions (Oct 13): the engine's names, which pg_pos.rs sets on the Pokemon; a condition the engine has no name for
+                # stays a note
                 conds = p.get('special_conditions') or []
-                if conds:
-                    notes.append(f'{name} is {"/".join(map(str, conds))} (not represented: the harness has no condition field)')
+                known = [CONDITIONS[c] for c in (condition_key(x) for x in conds) if c in CONDITIONS]
+                if known:
+                    d['conditions'] = list(dict.fromkeys(known))
+                unknown = [x for x in conds if condition_key(x) not in CONDITIONS]
+                if unknown:
+                    notes.append(f'{name} is {"/".join(map(str, unknown))} (not represented: the engine has no such condition)')
                 d['_name'] = name
                 return d
             me_board = [mk(p, True) for p in own_inst]
@@ -1124,6 +1141,7 @@ def convert_game(gdir, global_entities):
                    'energy_now': None if (first_player and tn == 1) else (my_now or decks_energy),
                    'energy_next': my_next or decks_energy}
         opp_side = {'hand_count': opp_hand, 'discard': opp_disc, 'discard_energy': list(ohist['energy']), 'board': opp_board, 'energy_next': o_next}
+        me_side['knockouts'] = knockouts
         if me_deck_empty:
             me_side['deck_count'] = 0      # the ledger says his deck is empty: the position runner checks this against the list minus what it shows
         if ohist['deck_empty']:

@@ -198,3 +198,53 @@ Checked with the rebuilt harness: all 176 positions of `positions_A.json` reprod
 ## Files
 
 `TABLES.md` (a table per game), `TURBO_SHARK.md`, `summary.json`, `totals.json`, `positions_A.json` and `positions_A.py` (the positions with their notes), `FRAME_READS.md` (how each hand was fixed), `raw/` (stdout JSON lines and the PGSTEP/PGDUMP root scores for every position and seed), `harness/` (the example, the print-only patch, the run and report scripts), `BUILD.txt` (hashes).
+
+## Oct 13: Special Conditions and the knock-out count (the cloud; Fable via Sonnet's read of the Oct 13 games)
+
+Two things a position could not carry, found in the Oct 13 games (`rl/results/pause_games_new_2026-10-13/` on
+`sonnet/pause-games-2026-10-13`):
+- **Sleep** (and every other Special Condition). A sleeping Pokemon was played as awake. That made the two largest false gaps of that
+  read.
+- **Kingambit's Overlord's Blade** ("40 more damage for each time your Pokemon have been Knocked Out during this game") read 60. The
+  engine keeps the count per player (`own_knockouts_this_game`), and `pg_pos.rs` never set it.
+
+**The position format gains two optional fields; positions without them run exactly as before:**
+- `"conditions": ["Asleep" | "Paralyzed" | "Confused" | "Poisoned" | "Burned", ...]` on any board entry, either side. It is set on
+  that Pokemon with the engine's own `with_status_condition`. A name the engine doesn't have is a position problem.
+- `"knockouts": n` on `"me"` and/or `"opp"`: how many of that side's own Pokemon were Knocked Out earlier in the game. It is set with
+  `set_own_knockouts_this_game` before the bot moves.
+
+**The output is unchanged.** The `position`, `free` and `forced` lines have the same fields. A new flag, `--dump-state`, adds one
+`{"kind": "state", ...}` line per position: the counts and every condition, as the built engine state holds them. It is for the
+tests and adds nothing unless asked.
+
+**The converter** (`../pause_games_new_2026-10-12/harness/ledger_to_positions.py`) now writes both:
+- **Conditions:** a Pokemon's `special_conditions` from the ledger, as engine names (`asleep`/`sleep` -> Asleep, `poison` ->
+  Poisoned, and so on). A condition with no engine name stays a note, as all of them did before.
+- **Knock-outs:** `me.knockouts`, his Pokemon knocked out between his turns so far in the game.
+- **Not covered:** a Pokemon of his knocked out during his own turn (recoil, for example), and the opponent's count. `pg_pos` reads
+  `opp.knockouts`, but the converter doesn't write it yet.
+- The positions already committed don't have the fields. The laptop regenerates them from the ledgers (`regenerate.sh`).
+
+**Tests** (`harness/test_pg_pos.py`, positions in `harness/test_oct13/`, two of Sonnet's real turns):
+- **pg_pos:** 9 tests: the count, Sleep and Poison, Paralysis and Confusion carried the same way, a sleeping or paralysed Active that
+  neither attacks nor retreats, an unknown condition reported, and the output fields unchanged. 8 of the 9 fail on the old runner
+  (`test_oct13/tests_before.log`); 9 of 9 pass on the new one (`tests_after.log`).
+- **The converter:** 5 new tests in its own test file. 3 fail before (`test_oct13/converter_tests_before.log`); all 85 pass after,
+  with 13 that need the real ledgers skipped here.
+
+**km3 before and after** (seeds 1-12; `test_oct13/km3_before.jsonl`, `km3_after.jsonl`, `km3_t09_*.jsonl`, `kingambit_t09_scores.txt`):
+- **030351 turn 5, Dragonair Asleep at 20 HP.**
+  - Before: km3 attacks with Draconic Whip in 12 of 12 seeds, which a sleeping Pokemon can't do.
+  - After: it uses Dragon's Blessing, attaches to the Bench and ends the turn, 12 of 12.
+  - The opponent's Darkrai (Bad Dreams: 20 damage at the end of each turn to a sleeping Active) then knocks Dragonair out. km3's plan
+    readies the Pokemon it promotes. Paralysed: the same. Confused: it still attacks, which is legal.
+- **010837 turns 9 and 11, Kingambit with 2 knock-outs.**
+  - km3's move is the same before and after: Overlord's Blade, 12 of 12.
+  - At turn 11 the Pichu in front has 30 HP, so 60 or 140 both knock it out.
+  - At turn 9, the Blade's score rises from -9,786 to -9,339 with the count. That is the engine seeing 140 damage, not 60, on the
+    180-HP Mega Kangaskhan ex. Without the count, or on the old runner, the score is -9,786.
+- **Nothing else changed:** on all 92 of Sonnet's Oct 13 positions (which don't have the new fields), the old and new runners print
+  byte-for-byte the same output (seeds 1-3, 365 lines).
+- **Builds:** built and run on main c045ede (K). It compiles on the two kx3 merges, cd20a97a (F) and 9a0bc5ac (C), with the same
+  print-only patch. The laptop rebuilds all three from this commit.
