@@ -1,0 +1,80 @@
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:77: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_oct13/positions.json' mode='r' encoding='utf-8'>
+  bad = json.load(open(f"{T}/positions.json"))[3]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/pg_pos_bad_condition.json' mode='w' encoding='utf-8'>
+  json.dump([bad], open(path, "w"))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+F.FFEEEEE
+======================================================================
+ERROR: test_a_position_without_conditions_has_none (test_pg_pos.State.test_a_position_without_conditions_has_none)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 43, in test_a_position_without_conditions_has_none
+    self.assertEqual(self.state["oct13-dragonair-awake"]["conditions"], {"me": {}, "opp": {}})
+                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'oct13-dragonair-awake'
+
+======================================================================
+ERROR: test_a_position_without_the_count_keeps_zero (test_pg_pos.State.test_a_position_without_the_count_keeps_zero)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 35, in test_a_position_without_the_count_keeps_zero
+    self.assertEqual(self.state["oct13-kingambit-no-count"]["knockouts"], [0, 0])
+                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'oct13-kingambit-no-count'
+
+======================================================================
+ERROR: test_paralysis_and_confusion_are_carried_the_same_way (test_pg_pos.State.test_paralysis_and_confusion_are_carried_the_same_way)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 46, in test_paralysis_and_confusion_are_carried_the_same_way
+    self.assertEqual(self.state["oct13-dragonair-paralyzed"]["conditions"]["me"], {"0": ["Paralyzed"]})
+                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'oct13-dragonair-paralyzed'
+
+======================================================================
+ERROR: test_sleep_is_set_on_the_pokemon_that_carries_it (test_pg_pos.State.test_sleep_is_set_on_the_pokemon_that_carries_it)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 38, in test_sleep_is_set_on_the_pokemon_that_carries_it
+    s = self.state["oct13-dragonair-asleep"]["conditions"]
+        ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'oct13-dragonair-asleep'
+
+======================================================================
+ERROR: test_the_knockout_count_is_set_from_the_position (test_pg_pos.State.test_the_knockout_count_is_set_from_the_position)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 32, in test_the_knockout_count_is_set_from_the_position
+    self.assertEqual(self.state["oct13-kingambit-knockouts"]["knockouts"], [2, 0])
+                     ~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'oct13-kingambit-knockouts'
+
+======================================================================
+FAIL: test_an_unknown_condition_is_a_position_problem (test_pg_pos.Format.test_an_unknown_condition_is_a_position_problem)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 84, in test_an_unknown_condition_is_a_position_problem
+    self.assertTrue(any("Sleepy" in p for p in pos["problems"]), pos["problems"])
+AssertionError: False is not true : []
+
+======================================================================
+FAIL: test_a_paralyzed_active_neither_attacks_nor_retreats (test_pg_pos.Play.test_a_paralyzed_active_neither_attacks_nor_retreats)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 61, in test_a_paralyzed_active_neither_attacks_nor_retreats
+    self.assertFalse([m for m in plan if m.startswith("Attack:") or m.startswith("Retreat:")], plan)
+AssertionError: ['Attack:Draconic Whip'] is not false : ['Evolve:Dragonair@3', 'UseStadium', 'Attach:1Metal@0 zone', 'Attack:Draconic Whip']
+
+======================================================================
+FAIL: test_a_sleeping_active_neither_attacks_nor_retreats (test_pg_pos.Play.test_a_sleeping_active_neither_attacks_nor_retreats)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 57, in test_a_sleeping_active_neither_attacks_nor_retreats
+    self.assertFalse([m for m in plan if m.startswith("Attack:") or m.startswith("Retreat:")], plan)
+AssertionError: ['Attack:Draconic Whip'] is not false : ['Evolve:Dragonair@3', 'UseStadium', 'Attach:1Metal@0 zone', 'Attack:Draconic Whip']
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.795s
+
+FAILED (failures=3, errors=5)

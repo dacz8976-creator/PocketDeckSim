@@ -881,5 +881,52 @@ class ReviewExamples(unittest.TestCase):
         self.assertEqual(got, [('Darkness', 'Grass'), ('Grass', 'Metal'), ('Metal', 'Metal')])
 
 
+
+# ------------------------------------------------------------------------------------------------------------- Oct 13: conditions and knock-outs
+class ConditionsAndKnockouts(unittest.TestCase):
+    """Fable via Sonnet's read of the Oct 13 games: pg_pos had no Special Condition and no knock-out count, so a sleeping Pokemon was
+    played as awake and Kingambit's Overlord's Blade read 60. The converter now writes them into the position (pg_pos.rs reads them)."""
+
+    def convert(self, deck, turns):
+        return MadeUpGame(self, deck, turns).convert({})[0]
+
+    def at(self, pos, turn):
+        return next(p for p in pos if p['turn_count'] == turn)
+
+    def test_his_sleeping_active_is_asleep_in_the_position(self):
+        t = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60, conds=['Asleep']), []), board(mon('Stakataka', 110), []), [play('end_turn')])
+        p = self.convert(fighting_deck(), [t])[0]
+        self.assertEqual(p['me']['board'][0].get('conditions'), ['Asleep'])
+        self.assertNotIn('not represented', p['notes'])
+
+    def test_the_opponents_poisoned_active_is_poisoned_and_other_wordings_are_read(self):
+        t = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60, conds=['paralyzed']), []), board(mon('Stakataka', 110, conds=['Poison', 'Confusion']), []), [play('end_turn')])
+        p = self.convert(fighting_deck(), [t])[0]
+        self.assertEqual(p['me']['board'][0].get('conditions'), ['Paralyzed'])
+        self.assertEqual(p['opp']['board'][0].get('conditions'), ['Poisoned', 'Confused'])
+
+    def test_a_pokemon_with_no_condition_has_no_conditions_key(self):
+        t = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60), []), board(mon('Stakataka', 110), []), [play('end_turn')])
+        p = self.convert(fighting_deck(), [t])[0]
+        self.assertNotIn('conditions', p['me']['board'][0])
+
+    def test_a_condition_the_engine_does_not_have_stays_a_note(self):
+        t = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60, conds=['Frozen']), []), board(mon('Stakataka', 110), []), [play('end_turn')])
+        p = self.convert(fighting_deck(), [t])[0]
+        self.assertNotIn('conditions', p['me']['board'][0])
+        self.assertIn('Frozen', p['notes'])
+
+    def test_the_knockout_count_is_his_pokemon_knocked_out_so_far(self):
+        deck = real_deck(('Honedge', 'B2 118', 2), ('Horsea', 'A4 041', 2))
+        h1, h3 = mon('Honedge', 70, pos=1), mon('Honedge', 70, pos=3)
+        turns = [owner_turn(2, ['Poké Ball'], board(mon('Horsea', 50), [h1, h3]), board(mon('Stakataka', 110), []), [play('end_turn')]),
+                 opp_turn(3, [play('attack', 'Stakataka: Brass Rock', 'owner Bench3', 'Bench3 removed')]),
+                 owner_turn(4, ['Poké Ball'], board(mon('Horsea', 50), [mon('Honedge', 70, pos=1)]), board(mon('Stakataka', 110), []), [play('end_turn')]),
+                 opp_turn(5, [play('attack', 'Stakataka: Brass Rock', 'owner Active', 'knocks out Active Horsea')]),
+                 owner_turn(6, ['Poké Ball'], board(mon('Honedge', 70)), board(mon('Stakataka', 110), []), [play('end_turn')])]
+        pos = self.convert(deck, turns)
+        self.assertEqual([self.at(pos, t)['me'].get('knockouts') for t in (2, 4, 6)], [0, 1, 2])
+
+
 if __name__ == '__main__':
     unittest.main()
