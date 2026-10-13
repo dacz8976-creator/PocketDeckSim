@@ -30,8 +30,9 @@ They are estimates until the first slices finish.
 - **One registration per worker,** and **one stamp per worker.** A worker stamps one folder for all of its decks, repeating
   `--only-deck` once per deck, and plays them in that folder.
   - The stamp replays the 12-game self-checks before play.
-  - That takes up to about 4 hours for m32 (the thinking-time stamps took 2.9 and 3.8) and about 7.5 for m64 (estimate) on a 4-core
-    sandbox.
+  - That takes up to about 4 hours for m32 (the thinking-time stamps took 2.9 and 3.8) and about 10 to 12 for m64 on a 4-core sandbox.
+    The m64 figure is an estimate, corrected Oct 13 after registration: the laptop's m64 self-check took about 5 hours (14:39-19:53Z,
+    beside m32's), and sandboxes ran 2.1 to 2.7 times slower than the laptop on the m32 self-check.
   - So every extra worker costs one more self-check of that length.
   - The harness plays a folder's decks in the registration's order, whatever order `--only-deck` names them in.
 - The registered program must be rebuilt in the sandbox, exactly as in the thinking-time test:
@@ -42,8 +43,8 @@ They are estimates until the first slices finish.
   `869789a10142e83f`, m64 `724e581a9c51711f`.
 - **A risk to decide before launch:**
   - m64's digest has so far been produced only by the laptop build. The thinking-time sandboxes replayed km3, m32 and m16, never m64.
-  - m64 differs from m32 only by a parameter, so a mismatch is unlikely. But if it did happen, every m64 stamp would stop after about 7.5
-    hours (about 75 sandbox hours), with no games played.
+  - m64 differs from m32 only by a parameter, so a mismatch is unlikely. But if it did happen, every m64 stamp would stop after about 11
+    hours (about 110 sandbox hours), with no games played.
   - Either launch everything at once and accept the risk, or start one m64 worker first and the other m64 workers once its stamp shows
     `724e581a…`. The second option costs about 7.5 hours of wall time. The coordinator's call.
   - **Decided (coordinator, Oct 13):** everything at once, accepting the risk. A mismatch would cost about $15 of credits and 7.5 hours,
@@ -55,7 +56,9 @@ They are estimates until the first slices finish.
   - When a registration's 11 decks are in, the laptop merges it into its own folder:
     `split_collect.py merge --manifest .../reg_<s>/manifest.json --worker ... --out rl/results/exam_m32_m64_2026-10/reg_<s>`.
 
-## The layout: 14 workers, about 23 hours of wall time at most (build, stamp and play, estimates)
+## The layout: 14 workers, about 27 hours of wall time at most (build, stamp and play, estimates)
+
+Corrected Oct 13 from about 23, for the longer m64 stamp.
 
 The coordinator's choice, Oct 13: all 14 launched at once.
 
@@ -65,23 +68,23 @@ The coordinator's choice, Oct 13: all 14 launched at once.
 | E2 | reg_m32 | 08-garchomp-toolbox, 04-absol-hoopa-darkrai, 14-comfey-raticate-hypno | 17.4 | ~4 |
 | E3 | reg_m32 | 07-skarmory-stall, draft-D-entei-grimhound, 13-a-ninetales-raticate | 15.8 | ~4 |
 | E4 | reg_m32 | draft-C-meowstic-hatterene-v2, 12-ariados-whimsicott-ogerpon, 15-jolteon-oricorio-raticate | 17.8 | ~4 |
-| E5 | reg_m64 | 02-arceus-crobat | 14.0 | ~7.5 |
-| E6 | reg_m64 | 08-garchomp-toolbox | 12.9 | ~7.5 |
-| E7 | reg_m64 | 07-skarmory-stall | 12.4 | ~7.5 |
-| E8 | reg_m64 | draft-C-meowstic-hatterene-v2 | 11.7 | ~7.5 |
-| E9 | reg_m64 | draft-D-entei-grimhound | 11.3 | ~7.5 |
-| E10 | reg_m64 | 12-ariados-whimsicott-ogerpon | 11.2 | ~7.5 |
-| E11 | reg_m64 | 04-absol-hoopa-darkrai | 10.3 | ~7.5 |
-| E12 | reg_m64 | 15-jolteon-oricorio-raticate | 10.1 | ~7.5 |
-| E13 | reg_m64 | 11-archaludon-haxorus-dragonair | 9.9 | ~7.5 |
-| E14 | reg_m64 | 14-comfey-raticate-hypno, 13-a-ninetales-raticate | 14.4 | ~7.5 |
+| E5 | reg_m64 | 02-arceus-crobat | 14.0 | ~11 |
+| E6 | reg_m64 | 08-garchomp-toolbox | 12.9 | ~11 |
+| E7 | reg_m64 | 07-skarmory-stall | 12.4 | ~11 |
+| E8 | reg_m64 | draft-C-meowstic-hatterene-v2 | 11.7 | ~11 |
+| E9 | reg_m64 | draft-D-entei-grimhound | 11.3 | ~11 |
+| E10 | reg_m64 | 12-ariados-whimsicott-ogerpon | 11.2 | ~11 |
+| E11 | reg_m64 | 04-absol-hoopa-darkrai | 10.3 | ~11 |
+| E12 | reg_m64 | 15-jolteon-oricorio-raticate | 10.1 | ~11 |
+| E13 | reg_m64 | 11-archaludon-haxorus-dragonair | 9.9 | ~11 |
+| E14 | reg_m64 | 14-comfey-raticate-hypno, 13-a-ninetales-raticate | 14.4 | ~11 |
 
 Sandbox time in all, for this layout:
 - play: about 182 hours;
-- stamps: about 91 hours (4 × 4 + 10 × 7.5);
+- stamps: about 126 hours (4 × 4 + 10 × 11);
 - builds: about 1 hour each.
 
 Other layouts trade wall time against stamps:
-- **12 workers** (4 m32 + 8 m64): about 28 hours of wall time, with 15 fewer stamp hours. The m64 pairs would be 12 + 13, 04 + 14 and
+- **12 workers** (4 m32 + 8 m64): about 32 hours of wall time, with 22 fewer stamp hours. The m64 pairs would be 12 + 13, 04 + 14 and
   15 + 11.
-- **22 workers** (one deck each): about 22.5 hours, hardly faster than 14, with about 36 more stamp hours.
+- **22 workers** (one deck each): about 26 hours, hardly faster than 14, with about 40 more stamp hours.

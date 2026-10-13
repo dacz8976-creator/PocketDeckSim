@@ -167,6 +167,6 @@ each) with their build checks. The merge writes into each registration's own fol
   - an m64 game is about 1.85 times m32's (estimate).
 
   That makes about 64 sandbox hours for m32 and about 118 for m64, at `--threads 2`.
-- **Stamps.** Each worker's stamp replays the 12-game self-checks: up to about 4 hours for m32 and about 7.5 for m64 (estimate) on a
-  4-core sandbox.
+- **Stamps.** Each worker's stamp replays the 12-game self-checks: up to about 4 hours for m32 and about 10 to 12 for m64 on a 4-core
+  sandbox. The m64 figure is an estimate, corrected after registration from about 7.5: the laptop's m64 self-check took about 5 hours.
 - **Credits.** The coordinator's estimate is about $65-100.
