@@ -1,0 +1,76 @@
+{
+ "positions": 34,
+ "left_out": [
+  {
+   "game": "261013_015659000",
+   "turn": 11,
+   "reason": "opponent hand count missing"
+  }
+ ],
+ "plans_with_unresolved_targets": [
+  {
+   "game": "261013_020824000",
+   "turn": 11,
+   "reason": "unresolved plan targets (plan kept)",
+   "detail": [
+    "attach target 'Regigigas'"
+   ]
+  }
+ ],
+ "decks": {
+  "261013_010003000": {
+   "source": "qr",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "historical_exact20_verified_not_fresh"
+  },
+  "261013_010837000": {
+   "source": "log",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "historical_exact20_qr_matched_current_live_pending"
+  },
+  "261013_014423000": {
+   "source": "log",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_exact_semantic_filmed_QR_matches_historical_log"
+  },
+  "261013_015011000": {
+   "source": "qr",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "exact_historical_log_and_filmed_qr_match"
+  },
+  "261013_015659000": {
+   "source": "log",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "exact_20_historical_snapshot_bound_by_filmed_QR"
+  },
+  "261013_020824000": {
+   "source": "log",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_filmed_semantic20_and_dated_historical_log_match"
+  }
+ }
+}

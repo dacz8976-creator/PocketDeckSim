@@ -1,0 +1,77 @@
+34 positions; 32 with a recorded plan; {'differ': 13, 'agree': 15, 'split': 4} ; same plan in >=10/12: 7
+  11  same plan
+   6  Supporter/Item choice or order
+   4  Energy attachment target
+   3  bench development
+   3  Energy attachment timing
+   2  retreat/promotion
+   2  other
+   1  evolution timing/target
+by kind (a position can carry several):
+   8  Energy attachment target
+   7  Supporter/Item choice or order
+   5  retreat/promotion
+   5  bench development
+   4  Energy attachment timing
+   3  Tool placement
+   2  attack vs another action
+   2  attack choice
+   2  evolution timing/target
+first point where the modal plan parts from his (his step kind -> km3 step kind):
+   4  his Attach    -> km3 Attach
+   3  his Play      -> km3 Play
+   3  his Evolve    -> km3 Place
+   2  his Evolve    -> km3 Play
+   2  his Play      -> km3 Retreat
+   2  his Play      -> km3 Attach
+   2  his end       -> km3 UseStadium
+   1  his Play      -> km3 Attack
+   1  his Retreat   -> km3 Play
+   1  his Attach    -> km3 Attack
+positions where the plans agree entirely (modal): 11
+attack, where both plans run to the end of the turn:
+  15  unknown (a plan is cut before its end)
+   8  neither attacks
+   5  same attack
+   2  km3 attacks, he does not
+   2  different attack
+first action, his kind -> km3 modal first kind (positions where the first actions differ in more than 2/12 seeds of agreement):
+   6  his Play      -> km3 Play
+   3  his Evolve    -> km3 Place
+   2  his Evolve    -> km3 Play
+   2  his Play      -> km3 Retreat
+   2  his Attach    -> km3 Attach
+   1  his Play      -> km3 Attack
+   1  his Attach    -> km3 Attack
+KW-261013_010003000-t01      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Mesagoza, UseStadium] ↔ km3 [-]
+KW-261013_010003000-t03      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [-] ↔ km3 [Play:Heavy Helmet, Tool:Heavy Helmet@1]; his [-] ↔ km3 [Play:Lucky Ice Pop, Attach:1Darkness@0 zone]; his [Attach:1Darkness@0 zone, Play:Lucky Ic
+KW-261013_010003000-t05      agree   first 12/12 plan 12/12 | same plan | 
+KW-261013_010003000-t07      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [-] ↔ km3 [Play:Lucky Ice Pop, Play:Lucky Ice Pop, Play:Lucky Ice Pop, Play:Lucky Ice Pop]
+KW-261013_010003000-t09      agree   first 12/12 plan 12/12 | same plan | 
+KW-261013_010003000-t11      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Lucky Ice Pop, Attach:1Darkness@2 zone] ↔ km3 [Attack:Giga Turbo, Attach:1Colorless@2 fx]
+KW-261013_010837000-t01      split   first  8/12 plan  8/12 | same plan | 
+KW-261013_010837000-t03      agree   first 12/12 plan  0/12 | retreat/promotion | his [Retreat:1] ↔ km3 [-]
+KW-261013_010837000-t05      differ  first  0/12 plan  0/12 | bench development | his [-] ↔ km3 [Place:Glimmet]; his [Place:Glimmet, Attach:1Darkness@1 zone] ↔ km3 [Attach:1Darkness@0 zone]
+KW-261013_010837000-t07      agree   first 12/12 plan  0/12 | Energy attachment target | his [Attach:1Darkness@2 zone] ↔ km3 [Attach:1Darkness@1 zone]
+KW-261013_010837000-t09      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Lucky Ice Pop, Play:Lucky Ice Pop, Attach:1Darkness@1 zone, Attack:Hang Down] ↔ km3 [Retreat:1, Attach:1Darkness@0 zone, Attack:Overlord's Blade]
+KW-261013_010837000-t11      differ  first  0/12 plan  0/12 | retreat/promotion | his [-] ↔ km3 [Retreat:1]; his [Tool:Heavy Helmet@1] ↔ km3 [Tool:Heavy Helmet@0]; his [Attack:Hang Down] ↔ km3 [Attack:Overlord's Blade]
+KW-261013_010837000-t13      differ  first  0/12 plan  0/12 | Energy attachment target | his [Attach:1Darkness@0 zone] ↔ km3 [Attach:1Darkness@1 zone]
+KW-261013_014423000-t01      split   first  5/12 plan  5/12 | same plan | 
+KW-261013_014423000-t03      differ  first  1/12 plan  0/12 | Energy attachment target | his [Attach:1Darkness@1 zone] ↔ km3 [Attach:1Darkness@0 zone]
+KW-261013_014423000-t05      agree   first 12/12 plan  1/12 | Energy attachment timing | his [-] ↔ km3 [Attach:1Darkness@0 zone]
+KW-261013_014423000-t07      agree   first 12/12 plan  0/12 | Energy attachment target | his [Attach:1Darkness@1 zone] ↔ km3 [Attach:1Darkness@0 zone]
+KW-261013_014423000-t09      differ  first  0/12 plan  0/12 | Energy attachment timing | his [Attach:1Darkness@0 zone] ↔ km3 [-]
+KW-261013_015011000-t01      split   first  8/12 plan  8/12 | same plan | 
+KW-261013_015659000-t01      agree   first 12/12 plan 12/12 | same plan | 
+KW-261013_015659000-t03      differ  first  0/12 plan  0/12 | evolution timing/target | his [Evolve:Glimmora@1] ↔ km3 [-]; his [-] ↔ km3 [Play:Lucky Ice Pop, Place:Pawniard, Evolve:Glimmora@2]
+KW-261013_015659000-t05      differ  first  0/12 plan  0/12 | bench development | his [-] ↔ km3 [Place:Pawniard]; his [Place:Pawniard, Attach:1Darkness@3 zone] ↔ km3 [Attach:1Darkness@0 zone]
+KW-261013_015659000-t07      agree   first 12/12 plan 12/12 | same plan | 
+KW-261013_015659000-t09      agree   first 12/12 plan 12/12 | same plan | 
+KW-261013_015659000-t13      agree   first 12/12 plan 12/12 | same plan | 
+KW-261013_020824000-t01      agree   first 11/12 plan 11/12 | same plan | 
+KW-261013_020824000-t03      differ  first  0/12 plan  0/12 | bench development | his [-] ↔ km3 [Place:Pawniard]; his [Place:Pawniard] ↔ km3 [-]; his [Tool:Heavy Helmet@2] ↔ km3 [Tool:Heavy Helmet@1]
+KW-261013_020824000-t05      split   first  9/12 plan  9/12 | same plan | 
+KW-261013_020824000-t07      agree   first 12/12 plan  0/12 | Energy attachment timing | his [-] ↔ km3 [Attach:1Darkness@0 zone]; his [Attach:1Darkness@0 zone, Retreat:3] ↔ km3 [Evolve:Glimmora@0, Attack:Venomous Hit]
+KW-261013_020824000-t09      agree   first 12/12 plan  0/12 | other | his [-] ↔ km3 [UseStadium]
+KW-261013_020824000-t11      agree   first 12/12 plan  0/12 | Supporter/Item choice or order | his [Play:Ilima, Place:Regigigas, Retreat:3] ↔ km3 [Play:Lucky Ice Pop, Play:Lucky Ice Pop, Play:Lucky Ice Pop]
+KW-261013_020824000-t13      agree   first 12/12 plan  0/12 | other | his [-] ↔ km3 [UseStadium]
