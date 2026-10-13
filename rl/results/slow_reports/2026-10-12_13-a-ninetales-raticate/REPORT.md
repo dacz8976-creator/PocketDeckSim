@@ -10,21 +10,21 @@ Pre-registration order: registered 2026-10-12T20:47:54Z; first game started 2026
 
 Self-check digests recorded at registration: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204539Z.json (commit dbe31f48b3da): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration); `selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204539Z.json (commit dbe31f48b3da): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration)
 
-- Planned 320 games; finished 244; complete pairs 122 (= 244 games); unpaired games 0; errors 0.
+- Planned 320 games; finished 284; complete pairs 142 (= 284 games); unpaired games 0; errors 0.
 - Paired difference = score(arm X) − score(arm ref) per (deck, opponent, deal, seat), in percentage points of score (win 1, tie ½). Intervals are mean ± 1.96·sd/√n over paired games. No pass/fail threshold.
 
 ## Result
 
-**Pooled over all 122 paired games: +19.7 ± 7.4 points** (arm X 70.5% vs arm ref 50.8% score).
+**Pooled over all 142 paired games: +19.0 ± 6.8 points** (arm X 71.1% vs arm ref 52.1% score).
 
 
 ### Per deck, pooled over its opponents
 
 | deck | paired games | arm X score | arm ref score | paired difference (points) | went first: diff | went second: diff |
 |---|---|---|---|---|---|---|
-| 13-a-ninetales-raticate | 122 | 70.5% | 50.8% | +19.7 ± 7.4 | +21.1 ± 10.7 | +18.5 ± 10.4 |
+| 13-a-ninetales-raticate | 142 | 71.1% | 52.1% | +19.0 ± 6.8 | +17.9 ± 9.3 | +20.0 ± 9.8 |
 
-Overall by who went first (identical in both arms): deck first +21.1 ± 10.7 (n=57); deck second +18.5 ± 10.4 (n=65).
+Overall by who went first (identical in both arms): deck first +17.9 ± 9.3 (n=67); deck second +20.0 ± 9.8 (n=75).
 
 ### Per (deck, opponent) pair
 
@@ -36,7 +36,8 @@ Overall by who went first (identical in both arms): deck first +21.1 ± 10.7 (n=
 | 13-a-ninetales-raticate | t-lucario | 20 | 65.0% | 40.0% | +25.0 ± 19.5 |
 | 13-a-ninetales-raticate | t-sceptile | 20 | 70.0% | 55.0% | +15.0 ± 16.1 |
 | 13-a-ninetales-raticate | t-suicune | 20 | 90.0% | 70.0% | +20.0 ± 18.0 |
-| 13-a-ninetales-raticate | t-vespiquen | 2 | 100.0% | 100.0% | +0.0 ± 0.0 |
+| 13-a-ninetales-raticate | t-vespiquen | 20 | 80.0% | 70.0% | +10.0 ± 13.5 |
+| 13-a-ninetales-raticate | t-weezing | 2 | 50.0% | 0.0% | +50.0 ± 98.0 |
 
 ## Runtime and cost
 
@@ -44,12 +45,12 @@ Wall time is per game on this machine with the threads the run used; it includes
 
 | arm | role | pilot | games | wall per game: mean / median / p95 / max | games per second (1 thread) | decisions per game | ms per decision: mean / median / p95 / max | decision time per game |
 |---|---|---|---|---|---|---|---|---|
-| X | deck seat | `kx3` | 122 | 497.63 / 444.73 / 1087.59 / 1274.26 s | 0.00 | 22.6 | 21960.7 / 19349.5 / 50224.5 / 104331.5 | 8 min |
-| X | opponent seat | `km3` | 122 |  |  | 23.1 | 11.3 / 5.3 / 46.9 / 268.5 | 0.26 s |
-| ref | deck seat | `km3` | 122 | 0.56 / 0.50 / 1.15 / 1.75 s | 1.80 | 21.6 | 14.7 / 6.9 / 56.6 / 273.5 | 0.32 s |
-| ref | opponent seat | `km3` | 122 |  |  | 22.7 | 10.0 / 4.8 / 39.0 / 184.6 | 0.23 s |
+| X | deck seat | `kx3` | 142 | 630.97 / 465.95 / 1632.57 / 2624.01 s | 0.00 | 23.4 | 26899.5 / 21635.8 / 68595.8 / 162309.9 | 11 min |
+| X | opponent seat | `km3` | 142 |  |  | 24.1 | 13.7 / 5.9 / 55.1 / 279.3 | 0.33 s |
+| ref | deck seat | `km3` | 142 | 0.63 / 0.54 / 1.35 / 2.79 s | 1.58 | 22.4 | 15.4 / 7.0 / 58.8 / 279.2 | 0.35 s |
+| ref | opponent seat | `km3` | 142 |  |  | 23.6 | 11.5 / 5.3 / 46.4 / 184.6 | 0.27 s |
 
-One paired game (both arms) took 8 min on average; the run used 4 thread(s).
+One paired game (both arms) took 11 min on average; the run used 4 thread(s).
 
 ## What more precision would take
 
@@ -57,8 +58,8 @@ At the sd reached, the number of paired games for a given half-width is `(1.96·
 
 | scope | paired games so far | sd | interval now (points) | for ±5 points: total / more games, time | for ±3 points: total / more games, time |
 |---|---|---|---|---|---|
-| all decks pooled | 122 | 41.9 | +19.7 ± 7.4 | 271 / 149, 5.2 h | 751 / 629, 21.8 h |
-| 13-a-ninetales-raticate | 122 | 41.9 | +19.7 ± 7.4 | 271 / 149, 5.2 h | 751 / 629, 21.8 h |
+| all decks pooled | 142 | 41.1 | +19.0 ± 6.8 | 261 / 119, 5.2 h | 723 / 581, 25.5 h |
+| 13-a-ninetales-raticate | 142 | 41.1 | +19.0 ± 6.8 | 261 / 119, 5.2 h | 723 / 581, 25.5 h |
 
 ## Intended lines
 
@@ -66,4 +67,4 @@ From `rl/strength/intended_lines.json`. Per game: the share of games where the l
 
 | deck | line | arm X per game | arm ref per game | paired difference (points) | arm X per use | arm ref per use |
 |---|---|---|---|---|---|---|
-| 13-a-ninetales-raticate | Thieving Incisors used (an ability choice when evolving into Raticate ex) | 72.1% | 66.4% | +5.7 ± 7.0 |  |  |
+| 13-a-ninetales-raticate | Thieving Incisors used (an ability choice when evolving into Raticate ex) | 76.1% | 69.0% | +7.0 ± 6.4 |  |  |
