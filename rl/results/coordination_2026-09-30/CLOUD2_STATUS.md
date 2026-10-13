@@ -40,8 +40,14 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
      - kx3 took 698 s a game on average (median 646 s, slowest 2,205 s) with 4 threads; games against t-suicune and t-vespiquen were the slowest.
      - It is the optimistic end (kx3 knows its opponent is one of the 8 lists); not a ranking, no pass or fail line, and a 20-game row can tell an easy list from a hard one, not two similar lists apart.
    - **Brew 09 (Sableye, Obstagoon) report**: starting now (dry run, registration from the committed record, push, slices); seeds from slot 256 = 24,626,600,000. Machine at start: see the next line.
+   - **Brew 09 (Sableye, Obstagoon) is FINISHED** (Oct 13, 10:44 UTC; all 320 games, 0 game errors; 5.8 h over 8 sittings; the machine stayed up the whole time, 16 h 13 min at the end with no restart; last slice pushed in d73cf13c). Folder `rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon/`, page `SLOW_REPORT.md`, numbers `REPORT.md`; seeds from 24,626,600,000 (slot 256) as reserved; same program (5011e227cf63) and the same committed self-check record as brew 07.
+     - Plain reading: with kx3 playing it against the 8 public lists, brew 09 scored **66.9%** over 160 games (probably between 59.3% and 73.7%). On the same deals km3 playing it scored 45.6%, so kx3 adds **+21.2 points** (probably between +14.5 and +28.0; the range does not include no gain).
+     - By list (20 games each): t-altaria and t-hydreigon 85%, t-lucario 82.5%, t-blaziken 72.5%, t-vespiquen 62.5%, t-suicune 60%, **t-sceptile 50%**, **t-weezing 37.5%** (the one list it lost to, range 20% to 59%). Going first 56.3% (79 games), going second 77.2% (81 games): a gap of about 21 points, large enough to see with this many games.
+     - kx3 took 506 s a game on average (median 456 s, slowest 1,218 s), 4 threads.
+     - It is the optimistic end (kx3 knows its opponent is one of the 8 lists); not a ranking, no pass or fail line.
+   - **All the reports on my list are done: brew 08 (Oct 9), brew 07 and brew 09 (Oct 12-13).** Deck 13 is the first runner's, not mine, and I have not run it. I am idle; the clone, the program (5011e227cf63) and the committed self-check record are in place for the next deck.
 3. **Files I expect to change.** This file; the report folders `rl/results/slow_reports/<date>_brew-08-entei-rainbow-cave/` and, later, `<date>_13-a-ninetales-raticate/`. Nothing else (no pin, no engine, no scripts).
-4. **Waiting on the laptop or Sonnet.** Nothing for now (the fixed self-check and the new pin are on main).
+4. **Waiting on the laptop or Sonnet.** Nothing. Idle until Fable sends the next deck.
 5. **Open questions for Dustin.** None yet.
 
 ## Log (one line per new job, added and pushed before it starts)
