@@ -1,0 +1,18 @@
+{
+ "schema": 1,
+ "kind": "slow_report_selfcheck_record",
+ "program": "/root/slow_report_kx3/strength",
+ "program_sha256": "5011e227cf63619cc8ca9750ee69090037844f8e7abcd0432776b1e2ae3b7f0e",
+ "selfcheck": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kx3": "selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa"
+ },
+ "tool_commit": "ebb65723d20b627295abb35ec84af8915eab6f17",
+ "replayed_at": "2026-10-12T20:45:39Z",
+ "host": "vm",
+ "boot_id": "456ce940-dd4c-4803-93e7-be952c57c5a1",
+ "routes": {
+  "km3": "per-game",
+  "kx3": "per-game"
+ }
+}

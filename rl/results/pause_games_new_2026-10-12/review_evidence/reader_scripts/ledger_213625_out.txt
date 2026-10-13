@@ -1,0 +1,303 @@
+﻿##### TURN 1 owner
+   start owner pts 0 stadium none
+     A: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=None
+   start opponent pts 0 stadium none
+     A: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=3
+   PLAY 1 card_play | Professor's Research | owner hand | Draw Shelmet, then Caterpie | prompt None | resp None | nested []
+   PLAY 2 card_play | Fragrant Forest | Stadium | Place Fragrant Forest | prompt None | resp None | nested []
+   PLAY 3 ability | Fragrant Forest | owner hand | Search Shelmet | prompt None | resp None | nested []
+   PLAY 4 card_play | Shelmet | right Bench | Bench first Shelmet | prompt None | resp None | nested []
+   PLAY 5 card_play | Caterpie | center Bench | Bench Caterpie | prompt None | resp None | nested []
+   PLAY 6 card_play | Shelmet | left Bench | Bench second Shelmet | prompt None | resp None | nested []
+   PLAY 7 end_turn | None | None | End Turn; no current Energy generated on first turn | prompt None | resp None | nested []
+   after owner pts 0 stadium Fragrant Forest
+     A: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   after opponent pts 0 stadium Fragrant Forest
+     A: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=3
+   HAND ["Professor's Research", 'Fragrant Forest', 'Butterfree', 'Quick-Grow Extract', 'Lucky Ice Pop']
+   DRAWS [{"kind": "normal_draw", "caused_by": "normal_draw", "linked_play_order": null, "cards_in_reveal_order": [{"name": "Lucky Ice Pop", "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 46, "evidence_ids": ["F0046.00"], "basis": "revealed card animation", "limit_reason": null}], "limit_reason": null, "source_video": "20261004_213625000_iOS.MP4"}, {"kind": "Research", "caused_by": "Research", "linked_play_order": 1, "cards_in_reveal_order": [{"name": "Shelmet", "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 58, "evidence_ids": ["F0058.00"], "basis": "revealed card animation", "limit_reason": null}, {"name": "Caterpie", "reveal_position": 2, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 59, "evi
+   LIMITS ["No discard pile opened; visible face-up discard tops and public transactions are not a complete pile snapshot.", "Opponent hidden draw/search identities remain unknown."]
+##### TURN 2 opponent
+   start owner pts 0 stadium Fragrant Forest
+     A: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   start opponent pts 0 stadium Fragrant Forest
+     A: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=3
+   PLAY 1 card_play | Professor's Research | opponent hand | Two hidden cards drawn | prompt None | resp None | nested []
+   PLAY 2 card_play | Pinsir | center Bench | Bench Pinsir | prompt None | resp None | nested []
+   PLAY 3 ability | Fragrant Forest | opponent hand | Search result is hidden; subsequently Budew is publicly benched | prompt None | resp None | nested []
+   PLAY 4 card_play | Budew | left Bench | Bench Budew | prompt None | resp None | nested []
+   PLAY 5 energy_attachment | None | Exeggcute Active | Attach one Grass from Energy Zone | prompt None | resp None | nested []
+   PLAY 6 retreat | None | Budew Active | Pay one Grass; Exeggcute moves left Bench | prompt None | resp None | nested []
+   PLAY 7 attack | Budew | Caterpie Active | Prickly Powder10; Caterpie40 to30 and loses abilities until it leaves Active | prompt None | resp None | nested []
+   after owner pts 0 stadium Fragrant Forest
+     A: Caterpie [Quick Growth / Hook 10] hp 30/40 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   after opponent pts 0 stadium Fragrant Forest
+     A: Budew [Prickly Powder 10] hp 30/30 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Pinsir [Double Horn 50x] hp 90/90 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=3
+   HAND []
+   DRAWS [{"kind": "normal_draw", "caused_by": "normal_draw", "linked_play_order": null, "cards_in_reveal_order": [{"name": null, "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 82, "evidence_ids": ["F0082.00"], "basis": "revealed card animation", "limit_reason": "Opponent normal draw hidden"}], "limit_reason": "Opponent normal draw hidden", "source_video": "20261004_213625000_iOS.MP4"}, {"kind": "Research", "linked_play_order": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 91, "cards_in_reveal_order": [{"name": null, "reveal_position": 1, "basis": "hidden opponent card", "limit_reason": "Opponent card faces not shown", "evidence_ids": ["F0091.00"]}, {"name": null, "reveal_position": 2, "basis": "hidden opponent card", "limit_reason":
+   LIMITS ["No discard pile opened; visible face-up discard tops and public transactions are not a complete pile snapshot.", "Opponent hidden draw/search identities remain unknown."]
+##### TURN 3 owner
+   start owner pts 0 stadium Fragrant Forest
+     A: Caterpie [Quick Growth / Hook 10] hp 30/40 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   start opponent pts 0 stadium Fragrant Forest
+     A: Budew [Prickly Powder 10] hp 30/30 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Pinsir [Double Horn 50x] hp 90/90 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=3
+   PLAY 1 card_play | Quick-Grow Extract | Caterpie Active | Find and directly evolve into Metapod; preserve10damage,70/80HP; ability restriction clears on evolution | prompt None | resp None | nested []
+   PLAY 2 card_play | Lucky Ice Pop | Metapod Active | Heal10 to80; tails, card discarded | prompt None | resp None | nested []
+   PLAY 3 energy_attachment | None | Metapod Active | Attach one Grass from Energy Zone | prompt None | resp None | nested []
+   PLAY 4 attack | Metapod | Budew Active | Ram30 KO; owner point1; opponent promotes Pinsir | prompt None | resp None | nested []
+   after owner pts 1 stadium Fragrant Forest
+     A: Metapod [Ram 30] hp 80/80 E={'Grass': 1} tool=none cond=[] pos=None
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   after opponent pts 0 stadium Fragrant Forest
+     A: Pinsir [Double Horn 50x] hp 90/90 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=3
+   HAND ['Butterfree', 'Quick-Grow Extract', 'Lucky Ice Pop', 'Butterfree']
+   DRAWS [{"kind": "normal_draw", "caused_by": "normal_draw", "linked_play_order": null, "cards_in_reveal_order": [{"name": "Butterfree", "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 140, "evidence_ids": ["F0140.00"], "basis": "revealed card animation", "limit_reason": null}], "limit_reason": null, "source_video": "20261004_213625000_iOS.MP4"}, {"kind": "Quick-Grow Extract direct evolution", "caused_by": "Quick-Grow Extract direct evolution", "linked_play_order": 1, "cards_in_reveal_order": [{"name": "Metapod", "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 154, "evidence_ids": ["F0154.00"], "basis": "revealed card animation", "limit_reason": null}], "limit_reason": null, "source_video": "20261004_213625000_iOS.MP
+   LIMITS ["No discard pile opened; visible face-up discard tops and public transactions are not a complete pile snapshot.", "Opponent hidden draw/search identities remain unknown."]
+##### TURN 4 opponent
+   start owner pts 1 stadium Fragrant Forest
+     A: Metapod [Ram 30] hp 80/80 E={'Grass': 1} tool=none cond=[] pos=None
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   start opponent pts 0 stadium Fragrant Forest
+     A: Pinsir [Double Horn 50x] hp 90/90 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=3
+   PLAY 1 card_play | Teal Mask Ogerpon ex | center Bench | Soothing Wind applies to Pokemon with Energy | prompt None | resp None | nested []
+   PLAY 2 energy_attachment | None | Combee right Bench | Attach one Grass from Energy Zone | prompt None | resp None | nested []
+   PLAY 3 end_turn | None | None | End turn without attack | prompt None | resp None | nested []
+   after owner pts 1 stadium Fragrant Forest
+     A: Metapod [Ram 30] hp 80/80 E={'Grass': 1} tool=none cond=[] pos=None
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   after opponent pts 0 stadium Fragrant Forest
+     A: Pinsir [Double Horn 50x] hp 90/90 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 1} tool=none cond=[] pos=3
+   HAND []
+   DRAWS [{"kind": "normal_draw", "caused_by": "normal_draw", "linked_play_order": null, "cards_in_reveal_order": [{"name": null, "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 182, "evidence_ids": ["F0182.00"], "basis": "revealed card animation", "limit_reason": "Opponent normal draw hidden"}], "limit_reason": "Opponent normal draw hidden", "source_video": "20261004_213625000_iOS.MP4"}]
+   LIMITS ["No discard pile opened; visible face-up discard tops and public transactions are not a complete pile snapshot.", "Opponent hidden draw/search identities remain unknown."]
+##### TURN 5 owner
+   start owner pts 1 stadium Fragrant Forest
+     A: Metapod [Ram 30] hp 80/80 E={'Grass': 1} tool=none cond=[] pos=None
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   start opponent pts 0 stadium Fragrant Forest
+     A: Pinsir [Double Horn 50x] hp 90/90 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 1} tool=none cond=[] pos=3
+   PLAY 1 card_play | Poke Ball | owner hand | No effect: no valid Basic Pokemon in deck | prompt None | resp None | nested []
+   PLAY 2 card_play | Butterfree | Metapod Active | Evolve Butterfree130 | prompt None | resp None | nested []
+   PLAY 3 energy_attachment | None | Shelmet left Bench | Attach one Grass from Energy Zone | prompt None | resp None | nested []
+   PLAY 4 attack | Butterfree | Pinsir Active | Sunny Wind60; Pinsir90 to30; no damage to heal on Butterfree | prompt None | resp None | nested []
+   after owner pts 1 stadium Fragrant Forest
+     A: Butterfree [Sunny Wind 60] hp 130/130 E={'Grass': 1} tool=none cond=[] pos=None
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 1} tool=none cond=[] pos=1
+     B: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   after opponent pts 0 stadium Fragrant Forest
+     A: Pinsir [Double Horn 50x] hp 30/90 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 1} tool=none cond=[] pos=3
+   HAND ['Butterfree', 'Butterfree', 'Poke Ball']
+   DRAWS [{"kind": "normal_draw", "caused_by": "normal_draw", "linked_play_order": null, "cards_in_reveal_order": [{"name": "Poke Ball", "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 201, "evidence_ids": ["F0201.00"], "basis": "revealed card animation", "limit_reason": null}], "limit_reason": null, "source_video": "20261004_213625000_iOS.MP4"}, {"kind": "Poke Ball search", "caused_by": "Poke Ball search", "linked_play_order": 1, "cards_in_reveal_order": [], "limit_reason": "No target; none added", "source_video": "20261004_213625000_iOS.MP4"}]
+   LIMITS ["No discard pile opened; visible face-up discard tops and public transactions are not a complete pile snapshot.", "Opponent hidden draw/search identities remain unknown."]
+##### TURN 6 opponent
+   start owner pts 1 stadium Fragrant Forest
+     A: Butterfree [Sunny Wind 60] hp 130/130 E={'Grass': 1} tool=none cond=[] pos=None
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 1} tool=none cond=[] pos=1
+     B: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   start opponent pts 0 stadium Fragrant Forest
+     A: Pinsir [Double Horn 50x] hp 30/90 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 1} tool=none cond=[] pos=3
+   PLAY 1 ability | Fragrant Forest | opponent hand | One hidden Basic searched | prompt None | resp None | nested []
+   PLAY 2 energy_attachment | None | Combee right Bench | Attach one Grass from Energy Zone | prompt None | resp None | nested []
+   PLAY 3 end_turn | None | None | End without attack | prompt None | resp None | nested []
+   after owner pts 1 stadium Fragrant Forest
+     A: Butterfree [Sunny Wind 60] hp 130/130 E={'Grass': 1} tool=none cond=[] pos=None
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 1} tool=none cond=[] pos=1
+     B: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   after opponent pts 0 stadium Fragrant Forest
+     A: Pinsir [Double Horn 50x] hp 30/90 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 2} tool=none cond=[] pos=3
+   HAND []
+   DRAWS [{"kind": "normal_draw", "caused_by": "normal_draw", "linked_play_order": null, "cards_in_reveal_order": [{"name": null, "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 224, "evidence_ids": ["F0224.00"], "basis": "revealed card animation", "limit_reason": "Opponent normal draw hidden"}], "limit_reason": "Opponent normal draw hidden", "source_video": "20261004_213625000_iOS.MP4"}, {"kind": "Fragrant Forest search", "linked_play_order": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 232, "cards_in_reveal_order": [{"name": null, "reveal_position": 1, "basis": "hidden opponent card", "limit_reason": "Opponent card faces not shown", "evidence_ids": ["F0232.00"]}], "limit_reason": "Hidden opponent identities"}]
+   LIMITS ["No discard pile opened; visible face-up discard tops and public transactions are not a complete pile snapshot.", "Opponent hidden draw/search identities remain unknown."]
+##### TURN 7 owner
+   start owner pts 1 stadium Fragrant Forest
+     A: Butterfree [Sunny Wind 60] hp 130/130 E={'Grass': 1} tool=none cond=[] pos=None
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 1} tool=none cond=[] pos=1
+     B: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   start opponent pts 0 stadium Fragrant Forest
+     A: Pinsir [Double Horn 50x] hp 30/90 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 2} tool=none cond=[] pos=3
+   PLAY 1 card_play | Accelgor | Shelmet left Bench | Evolve Accelgor80 | prompt None | resp None | nested []
+   PLAY 2 energy_attachment | None | Accelgor left Bench | Attach one Grass from Energy Zone | prompt None | resp None | nested []
+   PLAY 3 attack | Butterfree | Pinsir Active | Sunny Wind60 KO; owner point2; opponent promotes Combee | prompt None | resp None | nested []
+   after owner pts 2 stadium Fragrant Forest
+     A: Butterfree [Sunny Wind 60] hp 130/130 E={'Grass': 1} tool=none cond=[] pos=None
+     B: Accelgor [Deck and Cover 50] hp 80/80 E={'Grass': 2} tool=none cond=[] pos=1
+     B: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   after opponent pts 0 stadium Fragrant Forest
+     A: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 2} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 0} tool=none cond=[] pos=2
+   HAND ['Butterfree', 'Accelgor']
+   DRAWS [{"kind": "normal_draw", "caused_by": "normal_draw", "linked_play_order": null, "cards_in_reveal_order": [{"name": "Accelgor", "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 243, "evidence_ids": ["F0243.00"], "basis": "revealed card animation", "limit_reason": null}], "limit_reason": null, "source_video": "20261004_213625000_iOS.MP4"}]
+   LIMITS ["No discard pile opened; visible face-up discard tops and public transactions are not a complete pile snapshot.", "Opponent hidden draw/search identities remain unknown."]
+##### TURN 8 opponent
+   start owner pts 2 stadium Fragrant Forest
+     A: Butterfree [Sunny Wind 60] hp 130/130 E={'Grass': 1} tool=none cond=[] pos=None
+     B: Accelgor [Deck and Cover 50] hp 80/80 E={'Grass': 2} tool=none cond=[] pos=1
+     B: Caterpie [Quick Growth / Hook 10] hp 40/40 E={'Grass': 0} tool=none cond=[] pos=2
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   start opponent pts 0 stadium Fragrant Forest
+     A: Combee [Reckless Charge 30] hp 50/50 E={'Grass': 2} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 0} tool=none cond=[] pos=2
+   PLAY 1 card_play | Vespiquen ex | Combee Active | Evolve Vespiquen ex140, retain2Grass | prompt None | resp None | nested []
+   PLAY 2 ability | Fragrant Forest | opponent hand | No effect: no valid Basic in deck | prompt None | resp None | nested []
+   PLAY 3 card_play | Combee | right Bench | Bench second Combee | prompt None | resp None | nested []
+   PLAY 4 energy_attachment | None | Teal Mask Ogerpon ex center Bench | Attach one Grass from Energy Zone | prompt None | resp None | nested []
+   PLAY 5 attack | Vespiquen ex | Butterfree Active | Chase Order140 total KO; opponent point1 | prompt None | resp None | nested ["Discard benched Combee as attack choice", "Two70 damage stages, Butterfree130 to0", "Owner selects Caterpie as replacement", "Quick Growth automatically evolves promoted Caterpie into Metapod after opponent turn"]
+   AUTO "Discard benched Combee as attack choice"
+   AUTO "Two70 damage stages, Butterfree130 to0"
+   AUTO "Owner selects Caterpie as replacement"
+   AUTO "Quick Growth automatically evolves promoted Caterpie into Metapod after opponent turn"
+   after owner pts 2 stadium Fragrant Forest
+     A: Metapod [Ram 30] hp 80/80 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Accelgor [Deck and Cover 50] hp 80/80 E={'Grass': 2} tool=none cond=[] pos=1
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   after opponent pts 1 stadium Fragrant Forest
+     A: Vespiquen ex [Chase Order 70+] hp 140/140 E={'Grass': 2} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 1} tool=none cond=[] pos=2
+   HAND []
+   DRAWS [{"kind": "normal_draw", "caused_by": "normal_draw", "linked_play_order": null, "cards_in_reveal_order": [{"name": null, "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 270, "evidence_ids": ["F0270.00"], "basis": "revealed card animation", "limit_reason": "Opponent normal draw hidden"}], "limit_reason": "Opponent normal draw hidden", "source_video": "20261004_213625000_iOS.MP4"}, {"kind": "Fragrant Forest search", "linked_play_order": 2, "cards_in_reveal_order": [], "timestamp_seconds": 284, "evidence_ids": ["F0284.00"], "limit_reason": "No target; nothing added"}, {"kind": "Quick Growth direct evolution", "linked_play_order": null, "cards_in_reveal_order": [{"name": "Metapod", "reveal_position": 1, "timestamp_seconds": 329, "evidence_ids": ["F0329.
+   LIMITS ["No discard pile opened; visible face-up discard tops and public transactions are not a complete pile snapshot.", "Opponent hidden draw/search identities remain unknown."]
+##### TURN 9 owner
+   start owner pts 2 stadium Fragrant Forest
+     A: Metapod [Ram 30] hp 80/80 E={'Grass': 0} tool=none cond=[] pos=None
+     B: Accelgor [Deck and Cover 50] hp 80/80 E={'Grass': 2} tool=none cond=[] pos=1
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   start opponent pts 1 stadium Fragrant Forest
+     A: Vespiquen ex [Chase Order 70+] hp 140/140 E={'Grass': 2} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 1} tool=none cond=[] pos=2
+   PLAY 1 card_play | Butterfree | Metapod Active | Evolve second Butterfree130 | prompt None | resp None | nested []
+   PLAY 2 card_play | Hiking Trail | Stadium | Replace Fragrant Forest | prompt None | resp None | nested []
+   PLAY 3 energy_attachment | None | Butterfree Active | Attach one Grass from Energy Zone | prompt None | resp None | nested []
+   PLAY 4 attack | Butterfree | Vespiquen ex Active | Sunny Wind60,140 to80; Hiking Trail draws three at end | prompt None | resp None | nested []
+   after owner pts 2 stadium Hiking Trail
+     A: Butterfree [Sunny Wind 60] hp 130/130 E={'Grass': 1} tool=none cond=[] pos=None
+     B: Accelgor [Deck and Cover 50] hp 80/80 E={'Grass': 2} tool=none cond=[] pos=1
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   after opponent pts 1 stadium Hiking Trail
+     A: Vespiquen ex [Chase Order 70+] hp 80/140 E={'Grass': 2} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 1} tool=none cond=[] pos=2
+   HAND ['Butterfree', 'Hiking Trail']
+   DRAWS [{"kind": "normal_draw", "caused_by": "normal_draw", "linked_play_order": null, "cards_in_reveal_order": [{"name": "Hiking Trail", "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 334, "evidence_ids": ["F0334.00"], "basis": "revealed card animation", "limit_reason": null}], "limit_reason": null, "source_video": "20261004_213625000_iOS.MP4"}, {"kind": "Hiking Trail", "caused_by": "Hiking Trail", "linked_play_order": 4, "cards_in_reveal_order": [{"name": "Accelgor", "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 356, "evidence_ids": ["F0356.00"], "basis": "revealed card animation", "limit_reason": null}, {"name": "Professor's Research", "reveal_position": 2, "source_video": "20261004_213625000_iOS.MP4", "timest
+   LIMITS ["No discard pile opened; visible face-up discard tops and public transactions are not a complete pile snapshot.", "Opponent hidden draw/search identities remain unknown."]
+##### TURN 10 opponent
+   start owner pts 2 stadium Hiking Trail
+     A: Butterfree [Sunny Wind 60] hp 130/130 E={'Grass': 1} tool=none cond=[] pos=None
+     B: Accelgor [Deck and Cover 50] hp 80/80 E={'Grass': 2} tool=none cond=[] pos=1
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   start opponent pts 1 stadium Hiking Trail
+     A: Vespiquen ex [Chase Order 70+] hp 80/140 E={'Grass': 2} tool=none cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=1
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 1} tool=none cond=[] pos=2
+   PLAY 1 card_play | Leaf Cape | Vespiquen ex Active | Effective maxHP140 to170, current80 to110; preserves60damage | prompt None | resp None | nested []
+   PLAY 2 energy_attachment | None | Teal Mask Ogerpon ex center Bench | Attach one Grass from Energy Zone | prompt None | resp None | nested []
+   PLAY 3 attack | Vespiquen ex | Butterfree Active | Discard Exeggcute; Chase Order140 KO; opponent point2; owner promotes Accelgor | prompt None | resp None | nested []
+   after owner pts 2 stadium Hiking Trail
+     A: Accelgor [Deck and Cover 50] hp 80/80 E={'Grass': 2} tool=none cond=[] pos=None
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   after opponent pts 2 stadium Hiking Trail
+     A: Vespiquen ex [Chase Order 70+] hp 110/170 E={'Grass': 2} tool=Leaf Cape cond=[] pos=None
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 2} tool=none cond=[] pos=2
+   HAND []
+   DRAWS [{"kind": "normal_draw", "caused_by": "normal_draw", "linked_play_order": null, "cards_in_reveal_order": [{"name": null, "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 360, "evidence_ids": ["F0360.00"], "basis": "revealed card animation", "limit_reason": "Opponent normal draw hidden"}], "limit_reason": "Opponent normal draw hidden", "source_video": "20261004_213625000_iOS.MP4"}]
+   LIMITS ["No discard pile opened; visible face-up discard tops and public transactions are not a complete pile snapshot.", "Opponent hidden draw/search identities remain unknown."]
+##### TURN 11 owner
+   start owner pts 2 stadium Hiking Trail
+     A: Accelgor [Deck and Cover 50] hp 80/80 E={'Grass': 2} tool=none cond=[] pos=None
+     B: Shelmet [Seashell Attack 20] hp 70/70 E={'Grass': 0} tool=none cond=[] pos=3
+   start opponent pts 2 stadium Hiking Trail
+     A: Vespiquen ex [Chase Order 70+] hp 110/170 E={'Grass': 2} tool=Leaf Cape cond=[] pos=None
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 2} tool=none cond=[] pos=2
+   PLAY 1 energy_attachment | None | Shelmet right Bench | Attach one Grass from Energy Zone | prompt None | resp None | nested []
+   PLAY 2 card_play | Accelgor | Shelmet right Bench | Evolve right Bench Accelgor80 with1Grass | prompt None | resp None | nested []
+   PLAY 3 card_play | Poke Ball | owner hand | No effect: no target in deck | prompt None | resp None | nested []
+   PLAY 4 card_play | Professor's Research | owner hand | Draw only Lucky Ice Pop; last card in deck, no second card drawn | prompt None | resp None | nested []
+   PLAY 5 attack | Accelgor | Vespiquen ex Active | Deck and Cover50,110 to60; Poison/Paralysis blocked by Soothing Wind; active Accelgor stack shuffled; promote other Accelgor; Hiking Trail draws Accelgor | prompt None | resp None | nested ["Vespiquen ex did not become Poisoned or Paralyzed at410", "Active Accelgor and attached Pokemon stack return to deck; its2Grass leave board", "Select right Bench Accelgor as replacement", "Hiking Trail draws Accelgor417"]
+   AUTO "Vespiquen ex did not become Poisoned or Paralyzed at410"
+   AUTO "Active Accelgor and attached Pokemon stack return to deck; its2Grass leave board"
+   AUTO "Select right Bench Accelgor as replacement"
+   AUTO "Hiking Trail draws Accelgor417"
+   after owner pts 2 stadium Hiking Trail
+     A: Accelgor [Deck and Cover 50] hp 80/80 E={'Grass': 1} tool=none cond=[] pos=None
+   after opponent pts 2 stadium Hiking Trail
+     A: Vespiquen ex [Chase Order 70+] hp 60/170 E={'Grass': 2} tool=Leaf Cape cond=[] pos=None
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 2} tool=none cond=[] pos=2
+   HAND ['Accelgor', "Professor's Research", 'Poke Ball', 'Quick-Grow Extract']
+   DRAWS [{"kind": "normal_draw", "caused_by": "normal_draw", "linked_play_order": null, "cards_in_reveal_order": [{"name": "Quick-Grow Extract", "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 391, "evidence_ids": ["F0391.00"], "basis": "revealed card animation", "limit_reason": null}], "limit_reason": null, "source_video": "20261004_213625000_iOS.MP4"}, {"kind": "Research", "caused_by": "Research", "linked_play_order": 4, "cards_in_reveal_order": [{"name": "Lucky Ice Pop", "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 403, "evidence_ids": ["F0403.00"], "basis": "revealed card animation", "limit_reason": null}], "limit_reason": "Only one card remained; second Research card not drawn. Hand two before and after, card
+   LIMITS ["No discard pile opened; visible face-up discard tops and public transactions are not a complete pile snapshot.", "Opponent hidden draw/search identities remain unknown."]
+##### TURN 12 opponent
+   start owner pts 2 stadium Hiking Trail
+     A: Accelgor [Deck and Cover 50] hp 80/80 E={'Grass': 1} tool=none cond=[] pos=None
+   start opponent pts 2 stadium Hiking Trail
+     A: Vespiquen ex [Chase Order 70+] hp 60/170 E={'Grass': 2} tool=Leaf Cape cond=[] pos=None
+     B: Teal Mask Ogerpon ex [Soothing Wind / Energized Leaves 60+] hp 130/130 E={'Grass': 2} tool=none cond=[] pos=2
+   PLAY 1 card_play | Exeggcute | right Bench | Bench second Exeggcute | prompt None | resp None | nested []
+   PLAY 2 energy_attachment | None | Teal Mask Ogerpon ex center Bench | Attach one Grass from Energy Zone | prompt None | resp None | nested []
+   PLAY 3 attack | Vespiquen ex | Accelgor Active | Discard Teal Mask Ogerpon ex; Chase Order140 KO; opponent point3, owner loses | prompt None | resp None | nested []
+   after owner pts 2 stadium Hiking Trail
+     A: None
+   after opponent pts 3 stadium Hiking Trail
+     A: Vespiquen ex [Chase Order 70+] hp 60/170 E={'Grass': 2} tool=Leaf Cape cond=[] pos=None
+     B: Exeggcute [Seed Bomb 20] hp 50/50 E={'Grass': 0} tool=none cond=[] pos=3
+   HAND []
+   DRAWS [{"kind": "normal_draw", "caused_by": "normal_draw", "linked_play_order": null, "cards_in_reveal_order": [{"name": null, "reveal_position": 1, "source_video": "20261004_213625000_iOS.MP4", "timestamp_seconds": 419, "evidence_ids": ["F0419.00"], "basis": "revealed card animation", "limit_reason": "Opponent normal draw hidden"}], "limit_reason": "Opponent normal draw hidden", "source_video": "20261004_213625000_iOS.MP4"}]
+   LIMITS ["No discard pile opened; visible face-up discard tops and public transactions are not a complete pile snapshot.", "Opponent hidden draw/search identities remain unknown.", "No following playable turn is recorded to establish clearance of the residual immunity badge after source Ogerpon leaves. Does not affect terminalKO/result."]

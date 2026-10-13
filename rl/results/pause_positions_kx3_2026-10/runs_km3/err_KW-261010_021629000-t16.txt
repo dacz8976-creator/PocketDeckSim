@@ -1,0 +1,636 @@
+PGSTEP KW-261010_021629000-t16 seed 1 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=11
+PGDUMP       -658.600000000000023 EndTurn
+PGDUMP       -243.599999999999994 Attach:1Water@0 zone
+PGDUMP       -243.599999999999994 Attach:1Water@1 zone
+PGDUMP       -243.599999999999994 Attach:1Water@2 zone
+PGDUMP       -243.599999999999994 Attach:1Water@3 zone
+PGDUMP       -243.599999999999994 Attack:Stormy Prison
+PGDUMP         70.400000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -244.599999999999994 Play:Poké Ball
+PGDUMP      -1145.599999999999909 Retreat:1
+PGDUMP       -368.600000000000023 Retreat:2
+PGDUMP      -1155.599999999999909 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 1 free 1
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP       -164.599999999999994 Noop
+PGDUMP         70.400000000000006 Ability@3
+PGSTEP KW-261010_021629000-t16 seed 1 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -344.600000000000023 EndTurn
+PGDUMP         70.400000000000006 Attach:1Water@0 zone
+PGDUMP         70.400000000000006 Attach:1Water@1 zone
+PGDUMP         70.400000000000006 Attach:1Water@2 zone
+PGDUMP         70.400000000000006 Attach:1Water@3 zone
+PGDUMP         70.400000000000006 Attack:Stormy Prison
+PGDUMP         69.400000000000006 Play:Poké Ball
+PGDUMP       -850.600000000000023 Retreat:1
+PGDUMP        -54.600000000000001 Retreat:2
+PGDUMP       -860.600000000000023 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 1 free 3
+PGSTEP KW-261010_021629000-t16 seed 2 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=11
+PGDUMP       -658.600000000000023 EndTurn
+PGDUMP       -243.599999999999994 Attach:1Water@0 zone
+PGDUMP       -243.599999999999994 Attach:1Water@1 zone
+PGDUMP       -243.599999999999994 Attach:1Water@2 zone
+PGDUMP       -243.599999999999994 Attach:1Water@3 zone
+PGDUMP       -243.599999999999994 Attack:Stormy Prison
+PGDUMP         70.400000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -244.599999999999994 Play:Poké Ball
+PGDUMP      -1145.599999999999909 Retreat:1
+PGDUMP       -368.600000000000023 Retreat:2
+PGDUMP      -1155.599999999999909 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 2 free 1
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP       -164.599999999999994 Noop
+PGDUMP         70.400000000000006 Ability@3
+PGSTEP KW-261010_021629000-t16 seed 2 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -344.600000000000023 EndTurn
+PGDUMP         70.400000000000006 Attach:1Water@0 zone
+PGDUMP         70.400000000000006 Attach:1Water@1 zone
+PGDUMP         70.400000000000006 Attach:1Water@2 zone
+PGDUMP         70.400000000000006 Attach:1Water@3 zone
+PGDUMP         70.400000000000006 Attack:Stormy Prison
+PGDUMP         69.400000000000006 Play:Poké Ball
+PGDUMP       -850.600000000000023 Retreat:1
+PGDUMP        -54.600000000000001 Retreat:2
+PGDUMP       -860.600000000000023 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 2 free 3
+PGSTEP KW-261010_021629000-t16 seed 3 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=11
+PGDUMP       -658.600000000000023 EndTurn
+PGDUMP       -243.599999999999994 Attach:1Water@0 zone
+PGDUMP       -243.599999999999994 Attach:1Water@1 zone
+PGDUMP       -243.599999999999994 Attach:1Water@2 zone
+PGDUMP       -243.599999999999994 Attach:1Water@3 zone
+PGDUMP       -243.599999999999994 Attack:Stormy Prison
+PGDUMP         70.400000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -244.599999999999994 Play:Poké Ball
+PGDUMP      -1145.599999999999909 Retreat:1
+PGDUMP       -368.600000000000023 Retreat:2
+PGDUMP      -1155.599999999999909 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 3 free 1
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP       -164.599999999999994 Noop
+PGDUMP         70.400000000000006 Ability@3
+PGSTEP KW-261010_021629000-t16 seed 3 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -344.600000000000023 EndTurn
+PGDUMP         70.400000000000006 Attach:1Water@0 zone
+PGDUMP         70.400000000000006 Attach:1Water@1 zone
+PGDUMP         70.400000000000006 Attach:1Water@2 zone
+PGDUMP         70.400000000000006 Attach:1Water@3 zone
+PGDUMP         70.400000000000006 Attack:Stormy Prison
+PGDUMP         69.400000000000006 Play:Poké Ball
+PGDUMP       -850.600000000000023 Retreat:1
+PGDUMP        -54.600000000000001 Retreat:2
+PGDUMP       -860.600000000000023 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 3 free 3
+PGSTEP KW-261010_021629000-t16 seed 4 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=11
+PGDUMP       -658.600000000000023 EndTurn
+PGDUMP       -243.599999999999994 Attach:1Water@0 zone
+PGDUMP       -243.599999999999994 Attach:1Water@1 zone
+PGDUMP       -243.599999999999994 Attach:1Water@2 zone
+PGDUMP       -243.599999999999994 Attach:1Water@3 zone
+PGDUMP       -243.599999999999994 Attack:Stormy Prison
+PGDUMP         70.400000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -244.599999999999994 Play:Poké Ball
+PGDUMP      -1145.599999999999909 Retreat:1
+PGDUMP       -368.600000000000023 Retreat:2
+PGDUMP      -1155.599999999999909 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 4 free 1
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP       -164.599999999999994 Noop
+PGDUMP         70.400000000000006 Ability@3
+PGSTEP KW-261010_021629000-t16 seed 4 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -344.600000000000023 EndTurn
+PGDUMP         70.400000000000006 Attach:1Water@0 zone
+PGDUMP         70.400000000000006 Attach:1Water@1 zone
+PGDUMP         70.400000000000006 Attach:1Water@2 zone
+PGDUMP         70.400000000000006 Attach:1Water@3 zone
+PGDUMP         70.400000000000006 Attack:Stormy Prison
+PGDUMP         69.400000000000006 Play:Poké Ball
+PGDUMP       -850.600000000000023 Retreat:1
+PGDUMP        -54.600000000000001 Retreat:2
+PGDUMP       -860.600000000000023 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 4 free 3
+PGSTEP KW-261010_021629000-t16 seed 5 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=11
+PGDUMP       -658.600000000000023 EndTurn
+PGDUMP       -243.599999999999994 Attach:1Water@0 zone
+PGDUMP       -243.599999999999994 Attach:1Water@1 zone
+PGDUMP       -243.599999999999994 Attach:1Water@2 zone
+PGDUMP       -243.599999999999994 Attach:1Water@3 zone
+PGDUMP       -243.599999999999994 Attack:Stormy Prison
+PGDUMP         70.400000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -244.599999999999994 Play:Poké Ball
+PGDUMP      -1145.599999999999909 Retreat:1
+PGDUMP       -368.600000000000023 Retreat:2
+PGDUMP      -1155.599999999999909 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 5 free 1
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP       -164.599999999999994 Noop
+PGDUMP         70.400000000000006 Ability@3
+PGSTEP KW-261010_021629000-t16 seed 5 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -344.600000000000023 EndTurn
+PGDUMP         70.400000000000006 Attach:1Water@0 zone
+PGDUMP         70.400000000000006 Attach:1Water@1 zone
+PGDUMP         70.400000000000006 Attach:1Water@2 zone
+PGDUMP         70.400000000000006 Attach:1Water@3 zone
+PGDUMP         70.400000000000006 Attack:Stormy Prison
+PGDUMP         69.400000000000006 Play:Poké Ball
+PGDUMP       -850.600000000000023 Retreat:1
+PGDUMP        -54.600000000000001 Retreat:2
+PGDUMP       -860.600000000000023 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 5 free 3
+PGSTEP KW-261010_021629000-t16 seed 6 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=11
+PGDUMP       -658.600000000000023 EndTurn
+PGDUMP       -243.599999999999994 Attach:1Water@0 zone
+PGDUMP       -243.599999999999994 Attach:1Water@1 zone
+PGDUMP       -243.599999999999994 Attach:1Water@2 zone
+PGDUMP       -243.599999999999994 Attach:1Water@3 zone
+PGDUMP       -243.599999999999994 Attack:Stormy Prison
+PGDUMP         70.400000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -244.599999999999994 Play:Poké Ball
+PGDUMP      -1145.599999999999909 Retreat:1
+PGDUMP       -368.600000000000023 Retreat:2
+PGDUMP      -1155.599999999999909 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 6 free 1
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP       -164.599999999999994 Noop
+PGDUMP         70.400000000000006 Ability@3
+PGSTEP KW-261010_021629000-t16 seed 6 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -344.600000000000023 EndTurn
+PGDUMP         70.400000000000006 Attach:1Water@0 zone
+PGDUMP         70.400000000000006 Attach:1Water@1 zone
+PGDUMP         70.400000000000006 Attach:1Water@2 zone
+PGDUMP         70.400000000000006 Attach:1Water@3 zone
+PGDUMP         70.400000000000006 Attack:Stormy Prison
+PGDUMP         69.400000000000006 Play:Poké Ball
+PGDUMP       -850.600000000000023 Retreat:1
+PGDUMP        -54.600000000000001 Retreat:2
+PGDUMP       -860.600000000000023 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 6 free 3
+PGSTEP KW-261010_021629000-t16 seed 7 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=11
+PGDUMP       -658.600000000000023 EndTurn
+PGDUMP       -243.599999999999994 Attach:1Water@0 zone
+PGDUMP       -243.599999999999994 Attach:1Water@1 zone
+PGDUMP       -243.599999999999994 Attach:1Water@2 zone
+PGDUMP       -243.599999999999994 Attach:1Water@3 zone
+PGDUMP       -243.599999999999994 Attack:Stormy Prison
+PGDUMP         70.400000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -244.599999999999994 Play:Poké Ball
+PGDUMP      -1145.599999999999909 Retreat:1
+PGDUMP       -368.600000000000023 Retreat:2
+PGDUMP      -1155.599999999999909 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 7 free 1
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP       -164.599999999999994 Noop
+PGDUMP         70.400000000000006 Ability@3
+PGSTEP KW-261010_021629000-t16 seed 7 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -344.600000000000023 EndTurn
+PGDUMP         70.400000000000006 Attach:1Water@0 zone
+PGDUMP         70.400000000000006 Attach:1Water@1 zone
+PGDUMP         70.400000000000006 Attach:1Water@2 zone
+PGDUMP         70.400000000000006 Attach:1Water@3 zone
+PGDUMP         70.400000000000006 Attack:Stormy Prison
+PGDUMP         69.400000000000006 Play:Poké Ball
+PGDUMP       -850.600000000000023 Retreat:1
+PGDUMP        -54.600000000000001 Retreat:2
+PGDUMP       -860.600000000000023 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 7 free 3
+PGSTEP KW-261010_021629000-t16 seed 8 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=11
+PGDUMP       -658.600000000000023 EndTurn
+PGDUMP       -243.599999999999994 Attach:1Water@0 zone
+PGDUMP       -243.599999999999994 Attach:1Water@1 zone
+PGDUMP       -243.599999999999994 Attach:1Water@2 zone
+PGDUMP       -243.599999999999994 Attach:1Water@3 zone
+PGDUMP       -243.599999999999994 Attack:Stormy Prison
+PGDUMP         70.400000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -244.599999999999994 Play:Poké Ball
+PGDUMP      -1145.599999999999909 Retreat:1
+PGDUMP       -368.600000000000023 Retreat:2
+PGDUMP      -1155.599999999999909 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 8 free 1
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP       -164.599999999999994 Noop
+PGDUMP         70.400000000000006 Ability@3
+PGSTEP KW-261010_021629000-t16 seed 8 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -344.600000000000023 EndTurn
+PGDUMP         70.400000000000006 Attach:1Water@0 zone
+PGDUMP         70.400000000000006 Attach:1Water@1 zone
+PGDUMP         70.400000000000006 Attach:1Water@2 zone
+PGDUMP         70.400000000000006 Attach:1Water@3 zone
+PGDUMP         70.400000000000006 Attack:Stormy Prison
+PGDUMP         69.400000000000006 Play:Poké Ball
+PGDUMP       -850.600000000000023 Retreat:1
+PGDUMP        -54.600000000000001 Retreat:2
+PGDUMP       -860.600000000000023 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 8 free 3
+PGSTEP KW-261010_021629000-t16 seed 9 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=11
+PGDUMP       -658.600000000000023 EndTurn
+PGDUMP       -243.599999999999994 Attach:1Water@0 zone
+PGDUMP       -243.599999999999994 Attach:1Water@1 zone
+PGDUMP       -243.599999999999994 Attach:1Water@2 zone
+PGDUMP       -243.599999999999994 Attach:1Water@3 zone
+PGDUMP       -243.599999999999994 Attack:Stormy Prison
+PGDUMP         70.400000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -244.599999999999994 Play:Poké Ball
+PGDUMP      -1145.599999999999909 Retreat:1
+PGDUMP       -368.600000000000023 Retreat:2
+PGDUMP      -1155.599999999999909 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 9 free 1
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP       -164.599999999999994 Noop
+PGDUMP         70.400000000000006 Ability@3
+PGSTEP KW-261010_021629000-t16 seed 9 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -344.600000000000023 EndTurn
+PGDUMP         70.400000000000006 Attach:1Water@0 zone
+PGDUMP         70.400000000000006 Attach:1Water@1 zone
+PGDUMP         70.400000000000006 Attach:1Water@2 zone
+PGDUMP         70.400000000000006 Attach:1Water@3 zone
+PGDUMP         70.400000000000006 Attack:Stormy Prison
+PGDUMP         69.400000000000006 Play:Poké Ball
+PGDUMP       -850.600000000000023 Retreat:1
+PGDUMP        -54.600000000000001 Retreat:2
+PGDUMP       -860.600000000000023 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 9 free 3
+PGSTEP KW-261010_021629000-t16 seed 10 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=11
+PGDUMP       -658.600000000000023 EndTurn
+PGDUMP       -243.599999999999994 Attach:1Water@0 zone
+PGDUMP       -243.599999999999994 Attach:1Water@1 zone
+PGDUMP       -243.599999999999994 Attach:1Water@2 zone
+PGDUMP       -243.599999999999994 Attach:1Water@3 zone
+PGDUMP       -243.599999999999994 Attack:Stormy Prison
+PGDUMP         70.400000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -244.599999999999994 Play:Poké Ball
+PGDUMP      -1145.599999999999909 Retreat:1
+PGDUMP       -368.600000000000023 Retreat:2
+PGDUMP      -1155.599999999999909 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 10 free 1
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP       -164.599999999999994 Noop
+PGDUMP         70.400000000000006 Ability@3
+PGSTEP KW-261010_021629000-t16 seed 10 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -344.600000000000023 EndTurn
+PGDUMP         70.400000000000006 Attach:1Water@0 zone
+PGDUMP         70.400000000000006 Attach:1Water@1 zone
+PGDUMP         70.400000000000006 Attach:1Water@2 zone
+PGDUMP         70.400000000000006 Attach:1Water@3 zone
+PGDUMP         70.400000000000006 Attack:Stormy Prison
+PGDUMP         69.400000000000006 Play:Poké Ball
+PGDUMP       -850.600000000000023 Retreat:1
+PGDUMP        -54.600000000000001 Retreat:2
+PGDUMP       -860.600000000000023 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 10 free 3
+PGSTEP KW-261010_021629000-t16 seed 11 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=11
+PGDUMP       -658.600000000000023 EndTurn
+PGDUMP       -243.599999999999994 Attach:1Water@0 zone
+PGDUMP       -243.599999999999994 Attach:1Water@1 zone
+PGDUMP       -243.599999999999994 Attach:1Water@2 zone
+PGDUMP       -243.599999999999994 Attach:1Water@3 zone
+PGDUMP       -243.599999999999994 Attack:Stormy Prison
+PGDUMP         70.400000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -244.599999999999994 Play:Poké Ball
+PGDUMP      -1145.599999999999909 Retreat:1
+PGDUMP       -368.600000000000023 Retreat:2
+PGDUMP      -1155.599999999999909 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 11 free 1
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP       -164.599999999999994 Noop
+PGDUMP         70.400000000000006 Ability@3
+PGSTEP KW-261010_021629000-t16 seed 11 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -344.600000000000023 EndTurn
+PGDUMP         70.400000000000006 Attach:1Water@0 zone
+PGDUMP         70.400000000000006 Attach:1Water@1 zone
+PGDUMP         70.400000000000006 Attach:1Water@2 zone
+PGDUMP         70.400000000000006 Attach:1Water@3 zone
+PGDUMP         70.400000000000006 Attack:Stormy Prison
+PGDUMP         69.400000000000006 Play:Poké Ball
+PGDUMP       -850.600000000000023 Retreat:1
+PGDUMP        -54.600000000000001 Retreat:2
+PGDUMP       -860.600000000000023 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 11 free 3
+PGSTEP KW-261010_021629000-t16 seed 12 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=11
+PGDUMP       -658.600000000000023 EndTurn
+PGDUMP       -243.599999999999994 Attach:1Water@0 zone
+PGDUMP       -243.599999999999994 Attach:1Water@1 zone
+PGDUMP       -243.599999999999994 Attach:1Water@2 zone
+PGDUMP       -243.599999999999994 Attach:1Water@3 zone
+PGDUMP       -243.599999999999994 Attack:Stormy Prison
+PGDUMP         70.400000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -244.599999999999994 Play:Poké Ball
+PGDUMP      -1145.599999999999909 Retreat:1
+PGDUMP       -368.600000000000023 Retreat:2
+PGDUMP      -1155.599999999999909 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 12 free 1
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP       -164.599999999999994 Noop
+PGDUMP         70.400000000000006 Ability@3
+PGSTEP KW-261010_021629000-t16 seed 12 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Play:Poké Ball
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -344.600000000000023 EndTurn
+PGDUMP         70.400000000000006 Attach:1Water@0 zone
+PGDUMP         70.400000000000006 Attach:1Water@1 zone
+PGDUMP         70.400000000000006 Attach:1Water@2 zone
+PGDUMP         70.400000000000006 Attach:1Water@3 zone
+PGDUMP         70.400000000000006 Attack:Stormy Prison
+PGDUMP         69.400000000000006 Play:Poké Ball
+PGDUMP       -850.600000000000023 Retreat:1
+PGDUMP        -54.600000000000001 Retreat:2
+PGDUMP       -860.600000000000023 Retreat:3
+PGSTEP KW-261010_021629000-t16 seed 12 free 3

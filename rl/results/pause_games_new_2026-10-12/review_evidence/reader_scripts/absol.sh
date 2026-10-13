@@ -1,0 +1,1 @@
+cd '/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim' && python3 lib/card.py 'B1 151'; echo ====; python3 lib/card.py 'A3 146'; echo ====; python3 lib/card.py 'B2 120'; echo ====; python3 lib/card.py 'B1 172'; echo ====; python3 lib/card.py 'Aegislash'

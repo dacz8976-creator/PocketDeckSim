@@ -1,0 +1,468 @@
+PGSTEP KW-261005_003547000-t09 seed 1 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Irida
+PGDUMP actor=0 candidates=6
+PGDUMP        -81.299999999999997 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGDUMP        942.700000000000045 Play:Irida
+PGSTEP KW-261005_003547000-t09 seed 1 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        217.699999999999989 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGSTEP KW-261005_003547000-t09 seed 1 free 2
+PGCAND EndTurn
+PGCAND Attack:Whale Pump
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=5
+PGDUMP        542.700000000000045 EndTurn
+PGDUMP        942.700000000000045 Attack:Whale Pump
+PGDUMP      -1209.966666666666470 Retreat:1
+PGDUMP       -577.299999999999955 Retreat:2
+PGDUMP      -1005.299999999999955 Retreat:3
+PGSTEP KW-261005_003547000-t09 seed 1 free 3
+PGSTEP KW-261005_003547000-t09 seed 2 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Irida
+PGDUMP actor=0 candidates=6
+PGDUMP        -81.299999999999997 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGDUMP        942.700000000000045 Play:Irida
+PGSTEP KW-261005_003547000-t09 seed 2 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        217.699999999999989 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGSTEP KW-261005_003547000-t09 seed 2 free 2
+PGCAND EndTurn
+PGCAND Attack:Whale Pump
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=5
+PGDUMP        542.700000000000045 EndTurn
+PGDUMP        942.700000000000045 Attack:Whale Pump
+PGDUMP      -1209.966666666666470 Retreat:1
+PGDUMP       -577.299999999999955 Retreat:2
+PGDUMP      -1005.299999999999955 Retreat:3
+PGSTEP KW-261005_003547000-t09 seed 2 free 3
+PGSTEP KW-261005_003547000-t09 seed 3 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Irida
+PGDUMP actor=0 candidates=6
+PGDUMP        -81.299999999999997 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGDUMP        942.700000000000045 Play:Irida
+PGSTEP KW-261005_003547000-t09 seed 3 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        217.699999999999989 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGSTEP KW-261005_003547000-t09 seed 3 free 2
+PGCAND EndTurn
+PGCAND Attack:Whale Pump
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=5
+PGDUMP        542.700000000000045 EndTurn
+PGDUMP        942.700000000000045 Attack:Whale Pump
+PGDUMP      -1209.966666666666470 Retreat:1
+PGDUMP       -577.299999999999955 Retreat:2
+PGDUMP      -1005.299999999999955 Retreat:3
+PGSTEP KW-261005_003547000-t09 seed 3 free 3
+PGSTEP KW-261005_003547000-t09 seed 4 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Irida
+PGDUMP actor=0 candidates=6
+PGDUMP        -81.299999999999997 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGDUMP        942.700000000000045 Play:Irida
+PGSTEP KW-261005_003547000-t09 seed 4 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        217.699999999999989 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGSTEP KW-261005_003547000-t09 seed 4 free 2
+PGCAND EndTurn
+PGCAND Attack:Whale Pump
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=5
+PGDUMP        542.700000000000045 EndTurn
+PGDUMP        942.700000000000045 Attack:Whale Pump
+PGDUMP      -1209.966666666666470 Retreat:1
+PGDUMP       -577.299999999999955 Retreat:2
+PGDUMP      -1005.299999999999955 Retreat:3
+PGSTEP KW-261005_003547000-t09 seed 4 free 3
+PGSTEP KW-261005_003547000-t09 seed 5 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Irida
+PGDUMP actor=0 candidates=6
+PGDUMP        -81.299999999999997 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGDUMP        942.700000000000045 Play:Irida
+PGSTEP KW-261005_003547000-t09 seed 5 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        217.699999999999989 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGSTEP KW-261005_003547000-t09 seed 5 free 2
+PGCAND EndTurn
+PGCAND Attack:Whale Pump
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=5
+PGDUMP        542.700000000000045 EndTurn
+PGDUMP        942.700000000000045 Attack:Whale Pump
+PGDUMP      -1209.966666666666470 Retreat:1
+PGDUMP       -577.299999999999955 Retreat:2
+PGDUMP      -1005.299999999999955 Retreat:3
+PGSTEP KW-261005_003547000-t09 seed 5 free 3
+PGSTEP KW-261005_003547000-t09 seed 6 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Irida
+PGDUMP actor=0 candidates=6
+PGDUMP        -81.299999999999997 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGDUMP        942.700000000000045 Play:Irida
+PGSTEP KW-261005_003547000-t09 seed 6 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        217.699999999999989 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGSTEP KW-261005_003547000-t09 seed 6 free 2
+PGCAND EndTurn
+PGCAND Attack:Whale Pump
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=5
+PGDUMP        542.700000000000045 EndTurn
+PGDUMP        942.700000000000045 Attack:Whale Pump
+PGDUMP      -1209.966666666666470 Retreat:1
+PGDUMP       -577.299999999999955 Retreat:2
+PGDUMP      -1005.299999999999955 Retreat:3
+PGSTEP KW-261005_003547000-t09 seed 6 free 3
+PGSTEP KW-261005_003547000-t09 seed 7 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Irida
+PGDUMP actor=0 candidates=6
+PGDUMP        -81.299999999999997 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGDUMP        942.700000000000045 Play:Irida
+PGSTEP KW-261005_003547000-t09 seed 7 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        217.699999999999989 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGSTEP KW-261005_003547000-t09 seed 7 free 2
+PGCAND EndTurn
+PGCAND Attack:Whale Pump
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=5
+PGDUMP        542.700000000000045 EndTurn
+PGDUMP        942.700000000000045 Attack:Whale Pump
+PGDUMP      -1209.966666666666470 Retreat:1
+PGDUMP       -577.299999999999955 Retreat:2
+PGDUMP      -1005.299999999999955 Retreat:3
+PGSTEP KW-261005_003547000-t09 seed 7 free 3
+PGSTEP KW-261005_003547000-t09 seed 8 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Irida
+PGDUMP actor=0 candidates=6
+PGDUMP        -81.299999999999997 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGDUMP        942.700000000000045 Play:Irida
+PGSTEP KW-261005_003547000-t09 seed 8 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        217.699999999999989 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGSTEP KW-261005_003547000-t09 seed 8 free 2
+PGCAND EndTurn
+PGCAND Attack:Whale Pump
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=5
+PGDUMP        542.700000000000045 EndTurn
+PGDUMP        942.700000000000045 Attack:Whale Pump
+PGDUMP      -1209.966666666666470 Retreat:1
+PGDUMP       -577.299999999999955 Retreat:2
+PGDUMP      -1005.299999999999955 Retreat:3
+PGSTEP KW-261005_003547000-t09 seed 8 free 3
+PGSTEP KW-261005_003547000-t09 seed 9 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Irida
+PGDUMP actor=0 candidates=6
+PGDUMP        -81.299999999999997 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGDUMP        942.700000000000045 Play:Irida
+PGSTEP KW-261005_003547000-t09 seed 9 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        217.699999999999989 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGSTEP KW-261005_003547000-t09 seed 9 free 2
+PGCAND EndTurn
+PGCAND Attack:Whale Pump
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=5
+PGDUMP        542.700000000000045 EndTurn
+PGDUMP        942.700000000000045 Attack:Whale Pump
+PGDUMP      -1209.966666666666470 Retreat:1
+PGDUMP       -577.299999999999955 Retreat:2
+PGDUMP      -1005.299999999999955 Retreat:3
+PGSTEP KW-261005_003547000-t09 seed 9 free 3
+PGSTEP KW-261005_003547000-t09 seed 10 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Irida
+PGDUMP actor=0 candidates=6
+PGDUMP        -81.299999999999997 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGDUMP        942.700000000000045 Play:Irida
+PGSTEP KW-261005_003547000-t09 seed 10 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        217.699999999999989 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGSTEP KW-261005_003547000-t09 seed 10 free 2
+PGCAND EndTurn
+PGCAND Attack:Whale Pump
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=5
+PGDUMP        542.700000000000045 EndTurn
+PGDUMP        942.700000000000045 Attack:Whale Pump
+PGDUMP      -1209.966666666666470 Retreat:1
+PGDUMP       -577.299999999999955 Retreat:2
+PGDUMP      -1005.299999999999955 Retreat:3
+PGSTEP KW-261005_003547000-t09 seed 10 free 3
+PGSTEP KW-261005_003547000-t09 seed 11 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Irida
+PGDUMP actor=0 candidates=6
+PGDUMP        -81.299999999999997 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGDUMP        942.700000000000045 Play:Irida
+PGSTEP KW-261005_003547000-t09 seed 11 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        217.699999999999989 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGSTEP KW-261005_003547000-t09 seed 11 free 2
+PGCAND EndTurn
+PGCAND Attack:Whale Pump
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=5
+PGDUMP        542.700000000000045 EndTurn
+PGDUMP        942.700000000000045 Attack:Whale Pump
+PGDUMP      -1209.966666666666470 Retreat:1
+PGDUMP       -577.299999999999955 Retreat:2
+PGDUMP      -1005.299999999999955 Retreat:3
+PGSTEP KW-261005_003547000-t09 seed 11 free 3
+PGSTEP KW-261005_003547000-t09 seed 12 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Irida
+PGDUMP actor=0 candidates=6
+PGDUMP        -81.299999999999997 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGDUMP        942.700000000000045 Play:Irida
+PGSTEP KW-261005_003547000-t09 seed 12 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Attach:1Water@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        217.699999999999989 EndTurn
+PGDUMP        942.700000000000045 Attach:1Water@0 zone
+PGDUMP        307.699999999999989 Attach:1Water@1 zone
+PGDUMP        417.699999999999989 Attach:1Water@2 zone
+PGDUMP        357.699999999999989 Attach:1Water@3 zone
+PGSTEP KW-261005_003547000-t09 seed 12 free 2
+PGCAND EndTurn
+PGCAND Attack:Whale Pump
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=5
+PGDUMP        542.700000000000045 EndTurn
+PGDUMP        942.700000000000045 Attack:Whale Pump
+PGDUMP      -1209.966666666666470 Retreat:1
+PGDUMP       -577.299999999999955 Retreat:2
+PGDUMP      -1005.299999999999955 Retreat:3
+PGSTEP KW-261005_003547000-t09 seed 12 free 3

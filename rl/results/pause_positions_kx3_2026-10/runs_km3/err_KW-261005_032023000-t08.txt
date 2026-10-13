@@ -1,0 +1,756 @@
+PGSTEP KW-261005_032023000-t08 seed 1 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Lunge Out
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -699.033333333333417 EndTurn
+PGDUMP       -372.366666666666674 Attach:1Metal@0 zone
+PGDUMP       -265.699999999999989 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -539.033333333333417 Attack:Lunge Out
+PGDUMP       -423.366666666666674 Play:Metal Core Barrier
+PGDUMP       -265.699999999999989 Retreat:1
+PGDUMP       -539.033333333333417 Retreat:2
+PGDUMP       -539.033333333333417 Retreat:3
+PGSTEP KW-261005_032023000-t08 seed 1 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=7
+PGDUMP       -592.366666666666788 EndTurn
+PGDUMP       -265.699999999999989 Attach:1Metal@0 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -432.366666666666674 Attack:Pierce
+PGDUMP       -316.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 1 free 2
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=3
+PGDUMP       -425.699999999999989 EndTurn
+PGDUMP       -265.699999999999989 Attack:Pierce
+PGDUMP       -156.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 1 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGCAND Tool:Metal Core Barrier@2
+PGCAND Tool:Metal Core Barrier@3
+PGDUMP actor=0 candidates=4
+PGDUMP       -156.699999999999989 Tool:Metal Core Barrier@0
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@1
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@2
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@3
+PGSTEP KW-261005_032023000-t08 seed 1 free 4
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGDUMP actor=0 candidates=2
+PGDUMP       -316.699999999999989 EndTurn
+PGDUMP       -156.699999999999989 Attack:Pierce
+PGSTEP KW-261005_032023000-t08 seed 1 free 5
+PGSTEP KW-261005_032023000-t08 seed 2 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Lunge Out
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -699.033333333333417 EndTurn
+PGDUMP       -372.366666666666674 Attach:1Metal@0 zone
+PGDUMP       -265.699999999999989 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -539.033333333333417 Attack:Lunge Out
+PGDUMP       -423.366666666666674 Play:Metal Core Barrier
+PGDUMP       -265.699999999999989 Retreat:1
+PGDUMP       -539.033333333333417 Retreat:2
+PGDUMP       -539.033333333333417 Retreat:3
+PGSTEP KW-261005_032023000-t08 seed 2 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=7
+PGDUMP       -592.366666666666788 EndTurn
+PGDUMP       -265.699999999999989 Attach:1Metal@0 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -432.366666666666674 Attack:Pierce
+PGDUMP       -316.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 2 free 2
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=3
+PGDUMP       -425.699999999999989 EndTurn
+PGDUMP       -265.699999999999989 Attack:Pierce
+PGDUMP       -156.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 2 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGCAND Tool:Metal Core Barrier@2
+PGCAND Tool:Metal Core Barrier@3
+PGDUMP actor=0 candidates=4
+PGDUMP       -156.699999999999989 Tool:Metal Core Barrier@0
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@1
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@2
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@3
+PGSTEP KW-261005_032023000-t08 seed 2 free 4
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGDUMP actor=0 candidates=2
+PGDUMP       -316.699999999999989 EndTurn
+PGDUMP       -156.699999999999989 Attack:Pierce
+PGSTEP KW-261005_032023000-t08 seed 2 free 5
+PGSTEP KW-261005_032023000-t08 seed 3 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Lunge Out
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -699.033333333333417 EndTurn
+PGDUMP       -372.366666666666674 Attach:1Metal@0 zone
+PGDUMP       -265.699999999999989 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -539.033333333333417 Attack:Lunge Out
+PGDUMP       -423.366666666666674 Play:Metal Core Barrier
+PGDUMP       -265.699999999999989 Retreat:1
+PGDUMP       -539.033333333333417 Retreat:2
+PGDUMP       -539.033333333333417 Retreat:3
+PGSTEP KW-261005_032023000-t08 seed 3 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=7
+PGDUMP       -592.366666666666788 EndTurn
+PGDUMP       -265.699999999999989 Attach:1Metal@0 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -432.366666666666674 Attack:Pierce
+PGDUMP       -316.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 3 free 2
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=3
+PGDUMP       -425.699999999999989 EndTurn
+PGDUMP       -265.699999999999989 Attack:Pierce
+PGDUMP       -156.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 3 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGCAND Tool:Metal Core Barrier@2
+PGCAND Tool:Metal Core Barrier@3
+PGDUMP actor=0 candidates=4
+PGDUMP       -156.699999999999989 Tool:Metal Core Barrier@0
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@1
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@2
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@3
+PGSTEP KW-261005_032023000-t08 seed 3 free 4
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGDUMP actor=0 candidates=2
+PGDUMP       -316.699999999999989 EndTurn
+PGDUMP       -156.699999999999989 Attack:Pierce
+PGSTEP KW-261005_032023000-t08 seed 3 free 5
+PGSTEP KW-261005_032023000-t08 seed 4 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Lunge Out
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -699.033333333333417 EndTurn
+PGDUMP       -372.366666666666674 Attach:1Metal@0 zone
+PGDUMP       -265.699999999999989 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -539.033333333333417 Attack:Lunge Out
+PGDUMP       -423.366666666666674 Play:Metal Core Barrier
+PGDUMP       -265.699999999999989 Retreat:1
+PGDUMP       -539.033333333333417 Retreat:2
+PGDUMP       -539.033333333333417 Retreat:3
+PGSTEP KW-261005_032023000-t08 seed 4 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=7
+PGDUMP       -592.366666666666788 EndTurn
+PGDUMP       -265.699999999999989 Attach:1Metal@0 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -432.366666666666674 Attack:Pierce
+PGDUMP       -316.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 4 free 2
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=3
+PGDUMP       -425.699999999999989 EndTurn
+PGDUMP       -265.699999999999989 Attack:Pierce
+PGDUMP       -156.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 4 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGCAND Tool:Metal Core Barrier@2
+PGCAND Tool:Metal Core Barrier@3
+PGDUMP actor=0 candidates=4
+PGDUMP       -156.699999999999989 Tool:Metal Core Barrier@0
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@1
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@2
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@3
+PGSTEP KW-261005_032023000-t08 seed 4 free 4
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGDUMP actor=0 candidates=2
+PGDUMP       -316.699999999999989 EndTurn
+PGDUMP       -156.699999999999989 Attack:Pierce
+PGSTEP KW-261005_032023000-t08 seed 4 free 5
+PGSTEP KW-261005_032023000-t08 seed 5 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Lunge Out
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -699.033333333333417 EndTurn
+PGDUMP       -372.366666666666674 Attach:1Metal@0 zone
+PGDUMP       -265.699999999999989 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -539.033333333333417 Attack:Lunge Out
+PGDUMP       -423.366666666666674 Play:Metal Core Barrier
+PGDUMP       -265.699999999999989 Retreat:1
+PGDUMP       -539.033333333333417 Retreat:2
+PGDUMP       -539.033333333333417 Retreat:3
+PGSTEP KW-261005_032023000-t08 seed 5 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=7
+PGDUMP       -592.366666666666788 EndTurn
+PGDUMP       -265.699999999999989 Attach:1Metal@0 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -432.366666666666674 Attack:Pierce
+PGDUMP       -316.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 5 free 2
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=3
+PGDUMP       -425.699999999999989 EndTurn
+PGDUMP       -265.699999999999989 Attack:Pierce
+PGDUMP       -156.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 5 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGCAND Tool:Metal Core Barrier@2
+PGCAND Tool:Metal Core Barrier@3
+PGDUMP actor=0 candidates=4
+PGDUMP       -156.699999999999989 Tool:Metal Core Barrier@0
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@1
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@2
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@3
+PGSTEP KW-261005_032023000-t08 seed 5 free 4
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGDUMP actor=0 candidates=2
+PGDUMP       -316.699999999999989 EndTurn
+PGDUMP       -156.699999999999989 Attack:Pierce
+PGSTEP KW-261005_032023000-t08 seed 5 free 5
+PGSTEP KW-261005_032023000-t08 seed 6 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Lunge Out
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -699.033333333333417 EndTurn
+PGDUMP       -372.366666666666674 Attach:1Metal@0 zone
+PGDUMP       -265.699999999999989 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -539.033333333333417 Attack:Lunge Out
+PGDUMP       -423.366666666666674 Play:Metal Core Barrier
+PGDUMP       -265.699999999999989 Retreat:1
+PGDUMP       -539.033333333333417 Retreat:2
+PGDUMP       -539.033333333333417 Retreat:3
+PGSTEP KW-261005_032023000-t08 seed 6 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=7
+PGDUMP       -592.366666666666788 EndTurn
+PGDUMP       -265.699999999999989 Attach:1Metal@0 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -432.366666666666674 Attack:Pierce
+PGDUMP       -316.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 6 free 2
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=3
+PGDUMP       -425.699999999999989 EndTurn
+PGDUMP       -265.699999999999989 Attack:Pierce
+PGDUMP       -156.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 6 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGCAND Tool:Metal Core Barrier@2
+PGCAND Tool:Metal Core Barrier@3
+PGDUMP actor=0 candidates=4
+PGDUMP       -156.699999999999989 Tool:Metal Core Barrier@0
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@1
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@2
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@3
+PGSTEP KW-261005_032023000-t08 seed 6 free 4
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGDUMP actor=0 candidates=2
+PGDUMP       -316.699999999999989 EndTurn
+PGDUMP       -156.699999999999989 Attack:Pierce
+PGSTEP KW-261005_032023000-t08 seed 6 free 5
+PGSTEP KW-261005_032023000-t08 seed 7 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Lunge Out
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -699.033333333333417 EndTurn
+PGDUMP       -372.366666666666674 Attach:1Metal@0 zone
+PGDUMP       -265.699999999999989 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -539.033333333333417 Attack:Lunge Out
+PGDUMP       -423.366666666666674 Play:Metal Core Barrier
+PGDUMP       -265.699999999999989 Retreat:1
+PGDUMP       -539.033333333333417 Retreat:2
+PGDUMP       -539.033333333333417 Retreat:3
+PGSTEP KW-261005_032023000-t08 seed 7 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=7
+PGDUMP       -592.366666666666788 EndTurn
+PGDUMP       -265.699999999999989 Attach:1Metal@0 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -432.366666666666674 Attack:Pierce
+PGDUMP       -316.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 7 free 2
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=3
+PGDUMP       -425.699999999999989 EndTurn
+PGDUMP       -265.699999999999989 Attack:Pierce
+PGDUMP       -156.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 7 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGCAND Tool:Metal Core Barrier@2
+PGCAND Tool:Metal Core Barrier@3
+PGDUMP actor=0 candidates=4
+PGDUMP       -156.699999999999989 Tool:Metal Core Barrier@0
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@1
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@2
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@3
+PGSTEP KW-261005_032023000-t08 seed 7 free 4
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGDUMP actor=0 candidates=2
+PGDUMP       -316.699999999999989 EndTurn
+PGDUMP       -156.699999999999989 Attack:Pierce
+PGSTEP KW-261005_032023000-t08 seed 7 free 5
+PGSTEP KW-261005_032023000-t08 seed 8 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Lunge Out
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -699.033333333333417 EndTurn
+PGDUMP       -372.366666666666674 Attach:1Metal@0 zone
+PGDUMP       -265.699999999999989 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -539.033333333333417 Attack:Lunge Out
+PGDUMP       -423.366666666666674 Play:Metal Core Barrier
+PGDUMP       -265.699999999999989 Retreat:1
+PGDUMP       -539.033333333333417 Retreat:2
+PGDUMP       -539.033333333333417 Retreat:3
+PGSTEP KW-261005_032023000-t08 seed 8 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=7
+PGDUMP       -592.366666666666788 EndTurn
+PGDUMP       -265.699999999999989 Attach:1Metal@0 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -432.366666666666674 Attack:Pierce
+PGDUMP       -316.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 8 free 2
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=3
+PGDUMP       -425.699999999999989 EndTurn
+PGDUMP       -265.699999999999989 Attack:Pierce
+PGDUMP       -156.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 8 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGCAND Tool:Metal Core Barrier@2
+PGCAND Tool:Metal Core Barrier@3
+PGDUMP actor=0 candidates=4
+PGDUMP       -156.699999999999989 Tool:Metal Core Barrier@0
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@1
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@2
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@3
+PGSTEP KW-261005_032023000-t08 seed 8 free 4
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGDUMP actor=0 candidates=2
+PGDUMP       -316.699999999999989 EndTurn
+PGDUMP       -156.699999999999989 Attack:Pierce
+PGSTEP KW-261005_032023000-t08 seed 8 free 5
+PGSTEP KW-261005_032023000-t08 seed 9 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Lunge Out
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -699.033333333333417 EndTurn
+PGDUMP       -372.366666666666674 Attach:1Metal@0 zone
+PGDUMP       -265.699999999999989 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -539.033333333333417 Attack:Lunge Out
+PGDUMP       -423.366666666666674 Play:Metal Core Barrier
+PGDUMP       -265.699999999999989 Retreat:1
+PGDUMP       -539.033333333333417 Retreat:2
+PGDUMP       -539.033333333333417 Retreat:3
+PGSTEP KW-261005_032023000-t08 seed 9 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=7
+PGDUMP       -592.366666666666788 EndTurn
+PGDUMP       -265.699999999999989 Attach:1Metal@0 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -432.366666666666674 Attack:Pierce
+PGDUMP       -316.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 9 free 2
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=3
+PGDUMP       -425.699999999999989 EndTurn
+PGDUMP       -265.699999999999989 Attack:Pierce
+PGDUMP       -156.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 9 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGCAND Tool:Metal Core Barrier@2
+PGCAND Tool:Metal Core Barrier@3
+PGDUMP actor=0 candidates=4
+PGDUMP       -156.699999999999989 Tool:Metal Core Barrier@0
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@1
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@2
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@3
+PGSTEP KW-261005_032023000-t08 seed 9 free 4
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGDUMP actor=0 candidates=2
+PGDUMP       -316.699999999999989 EndTurn
+PGDUMP       -156.699999999999989 Attack:Pierce
+PGSTEP KW-261005_032023000-t08 seed 9 free 5
+PGSTEP KW-261005_032023000-t08 seed 10 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Lunge Out
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -699.033333333333417 EndTurn
+PGDUMP       -372.366666666666674 Attach:1Metal@0 zone
+PGDUMP       -265.699999999999989 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -539.033333333333417 Attack:Lunge Out
+PGDUMP       -423.366666666666674 Play:Metal Core Barrier
+PGDUMP       -265.699999999999989 Retreat:1
+PGDUMP       -539.033333333333417 Retreat:2
+PGDUMP       -539.033333333333417 Retreat:3
+PGSTEP KW-261005_032023000-t08 seed 10 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=7
+PGDUMP       -592.366666666666788 EndTurn
+PGDUMP       -265.699999999999989 Attach:1Metal@0 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -432.366666666666674 Attack:Pierce
+PGDUMP       -316.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 10 free 2
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=3
+PGDUMP       -425.699999999999989 EndTurn
+PGDUMP       -265.699999999999989 Attack:Pierce
+PGDUMP       -156.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 10 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGCAND Tool:Metal Core Barrier@2
+PGCAND Tool:Metal Core Barrier@3
+PGDUMP actor=0 candidates=4
+PGDUMP       -156.699999999999989 Tool:Metal Core Barrier@0
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@1
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@2
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@3
+PGSTEP KW-261005_032023000-t08 seed 10 free 4
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGDUMP actor=0 candidates=2
+PGDUMP       -316.699999999999989 EndTurn
+PGDUMP       -156.699999999999989 Attack:Pierce
+PGSTEP KW-261005_032023000-t08 seed 10 free 5
+PGSTEP KW-261005_032023000-t08 seed 11 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Lunge Out
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -699.033333333333417 EndTurn
+PGDUMP       -372.366666666666674 Attach:1Metal@0 zone
+PGDUMP       -265.699999999999989 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -539.033333333333417 Attack:Lunge Out
+PGDUMP       -423.366666666666674 Play:Metal Core Barrier
+PGDUMP       -265.699999999999989 Retreat:1
+PGDUMP       -539.033333333333417 Retreat:2
+PGDUMP       -539.033333333333417 Retreat:3
+PGSTEP KW-261005_032023000-t08 seed 11 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=7
+PGDUMP       -592.366666666666788 EndTurn
+PGDUMP       -265.699999999999989 Attach:1Metal@0 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -432.366666666666674 Attack:Pierce
+PGDUMP       -316.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 11 free 2
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=3
+PGDUMP       -425.699999999999989 EndTurn
+PGDUMP       -265.699999999999989 Attack:Pierce
+PGDUMP       -156.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 11 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGCAND Tool:Metal Core Barrier@2
+PGCAND Tool:Metal Core Barrier@3
+PGDUMP actor=0 candidates=4
+PGDUMP       -156.699999999999989 Tool:Metal Core Barrier@0
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@1
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@2
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@3
+PGSTEP KW-261005_032023000-t08 seed 11 free 4
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGDUMP actor=0 candidates=2
+PGDUMP       -316.699999999999989 EndTurn
+PGDUMP       -156.699999999999989 Attack:Pierce
+PGSTEP KW-261005_032023000-t08 seed 11 free 5
+PGSTEP KW-261005_032023000-t08 seed 12 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Lunge Out
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=10
+PGDUMP       -699.033333333333417 EndTurn
+PGDUMP       -372.366666666666674 Attach:1Metal@0 zone
+PGDUMP       -265.699999999999989 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -539.033333333333417 Attack:Lunge Out
+PGDUMP       -423.366666666666674 Play:Metal Core Barrier
+PGDUMP       -265.699999999999989 Retreat:1
+PGDUMP       -539.033333333333417 Retreat:2
+PGDUMP       -539.033333333333417 Retreat:3
+PGSTEP KW-261005_032023000-t08 seed 12 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=7
+PGDUMP       -592.366666666666788 EndTurn
+PGDUMP       -265.699999999999989 Attach:1Metal@0 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@1 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@2 zone
+PGDUMP       -372.366666666666674 Attach:1Metal@3 zone
+PGDUMP       -432.366666666666674 Attack:Pierce
+PGDUMP       -316.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 12 free 2
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGCAND Play:Metal Core Barrier
+PGDUMP actor=0 candidates=3
+PGDUMP       -425.699999999999989 EndTurn
+PGDUMP       -265.699999999999989 Attack:Pierce
+PGDUMP       -156.699999999999989 Play:Metal Core Barrier
+PGSTEP KW-261005_032023000-t08 seed 12 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGCAND Tool:Metal Core Barrier@2
+PGCAND Tool:Metal Core Barrier@3
+PGDUMP actor=0 candidates=4
+PGDUMP       -156.699999999999989 Tool:Metal Core Barrier@0
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@1
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@2
+PGDUMP       -266.699999999999989 Tool:Metal Core Barrier@3
+PGSTEP KW-261005_032023000-t08 seed 12 free 4
+PGCAND EndTurn
+PGCAND Attack:Pierce
+PGDUMP actor=0 candidates=2
+PGDUMP       -316.699999999999989 EndTurn
+PGDUMP       -156.699999999999989 Attack:Pierce
+PGSTEP KW-261005_032023000-t08 seed 12 free 5

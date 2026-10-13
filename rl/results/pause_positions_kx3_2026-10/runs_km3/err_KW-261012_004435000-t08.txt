@@ -1,0 +1,704 @@
+PGSTEP KW-261012_004435000-t08 seed 1 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Kingdra ex@1
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=7
+PGDUMP       -995.366666666666674 EndTurn
+PGDUMP         19.633333333333344 Attach:1Water@0 zone
+PGDUMP       -447.366666666666617 Attach:1Water@1 zone
+PGDUMP       -447.366666666666617 Attach:1Water@2 zone
+PGDUMP         19.633333333333344 Evolve:Kingdra ex@1
+PGDUMP       -397.366666666666617 Place:Horsea@3
+PGDUMP       -495.366666666666617 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 1 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=6
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        474.633333333333326 Attach:1Water@0 zone
+PGDUMP       -444.366666666666617 Attach:1Water@1 zone
+PGDUMP       -444.366666666666617 Attach:1Water@2 zone
+PGDUMP         68.633333333333340 Place:Horsea@3
+PGDUMP         20.633333333333344 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 1 free 2
+PGCAND EndTurn
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        525.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGDUMP        525.633333333333212 Retreat:1
+PGDUMP       -453.366666666666617 Retreat:2
+PGSTEP KW-261012_004435000-t08 seed 1 free 3
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=4
+PGDUMP         19.633333333333344 EndTurn
+PGDUMP        474.633333333333326 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 1 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=3
+PGDUMP         70.633333333333340 EndTurn
+PGDUMP        525.633333333333212 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 2 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Kingdra ex@1
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=7
+PGDUMP       -995.366666666666674 EndTurn
+PGDUMP         19.633333333333344 Attach:1Water@0 zone
+PGDUMP       -447.366666666666617 Attach:1Water@1 zone
+PGDUMP       -447.366666666666617 Attach:1Water@2 zone
+PGDUMP         19.633333333333344 Evolve:Kingdra ex@1
+PGDUMP       -397.366666666666617 Place:Horsea@3
+PGDUMP       -495.366666666666674 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 2 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=6
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        474.633333333333326 Attach:1Water@0 zone
+PGDUMP       -444.366666666666617 Attach:1Water@1 zone
+PGDUMP       -444.366666666666617 Attach:1Water@2 zone
+PGDUMP         68.633333333333340 Place:Horsea@3
+PGDUMP         20.633333333333344 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 2 free 2
+PGCAND EndTurn
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        525.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGDUMP        525.633333333333212 Retreat:1
+PGDUMP       -453.366666666666617 Retreat:2
+PGSTEP KW-261012_004435000-t08 seed 2 free 3
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=4
+PGDUMP         19.633333333333344 EndTurn
+PGDUMP        474.633333333333326 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 2 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=3
+PGDUMP         70.633333333333340 EndTurn
+PGDUMP        525.633333333333212 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 3 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Kingdra ex@1
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=7
+PGDUMP       -995.366666666666674 EndTurn
+PGDUMP         19.633333333333344 Attach:1Water@0 zone
+PGDUMP       -447.366666666666617 Attach:1Water@1 zone
+PGDUMP       -447.366666666666617 Attach:1Water@2 zone
+PGDUMP         19.633333333333344 Evolve:Kingdra ex@1
+PGDUMP       -397.366666666666617 Place:Horsea@3
+PGDUMP       -495.366666666666617 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 3 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=6
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        474.633333333333326 Attach:1Water@0 zone
+PGDUMP       -444.366666666666617 Attach:1Water@1 zone
+PGDUMP       -416.366666666666617 Attach:1Water@2 zone
+PGDUMP         68.633333333333340 Place:Horsea@3
+PGDUMP         20.633333333333344 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 3 free 2
+PGCAND EndTurn
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        525.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGDUMP        525.633333333333212 Retreat:1
+PGDUMP       -453.366666666666617 Retreat:2
+PGSTEP KW-261012_004435000-t08 seed 3 free 3
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=4
+PGDUMP         19.633333333333344 EndTurn
+PGDUMP        474.633333333333326 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Place:Horsea@3
+PGDUMP        526.633333333333212 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 4 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Kingdra ex@1
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=7
+PGDUMP       -995.366666666666674 EndTurn
+PGDUMP         19.633333333333344 Attach:1Water@0 zone
+PGDUMP       -447.366666666666617 Attach:1Water@1 zone
+PGDUMP       -447.366666666666617 Attach:1Water@2 zone
+PGDUMP         19.633333333333344 Evolve:Kingdra ex@1
+PGDUMP       -397.366666666666617 Place:Horsea@3
+PGDUMP       -495.366666666666617 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 4 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=6
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        474.633333333333326 Attach:1Water@0 zone
+PGDUMP       -444.366666666666617 Attach:1Water@1 zone
+PGDUMP       -416.366666666666617 Attach:1Water@2 zone
+PGDUMP         68.633333333333340 Place:Horsea@3
+PGDUMP         20.633333333333344 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 4 free 2
+PGCAND EndTurn
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        525.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGDUMP        525.633333333333212 Retreat:1
+PGDUMP       -453.366666666666617 Retreat:2
+PGSTEP KW-261012_004435000-t08 seed 4 free 3
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=4
+PGDUMP         19.633333333333344 EndTurn
+PGDUMP        474.633333333333326 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Place:Horsea@3
+PGDUMP        476.633333333333326 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 4 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=3
+PGDUMP         70.633333333333340 EndTurn
+PGDUMP        525.633333333333212 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 5 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Kingdra ex@1
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=7
+PGDUMP       -995.366666666666674 EndTurn
+PGDUMP         19.633333333333344 Attach:1Water@0 zone
+PGDUMP       -447.366666666666617 Attach:1Water@1 zone
+PGDUMP       -447.366666666666617 Attach:1Water@2 zone
+PGDUMP         19.633333333333344 Evolve:Kingdra ex@1
+PGDUMP       -397.366666666666617 Place:Horsea@3
+PGDUMP       -495.366666666666674 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 5 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=6
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        474.633333333333326 Attach:1Water@0 zone
+PGDUMP       -444.366666666666617 Attach:1Water@1 zone
+PGDUMP       -416.366666666666617 Attach:1Water@2 zone
+PGDUMP         68.633333333333340 Place:Horsea@3
+PGDUMP         20.633333333333344 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 5 free 2
+PGCAND EndTurn
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        525.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGDUMP        525.633333333333212 Retreat:1
+PGDUMP       -416.366666666666617 Retreat:2
+PGSTEP KW-261012_004435000-t08 seed 5 free 3
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=4
+PGDUMP         19.633333333333344 EndTurn
+PGDUMP        474.633333333333326 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Place:Horsea@3
+PGDUMP        476.633333333333326 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 5 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=3
+PGDUMP         70.633333333333340 EndTurn
+PGDUMP        525.633333333333212 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 6 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Kingdra ex@1
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=7
+PGDUMP       -995.366666666666674 EndTurn
+PGDUMP         19.633333333333344 Attach:1Water@0 zone
+PGDUMP       -447.366666666666617 Attach:1Water@1 zone
+PGDUMP       -447.366666666666617 Attach:1Water@2 zone
+PGDUMP         19.633333333333344 Evolve:Kingdra ex@1
+PGDUMP       -397.366666666666617 Place:Horsea@3
+PGDUMP       -418.366666666666617 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 6 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=6
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        474.633333333333326 Attach:1Water@0 zone
+PGDUMP       -444.366666666666617 Attach:1Water@1 zone
+PGDUMP       -444.366666666666617 Attach:1Water@2 zone
+PGDUMP         68.633333333333340 Place:Horsea@3
+PGDUMP         20.633333333333344 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 6 free 2
+PGCAND EndTurn
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        525.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGDUMP        525.633333333333212 Retreat:1
+PGDUMP       -416.366666666666617 Retreat:2
+PGSTEP KW-261012_004435000-t08 seed 6 free 3
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=4
+PGDUMP         19.633333333333344 EndTurn
+PGDUMP        474.633333333333326 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Place:Horsea@3
+PGDUMP        526.633333333333212 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 7 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Kingdra ex@1
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=7
+PGDUMP       -995.366666666666674 EndTurn
+PGDUMP         19.633333333333344 Attach:1Water@0 zone
+PGDUMP       -447.366666666666617 Attach:1Water@1 zone
+PGDUMP       -447.366666666666617 Attach:1Water@2 zone
+PGDUMP         19.633333333333344 Evolve:Kingdra ex@1
+PGDUMP       -397.366666666666617 Place:Horsea@3
+PGDUMP       -495.366666666666674 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 7 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=6
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        474.633333333333326 Attach:1Water@0 zone
+PGDUMP       -416.366666666666617 Attach:1Water@1 zone
+PGDUMP       -444.366666666666617 Attach:1Water@2 zone
+PGDUMP         68.633333333333340 Place:Horsea@3
+PGDUMP         20.633333333333344 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 7 free 2
+PGCAND EndTurn
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        525.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGDUMP        525.633333333333212 Retreat:1
+PGDUMP       -453.366666666666617 Retreat:2
+PGSTEP KW-261012_004435000-t08 seed 7 free 3
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=4
+PGDUMP         19.633333333333344 EndTurn
+PGDUMP        474.633333333333326 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Place:Horsea@3
+PGDUMP        476.633333333333326 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 7 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=3
+PGDUMP         70.633333333333340 EndTurn
+PGDUMP        525.633333333333212 Attack:Stormy Prison
+PGDUMP        527.633333333333212 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 8 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Kingdra ex@1
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=7
+PGDUMP       -995.366666666666674 EndTurn
+PGDUMP         19.633333333333344 Attach:1Water@0 zone
+PGDUMP       -447.366666666666617 Attach:1Water@1 zone
+PGDUMP       -447.366666666666617 Attach:1Water@2 zone
+PGDUMP         19.633333333333344 Evolve:Kingdra ex@1
+PGDUMP       -397.366666666666617 Place:Horsea@3
+PGDUMP       -495.366666666666674 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 8 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=6
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        474.633333333333326 Attach:1Water@0 zone
+PGDUMP       -444.366666666666617 Attach:1Water@1 zone
+PGDUMP       -444.366666666666617 Attach:1Water@2 zone
+PGDUMP         68.633333333333340 Place:Horsea@3
+PGDUMP         20.633333333333344 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 8 free 2
+PGCAND EndTurn
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        525.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGDUMP        525.633333333333212 Retreat:1
+PGDUMP       -416.366666666666617 Retreat:2
+PGSTEP KW-261012_004435000-t08 seed 8 free 3
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=4
+PGDUMP         19.633333333333344 EndTurn
+PGDUMP        474.633333333333326 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 8 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=3
+PGDUMP         70.633333333333340 EndTurn
+PGDUMP        525.633333333333212 Attack:Stormy Prison
+PGDUMP        527.633333333333212 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 9 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Kingdra ex@1
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=7
+PGDUMP       -995.366666666666674 EndTurn
+PGDUMP         19.633333333333344 Attach:1Water@0 zone
+PGDUMP       -447.366666666666617 Attach:1Water@1 zone
+PGDUMP       -447.366666666666617 Attach:1Water@2 zone
+PGDUMP         19.633333333333344 Evolve:Kingdra ex@1
+PGDUMP       -397.366666666666617 Place:Horsea@3
+PGDUMP       -495.366666666666617 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 9 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=6
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        474.633333333333326 Attach:1Water@0 zone
+PGDUMP       -444.366666666666617 Attach:1Water@1 zone
+PGDUMP       -416.366666666666617 Attach:1Water@2 zone
+PGDUMP         68.633333333333340 Place:Horsea@3
+PGDUMP         20.633333333333344 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 9 free 2
+PGCAND EndTurn
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        525.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGDUMP        525.633333333333212 Retreat:1
+PGDUMP       -453.366666666666617 Retreat:2
+PGSTEP KW-261012_004435000-t08 seed 9 free 3
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=4
+PGDUMP         19.633333333333344 EndTurn
+PGDUMP        474.633333333333326 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 9 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=3
+PGDUMP         70.633333333333340 EndTurn
+PGDUMP        525.633333333333212 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 10 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Kingdra ex@1
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=7
+PGDUMP       -995.366666666666674 EndTurn
+PGDUMP         19.633333333333344 Attach:1Water@0 zone
+PGDUMP       -447.366666666666617 Attach:1Water@1 zone
+PGDUMP       -447.366666666666617 Attach:1Water@2 zone
+PGDUMP         19.633333333333344 Evolve:Kingdra ex@1
+PGDUMP       -397.366666666666617 Place:Horsea@3
+PGDUMP       -495.366666666666617 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 10 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=6
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        474.633333333333326 Attach:1Water@0 zone
+PGDUMP       -444.366666666666617 Attach:1Water@1 zone
+PGDUMP       -416.366666666666617 Attach:1Water@2 zone
+PGDUMP         68.633333333333340 Place:Horsea@3
+PGDUMP         20.633333333333344 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 10 free 2
+PGCAND EndTurn
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        525.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGDUMP        525.633333333333212 Retreat:1
+PGDUMP       -453.366666666666617 Retreat:2
+PGSTEP KW-261012_004435000-t08 seed 10 free 3
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=4
+PGDUMP         19.633333333333344 EndTurn
+PGDUMP        474.633333333333326 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 10 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=3
+PGDUMP         70.633333333333340 EndTurn
+PGDUMP        525.633333333333212 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 11 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Kingdra ex@1
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=7
+PGDUMP       -995.366666666666674 EndTurn
+PGDUMP         19.633333333333344 Attach:1Water@0 zone
+PGDUMP       -447.366666666666617 Attach:1Water@1 zone
+PGDUMP       -447.366666666666617 Attach:1Water@2 zone
+PGDUMP         19.633333333333344 Evolve:Kingdra ex@1
+PGDUMP       -397.366666666666617 Place:Horsea@3
+PGDUMP       -418.366666666666617 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 11 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=6
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        474.633333333333326 Attach:1Water@0 zone
+PGDUMP       -444.366666666666617 Attach:1Water@1 zone
+PGDUMP       -444.366666666666617 Attach:1Water@2 zone
+PGDUMP         68.633333333333340 Place:Horsea@3
+PGDUMP         20.633333333333344 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 11 free 2
+PGCAND EndTurn
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        525.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGDUMP        525.633333333333212 Retreat:1
+PGDUMP       -453.366666666666617 Retreat:2
+PGSTEP KW-261012_004435000-t08 seed 11 free 3
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=4
+PGDUMP         19.633333333333344 EndTurn
+PGDUMP        474.633333333333326 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 11 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=3
+PGDUMP         70.633333333333340 EndTurn
+PGDUMP        525.633333333333212 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 12 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Kingdra ex@1
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=7
+PGDUMP       -995.366666666666674 EndTurn
+PGDUMP         19.633333333333344 Attach:1Water@0 zone
+PGDUMP       -447.366666666666617 Attach:1Water@1 zone
+PGDUMP       -447.366666666666617 Attach:1Water@2 zone
+PGDUMP         19.633333333333344 Evolve:Kingdra ex@1
+PGDUMP       -397.366666666666617 Place:Horsea@3
+PGDUMP       -448.366666666666617 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 12 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=6
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        474.633333333333326 Attach:1Water@0 zone
+PGDUMP       -444.366666666666617 Attach:1Water@1 zone
+PGDUMP       -444.366666666666617 Attach:1Water@2 zone
+PGDUMP         68.633333333333340 Place:Horsea@3
+PGDUMP         20.633333333333344 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 12 free 2
+PGCAND EndTurn
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -496.366666666666617 EndTurn
+PGDUMP        525.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGDUMP        525.633333333333212 Retreat:1
+PGDUMP       -416.366666666666617 Retreat:2
+PGSTEP KW-261012_004435000-t08 seed 12 free 3
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@3
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=4
+PGDUMP         19.633333333333344 EndTurn
+PGDUMP        474.633333333333326 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Place:Horsea@3
+PGDUMP        475.633333333333326 Play:Copycat
+PGSTEP KW-261012_004435000-t08 seed 12 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Play:Copycat
+PGDUMP actor=0 candidates=3
+PGDUMP         70.633333333333340 EndTurn
+PGDUMP        525.633333333333212 Attack:Stormy Prison
+PGDUMP        526.633333333333212 Play:Copycat

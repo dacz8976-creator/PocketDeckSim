@@ -1,0 +1,858 @@
+PGSTEP KW-261013_030351000-t07 seed 1 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8356.133333333333212 EndTurn
+PGDUMP      -7674.966666666666242 UseStadium
+PGDUMP      -7620.216666666666242 Attach:1Metal@0 zone
+PGDUMP      -7931.883333333334122 Attach:1Metal@1 zone
+PGDUMP      -8051.883333333334122 Attach:1Metal@2 zone
+PGDUMP      -7612.716666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 1 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGDUMP actor=0 candidates=5
+PGDUMP      -8097.133333333334122 EndTurn
+PGDUMP      -7675.466666666666242 UseStadium
+PGDUMP      -7690.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7997.133333333334122 Attach:1Metal@1 zone
+PGDUMP      -8117.133333333334122 Attach:1Metal@2 zone
+PGSTEP KW-261013_030351000-t07 seed 1 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP      -8082.133333333334122 EndTurn
+PGDUMP      -7675.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7590.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7610.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -7590.466666666666242 Ability@2
+PGSTEP KW-261013_030351000-t07 seed 1 free 3
+PGSTEP KW-261013_030351000-t07 seed 1 free 4
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=6
+PGDUMP      -7690.466666666666242 EndTurn
+PGDUMP      -7690.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7590.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7610.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -8237.133333333333212 Retreat:1
+PGDUMP      -8403.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 1 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP      -7590.466666666666242 EndTurn
+PGDUMP      -8237.133333333333212 Retreat:1
+PGDUMP      -8633.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 2 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8356.133333333333212 EndTurn
+PGDUMP      -7674.966666666666242 UseStadium
+PGDUMP      -7620.216666666666242 Attach:1Metal@0 zone
+PGDUMP      -7931.883333333334122 Attach:1Metal@1 zone
+PGDUMP      -8051.883333333334122 Attach:1Metal@2 zone
+PGDUMP      -7612.716666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 2 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8096.133333333334122 EndTurn
+PGDUMP      -7534.966666666666242 UseStadium
+PGDUMP      -7549.966666666666242 Attach:1Metal@0 zone
+PGDUMP      -7866.633333333334122 Attach:1Metal@1 zone
+PGDUMP      -7986.633333333334122 Attach:1Metal@2 zone
+PGDUMP      -7534.966666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 2 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGDUMP actor=0 candidates=5
+PGDUMP      -7966.133333333334122 EndTurn
+PGDUMP      -7534.466666666666242 UseStadium
+PGDUMP      -7549.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7866.133333333334122 Attach:1Metal@1 zone
+PGDUMP      -7986.133333333334122 Attach:1Metal@2 zone
+PGSTEP KW-261013_030351000-t07 seed 2 free 3
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP      -7951.133333333334122 EndTurn
+PGDUMP      -7534.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7449.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7469.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -7449.466666666666242 Ability@2
+PGSTEP KW-261013_030351000-t07 seed 2 free 4
+PGSTEP KW-261013_030351000-t07 seed 2 free 5
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=6
+PGDUMP      -7549.466666666666242 EndTurn
+PGDUMP      -7549.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7449.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7469.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -8126.133333333334122 Retreat:1
+PGDUMP      -8292.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 2 free 6
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP      -7449.466666666666242 EndTurn
+PGDUMP      -8126.133333333334122 Retreat:1
+PGDUMP      -8522.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 3 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8356.133333333333212 EndTurn
+PGDUMP      -7674.966666666666242 UseStadium
+PGDUMP      -7620.216666666666242 Attach:1Metal@0 zone
+PGDUMP      -7931.883333333334122 Attach:1Metal@1 zone
+PGDUMP      -8051.883333333334122 Attach:1Metal@2 zone
+PGDUMP      -7612.716666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 3 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8096.133333333334122 EndTurn
+PGDUMP      -7534.966666666666242 UseStadium
+PGDUMP      -7549.966666666666242 Attach:1Metal@0 zone
+PGDUMP      -7866.633333333334122 Attach:1Metal@1 zone
+PGDUMP      -7986.633333333334122 Attach:1Metal@2 zone
+PGDUMP      -7534.966666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 3 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGDUMP actor=0 candidates=5
+PGDUMP      -7966.133333333334122 EndTurn
+PGDUMP      -7534.466666666666242 UseStadium
+PGDUMP      -7549.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7866.133333333334122 Attach:1Metal@1 zone
+PGDUMP      -7986.133333333334122 Attach:1Metal@2 zone
+PGSTEP KW-261013_030351000-t07 seed 3 free 3
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP      -7951.133333333334122 EndTurn
+PGDUMP      -7534.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7449.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7469.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -7449.466666666666242 Ability@2
+PGSTEP KW-261013_030351000-t07 seed 3 free 4
+PGSTEP KW-261013_030351000-t07 seed 3 free 5
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=6
+PGDUMP      -7549.466666666666242 EndTurn
+PGDUMP      -7549.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7449.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7469.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -8126.133333333334122 Retreat:1
+PGDUMP      -8292.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 3 free 6
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP      -7449.466666666666242 EndTurn
+PGDUMP      -8126.133333333334122 Retreat:1
+PGDUMP      -8522.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 4 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8356.133333333333212 EndTurn
+PGDUMP      -7674.966666666666242 UseStadium
+PGDUMP      -7620.216666666666242 Attach:1Metal@0 zone
+PGDUMP      -7931.883333333334122 Attach:1Metal@1 zone
+PGDUMP      -8051.883333333334122 Attach:1Metal@2 zone
+PGDUMP      -7612.716666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 4 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGDUMP actor=0 candidates=5
+PGDUMP      -8097.133333333334122 EndTurn
+PGDUMP      -7675.466666666666242 UseStadium
+PGDUMP      -7690.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7997.133333333334122 Attach:1Metal@1 zone
+PGDUMP      -8117.133333333334122 Attach:1Metal@2 zone
+PGSTEP KW-261013_030351000-t07 seed 4 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP      -8082.133333333334122 EndTurn
+PGDUMP      -7675.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7590.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7610.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -7590.466666666666242 Ability@2
+PGSTEP KW-261013_030351000-t07 seed 4 free 3
+PGSTEP KW-261013_030351000-t07 seed 4 free 4
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=6
+PGDUMP      -7690.466666666666242 EndTurn
+PGDUMP      -7690.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7590.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7610.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -8237.133333333333212 Retreat:1
+PGDUMP      -8403.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 4 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP      -7590.466666666666242 EndTurn
+PGDUMP      -8237.133333333333212 Retreat:1
+PGDUMP      -8633.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 5 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8356.133333333333212 EndTurn
+PGDUMP      -7674.966666666666242 UseStadium
+PGDUMP      -7620.216666666666242 Attach:1Metal@0 zone
+PGDUMP      -7931.883333333334122 Attach:1Metal@1 zone
+PGDUMP      -8051.883333333334122 Attach:1Metal@2 zone
+PGDUMP      -7612.716666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 5 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8096.133333333334122 EndTurn
+PGDUMP      -7534.966666666666242 UseStadium
+PGDUMP      -7549.966666666666242 Attach:1Metal@0 zone
+PGDUMP      -7866.633333333334122 Attach:1Metal@1 zone
+PGDUMP      -7986.633333333334122 Attach:1Metal@2 zone
+PGDUMP      -7534.966666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 5 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGDUMP actor=0 candidates=5
+PGDUMP      -7966.133333333334122 EndTurn
+PGDUMP      -7534.466666666666242 UseStadium
+PGDUMP      -7549.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7866.133333333334122 Attach:1Metal@1 zone
+PGDUMP      -7986.133333333334122 Attach:1Metal@2 zone
+PGSTEP KW-261013_030351000-t07 seed 5 free 3
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP      -7951.133333333334122 EndTurn
+PGDUMP      -7534.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7449.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7469.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -7449.466666666666242 Ability@2
+PGSTEP KW-261013_030351000-t07 seed 5 free 4
+PGSTEP KW-261013_030351000-t07 seed 5 free 5
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=6
+PGDUMP      -7549.466666666666242 EndTurn
+PGDUMP      -7549.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7449.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7469.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -8126.133333333334122 Retreat:1
+PGDUMP      -8292.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 5 free 6
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP      -7449.466666666666242 EndTurn
+PGDUMP      -8126.133333333334122 Retreat:1
+PGDUMP      -8522.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 6 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8356.133333333333212 EndTurn
+PGDUMP      -7674.966666666666242 UseStadium
+PGDUMP      -7620.216666666666242 Attach:1Metal@0 zone
+PGDUMP      -7931.883333333334122 Attach:1Metal@1 zone
+PGDUMP      -8051.883333333334122 Attach:1Metal@2 zone
+PGDUMP      -7612.716666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 6 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8096.133333333334122 EndTurn
+PGDUMP      -7534.966666666666242 UseStadium
+PGDUMP      -7549.966666666666242 Attach:1Metal@0 zone
+PGDUMP      -7866.633333333334122 Attach:1Metal@1 zone
+PGDUMP      -7986.633333333334122 Attach:1Metal@2 zone
+PGDUMP      -7534.966666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 6 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGDUMP actor=0 candidates=5
+PGDUMP      -7967.133333333334122 EndTurn
+PGDUMP      -7535.466666666666242 UseStadium
+PGDUMP      -7550.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7867.133333333334122 Attach:1Metal@1 zone
+PGDUMP      -7987.133333333334122 Attach:1Metal@2 zone
+PGSTEP KW-261013_030351000-t07 seed 6 free 3
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP      -7952.133333333334122 EndTurn
+PGDUMP      -7535.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7450.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7470.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -7450.466666666666242 Ability@2
+PGSTEP KW-261013_030351000-t07 seed 6 free 4
+PGSTEP KW-261013_030351000-t07 seed 6 free 5
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=6
+PGDUMP      -7550.466666666666242 EndTurn
+PGDUMP      -7550.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7450.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7470.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -8127.133333333334122 Retreat:1
+PGDUMP      -8293.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 6 free 6
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP      -7450.466666666666242 EndTurn
+PGDUMP      -8127.133333333334122 Retreat:1
+PGDUMP      -8523.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 7 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8356.133333333333212 EndTurn
+PGDUMP      -7674.966666666666242 UseStadium
+PGDUMP      -7620.216666666666242 Attach:1Metal@0 zone
+PGDUMP      -7931.883333333334122 Attach:1Metal@1 zone
+PGDUMP      -8051.883333333334122 Attach:1Metal@2 zone
+PGDUMP      -7612.716666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 7 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8096.133333333334122 EndTurn
+PGDUMP      -7534.966666666666242 UseStadium
+PGDUMP      -7549.966666666666242 Attach:1Metal@0 zone
+PGDUMP      -7866.633333333334122 Attach:1Metal@1 zone
+PGDUMP      -7986.633333333334122 Attach:1Metal@2 zone
+PGDUMP      -7534.966666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 7 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGDUMP actor=0 candidates=5
+PGDUMP      -7966.133333333334122 EndTurn
+PGDUMP      -7534.466666666666242 UseStadium
+PGDUMP      -7549.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7866.133333333334122 Attach:1Metal@1 zone
+PGDUMP      -7986.133333333334122 Attach:1Metal@2 zone
+PGSTEP KW-261013_030351000-t07 seed 7 free 3
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP      -7951.133333333334122 EndTurn
+PGDUMP      -7534.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7449.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7469.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -7449.466666666666242 Ability@2
+PGSTEP KW-261013_030351000-t07 seed 7 free 4
+PGSTEP KW-261013_030351000-t07 seed 7 free 5
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=6
+PGDUMP      -7549.466666666666242 EndTurn
+PGDUMP      -7549.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7449.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7469.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -8126.133333333334122 Retreat:1
+PGDUMP      -8292.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 7 free 6
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP      -7449.466666666666242 EndTurn
+PGDUMP      -8126.133333333334122 Retreat:1
+PGDUMP      -8522.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 8 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8356.133333333333212 EndTurn
+PGDUMP      -7674.966666666666242 UseStadium
+PGDUMP      -7620.216666666666242 Attach:1Metal@0 zone
+PGDUMP      -7931.883333333334122 Attach:1Metal@1 zone
+PGDUMP      -8051.883333333334122 Attach:1Metal@2 zone
+PGDUMP      -7612.716666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 8 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8096.133333333334122 EndTurn
+PGDUMP      -7534.966666666666242 UseStadium
+PGDUMP      -7549.966666666666242 Attach:1Metal@0 zone
+PGDUMP      -7866.633333333334122 Attach:1Metal@1 zone
+PGDUMP      -7986.633333333334122 Attach:1Metal@2 zone
+PGDUMP      -7534.966666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 8 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGDUMP actor=0 candidates=5
+PGDUMP      -7967.133333333334122 EndTurn
+PGDUMP      -7535.466666666666242 UseStadium
+PGDUMP      -7550.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7867.133333333334122 Attach:1Metal@1 zone
+PGDUMP      -7987.133333333334122 Attach:1Metal@2 zone
+PGSTEP KW-261013_030351000-t07 seed 8 free 3
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP      -7952.133333333334122 EndTurn
+PGDUMP      -7535.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7450.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7470.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -7450.466666666666242 Ability@2
+PGSTEP KW-261013_030351000-t07 seed 8 free 4
+PGSTEP KW-261013_030351000-t07 seed 8 free 5
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=6
+PGDUMP      -7550.466666666666242 EndTurn
+PGDUMP      -7550.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7450.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7470.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -8127.133333333334122 Retreat:1
+PGDUMP      -8293.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 8 free 6
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP      -7450.466666666666242 EndTurn
+PGDUMP      -8127.133333333334122 Retreat:1
+PGDUMP      -8523.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 9 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8356.133333333333212 EndTurn
+PGDUMP      -7674.966666666666242 UseStadium
+PGDUMP      -7620.216666666666242 Attach:1Metal@0 zone
+PGDUMP      -7931.883333333334122 Attach:1Metal@1 zone
+PGDUMP      -8051.883333333334122 Attach:1Metal@2 zone
+PGDUMP      -7612.716666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 9 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGDUMP actor=0 candidates=5
+PGDUMP      -8097.133333333334122 EndTurn
+PGDUMP      -7675.466666666666242 UseStadium
+PGDUMP      -7690.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7997.133333333334122 Attach:1Metal@1 zone
+PGDUMP      -8117.133333333334122 Attach:1Metal@2 zone
+PGSTEP KW-261013_030351000-t07 seed 9 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP      -8082.133333333334122 EndTurn
+PGDUMP      -7675.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7590.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7610.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -7590.466666666666242 Ability@2
+PGSTEP KW-261013_030351000-t07 seed 9 free 3
+PGSTEP KW-261013_030351000-t07 seed 9 free 4
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=6
+PGDUMP      -7690.466666666666242 EndTurn
+PGDUMP      -7690.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7590.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7610.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -8237.133333333333212 Retreat:1
+PGDUMP      -8403.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 9 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP      -7590.466666666666242 EndTurn
+PGDUMP      -8237.133333333333212 Retreat:1
+PGDUMP      -8633.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 10 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8356.133333333333212 EndTurn
+PGDUMP      -7674.966666666666242 UseStadium
+PGDUMP      -7620.216666666666242 Attach:1Metal@0 zone
+PGDUMP      -7931.883333333334122 Attach:1Metal@1 zone
+PGDUMP      -8051.883333333334122 Attach:1Metal@2 zone
+PGDUMP      -7612.716666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 10 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8096.133333333334122 EndTurn
+PGDUMP      -7534.966666666666242 UseStadium
+PGDUMP      -7549.966666666666242 Attach:1Metal@0 zone
+PGDUMP      -7866.633333333334122 Attach:1Metal@1 zone
+PGDUMP      -7986.633333333334122 Attach:1Metal@2 zone
+PGDUMP      -7534.966666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 10 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGDUMP actor=0 candidates=5
+PGDUMP      -7966.133333333334122 EndTurn
+PGDUMP      -7534.466666666666242 UseStadium
+PGDUMP      -7549.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7866.133333333334122 Attach:1Metal@1 zone
+PGDUMP      -7986.133333333334122 Attach:1Metal@2 zone
+PGSTEP KW-261013_030351000-t07 seed 10 free 3
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP      -7951.133333333334122 EndTurn
+PGDUMP      -7534.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7449.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7469.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -7449.466666666666242 Ability@2
+PGSTEP KW-261013_030351000-t07 seed 10 free 4
+PGSTEP KW-261013_030351000-t07 seed 10 free 5
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=6
+PGDUMP      -7549.466666666666242 EndTurn
+PGDUMP      -7549.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7449.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7469.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -8126.133333333334122 Retreat:1
+PGDUMP      -8292.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 10 free 6
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP      -7449.466666666666242 EndTurn
+PGDUMP      -8126.133333333334122 Retreat:1
+PGDUMP      -8522.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 11 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8356.133333333333212 EndTurn
+PGDUMP      -7674.966666666666242 UseStadium
+PGDUMP      -7620.216666666666242 Attach:1Metal@0 zone
+PGDUMP      -7931.883333333334122 Attach:1Metal@1 zone
+PGDUMP      -8051.883333333334122 Attach:1Metal@2 zone
+PGDUMP      -7612.716666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 11 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8096.133333333334122 EndTurn
+PGDUMP      -7534.966666666666242 UseStadium
+PGDUMP      -7549.966666666666242 Attach:1Metal@0 zone
+PGDUMP      -7866.633333333334122 Attach:1Metal@1 zone
+PGDUMP      -7986.633333333334122 Attach:1Metal@2 zone
+PGDUMP      -7534.966666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 11 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGDUMP actor=0 candidates=5
+PGDUMP      -7967.133333333334122 EndTurn
+PGDUMP      -7535.466666666666242 UseStadium
+PGDUMP      -7550.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7867.133333333334122 Attach:1Metal@1 zone
+PGDUMP      -7987.133333333334122 Attach:1Metal@2 zone
+PGSTEP KW-261013_030351000-t07 seed 11 free 3
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP      -7952.133333333334122 EndTurn
+PGDUMP      -7535.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7450.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7470.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -7450.466666666666242 Ability@2
+PGSTEP KW-261013_030351000-t07 seed 11 free 4
+PGSTEP KW-261013_030351000-t07 seed 11 free 5
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=6
+PGDUMP      -7550.466666666666242 EndTurn
+PGDUMP      -7550.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7450.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7470.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -8127.133333333334122 Retreat:1
+PGDUMP      -8293.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 11 free 6
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP      -7450.466666666666242 EndTurn
+PGDUMP      -8127.133333333334122 Retreat:1
+PGDUMP      -8523.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 12 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8356.133333333333212 EndTurn
+PGDUMP      -7674.966666666666242 UseStadium
+PGDUMP      -7620.216666666666242 Attach:1Metal@0 zone
+PGDUMP      -7931.883333333334122 Attach:1Metal@1 zone
+PGDUMP      -8051.883333333334122 Attach:1Metal@2 zone
+PGDUMP      -7612.716666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 12 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -8096.133333333334122 EndTurn
+PGDUMP      -7534.966666666666242 UseStadium
+PGDUMP      -7549.966666666666242 Attach:1Metal@0 zone
+PGDUMP      -7866.633333333334122 Attach:1Metal@1 zone
+PGDUMP      -7986.633333333334122 Attach:1Metal@2 zone
+PGDUMP      -7534.966666666666242 Play:Lucky Ice Pop
+PGSTEP KW-261013_030351000-t07 seed 12 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGDUMP actor=0 candidates=5
+PGDUMP      -7967.133333333334122 EndTurn
+PGDUMP      -7535.466666666666242 UseStadium
+PGDUMP      -7550.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7867.133333333334122 Attach:1Metal@1 zone
+PGDUMP      -7987.133333333334122 Attach:1Metal@2 zone
+PGSTEP KW-261013_030351000-t07 seed 12 free 3
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP      -7952.133333333334122 EndTurn
+PGDUMP      -7535.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7450.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7470.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -7450.466666666666242 Ability@2
+PGSTEP KW-261013_030351000-t07 seed 12 free 4
+PGSTEP KW-261013_030351000-t07 seed 12 free 5
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=6
+PGDUMP      -7550.466666666666242 EndTurn
+PGDUMP      -7550.466666666666242 Attach:1Metal@0 zone
+PGDUMP      -7450.466666666666242 Attach:1Metal@1 zone
+PGDUMP      -7470.466666666666242 Attach:1Metal@2 zone
+PGDUMP      -8127.133333333334122 Retreat:1
+PGDUMP      -8293.799999999999272 Retreat:2
+PGSTEP KW-261013_030351000-t07 seed 12 free 6
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP      -7450.466666666666242 EndTurn
+PGDUMP      -8127.133333333334122 Retreat:1
+PGDUMP      -8523.799999999999272 Retreat:2

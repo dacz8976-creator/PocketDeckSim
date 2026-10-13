@@ -1,0 +1,24 @@
+{
+ "manifest_sha256": "577a1ac83dd4f50d1a44f4b644ce7ff83f9422b432b2346f4b07ef084a96750a",
+ "stage": "use",
+ "pilot": "kx3",
+ "reference": "km3",
+ "registration_changed": false,
+ "registration_problems": [],
+ "paired_games": 160,
+ "pooled": {
+  "n": 160,
+  "mean": 0.2125,
+  "sd": 0.4327402811657313,
+  "half": 0.0670538012654834
+ },
+ "per_deck": {
+  "brew-09-sableye-obstagoon": {
+   "n": 160,
+   "mean": 0.2125,
+   "sd": 0.4327402811657313,
+   "half": 0.0670538012654834
+  }
+ },
+ "exactly_zero": false
+}

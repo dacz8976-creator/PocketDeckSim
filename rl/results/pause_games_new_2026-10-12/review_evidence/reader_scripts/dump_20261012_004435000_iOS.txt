@@ -1,0 +1,401 @@
+top keys: ['is_template', 'schema', 'game_id', 'sources', 'limits']
+====================================================================================================
+TURN 1 who=opponent keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'owner_hand_before_end_action', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits', 'visible_declined_prompts', 'declined_prompt_limit']
+ hand_at_start: count=5 status=count_observed_identities_hidden lim=Individual opponent card identities are hidden; count is directly visible at this boundary. cards=[None, None, None, None, None]
+ owner_hand_start: count=4 status=observed lim=None cards=['Kingdra ex', 'Hiking Trail', "Team Rocket's Weezing ex", 'Rare Candy']
+ opp_hand_at_owner_start: {"count": null, "supported_range": null, "count_method": "Count individually visible card backs in native opponent fan", "basis": null, "evidence_ids": [], "limit_reason": "Field applies only at owner turn starts; opponent acting-turn identities are hidden."}
+ draw: kind=normal_draw by=Turn start cards=[None] hc None->None ret=None lim=Individual identities hidden; number from filmed effect and card-back movement.
+ play 1: kind=tool card=Poison Barb target=Active Magikarp energy=null result=Attached; no immediate HP or status change prompt=None resp=None nested=[] hc=None t=127 lim=None
+ auto: {"description": "Turn timer reaches zero; ends without attack. First-player turn1 has no current Energy.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 132, "evidence_ids": ["n0129.00", "n0134.00"]}
+ board_at_start: displayed_turn=1 stadium=null shared=[]
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Koffing [None] bp=None hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Magikarp [None] bp=None hp=30/30(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=2 stadium=null shared=[]
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Koffing [None] bp=None hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Magikarp [None] bp=None hp=30/30(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=Poison Barb cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": ["Kingdra ex", "Hiking Trail", "Team Rocket's Weezing ex", "Rare Candy"], "count": 4, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0129.00"], "status": "observed", "limit_reason": null}, "owner_hand_before_end_action": {"cards_left_to_right": ["Kingdra ex", "Hiking Trail", "Team Rocket's Weezing ex", "Rare Candy"], "count": 4, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0129.00"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": [], "turn_evidence_ids": ["n0044.00", "n0129.00"], "limits": ["Opponent hand identities remain hidden.", "No full discard-pile screen is opened in this turn."], "visible_declined_prompts": [], "declined_prompt_limit": "No visible decline established in the inspected turn; absence is not a claim about unfilmed choices."}
+====================================================================================================
+TURN 2 who=owner keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'owner_hand_before_end_action', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits', 'visible_declined_prompts', 'declined_prompt_limit']
+ hand_at_start: count=5 status=observed lim=None cards=['Kingdra ex', 'Hiking Trail', "Team Rocket's Weezing ex", 'Rare Candy', 'Seadra']
+ owner_hand_start: count=5 status=observed lim=None cards=['Kingdra ex', 'Hiking Trail', "Team Rocket's Weezing ex", 'Rare Candy', 'Seadra']
+ opp_hand_at_owner_start: {"count": 4, "supported_range": [4, 4], "count_method": "Count individually visible card backs in native opponent fan", "basis": "Native top crop and full frame", "evidence_ids": ["n0136.00"], "limit_reason": null}
+ draw: kind=normal_draw by=Turn start cards=['Seadra'] hc 4->5 ret=None lim=None
+ play 1: kind=energy_attachment card=None target=Active Team Rocket's Koffing energy={"type": "Water", "count": 1, "destination": "Team Rocket's Koffing", "retreat_payment_by_type": null} result=One Water attached prompt=None resp=None nested=[] hc=5 t=137 lim=None
+ play 2: kind=end_turn card=None target=None energy=null result=Ended without attack prompt=None resp=None nested=[] hc=5 t=139 lim=None
+ board_at_start: displayed_turn=2 stadium=null shared=[]
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Koffing [None] bp=None hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    B: None
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Magikarp [None] bp=None hp=30/30(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=Poison Barb cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=3 stadium=null shared=[]
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Koffing [None] bp=None hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Magikarp [None] bp=None hp=30/30(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=Poison Barb cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": ["Kingdra ex", "Hiking Trail", "Team Rocket's Weezing ex", "Rare Candy", "Seadra"], "count": 5, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0139.00"], "status": "observed", "limit_reason": null}, "owner_hand_before_end_action": {"cards_left_to_right": ["Kingdra ex", "Hiking Trail", "Team Rocket's Weezing ex", "Rare Candy", "Seadra"], "count": 5, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0139.00"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": [], "turn_evidence_ids": ["n0136.00", "n0139.00", "n0134.00", "n0138.00", "n0141.00"], "limits": ["Opponent hand identities remain hidden.", "No full discard-pile screen is opened in this turn."], "visible_declined_prompts": [], "declined_prompt_limit": "No visible decline established in the inspected turn; absence is not a claim about unfilmed choices."}
+====================================================================================================
+TURN 3 who=opponent keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'owner_hand_before_end_action', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits', 'visible_declined_prompts', 'declined_prompt_limit']
+ hand_at_start: count=4 status=count_observed_identities_hidden lim=Individual opponent card identities are hidden; count is directly visible at this boundary. cards=[None, None, None, None]
+ owner_hand_start: count=5 status=observed lim=None cards=['Kingdra ex', 'Hiking Trail', "Team Rocket's Weezing ex", 'Rare Candy', 'Seadra']
+ opp_hand_at_owner_start: {"count": null, "supported_range": null, "count_method": "Count individually visible card backs in native opponent fan", "basis": null, "evidence_ids": [], "limit_reason": "Field applies only at owner turn starts; opponent acting-turn identities are hidden."}
+ draw: kind=normal_draw by=Turn start cards=[None] hc None->None ret=None lim=Individual identities hidden; number from filmed effect and card-back movement.
+ draw: kind=supporter_draw by=Professor's Research cards=[None, None] hc None->None ret=None lim=Individual identities hidden; number from filmed effect and card-back movement.
+ play 1: kind=supporter card=Professor's Research target=None energy=null result=Two hidden cards drawn prompt=None resp=None nested=[] hc=None t=150 lim=Exact initiation time within early-turn interval not resolved; Research discard and two-card animation are visible.
+ play 2: kind=bench card=Feebas target=Opponent middle bench energy=null result=Placed at 30 HP prompt=None resp=None nested=[] hc=None t=158 lim=None
+ play 3: kind=bench card=Eevee ex target=Opponent left bench energy=null result=Placed at90HP; Veevee’volve is printed ability, no Tool attached prompt=None resp=None nested=[] hc=None t=162 lim=None
+ play 4: kind=energy_attachment card=None target=Active Magikarp energy={"type": "Water", "count": 1, "destination": "Magikarp", "retreat_payment_by_type": null} result=One Water attached prompt=None resp=None nested=[] hc=None t=166 lim=None
+ play 5: kind=stadium card=Soothing Shore target=Shared Stadium energy=null result=Soothing Shore enters prompt=None resp=None nested=[] hc=None t=170 lim=None
+ play 6: kind=evolution card=Mega Gyarados ex target=Active Magikarp energy=null result=210HP, retains Water and Poison Barb prompt=None resp=None nested=[] hc=None t=178 lim=None
+ auto: {"description": "Timer expires; no attack. No Soothing Shore healing needed because both Actives undamaged.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 185, "evidence_ids": ["n0185.00"]}
+ board_at_start: displayed_turn=3 stadium=null shared=[]
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Koffing [None] bp=None hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Magikarp [None] bp=None hp=30/30(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=Poison Barb cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=4 stadium="Soothing Shore" shared=[]
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Koffing [None] bp=None hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=210/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=Poison Barb cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Eevee ex [None] bp=1 hp=90/90(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Feebas [None] bp=2 hp=30/30(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": ["Kingdra ex", "Hiking Trail", "Team Rocket's Weezing ex", "Rare Candy", "Seadra"], "count": 5, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0185.00"], "status": "observed", "limit_reason": null}, "owner_hand_before_end_action": {"cards_left_to_right": ["Kingdra ex", "Hiking Trail", "Team Rocket's Weezing ex", "Rare Candy", "Seadra"], "count": 5, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0185.00"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": [], "turn_evidence_ids": ["n0141.00", "n0185.00"], "limits": ["Opponent hand identities remain hidden.", "No full discard-pile screen is opened in this turn."], "visible_declined_prompts": [], "declined_prompt_limit": "No visible decline established in the inspected turn; absence is not a claim about unfilmed choices."}
+====================================================================================================
+TURN 4 who=owner keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'owner_hand_before_end_action', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits', 'visible_declined_prompts', 'declined_prompt_limit']
+ hand_at_start: count=6 status=observed lim=None cards=['Kingdra ex', 'Hiking Trail', "Team Rocket's Weezing ex", 'Rare Candy', 'Seadra', 'Horsea']
+ owner_hand_start: count=6 status=observed lim=None cards=['Kingdra ex', 'Hiking Trail', "Team Rocket's Weezing ex", 'Rare Candy', 'Seadra', 'Horsea']
+ opp_hand_at_owner_start: {"count": 2, "supported_range": [2, 2], "count_method": "Count individually visible card backs in native opponent fan", "basis": "Native top crop and full frame", "evidence_ids": ["n0188.30"], "limit_reason": null}
+ draw: kind=normal_draw by=Turn start cards=['Horsea'] hc 5->6 ret=None lim=None
+ play 1: kind=bench card=Horsea target=Owner left bench energy=null result=Shiny Horsea50HP enters prompt=None resp=None nested=[] hc=5 t=189 lim=None
+ play 2: kind=evolution card=Team Rocket's Weezing ex target=Active Koffing energy=null result=Weezing140HP retains Water; Boiler Smog used prompt=None resp=None nested=[{'order': 1, 'kind': 'optional_evolution_ability', 'name': 'Boiler Smog', 'response': 'Used, evidenced by filmed ability banner', 'prompt_text': None, 'result': 'Opponent Active becomes Poisoned and Burned', 'evidence_ids': ['n0200.00', 'n0202.00'], 'limit_reason': 'Exact yes/no prompt text not retained; execution and both conditions directly shown.'}] hc=4 t=197 lim=None
+ play 3: kind=energy_attachment card=None target=Owner left Horsea energy={"type": "Water", "count": 1, "destination": "left Horsea", "retreat_payment_by_type": null} result=One Water attached prompt=None resp=None nested=[] hc=4 t=207 lim=None
+ play 4: kind=stadium card=Hiking Trail target=Shared Stadium energy=null result=Replaces opponent Soothing Shore, leaving owner hand3 prompt=None resp=None nested=[] hc=3 t=213 lim=None
+ play 5: kind=end_turn card=None target=None energy=null result=No attack prompt=None resp=None nested=[] hc=3 t=214 lim=None
+ auto: {"description": "Normal Water generated after immediate Horsea placement, available by197.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 197, "evidence_ids": ["n0188.30", "n0197.00"]}
+ auto: {"description": "Hiking Trail: hand already3, no owner addition.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 214, "evidence_ids": ["n0214.00"]}
+ auto: {"description": "Mega Poison10 and Burn20:210→180. Burn coin tails, remains Burned.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 222, "evidence_ids": ["n0222.00", "n0223.00"]}
+ board_at_start: displayed_turn=4 stadium="Soothing Shore" shared=[]
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Koffing [None] bp=None hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=210/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=Poison Barb cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Eevee ex [None] bp=1 hp=90/90(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Feebas [None] bp=2 hp=30/30(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=5 stadium="Hiking Trail" shared=['Hiking Trail: end of each player turn draws until hand has 3']
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Weezing ex [None] bp=None hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Horsea [None] bp=1 hp=50/50(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=180/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=30 E=1:{"Water": 1} tool=Poison Barb cond=['Poisoned', 'Burned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Eevee ex [None] bp=1 hp=90/90(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Feebas [None] bp=2 hp=30/30(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": ["Kingdra ex", "Rare Candy", "Seadra"], "count": 3, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0213.00"], "status": "observed", "limit_reason": null}, "owner_hand_before_end_action": {"cards_left_to_right": ["Kingdra ex", "Rare Candy", "Seadra"], "count": 3, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0213.00"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": ["discard_t4_owner", "discard_t4_opponent"], "turn_evidence_ids": ["n0188.30", "n0213.00"], "limits": ["Opponent hand identities remain hidden.", "No full discard-pile screen is opened in this turn."], "visible_declined_prompts": [], "declined_prompt_limit": "No visible decline established in the inspected turn; absence is not a claim about unfilmed choices."}
+====================================================================================================
+TURN 5 who=opponent keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'owner_hand_before_end_action', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits', 'visible_declined_prompts', 'declined_prompt_limit']
+ hand_at_start: count=2 status=count_observed_identities_hidden lim=Individual opponent card identities are hidden; count is directly visible at this boundary. cards=[None, None]
+ owner_hand_start: count=3 status=observed lim=None cards=['Kingdra ex', 'Rare Candy', 'Seadra']
+ opp_hand_at_owner_start: {"count": null, "supported_range": null, "count_method": "Count individually visible card backs in native opponent fan", "basis": null, "evidence_ids": [], "limit_reason": "Field applies only at owner turn starts; opponent acting-turn identities are hidden."}
+ draw: kind=normal_draw by=Turn start cards=[None] hc None->None ret=None lim=Individual identities hidden; number from filmed effect and card-back movement.
+ draw: kind=stadium_draw by=Hiking Trail cards=[None, None] hc 1->3 ret=None lim=Individual identities hidden; number from filmed effect and card-back movement.
+ play 1: kind=energy_attachment card=None target=Active Mega Gyarados ex energy={"type": "Water", "count": 1, "destination": "Mega Gyarados ex", "retreat_payment_by_type": null} result=Second Water attached prompt=None resp=None nested=[] hc=None t=233 lim=None
+ play 2: kind=evolution card=Glaceon ex target=Left Eevee ex energy=null result=140HP, no Energy prompt=None resp=None nested=[] hc=None t=237 lim=None
+ play 3: kind=supporter card=Irida target=Own Water-attached Pokémon energy=null result=Printed heal40; Mega180→210 capped actual30. Poison and Burn persist. prompt=None resp=None nested=[] hc=None t=243 lim=None
+ play 4: kind=end_turn card=None target=None energy=null result=No attack; hidden end-turn hand1 before Hiking Trail prompt=None resp=None nested=[] hc=None t=249 lim=End command falls between retained249 and reduced260; exact input second not resolved.
+ auto: {"description": "Hiking Trail adds two hidden cards to opponent hand1→3.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 267, "evidence_ids": ["n0267.00"]}
+ auto: {"description": "Mega Poison10 and Burn20:210→180. Burn coin tails; remains Burned.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 267, "evidence_ids": ["n0267.00", "n0270.00"]}
+ board_at_start: displayed_turn=5 stadium="Hiking Trail" shared=['Hiking Trail: end of each player turn draws until hand has 3']
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Weezing ex [None] bp=None hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Horsea [None] bp=1 hp=50/50(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=180/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=30 E=1:{"Water": 1} tool=Poison Barb cond=['Poisoned', 'Burned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Eevee ex [None] bp=1 hp=90/90(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Feebas [None] bp=2 hp=30/30(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=5 stadium="Hiking Trail" shared=['Hiking Trail: end of each player turn draws until hand has 3']
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Weezing ex [None] bp=None hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Horsea [None] bp=1 hp=50/50(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=180/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=30 E=2:{"Water": 2} tool=Poison Barb cond=['Poisoned', 'Burned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Glaceon ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Feebas [None] bp=2 hp=30/30(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": ["Kingdra ex", "Rare Candy", "Seadra"], "count": 3, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0270.00"], "status": "observed", "limit_reason": null}, "owner_hand_before_end_action": {"cards_left_to_right": ["Kingdra ex", "Rare Candy", "Seadra"], "count": 3, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0270.00"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": [], "turn_evidence_ids": ["n0223.00", "n0270.00"], "limits": ["Opponent hand identities remain hidden.", "No full discard-pile screen is opened in this turn."], "visible_declined_prompts": [], "declined_prompt_limit": "No visible decline established in the inspected turn; absence is not a claim about unfilmed choices."}
+====================================================================================================
+TURN 6 who=owner keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'owner_hand_before_end_action', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits', 'visible_declined_prompts', 'declined_prompt_limit']
+ hand_at_start: count=4 status=observed lim=None cards=['Kingdra ex', 'Rare Candy', 'Seadra', 'Poké Ball']
+ owner_hand_start: count=4 status=observed lim=None cards=['Kingdra ex', 'Rare Candy', 'Seadra', 'Poké Ball']
+ opp_hand_at_owner_start: {"count": 3, "supported_range": [3, 3], "count_method": "Count individually visible card backs in native opponent fan", "basis": "Native top crop and full frame", "evidence_ids": ["n0274.50"], "limit_reason": null}
+ draw: kind=normal_draw by=Turn start cards=['Poké Ball'] hc 3->4 ret=None lim=None
+ draw: kind=search by=Poké Ball cards=["Team Rocket's Koffing"] hc 3->4 ret=None lim=None
+ draw: kind=stadium_draw by=Hiking Trail cards=['Horsea'] hc 2->3 ret=None lim=None
+ play 1: kind=item card=Poké Ball target=None energy=null result=Search finds Team Rocket’s Koffing, hand4 after replacement prompt=None resp=None nested=[] hc=4 t=275 lim=None
+ play 2: kind=bench card=Team Rocket's Koffing target=Owner right bench energy=null result=Koffing60HP enters, no Energy prompt=None resp=None nested=[] hc=3 t=281 lim=None
+ play 3: kind=evolution card=Seadra target=Owner left Horsea energy=null result=Seadra70HP retains Water prompt=None resp=None nested=[] hc=2 t=286 lim=None
+ play 4: kind=energy_attachment card=None target=Owner left Seadra energy={"type": "Water", "count": 1, "destination": "left Seadra", "retreat_payment_by_type": null} result=Second Water attached prompt=None resp=None nested=[] hc=2 t=289 lim=None
+ play 5: kind=end_turn card=None target=None energy=null result=No attack; hand2 before Stadium draw prompt=None resp=None nested=[] hc=2 t=291 lim=None
+ auto: {"description": "Hiking Trail draws Horsea, hand2→3.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 293, "evidence_ids": ["n0293.00"]}
+ auto: {"description": "Mega Poison10 and Burn20:180→150. Burn coin heads, Burn removed; Poison persists.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 300, "evidence_ids": ["n0299.00", "n0300.00"]}
+ board_at_start: displayed_turn=6 stadium="Hiking Trail" shared=['Hiking Trail: end of each player turn draws until hand has 3']
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Weezing ex [None] bp=None hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Horsea [None] bp=1 hp=50/50(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: None
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=180/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=30 E=2:{"Water": 2} tool=Poison Barb cond=['Poisoned', 'Burned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Glaceon ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Feebas [None] bp=2 hp=30/30(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=7 stadium="Hiking Trail" shared=['Hiking Trail: end of each player turn draws until hand has 3']
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Weezing ex [None] bp=None hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Seadra [None] bp=1 hp=70/70(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=2:{"Water": 2} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: Team Rocket's Koffing [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=150/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=60 E=2:{"Water": 2} tool=Poison Barb cond=['Poisoned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Glaceon ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Feebas [None] bp=2 hp=30/30(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": ["Kingdra ex", "Rare Candy", "Horsea"], "count": 3, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0294.00"], "status": "observed", "limit_reason": null}, "owner_hand_before_end_action": {"cards_left_to_right": ["Kingdra ex", "Rare Candy"], "count": 2, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0289.00"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": ["discard_t6_owner", "discard_t6_opponent"], "turn_evidence_ids": ["n0274.50", "n0294.00"], "limits": ["Opponent hand identities remain hidden.", "No full discard-pile screen is opened in this turn."], "visible_declined_prompts": [], "declined_prompt_limit": "No visible decline established in the inspected turn; absence is not a claim about unfilmed choices."}
+====================================================================================================
+TURN 7 who=opponent keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'owner_hand_before_end_action', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits', 'visible_declined_prompts', 'declined_prompt_limit']
+ hand_at_start: count=4 status=count_observed_identities_hidden lim=Individual opponent card identities are hidden; count is directly visible at this boundary. cards=[None, None, None, None]
+ owner_hand_start: count=3 status=observed lim=None cards=['Kingdra ex', 'Rare Candy', 'Horsea']
+ opp_hand_at_owner_start: {"count": null, "supported_range": null, "count_method": "Count individually visible card backs in native opponent fan", "basis": null, "evidence_ids": [], "limit_reason": "Field applies only at owner turn starts; opponent acting-turn identities are hidden."}
+ draw: kind=normal_draw by=Turn start cards=[None] hc None->None ret=None lim=Individual identities hidden; number from filmed effect and card-back movement.
+ draw: kind=stadium_draw by=Hiking Trail cards=[None] hc 2->3 ret=None lim=Individual identities hidden; number from filmed effect and card-back movement.
+ play 1: kind=evolution card=Milotic ex target=Middle Feebas energy=null result=140HP, no Energy at evolution prompt=None resp=None nested=[] hc=None t=309 lim=None
+ play 2: kind=ability card=Milotic ex target=Same middle Milotic ex energy={"type": "Water", "count": 1, "destination": "Milotic ex", "retreat_payment_by_type": null} result=Aqua Charge adds first Water to itself; Mega retains2 prompt=None resp=None nested=[{'order': 1, 'name': 'Aqua Charge', 'result': 'Water from Energy Zone attaches to this Milotic; normal attachment remains available'}] hc=None t=315 lim=None
+ play 3: kind=bench card=Pyukumuku target=Opponent right bench energy=null result=60HP, no Energy prompt=None resp=None nested=[] hc=None t=333 lim=None
+ play 4: kind=energy_attachment card=None target=Active Mega Gyarados ex energy={"type": "Water", "count": 1, "destination": "Mega Gyarados ex", "retreat_payment_by_type": null} result=Third Water attached; Milotic retains1 prompt=None resp=None nested=[] hc=None t=335 lim=Manual attachment occurs after Pyukumuku, around335–336; native333 precedes it and346 proves3/1.
+ play 5: kind=end_turn card=None target=None energy=null result=No attack prompt=None resp=None nested=[] hc=None t=342 lim=None
+ auto: {"description": "Hiking Trail hidden draw, opponent2→3.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 346, "evidence_ids": ["n0346.00"]}
+ auto: {"description": "Poison10: Mega150→140.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 346, "evidence_ids": ["n0346.00", "n0351.40"]}
+ board_at_start: displayed_turn=7 stadium="Hiking Trail" shared=['Hiking Trail: end of each player turn draws until hand has 3']
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Weezing ex [None] bp=None hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Seadra [None] bp=1 hp=70/70(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=2:{"Water": 2} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: Team Rocket's Koffing [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=150/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=60 E=2:{"Water": 2} tool=Poison Barb cond=['Poisoned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Glaceon ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Feebas [None] bp=2 hp=30/30(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=8 stadium="Hiking Trail" shared=['Hiking Trail: end of each player turn draws until hand has 3']
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Weezing ex [None] bp=None hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Seadra [None] bp=1 hp=70/70(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=2:{"Water": 2} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: Team Rocket's Koffing [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=140/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=70 E=3:{"Water": 3} tool=Poison Barb cond=['Poisoned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Glaceon ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Milotic ex [None] bp=2 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Pyukumuku [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": ["Kingdra ex", "Rare Candy", "Horsea"], "count": 3, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0346.00"], "status": "observed", "limit_reason": null}, "owner_hand_before_end_action": {"cards_left_to_right": ["Kingdra ex", "Rare Candy", "Horsea"], "count": 3, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0346.00"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": [], "turn_evidence_ids": ["n0304.00", "n0346.00"], "limits": ["Opponent hand identities remain hidden.", "No full discard-pile screen is opened in this turn."], "visible_declined_prompts": [], "declined_prompt_limit": "No visible decline established in the inspected turn; absence is not a claim about unfilmed choices."}
+====================================================================================================
+TURN 8 who=owner keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'owner_hand_before_end_action', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits', 'visible_declined_prompts', 'declined_prompt_limit']
+ hand_at_start: count=4 status=observed lim=None cards=['Kingdra ex', 'Rare Candy', 'Horsea', 'Copycat']
+ owner_hand_start: count=4 status=observed lim=None cards=['Kingdra ex', 'Rare Candy', 'Horsea', 'Copycat']
+ opp_hand_at_owner_start: {"count": 3, "supported_range": [3, 3], "count_method": "Count individually visible card backs in native opponent fan", "basis": "Native top crop and full frame", "evidence_ids": ["n0351.40"], "limit_reason": null}
+ draw: kind=normal_draw by=Turn start cards=['Copycat'] hc 3->4 ret=None lim=None
+ draw: kind=supporter_draw by=Copycat cards=["Professor's Research", 'Kingdra ex', 'Small Balloon'] hc 0->3 ret=[{'name': 'Rare Candy', 'destination': 'Owner deck', 'count': 1, 'basis': 'Only remaining pre-Copycat card; shuffle animation at373'}] lim=None
+ draw: kind=stadium_draw by=Hiking Trail cards=['Rare Candy'] hc 2->3 ret=None lim=None
+ play 1: kind=bench card=Horsea target=Owner middle bench energy=null result=Horsea50HP enters; hand3 prompt=None resp=None nested=[] hc=3 t=352 lim=None
+ play 2: kind=card_inspection card=Horsea target=New middle Horsea energy=null result=Zoom only; no board or hand change prompt=None resp=None nested=[] hc=3 t=354 lim=None
+ play 3: kind=evolution card=Kingdra ex target=Owner left Seadra energy=null result=Kingdra170HP retains2Water; hand2 prompt=None resp=None nested=[] hc=2 t=357 lim=None
+ play 4: kind=supporter card=Copycat target=None energy=null result=Remaining Rare Candy shuffled into deck; draw3 matching opponent fan3 prompt=None resp=None nested=[] hc=3 t=369 lim=None
+ play 5: kind=tool card=Small Balloon target=Active Weezing ex energy=null result=Attached, but Basic-only retreat reduction has no effect on Stage1 Weezing prompt=None resp=None nested=[] hc=2 t=379 lim=None
+ play 6: kind=card_inspection card=Small Balloon target=Attached Small Balloon energy=null result=Printed Basic-only text inspected; no additional change prompt=None resp=None nested=[] hc=2 t=380 lim=None
+ play 7: kind=card_inspection card=Team Rocket's Weezing ex target=Active Weezing ex energy=null result=Zoom shows retreat2, still1Water prompt=None resp=None nested=[] hc=2 t=392 lim=None
+ play 8: kind=energy_attachment card=None target=Active Weezing ex energy={"type": "Water", "count": 1, "destination": "Weezing ex", "retreat_payment_by_type": null} result=Second Water attached prompt=None resp=None nested=[] hc=2 t=394 lim=None
+ play 9: kind=retreat card=Team Rocket's Weezing ex target=Promote left Kingdra ex to Active energy={"type": "Water", "count": 2, "destination": "discard", "retreat_payment_by_type": {"Water": 2}} result=Pay2Water from Weezing; Weezing left Bench0Energy; Kingdra Active2Water prompt=None resp=None nested=[] hc=2 t=398 lim=None
+ play 10: kind=attack card=Kingdra ex target=Opponent Active Mega Gyarados ex energy=null result=Stormy Prison90:140→50; prevents retreat through opponent next turn prompt=None resp=None nested=[{'order': 1, 'name': 'Poison Barb', 'result': 'Attacking Kingdra becomes Poisoned after damage', 'evidence_ids': ['n0406.00', 'n0410.00']}] hc=2 t=403 lim=None
+ auto: {"description": "Hiking Trail draws Rare Candy; hand2→3.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 414, "evidence_ids": ["n0414.00"]}
+ auto: {"description": "Poison10 on both Actives: Kingdra170→160, Mega50→40.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 419, "evidence_ids": ["n0419.00"]}
+ board_at_start: displayed_turn=8 stadium="Hiking Trail" shared=['Hiking Trail: end of each player turn draws until hand has 3']
+  owner: points=0 status=observed lim=None
+    A: Team Rocket's Weezing ex [None] bp=None hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Seadra [None] bp=1 hp=70/70(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=2:{"Water": 2} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: None
+    B: Team Rocket's Koffing [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=140/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=70 E=3:{"Water": 3} tool=Poison Barb cond=['Poisoned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Glaceon ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Milotic ex [None] bp=2 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Pyukumuku [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=9 stadium="Hiking Trail" shared=['Hiking Trail: end of each player turn draws until hand has 3']
+  owner: points=0 status=observed lim=None
+    A: Kingdra ex [None] bp=None hp=160/170(Filmed printed HP and displayed HP; no HP modifier seen) dmg=10 E=2:{"Water": 2} tool=None cond=['Poisoned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Team Rocket's Weezing ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Horsea [None] bp=2 hp=50/50(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Team Rocket's Koffing [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=40/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=170 E=3:{"Water": 3} tool=Poison Barb cond=['Poisoned'] eff=['Cannot retreat during opponent turn 9 (Stormy Prison)'] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Glaceon ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Milotic ex [None] bp=2 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Pyukumuku [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": ["Professor's Research", "Kingdra ex", "Rare Candy"], "count": 3, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0419.00"], "status": "observed", "limit_reason": null}, "owner_hand_before_end_action": {"cards_left_to_right": ["Professor's Research", "Kingdra ex"], "count": 2, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0402.00"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": ["discard_t8_owner", "discard_t8_opponent"], "turn_evidence_ids": ["n0351.40", "n0419.00"], "limits": ["Opponent hand identities remain hidden.", "No full discard-pile screen is opened in this turn."], "visible_declined_prompts": [], "declined_prompt_limit": "No visible decline established in the inspected turn; absence is not a claim about unfilmed choices."}
+====================================================================================================
+TURN 9 who=opponent keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'owner_hand_before_end_action', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits', 'visible_declined_prompts', 'declined_prompt_limit']
+ hand_at_start: count=4 status=count_observed_identities_hidden lim=Individual opponent card identities are hidden; count is directly visible at this boundary. cards=[None, None, None, None]
+ owner_hand_start: count=3 status=observed lim=None cards=["Professor's Research", 'Kingdra ex', 'Rare Candy']
+ opp_hand_at_owner_start: {"count": null, "supported_range": null, "count_method": "Count individually visible card backs in native opponent fan", "basis": null, "evidence_ids": [], "limit_reason": "Field applies only at owner turn starts; opponent acting-turn identities are hidden."}
+ draw: kind=normal_draw by=Turn start cards=[None] hc None->None ret=None lim=Individual identities hidden; number from filmed effect and card-back movement.
+ draw: kind=supporter_draw by=Professor's Research cards=[None, None] hc 3->5 ret=None lim=Individual identities hidden; number from filmed effect and card-back movement.
+ play 1: kind=ability card=Milotic ex target=Middle Milotic ex energy={"type": "Water", "count": 1, "destination": "Milotic ex", "retreat_payment_by_type": null} result=Aqua Charge adds second Water; Mega still3; normal Water available prompt=None resp=None nested=[] hc=None t=424 lim=None
+ play 2: kind=energy_attachment card=None target=Active Mega Gyarados ex energy={"type": "Water", "count": 1, "destination": "Mega Gyarados ex", "retreat_payment_by_type": null} result=Fourth Water, Milotic retains2 prompt=None resp=None nested=[] hc=None t=426 lim=None
+ play 3: kind=supporter card=Professor's Research target=None energy=null result=Two hidden cards drawn; hand5 prompt=None resp=None nested=[] hc=None t=435 lim=Research card zoom at reduced428; native435 documents resulting fan; identities stay hidden.
+ play 4: kind=attack card=Mega Gyarados ex target=Owner Active Kingdra ex energy=null result=Mega Blaster140:160→20, discard top3 owner deck prompt=None resp=None nested=[{'order': 1, 'kind': 'deck_mill', 'destination': 'Owner discard', 'count': 3, 'cards_in_reveal_order': [None, None, None], 'visible_final_discard_top': 'Soothing Shore', 'evidence_ids': ['n0441.00'], 'limit_reason': 'Three face-down discard animations; Soothing Shore final face-up top visible. Its position among animation slots and other two identities not shown.'}] hc=None t=437 lim=None
+ auto: {"description": "Hiking Trail makes no addition because opponent hand5.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 441, "evidence_ids": ["n0441.00"]}
+ auto: {"description": "Poison10: Mega40→30 and Kingdra20→10.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 446, "evidence_ids": ["n0443.00", "n0446.00"]}
+ auto: {"description": "Stormy Prison retreat restriction expires at end of opponent turn9.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 446, "evidence_ids": ["n0446.00"]}
+ board_at_start: displayed_turn=9 stadium="Hiking Trail" shared=['Hiking Trail: end of each player turn draws until hand has 3']
+  owner: points=0 status=observed lim=None
+    A: Kingdra ex [None] bp=None hp=160/170(Filmed printed HP and displayed HP; no HP modifier seen) dmg=10 E=2:{"Water": 2} tool=None cond=['Poisoned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Team Rocket's Weezing ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Horsea [None] bp=2 hp=50/50(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Team Rocket's Koffing [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=40/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=170 E=3:{"Water": 3} tool=Poison Barb cond=['Poisoned'] eff=['Cannot retreat during opponent turn 9 (Stormy Prison)'] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Glaceon ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Milotic ex [None] bp=2 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=1:{"Water": 1} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Pyukumuku [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=10 stadium="Hiking Trail" shared=['Hiking Trail: end of each player turn draws until hand has 3']
+  owner: points=0 status=observed lim=None
+    A: Kingdra ex [None] bp=None hp=10/170(Filmed printed HP and displayed HP; no HP modifier seen) dmg=160 E=2:{"Water": 2} tool=None cond=['Poisoned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Team Rocket's Weezing ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Horsea [None] bp=2 hp=50/50(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Team Rocket's Koffing [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=30/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=180 E=4:{"Water": 4} tool=Poison Barb cond=['Poisoned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Glaceon ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Milotic ex [None] bp=2 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=2:{"Water": 2} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Pyukumuku [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": ["Professor's Research", "Kingdra ex", "Rare Candy"], "count": 3, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0446.00"], "status": "observed", "limit_reason": null}, "owner_hand_before_end_action": {"cards_left_to_right": ["Professor's Research", "Kingdra ex", "Rare Candy"], "count": 3, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0446.00"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": [], "turn_evidence_ids": ["n0419.00", "n0446.00"], "limits": ["Opponent hand identities remain hidden.", "No full discard-pile screen is opened in this turn."], "visible_declined_prompts": [], "declined_prompt_limit": "No visible decline established in the inspected turn; absence is not a claim about unfilmed choices."}
+====================================================================================================
+TURN 10 who=owner keys=['turn_number', 'who_played', 'source_video', 'timing', 'hand_at_start', 'owner_hand_start', 'opponent_hand_at_owner_turn_start', 'draws_and_searches', 'plays_in_order', 'automatic_events_in_order', 'board_at_start', 'board_after', 'owner_hand_end', 'owner_hand_before_end_action', 'discard_snapshot_ids', 'turn_evidence_ids', 'limits', 'visible_declined_prompts', 'declined_prompt_limit']
+ hand_at_start: count=4 status=observed lim=None cards=["Professor's Research", 'Kingdra ex', 'Rare Candy', "Team Rocket's Weezing ex"]
+ owner_hand_start: count=4 status=observed lim=None cards=["Professor's Research", 'Kingdra ex', 'Rare Candy', "Team Rocket's Weezing ex"]
+ opp_hand_at_owner_start: {"count": 5, "supported_range": [5, 5], "count_method": "Count individually visible card backs in native opponent fan", "basis": "Native top crop and full frame", "evidence_ids": ["n0449.00"], "limit_reason": null}
+ draw: kind=normal_draw by=Turn start cards=["Team Rocket's Weezing ex"] hc 3->4 ret=None lim=None
+ play 1: kind=card_inspection card=Professor's Research target=Owner hand energy=null result=Research zoom; card remains in four-card hand. No resolved Research play or draw2 established. prompt=None resp=None nested=[] hc=4 t=450 lim=None
+ play 2: kind=opponent_concession card=None target=None energy=null result=Opponent concedes; owner wins prompt=None resp=None nested=[] hc=4 t=451 lim=None
+ auto: {"description": "Current Water generated, remains unused at concession.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 449, "evidence_ids": ["n0448.00", "n0449.00", "n0452.00"]}
+ auto: {"description": "Victory result:10turns,0points,90damage; no further game in source.", "source_video": "20261012_004435000_iOS.MP4", "timestamp_seconds": 462, "evidence_ids": ["n0462.00"]}
+ board_at_start: displayed_turn=10 stadium="Hiking Trail" shared=['Hiking Trail: end of each player turn draws until hand has 3']
+  owner: points=0 status=observed lim=None
+    A: Kingdra ex [None] bp=None hp=10/170(Filmed printed HP and displayed HP; no HP modifier seen) dmg=160 E=2:{"Water": 2} tool=None cond=['Poisoned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Team Rocket's Weezing ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Horsea [None] bp=2 hp=50/50(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Team Rocket's Koffing [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=30/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=180 E=4:{"Water": 4} tool=Poison Barb cond=['Poisoned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Glaceon ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Milotic ex [None] bp=2 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=2:{"Water": 2} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Pyukumuku [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ board_after: displayed_turn=10 stadium="Hiking Trail" shared=['Hiking Trail: end of each player turn draws until hand has 3']
+  owner: points=0 status=observed lim=None
+    A: Kingdra ex [None] bp=None hp=10/170(Filmed printed HP and displayed HP; no HP modifier seen) dmg=160 E=2:{"Water": 2} tool=None cond=['Poisoned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Team Rocket's Weezing ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=Small Balloon cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Horsea [None] bp=2 hp=50/50(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Team Rocket's Koffing [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': 'Water', 'count': 1, 'available': True} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+  opponent: points=0 status=observed lim=None
+    A: Mega Gyarados ex [None] bp=None hp=30/210(Filmed printed HP and displayed HP; no HP modifier seen) dmg=180 E=4:{"Water": 4} tool=Poison Barb cond=['Poisoned'] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Glaceon ex [None] bp=1 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Milotic ex [None] bp=2 hp=140/140(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=2:{"Water": 2} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    B: Pyukumuku [None] bp=3 hp=60/60(Filmed printed HP and displayed HP; no HP modifier seen) dmg=0 E=0:{} tool=None cond=[] eff=[] stack=None ids=None/None st=observed lim=Exact artwork/rarity variant not established by board view.
+    zone: this={'type': None, 'count': 0, 'available': False} next={'type': 'Water', 'count': 1, 'available': False} lim=None
+ other: {"owner_hand_end": {"cards_left_to_right": ["Professor's Research", "Kingdra ex", "Rare Candy", "Team Rocket's Weezing ex"], "count": 4, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0452.00"], "status": "observed", "limit_reason": null}, "owner_hand_before_end_action": {"cards_left_to_right": ["Professor's Research", "Kingdra ex", "Rare Candy", "Team Rocket's Weezing ex"], "count": 4, "basis": "Direct native unzoomed hand, left to right", "evidence_ids": ["n0449.00"], "status": "observed", "limit_reason": null}, "discard_snapshot_ids": ["discard_t10_owner", "discard_t10_opponent"], "turn_evidence_ids": ["n0449.00", "n0452.00"], "limits": ["Opponent hand identities remain hidden.", "No full discard-pile screen is opened in this turn."], "visible_declined_prompts": [], "declined_prompt_limit": "No visible decline established in the inspected turn; absence is not a claim about unfilmed choices."}
