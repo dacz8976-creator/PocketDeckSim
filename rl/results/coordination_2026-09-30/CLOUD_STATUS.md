@@ -122,6 +122,12 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
        label 42, wrong opponent pilot 39 (the other 3 change nothing the record holds).
      - `skip_exact/skip_boards.jsonl`: the board at each of the 1,139 decisions in the 217 skip turns, with the engine's damage
        forecasts both ways.
+   - **pg_pos, Sleep and the knock-out count (Oct 13): done** (tests 78d473ad, code 2aeaafad; README of `pause_games_decisions_2026-10-02`).
+     - Positions may carry `conditions` per Pokemon and `knockouts` per side; pg_pos sets them in the engine state before the bot moves.
+       The converter writes both from the ledger. Output unchanged: 92 Oct 13 positions byte for byte.
+     - km3 on 030351 t05 (Dragonair Asleep): Draconic Whip before, no attack after (Darkrai's Bad Dreams then knocks it out). On
+       010837 t09 and t11 the move is the same; the Blade's score rises with the count (140 damage, not 60).
+     - Built on main c045ede; compiles on cd20a97a and 9a0bc5ac. The laptop rebuilds K/F/C from 2aeaafad.
    - **Now:** idle.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
