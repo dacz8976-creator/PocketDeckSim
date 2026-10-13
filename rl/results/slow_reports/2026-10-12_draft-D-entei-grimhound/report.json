@@ -1,0 +1,24 @@
+{
+ "manifest_sha256": "f5b86d1aa95a45d2134c19163ff16f32aab490f6a17cd4c889bc07967a782d65",
+ "stage": "use",
+ "pilot": "kx3",
+ "reference": "km3",
+ "registration_changed": false,
+ "registration_problems": [],
+ "paired_games": 20,
+ "pooled": {
+  "n": 20,
+  "mean": 0.15,
+  "sd": 0.36634754853252327,
+  "half": 0.16055889229418857
+ },
+ "per_deck": {
+  "draft-D-entei-grimhound": {
+   "n": 20,
+   "mean": 0.15,
+   "sd": 0.36634754853252327,
+   "half": 0.16055889229418857
+  }
+ },
+ "exactly_zero": false
+}
