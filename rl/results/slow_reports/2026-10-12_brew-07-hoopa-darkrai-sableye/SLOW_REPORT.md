@@ -6,17 +6,17 @@
 
 Question: how does brew-07-hoopa-darkrai-sableye do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
 
-**PARTIAL: 80 kx3 games + 80 cheap km3 baseline games so far (160 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
+**PARTIAL: 100 kx3 games + 100 cheap km3 baseline games so far (200 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
 
-Size: 80 kx3 games + 80 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
+Size: 100 kx3 games + 100 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
 
-brew-07-hoopa-darkrai-sableye scored **83.8%** over **80 games** (games from 4 of the 8 public lists so far): probably between 74.2% and 90.3% (95% interval; this range refers to these 80 kx3 games). A win counts 1, a tie 1/2, a loss 0.
+brew-07-hoopa-darkrai-sableye scored **78.0%** over **100 games** (games from 5 of the 8 public lists so far): probably between 68.9% and 85.0% (95% interval; this range refers to these 100 kx3 games). A win counts 1, a tie 1/2, a loss 0.
 
 ### How much better kx3 plays this deck than km3
 
-On the same deals, kx3 scored **+11.9 points** compared with km3 piloting this deck (kx3 83.8%, km3 on this deck 71.9%, over 80 paired games: each a deal and seat played by both pilots, so 80 kx3 games + 80 cheap km3 baseline games), probably between +3.3 and +20.4 points (95% interval; this range refers to those 80 paired games).
+On the same deals, kx3 scored **+13.5 points** compared with km3 piloting this deck (kx3 78.0%, km3 on this deck 64.5%, over 100 paired games: each a deal and seat played by both pilots, so 100 kx3 games + 100 cheap km3 baseline games), probably between +5.8 and +21.2 points (95% interval; this range refers to those 100 paired games).
 
-That range does not include no gain: on these 80 paired games kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 80 paired games make it.
+That range does not include no gain: on these 100 paired games kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 100 paired games make it.
 
 ## Against each public list
 
@@ -26,7 +26,7 @@ That range does not include no gain: on these 80 paired games kx3 did better tha
 | t-blaziken | 20 | 90.0% | 69.9% to 97.2% |
 | t-hydreigon | 20 | 85.0% | 64.0% to 94.8% |
 | t-lucario | 20 | 80.0% | 58.4% to 91.9% |
-| t-sceptile | 0 | n/a | n/a |
+| t-sceptile | 20 | 55.0% | 34.2% to 74.2% |
 | t-suicune | 0 | n/a | n/a |
 | t-vespiquen | 0 | n/a | n/a |
 | t-weezing | 0 | n/a | n/a |
@@ -35,25 +35,25 @@ Each row's range refers only to the kx3 games against that list (the row's games
 
 ## Who went first
 
-- When brew-07-hoopa-darkrai-sableye went first: 77.5% over 40 games (62.5% to 87.7%)
-- When brew-07-hoopa-darkrai-sableye went second: 90.0% over 40 games (76.9% to 96.0%)
+- When brew-07-hoopa-darkrai-sableye went first: 75.0% over 48 games (61.2% to 85.1%)
+- When brew-07-hoopa-darkrai-sableye went second: 80.8% over 52 games (68.1% to 89.2%)
 
 Each range refers only to the kx3 games on its line; a few dozen games can show a large first-or-second difference, not a small one.
 
 ## The time it took
 
-kx3 took 495 s a game on average (about 8 min), median 437 s, slowest 979 s, with 4 threads going at once. km3 playing this deck took 0.5 s a game.
-Running time from the run log: 2.9 h over 4 sittings, for 160 games in all: 80 kx3 games + 80 cheap km3 baseline games.
+kx3 took 504 s a game on average (about 8 min), median 463 s, slowest 979 s, with 4 threads going at once. km3 playing this deck took 0.5 s a game.
+Running time from the run log: 3.7 h over 5 sittings, for 200 games in all: 100 kx3 games + 100 cheap km3 baseline games.
 
 ## What these numbers can and can't say
 
-**These numbers say how brew-07-hoopa-darkrai-sableye did in simulated games with kx3 playing it against the 8 public lists, probably between 74.2% and 90.3%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
+**These numbers say how brew-07-hoopa-darkrai-sableye did in simulated games with kx3 playing it against the 8 public lists, probably between 68.9% and 85.0%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
 
 In more detail:
 
 - kx3, a strong but slow pilot, plays your deck knowing its own cards. It does not know which of the 8 public lists it faces, but its opponent is always one of them and always plays like the program kx3 imagines when it looks ahead, so it is better informed here than it would be against a person on the ladder or a deck outside the 8 lists. Read the score as the optimistic end.
 - The 8 lists count equally here, not by how common they are on the ladder.
-- The range covers only the luck of the shuffles and coin flips in these 80 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays brew-07-hoopa-darkrai-sableye clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (16.1 points here), and more deals narrow it.
+- The range covers only the luck of the shuffles and coin flips in these 100 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays brew-07-hoopa-darkrai-sableye clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (16.1 points here), and more deals narrow it.
 - There is no pass or fail line: whether brew-07-hoopa-darkrai-sableye is worth playing is a call for the player.
 
 ## What was run
