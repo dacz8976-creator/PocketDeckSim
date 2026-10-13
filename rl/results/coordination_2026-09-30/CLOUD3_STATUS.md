@@ -39,3 +39,4 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
 - 2026-10-13: draft D registered (rl/results/slow_reports/2026-10-12_draft-D-entei-grimhound, seed_base 24,663,900,000, deck sha256 31035755…, 320 games = 160 kx3 + 160 km3, --deals 10 --threads 4 --school-rule off, manifest sha256 f5b86d1aa95a…; self-check accepted from the committed record). Pushed before any game; now playing in slices of --max-games 40 under the driver, folder pushed after each slice.
 - 2026-10-13 05:41Z: 2026-10-12_draft-D-entei-grimhound: slice done, 40 of 320 games on disk, folder pushed.
 - 2026-10-13 07:10Z: 2026-10-12_draft-D-entei-grimhound: slice done, 80 of 320 games on disk, folder pushed.
+- 2026-10-13 08:56Z: 2026-10-12_draft-D-entei-grimhound: slice done, 120 of 320 games on disk, folder pushed.

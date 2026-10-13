@@ -10,21 +10,21 @@ Pre-registration order: registered 2026-10-13T03:44:27Z; first game started 2026
 
 Self-check digests recorded at registration: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204539Z.json (commit dbe31f48b3da): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration); `selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204539Z.json (commit dbe31f48b3da): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration)
 
-- Planned 320 games; finished 80; complete pairs 40 (= 80 games); unpaired games 0; errors 0.
+- Planned 320 games; finished 120; complete pairs 60 (= 120 games); unpaired games 0; errors 0.
 - Paired difference = score(arm X) − score(arm ref) per (deck, opponent, deal, seat), in percentage points of score (win 1, tie ½). Intervals are mean ± 1.96·sd/√n over paired games. No pass/fail threshold.
 
 ## Result
 
-**Pooled over all 40 paired games: +15.0 ± 11.2 points** (arm X 37.5% vs arm ref 22.5% score).
+**Pooled over all 60 paired games: +16.7 ± 9.5 points** (arm X 36.7% vs arm ref 20.0% score).
 
 
 ### Per deck, pooled over its opponents
 
 | deck | paired games | arm X score | arm ref score | paired difference (points) | went first: diff | went second: diff |
 |---|---|---|---|---|---|---|
-| draft-D-entei-grimhound | 40 | 37.5% | 22.5% | +15.0 ± 11.2 | +19.0 ± 17.2 | +10.5 ± 14.2 |
+| draft-D-entei-grimhound | 60 | 36.7% | 20.0% | +16.7 ± 9.5 | +18.8 ± 13.7 | +14.3 ± 13.2 |
 
-Overall by who went first (identical in both arms): deck first +19.0 ± 17.2 (n=21); deck second +10.5 ± 14.2 (n=19).
+Overall by who went first (identical in both arms): deck first +18.8 ± 13.7 (n=32); deck second +14.3 ± 13.2 (n=28).
 
 ### Per (deck, opponent) pair
 
@@ -32,6 +32,7 @@ Overall by who went first (identical in both arms): deck first +19.0 ± 17.2 (n=
 |---|---|---|---|---|---|
 | draft-D-entei-grimhound | t-altaria | 20 | 45.0% | 30.0% | +15.0 ± 16.1 |
 | draft-D-entei-grimhound | t-blaziken | 20 | 30.0% | 15.0% | +15.0 ± 16.1 |
+| draft-D-entei-grimhound | t-hydreigon | 20 | 35.0% | 15.0% | +20.0 ± 18.0 |
 
 ## Runtime and cost
 
@@ -39,10 +40,10 @@ Wall time is per game on this machine with the threads the run used; it includes
 
 | arm | role | pilot | games | wall per game: mean / median / p95 / max | games per second (1 thread) | decisions per game | ms per decision: mean / median / p95 / max | decision time per game |
 |---|---|---|---|---|---|---|---|---|
-| X | deck seat | `kx3` | 40 | 1189.12 / 1107.83 / 1997.48 / 2024.37 s | 0.00 | 24.3 | 48911.2 / 50177.8 / 90799.8 / 168129.9 | 20 min |
-| X | opponent seat | `km3` | 40 |  |  | 23.5 | 23.7 / 10.2 / 90.5 / 383.3 | 0.56 s |
-| ref | deck seat | `km3` | 40 | 1.14 / 1.06 / 1.90 / 3.41 s | 0.87 | 23.8 | 28.2 / 9.5 / 112.3 / 572.3 | 0.67 s |
-| ref | opponent seat | `km3` | 40 |  |  | 23.0 | 20.1 / 9.1 / 71.6 / 295.6 | 0.46 s |
+| X | deck seat | `kx3` | 60 | 1200.53 / 1154.15 / 1997.48 / 2307.28 s | 0.00 | 24.7 | 48514.2 / 49932.5 / 90858.3 / 168129.9 | 20 min |
+| X | opponent seat | `km3` | 60 |  |  | 23.7 | 25.0 / 10.2 / 94.1 / 383.3 | 0.59 s |
+| ref | deck seat | `km3` | 60 | 1.15 / 1.06 / 2.22 / 3.41 s | 0.87 | 23.9 | 27.2 / 9.4 / 109.4 / 572.3 | 0.65 s |
+| ref | opponent seat | `km3` | 60 |  |  | 22.9 | 21.2 / 8.8 / 80.1 / 295.6 | 0.49 s |
 
 One paired game (both arms) took 20 min on average; the run used 4 thread(s).
 
@@ -52,8 +53,8 @@ At the sd reached, the number of paired games for a given half-width is `(1.96·
 
 | scope | paired games so far | sd | interval now (points) | for ±5 points: total / more games, time | for ±3 points: total / more games, time |
 |---|---|---|---|---|---|
-| all decks pooled | 40 | 36.2 | +15.0 ± 11.2 | 201 / 161, 13.3 h | 559 / 519, 42.9 h |
-| draft-D-entei-grimhound | 40 | 36.2 | +15.0 ± 11.2 | 201 / 161, 13.3 h | 559 / 519, 42.9 h |
+| all decks pooled | 60 | 37.6 | +16.7 ± 9.5 | 218 / 158, 13.2 h | 603 / 543, 45.3 h |
+| draft-D-entei-grimhound | 60 | 37.6 | +16.7 ± 9.5 | 218 / 158, 13.2 h | 603 / 543, 45.3 h |
 
 ## Intended lines
 
