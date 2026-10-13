@@ -1,3 +1,5 @@
+> **Redone as v2, with Sleep and Poison, Kingambit's knock-out count and verified deck lists: see [v2/PAUSE_GAMES_2026-10-13_READ_v2_sonnet.md](v2/PAUSE_GAMES_2026-10-13_READ_v2_sonnet.md). Where the two disagree, v2 is right.**
+
 # The 14 new pause games (Oct 12-13), read against km3: what is interesting
 
 Read by the Sonnet session "Opus agents progress", Oct 13, for Dustin through the laptop. Branch `sonnet/pause-games-2026-10-13`, this folder only. Nothing on main, no hold file, no kx3 run. The import files of the batch folders were not read or used.
