@@ -1,0 +1,54 @@
+[2026-10-13T20:26:51Z] launch_detached: start pgfix-review in /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim: bash /home/dacz8976/runs/pgfix_review.sh
+[2026-10-13T20:26:51Z] 1. build the new runner on F (cd20a97a)
+[2026-10-13T20:36:02Z] built pg_pos_F2 sha256 5c4859949a88a28b; pg_pos.rs dfcd968259ce93ea
+[2026-10-13T20:36:02Z] 2a. pg_pos tests
+----------------------------------------------------------------------
+Ran 9 tests in 0.553s
+
+OK
+[2026-10-13T20:36:05Z] 2b. converter tests (real ledgers available here)
+----------------------------------------------------------------------
+Ran 85 tests in 7.185s
+
+OK
+[2026-10-13T20:36:35Z] 3. km3 on the 119 with the new runner v the committed runs_km3
+km3, new runner v committed runs_km3: equal 119 of 119; differ []
+[2026-10-13T20:38:10Z] 4. positions regenerated with the old and the new converter (batches 06, 09, 11, as regenerate.sh), scratch only
+committed 125, old converter 125, new converter 125 positions; old reproduces the committed file: True
+positions differing beyond the new fields and the old condition note: 0 []
+positions with a condition now: 15; of the study's 119: 14
+   KW-261005_031138000-t06 in study {'me': [], 'opp': [('Tapu Koko ex A3a 019', ['Confused'])]}
+   KW-261005_032857000-t06 in study {'me': [('Aegislash B1 172', ['Poisoned'])], 'opp': []}
+   KW-261005_124532000-t05 in study {'me': [], 'opp': [('Entei ex A4a 010', ['Poisoned'])]}
+   KW-261010_020258000-t06 in study {'me': [], 'opp': [("Team Rocket's Raticate ex B4a 059", ['Poisoned'])]}
+   KW-261010_020908000-t06 in study {'me': [('Seadra A1 071', ['Confused'])], 'opp': []}
+   KW-261010_021629000-t08 in study {'me': [], 'opp': [('Snorlax ex A3b 057', ['Poisoned'])]}
+   KW-261010_021629000-t10 in study {'me': [], 'opp': [('Snorlax ex A3b 057', ['Poisoned', 'Asleep'])]}
+   KW-261010_021629000-t18 in study {'me': [], 'opp': [('Snorlax ex A3b 057', ['Poisoned'])]}
+   KW-261010_021629000-t20 in study {'me': [], 'opp': [('Snorlax ex A3b 057', ['Poisoned'])]}
+   KW-261010_021629000-t22 in study {'me': [], 'opp': [('Snorlax ex A3b 057', ['Poisoned'])]}
+   KW-261010_021629000-t24 in study {'me': [], 'opp': [('Snorlax ex A3b 057', ['Poisoned', 'Asleep'])]}
+   KW-261012_003458000-t09 in study {'me': [], 'opp': [('Dragonite A1 185', ['Poisoned'])]}
+   KW-261012_004435000-t06 in study {'me': [], 'opp': [('Mega Gyarados ex B1 052', ['Poisoned', 'Burned'])]}
+   KW-261012_004435000-t08 in study {'me': [], 'opp': [('Mega Gyarados ex B1 052', ['Poisoned'])]}
+   KW-261012_004435000-t10 - {'me': [('Kingdra ex A4 043', ['Poisoned'])], 'opp': [('Mega Gyarados ex B1 052', ['Poisoned'])]}
+positions still carrying the old 'not represented' note: 0
+knock-out count v the opponent's points (count > points, or points > 0 with count 0, or no count): 0
+count distribution: [(0, 89), (1, 24), (2, 12)]
+[2026-10-13T20:38:15Z] 5. --dump-state on the condition positions (new converter's records, new runner)
+  state KW-261005_031138000-t06 knockouts [0, 0] conditions {'me': {}, 'opp': {'0': ['Confused']}}
+  state KW-261005_032857000-t06 knockouts [0, 0] conditions {'me': {'0': ['Poisoned']}, 'opp': {}}
+  state KW-261005_124532000-t05 knockouts [1, 0] conditions {'me': {}, 'opp': {'0': ['Poisoned']}}
+  state KW-261010_020258000-t06 knockouts [1, 0] conditions {'me': {}, 'opp': {'0': ['Poisoned']}}
+  state KW-261010_020908000-t06 knockouts [0, 0] conditions {'me': {'0': ['Confused']}, 'opp': {}}
+  state KW-261010_021629000-t08 knockouts [0, 0] conditions {'me': {}, 'opp': {'0': ['Poisoned']}}
+  state KW-261010_021629000-t10 knockouts [0, 0] conditions {'me': {}, 'opp': {'0': ['Asleep', 'Poisoned']}}
+  state KW-261010_021629000-t18 knockouts [0, 0] conditions {'me': {}, 'opp': {'0': ['Poisoned']}}
+  state KW-261010_021629000-t20 knockouts [0, 0] conditions {'me': {}, 'opp': {'0': ['Poisoned']}}
+  state KW-261010_021629000-t22 knockouts [0, 0] conditions {'me': {}, 'opp': {'0': ['Poisoned']}}
+  state KW-261010_021629000-t24 knockouts [1, 0] conditions {'me': {}, 'opp': {'0': ['Asleep', 'Poisoned']}}
+  state KW-261012_003458000-t09 knockouts [2, 0] conditions {'me': {}, 'opp': {'0': ['Poisoned']}}
+  state KW-261012_004435000-t06 knockouts [0, 0] conditions {'me': {}, 'opp': {'0': ['Poisoned', 'Burned']}}
+  state KW-261012_004435000-t08 knockouts [0, 0] conditions {'me': {}, 'opp': {'0': ['Poisoned']}}
+  state KW-261012_004435000-t10 knockouts [0, 0] conditions {'me': {'0': ['Poisoned']}, 'opp': {'0': ['Poisoned']}}
+[2026-10-13T20:38:16Z] DONE pgfix review
