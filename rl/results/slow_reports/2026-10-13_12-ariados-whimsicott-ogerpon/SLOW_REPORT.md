@@ -6,24 +6,24 @@
 
 Question: how does 12-ariados-whimsicott-ogerpon do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
 
-**PARTIAL: 20 kx3 games + 20 cheap km3 baseline games so far (40 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
+**PARTIAL: 40 kx3 games + 40 cheap km3 baseline games so far (80 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
 
-Size: 20 kx3 games + 20 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
+Size: 40 kx3 games + 40 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
 
-12-ariados-whimsicott-ogerpon scored **60.0%** over **20 games** (games from 1 of the 8 public lists so far): probably between 38.7% and 78.1% (95% interval; this range refers to these 20 kx3 games). A win counts 1, a tie 1/2, a loss 0.
+12-ariados-whimsicott-ogerpon scored **50.0%** over **40 games** (games from 2 of the 8 public lists so far): probably between 35.2% and 64.8% (95% interval; this range refers to these 40 kx3 games). A win counts 1, a tie 1/2, a loss 0.
 
 ### How much better kx3 plays this deck than km3
 
-On the same deals, kx3 scored **+20.0 points** compared with km3 piloting this deck (kx3 60.0%, km3 on this deck 40.0%, over 20 paired games: each a deal and seat played by both pilots, so 20 kx3 games + 20 cheap km3 baseline games), probably between +0.8 and +39.2 points (95% interval; this range refers to those 20 paired games).
+On the same deals, kx3 scored **+18.8 points** compared with km3 piloting this deck (kx3 50.0%, km3 on this deck 31.2%, over 40 paired games: each a deal and seat played by both pilots, so 40 kx3 games + 40 cheap km3 baseline games), probably between +6.4 and +31.1 points (95% interval; this range refers to those 40 paired games).
 
-That range does not include no gain: on these 20 paired games kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 20 paired games make it.
+That range does not include no gain: on these 40 paired games kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 40 paired games make it.
 
 ## Against each public list
 
 | opponent (km3) | kx3 games | score | 95% range |
 |---|---|---|---|
 | t-altaria | 20 | 60.0% | 38.7% to 78.1% |
-| t-blaziken | 0 | n/a | n/a |
+| t-blaziken | 20 | 40.0% | 21.9% to 61.3% |
 | t-hydreigon | 0 | n/a | n/a |
 | t-lucario | 0 | n/a | n/a |
 | t-sceptile | 0 | n/a | n/a |
@@ -35,25 +35,25 @@ Each row's range refers only to the kx3 games against that list (the row's games
 
 ## Who went first
 
-- When 12-ariados-whimsicott-ogerpon went first: 80.0% over 10 games (49.0% to 94.3%)
-- When 12-ariados-whimsicott-ogerpon went second: 40.0% over 10 games (16.8% to 68.7%)
+- When 12-ariados-whimsicott-ogerpon went first: 63.2% over 19 games (41.0% to 80.9%)
+- When 12-ariados-whimsicott-ogerpon went second: 38.1% over 21 games (20.8% to 59.1%)
 
 Each range refers only to the kx3 games on its line; a few dozen games can show a large first-or-second difference, not a small one.
 
 ## The time it took
 
-kx3 took 842 s a game on average (about 14 min), median 839 s, slowest 1529 s, with 4 threads going at once. km3 playing this deck took 0.9 s a game.
-Running time from the run log: 73 min over 1 sitting, for 40 games in all: 20 kx3 games + 20 cheap km3 baseline games.
+kx3 took 721 s a game on average (about 12 min), median 646 s, slowest 1529 s, with 4 threads going at once. km3 playing this deck took 0.8 s a game.
+Running time from the run log: 2.1 h over 2 sittings, for 80 games in all: 40 kx3 games + 40 cheap km3 baseline games.
 
 ## What these numbers can and can't say
 
-**These numbers say how 12-ariados-whimsicott-ogerpon did in simulated games with kx3 playing it against the 8 public lists, probably between 38.7% and 78.1%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
+**These numbers say how 12-ariados-whimsicott-ogerpon did in simulated games with kx3 playing it against the 8 public lists, probably between 35.2% and 64.8%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
 
 In more detail:
 
 - kx3, a strong but slow pilot, plays your deck knowing its own cards. It does not know which of the 8 public lists it faces, but its opponent is always one of them and always plays like the program kx3 imagines when it looks ahead, so it is better informed here than it would be against a person on the ladder or a deck outside the 8 lists. Read the score as the optimistic end.
 - The 8 lists count equally here, not by how common they are on the ladder.
-- The range covers only the luck of the shuffles and coin flips in these 20 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays 12-ariados-whimsicott-ogerpon clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (39.4 points here), and more deals narrow it.
+- The range covers only the luck of the shuffles and coin flips in these 40 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays 12-ariados-whimsicott-ogerpon clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (29.6 points here), and more deals narrow it.
 - There is no pass or fail line: whether 12-ariados-whimsicott-ogerpon is worth playing is a call for the player.
 
 ## What was run
