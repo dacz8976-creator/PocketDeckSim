@@ -46,6 +46,8 @@ They are estimates until the first slices finish.
     hours (about 75 sandbox hours), with no games played.
   - Either launch everything at once and accept the risk, or start one m64 worker first and the other m64 workers once its stamp shows
     `724e581a…`. The second option costs about 7.5 hours of wall time. The coordinator's call.
+  - **Decided (coordinator, Oct 13):** everything at once, accepting the risk. A mismatch would cost about $15 of credits and 7.5 hours,
+    and it would be a real cross-machine finding worth knowing anyway.
 - **A deck is played by one worker only.** A deck whose worker stopped, or any extra slice, goes to a fresh worker with a fresh brief: a new
   worker name, its own folder and its own stamp, on the same registration. A sealed folder is never touched again.
 - **The hand-off** goes to `rl/results/exam_m32_m64_2026-10/workers/`, one folder per worker, sealed.
@@ -53,7 +55,9 @@ They are estimates until the first slices finish.
   - When a registration's 11 decks are in, the laptop merges it into its own folder:
     `split_collect.py merge --manifest .../reg_<s>/manifest.json --worker ... --out rl/results/exam_m32_m64_2026-10/reg_<s>`.
 
-## A suggested layout: 14 workers, about 23 hours of wall time at most (build, stamp and play, estimates)
+## The layout: 14 workers, about 23 hours of wall time at most (build, stamp and play, estimates)
+
+The coordinator's choice, Oct 13: all 14 launched at once.
 
 | worker | registration | decks | play est. h | + stamp |
 |---|---|---|---:|---:|
