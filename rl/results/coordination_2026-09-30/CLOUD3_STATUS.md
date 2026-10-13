@@ -41,3 +41,4 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
 - 2026-10-13 07:10Z: 2026-10-12_draft-D-entei-grimhound: slice done, 80 of 320 games on disk, folder pushed.
 - 2026-10-13 08:56Z: 2026-10-12_draft-D-entei-grimhound: slice done, 120 of 320 games on disk, folder pushed.
 - 2026-10-13 10:27Z: 2026-10-12_draft-D-entei-grimhound: slice done, 160 of 320 games on disk, folder pushed.
+- 2026-10-13 12:18Z: 2026-10-12_draft-D-entei-grimhound: slice done, 200 of 320 games on disk, folder pushed.

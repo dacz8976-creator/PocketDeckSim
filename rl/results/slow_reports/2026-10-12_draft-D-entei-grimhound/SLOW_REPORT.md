@@ -6,17 +6,17 @@
 
 Question: how does draft-D-entei-grimhound do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
 
-**PARTIAL: 80 kx3 games + 80 cheap km3 baseline games so far (160 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
+**PARTIAL: 100 kx3 games + 100 cheap km3 baseline games so far (200 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
 
-Size: 80 kx3 games + 80 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
+Size: 100 kx3 games + 100 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
 
-draft-D-entei-grimhound scored **40.0%** over **80 games** (games from 4 of the 8 public lists so far): probably between 30.0% and 51.0% (95% interval; this range refers to these 80 kx3 games). A win counts 1, a tie 1/2, a loss 0.
+draft-D-entei-grimhound scored **44.0%** over **100 games** (games from 5 of the 8 public lists so far): probably between 34.7% and 53.8% (95% interval; this range refers to these 100 kx3 games). A win counts 1, a tie 1/2, a loss 0.
 
 ### How much better kx3 plays this deck than km3
 
-On the same deals, kx3 scored **+15.0 points** compared with km3 piloting this deck (kx3 40.0%, km3 on this deck 25.0%, over 80 paired games: each a deal and seat played by both pilots, so 80 kx3 games + 80 cheap km3 baseline games), probably between +7.0 and +23.0 points (95% interval; this range refers to those 80 paired games).
+On the same deals, kx3 scored **+20.0 points** compared with km3 piloting this deck (kx3 44.0%, km3 on this deck 24.0%, over 100 paired games: each a deal and seat played by both pilots, so 100 kx3 games + 100 cheap km3 baseline games), probably between +12.0 and +28.0 points (95% interval; this range refers to those 100 paired games).
 
-That range does not include no gain: on these 80 paired games kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 80 paired games make it.
+That range does not include no gain: on these 100 paired games kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 100 paired games make it.
 
 ## Against each public list
 
@@ -26,7 +26,7 @@ That range does not include no gain: on these 80 paired games kx3 did better tha
 | t-blaziken | 20 | 30.0% | 14.5% to 51.9% |
 | t-hydreigon | 20 | 35.0% | 18.1% to 56.7% |
 | t-lucario | 20 | 50.0% | 29.9% to 70.1% |
-| t-sceptile | 0 | n/a | n/a |
+| t-sceptile | 20 | 60.0% | 38.7% to 78.1% |
 | t-suicune | 0 | n/a | n/a |
 | t-vespiquen | 0 | n/a | n/a |
 | t-weezing | 0 | n/a | n/a |
@@ -35,25 +35,25 @@ Each row's range refers only to the kx3 games against that list (the row's games
 
 ## Who went first
 
-- When draft-D-entei-grimhound went first: 47.6% over 42 games (33.4% to 62.3%)
-- When draft-D-entei-grimhound went second: 31.6% over 38 games (19.1% to 47.5%)
+- When draft-D-entei-grimhound went first: 51.0% over 51 games (37.7% to 64.1%)
+- When draft-D-entei-grimhound went second: 36.7% over 49 games (24.7% to 50.7%)
 
 Each range refers only to the kx3 games on its line; a few dozen games can show a large first-or-second difference, not a small one.
 
 ## The time it took
 
-kx3 took 1172 s a game on average (about 20 min), median 1116 s, slowest 2307 s, with 4 threads going at once. km3 playing this deck took 1.1 s a game.
-Running time from the run log: 6.7 h over 4 sittings, for 160 games in all: 80 kx3 games + 80 cheap km3 baseline games.
+kx3 took 1196 s a game on average (about 20 min), median 1154 s, slowest 2307 s, with 4 threads going at once. km3 playing this deck took 1.2 s a game.
+Running time from the run log: 8.5 h over 5 sittings, for 200 games in all: 100 kx3 games + 100 cheap km3 baseline games.
 
 ## What these numbers can and can't say
 
-**These numbers say how draft-D-entei-grimhound did in simulated games with kx3 playing it against the 8 public lists, probably between 30.0% and 51.0%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
+**These numbers say how draft-D-entei-grimhound did in simulated games with kx3 playing it against the 8 public lists, probably between 34.7% and 53.8%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
 
 In more detail:
 
 - kx3, a strong but slow pilot, plays your deck knowing its own cards. It does not know which of the 8 public lists it faces, but its opponent is always one of them and always plays like the program kx3 imagines when it looks ahead, so it is better informed here than it would be against a person on the ladder or a deck outside the 8 lists. Read the score as the optimistic end.
 - The 8 lists count equally here, not by how common they are on the ladder.
-- The range covers only the luck of the shuffles and coin flips in these 80 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays draft-D-entei-grimhound clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (21.0 points here), and more deals narrow it.
+- The range covers only the luck of the shuffles and coin flips in these 100 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays draft-D-entei-grimhound clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (19.1 points here), and more deals narrow it.
 - There is no pass or fail line: whether draft-D-entei-grimhound is worth playing is a call for the player.
 
 ## What was run
