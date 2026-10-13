@@ -1,0 +1,388 @@
+PGSTEP KW-261010_013009000-t05 seed 1 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -550.933333333333394 EndTurn
+PGDUMP         18.733333333333313 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -198.933333333333366 Attach:1Fighting@2 zone
+PGDUMP         18.733333333333313 Play:Professor's Research
+PGDUMP         48.066666666666627 Play:Wally
+PGSTEP KW-261010_013009000-t05 seed 1 free 1
+PGSTEP KW-261010_013009000-t05 seed 1 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       -401.933333333333394 EndTurn
+PGDUMP        164.733333333333320 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGSTEP KW-261010_013009000-t05 seed 1 free 3
+PGCAND EndTurn
+PGCAND Attack:Strength
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=4
+PGDUMP        -75.266666666666680 EndTurn
+PGDUMP        164.733333333333320 Attack:Strength
+PGDUMP      -1072.933333333333394 Retreat:1
+PGDUMP      -1318.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t05 seed 1 free 4
+PGSTEP KW-261010_013009000-t05 seed 2 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -550.933333333333394 EndTurn
+PGDUMP        416.733333333333292 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -699.933333333333394 Attach:1Fighting@2 zone
+PGDUMP        416.733333333333292 Play:Professor's Research
+PGDUMP         48.066666666666627 Play:Wally
+PGSTEP KW-261010_013009000-t05 seed 3 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -550.933333333333394 EndTurn
+PGDUMP         18.733333333333313 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGDUMP         18.733333333333313 Play:Professor's Research
+PGDUMP         48.066666666666627 Play:Wally
+PGSTEP KW-261010_013009000-t05 seed 3 free 1
+PGSTEP KW-261010_013009000-t05 seed 3 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       -401.933333333333394 EndTurn
+PGDUMP        164.733333333333320 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGSTEP KW-261010_013009000-t05 seed 3 free 3
+PGCAND EndTurn
+PGCAND Attack:Strength
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=4
+PGDUMP        -75.266666666666680 EndTurn
+PGDUMP        164.733333333333320 Attack:Strength
+PGDUMP      -1072.933333333333394 Retreat:1
+PGDUMP      -1318.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t05 seed 3 free 4
+PGSTEP KW-261010_013009000-t05 seed 4 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -550.933333333333394 EndTurn
+PGDUMP         18.733333333333313 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -678.933333333333394 Attach:1Fighting@2 zone
+PGDUMP         18.733333333333313 Play:Professor's Research
+PGDUMP         48.066666666666627 Play:Wally
+PGSTEP KW-261010_013009000-t05 seed 4 free 1
+PGSTEP KW-261010_013009000-t05 seed 4 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       -401.933333333333394 EndTurn
+PGDUMP        164.733333333333320 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGSTEP KW-261010_013009000-t05 seed 4 free 3
+PGCAND EndTurn
+PGCAND Attack:Strength
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=4
+PGDUMP        -75.266666666666680 EndTurn
+PGDUMP        164.733333333333320 Attack:Strength
+PGDUMP      -1072.933333333333394 Retreat:1
+PGDUMP      -1318.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t05 seed 4 free 4
+PGSTEP KW-261010_013009000-t05 seed 5 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -550.933333333333394 EndTurn
+PGDUMP         18.733333333333313 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGDUMP         18.733333333333313 Play:Professor's Research
+PGDUMP         48.066666666666627 Play:Wally
+PGSTEP KW-261010_013009000-t05 seed 5 free 1
+PGSTEP KW-261010_013009000-t05 seed 5 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       -401.933333333333394 EndTurn
+PGDUMP        164.733333333333320 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGSTEP KW-261010_013009000-t05 seed 5 free 3
+PGCAND EndTurn
+PGCAND Attack:Strength
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=4
+PGDUMP        -75.266666666666680 EndTurn
+PGDUMP        164.733333333333320 Attack:Strength
+PGDUMP      -1072.933333333333394 Retreat:1
+PGDUMP      -1318.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t05 seed 5 free 4
+PGSTEP KW-261010_013009000-t05 seed 6 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -550.933333333333394 EndTurn
+PGDUMP         18.733333333333313 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -198.933333333333366 Attach:1Fighting@2 zone
+PGDUMP         18.733333333333313 Play:Professor's Research
+PGDUMP         48.066666666666627 Play:Wally
+PGSTEP KW-261010_013009000-t05 seed 6 free 1
+PGSTEP KW-261010_013009000-t05 seed 6 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       -401.933333333333394 EndTurn
+PGDUMP        164.733333333333320 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGSTEP KW-261010_013009000-t05 seed 6 free 3
+PGCAND EndTurn
+PGCAND Attack:Strength
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=4
+PGDUMP        -75.266666666666680 EndTurn
+PGDUMP        164.733333333333320 Attack:Strength
+PGDUMP      -1072.933333333333394 Retreat:1
+PGDUMP      -1318.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t05 seed 6 free 4
+PGSTEP KW-261010_013009000-t05 seed 7 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -550.933333333333394 EndTurn
+PGDUMP         18.733333333333313 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGDUMP         18.733333333333313 Play:Professor's Research
+PGDUMP         48.066666666666627 Play:Wally
+PGSTEP KW-261010_013009000-t05 seed 7 free 1
+PGSTEP KW-261010_013009000-t05 seed 7 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       -401.933333333333394 EndTurn
+PGDUMP        164.733333333333320 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGSTEP KW-261010_013009000-t05 seed 7 free 3
+PGCAND EndTurn
+PGCAND Attack:Strength
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=4
+PGDUMP        -75.266666666666680 EndTurn
+PGDUMP        164.733333333333320 Attack:Strength
+PGDUMP      -1072.933333333333394 Retreat:1
+PGDUMP      -1318.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t05 seed 7 free 4
+PGSTEP KW-261010_013009000-t05 seed 8 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -550.933333333333394 EndTurn
+PGDUMP         18.733333333333313 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGDUMP         18.733333333333313 Play:Professor's Research
+PGDUMP         48.066666666666627 Play:Wally
+PGSTEP KW-261010_013009000-t05 seed 8 free 1
+PGSTEP KW-261010_013009000-t05 seed 8 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       -401.933333333333394 EndTurn
+PGDUMP        164.733333333333320 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGSTEP KW-261010_013009000-t05 seed 8 free 3
+PGCAND EndTurn
+PGCAND Attack:Strength
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=4
+PGDUMP        -75.266666666666680 EndTurn
+PGDUMP        164.733333333333320 Attack:Strength
+PGDUMP      -1072.933333333333394 Retreat:1
+PGDUMP      -1318.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t05 seed 8 free 4
+PGSTEP KW-261010_013009000-t05 seed 9 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -550.933333333333394 EndTurn
+PGDUMP         18.733333333333313 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGDUMP         18.733333333333313 Play:Professor's Research
+PGDUMP         48.066666666666627 Play:Wally
+PGSTEP KW-261010_013009000-t05 seed 9 free 1
+PGSTEP KW-261010_013009000-t05 seed 9 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       -401.933333333333394 EndTurn
+PGDUMP        164.733333333333320 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGSTEP KW-261010_013009000-t05 seed 9 free 3
+PGCAND EndTurn
+PGCAND Attack:Strength
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=4
+PGDUMP        -75.266666666666680 EndTurn
+PGDUMP        164.733333333333320 Attack:Strength
+PGDUMP      -1072.933333333333394 Retreat:1
+PGDUMP      -1318.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t05 seed 9 free 4
+PGSTEP KW-261010_013009000-t05 seed 10 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -550.933333333333394 EndTurn
+PGDUMP         18.733333333333313 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -198.933333333333366 Attach:1Fighting@2 zone
+PGDUMP         18.733333333333313 Play:Professor's Research
+PGDUMP         48.066666666666627 Play:Wally
+PGSTEP KW-261010_013009000-t05 seed 10 free 1
+PGSTEP KW-261010_013009000-t05 seed 10 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       -401.933333333333394 EndTurn
+PGDUMP        164.733333333333320 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGSTEP KW-261010_013009000-t05 seed 10 free 3
+PGCAND EndTurn
+PGCAND Attack:Strength
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=4
+PGDUMP        -75.266666666666680 EndTurn
+PGDUMP        164.733333333333320 Attack:Strength
+PGDUMP      -1072.933333333333394 Retreat:1
+PGDUMP      -1318.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t05 seed 10 free 4
+PGSTEP KW-261010_013009000-t05 seed 11 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -550.933333333333394 EndTurn
+PGDUMP        416.733333333333292 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -699.933333333333394 Attach:1Fighting@2 zone
+PGDUMP        416.733333333333292 Play:Professor's Research
+PGDUMP         48.066666666666627 Play:Wally
+PGSTEP KW-261010_013009000-t05 seed 12 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -550.933333333333394 EndTurn
+PGDUMP         18.733333333333313 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGDUMP         18.733333333333313 Play:Professor's Research
+PGDUMP         48.066666666666627 Play:Wally
+PGSTEP KW-261010_013009000-t05 seed 12 free 1
+PGSTEP KW-261010_013009000-t05 seed 12 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       -401.933333333333394 EndTurn
+PGDUMP        164.733333333333320 Attach:1Fighting@0 zone
+PGDUMP         48.066666666666627 Attach:1Fighting@1 zone
+PGDUMP       -931.933333333333394 Attach:1Fighting@2 zone
+PGSTEP KW-261010_013009000-t05 seed 12 free 3
+PGCAND EndTurn
+PGCAND Attack:Strength
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=4
+PGDUMP        -75.266666666666680 EndTurn
+PGDUMP        164.733333333333320 Attack:Strength
+PGDUMP      -1072.933333333333394 Retreat:1
+PGDUMP      -1318.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t05 seed 12 free 4

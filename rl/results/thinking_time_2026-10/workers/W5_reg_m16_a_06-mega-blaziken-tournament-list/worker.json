@@ -1,0 +1,31 @@
+{
+ "worker": "W5",
+ "stamped_at": "2026-10-13T00:11:25Z",
+ "manifest_sha256": "997a5273a3122d56eebf300b3a27872aaf3a62e0c83e6e109a34428397941612",
+ "program_sha256": "7e8cc544899fcb45d0de711d62b18aa0987c4ab0cf767e2cbca7b59766cf3d7a",
+ "only_deck": [
+  "06-mega-blaziken-tournament-list"
+ ],
+ "engine_tree": "69a5a4419da24f368eb7daa6946a711564485f61",
+ "build_record_program_sha256": "7e8cc544899fcb45d0de711d62b18aa0987c4ab0cf767e2cbca7b59766cf3d7a",
+ "harness_source_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+ "decks_sha256": {
+  "09-mega-manectric-heliolisk": "48ca6b6c6aeefb36678abff741896ad4931ae101e9e4a698f1faefb3f3e4f91e",
+  "06-mega-blaziken-tournament-list": "69c521a33339a45633c5770b3e4acad5b8912f9367288a3044147e7fa45d5800",
+  "10-xatu-oricorio-tr-weezing": "a9cf8f1998a56316ceb466e7d9ec479f103c757fdfce89a91151248f641624af",
+  "t-altaria": "c3a57b9c835be77ba864514e2636645885c4f22d75028c5f29e2686edcbe171f",
+  "t-blaziken": "d88a70e56dae8f8500d539348223b5fee5eaba705667578a8fcbca95963fd7ed",
+  "t-hydreigon": "18688bd9ab09f2638538006590767a5750abe763572c0fb636c47eec93155f3b",
+  "t-lucario": "76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634",
+  "t-sceptile": "fe0b7fc4de2f9dff0268a65d30dd39bfd5b73e7e5115b48e59f3975777018cd2",
+  "t-suicune": "639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783",
+  "t-vespiquen": "8356844fd2d143a44c547356ff5a32b74977478fbb1f9fc2a716a7f2233f8255",
+  "t-weezing": "26cb869fe5f2c7cd79f8b974bf7667f802837bdb6ec9442db5360aef490ce5a1"
+ },
+ "selfcheck": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3": "selfcheck pilot=kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3 games=12 seat0_wins=7 seat1_wins=5 ties=0 turns=136 digest=480a2a2240c3c90a"
+ },
+ "manifest": "/root/PocketDeckSim/rl/results/thinking_time_2026-10/reg_m16_a/manifest.json",
+ "program": "/root/kxc/172cbe9c/strength"
+}

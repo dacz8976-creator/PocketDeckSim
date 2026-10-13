@@ -1,0 +1,22 @@
+{
+ "worker": "R1",
+ "stamped_at": "2026-10-13T10:43:43Z",
+ "manifest_sha256": "2219f8ff75b3d8097c2e8d18c2e213b682c13f8208f7ce20ad14aedcdf35310b",
+ "program_sha256": "f492d55e8f768c3dbcb9138cfdc0093171156e621bb2e6e0c0999b22b62f7d5c",
+ "only_deck": [
+  "10-xatu-oricorio-tr-weezing"
+ ],
+ "engine_tree": "4ebb30a941737d16b80adddbd1466761e0670e63",
+ "build_record_program_sha256": "f492d55e8f768c3dbcb9138cfdc0093171156e621bb2e6e0c0999b22b62f7d5c",
+ "harness_source_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+ "decks_sha256": {
+  "10-xatu-oricorio-tr-weezing": "a9cf8f1998a56316ceb466e7d9ec479f103c757fdfce89a91151248f641624af",
+  "t-weezing": "26cb869fe5f2c7cd79f8b974bf7667f802837bdb6ec9442db5360aef490ce5a1"
+ },
+ "selfcheck": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kx3": "selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa"
+ },
+ "manifest": "/root/PocketDeckSim/rl/results/kx3_on_rules2_2026-10/replay_c/manifest.json",
+ "program": "/root/kx_r2/strength"
+}

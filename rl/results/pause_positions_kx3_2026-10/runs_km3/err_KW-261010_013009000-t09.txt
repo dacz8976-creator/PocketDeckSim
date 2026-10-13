@@ -1,0 +1,468 @@
+PGSTEP KW-261010_013009000-t09 seed 1 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Evolve:Garganacl@2
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -889.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP        166.400000000000006 Evolve:Garganacl@2
+PGDUMP       -533.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 1 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=5
+PGDUMP       -700.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP       -394.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 1 free 2
+PGCAND EndTurn
+PGCAND Attack:Bedrock Breaker
+PGCAND Play:Wally
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -333.600000000000023 EndTurn
+PGDUMP        166.400000000000006 Attack:Bedrock Breaker
+PGDUMP        165.400000000000006 Play:Wally
+PGDUMP      -1333.599999999999909 Retreat:1
+PGDUMP      -1214.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t09 seed 1 free 3
+PGSTEP KW-261010_013009000-t09 seed 2 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Evolve:Garganacl@2
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -889.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP        166.400000000000006 Evolve:Garganacl@2
+PGDUMP       -533.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 2 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=5
+PGDUMP       -700.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP       -394.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 2 free 2
+PGCAND EndTurn
+PGCAND Attack:Bedrock Breaker
+PGCAND Play:Wally
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -333.600000000000023 EndTurn
+PGDUMP        166.400000000000006 Attack:Bedrock Breaker
+PGDUMP        165.400000000000006 Play:Wally
+PGDUMP      -1333.599999999999909 Retreat:1
+PGDUMP      -1214.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t09 seed 2 free 3
+PGSTEP KW-261010_013009000-t09 seed 3 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Evolve:Garganacl@2
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -889.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP        166.400000000000006 Evolve:Garganacl@2
+PGDUMP       -533.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 3 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=5
+PGDUMP       -700.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP       -394.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 3 free 2
+PGCAND EndTurn
+PGCAND Attack:Bedrock Breaker
+PGCAND Play:Wally
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -333.600000000000023 EndTurn
+PGDUMP        166.400000000000006 Attack:Bedrock Breaker
+PGDUMP        165.400000000000006 Play:Wally
+PGDUMP      -1333.599999999999909 Retreat:1
+PGDUMP      -1214.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t09 seed 3 free 3
+PGSTEP KW-261010_013009000-t09 seed 4 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Evolve:Garganacl@2
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -889.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP        166.400000000000006 Evolve:Garganacl@2
+PGDUMP       -533.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 4 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=5
+PGDUMP       -700.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP       -394.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 4 free 2
+PGCAND EndTurn
+PGCAND Attack:Bedrock Breaker
+PGCAND Play:Wally
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -333.600000000000023 EndTurn
+PGDUMP        166.400000000000006 Attack:Bedrock Breaker
+PGDUMP        165.400000000000006 Play:Wally
+PGDUMP      -1333.599999999999909 Retreat:1
+PGDUMP      -1214.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t09 seed 4 free 3
+PGSTEP KW-261010_013009000-t09 seed 5 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Evolve:Garganacl@2
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -889.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP        166.400000000000006 Evolve:Garganacl@2
+PGDUMP       -533.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 5 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=5
+PGDUMP       -700.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP       -394.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 5 free 2
+PGCAND EndTurn
+PGCAND Attack:Bedrock Breaker
+PGCAND Play:Wally
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -333.600000000000023 EndTurn
+PGDUMP        166.400000000000006 Attack:Bedrock Breaker
+PGDUMP        165.400000000000006 Play:Wally
+PGDUMP      -1333.599999999999909 Retreat:1
+PGDUMP      -1214.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t09 seed 5 free 3
+PGSTEP KW-261010_013009000-t09 seed 6 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Evolve:Garganacl@2
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -889.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP        166.400000000000006 Evolve:Garganacl@2
+PGDUMP       -533.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 6 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=5
+PGDUMP       -700.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP       -394.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 6 free 2
+PGCAND EndTurn
+PGCAND Attack:Bedrock Breaker
+PGCAND Play:Wally
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -333.600000000000023 EndTurn
+PGDUMP        166.400000000000006 Attack:Bedrock Breaker
+PGDUMP        165.400000000000006 Play:Wally
+PGDUMP      -1333.599999999999909 Retreat:1
+PGDUMP      -1214.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t09 seed 6 free 3
+PGSTEP KW-261010_013009000-t09 seed 7 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Evolve:Garganacl@2
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -889.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP        166.400000000000006 Evolve:Garganacl@2
+PGDUMP       -533.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 7 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=5
+PGDUMP       -700.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP       -394.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 7 free 2
+PGCAND EndTurn
+PGCAND Attack:Bedrock Breaker
+PGCAND Play:Wally
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -333.600000000000023 EndTurn
+PGDUMP        166.400000000000006 Attack:Bedrock Breaker
+PGDUMP        165.400000000000006 Play:Wally
+PGDUMP      -1333.599999999999909 Retreat:1
+PGDUMP      -1214.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t09 seed 7 free 3
+PGSTEP KW-261010_013009000-t09 seed 8 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Evolve:Garganacl@2
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -889.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP        166.400000000000006 Evolve:Garganacl@2
+PGDUMP       -533.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 8 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=5
+PGDUMP       -700.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP       -394.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 8 free 2
+PGCAND EndTurn
+PGCAND Attack:Bedrock Breaker
+PGCAND Play:Wally
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -333.600000000000023 EndTurn
+PGDUMP        166.400000000000006 Attack:Bedrock Breaker
+PGDUMP        165.400000000000006 Play:Wally
+PGDUMP      -1333.599999999999909 Retreat:1
+PGDUMP      -1214.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t09 seed 8 free 3
+PGSTEP KW-261010_013009000-t09 seed 9 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Evolve:Garganacl@2
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -889.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP        166.400000000000006 Evolve:Garganacl@2
+PGDUMP       -533.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 9 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=5
+PGDUMP       -700.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP       -394.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 9 free 2
+PGCAND EndTurn
+PGCAND Attack:Bedrock Breaker
+PGCAND Play:Wally
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -333.600000000000023 EndTurn
+PGDUMP        166.400000000000006 Attack:Bedrock Breaker
+PGDUMP        165.400000000000006 Play:Wally
+PGDUMP      -1333.599999999999909 Retreat:1
+PGDUMP      -1214.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t09 seed 9 free 3
+PGSTEP KW-261010_013009000-t09 seed 10 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Evolve:Garganacl@2
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -889.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP        166.400000000000006 Evolve:Garganacl@2
+PGDUMP       -533.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 10 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=5
+PGDUMP       -700.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP       -394.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 10 free 2
+PGCAND EndTurn
+PGCAND Attack:Bedrock Breaker
+PGCAND Play:Wally
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -333.600000000000023 EndTurn
+PGDUMP        166.400000000000006 Attack:Bedrock Breaker
+PGDUMP        165.400000000000006 Play:Wally
+PGDUMP      -1333.599999999999909 Retreat:1
+PGDUMP      -1214.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t09 seed 10 free 3
+PGSTEP KW-261010_013009000-t09 seed 11 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Evolve:Garganacl@2
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -889.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP        166.400000000000006 Evolve:Garganacl@2
+PGDUMP       -533.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 11 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=5
+PGDUMP       -700.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP       -394.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 11 free 2
+PGCAND EndTurn
+PGCAND Attack:Bedrock Breaker
+PGCAND Play:Wally
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -333.600000000000023 EndTurn
+PGDUMP        166.400000000000006 Attack:Bedrock Breaker
+PGDUMP        165.400000000000006 Play:Wally
+PGDUMP      -1333.599999999999909 Retreat:1
+PGDUMP      -1214.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t09 seed 11 free 3
+PGSTEP KW-261010_013009000-t09 seed 12 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Evolve:Garganacl@2
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=6
+PGDUMP       -889.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP        166.400000000000006 Evolve:Garganacl@2
+PGDUMP       -533.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 12 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Wally
+PGDUMP actor=0 candidates=5
+PGDUMP       -700.266666666666765 EndTurn
+PGDUMP        166.400000000000006 Attach:1Fighting@0 zone
+PGDUMP       -660.266666666666765 Attach:1Fighting@1 zone
+PGDUMP       -550.266666666666765 Attach:1Fighting@2 zone
+PGDUMP       -394.600000000000023 Play:Wally
+PGSTEP KW-261010_013009000-t09 seed 12 free 2
+PGCAND EndTurn
+PGCAND Attack:Bedrock Breaker
+PGCAND Play:Wally
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=5
+PGDUMP       -333.600000000000023 EndTurn
+PGDUMP        166.400000000000006 Attack:Bedrock Breaker
+PGDUMP        165.400000000000006 Play:Wally
+PGDUMP      -1333.599999999999909 Retreat:1
+PGDUMP      -1214.599999999999909 Retreat:2
+PGSTEP KW-261010_013009000-t09 seed 12 free 3

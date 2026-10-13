@@ -112,8 +112,8 @@ for p in POS:
         print('NO RUN OUTPUT (position problems):', p['id'], posline.get('problems'))
         continue
     plan_raw = [l for l in p['his_plan'] if not l.startswith('(')]
-    comparable = bool(plan_raw)
-    his = cut(plan_raw) if comparable else []
+    comparable = bool(plan_raw) or bool(p.get('his_plan_ended'))   # a turn he only ended is a plan (EndTurn); a turn the game ended first is not
+    his = (cut(plan_raw) if plan_raw else ['EndTurn']) if comparable else []
     kms = [tuple(cut(x['plan'])) for x in free]
     if p.get('plan_truncated_at') is not None and his:
         kms = [k[:len(his)] for k in kms]   # his plan is known only up to an unresolved step: compare that stretch only

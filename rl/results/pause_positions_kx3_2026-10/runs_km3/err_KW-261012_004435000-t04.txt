@@ -1,0 +1,804 @@
+PGSTEP KW-261012_004435000-t04 seed 1 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Place:Horsea@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=7
+PGDUMP      -2523.900000000000091 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -365.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -336.899999999999977 Place:Horsea@1
+PGDUMP       -336.899999999999977 Place:Horsea@2
+PGDUMP       -336.899999999999977 Place:Horsea@3
+PGDUMP       -487.800000000000011 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 1 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Play:Hiking Trail
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=6
+PGDUMP       -874.899999999999977 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -105.900000000000006 Attach:1Water@3 zone
+PGDUMP       -316.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -337.800000000000011 Play:Hiking Trail
+PGDUMP       -105.900000000000006 Retreat:3
+PGSTEP KW-261012_004435000-t04 seed 1 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=5
+PGDUMP       -884.899999999999977 EndTurn
+PGDUMP       -105.900000000000006 Attach:1Water@0 zone
+PGDUMP       -505.899999999999977 Attach:1Water@3 zone
+PGDUMP       -105.900000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -106.799999999999997 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 1 free 3
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP         34.100000000000001 Noop
+PGDUMP        204.099999999999994 Ability@3
+PGSTEP KW-261012_004435000-t04 seed 1 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=4
+PGDUMP       -335.899999999999977 EndTurn
+PGDUMP        204.099999999999994 Attach:1Water@0 zone
+PGDUMP       -335.899999999999977 Attach:1Water@3 zone
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 1 free 5
+PGCAND EndTurn
+PGCAND Attack:Hook
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=3
+PGDUMP         64.099999999999994 EndTurn
+PGDUMP        204.099999999999994 Attack:Hook
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 1 free 6
+PGSTEP KW-261012_004435000-t04 seed 2 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Place:Horsea@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=7
+PGDUMP      -2523.900000000000091 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -365.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -336.899999999999977 Place:Horsea@1
+PGDUMP       -336.899999999999977 Place:Horsea@2
+PGDUMP       -336.899999999999977 Place:Horsea@3
+PGDUMP       -487.800000000000011 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 2 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Play:Hiking Trail
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=6
+PGDUMP       -874.899999999999977 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -105.900000000000006 Attach:1Water@3 zone
+PGDUMP       -316.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -337.800000000000011 Play:Hiking Trail
+PGDUMP       -105.900000000000006 Retreat:3
+PGSTEP KW-261012_004435000-t04 seed 2 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=5
+PGDUMP       -884.899999999999977 EndTurn
+PGDUMP       -105.900000000000006 Attach:1Water@0 zone
+PGDUMP       -505.899999999999977 Attach:1Water@3 zone
+PGDUMP       -105.900000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -106.799999999999997 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 2 free 3
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP         34.100000000000001 Noop
+PGDUMP        204.099999999999994 Ability@3
+PGSTEP KW-261012_004435000-t04 seed 2 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=4
+PGDUMP       -335.899999999999977 EndTurn
+PGDUMP        204.099999999999994 Attach:1Water@0 zone
+PGDUMP       -335.899999999999977 Attach:1Water@3 zone
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 2 free 5
+PGCAND EndTurn
+PGCAND Attack:Hook
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=3
+PGDUMP         64.099999999999994 EndTurn
+PGDUMP        204.099999999999994 Attack:Hook
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 2 free 6
+PGSTEP KW-261012_004435000-t04 seed 3 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Place:Horsea@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=7
+PGDUMP      -2523.900000000000091 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -365.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -336.899999999999977 Place:Horsea@1
+PGDUMP       -336.899999999999977 Place:Horsea@2
+PGDUMP       -336.899999999999977 Place:Horsea@3
+PGDUMP       -487.800000000000011 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 3 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Play:Hiking Trail
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=6
+PGDUMP       -874.899999999999977 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -105.900000000000006 Attach:1Water@3 zone
+PGDUMP       -316.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -337.800000000000011 Play:Hiking Trail
+PGDUMP       -105.900000000000006 Retreat:3
+PGSTEP KW-261012_004435000-t04 seed 3 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=5
+PGDUMP       -884.899999999999977 EndTurn
+PGDUMP       -105.900000000000006 Attach:1Water@0 zone
+PGDUMP       -505.899999999999977 Attach:1Water@3 zone
+PGDUMP       -105.900000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -106.799999999999997 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 3 free 3
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP         34.100000000000001 Noop
+PGDUMP        204.099999999999994 Ability@3
+PGSTEP KW-261012_004435000-t04 seed 3 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=4
+PGDUMP       -335.899999999999977 EndTurn
+PGDUMP        204.099999999999994 Attach:1Water@0 zone
+PGDUMP       -335.899999999999977 Attach:1Water@3 zone
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 3 free 5
+PGCAND EndTurn
+PGCAND Attack:Hook
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=3
+PGDUMP         64.099999999999994 EndTurn
+PGDUMP        204.099999999999994 Attack:Hook
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 3 free 6
+PGSTEP KW-261012_004435000-t04 seed 4 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Place:Horsea@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=7
+PGDUMP      -2523.900000000000091 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -365.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -336.899999999999977 Place:Horsea@1
+PGDUMP       -336.899999999999977 Place:Horsea@2
+PGDUMP       -336.899999999999977 Place:Horsea@3
+PGDUMP       -487.800000000000011 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 4 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Play:Hiking Trail
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=6
+PGDUMP       -874.899999999999977 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -105.900000000000006 Attach:1Water@3 zone
+PGDUMP       -316.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -337.800000000000011 Play:Hiking Trail
+PGDUMP       -105.900000000000006 Retreat:3
+PGSTEP KW-261012_004435000-t04 seed 4 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=5
+PGDUMP       -884.899999999999977 EndTurn
+PGDUMP       -105.900000000000006 Attach:1Water@0 zone
+PGDUMP       -505.899999999999977 Attach:1Water@3 zone
+PGDUMP       -105.900000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -106.799999999999997 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 4 free 3
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP         34.100000000000001 Noop
+PGDUMP        204.099999999999994 Ability@3
+PGSTEP KW-261012_004435000-t04 seed 4 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=4
+PGDUMP       -335.899999999999977 EndTurn
+PGDUMP        204.099999999999994 Attach:1Water@0 zone
+PGDUMP       -335.899999999999977 Attach:1Water@3 zone
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 4 free 5
+PGCAND EndTurn
+PGCAND Attack:Hook
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=3
+PGDUMP         64.099999999999994 EndTurn
+PGDUMP        204.099999999999994 Attack:Hook
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 4 free 6
+PGSTEP KW-261012_004435000-t04 seed 5 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Place:Horsea@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=7
+PGDUMP      -2523.900000000000091 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -365.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -336.899999999999977 Place:Horsea@1
+PGDUMP       -336.899999999999977 Place:Horsea@2
+PGDUMP       -336.899999999999977 Place:Horsea@3
+PGDUMP       -487.800000000000011 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 5 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Play:Hiking Trail
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=6
+PGDUMP       -874.899999999999977 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -105.900000000000006 Attach:1Water@3 zone
+PGDUMP       -316.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -337.800000000000011 Play:Hiking Trail
+PGDUMP       -105.900000000000006 Retreat:3
+PGSTEP KW-261012_004435000-t04 seed 5 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=5
+PGDUMP       -884.899999999999977 EndTurn
+PGDUMP       -105.900000000000006 Attach:1Water@0 zone
+PGDUMP       -505.899999999999977 Attach:1Water@3 zone
+PGDUMP       -105.900000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -106.799999999999997 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 5 free 3
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP         34.100000000000001 Noop
+PGDUMP        204.099999999999994 Ability@3
+PGSTEP KW-261012_004435000-t04 seed 5 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=4
+PGDUMP       -335.899999999999977 EndTurn
+PGDUMP        204.099999999999994 Attach:1Water@0 zone
+PGDUMP       -335.899999999999977 Attach:1Water@3 zone
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 5 free 5
+PGCAND EndTurn
+PGCAND Attack:Hook
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=3
+PGDUMP         64.099999999999994 EndTurn
+PGDUMP        204.099999999999994 Attack:Hook
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 5 free 6
+PGSTEP KW-261012_004435000-t04 seed 6 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Place:Horsea@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=7
+PGDUMP      -2523.900000000000091 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -365.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -336.899999999999977 Place:Horsea@1
+PGDUMP       -336.899999999999977 Place:Horsea@2
+PGDUMP       -336.899999999999977 Place:Horsea@3
+PGDUMP       -487.800000000000011 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 6 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Play:Hiking Trail
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=6
+PGDUMP       -874.899999999999977 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -105.900000000000006 Attach:1Water@3 zone
+PGDUMP       -316.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -337.800000000000011 Play:Hiking Trail
+PGDUMP       -105.900000000000006 Retreat:3
+PGSTEP KW-261012_004435000-t04 seed 6 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=5
+PGDUMP       -884.899999999999977 EndTurn
+PGDUMP       -105.900000000000006 Attach:1Water@0 zone
+PGDUMP       -505.899999999999977 Attach:1Water@3 zone
+PGDUMP       -105.900000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -106.799999999999997 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 6 free 3
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP         34.100000000000001 Noop
+PGDUMP        204.099999999999994 Ability@3
+PGSTEP KW-261012_004435000-t04 seed 6 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=4
+PGDUMP       -335.899999999999977 EndTurn
+PGDUMP        204.099999999999994 Attach:1Water@0 zone
+PGDUMP       -335.899999999999977 Attach:1Water@3 zone
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 6 free 5
+PGCAND EndTurn
+PGCAND Attack:Hook
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=3
+PGDUMP         64.099999999999994 EndTurn
+PGDUMP        204.099999999999994 Attack:Hook
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 6 free 6
+PGSTEP KW-261012_004435000-t04 seed 7 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Place:Horsea@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=7
+PGDUMP      -2523.900000000000091 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -365.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -336.899999999999977 Place:Horsea@1
+PGDUMP       -336.899999999999977 Place:Horsea@2
+PGDUMP       -336.899999999999977 Place:Horsea@3
+PGDUMP       -487.800000000000011 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 7 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Play:Hiking Trail
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=6
+PGDUMP       -874.899999999999977 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -105.900000000000006 Attach:1Water@3 zone
+PGDUMP       -316.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -337.800000000000011 Play:Hiking Trail
+PGDUMP       -105.900000000000006 Retreat:3
+PGSTEP KW-261012_004435000-t04 seed 7 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=5
+PGDUMP       -884.899999999999977 EndTurn
+PGDUMP       -105.900000000000006 Attach:1Water@0 zone
+PGDUMP       -505.899999999999977 Attach:1Water@3 zone
+PGDUMP       -105.900000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -106.799999999999997 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 7 free 3
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP         34.100000000000001 Noop
+PGDUMP        204.099999999999994 Ability@3
+PGSTEP KW-261012_004435000-t04 seed 7 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=4
+PGDUMP       -335.899999999999977 EndTurn
+PGDUMP        204.099999999999994 Attach:1Water@0 zone
+PGDUMP       -335.899999999999977 Attach:1Water@3 zone
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 7 free 5
+PGCAND EndTurn
+PGCAND Attack:Hook
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=3
+PGDUMP         64.099999999999994 EndTurn
+PGDUMP        204.099999999999994 Attack:Hook
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 7 free 6
+PGSTEP KW-261012_004435000-t04 seed 8 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Place:Horsea@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=7
+PGDUMP      -2523.900000000000091 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -365.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -336.899999999999977 Place:Horsea@1
+PGDUMP       -336.899999999999977 Place:Horsea@2
+PGDUMP       -336.899999999999977 Place:Horsea@3
+PGDUMP       -487.800000000000011 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 8 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Play:Hiking Trail
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=6
+PGDUMP       -874.899999999999977 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -105.900000000000006 Attach:1Water@3 zone
+PGDUMP       -316.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -337.800000000000011 Play:Hiking Trail
+PGDUMP       -105.900000000000006 Retreat:3
+PGSTEP KW-261012_004435000-t04 seed 8 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=5
+PGDUMP       -884.899999999999977 EndTurn
+PGDUMP       -105.900000000000006 Attach:1Water@0 zone
+PGDUMP       -505.899999999999977 Attach:1Water@3 zone
+PGDUMP       -105.900000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -106.799999999999997 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 8 free 3
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP         34.100000000000001 Noop
+PGDUMP        204.099999999999994 Ability@3
+PGSTEP KW-261012_004435000-t04 seed 8 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=4
+PGDUMP       -335.899999999999977 EndTurn
+PGDUMP        204.099999999999994 Attach:1Water@0 zone
+PGDUMP       -335.899999999999977 Attach:1Water@3 zone
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 8 free 5
+PGCAND EndTurn
+PGCAND Attack:Hook
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=3
+PGDUMP         64.099999999999994 EndTurn
+PGDUMP        204.099999999999994 Attack:Hook
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 8 free 6
+PGSTEP KW-261012_004435000-t04 seed 9 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Place:Horsea@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=7
+PGDUMP      -2523.900000000000091 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -365.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -336.899999999999977 Place:Horsea@1
+PGDUMP       -336.899999999999977 Place:Horsea@2
+PGDUMP       -336.899999999999977 Place:Horsea@3
+PGDUMP       -487.800000000000011 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 9 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Play:Hiking Trail
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=6
+PGDUMP       -874.899999999999977 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -105.900000000000006 Attach:1Water@3 zone
+PGDUMP       -316.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -337.800000000000011 Play:Hiking Trail
+PGDUMP       -105.900000000000006 Retreat:3
+PGSTEP KW-261012_004435000-t04 seed 9 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=5
+PGDUMP       -884.899999999999977 EndTurn
+PGDUMP       -105.900000000000006 Attach:1Water@0 zone
+PGDUMP       -505.899999999999977 Attach:1Water@3 zone
+PGDUMP       -105.900000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -106.799999999999997 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 9 free 3
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP         34.100000000000001 Noop
+PGDUMP        204.099999999999994 Ability@3
+PGSTEP KW-261012_004435000-t04 seed 9 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=4
+PGDUMP       -335.899999999999977 EndTurn
+PGDUMP        204.099999999999994 Attach:1Water@0 zone
+PGDUMP       -335.899999999999977 Attach:1Water@3 zone
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 9 free 5
+PGCAND EndTurn
+PGCAND Attack:Hook
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=3
+PGDUMP         64.099999999999994 EndTurn
+PGDUMP        204.099999999999994 Attack:Hook
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 9 free 6
+PGSTEP KW-261012_004435000-t04 seed 10 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Place:Horsea@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=7
+PGDUMP      -2523.900000000000091 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -365.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -336.899999999999977 Place:Horsea@1
+PGDUMP       -336.899999999999977 Place:Horsea@2
+PGDUMP       -336.899999999999977 Place:Horsea@3
+PGDUMP       -487.800000000000011 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 10 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Play:Hiking Trail
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=6
+PGDUMP       -874.899999999999977 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -105.900000000000006 Attach:1Water@3 zone
+PGDUMP       -316.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -337.800000000000011 Play:Hiking Trail
+PGDUMP       -105.900000000000006 Retreat:3
+PGSTEP KW-261012_004435000-t04 seed 10 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=5
+PGDUMP       -884.899999999999977 EndTurn
+PGDUMP       -105.900000000000006 Attach:1Water@0 zone
+PGDUMP       -505.899999999999977 Attach:1Water@3 zone
+PGDUMP       -105.900000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -106.799999999999997 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 10 free 3
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP         34.100000000000001 Noop
+PGDUMP        204.099999999999994 Ability@3
+PGSTEP KW-261012_004435000-t04 seed 10 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=4
+PGDUMP       -335.899999999999977 EndTurn
+PGDUMP        204.099999999999994 Attach:1Water@0 zone
+PGDUMP       -335.899999999999977 Attach:1Water@3 zone
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 10 free 5
+PGCAND EndTurn
+PGCAND Attack:Hook
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=3
+PGDUMP         64.099999999999994 EndTurn
+PGDUMP        204.099999999999994 Attack:Hook
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 10 free 6
+PGSTEP KW-261012_004435000-t04 seed 11 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Place:Horsea@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=7
+PGDUMP      -2523.900000000000091 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -365.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -336.899999999999977 Place:Horsea@1
+PGDUMP       -336.899999999999977 Place:Horsea@2
+PGDUMP       -336.899999999999977 Place:Horsea@3
+PGDUMP       -487.800000000000011 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 11 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Play:Hiking Trail
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=6
+PGDUMP       -874.899999999999977 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -105.900000000000006 Attach:1Water@3 zone
+PGDUMP       -316.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -337.800000000000011 Play:Hiking Trail
+PGDUMP       -105.900000000000006 Retreat:3
+PGSTEP KW-261012_004435000-t04 seed 11 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=5
+PGDUMP       -884.899999999999977 EndTurn
+PGDUMP       -105.900000000000006 Attach:1Water@0 zone
+PGDUMP       -505.899999999999977 Attach:1Water@3 zone
+PGDUMP       -105.900000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -106.799999999999997 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 11 free 3
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP         34.100000000000001 Noop
+PGDUMP        204.099999999999994 Ability@3
+PGSTEP KW-261012_004435000-t04 seed 11 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=4
+PGDUMP       -335.899999999999977 EndTurn
+PGDUMP        204.099999999999994 Attach:1Water@0 zone
+PGDUMP       -335.899999999999977 Attach:1Water@3 zone
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 11 free 5
+PGCAND EndTurn
+PGCAND Attack:Hook
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=3
+PGDUMP         64.099999999999994 EndTurn
+PGDUMP        204.099999999999994 Attack:Hook
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 11 free 6
+PGSTEP KW-261012_004435000-t04 seed 12 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Place:Horsea@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=7
+PGDUMP      -2523.900000000000091 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -365.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -336.899999999999977 Place:Horsea@1
+PGDUMP       -336.899999999999977 Place:Horsea@2
+PGDUMP       -336.899999999999977 Place:Horsea@3
+PGDUMP       -487.800000000000011 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 12 free 1
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@0
+PGCAND Play:Hiking Trail
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=6
+PGDUMP       -874.899999999999977 EndTurn
+PGDUMP       -486.899999999999977 Attach:1Water@0 zone
+PGDUMP       -105.900000000000006 Attach:1Water@3 zone
+PGDUMP       -316.899999999999977 Evolve:Team Rocket's Weezing ex@0
+PGDUMP       -337.800000000000011 Play:Hiking Trail
+PGDUMP       -105.900000000000006 Retreat:3
+PGSTEP KW-261012_004435000-t04 seed 12 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Evolve:Team Rocket's Weezing ex@3
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=5
+PGDUMP       -884.899999999999977 EndTurn
+PGDUMP       -105.900000000000006 Attach:1Water@0 zone
+PGDUMP       -505.899999999999977 Attach:1Water@3 zone
+PGDUMP       -105.900000000000006 Evolve:Team Rocket's Weezing ex@3
+PGDUMP       -106.799999999999997 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 12 free 3
+PGCAND Noop
+PGCAND Ability@3
+PGDUMP actor=0 candidates=2
+PGDUMP         34.100000000000001 Noop
+PGDUMP        204.099999999999994 Ability@3
+PGSTEP KW-261012_004435000-t04 seed 12 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=4
+PGDUMP       -335.899999999999977 EndTurn
+PGDUMP        204.099999999999994 Attach:1Water@0 zone
+PGDUMP       -335.899999999999977 Attach:1Water@3 zone
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 12 free 5
+PGCAND EndTurn
+PGCAND Attack:Hook
+PGCAND Play:Hiking Trail
+PGDUMP actor=0 candidates=3
+PGDUMP         64.099999999999994 EndTurn
+PGDUMP        204.099999999999994 Attack:Hook
+PGDUMP        203.199999999999989 Play:Hiking Trail
+PGSTEP KW-261012_004435000-t04 seed 12 free 6

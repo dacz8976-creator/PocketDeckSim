@@ -1,0 +1,38 @@
+{
+ "reference": "km3",
+ "seats": [
+  0,
+  1
+ ],
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "intended_lines": "rl/strength/intended_lines.json",
+ "name": "kx3_replay_rules2_b",
+ "question": "STEP 4's kx3 REPLAY CHECK after rules switch 2 (rl/results/kx3_on_rules2_2026-10/SPEC.md section 4): do the frozen kx3's development-run games replay exactly on the new engine, except deck 10 against t-weezing, where each changed game must show Will's new rule acting? This registration: 01-muk-glimmora-kingambit-regigigas, 05-indeedee-stoutland, draft-A-shark-tempo v the 8 panel lists, deals 0-1, seed_base 24440000000 (each key the development run's own seed).",
+ "pilot": "kx3",
+ "stage": "dev",
+ "decks": [
+  "01-muk-glimmora-kingambit-regigigas",
+  "05-indeedee-stoutland",
+  "draft-A-shark-tempo"
+ ],
+ "opponents": [
+  "t-altaria",
+  "t-blaziken",
+  "t-hydreigon",
+  "t-lucario",
+  "t-sceptile",
+  "t-suicune",
+  "t-vespiquen",
+  "t-weezing"
+ ],
+ "deals": 2,
+ "seed_base": 24440000000,
+ "program": "/home/dacz8976/kx_r2/strength",
+ "program_sha256": "76df495bef0b057fd28b4991dce76d3e3e1772667694161c945f17364f9c4e08",
+ "engine": "laptop/kx3-on-rules2 cd20a97a2e76897fae9883389cee4bf7ce5b3d97 engine tree 4ebb30a94173: the frozen kx3's players (d513e37b) on main-c045ede's engine (rules switch 2), built on the laptop Oct 12 with rl/strength/build.sh (harness bf9c5d68); self-checks km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa, equal to the slow-report pin's",
+ "pilot_provenance": "kx3 from claude/playout-pilot@d513e37b (frozen Oct 4-5), its players byte for byte on main-c045ede's engine",
+ "reference_provenance": "km3 in the same build; its self-check is the pinned km3's (81b572198c04d5d1)"
+}

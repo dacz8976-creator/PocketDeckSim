@@ -1,0 +1,116 @@
+{
+  "summary": "Independently recompute the thinking-time test PRIMARY from the raw games, and check the pre-registered reading was applied as written",
+  "agentCount": 3,
+  "logs": [],
+  "result": {
+    "recs": [
+      {
+        "pairs": 480,
+        "seeds_identical": true,
+        "m16_minus_frozen": "+0.4 +- 1.4 [-1.0, 1.8] points per 100 games, n=480 (pairs: 7 better, 5 worse, 468 same; no ties)",
+        "m32_minus_frozen": "+4.4 +- 3.1 [1.3, 7.5] points per 100 games, n=480 (pairs: 40 better, 19 worse, 421 same)",
+        "candidate_minus_frozen": "+4.6 +- 3.4 [1.2, 8.0] points per 100 games, n=480 (pairs: 46 better, 24 worse, 410 same)",
+        "m16_minus_candidate": "-4.2 +- 3.4 [-7.6, -0.7] points per 100 games, n=480 (26 better, 46 worse, 408 same)",
+        "m32_minus_candidate": "-0.2 +- 3.0 [-3.2, 2.8] points per 100 games, n=480 (27 better, 28 worse, 425 same)",
+        "by_group_m16_minus_frozen": "fast (09,06,10; n=240): +0.8 +- 1.6 [-0.8, 2.5]; setup (01,05; n=160): +0.6 +- 3.2 [-2.6, 3.9]; middle (draft A; n=80): -1.2 +- 2.4 [-3.7, 1.2]. Per deck: 01 +0.0 +- 3.5; 05 +1.2 +- 5.5; 06 +1.2 +- 2.4; 09 +1.2 +- 2.4; 10 +0.0 +- 3.5; draft A -1.2 +- 2.4.",
+        "by_group_m32_minus_frozen": "fast (n=240): +5.0 +- 4.3 [0.7, 9.3]; setup (n=160): +0.6 +- 5.4 [-4.7, 6.0]; middle (n=80): +10.0 +- 8.3 [1.7, 18.3]. Per deck: 01 -1.2 +- 8.2; 05 +2.5 +- 7.0; 06 +6.2 +- 8.1; 09 +3.8 +- 7.3; 10 +5.0 +- 6.9; draft A +10.0 +- 8.3.",
+        "recommended_by_rule": "m32. Under the rule, the cheapest setting whose S - frozen interval lies entirely above zero is the recommendation. m16 - frozen is [-1.0, 1.8], which does not clear zero. m32 - frozen is [1.3, 7.5], which lies entirely above zero, so the rule recommends m32. The frozen kx3 stays the screener. No deck's S - frozen interval lies entirely below zero for either setting.",
+        "notes": "Data: each arm's \"X\" games only. Pairs were matched on (deck, opp, deal, seat). Each key string was parsed and checked against its fields. No arm has duplicate keys. Frozen and candidate have 560 X games each. m32 and m16 have 480 each, from slices a and b. Exactly 480 keys are present in all four arms: 6 decks x 8 opponents x 5 deals x 2 seats, with Wailord 03 left out. No m16 or m32 key falls outside the common set. The seed is identical across all four arms on all 480 keys (0 mismatches).\n\nScore is win 1, tie 1/2, loss 0, from the deck's side. The interval is mean +- 1.96 x sample sd (n-1) / sqrt(n). There are no ties among the 480 common games in any arm; frozen's 3 ties and the candidate's 1 are all in Wailord games. Each deck has 80 pairs, so \"every deck weighted equally\" gives the same result as the plain pooled mean (checked: the mean of deck means equals the pooled mean in every comparison).\n\nUnrounded values, to rule out rounding-edge doubts: m16-frozen 0.4167 +- 1.4155 (lower bound -0.9988); m32-frozen 4.3750 +- 3.1152 (lower bound 1.2598); cand-frozen 4.5833 +- 3.3952.\n\nScores per 100 on the common 480: frozen 53.8, candidate 58.3, m32 58.1, m16 54.2.\n\nCandidate - frozen by group: fast +4.6 +- 4.4 [0.2, 9.0]; setup +3.8 +- 6.5 [-2.7, 10.2]; middle +6.2 +- 8.8 [-2.5, 15.0].\nm16 - cand by group: fast -3.8 +- 4.4; setup -3.1 +- 6.8; middle -7.5 +- 8.4.\nm32 - cand by group: fast +0.4 +- 3.7; setup -3.1 +- 6.1; middle +3.8 +- 7.3.\n\nObservation: m16 differs from frozen in game result on only 12 of 480 pairs, and in turn count on only 40 of 480. No log is byte-identical, and the logs include ms timings.\n\nPace and time as recorded on the 480 common keys: turns per game are frozen 10.46, cand 10.55, m32 10.57, m16 10.46. Mean wall_s per kx3 game is frozen 185.7, cand 547.7, m32 779.7, m16 490.3. These wall times are as measured on different machines (m16 and m32 ran on the cloud), so they are not comparable laptop figures.\n\nScripts are in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\ttcheck\\recomputer1\\ (primary.py, extra.py). Nothing was written in the repository, and read_thinking.py was not read."
+      },
+      {
+        "pairs": 480,
+        "seeds_identical": true,
+        "m16_minus_frozen": "+0.4 +- 1.4 points per 100 games, interval [-1.0, +1.8], n=480 (m16 better in 7 pairs, worse in 5, same result in 468)",
+        "m32_minus_frozen": "+4.4 +- 3.1 points per 100 games, interval [+1.3, +7.5], n=480 (m32 better in 40 pairs, worse in 19, same in 421)",
+        "candidate_minus_frozen": "+4.6 +- 3.4 points per 100 games, interval [+1.2, +8.0], n=480 (candidate better in 46 pairs, worse in 24, same in 410)",
+        "m16_minus_candidate": "-4.2 +- 3.4 points per 100 games, interval [-7.6, -0.7], n=480",
+        "m32_minus_candidate": "-0.2 +- 3.0 points per 100 games, interval [-3.2, +2.8], n=480",
+        "by_group_m16_minus_frozen": "fast (09,06,10; n=240): +0.8 +- 1.6 [-0.8, +2.5]; setup (01,05; n=160): +0.6 +- 3.2 [-2.6, +3.9]; middle (draft-A; n=80): -1.2 +- 2.4 [-3.7, +1.2]. Other group rows: candidate-frozen fast +4.6 +- 4.4 [+0.2, +9.0], setup +3.8 +- 6.5 [-2.7, +10.2], middle +6.2 +- 8.8 [-2.5, +15.0]; m16-candidate fast -3.8 +- 4.4 [-8.1, +0.6], setup -3.1 +- 6.8 [-9.9, +3.7], middle -7.5 +- 8.4 [-15.9, +0.9].",
+        "by_group_m32_minus_frozen": "fast (n=240): +5.0 +- 4.3 [+0.7, +9.3]; setup (n=160): +0.6 +- 5.4 [-4.7, +6.0]; middle (draft-A, n=80): +10.0 +- 8.3 [+1.7, +18.3]. m32-candidate: fast +0.4 +- 3.7 [-3.3, +4.2], setup -3.1 +- 6.1 [-9.2, +3.0], middle +3.8 +- 7.3 [-3.6, +11.1].",
+        "recommended_by_rule": "m32. PLAN.md's reading: the cheapest setting (m16, then m32, then m64) whose S - frozen interval lies entirely above zero. m16's interval [-1.0, +1.8] includes zero, so m16 does not qualify. m32's interval [+1.3, +7.5] lies entirely above zero, so the rule recommends m32 as the deck tester. Frozen kx3 stays the screener.",
+        "notes": "Method: my own Python (C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\ttcheck\\recomputer2\\primary.py and discord.py), run in WSL. I did not read or reuse read_thinking.py and wrote nothing in the repository. Pairing is on (deck, opp, deal, seat), arm \"X\" only, for the six decks without 03 Wailord. Each arm has exactly 480 such X games with no duplicates, and all 480 keys appear in all four arms. Each key's seed is the same in all four arms (0 mismatches), and the km3 ref arm in each file has the same seed as the X game. Score is win 1, tie 1/2, loss 0, from the deck's side. Each interval is mean +- 1.96*sd/sqrt(n), with sample sd (n-1), x100. Every deck has exactly 80 pairs, so the simple mean over pairs equals the equal-deck-weight mean (I checked all comparisons). Pilot names on the X arms match PLAN: frozen 'kx3', candidate '..._zs3_m64', m32 '..._zs3_m32', m16 'kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3'. Score per 100 on the 480 pairs: frozen 53.8, candidate 58.3, m32 58.1, m16 54.2. There are no ties on these pairs in any X arm. Extra: m32-m16 is +4.0 +- 3.1 [+0.8, +7.1]. Per deck, S-frozen: 09 m16 +1.2+-2.4, m32 +3.8+-7.3, cand +7.5+-6.8; 06 m16 +1.2+-2.4, m32 +6.2+-8.1, cand +0.0+-7.8; 10 m16 +0.0+-3.5, m32 +5.0+-6.9, cand +6.2+-8.1; 01 m16 +0.0+-3.5, m32 -1.2+-8.2, cand +3.8+-10.1; 05 m16 +1.2+-5.5, m32 +2.5+-7.0, cand +3.8+-8.1; draft-A m16 -1.2+-2.4, m32 +10.0+-8.3, cand +6.2+-8.8. No deck has an S-frozen interval entirely below zero. One deck has m32-candidate entirely above zero (06: +6.2 +- 5.3). m16 nearly reproduces frozen kx3: the result differs in only 12 of 480 pairs, and 418 pairs have the same winner, turns and plies. Pace (turns per game, X arm): frozen 10.5, candidate 10.6, m32 10.6, m16 10.5. Mean wall_s per X game as recorded: frozen 185.7, candidate 547.7, m32 779.7, m16 490.3. These were measured on different machines (laptop v cloud), so they do not show relative cost: m32 above the candidate is a machine effect, not a cost order. Build-check side note (not my assignment): each setting's km3 ref arm matches the development run's ref arm on winner and turns in 480 of 480 games. The raw 'log' strings are never byte-identical, likely because of per-move timings or formatting, so I did not use them for the replay check."
+      }
+    ],
+    "critic": "**(1) Do the three agree?** Yes. My own recomputation (`C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\ttcheck\\critic\\critic.py`) matches both recomputers and the laptop on every shared figure, to rounding:\n- 480 pairs, 0 seed mismatches.\n- m16 − frozen: +0.42 ± 1.42.\n- m32 − frozen: +4.38 ± 3.12, interval [+1.26, +7.49].\n- candidate − frozen: +4.58 ± 3.40.\n- m16 − candidate: −4.17 ± 3.45.\n- m32 − candidate: −0.21 ± 3.03.\n- Every group row, and every deck row that was cross-checked, agrees.\n- Wall times agree: frozen 185.7 s, candidate 547.7 s, m32 779.7 s, m16 490.3 s.\n\nThe only apparent difference is the count of m16 games that copy frozen's game. Recomputer 1 says 440 have the same turn count, recomputer 2 says 418 have the same winner, turns and plies, and I find 402 with the same action sequence. These are three nested definitions, not a conflict.\n\n**(2) Was the rule applied exactly?** Yes. PLAN.md:41-42 orders the settings by play-out cap: m16, then m32, then m64.\n- m16's interval [−1.00, +1.83] includes zero, so m16 does not qualify.\n- m32's interval [+1.26, +7.49] lies entirely above zero, so the rule picks m32. The lower bound is not a rounding-edge case.\n- The frozen kx3 stays the screener.\n- No deck's S − frozen interval is entirely below zero.\n\n**(3) What is unfair or mis-stated**\n- **Where 2.7 comes from.** It was not measured in this run. It comes from `kx3_on_rules2_2026-10/SPEC.md:28`: a 12-game kx3 self-check, run one game at a time, \"about 2.7 times that in a sandbox\". The pre-registered PLAN.md:47-48 and SHARDS.md use 2.4. The choice changes the answer:\n\n  | Factor | m32 per game | m16 per game |\n  |---|---|---|\n  | 2.7 | 289 s (1.56 × frozen) | 182 s (0.98 × frozen) |\n  | 2.4 | 325 s (1.75 × frozen) | 204 s (1.10 × frozen) |\n\n  The 2.4 figures are close to the pre-play estimates of 1.7 and 1.05.\n- **The factor is about core count, not machine speed.** The same 960 km3 reference games, replayed exactly, ran at 0.80 to 1.11 times laptop speed on the workers. The laptop is a Ryzen 7 7730U with 16 logical cores. The workers' core count appears only in the brief (\"4-core sandbox\") and is not recorded in the worker files. kx3 spreads each game's play-outs over many cores, so how well each setting uses cores decides the time ratio. Using one factor for every setting is an assumption.\n- **\"m16 takes about the same time as frozen\" is circular.** On the 402 games where m16 plays frozen's exact moves, m16 on the cloud took 2.67 times frozen's laptop time. Dividing by 2.7 therefore sets m16 equal to frozen by construction; it does not measure m16's cost. What the data can carry:\n  - m32 takes 1.59 times m16's time, both on the cloud.\n  - If m16 does about the same work as frozen, m32 costs roughly 1.6 times frozen and roughly 0.55 times the candidate. This is an estimate only.\n- **Worker speed varies by about ±15%.** On those identical games, the m16-to-frozen time ratio runs from 2.18 (deck 06, worker W5) to 2.85 (deck 10, W3). Each deck ran on a different worker, so even m32 against m16 mixes in worker speed. PLAN.md:47 asks for time per worker, and nobody reported it.\n- **Laptop against laptop.** The candidate took 2.95 times frozen's time on these 480 games. The combined run's km3 games ran 1.08 times slower than the development run's, so the laptop's load was not identical between the two runs.\n- **The pairing is sound.** Every X game had km3 as the opponent's pilot, and all 960 reference games equal the development run's. One thing should be stated in the report: m16 and m32 ran on a cloud rebuild (program sha256 7e8cc544), not the registered laptop program (f5a6ae95) that played the candidate. The merge accepted the rebuild on the 12-game self-checks. The 402 exact copies of frozen's games support that the rebuild plays the same.\n- **Decks.**\n  - The candidate's +4.6 is not new evidence. It is the combined run's already-read games with Wailord removed (the candidate gained +0.0 there); on all 560 games it is +3.93 ± 3.07.\n  - This does not bias the S − frozen comparisons, since every arm uses the same keys.\n  - All gains come from the development decks the candidate's settings were developed on, so they may be optimistic. The held-out exam is the real check.\n- **Claims the numbers can't carry.**\n  - **\"Keeps all the gain\":** m32 − candidate is −0.2 ± 3.0, interval [−3.2, +2.8]. Against a 4.6-point gain, m32 could be losing up to about 70% of it, or gaining 2.8 points. The supportable wording is \"no loss detected; anywhere from about 3 points worse to 3 points better than the full candidate.\" The 4.4/4.6 ≈ 95% share is a point estimate, not a measurement.\n  - **m32's gain is not across the board.** Setup decks show +0.6 ± 5.4 (deck 01: −1.2 ± 8.2), and m32 − candidate on setup is −3.1 ± 6.1. The pooled result rests on the fast group (+5.0 ± 4.3, lower bound +0.7) and on draft A alone (+10.0 ± 8.3, one deck, 80 games).\n  - **m16 is about the same as frozen.** Only 12 of 480 results differ, so the Tool rule and the skip bar add nothing measurable on their own; the gain comes from the close-call extension. m32 − m16 is +4.0 ± 3.1, interval [+0.8, +7.1].\n  - **Two settings were read in order.** The chance of a false recommendation is up to about 5%, not 2.5%, and m32's lower bound of +1.26 is not far from zero.\n- **Pace: one item PLAN asks for was not reported.** PLAN.md:38 asks for first-attack own turn as well as turns, and no one reported it.\n\n  | Setting | First-attack own turn | Minus frozen |\n  |---|---|---|\n  | Frozen | 2.29 | — |\n  | Candidate | 2.34 | +0.04 ± 0.07 |\n  | m32 | 2.26 | −0.03 ± 0.06 |\n  | m16 | 2.28 | −0.01 ± 0.04 |\n\n  Games with no attack (13 to 15 per arm) are left out. Turns per game: m32 − frozen is +0.11 ± 0.21. \"Pace unchanged\" holds."
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Recompute"
+    },
+    {
+      "type": "workflow_phase",
+      "index": 2,
+      "title": "Critic"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "recompute:1",
+      "phaseIndex": 1,
+      "phaseTitle": "Recompute",
+      "agentId": "ab8fbfdcc93886811",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1791860553164,
+      "queuedAt": 1791860553120,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "+0.4 +- 1.4 [-1.0, 1.8] points per 100 games, n=480 (pairs:…",
+      "promptPreview": "PocketDeckSim's thinking-time test. Pre-registration: C:\\Users\\dacz8\\Projects\\Pocket Deck Sim\\PocketDeckSim\\rl\\results\\thinking_time_2026-10\\PLAN.md (read it first).\nGames (read-only; WSL path /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/):\n- frozen kx3: strength_2026-10-03_kx3_dev/games.jsonl (arm \"X\");\n- candidate kx3 (m64): strength_2026-10-08_kx3_combined/games.jsonl (a…",
+      "promptFramed": true,
+      "lastProgressAt": 1791860617610,
+      "tokens": 68916,
+      "toolCalls": 7,
+      "durationMs": 64444,
+      "resultPreview": "{\"pairs\":480,\"seeds_identical\":true,\"m16_minus_frozen\":\"+0.4 +- 1.4 [-1.0, 1.8] points per 100 games, n=480 (pairs: 7 better, 5 worse, 468 same; no ties)\",\"m32_minus_frozen\":\"+4.4 +- 3.1 [1.3, 7.5] points per 100 games, n=480 (pairs: 40 better, 19 worse, 421 same)\",\"candidate_minus_frozen\":\"+4.6 +- 3.4 [1.2, 8.0] points per 100 games, n=480 (pairs: 46 better, 24 worse, 410 same)\",\"m16_minus_candid…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "recompute:2",
+      "phaseIndex": 1,
+      "phaseTitle": "Recompute",
+      "agentId": "a2dd957b050b6ebee",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1791860553164,
+      "queuedAt": 1791860553120,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "+0.4 +- 1.4 points per 100 games, interval [-1.0, +1.8], n=…",
+      "promptPreview": "PocketDeckSim's thinking-time test. Pre-registration: C:\\Users\\dacz8\\Projects\\Pocket Deck Sim\\PocketDeckSim\\rl\\results\\thinking_time_2026-10\\PLAN.md (read it first).\nGames (read-only; WSL path /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/):\n- frozen kx3: strength_2026-10-03_kx3_dev/games.jsonl (arm \"X\");\n- candidate kx3 (m64): strength_2026-10-08_kx3_combined/games.jsonl (a…",
+      "promptFramed": true,
+      "lastProgressAt": 1791860632196,
+      "tokens": 75340,
+      "toolCalls": 9,
+      "durationMs": 78286,
+      "resultPreview": "{\"pairs\":480,\"seeds_identical\":true,\"m16_minus_frozen\":\"+0.4 +- 1.4 points per 100 games, interval [-1.0, +1.8], n=480 (m16 better in 7 pairs, worse in 5, same result in 468)\",\"m32_minus_frozen\":\"+4.4 +- 3.1 points per 100 games, interval [+1.3, +7.5], n=480 (m32 better in 40 pairs, worse in 19, same in 421)\",\"candidate_minus_frozen\":\"+4.6 +- 3.4 points per 100 games, interval [+1.2, +8.0], n=480 …"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "critic",
+      "phaseIndex": 2,
+      "phaseTitle": "Critic",
+      "agentId": "aeb03d2a6cddcf465",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1791860632202,
+      "queuedAt": 1791860632199,
+      "attempt": 1,
+      "lastToolName": "Grep",
+      "lastToolSummary": "C:\\Users\\dacz8\\Projects\\Pocket Deck Sim\\PocketDeckSim\\rl\\re…",
+      "promptPreview": "PocketDeckSim's thinking-time test. Pre-registration: C:\\Users\\dacz8\\Projects\\Pocket Deck Sim\\PocketDeckSim\\rl\\results\\thinking_time_2026-10\\PLAN.md (read it first).\nGames (read-only; WSL path /mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/rl/results/):\n- frozen kx3: strength_2026-10-03_kx3_dev/games.jsonl (arm \"X\");\n- candidate kx3 (m64): strength_2026-10-08_kx3_combined/games.jsonl (a…",
+      "promptFramed": true,
+      "lastProgressAt": 1791860904003,
+      "tokens": 124407,
+      "toolCalls": 27,
+      "durationMs": 271799,
+      "resultPreview": "**(1) Do the three agree?** Yes. My own recomputation (`C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\ttcheck\\critic\\critic.py`) matches both recomputers and the laptop on every shared figure, to rounding:\n- 480 pairs, 0 seed mismatches.\n- m16 − frozen: +0.42 ± 1.42.\n- m32 − frozen: +4.38 ± 3.12, interval [+1.26, +7.49].\n- candidate − frozen: +4.58 ± 3.40.\n- m16 − candidate: −4.17 ± 3.45.\n- m32 − candi…"
+    }
+  ],
+  "totalTokens": 268663,
+  "totalToolCalls": 43
+}
