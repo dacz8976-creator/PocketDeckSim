@@ -1,7 +1,7 @@
 #!/bin/bash
-# The whole chain of this folder, from the recordings to the tables (about 3 minutes; km3 at 12 seeds on 34 positions is 12 s). Nothing here runs kx3.
-#   1 convert the six games (convert.sh)      2 km3 on pg_pos_F, seeds 1-12 (run_km3.sh)       3 the table of his line v km3 (kw_report.py of the Oct 12 harness)
-#   4 km3 step by step along his line (forced_runs.py)     5 km3 on the older engine for the positions flagged for rules switch 2     6 the position cards (position_cards.py)
+# The whole chain of this folder, from the recordings to the tables (about 6 minutes; km3 at 12 seeds on 92 positions is about a minute). Nothing here runs kx3.
+#   1 convert the 14 games (convert.sh)      2 km3 on pg_pos_F, seeds 1-12 (run_km3.sh)       3 the table of his line v km3 (kw_report.py of the Oct 12 harness)
+#   4 km3 step by step along his line (forced_runs.py)     5 km3 on the older engine for the positions flagged for rules switch 2     6 the position cards (position_cards.py) and the table (make_table.py)
 set -euo pipefail
 HERE=$(cd "$(dirname "$0")" && pwd)
 OUT=$(dirname "$HERE")
@@ -22,5 +22,7 @@ EOF
 if [ -x /home/dacz8976/pgd/pg_pos ]; then
   BIN=/home/dacz8976/pgd/pg_pos SKIP_SHA=1 bash "$HERE/run_km3.sh" positions_all.json decks runs_km3_older_engine run_ids_switch2.txt
 fi
-python3 -B "$HERE/position_cards.py" positions_all.json km3_summary.json runs_km3 position_list.json "$QA/BATCH_2026-10-13_REMAINING_SIX" > position_cards.txt
+python3 -B "$HERE/check_deck_assumption.py" positions_all.json decks "$QA" > deck_assumption_check.txt
+python3 -B "$HERE/position_cards.py" positions_all.json km3_summary.json runs_km3 position_list.json "$QA" > position_cards.txt
+python3 -B "$HERE/make_table.py"
 echo done

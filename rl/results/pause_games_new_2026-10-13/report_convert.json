@@ -1,6 +1,16 @@
 {
- "positions": 34,
+ "positions": 92,
  "left_out": [
+  {
+   "game": "261012_203719000",
+   "turn": 19,
+   "reason": "hand not fully named or unmapped: [] count=0"
+  },
+  {
+   "game": "261012_203719000",
+   "turn": 21,
+   "reason": "hand not fully named or unmapped: [] count=0"
+  },
   {
    "game": "261013_015659000",
    "turn": 11,
@@ -18,6 +28,82 @@
   }
  ],
  "decks": {
+  "261012_010706000": {
+   "source": "log",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": true,
+   "status": "assumed_from_20261013_010837000_iOS_deck_list_not_in_this_packet_unverified"
+  },
+  "261012_203719000": {
+   "source": "qr",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": true,
+   "status": "assumed_from_20261013_010003000_iOS_deck_list_not_in_this_packet_unverified"
+  },
+  "261012_210041000": {
+   "source": "qr",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_filmed_QR_but_current_live_log_snapshot_unavailable"
+  },
+  "261012_210823000": {
+   "source": "qr",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "exact_filmed_qr_verified_live_log_snapshot_unavailable"
+  },
+  "261012_225319000": {
+   "source": "log",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_live_log_snapshot_and_matching_filmed_QR"
+  },
+  "261012_230258000": {
+   "source": "log",
+   "energy": [
+    "Darkness"
+   ],
+   "notes": [],
+   "version_unverified": false,
+   "status": "verified_live_log_snapshot_and_matching_filmed_QR"
+  },
+  "261013_022530000": {
+   "source": "qr",
+   "energy": [
+    "Fighting",
+    "Metal"
+   ],
+   "notes": [
+    "Dratini: the ledger does not tell which of A1 183, A3b 051, B2b 051, B4 116 it is; A3b 051 used"
+   ],
+   "version_unverified": false,
+   "status": "filmed_QR_verified_live_log_snapshot_missing_initially"
+  },
+  "261013_030351000": {
+   "source": "qr",
+   "energy": [
+    "Fighting",
+    "Metal"
+   ],
+   "notes": [],
+   "version_unverified": true,
+   "status": "assumed_from_20261013_022530000_iOS_deck_list_not_in_this_packet_unverified"
+  },
   "261013_010003000": {
    "source": "qr",
    "energy": [

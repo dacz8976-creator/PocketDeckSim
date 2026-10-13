@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """position_cards.py: one text card per position for reading (board, his turn as the review wrote it, his plan, km3's plans over 12 seeds, km3's scores at its first step).
-usage: position_cards.py POSITIONS.json KM3_SUMMARY.json RUNS_DIR POSITION_LIST.json QA_BATCH_DIR > position_cards.txt"""
+usage: position_cards.py POSITIONS.json KM3_SUMMARY.json RUNS_DIR POSITION_LIST.json QA_ROOT > position_cards.txt   (QA_ROOT = the Recording_QA folder)"""
 import collections, glob, json, os, re, sys
 
 pos_f, sum_f, runs, list_f, batch = sys.argv[1:6]
@@ -17,16 +17,19 @@ def fix(s):
         return s
 
 
+BATCHES = ('BATCH_2026-10-12_NEW_LONG_VIDEOS', 'BATCH_2026-10-12_ADDITIONAL_TWO', 'BATCH_2026-10-13_NEWEST_TWO', 'BATCH_2026-10-13_REMAINING_SIX')
+
+
 def review_rows(game_short):
-    d = glob.glob(os.path.join(batch, '2026*_' + game_short.split('_', 1)[1] + '*'))
+    """{turn: (who, text)} from the game's REVIEW.md table (the packets use 3 to 5 columns: | turn | player (and interval) | [interval |] account |)"""
+    d = [x for b in BATCHES for x in glob.glob(os.path.join(batch, b, '2026*_' + game_short.split('_', 1)[1] + '*'))]
     rows = {}
-    if not d:
+    if not d or not os.path.exists(os.path.join(d[0], 'REVIEW.md')):
         return rows
-    text = open(os.path.join(d[0], 'REVIEW.md'), encoding='utf-8').read()
-    for line in text.split('\n'):
-        m = re.match(r'\|\s*(\d+)\s*\|\s*(owner|opponent)\s*\|\s*([^|]*)\|\s*(.*)\|\s*$', line)
-        if m:
-            rows[int(m.group(1))] = (m.group(2), fix(m.group(4).strip()))
+    for line in open(os.path.join(d[0], 'REVIEW.md'), encoding='utf-8').read().split('\n'):
+        cells = [c.strip() for c in line.strip().strip('|').split('|')]
+        if len(cells) >= 3 and cells[0].isdigit() and re.match(r'(owner|opponent)', cells[1], re.I):
+            rows[int(cells[0])] = (cells[1].split(',')[0].lower(), fix(max(cells[2:], key=len)))
     return rows
 
 

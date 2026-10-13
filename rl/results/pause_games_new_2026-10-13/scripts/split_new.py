@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
-"""split_new.py TMP OUT QA: keep the positions, the report and the games_meta of the six games of BATCH_2026-10-13_REMAINING_SIX (ids KW-261013_...) out of a conversion of all 30 games."""
+"""split_new.py TMP OUT QA: keep the positions, the report and the games_meta of the 14 new games (BATCH_2026-10-12_NEW_LONG_VIDEOS, _ADDITIONAL_TWO, 2026-10-13_NEWEST_TWO, _REMAINING_SIX) out of a conversion of all 38 games."""
 import glob, json, os, sys
 
 tmp, out, qa = sys.argv[1:4]
-pos = [p for p in json.load(open(os.path.join(tmp, 'positions_all.json'), encoding='utf-8')) if p['id'].startswith('KW-261013_')]
+BATCHES = ('BATCH_2026-10-12_NEW_LONG_VIDEOS', 'BATCH_2026-10-12_ADDITIONAL_TWO', 'BATCH_2026-10-13_NEWEST_TWO', 'BATCH_2026-10-13_REMAINING_SIX')
+NEW = {os.path.basename(d).replace('_iOS', '')[2:] for b in BATCHES for d in glob.glob(os.path.join(qa, b, '2026*'))}      # '261013_010003000'
+pos = [p for p in json.load(open(os.path.join(tmp, 'positions_all.json'), encoding='utf-8')) if p['id'][3:].rsplit('-t', 1)[0] in NEW]
 json.dump(pos, open(os.path.join(out, 'positions_all.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 rep = json.load(open(os.path.join(tmp, 'report_convert.json'), encoding='utf-8'))
 new = {'positions': len(pos),
-       'left_out': [s for s in rep['left_out'] if '261013_' in str(s.get('game'))],
-       'plans_with_unresolved_targets': [s for s in rep['plans_with_unresolved_targets'] if '261013_' in str(s.get('game'))],
-       'decks': {g: d for g, d in rep['decks'].items() if g.startswith('261013_')}}
+       'left_out': [s for s in rep['left_out'] if str(s.get('game')).replace('_iOS', '')[2:] in NEW or str(s.get('game')) in NEW],
+       'plans_with_unresolved_targets': [s for s in rep['plans_with_unresolved_targets'] if str(s.get('game')).replace('_iOS', '')[2:] in NEW or str(s.get('game')) in NEW],
+       'decks': {g: d for g, d in rep['decks'].items() if g in NEW}}
 json.dump(new, open(os.path.join(out, 'report_convert.json'), 'w', encoding='utf-8'), ensure_ascii=False, indent=1)
 
 meta = {}
-batch = 'BATCH_2026-10-13_REMAINING_SIX'
-for d in sorted(glob.glob(os.path.join(qa, batch, '2026*'))):
+for batch, d in sorted((b, d) for b in BATCHES for d in glob.glob(os.path.join(qa, b, '2026*'))):
     name = os.path.basename(d)
     short = 'kw-' + name.replace('_iOS', '')[2:]
     try:
