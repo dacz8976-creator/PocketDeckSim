@@ -49,3 +49,4 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
 - 2026-10-14: deck 12 (held-out deck; stage use, not development) registered (rl/results/slow_reports/2026-10-13_12-ariados-whimsicott-ogerpon, seed_base 24,686,200,000, deck sha256 4d059bd2c5cb…, 320 games, --deals 10 --threads 4 --school-rule off; self-check from the committed record). Pushed before any game; then slices of 40 under the driver.
 - 2026-10-13 20:14Z: 2026-10-13_12-ariados-whimsicott-ogerpon: slice done, 40 of 320 games on disk, folder pushed.
 - 2026-10-13 21:05Z: 2026-10-13_12-ariados-whimsicott-ogerpon: slice done, 80 of 320 games on disk, folder pushed.
+- 2026-10-13 22:29Z: 2026-10-13_12-ariados-whimsicott-ogerpon: slice done, 120 of 320 games on disk, folder pushed.
