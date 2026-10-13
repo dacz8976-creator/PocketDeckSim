@@ -21,7 +21,13 @@ must equal Sonnet's km3 runs at the same seeds (the engine is identical outside 
 
 ## Positions and seeds
 
-- **Positions:** `positions_all.json` as committed at b0805130 (121; none marked held out).
+- **Positions (corrected Oct 12, after Astra's review):** the CORRECTED set, `../pause_games_new_2026-10-12/positions_all.json` as
+  committed at main 2eff1be6 (Sonnet's converter fix b276bc99, verified by the laptop's two reader panels; 125 positions in 24 games).
+  The b0805130 set (121) and its km3 read are superseded and must not be used (`../pause_games_new_2026-10-12/superseded_v1/`).
+- **Eligible positions:** exactly the 119 ids in `run_ids.txt` (this folder): every position with `usable` true, less the two with no
+  plan of his (004435 t10, 003458 t11, where the game ended before he played). The 4 positions of 014541 are out (`usable` false: its
+  deck list is another version).
+- **km3 re-measured:** K's km3 on these same 119 at seeds 1-12 replaces the superseded km3 read; the reading uses only K's column.
 - **Seeds:** 1-12, as Sonnet's km3, so each bot is compared at the same seeds.
 - **Rules switch 2:** the 35 positions flagged in `position_list.tsv` are read separately. In those, the engines differ by design.
 - **The opponent:** unknown in every game (hidden cards filled from the pilot's own list), so every row stays "approximate", as in

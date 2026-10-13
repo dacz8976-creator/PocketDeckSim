@@ -1,0 +1,565 @@
+﻿===== KW-261004_213625000-t01
+{
+ "id": "KW-261004_213625000-t01",
+ "game": "kw-261004_213625000",
+ "his_turn": 1,
+ "deck": "KW261004_213625000",
+ "turn_count": 1,
+ "points": [
+  0,
+  0
+ ],
+ "me": {
+  "hand": [
+   "Professor's Research A4b 373",
+   "Fragrant Forest B3 153",
+   "Butterfree A1 007",
+   "Quick-Grow Extract B1a 067",
+   "Lucky Ice Pop B2 145"
+  ],
+  "discard": [],
+  "discard_energy": [],
+  "board": [
+   {
+    "card": "Caterpie A1 005",
+    "hp": 40
+   }
+  ],
+  "energy_now": null,
+  "energy_next": "Grass"
+ },
+ "opp": {
+  "hand_count": 3,
+  "discard_n": 0,
+  "discard_energy": [],
+  "board": [
+   {
+    "card": "Exeggcute A1 021",
+    "hp": 50
+   },
+   {
+    "card": "Combee B4 010",
+    "hp": 50
+   }
+  ],
+  "energy_next": "Grass"
+ },
+ "stadium": null,
+ "turn_effects": [],
+ "his_plan": [
+  "Play:Professor's Research",
+  "Play:Fragrant Forest",
+  "UseStadium",
+  "Place:Shelmet",
+  "Place:Caterpie",
+  "Place:Shelmet"
+ ],
+ "hand_source": "codex",
+ "decision_maker": "Dustin",
+ "exact_list": false,
+ "milestones": [],
+ "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0); printings chosen by the HP shown.",
+ "approximate": true,
+ "approximate_reason": "opponent's list unknown",
+ "heldout": false,
+ "plan_truncated_at": null
+}
+===== KW-261004_213625000-t03
+{
+ "id": "KW-261004_213625000-t03",
+ "game": "kw-261004_213625000",
+ "his_turn": 2,
+ "deck": "KW261004_213625000",
+ "turn_count": 3,
+ "points": [
+  0,
+  0
+ ],
+ "me": {
+  "hand": [
+   "Butterfree A1 007",
+   "Quick-Grow Extract B1a 067",
+   "Lucky Ice Pop B2 145",
+   "Butterfree A1 007"
+  ],
+  "discard": [
+   "Professor's Research A4b 373"
+  ],
+  "discard_energy": [],
+  "board": [
+   {
+    "card": "Caterpie A1 005",
+    "hp": 30
+   },
+   {
+    "card": "Shelmet B4 013",
+    "hp": 70
+   },
+   {
+    "card": "Caterpie A1 005",
+    "hp": 40
+   },
+   {
+    "card": "Shelmet B4 013",
+    "hp": 70
+   }
+  ],
+  "energy_now": "Grass",
+  "energy_next": "Grass"
+ },
+ "opp": {
+  "hand_count": 3,
+  "discard_n": 0,
+  "discard_energy": [],
+  "board": [
+   {
+    "card": "Budew B3 013",
+    "hp": 30
+   },
+   {
+    "card": "Exeggcute A1 021",
+    "hp": 50
+   },
+   {
+    "card": "Pinsir A1 026",
+    "hp": 90
+   },
+   {
+    "card": "Combee B4 010",
+    "hp": 50
+   }
+  ],
+  "energy_next": "Grass"
+ },
+ "stadium": {
+  "card": "Fragrant Forest B3 153",
+  "owner": 0
+ },
+ "turn_effects": [],
+ "his_plan": [
+  "Play:Quick-Grow Extract",
+  "Play:Lucky Ice Pop",
+  "Attach:1Grass@0 zone",
+  "Attack:Find a Friend"
+ ],
+ "hand_source": "codex",
+ "decision_maker": "Dustin",
+ "exact_list": false,
+ "milestones": [],
+ "notes": "attack title of Caterpie not named in the ledger: the last printed attack is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0); printings chosen by the HP shown.",
+ "approximate": true,
+ "approximate_reason": "opponent's list unknown",
+ "heldout": false,
+ "plan_truncated_at": null
+}
+===== KW-261004_213625000-t05
+{
+ "id": "KW-261004_213625000-t05",
+ "game": "kw-261004_213625000",
+ "his_turn": 3,
+ "deck": "KW261004_213625000",
+ "turn_count": 5,
+ "points": [
+  1,
+  0
+ ],
+ "me": {
+  "hand": [
+   "Butterfree A1 007",
+   "Butterfree A1 007",
+   "Poké Ball A2b 111"
+  ],
+  "discard": [
+   "Professor's Research A4b 373",
+   "Quick-Grow Extract B1a 067",
+   "Lucky Ice Pop B2 145"
+  ],
+  "discard_energy": [],
+  "board": [
+   {
+    "card": "Metapod A1 006",
+    "hp": 80,
+    "energy": [
+     "Grass"
+    ],
+    "behind": [
+     "Caterpie A1 005"
+    ]
+   },
+   {
+    "card": "Shelmet B4 013",
+    "hp": 70
+   },
+   {
+    "card": "Caterpie A1 005",
+    "hp": 40
+   },
+   {
+    "card": "Shelmet B4 013",
+    "hp": 70
+   }
+  ],
+  "energy_now": "Grass",
+  "energy_next": "Grass"
+ },
+ "opp": {
+  "hand_count": 3,
+  "discard_n": 0,
+  "discard_energy": [],
+  "board": [
+   {
+    "card": "Pinsir A1 026",
+    "hp": 90
+   },
+   {
+    "card": "Exeggcute A1 021",
+    "hp": 50
+   },
+   {
+    "card": "Teal Mask Ogerpon ex B2 017",
+    "hp": 130
+   },
+   {
+    "card": "Combee B4 010",
+    "hp": 50,
+    "energy": [
+     "Grass"
+    ]
+   }
+  ],
+  "energy_next": "Grass"
+ },
+ "stadium": {
+  "card": "Fragrant Forest B3 153",
+  "owner": 0
+ },
+ "turn_effects": [],
+ "his_plan": [
+  "Play:Poké Ball",
+  "Evolve:Butterfree@0",
+  "Attach:1Grass@1 zone",
+  "Attack:Gust"
+ ],
+ "hand_source": "codex",
+ "decision_maker": "Dustin",
+ "exact_list": false,
+ "milestones": [],
+ "notes": "Metapod stack taken from the printed evolution line (the ledger gives none); attack title of Butterfree not named in the ledger: the last printed attack is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0); printings chosen by the HP shown.",
+ "approximate": true,
+ "approximate_reason": "opponent's list unknown",
+ "heldout": false,
+ "plan_truncated_at": null
+}
+===== KW-261004_213625000-t07
+{
+ "id": "KW-261004_213625000-t07",
+ "game": "kw-261004_213625000",
+ "his_turn": 4,
+ "deck": "KW261004_213625000",
+ "turn_count": 7,
+ "points": [
+  1,
+  0
+ ],
+ "me": {
+  "hand": [
+   "Butterfree A1 007",
+   "Accelgor B4 014"
+  ],
+  "discard": [
+   "Professor's Research A4b 373",
+   "Quick-Grow Extract B1a 067",
+   "Lucky Ice Pop B2 145",
+   "Poké Ball A2b 111"
+  ],
+  "discard_energy": [],
+  "board": [
+   {
+    "card": "Butterfree A1 007",
+    "hp": 130,
+    "energy": [
+     "Grass"
+    ],
+    "behind": [
+     "Caterpie A1 005",
+     "Metapod A1 006"
+    ]
+   },
+   {
+    "card": "Shelmet B4 013",
+    "hp": 70,
+    "energy": [
+     "Grass"
+    ]
+   },
+   {
+    "card": "Caterpie A1 005",
+    "hp": 40
+   },
+   {
+    "card": "Shelmet B4 013",
+    "hp": 70
+   }
+  ],
+  "energy_now": "Grass",
+  "energy_next": "Grass"
+ },
+ "opp": {
+  "hand_count": 5,
+  "discard_n": 0,
+  "discard_energy": [],
+  "board": [
+   {
+    "card": "Pinsir A1 026",
+    "hp": 30
+   },
+   {
+    "card": "Exeggcute A1 021",
+    "hp": 50
+   },
+   {
+    "card": "Teal Mask Ogerpon ex B2 017",
+    "hp": 130
+   },
+   {
+    "card": "Combee B4 010",
+    "hp": 50,
+    "energy": [
+     "Grass",
+     "Grass"
+    ]
+   }
+  ],
+  "energy_next": "Grass"
+ },
+ "stadium": {
+  "card": "Fragrant Forest B3 153",
+  "owner": 0
+ },
+ "turn_effects": [],
+ "his_plan": [
+  "Evolve:Accelgor@1",
+  "Attach:1Grass@1 zone",
+  "Attack:Gust"
+ ],
+ "hand_source": "codex",
+ "decision_maker": "Dustin",
+ "exact_list": false,
+ "milestones": [],
+ "notes": "Butterfree stack taken from the printed evolution line (the ledger gives none); attack title of Butterfree not named in the ledger: the last printed attack is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0); printings chosen by the HP shown.",
+ "approximate": true,
+ "approximate_reason": "opponent's list unknown",
+ "heldout": false,
+ "plan_truncated_at": null
+}
+===== KW-261004_213625000-t09
+{
+ "id": "KW-261004_213625000-t09",
+ "game": "kw-261004_213625000",
+ "his_turn": 5,
+ "deck": "KW261004_213625000",
+ "turn_count": 9,
+ "points": [
+  2,
+  1
+ ],
+ "me": {
+  "hand": [
+   "Butterfree A1 007",
+   "Hiking Trail B2b 069"
+  ],
+  "discard": [
+   "Professor's Research A4b 373",
+   "Quick-Grow Extract B1a 067",
+   "Lucky Ice Pop B2 145",
+   "Poké Ball A2b 111",
+   "Butterfree A1 007",
+   "Caterpie A1 005",
+   "Metapod A1 006",
+   "Caterpie A1 005"
+  ],
+  "discard_energy": [
+   "Grass"
+  ],
+  "board": [
+   {
+    "card": "Metapod A1 006",
+    "hp": 80,
+    "behind": []
+   },
+   {
+    "card": "Accelgor B4 014",
+    "hp": 80,
+    "energy": [
+     "Grass",
+     "Grass"
+    ],
+    "behind": [
+     "Shelmet B4 013"
+    ]
+   },
+   {
+    "card": "Shelmet B4 013",
+    "hp": 70
+   }
+  ],
+  "energy_now": "Grass",
+  "energy_next": "Grass"
+ },
+ "opp": {
+  "hand_count": 4,
+  "discard_n": 0,
+  "discard_energy": [],
+  "board": [
+   {
+    "card": "Vespiquen ex B4 011",
+    "hp": 140,
+    "energy": [
+     "Grass",
+     "Grass"
+    ],
+    "behind": [
+     "Combee A2 017"
+    ]
+   },
+   {
+    "card": "Exeggcute A1 021",
+    "hp": 50
+   },
+   {
+    "card": "Teal Mask Ogerpon ex B2 017",
+    "hp": 130,
+    "energy": [
+     "Grass"
+    ]
+   }
+  ],
+  "energy_next": "Grass"
+ },
+ "stadium": {
+  "card": "Fragrant Forest B3 153",
+  "owner": 0
+ },
+ "turn_effects": [],
+ "his_plan": [
+  "Evolve:Butterfree@0",
+  "Play:Hiking Trail",
+  "Attach:1Grass@0 zone",
+  "Attack:Gust"
+ ],
+ "hand_source": "codex",
+ "decision_maker": "Dustin",
+ "exact_list": false,
+ "milestones": [],
+ "notes": "Accelgor stack taken from the printed evolution line (the ledger gives none); Caterpie left out of a derived evolution stack (the list holds too few: Rare Candy skipped it); Metapod stack taken from the printed evolution line (the ledger gives none); Vespiquen ex stack taken from the printed evolution line (the ledger gives none); attack title of Butterfree not named in the ledger: the last printed attack is used; knocked out between turns: Butterfree; knocked out between turns: Caterpie. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0); printings chosen by the HP shown.",
+ "approximate": true,
+ "approximate_reason": "opponent's list unknown",
+ "heldout": false,
+ "plan_truncated_at": null
+}
+===== KW-261004_213625000-t11
+{
+ "id": "KW-261004_213625000-t11",
+ "game": "kw-261004_213625000",
+ "his_turn": 6,
+ "deck": "KW261004_213625000",
+ "turn_count": 11,
+ "points": [
+  2,
+  2
+ ],
+ "me": {
+  "hand": [
+   "Accelgor B4 014",
+   "Professor's Research A4b 373",
+   "Poké Ball A2b 111",
+   "Quick-Grow Extract B1a 067"
+  ],
+  "discard": [
+   "Professor's Research A4b 373",
+   "Quick-Grow Extract B1a 067",
+   "Lucky Ice Pop B2 145",
+   "Poké Ball A2b 111",
+   "Butterfree A1 007",
+   "Metapod A1 006",
+   "Caterpie A1 005",
+   "Butterfree A1 007",
+   "Caterpie A1 005",
+   "Metapod A1 006"
+  ],
+  "discard_energy": [
+   "Grass",
+   "Grass"
+  ],
+  "board": [
+   {
+    "card": "Accelgor B4 014",
+    "hp": 80,
+    "energy": [
+     "Grass",
+     "Grass"
+    ],
+    "behind": [
+     "Shelmet B4 013"
+    ]
+   },
+   {
+    "card": "Shelmet B4 013",
+    "hp": 70
+   }
+  ],
+  "energy_now": "Grass",
+  "energy_next": "Grass"
+ },
+ "opp": {
+  "hand_count": 4,
+  "discard_n": 0,
+  "discard_energy": [],
+  "board": [
+   {
+    "card": "Vespiquen ex B4 011",
+    "hp": 110,
+    "energy": [
+     "Grass",
+     "Grass"
+    ],
+    "tools": [
+     "Leaf Cape A3 147"
+    ],
+    "behind": [
+     "Combee A2 017"
+    ]
+   },
+   {
+    "card": "Teal Mask Ogerpon ex B2 017",
+    "hp": 130,
+    "energy": [
+     "Grass",
+     "Grass"
+    ]
+   }
+  ],
+  "energy_next": "Grass"
+ },
+ "stadium": {
+  "card": "Hiking Trail B2b 069",
+  "owner": 0
+ },
+ "turn_effects": [],
+ "his_plan": [
+  "Attach:1Grass@1 zone",
+  "Evolve:Accelgor@1",
+  "Play:Poké Ball",
+  "Play:Professor's Research",
+  "Attack:Deck and Cover"
+ ],
+ "hand_source": "codex",
+ "decision_maker": "Dustin",
+ "exact_list": false,
+ "milestones": [],
+ "notes": "Accelgor stack taken from the printed evolution line (the ledger gives none); Vespiquen ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Butterfree; one Caterpie taken out of the discard guess (the list holds too few). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is not tracked (0); printings chosen by the HP shown.",
+ "approximate": true,
+ "approximate_reason": "opponent's list unknown",
+ "heldout": false,
+ "plan_truncated_at": null
+}

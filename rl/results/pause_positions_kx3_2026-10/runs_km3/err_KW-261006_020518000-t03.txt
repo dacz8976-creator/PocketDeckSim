@@ -1,0 +1,486 @@
+PGSTEP KW-261006_020518000-t03 seed 1 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Evolve:Sandslash@0
+PGCAND Evolve:Sandslash@1
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -1809.900000000000091 EndTurn
+PGDUMP       5175.400000000000546 Attach:1Fighting@0 zone
+PGDUMP       -551.399999999999977 Attach:1Fighting@1 zone
+PGDUMP       5175.400000000000546 Evolve:Sandslash@0
+PGDUMP       -551.399999999999977 Evolve:Sandslash@1
+PGDUMP        -21.399999999999999 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 1 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=4
+PGDUMP       -850.899999999999977 EndTurn
+PGDUMP       5334.900000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.400000000000091 Attach:1Fighting@1 zone
+PGDUMP       5334.900000000000546 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 1 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGDUMP actor=0 candidates=3
+PGDUMP       -711.899999999999977 EndTurn
+PGDUMP       5334.400000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.900000000000091 Attach:1Fighting@1 zone
+PGSTEP KW-261006_020518000-t03 seed 1 free 3
+PGCAND EndTurn
+PGCAND Attack:Fury Swipes
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP        -21.899999999999999 EndTurn
+PGDUMP       5334.400000000000546 Attack:Fury Swipes
+PGDUMP       -741.899999999999977 Retreat:1
+PGSTEP KW-261006_020518000-t03 seed 2 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Evolve:Sandslash@0
+PGCAND Evolve:Sandslash@1
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -1809.900000000000091 EndTurn
+PGDUMP       5175.400000000000546 Attach:1Fighting@0 zone
+PGDUMP       -551.399999999999977 Attach:1Fighting@1 zone
+PGDUMP       5175.400000000000546 Evolve:Sandslash@0
+PGDUMP       -551.399999999999977 Evolve:Sandslash@1
+PGDUMP        -21.399999999999999 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 2 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=4
+PGDUMP       -850.899999999999977 EndTurn
+PGDUMP       5334.900000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.400000000000091 Attach:1Fighting@1 zone
+PGDUMP       5334.900000000000546 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 2 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGDUMP actor=0 candidates=3
+PGDUMP       -710.899999999999977 EndTurn
+PGDUMP       5335.400000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1250.900000000000091 Attach:1Fighting@1 zone
+PGSTEP KW-261006_020518000-t03 seed 2 free 3
+PGCAND EndTurn
+PGCAND Attack:Fury Swipes
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP        -20.899999999999999 EndTurn
+PGDUMP       5335.400000000000546 Attack:Fury Swipes
+PGDUMP       -740.899999999999977 Retreat:1
+PGSTEP KW-261006_020518000-t03 seed 2 free 4
+PGSTEP KW-261006_020518000-t03 seed 3 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Evolve:Sandslash@0
+PGCAND Evolve:Sandslash@1
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -1809.900000000000091 EndTurn
+PGDUMP       5175.400000000000546 Attach:1Fighting@0 zone
+PGDUMP       -551.399999999999977 Attach:1Fighting@1 zone
+PGDUMP       5175.400000000000546 Evolve:Sandslash@0
+PGDUMP       -551.399999999999977 Evolve:Sandslash@1
+PGDUMP        -21.399999999999999 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 3 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=4
+PGDUMP       -850.899999999999977 EndTurn
+PGDUMP       5334.900000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.400000000000091 Attach:1Fighting@1 zone
+PGDUMP       5334.900000000000546 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 3 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGDUMP actor=0 candidates=3
+PGDUMP       -710.899999999999977 EndTurn
+PGDUMP       5335.400000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1250.900000000000091 Attach:1Fighting@1 zone
+PGSTEP KW-261006_020518000-t03 seed 3 free 3
+PGCAND EndTurn
+PGCAND Attack:Fury Swipes
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP        -20.899999999999999 EndTurn
+PGDUMP       5335.400000000000546 Attack:Fury Swipes
+PGDUMP       -740.899999999999977 Retreat:1
+PGSTEP KW-261006_020518000-t03 seed 3 free 4
+PGSTEP KW-261006_020518000-t03 seed 4 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Evolve:Sandslash@0
+PGCAND Evolve:Sandslash@1
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -1809.900000000000091 EndTurn
+PGDUMP       5175.400000000000546 Attach:1Fighting@0 zone
+PGDUMP       -551.399999999999977 Attach:1Fighting@1 zone
+PGDUMP       5175.400000000000546 Evolve:Sandslash@0
+PGDUMP       -551.399999999999977 Evolve:Sandslash@1
+PGDUMP        -21.399999999999999 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 4 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=4
+PGDUMP       -850.899999999999977 EndTurn
+PGDUMP       5334.900000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.400000000000091 Attach:1Fighting@1 zone
+PGDUMP       5334.900000000000546 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 4 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGDUMP actor=0 candidates=3
+PGDUMP       -711.899999999999977 EndTurn
+PGDUMP       5334.400000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.900000000000091 Attach:1Fighting@1 zone
+PGSTEP KW-261006_020518000-t03 seed 4 free 3
+PGCAND EndTurn
+PGCAND Attack:Fury Swipes
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP        -21.899999999999999 EndTurn
+PGDUMP       5334.400000000000546 Attack:Fury Swipes
+PGDUMP       -741.899999999999977 Retreat:1
+PGSTEP KW-261006_020518000-t03 seed 5 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Evolve:Sandslash@0
+PGCAND Evolve:Sandslash@1
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -1809.900000000000091 EndTurn
+PGDUMP       5175.400000000000546 Attach:1Fighting@0 zone
+PGDUMP       -551.399999999999977 Attach:1Fighting@1 zone
+PGDUMP       5175.400000000000546 Evolve:Sandslash@0
+PGDUMP       -551.399999999999977 Evolve:Sandslash@1
+PGDUMP        -21.399999999999999 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 5 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=4
+PGDUMP       -850.899999999999977 EndTurn
+PGDUMP       5334.900000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.400000000000091 Attach:1Fighting@1 zone
+PGDUMP       5334.900000000000546 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 5 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGDUMP actor=0 candidates=3
+PGDUMP       -710.899999999999977 EndTurn
+PGDUMP       5335.400000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1250.900000000000091 Attach:1Fighting@1 zone
+PGSTEP KW-261006_020518000-t03 seed 5 free 3
+PGCAND EndTurn
+PGCAND Attack:Fury Swipes
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP        -20.899999999999999 EndTurn
+PGDUMP       5335.400000000000546 Attack:Fury Swipes
+PGDUMP       -740.899999999999977 Retreat:1
+PGSTEP KW-261006_020518000-t03 seed 5 free 4
+PGSTEP KW-261006_020518000-t03 seed 6 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Evolve:Sandslash@0
+PGCAND Evolve:Sandslash@1
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -1809.900000000000091 EndTurn
+PGDUMP       5175.400000000000546 Attach:1Fighting@0 zone
+PGDUMP       -551.399999999999977 Attach:1Fighting@1 zone
+PGDUMP       5175.400000000000546 Evolve:Sandslash@0
+PGDUMP       -551.399999999999977 Evolve:Sandslash@1
+PGDUMP        -21.399999999999999 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 6 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=4
+PGDUMP       -850.899999999999977 EndTurn
+PGDUMP       5334.900000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.400000000000091 Attach:1Fighting@1 zone
+PGDUMP       5334.900000000000546 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 6 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGDUMP actor=0 candidates=3
+PGDUMP       -710.899999999999977 EndTurn
+PGDUMP       5335.400000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1250.900000000000091 Attach:1Fighting@1 zone
+PGSTEP KW-261006_020518000-t03 seed 6 free 3
+PGCAND EndTurn
+PGCAND Attack:Fury Swipes
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP        -20.899999999999999 EndTurn
+PGDUMP       5335.400000000000546 Attack:Fury Swipes
+PGDUMP       -740.899999999999977 Retreat:1
+PGSTEP KW-261006_020518000-t03 seed 7 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Evolve:Sandslash@0
+PGCAND Evolve:Sandslash@1
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -1809.900000000000091 EndTurn
+PGDUMP       5175.400000000000546 Attach:1Fighting@0 zone
+PGDUMP       -551.399999999999977 Attach:1Fighting@1 zone
+PGDUMP       5175.400000000000546 Evolve:Sandslash@0
+PGDUMP       -551.399999999999977 Evolve:Sandslash@1
+PGDUMP        -21.399999999999999 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 7 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=4
+PGDUMP       -850.899999999999977 EndTurn
+PGDUMP       5334.900000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.400000000000091 Attach:1Fighting@1 zone
+PGDUMP       5334.900000000000546 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 7 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGDUMP actor=0 candidates=3
+PGDUMP       -710.899999999999977 EndTurn
+PGDUMP       5335.400000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1250.900000000000091 Attach:1Fighting@1 zone
+PGSTEP KW-261006_020518000-t03 seed 7 free 3
+PGCAND EndTurn
+PGCAND Attack:Fury Swipes
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP        -20.899999999999999 EndTurn
+PGDUMP       5335.400000000000546 Attack:Fury Swipes
+PGDUMP       -740.899999999999977 Retreat:1
+PGSTEP KW-261006_020518000-t03 seed 7 free 4
+PGSTEP KW-261006_020518000-t03 seed 8 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Evolve:Sandslash@0
+PGCAND Evolve:Sandslash@1
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -1809.900000000000091 EndTurn
+PGDUMP       5175.400000000000546 Attach:1Fighting@0 zone
+PGDUMP       -551.399999999999977 Attach:1Fighting@1 zone
+PGDUMP       5175.400000000000546 Evolve:Sandslash@0
+PGDUMP       -551.399999999999977 Evolve:Sandslash@1
+PGDUMP        -21.399999999999999 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 8 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=4
+PGDUMP       -850.899999999999977 EndTurn
+PGDUMP       5334.900000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.400000000000091 Attach:1Fighting@1 zone
+PGDUMP       5334.900000000000546 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 8 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGDUMP actor=0 candidates=3
+PGDUMP       -710.899999999999977 EndTurn
+PGDUMP       5335.400000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1250.900000000000091 Attach:1Fighting@1 zone
+PGSTEP KW-261006_020518000-t03 seed 8 free 3
+PGCAND EndTurn
+PGCAND Attack:Fury Swipes
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP        -20.899999999999999 EndTurn
+PGDUMP       5335.400000000000546 Attack:Fury Swipes
+PGDUMP       -740.899999999999977 Retreat:1
+PGSTEP KW-261006_020518000-t03 seed 9 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Evolve:Sandslash@0
+PGCAND Evolve:Sandslash@1
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -1809.900000000000091 EndTurn
+PGDUMP       5175.400000000000546 Attach:1Fighting@0 zone
+PGDUMP       -551.399999999999977 Attach:1Fighting@1 zone
+PGDUMP       5175.400000000000546 Evolve:Sandslash@0
+PGDUMP       -551.399999999999977 Evolve:Sandslash@1
+PGDUMP        -21.399999999999999 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 9 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=4
+PGDUMP       -850.899999999999977 EndTurn
+PGDUMP       5334.900000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.400000000000091 Attach:1Fighting@1 zone
+PGDUMP       5334.900000000000546 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 9 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGDUMP actor=0 candidates=3
+PGDUMP       -711.899999999999977 EndTurn
+PGDUMP       5334.400000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.900000000000091 Attach:1Fighting@1 zone
+PGSTEP KW-261006_020518000-t03 seed 9 free 3
+PGCAND EndTurn
+PGCAND Attack:Fury Swipes
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP        -21.899999999999999 EndTurn
+PGDUMP       5334.400000000000546 Attack:Fury Swipes
+PGDUMP       -741.899999999999977 Retreat:1
+PGSTEP KW-261006_020518000-t03 seed 9 free 4
+PGSTEP KW-261006_020518000-t03 seed 10 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Evolve:Sandslash@0
+PGCAND Evolve:Sandslash@1
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -1809.900000000000091 EndTurn
+PGDUMP       5175.400000000000546 Attach:1Fighting@0 zone
+PGDUMP       -551.399999999999977 Attach:1Fighting@1 zone
+PGDUMP       5175.400000000000546 Evolve:Sandslash@0
+PGDUMP       -551.399999999999977 Evolve:Sandslash@1
+PGDUMP        -21.399999999999999 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 10 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=4
+PGDUMP       -850.899999999999977 EndTurn
+PGDUMP       5334.900000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.400000000000091 Attach:1Fighting@1 zone
+PGDUMP       5334.900000000000546 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 10 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGDUMP actor=0 candidates=3
+PGDUMP       -710.899999999999977 EndTurn
+PGDUMP       5335.400000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1250.900000000000091 Attach:1Fighting@1 zone
+PGSTEP KW-261006_020518000-t03 seed 10 free 3
+PGCAND EndTurn
+PGCAND Attack:Fury Swipes
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP        -20.899999999999999 EndTurn
+PGDUMP       5335.400000000000546 Attack:Fury Swipes
+PGDUMP       -740.899999999999977 Retreat:1
+PGSTEP KW-261006_020518000-t03 seed 10 free 4
+PGSTEP KW-261006_020518000-t03 seed 11 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Evolve:Sandslash@0
+PGCAND Evolve:Sandslash@1
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -1809.900000000000091 EndTurn
+PGDUMP       5175.400000000000546 Attach:1Fighting@0 zone
+PGDUMP       -551.399999999999977 Attach:1Fighting@1 zone
+PGDUMP       5175.400000000000546 Evolve:Sandslash@0
+PGDUMP       -551.399999999999977 Evolve:Sandslash@1
+PGDUMP        -21.399999999999999 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 11 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=4
+PGDUMP       -850.899999999999977 EndTurn
+PGDUMP       5334.900000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.400000000000091 Attach:1Fighting@1 zone
+PGDUMP       5334.900000000000546 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 11 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGDUMP actor=0 candidates=3
+PGDUMP       -710.899999999999977 EndTurn
+PGDUMP       5335.400000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1250.900000000000091 Attach:1Fighting@1 zone
+PGSTEP KW-261006_020518000-t03 seed 11 free 3
+PGCAND EndTurn
+PGCAND Attack:Fury Swipes
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP        -20.899999999999999 EndTurn
+PGDUMP       5335.400000000000546 Attack:Fury Swipes
+PGDUMP       -740.899999999999977 Retreat:1
+PGSTEP KW-261006_020518000-t03 seed 12 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Evolve:Sandslash@0
+PGCAND Evolve:Sandslash@1
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=6
+PGDUMP      -1809.900000000000091 EndTurn
+PGDUMP       5175.400000000000546 Attach:1Fighting@0 zone
+PGDUMP       -551.399999999999977 Attach:1Fighting@1 zone
+PGDUMP       5175.400000000000546 Evolve:Sandslash@0
+PGDUMP       -551.399999999999977 Evolve:Sandslash@1
+PGDUMP        -21.399999999999999 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 12 free 1
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=4
+PGDUMP       -850.899999999999977 EndTurn
+PGDUMP       5334.900000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1251.400000000000091 Attach:1Fighting@1 zone
+PGDUMP       5334.900000000000546 Play:Lucky Ice Pop
+PGSTEP KW-261006_020518000-t03 seed 12 free 2
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGDUMP actor=0 candidates=3
+PGDUMP       -710.899999999999977 EndTurn
+PGDUMP       5335.400000000000546 Attach:1Fighting@0 zone
+PGDUMP      -1250.900000000000091 Attach:1Fighting@1 zone
+PGSTEP KW-261006_020518000-t03 seed 12 free 3
+PGCAND EndTurn
+PGCAND Attack:Fury Swipes
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP        -20.899999999999999 EndTurn
+PGDUMP       5335.400000000000546 Attack:Fury Swipes
+PGDUMP       -740.899999999999977 Retreat:1

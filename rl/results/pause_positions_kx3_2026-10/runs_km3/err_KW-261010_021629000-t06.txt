@@ -1,0 +1,828 @@
+PGSTEP KW-261010_021629000-t06 seed 1 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=9
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        310.300000000000011 Attach:1Water@0 zone
+PGDUMP        310.300000000000011 Attach:1Water@1 zone
+PGDUMP        261.300000000000011 Attack:Stormy Prison
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        360.300000000000011 Place:Horsea@2
+PGDUMP        360.300000000000011 Place:Horsea@3
+PGDUMP       -410.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 1 free 1
+PGCAND Noop
+PGCAND Ability@1
+PGDUMP actor=0 candidates=2
+PGDUMP        489.300000000000011 Noop
+PGDUMP        694.299999999999955 Ability@1
+PGSTEP KW-261010_021629000-t06 seed 1 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=7
+PGDUMP        300.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        645.299999999999955 Attack:Stormy Prison
+PGDUMP        744.299999999999955 Place:Horsea@2
+PGDUMP        744.299999999999955 Place:Horsea@3
+PGDUMP       -205.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 1 free 3
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=7
+PGDUMP        349.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        744.299999999999955 Attach:1Water@3 zone
+PGDUMP        694.299999999999955 Attack:Stormy Prison
+PGDUMP       -156.699999999999989 Retreat:1
+PGDUMP       -285.699999999999989 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 1 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        399.300000000000011 EndTurn
+PGDUMP        744.299999999999955 Attack:Stormy Prison
+PGDUMP      -1776.700000000000045 Retreat:1
+PGDUMP      -1520.700000000000045 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 1 free 5
+PGSTEP KW-261010_021629000-t06 seed 2 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=9
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        310.300000000000011 Attach:1Water@0 zone
+PGDUMP        310.300000000000011 Attach:1Water@1 zone
+PGDUMP        261.300000000000011 Attack:Stormy Prison
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        360.300000000000011 Place:Horsea@2
+PGDUMP        360.300000000000011 Place:Horsea@3
+PGDUMP       -410.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 2 free 1
+PGCAND Noop
+PGCAND Ability@1
+PGDUMP actor=0 candidates=2
+PGDUMP        489.300000000000011 Noop
+PGDUMP        694.299999999999955 Ability@1
+PGSTEP KW-261010_021629000-t06 seed 2 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=7
+PGDUMP        300.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        645.299999999999955 Attack:Stormy Prison
+PGDUMP        744.299999999999955 Place:Horsea@2
+PGDUMP        744.299999999999955 Place:Horsea@3
+PGDUMP       -205.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 2 free 3
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=7
+PGDUMP        349.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        744.299999999999955 Attach:1Water@3 zone
+PGDUMP        694.299999999999955 Attack:Stormy Prison
+PGDUMP       -156.699999999999989 Retreat:1
+PGDUMP       -285.699999999999989 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 2 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        399.300000000000011 EndTurn
+PGDUMP        744.299999999999955 Attack:Stormy Prison
+PGDUMP      -1776.700000000000045 Retreat:1
+PGDUMP      -1520.700000000000045 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 2 free 5
+PGSTEP KW-261010_021629000-t06 seed 3 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=9
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        310.300000000000011 Attach:1Water@0 zone
+PGDUMP        310.300000000000011 Attach:1Water@1 zone
+PGDUMP        261.300000000000011 Attack:Stormy Prison
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        360.300000000000011 Place:Horsea@2
+PGDUMP        360.300000000000011 Place:Horsea@3
+PGDUMP       -410.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 3 free 1
+PGCAND Noop
+PGCAND Ability@1
+PGDUMP actor=0 candidates=2
+PGDUMP        489.300000000000011 Noop
+PGDUMP        694.299999999999955 Ability@1
+PGSTEP KW-261010_021629000-t06 seed 3 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=7
+PGDUMP        300.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        645.299999999999955 Attack:Stormy Prison
+PGDUMP        744.299999999999955 Place:Horsea@2
+PGDUMP        744.299999999999955 Place:Horsea@3
+PGDUMP       -205.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 3 free 3
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=7
+PGDUMP        349.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        744.299999999999955 Attach:1Water@3 zone
+PGDUMP        694.299999999999955 Attack:Stormy Prison
+PGDUMP       -156.699999999999989 Retreat:1
+PGDUMP       -285.699999999999989 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 3 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        399.300000000000011 EndTurn
+PGDUMP        744.299999999999955 Attack:Stormy Prison
+PGDUMP      -1776.700000000000045 Retreat:1
+PGDUMP      -1520.700000000000045 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 3 free 5
+PGSTEP KW-261010_021629000-t06 seed 4 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=9
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        310.300000000000011 Attach:1Water@0 zone
+PGDUMP        310.300000000000011 Attach:1Water@1 zone
+PGDUMP        261.300000000000011 Attack:Stormy Prison
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        360.300000000000011 Place:Horsea@2
+PGDUMP        360.300000000000011 Place:Horsea@3
+PGDUMP       -410.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 4 free 1
+PGCAND Noop
+PGCAND Ability@1
+PGDUMP actor=0 candidates=2
+PGDUMP        489.300000000000011 Noop
+PGDUMP        694.299999999999955 Ability@1
+PGSTEP KW-261010_021629000-t06 seed 4 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=7
+PGDUMP        300.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        645.299999999999955 Attack:Stormy Prison
+PGDUMP        744.299999999999955 Place:Horsea@2
+PGDUMP        744.299999999999955 Place:Horsea@3
+PGDUMP       -205.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 4 free 3
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=7
+PGDUMP        349.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        744.299999999999955 Attach:1Water@3 zone
+PGDUMP        694.299999999999955 Attack:Stormy Prison
+PGDUMP       -156.699999999999989 Retreat:1
+PGDUMP       -285.699999999999989 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 4 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        399.300000000000011 EndTurn
+PGDUMP        744.299999999999955 Attack:Stormy Prison
+PGDUMP      -1776.700000000000045 Retreat:1
+PGDUMP      -1520.700000000000045 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 4 free 5
+PGSTEP KW-261010_021629000-t06 seed 5 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=9
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        310.300000000000011 Attach:1Water@0 zone
+PGDUMP        310.300000000000011 Attach:1Water@1 zone
+PGDUMP        261.300000000000011 Attack:Stormy Prison
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        360.300000000000011 Place:Horsea@2
+PGDUMP        360.300000000000011 Place:Horsea@3
+PGDUMP       -410.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 5 free 1
+PGCAND Noop
+PGCAND Ability@1
+PGDUMP actor=0 candidates=2
+PGDUMP        489.300000000000011 Noop
+PGDUMP        694.299999999999955 Ability@1
+PGSTEP KW-261010_021629000-t06 seed 5 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=7
+PGDUMP        300.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        645.299999999999955 Attack:Stormy Prison
+PGDUMP        744.299999999999955 Place:Horsea@2
+PGDUMP        744.299999999999955 Place:Horsea@3
+PGDUMP       -205.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 5 free 3
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=7
+PGDUMP        349.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        744.299999999999955 Attach:1Water@3 zone
+PGDUMP        694.299999999999955 Attack:Stormy Prison
+PGDUMP       -156.699999999999989 Retreat:1
+PGDUMP       -285.699999999999989 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 5 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        399.300000000000011 EndTurn
+PGDUMP        744.299999999999955 Attack:Stormy Prison
+PGDUMP      -1776.700000000000045 Retreat:1
+PGDUMP      -1520.700000000000045 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 5 free 5
+PGSTEP KW-261010_021629000-t06 seed 6 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=9
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        310.300000000000011 Attach:1Water@0 zone
+PGDUMP        310.300000000000011 Attach:1Water@1 zone
+PGDUMP        261.300000000000011 Attack:Stormy Prison
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        360.300000000000011 Place:Horsea@2
+PGDUMP        360.300000000000011 Place:Horsea@3
+PGDUMP       -410.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 6 free 1
+PGCAND Noop
+PGCAND Ability@1
+PGDUMP actor=0 candidates=2
+PGDUMP        489.300000000000011 Noop
+PGDUMP        694.299999999999955 Ability@1
+PGSTEP KW-261010_021629000-t06 seed 6 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=7
+PGDUMP        300.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        645.299999999999955 Attack:Stormy Prison
+PGDUMP        744.299999999999955 Place:Horsea@2
+PGDUMP        744.299999999999955 Place:Horsea@3
+PGDUMP       -205.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 6 free 3
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=7
+PGDUMP        349.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        744.299999999999955 Attach:1Water@3 zone
+PGDUMP        694.299999999999955 Attack:Stormy Prison
+PGDUMP       -156.699999999999989 Retreat:1
+PGDUMP       -285.699999999999989 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 6 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        399.300000000000011 EndTurn
+PGDUMP        744.299999999999955 Attack:Stormy Prison
+PGDUMP      -1776.700000000000045 Retreat:1
+PGDUMP      -1520.700000000000045 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 6 free 5
+PGSTEP KW-261010_021629000-t06 seed 7 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=9
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        310.300000000000011 Attach:1Water@0 zone
+PGDUMP        310.300000000000011 Attach:1Water@1 zone
+PGDUMP        261.300000000000011 Attack:Stormy Prison
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        360.300000000000011 Place:Horsea@2
+PGDUMP        360.300000000000011 Place:Horsea@3
+PGDUMP       -410.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 7 free 1
+PGCAND Noop
+PGCAND Ability@1
+PGDUMP actor=0 candidates=2
+PGDUMP        489.300000000000011 Noop
+PGDUMP        694.299999999999955 Ability@1
+PGSTEP KW-261010_021629000-t06 seed 7 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=7
+PGDUMP        300.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        645.299999999999955 Attack:Stormy Prison
+PGDUMP        744.299999999999955 Place:Horsea@2
+PGDUMP        744.299999999999955 Place:Horsea@3
+PGDUMP       -205.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 7 free 3
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=7
+PGDUMP        349.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        744.299999999999955 Attach:1Water@3 zone
+PGDUMP        694.299999999999955 Attack:Stormy Prison
+PGDUMP       -156.699999999999989 Retreat:1
+PGDUMP       -285.699999999999989 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 7 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        399.300000000000011 EndTurn
+PGDUMP        744.299999999999955 Attack:Stormy Prison
+PGDUMP      -1776.700000000000045 Retreat:1
+PGDUMP      -1520.700000000000045 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 7 free 5
+PGSTEP KW-261010_021629000-t06 seed 8 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=9
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        310.300000000000011 Attach:1Water@0 zone
+PGDUMP        310.300000000000011 Attach:1Water@1 zone
+PGDUMP        261.300000000000011 Attack:Stormy Prison
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        360.300000000000011 Place:Horsea@2
+PGDUMP        360.300000000000011 Place:Horsea@3
+PGDUMP       -410.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 8 free 1
+PGCAND Noop
+PGCAND Ability@1
+PGDUMP actor=0 candidates=2
+PGDUMP        489.300000000000011 Noop
+PGDUMP        694.299999999999955 Ability@1
+PGSTEP KW-261010_021629000-t06 seed 8 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=7
+PGDUMP        300.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        645.299999999999955 Attack:Stormy Prison
+PGDUMP        744.299999999999955 Place:Horsea@2
+PGDUMP        744.299999999999955 Place:Horsea@3
+PGDUMP       -205.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 8 free 3
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=7
+PGDUMP        349.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        744.299999999999955 Attach:1Water@3 zone
+PGDUMP        694.299999999999955 Attack:Stormy Prison
+PGDUMP       -156.699999999999989 Retreat:1
+PGDUMP       -285.699999999999989 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 8 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        399.300000000000011 EndTurn
+PGDUMP        744.299999999999955 Attack:Stormy Prison
+PGDUMP      -1776.700000000000045 Retreat:1
+PGDUMP      -1520.700000000000045 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 8 free 5
+PGSTEP KW-261010_021629000-t06 seed 9 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=9
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        310.300000000000011 Attach:1Water@0 zone
+PGDUMP        310.300000000000011 Attach:1Water@1 zone
+PGDUMP        261.300000000000011 Attack:Stormy Prison
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        360.300000000000011 Place:Horsea@2
+PGDUMP        360.300000000000011 Place:Horsea@3
+PGDUMP       -410.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 9 free 1
+PGCAND Noop
+PGCAND Ability@1
+PGDUMP actor=0 candidates=2
+PGDUMP        489.300000000000011 Noop
+PGDUMP        694.299999999999955 Ability@1
+PGSTEP KW-261010_021629000-t06 seed 9 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=7
+PGDUMP        300.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        645.299999999999955 Attack:Stormy Prison
+PGDUMP        744.299999999999955 Place:Horsea@2
+PGDUMP        744.299999999999955 Place:Horsea@3
+PGDUMP       -205.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 9 free 3
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=7
+PGDUMP        349.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        744.299999999999955 Attach:1Water@3 zone
+PGDUMP        694.299999999999955 Attack:Stormy Prison
+PGDUMP       -156.699999999999989 Retreat:1
+PGDUMP       -285.699999999999989 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 9 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        399.300000000000011 EndTurn
+PGDUMP        744.299999999999955 Attack:Stormy Prison
+PGDUMP      -1776.700000000000045 Retreat:1
+PGDUMP      -1520.700000000000045 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 9 free 5
+PGSTEP KW-261010_021629000-t06 seed 10 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=9
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        310.300000000000011 Attach:1Water@0 zone
+PGDUMP        310.300000000000011 Attach:1Water@1 zone
+PGDUMP        261.300000000000011 Attack:Stormy Prison
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        360.300000000000011 Place:Horsea@2
+PGDUMP        360.300000000000011 Place:Horsea@3
+PGDUMP       -410.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 10 free 1
+PGCAND Noop
+PGCAND Ability@1
+PGDUMP actor=0 candidates=2
+PGDUMP        489.300000000000011 Noop
+PGDUMP        694.299999999999955 Ability@1
+PGSTEP KW-261010_021629000-t06 seed 10 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=7
+PGDUMP        300.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        645.299999999999955 Attack:Stormy Prison
+PGDUMP        744.299999999999955 Place:Horsea@2
+PGDUMP        744.299999999999955 Place:Horsea@3
+PGDUMP       -205.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 10 free 3
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=7
+PGDUMP        349.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        744.299999999999955 Attach:1Water@3 zone
+PGDUMP        694.299999999999955 Attack:Stormy Prison
+PGDUMP       -156.699999999999989 Retreat:1
+PGDUMP       -285.699999999999989 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 10 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        399.300000000000011 EndTurn
+PGDUMP        744.299999999999955 Attack:Stormy Prison
+PGDUMP      -1776.700000000000045 Retreat:1
+PGDUMP      -1520.700000000000045 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 10 free 5
+PGSTEP KW-261010_021629000-t06 seed 11 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=9
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        310.300000000000011 Attach:1Water@0 zone
+PGDUMP        310.300000000000011 Attach:1Water@1 zone
+PGDUMP        261.300000000000011 Attack:Stormy Prison
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        360.300000000000011 Place:Horsea@2
+PGDUMP        360.300000000000011 Place:Horsea@3
+PGDUMP       -410.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 11 free 1
+PGCAND Noop
+PGCAND Ability@1
+PGDUMP actor=0 candidates=2
+PGDUMP        489.300000000000011 Noop
+PGDUMP        694.299999999999955 Ability@1
+PGSTEP KW-261010_021629000-t06 seed 11 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=7
+PGDUMP        300.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        645.299999999999955 Attack:Stormy Prison
+PGDUMP        744.299999999999955 Place:Horsea@2
+PGDUMP        744.299999999999955 Place:Horsea@3
+PGDUMP       -205.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 11 free 3
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=7
+PGDUMP        349.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        744.299999999999955 Attach:1Water@3 zone
+PGDUMP        694.299999999999955 Attack:Stormy Prison
+PGDUMP       -156.699999999999989 Retreat:1
+PGDUMP       -285.699999999999989 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 11 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        399.300000000000011 EndTurn
+PGDUMP        744.299999999999955 Attack:Stormy Prison
+PGDUMP      -1776.700000000000045 Retreat:1
+PGDUMP      -1520.700000000000045 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 11 free 5
+PGSTEP KW-261010_021629000-t06 seed 12 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=9
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        310.300000000000011 Attach:1Water@0 zone
+PGDUMP        310.300000000000011 Attach:1Water@1 zone
+PGDUMP        261.300000000000011 Attack:Stormy Prison
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        645.299999999999955 Evolve:Team Rocket's Weezing ex@1
+PGDUMP        360.300000000000011 Place:Horsea@2
+PGDUMP        360.300000000000011 Place:Horsea@3
+PGDUMP       -410.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 12 free 1
+PGCAND Noop
+PGCAND Ability@1
+PGDUMP actor=0 candidates=2
+PGDUMP        489.300000000000011 Noop
+PGDUMP        694.299999999999955 Ability@1
+PGSTEP KW-261010_021629000-t06 seed 12 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attack:Stormy Prison
+PGCAND Place:Horsea@2
+PGCAND Place:Horsea@3
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=7
+PGDUMP        300.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        645.299999999999955 Attack:Stormy Prison
+PGDUMP        744.299999999999955 Place:Horsea@2
+PGDUMP        744.299999999999955 Place:Horsea@3
+PGDUMP       -205.699999999999989 Retreat:1
+PGSTEP KW-261010_021629000-t06 seed 12 free 3
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@3 zone
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=7
+PGDUMP        349.300000000000011 EndTurn
+PGDUMP        694.299999999999955 Attach:1Water@0 zone
+PGDUMP        694.299999999999955 Attach:1Water@1 zone
+PGDUMP        744.299999999999955 Attach:1Water@3 zone
+PGDUMP        694.299999999999955 Attack:Stormy Prison
+PGDUMP       -156.699999999999989 Retreat:1
+PGDUMP       -285.699999999999989 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 12 free 4
+PGCAND EndTurn
+PGCAND Attack:Stormy Prison
+PGCAND Retreat:1
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        399.300000000000011 EndTurn
+PGDUMP        744.299999999999955 Attack:Stormy Prison
+PGDUMP      -1776.700000000000045 Retreat:1
+PGDUMP      -1520.700000000000045 Retreat:3
+PGSTEP KW-261010_021629000-t06 seed 12 free 5
