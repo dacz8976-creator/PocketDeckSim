@@ -1,0 +1,696 @@
+PGSTEP KW-261013_010837000-t11 seed 1 free 0
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Hang Down
+PGCAND Play:Heavy Helmet
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=8
+PGDUMP      -9713.700000000000728 EndTurn
+PGDUMP        584.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        524.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP      -9673.700000000000728 Attack:Hang Down
+PGDUMP      -8586.700000000000728 Play:Heavy Helmet
+PGDUMP        634.399999999999977 Retreat:1
+PGDUMP      -9126.700000000000728 Retreat:2
+PGSTEP KW-261013_010837000-t11 seed 1 free 1
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGCAND Play:Heavy Helmet
+PGDUMP actor=0 candidates=6
+PGDUMP      -9495.700000000000728 EndTurn
+PGDUMP        524.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        584.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP        524.399999999999977 Attack:Overlord's Blade
+PGDUMP       1433.400000000000091 Play:Heavy Helmet
+PGSTEP KW-261013_010837000-t11 seed 1 free 2
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1543.400000000000091 Tool:Heavy Helmet@0
+PGDUMP        633.399999999999977 Tool:Heavy Helmet@1
+PGDUMP       1333.400000000000091 Tool:Heavy Helmet@2
+PGSTEP KW-261013_010837000-t11 seed 1 free 3
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=5
+PGDUMP      -8586.700000000000728 EndTurn
+PGDUMP       1433.400000000000091 Attach:1Darkness@0 zone
+PGDUMP       1493.400000000000091 Attach:1Darkness@1 zone
+PGDUMP       1543.400000000000091 Attach:1Darkness@2 zone
+PGDUMP       1433.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 1 free 4
+PGCAND EndTurn
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=2
+PGDUMP      -8476.700000000000728 EndTurn
+PGDUMP       1543.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 2 free 0
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Hang Down
+PGCAND Play:Heavy Helmet
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=8
+PGDUMP      -9713.700000000000728 EndTurn
+PGDUMP        584.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        524.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP      -9673.700000000000728 Attack:Hang Down
+PGDUMP      -8586.700000000000728 Play:Heavy Helmet
+PGDUMP        634.399999999999977 Retreat:1
+PGDUMP      -9126.700000000000728 Retreat:2
+PGSTEP KW-261013_010837000-t11 seed 2 free 1
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGCAND Play:Heavy Helmet
+PGDUMP actor=0 candidates=6
+PGDUMP      -9495.700000000000728 EndTurn
+PGDUMP        524.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        584.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP        524.399999999999977 Attack:Overlord's Blade
+PGDUMP       1433.400000000000091 Play:Heavy Helmet
+PGSTEP KW-261013_010837000-t11 seed 2 free 2
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1543.400000000000091 Tool:Heavy Helmet@0
+PGDUMP        633.399999999999977 Tool:Heavy Helmet@1
+PGDUMP       1333.400000000000091 Tool:Heavy Helmet@2
+PGSTEP KW-261013_010837000-t11 seed 2 free 3
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=5
+PGDUMP      -8586.700000000000728 EndTurn
+PGDUMP       1433.400000000000091 Attach:1Darkness@0 zone
+PGDUMP       1493.400000000000091 Attach:1Darkness@1 zone
+PGDUMP       1543.400000000000091 Attach:1Darkness@2 zone
+PGDUMP       1433.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 2 free 4
+PGCAND EndTurn
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=2
+PGDUMP      -8476.700000000000728 EndTurn
+PGDUMP       1543.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 3 free 0
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Hang Down
+PGCAND Play:Heavy Helmet
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=8
+PGDUMP      -9713.700000000000728 EndTurn
+PGDUMP        584.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        524.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP      -9673.700000000000728 Attack:Hang Down
+PGDUMP      -8586.700000000000728 Play:Heavy Helmet
+PGDUMP        634.399999999999977 Retreat:1
+PGDUMP      -9126.700000000000728 Retreat:2
+PGSTEP KW-261013_010837000-t11 seed 3 free 1
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGCAND Play:Heavy Helmet
+PGDUMP actor=0 candidates=6
+PGDUMP      -9495.700000000000728 EndTurn
+PGDUMP        524.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        584.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP        524.399999999999977 Attack:Overlord's Blade
+PGDUMP       1433.400000000000091 Play:Heavy Helmet
+PGSTEP KW-261013_010837000-t11 seed 3 free 2
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1543.400000000000091 Tool:Heavy Helmet@0
+PGDUMP        633.399999999999977 Tool:Heavy Helmet@1
+PGDUMP       1333.400000000000091 Tool:Heavy Helmet@2
+PGSTEP KW-261013_010837000-t11 seed 3 free 3
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=5
+PGDUMP      -8586.700000000000728 EndTurn
+PGDUMP       1433.400000000000091 Attach:1Darkness@0 zone
+PGDUMP       1493.400000000000091 Attach:1Darkness@1 zone
+PGDUMP       1543.400000000000091 Attach:1Darkness@2 zone
+PGDUMP       1433.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 3 free 4
+PGCAND EndTurn
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=2
+PGDUMP      -8476.700000000000728 EndTurn
+PGDUMP       1543.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 4 free 0
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Hang Down
+PGCAND Play:Heavy Helmet
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=8
+PGDUMP      -9713.700000000000728 EndTurn
+PGDUMP        584.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        524.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP      -9673.700000000000728 Attack:Hang Down
+PGDUMP      -8586.700000000000728 Play:Heavy Helmet
+PGDUMP        634.399999999999977 Retreat:1
+PGDUMP      -9126.700000000000728 Retreat:2
+PGSTEP KW-261013_010837000-t11 seed 4 free 1
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGCAND Play:Heavy Helmet
+PGDUMP actor=0 candidates=6
+PGDUMP      -9495.700000000000728 EndTurn
+PGDUMP        524.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        584.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP        524.399999999999977 Attack:Overlord's Blade
+PGDUMP       1433.400000000000091 Play:Heavy Helmet
+PGSTEP KW-261013_010837000-t11 seed 4 free 2
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1543.400000000000091 Tool:Heavy Helmet@0
+PGDUMP        633.399999999999977 Tool:Heavy Helmet@1
+PGDUMP       1333.400000000000091 Tool:Heavy Helmet@2
+PGSTEP KW-261013_010837000-t11 seed 4 free 3
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=5
+PGDUMP      -8586.700000000000728 EndTurn
+PGDUMP       1433.400000000000091 Attach:1Darkness@0 zone
+PGDUMP       1493.400000000000091 Attach:1Darkness@1 zone
+PGDUMP       1543.400000000000091 Attach:1Darkness@2 zone
+PGDUMP       1433.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 4 free 4
+PGCAND EndTurn
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=2
+PGDUMP      -8476.700000000000728 EndTurn
+PGDUMP       1543.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 5 free 0
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Hang Down
+PGCAND Play:Heavy Helmet
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=8
+PGDUMP      -9713.700000000000728 EndTurn
+PGDUMP        584.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        524.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP      -9673.700000000000728 Attack:Hang Down
+PGDUMP      -8586.700000000000728 Play:Heavy Helmet
+PGDUMP        634.399999999999977 Retreat:1
+PGDUMP      -9126.700000000000728 Retreat:2
+PGSTEP KW-261013_010837000-t11 seed 5 free 1
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGCAND Play:Heavy Helmet
+PGDUMP actor=0 candidates=6
+PGDUMP      -9495.700000000000728 EndTurn
+PGDUMP        524.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        584.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP        524.399999999999977 Attack:Overlord's Blade
+PGDUMP       1433.400000000000091 Play:Heavy Helmet
+PGSTEP KW-261013_010837000-t11 seed 5 free 2
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1543.400000000000091 Tool:Heavy Helmet@0
+PGDUMP        633.399999999999977 Tool:Heavy Helmet@1
+PGDUMP       1333.400000000000091 Tool:Heavy Helmet@2
+PGSTEP KW-261013_010837000-t11 seed 5 free 3
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=5
+PGDUMP      -8586.700000000000728 EndTurn
+PGDUMP       1433.400000000000091 Attach:1Darkness@0 zone
+PGDUMP       1493.400000000000091 Attach:1Darkness@1 zone
+PGDUMP       1543.400000000000091 Attach:1Darkness@2 zone
+PGDUMP       1433.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 5 free 4
+PGCAND EndTurn
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=2
+PGDUMP      -8476.700000000000728 EndTurn
+PGDUMP       1543.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 6 free 0
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Hang Down
+PGCAND Play:Heavy Helmet
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=8
+PGDUMP      -9713.700000000000728 EndTurn
+PGDUMP        584.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        524.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP      -9673.700000000000728 Attack:Hang Down
+PGDUMP      -8586.700000000000728 Play:Heavy Helmet
+PGDUMP        634.399999999999977 Retreat:1
+PGDUMP      -9126.700000000000728 Retreat:2
+PGSTEP KW-261013_010837000-t11 seed 6 free 1
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGCAND Play:Heavy Helmet
+PGDUMP actor=0 candidates=6
+PGDUMP      -9495.700000000000728 EndTurn
+PGDUMP        524.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        584.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP        524.399999999999977 Attack:Overlord's Blade
+PGDUMP       1433.400000000000091 Play:Heavy Helmet
+PGSTEP KW-261013_010837000-t11 seed 6 free 2
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1543.400000000000091 Tool:Heavy Helmet@0
+PGDUMP        633.399999999999977 Tool:Heavy Helmet@1
+PGDUMP       1333.400000000000091 Tool:Heavy Helmet@2
+PGSTEP KW-261013_010837000-t11 seed 6 free 3
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=5
+PGDUMP      -8586.700000000000728 EndTurn
+PGDUMP       1433.400000000000091 Attach:1Darkness@0 zone
+PGDUMP       1493.400000000000091 Attach:1Darkness@1 zone
+PGDUMP       1543.400000000000091 Attach:1Darkness@2 zone
+PGDUMP       1433.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 6 free 4
+PGCAND EndTurn
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=2
+PGDUMP      -8476.700000000000728 EndTurn
+PGDUMP       1543.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 7 free 0
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Hang Down
+PGCAND Play:Heavy Helmet
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=8
+PGDUMP      -9713.700000000000728 EndTurn
+PGDUMP        584.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        524.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP      -9673.700000000000728 Attack:Hang Down
+PGDUMP      -8586.700000000000728 Play:Heavy Helmet
+PGDUMP        634.399999999999977 Retreat:1
+PGDUMP      -9126.700000000000728 Retreat:2
+PGSTEP KW-261013_010837000-t11 seed 7 free 1
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGCAND Play:Heavy Helmet
+PGDUMP actor=0 candidates=6
+PGDUMP      -9495.700000000000728 EndTurn
+PGDUMP        524.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        584.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP        524.399999999999977 Attack:Overlord's Blade
+PGDUMP       1433.400000000000091 Play:Heavy Helmet
+PGSTEP KW-261013_010837000-t11 seed 7 free 2
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1543.400000000000091 Tool:Heavy Helmet@0
+PGDUMP        633.399999999999977 Tool:Heavy Helmet@1
+PGDUMP       1333.400000000000091 Tool:Heavy Helmet@2
+PGSTEP KW-261013_010837000-t11 seed 7 free 3
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=5
+PGDUMP      -8586.700000000000728 EndTurn
+PGDUMP       1433.400000000000091 Attach:1Darkness@0 zone
+PGDUMP       1493.400000000000091 Attach:1Darkness@1 zone
+PGDUMP       1543.400000000000091 Attach:1Darkness@2 zone
+PGDUMP       1433.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 7 free 4
+PGCAND EndTurn
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=2
+PGDUMP      -8476.700000000000728 EndTurn
+PGDUMP       1543.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 8 free 0
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Hang Down
+PGCAND Play:Heavy Helmet
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=8
+PGDUMP      -9713.700000000000728 EndTurn
+PGDUMP        584.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        524.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP      -9673.700000000000728 Attack:Hang Down
+PGDUMP      -8586.700000000000728 Play:Heavy Helmet
+PGDUMP        634.399999999999977 Retreat:1
+PGDUMP      -9126.700000000000728 Retreat:2
+PGSTEP KW-261013_010837000-t11 seed 8 free 1
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGCAND Play:Heavy Helmet
+PGDUMP actor=0 candidates=6
+PGDUMP      -9495.700000000000728 EndTurn
+PGDUMP        524.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        584.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP        524.399999999999977 Attack:Overlord's Blade
+PGDUMP       1433.400000000000091 Play:Heavy Helmet
+PGSTEP KW-261013_010837000-t11 seed 8 free 2
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1543.400000000000091 Tool:Heavy Helmet@0
+PGDUMP        633.399999999999977 Tool:Heavy Helmet@1
+PGDUMP       1333.400000000000091 Tool:Heavy Helmet@2
+PGSTEP KW-261013_010837000-t11 seed 8 free 3
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=5
+PGDUMP      -8586.700000000000728 EndTurn
+PGDUMP       1433.400000000000091 Attach:1Darkness@0 zone
+PGDUMP       1493.400000000000091 Attach:1Darkness@1 zone
+PGDUMP       1543.400000000000091 Attach:1Darkness@2 zone
+PGDUMP       1433.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 8 free 4
+PGCAND EndTurn
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=2
+PGDUMP      -8476.700000000000728 EndTurn
+PGDUMP       1543.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 9 free 0
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Hang Down
+PGCAND Play:Heavy Helmet
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=8
+PGDUMP      -9713.700000000000728 EndTurn
+PGDUMP        584.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        524.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP      -9673.700000000000728 Attack:Hang Down
+PGDUMP      -8586.700000000000728 Play:Heavy Helmet
+PGDUMP        634.399999999999977 Retreat:1
+PGDUMP      -9126.700000000000728 Retreat:2
+PGSTEP KW-261013_010837000-t11 seed 9 free 1
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGCAND Play:Heavy Helmet
+PGDUMP actor=0 candidates=6
+PGDUMP      -9495.700000000000728 EndTurn
+PGDUMP        524.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        584.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP        524.399999999999977 Attack:Overlord's Blade
+PGDUMP       1433.400000000000091 Play:Heavy Helmet
+PGSTEP KW-261013_010837000-t11 seed 9 free 2
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1543.400000000000091 Tool:Heavy Helmet@0
+PGDUMP        633.399999999999977 Tool:Heavy Helmet@1
+PGDUMP       1333.400000000000091 Tool:Heavy Helmet@2
+PGSTEP KW-261013_010837000-t11 seed 9 free 3
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=5
+PGDUMP      -8586.700000000000728 EndTurn
+PGDUMP       1433.400000000000091 Attach:1Darkness@0 zone
+PGDUMP       1493.400000000000091 Attach:1Darkness@1 zone
+PGDUMP       1543.400000000000091 Attach:1Darkness@2 zone
+PGDUMP       1433.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 9 free 4
+PGCAND EndTurn
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=2
+PGDUMP      -8476.700000000000728 EndTurn
+PGDUMP       1543.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 10 free 0
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Hang Down
+PGCAND Play:Heavy Helmet
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=8
+PGDUMP      -9713.700000000000728 EndTurn
+PGDUMP        584.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        524.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP      -9673.700000000000728 Attack:Hang Down
+PGDUMP      -8586.700000000000728 Play:Heavy Helmet
+PGDUMP        634.399999999999977 Retreat:1
+PGDUMP      -9126.700000000000728 Retreat:2
+PGSTEP KW-261013_010837000-t11 seed 10 free 1
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGCAND Play:Heavy Helmet
+PGDUMP actor=0 candidates=6
+PGDUMP      -9495.700000000000728 EndTurn
+PGDUMP        524.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        584.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP        524.399999999999977 Attack:Overlord's Blade
+PGDUMP       1433.400000000000091 Play:Heavy Helmet
+PGSTEP KW-261013_010837000-t11 seed 10 free 2
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1543.400000000000091 Tool:Heavy Helmet@0
+PGDUMP        633.399999999999977 Tool:Heavy Helmet@1
+PGDUMP       1333.400000000000091 Tool:Heavy Helmet@2
+PGSTEP KW-261013_010837000-t11 seed 10 free 3
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=5
+PGDUMP      -8586.700000000000728 EndTurn
+PGDUMP       1433.400000000000091 Attach:1Darkness@0 zone
+PGDUMP       1493.400000000000091 Attach:1Darkness@1 zone
+PGDUMP       1543.400000000000091 Attach:1Darkness@2 zone
+PGDUMP       1433.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 10 free 4
+PGCAND EndTurn
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=2
+PGDUMP      -8476.700000000000728 EndTurn
+PGDUMP       1543.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 11 free 0
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Hang Down
+PGCAND Play:Heavy Helmet
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=8
+PGDUMP      -9713.700000000000728 EndTurn
+PGDUMP        584.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        524.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP      -9673.700000000000728 Attack:Hang Down
+PGDUMP      -8586.700000000000728 Play:Heavy Helmet
+PGDUMP        634.399999999999977 Retreat:1
+PGDUMP      -9126.700000000000728 Retreat:2
+PGSTEP KW-261013_010837000-t11 seed 11 free 1
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGCAND Play:Heavy Helmet
+PGDUMP actor=0 candidates=6
+PGDUMP      -9495.700000000000728 EndTurn
+PGDUMP        524.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        584.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP        524.399999999999977 Attack:Overlord's Blade
+PGDUMP       1433.400000000000091 Play:Heavy Helmet
+PGSTEP KW-261013_010837000-t11 seed 11 free 2
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1543.400000000000091 Tool:Heavy Helmet@0
+PGDUMP        633.399999999999977 Tool:Heavy Helmet@1
+PGDUMP       1333.400000000000091 Tool:Heavy Helmet@2
+PGSTEP KW-261013_010837000-t11 seed 11 free 3
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=5
+PGDUMP      -8586.700000000000728 EndTurn
+PGDUMP       1433.400000000000091 Attach:1Darkness@0 zone
+PGDUMP       1493.400000000000091 Attach:1Darkness@1 zone
+PGDUMP       1543.400000000000091 Attach:1Darkness@2 zone
+PGDUMP       1433.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 11 free 4
+PGCAND EndTurn
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=2
+PGDUMP      -8476.700000000000728 EndTurn
+PGDUMP       1543.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 12 free 0
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Hang Down
+PGCAND Play:Heavy Helmet
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=8
+PGDUMP      -9713.700000000000728 EndTurn
+PGDUMP        584.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        524.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP      -9673.700000000000728 Attack:Hang Down
+PGDUMP      -8586.700000000000728 Play:Heavy Helmet
+PGDUMP        634.399999999999977 Retreat:1
+PGDUMP      -9126.700000000000728 Retreat:2
+PGSTEP KW-261013_010837000-t11 seed 12 free 1
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGCAND Play:Heavy Helmet
+PGDUMP actor=0 candidates=6
+PGDUMP      -9495.700000000000728 EndTurn
+PGDUMP        524.399999999999977 Attach:1Darkness@0 zone
+PGDUMP        584.399999999999977 Attach:1Darkness@1 zone
+PGDUMP        634.399999999999977 Attach:1Darkness@2 zone
+PGDUMP        524.399999999999977 Attack:Overlord's Blade
+PGDUMP       1433.400000000000091 Play:Heavy Helmet
+PGSTEP KW-261013_010837000-t11 seed 12 free 2
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1543.400000000000091 Tool:Heavy Helmet@0
+PGDUMP        633.399999999999977 Tool:Heavy Helmet@1
+PGDUMP       1333.400000000000091 Tool:Heavy Helmet@2
+PGSTEP KW-261013_010837000-t11 seed 12 free 3
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=5
+PGDUMP      -8586.700000000000728 EndTurn
+PGDUMP       1433.400000000000091 Attach:1Darkness@0 zone
+PGDUMP       1493.400000000000091 Attach:1Darkness@1 zone
+PGDUMP       1543.400000000000091 Attach:1Darkness@2 zone
+PGDUMP       1433.400000000000091 Attack:Overlord's Blade
+PGSTEP KW-261013_010837000-t11 seed 12 free 4
+PGCAND EndTurn
+PGCAND Attack:Overlord's Blade
+PGDUMP actor=0 candidates=2
+PGDUMP      -8476.700000000000728 EndTurn
+PGDUMP       1543.400000000000091 Attack:Overlord's Blade

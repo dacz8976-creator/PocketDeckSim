@@ -1,0 +1,748 @@
+PGSTEP KW-261012_230258000-t05 seed 1 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Place:Pawniard@3
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1932.299999999999955 EndTurn
+PGDUMP       2833.300000000000182 UseStadium
+PGDUMP       2881.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2450.800000000000182 Attach:1Darkness@1 zone
+PGDUMP       1924.800000000000182 Attach:1Darkness@2 zone
+PGDUMP       2881.300000000000182 Place:Pawniard@3
+PGDUMP       2861.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 1 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1981.299999999999955 EndTurn
+PGDUMP       2882.300000000000182 UseStadium
+PGDUMP       2910.800000000000182 Attach:1Darkness@0 zone
+PGDUMP       2454.175000000000182 Attach:1Darkness@1 zone
+PGDUMP       1946.675000000000182 Attach:1Darkness@2 zone
+PGDUMP       2154.175000000000182 Attach:1Darkness@3 zone
+PGDUMP       2910.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 1 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2000.299999999999955 EndTurn
+PGDUMP       2911.300000000000182 UseStadium
+PGDUMP       2911.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2458.550000000000182 Attach:1Darkness@1 zone
+PGDUMP       1951.050000000000182 Attach:1Darkness@2 zone
+PGDUMP       2158.550000000000182 Attach:1Darkness@3 zone
+PGSTEP KW-261012_230258000-t05 seed 1 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=3
+PGDUMP       2690.300000000000182 EndTurn
+PGDUMP       2918.550000000000182 UseStadium
+PGDUMP       2910.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 1 free 4
+PGCAND EndTurn
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=2
+PGDUMP       2690.300000000000182 EndTurn
+PGDUMP       2910.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 1 free 5
+PGSTEP KW-261012_230258000-t05 seed 2 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Place:Pawniard@3
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1932.299999999999955 EndTurn
+PGDUMP       2833.300000000000182 UseStadium
+PGDUMP       2881.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2450.800000000000182 Attach:1Darkness@1 zone
+PGDUMP       1924.800000000000182 Attach:1Darkness@2 zone
+PGDUMP       2881.300000000000182 Place:Pawniard@3
+PGDUMP       2861.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 2 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1981.299999999999955 EndTurn
+PGDUMP       2882.300000000000182 UseStadium
+PGDUMP       2910.800000000000182 Attach:1Darkness@0 zone
+PGDUMP       2454.175000000000182 Attach:1Darkness@1 zone
+PGDUMP       1946.675000000000182 Attach:1Darkness@2 zone
+PGDUMP       2154.175000000000182 Attach:1Darkness@3 zone
+PGDUMP       2910.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 2 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2001.299999999999955 EndTurn
+PGDUMP       2912.300000000000182 UseStadium
+PGDUMP       2912.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2459.550000000000182 Attach:1Darkness@1 zone
+PGDUMP       1952.050000000000182 Attach:1Darkness@2 zone
+PGDUMP       2159.550000000000182 Attach:1Darkness@3 zone
+PGSTEP KW-261012_230258000-t05 seed 2 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=3
+PGDUMP       2691.300000000000182 EndTurn
+PGDUMP       2919.550000000000182 UseStadium
+PGDUMP       2911.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 2 free 4
+PGCAND EndTurn
+PGCAND Attack:Venomous Hit
+PGCAND Evolve:Glimmora@2
+PGDUMP actor=0 candidates=3
+PGDUMP       2693.300000000000182 EndTurn
+PGDUMP       2913.300000000000182 Attack:Venomous Hit
+PGDUMP       2942.300000000000182 Evolve:Glimmora@2
+PGSTEP KW-261012_230258000-t05 seed 2 free 5
+PGCAND EndTurn
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=2
+PGDUMP       2722.300000000000182 EndTurn
+PGDUMP       2942.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 2 free 6
+PGSTEP KW-261012_230258000-t05 seed 3 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Place:Pawniard@3
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1932.299999999999955 EndTurn
+PGDUMP       2833.300000000000182 UseStadium
+PGDUMP       2881.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2450.800000000000182 Attach:1Darkness@1 zone
+PGDUMP       1924.800000000000182 Attach:1Darkness@2 zone
+PGDUMP       2881.300000000000182 Place:Pawniard@3
+PGDUMP       2861.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 3 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1981.299999999999955 EndTurn
+PGDUMP       2882.300000000000182 UseStadium
+PGDUMP       2910.800000000000182 Attach:1Darkness@0 zone
+PGDUMP       2454.175000000000182 Attach:1Darkness@1 zone
+PGDUMP       1946.675000000000182 Attach:1Darkness@2 zone
+PGDUMP       2154.175000000000182 Attach:1Darkness@3 zone
+PGDUMP       2910.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 3 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2001.299999999999955 EndTurn
+PGDUMP       2912.300000000000182 UseStadium
+PGDUMP       2912.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2459.550000000000182 Attach:1Darkness@1 zone
+PGDUMP       1952.050000000000182 Attach:1Darkness@2 zone
+PGDUMP       2159.550000000000182 Attach:1Darkness@3 zone
+PGSTEP KW-261012_230258000-t05 seed 3 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=3
+PGDUMP       2691.300000000000182 EndTurn
+PGDUMP       2919.550000000000182 UseStadium
+PGDUMP       2911.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 3 free 4
+PGCAND EndTurn
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=2
+PGDUMP       2693.300000000000182 EndTurn
+PGDUMP       2913.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 3 free 5
+PGSTEP KW-261012_230258000-t05 seed 4 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Place:Pawniard@3
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1932.299999999999955 EndTurn
+PGDUMP       2833.300000000000182 UseStadium
+PGDUMP       2881.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2450.800000000000182 Attach:1Darkness@1 zone
+PGDUMP       1924.800000000000182 Attach:1Darkness@2 zone
+PGDUMP       2881.300000000000182 Place:Pawniard@3
+PGDUMP       2861.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 4 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1981.299999999999955 EndTurn
+PGDUMP       2882.300000000000182 UseStadium
+PGDUMP       2910.800000000000182 Attach:1Darkness@0 zone
+PGDUMP       2454.175000000000182 Attach:1Darkness@1 zone
+PGDUMP       1946.675000000000182 Attach:1Darkness@2 zone
+PGDUMP       2154.175000000000182 Attach:1Darkness@3 zone
+PGDUMP       2910.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 4 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2000.299999999999955 EndTurn
+PGDUMP       2911.300000000000182 UseStadium
+PGDUMP       2911.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2458.550000000000182 Attach:1Darkness@1 zone
+PGDUMP       1951.050000000000182 Attach:1Darkness@2 zone
+PGDUMP       2158.550000000000182 Attach:1Darkness@3 zone
+PGSTEP KW-261012_230258000-t05 seed 4 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=3
+PGDUMP       2690.300000000000182 EndTurn
+PGDUMP       2918.550000000000182 UseStadium
+PGDUMP       2910.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 4 free 4
+PGCAND EndTurn
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=2
+PGDUMP       2690.300000000000182 EndTurn
+PGDUMP       2910.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 4 free 5
+PGSTEP KW-261012_230258000-t05 seed 5 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Place:Pawniard@3
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1932.299999999999955 EndTurn
+PGDUMP       2833.300000000000182 UseStadium
+PGDUMP       2881.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2450.800000000000182 Attach:1Darkness@1 zone
+PGDUMP       1924.800000000000182 Attach:1Darkness@2 zone
+PGDUMP       2881.300000000000182 Place:Pawniard@3
+PGDUMP       2861.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 5 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1981.299999999999955 EndTurn
+PGDUMP       2882.300000000000182 UseStadium
+PGDUMP       2910.800000000000182 Attach:1Darkness@0 zone
+PGDUMP       2454.175000000000182 Attach:1Darkness@1 zone
+PGDUMP       1946.675000000000182 Attach:1Darkness@2 zone
+PGDUMP       2154.175000000000182 Attach:1Darkness@3 zone
+PGDUMP       2910.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 5 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2001.299999999999955 EndTurn
+PGDUMP       2912.300000000000182 UseStadium
+PGDUMP       2912.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2459.550000000000182 Attach:1Darkness@1 zone
+PGDUMP       1952.050000000000182 Attach:1Darkness@2 zone
+PGDUMP       2159.550000000000182 Attach:1Darkness@3 zone
+PGSTEP KW-261012_230258000-t05 seed 5 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=3
+PGDUMP       2691.300000000000182 EndTurn
+PGDUMP       2919.550000000000182 UseStadium
+PGDUMP       2911.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 5 free 4
+PGCAND EndTurn
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=2
+PGDUMP       2693.300000000000182 EndTurn
+PGDUMP       2913.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 5 free 5
+PGSTEP KW-261012_230258000-t05 seed 6 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Place:Pawniard@3
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1932.299999999999955 EndTurn
+PGDUMP       2833.300000000000182 UseStadium
+PGDUMP       2881.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2450.800000000000182 Attach:1Darkness@1 zone
+PGDUMP       1924.800000000000182 Attach:1Darkness@2 zone
+PGDUMP       2881.300000000000182 Place:Pawniard@3
+PGDUMP       2861.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 6 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1981.299999999999955 EndTurn
+PGDUMP       2882.300000000000182 UseStadium
+PGDUMP       2910.800000000000182 Attach:1Darkness@0 zone
+PGDUMP       2454.175000000000182 Attach:1Darkness@1 zone
+PGDUMP       1946.675000000000182 Attach:1Darkness@2 zone
+PGDUMP       2154.175000000000182 Attach:1Darkness@3 zone
+PGDUMP       2910.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 6 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2001.299999999999955 EndTurn
+PGDUMP       2912.300000000000182 UseStadium
+PGDUMP       2912.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2459.550000000000182 Attach:1Darkness@1 zone
+PGDUMP       1952.050000000000182 Attach:1Darkness@2 zone
+PGDUMP       2159.550000000000182 Attach:1Darkness@3 zone
+PGSTEP KW-261012_230258000-t05 seed 6 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=3
+PGDUMP       2691.300000000000182 EndTurn
+PGDUMP       2919.550000000000182 UseStadium
+PGDUMP       2911.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 6 free 4
+PGCAND EndTurn
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=2
+PGDUMP       2691.300000000000182 EndTurn
+PGDUMP       2911.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 6 free 5
+PGSTEP KW-261012_230258000-t05 seed 7 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Place:Pawniard@3
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1932.299999999999955 EndTurn
+PGDUMP       2833.300000000000182 UseStadium
+PGDUMP       2881.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2450.800000000000182 Attach:1Darkness@1 zone
+PGDUMP       1924.800000000000182 Attach:1Darkness@2 zone
+PGDUMP       2881.300000000000182 Place:Pawniard@3
+PGDUMP       2861.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 7 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1981.299999999999955 EndTurn
+PGDUMP       2882.300000000000182 UseStadium
+PGDUMP       2910.800000000000182 Attach:1Darkness@0 zone
+PGDUMP       2454.175000000000182 Attach:1Darkness@1 zone
+PGDUMP       1946.675000000000182 Attach:1Darkness@2 zone
+PGDUMP       2154.175000000000182 Attach:1Darkness@3 zone
+PGDUMP       2910.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 7 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2001.299999999999955 EndTurn
+PGDUMP       2912.300000000000182 UseStadium
+PGDUMP       2912.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2459.550000000000182 Attach:1Darkness@1 zone
+PGDUMP       1952.050000000000182 Attach:1Darkness@2 zone
+PGDUMP       2159.550000000000182 Attach:1Darkness@3 zone
+PGSTEP KW-261012_230258000-t05 seed 7 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=3
+PGDUMP       2691.300000000000182 EndTurn
+PGDUMP       2919.550000000000182 UseStadium
+PGDUMP       2911.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 7 free 4
+PGCAND EndTurn
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=2
+PGDUMP       2693.300000000000182 EndTurn
+PGDUMP       2913.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 7 free 5
+PGSTEP KW-261012_230258000-t05 seed 8 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Place:Pawniard@3
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1932.299999999999955 EndTurn
+PGDUMP       2833.300000000000182 UseStadium
+PGDUMP       2881.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2450.800000000000182 Attach:1Darkness@1 zone
+PGDUMP       1924.800000000000182 Attach:1Darkness@2 zone
+PGDUMP       2881.300000000000182 Place:Pawniard@3
+PGDUMP       2861.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 8 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1981.299999999999955 EndTurn
+PGDUMP       2882.300000000000182 UseStadium
+PGDUMP       2910.800000000000182 Attach:1Darkness@0 zone
+PGDUMP       2454.175000000000182 Attach:1Darkness@1 zone
+PGDUMP       1946.675000000000182 Attach:1Darkness@2 zone
+PGDUMP       2154.175000000000182 Attach:1Darkness@3 zone
+PGDUMP       2910.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 8 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2001.299999999999955 EndTurn
+PGDUMP       2912.300000000000182 UseStadium
+PGDUMP       2912.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2459.550000000000182 Attach:1Darkness@1 zone
+PGDUMP       1952.050000000000182 Attach:1Darkness@2 zone
+PGDUMP       2159.550000000000182 Attach:1Darkness@3 zone
+PGSTEP KW-261012_230258000-t05 seed 8 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=3
+PGDUMP       2691.300000000000182 EndTurn
+PGDUMP       2919.550000000000182 UseStadium
+PGDUMP       2911.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 8 free 4
+PGCAND EndTurn
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=2
+PGDUMP       2691.300000000000182 EndTurn
+PGDUMP       2911.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 8 free 5
+PGSTEP KW-261012_230258000-t05 seed 9 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Place:Pawniard@3
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1932.299999999999955 EndTurn
+PGDUMP       2833.300000000000182 UseStadium
+PGDUMP       2881.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2450.800000000000182 Attach:1Darkness@1 zone
+PGDUMP       1924.800000000000182 Attach:1Darkness@2 zone
+PGDUMP       2881.300000000000182 Place:Pawniard@3
+PGDUMP       2861.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 9 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1981.299999999999955 EndTurn
+PGDUMP       2882.300000000000182 UseStadium
+PGDUMP       2910.800000000000182 Attach:1Darkness@0 zone
+PGDUMP       2454.175000000000182 Attach:1Darkness@1 zone
+PGDUMP       1946.675000000000182 Attach:1Darkness@2 zone
+PGDUMP       2154.175000000000182 Attach:1Darkness@3 zone
+PGDUMP       2910.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 9 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2000.299999999999955 EndTurn
+PGDUMP       2911.300000000000182 UseStadium
+PGDUMP       2911.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2458.550000000000182 Attach:1Darkness@1 zone
+PGDUMP       1951.050000000000182 Attach:1Darkness@2 zone
+PGDUMP       2158.550000000000182 Attach:1Darkness@3 zone
+PGSTEP KW-261012_230258000-t05 seed 9 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=3
+PGDUMP       2690.300000000000182 EndTurn
+PGDUMP       2918.550000000000182 UseStadium
+PGDUMP       2910.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 9 free 4
+PGCAND EndTurn
+PGCAND Attack:Venomous Hit
+PGCAND Evolve:Glimmora@2
+PGDUMP actor=0 candidates=3
+PGDUMP       2692.300000000000182 EndTurn
+PGDUMP       2912.300000000000182 Attack:Venomous Hit
+PGDUMP       2941.300000000000182 Evolve:Glimmora@2
+PGSTEP KW-261012_230258000-t05 seed 9 free 5
+PGCAND EndTurn
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=2
+PGDUMP       2721.300000000000182 EndTurn
+PGDUMP       2941.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 9 free 6
+PGSTEP KW-261012_230258000-t05 seed 10 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Place:Pawniard@3
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1932.299999999999955 EndTurn
+PGDUMP       2833.300000000000182 UseStadium
+PGDUMP       2881.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2450.800000000000182 Attach:1Darkness@1 zone
+PGDUMP       1924.800000000000182 Attach:1Darkness@2 zone
+PGDUMP       2881.300000000000182 Place:Pawniard@3
+PGDUMP       2861.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 10 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1981.299999999999955 EndTurn
+PGDUMP       2882.300000000000182 UseStadium
+PGDUMP       2910.800000000000182 Attach:1Darkness@0 zone
+PGDUMP       2454.175000000000182 Attach:1Darkness@1 zone
+PGDUMP       1946.675000000000182 Attach:1Darkness@2 zone
+PGDUMP       2154.175000000000182 Attach:1Darkness@3 zone
+PGDUMP       2910.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 10 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2001.299999999999955 EndTurn
+PGDUMP       2912.300000000000182 UseStadium
+PGDUMP       2912.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2459.550000000000182 Attach:1Darkness@1 zone
+PGDUMP       1952.050000000000182 Attach:1Darkness@2 zone
+PGDUMP       2159.550000000000182 Attach:1Darkness@3 zone
+PGSTEP KW-261012_230258000-t05 seed 10 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=3
+PGDUMP       2691.300000000000182 EndTurn
+PGDUMP       2919.550000000000182 UseStadium
+PGDUMP       2911.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 10 free 4
+PGCAND EndTurn
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=2
+PGDUMP       2693.300000000000182 EndTurn
+PGDUMP       2913.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 10 free 5
+PGSTEP KW-261012_230258000-t05 seed 11 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Place:Pawniard@3
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1932.299999999999955 EndTurn
+PGDUMP       2833.300000000000182 UseStadium
+PGDUMP       2881.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2450.800000000000182 Attach:1Darkness@1 zone
+PGDUMP       1924.800000000000182 Attach:1Darkness@2 zone
+PGDUMP       2881.300000000000182 Place:Pawniard@3
+PGDUMP       2861.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 11 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1981.299999999999955 EndTurn
+PGDUMP       2882.300000000000182 UseStadium
+PGDUMP       2910.800000000000182 Attach:1Darkness@0 zone
+PGDUMP       2454.175000000000182 Attach:1Darkness@1 zone
+PGDUMP       1946.675000000000182 Attach:1Darkness@2 zone
+PGDUMP       2154.175000000000182 Attach:1Darkness@3 zone
+PGDUMP       2910.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 11 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2001.299999999999955 EndTurn
+PGDUMP       2912.300000000000182 UseStadium
+PGDUMP       2912.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2459.550000000000182 Attach:1Darkness@1 zone
+PGDUMP       1952.050000000000182 Attach:1Darkness@2 zone
+PGDUMP       2159.550000000000182 Attach:1Darkness@3 zone
+PGSTEP KW-261012_230258000-t05 seed 11 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=3
+PGDUMP       2691.300000000000182 EndTurn
+PGDUMP       2919.550000000000182 UseStadium
+PGDUMP       2911.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 11 free 4
+PGCAND EndTurn
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=2
+PGDUMP       2691.300000000000182 EndTurn
+PGDUMP       2911.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 11 free 5
+PGSTEP KW-261012_230258000-t05 seed 12 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Place:Pawniard@3
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1932.299999999999955 EndTurn
+PGDUMP       2833.300000000000182 UseStadium
+PGDUMP       2881.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2450.800000000000182 Attach:1Darkness@1 zone
+PGDUMP       1924.800000000000182 Attach:1Darkness@2 zone
+PGDUMP       2881.300000000000182 Place:Pawniard@3
+PGDUMP       2861.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 12 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP       1981.299999999999955 EndTurn
+PGDUMP       2882.300000000000182 UseStadium
+PGDUMP       2910.800000000000182 Attach:1Darkness@0 zone
+PGDUMP       2454.175000000000182 Attach:1Darkness@1 zone
+PGDUMP       1946.675000000000182 Attach:1Darkness@2 zone
+PGDUMP       2154.175000000000182 Attach:1Darkness@3 zone
+PGDUMP       2910.800000000000182 Play:Lucky Ice Pop
+PGSTEP KW-261012_230258000-t05 seed 12 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Attach:1Darkness@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2001.299999999999955 EndTurn
+PGDUMP       2912.300000000000182 UseStadium
+PGDUMP       2912.300000000000182 Attach:1Darkness@0 zone
+PGDUMP       2459.550000000000182 Attach:1Darkness@1 zone
+PGDUMP       1952.050000000000182 Attach:1Darkness@2 zone
+PGDUMP       2159.550000000000182 Attach:1Darkness@3 zone
+PGSTEP KW-261012_230258000-t05 seed 12 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=3
+PGDUMP       2691.300000000000182 EndTurn
+PGDUMP       2919.550000000000182 UseStadium
+PGDUMP       2911.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 12 free 4
+PGCAND EndTurn
+PGCAND Attack:Venomous Hit
+PGDUMP actor=0 candidates=2
+PGDUMP       2691.300000000000182 EndTurn
+PGDUMP       2911.300000000000182 Attack:Venomous Hit
+PGSTEP KW-261012_230258000-t05 seed 12 free 5

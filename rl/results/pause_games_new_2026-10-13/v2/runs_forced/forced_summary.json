@@ -1,0 +1,3902 @@
+[
+ {
+  "id": "KW-261012_010706000-t01",
+  "force": [
+   "Play:Professor's Research"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Professor's Research",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Place:Glimmet@3": 1,
+   "Play:Mesagoza": 3,
+   "Place:Alolan Grimer@3": 2,
+   "Place:Regigigas@3": 2,
+   "Play:Heavy Helmet": 1,
+   "Play:Poké Ball": 1
+  }
+ },
+ {
+  "id": "KW-261012_010706000-t03",
+  "force": [
+   "Evolve:Glimmora@0",
+   "Play:Professor's Research"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Glimmora@0",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Glimmora@0": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Play:Professor's Research",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Play:Poké Ball": 4,
+   "Attach:1Darkness@0 zone": 6,
+   "Evolve:Alolan Muk@3": 2
+  }
+ },
+ {
+  "id": "KW-261012_010706000-t05",
+  "force": [
+   "Play:Rare Candy",
+   "Evolve:Kingambit@1",
+   "Attach:1Darkness@2 zone",
+   "Attack:Venomous Hit"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Rare Candy",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Rare Candy": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Evolve:Kingambit@1",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Kingambit@1": 12
+    },
+    "gap_seed1": null
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Darkness@2 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@2 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 3,
+    "his": "Attack:Venomous Hit",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Venomous Hit": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261012_010706000-t07",
+  "force": [
+   "Attach:1Darkness@2 zone",
+   "Attack:Venomous Hit"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Attach:1Darkness@2 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@2 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attack:Venomous Hit",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Venomous Hit": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261012_010706000-t09",
+  "force": [
+   "Play:Mesagoza",
+   "UseStadium",
+   "Attach:1Darkness@0 zone",
+   "Attack:Giga Turbo"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Mesagoza",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 154.3
+   },
+   {
+    "step": 1,
+    "his": "UseStadium",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 152.3
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 3,
+    "his": "Attack:Giga Turbo",
+    "km3_agrees_in": 3,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Giga Turbo": 3,
+     "Place:Glimmet@3": 9
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Play:Mesagoza",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Darkness@0 zone": 12
+   },
+   "gap_seed1": 154.3
+  },
+  "next_choice_km3": {
+   "Attach:1Colorless@2 fx": 12
+  }
+ },
+ {
+  "id": "KW-261012_010706000-t11",
+  "force": [
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@1",
+   "Attach:1Darkness@1 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Heavy Helmet",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Heavy Helmet": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Tool:Heavy Helmet@1",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Tool:Heavy Helmet@0": 12
+    },
+    "gap_seed1": 110.0
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Darkness@1 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 136.7
+   }
+  ],
+  "first_deviation": {
+   "step": 1,
+   "his": "Tool:Heavy Helmet@1",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Tool:Heavy Helmet@0": 12
+   },
+   "gap_seed1": 110.0
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261012_010706000-t13",
+  "force": [
+   "Place:Glimmet@3",
+   "Attach:1Darkness@0 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Place:Glimmet@3",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Place:Glimmet@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261012_010706000-t15",
+  "force": [
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Glimmora@2": 12
+    },
+    "gap_seed1": 30.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Play:Poké Ball",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Evolve:Glimmora@2": 12
+   },
+   "gap_seed1": 30.0
+  },
+  "next_choice_km3": {
+   "Evolve:Glimmora@2": 12
+  }
+ },
+ {
+  "id": "KW-261012_010706000-t17",
+  "force": [
+   "Attach:1Darkness@0 zone",
+   "Attack:Venomous Hit"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attack:Venomous Hit",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Venomous Hit": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261012_010706000-t19",
+  "force": [
+   "Play:Copycat"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Copycat",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@1 zone": 12
+    },
+    "gap_seed1": 1.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Play:Copycat",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Darkness@1 zone": 12
+   },
+   "gap_seed1": 1.0
+  },
+  "next_choice_km3": {
+   "Attach:1Darkness@1 zone": 12
+  }
+ },
+ {
+  "id": "KW-261012_010706000-t21",
+  "force": [
+   "Attach:1Darkness@0 zone",
+   "Attack:Overlord's Blade"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attack:Overlord's Blade",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Overlord's Blade": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261012_203719000-t01",
+  "force": [
+   "Play:Professor's Research"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Professor's Research",
+    "km3_agrees_in": 11,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 11,
+     "Play:Copycat": 1
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Play:Poké Ball": 3,
+   "Play:Heavy Helmet": 2,
+   "Play:Mesagoza": 1
+  }
+ },
+ {
+  "id": "KW-261012_203719000-t03",
+  "force": [
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 11,
+    "of": 12,
+    "km3_plays": {
+     "Play:Poké Ball": 11,
+     "Play:Copycat": 1
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Place:Glimmet@3": 12
+  }
+ },
+ {
+  "id": "KW-261012_203719000-t05",
+  "force": [
+   "Play:Professor's Research"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Professor's Research",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Evolve:Glimmora@2": 9,
+   "Play:Lucky Ice Pop": 3
+  }
+ },
+ {
+  "id": "KW-261012_203719000-t07",
+  "force": [
+   "Play:Rare Candy",
+   "Evolve:Kingambit@3",
+   "UseStadium",
+   "Play:Ilima"
+  ],
+  "note": "his step 4 (Place:Regigigas) is not a legal action in the harness' state: line cut there",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Rare Candy",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Rare Candy": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Evolve:Kingambit@3",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Kingambit@3": 12
+    },
+    "gap_seed1": null
+   },
+   {
+    "step": 2,
+    "his": "UseStadium",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Ilima": 12
+    },
+    "gap_seed1": 206.7
+   },
+   {
+    "step": 3,
+    "his": "Play:Ilima",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Ilima": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 2,
+   "his": "UseStadium",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Play:Ilima": 12
+   },
+   "gap_seed1": 206.7
+  },
+  "next_choice_km3": {
+   "Promote:0@3": 12
+  }
+ },
+ {
+  "id": "KW-261012_203719000-t09",
+  "force": [
+   "UseStadium",
+   "Attach:1Darkness@1 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "UseStadium",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@3 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attach:1Darkness@1 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@3 zone": 12
+    },
+    "gap_seed1": 630.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "UseStadium",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Darkness@3 zone": 12
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261012_203719000-t11",
+  "force": [
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@3",
+   "Attach:1Darkness@1 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Heavy Helmet",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@3 zone": 12
+    },
+    "gap_seed1": 21.0
+   },
+   {
+    "step": 1,
+    "his": "Tool:Heavy Helmet@3",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Tool:Heavy Helmet@0": 12
+    },
+    "gap_seed1": 10.0
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Darkness@1 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@3 zone": 12
+    },
+    "gap_seed1": 630.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Play:Heavy Helmet",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Darkness@3 zone": 12
+   },
+   "gap_seed1": 21.0
+  },
+  "next_choice_km3": {
+   "UseStadium": 12
+  }
+ },
+ {
+  "id": "KW-261012_203719000-t13",
+  "force": [
+   "Place:Glimmet@3",
+   "Attach:1Darkness@2 zone",
+   "Attack:Venomous Hit"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Place:Glimmet@3",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Place:Glimmet@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attach:1Darkness@2 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@2 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Attack:Venomous Hit",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Venomous Hit": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261012_203719000-t15",
+  "force": [
+   "Evolve:Glimmora@2",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop"
+  ],
+  "note": "his step 3 (Play:Lucky Ice Pop) is not a legal action in the harness' state: line cut there",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Glimmora@2",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Lucky Ice Pop": 12
+    },
+    "gap_seed1": 30.5
+   },
+   {
+    "step": 1,
+    "his": "Play:Lucky Ice Pop",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Lucky Ice Pop": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Play:Lucky Ice Pop",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Lucky Ice Pop": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Evolve:Glimmora@2",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Play:Lucky Ice Pop": 12
+   },
+   "gap_seed1": 30.5
+  },
+  "next_choice_km3": {
+   "Attach:1Darkness@1 zone": 2,
+   "Play:Lucky Ice Pop": 10
+  }
+ },
+ {
+  "id": "KW-261012_203719000-t17",
+  "force": [
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop"
+  ],
+  "note": "his step 2 (Play:Lucky Ice Pop) is not a legal action in the harness' state: line cut there",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Lucky Ice Pop",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 9934.6
+   },
+   {
+    "step": 1,
+    "his": "Play:Lucky Ice Pop",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 9894.6
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Play:Lucky Ice Pop",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Darkness@0 zone": 12
+   },
+   "gap_seed1": 9934.6
+  },
+  "next_choice_km3": {
+   "Attach:1Darkness@0 zone": 12
+  }
+ },
+ {
+  "id": "KW-261012_210041000-t02",
+  "force": [
+   "Place:Glimmet@1",
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Place:Glimmet@1",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Poké Ball": 12
+    },
+    "gap_seed1": 201.1
+   },
+   {
+    "step": 1,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Poké Ball": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Place:Glimmet@1",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Play:Poké Ball": 12
+   },
+   "gap_seed1": 201.1
+  },
+  "next_choice_km3": {
+   "Place:Regigigas@3": 3,
+   "Place:Pawniard@3": 4,
+   "Place:Glimmet@3": 5
+  }
+ },
+ {
+  "id": "KW-261012_210041000-t04",
+  "force": [
+   "Place:Regigigas@3",
+   "Attach:1Darkness@0 zone",
+   "Retreat:3",
+   "Evolve:Alolan Muk@3"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Place:Regigigas@3",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Place:Regigigas@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Alolan Muk@0": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Retreat:3",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Alolan Muk@0": 12
+    },
+    "gap_seed1": 914.3
+   },
+   {
+    "step": 3,
+    "his": "Evolve:Alolan Muk@3",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Alolan Muk@3": 12
+    },
+    "gap_seed1": 914.3
+   }
+  ],
+  "first_deviation": {
+   "step": 1,
+   "his": "Attach:1Darkness@0 zone",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Evolve:Alolan Muk@0": 12
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261012_210041000-t06",
+  "force": [
+   "Attach:1Darkness@3 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Attach:1Darkness@3 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Ilima": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Attach:1Darkness@3 zone",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Play:Ilima": 12
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {
+   "Play:Ilima": 12
+  }
+ },
+ {
+  "id": "KW-261012_210041000-t08",
+  "force": [
+   "Play:Copycat"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Copycat",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Copycat": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Evolve:Glimmora@0": 8,
+   "Attach:1Darkness@0 zone": 2,
+   "Place:Glimmet@3": 1,
+   "Play:Poké Ball": 1
+  }
+ },
+ {
+  "id": "KW-261012_210041000-t10",
+  "force": [
+   "Evolve:Glimmora@0",
+   "Attach:1Darkness@0 zone",
+   "Attack:Venomous Hit"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Glimmora@0",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Glimmora@0": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Attack:Venomous Hit",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Venomous Hit": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261012_210041000-t12",
+  "force": [
+   "Attach:1Darkness@1 zone",
+   "Attack:Venomous Hit"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Attach:1Darkness@1 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@1 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attack:Venomous Hit",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Venomous Hit": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261012_210041000-t14",
+  "force": [],
+  "note": "no forced record",
+  "rows": [],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261012_210823000-t02",
+  "force": [
+   "Play:Professor's Research"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Professor's Research",
+    "km3_agrees_in": 1,
+    "of": 12,
+    "km3_plays": {
+     "Play:Copycat": 8,
+     "Play:Professor's Research": 1,
+     "Play:Mesagoza": 3
+    },
+    "gap_seed1": 877.2
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Play:Professor's Research",
+   "km3_agrees_in": 1,
+   "of": 12,
+   "km3_plays": {
+    "Play:Copycat": 8,
+    "Play:Professor's Research": 1,
+    "Play:Mesagoza": 3
+   },
+   "gap_seed1": 877.2
+  },
+  "next_choice_km3": {
+   "Play:Mesagoza": 4,
+   "Play:Poké Ball": 5,
+   "Place:Regigigas@3": 1,
+   "Place:Pawniard@3": 1,
+   "Place:Glimmet@3": 1
+  }
+ },
+ {
+  "id": "KW-261012_210823000-t04",
+  "force": [
+   "Place:Regigigas@2",
+   "Attach:1Darkness@0 zone",
+   "Retreat:2",
+   "Evolve:Alolan Muk@2",
+   "Place:Pawniard@3",
+   "Play:Copycat"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Place:Regigigas@2",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Place:Regigigas@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Copycat": 6,
+     "Place:Pawniard@3": 6
+    },
+    "gap_seed1": 460.3
+   },
+   {
+    "step": 2,
+    "his": "Retreat:2",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Copycat": 6,
+     "Evolve:Alolan Muk@0": 6
+    },
+    "gap_seed1": 1611.3
+   },
+   {
+    "step": 3,
+    "his": "Evolve:Alolan Muk@2",
+    "km3_agrees_in": 5,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Alolan Muk@2": 5,
+     "Play:Copycat": 7
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 4,
+    "his": "Place:Pawniard@3",
+    "km3_agrees_in": 1,
+    "of": 12,
+    "km3_plays": {
+     "Play:Copycat": 11,
+     "Place:Pawniard@3": 1
+    },
+    "gap_seed1": 629.0
+   },
+   {
+    "step": 5,
+    "his": "Play:Copycat",
+    "km3_agrees_in": 11,
+    "of": 12,
+    "km3_plays": {
+     "Play:Copycat": 11,
+     "UseStadium": 1
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Place:Regigigas@2",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Place:Regigigas@3": 12
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {
+   "Play:Heavy Helmet": 7,
+   "UseStadium": 2,
+   "Evolve:Glimmora@1": 3
+  }
+ },
+ {
+  "id": "KW-261012_210823000-t06",
+  "force": [
+   "Play:Rare Candy",
+   "Evolve:Kingambit@3",
+   "Attach:1Darkness@3 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Rare Candy",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Rare Candy": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Evolve:Kingambit@3",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Kingambit@3": 12
+    },
+    "gap_seed1": null
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Darkness@3 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@3 zone": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "UseStadium": 12
+  }
+ },
+ {
+  "id": "KW-261012_210823000-t08",
+  "force": [
+   "Play:Ilima"
+  ],
+  "note": "his step 1 (Place:Glimmet) is not a legal action in the harness' state: line cut there",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Ilima",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Ilima": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Promote:0@3": 12
+  }
+ },
+ {
+  "id": "KW-261012_210823000-t10",
+  "force": [
+   "Evolve:Glimmora@0",
+   "Play:Professor's Research"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Glimmora@0",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Glimmora@0": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Play:Professor's Research",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Place:Regigigas@3": 12
+    },
+    "gap_seed1": 146.0
+   }
+  ],
+  "first_deviation": {
+   "step": 1,
+   "his": "Play:Professor's Research",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Place:Regigigas@3": 12
+   },
+   "gap_seed1": 146.0
+  },
+  "next_choice_km3": {
+   "Place:Regigigas@3": 12
+  }
+ },
+ {
+  "id": "KW-261012_210823000-t12",
+  "force": [],
+  "note": "no forced record",
+  "rows": [],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261012_225319000-t02",
+  "force": [
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 10,
+    "of": 12,
+    "km3_plays": {
+     "Play:Poké Ball": 10,
+     "Play:Professor's Research": 2
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Place:Regigigas@3": 5,
+   "Place:Glimmet@3": 5,
+   "Place:Alolan Grimer@3": 1,
+   "Play:Professor's Research": 1
+  }
+ },
+ {
+  "id": "KW-261012_225319000-t04",
+  "force": [
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@0",
+   "UseStadium",
+   "Play:Copycat"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Heavy Helmet",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "UseStadium": 8,
+     "Play:Copycat": 3,
+     "Attach:1Darkness@0 zone": 1
+    },
+    "gap_seed1": 209.9
+   },
+   {
+    "step": 1,
+    "his": "Tool:Heavy Helmet@0",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Tool:Heavy Helmet@0": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "UseStadium",
+    "km3_agrees_in": 9,
+    "of": 12,
+    "km3_plays": {
+     "UseStadium": 9,
+     "Attach:1Darkness@0 zone": 1,
+     "Play:Copycat": 2
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 3,
+    "his": "Play:Copycat",
+    "km3_agrees_in": 2,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 3,
+     "Play:Copycat": 2,
+     "Place:Regigigas@3": 3,
+     "Evolve:Alolan Muk@1": 2,
+     "Play:Rare Candy": 2
+    },
+    "gap_seed1": 174.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Play:Heavy Helmet",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "UseStadium": 8,
+    "Play:Copycat": 3,
+    "Attach:1Darkness@0 zone": 1
+   },
+   "gap_seed1": 209.9
+  },
+  "next_choice_km3": {
+   "Play:Poké Ball": 4,
+   "Place:Regigigas@3": 2,
+   "Place:Glimmet@3": 2,
+   "Attach:1Darkness@0 zone": 4
+  }
+ },
+ {
+  "id": "KW-261012_225319000-t06",
+  "force": [
+   "UseStadium",
+   "Attach:1Darkness@0 zone",
+   "Retreat:1"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "UseStadium",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 8,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 8,
+     "Evolve:Alolan Muk@1": 2,
+     "Place:Regigigas@3": 2
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Retreat:1",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Slash": 8,
+     "Evolve:Alolan Muk@1": 2,
+     "Place:Regigigas@3": 2
+    },
+    "gap_seed1": 592.1
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "UseStadium",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Darkness@0 zone": 12
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {
+   "Evolve:Alolan Muk@0": 2,
+   "Place:Regigigas@3": 2
+  }
+ },
+ {
+  "id": "KW-261012_225319000-t08",
+  "force": [
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Poké Ball": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Place:Regigigas@3": 8,
+   "Place:Glimmet@3": 4
+  }
+ },
+ {
+  "id": "KW-261012_230258000-t01",
+  "force": [
+   "Play:Professor's Research"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Professor's Research",
+    "km3_agrees_in": 11,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 11,
+     "Play:Mesagoza": 1
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Play:Heavy Helmet": 3,
+   "Play:Poké Ball": 3,
+   "Play:Mesagoza": 6
+  }
+ },
+ {
+  "id": "KW-261012_230258000-t03",
+  "force": [
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Poké Ball": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Place:Pawniard@3": 4,
+   "Place:Alolan Grimer@3": 8
+  }
+ },
+ {
+  "id": "KW-261012_230258000-t05",
+  "force": [
+   "UseStadium",
+   "Attach:1Darkness@0 zone",
+   "Attack:Venomous Hit"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "UseStadium",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Place:Pawniard@3": 12
+    },
+    "gap_seed1": 48.0
+   },
+   {
+    "step": 1,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Place:Pawniard@3": 9,
+     "Place:Alolan Grimer@3": 3
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Attack:Venomous Hit",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Lucky Ice Pop": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "UseStadium",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Place:Pawniard@3": 12
+   },
+   "gap_seed1": 48.0
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261012_230258000-t07",
+  "force": [
+   "Attach:1Darkness@0 zone",
+   "UseStadium"
+  ],
+  "note": "his step 2 (Evolve:Glimmora@1) is not a legal action in the harness' state: line cut there",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "UseStadium",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Place:Pawniard@3": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 1,
+   "his": "UseStadium",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Place:Pawniard@3": 12
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {
+   "Place:Pawniard@3": 12
+  }
+ },
+ {
+  "id": "KW-261012_230258000-t09",
+  "force": [
+   "UseStadium"
+  ],
+  "note": "his step 1 (Place:Alolan Grimer) is not a legal action in the harness' state: line cut there",
+  "rows": [
+   {
+    "step": 0,
+    "his": "UseStadium",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Lucky Ice Pop": 12
+    },
+    "gap_seed1": 98.5
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "UseStadium",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Play:Lucky Ice Pop": 12
+   },
+   "gap_seed1": 98.5
+  },
+  "next_choice_km3": {
+   "Play:Lucky Ice Pop": 12
+  }
+ },
+ {
+  "id": "KW-261012_230258000-t11",
+  "force": [
+   "Evolve:Alolan Muk@1",
+   "Play:Lucky Ice Pop",
+   "Attach:1Darkness@0 zone",
+   "Play:Copycat"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Alolan Muk@1",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Alolan Muk@1": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Play:Lucky Ice Pop",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Lucky Ice Pop": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 3,
+    "his": "Play:Copycat",
+    "km3_agrees_in": 3,
+    "of": 12,
+    "km3_plays": {
+     "Play:Copycat": 3,
+     "Play:Lucky Ice Pop": 9
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 3,
+   "his": "Play:Copycat",
+   "km3_agrees_in": 3,
+   "of": 12,
+   "km3_plays": {
+    "Play:Copycat": 3,
+    "Play:Lucky Ice Pop": 9
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {
+   "Attack:Giga Turbo": 3,
+   "Play:Lucky Ice Pop": 9
+  }
+ },
+ {
+  "id": "KW-261012_230258000-t13",
+  "force": [
+   "Attach:1Darkness@0 zone",
+   "Attack:Venomous Hit"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attack:Venomous Hit",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Venomous Hit": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_022530000-t01",
+  "force": [
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 6,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 5,
+     "Play:Poké Ball": 6,
+     "Play:Copycat": 1
+    },
+    "gap_seed1": 104.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Play:Poké Ball",
+   "km3_agrees_in": 6,
+   "of": 12,
+   "km3_plays": {
+    "Play:Professor's Research": 5,
+    "Play:Poké Ball": 6,
+    "Play:Copycat": 1
+   },
+   "gap_seed1": 104.0
+  },
+  "next_choice_km3": {
+   "Play:Professor's Research": 4,
+   "Place:Dratini@2": 2,
+   "Place:Axew@3": 1,
+   "Place:Axew@2": 1,
+   "Place:Axew@1": 2,
+   "Place:Dratini@1": 1,
+   "Place:Dratini@3": 1
+  }
+ },
+ {
+  "id": "KW-261013_022530000-t03",
+  "force": [
+   "Place:Axew@2",
+   "Evolve:Dragonair@1",
+   "Play:Copycat"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Place:Axew@2",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Place:Axew@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Evolve:Dragonair@1",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Dragonair@1": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Play:Copycat",
+    "km3_agrees_in": 10,
+    "of": 12,
+    "km3_plays": {
+     "Play:Copycat": 10,
+     "Attach:1Metal@0 zone": 2
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Place:Axew@2",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Place:Axew@3": 12
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {
+   "Play:Rainbow Cave": 2,
+   "Play:Lucky Ice Pop": 3,
+   "Place:Axew@3": 2,
+   "Attach:1Metal@0 zone": 2,
+   "Play:Poké Ball": 3
+  }
+ },
+ {
+  "id": "KW-261013_022530000-t05",
+  "force": [
+   "Play:Lucky Ice Pop",
+   "Attach:1Metal@1 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Lucky Ice Pop",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Lucky Ice Pop": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attach:1Metal@1 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Metal@3 zone": 12
+    },
+    "gap_seed1": 10.0
+   }
+  ],
+  "first_deviation": {
+   "step": 1,
+   "his": "Attach:1Metal@1 zone",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Metal@3 zone": 12
+   },
+   "gap_seed1": 10.0
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_022530000-t07",
+  "force": [
+   "Play:Rare Candy",
+   "Evolve:Haxorus@1",
+   "Attach:1Metal@1 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Rare Candy",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Rare Candy": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Evolve:Haxorus@1",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Haxorus@1": 12
+    },
+    "gap_seed1": null
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Metal@1 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Metal@1 zone": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_022530000-t09",
+  "force": [
+   "Place:Axew@3",
+   "Play:Rainbow Cave",
+   "UseStadium",
+   "Attach:1Fighting@3 zone",
+   "Ability@2"
+  ],
+  "note": "his step 5 (Attack:Frenzied Blade) is not a legal action in the harness' state: line cut there",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Place:Axew@3",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Place:Axew@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Play:Rainbow Cave",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Fighting@0 zone": 12
+    },
+    "gap_seed1": 1.0
+   },
+   {
+    "step": 2,
+    "his": "UseStadium",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "UseStadium": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 3,
+    "his": "Attach:1Fighting@3 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Fighting@0 zone": 12
+    },
+    "gap_seed1": 695.0
+   },
+   {
+    "step": 4,
+    "his": "Ability@2",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Ability@2": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 1,
+   "his": "Play:Rainbow Cave",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Fighting@0 zone": 12
+   },
+   "gap_seed1": 1.0
+  },
+  "next_choice_km3": {
+   "AttachTypedFromDiscard": 12
+  }
+ },
+ {
+  "id": "KW-261013_022530000-t11",
+  "force": [
+   "Evolve:Dragonair@2",
+   "UseStadium",
+   "Attach:1Fighting@1 zone",
+   "Attack:Frenzied Blade"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Dragonair@2",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Dragonair@2": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "UseStadium",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "UseStadium": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Fighting@1 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Fighting@3 zone": 12
+    },
+    "gap_seed1": 80.0
+   },
+   {
+    "step": 3,
+    "his": "Attack:Frenzied Blade",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Frenzied Blade": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 2,
+   "his": "Attach:1Fighting@1 zone",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Fighting@3 zone": 12
+   },
+   "gap_seed1": 80.0
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_030351000-t01",
+  "force": [
+   "Place:Druddigon@1",
+   "Play:Rainbow Cave",
+   "Play:Copycat"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Place:Druddigon@1",
+    "km3_agrees_in": 3,
+    "of": 12,
+    "km3_plays": {
+     "Place:Druddigon@3": 7,
+     "Place:Druddigon@1": 3,
+     "Place:Druddigon@2": 2
+    },
+    "gap_seed1": 110.0
+   },
+   {
+    "step": 1,
+    "his": "Play:Rainbow Cave",
+    "km3_agrees_in": 6,
+    "of": 12,
+    "km3_plays": {
+     "Play:Rainbow Cave": 6,
+     "Play:Copycat": 6
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Play:Copycat",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Copycat": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Place:Druddigon@1",
+   "km3_agrees_in": 3,
+   "of": 12,
+   "km3_plays": {
+    "Place:Druddigon@3": 7,
+    "Place:Druddigon@1": 3,
+    "Place:Druddigon@2": 2
+   },
+   "gap_seed1": 110.0
+  },
+  "next_choice_km3": {
+   "Play:Rocky Helmet": 1,
+   "Play:Poké Ball": 8,
+   "Place:Axew@3": 2
+  }
+ },
+ {
+  "id": "KW-261013_030351000-t03",
+  "force": [
+   "Place:Dratini@3",
+   "Play:Professor's Research"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Place:Dratini@3",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Place:Dratini@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Play:Professor's Research",
+    "km3_agrees_in": 1,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 1,
+     "Evolve:Dragonair@0": 11
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 1,
+   "his": "Play:Professor's Research",
+   "km3_agrees_in": 1,
+   "of": 12,
+   "km3_plays": {
+    "Play:Professor's Research": 1,
+    "Evolve:Dragonair@0": 11
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {
+   "Evolve:Dragonair@0": 10,
+   "Play:Lucky Ice Pop": 2
+  }
+ },
+ {
+  "id": "KW-261013_030351000-t05",
+  "force": [
+   "Evolve:Dragonair@3",
+   "UseStadium",
+   "Attach:1Metal@1 zone",
+   "Ability@3"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Dragonair@3",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Dragonair@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "UseStadium",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "UseStadium": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Metal@1 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Ability@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 3,
+    "his": "Ability@3",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Ability@3": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 2,
+   "his": "Attach:1Metal@1 zone",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Ability@3": 12
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {
+   "Promote:0@1": 12
+  }
+ },
+ {
+  "id": "KW-261013_030351000-t07",
+  "force": [
+   "Play:Lucky Ice Pop",
+   "UseStadium",
+   "Attach:1Metal@0 zone",
+   "Ability@2"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Lucky Ice Pop",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Lucky Ice Pop": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "UseStadium",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Ability@2": 3,
+     "Play:Lucky Ice Pop": 9
+    },
+    "gap_seed1": 70.0
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Metal@0 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Ability@2": 3,
+     "Play:Lucky Ice Pop": 9
+    },
+    "gap_seed1": 100.0
+   },
+   {
+    "step": 3,
+    "his": "Ability@2",
+    "km3_agrees_in": 9,
+    "of": 12,
+    "km3_plays": {
+     "EndTurn": 3,
+     "Ability@2": 9
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 1,
+   "his": "UseStadium",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Ability@2": 3,
+    "Play:Lucky Ice Pop": 9
+   },
+   "gap_seed1": 70.0
+  },
+  "next_choice_km3": {
+   "Play:Lucky Ice Pop": 9
+  }
+ },
+ {
+  "id": "KW-261013_030351000-t09",
+  "force": [
+   "Play:Lucky Ice Pop"
+  ],
+  "note": "his step 1 (Play:Lucky Ice Pop) is not a legal action in the harness' state: line cut there",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Lucky Ice Pop",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Lucky Ice Pop": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Attach:1Metal@1 zone": 3,
+   "Play:Lucky Ice Pop": 9
+  }
+ },
+ {
+  "id": "KW-261013_030351000-t11",
+  "force": [
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Poké Ball": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Place:Axew@3": 12
+  }
+ },
+ {
+  "id": "KW-261013_030351000-t13",
+  "force": [
+   "Play:Professor's Research"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Professor's Research",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Play:Rare Candy": 12
+  }
+ },
+ {
+  "id": "KW-261013_030351000-t15",
+  "force": [
+   "Ability@2",
+   "Retreat:1",
+   "Attach:1Fighting@1 zone",
+   "Play:Iris",
+   "Attack:Frenzied Blade"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Ability@2",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Fighting@0 zone": 12
+    },
+    "gap_seed1": 10030.1
+   },
+   {
+    "step": 1,
+    "his": "Retreat:1",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Retreat:1": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Fighting@1 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Iris": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 3,
+    "his": "Play:Iris",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Iris": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 4,
+    "his": "Attack:Frenzied Blade",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Frenzied Blade": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Ability@2",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Fighting@0 zone": 12
+   },
+   "gap_seed1": 10030.1
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_010003000-t01",
+  "force": [
+   "Play:Mesagoza",
+   "UseStadium",
+   "Play:Professor's Research"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Mesagoza",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 12
+    },
+    "gap_seed1": 321.0
+   },
+   {
+    "step": 1,
+    "his": "UseStadium",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 12
+    },
+    "gap_seed1": 249.8
+   },
+   {
+    "step": 2,
+    "his": "Play:Professor's Research",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Play:Mesagoza",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Play:Professor's Research": 12
+   },
+   "gap_seed1": 321.0
+  },
+  "next_choice_km3": {
+   "Place:Glimmet@3": 3,
+   "Play:Heavy Helmet": 5,
+   "Play:Poké Ball": 2,
+   "Place:Alolan Grimer@3": 1
+  }
+ },
+ {
+  "id": "KW-261013_010003000-t03",
+  "force": [
+   "Evolve:Glimmora@0",
+   "UseStadium",
+   "Attach:1Darkness@0 zone",
+   "Play:Lucky Ice Pop",
+   "Attack:Venomous Hit"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Glimmora@0",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Heavy Helmet": 12
+    },
+    "gap_seed1": 382.0
+   },
+   {
+    "step": 1,
+    "his": "UseStadium",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Heavy Helmet": 12
+    },
+    "gap_seed1": 669.0
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Heavy Helmet": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 3,
+    "his": "Play:Lucky Ice Pop",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Heavy Helmet": 12
+    },
+    "gap_seed1": 160.5
+   },
+   {
+    "step": 4,
+    "his": "Attack:Venomous Hit",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Heavy Helmet": 12
+    },
+    "gap_seed1": 16.7
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Evolve:Glimmora@0",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Play:Heavy Helmet": 12
+   },
+   "gap_seed1": 382.0
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_010003000-t05",
+  "force": [
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Poké Ball": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Place:Pawniard@3": 6,
+   "Place:Glimmet@3": 4,
+   "Place:Alolan Grimer@3": 2
+  }
+ },
+ {
+  "id": "KW-261013_010003000-t07",
+  "force": [
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Lucky Ice Pop": 12
+    },
+    "gap_seed1": 58.5
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Play:Poké Ball",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Play:Lucky Ice Pop": 12
+   },
+   "gap_seed1": 58.5
+  },
+  "next_choice_km3": {
+   "Play:Lucky Ice Pop": 4,
+   "Place:Alolan Grimer@3": 8
+  }
+ },
+ {
+  "id": "KW-261013_010003000-t09",
+  "force": [
+   "Evolve:Alolan Muk@2",
+   "Attach:1Darkness@0 zone",
+   "Play:Professor's Research"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Alolan Muk@2",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Alolan Muk@2": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Play:Professor's Research",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Attack:Giga Turbo": 3,
+   "Evolve:Glimmora@1": 5,
+   "Place:Pawniard@3": 4
+  }
+ },
+ {
+  "id": "KW-261013_010003000-t11",
+  "force": [
+   "Play:Lucky Ice Pop",
+   "Attach:1Darkness@2 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Lucky Ice Pop",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Giga Turbo": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attach:1Darkness@2 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Giga Turbo": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Play:Lucky Ice Pop",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attack:Giga Turbo": 12
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {
+   "Attack:Giga Turbo": 12
+  }
+ },
+ {
+  "id": "KW-261013_010837000-t01",
+  "force": [
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 8,
+    "of": 12,
+    "km3_plays": {
+     "Play:Copycat": 2,
+     "Play:Poké Ball": 8,
+     "Play:Professor's Research": 2
+    },
+    "gap_seed1": 255.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Play:Copycat": 2,
+   "Place:Regigigas@3": 2,
+   "Place:Alolan Grimer@2": 2,
+   "Place:Glimmet@3": 2,
+   "Play:Professor's Research": 2,
+   "Place:Glimmet@1": 1,
+   "Place:Alolan Grimer@3": 1
+  }
+ },
+ {
+  "id": "KW-261013_010837000-t03",
+  "force": [
+   "Evolve:Glimmora@1",
+   "Attach:1Darkness@0 zone",
+   "Retreat:1",
+   "Play:Copycat"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Glimmora@1",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Glimmora@1": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Retreat:1",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Slash": 4,
+     "Play:Copycat": 8
+    },
+    "gap_seed1": 10627.8
+   },
+   {
+    "step": 3,
+    "his": "Play:Copycat",
+    "km3_agrees_in": 10,
+    "of": 12,
+    "km3_plays": {
+     "Play:Copycat": 10,
+     "EndTurn": 2
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 2,
+   "his": "Retreat:1",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attack:Slash": 4,
+    "Play:Copycat": 8
+   },
+   "gap_seed1": 10627.8
+  },
+  "next_choice_km3": {
+   "Play:Heavy Helmet": 4,
+   "Play:Rare Candy": 1,
+   "Place:Glimmet@3": 1,
+   "Play:Mesagoza": 1,
+   "Play:Poké Ball": 3,
+   "Place:Alolan Grimer@3": 1
+  }
+ },
+ {
+  "id": "KW-261013_010837000-t05",
+  "force": [
+   "Evolve:Alolan Muk@2",
+   "Place:Glimmet@3",
+   "Attach:1Darkness@1 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Alolan Muk@2",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Place:Glimmet@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Place:Glimmet@3",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Place:Glimmet@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Darkness@1 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 166.7
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Evolve:Alolan Muk@2",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Place:Glimmet@3": 12
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_010837000-t07",
+  "force": [
+   "Play:Rare Candy",
+   "Evolve:Kingambit@1",
+   "Attach:1Darkness@2 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Rare Candy",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Rare Candy": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Evolve:Kingambit@1",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Kingambit@1": 12
+    },
+    "gap_seed1": null
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Darkness@2 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@1 zone": 12
+    },
+    "gap_seed1": 658.0
+   }
+  ],
+  "first_deviation": {
+   "step": 2,
+   "his": "Attach:1Darkness@2 zone",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Darkness@1 zone": 12
+   },
+   "gap_seed1": 658.0
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_010837000-t09",
+  "force": [
+   "Play:Lucky Ice Pop"
+  ],
+  "note": "his step 1 (Play:Lucky Ice Pop) is not a legal action in the harness' state: line cut there",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Lucky Ice Pop",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Retreat:1": 12
+    },
+    "gap_seed1": 787.2
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Play:Lucky Ice Pop",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Retreat:1": 12
+   },
+   "gap_seed1": 787.2
+  },
+  "next_choice_km3": {
+   "Retreat:1": 12
+  }
+ },
+ {
+  "id": "KW-261013_010837000-t11",
+  "force": [
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@1",
+   "Attach:1Darkness@2 zone",
+   "Attack:Hang Down"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Heavy Helmet",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Retreat:1": 12
+    },
+    "gap_seed1": 9221.1
+   },
+   {
+    "step": 1,
+    "his": "Tool:Heavy Helmet@1",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Tool:Heavy Helmet@1": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Darkness@2 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Retreat:1": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 3,
+    "his": "Attack:Hang Down",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Retreat:1": 12
+    },
+    "gap_seed1": 10208.1
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Play:Heavy Helmet",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Retreat:1": 12
+   },
+   "gap_seed1": 9221.1
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_010837000-t13",
+  "force": [
+   "Attach:1Darkness@0 zone",
+   "Attack:Overlord's Blade"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@1 zone": 12
+    },
+    "gap_seed1": 110.0
+   },
+   {
+    "step": 1,
+    "his": "Attack:Overlord's Blade",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Overlord's Blade": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Attach:1Darkness@0 zone",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Darkness@1 zone": 12
+   },
+   "gap_seed1": 110.0
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_010837000-t15",
+  "force": [],
+  "note": "no forced record",
+  "rows": [],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_014423000-t01",
+  "force": [
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 5,
+    "of": 12,
+    "km3_plays": {
+     "Play:Copycat": 4,
+     "Play:Professor's Research": 3,
+     "Play:Poké Ball": 5
+    },
+    "gap_seed1": 352.5
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Play:Poké Ball",
+   "km3_agrees_in": 5,
+   "of": 12,
+   "km3_plays": {
+    "Play:Copycat": 4,
+    "Play:Professor's Research": 3,
+    "Play:Poké Ball": 5
+   },
+   "gap_seed1": 352.5
+  },
+  "next_choice_km3": {
+   "Play:Professor's Research": 2,
+   "Play:Copycat": 1,
+   "Place:Regigigas@3": 4,
+   "Place:Glimmet@3": 2,
+   "Place:Pawniard@3": 2,
+   "Place:Glimmet@2": 1
+  }
+ },
+ {
+  "id": "KW-261013_014423000-t03",
+  "force": [
+   "Attach:1Darkness@1 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Attach:1Darkness@1 zone",
+    "km3_agrees_in": 1,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@1 zone": 1,
+     "Attach:1Darkness@0 zone": 8,
+     "Play:Copycat": 2,
+     "Attach:1Darkness@2 zone": 1
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Attach:1Darkness@1 zone",
+   "km3_agrees_in": 1,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Darkness@1 zone": 1,
+    "Attach:1Darkness@0 zone": 8,
+    "Play:Copycat": 2,
+    "Attach:1Darkness@2 zone": 1
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {
+   "EndTurn": 11,
+   "Play:Copycat": 1
+  }
+ },
+ {
+  "id": "KW-261013_014423000-t05",
+  "force": [
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@0",
+   "Play:Copycat"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Heavy Helmet",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Heavy Helmet": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Tool:Heavy Helmet@0",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Tool:Heavy Helmet@0": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Play:Copycat",
+    "km3_agrees_in": 5,
+    "of": 12,
+    "km3_plays": {
+     "Play:Copycat": 5,
+     "Attach:1Darkness@0 zone": 7
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 2,
+   "his": "Play:Copycat",
+   "km3_agrees_in": 5,
+   "of": 12,
+   "km3_plays": {
+    "Play:Copycat": 5,
+    "Attach:1Darkness@0 zone": 7
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {
+   "Place:Glimmet@3": 4,
+   "Attach:1Darkness@0 zone": 6,
+   "Play:Rare Candy": 2
+  }
+ },
+ {
+  "id": "KW-261013_014423000-t07",
+  "force": [
+   "Evolve:Glimmora@2",
+   "Attach:1Darkness@1 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Glimmora@2",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Evolve:Glimmora@2": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attach:1Darkness@1 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 216.7
+   }
+  ],
+  "first_deviation": {
+   "step": 1,
+   "his": "Attach:1Darkness@1 zone",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Darkness@0 zone": 12
+   },
+   "gap_seed1": 216.7
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_014423000-t09",
+  "force": [
+   "Attach:1Darkness@0 zone",
+   "Attack:Venomous Hit"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Venomous Hit": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attack:Venomous Hit",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Venomous Hit": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Attach:1Darkness@0 zone",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attack:Venomous Hit": 12
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_015011000-t01",
+  "force": [
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 8,
+    "of": 12,
+    "km3_plays": {
+     "Play:Copycat": 4,
+     "Play:Poké Ball": 8
+    },
+    "gap_seed1": 144.5
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Place:Glimmet@2": 3,
+   "Place:Alolan Grimer@3": 4,
+   "Play:Copycat": 1,
+   "Place:Glimmet@3": 2,
+   "Place:Regigigas@2": 1,
+   "Place:Glimmet@1": 1
+  }
+ },
+ {
+  "id": "KW-261013_015011000-t03",
+  "force": [],
+  "note": "no forced record",
+  "rows": [],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_015659000-t01",
+  "force": [
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Poké Ball": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Place:Glimmet@3": 3,
+   "Place:Pawniard@3": 9
+  }
+ },
+ {
+  "id": "KW-261013_015659000-t03",
+  "force": [
+   "Evolve:Glimmora@1",
+   "Play:Lucky Ice Pop",
+   "Attach:1Darkness@0 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Glimmora@1",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Lucky Ice Pop": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Play:Lucky Ice Pop",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Lucky Ice Pop": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Place:Pawniard@3": 3,
+     "Play:Lucky Ice Pop": 9
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Evolve:Glimmora@1",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Play:Lucky Ice Pop": 12
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {
+   "Place:Pawniard@3": 3,
+   "Play:Lucky Ice Pop": 9
+  }
+ },
+ {
+  "id": "KW-261013_015659000-t05",
+  "force": [
+   "Evolve:Glimmora@2",
+   "Place:Pawniard@3",
+   "Attach:1Darkness@3 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Glimmora@2",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Place:Pawniard@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Place:Pawniard@3",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Place:Pawniard@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Attach:1Darkness@3 zone",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 546.7
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Evolve:Glimmora@2",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Place:Pawniard@3": 12
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_015659000-t07",
+  "force": [
+   "Attach:1Darkness@0 zone",
+   "Attack:Venomous Hit"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Attack:Venomous Hit",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Venomous Hit": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_015659000-t09",
+  "force": [
+   "Play:Poké Ball"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Poké Ball",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Poké Ball": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Place:Alolan Grimer@3": 12
+  }
+ },
+ {
+  "id": "KW-261013_015659000-t13",
+  "force": [
+   "Play:Professor's Research"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Professor's Research",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Play:Rare Candy": 5,
+   "Play:Lucky Ice Pop": 3,
+   "Attach:1Darkness@2 zone": 4
+  }
+ },
+ {
+  "id": "KW-261013_020824000-t01",
+  "force": [
+   "Play:Professor's Research"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Professor's Research",
+    "km3_agrees_in": 11,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 11,
+     "Play:Heavy Helmet": 1
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Place:Regigigas@3": 2,
+   "Play:Poké Ball": 4,
+   "Play:Heavy Helmet": 5,
+   "Play:Mesagoza": 1
+  }
+ },
+ {
+  "id": "KW-261013_020824000-t03",
+  "force": [
+   "Evolve:Glimmora@0",
+   "Evolve:Alolan Muk@1",
+   "Place:Pawniard@2",
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@2",
+   "Attach:1Darkness@0 zone",
+   "Attack:Venomous Hit"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Evolve:Glimmora@0",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Place:Pawniard@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Evolve:Alolan Muk@1",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Place:Pawniard@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 2,
+    "his": "Place:Pawniard@2",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Play:Heavy Helmet": 12
+    },
+    "gap_seed1": 250.0
+   },
+   {
+    "step": 3,
+    "his": "Play:Heavy Helmet",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Heavy Helmet": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 4,
+    "his": "Tool:Heavy Helmet@2",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Tool:Heavy Helmet@1": 12
+    },
+    "gap_seed1": 700.0
+   },
+   {
+    "step": 5,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 6,
+    "his": "Attack:Venomous Hit",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Venomous Hit": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": {
+   "step": 0,
+   "his": "Evolve:Glimmora@0",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Place:Pawniard@3": 12
+   },
+   "gap_seed1": 0.0
+  },
+  "next_choice_km3": {}
+ },
+ {
+  "id": "KW-261013_020824000-t05",
+  "force": [
+   "Play:Professor's Research"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Professor's Research",
+    "km3_agrees_in": 9,
+    "of": 12,
+    "km3_plays": {
+     "Play:Professor's Research": 9,
+     "UseStadium": 3
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Place:Glimmet@3": 2,
+   "Play:Rare Candy": 4,
+   "Play:Lucky Ice Pop": 4,
+   "Play:Poké Ball": 2
+  }
+ },
+ {
+  "id": "KW-261013_020824000-t07",
+  "force": [
+   "Place:Regigigas@3",
+   "Play:Mesagoza",
+   "UseStadium",
+   "Attach:1Darkness@0 zone",
+   "Retreat:3"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Place:Regigigas@3",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Place:Regigigas@3": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Play:Mesagoza",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.9
+   },
+   {
+    "step": 2,
+    "his": "UseStadium",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 3,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 3,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 3,
+     "Evolve:Glimmora@0": 9
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 4,
+    "his": "Retreat:3",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attack:Hang Down": 3,
+     "Evolve:Glimmora@0": 9
+    },
+    "gap_seed1": 772.0
+   }
+  ],
+  "first_deviation": {
+   "step": 1,
+   "his": "Play:Mesagoza",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Darkness@0 zone": 12
+   },
+   "gap_seed1": 0.9
+  },
+  "next_choice_km3": {
+   "Evolve:Glimmora@3": 9
+  }
+ },
+ {
+  "id": "KW-261013_020824000-t09",
+  "force": [
+   "Attach:1Darkness@0 zone"
+  ],
+  "note": "",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Attach:1Darkness@0 zone",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "UseStadium": 12
+  }
+ },
+ {
+  "id": "KW-261013_020824000-t11",
+  "force": [
+   "Play:Lucky Ice Pop",
+   "Play:Ilima"
+  ],
+  "note": "his step 2 (Place:Regigigas) is not a legal action in the harness' state: line cut there",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Lucky Ice Pop",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Lucky Ice Pop": 12
+    },
+    "gap_seed1": 0.0
+   },
+   {
+    "step": 1,
+    "his": "Play:Ilima",
+    "km3_agrees_in": 0,
+    "of": 12,
+    "km3_plays": {
+     "Attach:1Darkness@0 zone": 3,
+     "Play:Lucky Ice Pop": 9
+    },
+    "gap_seed1": 270.3
+   }
+  ],
+  "first_deviation": {
+   "step": 1,
+   "his": "Play:Ilima",
+   "km3_agrees_in": 0,
+   "of": 12,
+   "km3_plays": {
+    "Attach:1Darkness@0 zone": 3,
+    "Play:Lucky Ice Pop": 9
+   },
+   "gap_seed1": 270.3
+  },
+  "next_choice_km3": {
+   "Promote:0@1": 12
+  }
+ },
+ {
+  "id": "KW-261013_020824000-t13",
+  "force": [
+   "Play:Lucky Ice Pop"
+  ],
+  "note": "his step 1 (Play:Lucky Ice Pop) is not a legal action in the harness' state: line cut there",
+  "rows": [
+   {
+    "step": 0,
+    "his": "Play:Lucky Ice Pop",
+    "km3_agrees_in": 12,
+    "of": 12,
+    "km3_plays": {
+     "Play:Lucky Ice Pop": 12
+    },
+    "gap_seed1": 0.0
+   }
+  ],
+  "first_deviation": null,
+  "next_choice_km3": {
+   "Attach:1Darkness@0 zone": 3,
+   "Play:Lucky Ice Pop": 9
+  }
+ }
+]
