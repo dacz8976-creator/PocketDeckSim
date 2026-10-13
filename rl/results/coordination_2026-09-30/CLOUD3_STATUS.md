@@ -45,3 +45,4 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
 - 2026-10-13 14:20Z: 2026-10-12_draft-D-entei-grimhound: slice done, 240 of 320 games on disk, folder pushed.
 - 2026-10-13 17:26Z: 2026-10-12_draft-D-entei-grimhound: slice done, 280 of 320 games on disk, folder pushed.
 - 2026-10-13 18:40Z: 2026-10-12_draft-D-entei-grimhound: slice done, 320 of 320 games on disk, folder pushed.
+- 2026-10-13 18:44Z: draft D slow report FINISHED: all 320 games, 0 errors, 14.9 h over 8 sittings; kx3 43.1% over 160 games (35.7% to 50.9%), km3 on the same deals 24.4%, kx3 adds +18.8 points (12.2 to 25.3; no-gain not in range); best list t-vespiquen 80%, worst t-weezing 15%. Folder pushed (8582558e). Reported to Dustin in chat. Both of my decks are done; idle, waiting for Fable's next order.
