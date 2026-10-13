@@ -50,14 +50,15 @@ Below:
    KW-261005_034953000-t02 (early), KW-261005_034953000-t10 (middle), KW-261005_034953000-t16 (late).
    ```
    mkdir -p $O/PB_runs
+   TIMEFORMAT='elapsed %R s, user %U s, sys %S s'
    for id in KW-261005_034953000-t02 KW-261005_034953000-t10 KW-261005_034953000-t16; do
      echo "$id start $(date -u +%FT%TZ)" >> $O/PB_runs/TIMING.txt
-     /usr/bin/time -f "$id elapsed %e s, user %U s, sys %S s, maxrss %M KB" -a -o $O/PB_runs/TIMING.txt \
-       $W/target/release/examples/pg_pos --positions $P/positions_all.json "${DECKARGS[@]}" --seeds 1,2,3,4,5,6,7,8,9,10,11,12 --bot BOT --only $id > $O/PB_runs/out_$id.jsonl 2> $O/PB_runs/err_$id.txt
+     { time $W/target/release/examples/pg_pos --positions $P/positions_all.json "${DECKARGS[@]}" --seeds 1,2,3,4,5,6,7,8,9,10,11,12 --bot BOT --only $id > $O/PB_runs/out_$id.jsonl 2> $O/PB_runs/err_$id.txt ; } 2>> $O/PB_runs/TIMING.txt
      echo "$id end $(date -u +%FT%TZ) exit $?" >> $O/PB_runs/TIMING.txt
    done
    ```
-   - Put the loop in a script file and start it with `nohup bash <file> &`.
+   - Put the loop in a script file and start it with `nohup bash <file> &`. It must run under bash: it times with bash's own `time` and
+     `TIMEFORMAT`, because the sandboxes have no `/usr/bin/time` (corrected Oct 13, after the first launch stopped there).
    - On the laptop (16 cores), one seed of the early position took 49 s for F (568 CPU-seconds) and 39 s for C (463). So expect very
      roughly an hour or more per position in a 4-core sandbox, and later positions may cost more. A live process using CPU is not a hang.
    - Keep checking at least every 30 minutes. An idle session can lose its sandbox; if it does, start again from step 2, and a finished
