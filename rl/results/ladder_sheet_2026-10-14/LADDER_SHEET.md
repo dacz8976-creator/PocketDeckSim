@@ -49,7 +49,7 @@ half the games. The player going first can't attach on turn 1.
   - Strong bot: **61.3%** (53.5 to 68.5).
   - Everyday bot on the same deals: 34.1%.
   - Floor: clears, 33.1%.
-  - It has the biggest gap between the two bots of any deck.
+  - It has one of the two biggest gaps between the bots (brew 10's is the other).
 - **How the strong bot opened:**
   - **Turn 1:** Cottonee and Spinarak on the Bench, attach Grass when going second, Research or Lisia to find pieces, and Leaf Cape (+30
     HP) on a Grass Pokémon.
@@ -89,6 +89,7 @@ half the games. The player going first can't attach on turn 1.
 | deck | strong bot (range) | everyday bot, same deals | toughest lists |
 |---|---|---|---|
 | brew 08 Entei / Rainbow Cave † | 75.6% (68.4 to 81.6) | 62.5% | Blaziken (40% / floor 36%) |
+| brew 10 Diancie / Giratina | 70.6% (63.2 to 77.1) | 40.9% | Weezing (55% / floor 20%), Blaziken, Lucario |
 | brew 09 Sableye / Obstagoon | 66.9% (59.3 to 73.7) | 45.6% | Weezing, Sceptile |
 | draft A (Wallace) Mega Sharpedo / Alolan Ninetales † | 66.2% (58.6 to 73.1) | 48.1% | Altaria (40%) |
 | draft D Entei / Grimhound (your one Mega Houndoom ex) | 43.1% (35.7 to 50.9) | 24.4% | Weezing, Suicune, Blaziken |
@@ -97,6 +98,10 @@ half the games. The player going first can't attach on turn 1.
   - Against brew 07 it is within luck with both bots: strong 76% v 79%, everyday 62.5% v 63.1%.
   - You went 7-3 with it last season.
   - Your Sept 28 rule for exactly that case: 08 is the better evidence, because it is an unchanged tournament list.
+- **Brew 10** (new today):
+  - It scores the same as deck 13 with the strong bot, 70.6%, but only 41% with the everyday bot.
+  - That is the biggest gap of any deck, so how it's piloted matters a lot.
+  - Its floor page (Sept 30, 40.6%) still stands: none of its cards were touched by the rules change.
 - **Brew 09** scored only about even going first (56%) and 77% going second. The coin decides that.
 - **Draft A:** the Pause Games page has the older two-Misty version. Use the QR page for the tested Wallace version.
 - **Draft D** is at or below even: 43% with the strong bot (its range just reaches 51%) and 31% over 1,920 everyday-bot games.
@@ -115,7 +120,7 @@ change touched, so the numbers most likely still hold.
   - brew 07 v deck 13: +8 (about −1 to +18), within luck, but only just;
   - deck 13 v deck 12: +9 (about −1 to +20), within luck, but only just;
   - brew 07 v brew 08: +3 (about −6 to +13), within luck.
-- **The gap between the two bots** is 13 to 27 points on every deck. It mostly says the strong bot plays better, partly because it knows
+- **The gap between the two bots** is 13 to 30 points on every deck. It mostly says the strong bot plays better, partly because it knows
   the eight lists.
 - **The toughest lists** come from 20 games each, so each could be about 20 points off. The everyday bot's 240 games a list find the same
   soft spots, so they are probably not luck.
@@ -162,7 +167,6 @@ change touched, so the numbers most likely still hold.
 - **The exam on your 11 held-out decks** (decks 12 and 13 and draft D among them) is read once its last games finish, tonight or tomorrow. Its fixed rule recommends whether a
   stronger setting should replace the strong bot as the deck tester, and you decide. Until then, the frozen strong bot that ran these
   reports stays the tester.
-- **Brew 10's report** is still running.
 
 ## The shortlist's exact lists
 
@@ -187,8 +191,8 @@ The only promo-only card in them is X Speed (brew 07 and deck 12), which you alr
 
 Sources:
 - `rl/results/slow_reports/` (each deck's `SLOW_REPORT.md` and `games.jsonl`; the openings are counted from the strong bot's 160 games);
-- the floor pages: deck 12, brews 07 and 09, and draft D (`D_amended`) under `../floor_recheck_rules2_2026-10/pages/`, and brew 08 and
-  deck 13 under `../floor_dustin_2026-09-30/`;
+- the floor pages: deck 12, brews 07 and 09, and draft D (`D_amended`) under `../floor_recheck_rules2_2026-10/pages/`, and brews 08 and 10
+  and deck 13 under `../floor_dustin_2026-09-30/`;
 - your ladder counts: `decks/screen/panel_ladder_2026-09-26/ladder_counts.md`;
 - the B4b check: `../b4b_prep_2026-09-26/B4B_REPRINT_CHECK_2026-09-29.md`;
 - your Sept 28 words: `../b4b_prep_2026-09-26/README.md`, item 9;
