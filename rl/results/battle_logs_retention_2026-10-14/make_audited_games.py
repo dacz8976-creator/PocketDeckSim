@@ -10,9 +10,12 @@ to `games` invalidates the acceptance). Two tiers:
           all three batches against Codex's ledgers (REVIEW_POSITIONS_laptop.md, e9a7d35e: not ready), Sonnet's converter fix was then verified by the laptop's two panels (2eff1be6, 43b7d71d: every first-panel error
           fixed, byte-for-byte regeneration) and the positions were checked again after the Special Condition / knock-out change (28df6315, REVIEW_PGFIX_laptop.md: the 125 positions regenerate identical). Each entry
           names the games_meta file, the number of positions and the sha256 of those positions (the content that was reviewed); the tool holds the game back if any of them changes.
-  pending (NOT deletable): (a) the games of the same games_meta WITHOUT positions (214518, 214731, 034229, 012140: Codex found no exact 20-card list), which that review cannot cover; (b) the 14 games of
-          rl/results/pause_games_new_2026-10-13/v2/games_meta.json (BATCH_2026-10-12 x2, BATCH_2026-10-13 x2): integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7), but no panel had compared those 92 positions
-          with their ledgers field by field. Move an entry to `games` (with the reviewed games_meta, positions and positions_sha256: re-run this script) when a person accepts it."""
+          The 13 of the 14 games of rl/results/pause_games_new_2026-10-13/v2/games_meta.json (BATCH_2026-10-12 x2, BATCH_2026-10-13 x2) that the laptop released (tier B): its panel compared the 92 positions
+          with the raw ledgers (373b41a6: not ready, 3 blockers and 9 majors), Sonnet's positions v3 (cfc143fb) fixed them and the laptop's recheck passed (358562b2, v2/REVIEW_POSITIONS_laptop.md: "the other 13
+          can move from `pending` to `games` in the Battle Logs audit list, under a new acceptance").
+  pending (NOT deletable): (a) the games of the first games_meta WITHOUT positions (214518, 214731, 034229, 012140: Codex found no exact 20-card list), which that review cannot cover; (b) 20261013_015659000,
+          whose turns 10-12 (the opponent's hand) still rest on its frames until the question is settled or accepted as open. Move an entry to `games` (with the reviewed games_meta, positions and
+          positions_sha256: re-run this script) when a person accepts it."""
 import argparse, collections, json, os, subprocess, sys
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..', '..'))
@@ -22,6 +25,7 @@ import battle_logs_cleanup as bl            # the digest of a game's positions i
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'audited_games.json')
 TIER_A = 'rl/results/pause_games_new_2026-10-12/games_meta.json'
 TIER_B = 'rl/results/pause_games_new_2026-10-13/v2/games_meta.json'
+HOLD_B = {'kw-261013_015659000': 'stays pending (the laptop\'s recheck, 358562b2): its turns 10-12, the opponent\'s hand, still rest on its frames until the question is settled or accepted as open'}
 
 
 def commit(ref):
@@ -47,7 +51,7 @@ def main():
     ap.add_argument('--ref', default='origin/main')
     a = ap.parse_args()
     meta_a, (pos_a, dig_a) = show(a.ref, TIER_A), counts(a.ref, TIER_A)
-    meta_b, (pos_b, _) = show(a.ref, TIER_B), counts(a.ref, TIER_B)
+    meta_b, (pos_b, dig_b) = show(a.ref, TIER_B), counts(a.ref, TIER_B)
     games, pending = {}, {}
     for k, v in sorted(meta_a.items()):
         if pos_a.get(k):
@@ -58,8 +62,12 @@ def main():
             pending[k] = {'folder': v['folder'], 'games_meta': TIER_A, 'tier': 'A0',
                           'why': 'no positions to review: Codex found no exact 20-card list, so the converter produced none and the review of the 125 positions cannot cover this game'}
     for k, v in sorted(meta_b.items()):
-        pending[k] = {'folder': v['folder'], 'games_meta': TIER_B, 'positions': pos_b.get(k, 0), 'tier': 'B',
-                      'why': 'read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field'}
+        if k in HOLD_B or not pos_b.get(k):
+            pending[k] = {'folder': v['folder'], 'games_meta': TIER_B, 'positions': pos_b.get(k, 0), 'tier': 'B', 'why': HOLD_B.get(k, 'no positions to review')}
+        else:
+            games[k] = {'folder': v['folder'], 'games_meta': TIER_B, 'positions': pos_b[k], 'positions_sha256': dig_b[k], 'tier': 'B',
+                        'evidence': ['373b41a6 (laptop panel on the 92 positions against the raw ledgers: not ready, 3 blockers and 9 majors)', 'cfc143fb (Sonnet\'s positions v3: every blocker and major fixed)',
+                                     '358562b2 (the laptop\'s recheck: no blocker or major left, v3 introduced none; the other 13 of the 14 can move from pending to games under a new acceptance; v2/REVIEW_POSITIONS_laptop.md)']}
     doc = {
         'schema': 'battle-logs-retention/audited-games-v3',
         'confirmed': None,
@@ -71,7 +79,8 @@ def main():
     with open(OUT, 'w', encoding='utf-8') as f:
         json.dump(doc, f, ensure_ascii=False, indent=1)
         f.write('\n')
-    print(f'{len(games)} games with positions (tier A), {len(pending)} pending ({sum(1 for p in pending.values() if p["tier"] == "A0")} without positions, {sum(1 for p in pending.values() if p["tier"] == "B")} of tier B) -> {OUT}')
+    tiers = collections.Counter(g['tier'] for g in games.values())
+    print(f'{len(games)} games ({tiers["A"]} of tier A, {tiers["B"]} of tier B), {len(pending)} pending ({sum(1 for p in pending.values() if p["tier"] == "A0")} without positions, {sum(1 for p in pending.values() if p["tier"] == "B")} of tier B held) -> {OUT}')
 
 
 if __name__ == '__main__':
