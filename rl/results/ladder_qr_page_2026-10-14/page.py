@@ -2,6 +2,7 @@
 import html
 
 H = html.escape
+NUMBER_WORD = {7: 'seven', 8: 'eight', 9: 'nine', 10: 'ten'}
 
 STYLE = """
 /* Layout: an index of the seven decks first, then one panel per deck: its QR code on a white tile, the 20 cards beside it, the checks underneath. */
@@ -200,7 +201,7 @@ def render(decks, commit):
   <header>
     <span class="label">Ranked ladder sheet</span>
     <h1>Ladder deck codes</h1>
-    <p class="lede">The in-game deck import code for each of the seven decks on the sheet, in the sheet's order. Every code was decoded again and compared card for card with the tested deck file.</p>
+    <p class="lede">The in-game deck import code for each of the {NUMBER_WORD.get(len(decks), len(decks))} decks on the sheet, in the sheet's order. Every code was decoded again and compared card for card with the tested deck file.</p>
   </header>
   <div class="index"><table>
     <thead><tr><th>Deck</th><th>Name</th><th>Check</th><th>Existing codes</th></tr></thead>

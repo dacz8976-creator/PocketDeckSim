@@ -18,7 +18,8 @@ ladder win rate and not this season's ladder: a first check, not a ranking. Your
 
 **QR codes** for every deck here: [Ladder Deck Codes](https://claude.ai/artifact/8Jdmsfrp1McFskC2zAycKi).
 - Each code was decoded back and matches the tested list card for card.
-- Four are identical to codes you already have.
+- Brew 10's was added after its report came in.
+- Five of the eight are identical to codes you already have.
 - Draft A's is new: it is the tested Wallace version.
 
 ## The shortlist

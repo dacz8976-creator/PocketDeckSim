@@ -76,3 +76,14 @@
    [ok] QR image on the page (SVG) reads back as the code
    [ok] QR image read back out of the finished page file
    v Pause Games dD "Draft D: Entei / Grimhound": same code
+== Brew 10: Diancie and Giratina  (decks/brews/brew-10-diancie-giratina.txt, sha256 e1b20886d2d4ff3c...)
+   code DpiWqJiWqJiWnpiWnpiaXpiaXpiXwJiYLpiXopiXopia/pibCJiapJibgAYAS2QAS2QAFZAAFZAAS1oAS1oBBQ==
+   [ok] file is the one in the report manifest
+   [ok] code decodes to 20 cards
+   [ok] same cards and counts as the deck file
+   [ok] same Energy as the deck file
+   [ok] every printing in the deck file is a printing of the card the code names
+   [ok] QR image (lib/encode_qr.py PNG) reads back as the code
+   [ok] QR image on the page (SVG) reads back as the code
+   [ok] QR image read back out of the finished page file
+   v image decks/brews/brew-10-diancie-giratina.png: same code
