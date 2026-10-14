@@ -1,0 +1,24 @@
+{
+ "manifest_sha256": "07cd3a3c7099988df2e51de1ed69035be42e24bb6f8e880f7600514a5ccbffdb",
+ "stage": "use",
+ "pilot": "kx3",
+ "reference": "km3",
+ "registration_changed": false,
+ "registration_problems": [],
+ "paired_games": 160,
+ "pooled": {
+  "n": 160,
+  "mean": 0.296875,
+  "sd": 0.5445466494792889,
+  "half": 0.08437837752382692
+ },
+ "per_deck": {
+  "brew-10-diancie-giratina": {
+   "n": 160,
+   "mean": 0.296875,
+   "sd": 0.5445466494792889,
+   "half": 0.08437837752382692
+  }
+ },
+ "exactly_zero": false
+}
