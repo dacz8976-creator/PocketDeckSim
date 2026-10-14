@@ -10,21 +10,21 @@ Pre-registration order: registered 2026-10-13T19:07:56Z; first game started 2026
 
 Self-check digests recorded at registration: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit 381f955b7f7c): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration); `selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit 381f955b7f7c): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration)
 
-- Planned 320 games; finished 284; complete pairs 142 (= 284 games); unpaired games 0; errors 0.
+- Planned 320 games; finished 320; complete pairs 160 (= 320 games); unpaired games 0; errors 0.
 - Paired difference = score(arm X) − score(arm ref) per (deck, opponent, deal, seat), in percentage points of score (win 1, tie ½). Intervals are mean ± 1.96·sd/√n over paired games. No pass/fail threshold.
 
 ## Result
 
-**Pooled over all 142 paired games: +32.0 ± 8.8 points** (arm X 72.5% vs arm ref 40.5% score).
+**Pooled over all 160 paired games: +29.7 ± 8.4 points** (arm X 70.6% vs arm ref 40.9% score).
 
 
 ### Per deck, pooled over its opponents
 
 | deck | paired games | arm X score | arm ref score | paired difference (points) | went first: diff | went second: diff |
 |---|---|---|---|---|---|---|
-| brew-10-diancie-giratina | 142 | 72.5% | 40.5% | +32.0 ± 8.8 | +33.6 ± 12.4 | +30.3 ± 12.7 |
+| brew-10-diancie-giratina | 160 | 70.6% | 40.9% | +29.7 ± 8.4 | +28.5 ± 12.0 | +31.1 ± 11.9 |
 
-Overall by who went first (identical in both arms): deck first +33.6 ± 12.4 (n=76); deck second +30.3 ± 12.7 (n=66).
+Overall by who went first (identical in both arms): deck first +28.5 ± 12.0 (n=86); deck second +31.1 ± 11.9 (n=74).
 
 ### Per (deck, opponent) pair
 
@@ -37,7 +37,7 @@ Overall by who went first (identical in both arms): deck first +33.6 ± 12.4 (n=
 | brew-10-diancie-giratina | t-sceptile | 20 | 70.0% | 55.0% | +15.0 ± 16.1 |
 | brew-10-diancie-giratina | t-suicune | 20 | 75.0% | 15.0% | +60.0 ± 22.0 |
 | brew-10-diancie-giratina | t-vespiquen | 20 | 90.0% | 40.0% | +50.0 ± 22.5 |
-| brew-10-diancie-giratina | t-weezing | 2 | 50.0% | 0.0% | +50.0 ± 98.0 |
+| brew-10-diancie-giratina | t-weezing | 20 | 55.0% | 40.0% | +15.0 ± 25.7 |
 
 ## Runtime and cost
 
@@ -45,10 +45,10 @@ Wall time is per game on this machine with the threads the run used; it includes
 
 | arm | role | pilot | games | wall per game: mean / median / p95 / max | games per second (1 thread) | decisions per game | ms per decision: mean / median / p95 / max | decision time per game |
 |---|---|---|---|---|---|---|---|---|
-| X | deck seat | `kx3` | 142 | 1681.88 / 1468.45 / 3288.99 / 4590.79 s | 0.00 | 26.9 | 62412.5 / 57399.1 / 127026.2 / 222383.7 | 28 min |
-| X | opponent seat | `km3` | 142 |  |  | 24.9 | 27.1 / 10.7 / 105.9 / 552.1 | 0.68 s |
-| ref | deck seat | `km3` | 142 | 1.23 / 1.07 / 2.52 / 3.64 s | 0.81 | 26.3 | 26.6 / 11.2 / 99.3 / 434.9 | 0.70 s |
-| ref | opponent seat | `km3` | 142 |  |  | 24.1 | 21.3 / 8.9 / 82.5 / 296.9 | 0.51 s |
+| X | deck seat | `kx3` | 160 | 1684.93 / 1506.64 / 3288.99 / 4590.79 s | 0.00 | 27.1 | 62119.8 / 57459.7 / 125308.2 / 222383.7 | 28 min |
+| X | opponent seat | `km3` | 160 |  |  | 25.2 | 27.0 / 10.7 / 105.9 / 552.1 | 0.68 s |
+| ref | deck seat | `km3` | 160 | 1.24 / 1.06 / 2.55 / 3.64 s | 0.81 | 26.5 | 26.2 / 11.0 / 97.6 / 434.9 | 0.69 s |
+| ref | opponent seat | `km3` | 160 |  |  | 24.4 | 21.5 / 8.9 / 85.1 / 296.9 | 0.53 s |
 
 One paired game (both arms) took 28 min on average; the run used 4 thread(s).
 
@@ -58,8 +58,8 @@ At the sd reached, the number of paired games for a given half-width is `(1.96·
 
 | scope | paired games so far | sd | interval now (points) | for ±5 points: total / more games, time | for ±3 points: total / more games, time |
 |---|---|---|---|---|---|
-| all decks pooled | 142 | 53.7 | +32.0 ± 8.8 | 444 / 302, 35.3 h | 1232 / 1090, 5.3 days |
-| brew-10-diancie-giratina | 142 | 53.7 | +32.0 ± 8.8 | 444 / 302, 35.3 h | 1232 / 1090, 5.3 days |
+| all decks pooled | 160 | 54.5 | +29.7 ± 8.4 | 456 / 296, 34.7 h | 1266 / 1106, 5.4 days |
+| brew-10-diancie-giratina | 160 | 54.5 | +29.7 ± 8.4 | 456 / 296, 34.7 h | 1266 / 1106, 5.4 days |
 
 ## Intended lines
 
