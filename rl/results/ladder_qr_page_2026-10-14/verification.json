@@ -1,5 +1,5 @@
 {
- "commit": "55295ea7",
+ "commit": "f44120e9",
  "decks": [
   {
    "key": "brew-07",
@@ -1182,6 +1182,170 @@
    "compared": [
     {
      "what": "Pause Games dD \"Draft D: Entei / Grimhound\"",
+     "verdict": "same code",
+     "diff": {},
+     "energy_differs": false
+    }
+   ]
+  },
+  {
+   "key": "brew-10",
+   "group": "Also tested",
+   "label": "Brew 10",
+   "title": "Diancie and Giratina",
+   "file": "decks/brews/brew-10-diancie-giratina.txt",
+   "report": "2026-10-13_brew-10-diancie-giratina",
+   "pg": [],
+   "png": "decks/brews/brew-10-diancie-giratina.png",
+   "blurb": "Mega Diancie ex and Giratina ex with Carbink, Giant Cape, Starting Plains and Peculiar Plaza.",
+   "checks": [
+    {
+     "name": "file is the one in the report manifest",
+     "ok": true,
+     "detail": "sha256 e1b20886d2d4ff3c..., manifest says e1b20886d2d4ff3c... and e1b20886d2d4ff3c...; state: committed"
+    },
+    {
+     "name": "code decodes to 20 cards",
+     "ok": true,
+     "detail": "14 Trainers + 6 Pokémon"
+    },
+    {
+     "name": "same cards and counts as the deck file",
+     "ok": true,
+     "detail": "13 different cards"
+    },
+    {
+     "name": "same Energy as the deck file",
+     "ok": true,
+     "detail": "bytes [5] v [5]"
+    },
+    {
+     "name": "every printing in the deck file is a printing of the card the code names",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "name": "QR image (lib/encode_qr.py PNG) reads back as the code",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "name": "QR image on the page (SVG) reads back as the code",
+     "ok": true,
+     "detail": "41 x 41 modules"
+    },
+    {
+     "name": "QR image read back out of the finished page file",
+     "ok": true,
+     "detail": "/home/dacz8976/pgfix/rl/results/ladder_qr_page_2026-10-14/ladder_qr_page.html"
+    }
+   ],
+   "notes": [],
+   "sha256": "e1b20886d2d4ff3cf5719097caa327c6993cb4f0fff11f92443b8de36d34e6c9",
+   "code": "DpiWqJiWqJiWnpiWnpiaXpiaXpiXwJiYLpiXopiXopia/pibCJiapJibgAYAS2QAS2QAFZAAFZAAS1oAS1oBBQ==",
+   "energy_bytes": [
+    5
+   ],
+   "energy": [
+    "Psychic"
+   ],
+   "cards": [
+    {
+     "n": 2,
+     "name": "Mega Diancie ex",
+     "id": "B3b 032",
+     "kind": "Pokémon",
+     "entity": "pokemon:19300"
+    },
+    {
+     "n": 2,
+     "name": "Giratina ex",
+     "id": "A2b 035",
+     "kind": "Pokémon",
+     "entity": "pokemon:5520"
+    },
+    {
+     "n": 2,
+     "name": "Carbink",
+     "id": "B3b 031",
+     "kind": "Pokémon",
+     "entity": "pokemon:19290"
+    },
+    {
+     "n": 2,
+     "name": "Professor’s Research",
+     "id": "P-A 007",
+     "kind": "Trainer",
+     "entity": "trainer:40"
+    },
+    {
+     "n": 2,
+     "name": "Poké Ball",
+     "id": "P-A 005",
+     "kind": "Trainer",
+     "entity": "trainer:30"
+    },
+    {
+     "n": 2,
+     "name": "Copycat",
+     "id": "B1 225",
+     "kind": "Trainer",
+     "entity": "trainer:990"
+    },
+    {
+     "n": 1,
+     "name": "Cyrus",
+     "id": "A2 150",
+     "kind": "Trainer",
+     "entity": "trainer:320"
+    },
+    {
+     "n": 1,
+     "name": "Pokémon Center Lady",
+     "id": "A2b 070",
+     "kind": "Trainer",
+     "entity": "trainer:430"
+    },
+    {
+     "n": 2,
+     "name": "Giant Cape",
+     "id": "A2 147",
+     "kind": "Trainer",
+     "entity": "trainer:290"
+    },
+    {
+     "n": 1,
+     "name": "Starting Plains",
+     "id": "B2 154",
+     "kind": "Trainer",
+     "entity": "trainer:1150"
+    },
+    {
+     "n": 1,
+     "name": "Peculiar Plaza",
+     "id": "B2 155",
+     "kind": "Trainer",
+     "entity": "trainer:1160"
+    },
+    {
+     "n": 1,
+     "name": "Lucky Ice Pop",
+     "id": "B2 145",
+     "kind": "Trainer",
+     "entity": "trainer:1060"
+    },
+    {
+     "n": 1,
+     "name": "Field Blower",
+     "id": "B3 147",
+     "kind": "Trainer",
+     "entity": "trainer:1280"
+    }
+   ],
+   "printing_notes": [],
+   "compared": [
+    {
+     "what": "image decks/brews/brew-10-diancie-giratina.png",
      "verdict": "same code",
      "diff": {},
      "energy_differs": false

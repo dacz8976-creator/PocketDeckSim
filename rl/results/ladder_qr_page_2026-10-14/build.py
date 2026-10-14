@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""build.py: in-game deck import codes (QR) for the seven decks of Dustin's ladder sheet, checked, and the page that shows them.
+"""build.py: in-game deck import codes (QR) for the decks of Dustin's ladder sheet (seven on Oct 14, brew 10 added the same day), checked, and the page that shows them.
 
   /home/dacz8976/qrenv/bin/python rl/results/ladder_qr_page_2026-10-14/build.py [--pause-decks DIR] [--html OUT.html]
   deps: qrcode, pillow, numpy, zxing-cpp (a venv outside the repository; lib/encode_qr.py and lib/decode_qr.py name the same ones)
@@ -46,6 +46,9 @@ DECKS = [
     dict(key='draft-d', group='Also tested', label='Draft D', title='Entei and Houndoom', file='decks/brews/drafts_2026-10-01/draft-D-entei-grimhound.txt',
          report='2026-10-12_draft-D-entei-grimhound', pg=['dD'], png=None,
          blurb='Entei ex with Houndour, one Mega Houndoom ex, Victini and Magby.'),
+    dict(key='brew-10', group='Also tested', label='Brew 10', title='Diancie and Giratina', file='decks/brews/brew-10-diancie-giratina.txt',
+         report='2026-10-13_brew-10-diancie-giratina', pg=[], png='decks/brews/brew-10-diancie-giratina.png',
+         blurb='Mega Diancie ex and Giratina ex with Carbink, Giant Cape, Starting Plains and Peculiar Plaza.'),
 ]
 ENERGY_NAME = {1: 'Grass', 2: 'Fire', 3: 'Water', 4: 'Lightning', 5: 'Psychic', 6: 'Fighting', 7: 'Darkness', 8: 'Metal'}
 RANK = {'C': 0, 'U': 1, 'R': 2, 'RR': 3, 'AR': 4, 'SR': 5, 'SAR': 6, 'IM': 7, 'UR': 8, 'SSR': 9}
