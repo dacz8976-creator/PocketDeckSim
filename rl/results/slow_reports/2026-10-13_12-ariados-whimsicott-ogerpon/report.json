@@ -1,0 +1,24 @@
+{
+ "manifest_sha256": "f71d78488baba9811d68ff6191425029ff83ff8e1cfa1a9851f2cb82fc991cbf",
+ "stage": "use",
+ "pilot": "kx3",
+ "reference": "km3",
+ "registration_changed": false,
+ "registration_problems": [],
+ "paired_games": 160,
+ "pooled": {
+  "n": 160,
+  "mean": 0.271875,
+  "sd": 0.4720052066390154,
+  "half": 0.07313796450144819
+ },
+ "per_deck": {
+  "12-ariados-whimsicott-ogerpon": {
+   "n": 160,
+   "mean": 0.271875,
+   "sd": 0.4720052066390154,
+   "half": 0.07313796450144819
+  }
+ },
+ "exactly_zero": false
+}
