@@ -128,6 +128,11 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      - km3 on 030351 t05 (Dragonair Asleep): Draconic Whip before, no attack after (Darkrai's Bad Dreams then knocks it out). On
        010837 t09 and t11 the move is the same; the Blade's score rises with the count (140 damage, not 60).
      - Built on main c045ede; compiles on cd20a97a and 9a0bc5ac. The laptop rebuilds K/F/C from 2aeaafad.
+   - **pg_pos, HP under Starting Plains (Oct 14): done** (tests 051d6994, code 19665ec3; README of `pause_games_decisions_2026-10-02`).
+     - The Stadium is now set before the board, so a damaged Basic keeps its recorded HP (030351 t11 Druddigon 90, not 110).
+     - Oct 12 119 and v2 92 load with 0 problems at recorded HP; km3 on the 119 byte for byte unchanged, plans unchanged on the 92.
+     - Data finding for the converter: 022530 t05/t07 opp Mega Scizor ex + Giant Cape recorded 230 HP; most it can have is 220.
+     - Built on main c045ede; compiles on cd20a97a and 9a0bc5ac.
    - **Now:** idle.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
