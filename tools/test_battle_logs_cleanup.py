@@ -492,6 +492,25 @@ class MovingRecordingQA(unittest.TestCase):
         with open(script) as f:
             self.assertIn('OneDrive', f.read())
 
+    def test_the_move_is_refused_while_the_text_outputs_are_not_all_committed(self):
+        with self.assertRaises(SystemExit) as cm:
+            self.move(confirm=lambda: True, import_check=lambda: ['12 text files of Recording_QA are not at origin/main'])
+        self.assertIn('not all committed', str(cm.exception))
+        self.assertIn('battle_logs_import_packets', str(cm.exception))
+        self.assertTrue(os.path.isdir(self.t.qa))
+        self.assertFalse(os.path.exists(self.base))
+
+    def test_the_move_goes_ahead_when_the_import_is_current_and_says_so(self):
+        new, out = self.move(confirm=lambda: True, import_check=lambda: [])
+        self.assertEqual(new, self.target)
+        self.assertIn('import check: every text output', out)
+
+    def test_the_dry_run_shows_what_is_not_current_without_refusing(self):
+        new, out = self.move(dry=True, import_check=lambda: ['3 text files differ'])
+        self.assertIsNone(new)
+        self.assertIn('IMPORT NOT CURRENT: 3 text files differ', out)
+        self.assertIn('would be refused', out)
+
     def test_a_target_still_inside_onedrive_is_warned_about(self):
         os.makedirs(os.path.join(self.t.root, 'OneDrive'))
         _, out = self.move(target=os.path.join(self.t.root, 'OneDrive', 'QA'), dry=True)
@@ -578,12 +597,32 @@ class PathsAndCommandLine(unittest.TestCase):
         t, repo = self.make()
         write(os.path.join(t.logs, 'MEDIA_LOCATIONS.json'), '{}')
         target = os.path.join(t.root, 'Moved', 'Recording_QA')
-        code, out = self.run_main(['--qa-root', t.qa, '--repo', repo, '--move-to', target, '--yes'])
+        code, out = self.run_main(['--qa-root', t.qa, '--repo', repo, '--move-to', target, '--yes', '--no-import-check'])
         self.assertEqual(code, 0)
         self.assertTrue(os.path.isdir(os.path.join(target, 'BATCH_A')))
         self.assertFalse(os.path.exists(t.qa))
         self.assertTrue(os.path.exists(os.path.join(t.logs, 'MEDIA_LOCATIONS.json')))
         self.assertIn('Codex should now use as its Recording_QA', out)
+
+    def test_move_to_from_the_command_line_refuses_without_a_current_import_and_moves_nothing(self):
+        t, repo = self.make()
+        before = t.files()
+        target = os.path.join(t.root, 'Moved', 'Recording_QA')
+        with self.assertRaises(SystemExit) as cm, contextlib.redirect_stdout(io.StringIO()) as out:
+            bl.main(['--qa-root', t.qa, '--repo', repo, '--no-git', '--move-to', target, '--yes'])
+        self.assertIn('not all committed', str(cm.exception))
+        self.assertEqual(t.files(), before)
+
+    def test_move_to_from_the_command_line_goes_ahead_once_the_import_is_current(self):
+        import battle_logs_import_packets as imp
+        t, repo = self.make()
+        with contextlib.redirect_stdout(io.StringIO()):
+            imp.run(t.logs, repo)
+        target = os.path.join(t.root, 'Moved', 'Recording_QA')
+        code, out = self.run_main(['--qa-root', t.qa, '--repo', repo, '--no-git', '--move-to', target, '--yes'])
+        self.assertEqual(code, 0)
+        self.assertIn('import check: every text output', out)
+        self.assertTrue(os.path.isdir(os.path.join(target, 'BATCH_A')))
 
     def test_a_qa_root_that_is_not_there_is_refused(self):
         with self.assertRaises(SystemExit):

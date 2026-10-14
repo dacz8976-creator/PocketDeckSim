@@ -431,7 +431,7 @@ def apply_deletions(decisions, qa_root, index, only=None, confirm=None, log_dir=
 
 
 # ---------------------------------------------------------------------------------------------------------------- move
-def move_recording_qa(source, target, repo=None, confirm=None, dry=False, out=None):
+def move_recording_qa(source, target, repo=None, confirm=None, dry=False, out=None, import_check=None):
     """move ONLY Recording_QA (the frames and the packets) to `target`; the videos and everything else in Battle Logs stay where they are, in OneDrive.
     A rename on the same drive: instant, nothing copied, nothing half-moved. Returns the new path (None for a dry run)."""
     out = out or sys.stdout
@@ -467,6 +467,18 @@ def move_recording_qa(source, target, repo=None, confirm=None, dry=False, out=No
         p('  WARNING: the target is still inside a OneDrive folder, so this would not take Recording_QA out of OneDrive.')
     for line in stale_references(source, repo):
         p('  ' + line)
+    if import_check is not None:
+        # the text outputs are the permanent part and exist nowhere else: GitHub must hold them, byte for byte, before they leave OneDrive's cloud
+        problems = import_check()
+        if problems:
+            for line in problems:
+                p('  IMPORT NOT CURRENT: ' + line)
+            if not dry:
+                raise ToolError('the text outputs of Recording_QA are not all committed in rl/results/battle_log_packets yet: run tools/battle_logs_import_packets.py, commit it and integrate it into main, '
+                                'then try again (--no-import-check skips this check, at your own risk)')
+            p('  (a real move would be refused until the import is current)')
+        else:
+            p('  import check: every text output of Recording_QA is committed, byte for byte, in rl/results/battle_log_packets')
     if dry:
         p('dry run: nothing moved')
         return None
@@ -535,6 +547,7 @@ def main(argv=None):
     ap.add_argument('--apply', action='store_true', help='delete the frames of the batches marked delete')
     ap.add_argument('--move-to', metavar='PATH', help='move ONLY Recording_QA (the frames and the packets) to PATH, which becomes the new Recording_QA folder; the videos and the rest of Battle Logs stay in OneDrive; refuses if PATH exists')
     ap.add_argument('--yes', action='store_true', help='do not ask for the typed confirmation of --apply / --move-to')
+    ap.add_argument('--no-import-check', action='store_true', help='with --move-to: do not require the text outputs to be committed at --ref (rl/results/battle_log_packets); at your own risk')
     ap.add_argument('--only', action='append', metavar='BATCH', help='with --apply: only this batch (repeatable); it must have something to delete')
     ap.add_argument('--whole-batches-only', action='store_true', help='with --apply: only the batches marked DELETE (every game packet passes), nothing from a PARTIAL batch')
     ap.add_argument('--qa-root', help=r'Recording_QA (default: C:\Users\dacz8\OneDrive\Desktop\Battle Logs\Recording_QA, or $BATTLE_LOGS_QA)')
@@ -557,7 +570,12 @@ def main(argv=None):
         return ask
 
     if a.move_to:
-        move_recording_qa(qa_root, a.move_to, repo=a.repo, dry=a.dry_run, confirm=typed('MOVE', f'About to move ONLY Recording_QA ({qa_root}); the videos stay in OneDrive'))
+        check = None
+        if not a.no_import_check:
+            import battle_logs_import_packets as imp
+            logs = os.path.dirname(qa_root)
+            check = lambda: imp.import_problems(logs, a.repo, a.ref, a.no_git)
+        move_recording_qa(qa_root, a.move_to, repo=a.repo, dry=a.dry_run, confirm=typed('MOVE', f'About to move ONLY Recording_QA ({qa_root}); the videos stay in OneDrive'), import_check=check)
         return 0
     view = RepoView(a.repo, a.ref, a.no_git)
     index = build_index(view)
