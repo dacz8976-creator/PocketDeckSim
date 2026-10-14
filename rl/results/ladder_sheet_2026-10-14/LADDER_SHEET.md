@@ -1,12 +1,17 @@
 # Ladder sheet: ranked season B4b SP (Oct 14 to Oct 28)
 
-**Which deck should you take to the ladder?** The shortlist (Astra's review, which you adopted) is **brew 07, deck 12 and deck 13**.
-Pick one as your main deck and keep one as an alternative. The pick is yours, and there's no need to wait for more reports.
+**Which deck should you take to the ladder?** Pick the deck you want to learn, start playing, and let your real matchup problems direct
+the next tests.
+- A starting shortlist (Astra's) is **brew 07, deck 12 and deck 13**. It doesn't exclude **brew 08**: with its numbers and your 7-3 last
+  season, it's a reasonable main deck if you enjoy it.
+- Keep one as an alternative. The pick is yours, and there's no need to wait for more reports.
 
 **What the numbers say:**
-- **Brew 07** is the only one well above even with both bots: 79% with the strong bot, 63% with the everyday bot.
-- **Deck 13** is within luck of brew 07 with the strong bot (71%), but only about even with the everyday bot (51%).
-- **Deck 12** is above even only when played carefully: 61% with the strong bot, 34% with the everyday bot.
+- **Brew 07** is the only shortlisted deck comfortably above even with both bots: 79% with the strong bot, 63% with the everyday bot.
+  Brew 08, outside the shortlist, is too: 76% and 62.5%.
+- **Deck 13:** 71% with the strong bot, only just within luck of brew 07. With the everyday bot it's about even, 51%.
+- **Deck 12:** above even with the strong bot (61%), below even with the everyday bot (34%). How the deck is piloted matters a lot here.
+  That doesn't tell what careful human play will achieve.
 
 Every number is a bot-against-bot score against eight fixed public tournament lists, which the everyday bot always plays. It is not your
 ladder win rate and not this season's ladder: a first check, not a ranking. Your ladder games are the real test.
@@ -53,8 +58,10 @@ half the games. The player going first can't attach on turn 1.
     - Ariados's Trap Territory and Goo-zooka raise that cost.
     - The first Grass Knot came by your third turn in 45% of games, by your fourth in 65%, and never in about 1 game in 6.
     - Before it, Cottonee, Spinarak or Ariados chip in.
-- **Rules note:** two Ariados in play now both count. Their Active's retreat cost goes up by 2, so Grass Knot does 60 more. This report and
-  the floor page were played that way.
+- **Rules note:** with two Ariados in play, Grass Knot now does 60 more than with none.
+  - The old engine counted two Ariados as one, so it gave only 30 more. For example, against Charizard ex: 100 with none, 130 with one,
+    and 160 with two, where the old engine gave 130.
+  - Monday's change fixed an undercount. This report and the floor page were played the corrected way.
 - **Watch out for:**
   - Blaziken (40% strong bot / 18% everyday bot);
   - Lucario (45% / 24%);
@@ -86,7 +93,7 @@ half the games. The player going first can't attach on turn 1.
 | draft A (Wallace) Mega Sharpedo / Alolan Ninetales † | 66.2% (58.6 to 73.1) | 48.1% | Altaria (40%) |
 | draft D Entei / Grimhound (your one Mega Houndoom ex) | 43.1% (35.7 to 50.9) | 24.4% | Weezing, Suicune, Blaziken |
 
-- **Brew 08:**
+- **Brew 08:** a reasonable main deck if you enjoy it.
   - Against brew 07 it is within luck with both bots: strong 76% v 79%, everyday 62.5% v 63.1%.
   - You went 7-3 with it last season.
   - Your Sept 28 rule for exactly that case: 08 is the better evidence, because it is an unchanged tournament list.
@@ -103,10 +110,11 @@ change touched, so the numbers most likely still hold.
   - The strong bot (kx3) is slow and careful. It plays your deck 20 games against each of the eight lists (10 shuffles, each from both
     sides), 160 in all.
   - The everyday bot (km3) plays the same deals, and plays all eight lists.
-- **The range** is the luck of those 160 games. Two decks less than about 13 points apart can't be told apart:
-  - brew 07 v deck 13 (79 v 71) is within luck;
-  - deck 13 v deck 12 (71 v 61) is within luck;
-  - brew 07 v deck 12 (79 v 61) is not.
+- **The range** is the luck of those 160 games. Whether two decks can be told apart depends on the pair. With the strong bot:
+  - brew 07 v deck 12: +18 points (about +8 to +28), clearly apart;
+  - brew 07 v deck 13: +8 (about −1 to +18), within luck, but only just;
+  - deck 13 v deck 12: +9 (about −1 to +20), within luck, but only just;
+  - brew 07 v brew 08: +3 (about −6 to +13), within luck.
 - **The gap between the two bots** is 13 to 27 points on every deck. It mostly says the strong bot plays better, partly because it knows
   the eight lists.
 - **The toughest lists** come from 20 games each, so each could be about 20 points off. The everyday bot's 240 games a list find the same
@@ -136,7 +144,8 @@ change touched, so the numbers most likely still hold.
 
   For example `2nd | Hoopa T1 | opp 0 pts`, or `Whimsicott never`.
   - Brew 07, deck 12 and deck 13 already have sections.
-  - The page still counts from Sept 15, so last season's games are in its totals.
+  - The page's totals still count from Sept 15. Every game is saved with its time, so this season's games (from Oct 14) can always be
+    counted on their own. Nothing extra to do.
 
 ## New season, same cards (B4b)
 
