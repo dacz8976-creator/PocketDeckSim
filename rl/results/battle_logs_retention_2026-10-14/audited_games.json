@@ -1,0 +1,332 @@
+{
+ "schema": "battle-logs-retention/audited-games-v1",
+ "confirmed": null,
+ "confirmed_help": "A person writes here who accepted the list and when (for example \"laptop, 2026-10-14\") and commits it to main; tools/battle_logs_cleanup.py --apply refuses while this is empty.",
+ "proposed_by": "Sonnet (Opus agents progress), 2026-10-14, from the records on main; see make_audited_games.py for the evidence per tier",
+ "games": {
+  "kw-261004_213625000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261004_213625000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261004_214518000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261004_214518000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261004_214731000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261004_214731000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261004_215749000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261004_215749000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_003547000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_003547000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_031138000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_031138000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_032023000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_032023000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_032857000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_032857000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_033529000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_033529000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_034229000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_034229000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_034953000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_034953000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_123812000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_123812000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_124532000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_124532000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_183108000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_183108000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261006_012140000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261006_012140000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261006_012927000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261006_012927000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261006_020518000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261006_020518000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_012303000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_012303000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_013009000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_013009000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_014541000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_014541000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_015452000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_015452000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_015821000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_015821000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_020258000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_020258000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_020908000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_020908000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_021629000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_021629000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261012_003458000": {
+   "folder": "BATCH_2026-10-11_NEW_PAUSE_GAMES/20261012_003458000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261012_004128000": {
+   "folder": "BATCH_2026-10-11_NEW_PAUSE_GAMES/20261012_004128000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261012_004435000": {
+   "folder": "BATCH_2026-10-11_NEW_PAUSE_GAMES/20261012_004435000_iOS",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  }
+ },
+ "pending": {
+  "kw-261012_010706000": {
+   "folder": "BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_010706000_iOS",
+   "tier": "B",
+   "why": "read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field"
+  },
+  "kw-261012_203719000": {
+   "folder": "BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_203719000_iOS",
+   "tier": "B",
+   "why": "read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field"
+  },
+  "kw-261012_210041000": {
+   "folder": "BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_210041000_iOS",
+   "tier": "B",
+   "why": "read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field"
+  },
+  "kw-261012_210823000": {
+   "folder": "BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_210823000_iOS",
+   "tier": "B",
+   "why": "read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field"
+  },
+  "kw-261012_225319000": {
+   "folder": "BATCH_2026-10-12_ADDITIONAL_TWO/20261012_225319000_iOS",
+   "tier": "B",
+   "why": "read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field"
+  },
+  "kw-261012_230258000": {
+   "folder": "BATCH_2026-10-12_ADDITIONAL_TWO/20261012_230258000_iOS",
+   "tier": "B",
+   "why": "read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field"
+  },
+  "kw-261013_010003000": {
+   "folder": "BATCH_2026-10-13_REMAINING_SIX/20261013_010003000_iOS",
+   "tier": "B",
+   "why": "read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field"
+  },
+  "kw-261013_010837000": {
+   "folder": "BATCH_2026-10-13_REMAINING_SIX/20261013_010837000_iOS",
+   "tier": "B",
+   "why": "read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field"
+  },
+  "kw-261013_014423000": {
+   "folder": "BATCH_2026-10-13_REMAINING_SIX/20261013_014423000_iOS",
+   "tier": "B",
+   "why": "read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field"
+  },
+  "kw-261013_015011000": {
+   "folder": "BATCH_2026-10-13_REMAINING_SIX/20261013_015011000_iOS",
+   "tier": "B",
+   "why": "read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field"
+  },
+  "kw-261013_015659000": {
+   "folder": "BATCH_2026-10-13_REMAINING_SIX/20261013_015659000_iOS",
+   "tier": "B",
+   "why": "read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field"
+  },
+  "kw-261013_020824000": {
+   "folder": "BATCH_2026-10-13_REMAINING_SIX/20261013_020824000_iOS",
+   "tier": "B",
+   "why": "read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field"
+  },
+  "kw-261013_022530000": {
+   "folder": "BATCH_2026-10-13_NEWEST_TWO/20261013_022530000_iOS",
+   "tier": "B",
+   "why": "read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field"
+  },
+  "kw-261013_030351000": {
+   "folder": "BATCH_2026-10-13_NEWEST_TWO/20261013_030351000_iOS",
+   "tier": "B",
+   "why": "read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field"
+  }
+ }
+}
