@@ -4,10 +4,10 @@ Sonnet ("Opus agents progress"), branch `sonnet/positions-v3-2026-10-14`, from m
 
 ## Result
 
-- **Every blocker and major of the review is fixed in the converter, the normaliser or the deck reader, with a test written first for each** (the new tests fail on main's code and pass on the new code). `review_fixes_check.txt`: **67 of 67 checks pass** (`scripts/check_review_fixes.py`, run again at the end of `run_all.sh`).
+- **Every blocker and major of the review is fixed in the converter, the normaliser or the deck reader, with a test written first for each.** Run against main's converter, 35 of the 44 converter tests written first fail (31 failures, 4 errors); the other 9 guard behaviour that must not change (a plain Bench, a turn without Ilima, a promotion after the attack, ...). All pass on the new code. `review_fixes_check.txt`: **67 of 67 checks pass** (`scripts/check_review_fixes.py`, run again at the end of `run_all.sh`).
 - **52 of the 92 positions changed, 40 are identical** (`v3_position_changes.txt`: every changed field of every changed position, old → new). By field: opponent next Energy 18, his plan 17, opponent Bench cards 22, his board 11, opponent hand count 10, opponent discard 4, notes 27.
 - **The converter change alone leaves the 125 Oct 12 positions byte-for-byte as they were** (all 24 games re-converted into a temporary folder with main's converter and with the new one: 0 of 125 differ). The Oct 12 files in the repo were not touched.
-- Tests: converter **143** (97 before, 46 new), normaliser **28** (new file `scripts/test_normalize_ledger.py`; 2 of them read the real ledgers when Recording_QA is on the machine: every recorded correction applies to its ledger, and 022530's deck settles Dratini).
+- Tests: converter **143** (97 before, 46 new, 2 of them added after the check against main's code), normaliser **28** (new file `scripts/test_normalize_ledger.py`; 2 of them read the real ledgers when Recording_QA is on the machine: every recorded correction applies to its ledger, and 022530's deck settles Dratini).
 - The full chain was run again (`scripts/run_all.sh`: convert, km3 on `pg_pos_F_cond` seeds 1-12, forced replays, older engine, state check, deck check, position cards, tables). `DECKGYM_*` unset; no engine or Rust change.
 
 ## The findings and what was done
