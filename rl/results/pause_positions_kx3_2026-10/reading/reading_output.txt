@@ -1,0 +1,115 @@
+PART 1: 119 study positions; runs found: km3 119, F 119, C 119
+
+== MAIN (no switch-2 flag, no Special Condition): 68 positions with his recorded plan
+  km3 : makes his first move in 54.3% of seeds; agree 33, split 8, differ 27; his whole plan in 10+ of 12 seeds: 19
+  F   : makes his first move in 49.8% of seeds; agree 27, split 14, differ 27; his whole plan in 10+ of 12 seeds: 16
+  C   : makes his first move in 42.8% of seeds; agree 24, split 11, differ 33; his whole plan in 10+ of 12 seeds: 14
+  C - F, paired by position (share of seeds with his first move): -7.0 +- 6.2 points; C higher in 8, lower in 16, equal in 44
+  F - km3, paired by position (share of seeds with his first move): -4.5 +- 3.9 points; F higher in 3, lower in 12, equal in 53
+  C - km3, paired by position (share of seeds with his first move): -11.5 +- 7.1 points; C higher in 3, lower in 17, equal in 48
+== RULES SWITCH 2 flagged (engines differ by design): 36 positions with his recorded plan
+  km3 : makes his first move in 62.5% of seeds; agree 22, split 1, differ 13; his whole plan in 10+ of 12 seeds: 13
+  F   : makes his first move in 60.4% of seeds; agree 21, split 2, differ 13; his whole plan in 10+ of 12 seeds: 12
+  C   : makes his first move in 53.7% of seeds; agree 18, split 3, differ 15; his whole plan in 10+ of 12 seeds: 11
+  C - F, paired by position (share of seeds with his first move): -6.7 +- 6.0 points; C higher in 2, lower in 9, equal in 25
+  F - km3, paired by position (share of seeds with his first move): -2.1 +- 2.5 points; F higher in 0, lower in 4, equal in 32
+  C - km3, paired by position (share of seeds with his first move): -8.8 +- 7.3 points; C higher in 0, lower in 10, equal in 26
+== SPECIAL CONDITION not represented (read apart): 14 positions with his recorded plan
+  km3 : makes his first move in 50.0% of seeds; agree 7, split 0, differ 7; his whole plan in 10+ of 12 seeds: 4
+  F   : makes his first move in 42.3% of seeds; agree 4, split 3, differ 7; his whole plan in 10+ of 12 seeds: 2
+  C   : makes his first move in 31.5% of seeds; agree 4, split 1, differ 9; his whole plan in 10+ of 12 seeds: 2
+  C - F, paired by position (share of seeds with his first move): -10.7 +- 14.4 points; C higher in 1, lower in 4, equal in 9
+  F - km3, paired by position (share of seeds with his first move): -7.7 +- 7.2 points; F higher in 0, lower in 4, equal in 10
+  C - km3, paired by position (share of seeds with his first move): -18.5 +- 18.2 points; C higher in 0, lower in 5, equal in 9
+
+NEITHER: no bot makes his first move in 7 or more of 12 seeds: 52 positions (for his next quiz)
+  KW-261004_213625000-t11 (New deck 24): his Attach:1Grass@1 zone; km3 Evolve:Accelgor@1 x12; F Evolve:Accelgor@1 x12; C Evolve:Accelgor@1 x12
+  KW-261004_215749000-t03 (Mega Blaziken tournament list (current l): his Evolve:Combusken@0; km3 Play:Professor's Research x12; F Play:Professor's Research x12; C Play:Professor's Research x12
+  KW-261004_215749000-t05 (Mega Blaziken tournament list (current l): his Play:Professor's Research; km3 Retreat:2 x12; F Retreat:2 x12; C Retreat:2 x12
+  KW-261005_003547000-t01 (New deck 6 (Wailord / Mega Sharpedo ex /): his Play:Poké Ball; km3 Play:Copycat x4; F Play:Copycat x4; C Play:Copycat x4
+  KW-261005_003547000-t05 (New deck 6 (Wailord / Mega Sharpedo ex /): his Play:Lucky Ice Pop; km3 Play:Copycat x6; F Play:Copycat x6; C Play:Copycat x8
+  KW-261005_003547000-t07 (New deck 6 (Wailord / Mega Sharpedo ex /): his Evolve:Wailord@2; km3 Play:Professor's Research x12; F Play:Professor's Research x12; C Attach:1Water@1 zone x7
+  KW-261005_003547000-t09 (New deck 6 (Wailord / Mega Sharpedo ex /): his Attach:1Water@0 zone; km3 Play:Irida x12; F Play:Irida x11; C Play:Irida x12
+  KW-261005_003547000-t11 (New deck 6 (Wailord / Mega Sharpedo ex /): his Place:Carvanha; km3 Attach:1Water@0 zone x12; F Attach:1Water@1 zone x9; C Attach:1Water@1 zone x12
+  KW-261005_003547000-t13 (New deck 6 (Wailord / Mega Sharpedo ex /): his Evolve:Mega Sharpedo ex@1; km3 Retreat:2 x12; F Attach:1Water@1 zone x12; C Attach:1Water@1 zone x12
+  KW-261005_031138000-t02 (Hatterene / Aromatisse / Togekiss) [switch 2]: his Place:Hatenna; km3 Play:Professor's Research x9; F Play:Professor's Research x8; C Play:Professor's Research x9
+  KW-261005_031138000-t06 (Hatterene / Aromatisse / Togekiss) [switch 2] [condition]: his Place:Togepi; km3 Evolve:Hatterene@1 x12; F Evolve:Hatterene@1 x9; C Attach:1Psychic@0 zone x11
+  KW-261005_032023000-t04 (Aegislash / Tinkaton ex / Team Rocket's ): his Place:Honedge; km3 Play:Lucky Ice Pop x12; F Play:Lucky Ice Pop x5; C Attach:1Metal@1 zone x8
+  KW-261005_032023000-t08 (Aegislash / Tinkaton ex / Team Rocket's ): his Attach:1Metal@2 zone; km3 Retreat:1 x12; F Retreat:1 x9; C Play:Metal Core Barrier x12
+  KW-261005_032023000-t10 (Aegislash / Tinkaton ex / Team Rocket's ): his Retreat:1; km3 Attach:1Metal@0 zone x12; F Attach:1Metal@0 zone x12; C Attach:1Metal@0 zone x12
+  KW-261005_033529000-t09 (New deck 6 (filmed label)): his Place:Honedge; km3 Play:Lucky Ice Pop x12; F Play:Lucky Ice Pop x12; C Play:Lucky Ice Pop x12
+  KW-261005_034953000-t02 (Aegislash / Melmetal ex / Magnezone): his Place:Meltan; km3 Place:Honedge x12; F Place:Honedge x12; C Place:Honedge x12
+  KW-261005_034953000-t04 (Aegislash / Melmetal ex / Magnezone): his Evolve:Melmetal ex@2; km3 Play:Steel Apron x12; F Play:Steel Apron x12; C Play:Steel Apron x11
+  KW-261005_034953000-t06 (Aegislash / Melmetal ex / Magnezone): his Evolve:Magneton@0; km3 Retreat:2 x12; F Retreat:2 x9; C Retreat:2 x12
+  KW-261005_034953000-t08 (Aegislash / Melmetal ex / Magnezone): his Attach:1Metal@0 zone; km3 Play:Steel Apron x12; F Play:Steel Apron x7; C Play:Steel Apron x12
+  KW-261005_034953000-t10 (Aegislash / Melmetal ex / Magnezone): his Evolve:Doublade@1; km3 Retreat:2 x12; F Retreat:2 x12; C Retreat:2 x12
+  KW-261005_123812000-t03 (New deck 6 / two-Darkrai QR revision): his Attach:1Darkness@0 zone; km3 Place:Darkrai ex x12; F Place:Darkrai ex x12; C Place:Darkrai ex x12
+  KW-261005_123812000-t05 (New deck 6 / two-Darkrai QR revision): his Play:Poké Ball; km3 Place:Darkrai ex x12; F Place:Darkrai ex x12; C Place:Darkrai ex x12
+  KW-261005_123812000-t07 (New deck 6 / two-Darkrai QR revision): his Play:Professor's Research; km3 Place:Darkrai ex x8; F Place:Darkrai ex x8; C Place:Darkrai ex x8
+  KW-261005_183108000-t01 (Scolipede / Mega Sableye ex) [switch 2]: his EndTurn; km3 Play:Copycat x11; F Play:Copycat x11; C Play:Copycat x12
+  KW-261005_183108000-t09 (Scolipede / Mega Sableye ex) [switch 2]: his Play:Lucky Ice Pop; km3 Place:Mega Sableye ex x12; F Place:Mega Sableye ex x12; C Place:Mega Sableye ex x12
+  KW-261006_012927000-t04 (New deck 6) [switch 2]: his Evolve:Silvally@2; km3 Evolve:Persian@0 x12; F Evolve:Persian@0 x12; C Evolve:Persian@0 x12
+  KW-261006_012927000-t10 (New deck 6) [switch 2]: his UseStadium; km3 Place:Type: Null x12; F Place:Type: Null x12; C Place:Type: Null x12
+  KW-261006_020518000-t03 (Conkeldurr / Sandslash / Hitmonchan ex) [switch 2]: his Play:Lucky Ice Pop; km3 Evolve:Sandslash@0 x12; F Evolve:Sandslash@0 x11; C Evolve:Sandslash@0 x12
+  KW-261006_020518000-t13 (Conkeldurr / Sandslash / Hitmonchan ex) [switch 2]: his Attach:1Fighting@0 zone; km3 Attack:Bedrock Breaker x12; F Attack:Bedrock Breaker x12; C Attack:Bedrock Breaker x12
+  KW-261010_012303000-t07 (Conkeldurr / Garganacl) [switch 2]: his Play:Wally; km3 Attach:1Fighting@0 zone x12; F Attach:1Fighting@1 zone x9; C Attach:1Fighting@1 zone x12
+  KW-261010_012303000-t11 (Conkeldurr / Garganacl) [switch 2]: his Evolve:Garganacl@1; km3 Evolve:Conkeldurr@0 x12; F Evolve:Conkeldurr@0 x12; C Evolve:Conkeldurr@0 x12
+  KW-261010_013009000-t03 (Conkeldurr / Garganacl, filmed Gurdurr v) [switch 2]: his Evolve:Gurdurr@0; km3 Play:Rare Candy x12; F Play:Rare Candy x7; C Play:Rare Candy x11
+  KW-261010_013009000-t05 (Conkeldurr / Garganacl, filmed Gurdurr v) [switch 2]: his Play:Professor's Research; km3 Play:Wally x10; F Play:Wally x8; C Attach:1Fighting@2 zone x7
+  KW-261010_013009000-t07 (Conkeldurr / Garganacl, filmed Gurdurr v) [switch 2]: his Retreat:1; km3 Attach:1Fighting@0 zone x12; F Attach:1Fighting@1 zone x12; C Attach:1Fighting@1 zone x12
+  KW-261010_013009000-t11 (Conkeldurr / Garganacl, filmed Gurdurr v) [switch 2]: his Attach:1Fighting@1 zone; km3 Play:Arena of Antiquity x12; F Play:Arena of Antiquity x12; C Play:Arena of Antiquity x12
+  KW-261010_015452000-t01 (Kingdra ex / Team Rocket's Weezing ex (f): his Play:Professor's Research; km3 Play:Small Balloon x7; F Play:Small Balloon x6; C Play:Small Balloon x7
+  KW-261010_015821000-t01 (Kingdra ex / Team Rocket's Weezing ex): his Play:Professor's Research; km3 Play:Small Balloon x6; F Play:Small Balloon x6; C Play:Professor's Research x6
+  KW-261010_015821000-t05 (Kingdra ex / Team Rocket's Weezing ex): his Play:Poké Ball; km3 Play:Rare Candy x12; F Play:Rare Candy x12; C Play:Rare Candy x12
+  KW-261010_020258000-t02 (Kingdra ex / Team Rocket's Weezing ex): his Play:Small Balloon; km3 Play:Copycat x5; F Play:Hiking Trail x4; C Play:Hiking Trail x6
+  KW-261010_020258000-t06 (Kingdra ex / Team Rocket's Weezing ex) [condition]: his Play:Professor's Research; km3 Place:Team Rocket's Koffing x12; F Place:Team Rocket's Koffing x12; C Place:Team Rocket's Koffing x12
+  KW-261010_020908000-t04 (Kingdra ex / Team Rocket's Weezing ex): his Evolve:Seadra@0; km3 Evolve:Team Rocket's Weezing ex@2 x12; F Evolve:Team Rocket's Weezing ex@2 x6; C Evolve:Team Rocket's Weezing ex@2 x7
+  KW-261010_021629000-t04 (Kingdra ex / Team Rocket’s Weezing ex): his Play:Poké Ball; km3 Play:Rare Candy x12; F Play:Rare Candy x12; C Play:Rare Candy x11
+  KW-261010_021629000-t12 (Kingdra ex / Team Rocket’s Weezing ex): his Evolve:Kingdra ex@2; km3 Retreat:2 x12; F Retreat:2 x12; C Retreat:2 x7
+  KW-261010_021629000-t22 (Kingdra ex / Team Rocket’s Weezing ex) [condition]: his Retreat:2; km3 Attack:Stormy Prison x12; F Attack:Stormy Prison x11; C Retreat:1 x7
+  KW-261010_021629000-t24 (Kingdra ex / Team Rocket’s Weezing ex) [condition]: his Attach:1Water@2 zone; km3 Attack:Stormy Prison x12; F Attack:Stormy Prison x12; C Attack:Stormy Prison x12
+  KW-261012_003458000-t03 (Kingdra ex / Team Rocket’s Weezing ex): his Evolve:Seadra@0; km3 Evolve:Seadra@1 x12; F Evolve:Seadra@1 x11; C Evolve:Seadra@1 x9
+  KW-261012_003458000-t05 (Kingdra ex / Team Rocket’s Weezing ex): his Play:Poké Ball; km3 Retreat:1 x12; F Retreat:1 x10; C Play:Copycat x5
+  KW-261012_003458000-t07 (Kingdra ex / Team Rocket’s Weezing ex): his Play:Hiking Trail; km3 Play:Sabrina x12; F Play:Sabrina x8; C Attack:Stormy Prison x9
+  KW-261012_003458000-t09 (Kingdra ex / Team Rocket’s Weezing ex) [condition]: his Attach:1Water@1 zone; km3 Play:Sabrina x12; F Play:Sabrina x8; C Attack:Stormy Prison x11
+  KW-261012_004128000-t02 (Kingdra ex / Team Rocket's Weezing ex): his Play:Soothing Shore; km3 Play:Professor's Research x6; F Play:Professor's Research x5; C Play:Professor's Research x5
+  KW-261012_004435000-t06 (Kingdra ex / Team Rocket's Weezing ex) [condition]: his Play:Poké Ball; km3 Play:Rare Candy x12; F Play:Rare Candy x12; C Play:Rare Candy x12
+  KW-261012_004435000-t08 (Kingdra ex / Team Rocket's Weezing ex) [condition]: his Place:Horsea; km3 Evolve:Kingdra ex@1 x12; F Evolve:Kingdra ex@1 x12; C Evolve:Kingdra ex@1 x12
+
+BY DECK (main set): mean share of seeds with his first move, km3 / F / C
+  Kingdra ex / Team Rocket's Weezing ex                        n 12: 63% / 56% / 57%
+  Kingdra ex / Team Rocket’s Weezing ex                        n 10: 46% / 44% / 29%
+  New deck 6 (Wailord / Mega Sharpedo ex / Suicune ex)         n  7: 23% / 21% / 19%
+  Aegislash / Melmetal ex / Magnezone                          n  7: 29% / 20% / 29%
+  New deck 24                                                  n  6: 79% / 76% / 58%
+  Aegislash / Tinkaton ex / Team Rocket's Tinkaton             n  6: 50% / 43% / 22%
+  New deck 6 (filmed label)                                    n  5: 80% / 70% / 62%
+  New deck 6 / two-Darkrai QR revision                         n  4: 33% / 33% / 31%
+  Mega Blaziken tournament list (current log snapshot conflict n  3: 22% / 22% / 25%
+  Aegislash / Team Rocket's Tinkaton (filmed New deck6)        n  3: 100% / 97% / 67%
+  Nidoking / Darkrai ex / Nihilego (one Darkrai, Cyrus revisio n  3: 100% / 92% / 94%
+  Kingdra ex / Team Rocket's Weezing ex (filmed New deck13)    n  2: 71% / 71% / 62%
+
+WHAT DIFFERS (main set, each bot's modal plan v his, first category):
+  km3: same plan 22; Supporter/Item choice or order 21; evolution timing/target 8; Energy attachment timing 4; bench development 4; same actions, different order 3; retreat/promotion 3; Energy attachment target 2; attack choice 1
+  F: same plan 23; Supporter/Item choice or order 18; evolution timing/target 8; Energy attachment timing 5; bench development 4; same actions, different order 3; retreat/promotion 3; Energy attachment target 2; attack vs another action 1; attack choice 1
+  C: Supporter/Item choice or order 20; same plan 19; evolution timing/target 10; Energy attachment timing 4; retreat/promotion 4; bench development 4; same actions, different order 3; Energy attachment target 2; attack vs another action 1; attack choice 1
+
+WHERE THE CANDIDATE AND THE FROZEN kx3 PART (main set, |C - F| >= 4 of 12 seeds on his first move):
+  KW-261004_213625000-t07: his Evolve:Accelgor@1; km3 12/12, F 11/12, C 0/12; C modal EndTurn; F modal Evolve:Accelgor@1 -> Attach:1Grass@1 zone -> Attack:Sunny Wind
+  KW-261005_032023000-t12: his Play:Professor's Research; km3 12/12, F 11/12, C 0/12; C modal Attach:1Metal@2 zone -> Play:Professor's Research; F modal Play:Professor's Research
+  KW-261005_032857000-t04: his Play:Rare Candy; km3 12/12, F 12/12, C 0/12; C modal Evolve:Doublade@0 -> Attach:1Metal@0 zone -> Play:Rare Candy -> Evolve:Team Rocket's Tinkaton@1; F modal Play:Rare Candy -> Evolve:Aegislash@0 -> Play:Metal Core Barrier -> Tool:Metal Core Barrier@0
+  KW-261005_033529000-t05: his Evolve:Doublade@1; km3 12/12, F 6/12, C 1/12; C modal Attach:1Metal@0 zone -> Play:Rare Candy -> Evolve:Aegislash@1 -> Play:Professor's Research; F modal Evolve:Doublade@1 -> Play:Professor's Research
+  KW-261005_034953000-t14: his Place:Honedge; km3 12/12, F 5/12, C 12/12; C modal Place:Honedge -> Attach:1Metal@1 zone -> Attack:Metal Arms; F modal EndTurn
+  KW-261010_021629000-t14: his Place:Team Rocket's Koffing; km3 12/12, F 10/12, C 3/12; C modal Retreat:1 -> Place:Team Rocket's Koffing -> Attach:1Water@3 zone; F modal Place:Team Rocket's Koffing -> Attack:Stormy Prison
+  KW-261010_021629000-t16: his Evolve:Team Rocket's Weezing ex@3; km3 12/12, F 12/12, C 0/12; C modal Retreat:1 -> Evolve:Team Rocket's Weezing ex@3 -> Ability -> Attach:1Water@3 zone; F modal Evolve:Team Rocket's Weezing ex@3 -> Ability -> Attack:Stormy Prison
+
+PART 2: Sonnet's 8 Oct 13 positions (new harness: Special Conditions and the knock-out count); first move his in n of 12 seeds
+  KW-261013_010837000-t03: his Evolve:Glimmora@1 -> Attach:1Darkness@0 zone -> Retreat:1 -> Play:Copycat; km3 12/12 (modal Evolve:Glimmora@1 -> Attach:1Darkness@0 zone -> Play:Copycat); F 8/12 (modal Evolve:Glimmora@1 -> Attach:1Darkness@1 zone); C 1/12 (modal Attach:1Darkness@1 zone -> Evolve:Glimmora@1 -> Play:Copycat) [opponent's Mega Kangaskhan ex: every bot's forecast prices its attack at 80, not 120]
+  KW-261013_010837000-t09: his Play:Lucky Ice Pop -> Play:Lucky Ice Pop -> Attach:1Darkness@1 zone -> Attack:Hang Down; km3 0/12 (modal Retreat:1 -> Attach:1Darkness@0 zone -> Attack:Overlord's Blade); F 0/12 (modal Retreat:1 -> Attach:1Darkness@0 zone -> Attack:Overlord's Blade); C 0/12 (modal EndTurn) [opponent's Mega Kangaskhan ex: every bot's forecast prices its attack at 80, not 120]
+  KW-261013_010837000-t11: his Play:Heavy Helmet -> Tool:Heavy Helmet@1 -> Attach:1Darkness@2 zone -> Attack:Hang Down; km3 0/12 (modal Retreat:1 -> Play:Heavy Helmet -> Tool:Heavy Helmet@0); F 0/12 (modal Retreat:1 -> Play:Heavy Helmet -> Tool:Heavy Helmet@0); C 0/12 (modal EndTurn) [opponent's Mega Kangaskhan ex: every bot's forecast prices its attack at 80, not 120]
+  KW-261012_203719000-t17: his Play:Lucky Ice Pop -> Play:Lucky Ice Pop -> Play:Lucky Ice Pop -> Attach:1Darkness@2 zone; km3 0/12 (modal Attach:1Darkness@0 zone -> Play:Lucky Ice Pop -> Play:Lucky Ice Pop); F 0/12 (modal Attach:1Darkness@0 zone -> Retreat:1 -> Attack:Sludge Bomb); C 0/12 (modal Attach:1Darkness@0 zone -> Play:Lucky Ice Pop -> Play:Lucky Ice Pop)
+  KW-261013_020824000-t11: his Play:Lucky Ice Pop -> Play:Ilima -> Place:Regigigas -> Retreat:3; km3 12/12 (modal Play:Lucky Ice Pop -> Play:Lucky Ice Pop -> Play:Lucky Ice Pop); F 12/12 (modal Play:Lucky Ice Pop -> Play:Lucky Ice Pop -> Play:Lucky Ice Pop); C 12/12 (modal Play:Lucky Ice Pop -> Play:Lucky Ice Pop -> Play:Lucky Ice Pop)
+  KW-261013_014423000-t07: his Evolve:Glimmora@2 -> Attach:1Darkness@1 zone; km3 12/12 (modal Evolve:Glimmora@2 -> Attach:1Darkness@0 zone); F 6/12 (modal Evolve:Glimmora@2 -> Attach:1Darkness@0 zone); C 12/12 (modal Evolve:Glimmora@2 -> Attach:1Darkness@0 zone)
+  KW-261013_015659000-t05: his Evolve:Glimmora@2 -> Place:Pawniard -> Attach:1Darkness@3 zone; km3 0/12 (modal Place:Pawniard -> Evolve:Glimmora@2 -> Attach:1Darkness@0 zone); F 0/12 (modal Place:Pawniard -> Evolve:Glimmora@2 -> Attach:1Darkness@0 zone); C 0/12 (modal Attach:1Darkness@1 zone -> Place:Pawniard -> Evolve:Glimmora@2)
+  KW-261012_210041000-t06: his Attach:1Darkness@3 zone; km3 0/12 (modal Play:Ilima -> ReturnPokemonToHand -> Promote:0@3); F 0/12 (modal Play:Ilima -> ReturnPokemonToHand -> Promote:0@3); C 0/12 (modal Play:Ilima -> ReturnPokemonToHand -> Promote:0@3)

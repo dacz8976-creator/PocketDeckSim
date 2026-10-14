@@ -1,0 +1,40 @@
+8 positions; 8 with a recorded plan; {'differ': 6, 'agree': 2} ; same plan in >=10/12: 0
+   4  Supporter/Item choice or order
+   3  Energy attachment timing
+   1  Energy attachment target
+by kind (a position can carry several):
+   5  Energy attachment timing
+   5  Supporter/Item choice or order
+   4  retreat/promotion
+   3  attack vs another action
+   3  bench development
+   2  Energy attachment target
+   1  Tool placement
+   1  attack choice
+first point where the modal plan parts from his (his step kind -> km3 step kind):
+   2  his Evolve    -> kx3m64 Attach
+   2  his Play      -> kx3m64 EndTurn
+   1  his Play      -> kx3m64 Attach
+   1  his Play      -> kx3m64 Play
+   1  his Attach    -> kx3m64 Attach
+   1  his Attach    -> kx3m64 Play
+positions where the plans agree entirely (modal): 0
+attack, where both plans run to the end of the turn:
+   2  unknown (a plan is cut before its end)
+   2  he attacks, km3 does not
+   2  neither attacks
+   1  different attack
+   1  km3 attacks, he does not
+first action, his kind -> km3 modal first kind (positions where the first actions differ in more than 2/12 seeds of agreement):
+   2  his Evolve    -> kx3m64 Attach
+   2  his Play      -> kx3m64 EndTurn
+   1  his Play      -> kx3m64 Attach
+   1  his Attach    -> kx3m64 Play
+KW-261013_010837000-t03      differ  first  1/12 plan  0/12 | Energy attachment timing | his [-] ↔ kx3m64 [Attach:1Darkness@1 zone]; his [Attach:1Darkness@0 zone, Retreat:1] ↔ kx3m64 [-]
+KW-261013_010837000-t09      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Lucky Ice Pop, Play:Lucky Ice Pop, Attach:1Darkness@1 zone, Attack:Hang Down] ↔ kx3m64 [EndTurn]
+KW-261013_010837000-t11      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Play:Heavy Helmet, Tool:Heavy Helmet@1, Attach:1Darkness@2 zone, Attack:Hang Down] ↔ kx3m64 [EndTurn]
+KW-261012_203719000-t17      differ  first  0/12 plan  0/12 | Energy attachment timing | his [-] ↔ kx3m64 [Attach:1Darkness@0 zone]; his [Attach:1Darkness@2 zone, Attack:Venomous Hit] ↔ kx3m64 [Play:Lucky Ice Pop, Retreat:3, Attack:Overlord's Blade]
+KW-261013_020824000-t11      agree   first 12/12 plan  0/12 | Supporter/Item choice or order | his [Play:Ilima, Place:Regigigas, Retreat:3] ↔ kx3m64 [Play:Lucky Ice Pop, Play:Lucky Ice Pop, Play:Lucky Ice Pop]
+KW-261013_014423000-t07      agree   first 12/12 plan  0/12 | Energy attachment target | his [Attach:1Darkness@1 zone] ↔ kx3m64 [Attach:1Darkness@0 zone]
+KW-261013_015659000-t05      differ  first  0/12 plan  0/12 | Energy attachment timing | his [-] ↔ kx3m64 [Attach:1Darkness@1 zone, Place:Pawniard]; his [Place:Pawniard, Attach:1Darkness@3 zone] ↔ kx3m64 [-]
+KW-261012_210041000-t06      differ  first  0/12 plan  0/12 | Supporter/Item choice or order | his [Attach:1Darkness@3 zone] ↔ kx3m64 [Play:Ilima, ReturnPokemonToHand, Promote:0@3, Place:Regigigas, Attach:1Darkness@0 zone, Attack:Slash]

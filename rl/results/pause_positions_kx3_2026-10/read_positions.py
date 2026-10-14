@@ -6,7 +6,7 @@ PART 1, the 119 study positions (old harness):
 - Per bot, Sonnet's kw_report.py (the Oct 12 read's comparison rules: plans cut after the first draw card or Sabrina, bare Ability labels
   normalised, EndTurn ignored) gives each position's first-move count out of 12 and its modal plan.
 - A position agrees when the bot makes his first move in 10 or more of 12 seeds.
-- The main table leaves out the 35 rules-switch-2 positions and the 14 Special-Condition positions; each of those gets its own table.
+- The main table leaves out the rules-switch-2 positions (36 flagged in position_list.tsv; SPEC.md said 35) and the 14 Special-Condition positions; each of those gets its own table.
 - "Neither" positions: no bot makes his first move in 7 or more of 12 seeds. They are listed for his next quiz.
 - Candidate v frozen is paired by position, on the share of seeds that make his first move.
 
