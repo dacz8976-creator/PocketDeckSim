@@ -17,16 +17,7 @@
    "reason": "opponent hand count missing"
   }
  ],
- "plans_with_unresolved_targets": [
-  {
-   "game": "261013_020824000",
-   "turn": 11,
-   "reason": "unresolved plan targets (plan kept)",
-   "detail": [
-    "attach target 'Regigigas'"
-   ]
-  }
- ],
+ "plans_with_unresolved_targets": [],
  "decks": {
   "261012_010706000": {
    "source": "qr",
@@ -88,11 +79,9 @@
     "Fighting",
     "Metal"
    ],
-   "notes": [
-    "Dratini: the ledger does not tell which of A1 183, A3b 051, B2b 051, B4 116 it is; A3b 051 used"
-   ],
+   "notes": [],
    "version_unverified": false,
-   "status": "filmed_QR_verified_live_log_snapshot_missing_initially"
+   "status": "verified_filmed_QR_and_live_log_snapshot_agree"
   },
   "261013_030351000": {
    "source": "qr",

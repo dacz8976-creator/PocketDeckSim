@@ -83,6 +83,18 @@ for p in POS:
         if bad is None:
             break
         k, w = bad['step'], bad['forced']
+        if w.startswith('AttachTypedFromDiscard:'):
+            # v3: Dragon's Blessing's choice of an Energy type. The harness (rl/strength/src/main.rs label()) names the choices 'AttachTypedFromDiscard' without the type, so the one he made cannot be
+            # told from the others when the discard holds several types (it would need the label 'AttachTypedFromDiscard:<Type>@<slot>'); with one type the engine takes it by itself
+            if 'AttachTypedFromDiscard' in bad.get('legal', []):
+                note = f"his step {k} ({w}) is a choice among Energy types the harness labels without the type: line cut there"
+                force = force[:k]
+                if not force:
+                    break
+                continue
+            note = (note + '; ' if note else '') + f'his step {k} ({w}) was taken by the engine itself (one Energy type in the discard)'
+            force.pop(k)
+            continue
         alts = [l for l in bad.get('legal', []) if l.startswith(w + '@')] if w.startswith(('Place:', 'Evolve:', 'Tool:')) and '@' not in w else []
         if w == 'Ability':
             # the ledger names no Pokemon for an Ability; take it when exactly one Ability is legal (Dragonair's Dragon's Blessing in 030351), else cut the line there

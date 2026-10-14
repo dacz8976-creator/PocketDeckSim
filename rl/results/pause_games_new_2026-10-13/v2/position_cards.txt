@@ -18,12 +18,12 @@ ME   active: Glimmet B3a 044 60hp
      bench : Pawniard B3a 041 50hp; Regigigas B3 134 150hp; Alolan Grimer A3 110 70hp
      hand  : Lucky Ice Pop, Kingambit, Professor's Research, Glimmora | discard: Professor's Research, Poké Ball | zone now/next: Darkness Darkness
 OPP  active: Ralts A1 130 60hp E:P(1)
-     bench : Mega Diancie ex B3b 032 170hp | hand 5 | discard: Professor's Research, Poké Ball | stadium: None
+     bench : Mega Diancie ex B3b 032 170hp | hand 6 | discard: Professor's Research, Poké Ball | stadium: None
 HIS TURN (review): 1. Glimmora: Evolve to 90 HP; 2. Professor's Research: Draw Alolan Muk then Glimmora; 3. Alolan Muk: Evolve to 110 HP; Power of Alchemy suppresses Basic abilities on both boards; 4. Energy attachment: Attach 1 Darkness; 5. Venomous Hit: 50 damage including Darkness weakness; poison. Ralts 60 -> 10 then poison KO.
 HIS PLAN: ['Evolve:Glimmora@0', "Play:Professor's Research", 'Evolve:Alolan Muk@3', 'Attach:1Darkness@0 zone', 'Attack:Venomous Hit'] (ended)
 KM3 modal (12/12): ['Evolve:Glimmora@0', "Play:Professor's Research"] | agreement first 12 plan 12 | same plan
-KM3 first-step scores (seed 1): Evolve:Glimmora@0 11411; Attach:1Darkness@0 zone 11411; Play:Professor's Research 2490; Attach:1Darkness@2 zone 1950; Attach:1Darkness@1 zone 1950; Attach:1Darkness@3 zone 1870
-NOTES: The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.
+KM3 first-step scores (seed 1): Evolve:Glimmora@0 11409; Attach:1Darkness@0 zone 11409; Play:Professor's Research 2488; Attach:1Darkness@2 zone 1948; Attach:1Darkness@1 zone 1948; Attach:1Darkness@3 zone 1868
+NOTES: ledger corrected from the frames: the opponent's hand at his turns 3 / 5 / 7 is 6 / 7 / 8 (the frames), not 5 / 6 / 7. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters playe
 ====================================================================================================
 KW-261012_010706000-t05  game turn 5 (his turn 3)  points 1-0  switch2: no  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -31,12 +31,12 @@ ME   active: Glimmora B3a 045 90hp E:D(1) under:Glimmet
      bench : Pawniard B3a 041 50hp; Regigigas B3 134 150hp; Alolan Muk B2 097 110hp under:Alolan Grimer
      hand  : Lucky Ice Pop, Kingambit, Glimmora, Rare Candy | discard: Professor's Research, Poké Ball, Professor's Research | zone now/next: Darkness Darkness
 OPP  active: Mega Diancie ex B3b 032 170hp E:P(1)
-     bench : - | hand 6 | discard: Professor's Research, Poké Ball, Ralts | stadium: None
+     bench : - | hand 7 | discard: Professor's Research, Poké Ball, Ralts | stadium: None
 HIS TURN (review): 1. Rare Candy: Select Kingambit and evolve directly; 50 HP Pawniard becomes 140 HP Kingambit; 2. Energy attachment: Attach 1 Darkness, first; 3. Venomous Hit: 30 damage and poison: 170 -> 140 -> 130.
 HIS PLAN: ['Play:Rare Candy', 'Evolve:Kingambit@1', 'Attach:1Darkness@2 zone', 'Attack:Venomous Hit'] (ended)
 KM3 modal (12/12): ['Play:Rare Candy', 'Evolve:Kingambit@1', 'Attach:1Darkness@2 zone', 'Attack:Venomous Hit'] | agreement first 12 plan 12 | same plan
-KM3 first-step scores (seed 1): Play:Rare Candy 11197; Attach:1Darkness@2 zone 11159; Attach:1Darkness@1 zone 11144; Attach:1Darkness@3 zone 11119; Attack:Venomous Hit 11009; Attach:1Darkness@0 zone 11009
-NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that lef
+KM3 first-step scores (seed 1): Play:Rare Candy 11195; Attach:1Darkness@2 zone 11157; Attach:1Darkness@1 zone 11142; Attach:1Darkness@3 zone 11117; Attack:Venomous Hit 11007; Attach:1Darkness@0 zone 11007
+NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent's hand at his turns 3 / 5 / 7 is 6 / 7 / 8 (the frames), not 5 / 6 / 7. The opponent's list is 
 ====================================================================================================
 KW-261012_010706000-t07  game turn 7 (his turn 4)  points 1-0  switch2: no  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -44,12 +44,12 @@ ME   active: Glimmora B3a 045 90hp E:D(1) under:Glimmet
      bench : Kingambit B3a 043 140hp under:Pawniard; Regigigas B3 134 150hp E:D(1); Alolan Muk B2 097 110hp under:Alolan Grimer
      hand  : Lucky Ice Pop, Glimmora, Ilima | discard: Professor's Research, Poké Ball, Professor's Research, Rare Candy | zone now/next: Darkness Darkness
 OPP  active: Mega Diancie ex B3b 032 120hp E:PP(2) COND:Poisoned
-     bench : Indeedee ex B1 121 130hp | hand 7 | discard: Professor's Research, Poké Ball, Ralts, Poké Ball | stadium: None
+     bench : Indeedee ex B1 121 130hp | hand 8 | discard: Professor's Research, Poké Ball, Ralts, Poké Ball | stadium: None
 HIS TURN (review): 1. Energy attachment: Second Darkness; 2. Venomous Hit: 30 damage and poison: 120 -> 90 -> 80.
 HIS PLAN: ['Attach:1Darkness@2 zone', 'Attack:Venomous Hit'] (ended)
 KM3 modal (12/12): ['Attach:1Darkness@2 zone', 'Attack:Venomous Hit'] | agreement first 12 plan 12 | same plan
-KM3 first-step scores (seed 1): Attach:1Darkness@2 zone 11135; Attach:1Darkness@1 zone 11125; Attach:1Darkness@3 zone 11095; Attack:Venomous Hit 10985; Attach:1Darkness@0 zone 10985; EndTurn 10785
-NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; opponent hand range [7, 8]: the lower end is used. The opponent's list is unkno
+KM3 first-step scores (seed 1): Attach:1Darkness@2 zone 11133; Attach:1Darkness@1 zone 11123; Attach:1Darkness@3 zone 11093; Attack:Venomous Hit 10983; Attach:1Darkness@0 zone 10983; EndTurn 10783
+NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; ledger corrected from the frames: the opponent's hand at his turns 3 / 5 / 7 is
 ====================================================================================================
 KW-261012_010706000-t09  game turn 9 (his turn 5)  points 1-0  switch2: no  usable: True
 KNOCKED OUT so far: his 1 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -59,7 +59,7 @@ ME   active: Regigigas B3 134 150hp E:DD(2)
 OPP  active: Mega Diancie ex B3b 032 130hp E:PPP(3) T:Giant Cape COND:Poisoned
      bench : Indeedee ex B1 121 130hp | hand 7 | discard: Professor's Research, Poké Ball, Ralts, Poké Ball, Lucky Ice Pop | stadium: None
 HIS TURN (review): 1. Mesagoza: Place Stadium; 2. Mesagoza: Activate Stadium: tails; no search/card found; 3. Energy attachment: Third Darkness; 4. Giga Turbo: 100 damage: 130 -> 30; nested attach 1 Colorless from Energy Zone to Alolan Muk. Poison 30 -> 20.
-HIS PLAN: ['Play:Mesagoza', 'UseStadium', 'Attach:1Darkness@0 zone', 'Attack:Giga Turbo'] (ended)
+HIS PLAN: ['Play:Mesagoza', 'UseStadium', 'Attach:1Darkness@0 zone', 'Attack:Giga Turbo', 'Attach:1Colorless@2 fx'] (ended)
 KM3 modal (12/12): ['Attach:1Darkness@0 zone', 'Attack:Giga Turbo', 'Attach:1Colorless@2 fx'] | agreement first 0 plan 0 | Supporter/Item choice or order
 KM3 first-step scores (seed 1): Attach:1Darkness@0 zone 11377; Play:Mesagoza 11222; Attach:1Darkness@1 zone 10457; Attach:1Darkness@2 zone 10427; EndTurn 10317
       his first action Play:Mesagoza is rank 2 of 5, 154 below the top
@@ -99,11 +99,10 @@ ME   active: Alolan Muk B2 097 110hp E:DC(2) under:Alolan Grimer
 OPP  active: Indeedee ex B1 121 130hp
      bench : Mega Diancie ex B3b 032 40hp E:PPPP(4) T:Giant Cape; Kirlia A1 131 80hp E:PP(2) under:Ralts | hand 2 | discard: Professor's Research, Poké Ball, Ralts, Poké Ball, Lucky Ice Pop, Potion, Sabrina | stadium: Peculiar Plaza B2 155
 HIS TURN (review): 1. Poké Ball: No Basic found. The Ball is revealed around 560 s and immediately played. The prior three-card fan plus this named draw establishes four before the play, without a complete unzoomed four-card fan; 2. Glimmora: Evolve 90 HP; 3. Energy attachment: Second Darkness, total 3 including Colorless; 4. Sludge Bomb: 90 damage including weakness: 130 -> 40.
-HIS PLAN: ['Play:Poké Ball', 'Evolve:Glimmora@2', 'Attach:1Darkness@0 zone', 'Attack:Sludge Bomb'] (ended)
-KM3 modal (12/12): ['Evolve:Glimmora@2', 'Attach:1Darkness@0 zone', 'Attack:Sludge Bomb'] | agreement first 0 plan 0 | Supporter/Item choice or order
+HIS PLAN: ['Evolve:Glimmora@2', 'Attach:1Darkness@0 zone', 'Attack:Sludge Bomb'] (ended)
+KM3 modal (12/12): ['Evolve:Glimmora@2', 'Attach:1Darkness@0 zone', 'Attack:Sludge Bomb'] | agreement first 12 plan 12 | same plan
 KM3 first-step scores (seed 1): Evolve:Glimmora@2 11762; Attach:1Darkness@0 zone 11762; Play:Poké Ball 11732; Attach:1Darkness@1 zone 11390; Attach:1Darkness@2 zone 11340; Attach:1Darkness@3 zone 11250
-      his first action Play:Poké Ball is rank 3 of 7, 30 below the top
-NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; Kirlia stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own 
+NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; Kirlia stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer
 ====================================================================================================
 KW-261012_010706000-t17  game turn 17 (his turn 9)  points 1-1  switch2: no  usable: True
 KNOCKED OUT so far: his 2 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -192,12 +191,12 @@ ME   active: Regigigas B3 134 10hp E:D(1)
      bench : Alolan Muk B2 097 110hp under:Alolan Grimer; Glimmora B3a 045 90hp under:Glimmet; Pawniard B3a 041 50hp E:D(1)
      hand  : Glimmet, Ilima, Kingambit, Rare Candy | discard: Professor's Research, Poké Ball, Poké Ball, Copycat, Professor's Research | zone now/next: Darkness Darkness
 OPP  active: Drampa B4 124 100hp E:L(1)
-     bench : Drampa B4 124 100hp; Mega Rayquaza ex B4 120 180hp E:FL(2); Dragonair B4 117 80hp under:Dratini | hand 3 | discard: Copycat, Poké Ball | stadium: Mesagoza B2a 093
+     bench : Drampa B4 124 100hp; Mega Rayquaza ex B4 120 180hp E:FL(2); Dragonair B4 117 80hp under:Dratini | hand 4 | discard: Copycat, Poké Ball | stadium: Mesagoza B2a 093
 HIS TURN (review): 1. Rare Candy to owner bench right Pawniard: Evolve directly to Kingambit using held Kingambit. 2. Mesagoza to owner: Accept prompt. Tails. No Pokémon found. 3. Ilima to owner active Regigigas: Return 10 HP Regigigas to hand; discard its Darkness. Promote Glimmora. 4. Regigigas to owner bench middle: Rebench Regigigas at 150 HP. 5. energy attachment to owner active Glimmora: Attach 1 Darkness. 6. Glimmora: Venomous Hit to opponent active Drampa: 30 damage, Drampa 100 to 70. Poison inflicted; checkup 70 to 60.
-HIS PLAN: ['Play:Rare Candy', 'Evolve:Kingambit@3', 'UseStadium', 'Play:Ilima', 'Place:Regigigas', 'Attach:1Darkness@0 zone', 'Attack:Giga Turbo'] (ended)
+HIS PLAN: ['Play:Rare Candy', 'Evolve:Kingambit@3', 'UseStadium', 'Play:Ilima', 'Promote:0@2', 'Place:Regigigas', 'Attach:1Darkness@0 zone', 'Attack:Venomous Hit'] (ended)
 KM3 modal (12/12): ['Play:Rare Candy', 'Evolve:Kingambit@3', 'Play:Ilima', 'ReturnPokemonToHand', 'Promote:0@3', 'Place:Regigigas', 'Attach:1Darkness@0 zone', 'UseStadium', "Attack:Overlord's Blade"] | agreement first 12 plan 0 | retreat/promotion
-KM3 first-step scores (seed 1): Play:Rare Candy -415; Attach:1Darkness@0 zone -415; Attach:1Darkness@3 zone -652; Attach:1Darkness@1 zone -782; UseStadium -891; Play:Ilima -1285
-NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); attack title of Regigigas not named in the ledger: the last pri
+KM3 first-step scores (seed 1): Play:Rare Candy -417; Attach:1Darkness@0 zone -417; Attach:1Darkness@3 zone -654; Attach:1Darkness@1 zone -784; UseStadium -893; Play:Ilima -1287
+NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent's hand at his tu
 ====================================================================================================
 KW-261012_203719000-t09  game turn 9 (his turn 5)  points 0-0  switch2: no  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -219,11 +218,11 @@ ME   active: Regigigas B3 134 10hp
      bench : Alolan Muk B2 097 110hp E:D(1) under:Alolan Grimer; Glimmora B3a 045 90hp E:D(1) under:Glimmet; Kingambit B3a 043 140hp E:D(1) under:Pawniard
      hand  : Glimmet, Glimmora, Heavy Helmet | discard: Professor's Research, Poké Ball, Poké Ball, Copycat, Professor's Research, Rare Candy, Ilima | zone now/next: Darkness Darkness
 OPP  active: Drampa B4 124 90hp E:L(1) COND:Poisoned
-     bench : Drampa B4 124 100hp E:FF(2); Mega Rayquaza ex B4 120 180hp E:FL(2); Dragonair B4 117 80hp under:Dratini | hand 3 | discard: Copycat, Poké Ball, Lucky Ice Pop, Cyrus | stadium: Mesagoza B2a 093
+     bench : Drampa B4 124 100hp E:FF(2); Mega Rayquaza ex B4 120 180hp E:FL(2); Dragonair B4 117 80hp under:Dratini | hand 4 | discard: Copycat, Poké Ball, Lucky Ice Pop, Cyrus | stadium: Mesagoza B2a 093
 HIS TURN (review): 1. Heavy Helmet to owner bench right Kingambit: Attach Tool. Visible -20 attack damage effect. 2. energy attachment to owner bench left Alolan Muk: Attach 1 Darkness, now 2. 3. end turn: End without attack. Poison checkup Drampa 90 to 80.
 HIS PLAN: ['Play:Heavy Helmet', 'Tool:Heavy Helmet@3', 'Attach:1Darkness@1 zone'] (ended)
 KM3 modal (12/12): ['Attach:1Darkness@3 zone', 'Play:Heavy Helmet', 'Tool:Heavy Helmet@0', 'UseStadium'] | agreement first 0 plan 0 | Energy attachment timing
-KM3 first-step scores (seed 1): UseStadium -768; Attach:1Darkness@3 zone -768; Play:Heavy Helmet -789; Attach:1Darkness@0 zone -1331; Attach:1Darkness@1 zone -1398; EndTurn -1508
+KM3 first-step scores (seed 1): UseStadium -770; Attach:1Darkness@3 zone -770; Play:Heavy Helmet -791; Attach:1Darkness@0 zone -1333; Attach:1Darkness@1 zone -1400; EndTurn -1510
       his first action Play:Heavy Helmet is rank 3 of 7, 21 below the top
 NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; 
 ====================================================================================================
@@ -233,11 +232,11 @@ ME   active: Glimmora B3a 045 90hp E:D(1) under:Glimmet
      bench : Alolan Muk B2 097 110hp E:DD(2) under:Alolan Grimer; Kingambit B3a 043 140hp E:D(1) T:Heavy Helmet under:Pawniard
      hand  : Glimmet, Glimmora, Lucky Ice Pop | discard: Professor's Research, Poké Ball, Poké Ball, Copycat, Professor's Research, Rare Candy, Ilima, Regigigas | zone now/next: Darkness Darkness
 OPP  active: Drampa B4 124 70hp E:L(1) COND:Poisoned
-     bench : Drampa B4 124 100hp E:FF(2); Mega Rayquaza ex B4 120 180hp E:FLL(3); Dragonair B4 117 80hp under:Dratini | hand 3 | discard: Copycat, Poké Ball, Lucky Ice Pop, Cyrus, Poké Ball | stadium: Mesagoza B2a 093
+     bench : Drampa B4 124 100hp E:FF(2); Mega Rayquaza ex B4 120 180hp E:FLL(3); Dragonair B4 117 80hp under:Dratini | hand 4 | discard: Copycat, Poké Ball, Lucky Ice Pop, Cyrus, Poké Ball | stadium: Mesagoza B2a 093
 HIS TURN (review): 1. Glimmet to owner bench middle: Select Glimmet just after the clean three-card fan at 466.9 s; lift shown 467.2 s and bench placement by 468 to 469 s. 2. energy attachment to owner bench right Kingambit: Attach 1 Darkness, now 2. 3. Glimmora: Venomous Hit to opponent active Drampa: 30 damage, 70 to 40. Poison checkup to 30.
 HIS PLAN: ['Place:Glimmet', 'Attach:1Darkness@2 zone', 'Attack:Venomous Hit'] (ended)
 KM3 modal (12/12): ['Place:Glimmet', 'Attach:1Darkness@2 zone', 'Attack:Venomous Hit'] | agreement first 12 plan 12 | same plan
-KM3 first-step scores (seed 1): Place:Glimmet@3 -9976; Attach:1Darkness@2 zone -9976; Attach:1Darkness@1 zone -10006; UseStadium -10036; Attach:1Darkness@0 zone -10574; Attack:Venomous Hit -10676
+KM3 first-step scores (seed 1): Place:Glimmet@3 -9978; Attach:1Darkness@2 zone -9978; Attach:1Darkness@1 zone -10008; UseStadium -10038; Attach:1Darkness@0 zone -10576; Attack:Venomous Hit -10678
 NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; 
 ====================================================================================================
 KW-261012_203719000-t15  game turn 15 (his turn 8)  points 0-1  switch2: no  usable: True
@@ -321,7 +320,7 @@ ME   active: Glimmet B3a 044 60hp
 OPP  active: Mega Lucario ex B3 081 190hp E:FFF(3) under:Riolu
      bench : Hitmonchan ex B1 124 130hp; Riolu A2b 042 70hp; Tyrogue A4 101 30hp | hand 5 | discard: Poké Ball, Serena, Professor's Research, Poké Ball, Professor's Research | stadium: None
 HIS TURN (review): 1. Copycat: Shuffle Ilima, Kingambit and Lucky Ice Pop into deck; draw five cards matching opponent fan. 2. Poké Ball: No eligible cards in deck banner at 250; no card found. 3. Glimmet: Bench second Glimmet in now vacant left slot. 4. Heavy Helmet: Attach Heavy Helmet to benched Pawniard. 5. Mesagoza: Play Mesagoza. 6. Mesagoza: Activate search coin; tails at 269, no card found. 7. Attach one Darkness Energy to Active Glimmet. 8. Glimmet: Hang Down deals 20 to Mega Lucario ex, HP 190 to 170.  Start hand: Ilima, Kingambit, Lucky Ice Pop, Copycat. End hand: 1 cards. Opponent fan: 5.
-HIS PLAN: ['Play:Copycat', 'Place:Glimmet', 'Play:Heavy Helmet', 'Tool:Heavy Helmet@2', 'Play:Mesagoza', 'Attach:1Darkness@0 zone', 'Attack:Hang Down'] (ended)
+HIS PLAN: ['Play:Copycat', 'Place:Glimmet', 'Play:Heavy Helmet', 'Tool:Heavy Helmet@2', 'Play:Mesagoza', 'UseStadium', 'Attach:1Darkness@0 zone', 'Attack:Hang Down'] (ended)
 KM3 modal (12/12): ['Play:Copycat'] | agreement first 12 plan 12 | same plan
 KM3 first-step scores (seed 1): Play:Copycat -10810; Attach:1Darkness@0 zone -10810; Attach:1Darkness@1 zone -11368; Attach:1Darkness@2 zone -11479; EndTurn -11540
 NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it); knocked out between turns: Regigigas. The oppone
@@ -371,16 +370,14 @@ ME   active: Alolan Grimer A3 110 70hp
      bench : -
      hand  : Lucky Ice Pop, Professor's Research, Copycat, Alolan Muk, Mesagoza | discard: - | zone now/next: Darkness Darkness
 OPP  active: Meowth B2 124 50hp
-     bench : Alolan Meowth A3 108 50hp | hand 5 | discard: Professor's Research | stadium: None
+     bench : Meowth B2 124 50hp | hand 5 | discard: Professor's Research | stadium: None
 HIS TURN (review): 1. Professor's Research Draws Glimmet, then Poké Ball; 2. Poké Ball Search finds Pawniard; 3. Glimmet Bench left, 60 HP; 4. Mesagoza Installs Stadium; 5. Mesagoza Tails at 80-81 seconds; no card found; 6. Attaches one Darkness to Active Alolan Grimer; 7. Ends without attack.
-HIS PLAN: ["Play:Professor's Research", 'Play:Poké Ball', 'Place:Glimmet', 'Play:Mesagoza', 'Attach:1Darkness@0 zone'] (ended)
-KM3 modal (8/12): ['Play:Copycat'] | agreement first 1 plan 1 | Supporter/Item choice or order
-      other (2/12): ['Play:Mesagoza', 'Attach:1Darkness@0 zone', 'Play:Copycat']
-      other (1/12): ["Play:Professor's Research"]
-      other (1/12): ['Play:Mesagoza', 'UseStadium', "Play:Professor's Research"]
-KM3 first-step scores (seed 1): Play:Copycat 1285; Attach:1Darkness@0 zone 1173; Play:Professor's Research 408; Play:Mesagoza 337; EndTurn -114
-      his first action Play:Professor's Research is rank 3 of 5, 877 below the top
-NOTES: opponent hand range [5, 6]: the lower end is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are 
+HIS PLAN: ["Play:Professor's Research", 'Play:Poké Ball', 'Place:Glimmet', 'Play:Mesagoza', 'UseStadium', 'Attach:1Darkness@0 zone'] (ended)
+KM3 modal (8/12): ['Play:Copycat'] | agreement first 4 plan 4 | Supporter/Item choice or order
+      other (4/12): ["Play:Professor's Research"]
+KM3 first-step scores (seed 1): Play:Copycat 2886; Attach:1Darkness@0 zone 2873; Play:Professor's Research 2727; Play:Mesagoza 2725; EndTurn 2386
+      his first action Play:Professor's Research is rank 3 of 5, 159 below the top
+NOTES: ledger corrected from the frames: the opponent's left-Bench Pokémon is a Meowth B2 124 / B2 204 (Carefree Steps, Feelin' Fine, 50 HP, Colorless), not an Alolan Meowth (Codex wrote 'Alolan Meowth, 50 HP, Nasty Plot'; no such card exists); opponent hand range [5, 6]: the lower end is used. The opponen
 ====================================================================================================
 KW-261012_210823000-t04  game turn 4 (his turn 2)  points 0-0  switch2: yes  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -388,13 +385,12 @@ ME   active: Alolan Grimer A3 110 70hp E:D(1)
      bench : Glimmet B3a 044 60hp
      hand  : Lucky Ice Pop, Copycat, Alolan Muk, Pawniard, Regigigas | discard: Professor's Research, Poké Ball | zone now/next: Darkness Darkness
 OPP  active: Meowth B2 124 50hp E:D(1)
-     bench : Alolan Meowth A3 108 50hp; Pidgey A1 186 60hp | hand 6 | discard: Professor's Research | stadium: Mesagoza B2a 093
+     bench : Meowth B2 124 50hp; Pidgey A1 186 60hp | hand 6 | discard: Professor's Research | stadium: Mesagoza B2a 093
 HIS TURN (review): 1. Regigigas Bench center, 150 HP; 2. Mesagoza Tails at 128 seconds; no card found; 3. Second Darkness to Active Alolan Grimer; 4. Moves Alolan Grimer to center Bench, promotes Regigigas; 5. Alolan Muk Evolves benched Alolan Grimer; Power of Alchemy removes Basic Abilities on both boards; 6. Pawniard Bench right, 50 HP; 7. Copycat Shuffles the remaining Lucky Ice Pop into deck, then draws six cards; 8. Glimmora Evolves left Glimmet using full-art Glimmora; 9. Ends without attack; Regigigas has no attached Energy. Basic Pokémon in play have no Abilities. Basic suppression symbols appear on Regigigas and opposing Basics.
-HIS PLAN: ['Place:Regigigas', 'Attach:1Darkness@0 zone', 'Retreat:2', 'Evolve:Alolan Muk@2', 'Place:Pawniard', 'Play:Copycat', 'Evolve:Glimmora@1'] (ended)
-KM3 modal (7/12): ['Place:Regigigas', 'Play:Copycat'] | agreement first 12 plan 0 | evolution timing/target
-      other (5/12): ['Place:Regigigas', 'Place:Pawniard', 'Play:Copycat']
-KM3 first-step scores (seed 1): Place:Regigigas@3 1617; Place:Regigigas@2 1617; Evolve:Alolan Muk@0 1617; Attach:1Darkness@0 zone 1617; Place:Pawniard@3 1108; Place:Pawniard@2 1108
-NOTES: opponent hand range [6, 7]: the lower end is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are 
+HIS PLAN: ['Place:Regigigas', 'UseStadium', 'Attach:1Darkness@0 zone', 'Retreat:2', 'Evolve:Alolan Muk@2', 'Place:Pawniard', 'Play:Copycat', 'Evolve:Glimmora@1'] (ended)
+KM3 modal (12/12): ['Place:Regigigas', 'Place:Pawniard', 'Evolve:Alolan Muk@0', 'Play:Copycat'] | agreement first 12 plan 0 | evolution timing/target
+KM3 first-step scores (seed 1): Place:Regigigas@3 3117; Place:Regigigas@2 3117; Evolve:Alolan Muk@0 3117; Attach:1Darkness@0 zone 3117; Place:Pawniard@3 2590; Place:Pawniard@2 2590
+NOTES: ledger corrected from the frames: the opponent's left-Bench Pokémon is a Meowth B2 124 / B2 204 (Carefree Steps, Feelin' Fine, 50 HP, Colorless), not an Alolan Meowth (Codex wrote 'Alolan Meowth, 50 HP, Nasty Plot'; no such card exists); opponent hand range [6, 7]: the lower end is used. The opponen
 ====================================================================================================
 KW-261012_210823000-t06  game turn 6 (his turn 3)  points 0-0  switch2: yes  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -402,12 +398,12 @@ ME   active: Regigigas B3 134 150hp
      bench : Glimmora B3a 045 90hp under:Glimmet; Alolan Muk B2 097 110hp under:Alolan Grimer; Pawniard B3a 041 50hp
      hand  : Kingambit, Ilima, Glimmora, Lucky Ice Pop, Rare Candy, Glimmet | discard: Professor's Research, Poké Ball, Copycat | zone now/next: Darkness Darkness
 OPP  active: Meowth B2 124 50hp E:D(1)
-     bench : Alolan Meowth A3 108 50hp; Mega Pidgeot ex P-B 006 210hp E:DC(2) under:Pidgey; Pidgey A1 186 60hp | hand 3 | discard: Professor's Research, Poké Ball, Rare Candy | stadium: Mesagoza B2a 093
+     bench : Meowth B2 124 50hp; Mega Pidgeot ex P-B 006 210hp E:DC(2) under:Pidgey; Pidgey A1 186 60hp | hand 3 | discard: Professor's Research, Poké Ball, Rare Candy | stadium: Mesagoza B2a 093
 HIS TURN (review): 1. Rare Candy Chooses right Pawniard and Kingambit from hand; evolves directly to Kingambit; 2. One Darkness to right Kingambit; 3. Ends without attack.
 HIS PLAN: ['Play:Rare Candy', 'Evolve:Kingambit@3', 'Attach:1Darkness@3 zone'] (ended)
 KM3 modal (12/12): ['Play:Rare Candy', 'Evolve:Kingambit@3', 'Attach:1Darkness@3 zone', 'UseStadium'] | agreement first 12 plan 0 | other
 KM3 first-step scores (seed 1): Play:Rare Candy -508; Attach:1Darkness@3 zone -508; Attach:1Darkness@0 zone -731; Attach:1Darkness@1 zone -858; UseStadium -919; Attach:1Darkness@2 zone -938
-NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); the opponent's Mega Pidgeot ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are fille
+NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent's left-Bench Pokémon is a Meowth B2 124 / B2 204 (Carefree Steps, Feelin' Fine, 50 HP, Colorles
 ====================================================================================================
 KW-261012_210823000-t08  game turn 8 (his turn 4)  points 0-0  switch2: yes  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -415,12 +411,12 @@ ME   active: Regigigas B3 134 50hp
      bench : Glimmora B3a 045 90hp under:Glimmet; Alolan Muk B2 097 110hp under:Alolan Grimer; Kingambit B3a 043 140hp E:D(1) under:Pawniard
      hand  : Ilima, Glimmora, Lucky Ice Pop, Glimmet, Lucky Ice Pop | discard: Professor's Research, Poké Ball, Copycat, Rare Candy, Mesagoza | zone now/next: Darkness Darkness
 OPP  active: Mega Pidgeot ex P-B 006 210hp E:DDC(3) under:Pidgey
-     bench : Alolan Meowth A3 108 50hp; Meowth B2 124 50hp; Mega Pidgeot ex P-B 006 210hp under:Pidgey | hand 2 | discard: Professor's Research, Poké Ball, Rare Candy, Copycat, Rare Candy | stadium: Soothing Shore B4 154
+     bench : Meowth B2 124 50hp; Meowth B2 124 50hp; Mega Pidgeot ex P-B 006 210hp under:Pidgey | hand 2 | discard: Professor's Research, Poké Ball, Rare Candy, Copycat, Rare Candy | stadium: Soothing Shore B4 154
 HIS TURN (review): 1. Ilima Returns damaged 50/150 HP Regigigas to hand; no Energy attached; promotes full-art Glimmora; 2. Glimmet Places second Glimmet in left Bench slot; 3. One Darkness to Active Glimmora; 4. Glimmora Venomous Hit deals 30 to first Mega Pidgeot ex, 210 to 180 HP, and Poisons it. Poison checkup deals 10 damage, first Mega Pidgeot ex 180 to 170 HP. Points remain 0-0.
-HIS PLAN: ['Play:Ilima', 'Place:Glimmet', 'Attach:1Darkness@1 zone', 'Attack:Giga Turbo'] (ended)
-KM3 modal (12/12): ['Play:Ilima', 'ReturnPokemonToHand', 'Promote:0@3', 'Place:Regigigas', 'Attach:1Darkness@0 zone', "Attack:Overlord's Blade"] | agreement first 12 plan 0 | attack choice
+HIS PLAN: ['Play:Ilima', 'Promote:0@1', 'Place:Glimmet', 'Attach:1Darkness@0 zone', 'Attack:Venomous Hit'] (ended)
+KM3 modal (12/12): ['Play:Ilima', 'ReturnPokemonToHand', 'Promote:0@3', 'Place:Regigigas', 'Attach:1Darkness@0 zone', "Attack:Overlord's Blade"] | agreement first 12 plan 0 | retreat/promotion
 KM3 first-step scores (seed 1): Play:Ilima -356; Attach:1Darkness@3 zone -356; Attach:1Darkness@2 zone -736; Attach:1Darkness@1 zone -756; Play:Lucky Ice Pop -802; Play:Lucky Ice Pop -802
-NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; attack title of Regigigas not named in the ledger: the last printed attack is u
+NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; ledger corrected from the frames: the opponent's left-Bench Pokémon is a Meowth
 ====================================================================================================
 KW-261012_210823000-t10  game turn 10 (his turn 5)  points 0-1  switch2: yes  usable: True
 KNOCKED OUT so far: his 1 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -428,12 +424,12 @@ ME   active: Glimmet B3a 044 60hp
      bench : Alolan Muk B2 097 110hp under:Alolan Grimer; Kingambit B3a 043 140hp E:D(1) under:Pawniard
      hand  : Glimmora, Lucky Ice Pop, Lucky Ice Pop, Regigigas, Professor's Research | discard: Professor's Research, Poké Ball, Copycat, Rare Candy, Mesagoza, Ilima, Glimmora, Glimmet | zone now/next: Darkness Darkness
 OPP  active: Mega Pidgeot ex P-B 006 180hp E:DDC(3) under:Pidgey COND:Poisoned
-     bench : Alolan Meowth A3 108 50hp; Meowth B2 124 50hp; Mega Pidgeot ex P-B 006 210hp E:DC(2) under:Pidgey | hand 2 | discard: Professor's Research, Poké Ball, Rare Candy, Copycat, Rare Candy, Professor's Research | stadium: Soothing Shore B4 154
+     bench : Meowth B2 124 50hp; Meowth B2 124 50hp; Mega Pidgeot ex P-B 006 210hp E:DC(2) under:Pidgey | hand 2 | discard: Professor's Research, Poké Ball, Rare Candy, Copycat, Rare Candy, Professor's Research | stadium: Soothing Shore B4 154
 HIS TURN (review): 1. Glimmora Evolves Active Glimmet into regular-art Glimmora, 90 HP; 2. Professor's Research Draws Poké Ball, then Heavy Helmet; 3. Heavy Helmet Attaches to right Kingambit; visible damage-reduction message, HP maximum remains 140; 4. One Darkness to Active Glimmora; 5. Regigigas Returns the Ilima-recovered Regigigas to left Bench at full 150 HP; 6. Glimmora Venomous Hit deals 30, first Mega Pidgeot ex 180 to 150 HP, and applies Poison. Poison checkup deals 10, first Mega Pidgeot ex 150 to 140 HP. Points remain owner 0, Hons 1.
 HIS PLAN: ['Evolve:Glimmora@0', "Play:Professor's Research", 'Play:Heavy Helmet', 'Tool:Heavy Helmet@2', 'Attach:1Darkness@0 zone', 'Place:Regigigas', 'Attack:Venomous Hit'] (ended)
 KM3 modal (12/12): ['Evolve:Glimmora@0', 'Place:Regigigas', "Play:Professor's Research"] | agreement first 12 plan 0 | bench development
 KM3 first-step scores (seed 1): Evolve:Glimmora@0 -10873; Attach:1Darkness@0 zone -10873; Place:Regigigas@3 -10997; Play:Professor's Research -11143; Attach:1Darkness@2 zone -11147; Attach:1Darkness@1 zone -11277
-NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; knocked out between turns: Glimmora; the opponent's Mega Pidgeot ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his 
+NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; knocked out between turns: Glimmora; ledger corrected from the frames: the opponent's left-Bench Pokémon is a Meowth B2 124 / B2 204 (Carefree Steps, Feelin'
 ====================================================================================================
 KW-261012_210823000-t12  game turn 12 (his turn 6)  points 0-1  switch2: yes  usable: True
 KNOCKED OUT so far: his 1 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -441,12 +437,12 @@ ME   active: Glimmora B3a 045 90hp E:D(1) under:Glimmet
      bench : Regigigas B3 134 150hp; Alolan Muk B2 097 110hp under:Alolan Grimer; Kingambit B3a 043 140hp E:D(1) T:Heavy Helmet under:Pawniard
      hand  : Lucky Ice Pop, Lucky Ice Pop, Poké Ball | discard: Professor's Research, Poké Ball, Copycat, Rare Candy, Mesagoza, Ilima, Glimmora, Glimmet, Professor's Research | zone now/next: Darkness Darkness
 OPP  active: Mega Pidgeot ex P-B 006 210hp E:DDC(3) under:Pidgey
-     bench : Alolan Meowth A3 108 50hp; Meowth B2 124 50hp; Mega Pidgeot ex P-B 006 160hp E:D(1) under:Pidgey | hand 4 | discard: Professor's Research, Poké Ball, Rare Candy, Copycat, Rare Candy, Professor's Research | stadium: Soothing Shore B4 154
+     bench : Meowth B2 124 50hp; Meowth B2 124 50hp; Mega Pidgeot ex P-B 006 160hp E:D(1) under:Pidgey | hand 4 | discard: Professor's Research, Poké Ball, Rare Candy, Copycat, Rare Candy, Professor's Research | stadium: Soothing Shore B4 154
 HIS TURN (review): No owner voluntary play. At 428-428.5 seconds the system says No cards left in deck; unable to draw cards. The owner hand stays at three. At 430-431 seconds the system says Your opponent conceded. Hons concedes and the source subsequently shows owner Victory.
 HIS PLAN: [] (not ended / cut)
 KM3 modal (12/12): ['Attach:1Darkness@3 zone', 'Attack:Venomous Hit'] | agreement first 0 plan 0 | no plan recorded (the game ended first)
 KM3 first-step scores (seed 1): Attach:1Darkness@3 zone -10206; Attach:1Darkness@1 zone -10496; Attach:1Darkness@2 zone -10536; Attack:Venomous Hit -10646; Attach:1Darkness@0 zone -10646; EndTurn -10919
-NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; the opponent's Mega Pidgeot ex: a Rare Candy evolved it, so no Stage 1 is under
+NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; ledger corrected from the frames: the opponent's left-Bench Pokémon is a Meowth
 ====================================================================================================
 KW-261012_225319000-t02  game turn 2 (his turn 1)  points 0-0  switch2: no  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -501,12 +497,12 @@ ME   active: Alolan Grimer A3 110 70hp
      bench : -
      hand  : Lucky Ice Pop, Kingambit, Poké Ball | discard: Poké Ball, Professor's Research, Copycat, Glimmet, Mesagoza, Pawniard, Heavy Helmet | zone now/next: Darkness Darkness
 OPP  active: Chien-Pao ex B2a 037 130hp
-     bench : Frigibax B2a 034 60hp; Baxcalibur B2a 036 160hp T:Giant Cape under:Frigibax; Suicune ex A4a 020 140hp T:Giant Cape | hand 5 | discard: Poké Ball, Professor's Research, Copycat, Rare Candy, Poké Ball, Pokémon Center Lady, Professor's Research | stadium: Soothing Shore B4 154
+     bench : Frigibax B2a 034 60hp; Baxcalibur B2a 036 160hp T:Giant Cape under:Frigibax; Suicune ex A4a 020 140hp T:Giant Cape | hand 4 | discard: Poké Ball, Professor's Research, Copycat, Rare Candy, Poké Ball, Pokémon Center Lady, Professor's Research | stadium: Soothing Shore B4 154
 HIS TURN (review): 1. Poké Ball (402 s): Finds Glimmet 405; 2. Glimmet (408 s): Bench left HP 60; 3. energy_attachment (409 s): One Darkness Energy attached; 4. end_turn (411 s): End without attack, hand Lucky Ice Pop/Kingambit. Owner ending hand 2. Ledger row 8.
 HIS PLAN: ['Play:Poké Ball', 'Place:Glimmet', 'Attach:1Darkness@0 zone'] (ended)
 KM3 modal (12/12): ['Play:Poké Ball'] | agreement first 12 plan 12 | same plan
-KM3 first-step scores (seed 1): Play:Poké Ball -20529; Attach:1Darkness@0 zone -20786; EndTurn -21227
-NOTES: knocked out between turns: Pawniard; opponent hand range [5, 6]: the lower end is used; the opponent's Baxcalibur: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon
+KM3 first-step scores (seed 1): Play:Poké Ball -20527; Attach:1Darkness@0 zone -20784; EndTurn -21225
+NOTES: knocked out between turns: Pawniard; ledger corrected from the frames: the opponent's hand at his turn 8 is 4 (the frames; Codex wrote 5 to 6 but its own plays give 4); the opponent's Baxcalibur: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are
 ====================================================================================================
 KW-261012_230258000-t01  game turn 1 (his turn 1)  points 0-0  switch2: no  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -590,7 +586,7 @@ ME   active: Regigigas B3 134 70hp E:DD(2) T:Heavy Helmet
 OPP  active: Starmie ex A1 076 130hp E:WW(2) under:Staryu
      bench : Greninja A1 089 80hp under:Froakie; Starmie ex A1 076 130hp E:WW(2) under:Staryu; Froakie A1 087 60hp | hand 3 | discard: Professor's Research, Poké Ball, Sabrina, Rare Candy | stadium: Mesagoza B2a 093
 HIS TURN (review): Normal draw: Copycat. 1. Alolan Muk: Alolan Muk 110 HP. Power of Alchemy suppresses Basic Abilities, including Regigigas attack restriction. 2. Lucky Ice Pop: Heal 20, 70->90 HP. Tails 410; discarded. 3. energy attachment: Attach one Darkness Energy to Regigigas Active. 4. Copycat: Shuffle sole Ilima into one-card deck; draw Research then Ilima. Only 2 cards available although opponent fan 3. End hand 2. 5. Regigigas Giga Turbo: 100 damage 130->30 HP; generate Colorless 1 and attach to Alolan Muk Bench 1 at 432. Ending hand: 2 cards. See ledger row 11.
-HIS PLAN: ['Evolve:Alolan Muk@1', 'Play:Lucky Ice Pop', 'Attach:1Darkness@0 zone', 'Play:Copycat', 'Attack:Giga Turbo'] (ended)
+HIS PLAN: ['Evolve:Alolan Muk@1', 'Play:Lucky Ice Pop', 'Attach:1Darkness@0 zone', 'Play:Copycat', 'Attack:Giga Turbo', 'Attach:1Colorless@1 fx'] (ended)
 KM3 modal (5/12): ['Evolve:Alolan Muk@1', 'Play:Lucky Ice Pop', 'Attach:1Darkness@0 zone', 'Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Play:Copycat'] | agreement first 12 plan 3 | Supporter/Item choice or order
       other (4/12): ['Evolve:Alolan Muk@1', 'Play:Lucky Ice Pop', 'Attach:1Darkness@0 zone', 'Play:Lucky Ice Pop', 'Play:Copycat']
       other (3/12): ['Evolve:Alolan Muk@1', 'Play:Lucky Ice Pop', 'Attach:1Darkness@0 zone', 'Play:Copycat']
@@ -620,60 +616,60 @@ OPP  active: Orthworm B2a 077 100hp
 HIS TURN (review): Poké Ball first finds Dratini, which is benched right. Research draws Rocky Helmet, then Haxorus. Helmet goes onto Active Druddigon; owner ends with four cards and no Energy on the first-player opening turn. The wall now returns 40 damage for a damaging attack while the evolution cards remain available. See ledger row 1, N0044.00 and N0064.00.
 HIS PLAN: ['Play:Poké Ball', 'Place:Dratini', "Play:Professor's Research", 'Play:Rocky Helmet', 'Tool:Rocky Helmet@0'] (ended)
 KM3 modal (6/12): ['Play:Poké Ball'] | agreement first 6 plan 6 | same plan
-      other (5/12): ["Play:Professor's Research"]
-      other (1/12): ['Play:Copycat']
-KM3 first-step scores (seed 1): Play:Professor's Research 1104; Play:Poké Ball 1000; EndTurn 431; Play:Copycat 428
-NOTES: The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.
+      other (3/12): ['Play:Copycat']
+      other (3/12): ["Play:Professor's Research"]
+KM3 first-step scores (seed 1): Play:Poké Ball 1002; Play:Professor's Research 899; Play:Copycat 687; EndTurn 431
+NOTES: ledger corrected from the frames: the opponent's Tool is Elegant Cape B3b 065 (+30 HP on a Stage 1), not Giant Cape (+20 on any Pokémon): Scyther stays at 70 and Mega Scizor ex is 230. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the led
 ====================================================================================================
 KW-261013_022530000-t03  game turn 3 (his turn 2)  points 0-0  switch2: no  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
 ME   active: Druddigon A1a 056 90hp T:Rocky Helmet
-     bench : Dratini A3b 051 60hp
+     bench : Dratini B4 116 60hp
      hand  : Haxorus, Copycat, Dragonair, Haxorus, Axew | discard: Poké Ball, Professor's Research | zone now/next: Metal Metal
 OPP  active: Orthworm B2a 077 60hp E:M(1)
-     bench : Scyther B2b 001 70hp; Scyther B2b 001 70hp E:M(1) T:Giant Cape | hand 3 | discard: Professor's Research | stadium: None
+     bench : Scyther B2b 001 70hp; Scyther B2b 001 70hp E:M(1) T:Elegant Cape | hand 3 | discard: Professor's Research | stadium: None
 HIS TURN (review): Normal draw Axew is the first voluntary play, benched left. Right Dratini evolves to Dragonair. Copycat shuffles both Haxorus from the remaining hand and redraws Haxorus, Poké Ball and Dratini. Poké Ball then finds Axew. Dratini goes middle; Metal goes to Active Druddigon, and the owner ends with Haxorus and Axew. Keeping the original pair of Haxorus instead of Copycat was a plausible alternative, but the observed play improves Basic development and gives a fresh Haxorus. A Metal investment on Axew could accelerate its future attack; the actual Druddigon attachment later becomes a recoverable discard resource. See ledger row 3, N0127.00 and N0161.00.
 HIS PLAN: ['Place:Axew', 'Evolve:Dragonair@1', 'Play:Copycat', 'Play:Poké Ball', 'Place:Dratini', 'Attach:1Metal@0 zone'] (ended)
 KM3 modal (6/12): ['Place:Axew', 'Evolve:Dragonair@1', 'Attach:1Metal@0 zone', 'Play:Copycat'] | agreement first 12 plan 6 | Energy attachment timing
       other (6/12): ['Place:Axew', 'Evolve:Dragonair@1', 'Play:Copycat']
-KM3 first-step scores (seed 1): Place:Axew@3 1607; Place:Axew@2 1607; Evolve:Dragonair@1 1607; Attach:1Metal@0 zone 1607; Attach:1Metal@1 zone 1230; Play:Copycat 998
-NOTES: The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.
+KM3 first-step scores (seed 1): Place:Axew@3 1607; Place:Axew@2 1607; Evolve:Dragonair@1 1607; Attach:1Metal@0 zone 1607; Attach:1Metal@1 zone 1230; Play:Copycat 45
+NOTES: ledger corrected from the frames: the opponent's Tool is Elegant Cape B3b 065 (+30 HP on a Stage 1), not Giant Cape (+20 on any Pokémon): Scyther stays at 70 and Mega Scizor ex is 230. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the led
 ====================================================================================================
 KW-261013_022530000-t05  game turn 5 (his turn 3)  points 0-0  switch2: no  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
 ME   active: Druddigon A1a 056 80hp E:M(1) T:Rocky Helmet
-     bench : Axew B2b 054 70hp; Dratini A3b 051 60hp; Dragonair B4 117 80hp under:Dratini
+     bench : Axew B2b 054 70hp; Dratini B4 116 60hp; Dragonair B4 117 80hp under:Dratini
      hand  : Haxorus, Axew, Lucky Ice Pop | discard: Poké Ball, Professor's Research, Copycat, Poké Ball | zone now/next: Metal Metal
 OPP  active: Orthworm B2a 077 20hp E:M(1)
-     bench : Varoom A2b 055 70hp; Scyther B2b 001 70hp E:M(1) T:Giant Cape; Mega Scizor ex B2b 047 230hp E:MM(2) T:Giant Cape under:Scyther | hand 2 | discard: Professor's Research, Poké Ball | stadium: None
+     bench : Varoom A2b 055 70hp; Scyther B2b 001 70hp E:M(1) T:Elegant Cape; Mega Scizor ex B2b 047 230hp E:MM(2) T:Elegant Cape under:Scyther | hand 2 | discard: Professor's Research, Poké Ball | stadium: None
 HIS TURN (review): Lucky Ice Pop is drawn and played first, healing Druddigon 80 to 100. The coin is Tails, so it is discarded. One Metal then goes to the left Axew, and the owner ends with Haxorus/Axew. The healing buys another wall turn. Retaining the heal was a possible resource choice, but no other usable Trainer is shown; the actual play keeps the counterdamage plan intact. See ledger row 5, N0217.00 and N0234.00.
 HIS PLAN: ['Play:Lucky Ice Pop', 'Attach:1Metal@1 zone'] (ended)
 KM3 modal (12/12): ['Play:Lucky Ice Pop', 'Attach:1Metal@3 zone'] | agreement first 12 plan 0 | Energy attachment target
-KM3 first-step scores (seed 1): Play:Lucky Ice Pop 1037; Attach:1Metal@3 zone 1037; Attach:1Metal@1 zone 1027; Attach:1Metal@2 zone 617; Attach:1Metal@0 zone 457; EndTurn 198
-NOTES: Dragonair stack taken from the printed evolution line (the ledger gives none); Mega Scizor ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon tha
+KM3 first-step scores (seed 1): Play:Lucky Ice Pop 1007; Attach:1Metal@3 zone 1007; Attach:1Metal@1 zone 997; Attach:1Metal@2 zone 487; Attach:1Metal@0 zone 327; EndTurn 68
+NOTES: Dragonair stack taken from the printed evolution line (the ledger gives none); Mega Scizor ex stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent's Tool is Elegant Cape B3b 065 (+30 HP on a Stage 1), not Giant Cape (+20 on any Pokémon):
 ====================================================================================================
 KW-261013_022530000-t07  game turn 7 (his turn 4)  points 1-0  switch2: no  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
 ME   active: Druddigon A1a 056 90hp E:M(1) T:Rocky Helmet
-     bench : Axew B2b 054 70hp E:M(1); Dratini A3b 051 60hp; Dragonair B4 117 80hp under:Dratini
+     bench : Axew B2b 054 70hp E:M(1); Dratini B4 116 60hp; Dragonair B4 117 80hp under:Dratini
      hand  : Haxorus, Axew, Rare Candy | discard: Poké Ball, Professor's Research, Copycat, Poké Ball, Lucky Ice Pop | zone now/next: Metal Fighting
 OPP  active: Revavroom B2b 050 110hp under:Varoom
-     bench : Scyther B2b 001 70hp E:MM(2) T:Giant Cape; Mega Scizor ex B2b 047 230hp E:MMM(3) T:Giant Cape under:Scyther | hand 1 | discard: Professor's Research, Poké Ball, Professor's Research, Orthworm | stadium: None
+     bench : Scyther B2b 001 70hp E:MM(2) T:Elegant Cape; Mega Scizor ex B2b 047 230hp E:MMM(3) T:Elegant Cape under:Scyther | hand 1 | discard: Professor's Research, Poké Ball, Professor's Research, Orthworm | stadium: None
 HIS TURN (review): Rare Candy is the normal draw and first play. It evolves the left Axew directly to Haxorus, preserving its Metal. A second Metal goes to Haxorus; the owner ends with Axew in hand. Haxorus still lacks Fighting, so it cannot use Frenzied Blade yet. The owner keeps Druddigon Active, which is a reasonable way to absorb an attack while leaving two Bench engines intact; the next Energy icon shows Fighting type only. See ledger row 7, N0313.00 and N0326.00.
 HIS PLAN: ['Play:Rare Candy', 'Evolve:Haxorus@1', 'Attach:1Metal@1 zone'] (ended)
 KM3 modal (12/12): ['Play:Rare Candy', 'Evolve:Haxorus@1', 'Attach:1Metal@1 zone'] | agreement first 12 plan 12 | same plan
-KM3 first-step scores (seed 1): Play:Rare Candy 9797; Attach:1Metal@1 zone 9797; Attach:1Metal@3 zone 9127; EndTurn 8789; Attach:1Metal@0 zone 8789; Attach:1Metal@2 zone 8407
-NOTES: Dragonair stack taken from the printed evolution line (the ledger gives none); Mega Scizor ex stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are fille
+KM3 first-step scores (seed 1): Play:Rare Candy 9757; Attach:1Metal@1 zone 9757; Attach:1Metal@3 zone 9087; EndTurn 8749; Attach:1Metal@0 zone 8749; Attach:1Metal@2 zone 8267
+NOTES: Dragonair stack taken from the printed evolution line (the ledger gives none); Mega Scizor ex stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent's Tool is E
 ====================================================================================================
 KW-261013_022530000-t09  game turn 9 (his turn 5)  points 1-1  switch2: no  usable: True
 KNOCKED OUT so far: his 1 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
 ME   active: Haxorus B2b 056 150hp E:MM(2) under:Axew
-     bench : Dratini A3b 051 60hp; Dragonair B4 117 80hp under:Dratini
+     bench : Dratini B4 116 60hp; Dragonair B4 117 80hp under:Dratini
      hand  : Axew, Rainbow Cave | discard: Poké Ball, Professor's Research, Copycat, Poké Ball, Lucky Ice Pop, Rare Candy, Druddigon, Rocky Helmet | zone now/next: Fighting Fighting
-OPP  active: Mega Scizor ex B2b 047 190hp E:MMM(3) T:Giant Cape under:Scyther
-     bench : Scyther B2b 001 70hp E:MM(2) T:Giant Cape; Revavroom B2b 050 110hp E:M(1) under:Varoom | hand 2 | discard: Professor's Research, Poké Ball, Professor's Research, Orthworm | stadium: None
+OPP  active: Mega Scizor ex B2b 047 190hp E:MMM(3) T:Elegant Cape under:Scyther
+     bench : Scyther B2b 001 70hp E:MM(2) T:Elegant Cape; Revavroom B2b 050 110hp E:M(1) under:Varoom | hand 2 | discard: Professor's Research, Poké Ball, Professor's Research, Orthworm | stadium: None
 HIS TURN (review): Axew is benched left as the first voluntary move. Rainbow Cave is drawn and played. The owner accepts its effect: current Fighting is discarded and the next Fighting is produced. That Zone Fighting is attached to the new Axew. Right Dragonair then uses Dragon’s Blessing, selecting the discarded Fighting for Active Haxorus. Haxorus reaches 1 Fighting + 2 Metal. Frenzied Blade does 150 with five total Bench Pokémon, leaving the 190 HP Mega at 40. Attaching current Fighting directly to Haxorus would also enable an attack, but the observed Cave plus ability sequence simultaneously builds the backup Axew and completes Haxorus. See ledger row 9, N0395.00 and N0423.00.
-HIS PLAN: ['Place:Axew', 'Play:Rainbow Cave', 'UseStadium', 'Attach:1Fighting@3 zone', 'Ability', 'Attack:Frenzied Blade'] (ended)
+HIS PLAN: ['Place:Axew', 'Play:Rainbow Cave', 'UseStadium', 'Attach:1Fighting@3 zone', 'Ability', 'AttachTypedFromDiscard:Fighting@0', 'Attack:Frenzied Blade'] (ended)
 KM3 modal (12/12): ['Place:Axew', 'Attach:1Fighting@0 zone', 'Attack:Frenzied Blade'] | agreement first 12 plan 0 | Supporter/Item choice or order
 KM3 first-step scores (seed 1): Place:Axew@3 631; Attach:1Fighting@0 zone 631; Play:Rainbow Cave 474; Ability@2 -203; Attach:1Fighting@2 zone -456; EndTurn -605
 NOTES: Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus: a Rare Candy evolved it, so no Stage 1 is under it; Mega Scizor ex stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none
@@ -681,10 +677,10 @@ NOTES: Dragonair stack taken from the printed evolution line (the ledger gives n
 KW-261013_022530000-t11  game turn 11 (his turn 6)  points 1-1  switch2: no  usable: True
 KNOCKED OUT so far: his 1 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
 ME   active: Haxorus B2b 056 140hp E:MMF(3) under:Axew
-     bench : Axew B2b 054 70hp E:F(1); Dratini A3b 051 60hp; Dragonair B4 117 80hp under:Dratini
+     bench : Axew B2b 054 70hp E:F(1); Dratini B4 116 60hp; Dragonair B4 117 80hp under:Dratini
      hand  : Dragonair | discard: Poké Ball, Professor's Research, Copycat, Poké Ball, Lucky Ice Pop, Rare Candy, Druddigon, Rocky Helmet | zone now/next: Fighting Fighting
 OPP  active: Orthworm B2a 077 100hp E:M(1) T:Small Balloon
-     bench : Mega Scizor ex B2b 047 40hp E:MMM(3) T:Giant Cape under:Scyther; Scyther B2b 001 70hp E:MMM(3) T:Giant Cape; Revavroom B2b 050 110hp E:M(1) under:Varoom | hand 1 | discard: Professor's Research, Poké Ball, Professor's Research, Orthworm | stadium: Rainbow Cave B4 155
+     bench : Mega Scizor ex B2b 047 40hp E:MMM(3) T:Elegant Cape under:Scyther; Scyther B2b 001 70hp E:MMM(3) T:Elegant Cape; Revavroom B2b 050 110hp E:M(1) under:Varoom | hand 1 | discard: Professor's Research, Poké Ball, Professor's Research, Orthworm | stadium: Rainbow Cave B4 155
 HIS TURN (review): Dragonair is the normal draw and first play, evolving middle Dratini. Rainbow Cave discards current Fighting and produces next Fighting; the regular attachment goes to left Axew, now 2 Fighting. Haxorus attacks with Frenzied Blade for 170 because both Benches are full, knocking out Orthworm. Owner gains second point. During the waiting replacement phase the owner opens the discard grid at 518. It shows 8 cards and 1 Fighting / 1 Metal. Sadao finally promotes Mega Scizor ex still at 40. More Energy on the already attack-ready Haxorus was a plausible alternative; the actual attachment invests in a backup while the attack takes the available point. See ledger row 11, N0479.00 and N0529.00.
 HIS PLAN: ['Evolve:Dragonair@2', 'UseStadium', 'Attach:1Fighting@1 zone', 'Attack:Frenzied Blade'] (ended)
 KM3 modal (12/12): ['Evolve:Dragonair@2', 'UseStadium', 'Attach:1Fighting@3 zone', 'Attack:Frenzied Blade'] | agreement first 12 plan 0 | Energy attachment target
@@ -726,7 +722,7 @@ ME   active: Dragonair B4 117 20hp E:M(1) under:Dratini COND:Asleep
 OPP  active: Igglybuff A4a 059 30hp E:F(1)
      bench : Darkrai B2b 040 100hp E:F(1) | hand 5 | discard: Poké Ball | stadium: Rainbow Cave B4 155
 HIS TURN (review): 1. Evolve right benched Dratini to Dragonair; 2. Rainbow Cave discards one generated Metal and generates next Metal; 3. Attach generated Metal to benched Haxorus; 4. Dragon’s Blessing attaches one Metal from discard to active Dragonair, now 2 Metal; 5. End Turn while active Dragonair remains Asleep; 6. Choose middle Druddigon as replacement after Dragonair KO. Bad Dreams 20 knocks out 20-HP Dragonair at 208. Opponent +1, total 1. Dragonair and its two Metal Energy leave board; owner promotes Druddigon. [Start](turn_evidence/t0184.20.jpg)
-HIS PLAN: ['Evolve:Dragonair@3', 'UseStadium', 'Attach:1Metal@1 zone', 'Ability'] (ended)
+HIS PLAN: ['Evolve:Dragonair@3', 'UseStadium', 'Attach:1Metal@1 zone', 'Ability', 'AttachTypedFromDiscard:Metal@0'] (ended)
 KM3 modal (12/12): ['Evolve:Dragonair@3', 'UseStadium', 'Ability', 'AttachTypedFromDiscard', 'Attach:1Metal@1 zone', 'Promote:0@1', 'FinishPokemonCheckup'] | agreement first 12 plan 0 | Energy attachment timing
 KM3 first-step scores (seed 1): UseStadium 2463; Evolve:Dragonair@3 2463; Attach:1Metal@1 zone -7850; Attach:1Metal@2 zone -8040; Attach:1Metal@3 zone -8187; Attach:1Metal@0 zone -8352
 NOTES: Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Haxorus: no Fraxure is left in the list, so the stack leaves it out (Rare Candy). The opponent's list is unknown (his hidden cards are filled fr
@@ -739,7 +735,7 @@ ME   active: Haxorus B2b 056 120hp E:M(1) under:Axew COND:Asleep
 OPP  active: Igglybuff A4a 059 30hp E:F(1)
      bench : Darkrai B2b 040 100hp E:FF(2) | hand 5 | discard: Poké Ball, Sabrina | stadium: Rainbow Cave B4 155
 HIS TURN (review): 1. Lucky Ice Pop heals Haxorus 120 → 140; heads returns same card to hand; 2. Accept Rainbow Cave prompt; discard Metal and produce next Metal; 3. Attach generated Metal to active Haxorus; 4. Dragon’s Blessing attaches Metal from discard to active Haxorus, now 3 Metal; 5. End Turn while Haxorus remains Asleep. Bad Dreams 20 takes Haxorus 140 → 120. Sleep check tails 280. [Start](turn_evidence/t0250.00.jpg)
-HIS PLAN: ['Play:Lucky Ice Pop', 'UseStadium', 'Attach:1Metal@0 zone', 'Ability'] (ended)
+HIS PLAN: ['Play:Lucky Ice Pop', 'UseStadium', 'Attach:1Metal@0 zone', 'Ability', 'AttachTypedFromDiscard:Metal@0'] (ended)
 KM3 modal (9/12): ['Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Ability', 'AttachTypedFromDiscard', 'UseStadium', 'Attach:1Metal@1 zone'] | agreement first 12 plan 0 | Supporter/Item choice or order
       other (3/12): ['Play:Lucky Ice Pop', 'Ability', 'AttachTypedFromDiscard', 'UseStadium', 'Attach:1Metal@1 zone']
 KM3 first-step scores (seed 1): Play:Lucky Ice Pop -7581; Attach:1Metal@0 zone -7588; UseStadium -7643; Ability@2 -7673; Attach:1Metal@1 zone -7852; Attach:1Metal@2 zone -7872
@@ -751,13 +747,13 @@ ME   active: Haxorus B2b 056 90hp E:MMM(3) under:Axew
      bench : Druddigon A1a 056 120hp T:Rocky Helmet; Dragonair B4 117 80hp under:Dratini
      hand  : Lucky Ice Pop, Iris | discard: Copycat, Poké Ball, Professor's Research, Rare Candy, Dragonair, Dratini, Rainbow Cave | zone now/next: Metal Fighting
 OPP  active: Igglybuff A4a 059 50hp E:F(1)
-     bench : Darkrai B1 154 120hp E:FFF(3) | hand 5 | discard: Poké Ball, Sabrina | stadium: Starting Plains B2 154
+     bench : Darkrai B2b 040 120hp E:FFF(3) | hand 5 | discard: Poké Ball, Sabrina | stadium: Starting Plains B2 154
 HIS TURN (review): 1. Lucky Ice Pop heals 90 → 110; heads returns card; 2. Play returned Lucky Ice Pop again; heals 110 → 130; tails sends it to discard; 3. Retreat Haxorus; pay 2 Metal; choose Druddigon as Active; 4. Attach generated Metal to benched Haxorus, now 2 Metal; 5. Dragon’s Blessing attaches one discarded Metal to active Druddigon; 6. End Turn; Iris remains in hand. No sleep at owner end, so no Bad Dreams damage. [Start](turn_evidence/t0322.00.jpg)
-HIS PLAN: ['Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Retreat:1', 'Attach:1Metal@1 zone', 'Ability'] (ended)
+HIS PLAN: ['Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Retreat:1', 'Attach:1Metal@1 zone', 'Ability', 'AttachTypedFromDiscard:Metal@0'] (ended)
 KM3 modal (5/12): ['Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Attach:1Metal@1 zone'] | agreement first 12 plan 0 | Supporter/Item choice or order
       other (4/12): ['Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Attach:1Metal@1 zone']
       other (3/12): ['Play:Lucky Ice Pop', 'Attach:1Metal@1 zone']
-KM3 first-step scores (seed 1): Play:Lucky Ice Pop -7677; Attach:1Metal@1 zone -7717; Attach:1Metal@2 zone -7757; Play:Iris -7778; Attach:1Metal@0 zone -7837; Ability@2 -7992
+KM3 first-step scores (seed 1): Play:Lucky Ice Pop -9667; Attach:1Metal@1 zone -9667; Attach:1Metal@2 zone -9707; Play:Iris -9728; Attach:1Metal@0 zone -9787; Ability@2 -9851
 NOTES: Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Haxorus: no Fraxure is left in the list, so the stack leaves it out (Rare Candy). The opponent's list is unknown (his hidden cards are filled fr
 ====================================================================================================
 KW-261013_030351000-t11  game turn 11 (his turn 6)  points 0-1  switch2: no  usable: True
@@ -766,11 +762,11 @@ ME   active: Druddigon A1a 056 90hp E:M(1) T:Rocky Helmet
      bench : Haxorus B2b 056 130hp E:MM(2) under:Axew; Dragonair B4 117 80hp under:Dratini
      hand  : Iris, Poké Ball | discard: Copycat, Poké Ball, Professor's Research, Rare Candy, Dragonair, Dratini, Rainbow Cave, Lucky Ice Pop | zone now/next: Fighting Fighting
 OPP  active: Igglybuff A4a 059 10hp E:F(1)
-     bench : Darkrai B1 154 120hp E:FFFF(4); Igglybuff A4a 059 50hp | hand 6 | discard: Poké Ball, Sabrina, Professor's Research | stadium: Starting Plains B2 154
+     bench : Darkrai B2b 040 120hp E:FFFF(4); Igglybuff A4a 059 50hp | hand 6 | discard: Poké Ball, Sabrina, Professor's Research | stadium: Starting Plains B2 154
 HIS TURN (review): 1. Poké Ball finds Axew; 2. Bench Axew middle, effective 90 HP under Starting Plains; 3. Dragon’s Blessing attaches Metal from discard to active Druddigon, now 2 Metal; 4. Attach generated Fighting to benched Haxorus, now 1 Fighting+2 Metal; 5. Decline available Supporter and accept End Turn warning; 6. End Turn transition; Druddigon cannot pay Fire+Water+Colorless Dragon Claw with two Metal. No sleep at owner end; no Bad Dreams damage. [Start](turn_evidence/t0412.50.jpg)
-HIS PLAN: ['Play:Poké Ball', 'Place:Axew', 'Ability', 'Attach:1Fighting@1 zone'] (ended)
+HIS PLAN: ['Play:Poké Ball', 'Place:Axew', 'Ability', 'AttachTypedFromDiscard:Metal@0', 'Attach:1Fighting@1 zone'] (ended)
 KM3 modal (12/12): ['Play:Poké Ball'] | agreement first 12 plan 12 | same plan
-KM3 first-step scores (seed 1): Play:Poké Ball -7536; Attach:1Fighting@1 zone -7536; Attach:1Fighting@2 zone -7686; Play:Iris -7726; Ability@2 -7741; Attach:1Fighting@0 zone -7766
+KM3 first-step scores (seed 1): Play:Poké Ball -9436; Attach:1Fighting@1 zone -9436; Play:Iris -9526; Ability@2 -9541; Attach:1Fighting@2 zone -9586; Attach:1Fighting@0 zone -9666
 NOTES: Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Haxorus: no Fraxure is left in the list, so the stack leaves it out (Rare Candy). The opponent's list is unknown (his hidden cards are filled fr
 ====================================================================================================
 KW-261013_030351000-t13  game turn 13 (his turn 7)  points 0-1  switch2: no  usable: True
@@ -779,11 +775,11 @@ ME   active: Druddigon A1a 056 40hp E:MM(2) T:Rocky Helmet COND:Asleep
      bench : Haxorus B2b 056 130hp E:MMF(3) under:Axew; Axew B2b 054 90hp; Dragonair B4 117 80hp under:Dratini
      hand  : Iris, Professor's Research | discard: Copycat, Poké Ball, Professor's Research, Rare Candy, Dragonair, Dratini, Rainbow Cave, Lucky Ice Pop, Poké Ball | zone now/next: Fighting Fighting
 OPP  active: Igglybuff A4a 059 10hp E:F(1)
-     bench : Darkrai B1 154 120hp E:FFFF(4); Igglybuff A4a 059 10hp E:F(1); Darkrai B1 154 120hp E:F(1) | hand 6 | discard: Poké Ball, Sabrina, Professor's Research | stadium: Starting Plains B2 154
+     bench : Darkrai B2b 040 120hp E:FFFF(4); Igglybuff A4a 059 10hp E:F(1); Darkrai B2b 040 120hp E:F(1) | hand 6 | discard: Poké Ball, Sabrina, Professor's Research | stadium: Starting Plains B2 154
 HIS TURN (review): 1. Research draws last two cards Rare Candy then Haxorus; 2. Rare Candy evolves middle Axew directly to second Haxorus; 150 HP; 3. Attach generated Fighting to newly evolved middle Haxorus; 4. Dragon’s Blessing attaches Metal from discard to active Druddigon, now 3 Metal; 5. End Turn while Druddigon is Asleep; 6. Choose new Haxorus as replacement after Druddigon KO. Two Bad Dreams triggers take Druddigon 40 → 20 → 0 (498, 500). Opponent +1, total 2. Druddigon, Rocky Helmet and 3 Metal are discarded. Owner promotes second Haxorus 150 HP with 1 Fighting. [Start](turn_evidence/t0475.00.jpg)
-HIS PLAN: ["Play:Professor's Research", 'Play:Rare Candy', 'Evolve:Haxorus@2', 'Attach:1Fighting@2 zone', 'Ability'] (ended)
+HIS PLAN: ["Play:Professor's Research", 'Play:Rare Candy', 'Evolve:Haxorus@2', 'Attach:1Fighting@2 zone', 'Ability', 'AttachTypedFromDiscard:Metal@0'] (ended)
 KM3 modal (12/12): ["Play:Professor's Research"] | agreement first 12 plan 12 | same plan
-KM3 first-step scores (seed 1): Play:Professor's Research -8184; Attach:1Fighting@2 zone -8352; Play:Iris -8356; Attach:1Fighting@3 zone -8362; Ability@3 -8370; Attach:1Fighting@1 zone -8442
+KM3 first-step scores (seed 1): Play:Professor's Research -9812; Attach:1Fighting@2 zone -9812; Play:Iris -9816; Attach:1Fighting@3 zone -9822; Ability@3 -9830; Attach:1Fighting@1 zone -9902
 NOTES: Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Haxorus: no Fraxure is left in the list, so the stack leaves it out (Rare Candy). The opponent's list is unknown (his hidden cards are filled fr
 ====================================================================================================
 KW-261013_030351000-t15  game turn 15 (his turn 8)  points 0-2  switch2: no  usable: True
@@ -792,11 +788,11 @@ ME   active: Haxorus B2b 056 100hp E:F(1) under:Axew
      bench : Haxorus B2b 056 130hp E:MMF(3) under:Axew; Dragonair B4 117 80hp under:Dratini
      hand  : Iris | discard: Copycat, Poké Ball, Professor's Research, Rare Candy, Dragonair, Dratini, Rainbow Cave, Lucky Ice Pop, Poké Ball, Professor's Research, Rare Candy, Druddigon, Rocky Helmet | zone now/next: Fighting Metal
 OPP  active: Igglybuff A4a 059 10hp E:F(1)
-     bench : Darkrai B1 154 120hp E:FFFF(4); Igglybuff A4a 059 10hp E:F(1); Darkrai B1 154 120hp E:FF(2) | hand 7 | discard: Poké Ball, Sabrina, Professor's Research | stadium: Starting Plains B2 154
+     bench : Darkrai B2b 040 120hp E:FFFF(4); Igglybuff A4a 059 10hp E:F(1); Darkrai B2b 040 120hp E:FF(2) | hand 7 | discard: Poké Ball, Sabrina, Professor's Research | stadium: Starting Plains B2 154
 HIS TURN (review): 1. Dragon’s Blessing attaches one Metal from discard to active second Haxorus, now 1 Fighting+1 Metal; 2. Retreat second Haxorus 100 HP; pay its Fighting+Metal; promote old Haxorus 130 HP; 3. Attach generated Fighting to benched second Haxorus; active old Haxorus already has 1 Fighting+2 Metal; 4. Play Iris for Haxorus knockout extra point this turn; 5. Frenzied Blade 150 knocks out 10-HP active Igglybuff; owner gains 2 points, 0 → 2. Iris does not heal. HP 100/130 swap is a retreat between distinct Haxorus. Owner point delta+2, cumulative 2; opponent remains 2. Iris expires at owner turn end. [Start](turn_evidence/t0548.00.jpg)
-HIS PLAN: ['Ability', 'Retreat:1', 'Attach:1Fighting@1 zone', 'Play:Iris', 'Attack:Frenzied Blade'] (ended)
+HIS PLAN: ['Ability', 'AttachTypedFromDiscard:Metal@0', 'Retreat:1', 'Attach:1Fighting@1 zone', 'Play:Iris', 'Attack:Frenzied Blade'] (ended)
 KM3 modal (12/12): ['Attach:1Fighting@0 zone', 'Retreat:1', 'Play:Iris', 'Ability', 'AttachTypedFromDiscard', 'Attack:Frenzied Blade'] | agreement first 0 plan 0 | Supporter/Item choice or order
-KM3 first-step scores (seed 1): Attach:1Fighting@0 zone -8733; Ability@2 -18763; Play:Iris -18764; Attach:1Fighting@2 zone -18979; Attach:1Fighting@1 zone -19059; EndTurn -19326
+KM3 first-step scores (seed 1): Attach:1Fighting@0 zone -9903; Ability@2 -19773; Play:Iris -19944; Attach:1Fighting@2 zone -19959; Attach:1Fighting@1 zone -20039; EndTurn -20306
 NOTES: Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Haxorus: no Fraxure is left in the list, so the stack leaves it out (Rare Candy); knocked out between turns: Druddigon. The opponent's list is u
 ====================================================================================================
 KW-261013_010003000-t01  game turn 1 (his turn 1)  points 0-0  switch2: no  usable: True
@@ -866,7 +862,7 @@ ME   active: Regigigas B3 134 150hp E:DD(2) T:Heavy Helmet
 OPP  active: Drampa B4 124 100hp
      bench : Dragonair B4 117 40hp E:L(1) under:Dratini | hand 3 | discard: Professor's Research, Field Blower, Professor's Research, Poké Ball, Copycat, Drampa | stadium: None
 HIS TURN (review): 1. Alolan Muk at 380 s: Evolved to 110 HP; Power of Alchemy suppresses Basic abilities; 2. energy_attachment at 383 s: Third Darkness attached; 3. Professor's Research at 384 s: Draws Ilima then Kingambit; 4. Regigigas at 394 s: Giga Turbo100 KOs second Drampa; nested one Colorless Energy from Energy Zone attached to Bench Alolan Muk; Automatic: Second Drampa KO; owner gains second point; Dragonair 40 promoted. Ending hand 4: Rare Candy, Lucky Ice Pop, Ilima, Kingambit. 4 - Muk evolution - Research +2 =4. Ledger TURN_LEDGER.json row 9; [native start](turn_evidence/t0377.00.jpg), [native ending](turn_evidence/t0409.00.jpg).
-HIS PLAN: ['Evolve:Alolan Muk@2', 'Attach:1Darkness@0 zone', "Play:Professor's Research", 'Attack:Giga Turbo'] (ended)
+HIS PLAN: ['Evolve:Alolan Muk@2', 'Attach:1Darkness@0 zone', "Play:Professor's Research", 'Attack:Giga Turbo', 'Attach:1Colorless@2 fx'] (ended)
 KM3 modal (12/12): ['Evolve:Alolan Muk@2', 'Attach:1Darkness@0 zone', "Play:Professor's Research"] | agreement first 12 plan 12 | same plan
 KM3 first-step scores (seed 1): Evolve:Alolan Muk@2 12589; Attach:1Darkness@0 zone 12589; Play:Professor's Research 12292; Attach:1Darkness@2 zone 11985; EndTurn 11733; Attach:1Darkness@1 zone 11535
 NOTES: Dragonair stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Glimmora. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, 
@@ -1074,28 +1070,28 @@ NOTES: Glimmora stack taken from the printed evolution line (the ledger gives no
 KW-261013_015011000-t01  game turn 1 (his turn 1)  points 0-0  switch2: no  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
 ME   active: Pawniard B3a 041 50hp
-     bench : -
+     bench : Alolan Grimer A3 110 70hp
      hand  : Copycat, Poké Ball, Alolan Muk, Ilima | discard: - | zone now/next: None Darkness
 OPP  active: Falinks B2 092 70hp
      bench : - | hand 4 | discard: - | stadium: None
 HIS TURN (review): -
 HIS PLAN: ['Play:Poké Ball', 'Place:Regigigas', 'Play:Copycat'] (ended)
-KM3 modal (8/12): ['Play:Poké Ball'] | agreement first 8 plan 8 | same plan
-      other (4/12): ['Play:Copycat']
-KM3 first-step scores (seed 1): Play:Copycat 788; Play:Poké Ball 644; EndTurn -41
+KM3 modal (11/12): ['Play:Poké Ball'] | agreement first 11 plan 11 | same plan
+      other (1/12): ['Play:Copycat']
+KM3 first-step scores (seed 1): Play:Poké Ball 1186; Play:Copycat 988; EndTurn 430
 NOTES: The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.
 ====================================================================================================
 KW-261013_015011000-t03  game turn 3 (his turn 2)  points 0-0  switch2: no  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
 ME   active: Pawniard B3a 041 50hp
-     bench : -
+     bench : Regigigas B3 134 150hp; Alolan Grimer A3 110 70hp
      hand  : Professor's Research, Professor's Research, Heavy Helmet, Lucky Ice Pop, Glimmora | discard: Poké Ball, Copycat | zone now/next: Darkness Darkness
 OPP  active: Falinks B2 092 70hp E:F(1)
-     bench : - | hand 4 | discard: - | stadium: None
+     bench : Tyrogue A4 101 30hp | hand 4 | discard: - | stadium: None
 HIS TURN (review): -
 HIS PLAN: [] (not ended / cut)
-KM3 modal (12/12): ["Play:Professor's Research"] | agreement first 0 plan 0 | no plan recorded (the game ended first)
-KM3 first-step scores (seed 1): Play:Professor's Research -114; Play:Professor's Research -114; Attach:1Darkness@0 zone -114; Play:Heavy Helmet -298; EndTurn -707
+KM3 modal (12/12): ['Play:Heavy Helmet', 'Tool:Heavy Helmet@1', "Play:Professor's Research"] | agreement first 0 plan 0 | no plan recorded (the game ended first)
+KM3 first-step scores (seed 1): Play:Heavy Helmet 2483; Attach:1Darkness@0 zone 2483; Attach:1Darkness@1 zone 2233; Attach:1Darkness@2 zone 2153; Play:Professor's Research 2086; Play:Professor's Research 2086
 NOTES: The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.
 ====================================================================================================
 KW-261013_015659000-t01  game turn 1 (his turn 1)  points 0-0  switch2: no  usable: True
@@ -1109,7 +1105,7 @@ HIS TURN (review): -
 HIS PLAN: ['Play:Poké Ball', 'Place:Glimmet'] (ended)
 KM3 modal (12/12): ['Play:Poké Ball'] | agreement first 12 plan 12 | same plan
 KM3 first-step scores (seed 1): Play:Poké Ball 2901; Place:Pawniard@3 2901; Place:Pawniard@2 2901; EndTurn 2037
-NOTES: The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.
+NOTES: ledger corrected from the frames: the opponent played no Rare Candy at his turn 4 (Mega Lucario ex is a Stage 1; the frames show only Research leaving the hand): it is not in his discard and his hand is one card larger. The opponent's list is unknown (his hidden cards are filled from the pilot's own
 ====================================================================================================
 KW-261013_015659000-t03  game turn 3 (his turn 2)  points 0-0  switch2: no  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -1124,7 +1120,7 @@ KM3 modal (9/12): ['Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Place:Pawniard',
       other (3/12): ['Play:Lucky Ice Pop', 'Place:Pawniard', 'Evolve:Glimmora@2', 'Attach:1Darkness@0 zone']
 KM3 first-step scores (seed 1): Play:Lucky Ice Pop 2652; Evolve:Glimmora@2 2652; Evolve:Glimmora@1 2652; Attach:1Darkness@0 zone 2652; Attach:1Darkness@2 zone 2536; Attach:1Darkness@1 zone 2536
       his first action Evolve:Glimmora@1 is rank 3 of 8, 0 below the top
-NOTES: The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.
+NOTES: ledger corrected from the frames: the opponent played no Rare Candy at his turn 4 (Mega Lucario ex is a Stage 1; the frames show only Research leaving the hand): it is not in his discard and his hand is one card larger. The opponent's list is unknown (his hidden cards are filled from the pilot's own
 ====================================================================================================
 KW-261013_015659000-t05  game turn 5 (his turn 3)  points 0-0  switch2: no  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -1132,13 +1128,13 @@ ME   active: Regigigas B3 134 30hp E:D(1)
      bench : Glimmora B3a 045 90hp under:Glimmet; Glimmet B3a 044 60hp
      hand  : Pawniard, Alolan Muk, Glimmora | discard: Poké Ball, Lucky Ice Pop | zone now/next: Darkness Darkness
 OPP  active: Mega Lucario ex B3 081 190hp E:FF(2) under:Riolu
-     bench : - | hand 5 | discard: Professor's Research, Rare Candy | stadium: None
+     bench : - | hand 6 | discard: Professor's Research | stadium: None
 HIS TURN (review): -
 HIS PLAN: ['Evolve:Glimmora@2', 'Place:Pawniard', 'Attach:1Darkness@3 zone'] (ended)
 KM3 modal (12/12): ['Place:Pawniard', 'Evolve:Glimmora@2', 'Attach:1Darkness@0 zone'] | agreement first 0 plan 0 | bench development
-KM3 first-step scores (seed 1): Place:Pawniard@3 -458; Evolve:Glimmora@2 -458; Attach:1Darkness@0 zone -458; Attach:1Darkness@2 zone -964; Attach:1Darkness@1 zone -964; EndTurn -1232
+KM3 first-step scores (seed 1): Place:Pawniard@3 -459; Evolve:Glimmora@2 -459; Attach:1Darkness@0 zone -459; Attach:1Darkness@2 zone -966; Attach:1Darkness@1 zone -966; EndTurn -1234
       his first action Evolve:Glimmora@2 is rank 2 of 6, 0 below the top
-NOTES: Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon tha
+NOTES: Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent played no Rare Candy at his turn 4 (Mega Lucario ex is a Stage 1; the frames show only Res
 ====================================================================================================
 KW-261013_015659000-t07  game turn 7 (his turn 4)  points 0-1  switch2: no  usable: True
 KNOCKED OUT so far: his 1 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -1146,12 +1142,12 @@ ME   active: Glimmora B3a 045 90hp under:Glimmet
      bench : Pawniard B3a 041 50hp E:D(1); Glimmora B3a 045 90hp under:Glimmet
      hand  : Alolan Muk, Kingambit | discard: Poké Ball, Lucky Ice Pop, Regigigas | zone now/next: Darkness Darkness
 OPP  active: Mega Lucario ex B3 081 190hp E:FFF(3) under:Riolu
-     bench : - | hand 6 | discard: Professor's Research, Rare Candy | stadium: None
+     bench : - | hand 7 | discard: Professor's Research | stadium: None
 HIS TURN (review): -
 HIS PLAN: ['Attach:1Darkness@0 zone', 'Attack:Venomous Hit'] (ended)
 KM3 modal (12/12): ['Attach:1Darkness@0 zone', 'Attack:Venomous Hit'] | agreement first 12 plan 12 | same plan
-KM3 first-step scores (seed 1): Attach:1Darkness@0 zone -10346; Attach:1Darkness@2 zone -11179; EndTurn -11269; Attach:1Darkness@1 zone -11269
-NOTES: Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Regigigas. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard
+KM3 first-step scores (seed 1): Attach:1Darkness@0 zone -10347; Attach:1Darkness@2 zone -11180; EndTurn -11270; Attach:1Darkness@1 zone -11270
+NOTES: Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Regigigas; ledger corrected from the frames: the opponent played no Rare Candy at his turn 4 (Mega Lucario ex 
 ====================================================================================================
 KW-261013_015659000-t09  game turn 9 (his turn 5)  points 0-2  switch2: no  usable: True
 KNOCKED OUT so far: his 2 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -1159,12 +1155,12 @@ ME   active: Glimmora B3a 045 90hp under:Glimmet
      bench : Pawniard B3a 041 50hp E:D(1)
      hand  : Alolan Muk, Kingambit, Poké Ball | discard: Poké Ball, Lucky Ice Pop, Regigigas, Glimmora, Glimmet | zone now/next: Darkness Darkness
 OPP  active: Mega Lucario ex B3 081 180hp E:FFFF(4) under:Riolu
-     bench : - | hand 5 | discard: Professor's Research, Rare Candy, Pokémon Center Lady | stadium: Arena of Antiquity B3 154
+     bench : - | hand 6 | discard: Professor's Research, Pokémon Center Lady | stadium: Arena of Antiquity B3 154
 HIS TURN (review): -
 HIS PLAN: ['Play:Poké Ball', 'Place:Alolan Grimer', 'Attach:1Darkness@0 zone', 'Attack:Venomous Hit'] (ended)
 KM3 modal (12/12): ['Play:Poké Ball'] | agreement first 12 plan 12 | same plan
-KM3 first-step scores (seed 1): Play:Poké Ball -20499; Attach:1Darkness@0 zone -20499; Attach:1Darkness@1 zone -21254; EndTurn -21324
-NOTES: Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Glimmora. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard 
+KM3 first-step scores (seed 1): Play:Poké Ball -20500; Attach:1Darkness@0 zone -20500; Attach:1Darkness@1 zone -21255; EndTurn -21325
+NOTES: Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Glimmora; ledger corrected from the frames: the opponent played no Rare Candy at his turn 4 (Mega Lucario ex i
 ====================================================================================================
 KW-261013_015659000-t13  game turn 13 (his turn 7)  points 0-2  switch2: no  usable: True
 KNOCKED OUT so far: his 2 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -1172,12 +1168,12 @@ ME   active: Glimmora B3a 045 10hp E:D(1) under:Glimmet
      bench : Pawniard B3a 041 10hp E:D(1); Alolan Muk B2 097 110hp E:D(1) under:Alolan Grimer
      hand  : Kingambit, Copycat, Professor's Research, Heavy Helmet | discard: Poké Ball, Lucky Ice Pop, Regigigas, Glimmora, Glimmet, Poké Ball, Professor's Research | zone now/next: Darkness Darkness
 OPP  active: Hitmontop A4 102 30hp E:F(1) COND:Poisoned
-     bench : Riolu B3 079 60hp E:F(1); Mega Lucario ex B3 081 160hp E:FFF(3) T:Protective Poncho under:Riolu; Hitmontop A4 102 80hp | hand 2 | discard: Professor's Research, Rare Candy, Pokémon Center Lady, Lucky Ice Pop, Poké Ball | stadium: Arena of Antiquity B3 154
+     bench : Riolu B3 079 60hp E:F(1); Mega Lucario ex B3 081 160hp E:FFF(3) T:Protective Poncho under:Riolu; Hitmontop A4 102 80hp | hand 2 | discard: Professor's Research, Pokémon Center Lady, Lucky Ice Pop, Poké Ball | stadium: Arena of Antiquity B3 154
 HIS TURN (review): -
 HIS PLAN: ["Play:Professor's Research", 'Play:Mesagoza'] (not ended / cut)
 KM3 modal (12/12): ["Play:Professor's Research"] | agreement first 12 plan 12 | same plan
 KM3 first-step scores (seed 1): Play:Professor's Research -11054; Attach:1Darkness@2 zone -11054; Play:Copycat -11060; Play:Heavy Helmet -11158; Attach:1Darkness@1 zone -11164; Attach:1Darkness@0 zone -11164
-NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are fill
+NOTES: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent played no 
 ====================================================================================================
 KW-261013_020824000-t01  game turn 1 (his turn 1)  points 0-0  switch2: no  usable: True
 KNOCKED OUT so far: his 0 | opponent None (Overlord's Blade = 60 + 40 per Pokemon of his knocked out)
@@ -1256,8 +1252,8 @@ ME   active: Regigigas B3 134 80hp E:D(1)
 OPP  active: Vespiquen ex B4 011 170hp E:GG(2) T:Leaf Cape under:Combee
      bench : Vespiquen ex B4 011 170hp E:G(1) T:Leaf Cape under:Combee; Teal Mask Ogerpon ex B2 017 130hp E:G(1) | hand 2 | discard: Copycat, X Speed, Copycat, Sabrina, Shuckle ex | stadium: Fragrant Forest B3 153
 HIS TURN (review): 1. Heal Regigigas80 to100; tails, Lucky Ice Pop discarded; 2. Return damaged Colorless Regigigas to hand; its1 Darkness discarded; 3. Choose Pawniard as replacement Active; 4. Bench returned Regigigas center, fresh150HP; 5. Pawniard retreats; Regigigas becomes Active; 6. Attach 1 Darkness from Energy Zone to Regigigas; 7. End Turn without attack, hand2
-HIS PLAN: ['Play:Lucky Ice Pop', 'Play:Ilima', 'Place:Regigigas', 'Retreat:3'] (ended)
-KM3 modal (5/12): ['Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Play:Lucky Ice Pop'] | agreement first 12 plan 0 | Supporter/Item choice or order
+HIS PLAN: ['Play:Lucky Ice Pop', 'Play:Ilima', 'Promote:0@1', 'Place:Regigigas', 'Retreat:1', 'Attach:1Darkness@0 zone'] (ended)
+KM3 modal (5/12): ['Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Attach:1Darkness@0 zone', 'UseStadium'] | agreement first 12 plan 0 | Supporter/Item choice or order
       other (4/12): ['Play:Lucky Ice Pop', 'Play:Lucky Ice Pop', 'Attach:1Darkness@0 zone', 'UseStadium']
       other (3/12): ['Play:Lucky Ice Pop', 'Attach:1Darkness@0 zone', 'UseStadium']
 KM3 first-step scores (seed 1): Play:Lucky Ice Pop -21722; Attach:1Darkness@0 zone -21722; UseStadium -21762; Attach:1Darkness@2 zone -21889; Attach:1Darkness@1 zone -21999; Play:Ilima -22032
