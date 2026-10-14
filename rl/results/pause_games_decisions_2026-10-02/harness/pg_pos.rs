@@ -14,6 +14,9 @@
 //!     Overlord's Blade: 40 more per knock-out), set with `set_own_knockouts_this_game` before the bot moves; without it, 0 as before;
 //!   - `--dump-state` adds one {"kind":"state", ...} line per position after its "position" line: the knock-out counts and every
 //!     condition as the built engine state holds them (for the tests, test_pg_pos.py). Without the flag nothing is added.
+//! Oct 14 (the laptop's review of the Oct 12-13 positions): the Stadium is set before the board, and each recorded "hp" is applied once
+//! the board's HP bonuses are in place, so a damaged Basic under Starting Plains keeps the HP the game showed (it used to gain 20 when
+//! the engine refreshed its bonuses). The state line also gives "hp": each Pokemon's HP after the engine's own refresh.
 use deckgym::actions::{Action, SimpleAction};
 use deckgym::models::{Card, EnergyType, PlayedCard, StatusCondition};
 use deckgym::players::expectiminimax_player::pg_label;
@@ -214,7 +217,27 @@ fn build(pos: &Value, deck_me: &Deck, deck_filler: &Deck, shuffle_seed: u64) -> 
         unseen = t;
     }
 
+    // the Stadium first, so the board's HP bonuses (Starting Plains: +20 to every Basic) are in place when the board is set
+    match stadium {
+        Some(s) => {
+            st.active_stadium = Some(card(s["card"].as_str().unwrap()));
+            st.active_stadium_owner = stadium_owner;
+        }
+        None => {
+            st.active_stadium = None;
+            st.active_stadium_owner = None;
+        }
+    }
     st.set_board(board_me, board_opp);
+    // each Pokemon's recorded HP is the HP the game showed, bonuses included: set it now that set_board has refreshed them (pk() could only
+    // set it against the printed HP)
+    for (side, spec) in [(0usize, me), (1usize, opp)] {
+        for (i, p) in spec["board"].as_array().unwrap().iter().enumerate() {
+            if let Some(h) = p.get("hp").and_then(|h| h.as_u64()) {
+                st.in_play_pokemon[side][i] = st.in_play_pokemon[side][i].take().map(|c| c.with_remaining_hp(h as u32));
+            }
+        }
+    }
     st.hands[0] = hand_me;
     st.decks[0].cards = unseen.clone();
     st.discard_piles[0] = discard_me;
@@ -246,16 +269,6 @@ fn build(pos: &Value, deck_me: &Deck, deck_filler: &Deck, shuffle_seed: u64) -> 
     st.discard_piles[1] = discard_opp;
     st.discard_energies[1] = energies(&opp["discard_energy"]);
 
-    match stadium {
-        Some(s) => {
-            st.active_stadium = Some(card(s["card"].as_str().unwrap()));
-            st.active_stadium_owner = stadium_owner;
-        }
-        None => {
-            st.active_stadium = None;
-            st.active_stadium_owner = None;
-        }
-    }
     st.points = [pos["points"][0].as_u64().unwrap() as u8, pos["points"][1].as_u64().unwrap() as u8];
     st.turn_count = pos["turn_count"].as_u64().unwrap() as u8;
     st.current_player = 0;
@@ -380,7 +393,16 @@ fn main() {
                 }
                 Value::Object(m)
             };
-            println!("{}", json!({"kind": "state", "id": id, "knockouts": raw["own_knockouts_this_game"], "conditions": {"me": conds(0), "opp": conds(1)}}));
+            // each Pokemon's HP as the engine will use it: the engine's own bonus refresh (set_board) run on a copy
+            let mut refreshed = first.state.clone();
+            let boards: Vec<Vec<PlayedCard>> = (0..2).map(|p| refreshed.in_play_pokemon[p].iter().flatten().cloned().collect()).collect();
+            refreshed.set_board(boards[0].clone(), boards[1].clone());
+            let hps = |side: usize| -> Value {
+                Value::Object(refreshed.in_play_pokemon[side].iter().enumerate()
+                    .filter_map(|(i, p)| p.as_ref().map(|p| (i.to_string(), json!(p.get_remaining_hp())))).collect())
+            };
+            println!("{}", json!({"kind": "state", "id": id, "knockouts": raw["own_knockouts_this_game"], "conditions": {"me": conds(0), "opp": conds(1)},
+                                  "hp": {"me": hps(0), "opp": hps(1)}}));
         }
         if !first.problems.is_empty() {
             continue;
