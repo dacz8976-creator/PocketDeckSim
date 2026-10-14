@@ -1,0 +1,85 @@
+Recording_QA: /mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA
+Committed state read from: sonnet/battle-logs-cleanup (c049a572)
+Games with positions in the repo: 38; audit list: found; confirmed: NO (--apply will refuse)
+
+batch                                          verdict    games  to delete      size    stays      size  why
+BATCH_2026-09-30                               keep       0/0            0      0 MB        0      0 MB  no game packets in it
+BATCH_2026-09-30_EVENING                       keep       0/0            0      0 MB        0      0 MB  no game packets in it
+BATCH_2026-10-01_RULES                         keep       0/0            0      0 MB        0      0 MB  no game packets in it
+BATCH_2026-10-02_CAREFREE_SNIPES               keep       0/0            0      0 MB        0      0 MB  no game packets in it
+BATCH_2026-10-02_COMPETITIVE                   keep       0/0            0      0 MB        0      0 MB  no game packets in it
+      never touched: 3 image files (0 MB) at the batch level
+BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD   keep       0/8            0      0 MB     5925   1.76 GB  8 of 8 game packets held back (8 x not in the repo)
+      stays 20261002_205230000_iOS_auto_sol: not in the repo: no committed games_meta.json (with positions) names this folder
+      stays 20261002_205731000_iOS_auto_sol: not in the repo: no committed games_meta.json (with positions) names this folder
+      stays 20261002_210612000_iOS_auto_sol: not in the repo: no committed games_meta.json (with positions) names this folder
+      stays 20261002_210952000_iOS_auto_sol: not in the repo: no committed games_meta.json (with positions) names this folder
+      stays 20261002_211613000_iOS_auto_sol: not in the repo: no committed games_meta.json (with positions) names this folder
+      stays 20261002_214254000_iOS_shark_sol: not in the repo: no committed games_meta.json (with positions) names this folder
+      stays 20261002_215203000_iOS_shark_sol: not in the repo: no committed games_meta.json (with positions) names this folder
+      stays 20261002_215825000_iOS_shark_sol: not in the repo: no committed games_meta.json (with positions) names this folder
+      never touched: 4 frames (7 MB) in non-game sub-folders
+BATCH_2026-10-02_SHARK_TEMPO                   keep       0/0            0      0 MB        0      0 MB  no game packets in it
+      never touched: 1 image files (0 MB) at the batch level
+BATCH_2026-10-06_NEW_PAUSE_GAMES               PARTIAL   13/17       12883   5.93 GB     2437    608 MB  4 of 17 game packets held back (4 x not in the repo)
+      stays 20261004_214518000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder
+      stays 20261004_214731000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder
+      stays 20261005_034229000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder
+      stays 20261006_012140000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder
+      never touched: 1 frames (0 MB) in non-game sub-folders; 1 image files (0 MB) at the batch level
+BATCH_2026-10-09_NEW_PAUSE_GAMES               DELETE     8/8         5758   1.64 GB        0      0 MB  all 8 game packets are in the repo, audited, and have their text outputs
+      never touched: 2 image files (0 MB) at the batch level
+BATCH_2026-10-09_NEW_UPLOADS                   keep       0/8            0      0 MB     2220    592 MB  8 of 8 game packets held back (8 x not in the repo; 8 x text output TURN_LEDGER.json missing or empty; 8 x text output DECK_USED.json missing or empty)
+      stays 20261009_193905000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261009_194240000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261009_194445000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261009_195029000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261009_195432000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261009_195808000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261009_222100000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261009_222740000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+BATCH_2026-10-11_NEW_PAUSE_GAMES               DELETE     3/3         1296    206 MB        0      0 MB  all 3 game packets are in the repo, audited, and have their text outputs
+      never touched: 3 image files (0 MB) at the batch level
+BATCH_2026-10-12_ADDITIONAL_TWO                keep       0/2            0      0 MB     2617    798 MB  2 of 2 game packets held back (2 x not audited)
+      stays 20261012_225319000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
+      stays 20261012_230258000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
+      never touched: 2 image files (0 MB) at the batch level
+BATCH_2026-10-12_NEW_LONG_VIDEOS               keep       0/4            0      0 MB     4015   1.32 GB  4 of 4 game packets held back (4 x not audited)
+      stays 20261012_010706000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
+      stays 20261012_203719000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
+      stays 20261012_210041000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
+      stays 20261012_210823000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
+      never touched: 3 image files (0 MB) at the batch level
+BATCH_2026-10-13_NEWEST_TWO                    keep       0/2            0      0 MB     2432    562 MB  2 of 2 game packets held back (2 x not audited)
+      stays 20261013_022530000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
+      stays 20261013_030351000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
+      never touched: 1 image files (0 MB) at the batch level
+BATCH_2026-10-13_REMAINING_SIX                 keep       0/6            0      0 MB     5132   1.23 GB  6 of 6 game packets held back (6 x not audited)
+      stays 20261013_010003000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
+      stays 20261013_010837000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
+      stays 20261013_014423000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
+      stays 20261013_015011000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
+      stays 20261013_015659000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
+      stays 20261013_020824000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
+BATCH_2026-10-14_ADDITIONAL_TWO                keep       0/2            0      0 MB      298    139 MB  2 of 2 game packets held back (2 x not in the repo; 2 x text output TURN_LEDGER.json missing or empty; 2 x text output DECK_USED.json missing or empty)
+      stays 20261014_153139000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261014_153908000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+BATCH_2026-10-14_LADDER_RESUME_FIVE            keep       0/0            0      0 MB        0      0 MB  no game packets in it
+      never touched: 2 image files (0 MB) at the batch level
+BATCH_2026-10-14_NEW_LADDER_FOUR               keep       0/4            0      0 MB      415    175 MB  4 of 4 game packets held back (4 x not in the repo; 4 x text output TURN_LEDGER.json missing or empty; 4 x text output DECK_USED.json missing or empty)
+      stays 20261014_142546000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261014_143111000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261014_144627000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261014_145449000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      never touched: 1 image files (0 MB) at the batch level
+BATCH_2026-10-14_OLDER_FOUR                    keep       0/4            0      0 MB      888    298 MB  4 of 4 game packets held back (4 x not in the repo; 4 x text output TURN_LEDGER.json missing or empty; 4 x text output DECK_USED.json missing or empty)
+      stays 20260926_211809000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20260926_212155000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261002_011527000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261002_012229000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      never touched: 8 frames (1 MB) in non-game sub-folders
+
+TO DELETE by --apply: 19,937 frames, 7.76 GB, from 3 batches (2 whole, 1 partial); with --whole-batches-only: 7,054 frames, 1.84 GB from the 2 whole batches
+STAYS: 26,379 frames, 7.41 GB in game packets that do not pass (and the sub-folder and batch-level images above)
+Only .jpg/.jpeg/.png files inside the game packets that pass are removed by --apply; json/txt/md, videos and everything outside Recording_QA never are.
+Outside BATCH_* (not in scope, never touched): 105 folders in Recording_QA holding 19,427 image files.
