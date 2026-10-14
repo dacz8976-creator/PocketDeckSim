@@ -42,7 +42,7 @@
      "hp": 60
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Psychic"
   },
   "stadium": null,
   "turn_effects": [],
@@ -122,7 +122,7 @@
    "knockouts": 0
   },
   "opp": {
-   "hand_count": 5,
+   "hand_count": 6,
    "discard": [
     "Professor's Research A4b 373",
     "Poké Ball A2b 111"
@@ -141,7 +141,7 @@
      "hp": 170
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Psychic"
   },
   "stadium": null,
   "turn_effects": [],
@@ -157,7 +157,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "ledger corrected from the frames: the opponent's hand at his turns 3 / 5 / 7 is 6 / 7 / 8 (the frames), not 5 / 6 / 7. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -232,7 +232,7 @@
    "knockouts": 0
   },
   "opp": {
-   "hand_count": 6,
+   "hand_count": 7,
    "discard": [
     "Professor's Research A4b 373",
     "Poké Ball A2b 111",
@@ -250,7 +250,7 @@
      ]
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Psychic"
   },
   "stadium": null,
   "turn_effects": [],
@@ -265,7 +265,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent's hand at his turns 3 / 5 / 7 is 6 / 7 / 8 (the frames), not 5 / 6 / 7. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -347,7 +347,7 @@
    "knockouts": 0
   },
   "opp": {
-   "hand_count": 7,
+   "hand_count": 8,
    "discard": [
     "Professor's Research A4b 373",
     "Poké Ball A2b 111",
@@ -374,7 +374,7 @@
      "hp": 130
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Psychic"
   },
   "stadium": null,
   "turn_effects": [],
@@ -387,7 +387,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; opponent hand range [7, 8]: the lower end is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; ledger corrected from the frames: the opponent's hand at his turns 3 / 5 / 7 is 6 / 7 / 8 (the frames), not 5 / 6 / 7. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -497,7 +497,7 @@
      "hp": 130
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Psychic"
   },
   "stadium": null,
   "turn_effects": [],
@@ -505,7 +505,8 @@
    "Play:Mesagoza",
    "UseStadium",
    "Attach:1Darkness@0 zone",
-   "Attack:Giga Turbo"
+   "Attack:Giga Turbo",
+   "Attach:1Colorless@2 fx"
   ],
   "his_plan_ended": true,
   "hand_source": "codex",
@@ -627,7 +628,7 @@
      ]
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Psychic"
   },
   "stadium": {
    "card": "Peculiar Plaza B2 155",
@@ -772,7 +773,7 @@
      ]
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Psychic"
   },
   "stadium": {
    "card": "Peculiar Plaza B2 155",
@@ -935,7 +936,7 @@
      ]
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Psychic"
   },
   "stadium": {
    "card": "Peculiar Plaza B2 155",
@@ -943,7 +944,6 @@
   },
   "turn_effects": [],
   "his_plan": [
-   "Play:Poké Ball",
    "Evolve:Glimmora@2",
    "Attach:1Darkness@0 zone",
    "Attack:Sludge Bomb"
@@ -953,7 +953,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; Kirlia stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; Kirlia stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -1116,7 +1116,7 @@
      ]
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Psychic"
   },
   "stadium": {
    "card": "Peculiar Plaza B2 155",
@@ -1304,7 +1304,7 @@
      ]
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Psychic"
   },
   "stadium": {
    "card": "Peculiar Plaza B2 155",
@@ -1497,7 +1497,7 @@
      ]
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Psychic"
   },
   "stadium": {
    "card": "Peculiar Plaza B2 155",
@@ -1917,7 +1917,7 @@
    "knockouts": 0
   },
   "opp": {
-   "hand_count": 3,
+   "hand_count": 4,
    "discard": [
     "Copycat B1 225",
     "Poké Ball A2b 111"
@@ -1963,16 +1963,17 @@
    "Evolve:Kingambit@3",
    "UseStadium",
    "Play:Ilima",
+   "Promote:0@2",
    "Place:Regigigas",
    "Attach:1Darkness@0 zone",
-   "Attack:Giga Turbo"
+   "Attack:Venomous Hit"
   ],
   "his_plan_ended": true,
   "hand_source": "codex",
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); attack title of Regigigas not named in the ledger: the last printed attack is used; opponent hand range [3, 4]: the lower end is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent's hand at his turns 7 / 9 / 11 / 13 is 4 / 3 / 4 / 4 (the frames); the low end of the ledger's range gave 3 at turns 7, 11 and 13. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2113,7 +2114,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; opponent hand range [3, 4]: the lower end is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; ledger corrected from the frames: the opponent's hand at his turns 7 / 9 / 11 / 13 is 4 / 3 / 4 / 4 (the frames); the low end of the ledger's range gave 3 at turns 7, 11 and 13. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2200,7 +2201,7 @@
    "knockouts": 0
   },
   "opp": {
-   "hand_count": 3,
+   "hand_count": 4,
    "discard": [
     "Copycat B1 225",
     "Poké Ball A2b 111",
@@ -2260,7 +2261,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; opponent hand range [3, 4]: the lower end is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; ledger corrected from the frames: the opponent's hand at his turns 7 / 9 / 11 / 13 is 4 / 3 / 4 / 4 (the frames); the low end of the ledger's range gave 3 at turns 7, 11 and 13. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2348,7 +2349,7 @@
    "knockouts": 1
   },
   "opp": {
-   "hand_count": 3,
+   "hand_count": 4,
    "discard": [
     "Copycat B1 225",
     "Poké Ball A2b 111",
@@ -2410,7 +2411,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; knocked out between turns: Regigigas; opponent hand range [3, 4]: the lower end is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; knocked out between turns: Regigigas; ledger corrected from the frames: the opponent's hand at his turns 7 / 9 / 11 / 13 is 4 / 3 / 4 / 4 (the frames); the low end of the ledger's range gave 3 at turns 7, 11 and 13. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -2718,7 +2719,7 @@
      ]
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Lightning"
   },
   "stadium": {
    "card": "Rainbow Cave B4 155",
@@ -3154,6 +3155,7 @@
    "Play:Heavy Helmet",
    "Tool:Heavy Helmet@2",
    "Play:Mesagoza",
+   "UseStadium",
    "Attach:1Darkness@0 zone",
    "Attack:Hang Down"
   ],
@@ -3626,7 +3628,7 @@
      "hp": 50
     },
     {
-     "card": "Alolan Meowth A3 108",
+     "card": "Meowth B2 124",
      "hp": 50
     }
    ],
@@ -3639,6 +3641,7 @@
    "Play:Poké Ball",
    "Place:Glimmet",
    "Play:Mesagoza",
+   "UseStadium",
    "Attach:1Darkness@0 zone"
   ],
   "his_plan_ended": true,
@@ -3646,21 +3649,12 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "opponent hand range [5, 6]: the lower end is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "ledger corrected from the frames: the opponent's left-Bench Pokémon is a Meowth B2 124 / B2 204 (Carefree Steps, Feelin' Fine, 50 HP, Colorless), not an Alolan Meowth (Codex wrote 'Alolan Meowth, 50 HP, Nasty Plot'; no such card exists); opponent hand range [5, 6]: the lower end is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
-  "opp_ambiguous": [
-   {
-    "name": "Alolan Meowth",
-    "used": "A3 108",
-    "could_also_be": [
-     "A3a 037",
-     "B2 094"
-    ]
-   }
-  ],
+  "opp_ambiguous": [],
   "usable": true,
   "usable_reason": null
  },
@@ -3719,7 +3713,7 @@
      ]
     },
     {
-     "card": "Alolan Meowth A3 108",
+     "card": "Meowth B2 124",
      "hp": 50
     },
     {
@@ -3736,6 +3730,7 @@
   "turn_effects": [],
   "his_plan": [
    "Place:Regigigas",
+   "UseStadium",
    "Attach:1Darkness@0 zone",
    "Retreat:2",
    "Evolve:Alolan Muk@2",
@@ -3748,20 +3743,12 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "opponent hand range [6, 7]: the lower end is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "ledger corrected from the frames: the opponent's left-Bench Pokémon is a Meowth B2 124 / B2 204 (Carefree Steps, Feelin' Fine, 50 HP, Colorless), not an Alolan Meowth (Codex wrote 'Alolan Meowth, 50 HP, Nasty Plot'; no such card exists); opponent hand range [6, 7]: the lower end is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
   "opp_ambiguous": [
-   {
-    "name": "Alolan Meowth",
-    "used": "A3 108",
-    "could_also_be": [
-     "A3a 037",
-     "B2 094"
-    ]
-   },
    {
     "name": "Pidgey",
     "used": "A1 186",
@@ -3846,7 +3833,7 @@
      ]
     },
     {
-     "card": "Alolan Meowth A3 108",
+     "card": "Meowth B2 124",
      "hp": 50
     },
     {
@@ -3882,20 +3869,12 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); the opponent's Mega Pidgeot ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent's left-Bench Pokémon is a Meowth B2 124 / B2 204 (Carefree Steps, Feelin' Fine, 50 HP, Colorless), not an Alolan Meowth (Codex wrote 'Alolan Meowth, 50 HP, Nasty Plot'; no such card exists); the opponent's Mega Pidgeot ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
   "plan_truncated_at": null,
   "opp_ambiguous": [
-   {
-    "name": "Alolan Meowth",
-    "used": "A3 108",
-    "could_also_be": [
-     "A3a 037",
-     "B2 094"
-    ]
-   },
    {
     "name": "Pidgey",
     "used": "A1 186",
@@ -4004,7 +3983,7 @@
      ]
     },
     {
-     "card": "Alolan Meowth A3 108",
+     "card": "Meowth B2 124",
      "hp": 50
     },
     {
@@ -4028,16 +4007,17 @@
   "turn_effects": [],
   "his_plan": [
    "Play:Ilima",
+   "Promote:0@1",
    "Place:Glimmet",
-   "Attach:1Darkness@1 zone",
-   "Attack:Giga Turbo"
+   "Attach:1Darkness@0 zone",
+   "Attack:Venomous Hit"
   ],
   "his_plan_ended": true,
   "hand_source": "codex",
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; attack title of Regigigas not named in the ledger: the last printed attack is used; the opponent's Mega Pidgeot ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; ledger corrected from the frames: the opponent's left-Bench Pokémon is a Meowth B2 124 / B2 204 (Carefree Steps, Feelin' Fine, 50 HP, Colorless), not an Alolan Meowth (Codex wrote 'Alolan Meowth, 50 HP, Nasty Plot'; no such card exists); the opponent's Mega Pidgeot ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -4050,14 +4030,6 @@
      "B1 180"
     ],
     "under": "Mega Pidgeot ex"
-   },
-   {
-    "name": "Alolan Meowth",
-    "used": "A3 108",
-    "could_also_be": [
-     "A3a 037",
-     "B2 094"
-    ]
    },
    {
     "name": "Pidgey",
@@ -4161,7 +4133,7 @@
      ]
     },
     {
-     "card": "Alolan Meowth A3 108",
+     "card": "Meowth B2 124",
      "hp": 50
     },
     {
@@ -4201,7 +4173,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; knocked out between turns: Glimmora; the opponent's Mega Pidgeot ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; knocked out between turns: Glimmora; ledger corrected from the frames: the opponent's left-Bench Pokémon is a Meowth B2 124 / B2 204 (Carefree Steps, Feelin' Fine, 50 HP, Colorless), not an Alolan Meowth (Codex wrote 'Alolan Meowth, 50 HP, Nasty Plot'; no such card exists); the opponent's Mega Pidgeot ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -4214,14 +4186,6 @@
      "B1 180"
     ],
     "under": "Mega Pidgeot ex"
-   },
-   {
-    "name": "Alolan Meowth",
-    "used": "A3 108",
-    "could_also_be": [
-     "A3a 037",
-     "B2 094"
-    ]
    },
    {
     "name": "Pidgey",
@@ -4337,7 +4301,7 @@
      ]
     },
     {
-     "card": "Alolan Meowth A3 108",
+     "card": "Meowth B2 124",
      "hp": 50
     },
     {
@@ -4368,7 +4332,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; the opponent's Mega Pidgeot ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; ledger corrected from the frames: the opponent's left-Bench Pokémon is a Meowth B2 124 / B2 204 (Carefree Steps, Feelin' Fine, 50 HP, Colorless), not an Alolan Meowth (Codex wrote 'Alolan Meowth, 50 HP, Nasty Plot'; no such card exists); the opponent's Mega Pidgeot ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -4381,14 +4345,6 @@
      "B1 180"
     ],
     "under": "Mega Pidgeot ex"
-   },
-   {
-    "name": "Alolan Meowth",
-    "used": "A3 108",
-    "could_also_be": [
-     "A3a 037",
-     "B2 094"
-    ]
    },
    {
     "name": "Pidgey",
@@ -4747,7 +4703,7 @@
    "knockouts": 2
   },
   "opp": {
-   "hand_count": 5,
+   "hand_count": 4,
    "discard": [
     "Poké Ball A2b 111",
     "Professor's Research A4b 373",
@@ -4806,7 +4762,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "knocked out between turns: Pawniard; opponent hand range [5, 6]: the lower end is used; the opponent's Baxcalibur: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "knocked out between turns: Pawniard; ledger corrected from the frames: the opponent's hand at his turn 8 is 4 (the frames; Codex wrote 5 to 6 but its own plays give 4); the opponent's Baxcalibur: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -5451,7 +5407,8 @@
    "Play:Lucky Ice Pop",
    "Attach:1Darkness@0 zone",
    "Play:Copycat",
-   "Attack:Giga Turbo"
+   "Attack:Giga Turbo",
+   "Attach:1Colorless@1 fx"
   ],
   "his_plan_ended": true,
   "hand_source": "codex",
@@ -5669,7 +5626,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "ledger corrected from the frames: the opponent's Tool is Elegant Cape B3b 065 (+30 HP on a Stage 1), not Giant Cape (+20 on any Pokémon): Scyther stays at 70 and Mega Scizor ex is 230. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -5710,7 +5667,7 @@
      ]
     },
     {
-     "card": "Dratini A3b 051",
+     "card": "Dratini B4 116",
      "hp": 60
     }
    ],
@@ -5743,7 +5700,7 @@
       "Metal"
      ],
      "tools": [
-      "Giant Cape A2 147"
+      "Elegant Cape B3b 065"
      ]
     }
    ],
@@ -5764,7 +5721,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "ledger corrected from the frames: the opponent's Tool is Elegant Cape B3b 065 (+30 HP on a Stage 1), not Giant Cape (+20 on any Pokémon): Scyther stays at 70 and Mega Scizor ex is 230. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -5812,14 +5769,14 @@
      "hp": 70
     },
     {
-     "card": "Dratini A3b 051",
+     "card": "Dratini B4 116",
      "hp": 60
     },
     {
      "card": "Dragonair B4 117",
      "hp": 80,
      "behind": [
-      "Dratini A3b 051"
+      "Dratini B4 116"
      ]
     }
    ],
@@ -5853,7 +5810,7 @@
       "Metal"
      ],
      "tools": [
-      "Giant Cape A2 147"
+      "Elegant Cape B3b 065"
      ]
     },
     {
@@ -5864,7 +5821,7 @@
       "Metal"
      ],
      "tools": [
-      "Giant Cape A2 147"
+      "Elegant Cape B3b 065"
      ],
      "behind": [
       "Scyther B2b 001"
@@ -5884,7 +5841,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Dragonair stack taken from the printed evolution line (the ledger gives none); Mega Scizor ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Dragonair stack taken from the printed evolution line (the ledger gives none); Mega Scizor ex stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent's Tool is Elegant Cape B3b 065 (+30 HP on a Stage 1), not Giant Cape (+20 on any Pokémon): Scyther stays at 70 and Mega Scizor ex is 230. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -5945,14 +5902,14 @@
      ]
     },
     {
-     "card": "Dratini A3b 051",
+     "card": "Dratini B4 116",
      "hp": 60
     },
     {
      "card": "Dragonair B4 117",
      "hp": 80,
      "behind": [
-      "Dratini A3b 051"
+      "Dratini B4 116"
      ]
     }
    ],
@@ -5987,7 +5944,7 @@
       "Metal"
      ],
      "tools": [
-      "Giant Cape A2 147"
+      "Elegant Cape B3b 065"
      ]
     },
     {
@@ -5999,7 +5956,7 @@
       "Metal"
      ],
      "tools": [
-      "Giant Cape A2 147"
+      "Elegant Cape B3b 065"
      ],
      "behind": [
       "Scyther B2b 001"
@@ -6020,7 +5977,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Dragonair stack taken from the printed evolution line (the ledger gives none); Mega Scizor ex stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Dragonair stack taken from the printed evolution line (the ledger gives none); Mega Scizor ex stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent's Tool is Elegant Cape B3b 065 (+30 HP on a Stage 1), not Giant Cape (+20 on any Pokémon): Scyther stays at 70 and Mega Scizor ex is 230. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -6082,14 +6039,14 @@
      ]
     },
     {
-     "card": "Dratini A3b 051",
+     "card": "Dratini B4 116",
      "hp": 60
     },
     {
      "card": "Dragonair B4 117",
      "hp": 80,
      "behind": [
-      "Dratini A3b 051"
+      "Dratini B4 116"
      ]
     }
    ],
@@ -6118,7 +6075,7 @@
       "Metal"
      ],
      "tools": [
-      "Giant Cape A2 147"
+      "Elegant Cape B3b 065"
      ],
      "behind": [
       "Scyther B2b 001"
@@ -6132,7 +6089,7 @@
       "Metal"
      ],
      "tools": [
-      "Giant Cape A2 147"
+      "Elegant Cape B3b 065"
      ]
     },
     {
@@ -6156,6 +6113,7 @@
    "UseStadium",
    "Attach:1Fighting@3 zone",
    "Ability",
+   "AttachTypedFromDiscard:Fighting@0",
    "Attack:Frenzied Blade"
   ],
   "his_plan_ended": true,
@@ -6163,7 +6121,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus: a Rare Candy evolved it, so no Stage 1 is under it; Mega Scizor ex stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Druddigon. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus: a Rare Candy evolved it, so no Stage 1 is under it; Mega Scizor ex stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Druddigon; ledger corrected from the frames: the opponent's Tool is Elegant Cape B3b 065 (+30 HP on a Stage 1), not Giant Cape (+20 on any Pokémon): Scyther stays at 70 and Mega Scizor ex is 230. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -6232,14 +6190,14 @@
      ]
     },
     {
-     "card": "Dratini A3b 051",
+     "card": "Dratini B4 116",
      "hp": 60
     },
     {
      "card": "Dragonair B4 117",
      "hp": 80,
      "behind": [
-      "Dratini A3b 051"
+      "Dratini B4 116"
      ]
     }
    ],
@@ -6278,7 +6236,7 @@
       "Metal"
      ],
      "tools": [
-      "Giant Cape A2 147"
+      "Elegant Cape B3b 065"
      ],
      "behind": [
       "Scyther B2b 001"
@@ -6293,7 +6251,7 @@
       "Metal"
      ],
      "tools": [
-      "Giant Cape A2 147"
+      "Elegant Cape B3b 065"
      ]
     },
     {
@@ -6325,7 +6283,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus: a Rare Candy evolved it, so no Stage 1 is under it; Mega Scizor ex stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus: a Rare Candy evolved it, so no Stage 1 is under it; Mega Scizor ex stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent's Tool is Elegant Cape B3b 065 (+30 HP on a Stage 1), not Giant Cape (+20 on any Pokémon): Scyther stays at 70 and Mega Scizor ex is 230. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -6598,7 +6556,8 @@
    "Evolve:Dragonair@3",
    "UseStadium",
    "Attach:1Metal@1 zone",
-   "Ability"
+   "Ability",
+   "AttachTypedFromDiscard:Metal@0"
   ],
   "his_plan_ended": true,
   "hand_source": "codex",
@@ -6708,7 +6667,8 @@
    "Play:Lucky Ice Pop",
    "UseStadium",
    "Attach:1Metal@0 zone",
-   "Ability"
+   "Ability",
+   "AttachTypedFromDiscard:Metal@0"
   ],
   "his_plan_ended": true,
   "hand_source": "codex",
@@ -6800,7 +6760,7 @@
      ]
     },
     {
-     "card": "Darkrai B1 154",
+     "card": "Darkrai B2b 040",
      "hp": 120,
      "energy": [
       "Fighting",
@@ -6821,7 +6781,8 @@
    "Play:Lucky Ice Pop",
    "Retreat:1",
    "Attach:1Metal@1 zone",
-   "Ability"
+   "Ability",
+   "AttachTypedFromDiscard:Metal@0"
   ],
   "his_plan_ended": true,
   "hand_source": "codex",
@@ -6919,7 +6880,7 @@
      ]
     },
     {
-     "card": "Darkrai B1 154",
+     "card": "Darkrai B2b 040",
      "hp": 120,
      "energy": [
       "Fighting",
@@ -6944,6 +6905,7 @@
    "Play:Poké Ball",
    "Place:Axew",
    "Ability",
+   "AttachTypedFromDiscard:Metal@0",
    "Attach:1Fighting@1 zone"
   ],
   "his_plan_ended": true,
@@ -7052,7 +7014,7 @@
      ]
     },
     {
-     "card": "Darkrai B1 154",
+     "card": "Darkrai B2b 040",
      "hp": 120,
      "energy": [
       "Fighting",
@@ -7069,7 +7031,7 @@
      ]
     },
     {
-     "card": "Darkrai B1 154",
+     "card": "Darkrai B2b 040",
      "hp": 120,
      "energy": [
       "Fighting"
@@ -7088,7 +7050,8 @@
    "Play:Rare Candy",
    "Evolve:Haxorus@2",
    "Attach:1Fighting@2 zone",
-   "Ability"
+   "Ability",
+   "AttachTypedFromDiscard:Metal@0"
   ],
   "his_plan_ended": true,
   "hand_source": "codex",
@@ -7194,7 +7157,7 @@
      ]
     },
     {
-     "card": "Darkrai B1 154",
+     "card": "Darkrai B2b 040",
      "hp": 120,
      "energy": [
       "Fighting",
@@ -7211,7 +7174,7 @@
      ]
     },
     {
-     "card": "Darkrai B1 154",
+     "card": "Darkrai B2b 040",
      "hp": 120,
      "energy": [
       "Fighting",
@@ -7228,6 +7191,7 @@
   "turn_effects": [],
   "his_plan": [
    "Ability",
+   "AttachTypedFromDiscard:Metal@0",
    "Retreat:1",
    "Attach:1Fighting@1 zone",
    "Play:Iris",
@@ -7290,7 +7254,7 @@
      "hp": 60
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Lightning"
   },
   "stadium": null,
   "turn_effects": [],
@@ -7366,7 +7330,7 @@
      "hp": 100
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Water"
   },
   "stadium": {
    "card": "Mesagoza B2a 093",
@@ -7463,7 +7427,7 @@
      ]
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Water"
   },
   "stadium": null,
   "turn_effects": [],
@@ -7574,7 +7538,7 @@
      "hp": 100
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Lightning"
   },
   "stadium": null,
   "turn_effects": [],
@@ -7685,7 +7649,7 @@
      ]
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Water"
   },
   "stadium": null,
   "turn_effects": [],
@@ -7693,7 +7657,8 @@
    "Evolve:Alolan Muk@2",
    "Attach:1Darkness@0 zone",
    "Play:Professor's Research",
-   "Attack:Giga Turbo"
+   "Attack:Giga Turbo",
+   "Attach:1Colorless@2 fx"
   ],
   "his_plan_ended": true,
   "hand_source": "codex",
@@ -7805,7 +7770,7 @@
      "hp": 60
     }
    ],
-   "energy_next": "Darkness"
+   "energy_next": "Water"
   },
   "stadium": null,
   "turn_effects": [],
@@ -9206,6 +9171,10 @@
     {
      "card": "Pawniard B3a 041",
      "hp": 50
+    },
+    {
+     "card": "Alolan Grimer A3 110",
+     "hp": 70
     }
    ],
    "energy_now": null,
@@ -9272,6 +9241,14 @@
     {
      "card": "Pawniard B3a 041",
      "hp": 50
+    },
+    {
+     "card": "Regigigas B3 134",
+     "hp": 150
+    },
+    {
+     "card": "Alolan Grimer A3 110",
+     "hp": 70
     }
    ],
    "energy_now": "Darkness",
@@ -9289,6 +9266,10 @@
      "energy": [
       "Fighting"
      ]
+    },
+    {
+     "card": "Tyrogue A4 101",
+     "hp": 30
     }
    ],
    "energy_next": "Fighting"
@@ -9366,7 +9347,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "ledger corrected from the frames: the opponent played no Rare Candy at his turn 4 (Mega Lucario ex is a Stage 1; the frames show only Research leaving the hand): it is not in his discard and his hand is one card larger. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9441,7 +9422,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "ledger corrected from the frames: the opponent played no Rare Candy at his turn 4 (Mega Lucario ex is a Stage 1; the frames show only Research leaving the hand): it is not in his discard and his hand is one card larger. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9496,10 +9477,9 @@
    "knockouts": 0
   },
   "opp": {
-   "hand_count": 5,
+   "hand_count": 6,
    "discard": [
-    "Professor's Research A4b 373",
-    "Rare Candy A3 144"
+    "Professor's Research A4b 373"
    ],
    "discard_energy": [],
    "board": [
@@ -9529,7 +9509,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent played no Rare Candy at his turn 4 (Mega Lucario ex is a Stage 1; the frames show only Research leaving the hand): it is not in his discard and his hand is one card larger; ledger corrected from the frames: the opponent's hand at his turns 5 / 7 / 9 is 6 / 7 / 6 (the frames), not 5 / 6 / 5. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9589,10 +9569,9 @@
    "knockouts": 1
   },
   "opp": {
-   "hand_count": 6,
+   "hand_count": 7,
    "discard": [
-    "Professor's Research A4b 373",
-    "Rare Candy A3 144"
+    "Professor's Research A4b 373"
    ],
    "discard_energy": [],
    "board": [
@@ -9622,7 +9601,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Regigigas. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Regigigas; ledger corrected from the frames: the opponent played no Rare Candy at his turn 4 (Mega Lucario ex is a Stage 1; the frames show only Research leaving the hand): it is not in his discard and his hand is one card larger; ledger corrected from the frames: the opponent's hand at his turns 5 / 7 / 9 is 6 / 7 / 6 (the frames), not 5 / 6 / 5. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9679,10 +9658,9 @@
    "knockouts": 2
   },
   "opp": {
-   "hand_count": 5,
+   "hand_count": 6,
    "discard": [
     "Professor's Research A4b 373",
-    "Rare Candy A3 144",
     "Pokémon Center Lady A2b 070"
    ],
    "discard_energy": [],
@@ -9719,7 +9697,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Glimmora. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Glimmora; ledger corrected from the frames: the opponent played no Rare Candy at his turn 4 (Mega Lucario ex is a Stage 1; the frames show only Research leaving the hand): it is not in his discard and his hand is one card larger; ledger corrected from the frames: the opponent's hand at his turns 5 / 7 / 9 is 6 / 7 / 6 (the frames), not 5 / 6 / 5. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -9795,7 +9773,6 @@
    "hand_count": 2,
    "discard": [
     "Professor's Research A4b 373",
-    "Rare Candy A3 144",
     "Pokémon Center Lady A2b 070",
     "Lucky Ice Pop B2 145",
     "Poké Ball A2b 111"
@@ -9857,7 +9834,7 @@
   "decision_maker": "Dustin",
   "exact_list": false,
   "milestones": [],
-  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); ledger corrected from the frames: the opponent played no Rare Candy at his turn 4 (Mega Lucario ex is a Stage 1; the frames show only Research leaving the hand): it is not in his discard and his hand is one card larger. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
@@ -10584,8 +10561,10 @@
   "his_plan": [
    "Play:Lucky Ice Pop",
    "Play:Ilima",
+   "Promote:0@1",
    "Place:Regigigas",
-   "Retreat:3"
+   "Retreat:1",
+   "Attach:1Darkness@0 zone"
   ],
   "his_plan_ended": true,
   "hand_source": "codex",
@@ -10596,7 +10575,7 @@
   "approximate": true,
   "approximate_reason": "opponent's list unknown",
   "heldout": false,
-  "plan_truncated_at": 4,
+  "plan_truncated_at": null,
   "opp_ambiguous": [
    {
     "name": "Combee",

@@ -286,3 +286,27 @@ laptop, built on F (cd20a97a, engine tree 4ebb30a9) with the print-only patch:
   - all lines equal on the 8 positions of `shards/S8.txt` and on 030351 t15;
   - on 030351 t09, t11 and t13 the plans are equal and only the printed board differs.
 - **The _cond runners:** rebuilt from this commit when the positions-v3 set lands.
+
+## Oct 14: Dragon's Blessing's choice gets a typed label (the laptop)
+
+**The change.** `harness/pgd_patch.py`'s `pg_label` names an attach-from-discard choice `AttachTypedFromDiscard:<Type>@<slot>`, for
+example `AttachTypedFromDiscard:Fighting@0`. It used to say a bare `AttachTypedFromDiscard`.
+- This is the format positions v3 writes into his plans.
+- Dragon's Blessing's two choices (Metal or Fighting in the discard) can now be told apart.
+- 022530 t09's forced replay now runs his whole line, through Frenzied Blade.
+- pg_pos takes every label from `pg_label`, so this file is the place for the change. It is a print-only patch, and no game behaves
+  differently.
+
+**Not integrated: the cloud's 70660ac5 and f068cbce** on `claude/pensive-ptolemy-spwc0b`. They put the same arm into
+`rl/strength/src/main.rs` `label()`, which pg_pos doesn't use.
+- Changing that file changes the strength harness's source hash.
+- That fails the slow-report pin's `CommittedPin` check, so re-making the pin would be a pin change.
+- Fable and the laptop agreed to leave them parked. **Do not integrate them** unless a pin change is decided for its own reasons.
+
+**The runners rebuilt from this commit** (main's `pg_pos.rs` with the Starting Plains fix, plus this `pgd_patch.py`) are recorded in
+`../pause_positions_kx3_2026-10/builds/builds_cond.txt`:
+- `pg_pos_F_cond2` on F (cd20a97a);
+- `pg_pos_C_cond2` on C (9a0bc5ac).
+
+`test_pg_pos.py` no longer exempts 022530's Mega Scizor ex. Positions v3 gives it Elegant Cape, so its recorded 230 is reachable.
+13 of 13 tests pass on both runners.
