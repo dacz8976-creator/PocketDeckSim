@@ -1,6 +1,6 @@
 Recording_QA: /mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA
-Committed state read from: sonnet/battle-logs-cleanup (df45c504)
-Games with positions in the repo: 38; audit list: found; confirmed: NO (--apply will refuse)
+Committed state read from: sonnet/battle-logs-cleanup (93f5c4e1, committed 2026-10-14T15:32:05-05:00)
+Games with positions in the repo: 38; audit list: found; acceptance: NO (the audit list has no acceptance yet ("confirmed" is empty)) -- --apply will refuse
 
 batch                                          verdict    games  to delete      size    stays      size  why
 BATCH_2026-09-30                               keep       0/0            0      0 MB        0      0 MB  no game packets in it
@@ -21,13 +21,15 @@ BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD   keep       0/8            0      
       never touched: 4 frames (7 MB) in non-game sub-folders
 BATCH_2026-10-02_SHARK_TEMPO                   keep       0/0            0      0 MB        0      0 MB  no game packets in it
       never touched: 1 image files (0 MB) at the batch level
-BATCH_2026-10-06_NEW_PAUSE_GAMES               PARTIAL   13/17       12883   5.93 GB     2437    608 MB  4 of 17 game packets held back (4 x not in the repo)
+BATCH_2026-10-06_NEW_PAUSE_GAMES               PARTIAL   13/17       12741   5.87 GB     2579    663 MB  4 of 17 game packets held back (4 x not in the repo)
       stays 20261004_214518000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder
       stays 20261004_214731000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder
       stays 20261005_034229000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder
       stays 20261006_012140000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder
+      stays 20261006_012927000_iOS/game_02: a second game recorded in the same packet, not part of this decision: 142 frames, 55 MB
+      stays 20261006_012927000_iOS/original_before_final_independent/game_02: a second game recorded in the same packet, not part of this decision: 0 frames, 0 MB
       never touched: 1 frames (0 MB) in non-game sub-folders; 1 image files (0 MB) at the batch level
-BATCH_2026-10-09_NEW_PAUSE_GAMES               DELETE     8/8         5758   1.64 GB        0      0 MB  all 8 game packets are in the repo, audited, and have their text outputs
+BATCH_2026-10-09_NEW_PAUSE_GAMES               DELETE     8/8         5758   1.64 GB        0      0 MB  all 8 game packets are in the repo, audited, have their text outputs and their source video
       never touched: 2 image files (0 MB) at the batch level
 BATCH_2026-10-09_NEW_UPLOADS                   keep       0/8            0      0 MB     2220    592 MB  8 of 8 game packets held back (8 x not in the repo; 8 x text output TURN_LEDGER.json missing or empty; 8 x text output DECK_USED.json missing or empty)
       stays 20261009_193905000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
@@ -38,7 +40,7 @@ BATCH_2026-10-09_NEW_UPLOADS                   keep       0/8            0      
       stays 20261009_195808000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
       stays 20261009_222100000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
       stays 20261009_222740000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
-BATCH_2026-10-11_NEW_PAUSE_GAMES               DELETE     3/3         1296    206 MB        0      0 MB  all 3 game packets are in the repo, audited, and have their text outputs
+BATCH_2026-10-11_NEW_PAUSE_GAMES               DELETE     3/3         1296    206 MB        0      0 MB  all 3 game packets are in the repo, audited, have their text outputs and their source video
       never touched: 3 image files (0 MB) at the batch level
 BATCH_2026-10-12_ADDITIONAL_TWO                keep       0/2            0      0 MB     2617    798 MB  2 of 2 game packets held back (2 x not audited)
       stays 20261012_225319000_iOS: not audited: proposed, pending a decision (read and integrated by the laptop (fb43ab9e, feddbce6, f6be4fd7) but no panel compared these positions with the ledgers field by field)
@@ -72,6 +74,12 @@ BATCH_2026-10-14_NEW_LADDER_FOUR               keep       0/4            0      
       stays 20261014_144627000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
       stays 20261014_145449000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
       never touched: 1 image files (0 MB) at the batch level
+BATCH_2026-10-14_OFFLINE_LADDER_FOUR           keep       0/4            0      0 MB     1191    386 MB  4 of 4 game packets held back (4 x not in the repo; 4 x text output TURN_LEDGER.json missing or empty; 4 x text output DECK_USED.json missing or empty)
+      stays 20261014_160506000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261014_161324000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261014_163325000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      stays 20261014_164328000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
+      never touched: 1 image files (0 MB) at the batch level
 BATCH_2026-10-14_OLDER_FOUR                    keep       0/4            0      0 MB      888    298 MB  4 of 4 game packets held back (4 x not in the repo; 4 x text output TURN_LEDGER.json missing or empty; 4 x text output DECK_USED.json missing or empty)
       stays 20260926_211809000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
       stays 20260926_212155000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
@@ -79,8 +87,8 @@ BATCH_2026-10-14_OLDER_FOUR                    keep       0/4            0      
       stays 20261002_012229000_iOS: not in the repo: no committed games_meta.json (with positions) names this folder; text output TURN_LEDGER.json missing or empty; text output DECK_USED.json missing or empty
       never touched: 8 frames (1 MB) in non-game sub-folders
 
-TO DELETE by --apply: 19,937 frames, 7.76 GB, from 3 batches (2 whole, 1 partial); with --whole-batches-only: 7,054 frames, 1.84 GB from the 2 whole batches
-STAYS: 26,379 frames, 7.41 GB in game packets that do not pass (and the sub-folder and batch-level images above)
+TO DELETE by --apply: 19,795 frames, 7.71 GB, from 3 batches (2 whole, 1 partial); with --whole-batches-only: 7,054 frames, 1.84 GB from the 2 whole batches
+STAYS: 27,712 frames, 7.84 GB in game packets that do not pass or in second games inside packets (and the sub-folder and batch-level images above)
 Only .jpg/.jpeg/.png files inside the game packets that pass are removed by --apply; json/txt/md, videos and everything outside Recording_QA never are.
 --move-to PATH (a separate step) moves ONLY Recording_QA (the frames and the packets) to PATH; the videos and the rest of Battle Logs stay where they are, in OneDrive.
 Outside BATCH_* (not in scope, never touched): 105 folders in Recording_QA holding 19,427 image files.
