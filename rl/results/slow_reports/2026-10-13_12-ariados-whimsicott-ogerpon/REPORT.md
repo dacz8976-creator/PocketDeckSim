@@ -10,21 +10,21 @@ Pre-registration order: registered 2026-10-13T19:01:28Z; first game started 2026
 
 Self-check digests recorded at registration: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204539Z.json (commit dbe31f48b3da): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration); `selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204539Z.json (commit dbe31f48b3da): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration)
 
-- Planned 320 games; finished 240; complete pairs 120 (= 240 games); unpaired games 0; errors 0.
+- Planned 320 games; finished 280; complete pairs 140 (= 280 games); unpaired games 0; errors 0.
 - Paired difference = score(arm X) − score(arm ref) per (deck, opponent, deal, seat), in percentage points of score (win 1, tie ½). Intervals are mean ± 1.96·sd/√n over paired games. No pass/fail threshold.
 
 ## Result
 
-**Pooled over all 120 paired games: +26.2 ± 8.5 points** (arm X 57.5% vs arm ref 31.2% score).
+**Pooled over all 140 paired games: +25.4 ± 7.7 points** (arm X 58.6% vs arm ref 33.2% score).
 
 
 ### Per deck, pooled over its opponents
 
 | deck | paired games | arm X score | arm ref score | paired difference (points) | went first: diff | went second: diff |
 |---|---|---|---|---|---|---|
-| 12-ariados-whimsicott-ogerpon | 120 | 57.5% | 31.2% | +26.2 ± 8.5 | +27.9 ± 12.2 | +24.6 ± 11.9 |
+| 12-ariados-whimsicott-ogerpon | 140 | 58.6% | 33.2% | +25.4 ± 7.7 | +28.2 ± 11.2 | +22.5 ± 10.6 |
 
-Overall by who went first (identical in both arms): deck first +27.9 ± 12.2 (n=61); deck second +24.6 ± 11.9 (n=59).
+Overall by who went first (identical in both arms): deck first +28.2 ± 11.2 (n=71); deck second +22.5 ± 10.6 (n=69).
 
 ### Per (deck, opponent) pair
 
@@ -36,6 +36,7 @@ Overall by who went first (identical in both arms): deck first +27.9 ± 12.2 (n=
 | 12-ariados-whimsicott-ogerpon | t-lucario | 20 | 45.0% | 25.0% | +20.0 ± 22.9 |
 | 12-ariados-whimsicott-ogerpon | t-sceptile | 20 | 55.0% | 40.0% | +15.0 ± 16.1 |
 | 12-ariados-whimsicott-ogerpon | t-suicune | 20 | 65.0% | 20.0% | +45.0 ± 26.5 |
+| 12-ariados-whimsicott-ogerpon | t-vespiquen | 20 | 65.0% | 45.0% | +20.0 ± 18.0 |
 
 ## Runtime and cost
 
@@ -43,12 +44,12 @@ Wall time is per game on this machine with the threads the run used; it includes
 
 | arm | role | pilot | games | wall per game: mean / median / p95 / max | games per second (1 thread) | decisions per game | ms per decision: mean / median / p95 / max | decision time per game |
 |---|---|---|---|---|---|---|---|---|
-| X | deck seat | `kx3` | 120 | 883.14 / 841.42 / 1455.27 / 1778.50 s | 0.00 | 24.3 | 36366.0 / 35527.7 / 72101.6 / 117787.7 | 15 min |
-| X | opponent seat | `km3` | 120 |  |  | 22.8 | 15.0 / 7.3 / 55.7 / 272.6 | 0.34 s |
-| ref | deck seat | `km3` | 120 | 0.91 / 0.86 / 1.80 / 3.05 s | 1.09 | 24.7 | 25.4 / 11.9 / 94.4 / 400.5 | 0.63 s |
-| ref | opponent seat | `km3` | 120 |  |  | 23.1 | 11.8 / 5.8 / 45.1 / 282.0 | 0.27 s |
+| X | deck seat | `kx3` | 140 | 1065.79 / 925.51 / 2456.47 / 3078.97 s | 0.00 | 25.1 | 42504.6 / 38564.0 / 95729.9 / 183746.4 | 18 min |
+| X | opponent seat | `km3` | 140 |  |  | 23.5 | 18.2 / 8.1 / 71.3 / 273.8 | 0.43 s |
+| ref | deck seat | `km3` | 140 | 1.03 / 0.92 / 2.22 / 3.75 s | 0.97 | 25.5 | 26.8 / 12.7 / 102.7 / 400.5 | 0.68 s |
+| ref | opponent seat | `km3` | 140 |  |  | 23.8 | 14.1 / 6.5 / 54.3 / 282.0 | 0.34 s |
 
-One paired game (both arms) took 15 min on average; the run used 4 thread(s).
+One paired game (both arms) took 18 min on average; the run used 4 thread(s).
 
 ## What more precision would take
 
@@ -56,8 +57,8 @@ At the sd reached, the number of paired games for a given half-width is `(1.96·
 
 | scope | paired games so far | sd | interval now (points) | for ±5 points: total / more games, time | for ±3 points: total / more games, time |
 |---|---|---|---|---|---|
-| all decks pooled | 120 | 47.6 | +26.2 ± 8.5 | 349 / 229, 14.1 h | 968 / 848, 2.2 days |
-| 12-ariados-whimsicott-ogerpon | 120 | 47.6 | +26.2 ± 8.5 | 349 / 229, 14.1 h | 968 / 848, 2.2 days |
+| all decks pooled | 140 | 46.6 | +25.4 ± 7.7 | 335 / 195, 14.4 h | 929 / 789, 2.4 days |
+| 12-ariados-whimsicott-ogerpon | 140 | 46.6 | +25.4 ± 7.7 | 335 / 195, 14.4 h | 929 / 789, 2.4 days |
 
 ## Intended lines
 
