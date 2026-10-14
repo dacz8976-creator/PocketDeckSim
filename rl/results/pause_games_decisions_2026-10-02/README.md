@@ -275,3 +275,14 @@ is recorded at 230. It can have at most 220, which is what the engine holds. The
   changed (`km3_plains_before.jsonl`, `km3_plains_after.jsonl`): it now shows each Basic with the Plains bonus (turn 9's
   undamaged Druddigon 120, not 100), as the engine plays it.
 - **Builds:** built and run on main c045ede (K); it compiles on cd20a97a (F) and 9a0bc5ac (C) with the same print-only patch.
+
+**Laptop check and integration (Oct 14).** Integrated by path from `claude/pensive-ptolemy-spwc0b` 051d6994 and 19665ec3. On the
+laptop, built on F (cd20a97a, engine tree 4ebb30a9) with the print-only patch:
+- The runner: `pg_pos_F_plains`, sha256 fa668fa863a4414f.
+- **Tests at the cloud's tip:** 2 of the 13 failed. `decks_of()` passed `test_oct14/km3_compare.txt`, added with the fix, to pg_pos as a
+  deck file ("Invalid count").
+- **Tests after the fix:** with `decks_of()` limited to `KW*.txt`, 13 of 13 pass.
+- **km3 at seeds 1-12, against the current `pg_pos_F_cond`:**
+  - all lines equal on the 8 positions of `shards/S8.txt` and on 030351 t15;
+  - on 030351 t09, t11 and t13 the plans are equal and only the printed board differs.
+- **The _cond runners:** rebuilt from this commit when the positions-v3 set lands.

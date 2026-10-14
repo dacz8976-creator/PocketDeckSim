@@ -66,7 +66,7 @@ T14 = os.path.join(HERE, "test_oct14")
 
 
 def decks_of(folder):
-    return sum((["--deck", f"{f[:-4]}={os.path.join(folder, f)}"] for f in sorted(os.listdir(folder)) if f.endswith(".txt")), [])
+    return sum((["--deck", f"{f[:-4]}={os.path.join(folder, f)}"] for f in sorted(os.listdir(folder)) if f.endswith(".txt") and f.startswith("KW")), [])
 
 
 def run_set(positions, deck_folder, *extra):
