@@ -1,0 +1,720 @@
+PGSTEP KW-261005_034953000-t10 seed 1 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attack:Rolling Attack
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=10
+PGDUMP       2073.400000000000091 EndTurn
+PGDUMP       2963.400000000000091 UseStadium
+PGDUMP       2516.400000000000091 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP      13037.700000000000728 Attach:1Metal@2 zone
+PGDUMP       2293.400000000000091 Attack:Rolling Attack
+PGDUMP       2992.400000000000091 Evolve:Doublade@1
+PGDUMP       2852.400000000000091 Play:Steel Apron
+PGDUMP       2359.066666666666606 Retreat:1
+PGDUMP      13037.700000000000728 Retreat:2
+PGSTEP KW-261005_034953000-t10 seed 1 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=7
+PGDUMP       2397.400000000000091 EndTurn
+PGDUMP      13037.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP      13066.700000000000728 Evolve:Doublade@1
+PGDUMP       2833.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 1 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=6
+PGDUMP       2426.400000000000091 EndTurn
+PGDUMP      13066.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP       2862.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 1 free 3
+PGCAND EndTurn
+PGCAND Attack:Headbutt
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=3
+PGDUMP       2863.066666666666606 EndTurn
+PGDUMP      13066.700000000000728 Attack:Headbutt
+PGDUMP      13065.700000000000728 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 2 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attack:Rolling Attack
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=10
+PGDUMP       2073.400000000000091 EndTurn
+PGDUMP       2963.400000000000091 UseStadium
+PGDUMP       2516.400000000000091 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP      13037.700000000000728 Attach:1Metal@2 zone
+PGDUMP       2293.400000000000091 Attack:Rolling Attack
+PGDUMP       2992.400000000000091 Evolve:Doublade@1
+PGDUMP       2852.400000000000091 Play:Steel Apron
+PGDUMP       2359.066666666666606 Retreat:1
+PGDUMP      13037.700000000000728 Retreat:2
+PGSTEP KW-261005_034953000-t10 seed 2 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=7
+PGDUMP       2397.400000000000091 EndTurn
+PGDUMP      13037.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP      13066.700000000000728 Evolve:Doublade@1
+PGDUMP       2833.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 2 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=6
+PGDUMP       2426.400000000000091 EndTurn
+PGDUMP      13066.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP       2862.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 2 free 3
+PGCAND EndTurn
+PGCAND Attack:Headbutt
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=3
+PGDUMP       2863.066666666666606 EndTurn
+PGDUMP      13066.700000000000728 Attack:Headbutt
+PGDUMP      13065.700000000000728 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 3 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attack:Rolling Attack
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=10
+PGDUMP       2073.400000000000091 EndTurn
+PGDUMP       2963.400000000000091 UseStadium
+PGDUMP       2516.400000000000091 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP      13037.700000000000728 Attach:1Metal@2 zone
+PGDUMP       2293.400000000000091 Attack:Rolling Attack
+PGDUMP       2992.400000000000091 Evolve:Doublade@1
+PGDUMP       2852.400000000000091 Play:Steel Apron
+PGDUMP       2359.066666666666606 Retreat:1
+PGDUMP      13037.700000000000728 Retreat:2
+PGSTEP KW-261005_034953000-t10 seed 3 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=7
+PGDUMP       2397.400000000000091 EndTurn
+PGDUMP      13037.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP      13066.700000000000728 Evolve:Doublade@1
+PGDUMP       2833.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 3 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=6
+PGDUMP       2426.400000000000091 EndTurn
+PGDUMP      13066.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP       2862.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 3 free 3
+PGCAND EndTurn
+PGCAND Attack:Headbutt
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=3
+PGDUMP       2863.066666666666606 EndTurn
+PGDUMP      13066.700000000000728 Attack:Headbutt
+PGDUMP      13065.700000000000728 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 4 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attack:Rolling Attack
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=10
+PGDUMP       2073.400000000000091 EndTurn
+PGDUMP       2963.400000000000091 UseStadium
+PGDUMP       2516.400000000000091 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP      13037.700000000000728 Attach:1Metal@2 zone
+PGDUMP       2293.400000000000091 Attack:Rolling Attack
+PGDUMP       2992.400000000000091 Evolve:Doublade@1
+PGDUMP       2852.400000000000091 Play:Steel Apron
+PGDUMP       2359.066666666666606 Retreat:1
+PGDUMP      13037.700000000000728 Retreat:2
+PGSTEP KW-261005_034953000-t10 seed 4 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=7
+PGDUMP       2397.400000000000091 EndTurn
+PGDUMP      13037.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP      13066.700000000000728 Evolve:Doublade@1
+PGDUMP       2833.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 4 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=6
+PGDUMP       2426.400000000000091 EndTurn
+PGDUMP      13066.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP       2862.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 4 free 3
+PGCAND EndTurn
+PGCAND Attack:Headbutt
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=3
+PGDUMP       2863.066666666666606 EndTurn
+PGDUMP      13066.700000000000728 Attack:Headbutt
+PGDUMP      13065.700000000000728 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 5 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attack:Rolling Attack
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=10
+PGDUMP       2073.400000000000091 EndTurn
+PGDUMP       2963.400000000000091 UseStadium
+PGDUMP       2516.400000000000091 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP      13037.700000000000728 Attach:1Metal@2 zone
+PGDUMP       2293.400000000000091 Attack:Rolling Attack
+PGDUMP       2992.400000000000091 Evolve:Doublade@1
+PGDUMP       2852.400000000000091 Play:Steel Apron
+PGDUMP       2359.066666666666606 Retreat:1
+PGDUMP      13037.700000000000728 Retreat:2
+PGSTEP KW-261005_034953000-t10 seed 5 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=7
+PGDUMP       2397.400000000000091 EndTurn
+PGDUMP      13037.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP      13066.700000000000728 Evolve:Doublade@1
+PGDUMP       2833.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 5 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=6
+PGDUMP       2426.400000000000091 EndTurn
+PGDUMP      13066.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP       2862.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 5 free 3
+PGCAND EndTurn
+PGCAND Attack:Headbutt
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=3
+PGDUMP       2863.066666666666606 EndTurn
+PGDUMP      13066.700000000000728 Attack:Headbutt
+PGDUMP      13065.700000000000728 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 6 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attack:Rolling Attack
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=10
+PGDUMP       2073.400000000000091 EndTurn
+PGDUMP       2963.400000000000091 UseStadium
+PGDUMP       2516.400000000000091 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP      13037.700000000000728 Attach:1Metal@2 zone
+PGDUMP       2293.400000000000091 Attack:Rolling Attack
+PGDUMP       2992.400000000000091 Evolve:Doublade@1
+PGDUMP       2852.400000000000091 Play:Steel Apron
+PGDUMP       2359.066666666666606 Retreat:1
+PGDUMP      13037.700000000000728 Retreat:2
+PGSTEP KW-261005_034953000-t10 seed 6 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=7
+PGDUMP       2397.400000000000091 EndTurn
+PGDUMP      13037.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP      13066.700000000000728 Evolve:Doublade@1
+PGDUMP       2833.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 6 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=6
+PGDUMP       2426.400000000000091 EndTurn
+PGDUMP      13066.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP       2862.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 6 free 3
+PGCAND EndTurn
+PGCAND Attack:Headbutt
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=3
+PGDUMP       2863.066666666666606 EndTurn
+PGDUMP      13066.700000000000728 Attack:Headbutt
+PGDUMP      13065.700000000000728 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 7 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attack:Rolling Attack
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=10
+PGDUMP       2073.400000000000091 EndTurn
+PGDUMP       2963.400000000000091 UseStadium
+PGDUMP       2516.400000000000091 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP      13037.700000000000728 Attach:1Metal@2 zone
+PGDUMP       2293.400000000000091 Attack:Rolling Attack
+PGDUMP       2992.400000000000091 Evolve:Doublade@1
+PGDUMP       2852.400000000000091 Play:Steel Apron
+PGDUMP       2359.066666666666606 Retreat:1
+PGDUMP      13037.700000000000728 Retreat:2
+PGSTEP KW-261005_034953000-t10 seed 7 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=7
+PGDUMP       2397.400000000000091 EndTurn
+PGDUMP      13037.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP      13066.700000000000728 Evolve:Doublade@1
+PGDUMP       2833.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 7 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=6
+PGDUMP       2426.400000000000091 EndTurn
+PGDUMP      13066.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP       2862.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 7 free 3
+PGCAND EndTurn
+PGCAND Attack:Headbutt
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=3
+PGDUMP       2863.066666666666606 EndTurn
+PGDUMP      13066.700000000000728 Attack:Headbutt
+PGDUMP      13065.700000000000728 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 8 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attack:Rolling Attack
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=10
+PGDUMP       2073.400000000000091 EndTurn
+PGDUMP       2963.400000000000091 UseStadium
+PGDUMP       2516.400000000000091 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP      13037.700000000000728 Attach:1Metal@2 zone
+PGDUMP       2293.400000000000091 Attack:Rolling Attack
+PGDUMP       2992.400000000000091 Evolve:Doublade@1
+PGDUMP       2852.400000000000091 Play:Steel Apron
+PGDUMP       2359.066666666666606 Retreat:1
+PGDUMP      13037.700000000000728 Retreat:2
+PGSTEP KW-261005_034953000-t10 seed 8 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=7
+PGDUMP       2397.400000000000091 EndTurn
+PGDUMP      13037.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP      13066.700000000000728 Evolve:Doublade@1
+PGDUMP       2833.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 8 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=6
+PGDUMP       2426.400000000000091 EndTurn
+PGDUMP      13066.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP       2862.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 8 free 3
+PGCAND EndTurn
+PGCAND Attack:Headbutt
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=3
+PGDUMP       2863.066666666666606 EndTurn
+PGDUMP      13066.700000000000728 Attack:Headbutt
+PGDUMP      13065.700000000000728 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 9 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attack:Rolling Attack
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=10
+PGDUMP       2073.400000000000091 EndTurn
+PGDUMP       2963.400000000000091 UseStadium
+PGDUMP       2516.400000000000091 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP      13037.700000000000728 Attach:1Metal@2 zone
+PGDUMP       2293.400000000000091 Attack:Rolling Attack
+PGDUMP       2992.400000000000091 Evolve:Doublade@1
+PGDUMP       2852.400000000000091 Play:Steel Apron
+PGDUMP       2359.066666666666606 Retreat:1
+PGDUMP      13037.700000000000728 Retreat:2
+PGSTEP KW-261005_034953000-t10 seed 9 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=7
+PGDUMP       2397.400000000000091 EndTurn
+PGDUMP      13037.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP      13066.700000000000728 Evolve:Doublade@1
+PGDUMP       2833.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 9 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=6
+PGDUMP       2426.400000000000091 EndTurn
+PGDUMP      13066.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP       2862.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 9 free 3
+PGCAND EndTurn
+PGCAND Attack:Headbutt
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=3
+PGDUMP       2863.066666666666606 EndTurn
+PGDUMP      13066.700000000000728 Attack:Headbutt
+PGDUMP      13065.700000000000728 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 10 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attack:Rolling Attack
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=10
+PGDUMP       2073.400000000000091 EndTurn
+PGDUMP       2963.400000000000091 UseStadium
+PGDUMP       2516.400000000000091 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP      13037.700000000000728 Attach:1Metal@2 zone
+PGDUMP       2293.400000000000091 Attack:Rolling Attack
+PGDUMP       2992.400000000000091 Evolve:Doublade@1
+PGDUMP       2852.400000000000091 Play:Steel Apron
+PGDUMP       2359.066666666666606 Retreat:1
+PGDUMP      13037.700000000000728 Retreat:2
+PGSTEP KW-261005_034953000-t10 seed 10 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=7
+PGDUMP       2397.400000000000091 EndTurn
+PGDUMP      13037.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP      13066.700000000000728 Evolve:Doublade@1
+PGDUMP       2833.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 10 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=6
+PGDUMP       2426.400000000000091 EndTurn
+PGDUMP      13066.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP       2862.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 10 free 3
+PGCAND EndTurn
+PGCAND Attack:Headbutt
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=3
+PGDUMP       2863.066666666666606 EndTurn
+PGDUMP      13066.700000000000728 Attack:Headbutt
+PGDUMP      13065.700000000000728 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 11 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attack:Rolling Attack
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=10
+PGDUMP       2073.400000000000091 EndTurn
+PGDUMP       2963.400000000000091 UseStadium
+PGDUMP       2516.400000000000091 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP      13037.700000000000728 Attach:1Metal@2 zone
+PGDUMP       2293.400000000000091 Attack:Rolling Attack
+PGDUMP       2992.400000000000091 Evolve:Doublade@1
+PGDUMP       2852.400000000000091 Play:Steel Apron
+PGDUMP       2359.066666666666606 Retreat:1
+PGDUMP      13037.700000000000728 Retreat:2
+PGSTEP KW-261005_034953000-t10 seed 11 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=7
+PGDUMP       2397.400000000000091 EndTurn
+PGDUMP      13037.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP      13066.700000000000728 Evolve:Doublade@1
+PGDUMP       2833.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 11 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=6
+PGDUMP       2426.400000000000091 EndTurn
+PGDUMP      13066.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP       2862.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 11 free 3
+PGCAND EndTurn
+PGCAND Attack:Headbutt
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=3
+PGDUMP       2863.066666666666606 EndTurn
+PGDUMP      13066.700000000000728 Attack:Headbutt
+PGDUMP      13065.700000000000728 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 12 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attack:Rolling Attack
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=10
+PGDUMP       2073.400000000000091 EndTurn
+PGDUMP       2963.400000000000091 UseStadium
+PGDUMP       2516.400000000000091 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP      13037.700000000000728 Attach:1Metal@2 zone
+PGDUMP       2293.400000000000091 Attack:Rolling Attack
+PGDUMP       2992.400000000000091 Evolve:Doublade@1
+PGDUMP       2852.400000000000091 Play:Steel Apron
+PGDUMP       2359.066666666666606 Retreat:1
+PGDUMP      13037.700000000000728 Retreat:2
+PGSTEP KW-261005_034953000-t10 seed 12 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Evolve:Doublade@1
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=7
+PGDUMP       2397.400000000000091 EndTurn
+PGDUMP      13037.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP      13066.700000000000728 Evolve:Doublade@1
+PGDUMP       2833.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 12 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=6
+PGDUMP       2426.400000000000091 EndTurn
+PGDUMP      13066.700000000000728 UseStadium
+PGDUMP      13066.700000000000728 Attach:1Metal@0 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@1 zone
+PGDUMP       2516.400000000000091 Attach:1Metal@2 zone
+PGDUMP       2862.066666666666606 Play:Steel Apron
+PGSTEP KW-261005_034953000-t10 seed 12 free 3
+PGCAND EndTurn
+PGCAND Attack:Headbutt
+PGCAND Play:Steel Apron
+PGDUMP actor=0 candidates=3
+PGDUMP       2863.066666666666606 EndTurn
+PGDUMP      13066.700000000000728 Attack:Headbutt
+PGDUMP      13065.700000000000728 Play:Steel Apron

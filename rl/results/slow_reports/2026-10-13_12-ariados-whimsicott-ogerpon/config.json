@@ -1,0 +1,114 @@
+{
+ "name": "slow_report_12-ariados-whimsicott-ogerpon",
+ "question": "kx3 (d513e37b, on main-c045ede) on 12-ariados-whimsicott-ogerpon v km3 on the public panel. A slow report on one deck, not development: how does 12-ariados-whimsicott-ogerpon do when the strong, slow pilot kx3 plays it against the eight public panel lists played by km3, 10 deals x 2 seats each? Primary: the deck's score (win 1, tie 1/2, loss 0) overall and against each list, with 95% ranges; and how much better kx3 plays this deck than km3 on the same deals. Realistic knowledge: kx3 plays the deck knowing its own cards; the deck is never one of the lists kx3 guesses its opponent from, and the panel side is never handed it. No pass or fail line; time per game is reported as a fact.",
+ "pilot": "kx3",
+ "reference": "km3",
+ "stage": "use",
+ "deck_files": [
+  "decks/dustin/12-ariados-whimsicott-ogerpon.txt"
+ ],
+ "opponent_groups": [
+  "panel8"
+ ],
+ "deals": 10,
+ "seats": [
+  0,
+  1
+ ],
+ "seed_base": 24686200000,
+ "pair_stride": 10000,
+ "threads": 4,
+ "log_level": "deck",
+ "program": "/root/slow_report_kx3/strength",
+ "program_sha256": "5011e227cf63619cc8ca9750ee69090037844f8e7abcd0432776b1e2ae3b7f0e",
+ "engine": "laptop/kx3-on-rules2 cd20a97a engine tree 4ebb30a94173: the frozen kx3's players (claude/playout-pilot d513e37b, byte for byte) on main-c045ede's engine (rules switch 2, pinned Oct 12), built on the laptop Oct 12 with rl/strength/build.sh (harness bf9c5d68); gate 1: km3's self-check 81b572198c04d5d1, the pinned km3; kx3's self-check 31d638dbc818b0fa, equal to the old pin's; KX_EXTRA_LISTS unset. Replaces the Oct 2 build (d513e37b on its own engine, tree 31dbd2e6e8ec, program 5a8f5c83); spec rl/results/kx3_on_rules2_2026-10/SPEC.md; THIS PROGRAM (/root/slow_report_kx3/strength, sha256 5011e227cf63) is NOT the pinned binary: its build record (written by rl/strength/build.sh, not signed) says it is a rebuild of that source (build record sha256 e32b52e9684c: engine tree as archived 4ebb30a94173, harness source bf9c5d681400, rustc 1.97.0 (2d8144b78 2026-07-07)), accepted because both self-checks equal the committed pin's digests: replayed by slow_report.py on vm and recorded in rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204539Z.json (commit dbe31f48b3da), for a program with this same sha256; the record is a committed file, not signed, and this registration did not replay them again",
+ "pilot_provenance": "kx3 from claude/playout-pilot@d513e37b, frozen Oct 4-5; on rules switch 2's engine since Oct 12 (laptop/kx3-on-rules2 cd20a97a)",
+ "reference_provenance": "km3 in the same build; it equals the pinned km3 (step 10's 240 games field for field, self-check 81b572198c04d5d1)",
+ "slow_report": {
+  "version": 1,
+  "headline": "kx3 (d513e37b, on main-c045ede) on 12-ariados-whimsicott-ogerpon v km3 on the public panel",
+  "summary": "Stage use. 10 deals x 2 seats against each of the eight public lists. No pass or fail line; not development evidence. Self-check: accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204539Z.json (commit dbe31f48b3da), not replayed at registration.",
+  "deck_name": "12-ariados-whimsicott-ogerpon",
+  "deck_file": "decks/dustin/12-ariados-whimsicott-ogerpon.txt",
+  "deck_file_sha256": "4d059bd2c5cba229cc025746f05dca2d03281ebe07c0712917d9fc8d53c65bd5",
+  "deck_file_state": "committed",
+  "deals": 10,
+  "paired": true,
+  "pin": {
+   "path": "rl/strength/slow_report_pin.json",
+   "sha256": "1fc30ce48e364f0669c4840c98f26fe31dbc35708007e977e9ccc2e8d2a050a1"
+  },
+  "pilot_label": "kx3 (d513e37b, on main-c045ede)",
+  "reference_label": "km3",
+  "panel_label": "the public panel",
+  "scrub_env_prefixes": [
+   "KX_",
+   "PDL_",
+   "DECKGYM_",
+   "JEV_",
+   "PG_"
+  ],
+  "resume_command": "python3 rl/strength/slow_report.py --dir /home/user/PocketDeckSim/rl/results/slow_reports/2026-10-13_12-ariados-whimsicott-ogerpon --school-rule off",
+  "program_route": "rebuilt",
+  "pinned_program": "/home/dacz8976/kx_r2/strength",
+  "pinned_program_sha256": "76df495bef0b057fd28b4991dce76d3e3e1772667694161c945f17364f9c4e08",
+  "harness_source_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+  "harness_source_checkout_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+  "engine_ref": "cd20a97a2e76897fae9883389cee4bf7ce5b3d97",
+  "engine_tree": "4ebb30a941737d16b80adddbd1466761e0670e63",
+  "pin_committed": "yes",
+  "pin_committed_detail": null,
+  "registered_on": "vm",
+  "build_record": {
+   "schema": 1,
+   "program": "/root/slow_report_kx3/strength",
+   "program_sha256": "5011e227cf63619cc8ca9750ee69090037844f8e7abcd0432776b1e2ae3b7f0e",
+   "engine_arg": "cd20a97a2e76897fae9883389cee4bf7ce5b3d97",
+   "engine": "cd20a97a2e76897fae9883389cee4bf7ce5b3d97 engine tree 4ebb30a941737d16b80adddbd1466761e0670e63",
+   "engine_ref": "cd20a97a2e76897fae9883389cee4bf7ce5b3d97",
+   "engine_tree_archived": "4ebb30a941737d16b80adddbd1466761e0670e63",
+   "harness_source_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+   "rustc": "rustc 1.97.0 (2d8144b78 2026-07-07)\nbinary: rustc\ncommit-hash: 2d8144b7880597b6e6d3dfd63a9a9efae3f533d3\ncommit-date: 2026-07-07\nhost: x86_64-unknown-linux-gnu\nrelease: 1.97.0\nLLVM version: 22.1.6",
+   "cargo": "cargo 1.97.0 (c980f4866 2026-06-30)",
+   "machine": "Linux 6.18.44-fc-v114 x86_64",
+   "libc": "ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39",
+   "host": "vm",
+   "home": "/root",
+   "cargo_home": "/root/.cargo",
+   "build_dir": "/root/slow_report_kx3/build",
+   "target_dir": "/root/slow_report_kx3/target",
+   "build_fs": "ext2/ext3",
+   "jobs": "8",
+   "build_env_unset": [],
+   "cargo_config_files": [],
+   "built_at": "2026-10-12T18:38:30Z",
+   "rebuild_command": "env HOME=/root CARGO_HOME=/root/.cargo STRENGTH_BUILD_DIR=/root/slow_report_kx3/build STRENGTH_TARGET_DIR=/root/slow_report_kx3/target STRENGTH_JOBS=8 STRENGTH_REPO=/home/user/PocketDeckSim bash /home/user/PocketDeckSim/rl/strength/build.sh cd20a97a2e76897fae9883389cee4bf7ce5b3d97 /root/slow_report_kx3/strength",
+   "record_file": "/root/slow_report_kx3/strength.build.json",
+   "record_sha256": "e32b52e9684cc6ff660e1688c1e0219c9977330efda2871822adcc929ae9ff93"
+  },
+  "school_rule": "off",
+  "school_days": "mon,tue,wed,thu,fri",
+  "expected_hours": {
+   "typical_low": 4.705882352941177,
+   "typical_high": 6.153846153846154,
+   "wall": 17.77777777777778
+  },
+  "selfcheck_how": "record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204539Z.json dbe31f48b3daf8080e84cabb57ff3f824d8ef8de",
+  "selfcheck_record": {
+   "path": "rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204539Z.json",
+   "commit": "dbe31f48b3daf8080e84cabb57ff3f824d8ef8de",
+   "file_sha256": "0f3ba7939079a139c203c43459f7d4c4aa6b88882e6dc7e6e2dc850aa8f5b9a1",
+   "program_sha256": "5011e227cf63619cc8ca9750ee69090037844f8e7abcd0432776b1e2ae3b7f0e",
+   "replayed_at": "2026-10-12T20:45:39Z",
+   "host": "vm",
+   "boot_id": "456ce940-dd4c-4803-93e7-be952c57c5a1",
+   "tool_commit": "ebb65723d20b627295abb35ec84af8915eab6f17"
+  }
+ },
+ "selfcheck_given": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kx3": "selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa"
+ },
+ "selfcheck_given_program_sha256": "5011e227cf63619cc8ca9750ee69090037844f8e7abcd0432776b1e2ae3b7f0e",
+ "selfcheck_how": "record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204539Z.json dbe31f48b3daf8080e84cabb57ff3f824d8ef8de"
+}

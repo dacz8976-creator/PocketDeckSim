@@ -9,6 +9,9 @@ position carries no "filler" key (his hidden cards are cycled from the pilot's o
 attack/Ability titles the ledger shows, and a card that cannot be told from the ledger is listed in the position's `opp_ambiguous`.
 A turn is LEFT OUT (and counted, with the reason) when its hand is not fully named, a card cannot be mapped, or points are missing. A position of a game whose
 deck version is not verified (DECK_USED says the list is a different version from the game's) is marked `usable: false`.
+A Pokemon of his that the CHECKUP knocked out after his turn ended (Poison, Burn, Bad Dreams on a sleeping one) is read from its own row: the ledger's `board_after` of that row is
+already past the knock-out, so checkup_knockouts() finds it from the promotion that follows the turn's last end_turn / attack and the row's text, and it reaches his discard (with what
+was under it, its Tool and its Energy) and `me.knockouts` like one the opponent's attack made.
 usage: ledger_to_positions.py OUT.json REPORT.json GAMEDIR [GAMEDIR ...]   (GAMEDIR = a Recording_QA game folder; DECK_USED.json of every game is read first)"""
 import collections, itertools, json, os, re, sys
 
@@ -215,6 +218,102 @@ def match_boards(after, now):
         if i in ua and j in un:
             link(i, j)
     return pairs, [after[i] for i in sorted(ua)]
+
+
+# ---------------------------------------------------------------------------------------------------------------- knocked out after his turn ended
+
+POST_KO_KIND = re.compile(r'promot|replac', re.I)            # a play of kind promotion / replacement / forced_replacement ...: he had to put a new Active in front
+KO_WORDS = re.compile(r"knock\w*[\s-]*out|\bKO\b|\bKO'?d\b|leaves?\s+(?:the\s+)?board|(?:is|are)\s+discarded", re.I)
+RETURNED = re.compile(r"return\w*\s+(?:\w+\s+){0,6}?(?:to|into)\s+(?:the\s+|his\s+|owner\s+)*(?:hand|deck)|back\s+to\s+(?:the\s+|his\s+|owner\s+)*hand|shuffl", re.I)
+ENERGY_COUNT = re.compile(r'\b(\d+|one|two|three|four)\s+([A-Za-z]+)')
+
+
+def _norm(s):
+    return str(s or '').replace('’', "'").lower()
+
+
+def _id_in(text, ids):
+    """does a ledger target text name one of these instance ids as a word ('Dratini-2 → Dragonair-2' names Dratini-2 and Dragonair-2, not Dragonair-22)?"""
+    return any(re.search(r'(?<![A-Za-z0-9\-])' + re.escape(i) + r'(?![A-Za-z0-9\-])', str(text or '')) for i in ids)
+
+
+def _is_evolution_play(p):
+    """an evolution: a Stage 1 or 2 played from the hand, or a Rare Candy / Quick-Grow Extract (not an Ability or an attack, whose card_name is the Pokemon using it)"""
+    k, card = nk(p.get('kind')), nname(p.get('card_name'))
+    if k in ('evolution', 'item_evolution'):
+        return True
+    return k == 'card_play' and (card in ('Rare Candy', 'Quick-Grow Extract') or any(C.is_pokemon(c) and c.get('stage', 0) >= 1 for c in C.BYNAME.get(card, [])))
+
+
+def checkup_knockouts(row):
+    """-> (the Pokemon of his that were knocked out AFTER his turn ended, each as it stood when the turn ended; notes) for one row of his.
+    The checkup after his turn (Poison, Burn, Bad Dreams on a sleeping Pokemon) can knock out his Active. The ledgers log the knock-out and his promotion at the end of his own row, and
+    that row's `board_after` is already past it, so the comparison of the end of one of his rows with the start of his next (which finds what the OPPONENT's turn knocked out) never sees it:
+    the Pokemon, what is under it, its Tool and its Energy were missing from his discard and the knock-out from `me.knockouts`.
+    A Pokemon is one of these when (1) a promotion/replacement play comes after the last play that ended his turn (an end_turn, or an attack), (2) it was on his board at the start of
+    the row and is gone at its end (by instance id; without ids, by the number of its name), (3) it did not evolve in the row (an evolved Pokemon is a new instance), and (4) the row's
+    automatic events or the promotion's text say it was knocked out / left the board / was discarded, and say nothing of it going back to his hand or deck (a bounce also ends in a
+    promotion). Exactly one Pokemon must fit: with two, none is taken and a note says so. Its Energy is what it had at the start plus what the row attached to it, unless the ledger's text
+    gives a count (then the text's); its Tool the one it had, or one the row attached"""
+    plays = row.get('plays_in_order') or []
+    ends = [i for i, p in enumerate(plays) if nk(p.get('kind')) in ('end', 'attack')]
+    after_end = plays[ends[-1] + 1:] if ends else []
+    if not any(POST_KO_KIND.search(str(p.get('kind') or '')) for p in after_end):
+        return [], []
+    pre = instances((row.get('board_at_start') or {}).get('owner') or {})
+    post = instances((row.get('board_after') or {}).get('owner') or {})
+    post_ids = set().union(*[pids(p) for p in post]) if post else set()
+    texts = [str(ev.get('event') or ev.get('description') or '') if isinstance(ev, dict) else str(ev) for ev in row.get('automatic_events_in_order') or []]
+    texts += [str(p.get(x) or '') for p in after_end if POST_KO_KIND.search(str(p.get('kind') or '')) for x in ('result', 'details')]
+    texts = [t for t in texts if t]
+    evo_targets = [str(p.get('target') or '') for p in plays if _is_evolution_play(p)]
+    cands = []
+    for i, p in enumerate(pre):
+        ids, nm = pids(p), nname(p['name'])
+        if ids:
+            gone = not (ids & post_ids) and not any(_id_in(t, ids) for t in evo_targets)
+        else:
+            # no ids: the Active at the start, when fewer of its name are left and no evolution of its name was played
+            gone = (i == 0 and sum(1 for q in pre if nname(q['name']) == nm) > sum(1 for q in post if nname(q['name']) == nm)
+                    and not any(evolves_into(nm, nname(q.get('card_name'))) for q in plays if _is_evolution_play(q)))
+        if not gone:
+            continue
+        said = [t for t in texts if _norm(nm) in _norm(t)]
+        if any(KO_WORDS.search(t) for t in said) and not any(RETURNED.search(t) for t in said):
+            cands.append((p, said))
+    if len(cands) != 1:
+        if len(cands) > 1:
+            return [], [f'a Pokémon of his was knocked out after his turn ended, but the ledger does not tell which of {" / ".join(sorted(nname(c[0]["name"]) for c in cands))}: none is put in his discard']
+        return [], []
+    p, said = cands[0]
+    ids = pids(p)
+    by = collections.Counter(dict(ebt(p)))
+    for q in plays:
+        e = q.get('energy')
+        if isinstance(e, dict) and etype(e.get('type')) and e.get('count') and ids and _id_in(e.get('destination') or q.get('target'), ids):
+            by[etype(e['type'])] += int(e['count'])
+    told = collections.Counter()
+    nm_ = _norm(nname(p['name']))
+    for t in said:
+        # only the clause that says it was knocked out / left the board / was discarded and names it ("Druddigon, Rocky Helmet and 3 Metal are discarded."): the next one often
+        # says what he promoted, with ITS Energy ("Owner promotes second Haxorus 150 HP with 1 Fighting.")
+        for clause in re.split(r'(?<=[.;])\s+|;', t):
+            if nm_ in _norm(clause) and KO_WORDS.search(clause):
+                for m in ENERGY_COUNT.finditer(clause):
+                    if etype(m.group(2)):
+                        told[etype(m.group(2))] += int(m.group(1)) if m.group(1).isdigit() else NUMW[m.group(1).lower()]
+    notes = []
+    if told and sum(told.values()) != sum(by.values()):
+        notes.append(f'the Energy of the knocked-out {nname(p["name"])} is the count in the ledger\'s text ({sum(told.values())}), not the one the plays add up to ({sum(by.values())})')
+        by = told
+    ko = json.loads(json.dumps(p))
+    ko['hp_now'] = 0
+    ko['attached_energy'] = {'total': sum(by.values()), 'by_type': dict(by)}
+    for q in plays:
+        card = nname(q.get('card_name'))
+        if card and ids and any('Tool' in str(c.get('trainer_card_type', '')) for c in C.BYNAME.get(card, [])) and _id_in(q.get('target'), ids) and nk(q.get('kind')) != 'attempt':
+            ko['tool'] = card
+    return [ko], notes
 
 
 def resolve(items, text):
@@ -727,6 +826,11 @@ def convert_game(gdir, global_entities):
             after = instances(pt.get('board_after', {}).get('owner') or {})
             # which of his Pokemon the opponent's turn knocked out (by instance id, evolution, or what is on it: not by name alone), and what left the others
             pairs, kos = match_boards(after, own_inst)
+            # and what the checkup after his own previous turn knocked out: that row's `board_after` is already past it (Oct 13)
+            ckos, cnotes = checkup_knockouts(pt)
+            notes += cnotes
+            ck_ids = {id(x) for x in ckos}
+            kos = kos + ckos
             between = [x for x in turns[owner_idx[k - 1] + 1:ti] if not str(x.get('who_played', '')).startswith('owner')]
             moved = []      # Energy the opponent MOVED off one of his Pokemon (Thieving Incisors): it is on the opponent's Pokemon, not in his discard
             for x in between:
@@ -738,12 +842,13 @@ def convert_game(gdir, global_entities):
                 nm = nname(p['name'])
                 if nm not in names_in_deck:
                     continue
-                lost_mine = True
+                at_checkup = id(p) in ck_ids      # knocked out after his own turn ended, not by the opponent's attack: no Mach Stealth, and nothing of it was moved by the opponent
+                lost_mine = lost_mine or not at_checkup
                 knockouts += 1
                 st = stack_under(p)
                 if st is None:
                     st = chain_names(nm)
-                    if st and rc_flag(p, nm, sum(1 for q in after if nname(q['name']) == nm)):
+                    if st and rc_flag(p, nm, sum(1 for q in after + ckos if nname(q['name']) == nm)):
                         st = st[:1]
                 if not pids(p) and rc_names[nm] > 0:
                     rc_names[nm] -= 1
@@ -752,12 +857,12 @@ def convert_game(gdir, global_entities):
                 if tool and tool in names_in_deck:
                     disc.append((tool, None, None))
                 en_ = [tt for tt, n in ebt(p) for _ in range(int(n or 0))]
-                for mvd in list(moved):
+                for mvd in ([] if at_checkup else list(moved)):
                     if mvd[1] == nm and mvd[0] in en_:
                         en_.remove(mvd[0])
                         moved.remove(mvd)
                 disc_energy += en_
-                notes.append(f'knocked out between turns: {nm}')
+                notes.append(f'knocked out at the checkup after his turn ended: {nm}' if at_checkup else f'knocked out between turns: {nm}')
             for x in between:
                 for p in x.get('plays_in_order') or []:
                     for ev in p.get('nested_events_in_order') or []:

@@ -928,5 +928,141 @@ class ConditionsAndKnockouts(unittest.TestCase):
         self.assertEqual([self.at(pos, t)['me'].get('knockouts') for t in (2, 4, 6)], [0, 1, 2])
 
 
+# ------------------------------------------------------------------------------------------------------------- Oct 13: a checkup knock-out after his turn
+def cards_shown(p):
+    """how many cards of his deck a position shows: the board with what is under and on it, his hand and his discard"""
+    n = len(p['me']['hand']) + len(p['me']['discard'])
+    for pk in p['me']['board']:
+        n += 1 + len(pk.get('behind', [])) + len(pk.get('tools', []))
+    return n
+
+
+class CheckupKnockouts(unittest.TestCase):
+    """Fable's job after the v2 read of the Oct 13 games: a Pokemon of his that the checkup (Poison, Burn, Bad Dreams on a sleeping one) knocks out AFTER his turn ended. The ledger logs the
+    knock-out and his promotion at the end of his own row and that row's `board_after` is already past it, so comparing the end of one of his rows with the start of the next (which finds
+    what the opponent's turn knocked out) never saw it: the Pokemon, what was under it, its Tool and its Energy were missing from his discard, `me.knockouts` stayed 0 and the position
+    showed too few cards (game 20261013_030351000: 4 cards short at turn 15, so turn 15 could not run)."""
+    DECK = real_deck(('Timburr', 'A3 094', 2), ('Gurdurr', 'A3 095', 1), ('Conkeldurr', 'A3 096', 1), ('Rocky Helmet', 'A2 148', 1))
+    OPP = board(mon('Stakataka', 110), [])
+
+    def gurdurr(self, **kw):
+        d = dict(hp=20, variant='Strength40', energy={'Fighting': 1}, tool='Rocky Helmet', conds=['Asleep'], instance_id='G', stack=['Timburr', 'Gurdurr'])
+        d.update(kw)
+        return mon('Gurdurr', 90, **d)
+
+    def game(self, plays, auto, active=None, bench=None, after_active=None, after_bench=(), hand2=('Poké Ball',)):
+        """row 2 is his turn that ends in a checkup knock-out of his Active, row 3 the opponent's, row 4 his next turn (a position is made at 2 and 4);
+        `after_bench` is what row 2's `board_after` lists besides the new Active (the next turn starts without it)"""
+        start = board(active or self.gurdurr(), bench if bench is not None else [mon('Timburr', 60, pos=1, instance_id='T')])
+        new_active = after_active or mon('Timburr', 60, instance_id='T')
+        row2 = owner_turn(2, list(hand2), start, self.OPP, plays, after=board(new_active, list(after_bench)))
+        row2['automatic_events_in_order'] = auto
+        row4 = owner_turn(4, ['Poké Ball'], board(new_active, []), self.OPP, [play('end_turn')])
+        return MadeUpGame(self, self.DECK, [row2, opp_turn(3, []), row4]).convert({})[0]
+
+    def p4(self, pos):
+        return next(p for p in pos if p['turn_count'] == 4)
+
+    KO_EVENTS = ['Bad Dreams knocks out 20-HP Gurdurr.', 'Gurdurr, Rocky Helmet and 2 Fighting are discarded; owner promotes Timburr.']
+
+    def test_a_pokemon_the_checkup_knocked_out_after_he_ended_his_turn_reaches_his_discard_with_its_stack_tool_and_energy(self):
+        plays = [play('energy_attachment', None, 'G', 'Attach Fighting from zone', energy={'type': 'Fighting', 'count': 1, 'destination': 'G'}),
+                 play('end_turn'), play('promotion', None, 'T', 'Choose Timburr as replacement after Gurdurr KO')]
+        p = self.p4(self.game(plays, self.KO_EVENTS))
+        self.assertEqual(sorted(p['me']['discard']), ['Gurdurr A3 095', 'Rocky Helmet A2 148', 'Timburr A3 094'])
+        self.assertEqual(sorted(p['me']['discard_energy']), ['Fighting', 'Fighting'], 'the Energy it had at the start and the one he attached this turn')
+        self.assertEqual(p['me']['knockouts'], 1)
+        self.assertIn('checkup', p['notes'])
+        self.assertEqual(cards_shown(p), 5, 'the Timburr on the board, the Poké Ball in hand, and the three cards of the knocked-out Pokémon')
+
+    def test_an_ability_the_knocked_out_pokemon_used_this_turn_does_not_make_it_an_evolved_one(self):
+        # 030351: Dragonair used Dragon's Blessing (card_name Dragonair, target its own id) and was knocked out by Bad Dreams after the turn
+        plays = [play('ability', 'Gurdurr', 'G', "Gurdurr's Ability"), play('end_turn'), play('promotion', None, 'T', '')]
+        p = self.p4(self.game(plays, self.KO_EVENTS))
+        self.assertEqual(sorted(p['me']['discard']), ['Gurdurr A3 095', 'Rocky Helmet A2 148', 'Timburr A3 094'])
+        self.assertEqual(p['me']['knockouts'], 1)
+
+    def test_the_same_when_his_turn_ended_with_an_attack_and_not_an_end_turn(self):
+        plays = [play('attack', 'Gurdurr', 'opponent Active', 'Strength40'), play('promotion', None, 'T', 'Choose Timburr as replacement')]
+        p = self.p4(self.game(plays, self.KO_EVENTS))
+        self.assertEqual(sorted(p['me']['discard']), ['Gurdurr A3 095', 'Rocky Helmet A2 148', 'Timburr A3 094'])
+        self.assertEqual(p['me']['knockouts'], 1)
+
+    def test_the_count_in_the_ledgers_text_wins_when_it_differs_from_what_the_plays_add_up_to(self):
+        events = ['Poison checkup knocks out Gurdurr.', 'Gurdurr and three Fighting Energy leave board.']
+        p = self.p4(self.game([play('end_turn'), play('promotion', None, 'T', '')], events))
+        self.assertEqual(p['me']['discard_energy'], ['Fighting'] * 3)
+        self.assertIn("in the ledger's text (3)", p['notes'])
+
+    def test_the_energy_the_text_gives_the_promoted_pokemon_is_not_the_knocked_out_ones(self):
+        # 030351 turn 13: "Druddigon, Rocky Helmet and 3 Metal are discarded. Owner promotes second Haxorus 150 HP with 1 Fighting."
+        events = ['Poison checkup knocks out Gurdurr.', 'Gurdurr, Rocky Helmet and 2 Fighting are discarded. Owner promotes Timburr 60 HP with 1 Fighting.']
+        plays = [play('energy_attachment', None, 'G', 'Attach Fighting from zone', energy={'type': 'Fighting', 'count': 1, 'destination': 'G'}), play('end_turn'), play('promotion', None, 'T', '')]
+        p = self.p4(self.game(plays, events))
+        self.assertEqual(p['me']['discard_energy'], ['Fighting'] * 2)
+        self.assertNotIn("in the ledger's text", p['notes'])
+
+    def test_a_pokemon_that_left_the_board_without_a_knock_out_in_the_text_is_not_in_the_discard(self):
+        # a bounce (Ilima-like): the Pokemon is gone at the end of his row and a promotion follows, but the ledger says it went back to his hand
+        events = ['Gurdurr returns to hand; owner promotes Timburr.']
+        p = self.p4(self.game([play('end_turn'), play('promotion', None, 'T', '')], events))
+        self.assertEqual(p['me']['discard'], [])
+        self.assertEqual(p['me']['knockouts'], 0)
+
+    def test_a_pokemon_that_shuffled_itself_into_the_deck_is_not_in_the_discard_even_with_a_promotion_play_after_the_attack(self):
+        # Accelgor's Deck and Cover (213625 turn 11, 214731 turn 6): the attacker and what is on it go back to the deck and another Pokemon is promoted
+        plays = [play('attack', 'Gurdurr', 'opponent Active', 'Strength40; shuffles attacker and all attached cards into the deck'), play('promotion', None, 'T', 'promote Timburr')]
+        events = ['Active Gurdurr and attached Pokemon stack return to deck; its 1 Fighting leave board', 'Select Timburr as replacement']
+        p = self.p4(self.game(plays, events))
+        self.assertEqual(p['me']['discard'], [])
+        self.assertEqual(p['me']['knockouts'], 0)
+
+    def test_a_pokemon_gone_with_no_promotion_after_his_turn_is_not_a_checkup_knock_out(self):
+        p = self.p4(self.game([play('end_turn')], self.KO_EVENTS))
+        self.assertEqual(p['me']['discard'], [])
+        self.assertEqual(p['me']['knockouts'], 0)
+
+    def test_the_knocked_out_one_is_told_from_a_pokemon_of_its_name_that_is_still_there_by_its_instance_id(self):
+        a = mon('Timburr', 60, hp=10, conds=['Poisoned'], instance_id='A')
+        b = mon('Timburr', 60, pos=1, instance_id='B')
+        plays = [play('end_turn'), play('promotion', None, 'B', 'Choose Timburr as replacement')]
+        pos = self.game(plays, ['Poison checkup knocks out Timburr.'], active=a, bench=[b], after_active=mon('Timburr', 60, instance_id='B'))
+        p = self.p4(pos)
+        self.assertEqual(p['me']['discard'], ['Timburr A3 094'])
+        self.assertEqual(p['me']['knockouts'], 1)
+        self.assertEqual(p['me']['board'][0]['card'].split(' ')[0], 'Timburr')
+
+    def test_a_pokemon_of_the_same_name_that_evolved_this_turn_is_not_the_knocked_out_one(self):
+        # the bench Timburr A evolves (the ledger gives the evolved one a new id) while the Active Timburr B is knocked out by the Poison
+        b = mon('Timburr', 60, hp=10, conds=['Poisoned'], instance_id='B')
+        a = mon('Timburr', 60, pos=1, instance_id='A')
+        evolved = mon('Gurdurr', 90, variant='Strength40', instance_id='A2', stack=['Timburr', 'Gurdurr'])
+        plays = [play('evolution', 'Gurdurr', 'A → A2', 'Evolve Timburr A'), play('end_turn'), play('promotion', None, 'A2', 'Choose Gurdurr as replacement')]
+        pos = self.game(plays, ['Poison checkup knocks out Timburr.'], active=b, bench=[a], after_active=evolved, hand2=('Gurdurr',))
+        p = self.p4(pos)
+        self.assertEqual(p['me']['discard'], ['Timburr A3 094'], 'one Timburr, the one that was Active')
+        self.assertEqual(p['me']['knockouts'], 1)
+
+    def test_a_knock_out_the_opponents_attack_made_between_the_turns_is_still_found_and_not_counted_twice(self):
+        # the existing between-turns path: the Pokemon is in the row's `board_after` and gone from the next start
+        g = self.gurdurr(conds=[])
+        row2 = owner_turn(2, ['Poké Ball'], board(g, [mon('Timburr', 60, pos=1, instance_id='T')]), self.OPP, [play('end_turn')])
+        row4 = owner_turn(4, ['Poké Ball'], board(mon('Timburr', 60, instance_id='T'), []), self.OPP, [play('end_turn')])
+        opp3 = opp_turn(3, [play('attack', 'Stakataka: Brass Rock', 'owner Active', 'knocks out Active Gurdurr')])
+        p = self.p4(MadeUpGame(self, self.DECK, [row2, opp3, row4]).convert({})[0])
+        self.assertEqual(sorted(p['me']['discard']), ['Gurdurr A3 095', 'Rocky Helmet A2 148', 'Timburr A3 094'])
+        self.assertEqual(p['me']['knockouts'], 1)
+        self.assertIn('between turns', p['notes'])
+
+    def test_a_ledger_that_already_shows_the_knocked_out_pokemon_in_its_board_after_does_not_count_it_twice(self):
+        # (the Oct 13 v2 read put it there by a copy of the ledger; the same rows must give the same positions)
+        ko = self.gurdurr(hp=0)
+        plays = [play('end_turn'), play('promotion', None, 'T', '')]
+        pos = self.game(plays, self.KO_EVENTS, after_active=mon('Timburr', 60, instance_id='T'), after_bench=[ko])
+        p = self.p4(pos)
+        self.assertEqual(sorted(p['me']['discard']), ['Gurdurr A3 095', 'Rocky Helmet A2 148', 'Timburr A3 094'])
+        self.assertEqual(p['me']['knockouts'], 1)
+
+
 if __name__ == '__main__':
     unittest.main()
