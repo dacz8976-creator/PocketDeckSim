@@ -390,3 +390,43 @@ fn main() {
         }
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use deckgym::models::EnergyType;
+
+    fn act(action: SimpleAction) -> Action {
+        Action { actor: 0, action, is_stack: false }
+    }
+
+    /// Oct 14 (Fable): Dragon's Blessing offers one attach-from-discard per Energy type in the pile (022530 t09 of positions-v3); the two
+    /// choices must have different labels, in the converter's format `AttachTypedFromDiscard:<type>@<slot>`.
+    #[test]
+    fn the_attach_from_discard_choices_have_typed_labels() {
+        let typed = |energy_type| label(&act(SimpleAction::AttachTypedFromDiscard { in_play_idx: 0, energy_type, count: 1 }), None);
+        assert_eq!(typed(EnergyType::Fighting), "AttachTypedFromDiscard:Fighting@0");
+        assert_eq!(typed(EnergyType::Metal), "AttachTypedFromDiscard:Metal@0");
+        assert_ne!(typed(EnergyType::Fighting), typed(EnergyType::Metal));
+        let slot1 = label(&act(SimpleAction::AttachTypedFromDiscard { in_play_idx: 1, energy_type: EnergyType::Metal, count: 1 }), None);
+        assert_eq!(slot1, "AttachTypedFromDiscard:Metal@1");
+    }
+
+    /// The rest of the label set is as before.
+    #[test]
+    fn the_other_labels_are_unchanged() {
+        let cases = [
+            (SimpleAction::EndTurn, "EndTurn"),
+            (SimpleAction::Retreat(2), "Retreat:2"),
+            (SimpleAction::Attach { attachments: vec![(1, EnergyType::Metal, 0)], is_turn_energy: true }, "Attach:1Metal@0 zone"),
+            (SimpleAction::Attach { attachments: vec![(1, EnergyType::Fighting, 2)], is_turn_energy: false }, "Attach:1Fighting@2 fx"),
+            (SimpleAction::UseAbility { in_play_idx: 3 }, "Ability@3"),
+            (SimpleAction::Activate { player: 1, in_play_idx: 2 }, "Activate:1@2"),
+            (SimpleAction::Promote { player: 0, in_play_idx: 1 }, "Promote:0@1"),
+            (SimpleAction::AttachFromDiscard { in_play_idx: 1, num_random_energies: 2 }, "AttachFromDiscard"),
+        ];
+        for (a, want) in cases {
+            assert_eq!(label(&act(a), None), want);
+        }
+    }
+}
