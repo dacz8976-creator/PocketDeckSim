@@ -130,9 +130,9 @@ class PositionSets(unittest.TestCase):
 
     def test_the_oct13_v2_set_of_92(self):
         d = os.path.join(REPO, "rl/results/pause_games_new_2026-10-13/v2")
-        # 022530 t05 and t07: the opponent's Mega Scizor ex (printed 200 HP) with Giant Cape (+20) is recorded at 230; it can have at most 220
-        self.check(f"{d}/positions_all.json", f"{d}/decks", f"{d}/run_ids.txt",
-                   unreachable=[("KW-261013_022530000-t05", "opp", "3", 220), ("KW-261013_022530000-t07", "opp", "2", 220)])
+        # Positions v3 (Oct 14) give 022530's Mega Scizor ex its real Tool, Elegant Cape (+30 on a Stage 1), so its recorded 230 is reachable:
+        # no exception is left (with v2's Giant Cape it was held at 220)
+        self.check(f"{d}/positions_all.json", f"{d}/decks", f"{d}/run_ids.txt")
 
 
 class Format(unittest.TestCase):
