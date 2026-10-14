@@ -55,3 +55,4 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
 - 2026-10-14 02:36Z: 2026-10-13_12-ariados-whimsicott-ogerpon: slice done, 240 of 320 games on disk, folder pushed.
 - 2026-10-14 05:41Z: 2026-10-13_12-ariados-whimsicott-ogerpon: slice done, 280 of 320 games on disk, folder pushed.
 - 2026-10-14 06:50Z: 2026-10-13_12-ariados-whimsicott-ogerpon: slice done, 320 of 320 games on disk, folder pushed.
+- 2026-10-14 06:53Z: deck 12 slow report FINISHED (held-out deck, stage use, not development): all 320 games, 0 errors, 11.8 h over 8 sittings; kx3 61.3% over 160 games (53.5% to 68.5%), km3 on the same deals 34.1%, kx3 adds +27.2 points (19.8 to 34.6; no-gain not in range); best lists t-hydreigon and t-weezing 80%, worst t-blaziken 40%. Folder pushed (521106c2). Reported to Dustin in chat. Idle, waiting for Fable's next order.
