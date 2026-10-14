@@ -226,8 +226,10 @@ def positions_digest(positions):
 
 
 def build_index(view):
-    """folder -> game key for every game of a committed games_meta.json whose sibling positions_all.json holds positions for it"""
-    folders, claims = {}, collections.defaultdict(set)
+    """folder -> the claim of a committed games_meta.json whose sibling positions_all.json holds positions for the game. A folder can be claimed by several files for the same game (the v1 and the
+    corrected v2 positions of the same games): the claim the audit list reviewed (its games_meta, position count and digest) is the one used, else the one in the file the audit entry names, else the
+    one with most positions (the earlier file on a tie)."""
+    claims, keys = collections.defaultdict(list), collections.defaultdict(set)
     for path in sorted(p for p in view.ls('rl/results') if META_PATH.match(p)):
         meta = _loads(view, path, 'the games_meta file')
         pos = _loads(view, path.rsplit('/', 1)[0] + '/positions_all.json', 'the positions file next to')
@@ -239,12 +241,19 @@ def build_index(view):
         for key, v in meta.items():
             f = (v.get('folder') or '').replace('\\', '/')
             if f and by_game.get(key):
-                claims[f].add(key)
-                old = folders.get(f)
-                if old is None or len(by_game[key]) > old[2]:
-                    folders[f] = (key, path, len(by_game[key]), positions_digest(by_game[key]))
-    audit = _loads(view, AUDIT_LIST, 'the audit list')
-    return RepoIndex(folders, validate_audit(audit) if audit is not None else {}, audit is not None, {f: sorted(k) for f, k in claims.items() if len(k) > 1})
+                keys[f].add(key)
+                claims[f].append((key, path, len(by_game[key]), positions_digest(by_game[key])))
+    raw = _loads(view, AUDIT_LIST, 'the audit list')
+    audit = validate_audit(raw) if raw is not None else {}
+    entries = collections.defaultdict(list)
+    for key, e in (audit.get('games') or {}).items():
+        entries[(e.get('folder') or '').replace('\\', '/')].append((key, e))
+    folders = {}
+    for f, cl in claims.items():
+        pick = next((c for key, e in entries.get(f, []) for c in cl if c == (key, e.get('games_meta'), e.get('positions'), e.get('positions_sha256'))), None)
+        pick = pick or next((c for key, e in entries.get(f, []) for c in cl if c[1] == e.get('games_meta')), None)
+        folders[f] = pick or max(cl, key=lambda c: c[2])
+    return RepoIndex(folders, audit, raw is not None, {f: sorted(k) for f, k in keys.items() if len(k) > 1})
 
 
 def games_hash(games):

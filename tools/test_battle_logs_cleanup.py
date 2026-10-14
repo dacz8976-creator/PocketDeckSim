@@ -760,6 +760,34 @@ class AuditListShape(unittest.TestCase):
         self.assertIn('several games_meta files name this folder for different games', ' '.join(d.games[0].reasons))
 
     @unittest.skipUnless(HAVE_GIT, 'git not installed')
+    def test_a_folder_claimed_by_two_games_meta_files_is_judged_by_the_one_the_audit_list_reviewed(self):
+        # the first real dry run at the tip that released the 13 games: v1 and v2 of the same games both name the folder, with the same count and different positions; the first file won
+        folder = 'BATCH_A/20261001_000000001_iOS'
+        w = GitWorld(self, [folder])                        # the audit list reviews META (the later file in sorted order)
+        earlier = 'rl/results/pause_games_aaa_earlier/'
+        write(os.path.join(w.repo, earlier + 'games_meta.json'), json.dumps({'kw-261001_000000001': {'folder': folder}}))
+        write(os.path.join(w.repo, earlier + 'positions_all.json'), json.dumps([{'game': 'kw-261001_000000001', 'older': True}]))
+        w.commit('an earlier version of the same game')
+        idx = bl.build_index(bl.RepoView(w.repo))
+        self.assertEqual(idx.folders[folder][1], META, 'the claim the audit list reviewed, not the earlier file')
+        self.assertEqual(idx.conflicts, {}, 'the same game twice is not a conflict')
+        tree = Tree(self)
+        tree.game('BATCH_A', '20261001_000000001_iOS')
+        self.assertTrue(decide_for(tree, idx)[0].delete, ' '.join(decide_for(tree, idx)[0].games[0].reasons))
+        # the reviewed file changed after the review: held back, with the reason that names the digest
+        write(os.path.join(w.repo, os.path.dirname(META), 'positions_all.json'), json.dumps([{'game': 'kw-261001_000000001', 'changed': True}]))
+        w.commit('the reviewed positions changed')
+        idx = bl.build_index(bl.RepoView(w.repo))
+        self.assertEqual(idx.folders[folder][1], META)
+        self.assertIn('their sha256 differs', ' '.join(decide_for(tree, idx)[0].games[0].reasons))
+        # no audit entry for the folder: the claim with most positions decides, the earlier file on a tie
+        w.accepted = None
+        os.remove(os.path.join(w.repo, AUDIT))
+        w.commit('no audit list')
+        idx = bl.build_index(bl.RepoView(w.repo))
+        self.assertEqual(idx.folders[folder][1], earlier + 'games_meta.json')
+
+    @unittest.skipUnless(HAVE_GIT, 'git not installed')
     def test_a_git_replace_cannot_change_what_origin_main_says(self):
         w = GitWorld(self, ['BATCH_A/20261001_000000001_iOS'])
         accepted_commit = w.g('rev-parse', 'HEAD').strip()
