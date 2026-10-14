@@ -1,25 +1,25 @@
-/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:140: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_oct13/positions.json' mode='r' encoding='utf-8'>
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:151: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_oct13/positions.json' mode='r' encoding='utf-8'>
   bad = json.load(open(f"{T}/positions.json"))[3]
 ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:145: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/pg_pos_bad_condition.json' mode='w' encoding='utf-8'>
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:156: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/pg_pos_bad_condition.json' mode='w' encoding='utf-8'>
   json.dump([bad], open(path, "w"))
 ResourceWarning: Enable tracemalloc to get the object allocation traceback
-..../home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:105: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_positions_kx3_2026-10/run_ids.txt' mode='r' encoding='utf-8'>
+..../home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:107: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_positions_kx3_2026-10/run_ids.txt' mode='r' encoding='utf-8'>
   ids = set(open(ids_path).read().split())
 ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:106: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_new_2026-10-12/positions_all.json' mode='r' encoding='utf-8'>
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:108: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_new_2026-10-12/positions_all.json' mode='r' encoding='utf-8'>
   positions = [p for p in json.load(open(positions_path)) if p["id"] in ids]
 ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:109: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/pg_pos_set_pause_games_new_2026-10-12.json' mode='w' encoding='utf-8'>
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:111: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/pg_pos_set_pause_games_new_2026-10-12.json' mode='w' encoding='utf-8'>
   json.dump(positions, open(tmp, "w"))
 ResourceWarning: Enable tracemalloc to get the object allocation traceback
-E/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:105: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_new_2026-10-13/v2/run_ids.txt' mode='r' encoding='utf-8'>
+E/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:107: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_new_2026-10-13/v2/run_ids.txt' mode='r' encoding='utf-8'>
   ids = set(open(ids_path).read().split())
 ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:106: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_new_2026-10-13/v2/positions_all.json' mode='r' encoding='utf-8'>
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:108: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_new_2026-10-13/v2/positions_all.json' mode='r' encoding='utf-8'>
   positions = [p for p in json.load(open(positions_path)) if p["id"] in ids]
 ResourceWarning: Enable tracemalloc to get the object allocation traceback
-/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:109: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/pg_pos_set_v2.json' mode='w' encoding='utf-8'>
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:111: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/pg_pos_set_v2.json' mode='w' encoding='utf-8'>
   json.dump(positions, open(tmp, "w"))
 ResourceWarning: Enable tracemalloc to get the object allocation traceback
 E/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:89: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_oct14/positions_plains.json' mode='r' encoding='utf-8'>
@@ -30,28 +30,22 @@ EE.....
 ERROR: test_the_oct12_set_of_119 (test_pg_pos.PositionSets.test_the_oct12_set_of_119)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 120, in test_the_oct12_set_of_119
+  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 129, in test_the_oct12_set_of_119
     self.check(f"{d}/positions_all.json", f"{d}/decks", os.path.join(REPO, "rl/results/pause_positions_kx3_2026-10/run_ids.txt"))
-  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 115, in check
-    wrong = [(p["id"], state[p["id"]]["hp"], recorded_hp(p)) for p in positions if state[p["id"]]["hp"] != recorded_hp(p)]
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 115, in <listcomp>
-    wrong = [(p["id"], state[p["id"]]["hp"], recorded_hp(p)) for p in positions if state[p["id"]]["hp"] != recorded_hp(p)]
-                                                                                   ~~~~~~~~~~~~~~^^^^^^
+  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 123, in check
+    if state[p["id"]]["hp"] != want:
+       ~~~~~~~~~~~~~~^^^^^^
 KeyError: 'hp'
 
 ======================================================================
 ERROR: test_the_oct13_v2_set_of_92 (test_pg_pos.PositionSets.test_the_oct13_v2_set_of_92)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 124, in test_the_oct13_v2_set_of_92
-    self.check(f"{d}/positions_all.json", f"{d}/decks", f"{d}/run_ids.txt")
-  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 115, in check
-    wrong = [(p["id"], state[p["id"]]["hp"], recorded_hp(p)) for p in positions if state[p["id"]]["hp"] != recorded_hp(p)]
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 115, in <listcomp>
-    wrong = [(p["id"], state[p["id"]]["hp"], recorded_hp(p)) for p in positions if state[p["id"]]["hp"] != recorded_hp(p)]
-                                                                                   ~~~~~~~~~~~~~~^^^^^^
+  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 134, in test_the_oct13_v2_set_of_92
+    self.check(f"{d}/positions_all.json", f"{d}/decks", f"{d}/run_ids.txt",
+  File "/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py", line 123, in check
+    if state[p["id"]]["hp"] != want:
+       ~~~~~~~~~~~~~~^^^^^^
 KeyError: 'hp'
 
 ======================================================================
@@ -73,6 +67,6 @@ Traceback (most recent call last):
 KeyError: 'hp'
 
 ----------------------------------------------------------------------
-Ran 13 tests in 7.424s
+Ran 13 tests in 6.751s
 
 FAILED (errors=4)

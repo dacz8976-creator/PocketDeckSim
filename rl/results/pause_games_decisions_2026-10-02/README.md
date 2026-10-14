@@ -248,3 +248,30 @@ tests and adds nothing unless asked.
   byte-for-byte the same output (seeds 1-3, 365 lines).
 - **Builds:** built and run on main c045ede (K). It compiles on the two kx3 merges, cd20a97a (F) and 9a0bc5ac (C), with the same
   print-only patch. The laptop rebuilds all three from this commit.
+
+## Oct 14: HP under Starting Plains (the cloud; Fable, from the laptop's review of the Oct 12-13 positions)
+
+**The bug** (`REVIEW_POSITIONS_laptop.md` on main 373b41a6). `pg_pos.rs` set the board first and the Stadium after it. Starting
+Plains gives every Basic +20 HP, and the engine adds it when it refreshes its HP bonuses. So a damaged Basic was built with the
+right damage and then gained 20 HP: in 030351 turn 11, his Druddigon read 110 instead of 90 and the opponent's Igglybuff 30
+instead of 10 (turns 11, 13 and 15).
+
+**The fix:** the Stadium is now set before the board, and each Pokemon's recorded HP is applied after it, so the engine's refresh
+keeps it. The output format is unchanged. `--dump-state` also prints each Pokemon's `hp`, as the engine holds it after its own
+refresh.
+
+**Tests** (`harness/test_pg_pos.py`; `harness/test_oct14/`):
+- 030351 turns 11, 13 and 15: every Pokemon has its recorded HP; the turn 11 Druddigon is 90 and the Igglybuff 10.
+- The Oct 12 set (the 119 of `../pause_positions_kx3_2026-10/run_ids.txt`) and the Oct 13 v2 set (92): each loads with 0
+  problems, every Pokemon at its recorded HP.
+- 4 of the 13 tests fail on the Oct 13 runner (`tests_before.log`); 13 of 13 pass on the new one (`tests_after.log`).
+
+**A data finding for the converter:** in 022530 turns 5 and 7, the opponent's Mega Scizor ex (printed 200 HP, with Giant Cape +20)
+is recorded at 230. It can have at most 220, which is what the engine holds. The test expects 220 there.
+
+**km3 before and after** (seeds 1-12; `test_oct14/km3_compare.txt`):
+- **The 119:** byte for byte the same output (1,547 lines). Starting Plains is in none of them.
+- **The 92 (v2):** km3's plans are the same in all 1,104 runs. Only the printed board summary of 030351 turns 9, 11 and 13
+  changed (`km3_plains_before.jsonl`, `km3_plains_after.jsonl`): it now shows each Basic with the Plains bonus (turn 9's
+  undamaged Druddigon 120, not 100), as the engine plays it.
+- **Builds:** built and run on main c045ede (K); it compiles on cd20a97a (F) and 9a0bc5ac (C) with the same print-only patch.

@@ -101,7 +101,9 @@ class PositionSets(unittest.TestCase):
     """The Oct 12 set (the 119 of ../../pause_positions_kx3_2026-10/run_ids.txt) and the Oct 13 v2 set (92) load with no problems, every
     Pokemon at its recorded HP."""
 
-    def check(self, positions_path, deck_folder, ids_path):
+    def check(self, positions_path, deck_folder, ids_path, unreachable=()):
+        """`unreachable`: (position id, side, slot) whose recorded HP is above the most the card can have in the engine (a data finding,
+        not a runner one); there the engine's maximum is expected instead."""
         ids = set(open(ids_path).read().split())
         positions = [p for p in json.load(open(positions_path)) if p["id"] in ids]
         self.assertEqual(len(positions), len(ids))
@@ -112,7 +114,14 @@ class PositionSets(unittest.TestCase):
         self.assertEqual(len(pos_lines), len(ids))
         self.assertEqual([(l["id"], l["problems"]) for l in pos_lines if l["problems"]], [])
         state = {l["id"]: l for l in lines if l["kind"] == "state"}
-        wrong = [(p["id"], state[p["id"]]["hp"], recorded_hp(p)) for p in positions if state[p["id"]]["hp"] != recorded_hp(p)]
+        wrong = []
+        for p in positions:
+            want = recorded_hp(p)
+            for pid, side, slot, top in unreachable:
+                if pid == p["id"]:
+                    want[side][slot] = top
+            if state[p["id"]]["hp"] != want:
+                wrong.append((p["id"], state[p["id"]]["hp"], want))
         self.assertEqual(wrong, [])
 
     def test_the_oct12_set_of_119(self):
@@ -121,7 +130,9 @@ class PositionSets(unittest.TestCase):
 
     def test_the_oct13_v2_set_of_92(self):
         d = os.path.join(REPO, "rl/results/pause_games_new_2026-10-13/v2")
-        self.check(f"{d}/positions_all.json", f"{d}/decks", f"{d}/run_ids.txt")
+        # 022530 t05 and t07: the opponent's Mega Scizor ex (printed 200 HP) with Giant Cape (+20) is recorded at 230; it can have at most 220
+        self.check(f"{d}/positions_all.json", f"{d}/decks", f"{d}/run_ids.txt",
+                   unreachable=[("KW-261013_022530000-t05", "opp", "3", 220), ("KW-261013_022530000-t07", "opp", "2", 220)])
 
 
 class Format(unittest.TestCase):
