@@ -196,3 +196,61 @@ scripts are in `review_evidence/panel_scripts/`.
    open.
 3. Then the 14 games move from `pending` to `games` in the Battle Logs audit list
    (`../../battle_logs_retention_2026-10-14/audited_games.json`), with this review as their evidence.
+
+## Recheck of Sonnet's positions v3 (Oct 14): the blockers and majors are fixed
+
+Sonnet fixed this review on branch `sonnet/positions-v3-2026-10-14` (cfc143fb). Its record is `V3_CHANGES.md` and
+`v3_position_changes.txt`. It is integrated by path with this note.
+
+**How it was checked.** A second panel did the work, and a verifier re-derived every item not fully fixed (`review_evidence/recheck_v3_output.json`).
+- Four readers re-derived each item from the raw ledgers. They did not rely on `check_review_fixes.py`.
+- The pipeline was regenerated from Recording_QA, read-only.
+- It reproduces the committed v3 positions (92 of 92) and all 14 deck files.
+- The tests pass: converter 143, normaliser 28.
+
+**Result: no blocker or major is left, and v3 introduced none.**
+- **The three blockers are fixed:**
+  - 015011's Benches, on both sides;
+  - 030351's Darkrai as B2b 040, with `opp_pick` now subtracting Stadium and Tool HP bonuses before comparing printings;
+  - 022530's Dratini as B4 116, in the deck file and on the board.
+- **Majors 1-6, 8 and 9 are fixed,** as are the recorded corrections against the frame-only facts table above.
+- **Major 7 is fixed in the plan:** `AttachTypedFromDiscard:<Type>@0` in 022530 t09 and in 030351 t05-t15, which are all seven of his Dragon's Blessing uses.
+  - Its typed harness label is a Rust change, sent to the Opus cloud.
+  - Until it lands, forced replays still cut 022530 t09 before Frenzied Blade.
+- **52 positions changed and 40 are identical.** Every changed field traces to an item here or to a recorded correction.
+- **The new converter reproduces the 125 Oct 12 positions identically.**
+
+**One claim above, corrected.** Major 1 said the wrong opponent next Energy changes km3's evaluation. In the 15 positions where only that
+field (or it and his plan) changed, v3's km3 re-runs are byte-identical to v2's, every score included. So it moved no km3 result. Whether
+it moves kx3 is untested.
+
+**Minor, left for later:**
+- The correction guards are weaker than `ledger_corrections.json` says:
+  - the two renames have no `was` check;
+  - a missing turn makes the hand corrections apply in part without an error;
+  - `rename_tool` leaves the opponent's two Tool plays named Giant Cape.
+- Correction notes also land on positions before the corrected event.
+- `V3_CHANGES.md`:
+  - it mixes units in its per-field counts;
+  - it swaps whose hand the 015659 correction is about;
+  - its "125 byte-for-byte" holds against main's converter, not main's committed file (next point).
+- `v3_position_changes.txt` cuts notes at about 150 characters.
+- `kw_report.py` doesn't normalise the typed step, so the free-run comparison reports a Dragon's Blessing difference that isn't there.
+- `forced_runs.py` handles the single-type Blessing choice inconsistently (030351 t07).
+- `opp_pick`'s printed-HP text can't overrule its HP filter. This has no effect on any current position.
+- Still open by design:
+  - 030351's phantom Fighting on the opponent's Active Igglybuff at t13 and t15 (the frame facts table above settles it);
+  - 015659's turns 10-12;
+  - the 210823 Pidgey printings (flagged).
+
+**Found in passing, before v3:** main's committed `../../pause_games_new_2026-10-12/positions_all.json` is older than main's converter.
+- It lacks `me.knockouts` in all 125 positions. 36 of them should be 1 or 2.
+- It also lacks 19 board-entry conditions.
+- The kx3 position study ran on the old harness, which ignores both by design (its condition positions are read apart), and it keeps its
+  own copy (`../../pause_positions_kx3_2026-10/reading/positions_119.json`).
+- A regeneration on main is a small follow-up.
+
+**For the frames.** These 14 packets now pass the review.
+- Apart from the open points above, every fact that needed the frames is recorded here or in `scripts/ledger_corrections.json`.
+- 015659's turn 10-12 question still rests on its frames. That game stays `pending` until the question is settled or accepted as open.
+- The other 13 can move from `pending` to `games` in the Battle Logs audit list, under a new acceptance.

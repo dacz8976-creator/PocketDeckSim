@@ -28,4 +28,7 @@ python3 -B "$HERE/check_state_dump.py" positions_all.json decks > state_dump_che
 python3 -B "$HERE/check_deck_assumption.py" positions_all.json decks "$QA" > deck_assumption_check.txt
 python3 -B "$HERE/position_cards.py" positions_all.json km3_summary.json runs_km3 position_list.json "$QA" > position_cards.txt
 python3 -B "$HERE/make_table.py"
+# v3: the laptop's list (REVIEW_POSITIONS_laptop.md) as a check on the positions just made; exit status 1 if a line fails
+python3 -B "$HERE/check_review_fixes.py" > review_fixes_check.txt || { cat review_fixes_check.txt; exit 1; }
+tail -1 review_fixes_check.txt
 echo done

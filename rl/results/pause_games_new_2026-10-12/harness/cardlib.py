@@ -91,16 +91,68 @@ def norm_text(s):
     return re.sub(r'[^a-z0-9]+', '', str(s or '').lower().replace('’', "'"))
 
 
+TYPE_LETTERS = {'G': 'Grass', 'R': 'Fire', 'W': 'Water', 'L': 'Lightning', 'P': 'Psychic', 'F': 'Fighting', 'D': 'Darkness', 'M': 'Metal', 'N': 'Dragon', 'C': 'Colorless'}
+HP_BOOST = re.compile(r'gets? \+(\d+) HP', re.I)
+
+
+def hp_boost(c, tool=None, stadium=None):
+    """the HP a Tool on this Pokemon card and a Stadium in play add to it, read from their texts in the database: 'The Stage 1 Pokémon this card is attached to gets +30 HP' (Elegant Cape),
+    'Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP' (Starting Plains), 'The [G] Pokémon this card is attached to gets +30 HP' (Leaf Cape), 'The Pokémon this card is
+    attached to gets +20 HP' (Giant Cape). A condition this does not know (the Ancient Pokémon of the Booster Energy Capsule: the database has no such flag) adds nothing."""
+    total = 0
+    for name, is_stadium in ((tool, False), (stadium, True)):
+        if not name or str(name).strip().lower() in ('none', 'null', 'empty', 'no stadium'):
+            continue
+        card = next((x for x in BYNAME.get(nname(name), []) if not is_pokemon(x)), None)
+        eff = (card or {}).get('effect') or ''
+        m = HP_BOOST.search(eff)
+        if not m:
+            continue
+        cond = eff.split('this card is attached to')[0].lower() if not is_stadium else eff.lower()
+        stage = c.get('stage', 0)
+        if is_stadium:
+            applies = 'basic' in cond and stage == 0
+        elif 'stage 1' in cond:
+            applies = stage == 1
+        elif 'stage 2' in cond:
+            applies = stage == 2
+        elif re.search(r'\[\w\] pok', cond):
+            applies = c.get('energy_type') == TYPE_LETTERS.get(re.search(r'\[(\w)\] pok', cond).group(1).upper())
+        else:
+            applies = 'ancient' not in cond
+        if applies:
+            total += int(m.group(1))
+    return total
+
+
+class HP:
+    """the HP a ledger shows for a Pokemon on the board, with the Tool on it and the Stadium in play that may have added to it: a card fits when its printed HP plus what they add is the shown HP
+    (score 2); a card whose printed HP is the shown HP although they would have added to it fits less (score 1: the ledger did not add the boost)"""
+
+    def __init__(self, hp_max, tool=None, stadium=None):
+        self.max, self.tool, self.stadium = hp_max, tool, stadium
+
+    def score(self, c):
+        if self.max is None or c.get('hp') is None:
+            return 0
+        boost = hp_boost(c, self.tool, self.stadium)
+        if c['hp'] + boost == self.max:
+            return 2
+        return 1 if boost and c['hp'] == self.max else 0
+
+
 def score_text(c, text, hp=None):
     """how well a database card fits a ledger's description of a Pokemon ('Nightmare Aura / Dark Prism 80; shiny artwork', 'A2a 053; Tackle20, HP60',
-    'Hook 30; 50 HP'): +3 for each of its attack and Ability titles the text names, +2 when HP agrees, +1 when the text names this very id (the reader's ids can
-    be swapped, so that is the weakest evidence). Only what a card has counts: a title the text names that the card lacks is not held against it."""
+    'Hook 30; 50 HP'): +3 for each of its attack and Ability titles the text names, +2 when HP agrees (`hp` is the shown HP, or an HP with its Tool and Stadium), +1 when the text names
+    this very id (the reader's ids can be swapped, so that is the weakest evidence). Only what a card has counts: a title the text names that the card lacks is not held against it."""
     t = norm_text(text)
     s = 0
     for ti in titles(c):
         if norm_text(ti) and norm_text(ti) in t:
             s += 3
-    if hp is not None and c.get('hp') == hp:
+    if isinstance(hp, HP):
+        s += hp.score(c)
+    elif hp is not None and c.get('hp') == hp:
         s += 2
     if c['id'] in set(m.group(1) + ' ' + m.group(2) for m in PID_RE.finditer(str(text or ''))):
         s += 1

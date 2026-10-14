@@ -61,6 +61,80 @@ class Play(unittest.TestCase):
         self.assertFalse([m for m in plan if m.startswith("Attack:") or m.startswith("Retreat:")], plan)
 
 
+REPO = os.path.abspath(os.path.join(HERE, "..", "..", "..", ".."))
+T14 = os.path.join(HERE, "test_oct14")
+
+
+def decks_of(folder):
+    return sum((["--deck", f"{f[:-4]}={os.path.join(folder, f)}"] for f in sorted(os.listdir(folder)) if f.endswith(".txt") and f.startswith("KW")), [])
+
+
+def run_set(positions, deck_folder, *extra):
+    p = subprocess.run([BIN, "--positions", positions, *decks_of(deck_folder), "--seeds", "1", *extra], capture_output=True, text=True,
+                       timeout=1800)
+    assert p.returncode == 0, p.stderr[-2000:]
+    return [json.loads(l) for l in p.stdout.splitlines() if l.strip()]
+
+
+def recorded_hp(pos):
+    return {side: {str(i): b["hp"] for i, b in enumerate(pos[side]["board"]) if "hp" in b} for side in ("me", "opp")}
+
+
+class StartingPlains(unittest.TestCase):
+    """Oct 14 (the laptop's review of the Oct 12-13 positions, REVIEW_POSITIONS_laptop.md on main 373b41a6): pg_pos built each Pokemon's
+    damage with no Stadium bonus and set the Stadium after the board, so under Starting Plains (+20 HP to every Basic) a damaged Basic
+    gained 20 HP once the engine refreshed its bonuses. The state line's "hp" is each Pokemon's HP after the engine's own refresh."""
+
+    def test_every_pokemon_under_starting_plains_has_its_recorded_hp(self):
+        positions = json.load(open(f"{T14}/positions_plains.json"))
+        state = {l["id"]: l for l in run_set(f"{T14}/positions_plains.json", T14, "--dump-state") if l["kind"] == "state"}
+        for pos in positions:
+            self.assertEqual(state[pos["id"]]["hp"], recorded_hp(pos), pos["id"])
+
+    def test_the_damaged_druddigon_of_030351_t11_is_90_not_110(self):
+        state = {l["id"]: l for l in run_set(f"{T14}/positions_plains.json", T14, "--dump-state") if l["kind"] == "state"}
+        self.assertEqual(state["KW-261013_030351000-t11"]["hp"]["me"]["0"], 90)
+        self.assertEqual(state["KW-261013_030351000-t11"]["hp"]["opp"]["0"], 10)     # the opponent's damaged Igglybuff, not 30
+
+
+class PositionSets(unittest.TestCase):
+    """The Oct 12 set (the 119 of ../../pause_positions_kx3_2026-10/run_ids.txt) and the Oct 13 v2 set (92) load with no problems, every
+    Pokemon at its recorded HP."""
+
+    def check(self, positions_path, deck_folder, ids_path, unreachable=()):
+        """`unreachable`: (position id, side, slot) whose recorded HP is above the most the card can have in the engine (a data finding,
+        not a runner one); there the engine's maximum is expected instead."""
+        ids = set(open(ids_path).read().split())
+        positions = [p for p in json.load(open(positions_path)) if p["id"] in ids]
+        self.assertEqual(len(positions), len(ids))
+        tmp = os.path.join(os.environ.get("TMPDIR", "/tmp"), "pg_pos_set_" + os.path.basename(os.path.dirname(positions_path)) + ".json")
+        json.dump(positions, open(tmp, "w"))
+        lines = run_set(tmp, deck_folder, "--dump-state")
+        pos_lines = [l for l in lines if l["kind"] == "position"]
+        self.assertEqual(len(pos_lines), len(ids))
+        self.assertEqual([(l["id"], l["problems"]) for l in pos_lines if l["problems"]], [])
+        state = {l["id"]: l for l in lines if l["kind"] == "state"}
+        wrong = []
+        for p in positions:
+            want = recorded_hp(p)
+            for pid, side, slot, top in unreachable:
+                if pid == p["id"]:
+                    want[side][slot] = top
+            if state[p["id"]]["hp"] != want:
+                wrong.append((p["id"], state[p["id"]]["hp"], want))
+        self.assertEqual(wrong, [])
+
+    def test_the_oct12_set_of_119(self):
+        d = os.path.join(REPO, "rl/results/pause_games_new_2026-10-12")
+        self.check(f"{d}/positions_all.json", f"{d}/decks", os.path.join(REPO, "rl/results/pause_positions_kx3_2026-10/run_ids.txt"))
+
+    def test_the_oct13_v2_set_of_92(self):
+        d = os.path.join(REPO, "rl/results/pause_games_new_2026-10-13/v2")
+        # 022530 t05 and t07: the opponent's Mega Scizor ex (printed 200 HP) with Giant Cape (+20) is recorded at 230; it can have at most 220
+        self.check(f"{d}/positions_all.json", f"{d}/decks", f"{d}/run_ids.txt",
+                   unreachable=[("KW-261013_022530000-t05", "opp", "3", 220), ("KW-261013_022530000-t07", "opp", "2", 220)])
+
+
 class Format(unittest.TestCase):
     """The laptop's reading scripts read these lines: without --dump-state the output has the same kinds and keys as before."""
 

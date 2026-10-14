@@ -8,14 +8,14 @@ PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Rare Candy
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=8
-PGDUMP      -1770.133333333333439 EndTurn
-PGDUMP       -891.133333333333326 UseStadium
-PGDUMP       -415.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -782.133333333333326 Attach:1Darkness@1 zone
-PGDUMP      -1284.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -652.133333333333326 Attach:1Darkness@3 zone
-PGDUMP       -415.466666666666697 Play:Rare Candy
-PGDUMP      -1284.799999999999955 Play:Ilima
+PGDUMP      -1772.133333333333439 EndTurn
+PGDUMP       -893.133333333333326 UseStadium
+PGDUMP       -417.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -784.133333333333326 Attach:1Darkness@1 zone
+PGDUMP      -1286.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -654.133333333333326 Attach:1Darkness@3 zone
+PGDUMP       -417.466666666666697 Play:Rare Candy
+PGDUMP      -1286.799999999999955 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 1 free 1
 PGSTEP KW-261012_203719000-t07 seed 1 free 2
 PGCAND EndTurn
@@ -26,22 +26,22 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=7
-PGDUMP       -892.133333333333326 EndTurn
-PGDUMP       -414.466666666666697 UseStadium
-PGDUMP       -414.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -587.799999999999955 Attach:1Darkness@1 zone
-PGDUMP      -1006.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -207.800000000000011 Attach:1Darkness@3 zone
-PGDUMP       -207.800000000000011 Play:Ilima
+PGDUMP       -894.133333333333326 EndTurn
+PGDUMP       -416.466666666666697 UseStadium
+PGDUMP       -416.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -589.799999999999955 Attach:1Darkness@1 zone
+PGDUMP      -1008.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -209.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -209.800000000000011 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 1 free 3
 PGSTEP KW-261012_203719000-t07 seed 1 free 4
 PGCAND Promote:0@1
 PGCAND Promote:0@2
 PGCAND Promote:0@3
 PGDUMP actor=0 candidates=3
-PGDUMP       -452.133333333333383 Promote:0@1
-PGDUMP       -607.799999999999955 Promote:0@2
-PGDUMP         72.200000000000003 Promote:0@3
+PGDUMP       -454.133333333333383 Promote:0@1
+PGDUMP       -609.799999999999955 Promote:0@2
+PGDUMP         70.200000000000003 Promote:0@3
 PGSTEP KW-261012_203719000-t07 seed 1 free 5
 PGCAND EndTurn
 PGCAND UseStadium
@@ -51,13 +51,13 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Place:Regigigas@3
 PGCAND Place:Glimmet@3
 PGDUMP actor=0 candidates=7
-PGDUMP       -697.799999999999955 EndTurn
-PGDUMP         73.200000000000003 UseStadium
-PGDUMP        321.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP        321.199999999999989 Place:Regigigas@3
-PGDUMP        131.199999999999989 Place:Glimmet@3
+PGDUMP       -699.799999999999955 EndTurn
+PGDUMP         71.200000000000003 UseStadium
+PGDUMP        319.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP        319.199999999999989 Place:Regigigas@3
+PGDUMP        129.199999999999989 Place:Glimmet@3
 PGSTEP KW-261012_203719000-t07 seed 1 free 6
 PGCAND EndTurn
 PGCAND UseStadium
@@ -66,26 +66,26 @@ PGCAND Attach:1Darkness@1 zone
 PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGDUMP actor=0 candidates=6
-PGDUMP       -448.800000000000011 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        322.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -297.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -450.800000000000011 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        320.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -299.800000000000011 Attach:1Darkness@3 zone
 PGSTEP KW-261012_203719000-t07 seed 1 free 7
 PGCAND EndTurn
 PGCAND UseStadium
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=3
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 1 free 8
 PGCAND EndTurn
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=2
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 1 free 9
 PGSTEP KW-261012_203719000-t07 seed 2 free 0
 PGCAND EndTurn
@@ -97,14 +97,14 @@ PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Rare Candy
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=8
-PGDUMP      -1770.133333333333439 EndTurn
-PGDUMP       -891.133333333333326 UseStadium
-PGDUMP       -415.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -782.133333333333326 Attach:1Darkness@1 zone
-PGDUMP      -1284.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -652.133333333333326 Attach:1Darkness@3 zone
-PGDUMP       -415.466666666666697 Play:Rare Candy
-PGDUMP      -1284.799999999999955 Play:Ilima
+PGDUMP      -1772.133333333333439 EndTurn
+PGDUMP       -893.133333333333326 UseStadium
+PGDUMP       -417.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -784.133333333333326 Attach:1Darkness@1 zone
+PGDUMP      -1286.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -654.133333333333326 Attach:1Darkness@3 zone
+PGDUMP       -417.466666666666697 Play:Rare Candy
+PGDUMP      -1286.799999999999955 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 2 free 1
 PGSTEP KW-261012_203719000-t07 seed 2 free 2
 PGCAND EndTurn
@@ -115,22 +115,22 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=7
-PGDUMP       -892.133333333333326 EndTurn
-PGDUMP       -414.466666666666697 UseStadium
-PGDUMP       -414.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -587.799999999999955 Attach:1Darkness@1 zone
-PGDUMP      -1006.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -207.800000000000011 Attach:1Darkness@3 zone
-PGDUMP       -207.800000000000011 Play:Ilima
+PGDUMP       -894.133333333333326 EndTurn
+PGDUMP       -416.466666666666697 UseStadium
+PGDUMP       -416.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -589.799999999999955 Attach:1Darkness@1 zone
+PGDUMP      -1008.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -209.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -209.800000000000011 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 2 free 3
 PGSTEP KW-261012_203719000-t07 seed 2 free 4
 PGCAND Promote:0@1
 PGCAND Promote:0@2
 PGCAND Promote:0@3
 PGDUMP actor=0 candidates=3
-PGDUMP       -452.133333333333383 Promote:0@1
-PGDUMP       -607.799999999999955 Promote:0@2
-PGDUMP         72.200000000000003 Promote:0@3
+PGDUMP       -454.133333333333383 Promote:0@1
+PGDUMP       -609.799999999999955 Promote:0@2
+PGDUMP         70.200000000000003 Promote:0@3
 PGSTEP KW-261012_203719000-t07 seed 2 free 5
 PGCAND EndTurn
 PGCAND UseStadium
@@ -140,13 +140,13 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Place:Regigigas@3
 PGCAND Place:Glimmet@3
 PGDUMP actor=0 candidates=7
-PGDUMP       -697.799999999999955 EndTurn
-PGDUMP         73.200000000000003 UseStadium
-PGDUMP        321.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP        321.199999999999989 Place:Regigigas@3
-PGDUMP        131.199999999999989 Place:Glimmet@3
+PGDUMP       -699.799999999999955 EndTurn
+PGDUMP         71.200000000000003 UseStadium
+PGDUMP        319.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP        319.199999999999989 Place:Regigigas@3
+PGDUMP        129.199999999999989 Place:Glimmet@3
 PGSTEP KW-261012_203719000-t07 seed 2 free 6
 PGCAND EndTurn
 PGCAND UseStadium
@@ -155,26 +155,26 @@ PGCAND Attach:1Darkness@1 zone
 PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGDUMP actor=0 candidates=6
-PGDUMP       -448.800000000000011 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        322.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -297.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -450.800000000000011 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        320.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -299.800000000000011 Attach:1Darkness@3 zone
 PGSTEP KW-261012_203719000-t07 seed 2 free 7
 PGCAND EndTurn
 PGCAND UseStadium
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=3
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 2 free 8
 PGCAND EndTurn
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=2
-PGDUMP         43.200000000000003 EndTurn
-PGDUMP        323.199999999999989 Attack:Overlord's Blade
+PGDUMP         41.200000000000003 EndTurn
+PGDUMP        321.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 2 free 9
 PGSTEP KW-261012_203719000-t07 seed 3 free 0
 PGCAND EndTurn
@@ -186,14 +186,14 @@ PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Rare Candy
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=8
-PGDUMP      -1770.133333333333439 EndTurn
-PGDUMP       -891.133333333333326 UseStadium
-PGDUMP       -415.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -782.133333333333326 Attach:1Darkness@1 zone
-PGDUMP      -1284.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -652.133333333333326 Attach:1Darkness@3 zone
-PGDUMP       -415.466666666666697 Play:Rare Candy
-PGDUMP      -1284.799999999999955 Play:Ilima
+PGDUMP      -1772.133333333333439 EndTurn
+PGDUMP       -893.133333333333326 UseStadium
+PGDUMP       -417.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -784.133333333333326 Attach:1Darkness@1 zone
+PGDUMP      -1286.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -654.133333333333326 Attach:1Darkness@3 zone
+PGDUMP       -417.466666666666697 Play:Rare Candy
+PGDUMP      -1286.799999999999955 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 3 free 1
 PGSTEP KW-261012_203719000-t07 seed 3 free 2
 PGCAND EndTurn
@@ -204,22 +204,22 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=7
-PGDUMP       -892.133333333333326 EndTurn
-PGDUMP       -414.466666666666697 UseStadium
-PGDUMP       -414.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -587.799999999999955 Attach:1Darkness@1 zone
-PGDUMP      -1006.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -207.800000000000011 Attach:1Darkness@3 zone
-PGDUMP       -207.800000000000011 Play:Ilima
+PGDUMP       -894.133333333333326 EndTurn
+PGDUMP       -416.466666666666697 UseStadium
+PGDUMP       -416.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -589.799999999999955 Attach:1Darkness@1 zone
+PGDUMP      -1008.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -209.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -209.800000000000011 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 3 free 3
 PGSTEP KW-261012_203719000-t07 seed 3 free 4
 PGCAND Promote:0@1
 PGCAND Promote:0@2
 PGCAND Promote:0@3
 PGDUMP actor=0 candidates=3
-PGDUMP       -452.133333333333383 Promote:0@1
-PGDUMP       -607.799999999999955 Promote:0@2
-PGDUMP         72.200000000000003 Promote:0@3
+PGDUMP       -454.133333333333383 Promote:0@1
+PGDUMP       -609.799999999999955 Promote:0@2
+PGDUMP         70.200000000000003 Promote:0@3
 PGSTEP KW-261012_203719000-t07 seed 3 free 5
 PGCAND EndTurn
 PGCAND UseStadium
@@ -229,13 +229,13 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Place:Regigigas@3
 PGCAND Place:Glimmet@3
 PGDUMP actor=0 candidates=7
-PGDUMP       -697.799999999999955 EndTurn
-PGDUMP         73.200000000000003 UseStadium
-PGDUMP        321.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP        321.199999999999989 Place:Regigigas@3
-PGDUMP        131.199999999999989 Place:Glimmet@3
+PGDUMP       -699.799999999999955 EndTurn
+PGDUMP         71.200000000000003 UseStadium
+PGDUMP        319.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP        319.199999999999989 Place:Regigigas@3
+PGDUMP        129.199999999999989 Place:Glimmet@3
 PGSTEP KW-261012_203719000-t07 seed 3 free 6
 PGCAND EndTurn
 PGCAND UseStadium
@@ -244,26 +244,26 @@ PGCAND Attach:1Darkness@1 zone
 PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGDUMP actor=0 candidates=6
-PGDUMP       -448.800000000000011 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        322.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -297.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -450.800000000000011 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        320.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -299.800000000000011 Attach:1Darkness@3 zone
 PGSTEP KW-261012_203719000-t07 seed 3 free 7
 PGCAND EndTurn
 PGCAND UseStadium
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=3
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 3 free 8
 PGCAND EndTurn
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=2
-PGDUMP         43.200000000000003 EndTurn
-PGDUMP        323.199999999999989 Attack:Overlord's Blade
+PGDUMP         41.200000000000003 EndTurn
+PGDUMP        321.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 3 free 9
 PGSTEP KW-261012_203719000-t07 seed 4 free 0
 PGCAND EndTurn
@@ -275,14 +275,14 @@ PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Rare Candy
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=8
-PGDUMP      -1770.133333333333439 EndTurn
-PGDUMP       -891.133333333333326 UseStadium
-PGDUMP       -415.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -782.133333333333326 Attach:1Darkness@1 zone
-PGDUMP      -1284.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -652.133333333333326 Attach:1Darkness@3 zone
-PGDUMP       -415.466666666666697 Play:Rare Candy
-PGDUMP      -1284.799999999999955 Play:Ilima
+PGDUMP      -1772.133333333333439 EndTurn
+PGDUMP       -893.133333333333326 UseStadium
+PGDUMP       -417.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -784.133333333333326 Attach:1Darkness@1 zone
+PGDUMP      -1286.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -654.133333333333326 Attach:1Darkness@3 zone
+PGDUMP       -417.466666666666697 Play:Rare Candy
+PGDUMP      -1286.799999999999955 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 4 free 1
 PGSTEP KW-261012_203719000-t07 seed 4 free 2
 PGCAND EndTurn
@@ -293,22 +293,22 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=7
-PGDUMP       -892.133333333333326 EndTurn
-PGDUMP       -414.466666666666697 UseStadium
-PGDUMP       -414.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -587.799999999999955 Attach:1Darkness@1 zone
-PGDUMP      -1006.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -207.800000000000011 Attach:1Darkness@3 zone
-PGDUMP       -207.800000000000011 Play:Ilima
+PGDUMP       -894.133333333333326 EndTurn
+PGDUMP       -416.466666666666697 UseStadium
+PGDUMP       -416.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -589.799999999999955 Attach:1Darkness@1 zone
+PGDUMP      -1008.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -209.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -209.800000000000011 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 4 free 3
 PGSTEP KW-261012_203719000-t07 seed 4 free 4
 PGCAND Promote:0@1
 PGCAND Promote:0@2
 PGCAND Promote:0@3
 PGDUMP actor=0 candidates=3
-PGDUMP       -452.133333333333383 Promote:0@1
-PGDUMP       -607.799999999999955 Promote:0@2
-PGDUMP         72.200000000000003 Promote:0@3
+PGDUMP       -454.133333333333383 Promote:0@1
+PGDUMP       -609.799999999999955 Promote:0@2
+PGDUMP         70.200000000000003 Promote:0@3
 PGSTEP KW-261012_203719000-t07 seed 4 free 5
 PGCAND EndTurn
 PGCAND UseStadium
@@ -318,13 +318,13 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Place:Regigigas@3
 PGCAND Place:Glimmet@3
 PGDUMP actor=0 candidates=7
-PGDUMP       -697.799999999999955 EndTurn
-PGDUMP         73.200000000000003 UseStadium
-PGDUMP        321.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP        321.199999999999989 Place:Regigigas@3
-PGDUMP        131.199999999999989 Place:Glimmet@3
+PGDUMP       -699.799999999999955 EndTurn
+PGDUMP         71.200000000000003 UseStadium
+PGDUMP        319.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP        319.199999999999989 Place:Regigigas@3
+PGDUMP        129.199999999999989 Place:Glimmet@3
 PGSTEP KW-261012_203719000-t07 seed 4 free 6
 PGCAND EndTurn
 PGCAND UseStadium
@@ -333,26 +333,26 @@ PGCAND Attach:1Darkness@1 zone
 PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGDUMP actor=0 candidates=6
-PGDUMP       -448.800000000000011 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        322.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -297.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -450.800000000000011 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        320.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -299.800000000000011 Attach:1Darkness@3 zone
 PGSTEP KW-261012_203719000-t07 seed 4 free 7
 PGCAND EndTurn
 PGCAND UseStadium
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=3
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 4 free 8
 PGCAND EndTurn
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=2
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 4 free 9
 PGSTEP KW-261012_203719000-t07 seed 5 free 0
 PGCAND EndTurn
@@ -364,14 +364,14 @@ PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Rare Candy
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=8
-PGDUMP      -1770.133333333333439 EndTurn
-PGDUMP       -891.133333333333326 UseStadium
-PGDUMP       -415.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -782.133333333333326 Attach:1Darkness@1 zone
-PGDUMP      -1284.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -652.133333333333326 Attach:1Darkness@3 zone
-PGDUMP       -415.466666666666697 Play:Rare Candy
-PGDUMP      -1284.799999999999955 Play:Ilima
+PGDUMP      -1772.133333333333439 EndTurn
+PGDUMP       -893.133333333333326 UseStadium
+PGDUMP       -417.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -784.133333333333326 Attach:1Darkness@1 zone
+PGDUMP      -1286.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -654.133333333333326 Attach:1Darkness@3 zone
+PGDUMP       -417.466666666666697 Play:Rare Candy
+PGDUMP      -1286.799999999999955 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 5 free 1
 PGSTEP KW-261012_203719000-t07 seed 5 free 2
 PGCAND EndTurn
@@ -382,22 +382,22 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=7
-PGDUMP       -892.133333333333326 EndTurn
-PGDUMP       -414.466666666666697 UseStadium
-PGDUMP       -414.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -587.799999999999955 Attach:1Darkness@1 zone
-PGDUMP      -1006.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -207.800000000000011 Attach:1Darkness@3 zone
-PGDUMP       -207.800000000000011 Play:Ilima
+PGDUMP       -894.133333333333326 EndTurn
+PGDUMP       -416.466666666666697 UseStadium
+PGDUMP       -416.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -589.799999999999955 Attach:1Darkness@1 zone
+PGDUMP      -1008.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -209.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -209.800000000000011 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 5 free 3
 PGSTEP KW-261012_203719000-t07 seed 5 free 4
 PGCAND Promote:0@1
 PGCAND Promote:0@2
 PGCAND Promote:0@3
 PGDUMP actor=0 candidates=3
-PGDUMP       -452.133333333333383 Promote:0@1
-PGDUMP       -607.799999999999955 Promote:0@2
-PGDUMP         72.200000000000003 Promote:0@3
+PGDUMP       -454.133333333333383 Promote:0@1
+PGDUMP       -609.799999999999955 Promote:0@2
+PGDUMP         70.200000000000003 Promote:0@3
 PGSTEP KW-261012_203719000-t07 seed 5 free 5
 PGCAND EndTurn
 PGCAND UseStadium
@@ -407,13 +407,13 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Place:Regigigas@3
 PGCAND Place:Glimmet@3
 PGDUMP actor=0 candidates=7
-PGDUMP       -697.799999999999955 EndTurn
-PGDUMP         73.200000000000003 UseStadium
-PGDUMP        321.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP        321.199999999999989 Place:Regigigas@3
-PGDUMP        131.199999999999989 Place:Glimmet@3
+PGDUMP       -699.799999999999955 EndTurn
+PGDUMP         71.200000000000003 UseStadium
+PGDUMP        319.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP        319.199999999999989 Place:Regigigas@3
+PGDUMP        129.199999999999989 Place:Glimmet@3
 PGSTEP KW-261012_203719000-t07 seed 5 free 6
 PGCAND EndTurn
 PGCAND UseStadium
@@ -422,26 +422,26 @@ PGCAND Attach:1Darkness@1 zone
 PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGDUMP actor=0 candidates=6
-PGDUMP       -448.800000000000011 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        322.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -297.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -450.800000000000011 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        320.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -299.800000000000011 Attach:1Darkness@3 zone
 PGSTEP KW-261012_203719000-t07 seed 5 free 7
 PGCAND EndTurn
 PGCAND UseStadium
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=3
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 5 free 8
 PGCAND EndTurn
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=2
-PGDUMP         43.200000000000003 EndTurn
-PGDUMP        323.199999999999989 Attack:Overlord's Blade
+PGDUMP         41.200000000000003 EndTurn
+PGDUMP        321.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 5 free 9
 PGSTEP KW-261012_203719000-t07 seed 6 free 0
 PGCAND EndTurn
@@ -453,14 +453,14 @@ PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Rare Candy
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=8
-PGDUMP      -1770.133333333333439 EndTurn
-PGDUMP       -891.133333333333326 UseStadium
-PGDUMP       -415.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -782.133333333333326 Attach:1Darkness@1 zone
-PGDUMP      -1284.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -652.133333333333326 Attach:1Darkness@3 zone
-PGDUMP       -415.466666666666697 Play:Rare Candy
-PGDUMP      -1284.799999999999955 Play:Ilima
+PGDUMP      -1772.133333333333439 EndTurn
+PGDUMP       -893.133333333333326 UseStadium
+PGDUMP       -417.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -784.133333333333326 Attach:1Darkness@1 zone
+PGDUMP      -1286.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -654.133333333333326 Attach:1Darkness@3 zone
+PGDUMP       -417.466666666666697 Play:Rare Candy
+PGDUMP      -1286.799999999999955 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 6 free 1
 PGSTEP KW-261012_203719000-t07 seed 6 free 2
 PGCAND EndTurn
@@ -471,22 +471,22 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=7
-PGDUMP       -892.133333333333326 EndTurn
-PGDUMP       -414.466666666666697 UseStadium
-PGDUMP       -414.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -587.799999999999955 Attach:1Darkness@1 zone
-PGDUMP      -1006.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -207.800000000000011 Attach:1Darkness@3 zone
-PGDUMP       -207.800000000000011 Play:Ilima
+PGDUMP       -894.133333333333326 EndTurn
+PGDUMP       -416.466666666666697 UseStadium
+PGDUMP       -416.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -589.799999999999955 Attach:1Darkness@1 zone
+PGDUMP      -1008.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -209.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -209.800000000000011 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 6 free 3
 PGSTEP KW-261012_203719000-t07 seed 6 free 4
 PGCAND Promote:0@1
 PGCAND Promote:0@2
 PGCAND Promote:0@3
 PGDUMP actor=0 candidates=3
-PGDUMP       -452.133333333333383 Promote:0@1
-PGDUMP       -607.799999999999955 Promote:0@2
-PGDUMP         72.200000000000003 Promote:0@3
+PGDUMP       -454.133333333333383 Promote:0@1
+PGDUMP       -609.799999999999955 Promote:0@2
+PGDUMP         70.200000000000003 Promote:0@3
 PGSTEP KW-261012_203719000-t07 seed 6 free 5
 PGCAND EndTurn
 PGCAND UseStadium
@@ -496,13 +496,13 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Place:Regigigas@3
 PGCAND Place:Glimmet@3
 PGDUMP actor=0 candidates=7
-PGDUMP       -697.799999999999955 EndTurn
-PGDUMP         73.200000000000003 UseStadium
-PGDUMP        321.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP        321.199999999999989 Place:Regigigas@3
-PGDUMP        131.199999999999989 Place:Glimmet@3
+PGDUMP       -699.799999999999955 EndTurn
+PGDUMP         71.200000000000003 UseStadium
+PGDUMP        319.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP        319.199999999999989 Place:Regigigas@3
+PGDUMP        129.199999999999989 Place:Glimmet@3
 PGSTEP KW-261012_203719000-t07 seed 6 free 6
 PGCAND EndTurn
 PGCAND UseStadium
@@ -511,26 +511,26 @@ PGCAND Attach:1Darkness@1 zone
 PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGDUMP actor=0 candidates=6
-PGDUMP       -448.800000000000011 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        322.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -297.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -450.800000000000011 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        320.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -299.800000000000011 Attach:1Darkness@3 zone
 PGSTEP KW-261012_203719000-t07 seed 6 free 7
 PGCAND EndTurn
 PGCAND UseStadium
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=3
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 6 free 8
 PGCAND EndTurn
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=2
-PGDUMP         43.200000000000003 EndTurn
-PGDUMP        323.199999999999989 Attack:Overlord's Blade
+PGDUMP         41.200000000000003 EndTurn
+PGDUMP        321.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 6 free 9
 PGSTEP KW-261012_203719000-t07 seed 7 free 0
 PGCAND EndTurn
@@ -542,14 +542,14 @@ PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Rare Candy
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=8
-PGDUMP      -1770.133333333333439 EndTurn
-PGDUMP       -891.133333333333326 UseStadium
-PGDUMP       -415.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -782.133333333333326 Attach:1Darkness@1 zone
-PGDUMP      -1284.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -652.133333333333326 Attach:1Darkness@3 zone
-PGDUMP       -415.466666666666697 Play:Rare Candy
-PGDUMP      -1284.799999999999955 Play:Ilima
+PGDUMP      -1772.133333333333439 EndTurn
+PGDUMP       -893.133333333333326 UseStadium
+PGDUMP       -417.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -784.133333333333326 Attach:1Darkness@1 zone
+PGDUMP      -1286.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -654.133333333333326 Attach:1Darkness@3 zone
+PGDUMP       -417.466666666666697 Play:Rare Candy
+PGDUMP      -1286.799999999999955 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 7 free 1
 PGSTEP KW-261012_203719000-t07 seed 7 free 2
 PGCAND EndTurn
@@ -560,22 +560,22 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=7
-PGDUMP       -892.133333333333326 EndTurn
-PGDUMP       -414.466666666666697 UseStadium
-PGDUMP       -414.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -587.799999999999955 Attach:1Darkness@1 zone
-PGDUMP      -1006.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -207.800000000000011 Attach:1Darkness@3 zone
-PGDUMP       -207.800000000000011 Play:Ilima
+PGDUMP       -894.133333333333326 EndTurn
+PGDUMP       -416.466666666666697 UseStadium
+PGDUMP       -416.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -589.799999999999955 Attach:1Darkness@1 zone
+PGDUMP      -1008.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -209.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -209.800000000000011 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 7 free 3
 PGSTEP KW-261012_203719000-t07 seed 7 free 4
 PGCAND Promote:0@1
 PGCAND Promote:0@2
 PGCAND Promote:0@3
 PGDUMP actor=0 candidates=3
-PGDUMP       -452.133333333333383 Promote:0@1
-PGDUMP       -607.799999999999955 Promote:0@2
-PGDUMP         72.200000000000003 Promote:0@3
+PGDUMP       -454.133333333333383 Promote:0@1
+PGDUMP       -609.799999999999955 Promote:0@2
+PGDUMP         70.200000000000003 Promote:0@3
 PGSTEP KW-261012_203719000-t07 seed 7 free 5
 PGCAND EndTurn
 PGCAND UseStadium
@@ -585,13 +585,13 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Place:Regigigas@3
 PGCAND Place:Glimmet@3
 PGDUMP actor=0 candidates=7
-PGDUMP       -697.799999999999955 EndTurn
-PGDUMP         73.200000000000003 UseStadium
-PGDUMP        321.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP        321.199999999999989 Place:Regigigas@3
-PGDUMP        131.199999999999989 Place:Glimmet@3
+PGDUMP       -699.799999999999955 EndTurn
+PGDUMP         71.200000000000003 UseStadium
+PGDUMP        319.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP        319.199999999999989 Place:Regigigas@3
+PGDUMP        129.199999999999989 Place:Glimmet@3
 PGSTEP KW-261012_203719000-t07 seed 7 free 6
 PGCAND EndTurn
 PGCAND UseStadium
@@ -600,26 +600,26 @@ PGCAND Attach:1Darkness@1 zone
 PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGDUMP actor=0 candidates=6
-PGDUMP       -448.800000000000011 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        322.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -297.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -450.800000000000011 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        320.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -299.800000000000011 Attach:1Darkness@3 zone
 PGSTEP KW-261012_203719000-t07 seed 7 free 7
 PGCAND EndTurn
 PGCAND UseStadium
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=3
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 7 free 8
 PGCAND EndTurn
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=2
-PGDUMP         43.200000000000003 EndTurn
-PGDUMP        323.199999999999989 Attack:Overlord's Blade
+PGDUMP         41.200000000000003 EndTurn
+PGDUMP        321.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 7 free 9
 PGSTEP KW-261012_203719000-t07 seed 8 free 0
 PGCAND EndTurn
@@ -631,14 +631,14 @@ PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Rare Candy
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=8
-PGDUMP      -1770.133333333333439 EndTurn
-PGDUMP       -891.133333333333326 UseStadium
-PGDUMP       -415.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -782.133333333333326 Attach:1Darkness@1 zone
-PGDUMP      -1284.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -652.133333333333326 Attach:1Darkness@3 zone
-PGDUMP       -415.466666666666697 Play:Rare Candy
-PGDUMP      -1284.799999999999955 Play:Ilima
+PGDUMP      -1772.133333333333439 EndTurn
+PGDUMP       -893.133333333333326 UseStadium
+PGDUMP       -417.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -784.133333333333326 Attach:1Darkness@1 zone
+PGDUMP      -1286.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -654.133333333333326 Attach:1Darkness@3 zone
+PGDUMP       -417.466666666666697 Play:Rare Candy
+PGDUMP      -1286.799999999999955 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 8 free 1
 PGSTEP KW-261012_203719000-t07 seed 8 free 2
 PGCAND EndTurn
@@ -649,22 +649,22 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=7
-PGDUMP       -892.133333333333326 EndTurn
-PGDUMP       -414.466666666666697 UseStadium
-PGDUMP       -414.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -587.799999999999955 Attach:1Darkness@1 zone
-PGDUMP      -1006.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -207.800000000000011 Attach:1Darkness@3 zone
-PGDUMP       -207.800000000000011 Play:Ilima
+PGDUMP       -894.133333333333326 EndTurn
+PGDUMP       -416.466666666666697 UseStadium
+PGDUMP       -416.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -589.799999999999955 Attach:1Darkness@1 zone
+PGDUMP      -1008.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -209.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -209.800000000000011 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 8 free 3
 PGSTEP KW-261012_203719000-t07 seed 8 free 4
 PGCAND Promote:0@1
 PGCAND Promote:0@2
 PGCAND Promote:0@3
 PGDUMP actor=0 candidates=3
-PGDUMP       -452.133333333333383 Promote:0@1
-PGDUMP       -607.799999999999955 Promote:0@2
-PGDUMP         72.200000000000003 Promote:0@3
+PGDUMP       -454.133333333333383 Promote:0@1
+PGDUMP       -609.799999999999955 Promote:0@2
+PGDUMP         70.200000000000003 Promote:0@3
 PGSTEP KW-261012_203719000-t07 seed 8 free 5
 PGCAND EndTurn
 PGCAND UseStadium
@@ -674,13 +674,13 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Place:Regigigas@3
 PGCAND Place:Glimmet@3
 PGDUMP actor=0 candidates=7
-PGDUMP       -697.799999999999955 EndTurn
-PGDUMP         73.200000000000003 UseStadium
-PGDUMP        321.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP        321.199999999999989 Place:Regigigas@3
-PGDUMP        131.199999999999989 Place:Glimmet@3
+PGDUMP       -699.799999999999955 EndTurn
+PGDUMP         71.200000000000003 UseStadium
+PGDUMP        319.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP        319.199999999999989 Place:Regigigas@3
+PGDUMP        129.199999999999989 Place:Glimmet@3
 PGSTEP KW-261012_203719000-t07 seed 8 free 6
 PGCAND EndTurn
 PGCAND UseStadium
@@ -689,26 +689,26 @@ PGCAND Attach:1Darkness@1 zone
 PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGDUMP actor=0 candidates=6
-PGDUMP       -448.800000000000011 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        322.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -297.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -450.800000000000011 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        320.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -299.800000000000011 Attach:1Darkness@3 zone
 PGSTEP KW-261012_203719000-t07 seed 8 free 7
 PGCAND EndTurn
 PGCAND UseStadium
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=3
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 8 free 8
 PGCAND EndTurn
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=2
-PGDUMP         43.200000000000003 EndTurn
-PGDUMP        323.199999999999989 Attack:Overlord's Blade
+PGDUMP         41.200000000000003 EndTurn
+PGDUMP        321.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 8 free 9
 PGSTEP KW-261012_203719000-t07 seed 9 free 0
 PGCAND EndTurn
@@ -720,14 +720,14 @@ PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Rare Candy
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=8
-PGDUMP      -1770.133333333333439 EndTurn
-PGDUMP       -891.133333333333326 UseStadium
-PGDUMP       -415.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -782.133333333333326 Attach:1Darkness@1 zone
-PGDUMP      -1284.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -652.133333333333326 Attach:1Darkness@3 zone
-PGDUMP       -415.466666666666697 Play:Rare Candy
-PGDUMP      -1284.799999999999955 Play:Ilima
+PGDUMP      -1772.133333333333439 EndTurn
+PGDUMP       -893.133333333333326 UseStadium
+PGDUMP       -417.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -784.133333333333326 Attach:1Darkness@1 zone
+PGDUMP      -1286.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -654.133333333333326 Attach:1Darkness@3 zone
+PGDUMP       -417.466666666666697 Play:Rare Candy
+PGDUMP      -1286.799999999999955 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 9 free 1
 PGSTEP KW-261012_203719000-t07 seed 9 free 2
 PGCAND EndTurn
@@ -738,22 +738,22 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=7
-PGDUMP       -892.133333333333326 EndTurn
-PGDUMP       -414.466666666666697 UseStadium
-PGDUMP       -414.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -587.799999999999955 Attach:1Darkness@1 zone
-PGDUMP      -1006.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -207.800000000000011 Attach:1Darkness@3 zone
-PGDUMP       -207.800000000000011 Play:Ilima
+PGDUMP       -894.133333333333326 EndTurn
+PGDUMP       -416.466666666666697 UseStadium
+PGDUMP       -416.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -589.799999999999955 Attach:1Darkness@1 zone
+PGDUMP      -1008.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -209.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -209.800000000000011 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 9 free 3
 PGSTEP KW-261012_203719000-t07 seed 9 free 4
 PGCAND Promote:0@1
 PGCAND Promote:0@2
 PGCAND Promote:0@3
 PGDUMP actor=0 candidates=3
-PGDUMP       -452.133333333333383 Promote:0@1
-PGDUMP       -607.799999999999955 Promote:0@2
-PGDUMP         72.200000000000003 Promote:0@3
+PGDUMP       -454.133333333333383 Promote:0@1
+PGDUMP       -609.799999999999955 Promote:0@2
+PGDUMP         70.200000000000003 Promote:0@3
 PGSTEP KW-261012_203719000-t07 seed 9 free 5
 PGCAND EndTurn
 PGCAND UseStadium
@@ -763,13 +763,13 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Place:Regigigas@3
 PGCAND Place:Glimmet@3
 PGDUMP actor=0 candidates=7
-PGDUMP       -697.799999999999955 EndTurn
-PGDUMP         73.200000000000003 UseStadium
-PGDUMP        321.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP        321.199999999999989 Place:Regigigas@3
-PGDUMP        131.199999999999989 Place:Glimmet@3
+PGDUMP       -699.799999999999955 EndTurn
+PGDUMP         71.200000000000003 UseStadium
+PGDUMP        319.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP        319.199999999999989 Place:Regigigas@3
+PGDUMP        129.199999999999989 Place:Glimmet@3
 PGSTEP KW-261012_203719000-t07 seed 9 free 6
 PGCAND EndTurn
 PGCAND UseStadium
@@ -778,26 +778,26 @@ PGCAND Attach:1Darkness@1 zone
 PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGDUMP actor=0 candidates=6
-PGDUMP       -448.800000000000011 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        322.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -297.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -450.800000000000011 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        320.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -299.800000000000011 Attach:1Darkness@3 zone
 PGSTEP KW-261012_203719000-t07 seed 9 free 7
 PGCAND EndTurn
 PGCAND UseStadium
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=3
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 9 free 8
 PGCAND EndTurn
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=2
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 9 free 9
 PGSTEP KW-261012_203719000-t07 seed 10 free 0
 PGCAND EndTurn
@@ -809,14 +809,14 @@ PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Rare Candy
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=8
-PGDUMP      -1770.133333333333439 EndTurn
-PGDUMP       -891.133333333333326 UseStadium
-PGDUMP       -415.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -782.133333333333326 Attach:1Darkness@1 zone
-PGDUMP      -1284.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -652.133333333333326 Attach:1Darkness@3 zone
-PGDUMP       -415.466666666666697 Play:Rare Candy
-PGDUMP      -1284.799999999999955 Play:Ilima
+PGDUMP      -1772.133333333333439 EndTurn
+PGDUMP       -893.133333333333326 UseStadium
+PGDUMP       -417.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -784.133333333333326 Attach:1Darkness@1 zone
+PGDUMP      -1286.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -654.133333333333326 Attach:1Darkness@3 zone
+PGDUMP       -417.466666666666697 Play:Rare Candy
+PGDUMP      -1286.799999999999955 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 10 free 1
 PGSTEP KW-261012_203719000-t07 seed 10 free 2
 PGCAND EndTurn
@@ -827,22 +827,22 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=7
-PGDUMP       -892.133333333333326 EndTurn
-PGDUMP       -414.466666666666697 UseStadium
-PGDUMP       -414.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -587.799999999999955 Attach:1Darkness@1 zone
-PGDUMP      -1006.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -207.800000000000011 Attach:1Darkness@3 zone
-PGDUMP       -207.800000000000011 Play:Ilima
+PGDUMP       -894.133333333333326 EndTurn
+PGDUMP       -416.466666666666697 UseStadium
+PGDUMP       -416.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -589.799999999999955 Attach:1Darkness@1 zone
+PGDUMP      -1008.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -209.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -209.800000000000011 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 10 free 3
 PGSTEP KW-261012_203719000-t07 seed 10 free 4
 PGCAND Promote:0@1
 PGCAND Promote:0@2
 PGCAND Promote:0@3
 PGDUMP actor=0 candidates=3
-PGDUMP       -452.133333333333383 Promote:0@1
-PGDUMP       -607.799999999999955 Promote:0@2
-PGDUMP         72.200000000000003 Promote:0@3
+PGDUMP       -454.133333333333383 Promote:0@1
+PGDUMP       -609.799999999999955 Promote:0@2
+PGDUMP         70.200000000000003 Promote:0@3
 PGSTEP KW-261012_203719000-t07 seed 10 free 5
 PGCAND EndTurn
 PGCAND UseStadium
@@ -852,13 +852,13 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Place:Regigigas@3
 PGCAND Place:Glimmet@3
 PGDUMP actor=0 candidates=7
-PGDUMP       -697.799999999999955 EndTurn
-PGDUMP         73.200000000000003 UseStadium
-PGDUMP        321.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP        321.199999999999989 Place:Regigigas@3
-PGDUMP        131.199999999999989 Place:Glimmet@3
+PGDUMP       -699.799999999999955 EndTurn
+PGDUMP         71.200000000000003 UseStadium
+PGDUMP        319.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP        319.199999999999989 Place:Regigigas@3
+PGDUMP        129.199999999999989 Place:Glimmet@3
 PGSTEP KW-261012_203719000-t07 seed 10 free 6
 PGCAND EndTurn
 PGCAND UseStadium
@@ -867,26 +867,26 @@ PGCAND Attach:1Darkness@1 zone
 PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGDUMP actor=0 candidates=6
-PGDUMP       -448.800000000000011 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        322.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -297.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -450.800000000000011 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        320.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -299.800000000000011 Attach:1Darkness@3 zone
 PGSTEP KW-261012_203719000-t07 seed 10 free 7
 PGCAND EndTurn
 PGCAND UseStadium
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=3
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 10 free 8
 PGCAND EndTurn
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=2
-PGDUMP         43.200000000000003 EndTurn
-PGDUMP        323.199999999999989 Attack:Overlord's Blade
+PGDUMP         41.200000000000003 EndTurn
+PGDUMP        321.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 10 free 9
 PGSTEP KW-261012_203719000-t07 seed 11 free 0
 PGCAND EndTurn
@@ -898,14 +898,14 @@ PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Rare Candy
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=8
-PGDUMP      -1770.133333333333439 EndTurn
-PGDUMP       -891.133333333333326 UseStadium
-PGDUMP       -415.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -782.133333333333326 Attach:1Darkness@1 zone
-PGDUMP      -1284.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -652.133333333333326 Attach:1Darkness@3 zone
-PGDUMP       -415.466666666666697 Play:Rare Candy
-PGDUMP      -1284.799999999999955 Play:Ilima
+PGDUMP      -1772.133333333333439 EndTurn
+PGDUMP       -893.133333333333326 UseStadium
+PGDUMP       -417.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -784.133333333333326 Attach:1Darkness@1 zone
+PGDUMP      -1286.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -654.133333333333326 Attach:1Darkness@3 zone
+PGDUMP       -417.466666666666697 Play:Rare Candy
+PGDUMP      -1286.799999999999955 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 11 free 1
 PGSTEP KW-261012_203719000-t07 seed 11 free 2
 PGCAND EndTurn
@@ -916,22 +916,22 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=7
-PGDUMP       -892.133333333333326 EndTurn
-PGDUMP       -414.466666666666697 UseStadium
-PGDUMP       -414.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -587.799999999999955 Attach:1Darkness@1 zone
-PGDUMP      -1006.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -207.800000000000011 Attach:1Darkness@3 zone
-PGDUMP       -207.800000000000011 Play:Ilima
+PGDUMP       -894.133333333333326 EndTurn
+PGDUMP       -416.466666666666697 UseStadium
+PGDUMP       -416.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -589.799999999999955 Attach:1Darkness@1 zone
+PGDUMP      -1008.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -209.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -209.800000000000011 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 11 free 3
 PGSTEP KW-261012_203719000-t07 seed 11 free 4
 PGCAND Promote:0@1
 PGCAND Promote:0@2
 PGCAND Promote:0@3
 PGDUMP actor=0 candidates=3
-PGDUMP       -452.133333333333383 Promote:0@1
-PGDUMP       -607.799999999999955 Promote:0@2
-PGDUMP         72.200000000000003 Promote:0@3
+PGDUMP       -454.133333333333383 Promote:0@1
+PGDUMP       -609.799999999999955 Promote:0@2
+PGDUMP         70.200000000000003 Promote:0@3
 PGSTEP KW-261012_203719000-t07 seed 11 free 5
 PGCAND EndTurn
 PGCAND UseStadium
@@ -941,13 +941,13 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Place:Regigigas@3
 PGCAND Place:Glimmet@3
 PGDUMP actor=0 candidates=7
-PGDUMP       -697.799999999999955 EndTurn
-PGDUMP         73.200000000000003 UseStadium
-PGDUMP        321.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP        321.199999999999989 Place:Regigigas@3
-PGDUMP        131.199999999999989 Place:Glimmet@3
+PGDUMP       -699.799999999999955 EndTurn
+PGDUMP         71.200000000000003 UseStadium
+PGDUMP        319.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP        319.199999999999989 Place:Regigigas@3
+PGDUMP        129.199999999999989 Place:Glimmet@3
 PGSTEP KW-261012_203719000-t07 seed 11 free 6
 PGCAND EndTurn
 PGCAND UseStadium
@@ -956,26 +956,26 @@ PGCAND Attach:1Darkness@1 zone
 PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGDUMP actor=0 candidates=6
-PGDUMP       -448.800000000000011 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        322.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -297.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -450.800000000000011 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        320.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -299.800000000000011 Attach:1Darkness@3 zone
 PGSTEP KW-261012_203719000-t07 seed 11 free 7
 PGCAND EndTurn
 PGCAND UseStadium
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=3
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 11 free 8
 PGCAND EndTurn
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=2
-PGDUMP         43.200000000000003 EndTurn
-PGDUMP        323.199999999999989 Attack:Overlord's Blade
+PGDUMP         41.200000000000003 EndTurn
+PGDUMP        321.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 11 free 9
 PGSTEP KW-261012_203719000-t07 seed 12 free 0
 PGCAND EndTurn
@@ -987,14 +987,14 @@ PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Rare Candy
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=8
-PGDUMP      -1770.133333333333439 EndTurn
-PGDUMP       -891.133333333333326 UseStadium
-PGDUMP       -415.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -782.133333333333326 Attach:1Darkness@1 zone
-PGDUMP      -1284.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -652.133333333333326 Attach:1Darkness@3 zone
-PGDUMP       -415.466666666666697 Play:Rare Candy
-PGDUMP      -1284.799999999999955 Play:Ilima
+PGDUMP      -1772.133333333333439 EndTurn
+PGDUMP       -893.133333333333326 UseStadium
+PGDUMP       -417.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -784.133333333333326 Attach:1Darkness@1 zone
+PGDUMP      -1286.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -654.133333333333326 Attach:1Darkness@3 zone
+PGDUMP       -417.466666666666697 Play:Rare Candy
+PGDUMP      -1286.799999999999955 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 12 free 1
 PGSTEP KW-261012_203719000-t07 seed 12 free 2
 PGCAND EndTurn
@@ -1005,22 +1005,22 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGCAND Play:Ilima
 PGDUMP actor=0 candidates=7
-PGDUMP       -892.133333333333326 EndTurn
-PGDUMP       -414.466666666666697 UseStadium
-PGDUMP       -414.466666666666697 Attach:1Darkness@0 zone
-PGDUMP       -587.799999999999955 Attach:1Darkness@1 zone
-PGDUMP      -1006.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -207.800000000000011 Attach:1Darkness@3 zone
-PGDUMP       -207.800000000000011 Play:Ilima
+PGDUMP       -894.133333333333326 EndTurn
+PGDUMP       -416.466666666666697 UseStadium
+PGDUMP       -416.466666666666697 Attach:1Darkness@0 zone
+PGDUMP       -589.799999999999955 Attach:1Darkness@1 zone
+PGDUMP      -1008.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -209.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -209.800000000000011 Play:Ilima
 PGSTEP KW-261012_203719000-t07 seed 12 free 3
 PGSTEP KW-261012_203719000-t07 seed 12 free 4
 PGCAND Promote:0@1
 PGCAND Promote:0@2
 PGCAND Promote:0@3
 PGDUMP actor=0 candidates=3
-PGDUMP       -452.133333333333383 Promote:0@1
-PGDUMP       -607.799999999999955 Promote:0@2
-PGDUMP         72.200000000000003 Promote:0@3
+PGDUMP       -454.133333333333383 Promote:0@1
+PGDUMP       -609.799999999999955 Promote:0@2
+PGDUMP         70.200000000000003 Promote:0@3
 PGSTEP KW-261012_203719000-t07 seed 12 free 5
 PGCAND EndTurn
 PGCAND UseStadium
@@ -1030,13 +1030,13 @@ PGCAND Attach:1Darkness@2 zone
 PGCAND Place:Regigigas@3
 PGCAND Place:Glimmet@3
 PGDUMP actor=0 candidates=7
-PGDUMP       -697.799999999999955 EndTurn
-PGDUMP         73.200000000000003 UseStadium
-PGDUMP        321.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP        321.199999999999989 Place:Regigigas@3
-PGDUMP        131.199999999999989 Place:Glimmet@3
+PGDUMP       -699.799999999999955 EndTurn
+PGDUMP         71.200000000000003 UseStadium
+PGDUMP        319.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP        319.199999999999989 Place:Regigigas@3
+PGDUMP        129.199999999999989 Place:Glimmet@3
 PGSTEP KW-261012_203719000-t07 seed 12 free 6
 PGCAND EndTurn
 PGCAND UseStadium
@@ -1045,24 +1045,24 @@ PGCAND Attach:1Darkness@1 zone
 PGCAND Attach:1Darkness@2 zone
 PGCAND Attach:1Darkness@3 zone
 PGDUMP actor=0 candidates=6
-PGDUMP       -448.800000000000011 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        322.199999999999989 Attach:1Darkness@0 zone
-PGDUMP       -337.800000000000011 Attach:1Darkness@1 zone
-PGDUMP       -957.799999999999955 Attach:1Darkness@2 zone
-PGDUMP       -297.800000000000011 Attach:1Darkness@3 zone
+PGDUMP       -450.800000000000011 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        320.199999999999989 Attach:1Darkness@0 zone
+PGDUMP       -339.800000000000011 Attach:1Darkness@1 zone
+PGDUMP       -959.799999999999955 Attach:1Darkness@2 zone
+PGDUMP       -299.800000000000011 Attach:1Darkness@3 zone
 PGSTEP KW-261012_203719000-t07 seed 12 free 7
 PGCAND EndTurn
 PGCAND UseStadium
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=3
-PGDUMP         41.200000000000003 EndTurn
-PGDUMP        322.199999999999989 UseStadium
-PGDUMP        321.199999999999989 Attack:Overlord's Blade
+PGDUMP         39.200000000000003 EndTurn
+PGDUMP        320.199999999999989 UseStadium
+PGDUMP        319.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 12 free 8
 PGCAND EndTurn
 PGCAND Attack:Overlord's Blade
 PGDUMP actor=0 candidates=2
-PGDUMP         43.200000000000003 EndTurn
-PGDUMP        323.199999999999989 Attack:Overlord's Blade
+PGDUMP         41.200000000000003 EndTurn
+PGDUMP        321.199999999999989 Attack:Overlord's Blade
 PGSTEP KW-261012_203719000-t07 seed 12 free 9

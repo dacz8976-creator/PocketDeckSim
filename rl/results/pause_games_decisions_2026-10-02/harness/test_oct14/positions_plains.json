@@ -1,0 +1,412 @@
+[
+ {
+  "id": "KW-261013_030351000-t11",
+  "game": "kw-261013_030351000",
+  "his_turn": 6,
+  "deck": "KW261013_030351000",
+  "turn_count": 11,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Iris B2b 067",
+    "Poké Ball A2b 111"
+   ],
+   "discard": [
+    "Copycat B1 225",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Rare Candy A3 144",
+    "Dragonair B4 117",
+    "Dratini B4 116",
+    "Rainbow Cave B4 155",
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard_energy": [
+    "Metal",
+    "Metal",
+    "Metal",
+    "Metal"
+   ],
+   "board": [
+    {
+     "card": "Druddigon A1a 056",
+     "hp": 90,
+     "energy": [
+      "Metal"
+     ],
+     "tools": [
+      "Rocky Helmet A2 148"
+     ]
+    },
+    {
+     "card": "Haxorus B2b 056",
+     "hp": 130,
+     "energy": [
+      "Metal",
+      "Metal"
+     ],
+     "behind": [
+      "Axew B2b 054"
+     ]
+    },
+    {
+     "card": "Dragonair B4 117",
+     "hp": 80,
+     "behind": [
+      "Dratini B4 116"
+     ]
+    }
+   ],
+   "energy_now": "Fighting",
+   "energy_next": "Fighting",
+   "knockouts": 1
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Sabrina A1 225",
+    "Professor's Research A4b 373"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Igglybuff A4a 059",
+     "hp": 10,
+     "energy": [
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Darkrai B1 154",
+     "hp": 120,
+     "energy": [
+      "Fighting",
+      "Fighting",
+      "Fighting",
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Igglybuff A4a 059",
+     "hp": 50
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Starting Plains B2 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Poké Ball",
+   "Place:Axew",
+   "Ability",
+   "Attach:1Fighting@1 zone"
+  ],
+  "his_plan_ended": true,
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": false,
+  "milestones": [],
+  "notes": "Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Haxorus: no Fraxure is left in the list, so the stack leaves it out (Rare Candy). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "approximate": true,
+  "approximate_reason": "opponent's list unknown",
+  "heldout": false,
+  "plan_truncated_at": null,
+  "opp_ambiguous": [],
+  "usable": true,
+  "usable_reason": null
+ },
+ {
+  "id": "KW-261013_030351000-t13",
+  "game": "kw-261013_030351000",
+  "his_turn": 7,
+  "deck": "KW261013_030351000",
+  "turn_count": 13,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Iris B2b 067",
+    "Professor's Research A4b 373"
+   ],
+   "discard": [
+    "Copycat B1 225",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Rare Candy A3 144",
+    "Dragonair B4 117",
+    "Dratini B4 116",
+    "Rainbow Cave B4 155",
+    "Lucky Ice Pop B2 145",
+    "Poké Ball A2b 111"
+   ],
+   "discard_energy": [
+    "Metal",
+    "Metal",
+    "Metal",
+    "Metal"
+   ],
+   "board": [
+    {
+     "card": "Druddigon A1a 056",
+     "hp": 40,
+     "energy": [
+      "Metal",
+      "Metal"
+     ],
+     "tools": [
+      "Rocky Helmet A2 148"
+     ],
+     "conditions": [
+      "Asleep"
+     ]
+    },
+    {
+     "card": "Haxorus B2b 056",
+     "hp": 130,
+     "energy": [
+      "Metal",
+      "Metal",
+      "Fighting"
+     ],
+     "behind": [
+      "Axew B2b 054"
+     ]
+    },
+    {
+     "card": "Axew B2b 054",
+     "hp": 90
+    },
+    {
+     "card": "Dragonair B4 117",
+     "hp": 80,
+     "behind": [
+      "Dratini B4 116"
+     ]
+    }
+   ],
+   "energy_now": "Fighting",
+   "energy_next": "Fighting",
+   "knockouts": 1
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Sabrina A1 225",
+    "Professor's Research A4b 373"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Igglybuff A4a 059",
+     "hp": 10,
+     "energy": [
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Darkrai B1 154",
+     "hp": 120,
+     "energy": [
+      "Fighting",
+      "Fighting",
+      "Fighting",
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Igglybuff A4a 059",
+     "hp": 10,
+     "energy": [
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Darkrai B1 154",
+     "hp": 120,
+     "energy": [
+      "Fighting"
+     ]
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Starting Plains B2 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Professor's Research",
+   "Play:Rare Candy",
+   "Evolve:Haxorus@2",
+   "Attach:1Fighting@2 zone",
+   "Ability"
+  ],
+  "his_plan_ended": true,
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": false,
+  "milestones": [],
+  "notes": "Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Haxorus: no Fraxure is left in the list, so the stack leaves it out (Rare Candy). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "approximate": true,
+  "approximate_reason": "opponent's list unknown",
+  "heldout": false,
+  "plan_truncated_at": null,
+  "opp_ambiguous": [],
+  "usable": true,
+  "usable_reason": null
+ },
+ {
+  "id": "KW-261013_030351000-t15",
+  "game": "kw-261013_030351000",
+  "his_turn": 8,
+  "deck": "KW261013_030351000",
+  "turn_count": 15,
+  "points": [
+   0,
+   2
+  ],
+  "me": {
+   "hand": [
+    "Iris B2b 067"
+   ],
+   "discard": [
+    "Copycat B1 225",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Rare Candy A3 144",
+    "Dragonair B4 117",
+    "Dratini B4 116",
+    "Rainbow Cave B4 155",
+    "Lucky Ice Pop B2 145",
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Rare Candy A3 144",
+    "Druddigon A1a 056",
+    "Rocky Helmet A2 148"
+   ],
+   "discard_energy": [
+    "Metal",
+    "Metal",
+    "Metal",
+    "Metal",
+    "Metal",
+    "Metal"
+   ],
+   "board": [
+    {
+     "card": "Haxorus B2b 056",
+     "hp": 100,
+     "energy": [
+      "Fighting"
+     ],
+     "behind": [
+      "Axew B2b 054"
+     ]
+    },
+    {
+     "card": "Haxorus B2b 056",
+     "hp": 130,
+     "energy": [
+      "Metal",
+      "Metal",
+      "Fighting"
+     ],
+     "behind": [
+      "Axew B2b 054"
+     ]
+    },
+    {
+     "card": "Dragonair B4 117",
+     "hp": 80,
+     "behind": [
+      "Dratini B4 116"
+     ]
+    }
+   ],
+   "energy_now": "Fighting",
+   "energy_next": "Metal",
+   "knockouts": 2,
+   "deck_count": 0
+  },
+  "opp": {
+   "hand_count": 7,
+   "discard": [
+    "Poké Ball A2b 111",
+    "Sabrina A1 225",
+    "Professor's Research A4b 373"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Igglybuff A4a 059",
+     "hp": 10,
+     "energy": [
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Darkrai B1 154",
+     "hp": 120,
+     "energy": [
+      "Fighting",
+      "Fighting",
+      "Fighting",
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Igglybuff A4a 059",
+     "hp": 10,
+     "energy": [
+      "Fighting"
+     ]
+    },
+    {
+     "card": "Darkrai B1 154",
+     "hp": 120,
+     "energy": [
+      "Fighting",
+      "Fighting"
+     ]
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": {
+   "card": "Starting Plains B2 154",
+   "owner": 1
+  },
+  "turn_effects": [],
+  "his_plan": [
+   "Ability",
+   "Retreat:1",
+   "Attach:1Fighting@1 zone",
+   "Play:Iris",
+   "Attack:Frenzied Blade"
+  ],
+  "his_plan_ended": true,
+  "hand_source": "codex",
+  "decision_maker": "Dustin",
+  "exact_list": false,
+  "milestones": [],
+  "notes": "Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Haxorus: no Fraxure is left in the list, so the stack leaves it out (Rare Candy); knocked out between turns: Druddigon. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "approximate": true,
+  "approximate_reason": "opponent's list unknown",
+  "heldout": false,
+  "plan_truncated_at": null,
+  "opp_ambiguous": [],
+  "usable": true,
+  "usable_reason": null
+ }
+]

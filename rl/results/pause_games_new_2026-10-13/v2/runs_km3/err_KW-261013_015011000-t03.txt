@@ -1,144 +1,456 @@
 PGSTEP KW-261013_015011000-t03 seed 1 free 0
 PGCAND EndTurn
 PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
 PGCAND Play:Professor's Research
 PGCAND Play:Professor's Research
 PGCAND Play:Heavy Helmet
-PGDUMP actor=0 candidates=5
-PGDUMP       -707.000000000000000 EndTurn
-PGDUMP       -114.000000000000000 Attach:1Darkness@0 zone
-PGDUMP       -114.000000000000000 Play:Professor's Research
-PGDUMP       -114.000000000000000 Play:Professor's Research
-PGDUMP       -298.000000000000000 Play:Heavy Helmet
+PGDUMP actor=0 candidates=7
+PGDUMP        584.000000000000000 EndTurn
+PGDUMP       2483.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2233.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2153.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2483.000000000000000 Play:Heavy Helmet
+PGSTEP KW-261013_015011000-t03 seed 1 free 1
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1183.000000000000000 Tool:Heavy Helmet@0
+PGDUMP       2673.000000000000000 Tool:Heavy Helmet@1
+PGDUMP       1173.000000000000000 Tool:Heavy Helmet@2
+PGSTEP KW-261013_015011000-t03 seed 1 free 2
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Professor's Research
+PGDUMP actor=0 candidates=6
+PGDUMP       2083.000000000000000 EndTurn
+PGDUMP       2676.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2295.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2215.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2676.000000000000000 Play:Professor's Research
+PGDUMP       2676.000000000000000 Play:Professor's Research
 PGSTEP KW-261013_015011000-t03 seed 2 free 0
 PGCAND EndTurn
 PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
 PGCAND Play:Professor's Research
 PGCAND Play:Professor's Research
 PGCAND Play:Heavy Helmet
-PGDUMP actor=0 candidates=5
-PGDUMP       -707.000000000000000 EndTurn
-PGDUMP       -114.000000000000000 Attach:1Darkness@0 zone
-PGDUMP       -114.000000000000000 Play:Professor's Research
-PGDUMP       -114.000000000000000 Play:Professor's Research
-PGDUMP       -298.000000000000000 Play:Heavy Helmet
+PGDUMP actor=0 candidates=7
+PGDUMP        584.000000000000000 EndTurn
+PGDUMP       2483.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2233.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2153.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2483.000000000000000 Play:Heavy Helmet
+PGSTEP KW-261013_015011000-t03 seed 2 free 1
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1183.000000000000000 Tool:Heavy Helmet@0
+PGDUMP       2673.000000000000000 Tool:Heavy Helmet@1
+PGDUMP       1173.000000000000000 Tool:Heavy Helmet@2
+PGSTEP KW-261013_015011000-t03 seed 2 free 2
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Professor's Research
+PGDUMP actor=0 candidates=6
+PGDUMP       2083.000000000000000 EndTurn
+PGDUMP       2676.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2295.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2215.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2676.000000000000000 Play:Professor's Research
+PGDUMP       2676.000000000000000 Play:Professor's Research
 PGSTEP KW-261013_015011000-t03 seed 3 free 0
 PGCAND EndTurn
 PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
 PGCAND Play:Professor's Research
 PGCAND Play:Professor's Research
 PGCAND Play:Heavy Helmet
-PGDUMP actor=0 candidates=5
-PGDUMP       -707.000000000000000 EndTurn
-PGDUMP       -114.000000000000000 Attach:1Darkness@0 zone
-PGDUMP       -114.000000000000000 Play:Professor's Research
-PGDUMP       -114.000000000000000 Play:Professor's Research
-PGDUMP       -298.000000000000000 Play:Heavy Helmet
+PGDUMP actor=0 candidates=7
+PGDUMP        584.000000000000000 EndTurn
+PGDUMP       2483.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2233.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2153.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2483.000000000000000 Play:Heavy Helmet
+PGSTEP KW-261013_015011000-t03 seed 3 free 1
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1183.000000000000000 Tool:Heavy Helmet@0
+PGDUMP       2673.000000000000000 Tool:Heavy Helmet@1
+PGDUMP       1173.000000000000000 Tool:Heavy Helmet@2
+PGSTEP KW-261013_015011000-t03 seed 3 free 2
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Professor's Research
+PGDUMP actor=0 candidates=6
+PGDUMP       2083.000000000000000 EndTurn
+PGDUMP       2676.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2295.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2215.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2676.000000000000000 Play:Professor's Research
+PGDUMP       2676.000000000000000 Play:Professor's Research
 PGSTEP KW-261013_015011000-t03 seed 4 free 0
 PGCAND EndTurn
 PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
 PGCAND Play:Professor's Research
 PGCAND Play:Professor's Research
 PGCAND Play:Heavy Helmet
-PGDUMP actor=0 candidates=5
-PGDUMP       -707.000000000000000 EndTurn
-PGDUMP        165.000000000000000 Attach:1Darkness@0 zone
-PGDUMP        165.000000000000000 Play:Professor's Research
-PGDUMP        165.000000000000000 Play:Professor's Research
-PGDUMP       -298.000000000000000 Play:Heavy Helmet
+PGDUMP actor=0 candidates=7
+PGDUMP        584.000000000000000 EndTurn
+PGDUMP       2483.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2233.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2153.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2483.000000000000000 Play:Heavy Helmet
+PGSTEP KW-261013_015011000-t03 seed 4 free 1
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1183.000000000000000 Tool:Heavy Helmet@0
+PGDUMP       2673.000000000000000 Tool:Heavy Helmet@1
+PGDUMP       2125.000000000000000 Tool:Heavy Helmet@2
+PGSTEP KW-261013_015011000-t03 seed 4 free 2
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Professor's Research
+PGDUMP actor=0 candidates=6
+PGDUMP       2083.000000000000000 EndTurn
+PGDUMP       2676.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2236.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2156.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2676.000000000000000 Play:Professor's Research
+PGDUMP       2676.000000000000000 Play:Professor's Research
 PGSTEP KW-261013_015011000-t03 seed 5 free 0
 PGCAND EndTurn
 PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
 PGCAND Play:Professor's Research
 PGCAND Play:Professor's Research
 PGCAND Play:Heavy Helmet
-PGDUMP actor=0 candidates=5
-PGDUMP       -707.000000000000000 EndTurn
-PGDUMP         55.000000000000000 Attach:1Darkness@0 zone
-PGDUMP         55.000000000000000 Play:Professor's Research
-PGDUMP         55.000000000000000 Play:Professor's Research
-PGDUMP       -298.000000000000000 Play:Heavy Helmet
+PGDUMP actor=0 candidates=7
+PGDUMP        584.000000000000000 EndTurn
+PGDUMP       2483.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2233.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2153.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2483.000000000000000 Play:Heavy Helmet
+PGSTEP KW-261013_015011000-t03 seed 5 free 1
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1183.000000000000000 Tool:Heavy Helmet@0
+PGDUMP       2673.000000000000000 Tool:Heavy Helmet@1
+PGDUMP       1173.000000000000000 Tool:Heavy Helmet@2
+PGSTEP KW-261013_015011000-t03 seed 5 free 2
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Professor's Research
+PGDUMP actor=0 candidates=6
+PGDUMP       2083.000000000000000 EndTurn
+PGDUMP       2676.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2295.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2215.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2676.000000000000000 Play:Professor's Research
+PGDUMP       2676.000000000000000 Play:Professor's Research
 PGSTEP KW-261013_015011000-t03 seed 6 free 0
 PGCAND EndTurn
 PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
 PGCAND Play:Professor's Research
 PGCAND Play:Professor's Research
 PGCAND Play:Heavy Helmet
-PGDUMP actor=0 candidates=5
-PGDUMP       -707.000000000000000 EndTurn
-PGDUMP        165.000000000000000 Attach:1Darkness@0 zone
-PGDUMP        165.000000000000000 Play:Professor's Research
-PGDUMP        165.000000000000000 Play:Professor's Research
-PGDUMP       -298.000000000000000 Play:Heavy Helmet
+PGDUMP actor=0 candidates=7
+PGDUMP        584.000000000000000 EndTurn
+PGDUMP       2483.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2233.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2153.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2483.000000000000000 Play:Heavy Helmet
+PGSTEP KW-261013_015011000-t03 seed 6 free 1
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1183.000000000000000 Tool:Heavy Helmet@0
+PGDUMP       2673.000000000000000 Tool:Heavy Helmet@1
+PGDUMP       1173.000000000000000 Tool:Heavy Helmet@2
+PGSTEP KW-261013_015011000-t03 seed 6 free 2
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Professor's Research
+PGDUMP actor=0 candidates=6
+PGDUMP       2083.000000000000000 EndTurn
+PGDUMP       2676.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2237.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2157.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2676.000000000000000 Play:Professor's Research
+PGDUMP       2676.000000000000000 Play:Professor's Research
 PGSTEP KW-261013_015011000-t03 seed 7 free 0
 PGCAND EndTurn
 PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
 PGCAND Play:Professor's Research
 PGCAND Play:Professor's Research
 PGCAND Play:Heavy Helmet
-PGDUMP actor=0 candidates=5
-PGDUMP       -707.000000000000000 EndTurn
-PGDUMP        165.000000000000000 Attach:1Darkness@0 zone
-PGDUMP        165.000000000000000 Play:Professor's Research
-PGDUMP        165.000000000000000 Play:Professor's Research
-PGDUMP       -298.000000000000000 Play:Heavy Helmet
+PGDUMP actor=0 candidates=7
+PGDUMP        584.000000000000000 EndTurn
+PGDUMP       2483.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2233.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2153.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2483.000000000000000 Play:Heavy Helmet
+PGSTEP KW-261013_015011000-t03 seed 7 free 1
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1183.000000000000000 Tool:Heavy Helmet@0
+PGDUMP       2673.000000000000000 Tool:Heavy Helmet@1
+PGDUMP       1173.000000000000000 Tool:Heavy Helmet@2
+PGSTEP KW-261013_015011000-t03 seed 7 free 2
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Professor's Research
+PGDUMP actor=0 candidates=6
+PGDUMP       2083.000000000000000 EndTurn
+PGDUMP       2676.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2236.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2156.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2676.000000000000000 Play:Professor's Research
+PGDUMP       2676.000000000000000 Play:Professor's Research
 PGSTEP KW-261013_015011000-t03 seed 8 free 0
 PGCAND EndTurn
 PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
 PGCAND Play:Professor's Research
 PGCAND Play:Professor's Research
 PGCAND Play:Heavy Helmet
-PGDUMP actor=0 candidates=5
-PGDUMP       -707.000000000000000 EndTurn
-PGDUMP        165.000000000000000 Attach:1Darkness@0 zone
-PGDUMP        165.000000000000000 Play:Professor's Research
-PGDUMP        165.000000000000000 Play:Professor's Research
-PGDUMP       -298.000000000000000 Play:Heavy Helmet
+PGDUMP actor=0 candidates=7
+PGDUMP        584.000000000000000 EndTurn
+PGDUMP       2483.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2233.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2153.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2483.000000000000000 Play:Heavy Helmet
+PGSTEP KW-261013_015011000-t03 seed 8 free 1
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1183.000000000000000 Tool:Heavy Helmet@0
+PGDUMP       2673.000000000000000 Tool:Heavy Helmet@1
+PGDUMP       1173.000000000000000 Tool:Heavy Helmet@2
+PGSTEP KW-261013_015011000-t03 seed 8 free 2
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Professor's Research
+PGDUMP actor=0 candidates=6
+PGDUMP       2083.000000000000000 EndTurn
+PGDUMP       2676.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2275.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2235.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2676.000000000000000 Play:Professor's Research
+PGDUMP       2676.000000000000000 Play:Professor's Research
 PGSTEP KW-261013_015011000-t03 seed 9 free 0
 PGCAND EndTurn
 PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
 PGCAND Play:Professor's Research
 PGCAND Play:Professor's Research
 PGCAND Play:Heavy Helmet
-PGDUMP actor=0 candidates=5
-PGDUMP       -707.000000000000000 EndTurn
-PGDUMP         55.000000000000000 Attach:1Darkness@0 zone
-PGDUMP         55.000000000000000 Play:Professor's Research
-PGDUMP         55.000000000000000 Play:Professor's Research
-PGDUMP       -298.000000000000000 Play:Heavy Helmet
+PGDUMP actor=0 candidates=7
+PGDUMP        584.000000000000000 EndTurn
+PGDUMP       2483.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2233.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2153.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2483.000000000000000 Play:Heavy Helmet
+PGSTEP KW-261013_015011000-t03 seed 9 free 1
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1183.000000000000000 Tool:Heavy Helmet@0
+PGDUMP       2673.000000000000000 Tool:Heavy Helmet@1
+PGDUMP       1173.000000000000000 Tool:Heavy Helmet@2
+PGSTEP KW-261013_015011000-t03 seed 9 free 2
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Professor's Research
+PGDUMP actor=0 candidates=6
+PGDUMP       2083.000000000000000 EndTurn
+PGDUMP       2676.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2236.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2156.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2676.000000000000000 Play:Professor's Research
+PGDUMP       2676.000000000000000 Play:Professor's Research
 PGSTEP KW-261013_015011000-t03 seed 10 free 0
 PGCAND EndTurn
 PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
 PGCAND Play:Professor's Research
 PGCAND Play:Professor's Research
 PGCAND Play:Heavy Helmet
-PGDUMP actor=0 candidates=5
-PGDUMP       -707.000000000000000 EndTurn
-PGDUMP       -114.000000000000000 Attach:1Darkness@0 zone
-PGDUMP       -114.000000000000000 Play:Professor's Research
-PGDUMP       -114.000000000000000 Play:Professor's Research
-PGDUMP       -298.000000000000000 Play:Heavy Helmet
+PGDUMP actor=0 candidates=7
+PGDUMP        584.000000000000000 EndTurn
+PGDUMP       2483.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2233.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2153.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2483.000000000000000 Play:Heavy Helmet
+PGSTEP KW-261013_015011000-t03 seed 10 free 1
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1183.000000000000000 Tool:Heavy Helmet@0
+PGDUMP       2673.000000000000000 Tool:Heavy Helmet@1
+PGDUMP       1173.000000000000000 Tool:Heavy Helmet@2
+PGSTEP KW-261013_015011000-t03 seed 10 free 2
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Professor's Research
+PGDUMP actor=0 candidates=6
+PGDUMP       2083.000000000000000 EndTurn
+PGDUMP       2676.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2295.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2215.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2676.000000000000000 Play:Professor's Research
+PGDUMP       2676.000000000000000 Play:Professor's Research
 PGSTEP KW-261013_015011000-t03 seed 11 free 0
 PGCAND EndTurn
 PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
 PGCAND Play:Professor's Research
 PGCAND Play:Professor's Research
 PGCAND Play:Heavy Helmet
-PGDUMP actor=0 candidates=5
-PGDUMP       -707.000000000000000 EndTurn
-PGDUMP         55.000000000000000 Attach:1Darkness@0 zone
-PGDUMP         55.000000000000000 Play:Professor's Research
-PGDUMP         55.000000000000000 Play:Professor's Research
-PGDUMP       -298.000000000000000 Play:Heavy Helmet
+PGDUMP actor=0 candidates=7
+PGDUMP        584.000000000000000 EndTurn
+PGDUMP       2483.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2233.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2153.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2483.000000000000000 Play:Heavy Helmet
+PGSTEP KW-261013_015011000-t03 seed 11 free 1
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1183.000000000000000 Tool:Heavy Helmet@0
+PGDUMP       2673.000000000000000 Tool:Heavy Helmet@1
+PGDUMP       1173.000000000000000 Tool:Heavy Helmet@2
+PGSTEP KW-261013_015011000-t03 seed 11 free 2
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Professor's Research
+PGDUMP actor=0 candidates=6
+PGDUMP       2083.000000000000000 EndTurn
+PGDUMP       2676.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2275.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2235.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2676.000000000000000 Play:Professor's Research
+PGDUMP       2676.000000000000000 Play:Professor's Research
 PGSTEP KW-261013_015011000-t03 seed 12 free 0
 PGCAND EndTurn
 PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
 PGCAND Play:Professor's Research
 PGCAND Play:Professor's Research
 PGCAND Play:Heavy Helmet
-PGDUMP actor=0 candidates=5
-PGDUMP       -707.000000000000000 EndTurn
-PGDUMP        165.000000000000000 Attach:1Darkness@0 zone
-PGDUMP        165.000000000000000 Play:Professor's Research
-PGDUMP        165.000000000000000 Play:Professor's Research
-PGDUMP       -298.000000000000000 Play:Heavy Helmet
+PGDUMP actor=0 candidates=7
+PGDUMP        584.000000000000000 EndTurn
+PGDUMP       2483.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2233.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2153.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2086.000000000000000 Play:Professor's Research
+PGDUMP       2483.000000000000000 Play:Heavy Helmet
+PGSTEP KW-261013_015011000-t03 seed 12 free 1
+PGCAND Tool:Heavy Helmet@0
+PGCAND Tool:Heavy Helmet@1
+PGCAND Tool:Heavy Helmet@2
+PGDUMP actor=0 candidates=3
+PGDUMP       1183.000000000000000 Tool:Heavy Helmet@0
+PGDUMP       2673.000000000000000 Tool:Heavy Helmet@1
+PGDUMP       1173.000000000000000 Tool:Heavy Helmet@2
+PGSTEP KW-261013_015011000-t03 seed 12 free 2
+PGCAND EndTurn
+PGCAND Attach:1Darkness@0 zone
+PGCAND Attach:1Darkness@1 zone
+PGCAND Attach:1Darkness@2 zone
+PGCAND Play:Professor's Research
+PGCAND Play:Professor's Research
+PGDUMP actor=0 candidates=6
+PGDUMP       2083.000000000000000 EndTurn
+PGDUMP       2676.000000000000000 Attach:1Darkness@0 zone
+PGDUMP       2295.000000000000000 Attach:1Darkness@1 zone
+PGDUMP       2215.000000000000000 Attach:1Darkness@2 zone
+PGDUMP       2676.000000000000000 Play:Professor's Research
+PGDUMP       2676.000000000000000 Play:Professor's Research
