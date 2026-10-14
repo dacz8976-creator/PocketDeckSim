@@ -25,7 +25,7 @@ import battle_logs_cleanup as bl            # the digest of a game's positions i
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'audited_games.json')
 TIER_A = 'rl/results/pause_games_new_2026-10-12/games_meta.json'
 TIER_B = 'rl/results/pause_games_new_2026-10-13/v2/games_meta.json'
-HOLD_B = {'kw-261013_015659000': 'stays pending (the laptop\'s recheck, 358562b2): its turns 10-12, the opponent\'s hand, still rest on its frames until the question is settled or accepted as open'}
+HOLD_B = {'kw-261013_015659000': 'T10-12 opponent hand open; frames are the only evidence (the laptop\'s recheck, 358562b2: stays pending until the question is settled or accepted as open)'}
 
 
 def commit(ref):
