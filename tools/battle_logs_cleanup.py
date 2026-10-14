@@ -9,10 +9,12 @@ Run it through wsl (it needs git, which Windows has not on its PATH) and give Wi
 The rule, the safety rails and the reasons are in tools/README_battle_logs_cleanup.md. In short: a game packet's frames may go when (1) its game is in a games_meta.json committed
 on origin/main under rl/results/pause_games_*/ with positions in the positions_all.json next to it, (2) the game is in the committed audit list rl/results/battle_logs_retention_2026-10-14/
 audited_games.json under that same games_meta and position count, and the list carries an acceptance (who, when, and a hash of the games it accepted) that still matches, (3) the packet's text outputs
-(TURN_LEDGER.json, REVIEW.md, DECK_USED.json) are in the folder and (4) its source video is in Battle Logs. A second game recorded inside a packet (game_02/) is never part of the first game's decision: its
-frames stay. The game packet is the unit; a batch is DELETE when every packet in it passes, PARTIAL when some do (--whole-batches-only leaves those alone). --apply reads only the committed state of
-origin/main (no --no-git, no other --ref without --allow-ref-other-than-origin-main). Only .jpg/.jpeg/.png files inside game packets that pass are ever deleted: never json/txt/md or any other file, never a
-video, never anything outside Recording_QA. Standard library only."""
+(TURN_LEDGER.json, REVIEW.md, DECK_USED.json) are in the folder and (4) its source video is in Battle Logs (--videos PATH if it is not where the tool looks). A packet that records more than one game
+(RELATED_GAME_PACKETS.json, SUMMARY.json source_game_count, a game_02/ folder) keeps the media of ALL its games in its root, so it is held back WHOLE unless every game in it passes on its own under its own
+folder. The game packet is the unit; a batch is DELETE when every packet in it passes, PARTIAL when some do (--whole-batches-only leaves those alone). --apply (and the import check of --move-to) reads only the
+committed state of origin/main, which must be what origin has now (no --no-git, no other --ref without --allow-ref-other-than-origin-main, no going on when origin cannot be asked without --allow-offline).
+Only .jpg/.jpeg/.png files inside game packets that pass are ever deleted, each through a handle on its folder that cannot be redirected by a link: never json/txt/md or any other file, never a video, never
+anything outside Recording_QA. Standard library only."""
 import argparse, collections, dataclasses, datetime, hashlib, json, os, re, signal, stat, subprocess, sys
 
 FRAME_EXT = ('.jpg', '.jpeg', '.png')
@@ -22,8 +24,13 @@ META_PATH = re.compile(r'^rl/results/pause_games_[^/]+/(?:.+/)?games_meta\.json$
 AUDIT_LIST = 'rl/results/battle_logs_retention_2026-10-14/audited_games.json'
 QA_CANDIDATES = ['C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA', 'C:/Users/dacz8/BattleLogs/Recording_QA']
 NESTED_NAME = re.compile(r'(^|_)game_\d{2,}$', re.I)                 # game_02, ..._game_02: a second game recorded in the same video
+BACKUP_NAME = re.compile(r'^(?:original_|submitted_)?before_|_before_|^independent_sol|^rejected_', re.I)    # a folder that keeps an earlier state of a game: part of that game, not another game
 SURROGATE_TAGS = (0xA000000C, 0xA0000003)                            # IO_REPARSE_TAG_SYMLINK, IO_REPARSE_TAG_MOUNT_POINT: links and junctions (OneDrive's own reparse points are not)
-NEGATION = re.compile(r'^\s*(no|none|n/?a|nobody|pending|false|tbd|todo|not\b|un|never|wait|hold|-)', re.I)
+# words that say a name is not a person's acceptance, anywhere in it ("awaiting Dustin", "laptop (unconfirmed)", "<who>"), whole words only (Noah and Una are names)
+NEGATION = re.compile(r"[<>{}\[\]]|\b(?:no|none|nobody|pending|false|tbd|todo|not|never|wait|waiting|awaiting|hold|unconfirmed|unknown|unnamed|placeholder|n/?a|who|name)\b|^\s*-", re.I)
+EARLIEST_ACCEPTANCE = datetime.date(2026, 10, 14)                    # the audit list was proposed that day: an earlier date cannot be an acceptance of it
+BATTLE_LOGS_DEFAULT = 'C:/Users/dacz8/OneDrive/Desktop/Battle Logs'  # where the videos are (at its top and in Reviewed\)
+LOCATION_FILE = 'BATTLE_LOGS_LOCATION.json'                         # --move-to writes it into the moved Recording_QA: where the videos stayed
 DEFAULT_REF = 'origin/main'
 
 
@@ -100,7 +107,8 @@ class RepoView:
         self.commit = self.commit_full = self.date = None
         if not no_git:
             try:
-                self.commit_full = self._git('rev-parse', '--verify', ref + '^{commit}').strip()
+                # 'origin/main' means the remote-tracking ref, never a local branch or tag of that name
+                self.commit_full = self._git('rev-parse', '--verify', ('refs/remotes/origin/main' if ref == DEFAULT_REF else ref) + '^{commit}').strip()
                 self.commit = self.commit_full[:8]
                 self.date = self._git('show', '-s', '--format=%cI', self.commit_full).strip()
             except (OSError, subprocess.CalledProcessError) as e:
@@ -134,21 +142,44 @@ class RepoView:
             return None
 
     def remote_main(self):
-        """the sha origin has for main right now, or None when origin cannot be reached"""
+        """-> (the sha origin has for refs/heads/main right now, None), or (None, why) when origin cannot say (no network, no such remote, a timeout, several answers); never a password prompt"""
         try:
-            r = subprocess.run(['git', '-C', self.repo, 'ls-remote', 'origin', 'main'], capture_output=True, text=True, timeout=30)
-        except (OSError, subprocess.TimeoutExpired):
-            return None
-        if r.returncode != 0 or not r.stdout.strip():
-            return None
-        return r.stdout.split()[0]
+            r = subprocess.run(['git', '-C', self.repo, 'ls-remote', 'origin', 'refs/heads/main'], capture_output=True, text=True, timeout=30,
+                               env=dict(os.environ, GIT_TERMINAL_PROMPT='0'))
+        except (OSError, subprocess.TimeoutExpired) as e:
+            return None, type(e).__name__
+        lines = [l for l in r.stdout.splitlines() if l.strip()]
+        if r.returncode != 0 or len(lines) != 1 or not lines[0].endswith('refs/heads/main'):
+            return None, (r.stderr.strip().splitlines() or [f'git ls-remote answered {len(lines)} lines'])[-1][:120]
+        return lines[0].split()[0], None
+
+
+def check_fresh(view, allow_offline=False, out=None):
+    """origin/main here must be what origin has now, or an acceptance withdrawn since the last fetch would still count. Refuses when it differs, and when origin cannot be asked unless allow_offline
+    (then it only warns). Only for the committed state of origin/main (not --no-git, not another ref)."""
+    out = out or sys.stdout
+    if view.no_git or view.ref != DEFAULT_REF:
+        return
+    sha, why = view.remote_main()
+    if sha is None:
+        if not allow_offline:
+            raise ToolError(f'origin cannot be asked ({why}), so it is not known whether the committed state is current (an acceptance may have been withdrawn since the last fetch). '
+                            'Connect and run `git fetch origin`, or pass --allow-offline to go on with the origin/main this checkout has')
+        print(f'WARNING: origin could not be asked ({why}); going on with the origin/main this checkout has ({view.commit}), as --allow-offline says', file=out)
+    elif sha != view.commit_full:
+        raise ToolError(f'origin/main in this checkout is {view.commit}, but origin has {sha[:8]}: run `git fetch origin` in the checkout (and push the audit list if it is only committed here), then run this again')
 
 
 @dataclasses.dataclass
 class RepoIndex:
-    folders: dict          # 'BATCH_x/gamedir' -> (game key, games_meta path, number of positions)
+    folders: dict          # 'BATCH_x/gamedir' -> (game key, games_meta path, number of positions, sha256 of those positions)
     audit: dict            # the audit list's JSON, or {}
     audit_path_found: bool
+
+
+def positions_digest(positions):
+    """a sha256 of the positions of one game (as they are in positions_all.json): the audit list binds the content that was reviewed, not only how many positions there were"""
+    return hashlib.sha256(json.dumps(positions, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode('utf-8')).hexdigest()
 
 
 def build_index(view):
@@ -157,20 +188,22 @@ def build_index(view):
     for path in sorted(p for p in view.ls('rl/results') if META_PATH.match(p)):
         meta = json.loads(view.read(path))
         raw = view.read(path.rsplit('/', 1)[0] + '/positions_all.json')
-        counts = collections.Counter(p.get('game') for p in json.loads(raw)) if raw else collections.Counter()
+        by_game = collections.defaultdict(list)
+        for p in (json.loads(raw) if raw else []):
+            by_game[p.get('game')].append(p)
         for key, v in meta.items():
             f = (v.get('folder') or '').replace('\\', '/')
-            if f and counts.get(key):
+            if f and by_game.get(key):
                 old = folders.get(f)
-                if old is None or counts[key] > old[2]:
-                    folders[f] = (key, path, counts[key])
+                if old is None or len(by_game[key]) > old[2]:
+                    folders[f] = (key, path, len(by_game[key]), positions_digest(by_game[key]))
     raw = view.read(AUDIT_LIST)
     return RepoIndex(folders, json.loads(raw) if raw else {}, raw is not None)
 
 
 def games_hash(games):
-    """a hash of what an acceptance covers: each audited game with the folder, the games_meta file and the number of positions that were reviewed"""
-    canon = {k: [(e.get('folder') or '').replace('\\', '/'), e.get('games_meta'), e.get('positions')] for k, e in sorted((games or {}).items())}
+    """a hash of what an acceptance covers: each audited game with the folder, the games_meta file, the number of positions and the digest of the positions that were reviewed"""
+    canon = {k: [(e.get('folder') or '').replace('\\', '/'), e.get('games_meta'), e.get('positions'), e.get('positions_sha256')] for k, e in sorted((games or {}).items())}
     return hashlib.sha256(json.dumps(canon, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode('utf-8')).hexdigest()
 
 
@@ -185,14 +218,16 @@ def acceptance(index):
     if not isinstance(c, dict):
         return None, '"confirmed" must be {"by": ..., "date": "YYYY-MM-DD", "games_sha256": ...}; a string such as "no", "pending" or a name is not an acceptance'
     by, date, h = c.get('by'), c.get('date'), c.get('games_sha256')
-    if not isinstance(by, str) or len(by.strip()) < 2 or NEGATION.match(by):
-        return None, '"confirmed.by" must name who accepted the list'
+    if not isinstance(by, str) or len(by.strip()) < 2 or NEGATION.search(by):
+        return None, '"confirmed.by" must name who accepted the list (not a placeholder such as "<who>", "awaiting Dustin" or "unconfirmed")'
     try:
-        datetime.date.fromisoformat(str(date))
+        when = datetime.date.fromisoformat(str(date))
         if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', str(date)):
             raise ValueError
     except ValueError:
         return None, '"confirmed.date" must be a date as YYYY-MM-DD'
+    if when < EARLIEST_ACCEPTANCE or when > datetime.datetime.now(datetime.timezone.utc).date() + datetime.timedelta(days=1):
+        return None, f'"confirmed.date" {date} cannot be the day this list was accepted (not before {EARLIEST_ACCEPTANCE}, not in the future)'
     want = games_hash(index.audit.get('games'))
     if h != want:
         return None, f'the acceptance covers games_sha256 {str(h)[:12]}..., the list now hashes to {want[:12]}...: the games changed after it was given, so it needs a new acceptance (python3 tools/battle_logs_cleanup.py --audit-hash prints the hash)'
@@ -206,10 +241,11 @@ class Game:
     path: str
     frames: list           # [(path, size)] the frames of THIS game: every .jpg/.jpeg/.png under the packet (links not followed) except those of a second game recorded inside it
     text: dict             # TEXT_REQUIRED name -> present and non-empty
-    nested: dict = dataclasses.field(default_factory=dict)       # relative folder of a second game inside the packet -> [(path, size)]: never deleted
+    nested: dict = dataclasses.field(default_factory=dict)       # relative folder of a second game inside the packet -> [(path, size)]: deleted only if every game the packet holds passes
     links_skipped: int = 0
     unreadable: int = 0
     video: object = None   # None = not checked, else (ok, reason)
+    declared: int = 1      # how many games the packet says it records (RELATED_GAME_PACKETS.json, SUMMARY.json source_game_count, the folders found)
 
 
 @dataclasses.dataclass
@@ -266,14 +302,35 @@ def scan_frames(path, skip_dirs=()):
     return frames, links, bad
 
 
+def _related_entries(rel):
+    """the per-game entries of a RELATED_GAME_PACKETS.json, in either layout Codex wrote: game_packets[{path}] or games[{packet}]"""
+    if not isinstance(rel, dict):
+        return []
+    return [g for key in ('game_packets', 'games') for g in (rel.get(key) or []) if isinstance(g, dict)]
+
+
+def declared_games(packet, n_found):
+    """how many games a packet says it records: the largest of RELATED_GAME_PACKETS.json's game_count and its entries (either layout), SUMMARY.json's source_game_count, 2 when
+    `other_games_found` is true, and 1 + the second-game folders found. Codex's own file says that for such a packet the root keeps the media for ALL its games"""
+    rel = _json(os.path.join(packet, 'RELATED_GAME_PACKETS.json')) or {}
+    summ = _json(os.path.join(packet, 'SUMMARY.json')) or {}
+    counts = [1, 1 + n_found, len(_related_entries(rel))]
+    for v in (rel.get('game_count') if isinstance(rel, dict) else None, summ.get('source_game_count') if isinstance(summ, dict) else None):
+        if isinstance(v, int) and not isinstance(v, bool):
+            counts.append(v)
+    if isinstance(rel, dict) and rel.get('other_games_found') is True:
+        counts.append(2)
+    return max(counts)
+
+
 def nested_game_dirs(packet):
     """folders inside a game packet that hold a SECOND game of the same recording: those Codex's RELATED_GAME_PACKETS.json lists with a path other than '.', those named game_NN, and those with
     their own TURN_LEDGER.json and a SUMMARY.json whose game_id differs from the packet's. A backup copy of the same game (original_before_*, ...) has the same game_id and is not one."""
     found = set()
     rel = _json(os.path.join(packet, 'RELATED_GAME_PACKETS.json')) or {}
-    for g in rel.get('game_packets') or []:
-        p = (g.get('path') or '.').replace('\\', '/').strip('/')
-        if p not in ('', '.'):
+    for g in _related_entries(rel):
+        p = (g.get('path') or g.get('packet') or '.').replace('\\', '/').strip('/')
+        if p not in ('', '.') and '..' not in p.split('/') and os.path.isdir(os.path.join(packet, *p.split('/'))):      # (a listed path that is not there is a declared game with no folder: declared_games counts it)
             found.add(os.path.abspath(os.path.join(packet, *p.split('/'))))
     own = (_json(os.path.join(packet, 'SUMMARY.json')) or {}).get('game_id')
     for root, dirs, files in os.walk(packet, followlinks=False):
@@ -305,7 +362,12 @@ def scan_packet(name, cp):
             text[t] = os.path.isfile(fp) and os.path.getsize(fp) > 0
         except OSError:
             text[t] = False
-    return Game(name, cp, frames, text, nf, links, bad)
+    return Game(name, cp, frames, text, nf, links, bad, declared=declared_games(cp, sum(1 for r in nf if not _in_backup(r))))
+
+
+def _in_backup(rel):
+    """is this folder (relative to its packet) inside a folder that keeps an earlier state of a game (original_before_*, independent_sol, ...)?"""
+    return any(BACKUP_NAME.search(part) for part in rel.split('/'))
 
 
 def video_index(logs_root):
@@ -321,7 +383,36 @@ def video_index(logs_root):
     return out
 
 
-def check_video(game, videos):
+def video_dirs(qa_root, explicit=None):
+    """the Battle Logs folders to look for videos in (each holds videos at its top and in Reviewed\\): --videos if given, else the one recorded when Recording_QA was moved, the folder
+    Recording_QA sits in, and the default OneDrive Battle Logs. -> [(path, where it came from)]; only folders that exist"""
+    cands = []
+    if explicit:
+        cands.append((explicit, '--videos'))
+    else:
+        rec = _json(os.path.join(qa_root, LOCATION_FILE)) or {}
+        if rec.get('battle_logs'):
+            cands.append((rec['battle_logs'], LOCATION_FILE))
+        cands += [(os.path.dirname(qa_root), 'the folder Recording_QA is in'), (BATTLE_LOGS_DEFAULT, 'the default OneDrive Battle Logs')]
+    out, seen = [], set()
+    for c, why in cands:
+        local = os.path.abspath(to_local(str(c)))
+        if os.path.isdir(local) and fold(local) not in seen:
+            seen.add(fold(local))
+            out.append((local, why))
+    return out
+
+
+def video_index_all(dirs):
+    """{lower-case file name: size} over several Battle Logs folders (the first one that has a name wins)"""
+    out = {}
+    for d, _ in dirs:
+        for k, v in video_index(d).items():
+            out.setdefault(k, v)
+    return out
+
+
+def check_video(game, videos, where=''):
     """-> (ok, reason): the packet's SOURCE.json names a video that is in Battle Logs with the recorded size (frames can be cut again from it)"""
     src = _json(os.path.join(game.path, 'SOURCE.json')) or {}
     name = src.get('video_basename')
@@ -329,13 +420,13 @@ def check_video(game, videos):
         return False, 'source video not recorded (SOURCE.json has no video_basename)'
     size = videos.get(str(name).lower())
     if size is None:
-        return False, f'source video {name} not found in Battle Logs'
+        return False, f'source video {name} not found in Battle Logs' + (f' (looked in {where}; --videos PATH names the folder)' if where else '')
     if src.get('bytes') and int(src['bytes']) != size:
         return False, f'source video {name} has {size} bytes, SOURCE.json says {src["bytes"]}'
     return True, ''
 
 
-def scan_qa(qa_root, videos=None):
+def scan_qa(qa_root, videos=None, where=''):
     batches = []
     for name in sorted(os.listdir(qa_root)):
         bp = os.path.join(qa_root, name)
@@ -350,7 +441,7 @@ def scan_qa(qa_root, videos=None):
             if os.path.isdir(cp) and GAME_PACKET.match(child):
                 g = scan_packet(child, cp)
                 if videos is not None:
-                    g.video = check_video(g, videos)
+                    g.video = check_video(g, videos, where)
                 b.games.append(g)
             elif os.path.isdir(cp):
                 frames, links, bad = scan_frames(cp)
@@ -376,10 +467,23 @@ class GameDecision:
     folder: str = ''
     meta: object = None
     positions: int = 0
+    adopted: frozenset = frozenset()     # the second-game folders of a packet that passes because every game in it passes: their frames go with the packet's
 
     @property
     def ok(self):
         return not self.reasons
+
+    @property
+    def delete_frames(self):
+        """the frames --apply may remove for this packet: its own, and those of the second games that passed on their own"""
+        return list(self.game.frames) + [f for rel in sorted(self.adopted) for f in self.game.nested.get(rel, [])]
+
+    @property
+    def stay_frames(self):
+        """the frames of this packet that stay: all of them when it is held back, else those of folders that keep an earlier state of a game"""
+        if not self.ok:
+            return list(self.game.frames) + [f for fr in self.game.nested.values() for f in fr]
+        return [f for rel, fr in self.game.nested.items() if rel not in self.adopted for f in fr]
 
 
 @dataclasses.dataclass
@@ -405,24 +509,24 @@ class BatchDecision:
     @property
     def frames(self):
         """frames in the game packets that pass: what --apply would remove from this batch"""
-        return sum(len(g.game.frames) for g in self.ok_games)
+        return sum(len(g.delete_frames) for g in self.ok_games)
 
     @property
     def bytes(self):
-        return sum(s for g in self.ok_games for _, s in g.game.frames)
+        return sum(s for g in self.ok_games for _, s in g.delete_frames)
 
     @property
     def kept_frames(self):
-        """frames that stay: those of packets that do not pass, and of second games inside packets that do"""
-        return sum(len(g.game.frames) for g in self.games if not g.ok) + sum(len(f) for g in self.games for f in g.game.nested.values())
+        """frames that stay: those of packets that do not pass (second games inside them included), and of folders that keep an earlier state of a game"""
+        return sum(len(g.stay_frames) for g in self.games)
 
     @property
     def kept_bytes(self):
-        return sum(s for g in self.games if not g.ok for _, s in g.game.frames) + sum(s for g in self.games for f in g.game.nested.values() for _, s in f)
+        return sum(s for g in self.games for _, s in g.stay_frames)
 
 
-def decide_game(batch_name, game, index):
-    folder = f'{batch_name}/{game.name}'
+def entry_reasons(folder, index):
+    """-> (why this folder's game cannot go by the repo and the audit list, the repo's entry): [] when the game is in a committed games_meta.json with positions and is audited as it is now"""
     reasons = []
     hit = index.folders.get(folder)
     key = hit[0] if hit else None
@@ -439,6 +543,15 @@ def decide_game(batch_name, game, index):
             reasons.append(f'the audit list says {key} is in {entry.get("folder")}, not here')
         elif entry.get('games_meta') != hit[1] or entry.get('positions') != hit[2]:
             reasons.append(f'not audited as it is now: the audit list reviewed {entry.get("positions")} positions in {entry.get("games_meta")}, the repo now has {hit[2]} in {hit[1]}')
+        elif entry.get('positions_sha256') != hit[3]:
+            reasons.append('not audited as it is now: the positions in the repo are not the ones the audit list reviewed (their sha256 differs, or the entry has none)')
+    return reasons, hit
+
+
+def decide_game(batch_name, game, index):
+    folder = f'{batch_name}/{game.name}'
+    reasons, hit = entry_reasons(folder, index)
+    key = hit[0] if hit else None
     for t, ok in game.text.items():
         if not ok:
             reasons.append(f'text output {t} missing or empty')
@@ -446,7 +559,21 @@ def decide_game(batch_name, game, index):
         reasons.append(game.video[1])
     if game.unreadable:
         reasons.append(f'{game.unreadable} entries in the packet could not be read')
-    return GameDecision(game, key, reasons, folder, hit[1] if hit else None, hit[2] if hit else 0)
+    # a packet that records more than one game keeps the media of ALL its games in its root (Codex's RELATED_GAME_PACKETS.json: root_is_only_shared_writer_and_media_mover), so its frames
+    # go only when every game in it passes on its own: each second game must be in the repo and audited under its own folder (BATCH/packet/game_02)
+    second = sorted(r for r in game.nested if not _in_backup(r))
+    if game.declared > 1 or second:
+        why = []
+        if game.declared - 1 > len(second):
+            why.append(f'it records {game.declared} games but only {len(second)} second-game folder{"" if len(second) == 1 else "s"} could be found')
+        for rel in second:
+            r, _ = entry_reasons(f'{folder}/{rel}', index)
+            if r:
+                why.append(f'{rel} ({len(game.nested[rel])} frames) is not audited: {r[0]}')
+        if why:
+            reasons.append(f'holds {game.declared} games; ' + '; '.join(why) + ' -- the packet root keeps the media of all its games, so none of its frames go')
+    adopted = frozenset(second) if not reasons else frozenset()
+    return GameDecision(game, key, reasons, folder, hit[1] if hit else None, hit[2] if hit else 0, adopted)
 
 
 def decide(batches, index):
@@ -480,10 +607,12 @@ def mb(n):
     return f'{n / 1048576:,.0f} MB' if n < 1 << 30 else f'{n / (1 << 30):,.2f} GB'
 
 
-def report(decisions, view, qa_root, index, verbose=False, out=None):
+def report(decisions, view, qa_root, index, verbose=False, out=None, videos_from=None):
     out = out or sys.stdout
     p = lambda *a: print(*a, file=out)
     p(f'Recording_QA: {qa_root}')
+    if videos_from is not None:
+        p('Source videos looked for in: ' + ('; '.join(f'{d} ({why})' for d, why in videos_from) or 'NOWHERE (no Battle Logs folder found: give --videos PATH)'))
     p(f'Committed state read from: {view.describe()}')
     acc, why = acceptance(index)
     p(f'Games with positions in the repo: {len(index.folders)}; audit list: ' + ('found' if index.audit_path_found else 'NOT found') + '; acceptance: '
@@ -495,8 +624,10 @@ def report(decisions, view, qa_root, index, verbose=False, out=None):
         for g in d.games:
             if g.reasons and (verbose or len(d.games) - len(d.ok_games) <= 8):
                 p(f'      stays {g.game.name}: ' + '; '.join(g.reasons))
-            for rel, fr in g.game.nested.items():
-                p(f'      stays {g.game.name}/{rel}: a second game recorded in the same packet, not part of this decision: {len(fr)} frames, {mb(sum(s for _, s in fr))}')
+            if g.ok:
+                for rel, fr in g.game.nested.items():
+                    if rel not in g.adopted:
+                        p(f'      stays {g.game.name}/{rel}: a folder that keeps an earlier state of a game: {len(fr)} frames, {mb(sum(s for _, s in fr))}')
         extras = []
         if d.batch.support_frames:
             extras.append(f'{d.batch.support_frames} frames ({mb(d.batch.support_bytes)}) in non-game sub-folders')
@@ -565,9 +696,9 @@ def deletion_plan(decisions, qa_root, only=None, whole_batches_only=False):
             gp_real = os.path.realpath(gp)           # once per packet: the packet really is Recording_QA/<batch>/<packet>
             if os.path.relpath(gp_real, qa_real).split(os.sep) != [d.batch.name, g.game.name]:
                 raise ToolError(f'{g.game.path} is not Recording_QA/{d.batch.name}/{g.game.name} under {qa_root}')
-            nested = [os.path.abspath(os.path.join(gp, *r.split('/'))) for r in g.game.nested]
+            nested = [os.path.abspath(os.path.join(gp, *r.split('/'))) for r in g.game.nested if r not in g.adopted]       # a second game that did not pass on its own is never touched
             frames = []
-            for fp, size in g.game.frames:
+            for fp, size in g.delete_frames:
                 ap = os.path.abspath(fp)
                 try:
                     st = os.lstat(ap)
@@ -583,17 +714,19 @@ def deletion_plan(decisions, qa_root, only=None, whole_batches_only=False):
 
 
 class _Signals:
-    """turn SIGHUP/SIGTERM into an exception while frames are being deleted, so the log is closed and says what happened"""
+    """SIGHUP/SIGTERM/SIGINT while frames are being deleted do not interrupt a file in the middle of 'removed, counted, logged': the handler only sets a flag, and the loop calls check() between
+    files, which raises Interrupted, so the log is closed with an 'interrupted' line that agrees with what is gone (SIGKILL cannot be caught; the line-buffered log still has every line written)"""
 
     def __init__(self, enable=True):
         self.enable = enable and hasattr(signal, 'SIGTERM')
         self.old = {}
+        self.pending = None
 
     def __enter__(self):
         if self.enable:
             def handler(signum, frame):
-                raise Interrupted(signal.Signals(signum).name)
-            for s in (getattr(signal, 'SIGHUP', None), signal.SIGTERM):
+                self.pending = signal.Signals(signum).name
+            for s in (getattr(signal, 'SIGHUP', None), signal.SIGTERM, signal.SIGINT):
                 if s is not None:
                     try:
                         self.old[s] = signal.signal(s, handler)
@@ -601,9 +734,84 @@ class _Signals:
                         pass
         return self
 
+    def check(self):
+        if self.pending:
+            raise Interrupted(self.pending)
+
     def __exit__(self, *a):
         for s, h in self.old.items():
             signal.signal(s, h)
+
+
+# (os.remove and os.unlink are one call, but only os.unlink is listed in supports_dir_fd)
+DIR_FD_OK = (os.name != 'nt' and os.unlink in os.supports_dir_fd and os.open in os.supports_dir_fd and os.stat in os.supports_dir_fd and hasattr(os, 'O_NOFOLLOW') and hasattr(os, 'O_DIRECTORY'))
+
+
+class NotSafe(OSError):
+    """a frame (or one of its folders) is not what the plan saw: a link, a folder swapped for a link, not a regular file"""
+
+
+class PacketDirs:
+    """a game packet opened one folder at a time with O_NOFOLLOW, each relative to its already opened parent, and kept open: a file is removed relative to its folder's handle, so a folder (or
+    the packet itself) swapped for a link while frames are being deleted cannot send a deletion outside the packet, and there is nothing cached that could be stale. Where the system
+    has no such calls (native Windows Python), every file re-resolves its folder with realpath instead, uncached."""
+
+    def __init__(self, qa_real, parts, packet_abs):
+        # `parts` are the packet's names below Recording_QA as the plan saw them (batch, packet), never re-derived from a path that may have been swapped for a link since
+        self.parts, self.fds, self.packet_abs = tuple(parts), {}, packet_abs
+        self.packet_real = os.path.join(qa_real, *self.parts)
+        if DIR_FD_OK:
+            self.fds[()] = os.open(qa_real, os.O_RDONLY | os.O_DIRECTORY)
+            try:
+                self._open(self.parts)
+            except OSError:
+                self.close()
+                raise NotSafe(f'{"/".join(parts)} is not a real folder inside Recording_QA any more')
+        elif os.path.realpath(os.path.join(qa_real, *self.parts)) != os.path.join(qa_real, *self.parts):
+            raise NotSafe(f'{"/".join(parts)} is not a real folder inside Recording_QA any more')
+
+    def _open(self, parts):
+        if parts not in self.fds:
+            parent = self._open(parts[:-1])
+            self.fds[parts] = os.open(parts[-1], os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW, dir_fd=parent)
+        return self.fds[parts]
+
+    def remove(self, fp):
+        """remove one frame file, given its path inside the packet; raises NotSafe when it is not a regular file in a real folder of the packet"""
+        name, folder = os.path.basename(fp), os.path.dirname(fp)
+        if DIR_FD_OK:
+            rel = os.path.relpath(folder, self.packet_abs).split(os.sep)
+            if rel[0] == os.pardir:
+                raise NotSafe(f'{fp} is not inside its packet')
+            try:
+                fd = self._open(self.parts + (tuple(r for r in rel if r != '.')))
+                st = os.stat(name, dir_fd=fd, follow_symlinks=False)
+            except OSError as e:
+                raise NotSafe(f'{fp}: its folder is not a real folder of the packet any more ({e})')
+            if not stat.S_ISREG(st.st_mode) or is_name_surrogate(st):
+                raise NotSafe(f'{fp} is not a regular file at the moment of deletion')
+            os.remove(name, dir_fd=fd)
+        else:
+            real = os.path.realpath(folder)
+            if not (real == self.packet_real or real.startswith(self.packet_real + os.sep)):
+                raise NotSafe(f'{fp}: its folder does not resolve inside its packet any more')
+            st = os.lstat(fp)
+            if not stat.S_ISREG(st.st_mode) or is_name_surrogate(st):
+                raise NotSafe(f'{fp} is not a regular file at the moment of deletion')
+            os.remove(fp)
+
+    def close(self):
+        for fd in self.fds.values():
+            try:
+                os.close(fd)
+            except OSError:
+                pass
+        self.fds = {}
+
+
+class ApplyResult(tuple):
+    """(deleted, failed, bytes freed, log path); .skipped is the number of packets that were left alone because a required text output or the packet folder changed during the run"""
+    skipped = 0
 
 
 def apply_deletions(decisions, qa_root, index, view=None, only=None, confirm=None, log_dir=None, out=None, now=None, whole_batches_only=False, progress_every=1000, handle_signals=True):
@@ -621,7 +829,7 @@ def apply_deletions(decisions, qa_root, index, view=None, only=None, confirm=Non
     batches = sorted({os.path.relpath(g.game.path, qa_root).split(os.sep)[0] for g, _ in plan})
     if not nplanned:
         print('nothing to delete', file=out)
-        return 0, 0, 0, None
+        return ApplyResult((0, 0, 0, None))
     games = sorted({g.game.path for g, _ in plan})
     print(f'reading the {len(games)} packets\' text outputs for the integrity check ...', file=out)
     before = text_inventory(games)           # taken now, before the question, with a hash of each file
@@ -631,7 +839,7 @@ def apply_deletions(decisions, qa_root, index, view=None, only=None, confirm=Non
     log_path = os.path.join(log_dir or qa_root, f'CLEANUP_LOG_{stamp}.jsonl')
     deleted = failed = freed = skipped_packets = 0
     state = 'done'
-    realdirs = {}
+    qa_real = os.path.realpath(qa_root)
     with open(log_path, 'w', encoding='utf-8', buffering=1, newline='\n') as log:
         def put(obj, sync=False):
             log.write(json.dumps(obj, ensure_ascii=False) + '\n')
@@ -642,42 +850,48 @@ def apply_deletions(decisions, qa_root, index, view=None, only=None, confirm=Non
              'acceptance': acc, 'batches': batches, 'frames_planned': nplanned,
              'packets': [{'folder': g.folder, 'key': g.key, 'games_meta': g.meta, 'positions': g.positions, 'frames': len(f)} for g, f in plan]}, sync=True)
         try:
-            with _Signals(handle_signals):
+            with _Signals(handle_signals) as sig:
                 for g, frames in plan:
-                    packet_real = os.path.realpath(g.game.path)
+                    sig.check()
+                    packet_abs = os.path.abspath(g.game.path)
                     missing = [t for t in TEXT_REQUIRED if not (os.path.isfile(os.path.join(g.game.path, t)) and os.path.getsize(os.path.join(g.game.path, t)) > 0)]
                     if missing:
                         skipped_packets += 1
-                        put({'skipped_packet': g.folder, 'reason': 'text outputs missing just before deletion: ' + ', '.join(missing)}, sync=True)
-                        print(f'SKIPPED {g.folder}: {", ".join(missing)} missing just before deletion', file=out)
+                        put({'skipped_packet': g.folder, 'reason': 'text outputs missing or empty just before deletion: ' + ', '.join(missing)}, sync=True)
+                        print(f'SKIPPED {g.folder}: {", ".join(missing)} missing or empty just before deletion', file=out)
                         continue
-                    for fp, size in frames:
-                        d = os.path.dirname(fp)
-                        if d not in realdirs:
-                            realdirs[d] = os.path.realpath(d)
-                        try:
-                            st = os.lstat(fp)
-                            safe = (realdirs[d] == packet_real or realdirs[d].startswith(packet_real + os.sep)) and stat.S_ISREG(st.st_mode) and not is_name_surrogate(st)
-                        except OSError:
-                            safe = False
-                        rel = os.path.relpath(fp, qa_root).replace(os.sep, '/')
-                        if not safe:
-                            failed += 1
-                            put({'failed': rel, 'error': 'not a regular file inside its packet at the moment of deletion; left alone'})
-                            continue
-                        try:
-                            os.remove(fp)
-                        except OSError as e:
-                            failed += 1
-                            put({'failed': rel, 'error': str(e)})
-                            continue
-                        deleted += 1
-                        freed += size
-                        put({'removed': rel, 'bytes': size})
-                        if progress_every and deleted % progress_every == 0:
-                            log.flush()
-                            os.fsync(log.fileno())
-                            print(f'  removed {deleted:,} of {nplanned:,} ...', file=out)
+                    try:
+                        dirs = PacketDirs(qa_real, os.path.relpath(packet_abs, os.path.abspath(qa_root)).split(os.sep), packet_abs)
+                    except NotSafe as e:
+                        skipped_packets += 1
+                        put({'skipped_packet': g.folder, 'reason': str(e)}, sync=True)
+                        print(f'SKIPPED {g.folder}: {e}', file=out)
+                        continue
+                    try:
+                        for fp, size in frames:
+                            rel = os.path.relpath(fp, qa_root).replace(os.sep, '/')
+                            try:
+                                dirs.remove(os.path.abspath(fp))
+                            except NotSafe as e:
+                                failed += 1
+                                put({'failed': rel, 'error': f'{e}; left alone'})
+                                sig.check()
+                                continue
+                            except OSError as e:
+                                failed += 1
+                                put({'failed': rel, 'error': str(e)})
+                                sig.check()
+                                continue
+                            deleted += 1
+                            freed += size
+                            put({'removed': rel, 'bytes': size})
+                            if progress_every and deleted % progress_every == 0:
+                                log.flush()
+                                os.fsync(log.fileno())
+                                print(f'  removed {deleted:,} of {nplanned:,} ...', file=out)
+                            sig.check()
+                    finally:
+                        dirs.close()
         except (Interrupted, KeyboardInterrupt) as e:
             state = 'interrupted'
             put({'interrupted': str(e) or 'KeyboardInterrupt', 'deleted': deleted, 'failed': failed, 'bytes_freed': freed}, sync=True)
@@ -693,8 +907,11 @@ def apply_deletions(decisions, qa_root, index, view=None, only=None, confirm=Non
         raise ToolError(f'INTEGRITY CHECK FAILED: {len(gone)} non-frame files missing and {len(changed)} changed since the inventory taken before the question (this tool deletes only frame files, so something else touched them, or the tool is wrong); see {log_path}')
     print(f'integrity check: all {len(before):,} non-frame files of those packets are still there, with the same SHA-256', file=out)
     if failed or skipped_packets:
-        print(f'INCOMPLETE: {failed} frames could not be deleted and {skipped_packets} packets were skipped; close OneDrive/Codex/Explorer if they hold files open, then run --apply again.', file=out)
-    return deleted, failed, freed, log_path
+        print(f'INCOMPLETE: {failed} frames could not be deleted and {skipped_packets} packets were skipped (see the log); close OneDrive/Codex/Explorer if they hold files open, '
+              'and look at why a packet was skipped (a required text output or the folder changed during the run), then run --apply again.', file=out)
+    res = ApplyResult((deleted, failed, freed, log_path))
+    res.skipped = skipped_packets
+    return res
 
 
 # ---------------------------------------------------------------------------------------------------------------- move
@@ -702,7 +919,12 @@ def is_drive_root(p):
     return bool(re.fullmatch(r'/mnt/[a-z]/?', p)) or bool(re.fullmatch(r'[A-Za-z]:[\\/]?', p)) or p in ('/', '')
 
 
-def move_recording_qa(source, target, repo=None, confirm=None, dry=False, out=None, import_check=None):
+def quoted(path):
+    """a path for pasting after `wsl`: in double quotes when it has a space"""
+    return f'"{path}"' if ' ' in path else path
+
+
+def move_recording_qa(source, target, repo=None, confirm=None, dry=False, out=None, import_check=None, import_label='committed, byte for byte, in rl/results/battle_log_packets'):
     """move ONLY Recording_QA (the frames and the packets) to `target`; the videos and everything else in Battle Logs stay where they are, in OneDrive.
     A rename on the same drive: instant, nothing copied, nothing half-moved. Returns the new path (None for a dry run)."""
     out = out or sys.stdout
@@ -716,6 +938,8 @@ def move_recording_qa(source, target, repo=None, confirm=None, dry=False, out=No
         raise ToolError(f'{source} is not a folder')
     if os.path.basename(source).lower() != 'recording_qa':
         raise ToolError(f'{source} is not a folder named Recording_QA; this tool moves only Recording_QA (never the videos or the rest of Battle Logs)')
+    if os.path.basename(target).lower() != 'recording_qa':
+        raise ToolError(f'the target {target} does not end in Recording_QA: the moved folder keeps its name (a path whose backslashes were lost on the way through `wsl` merges the last folder into the one before it)')
     if os.path.lexists(target):
         raise ToolError(f'{target} already exists; choose a path that does not exist')
     if fold(target) == fold(source) or fold(target).startswith(fold(source) + os.sep):
@@ -752,7 +976,7 @@ def move_recording_qa(source, target, repo=None, confirm=None, dry=False, out=No
                                 'then try again (--no-import-check skips this check, at your own risk)')
             p('  (a real move would be refused until the import is current)')
         else:
-            p('  import check: every text output of Recording_QA is committed, byte for byte, in rl/results/battle_log_packets')
+            p(f'  import check: every text output of Recording_QA is {import_label}')
     if dry:
         p('dry run: nothing moved')
         return None
@@ -773,7 +997,15 @@ def move_recording_qa(source, target, repo=None, confirm=None, dry=False, out=No
         raise ToolError(f'Recording_QA could not be moved ({e}); nothing was changed (close what has files open in it: Codex, OneDrive sync, Explorer)')
     p('moved.')
     p(f'Codex should now use as its Recording_QA: {to_windows(target)}')
-    p(f'This tool finds it with --qa-root {to_forward(target)}. The videos and the other files are still in {to_windows(logs)}.')
+    try:
+        with open(os.path.join(target, LOCATION_FILE), 'w', encoding='utf-8') as f:
+            json.dump({'battle_logs': to_forward(logs), 'note': 'where the videos stayed when Recording_QA was moved out of Battle Logs (battle_logs_cleanup.py --move-to); the tool looks for the source videos here',
+                       'moved_from': to_forward(source), 'moved_to': to_forward(target), 'moved_at': datetime.datetime.now(datetime.timezone.utc).isoformat(timespec='seconds')}, f, indent=1)
+            f.write('\n')
+        p(f'  (wrote {LOCATION_FILE} in the moved folder: the tool reads it to find the videos)')
+    except OSError as e:
+        p(f'  WARNING: {LOCATION_FILE} could not be written ({e}); give --videos {quoted(to_forward(logs))} to the tool')
+    p(f'This tool finds it with --qa-root {quoted(to_forward(target))}. The videos and the other files are still in {to_windows(logs)} (--videos {quoted(to_forward(logs))} names that folder).')
     return target
 
 
@@ -829,16 +1061,30 @@ def main(argv=None):
     ap.add_argument('--ref', default=DEFAULT_REF, help='the git ref whose committed files count as "in the repo" (default origin/main; --apply accepts only origin/main)')
     ap.add_argument('--allow-ref-other-than-origin-main', action='store_true', help='with --apply: accept another --ref (for example a branch under review); at your own risk')
     ap.add_argument('--no-git', action='store_true', help='read the working tree instead of git (previews only: proves nothing about what is committed; --apply refuses it)')
-    ap.add_argument('--audit-hash', action='store_true', help='print the games_sha256 an acceptance in the audit list must carry for the games listed now, and exit')
+    ap.add_argument('--audit-hash', action='store_true', help='print the games_sha256 an acceptance in the audit list must carry for the games listed now (with the ref and commit it was computed from), and exit')
+    ap.add_argument('--videos', metavar='PATH', help='the Battle Logs folder that holds the source videos (at its top and in Reviewed/); default: the one recorded in the moved Recording_QA by --move-to, the folder '
+                    'Recording_QA is in, and C:/Users/dacz8/OneDrive/Desktop/Battle Logs')
+    ap.add_argument('--allow-offline', action='store_true', help='with --apply / --move-to: go on when origin cannot be asked whether origin/main is current (otherwise refused: an acceptance may have been withdrawn since the last fetch)')
     ap.add_argument('--verbose', '-v', action='store_true', help='list the reasons for every held-back game')
     a = ap.parse_args(argv)
+    a.repo = to_local(a.repo)
     if a.apply and a.move_to:
         raise ToolError('--apply and --move-to are separate: run one, then the other')
-    if a.apply and not a.dry_run:
+    # what --apply deletes on, and what a real --move-to trusts for the backup of the text outputs, is the committed state of origin/main and nothing else
+    if (a.apply or (a.move_to and not a.no_import_check)) and not a.dry_run:
+        what = '--apply' if a.apply else '--move-to (its import check)'
         if a.no_git:
-            raise ToolError('--apply reads only the committed state of origin/main; --no-git reads whatever is in the working tree. Run it through wsl, which has git')
+            raise ToolError(f'{what} reads only the committed state of origin/main; --no-git reads whatever is in the working tree, which is not a backup of anything. Run it through wsl, which has git')
         if a.ref != DEFAULT_REF and not a.allow_ref_other_than_origin_main:
-            raise ToolError(f'--apply reads only the committed state of {DEFAULT_REF}, not {a.ref}; --allow-ref-other-than-origin-main overrides this, at your own risk')
+            raise ToolError(f'{what} reads only the committed state of {DEFAULT_REF}, not {a.ref}; --allow-ref-other-than-origin-main overrides this, at your own risk')
+    if a.audit_hash:
+        view = RepoView(a.repo, a.ref, a.no_git)
+        index = build_index(view)
+        if not index.audit_path_found:
+            raise ToolError(f'the audit list {AUDIT_LIST} is not committed at {view.describe()}, so there is no hash to give')
+        games = index.audit.get('games') or {}
+        print(f'{games_hash(games)}  (games_sha256 of the {len(games)} games listed in {AUDIT_LIST} at {view.describe()})')
+        return 0
     qa_root = find_qa_root(a.qa_root)
 
     def typed(word, what):
@@ -851,36 +1097,43 @@ def main(argv=None):
         return ask
 
     if a.move_to:
-        check = None
+        check, label, mview = None, 'committed, byte for byte, in rl/results/battle_log_packets', None
         if not a.no_import_check:
             import battle_logs_import_packets as imp
             logs = os.path.dirname(qa_root)
-            check = lambda: imp.import_problems(logs, a.repo, a.ref, a.no_git)
+            mview = RepoView(a.repo, a.ref, a.no_git)
+            if not a.dry_run:
+                check_fresh(mview, a.allow_offline)         # the backup must be what origin has now, not a local commit that was never pushed
+            if a.no_git:
+                label = 'present in the working tree of the checkout (NOT checked against git: a real move would be refused)'
+            check = lambda: imp.import_problems(logs, a.repo, mview.commit_full or a.ref, a.no_git)
 
         def ask_move(target):
-            return typed('MOVE', f'About to move ONLY Recording_QA ({qa_root})\n  to {target}\nThe videos stay in OneDrive.')()
-        move_recording_qa(qa_root, a.move_to, repo=a.repo, dry=a.dry_run, confirm=ask_move, import_check=check)
+            if not typed('MOVE', f'About to move ONLY Recording_QA ({qa_root})\n  to {target}\nThe videos stay in OneDrive.')():
+                return False
+            if mview is not None:
+                check_fresh(mview, a.allow_offline)         # asked again after the question
+            return True
+        move_recording_qa(qa_root, a.move_to, repo=a.repo, dry=a.dry_run, confirm=ask_move, import_check=check, import_label=label)
         return 0
     view = RepoView(a.repo, a.ref, a.no_git)
     index = build_index(view)
-    if a.audit_hash:
-        print(games_hash(index.audit.get('games')))
-        return 0
-    logs = os.path.dirname(qa_root)
-    decisions = filter_batches(decide(scan_qa(qa_root, video_index(logs)), index), set(a.only) if a.only else None)
-    report(decisions, view, qa_root, index, a.verbose)
+    explicit = to_local(a.videos) if a.videos else None
+    if explicit and not os.path.isdir(explicit):
+        raise ToolError(f'--videos {a.videos!r} is not a folder')
+    vdirs = video_dirs(qa_root, explicit)
+    decisions = filter_batches(decide(scan_qa(qa_root, video_index_all(vdirs), '; '.join(d for d, _ in vdirs) or 'no Battle Logs folder found'), index), set(a.only) if a.only else None)
+    report(decisions, view, qa_root, index, a.verbose, videos_from=vdirs)
     if a.apply and not a.dry_run:
-        remote = None if a.no_git else view.remote_main()
-        if a.ref == DEFAULT_REF:
-            if remote is None:
-                print('WARNING: origin could not be reached, so it is not known whether the committed state is current. Fetch first if you can.')
-            elif remote != view.commit_full:
-                raise ToolError(f'origin/main here is {view.commit} but origin has {remote[:8]}: run `git fetch origin` in the checkout, then run this again')
+        check_fresh(view, a.allow_offline)
 
         def confirm(n, size, batches):
-            return typed('DELETE', f'About to delete {n:,} frame files ({mb(size)}) from {len(batches)} batches: {", ".join(batches)}\nCommitted state: {view.describe()}')()
-        deleted, failed, freed, log = apply_deletions(decisions, qa_root, index, view=view, only=set(a.only) if a.only else None, confirm=confirm, whole_batches_only=a.whole_batches_only)
-        return 1 if failed else 0
+            if not typed('DELETE', f'About to delete {n:,} frame files ({mb(size)}) from {len(batches)} batches: {", ".join(batches)}\nCommitted state: {view.describe()}')():
+                return False
+            check_fresh(view, a.allow_offline)              # asked again after the question: an acceptance withdrawn while it was open still counts
+            return True
+        res = apply_deletions(decisions, qa_root, index, view=view, only=set(a.only) if a.only else None, confirm=confirm, whole_batches_only=a.whole_batches_only)
+        return 1 if res[1] or res.skipped else 0
     return 0
 
 

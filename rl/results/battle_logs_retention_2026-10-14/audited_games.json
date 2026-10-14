@@ -1,13 +1,14 @@
 {
- "schema": "battle-logs-retention/audited-games-v2",
+ "schema": "battle-logs-retention/audited-games-v3",
  "confirmed": null,
- "confirmed_help": "A person writes here {\"by\": \"<who>\", \"date\": \"YYYY-MM-DD\", \"games_sha256\": \"<what `python3 tools/battle_logs_cleanup.py --audit-hash` prints>\"} and commits it to main and pushes; tools/battle_logs_cleanup.py --apply refuses while it is missing, malformed, or no longer matches `games`.",
+ "confirmed_help": "A person writes here {\"by\": \"<a name>\", \"date\": \"YYYY-MM-DD\", \"games_sha256\": \"<what `wsl python3 tools/battle_logs_cleanup.py --audit-hash` prints>\"} and commits it to main and pushes; tools/battle_logs_cleanup.py --apply refuses while it is missing, malformed, or no longer matches `games`.",
  "proposed_by": "Sonnet (Opus agents progress), 2026-10-14, from the records on main; see make_audited_games.py for the evidence per tier",
  "games": {
   "kw-261004_213625000": {
    "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261004_213625000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 6,
+   "positions_sha256": "32e2ee4386cf3ecaacec0ded29e4a05a44ff7b60d54323af4a8b4216e81fa05c",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -19,6 +20,7 @@
    "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261004_215749000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 3,
+   "positions_sha256": "6314478e00b13efb3024f1c621870c67cabcf8b15f1fadea88af4e456607529e",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -30,6 +32,7 @@
    "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_003547000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 7,
+   "positions_sha256": "69d4c6c94920a4a0b27935bcedb29f7650e966600980af982562faa3f9698642",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -41,6 +44,7 @@
    "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_031138000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 3,
+   "positions_sha256": "b7daa8adc9c718fa87554ae59180b3de8241f74838f52fe91b82dbfb00f9bc5e",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -52,6 +56,7 @@
    "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_032023000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 6,
+   "positions_sha256": "d6f3ba095de5b23135351e7e7c9bbdcf450e7318f586fe50825712ec4ee8ece6",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -63,6 +68,7 @@
    "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_032857000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 4,
+   "positions_sha256": "80e4dd837a42adc95b2d94dce4dd797f53e54f06dcead9235c33a46981812c45",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -74,6 +80,7 @@
    "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_033529000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 5,
+   "positions_sha256": "0a3511a2018a550183382f7a23c415f2dc86100abfe517d7d8b7aee9de26ff5e",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -85,6 +92,7 @@
    "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_034953000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 8,
+   "positions_sha256": "d084b5573d6a4833ed2f903f8f5782b235886d96c584e3610cef82b7d5a8a4f0",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -96,6 +104,7 @@
    "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_123812000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 5,
+   "positions_sha256": "96590e8378bf120798d2fc9bfbe703c9807cb7c46235a560c8598d21347c05f9",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -107,6 +116,7 @@
    "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_124532000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 4,
+   "positions_sha256": "eca542585946b19e6814ba2f1500439598414976ca6286d43e8674d4942c7402",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -118,6 +128,7 @@
    "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_183108000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 5,
+   "positions_sha256": "ad67f4e1b5d04bc7bad26c903d86ea2e65ed4bbf572166933c57fcb9a50e609b",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -129,6 +140,7 @@
    "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261006_012927000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 5,
+   "positions_sha256": "5bb25e5faf6623a09603a5834eacc273470a7801a8c22495f1a58786bb0329ce",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -140,6 +152,7 @@
    "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261006_020518000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 9,
+   "positions_sha256": "cbc8adef32d5282f6e90270684022d17a893e212bfc8330139ee6169cbf93ca3",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -151,6 +164,7 @@
    "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_012303000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 6,
+   "positions_sha256": "22af79486fe7a20bf7830342616a1e280c65581205bf34c32d66f417313055bc",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -162,6 +176,7 @@
    "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_013009000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 8,
+   "positions_sha256": "17754f9814f69b2b5cc3ae702e7eca81534ab0ba2ca53edf03a1c570a717612c",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -173,6 +188,7 @@
    "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_014541000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 4,
+   "positions_sha256": "3cfbe5e9382920cb403251765334f7b1aec9c18f8b51fe699338fd8e7af4b964",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -184,6 +200,7 @@
    "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_015452000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 2,
+   "positions_sha256": "4f4ed2cc5b2ac9adff7fdc80ae176a95d4707ce36b57758191e0f014818aa970",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -195,6 +212,7 @@
    "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_015821000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 3,
+   "positions_sha256": "4fe0aaf06375c8d1094e2e99ec678c7aa48419cdbc373439095abdbe706512b5",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -206,6 +224,7 @@
    "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_020258000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 4,
+   "positions_sha256": "80b7952930d40a94efaa72429e874833d8a0237d4cf1834b6ab1186088482e94",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -217,6 +236,7 @@
    "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_020908000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 3,
+   "positions_sha256": "f4243bf3528bc37f714682723b1150a169de7c6fd271621e97e87c5f601770b3",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -228,6 +248,7 @@
    "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_021629000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 12,
+   "positions_sha256": "2f1edefece4f7ab8b1df356700528b2d9b7864e84596d8e1d56db816c8f78ca9",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -239,6 +260,7 @@
    "folder": "BATCH_2026-10-11_NEW_PAUSE_GAMES/20261012_003458000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 6,
+   "positions_sha256": "b8132e3c85766de93c372a537bbff1f5f26fb0d7262bc35b1e5415eeabcab9dc",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -250,6 +272,7 @@
    "folder": "BATCH_2026-10-11_NEW_PAUSE_GAMES/20261012_004128000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 2,
+   "positions_sha256": "aa06e19c903eaed9daf1b6a4c79771104964effc01d8a933487985f09eccef6f",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",
@@ -261,6 +284,7 @@
    "folder": "BATCH_2026-10-11_NEW_PAUSE_GAMES/20261012_004435000_iOS",
    "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
    "positions": 5,
+   "positions_sha256": "82d8a8fe0db22b7b1509a1d17aab2b1e68f89adf1cdab1752d3cabab3f68597f",
    "tier": "A",
    "evidence": [
     "e9a7d35e (laptop panel 1, Oct 12: errors found)",

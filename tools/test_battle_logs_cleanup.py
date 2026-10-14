@@ -12,6 +12,7 @@ import battle_logs_cleanup as bl  # noqa: E402
 AUDIT = bl.AUDIT_LIST
 META = 'rl/results/pause_games_new_2026-10-12/games_meta.json'
 VIDEO_BYTES = 1000
+DIGEST = 'ab' * 32            # the sha256 of a game's reviewed positions, as the audit entries and the made-up index carry it
 HAVE_GIT = bool(shutil.which('git'))
 
 
@@ -112,15 +113,22 @@ def accept(games, by='laptop', date='2026-10-14'):
 
 def index(folders, games=None, pending=None, accepted=True, found=True, meta=META, positions=5):
     """a RepoIndex: `folders` are 'BATCH/game' names that are in the repo; `games` the audited ones (default: all of them); `accepted`: True = a valid acceptance of `games`, or the value to put in 'confirmed'"""
-    hits = {f: (f'kw-{f.split("/")[1][2:].replace("_iOS", "")}', meta, positions) for f in folders}
+    hits = {f: (f'kw-{f.split("/")[1][2:].replace("_iOS", "")}', meta, positions, DIGEST) for f in folders}
     if games is None:
-        games = {v[0]: {'folder': f, 'games_meta': meta, 'positions': positions} for f, v in hits.items()}
+        games = {v[0]: {'folder': f, 'games_meta': meta, 'positions': positions, 'positions_sha256': DIGEST} for f, v in hits.items()}
     audit = {'games': games, 'pending': pending or {}}
     if accepted is True:
         audit['confirmed'] = accept(games)
     else:
         audit['confirmed'] = accepted
     return bl.RepoIndex(hits, audit if found else {}, found)
+
+
+def no_default(test):
+    """the tool also looks for videos in C:/Users/dacz8/OneDrive/Desktop/Battle Logs: not in a test"""
+    p = mock.patch.object(bl, 'BATTLE_LOGS_DEFAULT', os.path.join(tempfile.gettempdir(), 'no_such_default_battle_logs'))
+    p.start()
+    test.addCleanup(p.stop)
 
 
 def decide_for(tree, idx):
@@ -160,37 +168,37 @@ class DecisionRule(unittest.TestCase):
         self.assertEqual((d.verdict, d.frames, d.kept_frames), ('keep', 0, 12))
 
     def test_a_game_in_the_repo_but_not_in_the_audit_list_is_not_deleted(self):
-        keys = {'kw-261001_000000001': {'folder': 'BATCH_A/20261001_000000001_iOS', 'games_meta': META, 'positions': 5}}
+        keys = {'kw-261001_000000001': {'folder': 'BATCH_A/20261001_000000001_iOS', 'games_meta': META, 'positions': 5, 'positions_sha256': DIGEST}}
         d = self.one(index(self.both(), games=keys))
         self.assertFalse(d.delete)
         self.assertIn('not audited', ' '.join(d.games[1].reasons))
 
     def test_a_game_the_list_only_proposes_is_not_deleted_and_the_reason_is_shown(self):
-        keys = {'kw-261001_000000001': {'folder': 'BATCH_A/20261001_000000001_iOS', 'games_meta': META, 'positions': 5}}
+        keys = {'kw-261001_000000001': {'folder': 'BATCH_A/20261001_000000001_iOS', 'games_meta': META, 'positions': 5, 'positions_sha256': DIGEST}}
         d = self.one(index(self.both(), games=keys, pending={'kw-261001_000000002': {'why': 'no panel compared it'}}))
         self.assertFalse(d.delete)
         self.assertIn('pending', ' '.join(d.games[1].reasons))
         self.assertIn('no panel compared it', ' '.join(d.games[1].reasons))
 
     def test_an_audit_entry_that_names_another_folder_does_not_count(self):
-        keys = {'kw-261001_000000001': {'folder': 'BATCH_A/20261001_000000001_iOS', 'games_meta': META, 'positions': 5},
-                'kw-261001_000000002': {'folder': 'BATCH_Z/20261001_000000002_iOS', 'games_meta': META, 'positions': 5}}
+        keys = {'kw-261001_000000001': {'folder': 'BATCH_A/20261001_000000001_iOS', 'games_meta': META, 'positions': 5, 'positions_sha256': DIGEST},
+                'kw-261001_000000002': {'folder': 'BATCH_Z/20261001_000000002_iOS', 'games_meta': META, 'positions': 5, 'positions_sha256': DIGEST}}
         d = self.one(index(self.both(), games=keys))
         self.assertFalse(d.delete)
         self.assertIn('not here', ' '.join(d.games[1].reasons))
 
     def test_an_audit_entry_is_held_when_the_reviewed_positions_or_games_meta_are_no_longer_what_the_repo_has(self):
         # the review vouched for 5 positions in one games_meta; a later commit names the game in another file or with another number of positions
-        for kw in ({'meta': 'rl/results/pause_games_new_2026-11-01/games_meta.json'}, {'positions': 6}):
+        for kw in ({'meta': 'rl/results/pause_games_new_2026-11-01/games_meta.json'}, {'positions': 6}, {'digest': 'cd' * 32}):
             idx = index(self.both())
-            for f, (k, m, n) in list(idx.folders.items()):
-                idx.folders[f] = (k, kw.get('meta', m), kw.get('positions', n))
+            for f, (k, m, n, h) in list(idx.folders.items()):
+                idx.folders[f] = (k, kw.get('meta', m), kw.get('positions', n), kw.get('digest', h))
             d = self.one(idx)
             self.assertFalse(d.delete, kw)
             self.assertIn('not audited as it is now', ' '.join(d.games[0].reasons))
 
     def test_a_game_with_no_positions_in_the_repo_is_not_deleted_even_if_the_list_names_it(self):
-        keys = {'kw-261001_000000001': {'folder': 'BATCH_A/20261001_000000001_iOS', 'games_meta': META, 'positions': 5}}
+        keys = {'kw-261001_000000001': {'folder': 'BATCH_A/20261001_000000001_iOS', 'games_meta': META, 'positions': 5, 'positions_sha256': DIGEST}}
         d = self.one(index(self.both()[1:], games=keys))
         self.assertEqual(d.verdict, 'keep')
 
@@ -269,34 +277,81 @@ class SourceVideo(unittest.TestCase):
 
 
 class SecondGameInsideAPacket(unittest.TestCase):
-    """the laptop's blocker: packet 012927 holds a second game (game_02/) that nobody audited; its frames must stay"""
+    """the laptop's blocker, twice: packet 012927 records two games, game 2 in game_02/ AND, as its own evidence files cite, in the packet root's shared native/ folder (Codex's
+    RELATED_GAME_PACKETS.json: root_is_only_shared_writer_and_media_mover). A packet that records more than one game is held back WHOLE unless every game in it passes on its own."""
+    FOLDER = 'BATCH_A/20261001_000000001_iOS'
 
     def setUp(self):
         self.t = Tree(self)
         self.gp = self.t.game('BATCH_A', '20261001_000000001_iOS')
-        self.idx = index(['BATCH_A/20261001_000000001_iOS'])
+        for name in ('t0622.00.jpg', 't0650.00.jpg'):
+            write(os.path.join(self.gp, 'native', name), b'n' * 60)            # shared media of both games, in the root
+        self.idx = index([self.FOLDER])
 
     def one(self):
         return decide_for(self.t, self.idx)[0]
 
-    def test_a_game_listed_in_related_game_packets_is_not_part_of_the_first_games_frames(self):
+    def why(self):
+        return ' '.join(self.one().games[0].reasons)
+
+    def related(self, **kw):
+        write(os.path.join(self.gp, 'RELATED_GAME_PACKETS.json'), json.dumps(kw))
+
+    def test_a_packet_that_lists_a_second_game_is_held_back_whole_including_its_shared_native_frames(self):
         self.t.second_game(self.gp, how='related', frames=3)
         d = self.one()
-        self.assertTrue(d.delete)                        # game 1 itself passes
-        self.assertEqual(d.frames, 6)                    # its own frames only
+        self.assertFalse(d.delete)
+        self.assertEqual((d.verdict, d.frames, d.bytes), ('keep', 0, 0))
+        self.assertEqual(d.kept_frames, 8 + 3, 'the first game\'s 6 frames, the 2 native frames, the 3 of game_02: nothing goes')
+        self.assertIn('holds 2 games', self.why())
+        self.assertIn('game_02 (3 frames) is not audited', self.why())
+        self.assertIn('so none of its frames go', self.why())
         self.assertEqual(list(d.games[0].game.nested), ['game_02'])
-        self.assertEqual(d.kept_frames, 3)
 
-    def test_a_game_folder_is_found_without_the_related_file_by_its_name_and_by_its_own_ledger_with_another_game_id(self):
+    def test_apply_deletes_nothing_from_such_a_packet_not_even_the_native_folder(self):
+        self.t.second_game(self.gp, how='related', frames=3)
+        before = self.t.contents()
+        res = bl.apply_deletions(decide_for(self.t, self.idx), self.t.qa, self.idx, confirm=lambda *a: True, out=io.StringIO())
+        self.assertEqual(tuple(res)[:3], (0, 0, 0))
+        self.assertEqual(self.t.contents(), before)
+
+    def test_the_other_layout_of_the_related_file_is_read_too(self):
+        # 20261010_021629000 writes games[{game_number, packet}] and game_count
+        self.related(source_video='x.MP4', game_count=2, games=[{'game_number': 1, 'packet': '.'}, {'game_number': 2, 'packet': 'second_recording'}], other_games_found=True)
+        write(os.path.join(self.gp, 'second_recording', 'crops', 'c.png'), b'c')
+        d = self.one()
+        self.assertFalse(d.delete)
+        self.assertEqual(list(d.games[0].game.nested), ['second_recording'])
+        self.assertIn('second_recording (1 frames) is not audited', self.why())
+
+    def test_a_declared_second_game_with_no_folder_to_be_found_holds_the_packet(self):
+        for label, kw in (('RELATED game_count', {'game_count': 2}), ('RELATED games entries', {'games': [{'packet': '.'}, {'packet': 'elsewhere'}]}), ('other_games_found', {'other_games_found': True})):
+            self.related(**kw)
+            self.assertIn('records 2 games but only 0 second-game folders could be found', self.why(), label)
+
+    def test_the_root_summary_that_says_two_games_holds_the_packet(self):
+        write(os.path.join(self.gp, 'SUMMARY.json'), json.dumps({'game_id': 'x_game_01', 'source_game_count': 2}))
+        self.assertIn('records 2 games', self.why())
+
+    def test_a_packet_that_says_it_holds_one_game_passes_and_all_its_frames_go(self):
+        self.related(game_count=1, games=[{'game_number': 1, 'packet': '.'}], other_games_found=False)
+        write(os.path.join(self.gp, 'SUMMARY.json'), json.dumps({'game_id': 'x_game_01', 'source_game_count': 1}))
+        d = self.one()
+        self.assertTrue(d.delete, self.why())
+        self.assertEqual(d.frames, 8)
+
+    def test_a_game_folder_with_no_declaration_at_all_is_found_by_its_name_and_holds_the_packet(self):
         self.t.second_game(self.gp, how='name')
-        self.assertEqual(list(self.one().games[0].game.nested), ['game_02'])
-        shutil.rmtree(os.path.join(self.gp, 'game_02'))
-        sub = os.path.join(self.gp, 'second_recording')
+        self.assertIn('holds 2 games', self.why())
+
+    def test_a_game_folder_is_found_by_its_own_ledger_with_another_game_id(self):
         write(os.path.join(self.gp, 'SUMMARY.json'), json.dumps({'game_id': 'x_game_01'}))
+        sub = os.path.join(self.gp, 'second_recording')
         write(os.path.join(sub, 'TURN_LEDGER.json'), '{}')
         write(os.path.join(sub, 'SUMMARY.json'), json.dumps({'game_id': 'x_game_02'}))
         write(os.path.join(sub, 'crops', 'c.png'), b'c')
         self.assertEqual(list(self.one().games[0].game.nested), ['second_recording'])
+        self.assertIn('holds 2 games', self.why())
 
     def test_a_backup_copy_of_the_same_game_is_not_a_second_game_and_goes_with_the_packet(self):
         write(os.path.join(self.gp, 'SUMMARY.json'), json.dumps({'game_id': 'x_game_01'}))
@@ -304,39 +359,71 @@ class SecondGameInsideAPacket(unittest.TestCase):
         write(os.path.join(bk, 'TURN_LEDGER.json'), '{}')
         write(os.path.join(bk, 'SUMMARY.json'), json.dumps({'game_id': 'x_game_01'}))
         write(os.path.join(bk, 'crop.png'), b'c')
-        g = self.one().games[0].game
-        self.assertEqual(g.nested, {})
-        self.assertIn(os.path.join(bk, 'crop.png'), [p for p, _ in g.frames])
+        d = self.one()
+        self.assertTrue(d.delete, self.why())
+        self.assertIn(os.path.join(bk, 'crop.png'), [p for p, _ in d.games[0].game.frames])
 
-    def test_apply_leaves_the_second_games_frames_and_text_and_deletes_the_first(self):
-        sub = self.t.second_game(self.gp)
-        before = self.t.contents()
-        decisions = decide_for(self.t, self.idx)
-        bl.apply_deletions(decisions, self.t.qa, self.idx, confirm=lambda *a: True, out=io.StringIO())
-        after = self.t.contents()
-        gone = sorted(set(before) - {k for k in after if not k.startswith(os.path.join('Battle Logs', 'Recording_QA', 'CLEANUP_LOG'))})
-        self.assertTrue(gone and all(k.lower().endswith(bl.FRAME_EXT) for k in gone))
-        self.assertFalse([k for k in gone if os.sep + 'game_02' + os.sep in k], 'a frame of the second game was deleted')
-        self.assertEqual(len([f for f in os.listdir(os.path.join(sub, 'crops'))]), 3)
+    def test_a_game_folder_inside_a_backup_folder_keeps_its_frames_and_does_not_hold_a_one_game_packet(self):
+        # 012927 has original_before_final_independent/game_02 (0 frames there); in a packet that says it holds one game it must neither block it nor be deleted
+        write(os.path.join(self.gp, 'original_before_final_independent', 'game_02', 'old.png'), b'o' * 9)
+        d = self.one()
+        self.assertTrue(d.delete, self.why())
+        self.assertEqual(d.frames, 8)
+        self.assertEqual(d.kept_frames, 1)
+        self.assertEqual(list(d.games[0].game.nested), ['original_before_final_independent/game_02'])
+        bl.apply_deletions(decide_for(self.t, self.idx), self.t.qa, self.idx, confirm=lambda *a: True, out=io.StringIO())
+        self.assertTrue(os.path.exists(os.path.join(self.gp, 'original_before_final_independent', 'game_02', 'old.png')))
+        self.assertFalse(os.path.exists(os.path.join(self.gp, 'native', 't0622.00.jpg')))
 
-    def test_the_plan_refuses_a_frame_of_the_second_game(self):
-        sub = self.t.second_game(self.gp)
+    def audit_second_game(self, accepted=True, pending=False):
+        key, folder = 'kw-261001_000000001_game_02', self.FOLDER + '/game_02'
+        self.idx.folders[folder] = (key, META, 4, DIGEST)
+        if not pending:
+            self.idx.audit['games'][key] = {'folder': folder, 'games_meta': META, 'positions': 4, 'positions_sha256': DIGEST}
+        else:
+            self.idx.audit['pending'][key] = {'why': 'no panel yet'}
+        self.idx.audit['confirmed'] = accept(self.idx.audit['games']) if accepted else None
+
+    def test_the_packet_goes_when_the_second_game_is_in_the_repo_and_audited_under_its_own_folder(self):
+        sub = self.t.second_game(self.gp, how='related', frames=3)
+        self.audit_second_game()
+        d = self.one()
+        self.assertTrue(d.delete, self.why())
+        self.assertEqual((d.frames, d.kept_frames), (8 + 3, 0))
+        bl.apply_deletions(decide_for(self.t, self.idx), self.t.qa, self.idx, confirm=lambda *a: True, out=io.StringIO())
+        self.assertEqual(os.listdir(os.path.join(sub, 'crops')), [])
+        self.assertEqual(os.listdir(os.path.join(self.gp, 'native')), [])
+
+    def test_a_second_game_the_list_only_proposes_still_holds_the_packet(self):
+        self.t.second_game(self.gp, how='related', frames=3)
+        self.audit_second_game(pending=True)
+        d = self.one()
+        self.assertFalse(d.delete)
+        self.assertIn('game_02 (3 frames) is not audited: not audited: proposed, pending a decision (no panel yet)', self.why())
+
+    def test_the_plan_refuses_a_frame_of_a_second_game_that_did_not_pass(self):
+        write(os.path.join(self.gp, 'original_before_final_independent', 'game_02', 'old.png'), b'o' * 9)
         decisions = decide_for(self.t, self.idx)
-        decisions[0].games[0].game.frames.append((os.path.join(sub, 'crops', 'c0.png'), 40))
+        decisions[0].games[0].game.frames.append((os.path.join(self.gp, 'original_before_final_independent', 'game_02', 'old.png'), 9))
         with self.assertRaises(SystemExit) as cm:
             bl.deletion_plan(decisions, self.t.qa)
         self.assertIn('not a frame file inside a game packet that passes', str(cm.exception))
 
-    def test_the_dry_run_names_the_second_game_and_counts_its_frames_as_staying(self):
-        self.t.second_game(self.gp)
-        decisions = decide_for(self.t, self.idx)
+    def test_the_dry_run_says_why_the_packet_is_held_and_which_folder_stays_in_a_packet_that_goes(self):
+        self.t.second_game(self.gp, how='related', frames=3)
         out = io.StringIO()
-        bl.report(decisions, bl.RepoView('.', no_git=True), self.t.qa, self.idx, out=out)
-        self.assertIn('stays 20261001_000000001_iOS/game_02: a second game recorded in the same packet', out.getvalue())
+        bl.report(decide_for(self.t, self.idx), bl.RepoView('.', no_git=True), self.t.qa, self.idx, out=out)
+        self.assertIn('stays 20261001_000000001_iOS: holds 2 games; game_02 (3 frames) is not audited', out.getvalue())
+        shutil.rmtree(os.path.join(self.gp, 'game_02'))
+        os.remove(os.path.join(self.gp, 'RELATED_GAME_PACKETS.json'))
+        write(os.path.join(self.gp, 'before_x', 'game_02', 'old.png'), b'o' * 9)
+        out = io.StringIO()
+        bl.report(decide_for(self.t, self.idx), bl.RepoView('.', no_git=True), self.t.qa, self.idx, out=out)
+        self.assertIn('stays 20261001_000000001_iOS/before_x/game_02: a folder that keeps an earlier state of a game: 1 frames', out.getvalue())
 
 
 class Acceptance(unittest.TestCase):
-    GAMES = {'kw-1': {'folder': 'BATCH_A/g1', 'games_meta': META, 'positions': 5}}
+    GAMES = {'kw-1': {'folder': 'BATCH_A/g1', 'games_meta': META, 'positions': 5, 'positions_sha256': DIGEST}}
 
     def idx(self, confirmed, games=None):
         return bl.RepoIndex({}, {'confirmed': confirmed, 'games': games or self.GAMES}, True)
@@ -363,9 +450,33 @@ class Acceptance(unittest.TestCase):
                   {'date': '2026-10-14', 'games_sha256': h}):
             self.assertIsNone(bl.acceptance(self.idx(c))[0], c)
 
+    def test_placeholders_and_not_yet_wording_anywhere_in_the_name_are_refused_but_real_names_pass(self):
+        # the laptop's second review: only the start of "by" was checked, so "awaiting Dustin" and the template's "<who>" passed
+        h = bl.games_hash(self.GAMES)
+        for by in ('<who>', '<a name>', 'awaiting Dustin', 'laptop (unconfirmed)', 'Dustin - NOT accepted yet', 'waiting for the laptop', 'TBD', 'n/a', 'name', 'who'):
+            self.assertIsNone(bl.acceptance(self.idx({'by': by, 'date': '2026-10-14', 'games_sha256': h}))[0], by)
+        for by in ('Dustin', 'laptop', 'Dustin via the laptop', 'Noah', 'Una', 'Dustin (laptop session)', 'Nora Holden'):
+            self.assertIsNotNone(bl.acceptance(self.idx({'by': by, 'date': '2026-10-14', 'games_sha256': h}))[0], by)
+
+    def test_a_date_before_the_list_existed_or_in_the_future_is_not_the_day_it_was_accepted(self):
+        h = bl.games_hash(self.GAMES)
+        for date in ('1970-01-01', '2026-10-13', '2099-12-31'):
+            acc, why = bl.acceptance(self.idx({'by': 'Dustin', 'date': date, 'games_sha256': h}))
+            self.assertIsNone(acc, date)
+            self.assertIn('cannot be the day', why)
+        today = datetime.datetime.now(datetime.timezone.utc).date().isoformat()
+        self.assertIsNotNone(bl.acceptance(self.idx({'by': 'Dustin', 'date': today, 'games_sha256': h}))[0])
+
+    def test_the_acceptance_covers_the_digest_of_the_reviewed_positions_too(self):
+        c = accept(self.GAMES)
+        regenerated = {'kw-1': dict(self.GAMES['kw-1'], positions_sha256='cd' * 32)}
+        acc, why = bl.acceptance(self.idx(c, games=regenerated))
+        self.assertIsNone(acc)
+        self.assertIn('needs a new acceptance', why)
+
     def test_an_acceptance_stops_covering_the_games_the_moment_the_list_changes(self):
         c = accept(self.GAMES)
-        more = dict(self.GAMES, **{'kw-2': {'folder': 'BATCH_A/g2', 'games_meta': META, 'positions': 3}})
+        more = dict(self.GAMES, **{'kw-2': {'folder': 'BATCH_A/g2', 'games_meta': META, 'positions': 3, 'positions_sha256': DIGEST}})
         acc, why = bl.acceptance(self.idx(c, games=more))
         self.assertIsNone(acc)
         self.assertIn('needs a new acceptance', why)
@@ -379,7 +490,7 @@ class Acceptance(unittest.TestCase):
 
     def test_pending_entries_are_not_covered_so_moving_one_into_games_needs_a_new_acceptance(self):
         c = accept(self.GAMES)
-        moved = dict(self.GAMES, **{'kw-9': {'folder': 'BATCH_B/g9', 'games_meta': META, 'positions': 2}})
+        moved = dict(self.GAMES, **{'kw-9': {'folder': 'BATCH_B/g9', 'games_meta': META, 'positions': 2, 'positions_sha256': DIGEST}})
         self.assertIsNone(bl.acceptance(self.idx(c, games=moved))[0])
 
     def test_apply_refuses_without_a_valid_acceptance_and_deletes_nothing(self):
@@ -417,7 +528,8 @@ class IndexFromTheRepo(unittest.TestCase):
         self.repo()
         idx = bl.build_index(bl.RepoView(self.repo_dir, no_git=True))
         self.assertEqual(sorted(idx.folders), ['BATCH_A/20261001_000000001_iOS'])
-        self.assertEqual(idx.folders['BATCH_A/20261001_000000001_iOS'], ('kw-261001_000000001', META, 1))
+        self.assertEqual(idx.folders['BATCH_A/20261001_000000001_iOS'][:3], ('kw-261001_000000001', META, 1))
+        self.assertEqual(idx.folders['BATCH_A/20261001_000000001_iOS'][3], bl.positions_digest([{'game': 'kw-261001_000000001', 'id': 'p1'}]))
         self.assertTrue(idx.audit_path_found)
 
     def test_only_pause_games_result_folders_are_read(self):
@@ -632,13 +744,13 @@ class TheLog(unittest.TestCase):
     def test_the_log_is_written_line_by_line_while_the_deletion_runs(self):
         real, seen = os.remove, []
 
-        def spy(p):
+        def spy(p, **kw):
             if len(seen) == 3:      # at the fourth removal: what is in the file already?
                 with open(glob_log(self.t.qa), encoding='utf-8') as f:
                     seen.append(f.read().count('"removed"'))
             else:
                 seen.append(None)
-            real(p)
+            real(p, **kw)
 
         def glob_log(d):
             return os.path.join(d, [f for f in os.listdir(d) if f.startswith('CLEANUP_LOG_')][0])
@@ -654,11 +766,11 @@ class TheLog(unittest.TestCase):
     def test_a_sigterm_during_the_deletion_closes_the_log_with_an_interrupted_line_and_exits_130(self):
         real, state = os.remove, {'n': 0}
 
-        def killer(p):
+        def killer(p, **kw):
             state['n'] += 1
             if state['n'] == 3:
                 os.kill(os.getpid(), signal.SIGTERM)
-            real(p)
+            real(p, **kw)
         before = signal.getsignal(signal.SIGTERM)
         with mock.patch.object(bl.os, 'remove', killer):
             with self.assertRaises(SystemExit) as cm:
@@ -667,19 +779,48 @@ class TheLog(unittest.TestCase):
         self.assertIs(signal.getsignal(signal.SIGTERM), before, 'the old handler is back')
         log = os.path.join(self.t.qa, [f for f in os.listdir(self.t.qa) if f.startswith('CLEANUP_LOG_')][0])
         lines = self.lines(log)
-        self.assertEqual(sum(1 for l in lines if 'removed' in l), 2)
+        # the signal arrives while the third file is being removed: that file is finished, counted and logged, then the run stops between files
+        self.assertEqual(sum(1 for l in lines if 'removed' in l), 3)
         self.assertEqual(lines[-1]['interrupted'], 'SIGTERM')
-        self.assertEqual(lines[-1]['deleted'], 2)
+        self.assertEqual(lines[-1]['deleted'], 3)
         self.assertNotIn('done', lines[-1])
+        self.assertEqual(self.gone_frames(), 3)
+
+    def gone_frames(self):
+        return 12 - sum(1 for r, _, fs in os.walk(self.t.qa) for f in fs if f.lower().endswith(bl.FRAME_EXT))
+
+    def test_the_last_file_removed_before_a_signal_is_always_in_the_log_and_the_count(self):
+        # the laptop's residual: in about 1 of 2 interruptions the handler raised right after os.remove returned, before the count and the log line
+        for sig in (signal.SIGTERM, signal.SIGHUP):
+            for n in (1, 2, 5, 11):
+                t = Tree(self)
+                t.game('BATCH_A', '20261001_000000001_iOS')
+                t.game('BATCH_A', '20261001_000000002_iOS')
+                idx = index(['BATCH_A/20261001_000000001_iOS', 'BATCH_A/20261001_000000002_iOS'])
+                real, state = os.remove, {'n': 0}
+
+                def killer(p, **kw):
+                    real(p, **kw)
+                    state['n'] += 1
+                    if state['n'] == n:
+                        os.kill(os.getpid(), sig)          # right after the file is gone
+                with mock.patch.object(bl.os, 'remove', killer):
+                    with self.assertRaises(SystemExit) as cm:
+                        bl.apply_deletions(decide_for(t, idx), t.qa, idx, confirm=lambda *a: True, out=io.StringIO())
+                self.assertEqual(cm.exception.code, 130)
+                log = os.path.join(t.qa, [f for f in os.listdir(t.qa) if f.startswith('CLEANUP_LOG_')][0])
+                lines = self.lines(log)
+                gone = 12 - sum(1 for r, _, fs in os.walk(t.qa) for f in fs if f.lower().endswith(bl.FRAME_EXT))
+                self.assertEqual((gone, sum(1 for l in lines if 'removed' in l), lines[-1]['deleted']), (n, n, n), (sig.name, n))
 
     def test_ctrl_c_is_logged_the_same_way(self):
         real, state = os.remove, {'n': 0}
 
-        def ctrl_c(p):
+        def ctrl_c(p, **kw):
             state['n'] += 1
             if state['n'] == 2:
                 raise KeyboardInterrupt
-            real(p)
+            real(p, **kw)
         with mock.patch.object(bl.os, 'remove', ctrl_c):
             with self.assertRaises(SystemExit) as cm:
                 self.run_apply()
@@ -690,10 +831,10 @@ class TheLog(unittest.TestCase):
     def test_a_frame_that_cannot_be_deleted_is_counted_logged_and_makes_the_run_incomplete(self):
         real = os.remove
 
-        def locked(p):
+        def locked(p, **kw):
             if p.endswith('t0001.jpg'):
                 raise PermissionError(13, 'locked by another process')
-            real(p)
+            real(p, **kw)
         with mock.patch.object(bl.os, 'remove', locked):
             (deleted, failed, _, log), out = self.run_apply()
         self.assertEqual(failed, 2)
@@ -734,11 +875,11 @@ class RacesBetweenThePlanAndTheDeletion(unittest.TestCase):
         real = os.remove
         state = {'n': 0}
 
-        def rewrite(p):
+        def rewrite(p, **kw):
             state['n'] += 1
             if state['n'] == 2:
                 write(os.path.join(self.g2, 'notes.txt'), 'NOTES')          # same length as 'notes'
-            real(p)
+            real(p, **kw)
         with mock.patch.object(bl.os, 'remove', rewrite):
             with self.assertRaises(SystemExit) as cm:
                 self.apply(meanwhile)
@@ -767,6 +908,84 @@ class RacesBetweenThePlanAndTheDeletion(unittest.TestCase):
         self.assertGreaterEqual(failed, 3)
         self.assertIn('INCOMPLETE', out)
 
+    def outside_with_the_same_names(self):
+        outside = os.path.join(self.t.root, 'elsewhere')
+        for name in ('t0000.jpg', 't0001.jpg', 't0002.jpg'):
+            write(os.path.join(outside, name), b'precious')
+        return outside
+
+    def swap_after_the_first_frame_of_turn_evidence(self, outside):
+        """os.remove wrapper: once one frame of g1's turn_evidence is gone, the folder is replaced by a link to `outside`"""
+        real, state = os.remove, {'done': False}
+
+        def remove(p, **kw):
+            real(p, **kw)
+            if not state['done'] and os.path.basename(p).startswith('t000'):
+                state['done'] = True
+                shutil.rmtree(os.path.join(self.g1, 'turn_evidence'))
+                os.symlink(outside, os.path.join(self.g1, 'turn_evidence'))
+        return remove
+
+    @unittest.skipIf(os.name == 'nt', 'symlinks need privileges on Windows')
+    def test_a_folder_swapped_for_a_link_in_the_middle_of_the_run_does_not_send_the_next_deletions_outside(self):
+        # the laptop's scope-n4 (b): realpath was cached per folder, so after one frame was gone the swapped folder was trusted
+        for dir_fd_ok in (True, False):
+            with self.subTest(dir_fd=dir_fd_ok):
+                self.tearDownTree()
+                outside = self.outside_with_the_same_names()
+                with mock.patch.object(bl, 'DIR_FD_OK', dir_fd_ok), mock.patch.object(bl.os, 'remove', self.swap_after_the_first_frame_of_turn_evidence(outside)):
+                    (deleted, failed, _, log), out = self.apply(lambda *a: True)
+                self.assertEqual(sorted(os.listdir(outside)), ['t0000.jpg', 't0001.jpg', 't0002.jpg'], 'nothing outside the packet was deleted')
+                self.assertGreaterEqual(failed, 1)
+
+    def tearDownTree(self):
+        shutil.rmtree(self.t.root, True)
+        self.setUp()
+
+    @unittest.skipIf(os.name == 'nt', 'symlinks need privileges on Windows')
+    def test_a_packet_replaced_by_a_link_to_a_look_alike_packet_is_skipped_and_the_look_alikes_frames_stay(self):
+        # scope-n4 (c): the packet was re-resolved through the link and the look-alike's frames were deleted (its text files were byte-identical, so the integrity check passed)
+        for dir_fd_ok in (True, False):
+            with self.subTest(dir_fd=dir_fd_ok):
+                self.tearDownTree()
+                look = os.path.join(self.t.root, 'lookalike')
+                shutil.copytree(self.g2, look)
+
+                def swap(*a):
+                    shutil.move(self.g2, self.g2 + '_real')
+                    os.symlink(look, self.g2)
+                    return True
+                with mock.patch.object(bl, 'DIR_FD_OK', dir_fd_ok):
+                    res, out = self.apply(swap)
+                self.assertEqual(res.skipped, 1)
+                self.assertIn('SKIPPED BATCH_A/20261001_000000002_iOS', out)
+                self.assertIn('INCOMPLETE', out)
+                self.assertEqual(sorted(os.listdir(os.path.join(look, 'turn_evidence'))), ['t0000.jpg', 't0001.jpg', 't0002.jpg'], 'the look-alike keeps its frames')
+                self.assertEqual(sorted(os.listdir(os.path.join(self.g2 + '_real', 'turn_evidence'))), ['t0000.jpg', 't0001.jpg', 't0002.jpg'], 'the real packet was left alone too')
+                self.assertFalse(os.path.exists(os.path.join(self.g1, 'turn_evidence', 't0000.jpg')), 'the other packet was cleaned')
+
+    def test_this_system_has_the_directory_handle_calls_the_tool_relies_on(self):
+        # (it was found from a run where os.remove was wrongly believed unsupported and every test ran the slower fallback)
+        if os.name != 'nt':
+            self.assertTrue(bl.DIR_FD_OK)
+
+    def test_the_fallback_without_directory_handles_deletes_the_same_frames(self):
+        # native Windows Python has no dir_fd: every file re-resolves its folder, uncached
+        before = self.t.files()
+        with mock.patch.object(bl, 'DIR_FD_OK', False):
+            (deleted, failed, _, _), out = self.apply(lambda *a: True)
+        gone = set(before) - set(self.t.files())
+        self.assertEqual((deleted, failed), (12, 0))
+        self.assertTrue(all(p.lower().endswith(bl.FRAME_EXT) for p in gone if 'CLEANUP_LOG' not in p))
+
+    def test_directory_handles_are_closed_after_each_packet(self):
+        def open_fds():
+            return len(os.listdir('/proc/self/fd')) if os.path.isdir('/proc/self/fd') else None
+        n = open_fds()
+        self.apply(lambda *a: True)
+        if n is not None:
+            self.assertEqual(open_fds(), n)
+
 
 class MovingRecordingQA(unittest.TestCase):
     """--move-to moves ONLY Recording_QA: the videos and the rest of Battle Logs stay where they are (in OneDrive)"""
@@ -775,6 +994,7 @@ class MovingRecordingQA(unittest.TestCase):
         self.t = Tree(self)
         self.t.game('BATCH_A', '20261001_000000001_iOS')
         self.t.outside()
+        no_default(self)
         self.base = os.path.join(self.t.root, 'BattleLogs')              # does not exist yet: its parent, the temp root, does
         self.target = os.path.join(self.base, 'Recording_QA')
 
@@ -789,6 +1009,8 @@ class MovingRecordingQA(unittest.TestCase):
         self.assertIn('Codex should now use as its Recording_QA', out)
         self.assertFalse(os.path.exists(self.t.qa))
         moved = {os.path.relpath(os.path.join(r, f), self.target): os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(self.target) for f in fs}
+        self.assertIn(bl.LOCATION_FILE, moved)
+        moved.pop(bl.LOCATION_FILE)                       # the one file the move adds: where the videos stayed
         want = {os.path.relpath(p, os.path.join('Battle Logs', 'Recording_QA')): s for p, s in before.items() if p.startswith(os.path.join('Battle Logs', 'Recording_QA') + os.sep)}
         self.assertEqual(moved, want)
 
@@ -827,7 +1049,7 @@ class MovingRecordingQA(unittest.TestCase):
         self.assertTrue(os.path.isdir(self.t.qa))
 
     def test_a_target_inside_recording_qa_is_refused_whatever_the_case(self):
-        for target in (os.path.join(self.t.qa, 'inner'), os.path.join(self.t.qa.upper(), 'inner'), os.path.join(self.t.qa.replace('Recording_QA', 'recording_qa'), 'inner', 'Recording_QA')):
+        for target in (os.path.join(self.t.qa, 'inner', 'Recording_QA'), os.path.join(self.t.qa.upper(), 'inner', 'Recording_QA'), os.path.join(self.t.qa.replace('Recording_QA', 'recording_qa'), 'inner', 'Recording_QA')):
             with self.assertRaises(SystemExit) as cm:
                 self.move(target=target, confirm=lambda t: True)
             self.assertIn('inside', str(cm.exception))
@@ -839,10 +1061,56 @@ class MovingRecordingQA(unittest.TestCase):
         self.assertIn('not an absolute path', str(cm.exception))
 
     def test_a_target_directly_in_a_drive_root_is_refused(self):
-        for target in ('/mnt/c/Usersdacz8BattleLogsRecording_QA', '/Recording_QA'):
+        for target in ('/mnt/c/Recording_QA', '/Recording_QA'):
             with self.assertRaises(SystemExit) as cm:
                 self.move(target=target, confirm=lambda t: True)
             self.assertIn('root of a drive', str(cm.exception))
+
+    def test_a_target_that_does_not_end_in_recording_qa_is_refused_which_is_what_a_lost_separator_makes_of_it(self):
+        # the laptop's platform-n3: C:/Users/dacz8/BattleLogs\\Recording_QA reaches the tool as C:/Users/dacz8/BattleLogsRecording_QA, and C:/Users/dacz8\\BattleLogs\\Recording_QA as C:/Users/dacz8BattleLogsRecording_QA
+        for target in (os.path.join(self.t.root, 'BattleLogsRecording_QA'), os.path.join(self.t.root, 'Moved'), os.path.join(self.t.root, 'dacz8BattleLogsRecording_QA'), '/mnt/c/Usersdacz8BattleLogsRecording_QA'):
+            with self.assertRaises(SystemExit) as cm:
+                self.move(target=target, confirm=lambda t: True)
+            self.assertIn('does not end in Recording_QA', str(cm.exception), target)
+        self.assertTrue(os.path.isdir(self.t.qa))
+        self.assertFalse(os.path.exists(os.path.join(self.t.root, 'BattleLogsRecording_QA')))
+
+    def test_the_move_records_where_the_videos_stayed_in_the_moved_folder_and_the_hint_names_it(self):
+        _, out = self.move(confirm=lambda t: True)
+        rec = json.loads(read(os.path.join(self.target, bl.LOCATION_FILE)))
+        self.assertEqual(os.path.abspath(bl.to_local(rec['battle_logs'])), os.path.abspath(self.t.logs))
+        self.assertIn(bl.LOCATION_FILE, out)
+        self.assertIn('--videos', out)
+
+    def test_the_hint_quotes_a_path_with_a_space(self):
+        self.assertEqual(bl.quoted('C:/Users/dacz8/Battle Logs'), '"C:/Users/dacz8/Battle Logs"')
+        self.assertEqual(bl.quoted('C:/Users/dacz8/BattleLogs'), 'C:/Users/dacz8/BattleLogs')
+        _, out = self.move(confirm=lambda t: True)
+        self.assertIn('--videos "' + bl.to_forward(self.t.logs) + '"', out)       # (the made-up Battle Logs folder has a space)
+
+    def test_the_dry_run_after_the_move_still_finds_the_videos_through_the_recorded_location(self):
+        # the laptop's platform-n1: after the documented --move-to every packet was held back as "source video not found"
+        self.t.game('BATCH_B', '20261001_000000002_iOS')
+        idx = index(['BATCH_A/20261001_000000001_iOS', 'BATCH_B/20261001_000000002_iOS'])
+        self.assertEqual([d.verdict for d in bl.decide(bl.scan_qa(self.t.qa, self.t.videos()), idx)], ['DELETE', 'DELETE'])
+        self.move(confirm=lambda t: True)
+        vdirs = bl.video_dirs(self.target)
+        self.assertEqual(vdirs[0][1], bl.LOCATION_FILE)
+        decisions = bl.decide(bl.scan_qa(self.target, bl.video_index_all(vdirs)), idx)
+        self.assertEqual([d.verdict for d in decisions], ['DELETE', 'DELETE'], [g.reasons for d in decisions for g in d.games])
+        # and without the recorded location the reason names where it looked and what to give
+        os.remove(os.path.join(self.target, bl.LOCATION_FILE))
+        again = bl.decide(bl.scan_qa(self.target, bl.video_index_all(bl.video_dirs(self.target)), 'somewhere'), idx)
+        self.assertIn('not found in Battle Logs (looked in somewhere; --videos PATH names the folder)', ' '.join(again[0].games[0].reasons))
+        # --videos names the folder
+        viaflag = bl.decide(bl.scan_qa(self.target, bl.video_index_all(bl.video_dirs(self.target, self.t.logs))), idx)
+        self.assertEqual([d.verdict for d in viaflag], ['DELETE', 'DELETE'])
+
+    def test_a_dry_run_move_with_the_working_tree_check_says_the_import_is_not_checked_against_git(self):
+        new, out = self.move(dry=True, import_check=lambda: [], import_label='present in the working tree of the checkout (NOT checked against git: a real move would be refused)')
+        self.assertIsNone(new)
+        self.assertIn('import check: every text output of Recording_QA is present in the working tree', out)
+        self.assertIn('NOT checked against git', out)
 
     def test_a_target_two_levels_below_a_missing_folder_is_refused(self):
         with self.assertRaises(SystemExit) as cm:
@@ -894,7 +1162,7 @@ class MovingRecordingQA(unittest.TestCase):
 
     def test_a_target_still_inside_onedrive_is_warned_about(self):
         os.makedirs(os.path.join(self.t.root, 'OneDrive'))
-        _, out = self.move(target=os.path.join(self.t.root, 'OneDrive', 'QA'), dry=True)
+        _, out = self.move(target=os.path.join(self.t.root, 'OneDrive', 'Recording_QA'), dry=True)
         self.assertIn('still inside a OneDrive folder', out)
 
     def test_the_move_is_refused_while_the_text_outputs_are_not_all_committed(self):
@@ -973,7 +1241,7 @@ class GitWorld:
             key = 'kw-' + f.split('/')[1][2:].replace('_iOS', '')
             meta[key] = {'folder': f}
             pos.append({'game': key})
-            games[key] = {'folder': f, 'games_meta': META, 'positions': 1}
+            games[key] = {'folder': f, 'games_meta': META, 'positions': 1, 'positions_sha256': bl.positions_digest([{'game': key}])}
         write(os.path.join(base, 'games_meta.json'), json.dumps(meta))
         write(os.path.join(base, 'positions_all.json'), json.dumps(pos))
         audit = {'games': games, 'pending': self.pending, 'confirmed': accept(games) if self.accepted is True else self.accepted}
@@ -993,12 +1261,18 @@ class CommandLine(unittest.TestCase):
         self.t = Tree(self)
         self.t.game('BATCH_A', '20261001_000000001_iOS')
         self.t.game('BATCH_B', '20261001_000000002_iOS')
+        no_default(self)
 
-    def run_main(self, world, *argv):
+    def run_main(self, world, *argv, offline=True):
         out = io.StringIO()
         with contextlib.redirect_stdout(out):
-            code = bl.main(['--qa-root', self.t.qa, '--repo', world.repo, *argv])
+            code = bl.main(['--qa-root', self.t.qa, '--repo', world.repo, *(['--allow-offline'] if offline else []), *argv])
         return code, out.getvalue()
+
+    def main_raises(self, world, *argv, offline=True):
+        with self.assertRaises(SystemExit) as cm, contextlib.redirect_stdout(io.StringIO()):
+            bl.main(['--qa-root', self.t.qa, '--repo', world.repo, *(['--allow-offline'] if offline else []), *argv])
+        return str(cm.exception)
 
     def test_the_default_is_a_dry_run_that_changes_nothing_and_says_why(self):
         w = GitWorld(self, self.FOLDERS)
@@ -1024,27 +1298,22 @@ class CommandLine(unittest.TestCase):
         self.assertTrue(gone and all('BATCH_A' in p and p.lower().endswith(bl.FRAME_EXT) for p in gone))
         self.assertIn('same SHA-256', out)
         self.assertTrue([p for p in after if os.path.basename(p).startswith('CLEANUP_LOG_')])
-        self.assertIn('WARNING: origin could not be reached', out)
+        self.assertIn('WARNING: origin could not be asked', out)
 
     def test_apply_refuses_no_git_even_with_yes_and_a_confirmation_only_in_the_working_tree(self):
         w = GitWorld(self, self.FOLDERS, accepted=None)                     # committed: not accepted
         w.accepted = True
         w.write()                                                           # accepted in the working tree only, never committed
         before = self.t.contents()
-        with self.assertRaises(SystemExit) as cm, contextlib.redirect_stdout(io.StringIO()):
-            bl.main(['--qa-root', self.t.qa, '--repo', w.repo, '--no-git', '--apply', '--yes'])
-        self.assertIn('committed state of origin/main', str(cm.exception))
+        self.assertIn('committed state of origin/main', self.main_raises(w, '--no-git', '--apply', '--yes'))
         self.assertEqual(self.t.contents(), before)
-        with self.assertRaises(SystemExit), contextlib.redirect_stdout(io.StringIO()):
-            bl.main(['--qa-root', self.t.qa, '--repo', w.repo, '--apply', '--yes'])
+        self.main_raises(w, '--apply', '--yes')
         self.assertEqual(self.t.contents(), before)
 
     def test_apply_refuses_another_ref_unless_overridden_and_a_dry_run_may_read_any_ref(self):
         w = GitWorld(self, self.FOLDERS)
         before = self.t.contents()
-        with self.assertRaises(SystemExit) as cm, contextlib.redirect_stdout(io.StringIO()):
-            bl.main(['--qa-root', self.t.qa, '--repo', w.repo, '--ref', 'main', '--apply', '--yes'])
-        self.assertIn('only the committed state of origin/main', str(cm.exception).replace('reads ', 'only the ') if 'reads' in str(cm.exception) else str(cm.exception))
+        self.assertIn('reads only the committed state of origin/main, not main', self.main_raises(w, '--ref', 'main', '--apply', '--yes'))
         self.assertEqual(self.t.contents(), before)
         code, out = self.run_main(w, '--ref', 'main', '--apply', '--yes', '--dry-run')
         self.assertEqual((code, self.t.contents()), (0, before))
@@ -1056,22 +1325,18 @@ class CommandLine(unittest.TestCase):
         for value in ('no', 'pending', 'not yet - waiting for Dustin'):
             w = GitWorld(self, self.FOLDERS, accepted=value)
             before = self.t.contents()
-            with self.assertRaises(SystemExit) as cm, contextlib.redirect_stdout(io.StringIO()):
-                bl.main(['--qa-root', self.t.qa, '--repo', w.repo, '--apply', '--yes'])
-            self.assertIn('not an acceptance', str(cm.exception))
+            self.assertIn('not an acceptance', self.main_raises(w, '--apply', '--yes'))
             self.assertEqual(self.t.contents(), before)
 
     def test_apply_refuses_when_the_games_changed_after_the_acceptance(self):
         w = GitWorld(self, self.FOLDERS)
         w.folders = self.FOLDERS + ['BATCH_B/20261001_000000002_iOS']
-        accepted_then = accept({'kw-261001_000000001': {'folder': self.FOLDERS[0], 'games_meta': META, 'positions': 1}})
+        accepted_then = accept({'kw-261001_000000001': {'folder': self.FOLDERS[0], 'games_meta': META, 'positions': 1, 'positions_sha256': DIGEST}})
         w.accepted = accepted_then
         w.write()
         w.commit('a game added to the list without a new acceptance')
         before = self.t.contents()
-        with self.assertRaises(SystemExit) as cm, contextlib.redirect_stdout(io.StringIO()):
-            bl.main(['--qa-root', self.t.qa, '--repo', w.repo, '--apply', '--yes'])
-        self.assertIn('needs a new acceptance', str(cm.exception))
+        self.assertIn('needs a new acceptance', self.main_raises(w, '--apply', '--yes'))
         self.assertEqual(self.t.contents(), before)
 
     def test_apply_refuses_when_origin_has_a_newer_main_than_the_local_origin_main(self):
@@ -1090,23 +1355,21 @@ class CommandLine(unittest.TestCase):
         w.g('commit', '-q', '-m', 'revoke', cwd=other)
         w.g('push', '-q', 'origin', 'main', cwd=other)
         before = self.t.contents()
-        with self.assertRaises(SystemExit) as cm, contextlib.redirect_stdout(io.StringIO()):
-            bl.main(['--qa-root', self.t.qa, '--repo', w.repo, '--apply', '--yes'])
-        self.assertIn('git fetch origin', str(cm.exception))
+        self.assertIn('git fetch origin', self.main_raises(w, '--apply', '--yes'))
         self.assertEqual(self.t.contents(), before)
         w.g('fetch', '-q', 'origin')       # after fetching, the audit list is as committed and the run goes ahead
         code, out = self.run_main(w, '--apply', '--yes')
         self.assertEqual(code, 0)
-        self.assertNotIn('could not be reached', out)
+        self.assertNotIn('could not be asked', out)
 
     def test_an_unreadable_apply_exits_non_zero_when_a_frame_could_not_be_deleted(self):
         w = GitWorld(self, self.FOLDERS)
         real = os.remove
 
-        def locked(p):
+        def locked(p, **kw):
             if p.endswith('t0001.jpg'):
                 raise PermissionError(13, 'locked')
-            real(p)
+            real(p, **kw)
         with mock.patch.object(bl.os, 'remove', locked):
             code, out = self.run_main(w, '--apply', '--yes')
         self.assertEqual(code, 1)
@@ -1126,7 +1389,9 @@ class CommandLine(unittest.TestCase):
     def test_audit_hash_prints_what_an_acceptance_must_carry(self):
         w = GitWorld(self, self.FOLDERS)
         code, out = self.run_main(w, '--audit-hash')
-        self.assertEqual(out.strip(), bl.games_hash({'kw-261001_000000001': {'folder': self.FOLDERS[0], 'games_meta': META, 'positions': 1}}))
+        want = bl.games_hash({'kw-261001_000000001': {'folder': self.FOLDERS[0], 'games_meta': META, 'positions': 1, 'positions_sha256': bl.positions_digest([{'game': 'kw-261001_000000001'}])}})
+        self.assertEqual(out.split()[0], want)
+        self.assertRegex(out, r'of the 1 games listed in .* at origin/main \([0-9a-f]{8}, committed ')
 
     def test_apply_and_move_cannot_be_combined(self):
         w = GitWorld(self, self.FOLDERS)
@@ -1137,7 +1402,7 @@ class CommandLine(unittest.TestCase):
         w = GitWorld(self, self.FOLDERS)
         before = self.t.contents()
         with mock.patch.object(sys, 'stdin', io.StringIO('')), self.assertRaises(SystemExit) as cm, contextlib.redirect_stdout(io.StringIO()):
-            bl.main(['--qa-root', self.t.qa, '--repo', w.repo, '--apply'])
+            bl.main(['--qa-root', self.t.qa, '--repo', w.repo, '--allow-offline', '--apply'])
         self.assertIn('no terminal', str(cm.exception))
         self.assertEqual(self.t.contents(), before)
 
@@ -1155,9 +1420,7 @@ class CommandLine(unittest.TestCase):
     def test_move_to_refuses_without_a_current_import_and_moves_nothing(self):
         w = GitWorld(self, self.FOLDERS)
         before = self.t.contents()
-        with self.assertRaises(SystemExit) as cm, contextlib.redirect_stdout(io.StringIO()):
-            bl.main(['--qa-root', self.t.qa, '--repo', w.repo, '--move-to', os.path.join(self.t.root, 'Moved', 'Recording_QA'), '--yes'])
-        self.assertIn('not all committed', str(cm.exception))
+        self.assertIn('not all committed', self.main_raises(w, '--move-to', os.path.join(self.t.root, 'Moved', 'Recording_QA'), '--yes'))
         self.assertEqual(self.t.contents(), before)
 
     def test_move_to_goes_ahead_once_the_import_is_committed(self):
@@ -1171,6 +1434,186 @@ class CommandLine(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertIn('import check: every text output', out)
         self.assertTrue(os.path.isdir(os.path.join(target, 'BATCH_A')))
+
+    # ---- the laptop's second review: freshness, the offline flag, the move's import check, the videos after a move
+    def with_remote(self, w):
+        """give the throwaway repo a bare origin that has its main; -> (bare path, a second clone to push from)"""
+        bare = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, bare, True)
+        subprocess.run(['git', 'init', '-q', '--bare', '-b', 'main', bare], check=True)
+        w.g('remote', 'add', 'origin', bare)
+        w.g('push', '-q', 'origin', 'main')
+        w.g('fetch', '-q', 'origin')
+        other = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, other, True)
+        subprocess.run(['git', 'clone', '-q', bare, other], check=True, capture_output=True)
+        return bare, other
+
+    def push_revocation(self, w, other):
+        write(os.path.join(other, 'revocation.txt'), 'the audit list was revoked')
+        w.g('add', '-A', cwd=other)
+        w.g('commit', '-q', '-m', 'revoke', cwd=other)
+        w.g('push', '-q', 'origin', 'main', cwd=other)
+
+    def test_apply_refuses_when_origin_cannot_be_asked_unless_it_is_told_to_go_on_offline(self):
+        # gating-n1: a failing `git ls-remote` was only a warning, so a withdrawn acceptance still deleted
+        w = GitWorld(self, self.FOLDERS)
+        before = self.t.contents()
+        msg = self.main_raises(w, '--apply', '--yes', offline=False)
+        self.assertIn('origin cannot be asked', msg)
+        self.assertIn('--allow-offline', msg)
+        self.assertEqual(self.t.contents(), before)
+        bare, other = self.with_remote(w)
+        os.rename(bare, bare + '_gone')
+        self.addCleanup(lambda: os.path.exists(bare + '_gone') and shutil.rmtree(bare + '_gone', True))
+        self.assertIn('origin cannot be asked', self.main_raises(w, '--apply', '--yes', offline=False))
+        self.assertEqual(self.t.contents(), before)
+        code, out = self.run_main(w, '--apply', '--yes')                                  # told to go on: it warns and deletes
+        self.assertEqual(code, 0)
+        self.assertIn('WARNING: origin could not be asked', out)
+        self.assertNotEqual(self.t.contents(), before)
+
+    def test_the_question_to_origin_never_waits_for_a_password(self):
+        w = GitWorld(self, self.FOLDERS)
+        seen = {}
+        real = subprocess.run
+
+        def spy(cmd, *a, **kw):
+            if 'ls-remote' in cmd:
+                seen['env'], seen['cmd'] = kw.get('env'), cmd
+            return real(cmd, *a, **kw)
+        with mock.patch.object(bl.subprocess, 'run', spy):
+            bl.RepoView(w.repo).remote_main()
+        self.assertEqual(seen['env']['GIT_TERMINAL_PROMPT'], '0')
+        self.assertEqual(seen['cmd'][-2:], ['origin', 'refs/heads/main'])
+
+    def test_a_revocation_pushed_while_the_delete_question_is_open_is_seen_after_the_answer(self):
+        w = GitWorld(self, self.FOLDERS)
+        bare, other = self.with_remote(w)
+        before = self.t.contents()
+
+        def answer(prompt):
+            self.push_revocation(w, other)                 # pushed while the question is open
+            return 'DELETE'
+        fake_stdin = mock.Mock()
+        fake_stdin.isatty.return_value = True
+        with mock.patch.object(sys, 'stdin', fake_stdin), mock.patch('builtins.input', answer):
+            msg = self.main_raises(w, '--apply')
+        self.assertIn('git fetch origin', msg)
+        self.assertEqual(self.t.contents(), before, 'nothing was deleted')
+
+    def test_origin_is_asked_for_refs_heads_main_only_so_a_branch_that_ends_in_main_cannot_stand_in_for_it(self):
+        # gating-n2: `git ls-remote origin main` matched backup/main too and took the first line
+        w = GitWorld(self, self.FOLDERS)
+        bare, other = self.with_remote(w)
+        stale = w.g('rev-parse', 'HEAD').strip()
+        w.g('push', '-q', 'origin', 'HEAD:refs/heads/backup/main')                 # a snapshot branch at the accepted commit
+        self.push_revocation(w, other)                                              # main moves on with a revocation; this clone has not fetched
+        self.assertEqual(bl.RepoView(w.repo).remote_main()[0], w.g('ls-remote', 'origin', 'refs/heads/main').split()[0])
+        self.assertNotEqual(bl.RepoView(w.repo).remote_main()[0], stale)
+        before = self.t.contents()
+        self.assertIn('git fetch origin', self.main_raises(w, '--apply', '--yes'))
+        self.assertEqual(self.t.contents(), before)
+
+    def test_a_local_branch_named_origin_main_does_not_stand_in_for_the_remote_tracking_ref(self):
+        w = GitWorld(self, self.FOLDERS)
+        first = w.g('rev-parse', 'HEAD').strip()
+        write(os.path.join(w.repo, 'later.txt'), 'later')
+        w.commit('a later commit (origin/main moves here)')
+        w.g('branch', 'origin/main', first)                                         # a local branch with the remote-tracking ref's short name
+        self.assertEqual(bl.RepoView(w.repo).commit_full, w.g('rev-parse', 'refs/remotes/origin/main').strip())
+        self.assertNotEqual(bl.RepoView(w.repo).commit_full, first)
+
+    def test_audit_hash_refuses_when_the_list_is_not_committed_at_the_ref_and_needs_no_recording_qa(self):
+        # gating-n5: it printed the hash of an empty list (sha256 of "{}") and needed Recording_QA
+        w = GitWorld(self, self.FOLDERS)
+        w.g('rm', '-q', AUDIT)
+        w.commit('the audit list removed')
+        with self.assertRaises(SystemExit) as cm, contextlib.redirect_stdout(io.StringIO()):
+            bl.main(['--qa-root', os.path.join(self.t.root, 'nowhere'), '--repo', w.repo, '--audit-hash'])
+        self.assertIn('is not committed at', str(cm.exception))
+        w2 = GitWorld(self, self.FOLDERS)
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            self.assertEqual(bl.main(['--qa-root', os.path.join(self.t.root, 'nowhere'), '--repo', w2.repo, '--audit-hash']), 0)
+        self.assertRegex(out.getvalue(), r'^[0-9a-f]{64}  \(games_sha256 of the 1 games')
+
+    def test_main_exits_1_when_a_packet_was_skipped_even_though_nothing_failed(self):
+        # platform-4: apply_deletions printed INCOMPLETE but main() returned 0 because only failed deletions counted
+        w = GitWorld(self, self.FOLDERS)
+        ledger = os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS', 'TURN_LEDGER.json')
+        real = bl.check_fresh
+        calls = []
+
+        def vanish(*a, **kw):
+            real(*a, **kw)
+            calls.append(1)
+            if len(calls) == 1:
+                os.remove(ledger)                          # between the scan and the inventory
+        with mock.patch.object(bl, 'check_fresh', vanish):
+            code, out = self.run_main(w, '--apply', '--yes')
+        self.assertEqual(code, 1)
+        self.assertIn('SKIPPED BATCH_A/20261001_000000001_iOS', out)
+        self.assertIn('INCOMPLETE: 0 frames could not be deleted and 1 packets were skipped', out)
+        self.assertTrue(os.path.exists(os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS', 'turn_evidence', 't0000.jpg')))
+
+    def test_videos_names_the_folder_and_a_name_that_is_not_a_folder_is_refused(self):
+        w = GitWorld(self, self.FOLDERS)
+        elsewhere = os.path.join(self.t.root, 'elsewhere videos')
+        os.makedirs(os.path.join(elsewhere, 'Reviewed'))
+        shutil.move(os.path.join(self.t.logs, '20261001_000000001_iOS.MP4'), os.path.join(elsewhere, 'Reviewed', '20261001_000000001_iOS.MP4'))
+        code, out = self.run_main(w)
+        self.assertRegex(out, r'BATCH_A\s+keep')
+        self.assertIn('--videos PATH names the folder', out)
+        code, out = self.run_main(w, '--videos', elsewhere)
+        self.assertRegex(out, r'BATCH_A\s+DELETE')
+        self.assertIn('Source videos looked for in: ' + elsewhere + ' (--videos)', out)
+        self.assertIn('is not a folder', self.main_raises(w, '--videos', os.path.join(self.t.root, 'nope')))
+
+    def test_after_the_move_the_tool_still_finds_the_videos_and_the_next_round_can_run(self):
+        # platform-n1 / scope-n2 through the command line
+        w = GitWorld(self, self.FOLDERS)
+        target = os.path.join(self.t.root, 'Moved', 'Recording_QA')
+        code, out = self.run_main(w, '--move-to', target, '--yes', '--no-import-check')
+        self.assertEqual(code, 0)
+        self.assertIn(bl.LOCATION_FILE, out)
+        moved_out = io.StringIO()
+        with contextlib.redirect_stdout(moved_out):
+            bl.main(['--qa-root', target, '--repo', w.repo, '--allow-offline'])
+        self.assertRegex(moved_out.getvalue(), r'BATCH_A\s+DELETE')
+        self.assertIn(bl.LOCATION_FILE, moved_out.getvalue())
+
+    def test_move_to_refuses_no_git_and_another_ref_like_apply_does_and_a_dry_run_says_what_it_did_not_check(self):
+        # platform-n2: the import check passed on an import that was only in the working tree, and the tool said "committed"
+        import battle_logs_import_packets as imp
+        w = GitWorld(self, self.FOLDERS)
+        with contextlib.redirect_stdout(io.StringIO()):
+            imp.run(self.t.logs, w.repo)                      # written into the working tree, never committed
+        target = os.path.join(self.t.root, 'Moved', 'Recording_QA')
+        before = self.t.contents()
+        self.assertIn('--move-to (its import check) reads only the committed state of origin/main', self.main_raises(w, '--move-to', target, '--yes', '--no-git'))
+        self.assertIn('not main', self.main_raises(w, '--move-to', target, '--yes', '--ref', 'main'))
+        self.assertEqual(self.t.contents(), before)
+        self.assertFalse(os.path.exists(os.path.join(self.t.root, 'Moved')))
+        code, out = self.run_main(w, '--move-to', target, '--dry-run', '--no-git')
+        self.assertEqual(code, 0)
+        self.assertIn('present in the working tree of the checkout (NOT checked against git', out)
+        self.assertNotIn('is committed, byte for byte', out)
+        self.assertEqual(self.t.contents(), before)
+
+    def test_move_to_refuses_when_origin_has_a_newer_main_than_this_checkout(self):
+        import battle_logs_import_packets as imp
+        w = GitWorld(self, self.FOLDERS)
+        with contextlib.redirect_stdout(io.StringIO()):
+            imp.run(self.t.logs, w.repo)
+        w.commit('the import')
+        bare, other = self.with_remote(w)
+        w.g('push', '-q', 'origin', 'main')
+        w.g('fetch', '-q', 'origin')
+        self.push_revocation(w, other)
+        before = self.t.contents()
+        self.assertIn('git fetch origin', self.main_raises(w, '--move-to', os.path.join(self.t.root, 'Moved', 'Recording_QA'), '--yes'))
+        self.assertEqual(self.t.contents(), before)
 
     def test_the_dry_run_counts_links_it_did_not_examine(self):
         if os.name == 'nt':
