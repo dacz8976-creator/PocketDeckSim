@@ -133,6 +133,11 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      - Oct 12 119 and v2 92 load with 0 problems at recorded HP; km3 on the 119 byte for byte unchanged, plans unchanged on the 92.
      - Data finding for the converter: 022530 t05/t07 opp Mega Scizor ex + Giant Cape recorded 230 HP; most it can have is 220.
      - Built on main c045ede; compiles on cd20a97a and 9a0bc5ac.
+   - **strength label(): typed attach-from-discard (Oct 14): done** (tests 70660ac5, code f068cbce).
+     - `AttachTypedFromDiscard:<type>@<slot>`, the converter's format; Dragon's Blessing's two choices now differ.
+     - 192 km3 games before v after: only 52 bare labels became typed (40 Metal@0, 12 Fighting@0); outcomes unchanged.
+     - **Pin:** the harness source hash changed, so CommittedPin fails (slow-report pin needs re-making after its gate; not edited).
+     - Pre-existing intermittent failure, not from this change: test_slow_report ProgramChangedOnResume (exit 126, text file busy).
    - **Now:** idle.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
