@@ -1,0 +1,17 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-09-22T01:25:22.3948193Z",
+  "first_pass_reviewer": "Gemini 3.8 Flash API through direct-bucket runner v6 and parser v3.0",
+  "independent_verifier": "Codex Astra subagent /root/astra_review_152812",
+  "lead_reviewer": "Codex root",
+  "video": "20260907_232617000_iOS.MP4",
+  "scope": "Complete source-grounded review of setup, all eleven turns, visible Energy and score transactions, and the literal terminal Defeat",
+  "source_identity_verified": true,
+  "unresolved_gameplay_intervals": false,
+  "match_mode": "named-opponent timed battle with manual interaction; exact matchmaking category and AI status not established",
+  "whole_video_independently_reviewed_at_action_level": true,
+  "every_decoded_frame_reviewed": false,
+  "gemini_candidate_accepted_without_correction": false,
+  "gemini_candidate_disposition": "rejected in full as cross-video hallucination; parser also blocked the truncated packet",
+  "disposition": "COMPLETE and independently accepted after replacing the unusable Gemini draft"
+}

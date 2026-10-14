@@ -1,0 +1,285 @@
+{
+  "schema": "independent-correction-recheck-v1",
+  "source_video": "20261005_123812000_iOS.MP4",
+  "source_sha256": "3fb3dc25ac96c6e742f9467ba14abdbf91aff403ef2a5bdc62c7f414e775e5a0",
+  "accepted": true,
+  "status": "accepted_after_R1_R4",
+  "required_repairs": [],
+  "remaining_repairs": [],
+  "checked_input_sha256": {
+    "SOURCE.json": "162668d184e4ad7b69183d01a77f2ab357b33baeb60859dcbcc2985006711372",
+    "REVIEW.md": "36edf4790df5b7b708ce6718d4c49e086f52e7519664e445fb0bae19ef780319",
+    "COVERAGE.md": "d551c0c48077a811c7f2a6e6f144acf15cccb7ba2d5d8ecf5e2d4ab4a6716beb",
+    "SUMMARY.json": "6f3ac8ec6c31c003eb488ff722d589697cffc5f8efbd5519a1c43742e139fbef",
+    "UNCERTAINTIES.json": "2e0eea7f66d27b4fbd00af788762b42822db0f34e84a86ac0626b8494eac6461",
+    "PAUSE_GAME.json": "d0ca3695f4697a653839932f6ac3463a044218510546d95cebc64d83ab3f89b3",
+    "DECK_USED.json": "8c55a09981102c2c939e1a1d0d5d1f98c9579322335f362576b2c85188a8b813",
+    "TURN_LEDGER.json": "2ab7020039d962e4fd7950ff235e2691c10307a0cf02e2bb973b50e885857ee4",
+    "TURN_EVIDENCE.json": "0cd813d1ea14effcbbf0cfbca6232b6982e3f8a52c35fa070d78d4bf3bd61921",
+    "RECORDING_METADATA.json": "dfd6aebe2bb4b42fcd604f19ac9051f1d55ad6c4c6b89ad1c71f4877f3971015",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+    "qr_intake/QR_DECODE_0002.00.json": "46ea9615ff81f68fcfe68255631357fd4d8d5e2b79a00e6fcd1b42910463d1e9",
+    "qr_intake/INTAKE_RESULT.json": "9f45475f344d4ba57dd33766919c1f150873b2297a62d5a03e6eb28d5b5eaf21",
+    "INDEPENDENT_CORRECTIONS.json": "4377464342ad0a22d9e2155337d1a295edf1a056610a328610f97e36bed4a7fc",
+    "ROOT_REPAIR_STRUCTURE_CHECK.json": "f841c906aeb13524b40963a3ed00994be0159f562839341f4c16e2391b36fc32",
+    "independent_sol/CHECK_RESULT.json": "7383e72a1903a4c151b4dd8b354585cbf4246bc310cb049f345bf0622ff09412"
+  },
+  "initial_rejection_preserved": true,
+  "original_backup_sha256_verified": {
+    "SOURCE.json": "162668d184e4ad7b69183d01a77f2ab357b33baeb60859dcbcc2985006711372",
+    "REVIEW.md": "2b3f4377303938f491e2bc9c0ce2317b114a7c4351fcbc45d6a3c977dad13274",
+    "COVERAGE.md": "051b69cf62d245c1df606b5aa723e9328502d4788ee0b3a543d8c32ff97d6add",
+    "SUMMARY.json": "5b9c21152dab0d7357aa153b539a730cfe560e8d80bc81206b2d6589ec8f0e47",
+    "UNCERTAINTIES.json": "2871b51ef155c152fec9ff3c9aff5b5adc3eabfc4a6792fc9820a911fe4ee9c5",
+    "PAUSE_GAME.json": "e4952769f364689d98e2067171796430785115622dedf01241d7c84762398b55",
+    "DECK_USED.json": "8c55a09981102c2c939e1a1d0d5d1f98c9579322335f362576b2c85188a8b813",
+    "TURN_LEDGER.json": "507dff17ea9e3a2a82e56317d2de6b8f17264fe8f40f60d465b2d6d202de2113",
+    "TURN_EVIDENCE.json": "43067e745791046c11140a34b9d1706ba0cede6905621bb645cfe4c124609b5c",
+    "RECORDING_METADATA.json": "dfd6aebe2bb4b42fcd604f19ac9051f1d55ad6c4c6b89ad1c71f4877f3971015",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+    "qr_intake/QR_DECODE_0002.00.json": "46ea9615ff81f68fcfe68255631357fd4d8d5e2b79a00e6fcd1b42910463d1e9",
+    "qr_intake/INTAKE_RESULT.json": "9f45475f344d4ba57dd33766919c1f150873b2297a62d5a03e6eb28d5b5eaf21"
+  },
+  "repair_ids_rechecked": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+  ],
+  "inspection_scope": "Tiny repair recheck only; current frozen fields and dependent prose checked against original independently inspected retained native evidence. No expanded visual review, media rehash or extraction.",
+  "recheck_findings": {
+    "R1": "Visible event title corrected throughout; unstated ranked status and concession reason remain unknown.",
+    "R2": "Named draws45/110, Lead106, hidden Research result windows83-85/172-174 with null individual times, and61 impact versus64 HP resolution match native evidence and fan arithmetic.",
+    "R3": "Discard94 retains Research top with full pile false; original snapshot ID unchanged.",
+    "R4": "Consumption windows52-53 and317-317.5 explicit;317 is intact zoom inspection; selected45.75/316 preserved and later candidates remain qualified."
+  },
+  "reused_independently_viewed_native_evidence": [
+    {
+      "evidence_id": "f-0004.00",
+      "requested_source_seconds": 4,
+      "full_frame_path": "turn_evidence/t0004.00.jpg",
+      "sha256": "3e78bb40344addcc80acfb9dfbae1993b59c0667859c48e2b5b9cfd4b12c69de",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0005.00",
+      "requested_source_seconds": 5,
+      "full_frame_path": "turn_evidence/t0005.00.jpg",
+      "sha256": "d6be14c49948ade72c85bca87a10d603b21024be3222ee03f608a153610003b3",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0045.00",
+      "requested_source_seconds": 45,
+      "full_frame_path": "turn_evidence/t0045.00.jpg",
+      "sha256": "f36acfbf0d0ab68b7c809f458b94051ccc972cb64bb5d61dfac6ffab7764ed19",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0052.00",
+      "requested_source_seconds": 52,
+      "full_frame_path": "turn_evidence/t0052.00.jpg",
+      "sha256": "2f64de1848bec22bf857c029b2fbca1a62e96fe42bf1702af906c52e5d5065bf",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0053.00",
+      "requested_source_seconds": 53,
+      "full_frame_path": "turn_evidence/t0053.00.jpg",
+      "sha256": "2cd31b21bdf7b8c1080581dcf91f443bc9564e59423934d96a8b7254574ecb41",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0061.00",
+      "requested_source_seconds": 61,
+      "full_frame_path": "turn_evidence/t0061.00.jpg",
+      "sha256": "4e4da096a712cc919e6083625d44daaf27ce976fae406342d2594359cd41fabd",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0064.00",
+      "requested_source_seconds": 64,
+      "full_frame_path": "turn_evidence/t0064.00.jpg",
+      "sha256": "3f08ef2094c9780f737779cb793908c8b6005b28f4077bf08bd1ad32dd37393d",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0083.00",
+      "requested_source_seconds": 83,
+      "full_frame_path": "turn_evidence/t0083.00.jpg",
+      "sha256": "248144210a733246dedbf97b0d5b1a447d6977359a69892d0f7fc8adf8bfc019",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0085.00",
+      "requested_source_seconds": 85,
+      "full_frame_path": "turn_evidence/t0085.00.jpg",
+      "sha256": "5f3e7f1f6af510c25ec7fe5ee8f834e21b81712c40561e7b57e8304626d16615",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0086.00",
+      "requested_source_seconds": 86,
+      "full_frame_path": "turn_evidence/t0086.00.jpg",
+      "sha256": "bcbae5ce4c4c75b0969d96aec105c42cbd889876ef48ded00af728e604d812af",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0094.00",
+      "requested_source_seconds": 94,
+      "full_frame_path": "turn_evidence/t0094.00.jpg",
+      "sha256": "291a11a8008c625a1afa36cfd7d9d5f07b3c0af9a37ad31c70aca6a992239617",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0095.00",
+      "requested_source_seconds": 95,
+      "full_frame_path": "turn_evidence/t0095.00.jpg",
+      "sha256": "8690c159dcbe94ced72324da56d23aadc36efd0ddb8dfe5f18d6ed81b5cbdba1",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0105.00",
+      "requested_source_seconds": 105,
+      "full_frame_path": "turn_evidence/t0105.00.jpg",
+      "sha256": "5ce4838e1aac469560c3a6aa803218329feb5b1a04462540711be615a73964c8",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0106.00",
+      "requested_source_seconds": 106,
+      "full_frame_path": "turn_evidence/t0106.00.jpg",
+      "sha256": "00fcc7e449174724d84883903a2e7af063b606f057282c50feca02b5f7ae1903",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0110.00",
+      "requested_source_seconds": 110,
+      "full_frame_path": "turn_evidence/t0110.00.jpg",
+      "sha256": "24d8c366d238814949552e2f9e660bc2c2f7dcf1548025b8bea630d06b8cf362",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0172.00",
+      "requested_source_seconds": 172,
+      "full_frame_path": "turn_evidence/t0172.00.jpg",
+      "sha256": "2e6f75a5a6357c9f00aa33ce14707ef7050fec6b782f13fd34533ca3e5d766a0",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0174.00",
+      "requested_source_seconds": 174,
+      "full_frame_path": "turn_evidence/t0174.00.jpg",
+      "sha256": "a8eaa1cfba025bbadf9c481937acc88e9575526ddd04557cec5a825251591adc",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0175.00",
+      "requested_source_seconds": 175,
+      "full_frame_path": "turn_evidence/t0175.00.jpg",
+      "sha256": "b9ce4c4dd61df907948907f99b3dc6d1113eff4c458fb30251fdd3bf6e41162d",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0317.00",
+      "requested_source_seconds": 317,
+      "full_frame_path": "turn_evidence/t0317.00.jpg",
+      "sha256": "20ea9949e4748eb7eaf4ac27234c4a9cac616d51392583e0c5db371e61c5a34c",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    },
+    {
+      "evidence_id": "f-0317.50",
+      "requested_source_seconds": 317.5,
+      "full_frame_path": "turn_evidence/t0317.50.jpg",
+      "sha256": "75e9ab50aeee7e0e753a87848f6bcec08392990af4873248afdcaf5f4012460d",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Actual retained native viewed independently; requested seek, decoded PTS not measured"
+    }
+  ],
+  "structural_checks": {
+    "repair_structure_pass": true,
+    "original_source_and_QR_hashes_unchanged": true,
+    "reused_native_asset_hashes_match": true,
+    "all_repaired_references_resolve": true
+  },
+  "created_utc": "2026-10-06T20:27:31.303402+00:00"
+}

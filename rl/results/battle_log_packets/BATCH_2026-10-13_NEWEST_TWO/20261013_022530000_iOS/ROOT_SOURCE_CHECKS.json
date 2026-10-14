@@ -1,0 +1,88 @@
+{
+  "lead": "/root",
+  "source_sha256": "02714096351099424338ac83d3f529ef4f0e6979a978a50f48c5ff505a2b6cb7",
+  "full_second_pass": false,
+  "checks": [
+    {
+      "path": "turn_evidence/t0026.00.jpg",
+      "sha256": "1431ac0784bf1e782198a873e2e9b64c19d655f0ead8a1115800ee0cab6f8fc1",
+      "observed": "Opening before placement identifies Poke Ball, Research, Haxorus, Copycat and Druddigon."
+    },
+    {
+      "path": "turn_evidence/t0056.00.jpg",
+      "sha256": "171b8c36243f5f70bf4e452ecf9e1d21de138eaac8cfb2881de0e59f13d44c31",
+      "observed": "Research first arrival reveals Rocky Helmet."
+    },
+    {
+      "path": "turn_evidence/t0057.00.jpg",
+      "sha256": "0fa6510d30dd91f2b6e1d7245f9858ddca76dbd90ab89d740f520ae63baa23d6",
+      "observed": "Research second arrival reveals Haxorus; Rocky Helmet is now in hand."
+    },
+    {
+      "path": "turn_evidence/t0127.00.jpg",
+      "sha256": "58f3f07aa2cf5946e82ad5b8566e30554c7c680f186fdc7538fa3fd6e312a41c",
+      "observed": "Ordinary owner Turn 3 genuine preplay hand: Haxorus, Copycat, Dragonair, Haxorus, Axew. Dratini is already benched."
+    },
+    {
+      "path": "turn_evidence/t0127.50.jpg",
+      "sha256": "2743ded3562fd13e84ff9f1c2d3d22718e3153b4042d3d7bd8aaa263751789af",
+      "observed": "Ordinary first move places Axew on left bench; four cards remain in hand."
+    },
+    {
+      "path": "turn_evidence/t0395.00.jpg",
+      "sha256": "bd4213e4ad395474977ee9ab68e48d038d2abb00acadd1d169a722212bf9c4c0",
+      "observed": "Turn 9 preplay hand Axew and Rainbow Cave. Haxorus has two Metal, current zone not visible in this frame."
+    },
+    {
+      "path": "turn_evidence/t0396.00.jpg",
+      "sha256": "79757dca49cc54bc0fbc2ec29a7875a1b6e83d395cea8e7640da6249f2cf530e",
+      "observed": "Axew enters left bench first; Rainbow Cave remains in hand. Current and next zone icons show Fighting."
+    },
+    {
+      "path": "turn_evidence/t0405.00.jpg",
+      "sha256": "56b69f4279a065eb3b63f5959a92de9de89f362e2fdb4ad0102238dc7a7abea2",
+      "observed": "Rainbow Cave is in stadium slot; current zone transitioning empty, Haxorus still two Metal. No attached Axew Energy icon yet visible here."
+    },
+    {
+      "path": "turn_evidence/t0416.00.jpg",
+      "sha256": "ef997c7b0e2b3999200ed403b111e3e3ef679c3aaa184f0af791e30e6bad43a9",
+      "observed": "Haxorus now one Fighting and two Metal; benched Axew one Fighting. Hand empty; next zone preview is Fighting, numerical future count unknown."
+    },
+    {
+      "path": "turn_evidence/t0544.00.jpg",
+      "sha256": "8abbe49605f78899280c7fb058369e88466c7b42ffb719bb3727a7522f2ebf9c",
+      "observed": "Explicit opponent-conceded banner; opponent Active name is Mega Scizor ex."
+    },
+    {
+      "path": "turn_evidence/t0559.00.jpg",
+      "sha256": "e7dc67ef1334779dc0c31335f85fae4c55150ee637b5e26cb478da3a00501bf5",
+      "observed": "Victory terminal result: owner first, 12 turns, owner 2 points, opponent 1, damage 480."
+    },
+    {
+      "path": "turn_evidence/t0158.00.jpg",
+      "sha256": "f70c278a01c02fc506c9d42122166df4d508514352094f4c99a3d7f1d447192c",
+      "observed": "Owner Turn 3 ending hand exactly Haxorus and Axew, count two. Matches five-card start, bench/evolution, Copycat replacement, Poke Ball play/search and Dratini bench arithmetic."
+    },
+    {
+      "path": "turn_evidence/t0498.00.jpg",
+      "sha256": "9cd09415db67e1d30c90050add3b5a66676aaf65fb0c25b0e9c72952db143510",
+      "observed": "Turn 11 attack preview shows Haxorus Frenzied Blade 170, one Fighting and two Metal; benched Axew two Fighting. Attack zoom obscures some lower board, so this alone is not a clean full ending-hand snapshot."
+    },
+    {
+      "path": "turn_evidence/t0296.00.jpg",
+      "sha256": "d73b208fd255bb151fb4b929c281ee1f2c2a3327e4538e8182a1d393a9aaba29",
+      "observed": "Turn 6 Rocky Helmet trigger banner is visible after Rough Skin sequence. This contradicts the draft claim that Helmet did not resolve."
+    },
+    {
+      "path": "turn_evidence/t0297.00.jpg",
+      "sha256": "b4c6c1e2e3dc9078b191f4d1a46f881df62de773d1d459da418e7e4a03ad35d0",
+      "observed": "Additional 20 damage overlay appears on Orthworm with displayed zero HP; Helmet sequence is retained separately from the preceding Rough Skin knockout."
+    },
+    {
+      "path": "turn_evidence/t0145.00.jpg",
+      "sha256": "8f2b84e9f7b2b3a61dd39a5ac6a6fc9554cf442f3326fa21cdc5ad61a197d03b",
+      "observed": "Genuine unzoomed post-Copycat hand shows Haxorus, Poke Ball and Dratini in three slots. Confirms identities without assigning second/third arrival time or order."
+    }
+  ],
+  "updated_utc": "2026-10-13T04:40:15.463384+00:00"
+}

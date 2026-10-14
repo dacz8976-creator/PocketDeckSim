@@ -1,0 +1,295 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261005_034953000_iOS",
+  "sources": [
+    {
+      "video_basename": "20261005_034953000_iOS.MP4",
+      "sha256": "85f9e3803543f512323259794b7166808e5bfd2ff5a3854d8ce1a40686075180",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": "Aegislash / Melmetal ex / Magnezone",
+  "filmed_deck_label": "New deck 6",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-06T18:09:01.533259+00:00",
+  "log_list_version": "prepared filmed-qr-afe59c84d238; not verified saved live",
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": 20,
+  "capture_source_text_or_image": [
+    "../LIVE_DECK_SNAPSHOT.json",
+    "../NEW_DECK_ENTRIES.json",
+    "qr_intake/QR_DECODE_0005.00.json",
+    "qr_intake/t0005.00.png"
+  ],
+  "game_version_binding_basis": "Source starts on New deck 6 event selection; opens its QR then closes QR and directly taps Battle at7s; no deck editing or selection change before matchmaking/setup. Visible game cards agree with QR, including distinct B1/B2 line.",
+  "conflicts_with_filmed_cards": [],
+  "exact_list_status": "filmed_QR_exact_semantic_list_verified_live_log_snapshot_missing",
+  "filmed_QR": {
+    "cards_in_QR_entity_order": [
+      {
+        "name": "Poké Ball",
+        "entity_id": 30,
+        "variant": "A2b 111 / P-A 005",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Poké Ball",
+        "entity_id": 30,
+        "variant": "A2b 111 / P-A 005",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Steel Apron",
+        "entity_id": 730,
+        "variant": "A4 153",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Steel Apron",
+        "entity_id": 730,
+        "variant": "A4 153",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Metal Core Barrier",
+        "entity_id": 1090,
+        "variant": "B2 148 / B2b 117",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Professor’s Research",
+        "entity_id": 40,
+        "variant": "A4b 373 / P-A 007",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Professor’s Research",
+        "entity_id": 40,
+        "variant": "A4b 373 / P-A 007",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Magnemite",
+        "entity_id": 4770,
+        "variant": "A2a 053 / A2a 080",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Magneton",
+        "entity_id": 4780,
+        "variant": "A2a 054",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Magnezone",
+        "entity_id": 4790,
+        "variant": "A2a 055",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Honedge",
+        "entity_id": 12520,
+        "variant": "B1 170",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Honedge",
+        "entity_id": 14840,
+        "variant": "B2 118",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Doublade",
+        "entity_id": 12530,
+        "variant": "B1 171",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Doublade",
+        "entity_id": 14850,
+        "variant": "B2 119",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Aegislash",
+        "entity_id": 12540,
+        "variant": "B1 172 / B1a 102",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Aegislash",
+        "entity_id": 14860,
+        "variant": "B2 120",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Meltan",
+        "entity_id": 1810,
+        "variant": "A1 181",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Meltan",
+        "entity_id": 1810,
+        "variant": "A1 181",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Melmetal ex",
+        "entity_id": 12560,
+        "variant": "B1 174 / B1 264 / B1 282",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      },
+      {
+        "name": "Melmetal ex",
+        "entity_id": 12560,
+        "variant": "B1 174 / B1 264 / B1 282",
+        "variant_basis": "QR semantic identity, exact artwork/printing unspecified"
+      }
+    ],
+    "counts_by_name_and_entity_id": [
+      {
+        "name": "Poké Ball",
+        "entity_id": 30,
+        "variant_aliases": [
+          "A2b 111",
+          "P-A 005"
+        ],
+        "count": 2
+      },
+      {
+        "name": "Steel Apron",
+        "entity_id": 730,
+        "variant_aliases": [
+          "A4 153"
+        ],
+        "count": 2
+      },
+      {
+        "name": "Metal Core Barrier",
+        "entity_id": 1090,
+        "variant_aliases": [
+          "B2 148",
+          "B2b 117"
+        ],
+        "count": 1
+      },
+      {
+        "name": "Professor’s Research",
+        "entity_id": 40,
+        "variant_aliases": [
+          "A4b 373",
+          "P-A 007"
+        ],
+        "count": 2
+      },
+      {
+        "name": "Magnemite",
+        "entity_id": 4770,
+        "variant_aliases": [
+          "A2a 053",
+          "A2a 080"
+        ],
+        "count": 1
+      },
+      {
+        "name": "Magneton",
+        "entity_id": 4780,
+        "variant_aliases": [
+          "A2a 054"
+        ],
+        "count": 1
+      },
+      {
+        "name": "Magnezone",
+        "entity_id": 4790,
+        "variant_aliases": [
+          "A2a 055"
+        ],
+        "count": 1
+      },
+      {
+        "name": "Honedge",
+        "entity_id": 12520,
+        "variant_aliases": [
+          "B1 170"
+        ],
+        "count": 1
+      },
+      {
+        "name": "Honedge",
+        "entity_id": 14840,
+        "variant_aliases": [
+          "B2 118"
+        ],
+        "count": 1
+      },
+      {
+        "name": "Doublade",
+        "entity_id": 12530,
+        "variant_aliases": [
+          "B1 171"
+        ],
+        "count": 1
+      },
+      {
+        "name": "Doublade",
+        "entity_id": 14850,
+        "variant_aliases": [
+          "B2 119"
+        ],
+        "count": 1
+      },
+      {
+        "name": "Aegislash",
+        "entity_id": 12540,
+        "variant_aliases": [
+          "B1 172",
+          "B1a 102"
+        ],
+        "count": 1
+      },
+      {
+        "name": "Aegislash",
+        "entity_id": 14860,
+        "variant_aliases": [
+          "B2 120"
+        ],
+        "count": 1
+      },
+      {
+        "name": "Meltan",
+        "entity_id": 1810,
+        "variant_aliases": [
+          "A1 181"
+        ],
+        "count": 2
+      },
+      {
+        "name": "Melmetal ex",
+        "entity_id": 12560,
+        "variant_aliases": [
+          "B1 174",
+          "B1 264",
+          "B1 282"
+        ],
+        "count": 2
+      }
+    ],
+    "energy_configuration": [
+      "Metal"
+    ],
+    "payload": "B5iWnpiWnpiZWpiZWpiawpiWqJiWqA0AEqIAEqwAErYAMOgAOfgAMPIAOgIAMPwAOgwABxIABxIAMRAAMRABCA==",
+    "receipt": "qr_intake/QR_DECODE_0005.00.json",
+    "total": 20
+  },
+  "limits": [
+    "The initial nine live deck snapshots do not contain this newly filmed deck. Prepared entry exists but worker does not claim live saving.",
+    "QR resolves playable identities and count, not artwork/rarity or exact printings.",
+    "Current live list must be verified by lead after external deck saving."
+  ]
+}

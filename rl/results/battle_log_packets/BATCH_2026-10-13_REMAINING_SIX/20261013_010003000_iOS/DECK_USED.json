@@ -1,0 +1,399 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261013_010003000_iOS_game_1",
+  "sources": [
+    {
+      "video_basename": "20261013_010003000_iOS.MP4",
+      "sha256": "3e2fc4897a2f9de4f03899a643a0c32e3bf46b5cc1f56a87d182dff9ceb9072b",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "source_video": "20261013_010003000_iOS.MP4",
+  "source_sha256": "3e2fc4897a2f9de4f03899a643a0c32e3bf46b5cc1f56a87d182dff9ceb9072b",
+  "deck_name_in_log": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-13T04:53:35.861Z",
+  "log_list_version": "Historical accepted27-deck catalog; current access blocked",
+  "expected_card_count": 20,
+  "cards_in_log_order": [
+    {
+      "name": "Alolan Grimer",
+      "variant": "A3 110",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Alolan Muk",
+      "variant": "B2 097",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Glimmet",
+      "variant": "B3a 044",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Glimmet",
+      "variant": "B3a 044",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Glimmora",
+      "variant": "B3a 045",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Glimmora",
+      "variant": "B3a 045",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Pawniard",
+      "variant": "B3a 041",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Kingambit",
+      "variant": "B3a 043",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Regigigas",
+      "variant": "B3 134",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Poké Ball",
+      "variant": "A2b 111",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Poké Ball",
+      "variant": "A2b 111",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Rare Candy",
+      "variant": "A3 144",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "variant": "B2 145",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "variant": "B2 145",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Heavy Helmet",
+      "variant": "B1 219",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Professor's Research",
+      "variant": "A4b 373",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Professor's Research",
+      "variant": "A4b 373",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Ilima",
+      "variant": "A3 149",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Copycat",
+      "variant": "B1 225",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    },
+    {
+      "name": "Mesagoza",
+      "variant": "B2a 093",
+      "variant_basis": "historical log label; filmed artwork/rarity unverified"
+    }
+  ],
+  "counts_by_name_and_variant": [
+    {
+      "name": "Alolan Grimer",
+      "variant": "A3 110",
+      "count": 1
+    },
+    {
+      "name": "Alolan Muk",
+      "variant": "B2 097",
+      "count": 1
+    },
+    {
+      "name": "Glimmet",
+      "variant": "B3a 044",
+      "count": 2
+    },
+    {
+      "name": "Glimmora",
+      "variant": "B3a 045",
+      "count": 2
+    },
+    {
+      "name": "Pawniard",
+      "variant": "B3a 041",
+      "count": 1
+    },
+    {
+      "name": "Kingambit",
+      "variant": "B3a 043",
+      "count": 1
+    },
+    {
+      "name": "Regigigas",
+      "variant": "B3 134",
+      "count": 1
+    },
+    {
+      "name": "Poké Ball",
+      "variant": "A2b 111",
+      "count": 2
+    },
+    {
+      "name": "Rare Candy",
+      "variant": "A3 144",
+      "count": 1
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "variant": "B2 145",
+      "count": 2
+    },
+    {
+      "name": "Heavy Helmet",
+      "variant": "B1 219",
+      "count": 1
+    },
+    {
+      "name": "Professor's Research",
+      "variant": "A4b 373",
+      "count": 2
+    },
+    {
+      "name": "Ilima",
+      "variant": "A3 149",
+      "count": 1
+    },
+    {
+      "name": "Copycat",
+      "variant": "B1 225",
+      "count": 1
+    },
+    {
+      "name": "Mesagoza",
+      "variant": "B2a 093",
+      "count": 1
+    }
+  ],
+  "energy_configuration_from_log": [
+    "Darkness"
+  ],
+  "actual_card_count": 20,
+  "capture_source_text_or_image": "HISTORICAL_DECK_MATCH.json",
+  "game_version_binding_basis": "Filmed New deck16 QR at3s proceeds directly to this one match; no intervening deck change shown. Fresh live log retrieval remains pending.",
+  "conflicts_with_filmed_cards": [],
+  "exact_list_status": "historical_exact20_verified_not_fresh",
+  "filmed_qr_exact20": {
+    "payload": "C5iWnpiWnpiYYJiapJiapJiaIpiWqJiWqJiYkpiaXpibRAkAGv4AOSYASJ4ASJ4ASKgASKgASIAASJQARkYBBw==",
+    "card_slot_count": 20,
+    "cards_in_qr_order": [
+      {
+        "name": "Poké Ball",
+        "entity_kind": "trainer",
+        "entity_id": 30
+      },
+      {
+        "name": "Poké Ball",
+        "entity_kind": "trainer",
+        "entity_id": 30
+      },
+      {
+        "name": "Rare Candy",
+        "entity_kind": "trainer",
+        "entity_id": 480
+      },
+      {
+        "name": "Lucky Ice Pop",
+        "entity_kind": "trainer",
+        "entity_id": 1060
+      },
+      {
+        "name": "Lucky Ice Pop",
+        "entity_kind": "trainer",
+        "entity_id": 1060
+      },
+      {
+        "name": "Heavy Helmet",
+        "entity_kind": "trainer",
+        "entity_id": 930
+      },
+      {
+        "name": "Professor’s Research",
+        "entity_kind": "trainer",
+        "entity_id": 40
+      },
+      {
+        "name": "Professor’s Research",
+        "entity_kind": "trainer",
+        "entity_id": 40
+      },
+      {
+        "name": "Ilima",
+        "entity_kind": "trainer",
+        "entity_id": 530
+      },
+      {
+        "name": "Copycat",
+        "entity_kind": "trainer",
+        "entity_id": 990
+      },
+      {
+        "name": "Mesagoza",
+        "entity_kind": "trainer",
+        "entity_id": 1220
+      },
+      {
+        "name": "Alolan Grimer",
+        "entity_kind": "pokemon",
+        "entity_id": 6910
+      },
+      {
+        "name": "Alolan Muk",
+        "entity_kind": "pokemon",
+        "entity_id": 14630
+      },
+      {
+        "name": "Glimmet",
+        "entity_kind": "pokemon",
+        "entity_id": 18590
+      },
+      {
+        "name": "Glimmet",
+        "entity_kind": "pokemon",
+        "entity_id": 18590
+      },
+      {
+        "name": "Glimmora",
+        "entity_kind": "pokemon",
+        "entity_id": 18600
+      },
+      {
+        "name": "Glimmora",
+        "entity_kind": "pokemon",
+        "entity_id": 18600
+      },
+      {
+        "name": "Pawniard",
+        "entity_kind": "pokemon",
+        "entity_id": 18560
+      },
+      {
+        "name": "Kingambit",
+        "entity_kind": "pokemon",
+        "entity_id": 18580
+      },
+      {
+        "name": "Regigigas",
+        "entity_kind": "pokemon",
+        "entity_id": 17990
+      }
+    ],
+    "counts_by_name_and_variant": [
+      {
+        "name": "Poké Ball",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 2
+      },
+      {
+        "name": "Rare Candy",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 1
+      },
+      {
+        "name": "Lucky Ice Pop",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 2
+      },
+      {
+        "name": "Heavy Helmet",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 1
+      },
+      {
+        "name": "Professor’s Research",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 2
+      },
+      {
+        "name": "Ilima",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 1
+      },
+      {
+        "name": "Copycat",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 1
+      },
+      {
+        "name": "Mesagoza",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 1
+      },
+      {
+        "name": "Alolan Grimer",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 1
+      },
+      {
+        "name": "Alolan Muk",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 1
+      },
+      {
+        "name": "Glimmet",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 2
+      },
+      {
+        "name": "Glimmora",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 2
+      },
+      {
+        "name": "Pawniard",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 1
+      },
+      {
+        "name": "Kingambit",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 1
+      },
+      {
+        "name": "Regigigas",
+        "variant": "semantic entity; exact printing unknown",
+        "count": 1
+      }
+    ],
+    "energy_configuration": [
+      "Darkness"
+    ],
+    "receipt": "QR_DECODE.json",
+    "native_frame": "turn_evidence/t0003.00.jpg"
+  },
+  "limits": [
+    "Historical accepted47-game27-deck readback is not a current retrieval. Root will append fresh saved-list supplement; this frozen filmed source is not described as copied from live log."
+  ],
+  "historical": true,
+  "fresh_live_readback": false
+}

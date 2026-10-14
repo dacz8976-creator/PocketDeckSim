@@ -1,0 +1,145 @@
+{
+  "video_basename": "20261002_115323000_iOS.MP4",
+  "complete_available_footage_review": true,
+  "battle_complete": true,
+  "review_status": "first_pass_awaiting_lead_acceptance",
+  "outcome": "loss",
+  "outcome_type": "loss",
+  "turn_order": "went_first",
+  "owner_deck_name_likely": "Draft A: Shark Tempo",
+  "owner_deck_name_basis": "Owner identification frozen in ASSIGNMENT.json; visual core is compatible.",
+  "owner_deck_core": [
+    "Carvanha (Sharp Fang 30, 50 HP)",
+    "Mega Sharpedo ex (Turbo Shark 70, 190 HP, Water, zero retreat)",
+    "Lapras (Surf 70, 110 HP)",
+    "Alolan Vulpix (Gnaw 20, 60 HP)",
+    "Alolan Ninetales ex (Binding Snow 80, 150 HP)",
+    "Elegant Cape",
+    "Misty",
+    "Copycat",
+    "Irida",
+    "Lucky Ice Pop",
+    "Cyrus",
+    "Poke Ball"
+  ],
+  "opponent_name": "草根",
+  "opponent_deck_core": [
+    "Snorlax (Massive Body, Mega Punch 70, 130 HP)",
+    "Skull Fossil",
+    "Rampardos (Head Smash 130, 150 HP)",
+    "Rowlet (Skill Dive, 60 HP)",
+    "Rare Candy",
+    "Arena of Antiquity",
+    "Barry",
+    "Penny",
+    "Professor's Research",
+    "Poke Ball",
+    "Order Pad"
+  ],
+  "mode_evidence": {
+    "pvp": "Supported by online opponent search, named opponent, waiting messages and separate clocks.",
+    "exact_queue": "unknown",
+    "owner_controls": "Visible manual card inspections, selections and end-turn controls; no Auto indicator is seen.",
+    "ranked_ladder_eligible": false,
+    "log_destination": "Pause Games, https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+    "opponent_automation": "unknown"
+  },
+  "auto_intervals": [],
+  "final_score": {
+    "owner": 2,
+    "opponent": 3
+  },
+  "turns_played": 14,
+  "owner_damage_done": 360,
+  "decisive_evidence": [
+    {
+      "timestamp_seconds": 454,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0454.00.jpg",
+      "observation": "Second Skull Fossil visibly has Fighting Energy before Binding Snow."
+    },
+    {
+      "timestamp_seconds": 478,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0478.00.jpg",
+      "observation": "Binding Snow 80 and Energy-Zone Active attachment restriction are visible."
+    },
+    {
+      "timestamp_seconds": 510,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0510.00.jpg",
+      "observation": "Second Rampardos retains Fossil Energy; Ninetales ex at 150 HP, Arena remains in play."
+    },
+    {
+      "timestamp_seconds": 512,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/gaps/t0512.00.jpg",
+      "observation": "Second Rampardos uses Head Smash."
+    },
+    {
+      "timestamp_seconds": 514,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0514.00.jpg",
+      "observation": "Ninetales ex reaches zero HP."
+    },
+    {
+      "timestamp_seconds": 522,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0522.00.jpg",
+      "observation": "Opponent gains two points and reaches three."
+    },
+    {
+      "timestamp_seconds": 530,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0530.00.jpg",
+      "observation": "Defeat against 草根; first, 14 turns, points 2 to 3, damage done 360."
+    }
+  ],
+  "key_findings": [
+    {
+      "classification": "observation",
+      "finding": "Three Turbo Shark attacks dealt 70 each and accelerated Water to an earlier Vulpix, Lapras and a later Vulpix. Free retreat enabled two switches."
+    },
+    {
+      "classification": "observation",
+      "finding": "Penny erased the first Snorlax's 70 damage by returning it, then it was rebenched at full HP. Late Cyrus had no visibly damaged opposing Bench target."
+    },
+    {
+      "classification": "observation",
+      "finding": "Irida healed Mega Sharpedo and Lapras by 40 each; two Lucky Ice Pop uses healed the Mega's remaining 30 with heads then tails."
+    },
+    {
+      "classification": "observation",
+      "finding": "Arena raised Head Smash from 130 to 150 into Water ex attackers; second Fossil precharge survived Rare Candy and bypassed the Energy-lock plan."
+    },
+    {
+      "classification": "inference",
+      "finding": "The two cheap Rampardos attackers and exact 150-HP Ninetales knockout drove the finish."
+    },
+    {
+      "classification": "proposed_tactical_alternative",
+      "finding": "At turn 13, leaving the two-Energy Vulpix unevolved and using Gnaw 20 could offer a single point and leave Rampardos at 10 for possible fatal recoil. Outcome is not forced because switching and hidden responses remain possible; Astra judgment requested."
+    },
+    {
+      "classification": "owner_testimony",
+      "finding": "Owner calls Draft A fun and competitive. No numeric rating inferred."
+    },
+    {
+      "classification": "untested_owner_proposal",
+      "finding": "Wailord and Soothing Shore Stadium are suggestions, absent from this game."
+    }
+  ],
+  "limitations": [
+    "Exact queue and opponent automation unknown.",
+    "Exact hidden lists and hand responses unknown.",
+    "Four-second overview labels use midpoint sampling; individual native frame names provide requested timestamps.",
+    "Strategic counterfactual awaits lead/Astra assessment; recorded outcome and turn coverage are established.",
+    "Exact random Item fetched by Order Pad is hidden."
+  ],
+  "source_identity": {
+    "sha256": "0a3c7a2dbd87adb74f2eea2d61723f5e68fd71a74f0ab80d7486a9ee1d6c6be0",
+    "bytes": 985296109,
+    "duration_seconds": 532.31,
+    "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261002_115323000_iOS.MP4",
+    "assignment_source_sha256": "0a3c7a2dbd87adb74f2eea2d61723f5e68fd71a74f0ab80d7486a9ee1d6c6be0",
+    "identity_verified_event_id": "b962b8e4-0b33-4527-8641-234986cd8b71",
+    "verification_provenance": "lead verified frozen source and assignment; worker matched fields before decoding"
+  },
+  "reviewer": "sol_shark_20261002_115323000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "match_date_local": "2026-10-02"
+}

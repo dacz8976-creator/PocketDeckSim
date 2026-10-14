@@ -1,0 +1,19 @@
+# Heavy Helmet + Poison rules test
+
+**Source:** `heavyhelmetpoisontest.MP4`, 91.936667 seconds, SHA-256 `be0cf83cc2ff34ea1b015a82bc71454855fd19d57f20f799244cba24ca6fdf7d` (see [SOURCE.json](SOURCE.json)). **Reviewer:** Sol first pass, 2026-09-28 America/Chicago. **Scope:** entire deliberate rules test, including terminal result. No ladder entry or strategy grade. The opponent is labeled AI at 00:05; the owner's Auto switch is visible off during play. The result page calls the opponent “Team Rocket's Weezing ex Deck (Team Rocket's Ambition).”
+
+## What the test shows
+
+Wailmer starts with **100 HP** and a printed **3-Energy Retreat Cost** ([12.5s](evidence/012p5s.jpg)). Heavy Helmet says a Pokémon with Retreat Cost 3 or more takes **20 less damage from opposing Pokémon's attacks** ([41.5s](evidence/041p5s.jpg)); the owner attaches it to Active Wailmer around 00:43-00:45 ([45.5s](evidence/045p5s.jpg)). The owner has no Benched Pokémon in this test.
+
+Team Rocket's Weezing ex evolves on the opponent's Bench. Its Boiler Smog ability says it may make the opponent's Active Pokémon Poisoned and Burned ([61.0s](evidence/061p0s.jpg)). The UI confirms both conditions on Wailmer at **100 HP** ([65.5s](evidence/065p5s.jpg)). This is an Ability effect, not attack damage. Magmar already has Poison Barb attached. Poison Barb would Poison an attacking Pokémon that damages its holder, but it does not cause the conditions observed on Wailmer here, because Wailmer does not attack in the clip.
+
+Team Rocket's Magmar then uses **Derisive Roasting**, printed as **10+** with **50 more damage for each Special Condition affecting the opponent's Active Pokémon** ([70.5s](evidence/070p5s.jpg)). Wailmer has two conditions, so the card text implies **110 before other attack modifiers**. The on-screen attack popup is **90**, with Heavy Helmet glowing and a downward Damage indicator ([72.0s](evidence/072p0s.jpg)). Wailmer visibly changes from **100 to 10 HP** ([72.5s](evidence/072p5s.jpg)). This single observation is consistent with Heavy Helmet reducing the attack by 20: 10 + 50 + 50 - 20 = 90. It does not independently expose the engine's formula or prove how every other modifier is ordered.
+
+After that attack, the UI separately displays **Poison 10** while Wailmer has 10 HP ([73.5s](evidence/073p5s.jpg)); its HP reaches **0** before the Burned animation ([74.5s](evidence/074p5s.jpg)). The Burned popup shows **20** while the displayed HP is already 0. The clip cannot establish whether that 20 applied additional internal damage beyond 0; it does show that Heavy Helmet did **not** remove or visibly reduce the Poison step. The checkup then shows a Heads coin result ([79.5s](evidence/079p5s.jpg)) and “Wailmer recovered from being Burned” while HP remains 0 ([80.0s](evidence/080p0s.jpg)). The knockout animation and opponent's **+1 point** occur afterward ([84.5s](evidence/084p5s.jpg)), followed by Defeat ([87.0s](evidence/087p0s.jpg)) and the result page ([91.5s](evidence/091p5s.jpg)).
+
+## Bounded conclusion and uncertainty
+
+- **Observed:** A qualifying Heavy Helmet remained attached to Active Wailmer. A two-condition Magmar attack showed 90 damage and left Wailmer at 10 HP. Poison then showed 10 damage and brought it to 0. Burn processing and recovery messaging followed before knockout/point/result.
+- **Supported interpretation:** The visible arithmetic matches Heavy Helmet reducing **attack** damage by 20, while the later **Poison** damage is handled separately at full 10. This directly addresses the intended Heavy Helmet versus Poison distinction for this one test.
+- **Not established:** A no-Helmet control, how Helmet interacts with every attack modifier, or why the UI continued Burn checkup after HP displayed 0. The latter is an observed sequencing detail, not by itself a confirmed rules defect. No simulation source was inspected or changed.

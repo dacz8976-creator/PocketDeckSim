@@ -1,0 +1,34 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-06T19:30:28.378497+00:00",
+  "source_video": "20261005_033529000_iOS.MP4",
+  "source_sha256": "e272b0c74f6a863c68811a235d7b9611b14994611365e58694028f323afaea3d",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 10,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_033529000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "Exact matching live Pause Games list/version unavailable.",
+    "Opponent hidden hand identities and full discard views not filmed.",
+    "Exact PTS not measured.",
+    "No external action, registration, acceptance or archival performed."
+  ],
+  "outcome": {
+    "result": "loss",
+    "owner_points": 1,
+    "opponent_points": 3,
+    "turns": 10,
+    "damage_done": 270,
+    "evidence_ids": [
+      "f_0379_00",
+      "f_0390_00",
+      "f_0395_00"
+    ],
+    "basis": "Final board plus Defeat results screen shows 1–3, Turns 10, Damage done 270"
+  },
+  "external_status": "Prepared for Pause Games; no new live deck or game save claimed. Missing matching current live list is preserved, filmed QR definitions prepared separately.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

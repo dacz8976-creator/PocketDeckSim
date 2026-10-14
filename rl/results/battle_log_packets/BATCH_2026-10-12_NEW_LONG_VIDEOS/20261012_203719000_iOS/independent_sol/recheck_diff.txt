@@ -1,0 +1,862 @@
+FILE SUMMARY.json
+/review_method: 'Native 2-second full-battle seeks, 8-second overview, targeted subsecond draw/first-move/action refinements' -> 'Native 2-second full-battle seeks, 8-second overview, targeted subsecond draw/first-move/action refinements, direct audit of every boundary Zone'
+/independent_repairs: None -> {'prior_files': 'before_independent_repairs_20261012T233338Z', 'turn_13_selected_frame': 'f466_90', 'turn_3_boundary_energy': 'Visibly empty at107.2, later generated Darkness at107.5 during first selection', 'all_boundary_zones_audited': True}
+/review_status: 'review_ready_for_independent_acceptance' -> 'repaired_review_ready_for_fresh_independent_check'
+FILE UNCERTAINTIES.json
+/uncertainties: list length 8 -> 9
+FILE PAUSE_GAME.json
+FILE DECK_USED.json
+FILE TURN_LEDGER.json
+/turns/0/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/0/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/0/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/0/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/0/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/0/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 46.65
+/turns/0/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/0/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/0/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/0/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/0/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/0/board_at_start/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/0/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/0/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/0/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 46.65
+/turns/0/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/0/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/0/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/0/board_after/opponent/energy_zone/next/available: False -> None
+/turns/0/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/0/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/0/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/0/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 62
+/turns/0/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/0/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/0/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/0/board_after/owner/energy_zone/next/available: False -> None
+/turns/0/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/0/board_after/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/0/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/0/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/0/board_after/owner/energy_zone/observed_at_source_seconds: None -> 62
+/turns/0/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/0/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/1/board_at_start/opponent/energy_zone/next/visibility: None -> 'absent_or_obscured'
+/turns/1/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/1/board_at_start/opponent/energy_zone/next/count: 1 -> None
+/turns/1/board_at_start/opponent/energy_zone/next/type: 'Lightning' -> None
+/turns/1/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'visible_generated_token'
+/turns/1/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> 'The small next marker is absent or obscured in this frame; its type/count are not inferred.'
+/turns/1/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/1/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 65
+/turns/1/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/1/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/1/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/1/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/1/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/1/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/1/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/1/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 65
+/turns/1/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/1/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/1/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/1/board_after/opponent/energy_zone/next/available: False -> None
+/turns/1/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/1/board_after/opponent/energy_zone/this_turn/type: 'Lightning' -> None
+/turns/1/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/1/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/1/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 102
+/turns/1/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/1/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/1/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/1/board_after/owner/energy_zone/next/available: False -> None
+/turns/1/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/1/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/1/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/1/board_after/owner/energy_zone/observed_at_source_seconds: None -> 102
+/turns/1/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/1/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/2/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/2/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/2/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/2/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/2/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/2/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 107.2
+/turns/2/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/2/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/2/board_at_start/owner/energy_zone/next/visibility: None -> 'absent_or_obscured'
+/turns/2/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/2/board_at_start/owner/energy_zone/next/count: 1 -> None
+/turns/2/board_at_start/owner/energy_zone/next/type: 'Darkness' -> None
+/turns/2/board_at_start/owner/energy_zone/later_within_turn_observation: None -> {'source_video': '20261012_203719000_iOS.MP4', 'observed_at_source_seconds': 107.5, 'this_turn': {'type': 'Darkness', 'count': 1, 'available': True}, 'next': {'type': 'Darkness', 'count': 1, 'available': None}, 'evidence_ids': ['f107_50'], 'basis': 'Visible generated token after the first card selection has begun; not substituted for the earlier preplay boundary.'}
+/turns/2/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/2/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 107.2
+/turns/2/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/2/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/2/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/2/board_at_start/owner/energy_zone/this_turn/available: True -> False
+/turns/2/board_at_start/owner/energy_zone/this_turn/count: 1 -> 0
+/turns/2/board_at_start/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/2/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> 'The selected hand frame is during Energy generation. The current slot is visibly empty and the next marker is absent at 107.2 s. Do not claim generated availability here. Native 107.5 s separately shows Darkness while Poké Ball selection has begun. The small next marker is absent or obscured in this frame; its type/count are not inferred.'
+/turns/2/timing/first_voluntary_move_seconds: 109 -> 107.5
+/turns/2/plays_in_order/0/evidence_ids/0: 'f109_00' -> 'f107_50'
+/turns/2/plays_in_order/0/result: 'Search finds Glimmet.' -> 'Select Poké Ball at 107.5 s, removed from fan by 107.6 s; play animation through 109 s. Search finds Glimmet.'
+/turns/2/plays_in_order/0/timestamp_seconds: 109 -> 107.5
+/turns/2/plays_in_order/0/nested_events_in_order/0: 'Search finds Glimmet.' -> 'Select Poké Ball at 107.5 s, removed from fan by 107.6 s; play animation through 109 s. Search finds Glimmet.'
+/turns/2/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/2/board_after/opponent/energy_zone/next/available: False -> None
+/turns/2/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/2/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/2/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/2/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 151
+/turns/2/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/2/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/2/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/2/board_after/owner/energy_zone/next/available: False -> None
+/turns/2/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/2/board_after/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/2/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/2/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/2/board_after/owner/energy_zone/observed_at_source_seconds: None -> 151
+/turns/2/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/2/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/3/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/3/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/3/board_at_start/opponent/energy_zone/next/type: 'Fire' -> 'Lightning'
+/turns/3/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/3/board_at_start/opponent/energy_zone/this_turn/available: True -> False
+/turns/3/board_at_start/opponent/energy_zone/this_turn/count: 1 -> 0
+/turns/3/board_at_start/opponent/energy_zone/this_turn/type: 'Lightning' -> None
+/turns/3/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/3/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/3/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 154
+/turns/3/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/3/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/3/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/3/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/3/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/3/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/3/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/3/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 154
+/turns/3/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/3/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/3/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/3/board_after/opponent/energy_zone/next/available: False -> None
+/turns/3/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/3/board_after/opponent/energy_zone/this_turn/type: 'Lightning' -> None
+/turns/3/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/3/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/3/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 190
+/turns/3/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/3/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/3/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/3/board_after/owner/energy_zone/next/available: False -> None
+/turns/3/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/3/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/3/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/3/board_after/owner/energy_zone/observed_at_source_seconds: None -> 190
+/turns/3/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/3/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/4/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/4/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/4/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/4/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/4/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/4/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 194.8
+/turns/4/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/4/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/4/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/4/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/4/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/4/board_at_start/owner/energy_zone/this_turn/available: True -> False
+/turns/4/board_at_start/owner/energy_zone/this_turn/count: 1 -> 0
+/turns/4/board_at_start/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/4/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> 'The clean hand view precedes completion of Energy generation. This current slot is empty at 194.8 s; later readiness is not substituted for the boundary.'
+/turns/4/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/4/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 194.8
+/turns/4/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/4/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/4/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/4/board_after/opponent/energy_zone/next/available: False -> None
+/turns/4/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/4/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/4/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/4/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 220
+/turns/4/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/4/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/4/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/4/board_after/owner/energy_zone/next/available: False -> None
+/turns/4/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/4/board_after/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/4/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/4/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/4/board_after/owner/energy_zone/observed_at_source_seconds: None -> 220
+/turns/4/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/4/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/5/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/5/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/5/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'visible_generated_token'
+/turns/5/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/5/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/5/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 224
+/turns/5/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/5/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/5/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/5/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/5/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/5/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/5/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/5/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 224
+/turns/5/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/5/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/5/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/5/board_after/opponent/energy_zone/next/available: False -> None
+/turns/5/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/5/board_after/opponent/energy_zone/this_turn/type: 'Fire' -> None
+/turns/5/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/5/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/5/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 252
+/turns/5/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/5/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/5/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/5/board_after/owner/energy_zone/next/available: False -> None
+/turns/5/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/5/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/5/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/5/board_after/owner/energy_zone/observed_at_source_seconds: None -> 252
+/turns/5/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/5/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/6/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/6/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/6/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/6/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/6/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/6/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 257
+/turns/6/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/6/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/6/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/6/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/6/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'visible_generated_token'
+/turns/6/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/6/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/6/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 257
+/turns/6/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/6/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/6/board_after/opponent/energy_zone/next/visibility: None -> 'absent_or_obscured'
+/turns/6/board_after/opponent/energy_zone/next/available: False -> None
+/turns/6/board_after/opponent/energy_zone/next/count: 1 -> None
+/turns/6/board_after/opponent/energy_zone/next/type: 'Fire' -> None
+/turns/6/board_after/opponent/energy_zone/this_turn/visibility: None -> 'obscured'
+/turns/6/board_after/opponent/energy_zone/this_turn/available: False -> None
+/turns/6/board_after/opponent/energy_zone/this_turn/count: 0 -> None
+/turns/6/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> 'A message or animation covers the generated slot in this exact boundary frame. Current type, count and availability remain unknown. The small next marker is absent or obscured in this frame; its type/count are not inferred.'
+/turns/6/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/6/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 292
+/turns/6/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/6/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/6/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/6/board_after/owner/energy_zone/next/available: False -> None
+/turns/6/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/6/board_after/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/6/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/6/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/6/board_after/owner/energy_zone/observed_at_source_seconds: None -> 292
+/turns/6/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/6/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/7/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/7/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/7/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'visible_generated_token'
+/turns/7/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/7/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/7/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 296
+/turns/7/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/7/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/7/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/7/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/7/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/7/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/7/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/7/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 296
+/turns/7/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/7/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/7/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/7/board_after/opponent/energy_zone/next/available: False -> None
+/turns/7/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/7/board_after/opponent/energy_zone/this_turn/type: 'Fire' -> None
+/turns/7/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/7/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/7/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 352
+/turns/7/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/7/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/7/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/7/board_after/owner/energy_zone/next/available: False -> None
+/turns/7/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/7/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/7/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/7/board_after/owner/energy_zone/observed_at_source_seconds: None -> 352
+/turns/7/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/7/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/8/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/8/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/8/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/8/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/8/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/8/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 358
+/turns/8/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/8/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/8/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/8/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/8/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'visible_generated_token'
+/turns/8/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/8/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/8/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 358
+/turns/8/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/8/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/8/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/8/board_after/opponent/energy_zone/next/available: False -> None
+/turns/8/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/8/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/8/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/8/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 374
+/turns/8/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/8/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/8/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/8/board_after/owner/energy_zone/next/available: False -> None
+/turns/8/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/8/board_after/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/8/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/8/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/8/board_after/owner/energy_zone/observed_at_source_seconds: None -> 374
+/turns/8/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/8/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/9/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/9/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/9/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'visible_generated_token'
+/turns/9/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/9/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/9/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 378
+/turns/9/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/9/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/9/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/9/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/9/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/9/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/9/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/9/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 378
+/turns/9/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/9/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/9/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/9/board_after/opponent/energy_zone/next/available: False -> None
+/turns/9/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/9/board_after/opponent/energy_zone/this_turn/type: 'Fire' -> None
+/turns/9/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/9/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/9/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 413
+/turns/9/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/9/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/9/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/9/board_after/owner/energy_zone/next/available: False -> None
+/turns/9/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/9/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/9/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/9/board_after/owner/energy_zone/observed_at_source_seconds: None -> 413
+/turns/9/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/9/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/10/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/10/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/10/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/10/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/10/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/10/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 416.5
+/turns/10/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/10/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/10/board_at_start/owner/energy_zone/next/visibility: None -> 'absent_or_obscured'
+/turns/10/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/10/board_at_start/owner/energy_zone/next/count: 1 -> None
+/turns/10/board_at_start/owner/energy_zone/next/type: 'Darkness' -> None
+/turns/10/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'obscured'
+/turns/10/board_at_start/owner/energy_zone/this_turn/available: True -> None
+/turns/10/board_at_start/owner/energy_zone/this_turn/count: 1 -> None
+/turns/10/board_at_start/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/10/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> 'White generation glow covers current Energy identity and count, and obscures the preview marker. The small next marker is absent or obscured in this frame; its type/count are not inferred.'
+/turns/10/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/10/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 416.5
+/turns/10/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/10/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/10/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/10/board_after/opponent/energy_zone/next/available: False -> None
+/turns/10/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/10/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/10/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/10/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 426
+/turns/10/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/10/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/10/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/10/board_after/owner/energy_zone/next/available: False -> None
+/turns/10/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/10/board_after/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/10/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/10/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/10/board_after/owner/energy_zone/observed_at_source_seconds: None -> 426
+/turns/10/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/10/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/11/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/11/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/11/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'visible_generated_token'
+/turns/11/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/11/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/11/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 430
+/turns/11/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/11/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/11/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/11/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/11/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/11/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/11/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/11/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 430
+/turns/11/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/11/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/11/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/11/board_after/opponent/energy_zone/next/available: False -> None
+/turns/11/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/11/board_after/opponent/energy_zone/this_turn/type: 'Lightning' -> None
+/turns/11/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/11/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/11/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 463
+/turns/11/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/11/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/11/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/11/board_after/owner/energy_zone/next/available: False -> None
+/turns/11/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/11/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/11/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/11/board_after/owner/energy_zone/observed_at_source_seconds: None -> 463
+/turns/11/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/11/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/12/board_at_start/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/board_at_start/opponent/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/board_at_start/opponent/active/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/board_at_start/opponent/bench_in_position_order/0/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/board_at_start/opponent/bench_in_position_order/1/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/board_at_start/opponent/bench_in_position_order/2/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/12/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/12/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/12/board_at_start/opponent/energy_zone/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/12/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/12/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 466.9
+/turns/12/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/12/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/12/board_at_start/owner/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/board_at_start/owner/active/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/board_at_start/owner/bench_in_position_order/0/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/board_at_start/owner/bench_in_position_order/2/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/12/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/12/board_at_start/owner/energy_zone/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/board_at_start/owner/energy_zone/later_within_turn_observation: None -> {'source_video': '20261012_203719000_iOS.MP4', 'observed_at_source_seconds': 468, 'this_turn': {'type': 'Darkness', 'count': 1, 'available': True}, 'next': {'type': 'Darkness', 'count': 1, 'available': None}, 'evidence_ids': ['f468_00'], 'basis': 'Visible generated token after the first card selection has begun; not substituted for the earlier preplay boundary.'}
+/turns/12/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/12/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 466.9
+/turns/12/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/12/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/12/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/12/board_at_start/owner/energy_zone/this_turn/available: True -> False
+/turns/12/board_at_start/owner/energy_zone/this_turn/count: 1 -> 0
+/turns/12/board_at_start/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/12/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> 'The clean three-card hand at 466.9 s precedes completion of Energy generation. Current slot is visibly empty; native 468 s shows Darkness after Glimmet selection/benching has started.'
+/turns/12/opponent_hand_at_owner_turn_start/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/turn_evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/owner_hand_start/cards_left_to_right/0/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/owner_hand_start/cards_left_to_right/1/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/owner_hand_start/cards_left_to_right/2/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/owner_hand_start/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/timing/first_voluntary_move_seconds: 469 -> 467.1
+/turns/12/timing/draw_animation_end_seconds: 467.5 -> 466.85
+/turns/12/timing/draw_end_precision_seconds: 0.5 -> 0.1
+/turns/12/limits: list length 1 -> 2
+/turns/12/plays_in_order/0/evidence_ids/0: 'f469_00' -> 'f467_10'
+/turns/12/plays_in_order/0/result: 'Bench second Glimmet.' -> 'Select Glimmet just after the clean three-card fan at 466.9 s; lift shown 467.2 s and bench placement by 468 to 469 s.'
+/turns/12/plays_in_order/0/timestamp_seconds: 469 -> 467.1
+/turns/12/plays_in_order/0/nested_events_in_order/0: 'Bench second Glimmet.' -> 'Select Glimmet just after the clean three-card fan at 466.9 s; lift shown 467.2 s and bench placement by 468 to 469 s.'
+/turns/12/hand_at_start/cards_left_to_right/0/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/hand_at_start/cards_left_to_right/1/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/hand_at_start/cards_left_to_right/2/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/hand_at_start/evidence_ids/0: 'f468_00' -> 'f466_90'
+/turns/12/board_after/opponent/energy_zone/next/visibility: None -> 'absent_or_obscured'
+/turns/12/board_after/opponent/energy_zone/next/available: False -> None
+/turns/12/board_after/opponent/energy_zone/next/count: 1 -> None
+/turns/12/board_after/opponent/energy_zone/next/type: 'Fire' -> None
+/turns/12/board_after/opponent/energy_zone/this_turn/visibility: None -> 'obscured'
+/turns/12/board_after/opponent/energy_zone/this_turn/available: False -> None
+/turns/12/board_after/opponent/energy_zone/this_turn/count: 0 -> None
+/turns/12/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> 'A message or animation covers the generated slot in this exact boundary frame. Current type, count and availability remain unknown. The small next marker is absent or obscured in this frame; its type/count are not inferred.'
+/turns/12/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/12/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 481
+/turns/12/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/12/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/12/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/12/board_after/owner/energy_zone/next/available: False -> None
+/turns/12/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/12/board_after/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/12/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/12/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/12/board_after/owner/energy_zone/observed_at_source_seconds: None -> 481
+/turns/12/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/12/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/13/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/13/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/13/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'visible_generated_token'
+/turns/13/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/13/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/13/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 484
+/turns/13/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/13/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/13/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/13/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/13/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/13/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/13/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/13/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 484
+/turns/13/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/13/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/13/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/13/board_after/opponent/energy_zone/next/available: False -> None
+/turns/13/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/13/board_after/opponent/energy_zone/this_turn/type: 'Fire' -> None
+/turns/13/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/13/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/13/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 531
+/turns/13/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/13/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/13/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/13/board_after/owner/energy_zone/next/available: False -> None
+/turns/13/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/13/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/13/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/13/board_after/owner/energy_zone/observed_at_source_seconds: None -> 531
+/turns/13/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/13/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/14/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/14/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/14/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/14/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/14/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/14/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 535
+/turns/14/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/14/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/14/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/14/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/14/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'visible_generated_token'
+/turns/14/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/14/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/14/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 535
+/turns/14/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/14/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/14/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/14/board_after/opponent/energy_zone/next/available: False -> None
+/turns/14/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/14/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/14/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/14/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 596
+/turns/14/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/14/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/14/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/14/board_after/owner/energy_zone/next/available: False -> None
+/turns/14/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/14/board_after/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/14/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/14/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/14/board_after/owner/energy_zone/observed_at_source_seconds: None -> 596
+/turns/14/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/14/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/15/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/15/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/15/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'visible_generated_token'
+/turns/15/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/15/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/15/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 598
+/turns/15/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/15/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/15/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/15/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/15/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/15/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/15/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/15/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 598
+/turns/15/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/15/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/15/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/15/board_after/opponent/energy_zone/next/available: False -> None
+/turns/15/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/15/board_after/opponent/energy_zone/this_turn/type: 'Fire' -> None
+/turns/15/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/15/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/15/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 627
+/turns/15/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/15/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/15/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/15/board_after/owner/energy_zone/next/available: False -> None
+/turns/15/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/15/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/15/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/15/board_after/owner/energy_zone/observed_at_source_seconds: None -> 627
+/turns/15/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/15/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/16/board_at_start/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/board_at_start/opponent/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/board_at_start/opponent/active/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/board_at_start/opponent/bench_in_position_order/0/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/board_at_start/opponent/bench_in_position_order/1/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/board_at_start/opponent/bench_in_position_order/2/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/board_at_start/opponent/energy_zone/next/visibility: None -> 'absent_or_obscured'
+/turns/16/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/16/board_at_start/opponent/energy_zone/next/count: 1 -> None
+/turns/16/board_at_start/opponent/energy_zone/next/type: 'Lightning' -> None
+/turns/16/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'obscured'
+/turns/16/board_at_start/opponent/energy_zone/this_turn/available: False -> None
+/turns/16/board_at_start/opponent/energy_zone/this_turn/count: 0 -> None
+/turns/16/board_at_start/opponent/energy_zone/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> 'A message or animation covers the generated slot in this exact boundary frame. Current type, count and availability remain unknown. The small next marker is absent or obscured in this frame; its type/count are not inferred.'
+/turns/16/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/16/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 628
+/turns/16/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/16/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/16/board_at_start/owner/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/board_at_start/owner/active/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/board_at_start/owner/bench_in_position_order/0/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/board_at_start/owner/bench_in_position_order/1/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/board_at_start/owner/bench_in_position_order/2/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/board_at_start/owner/energy_zone/next/visibility: None -> 'absent_or_obscured'
+/turns/16/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/16/board_at_start/owner/energy_zone/next/count: 1 -> None
+/turns/16/board_at_start/owner/energy_zone/next/type: 'Darkness' -> None
+/turns/16/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'obscured'
+/turns/16/board_at_start/owner/energy_zone/this_turn/available: True -> None
+/turns/16/board_at_start/owner/energy_zone/this_turn/count: 1 -> None
+/turns/16/board_at_start/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/16/board_at_start/owner/energy_zone/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> 'The clean two-card hand at 628 s has a white Energy-generation glow over the owner Zone. Current and preview values are unavailable in this frame; no default availability assumed. The small next marker is absent or obscured in this frame; its type/count are not inferred.'
+/turns/16/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/16/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 628
+/turns/16/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/16/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/16/opponent_hand_at_owner_turn_start/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/turn_evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/owner_hand_start/cards_left_to_right/0/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/owner_hand_start/cards_left_to_right/1/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/owner_hand_start/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/draws_and_searches/0/timestamp_seconds: 630 -> 628
+/turns/16/draws_and_searches/0/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/hand_at_start/cards_left_to_right/0/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/hand_at_start/cards_left_to_right/1/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/hand_at_start/evidence_ids/0: 'f630_00' -> 'f628_00'
+/turns/16/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/16/board_after/opponent/energy_zone/next/available: False -> None
+/turns/16/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/16/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/16/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/16/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 667
+/turns/16/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/16/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/16/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/16/board_after/owner/energy_zone/next/available: False -> None
+/turns/16/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/16/board_after/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/16/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/16/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/16/board_after/owner/energy_zone/observed_at_source_seconds: None -> 667
+/turns/16/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/16/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/17/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/17/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/17/board_at_start/opponent/energy_zone/next/type: 'Lightning' -> 'Fire'
+/turns/17/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'visible_generated_token'
+/turns/17/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/17/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/17/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 670
+/turns/17/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/17/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/17/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/17/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/17/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/17/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/17/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/17/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 670
+/turns/17/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/17/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/17/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/17/board_after/opponent/energy_zone/next/available: False -> None
+/turns/17/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/17/board_after/opponent/energy_zone/this_turn/type: 'Lightning' -> None
+/turns/17/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/17/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/17/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 721
+/turns/17/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/17/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/17/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/17/board_after/owner/energy_zone/next/available: False -> None
+/turns/17/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/17/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/17/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/17/board_after/owner/energy_zone/observed_at_source_seconds: None -> 721
+/turns/17/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/17/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/18/board_at_start/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/board_at_start/opponent/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/board_at_start/opponent/active/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/board_at_start/opponent/bench_in_position_order/0/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/board_at_start/opponent/bench_in_position_order/1/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/board_at_start/opponent/bench_in_position_order/2/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/board_at_start/opponent/energy_zone/next/visibility: None -> 'absent_or_obscured'
+/turns/18/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/18/board_at_start/opponent/energy_zone/next/count: 1 -> None
+/turns/18/board_at_start/opponent/energy_zone/next/type: 'Lightning' -> None
+/turns/18/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'obscured'
+/turns/18/board_at_start/opponent/energy_zone/this_turn/available: False -> None
+/turns/18/board_at_start/opponent/energy_zone/this_turn/count: 0 -> None
+/turns/18/board_at_start/opponent/energy_zone/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> 'A message or animation covers the generated slot in this exact boundary frame. Current type, count and availability remain unknown. The small next marker is absent or obscured in this frame; its type/count are not inferred.'
+/turns/18/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/18/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 722
+/turns/18/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/18/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/18/board_at_start/owner/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/board_at_start/owner/active/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/board_at_start/owner/bench_in_position_order/0/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/board_at_start/owner/bench_in_position_order/2/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/board_at_start/owner/energy_zone/next/visibility: None -> 'absent_or_obscured'
+/turns/18/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/18/board_at_start/owner/energy_zone/next/count: 1 -> None
+/turns/18/board_at_start/owner/energy_zone/next/type: 'Darkness' -> None
+/turns/18/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/18/board_at_start/owner/energy_zone/this_turn/available: True -> False
+/turns/18/board_at_start/owner/energy_zone/this_turn/count: 1 -> 0
+/turns/18/board_at_start/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/18/board_at_start/owner/energy_zone/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> 'The small next marker is absent or obscured in this frame; its type/count are not inferred.'
+/turns/18/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/18/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 722
+/turns/18/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/18/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/18/opponent_hand_at_owner_turn_start/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/turn_evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/owner_hand_start/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/draws_and_searches/0/timestamp_seconds: 724 -> 722
+/turns/18/draws_and_searches/0/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/plays_in_order/0/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/hand_at_start/evidence_ids/0: 'f724_00' -> 'f722_00'
+/turns/18/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/18/board_after/opponent/energy_zone/next/available: False -> None
+/turns/18/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/18/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/18/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/18/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 732
+/turns/18/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/18/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/18/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/18/board_after/owner/energy_zone/next/available: False -> None
+/turns/18/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/18/board_after/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/18/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/18/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/18/board_after/owner/energy_zone/observed_at_source_seconds: None -> 732
+/turns/18/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/18/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/19/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/19/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/19/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'visible_generated_token'
+/turns/19/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/19/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/19/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 734
+/turns/19/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/19/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/19/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/19/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/19/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/19/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/19/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/19/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 734
+/turns/19/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/19/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/19/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/19/board_after/opponent/energy_zone/next/available: False -> None
+/turns/19/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/19/board_after/opponent/energy_zone/this_turn/type: 'Lightning' -> None
+/turns/19/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/19/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/19/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 785
+/turns/19/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/19/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/19/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/19/board_after/owner/energy_zone/next/available: False -> None
+/turns/19/board_after/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/19/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/19/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/19/board_after/owner/energy_zone/observed_at_source_seconds: None -> 785
+/turns/19/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/19/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/20/board_at_start/evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/board_at_start/opponent/evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/board_at_start/opponent/active/evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/board_at_start/opponent/bench_in_position_order/0/evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/board_at_start/opponent/bench_in_position_order/1/evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/board_at_start/opponent/bench_in_position_order/2/evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/board_at_start/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/20/board_at_start/opponent/energy_zone/next/available: False -> None
+/turns/20/board_at_start/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/20/board_at_start/opponent/energy_zone/evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/board_at_start/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/20/board_at_start/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/20/board_at_start/opponent/energy_zone/observed_at_source_seconds: None -> 786
+/turns/20/board_at_start/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/20/board_at_start/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/20/board_at_start/owner/evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/board_at_start/owner/active/evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/board_at_start/owner/bench_in_position_order/0/evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/board_at_start/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/20/board_at_start/owner/energy_zone/next/available: False -> None
+/turns/20/board_at_start/owner/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/20/board_at_start/owner/energy_zone/this_turn/available: True -> False
+/turns/20/board_at_start/owner/energy_zone/this_turn/count: 1 -> 0
+/turns/20/board_at_start/owner/energy_zone/this_turn/type: 'Darkness' -> None
+/turns/20/board_at_start/owner/energy_zone/evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/board_at_start/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/20/board_at_start/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/20/board_at_start/owner/energy_zone/observed_at_source_seconds: None -> 786
+/turns/20/board_at_start/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/20/board_at_start/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/20/opponent_hand_at_owner_turn_start/evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/turn_evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/owner_hand_start/evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/hand_at_start/evidence_ids/0: 'f788_00' -> 'f786_00'
+/turns/20/board_after/opponent/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/20/board_after/opponent/energy_zone/next/available: False -> None
+/turns/20/board_after/opponent/energy_zone/this_turn/visibility: None -> 'observed_empty'
+/turns/20/board_after/opponent/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/20/board_after/opponent/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/20/board_after/opponent/energy_zone/observed_at_source_seconds: None -> 790
+/turns/20/board_after/opponent/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/20/board_after/opponent/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+/turns/20/board_after/owner/energy_zone/next/visibility: None -> 'visible_preview_icon'
+/turns/20/board_after/owner/energy_zone/next/available: False -> None
+/turns/20/board_after/owner/energy_zone/this_turn/visibility: None -> 'visible_generated_token'
+/turns/20/board_after/owner/energy_zone/limit_reason: 'This turn type is null when the generated slot is visibly empty.' -> None
+/turns/20/board_after/owner/energy_zone/source_video: None -> '20261012_203719000_iOS.MP4'
+/turns/20/board_after/owner/energy_zone/observed_at_source_seconds: None -> 790
+/turns/20/board_after/owner/energy_zone/basis: 'Visible native boundary zone' -> 'Direct visual audit of this exact native boundary frame, without turn/game-rule defaults'
+/turns/20/board_after/owner/energy_zone/preview_availability_limit: None -> 'A visible preview icon establishes its displayed type/count, not future availability.'
+FILE TURN_EVIDENCE.json
+/discard_snapshots/6/evidence_ids/0: 'f468_00' -> 'f466_90'
+/discard_snapshots/6/timestamp_seconds: 468 -> 466.9
+/discard_snapshots/7/evidence_ids/0: 'f468_00' -> 'f466_90'
+/discard_snapshots/7/timestamp_seconds: 468 -> 466.9
+/discard_snapshots/8/evidence_ids/0: 'f630_00' -> 'f628_00'
+/discard_snapshots/8/timestamp_seconds: 630 -> 628
+/discard_snapshots/9/evidence_ids/0: 'f630_00' -> 'f628_00'
+/discard_snapshots/9/timestamp_seconds: 630 -> 628
+/discard_snapshots/10/evidence_ids/0: 'f788_00' -> 'f786_00'
+/discard_snapshots/10/timestamp_seconds: 788 -> 786
+/discard_snapshots/11/evidence_ids/0: 'f788_00' -> 'f786_00'
+/discard_snapshots/11/timestamp_seconds: 788 -> 786
+/frames: list length 244 -> 260

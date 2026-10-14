@@ -1,0 +1,19 @@
+{
+  "source": "20260908_190933000_iOS.MP4",
+  "sha256": "5c49e55a0b3153581904ffcefd747d941d5a729412a90708ec1f2783649610c5",
+  "purpose": "Prompt, discard and draw locator; not native hand evidence or new result review",
+  "sample_count": 413,
+  "sampling_rate_fps": 1,
+  "native_evidence": false,
+  "dimensions": [
+    234,
+    506
+  ],
+  "source_duration_seconds": 412.87,
+  "covered_interval_seconds": [
+    0,
+    412.87
+  ],
+  "timestamp_precision": "Approximate source-local midpoint labels, PTS not independently measured",
+  "limitations": "One sample per second does not examine every instant; brief events between samples can be missed."
+}

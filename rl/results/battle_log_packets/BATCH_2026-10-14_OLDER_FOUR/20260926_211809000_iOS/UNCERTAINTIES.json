@@ -1,0 +1,12 @@
+{
+  "source_sha256": "f5b6c67fbe006c8485056d8b959a52146289cf8b95c32705b2149135b6bb6a49",
+  "items": [
+    {"id": "missing_earlier_battle", "time": "before source 0.0", "uncertainty": "Setup, earlier turns and first point are unrecorded in this source.", "consequence": "battle_complete=false; pending original until valid earlier footage is linked."},
+    {"id": "actual_mode", "time": "0.0-43.463333", "uncertainty": "No visible Auto control found; actual queue, ranked status and human/computer authorship not independently established.", "consequence": "Retain actual mode unknown. Owner's default Ladder routing remains a candidate, lead-owned."},
+    {"id": "coin_result", "time": "37.5-38.0", "uncertainty": "Lucky Ice Pop coin animation is present, but settled result and final Item destination are not established before concession.", "evidence": "evidence/native_37p500s.jpg", "consequence": "No heads/tails or returned/discarded claim."},
+    {"id": "oricorio_status", "time": "source start", "uncertainty": "Blue Special Condition marker present on Oricorio; exact status not named in available footage.", "evidence": "evidence/native_00p000s.jpg", "consequence": "Do not assign a condition or earlier cause."},
+    {"id": "hidden_cards", "time": "all", "uncertainty": "Opponent draw identity, hidden hands, deeper discard contents and exact 20-card decks remain unknown.", "consequence": "No inferred searches, card identities or reconstructed deck."},
+    {"id": "fine_onsets", "time": "all", "uncertainty": "Retained native times are seek anchors; exact first frame of actions/animations was not exhaustively measured.", "consequence": "Use evidence anchors and bounded intervals rather than false subsecond precision."},
+    {"id": "battle_start_time", "time": "before source creation", "uncertainty": "Creation_time establishes the creation-derived date/time, not actual match start.", "consequence": "September 26, 2026 Chicago date is metadata-derived."}
+  ]
+}

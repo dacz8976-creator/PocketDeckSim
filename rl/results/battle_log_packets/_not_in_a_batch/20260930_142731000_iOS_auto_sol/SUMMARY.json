@@ -1,0 +1,82 @@
+{
+  "video_basename": "20260930_142731000_iOS.MP4",
+  "sha256": "7ee762613746327a0048caf31d73c7629396a60bdc9d666e71a2b8676750e81e",
+  "bytes": 260110621,
+  "duration_seconds": 143.435,
+  "reviewer": "sol_auto_142731000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_date": "2026-09-30",
+  "scope": "One complete battle, setup through terminal Victory, all six turns",
+  "first_pass_complete": true,
+  "lead_acceptance": "accepted",
+  "mode": "autopilot_vs_computer",
+  "visual_mode_evidence": {
+    "ai": "keyframes/t0004.50.jpg",
+    "auto": "keyframes/t0062.00.jpg",
+    "mode_changes_observed": false
+  },
+  "opponent": "Inteleon Deck (Deluxe Pack: Mega)",
+  "owner": "Dacz8976",
+  "result": "win",
+  "terminal_evidence": "keyframes/t0142.00.jpg",
+  "points": {
+    "owner_displayed": 3,
+    "opponent_displayed": 0,
+    "awards": [
+      1,
+      1,
+      2
+    ],
+    "final_award_evidence": "keyframes/t0135.00.jpg",
+    "note": "Final double knockout says +2; only three point circles are displayed."
+  },
+  "visible_owner_core": [
+    "Helioptile",
+    "Heliolisk Electrispark 40 plus 10 each Bench",
+    "Electrike x2"
+  ],
+  "visible_opponent_pokemon": [
+    "Feebas",
+    "Froakie x2",
+    "Squirtle",
+    "Mudkip",
+    "Marshtomp",
+    "Sobble"
+  ],
+  "important_observations": [
+    "Clemont's Backpack is played before turn-four evolution and boosts the later Heliolisk attack.",
+    "Each boosted Electrispark deals 30 to all occupied opposing Bench slots.",
+    "Elegant Cape on Basic Electrike gives no immediate HP increase.",
+    "Clemont/Field Blower turn-four enlargements are draw reveals after Copycat, not plays.",
+    "Final attack knocks out Active Marshtomp and Benched Froakie and shows +2 points."
+  ],
+  "reviewed_interval_seconds": [
+    0,
+    143.435
+  ],
+  "remaining_unreviewed_intervals": [],
+  "uncertainty_file": "UNCERTAINTIES.json",
+  "ladder_eligible": false,
+  "ladder_action": "excluded_by_owner_instruction; no write",
+  "evidence": {
+    "overview_sheets": 6,
+    "overview_samples": 48,
+    "targeted_full_resolution_frames": 40,
+    "targeted_contact_sheets": 4
+  },
+  "worker_actions_at_submission": {
+    "source_moved": false,
+    "global_log_or_index_written": false
+  },
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_142731000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20260930_142731000_iOS.MP4.json",
+  "archive_completion_event_id": "8f6d4251-3841-47cb-b1ac-cf9473a2a670",
+  "global_registration_complete": true,
+  "current_review_event_id": "dac1ef9c-f116-428a-a1dd-35b15b384d6c",
+  "post_acceptance_corrections": "POST_ACCEPTANCE_CORRECTIONS.md"
+}

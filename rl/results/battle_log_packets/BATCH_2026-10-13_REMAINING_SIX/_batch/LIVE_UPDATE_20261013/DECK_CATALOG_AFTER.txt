@@ -1,0 +1,295 @@
+Window: "Pause Games - Google Chrome", App: chrome.exe.
+	0 window Pause Games - Google Chrome Secondary Actions: Raise
+		1 pane (disabled)
+		2 region Pause Games - Google Chrome
+			3 region
+				4 region
+					5 region
+						6 button Minimize ID: view_1
+						7 button Maximize ID: view_2
+						8 button Close ID: view_4
+					9 region
+						10 region
+							11 tool bar ID: view_1000
+								12 button Back ID: view_1001
+								13 button (disabled) Forward ID: view_1002
+								14 button Reload ID: view_1003
+								15 group
+									16 button View site information ID: view_1011
+									17 edit (settable, string) Address and search bar Description: Search Secure Search or type a URL Value: claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd ID: view_1012
+									18 region
+										109 button To open this link, choose an app
+										110 button Bookmark this tab
+								19 region
+									20 button Extensions ID: view_1006
+								21 region
+								22 button Control your music, videos, and more
+								23 button Dustin ID: view_1018
+								24 button Chrome ID: view_1007
+							37 region
+						38 region
+							39 region
+								40 region
+								3952 document Pause Games Value: https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd ID: RootWebArea
+									3956 group
+										3953 header Artifact controls ID: hdr
+											3957 link Home Value: https://claude.ai/
+											3958 button Pause Games ID: base-ui-_r_6_
+											3959 text Artifact by you
+											3960 button You ID: base-ui-_r_1l_
+												3961 group You
+													3962 graphic Dustin Culp
+											3963 group Comments
+												3964 toggle button Comment on this artifact
+												3965 button More comment options
+											3966 button Chat with Claude
+											3967 button Share, shared with anyone who has the link ID: base-ui-_r_12_
+											3968 status
+											3969 alert
+											3970 button Open task
+										3954 main
+											3971 document User-generated artifact content Description: User-generated artifact content ID: frame-content
+												3972 document Pause Games Value: https://c9b55931-e71a-42fe-aa8f-919f5daea128.frame.claudeusercontent.com/_f/1791322213-382e/ ID: RootWebArea
+													3973 note
+														3974 text Pause games: not ladder results
+														3975 text Opponents are random testers. Read the ratings, not the record.
+													3976 tab Sections
+														3977 tab item (selectable) Log ID: tab-log
+														3978 tab item (selectable) Decks ID: tab-decks
+														3979 tab item (selectable) Summary ID: tab-sum
+													3980 heading Pause Games
+													3981 text Games played in competitive mode while ranked is paused, with how each deck felt. A concession by your opponent counts as a full win.
+													5129 tab panel Decks ID: p-decks
+														5130 text Five decks that clear the bot's floor check and have never been logged on the ladder, and the four drafts from the brew shortlist, each tagged with what its floor page said (Oct 2). Open a deck for its list, its QR code and its deck code.
+														5131 group ID: decklist
+															5132 article
+																5133 heading Wailord / Indeedee wall
+																5134 text FLOOR-CLEARED, NEVER LOGGED
+																5135 text Water energy
+																5136 text Wailord and Indeedee ex soak damage while Heavy Helmet, Lucky Ice Pop and Soothing Shore keep healing.
+																5137 button Show list and QR
+																5138 button Log a game with it
+															5139 article
+																5140 heading Mega Blaziken tournament list
+																5141 text FLOOR-CLEARED, NEVER LOGGED
+																5142 text Fire energy
+																5143 text Torchic into Mega Blaziken ex with Rare Candy, Flame Patch and a Rocky Helmet.
+																5144 button Show list and QR
+																5145 button Log a game with it
+															5146 article
+																5147 heading Mega Manectric / Heliolisk
+																5148 text FLOOR-CLEARED, NEVER LOGGED
+																5149 text Lightning energy
+																5150 text Mega Manectric ex hits harder for every point you have; Heliolisk and Clemont's Backpack add Lightning damage.
+																5151 button Show list and QR
+																5152 button Log a game with it
+															5153 article
+																5154 heading Alolan Ninetales / Raticate
+																5155 text FLOOR-CLEARED, NEVER LOGGED
+																5156 text Water energy
+																5157 text Alolan Ninetales ex's Binding Snow keeps their Energy off the Active; Team Rocket's Raticate ex steals one when it evolves.
+																5158 button Show list and QR
+																5159 button Log a game with it
+															5160 article
+																5161 heading Brew 7: Hoopa / Darkrai / Sableye
+																5162 text FLOOR-CLEARED, NEVER LOGGED
+																5163 text Darkness energy
+																5164 text Hoopa ex, Darkrai ex and Mega Sableye ex with Deceptive Needle, Lucky Ice Pop and Starting Plains.
+																5165 button Show list and QR
+																5166 button Log a game with it
+															5167 article
+																5168 heading Draft A: Shark Tempo
+																5169 text DRAFT · FLOOR: CLEARS (950 OF 1,920)
+																5170 text Water energy
+																5171 text Mega Sharpedo ex hits for one Water Energy and arms the Bench every turn; Alolan Ninetales ex denies their Energy.
+																5172 button Show list and QR
+																5173 button Log a game with it
+															5174 article
+																5175 heading Draft B: Tide Heal
+																5176 text DRAFT · FLOOR: FAILS (236 OF 1,920) · SET ASIDE
+																5177 text Water energy
+																5178 text SET ASIDE (Oct 2): it met its own stopping condition, 34 wins of 240 against Lucario (14%), under its 30% line. Kept, not to be played. No Pokémon ex. Starmie and Milotic hit for 60 and the deck heals every turn.
+																5179 button Show list and QR
+																5180 button Log a game with it
+															5181 article
+																5182 heading Draft C: Meowstic / Hatterene v2
+																5183 text DRAFT · FLOOR: BORDERLINE (366 OF 1,920), PROVISIONAL
+																5184 text Psychic energy
+																5185 text Brew 5b with the fixes from his own notes: Meowstic confuses, retreats, and Hatterene hits for 140.
+																5186 button Show list and QR
+																5187 button Log a game with it
+															5188 article
+																5189 heading Draft D: Entei / Grimhound
+																5190 text DRAFT · AMENDED: 1 MEGA HOUNDOOM EX · NO FLOOR PAGE YET (THE 2-COPY LIST CLEARED: 693 OF 1,920)
+																5191 text Fire energy
+																5192 text Entei ex tempo, Magby's free Energy, and Mega Houndoom ex's three coins with Victory Star. Amended Oct 2: one Mega Houndoom ex (he owns one), and a Copycat in place of the second to find it.
+																5193 button Show list and QR
+																5194 button Log a game with it
+															5195 heading Filmed decks
+															5196 text Lists taken from the deck QR code shown in each recording. The QR gives the cards, not the artwork or rarity. A list tagged Filmed edit was changed on film and has no QR code.
+															5197 article
+																5198 heading Butterfree / Accelgor
+																5199 text FILMED QR
+																5200 text Grass energy
+																5201 text New Grass deck; absent from the nine current live deck choices. QR identifies playable versions; listed references do not establish filmed artwork or rarity.
+																5202 button Show list and QR
+																5203 button Log a game with it
+															5204 article
+																5205 heading Mega Blaziken / Combusken
+																5206 text FILMED QR
+																5207 text Fire energy
+																5208 text Separate variant: Combusken x2 replaces Rare Candy x2 in the current tournament list. QR identifies playable versions; listed references do not establish filmed artwork or rarity.
+																5209 button Show list and QR
+																5210 button Log a game with it
+															5211 article
+																5212 heading Wailord / Mega Sharpedo / Suicune
+																5213 text FILMED QR
+																5214 text Water energy
+																5215 text New Water deck; distinct from Wailord / Indeedee wall and Draft A: Shark Tempo. QR identifies playable versions; listed references do not establish filmed artwork or rarity.
+																5216 button Show list and QR
+																5217 button Log a game with it
+															5218 article
+																5219 heading Hatterene / Aromatisse / Togekiss
+																5220 text FILMED QR
+																5221 text Psychic energy
+																5222 text New Psychic deck; distinct from Draft C Meowstic / Hatterene v2. The filmed slot label was reused for a different deck. QR identifies playable versions; listed references do not establish filmed artwork or rarity.
+																5223 button Show list and QR
+																5224 button Log a game with it
+															5225 article
+																5226 heading Aegislash / Tinkaton ex / Team Rocket's Tinkaton
+																5227 text FILMED QR
+																5228 text Metal energy
+																5229 text Metal variant with one Tinkaton ex and one Team Rocket's Tinkaton. QR identifies playable versions; listed references do not establish filmed artwork or rarity.
+																5230 button Show list and QR
+																5231 button Log a game with it
+															5232 article
+																5233 heading Aegislash / Team Rocket's Tinkaton
+																5234 text FILMED QR
+																5235 text Metal energy
+																5236 text Metal revision with two Team Rocket's Tinkaton and no Tinkaton ex. QR identifies playable versions; listed references do not establish filmed artwork or rarity.
+																5237 button Show list and QR
+																5238 button Log a game with it
+															5239 article
+																5240 heading Skarmory ex / Aegislash / Orthworm
+																5241 text FILMED QR
+																5242 text Metal energy
+																5243 text Distinct Metal list with two Skarmory ex and one Orthworm. QR identifies playable versions; listed references do not establish filmed artwork or rarity.
+																5244 button Show list and QR
+																5245 button Log a game with it
+															5246 article
+																5247 heading Aegislash / Melmetal ex / Magnezone
+																5248 text FILMED QR
+																5249 text Metal energy
+																5250 text Distinct Metal list; preserves two Honedge, Doublade and Aegislash versions by semantic identity. QR identifies playable versions; listed references do not establish filmed artwork or rarity.
+																5251 button Show list and QR
+																5252 button Log a game with it
+															5253 article
+																5254 heading Nidoking / Nihilego / Darkrai ex (two Darkrai)
+																5255 text FILMED QR
+																5256 text Darkness energy
+																5257 text Darkness variant with two Darkrai ex. QR identifies playable versions; listed references do not establish filmed artwork or rarity.
+																5258 button Show list and QR
+																5259 button Log a game with it
+															5260 article
+																5261 heading Nidoking / Nihilego / Darkrai ex (one Darkrai)
+																5262 text FILMED QR
+																5263 text Darkness energy
+																5264 text Darkness revision with one Darkrai ex; Trainer composition also preserved from this QR. QR identifies playable versions; listed references do not establish filmed artwork or rarity.
+																5265 button Show list and QR
+																5266 button Log a game with it
+															5267 article
+																5268 heading Scolipede / Mega Sableye ex
+																5269 text FILMED QR
+																5270 text Darkness energy
+																5271 text Distinct Darkness list with two Mega Sableye ex. QR identifies playable versions; listed references do not establish filmed artwork or rarity.
+																5272 button Show list and QR
+																5273 button Log a game with it
+															5274 article
+																5275 heading Terapagos ex / Silvally / Persian
+																5276 text FILMED QR
+																5277 text Grass, Darkness, Metal energy
+																5278 text Distinct list with Snorlax ex and Grass, Darkness and Metal Energy; two Meowth versions preserved. QR identifies playable versions; listed references do not establish filmed artwork or rarity.
+																5279 button Show list and QR
+																5280 button Log a game with it
+															5281 article
+																5282 heading Conkeldurr / Sandslash / Hitmonchan ex
+																5283 text FILMED QR
+																5284 text Fighting energy
+																5285 text Distinct Fighting list; two Conkeldurr and Sandslash versions preserved. QR identifies playable versions; listed references do not establish filmed artwork or rarity.
+																5286 button Show list and QR
+																5287 button Log a game with it
+															5288 article
+																5289 heading Snorlax ex / Team Rocket's Persian / Silvally (Water revision)
+																5290 text FILMED EDIT
+																5291 text Water energy
+																5292 text Continuous filmed edit between games replaces ordinary Meowth/Persian with Team Rocket versions, removes Terapagos ex, splits Silvally into Gold Breaker and Brave Buddies, adds two Soothing Shore, and sets Water only. No revised QR was filmed. Semantic references do not assert the filmed artwork.
+																5293 button Show list
+																5294 button Log a game with it
+															5295 article
+																5296 heading Conkeldurr / Garganacl
+																5297 text FILMED QR
+																5298 text Fighting energy
+																5299 text Filmed QR 20261010_013009000_iOS.MP4 at 1s. Semantic card identity only; artwork and rarity unverified.
+																5300 button Show list and QR
+																5301 button Log a game with it
+															5302 article
+																5303 heading Kingdra ex / Team Rocket's Weezing ex
+																5304 text FILMED QR
+																5305 text Water energy
+																5306 text Filmed QR 20261010_015452000_iOS.MP4 at 0s. Semantic card identity only; artwork and rarity unverified.
+																5307 button Show list and QR
+																5308 button Log a game with it
+															5309 article
+																5310 heading Glimmora / Alolan Muk / Kingambit / Regigigas
+																5311 text FILMED QR
+																5312 text Darkness energy
+																5313 text Identical QR in all four October 12 uploads. Semantic card identities verified; filmed artwork and rarity unverified.
+																5314 button Show list and QR
+																5315 button Log a game with it
+															5316 article
+																5317 heading Haxorus / Dragonair / Druddigon
+																5318 text FILMED QR
+																5319 text Fighting + Metal energy
+																5320 text Same native QR in both October 12 Chicago evening games. Exact semantic 20-card list and Fighting/Metal Energy verified; filmed artwork and rarity unverified.
+																5321 button Show list and QR
+																5322 button Log a game with it
+														5323 text The QR code is the game's own deck-import code (Decks, Import, QR), made by the project's encoder, the same format as the Season Brews page. The code carries each card, not a printing, so any printing you own counts. Check that you own every card in a list before you import it.
+										4046 status
+										4047 alert
+										4048 status
+										4049 status
+										4050 status
+										4051 status
+										4052 status
+										4053 status
+										4054 status
+										4055 status
+										4056 status
+										4057 status
+						75 group Infobar Container ID: view_1039
+							3943 alert Infobar Secondary Actions: Raise
+								3944 region
+								3945 region
+								3946 region
+									3947 text "ChatGPT" started debugging this browser
+									3948 button Cancel
+								3949 region
+								3950 region
+									3951 button Close
+							85 region
+						86 region
+							87 region ID: view_21
+								88 tab
+									89 tab item (selectable) Pause Games ID: view_20
+										90 button Close
+								91 region
+							92 button New Tab
+							93 region
+							94 region
+								95 button Open Gemini in Chrome
+								96 region
+						97 region
+
+Document text: ```
+claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd
+```

@@ -1,0 +1,113 @@
+{
+  "lead": "/root",
+  "source_sha256": "7a5b29f607ce5b5779bf5dab49e28427c3db42e4e9a38323f1db182471ff3285",
+  "updated_utc": "2026-10-13T15:40:44.696226+00:00",
+  "full_second_pass": false,
+  "checks": [
+    {
+      "path": "turn_evidence/t0032.00.jpg",
+      "sha256": "febe9b0967aec59941a382722c674e1fcfe2fe905fa9f08fc0b8eafe9425ca3a",
+      "observed": "Five opening faces before Active: Glimmora, Pawniard, Alolan Muk non-ex, Research, Copycat; owner first."
+    },
+    {
+      "path": "turn_evidence/t0201.00_bottom.jpg",
+      "sha256": "bc79b15e4023121b6948b1de9fa2a93a46a08ecc9c81dda83220db92084c2050",
+      "observed": "Genuine ordinary preplay hand Kingambit/Glimmet/Muk3; original action order must be checked against selected Muk202."
+    },
+    {
+      "path": "turn_evidence/t0202.00.jpg",
+      "sha256": "152fd043be39301c26d1e9bec7e660393eaf9311537c060747054287d82889d3",
+      "observed": "Muk selected over right Bench Grimer while Glimmet remains in hand. Contradicts original firstplayGlimmet claim; evolution precedes Glimmet."
+    },
+    {
+      "path": "turn_evidence/t0210.00_bottom.jpg",
+      "sha256": "6d81db968e7e837c403b71384f6815b2c95fb56930c39b86d465558aecd7faff",
+      "observed": "Ending hand Kingambit1; start3 minusMuk evolution minusGlimmet bench reconciles1."
+    },
+    {
+      "path": "turn_evidence/t0060.00.jpg",
+      "sha256": "84b99e70b7a56dc1f1688ae3a7a8d2ee8155d79353767726619131ccaf107ee1",
+      "observed": "Literal Seal of Antiquity prevents Regigigas ATTACK without namedRegis onBench. It does not prevent attachment."
+    },
+    {
+      "path": "turn_evidence/t0068.00.jpg",
+      "sha256": "333c4954a5a9ad340da1f4504ba7d4a4b06d555136786ada9acaae63261f27a7",
+      "observed": "Settled hand Glimmora/Muk/Copycat3, noResearch zoom. Primary supplied anchor message called thisResearch; checker checking actual ledger naming."
+    },
+    {
+      "path": "turn_evidence/t0069.00.jpg",
+      "sha256": "8255ede1479b7ab8d5c5fba8b6fb4802043c7804873a0eb943a03851f874d96f",
+      "observed": "RareCandy reveal after Research; this is notResearch arrival."
+    },
+    {
+      "path": "turn_evidence/t0144.00.jpg",
+      "sha256": "fe5a94ec5893d89bc910e28e90aefbbe832335dcd0a73b8abb0af273c094fe89",
+      "observed": "Copycat first reveal PokeBall, initiallyemptyhand."
+    },
+    {
+      "path": "turn_evidence/t0145.00.jpg",
+      "sha256": "949b3d15472eade0079b8ff4cb87af205a64396c69b684bc333a91bf365803e2",
+      "observed": "Copycat nextKingambit, PokeBallalreadyinhand."
+    },
+    {
+      "path": "turn_evidence/t0146.00.jpg",
+      "sha256": "b9b378d8b633e79a87dc8547033c090365a5396155c9738695b15f29cf839b31",
+      "observed": "Copycat nextGlimmet, PokeBall/Kingambit alreadyinhand; order3supported."
+    },
+    {
+      "path": "turn_evidence/t0152.00.jpg",
+      "sha256": "0cd9e3e302fb301ce9b9b6949ac79ebbe4e13fefc594d11c57e1cd79c37a7330",
+      "observed": "PokeBall searched AlolanGrimer arrives; Kingambit/Glimmet inhand. Nohiddenextra card."
+    },
+    {
+      "path": "turn_evidence/t0428.00.jpg",
+      "sha256": "d17d0258216f39707d2219ecd4302fa45043b67b835137e6d2023fb83fabbc86",
+      "observed": "Raticateex Active120 withDarkness1+Metal2; opponentBench Mega180 Lightning1/Fighting1,Pichu10,Rattata40. OwnerKingambit140 Dark2+Helmet,Muk110,handGlimmora1."
+    },
+    {
+      "path": "turn_evidence/t0538.00.jpg",
+      "sha256": "3c589fbd503948748876c52f16d66561cdb8da9d11d3c91ed0dc2a3e911486b1",
+      "observed": "Ilima normalarrival during Turn15 and waitingbanner, Glimmoraalreadyinhand, bothscores2 beforeaward. Opponent remains disconnected."
+    },
+    {
+      "path": "turn_evidence/t0550.00.jpg",
+      "sha256": "c35b3aff33af8f3c1d90d610b69ae7e06e9d6704e5d075b602af584dbaa2b814",
+      "observed": "Timeout +3points animation; owner cappedthree litpoints, opponent2. NoKO or concession shown."
+    },
+    {
+      "path": "turn_evidence/t0553.00.jpg",
+      "sha256": "4707f8088e8f5edf35308cb0524be4a9043c7c27fad33471eb3bcbc59342f872",
+      "observed": "Victory terminal, Kingambit displayed. OutcomeWinbyreturntimeout."
+    },
+    {
+      "path": "turn_evidence/t0070.00.jpg",
+      "observed": "Root directly viewed Glimmet reveal with RareCandy alreadyinhand. Earlier69Candy then70Glimmet chronologicalResearchdraw confirmed.",
+      "sha256": "432d7cca05f3ccb8506e1865e4045bcd64f0a327e83c2036aa17539a3494e6ca"
+    },
+    {
+      "path": "turn_evidence/t0214.00.jpg",
+      "observed": "T5end transition: Pawniard50 Darkness1, Glimmet60 Energy0,Muk110 Energy0,Regigigas150 Energy0; Kingambit hand1. Confirms corrected targetPawniard ratherthanMuk.",
+      "sha256": "9ae58a754f713b1a482d9fb009bf521d5198a8055ba24f847135e0ebb6375897"
+    },
+    {
+      "path": "turn_evidence/t0297.00.jpg",
+      "observed": "Regular Darkness orb targets leftBenchKingambit with existingDarkness1. GlimmetActiveDarkness1 alreadypresent; Muk0. Attachment is Kingambit secondDarkness.",
+      "sha256": "6b14a1d5d03dbf798b2fdaff5b8d3d7c11b68a5c0632986443d85e0e33bcb673"
+    },
+    {
+      "path": "turn_evidence/t0303.00.jpg",
+      "observed": "T9end/turn10transition: KingambitDarkness2,GlimmetDarkness1,MukEnergy0. Hand0 aftersecondPop tailsdiscard; opponentMega160.",
+      "sha256": "8e92a8a4a969d06f9debd56e86d13856055877a5c2be5ac91276de8905e72da0"
+    },
+    {
+      "path": "turn_evidence/t0377.00.jpg",
+      "observed": "Darkness orb visibly travelling to rightBenchMuk; ownerKingambitDark2+Helmet,GlimmetActiveDark1. Confirms laterMukattachment, notearlyT5. Hand0.",
+      "sha256": "1a77edb9792700d36c2dfa724c044ec87f8a0d735c7edb98051ac9f8d0f3b842"
+    }
+  ],
+  "pending_primary_repairs": [],
+  "original_findings_preserved": [
+    "Research RareCandy69 thenGlimmet70 exactarrival/order; Turn5 MukthenGlimmet; typedEnergytargets/propagation T5onwards, plus Turn11 HelmetbeforeMukattachment. Awaiting separately accepted revised8 hashes."
+  ],
+  "repair_resolution": "Independent corrected-input recheck accepted all eight current hashes; root retained direct source observations and reconciled repaired actions, timing and board state. Rejected bytes remain preserved."
+}

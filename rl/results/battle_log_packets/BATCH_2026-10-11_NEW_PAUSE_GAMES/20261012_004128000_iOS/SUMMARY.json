@@ -1,0 +1,62 @@
+{
+  "source_video": "20261012_004128000_iOS.MP4",
+  "source_sha256": "dbf23091859cbe159afc724f32f517f75925ab214343474285306b035ee4146e",
+  "reviewer": "/root/pause_20261012_004128000_iOS",
+  "model": "gpt-6.1-sol",
+  "scope": "Whole136.57s source; QR, matchmaking, five opening, setup, all4 turns, terminal Victory, postgame navigation",
+  "status": "worker_complete_pending_independent_acceptance",
+  "classification": "human",
+  "mode": "human PvP; exact ranked/casual label not established",
+  "owner": "Dacz8976",
+  "opponent": "ユオカ",
+  "deck": "Kingdra ex / Team Rocket's Weezing ex",
+  "visible_core": [
+    "Horsea",
+    "Kingdra ex",
+    "Team Rocket's Koffing"
+  ],
+  "source_game_count": 1,
+  "turn_count": 4,
+  "match_date": "2026-10-11",
+  "recording_creation_time_utc": "2026-10-12T00:41:28Z",
+  "outcome": {
+    "owner": "win",
+    "method": "knockout of opponent last Pokemon",
+    "concession": false,
+    "terminal_turn": 4,
+    "final_points": {
+      "owner": 1,
+      "opponent": 0
+    },
+    "evidence_ids": [
+      "t0118.50",
+      "t0121.00",
+      "t0123.00",
+      "t0128.00",
+      "t0131.00"
+    ],
+    "result_basis": "Stormy Prison90 knocks out Slowpoke80HP. Opponent Bench empty. Victory screen names Dacz8976."
+  },
+  "opening_complete": true,
+  "owner_draw_identities_complete": true,
+  "owner_ending_hands": {
+    "2": 3,
+    "4": 2
+  },
+  "opponent_fans_at_owner_turn_start": {
+    "2": 4,
+    "4": 5
+  },
+  "live_deck_exact_QR_match": true,
+  "capture_status": "complete_with_recording_limits",
+  "limitations": [
+    "Opponent hidden hand faces never exposed; every opponent draw name is null.",
+    "Neither discard pile opened; only face-up top and public play history available.",
+    "Normal draw ends are approximate observed boundaries, not measured encoded frame PTS.",
+    "Queue rank/name not shown clearly; human PvP is established by opponent search, clocks, fan and no Auto control.",
+    "Lead verified MP4 creation_time2026-10-12T00:41:28Z, Chicago local2026-10-11 at19:41:28. Match date2026-10-11 uses metadata plus phone clock; filename date is UTC.",
+    "Exact played artwork/rarity not inferred from QR or log."
+  ],
+  "external_log_written": false,
+  "archive_moved": false
+}

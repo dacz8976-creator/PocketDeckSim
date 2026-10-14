@@ -1,0 +1,50 @@
+# Full recording review: 20261010_014541000_iOS.MP4
+
+Reviewer: /root/pause_014541, GPT-6.1 Sol, high. This is the complete first visual pass, pending independent lead acceptance. Source SHA-256: `f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae`. Frozen identity in SOURCE.json. Recording duration 504.478333 seconds. Creation metadata2026-10-10T01:45:41Z, equivalent to October9,2026,20:45:41CDT. Match date is October9local.
+
+One human battle is recorded against Max Ketchum. The opening shows online opponent search, and no Auto control appears in the reviewed gameplay. The specific queue type is not established. Dustin loses by knockouts: Mega Sharpedo ex KOs Kingdra ex on turn 8 for two points; Suicune ex KOs Team Rocket's Weezing ex on turn 12 to reach the capped three-point win display. The501 second result reads Defeat vs Max Ketchum. No concession is shown.
+
+## Setup and deck
+
+0–36 seconds covers filmed deck selection, opponent search, loading and coin/setup animation. The selected slot24 is New deck13. At39 seconds the five opening cards, left to right, are Horsea, Team Rocket's Koffing, Sabrina, Small Balloon, Kingdra ex. Horsea is selected Active; Koffing goes to Bench position 1. The Kingdra name is partly clipped in the opening fan but native 55 seconds confirms the retained card as Kingdra ex. Opponent opens Feebas30 HP. No filmed QR/full deck list appears before or after this battle. The initial shared23-deck snapshot lacked a Kingdra/Weezing entry. Root has since added and read back the later source-qualified QR20 candidate, recorded in ../LIVE_NEW_DECKS_VERIFIED.json. The later015452QR is a candidate list, not proof of this earlier game's exact20-card version. DECK_USED.json keeps that limit explicit.
+
+## Every recorded turn
+
+This table is the readable counterpart of TURN_LEDGER.json. Rows contain ordered voluntary actions, and the JSON separately retains automatic effects, named draws/searches, hand counts, both boards and Energy Zones.
+
+| Turn | Player | Source seconds | Ordered meaningful actions |
+|---|---|---|---|
+| 1 | owner | 52–72 | 1. Small Balloon: Tool attaches; visible retreat reduction; 2. Hiking Trail: Stadium becomes Hiking Trail; 3. end_turn: Manual turn end |
+| 2 | opponent | 72–123 | 1. Soothing Shore: Replaces Hiking Trail; 2. Poké Ball: Search adds a hidden Basic; Carvanha subsequently revealed; 3. Carvanha: Carvanha benched; 4. Sabrina: Owner chooses Koffing to replace Horsea; 5. energy_attachment: One Water attached; 6. Feebas: Splash 10; Koffing 60→50 |
+| 3 | owner | 123–167 | 1. Poké Ball: Search finds Horsea; 2. Horsea: Second Horsea benched; 3. Rare Candy: Evolves original Horsea directly into Kingdra ex; consumes Rare Candy and Kingdra ex; 4. Sabrina: Feebas moves to Bench position 2; Carvanha becomes Active; 5. retreat: Free retreat with Small Balloon; no Energy discarded; 6. energy_attachment: First Water attached; 7. end_turn: Manual turn end; Kingdra has only one Water |
+| 4 | opponent | 167–204 | 1. Suicune ex: Suicune ex benched; 2. Mega Sharpedo ex: Carvanha evolves directly into Mega Sharpedo ex; 3. energy_attachment: One Water attached; 4. Mega Sharpedo ex: Turbo Shark 70; Kingdra 170→100 |
+| 5 | owner | 204–220 | 1. energy_attachment: Second Water attached; 2. Kingdra ex: Stormy Prison 90; Sharpedo 190→100; cannot retreat during next opponent turn |
+| 6 | opponent | 220–256 | 1. Milotic: Feebas evolves into Milotic; Healing Ripples offered/used; 2. energy_attachment: Suicune Water1→2; 3. Mega Sharpedo ex: Turbo Shark70; Kingdra120→50 |
+| 7 | owner | 256–290 | 1. Professor's Research: Draws Elegant Cape then Soothing Shore; 2. energy_attachment: First Water attached; 3. Kingdra ex: Stormy Prison90; Sharpedo180→90; next-turn retreat blocked |
+| 8 | opponent | 290–348 | 1. Elegant Cape: Stage 1 Tool raises effective maximum HP190→220 and current HP90→120; 2. energy_attachment: Suicune Water2→3; 3. Mega Sharpedo ex: Turbo Shark70 KOs Kingdra70 HP; opponent earns2 points |
+| 9 | owner | 348–394 | 1. Team Rocket's Weezing ex: Evolution carries10 damage: Weezing130/140; 2. retreat: Horsea retreats; one Water discarded; Weezing becomes Active; 3. energy_attachment: First Water attached; 4. end_turn: Manual end; no Weezing attack |
+| 10 | opponent | 394–431 | 1. energy_attachment: Milotic Water2→3; 2. retreat: Free retreat; one attached Water retained; Sharpedo leaves Active and Poison clears; 3. Suicune ex: Crystal Waltz60 from three total Benched Pokémon; Weezing140→80 |
+| 11 | owner | 431–452 | 1. Team Rocket's Koffing: Second Koffing benched at60 HP; 2. Elegant Cape: Tool attaches to Basic Koffing; displayed60 HP unchanged; its Stage 1 HP benefit does not apply; 3. energy_attachment: First Water attached after prior retreat discarded its previous Energy; 4. end_turn: Manual end; no attack |
+| 12 | opponent | 452–501 | 1. energy_attachment: Milotic Water3→4; 2. Feebas: Second Feebas benched; 3. Irida: Heals40 from each eligible Pokémon; only damaged Sharpedo visibly changes130→170; 4. Suicune ex: Crystal Waltz100 from five total Benched Pokémon; Weezing100→0; terminal win for opponent |
+
+## Draw and hand reconciliation
+
+Owner turn 1 draws Hiking Trail, begins with four cards after setup, plays Small Balloon then Hiking Trail, ends manually with two, and Hiking Trail draws Poké Ball to finish at three. Turn 3 draws Rare Candy; Poké Ball finds a second Horsea, which is benched; Rare Candy plus Kingdra ex evolve the original Horsea; Sabrina is played, leaving zero cards. Turn 5 draws the second Kingdra ex and keeps it, ending with one card. Turn 7 draws Professor's Research, plays it, then reveals Elegant Cape followed by Soothing Shore; hand ends at three. Turn 9 draws Team Rocket's Weezing ex and evolves Koffing; the three other cards stay in hand. Turn 11 draws a second Koffing, benches it and attaches Elegant Cape, leaving Kingdra ex and Soothing Shore, two cards.
+
+Directly counted opponent fan sizes at the six owner-turn starts are4,2,1,1,1,3. Native top crops retain each count. Opponent search/draw faces stay unknown. Turn 2 Poké Ball's search result is face-down; Carvanha is subsequently publicly benched and is not falsely represented as a direct search reveal.
+
+## Reconciled changes and decisions
+
+Small Balloon attaches to Koffing on turn 1 and enables its free retreat on turn 3. Kingdra gets its first Water on turn 3 and second on turn 5. Its Stormy Prison attacks on turns 5and7 each deal90 and apply the visible next-turn retreat block. Soothing Shore heals the owner's Kingdra by 20 at each of those turn ends. Milotic's evolution Healing Ripples heals opposing Sharpedo60 on turn 6, followed by Shore20. Elegant Cape attaches to Mega Sharpedo ex on turn 8, increasing effective maximum190→220 and current90→120; Turbo Shark then KOs Kingdra70 HP. Owner chooses the energized second Horsea as replacement.
+
+Turn 9 Weezing evolution carries Koffing's10 damage and the owner accepts Boiler Smog Yes, poisoning and burning Sharpedo. Horsea pays one Water to retreat. A Water attaches to Weezing; the owner manually ends without an attack. Shore heals Weezing130→140. Poison 10 and Burn 20 lower Sharpedo140→110, and the visible Burn-recovery coin clears Burn; Poison remains until Sharpedo retreats for free on turn 10, retaining its Water. Suicune Crystal Waltz deals60 with three total Benched Pokémon. Legendary Pulse draws one opponent card; Shore heals Sharpedo on the Bench. Turn 11 Cape attaches to Basic Koffing and its60 HP does not increase, consistent with the visible Tool text requiring Stage 1. The owner attaches Water to Horsea and manually ends, healing Weezing80→100. Turn 12 adds Feebas to the opponent Bench, plays Irida to heal eligible Water-attached Pokémon40, visibly Sharpedo130→170, and Crystal Waltz deals100 with five total Benched Pokémon, exactly KOs Weezing100 HP. Owner points remain zero.
+
+The Cape inspection on turn 7 is a card view, not a played Tool; it stays in hand. No unsuccessful search or declined warning is observed. Boiler Smog is an accepted prompt. Weezing does not attack in this source; its card displays two Darkness requirements, while filmed Energy Zone previews are Water.
+
+## Evidence and recording limits
+
+TURN_EVIDENCE.json binds native 1170×2532 frames to the source filename/hash, preserves requested source-local seek times, bottom-fifth crops[0,2025,1170,2532] and top crops[0,0,1170,780]. Owner draws have approximately+1,+3,+6 second candidates plus before-ending hands; later candidates that already show actions are not used as pre-play evidence. Clear selections are56,126.5,206.5,260,351and434 seconds. Actual extracted-frame PTS was not measured. Draw-end estimates have roughly0.5 second precision. The native images, dense2 second52–112pass, dense3 second114–486pass and targeted1 second255–274pass are retained. VIEWED_EVIDENCE_MANIFEST.json lists inspected image sheets and direct native views.
+
+Neither discard pile is opened at any point. Discard snapshots are therefore unavailable, and public play/retreat history is not misrepresented as a full discard pile. Hidden opponent card identities, unseen deck slots and exact print identifiers remain unknown. Exact20-card deck binding is unverified. Targeted native checks resolved the turn 12 healing card as Irida and confirmed Sharpedo free retreat retaining its Water. Full first-pass coverage is complete; acceptance and registration remain the lead's responsibility.
+
+Later-candidate version conflict: the subsequent 015452 QR deck omits Elegant Cape, which is visibly drawn and played here. This game must remain an earlier unverified variant and must not inherit that later exact list.

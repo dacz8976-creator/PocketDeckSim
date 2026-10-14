@@ -1,0 +1,27 @@
+{
+  "video_basename": "20261002_020920000_iOS.MP4",
+  "source_sha256": "a9f4cfd8c2173a889abc99ae67320174bfd83822d2027884bcb106bf19ae8514",
+  "unreviewed_intervals": [],
+  "material_questions": [
+    {
+      "id": "deferred_wailmer_evolution",
+      "status": "sent_to_lead_for_bounded_astra_check",
+      "question": "Given visible Wailmer Wave Splash costs3Water/deals60 and Active Charmeleon has80HP/Water weakness+20,was retaining Active Wailmer instead of evolving on global4 a legal local route to a global6 knockout once Water3 attached?",
+      "visible_facts": "Original Wailmer100HP/three-Water attack. Slash only dealt20 because Helmet. Owner instead evolves on global4 with2Water,heals to200. Global6 actual Wailord has3Water/four-Colorless cost and opposing Active Charmeleon80HP. Opponent global5 did not attack. Two Indeedee ex on Bench have Energy-free healing.",
+      "before_frames": ["native/t0086.00.jpg", "native/t0096.00.jpg"],
+      "after_frames": ["native/t0109.00.jpg", "native/t0123.00.jpg", "native/t0137.00.jpg"],
+      "impact": "Could distinguish structural four-turn buildup from an evolution-timing opportunity. Do not claim a guaranteed overall win or unchanged opponent responses."
+    }
+  ],
+  "honest_unknowns": [
+    {"id": "exact_queue", "observation": "Master Ball Rank badges visible at7.50s,mode selection absent", "conclusion": "PvP supported;exact selected queue unknown. Owner testimony identifies competitive intent;Pause Games log requested."},
+    {"id": "automation", "observation": "No Auto label or toggle shown throughout0-248.285s", "conclusion": "Do not infer owner Auto state from a missing toggle or opponent automation from owner selections."},
+    {"id": "hidden_lists", "observation": "Only played/drawn/revealed cards observable", "conclusion": "Visible core matches Wailord / Indeedee wall,not proof of full list. No Charizard revealed."},
+    {"id": "may_exchange", "timestamp_seconds": 143, "frame": "native/t0143.00.jpg", "conclusion": "May played;hidden returned/acquired Pokémon identities not established. Entei ex subsequently benched,without proving it was specifically acquired by May."},
+    {"id": "opponent_turn5_pass", "frames": ["native/t0123.00.jpg", "native/t0124.50.jpg"], "conclusion": "No attack shown and Wailord remains200HP. Do not assign motive."},
+    {"id": "concession_motive", "timestamp_seconds": 238, "frame": "native/t0238.00.jpg", "conclusion": "Concession explicit;reason unknown."},
+    {"id": "match_date", "conclusion": "October1 local follows lead ASSIGNMENT.json and owner new-upload testimony. Exact filename timezone remains inferred."}
+  ],
+  "outcome_uncertain": false,
+  "final_score_uncertain": false
+}

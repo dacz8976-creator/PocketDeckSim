@@ -1,0 +1,65 @@
+{
+  "source_video": "20261005_032857000_iOS.MP4",
+  "source_sha256": "a7aa71ededa0f2372282f5ba1ff0620b1fed9cedec8bb71101aee1db6eba297e",
+  "uninspected_intervals": [],
+  "consequential_open_questions": [],
+  "facts_limited_by_recording": [
+    {
+      "item": "Opponent hand and draw identities",
+      "status": "hidden",
+      "reason": "Card backs only; no guess from deck theme."
+    },
+    {
+      "item": "Serena search identity",
+      "status": "hidden",
+      "seconds": [
+        62,
+        65
+      ],
+      "reason": "One Mega Evolution ex enters hand concealed; later Mega Venusaur is not direct proof of searched identity."
+    },
+    {
+      "item": "Exact input instants",
+      "status": "bounded",
+      "reason": "Quarter-second seeks establish draw/intact fan and brief reveal; actual touch may occur between retained seeks."
+    },
+    {
+      "item": "Full opponent discard",
+      "status": "not shown",
+      "reason": "No pile opening; side previews only."
+    },
+    {
+      "item": "Live exact20card list",
+      "status": "awaiting_lead_saved_log_receipt",
+      "reason": "Nine initial live lists lack this newly filmed Metal revision. Filmed QR exactly20 and game-bound."
+    }
+  ],
+  "resolved_bounded_checks": [
+    {
+      "item": "Sabrina identity",
+      "source_seconds": 223.25,
+      "evidence_ids": [
+        "E0223_25"
+      ],
+      "result": "Recovered from subsecond card flip; forced switch."
+    },
+    {
+      "item": "Quick-Grow Extract vs ordinary evolution",
+      "source_seconds": 102.25,
+      "evidence_ids": [
+        "E0102_25",
+        "E0103_25"
+      ],
+      "result": "Item searches/evolves Ivysaur from deck, not from hand."
+    },
+    {
+      "item": "Terminal loss",
+      "source_seconds": 304,
+      "evidence_ids": [
+        "E0298_00",
+        "E0304_00"
+      ],
+      "result": "Defeat,9turns,0-2,damage220."
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "is_template": false,
+  "game_id": "20261010_012303000_iOS_game1",
+  "source_video": "20261010_012303000_iOS.MP4",
+  "source_sha256": "0e00fad4af7232b8b50c5cd9b946fdef9a1ac3e873166667e57ac3bce15bcc3e",
+  "reviewer": "/root/pause_012303",
+  "model": "gpt-6.1-sol",
+  "scope": "Entire398.131667s source; pregame, setup, all11 turns, terminal and loading tail",
+  "games_in_source": 1,
+  "mode": "human online battle; exact queue unknown",
+  "auto_control_visible": false,
+  "owner": "Dacz8976",
+  "opponent": "ナチョス",
+  "deck": "Conkeldurr / Garganacl",
+  "result": "win",
+  "score": "3-2",
+  "turn_count": 11,
+  "battle_review_status": "worker_complete_pending_independent_acceptance",
+  "capture_status": "complete_with_recording_limits",
+  "external_log_written": false,
+  "source_moved": false,
+  "meaningful_findings": [
+    "Turn5 Poké Ball no valid target explicitly shown.",
+    "Turn7 Wally Colorless attachment to Guts Conkeldurr followed by normal Fighting to Timburr.",
+    "Turn8 Lucky Ice Pop heads return and tails discard; Guts tails KO.",
+    "Turn9 confirms attack-available warning and passes. Avoiding Poison leaves Gurdurr alive for next evolution.",
+    "Turn11 Bedrock Breaker120 KOs Mega Absol ex for3points."
+  ],
+  "limits": [
+    "No discard pile opened; periodic pile-content snapshots unavailable.",
+    "Opponent hidden draws and full deck remain unknown.",
+    "Exact artwork/rarity not encoded by QR; deck snapshot preserves log variant labels.",
+    "Final results loading continues to398.13s; terminal3point/Victory already clear388-390s.",
+    "Source timestamps are local seeks; frame PTS not separately measured."
+  ]
+}

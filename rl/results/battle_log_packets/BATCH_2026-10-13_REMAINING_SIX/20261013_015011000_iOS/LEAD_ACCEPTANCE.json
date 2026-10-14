@@ -1,0 +1,52 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-13T15:02:53.336646+00:00",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "source_video": "20261013_015011000_iOS.MP4",
+  "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+  "scope": "Entire supplied recording, one human battle, opening, all 3 turns and terminal result",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 3,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015011000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "accepted_input_sha256": {
+    "REVIEW.md": "e6a868a174deb007099982533ac617737aa66c12f48cbfb239fbe694713a82a1",
+    "COVERAGE.md": "1e2abe4ae4267397343283d93f990ec0d3cf5f0dc1eb386e2f24ddc262453af9",
+    "SUMMARY.json": "b9e50619432b7deab3339026b1541911cf641f61457126a2827553bab8b17602",
+    "UNCERTAINTIES.json": "a04892994c1fa65dfab100eeeca8ddef7b164aaede792d6aceeca2011ea10085",
+    "PAUSE_GAME.json": "9bf56fe75e934190b42709c43fdc43d213c3354c75055e8eb657d20679f0235e",
+    "DECK_USED.json": "114ace3bc20ed237c0a3501678e64b9855a0046a860cd58bc6f8caf584c95fd6",
+    "TURN_LEDGER.json": "55205af2216b1635f43c16b35174d6cc3517eeccf5bbfb7318a60dab45bee206",
+    "TURN_EVIDENCE.json": "ed013d537d82a635d5e348bbea71ccb6673ac05dd821b17360f55235d3661a43"
+  },
+  "basis": "Whole-source Sol review, separately bounded Sol checks against source frames, and lead reconciliation of coverage, ordinary decisions, draws/searches, hand arithmetic, point progression, decisive sequences and terminal outcome. Structural integrity checked separately.",
+  "administrative_fields_changed_after_independent_freeze": [
+    "lead_checked",
+    "battle_review_status",
+    "lead_acceptance"
+  ],
+  "source_limits": [
+    "Opened discard pile views absent.",
+    "Future Energy counts absent.",
+    "Own filmed QR exactly matches20-card historical log snapshot; fresh live readback unavailable this turn."
+  ],
+  "outcome": {
+    "result": "win",
+    "opponent": "coke",
+    "method": "Opponent failed to return within allowed time",
+    "points": {
+      "owner": 0,
+      "opponent": 0
+    },
+    "terminal_evidence_ids": [
+      "n169_00",
+      "n172_00",
+      "n181_50",
+      "n182_30"
+    ]
+  },
+  "deck_status": "Filmed deck binding and exact dated historical live list are recorded in DECK_USED. Current browser access is blocked; no current live readback or save is claimed. A fresh saved-list readback remains a separate required external step.",
+  "external_status": "Prepared game import pending; browser stopped by URL policy check. No external save claimed."
+}

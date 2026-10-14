@@ -1,0 +1,66 @@
+{
+  "attempt_utc": "2026-10-13T01:16:36.112684+00:00",
+  "source": "20261012_230258000_iOS.MP4",
+  "operation": "one 64 MiB or smaller missing-range download",
+  "source_contents_modified": false,
+  "before": {
+    "source": "20261012_230258000_iOS.MP4",
+    "metadata": {
+      "logical_bytes": 1045075133,
+      "allocated_bytes": 524288000,
+      "attributes": 4724256,
+      "placeholder_state": 57,
+      "cloud_placeholder": true,
+      "in_sync": true,
+      "pinned": true,
+      "unpinned": false,
+      "online_only": false
+    },
+    "present_ranges": [
+      {
+        "offset": 0,
+        "length": 524288000
+      }
+    ],
+    "missing_ranges": [
+      {
+        "offset": 524288000,
+        "length": 520787133
+      }
+    ],
+    "missing_bytes": 520787133
+  },
+  "requested_offset": 524288000,
+  "requested_length": 67108864,
+  "documentation": "https://learn.microsoft.com/en-us/windows/win32/api/cfapi/nf-cfapi-cfhydrateplaceholder",
+  "exit_code": 1,
+  "stdout": "Requesting missing range 524288000+67108864\n",
+  "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_ADDITIONAL_TWO\\download_missing_range.py\", line 29, in <module>\n    raise RuntimeError(f'Hydration HRESULT 0x{hr & 0xffffffff:08X}')\nRuntimeError: Hydration HRESULT 0x800701AA\n",
+  "after": {
+    "source": "20261012_230258000_iOS.MP4",
+    "metadata": {
+      "logical_bytes": 1045075133,
+      "allocated_bytes": 524288000,
+      "attributes": 4724256,
+      "placeholder_state": 57,
+      "cloud_placeholder": true,
+      "in_sync": true,
+      "pinned": true,
+      "unpinned": false,
+      "online_only": false
+    },
+    "present_ranges": [
+      {
+        "offset": 0,
+        "length": 524288000
+      }
+    ],
+    "missing_ranges": [
+      {
+        "offset": 524288000,
+        "length": 520787133
+      }
+    ],
+    "missing_bytes": 520787133
+  }
+}

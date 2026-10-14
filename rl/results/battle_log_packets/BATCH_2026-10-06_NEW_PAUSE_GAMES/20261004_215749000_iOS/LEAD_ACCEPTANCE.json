@@ -1,0 +1,37 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-06T18:16:07.291749+00:00",
+  "source_video": "20261004_215749000_iOS.MP4",
+  "source_sha256": "2015607dfe613e8bf71f4637d5d26ed625d8a451b0541b93b3a82bf0457126af",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 6,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261004_215749000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "No opened discard-pile view occurs anywhere in the supplied source. Public play history is not a full discard snapshot.",
+    "Opponent identities behind card backs remain unknown.",
+    "Approximate draw-animation ends and action onset times are bounded to the retained frames, generally within about one second.",
+    "No hidden choices or actions are inferred from deck membership.",
+    "Exact live log snapshot is retained as retrieved, not silently amended.",
+    "The current named Mega Blaziken list cannot be claimed as the exact filmed game list: two Rare Candy are replaced by two Combusken in the QR.",
+    "QR resolves functional card entities, not artwork, rarity or exact printing.",
+    "Deck membership does not establish hidden hands or draws."
+  ],
+  "outcome": {
+    "owner_result": "win",
+    "basis": "Opponent conceded244s; Victory vs. Sherwin256s",
+    "points_at_concession": {
+      "owner": 1,
+      "opponent": 0
+    },
+    "evidence_ids": [
+      "f0244.00",
+      "f0256.00"
+    ]
+  },
+  "external_status": "Prepared for Pause Games; no new live deck or game save claimed. Missing matching current live list is preserved, filmed QR definitions prepared separately.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

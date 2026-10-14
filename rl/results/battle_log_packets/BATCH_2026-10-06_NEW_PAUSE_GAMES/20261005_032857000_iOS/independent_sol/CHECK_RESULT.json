@@ -1,0 +1,37 @@
+{
+  "schema": "pause-games/independent-acceptance-v1",
+  "game_id": "20261005_032857000_iOS",
+  "source_sha256": "a7aa71ededa0f2372282f5ba1ff0620b1fed9cedec8bb71101aee1db6eba297e",
+  "reviewer": "/root/independent_metal",
+  "accepted": true,
+  "status": "accepted_bounded_independent_check",
+  "required_repairs": [],
+  "checked_input_sha256": {
+    "SOURCE.json": "5e167153e2a6d16bf8e87954578666b13c7cd7b007b0d8bb953b6229fba506a7",
+    "REVIEW.md": "7357d839cc72df2bf67db90b66676715118148aae45a91aa6793dd7b86eb711e",
+    "COVERAGE.md": "e601035a1308585e16f9fec4d74246e9fca6065b2e2718ca6b4d56aa762776d4",
+    "SUMMARY.json": "36df067894ce71b638ed4ca02b08ddc10ead61aaa397fa5358690224ed476c84",
+    "UNCERTAINTIES.json": "cc685f783635f12d1a4fae9b2038b3f3b60922bbe24b80237c361bf005c75215",
+    "PAUSE_GAME.json": "9e16ed3b84f8d38c80a0dbcbba85e5542aa0cc4989356cb2d89c2ecbb6d50d0f",
+    "DECK_USED.json": "78ba567e24dbf31e0eaf746cda216983f1f7ea72cc6c53206530399f5b35544c",
+    "TURN_LEDGER.json": "1da97056e88f9e0d0e205de2049a7a798c75a44877384737664ae5f926a26cad",
+    "TURN_EVIDENCE.json": "7d622f3d17699a7935a8d28d3546e79615dfa4b67a327c0bed33ccc6a9eb0ae9"
+  },
+  "input_hashes_unchanged_at_completion": true,
+  "scope": "Completed whole-source Sol first pass accepted after bounded independent sampling. Does not replace whole-source reviewer or authorize shared registration, external saving or archival.",
+  "checks_passed": [
+    "Frozen SOURCE identity reused without rereading original media.",
+    "Current governing workflow and complete chronological COVERAGE read; no admitted uninspected interval.",
+    "Original native five, ordinary owner T2 first decision and ordinary opponent T3 inspected beyond unusual flags.",
+    "Intact selected owner hands and scheduled +1/+3/+6 candidates on all four owner turns inspected with before-end hands and arithmetic.",
+    "Named Research draw order, opponent deck evolution/Synthesis, Energy generation timing, both boards/fans, opened owner discard and terminal match structured packet.",
+    "160 registered frames/320 crops exist with native dimensions; all ledger evidence IDs resolve; JPEG crop alignment RGB MAE at most1.595.",
+    "Exact filmed QR20 and Metal revision matches prepared filmed-qr-1dd251acfd4e; initial live snapshot absence remains explicit."
+  ],
+  "limits": [
+    "Hidden opponent card identities and unopened opponent discard are source limits.",
+    "Initial live deck version is missing and prepared entry is not live saving proof.",
+    "This acceptance is local and bounded; root owns lead acceptance and shared actions."
+  ],
+  "viewed_evidence": "VIEWED_EVIDENCE.json"
+}

@@ -1,0 +1,5615 @@
+{
+  "source_video": "20261002_210952000_iOS.MP4",
+  "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+  "reviewer": "/root/astra_drafta_bounded_repairs",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "created_utc": "2026-10-03T00:40:11.572216+00:00",
+  "schema": "guide-update-supplement/v1",
+  "is_template": false,
+  "scope": "Only this game in the owner-authorized eight-game Draft A computer comparison. Frozen effective core is preserved.",
+  "status": "authored_pending_independent_review",
+  "original_submission_manifest": {
+    "path": "SUBMISSION.json",
+    "sha256": "ae9dbf637c49ecf5f5825338f55efe50aae03c41d905d34256c090677476b955"
+  },
+  "effective_core_manifest": {
+    "path": "SUBMISSION.json",
+    "sha256": "ae9dbf637c49ecf5f5825338f55efe50aae03c41d905d34256c090677476b955"
+  },
+  "fresh_owner_turn_boards": [
+    {
+      "turn_number": 2,
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_seconds": 31.4133,
+      "phase": "after draw and before first play",
+      "evidence_ids": [
+        "F0031.40"
+      ],
+      "stadium": {
+        "name": null,
+        "played_by": null,
+        "basis": "freshly visible shared Stadium or empty Stadium area",
+        "evidence_ids": [
+          "F0031.40"
+        ]
+      },
+      "points": {
+        "owner": 0,
+        "opponent": 0,
+        "basis": "freshly counted visible point markers",
+        "evidence_ids": [
+          "F0031.40"
+        ]
+      },
+      "discard_views": {
+        "owner": {
+          "opened": false,
+          "visible_top": null,
+          "total_count": null
+        },
+        "opponent": {
+          "opened": false,
+          "visible_top": "Professor's Research",
+          "total_count": null
+        },
+        "limit": "Only exposed top cards, not opened piles. No visible numeric total; lower stack and duplicate census unavailable.",
+        "evidence_ids": [
+          "F0031.40"
+        ]
+      },
+      "owner": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "O-L",
+          "name": "Lapras",
+          "hp_now": 110,
+          "hp_max": 110,
+          "printed_hp": 110,
+          "damage": 0,
+          "attached_energy": {
+            "total": 0,
+            "by_type": {},
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0031.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0031.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Lapras",
+            "under_top_bottom_to_top": [],
+            "under_top_directly_readable_now": [],
+            "basis": "Basic top, no lower evolution cards",
+            "history": [
+              {
+                "top_card": "Lapras",
+                "evidence_id": "F0031.40",
+                "source_seconds": 31.4133
+              }
+            ],
+            "limit": null
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0031.40"
+            ],
+            "energy": [
+              "F0031.40"
+            ],
+            "tool": [
+              "F0031.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0031.40"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0031.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0031.40"
+            ]
+          },
+          {
+            "position": 2,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0031.40"
+            ]
+          },
+          {
+            "position": 3,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0031.40"
+            ]
+          }
+        ]
+      },
+      "opponent": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "C-W1",
+          "name": "Wailmer",
+          "hp_now": 100,
+          "hp_max": 100,
+          "printed_hp": 100,
+          "damage": 0,
+          "attached_energy": {
+            "total": 0,
+            "by_type": {},
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0031.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0031.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Wailmer",
+            "under_top_bottom_to_top": [],
+            "under_top_directly_readable_now": [],
+            "basis": "Basic top, no lower evolution cards",
+            "history": [
+              {
+                "top_card": "Wailmer",
+                "evidence_id": "F0031.40",
+                "source_seconds": 31.4133
+              }
+            ],
+            "limit": null
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0031.40"
+            ],
+            "energy": [
+              "F0031.40"
+            ],
+            "tool": [
+              "F0031.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0031.40"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0031.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0031.40"
+            ]
+          },
+          {
+            "position": 2,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0031.40"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "C-B",
+            "name": "Frigibax",
+            "hp_now": 60,
+            "hp_max": 60,
+            "printed_hp": 60,
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0031.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0031.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Frigibax",
+              "under_top_bottom_to_top": [],
+              "under_top_directly_readable_now": [],
+              "basis": "Basic top, no lower evolution cards",
+              "history": [
+                {
+                  "top_card": "Frigibax",
+                  "evidence_id": "F0031.40",
+                  "source_seconds": 31.4133
+                }
+              ],
+              "limit": null
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0031.40"
+              ],
+              "energy": [
+                "F0031.40"
+              ],
+              "tool": [
+                "F0031.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0031.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0031.40"
+            ]
+          }
+        ]
+      },
+      "owner_hand_for_copy_reconciliation": {
+        "cards_left_to_right": [
+          "Irida",
+          "Copycat",
+          "Mega Sharpedo ex",
+          "Professor's Research",
+          "Alolan Ninetales ex"
+        ],
+        "evidence_ids": [
+          "F0031.40"
+        ],
+        "basis": "Freshly read hand names at this same native start view"
+      },
+      "decision_actor": {
+        "actor": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled_at_this_start": true,
+        "native_control_evidence_ids": [
+          "F0031.40"
+        ],
+        "turn_interval_seconds_approx": [
+          31.4,
+          44.8
+        ],
+        "classification_basis": "checked Auto control freshly visible at this owner-start frame; full source review records no mode change",
+        "observed_control_span_seconds": [
+          31.4133,
+          31.4133
+        ],
+        "span_limit": "Start anchor is a point observation. Attribution to the whole turn additionally uses the existing covered sequence with no observed toggle; invisible human input is not certified absent.",
+        "mode_changes_or_overrides_observed": []
+      }
+    },
+    {
+      "turn_number": 4,
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_seconds": 63.305,
+      "phase": "after draw and before first play",
+      "evidence_ids": [
+        "F0063.30"
+      ],
+      "stadium": {
+        "name": "Soothing Shore",
+        "played_by": "opponent",
+        "basis": "freshly visible shared Stadium or empty Stadium area",
+        "evidence_ids": [
+          "F0063.30"
+        ]
+      },
+      "points": {
+        "owner": 0,
+        "opponent": 0,
+        "basis": "freshly counted visible point markers",
+        "evidence_ids": [
+          "F0063.30"
+        ]
+      },
+      "discard_views": {
+        "owner": {
+          "opened": false,
+          "visible_top": "Poké Ball",
+          "total_count": null
+        },
+        "opponent": {
+          "opened": false,
+          "visible_top": "Poké Ball",
+          "total_count": null
+        },
+        "limit": "Only exposed top cards, not opened piles. No visible numeric total; lower stack and duplicate census unavailable.",
+        "evidence_ids": [
+          "F0063.30"
+        ]
+      },
+      "owner": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "O-L",
+          "name": "Lapras",
+          "hp_now": 110,
+          "hp_max": 110,
+          "printed_hp": 110,
+          "damage": 0,
+          "attached_energy": {
+            "total": 1,
+            "by_type": {
+              "Water": 1
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0063.30"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0063.30"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Lapras",
+            "under_top_bottom_to_top": [],
+            "under_top_directly_readable_now": [],
+            "basis": "Basic top, no lower evolution cards",
+            "history": [
+              {
+                "top_card": "Lapras",
+                "evidence_id": "F0063.30",
+                "source_seconds": 63.305
+              }
+            ],
+            "limit": null
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0063.30"
+            ],
+            "energy": [
+              "F0063.30"
+            ],
+            "tool": [
+              "F0063.30"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0063.30"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0063.30"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0063.30"
+            ]
+          },
+          {
+            "position": 2,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0063.30"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "O-N1",
+            "name": "Alolan Vulpix",
+            "hp_now": 60,
+            "hp_max": 60,
+            "printed_hp": 60,
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0063.30"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0063.30"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Alolan Vulpix",
+              "under_top_bottom_to_top": [],
+              "under_top_directly_readable_now": [],
+              "basis": "Basic top, no lower evolution cards",
+              "history": [
+                {
+                  "top_card": "Alolan Vulpix",
+                  "evidence_id": "F0063.30",
+                  "source_seconds": 63.305
+                }
+              ],
+              "limit": null
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0063.30"
+              ],
+              "energy": [
+                "F0063.30"
+              ],
+              "tool": [
+                "F0063.30"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0063.30"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0063.30"
+            ]
+          }
+        ]
+      },
+      "opponent": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "C-W1",
+          "name": "Wailmer",
+          "hp_now": 100,
+          "hp_max": 100,
+          "printed_hp": 100,
+          "damage": 0,
+          "attached_energy": {
+            "total": 1,
+            "by_type": {
+              "Water": 1
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0063.30"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0063.30"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Wailmer",
+            "under_top_bottom_to_top": [],
+            "under_top_directly_readable_now": [],
+            "basis": "Basic top, no lower evolution cards",
+            "history": [
+              {
+                "top_card": "Wailmer",
+                "evidence_id": "F0031.40",
+                "source_seconds": 31.4133
+              }
+            ],
+            "limit": null
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0063.30"
+            ],
+            "energy": [
+              "F0063.30"
+            ],
+            "tool": [
+              "F0063.30"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0063.30",
+                "F0031.40"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0063.30"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "physical_instance": "C-S",
+            "name": "Squirtle",
+            "hp_now": 70,
+            "hp_max": 70,
+            "printed_hp": 70,
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0063.30"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0063.30"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Squirtle",
+              "under_top_bottom_to_top": [],
+              "under_top_directly_readable_now": [],
+              "basis": "Basic top, no lower evolution cards",
+              "history": [
+                {
+                  "top_card": "Squirtle",
+                  "evidence_id": "F0063.30",
+                  "source_seconds": 63.305
+                }
+              ],
+              "limit": null
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0063.30"
+              ],
+              "energy": [
+                "F0063.30"
+              ],
+              "tool": [
+                "F0063.30"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0063.30"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0063.30"
+            ]
+          },
+          {
+            "position": 2,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0063.30"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "C-B",
+            "name": "Arctibax",
+            "hp_now": 90,
+            "hp_max": 90,
+            "printed_hp": 90,
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0063.30"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0063.30"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Arctibax",
+              "under_top_bottom_to_top": [
+                "Frigibax"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Frigibax",
+                  "evidence_id": "F0031.40",
+                  "source_seconds": 31.4133
+                },
+                {
+                  "top_card": "Arctibax",
+                  "evidence_id": "F0048.30",
+                  "source_seconds": 48.3
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0063.30"
+              ],
+              "energy": [
+                "F0063.30"
+              ],
+              "tool": [
+                "F0063.30"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0063.30",
+                  "F0031.40",
+                  "F0048.30"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0063.30"
+            ]
+          }
+        ]
+      },
+      "owner_hand_for_copy_reconciliation": {
+        "cards_left_to_right": [
+          "Irida",
+          "Copycat",
+          "Mega Sharpedo ex",
+          "Alolan Ninetales ex",
+          "Alolan Ninetales ex",
+          "Lucky Ice Pop"
+        ],
+        "evidence_ids": [
+          "F0063.30"
+        ],
+        "basis": "Freshly read hand names at this same native start view"
+      },
+      "decision_actor": {
+        "actor": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled_at_this_start": true,
+        "native_control_evidence_ids": [
+          "F0063.30"
+        ],
+        "turn_interval_seconds_approx": [
+          63.3,
+          68.3
+        ],
+        "classification_basis": "checked Auto control freshly visible at this owner-start frame; full source review records no mode change",
+        "observed_control_span_seconds": [
+          63.305,
+          63.305
+        ],
+        "span_limit": "Start anchor is a point observation. Attribution to the whole turn additionally uses the existing covered sequence with no observed toggle; invisible human input is not certified absent.",
+        "mode_changes_or_overrides_observed": []
+      }
+    },
+    {
+      "turn_number": 6,
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_seconds": 88.4133,
+      "phase": "after draw and before first play",
+      "evidence_ids": [
+        "F0088.40"
+      ],
+      "stadium": {
+        "name": "Soothing Shore",
+        "played_by": "opponent",
+        "basis": "freshly visible shared Stadium or empty Stadium area",
+        "evidence_ids": [
+          "F0088.40"
+        ]
+      },
+      "points": {
+        "owner": 0,
+        "opponent": 0,
+        "basis": "freshly counted visible point markers",
+        "evidence_ids": [
+          "F0088.40"
+        ]
+      },
+      "discard_views": {
+        "owner": {
+          "opened": false,
+          "visible_top": "Poké Ball",
+          "total_count": null
+        },
+        "opponent": {
+          "opened": false,
+          "visible_top": "Poké Ball",
+          "total_count": null
+        },
+        "limit": "Only exposed top cards, not opened piles. No visible numeric total; lower stack and duplicate census unavailable.",
+        "evidence_ids": [
+          "F0088.40"
+        ]
+      },
+      "owner": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "O-L",
+          "name": "Lapras",
+          "hp_now": 50,
+          "hp_max": 110,
+          "printed_hp": 110,
+          "damage": 60,
+          "attached_energy": {
+            "total": 2,
+            "by_type": {
+              "Water": 2
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0088.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0088.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Lapras",
+            "under_top_bottom_to_top": [],
+            "under_top_directly_readable_now": [],
+            "basis": "Basic top, no lower evolution cards",
+            "history": [
+              {
+                "top_card": "Lapras",
+                "evidence_id": "F0088.40",
+                "source_seconds": 88.4133
+              }
+            ],
+            "limit": null
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0088.40"
+            ],
+            "energy": [
+              "F0088.40"
+            ],
+            "tool": [
+              "F0088.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0088.40"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0088.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0088.40"
+            ]
+          },
+          {
+            "position": 2,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0088.40"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "O-N1",
+            "name": "Alolan Ninetales ex",
+            "hp_now": 150,
+            "hp_max": 150,
+            "printed_hp": 150,
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0088.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0088.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Alolan Ninetales ex",
+              "under_top_bottom_to_top": [
+                "Alolan Vulpix"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Alolan Vulpix",
+                  "evidence_id": "F0063.30",
+                  "source_seconds": 63.305
+                },
+                {
+                  "top_card": "Alolan Ninetales ex",
+                  "evidence_id": "F0065.30",
+                  "source_seconds": 65.3067
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0088.40"
+              ],
+              "energy": [
+                "F0088.40"
+              ],
+              "tool": [
+                "F0088.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0088.40",
+                  "F0063.30",
+                  "F0065.30"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0088.40"
+            ]
+          }
+        ]
+      },
+      "opponent": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "C-W1",
+          "name": "Wailmer",
+          "hp_now": 100,
+          "hp_max": 100,
+          "printed_hp": 100,
+          "damage": 0,
+          "attached_energy": {
+            "total": 3,
+            "by_type": {
+              "Water": 3
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0088.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0088.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Wailmer",
+            "under_top_bottom_to_top": [],
+            "under_top_directly_readable_now": [],
+            "basis": "Basic top, no lower evolution cards",
+            "history": [
+              {
+                "top_card": "Wailmer",
+                "evidence_id": "F0031.40",
+                "source_seconds": 31.4133
+              }
+            ],
+            "limit": null
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0088.40"
+            ],
+            "energy": [
+              "F0088.40"
+            ],
+            "tool": [
+              "F0088.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0088.40",
+                "F0031.40"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0088.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "physical_instance": "C-S",
+            "name": "Wartortle",
+            "hp_now": 90,
+            "hp_max": 90,
+            "printed_hp": 90,
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0088.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0088.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Wartortle",
+              "under_top_bottom_to_top": [
+                "Squirtle"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Squirtle",
+                  "evidence_id": "F0063.30",
+                  "source_seconds": 63.305
+                },
+                {
+                  "top_card": "Wartortle",
+                  "evidence_id": "F0074.20",
+                  "source_seconds": 74.2083
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0088.40"
+              ],
+              "energy": [
+                "F0088.40"
+              ],
+              "tool": [
+                "F0088.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0088.40",
+                  "F0063.30",
+                  "F0074.20"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0088.40"
+            ]
+          },
+          {
+            "position": 2,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0088.40"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "C-B",
+            "name": "Baxcalibur",
+            "hp_now": 140,
+            "hp_max": 140,
+            "printed_hp": 140,
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0088.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0088.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Baxcalibur",
+              "under_top_bottom_to_top": [
+                "Frigibax",
+                "Arctibax"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Frigibax",
+                  "evidence_id": "F0031.40",
+                  "source_seconds": 31.4133
+                },
+                {
+                  "top_card": "Arctibax",
+                  "evidence_id": "F0048.30",
+                  "source_seconds": 48.3
+                },
+                {
+                  "top_card": "Baxcalibur",
+                  "evidence_id": "F0074.20",
+                  "source_seconds": 74.2083
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0088.40"
+              ],
+              "energy": [
+                "F0088.40"
+              ],
+              "tool": [
+                "F0088.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0088.40",
+                  "F0031.40",
+                  "F0048.30",
+                  "F0074.20"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0088.40"
+            ]
+          }
+        ]
+      },
+      "owner_hand_for_copy_reconciliation": {
+        "cards_left_to_right": [
+          "Irida",
+          "Copycat",
+          "Mega Sharpedo ex",
+          "Alolan Ninetales ex",
+          "Lucky Ice Pop",
+          "Professor's Research"
+        ],
+        "evidence_ids": [
+          "F0088.40"
+        ],
+        "basis": "Freshly read hand names at this same native start view"
+      },
+      "decision_actor": {
+        "actor": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled_at_this_start": true,
+        "native_control_evidence_ids": [
+          "F0088.40"
+        ],
+        "turn_interval_seconds_approx": [
+          88.4,
+          118.4
+        ],
+        "classification_basis": "checked Auto control freshly visible at this owner-start frame; full source review records no mode change",
+        "observed_control_span_seconds": [
+          88.4133,
+          88.4133
+        ],
+        "span_limit": "Start anchor is a point observation. Attribution to the whole turn additionally uses the existing covered sequence with no observed toggle; invisible human input is not certified absent.",
+        "mode_changes_or_overrides_observed": []
+      }
+    },
+    {
+      "turn_number": 8,
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_seconds": 141.4,
+      "phase": "after draw and before first play",
+      "evidence_ids": [
+        "F0141.40"
+      ],
+      "stadium": {
+        "name": "Soothing Shore",
+        "played_by": "opponent",
+        "basis": "freshly visible shared Stadium or empty Stadium area",
+        "evidence_ids": [
+          "F0141.40"
+        ]
+      },
+      "points": {
+        "owner": 0,
+        "opponent": 0,
+        "basis": "freshly counted visible point markers",
+        "evidence_ids": [
+          "F0141.40"
+        ]
+      },
+      "discard_views": {
+        "owner": {
+          "opened": false,
+          "visible_top": "Lucky Ice Pop",
+          "total_count": null
+        },
+        "opponent": {
+          "opened": false,
+          "visible_top": "X Speed",
+          "total_count": null
+        },
+        "limit": "Only exposed top cards, not opened piles. No visible numeric total; lower stack and duplicate census unavailable.",
+        "evidence_ids": [
+          "F0141.40"
+        ]
+      },
+      "owner": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "O-L",
+          "name": "Lapras",
+          "hp_now": 110,
+          "hp_max": 110,
+          "printed_hp": 110,
+          "damage": 0,
+          "attached_energy": {
+            "total": 3,
+            "by_type": {
+              "Water": 3
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0141.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0141.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Lapras",
+            "under_top_bottom_to_top": [],
+            "under_top_directly_readable_now": [],
+            "basis": "Basic top, no lower evolution cards",
+            "history": [
+              {
+                "top_card": "Lapras",
+                "evidence_id": "F0141.40",
+                "source_seconds": 141.4
+              }
+            ],
+            "limit": null
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0141.40"
+            ],
+            "energy": [
+              "F0141.40"
+            ],
+            "tool": [
+              "F0141.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0141.40"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0141.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0141.40"
+            ]
+          },
+          {
+            "position": 2,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0141.40"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "O-N1",
+            "name": "Alolan Ninetales ex",
+            "hp_now": 150,
+            "hp_max": 150,
+            "printed_hp": 150,
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0141.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0141.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Alolan Ninetales ex",
+              "under_top_bottom_to_top": [
+                "Alolan Vulpix"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Alolan Vulpix",
+                  "evidence_id": "F0063.30",
+                  "source_seconds": 63.305
+                },
+                {
+                  "top_card": "Alolan Ninetales ex",
+                  "evidence_id": "F0065.30",
+                  "source_seconds": 65.3067
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0141.40"
+              ],
+              "energy": [
+                "F0141.40"
+              ],
+              "tool": [
+                "F0141.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0141.40",
+                  "F0063.30",
+                  "F0065.30"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0141.40"
+            ]
+          }
+        ]
+      },
+      "opponent": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "C-B",
+          "name": "Baxcalibur",
+          "hp_now": 140,
+          "hp_max": 140,
+          "printed_hp": 140,
+          "damage": 0,
+          "attached_energy": {
+            "total": 1,
+            "by_type": {
+              "Water": 1
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0141.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0141.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Baxcalibur",
+            "under_top_bottom_to_top": [
+              "Frigibax",
+              "Arctibax"
+            ],
+            "under_top_directly_readable_now": null,
+            "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+            "history": [
+              {
+                "top_card": "Frigibax",
+                "evidence_id": "F0031.40",
+                "source_seconds": 31.4133
+              },
+              {
+                "top_card": "Arctibax",
+                "evidence_id": "F0048.30",
+                "source_seconds": 48.3
+              },
+              {
+                "top_card": "Baxcalibur",
+                "evidence_id": "F0074.20",
+                "source_seconds": 74.2083
+              }
+            ],
+            "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0141.40"
+            ],
+            "energy": [
+              "F0141.40"
+            ],
+            "tool": [
+              "F0141.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0141.40",
+                "F0031.40",
+                "F0048.30",
+                "F0074.20"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0141.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "physical_instance": "C-S",
+            "name": "Wartortle",
+            "hp_now": 90,
+            "hp_max": 90,
+            "printed_hp": 90,
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0141.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0141.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Wartortle",
+              "under_top_bottom_to_top": [
+                "Squirtle"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Squirtle",
+                  "evidence_id": "F0063.30",
+                  "source_seconds": 63.305
+                },
+                {
+                  "top_card": "Wartortle",
+                  "evidence_id": "F0074.20",
+                  "source_seconds": 74.2083
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0141.40"
+              ],
+              "energy": [
+                "F0141.40"
+              ],
+              "tool": [
+                "F0141.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0141.40",
+                  "F0063.30",
+                  "F0074.20"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0141.40"
+            ]
+          },
+          {
+            "position": 2,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0141.40"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "C-W1",
+            "name": "Wailmer",
+            "hp_now": 50,
+            "hp_max": 100,
+            "printed_hp": 100,
+            "damage": 50,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0141.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0141.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Wailmer",
+              "under_top_bottom_to_top": [],
+              "under_top_directly_readable_now": [],
+              "basis": "Basic top, no lower evolution cards",
+              "history": [
+                {
+                  "top_card": "Wailmer",
+                  "evidence_id": "F0031.40",
+                  "source_seconds": 31.4133
+                }
+              ],
+              "limit": null
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0141.40"
+              ],
+              "energy": [
+                "F0141.40"
+              ],
+              "tool": [
+                "F0141.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0141.40",
+                  "F0031.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0141.40"
+            ]
+          }
+        ]
+      },
+      "owner_hand_for_copy_reconciliation": {
+        "cards_left_to_right": [
+          "Irida",
+          "Copycat",
+          "Mega Sharpedo ex",
+          "Alolan Ninetales ex",
+          "Misty",
+          "Mega Sharpedo ex",
+          "Carvanha"
+        ],
+        "evidence_ids": [
+          "F0141.40"
+        ],
+        "basis": "Freshly read hand names at this same native start view"
+      },
+      "decision_actor": {
+        "actor": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled_at_this_start": true,
+        "native_control_evidence_ids": [
+          "F0141.40"
+        ],
+        "turn_interval_seconds_approx": [
+          141.4,
+          148.4
+        ],
+        "classification_basis": "checked Auto control freshly visible at this owner-start frame; full source review records no mode change",
+        "observed_control_span_seconds": [
+          141.4,
+          141.4
+        ],
+        "span_limit": "Start anchor is a point observation. Attribution to the whole turn additionally uses the existing covered sequence with no observed toggle; invisible human input is not certified absent.",
+        "mode_changes_or_overrides_observed": []
+      }
+    },
+    {
+      "turn_number": 10,
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_seconds": 165.41,
+      "phase": "after draw and before first play",
+      "evidence_ids": [
+        "F0165.40"
+      ],
+      "stadium": {
+        "name": "Soothing Shore",
+        "played_by": "opponent",
+        "basis": "freshly visible shared Stadium or empty Stadium area",
+        "evidence_ids": [
+          "F0165.40"
+        ]
+      },
+      "points": {
+        "owner": 0,
+        "opponent": 0,
+        "basis": "freshly counted visible point markers",
+        "evidence_ids": [
+          "F0165.40"
+        ]
+      },
+      "discard_views": {
+        "owner": {
+          "opened": false,
+          "visible_top": "Lucky Ice Pop",
+          "total_count": null
+        },
+        "opponent": {
+          "opened": false,
+          "visible_top": "X Speed",
+          "total_count": null
+        },
+        "limit": "Only exposed top cards, not opened piles. No visible numeric total; lower stack and duplicate census unavailable.",
+        "evidence_ids": [
+          "F0165.40"
+        ]
+      },
+      "owner": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "O-L",
+          "name": "Lapras",
+          "hp_now": 110,
+          "hp_max": 110,
+          "printed_hp": 110,
+          "damage": 0,
+          "attached_energy": {
+            "total": 3,
+            "by_type": {
+              "Water": 3
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0165.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0165.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Lapras",
+            "under_top_bottom_to_top": [],
+            "under_top_directly_readable_now": [],
+            "basis": "Basic top, no lower evolution cards",
+            "history": [
+              {
+                "top_card": "Lapras",
+                "evidence_id": "F0165.40",
+                "source_seconds": 165.41
+              }
+            ],
+            "limit": null
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0165.40"
+            ],
+            "energy": [
+              "F0165.40"
+            ],
+            "tool": [
+              "F0165.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0165.40"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0165.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0165.40"
+            ]
+          },
+          {
+            "position": 2,
+            "physical_instance": "O-S1",
+            "name": "Carvanha",
+            "hp_now": 50,
+            "hp_max": 50,
+            "printed_hp": 50,
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0165.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0165.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Carvanha",
+              "under_top_bottom_to_top": [],
+              "under_top_directly_readable_now": [],
+              "basis": "Basic top, no lower evolution cards",
+              "history": [
+                {
+                  "top_card": "Carvanha",
+                  "evidence_id": "F0165.40",
+                  "source_seconds": 165.41
+                }
+              ],
+              "limit": null
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0165.40"
+              ],
+              "energy": [
+                "F0165.40"
+              ],
+              "tool": [
+                "F0165.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0165.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0165.40"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "O-N1",
+            "name": "Alolan Ninetales ex",
+            "hp_now": 150,
+            "hp_max": 150,
+            "printed_hp": 150,
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0165.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0165.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Alolan Ninetales ex",
+              "under_top_bottom_to_top": [
+                "Alolan Vulpix"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Alolan Vulpix",
+                  "evidence_id": "F0063.30",
+                  "source_seconds": 63.305
+                },
+                {
+                  "top_card": "Alolan Ninetales ex",
+                  "evidence_id": "F0065.30",
+                  "source_seconds": 65.3067
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0165.40"
+              ],
+              "energy": [
+                "F0165.40"
+              ],
+              "tool": [
+                "F0165.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0165.40",
+                  "F0063.30",
+                  "F0065.30"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0165.40"
+            ]
+          }
+        ]
+      },
+      "opponent": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "C-B",
+          "name": "Baxcalibur",
+          "hp_now": 90,
+          "hp_max": 140,
+          "printed_hp": 140,
+          "damage": 50,
+          "attached_energy": {
+            "total": 2,
+            "by_type": {
+              "Water": 2
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0165.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0165.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Baxcalibur",
+            "under_top_bottom_to_top": [
+              "Frigibax",
+              "Arctibax"
+            ],
+            "under_top_directly_readable_now": null,
+            "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+            "history": [
+              {
+                "top_card": "Frigibax",
+                "evidence_id": "F0031.40",
+                "source_seconds": 31.4133
+              },
+              {
+                "top_card": "Arctibax",
+                "evidence_id": "F0048.30",
+                "source_seconds": 48.3
+              },
+              {
+                "top_card": "Baxcalibur",
+                "evidence_id": "F0074.20",
+                "source_seconds": 74.2083
+              }
+            ],
+            "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0165.40"
+            ],
+            "energy": [
+              "F0165.40"
+            ],
+            "tool": [
+              "F0165.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0165.40",
+                "F0031.40",
+                "F0048.30",
+                "F0074.20"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0165.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "physical_instance": "C-S",
+            "name": "Wartortle",
+            "hp_now": 90,
+            "hp_max": 90,
+            "printed_hp": 90,
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0165.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0165.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Wartortle",
+              "under_top_bottom_to_top": [
+                "Squirtle"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Squirtle",
+                  "evidence_id": "F0063.30",
+                  "source_seconds": 63.305
+                },
+                {
+                  "top_card": "Wartortle",
+                  "evidence_id": "F0074.20",
+                  "source_seconds": 74.2083
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0165.40"
+              ],
+              "energy": [
+                "F0165.40"
+              ],
+              "tool": [
+                "F0165.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0165.40",
+                  "F0063.30",
+                  "F0074.20"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0165.40"
+            ]
+          },
+          {
+            "position": 2,
+            "physical_instance": "C-W2",
+            "name": "Wailmer",
+            "hp_now": 100,
+            "hp_max": 100,
+            "printed_hp": 100,
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0165.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0165.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Wailmer",
+              "under_top_bottom_to_top": [],
+              "under_top_directly_readable_now": [],
+              "basis": "Basic top, no lower evolution cards",
+              "history": [
+                {
+                  "top_card": "Wailmer",
+                  "evidence_id": "F0165.40",
+                  "source_seconds": 165.41
+                }
+              ],
+              "limit": null
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0165.40"
+              ],
+              "energy": [
+                "F0165.40"
+              ],
+              "tool": [
+                "F0165.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0165.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0165.40"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "C-W1",
+            "name": "Wailmer",
+            "hp_now": 70,
+            "hp_max": 100,
+            "printed_hp": 100,
+            "damage": 30,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0165.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0165.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Wailmer",
+              "under_top_bottom_to_top": [],
+              "under_top_directly_readable_now": [],
+              "basis": "Basic top, no lower evolution cards",
+              "history": [
+                {
+                  "top_card": "Wailmer",
+                  "evidence_id": "F0031.40",
+                  "source_seconds": 31.4133
+                }
+              ],
+              "limit": null
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0165.40"
+              ],
+              "energy": [
+                "F0165.40"
+              ],
+              "tool": [
+                "F0165.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0165.40",
+                  "F0031.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0165.40"
+            ]
+          }
+        ]
+      },
+      "owner_hand_for_copy_reconciliation": {
+        "cards_left_to_right": [
+          "Irida",
+          "Copycat",
+          "Mega Sharpedo ex",
+          "Alolan Ninetales ex",
+          "Misty",
+          "Mega Sharpedo ex",
+          "Elegant Cape"
+        ],
+        "evidence_ids": [
+          "F0165.40"
+        ],
+        "basis": "Freshly read hand names at this same native start view"
+      },
+      "decision_actor": {
+        "actor": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled_at_this_start": true,
+        "native_control_evidence_ids": [
+          "F0165.40"
+        ],
+        "turn_interval_seconds_approx": [
+          165.4,
+          174.4
+        ],
+        "classification_basis": "checked Auto control freshly visible at this owner-start frame; full source review records no mode change",
+        "observed_control_span_seconds": [
+          165.41,
+          165.41
+        ],
+        "span_limit": "Start anchor is a point observation. Attribution to the whole turn additionally uses the existing covered sequence with no observed toggle; invisible human input is not certified absent.",
+        "mode_changes_or_overrides_observed": []
+      }
+    },
+    {
+      "turn_number": 12,
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_seconds": 195.407,
+      "phase": "after draw and before first play",
+      "evidence_ids": [
+        "F0195.40"
+      ],
+      "stadium": {
+        "name": "Soothing Shore",
+        "played_by": "opponent",
+        "basis": "freshly visible shared Stadium or empty Stadium area",
+        "evidence_ids": [
+          "F0195.40"
+        ]
+      },
+      "points": {
+        "owner": 0,
+        "opponent": 0,
+        "basis": "freshly counted visible point markers",
+        "evidence_ids": [
+          "F0195.40"
+        ]
+      },
+      "discard_views": {
+        "owner": {
+          "opened": false,
+          "visible_top": "Lucky Ice Pop",
+          "total_count": null
+        },
+        "opponent": {
+          "opened": false,
+          "visible_top": "Poké Ball",
+          "total_count": null
+        },
+        "limit": "Only exposed top cards, not opened piles. No visible numeric total; lower stack and duplicate census unavailable.",
+        "evidence_ids": [
+          "F0195.40"
+        ]
+      },
+      "owner": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "O-L",
+          "name": "Lapras",
+          "hp_now": 110,
+          "hp_max": 110,
+          "printed_hp": 110,
+          "damage": 0,
+          "attached_energy": {
+            "total": 3,
+            "by_type": {
+              "Water": 3
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0195.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0195.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Lapras",
+            "under_top_bottom_to_top": [],
+            "under_top_directly_readable_now": [],
+            "basis": "Basic top, no lower evolution cards",
+            "history": [
+              {
+                "top_card": "Lapras",
+                "evidence_id": "F0195.40",
+                "source_seconds": 195.407
+              }
+            ],
+            "limit": null
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0195.40"
+            ],
+            "energy": [
+              "F0195.40"
+            ],
+            "tool": [
+              "F0195.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0195.40"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0195.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0195.40"
+            ]
+          },
+          {
+            "position": 2,
+            "physical_instance": "O-S1",
+            "name": "Mega Sharpedo ex",
+            "hp_now": 190,
+            "hp_max": 190,
+            "printed_hp": 190,
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0195.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0195.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Mega Sharpedo ex",
+              "under_top_bottom_to_top": [
+                "Carvanha"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Carvanha",
+                  "evidence_id": "F0165.40",
+                  "source_seconds": 165.41
+                },
+                {
+                  "top_card": "Mega Sharpedo ex",
+                  "evidence_id": "F0167.40",
+                  "source_seconds": 167.412
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0195.40"
+              ],
+              "energy": [
+                "F0195.40"
+              ],
+              "tool": [
+                "F0195.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0195.40",
+                  "F0165.40",
+                  "F0167.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0195.40"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "O-N1",
+            "name": "Alolan Ninetales ex",
+            "hp_now": 150,
+            "hp_max": 150,
+            "printed_hp": 150,
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0195.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0195.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Alolan Ninetales ex",
+              "under_top_bottom_to_top": [
+                "Alolan Vulpix"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Alolan Vulpix",
+                  "evidence_id": "F0063.30",
+                  "source_seconds": 63.305
+                },
+                {
+                  "top_card": "Alolan Ninetales ex",
+                  "evidence_id": "F0065.30",
+                  "source_seconds": 65.3067
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0195.40"
+              ],
+              "energy": [
+                "F0195.40"
+              ],
+              "tool": [
+                "F0195.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0195.40",
+                  "F0063.30",
+                  "F0065.30"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0195.40"
+            ]
+          }
+        ]
+      },
+      "opponent": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "C-W2",
+          "name": "Wailmer",
+          "hp_now": 100,
+          "hp_max": 100,
+          "printed_hp": 100,
+          "damage": 0,
+          "attached_energy": {
+            "total": 0,
+            "by_type": {},
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0195.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0195.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Wailmer",
+            "under_top_bottom_to_top": [],
+            "under_top_directly_readable_now": [],
+            "basis": "Basic top, no lower evolution cards",
+            "history": [
+              {
+                "top_card": "Wailmer",
+                "evidence_id": "F0195.40",
+                "source_seconds": 195.407
+              }
+            ],
+            "limit": null
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0195.40"
+            ],
+            "energy": [
+              "F0195.40"
+            ],
+            "tool": [
+              "F0195.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0195.40"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0195.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "physical_instance": "C-S",
+            "name": "Wartortle",
+            "hp_now": 90,
+            "hp_max": 90,
+            "printed_hp": 90,
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Water": 3
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0195.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0195.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Wartortle",
+              "under_top_bottom_to_top": [
+                "Squirtle"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Squirtle",
+                  "evidence_id": "F0063.30",
+                  "source_seconds": 63.305
+                },
+                {
+                  "top_card": "Wartortle",
+                  "evidence_id": "F0074.20",
+                  "source_seconds": 74.2083
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0195.40"
+              ],
+              "energy": [
+                "F0195.40"
+              ],
+              "tool": [
+                "F0195.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0195.40",
+                  "F0063.30",
+                  "F0074.20"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0195.40"
+            ]
+          },
+          {
+            "position": 2,
+            "physical_instance": "C-B",
+            "name": "Baxcalibur",
+            "hp_now": 20,
+            "hp_max": 140,
+            "printed_hp": 140,
+            "damage": 120,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0195.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0195.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Baxcalibur",
+              "under_top_bottom_to_top": [
+                "Frigibax",
+                "Arctibax"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Frigibax",
+                  "evidence_id": "F0031.40",
+                  "source_seconds": 31.4133
+                },
+                {
+                  "top_card": "Arctibax",
+                  "evidence_id": "F0048.30",
+                  "source_seconds": 48.3
+                },
+                {
+                  "top_card": "Baxcalibur",
+                  "evidence_id": "F0074.20",
+                  "source_seconds": 74.2083
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0195.40"
+              ],
+              "energy": [
+                "F0195.40"
+              ],
+              "tool": [
+                "F0195.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0195.40",
+                  "F0031.40",
+                  "F0048.30",
+                  "F0074.20"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0195.40"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "C-W1",
+            "name": "Wailmer",
+            "hp_now": 90,
+            "hp_max": 100,
+            "printed_hp": 100,
+            "damage": 10,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0195.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0195.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Wailmer",
+              "under_top_bottom_to_top": [],
+              "under_top_directly_readable_now": [],
+              "basis": "Basic top, no lower evolution cards",
+              "history": [
+                {
+                  "top_card": "Wailmer",
+                  "evidence_id": "F0031.40",
+                  "source_seconds": 31.4133
+                }
+              ],
+              "limit": null
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0195.40"
+              ],
+              "energy": [
+                "F0195.40"
+              ],
+              "tool": [
+                "F0195.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0195.40",
+                  "F0031.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0195.40"
+            ]
+          }
+        ]
+      },
+      "owner_hand_for_copy_reconciliation": {
+        "cards_left_to_right": [
+          "Irida",
+          "Copycat",
+          "Alolan Ninetales ex",
+          "Misty",
+          "Mega Sharpedo ex",
+          "Elegant Cape",
+          "Misty"
+        ],
+        "evidence_ids": [
+          "F0195.40"
+        ],
+        "basis": "Freshly read hand names at this same native start view"
+      },
+      "decision_actor": {
+        "actor": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled_at_this_start": true,
+        "native_control_evidence_ids": [
+          "F0195.40"
+        ],
+        "turn_interval_seconds_approx": [
+          195.4,
+          200.4
+        ],
+        "classification_basis": "checked Auto control freshly visible at this owner-start frame; full source review records no mode change",
+        "observed_control_span_seconds": [
+          195.407,
+          195.407
+        ],
+        "span_limit": "Start anchor is a point observation. Attribution to the whole turn additionally uses the existing covered sequence with no observed toggle; invisible human input is not certified absent.",
+        "mode_changes_or_overrides_observed": []
+      }
+    },
+    {
+      "turn_number": 14,
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_seconds": 221.413,
+      "phase": "after draw and before first play",
+      "evidence_ids": [
+        "F0221.40"
+      ],
+      "stadium": {
+        "name": "Soothing Shore",
+        "played_by": "opponent",
+        "basis": "freshly visible shared Stadium or empty Stadium area",
+        "evidence_ids": [
+          "F0221.40"
+        ]
+      },
+      "points": {
+        "owner": 0,
+        "opponent": 0,
+        "basis": "freshly counted visible point markers",
+        "evidence_ids": [
+          "F0221.40"
+        ]
+      },
+      "discard_views": {
+        "owner": {
+          "opened": false,
+          "visible_top": "Lucky Ice Pop",
+          "total_count": null
+        },
+        "opponent": {
+          "opened": false,
+          "visible_top": "Poké Ball",
+          "total_count": null
+        },
+        "limit": "Only exposed top cards, not opened piles. No visible numeric total; lower stack and duplicate census unavailable.",
+        "evidence_ids": [
+          "F0221.40"
+        ]
+      },
+      "owner": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "O-L",
+          "name": "Lapras",
+          "hp_now": 110,
+          "hp_max": 110,
+          "printed_hp": 110,
+          "damage": 0,
+          "attached_energy": {
+            "total": 3,
+            "by_type": {
+              "Water": 3
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0221.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0221.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Lapras",
+            "under_top_bottom_to_top": [],
+            "under_top_directly_readable_now": [],
+            "basis": "Basic top, no lower evolution cards",
+            "history": [
+              {
+                "top_card": "Lapras",
+                "evidence_id": "F0221.40",
+                "source_seconds": 221.413
+              }
+            ],
+            "limit": null
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0221.40"
+            ],
+            "energy": [
+              "F0221.40"
+            ],
+            "tool": [
+              "F0221.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0221.40"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0221.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0221.40"
+            ]
+          },
+          {
+            "position": 2,
+            "physical_instance": "O-S1",
+            "name": "Mega Sharpedo ex",
+            "hp_now": 190,
+            "hp_max": 190,
+            "printed_hp": 190,
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0221.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0221.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Mega Sharpedo ex",
+              "under_top_bottom_to_top": [
+                "Carvanha"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Carvanha",
+                  "evidence_id": "F0165.40",
+                  "source_seconds": 165.41
+                },
+                {
+                  "top_card": "Mega Sharpedo ex",
+                  "evidence_id": "F0167.40",
+                  "source_seconds": 167.412
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0221.40"
+              ],
+              "energy": [
+                "F0221.40"
+              ],
+              "tool": [
+                "F0221.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0221.40",
+                  "F0165.40",
+                  "F0167.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0221.40"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "O-N1",
+            "name": "Alolan Ninetales ex",
+            "hp_now": 150,
+            "hp_max": 150,
+            "printed_hp": 150,
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0221.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0221.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Alolan Ninetales ex",
+              "under_top_bottom_to_top": [
+                "Alolan Vulpix"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Alolan Vulpix",
+                  "evidence_id": "F0063.30",
+                  "source_seconds": 63.305
+                },
+                {
+                  "top_card": "Alolan Ninetales ex",
+                  "evidence_id": "F0065.30",
+                  "source_seconds": 65.3067
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0221.40"
+              ],
+              "energy": [
+                "F0221.40"
+              ],
+              "tool": [
+                "F0221.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0221.40",
+                  "F0063.30",
+                  "F0065.30"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0221.40"
+            ]
+          }
+        ]
+      },
+      "opponent": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "C-W2",
+          "name": "Wailmer",
+          "hp_now": 50,
+          "hp_max": 100,
+          "printed_hp": 100,
+          "damage": 50,
+          "attached_energy": {
+            "total": 1,
+            "by_type": {
+              "Water": 1
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0221.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0221.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Wailmer",
+            "under_top_bottom_to_top": [],
+            "under_top_directly_readable_now": [],
+            "basis": "Basic top, no lower evolution cards",
+            "history": [
+              {
+                "top_card": "Wailmer",
+                "evidence_id": "F0221.40",
+                "source_seconds": 221.413
+              }
+            ],
+            "limit": null
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0221.40"
+            ],
+            "energy": [
+              "F0221.40"
+            ],
+            "tool": [
+              "F0221.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0221.40"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0221.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "physical_instance": "C-S",
+            "name": "Mega Blastoise ex",
+            "hp_now": 230,
+            "hp_max": 230,
+            "printed_hp": 230,
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Water": 3
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0221.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0221.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Mega Blastoise ex",
+              "under_top_bottom_to_top": [
+                "Squirtle",
+                "Wartortle"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Squirtle",
+                  "evidence_id": "F0063.30",
+                  "source_seconds": 63.305
+                },
+                {
+                  "top_card": "Wartortle",
+                  "evidence_id": "F0074.20",
+                  "source_seconds": 74.2083
+                },
+                {
+                  "top_card": "Mega Blastoise ex",
+                  "evidence_id": "F0208.30",
+                  "source_seconds": 208.312
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0221.40"
+              ],
+              "energy": [
+                "F0221.40"
+              ],
+              "tool": [
+                "F0221.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0221.40",
+                  "F0063.30",
+                  "F0074.20",
+                  "F0208.30"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0221.40"
+            ]
+          },
+          {
+            "position": 2,
+            "physical_instance": "C-B",
+            "name": "Baxcalibur",
+            "hp_now": 20,
+            "hp_max": 140,
+            "printed_hp": 140,
+            "damage": 120,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0221.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0221.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Baxcalibur",
+              "under_top_bottom_to_top": [
+                "Frigibax",
+                "Arctibax"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Frigibax",
+                  "evidence_id": "F0031.40",
+                  "source_seconds": 31.4133
+                },
+                {
+                  "top_card": "Arctibax",
+                  "evidence_id": "F0048.30",
+                  "source_seconds": 48.3
+                },
+                {
+                  "top_card": "Baxcalibur",
+                  "evidence_id": "F0074.20",
+                  "source_seconds": 74.2083
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0221.40"
+              ],
+              "energy": [
+                "F0221.40"
+              ],
+              "tool": [
+                "F0221.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0221.40",
+                  "F0031.40",
+                  "F0048.30",
+                  "F0074.20"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0221.40"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "C-W1",
+            "name": "Wailmer",
+            "hp_now": 100,
+            "hp_max": 100,
+            "printed_hp": 100,
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0221.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0221.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Wailmer",
+              "under_top_bottom_to_top": [],
+              "under_top_directly_readable_now": [],
+              "basis": "Basic top, no lower evolution cards",
+              "history": [
+                {
+                  "top_card": "Wailmer",
+                  "evidence_id": "F0031.40",
+                  "source_seconds": 31.4133
+                }
+              ],
+              "limit": null
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0221.40"
+              ],
+              "energy": [
+                "F0221.40"
+              ],
+              "tool": [
+                "F0221.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0221.40",
+                  "F0031.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0221.40"
+            ]
+          }
+        ]
+      },
+      "owner_hand_for_copy_reconciliation": {
+        "cards_left_to_right": [
+          "Irida",
+          "Copycat",
+          "Alolan Ninetales ex",
+          "Misty",
+          "Mega Sharpedo ex",
+          "Elegant Cape",
+          "Misty",
+          "Carvanha"
+        ],
+        "evidence_ids": [
+          "F0221.40"
+        ],
+        "basis": "Freshly read hand names at this same native start view"
+      },
+      "decision_actor": {
+        "actor": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled_at_this_start": true,
+        "native_control_evidence_ids": [
+          "F0221.40"
+        ],
+        "turn_interval_seconds_approx": [
+          221.4,
+          235.4
+        ],
+        "classification_basis": "checked Auto control freshly visible at this owner-start frame; full source review records no mode change",
+        "observed_control_span_seconds": [
+          221.413,
+          221.413
+        ],
+        "span_limit": "Start anchor is a point observation. Attribution to the whole turn additionally uses the existing covered sequence with no observed toggle; invisible human input is not certified absent.",
+        "mode_changes_or_overrides_observed": []
+      }
+    },
+    {
+      "turn_number": 16,
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_seconds": 261.407,
+      "phase": "after draw and before first play",
+      "evidence_ids": [
+        "F0261.40"
+      ],
+      "stadium": {
+        "name": "Soothing Shore",
+        "played_by": "opponent",
+        "basis": "freshly visible shared Stadium or empty Stadium area",
+        "evidence_ids": [
+          "F0261.40"
+        ]
+      },
+      "points": {
+        "owner": 1,
+        "opponent": 1,
+        "basis": "freshly counted visible point markers",
+        "evidence_ids": [
+          "F0261.40"
+        ]
+      },
+      "discard_views": {
+        "owner": {
+          "opened": false,
+          "visible_top": "Lapras",
+          "total_count": null
+        },
+        "opponent": {
+          "opened": false,
+          "visible_top": "Wailmer",
+          "total_count": null
+        },
+        "limit": "Only exposed top cards, not opened piles. No visible numeric total; lower stack and duplicate census unavailable.",
+        "evidence_ids": [
+          "F0261.40"
+        ]
+      },
+      "owner": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "O-N1",
+          "name": "Alolan Ninetales ex",
+          "hp_now": 150,
+          "hp_max": 150,
+          "printed_hp": 150,
+          "damage": 0,
+          "attached_energy": {
+            "total": 2,
+            "by_type": {
+              "Water": 2
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0261.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0261.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Alolan Ninetales ex",
+            "under_top_bottom_to_top": [
+              "Alolan Vulpix"
+            ],
+            "under_top_directly_readable_now": null,
+            "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+            "history": [
+              {
+                "top_card": "Alolan Vulpix",
+                "evidence_id": "F0063.30",
+                "source_seconds": 63.305
+              },
+              {
+                "top_card": "Alolan Ninetales ex",
+                "evidence_id": "F0065.30",
+                "source_seconds": 65.3067
+              }
+            ],
+            "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0261.40"
+            ],
+            "energy": [
+              "F0261.40"
+            ],
+            "tool": [
+              "F0261.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0261.40",
+                "F0063.30",
+                "F0065.30"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0261.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "physical_instance": "O-S2",
+            "name": "Carvanha",
+            "hp_now": 50,
+            "hp_max": 50,
+            "printed_hp": 50,
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0261.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0261.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Carvanha",
+              "under_top_bottom_to_top": [],
+              "under_top_directly_readable_now": [],
+              "basis": "Basic top, no lower evolution cards",
+              "history": [
+                {
+                  "top_card": "Carvanha",
+                  "evidence_id": "F0261.40",
+                  "source_seconds": 261.407
+                }
+              ],
+              "limit": null
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0261.40"
+              ],
+              "energy": [
+                "F0261.40"
+              ],
+              "tool": [
+                "F0261.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0261.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0261.40"
+            ]
+          },
+          {
+            "position": 2,
+            "physical_instance": "O-S1",
+            "name": "Mega Sharpedo ex",
+            "hp_now": 190,
+            "hp_max": 190,
+            "printed_hp": 190,
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0261.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0261.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Mega Sharpedo ex",
+              "under_top_bottom_to_top": [
+                "Carvanha"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Carvanha",
+                  "evidence_id": "F0165.40",
+                  "source_seconds": 165.41
+                },
+                {
+                  "top_card": "Mega Sharpedo ex",
+                  "evidence_id": "F0167.40",
+                  "source_seconds": 167.412
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0261.40"
+              ],
+              "energy": [
+                "F0261.40"
+              ],
+              "tool": [
+                "F0261.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0261.40",
+                  "F0165.40",
+                  "F0167.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0261.40"
+            ]
+          },
+          {
+            "position": 3,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0261.40"
+            ]
+          }
+        ]
+      },
+      "opponent": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "C-S",
+          "name": "Mega Blastoise ex",
+          "hp_now": 230,
+          "hp_max": 230,
+          "printed_hp": 230,
+          "damage": 0,
+          "attached_energy": {
+            "total": 5,
+            "by_type": {
+              "Water": 5
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0261.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0261.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Mega Blastoise ex",
+            "under_top_bottom_to_top": [
+              "Squirtle",
+              "Wartortle"
+            ],
+            "under_top_directly_readable_now": null,
+            "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+            "history": [
+              {
+                "top_card": "Squirtle",
+                "evidence_id": "F0063.30",
+                "source_seconds": 63.305
+              },
+              {
+                "top_card": "Wartortle",
+                "evidence_id": "F0074.20",
+                "source_seconds": 74.2083
+              },
+              {
+                "top_card": "Mega Blastoise ex",
+                "evidence_id": "F0208.30",
+                "source_seconds": 208.312
+              }
+            ],
+            "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0261.40"
+            ],
+            "energy": [
+              "F0261.40"
+            ],
+            "tool": [
+              "F0261.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0261.40",
+                "F0063.30",
+                "F0074.20",
+                "F0208.30"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0261.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "status": "observed_empty",
+            "evidence_ids": [
+              "F0261.40"
+            ]
+          },
+          {
+            "position": 2,
+            "physical_instance": "C-B",
+            "name": "Baxcalibur",
+            "hp_now": 20,
+            "hp_max": 140,
+            "printed_hp": 140,
+            "damage": 120,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0261.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0261.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Baxcalibur",
+              "under_top_bottom_to_top": [
+                "Frigibax",
+                "Arctibax"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Frigibax",
+                  "evidence_id": "F0031.40",
+                  "source_seconds": 31.4133
+                },
+                {
+                  "top_card": "Arctibax",
+                  "evidence_id": "F0048.30",
+                  "source_seconds": 48.3
+                },
+                {
+                  "top_card": "Baxcalibur",
+                  "evidence_id": "F0074.20",
+                  "source_seconds": 74.2083
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0261.40"
+              ],
+              "energy": [
+                "F0261.40"
+              ],
+              "tool": [
+                "F0261.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0261.40",
+                  "F0031.40",
+                  "F0048.30",
+                  "F0074.20"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0261.40"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "C-W1",
+            "name": "Wailmer",
+            "hp_now": 100,
+            "hp_max": 100,
+            "printed_hp": 100,
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0261.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0261.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Wailmer",
+              "under_top_bottom_to_top": [],
+              "under_top_directly_readable_now": [],
+              "basis": "Basic top, no lower evolution cards",
+              "history": [
+                {
+                  "top_card": "Wailmer",
+                  "evidence_id": "F0031.40",
+                  "source_seconds": 31.4133
+                }
+              ],
+              "limit": null
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0261.40"
+              ],
+              "energy": [
+                "F0261.40"
+              ],
+              "tool": [
+                "F0261.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0261.40",
+                  "F0031.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0261.40"
+            ]
+          }
+        ]
+      },
+      "owner_hand_for_copy_reconciliation": {
+        "cards_left_to_right": [
+          "Irida",
+          "Copycat",
+          "Alolan Ninetales ex",
+          "Misty",
+          "Mega Sharpedo ex",
+          "Elegant Cape",
+          "Misty",
+          "Alolan Vulpix"
+        ],
+        "evidence_ids": [
+          "F0261.40"
+        ],
+        "basis": "Freshly read hand names at this same native start view"
+      },
+      "decision_actor": {
+        "actor": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled_at_this_start": true,
+        "native_control_evidence_ids": [
+          "F0261.40"
+        ],
+        "turn_interval_seconds_approx": [
+          261.4,
+          271.4
+        ],
+        "classification_basis": "checked Auto control freshly visible at this owner-start frame; full source review records no mode change",
+        "observed_control_span_seconds": [
+          261.407,
+          261.407
+        ],
+        "span_limit": "Start anchor is a point observation. Attribution to the whole turn additionally uses the existing covered sequence with no observed toggle; invisible human input is not certified absent.",
+        "mode_changes_or_overrides_observed": []
+      }
+    },
+    {
+      "turn_number": 18,
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_seconds": 290.402,
+      "phase": "after draw and before first play",
+      "evidence_ids": [
+        "F0290.40"
+      ],
+      "stadium": {
+        "name": "Soothing Shore",
+        "played_by": "opponent",
+        "basis": "freshly visible shared Stadium or empty Stadium area",
+        "evidence_ids": [
+          "F0290.40"
+        ]
+      },
+      "points": {
+        "owner": 1,
+        "opponent": 1,
+        "basis": "freshly counted visible point markers",
+        "evidence_ids": [
+          "F0290.40"
+        ]
+      },
+      "discard_views": {
+        "owner": {
+          "opened": false,
+          "visible_top": "Lapras",
+          "total_count": null
+        },
+        "opponent": {
+          "opened": false,
+          "visible_top": "Wailmer",
+          "total_count": null
+        },
+        "limit": "Only exposed top cards, not opened piles. No visible numeric total; lower stack and duplicate census unavailable.",
+        "evidence_ids": [
+          "F0290.40"
+        ]
+      },
+      "owner": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "O-N1",
+          "name": "Alolan Ninetales ex",
+          "hp_now": 20,
+          "hp_max": 150,
+          "printed_hp": 150,
+          "damage": 130,
+          "attached_energy": {
+            "total": 2,
+            "by_type": {
+              "Water": 2
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0290.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0290.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Alolan Ninetales ex",
+            "under_top_bottom_to_top": [
+              "Alolan Vulpix"
+            ],
+            "under_top_directly_readable_now": null,
+            "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+            "history": [
+              {
+                "top_card": "Alolan Vulpix",
+                "evidence_id": "F0063.30",
+                "source_seconds": 63.305
+              },
+              {
+                "top_card": "Alolan Ninetales ex",
+                "evidence_id": "F0065.30",
+                "source_seconds": 65.3067
+              }
+            ],
+            "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0290.40"
+            ],
+            "energy": [
+              "F0290.40"
+            ],
+            "tool": [
+              "F0290.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0290.40",
+                "F0063.30",
+                "F0065.30"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0290.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "physical_instance": "O-S2",
+            "name": "Mega Sharpedo ex",
+            "hp_now": 190,
+            "hp_max": 190,
+            "printed_hp": 190,
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0290.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0290.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Mega Sharpedo ex",
+              "under_top_bottom_to_top": [
+                "Carvanha"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Carvanha",
+                  "evidence_id": "F0261.40",
+                  "source_seconds": 261.407
+                },
+                {
+                  "top_card": "Mega Sharpedo ex",
+                  "evidence_id": "F0266.40",
+                  "source_seconds": 266.41
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0290.40"
+              ],
+              "energy": [
+                "F0290.40"
+              ],
+              "tool": [
+                "F0290.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0290.40",
+                  "F0261.40",
+                  "F0266.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0290.40"
+            ]
+          },
+          {
+            "position": 2,
+            "physical_instance": "O-S1",
+            "name": "Mega Sharpedo ex",
+            "hp_now": 190,
+            "hp_max": 190,
+            "printed_hp": 190,
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0290.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0290.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Mega Sharpedo ex",
+              "under_top_bottom_to_top": [
+                "Carvanha"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Carvanha",
+                  "evidence_id": "F0165.40",
+                  "source_seconds": 165.41
+                },
+                {
+                  "top_card": "Mega Sharpedo ex",
+                  "evidence_id": "F0167.40",
+                  "source_seconds": 167.412
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0290.40"
+              ],
+              "energy": [
+                "F0290.40"
+              ],
+              "tool": [
+                "F0290.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0290.40",
+                  "F0165.40",
+                  "F0167.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0290.40"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "O-N2",
+            "name": "Alolan Vulpix",
+            "hp_now": 60,
+            "hp_max": 60,
+            "printed_hp": 60,
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0290.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0290.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Alolan Vulpix",
+              "under_top_bottom_to_top": [],
+              "under_top_directly_readable_now": [],
+              "basis": "Basic top, no lower evolution cards",
+              "history": [
+                {
+                  "top_card": "Alolan Vulpix",
+                  "evidence_id": "F0290.40",
+                  "source_seconds": 290.402
+                }
+              ],
+              "limit": null
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0290.40"
+              ],
+              "energy": [
+                "F0290.40"
+              ],
+              "tool": [
+                "F0290.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0290.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0290.40"
+            ]
+          }
+        ]
+      },
+      "opponent": {
+        "active": {
+          "position": "Active",
+          "physical_instance": "C-S",
+          "name": "Mega Blastoise ex",
+          "hp_now": 170,
+          "hp_max": 230,
+          "printed_hp": 230,
+          "damage": 60,
+          "attached_energy": {
+            "total": 5,
+            "by_type": {
+              "Water": 5
+            },
+            "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+            "evidence_ids": [
+              "F0290.40"
+            ]
+          },
+          "tool": {
+            "name": null,
+            "status": "no Tool icon visible",
+            "evidence_ids": [
+              "F0290.40"
+            ]
+          },
+          "special_conditions": [],
+          "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+          "evolution_stack": {
+            "top_card": "Mega Blastoise ex",
+            "under_top_bottom_to_top": [
+              "Squirtle",
+              "Wartortle"
+            ],
+            "under_top_directly_readable_now": null,
+            "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+            "history": [
+              {
+                "top_card": "Squirtle",
+                "evidence_id": "F0063.30",
+                "source_seconds": 63.305
+              },
+              {
+                "top_card": "Wartortle",
+                "evidence_id": "F0074.20",
+                "source_seconds": 74.2083
+              },
+              {
+                "top_card": "Mega Blastoise ex",
+                "evidence_id": "F0208.30",
+                "source_seconds": 208.312
+              }
+            ],
+            "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+          },
+          "attribute_provenance": {
+            "name_current_hp_position": [
+              "F0290.40"
+            ],
+            "energy": [
+              "F0290.40"
+            ],
+            "tool": [
+              "F0290.40"
+            ],
+            "maximum_hp": {
+              "evidence_ids": [
+                "F0290.40",
+                "F0063.30",
+                "F0074.20",
+                "F0208.30"
+              ],
+              "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+            }
+          },
+          "status": "fresh_native_boundary_read_with_separately_labeled_history",
+          "evidence_ids": [
+            "F0290.40"
+          ]
+        },
+        "bench_left_to_right": [
+          {
+            "position": 1,
+            "physical_instance": "C-B2",
+            "name": "Frigibax",
+            "hp_now": 60,
+            "hp_max": 60,
+            "printed_hp": 60,
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0290.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0290.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Frigibax",
+              "under_top_bottom_to_top": [],
+              "under_top_directly_readable_now": [],
+              "basis": "Basic top, no lower evolution cards",
+              "history": [
+                {
+                  "top_card": "Frigibax",
+                  "evidence_id": "F0290.40",
+                  "source_seconds": 290.402
+                }
+              ],
+              "limit": null
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0290.40"
+              ],
+              "energy": [
+                "F0290.40"
+              ],
+              "tool": [
+                "F0290.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0290.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0290.40"
+            ]
+          },
+          {
+            "position": 2,
+            "physical_instance": "C-B",
+            "name": "Baxcalibur",
+            "hp_now": 20,
+            "hp_max": 140,
+            "printed_hp": 140,
+            "damage": 120,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {},
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0290.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0290.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Baxcalibur",
+              "under_top_bottom_to_top": [
+                "Frigibax",
+                "Arctibax"
+              ],
+              "under_top_directly_readable_now": null,
+              "basis": "same-recording observed earlier top cards and evolution transition/endpoint anchors; lower cards are hidden in this current view",
+              "history": [
+                {
+                  "top_card": "Frigibax",
+                  "evidence_id": "F0031.40",
+                  "source_seconds": 31.4133
+                },
+                {
+                  "top_card": "Arctibax",
+                  "evidence_id": "F0048.30",
+                  "source_seconds": 48.3
+                },
+                {
+                  "top_card": "Baxcalibur",
+                  "evidence_id": "F0074.20",
+                  "source_seconds": 74.2083
+                }
+              ],
+              "limit": "This names the witnessed evolution history, not a new direct read of the hidden lower faces. Set/rarity IDs remain unverified."
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0290.40"
+              ],
+              "energy": [
+                "F0290.40"
+              ],
+              "tool": [
+                "F0290.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0290.40",
+                  "F0031.40",
+                  "F0048.30",
+                  "F0074.20"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0290.40"
+            ]
+          },
+          {
+            "position": 3,
+            "physical_instance": "C-W1",
+            "name": "Wailmer",
+            "hp_now": 100,
+            "hp_max": 100,
+            "printed_hp": 100,
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Water": 3
+              },
+              "basis": "fresh count of attached Water icons on this individual Pokemon; not a side total",
+              "evidence_ids": [
+                "F0290.40"
+              ]
+            },
+            "tool": {
+              "name": null,
+              "status": "no Tool icon visible",
+              "evidence_ids": [
+                "F0290.40"
+              ]
+            },
+            "special_conditions": [],
+            "special_conditions_basis": "No Special Condition marker visible on this card at the sampled boundary.",
+            "evolution_stack": {
+              "top_card": "Wailmer",
+              "under_top_bottom_to_top": [],
+              "under_top_directly_readable_now": [],
+              "basis": "Basic top, no lower evolution cards",
+              "history": [
+                {
+                  "top_card": "Wailmer",
+                  "evidence_id": "F0031.40",
+                  "source_seconds": 31.4133
+                }
+              ],
+              "limit": null
+            },
+            "attribute_provenance": {
+              "name_current_hp_position": [
+                "F0290.40"
+              ],
+              "energy": [
+                "F0290.40"
+              ],
+              "tool": [
+                "F0290.40"
+              ],
+              "maximum_hp": {
+                "evidence_ids": [
+                  "F0290.40",
+                  "F0031.40"
+                ],
+                "basis": "Printed/full-health maximum established in this same recording; current damage is distinguished from maximum."
+              }
+            },
+            "status": "fresh_native_boundary_read_with_separately_labeled_history",
+            "evidence_ids": [
+              "F0290.40"
+            ]
+          }
+        ]
+      },
+      "owner_hand_for_copy_reconciliation": {
+        "cards_left_to_right": [
+          "Irida",
+          "Copycat",
+          "Alolan Ninetales ex",
+          "Misty",
+          "Elegant Cape",
+          "Misty",
+          "Cyrus"
+        ],
+        "evidence_ids": [
+          "F0290.40"
+        ],
+        "basis": "Freshly read hand names at this same native start view"
+      },
+      "decision_actor": {
+        "actor": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled_at_this_start": true,
+        "native_control_evidence_ids": [
+          "F0290.40"
+        ],
+        "turn_interval_seconds_approx": [
+          290.4,
+          321.4
+        ],
+        "classification_basis": "checked Auto control freshly visible at this owner-start frame; full source review records no mode change",
+        "observed_control_span_seconds": [
+          290.402,
+          290.402
+        ],
+        "span_limit": "Start anchor is a point observation. Attribution to the whole turn additionally uses the existing covered sequence with no observed toggle; invisible human input is not certified absent.",
+        "mode_changes_or_overrides_observed": []
+      }
+    }
+  ],
+  "physical_evolution_histories": [
+    {
+      "physical_instance": "O-N1",
+      "top_cards_in_order": [
+        {
+          "name": "Alolan Vulpix",
+          "evidence": [
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            }
+          ]
+        },
+        {
+          "name": "Alolan Ninetales ex",
+          "evidence": [
+            {
+              "evidence_id": "F0065.30",
+              "source_seconds": 65.3067
+            }
+          ]
+        }
+      ],
+      "basis": "Freshly inspected same-source prior top card plus evolution animation or endpoint; route reconciled to the full turn ledger.",
+      "limit": "An endpoint can establish the new top while lower faces stay hidden. No deck-list-only stack inference."
+    },
+    {
+      "physical_instance": "O-N2",
+      "top_cards_in_order": [
+        {
+          "name": "Alolan Vulpix",
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ]
+        },
+        {
+          "name": "Alolan Ninetales ex",
+          "evidence": [
+            {
+              "evidence_id": "F0293.40",
+              "source_seconds": 293.403
+            }
+          ]
+        }
+      ],
+      "basis": "Freshly inspected same-source prior top card plus evolution animation or endpoint; route reconciled to the full turn ledger.",
+      "limit": "An endpoint can establish the new top while lower faces stay hidden. No deck-list-only stack inference."
+    },
+    {
+      "physical_instance": "O-S1",
+      "top_cards_in_order": [
+        {
+          "name": "Carvanha",
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            }
+          ]
+        },
+        {
+          "name": "Mega Sharpedo ex",
+          "evidence": [
+            {
+              "evidence_id": "F0167.40",
+              "source_seconds": 167.412
+            }
+          ]
+        }
+      ],
+      "basis": "Freshly inspected same-source prior top card plus evolution animation or endpoint; route reconciled to the full turn ledger.",
+      "limit": "An endpoint can establish the new top while lower faces stay hidden. No deck-list-only stack inference."
+    },
+    {
+      "physical_instance": "O-S2",
+      "top_cards_in_order": [
+        {
+          "name": "Carvanha",
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ]
+        },
+        {
+          "name": "Mega Sharpedo ex",
+          "evidence": [
+            {
+              "evidence_id": "F0266.40",
+              "source_seconds": 266.41
+            }
+          ]
+        }
+      ],
+      "basis": "Freshly inspected same-source prior top card plus evolution animation or endpoint; route reconciled to the full turn ledger.",
+      "limit": "An endpoint can establish the new top while lower faces stay hidden. No deck-list-only stack inference."
+    },
+    {
+      "physical_instance": "C-S",
+      "top_cards_in_order": [
+        {
+          "name": "Squirtle",
+          "evidence": [
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            }
+          ]
+        },
+        {
+          "name": "Wartortle",
+          "evidence": [
+            {
+              "evidence_id": "F0074.20",
+              "source_seconds": 74.2083
+            }
+          ]
+        },
+        {
+          "name": "Mega Blastoise ex",
+          "evidence": [
+            {
+              "evidence_id": "F0208.30",
+              "source_seconds": 208.312
+            }
+          ]
+        }
+      ],
+      "basis": "Freshly inspected same-source prior top card plus evolution animation or endpoint; route reconciled to the full turn ledger.",
+      "limit": "An endpoint can establish the new top while lower faces stay hidden. No deck-list-only stack inference."
+    },
+    {
+      "physical_instance": "C-B",
+      "top_cards_in_order": [
+        {
+          "name": "Frigibax",
+          "evidence": [
+            {
+              "evidence_id": "F0031.40",
+              "source_seconds": 31.4133
+            }
+          ]
+        },
+        {
+          "name": "Arctibax",
+          "evidence": [
+            {
+              "evidence_id": "F0048.30",
+              "source_seconds": 48.3
+            }
+          ]
+        },
+        {
+          "name": "Baxcalibur",
+          "evidence": [
+            {
+              "evidence_id": "F0074.20",
+              "source_seconds": 74.2083
+            }
+          ]
+        }
+      ],
+      "basis": "Freshly inspected same-source prior top card plus evolution animation or endpoint; route reconciled to the full turn ledger.",
+      "limit": "An endpoint can establish the new top while lower faces stay hidden. No deck-list-only stack inference."
+    },
+    {
+      "physical_instance": "C-W1",
+      "top_cards_in_order": [
+        {
+          "name": "Wailmer",
+          "evidence": [
+            {
+              "evidence_id": "F0031.40",
+              "source_seconds": 31.4133
+            }
+          ]
+        },
+        {
+          "name": "Wailord ex",
+          "evidence": [
+            {
+              "evidence_id": "F0333.40",
+              "source_seconds": 333.412
+            }
+          ]
+        }
+      ],
+      "basis": "Freshly inspected same-source prior top card plus evolution animation or endpoint; route reconciled to the full turn ledger.",
+      "limit": "An endpoint can establish the new top while lower faces stay hidden. No deck-list-only stack inference."
+    },
+    {
+      "physical_instance": "C-B2",
+      "top_cards_in_order": [
+        {
+          "name": "Frigibax",
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ]
+        },
+        {
+          "name": "Arctibax",
+          "evidence": [
+            {
+              "evidence_id": "F0327.40",
+              "source_seconds": 327.412
+            }
+          ]
+        }
+      ],
+      "basis": "Freshly inspected same-source prior top card plus evolution animation or endpoint; route reconciled to the full turn ledger.",
+      "limit": "An endpoint can establish the new top while lower faces stay hidden. No deck-list-only stack inference."
+    }
+  ],
+  "owner_choices_during_opponent_turns": [
+    {
+      "turn_number": 1,
+      "source_interval_seconds_approx": [
+        22.4,
+        27.9
+      ],
+      "owner_choice_events": [],
+      "owner_knockout_promotion": false,
+      "owner_forced_switch_prompt": false,
+      "basis": "Source-bound full reviewed action/automatic-event ledger contains no owner knockout, opponent switch-forcing action or owner choice prompt in this opponent turn; fresh adjacent owner-start board reads agree.",
+      "evidence_ids": [
+        "F0022.40",
+        "F0027.90"
+      ],
+      "options_shown": null,
+      "selection": null,
+      "decision_actor": null,
+      "limit": "No such decision observed, so no option list is invented. This supplement uses existing whole-turn coverage plus fresh boundary checks, not a repeated full video inspection."
+    },
+    {
+      "turn_number": 3,
+      "source_interval_seconds_approx": [
+        47.2,
+        58.3
+      ],
+      "owner_choice_events": [],
+      "owner_knockout_promotion": false,
+      "owner_forced_switch_prompt": false,
+      "basis": "Source-bound full reviewed action/automatic-event ledger contains no owner knockout, opponent switch-forcing action or owner choice prompt in this opponent turn; fresh adjacent owner-start board reads agree.",
+      "evidence_ids": [
+        "F0047.20",
+        "F0058.30"
+      ],
+      "options_shown": null,
+      "selection": null,
+      "decision_actor": null,
+      "limit": "No such decision observed, so no option list is invented. This supplement uses existing whole-turn coverage plus fresh boundary checks, not a repeated full video inspection."
+    },
+    {
+      "turn_number": 5,
+      "source_interval_seconds_approx": [
+        69.4,
+        85.4
+      ],
+      "owner_choice_events": [],
+      "owner_knockout_promotion": false,
+      "owner_forced_switch_prompt": false,
+      "basis": "Source-bound full reviewed action/automatic-event ledger contains no owner knockout, opponent switch-forcing action or owner choice prompt in this opponent turn; fresh adjacent owner-start board reads agree.",
+      "evidence_ids": [
+        "F0069.40",
+        "F0085.40"
+      ],
+      "options_shown": null,
+      "selection": null,
+      "decision_actor": null,
+      "limit": "No such decision observed, so no option list is invented. This supplement uses existing whole-turn coverage plus fresh boundary checks, not a repeated full video inspection."
+    },
+    {
+      "turn_number": 7,
+      "source_interval_seconds_approx": [
+        120.3,
+        136.4
+      ],
+      "owner_choice_events": [],
+      "owner_knockout_promotion": false,
+      "owner_forced_switch_prompt": false,
+      "basis": "Source-bound full reviewed action/automatic-event ledger contains no owner knockout, opponent switch-forcing action or owner choice prompt in this opponent turn; fresh adjacent owner-start board reads agree.",
+      "evidence_ids": [
+        "F0120.30",
+        "F0136.40"
+      ],
+      "options_shown": null,
+      "selection": null,
+      "decision_actor": null,
+      "limit": "No such decision observed, so no option list is invented. This supplement uses existing whole-turn coverage plus fresh boundary checks, not a repeated full video inspection."
+    },
+    {
+      "turn_number": 9,
+      "source_interval_seconds_approx": [
+        148.4,
+        160.4
+      ],
+      "owner_choice_events": [],
+      "owner_knockout_promotion": false,
+      "owner_forced_switch_prompt": false,
+      "basis": "Source-bound full reviewed action/automatic-event ledger contains no owner knockout, opponent switch-forcing action or owner choice prompt in this opponent turn; fresh adjacent owner-start board reads agree.",
+      "evidence_ids": [
+        "F0148.40",
+        "F0160.40"
+      ],
+      "options_shown": null,
+      "selection": null,
+      "decision_actor": null,
+      "limit": "No such decision observed, so no option list is invented. This supplement uses existing whole-turn coverage plus fresh boundary checks, not a repeated full video inspection."
+    },
+    {
+      "turn_number": 11,
+      "source_interval_seconds_approx": [
+        174.4,
+        190.4
+      ],
+      "owner_choice_events": [],
+      "owner_knockout_promotion": false,
+      "owner_forced_switch_prompt": false,
+      "basis": "Source-bound full reviewed action/automatic-event ledger contains no owner knockout, opponent switch-forcing action or owner choice prompt in this opponent turn; fresh adjacent owner-start board reads agree.",
+      "evidence_ids": [
+        "F0174.40",
+        "F0190.40"
+      ],
+      "options_shown": null,
+      "selection": null,
+      "decision_actor": null,
+      "limit": "No such decision observed, so no option list is invented. This supplement uses existing whole-turn coverage plus fresh boundary checks, not a repeated full video inspection."
+    },
+    {
+      "turn_number": 13,
+      "source_interval_seconds_approx": [
+        204.3,
+        216.4
+      ],
+      "owner_choice_events": [],
+      "owner_knockout_promotion": false,
+      "owner_forced_switch_prompt": false,
+      "basis": "Source-bound full reviewed action/automatic-event ledger contains no owner knockout, opponent switch-forcing action or owner choice prompt in this opponent turn; fresh adjacent owner-start board reads agree.",
+      "evidence_ids": [
+        "F0204.30",
+        "F0216.40"
+      ],
+      "options_shown": null,
+      "selection": null,
+      "decision_actor": null,
+      "limit": "No such decision observed, so no option list is invented. This supplement uses existing whole-turn coverage plus fresh boundary checks, not a repeated full video inspection."
+    },
+    {
+      "turn_number": 15,
+      "source_interval_seconds_approx": [
+        238.4,
+        256.4
+      ],
+      "owner_choice_events": [
+        {
+          "kind": "forced Active replacement after Lapras knockout",
+          "decision_actor": "game Auto",
+          "source_seconds_bracket": [
+            254.303,
+            256.405
+          ],
+          "visible_candidates_left_to_right": [
+            {
+              "bench_position": 1,
+              "physical_instance": "O-S2",
+              "name": "Carvanha",
+              "hp_now": 50,
+              "water": 1
+            },
+            {
+              "bench_position": 2,
+              "physical_instance": "O-S1",
+              "name": "Mega Sharpedo ex",
+              "hp_now": 190,
+              "water": 1
+            },
+            {
+              "bench_position": 3,
+              "physical_instance": "O-N1",
+              "name": "Alolan Ninetales ex",
+              "hp_now": 150,
+              "water": 2
+            }
+          ],
+          "options_shown": "Three remaining Bench Pokemon visible on board; no separate menu or written selection prompt visible in inspected anchors.",
+          "selection": {
+            "physical_instance": "O-N1",
+            "name": "Alolan Ninetales ex",
+            "from_bench_position": 3,
+            "to": "Active",
+            "first_selected_animation_evidence": "F0255.40",
+            "settled_evidence": "F0256.40"
+          },
+          "control_evidence": [
+            {
+              "evidence_id": "F0254.30",
+              "source_seconds": 254.303
+            },
+            {
+              "evidence_id": "F0256.40",
+              "source_seconds": 256.405
+            }
+          ],
+          "evidence": [
+            {
+              "evidence_id": "F0251.40",
+              "source_seconds": 251.403
+            },
+            {
+              "evidence_id": "F0254.30",
+              "source_seconds": 254.303
+            },
+            {
+              "evidence_id": "F0255.40",
+              "source_seconds": 255.405
+            },
+            {
+              "evidence_id": "F0256.40",
+              "source_seconds": 256.405
+            },
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "basis": "Opponent gains its first point, Lapras is in discard and Active empty; right Bench Ninetales enlarges, then occupies Active. Checked Auto is visible immediately around promotion.",
+          "limit": "Candidate Energy/HP use last settled board and next start because animation temporarily hides numerical overlays. No exact touch or human input is visible. Options are visible board candidates, not a fabricated dialog."
+        }
+      ],
+      "owner_knockout_promotion": true,
+      "owner_forced_switch_prompt": false,
+      "basis": "Opponent gains its first point, Lapras is in discard and Active empty; right Bench Ninetales enlarges, then occupies Active. Checked Auto is visible immediately around promotion.",
+      "evidence_ids": [
+        "F0251.40",
+        "F0254.30",
+        "F0255.40",
+        "F0256.40",
+        "F0261.40"
+      ],
+      "options_shown": "Three remaining Bench Pokemon visible on board; no separate menu or written selection prompt visible in inspected anchors.",
+      "selection": {
+        "physical_instance": "O-N1",
+        "name": "Alolan Ninetales ex",
+        "from_bench_position": 3,
+        "to": "Active",
+        "first_selected_animation_evidence": "F0255.40",
+        "settled_evidence": "F0256.40"
+      },
+      "decision_actor": "game Auto",
+      "limit": "Candidate Energy/HP use last settled board and next start because animation temporarily hides numerical overlays. No exact touch or human input is visible. Options are visible board candidates, not a fabricated dialog."
+    },
+    {
+      "turn_number": 17,
+      "source_interval_seconds_approx": [
+        274.4,
+        286.4
+      ],
+      "owner_choice_events": [],
+      "owner_knockout_promotion": false,
+      "owner_forced_switch_prompt": false,
+      "basis": "Source-bound full reviewed action/automatic-event ledger contains no owner knockout, opponent switch-forcing action or owner choice prompt in this opponent turn; fresh adjacent owner-start board reads agree.",
+      "evidence_ids": [
+        "F0274.40",
+        "F0286.40"
+      ],
+      "options_shown": null,
+      "selection": null,
+      "decision_actor": null,
+      "limit": "No such decision observed, so no option list is invented. This supplement uses existing whole-turn coverage plus fresh boundary checks, not a repeated full video inspection."
+    },
+    {
+      "turn_number": 19,
+      "source_interval_seconds_approx": [
+        324.4,
+        343.4
+      ],
+      "owner_choice_events": [],
+      "owner_knockout_promotion": false,
+      "owner_forced_switch_prompt": false,
+      "basis": "Final attack knocks out the old Ninetales on the Bench and reaches the win threshold. Owner Active Sharpedo remains at 60 HP; no owner promotion follows a Bench knockout or the terminal result.",
+      "evidence_ids": [
+        "F0327.40",
+        "F0339.40",
+        "F0343.40"
+      ],
+      "options_shown": null,
+      "selection": null,
+      "decision_actor": null,
+      "limit": "Game ends. No owner selection prompt or replacement is observed; no options invented."
+    }
+  ],
+  "seen_card_inventory": "SEEN_CARD_INVENTORY.json",
+  "routing": {
+    "computer": true,
+    "online_game_entry_requested": false,
+    "destination": "local batch and BATTLE_REVIEW_INDEX only"
+  },
+  "source_evidence": [
+    {
+      "evidence_id": "F0031.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 31.4133,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0031.40.jpg",
+      "full_frame_sha256": "245ec8072704856c8319b363548e358880da91bcada808e207818f02767f8392",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0063.30",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 63.305,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0063.30.jpg",
+      "full_frame_sha256": "f1ad6a5eab09eaeae5c05a78ac112ef2c75928a198c72713ae62c041f8f35ea6",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0088.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 88.4133,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0088.40.jpg",
+      "full_frame_sha256": "f1966927ee318596488994ec75d7eae994d375ef6254f6b83519d044871ae70a",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0141.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 141.4,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0141.40.jpg",
+      "full_frame_sha256": "f49d5805ab52e6ec9242db1ead89044f07f79094483e8219754a535c3c383836",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0165.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 165.41,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0165.40.jpg",
+      "full_frame_sha256": "16d583d0bf29a0977599dbb504982143d4712a37956e5cafd65c91f0513aa29a",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0195.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 195.407,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0195.40.jpg",
+      "full_frame_sha256": "4ea2f1c5928d21369d5e2a6e1e405f245dc288a5433fc23a1ea222aabc770387",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0221.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 221.413,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0221.40.jpg",
+      "full_frame_sha256": "dd9bc0778cb8e90fc1a0cf9615fbe5608e8655d5bd6ad483c2ee474f67604f27",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0261.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 261.407,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0261.40.jpg",
+      "full_frame_sha256": "7b12a46ecb2a7788d00fe5e8830cf42231ad66677fc8ec7218cf3faeb106563c",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0290.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 290.402,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0290.40.jpg",
+      "full_frame_sha256": "a2d604b3b351e40bd751fd07de66f7e6d704567f35e87042324f3b9137b205fc",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0048.30",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 48.3,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0048.30.jpg",
+      "full_frame_sha256": "1f7dd1d0a0676b492274b2d5c8e6d430831bf4dd76b9ddd2dc455d4f265bda8b",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0065.30",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 65.3067,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0065.30.jpg",
+      "full_frame_sha256": "1e39dd16b784c13f3eb6b2edb4bfdfa2b839cc93d0e3b8cc0a8e98de5e6e3143",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0072.20",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 72.2083,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0072.20.jpg",
+      "full_frame_sha256": "6f9ec6248ee23ae6c2eccab63c675eb0e49cc550e4397ddebf23c55be70c8d5e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0074.20",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 74.2083,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0074.20.jpg",
+      "full_frame_sha256": "2f6bf53bb91b89266a7c1aa704c9c23e7412c96a32c38d1247293c621b1b6205",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0167.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 167.412,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0167.40.jpg",
+      "full_frame_sha256": "8fa4804b9f5eaa310e3dc6211b6505fb5ec8295ebde5500d0fc5cb06e2ca26dc",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0208.30",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 208.312,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0208.30.jpg",
+      "full_frame_sha256": "34835b2026ca50ae823dc4d3d278348283530e78d2bde94704b756728ad09c34",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0266.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 266.41,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0266.40.jpg",
+      "full_frame_sha256": "f379fb237e1c1633ceec404aabb1a7f0139de7fcd2cad993cabea9b23b8c3b21",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0293.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 293.403,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0293.40.jpg",
+      "full_frame_sha256": "aba760dfa852b78d8391d764242d541b3fdec8e35c04b9a94f8cd4856262e4d3",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0327.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 327.412,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0327.40.jpg",
+      "full_frame_sha256": "44787f9babd9c5632d1d9c801a92c58037fa2dcf3168480b59aac5909f913863",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0333.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 333.412,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0333.40.jpg",
+      "full_frame_sha256": "da0ff0ace85e2142b62a1ab0efe285ec0b6e0fc10ab924827c360c0ef8f2c1bd",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0251.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 251.403,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0251.40.jpg",
+      "full_frame_sha256": "05181c169d53e186900b4ce8a408f971aee687a36d2372f41861225af82b7442",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0254.30",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 254.303,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0254.30.jpg",
+      "full_frame_sha256": "9541789288a53d2c34892927b61dd56d25387f3f3d54281fb7cd13d4dbae5720",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0255.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 255.405,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0255.40.jpg",
+      "full_frame_sha256": "7e9878a024230bef92cdfb1897a7e131243c5b772cc48849462ffe93d549df56",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0256.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 256.405,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0256.40.jpg",
+      "full_frame_sha256": "5c203501bf2936a1c648722a7635d4e3b23fdda46d65c642b964c267e6de56f9",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0095.20",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 95.215,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0095.20.jpg",
+      "full_frame_sha256": "3a4854c8915c65ae2115ae66fb1f735b24f9c21886ef48323d40a2439b5f3713",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0101.30",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 101.3,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0101.30.jpg",
+      "full_frame_sha256": "0355f9794eabd4a2b2c7aac2f553e4ca08372992793763cb64bd503768515f07",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0106.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 106.4,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0106.40.jpg",
+      "full_frame_sha256": "4026be2309fbfea4fb5f9871955bb8587267dc9a9ff142897730827ef60253f9",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0109.30",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 109.302,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0109.30.jpg",
+      "full_frame_sha256": "2ed9dfa5a5861392969333c3081f4c1dd258fd161976b9aa2e3bc2b9b454559e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0110.60",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 110.602,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0110.60.jpg",
+      "full_frame_sha256": "4fa5ba6ca71942f71b754eb5ed4a21f50e85c7ec8ef59749b8f726e9ecfbc51e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0343.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 343.412,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0343.40.jpg",
+      "full_frame_sha256": "157111498b617ee815eafe217e8f39de68e09f49d63e091890b1af90ef12150d",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0033.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 33.415,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0033.40.jpg",
+      "full_frame_sha256": "47c87f5c14894f4b7bd8ff6afe99063288a5253c20321a4833e72d33384600eb",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0090.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 90.4133,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0090.40.jpg",
+      "full_frame_sha256": "877d7fb3f7f26a70cb912c88a1eb3dac6fd03e06952999c6a6454179ff665e0d",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0096.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 96.415,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0096.40.jpg",
+      "full_frame_sha256": "22dfc64b95a4c232dc9ae2ef9fd9fbc514bd0c801d442abcd5882043dc71d76a",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0303.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 303.407,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0303.40.jpg",
+      "full_frame_sha256": "45da9aedcefa315c8a19c03be7a800d67f81828551c1b37c610318668dffb4fb",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0313.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 313.408,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0313.40.jpg",
+      "full_frame_sha256": "22a81b5b5a10b667c4df4ee16c5f424fdafce77ff14e2ea7aebe87251ea4b6d7",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0339.40",
+      "source_video": "20261002_210952000_iOS.MP4",
+      "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "actual_frame_seconds_if_measured": 339.412,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\turn_evidence\\t0339.40.jpg",
+      "full_frame_sha256": "f14d88d4537e243b307cd88333e734b0e82722c1a59fe5cf40dc0677dd4ff242",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    }
+  ],
+  "metrics": {
+    "model": "gpt-6-astra",
+    "reasoning_effort": "high",
+    "fresh_or_same_session_native_images_inspected": 35,
+    "inspected_image_ids": [
+      "F0031.40",
+      "F0063.30",
+      "F0088.40",
+      "F0141.40",
+      "F0165.40",
+      "F0195.40",
+      "F0221.40",
+      "F0261.40",
+      "F0290.40",
+      "F0048.30",
+      "F0065.30",
+      "F0072.20",
+      "F0074.20",
+      "F0167.40",
+      "F0208.30",
+      "F0266.40",
+      "F0293.40",
+      "F0327.40",
+      "F0333.40",
+      "F0251.40",
+      "F0254.30",
+      "F0255.40",
+      "F0256.40",
+      "F0095.20",
+      "F0101.30",
+      "F0106.40",
+      "F0109.30",
+      "F0110.60",
+      "F0343.40",
+      "F0033.40",
+      "F0090.40",
+      "F0096.40",
+      "F0303.40",
+      "F0313.40",
+      "F0339.40"
+    ],
+    "new_native_extractions": 0,
+    "tokens": null,
+    "dollar_cost": null,
+    "elapsed_seconds": null,
+    "measurement_limit": "Token cost and precise elapsed time not measured. All listed native images were freshly viewed for this supplement; source movie was not reread or rehashed."
+  },
+  "limits": [
+    "Lower evolution faces are hidden at current boundaries; named stacks are tied to freshly inspected prior top/evolution anchors.",
+    "No opened pile census or opponent discard total is available.",
+    "Auto attribution uses visible checked controls and source coverage, not direct input telemetry.",
+    "All hidden opponent hand identities remain unknown.",
+    "Full 19-turn source-bound core supplies action coverage. Fresh native reads cover all nine owner starts, evolution anchors, both Research printings, Lucky Ice Pop resolution, T15 replacement and final bench knockout. This is not a redundant full-video pass."
+  ],
+  "independent_acceptance": null,
+  "self_acceptance": false,
+  "critical_physical_instance_reconciliation": [
+    {
+      "physical_instance": "O-N1",
+      "history": "Original right Vulpix evolves to the dark-background Ninetales, is Auto-promoted after Lapras KO, takes 130 to 20 HP, retreats to middle Bench by paying both Water, receives Turbo Shark Water, heals to 40 under Shore, then is knocked out by final 50 Bench damage. It is distinct from the new right Ninetales.",
+      "evidence": [
+        {
+          "evidence_id": "F0063.30",
+          "source_seconds": 63.305
+        },
+        {
+          "evidence_id": "F0065.30",
+          "source_seconds": 65.3067
+        },
+        {
+          "evidence_id": "F0256.40",
+          "source_seconds": 256.405
+        },
+        {
+          "evidence_id": "F0290.40",
+          "source_seconds": 290.402
+        },
+        {
+          "evidence_id": "F0303.40",
+          "source_seconds": 303.407
+        },
+        {
+          "evidence_id": "F0327.40",
+          "source_seconds": 327.412
+        },
+        {
+          "evidence_id": "F0339.40",
+          "source_seconds": 339.412
+        },
+        {
+          "evidence_id": "F0343.40",
+          "source_seconds": 343.412
+        }
+      ]
+    },
+    {
+      "physical_instance": "O-N2",
+      "history": "Second Vulpix remains right at T18 start, evolves into light/rainbow Ninetales at 293.4, has two Water and full 150 HP before final attack, survives final Bench damage at 100 HP. Its lower Vulpix is established by same-recording history, not a visible lower face.",
+      "evidence": [
+        {
+          "evidence_id": "F0290.40",
+          "source_seconds": 290.402
+        },
+        {
+          "evidence_id": "F0293.40",
+          "source_seconds": 293.403
+        },
+        {
+          "evidence_id": "F0327.40",
+          "source_seconds": 327.412
+        },
+        {
+          "evidence_id": "F0339.40",
+          "source_seconds": 339.412
+        }
+      ]
+    },
+    {
+      "physical_instance": "O-S1",
+      "history": "First Carvanha in middle Bench evolves into full-art Sharpedo; replaces the retreating old Ninetales, attacks Baxcalibur and remains Active at 60 HP after final attack. Left regular-art Sharpedo O-S2 remains 190 HP.",
+      "evidence": [
+        {
+          "evidence_id": "F0165.40",
+          "source_seconds": 165.41
+        },
+        {
+          "evidence_id": "F0167.40",
+          "source_seconds": 167.412
+        },
+        {
+          "evidence_id": "F0261.40",
+          "source_seconds": 261.407
+        },
+        {
+          "evidence_id": "F0266.40",
+          "source_seconds": 266.41
+        },
+        {
+          "evidence_id": "F0303.40",
+          "source_seconds": 303.407
+        },
+        {
+          "evidence_id": "F0339.40",
+          "source_seconds": 339.412
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,564 @@
+{
+  "game_id": "20260909_032418000",
+  "source": "20260909_032418000_iOS.MP4",
+  "source_sha256": "750514530d208e76a8fbd8fc968aa6900ef08b0a0c84d5c00ce48c656f1f9672",
+  "opening_hand": {
+    "cards_left_to_right": [
+      "Team Rocket's Goo-zooka",
+      "Rotom ex",
+      "Hitting Hammer",
+      "Gholdengo",
+      "Poké Ball"
+    ],
+    "count": 5,
+    "evidence_ids": [
+      "r0022.00",
+      "t0023.00"
+    ],
+    "before_active_placement": true
+  },
+  "owner_turns": [
+    {
+      "turn_number": 1,
+      "draw_animation_end_seconds": 38.4,
+      "timing_basis": "approximate inspected animation endpoint; actual PTS unmeasured",
+      "selected_start_evidence_ids": [
+        "t0038.50"
+      ],
+      "before_end_evidence_ids": [
+        "t0048.00"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Team Rocket's Goo-zooka",
+          "Hitting Hammer",
+          "Gholdengo",
+          "Poké Ball",
+          "Hitting Hammer"
+        ],
+        "count": 5,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "t0038.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Team Rocket's Goo-zooka",
+          "Hitting Hammer",
+          "Gholdengo",
+          "Hitting Hammer"
+        ],
+        "count": 4,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "t0048.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "t0039.00",
+          "requested_source_seconds": 39,
+          "offset_after_draw_seconds": 0.6,
+          "observation": "Poké Ball inspected/selected; all five cards still present, not a clean untouched view"
+        },
+        {
+          "evidence_id": "t0041.00",
+          "requested_source_seconds": 41,
+          "offset_after_draw_seconds": 2.6,
+          "observation": "Poké Ball already played, four cards"
+        },
+        {
+          "evidence_id": "t0044.00",
+          "requested_source_seconds": 44,
+          "offset_after_draw_seconds": 5.6,
+          "observation": "Search result Gimmighoul added, five cards after search"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Hitting Hammer",
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 38,
+              "evidence_ids": [
+                "r0038.00",
+                "t0038.50",
+                "cue_00039"
+              ],
+              "basis": "native reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 38,
+          "evidence_ids": [
+            "r0038.00",
+            "t0038.50",
+            "cue_00039"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Gimmighoul",
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 43.5,
+              "evidence_ids": [
+                "t0044.00",
+                "cue_00044"
+              ],
+              "basis": "native reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 43.5,
+          "evidence_ids": [
+            "t0044.00",
+            "cue_00044"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 3,
+      "draw_animation_end_seconds": 79.3,
+      "timing_basis": "approximate inspected animation endpoint; actual PTS unmeasured",
+      "selected_start_evidence_ids": [
+        "t0079.50"
+      ],
+      "before_end_evidence_ids": [
+        "t0133.00"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Team Rocket's Goo-zooka",
+          "Hitting Hammer",
+          "Gholdengo",
+          "Hitting Hammer",
+          "Red Card"
+        ],
+        "count": 5,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "t0079.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "t0133.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "t0079.50",
+          "requested_source_seconds": 79.5,
+          "offset_after_draw_seconds": 0.2,
+          "observation": "Unzoomed five-card untouched postdraw hand"
+        },
+        {
+          "evidence_id": "t0082.00",
+          "requested_source_seconds": 82,
+          "offset_after_draw_seconds": 2.7,
+          "observation": "Gholdengo evolution reveal; after play, four cards"
+        },
+        {
+          "evidence_id": "t0085.00",
+          "requested_source_seconds": 85,
+          "offset_after_draw_seconds": 5.7,
+          "observation": "Red Card preview after evolution; four cards"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Red Card",
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 79,
+              "evidence_ids": [
+                "t0079.50",
+                "cue_00080"
+              ],
+              "basis": "native reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 79,
+          "evidence_ids": [
+            "t0079.50",
+            "cue_00080"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "refill",
+          "caused_by": "Red Card",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 89.5,
+              "evidence_ids": [
+                "r0090.00",
+                "cue_00090"
+              ],
+              "basis": "concealed card back",
+              "limit_reason": "Opponent three hidden cards shuffled and replaced; no visible identity"
+            },
+            {
+              "name": null,
+              "reveal_position": 2,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 89.5,
+              "evidence_ids": [
+                "r0090.00",
+                "cue_00090"
+              ],
+              "basis": "concealed card back",
+              "limit_reason": "Opponent three hidden cards shuffled and replaced; no visible identity"
+            },
+            {
+              "name": null,
+              "reveal_position": 3,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 89.5,
+              "evidence_ids": [
+                "r0090.00",
+                "cue_00090"
+              ],
+              "basis": "concealed card back",
+              "limit_reason": "Opponent three hidden cards shuffled and replaced; no visible identity"
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 3,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 89.5,
+          "evidence_ids": [
+            "r0090.00",
+            "cue_00090"
+          ],
+          "limit_reason": "Opponent three hidden cards shuffled and replaced; no visible identity"
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 5,
+      "draw_animation_end_seconds": 165.5,
+      "timing_basis": "approximate inspected animation endpoint; actual PTS unmeasured",
+      "selected_start_evidence_ids": [
+        "r0166.00"
+      ],
+      "before_end_evidence_ids": [
+        "r0205.00"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Order Pad"
+        ],
+        "count": 1,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "r0166.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "r0205.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "r0166.00",
+          "requested_source_seconds": 166,
+          "offset_after_draw_seconds": 0.5,
+          "observation": "Untouched sole Order Pad"
+        },
+        {
+          "evidence_id": "r0168.00",
+          "requested_source_seconds": 168,
+          "offset_after_draw_seconds": 2.5,
+          "observation": "Order Pad selected/played"
+        },
+        {
+          "evidence_id": "t0171.00",
+          "requested_source_seconds": 171,
+          "offset_after_draw_seconds": 5.5,
+          "observation": "Order Pad coin animation, hand empty"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Order Pad",
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 165.5,
+              "evidence_ids": [
+                "r0166.00",
+                "cue_00166"
+              ],
+              "basis": "native reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 0,
+          "hand_count_after": 1,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 165.5,
+          "evidence_ids": [
+            "r0166.00",
+            "cue_00166"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 7,
+      "draw_animation_end_seconds": 233.5,
+      "timing_basis": "approximate inspected animation endpoint; actual PTS unmeasured",
+      "selected_start_evidence_ids": [
+        "t0234.00"
+      ],
+      "before_end_evidence_ids": [
+        "r0240.00"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Team Rocket's Goo-zooka"
+        ],
+        "count": 1,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "t0234.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "r0240.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "t0234.00",
+          "requested_source_seconds": 234,
+          "offset_after_draw_seconds": 0.5,
+          "observation": "Sole Goo-zooka unzoomed before play"
+        },
+        {
+          "evidence_id": "t0236.00",
+          "requested_source_seconds": 236,
+          "offset_after_draw_seconds": 2.5,
+          "observation": "Goo-zooka inspection overlay before it leaves hand"
+        },
+        {
+          "evidence_id": "t0239.00",
+          "requested_source_seconds": 239,
+          "offset_after_draw_seconds": 5.5,
+          "observation": "Goo-zooka resolved and Rotom Energy attachment animation; hand empty"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Team Rocket's Goo-zooka",
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 233.5,
+              "evidence_ids": [
+                "t0234.00",
+                "cue_00234"
+              ],
+              "basis": "native reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 0,
+          "hand_count_after": 1,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 233.5,
+          "evidence_ids": [
+            "t0234.00",
+            "cue_00234"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 9,
+      "draw_animation_end_seconds": 284.4,
+      "timing_basis": "approximate inspected animation endpoint; actual PTS unmeasured",
+      "selected_start_evidence_ids": [
+        "t0284.40"
+      ],
+      "before_end_evidence_ids": [
+        "t0305.00"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Lucky Ice Pop"
+        ],
+        "count": 1,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "t0284.40"
+        ],
+        "status": "observed",
+        "limit_reason": "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "t0314.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "t0285.40",
+          "requested_source_seconds": 285.4,
+          "offset_after_draw_seconds": 1.0,
+          "observation": "Lucky Ice Pop already played; card play animation"
+        },
+        {
+          "evidence_id": "t0287.40",
+          "requested_source_seconds": 287.4,
+          "offset_after_draw_seconds": 3.0,
+          "observation": "Heal resolution; hand empty"
+        },
+        {
+          "evidence_id": "t0290.40",
+          "requested_source_seconds": 290.4,
+          "offset_after_draw_seconds": 6.0,
+          "observation": "Coin animation; hand empty"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Lucky Ice Pop",
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 284.4,
+              "evidence_ids": [
+                "t0284.40",
+                "t0284.45",
+                "t0284.70",
+                "cue_00285"
+              ],
+              "basis": "native reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 0,
+          "hand_count_after": 1,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 284.4,
+          "evidence_ids": [
+            "t0284.40",
+            "t0284.45",
+            "t0284.70",
+            "cue_00285"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    }
+  ],
+  "limits": [
+    "Opponent unplayed cards and normal/Research refill identities remain concealed by card backs.",
+    "Exact historical 20-card deck log snapshot is unavailable; visible cards are minimum observations, not a reconstructed deck.",
+    "All 345 reduced 1fps samples were screened once; this does not observe every instant, input or subsecond event.",
+    "Requested seek times and approximate midpoint locator labels are source-local. Actual decoded frame PTS and exact input times were not measured.",
+    "Opened owner discard panels are recorded at189.5 and255.0. No opened opponent pile was detected in the bounded screen; pile tops are not full pile contents.",
+    "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+  ],
+  "independent_acceptance_status": "pending"
+}

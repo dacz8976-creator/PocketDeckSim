@@ -1,0 +1,32 @@
+{
+  "decision": "ACCEPT",
+  "source_filename": "20261009_222740000_iOS.MP4",
+  "source_sha256": "8b43e46373858a9dd0bed106fedab96d8b96d058f09c8d5152850f86c4fc7295",
+  "source_hash_provenance": "Source packet and lead verification; independent reviewer checked file size and probe, not a full source rehash",
+  "source_bytes": 485072375,
+  "source_duration_seconds": 264.625,
+  "source_native_dimensions": [1170, 2532],
+  "model": "gpt-6-sol",
+  "effort": "high",
+  "classification": "computer battle; Auto option visible OFF; excluded from both external game logs",
+  "recorded_battles": 1,
+  "full_recording_coverage_reconciled": true,
+  "outcome": {
+    "owner_result": "Victory",
+    "owner_points": 3,
+    "opponent_points": 0,
+    "turns": 12,
+    "damage": 300
+  },
+  "primary_files_read_and_reconciled": {
+    "REVIEW.md": "cda8e4ed4ffeedf73cfa022c28cf1da5e9390959bcdb2cc568058edef5be6037",
+    "COVERAGE.md": "811bc306080b1b148bc7ee2fda1601e54ab20ddde0ebced83dcfc35747429aef",
+    "FINDINGS.json": "9b9bea98ad1d65b9092325da4db8f76125380bd4a847d72d05b0cae044eabf4f"
+  },
+  "required_changes": [],
+  "limits": [
+    "Hidden hands and deck contents remain unknown",
+    "Unshown attachment or acquisition instants are not reconstructed",
+    "Auto OFF does not prove the authorship of every owner action"
+  ]
+}

@@ -1,0 +1,442 @@
+{
+  "source_video": "20261002_214254000_iOS.MP4",
+  "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "reviewer": "/root/drafta_auto_210952",
+  "scope": "Current eight same-card computer comparison recordings only; no older packet reopened",
+  "guide_sources": [
+    "../GUIDE_UPDATE_REQUIREMENTS.md",
+    "C:/Users/dacz8/Projects/CODEX_REQUEST_pause_games.md"
+  ],
+  "requirements": [
+    {
+      "requirement": "Fresh owner turn-start boards, all attributes and evolution stacks",
+      "status": "complete_with_source_limits",
+      "observations": [
+        {
+          "turn_number": 2,
+          "source_frame": "F0046.40",
+          "decoded_pts_seconds": 46.4017,
+          "board": "TURN_LEDGER.json board_at_start",
+          "owner_instances": [
+            "O-N1"
+          ],
+          "opponent_instances": [
+            "C-M",
+            "C-B1",
+            "C-S"
+          ],
+          "stack_provenance": "witnessed Basic placement and each evolution, not opened stack inspection",
+          "actor": "Dustin",
+          "Auto": "OFF"
+        },
+        {
+          "turn_number": 4,
+          "source_frame": "F0097.40",
+          "decoded_pts_seconds": 97.41,
+          "board": "TURN_LEDGER.json board_at_start",
+          "owner_instances": [
+            "O-N1",
+            "O-S1"
+          ],
+          "opponent_instances": [
+            "C-M",
+            "C-B1",
+            "C-S"
+          ],
+          "stack_provenance": "witnessed Basic placement and each evolution, not opened stack inspection",
+          "actor": "Dustin",
+          "Auto": "OFF"
+        },
+        {
+          "turn_number": 6,
+          "source_frame": "F0147.40",
+          "decoded_pts_seconds": 147.415,
+          "board": "TURN_LEDGER.json board_at_start",
+          "owner_instances": [
+            "O-S1",
+            "O-S2",
+            "O-N1"
+          ],
+          "opponent_instances": [
+            "C-M",
+            "C-W",
+            "C-B1",
+            "C-S"
+          ],
+          "stack_provenance": "witnessed Basic placement and each evolution, not opened stack inspection",
+          "actor": "Dustin",
+          "Auto": "OFF"
+        },
+        {
+          "turn_number": 8,
+          "source_frame": "F0180.40",
+          "decoded_pts_seconds": 180.407,
+          "board": "TURN_LEDGER.json board_at_start",
+          "owner_instances": [
+            "O-S1",
+            "O-S2",
+            "O-N1"
+          ],
+          "opponent_instances": [
+            "C-M",
+            "C-W",
+            "C-B1",
+            "C-S"
+          ],
+          "stack_provenance": "witnessed Basic placement and each evolution, not opened stack inspection",
+          "actor": "Dustin",
+          "Auto": "OFF"
+        },
+        {
+          "turn_number": 10,
+          "source_frame": "F0226.40",
+          "decoded_pts_seconds": 226.402,
+          "board": "TURN_LEDGER.json board_at_start",
+          "owner_instances": [
+            "O-S1",
+            "O-S2",
+            "O-N1"
+          ],
+          "opponent_instances": [
+            "C-W",
+            "C-B2",
+            "C-B1",
+            "C-S"
+          ],
+          "stack_provenance": "witnessed Basic placement and each evolution, not opened stack inspection",
+          "actor": "Dustin",
+          "Auto": "OFF"
+        },
+        {
+          "turn_number": 12,
+          "source_frame": "F0283.40",
+          "decoded_pts_seconds": 283.412,
+          "board": "TURN_LEDGER.json board_at_start",
+          "owner_instances": [
+            "O-S1",
+            "O-S2",
+            "O-N1"
+          ],
+          "opponent_instances": [
+            "C-W",
+            "C-B2",
+            "C-B1",
+            "C-S"
+          ],
+          "stack_provenance": "witnessed Basic placement and each evolution, not opened stack inspection",
+          "actor": "Dustin",
+          "Auto": "OFF"
+        },
+        {
+          "turn_number": 14,
+          "source_frame": "F0344.40",
+          "decoded_pts_seconds": 344.4,
+          "board": "TURN_LEDGER.json board_at_start",
+          "owner_instances": [
+            "O-N1",
+            "O-S2",
+            "O-N2",
+            "O-S1"
+          ],
+          "opponent_instances": [
+            "C-W",
+            "C-B2",
+            "C-B1",
+            "C-S"
+          ],
+          "stack_provenance": "witnessed Basic placement and each evolution, not opened stack inspection",
+          "actor": "Dustin",
+          "Auto": "OFF"
+        },
+        {
+          "turn_number": 16,
+          "source_frame": "F0373.40",
+          "decoded_pts_seconds": 373.407,
+          "board": "TURN_LEDGER.json board_at_start",
+          "owner_instances": [
+            "O-N1",
+            "O-S2",
+            "O-N2",
+            "O-S1"
+          ],
+          "opponent_instances": [
+            "C-S",
+            "C-B2",
+            "C-B1",
+            "C-W"
+          ],
+          "stack_provenance": "witnessed Basic placement and each evolution, not opened stack inspection",
+          "actor": "Dustin",
+          "Auto": "OFF"
+        },
+        {
+          "turn_number": 18,
+          "source_frame": "F0414.40",
+          "decoded_pts_seconds": 414.405,
+          "board": "TURN_LEDGER.json board_at_start",
+          "owner_instances": [
+            "O-N2",
+            "O-S2",
+            "O-N1",
+            "O-S1"
+          ],
+          "opponent_instances": [
+            "C-S",
+            "C-B2",
+            "C-B1",
+            "C-W"
+          ],
+          "stack_provenance": "witnessed Basic placement and each evolution, not opened stack inspection",
+          "actor": "Dustin",
+          "Auto": "OFF"
+        },
+        {
+          "turn_number": 20,
+          "source_frame": "F0456.40",
+          "decoded_pts_seconds": 456.4,
+          "board": "TURN_LEDGER.json board_at_start",
+          "owner_instances": [
+            "O-N2",
+            "O-S2",
+            "O-N1",
+            "O-S1"
+          ],
+          "opponent_instances": [
+            "C-S",
+            "C-B2",
+            "C-B1",
+            "C-W"
+          ],
+          "stack_provenance": "witnessed Basic placement and each evolution, not opened stack inspection",
+          "actor": "Dustin",
+          "Auto": "OFF"
+        },
+        {
+          "turn_number": 22,
+          "source_frame": "F0505.40",
+          "decoded_pts_seconds": 505.4,
+          "board": "TURN_LEDGER.json board_at_start",
+          "owner_instances": [
+            "O-N2",
+            "O-S2",
+            "O-N1",
+            "O-S1"
+          ],
+          "opponent_instances": [
+            "C-B1",
+            "C-B2",
+            "C-S",
+            "C-W"
+          ],
+          "stack_provenance": "witnessed Basic placement and each evolution, not opened stack inspection",
+          "actor": "Dustin",
+          "Auto": "OFF"
+        }
+      ],
+      "limits": "Every owner start re-read from fresh native source. Computer starts and some after boards also use continuous public history. T12Research modal remains owned before commitment; transition empty current orb separately qualified."
+    },
+    {
+      "requirement": "Owner decisions during opponent turns, options and selection",
+      "status": "complete_none_observed",
+      "observations": [
+        {
+          "turn_number": 1,
+          "owner_decisions": [],
+          "basis": "Whole opponent turn reviewed; no owner KO, forced switch or promotion and no owner-selectable response prompt"
+        },
+        {
+          "turn_number": 3,
+          "owner_decisions": [],
+          "basis": "Whole opponent turn reviewed; no owner KO, forced switch or promotion and no owner-selectable response prompt"
+        },
+        {
+          "turn_number": 5,
+          "owner_decisions": [],
+          "basis": "Whole opponent turn reviewed; no owner KO, forced switch or promotion and no owner-selectable response prompt"
+        },
+        {
+          "turn_number": 7,
+          "owner_decisions": [],
+          "basis": "Whole opponent turn reviewed; no owner KO, forced switch or promotion and no owner-selectable response prompt"
+        },
+        {
+          "turn_number": 9,
+          "owner_decisions": [],
+          "basis": "Whole opponent turn reviewed; no owner KO, forced switch or promotion and no owner-selectable response prompt"
+        },
+        {
+          "turn_number": 11,
+          "owner_decisions": [],
+          "basis": "Whole opponent turn reviewed; no owner KO, forced switch or promotion and no owner-selectable response prompt"
+        },
+        {
+          "turn_number": 13,
+          "owner_decisions": [],
+          "basis": "Whole opponent turn reviewed; no owner KO, forced switch or promotion and no owner-selectable response prompt"
+        },
+        {
+          "turn_number": 15,
+          "owner_decisions": [],
+          "basis": "Whole opponent turn reviewed; no owner KO, forced switch or promotion and no owner-selectable response prompt"
+        },
+        {
+          "turn_number": 17,
+          "owner_decisions": [],
+          "basis": "Whole opponent turn reviewed; no owner KO, forced switch or promotion and no owner-selectable response prompt"
+        },
+        {
+          "turn_number": 19,
+          "owner_decisions": [],
+          "basis": "Whole opponent turn reviewed; no owner KO, forced switch or promotion and no owner-selectable response prompt"
+        },
+        {
+          "turn_number": 21,
+          "owner_decisions": [],
+          "basis": "Whole opponent turn reviewed; no owner KO, forced switch or promotion and no owner-selectable response prompt"
+        }
+      ],
+      "limits": "Computer replacement after Meowth KO is AI choice at end of ownerT8, not owner choice. Owner voluntary retreats T4/T12/T16 are owner-turn actions captured separately."
+    },
+    {
+      "requirement": "Inventory across every seen owner card, minimum copies and simultaneous duplicates",
+      "status": "complete",
+      "observations": {
+        "inventory_files": [
+          "SEEN_CARD_INVENTORY.json",
+          "SEEN_CARD_INVENTORY.md"
+        ],
+        "minimum_distinct_cards": 20,
+        "whole20visually_recovered": true,
+        "duplicates_simultaneously_proved": [
+          "Carvanha",
+          "Mega Sharpedo ex",
+          "Alolan Vulpix",
+          "Alolan Ninetales ex",
+          "Misty"
+        ]
+      },
+      "limits": "Copycat and Ice Pop repeat sightings not counted as new. Research/Poke Ball second copies proved by separate consumed-first/later-draw history; unopened pile never implied."
+    },
+    {
+      "requirement": "Decision maker for every owner turn with source-visible Auto state",
+      "status": "complete",
+      "observations": [
+        {
+          "turn_number": 2,
+          "actor": "Dustin",
+          "Auto": "OFF",
+          "mode_changes": [],
+          "evidence_ids": [
+            "F0046.40"
+          ],
+          "basis": "Fresh native Auto off and manual dialogs; continuous no toggle observation"
+        },
+        {
+          "turn_number": 4,
+          "actor": "Dustin",
+          "Auto": "OFF",
+          "mode_changes": [],
+          "evidence_ids": [
+            "F0097.40"
+          ],
+          "basis": "Fresh native Auto off and manual dialogs; continuous no toggle observation"
+        },
+        {
+          "turn_number": 6,
+          "actor": "Dustin",
+          "Auto": "OFF",
+          "mode_changes": [],
+          "evidence_ids": [
+            "F0147.40"
+          ],
+          "basis": "Fresh native Auto off and manual dialogs; continuous no toggle observation"
+        },
+        {
+          "turn_number": 8,
+          "actor": "Dustin",
+          "Auto": "OFF",
+          "mode_changes": [],
+          "evidence_ids": [
+            "F0180.40"
+          ],
+          "basis": "Fresh native Auto off and manual dialogs; continuous no toggle observation"
+        },
+        {
+          "turn_number": 10,
+          "actor": "Dustin",
+          "Auto": "OFF",
+          "mode_changes": [],
+          "evidence_ids": [
+            "F0226.40"
+          ],
+          "basis": "Fresh native Auto off and manual dialogs; continuous no toggle observation"
+        },
+        {
+          "turn_number": 12,
+          "actor": "Dustin",
+          "Auto": "OFF",
+          "mode_changes": [],
+          "evidence_ids": [
+            "F0283.40"
+          ],
+          "basis": "Fresh native Auto off and manual dialogs; continuous no toggle observation"
+        },
+        {
+          "turn_number": 14,
+          "actor": "Dustin",
+          "Auto": "OFF",
+          "mode_changes": [],
+          "evidence_ids": [
+            "F0344.40"
+          ],
+          "basis": "Fresh native Auto off and manual dialogs; continuous no toggle observation"
+        },
+        {
+          "turn_number": 16,
+          "actor": "Dustin",
+          "Auto": "OFF",
+          "mode_changes": [],
+          "evidence_ids": [
+            "F0373.40"
+          ],
+          "basis": "Fresh native Auto off and manual dialogs; continuous no toggle observation"
+        },
+        {
+          "turn_number": 18,
+          "actor": "Dustin",
+          "Auto": "OFF",
+          "mode_changes": [],
+          "evidence_ids": [
+            "F0414.40"
+          ],
+          "basis": "Fresh native Auto off and manual dialogs; continuous no toggle observation"
+        },
+        {
+          "turn_number": 20,
+          "actor": "Dustin",
+          "Auto": "OFF",
+          "mode_changes": [],
+          "evidence_ids": [
+            "F0456.40"
+          ],
+          "basis": "Fresh native Auto off and manual dialogs; continuous no toggle observation"
+        },
+        {
+          "turn_number": 22,
+          "actor": "Dustin",
+          "Auto": "OFF",
+          "mode_changes": [],
+          "evidence_ids": [
+            "F0505.40"
+          ],
+          "basis": "Fresh native Auto off and manual dialogs; continuous no toggle observation"
+        }
+      ],
+      "limits": "Physical touchscreen finger is not claimed visible. Attribution follows visible manual mode and actions; no Auto enable occurred."
+    }
+  ],
+  "complete_first_pass": true,
+  "independent_accepted": false
+}

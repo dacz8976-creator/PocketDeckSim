@@ -1,0 +1,68 @@
+# Complete first visual review: 20260930_141742000_iOS.MP4
+
+**Current status: completed full-battle review accepted by the lead; original archived unchanged in `Reviewed`. Excluded from Ladder Log.**
+
+**Current status: completed full-battle review accepted by the lead; original archived unchanged in Reviewed. Excluded from Ladder Log.**
+
+Reviewer: `sol_auto_141742000`, gpt-6.1-sol, high reasoning. Review date: September 30, 2026. Scope: the complete supplied 165.18-second recording, from loading and setup through all nine turns, three knockouts, Victory and the closing transition. This full review is lead-accepted, registered and archived. The separate verifier's bounded check is preserved in `INDEPENDENT_CHECK.md`.
+
+Source identity is bound in `SOURCE.json`: SHA-256 `978030c0bf7cb869a52d1b24da9aeea3c47c9c83acc0711a060ae4e4693d5490`, 303072592 bytes. The lead verified identity at intake; this reviewer used that binding and did not independently rehash the file. No source video, global index/log or Ladder Log was changed.
+
+## Result and mode
+
+**Dacz8976 wins 3-0 against AI / Opponent.** The third point appears around 154.5 seconds and the explicit owner Victory screen appears around 160.5 seconds. The checked green Auto control is visible during setup and throughout sampled ordinary and late gameplay; no switch out of Auto is observed. The opening versus screen itself labels the opponent AI, consistent with the owner's testimony that all these September 30 recordings are autopilot computer battles. This game is excluded from Ladder Log. The specific computer challenge/difficulty is not shown.
+
+## Visible cards and starting state
+
+The owner goes first, starts Torchic at 60 HP Active and another Torchic at 60 HP on the Bench. The important owner core is Torchic / Mega Blaziken ex, Rare Candy and Fire Energy. Castform Sunny Form is later benched. Heatmor is later drawn but remains in hand. Flame Patch, Cyrus, Copycat, Field Blower and Professor's Research are visible in the owner hand at various times. This is not a reconstructed full deck list.
+
+The AI starts Celebi, 70 HP, with Time Recall and Smack 30. It develops Petilil 60, Bulbasaur 60 and Scyther 70, later Treecko 60 and Budew 30. Scyther's visible attack is U-turn 10 with a switch to the Bench. No opponent evolution is observed. There are no observed Tools, Stadiums, healing, voluntary retreats, coin flips or usable Time Recall interactions. Unknown hand cards remain unknown.
+
+## Full time-coded account
+
+Times are approximate source-video seconds. Overview labels are fps sampling midpoints. One-second detail sheets supplement fast sequences; targeted `evidence` frames are exact requested seek times. Turn intervals below include animations and resulting transitions.
+
+**0-18 seconds, loading and setup.** Loading gives way to the versus screen at approximately 4.5 seconds, displaying AI / Opponent and Dacz8976. The coin/setup sequence establishes the owner going first. Checked Auto is visible by 10.5 seconds. Torchic is placed Active, the second Torchic is benched, and Celebi is revealed Active at 70 HP. Celebi's Time Recall explanatory banner appears, but no evolved Pokemon uses a previous attack in this battle. See `overview/sheet_01.jpg`, `evidence/t0004.50.jpg` and `evidence/t0019.50.jpg`.
+
+**Turn 1, owner, approximately 18-25 seconds.** Torchic remains Active at 60 HP and the other Torchic remains benched at 60. Flame Patch is drawn/revealed around 22.5 seconds and joins the hand. It is not played. No Energy attachment, attack, damage or score change occurs. The board ends 0-0. This distinguishes a draw preview from an actual Trainer play.
+
+**Turn 2, AI, approximately 25-38 seconds.** The AI plays Professor's Research around 27.5 seconds, then Poke Ball around 30.5 seconds. The identity of the random Basic obtained by Poke Ball is not separately revealed, so it is not assigned to a particular later bench card. Scyther is benched around 34.5, Bulbasaur around 35.5 and Petilil around 36.5. One Grass Energy is attached to Active Celebi around 37.5. Celebi does not attack; both Active Pokemon retain full HP and points remain 0-0. See `detail_25_65/sheet_01.jpg` and `sheet_02.jpg`.
+
+**Turn 3, owner, approximately 38-52 seconds.** Cyrus is drawn/revealed around 40.5 seconds and stays in hand. Rare Candy is played around 44.5 seconds. Active Torchic evolves directly into Mega Blaziken ex at 210 HP by 48.5 seconds, skipping the intermediate stage in the visible sequence. One Fire Energy is then attached around 51 seconds. Mega Burning requires two Fire icons on its visible card, so the one-Energy Active does not attack. The second Torchic remains benched, no score change. See `detail_25_65/sheet_02.jpg`, `sheet_03.jpg` and `evidence/t0051.00.jpg`.
+
+**Turn 4, AI, approximately 52-64 seconds.** The AI plays a second Professor's Research around 56.5 seconds. It attaches a second Grass Energy to Celebi around 59.5, then uses Smack at approximately 60.5. The visible 30-damage animation at 62.5 is followed by Mega Blaziken ex dropping from 210 to 180 HP. Celebi stays at 70 HP with two Grass; the three benched Basics remain undamaged. Points 0-0. See `detail_25_65/sheet_04.jpg`, `sheet_05.jpg` and `evidence/t0060.00.jpg`.
+
+**Turn 5, owner, approximately 64-84 seconds.** Castform Sunny Form is drawn and joins the hand. A second Fire Energy is attached to Active Mega Blaziken ex, then Mega Burning is used around 72 seconds. Celebi, previously 70 HP, reaches zero during the attack, followed by the message that Celebi is now Burned. The attack card visibly states 120 damage, discard a Fire Energy, and burn the opponent Active. Celebi's Fire weakness is visible. This is an attack knockout; the footage does not establish a burn check or burn-damage knockout. The owner's first point is awarded around 79.5 seconds. One Fire Energy remains on Mega Blaziken ex after resolution. The AI promotes Scyther at 70 HP around 82.5 seconds. Owner HP stays 180; score 1-0. See `overview/sheet_03.jpg`, `detail_81_118/sheet_01.jpg`, `evidence/t0072.00.jpg` and `evidence/t0074.00.jpg`.
+
+**Turn 6, AI, approximately 84-95 seconds.** The AI benches Treecko at 60 HP around 87.5 seconds and attaches one Grass to Active Scyther around 88.5. Scyther uses U-turn. The 10-damage animation at approximately 91.5 is followed by Mega Blaziken ex dropping 180 to 170 HP. Scyther then switches to the Bench, bringing Treecko Active at 60 HP around 93.5. Scyther keeps its Grass Energy on the Bench. No retreat-cost discard is observed; this switch follows the attack. Score 1-0. See `detail_81_118/sheet_01.jpg`, `sheet_02.jpg` and `evidence/t0091.50.jpg`. The independent verifier separately confirms this ordinary turn's damage and switch.
+
+**Turn 7, owner, approximately 95-128 seconds.** Copycat is drawn/revealed around 97.5. A Fire Energy is attached to Active Mega Blaziken ex around 99.5, returning it to two Fire. Castform Sunny Form, 70 HP, is benched around 101.5-102.5. The owner plays Copycat around 104.5; the remaining three-card hand visibly shuffles into the deck, followed by five reveals: Flame Patch, Field Blower, Rare Candy, Heatmor, Cyrus (approximately 110.5-114.5). These five cards are drawn, not played. Mega Burning is then used around 116.5; the visible damage number is **140 with Weakness** at 117.5. Treecko reaches zero, the Burned message appears, and the owner receives the second point around 124.5. One Fire remains after attack resolution. AI promotes Scyther at 70 HP around 127.5. Mega Blaziken ex stays at 170 HP, Torchic at 60, Castform at 70; score 2-0. See `detail_81_118/sheet_02.jpg` through `sheet_05.jpg`, `overview/sheet_05.jpg`, `evidence/t0104.00.jpg` and `evidence/t0114.00.jpg`.
+
+**Turn 8, AI, approximately 128-138 seconds.** The AI benches Budew at 30 HP around 131.5-132.5, then attaches its generated Grass Energy to benched Bulbasaur by 133.5. Active Scyther retains the Grass previously attached on turn 6. Scyther uses U-turn around 134.5; the 10-damage animation at 135.5 drops Mega Blaziken ex from 170 to 160 HP. Scyther switches to the Bench and Budew becomes Active around 137.5. Scyther retains its Energy; Bulbasaur now has one Grass. Budew does not attack. This visible Prickly Powder version removes the Defending Pokemon's Abilities until it leaves the Active Spot; no Ability lock is applied in this battle. Points remain 2-0. See `detail_128_150/sheet_01.jpg`, `sheet_02.jpg`, `evidence/t0133.50.jpg`, `evidence/t0136.50.jpg` and `evidence/t0139.50.jpg`.
+
+**Turn 9, owner, approximately 138-156 seconds.** Professor's Research is drawn/revealed around 140.5 seconds and remains in hand. The owner attaches a Fire Energy to Active Mega Blaziken ex around 143.5, returning it to two Fire. No other Trainer or Pokemon is played. Mega Burning starts around 145.5. A **120** damage animation is visible around 147.5, and Budew falls 30 to zero by 148.5. A Burned message follows at 149.5; the attack already established the knockout. The owner's third point appears around 154.5, while the opponent still has zero. Mega Blaziken ex remains 160 HP; the owner Bench remains Torchic 60 and Castform Sunny Form 70. See `detail_128_150/sheet_02.jpg`, `sheet_03.jpg`, `evidence/t0145.50.jpg` and `evidence/t0154.50.jpg`. Budew takes displayed base 120 rather than the 140 observed against Treecko; the footage is the evidence for that distinction, without assuming all Grass Pokemon have the same weakness.
+
+**156-165.18 seconds, terminal and closing.** The result animation leads to the explicit Dacz8976 Victory screen around 160.5 with Mega Blaziken ex pictured. The screen transitions to pale loading around 163.5 and the recording ends. The game is already conclusively over; there is no missing battle continuation. See `overview/sheet_06.jpg`, `sheet_07.jpg` and `evidence/t0160.50.jpg`.
+
+## Reconciliation and useful findings
+
+Mega Blaziken ex HP reconciles: 210 after evolution, 180 after Celebi's Smack 30, 170 after the first Scyther U-turn 10, and 160 after the second U-turn 10. No healing or owner-side knockout occurs. Owner points reconcile 0, then 1 for Celebi, 2 for Treecko and 3 for Budew. Opponent points stay zero. Three attacks by Mega Blaziken ex occur on owner turns 5, 7 and 9. Normal Fire attachments on turns 3, 5, 7 and 9 support its repeated two-Energy attack; each completed nonterminal attack leaves one Fire after the printed discard. No Flame Patch is actually used.
+
+The owner's Auto policy develops the Active attacker with Rare Candy at the first visible opportunity, then repeatedly reattaches to the same Active and takes immediate knockouts. It also benches Castform before playing Copycat, cycling a three-card hand into five visible draws while retaining enough Energy to attack. These are directly observed choices, not proof of overall policy strength. Torchic and Castform remain unused attackers.
+
+The AI spends its first two Energy attachments on Celebi, uses both visible Professor's Research cards, then uses Scyther as a recurring U-turn attacker. The two switches preserve Scyther with its attached Energy but expose Treecko and then Budew to Mega Blaziken ex. At the final visible position every AI Pokemon shown has 70 HP or less while the owner's attack is ready, so merely selecting a different visible Active would not by itself avoid a third-point knockout. Hidden defensive/evolution options cannot be graded. This game supports observations of resource development and attack-switch behavior, not a claim that the AI's hidden hand offered a winning alternative.
+
+Candidate mechanics evidence: Rare Candy into Mega Blaziken ex; two Fire cost plus one-Fire discard; Scyther damage before its attack-driven switch and preserved attached Energy; Copycat five-card redraw after shuffling a three-card hand; Treecko's displayed 140 Weakness damage versus Budew's displayed 120; Burned messages after the targets are already at zero HP. No burn-damage, burn-coin, Prickly Powder Ability-lock, Time Recall, Tool or Stadium behavior is tested here. No simulator discrepancy is asserted.
+
+## Limits
+
+All seven overview sheets and all thirteen one-second detail sheets were visually inspected. Additional full-resolution frames were inspected where needed for identities, card text, state and terminal evidence. This is full action/phase coverage, not frame-by-frame playback or an audio transcription. Exact event boundaries are approximate. Full hidden decks, AI challenge level and the Poke Ball search result remain unknown; see `UNCERTAINTIES.json`. No consequential unresolved ambiguity or missing turn remains in this first account. Lead acceptance and source archival are separate steps.
+
+## Lead completion
+
+Accepted as a completed full-battle review after the independent comparison and lead source checks documented in `LEAD_ACCEPTANCE.json`. The unchanged original is archived in `Reviewed`; matching before/after SHA-256 is recorded in `MOVE_RECEIPT.20260930_141742000_iOS.MP4.json`. No Ladder Log entry was created.
+
+
+## Post-acceptance wording and status check
+
+The accepted review has received a targeted wording/status follow-up. See [the correction record](POST_ACCEPTANCE_CORRECTIONS.md) for exact changes, preserved history and result-display limits. Outcome, score, source identity and Ladder exclusion are unchanged.

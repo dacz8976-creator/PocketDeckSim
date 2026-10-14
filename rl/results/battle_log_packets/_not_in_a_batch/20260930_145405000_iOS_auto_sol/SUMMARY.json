@@ -1,0 +1,71 @@
+{
+  "video_basename": "20260930_145405000_iOS.MP4",
+  "reviewer": "sol_auto_145405000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "worker_status": "full_visual_review_complete",
+  "reviewed_seconds": 147.196667,
+  "reviewed_intervals_seconds": [
+    [
+      0,
+      147.196667
+    ]
+  ],
+  "unreviewed_intervals_seconds": [],
+  "battle_count": 1,
+  "turns": 8,
+  "mode": "autopilot_vs_computer",
+  "mode_evidence": "Opening AI label and checked Auto during setup/gameplay; owner testimony agrees",
+  "owner": "Dacz8976",
+  "opponent_challenge": "Aegislash Deck (Deluxe Pack: Mega)",
+  "outcome": "win",
+  "score": {
+    "owner": 3,
+    "opponent": 0
+  },
+  "damage_done_results": 360,
+  "went_second": true,
+  "ladder_eligible": false,
+  "ladder_written": false,
+  "escalation_needed": false,
+  "opening_evidence": "keyframes/t0004.50.jpg",
+  "ordinary_turn_evidence": [
+    "keyframes/t0038.00.jpg",
+    "sheet_02.jpg"
+  ],
+  "decisive_chain_evidence": [
+    "keyframes/t0092.00.jpg",
+    "keyframes/t0095.00.jpg",
+    "keyframes/t0104.00.jpg",
+    "keyframes/t0106.50.jpg",
+    "keyframes/t0118.00.jpg",
+    "keyframes/t0121.00.jpg",
+    "keyframes/t0129.00.jpg",
+    "keyframes/t0132.50.jpg",
+    "keyframes/t0136.00.jpg"
+  ],
+  "victory_evidence": [
+    "keyframes/t0142.00.jpg",
+    "keyframes/t0147.00.jpg"
+  ],
+  "reports": [
+    "SOURCE.json",
+    "REVIEW.md",
+    "COVERAGE.md",
+    "UNCERTAINTIES.json"
+  ],
+  "worker_actions_at_submission": {
+    "source_moved": false
+  },
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_145405000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20260930_145405000_iOS.MP4.json",
+  "archive_completion_event_id": "c7b14650-1e8a-4187-80dd-d1b63adce412",
+  "global_registration_complete": true,
+  "current_review_event_id": "427145e4-11e7-4edf-a791-3b308f2ebbb3",
+  "post_acceptance_corrections": "POST_ACCEPTANCE_CORRECTIONS.md"
+}

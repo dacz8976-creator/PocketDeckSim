@@ -1,0 +1,721 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261005_183108000_iOS_game_1",
+  "sources": [
+    {
+      "video_basename": "20261005_183108000_iOS.MP4",
+      "sha256": "94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": "Scolipede / Mega Sableye ex",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-06T18:09:15.156699+00:00",
+  "log_list_version": "filmed-qr-d0b1bba631c1",
+  "expected_card_count": 20,
+  "cards_in_log_order": [
+    {
+      "name": "Venipede",
+      "count": 1,
+      "entity_kind": "pokemon",
+      "entity_id": 2660,
+      "functional_id": "6969577b72a7",
+      "semantic_variant_references": [
+        "A1a 053"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 1
+    },
+    {
+      "name": "Venipede",
+      "count": 1,
+      "entity_kind": "pokemon",
+      "entity_id": 2660,
+      "functional_id": "6969577b72a7",
+      "semantic_variant_references": [
+        "A1a 053"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 2
+    },
+    {
+      "name": "Whirlipede",
+      "count": 1,
+      "entity_kind": "pokemon",
+      "entity_id": 2670,
+      "functional_id": "c8bed3090bc3",
+      "semantic_variant_references": [
+        "A1a 054"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 3
+    },
+    {
+      "name": "Whirlipede",
+      "count": 1,
+      "entity_kind": "pokemon",
+      "entity_id": 2670,
+      "functional_id": "c8bed3090bc3",
+      "semantic_variant_references": [
+        "A1a 054"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 4
+    },
+    {
+      "name": "Scolipede",
+      "count": 1,
+      "entity_kind": "pokemon",
+      "entity_id": 2680,
+      "functional_id": "4badf7574b6f",
+      "semantic_variant_references": [
+        "A1a 055"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 5
+    },
+    {
+      "name": "Scolipede",
+      "count": 1,
+      "entity_kind": "pokemon",
+      "entity_id": 2680,
+      "functional_id": "4badf7574b6f",
+      "semantic_variant_references": [
+        "A1a 055"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 6
+    },
+    {
+      "name": "Mega Sableye ex",
+      "count": 1,
+      "entity_kind": "pokemon",
+      "entity_id": 19390,
+      "functional_id": "65b7c946c7b8",
+      "semantic_variant_references": [
+        "B3b 041",
+        "B3b 081",
+        "B3b 088"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 7
+    },
+    {
+      "name": "Mega Sableye ex",
+      "count": 1,
+      "entity_kind": "pokemon",
+      "entity_id": 19390,
+      "functional_id": "65b7c946c7b8",
+      "semantic_variant_references": [
+        "B3b 041",
+        "B3b 081",
+        "B3b 088"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 8
+    },
+    {
+      "name": "Poké Ball",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 30,
+      "functional_id": "1b20901befde",
+      "semantic_variant_references": [
+        "A2b 111",
+        "P-A 005"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 9
+    },
+    {
+      "name": "Poké Ball",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 30,
+      "functional_id": "1b20901befde",
+      "semantic_variant_references": [
+        "A2b 111",
+        "P-A 005"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 10
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 1060,
+      "functional_id": "15c19aaaf9a4",
+      "semantic_variant_references": [
+        "B2 145"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 11
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 1060,
+      "functional_id": "15c19aaaf9a4",
+      "semantic_variant_references": [
+        "B2 145"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 12
+    },
+    {
+      "name": "Poison Barb",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 500,
+      "functional_id": "9c51ca00216c",
+      "semantic_variant_references": [
+        "A3 146"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 13
+    },
+    {
+      "name": "Poison Barb",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 500,
+      "functional_id": "9c51ca00216c",
+      "semantic_variant_references": [
+        "A3 146"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 14
+    },
+    {
+      "name": "Deceptive Needle",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 1520,
+      "functional_id": "b791a928a490",
+      "semantic_variant_references": [
+        "B4 148"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 15
+    },
+    {
+      "name": "Professor’s Research",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 40,
+      "functional_id": "c0015440f616",
+      "semantic_variant_references": [
+        "A4b 373",
+        "P-A 007"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 16
+    },
+    {
+      "name": "Professor’s Research",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 40,
+      "functional_id": "c0015440f616",
+      "semantic_variant_references": [
+        "A4b 373",
+        "P-A 007"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 17
+    },
+    {
+      "name": "Cyrus",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 320,
+      "functional_id": "fff346783fd6",
+      "semantic_variant_references": [
+        "A2 150",
+        "A2 190",
+        "A4b 326",
+        "A4b 327"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 18
+    },
+    {
+      "name": "Copycat",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 990,
+      "functional_id": "d5d2b111c197",
+      "semantic_variant_references": [
+        "B1 225",
+        "B1 270"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 19
+    },
+    {
+      "name": "Wally",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 1570,
+      "functional_id": "abd4b4c27504",
+      "semantic_variant_references": [
+        "B4 153",
+        "B4 193"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified.",
+      "position": 20
+    }
+  ],
+  "counts_by_name_and_variant": [
+    {
+      "name": "Venipede",
+      "count": 2,
+      "entity_kind": "pokemon",
+      "entity_id": 2660,
+      "functional_id": "6969577b72a7",
+      "semantic_variant_references": [
+        "A1a 053"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+    },
+    {
+      "name": "Whirlipede",
+      "count": 2,
+      "entity_kind": "pokemon",
+      "entity_id": 2670,
+      "functional_id": "c8bed3090bc3",
+      "semantic_variant_references": [
+        "A1a 054"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+    },
+    {
+      "name": "Scolipede",
+      "count": 2,
+      "entity_kind": "pokemon",
+      "entity_id": 2680,
+      "functional_id": "4badf7574b6f",
+      "semantic_variant_references": [
+        "A1a 055"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+    },
+    {
+      "name": "Mega Sableye ex",
+      "count": 2,
+      "entity_kind": "pokemon",
+      "entity_id": 19390,
+      "functional_id": "65b7c946c7b8",
+      "semantic_variant_references": [
+        "B3b 041",
+        "B3b 081",
+        "B3b 088"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+    },
+    {
+      "name": "Poké Ball",
+      "count": 2,
+      "entity_kind": "trainer",
+      "entity_id": 30,
+      "functional_id": "1b20901befde",
+      "semantic_variant_references": [
+        "A2b 111",
+        "P-A 005"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "count": 2,
+      "entity_kind": "trainer",
+      "entity_id": 1060,
+      "functional_id": "15c19aaaf9a4",
+      "semantic_variant_references": [
+        "B2 145"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+    },
+    {
+      "name": "Poison Barb",
+      "count": 2,
+      "entity_kind": "trainer",
+      "entity_id": 500,
+      "functional_id": "9c51ca00216c",
+      "semantic_variant_references": [
+        "A3 146"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+    },
+    {
+      "name": "Deceptive Needle",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 1520,
+      "functional_id": "b791a928a490",
+      "semantic_variant_references": [
+        "B4 148"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+    },
+    {
+      "name": "Professor’s Research",
+      "count": 2,
+      "entity_kind": "trainer",
+      "entity_id": 40,
+      "functional_id": "c0015440f616",
+      "semantic_variant_references": [
+        "A4b 373",
+        "P-A 007"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+    },
+    {
+      "name": "Cyrus",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 320,
+      "functional_id": "fff346783fd6",
+      "semantic_variant_references": [
+        "A2 150",
+        "A2 190",
+        "A4b 326",
+        "A4b 327"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+    },
+    {
+      "name": "Copycat",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 990,
+      "functional_id": "d5d2b111c197",
+      "semantic_variant_references": [
+        "B1 225",
+        "B1 270"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+    },
+    {
+      "name": "Wally",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 1570,
+      "functional_id": "abd4b4c27504",
+      "semantic_variant_references": [
+        "B4 153",
+        "B4 193"
+      ],
+      "printing": null,
+      "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+    }
+  ],
+  "energy_configuration_from_log": [
+    {
+      "value": 7,
+      "name": "Darkness",
+      "selectable": true
+    }
+  ],
+  "actual_card_count": 20,
+  "capture_source_text_or_image": "qr_intake/QR_DECODE_0001.00.json + qr_intake/t0001.00.png; exact20 prepared definition in batch NEW_DECK_ENTRIES.json",
+  "game_version_binding_basis": "Filmed QR at1.0s → Event selection at4.0s New deck6 slot11 → matchmaking8–24s → opening32s without edit/other match. Printed Venipede/Whirlipede/Scolipede/Mega attacks agree with QR playable identities.",
+  "conflicts_with_filmed_cards": [],
+  "exact_list_status": "exact_filmed_QR_definition_prepared_for_log",
+  "limits": [
+    "Live artifact deck entry and game registration remain lead-only pending verification; this packet makes no saved-live claim.",
+    "QR carries playable identities, not rarity/artwork printing.",
+    "Prepared deck display order is retained; it is not draw order."
+  ],
+  "filmed_deck_label": "New deck 6",
+  "filmed_deck_slot": 11,
+  "prepared_entry": {
+    "id": "filmed-qr-d0b1bba631c1",
+    "deck_name": "Scolipede / Mega Sableye ex",
+    "filmed_deck_label": null,
+    "cards_in_display_order": [
+      {
+        "name": "Venipede",
+        "count": 2,
+        "entity_kind": "pokemon",
+        "entity_id": 2660,
+        "functional_id": "6969577b72a7",
+        "semantic_variant_references": [
+          "A1a 053"
+        ],
+        "printing": null,
+        "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+      },
+      {
+        "name": "Whirlipede",
+        "count": 2,
+        "entity_kind": "pokemon",
+        "entity_id": 2670,
+        "functional_id": "c8bed3090bc3",
+        "semantic_variant_references": [
+          "A1a 054"
+        ],
+        "printing": null,
+        "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+      },
+      {
+        "name": "Scolipede",
+        "count": 2,
+        "entity_kind": "pokemon",
+        "entity_id": 2680,
+        "functional_id": "4badf7574b6f",
+        "semantic_variant_references": [
+          "A1a 055"
+        ],
+        "printing": null,
+        "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+      },
+      {
+        "name": "Mega Sableye ex",
+        "count": 2,
+        "entity_kind": "pokemon",
+        "entity_id": 19390,
+        "functional_id": "65b7c946c7b8",
+        "semantic_variant_references": [
+          "B3b 041",
+          "B3b 081",
+          "B3b 088"
+        ],
+        "printing": null,
+        "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+      },
+      {
+        "name": "Poké Ball",
+        "count": 2,
+        "entity_kind": "trainer",
+        "entity_id": 30,
+        "functional_id": "1b20901befde",
+        "semantic_variant_references": [
+          "A2b 111",
+          "P-A 005"
+        ],
+        "printing": null,
+        "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+      },
+      {
+        "name": "Lucky Ice Pop",
+        "count": 2,
+        "entity_kind": "trainer",
+        "entity_id": 1060,
+        "functional_id": "15c19aaaf9a4",
+        "semantic_variant_references": [
+          "B2 145"
+        ],
+        "printing": null,
+        "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+      },
+      {
+        "name": "Poison Barb",
+        "count": 2,
+        "entity_kind": "trainer",
+        "entity_id": 500,
+        "functional_id": "9c51ca00216c",
+        "semantic_variant_references": [
+          "A3 146"
+        ],
+        "printing": null,
+        "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+      },
+      {
+        "name": "Deceptive Needle",
+        "count": 1,
+        "entity_kind": "trainer",
+        "entity_id": 1520,
+        "functional_id": "b791a928a490",
+        "semantic_variant_references": [
+          "B4 148"
+        ],
+        "printing": null,
+        "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+      },
+      {
+        "name": "Professor’s Research",
+        "count": 2,
+        "entity_kind": "trainer",
+        "entity_id": 40,
+        "functional_id": "c0015440f616",
+        "semantic_variant_references": [
+          "A4b 373",
+          "P-A 007"
+        ],
+        "printing": null,
+        "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+      },
+      {
+        "name": "Cyrus",
+        "count": 1,
+        "entity_kind": "trainer",
+        "entity_id": 320,
+        "functional_id": "fff346783fd6",
+        "semantic_variant_references": [
+          "A2 150",
+          "A2 190",
+          "A4b 326",
+          "A4b 327"
+        ],
+        "printing": null,
+        "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+      },
+      {
+        "name": "Copycat",
+        "count": 1,
+        "entity_kind": "trainer",
+        "entity_id": 990,
+        "functional_id": "d5d2b111c197",
+        "semantic_variant_references": [
+          "B1 225",
+          "B1 270"
+        ],
+        "printing": null,
+        "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+      },
+      {
+        "name": "Wally",
+        "count": 1,
+        "entity_kind": "trainer",
+        "entity_id": 1570,
+        "functional_id": "abd4b4c27504",
+        "semantic_variant_references": [
+          "B4 153",
+          "B4 193"
+        ],
+        "printing": null,
+        "printing_limit": "QR carries playable identity; artwork and rarity remain unspecified."
+      }
+    ],
+    "card_slots": [
+      {
+        "name": "Venipede",
+        "entity_id": 2660
+      },
+      {
+        "name": "Venipede",
+        "entity_id": 2660
+      },
+      {
+        "name": "Whirlipede",
+        "entity_id": 2670
+      },
+      {
+        "name": "Whirlipede",
+        "entity_id": 2670
+      },
+      {
+        "name": "Scolipede",
+        "entity_id": 2680
+      },
+      {
+        "name": "Scolipede",
+        "entity_id": 2680
+      },
+      {
+        "name": "Mega Sableye ex",
+        "entity_id": 19390
+      },
+      {
+        "name": "Mega Sableye ex",
+        "entity_id": 19390
+      },
+      {
+        "name": "Poké Ball",
+        "entity_id": 30
+      },
+      {
+        "name": "Poké Ball",
+        "entity_id": 30
+      },
+      {
+        "name": "Lucky Ice Pop",
+        "entity_id": 1060
+      },
+      {
+        "name": "Lucky Ice Pop",
+        "entity_id": 1060
+      },
+      {
+        "name": "Poison Barb",
+        "entity_id": 500
+      },
+      {
+        "name": "Poison Barb",
+        "entity_id": 500
+      },
+      {
+        "name": "Deceptive Needle",
+        "entity_id": 1520
+      },
+      {
+        "name": "Professor’s Research",
+        "entity_id": 40
+      },
+      {
+        "name": "Professor’s Research",
+        "entity_id": 40
+      },
+      {
+        "name": "Cyrus",
+        "entity_id": 320
+      },
+      {
+        "name": "Copycat",
+        "entity_id": 990
+      },
+      {
+        "name": "Wally",
+        "entity_id": 1570
+      }
+    ],
+    "total_card_slots": 20,
+    "energy_configuration": [
+      "Darkness"
+    ],
+    "deck_code": "DJiWnpiWnpiapJiapJiYdJiYdJiccJiWqJiWqJiXwJiaXpicoggACmQACmQACm4ACm4ACngACngAS74AS74BBw==",
+    "variant_note": "Distinct Darkness list with two Mega Sableye ex.",
+    "source_video": "20261005_183108000_iOS.MP4",
+    "source_sha256": "94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+    "source_seconds": 1.0,
+    "QR_receipt": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_183108000_iOS\\qr_intake\\QR_DECODE_0001.00.json",
+    "prepared_status": "source_QR_verified_external_deck_entry_prepared",
+    "external_saved": false,
+    "card_catalog_provenance": "Pinned local community crosswalk; filmed QR is original payload evidence."
+  }
+}

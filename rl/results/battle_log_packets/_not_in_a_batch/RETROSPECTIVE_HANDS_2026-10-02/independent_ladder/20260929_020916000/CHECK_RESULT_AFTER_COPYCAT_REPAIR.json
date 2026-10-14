@@ -1,0 +1,534 @@
+{
+  "schema": "independent-field-source-check-after-repair-v1",
+  "game_id": "20260929_020916000",
+  "verdict": "accepted_with_recording_limits",
+  "checked_utc": "2026-10-02T23:22:57.108212+00:00",
+  "effective_submission": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\SUBMISSION_AFTER_COPYCAT_REPAIR.json",
+  "effective_submission_sha256": "7b5abf97535974e756c91e4aa2775d90a71a268de8f09bb4447d51762e0be6df",
+  "payload_files_bound": 25,
+  "total_files_bound_including_effective_submission": 26,
+  "effective_file_sha256": {
+    "ASSIGNMENT.json": "d6ff206d98a68c1bb910b6856ec227c39f065535d43c3ceed86ba17deb323ff5",
+    "ASTRA_QUESTIONS.json": "a117ab0b8df4948398036b7ecba23c96be8312c1531d9e4cf7c5a80e173f22ed",
+    "CHECKPOINTS.json": "7d98b39595a18beea2a218378e417365b6b9bfcab6417168e8f79c1bdcb23d2f",
+    "COVERAGE.md": "81fc727521c60d2f5773096dbc932625e7c160ba8347d686a78e5a9d16b92ea6",
+    "CUE_AUDIT.json": "0780b10484aebab9fd19c84b85cc84e1783c61492c841883db63371c40745642",
+    "DECK_USED.json": "ec26e321fa0da6efd72f317ddd2cf2386bfeb538673e120b6a7df81d7d47c1b8",
+    "EXTRACTION_MANIFEST.json": "8b20c6af62d0acf790285bff30a20c63d0926b8052d2a19efb70480e8bf7d353",
+    "EXTRACTION_PLAN.json": "337dabe17a13eb7980721db3a0eb96733974c1a8df8a95ccb79d9893e937ebce",
+    "extract_native.py": "34f8478165b97738e5b38ac7edeb2c2849062d3b3c0fe34c0be4e0583b9a83b8",
+    "finish_packet.py": "c1961569ab3c57d5edd7f080da6a24b81fc54c0daad859bdbe889822240f1914",
+    "FROZEN_FOR_INDEPENDENT_REVIEW.json": "aa388963a7dd025514757e21b457475551e8bdff2aa8a25dab29bdf7b281f463",
+    "HAND_SUPPLEMENT.json": "5bd514107b4a139ff2c9a6182e1653b52f46bbe1340882cbaf65236f7530c487",
+    "INHERITED_TURNS.json": "3781aee236a37e7ace654f62ffda6f3f2633e4bdad534c91d2eb930d298cb8e2",
+    "LOCATOR_PREPROCESSING.json": "15b208bfb4c9a73e8b0e30f72d94a79b6fbe6db30a61d6599311abc70b929d7c",
+    "METRICS.json": "723ee56999978b857e91a7cbc82bc0601e039c053770fa3242b778e46c3915ab",
+    "NATIVE_FILE_MANIFEST.json": "9f375bdb5ab44b18753a5791c0e86c94690a9bf5aeedbd992a41079f8934fb5c",
+    "PACKET_VALIDATION.json": "cac88753adfdce0146bff3bd804c98deeada1d86113f4c81c68e2fdd7a5911a7",
+    "PAUSE_GAME.json": "61e7b62f691839fcdfcc7595641389a94aafddc7f194d0c5aa1c9576d0e69c50",
+    "REVIEW_SUPPLEMENT.json": "eeb9675e6b1a5ea01cce38eea3f49139545974c5d6af143fcef1e159253584c0",
+    "REVIEW_SUPPLEMENT.md": "c067185f5a0b176fb6fc8300068daac48373880b3f7803e92a7fe56e9f70e74e",
+    "ROOT_SOURCE_VERIFICATION.json": "a6eefa294a80f9a3928107ed2c2bd4eef2ae4510e215f3f611be1e3b26db54a2",
+    "SOURCE_REFERENCE.json": "21b41c47c70fad50539a42ad8c4510f919487b14d382f1cad4732418c373db7a",
+    "TURN_EVIDENCE.json": "6ab4b2c7e0b76c0aacd1faf8ab60d528d718cb83b8bd4035fcaeb71d7d70e0af",
+    "TURN_LEDGER.json": "575d68beb4ff77b1b44e4d1c843336778eff4325abc944969f38df63622e4d5d",
+    "UNCERTAINTIES.json": "311533fb3680efbdb81b6170360410d3a2b8a09b53f44aa01ec39664be92d542"
+  },
+  "original_full_check_preserved": "CHECK_RESULT.json and CHECK_RESULT.md",
+  "original_report_hashes_still_match": true,
+  "original_required_repair_resolved": "T2_COPYCAT_REFILL_REFERENCE",
+  "repair_checks": {
+    "four_synchronized_files_checked": [
+      "TURN_LEDGER.json",
+      "REVIEW_SUPPLEMENT.json",
+      "TURN_EVIDENCE.json",
+      "REVIEW_SUPPLEMENT.md"
+    ],
+    "t2_count5_direct_native": "IC0090.50 at measured source PTS90.5117; five concealed backs directly inspected",
+    "pre_refill_reference": "F0079.50 retained as played Copycat/preceding three backs",
+    "hidden_details": "Five count placeholders; name, actual reveal_position and timestamp null. hidden_draw_count_slot does not assert reveal order.",
+    "post_shuffle_zero": "Explicit card-effect inference, separated from observed settled count5.",
+    "native_crop_binding": "Added full frame hash, source SHA, requested90.5 vs measured90.5117,1170x2532dimensions, decode log and lossless PNG crop parent hashes/bounds agree. Crop pixels exactly match decoded native bounds.",
+    "no_other_facts_changed": "JSON diff restricted to T2 refill provenance, T2 evidence unions and one added frame. Other rows, all hands, boards, actions and accepted outcome unchanged.",
+    "old_freeze_retained": "before_copycat_binding_repair plus original independent needs_repair reports preserved."
+  },
+  "binding_validation": {
+    "errors": [],
+    "native_file_entries_checked": 255,
+    "frames_checked": 86,
+    "rows_checked": 9,
+    "owner_hand_rows_checked": 5,
+    "discard_ids_checked": 10,
+    "jpeg_crop_alignment_mean_absolute_error_min": 0.0,
+    "jpeg_crop_alignment_mean_absolute_error_max": 1.1514944621453498,
+    "crop_alignment_limit": "JPEG crops are recompressed; alignment comparison is approximate, not lossless equality",
+    "maximum_requested_vs_selected_pts_seconds": 0.02499999999999858,
+    "source_original_hash_reads": 0,
+    "source_decode_reads_for_this_validation": 0,
+    "encoding": "utf-8-sig"
+  },
+  "source_binding_check": "SOURCE_BINDING_AND_NEW_CROP_CHECK.json",
+  "full_scope_checks": {
+    "opening_five": "Native22.5: Rainbow Cave, Copycat, Repel, Entei ex full art, Giant Cape; Entei opening slot4 Active.",
+    "all_nine_owner_ending_hands": [
+      {
+        "turn": 1,
+        "hand": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Professor's Research (full art)",
+            "Lucky Ice Pop",
+            "Giant Cape",
+            "Flame Patch"
+          ],
+          "count": 5,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0062.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        }
+      },
+      {
+        "turn": 2,
+        "hand": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Professor's Research (full art)",
+            "Lucky Ice Pop",
+            "Giant Cape",
+            "Flame Patch"
+          ],
+          "count": 5,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0132.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        }
+      },
+      {
+        "turn": 3,
+        "hand": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Lucky Ice Pop",
+            "Giant Cape",
+            "Rainbow Cave",
+            "Professor's Research (regular)",
+            "Sabrina",
+            "Poké Ball"
+          ],
+          "count": 7,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0170.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        }
+      },
+      {
+        "turn": 4,
+        "hand": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Lucky Ice Pop",
+            "Giant Cape",
+            "Rainbow Cave",
+            "Professor's Research (regular)",
+            "Sabrina",
+            "Poké Ball"
+          ],
+          "count": 7,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0205.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        }
+      },
+      {
+        "turn": 5,
+        "hand": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Rainbow Cave",
+            "Sabrina",
+            "Pokémon Center Lady"
+          ],
+          "count": 4,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0312.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        }
+      },
+      {
+        "turn": 6,
+        "hand": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Rainbow Cave",
+            "Sabrina",
+            "Pokémon Center Lady"
+          ],
+          "count": 4,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0354.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        }
+      },
+      {
+        "turn": 7,
+        "hand": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Rainbow Cave",
+            "Pokémon Center Lady",
+            "Cyrus",
+            "Repel"
+          ],
+          "count": 5,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0390.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        }
+      },
+      {
+        "turn": 8,
+        "hand": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Rainbow Cave",
+            "Pokémon Center Lady",
+            "Cyrus",
+            "Repel"
+          ],
+          "count": 5,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0466.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        }
+      },
+      {
+        "turn": 9,
+        "hand": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Rainbow Cave",
+            "Pokémon Center Lady",
+            "Repel"
+          ],
+          "count": 4,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0482.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        }
+      }
+    ],
+    "five_owner_hand_rows": [
+      {
+        "turn_number": 1,
+        "start": {
+          "cards_left_to_right": [
+            "Rainbow Cave",
+            "Copycat",
+            "Repel",
+            "Giant Cape",
+            "Cyrus"
+          ],
+          "count": 5,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0035.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "before_end": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Professor's Research (full art)",
+            "Lucky Ice Pop",
+            "Giant Cape"
+          ],
+          "count": 4,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0056.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "after_end_automatic_events": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Professor's Research (full art)",
+            "Lucky Ice Pop",
+            "Giant Cape",
+            "Flame Patch"
+          ],
+          "count": 5,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0062.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "finding": "All named cards/counts independently matched decisive native views; automatic Pulse cards kept distinct from before-end hand."
+      },
+      {
+        "turn_number": 3,
+        "start": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Professor's Research (full art)",
+            "Lucky Ice Pop",
+            "Giant Cape",
+            "Flame Patch",
+            "Rainbow Cave"
+          ],
+          "count": 6,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0139.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "before_end": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Lucky Ice Pop",
+            "Giant Cape",
+            "Rainbow Cave",
+            "Professor's Research (regular)",
+            "Sabrina"
+          ],
+          "count": 6,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0160.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "after_end_automatic_events": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Lucky Ice Pop",
+            "Giant Cape",
+            "Rainbow Cave",
+            "Professor's Research (regular)",
+            "Sabrina",
+            "Poké Ball"
+          ],
+          "count": 7,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0170.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "finding": "All named cards/counts independently matched decisive native views; automatic Pulse cards kept distinct from before-end hand."
+      },
+      {
+        "turn_number": 5,
+        "start": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Lucky Ice Pop",
+            "Giant Cape",
+            "Rainbow Cave",
+            "Professor's Research (regular)",
+            "Sabrina",
+            "Poké Ball",
+            "Lucky Ice Pop"
+          ],
+          "count": 8,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0209.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "before_end": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Rainbow Cave",
+            "Sabrina"
+          ],
+          "count": 3,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0288.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "after_end_automatic_events": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Rainbow Cave",
+            "Sabrina",
+            "Pokémon Center Lady"
+          ],
+          "count": 4,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0312.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "finding": "All named cards/counts independently matched decisive native views; automatic Pulse cards kept distinct from before-end hand."
+      },
+      {
+        "turn_number": 7,
+        "start": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Rainbow Cave",
+            "Sabrina",
+            "Pokémon Center Lady",
+            "Cyrus"
+          ],
+          "count": 5,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0358.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "before_end": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Rainbow Cave",
+            "Pokémon Center Lady",
+            "Cyrus"
+          ],
+          "count": 4,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0381.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "after_end_automatic_events": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Rainbow Cave",
+            "Pokémon Center Lady",
+            "Cyrus",
+            "Repel"
+          ],
+          "count": 5,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0390.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "finding": "All named cards/counts independently matched decisive native views; automatic Pulse cards kept distinct from before-end hand."
+      },
+      {
+        "turn_number": 9,
+        "start": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Rainbow Cave",
+            "Pokémon Center Lady",
+            "Cyrus",
+            "Repel"
+          ],
+          "count": 5,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0466.00",
+            "F0467.00"
+          ],
+          "status": "observed",
+          "limit_reason": "Failed normal draw; five cards unchanged. No new card added."
+        },
+        "before_end": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Rainbow Cave",
+            "Pokémon Center Lady",
+            "Repel"
+          ],
+          "count": 4,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0477.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "after_end_automatic_events": {
+          "cards_left_to_right": [
+            "Copycat",
+            "Rainbow Cave",
+            "Pokémon Center Lady",
+            "Repel"
+          ],
+          "count": 4,
+          "basis": "direct native left-to-right fan",
+          "evidence_ids": [
+            "F0482.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "finding": "All named cards/counts independently matched decisive native views; automatic Pulse cards kept distinct from before-end hand."
+      }
+    ],
+    "draws_searches": "Cyrus/Rainbow Cave/Lucky Ice Pop/Cyrus normal draws and T9 failed draw confirmed in starting hands/text. Owner Copycat refill four names/order at52/53/54/55; Research regular/Sabrina at151/152; Starting Plains/Flame Patch263/264; Ball Entei regular enters hand215. Pulse FlamePatch/Ball/CenterLady/Repel matched later hand endpoints. Opponent search and hidden Research/refill names remain null; no later bench used to name concealed find.",
+    "numbered_actions": "Native identities, consumption, pile tops, board transitions and bounded cue sequencing support ledger. Sabrina preview closes without consumption before actualplay366; source141.5 Rainbow Cave Yes/No prompt direct, response/regeneration qualified by later state. No unsupported universal decline/absence claim.",
+    "both_boards_zones_fans": "All nine boundary boards inspected at declared composite phases; HP, Fire icons, tools, Stadium and fans match. Max HP/damage derived from printed base, Cape/Plains and visible current HP; no hidden effects asserted absent. T2 Fire4 uses later139 endpoint, not132 Fire1 pending attack. T9 native482 stilltwo points while Moltres disappears; terminalthirdpoint remains inherited.",
+    "pop_and_backup_energy": "Heads236,Tails245,Tails254 labels direct. Native237 twoPops/30HP;246 onePop/50HP;263 noPop. Third70HP pre-Plains remains endpoint-derived/inherited. BackupEntei0Fire237/246/288; firstFire381/T7 direct, retained1Fire466 after promotion.",
+    "retreat": "Moltres0Fire409,1Fire411,2Fire414,benched0Fire418; Mega retains3Fire. Printed retreatcost2 plus endpoint changes support paidtwoFire deduction; hidden payment touch/copy identity not claimed direct. Astra amended wording matches.",
+    "periodic_discard": "Ten snapshot IDs resolve; inspected top cards in relevant boards. Piles remain closed; fullcontents not claimed.",
+    "phase_suitability": "Native35.5/139/209/358 unzoomed untouched start fans;467 failed draw before Cyrus. Scheduled36 firstplay preview,210 Ballalreadyconsumed,359 beforeplay,364 afterpreview,469 afterCyrus differentiated. Draw end is interval/null, not exact input PTS.",
+    "mode": "No Auto option visible in checker sampled native/cue views; both clocks/name present. Sampled absence supports ladder_candidate_mode_unverified, not all-instant proof. Any Auto evenOFF would exclude ladder regardless of enabled/input authorship.",
+    "limits": "Exact historical20-card log list unbound/unavailable; filmed core distinct. Hidden opponent names, concealed search copies, closed piles, touch inputs and unsampledsubsecond intervals remain qualified. Selected frame PTS is measured from decode logs; action/animation endpoints generally approximate/inherited."
+  },
+  "remaining_limits": [
+    "Hidden opponent draw/search identities and physical copies, closed full pile contents, unbound historical exact20-card log list remain unknown.",
+    "Selected frame PTS measured in retained logs; normal draw animation completion and exact touches not measured. Composite turn board phase and inherited action/outcome fields retain qualifiers.",
+    "Producer full490sample/25grid cue scan is bounded1fps; checker inspected3retainedgrids and55nativeimages. Neither establishes everyinstant/subsecond/control absence.",
+    "No Auto option observed in checker sampled views; ladder_candidate_mode_unverified. Any visible AutoevenOFF would imply computer/excluded ladder.",
+    "Pop copy identity/touch hidden; T5 third70HP before StartingPlains and T8 two-Fire payment are qualified endpoint deductions."
+  ],
+  "source_video_hash_repeats": 0,
+  "locator_decode_repeats": 0,
+  "new_native_frames_for_independent_check": 1,
+  "new_native_seek_decodes": 1,
+  "accepted_outcome_unchanged": true,
+  "required_repairs_remaining": [],
+  "encoding": "utf-8-sig"
+}

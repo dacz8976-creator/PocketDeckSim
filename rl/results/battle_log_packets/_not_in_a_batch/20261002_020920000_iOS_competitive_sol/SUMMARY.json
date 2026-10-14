@@ -1,0 +1,149 @@
+{
+  "video_basename": "20261002_020920000_iOS.MP4",
+  "source_sha256": "a9f4cfd8c2173a889abc99ae67320174bfd83822d2027884bcb106bf19ae8514",
+  "source_bytes": 457508292,
+  "duration_seconds": 248.285,
+  "reviewer": "sol_competitive_20261002_020920000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_status": "full_battle_review_complete",
+  "complete_available_footage_review": true,
+  "battle_complete": true,
+  "battle_count": 1,
+  "outcome": "win",
+  "outcome_type": "win_by_concession",
+  "turn_order": "second",
+  "turns_played": 9,
+  "owner_name": "Dacz8976",
+  "owner_deck_core": [
+    "Wailmer x2,100HP,Wave Splash60/three Water",
+    "Wailord non-ex,200HP,Whale Pump60+10 per Water/four Colorless",
+    "Wailord ex,250HP,Wondrous Waves100/four Water",
+    "Indeedee ex x2,130HP,Watch Over20 healing",
+    "Heavy Helmet",
+    "Poké Ball",
+    "Professor's Research",
+    "Cyrus",
+    "Pokémon Center Lady",
+    "Lucky Ice Pop"
+  ],
+  "owner_observed_energy": [
+    "Water"
+  ],
+  "matching_artifact_deck": {
+    "name": "Wailord / Indeedee wall",
+    "basis": "Visible Wailmer/Wailord/Wailord ex/Indeedee ex core",
+    "entire_list_verified": false
+  },
+  "opponent_name": "おさるの上司",
+  "opponent_deck_core": [
+    "Charmander x2,60HP,Ember30",
+    "Charmeleon,80HP,Ignition/Slash40",
+    "Entei ex,140HP,Legendary Pulse/Blazing Beatdown60+",
+    "Professor's Research",
+    "Poké Ball",
+    "May",
+    "Flame Patch x2 played"
+  ],
+  "mode_evidence": {
+    "visible": "Named opposing PvP profile,VS,Master Ball Rank badges,opponent setup/wait messages and opposing timers",
+    "native_frame": "native/t0007.50.jpg",
+    "owner_testimony": "Owner identifies this requested batch as competitive",
+    "exact_queue": "unknown: mode selection not recorded",
+    "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+    "ranked_ladder_eligible": false
+  },
+  "auto_intervals": [
+    {
+      "start_seconds": 0,
+      "end_seconds": 248.285,
+      "owner_auto_indicator": "not shown",
+      "owner_auto_state": "unknown from on-screen indicator",
+      "observation": "Owner selections and End Turn interactions visible; no Auto label/toggle appears",
+      "opponent_auto_state": "unknown"
+    }
+  ],
+  "final_score": {
+    "owner": 0,
+    "opponent": 0,
+    "basis": "No knockouts; empty point markers throughout; result statistics at247.40s",
+    "native_frame": "native/t0247.40.jpg"
+  },
+  "decisive_evidence": [
+    {
+      "timestamp_seconds": 214,
+      "frame": "native/t0214.00.jpg",
+      "fact": "Whale Pump damage sequence:120 against140HP Entei ex with Water weakness"
+    },
+    {
+      "timestamp_seconds": 216,
+      "frame": "native/t0216.00.jpg",
+      "fact": "Opponent turn9 banner; Entei ex20HP,owner Wailord200HP/four Water;score0-0"
+    },
+    {
+      "timestamp_seconds": 238,
+      "frame": "native/t0238.00.jpg",
+      "fact": "Explicit Your opponent conceded banner"
+    },
+    {
+      "timestamp_seconds": 247.4,
+      "frame": "native/t0247.40.jpg",
+      "fact": "Victory againstおさるの上司;went second;9turns;0-0points;120damage"
+    }
+  ],
+  "point_progression": [
+    {
+      "interval_seconds": [
+        0,
+        238
+      ],
+      "owner": 0,
+      "opponent": 0,
+      "knockouts": 0
+    }
+  ],
+  "key_findings": [
+    "Owner attaches one Water on each of four owner turns; no attack until global8,owner fourth turn.",
+    "No owner Energy ramp is played or revealed; bench Wailord ex remains unpowered.",
+    "Heavy Helmet prevents20 on each of two attacks; Watch Over heals60 total and restores full200HP before first attack.",
+    "Whale Pump with four Water is100 plus20 weakness,leaving Entei ex at20;the win is concession rather than a knockout.",
+    "Potential local alternative sent for Astra check: defer turn4 evolution,retain Wailmer to use three-Water Wave Splash60+20 weakness against80HP Charmeleon on global6. This is conditional,not an accepted policy defect or a guaranteed win.",
+    "Owner slow-buildup testimony is supported in this game; alternate Energy and Sharpedo/Misty ideas remain untested proposals."
+  ],
+  "owner_subjective_ratings": null,
+  "limitations": [
+    "Full hidden deck lists unknown",
+    "Exact selected queue not recorded",
+    "No on-screen Auto indicator",
+    "Opponent automation unknown",
+    "May hidden exchanged identities unknown",
+    "Concession motive unknown",
+    "Timestamped native frames establish visible moments,not every animation onset"
+  ],
+  "reports": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "UNCERTAINTIES.json"
+  ],
+  "source_moved": true,
+  "external_log_written": true,
+  "shared_log_written": true,
+  "astra_tactical_resolution": "Astra accepted the deferred-evolution line as a legal local opportunity. Keep Wailmer unevolved through the turn6 attack, then evolve on a later owner turn if it survives. The opponent could respond differently; no guaranteed win or unchanged continuation is claimed.",
+  "lead_reconciliation_notes": [
+    "Raw first-pass files preserved in worker_submission. Astra clarifications appended; outcome unchanged.",
+    "Attack name standardized to Wondrous Waves using clearer enlarged native021402t0180.00 and Astra check; mechanics unchanged."
+  ],
+  "worker_status_at_submission": "complete_first_pass_pending_independent_lead_acceptance",
+  "status": "full_battle_review_complete",
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "source_archived": true,
+  "source_modified": false,
+  "global_registration_complete": true,
+  "ranked_ladder_eligible": false,
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "external_log_saved": true,
+  "archive_receipt": "MOVE_RECEIPT.20261002_020920000_iOS.MP4.json",
+  "archive_completion_event_id": "b1a37201-0ef0-4d4a-920b-61a533908a8a",
+  "worker_submission_path": "worker_submission"
+}

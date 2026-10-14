@@ -1,0 +1,41 @@
+{
+  "source_video": "20260928_200654000_iOS.MP4",
+  "sha256": "d4d0dd51f309c05abcdb6b1f04a75c036ca3e59b4abee3f6ce542b2d56149fd6",
+  "bytes": 1107688324,
+  "duration_seconds": 595.032,
+  "native_dimensions": [
+    1170,
+    2532
+  ],
+  "current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260928_200654000_iOS.MP4",
+  "verification_status": "verified_sha256_match",
+  "source_verification_receipt": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\ROOT_SOURCE_VERIFICATION.json",
+  "old_packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol",
+  "old_source_json": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\SOURCE.json",
+  "accepted_outcome": "owner loss2-3 inherited; no new outcome review",
+  "main_review_status": "Reviewed",
+  "worker_identity_hash_reads": 0,
+  "classification": "ladder_presumed",
+  "excluded_from_ladder": false,
+  "classification_details": {
+    "classification": "ladder_presumed",
+    "excluded_from_ladder": false,
+    "classification_basis": "Owner default ladder rule applies: no Auto option observed in inspected controls or complete 1fps locator scan. Any visible Auto option, even OFF, means computer battle.",
+    "visible_rank_badge": "Master Ball Rank for both players at10seconds",
+    "ranked_queue_independently_certified": false,
+    "auto_option_observed": false,
+    "auto_enabled": null,
+    "action_authorship": "not independently certified",
+    "limits": "Master Ball badge is direct; queue selection is not separately established. Sampled screening does not certify absence every instant; no inspected source evidence triggers Auto-option exclusion.",
+    "evidence_ids": [
+      "F0010.00",
+      "F0033.00",
+      "F0055.00",
+      "F0139.00",
+      "F0285.00",
+      "F0422.00",
+      "F0550.00",
+      "F0564.00"
+    ]
+  }
+}

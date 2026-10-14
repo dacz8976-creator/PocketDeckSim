@@ -1,0 +1,54 @@
+{
+  "video_basename": "20260930_162102000_iOS.MP4",
+  "sha256": "e23850f05a3e9a8b1b838c190a17cecfd88a50e7359013ffaee15c8c9a2758a5",
+  "reviewer": "sol_auto_162102000",
+  "full_scope_reviewed": true,
+  "unreviewed_phases": [],
+  "items": [
+    {
+      "id": "cape_title",
+      "times": [
+        95,
+        96,
+        98
+      ],
+      "limit": "Tool title unreadable. Cape artwork and applied Stage 1 +30 HP effect observed; Mega Manectric live HP180 to210.",
+      "impact": "Mechanics and outcome resolved; cosmetic identity remains unknown."
+    },
+    {
+      "id": "coin_microtiming",
+      "times": [
+        117,
+        118.5,
+        120
+      ],
+      "limit": "Coin shows Poke Ball side in sampled animation; Lucky Ice Pop is discarded and does not return to hand. Tails supported by resolution. Exact onset not claimed.",
+      "impact": "One20HP heal verified; no repeated Item use."
+    },
+    {
+      "id": "hidden_information",
+      "limit": "No full deck lists, opponent hidden hand or exact deck order inferred.",
+      "impact": "Counterfactual strategy remains bounded to public state."
+    },
+    {
+      "id": "end_rewards",
+      "times": [
+        152,
+        156
+      ],
+      "limit": "Explicit Defeat appears, followed by loading. Final reward/results page absent.",
+      "impact": "Outcome directly confirmed; post-match details unavailable."
+    },
+    {
+      "id": "sampling",
+      "limit": "Full3-second overview plus41 targeted frames covers all meaningful phases; not exact continuous frame transcript.",
+      "impact": "Routine animations and precise microtiming not reconstructed."
+    },
+    {
+      "id": "source_identity",
+      "limit": "Coordinator supplied verified intake source binding; worker read SOURCE.json and exact named source but did not rehash media.",
+      "impact": "Root integrity checks govern acceptance."
+    }
+  ],
+  "astra_escalation_required": false
+}

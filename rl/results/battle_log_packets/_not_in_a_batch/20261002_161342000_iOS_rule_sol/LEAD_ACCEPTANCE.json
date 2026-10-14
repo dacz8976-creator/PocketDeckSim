@@ -1,0 +1,36 @@
+{
+  "source_video": "20261002_161342000_iOS.MP4",
+  "source_sha256": "3db01a8db2f4229fd3327591a6012fe38da60e16fa47e71d0875c866bfbfd475",
+  "accepted": true,
+  "coverage_checked": true,
+  "completion_status": "rule_test_review_complete",
+  "ladder_eligible": false,
+  "pause_games_eligible": false,
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "scope": "Entire available 227.676667-second source as one part of the two-recording computer rules test. Recording interruption and hidden/missing battle actions remain explicit; rule-test completion does not assert uninterrupted full-battle footage.",
+  "lead_evidence": [
+    "overview/sheet_01.jpg",
+    "overview/sheet_04.jpg",
+    "evidence/t0000.00.jpg",
+    "evidence/t0027.00.jpg",
+    "evidence/t0056.00.jpg",
+    "evidence/t0086.00.jpg",
+    "evidence/t0087.00.jpg",
+    "evidence/t0089.00.jpg",
+    "evidence/t0091.00.jpg",
+    "evidence/t0094.00.jpg",
+    "evidence/t0105.00.jpg",
+    "evidence/t0106.00.jpg",
+    "evidence/t0227.60.jpg"
+  ],
+  "lead_notes": "Lead read the entire source review, coverage, summary and uncertainty packet, reconciling all visible turns7-15 and the60+30+30+0+160+80=360 attack-damage ledger. Independently inspected ordinary overview sheets01 and04, start0s public continuity, Combusken KO27s and Victini30 damage56s, snipe target86s, named Carefree Steps87s, prevention prompt89s, explicit heads91s, shield and unchanged Meowth50HP94s. Auto is off105s and on106s; terminal227.6s explicitly names the computer deck and Victory3-1, first,15turns,360damage. Astra independently confirms the defender prevention context. Tongue Whip is the filmed example of the intended snipe class; no separate Linear Attack trial was requested. Comparison with repair B is conditional on owner-provided code context, not a running-engine audit. Entire available source accepted as one continuation, missing cut interval retained, battle_complete false, no Pause Games or Ladder Log entry.",
+  "astra_reports": [
+    "ASTRA_CAREFREE_CHECK.md"
+  ],
+  "review_group": "BATCH_2026-10-02_CAREFREE_SNIPES",
+  "related_source": "20261002_161001000_iOS.MP4",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_at": "2026-10-02T17:36:36.864267+00:00"
+}

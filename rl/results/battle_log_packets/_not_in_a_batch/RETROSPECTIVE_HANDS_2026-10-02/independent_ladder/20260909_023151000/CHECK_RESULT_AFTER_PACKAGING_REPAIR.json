@@ -1,0 +1,61 @@
+{
+  "source": "20260909_023151000_iOS.MP4",
+  "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+  "checker": "Sol, different producer",
+  "completed_utc": "2026-10-02T18:25:12.390034-05:00",
+  "status": "accepted_with_recording_limits",
+  "consequential_items": [],
+  "required_repairs": [],
+  "effective_submission": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\SUBMISSION_AFTER_PACKAGING_REPAIR.json",
+  "initial_check_preserved": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260909_023151000\\CHECK_RESULT.json",
+  "initial_check_sha256": "3fbaa35626077c13b22f21243bfafb41b9d1d38cacc7bfd51f098741a0579789",
+  "substantive_check": "Initial complete independent source-field check carries forward; only two packaging/phase files changed.",
+  "hash_validation": {
+    "submitted_files": 26,
+    "all_effective_hashes_match": true,
+    "changed_files": [
+      "HAND_SUPPLEMENT.json",
+      "SOURCE_REFERENCE.json"
+    ]
+  },
+  "resolved_repairs": [
+    {
+      "field": "HAND_SUPPLEMENT.target_rows/target_turn_numbers/capture_status",
+      "result": "Aliases present, target_rows deep-equals the five owner_turns, turns [1,3,5,7,9], complete_with_recording_limits."
+    },
+    {
+      "field": "SOURCE_REFERENCE.sha256",
+      "result": "Alias equals source_sha256 and frozen source SHA; other source fields unchanged."
+    },
+    {
+      "field": "HAND_SUPPLEMENT.owner_turns[3].before_end_hand",
+      "result": "Existing full native t0240.00 independently re-viewed: unzoomed single Helioptile before attack with Energy attachment resolving. Existing t0241.50 independently re-viewed: attack-selection overlay partly covers card; retained as qualified secondary.",
+      "primary_evidence_id": "t0240.00",
+      "secondary_evidence_id": "t0241.50",
+      "card_count": 1,
+      "cards_left_to_right": [
+        "Helioptile"
+      ]
+    }
+  ],
+  "checks": [
+    "Other four owner rows unchanged.",
+    "T7 card identity/count/status unchanged; phase support clarified.",
+    "SOURCE_REFERENCE changed only by sha256 alias.",
+    "All other 24 effective submitted hashes identical to original freeze.",
+    "Initial source work, all nine turns, five hands, named draws/search limits, both boards/Zones, mode limits and inherited result remain accepted."
+  ],
+  "limits": [
+    "Requested/nominal seek times remain distinct from unmeasured actual PTS.",
+    "T2 concealed Ball result remains null; subsequent Entei bench does not establish search identity.",
+    "Sampled absence of Auto controls does not certify every instant. Any visible Auto option, including OFF, triggers owner computer-battle rule.",
+    "Hidden opponent identities, unopened discard contents and exact historical twenty-card deck remain qualified recording limits."
+  ],
+  "new_native_frames": 0,
+  "source_movie_read_or_hashed": false,
+  "locator_decode_or_full_scan_repeated": false,
+  "producer_files_modified_by_checker": false,
+  "outcome_changed": false,
+  "verdict": "accepted_with_recording_limits",
+  "independent_acceptance": true
+}

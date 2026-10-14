@@ -1,0 +1,54 @@
+{
+  "source_video": "20261013_010837000_iOS.MP4",
+  "source_sha256": "7a5b29f607ce5b5779bf5dab49e28427c3db42e4e9a38323f1db182471ff3285",
+  "items": [
+    {
+      "id": "U1",
+      "scope": "Turn1 hand",
+      "status": "recording_or_access_limit",
+      "detail": "Incoming Poké Ball revealed centrally then immediately played; dense57.2-58.1 never exposes unzoomed5-card hand or exact fifth-slot order."
+    },
+    {
+      "id": "U2",
+      "scope": "Opponent cards",
+      "status": "recording_or_access_limit",
+      "detail": "Normal/Research/Poke Ball cards hidden. Subsequent Rattata does not prove search identity. Full opponent20 unknown."
+    },
+    {
+      "id": "U3",
+      "scope": "Energy Zones",
+      "status": "recording_or_access_limit",
+      "detail": "Next icons identify type, not count. Opponent current numeric availability not exposed from owner view."
+    },
+    {
+      "id": "U4",
+      "scope": "Discard piles",
+      "status": "recording_or_access_limit",
+      "detail": "No opened pile/full scroll. Top cards identify Ilima/Red but not full contents."
+    },
+    {
+      "id": "U5",
+      "scope": "Deck log",
+      "status": "recording_or_access_limit",
+      "detail": "Historical exact20 payload matches filmed QR; fresh live access/save pending root."
+    },
+    {
+      "id": "U6",
+      "scope": "Queue",
+      "status": "recording_or_access_limit",
+      "detail": "Human versus Taylor, exact queue not visible."
+    },
+    {
+      "id": "U7",
+      "scope": "Timing",
+      "status": "recording_or_access_limit",
+      "detail": "Requested seeks and approximate event anchors, no measured frame PTS."
+    },
+    {
+      "id": "U8",
+      "scope": "Timeout",
+      "status": "recording_or_access_limit",
+      "detail": "Failed-return countdown and Victory observed; why opponent disconnected unknown, no concession banner."
+    }
+  ]
+}

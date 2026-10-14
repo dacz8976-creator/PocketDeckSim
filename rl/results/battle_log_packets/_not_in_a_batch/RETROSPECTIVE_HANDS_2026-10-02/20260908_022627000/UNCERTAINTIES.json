@@ -1,0 +1,103 @@
+{
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance_status": "pending_separate_source_check",
+  "recording_limits": [
+    "Opponent hands/draw identities remain hidden card backs.",
+    "Unopened discard contents cannot be enumerated; periodic closed-pile views inspected.",
+    "One-second reduced scan may miss subsecond panels; native exact anchors resolve discovered material prompts.",
+    "Historical20-card list and deck version are unavailable.",
+    "Old native requested timestamps lack measured decodedPTS; current native timestamps have showinfoPTS. Locator sample phase can differ within about1s; no timestamp drift asserted.",
+    "Terminal award overlay obscures final board, and no later result splash is recorded. Accepted loss remains.",
+    "Some exact Energy input times are bounded transitions between native endpoints rather than directly sampled orb trajectories.",
+    "No Auto visible in inspected unoccluded anchors; opponent type and individual input authorship unestablished."
+  ],
+  "old_prose_conflicts": "ASTRA_QUESTIONS.json",
+  "source_access_status": "Verified exact source is accessible; delivery attempt1error preserved, retry2matched. These are recording/visibility limits, not uninspected accessible fields.",
+  "astra_reference_qualification": "Astra reference check: Turn15 retained Psychic + Darkness is directly supported by F0596.00 after the switch, not F0593.00, which still shows Raticate Active. Zero retreat payment is derived from the blank live cost and unchanged Energy, not an observed discard input. Turn12 attachment target is endpoint-derived; F0500.00 is owner13 post-state, and the467–500 interval crosses the turn boundary. The attachment event is attributed to opponent12 using the producer-observed banner near499.",
+  "independent_boundary_qualifications": {
+    "board_objects": 36,
+    "specific_end_cases": {
+      "7": {
+        "observations": [
+          {
+            "id": "F0304.00",
+            "phase": "Before Entrap in owner7",
+            "observed": "Skorupi Active60/D1; Mega Absol Bench170/E0."
+          },
+          {
+            "id": "F0339.30",
+            "phase": "Opponent8 after evolution and normal attachment, during Giant Cape reveal",
+            "observed": "Drapion Bench130/D1; Mega Absol Active120 with Darkness attached; Giant Cape reveal."
+          }
+        ],
+        "derived_fields": {
+          "opponent.active.name_and_position": "Mega Absol becomes Active through recorded Entrap after304;339.3 is later corroboration, not the exact end7 position image.",
+          "opponent.active.hp_now_damage": "End7 HP120 and50damage derive from170 minus recorded Entrap50; later339.3 shows120 before Cape bonus resolves.",
+          "opponent.active.attached_energy": "End7 E0 uses pre-Entrap Mega E0 at304 and no owner7 attachment to it; opponent8 Darkness belongs to the later turn and is not imported backward.",
+          "opponent.active.tool_and_hp_max": "End7 has no Tool and maximum170; the Giant Cape play/+20 belongs to opponent8.",
+          "opponent.bench_in_position_order": "Skorupi60/D1 is direct at304 while Active; its Bench placement at end7 follows the recorded Entrap switch.339.3 shows later evolution to Drapion, not end7 Skorupi."
+        }
+      },
+      "9": {
+        "observations": [
+          {
+            "id": "F0394.00",
+            "phase": "Opponent10 after first Deino bench",
+            "observed": "Drapion Active80/D1; Mega Absol Bench140/D1; Deino60 already Bench2."
+          }
+        ],
+        "derived_fields": {
+          "opponent.active.name_position_hp_energy": "Earlier end9 Drapion Active80/D1 combines recorded Entrap/switch chronology with394 later corroboration;394 is not an exact end9 still.",
+          "opponent.bench_in_position_order": "End9 Mega Absol Bench140/D1 is corroborated later. First Deino is excluded from end9 because its recorded bench play occurs in opponent10; its absence is chronological reconstruction, not direct observation at394."
+        }
+      },
+      "15": {
+        "observations": [
+          {
+            "id": "F0602.00",
+            "phase": "Before owner15 Entrap, second Hypno Psychic attachment in flight",
+            "observed": "Drapion Active80/D3; Mega Absol Bench60/D1; Hydreigon Bench150/E0."
+          },
+          {
+            "id": "R0640.00",
+            "phase": "Opponent16 after second Deino bench, promotion and Roar",
+            "observed": "Hydreigon Active120/D3; Mega Absol Bench2 10/E0; Drapion Bench1 80/D3; second Deino Bench3 60/E0."
+          }
+        ],
+        "derived_fields": {
+          "opponent.active.name_and_position": "End15 Mega Absol Active is derived from recorded Entrap selecting it; neither602 nor640 directly shows that boundary position.",
+          "opponent.active.hp_now_damage": "End15 Absol10 derives from60 at602 minus recorded Entrap50;640 corroborates10 after opponent16 retreat.",
+          "opponent.active.attached_energy": "End15 AbsolD1 is visible before the switch at602 and remains until its opponent16 retreat payment;640 E0 is the later paid-retreat state, not end15.",
+          "opponent.bench_drapion": "Drapion80/D3 is source-observed at602 Active and640 Bench; end15 Bench1 follows the Entrap switch.",
+          "opponent.bench_hydreigon": "End15 Hydreigon150/E0 is observed before Entrap at602, with no intervening owner15 action affecting it.640 shows the later promotion/attachment/Roar120/D3 state.",
+          "opponent.bench_membership": "Second Deino is excluded at end15 from recorded opponent16 bench chronology;640 includes it and is not an earlier absence image."
+        }
+      },
+      "17": {
+        "observations": [
+          {
+            "id": "F0681.00",
+            "phase": "Owner17 before Boost Dash",
+            "observed": "Hydreigon140/E0; Comfey50/P1 after the attachment."
+          }
+        ],
+        "derived_fields": {
+          "opponent.active.hp_now_damage": "End17 Hydreigon70 derives from140 at681 minus recorded Boost Dash70.681 directly supports140, not70; no uninspected682 endpoint is adopted as direct proof.",
+          "owner.comfey.attached_energy": "ComfeyP1 is directly visible at681 before the attack and retained at the derived end17 boundary."
+        }
+      }
+    },
+    "hand_timing_correction": "Native593 is pre-switch with Cape Raticate still Active;596 is post-switch with Hypno evolution in progress",
+    "added_existing_offset_candidates": {
+      "turn3": [
+        103,
+        105
+      ],
+      "turn5": [
+        174
+      ]
+    },
+    "new_video_reads": 0,
+    "new_extraction": 0
+  }
+}

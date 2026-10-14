@@ -1,0 +1,7 @@
+{
+  "source": "20261010_012303000_iOS.MP4",
+  "attempt_utc": "2026-10-10T03:19:05.327209+00:00",
+  "exit_code": 1,
+  "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\review_log.py\", line 329, in <module>\n    raise SystemExit(main())\n                     ~~~~^^\n  File \"C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\review_log.py\", line 322, in main\n    return args.func(args)\n           ~~~~~~~~~^^^^^^\n  File \"C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\review_log.py\", line 219, in record\n    actual_hash = None if imported else sha256_file(video)\n                                        ~~~~~~~~~~~^^^^^^^\n  File \"C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\review_log.py\", line 61, in sha256_file\n    for block in iter(lambda: handle.read(1024 * 1024), b\"\"):\n                 ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\review_log.py\", line 61, in <lambda>\n    for block in iter(lambda: handle.read(1024 * 1024), b\"\"):\n                              ~~~~~~~~~~~^^^^^^^^^^^^^\nOSError: [Errno 22] Invalid argument\n",
+  "stdout": ""
+}

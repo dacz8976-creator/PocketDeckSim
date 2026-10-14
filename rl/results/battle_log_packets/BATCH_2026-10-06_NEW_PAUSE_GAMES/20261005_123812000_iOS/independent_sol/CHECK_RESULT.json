@@ -1,0 +1,126 @@
+{
+  "schema": "independent-acceptance-check-v1",
+  "source_video": "20261005_123812000_iOS.MP4",
+  "source_sha256": "3fb3dc25ac96c6e742f9467ba14abdbf91aff403ef2a5bdc62c7f414e775e5a0",
+  "accepted": false,
+  "status": "rejected_narrow_repairs_required",
+  "checked_input_sha256": {
+    "SOURCE.json": "162668d184e4ad7b69183d01a77f2ab357b33baeb60859dcbcc2985006711372",
+    "REVIEW.md": "2b3f4377303938f491e2bc9c0ce2317b114a7c4351fcbc45d6a3c977dad13274",
+    "COVERAGE.md": "051b69cf62d245c1df606b5aa723e9328502d4788ee0b3a543d8c32ff97d6add",
+    "SUMMARY.json": "5b9c21152dab0d7357aa153b539a730cfe560e8d80bc81206b2d6589ec8f0e47",
+    "UNCERTAINTIES.json": "2871b51ef155c152fec9ff3c9aff5b5adc3eabfc4a6792fc9820a911fe4ee9c5",
+    "PAUSE_GAME.json": "e4952769f364689d98e2067171796430785115622dedf01241d7c84762398b55",
+    "DECK_USED.json": "8c55a09981102c2c939e1a1d0d5d1f98c9579322335f362576b2c85188a8b813",
+    "TURN_LEDGER.json": "507dff17ea9e3a2a82e56317d2de6b8f17264fe8f40f60d465b2d6d202de2113",
+    "TURN_EVIDENCE.json": "43067e745791046c11140a34b9d1706ba0cede6905621bb645cfe4c124609b5c",
+    "RECORDING_METADATA.json": "dfd6aebe2bb4b42fcd604f19ac9051f1d55ad6c4c6b89ad1c71f4877f3971015",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+    "qr_intake/QR_DECODE_0002.00.json": "46ea9615ff81f68fcfe68255631357fd4d8d5e2b79a00e6fcd1b42910463d1e9",
+    "qr_intake/INTAKE_RESULT.json": "9f45475f344d4ba57dd33766919c1f150873b2297a62d5a03e6eb28d5b5eaf21"
+  },
+  "required_repairs": [
+    {
+      "id": "R1",
+      "paths": [
+        "SUMMARY.json:$.queue",
+        "PAUSE_GAME.json:$.classification.specific_queue and its limit",
+        "UNCERTAINTIES.json:U7 observation",
+        "REVIEW.md:first paragraph"
+      ],
+      "timestamps": [
+        4,
+        5
+      ],
+      "finding": "Deck selection visibly states Deluxe Pack: Mega Emblem Event. Packet incorrectly calls exact human queue absent.",
+      "required_change": "Record the visible event title, retain uncertainty about unstated ranked status and concession reason. No external claim."
+    },
+    {
+      "id": "R2",
+      "paths": [
+        "TURN_LEDGER.json:$.turns[0].draws_and_searches[0] including cards_in_reveal_order[0]",
+        "TURN_LEDGER.json:$.turns[2].draws_and_searches[0] including cards_in_reveal_order[0]",
+        "TURN_LEDGER.json:$.turns[1].draws_and_searches[1].cards_in_reveal_order and $.turns[1].draws_and_searches[3]",
+        "TURN_LEDGER.json:$.turns[3].draws_and_searches[2].cards_in_reveal_order",
+        "TURN_LEDGER.json:$.turns[0].automatic_events_in_order[0]",
+        "REVIEW.md:Turn1, Turn2, Turn3 and Turn4 timestamp prose"
+      ],
+      "timestamps": [
+        44,
+        45,
+        61,
+        64,
+        83,
+        85,
+        86,
+        105,
+        106,
+        109,
+        110,
+        171,
+        172,
+        173,
+        174,
+        175
+      ],
+      "finding": "Needle face first supported at45 rather than cited44; Darkrai face at110 rather than cited109. T2 fan already5 at85 and unchanged86, so85/86 cannot certify individual successive draws. Lead at105 stillfan3;106 fan4 supports hidden search return. T4 fan2 at172 and fan4 by174;175 settled fan does not certify a second exact draw. Needle impact at61 still shows Ralts60;50 is resolved at64.",
+      "required_change": "Use supported named face times/evidence45 and110; change Lead return to106 or bounded105-106. Bound two hidden Research results83-85 and172-174/175 with unknown individual times unless genuinely denser evidence supports them. Separate61 impact animation from64 resolved HP. Keep hidden identities null and existing arithmetic."
+    },
+    {
+      "id": "R3",
+      "paths": [
+        "TURN_EVIDENCE.json:$.discard_snapshots[0] (discard-94)",
+        "TURN_LEDGER.json:$.turns[1].discard_snapshot_ids if renamed"
+      ],
+      "timestamps": [
+        94,
+        95,
+        96
+      ],
+      "finding": "Native94 still shows Research on opponent discard top, not Poke Ball; Poke Ball top is visible95/96.",
+      "required_change": "Either cite95 for Poke Ball top with matching timestamp/ID, or retain94 as Research. Keep full_pile_established false."
+    },
+    {
+      "id": "R4",
+      "paths": [
+        "TURN_LEDGER.json:$.turns[0].timing.first_voluntary_move_seconds and plays_in_order[0] input basis",
+        "TURN_LEDGER.json:$.turns[8].timing.first_voluntary_move_seconds and plays_in_order[0] input basis",
+        "TURN_EVIDENCE.json:$.frames[285].before_first_play, observation, suitability_or_limit"
+      ],
+      "timestamps": [
+        52,
+        53,
+        316,
+        317,
+        317.5
+      ],
+      "finding": "52 still has intact3-card hand and53 is consumed2-card target prompt.317 is zoom inspection with intact4-card hand;317.5 is consumed3-card play. Candidate317 incorrectly says after consuming input.",
+      "required_change": "Make actual consuming input windows explicit52-53 and317-317.5, retaining original selected45.75 and316. Qualify317 as pre-consumption zoom inspection unsuitable for unzoomed selected hand; retain319/322.5 post-play limits. Do not treat inspection as a consumed play."
+    }
+  ],
+  "structural_checks": {
+    "native_frames": 302,
+    "native_crops": 604,
+    "all_files_decode_and_bounds_pass": true,
+    "all_evidence_references_resolve": true,
+    "all_frame_source_bindings_match": true,
+    "source_media_rehashed": false,
+    "source_metadata_verified_from_frozen_receipts": true,
+    "qr_prepared_exact_20_matches": true,
+    "prepared_deck_id": "filmed-qr-2ea1f092676e",
+    "crop_correspondence_comparisons": 30,
+    "crop_correspondence_max_mae": 0.0,
+    "crop_difference_limit": "JPEG retained full frame compared with PNG crop; expected compression difference",
+    "pending_structural_repairs": []
+  },
+  "inspection_scope": "Bounded independent acceptance of completed whole-source first pass; no routine second pass and no duplicated extraction. All five selected hands, candidates and before-end hands inspected, ordinary owner/opponent actions sampled beyond unusual flags, consequential Energy/KO/points/concession separately checked.",
+  "supported_conclusions": [
+    "One human game against Sofii; owner first,9 turns, explicit Concede325 and Defeat327/result336, earned points1-2. No Auto visible.",
+    "Opening28/29 all5; prepared two-Darkrai QR revision exact20 distinct124532; initial live snapshot absent explicitly, no live save claim.",
+    "Current Energy absence at45.75/110.5/249.5 distinguished from next preview and later generation;183.2 has visible Darkness within glow;316 current unknown remains explicit.",
+    "Typed retreat payment removes Nidoran Darkness before its new attachment; right Diancie3Psychic248, center Diancie4Psychic303, Gardevoir2.",
+    "Tools/Stadium observed absence explicit; Plaza after74 persists; no Poison or Nightmare Aura damage fabricated.",
+    "KO/render/removal/point/promotion and final concession distinguished; full pile/hidden identity/PTS limits explicit."
+  ],
+  "created_utc": "2026-10-06T20:12:17.804408+00:00"
+}

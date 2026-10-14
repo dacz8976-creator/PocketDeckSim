@@ -1,0 +1,132 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_210612000_iOS_auto_sol",
+  "sources": [
+    {
+      "video_basename": "20261002_210612000_iOS.MP4",
+      "sha256": "9dcc8b0fab462433546cc35161d2a5e92ada7a571f4bbff6020ad99fbb72ad03",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "review_date": "2026-10-02",
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Draft A: Shark Tempo",
+  "opening": {
+    "source_video": "20261002_210612000_iOS.MP4",
+    "timestamp_seconds": 15,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Lucky Ice Pop",
+        "basis": "direct native exposed opening fan",
+        "evidence_ids": [
+          "F0015.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Mega Sharpedo ex",
+        "basis": "direct native exposed opening fan",
+        "evidence_ids": [
+          "F0015.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Alolan Vulpix",
+        "basis": "direct native exposed opening fan",
+        "evidence_ids": [
+          "F0015.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Irida",
+        "basis": "direct native exposed opening fan",
+        "evidence_ids": [
+          "F0015.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Alolan Ninetales ex",
+        "basis": "direct native exposed opening fan",
+        "evidence_ids": [
+          "F0015.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Alolan Vulpix",
+      "opening_position": 3,
+      "source_video": "20261002_210612000_iOS.MP4",
+      "timestamp_seconds": 16,
+      "evidence_ids": [
+        "F0015.00",
+        "F0020.00"
+      ]
+    },
+    "redraw_or_replacement": [],
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "F0015.00"
+    ],
+    "limit_reason": null
+  },
+  "classification": "computer_battle",
+  "excluded_from_ladder": true,
+  "action_authorship": {
+    "owner": "game Auto",
+    "opponent": "computer AI",
+    "setup": "owner initiates battle; Auto selects Active",
+    "visible_enabled_evidence": [
+      "F0000.50",
+      "F0015.00",
+      "F0031.20",
+      "F0090.20",
+      "F0184.80"
+    ],
+    "mode_changes": []
+  },
+  "difficulty": "Advanced",
+  "difficulty_basis": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\ADVANCED_CATEGORY_CONFIRMATION.json",
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "first_pass_full_battle_review_complete_pending_independent_acceptance",
+  "outcome": {
+    "owner": "win",
+    "points": [
+      3,
+      0
+    ],
+    "turn": 13,
+    "evidence_ids": [
+      "F0194.80",
+      "F0196.00",
+      "F0203.00"
+    ]
+  },
+  "limits": [
+    "Opponent concealed normal draws and concealed search result remain unknown. Complete opponent deck membership does not identify a held card.",
+    "Neither player opens a discard pile. Saved discard observations show only visible pile tops; they are not a full census.",
+    "Requested seeks and measured decoded PTS are distinct. Draw-end estimates locate visible integration into hand; offsets are approximate.",
+    "Physical art varies from log labels. Mechanical versions are visible; exact set/rarity numbers are not read from board images.",
+    "Beginning screen omits category label. Advanced is established by owner category screenshot receipt, not inferred from opponent deck name."
+  ],
+  "lead_checked": false
+}

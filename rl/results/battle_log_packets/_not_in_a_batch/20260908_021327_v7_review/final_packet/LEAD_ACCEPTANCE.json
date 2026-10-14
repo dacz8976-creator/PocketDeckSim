@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "status": "accepted",
+  "scope": "complete battle in 20260908_021327000_iOS.MP4",
+  "primary_processor": "Gemini 3.8 Flash API",
+  "routine_reviewer": "Sol",
+  "lead_review": "Codex",
+  "astra_used": false,
+  "battle_turns": 12,
+  "final_score": {"player": 1, "opponent": 0},
+  "outcome": "player_win_by_opponent_concession",
+  "acceptance_basis": [
+    "source identity verified",
+    "Gemini identity mismatch safely rejected",
+    "complete Sol turn review",
+    "reconciled Energy ledger",
+    "verified damage, healing, status, knockout, scoring, and concession"
+  ],
+  "nonessential_metadata": {
+    "ai_or_human_pilot": "unknown",
+    "auto_status": "unknown"
+  }
+}

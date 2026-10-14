@@ -1,0 +1,32 @@
+{
+  "source_video": "20261013_020824000_iOS.MP4",
+  "source_sha256": "07937ec6622f5979fd73f65b81a6315bba5bcaadb5eb272c9b28d4b17c4bdaa4",
+  "unreviewed_intervals": [],
+  "unresolved_material_actions": [],
+  "recording_limits": [
+    {
+      "topic": "hidden opponent cards",
+      "reason": "Card backs only for normal draws, Fragrant Forest and Copycat; no guessed identities"
+    },
+    {
+      "topic": "discard piles",
+      "reason": "Neither opened; only public actions and face-up tops support discard history"
+    },
+    {
+      "topic": "artwork",
+      "reason": "QR binds20 semantic cards, not exact physical art variants"
+    },
+    {
+      "topic": "source times",
+      "reason": "Keyframe PTS measured; targeted native seek times requested and unmeasured to exact frame; draw animation endpoints approximate"
+    },
+    {
+      "topic": "external log",
+      "reason": "Historical catalog exact match saved; fresh external access pending per batch EXTERNAL_ACCESS_BLOCK.json"
+    }
+  ],
+  "interpretation_limits": [
+    "Observed sequence does not establish optimal strategy or owner intent.",
+    "No unoffered option is recorded as a declined prompt."
+  ]
+}

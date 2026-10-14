@@ -1,0 +1,285 @@
+16:12:13.934: CPU Name: AMD Ryzen 7 7730U with Radeon Graphics         
+16:12:13.934: CPU Speed: 1996MHz
+16:12:13.934: Physical Cores: 8, Logical Cores: 16
+16:12:13.934: Physical Memory: 15771MB Total, 3807MB Free
+16:12:13.934: Windows Version: 10.0 Build 26200 (release: 25H2; revision: 9278; 64-bit)
+16:12:13.934: Running as administrator: false
+16:12:13.934: Windows 10/11 Gaming Features:
+16:12:13.934: 	Game DVR: On
+16:12:13.934: 	Game Mode: Probably On (no reg key set)
+16:12:13.935: Sec. Software Status:
+16:12:13.936: 	Microsoft Defender Antivirus: enabled (AV)
+16:12:13.936: 	Windows Firewall: enabled (FW)
+16:12:13.938: Current Date/Time: 2026-09-06, 16:12:13
+16:12:13.938: Browser Hardware Acceleration: true
+16:12:13.938: Hide OBS windows from screen capture: false
+16:12:13.938: Qt Version: 6.11.1 (runtime), 6.11.1 (compiled)
+16:12:13.938: Portable mode: false
+16:12:16.569: OBS 32.2.2 (64-bit, windows)
+16:12:16.569: ---------------------------------
+16:12:16.607: ---------------------------------
+16:12:16.607: audio settings reset:
+16:12:16.607: 	samples per sec: 48000
+16:12:16.607: 	speakers:        2
+16:12:16.607: 	max buffering:   960 milliseconds
+16:12:16.607: 	buffering type:  dynamically increasing
+16:12:16.631: ---------------------------------
+16:12:16.631: Initializing D3D11...
+16:12:16.631: Available Video Adapters: 
+16:12:16.641: 	Adapter 0: AMD Radeon (TM) Graphics
+16:12:16.641: 	  Dedicated VRAM: 519847936 (0.5 GiB)
+16:12:16.641: 	  Shared VRAM:    8268699648 (7.7 GiB)
+16:12:16.641: 	  PCI ID:         1002:15e7
+16:12:16.641: 	  HAGS Status:    Disabled (Default: No, Driver status: Unsupported)
+16:12:16.642: 	  Driver Version: 31.0.12046.27001
+16:12:16.643: 	  output 0:
+16:12:16.643: 	    name=
+16:12:16.643: 	    pos={0, 0}
+16:12:16.643: 	    size={2880, 1800}
+16:12:16.643: 	    attached=true
+16:12:16.643: 	    refresh=90
+16:12:16.643: 	    bits_per_color=10
+16:12:16.643: 	    space=RGB_FULL_G2084_NONE_P2020
+16:12:16.643: 	    primaries=[r=(0.679687, 0.320312), g=(0.237302, 0.722658), b=(0.139650, 0.049802), wp=(0.312500, 0.329098)]
+16:12:16.643: 	    relative_gamut_area=[709=1.503574, P3=1.108391, 2020=0.795197]
+16:12:16.643: 	    sdr_white_nits=80
+16:12:16.643: 	    nit_range=[min=0.002700, max=287.020691, max_full_frame=287.020691]
+16:12:16.643: 	    dpi=192 (200%)
+16:12:16.643: 	    id=\\?\DISPLAY#SDC4171#5&308f248b&0&UID256#{e6f07b5f-ee97-4a90-b076-33f57bf4eaa7}
+16:12:16.643: 	    alt_id=\\.\DISPLAY1
+16:12:16.645: Loading up D3D11 on adapter AMD Radeon (TM) Graphics (0)
+16:12:16.701: D3D11 loaded successfully, feature level used: b000
+16:12:16.701: DXGI increase maximum frame latency success
+16:12:16.702: D3D11 GPU priority setup failed (not admin?)
+16:12:17.718: ---------------------------------
+16:12:17.718: video settings reset:
+16:12:17.718: 	base resolution:   1920x1080
+16:12:17.718: 	output resolution: 1920x1080
+16:12:17.718: 	downscale filter:  Bicubic
+16:12:17.718: 	fps:               30/1
+16:12:17.718: 	format:            NV12
+16:12:17.718: 	YUV mode:          Rec. 709/Partial
+16:12:17.718: NV12 texture support enabled
+16:12:17.719: P010 texture support not available
+16:12:17.720: Audio monitoring device:
+16:12:17.720: 	name: Default
+16:12:17.720: 	id: default
+16:12:17.746: ---------------------------------
+16:12:17.786: No AJA devices found, skipping loading AJA UI plugin
+16:12:17.786: Failed to initialize module 'aja-output-ui.dll'
+16:12:17.823: No AJA devices found, skipping loading AJA plugin
+16:12:17.824: Failed to initialize module 'aja.dll'
+16:12:17.825: Skipping module '../../obs-plugins/64bit/chrome_elf.dll', not an OBS plugin
+16:12:17.851: [CoreAudio encoder]: CoreAudio AAC encoder not installed on the system or couldn't be loaded
+16:12:17.871: Failed to load 'en-US' text for module: 'decklink-captions.dll'
+16:12:17.895: Failed to load 'en-US' text for module: 'decklink-output-ui.dll'
+16:12:17.925: A DeckLink iterator could not be created.  The DeckLink drivers may not be installed
+16:12:17.926: Failed to initialize module 'decklink.dll'
+16:12:18.041: Skipping module '../../obs-plugins/64bit/libcef.dll', not an OBS plugin
+16:12:18.042: Skipping module '../../obs-plugins/64bit/libEGL.dll', not an OBS plugin
+16:12:18.044: Skipping module '../../obs-plugins/64bit/libGLESv2.dll', not an OBS plugin
+16:12:18.072: Failed to get C:\Program Files\NVIDIA Corporation\NVIDIA Audio Effects SDK\NVAudioEffects.dll version info size
+16:12:18.072: [NVIDIA Audio Effects:] NVIDIA denoiser disabled, redistributable not found or could not be loaded.
+16:12:18.072: Failed to get C:\Program Files\NVIDIA Corporation\NVIDIA Video Effects\NVVideoEffects.dll version info size
+16:12:18.072: [NVIDIA VIDEO FX]: FX disabled, redistributable not found or could not be loaded.
+16:12:18.195: [obs-browser]: Version 2.26.9
+16:12:18.195: [obs-browser]: CEF Version 127.0.6533.120 (runtime), 127.145.7+g2b7d20b+chromium-127.0.6533.120 (compiled)
+16:12:18.504: LoadLibrary failed for 'nvEncodeAPI64.dll': The specified module could not be found.
+16:12:18.504:  (126)
+16:12:18.504: NVENC not supported
+16:12:18.504: Failed to initialize module 'obs-nvenc.dll'
+16:12:18.815: [obs-websocket] [obs_module_load] you can haz websockets (Version: 5.7.4 | RPC Version: 1)
+16:12:18.815: [obs-websocket] [obs_module_load] Qt version (compile-time): 6.11.1 | Qt version (run-time): 6.11.1
+16:12:18.815: [obs-websocket] [obs_module_load] Linked ASIO Version: 103200
+16:12:18.834: [obs-websocket] [obs_module_load] Module loaded.
+16:12:18.951: [vlc-video]: Couldn't find VLC installation, VLC video source disabled
+16:12:19.329: ---------------------------------
+16:12:19.329:   Loaded Modules:
+16:12:19.329:     win-wasapi.dll
+16:12:19.329:     win-dshow.dll
+16:12:19.329:     win-capture.dll
+16:12:19.329:     vlc-video.dll
+16:12:19.329:     text-freetype2.dll
+16:12:19.329:     rtmp-services.dll
+16:12:19.329:     obs-x264.dll
+16:12:19.329:     obs-websocket.dll
+16:12:19.329:     obs-webrtc.dll
+16:12:19.329:     obs-vst.dll
+16:12:19.329:     obs-transitions.dll
+16:12:19.329:     obs-text.dll
+16:12:19.329:     obs-qsv11.dll
+16:12:19.329:     obs-outputs.dll
+16:12:19.329:     obs-filters.dll
+16:12:19.329:     obs-ffmpeg.dll
+16:12:19.329:     obs-browser.dll
+16:12:19.330:     nv-filters.dll
+16:12:19.330:     image-source.dll
+16:12:19.330:     frontend-tools.dll
+16:12:19.330:     decklink-output-ui.dll
+16:12:19.330:     decklink-captions.dll
+16:12:19.330:     coreaudio-encoder.dll
+16:12:19.330: ---------------------------------
+16:12:19.330: ---------------------------------
+16:12:19.330: Available Encoders:
+16:12:19.330:   Video Encoders:
+16:12:19.330: 	- ffmpeg_svt_av1 (SVT-AV1)
+16:12:19.330: 	- ffmpeg_aom_av1 (AOM AV1)
+16:12:19.330: 	- h264_texture_amf (AMD HW H.264 (AVC))
+16:12:19.330: 	- h265_texture_amf (AMD HW H.265 (HEVC))
+16:12:19.330: 	- obs_x264 (x264)
+16:12:19.330:   Audio Encoders:
+16:12:19.330: 	- ffmpeg_aac (FFmpeg AAC)
+16:12:19.330: 	- ffmpeg_opus (FFmpeg Opus)
+16:12:19.330: 	- ffmpeg_pcm_s16le (FFmpeg PCM (16-bit))
+16:12:19.330: 	- ffmpeg_pcm_s24le (FFmpeg PCM (24-bit))
+16:12:19.330: 	- ffmpeg_pcm_f32le (FFmpeg PCM (32-bit float))
+16:12:19.330: 	- ffmpeg_alac (FFmpeg ALAC (24-bit))
+16:12:19.330: 	- ffmpeg_flac (FFmpeg FLAC (16-bit))
+16:12:19.330: ==== Startup complete ===============================================
+16:12:19.553: All scene data cleared
+16:12:19.553: ------------------------------------------------
+16:12:19.590: [win-wasapi: 'Application Audio Capture (BETA)'] update settings:
+16:12:19.590: 	executable: chrome.exe
+16:12:19.590: 	title: 2026.08.24 HLSC6409 Autonomic Pharmacology - Google Chrome
+16:12:19.590: 	class: Chrome_WidgetWin_1
+16:12:19.590: 	priority: 0
+16:12:19.591: [window-capture: 'Window Capture'] update settings:
+16:12:19.591: 	executable: chrome.exe
+16:12:19.591: 	method selected: Automatic
+16:12:19.591: 	method chosen: WGC
+16:12:19.591: 	force SDR: false
+16:12:19.591: [WASAPISource::TryInitialize]:[[VIRTUAL_AUDIO_DEVICE_PROCESS_LOOPBACK]] Failed to find window
+16:12:19.591: WASAPI: Device '' failed to start (source: Application Audio Capture (BETA))
+16:12:19.593: [Media Source 'Media']: settings:
+16:12:19.593: 	input:                   C:/Users/dacz8/OneDrive/Desktop/Fall2026/HLSC6409/Lectures/2026-08-24 - Autonomic Pharmacology/2026-08-31 17-45-58.mkv
+16:12:19.593: 	input_format:            (null)
+16:12:19.593: 	speed:                   100
+16:12:19.593: 	is_looping:              no
+16:12:19.593: 	is_linear_alpha:         no
+16:12:19.593: 	is_hw_decoding:          no
+16:12:19.593: 	is_clear_on_media_end:   yes
+16:12:19.593: 	restart_on_activate:     yes
+16:12:19.593: 	close_when_inactive:     no
+16:12:19.593: 	full_decode:             no
+16:12:19.593: 	ffmpeg_options:          
+16:12:19.593: [win-wasapi: 'Window Capture 2 (Audio)'] update settings:
+16:12:19.593: 	executable: chrome.exe
+16:12:19.593: 	title: 2026.008.31 HLSC6409 Diuretics - Google Chrome
+16:12:19.593: 	class: Chrome_WidgetWin_1
+16:12:19.593: 	priority: 0
+16:12:19.594: [window-capture: 'Window Capture 2'] update settings:
+16:12:19.594: 	executable: chrome.exe
+16:12:19.594: 	method selected: Automatic
+16:12:19.594: 	method chosen: WGC
+16:12:19.594: 	force SDR: false
+16:12:19.594: [win-wasapi: 'Window Capture 3 (Audio)'] update settings:
+16:12:19.594: [WASAPISource::TryInitialize]:[[VIRTUAL_AUDIO_DEVICE_PROCESS_LOOPBACK]] Failed to find window
+16:12:19.594: 	executable: chrome.exe
+16:12:19.594: 	title: Pokémon TCG Pocket Battle #pokemon - YouTube - Google Chrome
+16:12:19.594: WASAPI: Device '' failed to start (source: Window Capture 2 (Audio))
+16:12:19.594: 	class: Chrome_WidgetWin_1
+16:12:19.594: 	priority: 0
+16:12:19.594: [window-capture: 'Window Capture 3'] update settings:
+16:12:19.594: 	executable: chrome.exe
+16:12:19.594: 	method selected: Automatic
+16:12:19.594: 	method chosen: WGC
+16:12:19.594: 	force SDR: false
+16:12:19.594: [WASAPISource::TryInitialize]:[[VIRTUAL_AUDIO_DEVICE_PROCESS_LOOPBACK]] Failed to find window
+16:12:19.594: WASAPI: Device '' failed to start (source: Window Capture 3 (Audio))
+16:12:19.598: Switched to scene 'Battle Logs - YouTube'
+16:12:19.598: ------------------------------------------------
+16:12:19.598: Loaded scenes:
+16:12:19.598: - scene 'Scene':
+16:12:19.598:     - source: 'Media' (ffmpeg_source)
+16:12:19.598: - scene 'HLSC6409 - 2026-08-24 Autonomic':
+16:12:19.598:     - source: 'Application Audio Capture (BETA)' (wasapi_process_output_capture)
+16:12:19.598:     - source: 'Window Capture' (window_capture)
+16:12:19.598: - scene 'HLSC6409 - 2026-08-17 Pharmacodynamics':
+16:12:19.598:     - source: 'Window Capture 2' (window_capture)
+16:12:19.598: - scene 'Battle Logs - YouTube':
+16:12:19.598:     - source: 'Window Capture 3' (window_capture)
+16:12:19.598: ------------------------------------------------
+16:12:19.603: MP: Failed to open media: 'C:/Users/dacz8/OneDrive/Desktop/Fall2026/HLSC6409/Lectures/2026-08-24 - Autonomic Pharmacology/2026-08-31 17-45-58.mkv'
+16:16:00.708: [win-wasapi: 'Window Capture 3 (Audio)'] update settings:
+16:16:00.708: 	executable: chrome.exe
+16:16:00.708: 	title: ONE SHOT ANYTHING ! TEAM ROCKET Revives XATU Deadliest Combo in Pokemon TCG Pocket - YouTube - Google Chrome
+16:16:00.708: 	class: Chrome_WidgetWin_1
+16:16:00.708: 	priority: 0
+16:16:00.740: [window-capture: 'Window Capture 3'] update settings:
+16:16:00.740: 	executable: chrome.exe
+16:16:00.740: 	method selected: Automatic
+16:16:00.740: 	method chosen: WGC
+16:16:00.740: 	force SDR: false
+16:16:01.922: WASAPI: Device '[VIRTUAL_AUDIO_DEVICE_PROCESS_LOOPBACK]' [48000 Hz] initialized (source: Window Capture 3 (Audio))
+16:16:01.925: Device '[VIRTUAL_AUDIO_DEVICE_PROCESS_LOOPBACK]' invalidated.  Retrying (source: Window Capture 3 (Audio))
+16:16:01.925: WASAPI: Device '[VIRTUAL_AUDIO_DEVICE_PROCESS_LOOPBACK]' [48000 Hz] initialized (source: Window Capture 3 (Audio))
+16:16:01.974: adding 42 milliseconds of audio buffering, total audio buffering is now 42 milliseconds (source: Window Capture 3)
+16:16:01.974: 
+16:16:08.441: [window-capture: 'Window Capture 3'] update settings:
+16:16:08.441: WASAPI: Device '[VIRTUAL_AUDIO_DEVICE_PROCESS_LOOPBACK]' Terminated
+16:16:08.441: 	executable: chrome.exe
+16:16:08.441: 	method selected: Automatic
+16:16:08.441: 	method chosen: WGC
+16:16:08.441: 	force SDR: false
+16:18:08.044: ---------------------------------
+16:18:08.044: video settings reset:
+16:18:08.044: 	base resolution:   1920x1080
+16:18:08.044: 	output resolution: 1920x1080
+16:18:08.044: 	downscale filter:  Bicubic
+16:18:08.044: 	fps:               60/1
+16:18:08.044: 	format:            NV12
+16:18:08.044: 	YUV mode:          Rec. 709/Partial
+16:18:08.044: NV12 texture support enabled
+16:18:08.044: P010 texture support not available
+16:18:08.080: Settings changed (outputs, video)
+16:18:08.080: ------------------------------------------------
+16:22:22.043: [texture-amf-h265: 'simple_video_recording'] Failed to set property 'HevcQvbrQualityLevel': AMF_INVALID_ARG
+16:22:22.043: [texture-amf-h265: 'simple_video_recording'] settings:
+16:22:22.043: 	rate_control: CQP
+16:22:22.043: 	bitrate:      6000
+16:22:22.043: 	cqp:          23
+16:22:22.043: 	keyint:       250
+16:22:22.043: 	preset:       speed
+16:22:22.043: 	profile:      main
+16:22:22.043: 	level:        4.1
+16:22:22.043: 	width:        1920
+16:22:22.043: 	height:       1080
+16:22:22.043: 	pre-analysis: false
+16:22:22.043: 	params:       (none)
+16:22:22.046: ---------------------------------
+16:22:22.047: [FFmpeg aac encoder: 'simple_aac_recording0'] bitrate: 192, channels: 2, channel_layout: stereo, track: 1
+16:22:22.047: 
+16:22:22.108: ==== Recording Start ===============================================
+16:22:22.108: [ffmpeg muxer: 'simple_file_output'] Writing file 'C:/Users/dacz8/OneDrive/Desktop/Battle Logs/2026-09-06 16-22-22.mkv'...
+16:23:25.541: [ffmpeg muxer: 'simple_file_output'] Output of file 'C:/Users/dacz8/OneDrive/Desktop/Battle Logs/2026-09-06 16-22-22.mkv' stopped
+16:23:25.541: Output 'simple_file_output': stopping
+16:23:25.541: Output 'simple_file_output': Total frames output: 3798
+16:23:25.541: Output 'simple_file_output': Total drawn frames: 3805 (3806 attempted)
+16:23:25.541: Output 'simple_file_output': Number of lagged frames due to rendering lag/stalls: 1 (0.0%)
+16:23:25.541: Video stopped, number of skipped frames due to encoding lag: 1/3805 (0.0%)
+16:23:25.542: ==== Recording Stop ================================================
+16:25:24.019: [texture-amf-h265: 'simple_video_recording'] Failed to set property 'HevcQvbrQualityLevel': AMF_INVALID_ARG
+16:25:24.019: [texture-amf-h265: 'simple_video_recording'] settings:
+16:25:24.019: 	rate_control: CQP
+16:25:24.019: 	bitrate:      6000
+16:25:24.019: 	cqp:          23
+16:25:24.019: 	keyint:       250
+16:25:24.019: 	preset:       speed
+16:25:24.019: 	profile:      main
+16:25:24.019: 	level:        4.1
+16:25:24.019: 	width:        1920
+16:25:24.019: 	height:       1080
+16:25:24.019: 	pre-analysis: false
+16:25:24.019: 	params:       (none)
+16:25:24.020: ---------------------------------
+16:25:24.020: [FFmpeg aac encoder: 'simple_aac_recording0'] bitrate: 192, channels: 2, channel_layout: stereo, track: 1
+16:25:24.020: 
+16:25:24.038: ==== Recording Start ===============================================
+16:25:24.038: [ffmpeg muxer: 'simple_file_output'] Writing file 'C:/Users/dacz8/OneDrive/Desktop/Battle Logs/2026-09-06 16-25-23.mkv'...
+16:47:33.266: [ffmpeg muxer: 'simple_file_output'] Output of file 'C:/Users/dacz8/OneDrive/Desktop/Battle Logs/2026-09-06 16-25-23.mkv' stopped
+16:47:33.266: Output 'simple_file_output': stopping
+16:47:33.266: Output 'simple_file_output': Total frames output: 79734
+16:47:33.266: Output 'simple_file_output': Total drawn frames: 79740 (79753 attempted)
+16:47:33.266: Output 'simple_file_output': Number of lagged frames due to rendering lag/stalls: 13 (0.0%)
+16:47:33.266: Video stopped, number of skipped frames due to encoding lag: 13/79753 (0.0%)
+16:47:33.267: ==== Recording Stop ================================================

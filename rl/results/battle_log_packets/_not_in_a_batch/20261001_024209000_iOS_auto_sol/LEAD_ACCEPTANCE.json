@@ -1,0 +1,23 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20261001_024209000_iOS.MP4",
+  "source_sha256": "145b0061eda9ea365e096da97065f9dc704555a6f396282ad76fa6b76f5cf272",
+  "scope": "Complete thirteen-turn 227.535-second Auto AI battle, setup through three random attacks and the terminal Mega knockout",
+  "first_pass": "gpt-6.1-sol/high /root/auto_024209",
+  "lead_checks": "Read the full narrative, all-turn coverage, source, summary and uncertainties. Independently inspected 15s opening Victini and Numel; 83s ordinary phase with Victini at 50 HP, Mega Camerupt at 210 HP with three Fire, reserve Victini at 70 HP, opposing Wynaut at 30 HP and Scyther/Doublade on Bench; 126s printed Volcanic Kaboom random-target text and 160 damage; 160s displayed 190 damage to Active Doublade with Training Area, Camerupt at 160 HP and four Fire; 197s displayed 160 to Benched Mega Scizor at 200 HP, Camerupt at 150 HP with five Fire, owner two points and Flame Patch in hand; 213s Bullet Slugger 160 with Scizor at 40 HP and three Metal; 226s named Defeat; and 227.4s fully displayed result statistics: thirteen turns, 2-3 and 510 damage. The final fraction-of-second frame resolves the initially unfinished stats. These bounded checks supplement the worker's complete visual review.",
+  "lead_evidence": ["targeted/t0015.00.jpg", "targeted/t0083.00.jpg", "dense/t0126.00.jpg", "dense/t0160.00.jpg", "targeted/t0197.00.jpg", "dense/t0213.00.jpg", "targeted/t0226.00.jpg", "terminal/t0227.40.jpg"],
+  "outcome": "owner_loss",
+  "final_points": {"owner": 2, "opponent": 3},
+  "owner_visible_core": "Victini / Numel / Mega Camerupt ex",
+  "opponent": "AI Mega Scizor ex & Gholdengo ex Deck (Deluxe Pack: Mega)",
+  "last_turn": 13,
+  "useful_finding": "The third random Volcanic Kaboom hits Benched Mega Scizor for 160, leaving it at 40 HP. Its next-turn promotion enables Bullet Slugger 160, knocking out Camerupt at 150 HP for three points. Camerupt's fifth Fire pays Wynaut's increased attack cost. The late Flame Patch stays in hand; Rainbow Cave includes an Auto pause. Observed attack damage 160 + 190 + 160 matches 510 including overkill.",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "limitations": "Hidden cards and unreadable printing marks remain unknown. The brief gray Auto detail-overlay state does not establish a tactical manual action. Random alternate targets are conditional outcomes, not selectable choices or a guaranteed policy win.",
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; owner-declared Auto AI game",
+  "astra_consulted": false,
+  "astra_reason": "Native card text, settled states and the final result frame resolve consequential questions without a separate consultation"
+}

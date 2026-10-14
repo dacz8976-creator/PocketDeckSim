@@ -1,0 +1,34 @@
+{
+  "video_basename": "20261002_161001000_iOS.MP4",
+  "material_evidence_missing_for_filmed_rule_test": false,
+  "rule_test_conclusive_in_combined_review": true,
+  "uncertainties": [
+    {
+      "topic": "Recording interruption",
+      "status": "unresolved",
+      "effect": "Gap duration and unseen actions cannot be established. Public-board continuity does not remove this limit."
+    },
+    {
+      "topic": "Hand at split",
+      "status": "not reconstructed",
+      "effect": "A visible hand difference is not labeled as an unseen draw or other action."
+    },
+    {
+      "topic": "Defense tails or other cases",
+      "status": "unfilmed",
+      "effect": "No generalization to tails, Linear Attack, Absol, Hypno or damage from an Ability."
+    },
+    {
+      "topic": "Current simulator behavior",
+      "status": "owner claim not independently verified",
+      "effect": "Comparison is to supplied prediction only; no code audit or repair confirmation."
+    },
+    {
+      "topic": "Meowth light-blue hexagon",
+      "status": "Special Condition identity not established",
+      "effect": "Do not call it Sleep. Carefree Steps identity relies on named text."
+    }
+  ],
+  "source_specific_limit": "This source ends before the conclusive test and terminal result; counterpart supplies both.",
+  "recommended_status": "rule_test_review_complete"
+}

@@ -1,0 +1,69 @@
+{
+  "reviewer": "sol_auto_evening_022632000",
+  "status": "full_battle_review_complete",
+  "unreviewed_turns": [],
+  "unreviewed_intervals": [],
+  "outcome_uncertain": false,
+  "items": [
+    {
+      "id": "hidden_cards",
+      "times_seconds": [
+        28,
+        108,
+        110,
+        177,
+        178,
+        181
+      ],
+      "uncertainty": "Opponent draws and search/recovery animations include face-down cards. Public plays and printed ability constrain their types but do not establish every hidden identity.",
+      "handling": "No invented complete deck or hidden card alternatives. Delcatty's recovery is classified as Supporter recovery, with Professor's Research the publicly known eligible prior Supporter."
+    },
+    {
+      "id": "auto_touch_timing",
+      "times_seconds": [
+        130,
+        131,
+        134,
+        135,
+        136
+      ],
+      "uncertainty": "Auto is checked at 130, unchecked at 131 through 135, and checked at 136. Finger movements and exact toggle instants are not recorded in retained frames.",
+      "handling": "Manual interval includes the Bounded Field play. Evolution is shown under Auto at 130. Do not attribute the full match solely to Auto."
+    },
+    {
+      "id": "printing_ids",
+      "times_seconds": [
+        18,
+        43.5,
+        69,
+        89,
+        161,
+        191,
+        224.3
+      ],
+      "uncertainty": "HP, attacks and relevant printed effects are read from native footage; exact catalog numbers and artwork IDs are not resolved.",
+      "handling": "Use visible effect/HP profiles. No unsupported full deck reconstruction or simulator fixture identity."
+    },
+    {
+      "id": "owner_intent",
+      "times_seconds": [
+        134,
+        135
+      ],
+      "uncertainty": "The owner's reason for replacing Peculiar Plaza with Bounded Field during the manual interval is unknown.",
+      "handling": "Describe observed damage and retreat consequences without assigning motive or calling it an Auto policy defect."
+    },
+    {
+      "id": "date_basis",
+      "times_seconds": [
+        0,
+        224.3
+      ],
+      "uncertainty": "SOURCE.json records September 30 owner upload/request and a 20261001 source filename; filename clock basis is unverified.",
+      "handling": "Preserve SOURCE.json qualification. No ladder write or match-date inference."
+    }
+  ],
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "worker_status_at_submission": "finished_first_pass_awaiting_independent_lead_acceptance"
+}

@@ -1,0 +1,42 @@
+{
+  "source_video": "20261002_023418000_iOS.MP4",
+  "source_sha256": "e2cd84acd3e1ef962ad0f2bcdf3f40345e4facb41fdbd142054bf3d4a0a0e1f5",
+  "source_bytes": 688881204,
+  "accepted": true,
+  "coverage_checked": true,
+  "completion_status": "full_battle_review_complete",
+  "scope": "Entire 371.495-second battle: matchmaking, setup, all eleven turns, sacrifice point, concession and Victory",
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "ranked_ladder_eligible": false,
+  "accepted_at_utc": "2026-10-02T03:44:41.871454+00:00",
+  "reviewer": "root independent lead",
+  "first_pass_reviewer": "sol_competitive_20261002_023418000",
+  "lead_evidence": [
+    "LEAD_CHECK.jpg",
+    "overview/sheet_01.jpg",
+    "overview/sheet_09.jpg",
+    "overview/sheet_11.jpg",
+    "overview/sheet_14.jpg",
+    "native/t0210.00.jpg",
+    "native/t0307.00.jpg",
+    "native/t0343.00.jpg",
+    "native/t0354.00.jpg",
+    "native/t0356.00.jpg",
+    "native/t0359.00.jpg",
+    "native/t0362.00.jpg"
+  ],
+  "independent_checks": [
+    "Read all four first-pass reports and reconciled complete coverage, identity, deck, turn order, HP/Energy/point transitions and terminal evidence.",
+    "Verified named opponent, first-player setup, visible core, Sabrina sacrifice and actual opponent one-point progression.",
+    "Checked ordinary third-Water development and repeated Ice Pop healing; first Whale Pump100 and full healing against Mega Lucario supported by native and overview.",
+    "Verified turn11 minus30 banner, five Water, Cyrus moving only opponent, retained effect icon and explicit concession without attack; terminal Victory independently observed.",
+    "Astra confirms prospective Whale Pump80 would leave Mega110 at30HP. Concession motive remains unknown; no lethal or manufactured three-point win is claimed."
+  ],
+  "outcome_description": "Win by concession, actual points0-1, first, against KO歐~YOU (wave separator transcription)",
+  "astra_addendum": "../BATCH_2026-10-02_COMPETITIVE/ASTRA_TACTICAL_CHECKS.md",
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "limitations": [
+    "Hidden full lists, exact selected queue, opponent automation and concession motive remain unknown. Owner competitive intent and local date basis are qualified. Conditional alternative decisions do not establish a different game outcome."
+  ]
+}

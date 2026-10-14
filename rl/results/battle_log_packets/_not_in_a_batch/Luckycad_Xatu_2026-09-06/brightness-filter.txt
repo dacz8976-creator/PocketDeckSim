@@ -1,0 +1,1 @@
+scale=in_color_matrix=bt709,format=rgb24,lutrgb=r='val*pow(3.75,1/2.4)':g='val*pow(3.75,1/2.4)':b='val*pow(3.75,1/2.4)',scale=out_color_matrix=bt709,format=yuv420p

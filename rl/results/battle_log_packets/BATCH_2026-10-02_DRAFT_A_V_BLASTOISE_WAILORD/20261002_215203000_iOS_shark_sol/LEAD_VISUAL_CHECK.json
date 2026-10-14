@@ -1,0 +1,23 @@
+{
+  "checked_utc": "2026-10-03T01:10:50.191920+00:00",
+  "source_video": "20261002_215203000_iOS.MP4",
+  "source_sha256": "d0e031e9a27c358ad0e1590621014f2758bf80138b83c0776f9961ca34c88b7c",
+  "outcome": {
+    "result": "win",
+    "owner_points": 3,
+    "opponent_points": 0,
+    "turns": 12,
+    "damage_done": 380,
+    "went": "second"
+  },
+  "evidence": [
+    "turn_evidence/t0014.00.jpg",
+    "turn_evidence/t0247.00.jpg",
+    "turn_evidence/t0193.80.jpg",
+    "turn_evidence/t0207.50.jpg",
+    "independent_sol/turn_evidence/t0035.50.jpg",
+    "independent_sol/turn_evidence/t0157.50.jpg"
+  ],
+  "scope": "Entire source setup, all12game turns and terminal result; full draw-timed Pause protocol plus all4 latest guide additions; local computer comparison only.",
+  "observations": "Root directly inspected five-card pre-Active opening Misty,IcePop,Carvanha,Lapras,Ninetales, ownersecond/AutoOFF; terminal Victory3-0/12turns380damage. T10 freshpreplay193.8 has Research stillheld, ownerNinetalesActive150W2,CapeSharpedoleft220W1,Laprasright110W1; beforeattack207.5 shows rightLaprasW2,centerVulpixW0. Distinct independent fullsource and guide checker pending. Root directly inspected new source-bound center Research35.5 and PokeBall157.5 face frames. Correct Research completed handcount5 reconciles two concealed draws then Frigibax4; identities remain unknown."
+}

@@ -1,0 +1,26 @@
+{
+  "operation": "OneDrive quit and reopen",
+  "utc": "2026-10-12T01:55:52.7479192Z",
+  "before": [
+    {
+      "Id": 23196,
+      "Path": "C:\\Program Files\\Microsoft OneDrive\\OneDrive.exe",
+      "StartTime": "2026-10-10T14:43:08.7330341-05:00"
+    },
+    {
+      "Id": 31960,
+      "Path": "C:\\Program Files\\Microsoft OneDrive\\OneDrive.exe",
+      "StartTime": "2026-10-11T11:24:39.2747282-05:00"
+    }
+  ],
+  "after_shutdown": [
+    {
+      "Id": 15536,
+      "Path": "C:\\Program Files\\Microsoft OneDrive\\OneDrive.exe",
+      "StartTime": "2026-10-11T20:55:40.6634415-05:00"
+    }
+  ],
+  "restart_requested": true,
+  "files_deleted": 0,
+  "account_settings_changed": false
+}

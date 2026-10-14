@@ -1,0 +1,45 @@
+{
+  "source_video": "20261002_022135000_iOS.MP4",
+  "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+  "source_bytes": 1322829794,
+  "accepted": true,
+  "coverage_checked": true,
+  "completion_status": "full_battle_review_complete",
+  "scope": "Entire 710.136848-second battle: search, setup, all 30 turns, three knockouts, loading and explicit Defeat statistics",
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "ranked_ladder_eligible": false,
+  "accepted_at_utc": "2026-10-02T04:11:06.678142+00:00",
+  "reviewer": "root independent lead",
+  "first_pass_reviewer": "sol_competitive_20261002_022135000",
+  "lead_evidence": [
+    "LEAD_CHECK.jpg",
+    "LEAD_CHECK_NOTES.md",
+    "overview/sheet_08.jpg",
+    "overview/sheet_19.jpg",
+    "native/t0082.00.jpg",
+    "native/t0578.00.jpg",
+    "native/t0694.00.jpg",
+    "native/t0696.00.jpg",
+    "native/t0702.00.jpg",
+    "native/t0710.00.jpg"
+  ],
+  "independent_checks": [
+    "Read allfour fullfirst-pass reports; reconciled everyturn1-30 and footage0-710.136848, owner/opponent identities, setup, deck/handlimits, HP/Energy/points and recording boundary.",
+    "Verified namedopponent andfirst-player banner, Chingling knockout/ownerpoint, bothWailmer losses and2opponentpoints, second-Wailmer development inordinaryturns10/11.",
+    "Verified turn17Water/retreat/healing rescue and lateWater-only Indeedee; directlyreadtwoPsychic attackcost and120prospective damage not anexecutedattack.",
+    "Verified ordinarylate turn27singleWatchOver90to110 thenShore130, preservingworker correction inrawreports.",
+    "Verified terminalMegaHarmony40+30per3Bench=130, IndeedeeexKO,+2points then3circle cap, Defeat/wentfirst/30turns/1-3/120damage.",
+    "No consequential unresolved ruleclaim requiresanotherAstra pass; hiddenversion/coinfaces/queue/opponentrationale remainhonestlyunknown."
+  ],
+  "outcome_description": "Loss, displayed 1-3, went first, against だんくしゅー. Terminal Indeedee ex knockout awards two points; no concession.",
+  "limitations": [
+    "Exact queue and automation unknown",
+    "Full lists and hidden hands unverified",
+    "Second hand whale exact version partly occluded",
+    "Exact Ice Pop coin faces unverified",
+    "Opponent nonattack rationale unknown",
+    "Match-date filename timezone inferred from owner/upload context"
+  ],
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": []
+}

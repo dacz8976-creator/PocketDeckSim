@@ -1,0 +1,21 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-09-26T22:39:00Z",
+  "video": "20260926_213750000_iOS.MP4",
+  "first_pass_reviewer": "/root/sep26_213750_retry (Sol)",
+  "lead_reviewer": "/root",
+  "source_sha256_verified": "7e8cc6827c198327ecf60628c46a2a7fbb03acf8eaaaac6c3e16b0e272346530",
+  "scope": "One complete battle from matchup and setup through all 11 turns, 2-3 Defeat, and post-battle summary",
+  "lead_source_checks": [
+    "Full-file contact sheets inspected before scratch cleanup: opening, ordinary middle board, first point, player two-point award, later point award, final attack, and terminal summary",
+    "evidence_001_opening.jpg: opening matchup and named opponent",
+    "evidence_002_player_two_points.jpg: player +2 and 2-1 lead",
+    "evidence_003_decisive_attack.jpg: second Crimson Dive with 2-2 score",
+    "evidence_004_result.jpg: Defeat, 11 turns, player 2 points, opponent 3 points"
+  ],
+  "correction_before_acceptance": "Initial selected evidence stills for opening, decisive attack, and result were mislabeled; Sol reviewer replaced or relabeled them, and lead visually rechecked the final files.",
+  "audio": "Decoded AAC stream is digitally silent; no speech to transcribe.",
+  "unreviewed_gameplay_intervals": false,
+  "lead_check_scope": "Targeted source and selected-frame checks plus complete coverage and source identity reconciliation; not a second full visual pass",
+  "disposition": "full_battle_review_complete"
+}

@@ -1,0 +1,126 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261005_003547000_iOS_game1",
+  "review_date": "2026-10-06T17:59:23.996656+00:00",
+  "sources": [
+    {
+      "video_basename": "20261005_003547000_iOS.MP4",
+      "sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "classification": "human_event_battle",
+  "mode": "Deluxe Pack: Mega Emblem Event",
+  "auto_control_visible": false,
+  "match_date": "2026-10-04",
+  "match_date_basis": "RECORDING_METADATA.json embedded UTC2026-10-05T00:35:47Z converts to America/Chicago October4 19:35:47",
+  "deck_name": "New deck 6 (Wailord / Mega Sharpedo ex / Suicune ex)",
+  "opening": {
+    "source_video": "20261005_003547000_iOS.MP4",
+    "timestamp_seconds": 32,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Professor's Research",
+        "variant": null,
+        "basis": "visible named hand slots, not deck inference",
+        "evidence_ids": [
+          "f0032.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Wailmer",
+        "variant": null,
+        "basis": "visible named hand slots, not deck inference",
+        "evidence_ids": [
+          "f0032.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Copycat",
+        "variant": null,
+        "basis": "visible named hand slots, not deck inference",
+        "evidence_ids": [
+          "f0032.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Poké Ball",
+        "variant": null,
+        "basis": "visible named hand slots, not deck inference",
+        "evidence_ids": [
+          "f0032.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Mega Sharpedo ex",
+        "variant": null,
+        "basis": "visible named hand slots, not deck inference",
+        "evidence_ids": [
+          "f0032.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Wailmer",
+      "opening_position": 2,
+      "source_video": "20261005_003547000_iOS.MP4",
+      "timestamp_seconds": 36,
+      "evidence_ids": [
+        "f0036.00"
+      ]
+    },
+    "redraw_or_replacement": null,
+    "redraw_or_replacement_limit": "No setup redraw shown.",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "f0032.00",
+      "f0036.00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_source_review_submitted_for_independent_acceptance",
+  "outcome": {
+    "owner": "loss",
+    "opponent": "Garfield.tv",
+    "owner_points": 0,
+    "opponent_points": 3,
+    "turns_played": 14,
+    "damage_done": 240,
+    "evidence_ids": [
+      "f0557.00"
+    ]
+  },
+  "limits": [
+    "Neither player opens a full discard pile. Only changing top-card pile previews and visible attack discards are filmed; periodic full-pile snapshots are unavailable.",
+    "Opponent normal draws and both Poké Ball finds are concealed. No hidden identities inferred.",
+    "Owner first plays on turns5 and7 occur during or before scheduled+1 candidate; dense settled pre-play frames227.5 and337.5 preserve the starting hand.",
+    "Turns11 and13 have deck-empty normal-draw failures, so draw-animation end is null and diagnostic candidates use the failure message anchor instead.",
+    "The exact filmed QR deck is absent from all nine current Pause Games log lists. DECK_USED retains the conflict and filmed20-slot semantic list separately.",
+    "All source-local timestamps are requested seeks. Exact decoded presentation timestamps were not measured.",
+    "No visible supporter-warning decline or zero-effect voluntary card play occurs. Card inspection zooms are not counted as plays."
+  ],
+  "lead_checked": false
+}

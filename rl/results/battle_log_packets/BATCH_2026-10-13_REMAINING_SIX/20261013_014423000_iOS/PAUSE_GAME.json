@@ -1,0 +1,111 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261013_014423000_iOS",
+  "review_date": "2026-10-13",
+  "sources": [
+    {
+      "video_basename": "20261013_014423000_iOS.MP4",
+      "sha256": "80de2ed90553b2f7182a7122a3d5ae4db5477a84bc98aa9deada441c409b597a",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+  "opening": {
+    "source_video": "20261013_014423000_iOS.MP4",
+    "timestamp_seconds": 30,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Poké Ball",
+        "basis": "count and left-to-right identities in native hand plus continuous tracked public changes",
+        "evidence_ids": [
+          "N0030.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Professor’s Research",
+        "basis": "count and left-to-right identities in native hand plus continuous tracked public changes",
+        "evidence_ids": [
+          "N0030.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Alolan Grimer",
+        "basis": "count and left-to-right identities in native hand plus continuous tracked public changes",
+        "evidence_ids": [
+          "N0030.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Copycat",
+        "basis": "count and left-to-right identities in native hand plus continuous tracked public changes",
+        "evidence_ids": [
+          "N0030.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Glimmora",
+        "basis": "count and left-to-right identities in native hand plus continuous tracked public changes",
+        "evidence_ids": [
+          "N0030.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Alolan Grimer",
+      "opening_position": 3,
+      "source_video": "20261013_014423000_iOS.MP4",
+      "timestamp_seconds": 32,
+      "evidence_ids": [
+        "N0030.00",
+        "N0032.00"
+      ]
+    },
+    "redraw_or_replacement": "none shown",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "N0030.00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_battle_review_complete",
+  "outcome": {
+    "result": "loss",
+    "opponent": "RedGarados",
+    "owner_points": 0,
+    "opponent_points": 3,
+    "turn_count": 10
+  },
+  "limits": [
+    "Neither discard pile is opened anywhere in the recording. Visible top discard cards and public transaction history are supplemental only.",
+    "Opponent hand identities and deck contents remain hidden except public cards.",
+    "Filmed QR establishes exact semantic 20-card list and Darkness Energy, not artwork/rarity. Historical matching log snapshot is dated 2026-10-13T04:53:35.861Z; no fresh live access in this task.",
+    "Frame filenames give requested source-local seconds. Exact decoded frame PTS is unmeasured; do not treat this as frame-exact timing.",
+    "Normal-draw end timing is estimated to the inspected subsecond/one-second window; scheduled +1/+3/+6 views can include a completed or in-progress play.",
+    "Action timestamps identify the nearby retained action/reveal/completed-transition frame, not exact touch onset. Timing windows are retained where the transition crosses frames."
+  ],
+  "lead_checked": true,
+  "lead_acceptance": "LEAD_ACCEPTANCE.json"
+}

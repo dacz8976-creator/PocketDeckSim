@@ -1,0 +1,60 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260907_232617000",
+  "sources": [
+    {
+      "video_basename": "20260907_232617000_iOS.MP4",
+      "sha256": "0114215B1DF4E6D6DD2B21C47616B9F9486788F815BC48B978DBA06D68490166",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "deck_name_in_log": "Eevee / Jolteon ex",
+  "source_url": "https://claude.ai/artifact/GHSfGSCzNiWNj8SFPXV3R1",
+  "captured_at": "2026-10-02 (batch live capture)",
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": [
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\LADDER_LOG_CAPTURE.txt",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\LADDER_HISTORY_PRE_2026-09-15.md"
+  ],
+  "game_version_binding_basis": "Accepted source card-version reads retained. Historical list not supplied in Ladder Log or pre-season table. Current deck cannot substitute.",
+  "conflicts_with_filmed_cards": null,
+  "exact_list_status": "unavailable_historical_exact_list",
+  "limits": [
+    "20 exact slots unavailable; no full deck inferred",
+    "Visible lower bounds do not establish every hidden deck card or list version",
+    "Lightning observed in owner Energy Zone; full configured Energy set unavailable from log"
+  ],
+  "visible_core": [
+    {
+      "name": "Eevee",
+      "variant": "50 HP Boosted Evolution/Stampede",
+      "visible_lower_bound": 2
+    },
+    {
+      "name": "Jolteon ex",
+      "variant": "140 HP Electromagnetic Wall/Mach Bolt; normal and shiny cosmetic arts visible",
+      "visible_lower_bound": 2
+    },
+    {
+      "name": "Team Rocket's Rattata",
+      "variant": "40HP Ambush",
+      "visible_lower_bound": 2
+    },
+    {
+      "name": "Team Rocket's Raticate ex",
+      "variant": "120HP Thieving Incisors/Boost Dash; normal and full-art cosmetic variants visible",
+      "visible_lower_bound": 2
+    },
+    {
+      "name": "Oricorio",
+      "variant": "70HP Safeguard/Zzzap",
+      "visible_lower_bound": 1
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema": "bounded_independent_sol_check_v1",
+  "reviewer": "/root/independent_grass_psychic",
+  "model": "gpt-6.1-sol",
+  "checked_utc": "2026-10-06T18:38:41.396725+00:00",
+  "source_video": "20261004_214518000_iOS.MP4",
+  "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+  "source_identity_basis": "Compared frozen source and all packet bindings; no original media reread, rehash or decode.",
+  "review_scope": "Bounded setup/terminal native evidence check, not second whole visual pass.",
+  "status": "accepted_with_recording_limits",
+  "lead_acceptance": false,
+  "zero_turn_terminal_verified": true,
+  "checked_turn_rows": 0,
+  "checks": [
+    "Opening five slots23: Caterpie, Quick-Grow Extract, Butterfree, Caterpie, Lucky Ice Pop. Original slot4 Caterpie selected24 and Active25; original slot1 Caterpie left Bench27/30.",
+    "Waiting44 shows owner Active and left Bench Caterpie40HP with no attached Energy, remaining three-card hand, opponent five card backs and no placed Pokemon visible. Other Bench slots visibly empty.",
+    "Board restoration44.5 then five opening cards again45/46; network instability45/45.5. Opponent one face-down Active46 remains unidentified; opponent fan drops to4.",
+    "Both Energy Zones have small Grass previews and no generated current Energy. No actual draw, numbered turn or ordinary move exists; turn ledger is empty with explicit0-turn basis.",
+    "Victory49 and vs. ゆうぜん result55 independently read: Turns played0, damage0, points0-0, went first, Card of the Game None. Accelgor Victory artwork does not establish a played card.",
+    "Visible event lobby0 and matched human opponent profile9 support human event classification; no Auto control shown in retained evidence.",
+    "Exact current20-card deck remains unknown. Earlier QR candidate is explicitly unbound to this source because of recording gap, not silently substituted.",
+    "Terminal cause unknown is appropriate: visible network message does not establish deliberate concession or exact server cause.",
+    "All23 indexed full native1170x2532, bottom1170x507 and top1170x620 image headers match source/crop bounds; actual opening and waiting crops inspected. Setup frames not represented as draw-timed owner turn hands.",
+    "No opened discards, hidden opponent identities and absent setup point UI are represented distinctly from known empty Bench slots and zero terminal points."
+  ],
+  "required_repairs": [],
+  "astra_escalation_required": false,
+  "recording_limits": [
+    "Exact game deck version unknown; earlier exact QR only candidate",
+    "Termination cause unknown",
+    "Hidden opponent Active identity",
+    "No opened discard piles",
+    "Requested source seek times, decoded frame PTS not measured"
+  ],
+  "asset_validation": {
+    "indexed_frames": 23,
+    "unexpected_dimensions": [],
+    "all_indexed_native_and_crop_headers_checked": true
+  },
+  "checked_input_sha256": {
+    "SOURCE.json": "cc4442cb4f258d5738806563bcf6005d2827c8067d3d0676aa7cbbd0e9071fe3",
+    "ASSIGNMENT.json": "f1fd4523267f0cccd24826ab3a7ee55735cdba30596ace01cc1f861b2668bafa",
+    "SUMMARY.json": "97a899446a5bc824a572aa786192b23f974a4e555f8bddc42cae3e7ec1f21766",
+    "COVERAGE.md": "519a884e164360b65b29e8dffca893cd648e75282c8cc9171793fde2141ae0e9",
+    "REVIEW.md": "83c73e8caf15a9fa85edd18af87f166426d4e3de416215cb1aa332bac10f7b35",
+    "PAUSE_GAME.json": "3146d1bb9839344d0f4e6fa4f40f0ce0e10365a3c2a84fb6b3ad1e9e36b67d40",
+    "DECK_USED.json": "11c3a77e18be3d047d2b145b0984039be434bc2aca5ead8d7a3d0678fc4db93d",
+    "DECK_CANDIDATE_EARLIER_QR.json": "691044f0633d486e7b4f26f9ffff5b5dc947ed1c8e62d35663e8ed628551e069",
+    "TURN_LEDGER.json": "43d19c4021ddbb5691c24bcb517d7bed958178735fb96413b8fadc6a7aa27c02",
+    "TURN_EVIDENCE.json": "bb8f11f8ec2e803b18c9064edec4f8fad1842dae526f9a3c4ab754f56974e27b",
+    "UNCERTAINTIES.json": "78715f8f9532916adacbc9ad89fb94501fb465f668af93c05e728809bf4540a1",
+    "RECORDING_METADATA.json": "f9fa95ec3616352e9e99da6adabba4f6830acb78f5b82939fe90f08144fc8d96",
+    "../LIVE_DECK_SNAPSHOT.json": "f886698321bbdf67c06a17fe4d54a4ef2e1d464f02d972690383c64826432a28",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900"
+  },
+  "viewed_evidence": "VIEWED_EVIDENCE.json",
+  "writes_performed": [
+    "independent_sol/CHECK_RESULT.json",
+    "independent_sol/VIEWED_EVIDENCE.json"
+  ]
+}

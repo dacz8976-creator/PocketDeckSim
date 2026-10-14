@@ -1,0 +1,683 @@
+{
+  "filename": "20260908_010207000_iOS.MP4",
+  "source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20260908_010207000_iOS.MP4",
+  "sha256": "F4956D25FDC445C48FEC9D6705DE40A4721E37367BECE727AA0D7E50E09CCC1F",
+  "bytes": 448053217,
+  "duration_seconds": 240.595,
+  "review_status": "full_battle_review_complete_and_lead_accepted",
+  "reviewer_attribution": "Gemini v7 two-pass primary, Sol selective reviewer, Codex lead correction",
+  "recording_type": "screen_recording",
+  "relationships": [
+    {
+      "path": "prior_evidence/INTAKE.md",
+      "scope": "Prior sparse intake of the recording; source identity and coarse matchup classification only"
+    },
+    {
+      "path": "prior_evidence/SOURCES.json",
+      "scope": "Prior media metadata and stable source hash"
+    }
+  ],
+  "index_update_performed": true,
+  "media_move_performed": true,
+  "battle_identity": {
+    "version": 1,
+    "opponent_label": {
+      "state": "observed",
+      "value": "Opponent",
+      "timestamp_seconds": 3.8,
+      "observation": "VS screen shows opponent label 'Opponent' with 'AI' badge above it."
+    },
+    "opening_player": {
+      "state": "observed",
+      "value": "Team Rocket's Rattata",
+      "timestamp_seconds": 10.4,
+      "observation": "Player puts Team Rocket's Rattata (40 HP) into Active Spot."
+    },
+    "opening_opponent": {
+      "state": "observed",
+      "value": "Popplio",
+      "timestamp_seconds": 13.4,
+      "observation": "Opponent reveals Popplio (60 HP) in Active Spot."
+    },
+    "outcome": {
+      "state": "observed",
+      "value": "opponent_win",
+      "timestamp_seconds": 240.4,
+      "observation": "Opponent earns 3 points reaching 3-1; match ends with +2 points display after KOing Team Rocket's Raticate ex."
+    },
+    "result_text": {
+      "state": "not_shown",
+      "value": null,
+      "timestamp_seconds": 240.4,
+      "observation": "Video cuts off on '+2 points!' animation over Opponent score orb 3 before any Victory/Defeat banner appears."
+    }
+  },
+  "evidence_audit": {
+    "version": 1,
+    "opponent_label": "Opponent",
+    "match_mode": {
+      "value": "solo",
+      "evidence": [
+        {
+          "timestamp": "00:03.800",
+          "observation": "VS splash shows 'AI' pill icon above 'Opponent'"
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "opponent_ai": {
+      "value": "yes",
+      "evidence": [
+        {
+          "timestamp": "00:03.800",
+          "observation": "'AI' icon displayed directly over opponent label"
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "auto": {
+      "value": "on",
+      "evidence": [
+        {
+          "timestamp": "00:08.400",
+          "observation": "Green 'Auto' checkmark toggle visible on upper right throughout match"
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "terminal": {
+      "outcome": "opponent_win",
+      "outcome_evidence": [
+        {
+          "timestamp": "04:00.400",
+          "observation": "Opponent reaches 3 points after Knockout of Team Rocket's Raticate ex"
+        }
+      ],
+      "result_text": null,
+      "result_text_evidence": [
+        {
+          "timestamp": "04:00.400",
+          "observation": "Recording ends during point award banner; no final Victory/Defeat screen shown"
+        }
+      ],
+      "last_frame": {
+        "timestamp": "04:00.400",
+        "observation": "Opponent score orb 3 illuminated, '+2 points!' popup visible"
+      },
+      "uncertainty_id": null
+    },
+    "pokemon": [
+      {
+        "id": "player-1",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:10.400",
+          "observation": "Team Rocket's Rattata placed in Active Spot with 0 energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "01:45.600",
+          "observation": "Knocked out and discarded"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opponent-1",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:13.400",
+          "observation": "Popplio revealed in Active Spot with 0 energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "01:25.800",
+          "observation": "Knocked out and discarded"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opponent-2",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:14.000",
+          "observation": "Pyukumuku placed on opponent Bench (right)"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "03:58.400",
+          "observation": "Pyukumuku remains on Bench with 60 HP, 0 energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opponent-3",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:19.400",
+          "observation": "Popplio placed on opponent Bench (left)"
+        },
+        "final": {
+          "Water": 3
+        },
+        "final_evidence": {
+          "timestamp": "03:58.400",
+          "observation": "Evolved into Primarina ex in Active Spot with 3 Water energy attached, 60 HP remaining"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opponent-4",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "01:10.600",
+          "observation": "Second Pyukumuku placed on opponent Bench (left)"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "03:58.400",
+          "observation": "Pyukumuku on Bench with 60 HP, 0 energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-2",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:44.800",
+          "observation": "Team Rocket's Rattata placed on Bench (center)"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "02:48.400",
+          "observation": "Returned to hand via Ilima"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-3",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:43.600",
+          "observation": "Alolan Vulpix placed on Bench (right)"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "03:09.600",
+          "observation": "Knocked out in Active Spot and discarded"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-4",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "02:44.400",
+          "observation": "Second Alolan Vulpix placed on Bench (right)"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "03:58.400",
+          "observation": "Evolved into Alolan Ninetales ex on Bench, 150 HP, 0 energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-5",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "02:51.800",
+          "observation": "Team Rocket's Rattata replayed from hand onto Bench (left)"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "03:58.400",
+          "observation": "Evolved into Team Rocket's Raticate ex in Active Spot, knocked out"
+        },
+        "uncertainty_id": null
+      }
+    ],
+    "energy_events": [
+      {
+        "turn": 2,
+        "pokemon_id": "player-1",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Water": 1
+        },
+        "before_evidence": {
+          "timestamp": "00:28.000",
+          "observation": "Player Active Rattata has 0 energy"
+        },
+        "action_evidence": {
+          "timestamp": "00:51.600",
+          "observation": "Water energy dragged from Energy Zone to Active Rattata"
+        },
+        "after_evidence": {
+          "timestamp": "00:52.200",
+          "observation": "Active Rattata now shows 1 Water energy icon"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 3,
+        "pokemon_id": "opponent-3",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Water": 1
+        },
+        "before_evidence": {
+          "timestamp": "01:00.600",
+          "observation": "Benched Popplio has 0 energy"
+        },
+        "action_evidence": {
+          "timestamp": "01:01.800",
+          "observation": "Water energy orb flies to Benched Popplio"
+        },
+        "after_evidence": {
+          "timestamp": "01:04.400",
+          "observation": "Benched Popplio (evolved to Brionne) has 1 Water energy"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 4,
+        "pokemon_id": "player-1",
+        "kind": "manual",
+        "before": {
+          "Water": 1
+        },
+        "after": {
+          "Water": 2
+        },
+        "before_evidence": {
+          "timestamp": "01:13.000",
+          "observation": "Player Active Rattata has 1 Water energy"
+        },
+        "action_evidence": {
+          "timestamp": "01:16.800",
+          "observation": "Water energy dragged from Energy Zone to Active Rattata"
+        },
+        "after_evidence": {
+          "timestamp": "01:17.600",
+          "observation": "Active Rattata shows 2 Water energy icons"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 5,
+        "pokemon_id": "opponent-3",
+        "kind": "manual",
+        "before": {
+          "Water": 1
+        },
+        "after": {
+          "Water": 2
+        },
+        "before_evidence": {
+          "timestamp": "01:32.400",
+          "observation": "Active Brionne has 1 Water energy"
+        },
+        "action_evidence": {
+          "timestamp": "01:33.800",
+          "observation": "Water energy orb flies to Active Brionne"
+        },
+        "after_evidence": {
+          "timestamp": "01:34.600",
+          "observation": "Active Brionne displays 2 Water energy icons"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 5,
+        "pokemon_id": "player-1",
+        "kind": "discard",
+        "before": {
+          "Water": 2
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "01:44.000",
+          "observation": "Player Active Rattata has 2 Water energy"
+        },
+        "action_evidence": {
+          "timestamp": "01:45.600",
+          "observation": "Rattata knocked out by Hydro Pump"
+        },
+        "after_evidence": {
+          "timestamp": "01:46.000",
+          "observation": "Rattata removed from play"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "opponent-3",
+        "kind": "effect",
+        "before": {
+          "Water": 2
+        },
+        "after": {
+          "Water": 1
+        },
+        "before_evidence": {
+          "timestamp": "02:00.600",
+          "observation": "Opponent Primarina ex has 2 Water energy"
+        },
+        "action_evidence": {
+          "timestamp": "02:02.400",
+          "observation": "Thieving Incisors moves 1 Water energy from Primarina ex to Raticate ex"
+        },
+        "after_evidence": {
+          "timestamp": "02:03.800",
+          "observation": "Opponent Primarina ex has 1 Water energy remaining"
+        },
+        "cause": "Thieving Incisors",
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "player-2",
+        "kind": "effect",
+        "before": {},
+        "after": {
+          "Water": 1
+        },
+        "before_evidence": {
+          "timestamp": "02:01.800",
+          "observation": "Raticate ex has 0 attached energy after evolving"
+        },
+        "action_evidence": {
+          "timestamp": "02:02.400",
+          "observation": "Thieving Incisors moves the stolen Water energy to Raticate ex"
+        },
+        "after_evidence": {
+          "timestamp": "02:03.800",
+          "observation": "Raticate ex has 1 Water energy"
+        },
+        "cause": "Thieving Incisors",
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "player-2",
+        "kind": "manual",
+        "before": {
+          "Water": 1
+        },
+        "after": {
+          "Water": 2
+        },
+        "before_evidence": {
+          "timestamp": "02:03.800",
+          "observation": "Raticate ex has 1 Water energy after Thieving Incisors"
+        },
+        "action_evidence": {
+          "timestamp": "02:05.200",
+          "observation": "Player manually attaches Water energy to Benched Raticate ex"
+        },
+        "after_evidence": {
+          "timestamp": "02:05.800",
+          "observation": "Raticate ex has 2 Water energy"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 7,
+        "pokemon_id": "opponent-3",
+        "kind": "manual",
+        "before": {
+          "Water": 1
+        },
+        "after": {
+          "Water": 2
+        },
+        "before_evidence": {
+          "timestamp": "02:26.800",
+          "observation": "Opponent Primarina ex has 1 Water energy"
+        },
+        "action_evidence": {
+          "timestamp": "02:28.000",
+          "observation": "Water energy orb flies to Active Primarina ex"
+        },
+        "after_evidence": {
+          "timestamp": "02:28.600",
+          "observation": "Primarina ex now has 2 Water energy"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "player-2",
+        "kind": "discard",
+        "before": {
+          "Water": 2
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "02:44.000",
+          "observation": "Active Raticate ex has 2 Water energy"
+        },
+        "action_evidence": {
+          "timestamp": "02:48.400",
+          "observation": "Ilima played to return damaged Raticate ex to hand; attached energy discarded"
+        },
+        "after_evidence": {
+          "timestamp": "02:48.800",
+          "observation": "Raticate ex card returned to hand, field spot cleared"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "player-3",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Water": 1
+        },
+        "before_evidence": {
+          "timestamp": "02:40.000",
+          "observation": "Player Active Alolan Vulpix has 0 energy"
+        },
+        "action_evidence": {
+          "timestamp": "02:52.800",
+          "observation": "Water energy dragged to Active Alolan Vulpix"
+        },
+        "after_evidence": {
+          "timestamp": "02:53.400",
+          "observation": "Active Alolan Vulpix shows 1 Water energy"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 9,
+        "pokemon_id": "opponent-3",
+        "kind": "manual",
+        "before": {
+          "Water": 2
+        },
+        "after": {
+          "Water": 3
+        },
+        "before_evidence": {
+          "timestamp": "02:59.600",
+          "observation": "Opponent Primarina ex has 2 Water energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:00.600",
+          "observation": "Water energy flies to Active Primarina ex"
+        },
+        "after_evidence": {
+          "timestamp": "03:01.400",
+          "observation": "Primarina ex displays 3 Water energy"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 9,
+        "pokemon_id": "player-3",
+        "kind": "discard",
+        "before": {
+          "Water": 1
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "03:04.000",
+          "observation": "Player Active Alolan Vulpix has 1 Water energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:08.400",
+          "observation": "Alolan Vulpix knocked out by Sparkling Aria"
+        },
+        "after_evidence": {
+          "timestamp": "03:09.600",
+          "observation": "Alolan Vulpix removed to discard"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 10,
+        "pokemon_id": "player-5",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Water": 1
+        },
+        "before_evidence": {
+          "timestamp": "03:16.400",
+          "observation": "Active Rattata has 0 energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:19.400",
+          "observation": "Water energy dragged to Active Rattata"
+        },
+        "after_evidence": {
+          "timestamp": "03:20.000",
+          "observation": "Active Rattata displays 1 Water energy"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 10,
+        "pokemon_id": "opponent-3",
+        "kind": "effect",
+        "before": {
+          "Water": 3
+        },
+        "after": {
+          "Water": 2
+        },
+        "before_evidence": {
+          "timestamp": "03:21.000",
+          "observation": "Primarina ex has 3 Water energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:25.000",
+          "observation": "Second Raticate ex uses Thieving Incisors on Primarina ex"
+        },
+        "after_evidence": {
+          "timestamp": "03:27.400",
+          "observation": "Primarina ex has 2 Water energy"
+        },
+        "cause": "Thieving Incisors",
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 10,
+        "pokemon_id": "player-5",
+        "kind": "effect",
+        "before": {
+          "Water": 1
+        },
+        "after": {
+          "Water": 2
+        },
+        "before_evidence": {
+          "timestamp": "03:20.000",
+          "observation": "Active Raticate ex has 1 Water energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:26.800",
+          "observation": "Thieving Incisors attaches stolen energy to Raticate ex"
+        },
+        "after_evidence": {
+          "timestamp": "03:27.400",
+          "observation": "Active Raticate ex has 2 Water energy"
+        },
+        "cause": "Thieving Incisors",
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 11,
+        "pokemon_id": "opponent-3",
+        "kind": "manual",
+        "before": {
+          "Water": 2
+        },
+        "after": {
+          "Water": 3
+        },
+        "before_evidence": {
+          "timestamp": "03:44.400",
+          "observation": "Primarina ex has 2 Water energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:45.000",
+          "observation": "Water energy attaches to Primarina ex"
+        },
+        "after_evidence": {
+          "timestamp": "03:45.600",
+          "observation": "Primarina ex displays 3 Water energy"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 11,
+        "pokemon_id": "player-5",
+        "kind": "discard",
+        "before": {
+          "Water": 2
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "03:52.400",
+          "observation": "Active Raticate ex has 2 Water energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:56.800",
+          "observation": "Raticate ex knocked out by Sparkling Aria"
+        },
+        "after_evidence": {
+          "timestamp": "03:58.000",
+          "observation": "Raticate ex discarded along with its attached energy"
+        },
+        "uncertainty_id": null
+      }
+    ]
+  }
+}

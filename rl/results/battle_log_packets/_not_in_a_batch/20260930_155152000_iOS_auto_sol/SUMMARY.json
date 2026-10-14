@@ -1,0 +1,160 @@
+{
+  "video_basename": "20260930_155152000_iOS.MP4",
+  "source_binding": {
+    "sha256": "322b05db48b1bbd870186f56d1b59a1e1e75dea224a1ca6faa8720ef6730be65",
+    "bytes": 408857548,
+    "duration_seconds": 225.33,
+    "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20260930_155152000_iOS.MP4",
+    "identity_basis": "SOURCE.json and lead verified intake ee57b7d3-22e6-42ee-9600-8e7fcaa741fb; worker did not independently rehash"
+  },
+  "reviewer": "sol_auto_155152000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_date": "2026-09-30",
+  "status": "full_battle_review_complete",
+  "scope": "One complete battle: loading/setup, ten numbered turns, every meaningful available action and terminal defeat",
+  "full_battle_scope": true,
+  "available_recording_fully_reviewed": true,
+  "all_overview_sheets_inspected": [
+    "sheet_01.jpg",
+    "sheet_02.jpg",
+    "sheet_03.jpg",
+    "sheet_04.jpg",
+    "sheet_05.jpg",
+    "sheet_06.jpg",
+    "sheet_07.jpg",
+    "sheet_08.jpg",
+    "sheet_09.jpg"
+  ],
+  "unreviewed_phases": [],
+  "mode": "autopilot_vs_computer",
+  "mode_evidence": {
+    "owner_testimony": "All new September30 uploads were autopilot battles against the computer.",
+    "observed_auto": "Checked green Auto during setup10.5/16.5 and gameplay; no visible toggle off",
+    "observed_challenge": "vs. Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega)",
+    "intro_ai_label": "Not independently readable because phone banner obscures upper label"
+  },
+  "ladder_eligible": false,
+  "ladder_action": "Never log; excluded by owner instruction",
+  "owner": "Dacz8976",
+  "opponent": "Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega)",
+  "outcome": "loss",
+  "outcome_evidence": {
+    "terminal_result": "Defeat... at overview223.5",
+    "displayed_points": {
+      "owner": 1,
+      "opponent": 3
+    },
+    "point_progression": [
+      "0-0",
+      "1-0 after Ogerpon KO",
+      "1-2 after Greninja ex KO",
+      "1-3 displayed winning threshold after Articuno ex KO"
+    ],
+    "last_award": "Opponent +2 visible at216s; no four-point display asserted",
+    "terminal_opponent_active": "Mega Blaziken ex,10HP"
+  },
+  "deck_core_observed": {
+    "owner": [
+      "Articuno ex140 Ice Wing/Blizzard",
+      "Greninja ex170 Shifting Stream/Aqua Edge",
+      "Froakie60 Bubble and shiny Froakie60 Flop",
+      "Mudkip60→Marshtomp90",
+      "regular Greninja120 Water Shuriken and Slowpoke60 in hand only"
+    ],
+    "opponent": [
+      "Hearthflame Mask Ogerpon80 Hearthflame Dance",
+      "Torchic60→Combusken80→Mega Blaziken ex210 Mega Burning",
+      "Cyndaquil60→Quilava80"
+    ]
+  },
+  "anchors": {
+    "opening": {
+      "times_seconds": [
+        10.5,
+        16.5,
+        35
+      ],
+      "paths": [
+        "overview/sheet_01.jpg",
+        "targets/t0035.00.jpg"
+      ]
+    },
+    "ordinary": {
+      "times_seconds": [
+        52,
+        54,
+        61,
+        66,
+        75,
+        83
+      ],
+      "paths": [
+        "overview/sheet_03.jpg",
+        "targets/t0066.00.jpg",
+        "targets/t0083.00.jpg"
+      ]
+    },
+    "decisive": {
+      "times_seconds": [
+        97,
+        121,
+        122,
+        131,
+        154,
+        166.5,
+        187,
+        205,
+        209
+      ],
+      "paths": [
+        "targets/t0097.00.jpg",
+        "targets/t0121.00.jpg",
+        "targets/t0122.00.jpg",
+        "targets/t0131.00.jpg",
+        "targets/t0154.00.jpg",
+        "overview/sheet_07.jpg",
+        "targets/t0187.00.jpg",
+        "targets/t0205.00.jpg",
+        "targets/t0209.00.jpg"
+      ]
+    },
+    "terminal": {
+      "times_seconds": [
+        216,
+        217.5,
+        223.5
+      ],
+      "paths": [
+        "targets/t0216.00.jpg",
+        "overview/sheet_09.jpg"
+      ]
+    }
+  },
+  "mechanics_findings": [
+    "Ogerpon tails prevents two-Fire Bench acceleration",
+    "Mega120 plus Burn20 leaves Greninja30; recovery clears status but does not refund damage",
+    "Ice Pop30→50→70; returned first use then second tails",
+    "Aqua Edge100+Red20+weakness20=140; Mega210→70",
+    "Ice Wing40+weakness20=60; Mega70→10",
+    "Final two owner ex knockouts are direct120 attack KOs, not Burn-checkup KOs"
+  ],
+  "policy_interpretation": "Healing to70 cannot survive next120; owner attacks on Mega total200 of210. No guaranteed alternate win or simulator defect inferred.",
+  "consequential_clarification_pending": false,
+  "uncertainties_path": "UNCERTAINTIES.json",
+  "coverage_path": "COVERAGE.md",
+  "review_path": "REVIEW.md",
+  "global_writes_or_source_moves_by_worker": false,
+  "worker_actions_at_submission": {},
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_155152000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20260930_155152000_iOS.MP4.json",
+  "archive_completion_event_id": "2fef10d9-b5f6-4541-9045-69de2cc31638",
+  "global_registration_complete": true,
+  "current_review_event_id": "f9c0ce1f-6e0b-4b8e-b572-1ea52a835259",
+  "post_acceptance_corrections": "POST_ACCEPTANCE_CORRECTIONS.md"
+}

@@ -1,0 +1,65 @@
+{
+  "parser_version": "4.0",
+  "complete": true,
+  "ready_for_independent_review": true,
+  "review_status": "partial",
+  "semantic_verification_performed": false,
+  "completion_verified": true,
+  "end_marker_present": true,
+  "evidence_contract_valid": true,
+  "identity_crosscheck_verified": true,
+  "identity_errors": [],
+  "response_sha256": "860D4B8FFFCBD94BB8E5A3C4EDC59AF0ACA789B124FB31FC5BE6FC82221444BD",
+  "packet_directory": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\gemini_extracted\\20260922T030917Z-20260908_012720000_iOS\\parser_recovery\\20260922T031936Z\\candidate_packet",
+  "source_binding_verified": true,
+  "files": {
+    "SOURCE.json": {
+      "method": "filename_label",
+      "start_line": 3,
+      "end_line": 484,
+      "valid": true,
+      "transformations": [
+        "Added the omitted battle_identity schema version 1; no evidence claim changed."
+      ],
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\gemini_extracted\\20260922T030917Z-20260908_012720000_iOS\\parser_recovery\\20260922T031936Z\\candidate_packet\\SOURCE.json",
+      "bytes": 14407,
+      "sha256": "5DF2572B98E39D71B74B69BA991D2AD26E97E9D514641FEF781C0D8962CFEE41"
+    },
+    "COVERAGE.md": {
+      "method": "filename_label",
+      "start_line": 489,
+      "end_line": 629,
+      "valid": true,
+      "transformations": [],
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\gemini_extracted\\20260922T030917Z-20260908_012720000_iOS\\parser_recovery\\20260922T031936Z\\candidate_packet\\COVERAGE.md",
+      "bytes": 8557,
+      "sha256": "28F7BCA2F816154E555289852EAD470C3F07F98C12F47411D61A9652F8B6D3EA"
+    },
+    "REVIEW.md": {
+      "method": "filename_label",
+      "start_line": 634,
+      "end_line": 772,
+      "valid": true,
+      "transformations": [],
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\gemini_extracted\\20260922T030917Z-20260908_012720000_iOS\\parser_recovery\\20260922T031936Z\\candidate_packet\\REVIEW.md",
+      "bytes": 7034,
+      "sha256": "AFD035C638EC824A08BC6CF7E26C8C325CA5ACD2660015A48856804B4406193B"
+    },
+    "UNCERTAINTIES.json": {
+      "method": "filename_label",
+      "start_line": 777,
+      "end_line": 777,
+      "valid": true,
+      "transformations": [],
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\gemini_extracted\\20260922T030917Z-20260908_012720000_iOS\\parser_recovery\\20260922T031936Z\\candidate_packet\\UNCERTAINTIES.json",
+      "bytes": 3,
+      "sha256": "37517E5F3DC66819F61F5A7BB8ACE1921282415F10551D2DEFA5C3EB0985B570"
+    }
+  },
+  "errors": [],
+  "warnings": [
+    "Gemini supplied no uncertainties. Independent verification is still required."
+  ],
+  "note": "Complete means four files pass structure and evidence-consistency checks, not factual correctness or acceptance. Handoff also requires source binding, normal completion and blind identity agreement.",
+  "report_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\gemini_extracted\\20260922T030917Z-20260908_012720000_iOS\\parser_recovery\\20260922T031936Z\\PARSE_REPORT.json"
+}

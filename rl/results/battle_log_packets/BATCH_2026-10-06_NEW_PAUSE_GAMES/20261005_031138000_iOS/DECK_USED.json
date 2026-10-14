@@ -1,0 +1,352 @@
+{
+  "is_template": false,
+  "schema": "pause-games/deck-snapshot-v1",
+  "game_id": "pause-20261005-031138",
+  "deck_name_in_log": "Hatterene / Aromatisse / Togekiss",
+  "filmed_deck_label": "New deck 6",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "snapshot_retrieval_utc": "2026-10-06T18:11:28.508432+00:00",
+  "exact_list_status": "exact20_filmed_QR_and_prepared_new_log_entry_live_save_awaits_lead",
+  "log_list_version": "new entry prepared by lead in NEW_DECK_ENTRIES.json; initial LIVE_DECK_SNAPSHOT.json lacks this new Psychic deck",
+  "cards_in_log_order": [
+    {
+      "name": "Hatenna",
+      "entity_id": 17340
+    },
+    {
+      "name": "Hatenna",
+      "entity_id": 17340
+    },
+    {
+      "name": "Hattrem",
+      "entity_id": 17350
+    },
+    {
+      "name": "Hatterene",
+      "entity_id": 17360
+    },
+    {
+      "name": "Hatterene",
+      "entity_id": 17360
+    },
+    {
+      "name": "Spritzee",
+      "entity_id": 11970
+    },
+    {
+      "name": "Spritzee",
+      "entity_id": 13390
+    },
+    {
+      "name": "Aromatisse",
+      "entity_id": 13400
+    },
+    {
+      "name": "Aromatisse",
+      "entity_id": 11980
+    },
+    {
+      "name": "Togepi",
+      "entity_id": 3440
+    },
+    {
+      "name": "Togepi",
+      "entity_id": 9340
+    },
+    {
+      "name": "Togetic",
+      "entity_id": 3450
+    },
+    {
+      "name": "Togekiss",
+      "entity_id": 9360
+    },
+    {
+      "name": "Togekiss",
+      "entity_id": 9360
+    },
+    {
+      "name": "Poke Ball",
+      "entity_id": 30
+    },
+    {
+      "name": "Poke Ball",
+      "entity_id": 30
+    },
+    {
+      "name": "Rare Candy",
+      "entity_id": 480
+    },
+    {
+      "name": "Rare Candy",
+      "entity_id": 480
+    },
+    {
+      "name": "Professor's Research",
+      "entity_id": 40
+    },
+    {
+      "name": "Professor's Research",
+      "entity_id": 40
+    }
+  ],
+  "counts_by_name_and_variant": [
+    {
+      "entity_kind": "trainer",
+      "entity_id": 30,
+      "count": 2,
+      "name": "Poke Ball",
+      "name_candidates": [
+        "Poke Ball"
+      ],
+      "functional_ids": [
+        "1b20901befde"
+      ],
+      "printing_aliases": [
+        "A2b 111",
+        "P-A 005"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 480,
+      "count": 2,
+      "name": "Rare Candy",
+      "name_candidates": [
+        "Rare Candy"
+      ],
+      "functional_ids": [
+        "87829fe1a8c1"
+      ],
+      "printing_aliases": [
+        "A3 144",
+        "A4b 314",
+        "A4b 315",
+        "A4b 379"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 40,
+      "count": 2,
+      "name": "Professor's Research",
+      "name_candidates": [
+        "Professor's Research"
+      ],
+      "functional_ids": [
+        "c0015440f616"
+      ],
+      "printing_aliases": [
+        "A4b 373",
+        "P-A 007"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 17340,
+      "count": 2,
+      "name": "Hatenna",
+      "name_candidates": [
+        "Hatenna"
+      ],
+      "functional_ids": [
+        "132400d539dd"
+      ],
+      "printing_aliases": [
+        "B3 069"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 17350,
+      "count": 1,
+      "name": "Hattrem",
+      "name_candidates": [
+        "Hattrem"
+      ],
+      "functional_ids": [
+        "ee4d6ca64b27"
+      ],
+      "printing_aliases": [
+        "B3 070"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 17360,
+      "count": 2,
+      "name": "Hatterene",
+      "name_candidates": [
+        "Hatterene"
+      ],
+      "functional_ids": [
+        "7c2472ffa280"
+      ],
+      "printing_aliases": [
+        "B3 071"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 11970,
+      "count": 1,
+      "name": "Spritzee",
+      "name_candidates": [
+        "Spritzee"
+      ],
+      "functional_ids": [
+        "10a723c673b3"
+      ],
+      "printing_aliases": [
+        "B1 115"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 13390,
+      "count": 1,
+      "name": "Spritzee",
+      "name_candidates": [
+        "Spritzee"
+      ],
+      "functional_ids": [
+        "5c145ecea594"
+      ],
+      "printing_aliases": [
+        "B1a 035"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 13400,
+      "count": 1,
+      "name": "Aromatisse",
+      "name_candidates": [
+        "Aromatisse"
+      ],
+      "functional_ids": [
+        "be3fb797c028"
+      ],
+      "printing_aliases": [
+        "B1a 036"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 11980,
+      "count": 1,
+      "name": "Aromatisse",
+      "name_candidates": [
+        "Aromatisse"
+      ],
+      "functional_ids": [
+        "8e6be1218ede"
+      ],
+      "printing_aliases": [
+        "B1 116"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 3440,
+      "count": 1,
+      "name": "Togepi",
+      "name_candidates": [
+        "Togepi"
+      ],
+      "functional_ids": [
+        "111d19375e2b"
+      ],
+      "printing_aliases": [
+        "A2 063",
+        "P-A 041"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 9340,
+      "count": 1,
+      "name": "Togepi",
+      "name_candidates": [
+        "Togepi"
+      ],
+      "functional_ids": [
+        "cc7586376f3a"
+      ],
+      "printing_aliases": [
+        "A4 078",
+        "A4 173"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 3450,
+      "count": 1,
+      "name": "Togetic",
+      "name_candidates": [
+        "Togetic"
+      ],
+      "functional_ids": [
+        "d67d2e4bf605"
+      ],
+      "printing_aliases": [
+        "A2 064"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 9360,
+      "count": 2,
+      "name": "Togekiss",
+      "name_candidates": [
+        "Togekiss"
+      ],
+      "functional_ids": [
+        "c6e84814d7fc"
+      ],
+      "printing_aliases": [
+        "A4 080"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    }
+  ],
+  "actual_card_count": 20,
+  "energy_configuration": [
+    "Psychic"
+  ],
+  "captured_source_text_or_image": "../NEW_DECK_ENTRIES.json plus QR_DECODE.json and turn_evidence/t0002.00.jpg",
+  "filmed_QR_receipt": "QR_DECODE.json",
+  "game_version_binding_basis": "Source-continuous QR at2s -> selected New deck6 at5s -> battle opening29s; no deck edit shown. Opening and all reveals match semantic QR entities. Slot label alone is not a unique identity.",
+  "limits": [
+    "Exact artwork/rarity/printing is not encoded by QR.",
+    "Lead must update live-log retrieval/receipt after saving the prepared new entry; this packet does not claim it is already saved.",
+    "Pinned catalog is community-derived; resolved semantic identities and roundtrip are preserved."
+  ]
+}

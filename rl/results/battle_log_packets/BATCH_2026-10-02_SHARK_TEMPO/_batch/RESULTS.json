@@ -1,0 +1,380 @@
+{
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck": "Draft A: Shark Tempo",
+  "totals": {
+    "games": 5,
+    "wins": 4,
+    "losses": 1,
+    "concession_wins": 1,
+    "timeout_wins": 1
+  },
+  "date_local": "2026-10-02",
+  "numeric_ratings": null,
+  "results": [
+    {
+      "video": "20261002_114458000_iOS.MP4",
+      "source_sha256": "1a705196a9ac204da7e49d097edacb9de96ad14341e68d2e16c6b380970e5efe",
+      "source_bytes": 761187688,
+      "duration_seconds": 410.606667,
+      "outcome": "win",
+      "outcome_type": "win",
+      "outcome_detail": "",
+      "opponent": "PlumaDeArticun",
+      "opponent_core": [
+        "Chingling (Jingly Noise Item lock)",
+        "Old Amber into Aerodactyl (Primal Wingbeat)",
+        "Litwick into Chandelure (Slow Sear, Heat Blast) via Rare Candy"
+      ],
+      "turn_order": "owner went second",
+      "final_score": {
+        "owner": 3,
+        "opponent": 2
+      },
+      "review": "Recording_QA/20261002_114458000_iOS_shark_sol/REVIEW.md",
+      "coverage": "Recording_QA/20261002_114458000_iOS_shark_sol/COVERAGE.md",
+      "decisive_evidence": [
+        {
+          "timestamp_seconds": 134,
+          "retained_path": "native/t0134.00.jpg",
+          "observation": "First Ninetales Binding Snow knocks Chingling to 0 HP, owner's first earned point."
+        },
+        {
+          "timestamp_seconds": 310,
+          "retained_path": "native/t0310.00.jpg",
+          "observation": "First Ninetales ex knockout awards opponent two points."
+        },
+        {
+          "timestamp_seconds": 334,
+          "retained_path": "native/t0334.00.jpg",
+          "observation": "Lapras knockout of Chandelure awards owner point two, tying 2-2."
+        },
+        {
+          "timestamp_seconds": 374,
+          "retained_path": "native/t0374.00.jpg",
+          "observation": "Will guarantees Primal Wingbeat's first coin heads."
+        },
+        {
+          "timestamp_seconds": 378,
+          "retained_path": "native/t0378.00.jpg",
+          "observation": "Powered Lapras has been shuffled away; points remain 2-2 and second Ninetales is ready."
+        },
+        {
+          "timestamp_seconds": 394,
+          "retained_path": "native/t0394.00.jpg",
+          "observation": "Second Ninetales knocks 20-HP Aerodactyl to 0 HP for the last earned point."
+        },
+        {
+          "timestamp_seconds": 410,
+          "retained_path": "native/t0410.00.jpg",
+          "observation": "Explicit Victory versus PlumaDeArticun; 3-2, went second, 12 turns and 450 damage."
+        }
+      ],
+      "storage": {
+        "logical_bytes": 761187688,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      },
+      "accepted": true,
+      "registered": true,
+      "archived_hash_verified": true,
+      "external_verified": true
+    },
+    {
+      "video": "20261002_115323000_iOS.MP4",
+      "source_sha256": "0a3c7a2dbd87adb74f2eea2d61723f5e68fd71a74f0ab80d7486a9ee1d6c6be0",
+      "source_bytes": 985296109,
+      "duration_seconds": 532.31,
+      "outcome": "loss",
+      "outcome_type": "loss",
+      "outcome_detail": "",
+      "opponent": "草根",
+      "opponent_core": [
+        "Snorlax (Massive Body, Mega Punch 70, 130 HP)",
+        "Skull Fossil",
+        "Rampardos (Head Smash 130, 150 HP)",
+        "Rowlet (Skill Dive, 60 HP)",
+        "Rare Candy",
+        "Arena of Antiquity",
+        "Barry",
+        "Penny",
+        "Professor's Research",
+        "Poke Ball",
+        "Order Pad"
+      ],
+      "turn_order": "went_first",
+      "final_score": {
+        "owner": 2,
+        "opponent": 3
+      },
+      "review": "Recording_QA/20261002_115323000_iOS_shark_sol/REVIEW.md",
+      "coverage": "Recording_QA/20261002_115323000_iOS_shark_sol/COVERAGE.md",
+      "decisive_evidence": [
+        {
+          "timestamp_seconds": 454,
+          "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0454.00.jpg",
+          "observation": "Second Skull Fossil visibly has Fighting Energy before Binding Snow."
+        },
+        {
+          "timestamp_seconds": 478,
+          "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0478.00.jpg",
+          "observation": "Binding Snow 80 and Energy-Zone Active attachment restriction are visible."
+        },
+        {
+          "timestamp_seconds": 510,
+          "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0510.00.jpg",
+          "observation": "Second Rampardos retains Fossil Energy; Ninetales ex at 150 HP, Arena remains in play."
+        },
+        {
+          "timestamp_seconds": 512,
+          "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/gaps/t0512.00.jpg",
+          "observation": "Second Rampardos uses Head Smash."
+        },
+        {
+          "timestamp_seconds": 514,
+          "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0514.00.jpg",
+          "observation": "Ninetales ex reaches zero HP."
+        },
+        {
+          "timestamp_seconds": 522,
+          "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0522.00.jpg",
+          "observation": "Opponent gains two points and reaches three."
+        },
+        {
+          "timestamp_seconds": 530,
+          "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0530.00.jpg",
+          "observation": "Defeat against 草根; first, 14 turns, points 2 to 3, damage done 360."
+        }
+      ],
+      "storage": {
+        "logical_bytes": 985296109,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      },
+      "accepted": true,
+      "registered": true,
+      "archived_hash_verified": true,
+      "external_verified": true
+    },
+    {
+      "video": "20261002_132311000_iOS.MP4",
+      "source_sha256": "f3d3765ca22feb385bd540c90c916d1b039382418a0e53711bfeccbe3e240a33",
+      "source_bytes": 886959676,
+      "duration_seconds": 486.048333,
+      "outcome": "win",
+      "outcome_type": "win",
+      "outcome_detail": "Opponent disconnect return timeout; no concession observed",
+      "opponent": "hk2",
+      "opponent_core": [
+        "Shaymin (Fragrant Flower Garden)",
+        "Furfrou (two, Fur Coat/Double Headbutt)",
+        "Trapinch",
+        "Flygon ex (Sand Slammer)",
+        "Rare Candy",
+        "May",
+        "Rainbow Cave"
+      ],
+      "turn_order": "owner went first",
+      "final_score": {
+        "owner": 2,
+        "opponent": 0,
+        "turns_played": 14,
+        "damage_done_displayed": 390
+      },
+      "review": "Recording_QA/20261002_132311000_iOS_shark_sol/REVIEW.md",
+      "coverage": "Recording_QA/20261002_132311000_iOS_shark_sol/COVERAGE.md",
+      "decisive_evidence": [
+        {
+          "timestamp_seconds": 268,
+          "path": "native/t0268.00.jpg",
+          "fact": "Furfrou KO after Turbo Shark; first point follows"
+        },
+        {
+          "timestamp_seconds": 326,
+          "path": "native/t0326.00.jpg",
+          "fact": "Shaymin 0 HP after Binding Snow; second point follows"
+        },
+        {
+          "timestamp_seconds": 471,
+          "path": "gaps_t13_terminal/t0471.00.jpg",
+          "fact": "Opponent did not return within allowed time"
+        },
+        {
+          "timestamp_seconds": 474,
+          "path": "native_extra/t0474.00.jpg",
+          "fact": "Victory animation for owner"
+        },
+        {
+          "timestamp_seconds": 485,
+          "path": "gaps_t13_terminal/t0485.00.jpg",
+          "fact": "Victory vs hk2, went first, 14 turns, 2-0, 390 damage"
+        }
+      ],
+      "storage": {
+        "logical_bytes": 886959676,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      },
+      "accepted": true,
+      "registered": true,
+      "archived_hash_verified": true,
+      "external_verified": true
+    },
+    {
+      "video": "20261002_143309000_iOS.MP4",
+      "source_sha256": "3358738fb441f5ca54931447b3c6b11fb6063255caa13f7406f1ec0e3e29c461",
+      "source_bytes": 549306104,
+      "duration_seconds": 299.64068,
+      "outcome": "win",
+      "outcome_type": "win",
+      "outcome_detail": "",
+      "opponent": "もつ",
+      "opponent_core": [
+        "Sigilyph, Spike Draw 10",
+        "Two Ralts / Kirlia / Gardevoir lines, Psy Shadow and Psyshot 60",
+        "Mewtwo ex, Psychic Sphere 50 and Psydrive 150"
+      ],
+      "turn_order": "went_second",
+      "final_score": {
+        "owner": 3,
+        "opponent": 0
+      },
+      "review": "Recording_QA/20261002_143309000_iOS_shark_sol/REVIEW.md",
+      "coverage": "Recording_QA/20261002_143309000_iOS_shark_sol/COVERAGE.md",
+      "decisive_evidence": [
+        {
+          "timestamp_seconds": 92,
+          "path": "native/t0092.00.jpg",
+          "fact": "Ninetales Binding Snow 80, two Water cost, Energy Zone restriction"
+        },
+        {
+          "timestamp_seconds": 190,
+          "path": "native/t0190.00.jpg",
+          "fact": "Mewtwo 150 -> 70 after Binding Snow; visible Active attachment restriction"
+        },
+        {
+          "timestamp_seconds": 238,
+          "path": "native/t0238.00.jpg",
+          "fact": "Mewtwo 90 -> 10 after next Binding Snow; owner remains 1-0"
+        },
+        {
+          "timestamp_seconds": 278,
+          "path": "native/t0278.00.jpg",
+          "fact": "Final Binding Snow reduces Mewtwo to zero HP"
+        },
+        {
+          "timestamp_seconds": 298,
+          "path": "native/t0298.00.jpg",
+          "fact": "Victory vs. もつ; went second; ten turns; 3-0; 340 damage"
+        }
+      ],
+      "storage": {
+        "logical_bytes": 549306104,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      },
+      "accepted": true,
+      "registered": true,
+      "archived_hash_verified": true,
+      "external_verified": true
+    },
+    {
+      "video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "source_bytes": 801112679,
+      "duration_seconds": 433.090544,
+      "outcome": "win",
+      "outcome_type": "win_by_concession",
+      "outcome_detail": "",
+      "opponent": "限界社会人",
+      "opponent_core": [
+        "Teal Mask Ogerpon ex (130HP)",
+        "Sprigatito / Meowscarada ex (Flower Trick, Solar Beam80, Leaf Cape190HP)",
+        "second Sprigatito (Leaf Cape90HP)"
+      ],
+      "turn_order": "owner_first",
+      "final_score": {
+        "owner": 2,
+        "opponent": 1,
+        "basis": "Actual earned points on final result432s; concession occurred before a final attack"
+      },
+      "review": "Recording_QA/20261002_143837000_iOS_shark_sol/REVIEW.md",
+      "coverage": "Recording_QA/20261002_143837000_iOS_shark_sol/COVERAGE.md",
+      "decisive_evidence": [
+        {
+          "timestamp_seconds": 330,
+          "retained_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\native\\t0330.00.jpg",
+          "observation": "Ninetales Binding Snow knocks out50HP Meowscarada; owner earns2points"
+        },
+        {
+          "timestamp_seconds": 338,
+          "retained_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\native\\t0338.00.jpg",
+          "observation": "Meowscarada absent; owner2points versus opponent1; Ninetales180HP2Water and Sharpedo170HP1Water"
+        },
+        {
+          "timestamp_seconds": 366,
+          "retained_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\native\\t0366.00.jpg",
+          "observation": "Binding Snow attack text shows80 and next-turn Active Energy Zone attachment block; Ogerpon130->50"
+        },
+        {
+          "timestamp_seconds": 416,
+          "retained_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\native\\t0416.00.jpg",
+          "observation": "Cyrus brings damaged benched Ogerpon back Active"
+        },
+        {
+          "timestamp_seconds": 418,
+          "retained_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\native\\t0418.00.jpg",
+          "observation": "Your opponent conceded"
+        },
+        {
+          "timestamp_seconds": 422,
+          "retained_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\native\\t0422.00.jpg",
+          "observation": "Dacz8976 Victory"
+        },
+        {
+          "timestamp_seconds": 432,
+          "retained_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\native\\t0432.00.jpg",
+          "observation": "Victory vs opponent, went first,13turns,2-1points,300damage; Ninetales Card of Game"
+        }
+      ],
+      "storage": {
+        "logical_bytes": 801112679,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      },
+      "accepted": true,
+      "registered": true,
+      "archived_hash_verified": true,
+      "external_verified": true
+    }
+  ]
+}

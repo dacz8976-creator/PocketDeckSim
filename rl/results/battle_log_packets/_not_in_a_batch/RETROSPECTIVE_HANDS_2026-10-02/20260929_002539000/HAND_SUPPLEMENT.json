@@ -1,0 +1,1162 @@
+{
+  "game_id": "20260929_002539000",
+  "source": "20260929_002539000_iOS.MP4",
+  "sha256": "a951746c8a5226b0f575405e985c72cc3af249da0a757e0712b621d82b85aa06",
+  "target_turn_numbers": [
+    2,
+    4,
+    6,
+    8,
+    10
+  ],
+  "target_rows": [
+    {
+      "turn_number": 2,
+      "draw_end_seconds": 64,
+      "draw_end_measurement": "Approximate event bracket, not measured PTS",
+      "first_action_seconds": 66.5,
+      "offset_candidates": [
+        {
+          "requested_source_seconds": 65,
+          "offset_after_draw_seconds": 1,
+          "evidence_ids": [
+            "F0065.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 67,
+          "offset_after_draw_seconds": 3,
+          "evidence_ids": [
+            "F0067.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 70,
+          "offset_after_draw_seconds": 6,
+          "evidence_ids": [
+            "F0070.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 90,
+          "offset_after_draw_seconds": 26,
+          "evidence_ids": [
+            "R0090.00"
+          ],
+          "phase": "before_end",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        }
+      ],
+      "selected_start_evidence_ids": [
+        "F0065.50"
+      ],
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0065.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Giant Cape",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0065.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Flame Patch",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0065.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": "regular Professor Oak art",
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0065.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Flame Patch",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0065.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "F0065.50"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "R0090.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Flame Patch",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "R0090.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Flame Patch",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "R0090.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "R0090.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "R0090.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "end_hand_after_automatic_draw": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0094.00",
+              "R0099.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Flame Patch",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0094.00",
+              "R0099.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Flame Patch",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0094.00",
+              "R0099.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0094.00",
+              "R0099.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0094.00",
+              "R0099.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "F0094.00",
+          "R0099.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "capture_status": "complete_with_recording_limits",
+      "limit_reason": "T2firstaction precedes+3/+6; T4/+6inspection, T8+3Ladyplay, T10+3Researchpreview/+6draw. Start reconstructed only from nativevisiblecards+directtransactionhistory, not deck guess."
+    },
+    {
+      "turn_number": 4,
+      "draw_end_seconds": 135,
+      "draw_end_measurement": "Approximate event bracket, not measured PTS",
+      "first_action_seconds": 141,
+      "offset_candidates": [
+        {
+          "requested_source_seconds": 136,
+          "offset_after_draw_seconds": 1,
+          "evidence_ids": [
+            "F0136.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 138,
+          "offset_after_draw_seconds": 3,
+          "evidence_ids": [
+            "F0138.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": true,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 141,
+          "offset_after_draw_seconds": 6,
+          "evidence_ids": [
+            "F0141.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 178,
+          "offset_after_draw_seconds": 43,
+          "evidence_ids": [
+            "F0178.00"
+          ],
+          "phase": "before_end",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        }
+      ],
+      "selected_start_evidence_ids": [
+        "F0138.00",
+        "F0139.00"
+      ],
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0138.00",
+              "F0139.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Flame Patch",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0138.00",
+              "F0139.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Flame Patch",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0138.00",
+              "F0139.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0138.00",
+              "F0139.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0138.00",
+              "F0139.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0138.00",
+              "F0139.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "F0138.00",
+          "F0139.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0178.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Flame Patch",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0178.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0178.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "F0178.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "end_hand_after_automatic_draw": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0187.00",
+              "R0189.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Flame Patch",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0187.00",
+              "R0189.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0187.00",
+              "R0189.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0187.00",
+              "R0189.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "F0187.00",
+          "R0189.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "capture_status": "complete_with_recording_limits",
+      "limit_reason": "T2firstaction precedes+3/+6; T4/+6inspection, T8+3Ladyplay, T10+3Researchpreview/+6draw. Start reconstructed only from nativevisiblecards+directtransactionhistory, not deck guess."
+    },
+    {
+      "turn_number": 6,
+      "draw_end_seconds": 220,
+      "draw_end_measurement": "Approximate event bracket, not measured PTS",
+      "first_action_seconds": 227,
+      "offset_candidates": [
+        {
+          "requested_source_seconds": 221,
+          "offset_after_draw_seconds": 1,
+          "evidence_ids": [
+            "F0221.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 223,
+          "offset_after_draw_seconds": 3,
+          "evidence_ids": [
+            "F0223.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": true,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 226,
+          "offset_after_draw_seconds": 6,
+          "evidence_ids": [
+            "F0226.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 269,
+          "offset_after_draw_seconds": 49,
+          "evidence_ids": [
+            "F0269.00"
+          ],
+          "phase": "before_end",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        }
+      ],
+      "selected_start_evidence_ids": [
+        "F0223.00",
+        "F0224.00"
+      ],
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0223.00",
+              "F0224.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Flame Patch",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0223.00",
+              "F0224.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0223.00",
+              "F0224.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0223.00",
+              "F0224.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0223.00",
+              "F0224.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "F0223.00",
+          "F0224.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0269.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 1,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "F0269.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "end_hand_after_automatic_draw": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0286.00",
+              "R0288.00",
+              "F0293.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0286.00",
+              "R0288.00",
+              "F0293.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "F0286.00",
+          "R0288.00",
+          "F0293.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "capture_status": "complete_with_recording_limits",
+      "limit_reason": "T2firstaction precedes+3/+6; T4/+6inspection, T8+3Ladyplay, T10+3Researchpreview/+6draw. Start reconstructed only from nativevisiblecards+directtransactionhistory, not deck guess."
+    },
+    {
+      "turn_number": 8,
+      "draw_end_seconds": 309,
+      "draw_end_measurement": "Approximate event bracket, not measured PTS",
+      "first_action_seconds": 312,
+      "offset_candidates": [
+        {
+          "requested_source_seconds": 310,
+          "offset_after_draw_seconds": 1,
+          "evidence_ids": [
+            "F0310.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": true,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 312,
+          "offset_after_draw_seconds": 3,
+          "evidence_ids": [
+            "F0312.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 315,
+          "offset_after_draw_seconds": 6,
+          "evidence_ids": [
+            "F0315.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 318,
+          "offset_after_draw_seconds": 9,
+          "evidence_ids": [
+            "R0318.00"
+          ],
+          "phase": "before_end",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        }
+      ],
+      "selected_start_evidence_ids": [
+        "F0310.00"
+      ],
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0310.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0310.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0310.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "F0310.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "R0318.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "R0318.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "R0318.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "end_hand_after_automatic_draw": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0335.00",
+              "R0336.00",
+              "F0348.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0335.00",
+              "R0336.00",
+              "F0348.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0335.00",
+              "R0336.00",
+              "F0348.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "F0335.00",
+          "R0336.00",
+          "F0348.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "capture_status": "complete_with_recording_limits",
+      "limit_reason": "T2firstaction precedes+3/+6; T4/+6inspection, T8+3Ladyplay, T10+3Researchpreview/+6draw. Start reconstructed only from nativevisiblecards+directtransactionhistory, not deck guess."
+    },
+    {
+      "turn_number": 10,
+      "draw_end_seconds": 375,
+      "draw_end_measurement": "Approximate event bracket, not measured PTS",
+      "first_action_seconds": 378,
+      "offset_candidates": [
+        {
+          "requested_source_seconds": 376,
+          "offset_after_draw_seconds": 1,
+          "evidence_ids": [
+            "F0376.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": true,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 378,
+          "offset_after_draw_seconds": 3,
+          "evidence_ids": [
+            "R0378.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": true,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 381,
+          "offset_after_draw_seconds": 6,
+          "evidence_ids": [
+            "F0381.00"
+          ],
+          "phase": "draw_offset_candidate",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        },
+        {
+          "requested_source_seconds": 385,
+          "offset_after_draw_seconds": 10,
+          "evidence_ids": [
+            "F0385.00"
+          ],
+          "phase": "before_end",
+          "selected_for_start_hand": false,
+          "limit": "Fast play or expanded draw/inspection overlay may be present; clean/earlierdenseanchor selected separately"
+        }
+      ],
+      "selected_start_evidence_ids": [
+        "F0376.00",
+        "R0378.00"
+      ],
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0376.00",
+              "R0378.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0376.00",
+              "R0378.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0376.00",
+              "R0378.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": "full Professor Oak art",
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0376.00",
+              "R0378.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "F0376.00",
+          "R0378.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0385.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0385.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0385.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0385.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0385.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "F0385.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "end_hand_after_automatic_draw": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0395.00",
+              "R0396.00",
+              "R0410.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rainbow Cave",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0395.00",
+              "R0396.00",
+              "R0410.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0395.00",
+              "R0396.00",
+              "R0410.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0395.00",
+              "R0396.00",
+              "R0410.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0395.00",
+              "R0396.00",
+              "R0410.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Repel",
+            "variant": null,
+            "basis": "Native visible hand/reveal plus reconciled source transactions",
+            "evidence_ids": [
+              "F0395.00",
+              "R0396.00",
+              "R0410.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "Native visible hand/reveal plus reconciled source transactions; duplicates retained separately",
+        "evidence_ids": [
+          "F0395.00",
+          "R0396.00",
+          "R0410.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "capture_status": "complete_with_recording_limits",
+      "limit_reason": "T2firstaction precedes+3/+6; T4/+6inspection, T8+3Ladyplay, T10+3Researchpreview/+6draw. Start reconstructed only from nativevisiblecards+directtransactionhistory, not deck guess."
+    }
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance": "pending",
+  "opening": {
+    "source_video": "20260929_002539000_iOS.MP4",
+    "timestamp_seconds": 22,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Copycat",
+        "variant": null,
+        "basis": "Native visible hand/reveal plus reconciled source transactions",
+        "evidence_ids": [
+          "F0022.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Entei ex",
+        "variant": "standard art",
+        "basis": "Native visible hand/reveal plus reconciled source transactions",
+        "evidence_ids": [
+          "F0022.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Giant Cape",
+        "variant": null,
+        "basis": "Native visible hand/reveal plus reconciled source transactions",
+        "evidence_ids": [
+          "F0022.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Flame Patch",
+        "variant": null,
+        "basis": "Native visible hand/reveal plus reconciled source transactions",
+        "evidence_ids": [
+          "F0022.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Professor's Research",
+        "variant": "regular Professor Oak art",
+        "basis": "Native visible hand/reveal plus reconciled source transactions",
+        "evidence_ids": [
+          "F0022.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Entei ex",
+      "opening_position": 2,
+      "source_video": "20260929_002539000_iOS.MP4",
+      "timestamp_seconds": null,
+      "evidence_ids": [
+        "F0022.00",
+        "R0033.00"
+      ]
+    },
+    "redraw_or_replacement": "None located in setupscan; retainednativefivecardopeningbeforeplacement",
+    "before_active_placement": true,
+    "status": "complete",
+    "evidence_ids": [
+      "F0022.00",
+      "R0033.00"
+    ],
+    "limit_reason": null
+  }
+}

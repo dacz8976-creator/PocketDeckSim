@@ -1,0 +1,20 @@
+{
+  "frozen_question_file": "ASTRA_QUESTIONS.json",
+  "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+  "corrections": [
+    {
+      "question": "CAPE_RATICATE_FREE_RETREAT",
+      "old_reference": "after593",
+      "corrected_reference": "after596",
+      "requested_seconds": 596.0,
+      "producer_measured_pts": 596.0,
+      "pre_switch_reference_preserved": "F0593.00"
+    },
+    {
+      "question": "OPPONENT_ATTACHMENT_TARGETS_COUNTS",
+      "correction": "467\u2013500 endpoint interval crosses into owner13;500 is post-state, not opponent12. Only the attachment event is attributed to opponent12."
+    }
+  ],
+  "new_video_reads": 0,
+  "new_extraction": 0
+}

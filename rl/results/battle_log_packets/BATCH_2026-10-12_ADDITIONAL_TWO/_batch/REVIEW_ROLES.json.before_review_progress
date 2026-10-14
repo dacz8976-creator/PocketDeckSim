@@ -1,0 +1,22 @@
+{
+  "recorded_utc": "2026-10-13T01:14:32.383223+00:00",
+  "lead": "/root",
+  "single_shared_writer": true,
+  "sources": [
+    {
+      "source": "20261012_225319000_iOS.MP4",
+      "registered_alias": "/root/pause_20261012_225319000_iOS",
+      "primary_worker": "/root/later_225319",
+      "primary_model": "gpt-6.1-sol",
+      "primary_effort": "high",
+      "independent_worker": null
+    },
+    {
+      "source": "20261012_230258000_iOS.MP4",
+      "registered_alias": "/root/pause_20261012_230258000_iOS",
+      "primary_worker": null,
+      "source_download_pending": true,
+      "independent_worker": null
+    }
+  ]
+}

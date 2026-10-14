@@ -1,0 +1,331 @@
+{
+  "schema": "bounded-source-field-questions-v1",
+  "source": "20260908_022627000_iOS.MP4",
+  "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+  "source_verification_receipt": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\SOURCE_VERIFICATION.json",
+  "question_status": "frozen_for_independent_astra_check",
+  "accepted_outcome": "owner loss preserved",
+  "accepted_packet_untouched": true,
+  "questions": [
+    {
+      "question_id": "T3_COMFEY_ATTACHMENT_RETREAT",
+      "turns": [
+        3
+      ],
+      "old_quotes": [
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 22,
+          "exact_quote": "| 3 \u2014 `01:34\u201302:18` | Dacz8976 | Benches Team Rocket's Rattata. Plays Pok\u00e9 Ball; Team Rocket's Drowzee is the publicly shown Basic obtained, then benched. Attaches Psychic Energy to Drowzee. Retreats zero-cost Comfey and promotes Drowzee. | Active Drowzee 60 with 1 Psychic; Bench Comfey 50 and Rattata 40; score 0\u20130. |"
+        }
+      ],
+      "native_evidence": [
+        {
+          "evidence_id": "F0118.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0118.00.jpg",
+          "requested_source_seconds": 118.0,
+          "actual_frame_seconds_if_measured": 118.013,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0120.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0120.00.jpg",
+          "requested_source_seconds": 120.0,
+          "actual_frame_seconds_if_measured": 120.015,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0126.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0126.00.jpg",
+          "requested_source_seconds": 126.0,
+          "actual_frame_seconds_if_measured": 126.0,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0137.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0137.00.jpg",
+          "requested_source_seconds": 137.0,
+          "actual_frame_seconds_if_measured": 137.007,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        }
+      ],
+      "proposed_new_fields": "Psychic is attached to Comfey, not Drowzee. Comfey has1P before retreat; afterward Drowzee Active60E0 and Comfey bench50E0. Retreat pays1P.",
+      "direct_vs_inferred_limits": "Attachment target direct native orb trajectory. Payment inferred from typed1P disappearance across actual retreat and printed retreat1; the exact discard-selection input is not in this set. Native120/126+137 support end state. Do not treat old zero-cost claim as supported.",
+      "printed_card_text": "Comfey native118 prints retreat one Colorless. Flower Shield: each of your Pok\u00e9mon that has any Psychic Energy attached recovers from all Special Conditions and cannot be affected by any Special Conditions.",
+      "question": "Does this small native set support the proposed fields and the stated old-prose conflict? Limit answer to visible fields, distinguish endpoint-derived target/timing from direct input, and do not re-review outcome or unseen identities."
+    },
+    {
+      "question_id": "HYPNO_P_COUNT_AND_SKORUPI_REMAINDER",
+      "turns": [
+        5,
+        6,
+        7
+      ],
+      "old_quotes": [
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 24,
+          "exact_quote": "| 5 \u2014 `02:23\u201303:47` | Dacz8976 | Evolves Rattata into Team Rocket's Raticate ex and accepts Thieving Incisors, moving one random Darkness Energy from the opposing Active Skorupi to Raticate ex. Evolves Drowzee into Team Rocket's Hypno, preserving 40 damage (50 HP remaining). Attaches Elegant Cape to Raticate ex, raising it to 150 HP. Plays Copycat, shuffling the hand into the deck and drawing to the opponent's hand count. Benches a second Team Rocket's Rattata from the new hand. Team Rocket's Goo-zooka is previewed only. Attaches Psychic Energy to Active Hypno, which now has two Psychic Energy. | Active Hypno 50/90 with 2 Psychic; Bench Raticate ex 150 with Cape and 1 stolen Darkness, Comfey 50, Rattata 40. Skorupi has no Energy. Score 0\u20130. |"
+        },
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 25,
+          "exact_quote": "| 6 \u2014 `03:47\u201304:28` | hyp | Reattaches Darkness Energy to Skorupi and uses Bug Bite. Weakness again makes the damage 40. | Skorupi has 1 Darkness; Hypno 50\u219210; no KO; score 0\u20130. |"
+        },
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 26,
+          "exact_quote": "| 7 \u2014 `04:28\u201305:17` | Dacz8976 | Plays Pok\u00e9 Ball; the system reports no valid card in the deck. Plays Sightseer, views the top three cards, and publicly takes Team Rocket's Raticate ex. Evolves the second Rattata into the gold-art Team Rocket's Raticate ex; Thieving Incisors moves the reattached Darkness Energy from Active Skorupi to it. Plays Team Rocket's Goo-zooka, making the opponent's Active Retreat Cost one higher through the next turn. Hypno uses Entrap, switches benched Mega Absol ex Active, and deals 50. | Mega Absol ex 170\u2192120 Active; Skorupi benched with no Energy. Dacz board: Hypno 10 Active; Raticate ex 150/Cape, Comfey 50, Raticate ex 120 on Bench. Score 0\u20130. |"
+        }
+      ],
+      "native_evidence": [
+        {
+          "evidence_id": "F0210.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0210.00.jpg",
+          "requested_source_seconds": 210.0,
+          "actual_frame_seconds_if_measured": 210.007,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0225.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0225.00.jpg",
+          "requested_source_seconds": 225.0,
+          "actual_frame_seconds_if_measured": 225.003,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0276.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0276.00.jpg",
+          "requested_source_seconds": 276.0,
+          "actual_frame_seconds_if_measured": 276.0,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0304.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0304.00.jpg",
+          "requested_source_seconds": 304.0,
+          "actual_frame_seconds_if_measured": 304.015,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        }
+      ],
+      "proposed_new_fields": "T5 Hypno ends50 with1P; T7 Hypno starts10P1 and ends10P2. Skorupi has1D after T5 steal,2D at T7 start and1D after T7 steal. Old two-P atT5 and zero-D Skorupi claims conflict.",
+      "direct_vs_inferred_limits": "Direct count endpoints shown; exact input times inferred between native anchors, not claim that304is attachment time. Native304shows actual2P cost/attached icons and Skorupi1D.",
+      "printed_card_text": null,
+      "question": "Does this small native set support the proposed fields and the stated old-prose conflict? Limit answer to visible fields, distinguish endpoint-derived target/timing from direct input, and do not re-review outcome or unseen identities."
+    },
+    {
+      "question_id": "GIANT_CAPE_NOT_POTION",
+      "turns": [
+        8
+      ],
+      "old_quotes": [
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 27,
+          "exact_quote": "| 8 \u2014 `05:17\u201305:45` | hyp | Evolves the benched, Energy-free Skorupi into Drapion. Attaches one Darkness Energy to Active Mega Absol ex. Plays Professor's Research and draws two. Uses Potion to heal Mega Absol ex by 20. No attack is observed. | Mega Absol ex 120\u2192140 Active with 1 Darkness; Drapion 130 benched with no Energy. Score 0\u20130. |"
+        }
+      ],
+      "native_evidence": [
+        {
+          "evidence_id": "F0339.30",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0339.30.jpg",
+          "requested_source_seconds": 339.3,
+          "actual_frame_seconds_if_measured": 339.302,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0339.80",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0339.80.jpg",
+          "requested_source_seconds": 339.8,
+          "actual_frame_seconds_if_measured": 339.803,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0340.50",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0340.50.jpg",
+          "requested_source_seconds": 340.5,
+          "actual_frame_seconds_if_measured": 340.503,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0350.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0350.00.jpg",
+          "requested_source_seconds": 350.0,
+          "actual_frame_seconds_if_measured": 350.008,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        }
+      ],
+      "proposed_new_fields": "Giant Cape attaches to Mega Absol: printed+20HP, max170\u2192190,current120\u2192140. Drapion retains1D. Old Potion claim conflicts with direct named Tool and attachment.",
+      "direct_vs_inferred_limits": "Named Tool/direct attachment. HP increase is Tool bonus, not inferred healing; sparse native set does not prove no other subsecond event anywhere, but same visible120\u2192140 transition is anchored.",
+      "printed_card_text": "Giant Cape: The Pok\u00e9mon this card is attached to gets +20 HP.",
+      "question": "Does this small native set support the proposed fields and the stated old-prose conflict? Limit answer to visible fields, distinguish endpoint-derived target/timing from direct input, and do not re-review outcome or unseen identities."
+    },
+    {
+      "question_id": "OPPONENT_ATTACHMENT_TARGETS_COUNTS",
+      "turns": [
+        10,
+        12,
+        14
+      ],
+      "old_quotes": [
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 29,
+          "exact_quote": "| 10 \u2014 `06:20\u201306:48` | hyp | Benches Deino and attaches one Darkness Energy to Active Drapion. No attack or damage is observed. | Drapion 80 Active with 1 Darkness; Bench Mega Absol ex 140 with 1 Darkness and Deino 60. Score 0\u20130. |"
+        },
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 31,
+          "exact_quote": "| 12 \u2014 `07:20\u201308:19` | hyp | Uses Lucky Ice Pop to heal Mega Absol ex by 20, 90\u2192110; the flip is heads, so the same Item returns to hand. Uses Rare Candy to evolve Deino directly into Hydreigon. Attaches a second Darkness Energy to Mega Absol ex. Mega Absol ex uses Darkness Claw: 80 plus 20 Darkness weakness deals 100 to the 10-HP Hypno. Darkness Claw reveals Dacz8976's hand and discards Cyrus. | First Hypno is KO'd; `hyp` receives +1 at `08:12\u201308:13`, score 1\u20130. Dacz8976 promotes the Cape-equipped Raticate ex at 150 HP. |"
+        },
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 33,
+          "exact_quote": "| 14 \u2014 `08:34\u201309:50` | hyp | Replays the same Lucky Ice Pop, healing Mega Absol ex 40\u219260; heads returns it to hand again. Retreats Mega Absol ex for 1 Darkness, leaving it with 1, and promotes Drapion. Attaches a second Darkness Energy to Drapion, which then uses Stun Poison for 50; the status coin is tails, so no Poison or Paralysis is applied. | Cape-equipped Raticate ex 150\u2192100; Drapion 80 Active with 2 Darkness; score 1\u20130. |"
+        }
+      ],
+      "native_evidence": [
+        {
+          "evidence_id": "F0394.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0394.00.jpg",
+          "requested_source_seconds": 394.0,
+          "actual_frame_seconds_if_measured": 394.008,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0403.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0403.00.jpg",
+          "requested_source_seconds": 403.0,
+          "actual_frame_seconds_if_measured": 403.015,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0467.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0467.00.jpg",
+          "requested_source_seconds": 467.0,
+          "actual_frame_seconds_if_measured": 467.012,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0500.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0500.00.jpg",
+          "requested_source_seconds": 500.0,
+          "actual_frame_seconds_if_measured": 500.012,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0554.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0554.00.jpg",
+          "requested_source_seconds": 554.0,
+          "actual_frame_seconds_if_measured": 554.01,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0559.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0559.00.jpg",
+          "requested_source_seconds": 559.0,
+          "actual_frame_seconds_if_measured": 559.013,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        }
+      ],
+      "proposed_new_fields": "T10 Mega Absol1\u21922D while Drapion stays1D. T12 Drapion1\u21922D while Absol remains2D. T14 Drapion2\u21923D while Absol retreats2\u21921D. Old targets/counts differ.",
+      "direct_vs_inferred_limits": "These are direct board endpoint counts with derived normal-attachment target; exact input trajectory/times not sampled. T10 bound394\u2192403; T12 bound467\u2192500, entirely within source opponent turn12 440\u2192499/owner13banner499; T14 bound554\u2192559. Frame444/467are still generated-orb/pre-attachment and must never be cited as actual attachment. Derived interval can contain attack/KO inT12; no source-turn drift asserted.",
+      "printed_card_text": null,
+      "question": "Does this small native set support the proposed fields and the stated old-prose conflict? Limit answer to visible fields, distinguish endpoint-derived target/timing from direct input, and do not re-review outcome or unseen identities."
+    },
+    {
+      "question_id": "CAPE_RATICATE_FREE_RETREAT",
+      "turns": [
+        15
+      ],
+      "old_quotes": [
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 34,
+          "exact_quote": "| 15 \u2014 `09:50\u201310:16` | Dacz8976 | Draw again fails because the deck is empty. Retreats the Cape-equipped Raticate ex for 2 Energy, discarding its stolen Darkness and attached Psychic, and promotes the benched Drowzee. Evolves it into a second Team Rocket's Hypno, attaches another Psychic Energy, then uses Entrap. Entrap switches Mega Absol ex Active and deals 50. | Mega Absol ex 60\u219210 Active with 1 Darkness; second Hypno 90 Active for Dacz8976 with 2 Psychic; score 1\u20130. |"
+        }
+      ],
+      "native_evidence": [
+        {
+          "evidence_id": "F0590.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0590.00.jpg",
+          "requested_source_seconds": 590.0,
+          "actual_frame_seconds_if_measured": 590.012,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0591.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0591.00.jpg",
+          "requested_source_seconds": 591.0,
+          "actual_frame_seconds_if_measured": 591.012,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0593.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0593.00.jpg",
+          "requested_source_seconds": 593.0,
+          "actual_frame_seconds_if_measured": 593.013,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "R0668.00",
+          "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\evidence\\full_resolution\\t_668.jpg",
+          "requested_source_seconds": 668.0,
+          "actual_frame_seconds_if_measured": null,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        }
+      ],
+      "proposed_new_fields": "Cape Raticate retainsD1P1 on bench after retreat. Printed Raticate retreat cost is blank/zero; attack cost2 is separate. Old2Energy retreat/discard claim conflicts.",
+      "direct_vs_inferred_limits": "Retained typed Energy directbefore590/after593. Native668prints blank retreat and2Colorless attack. Zero payment inferred from printed cost and unchanged2Energy.",
+      "printed_card_text": "Raticate native668: Boost Dash2Colorless70; retreat field blank; Thieving Incisors once during your turn on evolution may move random Energy from opponent Active.",
+      "question": "Does this small native set support the proposed fields and the stated old-prose conflict? Limit answer to visible fields, distinguish endpoint-derived target/timing from direct input, and do not re-review outcome or unseen identities."
+    },
+    {
+      "question_id": "T17_COMFEY_ATTACHMENT",
+      "turns": [
+        17
+      ],
+      "old_quotes": [
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 36,
+          "exact_quote": "| 17 \u2014 `11:10\u201311:25` | Dacz8976 | Draw fails because the deck is empty. A Psychic Energy is generated but left unused. Dacz8976 briefly opens and closes the menu without confirming Concede. Gold-art Raticate ex uses Boost Dash for 70. | Hydreigon 140\u219270; player Active Raticate ex remains 120 with its previously acquired Darkness and Psychic Energy. Visible score 2\u20130. |"
+        }
+      ],
+      "native_evidence": [
+        {
+          "evidence_id": "F0673.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0673.00.jpg",
+          "requested_source_seconds": 673.0,
+          "actual_frame_seconds_if_measured": 673.003,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0675.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0675.00.jpg",
+          "requested_source_seconds": 675.0,
+          "actual_frame_seconds_if_measured": 675.003,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0681.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0681.00.jpg",
+          "requested_source_seconds": 681.0,
+          "actual_frame_seconds_if_measured": 681.007,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        },
+        {
+          "evidence_id": "F0679.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0679.00.jpg",
+          "requested_source_seconds": 679.0,
+          "actual_frame_seconds_if_measured": 679.005,
+          "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e"
+        }
+      ],
+      "proposed_new_fields": "Psychic attached to Comfey0\u21921, visible orb trajectory675; ending681shows1P. Hand remains Flute/Research. Menu679shows Concede/Settings/Battle Log, noAuto visible. Old unused-P claim conflicts.",
+      "direct_vs_inferred_limits": "Direct attachment and ending1P. No Auto visible atthese anchors; do not certify opponent type or absenceeveryinstant/settingssubmenu. NoConcede confirmation.",
+      "printed_card_text": null,
+      "question": "Does this small native set support the proposed fields and the stated old-prose conflict? Limit answer to visible fields, distinguish endpoint-derived target/timing from direct input, and do not re-review outcome or unseen identities."
+    }
+  ]
+}

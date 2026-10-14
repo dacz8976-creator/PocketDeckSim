@@ -1,0 +1,4602 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "pause-20261005-031138",
+  "sources": [
+    {
+      "video_basename": "20261005_031138000_iOS.MP4",
+      "sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "reviewer": "Sol / root/pause_031138",
+  "turns": [
+    {
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "timing": {
+        "start_seconds": 44,
+        "end_seconds": 50,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 48,
+        "before_end_action_seconds": 49,
+        "end_after_resolution_seconds": 50,
+        "timing_precision": "approximately 0.1 to 0.5 seconds, visually located; requested seek times are not measured decoded PTS"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0046.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          },
+          {
+            "position": 2,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0046.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          },
+          {
+            "position": 3,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0046.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          },
+          {
+            "position": 4,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0046.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          },
+          {
+            "position": 5,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0046.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          }
+        ],
+        "count": 5,
+        "basis": "counted visible card backs",
+        "evidence_ids": [
+          "f0046.00"
+        ],
+        "status": "hidden_identities",
+        "limit_reason": "Opponent hand is not revealed"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Named owner start/end hand supplement applies to owner turns"
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "count distinct card-back panels/edges in native top crop",
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "limit_reason": "This field is required only at owner turn starts"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261005_031138000_iOS.MP4",
+              "timestamp_seconds": 45,
+              "evidence_ids": [
+                "f0045.00"
+              ],
+              "basis": "hidden opponent draw",
+              "limit_reason": "Opponent draws are face down"
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 45,
+          "evidence_ids": [
+            "f0045.00"
+          ],
+          "limit_reason": "Opponent normal draw identity hidden"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Froakie",
+          "target": "opponent Bench position 3",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Froakie benched at 60 HP, no Energy",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 48,
+          "evidence_ids": [
+            "f0048.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": "turn boundary",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Ends first turn without attachment or attack",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 50,
+          "evidence_ids": [
+            "f0050.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "turn_number_display_limit_reason": "No numeric turn banner in this retained board frame; row number is bound to chronological turn transitions",
+        "phase": "resolved boundary board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Spritzee",
+            "variant": "Sweet Scent, 60 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0044.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0044.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0044.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "Plasma Hurricane 20 / Mach Bolt 90, 130 HP",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0044.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0044.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0044.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0044.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "turn_number_display_limit_reason": "No numeric turn banner in this retained board frame; row number is bound to chronological turn transitions",
+        "phase": "resolved boundary board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Spritzee",
+            "variant": "Sweet Scent, 60 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0050.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0050.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0050.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "Plasma Hurricane 20 / Mach Bolt 90, 130 HP",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0050.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Froakie",
+              "variant": "Flop 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0050.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0050.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0050.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0050.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Named owner start/end hand supplement applies to owner turns"
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "f0044.00",
+        "f0050.00",
+        "f0048.00",
+        "f0045.00"
+      ],
+      "limits": [
+        "Neither player opens a discard-pile view in this turn. Opponent unrevealed cards remain hidden."
+      ]
+    },
+    {
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "timing": {
+        "start_seconds": 50,
+        "end_seconds": 78,
+        "draw_animation_end_seconds": 52.3,
+        "first_voluntary_move_seconds": 53,
+        "before_end_action_seconds": 76,
+        "end_after_resolution_seconds": 78,
+        "timing_precision": "approximately 0.1 to 0.5 seconds, visually located; requested seek times are not measured decoded PTS"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Poke Ball",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0052.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 2,
+            "name": "Hatenna",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0052.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 3,
+            "name": "Hatterene",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0052.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0052.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 5,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0052.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          }
+        ],
+        "count": 5,
+        "basis": "native hand fan, with draw reveal evidence for newly added card",
+        "evidence_ids": [
+          "f0052.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Poke Ball",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0052.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 2,
+            "name": "Hatenna",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0052.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 3,
+            "name": "Hatterene",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0052.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0052.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 5,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0052.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          }
+        ],
+        "count": 5,
+        "basis": "native hand fan, with draw reveal evidence for newly added card",
+        "evidence_ids": [
+          "f0052.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "count distinct card-back panels/edges in native top crop",
+        "basis": "direct visual count",
+        "evidence_ids": [
+          "f0052.50"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Professor's Research",
+              "reveal_position": 1,
+              "source_video": "20261005_031138000_iOS.MP4",
+              "timestamp_seconds": 52,
+              "evidence_ids": [
+                "f0052.00"
+              ],
+              "basis": "visible named reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 52,
+          "evidence_ids": [
+            "f0052.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poke Ball",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Hatenna",
+              "reveal_position": 1,
+              "source_video": "20261005_031138000_iOS.MP4",
+              "timestamp_seconds": 60,
+              "evidence_ids": [
+                "f0060.00"
+              ],
+              "basis": "visible named reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 60,
+          "evidence_ids": [
+            "f0060.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": "Aromatisse",
+              "reveal_position": 1,
+              "source_video": "20261005_031138000_iOS.MP4",
+              "timestamp_seconds": 66,
+              "evidence_ids": [
+                "f0066.00"
+              ],
+              "basis": "visible named reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Togetic",
+              "reveal_position": 2,
+              "source_video": "20261005_031138000_iOS.MP4",
+              "timestamp_seconds": 67,
+              "evidence_ids": [
+                "f0067.00"
+              ],
+              "basis": "visible named reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 66,
+          "evidence_ids": [
+            "f0066.00",
+            "f0067.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Hatenna",
+          "target": "owner Bench position 2",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Opening Hatenna placed on middle Bench",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 53,
+          "evidence_ids": [
+            "f0053.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Poke Ball",
+          "target": "owner deck/hand",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Search reveals Hatenna",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Poke Ball played",
+            "Hatenna revealed at60 and added to hand"
+          ],
+          "hand_count_after": 4,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 57.5,
+          "evidence_ids": [
+            "f0057.50"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Professor's Research",
+          "target": "owner hand",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Two draws: Aromatisse, then Togetic",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Full-art Research played",
+            "Aromatisse revealed first",
+            "Togetic revealed second"
+          ],
+          "hand_count_after": 5,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 64,
+          "evidence_ids": [
+            "f0064.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Hatenna",
+          "target": "owner Bench position 1",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Searched Hatenna benched on left",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 72,
+          "evidence_ids": [
+            "f0072.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Spritzee Active",
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Spritzee Active",
+            "retreat_payment_by_type": {}
+          },
+          "result": "1 Psychic attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 75,
+          "evidence_ids": [
+            "f0075.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 6,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": "End Turn",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "End Turn selected while an attack is available",
+          "prompt_text": "An attack can be used",
+          "response": "End Turn requested",
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 77,
+          "evidence_ids": [
+            "f0077.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 7,
+          "kind": "prompt_response",
+          "card_name": null,
+          "target": "End your turn?",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "OK accepted; declines using the available attack",
+          "prompt_text": "An attack can be used",
+          "response": "OK; end without attack",
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 77.5,
+          "evidence_ids": [
+            "f0077.50"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "turn_number_display_limit_reason": "No numeric turn banner in this retained board frame; row number is bound to chronological turn transitions",
+        "phase": "resolved boundary board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Spritzee",
+            "variant": "Sweet Scent, 60 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0052.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Psychic",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0055.00"
+            ],
+            "limit_reason": "Energy generation finishes just after selected hand; verified before any Energy attachment"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0052.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "Plasma Hurricane 20 / Mach Bolt 90, 130 HP",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0052.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Froakie",
+              "variant": "Flop 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0052.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0052.50"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0052.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0052.50"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 3,
+        "turn_number_display_limit_reason": null,
+        "phase": "resolved boundary board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Spritzee",
+            "variant": "Sweet Scent, 60 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0078.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0078.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0078.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0078.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0078.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "Plasma Hurricane 20 / Mach Bolt 90, 130 HP",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0078.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Froakie",
+              "variant": "Flop 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0078.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0078.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0078.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0078.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Hatterene",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0076.00"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0076.00"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 3,
+            "name": "Aromatisse",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0076.00"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 4,
+            "name": "Togetic",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0076.00"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          }
+        ],
+        "count": 4,
+        "basis": "native hand fan, with draw reveal evidence for newly added card",
+        "evidence_ids": [
+          "f0076.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "f0052.50",
+        "f0078.00",
+        "f0053.00",
+        "f0057.50",
+        "f0064.00",
+        "f0072.00",
+        "f0075.00",
+        "f0077.00",
+        "f0077.50",
+        "f0052.00",
+        "f0060.00",
+        "f0066.00",
+        "f0067.00"
+      ],
+      "limits": [
+        "Neither player opens a discard-pile view in this turn. Opponent unrevealed cards remain hidden."
+      ],
+      "owner_hand_count_reconciliation": "4 after setup + normal draw1 - Hatenna1 - Poke Ball1 + search1 - Research1 + Research2 - Hatenna1 =4"
+    },
+    {
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "timing": {
+        "start_seconds": 78,
+        "end_seconds": 112,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 84,
+        "before_end_action_seconds": 107,
+        "end_after_resolution_seconds": 112,
+        "timing_precision": "approximately 0.1 to 0.5 seconds, visually located; requested seek times are not measured decoded PTS"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0083.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          },
+          {
+            "position": 2,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0083.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          },
+          {
+            "position": 3,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0083.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          },
+          {
+            "position": 4,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0083.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          },
+          {
+            "position": 5,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0083.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          }
+        ],
+        "count": 5,
+        "basis": "counted visible card backs",
+        "evidence_ids": [
+          "f0083.00"
+        ],
+        "status": "hidden_identities",
+        "limit_reason": "Opponent hand is not revealed"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Named owner start/end hand supplement applies to owner turns"
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "count distinct card-back panels/edges in native top crop",
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "limit_reason": "This field is required only at owner turn starts"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261005_031138000_iOS.MP4",
+              "timestamp_seconds": 80,
+              "evidence_ids": [
+                "f0080.00"
+              ],
+              "basis": "hidden opponent draw",
+              "limit_reason": "Opponent draws are face down"
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 80,
+          "evidence_ids": [
+            "f0080.00"
+          ],
+          "limit_reason": "Opponent normal draw identity hidden"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Tapu Koko ex Active",
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "Tapu Koko ex Active",
+            "retreat_payment_by_type": {}
+          },
+          "result": "1 Lightning attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 84,
+          "evidence_ids": [
+            "f0084.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Rare Candy",
+          "target": "Froakie Bench position 3",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Froakie evolves directly into Greninja",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Rare Candy consumed",
+            "Greninja revealed and placed on Froakie; no Frogadier played"
+          ],
+          "hand_count_after": 3,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 89,
+          "evidence_ids": [
+            "f0089.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "ability",
+          "card_name": "Greninja",
+          "target": "owner Hatenna Bench position 2",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Water Shuriken deals20; 60->40 HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 95,
+          "evidence_ids": [
+            "f0095.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Tapu Koko ex",
+          "target": "Spritzee Active",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Plasma Hurricane20; Spritzee60->40; Koko gains a second Lightning",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Plasma Hurricane20 damage",
+            "Lightning taken from Energy Zone and attached to Koko"
+          ],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 109,
+          "evidence_ids": [
+            "f0109.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "turn_number_display_limit_reason": "No numeric turn banner in this retained board frame; row number is bound to chronological turn transitions",
+        "phase": "resolved boundary board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Spritzee",
+            "variant": "Sweet Scent, 60 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0083.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0083.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0083.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0083.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0083.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "Plasma Hurricane 20 / Mach Bolt 90, 130 HP",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0083.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Froakie",
+              "variant": "Flop 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0083.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0083.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0083.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0083.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "turn_number_display_limit_reason": "No numeric turn banner in this retained board frame; row number is bound to chronological turn transitions",
+        "phase": "resolved boundary board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Spritzee",
+            "variant": "Sweet Scent, 60 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 60,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0112.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0112.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 2,
+              "hp_now": 40,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 20,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0112.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0112.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0112.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "Plasma Hurricane 20 / Mach Bolt 90, 130 HP",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0112.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Greninja",
+              "variant": "Water Shuriken / Mist Slash 60, 120 HP",
+              "bench_position": 3,
+              "hp_now": 120,
+              "hp_max": 120,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0112.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0112.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0112.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0112.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Named owner start/end hand supplement applies to owner turns"
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "f0083.00",
+        "f0112.00",
+        "f0084.00",
+        "f0089.00",
+        "f0095.00",
+        "f0109.00",
+        "f0080.00"
+      ],
+      "limits": [
+        "Neither player opens a discard-pile view in this turn. Opponent unrevealed cards remain hidden."
+      ]
+    },
+    {
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "timing": {
+        "start_seconds": 112,
+        "end_seconds": 142,
+        "draw_animation_end_seconds": 115.7,
+        "first_voluntary_move_seconds": 118,
+        "before_end_action_seconds": 134.5,
+        "end_after_resolution_seconds": 142,
+        "timing_precision": "approximately 0.1 to 0.5 seconds, visually located; requested seek times are not measured decoded PTS"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Hatterene",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0116.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0116.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 3,
+            "name": "Aromatisse",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0116.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 4,
+            "name": "Togetic",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0116.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 5,
+            "name": "Togekiss",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0116.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          }
+        ],
+        "count": 5,
+        "basis": "native hand fan, with draw reveal evidence for newly added card",
+        "evidence_ids": [
+          "f0116.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Hatterene",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0116.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0116.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 3,
+            "name": "Aromatisse",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0116.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 4,
+            "name": "Togetic",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0116.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 5,
+            "name": "Togekiss",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0116.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          }
+        ],
+        "count": 5,
+        "basis": "native hand fan, with draw reveal evidence for newly added card",
+        "evidence_ids": [
+          "f0116.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "count distinct card-back panels/edges in native top crop",
+        "basis": "direct visual count",
+        "evidence_ids": [
+          "f0116.50"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Togekiss",
+              "reveal_position": 1,
+              "source_video": "20261005_031138000_iOS.MP4",
+              "timestamp_seconds": 115,
+              "evidence_ids": [
+                "f0115.00"
+              ],
+              "basis": "visible named reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 115,
+          "evidence_ids": [
+            "f0115.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Hatterene",
+              "reveal_position": 1,
+              "source_video": "20261005_031138000_iOS.MP4",
+              "timestamp_seconds": 125,
+              "evidence_ids": [
+                "f0125.00"
+              ],
+              "basis": "visible named reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Hattrem",
+              "reveal_position": 2,
+              "source_video": "20261005_031138000_iOS.MP4",
+              "timestamp_seconds": 126,
+              "evidence_ids": [
+                "f0126.00"
+              ],
+              "basis": "visible named reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 125,
+          "evidence_ids": [
+            "f0125.00",
+            "f0126.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Aromatisse",
+          "target": "Spritzee Active",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Evolves40/60 Spritzee into70/90 Aromatisse; damage20 and1Psychic retained",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 118,
+          "evidence_ids": [
+            "f0118.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Professor's Research",
+          "target": "owner hand",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Draws Hatterene then Hattrem",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Research consumed",
+            "Hatterene first",
+            "Hattrem second"
+          ],
+          "hand_count_after": 5,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 121.5,
+          "evidence_ids": [
+            "f0121.50"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Hattrem",
+          "target": "Hatenna Bench position 1",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Left Hatenna evolves to80HP Hattrem",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 128,
+          "evidence_ids": [
+            "f0128.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Hattrem Bench position 1",
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Hattrem Bench position 1",
+            "retreat_payment_by_type": {}
+          },
+          "result": "1 Psychic attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 132,
+          "evidence_ids": [
+            "f0132.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": "Aromatisse",
+          "target": "Tapu Koko ex Active",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Confounding Cologne40; Koko130->90HP and Confused",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "40damage",
+            "Confused applied"
+          ],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 135,
+          "evidence_ids": [
+            "f0135.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "kind": "condition_application",
+          "name": "Confused",
+          "target": "Tapu Koko ex",
+          "timestamp_seconds": 140,
+          "evidence_ids": [
+            "f0140.00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "turn_number_display_limit_reason": "No numeric turn banner in this retained board frame; row number is bound to chronological turn transitions",
+        "phase": "resolved boundary board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Spritzee",
+            "variant": "Sweet Scent, 60 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 60,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0116.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0116.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 2,
+              "hp_now": 40,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 20,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0116.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Psychic",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0120.00"
+            ],
+            "limit_reason": "Energy generation finishes immediately after selected hand; verified before any Energy attachment"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0116.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "Plasma Hurricane 20 / Mach Bolt 90, 130 HP",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0116.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Greninja",
+              "variant": "Water Shuriken / Mist Slash 60, 120 HP",
+              "bench_position": 3,
+              "hp_now": 120,
+              "hp_max": 120,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0116.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0116.50"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0116.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0116.50"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "turn_number_display_limit_reason": "No numeric turn banner in this retained board frame; row number is bound to chronological turn transitions",
+        "phase": "resolved boundary board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Aromatisse",
+            "variant": "Confounding Cologne 40, 90 HP",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 90,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0140.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hattrem",
+              "variant": "Disarming Voice 20, 80 HP",
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Psychic": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0140.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 2,
+              "hp_now": 40,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 20,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0140.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0140.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0140.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "Plasma Hurricane 20 / Mach Bolt 90, 130 HP",
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 130,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 40,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Confused"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0140.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Greninja",
+              "variant": "Water Shuriken / Mist Slash 60, 120 HP",
+              "bench_position": 3,
+              "hp_now": 120,
+              "hp_max": 120,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0140.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0140.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0140.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0140.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Hatterene",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0134.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 2,
+            "name": "Togetic",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0134.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 3,
+            "name": "Togekiss",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0134.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 4,
+            "name": "Hatterene",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0134.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          }
+        ],
+        "count": 4,
+        "basis": "native hand fan, with draw reveal evidence for newly added card",
+        "evidence_ids": [
+          "f0134.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "f0116.50",
+        "f0140.00",
+        "f0118.00",
+        "f0121.50",
+        "f0128.00",
+        "f0132.00",
+        "f0135.00",
+        "f0115.00",
+        "f0124.00",
+        "f0126.00",
+        "f0125.00"
+      ],
+      "limits": [
+        "Neither player opens a discard-pile view in this turn. Opponent unrevealed cards remain hidden."
+      ],
+      "owner_hand_count_reconciliation": "4 + normal draw1 - Aromatisse1 - Research1 + Research2 - Hattrem1 =4"
+    },
+    {
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "timing": {
+        "start_seconds": 142,
+        "end_seconds": 178,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 148,
+        "before_end_action_seconds": 171,
+        "end_after_resolution_seconds": 178,
+        "timing_precision": "approximately 0.1 to 0.5 seconds, visually located; requested seek times are not measured decoded PTS"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          },
+          {
+            "position": 2,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          },
+          {
+            "position": 3,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          },
+          {
+            "position": 4,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          }
+        ],
+        "count": 4,
+        "basis": "counted visible card backs",
+        "evidence_ids": [
+          "f0146.00"
+        ],
+        "status": "hidden_identities",
+        "limit_reason": "Opponent hand is not revealed"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Named owner start/end hand supplement applies to owner turns"
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "count distinct card-back panels/edges in native top crop",
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "limit_reason": "This field is required only at owner turn starts"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261005_031138000_iOS.MP4",
+              "timestamp_seconds": 144,
+              "evidence_ids": [
+                "f0144.00"
+              ],
+              "basis": "hidden opponent draw",
+              "limit_reason": "Opponent draws are face down"
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 144,
+          "evidence_ids": [
+            "f0144.00"
+          ],
+          "limit_reason": "Opponent normal draw identity hidden"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Zeraora",
+          "target": "opponent Bench position2",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Zeraora90HP benched,0Energy",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 148,
+          "evidence_ids": [
+            "f0148.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Tapu Koko ex Active",
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "Tapu Koko ex Active",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Third Lightning attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 150,
+          "evidence_ids": [
+            "f0150.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Electric Generator",
+          "target": "benched Lightning Pokemon if heads",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Tail at156.2s; no Energy attached; no-effect play retained",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Electric Generator item shown",
+            "Coin flip",
+            "Tail visible",
+            "Card discarded; Zeraora remains0Energy"
+          ],
+          "hand_count_after": 2,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 152.5,
+          "evidence_ids": [
+            "f0152.50"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "ability",
+          "card_name": "Greninja",
+          "target": "owner Hattrem Bench position1",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Water Shuriken20;80->60HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 161,
+          "evidence_ids": [
+            "f0161.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": "Tapu Koko ex",
+          "target": "Aromatisse Active",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Attack attempted while Confused; tails, attack did nothing",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Confusion coin flip",
+            "Tail",
+            "The attack did nothing message; no damage"
+          ],
+          "hand_count_after": 2,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 173,
+          "evidence_ids": [
+            "f0173.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": "Failed Confusion check prevents the attack name animation; selected attack identity unknown",
+          "attack_name": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "kind": "confusion_check",
+          "coin": "tails",
+          "result": "attack failed, no damage or extra Energy",
+          "timestamp_seconds": 176,
+          "evidence_ids": [
+            "f0176.00"
+          ],
+          "limit_reason": "Attempted attack name is not revealed before the failed confusion check; do not guess Mach Bolt or Plasma Hurricane"
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "turn_number_display_limit_reason": "No numeric turn banner in this retained board frame; row number is bound to chronological turn transitions",
+        "phase": "resolved boundary board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Aromatisse",
+            "variant": "Confounding Cologne 40, 90 HP",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 90,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hattrem",
+              "variant": "Disarming Voice 20, 80 HP",
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Psychic": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0146.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 2,
+              "hp_now": 40,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 20,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0146.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0146.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "Plasma Hurricane 20 / Mach Bolt 90, 130 HP",
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 130,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 40,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Confused"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Greninja",
+              "variant": "Water Shuriken / Mist Slash 60, 120 HP",
+              "bench_position": 3,
+              "hp_now": 120,
+              "hp_max": 120,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0146.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0146.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0146.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "turn_number_display_limit_reason": "No numeric turn banner in this retained board frame; row number is bound to chronological turn transitions",
+        "phase": "resolved boundary board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Aromatisse",
+            "variant": "Confounding Cologne 40, 90 HP",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 90,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0178.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hattrem",
+              "variant": "Disarming Voice 20, 80 HP",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 80,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 20,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Psychic": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0178.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 2,
+              "hp_now": 40,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 20,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0178.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0178.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0178.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "Plasma Hurricane 20 / Mach Bolt 90, 130 HP",
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 130,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 40,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Lightning": 3
+              }
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Confused"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0178.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Zeraora",
+              "variant": "Thunderclap Flash / Lightning Claw 50, 90 HP",
+              "bench_position": 2,
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0178.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Greninja",
+              "variant": "Water Shuriken / Mist Slash 60, 120 HP",
+              "bench_position": 3,
+              "hp_now": 120,
+              "hp_max": 120,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0178.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0178.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0178.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0178.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Named owner start/end hand supplement applies to owner turns"
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "f0146.00",
+        "f0178.00",
+        "f0148.00",
+        "f0150.00",
+        "f0152.50",
+        "f0161.00",
+        "f0173.00",
+        "f0144.00"
+      ],
+      "limits": [
+        "Neither player opens a discard-pile view in this turn. Opponent unrevealed cards remain hidden."
+      ]
+    },
+    {
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "timing": {
+        "start_seconds": 178,
+        "end_seconds": 207,
+        "draw_animation_end_seconds": 180.5,
+        "first_voluntary_move_seconds": 181.2,
+        "before_end_action_seconds": 195.5,
+        "end_after_resolution_seconds": 207,
+        "timing_precision": "approximately 0.1 to 0.5 seconds, visually located; requested seek times are not measured decoded PTS"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Hatterene",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0180.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 2,
+            "name": "Togetic",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0180.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 3,
+            "name": "Togekiss",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0180.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 4,
+            "name": "Hatterene",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0180.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 5,
+            "name": "Togepi",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0180.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          }
+        ],
+        "count": 5,
+        "basis": "native hand fan, with draw reveal evidence for newly added card",
+        "evidence_ids": [
+          "f0180.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Hatterene",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0180.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 2,
+            "name": "Togetic",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0180.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 3,
+            "name": "Togekiss",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0180.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 4,
+            "name": "Hatterene",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0180.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 5,
+            "name": "Togepi",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0180.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          }
+        ],
+        "count": 5,
+        "basis": "native hand fan, with draw reveal evidence for newly added card",
+        "evidence_ids": [
+          "f0180.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 2,
+        "supported_range": null,
+        "count_method": "count distinct card-back panels/edges in native top crop",
+        "basis": "direct visual count",
+        "evidence_ids": [
+          "f0180.50"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Togepi",
+              "reveal_position": 1,
+              "source_video": "20261005_031138000_iOS.MP4",
+              "timestamp_seconds": 180,
+              "evidence_ids": [
+                "f0180.00"
+              ],
+              "basis": "visible named reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 180,
+          "evidence_ids": [
+            "f0180.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Togepi",
+          "target": "owner Bench position3",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Pound20 Togepi50HP benched",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 181.2,
+          "evidence_ids": [
+            "f0181.20"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Hatterene",
+          "target": "Hattrem Bench position1",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "60/80 Hattrem evolves to130/150 Hatterene,20damage and1Psychic retained",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 186,
+          "evidence_ids": [
+            "f0186.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "retreat",
+          "card_name": null,
+          "target": "Aromatisse Active -> Hatterene",
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "discard payment",
+            "retreat_payment_by_type": {
+              "Psychic": 1
+            }
+          },
+          "result": "Aromatisse pays1Psychic; Hatterene promoted, Aromatisse moves to Bench1",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Retreat selected",
+            "1Psychic removed from Aromatisse",
+            "Hatterene selected as replacement"
+          ],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 191,
+          "evidence_ids": [
+            "f0191.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Hatterene Active",
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Hatterene Active",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Second Psychic attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 193.5,
+          "evidence_ids": [
+            "f0193.50"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": "Hatterene",
+          "target": "Tapu Koko ex Active",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Mental Crush140 total against Confused Koko; Koko knocked out; +2points",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Mental Crush70+70 against Confused",
+            "Koko90HP depleted",
+            "Koko knocked out",
+            "Owner+2points",
+            "Opponent promotes Zeraora"
+          ],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 196,
+          "evidence_ids": [
+            "f0196.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "kind": "knockout",
+          "pokemon": "Tapu Koko ex",
+          "points_awarded": 2,
+          "owner_points_after": 2,
+          "opponent_points_after": 0,
+          "timestamp_seconds": 203,
+          "evidence_ids": [
+            "f0204.00"
+          ]
+        },
+        {
+          "kind": "forced_replacement",
+          "pokemon": "Zeraora",
+          "timestamp_seconds": 206,
+          "evidence_ids": [
+            "f0206.00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "turn_number_display_limit_reason": "No numeric turn banner in this retained board frame; row number is bound to chronological turn transitions",
+        "phase": "resolved boundary board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Aromatisse",
+            "variant": "Confounding Cologne 40, 90 HP",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 90,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0180.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hattrem",
+              "variant": "Disarming Voice 20, 80 HP",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 80,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 20,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Psychic": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0180.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 2,
+              "hp_now": 40,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 20,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0180.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Psychic",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0181.50"
+            ],
+            "limit_reason": "Current Psychic generation completes just after selected pre-play hand; observed before any energy attachment"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0180.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "Plasma Hurricane 20 / Mach Bolt 90, 130 HP",
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 130,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 40,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Lightning": 3
+              }
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Confused"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0180.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Zeraora",
+              "variant": "Thunderclap Flash / Lightning Claw 50, 90 HP",
+              "bench_position": 2,
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0180.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Greninja",
+              "variant": "Water Shuriken / Mist Slash 60, 120 HP",
+              "bench_position": 3,
+              "hp_now": 120,
+              "hp_max": 120,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0180.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0180.50"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0180.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0180.50"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "turn_number_display_limit_reason": "No numeric turn banner in this retained board frame; row number is bound to chronological turn transitions",
+        "phase": "resolved boundary board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Hatterene",
+            "variant": "Mental Crush 70+70 if Confused, 150 HP",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 150,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 20,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Psychic": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0206.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Aromatisse",
+              "variant": "Confounding Cologne 40, 90 HP",
+              "bench_position": 1,
+              "hp_now": 70,
+              "hp_max": 90,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 20,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0206.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 2,
+              "hp_now": 40,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 20,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0206.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Togepi",
+              "variant": "Pound 20, 50 HP",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0206.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0206.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0206.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Zeraora",
+            "variant": "Thunderclap Flash / Lightning Claw 50, 90 HP",
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 90,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0206.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Greninja",
+              "variant": "Water Shuriken / Mist Slash 60, 120 HP",
+              "bench_position": 3,
+              "hp_now": 120,
+              "hp_max": 120,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0206.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0206.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0206.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0206.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Hatterene",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0195.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 2,
+            "name": "Togetic",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0195.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          },
+          {
+            "position": 3,
+            "name": "Togekiss",
+            "variant": null,
+            "basis": "observed card artwork/name in source, not inferred from deck",
+            "evidence_ids": [
+              "f0195.50"
+            ],
+            "limit_reason": "Exact printing not required to establish hand name"
+          }
+        ],
+        "count": 3,
+        "basis": "native hand fan, with draw reveal evidence for newly added card",
+        "evidence_ids": [
+          "f0195.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "f0180.50",
+        "f0206.00",
+        "f0181.20",
+        "f0186.00",
+        "f0191.00",
+        "f0193.50",
+        "f0196.00",
+        "f0180.00"
+      ],
+      "limits": [
+        "Neither player opens a discard-pile view in this turn. Opponent unrevealed cards remain hidden."
+      ],
+      "owner_hand_count_reconciliation": "4 + normal draw1 - Togepi1 - Hatterene1 =3; retreat and energy attachment do not remove hand cards"
+    },
+    {
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "timing": {
+        "start_seconds": 207,
+        "end_seconds": 214,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 213,
+        "before_end_action_seconds": 212,
+        "end_after_resolution_seconds": 214,
+        "timing_precision": "approximately 0.1 to 0.5 seconds, visually located; requested seek times are not measured decoded PTS"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0212.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          },
+          {
+            "position": 2,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0212.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          },
+          {
+            "position": 3,
+            "name": null,
+            "variant": null,
+            "basis": "card back",
+            "evidence_ids": [
+              "f0212.00"
+            ],
+            "limit_reason": "Opponent hand identities hidden"
+          }
+        ],
+        "count": 3,
+        "basis": "counted visible card backs",
+        "evidence_ids": [
+          "f0212.00"
+        ],
+        "status": "hidden_identities",
+        "limit_reason": "Opponent hand is not revealed"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Named owner start/end hand supplement applies to owner turns"
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "count distinct card-back panels/edges in native top crop",
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "limit_reason": "This field is required only at owner turn starts"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261005_031138000_iOS.MP4",
+              "timestamp_seconds": 210,
+              "evidence_ids": [
+                "f0210.00"
+              ],
+              "basis": "hidden opponent draw",
+              "limit_reason": "Opponent draws are face down"
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 210,
+          "evidence_ids": [
+            "f0210.00"
+          ],
+          "limit_reason": "Opponent normal draw identity hidden"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "concede",
+          "card_name": null,
+          "target": "battle",
+          "energy": {
+            "type": "none",
+            "count": 0,
+            "destination": "none",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Opponent conceded; owner victory",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261005_031138000_iOS.MP4",
+          "timestamp_seconds": 213,
+          "evidence_ids": [
+            "f0213.00"
+          ],
+          "basis": "observed action and resolved state",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "turn_number_display_limit_reason": "No numeric turn banner in this retained board frame; row number is bound to chronological turn transitions",
+        "phase": "resolved boundary board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Hatterene",
+            "variant": "Mental Crush 70+70 if Confused, 150 HP",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 150,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 20,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Psychic": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0212.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Aromatisse",
+              "variant": "Confounding Cologne 40, 90 HP",
+              "bench_position": 1,
+              "hp_now": 70,
+              "hp_max": 90,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 20,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0212.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 2,
+              "hp_now": 40,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 20,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0212.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Togepi",
+              "variant": "Pound 20, 50 HP",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0212.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0212.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0212.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Zeraora",
+            "variant": "Thunderclap Flash / Lightning Claw 50, 90 HP",
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 90,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0212.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Greninja",
+              "variant": "Water Shuriken / Mist Slash 60, 120 HP",
+              "bench_position": 3,
+              "hp_now": 120,
+              "hp_max": 120,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0212.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0212.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0212.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0212.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "turn_number_display_limit_reason": "No numeric turn banner in this retained board frame; row number is bound to chronological turn transitions",
+        "phase": "resolved boundary board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Hatterene",
+            "variant": "Mental Crush 70+70 if Confused, 150 HP",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 150,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 20,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Psychic": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0214.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Aromatisse",
+              "variant": "Confounding Cologne 40, 90 HP",
+              "bench_position": 1,
+              "hp_now": 70,
+              "hp_max": 90,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 20,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Hatenna",
+              "variant": "Stampede 10, 60 HP",
+              "bench_position": 2,
+              "hp_now": 40,
+              "hp_max": 60,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 20,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Togepi",
+              "variant": "Pound 20, 50 HP",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0214.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0214.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Zeraora",
+            "variant": "Thunderclap Flash / Lightning Claw 50, 90 HP",
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 90,
+            "hp_max_basis": "printed HP visible, no HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0214.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Greninja",
+              "variant": "Water Shuriken / Mist Slash 60, 120 HP",
+              "bench_position": 3,
+              "hp_now": 120,
+              "hp_max": 120,
+              "hp_max_basis": "printed HP visible, no HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false,
+              "basis": "small preview icon, not current-turn availability"
+            },
+            "basis": "visible large current circle and small preview icon",
+            "evidence_ids": [
+              "f0214.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0214.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0214.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Named owner start/end hand supplement applies to owner turns"
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "f0212.00",
+        "f0214.00",
+        "f0213.00",
+        "f0210.00"
+      ],
+      "limits": [
+        "Neither player opens a discard-pile view in this turn. Opponent unrevealed cards remain hidden."
+      ]
+    }
+  ],
+  "limits": [
+    "Requested seek time is not a measured decoded frame PTS.",
+    "The selected opponent attack at the failed confusion check is hidden.",
+    "Opponent hand identities not publicly revealed remain unknown.",
+    "Discard-pile UI never opened."
+  ]
+}

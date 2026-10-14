@@ -1,0 +1,42 @@
+{
+  "source_video": "20261002_215825000_iOS.MP4",
+  "source_sha256": "61fb9e041b4efa4ad31181c0cb89d94b38ad13f2bf194a48b8f606b24afb107c",
+  "reviewer": "/root/drafta_manual_215825",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_scope": "Entire360.158333s supplied recording,setup,all18turns,terminal,result",
+  "full_battle_review": true,
+  "complete_first_pass": true,
+  "independent_acceptance": "pending",
+  "classification": "computer_battle",
+  "owner_action_authorship": "Dustin manual; AutoOFF observed",
+  "auto_control_present": true,
+  "ranked_ladder_eligible": false,
+  "human_pause_games_eligible": false,
+  "online_game_entry_requested": false,
+  "outcome": "owner_win",
+  "displayed_owner_points": 3,
+  "displayed_opponent_points": 0,
+  "turns_played": 18,
+  "damage_done_displayed": 580,
+  "opponent_deck": "Mega Blastoise ex & Wailord ex Deck (Deluxe Pack: Mega)",
+  "difficulty_category": "Step-Up Battle: Advanced",
+  "difficulty_basis": "Separate batch owner screenshot and confirmation, not a filmed per-game selector",
+  "capture_status": "complete_with_recording_limits",
+  "result_evidence_ids": [
+    "F0349.00",
+    "F0358.50"
+  ],
+  "material_findings": [
+    "Turn4 Meowth heads prevents damage; Binding Snow restriction still visibly applies.",
+    "Turn6 normal Energy goes to bench Vulpix; Misty1head goes to bench Sharpedo.",
+    "Computer never attacks for damage and never reaches third Water on Active Mega Blastoise under repeated Binding Snow. Bench Wartortle reaches3Water.",
+    "First Ninetales remains undamaged with Elegant Cape180HP; takes all scored KOs."
+  ],
+  "limits": [
+    "Never opened; identities and totals not reconstructed from deck snapshot.",
+    "Art and mechanics visible, but log set IDs remain deck-source metadata.",
+    "Source-local animation timing approximately located by whole timeline; actual capture PTS are measured separately.",
+    "History establishes genealogy; underlying faces were not exposed."
+  ]
+}

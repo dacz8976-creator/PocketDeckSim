@@ -1,0 +1,5915 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261010_014541000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261010_014541000_iOS.MP4",
+      "sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "default_capture_policy": {
+    "owner_turn_offsets_after_draw_seconds": [
+      1,
+      3,
+      6
+    ],
+    "before_end_action_required": true,
+    "native_resolution_required": true,
+    "bottom_crop_height_fraction": 0.2,
+    "fixed_grid_is_turn_start_evidence": false
+  },
+  "frames": [
+    {
+      "evidence_id": "f_0039.00",
+      "role": "opening_five_before_active",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 39.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0039.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0039.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0039.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0054.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 54.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0054.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0054.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0054.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0055.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 55.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0055.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0055.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0055.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0056.00",
+      "role": "selected_owner_start_hand",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 55,
+      "requested_source_seconds": 56.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "turn_evidence/t0056.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0056.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0056.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0056.20",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 56.2,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0056.20.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0056.20_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0056.20_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0056.70",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 56.7,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0056.70.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0056.70_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0056.70_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0058.00",
+      "role": "draw_candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 55,
+      "requested_source_seconds": 58.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "turn_evidence/t0058.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0058.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0058.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0058.70",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 58.7,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0058.70.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0058.70_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0058.70_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0061.00",
+      "role": "draw_candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 55,
+      "requested_source_seconds": 61.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "turn_evidence/t0061.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0061.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0061.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0061.70",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 61.7,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0061.70.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0061.70_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0061.70_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0067.00",
+      "role": "before_end_action_hand",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 67.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0067.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0067.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0067.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0070.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 70.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0070.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0070.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0070.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0074.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 74.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0074.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0074.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0074.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0078.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 78.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0078.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0078.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0078.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0084.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 84.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0084.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0084.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0084.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0088.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 88.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0088.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0088.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0088.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0092.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 92.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0092.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0092.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0092.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0104.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 104.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0104.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0104.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0104.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0106.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 106.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0106.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0106.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0106.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0114.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 114.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0114.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0114.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0114.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0122.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 122.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0122.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0122.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0122.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0124.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 124.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0124.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0124.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0124.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0125.50",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 125.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0125.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0125.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0125.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0126.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 126.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0126.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0126.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0126.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0126.50",
+      "role": "selected_owner_start_hand",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 125.5,
+      "requested_source_seconds": 126.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "turn_evidence/t0126.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0126.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0126.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0128.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 128.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0128.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0128.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0128.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0128.50",
+      "role": "draw_candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 125.5,
+      "requested_source_seconds": 128.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "turn_evidence/t0128.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0128.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0128.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0131.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 131.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0131.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0131.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0131.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0131.50",
+      "role": "draw_candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 125.5,
+      "requested_source_seconds": 131.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "turn_evidence/t0131.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0131.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0131.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0158.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 158.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0158.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0158.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0158.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0166.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 166.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0166.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0166.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0166.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0172.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 172.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0172.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0172.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0172.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0176.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 176.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0176.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0176.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0176.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0180.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 180.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0180.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0180.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0180.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0185.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 185.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0185.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0185.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0185.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0195.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 195.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0195.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0195.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0195.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0203.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 203.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0203.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0203.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0203.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0205.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 205.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0205.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0205.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0205.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0206.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 206.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0206.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0206.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0206.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0206.50",
+      "role": "selected_owner_start_hand",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 205.5,
+      "requested_source_seconds": 206.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "turn_evidence/t0206.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0206.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0206.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0208.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 208.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0208.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0208.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0208.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0208.50",
+      "role": "draw_candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 205.5,
+      "requested_source_seconds": 208.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "turn_evidence/t0208.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0208.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0208.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0209.00",
+      "role": "before_end_action_hand",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 209.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0209.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0209.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0209.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0211.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 211.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0211.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0211.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0211.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0211.50",
+      "role": "draw_candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 205.5,
+      "requested_source_seconds": 211.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "turn_evidence/t0211.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0211.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0211.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0219.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 219.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0219.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0219.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0219.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0230.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 230.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0230.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0230.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0230.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0232.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 232.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0232.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0232.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0232.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0234.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 234.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0234.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0234.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0234.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0235.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 235.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0235.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0235.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0235.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0237.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 237.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0237.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0237.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0237.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0240.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 240.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0240.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0240.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0240.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0245.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 245.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0245.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0245.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0245.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0248.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 248.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0248.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0248.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0248.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0249.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 249.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0249.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0249.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0249.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0251.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 251.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0251.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0251.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0251.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0254.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 254.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0254.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0254.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0254.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0256.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 256.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0256.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0256.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0256.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0258.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 258.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0258.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0258.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0258.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0259.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 259.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0259.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0259.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0259.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0260.00",
+      "role": "selected_owner_start_hand",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 259,
+      "requested_source_seconds": 260.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "turn_evidence/t0260.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0260.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0260.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0262.00",
+      "role": "draw_candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 259,
+      "requested_source_seconds": 262.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "turn_evidence/t0262.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0262.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0262.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0263.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 263.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0263.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0263.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0263.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0265.00",
+      "role": "draw_candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 259,
+      "requested_source_seconds": 265.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "turn_evidence/t0265.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0265.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0265.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0268.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 268.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0268.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0268.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0268.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0272.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 272.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0272.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0272.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0272.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0277.00",
+      "role": "before_end_action_hand",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 277.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0277.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0277.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0277.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0289.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 289.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0289.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0289.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0289.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0303.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 303.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0303.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0303.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0303.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0306.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 306.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0306.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0306.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0306.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0310.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 310.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0310.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0310.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0310.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0312.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 312.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0312.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0312.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0312.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0315.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 315.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0315.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0315.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0315.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0318.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 318.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0318.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0318.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0318.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0321.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 321.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0321.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0321.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0321.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0324.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 324.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0324.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0324.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0324.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0339.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 339.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0339.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0339.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0339.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0340.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 340.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0340.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0340.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0340.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0342.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 342.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0342.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0342.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0342.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0346.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 346.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0346.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0346.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0346.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0348.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 348.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0348.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0348.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0348.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0350.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 350.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0350.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0350.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0350.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0351.00",
+      "role": "selected_owner_start_hand",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 350,
+      "requested_source_seconds": 351.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "turn_evidence/t0351.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0351.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0351.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0352.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 352.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0352.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0352.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0352.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0353.00",
+      "role": "draw_candidate",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 350,
+      "requested_source_seconds": 353.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "turn_evidence/t0353.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0353.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0353.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0354.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 354.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0354.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0354.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0354.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0356.00",
+      "role": "draw_candidate",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 350,
+      "requested_source_seconds": 356.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "turn_evidence/t0356.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0356.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0356.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0357.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 357.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0357.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0357.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0357.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0374.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 374.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0374.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0374.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0374.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0376.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 376.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0376.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0376.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0376.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0380.00",
+      "role": "before_end_action_hand",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 380.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0380.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0380.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0380.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0381.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 381.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0381.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0381.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0381.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0393.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 393.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0393.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0393.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0393.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0396.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 396.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0396.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0396.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0396.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0402.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 402.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0402.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0402.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0402.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0405.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 405.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0405.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0405.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0405.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0406.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 406.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0406.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0406.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0406.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0407.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 407.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0407.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0407.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0407.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0408.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 408.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0408.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0408.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0408.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0410.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 410.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0410.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0410.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0410.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0411.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 411.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0411.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0411.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0411.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0412.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 412.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0412.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0412.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0412.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0414.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 414.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0414.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0414.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0414.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0417.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 417.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0417.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0417.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0417.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0423.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 423.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0423.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0423.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0423.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0429.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 429.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0429.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0429.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0429.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0431.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 431.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0431.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0431.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0431.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0433.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 433.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0433.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0433.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0433.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0434.00",
+      "role": "selected_owner_start_hand",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 433,
+      "requested_source_seconds": 434.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "turn_evidence/t0434.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0434.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0434.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0436.00",
+      "role": "draw_candidate",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 433,
+      "requested_source_seconds": 436.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "turn_evidence/t0436.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0436.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0436.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0437.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 437.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0437.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0437.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0437.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0439.00",
+      "role": "draw_candidate",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": 433,
+      "requested_source_seconds": 439.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "turn_evidence/t0439.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0439.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0439.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0443.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 443.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0443.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0443.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0443.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0447.00",
+      "role": "before_end_action_hand",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 447.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0447.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0447.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0447.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0451.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 451.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0451.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0451.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0451.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0460.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 460.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0460.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0460.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0460.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0461.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 461.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0461.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0461.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0461.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0462.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 462.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0462.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0462.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0462.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0472.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 472.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0472.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0472.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0472.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0473.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 473.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0473.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0473.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0473.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0473.30",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 473.3,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0473.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0473.30_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0473.30_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0473.60",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 473.6,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0473.60.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0473.60_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0473.60_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0474.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 474.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0474.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0474.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0474.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0476.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 476.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0476.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0476.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0476.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0483.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 483.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0483.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0483.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0483.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0485.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 485.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0485.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0485.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0485.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0486.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 486.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0486.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0486.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0486.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0489.00",
+      "role": "terminal_result",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 489.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0489.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0489.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0489.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0495.00",
+      "role": "native_action_or_board_evidence",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 495.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0495.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0495.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0495.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0501.00",
+      "role": "terminal_result",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 501.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0501.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0501.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0501.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0504.00",
+      "role": "terminal_result",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 504.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0504.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0504.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0504.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained source-native frame; selected hand/board facts in TURN_LEDGER",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0223.00",
+      "role": "independent_repair_event",
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 223.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0223.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0223.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0223.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": null,
+      "observation": "Independent bounded native extraction; corrected ledger cites exact supported state.",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0264.00",
+      "role": "independent_repair_event",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 264.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0264.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0264.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0264.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": null,
+      "observation": "Independent bounded native extraction; corrected ledger cites exact supported state.",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0293.00",
+      "role": "independent_repair_event",
+      "turn_number": 8,
+      "who_played": "opponent",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 293.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0293.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0293.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0293.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": null,
+      "observation": "Independent bounded native extraction; corrected ledger cites exact supported state.",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0469.00",
+      "role": "independent_repair_event",
+      "turn_number": 12,
+      "who_played": "opponent",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 469.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0469.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0469.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0469.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": null,
+      "observation": "Independent bounded native extraction; corrected ledger cites exact supported state.",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0470.00",
+      "role": "independent_repair_event",
+      "turn_number": 12,
+      "who_played": "opponent",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 470.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0470.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0470.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0470.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": null,
+      "observation": "Independent bounded native extraction; corrected ledger cites exact supported state.",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0471.00",
+      "role": "independent_repair_event",
+      "turn_number": 12,
+      "who_played": "opponent",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 471.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0471.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0471.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0471.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": null,
+      "observation": "Independent bounded native extraction; corrected ledger cites exact supported state.",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0490.00",
+      "role": "independent_repair_event",
+      "turn_number": 12,
+      "who_played": "opponent",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 490.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0490.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0490.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0490.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": null,
+      "observation": "Independent bounded native extraction; corrected ledger cites exact supported state.",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0491.00",
+      "role": "independent_repair_event",
+      "turn_number": 12,
+      "who_played": "opponent",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 491.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0491.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0491.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0491.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": null,
+      "observation": "Independent bounded native extraction; corrected ledger cites exact supported state.",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    },
+    {
+      "evidence_id": "f_0492.00",
+      "role": "independent_repair_event",
+      "turn_number": 12,
+      "who_played": "opponent",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 492.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0492.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0492.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0492.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          780
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": null,
+      "observation": "Independent bounded native extraction; corrected ledger cites exact supported state.",
+      "suitability_or_limit": "Only selected pre-play hands establish turn-start fan; later candidates may show card play/zoom"
+    }
+  ],
+  "discard_snapshots": [
+    {
+      "snapshot_id": "discard_not_shown_t1",
+      "turn_number": 1,
+      "pile_owner": "both",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": "not shown",
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "limit_reason": "Neither player's opened discard pile is shown anywhere in reviewed source"
+    },
+    {
+      "snapshot_id": "discard_not_shown_t2",
+      "turn_number": 2,
+      "pile_owner": "both",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": "not shown",
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "limit_reason": "Neither player's opened discard pile is shown anywhere in reviewed source"
+    },
+    {
+      "snapshot_id": "discard_not_shown_t3",
+      "turn_number": 3,
+      "pile_owner": "both",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": "not shown",
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "limit_reason": "Neither player's opened discard pile is shown anywhere in reviewed source"
+    },
+    {
+      "snapshot_id": "discard_not_shown_t4",
+      "turn_number": 4,
+      "pile_owner": "both",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": "not shown",
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "limit_reason": "Neither player's opened discard pile is shown anywhere in reviewed source"
+    },
+    {
+      "snapshot_id": "discard_not_shown_t5",
+      "turn_number": 5,
+      "pile_owner": "both",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": "not shown",
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "limit_reason": "Neither player's opened discard pile is shown anywhere in reviewed source"
+    },
+    {
+      "snapshot_id": "discard_not_shown_t6",
+      "turn_number": 6,
+      "pile_owner": "both",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": "not shown",
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "limit_reason": "Neither player's opened discard pile is shown anywhere in reviewed source"
+    },
+    {
+      "snapshot_id": "discard_not_shown_t7",
+      "turn_number": 7,
+      "pile_owner": "both",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": "not shown",
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "limit_reason": "Neither player's opened discard pile is shown anywhere in reviewed source"
+    },
+    {
+      "snapshot_id": "discard_not_shown_t8",
+      "turn_number": 8,
+      "pile_owner": "both",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": "not shown",
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "limit_reason": "Neither player's opened discard pile is shown anywhere in reviewed source"
+    },
+    {
+      "snapshot_id": "discard_not_shown_t9",
+      "turn_number": 9,
+      "pile_owner": "both",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": "not shown",
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "limit_reason": "Neither player's opened discard pile is shown anywhere in reviewed source"
+    },
+    {
+      "snapshot_id": "discard_not_shown_t10",
+      "turn_number": 10,
+      "pile_owner": "both",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": "not shown",
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "limit_reason": "Neither player's opened discard pile is shown anywhere in reviewed source"
+    },
+    {
+      "snapshot_id": "discard_not_shown_t11",
+      "turn_number": 11,
+      "pile_owner": "both",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": "not shown",
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "limit_reason": "Neither player's opened discard pile is shown anywhere in reviewed source"
+    },
+    {
+      "snapshot_id": "discard_not_shown_t12",
+      "turn_number": 12,
+      "pile_owner": "both",
+      "source_video": "20261010_014541000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": "not shown",
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "limit_reason": "Neither player's opened discard pile is shown anywhere in reviewed source"
+    }
+  ],
+  "scheduled_capture_limits": [
+    "Later +3/+6 candidates commonly show actions; clearest pre-play candidate or denser earlier frame selected",
+    "Actual frame PTS was not measured; requested seek timestamp retained"
+  ]
+}

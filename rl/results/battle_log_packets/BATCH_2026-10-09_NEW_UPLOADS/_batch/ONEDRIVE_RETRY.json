@@ -1,0 +1,27 @@
+{
+  "checked_at_utc": "2026-10-10T03:08:12.839290+00:00",
+  "note": "Bounded read check after starting OneDrive; a successful header read alone is not complete source verification.",
+  "results": [
+    {
+      "video": "20261009_195432000_iOS.MP4",
+      "readable_first_64_bytes": true,
+      "exit_code": 0,
+      "output": "0000001c667479706d7034320000000169736f6d6d7034316d703432000000016d6461740000000012aa93050000003b4e01053247564adc5c4c433f94efc511",
+      "error": ""
+    },
+    {
+      "video": "20261009_222100000_iOS.MP4",
+      "readable_first_64_bytes": true,
+      "exit_code": 0,
+      "output": "0000001c667479706d7034320000000169736f6d6d7034316d703432000000016d64617400000000138fd4920000003b4e01053247564adc5c4c433f94efc511",
+      "error": ""
+    },
+    {
+      "video": "20261009_222740000_iOS.MP4",
+      "readable_first_64_bytes": true,
+      "exit_code": 0,
+      "output": "0000001c667479706d7034320000000169736f6d6d7034316d703432000000016d646174000000001ce5715c0000003b4e01053247564adc5c4c433f94efc511",
+      "error": ""
+    }
+  ]
+}

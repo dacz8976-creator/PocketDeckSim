@@ -1,0 +1,56 @@
+{
+  "source_filename": "20261009_195029000_iOS.MP4",
+  "sha256": "8b069aade34fbba5615a4f500ab0aa5a150ae8c823be6aa23ca18d5f0a9ddc48",
+  "reviewer": "review_195029",
+  "classification": "computer_battle_auto_enabled",
+  "outcome": "defeat",
+  "turns_played": 8,
+  "final_points": {
+    "owner": 1,
+    "opponent": 3
+  },
+  "unresolved": [
+    {
+      "time_seconds": 30,
+      "issue": "Some Copycat draw cards are shown rapidly; the report names only readable reveals and does not claim the complete new hand.",
+      "impact": "No outcome or turn coverage impact."
+    },
+    {
+      "time_seconds": 55,
+      "issue": "Exact allocation of every opponent Energy Zone attachment and unrevealed hand card is not completely readable.",
+      "impact": "Visible attacks, HP changes and points remain established."
+    },
+    {
+      "time_seconds": 141,
+      "issue": "Small owner Energy icons are difficult to count exactly; visible Sandshrew attack is established.",
+      "impact": "No outcome impact."
+    }
+  ],
+  "consequential_checks": [
+    {
+      "time_seconds": 107,
+      "finding": "Lucky Ice Pop coin is tails after healing 20; the card does not return to hand."
+    },
+    {
+      "time_seconds": 125,
+      "finding": "Iron Thorns Binary Thunder KOs Hitmonchan ex; opponent gains two points."
+    },
+    {
+      "time_seconds": 146,
+      "finding": "Sandshrew Double Scratch flips two heads and deals 60 after Weakness, KOing Iron Thorns; owner gains one point."
+    },
+    {
+      "time_seconds": 173,
+      "finding": "Magnezone ex Storm Blade deals 130 and KOs Sandshrew; opponent reaches three points."
+    },
+    {
+      "time_seconds": 187,
+      "finding": "Result screen states Defeat versus Miraidon ex Deck (Deluxe Pack: Mega), eight turns, owner one point, opponent three, owner damage 160."
+    },
+    {
+      "time_seconds": 54.5,
+      "finding": "Opponent turn 2 uses Poke Ball twice, followed by benching a second Iron Thorns and Magnemite. Search returns stay face-down; the source does not independently establish which search supplied which card."
+    }
+  ],
+  "external_log_routing": "Exclude from ranked Ladder Log and human-only Pause Games log."
+}

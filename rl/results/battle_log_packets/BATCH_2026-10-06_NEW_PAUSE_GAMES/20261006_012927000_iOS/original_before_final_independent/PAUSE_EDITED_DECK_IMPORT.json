@@ -1,0 +1,102 @@
+{
+  "collection": "pause_decks",
+  "existing_artifact": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "external_saved": false,
+  "operation": "Create only the missing filmed-edit definition after acceptance; preserve all existing decks and games.",
+  "documents": [
+    {
+      "document_id": "filmed-edit-cee45d5d45cb",
+      "fields": {
+        "name": "Snorlax ex / Team Rocket's Persian / Silvally (Darkness revision)",
+        "energy": "Darkness",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed edit",
+        "order": 113,
+        "note": "Continuous filmed edit between games replaces ordinary Meowth/Persian with Team Rocket versions, removes Terapagos ex, splits Silvally into Gold Breaker and Brave Buddies, adds two Soothing Shore, and sets Darkness only. No revised QR was filmed. Semantic references do not assert the filmed artwork.",
+        "code": "",
+        "source": "20261006_012927000_iOS.MP4 game2, continuous edit420-622s; SHA-256 cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+        "cards": [
+          {
+            "n": 1,
+            "name": "Snorlax ex",
+            "kind": "Pokémon",
+            "id": "A3b 057"
+          },
+          {
+            "n": 2,
+            "name": "Team Rocket's Meowth",
+            "kind": "Pokémon",
+            "id": "B4a 060"
+          },
+          {
+            "n": 2,
+            "name": "Team Rocket's Persian",
+            "kind": "Pokémon",
+            "id": "B4a 061"
+          },
+          {
+            "n": 2,
+            "name": "Type: Null",
+            "kind": "Pokémon",
+            "id": "A3a 060"
+          },
+          {
+            "n": 1,
+            "name": "Silvally",
+            "kind": "Pokémon",
+            "id": "B4 144"
+          },
+          {
+            "n": 1,
+            "name": "Silvally",
+            "kind": "Pokémon",
+            "id": "A3a 061"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 1,
+            "name": "Field Blower",
+            "kind": "Trainer",
+            "id": "B3 147"
+          },
+          {
+            "n": 2,
+            "name": "Professor's Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          },
+          {
+            "n": 1,
+            "name": "Cyrus",
+            "kind": "Trainer",
+            "id": "A2 150"
+          },
+          {
+            "n": 1,
+            "name": "Copycat",
+            "kind": "Trainer",
+            "id": "B1 225"
+          },
+          {
+            "n": 2,
+            "name": "Soothing Shore",
+            "kind": "Trainer",
+            "id": "B4 154"
+          }
+        ]
+      }
+    }
+  ]
+}

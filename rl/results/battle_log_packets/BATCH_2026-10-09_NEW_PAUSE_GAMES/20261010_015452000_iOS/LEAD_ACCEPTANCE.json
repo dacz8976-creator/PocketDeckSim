@@ -1,0 +1,21 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-10T03:54:03.714372+00:00",
+  "source_video": "20261010_015452000_iOS.MP4",
+  "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 4,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_PAUSE_GAMES\\20261010_015452000_iOS\\independent_sol\\CHECK_RESULT.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "Initial23-deck snapshot lacked this deck. Root added the source-qualified filmed QR20 and verified its saved live card list; ../LIVE_NEW_DECKS_VERIFIED.json and updated DECK_USED.json retain the dated refresh.",
+    "No opened discard views; hidden opponent cards and exact printings uncertain.",
+    "Queue subtype not shown; human matchmaking and no Auto control visible."
+  ],
+  "outcome": "Win: opponent conceded on turn4;0–0points; Victory result",
+  "external_status": "Source-qualified live deck definitions have been saved and read back. This game save is pending; dated deck retrieval and any unverified earlier version are preserved in DECK_USED.json.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

@@ -1,0 +1,53 @@
+{
+  "checked_at_utc": "2026-10-13T04:46:16.257881+00:00",
+  "reviewer": "/root/check_newest_030351",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "source_video": "20261013_030351000_iOS.MP4",
+  "source_sha256": "d0a221cd236c620f467bbf34ad8078fd59c72323a7dca71a4af344f0489c6c7f",
+  "accepted": true,
+  "required_repairs": [],
+  "checked_file_sha256": {
+    "REVIEW.md": "9f1ab44628569c6d02e2f2c058926bd3861671f66ef067ac9b7ecdafe3ca2e6d",
+    "COVERAGE.md": "3ccf5fdfd3284ea02374b711ba9ba8e86cf2f70bb0e92073755e05d4e9ddf747",
+    "SUMMARY.json": "2e72fe83246a2d906baf9d02bc1a5432a232fc7f5da2ee90823e9a56163da5aa",
+    "UNCERTAINTIES.json": "bc1b4f317258eb8d39177342a2866c9a5c725bc142ba57b51c68021dbfc20156",
+    "PAUSE_GAME.json": "8839544c044ab517716cd5e4daf459b114a1eda1296b972ee0ffd3c763f01c6e",
+    "DECK_USED.json": "31aa412c2d23d9c47b95de955e45ca8854c15cd3c9972968d11e76fac123ee07",
+    "TURN_LEDGER.json": "98593e65bf74a607abd946d4e526a06f6bfdff253f699502f47b81fdd26795b3",
+    "TURN_EVIDENCE.json": "5458f80bb5f80156a507739cdeb10b3bee4a6d458785957bdb4e86d85bb71660"
+  },
+  "checked_files": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SUMMARY.json",
+    "UNCERTAINTIES.json",
+    "PAUSE_GAME.json",
+    "DECK_USED.json",
+    "TURN_LEDGER.json",
+    "TURN_EVIDENCE.json"
+  ],
+  "input_files_stable_during_final_validation": true,
+  "structural_validator": "VALIDATOR_FINAL.json",
+  "bounded_independent_check_report": "SOURCE_CHECKS.md",
+  "rejected_inputs_receipt": "REJECTED_INPUT_RECEIPT.json",
+  "scope": "Read all eight final files and bounded native source checks of opening, ordinary T11 first action/hand/count/warning, draw/search order, fan counts, discard, consequential HP/Energy/points and terminal outcome. No second full video pass.",
+  "capture_status": "complete_with_recording_limits",
+  "limitations": [
+    "Full-battle coverage is primary16-turn account reconciled against all files, with selected source checks, not independently repeated full pass.",
+    "Initial live26deck catalog lacks QR; exact20 semantic filmed list is independently decoded; later saved live-list supplement remains lead task.",
+    "Hidden opponent identities, unavailable periodic discard views, qualified hand frames and exact printing/artwork/rarity remain recorded limits.",
+    "Requested seek seconds remain approximate; actual frame PTS unmeasured."
+  ],
+  "lead_acceptance": false,
+  "checked_input_sha256": {
+    "REVIEW.md": "9f1ab44628569c6d02e2f2c058926bd3861671f66ef067ac9b7ecdafe3ca2e6d",
+    "COVERAGE.md": "3ccf5fdfd3284ea02374b711ba9ba8e86cf2f70bb0e92073755e05d4e9ddf747",
+    "SUMMARY.json": "2e72fe83246a2d906baf9d02bc1a5432a232fc7f5da2ee90823e9a56163da5aa",
+    "UNCERTAINTIES.json": "bc1b4f317258eb8d39177342a2866c9a5c725bc142ba57b51c68021dbfc20156",
+    "PAUSE_GAME.json": "8839544c044ab517716cd5e4daf459b114a1eda1296b972ee0ffd3c763f01c6e",
+    "DECK_USED.json": "31aa412c2d23d9c47b95de955e45ca8854c15cd3c9972968d11e76fac123ee07",
+    "TURN_LEDGER.json": "98593e65bf74a607abd946d4e526a06f6bfdff253f699502f47b81fdd26795b3",
+    "TURN_EVIDENCE.json": "5458f80bb5f80156a507739cdeb10b3bee4a6d458785957bdb4e86d85bb71660"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "requested_utc": "2026-10-10T03:18:03.396696+00:00",
+  "owner_request": "Uploaded new videos to be processed. I believe all the newest ones are against humans and should be logged in the pause logs",
+  "selected_sources": [
+    "20261010_012303000_iOS.MP4",
+    "20261010_013009000_iOS.MP4",
+    "20261010_014541000_iOS.MP4",
+    "20261010_015452000_iOS.MP4",
+    "20261010_015821000_iOS.MP4",
+    "20261010_020258000_iOS.MP4",
+    "20261010_020908000_iOS.MP4",
+    "20261010_021629000_iOS.MP4"
+  ],
+  "excluded_existing_assignments": [
+    {
+      "Video": "20261009_195432000_iOS.MP4",
+      "Status": "In progress",
+      "Review scope": "Full visual review of entire source, all recorded matches/turns through terminal result; independent bounded Sol verification and lead acceptance before archival",
+      "Location": "20261009_195432000_iOS.MP4",
+      "Notes": "Owner requested retry after source access restored. Fresh compact Sol full review, separate independent Sol verification, lead integration. Existing accepted reviews and paused older backlog excluded.",
+      "Review evidence": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_UPLOADS\\20261009_195432000_iOS\\SOURCE.json"
+    },
+    {
+      "Video": "20261009_222100000_iOS.MP4",
+      "Status": "In progress",
+      "Review scope": "Full visual review of entire source, all recorded matches/turns through terminal result; independent bounded Sol verification and lead acceptance before archival",
+      "Location": "20261009_222100000_iOS.MP4",
+      "Notes": "Owner requested retry after source access restored. Fresh compact Sol full review, separate independent Sol verification, lead integration. Existing accepted reviews and paused older backlog excluded.",
+      "Review evidence": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_UPLOADS\\20261009_222100000_iOS\\SOURCE.json"
+    },
+    {
+      "Video": "20261009_222740000_iOS.MP4",
+      "Status": "In progress",
+      "Review scope": "Full visual review of entire source, all recorded matches/turns through terminal result; independent bounded Sol verification and lead acceptance before archival",
+      "Location": "20261009_222740000_iOS.MP4",
+      "Notes": "Owner requested retry after source access restored. Fresh compact Sol full review, separate independent Sol verification, lead integration. Existing accepted reviews and paused older backlog excluded.",
+      "Review evidence": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_UPLOADS\\20261009_222740000_iOS\\SOURCE.json"
+    }
+  ],
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "classification_rule": "Visible Auto option, even OFF, means computer; no external human entry.",
+  "scope": "Only these newly requested sources. Full review, Pause Games supplement, independent acceptance, verified external log and archive.",
+  "lead_only_shared_writes": true
+}

@@ -1,0 +1,49 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-10-01T23:59:45.771559+00:00",
+  "source_video": "20261001_210403000_iOS.MP4",
+  "source_sha256": "57dd0af85e1ae6c148dea79e6dcab38cdfdede707f15d25d468b821a1d55c993",
+  "reviewer": "/root",
+  "first_pass": "sol_rules_20261001_210403000",
+  "first_pass_model": "gpt-6.1-sol",
+  "first_pass_effort": "high",
+  "completion_status": "full_battle_review_complete",
+  "scope": "Entire 465.875488-second Solo rules-test battle, setup through all 20 turns and final Victory",
+  "coverage_checked": true,
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "ladder_eligible": false,
+  "outcome_description": "Victory, 3-2 points; 20 turns",
+  "key_findings": [
+    "Will did not force the separate Confusion check to heads. The check was tails and the selected attack failed.",
+    "No Victory Star reroll was offered after the observed failed Confusion check; HP and seven Fire Energy stayed unchanged.",
+    "Double Smash dealt 60 with one head against Bronzong: 40 doubled by Bounded Field, then reduced by Guard Press 20. The reversed order would have produced 40.",
+    "Bounded Field's Mega exception concerns the attacker. Both attackers tested here were non-Mega Pokemon.",
+    "An empty deck skipped the draw while play continued to the knockout win."
+  ],
+  "limitations": [
+    "This recording does not test Will on an accepted Victory Star replacement sequence; the separate first recording does.",
+    "No Mega-attacker interaction or general ordering of every damage modifier was tested.",
+    "Hidden cards and policy intentions beyond the stated test scope remain unknown."
+  ],
+  "lead_evidence": [
+    "LEAD_CHECK_1.jpg",
+    "LEAD_CHECK_2.jpg",
+    "native/t0386.00.jpg",
+    "native/t0404.00.jpg"
+  ],
+  "lead_checks": [
+    "Read full REVIEW, COVERAGE, SUMMARY and UNCERTAINTIES and reconciled every supplied phase through20turns.",
+    "4 opening AI identity;123 Giant Cape +20,130 X Speed retreat reduction,142 settled Bibarel130/Moltres70 ordinary states verified.",
+    "102 Victory Star printed shared once-per-turn limit,110 reroll three tails and two Victini visible independently inspected.",
+    "376 actual Will,378 effect confirmation,380 selected attack,386 explicit Confused tails,387 attack did nothing and389 opponent turn:110HP and7Fire unchanged verified.",
+    "404 Guard Press printed60/reduce20;406 owner50;412 incoming Darmanitan120 and Moltres retreat;420 one-head40 attack;424 damage60;426 Bronzong120->60 verified.",
+    "447 unshielded Netherwing260;454 third owner point/opponent2;463 Solo Random Battle Advanced Victory verified."
+  ],
+  "astra_check": {
+    "report": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-01_RULES\\ASTRA_CHECK.md",
+    "model": "gpt-6-astra",
+    "effort": "high",
+    "decision": "All three bounded findings supported with explicit scope limits"
+  }
+}

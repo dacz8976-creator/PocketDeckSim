@@ -1,0 +1,55 @@
+{
+  "source_basename": "20261009_223237000_iOS.MP4",
+  "source_sha256": "7766e17b4e1141a72066e101b80869550bae11f72aa064951dfd7d23e8579f3f",
+  "source_bytes": 567700019,
+  "duration_seconds": 308.721667,
+  "reviewer": "root-hitback-heavyhelmet-20261009/helmet_full_review",
+  "scope": "Complete available recording: menu, setup, all 15 turns, terminal victory and result",
+  "worker_review_complete": true,
+  "lead_acceptance": "pending separate lead record",
+  "independent_acceptance": "pending separate Sol record",
+  "classification": {
+    "owner_designation": "rules test",
+    "observed": "computer battle",
+    "evidence": ["Melmetal Deck (Eevee Grove) menu", "AI versus label", "Auto control visible"],
+    "owner_auto_initially": "off",
+    "owner_auto_enabled_approximately_seconds": 218.5,
+    "primary_test_auto": "off",
+    "later_turns_auto": "on",
+    "ladder_eligible": false,
+    "pause_games_eligible": false
+  },
+  "outcome": {
+    "owner": "Dacz8976",
+    "opponent": "Melmetal Deck (Eevee Grove), AI",
+    "owner_result": "victory",
+    "owner_points": 3,
+    "opponent_points": 0,
+    "turns_played": 15,
+    "owner_went_first": true,
+    "reported_damage_done": 380,
+    "card_of_the_game": "Wailord ex",
+    "result_evidence": ["dense/sec_298.jpg", "dense/sec_302.jpg", "dense/sec_309.jpg"]
+  },
+  "primary_finding": {
+    "observed": "Heavy Helmet reduced this Bristling Spikes 30 return to 10 on active Wailmer",
+    "attacking_pokemon": "Wailmer, 100 maximum HP, Wave Splash60, 3Water cost, retreat3",
+    "defending_pokemon": "Togedemaru, 80 maximum HP, Bristling Spikes30, 2Metal attached",
+    "tool": "Heavy Helmet",
+    "supplied_card_ids": {"Wailmer": "B4 036", "Togedemaru": "A3b 048", "Heavy Helmet": "B1 219"},
+    "card_id_limit": "Relevant visible characteristics match; tiny exact collection numbers not independently read",
+    "positive_control": {"attack_time_approx_seconds": 186.5, "printed_damage": 30, "observed_damage": 10, "wailmer_hp_before": 100, "wailmer_hp_after": 90, "evidence": ["frames/overview_038.jpg", "dense/sec_188.jpg", "independent_sol/exact_187.5s.jpg"]},
+    "owner_reply": {"attack_time_approx_seconds": 208.5, "attack": "Wave Splash", "damage": 60, "togedemaru_hp_before": 80, "togedemaru_hp_after": 20, "owner_water_energy": 5},
+    "return": {"time_approx_seconds": 212.5, "printed_return": 30, "observed_return": 10, "wailmer_hp_before": 90, "wailmer_hp_after": 80, "helmet_glow_visible": true, "evidence": ["frames/overview_043.jpg", "frames/overview_044.jpg", "dense/sec_213.jpg", "dense/sec_214.jpg", "independent_sol/exact_212.5s.jpg", "independent_sol/exact_214s.jpg"]},
+    "interpretation": "For this specific recorded pair, the reduction also applies to the attack-created return damage",
+    "generalization_limit": "Does not establish all attack triggers, other return cards, ability damage or other defensive modifiers",
+    "simulation": "none"
+  },
+  "supporting_repeats": [
+    {"turn": 13, "attacker": "Wailord ex with retained Heavy Helmet", "attack": "Wondrous Waves100", "target_before_hp": 20, "target_after_hp": 0, "return_damage": 10, "attacker_hp_before_return": 250, "attacker_hp_after_return": 240, "time_approx_seconds": 259.5},
+    {"turn": 15, "attacker": "Wailord ex with retained Heavy Helmet", "attack": "Wondrous Waves100", "target_before_hp": 80, "target_after_hp": 0, "return_damage": 10, "attacker_hp_before_return": 250, "attacker_hp_after_return": 240, "time_approx_seconds": 292.5}
+  ],
+  "coverage": {"all_source_intervals_reviewed": true, "global_turns": 15, "source_frames_retained": 371, "sampling": "62 overview frames at fps1/5 plus309 native frames at fps1; targeted individual and exact-seek checks", "remaining_unreviewed_intervals": []},
+  "uncertainties": ["Hidden opponent draws and unrevealed hand/deck cards", "Exact20-card owner deck not fully shown", "Individual random Poke Ball search identities on turn2 not established from animations alone", "Ordinary timestamps are approximate sample-centered source times; decisive exact-seek evidence is separate"],
+  "files": ["SOURCE.json", "REVIEW.md", "COVERAGE.md", "wailmer_cost_native.jpg", "opponent_bench_native.jpg"]
+}

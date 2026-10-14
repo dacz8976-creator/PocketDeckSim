@@ -1,0 +1,22 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20260930_155635000_iOS.MP4",
+  "source_sha256": "a2bccb37d07e74872afe49c51c5ee5a6ad9199703d25a6cde6f97701ef25ff9a",
+  "scope": "Complete eleven-turn 204.473333-second autopilot computer battle, setup through Mega Swampert's attack and Energy losses, terminal Mega knockout and explicit results",
+  "first_pass": "gpt-6.1-sol/high /root/sol_auto_155635",
+  "lead_checks": "Read full review, coverage, summary and uncertainties. Independently inspected opening sheet AI/second/Auto;79-second Mega Swampert card text, three-Water cost, two-random-Energy effect and three-point rule;114-second ordinary Frogadier evolution;138.3-second three-head/one-tail panel;139.5-second Mega120HP during Water removal;173.5-second Mega10HP/twoWater and held Mega Slowbro;186-second zeroHP and one remaining Water;201-second named Defeat, eleven turns,1-3 and190damage. Full account consistently separates Research draws from later plays and coin heads from actual available Energy discards.",
+  "outcome": "owner_loss",
+  "final_points": {"owner": 1, "opponent": 3},
+  "owner_visible_core": "Mudkip / Mega Swampert ex / Froakie / Frogadier",
+  "opponent": "AI Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega)",
+  "last_turn": 11,
+  "useful_finding": "Mega Swampert's 150-damage knockout discards two of its own Water. Typhlosion's three heads remove only the two available Water, while later tails removes none. Swampert never rebuilds to its three-Water attack cost and its single knockout awards the opponent three points. Research draws Rare Candy, which is held rather than played.",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "limitations": "Root verification is bounded. Hidden cards, exact random-selection order and fine timing remain unknown. The visible Energy constraint does not establish a guaranteed winning alternative or simulator defect.",
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; excluded by owner instruction",
+  "astra_consulted": false,
+  "astra_reason": "Readable card text and targeted state/coin frames resolved the consequential interactions"
+}

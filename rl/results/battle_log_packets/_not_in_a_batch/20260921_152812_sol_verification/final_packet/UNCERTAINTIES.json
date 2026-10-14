@@ -1,0 +1,34 @@
+{
+  "unreviewed_turns": [],
+  "items": [
+    {
+      "id": "mode",
+      "interval": "00:00.000-05:04.803",
+      "status": "unknown",
+      "detail": "The source labels the opponent Opponent. Solo versus PvP and opponent AI status are not independently established. Auto is visibly off, consistent with the owner's statement that this battle was manual."
+    },
+    {
+      "id": "opponent_poke_ball_result",
+      "interval": "03:16.400-03:19.800",
+      "status": "not_publicly_identified",
+      "detail": "Opponent plays Poke Ball, but the inspected sequence does not publicly identify an obtained card or show an explicit no-target message. No additional Pokemon is Benched. Do not infer a named hidden card or a failed search."
+    },
+    {
+      "id": "hidden_state",
+      "interval": "00:00.000-05:04.803",
+      "status": "outside_observable_scope",
+      "detail": "Hidden opponent cards, exact complete deck lists, and strategic intent are not reconstructed. Card printings are identified only where visible attack names, HP or card art support them."
+    },
+    {
+      "id": "results_screen",
+      "interval": "05:02.400-05:04.803",
+      "status": "recording_limitation_nonblocking",
+      "detail": "The recording ends during the third-point award, with 1, 2, 3 visible at 05:04.750. A literal Victory/results screen is absent. Player win at 3-0 is established by the final KO, empty opponent board, and third point."
+    },
+    {
+      "id": "timestamp_precision",
+      "status": "approximate_event_boundaries",
+      "detail": "Listed frame timestamps are exact requested sample positions, decoded to the first frame at or after that position. Event start/end wording is approximate unless bracketed by reviewed frames. This is not a frame-exact transaction log."
+    }
+  ]
+}

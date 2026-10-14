@@ -1,0 +1,32 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-10-03T00:46:46.757926+00:00",
+  "accepted_by": "/root",
+  "source_video": "20261002_210612000_iOS.MP4",
+  "source_sha256": "9dcc8b0fab462433546cc35161d2a5e92ada7a571f4bbff6020ad99fbb72ad03",
+  "guide_update_checked": true,
+  "independent_reviewer": "/root/ind_drafta_205731",
+  "independent_model": "gpt-6.1-sol",
+  "independent_check": "independent_repair_sol/CHECK_GUIDE_UPDATE.json",
+  "independent_check_sha256": "082b13f2cdbc56be94a422357913c7eee60482599abf4d3c4861a6d68efcb0f7",
+  "checked_submission_manifest": "GUIDE_UPDATE_SUBMISSION.json",
+  "checked_submission_manifest_sha256": "12c1993dc35751eba18ed7b69174b1a5c85f7ebe384803614bcca60dabe4fb47",
+  "accepted_files": {
+    "GUIDE_UPDATE_SUPPLEMENT.json": "28d97627e52be0e7e16504391c2fa517675508f134a69219fe26f94f43578b87",
+    "GUIDE_UPDATE_SUPPLEMENT.md": "40a11f6ed4269de6a5273772ca5811ad722b77c3891d038ba99f8ab496227b54",
+    "SEEN_CARD_INVENTORY.json": "086e0556dbd64a339b5187255d2ebe10f9f0fa7901f1af13e4af29e37db925a8",
+    "SEEN_CARD_INVENTORY.md": "ca99a3abee49bf03e2dc606b65f8d1f74ee45106b63238f84b64228b0ca46a9d"
+  },
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "limits": [
+    "Hidden opponent hand and unopened discard/deck piles are not reconstructed. Lower evolution faces are hidden in selected starts; stacks rely on directly witnessed same-source evolution history and explicitly qualified retention.",
+    "Decision maker means source-visible Auto control and recorded transitions; UI status cannot establish unrecorded physical taps or input telemetry.",
+    "Seen-card counts are lower bounds on distinct physical copies supported by observations and transaction continuity. Repeated sightings alone do not add copies. Exact20 owner deck snapshot is separate.",
+    "Guide supplement checked through retained native frames and prior complete source coverage. No new movie decode/hash; no older recording reopened. Local batch/index only; neither human Pause Games nor Ladder."
+  ],
+  "guide_source_receipt": "../GUIDE_UPDATE_RECEIPT.json",
+  "scope": "Only these eight current same-card computer comparison games; older packets untouched",
+  "actual_destination": "local_review_batch_and_BATTLE_REVIEW_INDEX",
+  "external_game_entry_requested": false
+}

@@ -1,0 +1,328 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261005_033529000_iOS",
+  "sources": [
+    {
+      "video_basename": "20261005_033529000_iOS.MP4",
+      "sha256": "e272b0c74f6a863c68811a235d7b9611b14994611365e58694028f323afaea3d",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "filmed_deck_label": "New deck 6",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": null,
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": [
+    {
+      "entity_kind": "trainer",
+      "entity_id": 30,
+      "name": "Poké Ball",
+      "count": 2,
+      "functional_ids": [
+        "1b20901befde"
+      ],
+      "variant": "Semantic entity; QR does not identify printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 480,
+      "name": "Rare Candy",
+      "count": 2,
+      "functional_ids": [
+        "87829fe1a8c1"
+      ],
+      "variant": "Semantic entity; QR does not identify printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1060,
+      "name": "Lucky Ice Pop",
+      "count": 2,
+      "functional_ids": [
+        "15c19aaaf9a4"
+      ],
+      "variant": "Semantic entity; QR does not identify printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 730,
+      "name": "Steel Apron",
+      "count": 1,
+      "functional_ids": [
+        "bfa61242f8ff"
+      ],
+      "variant": "Semantic entity; QR does not identify printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1090,
+      "name": "Metal Core Barrier",
+      "count": 2,
+      "functional_ids": [
+        "7a91147d1f38"
+      ],
+      "variant": "Semantic entity; QR does not identify printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 40,
+      "name": "Professor’s Research",
+      "count": 2,
+      "functional_ids": [
+        "c0015440f616"
+      ],
+      "variant": "Semantic entity; QR does not identify printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 990,
+      "name": "Copycat",
+      "count": 1,
+      "functional_ids": [
+        "d5d2b111c197"
+      ],
+      "variant": "Semantic entity; QR does not identify printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 9800,
+      "name": "Skarmory ex",
+      "count": 2,
+      "functional_ids": [
+        "8a230e2b97e9"
+      ],
+      "variant": "Semantic entity; QR does not identify printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 12520,
+      "name": "Honedge",
+      "count": 2,
+      "functional_ids": [
+        "eb882c5645d4"
+      ],
+      "variant": "Semantic entity; QR does not identify printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 12530,
+      "name": "Doublade",
+      "count": 1,
+      "functional_ids": [
+        "2a3ec132a111"
+      ],
+      "variant": "Semantic entity; QR does not identify printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 12540,
+      "name": "Aegislash",
+      "count": 1,
+      "functional_ids": [
+        "defd7e79be5e"
+      ],
+      "variant": "Cursed Metal / Slicing Blade"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 14860,
+      "name": "Aegislash",
+      "count": 1,
+      "functional_ids": [
+        "16869cb2ead0"
+      ],
+      "variant": "Superb Shield"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 15860,
+      "name": "Orthworm",
+      "count": 1,
+      "functional_ids": [
+        "4cfdfc83b22f"
+      ],
+      "variant": "Semantic entity; QR does not identify printing"
+    }
+  ],
+  "energy_configuration_from_log": null,
+  "actual_card_count": 20,
+  "capture_source_text_or_image": "qr_intake/QR_DECODE_0001.00.json; native editor at 3 seconds",
+  "game_version_binding_basis": "Uninterrupted filmed QR at 1s → New deck 6 editor at 3s → New deck 6 selected at event screen 4s → opponent search 5s → game. No deck edit/selection change observed.",
+  "conflicts_with_filmed_cards": [],
+  "exact_list_status": "filmed_qr_exact_semantic_20_bound_to_game; matching_live_log_version_missing",
+  "filmed_semantic_slots_in_qr_order": [
+    {
+      "position": 1,
+      "name": "Poké Ball",
+      "entity_id": 30,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 2,
+      "name": "Poké Ball",
+      "entity_id": 30,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 3,
+      "name": "Rare Candy",
+      "entity_id": 480,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 4,
+      "name": "Rare Candy",
+      "entity_id": 480,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 5,
+      "name": "Lucky Ice Pop",
+      "entity_id": 1060,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 6,
+      "name": "Lucky Ice Pop",
+      "entity_id": 1060,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 7,
+      "name": "Steel Apron",
+      "entity_id": 730,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 8,
+      "name": "Metal Core Barrier",
+      "entity_id": 1090,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 9,
+      "name": "Metal Core Barrier",
+      "entity_id": 1090,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 10,
+      "name": "Professor’s Research",
+      "entity_id": 40,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 11,
+      "name": "Professor’s Research",
+      "entity_id": 40,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 12,
+      "name": "Copycat",
+      "entity_id": 990,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 13,
+      "name": "Skarmory ex",
+      "entity_id": 9800,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 14,
+      "name": "Skarmory ex",
+      "entity_id": 9800,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 15,
+      "name": "Honedge",
+      "entity_id": 12520,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 16,
+      "name": "Honedge",
+      "entity_id": 12520,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 17,
+      "name": "Doublade",
+      "entity_id": 12530,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 18,
+      "name": "Aegislash",
+      "entity_id": 12540,
+      "variant": "Cursed Metal / Slicing Blade",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 19,
+      "name": "Aegislash",
+      "entity_id": 14860,
+      "variant": "Superb Shield",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    },
+    {
+      "position": 20,
+      "name": "Orthworm",
+      "entity_id": 15860,
+      "variant": "Semantic entity; QR does not identify printing",
+      "basis": "Retained filmed QR decode with catalog resolution, source hash bound"
+    }
+  ],
+  "filmed_energy_configuration": [
+    "Metal"
+  ],
+  "log_snapshot_status": "Initial nine-deck batch snapshot has no matching version. Source-qualified deck entry is prepared locally only.",
+  "exact_20_log_snapshot_available": false,
+  "limits": [
+    "The 20 slots above are filmed QR order, not Pause Games live-log order.",
+    "QR does not determine artwork, rarity, exact printing or hidden hand order.",
+    "Both Aegislash functional versions are distinct. Green/silver Skarmory and gold/ordinary Barrier artwork are visually distinguished in hand evidence only.",
+    "Required matching dated live-log list/version remains unavailable; no external log entry made by worker."
+  ],
+  "initial_log_snapshot": {
+    "retained_path": "LIVE_DECK_SNAPSHOT_AT_INTAKE.json",
+    "sha256": "f886698321bbdf67c06a17fe4d54a4ef2e1d464f02d972690383c64826432a28",
+    "retrieved_utc": "2026-10-06T17:07:52.454484+00:00",
+    "deck_names_checked": [
+      "Wailord / Indeedee wall",
+      "Mega Blaziken tournament list",
+      "Mega Manectric / Heliolisk",
+      "Alolan Ninetales / Raticate",
+      "Brew 7: Hoopa / Darkrai / Sableye",
+      "Draft A: Shark Tempo",
+      "Draft B: Tide Heal",
+      "Draft C: Meowstic / Hatterene v2",
+      "Draft D: Entei / Grimhound"
+    ],
+    "matching_decks_with_Skarmory_ex": [],
+    "basis": "Parsed every captured live-deck card list; none contains the filmed Skarmory ex core, so none can be this exact semantic 20."
+  }
+}

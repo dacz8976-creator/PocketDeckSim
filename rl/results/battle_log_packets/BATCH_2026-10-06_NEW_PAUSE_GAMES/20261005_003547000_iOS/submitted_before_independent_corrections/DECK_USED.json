@@ -1,0 +1,309 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261005_003547000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261005_003547000_iOS.MP4",
+      "sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "filmed_deck_name": "New deck 6",
+  "descriptive_filmed_deck_name": "Wailord / Mega Sharpedo ex / Suicune ex",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-06T17:07:52.454484+00:00",
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": "../LIVE_DECK_SNAPSHOT.json",
+  "game_version_binding_basis": "Filmed New deck6 QR at6 seconds, followed by selection of same deck at8-10 seconds and gameplay matching core. QR confirms20 semantic card slots and Water, not exact art printings. None of nine named live-log lists matches this QR.",
+  "conflicts_with_filmed_cards": [
+    "Draft A Shark Tempo has Alolan Vulpix/Ninetales/Lapras in place of Wailmer/Wailord/Suicune and different Trainers; Wailord Indeedee wall contains Indeedee and different Trainers. Neither is this deck."
+  ],
+  "exact_list_status": "filmed_exact_semantic_QR_verified_but_matching_live_log_list_unavailable",
+  "filmed_cards_20_slots": [
+    {
+      "name": "PokÃ© Ball",
+      "semantic_entity_id": 30,
+      "functional_ids": [
+        "1b20901befde"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "PokÃ© Ball",
+      "semantic_entity_id": 30,
+      "functional_ids": [
+        "1b20901befde"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "semantic_entity_id": 1060,
+      "functional_ids": [
+        "15c19aaaf9a4"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Professorâ€™s Research",
+      "semantic_entity_id": 40,
+      "functional_ids": [
+        "c0015440f616"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Professorâ€™s Research",
+      "semantic_entity_id": 40,
+      "functional_ids": [
+        "c0015440f616"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Irida",
+      "semantic_entity_id": 380,
+      "functional_ids": [
+        "c594de313052"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Copycat",
+      "semantic_entity_id": 990,
+      "functional_ids": [
+        "d5d2b111c197"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Wallace",
+      "semantic_entity_id": 1470,
+      "functional_ids": [
+        "9c78b5a62950"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Soothing Shore",
+      "semantic_entity_id": 1580,
+      "functional_ids": [
+        "bec1c61a5933"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Soothing Shore",
+      "semantic_entity_id": 1580,
+      "functional_ids": [
+        "bec1c61a5933"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Wailmer",
+      "semantic_entity_id": 19970,
+      "functional_ids": [
+        "63afbb170f1c"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Wailmer",
+      "semantic_entity_id": 19970,
+      "functional_ids": [
+        "63afbb170f1c"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Wailord",
+      "semantic_entity_id": 11390,
+      "functional_ids": [
+        "73cca2e72be7"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Wailord",
+      "semantic_entity_id": 11390,
+      "functional_ids": [
+        "73cca2e72be7"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Carvanha",
+      "semantic_entity_id": 19950,
+      "functional_ids": [
+        "3a9b466b141e"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Carvanha",
+      "semantic_entity_id": 19950,
+      "functional_ids": [
+        "3a9b466b141e"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Mega Sharpedo ex",
+      "semantic_entity_id": 19960,
+      "functional_ids": [
+        "de3c67ae0e58"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Mega Sharpedo ex",
+      "semantic_entity_id": 19960,
+      "functional_ids": [
+        "de3c67ae0e58"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Suicune ex",
+      "semantic_entity_id": 10400,
+      "functional_ids": [
+        "1fd48c6f2cea"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Suicune ex",
+      "semantic_entity_id": 10400,
+      "functional_ids": [
+        "1fd48c6f2cea"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    }
+  ],
+  "filmed_counts": [
+    {
+      "name": "PokÃ© Ball",
+      "count": 2,
+      "entity_kind": "trainer",
+      "entity_id": 30,
+      "functional_ids": [
+        "1b20901befde"
+      ]
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 1060,
+      "functional_ids": [
+        "15c19aaaf9a4"
+      ]
+    },
+    {
+      "name": "Professorâ€™s Research",
+      "count": 2,
+      "entity_kind": "trainer",
+      "entity_id": 40,
+      "functional_ids": [
+        "c0015440f616"
+      ]
+    },
+    {
+      "name": "Irida",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 380,
+      "functional_ids": [
+        "c594de313052"
+      ]
+    },
+    {
+      "name": "Copycat",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 990,
+      "functional_ids": [
+        "d5d2b111c197"
+      ]
+    },
+    {
+      "name": "Wallace",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 1470,
+      "functional_ids": [
+        "9c78b5a62950"
+      ]
+    },
+    {
+      "name": "Soothing Shore",
+      "count": 2,
+      "entity_kind": "trainer",
+      "entity_id": 1580,
+      "functional_ids": [
+        "bec1c61a5933"
+      ]
+    },
+    {
+      "name": "Wailmer",
+      "count": 2,
+      "entity_kind": "pokemon",
+      "entity_id": 19970,
+      "functional_ids": [
+        "63afbb170f1c"
+      ]
+    },
+    {
+      "name": "Wailord",
+      "count": 2,
+      "entity_kind": "pokemon",
+      "entity_id": 11390,
+      "functional_ids": [
+        "73cca2e72be7"
+      ]
+    },
+    {
+      "name": "Carvanha",
+      "count": 2,
+      "entity_kind": "pokemon",
+      "entity_id": 19950,
+      "functional_ids": [
+        "3a9b466b141e"
+      ]
+    },
+    {
+      "name": "Mega Sharpedo ex",
+      "count": 2,
+      "entity_kind": "pokemon",
+      "entity_id": 19960,
+      "functional_ids": [
+        "de3c67ae0e58"
+      ]
+    },
+    {
+      "name": "Suicune ex",
+      "count": 2,
+      "entity_kind": "pokemon",
+      "entity_id": 10400,
+      "functional_ids": [
+        "1fd48c6f2cea"
+      ]
+    }
+  ],
+  "filmed_energy_configuration": [
+    "Water"
+  ],
+  "filmed_QR_receipt": "QR_DECODE.json",
+  "filmed_QR_native_image": "QR_NATIVE_t6.png",
+  "limits": [
+    "Requested exact dated log snapshot could not be bound because all nine current log lists differ from the film. Do not substitute another deck list or infer hidden cards from this QR."
+  ]
+}

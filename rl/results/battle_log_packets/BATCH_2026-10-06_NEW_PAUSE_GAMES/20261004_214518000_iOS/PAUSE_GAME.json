@@ -1,0 +1,237 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261004_214518000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261004_214518000_iOS.MP4",
+      "sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "review_date": "2026-10-06T18:21:06.897647+00:00",
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Butterfree / Accelgor (visible core; exact version uncertain)",
+  "opening": {
+    "source_video": "20261004_214518000_iOS.MP4",
+    "timestamp_seconds": 23,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Caterpie",
+        "variant": "Quick Growth / Hook, 40 HP",
+        "basis": "visible opening card face",
+        "evidence_ids": [
+          "f0023_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Quick-Grow Extract",
+        "variant": null,
+        "basis": "visible opening card face",
+        "evidence_ids": [
+          "f0023_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Butterfree",
+        "variant": "Sunny Wind, 130 HP",
+        "basis": "visible opening card face",
+        "evidence_ids": [
+          "f0023_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Caterpie",
+        "variant": "Quick Growth / Hook, 40 HP",
+        "basis": "visible opening card face",
+        "evidence_ids": [
+          "f0023_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Lucky Ice Pop",
+        "variant": null,
+        "basis": "visible opening card face",
+        "evidence_ids": [
+          "f0023_00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Caterpie",
+      "opening_position": 4,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "timestamp_seconds": 24,
+      "evidence_ids": [
+        "f0024_00",
+        "f0025_00"
+      ]
+    },
+    "redraw_or_replacement": {
+      "observed": false,
+      "basis": "Initial opening retained through setup; later board/hand restoration is a terminal connection transition, not an observed new opening deal."
+    },
+    "before_active_placement": true,
+    "status": "complete",
+    "evidence_ids": [
+      "f0023_00"
+    ],
+    "limit_reason": null
+  },
+  "setup_actions_in_order": [
+    {
+      "order": 1,
+      "kind": "setup_active_placement",
+      "card_name": "Caterpie",
+      "opening_position": 4,
+      "timestamp_seconds": 24,
+      "result": "Active, 40 HP",
+      "evidence_ids": [
+        "f0024_00",
+        "f0025_00"
+      ]
+    },
+    {
+      "order": 2,
+      "kind": "setup_bench_placement",
+      "card_name": "Caterpie",
+      "opening_position": 1,
+      "timestamp_seconds": 27,
+      "result": "left Bench, 40 HP",
+      "evidence_ids": [
+        "f0027_00",
+        "f0030_00"
+      ]
+    },
+    {
+      "order": 3,
+      "kind": "setup_ready",
+      "card_name": null,
+      "timestamp_seconds": 30,
+      "result": "Start Battle highlighted; controls disappear by the 30.75 s overview; waiting for opponent",
+      "evidence_ids": [
+        "f0030_00"
+      ]
+    }
+  ],
+  "setup_board_after_owner_ready": {
+    "phase": "after owner placement / waiting for opponent",
+    "timestamp_seconds": 44,
+    "turn_number": null,
+    "owner": {
+      "active": {
+        "name": "Caterpie",
+        "variant": "Quick Growth / Hook",
+        "current_hp": 40,
+        "maximum_hp": 40,
+        "damage": 0,
+        "energy_count": 0,
+        "energy_by_type": [],
+        "tool": "none",
+        "special_conditions": [],
+        "active_effects": []
+      },
+      "bench_in_position_order": [
+        {
+          "name": "Caterpie",
+          "variant": "Quick Growth / Hook",
+          "current_hp": 40,
+          "maximum_hp": 40,
+          "damage": 0,
+          "energy_count": 0,
+          "energy_by_type": [],
+          "tool": "none",
+          "special_conditions": [],
+          "active_effects": [],
+          "position": 1
+        }
+      ],
+      "empty_bench_positions": [
+        2,
+        3
+      ],
+      "points": null,
+      "energy_zone": {
+        "this_turn": null,
+        "next": {
+          "type": "Grass",
+          "basis": "visible Grass preview icon"
+        },
+        "limit_reason": "Setup Energy Zone previews do not display a generated current-turn Energy or this/next line text."
+      }
+    },
+    "opponent": {
+      "active": null,
+      "bench_in_position_order": [],
+      "points": null,
+      "energy_zone": {
+        "this_turn": null,
+        "next": {
+          "type": "Grass",
+          "basis": "visible Grass preview icon"
+        },
+        "limit_reason": "Setup Energy Zone previews do not display a generated current-turn Energy or this/next line text."
+      },
+      "limit_reason": "No opponent Pokemon has been placed visibly at this setup boundary. Points UI is not yet shown."
+    },
+    "stadium": "none",
+    "evidence_ids": [
+      "f0044_00"
+    ],
+    "points_limit": "Results later confirm points 0-0."
+  },
+  "setup_owner_hand_after_ready": {
+    "names_left_to_right": [
+      "Quick-Grow Extract",
+      "Butterfree",
+      "Lucky Ice Pop"
+    ],
+    "count": 3,
+    "evidence_ids": [
+      "f0030_00",
+      "f0044_00"
+    ]
+  },
+  "setup_opponent_hand": {
+    "count": 5,
+    "count_method": "Five distinct visible card backs at 23 s and 44 s",
+    "identities": null,
+    "limit_reason": "Hidden card faces",
+    "evidence_ids": [
+      "f0023_00",
+      "f0044_00"
+    ]
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_battle_review_complete",
+  "outcome": "win",
+  "limits": [
+    "The game awarded Victory before a turn began. Results explicitly show 0 turns played and 0 damage. There are no owner/opponent game-turn rows or draw-relative captures to create.",
+    "Connection instability is directly visible before Victory. Its exact server cause, and whether any player deliberately conceded, are not shown.",
+    "Opponent Pokemon identities are never revealed. One face-down Active appears during the terminal transition.",
+    "No opened discard piles or battle-log scroll are shown. No in-turn card play, search, normal draw, attachment or attack occurs.",
+    "No deck QR or complete list is shown in this source. A same-label earlier source QR is a candidate only; no uninterrupted recording proves the list was unchanged across sources.",
+    "Seek times are source-local requested positions. Exact decoded frame PTS has not been measured."
+  ],
+  "lead_checked": true,
+  "lead_acceptance": "LEAD_ACCEPTANCE.json"
+}

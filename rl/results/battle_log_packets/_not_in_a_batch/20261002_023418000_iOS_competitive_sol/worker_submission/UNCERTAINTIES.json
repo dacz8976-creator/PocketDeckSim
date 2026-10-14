@@ -1,0 +1,50 @@
+{
+  "video_basename": "20261002_023418000_iOS.MP4",
+  "source_sha256": "e2cd84acd3e1ef962ad0f2bcdf3f40345e4facb41fdbd142054bf3d4a0a0e1f5",
+  "unreviewed_intervals": [],
+  "items": [
+    {
+      "id": "U1",
+      "type": "material_strategy_counterfactual",
+      "status": "escalated_to_lead",
+      "question": "Does Bonsly's turn10 Teary Attack reduction remain on owner Wailord when Cyrus switches only opponent's Active, making five-Water Whale Pump80 against Mega's110 HP rather than a guaranteed110-damage lethal?",
+      "observed": "Turn11 minus30 banner, five Water, Cyrus selecting Mega110, persistent downward reduction icon at concession; no attack executed",
+      "evidence": ["native/t0343.00.jpg", "native/t0354.00.jpg", "native/t0356.00.jpg", "native/t0359.00.jpg", "native/t0362.00.jpg"],
+      "safe_report": "Win by concession, no observed final knockout and no guaranteed-lethal claim"
+    },
+    {
+      "id": "U2",
+      "type": "ui_name_transcription",
+      "status": "minor_explicit_limit",
+      "observed": "Opponent visually reads KO歐~YOU, with a wave-shaped separator",
+      "evidence": ["native/t0007.50.jpg", "overview/sheet_14.jpg"],
+      "safe_report": "Preserve native image and use this transcription with separator qualification"
+    },
+    {
+      "id": "U3",
+      "type": "mode_and_automation",
+      "status": "unknown_not_inferable",
+      "observed": "PvP opponent matching and player clocks visible; no ranked label or owner Auto control",
+      "safe_report": "Owner-requested competitive Pause Games intent is testimony. Opponent automation and ranked mode are unknown"
+    },
+    {
+      "id": "U4",
+      "type": "hidden_deck_information",
+      "status": "unknown_not_inferable",
+      "safe_report": "Visible core matches Wailord / Indeedee wall; whole configured list is not proven"
+    },
+    {
+      "id": "U5",
+      "type": "timestamp_precision",
+      "status": "explicit_limit",
+      "safe_report": "Snapshot timestamps are retained exactly as filenames or midpoint contact labels. Events occurring between snapshots are bounded intervals, not measured animation onsets"
+    }
+  ],
+  "resolved_first_pass_identifications": [
+    {"subject": "Opponent third Bench Pokémon", "result": "Hitmonchan, not coarse initial Sudowoodo reading", "evidence": "native/t0210.00.jpg"},
+    {"subject": "Opponent Riolu Tool", "result": "Small Balloon, not Air Balloon", "evidence": "turn2_gap/sheet_04.jpg at108.50"},
+    {"subject": "Owner Stadium", "result": "Soothing Shore", "evidence": "native/t0071.00.jpg"},
+    {"subject": "Opponent turn4 ending", "result": "Ended without attack", "evidence": "turn4_gap/sheet_01.jpg at158.50-166.50"},
+    {"subject": "Opponent turn10 retreat", "result": "X Speed free retreat of printed1-cost Mega; three Fighting remain; attachment goes to bench Lucario", "evidence": ["native/t0329.00.jpg", "native/t0333.00.jpg", "native/t0337.00.jpg"]}
+  ]
+}

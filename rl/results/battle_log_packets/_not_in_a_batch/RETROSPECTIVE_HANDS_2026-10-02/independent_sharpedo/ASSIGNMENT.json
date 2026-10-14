@@ -1,0 +1,32 @@
+{
+  "reviewer": "sol_verify_sharpedo",
+  "status": "in_progress",
+  "started_at_utc": "2026-10-02T20:40:37.3984220Z",
+  "scope": "Bounded independent source checks of five uncertain hand supplements only",
+  "targets": {
+    "20261002_143837000": [
+      5,
+      7
+    ],
+    "20261002_115323000": [
+      13
+    ],
+    "20261002_132311000": [
+      5,
+      11
+    ]
+  },
+  "image_submission_initial_cap": 20,
+  "source_reads_allowed": 0,
+  "duplicate_decode_allowed": false,
+  "frozen_source_binding": "Inherited exact source identity; retained native frames and crops checked independently",
+  "forbidden_changes": [
+    "worker packets",
+    "accepted packets",
+    "events/index",
+    "source media",
+    "external artifacts",
+    "simulator"
+  ],
+  "exact_frame_pts": "unavailable unless measured"
+}

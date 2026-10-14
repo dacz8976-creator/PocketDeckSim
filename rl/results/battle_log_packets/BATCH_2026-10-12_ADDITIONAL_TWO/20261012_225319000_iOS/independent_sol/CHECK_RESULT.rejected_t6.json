@@ -1,0 +1,21 @@
+{
+  "status": "rejected",
+  "checked_at_utc": "2026-10-13T01:45:53.169529+00:00",
+  "checker": "/root/check_later_225319",
+  "source_video": "20261012_225319000_iOS.MP4",
+  "source_sha256": "10908103247750567923e0899770318a2e53821055d7a2d464ab8d8a2b12dd70",
+  "checked_input_sha256": {
+    "REVIEW.md": "c8a91c5bb4bd98bad8298989eefc4ef0b0a23f7b6cf516011543a06d4c81d56b",
+    "COVERAGE.md": "62c84e7c43f225038d249adf58e51d040950c1d39bf6cef55db7c5764ea5d126",
+    "SUMMARY.json": "06ace5f974f5a2acfb7902e2bd76cfc16ff82c103622991bb5d62d9772ded412",
+    "UNCERTAINTIES.json": "c64bf90306bcb1fe949284be527b791e3b5f73f322302d9c8004144b1b99018d",
+    "PAUSE_GAME.json": "f0768a0b88b0613586c29da75a897f1d94a1302755628548df9d49f40d9ab174",
+    "DECK_USED.json": "4c44a7731f302f1677afc62cc363aa164904230bacdaa11ba54907ed6276acd0",
+    "TURN_LEDGER.json": "15b5ba42292d3289b26821f7cd321c4dfcff89529b20876d8611c2a857fdc754",
+    "TURN_EVIDENCE.json": "0f64af7033c0d4e3d5662481747472993b5491bb9f9d6bb129cedf439ae4e494"
+  },
+  "frozen_copy_directory": "independent_sol/rejected_inputs_t6",
+  "reason": "Early T6 account omitted Darkness attachment before retreat, wrongly claimed zero payment and unused current Energy. Native bounded4fps335-340 independently contradicts it. No acceptance issued.",
+  "source_check_notes": "independent_sol/SOURCE_CHECK_NOTES.md",
+  "correction_evidence": "independent_sol/T6_CORRECTION.md"
+}

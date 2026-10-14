@@ -1,0 +1,29 @@
+{
+  "source_video": "20261012_230258000_iOS.MP4",
+  "source_sha256": "02c8539c786e5e57652c297ce425468955c4f70da2657a40cf39a2b0b330619a",
+  "frozen_utc": "2026-10-13T02:41:43.337934+00:00",
+  "reviewer": "/root/pause_20261012_230258000_iOS",
+  "files": {
+    "REVIEW.md": "a7a5a8245d320d773812df90a35f140c4ae249cc67d1f94326c1f6d16bef268d",
+    "COVERAGE.md": "a6d71957844b068042fe358b9137ea1941ff5ebc1e15f0a8ae2178242fbec5fb",
+    "SUMMARY.json": "442bed0c02372db94269773db5ba696c0d70ec46e3e61a5458f0242af5c1eaa0",
+    "UNCERTAINTIES.json": "6fd51b20c0ba972d0350f2e2f7fe90e0156748f04dcaea0c7c795ee782333572",
+    "PAUSE_GAME.json": "74de4b5e7f932755dd9827125c0a907365dc0ece86b4d3920c5ba1d26e015a41",
+    "DECK_USED.json": "e4f1899bd0e537af4bca1126a0f54b0a1248eacf70b85597a972656d7120cd9e",
+    "TURN_LEDGER.json": "f679c506cc25dd59a0778f645916e4febc45701c1c6dffe820f18374ab202d36",
+    "TURN_EVIDENCE.json": "25fc0f3199d6cb90a8e3ec95004b60f824c907449cdf9707c0e1fc35afd86368"
+  },
+  "scope": "Eight final authored review files; source binding unchanged; independent acceptance remains separate.",
+  "file_sizes": {
+    "REVIEW.md": 11137,
+    "COVERAGE.md": 2287,
+    "SUMMARY.json": 1787,
+    "UNCERTAINTIES.json": 1681,
+    "PAUSE_GAME.json": 4119,
+    "DECK_USED.json": 3985,
+    "TURN_LEDGER.json": 361793,
+    "TURN_EVIDENCE.json": 562445
+  },
+  "status": "submitted_for_independent_acceptance",
+  "correction_history": "Evidence-anchor, candidate suitability, board-boundary, Energy-target and prose-spacing repairs applied before freeze; draft_history/pre_final_semantic_corrections preserved."
+}

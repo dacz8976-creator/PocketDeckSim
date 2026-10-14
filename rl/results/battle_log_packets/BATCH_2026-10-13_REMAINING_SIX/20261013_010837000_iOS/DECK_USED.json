@@ -1,0 +1,190 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261013_010837000_iOS_game_1",
+  "sources": [
+    {
+      "video_basename": "20261013_010837000_iOS.MP4",
+      "sha256": "7a5b29f607ce5b5779bf5dab49e28427c3db42e4e9a38323f1db182471ff3285",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-13T04:53:35.861Z",
+  "log_list_version": "Historical accepted47-game27-deck readback; current-turn refresh unavailable",
+  "expected_card_count": 20,
+  "cards_in_log_order": [
+    {
+      "name": "Alolan Grimer",
+      "variant": "A3 110"
+    },
+    {
+      "name": "Alolan Muk",
+      "variant": "B2 097"
+    },
+    {
+      "name": "Glimmet",
+      "variant": "B3a 044"
+    },
+    {
+      "name": "Glimmet",
+      "variant": "B3a 044"
+    },
+    {
+      "name": "Glimmora",
+      "variant": "B3a 045"
+    },
+    {
+      "name": "Glimmora",
+      "variant": "B3a 045"
+    },
+    {
+      "name": "Pawniard",
+      "variant": "B3a 041"
+    },
+    {
+      "name": "Kingambit",
+      "variant": "B3a 043"
+    },
+    {
+      "name": "Regigigas",
+      "variant": "B3 134"
+    },
+    {
+      "name": "Poké Ball",
+      "variant": "A2b 111"
+    },
+    {
+      "name": "Poké Ball",
+      "variant": "A2b 111"
+    },
+    {
+      "name": "Rare Candy",
+      "variant": "A3 144"
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "variant": "B2 145"
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "variant": "B2 145"
+    },
+    {
+      "name": "Heavy Helmet",
+      "variant": "B1 219"
+    },
+    {
+      "name": "Professor’s Research",
+      "variant": "A4b 373"
+    },
+    {
+      "name": "Professor’s Research",
+      "variant": "A4b 373"
+    },
+    {
+      "name": "Ilima",
+      "variant": "A3 149"
+    },
+    {
+      "name": "Copycat",
+      "variant": "B1 225"
+    },
+    {
+      "name": "Mesagoza",
+      "variant": "B2a 093"
+    }
+  ],
+  "counts_by_name_and_variant": [
+    {
+      "name": "Alolan Grimer",
+      "variant": "A3 110",
+      "count": 1
+    },
+    {
+      "name": "Alolan Muk",
+      "variant": "B2 097",
+      "count": 1
+    },
+    {
+      "name": "Glimmet",
+      "variant": "B3a 044",
+      "count": 2
+    },
+    {
+      "name": "Glimmora",
+      "variant": "B3a 045",
+      "count": 2
+    },
+    {
+      "name": "Pawniard",
+      "variant": "B3a 041",
+      "count": 1
+    },
+    {
+      "name": "Kingambit",
+      "variant": "B3a 043",
+      "count": 1
+    },
+    {
+      "name": "Regigigas",
+      "variant": "B3 134",
+      "count": 1
+    },
+    {
+      "name": "Poké Ball",
+      "variant": "A2b 111",
+      "count": 2
+    },
+    {
+      "name": "Rare Candy",
+      "variant": "A3 144",
+      "count": 1
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "variant": "B2 145",
+      "count": 2
+    },
+    {
+      "name": "Heavy Helmet",
+      "variant": "B1 219",
+      "count": 1
+    },
+    {
+      "name": "Professor’s Research",
+      "variant": "A4b 373",
+      "count": 2
+    },
+    {
+      "name": "Ilima",
+      "variant": "A3 149",
+      "count": 1
+    },
+    {
+      "name": "Copycat",
+      "variant": "B1 225",
+      "count": 1
+    },
+    {
+      "name": "Mesagoza",
+      "variant": "B2a 093",
+      "count": 1
+    }
+  ],
+  "energy_configuration_from_log": [
+    "Darkness"
+  ],
+  "actual_card_count": 20,
+  "capture_source_text_or_image": "DECK_LOG_SNAPSHOT.json",
+  "game_version_binding_basis": "Exact QR payload equality at native4s with historical log. Continuous share close/deck selection/setup, no intervening edit. QR binds semantic entities, not printing.",
+  "conflicts_with_filmed_cards": [],
+  "exact_list_status": "historical_exact20_qr_matched_current_live_pending",
+  "fresh_live_readback": false,
+  "filmed_qr_receipt": "QR_DECODE.json",
+  "limits": [
+    "Current live access/save/readback pending root. Historical snapshot retains original retrieval time.",
+    "Log variant labels copied exactly; artwork/rarity not proven by QR."
+  ]
+}

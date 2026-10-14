@@ -1,0 +1,45 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_190031000",
+  "sources": [
+    {
+      "video_basename": "20260908_190031000_iOS.MP4",
+      "sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "source_url": null,
+  "captured_at": "2026-10-02",
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": null,
+  "game_version_binding_basis": "Filmed cards in exact SHA-bound source; historical full log list unavailable, current lists not substituted.",
+  "conflicts_with_filmed_cards": null,
+  "exact_list_status": "historical_list_unavailable",
+  "limits": [
+    "Opponent unplayed cards and normal draw identities are hidden by card backs.",
+    "No discard panel was opened in the retained 1 fps locator scan; visible pile-top cards are recorded separately, full pile identities and order remain null.",
+    "One reduced sample per second does not examine every instant; brief subsecond prompts or panels can be missed.",
+    "Requested source-local times are retained; actual decoded frame PTS was not independently measured.",
+    "The exact historical 20-card log list is unavailable; visible core only."
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "visible_core": [
+    "Small Balloon",
+    "Copycat",
+    "Professor's Research",
+    "Poké Ball",
+    "Eevee",
+    "Mega Altaria ex",
+    "Darkrai",
+    "Swablu",
+    "Training Area",
+    "Field Blower"
+  ]
+}

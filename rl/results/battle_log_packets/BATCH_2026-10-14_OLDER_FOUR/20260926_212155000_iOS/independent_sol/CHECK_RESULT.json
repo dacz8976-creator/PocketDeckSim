@@ -1,0 +1,265 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/check_older_september",
+  "reviewer_role": "separate Sol bounded independent acceptance reviewer",
+  "model_configuration": "inherited parent configuration; no override",
+  "checked_utc": "2026-10-14T15:18:04.939653+00:00",
+  "decision": "accepted_available_footage_packet",
+  "material_repairs_required": [],
+  "source_basename": "20260926_212155000_iOS.MP4",
+  "source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20260926_212155000_iOS.MP4",
+  "source_sha256_initial": "258066407acbc779da233b4ee92a6fd49b6260f35534b0e5dd84e6d9c3102683",
+  "source_sha256_final": "258066407acbc779da233b4ee92a6fd49b6260f35534b0e5dd84e6d9c3102683",
+  "source_bytes": 377309550,
+  "source_duration_seconds": 205.771927,
+  "initial_integrity_receipt": "INTEGRITY_INITIAL.json",
+  "final_integrity_receipt": "INTEGRITY_FINAL.json",
+  "frozen_primary_manifest_sha256_initial": "a5a5bd00b2d7d76ca8c396d3b2069186e81a05fed1930b4faac1cd2466f9df8e",
+  "frozen_primary_manifest_sha256_final": "a5a5bd00b2d7d76ca8c396d3b2069186e81a05fed1930b4faac1cd2466f9df8e",
+  "evidence_manifest_sha256_initial": "879a5d05e23909bcbd3cef0f48b817e5da22fc1055d45e73380e0a5768e4f931",
+  "evidence_manifest_sha256_final": "879a5d05e23909bcbd3cef0f48b817e5da22fc1055d45e73380e0a5768e4f931",
+  "all_frozen_entries_match": true,
+  "frozen_entries_checked": 153,
+  "primary_packet_unchanged_between_checks": true,
+  "inspected_source_bound_native_evidence": [
+    {
+      "path": "evidence/t0000.00.jpg",
+      "source_elapsed_seconds": 0,
+      "sha256": "840c985f01433348d93b49f05c2c2511767f0969db525ab37338e9536d92bf94",
+      "bytes": 390684,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0006.00.jpg",
+      "source_elapsed_seconds": 6,
+      "sha256": "fb8c705d379167e1e68e1549db38f3e67362e51895eaa22f65ffbb7134bf2253",
+      "bytes": 503939,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0048.00.jpg",
+      "source_elapsed_seconds": 48,
+      "sha256": "18863e7fdfafb342273ff1429107160821213f8a4643a1e1ec714d2439be3449",
+      "bytes": 599868,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0072.00.jpg",
+      "source_elapsed_seconds": 72,
+      "sha256": "5d6f9e296bba23d06f0fbb3208579cda5c51e583f47f0b2bb0b6ef4940988115",
+      "bytes": 606799,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0101.50.jpg",
+      "source_elapsed_seconds": 101.5,
+      "sha256": "ce0e584e9f4358d91230d079fe0dbae927a3c13949f58235617cc57375d47525",
+      "bytes": 609723,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0113.00.jpg",
+      "source_elapsed_seconds": 113,
+      "sha256": "8dccbc8275f6befe0b92d1ab499fe7248bba0e041bb3d7b9ea84ab7edc2f2043",
+      "bytes": 634714,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0124.50.jpg",
+      "source_elapsed_seconds": 124.5,
+      "sha256": "8a56efe09131a9768194334667638e9dcb8604ae46cbf7e3437f74eb52097dde",
+      "bytes": 481101,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0131.50.jpg",
+      "source_elapsed_seconds": 131.5,
+      "sha256": "36ab661231e02ac41bacb7f9402f70357a79b13548a7f7e4e277b06ba0ac9cde",
+      "bytes": 503517,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0133.00.jpg",
+      "source_elapsed_seconds": 133,
+      "sha256": "3a6f3237b1f7becc690b906a13c60da07406908d3001600531a08897b51c7b56",
+      "bytes": 500559,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0165.00.jpg",
+      "source_elapsed_seconds": 165,
+      "sha256": "6a9e414383e24baa7666111add8cf120286ea83f8aa6fc76381facd66b5f9458",
+      "bytes": 617685,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0175.00.jpg",
+      "source_elapsed_seconds": 175,
+      "sha256": "eaba8decbe95f47034f2d255dc17b95ac15a2f52d30e3404d7a8557ec57a9276",
+      "bytes": 484576,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0177.00.jpg",
+      "source_elapsed_seconds": 177,
+      "sha256": "f1d92f1b0812fcb29dccf994b296acd2ccf6b57d405cefbcdc0c91cb42e90f61",
+      "bytes": 382789,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0186.00.jpg",
+      "source_elapsed_seconds": 186,
+      "sha256": "68aafc9c85e1c58c847bfb870af58013d0a8088d84a205b1bfaa0dea0ecb68df",
+      "bytes": 494629,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0198.00.jpg",
+      "source_elapsed_seconds": 198,
+      "sha256": "fa940d77c5510c3ab3a1607da923c9f5e6dc6ac6404eb5e61f05493f4929e355",
+      "bytes": 413271,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0199.50.jpg",
+      "source_elapsed_seconds": 199.5,
+      "sha256": "a40e7ce32ab977e0a0f40bdec60f9f00e47e09e6fc325d7623ffb209d400374d",
+      "bytes": 422736,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0201.00.jpg",
+      "source_elapsed_seconds": 201,
+      "sha256": "a535507c739623255d5eaecc4cc75784ee041b0dd65bf7dbdf19d9f1b9236255",
+      "bytes": 420611,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0203.50.jpg",
+      "source_elapsed_seconds": 203.5,
+      "sha256": "2a977cac29986ead51c2514c2fed81fe3a6e3ace0b14afba3f172c5c9436271c",
+      "bytes": 341047,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0204.00.jpg",
+      "source_elapsed_seconds": 204,
+      "sha256": "5bf723d679ee045cbada7d0603a117cc70cf518f2c42b75734152f80bedd6b7e",
+      "bytes": 326905,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/t0205.55.jpg",
+      "source_elapsed_seconds": 205.55,
+      "sha256": "750928a19de4db894547f64a66166aec332b56c349df84a6741c2198da085ce7",
+      "bytes": 26954,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    }
+  ],
+  "critical_evidence": {
+    "beginning": "evidence/t0000.00.jpg",
+    "initial_turn2_banner": "evidence/t0006.00.jpg",
+    "last_score": "evidence/t0198.00.jpg",
+    "concession": "evidence/t0199.50.jpg",
+    "concession_retained": "evidence/t0201.00.jpg",
+    "victory": "evidence/t0203.50.jpg",
+    "victory_tap_to_proceed": "evidence/t0204.00.jpg",
+    "pale_tail": "evidence/t0205.55.jpg"
+  },
+  "available_footage_review_accepted": true,
+  "available_footage_review_complete": true,
+  "available_footage_interval_seconds": [
+    0,
+    205.771927
+  ],
+  "independent_check_scope": "Bounded selected beginning, ordinary actions, consequential states and terminal evidence; not a second full visual pass",
+  "battle_complete": false,
+  "recommended_machine_status": "partial",
+  "recommended_index_status": "Needs full battle review",
+  "archive_eligible": false,
+  "missing_pre_source_phases": [
+    "Opening hand/setup",
+    "Initial owner Basic placement sequence",
+    "Earlier already-discarded Poké Ball play",
+    "Beginning of initial owner turn"
+  ],
+  "entirely_absent_completed_turns_established": false,
+  "owner": "Dacz8976",
+  "opponent": "StefaGo",
+  "owner_result": "win",
+  "result_method": "explicit_opponent_concession",
+  "victory_splash_verified": true,
+  "last_visible_score": {
+    "owner": 2,
+    "opponent": 1
+  },
+  "actual_queue": "unknown",
+  "auto_control_established": false,
+  "auto_enabled": null,
+  "mode_limit": "Bounded evidence lacks an established Auto control; absence does not independently prove PvP or ranked",
+  "external_route": "Owner-default Ladder candidate, live source-filename duplicate verification pending with lead",
+  "live_external_duplicates_checked": false,
+  "shared_registration_written": false,
+  "media_moved": false,
+  "external_log_written": false,
+  "mirror_written": false,
+  "primary_files_edited": false,
+  "notes": "CHECK_NOTES.md"
+}

@@ -1,0 +1,12 @@
+{
+  "video_basename": "20261002_114458000_iOS.MP4",
+  "source_sha256": "1a705196a9ac204da7e49d097edacb9de96ad14341e68d2e16c6b380970e5efe",
+  "unreviewed_intervals": [],
+  "material_outcome_ambiguities": [],
+  "items": [
+    {"id": "misty_t8_target", "classification": "unresolved_observation", "timestamp_range_seconds": [268, 275], "question": "Which Water Pokemon was selected for the second Misty?", "retained_evidence": ["native/t0268.00.jpg", "native/t0272.00.jpg", "overview/sheet_08.jpg"], "consequence": "Low; zero heads and one tails means no Energy was added to any target. Report leaves target unknown.", "astra_needed": false},
+    {"id": "t8_point_preservation", "classification": "proposed_tactical_alternative", "timestamp_range_seconds": [260, 286], "question": "Was retreating 50-HP first Ninetales to the four-Water 110-HP Lapras preferable to staying Active and exposing a two-point knockout to known Heat Blast 80?", "retained_evidence": ["native/t0250.00.jpg", "native/t0256.00.jpg", "native/t0276.00.jpg", "native/t0304.00.jpg", "native/t0318.00.jpg", "overview/sheet_08.jpg"], "known_state": "Owner first Ninetales 50 HP/two Water, Lapras 110 HP/four Water, second Ninetales develops to 150 HP/two Water; opponent Chandelure 140 HP/two Fire, Aerodactyl 20 HP, score 1-0. Irida was milled by Slow Sear. Current hand Sharpedo and Misty before Misty play.", "tradeoffs": "First Ninetales retreat costs two Energy. Lapras weak Surf would hit 90 rather than Ninetales's 100. Opponent hidden gust/switch/evolution options are unknown. Actual line wins, so do not claim a proved error.", "astra_needed": true, "lead_notified": true},
+    {"id": "hidden_information", "classification": "hidden_information", "question": "Full lists, remaining hand/deck order and opponent automation are unknown.", "consequence": "No guessed cards, exact hidden lists or opponent Auto attribution are included.", "astra_needed": false},
+    {"id": "queue_label", "classification": "owner_testimony", "question": "Specific competitive/Pause queue label is not displayed in the reviewed footage.", "consequence": "Log routing uses owner/assignment. Matchmaking profile establishes an opponent battle; ranked eligibility remains false by assignment.", "astra_needed": false}
+  ]
+}

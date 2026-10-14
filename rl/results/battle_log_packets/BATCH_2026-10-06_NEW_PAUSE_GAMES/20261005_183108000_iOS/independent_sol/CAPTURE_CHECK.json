@@ -1,0 +1,1099 @@
+{
+  "schema": "bounded-independent-sol-acceptance-v1",
+  "reviewer": "/root/independent_183108",
+  "review_model": "gpt-6.1-sol",
+  "review_role": "Fresh separate Sol bounded independent acceptance, not the full-review worker",
+  "checked_at_utc": "2026-10-06T21:06:45.329304+00:00",
+  "source_video": "20261005_183108000_iOS.MP4",
+  "source_sha256": "94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+  "source_duration_seconds": 403.317007,
+  "media_rehashed": false,
+  "identity_basis": "Frozen CLI SOURCE.json binding; retained native evidence checked and hashed. No original media decoding or mutation.",
+  "frame_count": 391,
+  "unique_evidence_ids": 391,
+  "all_391_full_and_782_crop_files_exist_and_have_correct_dimensions": true,
+  "all_crop_bounds_checked": true,
+  "special_capture_pixel_comparisons_checked": 22,
+  "bottom_rounding_note": "2025 is floor(0.8*2532); final507px retained at full width.",
+  "captures": [
+    {
+      "evidence_id": "F_0051_00",
+      "role": "selected_start_and_before_end_hand",
+      "turn_number": 1,
+      "requested_source_seconds": 51.0,
+      "draw_animation_end_seconds": 50,
+      "offset_after_draw_seconds": 1,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "suitability_or_limit": "Full native and bottom/top crops retained; no identities inferred from deck list.",
+      "full_frame_path": "turn_evidence/t0051.00.jpg",
+      "full_frame_sha256": "5b4755d6293f3e94b8f67192cb48cd9a41f880daf9621583921e3997a092d505",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0051_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "7f851b8812d528e6e9dc43f7bf8befa4385ba3bd3a29a79169d7347904e95b89",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0051_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "99214de735aee7c584272b5ea255fe7108b77a309f9d7c9f0a183e65569423b7",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0053_00",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 1,
+      "requested_source_seconds": 53.0,
+      "draw_animation_end_seconds": 50,
+      "offset_after_draw_seconds": 3,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "suitability_or_limit": "Already opponent transition Current turn2.",
+      "full_frame_path": "turn_evidence/t0053.00.jpg",
+      "full_frame_sha256": "94b56315905360262d194f5c0ae89dd81cca662f342f346b5666cd68962d66f2",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0053_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "7aa6013060d8e59f5c198fd11295a3de10b63ab467a1b644522b92aa50d5a587",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0053_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "e088b76ffed876fa9ab09761b67846016e25b28a1516c9db32fb055224b01103",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0056_00",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 1,
+      "requested_source_seconds": 56.0,
+      "draw_animation_end_seconds": 50,
+      "offset_after_draw_seconds": 6,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "suitability_or_limit": "Opponent draw; no longer owner preplay.",
+      "full_frame_path": "turn_evidence/t0056.00.jpg",
+      "full_frame_sha256": "f75e84a805b2196269970fa3fba3105b9e8fb4fe78896887dbebb9bfbf0dc25d",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0056_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "10bdf11e68dc08bb4b204c171641f3f2ef94efe1484ce26923bb9e9c7c31543b",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0056_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "5a9d60cf844fa854c88da734444366ed6ecfe6bd422ab2de334d5eeda007f292",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0093_50",
+      "role": "selected_owner_start_hand",
+      "turn_number": 3,
+      "requested_source_seconds": 93.5,
+      "draw_animation_end_seconds": 93.5,
+      "offset_after_draw_seconds": 0.0,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "suitability_or_limit": "Selected earlier dense frame because +1/+3/+6 can occur after rapid first play.",
+      "full_frame_path": "turn_evidence/t0093.50.jpg",
+      "full_frame_sha256": "0b2cd6619f4543a1a7b13257c44e4ba945b8176c893b0c08b6b4d65156166e2e",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0093_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "c343791221001f7b3e706c9bc9e19819c2594447ffa0e482012b9c74e3cc0cc8",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0093_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "150b118a313e724e8c9fc5405f81f1a3e062f61458db29429b912c39905ce350",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0094_50",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 3,
+      "requested_source_seconds": 94.5,
+      "draw_animation_end_seconds": 93.5,
+      "offset_after_draw_seconds": 1,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "suitability_or_limit": "Mega already leaving hand/bench animation.",
+      "full_frame_path": "turn_evidence/t0094.50.jpg",
+      "full_frame_sha256": "eca28ef1afbab78a64b040d8b85a535b3266b4391454f3f64e6377cd71b5da53",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0094_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "f3928a797f5ed96f92c7c4f6bfcaf904349026d86909a258a2123befd3c5b0c2",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0094_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "00276428f9ad58922ba437762a20dbd76ad5f8bbc1eefc6614fb2d2ec04b0427",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0096_50",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 3,
+      "requested_source_seconds": 96.5,
+      "draw_animation_end_seconds": 93.5,
+      "offset_after_draw_seconds": 3,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "suitability_or_limit": "Mega already consumed; five remaining cards only.",
+      "full_frame_path": "turn_evidence/t0096.50.jpg",
+      "full_frame_sha256": "218aa79c18c2c698abfc60e5c0d692a607e95aaedd7b52ecb4c37fa901055d26",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0096_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "f8a4ab66cac57bcc5718174906bc79d534685a6f4b0cb86ac2e105d9b8bbc940",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0096_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "fa4d705089b53f8e1bb23fad8f657f4274353525158a39a4ff432ac79aff0bba",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0099_50",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 3,
+      "requested_source_seconds": 99.5,
+      "draw_animation_end_seconds": 93.5,
+      "offset_after_draw_seconds": 6,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "suitability_or_limit": "Whirlipede evolution already consumed.",
+      "full_frame_path": "turn_evidence/t0099.50.jpg",
+      "full_frame_sha256": "b9f2f857e1370249ead243739295ef70219f7a47f9c0d21d07404281458a70a9",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0099_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "ddaad89b6f4d78195d56ac1f8ea7cc05e44cfbac571d3cd6a8c0fee08515ce86",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0099_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "e16e2ee9f8ed256b74c339d95ce1fe1a032caff4530bc02f28d9122cff25b309",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0104_00",
+      "role": "owner_before_end_hand",
+      "turn_number": 3,
+      "requested_source_seconds": 104.0,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": true,
+      "suitability_or_limit": "Full native and bottom/top crops retained; no identities inferred from deck list.",
+      "full_frame_path": "turn_evidence/t0104.00.jpg",
+      "full_frame_sha256": "264f514e99df16ab4395a2a9f50ccc6ca4b87b44f83ce7d00355a968d9518865",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0104_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "e09eee733bf0cd6fd0035af51c1f8c1ea1e253d17b9b8cdff6af63d7fb0ba276",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0104_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "e498edebc3c9f343d6357ade25a5261bd449b501833883758a709053adf72319",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0176_00",
+      "role": "selected_owner_start_hand",
+      "turn_number": 5,
+      "requested_source_seconds": 176.0,
+      "draw_animation_end_seconds": 176,
+      "offset_after_draw_seconds": 0,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "suitability_or_limit": "Selected earlier dense frame because +1/+3/+6 can occur after rapid first play.",
+      "full_frame_path": "turn_evidence/t0176.00.jpg",
+      "full_frame_sha256": "396e426776decd171f9e4f9ab2ada687f2c46ac3dfff4f831a3d3c2384e3e361",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0176_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "d8755e3fc90aac34444ef60f64403d54648cbfefe3d698b556fe18c05cd94525",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0176_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "d36620f75ad229f380919f0c1c4afec878c64f3f75ec629bf06b44759d205c5a",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0177_00",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 5,
+      "requested_source_seconds": 177.0,
+      "draw_animation_end_seconds": 176,
+      "offset_after_draw_seconds": 1,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "suitability_or_limit": "Scolipede evolution underway, not intact five-card start.",
+      "full_frame_path": "turn_evidence/t0177.00.jpg",
+      "full_frame_sha256": "9bdd44b85f8e218b10ed0ffe62bca240884c38ce7e69445dbb41467098c590ac",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0177_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "b11f6d98ebb7f3ac03dac0b4a1f60adab7060e47b3561c4b834feb309a7b3e67",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0177_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "2e0391942577a71f08dea8b3f65001519e62e4c3d7bef54f552db97448e7d0d4",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0179_00",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 5,
+      "requested_source_seconds": 179.0,
+      "draw_animation_end_seconds": 176,
+      "offset_after_draw_seconds": 3,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "suitability_or_limit": "Evolution already completed.",
+      "full_frame_path": "turn_evidence/t0179.00.jpg",
+      "full_frame_sha256": "8d82c70aba3e54321e4fd27b7a0d11d41f3b6701bdbd1b940d4b4f2edf2ba337",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0179_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "d5e2e88556c888ac7cfc2e39ec6fd4d8e8ff03f86b2f284e1d0fa2d3fc89b800",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0179_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "86b967514ab4f85072b69ae0ab6f71238fb2e85317d3ecfcb425ec2568d92b51",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0182_00",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 5,
+      "requested_source_seconds": 182.0,
+      "draw_animation_end_seconds": 176,
+      "offset_after_draw_seconds": 6,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "suitability_or_limit": "Wally already consumed; hand changed.",
+      "full_frame_path": "turn_evidence/t0182.00.jpg",
+      "full_frame_sha256": "36e4ed838e61428c0b819c7d1a205a5bdeb42dddffc915ff312e2bc23381aaa0",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0182_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "17d6724f08c8e1f84ff2c904f82b38ddfc1a399225f411c410771127eb9d9aef",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0182_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "0a2044a9dffb3135ebd96f4b7dd2bd4be3747ffefde60440fc3f0dc199d7402e",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0196_50",
+      "role": "owner_before_end_hand",
+      "turn_number": 5,
+      "requested_source_seconds": 196.5,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": true,
+      "suitability_or_limit": "Full native and bottom/top crops retained; no identities inferred from deck list.",
+      "full_frame_path": "turn_evidence/t0196.50.jpg",
+      "full_frame_sha256": "3ad7b37dacea6104bfcbe321e54911d17c924df9a504e3785e727b140bf4a46d",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0196_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "ceaf9ed466a432725001a6a14360272daa6fcd048c47f5323d45345f889f67f8",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0196_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "e05b5c8b61d023df851531fa04b4b63ef3b3f0891b56056bba77a815b2db07ef",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0248_00",
+      "role": "selected_owner_start_hand",
+      "turn_number": 7,
+      "requested_source_seconds": 248.0,
+      "draw_animation_end_seconds": 247,
+      "offset_after_draw_seconds": 1,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "suitability_or_limit": "Suitable required preplay capture.",
+      "full_frame_path": "turn_evidence/t0248.00.jpg",
+      "full_frame_sha256": "7b1e5507769cadc4c3865c5daef8e8df0e66ce1104d136272117e8c20e07fe11",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0248_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "2387c04e5f845e983c4deffc3d39845bdd2ba86f9b41dab2c46325d4308055b5",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0248_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "2a3c8060ece7dea89dbaaab59c4a74252a27d435c5454dabd711168669810857",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0250_00",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 7,
+      "requested_source_seconds": 250.0,
+      "draw_animation_end_seconds": 247,
+      "offset_after_draw_seconds": 3,
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "suitability_or_limit": "Intact three-card preplay hand.",
+      "full_frame_path": "turn_evidence/t0250.00.jpg",
+      "full_frame_sha256": "51884dd1551279526d35ec09170a126d42fb97ed5108d7d442fbc3ea6bfdbe03",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0250_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "ac3798fbe7c96b9329a34eca0fa70143a45d0c8e96bc7779f7799c6a4f0e6abb",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0250_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "63207f9d2d7af48d3c3b7149ff5804df7821fadd07a0ed37f9915760a5ac9d82",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0253_00",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 7,
+      "requested_source_seconds": 253.0,
+      "draw_animation_end_seconds": 247,
+      "offset_after_draw_seconds": 6,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "suitability_or_limit": "Energy attachment already underway.",
+      "full_frame_path": "turn_evidence/t0253.00.jpg",
+      "full_frame_sha256": "393ef0adc76fc6927382071e73cc07f0f7307f094cbb73cf366760d80902b90a",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0253_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "a6f2ed06f3ce205e00b8d0931963e783595e8fa6ece9d80e3cc82c3e472acb2d",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0253_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "c81838954cccd6607fc0498b13e75fd50e992be8e91fc5d12e04a09ec5353a31",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0265_00",
+      "role": "owner_before_end_hand",
+      "turn_number": 7,
+      "requested_source_seconds": 265.0,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": true,
+      "suitability_or_limit": "Full native and bottom/top crops retained; no identities inferred from deck list.",
+      "full_frame_path": "turn_evidence/t0265.00.jpg",
+      "full_frame_sha256": "bfd2c2dd8188af7b7a6f946838a1cfa96889246dafa4ead89bc1e3bd4a520978",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0265_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "e918e2b8a86a95b95382e2953f49938622601dd7e76308e5d152b8b40628505b",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0265_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "bb42f05745016bb91977bd36080746246b70914ea110be98a24f11a9b84c2433",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0314_00",
+      "role": "selected_owner_start_hand",
+      "turn_number": 9,
+      "requested_source_seconds": 314.0,
+      "draw_animation_end_seconds": 314,
+      "offset_after_draw_seconds": 0,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "suitability_or_limit": "Selected earlier dense frame because +1/+3/+6 can occur after rapid first play.",
+      "full_frame_path": "turn_evidence/t0314.00.jpg",
+      "full_frame_sha256": "8b7b8bd9a5f749f3bb6dc282661edab272881f901e19479e96d5aaf76449e3f3",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0314_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "d60c228d0ad75ad9f16098f9df4e06095e72e67b261b0d710e9a0340bdf2aa19",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0314_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "96c161cbe5eaa908c61b66bacfa920615b74ad48aab39ece7f9ed60ac7ddf789",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0315_00",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 9,
+      "requested_source_seconds": 315.0,
+      "draw_animation_end_seconds": 314,
+      "offset_after_draw_seconds": 1,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "suitability_or_limit": "Lucky Ice Pop consuming input; no longer unaltered start.",
+      "full_frame_path": "turn_evidence/t0315.00.jpg",
+      "full_frame_sha256": "113ea454af0b3ef393b250f45b5ce75dba64a2c7950cecfc7a18c788dd5ac742",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0315_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "b8857f24c80ae7f6b3949e9ddbef874cf8cb8a6bc0ea962de674d8b79e470040",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0315_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "32833abe061f9e5c5f7c874d090e0e6e04c5e758fb97204e2b05072f93fa4851",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0317_00",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 9,
+      "requested_source_seconds": 317.0,
+      "draw_animation_end_seconds": 314,
+      "offset_after_draw_seconds": 3,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "suitability_or_limit": "Lucky Ice Pop resolution underway.",
+      "full_frame_path": "turn_evidence/t0317.00.jpg",
+      "full_frame_sha256": "669dacbb98aa91145cb6b8c0c86d7ba029005214a2f882248f5648c9cc8ed82b",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0317_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "5be65bbffd24c1802a73e40e5a025d0a680dd2befca119f8b54ce86a83b7d481",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0317_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "6c8493319fda93bc8d58acd1df7123bc902f273307f757eaafd61405986e496f",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0320_00",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 9,
+      "requested_source_seconds": 320.0,
+      "draw_animation_end_seconds": 314,
+      "offset_after_draw_seconds": 6,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "suitability_or_limit": "Coin resolution after Item consumption.",
+      "full_frame_path": "turn_evidence/t0320.00.jpg",
+      "full_frame_sha256": "cb1dc85768358bf532fb0ab25a8981118b1aa458ae76ea436518e025ecd56f9c",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0320_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "127673a4a7c83128fbb0e01b5795f499c23f40e3932b4f5b263f2530c3e59f09",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0320_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "49b19e64fd3e7537d1c53cb8356658c710350640dcc340903aaa9888a850bbba",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    },
+    {
+      "evidence_id": "F_0344_50",
+      "role": "owner_before_end_hand",
+      "turn_number": 9,
+      "requested_source_seconds": 344.5,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": true,
+      "suitability_or_limit": "Full native and bottom/top crops retained; no identities inferred from deck list.",
+      "full_frame_path": "turn_evidence/t0344.50.jpg",
+      "full_frame_sha256": "6f3dbf9d92f9f463ecabc9b219ca6d7257cc01b714bb84658d599ad7e53c1684",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0344_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "9f0db64a9a3233d557584994f6261a4b4849dde5d867ea1ffeb4cbfb45372e8b",
+        "dimensions": [
+          1170,
+          507
+        ],
+        "exact_native_pixel_crop": true
+      },
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0344_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "9f552a30b2641245a5e6bba7bf2c3cf597b3a836bae8370350f72a3f2f77cbd2",
+        "dimensions": [
+          1170,
+          720
+        ],
+        "exact_native_pixel_crop": true
+      }
+    }
+  ],
+  "fact_check_note": "Recorded candidate booleans are frozen original claims; required independent corrections are in CHECK_RESULT.json."
+}

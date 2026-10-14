@@ -1,0 +1,130 @@
+{
+  "video_basename": "20261002_132311000_iOS.MP4",
+  "complete_available_footage_review": true,
+  "battle_complete": true,
+  "lead_acceptance": "pending",
+  "outcome": "win",
+  "outcome_type": "win",
+  "outcome_detail": "Opponent disconnect return timeout; no concession observed",
+  "turn_order": "owner went first",
+  "owner_deck_core": [
+    "Carvanha",
+    "Mega Sharpedo ex (two)",
+    "Alolan Vulpix (two)",
+    "Alolan Ninetales ex",
+    "Lapras revealed in hand"
+  ],
+  "owner_deck_name_likely": "Draft A: Shark Tempo (owner attribution; deck selection not shown)",
+  "opponent_name": "hk2",
+  "opponent_deck_core": [
+    "Shaymin (Fragrant Flower Garden)",
+    "Furfrou (two, Fur Coat/Double Headbutt)",
+    "Trapinch",
+    "Flygon ex (Sand Slammer)",
+    "Rare Candy",
+    "May",
+    "Rainbow Cave"
+  ],
+  "mode_evidence": {
+    "observed": "Online matchmaking, named opponent and independent clocks; return-timeout error",
+    "ranked_submode": "unknown",
+    "owner_designation": "Pause Games test, excluded from ranked Ladder",
+    "opponent_automation": "unknown"
+  },
+  "auto_intervals": [],
+  "auto_evidence": "No Auto indicator or mode change visible",
+  "final_score": {
+    "owner": 2,
+    "opponent": 0,
+    "turns_played": 14,
+    "damage_done_displayed": 390
+  },
+  "decisive_evidence": [
+    {
+      "timestamp_seconds": 268,
+      "path": "native/t0268.00.jpg",
+      "fact": "Furfrou KO after Turbo Shark; first point follows"
+    },
+    {
+      "timestamp_seconds": 326,
+      "path": "native/t0326.00.jpg",
+      "fact": "Shaymin 0 HP after Binding Snow; second point follows"
+    },
+    {
+      "timestamp_seconds": 471,
+      "path": "gaps_t13_terminal/t0471.00.jpg",
+      "fact": "Opponent did not return within allowed time"
+    },
+    {
+      "timestamp_seconds": 474,
+      "path": "native_extra/t0474.00.jpg",
+      "fact": "Victory animation for owner"
+    },
+    {
+      "timestamp_seconds": 485,
+      "path": "gaps_t13_terminal/t0485.00.jpg",
+      "fact": "Victory vs hk2, went first, 14 turns, 2-0, 390 damage"
+    }
+  ],
+  "key_findings": [
+    "Three Turbo Shark attacks charge bench while dealing 50 through Fur Coat.",
+    "Free Mega retreat preserves Water and pivots through fresh attacker into Ninetales.",
+    "Binding Snow takes Shaymin KO and blocks Active attachments while Flygon remains one Fighting and falls 180 to 100 to 20.",
+    "Irida and Elegant Cape cushion Sand Slammer checkup spread.",
+    "Victory is by opponent return timeout, not a third-point KO."
+  ],
+  "limitations": [
+    "Hidden full lists, exact online submode, opponent automation and disconnect motive unknown.",
+    "Wailord and Soothing Shore remain untested proposals.",
+    "First-pass packet awaits lead acceptance."
+  ],
+  "source_identity": {
+    "video_basename": "20261002_132311000_iOS.MP4",
+    "sha256": "f3d3765ca22feb385bd540c90c916d1b039382418a0e53711bfeccbe3e240a33",
+    "bytes": 886959676,
+    "duration_seconds": 486.048333,
+    "streams": [
+      {
+        "codec_name": "hevc",
+        "width": 1170,
+        "height": 2532
+      },
+      {
+        "codec_name": "aac"
+      }
+    ],
+    "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261002_132311000_iOS.MP4",
+    "recording_relationships": [],
+    "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+    "owner_deck": "Draft A: Shark Tempo",
+    "owner_testimony": "Five new games with the deck labelled Draft A: Shark Tempo in Pause Games.",
+    "match_date_local": "2026-10-02",
+    "recording_date_basis": "October 2 filename and new local upload date; exact filename timezone unverified",
+    "intake_utc": "2026-10-02T15:41:47.363010+00:00"
+  },
+  "reviewer": "sol_shark_20261002_132311000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "overview": {
+    "step_seconds": 4,
+    "decode_threads": 2,
+    "frame_count": 122,
+    "sheets_inspected": 14
+  },
+  "turns_covered": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14
+  ]
+}

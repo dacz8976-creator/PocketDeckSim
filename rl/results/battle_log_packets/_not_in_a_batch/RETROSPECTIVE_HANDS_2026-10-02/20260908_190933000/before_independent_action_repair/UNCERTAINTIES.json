@@ -1,0 +1,31 @@
+{
+  "capture_status": "complete_with_recording_limits",
+  "accessible_uninspected_required_fields": [],
+  "recording_limits": [
+    "Opponent unplayed hand identities and normal draw identities are concealed by card backs.",
+    "No opened discard panel detected in413 retained reduced1fps locator samples; visible pile tops only, full pile identity/order unknown.",
+    "One sample per second does not inspect every instant; subsecond events can fall between samples.",
+    "Requested source-local seek times and approximate locator times are separate from unmeasured actual decoded PTS.",
+    "No exact historical20-card deck log snapshot is available; current deck lists were not substituted."
+  ],
+  "independent_acceptance_status": "pending",
+  "mode": {
+    "classification": "uncertain",
+    "auto_control_present": false,
+    "auto_enabled": null,
+    "excluded_from_ladder": null,
+    "basis": "No Auto control observed in all413 reduced1fps samples or inspected53 native full images. ManualEndTurn, attackmenu and Supporter choices observed. Sampled absence does not independently prove mode.",
+    "native_evidence_ids": [
+      "t0044.50",
+      "t0143.50",
+      "t0300.00",
+      "t0302.50",
+      "t0385.00"
+    ],
+    "owner_rule": "Any visible Auto option evenOFF means computer opponent and excluded ladder.",
+    "obscured_view_limit": "Attack/card/coin/banners obscure some control views; no absence assertion for covered regions."
+  },
+  "old_packet_unchanged": true,
+  "timing_conflicts": "Old approximate filenames are preserved; exact requested native source times are stored separately. Turn3 and7 timing discrepancies explicit in ledger.",
+  "Research_turn1_limit": "First named Poké Ball Research draw inherited from accepted account; selected50.5native is flipping back and51.5 shows recognizable partial card behind second Small Balloon. Named order not falsely labeled fully legible at50.5."
+}

@@ -1,0 +1,40 @@
+{
+  "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+  "reason": "T1 and T3 first captures still contained draw reveal/moving card; inspect dense postdraw/preplay window",
+  "native_seek_decodes": 5,
+  "total_new_native": 31,
+  "new_native_cap": 60,
+  "additional_hash_reads": 0,
+  "frames": [
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0046.70.jpg",
+      "requested_source_seconds": 46.7,
+      "actual_frame_pts": null,
+      "sha256": "4b77a3189a6e7e560857cd6f32af1d1d2422d707b6ae9ef0220bb81a2a7fbb83"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0046.80.jpg",
+      "requested_source_seconds": 46.8,
+      "actual_frame_pts": null,
+      "sha256": "b106e1d0d027731da213b45a87899544db96883c482186694fb15bf4f568b897"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0114.40.jpg",
+      "requested_source_seconds": 114.4,
+      "actual_frame_pts": null,
+      "sha256": "a19a6afbdc2ef79b06a98a7accfff55b3694e75efb84dd1da32cc264d36b6931"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0114.60.jpg",
+      "requested_source_seconds": 114.6,
+      "actual_frame_pts": null,
+      "sha256": "07eec3b563c78457ba40535cfca0b801294b60975eeafa7abb24591d0b5514cf"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0114.80.jpg",
+      "requested_source_seconds": 114.8,
+      "actual_frame_pts": null,
+      "sha256": "c0bcd75ec5623e07cf0ad650f3ef986bbd8c4325c3c635effcc20436e682b83b"
+    }
+  ]
+}

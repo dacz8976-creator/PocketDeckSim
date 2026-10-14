@@ -1,0 +1,40 @@
+{
+  "is_template": false,
+  "game_id": "20261006_012927000_iOS_game_02",
+  "uncertainties": [
+    {
+      "id": "live-log-snapshot",
+      "status": "recording_limit",
+      "impact": "External exact20 log snapshot must be taken by lead; no worker claim of live save."
+    },
+    {
+      "id": "opponent-hidden",
+      "status": "recording_limit",
+      "impact": "Draw/search identities not face-up stay unknown."
+    },
+    {
+      "id": "discard",
+      "status": "recording_limit",
+      "impact": "Only top previews; no complete owner/opponent discard lists."
+    },
+    {
+      "id": "time",
+      "status": "bounded",
+      "impact": "Seek targets approximate displayed events; exact touch/PTS not measured."
+    },
+    {
+      "id": "before-end-placement-zoom",
+      "status": "recording_limit",
+      "impact": "687 retains actual end hand during Type: Null placement zoom; full resolved board688. No complete unzoomed pre-End claim."
+    },
+    {
+      "id": "opponent-normal-draw-time",
+      "status": "bounded_recording_limit",
+      "impact": "692 has five literal settled backs and available current Lightning. Normal draw/generation time remains bounded690-692; hidden identity unknown.694 is a played-card back with four fan backs."
+    }
+  ],
+  "resolved_corrections": [
+    "Typed retreat payment and current-vs-next Energy corrected by native phase inspection.",
+    "Final Water configuration, Copycat reveal order and consuming input, opponent literal five-back start/current Lightning692, combined hidden Research696-698 and Order Pad face700 resolved by independent native check."
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "game_id": "20261004_214518000_iOS_game1",
+  "source_video": "20261004_214518000_iOS.MP4",
+  "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+  "reviewer": "/root/pause_214518",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_date": "2026-10-06T18:21:06.897647+00:00",
+  "scope": "Entire 55.216667-second source: event lobby, new matchmaking, opening setup, waiting/connection transition, Victory and final results.",
+  "classification": "human_opponent",
+  "recording_type": "complete_setup_only_match_with_terminal_result",
+  "mode": "Deluxe Pack: Mega Emblem Event",
+  "auto_control_observed": false,
+  "auto_enabled": null,
+  "auto_limit": "No Auto control or option appears; no menu is opened. Human event matchmaking/profile is visible.",
+  "opponent": "ゆうぜん",
+  "opponent_level": 60,
+  "owner": "Dacz8976",
+  "match_date": "2026-10-04",
+  "outcome": "win",
+  "points": [
+    0,
+    0
+  ],
+  "turn_count": 0,
+  "damage_done": 0,
+  "source_continuity": "New match from event lobby through final Victory. No linked continuation needed. No visible recording cut.",
+  "source_relationships": [
+    {
+      "other_source": "20261004_213625000_iOS.MP4",
+      "relationship": "separate_previous_match",
+      "basis": "Peer native frame at local 459 s explicitly shows Defeat versus Noytamon; this source begins new event matchmaking and introduces ゆうぜん.",
+      "evidence_path": "../20261004_213625000_iOS/turn_evidence/t0459.00.png"
+    },
+    {
+      "other_source": "20261004_214731000_iOS.MP4",
+      "relationship": "separate_later_match",
+      "basis": "Peer native_01 contact sheet includes new five-card setup at local 24.5 s, going second, different opening and opponent red-R sleeves; subsequent ordinary board names CloutDemon. This source ends Victory versus ゆうぜん.",
+      "evidence_path": "../20261004_214731000_iOS/native_01.jpg"
+    }
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "worker_disposition": "ready_for_bounded_independent_check_and_lead_acceptance",
+  "acceptance_status": "awaiting_independent_review",
+  "full_source_review_complete": true,
+  "independent_check_candidates_seconds": [
+    0,
+    9,
+    17,
+    23,
+    24,
+    27,
+    30,
+    44,
+    44.5,
+    45.5,
+    46,
+    49,
+    55
+  ],
+  "important_findings": [
+    "Results explicitly show 0 turns, 0 damage and 0-0 points with Victory. No fabricated turn ledger rows.",
+    "All five opening card names and chosen Active slot are visible.",
+    "Connection instability precedes Victory; the exact termination cause is unknown.",
+    "Exact 20-card game deck cannot be bound from this source; earlier QR candidate retained separately."
+  ],
+  "limits": [
+    "The game awarded Victory before a turn began. Results explicitly show 0 turns played and 0 damage. There are no owner/opponent game-turn rows or draw-relative captures to create.",
+    "Connection instability is directly visible before Victory. Its exact server cause, and whether any player deliberately conceded, are not shown.",
+    "Opponent Pokemon identities are never revealed. One face-down Active appears during the terminal transition.",
+    "No opened discard piles or battle-log scroll are shown. No in-turn card play, search, normal draw, attachment or attack occurs.",
+    "No deck QR or complete list is shown in this source. A same-label earlier source QR is a candidate only; no uninterrupted recording proves the list was unchanged across sources.",
+    "Seek times are source-local requested positions. Exact decoded frame PTS has not been measured."
+  ]
+}

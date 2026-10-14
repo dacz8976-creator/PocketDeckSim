@@ -1,0 +1,284 @@
+- banner "Artifact controls":
+  - link "Home":
+    - /url: /
+    - generic: 
+  - button "Pause Games":
+    - generic: Pause Games
+    - generic: 
+  - generic: Artifact by you
+  - button "You":
+    - group "You":
+      - img "Dustin Culp": DC
+  - group "Comments":
+    - button "Comment on this artifact":
+      - generic: 
+    - button "More comment options":
+      - generic: 
+  - button "Chat with Claude":
+    - text: Chat
+  - button "Share, shared with anyone who has the link":
+    - generic: 
+    - text: Share
+  - status
+  - alert
+  - button "Open task":
+    - generic: 
+- main:
+  - iframe [active] [id="frame-content"] [name="{\"hot\":{\"k\":\"0i73w0b0l03zyk\"},\"usable\":[\"db\",\"user\",\"permissions\"],\"n\":\"58ix8744o8r\"}"]:
+    - note:
+      - strong: "Pause games: not ladder results"
+      - generic: Opponents are random testers. Read the ratings, not the record.
+    - tablist "Sections":
+      - tab "Log"
+      - tab "Decks"
+      - tab "Summary" [active] [selected]
+    - heading "Pause Games" [level=1]
+    - paragraph: Games played in competitive mode while ranked is paused, with how each deck felt. A concession by your opponent counts as a full win.
+    - tabpanel "Summary":
+      - generic: "29"
+      - text: games
+      - generic: 15-14
+      - text: wins-losses
+      - generic: "9"
+      - text: won by concession
+      - article:
+        - heading "Wailord / Indeedee wall" [level=3]
+        - generic: 2-3
+        - paragraph: 5 games, 2 won by concession
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - 'heading "Draft A: Shark Tempo" [level=3]'
+        - generic: 4-1
+        - paragraph: 5 games, 1 won by concession
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Butterfree / Accelgor" [level=3]
+        - generic: 2-1
+        - paragraph: 3 games, 2 with exact deck list unverified
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Skarmory ex / Aegislash / Orthworm" [level=3]
+        - generic: 0-2
+        - paragraph: 2 games, 1 with exact deck list unverified
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Scolipede / Mega Sableye ex" [level=3]
+        - generic: 1-1
+        - paragraph: 2 games, 1 won by concession, 1 with exact deck list unverified
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Mega Blaziken / Combusken" [level=3]
+        - generic: 1-0
+        - paragraph: 1 game, 1 won by concession
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Wailord / Mega Sharpedo / Suicune" [level=3]
+        - generic: 0-1
+        - paragraph: 1 game
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Hatterene / Aromatisse / Togekiss" [level=3]
+        - generic: 1-0
+        - paragraph: 1 game, 1 won by concession
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Aegislash / Tinkaton ex / Team Rocket's Tinkaton" [level=3]
+        - generic: 0-1
+        - paragraph: 1 game
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Aegislash / Team Rocket's Tinkaton" [level=3]
+        - generic: 0-1
+        - paragraph: 1 game
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Aegislash / Melmetal ex / Magnezone" [level=3]
+        - generic: 1-0
+        - paragraph: 1 game, 1 won by concession
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Nidoking / Nihilego / Darkrai ex (two Darkrai)" [level=3]
+        - generic: 0-1
+        - paragraph: 1 game
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Nidoking / Nihilego / Darkrai ex (one Darkrai)" [level=3]
+        - generic: 0-1
+        - paragraph: 1 game
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Terapagos ex / Silvally / Persian" [level=3]
+        - generic: 0-1
+        - paragraph: 1 game
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Conkeldurr / Sandslash / Hitmonchan ex" [level=3]
+        - generic: 1-0
+        - paragraph: 1 game
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Snorlax ex / Team Rocket's Persian / Silvally (Water revision)" [level=3]
+        - generic: 1-0
+        - paragraph: 1 game, 1 won by concession
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Kingdra ex / Team Rocket's Weezing ex" [level=3]
+        - generic: 1-0
+        - paragraph: 1 game, 1 won by concession
+        - generic: Competitive
+        - generic: "-"
+        - generic: Consistent
+        - generic: "-"
+        - generic: Playable
+        - generic: "-"
+        - generic: Fun
+        - generic: "-"
+      - article:
+        - heading "Mega Blaziken tournament list" [level=3]
+        - generic: no games yet
+      - article:
+        - heading "Mega Manectric / Heliolisk" [level=3]
+        - generic: no games yet
+      - article:
+        - heading "Alolan Ninetales / Raticate" [level=3]
+        - generic: no games yet
+      - article:
+        - 'heading "Brew 7: Hoopa / Darkrai / Sableye" [level=3]'
+        - generic: no games yet
+      - article:
+        - 'heading "Draft B: Tide Heal" [level=3]'
+        - generic: no games yet
+      - article:
+        - 'heading "Draft C: Meowstic / Hatterene v2" [level=3]'
+        - generic: no games yet
+      - article:
+        - 'heading "Draft D: Entei / Grimhound" [level=3]'
+        - generic: no games yet
+      - article:
+        - heading "Conkeldurr / Garganacl" [level=3]
+        - generic: no games yet
+      - paragraph: Win and loss here are against random testers in competitive mode. A concession by the opponent is counted as a win. Ratings are averages of the 1 to 5 taps; a deck with no rating shows a dash.
+- status
+- alert
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status

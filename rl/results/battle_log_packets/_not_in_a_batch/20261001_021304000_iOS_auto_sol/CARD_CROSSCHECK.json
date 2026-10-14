@@ -1,0 +1,174 @@
+{
+  "catalog_path": "C:/Users/dacz8/Projects/Pocket Deck Lab/s216_card_catalog_v1.json",
+  "use": "Cross-check only; native source frames control observations",
+  "entities": [
+    {
+      "ability": null,
+      "alias_ids": [
+        "B1:109:cPK_10_011910_00_LISYAN_R.webp"
+      ],
+      "base_deckgym_id": "B1 109",
+      "canonical_name": "Chingling",
+      "entity_id": 11910,
+      "entity_key": "pokemon:011910",
+      "full_attacks": [
+        {
+          "damage": 10,
+          "effect": "During your opponent's next turn, they can't play any Item cards from their hand.",
+          "energy_required": [],
+          "title": "Jingly Noise"
+        }
+      ],
+      "functional_id": "ee05c7a6cee6",
+      "hp": 30,
+      "kind": "pokemon",
+      "normalized_name": "chingling",
+      "reduced_attacks": [
+        {
+          "damage": 10,
+          "effect": "During your opponent's next turn, they can't play any Item cards from their hand.",
+          "title": "Jingly Noise"
+        }
+      ]
+    },
+    {
+      "ability": null,
+      "alias_ids": [
+        "B2:185:cPK_20_014320_00_MEGASIRNIGHTex_SR.webp",
+        "B2:203:cPK_20_014320_01_MEGASIRNIGHTex_IM.webp",
+        "B2:66:cPK_10_014320_00_MEGASIRNIGHTex_RR.webp",
+        "B4:227:cPK_20_014320_02_MEGASIRNIGHTex_SSR.webp"
+      ],
+      "base_deckgym_id": "B2 066",
+      "canonical_name": "Mega Gardevoir ex",
+      "entity_id": 14320,
+      "entity_key": "pokemon:014320",
+      "full_attacks": [
+        {
+          "damage": 110,
+          "effect": "Take 3 [P] Energy from your Energy Zone and attach it to your [P] Pok\u00e9mon in any way you like.",
+          "energy_required": [
+            "Psychic",
+            "Psychic"
+          ],
+          "title": "Fantasia Force"
+        }
+      ],
+      "functional_id": "5d69374f59f7",
+      "hp": 210,
+      "kind": "pokemon",
+      "normalized_name": "mega gardevoir ex",
+      "reduced_attacks": [
+        {
+          "damage": 110,
+          "effect": "Take 3 [P] Energy from your Energy Zone and attach it to your [P] Pok\u00e9mon in any way you like.",
+          "title": "Fantasia Force"
+        }
+      ]
+    },
+    {
+      "ability": null,
+      "alias_ids": [
+        "B2a:11:cPK_10_015200_00_ANOHORAGUSA_U.webp"
+      ],
+      "base_deckgym_id": "B2a 011",
+      "canonical_name": "Brambleghast",
+      "entity_id": 15200,
+      "entity_key": "pokemon:015200",
+      "full_attacks": [
+        {
+          "damage": 60,
+          "effect": "Flip a coin until you get tails. This attack does 60 damage for each heads.",
+          "energy_required": [
+            "Grass",
+            "Colorless"
+          ],
+          "title": "Continuous Tumble"
+        }
+      ],
+      "functional_id": "6fe3ff76f5d8",
+      "hp": 100,
+      "kind": "pokemon",
+      "normalized_name": "brambleghast",
+      "reduced_attacks": [
+        {
+          "damage": 60,
+          "effect": "Flip a coin until you get tails. This attack does 60 damage for each heads.",
+          "title": "Continuous Tumble"
+        }
+      ]
+    },
+    {
+      "ability": null,
+      "alias_ids": [
+        "B2b:114:cPK_20_016430_01_MEGAGANGARex_SSR.webp",
+        "B2b:39:cPK_10_016430_00_MEGAGANGARex_RR.webp",
+        "B2b:79:cPK_20_016430_00_MEGAGANGARex_SR.webp"
+      ],
+      "base_deckgym_id": "B2b 039",
+      "canonical_name": "Mega Gengar ex",
+      "entity_id": 16430,
+      "entity_key": "pokemon:016430",
+      "full_attacks": [
+        {
+          "damage": 120,
+          "effect": "During your opponent's next turn, they can't play any Trainer cards from their hand.",
+          "energy_required": [
+            "Darkness",
+            "Darkness",
+            "Darkness",
+            "Colorless"
+          ],
+          "title": "Labyrinth of Shadows"
+        }
+      ],
+      "functional_id": "12c096caa9da",
+      "hp": 210,
+      "kind": "pokemon",
+      "normalized_name": "mega gengar ex",
+      "reduced_attacks": [
+        {
+          "damage": 120,
+          "effect": "During your opponent's next turn, they can't play any Trainer cards from their hand.",
+          "title": "Labyrinth of Shadows"
+        }
+      ]
+    },
+    {
+      "ability": {
+        "effect": "Once during your turn, if this Pok\u00e9mon is on your Bench, you may move 30 damage that your Active Pok\u00e9mon has on it to this Pok\u00e9mon.",
+        "title": "Accept Pain"
+      },
+      "alias_ids": [
+        "B3:167:cPK_20_017380_00_ANOHORAGUSA_AR.webp",
+        "B3:73:cPK_10_017380_00_ANOHORAGUSA_R.webp"
+      ],
+      "base_deckgym_id": "B3 073",
+      "canonical_name": "Brambleghast",
+      "entity_id": 17380,
+      "entity_key": "pokemon:017380",
+      "full_attacks": [
+        {
+          "damage": 60,
+          "effect": null,
+          "energy_required": [
+            "Psychic",
+            "Colorless"
+          ],
+          "title": "Spooky Shot"
+        }
+      ],
+      "functional_id": "149a36df853f",
+      "hp": 90,
+      "kind": "pokemon",
+      "normalized_name": "brambleghast",
+      "reduced_attacks": [
+        {
+          "damage": 60,
+          "effect": null,
+          "title": "Spooky Shot"
+        }
+      ]
+    }
+  ]
+}

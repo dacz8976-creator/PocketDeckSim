@@ -1,0 +1,23 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20261001_023301000_iOS.MP4",
+  "source_sha256": "b98242244e00027cba51f9b611596ee81a83cbff54358ba7c5b9cae65fe9fa7c",
+  "scope": "Complete ten-turn 195.268333-second Auto AI battle, setup through three knockouts and named Victory",
+  "first_pass": "gpt-6.1-sol/high /root/auto_023301",
+  "lead_checks": "Read full narrative, all-turn coverage, source, summary and uncertainties. Independently inspected native11s setup,99s ordinary turn7 state (Zygarde150/threeFighting, Haunter80, Skrelp60, owner one point),114.5s Legendary Drive move-all text and Auto off,118s bench entry,122s switch,126s Bounded Field printed x2 text,128s settled Koraidon150/threeFighting with Zygarde110/zeroEnergy and Auto on,180s World Wrecker220 against Haunter80, and194.8s named Victory/10turns/3-0/540 damage. Inspected cropped source strip122/128/146/162/180s: transfer animation old badges clear, then Zygarde rebuilds to one and two Energy. This resolves the provisional duplication concern without a rules-failure claim. Lead checks are bounded and supplement the worker's complete visual review.",
+  "lead_evidence": ["target/t0011.00.jpg", "target/t0099.00.jpg", "target/t0114.50.jpg", "target/t0118.00.jpg", "target/t0122.00.jpg", "target/t0126.00.jpg", "target/t0128.00.jpg", "target/t0180.00.jpg", "target/t0194.80.jpg", "target/bench_energy_check.jpg"],
+  "outcome": "owner_win",
+  "final_points": {"owner": 3, "opponent": 0},
+  "owner_visible_core": "Zygarde ex / Koraidon ex",
+  "opponent": "AI Mega Gengar ex & Dragalge ex Deck (Deluxe Pack: Mega)",
+  "last_turn": 10,
+  "useful_finding": "Legendary Drive moves all three Fighting to Koraidon; subsequent attachments rebuild Benched Zygarde to two. Auto is off during the ability prompt and switch. Bounded Field yields two 220-damage attacks, although printed 110 would already defeat those visible targets. Four Ice Pop uses flip heads; 100 + 220 + 220 matches 540 damage including overkill.",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "limitations": "Hidden decks/search targets, final discarded-card identity, input provenance during the Auto pause and filename clock basis remain unknown. No simulator rule mismatch or general deck-strength claim is inferred.",
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; owner-declared Auto AI game",
+  "astra_consulted": false,
+  "astra_reason": "Settled native frames resolved the Energy accounting; no additional consequential ambiguity required a separate consultation"
+}

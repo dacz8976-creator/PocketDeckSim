@@ -1,0 +1,39 @@
+{
+  "schema": "retrospective-hand-lead-acceptance-v1",
+  "source": "20261002_022135000_iOS.MP4",
+  "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+  "accepted_at_utc": "2026-10-02T21:27:54.820459+00:00",
+  "lead": "Codex retrospective lead",
+  "worker_model": "gpt-6.1-sol",
+  "worker_effort": "high",
+  "independent_model": "gpt-6.1-sol",
+  "independent_effort": "high",
+  "verdict": "accepted_with_recording_limits",
+  "target_turns": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11
+  ],
+  "original_full_battle_status": "Reviewed; preserved",
+  "scope": "Opening and first six owner hands; accepted remaining turns inherited",
+  "independent_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_wailord\\20261002_022135000\\SOURCE_CHECKS_REPAIR_ACCEPTANCE.json",
+  "structure_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\STRUCTURE_CHECK.json",
+  "capture_status": null,
+  "source_read_basis": "SOURCE_HASH_VERIFICATION.json",
+  "shared_registration": "complete",
+  "accepted_packet_hashes": {
+    "REVIEW_SUPPLEMENT.md": "12b18a84d76ebbe97d3b41d21b0a8c22622f8bb38843ebd740f406da0e30a729",
+    "HAND_SUPPLEMENT.json": "6ce76727441b61bb52f1e593a63e30cf3995ee56faf5403f6e4b936c1984e043",
+    "TURN_EVIDENCE.json": "77cfb1fd0762c17a7aa52e407a6c29d1b21225cb8e1672bbc1c1337877b17824",
+    "UNCERTAINTIES.json": "6344b5789ab6da9a4c4af4879e701f730fbae04222d540ebf2e844f509e01694",
+    "DECK_USED.json": "7cd11c7ba08876e7660fdbdb534938b4dacf483ee8e17210b52eabc003d660ca",
+    "PAUSE_GAME.json": "fd9d64bd0d7dcf02b9231f0a0269f8aa044569e3e0c859886c2a3884fdeff7f3",
+    "TURN_LEDGER.json": "3c74a7bf1699aac77245d3b3fedf56d4d65c1f906f806299baf24b0ce4f21cda"
+  },
+  "retained_evidence_only": false,
+  "shared_event": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\events\\2026-10-02T212756.486723_0000_4f825aeb-d1ff-4e9b-a65f-2919016a5de0.json",
+  "registration_identity_provenance": "verified_by_cli_sha256"
+}

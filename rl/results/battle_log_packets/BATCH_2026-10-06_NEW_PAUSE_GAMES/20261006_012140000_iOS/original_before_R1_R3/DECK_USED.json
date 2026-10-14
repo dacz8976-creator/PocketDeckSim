@@ -1,0 +1,45 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261006_012140000_iOS-game-1",
+  "sources": [
+    {
+      "video_basename": "20261006_012140000_iOS.MP4",
+      "sha256": "2fbf36e1f6d45a8e7fc6b1d273b0dc64c106ce1df14ac0447617e413ad79cf4e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-06T20:49:05.466865+00:00",
+  "log_list_version": "batch LIVE_DECK_SNAPSHOT.json frozen before this review",
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": "../LIVE_DECK_SNAPSHOT.json; ../NEW_DECK_ENTRIES.json; QUALIFIED_DECK_CANDIDATE.json",
+  "game_version_binding_basis": "Live frozen log has no exact Scolipede / Mega Sableye list. Source has deck-slot label New deck 6 and visible matching core, but no deck QR or full list. Candidate QR belongs to 20261005_183108000_iOS.MP4, a separate source with an unrecorded gap.",
+  "conflicts_with_filmed_cards": [],
+  "exact_list_status": "unavailable_game_bound_log_list",
+  "qualified_candidate_id": "filmed-qr-d0b1bba631c1",
+  "qualified_candidate_file": "QUALIFIED_DECK_CANDIDATE.json",
+  "qualified_candidate_card_count": 20,
+  "filmed_deck_label": "New deck 6",
+  "visible_named_cards": [
+    "Venipede",
+    "Whirlipede",
+    "Scolipede",
+    "Mega Sableye ex",
+    "Poke Ball",
+    "Professor's Research",
+    "Wally",
+    "Cyrus",
+    "Lucky Ice Pop"
+  ],
+  "visible_energy_type": "Darkness",
+  "limits": [
+    "No game-bound QR, exact deck editor list, or exact 20-card log snapshot appears in this source. A matching prior filmed QR is only a candidate because the intervening gap and deck edits are unrecorded.",
+    "Candidate membership does not prove that unseen Poison Barb, Deceptive Needle or Copycat was in this battle deck. Exact artwork/set identifiers are not claimed."
+  ]
+}

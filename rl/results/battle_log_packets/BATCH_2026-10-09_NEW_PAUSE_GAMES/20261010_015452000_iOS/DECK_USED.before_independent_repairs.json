@@ -1,0 +1,433 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261010_015452000_iOS",
+  "sources": [
+    {
+      "video_basename": "20261010_015452000_iOS.MP4",
+      "sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": "Kingdra ex / Team Rocket's Weezing ex",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-10T03:46:03.247Z",
+  "log_list_version": "Rendered live addition verified after save; filmed-qr-b649812c0d42",
+  "expected_card_count": 20,
+  "cards_in_log_order": [
+    {
+      "name": "Team Rocket’s Koffing",
+      "variant": "B4a 042"
+    },
+    {
+      "name": "Team Rocket’s Koffing",
+      "variant": "B4a 042"
+    },
+    {
+      "name": "Team Rocket’s Weezing ex",
+      "variant": "B4a 043"
+    },
+    {
+      "name": "Team Rocket’s Weezing ex",
+      "variant": "B4a 043"
+    },
+    {
+      "name": "Horsea",
+      "variant": "A4 041"
+    },
+    {
+      "name": "Horsea",
+      "variant": "A4 041"
+    },
+    {
+      "name": "Seadra",
+      "variant": "A1 071"
+    },
+    {
+      "name": "Kingdra ex",
+      "variant": "A4 043"
+    },
+    {
+      "name": "Kingdra ex",
+      "variant": "A4 043"
+    },
+    {
+      "name": "Poké Ball",
+      "variant": "A2b 111"
+    },
+    {
+      "name": "Poké Ball",
+      "variant": "A2b 111"
+    },
+    {
+      "name": "Rare Candy",
+      "variant": "A3 144"
+    },
+    {
+      "name": "Rare Candy",
+      "variant": "A3 144"
+    },
+    {
+      "name": "Small Balloon",
+      "variant": "B3b 064"
+    },
+    {
+      "name": "Professor’s Research",
+      "variant": "A4b 373"
+    },
+    {
+      "name": "Professor’s Research",
+      "variant": "A4b 373"
+    },
+    {
+      "name": "Sabrina",
+      "variant": "A1 225"
+    },
+    {
+      "name": "Copycat",
+      "variant": "B1 225"
+    },
+    {
+      "name": "Hiking Trail",
+      "variant": "B2b 069"
+    },
+    {
+      "name": "Soothing Shore",
+      "variant": "B4 154"
+    }
+  ],
+  "counts_by_name_and_variant": [
+    {
+      "count": 2,
+      "name": "Team Rocket’s Koffing",
+      "variant": "B4a 042"
+    },
+    {
+      "count": 2,
+      "name": "Team Rocket’s Weezing ex",
+      "variant": "B4a 043"
+    },
+    {
+      "count": 2,
+      "name": "Horsea",
+      "variant": "A4 041"
+    },
+    {
+      "count": 1,
+      "name": "Seadra",
+      "variant": "A1 071"
+    },
+    {
+      "count": 2,
+      "name": "Kingdra ex",
+      "variant": "A4 043"
+    },
+    {
+      "count": 2,
+      "name": "Poké Ball",
+      "variant": "A2b 111"
+    },
+    {
+      "count": 2,
+      "name": "Rare Candy",
+      "variant": "A3 144"
+    },
+    {
+      "count": 1,
+      "name": "Small Balloon",
+      "variant": "B3b 064"
+    },
+    {
+      "count": 2,
+      "name": "Professor’s Research",
+      "variant": "A4b 373"
+    },
+    {
+      "count": 1,
+      "name": "Sabrina",
+      "variant": "A1 225"
+    },
+    {
+      "count": 1,
+      "name": "Copycat",
+      "variant": "B1 225"
+    },
+    {
+      "count": 1,
+      "name": "Hiking Trail",
+      "variant": "B2b 069"
+    },
+    {
+      "count": 1,
+      "name": "Soothing Shore",
+      "variant": "B4 154"
+    }
+  ],
+  "energy_configuration_from_log": [
+    "Water"
+  ],
+  "actual_card_count": 20,
+  "capture_source_text_or_image": "../LIVE_NEW_DECKS_VERIFIED.json",
+  "game_version_binding_basis": "No corresponding Kingdra/TR Weezing list exists in dated23-deck live snapshot. Filmed QR and continuous pregame deck/match evidence retained separately. Source-qualified live addition now matches the filmed QR exactly.",
+  "conflicts_with_filmed_cards": [
+    "Unsaved edit3s showsDarkness; Go Back Without Saving4s accepted and deck view6/8s restoresWater, agreeing with QR and match."
+  ],
+  "exact_list_status": "verified_live_list_and_filmed_qr_game_binding",
+  "limits": [
+    "QR semantic entity resolution uses pinned community-derived catalog; artwork/rarity not encoded."
+  ],
+  "filmed_deck": {
+    "qr_receipt": "QR_DECODE.json",
+    "deck_label": "New deck13",
+    "card_count": 20,
+    "counts": [
+      {
+        "entity_kind": "trainer",
+        "entity_id": 30,
+        "count": 2,
+        "name": "Poké Ball",
+        "name_candidates": [
+          "Poké Ball"
+        ],
+        "functional_ids": [
+          "1b20901befde"
+        ],
+        "printing_aliases": [
+          "A2b 111",
+          "P-A 005"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 480,
+        "count": 2,
+        "name": "Rare Candy",
+        "name_candidates": [
+          "Rare Candy"
+        ],
+        "functional_ids": [
+          "87829fe1a8c1"
+        ],
+        "printing_aliases": [
+          "A3 144",
+          "A4b 314",
+          "A4b 315",
+          "A4b 379"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 1430,
+        "count": 1,
+        "name": "Small Balloon",
+        "name_candidates": [
+          "Small Balloon"
+        ],
+        "functional_ids": [
+          "a62231407097"
+        ],
+        "printing_aliases": [
+          "B3b 064",
+          "B3b 106"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 40,
+        "count": 2,
+        "name": "Professor’s Research",
+        "name_candidates": [
+          "Professor’s Research"
+        ],
+        "functional_ids": [
+          "c0015440f616"
+        ],
+        "printing_aliases": [
+          "A4b 373",
+          "P-A 007"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 170,
+        "count": 1,
+        "name": "Sabrina",
+        "name_candidates": [
+          "Sabrina"
+        ],
+        "functional_ids": [
+          "fc3dee07043b"
+        ],
+        "printing_aliases": [
+          "A1 225",
+          "A1 272",
+          "A4b 338",
+          "A4b 339"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 990,
+        "count": 1,
+        "name": "Copycat",
+        "name_candidates": [
+          "Copycat"
+        ],
+        "functional_ids": [
+          "d5d2b111c197"
+        ],
+        "printing_aliases": [
+          "B1 225",
+          "B1 270"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 1270,
+        "count": 1,
+        "name": "Hiking Trail",
+        "name_candidates": [
+          "Hiking Trail"
+        ],
+        "functional_ids": [
+          "a2d79d4fdf89"
+        ],
+        "printing_aliases": [
+          "B2b 069"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 1580,
+        "count": 1,
+        "name": "Soothing Shore",
+        "name_candidates": [
+          "Soothing Shore"
+        ],
+        "functional_ids": [
+          "bec1c61a5933"
+        ],
+        "printing_aliases": [
+          "B4 154"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 21550,
+        "count": 2,
+        "name": "Team Rocket’s Koffing",
+        "name_candidates": [
+          "Team Rocket’s Koffing"
+        ],
+        "functional_ids": [
+          "63fa49654d47"
+        ],
+        "printing_aliases": [
+          "B4a 042"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 21560,
+        "count": 2,
+        "name": "Team Rocket’s Weezing ex",
+        "name_candidates": [
+          "Team Rocket’s Weezing ex"
+        ],
+        "functional_ids": [
+          "cd231b1433d6"
+        ],
+        "printing_aliases": [
+          "B4a 043",
+          "B4a 083",
+          "B4a 092"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 8970,
+        "count": 2,
+        "name": "Horsea",
+        "name_candidates": [
+          "Horsea"
+        ],
+        "functional_ids": [
+          "833cc89f04b0"
+        ],
+        "printing_aliases": [
+          "A4 041",
+          "A4b 088",
+          "A4b 089",
+          "B2 208"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 710,
+        "count": 1,
+        "name": "Seadra",
+        "name_candidates": [
+          "Seadra"
+        ],
+        "functional_ids": [
+          "4ff44a0c95a1"
+        ],
+        "printing_aliases": [
+          "A1 071"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 8990,
+        "count": 2,
+        "name": "Kingdra ex",
+        "name_candidates": [
+          "Kingdra ex"
+        ],
+        "functional_ids": [
+          "a7482ef46f4a"
+        ],
+        "printing_aliases": [
+          "A4 043",
+          "A4 188",
+          "A4 203",
+          "A4b 092",
+          "B2 227"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      }
+    ],
+    "energy": [
+      "Water"
+    ],
+    "payload": "C5iWnpiWnpiYYJiYYJicFpiWqJiWqJiXKpiaXpibdpicrAkAVC4AVC4AVDgAVDgAIwoAIwoAAsYAIx4AIx4BAw==",
+    "continuity_basis": "QR0s; deck3s; canceled unsaved edit4s; restoredWater6/8s; immediate matchmaking12s; same Koffing/Weezing/Horsea/Kingdra/RareCandy/Shore/Balloon battlecore."
+  },
+  "initial_log_snapshot": "DECK_USED.before_live_refresh.json",
+  "live_refresh_utc": "2026-10-10T03:46:41.204162+00:00"
+}

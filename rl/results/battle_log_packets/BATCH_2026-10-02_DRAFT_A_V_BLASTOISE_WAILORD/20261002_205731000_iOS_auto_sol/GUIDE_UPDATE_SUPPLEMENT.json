@@ -1,0 +1,3215 @@
+{
+  "source_video": "20261002_205731000_iOS.MP4",
+  "source_sha256": "f1ce8e51bc351fc008563c73a72aa7915f0389707375437068c998afd0190199",
+  "reviewer": "/root supplemental author",
+  "created_utc": "2026-10-03T00:32:18.109052+00:00",
+  "guide_receipt": "../GUIDE_UPDATE_RECEIPT.json",
+  "independent_acceptance_pending": true,
+  "original_submission_manifest": "SUBMISSION.json",
+  "original_submission_sha256": "220c27a5b6b464dae05afe49c8d764e15063e6499378ce689d99be8d2b12ec03",
+  "capture_status": "complete_with_recording_limits",
+  "owner_turns": [
+    {
+      "turn_number": 2,
+      "source_video": "20261002_205731000_iOS.MP4",
+      "actual_frame_seconds": 29.7133,
+      "requested_seconds": 29.7,
+      "evidence_ids": [
+        "F0029.70"
+      ],
+      "fresh_board_observation": {
+        "turn_number_displayed": 2,
+        "phase": "start",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "instance_id": "O1",
+            "name": "Carvanha",
+            "variant": null,
+            "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0029.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0029.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [],
+            "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+            "evolution_stack_evidence_ids": [
+              "F0029.70"
+            ],
+            "evolution_stack_current_view_limit": null
+          },
+          "bench_in_position_order": [
+            {
+              "bench_position": 1,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0029.70"
+              ]
+            },
+            {
+              "bench_position": 2,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0029.70"
+              ]
+            },
+            {
+              "bench_position": 3,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0029.70"
+              ]
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0029.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0029.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "P1",
+            "name": "Meowth",
+            "variant": null,
+            "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [
+              "Carefree Steps ability badge"
+            ],
+            "evidence_ids": [
+              "F0029.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0029.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [],
+            "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+            "evolution_stack_evidence_ids": [
+              "F0029.70"
+            ],
+            "evolution_stack_current_view_limit": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "P3",
+              "name": "Squirtle",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 1,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0029.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0029.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [],
+              "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+              "evolution_stack_evidence_ids": [
+                "F0029.70"
+              ],
+              "evolution_stack_current_view_limit": null
+            },
+            {
+              "bench_position": 2,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0029.70"
+              ]
+            },
+            {
+              "instance_id": "P2",
+              "name": "Frigibax",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0029.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0029.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [],
+              "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+              "evolution_stack_evidence_ids": [
+                "F0029.70"
+              ],
+              "evolution_stack_current_view_limit": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0029.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0029.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0029.70"
+        ]
+      },
+      "decision_maker": {
+        "value": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled": true,
+        "evidence_ids": [
+          "F0029.70"
+        ],
+        "basis": "Checked Auto control visible in each selected native owner-start frame; primary complete coverage records no toggle or manual override.",
+        "observed_override": false,
+        "limit": "No input telemetry; start/covered UI and automated sequence support attribution, not a claim that each invisible tap was witnessed."
+      },
+      "opponent_opened_discard_count": null,
+      "opponent_discard_count_limit": "No opened pile; visible top cards do not reveal a numeric total."
+    },
+    {
+      "turn_number": 4,
+      "source_video": "20261002_205731000_iOS.MP4",
+      "actual_frame_seconds": 56.7017,
+      "requested_seconds": 56.7,
+      "evidence_ids": [
+        "F0056.70"
+      ],
+      "fresh_board_observation": {
+        "turn_number_displayed": 4,
+        "phase": "start",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "instance_id": "O1",
+            "name": "Carvanha",
+            "variant": null,
+            "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0056.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0056.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [],
+            "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+            "evolution_stack_evidence_ids": [
+              "F0029.70",
+              "F0056.70"
+            ],
+            "evolution_stack_current_view_limit": null
+          },
+          "bench_in_position_order": [
+            {
+              "bench_position": 1,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0056.70"
+              ]
+            },
+            {
+              "bench_position": 2,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0056.70"
+              ]
+            },
+            {
+              "bench_position": 3,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0056.70"
+              ]
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0056.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0056.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "P1",
+            "name": "Meowth",
+            "variant": null,
+            "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [
+              "Carefree Steps ability badge"
+            ],
+            "evidence_ids": [
+              "F0056.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0056.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [],
+            "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+            "evolution_stack_evidence_ids": [
+              "F0056.70"
+            ],
+            "evolution_stack_current_view_limit": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "P3",
+              "name": "Squirtle",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 1,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0056.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0056.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [],
+              "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+              "evolution_stack_evidence_ids": [
+                "F0029.70"
+              ],
+              "evolution_stack_current_view_limit": null
+            },
+            {
+              "bench_position": 2,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0056.70"
+              ]
+            },
+            {
+              "instance_id": "P2",
+              "name": "Arctibax",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 3,
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0056.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0056.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Frigibax"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0029.70",
+                "F0056.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0056.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0056.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Soothing Shore: at end of each turn heals 20 from each of ending player’s Water Pokémon with any Water Energy attached."
+        ],
+        "evidence_ids": [
+          "F0056.70"
+        ]
+      },
+      "decision_maker": {
+        "value": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled": true,
+        "evidence_ids": [
+          "F0056.70"
+        ],
+        "basis": "Checked Auto control visible in each selected native owner-start frame; primary complete coverage records no toggle or manual override.",
+        "observed_override": false,
+        "limit": "No input telemetry; start/covered UI and automated sequence support attribution, not a claim that each invisible tap was witnessed."
+      },
+      "opponent_opened_discard_count": null,
+      "opponent_discard_count_limit": "No opened pile; visible top cards do not reveal a numeric total."
+    },
+    {
+      "turn_number": 6,
+      "source_video": "20261002_205731000_iOS.MP4",
+      "actual_frame_seconds": 97.7083,
+      "requested_seconds": 97.7,
+      "evidence_ids": [
+        "F0097.70"
+      ],
+      "fresh_board_observation": {
+        "turn_number_displayed": 6,
+        "phase": "start",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "instance_id": "O1",
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+            "bench_position": null,
+            "hp_now": 190,
+            "hp_max": 190,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0097.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0097.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [
+              "Carvanha"
+            ],
+            "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+            "evolution_stack_evidence_ids": [
+              "F0029.70",
+              "F0056.70",
+              "F0059.50",
+              "F0097.70"
+            ],
+            "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+          },
+          "bench_in_position_order": [
+            {
+              "bench_position": 1,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0097.70"
+              ]
+            },
+            {
+              "bench_position": 2,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0097.70"
+              ]
+            },
+            {
+              "bench_position": 3,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0097.70"
+              ]
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0097.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0097.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "P2",
+            "name": "Baxcalibur",
+            "variant": null,
+            "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+            "bench_position": null,
+            "hp_now": 140,
+            "hp_max": 140,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0097.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0097.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [
+              "Arctibax",
+              "Frigibax"
+            ],
+            "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+            "evolution_stack_evidence_ids": [
+              "F0029.70",
+              "F0056.70",
+              "F0086.00",
+              "F0097.70"
+            ],
+            "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "P3",
+              "name": "Squirtle",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 1,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0097.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0097.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [],
+              "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+              "evolution_stack_evidence_ids": [
+                "F0029.70"
+              ],
+              "evolution_stack_current_view_limit": null
+            },
+            {
+              "instance_id": "P4",
+              "name": "Wailmer",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 2,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0097.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0097.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [],
+              "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+              "evolution_stack_evidence_ids": [
+                "F0097.70"
+              ],
+              "evolution_stack_current_view_limit": null
+            },
+            {
+              "bench_position": 3,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0097.70"
+              ]
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0097.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0097.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Soothing Shore: at end of each turn heals 20 from each of ending player’s Water Pokémon with any Water Energy attached."
+        ],
+        "evidence_ids": [
+          "F0097.70"
+        ]
+      },
+      "decision_maker": {
+        "value": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled": true,
+        "evidence_ids": [
+          "F0097.70"
+        ],
+        "basis": "Checked Auto control visible in each selected native owner-start frame; primary complete coverage records no toggle or manual override.",
+        "observed_override": false,
+        "limit": "No input telemetry; start/covered UI and automated sequence support attribution, not a claim that each invisible tap was witnessed."
+      },
+      "opponent_opened_discard_count": null,
+      "opponent_discard_count_limit": "No opened pile; visible top cards do not reveal a numeric total."
+    },
+    {
+      "turn_number": 8,
+      "source_video": "20261002_205731000_iOS.MP4",
+      "actual_frame_seconds": 131.705,
+      "requested_seconds": 131.7,
+      "evidence_ids": [
+        "F0131.70"
+      ],
+      "fresh_board_observation": {
+        "turn_number_displayed": 8,
+        "phase": "start",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "instance_id": "O1",
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 190,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 90,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0131.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0131.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [
+              "Carvanha"
+            ],
+            "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+            "evolution_stack_evidence_ids": [
+              "F0029.70",
+              "F0056.70",
+              "F0059.50",
+              "F0097.70"
+            ],
+            "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+          },
+          "bench_in_position_order": [
+            {
+              "bench_position": 1,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0131.70"
+              ]
+            },
+            {
+              "bench_position": 2,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0131.70"
+              ]
+            },
+            {
+              "instance_id": "O2",
+              "name": "Alolan Vulpix",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Water": 2
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0131.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0131.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [],
+              "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+              "evolution_stack_evidence_ids": [
+                "F0100.00",
+                "F0131.70"
+              ],
+              "evolution_stack_current_view_limit": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0131.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0131.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "P2",
+            "name": "Baxcalibur",
+            "variant": null,
+            "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 140,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 50,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Water": 3
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0131.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0131.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [
+              "Arctibax",
+              "Frigibax"
+            ],
+            "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+            "evolution_stack_evidence_ids": [
+              "F0029.70",
+              "F0056.70",
+              "F0086.00",
+              "F0097.70"
+            ],
+            "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "P3",
+              "name": "Wartortle",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 1,
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [
+                "Shell Shield badge"
+              ],
+              "evidence_ids": [
+                "F0131.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0131.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Squirtle"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0029.70",
+                "F0117.00",
+                "F0131.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            },
+            {
+              "instance_id": "P4",
+              "name": "Wailord ex",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 2,
+              "hp_now": 250,
+              "hp_max": 250,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0131.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0131.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Wailmer"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0097.70",
+                "F0117.00",
+                "F0131.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            },
+            {
+              "bench_position": 3,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0131.70"
+              ]
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0131.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0131.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Soothing Shore: at end of each turn heals 20 from each of ending player’s Water Pokémon with any Water Energy attached."
+        ],
+        "evidence_ids": [
+          "F0131.70"
+        ]
+      },
+      "decision_maker": {
+        "value": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled": true,
+        "evidence_ids": [
+          "F0131.70"
+        ],
+        "basis": "Checked Auto control visible in each selected native owner-start frame; primary complete coverage records no toggle or manual override.",
+        "observed_override": false,
+        "limit": "No input telemetry; start/covered UI and automated sequence support attribution, not a claim that each invisible tap was witnessed."
+      },
+      "opponent_opened_discard_count": null,
+      "opponent_discard_count_limit": "No opened pile; visible top cards do not reveal a numeric total."
+    },
+    {
+      "turn_number": 10,
+      "source_video": "20261002_205731000_iOS.MP4",
+      "actual_frame_seconds": 190.71,
+      "requested_seconds": 190.7,
+      "evidence_ids": [
+        "F0190.70"
+      ],
+      "fresh_board_observation": {
+        "turn_number_displayed": 10,
+        "phase": "start",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "instance_id": "O1",
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 190,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 140,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Water": 3
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0190.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0190.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [
+              "Carvanha"
+            ],
+            "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+            "evolution_stack_evidence_ids": [
+              "F0029.70",
+              "F0056.70",
+              "F0059.50",
+              "F0097.70"
+            ],
+            "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+          },
+          "bench_in_position_order": [
+            {
+              "bench_position": 1,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0190.70"
+              ]
+            },
+            {
+              "bench_position": 2,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0190.70"
+              ]
+            },
+            {
+              "instance_id": "O2",
+              "name": "Alolan Ninetales ex",
+              "variant": "pink illustrated art",
+              "variant_limit": null,
+              "bench_position": 3,
+              "hp_now": 150,
+              "hp_max": 150,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Water": 3
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0190.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0190.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Alolan Vulpix"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0100.00",
+                "F0131.70",
+                "F0149.00",
+                "F0190.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0190.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0190.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "P3",
+            "name": "Mega Blastoise ex",
+            "variant": null,
+            "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+            "bench_position": null,
+            "hp_now": 230,
+            "hp_max": 230,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Water": 3
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0190.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0190.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [
+              "Wartortle",
+              "Squirtle"
+            ],
+            "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+            "evolution_stack_evidence_ids": [
+              "F0029.70",
+              "F0117.00",
+              "F0131.70",
+              "F0164.00",
+              "F0190.70"
+            ],
+            "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "P2",
+              "name": "Baxcalibur",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 1,
+              "hp_now": 20,
+              "hp_max": 140,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 120,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0190.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0190.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Arctibax",
+                "Frigibax"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0029.70",
+                "F0056.70",
+                "F0086.00",
+                "F0097.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            },
+            {
+              "instance_id": "P4",
+              "name": "Wailord ex",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 2,
+              "hp_now": 250,
+              "hp_max": 250,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0190.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0190.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Wailmer"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0097.70",
+                "F0117.00",
+                "F0131.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            },
+            {
+              "instance_id": "P5",
+              "name": "Frigibax",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0190.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0190.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [],
+              "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+              "evolution_stack_evidence_ids": [
+                "F0190.70"
+              ],
+              "evolution_stack_current_view_limit": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0190.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0190.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Soothing Shore: at end of each turn heals 20 from each of ending player’s Water Pokémon with any Water Energy attached."
+        ],
+        "evidence_ids": [
+          "F0190.70"
+        ]
+      },
+      "decision_maker": {
+        "value": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled": true,
+        "evidence_ids": [
+          "F0190.70"
+        ],
+        "basis": "Checked Auto control visible in each selected native owner-start frame; primary complete coverage records no toggle or manual override.",
+        "observed_override": false,
+        "limit": "No input telemetry; start/covered UI and automated sequence support attribution, not a claim that each invisible tap was witnessed."
+      },
+      "opponent_opened_discard_count": null,
+      "opponent_discard_count_limit": "No opened pile; visible top cards do not reveal a numeric total."
+    },
+    {
+      "turn_number": 12,
+      "source_video": "20261002_205731000_iOS.MP4",
+      "actual_frame_seconds": 224.708,
+      "requested_seconds": 224.7,
+      "evidence_ids": [
+        "F0224.70"
+      ],
+      "fresh_board_observation": {
+        "turn_number_displayed": 12,
+        "phase": "start",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "instance_id": "O2",
+            "name": "Alolan Ninetales ex",
+            "variant": "pink illustrated art",
+            "variant_limit": null,
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 150,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 130,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Water": 3
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0224.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0224.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [
+              "Alolan Vulpix"
+            ],
+            "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+            "evolution_stack_evidence_ids": [
+              "F0100.00",
+              "F0131.70",
+              "F0149.00",
+              "F0190.70"
+            ],
+            "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+          },
+          "bench_in_position_order": [
+            {
+              "bench_position": 1,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0224.70"
+              ]
+            },
+            {
+              "instance_id": "O3",
+              "name": "Alolan Vulpix",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0224.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0224.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history.",
+                "energy_limit": "One Water is partly overlapped by adjacent card; typed total1 follows witnessed T10 attachment and no removal, rather than pretending this frame alone exposes every icon."
+              },
+              "evolution_stack_below_top_nearest_first": [],
+              "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+              "evolution_stack_evidence_ids": [
+                "F0190.70",
+                "F0196.30",
+                "F0224.70"
+              ],
+              "evolution_stack_current_view_limit": null
+            },
+            {
+              "instance_id": "O1",
+              "name": "Mega Sharpedo ex",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 190,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 120,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Water": 3
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0224.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0224.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Carvanha"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0029.70",
+                "F0056.70",
+                "F0059.50",
+                "F0097.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0224.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0224.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "P3",
+            "name": "Mega Blastoise ex",
+            "variant": null,
+            "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 230,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 60,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Water": 3
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0224.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0224.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [
+              "Wartortle",
+              "Squirtle"
+            ],
+            "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+            "evolution_stack_evidence_ids": [
+              "F0029.70",
+              "F0117.00",
+              "F0131.70",
+              "F0164.00",
+              "F0190.70"
+            ],
+            "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "P2",
+              "name": "Baxcalibur",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 1,
+              "hp_now": 20,
+              "hp_max": 140,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 120,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0224.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0224.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Arctibax",
+                "Frigibax"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0029.70",
+                "F0056.70",
+                "F0086.00",
+                "F0097.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            },
+            {
+              "instance_id": "P4",
+              "name": "Wailord ex",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 2,
+              "hp_now": 250,
+              "hp_max": 250,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0224.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0224.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Wailmer"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0097.70",
+                "F0117.00",
+                "F0131.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            },
+            {
+              "instance_id": "P5",
+              "name": "Arctibax",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 3,
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0224.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0224.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Frigibax"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0190.70",
+                "F0211.00",
+                "F0224.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0224.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0224.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Soothing Shore: at end of each turn heals 20 from each of ending player’s Water Pokémon with any Water Energy attached."
+        ],
+        "evidence_ids": [
+          "F0224.70"
+        ]
+      },
+      "decision_maker": {
+        "value": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled": true,
+        "evidence_ids": [
+          "F0224.70"
+        ],
+        "basis": "Checked Auto control visible in each selected native owner-start frame; primary complete coverage records no toggle or manual override.",
+        "observed_override": false,
+        "limit": "No input telemetry; start/covered UI and automated sequence support attribution, not a claim that each invisible tap was witnessed."
+      },
+      "opponent_opened_discard_count": null,
+      "opponent_discard_count_limit": "No opened pile; visible top cards do not reveal a numeric total."
+    },
+    {
+      "turn_number": 14,
+      "source_video": "20261002_205731000_iOS.MP4",
+      "actual_frame_seconds": 270.713,
+      "requested_seconds": 270.7,
+      "evidence_ids": [
+        "F0270.70"
+      ],
+      "fresh_board_observation": {
+        "turn_number_displayed": 14,
+        "phase": "start",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "instance_id": "O3",
+            "name": "Alolan Ninetales ex",
+            "variant": "white illustrated art",
+            "variant_limit": null,
+            "bench_position": null,
+            "hp_now": 150,
+            "hp_max": 150,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0270.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0270.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [
+              "Alolan Vulpix"
+            ],
+            "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+            "evolution_stack_evidence_ids": [
+              "F0190.70",
+              "F0196.30",
+              "F0224.70",
+              "F0234.00"
+            ],
+            "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+          },
+          "bench_in_position_order": [
+            {
+              "bench_position": 1,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0270.70"
+              ]
+            },
+            {
+              "bench_position": 2,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0270.70"
+              ]
+            },
+            {
+              "instance_id": "O1",
+              "name": "Mega Sharpedo ex",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 3,
+              "hp_now": 90,
+              "hp_max": 190,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 100,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Water": 3
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0270.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0270.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Carvanha"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0029.70",
+                "F0056.70",
+                "F0059.50",
+                "F0097.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0270.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0270.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "P3",
+            "name": "Mega Blastoise ex",
+            "variant": null,
+            "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+            "bench_position": null,
+            "hp_now": 110,
+            "hp_max": 230,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 120,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Water": 3
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0270.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0270.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [
+              "Wartortle",
+              "Squirtle"
+            ],
+            "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+            "evolution_stack_evidence_ids": [
+              "F0029.70",
+              "F0117.00",
+              "F0131.70",
+              "F0164.00",
+              "F0190.70"
+            ],
+            "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "P2",
+              "name": "Baxcalibur",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 1,
+              "hp_now": 20,
+              "hp_max": 140,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 120,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0270.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0270.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Arctibax",
+                "Frigibax"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0029.70",
+                "F0056.70",
+                "F0086.00",
+                "F0097.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            },
+            {
+              "instance_id": "P4",
+              "name": "Wailord ex",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 2,
+              "hp_now": 250,
+              "hp_max": 250,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Water": 2
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0270.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0270.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Wailmer"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0097.70",
+                "F0117.00",
+                "F0131.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            },
+            {
+              "instance_id": "P5",
+              "name": "Arctibax",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 3,
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0270.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0270.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Frigibax"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0190.70",
+                "F0211.00",
+                "F0224.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0270.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0270.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Soothing Shore: at end of each turn heals 20 from each of ending player’s Water Pokémon with any Water Energy attached."
+        ],
+        "evidence_ids": [
+          "F0270.70"
+        ]
+      },
+      "decision_maker": {
+        "value": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled": true,
+        "evidence_ids": [
+          "F0270.70"
+        ],
+        "basis": "Checked Auto control visible in each selected native owner-start frame; primary complete coverage records no toggle or manual override.",
+        "observed_override": false,
+        "limit": "No input telemetry; start/covered UI and automated sequence support attribution, not a claim that each invisible tap was witnessed."
+      },
+      "opponent_opened_discard_count": null,
+      "opponent_discard_count_limit": "No opened pile; visible top cards do not reveal a numeric total."
+    },
+    {
+      "turn_number": 16,
+      "source_video": "20261002_205731000_iOS.MP4",
+      "actual_frame_seconds": 310.703,
+      "requested_seconds": 310.7,
+      "evidence_ids": [
+        "F0310.70"
+      ],
+      "fresh_board_observation": {
+        "turn_number_displayed": 16,
+        "phase": "start",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "instance_id": "O3",
+            "name": "Alolan Ninetales ex",
+            "variant": "white illustrated art",
+            "variant_limit": null,
+            "bench_position": null,
+            "hp_now": 150,
+            "hp_max": 150,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0310.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0310.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [
+              "Alolan Vulpix"
+            ],
+            "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+            "evolution_stack_evidence_ids": [
+              "F0190.70",
+              "F0196.30",
+              "F0224.70",
+              "F0234.00"
+            ],
+            "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+          },
+          "bench_in_position_order": [
+            {
+              "bench_position": 1,
+              "empty": true,
+              "basis": "Visible empty slot or tracked vacated slot",
+              "evidence_ids": [
+                "F0310.70"
+              ]
+            },
+            {
+              "instance_id": "O4",
+              "name": "Lapras",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 2,
+              "hp_now": 110,
+              "hp_max": 110,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0310.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0310.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [],
+              "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+              "evolution_stack_evidence_ids": [
+                "F0310.70"
+              ],
+              "evolution_stack_current_view_limit": null
+            },
+            {
+              "instance_id": "O1",
+              "name": "Mega Sharpedo ex",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 3,
+              "hp_now": 110,
+              "hp_max": 190,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 80,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Water": 3
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0310.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0310.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Carvanha"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0029.70",
+                "F0056.70",
+                "F0059.50",
+                "F0097.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0310.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0310.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "P5",
+            "name": "Arctibax",
+            "variant": null,
+            "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 90,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0310.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0310.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [
+              "Frigibax"
+            ],
+            "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+            "evolution_stack_evidence_ids": [
+              "F0190.70",
+              "F0211.00",
+              "F0224.70"
+            ],
+            "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "P2",
+              "name": "Baxcalibur",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 1,
+              "hp_now": 20,
+              "hp_max": 140,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 120,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0310.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0310.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Arctibax",
+                "Frigibax"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0029.70",
+                "F0056.70",
+                "F0086.00",
+                "F0097.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            },
+            {
+              "instance_id": "P4",
+              "name": "Wailord ex",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 2,
+              "hp_now": 250,
+              "hp_max": 250,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Water": 3
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0310.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0310.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Wailmer"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0097.70",
+                "F0117.00",
+                "F0131.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            },
+            {
+              "instance_id": "P3",
+              "name": "Mega Blastoise ex",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 230,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 180,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0310.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0310.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Wartortle",
+                "Squirtle"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0029.70",
+                "F0117.00",
+                "F0131.70",
+                "F0164.00",
+                "F0190.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0310.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0310.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Soothing Shore: at end of each turn heals 20 from each of ending player’s Water Pokémon with any Water Energy attached."
+        ],
+        "evidence_ids": [
+          "F0310.70"
+        ]
+      },
+      "decision_maker": {
+        "value": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled": true,
+        "evidence_ids": [
+          "F0310.70"
+        ],
+        "basis": "Checked Auto control visible in each selected native owner-start frame; primary complete coverage records no toggle or manual override.",
+        "observed_override": false,
+        "limit": "No input telemetry; start/covered UI and automated sequence support attribution, not a claim that each invisible tap was witnessed."
+      },
+      "opponent_opened_discard_count": null,
+      "opponent_discard_count_limit": "No opened pile; visible top cards do not reveal a numeric total."
+    },
+    {
+      "turn_number": 18,
+      "source_video": "20261002_205731000_iOS.MP4",
+      "actual_frame_seconds": 345.705,
+      "requested_seconds": 345.7,
+      "evidence_ids": [
+        "F0345.70"
+      ],
+      "fresh_board_observation": {
+        "turn_number_displayed": 18,
+        "phase": "start",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "instance_id": "O3",
+            "name": "Alolan Ninetales ex",
+            "variant": "white illustrated art",
+            "variant_limit": null,
+            "bench_position": null,
+            "hp_now": 150,
+            "hp_max": 150,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0345.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0345.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [
+              "Alolan Vulpix"
+            ],
+            "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+            "evolution_stack_evidence_ids": [
+              "F0190.70",
+              "F0196.30",
+              "F0224.70",
+              "F0234.00"
+            ],
+            "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "O5",
+              "name": "Carvanha",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0345.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0345.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [],
+              "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+              "evolution_stack_evidence_ids": [
+                "F0345.70"
+              ],
+              "evolution_stack_current_view_limit": null
+            },
+            {
+              "instance_id": "O4",
+              "name": "Lapras",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 2,
+              "hp_now": 110,
+              "hp_max": 110,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0345.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0345.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [],
+              "evolution_stack_basis": "Basic Pokemon; no prior evolution in recorded history",
+              "evolution_stack_evidence_ids": [
+                "F0345.70"
+              ],
+              "evolution_stack_current_view_limit": null
+            },
+            {
+              "instance_id": "O1",
+              "name": "Mega Sharpedo ex",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 3,
+              "hp_now": 130,
+              "hp_max": 190,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 60,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Water": 3
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0345.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0345.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Carvanha"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0029.70",
+                "F0056.70",
+                "F0059.50",
+                "F0097.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0345.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0345.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "P5",
+            "name": "Arctibax",
+            "variant": null,
+            "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+            "bench_position": null,
+            "hp_now": 10,
+            "hp_max": 90,
+            "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+            "damage": 80,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              }
+            },
+            "tool": null,
+            "tool_status": "No attached Tool observed throughout covered sequence.",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0345.70"
+            ],
+            "status": "observed_with_continuity",
+            "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+            "fresh_observation": {
+              "evidence_ids": [
+                "F0345.70"
+              ],
+              "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+              "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+            },
+            "evolution_stack_below_top_nearest_first": [
+              "Frigibax"
+            ],
+            "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+            "evolution_stack_evidence_ids": [
+              "F0190.70",
+              "F0211.00",
+              "F0224.70"
+            ],
+            "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "P2",
+              "name": "Baxcalibur",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 1,
+              "hp_now": 20,
+              "hp_max": 140,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 120,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0345.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0345.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Arctibax",
+                "Frigibax"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0029.70",
+                "F0056.70",
+                "F0086.00",
+                "F0097.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            },
+            {
+              "instance_id": "P4",
+              "name": "Wailord ex",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 2,
+              "hp_now": 250,
+              "hp_max": 250,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 4,
+                "by_type": {
+                  "Water": 4
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0345.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0345.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Wailmer"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0097.70",
+                "F0117.00",
+                "F0131.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            },
+            {
+              "instance_id": "P3",
+              "name": "Mega Blastoise ex",
+              "variant": null,
+              "variant_limit": "Exact printed set/collector number not independently read; identity tracked by visible face and evolution chain.",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 230,
+              "hp_max_basis": "Visible printed HP when played/evolved; later carried with physical instance.",
+              "damage": 160,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": null,
+              "tool_status": "No attached Tool observed throughout covered sequence.",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0345.70"
+              ],
+              "status": "observed_with_continuity",
+              "limit_reason": "Fresh current board observation plus individually established printed maximum and witnessed evolution history; no inherited estimate from an older review.",
+              "fresh_observation": {
+                "evidence_ids": [
+                  "F0345.70"
+                ],
+                "basis": "Root directly re-inspected this native owner-start board: top-card name, current HP, screen position and exposed attached icons. Maximum HP follows the printed same-recording face; underside identities are recorded history, separately below.",
+                "tool_visibility": "No attached Tool badge visible; no Tool attached in covered history."
+              },
+              "evolution_stack_below_top_nearest_first": [
+                "Wartortle",
+                "Squirtle"
+              ],
+              "evolution_stack_basis": "Witnessed same-recording evolution chain; cards below top were not opened at this start frame",
+              "evolution_stack_evidence_ids": [
+                "F0029.70",
+                "F0117.00",
+                "F0131.70",
+                "F0164.00",
+                "F0190.70"
+              ],
+              "evolution_stack_current_view_limit": "Underside card faces not separately exposed; set/rarity variants unverified"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Phase-specific current generated/consumed slot from visible large circle and actions; small Water icon is an upcoming preview, not another currently available Energy. Idle player current slot is empty. First player turn 1 has no generated Energy.",
+            "evidence_ids": [
+              "F0345.70"
+            ],
+            "limit_reason": "Native anchor may be after an attachment/under animation; start generated availability is bounded by visible creation/attachment sequence rather than all fields in one screenshot."
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0345.70"
+          ],
+          "status": "observed_with_continuity",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Soothing Shore: at end of each turn heals 20 from each of ending player’s Water Pokémon with any Water Energy attached."
+        ],
+        "evidence_ids": [
+          "F0345.70"
+        ]
+      },
+      "decision_maker": {
+        "value": "game Auto",
+        "auto_control_present": true,
+        "auto_enabled": true,
+        "evidence_ids": [
+          "F0345.70"
+        ],
+        "basis": "Checked Auto control visible in each selected native owner-start frame; primary complete coverage records no toggle or manual override.",
+        "observed_override": false,
+        "limit": "No input telemetry; start/covered UI and automated sequence support attribution, not a claim that each invisible tap was witnessed."
+      },
+      "opponent_opened_discard_count": null,
+      "opponent_discard_count_limit": "No opened pile; visible top cards do not reveal a numeric total."
+    }
+  ],
+  "owner_choices_during_opponent_turns": [
+    {
+      "turn_number": 13,
+      "kind": "mandatory promotion after owner Active knockout",
+      "trigger": "Triple Bombardment KOs O2 pink-art Alolan Ninetales ex",
+      "decision_maker": "game Auto",
+      "offered_choice_ui": false,
+      "options_on_choice_screen": null,
+      "options_limit": "No separate manual selection prompt appears in retained locator sequence; do not invent buttons/options. Two eligible bench Pokemon are visibly present before knockout.",
+      "eligible_candidates_from_visible_board": [
+        {
+          "instance_id": "O3",
+          "name": "Alolan Ninetales ex",
+          "bench_position": 2,
+          "hp_now": 150,
+          "water": 2
+        },
+        {
+          "instance_id": "O1",
+          "name": "Mega Sharpedo ex",
+          "bench_position": 3,
+          "hp_now": 90,
+          "water": 3
+        }
+      ],
+      "selected_instance": "O3",
+      "selected_name": "Alolan Ninetales ex",
+      "selection_source_seconds_range": [
+        258,
+        261
+      ],
+      "evidence_ids": [
+        "F0247.00",
+        "F0261.00",
+        "F0270.70"
+      ],
+      "locator_evidence": [
+        "locator_scan/grid_240_259.jpg",
+        "locator_scan/grid_260_279.jpg"
+      ],
+      "basis": "Native247 shows both eligible bench cards; nominal258-259 shows Ninetales promotion animation, native261 selected Active; no choice UI shown.",
+      "time_limit": "Onset bracket from reduced locator, not exact user input PTS; native261 is measured outcome anchor."
+    }
+  ],
+  "other_forced_switches": "No opponent Sabrina/forced-switch action in this recorded fixed-deck battle. Opponent promotions caused by owner KOs are computer choices, separate from owner selections.",
+  "inventory_reference": "SEEN_CARD_INVENTORY.json",
+  "recording_limits": [
+    "Neither player opens a discard pile; pile total counts and full census unavailable.",
+    "Evolution stacks are tied to visible same-recording history, not opened underside faces.",
+    "Auto action authorship is based on visible checked control and covered sequence, not input telemetry."
+  ]
+}

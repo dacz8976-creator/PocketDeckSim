@@ -1,0 +1,23 @@
+{
+  "source": "20260909_032418000_iOS.MP4",
+  "source_sha256": "750514530d208e76a8fbd8fc968aa6900ef08b0a0c84d5c00ce48c656f1f9672",
+  "limits": [
+    "Opponent unplayed cards and normal/Research refill identities remain concealed by card backs.",
+    "Exact historical 20-card deck log snapshot is unavailable; visible cards are minimum observations, not a reconstructed deck.",
+    "All 345 reduced 1fps samples were screened once; this does not observe every instant, input or subsecond event.",
+    "Requested seek times and approximate midpoint locator labels are source-local. Actual decoded frame PTS and exact input times were not measured.",
+    "Opened owner discard panels are recorded at189.5 and255.0. No opened opponent pile was detected in the bounded screen; pile tops are not full pile contents.",
+    "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+  ],
+  "old_numbered_rows": 0,
+  "new_recorded_turn_rows": 10,
+  "owner_normal_draws": {
+    "1": "Hitting Hammer",
+    "3": "Red Card",
+    "5": "Order Pad",
+    "7": "Team Rocket's Goo-zooka",
+    "9": "Lucky Ice Pop"
+  },
+  "discards": "No hidden full pile reconstruction; two owner panels recorded.",
+  "timestamp_conflicts": "Old prose kept separately; new source intervals not presented as measured exact input PTS."
+}

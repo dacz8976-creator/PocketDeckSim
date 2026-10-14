@@ -1,0 +1,30 @@
+{
+  "source_video": "20261013_020824000_iOS.MP4",
+  "source_sha256": "07937ec6622f5979fd73f65b81a6315bba5bcaadb5eb272c9b28d4b17c4bdaa4",
+  "probed_utc": "2026-10-13T14:34:27.045363+00:00",
+  "probe_output": {
+    "streams": [
+      {
+        "tags": {
+          "creation_time": "2026-10-13T02:08:25.000000Z"
+        }
+      },
+      {
+        "tags": {
+          "creation_time": "2026-10-13T02:08:25.000000Z"
+        }
+      }
+    ],
+    "format": {
+      "tags": {
+        "creation_time": "2026-10-13T02:08:24.000000Z"
+      }
+    }
+  },
+  "creation_time_utc": "2026-10-13T02:08:24.000000Z",
+  "creation_time_local": "2026-10-12T21:08:24-05:00",
+  "match_date_local": "2026-10-12",
+  "timezone": "America/Chicago",
+  "utc_offset": "-05:00",
+  "basis": "Container and stream creation metadata converted to Chicago daylight time; worker must corroborate visible phone clock and report any discrepancy. Filename uses UTC recording date, preserved unchanged."
+}

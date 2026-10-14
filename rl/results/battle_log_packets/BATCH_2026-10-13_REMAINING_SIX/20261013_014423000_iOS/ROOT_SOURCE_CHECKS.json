@@ -1,0 +1,69 @@
+{
+  "lead": "/root",
+  "source_sha256": "80de2ed90553b2f7182a7122a3d5ae4db5477a84bc98aa9deada441c409b597a",
+  "full_second_pass": false,
+  "checks": [
+    {
+      "path": "turn_evidence/t0030.00.jpg",
+      "observed": "Root directly viewed five opening faces before Active: PokeBall, Research, AlolanGrimer selected, Copycat, Glimmora. Ownerfirst, phone8:44 corroborates local metadata.",
+      "sha256": "0d603166bb1b9b96dbc4c9b93f070d9188811ecda88667e77618fd6127124ae9"
+    },
+    {
+      "path": "turn_evidence/t0316.00.jpg",
+      "observed": "Explicit Defeat terminal after finalGlmmoraKO, no concession claim.",
+      "sha256": "b23451c22849f3c9fb6d7329d212877ca5dcdc05d9a8fd622056a9c010e1a7e5"
+    },
+    {
+      "path": "turn_evidence/t0326.00.jpg",
+      "observed": "Detailed result RedGarados, wentfirst,10turns,owner0points/opponent3,damage30. Source ends on establishedresult.",
+      "sha256": "dda191a838b117c77eddfb78f470ad31f35305c87d43812cb16e10358978b4b6"
+    },
+    {
+      "path": "turn_evidence/t0219.00.jpg",
+      "observed": "OrdinaryT7 preplaytwoGlimmora. ActiveRegigigas50 noEnergy+Helmet,Pawniard50Dark1,Glimmet60Dark1;score0-1.",
+      "sha256": "b785b1c29ce55e0f70bd66882991a9204e8ba36dacbb7f8fe94398f3f9f1bb93"
+    },
+    {
+      "path": "turn_evidence/t0221.00.jpg",
+      "observed": "Firstordinaryaction fullartGlimmora liftedtowardBenchGlimmet, leavesstandardGlimmora1hand; no earliercompletedhandplay betweenpreplay219andthisselection.",
+      "sha256": "2824669ac1af5226cf2be9b630e56b89915384c47779b84793b9275ec1ef0896"
+    },
+    {
+      "path": "turn_evidence/t0223.00.jpg",
+      "observed": "Evolutioncompletion visible rightBenchGlimmora90 retainsDark1; Regigigas50 noEnergy and PawniardDark1. HandstandardGlimmora1.",
+      "sha256": "32b71a07fc4c36b6f035d4dad3a0a739c035a3e8297b88d72f1f73d8764c1f0b"
+    },
+    {
+      "path": "turn_evidence/t0227.00.jpg",
+      "observed": "Ownerendinghand1 standardGlimmora; PawniardDark2, BenchGlimmoraDark1. Reconcilesstart2-minusoneevolution1; regularEnergydoesnotchangehand.",
+      "sha256": "62c0406ac45164d86119287c5e80cedb0c1a2dec5ae74c191720e00e6928a22f"
+    },
+    {
+      "path": "turn_evidence/t0059.00.jpg",
+      "observed": "ResearchfirstnamedarrivalLuckyIcePop; earlierhandCopycat/Glimmora/RareCandy/Pawniard4.",
+      "sha256": "fe1822448b3bbb3229670d08962b1b38ea8037fc7b43e679cf84f6a9750e99fb"
+    },
+    {
+      "path": "turn_evidence/t0060.00.jpg",
+      "observed": "ResearchsecondnamedarrivalRegigigas withLuckyIcePopalreadyinhand5. LiteralSealpreventATTACK confirmed, notattachment.",
+      "sha256": "43db69e88b0da710dde64608e7f25c9592b0421673aa8e6b7bebff9d4b0cf211"
+    },
+    {
+      "path": "turn_evidence/t0185.00.jpg",
+      "observed": "CopycatfirstarrivalfullartGlimmora afteroldhandreturned; underlyingboardRegigigasActive150Helmet,PawniardDark1.",
+      "sha256": "fcde1c7f32d31ba3dc11b0362e835fdf64bb13d0895b17a31cd06f1556d89c74"
+    },
+    {
+      "path": "turn_evidence/t0186.00.jpg",
+      "observed": "CopycatsecondarrivalGlimmet withGlimmoraalreadyhand1. Orderedtwoarrivalsconfirmed.",
+      "sha256": "cdacf3e9df4178b50239a5288e896b87c1bf43f9900bab30dc1bfe8824fc41af"
+    },
+    {
+      "path": "turn_evidence/t0144.00.jpg",
+      "observed": "ExplicitunusedSupporterwarning afterT3PawniardDark1; visiblefivehandCopycat/Glimmora/RareCandy/IcePop/Glimmora, RegigigasBench150Energy0. Warningisactualoffer, notassumeddecline.",
+      "sha256": "118f0ee76d72987ade04a233100ec8d56cab7a49682853093a4bd45254c25145"
+    }
+  ],
+  "pending_primary_repairs": [],
+  "updated_utc": "2026-10-13T15:30:04.518006+00:00"
+}

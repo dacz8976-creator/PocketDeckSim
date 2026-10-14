@@ -1,0 +1,57 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261005_034229000_iOS",
+  "sources": [
+    {
+      "video_basename": "20261005_034229000_iOS.MP4",
+      "sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": null,
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": null,
+  "game_version_binding_basis": "Visible core matches newly prepared nearby-source QR candidate, but this source has no deck list/selection or uninterrupted binding through the gap.",
+  "conflicts_with_filmed_cards": [],
+  "exact_list_status": "unverified_game_deck_recording_limit",
+  "filmed_deck_label": null,
+  "filmed_core": [
+    "Skarmory ex Steel Wing140",
+    "Honedge Pierce60",
+    "Aegislash Cursed Metal140",
+    "Orthworm Iron Supply100"
+  ],
+  "filmed_energy_type": "Metal",
+  "visible_other_cards": [
+    "Metal Core Barrier (standard art)",
+    "Metal Core Barrier (gold art)",
+    "Professor's Research",
+    "Poke Ball",
+    "Rare Candy",
+    "Lucky Ice Pop",
+    "Steel Apron"
+  ],
+  "candidate_deck": {
+    "prepared_entry_id": "filmed-qr-b599dd4e7e1c",
+    "candidate_name": "Skarmory ex / Aegislash / Orthworm",
+    "candidate_source_video": "20261005_033529000_iOS.MP4",
+    "candidate_source_sha256": "e272b0c74f6a863c68811a235d7b9611b14994611365e58694028f323afaea3d",
+    "candidate_qr_seconds": 1,
+    "binding_status": "qualified_candidate_only_unrecorded_gap",
+    "prepared_snapshot_file": "../NEW_DECK_ENTRIES.json",
+    "externally_saved_at_worker_review": false,
+    "limit": "Candidate exact twenty slots are prepared from a different source, not the exact verified list played here."
+  },
+  "limits": [
+    "No QR, deck list or deck selection is filmed in this source. Nearby-source QR is a candidate only; the unrecorded gap does not establish unchanged twenty cards.",
+    "Neither absent Doublade nor Copycat nor a second ordinary Aegislash is assumed in this match."
+  ]
+}

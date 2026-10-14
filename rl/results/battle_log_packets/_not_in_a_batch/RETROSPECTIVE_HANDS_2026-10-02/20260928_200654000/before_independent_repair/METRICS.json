@@ -1,0 +1,28 @@
+{
+  "game_id": "20260928_200654000",
+  "source_sha256": "d4d0dd51f309c05abcdb6b1f04a75c036ca3e59b4abee3f6ce542b2d56149fd6",
+  "worker_original_hash_reads": 0,
+  "root_receipt": "ROOT_SOURCE_VERIFICATION.json",
+  "new_native_full_frames": 64,
+  "new_native_cap": 64,
+  "old_native_retained_by_reference": 93,
+  "old_native_metadata_probed": 93,
+  "reduced_old_images_excluded_from_identity": 14,
+  "new_crops": 128,
+  "reused_native_crops": 186,
+  "locator_samples_inspected": 595,
+  "locator_grids_inspected": 30,
+  "locator_sampling_fps": 1,
+  "locator_nominal_coverage_seconds": [
+    0,
+    594
+  ],
+  "locator_actualPTS": null,
+  "turn_rows": 14,
+  "owner_target_rows": 7,
+  "opening_slots_read": 5,
+  "source_work_status": "complete_with_recording_limits",
+  "independent_acceptance_status": "pending_separate_source_check",
+  "source_evictions": 0,
+  "shared_writes": 0
+}

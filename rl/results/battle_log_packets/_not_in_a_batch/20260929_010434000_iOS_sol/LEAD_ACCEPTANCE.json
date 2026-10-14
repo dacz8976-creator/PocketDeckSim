@@ -1,0 +1,17 @@
+{
+  "lead_reviewer": "/root",
+  "reviewer": "sol_review_b",
+  "source": "20260929_010434000_iOS.MP4",
+  "accepted": true,
+  "decision": "accepted_full_battle_review_after_corrections",
+  "checks": [
+    "sheet_03.jpg: first turn and Giant Cape setup",
+    "sheet_07.jpg: first Riolu knockout and owner's one point",
+    "detail_end/sheet_02.jpg: opponent concession",
+    "detail_end/sheet_03.jpg: Dacz8976 Victory result",
+    "frames/0150.00.jpg through frames/0159.00.jpg: Flame Patch plus Energy Zone attachment produces two Fire Energy before attack"
+  ],
+  "coverage": "No unreviewed battle turn or setup-to-terminal interval in the full time-coded Sol packet.",
+  "corrections": "Eevee-themed backdrop is treated as playmat only, with no opponent Stadium inferred; two Fire Energy from Flame Patch and Energy Zone attachment documented before Blazing Beatdown.",
+  "remaining_uncertainty": "Lucky Ice Pop coin side, precise order of the two Fire Energy additions, hidden deck cards, and game control mode are not established."
+}

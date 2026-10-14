@@ -1,0 +1,86 @@
+Browser tab: 1903388127, Title: "Pocket Shot List", URL: "https://claude.ai/artifact/9jHGThbKBvGoJkV2AxQJqB".
+1 AXWebArea Pocket Shot List, URL: claude.ai/artifact/9jHGThbKBvGoJkV2AxQJqB
+	2 container
+		3 container Description: Artifact controls, ID: hdr
+			4 link Description: Home, Value: claude.ai/
+			5 pop up button (collapsed) Pocket Shot List, ID: base-ui-_r_6_, Secondary Actions: Expand
+			6 text Artifact by you
+			7 pop up button (collapsed) Description: You, ID: base-ui-_r_1l_, Secondary Actions: Expand
+				8 container You
+					9 container Dustin Culp
+			10 container Comments
+				11 checkbox Description: Comment on this artifact, Value: 0
+				12 pop up button (collapsed) Description: More comment options, Secondary Actions: Expand
+			13 button Chat with Claude
+			14 pop up button (collapsed) Description: Share, shared with anyone who has the link, ID: base-ui-_r_12_, Secondary Actions: Expand
+			15 button Open session
+		16 container Description: User-generated artifact content, ID: frame-content
+			17 AXWebArea Pocket Shot List, URL: 46b05f4b-4435-4450-ba59-8c7cf8c44636.frame.claudeusercontent.com/_f/1790376551-9bc8/
+				18 container
+					19 text RECORDING WISH LIST · POKÉMON TCG POCKET
+					20 heading Pocket Shot List, Value: 1
+						21 text Pocket Shot List
+					22 text Moments worth catching on video. Each one settles a rules question the simulator can't answer by itself. Every entry says what the simulator does now; your clip decides whether it's right. Mark an item when you have it, with the video name and time, and Claude reads it from here.
+					23 container Captured so far
+					31 text 1 of 1 captured
+					25 container Show
+						26 checkbox Still needed, Value: 0
+						27 checkbox All, Value: 1
+						28 checkbox Captured, Value: 0
+				32 container
+					33 heading Friend battle, Value: 2
+						34 text Friend battle
+					35 text Needs the other player to do something on purpose.
+					36 container shot-hit-back-damage-cut
+						37 heading Does a hit-back count as attack damage? (Heavy Helmet on the attacker), Value: 3
+							38 text Does a hit-back count as attack damage? (Heavy Helmet on the attacker)
+						39 text MEDIUM VALUE CAPTURED
+						40 text The one rules question I still want a recording for. When Togedemaru's Bristling Spikes (or Cursed Jewel, Spike Armor, Needle Lariat, Shell Trap) hits back, does that damage count as 'damage from an attack' for the attacker's own cards? Heavy Helmet is the cleanest test. If its -20 cuts the hit-back, the same answer is likely (not certain, each card has its own wording) for Disguise, Guts, Rescue Scarf, Lucky Egg and Rocky Helmet. Why I want it rather than just follow the card text: on Oct 6 you said the hit-back is damage from an attack, but the nearest cases on video (a Rocky Helmet hit-back that the attacker's own cut didn't reduce) went the other way, so the plain reading isn't safe to build on without one look. It decides a later rules round; it matters for your brews 07 and 09 (Mega Sableye ex's Cursed Jewel) on the ladder. Nothing waits on it.
+						41 definition list
+							42 container SET IT UP
+								43 text SET IT UP
+							44 text Friend battle. You attack, your friend holds the hit-back.
+• Your side: deck 03. Put a Heavy Helmet [B1 219] on Wailmer [B4 036] (Retreat Cost 3, so the Helmet is on) and keep Wailmer in the Active Spot (don't retreat it).
+• Your friend: Togedemaru [A3b 048] with 2 Metal Energy, Active at full HP (80). None of your lists runs it, so ask who owns one. Every turn it can, it uses Bristling Spikes on your Wailmer.
+• Check the Helmet is on: the friend's first Spikes drops Wailmer by 10, not 30.
+• Attack with Wave Splash (3 Water Energy) on a turn right after a Spikes (check the game log that their last turn was Bristling Spikes).
+• Keep the numbers clean: no Soothing Shore, Irida, Pokémon Center Lady or Lucky Ice Pop in these turns, don't evolve Wailmer, and play no Stadium. Read the three HP numbers before you end the turn.
+							45 container GET THIS ON SCREEN
+								46 text GET THIS ON SCREEN
+							47 text Wailmer's HP at three moments.
+1) Right after the friend's Spikes: it should drop by 10, not 30 (Spikes 30 minus the Helmet's 20). That is your proof the Helmet works. If it drops by 30, stop and fix the setup.
+2) Just before Wave Splash.
+3) Right after Wave Splash, when the hit-back lands.
+Down by 10 means the cut applied to the hit-back, so it counts as attack damage. Down by 30 means the full 30 went through, so it does not count. Keep the Helmet, Wailmer's Retreat Cost and the damage numbers on screen. No Weakness is in play (Water and Metal do not hit each other's Weakness).
+						48 definition list
+							49 container THE SIMULATOR DOES
+								50 text THE SIMULATOR DOES
+							51 text Full 30, no cut. The simulator applies the hit-back as plain damage, outside the code that applies damage cuts (handle_attack_retaliation). After rules update 2 it adds Weakness (+20) to a hit-back, still with no cut; no Weakness is in play in this setup.
+							52 container THE OTHER POSSIBILITY
+								53 text THE OTHER POSSIBILITY
+							54 text The cut applies, so the hit-back shows as 10: the hit-back already takes Weakness (Cursed Jewel did 60 = 40 + 20, twice, in 183108), so the game treats it as part of the attack, and Heavy Helmet says 'damage from attacks from your opponent's Pokémon'.
+						55 button (collapsed) Card text and evidence so far, Secondary Actions: Expand
+							56 text Card text and evidence so far
+						57 container
+							58 container YOUR STATUS
+								59 text YOUR STATUS
+								60 container
+									61 radio button (settable, integer) Description: Not yet, Value: 0, ID: st-hit-back-damage-cut-none
+									62 text Not yet
+								63 container
+									64 radio button (settable, integer) Description: Tried, didn't happen, Value: 0, ID: st-hit-back-damage-cut-tried
+									65 text Tried, didn't happen
+								66 container
+									67 radio button (settable, integer) Description: Captured, Value: 1, ID: st-hit-back-damage-cut-captured
+									68 text Captured
+							69 text Video
+							70 text field (settable) Video, Value: 20261009_223237000_iOS.MP4, ID: vid-hit-back-damage-cut
+							71 text Time
+							72 text field (settable) Time, Value: 03:05 to 03:37.5 (hit-back 03:32.5), ID: tm-hit-back-damage-cut
+							73 text Note
+							74 text entry area (settable) Note, ID: note-hit-back-damage-cut, Value: Verified in a Solo computer rules-test battle on Oct 9, 2026. Heavy Helmet DOES reduce Bristling Spikes hit-back from 30 to 10 in this setup. Wailmer's retreat cost is 3 and Helmet stays attached. Normal attack control: Wailmer 100 HP at 03:05, Bristling Spikes shows 10 damage at 03:07.5, and Wailmer settles at 90 at 03:10. Reply: Wailmer 90 / Togedemaru 80 at 03:27.5; Wave Splash leaves Togedemaru at 20; Helmet glows and the hit-back shows 10 at 03:32.5; Wailmer settles at 80 at 03:34. No intervening healing, evolution, retreat or Stadium in this Wailmer comparison. This supports applying Helmet's damage cut to this specific hit-back; other hit-back cards, damage cuts and attack-trigger effects remain untested. Full battle transcription and source-bound independent verification retained locally.
+							75 button Save
+							76 text Saved 10/9/2026, 6:01:16 PM
+				30 text Only specific moments are listed: your videos already show damage numbers, opening hands and the result screen every time. Items are kept by Claude; your marks are saved to this page.
+
+The focused UI element is 27 checkbox All, Value: 1

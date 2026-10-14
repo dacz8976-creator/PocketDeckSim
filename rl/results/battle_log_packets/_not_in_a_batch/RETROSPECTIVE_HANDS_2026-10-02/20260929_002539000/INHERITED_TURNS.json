@@ -1,0 +1,32 @@
+{
+  "source": "20260929_002539000_iOS.MP4",
+  "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_002539000_iOS_sol\\REVIEW.md",
+  "accepted_review_sha256": "2ca6f8eb2f10190d91b9e51538b9f0d7dbd3ac9532b11375efe80bef4ebd8ff1",
+  "rows": [
+    {
+      "turn_number": 2,
+      "accepted_source_line": 12,
+      "verbatim_accepted_row": "| 1 opponent, 00:33–01:03 | Plays Poké Ball and benches Dratini (60 HP) and Mega Rayquaza ex (180 HP). Drampa stays Active. No damage or points. [Poké Ball](evidence/t0042.0.jpg), [turn 2 transition](evidence/t0063.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 6,
+      "accepted_source_line": 16,
+      "verbatim_accepted_row": "| 5 opponent, 03:09–03:39 | Dragonair's Blessing is displayed. Opponent moves Drampa into Active, then Power Blast deals 70 to Entei ex, 110 to 40. [Ability](evidence/t0207.0.jpg), [70 damage](evidence/t0216.0.jpg), [turn 6](evidence/t0219.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 7,
+      "accepted_source_line": 18,
+      "verbatim_accepted_row": "| 7 opponent, 04:48–05:04 | Mega Rayquaza ex is promoted at 140 remaining HP, and the other Drampa (120 HP with Starting Plains) moves Active. Dragonair remains on the Bench. No damage to owner Entei is visible by the next turn. [Turn 7](evidence/t0288.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 11,
+      "accepted_source_line": 22,
+      "verbatim_accepted_row": "| 11 opponent, 06:36–06:59 | Turn 11 banner appears. A second Dragonair is evolved/shown and its Dragon's Blessing card is displayed. Before another knockout, the screen announces `Your opponent conceded` at 06:54; the owner sees `Victory!` by 06:58. [Turn 11](evidence/t0396.0.jpg), [concession](evidence/t0414.0.jpg), [result](evidence/t0418.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    }
+  ],
+  "limits": "Only explicitly turn-numbered accepted prose is copied. Zero rows means format unavailable, not zero game turns. This is reference scaffolding, not a completed capture ledger."
+}

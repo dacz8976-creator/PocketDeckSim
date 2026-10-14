@@ -1,0 +1,49 @@
+{
+  "accepted": true,
+  "reviewer": "/root/check_203719",
+  "checked_at_utc": "2026-10-13T00:03:57.607681+00:00",
+  "source_video": "20261012_203719000_iOS.MP4",
+  "source_sha256": "e85ac056e49ababe79fbd0388e8b132f3cc984a5deb445390a2f4df7b0137869",
+  "required_repairs": [],
+  "accepted_input_sha256": {
+    "REVIEW.md": "8968b806f662445728b344d91466f81c25fa767ee86bb3c486772be526302d65",
+    "COVERAGE.md": "aa79c1802dacea4846d3d2373f45e53073457762565621dfd0829c47918b4a8d",
+    "SUMMARY.json": "990b80dcf647ad1212b95fc27a77dfbeaf02c4a881b9344c93e60aa3d83b0acf",
+    "UNCERTAINTIES.json": "4b4885055fa1d1c49e1e6c02365dcac99dff516f2edd9ce74bd948ef92d2ea52",
+    "PAUSE_GAME.json": "5decf7d91946a700ce5b0993859f8481485fbfc73767b9e19fe97d23807c65f3",
+    "DECK_USED.json": "3efbcfbc95abf7850bca6fb89b84b611535ca9c2cc2605d883603cb130400091",
+    "TURN_LEDGER.json": "89927ecbdc2ce40bf80862f599e4702bb699d2a965669407ad2c81e607d89c97",
+    "TURN_EVIDENCE.json": "a0009b720590cae4d1b16b23a9508667a6f94f3d5645b25f7adf4dc1c4f7a31c"
+  },
+  "packet_unchanged_during_final_check": true,
+  "scope": "Final bounded correction recheck, cumulative with the initial independent source audit and the dated second correction audit. No material repair remains in inspected acceptance scope.",
+  "checks_completed": [
+    "Only SUMMARY.json and TURN_LEDGER.json changed; their diffs are limited to the three requested narrow repairs plus supported T13 later-preview visibility metadata.",
+    "T3 later next marker at107.5 and T9 start next marker at358 now unknown with explicit native visibility limits. This agrees with the previously inspected retained and independently extracted views.",
+    "Native t0732.00.jpg visibly shows three Darkness on bench-right Kingambit. T19 action includes this later resulting-board proof while preserving f722_00 hand/start evidence and distinguishing action time from observation time.",
+    "Original R1/R2 and additional T17/T19/T21 hand repairs remain supported from the preceding correction audit.",
+    "All other six final file hashes are unchanged from the dated second audit.",
+    "Final eight-file hashes exactly match REVIEW_PACKET_HASHES.json."
+  ],
+  "preserved_rejection_receipts": [
+    "CHECK_RESULT.json",
+    "CORRECTION_RECHECK_20261012T235549Z.json"
+  ],
+  "supporting_records": [
+    "INDEPENDENT_CHECK.md",
+    "CORRECTION_RECHECK_20261012T235549Z.md",
+    "final_narrow_diff.json"
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "recording_limits_retained": [
+    "Hidden opponent identities and overlap fan ranges.",
+    "Discard piles not opened.",
+    "Live Pause Games exact deck absent; verified filmed QR separately sourced.",
+    "T14 no-target trigger uncertain.",
+    "T20 effective retreat-cost explanation unfilmed.",
+    "Approximate source seeks and explicitly unavailable transient Energy preview views."
+  ],
+  "external_write_performed": false,
+  "shared_registration_performed": false,
+  "source_move_performed": false
+}

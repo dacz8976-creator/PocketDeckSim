@@ -1,0 +1,147 @@
+{
+  "video_basename": "20261001_023301000_iOS.MP4",
+  "source_sha256": "b98242244e00027cba51f9b611596ee81a83cbff54358ba7c5b9cae65fe9fa7c",
+  "duration_seconds": 195.268333,
+  "reviewer": "sol_auto_evening_023301000",
+  "model_attribution": "gpt-6.1-sol, high effort, as assigned and bound in SOURCE.json",
+  "status": "full_battle_review_complete",
+  "lead_accepted": true,
+  "full_battle_visual_first_pass": true,
+  "battle_count": 1,
+  "covered_turns": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "covered_interval_seconds": [
+    0,
+    195.268333
+  ],
+  "unreviewed_battle_intervals": [],
+  "owner": "Dacz8976",
+  "mode": "Auto AI game by owner testimony; AI intro and Solo challenge result visible; Auto pause during turn8",
+  "opponent_label": "Opponent",
+  "opponent_challenge": "Mega Gengar ex & Dragalge ex Deck (Deluxe Pack: Mega)",
+  "owner_visible_in_play": [
+    "Zygarde ex170, Land Laser",
+    "Koraidon ex150, Legendary Drive and World Wrecker"
+  ],
+  "owner_other_revealed_pokemon": [
+    "Donphan ex160, two visible copies in hand",
+    "Meditite60, in hand",
+    "Mega Medicham ex, first World Wrecker discard"
+  ],
+  "opponent_visible_in_play": [
+    "Bombirdier70",
+    "Gastly60",
+    "Haunter80, Spin Turn40",
+    "Skrelp60"
+  ],
+  "owner_trainers_revealed": [
+    "Arena of Antiquity, unplayed",
+    "Elegant Cape, unplayed",
+    "Bounded Field, played turn8",
+    "Lucky Ice Pop, four successful20HP heals with Heads",
+    "Team Rocket's Master Plan, drawn turn10 and unplayed"
+  ],
+  "outcome": "owner_victory",
+  "owner_points": 3,
+  "opponent_points": 0,
+  "last_turn": 10,
+  "damage_done_result": 540,
+  "damage_reconciliation": "100 Land Laser +220 World Wrecker vs Skrelp +220 World Wrecker vs Haunter =540; includes overkill",
+  "points_reconciliation": "Bombirdier1 +Skrelp1 +Haunter1 =3; opponent0",
+  "owner_final_visible_hp": {
+    "Zygarde ex": 110,
+    "Koraidon ex": 150
+  },
+  "owner_final_visible_fighting_energy": {
+    "Zygarde ex": 2,
+    "Koraidon ex": 3
+  },
+  "auto_pause_observed_off_seconds": [
+    114.5,
+    122
+  ],
+  "auto_resumed_by_seconds": 128,
+  "coin_results": {
+    "Lucky Ice Pop": "four Heads at54.5,77,167.5,175.5s",
+    "Land Laser": "one heads and one tails, aggregate1/1 at82.5s"
+  },
+  "conditions_observed": [],
+  "evidence": {
+    "overview_samples": 65,
+    "overview_sheets": 8,
+    "full_resolution_targets": 69,
+    "reports": [
+      "REVIEW.md",
+      "COVERAGE.md",
+      "UNCERTAINTIES.json"
+    ]
+  },
+  "lead_check_timestamps_seconds": {
+    "opening": [
+      11,
+      21,
+      24,
+      32
+    ],
+    "ordinary_turn": [
+      41.5,
+      44.5,
+      47,
+      51,
+      54.5
+    ],
+    "decisive_chain": [
+      111.5,
+      114.5,
+      118,
+      122,
+      126,
+      128,
+      129,
+      131,
+      134,
+      146
+    ],
+    "final": [
+      167.5,
+      175.5,
+      177,
+      180,
+      187.5,
+      194.8
+    ]
+  },
+  "material_unresolved_outcome_question": false,
+  "remaining_limits": [
+    "Hidden full decks and Poké Ball search targets",
+    "Final World Wrecker discard identity",
+    "Auto pause cause and controller input provenance",
+    "Filename clock basis"
+  ],
+  "ladder_eligible": false,
+  "ladder_log_action": "none, owner explicitly excluded these Auto games",
+  "source_identity_verification": "lead supplied source binding preserved; worker did not rehash",
+  "worker_actions_at_submission": {
+    "source_moved": false,
+    "shared_log_or_index_writes": false
+  },
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261001_023301000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20261001_023301000_iOS.MP4.json",
+  "archive_completion_event_id": "c96d7172-ff0c-4fd9-8168-59020932cd23",
+  "global_registration_complete": true
+}

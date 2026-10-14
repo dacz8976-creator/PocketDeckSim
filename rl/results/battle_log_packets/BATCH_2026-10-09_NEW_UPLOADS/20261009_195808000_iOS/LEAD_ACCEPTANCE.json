@@ -1,0 +1,56 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "accepted_at_utc": "2026-10-10T02:15:17.247401+00:00",
+  "lead": "/root",
+  "source_filename": "20261009_195808000_iOS.MP4",
+  "source_sha256": "0bb422f9b945c7f3b02b39c318d408ecfa420be5eda2acd1bd9b9612536dd410",
+  "source_bytes": 443511021,
+  "duration_seconds": 242.227324,
+  "first_pass_model": "gpt-6-sol",
+  "first_pass_reasoning_effort": "high",
+  "independent_model": "gpt-6-sol",
+  "independent_reasoning_effort": "high",
+  "primary_files_read_and_checked_by_lead": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "FINDINGS.json"
+  ],
+  "independent_verification": "independent_sol/VERIFICATION.json",
+  "verified_primary_hashes": {
+    "REVIEW.md": "20dbbe1a8eadc3542876a6872dd321b45ef02f41257ace97aa9127366a88ec6e",
+    "COVERAGE.md": "3d1e7985d99b5cadadccf858d698ffc46c2e2ea8025a2fb1bd643bbecfcf43c3",
+    "FINDINGS.json": "601b79e335bcfb3fa74dfd0c7f8bb2e99b24e009fdf6cdbcc119e86c300f40e0"
+  },
+  "lead_direct_visual_checks": [
+    "native_proof/104.jpg",
+    "native_proof/121.jpg",
+    "native_proof/124.jpg",
+    "native_proof/126.jpg",
+    "native_proof/132.jpg",
+    "native_proof/134.jpg",
+    "native_proof/181.jpg",
+    "native_proof/219.jpg",
+    "native_proof/228.jpg",
+    "native_proof/235.jpg"
+  ],
+  "full_source_and_turn_coverage_accepted": true,
+  "classification_and_outcome_reconciled": true,
+  "source_limits_preserved": true,
+  "outcome": {
+    "owner_result": "Defeat",
+    "opponent_label": "Mega Gardevoir ex Deck (Deluxe Pack: Mega)",
+    "owner_deck_label": "New deck 16",
+    "owner_points": 1,
+    "computer_points": 3,
+    "points_path": [
+      "0-0",
+      "1-0",
+      "1-1",
+      "1-2",
+      "1-3"
+    ]
+  },
+  "external_log_routing": "Computer battle excluded from Ladder and Pause Games",
+  "archive_identity_and_registration": "Required next; acceptance alone does not claim movement"
+}

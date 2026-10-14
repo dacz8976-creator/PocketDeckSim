@@ -1,0 +1,28 @@
+{
+  "video_basename": "20261001_024952000_iOS.MP4",
+  "sha256": "74748aec4973d0748eb81229186e3aeb65bb346c50930092400d24bb961ed19e",
+  "bytes": 497346407,
+  "duration_seconds": 271.01,
+  "streams": [
+    {
+      "codec_name": "hevc",
+      "width": 1170,
+      "height": 2532
+    },
+    {
+      "codec_name": "aac"
+    }
+  ],
+  "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261001_024952000_iOS.MP4",
+  "recording_relationships": [],
+  "recording_date_basis": "Source names use 20261001; upload and owner request occur September 30 America/Chicago. Source filename clock basis is unverified.",
+  "owner_testimony": "Just uploaded 11 new videos for review. Not ladder log games, just auto ai games. Same process as before.",
+  "mode": "autopilot_vs_computer",
+  "ladder_eligible": false,
+  "ladder_action": "excluded_by_owner_instruction; no Ladder Log write",
+  "reviewer": "sol_auto_evening_024952000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "identity_verified_event_id": "bc45df18-914b-4bff-9797-cec691831065",
+  "intake_utc": "2026-10-01T03:52:58.694711+00:00"
+}

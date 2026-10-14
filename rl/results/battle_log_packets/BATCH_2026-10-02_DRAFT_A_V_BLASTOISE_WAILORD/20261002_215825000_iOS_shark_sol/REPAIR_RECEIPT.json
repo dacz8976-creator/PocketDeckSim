@@ -1,0 +1,28 @@
+{
+  "repaired_utc": "2026-10-03T01:21:38.724990+00:00",
+  "author": "/root",
+  "source_video": "20261002_215825000_iOS.MP4",
+  "source_sha256": "61fb9e041b4efa4ad31181c0cb89d94b38ad13f2bf194a48b8f606b24afb107c",
+  "original_submission_preserved": "worker_submission/SUBMISSION.json",
+  "original_submission_sha256": "61a76f93cb887d2ac414ae19404963a004acec61ff874fa98634741d52ce69ef",
+  "independent_rejection_sha256": "57b2e321bb901e3120cc3cc363fbba5871b61a9fbea4647accb5cd803a31fffd",
+  "corrections": [
+    "Five T4 Copycat native center reveal references, parent draw event, four matching inventory occurrences",
+    "T6/T18 visible current Water1 with readiness indeterminate and no guessed preview",
+    "T12 unreadable selected-start preview; later generated/preview evidence kept separate",
+    "Guide duplicates updated and canonical manifest filename identifies repair"
+  ],
+  "changed_files": [
+    "TURN_LEDGER.json",
+    "SEEN_CARD_INVENTORY.json",
+    "GUIDE_UPDATE_SUPPLEMENT.json",
+    "REVIEW.md",
+    "TURN_TABLE.md",
+    "GUIDE_UPDATE_SUPPLEMENT.md",
+    "SEEN_CARD_INVENTORY.md"
+  ],
+  "primary_manifest_unchanged": true,
+  "no_new_extraction": true,
+  "card_names_order_counts_energy_targets_and_outcome_unchanged": true,
+  "independent_recheck_pending": true
+}

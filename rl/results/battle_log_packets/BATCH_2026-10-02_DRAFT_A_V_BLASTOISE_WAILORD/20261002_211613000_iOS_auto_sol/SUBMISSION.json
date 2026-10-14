@@ -1,0 +1,40 @@
+{
+  "source_video": "20261002_211613000_iOS.MP4",
+  "source_sha256": "8eec16e93f6e3bc1322e31bb5ff85c95a364ffb8bc14dd53427626226f1e3fd4",
+  "reviewer": "/root/ind_drafta_205731",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "complete_first_pass": true,
+  "frozen_utc": "2026-10-03T00:32:02.750197+00:00",
+  "capture_status": "complete_with_recording_limits",
+  "files": {
+    "SOURCE.json": "f521d838dc793bf16d18e7eda0ea9b13678e3fedc374a86d53f9334e18ccf9c7",
+    "ASSIGNMENT.json": "63cec77acf3614eb09f6a6d6528f83f73fbf7ec6ec23e0826568506b2d6bddd5",
+    "ASSIGNMENT.md": "f4054a97bbae25fc64c9819bb8ee259c8b0529c5e0c1e9b2d99af04302fc6dd3",
+    "REVIEW.md": "c8bdf04ea19e17f32e66c0df890e872432bbf378f6a935a1d62d7f95b43d9b89",
+    "COVERAGE.md": "fcf1c351a101a0045fd79b107cf56348472b08854e528063acb28d8071aa2985",
+    "SUMMARY.json": "26924cd089d57735d8935ffc1f6e4dc0e5aefa3f806525eccab4520838db9191",
+    "UNCERTAINTIES.json": "79c4510df6f04ec0e56828b383c2c42db00911192a8bd5436c277c0c8c8188a8",
+    "PAUSE_GAME.json": "a918117b3d67880cb859947a50fe681c9bb1cc1aee235f28c954d0a5b6c35084",
+    "DECK_USED.json": "96ea992d5e15e6ca1a81c4dfc94cf3c7b658c872e32cc0e723a932f0f7cfc9f4",
+    "TURN_LEDGER.json": "4b9a33db0f940d3a12a43825e6ca1aa1689dda789a2e82234b3406dd7f8beb76",
+    "TURN_EVIDENCE.json": "ca1193329cb3a74353ab7ab6f9409b7da01b2eb2dfc733ae0e8cc254f6f1ac0b",
+    "TURN_TABLE.md": "c3678ec58bc8d1764b4ab2b7df162927c5eb52dc91593e3e5d8f5301671bf990",
+    "METRICS.json": "91155ca47559d09ae85031f03f68b6f341430611e860f4c29dc61b55a878ce4e",
+    "EXTRACTION_MANIFEST.json": "f7c026b00c8df21ee599bb46054a02e7b99c9d3a0fdbcb2f420831c23805be28",
+    "LOCATOR_PREPROCESSING.json": "a767617e56624b75616bcfd668264aad7a6eff4dc27780ad3ed88826d5b2279f",
+    "SEEN_CARD_INVENTORY.json": "a02ae57698b894cc1a6684a6be9088a509c28cbb4f38d91ce6ea542d759dff29",
+    "SEEN_CARD_INVENTORY.md": "dd21a1819387d13296353fe755e6560172445dd6cc4c4f11d4a9ced93e2b5e6d",
+    "GUIDE_UPDATE_SUPPLEMENT.json": "4db5b2ee43f201535ec7e75811ef7732ab9baa8ca3dcc575655407de7b4e12fc",
+    "GUIDE_UPDATE_SUPPLEMENT.md": "2f33b97d63c0b274272d1672d3e12dad865f632163277da5ef6acc15a8f1c8ad"
+  },
+  "validation": {
+    "ordered_turn_rows": 11,
+    "owner_rows": 6,
+    "deck_card_slots": 20,
+    "native_manifest_rows": 110,
+    "native_and_crop_hashes_checked": 330,
+    "nested_evidence_references_checked": true,
+    "evening_additions_included": true
+  }
+}

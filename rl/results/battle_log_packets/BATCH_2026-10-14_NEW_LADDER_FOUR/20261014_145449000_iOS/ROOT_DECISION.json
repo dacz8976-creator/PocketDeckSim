@@ -1,0 +1,42 @@
+{
+  "section": "d12",
+  "deck_name": "Ariados / Whimsicott / Ogerpon",
+  "energy": "Grass",
+  "opponent": "たお",
+  "opponent_deck": "Oricorio / Indeedee ex / Dedenne ex",
+  "result": "loss",
+  "note_prefix": "2nd | Whimsicott ex no attack | opp pts N/A",
+  "note": "2nd | Whimsicott ex no attack | opp pts N/A | vs たお | recorded 2026-10-14 09:54:49 CDT | 20261014_145449000_iOS.MP4 | Conceded0-0 at05:36.5; Defeat05:48. Supporting Ariados first PierceT2,opp0.",
+  "scope": "Whole one-game ladder source; all12turns and explicit owner-concession defeat; no main attack, independent source checks and root acceptance",
+  "registration_notes": "Independent source and root checks accepted. Visible core matches Deck12; selected deck-number label unrecorded. Loss by owner concession at0-0 versusたお; second; Whimsicott ex never attacks, moment/points N/A. Ariados supporting Pierce ownT2 opp0 stays separate. External save/readback is separate.",
+  "observations": [
+    {
+      "path": "evidence/native_0030.00.jpg",
+      "finding": "Opening explicitly declares You are going second.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "evidence/native_0198.00.jpg",
+      "finding": "Ariados Active with Whimsicott ex, Ariados and Teal Mask Ogerpon ex Bench; visible core matches Deck12; opponentたお0points and Oricorio Active.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "evidence/native_0336.50.jpg",
+      "finding": "Owner Concede confirmation dialog; opponent Bench has two Indeedee ex plus Dedenne ex; owner Whimsicott remains Bench and points0.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "evidence/native_0348.00.jpg",
+      "finding": "Defeat versusたお;went second;12turns;0-0points;140damage;Ariados Card of the Game.",
+      "directly_viewed_by_root": true
+    }
+  ],
+  "source_filename": "20261014_145449000_iOS.MP4",
+  "source_sha256": "14396f74a5949fe27458a2758b2eee4fad952737ca96f20839be4a1e1d0458cf",
+  "checked_utc": "2026-10-14T16:49:49.741417+00:00",
+  "lead": "/root",
+  "battle_complete": true,
+  "root_read_full_timeline_and_coverage": true,
+  "auto_option_seen": false,
+  "clarifications": []
+}

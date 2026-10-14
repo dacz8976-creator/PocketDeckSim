@@ -1,0 +1,33 @@
+{
+  "game_id": "20261004_214731000_iOS_game1",
+  "source_video": "20261004_214731000_iOS.MP4",
+  "source_sha256": "d363bdd1c3f4aafc5ad9423764e706f8944407d68a04c82d72317592d7e7e198",
+  "reviewer": "/root/pause_20261004_214731000_iOS",
+  "review_date": "2026-10-06T17:43:02.694559+00:00",
+  "scope": "Whole source matchmaking, setup, all8turns, terminal result",
+  "classification": "human_opponent",
+  "outcome": "win",
+  "opponent": "CloutDemon",
+  "points": [
+    3,
+    0
+  ],
+  "turn_count": 8,
+  "source_continuity": "One continuous match from matchmaking through result; no visible recording cut.",
+  "capture_status": "complete_with_recording_limits",
+  "acceptance_status": "awaiting_independent_review",
+  "important_findings": [
+    "Opening all5cards and chosenActive captured.",
+    "Research draws Poké Ball then Accelgor; searches Caterpie then Shelmet.",
+    "Three Lucky Ice Pop uses: T4 Heads, T6 Heads then Tails.",
+    "T6 retreat costs1Grass; Accelgor shuffles itself plus underlyingShelmet and2Grass before HikingTrail replenishes3namedcards.",
+    "Poison ticks Ray40→30 and30→20; paralysis prevents attackT7.",
+    "T8 SunnyWind60 KO awards3points; victory3-0,200damage displayed."
+  ],
+  "limits": [
+    "Opponent card faces remain hidden for draws/searches not revealed.",
+    "Exact input/frame PTS was not measured; retained seek times identify source-local evidence.",
+    "No opened discard-pile views in this recording.",
+    "The filmed Grass deck does not match any of the nine current live lists. Deck supplement pending lead QR/live-log reconciliation."
+  ]
+}

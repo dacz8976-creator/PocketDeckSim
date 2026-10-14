@@ -1,0 +1,40 @@
+{
+  "scope": "Target hand supplement only",
+  "capture_status": "complete_with_recording_limits",
+  "unresolved_hand_identities": [],
+  "astra_question": null,
+  "limits": [
+    {
+      "field": "opponent_hand_count",
+      "turns": [
+        5,
+        7
+      ],
+      "supported_range": [
+        7,
+        8
+      ],
+      "reason": "One tightly overlapping card-back boundary cannot be cleanly separated."
+    },
+    {
+      "field": "timing",
+      "reason": "Actual frame PTS not measured. Draw-end and first-move timings bounded rather than frame-exact; late scheduled candidates may follow play."
+    },
+    {
+      "field": "discard_piles",
+      "reason": "No opened pile in retained hand evidence; intervening full turns not newly audited for discard windows."
+    },
+    {
+      "field": "boards_actions_outcome",
+      "reason": "Inherited by exact accepted-row provenance, not freshly re-reviewed."
+    },
+    {
+      "field": "ownerturn13",
+      "reason": "Explicitly outside requested first-six-owner-turn scope."
+    },
+    {
+      "field": "deck_game_version",
+      "reason": "Supplied current20-slot log snapshot preserved; unseen historical version not proven."
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20261001_025606000_iOS.MP4",
+  "source_sha256": "86d6c9fff4e35d3b610dc7a3fc7e85f0a1714f9a99ca6c390a03e1d0bb470224",
+  "scope": "Complete thirteen-turn 281.593333-second Auto AI battle, setup through Skyla switch, Aegislash knockout and named Defeat",
+  "first_pass": "gpt-6.1-sol/high /root/auto_025606",
+  "lead_checks": "Read complete narrative, all-turn coverage, source, summary and uncertainties. Independently inspected exact retained frames in LEAD_CONTACT.jpg:22s opening Research with initial core;80s ordinary evolved board with Simisear130HP/two Fire, Charmeleon80HP and second Simisear;170s protected hit leaves Mega180/Simisear20 with Training Area;255s printed Skyla switch text;257.20s switched Aegislash140/two Metal and benched Mega20/three Metal;264s Charmeleon0 after Superb Shield with Aegislash third Metal;268s Helmet leaves Aegislash120;281.50s named Defeat, second order,13turns,2-3 and410 damage. Damage ledger sums410 including overkill and Helmet. Bounded lead checks supplement the worker complete visual review.",
+  "lead_evidence": ["LEAD_CONTACT.jpg", "native/t0022.00.jpg", "native/t0080.00.jpg", "native/t0170.00.jpg", "native/t0255.00.jpg", "native/t0257.20.jpg", "native/t0264.00.jpg", "native/t0268.00.jpg", "native/t0281.50.jpg"],
+  "outcome": "owner_loss",
+  "final_points": {"owner": 2, "opponent": 3},
+  "owner_visible_core": "Simisear x2 / Ignition Charmeleon / late Victini",
+  "opponent": "AI Mega Scizor ex & Gholdengo ex Deck (Deluxe Pack: Mega)",
+  "last_turn": 13,
+  "useful_finding": "Ignition supplies extra Fire before the normal attachment. Metal Core Barrier reduces the one-head Fury Swipes to20. Skyla switches the20-HP Mega safely to the Bench; Aegislash takes the winning80 knockout and survives Helmet at120. Victini arrives after all Fury Swipes, and Flame Patch remains held. Damage410 reconciles.",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "limitations": "Full hidden decks/draws, cosmetic card IDs, filename clock basis and unobserved alternative outcomes remain unknown. No simultaneous-knockout ruling or general policy optimality is inferred.",
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; owner-declared Auto AI game",
+  "astra_consulted": false,
+  "astra_reason": "Native text and settled states resolved consequential questions"
+}

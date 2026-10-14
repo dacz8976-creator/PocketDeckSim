@@ -1,0 +1,153 @@
+{
+  "video_basename": "20261001_020413000_iOS.MP4",
+  "sha256": "87fc6d7dd7f19ee01bec07969cf6991f8618315c9747a6ab18233c12436e65d4",
+  "bytes": 600860503,
+  "duration_seconds": 326.96,
+  "reviewer": "sol_auto_evening_020413000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "status": "full_battle_review_complete",
+  "lead_accepted": true,
+  "coverage": {
+    "start_seconds": 0,
+    "end_seconds": 326.96,
+    "all_available_turns_reviewed": true,
+    "last_turn": 17,
+    "battle_count": 1,
+    "unreviewed_intervals": []
+  },
+  "mode": "Auto AI, explicit AI opponent and checked Auto button",
+  "observed_mode_changes": [],
+  "observed_pauses": [],
+  "owner_testimony": "All eleven evening uploads are Auto AI games, not Ladder Log games.",
+  "ladder_eligible": false,
+  "ladder_action": "No write; excluded by owner instruction",
+  "owner_name": "Dacz8976",
+  "owner_turn_order": "second",
+  "owner_core": [
+    "Guzzlord ex",
+    "Zubat/Golbat/Crobat ex",
+    "Gastly/Haunter/Mega Gengar ex"
+  ],
+  "owner_revealed_unplayed_pokemon": [
+    "Team Rocket's Weezing ex"
+  ],
+  "opponent_core": [
+    "Wynaut",
+    "Mimikyu ex",
+    "Ralts/Kirlia/Mega Gardevoir ex",
+    "Meloetta",
+    "Bramblin"
+  ],
+  "challenge_title": "Mega Gardevoir ex & Mimikyu ex Deck (Deluxe Pack: Mega)",
+  "outcome": "owner_defeat",
+  "owner_awarded_points": 2,
+  "opponent_awarded_points": 4,
+  "final_hud_owner_points": 2,
+  "final_hud_opponent_points": 3,
+  "results_damage_done": 440,
+  "terminal_action": "Turn17 Mega Gardevoir ex Fantasia Force110 knocks out100-HP Crobat ex; opponent receives+2 crossing winning threshold.",
+  "point_events": [
+    {
+      "turn": 8,
+      "recipient": "owner",
+      "amount": 1,
+      "knocked_out": "Wynaut",
+      "cause": "Grindcore30"
+    },
+    {
+      "turn": 10,
+      "recipient": "owner",
+      "amount": 1,
+      "knocked_out": "Meloetta",
+      "cause": "Tyrannical Hole140 including weakness"
+    },
+    {
+      "turn": 11,
+      "recipient": "opponent",
+      "amount": 2,
+      "knocked_out": "Guzzlord ex",
+      "cause": "Fantasia Force110"
+    },
+    {
+      "turn": 17,
+      "recipient": "opponent",
+      "amount": 2,
+      "knocked_out": "Crobat ex",
+      "cause": "Fantasia Force110"
+    }
+  ],
+  "useful_findings": [
+    "Wynaut attack tax delays Guzzlord and blocks four-Energy Tyrannical Hole on turn8.",
+    "Disguise blocks Grindcore damage but Energy-discard flips still occur; observed first flip tails.",
+    "Peculiar Plaza supports free Psychic cycling and retreat clears poison; it does not discount Crobat's retreat.",
+    "Diantha heals90 and discards2 Psychic without clearing poison; Potion later heals20 before retreat clears it.",
+    "Auto leaves100-HP Crobat Active on turn16 while benched Mega Gardevoir can switch free and attack110 for the terminal knockout.",
+    "Mega Gengar develops late and finishes with2 Darkness against its4-Energy attack requirement.",
+    "Results440 direct damage includes the140 overkill hit on70-HP Meloetta and excludes poison ticks."
+  ],
+  "lead_check_timestamps_seconds": [
+    6,
+    17,
+    25,
+    42,
+    44,
+    57,
+    60,
+    72,
+    90,
+    113.6,
+    140,
+    144,
+    146,
+    167,
+    170,
+    188,
+    197,
+    200,
+    230.5,
+    234,
+    240,
+    242,
+    254,
+    256,
+    263,
+    265,
+    290,
+    293,
+    299,
+    309,
+    314,
+    320,
+    325,
+    326.5
+  ],
+  "unresolved_facts": [
+    "Full hidden decks and hidden draws",
+    "A separate regular turn-17 attachment is not established; settled net Energy gain is three consistent with Fantasia Force",
+    "Outcome of conditional turn16 survival alternative",
+    "Exact cosmetic card numbers and filename timezone basis"
+  ],
+  "evidence_files": [
+    "SOURCE.json",
+    "REVIEW.md",
+    "COVERAGE.md",
+    "UNCERTAINTIES.json",
+    "overview/",
+    "native/"
+  ],
+  "lead_reconciliation": "LEAD_CLARIFICATION.md",
+  "worker_actions_at_submission": {
+    "source_moved": false,
+    "global_complete_registered": false
+  },
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261001_020413000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20261001_020413000_iOS.MP4.json",
+  "archive_completion_event_id": "c35617d7-9a30-4b28-aa4c-86cd0902dbb3",
+  "global_registration_complete": true
+}

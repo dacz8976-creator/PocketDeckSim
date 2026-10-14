@@ -1,0 +1,37 @@
+{
+  "source_video": "20261002_205230000_iOS.MP4",
+  "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+  "reviewer": "/root/astra_drafta_bounded_repairs",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "complete_first_pass": true,
+  "submitted_utc": "2026-10-03T00:26:27.177478+00:00",
+  "files": {
+    "SOURCE.json": "ebb4391c909efb2e2002cc51f82be050b1c51e01512639468cd20c433c67eb75",
+    "ASSIGNMENT.json": "4a8e99e6af275bf62b2304fdf1d5dab09df8f13b93107fc5aeccb395b9d3b864",
+    "REVIEW.md": "94a9b10370d9219e8693848a0f0b547ca73e3360b1e99275aa81cb77857cdab6",
+    "COVERAGE.md": "e41e5ba190b507e186280902a4d5ab620aea7d9d5b70337145b92ab8f560dc15",
+    "SUMMARY.json": "a96923c644b4abdb81b45a65053ab886e701a6a2de9f875a76bb424c6fc3553e",
+    "UNCERTAINTIES.json": "279fa5fe5c87f83518d352013209e48738f18868c5e83b9e8b9bc5dd5aa894fe",
+    "PAUSE_GAME.json": "d7366ed6a2864a1b31831cfd1b2153cadec39c9537259c06d793d6a665374eb4",
+    "DECK_USED.json": "34a6f739586805662670aba6bd1d4c8372a87af111a12ec547164e08e9a7bb2d",
+    "TURN_LEDGER.json": "cd57b1b7d0b4db48d494b7eb923d7d9de43a51ed7743daaa8f2bf1dbedbe74ae",
+    "TURN_EVIDENCE.json": "421c3658744f7f6a32859cf87e68a75ecdfcfc57f9e60ba9d25d4eb536e57dc9",
+    "TURN_TABLE.md": "eac7a33e609072fea8246eab281d14bd02e96f63702fca0758494ced02301ad7",
+    "METRICS.json": "464010eb42fe4a62ce76c406da7e56635c5ce3cfb49734a694d29045e0e482e0",
+    "EXTRACTION_MANIFEST.json": "07d227e87adccbd1ec89d3b3f071d03ccc8006faa14ce54ac9fdc037a0d9c64f"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance": "pending_repair_recheck",
+  "validation": "Guarded R1-R3 repaired; original submission and checks preserved; IDs resolve; no new full visual pass or broad supplement claim.",
+  "original_submission_manifest": "SUBMISSION.json",
+  "original_submission_sha256": "bc4c16968e68b5df9e5c3bf04ff1b125dc00645b8a5fb2e189bdf3746c1d78fe",
+  "original_submission_preserved_directory": "worker_submission",
+  "immutable_extraction_manifests": {
+    "EXTRACTION_MANIFEST.json": "07d227e87adccbd1ec89d3b3f071d03ccc8006faa14ce54ac9fdc037a0d9c64f",
+    "independent_sol/EXTRACTION_MANIFEST.json": "39e857f0c70047d5c9de1e177cac3879d4a52200ce81f0e7e9e37d2e7cc9e3af"
+  },
+  "additional_files": {
+    "REPAIR_RECEIPT.json": "9477b59571d1b41c945c42f860e14ed7ae35223e96b5aa25b623580487a8cf7c"
+  }
+}

@@ -1,0 +1,1602 @@
+{
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_022627000",
+  "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+  "target_turn_numbers": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11,
+    13,
+    15,
+    17
+  ],
+  "target_rows": [
+    {
+      "turn_number": 1,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0043.00",
+              "F0046.00",
+              "R0049.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Elegant Cape",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0043.00",
+              "F0046.00",
+              "R0049.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Sightseer",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0043.00",
+              "F0046.00",
+              "R0049.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Team Rocket's Researcher",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0043.00",
+              "F0046.00",
+              "R0049.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Professor's Research",
+            "variant": "regular art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0043.00",
+              "F0046.00",
+              "R0049.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0043.00",
+          "F0046.00",
+          "R0049.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0063.00",
+              "R0064.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Elegant Cape",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0063.00",
+              "R0064.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Sightseer",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0063.00",
+              "R0064.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": "regular art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0063.00",
+              "R0064.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Team Rocket's Raticate ex",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0063.00",
+              "R0064.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Team Rocket's Hypno",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0063.00",
+              "R0064.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0063.00",
+          "R0064.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "normal_draw": {
+        "kind": "normal",
+        "caused_by": "normal turn draw",
+        "linked_play_order": null,
+        "cards_in_reveal_order": [
+          {
+            "name": "Professor's Research",
+            "variant": "regular art",
+            "reveal_position": 1,
+            "source_video": "20260908_022627000_iOS.MP4",
+            "timestamp_seconds": 41.0,
+            "evidence_ids": [
+              "R0041.00"
+            ],
+            "basis": "direct_native_reveal_or_named_transaction",
+            "limit_reason": null,
+            "timestamp_basis": "Card visible at this source-native anchor; not certified exact first reveal or transaction-completion instant."
+          }
+        ],
+        "hand_count_before": 4,
+        "hand_count_after": 5,
+        "returned_or_discarded_cards": null,
+        "source_video": "20260908_022627000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": [
+          "R0041.00"
+        ],
+        "limit_reason": null
+      },
+      "capture_offsets_requested": [
+        1,
+        3,
+        6
+      ],
+      "draw_end_bracket": [
+        41,
+        43
+      ],
+      "native_capture_times": [
+        43.0,
+        46.0,
+        49.0
+      ],
+      "before_end_time": 63,
+      "capture_status": "complete_with_recording_limits",
+      "limits": null
+    },
+    {
+      "turn_number": 3,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0097.00",
+              "F0098.00",
+              "F0100.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Elegant Cape",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0097.00",
+              "F0098.00",
+              "F0100.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Sightseer",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0097.00",
+              "F0098.00",
+              "F0100.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": "regular art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0097.00",
+              "F0098.00",
+              "F0100.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Team Rocket's Raticate ex",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0097.00",
+              "F0098.00",
+              "F0100.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Team Rocket's Hypno",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0097.00",
+              "F0098.00",
+              "F0100.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 7,
+            "name": "Team Rocket's Rattata",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0097.00",
+              "F0098.00",
+              "F0100.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 7,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0097.00",
+          "F0098.00",
+          "F0100.00"
+        ],
+        "status": "complete_with_recording_limits",
+        "limit_reason": "Normal Rattata draw is enlarged at 98 s and immediately benched. Seven-card starting hand reconciled from prior native six-card hand, native named draw and first bench; no single fully unzoomed seven-card still."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0137.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Elegant Cape",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0137.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Sightseer",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0137.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Team Rocket's Raticate ex",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0137.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Team Rocket's Hypno",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0137.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0137.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0137.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "normal_draw": {
+        "kind": "normal",
+        "caused_by": "normal turn draw",
+        "linked_play_order": null,
+        "cards_in_reveal_order": [
+          {
+            "name": "Team Rocket's Rattata",
+            "variant": null,
+            "reveal_position": 1,
+            "source_video": "20260908_022627000_iOS.MP4",
+            "timestamp_seconds": 98.0,
+            "evidence_ids": [
+              "F0098.00"
+            ],
+            "basis": "direct_native_reveal_or_named_transaction",
+            "limit_reason": null,
+            "timestamp_basis": "Card visible at this source-native anchor; not certified exact first reveal or transaction-completion instant."
+          }
+        ],
+        "hand_count_before": 6,
+        "hand_count_after": 7,
+        "returned_or_discarded_cards": null,
+        "source_video": "20260908_022627000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": [
+          "F0098.00"
+        ],
+        "limit_reason": null
+      },
+      "capture_offsets_requested": [
+        1,
+        3,
+        6
+      ],
+      "draw_end_bracket": [
+        98,
+        99
+      ],
+      "native_capture_times": [
+        97.0,
+        98.0,
+        100.0,
+        103.0,
+        105.0
+      ],
+      "before_end_time": 137,
+      "capture_status": "complete_with_recording_limits",
+      "limits": "Normal Rattata draw is enlarged at 98 s and immediately benched. Seven-card starting hand reconciled from prior native six-card hand, native named draw and first bench; no single fully unzoomed seven-card still.",
+      "dense_and_initial_capture_times_preserved": [
+        97.0,
+        98.0,
+        100.0
+      ],
+      "later_offset_candidates": [
+        {
+          "requested_source_seconds": 103.0,
+          "evidence_id": "F0103.00",
+          "actual_frame_seconds_if_measured": 103.005,
+          "offset_after_draw_bracket_seconds": [
+            4.0,
+            5.0
+          ],
+          "phase": "Post-first-play view; hand may already have changed. This is not an unchanged intact starting-hand image."
+        },
+        {
+          "requested_source_seconds": 105.0,
+          "evidence_id": "F0105.00",
+          "actual_frame_seconds_if_measured": 105.007,
+          "offset_after_draw_bracket_seconds": [
+            6.0,
+            7.0
+          ],
+          "phase": "Post-first-play view; hand may already have changed. This is not an unchanged intact starting-hand image."
+        }
+      ]
+    },
+    {
+      "turn_number": 5,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0166.00",
+              "F0168.00",
+              "F0171.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Elegant Cape",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0166.00",
+              "F0168.00",
+              "F0171.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Sightseer",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0166.00",
+              "F0168.00",
+              "F0171.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Team Rocket's Raticate ex",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0166.00",
+              "F0168.00",
+              "F0171.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Team Rocket's Hypno",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0166.00",
+              "F0168.00",
+              "F0171.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0166.00",
+              "F0168.00",
+              "F0171.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 7,
+            "name": "Professor's Research",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0166.00",
+              "F0168.00",
+              "F0171.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 7,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0166.00",
+          "F0168.00",
+          "F0171.00"
+        ],
+        "status": "complete_with_recording_limits",
+        "limit_reason": "Research is enlarged during normal draw; first evolution precedes +6 view. Full seven-card start reconciled from prior native six-card end and named draw; later six/four-card views reflect plays."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Drowzee",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0225.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Hypno",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0225.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Goo-zooka",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0225.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Sightseer",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0225.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0225.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0225.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "normal_draw": {
+        "kind": "normal",
+        "caused_by": "normal turn draw",
+        "linked_play_order": null,
+        "cards_in_reveal_order": [
+          {
+            "name": "Professor's Research",
+            "variant": "full art",
+            "reveal_position": 1,
+            "source_video": "20260908_022627000_iOS.MP4",
+            "timestamp_seconds": 166.0,
+            "evidence_ids": [
+              "F0166.00"
+            ],
+            "basis": "direct_native_reveal_or_named_transaction",
+            "limit_reason": null,
+            "timestamp_basis": "Card visible at this source-native anchor; not certified exact first reveal or transaction-completion instant."
+          }
+        ],
+        "hand_count_before": 6,
+        "hand_count_after": 7,
+        "returned_or_discarded_cards": null,
+        "source_video": "20260908_022627000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": [
+          "F0166.00"
+        ],
+        "limit_reason": null
+      },
+      "capture_offsets_requested": [
+        1,
+        3,
+        6
+      ],
+      "draw_end_bracket": [
+        166,
+        168
+      ],
+      "native_capture_times": [
+        166.0,
+        168.0,
+        171.0,
+        174.0
+      ],
+      "before_end_time": 225,
+      "capture_status": "complete_with_recording_limits",
+      "limits": "Research is enlarged during normal draw; first evolution precedes +6 view. Full seven-card start reconciled from prior native six-card end and named draw; later six/four-card views reflect plays.",
+      "dense_and_initial_capture_times_preserved": [
+        166.0,
+        168.0,
+        171.0
+      ],
+      "later_offset_candidates": [
+        {
+          "requested_source_seconds": 174.0,
+          "evidence_id": "F0174.00",
+          "actual_frame_seconds_if_measured": 174.003,
+          "offset_after_draw_bracket_seconds": [
+            6.0,
+            8.0
+          ],
+          "phase": "Post-first-play view; hand may already have changed. This is not an unchanged intact starting-hand image."
+        }
+      ]
+    },
+    {
+      "turn_number": 7,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Drowzee",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0271.00",
+              "F0273.00",
+              "F0276.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Hypno",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0271.00",
+              "F0273.00",
+              "F0276.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Goo-zooka",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0271.00",
+              "F0273.00",
+              "F0276.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Sightseer",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0271.00",
+              "F0273.00",
+              "F0276.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0271.00",
+              "F0273.00",
+              "F0276.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Poké Ball",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0271.00",
+              "F0273.00",
+              "F0276.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0271.00",
+          "F0273.00",
+          "F0276.00"
+        ],
+        "status": "complete_with_recording_limits",
+        "limit_reason": "Poké Ball is played before +3/+6 views. 271 s six-card native start is before Item; later views show five cards."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Drowzee",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0302.00",
+              "F0304.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Hypno",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0302.00",
+              "F0304.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0302.00",
+              "F0304.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0302.00",
+          "F0304.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "normal_draw": {
+        "kind": "normal",
+        "caused_by": "normal turn draw",
+        "linked_play_order": null,
+        "cards_in_reveal_order": [
+          {
+            "name": "Poké Ball",
+            "variant": null,
+            "reveal_position": 1,
+            "source_video": "20260908_022627000_iOS.MP4",
+            "timestamp_seconds": 271.0,
+            "evidence_ids": [
+              "F0271.00"
+            ],
+            "basis": "direct_native_reveal_or_named_transaction",
+            "limit_reason": null,
+            "timestamp_basis": "Card visible at this source-native anchor; not certified exact first reveal or transaction-completion instant."
+          }
+        ],
+        "hand_count_before": 5,
+        "hand_count_after": 6,
+        "returned_or_discarded_cards": null,
+        "source_video": "20260908_022627000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": [
+          "F0271.00"
+        ],
+        "limit_reason": null
+      },
+      "capture_offsets_requested": [
+        1,
+        3,
+        6
+      ],
+      "draw_end_bracket": [
+        270,
+        271
+      ],
+      "native_capture_times": [
+        271.0,
+        273.0,
+        276.0
+      ],
+      "before_end_time": 304,
+      "capture_status": "complete_with_recording_limits",
+      "limits": "Poké Ball is played before +3/+6 views. 271 s six-card native start is before Item; later views show five cards."
+    },
+    {
+      "turn_number": 9,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Drowzee",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0348.00",
+              "F0350.00",
+              "F0352.00",
+              "F0355.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Hypno",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0348.00",
+              "F0350.00",
+              "F0352.00",
+              "F0355.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0348.00",
+              "F0350.00",
+              "F0352.00",
+              "F0355.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0348.00",
+              "F0350.00",
+              "F0352.00",
+              "F0355.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0348.00",
+          "F0350.00",
+          "F0352.00",
+          "F0355.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Drowzee",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0370.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Hypno",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0370.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0370.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0370.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0370.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "normal_draw": {
+        "kind": "normal",
+        "caused_by": "normal turn draw",
+        "linked_play_order": null,
+        "cards_in_reveal_order": [
+          {
+            "name": "Pokémon Flute",
+            "variant": null,
+            "reveal_position": 1,
+            "source_video": "20260908_022627000_iOS.MP4",
+            "timestamp_seconds": 348.0,
+            "evidence_ids": [
+              "F0348.00"
+            ],
+            "basis": "direct_native_reveal_or_named_transaction",
+            "limit_reason": null,
+            "timestamp_basis": "Card visible at this source-native anchor; not certified exact first reveal or transaction-completion instant."
+          }
+        ],
+        "hand_count_before": 3,
+        "hand_count_after": 4,
+        "returned_or_discarded_cards": null,
+        "source_video": "20260908_022627000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": [
+          "F0348.00"
+        ],
+        "limit_reason": null
+      },
+      "capture_offsets_requested": [
+        1,
+        3,
+        6
+      ],
+      "draw_end_bracket": [
+        348,
+        350
+      ],
+      "native_capture_times": [
+        348.0,
+        350.0,
+        352.0,
+        355.0
+      ],
+      "before_end_time": 370,
+      "capture_status": "complete_with_recording_limits",
+      "limits": null
+    },
+    {
+      "turn_number": 11,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Drowzee",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0411.00",
+              "F0413.00",
+              "F0416.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Hypno",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0411.00",
+              "F0413.00",
+              "F0416.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0411.00",
+              "F0413.00",
+              "F0416.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0411.00",
+              "F0413.00",
+              "F0416.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Professor's Research",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0411.00",
+              "F0413.00",
+              "F0416.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0411.00",
+          "F0413.00",
+          "F0416.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Drowzee",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0427.00",
+              "F0428.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Hypno",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0427.00",
+              "F0428.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0427.00",
+              "F0428.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0427.00",
+              "F0428.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Professor's Research",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0427.00",
+              "F0428.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0427.00",
+          "F0428.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "normal_draw": {
+        "kind": "normal",
+        "caused_by": "normal turn draw",
+        "linked_play_order": null,
+        "cards_in_reveal_order": [
+          {
+            "name": "Professor's Research",
+            "variant": "full art",
+            "reveal_position": 1,
+            "source_video": "20260908_022627000_iOS.MP4",
+            "timestamp_seconds": 411.0,
+            "evidence_ids": [
+              "F0411.00"
+            ],
+            "basis": "direct_native_reveal_or_named_transaction",
+            "limit_reason": null,
+            "timestamp_basis": "Card visible at this source-native anchor; not certified exact first reveal or transaction-completion instant."
+          }
+        ],
+        "hand_count_before": 4,
+        "hand_count_after": 5,
+        "returned_or_discarded_cards": null,
+        "source_video": "20260908_022627000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": [
+          "F0411.00"
+        ],
+        "limit_reason": null
+      },
+      "capture_offsets_requested": [
+        1,
+        3,
+        6
+      ],
+      "draw_end_bracket": [
+        409,
+        411
+      ],
+      "native_capture_times": [
+        411.0,
+        413.0,
+        416.0
+      ],
+      "before_end_time": 428,
+      "capture_status": "complete_with_recording_limits",
+      "limits": null
+    },
+    {
+      "turn_number": 13,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Drowzee",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0500.00",
+              "F0501.00",
+              "F0503.00",
+              "F0506.00",
+              "R0509.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Hypno",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0500.00",
+              "F0501.00",
+              "F0503.00",
+              "F0506.00",
+              "R0509.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0500.00",
+              "F0501.00",
+              "F0503.00",
+              "F0506.00",
+              "R0509.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0500.00",
+              "F0501.00",
+              "F0503.00",
+              "F0506.00",
+              "R0509.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0500.00",
+          "F0501.00",
+          "F0503.00",
+          "F0506.00",
+          "R0509.00"
+        ],
+        "status": "complete_with_recording_limits",
+        "limit_reason": "Deck is empty. Start identity comes from 500 s before Drowzee play; later offset views show three cards."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Hypno",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "R0509.00",
+              "F0506.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "R0509.00",
+              "F0506.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "R0509.00",
+              "F0506.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "R0509.00",
+          "F0506.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "normal_draw": {
+        "kind": "failed_normal",
+        "caused_by": "normal turn draw",
+        "linked_play_order": null,
+        "cards_in_reveal_order": [],
+        "hand_count_before": 4,
+        "hand_count_after": 4,
+        "returned_or_discarded_cards": null,
+        "source_video": "20260908_022627000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": [
+          "F0501.00"
+        ],
+        "limit_reason": "Empty-deck notice; no card obtained. This is known zero, not hidden card identity."
+      },
+      "capture_offsets_requested": [
+        1,
+        3,
+        6
+      ],
+      "draw_end_bracket": [
+        500,
+        502
+      ],
+      "native_capture_times": [
+        500.0,
+        501.0,
+        503.0,
+        506.0,
+        509.0
+      ],
+      "before_end_time": 509,
+      "capture_status": "complete_with_recording_limits",
+      "limits": "Deck is empty. Start identity comes from 500 s before Drowzee play; later offset views show three cards."
+    },
+    {
+      "turn_number": 15,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Hypno",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0590.00",
+              "F0591.00",
+              "F0593.00",
+              "F0596.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0590.00",
+              "F0591.00",
+              "F0593.00",
+              "F0596.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0590.00",
+              "F0591.00",
+              "F0593.00",
+              "F0596.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0590.00",
+          "F0591.00",
+          "F0593.00",
+          "F0596.00"
+        ],
+        "status": "complete_with_recording_limits",
+        "limit_reason": "Deck is empty. Native593 is pre-switch with Cape Raticate still Active;596 is post-switch with Hypno evolution in progress; native start 590 s retains three cards."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0602.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0602.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0602.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "normal_draw": {
+        "kind": "failed_normal",
+        "caused_by": "normal turn draw",
+        "linked_play_order": null,
+        "cards_in_reveal_order": [],
+        "hand_count_before": 3,
+        "hand_count_after": 3,
+        "returned_or_discarded_cards": null,
+        "source_video": "20260908_022627000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": [
+          "F0590.00"
+        ],
+        "limit_reason": "Empty-deck notice; no card obtained. This is known zero, not hidden card identity."
+      },
+      "capture_offsets_requested": [
+        1,
+        3,
+        6
+      ],
+      "draw_end_bracket": [
+        590,
+        591
+      ],
+      "native_capture_times": [
+        590.0,
+        591.0,
+        593.0,
+        596.0
+      ],
+      "before_end_time": 602,
+      "capture_status": "complete_with_recording_limits",
+      "limits": "Deck is empty. Native593 is pre-switch with Cape Raticate still Active;596 is post-switch with Hypno evolution in progress; native start 590 s retains three cards."
+    },
+    {
+      "turn_number": 17,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0673.00",
+              "F0675.00",
+              "F0678.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0673.00",
+              "F0675.00",
+              "F0678.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0673.00",
+          "F0675.00",
+          "F0678.00"
+        ],
+        "status": "complete_with_recording_limits",
+        "limit_reason": "Deck is empty; no successful card draw. Energy attachment affects board and leaves two-card hand unchanged."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0681.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "variant": "full art",
+            "basis": "direct_native_hand_and_source_transaction_reconciliation",
+            "evidence_ids": [
+              "F0681.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "F0681.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "normal_draw": {
+        "kind": "failed_normal",
+        "caused_by": "normal turn draw",
+        "linked_play_order": null,
+        "cards_in_reveal_order": [],
+        "hand_count_before": 2,
+        "hand_count_after": 2,
+        "returned_or_discarded_cards": null,
+        "source_video": "20260908_022627000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": [
+          "R0672.00"
+        ],
+        "limit_reason": "Empty-deck notice; no card obtained. This is known zero, not hidden card identity."
+      },
+      "capture_offsets_requested": [
+        1,
+        3,
+        6
+      ],
+      "draw_end_bracket": [
+        671,
+        673
+      ],
+      "native_capture_times": [
+        673.0,
+        675.0,
+        678.0
+      ],
+      "before_end_time": 681,
+      "capture_status": "complete_with_recording_limits",
+      "limits": "Deck is empty; no successful card draw. Energy attachment affects board and leaves two-card hand unchanged."
+    }
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance_status": "pending_separate_source_check"
+}

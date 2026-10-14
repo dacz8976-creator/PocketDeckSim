@@ -1,0 +1,39 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-06T20:32:59.011100+00:00",
+  "source_video": "20261005_123812000_iOS.MP4",
+  "source_sha256": "3fb3dc25ac96c6e742f9467ba14abdbf91aff403ef2a5bdc62c7f414e775e5a0",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 9,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_123812000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "Required live exact20 snapshot absent for this filmed revision; root owns registration.",
+    "Hidden opponent identities, full discards, exact printings and touch timing remain bounded.",
+    "Concession reason not established."
+  ],
+  "outcome": {
+    "owner_result": "loss",
+    "method": "owner_concession",
+    "opponent": "Sofii",
+    "owner": "Dacz8976",
+    "last_visible_earned_points": {
+      "owner": 1,
+      "opponent": 2
+    },
+    "concede_seconds": 325,
+    "result_seconds": 327,
+    "evidence_ids": [
+      "f-0323.00",
+      "f-0324.00",
+      "f-0325.00",
+      "f-0327.00",
+      "f-0336.00"
+    ]
+  },
+  "external_status": "Prepared for Pause Games; no new live deck or game save claimed. Missing matching current live list is preserved, filmed QR definitions prepared separately.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

@@ -1,0 +1,54 @@
+{
+  "source_video": "20261013_015011000_iOS.MP4",
+  "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+  "unreviewed_intervals": [],
+  "items": [
+    {
+      "id": "U1",
+      "status": "recording_limit",
+      "issue": "Opponent draw/remaining hand identities hidden.",
+      "evidence_ids": [
+        "n75_50",
+        "n167_00"
+      ]
+    },
+    {
+      "id": "U2",
+      "status": "recording_limit",
+      "issue": "No opened discard pile; side visible cards are not full-pile coverage.",
+      "evidence_ids": [
+        "n71_50",
+        "n168_50"
+      ]
+    },
+    {
+      "id": "U3",
+      "status": "recording_limit",
+      "issue": "Future Energy type icons visible; future numerical counts not displayed.",
+      "evidence_ids": [
+        "n43_50",
+        "n75_50",
+        "n167_00"
+      ]
+    },
+    {
+      "id": "U4",
+      "status": "recording_limit",
+      "issue": "Exact queue/rank label not shown; human matchup and no Auto visible.",
+      "evidence_ids": [
+        "o003",
+        "o007"
+      ]
+    },
+    {
+      "id": "U5",
+      "status": "live_snapshot_limit",
+      "issue": "Source local date verified by SOURCE_TIME and phone clock; own QR exactly matches historical log snapshot; fresh live readback unavailable per root access block."
+    },
+    {
+      "id": "U6",
+      "status": "timing_resolution_limit",
+      "issue": "Turn/event times localized from retained samples; requested seek seconds not individually measured decoded PTS. Approximate input onset between sampled frames."
+    }
+  ]
+}

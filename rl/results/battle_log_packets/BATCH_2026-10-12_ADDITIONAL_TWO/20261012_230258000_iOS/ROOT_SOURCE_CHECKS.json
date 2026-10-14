@@ -1,0 +1,98 @@
+{
+  "checked_utc": "2026-10-13T02:19:14.917702+00:00",
+  "lead": "/root",
+  "video": "20261012_230258000_iOS.MP4",
+  "source_sha256": "02c8539c786e5e57652c297ce425468955c4f70da2657a40cf39a2b0b330619a",
+  "checks": [
+    {
+      "timestamp_seconds": 31.5,
+      "frame": "turn_evidence/t0031.50.jpg",
+      "frame_sha256": "f915a9c78221d750fc182a315bce4b28f3a6ba38e172684e5f19560cbea69b2b",
+      "observation": "Opening shows going first and Mesagoza, Kingambit, Regigigas, Glimmet, Professor's Research."
+    },
+    {
+      "timestamp_seconds": 48,
+      "frame": "turn_evidence/t0048.00.jpg",
+      "frame_sha256": "3b8e3c6c0c6527d94d1c1c1eef55d3859d5d1472ca60079dc106bec66bf83425",
+      "observation": "T1 preplay hand has Mesagoza, Kingambit, Research and Lucky Ice Pop; Regigigas Active, Glimmet Bench; opponent Froakie Active."
+    },
+    {
+      "timestamp_seconds": 52,
+      "frame": "turn_evidence/t0052.00.jpg",
+      "frame_sha256": "049b027ab4d6532cf8dffb569615bf6db2e924a6c4edc79d5524ae06aeb61f90",
+      "observation": "First Research draw visibly reveals Poke Ball."
+    },
+    {
+      "timestamp_seconds": 53,
+      "frame": "turn_evidence/t0053.00.jpg",
+      "frame_sha256": "aa0f33e460efb3c0783bb5b2c4f37615851a5cf2a984324b06ff11b228c4876a",
+      "observation": "Second Research draw visibly reveals Heavy Helmet."
+    },
+    {
+      "timestamp_seconds": 201,
+      "frame": "turn_evidence/t0201.00.jpg",
+      "frame_sha256": "c6767f9aa11540137b7efd5d9e6284e0dd75369d5687d64b3d048717f56d4f2a",
+      "observation": "T5 Rare Candy draw is visible with an Energy generation overlay. Five owner hand cards; opponent has two benched Staryu and a Froakie behind active Froakie."
+    },
+    {
+      "timestamp_seconds": 203,
+      "frame": "turn_evidence/t0203.00.jpg",
+      "frame_sha256": "068f2d4e919d46ad9613865501df22e47d87c87784b6a37045772a18245f2e88",
+      "observation": "T5 Mesagoza activation begins; it precedes the later attachment and attack."
+    },
+    {
+      "timestamp_seconds": 416,
+      "frame": "turn_evidence/t0416.00.jpg",
+      "frame_sha256": "044e267930ed6b5ddacb98423564d66f9a6187540f26985096b9fb40ca3e56a6",
+      "observation": "Copycat is inspected/played with only Ilima beside it; three opponent card backs are visible."
+    },
+    {
+      "timestamp_seconds": 422,
+      "frame": "turn_evidence/t0422.00.jpg",
+      "frame_sha256": "332c2ec7649c06963864dd4c9e83d9a7e2d242008b42f2815e50976492c03c02",
+      "observation": "Copycat first visible reveal is Professor's Research."
+    },
+    {
+      "timestamp_seconds": 423,
+      "frame": "turn_evidence/t0423.00.jpg",
+      "frame_sha256": "e7f45bfa6724edbbe8e2994a0167c5ec38c671ece4743b421839e305a159b615",
+      "observation": "Copycat second visible reveal is Ilima."
+    },
+    {
+      "timestamp_seconds": 432,
+      "frame": "turn_evidence/t0432.00.jpg",
+      "frame_sha256": "66592520b40858743a73338f53a9cec0d335df3fa7dbf7a3d1baaa5a1e94d3f8",
+      "observation": "After Giga Turbo, active Starmie ex is at 30 HP and Regigigas at 90 HP; effect targets benched Alolan Muk."
+    },
+    {
+      "timestamp_seconds": 495,
+      "frame": "turn_evidence/t0495.00.jpg",
+      "frame_sha256": "54137aae3af1442a195097e869cc5a0eb3ee29c4f23d76f580f09f04b63461bc",
+      "observation": "Explicit no-cards-left/unable-to-draw notice; battle continues afterward."
+    },
+    {
+      "timestamp_seconds": 544,
+      "frame": "turn_evidence/t0544.00.jpg",
+      "frame_sha256": "fcd4d75b6ead0d263db7bc9d58f40d4db519e9bb6874b15d228d52d9fb7f4a8b",
+      "observation": "Final promoted Alolan Muk shows one attached Colorless Energy, distinct from deck Darkness."
+    },
+    {
+      "timestamp_seconds": 548,
+      "frame": "turn_evidence/t0548.00.jpg",
+      "frame_sha256": "fad2223889636ba0f9d06c95332d37d0b20428bf58a61582f8c566f8603f10bc",
+      "observation": "Starmie ex Hydro Splash visibly deals 90 damage to Alolan Muk, whose HP was 90 before attack."
+    },
+    {
+      "timestamp_seconds": 564,
+      "frame": "turn_evidence/t0564.00.jpg",
+      "frame_sha256": "d5260835c8e4bf9ad2b43125df2928258c643948216b51d8ce6020384202b4f0",
+      "observation": "Defeat vs Giorno, went first, 14 turns, owner 2 points/opponent 3 points, 160 damage."
+    }
+  ],
+  "basis": "Lead directly viewed the listed source-native derivatives.",
+  "scope": "Bounded lead checks supporting full primary and independent review; not a replacement for whole-source review.",
+  "limits": [
+    "Source-local approximate seeks; exact frame PTS is unverified.",
+    "Hidden cards and unopened discard contents remain unknown."
+  ]
+}

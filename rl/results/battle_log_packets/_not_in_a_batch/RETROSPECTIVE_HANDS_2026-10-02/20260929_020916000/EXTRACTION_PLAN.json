@@ -1,0 +1,105 @@
+{
+  "new_native_cap": 85,
+  "planned_source_seconds": [
+    22,
+    34,
+    35,
+    36,
+    38,
+    41,
+    51,
+    52,
+    53,
+    54,
+    55,
+    59,
+    62,
+    64,
+    104,
+    114,
+    132,
+    138,
+    139,
+    140,
+    142,
+    145,
+    159,
+    167,
+    170,
+    196,
+    205,
+    208,
+    209,
+    210,
+    212,
+    215,
+    253,
+    263,
+    264,
+    288,
+    309,
+    312,
+    329,
+    334,
+    354,
+    357,
+    358,
+    359,
+    361,
+    364,
+    381,
+    388,
+    390,
+    400,
+    409,
+    411,
+    414,
+    417,
+    424,
+    466,
+    467,
+    469,
+    473,
+    477
+  ],
+  "draw_window_locator_brackets": {
+    "1": [
+      34,
+      35
+    ],
+    "3": [
+      138,
+      139
+    ],
+    "5": [
+      208,
+      209
+    ],
+    "7": [
+      357,
+      358
+    ],
+    "9": [
+      466,
+      467
+    ]
+  },
+  "locator_sampling": {
+    "fps": 1,
+    "nominal_coverage_seconds": [
+      0,
+      489
+    ],
+    "screened_grids": 25,
+    "screened_sample_count": 490,
+    "limitations": "Reduced locator only; subsecond events may be absent; no assertion every instant inspected. Native extraction required for card identities."
+  },
+  "before_end_candidates": [
+    55,
+    159,
+    288,
+    381,
+    477
+  ],
+  "notes": "Native times target normal draw-end and about+1/+3/+6 where possible; rapid plays are separately captured. Turn9 deck-empty failure has no actual card draw. Additional prompt/Energy/state gaps checkpoint after native inspection."
+}

@@ -1,0 +1,41 @@
+{
+  "schema": "retrospective-hand-lead-acceptance-v1",
+  "source": "20260908_012720000_iOS.MP4",
+  "source_sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085",
+  "accepted_at_utc": "2026-10-02T21:41:56.293896+00:00",
+  "lead": "Codex retrospective lead",
+  "worker_model": "gpt-6.1-sol",
+  "worker_effort": "high",
+  "independent_model": "gpt-6.1-sol",
+  "independent_effort": "high",
+  "verdict": "accepted_with_recording_limits",
+  "target_turns": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12
+  ],
+  "original_full_battle_status": "Reviewed; preserved",
+  "scope": "Setup and recorded-turn field additions; accepted battle outcome preserved",
+  "independent_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260908_012720000\\SOURCE_CHECKS_REPAIR_ACCEPTANCE.json",
+  "structure_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\STRUCTURE_CHECK.json",
+  "capture_status": "complete_with_recording_limits",
+  "source_read_basis": null,
+  "shared_registration": "complete",
+  "accepted_packet_hashes": {
+    "REVIEW_SUPPLEMENT.md": "2ef598f275b0476631942e48c5ae7c6a9fa7a3b4dfa305562e07572cbf6cd2fb",
+    "HAND_SUPPLEMENT.json": "376652936bf93973d43faf188865aa6ac10f906e5710e0216df82e087a5560fc",
+    "TURN_EVIDENCE.json": "935e675205c1eb21cea5ef50732da23cee30cdbe73d0b1a5e5df2ee8addb24a7",
+    "UNCERTAINTIES.json": "85d4c50ff41b0ab687a84c8d975b665b12c44ac18f52c23c88f8245f48189841",
+    "DECK_USED.json": "080a103a2493e3326b10eb7e95ec4135ee22f7daebcf64aa358c76057206d6cf",
+    "PAUSE_GAME.json": "45ef25fa4bfbdedb7eb89ad1ef4aef2f2dc7c7a7bc425ee49879be47dfbcf422",
+    "TURN_LEDGER.json": "3617451573ed9a9c5f08977edc3f31ce4a851b0ae10f1e7772197fd65cd44d99"
+  },
+  "retained_evidence_only": false,
+  "classification": "computer_battle",
+  "excluded_from_ladder": true,
+  "shared_event": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\events\\2026-10-02T214157.299708_0000_a93fbc81-bd67-47c2-8b03-68ea965d43de.json",
+  "registration_identity_provenance": "verified_by_cli_sha256"
+}

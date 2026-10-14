@@ -1,0 +1,23 @@
+{
+  "decision": "ACCEPT",
+  "source_sha256": "bc41e4a4b4239027164fccf4401ff10c9c9a0657e4f22e13470f6228789afdfd",
+  "model": "gpt-6-sol",
+  "effort": "high",
+  "outcome": {
+    "owner_result": "Victory",
+    "owner_points": 2,
+    "opponent_points": 0,
+    "turns": 8,
+    "damage": 240
+  },
+  "classification": "computer AI battle; Auto option visible OFF then ON before play; excluded from both external game logs",
+  "recorded_battles": 1,
+  "full_recording_coverage_reconciled": true,
+  "primary_files_read_and_reconciled": {
+    "REVIEW.md": "d64a190fa7265db7fd21cb0720ea6aa53846bc1647c5160772bf0b00a4c85cf5",
+    "COVERAGE.md": "2ee9f22c068313b613be9af34b373544a831963a7b26061caf656a8dee1f3a90",
+    "FINDINGS.json": "2724a3f434eb4a871f791b27e9e060893ee28e51f498e5d01d1c62e313b7a601"
+  },
+  "turn_5_energy_attachment_bound_seconds": [96, 100],
+  "required_changes": []
+}

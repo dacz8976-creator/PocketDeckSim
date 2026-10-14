@@ -1,0 +1,41 @@
+{
+  "created_utc": "2026-10-02T22:21:38.616144+00:00",
+  "source": "20260909_023151000_iOS.MP4",
+  "current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260909_023151000_iOS.MP4",
+  "scope": "Download one selected review recording through OneDrive; restore online-only after acceptance.",
+  "documentation": "https://learn.microsoft.com/en-us/sharepoint/files-on-demand-windows",
+  "before": {
+    "logical_bytes": 642076032,
+    "allocated_bytes": 0,
+    "attributes": 4199968,
+    "placeholder_state": 57,
+    "cloud_placeholder": true,
+    "in_sync": true,
+    "pinned": false,
+    "unpinned": false,
+    "online_only": true
+  },
+  "command": [
+    "attrib.exe",
+    "+P",
+    "-U",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260909_023151000_iOS.MP4"
+  ],
+  "exit_code": 0,
+  "stdout": "",
+  "stderr": "",
+  "after_request": {
+    "logical_bytes": 642076032,
+    "allocated_bytes": 0,
+    "attributes": 4724256,
+    "placeholder_state": 57,
+    "cloud_placeholder": true,
+    "in_sync": true,
+    "pinned": true,
+    "unpinned": false,
+    "online_only": true
+  },
+  "movie_content_reads": 0,
+  "previous_failed_reads": 2,
+  "content_identity_verified": false
+}

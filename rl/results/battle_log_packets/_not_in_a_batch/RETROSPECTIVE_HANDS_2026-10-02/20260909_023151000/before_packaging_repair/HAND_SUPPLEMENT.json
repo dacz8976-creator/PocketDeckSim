@@ -1,0 +1,548 @@
+{
+  "game_id": "20260909_023151000",
+  "source": "20260909_023151000_iOS.MP4",
+  "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+  "opening_hand": {
+    "cards_left_to_right": [
+      "Elegant Cape",
+      "Poké Ball",
+      "Heliolisk",
+      "Electrike",
+      "Clemont's Backpack"
+    ],
+    "count": 5,
+    "before_active_placement": true,
+    "evidence_ids": [
+      "t0023.50"
+    ]
+  },
+  "owner_turns": [
+    {
+      "turn_number": 1,
+      "draw_animation_end_seconds": 46.7,
+      "timing_basis": "Approximate inspected card-join endpoint, actual PTSunmeasured",
+      "selected_start_evidence_ids": [
+        "t0046.80"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Elegant Cape",
+          "Poké Ball",
+          "Heliolisk",
+          "Clemont's Backpack",
+          "Mega Manectric ex"
+        ],
+        "count": 5,
+        "basis": "direct native complete lower hand",
+        "evidence_ids": [
+          "t0046.80"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_evidence_ids": [
+        "t0059.50"
+      ],
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Elegant Cape",
+          "Heliolisk",
+          "Clemont's Backpack",
+          "Mega Manectric ex"
+        ],
+        "count": 4,
+        "basis": "direct native complete lower hand",
+        "evidence_ids": [
+          "t0059.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "t0047.70",
+          "requested_source_seconds": 47.7,
+          "offset_after_draw_seconds": 1.0,
+          "observation": "Poké Ball already lifted/played; remainingfour"
+        },
+        {
+          "evidence_id": "t0049.70",
+          "requested_source_seconds": 49.7,
+          "offset_after_draw_seconds": 3.0,
+          "observation": "Ball search pending; lowerhandfour"
+        },
+        {
+          "evidence_id": "t0052.70",
+          "requested_source_seconds": 52.7,
+          "offset_after_draw_seconds": 6.0,
+          "observation": "Find Helioptile joinedhandfive; after first play"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Mega Manectric ex",
+              "reveal_position": 1,
+              "source_video": "20260909_023151000_iOS.MP4",
+              "timestamp_seconds": 46.7,
+              "evidence_ids": [
+                "t0046.80",
+                "cue_046"
+              ],
+              "basis": "direct native owner reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_023151000_iOS.MP4",
+          "timestamp_seconds": 46.7,
+          "timestamp_basis": "approximate source animation interval; PTS unmeasured",
+          "evidence_ids": [
+            "t0046.80",
+            "cue_046"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Helioptile",
+              "reveal_position": 1,
+              "source_video": "20260909_023151000_iOS.MP4",
+              "timestamp_seconds": 50,
+              "evidence_ids": [
+                "t0051.50",
+                "t0052.70",
+                "cue_050"
+              ],
+              "basis": "direct native owner reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_023151000_iOS.MP4",
+          "timestamp_seconds": 50,
+          "timestamp_basis": "approximate source animation interval; PTS unmeasured",
+          "evidence_ids": [
+            "t0051.50",
+            "t0052.70",
+            "cue_050"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 3,
+      "draw_animation_end_seconds": 114.4,
+      "timing_basis": "Approximate inspected card-join endpoint, actual PTSunmeasured",
+      "selected_start_evidence_ids": [
+        "t0114.60"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Elegant Cape",
+          "Heliolisk",
+          "Clemont's Backpack",
+          "Mega Manectric ex",
+          "Electrike"
+        ],
+        "count": 5,
+        "basis": "direct native complete lower hand",
+        "evidence_ids": [
+          "t0114.60"
+        ],
+        "status": "observed",
+        "limit_reason": "Unzoomed complete hand with automatic draw reveal remnant above hand; before Energy generation."
+      },
+      "before_end_evidence_ids": [
+        "t0128.50"
+      ],
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Clemont's Backpack",
+          "Mega Manectric ex"
+        ],
+        "count": 2,
+        "basis": "direct native complete lower hand",
+        "evidence_ids": [
+          "t0128.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "t0115.00",
+          "requested_source_seconds": 115,
+          "offset_after_draw_seconds": 0.6,
+          "observation": "Five cardsstillpresent, Energygeneration beforebench"
+        },
+        {
+          "evidence_id": "t0117.00",
+          "requested_source_seconds": 117,
+          "offset_after_draw_seconds": 2.6,
+          "observation": "Electrike alreadybenched; four"
+        },
+        {
+          "evidence_id": "t0120.00",
+          "requested_source_seconds": 120,
+          "offset_after_draw_seconds": 5.6,
+          "observation": "Heliolisk evolutionafterplay; three"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Electrike",
+              "reveal_position": 1,
+              "source_video": "20260909_023151000_iOS.MP4",
+              "timestamp_seconds": 114.4,
+              "evidence_ids": [
+                "t0114.60",
+                "cue_114"
+              ],
+              "basis": "direct native owner reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_023151000_iOS.MP4",
+          "timestamp_seconds": 114.4,
+          "timestamp_basis": "approximate source animation interval; PTS unmeasured",
+          "evidence_ids": [
+            "t0114.60",
+            "cue_114"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 5,
+      "draw_animation_end_seconds": 181.2,
+      "timing_basis": "Approximate inspected card-join endpoint, actual PTSunmeasured",
+      "selected_start_evidence_ids": [
+        "t0181.20"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Clemont's Backpack",
+          "Mega Manectric ex",
+          "Training Area"
+        ],
+        "count": 3,
+        "basis": "direct native complete lower hand",
+        "evidence_ids": [
+          "t0181.20"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_evidence_ids": [
+        "t0197.50"
+      ],
+      "before_end_hand": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "direct native complete lower hand",
+        "evidence_ids": [
+          "t0197.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "t0182.00",
+          "requested_source_seconds": 182,
+          "offset_after_draw_seconds": 0.8,
+          "observation": "TrainingArea alreadyleft hand; two"
+        },
+        {
+          "evidence_id": "t0184.00",
+          "requested_source_seconds": 184,
+          "offset_after_draw_seconds": 2.8,
+          "observation": "Stadium broadcastafterplay; two"
+        },
+        {
+          "evidence_id": "t0187.00",
+          "requested_source_seconds": 187,
+          "offset_after_draw_seconds": 5.8,
+          "observation": "Mega selected/played; one"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Training Area",
+              "reveal_position": 1,
+              "source_video": "20260909_023151000_iOS.MP4",
+              "timestamp_seconds": 181.2,
+              "evidence_ids": [
+                "t0181.20",
+                "cue_181"
+              ],
+              "basis": "direct native owner reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_023151000_iOS.MP4",
+          "timestamp_seconds": 181.2,
+          "timestamp_basis": "approximate source animation interval; PTS unmeasured",
+          "evidence_ids": [
+            "t0181.20",
+            "cue_181"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 7,
+      "draw_animation_end_seconds": 234.2,
+      "timing_basis": "Approximate inspected card-join endpoint, actual PTSunmeasured",
+      "selected_start_evidence_ids": [
+        "t0234.20"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Poké Ball"
+        ],
+        "count": 1,
+        "basis": "direct native complete lower hand",
+        "evidence_ids": [
+          "t0234.20"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_evidence_ids": [
+        "t0241.50"
+      ],
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Helioptile"
+        ],
+        "count": 1,
+        "basis": "direct native complete lower hand",
+        "evidence_ids": [
+          "t0241.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "t0235.00",
+          "requested_source_seconds": 235,
+          "offset_after_draw_seconds": 0.8,
+          "observation": "Ball leavinghand; firstplay"
+        },
+        {
+          "evidence_id": "t0237.00",
+          "requested_source_seconds": 237,
+          "offset_after_draw_seconds": 2.8,
+          "observation": "Search pending; handempty"
+        },
+        {
+          "evidence_id": "t0240.00",
+          "requested_source_seconds": 240,
+          "offset_after_draw_seconds": 5.8,
+          "observation": "Helioptile addedone; EnergyattachmentafterBall"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poké Ball",
+              "reveal_position": 1,
+              "source_video": "20260909_023151000_iOS.MP4",
+              "timestamp_seconds": 234.2,
+              "evidence_ids": [
+                "t0234.20",
+                "cue_234"
+              ],
+              "basis": "direct native owner reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 0,
+          "hand_count_after": 1,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_023151000_iOS.MP4",
+          "timestamp_seconds": 234.2,
+          "timestamp_basis": "approximate source animation interval; PTS unmeasured",
+          "evidence_ids": [
+            "t0234.20",
+            "cue_234"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Helioptile",
+              "reveal_position": 1,
+              "source_video": "20260909_023151000_iOS.MP4",
+              "timestamp_seconds": 238,
+              "evidence_ids": [
+                "r_t7-helioptile-search-result",
+                "t0240.00",
+                "cue_238"
+              ],
+              "basis": "direct native owner reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 0,
+          "hand_count_after": 1,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_023151000_iOS.MP4",
+          "timestamp_seconds": 238,
+          "timestamp_basis": "approximate source animation interval; PTS unmeasured",
+          "evidence_ids": [
+            "r_t7-helioptile-search-result",
+            "t0240.00",
+            "cue_238"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 9,
+      "draw_animation_end_seconds": 329.4,
+      "timing_basis": "Approximate inspected card-join endpoint, actual PTSunmeasured",
+      "selected_start_evidence_ids": [
+        "t0329.40"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Helioptile",
+          "Professor's Research"
+        ],
+        "count": 2,
+        "basis": "direct native complete lower hand",
+        "evidence_ids": [
+          "t0329.40"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_evidence_ids": [
+        "t0332.00"
+      ],
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Helioptile",
+          "Professor's Research"
+        ],
+        "count": 2,
+        "basis": "direct native complete lower hand",
+        "evidence_ids": [
+          "t0332.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "t0330.00",
+          "requested_source_seconds": 330,
+          "offset_after_draw_seconds": 0.6,
+          "observation": "Two cardhandduringattackselection"
+        },
+        {
+          "evidence_id": "t0332.00",
+          "requested_source_seconds": 332,
+          "offset_after_draw_seconds": 2.6,
+          "observation": "Warningoverlay; bothcardsremain"
+        },
+        {
+          "evidence_id": "t0335.00",
+          "requested_source_seconds": 335,
+          "offset_after_draw_seconds": 5.6,
+          "observation": "Attackdamage; bothcardsremain"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Professor's Research",
+              "reveal_position": 1,
+              "source_video": "20260909_023151000_iOS.MP4",
+              "timestamp_seconds": 329.4,
+              "evidence_ids": [
+                "t0329.40",
+                "cue_329"
+              ],
+              "basis": "direct native owner reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 1,
+          "hand_count_after": 2,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_023151000_iOS.MP4",
+          "timestamp_seconds": 329.4,
+          "timestamp_basis": "approximate source animation interval; PTS unmeasured",
+          "evidence_ids": [
+            "t0329.40",
+            "cue_329"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    }
+  ],
+  "limits": [
+    "Hidden opponent normal/Research/Legendary Pulse draws and concealed search identities remain null; subsequent bench cards do not identify a concealed search result.",
+    "Exact historical 20-card deck snapshot unavailable; nearby QR is separate unbound evidence and no full deck is reconstructed.",
+    "All344 reduced1fps samples were inspected through18 grids once. This bounds sampled cues, not every instant, input or subsecond event.",
+    "Requested native seek times and inherited nominal native times are source-local. Actual frame PTS and exact input times unmeasured; inherited anchors have their retained tolerance.",
+    "No opened full discard panel detected in bounded timeline screening. Periodic visible tops and overlapping cards are recorded; hidden contents/order and discarded Energy totals not reconstructed.",
+    "No Auto control observed in sampled controls. This is not proof of every-instant absence; any visible Auto option, even OFF, means computer battle under owner rule."
+  ],
+  "independent_acceptance_status": "pending"
+}

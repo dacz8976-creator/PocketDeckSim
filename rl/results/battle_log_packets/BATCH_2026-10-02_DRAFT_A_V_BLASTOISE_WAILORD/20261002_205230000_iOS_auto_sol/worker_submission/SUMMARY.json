@@ -1,0 +1,74 @@
+{
+  "game_id": "20261002_205230000_iOS_game1",
+  "source_video": "20261002_205230000_iOS.MP4",
+  "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+  "reviewer": "/root/drafta_auto_205230",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "classification": "computer_battle",
+  "ranked_ladder_eligible": false,
+  "match_date": "2026-10-02",
+  "match_date_basis": "Owner testimony and filename",
+  "owner": "Dacz8976",
+  "opponent": "AI",
+  "opponent_deck": "Mega Blastoise ex & Wailord ex Deck (Deluxe Pack: Mega)",
+  "difficulty": "Advanced",
+  "difficulty_basis": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\ADVANCED_CATEGORY_CONFIRMATION.json",
+  "difficulty_evidence": {
+    "category": "Advanced",
+    "battle_menu": "Step-Up Battle",
+    "owner_quote": "I mean the computer decks are technically listed under advanced",
+    "earlier_owner_confirmation": "There aren’t difficulty settings",
+    "separate_difficulty_selector": false,
+    "received_utc": "2026-10-02T23:49:18.971604+00:00",
+    "screenshot_original": "C:\\Users\\dacz8\\.codex\\codex-remote-attachments\\01a0fe49-4f9b-7111-8794-bd7e69c664c7\\24CB7EDA-FAC4-42C3-A9C1-6B2676B3F5FF\\1-Photo-1.jpg",
+    "screenshot_copy": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\opponent_deck\\OWNER_ADVANCED_CATEGORY.jpg",
+    "screenshot_sha256": "0502ff046d280072cacac508f26efb7eeb7ca59f9072fb473bcc01aad5fea219",
+    "observed_text": [
+      "Step-Up Battle",
+      "Advanced",
+      "Mega Blastoise ex & Wailord ex Deck (Deluxe Pack: Mega)",
+      "AI"
+    ],
+    "basis": "Root visually inspected the owner-supplied category screenshot. The selected deck is visibly listed within Advanced. Owner confirms same opponent/setup for all eight games.",
+    "scope": "Menu category establishes Advanced; it is separate from a selectable difficulty option. Opening game screens need not show the menu category."
+  },
+  "separate_difficulty_selector": false,
+  "opening_difficulty_label_visible": false,
+  "auto": {
+    "control_present": true,
+    "opening_enabled": true,
+    "changes_observed": [],
+    "authorship": "Owner-side game actions attributed to enabled Auto; separate from computer-opponent classification.",
+    "evidence_ids": [
+      "F0002.00",
+      "F0243.50"
+    ],
+    "limit": "No hidden input can be excluded between retained frames; no observed Auto toggle or manual takeover."
+  },
+  "deck_name": "Draft A: Shark Tempo",
+  "result": "win",
+  "owner_points": 3,
+  "opponent_points": 0,
+  "turns": 16,
+  "damage_dealt": 580,
+  "card_of_game": "Alolan Ninetales ex",
+  "result_evidence_ids": [
+    "F0254.50",
+    "F0277.50"
+  ],
+  "battle_review_status": "complete_first_pass_pending_independent_acceptance",
+  "capture_status": "complete_with_recording_limits",
+  "coverage": {
+    "start_seconds": 0,
+    "end_seconds": 278.235,
+    "uninspected_intervals": [],
+    "method": "Every retained one-fps locator grid inspected from setup to terminal screen, plus targeted native frames/crops; does not certify every video instant."
+  },
+  "decisive_sequence": "Turbo Shark charged first Ninetales to 2 Water; free pivot enabled repeated Binding Snow. Computer built Mega Blastoise on Bench, retreated Wailord with X Speed and hit for 130. Cyrus returned damaged Wailord for the winning 80-damage KO.",
+  "unsupported_claims_avoided": [
+    "No concealed opponent card identities reconstructed from deck list",
+    "No pile census inferred from partial top cards",
+    "No held Misty/Copycat/Cape recorded as declined prompts"
+  ]
+}

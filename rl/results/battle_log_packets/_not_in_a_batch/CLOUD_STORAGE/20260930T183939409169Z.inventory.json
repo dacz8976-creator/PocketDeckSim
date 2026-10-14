@@ -1,0 +1,2472 @@
+{
+  "operation": "Read-only storage inventory",
+  "created_at_utc": "2026-09-30T18:39:39.408146+00:00",
+  "videos": 91,
+  "online_only": 4,
+  "allocated_bytes_before": 43928225742,
+  "allocated_bytes_after": 43928225742,
+  "local_bytes_reclaimed": 0,
+  "files_deleted": 0,
+  "method": "Microsoft-documented attrib +U -P; only in-sync cloud placeholders are changed",
+  "verification": "Cloud placeholder metadata and actual allocated disk bytes; video contents are never read",
+  "documentation": "https://learn.microsoft.com/en-us/sharepoint/files-on-demand-windows",
+  "entries": [
+    {
+      "video": "20260907_013104000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_013104000_iOS.MP4",
+      "before": {
+        "logical_bytes": 847428774,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 847428774,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      }
+    },
+    {
+      "video": "20260907_014933000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_014933000_iOS.MP4",
+      "before": {
+        "logical_bytes": 699685256,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 699685256,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      }
+    },
+    {
+      "video": "20260907_020124000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_020124000_iOS.MP4",
+      "before": {
+        "logical_bytes": 497767764,
+        "allocated_bytes": 497767764,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 497767764,
+        "allocated_bytes": 497767764,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260907_023511000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_023511000_iOS.MP4",
+      "before": {
+        "logical_bytes": 390676462,
+        "allocated_bytes": 390676462,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 390676462,
+        "allocated_bytes": 390676462,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260907_024406000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_024406000_iOS.MP4",
+      "before": {
+        "logical_bytes": 330109834,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 330109834,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      }
+    },
+    {
+      "video": "20260907_025604000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_025604000_iOS.MP4",
+      "before": {
+        "logical_bytes": 608250484,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 608250484,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      }
+    },
+    {
+      "video": "20260907_031007000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_031007000_iOS.MP4",
+      "before": {
+        "logical_bytes": 509967685,
+        "allocated_bytes": 509967685,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 509967685,
+        "allocated_bytes": 509967685,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260907_031901000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_031901000_iOS.MP4",
+      "before": {
+        "logical_bytes": 444768350,
+        "allocated_bytes": 444768350,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 444768350,
+        "allocated_bytes": 444768350,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260907_170229000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_170229000_iOS.MP4",
+      "before": {
+        "logical_bytes": 627599438,
+        "allocated_bytes": 627599438,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 627599438,
+        "allocated_bytes": 627599438,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260907_181914000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_181914000_iOS.MP4",
+      "before": {
+        "logical_bytes": 730937048,
+        "allocated_bytes": 730937048,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 730937048,
+        "allocated_bytes": 730937048,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260907_220914000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_220914000_iOS.MP4",
+      "before": {
+        "logical_bytes": 157882657,
+        "allocated_bytes": 157882657,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 157882657,
+        "allocated_bytes": 157882657,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260907_221051000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_221051000_iOS.MP4",
+      "before": {
+        "logical_bytes": 334776946,
+        "allocated_bytes": 334776946,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 334776946,
+        "allocated_bytes": 334776946,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260907_221914000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_221914000_iOS.MP4",
+      "before": {
+        "logical_bytes": 321039474,
+        "allocated_bytes": 321039474,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 321039474,
+        "allocated_bytes": 321039474,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260907_222326000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_222326000_iOS.MP4",
+      "before": {
+        "logical_bytes": 320547441,
+        "allocated_bytes": 320547441,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 320547441,
+        "allocated_bytes": 320547441,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260907_224312000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_224312000_iOS.MP4",
+      "before": {
+        "logical_bytes": 456674333,
+        "allocated_bytes": 456674333,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 456674333,
+        "allocated_bytes": 456674333,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260907_232035000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_232035000_iOS.MP4",
+      "before": {
+        "logical_bytes": 324067959,
+        "allocated_bytes": 324067959,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 324067959,
+        "allocated_bytes": 324067959,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260907_232617000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_232617000_iOS.MP4",
+      "before": {
+        "logical_bytes": 824157596,
+        "allocated_bytes": 824157596,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 824157596,
+        "allocated_bytes": 824157596,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260908_004344000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_004344000_iOS.MP4",
+      "before": {
+        "logical_bytes": 483433381,
+        "allocated_bytes": 483433381,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 483433381,
+        "allocated_bytes": 483433381,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260908_010207000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_010207000_iOS.MP4",
+      "before": {
+        "logical_bytes": 448053217,
+        "allocated_bytes": 448053217,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 448053217,
+        "allocated_bytes": 448053217,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260908_012720000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_012720000_iOS.MP4",
+      "before": {
+        "logical_bytes": 530226009,
+        "allocated_bytes": 530226009,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 530226009,
+        "allocated_bytes": 530226009,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260908_015201000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_015201000_iOS.MP4",
+      "before": {
+        "logical_bytes": 127098167,
+        "allocated_bytes": 127098167,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 127098167,
+        "allocated_bytes": 127098167,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260908_015702000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_015702000_iOS.MP4",
+      "before": {
+        "logical_bytes": 507514203,
+        "allocated_bytes": 507514203,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 507514203,
+        "allocated_bytes": 507514203,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260908_021327000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_021327000_iOS.MP4",
+      "before": {
+        "logical_bytes": 767232143,
+        "allocated_bytes": 767232143,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 767232143,
+        "allocated_bytes": 767232143,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260908_022627000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_022627000_iOS.MP4",
+      "before": {
+        "logical_bytes": 1351891106,
+        "allocated_bytes": 1351891106,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 1351891106,
+        "allocated_bytes": 1351891106,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260908_190031000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_190031000_iOS.MP4",
+      "before": {
+        "logical_bytes": 312434780,
+        "allocated_bytes": 312434780,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 312434780,
+        "allocated_bytes": 312434780,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260908_190933000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_190933000_iOS.MP4",
+      "before": {
+        "logical_bytes": 771967232,
+        "allocated_bytes": 771967232,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 771967232,
+        "allocated_bytes": 771967232,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260908_225430000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_225430000_iOS.MP4",
+      "before": {
+        "logical_bytes": 504085197,
+        "allocated_bytes": 504085197,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 504085197,
+        "allocated_bytes": 504085197,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260908_230007000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_230007000_iOS.MP4",
+      "before": {
+        "logical_bytes": 563553381,
+        "allocated_bytes": 563553381,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 563553381,
+        "allocated_bytes": 563553381,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260908_232955000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_232955000_iOS.MP4",
+      "before": {
+        "logical_bytes": 505470030,
+        "allocated_bytes": 505470030,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 505470030,
+        "allocated_bytes": 505470030,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260908_234514000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_234514000_iOS.MP4",
+      "before": {
+        "logical_bytes": 492225741,
+        "allocated_bytes": 492225741,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 492225741,
+        "allocated_bytes": 492225741,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260909_000238000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260909_000238000_iOS.MP4",
+      "before": {
+        "logical_bytes": 323289334,
+        "allocated_bytes": 323289334,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 323289334,
+        "allocated_bytes": 323289334,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260909_000905000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260909_000905000_iOS.MP4",
+      "before": {
+        "logical_bytes": 439869785,
+        "allocated_bytes": 439869785,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 439869785,
+        "allocated_bytes": 439869785,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260909_023151000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260909_023151000_iOS.MP4",
+      "before": {
+        "logical_bytes": 642076032,
+        "allocated_bytes": 642076032,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 642076032,
+        "allocated_bytes": 642076032,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260909_032418000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260909_032418000_iOS.MP4",
+      "before": {
+        "logical_bytes": 639829739,
+        "allocated_bytes": 639829739,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 639829739,
+        "allocated_bytes": 639829739,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260909_133834000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260909_133834000_iOS.MP4",
+      "before": {
+        "logical_bytes": 582829316,
+        "allocated_bytes": 582829316,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 582829316,
+        "allocated_bytes": 582829316,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260921_145205000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260921_145205000_iOS.MP4",
+      "before": {
+        "logical_bytes": 467311095,
+        "allocated_bytes": 467311095,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 467311095,
+        "allocated_bytes": 467311095,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260921_150630000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260921_150630000_iOS.MP4",
+      "before": {
+        "logical_bytes": 565068602,
+        "allocated_bytes": 565068602,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 565068602,
+        "allocated_bytes": 565068602,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260921_152812000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260921_152812000_iOS.MP4",
+      "before": {
+        "logical_bytes": 568299605,
+        "allocated_bytes": 568299605,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 568299605,
+        "allocated_bytes": 568299605,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260921_155818000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260921_155818000_iOS.MP4",
+      "before": {
+        "logical_bytes": 705516092,
+        "allocated_bytes": 705516092,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 705516092,
+        "allocated_bytes": 705516092,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260921_224540000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260921_224540000_iOS.MP4",
+      "before": {
+        "logical_bytes": 508014416,
+        "allocated_bytes": 508014416,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 508014416,
+        "allocated_bytes": 508014416,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260921_234155000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260921_234155000_iOS.MP4",
+      "before": {
+        "logical_bytes": 527847789,
+        "allocated_bytes": 527847789,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 527847789,
+        "allocated_bytes": 527847789,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260921_235356000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260921_235356000_iOS.MP4",
+      "before": {
+        "logical_bytes": 506154900,
+        "allocated_bytes": 506154900,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 506154900,
+        "allocated_bytes": 506154900,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260922_010316000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260922_010316000_iOS.MP4",
+      "before": {
+        "logical_bytes": 775667139,
+        "allocated_bytes": 775667139,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 775667139,
+        "allocated_bytes": 775667139,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260925_224120000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260925_224120000_iOS.MP4",
+      "before": {
+        "logical_bytes": 674044552,
+        "allocated_bytes": 674044552,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 674044552,
+        "allocated_bytes": 674044552,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260926_212545000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260926_212545000_iOS.MP4",
+      "before": {
+        "logical_bytes": 556113671,
+        "allocated_bytes": 556113671,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 556113671,
+        "allocated_bytes": 556113671,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260926_213750000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260926_213750000_iOS.MP4",
+      "before": {
+        "logical_bytes": 680682214,
+        "allocated_bytes": 680682214,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 680682214,
+        "allocated_bytes": 680682214,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260926_215126000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260926_215126000_iOS.MP4",
+      "before": {
+        "logical_bytes": 1208451584,
+        "allocated_bytes": 1208451584,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 1208451584,
+        "allocated_bytes": 1208451584,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260927_170847000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260927_170847000_iOS.MP4",
+      "before": {
+        "logical_bytes": 759878429,
+        "allocated_bytes": 759878429,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 759878429,
+        "allocated_bytes": 759878429,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260927_205715000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260927_205715000_iOS.MP4",
+      "before": {
+        "logical_bytes": 188787030,
+        "allocated_bytes": 188787030,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 188787030,
+        "allocated_bytes": 188787030,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260927_205926000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260927_205926000_iOS.MP4",
+      "before": {
+        "logical_bytes": 776870237,
+        "allocated_bytes": 776870237,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 776870237,
+        "allocated_bytes": 776870237,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260927_211210000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260927_211210000_iOS.MP4",
+      "before": {
+        "logical_bytes": 566771947,
+        "allocated_bytes": 566771947,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 566771947,
+        "allocated_bytes": 566771947,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260927_212437000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260927_212437000_iOS.MP4",
+      "before": {
+        "logical_bytes": 694206534,
+        "allocated_bytes": 694206534,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 694206534,
+        "allocated_bytes": 694206534,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260928_200654000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260928_200654000_iOS.MP4",
+      "before": {
+        "logical_bytes": 1107688324,
+        "allocated_bytes": 1107688324,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 1107688324,
+        "allocated_bytes": 1107688324,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_002539000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_002539000_iOS.MP4",
+      "before": {
+        "logical_bytes": 784516281,
+        "allocated_bytes": 784516281,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 784516281,
+        "allocated_bytes": 784516281,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_003912000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_003912000_iOS.MP4",
+      "before": {
+        "logical_bytes": 277370692,
+        "allocated_bytes": 277370692,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 277370692,
+        "allocated_bytes": 277370692,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_004334000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_004334000_iOS.MP4",
+      "before": {
+        "logical_bytes": 981073211,
+        "allocated_bytes": 981073211,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 981073211,
+        "allocated_bytes": 981073211,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_010434000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_010434000_iOS.MP4",
+      "before": {
+        "logical_bytes": 427023514,
+        "allocated_bytes": 427023514,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 427023514,
+        "allocated_bytes": 427023514,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_011053000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_011053000_iOS.MP4",
+      "before": {
+        "logical_bytes": 329249386,
+        "allocated_bytes": 329249386,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 329249386,
+        "allocated_bytes": 329249386,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_011446000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_011446000_iOS.MP4",
+      "before": {
+        "logical_bytes": 736831220,
+        "allocated_bytes": 736831220,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 736831220,
+        "allocated_bytes": 736831220,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_012212000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_012212000_iOS.MP4",
+      "before": {
+        "logical_bytes": 816448064,
+        "allocated_bytes": 816448064,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 816448064,
+        "allocated_bytes": 816448064,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_014456000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_014456000_iOS.MP4",
+      "before": {
+        "logical_bytes": 605073925,
+        "allocated_bytes": 605073925,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 605073925,
+        "allocated_bytes": 605073925,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_015443000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_015443000_iOS.MP4",
+      "before": {
+        "logical_bytes": 786545106,
+        "allocated_bytes": 786545106,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 786545106,
+        "allocated_bytes": 786545106,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_020916000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_020916000_iOS.MP4",
+      "before": {
+        "logical_bytes": 917354837,
+        "allocated_bytes": 917354837,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 917354837,
+        "allocated_bytes": 917354837,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_192632000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_192632000_iOS.MP4",
+      "before": {
+        "logical_bytes": 643563395,
+        "allocated_bytes": 643563395,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 643563395,
+        "allocated_bytes": 643563395,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_194920000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_194920000_iOS.MP4",
+      "before": {
+        "logical_bytes": 123945519,
+        "allocated_bytes": 123945519,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 123945519,
+        "allocated_bytes": 123945519,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_195929000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_195929000_iOS.MP4",
+      "before": {
+        "logical_bytes": 576334352,
+        "allocated_bytes": 576334352,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 576334352,
+        "allocated_bytes": 576334352,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_200857000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_200857000_iOS.MP4",
+      "before": {
+        "logical_bytes": 327511596,
+        "allocated_bytes": 327511596,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 327511596,
+        "allocated_bytes": 327511596,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_202314000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_202314000_iOS.MP4",
+      "before": {
+        "logical_bytes": 460737880,
+        "allocated_bytes": 460737880,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 460737880,
+        "allocated_bytes": 460737880,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_203025000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_203025000_iOS.MP4",
+      "before": {
+        "logical_bytes": 326998263,
+        "allocated_bytes": 326998263,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 326998263,
+        "allocated_bytes": 326998263,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_204425000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_204425000_iOS.MP4",
+      "before": {
+        "logical_bytes": 248295676,
+        "allocated_bytes": 248295676,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 248295676,
+        "allocated_bytes": 248295676,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_141742000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_141742000_iOS.MP4",
+      "before": {
+        "logical_bytes": 303072592,
+        "allocated_bytes": 303072592,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 303072592,
+        "allocated_bytes": 303072592,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_142105000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_142105000_iOS.MP4",
+      "before": {
+        "logical_bytes": 293071088,
+        "allocated_bytes": 293071088,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 293071088,
+        "allocated_bytes": 293071088,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_142731000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_142731000_iOS.MP4",
+      "before": {
+        "logical_bytes": 260110621,
+        "allocated_bytes": 260110621,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 260110621,
+        "allocated_bytes": 260110621,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_143122000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_143122000_iOS.MP4",
+      "before": {
+        "logical_bytes": 378700328,
+        "allocated_bytes": 378700328,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 378700328,
+        "allocated_bytes": 378700328,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_143535000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_143535000_iOS.MP4",
+      "before": {
+        "logical_bytes": 348187404,
+        "allocated_bytes": 348187404,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 348187404,
+        "allocated_bytes": 348187404,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_144608000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_144608000_iOS.MP4",
+      "before": {
+        "logical_bytes": 347723081,
+        "allocated_bytes": 347723081,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 347723081,
+        "allocated_bytes": 347723081,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_145405000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_145405000_iOS.MP4",
+      "before": {
+        "logical_bytes": 267745666,
+        "allocated_bytes": 267745666,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 267745666,
+        "allocated_bytes": 267745666,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_153142000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_153142000_iOS.MP4",
+      "before": {
+        "logical_bytes": 305240430,
+        "allocated_bytes": 305240430,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 305240430,
+        "allocated_bytes": 305240430,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_153509000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_153509000_iOS.MP4",
+      "before": {
+        "logical_bytes": 287906877,
+        "allocated_bytes": 287906877,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 287906877,
+        "allocated_bytes": 287906877,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_155152000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_155152000_iOS.MP4",
+      "before": {
+        "logical_bytes": 408857548,
+        "allocated_bytes": 408857548,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 408857548,
+        "allocated_bytes": 408857548,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_155635000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_155635000_iOS.MP4",
+      "before": {
+        "logical_bytes": 364552337,
+        "allocated_bytes": 364552337,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 364552337,
+        "allocated_bytes": 364552337,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_160256000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_160256000_iOS.MP4",
+      "before": {
+        "logical_bytes": 593399060,
+        "allocated_bytes": 593399060,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 593399060,
+        "allocated_bytes": 593399060,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_161055000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_161055000_iOS.MP4",
+      "before": {
+        "logical_bytes": 476901875,
+        "allocated_bytes": 476901875,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 476901875,
+        "allocated_bytes": 476901875,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_161633000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_161633000_iOS.MP4",
+      "before": {
+        "logical_bytes": 306539344,
+        "allocated_bytes": 306539344,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 306539344,
+        "allocated_bytes": 306539344,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260930_162102000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_162102000_iOS.MP4",
+      "before": {
+        "logical_bytes": 281358334,
+        "allocated_bytes": 281358334,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 281358334,
+        "allocated_bytes": 281358334,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "EnergyRetreatAttackChoice.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\EnergyRetreatAttackChoice.MP4",
+      "before": {
+        "logical_bytes": 595250410,
+        "allocated_bytes": 595250410,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 595250410,
+        "allocated_bytes": 595250410,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "heavyhelmetpoisontest.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\heavyhelmetpoisontest.MP4",
+      "before": {
+        "logical_bytes": 159101587,
+        "allocated_bytes": 159101587,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 159101587,
+        "allocated_bytes": 159101587,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "Pokemon TCG Pocket Battle - SweetGameBuddy.mp4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\Pokemon TCG Pocket Battle - SweetGameBuddy.mp4",
+      "before": {
+        "logical_bytes": 35635480,
+        "allocated_bytes": 35635480,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 35635480,
+        "allocated_bytes": 35635480,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "Pokemon TCG Pocket Battles - Luckycad Xatu.mp4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\Pokemon TCG Pocket Battles - Luckycad Xatu.mp4",
+      "before": {
+        "logical_bytes": 417799115,
+        "allocated_bytes": 417799115,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 417799115,
+        "allocated_bytes": 417799115,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "ScreenRecording_08-26-2026 21-47-38_1.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\ScreenRecording_08-26-2026 21-47-38_1.MP4",
+      "before": {
+        "logical_bytes": 323234992,
+        "allocated_bytes": 323234992,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 323234992,
+        "allocated_bytes": 323234992,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "ScreenRecording_08-26-2026 21-47-38_1_H264.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\ScreenRecording_08-26-2026 21-47-38_1_H264.MP4",
+      "before": {
+        "logical_bytes": 33648550,
+        "allocated_bytes": 33648550,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 33648550,
+        "allocated_bytes": 33648550,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    }
+  ]
+}

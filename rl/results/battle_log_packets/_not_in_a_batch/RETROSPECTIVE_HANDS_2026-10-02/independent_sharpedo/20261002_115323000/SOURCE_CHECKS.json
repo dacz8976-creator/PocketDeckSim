@@ -1,0 +1,608 @@
+{
+  "schema": "independent-retrospective-hand-check-v1",
+  "reviewer": "sol_verify_sharpedo",
+  "game_id": "20261002_115323000",
+  "checked_at_utc": "2026-10-02T20:42:58Z",
+  "scope": "Targeted retrospective supplement only; original accepted battle unchanged",
+  "target_turns": [
+    13
+  ],
+  "verdict": "needs_repair",
+  "source_binding": {
+    "sha256": "0a3c7a2dbd87adb74f2eea2d61723f5e68fd71a74f0ab80d7486a9ee1d6c6be0",
+    "bytes": 985296109,
+    "duration_seconds": 532.31,
+    "frozen_source_matches": true,
+    "completion_event_matches": true,
+    "accepted_completion_event": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\events\\2026-10-02T160558.967981_0000_c5864d82-a26f-4a42-b020-8b1288c69fbe.json",
+    "source_current_path": "Reviewed/20261002_115323000_iOS.MP4",
+    "worker_current_hash_verification": "Inherited worker verification; source not re-read or rehashed by independent verifier",
+    "frame_derivation": "Retained worker frames and accepted native references bound by TURN_EVIDENCE source identity; not a separately decoded source",
+    "exact_pts": "Unmeasured; requested seeks preserved without fabricated PTS"
+  },
+  "observations": [
+    {
+      "turn": 13,
+      "start_at_seek": 461,
+      "cards_left_to_right": [
+        "Cyrus",
+        "Alolan Ninetales ex"
+      ],
+      "owner_count": 2,
+      "opponent_count": 2,
+      "draw": {
+        "name": "Alolan Ninetales ex",
+        "seek": 460,
+        "basis": "Observed enlarged reveal while Cyrus alone remains in fan; next view shows both cards in fan"
+      },
+      "first_action_at_seek": 462,
+      "first_action": "Ninetales removed from fan for evolution",
+      "scheduled_candidates": "462 and 467 independently seen after first action; 464 not visually rechecked",
+      "end": {
+        "seek": 478,
+        "count": 1,
+        "name": "Cyrus",
+        "basis": "Distinctive matching artwork observed; name/header hidden by board zoom; identity continuity inference from clear461 fan"
+      },
+      "reconciliation": "Observed count2 to count1, one Ninetales removal; arithmetic inference1+1-1=1"
+    }
+  ],
+  "evidence_metadata": [
+    {
+      "evidence_id": "e454",
+      "full_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_115323000_iOS_shark_sol\\native\\t0454.00.jpg",
+      "native_size": [
+        1170,
+        2532
+      ],
+      "matches_native_dimensions": true,
+      "requested_source_seconds": 454.0,
+      "exact_frame_pts": null,
+      "crops": [
+        {
+          "role": "bottom_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0454.00_bottom.jpg",
+          "size": [
+            1170,
+            507
+          ],
+          "bounds": [
+            0,
+            2025,
+            1170,
+            2532
+          ],
+          "dimensions_match_bounds": true
+        },
+        {
+          "role": "top_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0454.00_top.jpg",
+          "size": [
+            1170,
+            750
+          ],
+          "bounds": [
+            0,
+            0,
+            1170,
+            750
+          ],
+          "dimensions_match_bounds": true
+        }
+      ]
+    },
+    {
+      "evidence_id": "e458",
+      "full_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_115323000_iOS_shark_sol\\native\\t0458.00.jpg",
+      "native_size": [
+        1170,
+        2532
+      ],
+      "matches_native_dimensions": true,
+      "requested_source_seconds": 458.0,
+      "exact_frame_pts": null,
+      "crops": [
+        {
+          "role": "bottom_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0458.00_bottom.jpg",
+          "size": [
+            1170,
+            507
+          ],
+          "bounds": [
+            0,
+            2025,
+            1170,
+            2532
+          ],
+          "dimensions_match_bounds": true
+        },
+        {
+          "role": "top_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0458.00_top.jpg",
+          "size": [
+            1170,
+            750
+          ],
+          "bounds": [
+            0,
+            0,
+            1170,
+            750
+          ],
+          "dimensions_match_bounds": true
+        }
+      ]
+    },
+    {
+      "evidence_id": "e459",
+      "full_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0459.00.jpg",
+      "native_size": [
+        1170,
+        2532
+      ],
+      "matches_native_dimensions": true,
+      "requested_source_seconds": 459.0,
+      "exact_frame_pts": null,
+      "crops": [
+        {
+          "role": "bottom_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0459.00_bottom.jpg",
+          "size": [
+            1170,
+            507
+          ],
+          "bounds": [
+            0,
+            2025,
+            1170,
+            2532
+          ],
+          "dimensions_match_bounds": true
+        },
+        {
+          "role": "top_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0459.00_top.jpg",
+          "size": [
+            1170,
+            750
+          ],
+          "bounds": [
+            0,
+            0,
+            1170,
+            750
+          ],
+          "dimensions_match_bounds": true
+        }
+      ]
+    },
+    {
+      "evidence_id": "e460",
+      "full_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0460.00.jpg",
+      "native_size": [
+        1170,
+        2532
+      ],
+      "matches_native_dimensions": true,
+      "requested_source_seconds": 460.0,
+      "exact_frame_pts": null,
+      "crops": [
+        {
+          "role": "bottom_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0460.00_bottom.jpg",
+          "size": [
+            1170,
+            507
+          ],
+          "bounds": [
+            0,
+            2025,
+            1170,
+            2532
+          ],
+          "dimensions_match_bounds": true,
+          "mean_absolute_pixel_difference": 0.7784,
+          "coordinate_content_check": "JPEG recompression difference; selected crops visually match full frame"
+        },
+        {
+          "role": "top_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0460.00_top.jpg",
+          "size": [
+            1170,
+            750
+          ],
+          "bounds": [
+            0,
+            0,
+            1170,
+            750
+          ],
+          "dimensions_match_bounds": true,
+          "mean_absolute_pixel_difference": 0.8763,
+          "coordinate_content_check": "JPEG recompression difference; selected crops visually match full frame"
+        }
+      ]
+    },
+    {
+      "evidence_id": "e461",
+      "full_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0461.00.jpg",
+      "native_size": [
+        1170,
+        2532
+      ],
+      "matches_native_dimensions": true,
+      "requested_source_seconds": 461.0,
+      "exact_frame_pts": null,
+      "crops": [
+        {
+          "role": "bottom_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0461.00_bottom.jpg",
+          "size": [
+            1170,
+            507
+          ],
+          "bounds": [
+            0,
+            2025,
+            1170,
+            2532
+          ],
+          "dimensions_match_bounds": true,
+          "mean_absolute_pixel_difference": 1.2151,
+          "coordinate_content_check": "JPEG recompression difference; selected crops visually match full frame"
+        },
+        {
+          "role": "top_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0461.00_top.jpg",
+          "size": [
+            1170,
+            750
+          ],
+          "bounds": [
+            0,
+            0,
+            1170,
+            750
+          ],
+          "dimensions_match_bounds": true,
+          "mean_absolute_pixel_difference": 0.8382,
+          "coordinate_content_check": "JPEG recompression difference; selected crops visually match full frame"
+        }
+      ]
+    },
+    {
+      "evidence_id": "e462",
+      "full_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0462.00.jpg",
+      "native_size": [
+        1170,
+        2532
+      ],
+      "matches_native_dimensions": true,
+      "requested_source_seconds": 462.0,
+      "exact_frame_pts": null,
+      "crops": [
+        {
+          "role": "bottom_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0462.00_bottom.jpg",
+          "size": [
+            1170,
+            507
+          ],
+          "bounds": [
+            0,
+            2025,
+            1170,
+            2532
+          ],
+          "dimensions_match_bounds": true,
+          "mean_absolute_pixel_difference": 0.7827,
+          "coordinate_content_check": "JPEG recompression difference; selected crops visually match full frame"
+        },
+        {
+          "role": "top_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0462.00_top.jpg",
+          "size": [
+            1170,
+            750
+          ],
+          "bounds": [
+            0,
+            0,
+            1170,
+            750
+          ],
+          "dimensions_match_bounds": true,
+          "mean_absolute_pixel_difference": 0.5439,
+          "coordinate_content_check": "JPEG recompression difference; selected crops visually match full frame"
+        }
+      ]
+    },
+    {
+      "evidence_id": "e464",
+      "full_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0464.00.jpg",
+      "native_size": [
+        1170,
+        2532
+      ],
+      "matches_native_dimensions": true,
+      "requested_source_seconds": 464.0,
+      "exact_frame_pts": null,
+      "crops": [
+        {
+          "role": "bottom_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0464.00_bottom.jpg",
+          "size": [
+            1170,
+            507
+          ],
+          "bounds": [
+            0,
+            2025,
+            1170,
+            2532
+          ],
+          "dimensions_match_bounds": true
+        },
+        {
+          "role": "top_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0464.00_top.jpg",
+          "size": [
+            1170,
+            750
+          ],
+          "bounds": [
+            0,
+            0,
+            1170,
+            750
+          ],
+          "dimensions_match_bounds": true
+        }
+      ]
+    },
+    {
+      "evidence_id": "e467",
+      "full_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0467.00.jpg",
+      "native_size": [
+        1170,
+        2532
+      ],
+      "matches_native_dimensions": true,
+      "requested_source_seconds": 467.0,
+      "exact_frame_pts": null,
+      "crops": [
+        {
+          "role": "bottom_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0467.00_bottom.jpg",
+          "size": [
+            1170,
+            507
+          ],
+          "bounds": [
+            0,
+            2025,
+            1170,
+            2532
+          ],
+          "dimensions_match_bounds": true,
+          "mean_absolute_pixel_difference": 0.7492,
+          "coordinate_content_check": "JPEG recompression difference; selected crops visually match full frame"
+        },
+        {
+          "role": "top_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0467.00_top.jpg",
+          "size": [
+            1170,
+            750
+          ],
+          "bounds": [
+            0,
+            0,
+            1170,
+            750
+          ],
+          "dimensions_match_bounds": true,
+          "mean_absolute_pixel_difference": 0.7274,
+          "coordinate_content_check": "JPEG recompression difference; selected crops visually match full frame"
+        }
+      ]
+    },
+    {
+      "evidence_id": "e470",
+      "full_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_115323000_iOS_shark_sol\\native\\t0470.00.jpg",
+      "native_size": [
+        1170,
+        2532
+      ],
+      "matches_native_dimensions": true,
+      "requested_source_seconds": 470.0,
+      "exact_frame_pts": null,
+      "crops": [
+        {
+          "role": "bottom_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0470.00_bottom.jpg",
+          "size": [
+            1170,
+            507
+          ],
+          "bounds": [
+            0,
+            2025,
+            1170,
+            2532
+          ],
+          "dimensions_match_bounds": true
+        },
+        {
+          "role": "top_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0470.00_top.jpg",
+          "size": [
+            1170,
+            750
+          ],
+          "bounds": [
+            0,
+            0,
+            1170,
+            750
+          ],
+          "dimensions_match_bounds": true
+        }
+      ]
+    },
+    {
+      "evidence_id": "e478",
+      "full_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_115323000_iOS_shark_sol\\native\\t0478.00.jpg",
+      "native_size": [
+        1170,
+        2532
+      ],
+      "matches_native_dimensions": true,
+      "requested_source_seconds": 478.0,
+      "exact_frame_pts": null,
+      "crops": [
+        {
+          "role": "bottom_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0478.00_bottom.jpg",
+          "size": [
+            1170,
+            507
+          ],
+          "bounds": [
+            0,
+            2025,
+            1170,
+            2532
+          ],
+          "dimensions_match_bounds": true,
+          "mean_absolute_pixel_difference": 0.8294,
+          "coordinate_content_check": "JPEG recompression difference; selected crops visually match full frame"
+        },
+        {
+          "role": "top_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0478.00_top.jpg",
+          "size": [
+            1170,
+            750
+          ],
+          "bounds": [
+            0,
+            0,
+            1170,
+            750
+          ],
+          "dimensions_match_bounds": true,
+          "mean_absolute_pixel_difference": 0.554,
+          "coordinate_content_check": "JPEG recompression difference; selected crops visually match full frame"
+        }
+      ]
+    },
+    {
+      "evidence_id": "e479",
+      "full_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0479.00.jpg",
+      "native_size": [
+        1170,
+        2532
+      ],
+      "matches_native_dimensions": true,
+      "requested_source_seconds": 479.0,
+      "exact_frame_pts": null,
+      "crops": [
+        {
+          "role": "bottom_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0479.00_bottom.jpg",
+          "size": [
+            1170,
+            507
+          ],
+          "bounds": [
+            0,
+            2025,
+            1170,
+            2532
+          ],
+          "dimensions_match_bounds": true
+        },
+        {
+          "role": "top_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0479.00_top.jpg",
+          "size": [
+            1170,
+            750
+          ],
+          "bounds": [
+            0,
+            0,
+            1170,
+            750
+          ],
+          "dimensions_match_bounds": true
+        }
+      ]
+    },
+    {
+      "evidence_id": "e481",
+      "full_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0481.00.jpg",
+      "native_size": [
+        1170,
+        2532
+      ],
+      "matches_native_dimensions": true,
+      "requested_source_seconds": 481.0,
+      "exact_frame_pts": null,
+      "crops": [
+        {
+          "role": "bottom_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0481.00_bottom.jpg",
+          "size": [
+            1170,
+            507
+          ],
+          "bounds": [
+            0,
+            2025,
+            1170,
+            2532
+          ],
+          "dimensions_match_bounds": true
+        },
+        {
+          "role": "top_crop",
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\turn_evidence\\t0481.00_top.jpg",
+          "size": [
+            1170,
+            750
+          ],
+          "bounds": [
+            0,
+            0,
+            1170,
+            750
+          ],
+          "dimensions_match_bounds": true
+        }
+      ]
+    }
+  ],
+  "worker_packet_file_hashes_at_check": {
+    "HAND_SUPPLEMENT.json": "f4dc7d7b6ea083f3445e2fb779a710ddbf18ce4a08cda69d7332ad6b953dbdc5",
+    "TURN_EVIDENCE.json": "24860935763ebaaca7025e46405ad29a53fa486ddd1df3d55ae4c9123198b92c",
+    "SOURCE_REFERENCE.json": "523b1ddfb200385759a789e428f2dbbeb5967b7947001f680b57c41307b1e05c",
+    "REVIEW_SUPPLEMENT.md": "5ef6f2166677dc5c2034aebf42e1c80229a7761905d571e9691657371ffc9902"
+  },
+  "scope_check": {
+    "turns_match": true,
+    "other_hands_opening_boards_outcome": "Not re-reviewed"
+  },
+  "original_reads": 0,
+  "new_frames": 0,
+  "needs_repair": [
+    {
+      "field": "owner_hand_end basis and e478 description",
+      "reason": "478 board zoom covers printed Cyrus name/header. One card and its distinctive artwork are visible, but the printed name is not directly readable.",
+      "required_action": "Label count/artwork as observation and identity continuity from461 as inference; retain479/481 only as after-trigger corroboration. No new source extraction required."
+    }
+  ],
+  "astra_question": null
+}

@@ -1,0 +1,272 @@
+{
+  "schema": "independent-correction-recheck-v1",
+  "checked_utc": "2026-10-06T20:47:32.932054+00:00",
+  "reviewer": "independent_012927 fresh bounded repair recheck",
+  "source_video": "20261005_124532000_iOS.MP4",
+  "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+  "accepted": true,
+  "status": "accepted_R1_R3_repairs",
+  "scope": "Only frozen R1-R3 repair acceptance, incorporating independently confirmed90.2 Astra adjudication; combine with initial bounded full-packet findings for lead completion. No second full source review.",
+  "required_repairs": [],
+  "remaining_repairs": [],
+  "checked_input_sha256": {
+    "SOURCE.json": "c4de73742daeab8880cab0dbf96ac48241d73140e1875b4f75060b86d92a786e",
+    "REVIEW.md": "8895aaf069ba176fd6dbc542f18e976cbb507d7477826a1c49702367479be02f",
+    "COVERAGE.md": "48b32f079c215c53789924ea40999a8dd742d883c5a9a435d1f92676d0e839cd",
+    "SUMMARY.json": "cef8a4b88aa261b8becc22a36394f3ef51355903ae8a7e32c698bfbff94c8d58",
+    "UNCERTAINTIES.json": "81d75e59a9b0aabfecd4301bcf22703c09027ee0123377af6c6703d5620558a9",
+    "PAUSE_GAME.json": "e43a6b16c4b8959c6d4e28afd22d3fa0c6cd8c9821247cb7a2001933261f16f4",
+    "DECK_USED.json": "772b5b99f4f0fc216fa52219b8a7adf128946acad5a7a3633aafa14388486797",
+    "TURN_LEDGER.json": "2902bbff0a7a8cacc3689d1a10dff7a65ffd031c936bb10a9ce9a4362e911613",
+    "TURN_EVIDENCE.json": "3486dffa22d995281fac7a8cf9fb5a7dbfce95ed314dc2f235ad32d0fc41f39b"
+  },
+  "supplemental_checked_input_sha256": {
+    "INDEPENDENT_CORRECTIONS.json": "08957cbc1caa3921e953d26ee94ceefd1bf6b00b5b0c4e31d6e43328e5a50dd3",
+    "ROOT_REPAIR_STRUCTURE_CHECK.json": "0bda0400948f6dbf41cf7ddc4ee999f3dcd0ad197950412dd82bb19a7d87b5c8",
+    "independent_sol/CHECK_RESULT.json": "11657b7496873ca1bfc45374184b7ef8e4036b29402041c7ad9f2d00088c1fdd",
+    "astra_timing/CHECK_RESULT.json": "874025460590984a0cc4c5b96198359edac42d6ac964ad719c03e2c9f799c6e3",
+    "astra_timing/VIEWED_EVIDENCE.json": "53b5f81b49740165a001c0e94250ec4fd8fb089e962c0e5f7fb66e86f869133f",
+    "RECORDING_METADATA.json": "a76904af3aaabe9309f73c22fa64335b3525be5eaaa426a6ec21c81fc4d715d8",
+    "qr_intake/INTAKE_RESULT.json": "4847a696538f0aaa33cc5f0437ac315b95646da0cd72c43db7a15351dbe9d93f",
+    "qr_intake/QR_DECODE_0001.00.json": "9849afd523ae83db43743a52ff00de9915784cfe51e1ea854e8ac318b3b7bb9b",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900"
+  },
+  "original_13_input_hash_checks": {
+    "SOURCE.json": {
+      "path": "original_before_R1_R3/SOURCE.json",
+      "expected_sha256": "c4de73742daeab8880cab0dbf96ac48241d73140e1875b4f75060b86d92a786e",
+      "actual_sha256": "c4de73742daeab8880cab0dbf96ac48241d73140e1875b4f75060b86d92a786e",
+      "matches": true
+    },
+    "REVIEW.md": {
+      "path": "original_before_R1_R3/REVIEW.md",
+      "expected_sha256": "16cb679cef3639bbded7ebf87a94c203a2f38f470a801a48e1024d4387dcc40b",
+      "actual_sha256": "16cb679cef3639bbded7ebf87a94c203a2f38f470a801a48e1024d4387dcc40b",
+      "matches": true
+    },
+    "COVERAGE.md": {
+      "path": "original_before_R1_R3/COVERAGE.md",
+      "expected_sha256": "4d2981a51690a1b3679b88bbc5d5c4c2f44c3f4570feb8289d93429254c640ad",
+      "actual_sha256": "4d2981a51690a1b3679b88bbc5d5c4c2f44c3f4570feb8289d93429254c640ad",
+      "matches": true
+    },
+    "SUMMARY.json": {
+      "path": "original_before_R1_R3/SUMMARY.json",
+      "expected_sha256": "5dc40a38c479e133bd8ed2b9e290fc0dd46f0305731e076ee11f676588a41e2d",
+      "actual_sha256": "5dc40a38c479e133bd8ed2b9e290fc0dd46f0305731e076ee11f676588a41e2d",
+      "matches": true
+    },
+    "UNCERTAINTIES.json": {
+      "path": "original_before_R1_R3/UNCERTAINTIES.json",
+      "expected_sha256": "13223346b41b56fa61d77b504a6b341ddbe3c57230bacd6ba5c94f79c239e7e3",
+      "actual_sha256": "13223346b41b56fa61d77b504a6b341ddbe3c57230bacd6ba5c94f79c239e7e3",
+      "matches": true
+    },
+    "PAUSE_GAME.json": {
+      "path": "original_before_R1_R3/PAUSE_GAME.json",
+      "expected_sha256": "cd3c2629b21eef72759dd17197b2dc81432a19a70ddf0146b2b2c269fd404d17",
+      "actual_sha256": "cd3c2629b21eef72759dd17197b2dc81432a19a70ddf0146b2b2c269fd404d17",
+      "matches": true
+    },
+    "DECK_USED.json": {
+      "path": "original_before_R1_R3/DECK_USED.json",
+      "expected_sha256": "772b5b99f4f0fc216fa52219b8a7adf128946acad5a7a3633aafa14388486797",
+      "actual_sha256": "772b5b99f4f0fc216fa52219b8a7adf128946acad5a7a3633aafa14388486797",
+      "matches": true
+    },
+    "TURN_LEDGER.json": {
+      "path": "original_before_R1_R3/TURN_LEDGER.json",
+      "expected_sha256": "632e2baba7eadc0d57080c4f2c473e565191fbf3e04640e6c01c0f1168709c93",
+      "actual_sha256": "632e2baba7eadc0d57080c4f2c473e565191fbf3e04640e6c01c0f1168709c93",
+      "matches": true
+    },
+    "TURN_EVIDENCE.json": {
+      "path": "original_before_R1_R3/TURN_EVIDENCE.json",
+      "expected_sha256": "ed4625730a47da31a60485e1461dab90adbbfa2ac20f593b219a679269096731",
+      "actual_sha256": "ed4625730a47da31a60485e1461dab90adbbfa2ac20f593b219a679269096731",
+      "matches": true
+    },
+    "RECORDING_METADATA.json": {
+      "path": "original_before_R1_R3/RECORDING_METADATA.json",
+      "expected_sha256": "a76904af3aaabe9309f73c22fa64335b3525be5eaaa426a6ec21c81fc4d715d8",
+      "actual_sha256": "a76904af3aaabe9309f73c22fa64335b3525be5eaaa426a6ec21c81fc4d715d8",
+      "matches": true
+    },
+    "../NEW_DECK_ENTRIES.json": {
+      "path": "original_before_R1_R3/NEW_DECK_ENTRIES.json",
+      "expected_sha256": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+      "actual_sha256": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+      "matches": true
+    },
+    "qr_intake/INTAKE_RESULT.json": {
+      "path": "original_before_R1_R3/INTAKE_RESULT.json",
+      "expected_sha256": "4847a696538f0aaa33cc5f0437ac315b95646da0cd72c43db7a15351dbe9d93f",
+      "actual_sha256": "4847a696538f0aaa33cc5f0437ac315b95646da0cd72c43db7a15351dbe9d93f",
+      "matches": true
+    },
+    "qr_intake/QR_DECODE_0001.00.json": {
+      "path": "original_before_R1_R3/QR_DECODE_0001.00.json",
+      "expected_sha256": "9849afd523ae83db43743a52ff00de9915784cfe51e1ea854e8ac318b3b7bb9b",
+      "actual_sha256": "9849afd523ae83db43743a52ff00de9915784cfe51e1ea854e8ac318b3b7bb9b",
+      "matches": true
+    }
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "accepted": true,
+      "observations": "Native53.2 four readable Barb/Pop/Nidoking/Cyrus,89.2 four Pop/Nidoking/Cyrus/Research,269.7 six including two Nidoking and Nihilego. Corrected descriptions distinguish the turns, preserving separate true T5 continuity limit."
+    },
+    {
+      "id": "R2",
+      "accepted": true,
+      "observations": "Native53.8/54 show intact four during Barb zoom;55 three with attachment animation.89.6 four with Research preview;90 detached Research plus three;exact final_capture90.2 three without Research;91 three. Initial independent90.2 four-card claim is false, retained in history and explicitly corrected. Requested transitions54–55 and89.6–90 appropriately qualify unmeasured PTS/touches."
+    },
+    {
+      "id": "R3",
+      "accepted": true,
+      "observations": "Research292, concealed back entering293, fan5 by294 and unchanged295. Corrected combined292–294 additions have individual times and identities null;295 is settled. Prose/coverage/dependent limits agree."
+    }
+  ],
+  "visual_frame_refs": [
+    {
+      "evidence_id": "f0053p20",
+      "requested_source_seconds": 53.2,
+      "actual_pts_measured": false,
+      "path": "fractions/t0053.20.jpg",
+      "sha256": "b7cf73ec834b07ce840a643aeeb160d007c56e4b0d3192028f7023905331ee58",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "view_method": "Direct native display for selected53.2/89.2/269.7 and disputed53.8/90.2; retained native source-bound sheets for other transition and hidden-fan frames."
+    },
+    {
+      "evidence_id": "f0053p80",
+      "requested_source_seconds": 53.8,
+      "actual_pts_measured": false,
+      "path": "final_capture/t0053.80.jpg",
+      "sha256": "95d15ee06178e3d1ebefe9513199eadd6f189c8dfd9ef47c83d792bafee26a9e",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "view_method": "Direct native display for selected53.2/89.2/269.7 and disputed53.8/90.2; retained native source-bound sheets for other transition and hidden-fan frames."
+    },
+    {
+      "evidence_id": "f0054p00",
+      "requested_source_seconds": 54,
+      "actual_pts_measured": false,
+      "path": "detail/t0054.00.jpg",
+      "sha256": "5dada1ca59fbf23644a963d388da34a2bdcd33fdb902d745b1fc86072fc15786",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "view_method": "Direct native display for selected53.2/89.2/269.7 and disputed53.8/90.2; retained native source-bound sheets for other transition and hidden-fan frames."
+    },
+    {
+      "evidence_id": "f0055p00",
+      "requested_source_seconds": 55,
+      "actual_pts_measured": false,
+      "path": "detail/t0055.00.jpg",
+      "sha256": "76b93098b1256954ad597e8796ffe2f1c6096d4ad7b42402b88060f19e44053a",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "view_method": "Direct native display for selected53.2/89.2/269.7 and disputed53.8/90.2; retained native source-bound sheets for other transition and hidden-fan frames."
+    },
+    {
+      "evidence_id": "f0089p20",
+      "requested_source_seconds": 89.2,
+      "actual_pts_measured": false,
+      "path": "fractions/t0089.20.jpg",
+      "sha256": "16b542c25ea0f1f14ab628390e31a1ff66d985f8a36543f8fc703d622ae6f8a0",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "view_method": "Direct native display for selected53.2/89.2/269.7 and disputed53.8/90.2; retained native source-bound sheets for other transition and hidden-fan frames."
+    },
+    {
+      "evidence_id": "f0089p60",
+      "requested_source_seconds": 89.6,
+      "actual_pts_measured": false,
+      "path": "fractions/t0089.60.jpg",
+      "sha256": "467db9b1c379c558959b391453ab89d2449349e8e122abfe04fb0248cbe9b6c8",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "view_method": "Direct native display for selected53.2/89.2/269.7 and disputed53.8/90.2; retained native source-bound sheets for other transition and hidden-fan frames."
+    },
+    {
+      "evidence_id": "f0090p00",
+      "requested_source_seconds": 90,
+      "actual_pts_measured": false,
+      "path": "detail/t0090.00.jpg",
+      "sha256": "6000abb3127ef3179ee9e938f812ce2640d18ac98d32d879aa994285316443a2",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "view_method": "Direct native display for selected53.2/89.2/269.7 and disputed53.8/90.2; retained native source-bound sheets for other transition and hidden-fan frames."
+    },
+    {
+      "evidence_id": "f0090p20",
+      "requested_source_seconds": 90.2,
+      "actual_pts_measured": false,
+      "path": "final_capture/t0090.20.jpg",
+      "sha256": "31015fe69b196568328be0f3362e0dc97231abdf2a0b7809abcbb24ad26e623d",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "view_method": "Direct native display for selected53.2/89.2/269.7 and disputed53.8/90.2; retained native source-bound sheets for other transition and hidden-fan frames."
+    },
+    {
+      "evidence_id": "f0091p00",
+      "requested_source_seconds": 91,
+      "actual_pts_measured": false,
+      "path": "detail/t0091.00.jpg",
+      "sha256": "ac42708e8bdf16085d478d4ee1884925820d746ebd4934b6a339c6b5eba3b784",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "view_method": "Direct native display for selected53.2/89.2/269.7 and disputed53.8/90.2; retained native source-bound sheets for other transition and hidden-fan frames."
+    },
+    {
+      "evidence_id": "f0269p70",
+      "requested_source_seconds": 269.7,
+      "actual_pts_measured": false,
+      "path": "fractions/t0269.70.jpg",
+      "sha256": "ae185ce8fb46b53e19321f0f62734ca28984eeeb4ab3eaf74e9e4b169c8ebc43",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "view_method": "Direct native display for selected53.2/89.2/269.7 and disputed53.8/90.2; retained native source-bound sheets for other transition and hidden-fan frames."
+    },
+    {
+      "evidence_id": "f0292p00",
+      "requested_source_seconds": 292,
+      "actual_pts_measured": false,
+      "path": "detail/t0292.00.jpg",
+      "sha256": "b316ad5dc29bed9822851652344e7097fb5a84b82d269609ebaa3d53550d6cbe",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "view_method": "Direct native display for selected53.2/89.2/269.7 and disputed53.8/90.2; retained native source-bound sheets for other transition and hidden-fan frames."
+    },
+    {
+      "evidence_id": "f0293p00",
+      "requested_source_seconds": 293,
+      "actual_pts_measured": false,
+      "path": "detail/t0293.00.jpg",
+      "sha256": "b0ce333d2f935bf2f4ef199572e1210b3a04b5e201710afbadafa95352953646",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "view_method": "Direct native display for selected53.2/89.2/269.7 and disputed53.8/90.2; retained native source-bound sheets for other transition and hidden-fan frames."
+    },
+    {
+      "evidence_id": "f0294p00",
+      "requested_source_seconds": 294,
+      "actual_pts_measured": false,
+      "path": "detail/t0294.00.jpg",
+      "sha256": "0ef9c249d60664e653358da539f393697e0dcae4e47898bcb75dc3fdd695446d",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "view_method": "Direct native display for selected53.2/89.2/269.7 and disputed53.8/90.2; retained native source-bound sheets for other transition and hidden-fan frames."
+    },
+    {
+      "evidence_id": "f0295p00",
+      "requested_source_seconds": 295,
+      "actual_pts_measured": false,
+      "path": "detail/t0295.00.jpg",
+      "sha256": "36c8a3b6423cd1d857f30be09982b5739257a763b749157f0dcd333b62a9e194",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "view_method": "Direct native display for selected53.2/89.2/269.7 and disputed53.8/90.2; retained native source-bound sheets for other transition and hidden-fan frames."
+    }
+  ],
+  "structural_checks": {
+    "rechecked_native_frames": 14,
+    "rechecked_native_plus_crops": 42,
+    "source_bindings_and_dimensions_pass": true,
+    "prior_all251_native_and_crops_structural_check_preserved": true,
+    "source_media_rehashed": false,
+    "new_source_extraction": false,
+    "all13_original_inputs_match": true
+  },
+  "limits": [
+    "Exact decoded PTS and physical touch telemetry remain unmeasured.",
+    "This accepts the requested repaired findings; root retains sole lead/source-completion, external save, registration and archival authority."
+  ]
+}

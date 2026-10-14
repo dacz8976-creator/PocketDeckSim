@@ -1,0 +1,76 @@
+{
+  "source_sha256": "85f9e3803543f512323259794b7166808e5bfd2ff5a3854d8ce1a40686075180",
+  "accepted": false,
+  "status": "repair_recheck_one_dependent_reference_remaining",
+  "required_repairs": [
+    {
+      "id": "R3_dependent_automatic_reference",
+      "file": "TURN_LEDGER.json",
+      "json_paths": [
+        "$.turns[10].automatic_events_in_order[2].evidence_ids"
+      ],
+      "timestamps_seconds": [
+        261,
+        262,
+        263,
+        264,
+        266
+      ],
+      "issue": "Remaining automatic promotion event still cites only f0261_00. Native261 is empty Active with Melmetal on Bench, preceding promotion; it cannot alone support the named completed promotion. Repaired voluntary promotion and board_after266 are correct.",
+      "required_change": "Replace or supplement sole pre-action261 with observed promotion animation262, reveal263, placed264 and/or settled266, qualifying261 only as pre-action bound. No new source extraction needed."
+    }
+  ],
+  "remaining_repairs": [
+    {
+      "id": "R3_dependent_automatic_reference",
+      "file": "TURN_LEDGER.json",
+      "json_paths": [
+        "$.turns[10].automatic_events_in_order[2].evidence_ids"
+      ],
+      "timestamps_seconds": [
+        261,
+        262,
+        263,
+        264,
+        266
+      ],
+      "issue": "Remaining automatic promotion event still cites only f0261_00. Native261 is empty Active with Melmetal on Bench, preceding promotion; it cannot alone support the named completed promotion. Repaired voluntary promotion and board_after266 are correct.",
+      "required_change": "Replace or supplement sole pre-action261 with observed promotion animation262, reveal263, placed264 and/or settled266, qualifying261 only as pre-action bound. No new source extraction needed."
+    }
+  ],
+  "checked_input_sha256": {
+    "SOURCE.json": "891a7a104aa72078472f090fb48a2648a37b4febb51be948116aca9cc3c2c0e7",
+    "REVIEW.md": "04e7c57d5f3ffc07ed56a3198db948162996f6dc396153858df4e3af6deae7a4",
+    "COVERAGE.md": "2493d9debc43a68d4b93d17adeada9878ddb2b17575a2d777abb6dc99ff7bac1",
+    "SUMMARY.json": "28ff37161301afbd3cee59260822714f31702ecae083b7797c8a0cc907464212",
+    "UNCERTAINTIES.json": "702bac515c45f9214dc2324514a6bc531e6dc6fa19452f23fff024cec29d9450",
+    "PAUSE_GAME.json": "4b020c79f1fbd8dac3c61ff566cfa441da6508dd154ca8ddb8783c9ec2fd8a1b",
+    "DECK_USED.json": "61b347b31eda9ce011faec763288dd12702a208ef14acc1b25015ff58503278f",
+    "TURN_LEDGER.json": "882db5b063fa7ce9aef5068cb2960a056a4b0fe8bb20e45f3e0b4900d8b465fa",
+    "TURN_EVIDENCE.json": "1012fba68c6ebec51f158c5bd4b759e1f8206c740b848c4ceb7b3a00c1b8252e",
+    "RECORDING_METADATA.json": "b7466a712b2c595306841d00cd34b034f967027a3fc107efdbcb354aff7cd68f",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+    "INDEPENDENT_CORRECTIONS.json": "8ad88cfd8888aeb939b13d728463b7b3ecca4b2a407c1ea26401142425a4b202",
+    "qr_intake/QR_DECODE_0005.00.json": "a49a4f1c8e9039c501b4ef45950c7c68f39ff68a41a97f43c5979a4d7c68c033"
+  },
+  "initial_rejected_report_sha256": "eaddcce7dfa6e867fc4975d312aba362e145d7cb3117f43c610f070295e93099",
+  "original_rejected_report_preserved": true,
+  "original_input_backup_hashes_verified": true,
+  "rechecked_repairs": [
+    "R1 five selected Energy states now explicitly empty or generation unknown; later Metal remains separate, intact hand selections retained.",
+    "R2 Fraxure99 then Research102/hidden fan104 then Metal108/resolved109 and linked order2 match.",
+    "R3 attach87-88, promotion261 pre/262animation/263face/264placed are corrected. Settled266 both boards match HP170/Metal3/Steel Apron/Doublade left, opponent Haxorus50 Active/three Bench; next Current12 at265 qualified before normal draw267."
+  ],
+  "new_frame_structural_check": {
+    "f0266_00_source_binding_matches": true,
+    "native_and_crops_decode_bounds_pass": true,
+    "crop_max_mae": 0.9021634439780396,
+    "asset_sha256": {
+      "turn_evidence\\t0266.00.jpg": "33902adbe97fb2b278ea6764f8c7347c0de9b2de9b5c146f2583563f3e4f4d36",
+      "turn_evidence\\t0266.00_bottom.jpg": "b054f36c199ee5df54cc5d8ceb59612af763afe6a00d56bbb614a197fd4813a8",
+      "turn_evidence\\t0266.00_top.jpg": "5bd42c9fd5b2fd081b438cc555a66780683c658e9ca9a39346de49614599f5a5"
+    }
+  },
+  "scope": "Tiny repair-only recheck; no expanded full source review, source media rehash or extraction.",
+  "checked_at_utc": "2026-10-06T20:13:55.376464+00:00"
+}

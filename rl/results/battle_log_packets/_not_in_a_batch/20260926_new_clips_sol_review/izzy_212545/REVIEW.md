@@ -1,0 +1,21 @@
+# Visual battle transcript: izzy
+
+Reviewer: delegated Sol visual-review worker, 2026-09-26. Source identity is in [SOURCE.json](SOURCE.json). Timestamps are elapsed video time. This file shows matchmaking through a terminal Victory screen. The AAC track is effectively silent (mean and maximum -91.0 dB by FFmpeg); there is no spoken narration.
+
+| Time | Visible event |
+| --- | --- |
+| 00:00-00:35 | The game displays **Opponent found**, with profile `izzy` (level 56), then setup. Dacz8976 sets Deino (60) Active. Starting hand visibly contains Hydreigon, Deceptive Needle, Rare Candy, and Piers. izzy sets Charmander (60) Active and Entei ex (140) on the Bench. Both scores are zero. [Matchmaking frame](../evidence/c_0s.jpg); source 00:10-00:35. |
+| 00:35-01:00 | Dacz8976 plays Professor's Research and draws two cards. Deceptive Needle is attached to Deino; a Dark Energy is also visible on it. The tool's end-turn effect takes Charmander from 60 to 50. izzy plays Poké Ball and then develops the Bench. Source 00:35-01:00. |
+| 01:00-01:40 | izzy's Bench becomes Houndour (60), a second Charmander (60), and Entei ex (140). Active Charmander uses **Combustion** for 20 against Deino, leaving Deino at 40. No points have been taken. [Midgame board](../evidence/c_80s.jpg); source 01:00-01:40. |
+| 01:40-02:25 | Dacz8976 benches two Galarian Zigzagoon (70 each), then uses Rare Candy to evolve the damaged Active Deino into Hydreigon (150 maximum, 130 remaining). **Roar in Unison** attaches two Dark Energy and deals 30 self-damage, leaving Hydreigon at 100. **Hyper Ray** deals 130 to Charmander and knocks it out. The first point goes to Dacz8976. [Evolution period](../evidence/c_140s.jpg); [post-knockout board](../evidence/c_160s.jpg); source 01:40-02:45. |
+| 02:25-03:40 | izzy promotes Entei ex. Deceptive Needle chips it from 140 to 130 at an end-turn boundary. The opponent attaches Fire Energy while the board waits through a long turn; Hydreigon remains Active at 100. izzy eventually brings Houndour (60) Active, with Entei ex and Charmander on the Bench. Source 02:25-03:40. |
+| 03:40-04:00 | Dacz8976 uses Roar in Unison again, taking Hydreigon from 100 to 70 and reaching three Dark Energy, then uses Hyper Ray (130) to knock out Houndour. Dacz8976 gains the second point. [Attack/score transition](../evidence/c_230s.jpg), [second point](../evidence/c_240s.jpg); source 03:40-04:00. |
+| 04:00-04:25 | Entei ex returns Active at 120 remaining HP after another visible 10-damage Deceptive Needle tick. izzy evolves the benched Charmander into Charmeleon (80), shows its **Ignition** ability, and attacks with Entei ex's **Blazing Beatdown** for 60. Hydreigon falls from 70 to 10; neither player takes a point. Source 04:00-04:25. |
+| 04:25-04:44 | On Dacz8976's turn 7, Lillie heals Hydreigon by 60, from 10 to 70. Roar in Unison attaches two Dark Energy and deals 30 self-damage, leaving 40. The tool-equipped Hydreigon can attack again. [Late-game board](../evidence/c_270s.jpg); source 04:25-04:44. |
+| 04:44-04:56 | Hydreigon uses Hyper Ray for 130 against Entei ex at 120, knocking it out. The game displays **+2 points**, filling Dacz8976's score from two to three, then **Victory**. This is the terminal sequence; the remaining seconds are result animation. [Point frame](../evidence/c_291s.jpg), [Victory frame](../evidence/c_295s.jpg); source 04:44-05:00.95. |
+
+## Decisions and limits
+
+Deceptive Needle's two visible 10-damage ticks reduce Entei ex from 140 to 120. That made Hydreigon's 130-damage Hyper Ray sufficient for the final knockout. Lillie and Roar in Unison together leave Hydreigon at 40 before that attack; the HP transitions are visible and reconcile with the displayed 60 heal and 30 self-damage. These are observations of this match, not a broader claim that a line was optimal.
+
+No Auto indicator or definitive Solo/PvP label is established from the saved frames. The opponent profile and matchmaking screen identify the displayed opponent but do not independently prove whether the opponent was human. Hidden hand/deck contents, unrevealed cards, and earlier deck choices remain unknown. No material contradictory HP or score transition remains in the reviewed footage.

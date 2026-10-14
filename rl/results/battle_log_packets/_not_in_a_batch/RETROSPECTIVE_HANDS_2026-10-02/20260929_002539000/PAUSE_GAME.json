@@ -1,0 +1,124 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260929_002539000",
+  "review_date": "2026-10-02T23:14:34.059723+00:00",
+  "sources": [
+    {
+      "video_basename": "20260929_002539000_iOS.MP4",
+      "sha256": "a951746c8a5226b0f575405e985c72cc3af249da0a757e0712b621d82b85aa06",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "destination": null,
+  "deck_name": "Entei ex visible core; historical exact deck name unknown",
+  "opening": {
+    "source_video": "20260929_002539000_iOS.MP4",
+    "timestamp_seconds": 22,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Copycat",
+        "variant": null,
+        "basis": "Native visible hand/reveal plus reconciled source transactions",
+        "evidence_ids": [
+          "F0022.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Entei ex",
+        "variant": "standard art",
+        "basis": "Native visible hand/reveal plus reconciled source transactions",
+        "evidence_ids": [
+          "F0022.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Giant Cape",
+        "variant": null,
+        "basis": "Native visible hand/reveal plus reconciled source transactions",
+        "evidence_ids": [
+          "F0022.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Flame Patch",
+        "variant": null,
+        "basis": "Native visible hand/reveal plus reconciled source transactions",
+        "evidence_ids": [
+          "F0022.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Professor's Research",
+        "variant": "regular Professor Oak art",
+        "basis": "Native visible hand/reveal plus reconciled source transactions",
+        "evidence_ids": [
+          "F0022.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Entei ex",
+      "opening_position": 2,
+      "source_video": "20260929_002539000_iOS.MP4",
+      "timestamp_seconds": null,
+      "evidence_ids": [
+        "F0022.00",
+        "R0033.00"
+      ]
+    },
+    "redraw_or_replacement": "None located in setupscan; retainednativefivecardopeningbeforeplacement",
+    "before_active_placement": true,
+    "status": "complete",
+    "evidence_ids": [
+      "F0022.00",
+      "R0033.00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW_SUPPLEMENT.md",
+    "coverage": "COVERAGE.json",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json",
+    "hands": "HAND_SUPPLEMENT.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "capture_status_allowed_after_review": [
+    "complete",
+    "complete_with_recording_limits",
+    "incomplete_review"
+  ],
+  "battle_review_status": "Reviewed inherited; supplement source workcomplete, independent acceptancepending",
+  "outcome": {
+    "result": "win",
+    "reason": "opponent concession",
+    "points_owner": 2,
+    "points_opponent": 2,
+    "provenance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_002539000_iOS_sol\\REVIEW.md",
+    "evidence_ids": [
+      "R0414.00",
+      "R0418.00"
+    ]
+  },
+  "limits": [
+    "No exact historical20carddeck snapshot. Hidden opponent draws/Communication exchanges remain unknown. Entire419nominal1 fpssamples screened, not every instant. Oldnative actual PTS unavailable; new PTS measured."
+  ],
+  "lead_checked": false,
+  "classification": "ladder_presumed",
+  "excluded_from_ladder": false,
+  "classification_basis": "Matchmaking and both Master Ball Rank intro; no visible Auto option in inspectedunoccluded native controls. Absence is bounded to inspectedviews, not every instant."
+}

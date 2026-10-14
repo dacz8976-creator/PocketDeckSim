@@ -1,0 +1,319 @@
+{
+  "schema": "bounded_independent_sol_acceptance_v1",
+  "reviewer": "/root/check_015821",
+  "model": "gpt-6.1-sol inherited",
+  "reviewed_utc": "2026-10-10T04:40:51.599237+00:00",
+  "source_video": "20261010_015821000_iOS.MP4",
+  "source_sha256": "8d64e896d3125e504b7186754cbf2c21c0b5fcbc61f65524f6de27a2effd2a38",
+  "source_bytes": 462087569,
+  "source_identity_verification": "Independent PowerShell Get-FileHash SHA256 matched SOURCE.json; 462087569 bytes",
+  "accepted": true,
+  "status": "accepted_with_recording_limits",
+  "blocking_findings": [],
+  "blocking_repairs": [],
+  "blockers": [],
+  "accepted_input_sha256": {
+    "REVIEW.md": "e4a759ce830dd4b31e778fe9b856b94394414bc65c444cb8e694315284b23a6c",
+    "COVERAGE.md": "0bc7d2cca0397ea8db1cdfc1672b68df37174fa13a1c016b14812942b2a50bfd",
+    "SUMMARY.json": "6a7f67bf8871b7cef5cbd5948904b4ce99dbe868621515965427787972f206a5",
+    "UNCERTAINTIES.json": "fa0f4c3580a5180280c2c419b871dd1fcb7c6310ed27896376d93b741ce35287",
+    "PAUSE_GAME.json": "6d653016175b01d083658489d2f3c7fe41a066e1abcd0b65f46cb9c784391261",
+    "DECK_USED.json": "58c1db12a1931419732d5cd101cb2bb99cc49611ab8321a13bd86311f510df93",
+    "TURN_LEDGER.json": "7effd28ee7f3080a314de0c79092751797486e185e0577b867cc1ce4d94d9744",
+    "TURN_EVIDENCE.json": "37f526f782859a63d72dcd648798cd0bf2ff6045b214c37fd2bef778d2611b7d"
+  },
+  "checked_input_sha256": {
+    "REVIEW.md": "e4a759ce830dd4b31e778fe9b856b94394414bc65c444cb8e694315284b23a6c",
+    "COVERAGE.md": "0bc7d2cca0397ea8db1cdfc1672b68df37174fa13a1c016b14812942b2a50bfd",
+    "SUMMARY.json": "6a7f67bf8871b7cef5cbd5948904b4ce99dbe868621515965427787972f206a5",
+    "UNCERTAINTIES.json": "fa0f4c3580a5180280c2c419b871dd1fcb7c6310ed27896376d93b741ce35287",
+    "PAUSE_GAME.json": "6d653016175b01d083658489d2f3c7fe41a066e1abcd0b65f46cb9c784391261",
+    "DECK_USED.json": "58c1db12a1931419732d5cd101cb2bb99cc49611ab8321a13bd86311f510df93",
+    "TURN_LEDGER.json": "7effd28ee7f3080a314de0c79092751797486e185e0577b867cc1ce4d94d9744",
+    "TURN_EVIDENCE.json": "37f526f782859a63d72dcd648798cd0bf2ff6045b214c37fd2bef778d2611b7d"
+  },
+  "source_json_sha256": "451e9709da7c49af6184d8fc8b31f4fe69a447b4274e52ddab7df7d08813c736",
+  "scope": "Fresh bounded independent acceptance of completed end-to-end reviewer packet. Not a second full frame-by-frame review. Opening, ordinary first moves, consequential draws/searches, board/energy/fans and terminal result checked against native evidence; all 8 inputs structurally reconciled.",
+  "checks": {
+    "opening": "Five original slots confirmed before Active; Koffing is Active in turn1 native board",
+    "first_actions": "T1 Research; T3 Horsea lifted in six-card fan93.3 then placement94; T5 Poké Ball missing from hand197 after full four-card hand196, Horsea reveal200 precedes Candy204",
+    "t3_hand": "139 is clear two-card hand before attachment/attack;140 and141 corroborate same two-card hand and one Water before Hook.148 names Hiking Trail Kingdra draw;162 has Candy/Shore/Kingdra, three cards after end effects. Pre-attack and resolved ending counts are distinct.",
+    "draws_searches": "Research Sabrina47 then Hiking Trail48; Hiking Trail Kingdra148; Poké Ball Horsea200; owner normal draws reconcile filmed start hands and ledger. No Copycat or guessed opponent identities.",
+    "opponent_fans": "Direct native top crops show4 at42.5,6 at93.3,5 at196; transaction inference remains separately labeled",
+    "board_energy": "Native ordinary opponent turn2 shows Water on Frigibax82, Suicune promotion84, no attached Energy on either at89. Native owner turns3 and5 reconcile Water counts, Balloon inheritance,140HP Weezing, caped160HP Suicune,90damage to70 and cannot-retreat effect226; opponent current/next Water visible at concession242. All12 start/end boards contain both sides and typed Energy Zones.",
+    "outcome": "242 Your opponent conceded;253 Victory vs よこっぴ, went first,6turns,1–0,120damage. Event mode visible3; no Auto observed in checked native states.",
+    "deck": "saved native decode payload independently reconciled with live snapshot and exact20; decoder unavailable for repeat decode",
+    "structure": "6 unique chronological turns; sequential actions; 177 native1170x2532 frames and corresponding crop paths/dimensions validated; all evidence refs and source bindings resolve"
+  },
+  "recording_limits": [
+    "Hidden opponent cards stay hidden",
+    "No full discard-pile viewer shown; periodic requested snapshots explicitly unavailable",
+    "Estimated seek timestamps are not actual measured PTS",
+    "Artwork/rarity not established from semantic QR",
+    "Burn coin face and Tool name glare retained as limits"
+  ],
+  "repairs_made": [],
+  "viewed_evidence": [
+    {
+      "path": "turn_evidence/t0026.50.jpg",
+      "sha256": "f0dd0757c7a6b94eb6f8c8e7f18e320bab7187e57c3c2484426fd32eb4faf5f9",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0042.50.jpg",
+      "sha256": "b10412eade9e3b2e56e639403531f87da23f4df5fcdf139c6a2c82c1a942609e",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0093.30.jpg",
+      "sha256": "0ad21c1044b80755b9a9680829bbfd694b1f7c3ebc68b4abc4c38e07e6ce498d",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0094.00.jpg",
+      "sha256": "d7b85d39df21060213ec51dec5801999233ead7b0c3b9d0599417d832a4fc212",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0139.00.jpg",
+      "sha256": "1720cf290861390de48635d565b9b3fdd4fd9fe2c0c027205a783ee72847057d",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0162.00.jpg",
+      "sha256": "ec72f2b4919dea1b4d16d2b399b1342767ef502275d6ff682edba922023b9213",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0047.00.jpg",
+      "sha256": "018f1de2a7dcae0f2cd38381dcf45e3704d2d8cd5b5358f7eb139ff112e02019",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0048.00.jpg",
+      "sha256": "5b9c4951d3c7c5d0301c9c5b44c03122e123a9551ad72d9fcceccff6ac9d99a5",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0148.00.jpg",
+      "sha256": "9d0a5725f7e438fd9b4a773f587fc27473cae1e754f7c36a6a424049660c6fe8",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0196.00.jpg",
+      "sha256": "6bfe50af7a4e6ea2c3ee8daf7b2ced7914a8164c707e1351e5ea8da55ce4ff5e",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0197.00.jpg",
+      "sha256": "5355822596361f43b49cd2a00c6bb5a7f4067e7409a2131c5e0006e2f4d6fbe2",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0200.00.jpg",
+      "sha256": "5e8e1b852b5ea0854085acba391cde42e4021a148ea91e6c9c1ae8e3f246fc70",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0204.00.jpg",
+      "sha256": "107451fb19e64ee503f0645b5f5b4ffd7620a3186a8e318bb212fbd6e62ac4f2",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0003.00.jpg",
+      "sha256": "f8e1c0b47a1c5dae43892444e2ea061a8b90decb32643c52c17c13c9d48182a9",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0084.00.jpg",
+      "sha256": "74ea09d3570c37f132cd8c4859d3ea089f2aa3914711d56832fd02bcc2b4bb54",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0220.00.jpg",
+      "sha256": "2d78b67ab7a6a84bd63a12e17849ef22260df68d9b273b2ec3ba5734f230bda9",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0226.00.jpg",
+      "sha256": "b1fb17ae047332267a886aa72afb8acb4a07721aa073aeb2a4beb1b7edaa6a0a",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0236.00.jpg",
+      "sha256": "d3c118f40831df0b02fa53ddbc63e328e50aa39fb9d1f34b88803c3feb6bd504",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0242.00.jpg",
+      "sha256": "61cd8accf90e5006598a79c597a2234ea5b4b9c0789ceee96b5dfe974eac41ac",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0253.00.jpg",
+      "sha256": "409ce98a0c53a52f9b9cb5821f0edf57af9c78d2a6e6267b3c8f1e3c422f5470",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/crops/F0026_50_bottom.png",
+      "sha256": "ae57325af5d310c4f1f0547470d34ad523b5ec52051d5745d0d21f92139853ef",
+      "native_dimensions": [
+        1170,
+        507
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/crops/F0093_30_top.png",
+      "sha256": "748f7d04cbadc3f998a83d24a9810c36ef731a25835c6356a8ada9ac7827b2df",
+      "native_dimensions": [
+        1170,
+        720
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/crops/F0196_00_top.png",
+      "sha256": "8171ea1db26a5cf06760136f74b9ef4ee3dd5f843f501a92fcafdca5e6405f2c",
+      "native_dimensions": [
+        1170,
+        720
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0043.00.jpg",
+      "sha256": "1c869e7c45a1c317025e417092e6b8d491b63fbd5609d39007b5101b5feb3a18",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0140.00.jpg",
+      "sha256": "d1cc3a6085d74701529f3420498e82ea56ebe139105ecfae46f1fa09d322a2f4",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0141.00.jpg",
+      "sha256": "42e29723c42b06e033cfdf859c8fc82af9a77d2284b1ebbb6028bba9945d4121",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0082.00.jpg",
+      "sha256": "47a0d29f64091e77e6bb92564d3579f85aafac28fff1271bdefc513a02ee415e",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/t0089.00.jpg",
+      "sha256": "966953a5cdbea5f5c698d56e1a647ece8f85ec96130e62f253240181a5953439",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    },
+    {
+      "path": "turn_evidence/crops/F0042_50_top.png",
+      "sha256": "78262edc721451ee69a426ef95cc8c29751edb677ecd83e7b8921f4e1f0fa19d",
+      "native_dimensions": [
+        1170,
+        720
+      ],
+      "inspection": "Directly viewed via native view_image in this independent checker session"
+    }
+  ]
+}

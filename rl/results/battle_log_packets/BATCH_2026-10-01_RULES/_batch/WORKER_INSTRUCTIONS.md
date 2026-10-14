@@ -1,0 +1,15 @@
+# October 1 rules-test review
+
+Read START_HERE_VIDEO_REVIEW.md, Review_Log/README.md and C:/Users/dacz8/Projects/Pocket Deck Lab/AGENTS.md. The owner explicitly requested these newly uploaded videos as rules tests, excluded from Ladder Log. Use the established fresh Sol workflow. SOURCE.json and shared in_progress registration already exist. Do not delegate further.
+
+Write only inside your assigned packet. Preserve the original and SOURCE.json. Do not edit shared records, accept your own packet, register completion or move media. Root performs independent checks and integration.
+
+Python: C:/Users/dacz8/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe. Media tools: C:/Program Files/MiniTool Screen Recorder/FFmpeg/. Recording_QA/extract_auto_review.py supports overview and native timestamp frames. Use at most two decode threads, reusable overview sheets and targeted dense frames. Regular overview labels are approximate fps sampling midpoints; exact native frames establish consequential timestamps.
+
+Review the entire supplied recording. Determine whether it contains one full battle, several battles, or an intentionally short rules probe. Cover every supplied match and meaningful phase, identify all clip boundaries, and reconcile development, attachments, Trainers/Tools/Stadiums, abilities, attacks, coin outcomes, conditions, healing, knockouts and points where visible. Test intent governs interpretation: do not grade intentional probes as attempts to maximize wins. Inspect Auto status and changes rather than inferring manual choices or opponent mode. Preserve hidden cards and unreadable versions as unknown.
+
+Write REVIEW.md, COVERAGE.md, SUMMARY.json and UNCERTAINTIES.json. Use plain language and no em dashes in saved prose. Attribution: gpt-6.1-sol/high. Standard status text: 'Finished first pass awaiting independent lead acceptance.' Explain precisely what each interaction establishes, what remains untested, and observation versus inference. Read relevant printed card text in native frames; use primary authoritative evidence if a material external rule is needed. No simulator edits or new training data.
+
+SUMMARY.json must include recording_type, complete_available_footage_review, battle_complete, proposed_completion_status (full_battle_review_complete for an entire battle or rule_test_review_complete for a complete intentional short rules probe), outcomes, key_findings and independent_check_times. Do not call an ordinary truncated battle complete. UNCERTAINTIES.json must explicitly separate remaining coverage gaps from honestly unknown hidden information. Results damage may include overkill; score circles stop at three while awarded points may exceed three. Inspect settled Energy counts after animations, and distinguish cards inspected or drawn from cards played.
+
+Return compact findings, scope and limitations, exact before/after frames for each consequential test, opening, at least one ordinary phase, and ending. Root receives a compact handoff and performs bounded independent source checks.

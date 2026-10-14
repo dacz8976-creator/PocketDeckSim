@@ -1,0 +1,30 @@
+{
+  "worker_pass": true,
+  "checks": {
+    "contiguous_turn_rows": true,
+    "five_opening_cards": true,
+    "each_owner_has_offsets": true,
+    "each_owner_selected_preplay": true,
+    "all_plays_numbered": true,
+    "no_live_save_claim": true,
+    "source_exact20": true,
+    "retreat_payment_typed": true,
+    "terapagos_bench_zero_after_retreat": true,
+    "terminal_active_removed": true,
+    "whole_source_end": true
+  },
+  "turn_rows": 11,
+  "native_frames": 385,
+  "independent_acceptance": false,
+  "limits": "Worker reconciliation and structural gates do not substitute for independent acceptance.",
+  "post_handoff_corrections": {
+    "structural_pass": true,
+    "input_and_reveal_phases_separated": true,
+    "game2_first_consumption_interval": [
+      656,
+      657
+    ],
+    "last_readable_game1_board_seconds": 393.5,
+    "first_empty_owner_active_seconds": 393
+  }
+}

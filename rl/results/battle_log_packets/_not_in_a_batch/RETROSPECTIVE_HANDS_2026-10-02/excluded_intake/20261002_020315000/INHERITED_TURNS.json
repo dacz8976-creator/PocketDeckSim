@@ -1,0 +1,80 @@
+{
+  "source": "20261002_020315000_iOS.MP4",
+  "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_020315000_iOS_competitive_sol\\REVIEW.md",
+  "accepted_review_sha256": "9195ef44c083636d9b477b23e23c00c920cf13038d82c6f3ad298372c26896f4",
+  "rows": [
+    {
+      "turn_number": 1,
+      "accepted_source_line": 26,
+      "verbatim_accepted_row": "| 0:37 to 0:42 | Turn 1, opponent | Draw/pass sequence, no visible board change, attachment, Trainer or attack. Both Active Pokemon remain at full HP. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 2,
+      "accepted_source_line": 27,
+      "verbatim_accepted_row": "| 0:43 to 1:04 | Turn 2, owner | Draws Heavy Helmet and attaches it to Active Wailmer. Poke Ball searches another Wailmer, which is benched along with Indeedee ex. Attaches one Water to Active Wailmer, then ends without attack. Heavy Helmet's -20 attack-damage reduction appears on screen. Owner board: Wailmer100 Active/one Water/Helmet; Wailmer100 and Indeedee ex130 Bench. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 3,
+      "accepted_source_line": 28,
+      "verbatim_accepted_row": "| 1:05 to 1:06 | Turn boundary | Opponent's turn, Current turn 3 shown. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 3,
+      "accepted_source_line": 29,
+      "verbatim_accepted_row": "| 1:07 to 1:46 | Turn 3, opponent | Rare Candy evolves opening Frigibax directly into Baxcalibur140 (native/t0076.50.jpg). Copycat is played, shown atop the discard by native/t0084.00.jpg. Poke Ball is used, followed by benched Palkia ex150. Water attaches to Feebas. Feebas uses Splash10 around1:43; Helmet prevents HP loss and Wailmer remains100. Score0 to0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 4,
+      "accepted_source_line": 30,
+      "verbatim_accepted_row": "| 1:46 to 1:55 | Turn 4, owner | Draws Pokemon Center Lady, attaches second Water to Active Wailmer, and ends without attacking. Wailmer is still100HP. Irida and healing items remain in hand. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 5,
+      "accepted_source_line": 31,
+      "verbatim_accepted_row": "| 1:55 to 2:27 | Turn 5, opponent | Benches second Frigibax60. Plays another Copycat around2:01; after the animation the discard shows Copycat and hand count is rebuilt. Normal attachment raises Palkia ex to two Water (native/t0133.50.jpg includes the attaching animation). Baxcalibur's Ice Maker appears at2:16.5 (native/t0136.50.jpg), with Feebas increasing from one to two Water by2:19.5. Splash10 again resolves for zero damage at2:25.5; Wailmer remains100. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 6,
+      "accepted_source_line": 32,
+      "verbatim_accepted_row": "| 2:28 to 2:47 | Turn 6, owner | Draws and benches second Indeedee ex130. Attaches third Water to Active Wailmer. Wave Splash60 hits Feebas30 (native/t0160.50.jpg). Feebas is knocked out, owner receives one point by2:46.5. Score1 to0. Owner's two Indeedee ex have no attached Energy. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 7,
+      "accepted_source_line": 34,
+      "verbatim_accepted_row": "| 2:58 to 3:28 | Turn 7, opponent | Benches second Feebas30. Normal Water attachment plus Baxcalibur Ice Maker raise Palkia from two to four Water during3:06 to3:10. Plays Soothing Shore around3:13. Palkia uses Dimensional Storm at3:19.5 (native/t0199.50.jpg): Active Wailmer100 is knocked out despite Helmet, and each of the three Bench Pokemon takes20. At native/t0202.50.jpg, reserve Wailmer is80HP and both Indeedee ex are110HP. Palkia discards three Water, leaving one. Opponent receives one point by3:25.5. Score1 to1. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 8,
+      "accepted_source_line": 36,
+      "verbatim_accepted_row": "| 3:31 to 3:54 | Turn 8, owner | Draws non-ex Wailord. Indeedee ex Watch Over heals Active Wailmer80 to100 at3:37.5 (native/t0217.50.jpg). Evolves that healed Wailmer into Wailord200 by3:43.5 (native/t0223.50.jpg). Attaches first Water. End Turn warning says a Supporter can be used; owner confirms ending. No attack. Both Indeedee ex remain110 on Bench. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 9,
+      "accepted_source_line": 37,
+      "verbatim_accepted_row": "| 3:55 to 4:40 | Turn 9, opponent | Evolves benched second Feebas into Milotic ex140 at4:07 to4:10.5, initially no Energy (native/t0250.50.jpg). Ice Maker at4:13.5 raises Palkia's one Water to two. Normal Water attaches to Milotic ex, visible as one by native/t0259.50.jpg. Aqua Charge banner at native/t0261.50.jpg then raises Milotic to two Water by native/t0265.50.jpg. Professor's Research is explicitly revealed at native/t0269.50.jpg and draws two. Palkia uses Slash30 around4:37.5; Wailord200 becomes170, both Bench Indeedee remain110. Score1 to1. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 10,
+      "accepted_source_line": 38,
+      "verbatim_accepted_row": "| 4:40 to 5:00 | Turn 10, owner | Draws Soothing Shore. Two separate Watch Over uses at4:46.5 and4:52.5 restore Wailord170 to190 to200 (native/t0286.50.jpg, native/t0292.50.jpg). Attaches second Water to Wailord. Confirms End Turn after a Supporter-available warning. No attack because Wailord still has two Energy against a four-Energy attack cost. Both Bench Indeedee ex remain110. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 11,
+      "accepted_source_line": 39,
+      "verbatim_accepted_row": "| 5:00 to 5:28 | Turn 11, opponent | Starts with Palkia150/two Water, Milotic140/two Water, Baxcalibur140, Frigibax60; owner Wailord200/two Water Active and two Indeedee ex110 Bench. Cyrus is revealed at native/t0311.00.jpg, then brings the shiny Indeedee ex110 Active by5:16.5. Normal attachment raises Palkia to three Water by native/t0317.50.jpg, then Ice Maker at5:19.5 raises it to four by native/t0322.50.jpg. Palkia Dimensional Storm150 hits Active Indeedee ex110 and deals20 to each remaining Bench Pokemon (native/t0325.50.jpg). Indeedee ex is knocked out; Wailord falls200 to180 and surviving Indeedee110 to90. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    }
+  ],
+  "limits": "Only explicitly turn-numbered accepted prose is copied. Zero rows means format unavailable, not zero game turns. This is reference scaffolding, not a completed capture ledger."
+}

@@ -1,0 +1,61 @@
+{
+  "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_034953000_iOS",
+  "structural_pass": true,
+  "turn_rows": 16,
+  "issues": [],
+  "visual_acceptance": false,
+  "limit": "Integrity/template checks do not establish battle coverage or semantic correctness.",
+  "checked_at_utc": "2026-10-06T19:26:52.320726+00:00",
+  "checker": "batch validate_packet.py; worker hand/board reconciliation",
+  "source_json": "SOURCE.json",
+  "worker": "/root/pause_034953",
+  "worker_consistency_checks": {
+    "selected_owner_hands": 8,
+    "expected_owner_hands": 8,
+    "all_selected_intact_flags": true,
+    "hand_HP_energy_position_arithmetic_pass": true,
+    "native_frames": 433,
+    "owner_start_end_counts": [
+      [
+        2,
+        5,
+        3
+      ],
+      [
+        4,
+        4,
+        2
+      ],
+      [
+        6,
+        3,
+        2
+      ],
+      [
+        8,
+        3,
+        3
+      ],
+      [
+        10,
+        4,
+        3
+      ],
+      [
+        12,
+        4,
+        3
+      ],
+      [
+        14,
+        4,
+        2
+      ],
+      [
+        16,
+        3,
+        3
+      ]
+    ]
+  }
+}

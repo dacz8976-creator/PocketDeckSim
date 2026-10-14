@@ -1,0 +1,83 @@
+{
+  "accepted": true,
+  "status": "accepted_with_recording_limits",
+  "source_video": "20261012_004435000_iOS.MP4",
+  "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+  "reviewer": "/root/verify_pause_004435",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_at_utc": "2026-10-12T03:04:29.252425+00:00",
+  "acceptance_scope": "Bounded independent source verification of completed full-battle and Pause Games packet; not a second full decode or simulator replay. Lead owns registration, archival and external log verification.",
+  "required_repairs": [],
+  "resolved_repairs": [
+    "Owner-start fans corrected to4/2/3/3/5 from native crops across prose, coverage, ledger and evidence.",
+    "First three after-board records changed to resolved boundaries with displayed turns2/3/4 and qualified generation phases.",
+    "Copycat draw count starts at0 after played card and shuffle; separate pre-Supporter count2 retained.",
+    "Native294 final-hand crop pair added;42pairs total.",
+    "Acting-opponent visible counts retained separately from hidden identities with before/afterdraw phases."
+  ],
+  "accepted_input_sha256": {
+    "REVIEW.md": "6089fee98b17536b2c3a34febf379ee660700ca366ca9bdeb2f2e310ebd35528",
+    "COVERAGE.md": "93a6775562b219d7adf5086cd641821ba36e6fc094cd41dcb553384073a806f3",
+    "SUMMARY.json": "dafb02ba666ffa13ea72740ccd0899fe94c80b7ce0d2af53bf9de234a3602e78",
+    "UNCERTAINTIES.json": "23027456f9f2e44eac72217c33a83cbc1008bdfd51bb487084cf65b3ca1d1a51",
+    "PAUSE_GAME.json": "2d848f9f1a91b25ca86b4bb7917570d1040c5ff45e02f77b2215c6718970d0e3",
+    "DECK_USED.json": "5d43b3887cac5910202d555c4a110a57a6d68efdfa15bdec8bb3456e6504da21",
+    "TURN_LEDGER.json": "33bf09ff78935f3fa678a50f13ba4448893f357ff6431025ba49678230d889a3",
+    "TURN_EVIDENCE.json": "439d555f6b2fdc85d799789a8c8731db208bc4dea4bff299931726421d0814e4"
+  },
+  "checked_supporting_sha256": {
+    "SOURCE.json": "0d1981372c9b22f73c213588f1b106b24e54706af53b8cd8cad84fa8c61accef",
+    "QR_DECODE.json": "5c32cdc35a4418c9a5830f6b62738e4a19724f67d3df40da602ff868b3c822f8",
+    "NATIVE_CROPS_MANIFEST.json": "0f549807e343b8f6ea61b2ee2bdc73a6c5494f686e585402c08dce5ac12c2a49",
+    "independent_sol/REVIEW.md": "4d4a551968eb5e9d050a750ae515682160d01c4f12be6ac99011417b9fce4e48",
+    "independent_sol/QR_DECODE.json": "2c4798e306a00ee8f42bc02ae9bf8f00563e3cb4ff73403972fab9ee42a2402f",
+    "independent_sol/VIEWED_EVIDENCE.json": "3fcd1fec3cb405d011871f3e4ff487a531d326fa451b37377cf3db74be766172",
+    "../LIVE_DECK_SNAPSHOT_RESUME.json": "79982d7da8090669b45f8c5822aa3143a5e08ceb8946821cc58f26d87fcc2638"
+  },
+  "source_identity_checks": {
+    "basis": "Frozen CLI SHA-256/size/duration/native-dimensions binding; no new source rehash or video seek by independent reviewer.",
+    "source_rehash_performed": false,
+    "size_bytes": 861227730,
+    "duration_seconds": 463.93,
+    "native_dimensions": [
+      1170,
+      2532
+    ],
+    "independent_QR_native_pixel_reread": true,
+    "QR_payload_live_match": true
+  },
+  "outcome_verified": {
+    "owner": "Dacz8976",
+    "opponent": "Chuaryzard",
+    "result": "win",
+    "method": "opponent_concession",
+    "concession": true,
+    "concession_source_seconds": 451,
+    "victory_source_seconds": 462,
+    "final_points": {
+      "owner": 0,
+      "opponent": 0
+    },
+    "turn_count": 10,
+    "owner_result_damage": 90
+  },
+  "capture_status": "complete_with_recording_limits",
+  "structural_validation": {
+    "pass": true,
+    "turn_rows": 10,
+    "native_frames": 142,
+    "crop_pairs": 42,
+    "issues": []
+  },
+  "viewed_manifest": "VIEWED_EVIDENCE.json",
+  "limits": [
+    "Hidden opponent identities and unopened discard piles are unavailable.",
+    "Mega Blaster mills3 cards; only final top Soothing Shore is visible and the other2 identities remain unknown.",
+    "Requested source seeks and action/draw timings are approximate; actual encoded frame PTS was not measured.",
+    "Queue subtype/ranked status remains unknown; no Auto control was observed.",
+    "Owner turn10 Research inspection/lift does not establish a completed play or2draws.",
+    "Match date2026-10-11 uses parent-verified source creation time and Chicago conversion; SOURCE.json remains frozen.",
+    "QR proves semantic entities and Water, not exact printing/artwork/rarity."
+  ]
+}

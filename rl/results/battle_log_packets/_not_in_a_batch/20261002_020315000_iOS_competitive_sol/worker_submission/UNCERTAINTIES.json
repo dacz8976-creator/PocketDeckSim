@@ -1,0 +1,33 @@
+{
+  "video_basename": "20261002_020315000_iOS.MP4",
+  "source_sha256": "52b7fa2fb75ddd5924d13f0cf22833d83c83118fc31a5e87be30b4949ca37fc7",
+  "status": "first_pass_draft_pending_independent_lead_acceptance",
+  "material_unresolved_questions": [],
+  "resolved_checks": [
+    {
+      "issue": "Opponent turn9 Energy ordering and Milotic ex ability",
+      "resolution": "Milotic evolves at0Energy; IceMaker253.5 raises Palkia1->2; normal attachment leaves Milotic1 at259.5; AquaCharge banner261.5 leaves Milotic2 at265.5. No Energy transfer is claimed.",
+      "evidence": ["native/t0250.50.jpg", "native/t0253.50.jpg", "native/t0259.50.jpg", "native/t0261.50.jpg", "native/t0265.50.jpg"]
+    },
+    {
+      "issue": "Decisive forced switch and terminal outcome",
+      "resolution": "Cyrus explicitly revealed; damaged Indeedee ex moves Active; Palkia Storm knocks it out; opponent reaches three points; Defeat. No concession.",
+      "evidence": ["native/t0311.00.jpg", "native/t0322.50.jpg", "native/t0325.50.jpg", "native/t0331.50.jpg", "native/t0334.50.jpg"]
+    },
+    {
+      "issue": "Pregame printed card-cost shorthand",
+      "resolution": "Lead's independent Astra inspection corrected worker shorthand before saved report: Indeedee ex Psychic costs two Psychic; Wailord ex attack recovers from all Special Conditions. Non-ex Wailord four Colorless and Water damage bonus confirmed.",
+      "evidence": ["native/t0001.50.jpg", "native/t0322.50.jpg"]
+    }
+  ],
+  "retained_unknowns": [
+    {"issue":"Complete hidden deck lists","significance":"Do not claim full artifact-list identity or unrevealed opponent cards"},
+    {"issue":"Opponent automation","significance":"No opponent Auto control visible"},
+    {"issue":"Exact mode label","significance":"PvP and rank indicators visible; rank context inference is qualified"},
+    {"issue":"Sub-second action/turn boundaries","significance":"Grouped timeline is approximate; named native frames retain exact source seek timestamps"},
+    {"issue":"Filename clock basis","significance":"Use owner/upload-based local October1 date per assignment; exact filename timezone inferred"},
+    {"issue":"Untested alternate Energy or ramp ideas","significance":"One Water-only game cannot establish their performance"}
+  ],
+  "unreviewed_intervals": [],
+  "recording_limitations": ["Post-battle card presentation continues at cutoff; final battle result is established"]
+}

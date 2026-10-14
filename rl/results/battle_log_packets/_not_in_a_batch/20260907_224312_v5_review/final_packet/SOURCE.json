@@ -1,0 +1,39 @@
+{
+  "filename": "20260907_224312000_iOS.MP4",
+  "sha256": "6F5BD2F13E548F8B5856132F7FAAB690641FD9A6F10F45D173802E09C9708593",
+  "bytes": 456674333,
+  "duration_seconds": 249.80737,
+  "codec": "hevc",
+  "resolution": "1170x2532",
+  "average_frame_rate": "4446600/74947",
+  "container_frame_count": 14822,
+  "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20260907_224312000_iOS.MP4",
+  "recording_type": "single battle from setup through final results",
+  "independent_reviewer": "Codex subagent /root/astra_review_152812",
+  "review_date": "2026-09-21",
+  "review_status": "full_battle_review_complete_candidate_for_lead_registration",
+  "review_method": "Local video decoding; full-clip overview plus dense visual inspection of every turn, attack, energy/evolution transition, coin result, KO and terminal sequence. 245 timestamped frames and contact sheets retained. Not a claim that every decoded frame or hidden state was reviewed.",
+  "frame_timestamp_convention": "frames/SSS.sss.jpg is the requested elapsed-second position; decoder selects the first frame at or after it. Event boundaries are approximate unless bracketed by cited observations.",
+  "control_mode": "Auto visibly checked ON from setup and throughout reviewed gameplay",
+  "match_mode": "literal final results label: vs. Random Battle (Expert)",
+  "opponent_ai_status": "not separately established; no inference from Auto",
+  "player": "Dacz8976",
+  "opponent_display_name_in_battle": "Opponent",
+  "outcome": "player defeat, 1-3, turn 10; literal Defeat and results screen recorded",
+  "prior_focused_evidence": [
+    {
+      "original": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-mechanics-flygon-sableye-2026-09-07\\sableye-video\\EVIDENCE.md",
+      "preserved_copy": "prior_evidence/EVIDENCE.md",
+      "sha256": "DCE5ACB202C00290906B846DD55D5AF05E0F67C1C1B31F8F6F2E160F7349C956",
+      "use": "Read as prior focused claim; terminal conclusion independently rechecked against this video. Database/engine claims are not adopted as fresh verification."
+    },
+    {
+      "original": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-mechanics-flygon-sableye-2026-09-07\\sableye-video\\SOURCE_BINDINGS.md",
+      "preserved_copy": "prior_evidence/SOURCE_BINDINGS.md",
+      "sha256": "4691D97D06608027A9FA8CF5DE47507B99F8877BE7BB4BE2361B98FA28DC0F79",
+      "use": "Preserved provenance/reference only; no current engine behavior claim."
+    }
+  ],
+  "index_update_performed_at_packet_creation": false,
+  "media_move_performed_at_packet_creation": false
+}

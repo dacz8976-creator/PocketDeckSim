@@ -1,0 +1,91 @@
+{
+  "accepted": true,
+  "reviewer": "/root/check_210041",
+  "reviewer_role": "Independent Sol checker returning for targeted corrections",
+  "checked_at_utc": "2026-10-12T23:45:20.401398+00:00",
+  "source_video": "20261012_210041000_iOS.MP4",
+  "source_sha256": "6e8f59764ede0e890ac012fd4ccdd08fc7bfd480bbaae7721bd1f8046031fcc6",
+  "accepted_input_sha256": {
+    "REVIEW.md": "e738c3e7f988787c2a0a353db0a3d34a6708d35337a127ad8a27870ab98ca6bb",
+    "COVERAGE.md": "52a86f3eace5398c9c68bcbd59866103e59ea1c8c54b7238d04de7815030cc1d",
+    "SUMMARY.json": "bb3737486cdc789f2c4c11375113539126fef6ec899529eacc85b1532fd82faa",
+    "UNCERTAINTIES.json": "7891abada6e47880c5b155e9f5df297998fb40106c560dec5600381f37da8d95",
+    "PAUSE_GAME.json": "784cbd733c8242ba95ea0e6271b1a941a0a7652274e4cda66f9970dbfea2dfe9",
+    "DECK_USED.json": "e8c812d17c3485b8936eac3f57a3befe5ec4889074a6ba44985fe611cf86a187",
+    "TURN_LEDGER.json": "a0d1b640a00818b10d50b5cbb88c00c69b7c40cff4d5c974b10267ff4b13bccd",
+    "TURN_EVIDENCE.json": "8ad73e46582d3da70eb03bbf25301796aa63df3034fada8768b62f41bea973dd"
+  },
+  "required_repairs_remaining": [],
+  "prior_rejection_preserved": "CHECK_RESULT.json remains rejected for the previous eight-file revision. Its archived input copies match all eight original checked hashes.",
+  "acceptance_scope": "Initial independent full-packet consistency and bounded native-source audit plus targeted semantic recheck of every material correction. This is not a second whole-video review. Acceptance applies only to the eight final hashes in this receipt.",
+  "resolved_repairs": [
+    {
+      "id": "R1",
+      "resolved": true,
+      "evidence": [
+        "N0241_00",
+        "N0242_00",
+        "N0243_00",
+        "N0244_00",
+        "N0245_00"
+      ],
+      "finding": "Native 241.00s independently inspected: readable individual Glimmet face, with owner hand still empty below. Four subsequent native reveals already checked establish the five cards in order. Prose, draw row, nested reveal list and evidence inventory now use 241s; 240s is explicitly animation only. A fresh direct source seek at 241s exactly matches the retained frame hash.",
+      "independently_reextracted_frame_sha256": "f5406c1f12224ea91426f34a4bd600cb3d8a35a34869d1e7fccf40a1b6387d68"
+    },
+    {
+      "id": "R2",
+      "resolved": true,
+      "evidence": [
+        "N0079_00",
+        "N0080_60",
+        "N0081_00",
+        "N0092_40",
+        "N0093_80",
+        "N0094_20",
+        "N0095_80"
+      ],
+      "finding": "Named Trainer faces establish Poké Ball Basic category and Serena Mega Evolution Pokémon ex category. Acquisitions show card backs rather than acquired faces. Both search names are null with explicit limits. New counts reconcile 4 to 5 after Poké Ball and 2 to 3 after Serena. Later Riolu bench and Mega Lucario evolution stay separate. The copied public Riolu basis and incorrect 96s Mega reveal claim are removed."
+    },
+    {
+      "id": "R3",
+      "resolved": true,
+      "evidence": [
+        "N0354_00",
+        "N0358_00",
+        "N0362_00"
+      ],
+      "finding": "Native 354s frame has X Speed atop discard and the retreat-cost reduction banner. Ledger links N0354_00 with observed effect 354s while labeling play351s approximate. Retreat links358/362, preserving three Fighting on Lucario and clearing poison."
+    }
+  ],
+  "material_cross_file_checks": {
+    "REVIEW.md": "Turn1 search identities hidden, Copycat241s and X Speed effect354s match revised ledger; outcome and all14 turns retained.",
+    "COVERAGE.md": "Repair windows and hidden faces are named; full first-pass source coverage remains documented.",
+    "SUMMARY.json": "L5 now explicitly preserves hidden search acquisition identities. Concession loss, last board0-2, final numeric result unavailable and existing source limits unchanged.",
+    "UNCERTAINTIES.json": "L5 matches Summary and Pause Game exactly; no invented acquired names or newly unresolved result.",
+    "PAUSE_GAME.json": "L5 added consistently; five opening cards, chosen Active and final result qualification retained.",
+    "DECK_USED.json": "Unchanged verified filmed20-slot QR provenance; live deck snapshot unavailable and artwork limit retained.",
+    "TURN_LEDGER.json": "Changed rows1/8/11 were reconciled semantically. All14 rows retained. Turn1 null search names, ordered five Copycat reveals and X Speed effect/retreat references match the source.",
+    "TURN_EVIDENCE.json": "All new native frames and crops exist, all native full frames are1170x2532, all references resolve with no duplicate IDs. Modified240/96/354 descriptions now reflect visible content."
+  },
+  "carried_forward_passed_checks": [
+    "Opening five and Grimer Active",
+    "Independently selected ordinary owner turns4/6 and hand arithmetic",
+    "Failed Poké Ball, Heavy Helmet placement, Mesagoza tails, one-card turn8 ending",
+    "Both boards, Energy Zones, HP and0-1-2 point progression",
+    "Glimmora Shattering Crystal point denial",
+    "Concession menu/confirmation/disappearance/Defeat/same opponent result",
+    "Human Mega Emblem Event classification with no visible Auto"
+  ],
+  "retained_limits": [
+    "Both turn1 opponent searched identities hidden",
+    "Unopened discard piles",
+    "Unrevealed opponent hand/deck faces",
+    "Current live deck snapshot unavailable despite verified filmedQR",
+    "Final numeric result score unavailable; last playable board0-2 separate",
+    "Exact tap times unavailable; requested seeks are not measured presentation timestamps",
+    "Filmed artwork and rarity are not derived from QR mechanics references"
+  ],
+  "external_writes": false,
+  "shared_registration": false,
+  "source_moved": false
+}

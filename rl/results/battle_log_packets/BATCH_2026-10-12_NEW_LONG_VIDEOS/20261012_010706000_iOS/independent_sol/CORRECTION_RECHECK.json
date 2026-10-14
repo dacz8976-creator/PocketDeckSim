@@ -1,0 +1,146 @@
+{
+  "schema": "independent_bounded_source_correction_recheck_v1",
+  "reviewer": "/root/check_010706",
+  "model": "Sol",
+  "reviewed_utc": "2026-10-12T22:58:53.348596+00:00",
+  "source_video": "20261012_010706000_iOS.MP4",
+  "source_sha256": "6d6143c99e23bffe7a6feb7f01c20a112c060e13b9b9d4ebd0a25e597ca62fd0",
+  "duration_seconds": 820.845,
+  "accepted": true,
+  "status": "independent_acceptance_after_source_bound_corrections",
+  "required_repairs": [],
+  "accepted_input_sha256": {
+    "REVIEW.md": "57fbb0ec42abb0c996c382a0c3ce9897f6c97bb490f6c56b0036698746d0ed11",
+    "COVERAGE.md": "404e1f8eb0086104b0a77ce511e1249c37a46d8ae82277dc5ca701420bfdd5b1",
+    "SUMMARY.json": "283c187b4373fe9d857d05dad636ec06684714f0449621b91ff8232bf1ac1a3e",
+    "UNCERTAINTIES.json": "9be1a7eccf89ff29a50242d9642cab3ecad9a7e27fd383219836e4ba7e5e1cfa",
+    "PAUSE_GAME.json": "87cb3a348e3e4cfc7b1b704c062c3f7574ab87ee3c828c099e4ae58d108db15c",
+    "DECK_USED.json": "f984c637077832294f01d2fc46a1871b26d4dae7850649b9980fa94fe3bc48d0",
+    "TURN_LEDGER.json": "1acd9df6973e953edecf0eadd354af2e63c3c3e11c7309dba827348d1937e2c8",
+    "TURN_EVIDENCE.json": "14ea1e0a6774fc8ddac1348e3ab3b9ee50f51fe6125f9f5c61fc3c5c13e66e89"
+  },
+  "earlier_rejected_checkpoint": {
+    "path": "independent_sol/CHECK_RESULT.json",
+    "sha256": "d0abc7e672a7f77a13d77ea89d24c639c50c86887f4470ac8a52af142602f97a",
+    "preserved_unchanged": true
+  },
+  "correction_checks": [
+    {
+      "id": "turn15_start_hand_observation",
+      "resolved": true,
+      "finding": "Native558 shows owner turn15 banner. Native559.5 has prior3fan, native560.5 names Poké Ball. Ledger now labels four-card start inferred from those observations and complete_with_recording_limits. Evidence559.5 is prior_hand_before_normal_draw, selected=false; no full unzoomed four-cardfan claim remains."
+    },
+    {
+      "id": "named_draw_individual_binding",
+      "resolved": true,
+      "finding": "Research first second card now bound to51.8 Poké Ball named immediateplay/sequence; Research second second card bound to139 Glimmora completed drawsequence. Copycat individual718Ilima,719normalLuckyIcePop and719.5goldLuckyIcePop visibly agree, then completed721fan has3. Limits preserve sequence versus precise new-card fan observations."
+    },
+    {
+      "id": "readable_prose_spacing",
+      "resolved": true,
+      "finding": "Turn prose/action labels and missing spaces cleaned; hand fan, Pause Games and second point readable. All eight final files contain zero em dashes."
+    },
+    {
+      "id": "deck_provenance",
+      "resolved": true,
+      "finding": "DECK_USED retains20filmedQRsemantic slots with duplicates, Darkness and direct0→2s New deck16 continuity, while live snapshot fields remain null and exact_list_status=live_log_list_missing. No unsupported dated live20deck snapshot accepted."
+    }
+  ],
+  "scope": {
+    "kind": "bounded independent source acceptance check",
+    "second_full_source_pass": false,
+    "checked": [
+      "opening five/Active/Bench and first-player setup",
+      "Event queue and opponent identity",
+      "filmed QR native context and20slot resolved decoder/count provenance; no independent fresh raw QR decode",
+      "early Research/search sequences and hand arithmetic",
+      "independently selected ordinary ownerturns11 and13 first moves",
+      "Copycat three-card reshuffle/redraw and hand counts",
+      "both selected boards/EnergyZones/HP/Energy/point transitions",
+      "both Shattering Crystal coin/point sequences",
+      "terminal poison/Kingambit sequence and819results",
+      "three independent one-thread source re-extractions",
+      "eight current files read/structurally inspected with21ledger rows and384native frame refs; no missing frame paths"
+    ]
+  },
+  "confirmed_result": {
+    "opponent": "たまご",
+    "owner": "Dacz8976",
+    "outcome": "Victory",
+    "method": "normal point victory",
+    "score": [
+      3,
+      2
+    ],
+    "turns": 21,
+    "damage_done_displayed": 600,
+    "terminal_evidence": "turn_evidence/t0819.00.jpg",
+    "local_match_date": "2026-10-11",
+    "date_basis": "SOURCE_TIME.json container UTC creation01:07 convertedAmerica/Chicago"
+  },
+  "evidence_manifest": {
+    "earlier_bounded_source_check_notes": "independent_sol/SOURCE_CHECK_NOTES.md",
+    "earlier_checked_frame_hashes": "independent_sol/CHECKED_FRAME_HASHES.json",
+    "final_file_inspection": "independent_sol/FINAL_FILE_INSPECTION.json",
+    "correction_navigation_sheet": "independent_sol/CORRECTION_SOURCE_SHEET.jpg",
+    "correction_native_frames_sha256": {
+      "turn_evidence/t0558.00.jpg": "4ba11e1fdc064dfa86641f7182d9e98ce43a74fa26944128482e870bac50dec4",
+      "turn_evidence/t0559.50.jpg": "75d7ada6cf44e0abd0ab838e32a832a0b28dcf14b6957674a5651df15752f0c4",
+      "turn_evidence/t0560.50.jpg": "7d80cef65ff30eb126f9d91386f946780f8f65bdd71aeb94016ab19c8a231302",
+      "turn_evidence/t0051.80.jpg": "57cd12161f4ae88e83820c5bf500bb6ff278d85103f3fb3330d772b24637dd74",
+      "turn_evidence/t0139.00.jpg": "017eb5f141bb0561d54ff4d9e79b2f0efe65bbb3c5715fff309b2b66b2f4969b",
+      "turn_evidence/t0718.00.jpg": "006e25ba44b6f38bc86d7b93662d72899e70fc62b64e09c0d2556aed90c5e930",
+      "turn_evidence/t0719.00.jpg": "da3ead9c3acfd88ef09616cb9e881b775143935743ce91f9dde08066fd545614",
+      "turn_evidence/t0719.50.jpg": "062553e072fe16f2dec4365199bfa9b3de1de3b1244bcc674acc62dfd58bc35e"
+    },
+    "source_reextract": [
+      {
+        "requested_source_seconds": 25,
+        "decode_threads": 1,
+        "native_dimensions": [
+          1170,
+          2532
+        ],
+        "independent_image_path": "independent_sol/source_reextract/t0025.00.jpg",
+        "independent_image_sha256": "ea99b8d854ca9919e52307489c165979218d538d8432be991c6960c76eaeb00f",
+        "retained_image_path": "turn_evidence/t0025.00.jpg",
+        "retained_image_sha256": "ea99b8d854ca9919e52307489c165979218d538d8432be991c6960c76eaeb00f",
+        "byte_hash_match": true
+      },
+      {
+        "requested_source_seconds": 536,
+        "decode_threads": 1,
+        "native_dimensions": [
+          1170,
+          2532
+        ],
+        "independent_image_path": "independent_sol/source_reextract/t0536.00.jpg",
+        "independent_image_sha256": "d38036b04efb101a9013af9dbabba0e2d97c19cb2f1d735f67c002af8ca8c9a2",
+        "retained_image_path": "dense_native/t0536.00.jpg",
+        "retained_image_sha256": "d38036b04efb101a9013af9dbabba0e2d97c19cb2f1d735f67c002af8ca8c9a2",
+        "byte_hash_match": true
+      },
+      {
+        "requested_source_seconds": 819,
+        "decode_threads": 1,
+        "native_dimensions": [
+          1170,
+          2532
+        ],
+        "independent_image_path": "independent_sol/source_reextract/t0819.00.jpg",
+        "independent_image_sha256": "4566da82655381ee2d7369281518c26409a2dfddf26c874f8db2e7d5c7aa41e6",
+        "retained_image_path": "turn_evidence/t0819.00.jpg",
+        "retained_image_sha256": "4566da82655381ee2d7369281518c26409a2dfddf26c874f8db2e7d5c7aa41e6",
+        "byte_hash_match": true
+      }
+    ]
+  },
+  "limits": [
+    "This accepted bounded independent check supplements the primary whole-source review; it is not a second full-source pass.",
+    "Three source re-extractions exactly match same-time retained JPEG hashes; no additional source decode was performed for this correction pass.",
+    "Full post-draw fans remain unavailable on documented fast/zoomed turns, including15; named cards/counts can be supported by direct reveals plus marked inference.",
+    "Hidden opponent card identities, large overlapping fan ranges, unopened discard views, exact unmeasured PTS and unavailable dated live deck snapshot remain explicit.",
+    "Independent raw QR decode was not rerun successfully in the selected runtime; retained source-bound decoder/count provenance and native QR context are qualified accordingly.",
+    "Lead acceptance, append-only registration, collision-safe archival, external logging and live-artifact verification remain root responsibilities. No primary files, shared logs, sources or external artifacts were changed by this checker."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "reviewer": "sol_retro_115323",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "status": "worker_complete_pending_lead_acceptance",
+  "started_utc": "2026-10-02T20:27:35.7720091Z",
+  "source": "20261002_115323000_iOS.MP4",
+  "source_sha256": "0a3c7a2dbd87adb74f2eea2d61723f5e68fd71a74f0ab80d7486a9ee1d6c6be0",
+  "scope": "Targeted retrospective supplement only: owner game turn 13 starting hand, uncertain Alolan Ninetales ex, associated draws/actions only as necessary",
+  "main_review_status": "Reviewed",
+  "extraction_limit_full_frames": 12,
+  "accepted_packet": "Recording_QA/20261002_115323000_iOS_shark_sol",
+  "excluded": "Other turns, accepted board/result/play re-review, external artifacts, index/events, source moving and simulator edits",
+  "capture_status": "complete_with_recording_limits",
+  "finished_utc": "2026-10-02T20:38:49.759443+00:00",
+  "metrics": {
+    "elapsed_seconds": 673.99,
+    "image_tool_submissions": 17,
+    "new_full_frames_extracted": 8,
+    "existing_native_full_frames_inspected": 5,
+    "existing_overview_locator_frames_inspected": 2,
+    "native_crops_inspected_separately": 2,
+    "native_crops_saved": 24,
+    "extraction_wall_seconds": 5.81,
+    "evidence_storage_bytes": 7427394,
+    "source_hydrated_bytes": 985296109,
+    "tokens": null,
+    "tokens_status": "unavailable/not measured",
+    "elapsed_includes": "instructions, OneDrive source hydration/provider retry, SHA verification, visual inspection and packaging"
+  }
+}

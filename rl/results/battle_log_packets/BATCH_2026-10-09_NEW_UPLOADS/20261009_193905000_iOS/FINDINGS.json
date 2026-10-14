@@ -1,0 +1,267 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/review_193905",
+  "review_role": "first-pass Sol worker; inherited model/effort not independently exposed",
+  "review_date_utc": "2026-10-10",
+  "status": "first_pass_complete_pending_independent_acceptance",
+  "source": {
+    "filename": "20261009_193905000_iOS.MP4",
+    "sha256": "bade03dea4b20d3b08476f78cf677487ea803905503968aef31ceb60286ecc77",
+    "bytes": 324765990,
+    "duration_seconds": 176.924377,
+    "width": 1170,
+    "height": 2532,
+    "source_identity_provenance": "lead intake verified SHA-256; in_progress event 58ec8e67-c335-4c61-b595-5c6e989e88ba"
+  },
+  "classification": {
+    "computer_battle": true,
+    "visible_ai_label": true,
+    "queue_title": "Mega Charizard X ex Deck (Deluxe Pack: Mega)",
+    "selected_owner_deck_name": "Draft A: Shark Tempo",
+    "auto_enabled": true,
+    "auto_mode_changes_observed": false,
+    "choices_attributable_to_owner_manual_play": false,
+    "eligible_ladder_log": false,
+    "eligible_pause_games": false
+  },
+  "scope": {
+    "matches": 1,
+    "turns": 7,
+    "opening_and_setup_reviewed": true,
+    "all_turns_reviewed": true,
+    "ending_reviewed": true,
+    "source_intervals_reviewed": [
+      [
+        0,
+        176.924377
+      ]
+    ],
+    "unreviewed_turns": [],
+    "linked_continuation_required": false
+  },
+  "outcome": {
+    "winner": "Dacz8976",
+    "result": "Victory",
+    "owner_points": 3,
+    "opponent_points": 1,
+    "terminal_ko_seconds": [
+      159,
+      165
+    ],
+    "third_point_seconds": [
+      166,
+      168
+    ],
+    "victory_frame": "frames/action_160.jpg",
+    "victory_source_seconds": 175.005,
+    "card_of_game": "Alolan Ninetales ex",
+    "card_of_game_frame": "frames/action_161.jpg",
+    "card_of_game_source_seconds": 176.005
+  },
+  "point_progression": [
+    {
+      "owner": 0,
+      "opponent": 0
+    },
+    {
+      "owner": 0,
+      "opponent": 1,
+      "ko": "Carvanha",
+      "seconds": [
+        64,
+        69
+      ]
+    },
+    {
+      "owner": 1,
+      "opponent": 1,
+      "ko": "Torkoal 1",
+      "seconds": [
+        96,
+        103
+      ]
+    },
+    {
+      "owner": 2,
+      "opponent": 1,
+      "ko": "Torkoal 2",
+      "seconds": [
+        124,
+        131
+      ]
+    },
+    {
+      "owner": 3,
+      "opponent": 1,
+      "ko": "Charmander 1",
+      "seconds": [
+        161,
+        168
+      ]
+    }
+  ],
+  "mechanics_findings": [
+    {
+      "observation": "Misty gives 1 head then 1 tail, attaching first Water; normal Water attaches afterward",
+      "seconds": [
+        84.8,
+        94
+      ],
+      "evidence": [
+        "frames/dense_163.jpg",
+        "frames/dense_187.jpg",
+        "frames/action_087.jpg",
+        "frames/action_088.jpg",
+        "frames/action_093.jpg"
+      ]
+    },
+    {
+      "observation": "AI turn 2 plays Copycat, not Research; five face-down redraws match owner five-card hand",
+      "seconds": [
+        48.208,
+        53.61
+      ],
+      "evidence": [
+        "frames/dense_080.jpg",
+        "frames/dense_083.jpg",
+        "frames/dense_104.jpg"
+      ]
+    },
+    {
+      "observation": "AI turn 4 plays Research, draws hidden cards and attaches Fire to Bench Charmander; no attack",
+      "seconds": [
+        110.2,
+        114
+      ],
+      "evidence": [
+        "frames/dense_205.jpg",
+        "frames/dense_208.jpg",
+        "frames/dense_220.jpg",
+        "frames/action_107.jpg"
+      ]
+    },
+    {
+      "observation": "Turn 6 Flame Patch takes Fire from discard and attaches to Active despite Binding Snow Energy Zone restriction; normal attachment goes to Bench",
+      "seconds": [
+        140.835,
+        149
+      ],
+      "evidence": [
+        "frames/dense_293.jpg",
+        "frames/dense_303.jpg",
+        "frames/action_139.jpg"
+      ]
+    },
+    {
+      "observation": "All three Binding Snow knockouts receive Water weakness +20; final attack explicitly displays100",
+      "seconds": [
+        94.8,
+        165
+      ],
+      "evidence": [
+        "frames/action_092.jpg",
+        "frames/action_118.jpg",
+        "frames/action_151.jpg"
+      ]
+    }
+  ],
+  "final_visible_state": {
+    "owner_active": "Alolan Ninetales ex",
+    "owner_active_hp": 120,
+    "owner_active_attached_water": 3,
+    "owner_bench": [],
+    "owner_hand": [
+      "Irida",
+      "Mega Sharpedo ex",
+      "Cyrus",
+      "Alolan Ninetales ex (alternate artwork)",
+      "Lucky Ice Pop",
+      "Alolan Vulpix (second artwork)"
+    ],
+    "opponent_bench": [
+      {
+        "pokemon": "Charmander (second)",
+        "hp": 70,
+        "attached_fire": 1
+      }
+    ],
+    "stadium": "Rainbow Cave",
+    "healing_observed": false,
+    "tools_observed": false,
+    "abilities_observed": false,
+    "retreats_or_voluntary_switches_observed": false,
+    "special_conditions_observed": false
+  },
+  "uncertainties": [
+    "No exact20-card list; hidden deck and printing IDs unknown.",
+    "Opponent normal draws, Research draws and Copycat redraw identities remain hidden.",
+    "AI Poke Ball result is face-down; second Torkoal benched afterward is likely result, not explicit face-up reveal.",
+    "Phone notification partly covers opponent fan on turn4; no exact fan count asserted there.",
+    "Turn7 Energy Zone glow and next-generated label do not establish fourth attachment; readable Ninetales count remains3.",
+    "Deck-title Mega Charizard X ex never enters play; title is matchup identity, not board evidence."
+  ],
+  "evidence": {
+    "action_frame_count": 161,
+    "targeted_dense_frame_count": 348,
+    "coarse_frame_count": 35,
+    "reused_intake_frame_count": 4,
+    "native_resolution": [
+      1170,
+      2532
+    ],
+    "indexes": [
+      "FRAME_INDEX.json",
+      "DENSE_FRAME_INDEX.json"
+    ],
+    "reports": [
+      "REVIEW.md",
+      "COVERAGE.md"
+    ],
+    "dense_windows_seconds": [
+      [
+        22,
+        24.5
+      ],
+      [
+        26,
+        29
+      ],
+      [
+        32,
+        36
+      ],
+      [
+        40,
+        46
+      ],
+      [
+        48,
+        58
+      ],
+      [
+        78,
+        91
+      ],
+      [
+        108,
+        120
+      ],
+      [
+        133,
+        147
+      ],
+      [
+        154,
+        159
+      ]
+    ]
+  },
+  "acceptance": {
+    "independent_check_pending": true,
+    "lead_acceptance_pending": true,
+    "review_registration_performed_by_worker": false,
+    "video_move_performed_by_worker": false,
+    "external_log_mutation_performed": false,
+    "simulator_edits_performed": false
+  }
+}

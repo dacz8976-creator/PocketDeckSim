@@ -1,0 +1,32 @@
+{
+  "unreviewed_turns": [],
+  "items": [
+    {
+      "id": "cosmetic_print_ids",
+      "status": "unresolved_nonblocking",
+      "detail": "Card names, HP, attacks and relevant effects are readable. Exact collector/rarity print IDs are not independently established. Prior focused documentation narrows Mega Sableye ex print candidates using a database, but that database identity mapping was not revalidated for this full review."
+    },
+    {
+      "id": "hidden_state_and_intent",
+      "status": "outside_observable_scope",
+      "detail": "Hidden opponent hand/deck contents, complete deck lists and strategic intent are not reconstructed. No assertion that the visible choices were optimal or that a different action was legally available."
+    },
+    {
+      "id": "opponent_ai_status",
+      "status": "not_separately_established",
+      "evidence": "frames/249.700.jpg",
+      "detail": "The literal results label is vs. Random Battle (Expert). Auto is visibly checked ON. The review preserves that explicit mode label without separately inferring an AI/Solo classification from Auto."
+    },
+    {
+      "id": "cursed_jewel_later_trigger",
+      "status": "not_demonstrated_recording_ends_game",
+      "interval": "03:53-04:09.807",
+      "detail": "The 80-damage attack causes the final KO. The conditional next-turn 40-damage effect is announced, but it never triggers because the battle ends. Trigger/expiry mechanics and retaliation KOs cannot be tested from this clip."
+    },
+    {
+      "id": "timestamp_precision",
+      "status": "approximate_event_boundaries",
+      "detail": "Source frames use requested elapsed-second timestamps and the first decoded frame at or after each time. Event intervals are approximate. The review covers all turns and meaningful visible transitions, not every frame, hidden state or exact animation-start time."
+    }
+  ]
+}

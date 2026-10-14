@@ -1,0 +1,121 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261004_215749000_iOS_game1",
+  "review_date": "2026-10-06T17:35:44.896871+00:00",
+  "sources": [
+    {
+      "video_basename": "20261004_215749000_iOS.MP4",
+      "sha256": "2015607dfe613e8bf71f4637d5d26ed625d8a451b0541b93b3a82bf0457126af",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Mega Blaziken tournament list (current log snapshot conflicts with filmed New deck1 QR)",
+  "opening": {
+    "source_video": "20261004_215749000_iOS.MP4",
+    "timestamp_seconds": 30,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Combusken",
+        "basis": "observation",
+        "evidence_ids": [
+          "f0030.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Copycat",
+        "basis": "observation",
+        "evidence_ids": [
+          "f0030.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Torchic",
+        "basis": "observation",
+        "evidence_ids": [
+          "f0030.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Flame Patch",
+        "basis": "observation",
+        "evidence_ids": [
+          "f0030.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Rocky Helmet",
+        "basis": "observation",
+        "evidence_ids": [
+          "f0030.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Torchic",
+      "opening_position": 3,
+      "source_video": "20261004_215749000_iOS.MP4",
+      "timestamp_seconds": 31,
+      "evidence_ids": [
+        "f0030.00",
+        "f0031.00"
+      ]
+    },
+    "redraw_or_replacement": false,
+    "before_active_placement": true,
+    "status": "complete",
+    "evidence_ids": [
+      "f0030.00",
+      "f0031.00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_source_review_submitted_for_independent_acceptance",
+  "classification": "human opponent matchmaking; no visible Auto control",
+  "owner": "Dacz8976",
+  "opponent": "Sherwin",
+  "outcome": {
+    "owner_result": "win",
+    "basis": "Opponent conceded244s; Victory vs. Sherwin256s",
+    "points_at_concession": {
+      "owner": 1,
+      "opponent": 0
+    },
+    "evidence_ids": [
+      "f0244.00",
+      "f0256.00"
+    ]
+  },
+  "limits": [
+    "No opened discard-pile view occurs anywhere in the supplied source. Public play history is not a full discard snapshot.",
+    "Opponent identities behind card backs remain unknown.",
+    "Approximate draw-animation ends and action onset times are bounded to the retained frames, generally within about one second.",
+    "No hidden choices or actions are inferred from deck membership.",
+    "Exact live log snapshot is retained as retrieved, not silently amended.",
+    "The current named Mega Blaziken list cannot be claimed as the exact filmed game list: two Rare Candy are replaced by two Combusken in the QR.",
+    "QR resolves functional card entities, not artwork, rarity or exact printing.",
+    "Deck membership does not establish hidden hands or draws."
+  ],
+  "lead_checked": false
+}
