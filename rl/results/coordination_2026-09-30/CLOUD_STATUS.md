@@ -138,6 +138,11 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      - 192 km3 games before v after: only 52 bare labels became typed (40 Metal@0, 12 Fighting@0); outcomes unchanged.
      - **Pin:** the harness source hash changed, so CommittedPin fails (slow-report pin needs re-making after its gate; not edited).
      - Pre-existing intermittent failure, not from this change: test_slow_report ProgramChangedOnResume (exit 126, text file busy).
+   - **Kingambit pass at 010837 t09/t11 (Oct 14): done** (`pause_positions_kx3_2026-10/KINGAMBIT_PASS_cloud.md`; diagnosis only).
+     - t11: C's play-out worlds (inferred opponent list, with Raticate ex) rate the Pichu knockout 33% and passing 100% (4.4-6.7 SE);
+       not the skip bar, Tool tie-break or Blade forecast (counterfactual changes nothing). t09: _m64 tips it (2 of 12 passes without, 11 with).
+     - Passing lets Glimmet fall: count 3, Blade 180 knocks out the Mega Kangaskhan ex for the game; his own play declined the knockout too.
+     - Depth 4 agrees (knockout line 31-56%). Proposed gate: paired continuation at R=128 with a careful opponent. Nothing built.
    - **Now:** idle.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head

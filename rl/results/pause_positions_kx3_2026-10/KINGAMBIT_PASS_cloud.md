@@ -189,9 +189,25 @@ All of it is in the scratch folder. Nothing is committed but this file.
   result. A clean rebuild of C reproduces the original program byte for byte (cd10c78a), so the probe was a separate binary.
 - **The counterfactual:** the one case above, in a scratch copy of C's engine.
 
-## The depth-4 check (pending)
+## The depth-4 check
 
-- **The run:** C's code at search depth 4 (`kx4_r16_c12_z2_real_t0_poolmeta_tools_zs3`), with km4 on both sides of the play-outs, at
-  t11, seeds 1-4.
-- **The question:** does a deeper play-out opponent still walk its Mega Kangaskhan ex into the count-3 Blade?
-- The result will be added here when the runs finish.
+- **The run:** C's code at search depth 4 (`kx4_r16_c12_z2_real_t0_poolmeta_tools_zs3`), with km4 proposing and km4 on both sides of
+  the play-outs, at t11, seeds 1-4, 16 play-outs each.
+- **km4's own move:** still the retreat into Kingambit.
+
+| Seed | Retreat(1), the Kingambit line | EndTurn | Hang Down | Retreat(2), to Alolan Muk | Played |
+|---:|---:|---:|---:|---:|---|
+| 1 | 0.44 | 0.94 | 0.94 | 1.00 | Retreat:2 > Heavy Helmet on Kingambit (Bench) > Attach > EndTurn (4.4 SE) |
+| 2 | 0.56 | 0.81 | 0.81 | 1.00 | the same (3.4 SE) |
+| 3 | 0.31 | 1.00 | 1.00 | 1.00 | EndTurn (5.7 SE) |
+| 4 | 0.38 | 0.94 | 0.94 | 1.00 | Retreat:2 > Heavy Helmet > Attach > EndTurn (5.0 SE) |
+
+**What it shows:**
+- A deeper play-out opponent still beats the knockout line in most play-outs (31-56% for him).
+- Passing loses a few games now (81-100%, against 100% at depth 3): the deeper opponent sometimes avoids the trap.
+- The best line becomes a quieter version of the pass:
+  - Muk goes Active and takes the hits, so Glimmet isn't the one knocked out;
+  - Kingambit gets the Heavy Helmet on the Bench;
+  - the knockout is declined.
+- **The conclusion holds:** declining the Pichu knockout is preferred by C's play-outs at depth 3 and depth 4. The gate above (paired
+  continuation at R = 128 with a careful opponent) is still what would settle whether it beats the knockout in real play.
