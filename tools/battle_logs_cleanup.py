@@ -3,7 +3,7 @@
 
   python3 tools/battle_logs_cleanup.py                      dry run (the default): a verdict line per BATCH_* folder (DELETE / PARTIAL / keep), nothing is changed
   python3 tools/battle_logs_cleanup.py --apply              delete the frames of the game packets that pass (asks you to type DELETE; --yes skips that)
-  python3 tools/battle_logs_cleanup.py --move-to C:\\Users\\dacz8\\BattleLogs     move the whole Battle Logs folder out of OneDrive (separate; asks you to type MOVE)
+  python3 tools/battle_logs_cleanup.py --move-to C:\\Users\\dacz8\\BattleLogs\\Recording_QA     move ONLY Recording_QA out of OneDrive; the videos stay (separate; asks you to type MOVE)
 
 The rule, the safety rails and the reasons are in tools/README_battle_logs_cleanup.md. In short: a game packet's frames may go when (1) its game is in a games_meta.json committed
 on main under rl/results/pause_games_*/ with positions in the positions_all.json next to it, (2) the game is in the committed audit list rl/results/battle_logs_retention_2026-10-14/
@@ -330,6 +330,7 @@ def report(decisions, view, qa_root, index, verbose=False, out=None):
       f' with --whole-batches-only: {sum(d.frames for d in whole):,} frames, {mb(sum(d.bytes for d in whole))} from the {len(whole)} whole batches')
     p(f'STAYS: {sum(d.kept_frames for d in decisions):,} frames, {mb(sum(d.kept_bytes for d in decisions))} in game packets that do not pass (and the sub-folder and batch-level images above)')
     p('Only .jpg/.jpeg/.png files inside the game packets that pass are removed by --apply; json/txt/md, videos and everything outside Recording_QA never are.')
+    p('--move-to PATH (a separate step) moves ONLY Recording_QA (the frames and the packets) to PATH; the videos and the rest of Battle Logs stay where they are, in OneDrive.')
     others = [n for n in os.listdir(qa_root) if not n.startswith('BATCH_') and os.path.isdir(os.path.join(qa_root, n))]
     if others:
         nf = sum(len(scan_frames(os.path.join(qa_root, n))[0]) for n in others)
@@ -430,70 +431,94 @@ def apply_deletions(decisions, qa_root, index, only=None, confirm=None, log_dir=
 
 
 # ---------------------------------------------------------------------------------------------------------------- move
-def move_folder(source, target, repo=None, confirm=None, dry=False, out=None):
+def move_recording_qa(source, target, repo=None, confirm=None, dry=False, out=None):
+    """move ONLY Recording_QA (the frames and the packets) to `target`; the videos and everything else in Battle Logs stay where they are, in OneDrive.
+    A rename on the same drive: instant, nothing copied, nothing half-moved. Returns the new path (None for a dry run)."""
     out = out or sys.stdout
     source, target = os.path.abspath(to_local(source)), os.path.abspath(to_local(target))
     p = lambda *a: print(*a, file=out)
     if not os.path.isdir(source):
         raise ToolError(f'{source} is not a folder')
+    if os.path.basename(source).lower() != 'recording_qa':
+        raise ToolError(f'{source} is not a folder named Recording_QA; this tool moves only Recording_QA (never the videos or the rest of Battle Logs)')
     if os.path.lexists(target):
         raise ToolError(f'{target} already exists; choose a path that does not exist')
     try:
         if os.path.commonpath([source, target]) == source:
-            raise ToolError('the target is inside the folder being moved')
+            raise ToolError('the target is inside Recording_QA')
     except ValueError:
         pass      # different drives on Windows: the same-drive check below refuses
     parent = os.path.dirname(target)
-    if not os.path.isdir(parent):
-        raise ToolError(f'the target\'s parent {parent} does not exist')
-    if os.stat(source).st_dev != os.stat(parent).st_dev:
+    make_parent = not os.path.isdir(parent)
+    if make_parent and not os.path.isdir(os.path.dirname(parent)):
+        raise ToolError(f'neither the target\'s parent {parent} nor the folder above it exists')
+    anchor = os.path.dirname(parent) if make_parent else parent
+    if os.stat(source).st_dev != os.stat(anchor).st_dev:
         raise ToolError('the target is on another drive: a move there is a copy of everything and is not done by this tool; use a path on the same drive')
-    old_qa = os.path.join(source, 'Recording_QA')
-    p(f'move: {to_windows(source)}  ->  {to_windows(target)}')
-    p('  (a rename on the same drive: instant, nothing is copied; OneDrive will see the folder leave and remove it from the cloud, so pause OneDrive first if you want to keep a cloud copy)')
-    stale = stale_references(source, repo)
-    for line in stale:
+    logs = os.path.dirname(source)
+    p(f'move ONLY Recording_QA (the frames and the packets): {to_windows(source)}  ->  {to_windows(target)}')
+    p('  a rename on the same drive: instant, nothing is copied' + (f'; the folder {to_windows(parent)} is created first' if make_parent else ''))
+    siblings = sorted(os.listdir(logs))
+    videos = [f for f in siblings if f.lower().endswith(('.mp4', '.mov', '.mkv')) and os.path.isfile(os.path.join(logs, f))]
+    folders = [f for f in siblings if os.path.isdir(os.path.join(logs, f)) and os.path.join(logs, f) != source]
+    p(f'  STAYS where it is, in OneDrive: everything else in {to_windows(logs)}: {len(videos)} video file{"" if len(videos) == 1 else "s"} at its top, the folders {", ".join(folders) or "(none)"}, and its files. The videos are not moved.')
+    p('  OneDrive will see Recording_QA leave and remove it from the cloud, INCLUDING the packets\' text outputs (ledgers, reviews, deck files): they exist nowhere else (the repo holds only the positions derived from them), so back them up first or pause OneDrive.')
+    if any(part.lower().startswith('onedrive') for part in to_windows(target).replace('/', '\\').split('\\')):
+        p('  WARNING: the target is still inside a OneDrive folder, so this would not take Recording_QA out of OneDrive.')
+    for line in stale_references(source, repo):
         p('  ' + line)
     if dry:
         p('dry run: nothing moved')
         return None
     if confirm is not None and not confirm():
         raise ToolError('not confirmed; nothing moved')
+    created = False
     try:
+        if make_parent:
+            os.mkdir(parent)
+            created = True
         os.rename(source, target)
     except OSError as e:
-        raise ToolError(f'the folder could not be moved ({e}); nothing was changed (close what has files open in it: Codex, OneDrive sync, Explorer)')
-    new_qa = os.path.join(target, 'Recording_QA')
+        if created:
+            try:
+                os.rmdir(parent)
+            except OSError:
+                pass
+        raise ToolError(f'Recording_QA could not be moved ({e}); nothing was changed (close what has files open in it: Codex, OneDrive sync, Explorer)')
     p('moved.')
-    p(f'Codex should now use: {to_windows(target)}   (Recording_QA: {to_windows(new_qa)})')
-    p(f'This tool finds it with --qa-root "{to_windows(new_qa)}" or the BATTLE_LOGS_QA variable.')
-    return new_qa
+    p(f'Codex should now use as its Recording_QA: {to_windows(target)}')
+    p(f'This tool finds it with --qa-root "{to_windows(target)}" or the BATTLE_LOGS_QA variable. The videos and the other files are still in {to_windows(logs)}.')
+    return target
 
 
 def stale_references(source, repo):
-    """what mentions the old path and will need the new one: the text files at the top of Battle Logs, and (when repo is given) the repo's files"""
-    needles = [to_windows(os.path.abspath(source)).lower(), os.path.abspath(source).lower(), 'onedrive\\desktop\\battle logs', 'onedrive/desktop/battle logs']
-    lines = []
-    top = []
-    for f in sorted(os.listdir(source)):
-        fp = os.path.join(source, f)
-        if os.path.isfile(fp) and f.lower().endswith(('.json', '.md', '.txt', '.csv', '.py', '.ps1')) and os.path.getsize(fp) < 50_000_000:
-            try:
-                with open(fp, encoding='utf-8', errors='replace') as fh:
-                    txt = fh.read().lower().replace('\\\\', '\\')
-            except OSError:
-                continue
-            n = sum(txt.count(x) for x in needles)
-            if n:
-                top.append((f, n))
-    if top:
-        lines.append('files at the top of Battle Logs that name the old path (not edited; update them or tell Codex): ' + ', '.join(f'{f} ({n}x)' for f, n in top))
+    """what will need the new path and is only listed, never edited: scripts and text at the top of Recording_QA and of each batch that name the old Battle Logs path or reach a file that stays
+    behind (MEDIA_LOCATIONS.json), and the repo's files that name the OneDrive path"""
+    logs = os.path.dirname(source)
+    needles = [to_windows(logs).lower(), logs.lower(), 'onedrive\\desktop\\battle logs', 'onedrive/desktop/battle logs', 'media_locations.json']
+    lines, hits = [], []
+    where = [source] + [os.path.join(source, d) for d in sorted(os.listdir(source)) if d.startswith('BATCH_') and os.path.isdir(os.path.join(source, d))]
+    for d in where:
+        for f in sorted(os.listdir(d)):
+            fp = os.path.join(d, f)
+            if os.path.isfile(fp) and f.lower().endswith(('.json', '.md', '.txt', '.csv', '.py', '.ps1')) and os.path.getsize(fp) < 20_000_000:
+                try:
+                    with open(fp, encoding='utf-8', errors='replace') as fh:
+                        txt = fh.read().lower().replace('\\\\', '\\')
+                except OSError:
+                    continue
+                n = sum(txt.count(x) for x in needles)
+                if n:
+                    hits.append((os.path.relpath(fp, source).replace(os.sep, '/'), n))
+    if hits:
+        lines.append(f'{len(hits)} files in Recording_QA name the Battle Logs path or MEDIA_LOCATIONS.json (not edited; Codex\'s scripts need the new path): ' + ', '.join(f'{f} ({n}x)' for f, n in hits[:12]) + (' ...' if len(hits) > 12 else ''))
+    lines.append('scripts that find files by a path relative to Recording_QA (for example ..\\Reviewed or ..\\MEDIA_LOCATIONS.json) cannot be found by this check and will break')
     if repo and os.path.isdir(repo):
         try:
             r = subprocess.run(['git', '-C', repo, 'grep', '-l', '-i', '-e', 'onedrive.desktop.battle logs'], capture_output=True, text=True)
             files = [l for l in r.stdout.split('\n') if l]
             if files:
-                lines.append(f'{len(files)} files in the repo name the OneDrive path (they keep working only as history): e.g. ' + ', '.join(files[:4]))
+                lines.append(f'{len(files)} files in the repo name the OneDrive path (they stay valid as history; a new run needs the new path): e.g. ' + ', '.join(files[:4]))
         except OSError:
             pass
     return lines
@@ -508,7 +533,7 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0], formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument('--dry-run', action='store_true', help='the default: report only')
     ap.add_argument('--apply', action='store_true', help='delete the frames of the batches marked delete')
-    ap.add_argument('--move-to', metavar='PATH', help='move the whole Battle Logs folder (the parent of Recording_QA) to PATH; refuses if PATH exists')
+    ap.add_argument('--move-to', metavar='PATH', help='move ONLY Recording_QA (the frames and the packets) to PATH, which becomes the new Recording_QA folder; the videos and the rest of Battle Logs stay in OneDrive; refuses if PATH exists')
     ap.add_argument('--yes', action='store_true', help='do not ask for the typed confirmation of --apply / --move-to')
     ap.add_argument('--only', action='append', metavar='BATCH', help='with --apply: only this batch (repeatable); it must have something to delete')
     ap.add_argument('--whole-batches-only', action='store_true', help='with --apply: only the batches marked DELETE (every game packet passes), nothing from a PARTIAL batch')
@@ -532,8 +557,7 @@ def main(argv=None):
         return ask
 
     if a.move_to:
-        source = os.path.dirname(qa_root)
-        move_folder(source, a.move_to, repo=a.repo, dry=a.dry_run, confirm=typed('MOVE', f'About to move {source}'))
+        move_recording_qa(qa_root, a.move_to, repo=a.repo, dry=a.dry_run, confirm=typed('MOVE', f'About to move ONLY Recording_QA ({qa_root}); the videos stay in OneDrive'))
         return 0
     view = RepoView(a.repo, a.ref, a.no_git)
     index = build_index(view)

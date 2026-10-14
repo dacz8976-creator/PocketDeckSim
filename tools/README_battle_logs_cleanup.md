@@ -2,7 +2,7 @@
 
 Sonnet ("Opus agents progress"), Oct 14, for Fable and Dustin. Branch `sonnet/battle-logs-cleanup`. **Nothing has been deleted or moved: `--apply` and `--move-to` were never run, only the dry run (read-only).**
 
-Codex's video frames (jpg/png) in `Battle Logs\Recording_QA` are choking OneDrive. This tool deletes the frames of game packets whose results are safely in the repo, and, separately, moves the whole Battle Logs folder out of OneDrive. It deletes nothing else.
+Codex's video frames (jpg/png) in `Battle Logs\Recording_QA` are choking OneDrive. This tool deletes the frames of game packets whose results are safely in the repo, and, separately, moves **only `Recording_QA`** (the frames and the packets) out of OneDrive. **The videos are not moved: they stay where they are, in OneDrive, so they keep their cloud copy.** It deletes nothing else.
 
 ## The retention rule
 
@@ -10,7 +10,7 @@ Codex's video frames (jpg/png) in `Battle Logs\Recording_QA` are choking OneDriv
 |---|---|
 | **Text outputs** (json, txt, md: ledgers, reviews, deck files, receipts, scripts) | permanent. The tool never deletes one. |
 | **Frames** (jpg, jpeg, png inside a game packet) | may be deleted once their game is **in the repo** and its positions **passed review** (below), and the packet's own text outputs are still in its folder. Frames can be cut again from the video as long as the video stays. |
-| **Videos** | stay while their game has an open shot-list or rules question and through its season. The tool never touches a video (none is inside `Recording_QA`: the 203 videos, 112 GB, are in `Reviewed\` and the top of `Battle Logs\`). Deleting videos is a separate decision this tool does not make. |
+| **Videos** | stay while their game has an open shot-list or rules question and through its season. The tool never touches a video, and neither step moves one: none is inside `Recording_QA` (the 203 videos, 112 GB, are in `Reviewed\` and at the top of `Battle Logs\`), and `--move-to` takes only `Recording_QA`, so the videos stay in OneDrive with their cloud copy. Deleting videos is a separate decision this tool does not make. |
 
 ## "In the repo" is not what the brief said: read this first
 
@@ -60,7 +60,7 @@ wsl python3 "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/tools/bat
 | `--apply` | delete the frames of the game packets that pass. Prints the plan, asks you to type `DELETE`; `--yes` skips the question. Refuses while the audit list is not confirmed. |
 | `--whole-batches-only` | with `--apply`: only the batches marked DELETE. |
 | `--only BATCH` | with `--apply`: only this batch (repeatable); it must have something to delete. Delete one batch, look, then the next. |
-| `--move-to PATH` | the move (below). Separate from `--apply`: giving both is refused. |
+| `--move-to PATH` | move only `Recording_QA` to PATH (below); the videos stay in OneDrive. Separate from `--apply`: giving both is refused. |
 | `--qa-root PATH` | where `Recording_QA` is (default `C:\Users\dacz8\OneDrive\Desktop\Battle Logs\Recording_QA`, then `C:\Users\dacz8\BattleLogs\Recording_QA`, or `$BATTLE_LOGS_QA`). Windows or `/mnt/c` style works from WSL. |
 | `--ref REF`, `--repo DIR`, `--no-git`, `-v` | which git ref counts as committed (default `origin/main`), which checkout, the working-tree preview, every reason. |
 
@@ -73,15 +73,18 @@ wsl python3 "/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim/tools/bat
 - A log goes to `Recording_QA\CLEANUP_LOG_<UTC time>.jsonl`: one line per file removed (path relative to `Recording_QA`, bytes), failures, and a last line with the totals and the integrity result. It is a text file, so it is permanent too.
 - OneDrive sees the deletions like any others and removes the files from the cloud (they stay in its recycle bin for a while).
 
-## `--move-to PATH`
+## `--move-to PATH`: only Recording_QA
 
-`--move-to C:\Users\dacz8\BattleLogs` moves the whole `Battle Logs` folder (the parent of `Recording_QA`: 112 GB of videos, 21 GB of packets, the reviews) out of OneDrive and prints the path Codex should use. It is a **rename on the same drive**: instant, nothing is copied, nothing can be half-moved. It refuses when:
+`--move-to C:\Users\dacz8\BattleLogs\Recording_QA` moves **only** the `Recording_QA` folder (the frames and the packets) out of `Battle Logs` to PATH, which becomes the new `Recording_QA` folder, and prints the path Codex should use. **The videos and everything else in `Battle Logs` (the 203 videos, 112 GB, `Reviewed\`, `Original_OBS_Recording\`, `MEDIA_LOCATIONS.json`, the review notes) stay where they are, in OneDrive.** The dry-run report and the move's own output both say so, and list what stays. It is a **rename on the same drive**: instant, nothing is copied, nothing can be half-moved. It refuses when:
 
-- PATH already exists (even empty), is inside the folder being moved, or its parent does not exist;
-- PATH is on another drive (that would be a 130 GB copy; the tool does not do it);
+- the folder to move is not named `Recording_QA` (the tool never moves `Battle Logs` itself or anything else);
+- PATH already exists (even empty), is inside `Recording_QA`, or neither its parent nor the folder above the parent exists (one missing parent folder is created, and the output says so; it is removed again if the rename fails);
+- PATH is on another drive (that would be a copy of everything; the tool does not do it);
 - the rename fails (something has files open: Codex, Explorer, OneDrive sync). Nothing is changed in that case.
 
-It asks you to type `MOVE` (`--yes` skips this; with `--dry-run` it only prints the plan). Before it moves it lists what will go stale and does not edit any of it: text files at the top of `Battle Logs` that name the old path (`MEDIA_LOCATIONS.json` and others) and the files in the repo that name `OneDrive\Desktop\Battle Logs` (many: the Oct 12-13 read scripts and records mention `Recording_QA` or `Battle Logs`; they stay valid as history, only a new run needs the new path). After the move it prints, for Codex: `C:\Users\dacz8\BattleLogs` and `C:\Users\dacz8\BattleLogs\Recording_QA`. Run the cleanup after it with `--qa-root`. **Pause OneDrive and close Codex's sessions first**; once the folder leaves OneDrive, OneDrive removes it from the cloud, so this is also a decision about the cloud copy of 130 GB.
+It asks you to type `MOVE` (`--yes` skips this; with `--dry-run` it only prints the plan and warns if PATH is still inside a OneDrive folder). Before it moves it lists what will go stale and edits none of it: the scripts and text at the top of `Recording_QA` and of each batch that name the old `Battle Logs` path or `MEDIA_LOCATIONS.json` (a file that stays behind), and the repo's files that name `OneDrive\Desktop\Battle Logs` (the Oct 12-13 read scripts and records; they stay valid as history, a new run needs the new path). It also says that scripts which reach files by a path *relative* to `Recording_QA` (`..\Reviewed`, `..\MEDIA_LOCATIONS.json`) cannot be found by a check and will break. After the move it prints the new `Recording_QA` path for Codex; run this tool afterwards with `--qa-root` (or `BATTLE_LOGS_QA`).
+
+**What leaves OneDrive, and one thing to settle first.** Moving `Recording_QA` out of OneDrive removes it from the cloud, including the packets' **text outputs** (ledgers, reviews, deck files, receipts). Those are the permanent part of the retention rule and exist nowhere else: the repo holds only the positions derived from them (see above). Back the text files up before the move (or pause OneDrive while deciding); this tool does not do that. **Pause OneDrive and close Codex's sessions before moving.**
 
 ## The dry run of Oct 14 (this branch, `--ref sonnet/battle-logs-cleanup`, `dry_run_2026-10-14.txt`)
 
@@ -101,14 +104,14 @@ It asks you to type `MOVE` (`--yes` skips this; with `--dry-run` it only prints 
 ## Tests
 
 ```
-cd tools && python3 -B -m unittest -v test_battle_logs_cleanup      # 48 tests, made-up folder trees only
+cd tools && python3 -B -m unittest -v test_battle_logs_cleanup      # 55 tests, made-up folder trees only
 ```
 
-They cover: the decision rule (each of the four conditions failing alone and together; a partial batch; a batch with no packets; support folders and batch-level images not deciding; names that are not game packets; an audit entry that names another folder; no audit list committed), the committed-state reading (only `pause_games_*` folders; positions must be next to the meta; with git, a file that is only in the working tree is not committed), the delete scope (frames at any depth and in any case go; nothing else does: no json/txt/md/py, no video, nothing in a keep batch, in a non-game sub-folder, at the batch level, in the folder next to `Recording_QA` or in non-BATCH folders inside it; symlinks to files and folders are not followed; empty folders stay; a path outside, a non-frame path and a support-folder path are refused by the plan; unconfirmed audit, a "no", missing terminal and `--only` rules; the log; the integrity check catching a vanished text file), the move (the whole tree is renamed with identical contents; existing target, target inside, missing parent, dry run, a "no", a failing rename leave everything in place) and the command line (the default changes nothing; `--apply` with an unconfirmed list refuses even with `--yes`; `--dry-run` wins over `--apply`).
+They cover: the decision rule (each of the four conditions failing alone and together; a partial batch; a batch with no packets; support folders and batch-level images not deciding; names that are not game packets; an audit entry that names another folder; no audit list committed), the committed-state reading (only `pause_games_*` folders; positions must be next to the meta; with git, a file that is only in the working tree is not committed), the delete scope (frames at any depth and in any case go; nothing else does: no json/txt/md/py, no video, nothing in a keep batch, in a non-game sub-folder, at the batch level, in the folder next to `Recording_QA` or in non-BATCH folders inside it; symlinks to files and folders are not followed; empty folders stay; a path outside, a non-frame path and a support-folder path are refused by the plan; unconfirmed audit, a "no", missing terminal and `--only` rules; the log; the integrity check catching a vanished text file), the move (only `Recording_QA` is renamed, with identical contents, and the videos and every other file of Battle Logs are untouched; the output says what stays; a folder not named `Recording_QA`, an existing target, a target inside, a target two levels below a missing folder, a dry run, a "no" and a failing rename leave everything in place; one missing parent is created and said, and removed again if the rename fails; scripts that name the old path are listed, not edited; a target still inside OneDrive is warned about) and the command line (the default changes nothing; `--apply` with an unconfirmed list refuses even with `--yes`; `--dry-run` wins over `--apply`).
 
 ## Not done, not known
 
 - **Windows is untested.** The tests and the dry run ran under WSL (Linux Python on `/mnt/c`). The Windows-only parts (reparse points, `os.rename` on NTFS inside OneDrive, Windows path forms from PowerShell) are written but have not run on Windows. That is why the README runs it through `wsl`.
 - The audit list is Sonnet's proposal; no one has confirmed it. The tool will not delete until someone does.
-- Frames in the 105 folders outside `BATCH_*`, the videos, and the cloud copy are outside this tool.
+- Frames in the 105 folders outside `BATCH_*` and the videos are outside this tool. The packets' text outputs have no cloud copy once `Recording_QA` leaves OneDrive and no copy in the repo; backing them up is not done here.
 - A game with positions in the repo can still have been converted from a ledger that is later corrected; its frames are then gone and only the video can answer. That is the cost of the rule and why videos stay through the season.

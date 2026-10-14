@@ -385,67 +385,117 @@ class DeleteScope(unittest.TestCase):
         self.assertIn('nothing to delete', out.getvalue())
 
 
-class MovingTheFolder(unittest.TestCase):
+class MovingRecordingQA(unittest.TestCase):
+    """--move-to moves ONLY Recording_QA: the videos and the rest of Battle Logs stay where they are (in OneDrive)"""
+
     def setUp(self):
         self.t = Tree(self)
         self.t.game('BATCH_A', '20261001_000000001_iOS')
         self.t.outside()
-        self.target = os.path.join(self.t.root, 'BattleLogs')
+        self.base = os.path.join(self.t.root, 'BattleLogs')              # does not exist yet: its parent, the temp root, does
+        self.target = os.path.join(self.base, 'Recording_QA')
 
     def move(self, **kw):
         out = io.StringIO()
-        return bl.move_folder(self.t.logs, kw.pop('target', self.target), out=out, **kw), out.getvalue()
+        return bl.move_recording_qa(kw.pop('source', self.t.qa), kw.pop('target', self.target), out=out, **kw), out.getvalue()
 
-    def test_the_whole_folder_is_renamed_and_the_new_path_is_printed(self):
+    def test_only_recording_qa_is_renamed_and_the_new_path_is_printed(self):
         before = self.t.files()
         new, out = self.move(confirm=lambda: True)
-        self.assertEqual(new, os.path.join(self.target, 'Recording_QA'))
-        self.assertIn('Codex should now use', out)
-        self.assertFalse(os.path.exists(self.t.logs))
+        self.assertEqual(new, self.target)
+        self.assertIn('Codex should now use as its Recording_QA', out)
+        self.assertFalse(os.path.exists(self.t.qa))
         moved = {os.path.relpath(os.path.join(r, f), self.target): os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(self.target) for f in fs}
-        self.assertEqual(moved, {os.path.relpath(p, 'Battle Logs'): s for p, s in before.items()})
+        want = {os.path.relpath(p, os.path.join('Battle Logs', 'Recording_QA')): s for p, s in before.items() if p.startswith(os.path.join('Battle Logs', 'Recording_QA') + os.sep)}
+        self.assertEqual(moved, want)
+
+    def test_the_videos_and_every_other_file_of_battle_logs_stay_where_they_are(self):
+        before = self.t.files()
+        self.move(confirm=lambda: True)
+        after = {os.path.relpath(os.path.join(r, f), self.t.root): os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(self.t.logs) for f in fs}
+        stay = {p: s for p, s in before.items() if not p.startswith(os.path.join('Battle Logs', 'Recording_QA') + os.sep)}
+        self.assertEqual(after, stay)
+        self.assertTrue(any(p.endswith('.MP4') for p in after))
+
+    def test_the_output_says_what_stays_and_what_leaves_onedrive(self):
+        _, out = self.move(dry=True)
+        self.assertIn('STAYS where it is, in OneDrive', out)
+        self.assertIn('The videos are not moved', out)
+        self.assertIn('1 video file at its top', out)     # the one .MP4 at the top of the made-up Battle Logs (the one in Reviewed/ is in a folder, which is named)
+        self.assertIn('Reviewed', out)
+        self.assertIn('text outputs', out)
+
+    def test_a_folder_that_is_not_recording_qa_is_never_moved(self):
+        with self.assertRaises(SystemExit) as cm:
+            self.move(source=self.t.logs, confirm=lambda: True)
+        self.assertIn('not a folder named Recording_QA', str(cm.exception))
+        self.assertTrue(os.path.isdir(self.t.logs) and not os.path.exists(self.base))
 
     def test_a_target_that_exists_is_refused_even_when_empty(self):
         os.makedirs(self.target)
         with self.assertRaises(SystemExit) as cm:
             self.move(confirm=lambda: True)
         self.assertIn('already exists', str(cm.exception))
-        self.assertTrue(os.path.isdir(self.t.logs))
+        self.assertTrue(os.path.isdir(self.t.qa))
 
-    def test_a_target_inside_the_folder_is_refused(self):
+    def test_a_target_inside_recording_qa_is_refused(self):
         with self.assertRaises(SystemExit) as cm:
-            self.move(target=os.path.join(self.t.logs, 'inner'), confirm=lambda: True)
+            self.move(target=os.path.join(self.t.qa, 'inner'), confirm=lambda: True)
         self.assertIn('inside', str(cm.exception))
 
-    def test_a_target_whose_parent_is_missing_is_refused(self):
-        with self.assertRaises(SystemExit):
-            self.move(target=os.path.join(self.t.root, 'nope', 'BattleLogs'), confirm=lambda: True)
+    def test_a_target_two_levels_below_a_missing_folder_is_refused(self):
+        with self.assertRaises(SystemExit) as cm:
+            self.move(target=os.path.join(self.t.root, 'nope', 'deeper', 'Recording_QA'), confirm=lambda: True)
+        self.assertIn('neither', str(cm.exception))
+        self.assertFalse(os.path.exists(os.path.join(self.t.root, 'nope')))
 
-    def test_the_dry_run_moves_nothing_and_does_not_ask(self):
+    def test_one_missing_parent_folder_is_created_and_said(self):
+        _, out = self.move(confirm=lambda: True)
+        self.assertTrue(os.path.isdir(self.base))
+        self.assertIn('is created first', out)
+
+    def test_an_existing_parent_is_not_announced_as_created(self):
+        os.makedirs(self.base)
+        _, out = self.move(confirm=lambda: True)
+        self.assertNotIn('is created first', out)
+        self.assertTrue(os.path.isdir(self.target))
+
+    def test_the_dry_run_moves_nothing_creates_nothing_and_does_not_ask(self):
         new, out = self.move(dry=True, confirm=lambda: self.fail('asked'))
         self.assertIsNone(new)
         self.assertIn('dry run', out)
-        self.assertTrue(os.path.isdir(self.t.logs))
-        self.assertFalse(os.path.exists(self.target))
+        self.assertTrue(os.path.isdir(self.t.qa))
+        self.assertFalse(os.path.exists(self.base))
 
     def test_a_no_moves_nothing(self):
         with self.assertRaises(SystemExit):
             self.move(confirm=lambda: False)
-        self.assertTrue(os.path.isdir(self.t.logs))
+        self.assertTrue(os.path.isdir(self.t.qa))
+        self.assertFalse(os.path.exists(self.base))
 
-    def test_a_rename_that_fails_leaves_everything_where_it_was(self):
+    def test_a_rename_that_fails_leaves_everything_where_it_was_and_removes_the_folder_it_made(self):
         with mock.patch.object(bl.os, 'rename', side_effect=PermissionError('in use')):
             with self.assertRaises(SystemExit) as cm:
                 self.move(confirm=lambda: True)
         self.assertIn('nothing was changed', str(cm.exception))
-        self.assertTrue(os.path.isdir(self.t.logs))
+        self.assertTrue(os.path.isdir(self.t.qa))
+        self.assertFalse(os.path.exists(self.base))
 
-    def test_files_that_name_the_old_path_are_listed_not_edited(self):
-        write(os.path.join(self.t.logs, 'MEDIA_LOCATIONS.json'), json.dumps({'a': r'C:\Users\dacz8\OneDrive\Desktop\Battle Logs\x.MP4'}))
+    def test_files_in_recording_qa_that_name_the_old_path_or_a_file_that_stays_are_listed_not_edited(self):
+        script = os.path.join(self.t.qa, 'intake.py')
+        write(script, r"BASE = r'C:\Users\dacz8\OneDrive\Desktop\Battle Logs'" + "\nopen('../MEDIA_LOCATIONS.json')")
+        write(os.path.join(self.t.qa, 'BATCH_A', 'accept.py'), "x = 'media_locations.json'")
         _, out = self.move(dry=True)
-        self.assertIn('MEDIA_LOCATIONS.json', out)
-        with open(os.path.join(self.t.logs, 'MEDIA_LOCATIONS.json')) as f:
+        self.assertIn('intake.py', out)
+        self.assertIn('BATCH_A/accept.py', out)
+        self.assertIn('relative', out)
+        with open(script) as f:
             self.assertIn('OneDrive', f.read())
+
+    def test_a_target_still_inside_onedrive_is_warned_about(self):
+        os.makedirs(os.path.join(self.t.root, 'OneDrive'))
+        _, out = self.move(target=os.path.join(self.t.root, 'OneDrive', 'QA'), dry=True)
+        self.assertIn('still inside a OneDrive folder', out)
 
 
 class PathsAndCommandLine(unittest.TestCase):
@@ -485,6 +535,8 @@ class PathsAndCommandLine(unittest.TestCase):
         self.assertRegex(out, r'BATCH_B\s+keep')
         self.assertIn('not in the repo', out)
         self.assertIn('confirmed: NO', out)
+        self.assertIn('moves ONLY Recording_QA', out)
+        self.assertIn('videos and the rest of Battle Logs stay', out)
 
     def test_apply_with_an_unconfirmed_audit_list_refuses_even_with_yes(self):
         t, repo = self.make()
@@ -505,7 +557,7 @@ class PathsAndCommandLine(unittest.TestCase):
     def test_apply_and_move_cannot_be_combined_and_dry_run_wins_over_apply(self):
         t, repo = self.make()
         with self.assertRaises(SystemExit):
-            bl.main(['--qa-root', t.qa, '--repo', repo, '--no-git', '--apply', '--move-to', os.path.join(t.root, 'x')])
+            bl.main(['--qa-root', t.qa, '--repo', repo, '--no-git', '--apply', '--move-to', os.path.join(t.root, 'x', 'Recording_QA')])
         write(os.path.join(repo, AUDIT), json.dumps({'confirmed': 'laptop', 'games': {'kw-261001_000000001': {'folder': 'BATCH_A/20261001_000000001_iOS'}}}))
         before = t.files()
         self.run_main(['--qa-root', t.qa, '--repo', repo, '--no-git', '--apply', '--yes', '--dry-run'])
@@ -521,6 +573,17 @@ class PathsAndCommandLine(unittest.TestCase):
         self.assertTrue(gone and all('BATCH_A' in p and p.lower().endswith(bl.FRAME_EXT) for p in gone))
         self.assertIn('integrity check', out)
         self.assertTrue([p for p in after if os.path.basename(p).startswith('CLEANUP_LOG_')])
+
+    def test_move_to_from_the_command_line_moves_only_recording_qa_after_a_yes(self):
+        t, repo = self.make()
+        write(os.path.join(t.logs, 'MEDIA_LOCATIONS.json'), '{}')
+        target = os.path.join(t.root, 'Moved', 'Recording_QA')
+        code, out = self.run_main(['--qa-root', t.qa, '--repo', repo, '--move-to', target, '--yes'])
+        self.assertEqual(code, 0)
+        self.assertTrue(os.path.isdir(os.path.join(target, 'BATCH_A')))
+        self.assertFalse(os.path.exists(t.qa))
+        self.assertTrue(os.path.exists(os.path.join(t.logs, 'MEDIA_LOCATIONS.json')))
+        self.assertIn('Codex should now use as its Recording_QA', out)
 
     def test_a_qa_root_that_is_not_there_is_refused(self):
         with self.assertRaises(SystemExit):
