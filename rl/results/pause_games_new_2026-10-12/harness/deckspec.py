@@ -53,9 +53,21 @@ def entry_ids(d):
     return list(dict.fromkeys(out))
 
 
+ENTITY_RE = re.compile(r'semantic[\s_-]*entity[\s_#:-]*(\d+)', re.I)
+
+
 def entry_entity(d):
+    """the QR's semantic entity of a deck entry: its `entity_id`, else the number in a string the file writes instead ('semantic entity 20770' in `variant`, as game 20261013_022530000's DECK_USED.json does)"""
     e = d.get('entity_id', d.get('semantic_entity_id'))
-    return e if isinstance(e, int) else None
+    if isinstance(e, int):
+        return e
+    for f in ALIAS_FIELDS + ('variant_as_shown_in_log',):
+        v = d.get(f)
+        for s in ([v] if isinstance(v, str) else [x for x in v if isinstance(x, str)] if isinstance(v, list) else []):
+            m = ENTITY_RE.search(s)
+            if m:
+                return int(m.group(1))
+    return None
 
 
 def expand(lst):
