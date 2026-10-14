@@ -4,7 +4,8 @@
   python3 make_audited_games.py [--ref origin/main]     (run from anywhere; reads the committed games_meta.json and positions_all.json files at the ref)
 
 This is PROPOSED by Sonnet (Oct 14) from the records on main; it decides nothing until a person writes an acceptance into it and commits it: "confirmed": {"by": ..., "date": "YYYY-MM-DD", "games_sha256": ...},
-where games_sha256 is what `python3 tools/battle_logs_cleanup.py --audit-hash` prints for the games listed then (a later edit to `games` invalidates the acceptance). Two tiers:
+where "by" is Dustin ("Dustin" or "Dustin via the laptop": the retention decision is his) and games_sha256 is what `python3 tools/battle_logs_cleanup.py --audit-hash` prints for the games listed then (a later edit
+to `games` invalidates the acceptance). Two tiers:
   games   (deletable once accepted): the games of rl/results/pause_games_new_2026-10-12/games_meta.json (BATCH_2026-10-06, -09 and -11) THAT HAVE POSITIONS in the positions_all.json beside it: the laptop's first panel read
           all three batches against Codex's ledgers (REVIEW_POSITIONS_laptop.md, e9a7d35e: not ready), Sonnet's converter fix was then verified by the laptop's two panels (2eff1be6, 43b7d71d: every first-panel error
           fixed, byte-for-byte regeneration) and the positions were checked again after the Special Condition / knock-out change (28df6315, REVIEW_PGFIX_laptop.md: the 125 positions regenerate identical). Each entry
@@ -23,8 +24,14 @@ TIER_A = 'rl/results/pause_games_new_2026-10-12/games_meta.json'
 TIER_B = 'rl/results/pause_games_new_2026-10-13/v2/games_meta.json'
 
 
+def commit(ref):
+    """the commit a ref names, as the tool reads it: 'origin/main' is the remote-tracking ref (never a local branch of that name), and a local `git replace` is not honoured"""
+    return subprocess.run(['git', '--no-replace-objects', '-C', ROOT, 'rev-parse', '--verify', ('refs/remotes/origin/main' if ref == 'origin/main' else ref) + '^{commit}'],
+                          capture_output=True, text=True, check=True).stdout.strip()
+
+
 def show(ref, path):
-    return json.loads(subprocess.run(['git', '-C', ROOT, 'show', f'{ref}:{path}'], capture_output=True, text=True, check=True).stdout)
+    return json.loads(subprocess.run(['git', '--no-replace-objects', '-C', ROOT, 'show', f'{commit(ref)}:{path}'], capture_output=True, text=True, check=True).stdout)
 
 
 def counts(ref, meta_path):
@@ -56,7 +63,7 @@ def main():
     doc = {
         'schema': 'battle-logs-retention/audited-games-v3',
         'confirmed': None,
-        'confirmed_help': 'A person writes here {"by": "<a name>", "date": "YYYY-MM-DD", "games_sha256": "<what `wsl python3 tools/battle_logs_cleanup.py --audit-hash` prints>"} and commits it to main and pushes; tools/battle_logs_cleanup.py --apply refuses while it is missing, malformed, or no longer matches `games`.',
+        'confirmed_help': 'Dustin\'s decision, written down by him or for him (nothing but these three keys may be in it): {"by": "Dustin" or "Dustin via the laptop", "date": "YYYY-MM-DD", "games_sha256": "<what `wsl python3 tools/battle_logs_cleanup.py --audit-hash` prints>"}; commit it to main and push, then `git fetch origin`. tools/battle_logs_cleanup.py --apply refuses while it is missing, malformed, not Dustin\'s name, or no longer matches `games`; withdraw it by setting "confirmed" back to null.',
         'proposed_by': 'Sonnet (Opus agents progress), 2026-10-14, from the records on main; see make_audited_games.py for the evidence per tier',
         'games': games,
         'pending': pending,

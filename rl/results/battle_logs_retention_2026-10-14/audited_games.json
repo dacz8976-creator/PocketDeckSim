@@ -1,7 +1,7 @@
 {
  "schema": "battle-logs-retention/audited-games-v3",
  "confirmed": null,
- "confirmed_help": "A person writes here {\"by\": \"<a name>\", \"date\": \"YYYY-MM-DD\", \"games_sha256\": \"<what `wsl python3 tools/battle_logs_cleanup.py --audit-hash` prints>\"} and commits it to main and pushes; tools/battle_logs_cleanup.py --apply refuses while it is missing, malformed, or no longer matches `games`.",
+ "confirmed_help": "Dustin's decision, written down by him or for him (nothing but these three keys may be in it): {\"by\": \"Dustin\" or \"Dustin via the laptop\", \"date\": \"YYYY-MM-DD\", \"games_sha256\": \"<what `wsl python3 tools/battle_logs_cleanup.py --audit-hash` prints>\"}; commit it to main and push, then `git fetch origin`. tools/battle_logs_cleanup.py --apply refuses while it is missing, malformed, not Dustin's name, or no longer matches `games`; withdraw it by setting \"confirmed\" back to null.",
  "proposed_by": "Sonnet (Opus agents progress), 2026-10-14, from the records on main; see make_audited_games.py for the evidence per tier",
  "games": {
   "kw-261004_213625000": {

@@ -3,6 +3,7 @@
 
   cd tools && python3 -B -m unittest -v test_battle_logs_import_packets"""
 import contextlib, hashlib, io, json, os, shutil, subprocess, sys, tempfile, unittest
+from unittest import mock
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -330,6 +331,100 @@ class IsTheCopyCurrent(unittest.TestCase):
         g('commit', '-q', '-m', 'first')
         probs = imp.import_problems(self.w.bl, self.w.repo, ref='main')
         self.assertTrue(probs and 'not at main' in probs[0])
+
+    def test_a_text_output_the_import_would_skip_is_a_problem_not_a_pass(self):
+        # it is in no copy, so it cannot be shown to be committed (the size and path limits are the import's)
+        self.w.p('Recording_QA/BATCH_A/20261001_000000001_iOS/huge_ledger.json', b'z' * 2_000_000)
+        probs = self.problems(no_git=True, max_file_mb=1)
+        self.assertTrue([p for p in probs if 'larger than 1 MB' in p and 'huge_ledger.json' in p], probs)
+        deep = '/'.join(['d' * 40] * 5)
+        self.w.p('Recording_QA/BATCH_A/20261001_000000001_iOS/' + deep + '/x.json')
+        probs = self.problems(no_git=True)
+        self.assertTrue([p for p in probs if 'path too long' in p or 'too long for a Windows checkout' in p], probs)
+
+    @unittest.skipIf(os.name == 'nt', 'symlinks need privileges on Windows')
+    def test_a_link_the_scan_could_not_follow_means_a_text_output_behind_it_cannot_be_shown_to_be_committed(self):
+        elsewhere = os.path.join(self.w.root, 'elsewhere')
+        write(os.path.join(elsewhere, 'REVIEW.md'), '# only here')
+        os.symlink(elsewhere, os.path.join(self.w.qa, 'BATCH_A', '20261001_000000001_iOS', 'linked'))
+        probs = self.problems(no_git=True)
+        self.assertTrue([p for p in probs if '1 x link' in p and 'could not be examined' in p], probs)
+
+    def test_a_folder_the_scan_cannot_read_is_a_problem(self):
+        real = os.scandir
+
+        def scandir(path):
+            if os.fspath(path).endswith(os.path.join('20261001_000000001_iOS', 'sub')):
+                raise PermissionError(13, 'denied')
+            return real(path)
+        with mock.patch.object(imp.os, 'scandir', scandir):
+            probs = self.problems(no_git=True)
+        self.assertTrue([p for p in probs if 'folder not readable' in p and 'could not be examined' in p], probs)
+
+    def test_a_recording_qa_with_no_text_outputs_at_all_is_a_problem_not_a_pass(self):
+        bl2 = os.path.join(self.w.root, 'Empty Battle Logs')
+        os.makedirs(os.path.join(bl2, 'Recording_QA'))
+        probs = imp.import_problems(bl2, self.w.repo, no_git=True)
+        self.assertTrue([p for p in probs if 'no text outputs at all' in p], probs)
+
+    def test_a_second_check_with_the_same_cache_hashes_only_what_changed(self):
+        cache = {}
+        self.assertEqual(self.problems(no_git=True, cache=cache), [])
+        self.assertTrue(cache)
+        counted = []
+        real, copy = imp.blob_sha1, imp.working_blobs(self.w.repo)           # (the hashing of the copy in the working tree is not what is counted)
+        with mock.patch.object(imp, 'working_blobs', lambda *a, **k: copy), mock.patch.object(imp, 'blob_sha1', lambda data: counted.append(1) or real(data)):
+            self.assertEqual(self.problems(no_git=True, cache=cache), [])
+            self.assertEqual(counted, [], 'nothing changed: nothing hashed again')
+            path = os.path.join(self.w.qa, 'BATCH_A', '20261001_000000001_iOS', 'REVIEW.md')
+            self.w.p('Recording_QA/BATCH_A/20261001_000000001_iOS/REVIEW.md', '# review, corrected')
+            os.utime(path, ns=(2_000_000_000_000_000_000, 2_000_000_000_000_000_000))
+            probs = self.problems(no_git=True, cache=cache)
+        self.assertEqual(len(counted), 1, 'only the changed file was read again')
+        self.assertTrue(probs and 'differ from the copy' in probs[0])
+
+    def test_files_that_leave_with_the_folder_but_are_not_copied_are_reported_in_info(self):
+        info = {}
+        self.assertEqual(self.problems(no_git=True, info=info), [])
+        text = ' | '.join(info['uncopied'])
+        self.assertIn('.zip', text)
+        self.assertIn('.wav', text)
+        self.assertIn('vendored or cache folder', text)
+        self.assertNotIn('video', text)
+        self.assertNotIn('image', text)
+
+    def test_the_source_is_the_first_default_that_has_a_recording_qa_in_it(self):
+        no_qa = os.path.join(self.w.root, 'No QA Here')
+        os.makedirs(no_qa)
+        with mock.patch.dict(os.environ, {'BATTLE_LOGS': no_qa}):
+            try:
+                found = imp.find_source()
+            except SystemExit:
+                found = None
+        self.assertNotEqual(found, no_qa, 'a Battle Logs folder without Recording_QA (the one left after --move-to) is not the source')
+        with mock.patch.dict(os.environ, {'BATTLE_LOGS': self.w.bl}):
+            self.assertEqual(imp.find_source(), os.path.abspath(self.w.bl))
+
+    @unittest.skipUnless(shutil.which('git'), 'git not installed')
+    def test_origin_main_means_the_remote_tracking_ref_not_a_local_branch_of_that_name(self):
+        g = lambda *a: subprocess.run(['git', '-C', self.w.repo, '-c', 'user.name=t', '-c', 'user.email=t@t', *a], check=True, capture_output=True, text=True)
+        g('init', '-q', '-b', 'main')
+        write(os.path.join(self.w.repo, 'README'), 'x')
+        g('add', 'README')
+        g('commit', '-q', '-m', 'first')
+        g('branch', 'origin/main')                                   # a local branch that shadows the short name, at a commit without the packets
+        g('add', imp.DEST)
+        g('commit', '-q', '-m', 'packets')
+        g('update-ref', 'refs/remotes/origin/main', 'HEAD')
+        self.assertEqual(imp.import_problems(self.w.bl, self.w.repo, ref='origin/main'), [])
+
+    def test_check_from_the_command_line_notes_what_leaves_without_a_copy(self):
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            code = imp.main(['--source', self.w.bl, '--repo', self.w.repo, '--check'])
+        self.assertEqual(code, 0)
+        self.assertIn('NOTE: these files of Recording_QA are not text outputs and are not copied into git', out.getvalue())
+        self.assertIn('.zip', out.getvalue())
 
     def test_check_from_the_command_line_exits_1_when_not_current(self):
         self.w.p('Recording_QA/BATCH_A/20261001_000000001_iOS/NEW.json', '{"n": 1}')

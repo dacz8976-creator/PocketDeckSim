@@ -6,6 +6,9 @@ GitHub is their backup before Recording_QA is moved out of OneDrive (tools/battl
   python3 tools/battle_logs_import_packets.py --dry-run    the report only: nothing is written
   python3 tools/battle_logs_import_packets.py --check      is the copy in the repository current? (exit 1 if not; writes nothing)
   python3 tools/battle_logs_import_packets.py --check --ref origin/main    ...and is it COMMITTED at that ref, byte for byte? (what --move-to asks)
+--check is strict: a text output the import would skip (over --max-file-mb, a path too long), a folder or entry the scan could not examine (not readable, a link) and a Recording_QA with no text outputs
+at all are reported as not current, and it notes the files that are not text outputs and not copied (zips, audio, vendored folders), which leave OneDrive's cloud if Recording_QA is moved.
+The source is the first of $BATTLE_LOGS, C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs and C:\\Users\\dacz8\\BattleLogs that has a Recording_QA folder (--source names it).
 
 The source is only ever read. Images (jpg, png, ...), videos and every binary are never copied; what is copied is chosen by extension (json, jsonl, txt, md, csv, tsv, log, html, py, ps1, sh,
 and the backups named like x.json.before_completion), and not from the vendored dependency folders (deps, qr_dependencies, __pycache__, *.dist-info). Layout under the destination:
@@ -29,7 +32,7 @@ EXCLUDED_SUFFIX = ('.dist-info', '.egg-info')
 GAME_PACKET = re.compile(r'^\d{8}_\d{6,9}_iOS')
 WINDOWS_PREFIX = len(r'C:\Users\dacz8\Projects\Pocket Deck Sim\PocketDeckSim') + 1      # the Windows checkout the repo lives in; a path over 260 characters breaks tools there
 MAX_PATH = 255
-REPARSE = 0x400
+SURROGATE_TAGS = (0xA000000C, 0xA0000003)        # symlink, junction: OneDrive's own reparse points (every synced file has one) are ordinary files
 SCHEMA = 'battle-log-packets/manifest-v1'
 
 
@@ -57,11 +60,12 @@ def to_local(p):
 
 
 def find_source(given=None):
+    """the Battle Logs folder: --source, else the first default that has a Recording_QA folder in it (after `cleanup --move-to` the OneDrive Battle Logs is still there, with the videos, but without it)"""
     cands = [given] if given else [os.environ.get('BATTLE_LOGS'), r'C:\Users\dacz8\OneDrive\Desktop\Battle Logs', r'C:\Users\dacz8\BattleLogs']
     for c in cands:
-        if c and os.path.isdir(to_local(c)):
+        if c and os.path.isdir(to_local(c)) and (given or os.path.isdir(os.path.join(to_local(c), 'Recording_QA'))):
             return os.path.abspath(to_local(c))
-    raise ToolError('the Battle Logs folder was not found; give --source (tried ' + ', '.join(str(c) for c in cands if c) + ')')
+    raise ToolError('a Battle Logs folder with a Recording_QA in it was not found; give --source (tried ' + ', '.join(str(c) for c in cands if c) + ')')
 
 
 def dest_rel(source_rel):
@@ -129,7 +133,7 @@ def scan_source(source, include_root=True, only_qa=False):
                     if e.is_symlink():
                         sc.skip('link', example=e.path)
                     elif e.is_dir(follow_symlinks=False):
-                        if getattr(e.stat(follow_symlinks=False), 'st_file_attributes', 0) & REPARSE:
+                        if getattr(e.stat(follow_symlinks=False), 'st_reparse_tag', 0) in SURROGATE_TAGS:
                             sc.skip('reparse point', example=e.path)
                         elif excluded_dir(e.name):
                             sc.skip('vendored or cache folder (' + e.name + ')', example=e.path)
@@ -139,7 +143,7 @@ def scan_source(source, include_root=True, only_qa=False):
                         st = e.stat(follow_symlinks=False)
                         rel = os.path.relpath(e.path, source).replace(os.sep, '/')
                         low = e.name.lower()
-                        if getattr(st, 'st_file_attributes', 0) & REPARSE:
+                        if getattr(st, 'st_reparse_tag', 0) in SURROGATE_TAGS:
                             sc.skip('reparse point', example=rel)
                         elif low.endswith(IMAGE_EXT):
                             sc.skip('image', st.st_size)
@@ -289,7 +293,8 @@ def run(source, repo, dest_dir=DEST, dry=False, max_total_mb=200, max_file_mb=50
 def committed_blobs(repo, ref, dest_dir=DEST):
     """{path under the destination: git blob id} of the files committed at ref (a git ref), or None when git cannot read the ref"""
     try:
-        r = subprocess.run(['git', '-C', repo, 'ls-tree', '-r', '-z', ref, '--', dest_dir + '/'], capture_output=True)
+        # 'origin/main' means the remote-tracking ref, never a local branch or tag of that name; replace objects are not honoured
+        r = subprocess.run(['git', '--no-replace-objects', '-C', repo, 'ls-tree', '-r', '-z', 'refs/remotes/origin/main' if ref == 'origin/main' else ref, '--', dest_dir + '/'], capture_output=True)
     except OSError:
         return None
     if r.returncode != 0:
@@ -313,33 +318,67 @@ def working_blobs(repo, dest_dir=DEST):
     return out
 
 
-def import_problems(source, repo, ref='origin/main', no_git=False, dest_dir=DEST, max_file_mb=50):
+UNEXAMINED = ('folder not readable', 'link', 'reparse point', 'unreadable')       # what the scan could not look into: a text output there cannot be shown to be committed
+
+
+def import_problems(source, repo, ref='origin/main', no_git=False, dest_dir=DEST, max_file_mb=50, cache=None, info=None):
     """what is NOT yet safely copied: every wanted file of Recording_QA must be in the destination, byte for byte (by git's blob id), committed at `ref`
-    (or, with no_git, present in the working tree). -> list of problem lines; empty means the copy is current."""
+    (or, with no_git, present in the working tree). A text output the import would skip (over max_file_mb, a destination path too long), a folder or entry the scan could not examine, and a
+    Recording_QA with no text outputs at all are problems too. `cache` ({path: ((size, mtime_ns), blob id)}) lets a second call re-hash only what changed since the first; `info` (a dict)
+    receives 'uncopied': lines about files that are neither text outputs nor images/videos (zips, audio, vendored folders), which leave OneDrive's cloud with Recording_QA and are not in git.
+    -> list of problem lines; empty means the copy is current."""
     blobs = working_blobs(repo, dest_dir) if no_git else committed_blobs(repo, ref, dest_dir)
     if blobs is None:
         return [f'git cannot read {ref} in {repo}']
     sc = scan_source(os.path.abspath(source), only_qa=True)
-    missing, changed, skipped_big = [], [], 0
+    cache = {} if cache is None else cache
+    missing, changed, too_big, too_long = [], [], [], []
     for rel, ap, size in sc.files:
         d = dest_rel(rel)
-        if size > max_file_mb * 1048576 or WINDOWS_PREFIX + len(dest_dir) + 1 + len(d) > MAX_PATH:
-            skipped_big += 1
+        if size > max_file_mb * 1048576:
+            too_big.append(rel)
+            continue
+        if WINDOWS_PREFIX + len(dest_dir) + 1 + len(d) > MAX_PATH:
+            too_long.append(rel)
             continue
         if d not in blobs:
             missing.append(rel)
             continue
-        with open(ap, 'rb') as f:
-            if blob_sha1(f.read()) != blobs[d]:
-                changed.append(rel)
+        try:
+            st = os.stat(ap)
+            key = (st.st_size, st.st_mtime_ns)
+        except OSError:
+            key = None
+        hit = cache.get(ap)
+        if hit is not None and key is not None and hit[0] == key:
+            sha = hit[1]
+        else:
+            with open(ap, 'rb') as f:
+                sha = blob_sha1(f.read())
+            if key is not None:
+                cache[ap] = (key, sha)
+        if sha != blobs[d]:
+            changed.append(rel)
     where = 'in the working tree' if no_git else f'at {ref}'
     out = []
+    if not sc.files:
+        out.append('the scan found no text outputs at all in Recording_QA (is the folder really named Recording_QA?)')
     if missing:
         out.append(f'{len(missing):,} text files of Recording_QA are not {where} (e.g. {", ".join(missing[:3])})')
     if changed:
         out.append(f'{len(changed):,} text files of Recording_QA differ from the copy {where} (e.g. {", ".join(changed[:3])})')
+    if too_big:
+        out.append(f'{len(too_big):,} text files of Recording_QA are larger than {max_file_mb} MB, so the import skips them and they are in no copy (e.g. {", ".join(too_big[:3])})')
+    if too_long:
+        out.append(f'{len(too_long):,} text files of Recording_QA have a path too long for a Windows checkout, so the import skips them and they are in no copy (e.g. {", ".join(too_long[:3])})')
+    for why in UNEXAMINED:
+        if sc.skipped.get(why):
+            out.append(f'{sc.skipped[why]:,} x {why} in Recording_QA could not be examined, so text outputs in them cannot be shown to be {where} (e.g. {", ".join(sc.skipped_examples[why][:3])})')
     if 'MANIFEST.json' not in blobs:
         out.append(f'MANIFEST.json is not {where}')
+    if info is not None:
+        info['uncopied'] = [f'{n:,} x {why}' + (f' ({mb(sc.skipped_bytes[why])})' if sc.skipped_bytes[why] else '') for why, n in sorted(sc.skipped.items(), key=lambda x: -x[1])
+                            if why.startswith(('not a text output', 'vendored or cache folder'))]
     return out
 
 
@@ -356,9 +395,12 @@ def main(argv=None):
     a = ap.parse_args(argv)
     source = find_source(a.source)
     if a.check:
-        probs = import_problems(source, a.repo, a.ref or 'origin/main', no_git=not a.ref, max_file_mb=a.max_file_mb)
+        info = {}
+        probs = import_problems(source, a.repo, a.ref or 'origin/main', no_git=not a.ref, max_file_mb=a.max_file_mb, info=info)
         for line in probs:
             print('NOT CURRENT: ' + line)
+        if info.get('uncopied'):
+            print('NOTE: these files of Recording_QA are not text outputs and are not copied into git (they leave OneDrive\'s cloud with the folder if it is moved): ' + '; '.join(info['uncopied']))
         print('the copy is current' + (f' and committed at {a.ref}' if a.ref else ' in the working tree (not checked against git)') if not probs else '')
         return 1 if probs else 0
     run(source, a.repo, dry=a.dry_run, max_total_mb=a.max_total_mb, max_file_mb=a.max_file_mb)
