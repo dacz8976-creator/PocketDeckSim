@@ -94,6 +94,13 @@ row is approximate.
 
 These ran on the new harness, which carries Special Conditions and the knock-out count.
 
+The laptop's review of the Oct 12-13 positions, added on Oct 14 (`../pause_games_new_2026-10-13/v2/REVIEW_POSITIONS_laptop.md`), found
+field errors in two of these eight:
+- 203719 t17 gives the opponent's next Energy as Darkness; it should be Lightning.
+- 015659 t05 gives the opponent's hand as 5 cards; it should be 6.
+
+The other six are right on every field.
+
 **010837 t09 and t11.** His Glimmet is Active with Kingambit on his Bench. The opponent's Mega Kangaskhan ex is Active at t09, and at t11 it
 is on the Bench behind a 30-HP Pichu.
 - **km3 and F** retreat into Kingambit and use Overlord's Blade in 12 of 12 replays at both turns.
