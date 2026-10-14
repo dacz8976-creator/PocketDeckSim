@@ -1,5 +1,5 @@
 Recording_QA: /mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA
-Committed state read from: sonnet/battle-logs-cleanup (c049a572)
+Committed state read from: sonnet/battle-logs-cleanup (df45c504)
 Games with positions in the repo: 38; audit list: found; confirmed: NO (--apply will refuse)
 
 batch                                          verdict    games  to delete      size    stays      size  why
@@ -82,4 +82,5 @@ BATCH_2026-10-14_OLDER_FOUR                    keep       0/4            0      
 TO DELETE by --apply: 19,937 frames, 7.76 GB, from 3 batches (2 whole, 1 partial); with --whole-batches-only: 7,054 frames, 1.84 GB from the 2 whole batches
 STAYS: 26,379 frames, 7.41 GB in game packets that do not pass (and the sub-folder and batch-level images above)
 Only .jpg/.jpeg/.png files inside the game packets that pass are removed by --apply; json/txt/md, videos and everything outside Recording_QA never are.
+--move-to PATH (a separate step) moves ONLY Recording_QA (the frames and the packets) to PATH; the videos and the rest of Battle Logs stay where they are, in OneDrive.
 Outside BATCH_* (not in scope, never touched): 105 folders in Recording_QA holding 19,427 image files.
