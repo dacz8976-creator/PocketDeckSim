@@ -10,21 +10,21 @@ Pre-registration order: registered 2026-10-15T18:29:31Z; first game started 2026
 
 Self-check digests recorded at registration: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit b89b7ebea31d): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration); `selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit b89b7ebea31d): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration)
 
-- Planned 320 games; finished 80; complete pairs 40 (= 80 games); unpaired games 0; errors 0.
+- Planned 320 games; finished 120; complete pairs 60 (= 120 games); unpaired games 0; errors 0.
 - Paired difference = score(arm X) − score(arm ref) per (deck, opponent, deal, seat), in percentage points of score (win 1, tie ½). Intervals are mean ± 1.96·sd/√n over paired games. No pass/fail threshold.
 
 ## Result
 
-**Pooled over all 40 paired games: +22.5 ± 13.1 points** (arm X 70.0% vs arm ref 47.5% score).
+**Pooled over all 60 paired games: +21.7 ± 11.5 points** (arm X 71.7% vs arm ref 50.0% score).
 
 
 ### Per deck, pooled over its opponents
 
 | deck | paired games | arm X score | arm ref score | paired difference (points) | went first: diff | went second: diff |
 |---|---|---|---|---|---|---|
-| 13-a-big-malasada | 40 | 70.0% | 47.5% | +22.5 ± 13.1 | +27.8 ± 21.3 | +18.2 ± 16.5 |
+| 13-a-big-malasada | 60 | 71.7% | 50.0% | +21.7 ± 11.5 | +17.9 ± 17.6 | +25.0 ± 15.2 |
 
-Overall by who went first (identical in both arms): deck first +27.8 ± 21.3 (n=18); deck second +18.2 ± 16.5 (n=22).
+Overall by who went first (identical in both arms): deck first +17.9 ± 17.6 (n=28); deck second +25.0 ± 15.2 (n=32).
 
 ### Per (deck, opponent) pair
 
@@ -32,6 +32,7 @@ Overall by who went first (identical in both arms): deck first +27.8 ± 21.3 (n=
 |---|---|---|---|---|---|
 | 13-a-big-malasada | t-altaria | 20 | 55.0% | 20.0% | +35.0 ± 21.4 |
 | 13-a-big-malasada | t-blaziken | 20 | 85.0% | 75.0% | +10.0 ± 13.5 |
+| 13-a-big-malasada | t-hydreigon | 20 | 75.0% | 55.0% | +20.0 ± 22.9 |
 
 ## Runtime and cost
 
@@ -39,10 +40,10 @@ Wall time is per game on this machine with the threads the run used; it includes
 
 | arm | role | pilot | games | wall per game: mean / median / p95 / max | games per second (1 thread) | decisions per game | ms per decision: mean / median / p95 / max | decision time per game |
 |---|---|---|---|---|---|---|---|---|
-| X | deck seat | `kx3` | 40 | 442.65 / 380.36 / 831.20 / 982.75 s | 0.00 | 23.2 | 19026.7 / 17520.6 / 40813.5 / 72651.6 | 7 min |
-| X | opponent seat | `km3` | 40 |  |  | 23.9 | 10.9 / 4.3 / 45.4 / 177.8 | 0.26 s |
-| ref | deck seat | `km3` | 40 | 0.51 / 0.53 / 0.97 / 1.09 s | 1.98 | 22.0 | 12.3 / 6.1 / 47.8 / 214.1 | 0.27 s |
-| ref | opponent seat | `km3` | 40 |  |  | 23.8 | 9.4 / 4.3 / 38.5 / 113.4 | 0.22 s |
+| X | deck seat | `kx3` | 60 | 412.41 / 347.30 / 809.57 / 982.75 s | 0.00 | 23.2 | 17727.0 / 16645.0 / 37720.9 / 72651.6 | 7 min |
+| X | opponent seat | `km3` | 60 |  |  | 23.2 | 10.2 / 4.4 / 40.5 / 177.8 | 0.24 s |
+| ref | deck seat | `km3` | 60 | 0.46 / 0.43 / 0.91 / 1.09 s | 2.17 | 21.6 | 11.7 / 5.9 / 41.9 / 214.1 | 0.25 s |
+| ref | opponent seat | `km3` | 60 |  |  | 22.7 | 8.7 / 4.2 / 34.6 / 113.4 | 0.20 s |
 
 One paired game (both arms) took 7 min on average; the run used 4 thread(s).
 
@@ -52,8 +53,8 @@ At the sd reached, the number of paired games for a given half-width is `(1.96·
 
 | scope | paired games so far | sd | interval now (points) | for ±5 points: total / more games, time | for ±3 points: total / more games, time |
 |---|---|---|---|---|---|
-| all decks pooled | 40 | 42.3 | +22.5 ± 13.1 | 275 / 235, 7.2 h | 764 / 724, 22.3 h |
-| 13-a-big-malasada | 40 | 42.3 | +22.5 ± 13.1 | 275 / 235, 7.2 h | 764 / 724, 22.3 h |
+| all decks pooled | 60 | 45.4 | +21.7 ± 11.5 | 318 / 258, 7.4 h | 882 / 822, 23.6 h |
+| 13-a-big-malasada | 60 | 45.4 | +21.7 ± 11.5 | 318 / 258, 7.4 h | 882 / 822, 23.6 h |
 
 ## Intended lines
 

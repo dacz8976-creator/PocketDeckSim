@@ -69,3 +69,4 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
 - 2026-10-15 (coordinator's brief, report 7, variant B): paired variant 13-a-big-malasada (-1 Ilima A3 149, +1 Big Malasada A3 142) registered (rl/results/slow_reports/2026-10-15_13-a-big-malasada; paired with the Oct 12 deck-13 report, seed_base 24,606,700,000 reused, no new slot; program sha256 5011e227cf63; Python 3.13; self-check from the committed record; manifest sha256 693c6f03626e…). Start of long step: uptime 0 min, free 15,595 MB. Pushed before any game; then slices of 40 under the driver.
 - 2026-10-15 19:18Z: 2026-10-15_13-a-big-malasada: slice done, 40 of 320 games on disk, folder pushed.
 - 2026-10-15 19:45Z: 2026-10-15_13-a-big-malasada: slice done, 80 of 320 games on disk, folder pushed.
+- 2026-10-15 20:15Z: 2026-10-15_13-a-big-malasada: slice done, 120 of 320 games on disk, folder pushed.
