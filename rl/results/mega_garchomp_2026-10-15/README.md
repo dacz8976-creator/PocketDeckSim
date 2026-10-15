@@ -39,6 +39,7 @@ Asked by the coordinator (direct route, Oct 15): RUN5's B6, "Mega Garchomp ex is
   - Before the change, the generator reproduced both files exactly from the old `database.json` (apart from line endings). So the
     diff is only the new card.
 - `engine/tests/pokemon/mega_garchomp_ex_test.rs` (new) and its line in `engine/tests/pokemon.rs`.
+- `engine/tests/card_status_cli_test.rs`: the card count, 3,879 to 3,880, and P-B 099 Complete.
 
 ## Tests
 
@@ -76,7 +77,12 @@ After: 8 of 8 pass.
 - No existing deck carries the card, so no recorded game can change: the new entry only adds a card id, and nothing reads it unless a
   list names it.
 
-**The full engine suite: running** (`cargo test --release --features test-utils`); the result will be added here.
+**The full engine suite passes:** `cargo test --release --features test-utils --no-fail-fast`, 2,111 tests in 105 test binaries,
+0 failed (`suite.txt`).
+- **The first run had one failure, as expected.** `tests/card_status_cli_test.rs` pinned the card inventory at 3,879 cards. It now
+  expects 3,880 and checks that P-B 099's status is Complete; the `card_status` inventory itself lists it as Complete with no
+  limitations.
+- Cargo stops at the first failing test binary, so the final run used `--no-fail-fast` to run every binary.
 
 ## What a pin would need (RUN5's switch rules)
 
