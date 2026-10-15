@@ -88,7 +88,7 @@ fn choose(state: &State, depth: usize) -> Action {
         value_function: Box::new(public_clock_effect_value_function),
         opponent_ply: 0,
         consistent_horizon: false,
-        soft_opponent: false,
+        soft_opponent: false, resolve_queued_damage: false,
     };
     let chosen = player.decision_fn(
         &mut StdRng::seed_from_u64(91),

@@ -37,7 +37,7 @@ fn k3(state: &State, actor: usize) -> ExpectiMiniMaxPlayer {
         value_function: Box::new(public_clock_effect_value_function),
         opponent_ply: 0,
         consistent_horizon: false,
-        soft_opponent: false,
+        soft_opponent: false, resolve_queued_damage: false,
     }
 }
 

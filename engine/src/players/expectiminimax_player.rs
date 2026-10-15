@@ -87,6 +87,8 @@ pub struct SearchFlags {
     /// always". A bot that charges every one of its own lines with the opponent's best attack
     /// will not race — it will retreat, which is what §42 measured `x3` doing.
     pub soft_opponent: bool,
+    /// ky `_queue`: see [`ExpectiMiniMaxPlayer::resolve_queued_damage`].
+    pub resolve_queued_damage: bool,
 }
 
 pub struct ExpectiMiniMaxPlayer {
@@ -134,6 +136,12 @@ pub struct ExpectiMiniMaxPlayer {
 
     /// §42. See [`SearchFlags::soft_opponent`].
     pub soft_opponent: bool,
+
+    /// ky `_queue` (off in every older code): a frame where every choice is a from-attack `ApplyDamage` (Mega
+    /// Kangaskhan's second punch, Tongue Whip's and Diving Icicles' target choices) is resolved before scoring, at any
+    /// number of choices and even at depth zero, like the `ApplyQueuedAttackDamage` frame. Off, the leaf scores the
+    /// board before that damage lands.
+    pub resolve_queued_damage: bool,
 }
 
 impl ExpectiMiniMaxPlayer {
@@ -141,6 +149,7 @@ impl ExpectiMiniMaxPlayer {
         SearchFlags {
             consistent_horizon: self.consistent_horizon,
             soft_opponent: self.soft_opponent,
+            resolve_queued_damage: self.resolve_queued_damage,
         }
     }
 }
@@ -669,6 +678,8 @@ fn expectiminimax_with_public_reply(
                     && choices.iter().all(|choice| {
                         matches!(choice, SimpleAction::ApplyQueuedAttackDamage { .. }
                             | SimpleAction::ChooseRandomEvolutionTarget { .. })
+                            || (flags.resolve_queued_damage
+                                && matches!(choice, SimpleAction::ApplyDamage { is_from_active_attack: true, .. }))
                     })
             });
     if state.pending_attack_coin_choice.is_some()
@@ -1906,3 +1917,139 @@ mod terminal_win_distance_tests;
 #[cfg(test)]
 #[path = "promotion_continuation_tests.rs"]
 mod promotion_continuation_tests;
+
+/// ky `_queue`: a frame where every choice is a from-attack `ApplyDamage` is resolved before scoring, at any number of
+/// choices; any other frame stays as it was. Every test also reads the same position with the flag off.
+#[cfg(test)]
+mod queue_tests {
+    use super::*;
+    use crate::card_ids::CardId;
+    use crate::database::get_card_by_enum;
+    use crate::models::{EnergyType, PlayedCard};
+
+    fn on() -> SearchFlags {
+        SearchFlags { resolve_queued_damage: true, ..SearchFlags::default() }
+    }
+
+    /// Higher is better for player 0: minus the opponent's remaining HP.
+    fn negative_opponent_hp(state: &State, _myself: usize) -> f64 {
+        -state.enumerate_in_play_pokemon(1).map(|(_, pokemon)| pokemon.get_remaining_hp() as f64).sum::<f64>()
+    }
+
+    fn hp_sum(state: &State) -> f64 {
+        -negative_opponent_hp(state, 0)
+    }
+
+    fn mon(id: CardId) -> PlayedCard {
+        PlayedCard::from_id(id)
+    }
+
+    /// Player 0 to move on turn 3 with `mine` and `theirs` in play.
+    fn board(mine: Vec<PlayedCard>, theirs: Vec<PlayedCard>) -> State {
+        let mut state = State::default();
+        state.set_board(mine, theirs);
+        state.current_player = 0;
+        state.turn_count = 3;
+        state
+    }
+
+    /// The leaf after player 0's attack `title`, searched to depth zero with `evaluator`, and the number of choices in the
+    /// frame the attack queued (the children of the attack's node).
+    fn attack_leaf(state: &State, title: &str, flags: SearchFlags, evaluator: &ValueFunction) -> (f64, usize) {
+        let action = state
+            .generate_possible_actions()
+            .1
+            .into_iter()
+            .find(|a| matches!(&a.action, SimpleAction::Attack(attack) if attack.title == title))
+            .unwrap_or_else(|| panic!("{title} is playable"));
+        let mut rng = rand::SeedableRng::seed_from_u64(31);
+        let (score, node) = expected_value_function(&mut rng, state, &action, 0, 0, false, flags, 0, evaluator);
+        let choices = node.children.first().map_or(0, |frame| frame.children.len());
+        (score, choices)
+    }
+
+    /// The plain `ApplyDamage` frame: a 40 queued on the Active of a 240-HP board.
+    fn queued_40(from_attack: bool) -> State {
+        let mut state = board(
+            vec![mon(CardId::B2127MegaKangaskhanEx)],
+            vec![mon(CardId::A1004VenusaurEx).with_remaining_hp(120), mon(CardId::A1056BlastoiseEx).with_remaining_hp(120)],
+        );
+        state.move_generation_stack.push((
+            0,
+            vec![SimpleAction::ApplyDamage { attacking_ref: (0, 0), targets: vec![(40, 1, 0)], is_from_active_attack: from_attack }],
+        ));
+        state
+    }
+
+    fn leaf(state: &State, flags: SearchFlags) -> f64 {
+        let evaluator: ValueFunction = Box::new(negative_opponent_hp);
+        let mut rng = rand::SeedableRng::seed_from_u64(30);
+        expectiminimax(&mut rng, state, 0, 0, false, flags, 0, &evaluator).0
+    }
+
+    /// The sibling of `depth_zero_prices_mandatory_queued_attack_damage` for the plain form: the leaf is -200, not -240.
+    #[test]
+    fn depth_zero_prices_a_plain_queued_attack_damage_frame() {
+        let state = queued_40(true);
+        assert_eq!(hp_sum(&state), 240.0);
+        assert_eq!(leaf(&state, SearchFlags::default()), -240.0, "off: the leaf is the board before the 40");
+        assert_eq!(leaf(&state, on()), -200.0, "on: the 40 has landed");
+    }
+
+    /// A frame that isn't from-attack damage stays unresolved, on or off.
+    #[test]
+    fn a_frame_that_is_not_from_attack_damage_stays_unresolved() {
+        let state = queued_40(false);
+        assert_eq!(leaf(&state, SearchFlags::default()), -240.0);
+        assert_eq!(leaf(&state, on()), -240.0);
+        // One choice that isn't damage in a frame of from-attack damage: not "every choice", so not resolved either.
+        let mut mixed = queued_40(true);
+        mixed.move_generation_stack.last_mut().unwrap().1.push(SimpleAction::Noop);
+        assert_eq!(leaf(&mixed, on()), -240.0);
+    }
+
+    /// Tongue Whip (30 to 1 of the opponent's Benched Pokémon): a frame of 1 choice, then of 2, the best of them taken.
+    #[test]
+    fn tongue_whip_is_resolved_with_one_and_with_two_targets() {
+        let evaluator: ValueFunction = Box::new(negative_opponent_hp);
+        let heatmor = || mon(CardId::B1044Heatmor).with_energy(vec![EnergyType::Fire]);
+        // One Benched target: 30 on the Pidgey.
+        let one = board(vec![heatmor()], vec![mon(CardId::B3b055Snorlax), mon(CardId::B1180Pidgey)]);
+        let before = -hp_sum(&one);
+        let (off, _) = attack_leaf(&one, "Tongue Whip", SearchFlags::default(), &evaluator);
+        let (resolved, choices) = attack_leaf(&one, "Tongue Whip", on(), &evaluator);
+        assert_eq!((off, resolved, choices), (before, before + 30.0, 1));
+        // Two Benched targets (Weakness doesn't apply to the Bench): a frame of 2 choices, 30 on either.
+        let two = board(vec![heatmor()], vec![mon(CardId::B3b055Snorlax), mon(CardId::B1180Pidgey), mon(CardId::A1001Bulbasaur)]);
+        let before = -hp_sum(&two);
+        let (off, _) = attack_leaf(&two, "Tongue Whip", SearchFlags::default(), &evaluator);
+        let (resolved, choices) = attack_leaf(&two, "Tongue Whip", on(), &evaluator);
+        assert_eq!((off, resolved, choices), (before, before + 30.0, 2));
+    }
+
+    /// Diving Icicles (Chien-Pao ex, in t-suicune: 130 to 1 of the opponent's Pokémon) is resolved too.
+    #[test]
+    fn diving_icicles_is_resolved() {
+        let evaluator: ValueFunction = Box::new(negative_opponent_hp);
+        let chien_pao = mon(CardId::B2a037ChienPaoEx).with_energy(vec![EnergyType::Water; 3]);
+        let state = board(vec![chien_pao], vec![mon(CardId::A1004VenusaurEx), mon(CardId::A1056BlastoiseEx)]);
+        let before = -hp_sum(&state);
+        let (off, _) = attack_leaf(&state, "Diving Icicles", SearchFlags::default(), &evaluator);
+        let (resolved, choices) = attack_leaf(&state, "Diving Icicles", on(), &evaluator);
+        assert_eq!((off, resolved, choices), (before, before + 130.0, 2));
+    }
+
+    /// FINDINGS' VK_110, as a depth-zero root: Mega Kangaskhan ex's attack on an unhelmeted 110-HP Alolan Muk with a
+    /// Pawniard behind it. The second punch's knock-out is worth a point (10,000) in km3's score and is missed when the
+    /// 40 stays queued (FINDINGS: Place:Pawniard 1691 off, 11781 on, with the attack the third action of its line).
+    #[test]
+    fn the_second_punch_knock_out_is_in_km3s_leaf_with_the_queue_resolved() {
+        let km: ValueFunction = Box::new(crate::players::value_functions::public_clock_effect_km_value_function);
+        let kangaskhan = mon(CardId::B2127MegaKangaskhanEx).with_energy(vec![EnergyType::Colorless; 3]);
+        let state = board(vec![kangaskhan], vec![mon(CardId::B2097AlolanMuk), mon(CardId::B3a041Pawniard)]);
+        let (off, _) = attack_leaf(&state, "Double-Punching Family", SearchFlags::default(), &km);
+        let (resolved, _) = attack_leaf(&state, "Double-Punching Family", on(), &km);
+        eprintln!("VK_110-style leaf: off {off}, on {resolved}");
+        assert!(resolved - off > 9_000.0, "off {off}, on {resolved}");
+    }
+}

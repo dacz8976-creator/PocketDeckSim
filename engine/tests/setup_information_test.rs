@@ -86,7 +86,7 @@ fn search_stops_before_setup_handoff_even_with_consistent_opponent_horizon() {
             let seen = Arc::new(Mutex::new(Vec::new()));
             let record = Arc::clone(&seen);
             let mut bot = ExpectiMiniMaxPlayer { deck:s.decks[actor].clone(), max_depth:depth,
-                write_debug_trees:false, opponent_ply:3, consistent_horizon:true, soft_opponent:false,
+                write_debug_trees:false, opponent_ply:3, consistent_horizon:true, soft_opponent:false, resolve_queued_damage: false,
                 value_function:Box::new(move |state,_| { record.lock().unwrap().push(state.clone()); 0.0 }) };
             let chosen = bot.decision_fn(&mut StdRng::seed_from_u64(29),&view,&actions);
             assert!(actions.contains(&chosen));

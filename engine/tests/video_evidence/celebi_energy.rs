@@ -270,7 +270,7 @@ fn assert_k3_reaches_four_energy_before_attacking(state: State) {
         value_function: Box::new(public_clock_effect_value_function),
         opponent_ply: 0,
         consistent_horizon: false,
-        soft_opponent: false,
+        soft_opponent: false, resolve_queued_damage: false,
     });
     let opponent: Box<dyn Player> = Box::new(EndTurnPlayer {
         deck: state.decks[1].clone(),

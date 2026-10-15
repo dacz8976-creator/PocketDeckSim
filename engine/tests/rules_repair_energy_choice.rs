@@ -89,7 +89,7 @@ fn sweeping_billow_choice_is_visible_and_search_values_retained_energy() {
         value_function: Box::new(|position, player| {
             if position.get_active(player).attached_energy.contains(&EnergyType::Fire) { 100.0 } else { 0.0 }
         }),
-        opponent_ply: 0, consistent_horizon: false, soft_opponent: false,
+        opponent_ply: 0, consistent_horizon: false, soft_opponent: false, resolve_queued_damage: false,
     };
     let chosen = bot.decision_fn(&mut StdRng::seed_from_u64(7), &observation, &choices);
     assert!(matches!(&chosen.action,

@@ -137,7 +137,7 @@ fn test_configuration(
                     write_debug_trees: false,
                     opponent_ply: 0,
                     consistent_horizon: false,
-                    soft_opponent: false,
+                    soft_opponent: false, resolve_queued_damage: false,
                     value_function: Box::new(baseline_fn),
                 }),
                 Box::new(ExpectiMiniMaxPlayer {
@@ -146,7 +146,7 @@ fn test_configuration(
                     write_debug_trees: false,
                     opponent_ply: 0,
                     consistent_horizon: false,
-                    soft_opponent: false,
+                    soft_opponent: false, resolve_queued_damage: false,
                     value_function: Box::new(move |state, player| {
                         value_functions::parametric_value_function(state, player, &params_copy)
                     }),

@@ -13,7 +13,7 @@ fn saved_root() -> (State,u64) {
 }
 fn k3(s:&State)->ExpectiMiniMaxPlayer {
     ExpectiMiniMaxPlayer {deck:s.decks[s.current_player].clone(),max_depth:3,write_debug_trees:false,
-        value_function:Box::new(public_clock_effect_value_function),opponent_ply:0,consistent_horizon:false,soft_opponent:false}
+        value_function:Box::new(public_clock_effect_value_function),opponent_ply:0,consistent_horizon:false,soft_opponent:false, resolve_queued_damage: false}
 }
 fn is_x_speed(a:&Action)->bool {
     matches!(&a.action,SimpleAction::Play{trainer_card} if trainer_card.name=="X Speed")

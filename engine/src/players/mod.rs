@@ -500,6 +500,28 @@ pub fn create_players(
     vec![player_a, player_b]
 }
 
+/// km<N> for ky's own seat, with its km corrections: `punch` (`_punch`: Mega Kangaskhan ex's forecast per punch) and `queue`
+/// (`_queue`: a from-attack damage frame resolved before scoring). With both off it is `get_player`'s km<N>, field for field.
+pub fn km_with_corrections(deck: Deck, max_depth: usize, punch: bool, queue: bool) -> Box<dyn Player> {
+    let value_function: expectiminimax_player::ValueFunction = if punch {
+        Box::new(value_functions::public_clock_effect_km_punch_value_function)
+    } else {
+        Box::new(value_functions::public_clock_effect_km_value_function)
+    };
+    Box::new(PublicPricingPlayer {
+        search: ExpectiMiniMaxPlayer {
+            deck,
+            max_depth,
+            write_debug_trees: false,
+            value_function,
+            opponent_ply: 0,
+            consistent_horizon: false,
+            soft_opponent: false,
+            resolve_queued_damage: queue,
+        },
+    })
+}
+
 fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn Player> {
     match player {
         PlayerCode::Jev => Box::new(JevPlayer::new(deck)),
@@ -518,7 +540,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
             value_function: Box::new(value_functions::baseline_value_function),
             opponent_ply: 0,
             consistent_horizon: false,
-            soft_opponent: false,
+            soft_opponent: false, resolve_queued_damage: false,
         }),
         PlayerCode::P { max_depth } => Box::new(ExpectiMiniMaxPlayer {
             deck,
@@ -527,7 +549,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
             value_function: Box::new(value_functions::public_baseline_value_function),
             opponent_ply: 0,
             consistent_horizon: false,
-            soft_opponent: false,
+            soft_opponent: false, resolve_queued_damage: false,
         }),
         PlayerCode::D { max_depth } => Box::new(ExpectiMiniMaxPlayer {
             deck,
@@ -536,7 +558,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
             value_function: Box::new(value_functions::public_damage_value_function),
             opponent_ply: 0,
             consistent_horizon: false,
-            soft_opponent: false,
+            soft_opponent: false, resolve_queued_damage: false,
         }),
         PlayerCode::T { max_depth } => Box::new(ExpectiMiniMaxPlayer {
             deck,
@@ -545,7 +567,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
             value_function: Box::new(value_functions::public_clock_value_function),
             opponent_ply: 0,
             consistent_horizon: false,
-            soft_opponent: false,
+            soft_opponent: false, resolve_queued_damage: false,
         }),
         PlayerCode::VN { max_depth } => Box::new(ExpectiMiniMaxPlayer {
             deck,
@@ -554,7 +576,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
             value_function: Box::new(value_functions::public_pokemon_value_function),
             opponent_ply: 0,
             consistent_horizon: false,
-            soft_opponent: false,
+            soft_opponent: false, resolve_queued_damage: false,
         }),
         PlayerCode::K { max_depth } => Box::new(ExpectiMiniMaxPlayer {
             deck,
@@ -563,7 +585,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
             value_function: Box::new(value_functions::public_clock_effect_value_function),
             opponent_ply: 0,
             consistent_horizon: false,
-            soft_opponent: false,
+            soft_opponent: false, resolve_queued_damage: false,
         }),
         PlayerCode::F { max_depth } => Box::new(ExpectiMiniMaxPlayer {
             deck,
@@ -572,7 +594,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
             value_function: Box::new(value_functions::public_effect_value_function),
             opponent_ply: 0,
             consistent_horizon: false,
-            soft_opponent: false,
+            soft_opponent: false, resolve_queued_damage: false,
         }),
         PlayerCode::G { max_depth } => Box::new(ExpectiMiniMaxPlayer {
             deck,
@@ -581,7 +603,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
             value_function: Box::new(value_functions::public_development_value_function),
             opponent_ply: 0,
             consistent_horizon: false,
-            soft_opponent: false,
+            soft_opponent: false, resolve_queued_damage: false,
         }),
         PlayerCode::X {
             max_depth,
@@ -593,7 +615,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
             value_function: Box::new(value_functions::public_baseline_value_function),
             opponent_ply: *opponent_ply,
             consistent_horizon: false,
-            soft_opponent: false,
+            soft_opponent: false, resolve_queued_damage: false,
         }),
         PlayerCode::Y {
             max_depth,
@@ -605,7 +627,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
             value_function: Box::new(value_functions::public_baseline_value_function),
             opponent_ply: *opponent_ply,
             consistent_horizon: true,
-            soft_opponent: false,
+            soft_opponent: false, resolve_queued_damage: false,
         }),
         PlayerCode::S {
             max_depth,
@@ -617,7 +639,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
             value_function: Box::new(value_functions::public_baseline_value_function),
             opponent_ply: *opponent_ply,
             consistent_horizon: true,
-            soft_opponent: true,
+            soft_opponent: true, resolve_queued_damage: false,
         }),
         PlayerCode::ER => Box::new(EvolutionRusherPlayer { deck }),
         PlayerCode::B { max_depth, opponent_ply, samples } => Box::new(ListAwarePlayer {
@@ -628,7 +650,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
                 value_function: Box::new(value_functions::public_clock_effect_value_function),
                 opponent_ply: *opponent_ply,
                 consistent_horizon: *opponent_ply > 0,
-                soft_opponent: false,
+                soft_opponent: false, resolve_queued_damage: false,
             },
             opponent_list: opponent_deck.clone(),
             samples: *samples,
@@ -642,7 +664,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
                 value_function: Box::new(value_functions::public_clock_effect_value_function),
                 opponent_ply: 0,
                 consistent_horizon: false,
-                soft_opponent: false,
+                soft_opponent: false, resolve_queued_damage: false,
             },
         }),
         // The KP arm with the kq value function in place of k's; nothing else differs.
@@ -654,7 +676,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
                 value_function: Box::new(value_functions::public_clock_effect_kq_value_function),
                 opponent_ply: 0,
                 consistent_horizon: false,
-                soft_opponent: false,
+                soft_opponent: false, resolve_queued_damage: false,
             },
         }),
         // The KP arm with the kd value function in place of k's; nothing else differs.
@@ -666,7 +688,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
                 value_function: Box::new(value_functions::public_clock_effect_kd_value_function),
                 opponent_ply: 0,
                 consistent_horizon: false,
-                soft_opponent: false,
+                soft_opponent: false, resolve_queued_damage: false,
             },
         }),
         // The KP arm with the kpr value function in place of k's; nothing else differs.
@@ -678,7 +700,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
                 value_function: Box::new(value_functions::public_clock_effect_kpr_value_function),
                 opponent_ply: 0,
                 consistent_horizon: false,
-                soft_opponent: false,
+                soft_opponent: false, resolve_queued_damage: false,
             },
         }),
         // The KP arm with an opening-Active value function in place of k's; nothing else differs.
@@ -722,7 +744,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
                     value_function,
                     opponent_ply: 0,
                     consistent_horizon: false,
-                    soft_opponent: false,
+                    soft_opponent: false, resolve_queued_damage: false,
                 },
             })
         }
@@ -965,7 +987,7 @@ mod s42_tier_parse_tests {
             SearchFlags::default(),
             SearchFlags {
                 consistent_horizon: false,
-                soft_opponent: false
+                soft_opponent: false, resolve_queued_damage: false
             }
         );
     }

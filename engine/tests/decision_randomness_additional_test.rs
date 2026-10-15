@@ -120,7 +120,7 @@ fn expectiminimax_selection_is_applied_with_the_real_action_rng() {
         value_function: Box::new(|state: &State, myself| state.points[myself] as f64),
         opponent_ply: 0,
         consistent_horizon: false,
-        soft_opponent: false,
+        soft_opponent: false, resolve_queued_damage: false,
     };
     let expected_action = search_player.decision_fn(
         &mut StdRng::seed_from_u64(search_seed), &game_probe.observation(0), &actions,
@@ -130,7 +130,7 @@ fn expectiminimax_selection_is_applied_with_the_real_action_rng() {
         Box::new(ExpectiMiniMaxPlayer {
             deck: state.decks[0].clone(), max_depth: 2, write_debug_trees: false,
             value_function: Box::new(|state: &State, myself| state.points[myself] as f64),
-            opponent_ply: 0, consistent_horizon: false, soft_opponent: false,
+            opponent_ply: 0, consistent_horizon: false, soft_opponent: false, resolve_queued_damage: false,
         }),
         Box::new(ScriptedSearch { deck: state.decks[1].clone(), samples: Arc::default() }),
     ];

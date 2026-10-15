@@ -106,7 +106,7 @@ fn run_comparison(config: ComparisonConfig) -> Result<Vec<DeckStats>, Box<dyn st
                     write_debug_trees: false,
                     opponent_ply: 0,
                     consistent_horizon: false,
-                    soft_opponent: false,
+                    soft_opponent: false, resolve_queued_damage: false,
                     value_function: Box::new(baseline_fn),
                 }),
                 Box::new(ExpectiMiniMaxPlayer {
@@ -115,7 +115,7 @@ fn run_comparison(config: ComparisonConfig) -> Result<Vec<DeckStats>, Box<dyn st
                     write_debug_trees: false,
                     opponent_ply: 0,
                     consistent_horizon: false,
-                    soft_opponent: false,
+                    soft_opponent: false, resolve_queued_damage: false,
                     value_function: Box::new(test_fn),
                 }),
             ]

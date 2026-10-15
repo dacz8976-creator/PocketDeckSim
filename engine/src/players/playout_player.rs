@@ -53,7 +53,7 @@ use rand::seq::SliceRandom;
 use rand::{rngs::StdRng, Rng, RngCore, SeedableRng};
 use rayon::prelude::*;
 
-use super::{create_players, get_player, value_functions, Player, PlayerCode};
+use super::{create_players, get_player, km_with_corrections, value_functions, Player, PlayerCode};
 pub use super::playout_pool::{
     find_repository, parse_extra_lists, parse_extra_lists_against, protected_lists, under_protected, ExtraList, POOL, WIDE,
 };
@@ -172,6 +172,13 @@ pub struct PlayoutParams {
     /// ky `_infer` (declared; off by default, so ky keeps F's closest list): with no list consistent, the inferred list kx
     /// builds, as on 9a0bc5ac. Only ky codes take it.
     pub infer: bool,
+    /// ky `_punch` (off by default): on ky's own seat, in its proposal and in every play-out, km<depth> forecasts Mega
+    /// Kangaskhan ex as two punches, 80 then 40, each with its own cuts (value_functions.rs `kt_clock_punch`). The
+    /// simulated opponent stays plain km<depth>. Only ky codes take it.
+    pub punch: bool,
+    /// ky `_queue` (off by default): on ky's own seat, km<depth> resolves a frame where every choice is a from-attack
+    /// `ApplyDamage` before scoring (expectiminimax_player.rs `resolve_queued_damage`). Only ky codes take it.
+    pub queue: bool,
 }
 
 impl PlayoutParams {
@@ -192,24 +199,36 @@ impl PlayoutParams {
             max_rounds: None,
             closest: false,
             infer: false,
+            punch: false,
+            queue: false,
         }
     }
 
     /// Parses the code after the `ky` prefix (lowercase): the `kx` parts, with the closest-list fallback.
     pub fn parse_ky(rest: &str) -> Result<Self, String> {
-        let mut infer = false;
+        let (mut infer, mut punch, mut queue) = (false, false, false);
         let kept: Vec<&str> = rest
             .split('_')
             .enumerate()
             .filter(|&(i, part)| {
-                let hit = i > 0 && part == "infer";
-                infer |= hit;
-                !hit
+                let switch = match part {
+                    "infer" => Some(&mut infer),
+                    "punch" => Some(&mut punch),
+                    "queue" => Some(&mut queue),
+                    _ => None,
+                };
+                match switch {
+                    Some(on) if i > 0 => {
+                        *on = true;
+                        false
+                    }
+                    _ => true,
+                }
             })
             .map(|(_, part)| part)
             .collect();
         Self::parse(&kept.join("_"))
-            .map(|params| PlayoutParams { closest: true, infer, ..params })
+            .map(|params| PlayoutParams { closest: true, infer, punch, queue, ..params })
             .map_err(|e| e.replacen("kx", "ky", 3))
     }
 
@@ -280,7 +299,7 @@ impl PlayoutParams {
     /// them are as before).
     pub fn code(&self) -> String {
         format!(
-            "{}{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}{}{}{}",
+            "{}{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}{}{}{}{}{}",
             if self.closest { "ky" } else { "kx" },
             self.depth,
             self.rollouts,
@@ -295,7 +314,9 @@ impl PlayoutParams {
             self.z_attack.map_or(String::new(), |z| format!("_za{z}")),
             self.z_skip.map_or(String::new(), |z| format!("_zs{z}")),
             self.max_rounds.map_or(String::new(), |m| format!("_m{m}")),
-            if self.infer { "_infer" } else { "" }
+            if self.infer { "_infer" } else { "" },
+            if self.punch { "_punch" } else { "" },
+            if self.queue { "_queue" } else { "" }
         )
     }
 }
@@ -560,6 +581,20 @@ struct Core {
     tools: bool,
     /// ky (without `_infer`): with no list consistent, the closest pooled list rather than an inferred one.
     closest: bool,
+    /// ky `_punch` and `_queue`: km<depth>'s corrections on the pilot's own seat (the opponent's is plain km<depth>).
+    punch: bool,
+    queue: bool,
+}
+
+impl Core {
+    /// km<depth> for the pilot's own seat: plain km<depth> unless `_punch` or `_queue` is on.
+    fn own_km(&self, deck: Deck, opponent_list: &Deck) -> Box<dyn Player> {
+        if self.punch || self.queue {
+            km_with_corrections(deck, self.depth, self.punch, self.queue)
+        } else {
+            get_player(deck, opponent_list, &PlayerCode::KM { max_depth: self.depth })
+        }
+    }
 }
 
 impl PlayoutPlayer {
@@ -573,7 +608,11 @@ impl PlayoutPlayer {
 
     /// The pilot with these extra lists (tests; `new` passes those of `KX_EXTRA_LISTS`).
     pub fn with_extra_lists(deck: Deck, opponent_list: Deck, params: PlayoutParams, extra_lists: Vec<ExtraList>) -> Self {
-        let km = get_player(deck.clone(), &opponent_list, &PlayerCode::KM { max_depth: params.depth });
+        let km = if params.punch || params.queue {
+            km_with_corrections(deck.clone(), params.depth, params.punch, params.queue)
+        } else {
+            get_player(deck.clone(), &opponent_list, &PlayerCode::KM { max_depth: params.depth })
+        };
         // The pool, duplicates (same cards, same Energy types) removed at load: each research/X equals t-X. The meta lists,
         // then (the wide pool) the others.
         let mut pool: Vec<(String, Deck)> = Vec::new();
@@ -609,7 +648,7 @@ impl PlayoutPlayer {
                 pool.iter().find(|(_, d)| id_multiset(d) == target).map(|(name, _)| (name.clone(), opponent_list.clone()))
             })
             .flatten();
-        let core = Core { deck, pool, meta, listed, extras, lab, depth: params.depth, tools: params.tools, closest: params.closest && !params.infer };
+        let core = Core { deck, pool, meta, listed, extras, lab, depth: params.depth, tools: params.tools, closest: params.closest && !params.infer, punch: params.punch, queue: params.queue };
         PlayoutPlayer { params, km, core, printed: false, decisions: 0, millis: 0.0, omniscient: 0 }
     }
 
@@ -1004,6 +1043,10 @@ impl Core {
         let code = PlayerCode::KM { max_depth: self.depth };
         let (d0, d1) = if me == 0 { (self.deck.clone(), opponent_list.clone()) } else { (opponent_list.clone(), self.deck.clone()) };
         let mut players = create_players(d0, d1, vec![code.clone(), code]);
+        // ky's own seat takes `_punch` and `_queue`; the simulated opponent stays plain km.
+        if self.punch || self.queue {
+            players[me] = self.own_km(self.deck.clone(), opponent_list);
+        }
         let interventions = Rc::new(Cell::new(0));
         if tools {
             players = players
@@ -1760,6 +1803,28 @@ mod tests {
         assert!(PlayoutParams::parse_ky("3_infer_m64").unwrap().infer);
         assert!(crate::players::parse_player_code("kx3_infer").is_err());
         assert!(crate::players::parse_player_code("ky3_inferx").is_err());
+    }
+
+    /// `_punch` and `_queue` (ky only, off by default): parsed in any order, spelled back after `_infer`, refused on kx; off,
+    /// the code and the params are as before.
+    #[test]
+    fn ky_punch_and_queue_parse_round_trip_and_are_off_by_default() {
+        let base = "3_r16_c12_z2_real_t0_poolmeta";
+        let off = PlayoutParams::parse_ky(base).unwrap();
+        assert!(!off.punch && !off.queue);
+        assert_eq!(off.code(), format!("ky{base}"));
+        for (suffix, punch, queue) in [("_punch", true, false), ("_queue", false, true), ("_queue_punch", true, true)] {
+            let on = PlayoutParams::parse_ky(&format!("{base}{suffix}")).unwrap();
+            assert_eq!((on.punch, on.queue), (punch, queue));
+            assert_eq!(PlayoutParams { punch: false, queue: false, ..on.clone() }, off);
+            let code = on.code();
+            assert_eq!(code, format!("ky{base}{}{}", if punch { "_punch" } else { "" }, if queue { "_queue" } else { "" }));
+            assert_eq!(crate::players::parse_player_code(&code).unwrap(), crate::players::PlayerCode::KX { params: on });
+        }
+        assert!(PlayoutParams::parse_ky("3_m64_infer_punch_queue").unwrap().infer);
+        assert!(crate::players::parse_player_code("kx3_punch").is_err());
+        assert!(crate::players::parse_player_code("kx3_queue").is_err());
+        assert!(crate::players::parse_player_code("ky3_punchx").is_err());
     }
 
     /// With `_infer` on, ky3 builds an inferred list where none is consistent (as kx3 does); off, it takes the closest.

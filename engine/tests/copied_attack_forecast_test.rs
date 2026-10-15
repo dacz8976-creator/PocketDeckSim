@@ -153,7 +153,7 @@ fn concealed_sources_have_identical_observations_and_search_stops_unpriced() {
         let view=PlayerObservation::from_state(&s,actor,&RevealedKnowledge::default());
         assert_eq!(view,PlayerObservation::from_state(&alternate,actor,&RevealedKnowledge::default()));
         let leaves=Arc::new(Mutex::new(Vec::new())); let saved=Arc::clone(&leaves);
-        let mut bot=ExpectiMiniMaxPlayer {deck:Deck::default(),max_depth:3,opponent_ply:0,consistent_horizon:false,soft_opponent:false,write_debug_trees:false,
+        let mut bot=ExpectiMiniMaxPlayer {deck:Deck::default(),max_depth:3,opponent_ply:0,consistent_horizon:false,soft_opponent:false, resolve_queued_damage: false,write_debug_trees:false,
             value_function:Box::new(move |s,_| {saved.lock().unwrap().push(s.clone());0.0})};
         assert!(hidden_continuation_reason(view.visible_state(),&a).is_some());
         assert_eq!(bot.decision_fn(&mut StdRng::seed_from_u64(91),&view,&[a.clone()]),a);

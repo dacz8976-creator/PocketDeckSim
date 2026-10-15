@@ -343,6 +343,12 @@ pub fn public_clock_effect_km_value_function(state: &State, myself: usize) -> f6
     parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KM)
 }
 
+/// km3's value with ky `_punch`: [`public_clock_effect_km_value_function`] with Mega Kangaskhan ex forecast as two punches.
+/// The same on every board with no Mega Kangaskhan ex as the threat.
+pub fn public_clock_effect_km_punch_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KM_PUNCH)
+}
+
 /// Weight of [`best_benched_attacker_online_score`] in `kq`: half the Active online score's 500 in
 /// [`ValueFunctionParams::baseline`]. Pre-set before any A/B and not tuned on the table.
 pub const KQ_BENCH_ATTACKER_WEIGHT: f64 = 250.0;
@@ -387,6 +393,10 @@ struct EvalFeatures {
     /// km switch N2 (km): each hit in kt's clock ([`kt_clock_stadium`]) carries the attacker's lasting Stadium damage
     /// bonus ([`lasting_stadium_damage_bonus`]). Read only in kt's clock, so only with switch 1 or 3 on (km: switch 1).
     stadium_bonus_in_clock: bool,
+    /// ky `_punch`: Mega Kangaskhan ex's Double-Punching Family is forecast as two punches (80, then 40), each with its own
+    /// cuts, the 40 carrying on to the next victim after a knock-out, and the threat is picked on 120 ([`kt_clock_punch`]).
+    /// Read only in kt's clock, with its flag on; off, every clock is as before.
+    punch: bool,
 }
 
 impl EvalFeatures {
@@ -405,6 +415,7 @@ impl EvalFeatures {
         evolution_steps: false,
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
+        punch: false,
     };
     const KQ: EvalFeatures = EvalFeatures {
         next_attack_reduction: true,
@@ -421,6 +432,7 @@ impl EvalFeatures {
         evolution_steps: false,
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
+        punch: false,
     };
     const KD: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
@@ -437,6 +449,7 @@ impl EvalFeatures {
         evolution_steps: false,
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
+        punch: false,
     };
     const KPR: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
@@ -453,6 +466,7 @@ impl EvalFeatures {
         evolution_steps: false,
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
+        punch: false,
     };
     const KOA: EvalFeatures = EvalFeatures { opening_first_turn_active: true, ..EvalFeatures::OFF };
     const KOB: EvalFeatures = EvalFeatures { opening_bench_working: true, ..EvalFeatures::OFF };
@@ -486,6 +500,8 @@ impl EvalFeatures {
     const KTC: EvalFeatures = EvalFeatures { counter_damage: true, ..EvalFeatures::KOG };
     /// km: kta + N2 (Amendment 1, Sept 30: km re-issued on kta). With N2's flag off it is [`EvalFeatures::KTA`].
     const KM: EvalFeatures = EvalFeatures { stadium_bonus_in_clock: true, ..EvalFeatures::KTA };
+    /// ky's km with `_punch`: [`EvalFeatures::KM`] and the per-punch forecast.
+    const KM_PUNCH: EvalFeatures = EvalFeatures { punch: true, ..EvalFeatures::KM };
 
     /// Whether kt's clock ([`kt_clocks`]) replaces kp's.
     fn kt_clock(&self) -> bool {
@@ -1750,17 +1766,100 @@ fn kt_clock_stadium(
     cuts: bool,
     stadium_bonus: bool,
 ) -> KtClock {
+    kt_clock_punch(state, victim_owner, read_scanned_zones, effect_aware, reserve_aware, consume_bench, cuts, stadium_bonus, false)
+}
+
+/// The damage Mega Kangaskhan ex's second punch adds to the first's printed 80.
+const SECOND_PUNCH: u32 = 40;
+
+/// Whether `attack` is Mega Kangaskhan ex's Double-Punching Family.
+fn is_double_punch(attack: &Attack) -> bool {
+    attack
+        .effect
+        .as_deref()
+        .and_then(|effect| EFFECT_MECHANIC_MAP.get(effect))
+        .is_some_and(|mechanic| matches!(mechanic, Mechanic::MegaKangaskhanExDoublePunchingFamily))
+}
+
+/// One victim in the `_punch` clock: its HP, each punch's damage after its cuts (on the clock's first attack turn, which
+/// carries the temporary cuts, and on every later turn), and its knock-out points.
+#[derive(Debug, Clone, Copy, PartialEq)]
+struct PunchVictim {
+    hp: f64,
+    first: [f64; 2],
+    later: [f64; 2],
+    points: u8,
+}
+
+/// `_punch`: the attack turns Mega Kangaskhan ex needs to knock out `victims` in order, or until `points_before` plus
+/// their points reach 3 (infinite when nothing it does can knock one out). A turn is two punches. The second hits the
+/// victim the first left standing, or, after a knock-out, the next victim (the one promoted), and there is none after a
+/// knock-out that ends the game.
+fn punch_clock_turns(victims: &[PunchVictim], points_before: u8) -> f64 {
+    let mut points = points_before;
+    let mut turns = 0u32;
+    let mut carried = false;
+    for victim in victims {
+        let mut hp = victim.hp;
+        if carried {
+            carried = false;
+            // The second punch of the turn just played (the clock's first turn carries the temporary cuts).
+            hp -= if turns == 1 { victim.first[1] } else { victim.later[1] };
+        }
+        let mut fallen = hp <= 0.0;
+        while !fallen {
+            let punches = if turns == 0 { victim.first } else { victim.later };
+            if punches[0] + punches[1] <= 0.0 {
+                return f64::INFINITY;
+            }
+            turns += 1;
+            hp -= punches[0];
+            if hp <= 0.0 {
+                fallen = true;
+                carried = true;
+            } else {
+                hp -= punches[1];
+                fallen = hp <= 0.0;
+            }
+        }
+        points += victim.points;
+        if points >= 3 {
+            return turns as f64;
+        }
+    }
+    turns as f64
+}
+
+/// [`kt_clock_stadium`] with ky `_punch` (`punch`): a Mega Kangaskhan ex threat is picked on 120 and its clock is
+/// [`punch_clock_turns`]; with any other threat, or `punch` off, the clock is [`kt_clock_stadium`]'s exactly.
+#[allow(clippy::too_many_arguments)]
+fn kt_clock_punch(
+    state: &State,
+    victim_owner: usize,
+    read_scanned_zones: bool,
+    effect_aware: bool,
+    reserve_aware: bool,
+    consume_bench: bool,
+    cuts: bool,
+    stadium_bonus: bool,
+    punch: bool,
+) -> KtClock {
     let owner = (victim_owner + 1) % 2;
     let attack_damage = |atk: &Attack, slot: &PlayedCard| -> u32 {
-        if effect_aware {
+        let damage = if effect_aware {
             estimated_attack_damage_ex(atk, slot, state, owner, reserve_aware).round() as u32
         } else {
             atk.fixed_damage
+        };
+        if punch && is_double_punch(atk) {
+            damage + SECOND_PUNCH
+        } else {
+            damage
         }
     };
     let candidates = threat_candidates(state, owner, read_scanned_zones, None, &attack_damage);
     let Some(threat) = candidates.iter().min_by_key(|c| (c.missing, u32::MAX - c.damage)).copied() else {
-        return KtClock { lead: 30.0, active: None, rest: 0.0, threat_slot: None };
+        return KtClock { lead: 30.0, active: None, rest: 0.0, threat_slot: None, punch_turns: None };
     };
     let lead = threat.missing as f64 + status_clock_turns(state, owner, threat.slot);
     // Switch 1: the threat as it attacks (its form and attack) and f, its first attack turn.
@@ -1798,10 +1897,42 @@ fn kt_clock_stadium(
             damage.saturating_sub(permanent) as f64,
         )
     };
+    // `_punch`: the threat is Mega Kangaskhan ex's double punch, so the victims are also kept for the per-punch clock.
+    let punch_threat = punch && is_double_punch(&kd_attacker(state, owner, &threat, &mut None).1);
+    let mut punch_victims: Vec<PunchVictim> = Vec::new();
+    let mut punch_victim = |victim: &PlayedCard| {
+        let bonus = damage_on(victim) - threat.damage;
+        let cut = |first: bool| -> u32 {
+            let Some((attacker, attack, f)) = &cuts else {
+                return 0;
+            };
+            let context = DamageModifierContext { attack_name: Some(&attack.title), attack_effect: attack.effect.as_deref() };
+            let permanent = permanent_tool_reduction(state, victim_owner, victim, context);
+            let temporary =
+                if first { temporary_defender_reduction(state, victim_owner, victim, attacker, context, *f) } else { 0 };
+            permanent.saturating_add(temporary)
+        };
+        let punches = |first: bool| {
+            let cut = cut(first);
+            [
+                (threat.damage - SECOND_PUNCH + bonus).saturating_sub(cut) as f64,
+                (SECOND_PUNCH + bonus).saturating_sub(cut) as f64,
+            ]
+        };
+        PunchVictim {
+            hp: victim.get_remaining_hp() as f64,
+            first: punches(true),
+            later: punches(false),
+            points: victim.card.get_knockout_points(),
+        }
+    };
     let mut opp_points = state.points[owner];
     let active = state.maybe_get_active(victim_owner).map(|victim| {
         let (first, later) = hits_on(victim, true);
         opp_points += victim.card.get_knockout_points();
+        if punch_threat {
+            punch_victims.push(punch_victim(victim));
+        }
         (victim.get_remaining_hp() as f64, first, later)
     });
     // The benched victims, as kp's clock picks them.
@@ -1830,8 +1961,12 @@ fn kt_clock_stadium(
         first_pending = false;
         rest += kt_hits(victim.get_remaining_hp() as f64, first, later);
         opp_points += victim.card.get_knockout_points();
+        if punch_threat {
+            punch_victims.push(punch_victim(victim));
+        }
     }
-    KtClock { lead, active, rest, threat_slot: Some(threat.slot) }
+    let punch_turns = punch_threat.then(|| punch_clock_turns(&punch_victims, state.points[owner]));
+    KtClock { lead, active, rest, threat_slot: Some(threat.slot), punch_turns }
 }
 
 /// [`kt_clock_stadium`] with km's N2 off, as kt's tests call it positionally.
@@ -1860,6 +1995,9 @@ struct KtClock {
     rest: f64,
     /// The threat's slot; `None` when nothing threatens.
     threat_slot: Option<usize>,
+    /// ky `_punch`, with a Mega Kangaskhan ex threat: the attack turns for all its victims ([`punch_clock_turns`]), which
+    /// replace `active` and `rest` in [`KtClock::total`]. `None` everywhere else.
+    punch_turns: Option<f64>,
 }
 
 impl KtClock {
@@ -1874,7 +2012,10 @@ impl KtClock {
         if self.threat_slot.is_none() {
             return 30.0;
         }
-        let total = self.lead + self.active_hits(cut).unwrap_or(0.0) + self.rest;
+        let total = match self.punch_turns {
+            Some(turns) => self.lead + turns,
+            None => self.lead + self.active_hits(cut).unwrap_or(0.0) + self.rest,
+        };
         if total.is_finite() {
             total
         } else {
@@ -1909,8 +2050,10 @@ fn kt_clocks(
 ) -> (f64, f64) {
     let opponent = (myself + 1) % 2;
     let (cuts, n2) = (features.defender_cuts, features.stadium_bonus_in_clock);
-    let mine = kt_clock_stadium(state, myself, false, effect_aware, reserve_aware, public_eval, cuts, n2);
-    let theirs = kt_clock_stadium(state, opponent, public_eval, effect_aware, reserve_aware, public_eval, cuts, n2);
+    let punch = features.punch;
+    debug_assert!(!(punch && features.counter_damage), "_punch has no counter-damage path");
+    let mine = kt_clock_punch(state, myself, false, effect_aware, reserve_aware, public_eval, cuts, n2, punch);
+    let theirs = kt_clock_punch(state, opponent, public_eval, effect_aware, reserve_aware, public_eval, cuts, n2, punch);
     if !features.counter_damage {
         return (mine.total(0.0), theirs.total(0.0));
     }
@@ -6020,5 +6163,124 @@ mod km_tests {
         // 3 Stadium cases x 3 attackers x 6 victims. N2 changes a hit in some, and a cut shortens a first hit in many.
         assert_eq!(cases, 54);
         assert!(n2_acts > 10 && cut_acts > 20, "{n2_acts} cases where N2 acts, {cut_acts} where a cut acts");
+    }
+}
+
+/// ky `_punch`: Mega Kangaskhan ex's Double-Punching Family forecast as two punches (80, then 40), each with its own cuts,
+/// the 40 carrying on to the next victim. Every test reads the same board unfixed (`punch` off) and fixed.
+#[cfg(test)]
+mod punch_tests {
+    use super::*;
+    use crate::card_ids::CardId;
+    use crate::database::get_card_by_enum;
+    use crate::models::EnergyType;
+
+    fn mon(id: CardId) -> PlayedCard {
+        PlayedCard::from_id(id)
+    }
+
+    fn kangaskhan() -> PlayedCard {
+        mon(CardId::B2127MegaKangaskhanEx).with_energy(vec![EnergyType::Colorless; 3])
+    }
+
+    fn helmeted(hp: u32) -> PlayedCard {
+        mon(CardId::B2097AlolanMuk).with_remaining_hp(hp).with_tool(get_card_by_enum(CardId::B1219HeavyHelmet))
+    }
+
+    /// Player 0 holds `victims`, player 1 `threat`; player 0 to move on turn 5, and player 1's points `points`.
+    fn board(victims: Vec<PlayedCard>, threat: Vec<PlayedCard>, points: u8) -> State {
+        let mut state = State::default();
+        state.set_board(victims, threat);
+        state.turn_count = 5;
+        state.current_player = 0;
+        state.points[1] = points;
+        state
+    }
+
+    /// km's clock on player 0 (the clock of the opponent's wins), (unfixed, fixed).
+    fn clock(state: &State) -> (f64, f64) {
+        let km = |punch| kt_clock_punch(state, 0, false, true, false, true, true, true, punch).total(0.0);
+        (km(false), km(true))
+    }
+
+    fn victim(hp: f64, points: u8) -> PunchVictim {
+        PunchVictim { hp, first: [80.0, 40.0], later: [80.0, 40.0], points }
+    }
+
+    /// 1. An unhelmeted 110-HP Alolan Muk falls to one attack (80 + 40), not two.
+    #[test]
+    fn an_unhelmeted_110_hp_muk_is_one_attack() {
+        assert_eq!(clock(&board(vec![mon(CardId::B2097AlolanMuk)], vec![kangaskhan()], 0)), (2.0, 1.0));
+    }
+
+    /// 2. A Heavy Helmet holder at 61-80 HP is knocked out by 60 + 20 (unfixed: 60 a turn, so two attacks).
+    /// 3. At 81-100 HP it survives the first attack (a flat +40 would say 100, a knock-out).
+    #[test]
+    fn heavy_helmet_cuts_each_punch() {
+        for hp in [61, 70, 80] {
+            assert_eq!(clock(&board(vec![helmeted(hp)], vec![kangaskhan()], 0)), (2.0, 1.0), "{hp} HP");
+        }
+        for hp in [81, 90, 100] {
+            assert_eq!(clock(&board(vec![helmeted(hp)], vec![kangaskhan()], 0)), (2.0, 2.0), "{hp} HP");
+        }
+    }
+
+    /// 4. The carry-over: after a first-punch knock-out the 40 lands on the promoted Pokémon, and a knock-out that ends the
+    /// game has no second punch; a second-punch knock-out carries nothing.
+    #[test]
+    fn the_second_punch_carries_to_the_next_victim() {
+        // A (50 HP) falls to the first punch, B (130) takes the 40 and then 80 + 40: 2 turns (3 with no carry-over).
+        assert_eq!(punch_clock_turns(&[victim(50.0, 1), victim(130.0, 1)], 0), 2.0);
+        // A game-ending knock-out: the clock stops there, B is never counted.
+        assert_eq!(punch_clock_turns(&[victim(50.0, 1), victim(130.0, 1)], 2), 1.0);
+        // A falls to the second punch (80 + 40 = 120 on 100 HP): nothing carries to B (140: 2 more turns).
+        assert_eq!(punch_clock_turns(&[victim(100.0, 1), victim(140.0, 1)], 0), 3.0);
+        // The same through the clock: a 50-HP Pidgey Active and a 130-HP benched Snorlax; the third point isn't reached.
+        let state = board(vec![mon(CardId::B1180Pidgey).with_remaining_hp(50), mon(CardId::B3b055Snorlax)], vec![kangaskhan()], 0);
+        assert_eq!(clock(&state), (1.0 + 2.0, 2.0));
+    }
+
+    /// 5. FINDINGS' totals: Kingambit + Glimmora + Muk, 6 → 4; a 180-HP ex, 3 → 2.
+    #[test]
+    fn the_clock_totals_of_the_findings() {
+        let board3 = board(
+            vec![mon(CardId::B3a043Kingambit), mon(CardId::B3a045Glimmora), mon(CardId::B2097AlolanMuk)],
+            vec![kangaskhan()],
+            0,
+        );
+        assert_eq!(clock(&board3), (6.0, 4.0));
+        // A Mega Kangaskhan ex (180 HP, 2 points) with 1 point already taken: the ex alone decides the game.
+        assert_eq!(clock(&board(vec![mon(CardId::B2127MegaKangaskhanEx)], vec![kangaskhan()], 1)), (3.0, 2.0));
+    }
+
+    /// 6. The threat pick reads 120: the Kangaskhan (120) over a Druddigon's 90, which 80 would not beat.
+    #[test]
+    fn the_threat_pick_uses_120() {
+        let druddigon = mon(CardId::A1a056Druddigon).with_energy(vec![EnergyType::Fire, EnergyType::Water, EnergyType::Colorless]);
+        let state = board(vec![mon(CardId::B2097AlolanMuk)], vec![druddigon, kangaskhan()], 0);
+        let threat = |punch| kt_clock_punch(&state, 0, false, true, false, true, true, true, punch).threat_slot;
+        assert_eq!((threat(false), threat(true)), (Some(0), Some(1)));
+    }
+
+    /// Where no Mega Kangaskhan ex threatens, `punch` changes nothing: the whole value is the same.
+    #[test]
+    fn punch_changes_nothing_without_a_kangaskhan_threat() {
+        let mewtwo = mon(CardId::A1129MewtwoEx).with_energy(vec![EnergyType::Psychic; 2]);
+        for threat in [vec![mewtwo.clone()], vec![mon(CardId::B1180Pidgey), mewtwo]] {
+            let state = board(vec![mon(CardId::B2097AlolanMuk), helmeted(90)], threat, 0);
+            for me in 0..2 {
+                let value = |features| {
+                    parametric_value_function_ex6(&state, me, &ValueFunctionParams::baseline(), true, false, true, true, false, features)
+                };
+                assert_eq!(value(EvalFeatures::KM).to_bits(), value(EvalFeatures::KM_PUNCH).to_bits());
+            }
+        }
+        // The same threat side with Kangaskhan on the Bench, not the threat: also bit-equal.
+        let mewtwo = mon(CardId::A1129MewtwoEx).with_energy(vec![EnergyType::Psychic; 2]);
+        let state = board(vec![mon(CardId::B2097AlolanMuk)], vec![mewtwo, mon(CardId::B2127MegaKangaskhanEx)], 0);
+        let value = |features| {
+            parametric_value_function_ex6(&state, 0, &ValueFunctionParams::baseline(), true, false, true, true, false, features)
+        };
+        assert_eq!(value(EvalFeatures::KM).to_bits(), value(EvalFeatures::KM_PUNCH).to_bits());
     }
 }

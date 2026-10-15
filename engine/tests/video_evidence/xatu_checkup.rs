@@ -132,7 +132,7 @@ fn choose(state: &State, depth: usize, value_function: ValueFunction, seed: u64)
         value_function,
         opponent_ply: 0,
         consistent_horizon: false,
-        soft_opponent: false,
+        soft_opponent: false, resolve_queued_damage: false,
     };
     let choice = bot.decision_fn(
         &mut StdRng::seed_from_u64(seed),

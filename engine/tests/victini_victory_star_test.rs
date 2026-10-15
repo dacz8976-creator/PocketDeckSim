@@ -558,7 +558,7 @@ fn search_players_resolve_the_pause_instead_of_scoring_it_as_zero_damage() {
         }),
         opponent_ply: 0,
         consistent_horizon: false,
-        soft_opponent: false,
+        soft_opponent: false, resolve_queued_damage: false,
     };
     assert!(matches!(
         expecti

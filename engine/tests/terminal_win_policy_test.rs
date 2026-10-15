@@ -24,7 +24,7 @@ fn choose(s:&State,depth:usize,seed:u64)->Action {
  assert!(obs.visible_state().hands[1].iter().all(|c|*c==Card::Unknown));
  let mut p=ExpectiMiniMaxPlayer{deck:Deck::default(),max_depth:depth,write_debug_trees:false,
  value_function:Box::new(public_clock_effect_value_function),opponent_ply:0,
- consistent_horizon:false,soft_opponent:false};
+ consistent_horizon:false,soft_opponent:false, resolve_queued_damage: false};
  p.decision_fn(&mut StdRng::seed_from_u64(seed),&obs,&actions)
 }
 fn arceus(n:usize)->PlayedCard{PlayedCard::from_id(CardId::A2a071ArceusEx).with_energy(vec![EnergyType::Water;n])}
