@@ -47,6 +47,8 @@ def main():
             print("bot: %s -> %d result(s)" % (s, len(got)))
         except J.Refused as e:
             print("NOT FILED: %s: %s" % (s, e))
+    J.add_note(doc, J.ROOT, "73dfed58d1d6", "the deck-01 file on main is not the list you play; every Kingambit bot "
+               "number so far was played on 35d98d0dcaf2 (deck 01)", "rl/deck_journal/SPEC.md", BY)
     os.makedirs(J.JOURNALS, exist_ok=True)
     J.save(path, doc, J.ROOT)
     with open(path[:-5] + ".md", "w", encoding="utf-8", newline="\n") as fh:

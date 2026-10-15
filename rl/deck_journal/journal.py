@@ -683,12 +683,12 @@ def _block(doc, group, label, played_by_group):
     items = []
     for r in cur:
         who = (" [on %s]" % r["source"].split("/")[-1]) if False else ""
-        items.append("%s: %s (%s-%s range), %d games%s" % (r["label"], _pct(r["number_pct"]), r["ci95_wilson"][0],
+        items.append("%s: %s (95%% range %s-%s), %d games%s" % (r["label"], _pct(r["number_pct"]), r["ci95_wilson"][0],
                                                           r["ci95_wilson"][1], r["n"], who))
     if old:
         lo, hi = min(r["number_pct"] for r in old), max(r["number_pct"] for r in old)
-        items.append("older engine, kept for the record and not compared: %d results from %d runs, %s to %s, %d games"
-                     % (len(old), len({r["source"] for r in old}), _pct(lo), _pct(hi), sum(r["n"] for r in old)))
+        items.append("older engine, kept for the record and not compared: %d bot results from %d runs, numbers from %s to %s"
+                     % (len(old), len({r["source"] for r in old}), _pct(lo), _pct(hi)))
     if len(group) > 1 and items:
         items = ["(played on %s) %s" % (", ".join(sorted({v["id"] for v in group for r in v["results"] if r in bots})), x)
                  for x in items]

@@ -227,6 +227,30 @@ class Ladder(unittest.TestCase):
         self.assertEqual(len(r["games"]), 3)                  # g4 is another version's game
 
 
+class Extras(unittest.TestCase):
+    """Beyond the spec's list: a counting reading's rows, a setup result's computed range, and the check command."""
+
+    def test_ladder_from_a_reading_splits_test_and_feedback_and_counts_concession_wins(self):
+        doc = kingambit_doc()
+        rows = [{"key": "d01/a", "doc": "d01", "result": "W", "opp": "x", "class": "test", "tie": "assumed",
+                 "concession": True, "cards": "checked"},
+                {"key": "d01/b", "doc": "d01", "result": "L", "opp": "y", "class": "feedback", "tie": "assumed",
+                 "concession": False, "cards": None}]
+        r = J.ladder_from_reading(doc, "35d98d0dcaf2", {"groups": {"01-x@35d98d0dcaf2": {"rows": rows}}},
+                                  source=DECK01, by="test", commit="c")
+        self.assertEqual((r["test"], r["feedback"], r["concession_wins"]),
+                         ({"wins": 1, "losses": 0}, {"wins": 0, "losses": 1}, 1))
+        self.assertIn("test 1-0", J.render(doc))
+
+    def test_setup_range_is_computed_by_the_tool(self):
+        doc = kingambit_doc()
+        r = J.add_setup(doc, ROOT, "73dfed58d1d6", "rl/deck_journal/SPEC.md", "lib/card.py", "24,700,000,000+i",
+                        1000, "his games' pace", {"k3": {"label": "Kingambit in play by turn 3", "x": 600, "n": 1000}},
+                        by="test")
+        self.assertEqual(r["measures"]["k3"]["wilson"], J.mp.wilson(600, 1000))
+        self.assertIn("60.0%", J.render(doc))
+
+
 class View(unittest.TestCase):
     def test_deck01_bot_numbers_never_appear_under_his_list_and_the_view_is_repeatable(self):
         doc = kingambit_doc()
