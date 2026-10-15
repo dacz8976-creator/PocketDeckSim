@@ -201,7 +201,7 @@ class Bots(unittest.TestCase):
         res = J.add_bot(doc, ROOT, "35d98d0dcaf2", REPLAY_B, by="test")
         self.assertEqual(len(res), 2)
         self.assertEqual(sorted(r["pilot"] for r in res), ["km3", "kx3"])
-        self.assertTrue(all(r["in_bot_comparison"] and r["n"] == 32 for r in res))
+        self.assertTrue(all(r["current_engine"] and r["n"] == 32 for r in res))
         self.assertEqual(doc["versions"][1]["results"], [])
 
 
