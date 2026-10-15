@@ -1,0 +1,24 @@
+{
+ "manifest_sha256": "34add72c2823d74ce068590bbc78d0a6888d7ef4d92dfdf214f80964977937e9",
+ "stage": "use",
+ "pilot": "kx3",
+ "reference": "km3",
+ "registration_changed": false,
+ "registration_problems": [],
+ "paired_games": 20,
+ "pooled": {
+  "n": 20,
+  "mean": 0.25,
+  "sd": 0.4442616583193193,
+  "half": 0.19470625648856144
+ },
+ "per_deck": {
+  "draft-A-wallace": {
+   "n": 20,
+   "mean": 0.25,
+   "sd": 0.4442616583193193,
+   "half": 0.19470625648856144
+  }
+ },
+ "exactly_zero": false
+}
