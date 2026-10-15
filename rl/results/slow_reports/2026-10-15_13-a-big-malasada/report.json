@@ -1,0 +1,24 @@
+{
+ "manifest_sha256": "693c6f03626ea1c23040e1392a907068ae077a5e7c6e56d068e89976f399e51b",
+ "stage": "use",
+ "pilot": "kx3",
+ "reference": "km3",
+ "registration_changed": false,
+ "registration_problems": [],
+ "paired_games": 20,
+ "pooled": {
+  "n": 20,
+  "mean": 0.35,
+  "sd": 0.4893604849295929,
+  "half": 0.21447168872174688
+ },
+ "per_deck": {
+  "13-a-big-malasada": {
+   "n": 20,
+   "mean": 0.35,
+   "sd": 0.4893604849295929,
+   "half": 0.21447168872174688
+  }
+ },
+ "exactly_zero": false
+}
