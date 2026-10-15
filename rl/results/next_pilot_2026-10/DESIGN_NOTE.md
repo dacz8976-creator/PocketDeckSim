@@ -129,6 +129,39 @@ part of phase 1, not deferred:
 mattered was the candidate's model of the opponent, not more thinking. Its worlds held a list like his opponent's; F's pool didn't, so
 F's play-outs scored almost every move alike. Where a planning case turns on the opponent's deck, the play-out worlds are part of the
 fix. In the next iterations, that comes before any longer search.
+- The matchup-note readers found the same thing (Oct 15). All three bots look 3 actions deep, and F and C fill the opponent's hand
+  from the eight public lists. So against a deck outside that pool they are wrong by construction. Matchup note 8 is an example:
+  none of the eight lists has the opponent's Garchomp, let alone their Cynthia, Giovanni or Red. The laptop checked this
+  (playout_player.rs:12-13, :387-411).
+
+**More lab findings from the matchup-note readers (Fable, Oct 15), for the next round:**
+- **012303 t09: the bots attack into a loss.** It is a case in `DESIGN_NOTE_CASES.md` C. km3's clock weighs "the opponent wins in 1
+  turn" at 100, against 10,000 per point. So a knock-out that Poison helps, and that hands the opponent their third point, is
+  priced too low. That is a km3 value finding, gated like any km3 change.
+- **Score dumps.** The F and C position runs saved only plans, never the scores behind them. Before gate 0, `pgd_patch.py` gets a
+  print-only score dump in the position runner. Being print-only, it leaves every move and digest unchanged.
+- **`_spread`, a third km correction switch beside `_punch` and `_queue`. It is for the next brief revision, NOT phase 1's running
+  build.** The Opus cloud confirmed with a test (`../kangaskhan_pricing_2026-10-13/DRACO_METEOR_cloud.md`) that km3's clocks
+  price random-target damage at 0.
+  - `kt_clock_c2` calls `estimated_attack_damage_ex` with `spread_aware` false, so those attacks fall through to their printed 0.
+    The flag stayed off so the §116 tier keeps its bytes.
+  - The engine's average for Draco Meteor on the test board is 152 HP. km3's clock treats a loaded Dragonite like an unpowered one.
+  - 22 printings of 9 attacks are affected. No panel, scoreboard, gauntlet or Dustin deck has one, so no measured number moves. One
+    ladder opponent (Gholdengo ex / Orthworm) had one.
+  - **The fix is the cloud's version, not `spread_aware` turned on.** That flag puts the whole sum on the Active (200 on the test
+    board, where the engine's average for the Active is 51.5).
+    - Instead, each hit lands on a given Pokémon with chance 1/n, where n counts the Pokémon it can choose among (both sides for
+      Spurt Fire and Heavy Thunder).
+    - Each target's expected damage is capped at its HP.
+    - Gholdengo ex's damage is counted per Metal Energy. The coin-flip discard class and Ampharos's Bench extra stay out.
+  - **Where it acts:** in ky3's own forecasts. The simulated opponent stays plain km3.
+  - **Its unit tests:**
+    - the cloud's scratch test (`draco_meteor_check.rs`), turned into a real one: 66.7 uncapped on the Active, near 51.5 with the
+      cap, and a finite opponent clock, not 30;
+    - Volcanic Kaboom with one target, 160 on it;
+    - Spurt Fire counting the attacker's own Bench in n;
+    - with the flag off, every clock and value is byte-for-byte unchanged.
+  - **Identity:** bit-equal on every deck without these 22 printings, which is the whole current panel.
 
 **The round is not done until** each failure has a measured baseline (km3, F, ky3 with no switch, on its cases) and, wherever a
 clean positive exists, a switch tested both ways like `_atk`.

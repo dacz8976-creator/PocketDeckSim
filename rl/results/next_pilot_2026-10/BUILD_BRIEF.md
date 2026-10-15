@@ -41,6 +41,7 @@ Then STOP. Gates 0-2 run only after the laptop has reviewed the code diffs (Fabl
 - No change to km3's code path: its digest must stay.
 - Push only to the branch.
 - No frames or videos: positions and ledgers only.
+- Points: a knock-out is worth 1 point, an ex 2, a Mega ex 3, and 3 points win.
 
 **Size (estimate):**
 - Items 1-5 are Rust changes in `engine/src/players/` with unit tests: about 1-2 days of agent work.
