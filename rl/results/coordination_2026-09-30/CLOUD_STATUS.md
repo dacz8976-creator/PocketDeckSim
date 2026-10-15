@@ -143,6 +143,10 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
        not the skip bar, Tool tie-break or Blade forecast (counterfactual changes nothing). t09: _m64 tips it (2 of 12 passes without, 11 with).
      - Passing lets Glimmet fall: count 3, Blade 180 knocks out the Mega Kangaskhan ex for the game; his own play declined the knockout too.
      - Depth 4 agrees (knockout line 31-56%). Proposed gate: paired continuation at R=128 with a careful opponent. Nothing built.
+   - **Draco Meteor in km3's forecast (Oct 15): done; the readers are right** (`kangaskhan_pricing_2026-10-13/DRACO_METEOR_cloud.md`).
+     - km's clocks call the damage estimate with spread_aware off, so Draco Meteor reads 0 (engine: 152 HP per attack); clock 30 (no threat) v 3.
+     - 22 printings of 9 attacks print 0 and hit random targets; no panel, scoreboard, gauntlet or Dustin list carries one (ladder: Gholdengo ex once).
+     - Correction candidate: a separate preset flag pricing each victim's expected share (not the whole sum on the Active). Nothing built.
    - **Now:** idle.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
