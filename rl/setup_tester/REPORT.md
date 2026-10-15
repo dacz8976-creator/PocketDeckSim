@@ -5,7 +5,7 @@ Code: `rl/setup_tester/` (`setup_tester.py` command and report, `st_exact.py`, `
 Standard library only; cards through lib/card.py (`consistency.db()`); no engine program; nothing written outside rl/setup_tester/.
 
 ## Status
-- Tests: 40, all pass at full sizes (400k-deal checks; 3 min 50 s on one process). `ST_FAST=1` runs smaller sizes.
+- Tests: 55 (40 + 15 amendment tests), all pass at full sizes (about 4 min 50 s on one process). `ST_FAST=1` runs smaller sizes.
 - Speed: 6,687 deals per second per process (target 2,000). The first run (100,000 deals plus 6 clocks x 20,000, two lists,
   plus the choice runs and comparisons) took about 6.5 minutes on one process, so it was not detached.
 - The seed block 24.7B is as START_HERE records it. Run on the card-list ids 73dfed58d1d6 (his list) and 35d98d0dcaf2 (deck 01).
@@ -38,3 +38,17 @@ Standard library only; cards through lib/card.py (`consistency.db()`); no engine
 - Dustin has not confirmed any proposed choice or plan line; RESULTS.md says so at the top.
 - `swap_pool` and path versions are implemented and the version limit enforced, but only diff versions and the two first-run lists were exercised.
 - The engine-rule line citations in `st_sim.py` come from reading `engine/src` today; I did not run the engine.
+
+## Amendment 1 (SPEC_AMENDMENT_1, origin/main 3eea18ee), built Oct 15
+Commits: 9789b2de tests first (13 of the 15 new tests fail or error on d0eb22eb; checked in a clean worktree), 8d3514f8 script, 69b0df50 measures and tables.
+Run: `runs/2026-10-15_kingambit_amendment1_run/` (RESULTS.md, results.json): his played list 73dfed58d1d6 beside deck 01, 100,000 deals, 20,000 per clock,
+C-his, C-his seat-matched, C-bot (inputs `replay_b/games.jsonl` are on this branch), C-fixed fast/medium/slow plus the 190-HP reference. The first run's folder stays as history.
+- Script: Regigigas leads; Pawniard held to the bench trigger (T-first-KO default; T-late, T-pieces, T-now run once each on the base); Grimer/Muk benched;
+  Glimmora's turn; promotion and Energy orders; Copycat as the N/M rule (grid N 1-3 x M 0-2, headline N=2 M=1, flagged "still to ask Dustin").
+- Measures: P1-P5, P4 as two columns (knocks out their strongest; wins outright, a lower bound), the strongest Pokémon per clock, the old G/K lines below "descriptive (speed is not the goal)",
+  the not-modelled limits in every summary.
+- Not implementable as written / interpreted:
+  1. The no-knock-out runs (the 100,000-deal setup tables) have no knock-out to trigger T-first-KO, so they bench Pawniard at once (= T-now) and say so; hence T-now and T-late show +0.0 there, and only T-pieces differs. The real T-first-KO/T-late/T-now comparison is in the clock tables.
+  2. C-bot's strongest Pokémon is the panel list's biggest Pokémon (the logs show no HP), flagged, as the amendment allows.
+  3. "Ready" under P4 (able this turn) is judged from the simulated hand and board; points we score before the Blade are not modelled, so "wins outright" is a lower bound.
+- Nothing is confirmed by Dustin; RESULTS.md says so at the top. Ilima, the Pops and the Helmet are "not valued here".
