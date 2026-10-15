@@ -1,0 +1,21 @@
+{
+  "video_basename": "20260930_161055000_iOS.MP4",
+  "sha256": "6b0b2ed06036cd8d4fd21e84c600e6f43a6851d8120eb02610f045d5d116f4b5",
+  "reviewer": "sol_auto_161055000",
+  "consequential_unresolved": [],
+  "unknowns": [
+    {"topic": "Hidden cards", "interval_seconds": [0, 259.13], "detail": "Opponent hidden hand and remaining deck contents are unknown. Visible core and terminal deck label do not establish a complete deck list.", "affects_outcome": false},
+    {"topic": "Auto control", "interval_seconds": [109.5, 130], "detail": "Control becomes unchecked during turn8, with End Turn visible at115.5 and unchecked control at129.0; checked again at130.0. Exact toggle instants and actor are not established. The intervening actions are not attributed to Auto policy.", "affects_outcome": false},
+    {"topic": "Exact print identifiers", "interval_seconds": [0, 259.13], "detail": "Mechanically relevant names, HP, attacks and effects are visible; exact set/card numbers were not verified.", "affects_outcome": false},
+    {"topic": "Opening coin", "interval_seconds": [7, 11], "detail": "Coin animation was inspected without assigning an uncertain face. Following opponent turn1 establishes turn order directly.", "affects_outcome": false},
+    {"topic": "Final numerical score", "interval_seconds": [247, 252], "detail": "UI lights three victory circles after +2 from owner two points. Four points worth of knockouts occurred, but no displayed4-1 final score is claimed.", "affects_outcome": false},
+    {"topic": "Policy motives", "interval_seconds": [0, 259.13], "detail": "Reasons for plays or retreats and whether unchecked-phase inputs were deliberate tests are unknown.", "affects_outcome": false}
+  ],
+  "resolved_checks": [
+    {"topic": "Second Generator coin", "evidence": "targets/t0128.50.jpg", "finding": "Tails explicitly visible; neither Generator gives Energy."},
+    {"topic": "Cord Energy", "evidence": ["targets/t0155.00.jpg", "targets/t0163.00.jpg"], "finding": "Electrike one to two Lightning Energy; one destination, no double transfer to same Pokemon."},
+    {"topic": "Wailmer transient HP", "evidence": ["targets/t0080.00.jpg", "overview/sheet_04.jpg"], "finding": "Attack animation briefly shows printed100; not a heal. Knockout and first point settle afterward."},
+    {"topic": "Mega Manectric scaling", "evidence": ["targets/t0185.00.jpg", "targets/t0194.00.jpg"], "finding": "Attacker's own two points produce80+60, plus20 weakness, for160; Blastoise230 to70."},
+    {"topic": "Available conclusion", "evidence": "targets/t0258.80.jpg", "finding": "Victory and named computer deck are both visible before source end."}
+  ]
+}

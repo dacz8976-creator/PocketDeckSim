@@ -1,0 +1,43 @@
+{
+  "owner_hand_arithmetic": {
+    "opening": 5,
+    "after_active_and_bench": 3,
+    "T1": "3+normal1-PB1+search1-Skarmory1-Research1+Research2=4",
+    "T3": "4+normal1-SteelApron1=4",
+    "T5": "4+normal1-RareCandy1-Aegislash1-goldCore1=2",
+    "T7": "2+normal1-Honedge1-3Popuses3+3Headsreturns3-standardCore1=1"
+  },
+  "opponent_fan_arithmetic": {
+    "T1_setup": 4,
+    "T2": "4+normal1-PB1+search1-Research1+2-PB1+search1=6",
+    "T4": "6+normal1-2Mewtwo2-Plaza1-Copycat1=3; shuffle3/draw4; Candy1/Gardevoir1/Diancie1 leave1",
+    "T6": "1+normal1=2",
+    "T8": "2+normal1=3"
+  },
+  "damage_checks": [
+    "IronSupply10: Ralts60to50; inherited10 damage makes evolvedGardevoir200/210.",
+    "T4Fantasia110-SteelApron10=100, Orthworm100KO.",
+    "T6Fantasia110-Core50=60, Skarmory140to80.",
+    "T7threePop heals3x20=60:80to140; SteelWing70+CursedMetal30=100, Gardevoir200to100.",
+    "T8Psychic3+3+4+0=10, BrilliantStorm40+20x10=240; Wing20+Core50 reduces170 and KO140."
+  ],
+  "energy_checks": [
+    "Owner regularT3Orthworm1 +IronSupplyHonedge1; both retained untilOrthwormKO.",
+    "HonedgeMetal1 retained throughCandyAegislash.",
+    "SkarmoryregularT5one,T7second; Honedgebench3zero.",
+    "OpponentRaltsT2one+T4second retainedGardevoir2; T4Fantasia3toDiancie.",
+    "T6regular1darkMewtwo+Fantasia3darkMewtwo=4;Gardevoir2unchanged.",
+    "T8regularGardevoirthird;freePlazaretreat retains3;total10."
+  ],
+  "action_sequence_checks": [
+    "T1PBinput46.5-47 differsSkarmoryreveal50.",
+    "T5goldCorebeforeMetal.",
+    "T7Honedge,rightbench;threePops;standardCore;Metal;SteelWing.",
+    "Forcedreplacement203-209 isnestedT4,not extraownerturn.",
+    "TerminalremovedSkarmorynotstillActive;reward1Orthworm+2Skarmory=3."
+  ],
+  "pass": true,
+  "independent_acceptance": false,
+  "limits": "Worker reconciliation, not independent lead verdict.",
+  "executable_assertions": "All eleven hand/action/fan/Energy/terminal assertions passed after final JSON read."
+}

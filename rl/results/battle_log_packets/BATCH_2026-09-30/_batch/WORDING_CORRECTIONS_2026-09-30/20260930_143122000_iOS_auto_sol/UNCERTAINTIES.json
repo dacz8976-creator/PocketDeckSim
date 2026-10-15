@@ -1,0 +1,35 @@
+{
+  "video_basename": "20260930_143122000_iOS.MP4",
+  "reviewer": "sol_auto_143122000",
+  "coverage_complete": true,
+  "uncertainties": [
+    {
+      "id": "hidden_opponent_search_results",
+      "timestamps_seconds": [65.5, 66, 94.5],
+      "observation": "The turn-four Poke Ball is established by the new discard top; the turn-six Poke Ball is enlarged on screen. The searched cards remain in the hidden opponent hand.",
+      "resolution": "Unknown. Later Electrike and Magnemite plays are not proof that a particular search obtained either.",
+      "consequence": "No effect on observed public state, full turn coverage, or final result."
+    },
+    {
+      "id": "rapid_ai_research",
+      "timestamps_seconds": [46, 48, 49.5],
+      "observation": "On AI turn two, Research becomes the discard top and the hand expands before the three bench Basics are placed. The precise splash onset was not captured.",
+      "resolution": "Research use is supported by discard and hand transition; exact subsecond timing is unknown.",
+      "consequence": "No omitted meaningful action is claimed."
+    },
+    {
+      "id": "timing_precision",
+      "observation": "Overview labels use nominal fps sampling midpoints; targeted source frames use requested seek times.",
+      "resolution": "Timeline is approximate to the retained frames, not a frame-accurate action log.",
+      "consequence": "Ordering and HP/Energy/score changes reconcile."
+    },
+    {
+      "id": "hidden_information",
+      "observation": "Full deck lists, opponent hand, and bot reasoning are not shown.",
+      "resolution": "Unknown. Strategic explanations are explicitly labeled interpretation.",
+      "consequence": "No complete deck reconstruction or optimal-play proof."
+    }
+  ],
+  "astra_escalation_required": false,
+  "lead_acceptance_pending": true
+}

@@ -1,0 +1,76 @@
+{
+  "reviewer": "sol_competitive_20261002_021402000",
+  "video_basename": "20261002_021402000_iOS.MP4",
+  "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+  "coverage_gaps": [],
+  "material_clarifications": [
+    {
+      "id": "sabrina_replacement_tempo",
+      "status": "resolved_by_bounded_astra_and_lead_check",
+      "timestamps_seconds": [
+        177,
+        180,
+        205,
+        211,
+        254,
+        263
+      ],
+      "frames": [
+        "native/t0177.00.jpg",
+        "native/t0180.00.jpg",
+        "native/t0205.00.jpg",
+        "native/t0211.00.jpg",
+        "native/t0254.00.jpg",
+        "native/t0263.00.jpg"
+      ],
+      "observation": "Sabrina requires owner replacement with Wailord ex250 or Indeedee ex130. Owner selects zero-Energy ex. Non-ex Wailord has three Water. Peculiar Plaza reduces Psychic retreat by two, Indeedee retreat is one, and Gardevoir's upcoming hit is110.",
+      "question": "Does choosing Indeedee legally preserve a free retreat to non-ex Wailord on turn9 before replacing Plaza, so fourth Water permits Whale Pump100? Bound the strategic relevance without claiming this would win.",
+      "working_interpretation": "Plausible tempo opportunity, not yet independently accepted and not a proven winning line",
+      "resolution": "Astra accepted choosing Indeedee as a legal tempo alternative under the observed110-damage continuation: survive at20HP, optionally heal while Active, retreat free before replacing Peculiar Plaza, promote non-ex Wailord and attach fourth Water for100 damage on turn9. This leaves Mega Gardevoir110HP and exposes a damaged two-point Indeedee on Bench; it is not a guaranteed reversal of the loss.",
+      "addendum": "../BATCH_2026-10-02_COMPETITIVE/ASTRA_TACTICAL_CHECKS.md"
+    }
+  ],
+  "explicit_unknowns": [
+    {
+      "field": "hidden_deck_lists",
+      "reason": "Only visible public and owner hand cards are established"
+    },
+    {
+      "field": "opponent_automation",
+      "reason": "Owner board does not reveal opponent automation"
+    },
+    {
+      "field": "ranked_category",
+      "reason": "Visible footage starts matchmaking without a printed ranked lobby category; competitive is owner testimony"
+    },
+    {
+      "field": "recording_filename_timezone",
+      "reason": "Local October1 match date follows lead assignment inference, not printed filename clock basis"
+    },
+    {
+      "field": "subjective_ratings",
+      "reason": "No owner numeric enjoyment or consistency ratings supplied"
+    }
+  ],
+  "resolved_first_pass_corrections": [
+    "Opening Active is Meloetta, not initially misread Phantump thumbnail",
+    "Opponent evolved card is Mega Gardevoir ex, not regular Gardevoir ex",
+    "Opponent name is ポジビン, resolved using large point/result overlays",
+    "Turn9 healing uses two Ice Pop resolutions plus two Indeedee activations and Shore, not three Pop resolutions",
+    "Irida at398s is inspected and remains in hand, not played",
+    "Intermediate HP animation numbers are not additional damage or healing events"
+  ],
+  "worker_status_at_submission": "complete_first_pass",
+  "status": "full_battle_review_complete",
+  "review_status": "full_battle_review_complete",
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "source_archived": true,
+  "source_modified": false,
+  "global_registration_complete": true,
+  "ranked_ladder_eligible": false,
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "external_log_saved": true,
+  "archive_receipt": "MOVE_RECEIPT.20261002_021402000_iOS.MP4.json",
+  "archive_completion_event_id": "9b66acfb-9d10-4f70-8bc7-8c6cb30f0216"
+}

@@ -1,0 +1,42 @@
+{
+  "filename": "20260907_232617000_iOS.MP4",
+  "sha256": "0114215B1DF4E6D6DD2B21C47616B9F9486788F815BC48B978DBA06D68490166",
+  "bytes": 824157596,
+  "duration_seconds": 441.538333,
+  "codec": "hevc",
+  "resolution": "1170x2532",
+  "average_frame_rate": "5228800/88311",
+  "container_frame_count": 26144,
+  "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20260907_232617000_iOS.MP4",
+  "recording_type": "single battle from opponent introduction/setup to literal Defeat banner; no post-battle statistical results page recorded",
+  "reviewer": "Codex subagent /root/astra_review_152812",
+  "review_date": "2026-09-21",
+  "review_status": "full_battle_review_complete_and_lead_accepted",
+  "review_method": "Independent local source decoding and visual inspection. Full-clip five-second overview, dense approximately one-second action intervals and subsecond checks for brief declarations/damage. 381 full-resolution timestamped frames retained. Not every decoded frame or hidden state reviewed.",
+  "frame_timestamp_convention": "frames/SSS.sss.jpg identifies requested elapsed seconds; first decoded frame at or after each request. Event boundaries are approximate.",
+  "player": "Dacz8976",
+  "opponent_display_name": "Ddiioocc",
+  "turn_order": "player goes second; eleven numbered turns observed",
+  "control_mode": "manual interaction observed, with selection/confirmation prompts and turn clocks; no Auto control visible",
+  "match_mode": "named-opponent timed battle; exact matchmaking category not shown",
+  "opponent_ai_status": "not independently established; no Solo/AI inference",
+  "outcome": "player defeat; final visible markers player 1, opponent 3; terminal +2 points awarded for Jolteon ex KO from opponent's pre-KO 2 points",
+  "prior_evidence": [
+    {
+      "original": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\battle-20260907-232617\\LEAD_INDEPENDENT_CHECKS.json",
+      "copy": "prior_evidence/LEAD_INDEPENDENT_CHECKS.json",
+      "sha256": "351CBFFDA969425399E3046A7F04CDD4B19CD190AC6241D496D59A6F0AF488C1",
+      "scope": "prior sparse opening/ordinary/endpoint samples, explicitly not full acceptance"
+    },
+    {
+      "original": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\late-battle-video-intake-2026-09-07\\triage\\TRIAGE.md",
+      "copy": "prior_evidence/TRIAGE.md",
+      "sha256": "D65C1B42916BCAE7BC705D5CC3BB32333FF5CF1D5CA2D7E2D940E18B03FA880A",
+      "scope": "sparse intake for two separate recordings; focused Raticate sequence in this document belongs to 232035, not this video"
+    }
+  ],
+  "prior_context_disposition": "Source hash/size and inspected sparse claims consistent. No material contradiction found. Previous partial/unaccepted status is expanded by this full review, not treated as factual proof.",
+  "gemini_evidence": "Gemini v6 source binding matched, but the response described a different battle and was rejected in full. The parser also blocked the truncated packet. Preserved under submission-history/gemini-v6 and reconciled in GEMINI_V6_RECONCILIATION.md.",
+  "registry_changes_performed": true,
+  "media_move_performed": true
+}

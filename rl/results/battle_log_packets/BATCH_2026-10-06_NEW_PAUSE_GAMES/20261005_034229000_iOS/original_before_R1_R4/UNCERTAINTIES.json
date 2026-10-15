@@ -1,0 +1,86 @@
+{
+  "is_template": false,
+  "game_id": "20261005_034229000_iOS",
+  "items": [
+    {
+      "id": "U1",
+      "issue": "Opponent draw/search identities are hidden and remain unnamed.",
+      "status": "explicit_recording_or_capture_limit",
+      "effect_on_outcome": "none; terminal defeat/points filmed",
+      "guess_made": false
+    },
+    {
+      "id": "U2",
+      "issue": "No full discard pile is opened or scrolled; top previews and visible KO transfers do not establish the whole pile.",
+      "status": "explicit_recording_or_capture_limit",
+      "effect_on_outcome": "none; terminal defeat/points filmed",
+      "guess_made": false
+    },
+    {
+      "id": "U3",
+      "issue": "No QR, deck list or deck selection is filmed in this source. Nearby-source QR is a candidate only; the unrecorded gap does not establish unchanged twenty cards.",
+      "status": "explicit_recording_or_capture_limit",
+      "effect_on_outcome": "none; terminal defeat/points filmed",
+      "guess_made": false
+    },
+    {
+      "id": "U4",
+      "issue": "Times are requested source-local seeks; decoded actual presentation timestamps were not measured. Input brackets are separate from card reveals/resolution.",
+      "status": "explicit_recording_or_capture_limit",
+      "effect_on_outcome": "none; terminal defeat/points filmed",
+      "guess_made": false
+    },
+    {
+      "id": "U5",
+      "issue": "No Auto control is visible in the reviewed source. Online opponent identity is visible, but ranked/casual queue is not filmed.",
+      "status": "explicit_recording_or_capture_limit",
+      "effect_on_outcome": "none; terminal defeat/points filmed",
+      "guess_made": false
+    },
+    {
+      "id": "U6",
+      "issue": "Selected board/hand frames often omit the Current turn label; those snapshots record null with a reason. Actual turns are established by alternating transition labels and final eight-turn screen.",
+      "status": "explicit_recording_or_capture_limit",
+      "effect_on_outcome": "none; terminal defeat/points filmed",
+      "guess_made": false
+    }
+  ],
+  "resolved_rechecks": [
+    {
+      "issue": "T6 Psychic attachment target",
+      "resolution": "Native260 shows regular attachment to dark-art Mewtwo ex bench2; later4 icons are1regular+3Fantasia, Mega Gardevoir remains2.",
+      "timestamps": [
+        258,
+        260,
+        266,
+        274,
+        280
+      ]
+    },
+    {
+      "issue": "Final attack name/damage",
+      "resolution": "Brilliant Storm native355. Native352 counts3Diancie+3Gardevoir+4Mewtwo+0Mewtwo=10Psychic;240raw minus50Core and20Wing=170 and filmedKO.",
+      "timestamps": [
+        326,
+        334,
+        349,
+        352,
+        355,
+        358,
+        361
+      ]
+    },
+    {
+      "issue": "Lucky Ice Pop number of uses",
+      "resolution": "Three separately filmed item inputs and three Heads at294,303,312; healing80to140 in three20 increments.",
+      "timestamps": [
+        286,
+        294,
+        298,
+        303,
+        307,
+        312
+      ]
+    }
+  ]
+}

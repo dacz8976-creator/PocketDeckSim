@@ -1,0 +1,20 @@
+{
+  "schema": "battle-review-evidence/v1",
+  "source_sha256": "0114215B1DF4E6D6DD2B21C47616B9F9486788F815BC48B978DBA06D68490166",
+  "method": "Full-clip five-second overview followed by dense approximately one-second action review and subsecond checks for declarations, damage, Energy movement, knockouts, point awards and the terminal result.",
+  "retained_frame_count": 381,
+  "retained_frame_directory": "frames",
+  "scope": "Full recorded battle, 00:00.000-07:21.538",
+  "representative_frames": [
+    {"time": "00:10.000", "file": "frames/010.000.jpg", "reason": "Player goes second"},
+    {"time": "02:38.000", "file": "frames/158.000.jpg", "reason": "Ambush tails and zero-damage sequence"},
+    {"time": "04:38.000", "file": "frames/278.000.jpg", "reason": "Thieving Incisors Fighting transfer settled state"},
+    {"time": "05:10.600", "file": "frames/310.600.jpg", "reason": "Poke Ball no-target interval and Jolteon Energy state"},
+    {"time": "05:33.000", "file": "frames/333.000.jpg", "reason": "First Electromagnetic Wall trigger"},
+    {"time": "05:58.000", "file": "frames/358.000.jpg", "reason": "Turn 10 opening state"},
+    {"time": "06:56.000", "file": "frames/416.000.jpg", "reason": "Fourth Fighting attachment before second Wall trigger"},
+    {"time": "07:13.400", "file": "frames/433.400.jpg", "reason": "Fighting Pulse displays 180 damage"},
+    {"time": "07:21.000", "file": "frames/441.000.jpg", "reason": "Literal Defeat banner and final marker display"},
+    {"time": "07:21.300", "file": "frames/441.300.jpg", "reason": "Final recorded Defeat state"}
+  ]
+}

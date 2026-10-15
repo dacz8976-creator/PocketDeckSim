@@ -1,0 +1,155 @@
+{
+  "is_template": false,
+  "schema": "retrospective-hand-supplement/hand-v1",
+  "source_video": "20261002_115323000_iOS.MP4",
+  "source_sha256": "0a3c7a2dbd87adb74f2eea2d61723f5e68fd71a74f0ab80d7486a9ee1d6c6be0",
+  "accepted_packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_115323000_iOS_shark_sol",
+  "scope": "Targeted retrospective supplement only: owner game turn 13 starting hand, uncertain Alolan Ninetales ex, associated draws/actions only as necessary",
+  "capture_status": "complete_with_recording_limits",
+  "target_question": "Was Alolan Ninetales ex present in the owner starting hand on turn 13?",
+  "answer": "Yes, directly observed at source seek 461 seconds before drag/play at 462.",
+  "turns": [
+    {
+      "turn_number": 13,
+      "who_played": "owner",
+      "source_video": "20261002_115323000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": 461.0,
+        "draw_end_interval_seconds": [
+          460,
+          461
+        ],
+        "timing_limit": "Draw end is approximate first sampled settled fan, not exact frame PTS.",
+        "first_card_play_interval_seconds": [
+          461,
+          462
+        ],
+        "before_end_action_seconds": 478.0,
+        "attack_started_by_seconds": 479.0
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "observation",
+            "evidence_ids": [
+              "e461"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Alolan Ninetales ex",
+            "variant": "150 HP, Binding Snow 80 full-art card visible",
+            "basis": "observation",
+            "evidence_ids": [
+              "e460",
+              "e461"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "direct native preplay fan observation",
+        "evidence_ids": [
+          "e461"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 2,
+        "supported_range": null,
+        "count_method": "Two individually visible yellow-edged card backs in native top crop",
+        "basis": "observation",
+        "evidence_ids": [
+          "e461"
+        ],
+        "identities": null,
+        "limit_reason": "Opponent identities hidden"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_turn_draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Alolan Ninetales ex",
+              "reveal_position": 1,
+              "source_video": "20261002_115323000_iOS.MP4",
+              "timestamp_seconds": 460.0,
+              "basis": "direct draw reveal observation",
+              "evidence_ids": [
+                "e460",
+                "e461"
+              ],
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 1,
+          "hand_count_after": 2,
+          "basis": "Cyrus predraw at 459, revealed Ninetales at 460, both in fan at 461"
+        }
+      ],
+      "plays_in_order": null,
+      "accepted_plays_reference": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_115323000_iOS_shark_sol\\REVIEW.md (turn 13 row)",
+      "first_card_action_reconciliation": {
+        "card": "Alolan Ninetales ex",
+        "kind": "evolution",
+        "begins_between_seconds": [
+          461,
+          462
+        ],
+        "basis": "Observed fan then drag; accepted target/evolution account is referenced, not re-reviewed",
+        "evidence_ids": [
+          "e461",
+          "e462",
+          "e464"
+        ],
+        "hand_count_after": 1
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "basis": "matching_artwork_observation_and_identity_continuity_inference",
+            "evidence_ids": [
+              "e461",
+              "e478"
+            ],
+            "limit_reason": "Printed Cyrus header is obscured by the board zoom at 478; one-card count and matching artwork are observed, identity is inferred by continuity from clear preplay461."
+          }
+        ],
+        "count": 1,
+        "basis": "Observed single-card count and matching artwork before attack; Cyrus identity continuity from clear461 fan.479/481 are after-trigger corroboration only.",
+        "evidence_ids": [
+          "e478",
+          "e479",
+          "e481"
+        ],
+        "status": "observed_count_with_identity_continuity_inference",
+        "limit_reason": "478 board-card zoom hides the printed Cyrus header; later479/481 cannot be treated as before-attack views."
+      },
+      "hand_count_reconciliation": {
+        "basis": "Inference from observed start/end counts and card continuity; identity is not inferred from arithmetic alone.",
+        "calculation": "1 predraw + 1 normal draw - 1 evolution card = 1 ending hand card",
+        "identities_inferred_from_count": false
+      },
+      "boards_result_and_remaining_actions": {
+        "status": "accepted_review_referenced_without_re_review",
+        "reference": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_115323000_iOS_shark_sol\\REVIEW.md"
+      },
+      "limits": [
+        "Target turn only. No deck-list identity deduction.",
+        "No opening or other turns inspected for new hand evidence.",
+        "No exact video frame PTS measured."
+      ]
+    }
+  ],
+  "astra_question": null,
+  "lead_checked": false,
+  "lead_endpoint_repair": "Independent Sol check corrected the readability claim only; the directly observed461 starting hand is unchanged."
+}

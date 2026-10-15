@@ -1,0 +1,31 @@
+{
+  "video_basename": "20261002_211613000_iOS.MP4",
+  "sha256": "8eec16e93f6e3bc1322e31bb5ff85c95a364ffb8bc14dd53427626226f1e3fd4",
+  "bytes": 424678684,
+  "duration_seconds": 231.373333,
+  "streams": [
+    {
+      "codec_name": "hevc",
+      "width": 1170,
+      "height": 2532,
+      "start_time": "0.000000"
+    },
+    {
+      "codec_name": "aac",
+      "start_time": "0.000000"
+    }
+  ],
+  "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261002_211613000_iOS.MP4",
+  "recording_relationships": [],
+  "source_identity_basis": "Review_Log CLI verified SHA and stable file during hashing; size/mtime also stable through probe.",
+  "identity_verified_event_id": "9c166c2a-c661-4e38-8e84-efa8ccad0750",
+  "intake_utc": "2026-10-02T23:38:59.330795+00:00",
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "owner_deck": "Original Draft A: Shark Tempo with Misty",
+  "owner_testimony": "Same computer opponent for eight complete recordings, five Auto followed by three manually piloted.",
+  "classification": "computer_battle",
+  "excluded_from_ladder": true,
+  "expected_action_authorship": "game Auto",
+  "match_date_local": "2026-10-02",
+  "recording_date_basis": "Owner supplied October2 batch and filenames; exact filename clock timezone not established."
+}

@@ -1,0 +1,58 @@
+{
+  "source_video": "20261013_015659000_iOS.MP4",
+  "source_sha256": "6e2074461f324b9825dc0805101ba7d899933c2997709d36efc058b231dace9e",
+  "classification": "human_battle",
+  "auto_option_visible": false,
+  "opponent": "GaboDobleT",
+  "opponent_visible_core": [
+    "Riolu",
+    "Mega Lucario ex",
+    "Hitmontop"
+  ],
+  "opponent_full_deck": null,
+  "result": "loss",
+  "result_method": "owner concession",
+  "score_at_concession": {
+    "owner": 0,
+    "opponent": 2
+  },
+  "turn_count": 13,
+  "owner_went_first": true,
+  "match_date": "2026-10-12",
+  "match_date_basis": "SOURCE_TIME.json and phone evening8:57 to 9:03",
+  "terminal_evidence": {
+    "confirmation_seconds": 384,
+    "defeat_seconds": 386,
+    "result_opponent_seconds": 403,
+    "evidence_ids": [
+      "N0384_00",
+      "N0386_00",
+      "N0403_00"
+    ],
+    "concede_menu_seconds": 383.5
+  },
+  "capture_status": "complete_with_recording_limits",
+  "full_battle_review_status": "primary_full_visual_review_complete_pending_independent_acceptance",
+  "visible_deck_core": [
+    "Regigigas",
+    "Glimmet",
+    "Glimmora",
+    "Pawniard",
+    "Alolan Grimer",
+    "Alolan Muk"
+  ],
+  "deck_name": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+  "qr_payload": "C5iWnpiWnpiYYJiapJiapJiaIpiWqJiWqJiYkpiaXpibRAkAGv4AOSYASJ4ASJ4ASKgASKgASIAASJQARkYBBw==",
+  "deck_source": "historical exact20; fresh live blocked",
+  "damage_results": [
+    "Riolu T2 Regigigas150->120",
+    "Mega Lucario T4 Regigigas140->30",
+    "Mega T6 Regigigas KO opponentpoint 1",
+    "Mega T8 Glimmora KO Shattering CrystalTails opponentpoint 2",
+    "Hitmontop T10 Glimmora90->50 Pawniard50->30",
+    "Hitmontop T12 Glimmora50->10 Pawniard30->10"
+  ],
+  "external_logging": "root only, awaiting acceptance and access; no entry claimed",
+  "terminal_statistics_available": false,
+  "turn_count_basis": "13 recorded turn rows and filmed banners;403s result identifies opponent and Defeat but does not show terminal statistic table"
+}

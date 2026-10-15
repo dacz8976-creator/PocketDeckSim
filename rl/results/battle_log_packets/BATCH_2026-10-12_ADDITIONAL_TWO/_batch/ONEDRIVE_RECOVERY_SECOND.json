@@ -1,0 +1,20 @@
+{
+  "started_utc": "2026-10-13T01:21:37.9985535Z",
+  "operation": "One graceful shutdown and hidden restart to recover the remaining stalled 230258 source download",
+  "executable": "C:\\Program Files\\Microsoft OneDrive\\OneDrive.exe",
+  "original_client_pids": [
+    8840,
+    21060
+  ],
+  "source_files_modified": false,
+  "settings_changed": false,
+  "forced_termination": false,
+  "shutdown_completed": true,
+  "restart_requested": true,
+  "shutdown_request_pid": 14420,
+  "original_clients_still_running": [],
+  "checked_utc": "2026-10-13T01:22:18.5404549Z",
+  "followup_utc": "2026-10-13T01:24:30.4564331Z",
+  "restarted_pid": 2276,
+  "task_owned_shutdown_helper_stopped": true
+}

@@ -1,0 +1,19 @@
+{
+  "applied_utc": "2026-10-06T20:34:25.489198+00:00",
+  "applied_by": "/root",
+  "repair_ids": [
+    "R1",
+    "R2",
+    "R3"
+  ],
+  "original_inputs": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_124532000_iOS\\original_before_R1_R3",
+  "initial_rejection": "independent_sol/CHECK_RESULT.json",
+  "adjudication": "astra_timing/CHECK_RESULT.json",
+  "native_evidence_reused": true,
+  "required_independent_recheck": true,
+  "changes": {
+    "R1": "Three selected frames now describe their actual respective hands.",
+    "R2": "Consuming windows54-55 and89.6-90 separate from preview;53.8 pre-consumption zoom. Actual90.2 is post-consumption3, confirmed separately by Astra.",
+    "R3": "Hidden Research additions combined292-294, individual times null;295 settled."
+  }
+}

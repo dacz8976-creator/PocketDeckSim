@@ -1,0 +1,27 @@
+{
+  "source_video": "20261002_114458000_iOS.MP4",
+  "source_sha256": "1a705196a9ac204da7e49d097edacb9de96ad14341e68d2e16c6b380970e5efe",
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "coverage_checked": true,
+  "completion_status": "full_battle_review_complete",
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "ranked_ladder_eligible": false,
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "scope": "Entire 410.606667-second recording: setup, every supplied turn, meaningful state changes and terminal outcome",
+  "lead_evidence": [
+    "overview/sheet_01.jpg",
+    "overview/sheet_06.jpg",
+    "overview/sheet_12.jpg",
+    "LEAD_T8_CONTACT.jpg",
+    "LEAD_END_CONTACT.jpg"
+  ],
+  "astra_reports": [
+    "ASTRA_T8_CHECK.md"
+  ],
+  "lead_notes": "Lead independently inspected ordinary setup and middle turns, the T8 resource window, Will and the non-point Lapras shuffle, Aerodactyl knockout and Victory screen. All twelve turns, the 3-2 score and 450 damage reconcile with retained coverage. Astra confirms Lapras Surf costs WWC and the two-Energy Ninetales retreat; the point-preserving alternative remains conditional on hidden opposing resources. The zero-head second Misty target stays unknown without affecting Energy totals.",
+  "checked_at": "2026-10-02T15:58:57.625716+00:00",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high"
+}

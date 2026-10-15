@@ -1,0 +1,1719 @@
+{
+  "prepared_utc": "2026-10-06T21:17:09.813361+00:00",
+  "existing_artifact": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "external_saved": false,
+  "operation": "Prepared only. Preserve every existing deck and game; create only missing definitions, then save only source/game identities absent on fresh readback.",
+  "required_before_external_write": [
+    "Explicit owner authorization to send the prepared request to Claude.",
+    "Fresh live duplicate checks by deck document ID/code and source filename plus game number/game ID.",
+    "Reload and verify saved deck definitions, each game and totals."
+  ],
+  "deck_documents": [
+    {
+      "document_id": "filmed-qr-5e446b56ff0c",
+      "fields": {
+        "name": "Butterfree / Accelgor",
+        "energy": "Grass",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 100,
+        "note": "New Grass deck; absent from the nine current live deck choices. QR identifies playable versions; listed references do not establish filmed artwork or rarity.",
+        "code": "CpiWnpiWnpiafJiafJiapJiapJiWqJiWqJibdpibvAoASmAASmAASmoASmoASnQASnQATRwATRwATSYATSYBAQ==",
+        "source": "20261004_213625000_iOS.MP4 at 2.00s; SHA-256 aa7e935b335a2dfe11e43783f260698997845f7c85de8d6b1db976b7bf794225",
+        "cards": [
+          {
+            "n": 2,
+            "name": "Caterpie",
+            "kind": "Pokémon",
+            "id": "B3b 001"
+          },
+          {
+            "n": 2,
+            "name": "Metapod",
+            "kind": "Pokémon",
+            "id": "B3b 002"
+          },
+          {
+            "n": 2,
+            "name": "Butterfree",
+            "kind": "Pokémon",
+            "id": "B3b 003"
+          },
+          {
+            "n": 2,
+            "name": "Shelmet",
+            "kind": "Pokémon",
+            "id": "B4 013"
+          },
+          {
+            "n": 2,
+            "name": "Accelgor",
+            "kind": "Pokémon",
+            "id": "B4 014"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Quick-Grow Extract",
+            "kind": "Trainer",
+            "id": "B1a 067"
+          },
+          {
+            "n": 2,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          },
+          {
+            "n": 1,
+            "name": "Hiking Trail",
+            "kind": "Trainer",
+            "id": "B2b 069"
+          },
+          {
+            "n": 1,
+            "name": "Fragrant Forest",
+            "kind": "Trainer",
+            "id": "B3 153"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "filmed-qr-1621d4b24d8b",
+      "fields": {
+        "name": "Mega Blaziken / Combusken",
+        "energy": "Fire",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 101,
+        "note": "Separate variant: Combusken x2 replaces Rare Candy x2 in the current tournament list. QR identifies playable versions; listed references do not establish filmed artwork or rarity.",
+        "code": "DJiWnpiWnpiaDpiaDpibgJiXrJiWqJiWqJiXwJiaXpiaXpibdggAK44AK44AK5gAK5gAK6wAK6wAK/wAQfoBAg==",
+        "source": "20261004_215749000_iOS.MP4 at 1.00s; SHA-256 2015607dfe613e8bf71f4637d5d26ed625d8a451b0541b93b3a82bf0457126af",
+        "cards": [
+          {
+            "n": 2,
+            "name": "Torchic",
+            "kind": "Pokémon",
+            "id": "B1 033"
+          },
+          {
+            "n": 2,
+            "name": "Combusken",
+            "kind": "Pokémon",
+            "id": "B1 034"
+          },
+          {
+            "n": 2,
+            "name": "Mega Blaziken ex",
+            "kind": "Pokémon",
+            "id": "B1 036"
+          },
+          {
+            "n": 1,
+            "name": "Heatmor",
+            "kind": "Pokémon",
+            "id": "B1 044"
+          },
+          {
+            "n": 1,
+            "name": "Castform Sunny Form",
+            "kind": "Pokémon",
+            "id": "B3 024"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Flame Patch",
+            "kind": "Trainer",
+            "id": "B1 217"
+          },
+          {
+            "n": 1,
+            "name": "Field Blower",
+            "kind": "Trainer",
+            "id": "B3 147"
+          },
+          {
+            "n": 1,
+            "name": "Rocky Helmet",
+            "kind": "Trainer",
+            "id": "A2 148"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          },
+          {
+            "n": 1,
+            "name": "Cyrus",
+            "kind": "Trainer",
+            "id": "A2 150"
+          },
+          {
+            "n": 2,
+            "name": "Copycat",
+            "kind": "Trainer",
+            "id": "B1 225"
+          },
+          {
+            "n": 1,
+            "name": "Hiking Trail",
+            "kind": "Trainer",
+            "id": "B2b 069"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "filmed-qr-2e3c1c989e19",
+      "fields": {
+        "name": "Wailord / Mega Sharpedo / Suicune",
+        "energy": "Water",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 102,
+        "note": "New Water deck; distinct from Wailord / Indeedee wall and Draft A: Shark Tempo. QR identifies playable versions; listed references do not establish filmed artwork or rarity.",
+        "code": "CpiWnpiWnpiapJiWqJiWqJiX/JiaXpicPpicrJicrAoATgIATgIALH4ALH4ATe4ATe4ATfgATfgAKKAAKKABAw==",
+        "source": "20261005_003547000_iOS.MP4 at 6.00s; SHA-256 20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+        "cards": [
+          {
+            "n": 2,
+            "name": "Wailmer",
+            "kind": "Pokémon",
+            "id": "B4 036"
+          },
+          {
+            "n": 2,
+            "name": "Wailord",
+            "kind": "Pokémon",
+            "id": "B1 057"
+          },
+          {
+            "n": 2,
+            "name": "Carvanha",
+            "kind": "Pokémon",
+            "id": "B4 034"
+          },
+          {
+            "n": 2,
+            "name": "Mega Sharpedo ex",
+            "kind": "Pokémon",
+            "id": "B4 035"
+          },
+          {
+            "n": 2,
+            "name": "Suicune ex",
+            "kind": "Pokémon",
+            "id": "A4a 020"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 1,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          },
+          {
+            "n": 1,
+            "name": "Irida",
+            "kind": "Trainer",
+            "id": "A2a 072"
+          },
+          {
+            "n": 1,
+            "name": "Copycat",
+            "kind": "Trainer",
+            "id": "B1 225"
+          },
+          {
+            "n": 1,
+            "name": "Wallace",
+            "kind": "Trainer",
+            "id": "B3b 068"
+          },
+          {
+            "n": 2,
+            "name": "Soothing Shore",
+            "kind": "Trainer",
+            "id": "B4 154"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "filmed-qr-f804ece77527",
+      "fields": {
+        "name": "Hatterene / Aromatisse / Togekiss",
+        "energy": "Psychic",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 103,
+        "note": "New Psychic deck; distinct from Draft C Meowstic / Hatterene v2. The filmed slot label was reused for a different deck. QR identifies playable versions; listed references do not establish filmed artwork or rarity.",
+        "code": "BpiWnpiWnpiYYJiYYJiWqJiWqA4AQ7wAQ7wAQ8YAQ9AAQ9AALsIANE4ANFgALswADXAAJHwADXoAJJAAJJABBQ==",
+        "source": "20261005_031138000_iOS.MP4 at 2.00s; SHA-256 15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+        "cards": [
+          {
+            "n": 2,
+            "name": "Hatenna",
+            "kind": "Pokémon",
+            "id": "B3 069"
+          },
+          {
+            "n": 1,
+            "name": "Hattrem",
+            "kind": "Pokémon",
+            "id": "B3 070"
+          },
+          {
+            "n": 2,
+            "name": "Hatterene",
+            "kind": "Pokémon",
+            "id": "B3 071"
+          },
+          {
+            "n": 1,
+            "name": "Spritzee",
+            "kind": "Pokémon",
+            "id": "B1 115"
+          },
+          {
+            "n": 1,
+            "name": "Spritzee",
+            "kind": "Pokémon",
+            "id": "B1a 035"
+          },
+          {
+            "n": 1,
+            "name": "Aromatisse",
+            "kind": "Pokémon",
+            "id": "B1a 036"
+          },
+          {
+            "n": 1,
+            "name": "Aromatisse",
+            "kind": "Pokémon",
+            "id": "B1 116"
+          },
+          {
+            "n": 1,
+            "name": "Togepi",
+            "kind": "Pokémon",
+            "id": "A2 063"
+          },
+          {
+            "n": 1,
+            "name": "Togepi",
+            "kind": "Pokémon",
+            "id": "A4 078"
+          },
+          {
+            "n": 1,
+            "name": "Togetic",
+            "kind": "Pokémon",
+            "id": "A2 064"
+          },
+          {
+            "n": 2,
+            "name": "Togekiss",
+            "kind": "Pokémon",
+            "id": "A4 080"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Rare Candy",
+            "kind": "Trainer",
+            "id": "A3 144"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "filmed-qr-0fdb333134c7",
+      "fields": {
+        "name": "Aegislash / Tinkaton ex / Team Rocket's Tinkaton",
+        "energy": "Metal",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 104,
+        "note": "Metal variant with one Tinkaton ex and one Team Rocket's Tinkaton. QR identifies playable versions; listed references do not establish filmed artwork or rarity.",
+        "code": "CpiWnpiWnpiYYJiYYJiapJiapJiawpiawpiWqJiWqAoAMOgAMOgAMPIAMPwAOgwAPcwAFjoAVGoAVGoAVH4BCA==",
+        "source": "20261005_032023000_iOS.MP4 at 1.00s; SHA-256 6fadd948b5526f22007c2ca2b11516c27801c2fbf2af57c290b214f9327f36a9",
+        "cards": [
+          {
+            "n": 2,
+            "name": "Honedge",
+            "kind": "Pokémon",
+            "id": "B1 170"
+          },
+          {
+            "n": 1,
+            "name": "Doublade",
+            "kind": "Pokémon",
+            "id": "B1 171"
+          },
+          {
+            "n": 1,
+            "name": "Aegislash",
+            "kind": "Pokémon",
+            "id": "B1 172"
+          },
+          {
+            "n": 1,
+            "name": "Aegislash",
+            "kind": "Pokémon",
+            "id": "B2 120"
+          },
+          {
+            "n": 1,
+            "name": "Tinkatuff",
+            "kind": "Pokémon",
+            "id": "B2a 073"
+          },
+          {
+            "n": 1,
+            "name": "Tinkaton ex",
+            "kind": "Pokémon",
+            "id": "A2b 054"
+          },
+          {
+            "n": 2,
+            "name": "Team Rocket’s Tinkatink",
+            "kind": "Pokémon",
+            "id": "B4a 048"
+          },
+          {
+            "n": 1,
+            "name": "Team Rocket’s Tinkaton",
+            "kind": "Pokémon",
+            "id": "B4a 050"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Rare Candy",
+            "kind": "Trainer",
+            "id": "A3 144"
+          },
+          {
+            "n": 2,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 2,
+            "name": "Metal Core Barrier",
+            "kind": "Trainer",
+            "id": "B2 148"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "filmed-qr-1dd251acfd4e",
+      "fields": {
+        "name": "Aegislash / Team Rocket's Tinkaton",
+        "energy": "Metal",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 105,
+        "note": "Metal revision with two Team Rocket's Tinkaton and no Tinkaton ex. QR identifies playable versions; listed references do not establish filmed artwork or rarity.",
+        "code": "CpiWnpiWnpiYYJiYYJiapJiapJiawpiawpiWqJiWqAoAMOgAMOgAMPIAMPwAOgwAPcwAVGoAVGoAVH4AVH4BCA==",
+        "source": "20261005_032857000_iOS.MP4 at 1.00s; SHA-256 a7aa71ededa0f2372282f5ba1ff0620b1fed9cedec8bb71101aee1db6eba297e",
+        "cards": [
+          {
+            "n": 2,
+            "name": "Honedge",
+            "kind": "Pokémon",
+            "id": "B1 170"
+          },
+          {
+            "n": 1,
+            "name": "Doublade",
+            "kind": "Pokémon",
+            "id": "B1 171"
+          },
+          {
+            "n": 1,
+            "name": "Aegislash",
+            "kind": "Pokémon",
+            "id": "B1 172"
+          },
+          {
+            "n": 1,
+            "name": "Aegislash",
+            "kind": "Pokémon",
+            "id": "B2 120"
+          },
+          {
+            "n": 1,
+            "name": "Tinkatuff",
+            "kind": "Pokémon",
+            "id": "B2a 073"
+          },
+          {
+            "n": 2,
+            "name": "Team Rocket’s Tinkatink",
+            "kind": "Pokémon",
+            "id": "B4a 048"
+          },
+          {
+            "n": 2,
+            "name": "Team Rocket’s Tinkaton",
+            "kind": "Pokémon",
+            "id": "B4a 050"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Rare Candy",
+            "kind": "Trainer",
+            "id": "A3 144"
+          },
+          {
+            "n": 2,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 2,
+            "name": "Metal Core Barrier",
+            "kind": "Trainer",
+            "id": "B2 148"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "filmed-qr-b599dd4e7e1c",
+      "fields": {
+        "name": "Skarmory ex / Aegislash / Orthworm",
+        "energy": "Metal",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 106,
+        "note": "Distinct Metal list with two Skarmory ex and one Orthworm. QR identifies playable versions; listed references do not establish filmed artwork or rarity.",
+        "code": "DJiWnpiWnpiYYJiYYJiapJiapJiZWpiawpiawpiWqJiWqJiaXggAJkgAJkgAMOgAMOgAMPIAMPwAOgwAPfQBCA==",
+        "source": "20261005_033529000_iOS.MP4 at 1.00s; SHA-256 e272b0c74f6a863c68811a235d7b9611b14994611365e58694028f323afaea3d",
+        "cards": [
+          {
+            "n": 2,
+            "name": "Skarmory ex",
+            "kind": "Pokémon",
+            "id": "A4 124"
+          },
+          {
+            "n": 2,
+            "name": "Honedge",
+            "kind": "Pokémon",
+            "id": "B1 170"
+          },
+          {
+            "n": 1,
+            "name": "Doublade",
+            "kind": "Pokémon",
+            "id": "B1 171"
+          },
+          {
+            "n": 1,
+            "name": "Aegislash",
+            "kind": "Pokémon",
+            "id": "B1 172"
+          },
+          {
+            "n": 1,
+            "name": "Aegislash",
+            "kind": "Pokémon",
+            "id": "B2 120"
+          },
+          {
+            "n": 1,
+            "name": "Orthworm",
+            "kind": "Pokémon",
+            "id": "B2a 077"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Rare Candy",
+            "kind": "Trainer",
+            "id": "A3 144"
+          },
+          {
+            "n": 2,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 1,
+            "name": "Steel Apron",
+            "kind": "Trainer",
+            "id": "A4 153"
+          },
+          {
+            "n": 2,
+            "name": "Metal Core Barrier",
+            "kind": "Trainer",
+            "id": "B2 148"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          },
+          {
+            "n": 1,
+            "name": "Copycat",
+            "kind": "Trainer",
+            "id": "B1 225"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "filmed-qr-afe59c84d238",
+      "fields": {
+        "name": "Aegislash / Melmetal ex / Magnezone",
+        "energy": "Metal",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 107,
+        "note": "Distinct Metal list; preserves two Honedge, Doublade and Aegislash versions by semantic identity. QR identifies playable versions; listed references do not establish filmed artwork or rarity.",
+        "code": "B5iWnpiWnpiZWpiZWpiawpiWqJiWqA0AEqIAEqwAErYAMOgAOfgAMPIAOgIAMPwAOgwABxIABxIAMRAAMRABCA==",
+        "source": "20261005_034953000_iOS.MP4 at 5.00s; SHA-256 85f9e3803543f512323259794b7166808e5bfd2ff5a3854d8ce1a40686075180",
+        "cards": [
+          {
+            "n": 1,
+            "name": "Magnemite",
+            "kind": "Pokémon",
+            "id": "A2a 053"
+          },
+          {
+            "n": 1,
+            "name": "Magneton",
+            "kind": "Pokémon",
+            "id": "A2a 054"
+          },
+          {
+            "n": 1,
+            "name": "Magnezone",
+            "kind": "Pokémon",
+            "id": "A2a 055"
+          },
+          {
+            "n": 1,
+            "name": "Honedge",
+            "kind": "Pokémon",
+            "id": "B1 170"
+          },
+          {
+            "n": 1,
+            "name": "Honedge",
+            "kind": "Pokémon",
+            "id": "B2 118"
+          },
+          {
+            "n": 1,
+            "name": "Doublade",
+            "kind": "Pokémon",
+            "id": "B1 171"
+          },
+          {
+            "n": 1,
+            "name": "Doublade",
+            "kind": "Pokémon",
+            "id": "B2 119"
+          },
+          {
+            "n": 1,
+            "name": "Aegislash",
+            "kind": "Pokémon",
+            "id": "B1 172"
+          },
+          {
+            "n": 1,
+            "name": "Aegislash",
+            "kind": "Pokémon",
+            "id": "B2 120"
+          },
+          {
+            "n": 2,
+            "name": "Meltan",
+            "kind": "Pokémon",
+            "id": "A1 181"
+          },
+          {
+            "n": 2,
+            "name": "Melmetal ex",
+            "kind": "Pokémon",
+            "id": "B1 174"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Steel Apron",
+            "kind": "Trainer",
+            "id": "A4 153"
+          },
+          {
+            "n": 1,
+            "name": "Metal Core Barrier",
+            "kind": "Trainer",
+            "id": "B2 148"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "filmed-qr-2ea1f092676e",
+      "fields": {
+        "name": "Nidoking / Nihilego / Darkrai ex (two Darkrai)",
+        "energy": "Darkness",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 108,
+        "note": "Darkness variant with two Darkrai ex. QR identifies playable versions; listed references do not establish filmed artwork or rarity.",
+        "code": "C5iWnpiWnpiapJiapJiYdJiccJiaIpiWqJiWqJiaXpicogkAD0YAD0YABpoABpoABqQABq4ABq4AHm4AHm4BBw==",
+        "source": "20261005_123812000_iOS.MP4 at 2.00s; SHA-256 3fb3dc25ac96c6e742f9467ba14abdbf91aff403ef2a5bdc62c7f414e775e5a0",
+        "cards": [
+          {
+            "n": 2,
+            "name": "Darkrai ex",
+            "kind": "Pokémon",
+            "id": "A2 110"
+          },
+          {
+            "n": 2,
+            "name": "Nidoran♂",
+            "kind": "Pokémon",
+            "id": "A1 169"
+          },
+          {
+            "n": 1,
+            "name": "Nidorino",
+            "kind": "Pokémon",
+            "id": "A1 170"
+          },
+          {
+            "n": 2,
+            "name": "Nidoking",
+            "kind": "Pokémon",
+            "id": "A1 171"
+          },
+          {
+            "n": 2,
+            "name": "Nihilego",
+            "kind": "Pokémon",
+            "id": "A3a 042"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 1,
+            "name": "Poison Barb",
+            "kind": "Trainer",
+            "id": "A3 146"
+          },
+          {
+            "n": 1,
+            "name": "Deceptive Needle",
+            "kind": "Trainer",
+            "id": "B4 148"
+          },
+          {
+            "n": 1,
+            "name": "Heavy Helmet",
+            "kind": "Trainer",
+            "id": "B1 219"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          },
+          {
+            "n": 1,
+            "name": "Copycat",
+            "kind": "Trainer",
+            "id": "B1 225"
+          },
+          {
+            "n": 1,
+            "name": "Wally",
+            "kind": "Trainer",
+            "id": "B4 153"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "filmed-qr-852c4769df62",
+      "fields": {
+        "name": "Nidoking / Nihilego / Darkrai ex (one Darkrai)",
+        "energy": "Darkness",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 109,
+        "note": "Darkness revision with one Darkrai ex; Trainer composition also preserved from this QR. QR identifies playable versions; listed references do not establish filmed artwork or rarity.",
+        "code": "DJiWnpiWnpiapJiapJiYdJiccJiaIpiWqJiWqJiXwJiaXpicoggAD0YABpoABpoABqQABq4ABq4AHm4AHm4BBw==",
+        "source": "20261005_124532000_iOS.MP4 at 1.00s; SHA-256 d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+        "cards": [
+          {
+            "n": 1,
+            "name": "Darkrai ex",
+            "kind": "Pokémon",
+            "id": "A2 110"
+          },
+          {
+            "n": 2,
+            "name": "Nidoran♂",
+            "kind": "Pokémon",
+            "id": "A1 169"
+          },
+          {
+            "n": 1,
+            "name": "Nidorino",
+            "kind": "Pokémon",
+            "id": "A1 170"
+          },
+          {
+            "n": 2,
+            "name": "Nidoking",
+            "kind": "Pokémon",
+            "id": "A1 171"
+          },
+          {
+            "n": 2,
+            "name": "Nihilego",
+            "kind": "Pokémon",
+            "id": "A3a 042"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 1,
+            "name": "Poison Barb",
+            "kind": "Trainer",
+            "id": "A3 146"
+          },
+          {
+            "n": 1,
+            "name": "Deceptive Needle",
+            "kind": "Trainer",
+            "id": "B4 148"
+          },
+          {
+            "n": 1,
+            "name": "Heavy Helmet",
+            "kind": "Trainer",
+            "id": "B1 219"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          },
+          {
+            "n": 1,
+            "name": "Cyrus",
+            "kind": "Trainer",
+            "id": "A2 150"
+          },
+          {
+            "n": 1,
+            "name": "Copycat",
+            "kind": "Trainer",
+            "id": "B1 225"
+          },
+          {
+            "n": 1,
+            "name": "Wally",
+            "kind": "Trainer",
+            "id": "B4 153"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "filmed-qr-d0b1bba631c1",
+      "fields": {
+        "name": "Scolipede / Mega Sableye ex",
+        "energy": "Darkness",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 110,
+        "note": "Distinct Darkness list with two Mega Sableye ex. QR identifies playable versions; listed references do not establish filmed artwork or rarity.",
+        "code": "DJiWnpiWnpiapJiapJiYdJiYdJiccJiWqJiWqJiXwJiaXpicoggACmQACmQACm4ACm4ACngACngAS74AS74BBw==",
+        "source": "20261005_183108000_iOS.MP4 at 1.00s; SHA-256 94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+        "cards": [
+          {
+            "n": 2,
+            "name": "Venipede",
+            "kind": "Pokémon",
+            "id": "A1a 053"
+          },
+          {
+            "n": 2,
+            "name": "Whirlipede",
+            "kind": "Pokémon",
+            "id": "A1a 054"
+          },
+          {
+            "n": 2,
+            "name": "Scolipede",
+            "kind": "Pokémon",
+            "id": "A1a 055"
+          },
+          {
+            "n": 2,
+            "name": "Mega Sableye ex",
+            "kind": "Pokémon",
+            "id": "B3b 041"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 2,
+            "name": "Poison Barb",
+            "kind": "Trainer",
+            "id": "A3 146"
+          },
+          {
+            "n": 1,
+            "name": "Deceptive Needle",
+            "kind": "Trainer",
+            "id": "B4 148"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          },
+          {
+            "n": 1,
+            "name": "Cyrus",
+            "kind": "Trainer",
+            "id": "A2 150"
+          },
+          {
+            "n": 1,
+            "name": "Copycat",
+            "kind": "Trainer",
+            "id": "B1 225"
+          },
+          {
+            "n": 1,
+            "name": "Wally",
+            "kind": "Trainer",
+            "id": "B4 153"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "filmed-qr-c851443bb727",
+      "fields": {
+        "name": "Terapagos ex / Silvally / Persian",
+        "energy": "Grass, Darkness, Metal",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 111,
+        "note": "Distinct list with Snorlax ex and Grass, Darkness and Metal Energy; two Meowth versions preserved. QR identifies playable versions; listed references do not establish filmed artwork or rarity.",
+        "code": "CZiWnpiWnpiapJiapJibgJiWqJiWqJiXwJiaXgsAISoAOjQAB6gAB7IAB7IASY4ASY4AHwQAHwQAHw4AHw4DAQcI",
+        "source": "20261006_012927000_iOS.MP4 at 1.00s; SHA-256 cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+        "cards": [
+          {
+            "n": 1,
+            "name": "Snorlax ex",
+            "kind": "Pokémon",
+            "id": "A3b 057"
+          },
+          {
+            "n": 1,
+            "name": "Meowth",
+            "kind": "Pokémon",
+            "id": "B2 124"
+          },
+          {
+            "n": 1,
+            "name": "Meowth",
+            "kind": "Pokémon",
+            "id": "A1 196"
+          },
+          {
+            "n": 2,
+            "name": "Persian",
+            "kind": "Pokémon",
+            "id": "A1 197"
+          },
+          {
+            "n": 2,
+            "name": "Terapagos ex",
+            "kind": "Pokémon",
+            "id": "B3a 068"
+          },
+          {
+            "n": 2,
+            "name": "Type: Null",
+            "kind": "Pokémon",
+            "id": "A3a 060"
+          },
+          {
+            "n": 2,
+            "name": "Silvally",
+            "kind": "Pokémon",
+            "id": "A3a 061"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 1,
+            "name": "Field Blower",
+            "kind": "Trainer",
+            "id": "B3 147"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          },
+          {
+            "n": 1,
+            "name": "Cyrus",
+            "kind": "Trainer",
+            "id": "A2 150"
+          },
+          {
+            "n": 1,
+            "name": "Copycat",
+            "kind": "Trainer",
+            "id": "B1 225"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "filmed-qr-913d34a7e9b5",
+      "fields": {
+        "name": "Conkeldurr / Sandslash / Hitmonchan ex",
+        "energy": "Fighting",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 112,
+        "note": "Distinct Fighting list; two Conkeldurr and Sandslash versions preserved. QR identifies playable versions; listed references do not establish filmed artwork or rarity.",
+        "code": "C5iWnpiWnpiYYJiYYJiapJiapJiWqJiWqJiXwJiaXpicogkAGl4AGl4AGnIAUBQALxwAOF4AOF4AOGgABWQBBg==",
+        "source": "20261006_020518000_iOS.MP4 at 2.00s; SHA-256 64968acf700ddfecc51cc5bcb01014db7afa855545057bd6934226afd35a53e7",
+        "cards": [
+          {
+            "n": 2,
+            "name": "Timburr",
+            "kind": "Pokémon",
+            "id": "A3 094"
+          },
+          {
+            "n": 1,
+            "name": "Conkeldurr",
+            "kind": "Pokémon",
+            "id": "A3 096"
+          },
+          {
+            "n": 1,
+            "name": "Conkeldurr",
+            "kind": "Pokémon",
+            "id": "B4 089"
+          },
+          {
+            "n": 1,
+            "name": "Hitmonchan ex",
+            "kind": "Pokémon",
+            "id": "B1 124"
+          },
+          {
+            "n": 2,
+            "name": "Sandshrew",
+            "kind": "Pokémon",
+            "id": "B2 077"
+          },
+          {
+            "n": 1,
+            "name": "Sandslash",
+            "kind": "Pokémon",
+            "id": "B2 078"
+          },
+          {
+            "n": 1,
+            "name": "Sandslash",
+            "kind": "Pokémon",
+            "id": "A1 138"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Rare Candy",
+            "kind": "Trainer",
+            "id": "A3 144"
+          },
+          {
+            "n": 2,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          },
+          {
+            "n": 1,
+            "name": "Cyrus",
+            "kind": "Trainer",
+            "id": "A2 150"
+          },
+          {
+            "n": 1,
+            "name": "Copycat",
+            "kind": "Trainer",
+            "id": "B1 225"
+          },
+          {
+            "n": 1,
+            "name": "Wally",
+            "kind": "Trainer",
+            "id": "B4 153"
+          }
+        ]
+      }
+    },
+    {
+      "document_id": "filmed-edit-2c58f9b081c7",
+      "fields": {
+        "name": "Snorlax ex / Team Rocket's Persian / Silvally (Water revision)",
+        "energy": "Water",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed edit",
+        "order": 113,
+        "note": "Continuous filmed edit between games replaces ordinary Meowth/Persian with Team Rocket versions, removes Terapagos ex, splits Silvally into Gold Breaker and Brave Buddies, adds two Soothing Shore, and sets Water only. No revised QR was filmed. Semantic references do not assert the filmed artwork.",
+        "code": "",
+        "source": "20261006_012927000_iOS.MP4 game2, continuous edit420-622s; SHA-256 cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+        "cards": [
+          {
+            "n": 1,
+            "name": "Snorlax ex",
+            "kind": "Pokémon",
+            "id": "A3b 057"
+          },
+          {
+            "n": 2,
+            "name": "Team Rocket's Meowth",
+            "kind": "Pokémon",
+            "id": "B4a 060"
+          },
+          {
+            "n": 2,
+            "name": "Team Rocket's Persian",
+            "kind": "Pokémon",
+            "id": "B4a 061"
+          },
+          {
+            "n": 2,
+            "name": "Type: Null",
+            "kind": "Pokémon",
+            "id": "A3a 060"
+          },
+          {
+            "n": 1,
+            "name": "Silvally",
+            "kind": "Pokémon",
+            "id": "B4 144"
+          },
+          {
+            "n": 1,
+            "name": "Silvally",
+            "kind": "Pokémon",
+            "id": "A3a 061"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 1,
+            "name": "Field Blower",
+            "kind": "Trainer",
+            "id": "B3 147"
+          },
+          {
+            "n": 2,
+            "name": "Professor's Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          },
+          {
+            "n": 1,
+            "name": "Cyrus",
+            "kind": "Trainer",
+            "id": "A2 150"
+          },
+          {
+            "n": 1,
+            "name": "Copycat",
+            "kind": "Trainer",
+            "id": "B1 225"
+          },
+          {
+            "n": 2,
+            "name": "Soothing Shore",
+            "kind": "Trainer",
+            "id": "B4 154"
+          }
+        ]
+      }
+    }
+  ],
+  "game_documents": [
+    {
+      "source_video": "20261004_213625000_iOS.MP4",
+      "source_sha256": "aa7e935b335a2dfe11e43783f260698997845f7c85de8d6b1db976b7bf794225",
+      "game_number_in_source": 1,
+      "game_id": "20261004_213625000_iOS_game1",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Source-bound filmed QR",
+      "fields": {
+        "deck": "filmed-qr-5e446b56ff0c",
+        "deckName": "Butterfree / Accelgor",
+        "date": "2026-10-04",
+        "result": "loss",
+        "first": "first",
+        "opp": "Exeggcute, Budew, Pinsir, Combee, Vespiquen ex, Teal Mask Ogerpon ex",
+        "ratings": {},
+        "note": "Source: 20261004_213625000_iOS.MP4. Game 1 of 1 in this source; game ID: 20261004_213625000_iOS_game1. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261004_213625000_iOS. Opponent: Noytamon. Result evidence: {'owner': 'loss', 'owner_points': 2, 'opponent_points': 3, 'evidence_ids': ['F0445.00', 'F0450.00', 'F0459.00']}. Recorded turns: 12. Filmed QR version continuously bound by source review; newly prepared live deck entry still awaits saved readback. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "game_number_in_source": 1,
+      "game_id": "20261004_214518000_iOS_game1",
+      "exact_game_deck_binding": false,
+      "deck_choice_basis": "Needs a qualified candidate choice; exact version remains uncertain.",
+      "fields": {
+        "deck": "filmed-qr-5e446b56ff0c",
+        "deckName": "Butterfree / Accelgor",
+        "date": "2026-10-04",
+        "result": "win",
+        "first": "first",
+        "opp": "",
+        "ratings": {},
+        "note": "Source: 20261004_214518000_iOS.MP4. Game 1 of 1 in this source; game ID: 20261004_214518000_iOS_game1. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261004_214518000_iOS. Opponent: ゆうぜん. Result evidence: win. Recorded turns: 0. Exact 20-card game version is unverified; preserve the packet visible core and qualified earlier QR candidate rather than claim a proven deck version. Setup-only Victory: zero turns and zero damage. Connection warning visible; exact termination cause unknown. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261004_214731000_iOS.MP4",
+      "source_sha256": "d363bdd1c3f4aafc5ad9423764e706f8944407d68a04c82d72317592d7e7e198",
+      "game_number_in_source": 1,
+      "game_id": "20261004_214731000_iOS_game1",
+      "exact_game_deck_binding": false,
+      "deck_choice_basis": "Needs a qualified candidate choice; exact version remains uncertain.",
+      "fields": {
+        "deck": "filmed-qr-5e446b56ff0c",
+        "deckName": "Butterfree / Accelgor",
+        "date": "2026-10-04",
+        "result": "win",
+        "first": "second",
+        "opp": "Mega Rayquaza ex, Dratini, Dragonair, Cyclizar",
+        "ratings": {},
+        "note": "Source: 20261004_214731000_iOS.MP4. Game 1 of 1 in this source; game ID: 20261004_214731000_iOS_game1. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261004_214731000_iOS. Opponent: CloutDemon. Result evidence: {'owner': 'win', 'opponent': 'CloutDemon', 'points': [3, 0], 'turns_played': 8, 'damage_done_displayed': 200, 'evidence_ids': ['e_0374.00']}. Recorded turns: 8. Exact 20-card game version is unverified; preserve the packet visible core and qualified earlier QR candidate rather than claim a proven deck version. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261004_215749000_iOS.MP4",
+      "source_sha256": "2015607dfe613e8bf71f4637d5d26ed625d8a451b0541b93b3a82bf0457126af",
+      "game_number_in_source": 1,
+      "game_id": "20261004_215749000_iOS_game1",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Source-bound filmed QR",
+      "fields": {
+        "deck": "filmed-qr-1621d4b24d8b",
+        "deckName": "Mega Blaziken / Combusken",
+        "date": "2026-10-04",
+        "result": "concession",
+        "first": "first",
+        "opp": "Tinkatink, Rookidee, Meltan",
+        "ratings": {},
+        "note": "Source: 20261004_215749000_iOS.MP4. Game 1 of 1 in this source; game ID: 20261004_215749000_iOS_game1. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261004_215749000_iOS. Opponent: Sherwin. Result evidence: Opponent conceded244s; Victory vs. Sherwin256s. Recorded turns: 6. Filmed QR version continuously bound by source review; newly prepared live deck entry still awaits saved readback. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "game_number_in_source": 1,
+      "game_id": "20261005_003547000_iOS_game1",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Source-bound filmed QR",
+      "fields": {
+        "deck": "filmed-qr-2e3c1c989e19",
+        "deckName": "Wailord / Mega Sharpedo / Suicune",
+        "date": "2026-10-04",
+        "result": "loss",
+        "first": "first",
+        "opp": "Oricorio, Pumpkaboo, Gourgeist, Greavard, Houndstone",
+        "ratings": {},
+        "note": "Source: 20261005_003547000_iOS.MP4. Game 1 of 1 in this source; game ID: 20261005_003547000_iOS_game1. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_003547000_iOS. Opponent: Garfield.tv. Result evidence: {'owner': 'loss', 'opponent': 'Garfield.tv', 'owner_points': 0, 'opponent_points': 3, 'turns_played': 14, 'damage_done': 240, 'evidence_ids': ['f0557.00']}. Recorded turns: 14. Filmed QR version continuously bound by source review; newly prepared live deck entry still awaits saved readback. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "game_number_in_source": 1,
+      "game_id": "pause-20261005-031138",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Source-bound filmed QR",
+      "fields": {
+        "deck": "filmed-qr-f804ece77527",
+        "deckName": "Hatterene / Aromatisse / Togekiss",
+        "date": "2026-10-04",
+        "result": "concession",
+        "first": "second",
+        "opp": "Tapu Koko ex, Froakie, Greninja, Zeraora",
+        "ratings": {},
+        "note": "Source: 20261005_031138000_iOS.MP4. Game 1 of 1 in this source; game ID: pause-20261005-031138. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_031138000_iOS. Opponent: 九兔. Result evidence: {'owner': 'Dacz8976', 'opponent': '九兔', 'result': 'win', 'method': 'opponent concession', 'owner_points': 2, 'opponent_points': 0, 'turns_played': 7, 'damage_done_displayed': 180, 'evidence_ids': ['f0214.00', 'f0225.00']}. Recorded turns: 7. Filmed QR version continuously bound by source review; newly prepared live deck entry still awaits saved readback. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_032023000_iOS.MP4",
+      "source_sha256": "6fadd948b5526f22007c2ca2b11516c27801c2fbf2af57c290b214f9327f36a9",
+      "game_number_in_source": 1,
+      "game_id": "20261005_032023000_iOS_game1",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Source-bound filmed QR",
+      "fields": {
+        "deck": "filmed-qr-0fdb333134c7",
+        "deckName": "Aegislash / Tinkaton ex / Team Rocket's Tinkaton",
+        "date": "2026-10-04",
+        "result": "loss",
+        "first": "second",
+        "opp": "Finizen, Wiglett, Manaphy, Wugtrio ex, Comfey, Palafin",
+        "ratings": {},
+        "note": "Source: 20261005_032023000_iOS.MP4. Game 1 of 1 in this source; game ID: 20261005_032023000_iOS_game1. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_032023000_iOS. Opponent: 犬いぬ. Result evidence: {'owner': 'loss', 'owner_points': 0, 'opponent_points': 3, 'turns_played': 13, 'opponent': '犬いぬ', 'evidence_ids': ['f0463.00', 'f0465.00', 'f0467.00', 'f0471.00', 'f0476.00']}. Recorded turns: 13. Filmed QR version continuously bound by source review; newly prepared live deck entry still awaits saved readback. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_032857000_iOS.MP4",
+      "source_sha256": "a7aa71ededa0f2372282f5ba1ff0620b1fed9cedec8bb71101aee1db6eba297e",
+      "game_number_in_source": 1,
+      "game_id": "20261005_032857000_iOS",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Source-bound filmed QR",
+      "fields": {
+        "deck": "filmed-qr-1dd251acfd4e",
+        "deckName": "Aegislash / Team Rocket's Tinkaton",
+        "date": "2026-10-04",
+        "result": "loss",
+        "first": "second",
+        "opp": "Bulbasaur, Ivysaur, Mega Venusaur ex",
+        "ratings": {},
+        "note": "Source: 20261005_032857000_iOS.MP4. Game 1 of 1 in this source; game ID: 20261005_032857000_iOS. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_032857000_iOS. Opponent: Friendlike_Andy. Result evidence: {'owner_result': 'loss', 'screen_result': 'Defeat', 'opponent': 'Friendlike_Andy', 'owner_points': 0, 'opponent_points': 2, 'turns_played': 9, 'damage_done_displayed': 220, 'cause_observed': 'Last owner Pokemon knocked out; Active and all Bench slots empty.', 'evidence_ids': ['E0287_00', 'E0288_00', 'E0292_00', 'E0297_00', 'E0298_00', 'E0304_00']}. Recorded turns: 9. Filmed QR version continuously bound by source review; newly prepared live deck entry still awaits saved readback. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_033529000_iOS.MP4",
+      "source_sha256": "e272b0c74f6a863c68811a235d7b9611b14994611365e58694028f323afaea3d",
+      "game_number_in_source": 1,
+      "game_id": "20261005_033529000_iOS",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Source-bound filmed QR",
+      "fields": {
+        "deck": "filmed-qr-b599dd4e7e1c",
+        "deckName": "Skarmory ex / Aegislash / Orthworm",
+        "date": "2026-10-04",
+        "result": "loss",
+        "first": "first",
+        "opp": "Hitmonlee, Riolu, Mega Lucario ex, Marshadow",
+        "ratings": {},
+        "note": "Source: 20261005_033529000_iOS.MP4. Game 1 of 1 in this source; game ID: 20261005_033529000_iOS. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_033529000_iOS. Opponent: ゆぬ. Result evidence: Final board plus Defeat results screen shows 1–3, Turns 10, Damage done 270. Recorded turns: 10. Filmed QR version continuously bound by source review; newly prepared live deck entry still awaits saved readback. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_034229000_iOS.MP4",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "game_number_in_source": 1,
+      "game_id": "20261005_034229000_iOS",
+      "exact_game_deck_binding": false,
+      "deck_choice_basis": "Needs a qualified candidate choice; exact version remains uncertain.",
+      "fields": {
+        "deck": "filmed-qr-b599dd4e7e1c",
+        "deckName": "Skarmory ex / Aegislash / Orthworm",
+        "date": "2026-10-04",
+        "result": "loss",
+        "first": "first",
+        "opp": "Ralts, Mega Gardevoir ex, Mega Diancie ex, Mewtwo ex",
+        "ratings": {},
+        "note": "Source: 20261005_034229000_iOS.MP4. Game 1 of 1 in this source; game ID: 20261005_034229000_iOS. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_034229000_iOS. Opponent: Tideisrising91. Result evidence: {'owner': 'Dacz8976', 'opponent': 'Tideisrising91', 'result': 'loss', 'points_owner': 0, 'points_opponent': 3, 'turns': 8, 'owner_went_first': True, 'damage_done': 110, 'evidence_ids': ['f_0361_00', 'f_0364_00', 'f_0374_00']}. Recorded turns: 8. Exact 20-card game version is unverified; preserve the packet visible core and qualified earlier QR candidate rather than claim a proven deck version. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_034953000_iOS.MP4",
+      "source_sha256": "85f9e3803543f512323259794b7166808e5bfd2ff5a3854d8ce1a40686075180",
+      "game_number_in_source": 1,
+      "game_id": "20261005_034953000_iOS",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Source-bound filmed QR",
+      "fields": {
+        "deck": "filmed-qr-afe59c84d238",
+        "deckName": "Aegislash / Melmetal ex / Magnezone",
+        "date": "2026-10-04",
+        "result": "concession",
+        "first": "second",
+        "opp": "Axew, Munchlax, Fraxure, Haxorus, Happiny",
+        "ratings": {},
+        "note": "Source: 20261005_034953000_iOS.MP4. Game 1 of 1 in this source; game ID: 20261005_034953000_iOS. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_034953000_iOS. Opponent: MIYA. Result evidence: {'result': 'win', 'opponent': 'MIYA', 'owner': 'Dacz8976', 'method': 'explicit opponent concession', 'owner_points': 2, 'opponent_points': 1, 'turns': 16, 'evidence_ids': ['f0390_00', 'f0391_00', 'f0395_00', 'f0409_00']}. Recorded turns: 16. Filmed QR version continuously bound by source review; newly prepared live deck entry still awaits saved readback. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_123812000_iOS.MP4",
+      "source_sha256": "3fb3dc25ac96c6e742f9467ba14abdbf91aff403ef2a5bdc62c7f414e775e5a0",
+      "game_number_in_source": 1,
+      "game_id": "pause-20261005-123812",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Source-bound filmed QR",
+      "fields": {
+        "deck": "filmed-qr-2ea1f092676e",
+        "deckName": "Nidoking / Nihilego / Darkrai ex (two Darkrai)",
+        "date": "2026-10-05",
+        "result": "loss",
+        "first": "first",
+        "opp": "Ralts, Mega Diancie ex, Mega Gardevoir ex",
+        "ratings": {},
+        "note": "Source: 20261005_123812000_iOS.MP4. Game 1 of 1 in this source; game ID: pause-20261005-123812. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_123812000_iOS. Opponent: Sofii. Result evidence: {'owner_result': 'loss', 'method': 'owner_concession', 'opponent': 'Sofii', 'owner': 'Dacz8976', 'last_visible_earned_points': {'owner': 1, 'opponent': 2}, 'concede_seconds': 325, 'result_seconds': 327, 'evidence_ids': ['f-0323.00', 'f-0324.00', 'f-0325.00', 'f-0327.00', 'f-0336.00']}. Recorded turns: 9. Filmed QR version continuously bound by source review; newly prepared live deck entry still awaits saved readback. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_124532000_iOS.MP4",
+      "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "game_number_in_source": 1,
+      "game_id": "20261005_124532000_iOS",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Source-bound filmed QR",
+      "fields": {
+        "deck": "filmed-qr-852c4769df62",
+        "deckName": "Nidoking / Nihilego / Darkrai ex (one Darkrai)",
+        "date": "2026-10-05",
+        "result": "loss",
+        "first": "first",
+        "opp": "Entei ex, Charmander, Charmeleon, Charizard ex",
+        "ratings": {},
+        "note": "Source: 20261005_124532000_iOS.MP4. Game 1 of 1 in this source; game ID: 20261005_124532000_iOS. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_124532000_iOS. Opponent: Nick. Result evidence: loss. Recorded turns: 8. Filmed QR version continuously bound by source review; newly prepared live deck entry still awaits saved readback. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_183108000_iOS.MP4",
+      "source_sha256": "94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+      "game_number_in_source": 1,
+      "game_id": "20261005_183108000_iOS_game_1",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Source-bound filmed QR",
+      "fields": {
+        "deck": "filmed-qr-d0b1bba631c1",
+        "deckName": "Scolipede / Mega Sableye ex",
+        "date": "2026-10-05",
+        "result": "loss",
+        "first": "first",
+        "opp": "Pumpkaboo, Meloetta, Gourgeist, Greavard, Houndstone",
+        "ratings": {},
+        "note": "Source: 20261005_183108000_iOS.MP4. Game 1 of 1 in this source; game ID: 20261005_183108000_iOS_game_1. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_183108000_iOS. Opponent: ぐー、. Result evidence: loss. Recorded turns: 10. Filmed QR version continuously bound by source review; newly prepared live deck entry still awaits saved readback. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261006_012140000_iOS.MP4",
+      "source_sha256": "2fbf36e1f6d45a8e7fc6b1d273b0dc64c106ce1df14ac0447617e413ad79cf4e",
+      "game_number_in_source": 1,
+      "game_id": "20261006_012140000_iOS-game-1",
+      "exact_game_deck_binding": false,
+      "deck_choice_basis": "Needs a qualified candidate choice; exact version remains uncertain.",
+      "fields": {
+        "deck": "filmed-qr-d0b1bba631c1",
+        "deckName": "Scolipede / Mega Sableye ex",
+        "date": "2026-10-05",
+        "result": "concession",
+        "first": "second",
+        "opp": "Dialga ex, Honedge, Tinkatink, Alolan Diglett",
+        "ratings": {},
+        "note": "Source: 20261006_012140000_iOS.MP4. Game 1 of 1 in this source; game ID: 20261006_012140000_iOS-game-1. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261006_012140000_iOS. Opponent: おせち. Result evidence: {'owner': 'Dacz8976', 'opponent': 'おせち', 'result': 'win', 'method': 'opponent concession', 'points_owner': 2, 'points_opponent': 0, 'turns_played': 7, 'owner_went': 'second', 'damage_done_owner_results': 160, 'concession_seconds': 204, 'victory_seconds': 214, 'evidence_ids': ['F020400', 'F020500', 'F021400', 'F021480']}. Recorded turns: 7. Exact 20-card game version is unverified; preserve the packet visible core and qualified earlier QR candidate rather than claim a proven deck version. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "game_number_in_source": 1,
+      "game_id": "20261006_012927000_iOS_game_01",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Source-bound filmed QR",
+      "fields": {
+        "deck": "filmed-qr-c851443bb727",
+        "deckName": "Terapagos ex / Silvally / Persian",
+        "date": "2026-10-05",
+        "result": "loss",
+        "first": "second",
+        "opp": "Gible, Garchomp, Munchlax, Happiny",
+        "ratings": {},
+        "note": "Source: 20261006_012927000_iOS.MP4. Game 1 of 2 in this source; game ID: 20261006_012927000_iOS_game_01. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261006_012927000_iOS. Opponent: ElPapa. Result evidence: loss. Recorded turns: 11. Filmed QR version continuously bound by source review; newly prepared live deck entry still awaits saved readback. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "game_number_in_source": 2,
+      "game_id": "20261006_012927000_iOS_game_02",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Source-bound continuous filmed edit and final saved20-card list",
+      "fields": {
+        "deck": "filmed-edit-2c58f9b081c7",
+        "deckName": "Snorlax ex / Team Rocket's Persian / Silvally (Water revision)",
+        "date": "2026-10-05",
+        "result": "concession",
+        "first": "first",
+        "opp": "Zeraora",
+        "ratings": {},
+        "note": "Source: 20261006_012927000_iOS.MP4. Game 2 of 2 in this source; game ID: 20261006_012927000_iOS_game_02. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261006_012927000_iOS/game_02. Opponent: たこ. Result evidence: win. Recorded turns: 2. Exact20 version established by the continuous filmed edit and final saved list, independently accepted with this game. Separate filmed-edit definition prepared; no revised QR was filmed and live deck saving still awaits readback. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261006_020518000_iOS.MP4",
+      "source_sha256": "64968acf700ddfecc51cc5bcb01014db7afa855545057bd6934226afd35a53e7",
+      "game_number_in_source": 1,
+      "game_id": "20261006_020518000_iOS",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Source-bound filmed QR",
+      "fields": {
+        "deck": "filmed-qr-913d34a7e9b5",
+        "deckName": "Conkeldurr / Sandslash / Hitmonchan ex",
+        "date": "2026-10-05",
+        "result": "win",
+        "first": "first",
+        "opp": "Team Rocket's Tinkatink, Togedemaru, Stakataka, Cufant, Copperajah, Team Rocket's Tinkatuff, Team Rocket's Tinkaton",
+        "ratings": {},
+        "note": "Source: 20261006_020518000_iOS.MP4. Game 1 of 1 in this source; game ID: 20261006_020518000_iOS. Review packet: C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-06_NEW_PAUSE_GAMES/20261006_020518000_iOS. Opponent: Adgbag. Result evidence: Third knockout of opponent Copperajah by Hitmonchan ex Quick Straight, then owner third point, Victory vs Adgbag.. Recorded turns: 17. Filmed QR version continuously bound by source review; newly prepared live deck entry still awaits saved readback. Full hand/turn/board evidence and recording limits retained in the packet. No owner fun or competition ratings supplied."
+      },
+      "external_saved": false
+    }
+  ],
+  "prepared_counts": {
+    "sources": 17,
+    "games": 18,
+    "decks": 14,
+    "filmed_QR_decks": 13,
+    "filmed_edit_decks": 1,
+    "wins": 8,
+    "losses": 10
+  },
+  "earlier_live_baseline": {
+    "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+    "checked_utc": "2026-10-06T18:03:35.105985+00:00",
+    "retrieval": "All ten rendered Log game articles read through browser DOM; source filenames in notes",
+    "source_filenames": [
+      "20261002_143837000_iOS.MP4",
+      "20261002_132311000_iOS.MP4",
+      "20261002_115323000_iOS.MP4",
+      "20261002_143309000_iOS.MP4",
+      "20261002_114458000_iOS.MP4",
+      "20261002_022135000_iOS.MP4",
+      "20261002_023418000_iOS.MP4",
+      "20261002_021402000_iOS.MP4",
+      "20261002_020920000_iOS.MP4",
+      "20261002_020315000_iOS.MP4"
+    ],
+    "game_count": 10,
+    "wins": 6,
+    "losses": 4,
+    "concession_wins": 3,
+    "new_selected_sources_already_present": [],
+    "preserve_existing": true,
+    "artifact_export": "LIVE_ARTIFACT_BEFORE.html"
+  },
+  "expected_totals_if_baseline_unchanged": {
+    "games": 28,
+    "wins": 14,
+    "losses": 14
+  },
+  "source_files_sha256": {
+    "BATCH_COMPLETION_CHECK.json": "9ccbe437445e8630d37dcd00ee5805ebf1e6960185dfb17869ff3c7e9fce916c",
+    "PREPARED_GAME_QUEUE.json": "11ad3cd94a72f3419c0a6563b61e7fc9e61842c4470715757657378700316206",
+    "NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+    "EDITED_DECK_ENTRY.json": "b91991f3b1d3194c2a0271c2de7e1df8e9356d28d1b507261c649b28f46c6947",
+    "PAUSE_DECKS_IMPORT.json": "278fcaa5baffebd347323bb5f13283bbd87cc21b385924bf989a9d20efc21355",
+    "PAUSE_EDITED_DECK_IMPORT.json": "b6603f2c182da5fdbfb245e1676c3d07357f1c6df8400725469d0b7306785175"
+  }
+}

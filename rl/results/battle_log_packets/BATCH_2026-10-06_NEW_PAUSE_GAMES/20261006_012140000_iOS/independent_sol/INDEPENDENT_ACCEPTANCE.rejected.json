@@ -1,0 +1,341 @@
+{
+  "schema": "battle-review/independent-sol-acceptance-v1",
+  "reviewer": "/root/independent_012140",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "reviewed_utc": "2026-10-06T21:00:15.227865+00:00",
+  "source_video": "20261006_012140000_iOS.MP4",
+  "source_sha256": "2fbf36e1f6d45a8e7fc6b1d273b0dc64c106ce1df14ac0447617e413ad79cf4e",
+  "duration_seconds": 215.053333,
+  "scope": "Fresh bounded independent checks of first-pass packet, all required captures and boundary claims, ordinary opening/first owner decision/opponent turn, consequential draws, T6, terminal. Separate from the whole-source first pass. No media redecoding or second full review claimed.",
+  "accepted": false,
+  "decision": "rejected_pending_surgical_repairs",
+  "checked_input_sha256": {
+    "SOURCE.json": "c72536634452e105fc993da63023cbcc11641d9a52e741df645c23d240872890",
+    "REVIEW.md": "e184b8b457458ab0296898fab42471c8d3206408d22facfb29ed951dd07d9029",
+    "COVERAGE.md": "a539cffa5f14e5b87c16bf9de649739133028455dafac99f308919331470515f",
+    "SUMMARY.json": "f1077ad85fe59ea432ed4fcaa8227352069c3389da7821efe3bc5378e955431f",
+    "UNCERTAINTIES.json": "05d334923199f918f0d795b9bc9189d83ab3a2dc7bd0a478a3d77cf9e8bb56c1",
+    "PAUSE_GAME.json": "ded237cb59d327100cccf25e62b0a0d830521712ae740b07766a6a8a4bc5105c",
+    "DECK_USED.json": "7f3b3e597e11138ad55aae7d081a1ea70d0ec4bb49acb483144f898ddc44b37f",
+    "TURN_LEDGER.json": "09b6f45c8ded4a6448a4a3f27d9c22a408683171e14403aad4944236314c36cb",
+    "TURN_EVIDENCE.json": "bf5bb44bea1245c91a313581e8dcbf161c4afce4728e843c094d86c858f3d6de"
+  },
+  "supplemental_checked_input_sha256": {
+    "QUALIFIED_DECK_CANDIDATE.json": "e8625b6594c175dc5229df995ef1937046287059e431908928e3b38b0d475182",
+    "RECORDING_METADATA.json": "808f9ebee7fe0da66d9d05c24b34f3c02f4489bbac544e2b2ba6825bc33d8562",
+    "SUBMISSION_RECEIPT.json": "58b99a91eb5e7bd345458dafa12ad903e16ff3bed15cbae62b93c0dab66457e4",
+    "STRUCTURAL_VALIDATION.json": "359a29067126e695d9a050f49fca830483983dee97c54c5c615490c2b8ab3663",
+    "../LIVE_DECK_SNAPSHOT.json": "f886698321bbdf67c06a17fe4d54a4ef2e1d464f02d972690383c64826432a28",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_183108000_iOS\\qr_intake\\QR_DECODE_0001.00.json": "46b9462c53a360b4b166b979847c9b56ccce9f73d6a69937158e31b0a44942fd",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_183108000_iOS\\qr_intake\\t0001.00.png": "094e5bffe741a905afc18805147bd8b71352e43b2384dfc22284a01747866000"
+  },
+  "input_changed_during_review": [],
+  "submission_manifest_mismatches": [],
+  "native_frames": 180,
+  "crop_count": 360,
+  "crop_integrity": {
+    "receipt": "INTEGRITY_CHECK.json",
+    "dimensions_match": true,
+    "maximum_mean_absolute_pixel_error": 0.7922784717656514,
+    "interpretation": "All declared crops correspond to their native full frames. Small pixel differences are JPEG re-encoding, maximum channel mean error below 0.8/255. Native size1170x2532; bottom[0,2025,1170,2532]; top[0,0,1170,620]."
+  },
+  "viewed_source_seconds": [
+    0,
+    20,
+    23.5,
+    25,
+    38,
+    50,
+    51,
+    56,
+    59,
+    60,
+    60.5,
+    61,
+    62.5,
+    64,
+    65.5,
+    75,
+    76,
+    84,
+    89,
+    90,
+    91,
+    92,
+    94,
+    96,
+    98,
+    99,
+    100,
+    101,
+    102,
+    103,
+    104,
+    106,
+    107.5,
+    108.5,
+    110.5,
+    113.5,
+    114,
+    123,
+    126,
+    145,
+    147,
+    149,
+    150,
+    151,
+    153,
+    154,
+    157.5,
+    158,
+    160,
+    162,
+    163,
+    164,
+    165,
+    166,
+    167,
+    168,
+    173,
+    173.5,
+    174,
+    174.5,
+    175,
+    178,
+    182,
+    186,
+    202,
+    203,
+    204,
+    214.8
+  ],
+  "evidence_checked_sha256": {
+    "turn_evidence/t0000.00.jpg": "389f69b54f065856dfbdaa468da69ab6e4bb7a62e23b104a166ab51e58b573be",
+    "turn_evidence/t0020.00.jpg": "5aaa800cb03f36e966882cc3f55ea09ec3990c1320b01b504752f9613688c210",
+    "turn_evidence/t0023.50.jpg": "a7982d496ef716e15da974c56a62898f0dbe7483698f9bb9476f5218f9a5671c",
+    "turn_evidence/t0025.00.jpg": "4209d68fa92d858881ec4147b9c42ce3ada678872d6989287a6da5e2713109e5",
+    "turn_evidence/t0038.00.jpg": "a9e700fd434f8480ccc3e28fe55a156c968da36a7b2e4c0d212d2ce3a8d8b024",
+    "turn_evidence/t0050.00.jpg": "55d288afdd9da39ce0c2386eac43ceac3ed80365798ffc8f63b1c69e760a8fae",
+    "turn_evidence/t0051.00.jpg": "c5029517360a4d4e3b6817bcead8a51e7050fa4f460b6392c654f32efe3c3947",
+    "turn_evidence/t0056.00.jpg": "1b43663dfd12469b460d257886966cf637137c8a6a056e9d2432e22dc17a6245",
+    "turn_evidence/t0059.00.jpg": "15e3c942c462180517d106b8ab872554dc9e8b5d99262daf66be926977656eb2",
+    "turn_evidence/t0060.00.jpg": "d3ff49caba386b84c5ce2535860329eba15c9db414a19a4d5c7d68fd95644985",
+    "turn_evidence/t0060.50.jpg": "2ae4b82d488063a4a32d82f040eb6edc3e63228966b5d9156c3b553ac906de4f",
+    "turn_evidence/t0061.00.jpg": "aaa5bbee79f2f10435b29966239ee4374ba752f9f0f9063cebd7e90bff0da534",
+    "turn_evidence/t0062.50.jpg": "620f3188bdfa6a8604f3f02f843367ab4fd6a6ed41ba1f6d8879a6d820a766bf",
+    "turn_evidence/t0064.00.jpg": "aba6a721f66841e20f2480c1c7b70d6382d547f2ca694106dfbe685cc41b4722",
+    "turn_evidence/t0065.50.jpg": "3e44dce84860b05f69f1290529a4fe8c90c22c0a2fbebc254f003806cddfe648",
+    "turn_evidence/t0075.00.jpg": "8a36d7da30b9a2e73475201e777d465e5fcf76101ebfd2ebb330fda82a9a91dc",
+    "turn_evidence/t0076.00.jpg": "40d892d38c822cab4562bd5c2879190aedc3aa3884516508ee47282bf91e52c5",
+    "turn_evidence/t0084.00.jpg": "13713c9fe59e03480c3deebbb4daa957350e8b9461385a53076bb25f43358bf8",
+    "turn_evidence/t0089.00.jpg": "815bf974025deb34370d771eb796ed666c90d6736d98e90b40035fc4a8a4d792",
+    "turn_evidence/t0090.00.jpg": "c969433979790cd87f3baf3f9e9d870d7aaeae23b2aa6964ba9c51a50ca153c1",
+    "turn_evidence/t0091.00.jpg": "50c2b1c97395b66b8985b0882155fa239e1835b93e3ccc2588765ce7ee090638",
+    "turn_evidence/t0092.00.jpg": "635beeb2e257453b20df2aea9aaedb629ed625d5a62980fd4e4ab7cc0065e4b6",
+    "turn_evidence/t0094.00.jpg": "49aeacdb72fe4e4a4a1e3c488afeb537b69a1c32779fdc60f3adefa2cbfbb57f",
+    "turn_evidence/t0096.00.jpg": "e27bf27ca8d0de457d8387b227c13d5caf7db99c688b1c1ce298adb2d0c29b2d",
+    "turn_evidence/t0098.00.jpg": "cbf66141fefb10d3a4f0436e4128e494e38d6e13f2b6dcfede75d4b5408bfb43",
+    "turn_evidence/t0099.00.jpg": "b132f71b7c1e8fa5bddbb1d24802be90c601585c223ed7aa0bc3c3dc502e0c89",
+    "turn_evidence/t0100.00.jpg": "703860277b06dc892c9c69bc946db5ebfb761b93918d08153ae20c63c3722cd1",
+    "turn_evidence/t0101.00.jpg": "580726d46b58d39ea6099fa4e2e21ea6cafdc2f8544feea8b56dfa493858f11b",
+    "turn_evidence/t0102.00.jpg": "767c6f2cb5a7bd68ca30d8df2f0e957bf018df237b99180b803d9704a2e1d2c6",
+    "turn_evidence/t0103.00.jpg": "1ca43bc5f8b267f7b8aa52f2f8bf326c5a60673aca73e95ffcef216b760b2265",
+    "turn_evidence/t0104.00.jpg": "678f4be7dfdd9f9f35f34687ff2f3bf1c99441bdc26a2f0bc5e43a05f99d9dfb",
+    "turn_evidence/t0106.00.jpg": "da7ea00fe77637292866269fcc57c2e082af55abe99b6fc0008a41cd52c9db2c",
+    "turn_evidence/t0107.50.jpg": "887bc9c8aa15777f9cb3beb11e2684665712a0ef74e349dcc1aae8787411d792",
+    "turn_evidence/t0108.50.jpg": "e86eb91d831bf3cdc5ed524e34b4c6d7cd9f54ac9147ee22d8e04165594f8611",
+    "turn_evidence/t0110.50.jpg": "a87697e2b053e38fdaa52cd757f8d651fe9b72501601b28110806645dab3ffa4",
+    "turn_evidence/t0113.50.jpg": "c63a2c72fb4baf06879aaad589f344d2813561eb4dcf8f30a0a92d2f39fc15d0",
+    "turn_evidence/t0114.00.jpg": "5a0f3c8dce57757c6e0e5ed910c1117f21f87319f708c6743f7cf0cfd11d0023",
+    "turn_evidence/t0123.00.jpg": "149a3a40a5a3c952973d8766e25bd47921bd85e2d35d1a6fd4209be33d25eeaf",
+    "turn_evidence/t0126.00.jpg": "c30b89fc23881f43c0a132780d074b8114ef7c56fdbfcb6923c1a63b81f3e8fd",
+    "turn_evidence/t0145.00.jpg": "f0f64629cbb5bb9eb6a0804bb476015a0c6a88e02c543dd8dbe055755a386fdf",
+    "turn_evidence/t0147.00.jpg": "a8d1bb655e95557110e61c9c9c2cfa1e9154bb406a5f9cce4feb5e78509a10ce",
+    "turn_evidence/t0149.00.jpg": "4c0d3f857399967aafc64fb66bacf59f0933a712aafa29f2248a20c3a646e41d",
+    "turn_evidence/t0150.00.jpg": "5998e503f671f2e4623cd6a46d80a4984ebeb04c3b7f8b49db6d8f6886ac208b",
+    "turn_evidence/t0151.00.jpg": "af9ba24311befb1da85d2329b12b1a3af5e95a54e1075df7c167936a31fd90b8",
+    "turn_evidence/t0153.00.jpg": "3830f27c21d1793374025361fde6ca5a678979c038d4ac478728b9b2adda39bf",
+    "turn_evidence/t0154.00.jpg": "4b057203ac2c789abac858315e0015fab99f5c67453c034092eb4b77fa78528b",
+    "turn_evidence/t0157.50.jpg": "6e68418fc04dbb161ad935f0baca89a85580ba589e0c6881620b36a17dcb4c97",
+    "turn_evidence/t0158.00.jpg": "c4ed3edf1dfb053fb5ec1710ed8efbc20d323d471fb67c5aab49dde8e303ebe1",
+    "turn_evidence/t0160.00.jpg": "04c561cc6eb16594b96eb772e30e7efd1800ae24789650236d5daaabd03a0bf7",
+    "turn_evidence/t0162.00.jpg": "3d992f9488dc7b0662d501acfe2b3f5ecb8562e47236ad73065f4b6e501b8e57",
+    "turn_evidence/t0163.00.jpg": "ab9879979bdf7b287597ee1a7c9b4bd4facb293095c680df51f5ec9fe3153dcf",
+    "turn_evidence/t0164.00.jpg": "e96595db5ee77d49f9210978cabd76ea0bfa2f1604c70eaf12df0a58e06f72a3",
+    "turn_evidence/t0165.00.jpg": "2e96ecffb4f083433081f6a3800c90ffcb8c7985ed9a9ca12dd09e1bca61120f",
+    "turn_evidence/t0166.00.jpg": "cdc7f6c890e5e824b37eacf8a6afda42eb2c24cdad6a9dc3a8b840610b0aa1c4",
+    "turn_evidence/t0167.00.jpg": "7bb395fc6cedd3a1f31bb12b59a55bde7b0a5d52d0a8ec4339bb8ec2abb6fccf",
+    "turn_evidence/t0168.00.jpg": "81ec066d951a69ea7f30420c5981730e7cc0860ddb93683ac3f6f27507c4052f",
+    "turn_evidence/t0173.00.jpg": "cef6cd4390aa4a9c264dfc12059350255b6e73c958337006ae84b6865f19c978",
+    "turn_evidence/t0173.50.jpg": "0be754488e2877491eadc8e5380d2e467bfa1393e68b9825fec9f01daefc8a32",
+    "turn_evidence/t0174.00.jpg": "4bdd021a4c9cfa2ab0802395a686678dffb1ffdf35800227a324bae32874d19f",
+    "turn_evidence/t0174.50.jpg": "06a624a0878743fd749938e016a93b22ff8eafd3c0c5a96aac63e9e8aab5451c",
+    "turn_evidence/t0175.00.jpg": "878c3ed5e5c97a8b6ca388f95dc0c86d99deb8e201e5e4a8824015d11b60c4a7",
+    "turn_evidence/t0178.00.jpg": "d14d8818046462814388d039a4001569742aa89f70c376d3fa1ec8cd1792502f",
+    "turn_evidence/t0182.00.jpg": "63f7672b7c2e5796407f2f05ae45908dcdd64dde0c7b13b04b87bc3a0e2bf885",
+    "turn_evidence/t0186.00.jpg": "cbd64c34ae5c30b0f0448e4683738312bc11e8ee56e2c8703abe9b94d7db7ee5",
+    "turn_evidence/t0202.00.jpg": "5e5b45df79846d4828ce0c10471aa0d153c08858be6dcbe79f5981a73d8ca7ea",
+    "turn_evidence/t0203.00.jpg": "19bed8fc040ed785011a08c3d93617668b98f05351ab9a931f7237473e629efa",
+    "turn_evidence/t0204.00.jpg": "a94dc21df7921d9dfd1f1bd7da8c410bd17e882c25380fce988043694f6b8abe",
+    "turn_evidence/t0214.80.jpg": "db3126111fe238f960912c6c0bb298c74a2e2fd088799c0fd3f77db5d71ae11e"
+  },
+  "checks_passed": [
+    "Opening23.5 has Scolipede/Poke Ball/Research/Whirlipede/Venipede, all five slots before placement. Venipede Active by25.",
+    "Ordinary first owner decision59-66: Whirlipede normal draw59, five intact cards60, Ball selected60.5 and consumed by61, Mega Sableye ex reveal64, center bench placement by65.5. Input consumption is separate from reveal.",
+    "Research reveal order75 Mega Sableye ex,76 Wally. EndingT2 hand84 has Scolipede/Whirlipede/Whirlipede/Wally count4.",
+    "Full ordinary opponentT3 window90-104: hidden draw to4 backs92; waiting94/96; Alolan Diglett right bench98 and fan3; Metal attached Dialga100/101; no attack or HP change before owner turn4 banner104.",
+    "Opponent Ball search50 remains facedown. Tinkatink revealed for later play51 does not establish searched identity.",
+    "Cyrus normal draw106 and Lucky Ice Pop147 are named native reveals. T4 selected107.5/end114 counts5/4, T6 selected149/end168 counts5/3. Owner-start opponent fans3/3/4.",
+    "All owner-turn scheduled+1/+3/+6 candidates retained, timing tied to59.5/107.5/148 draw-end anchors. Post-play/zoom candidates individually qualified; denser preplay selected60/107.5 and scheduled+1 selected149. Before-attack hand84/114/168 substitutes for End Turn. Actual native full/crop evidence inspected.",
+    "Pop consumed149-150, card resolution reveal151; heal60 to80 by154; Heads157.5. Return timing needs repair below, final Item identity/count correct.",
+    "T6 evolution at160 begins over Whirlipede80; completed Scolipede130/140 at162 retains10 damage. Wally consumed162-163, reveal164, generated Colorless at165 and attached166. Separate stillavailable Darkness attaches to right Mega167-168.",
+    "KO sequence is separated correctly:173 still20HP,173.5 zero while Dialga occupiesActive,174 glow,174.5 cloud,175 first clear emptyActive/discardpreview,178 +2points,182 DiglettActive60HP with2Metal.",
+    "Terminal203 waiting,204 explicit concession,214.8 finalVictory versus おせち; second,7turns,2-0,160damage. Lobby0 identifies Deluxe Pack: Mega Emblem Event; no battleAuto appears in inspected views.",
+    "Both boards, current versus nextEnergy, benches, points, HP and conditional poison reconcile in selected source evidence. No Tool/Stadium play or attached Tool appears; representation needs repair below.",
+    "Full discard piles not opened per complete first-pass coverage; partial previews correctly limited. No game-bound QR/full20 list in whole-source first pass. Frozen live snapshot lacks Scolipede; prior183108 QR candidate has20 slots and matching original payload, retained only as candidate with unrecorded edit/version uncertainty. Exact game list staysnull."
+  ],
+  "repair_requests": [
+    {
+      "id": "R1_absence_representation",
+      "files": [
+        "TURN_LEDGER.json"
+      ],
+      "finding": "Every boundary stadium is null despite an observed-absence basis; occupied Pokemon tool values are null despite no attached Tool observed. Null means unknown under template contract.",
+      "repair": "Set stadium to none on all14 boundaries and tool to none on occupied Pokemon, preserving explicit observed-absence basis. Empty positional slots remain explicitly empty rather than inventing a Pokemon."
+    },
+    {
+      "id": "R2_displayed_turn",
+      "files": [
+        "TURN_LEDGER.json"
+      ],
+      "finding": "13 boundary records assert a displayed current-turn number after the banner disappeared. Only T5 board_after F014500 visibly readsCurrent turn6. T4 board_after F012300 also incorrectly claims turn5 displayed in phase text.",
+      "affected_fields": [
+        {
+          "turn_number": 1,
+          "field": "board_at_start.turn_number_displayed",
+          "value_before": 1,
+          "evidence_ids": [
+            "F003800"
+          ]
+        },
+        {
+          "turn_number": 1,
+          "field": "board_after.turn_number_displayed",
+          "value_before": 1,
+          "evidence_ids": [
+            "F005600"
+          ]
+        },
+        {
+          "turn_number": 2,
+          "field": "board_at_start.turn_number_displayed",
+          "value_before": 2,
+          "evidence_ids": [
+            "F006000"
+          ]
+        },
+        {
+          "turn_number": 2,
+          "field": "board_after.turn_number_displayed",
+          "value_before": 2,
+          "evidence_ids": [
+            "F008900"
+          ]
+        },
+        {
+          "turn_number": 3,
+          "field": "board_at_start.turn_number_displayed",
+          "value_before": 3,
+          "evidence_ids": [
+            "F009200"
+          ]
+        },
+        {
+          "turn_number": 3,
+          "field": "board_after.turn_number_displayed",
+          "value_before": 3,
+          "evidence_ids": [
+            "F010100"
+          ]
+        },
+        {
+          "turn_number": 4,
+          "field": "board_at_start.turn_number_displayed",
+          "value_before": 4,
+          "evidence_ids": [
+            "F010750"
+          ]
+        },
+        {
+          "turn_number": 4,
+          "field": "board_after.turn_number_displayed",
+          "value_before": 5,
+          "evidence_ids": [
+            "F012300"
+          ]
+        },
+        {
+          "turn_number": 5,
+          "field": "board_at_start.turn_number_displayed",
+          "value_before": 5,
+          "evidence_ids": [
+            "F012600"
+          ]
+        },
+        {
+          "turn_number": 6,
+          "field": "board_at_start.turn_number_displayed",
+          "value_before": 6,
+          "evidence_ids": [
+            "F014900"
+          ]
+        },
+        {
+          "turn_number": 6,
+          "field": "board_after.turn_number_displayed",
+          "value_before": 6,
+          "evidence_ids": [
+            "F018200"
+          ]
+        },
+        {
+          "turn_number": 7,
+          "field": "board_at_start.turn_number_displayed",
+          "value_before": 7,
+          "evidence_ids": [
+            "F018600"
+          ]
+        },
+        {
+          "turn_number": 7,
+          "field": "board_after.turn_number_displayed",
+          "value_before": 7,
+          "evidence_ids": [
+            "F020200"
+          ]
+        }
+      ],
+      "repair": "Set those13 turn_number_displayed values to null with absent/unreadable-banner reason; retain concluded row turn separately in phase or an inferred turn field. Remove unsupported displayed wording from T4 after phase. Preserve T5 after displayed6."
+    },
+    {
+      "id": "R3_item_return_time",
+      "files": [
+        "TURN_LEDGER.json",
+        "REVIEW.md"
+      ],
+      "finding": "T6 play1 return event timestamp158/F015800 does not show returned Pop. At158 the owner holds only Scolipede/Whirlipede/Wally/Cyrus; healedWhirlipede80. At160 Pop is visibly back while Scolipede evolution is underway.",
+      "evidence_ids": [
+        "F015800",
+        "F016000"
+      ],
+      "repair": "Record Item return bounded after158 and by160, with exact instant unknown; useF016000 as observed returned hand and F015800 as preceding bound. Add F016000 to play1 evidence and preserve sameItem, Heads and endingcount3. Change prose return at158 to this bound."
+    }
+  ],
+  "astra_required": false,
+  "lead_acceptance_written": false,
+  "canonical_files_edited": false,
+  "registration_media_or_external_writes": false,
+  "remaining": "Root repairs three precise findings, then independent hash-bound amendment recheck before acceptance. Structure alone did not establish acceptance."
+}

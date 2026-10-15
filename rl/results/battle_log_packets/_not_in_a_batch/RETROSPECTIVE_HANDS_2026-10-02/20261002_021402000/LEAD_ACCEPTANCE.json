@@ -1,0 +1,39 @@
+{
+  "schema": "retrospective-hand-lead-acceptance-v1",
+  "source": "20261002_021402000_iOS.MP4",
+  "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+  "accepted_at_utc": "2026-10-02T21:00:44.709657+00:00",
+  "lead": "Codex retrospective lead",
+  "worker_model": "gpt-6.1-sol",
+  "worker_effort": "high",
+  "independent_model": "gpt-6.1-sol",
+  "independent_effort": "high",
+  "verdict": "accepted_with_recording_limits",
+  "target_turns": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11
+  ],
+  "original_full_battle_status": "Reviewed; preserved",
+  "scope": "Opening and first six owner hands; accepted remaining turns inherited",
+  "independent_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_wailord\\20261002_021402000\\SOURCE_CHECKS_REPAIR_ACCEPTANCE.json",
+  "structure_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\STRUCTURE_CHECK.json",
+  "capture_status": "complete_with_recording_limits",
+  "source_read_basis": "verified_once_sha256_match_before_new_extraction",
+  "shared_registration": "complete",
+  "accepted_packet_hashes": {
+    "REVIEW_SUPPLEMENT.md": "20aa6dae158aa98d71a2549769132af7fe0a872be33286a142092dc9c4ae31cc",
+    "HAND_SUPPLEMENT.json": "1f7de08ee4f5a5b9c29278c373a9d44302133a09d6cab39a6beb97208340fc9a",
+    "TURN_EVIDENCE.json": "258c37a4dc9a1c57723646cd0ca389155255775023e6ac4ceba0bdb42fcffe57",
+    "UNCERTAINTIES.json": "5ef0f7de06df877dddb9e3a4211ce20705437b06922d470b7ff0bb13a1b4a140",
+    "DECK_USED.json": "75d92bcf866973455b21fe9df72f0dfc090d91cb25a399d988cf9e4e952fa4cd",
+    "PAUSE_GAME.json": "812653af2d6dfea70e73760f0fa0bdb08ea2d409da891cfad211f257c74e2c02",
+    "TURN_LEDGER.json": "1a6ac69b122be78d2a51c94fb5b9eee2031b442e4f583ea1de3c8d5fb3683393"
+  },
+  "retained_evidence_only": false,
+  "shared_event": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\events\\2026-10-02T210045.750990_0000_f1fe3351-258f-4d8e-a397-03eed284f133.json",
+  "registration_identity_provenance": "verified_by_cli_sha256"
+}

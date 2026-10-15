@@ -1,0 +1,140 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261010_020908000_iOS_game1",
+  "review_date": "2026-10-10",
+  "reviewer": "/root/pause_020908",
+  "model": "gpt-6.1-sol",
+  "sources": [
+    {
+      "video_basename": "20261010_020908000_iOS.MP4",
+      "sha256": "6771089aca9afe1e952e047017c07b74964a184011832179c27fe7b7f839bffc",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Kingdra ex / Team Rocket's Weezing ex",
+  "recording_match_date_local": "2026-10-09",
+  "recording_start_local": "21:09:08 America/Chicago",
+  "date_basis": "../RECORDING_DATE_VERIFICATION.json and filmed iPhone21:09 clock; lead supplied verified metadata",
+  "classification": "human_battle",
+  "classification_basis": "Matching screen versus Lv30 Desk and seven manually controlled turns; no Auto control visible anywhere.",
+  "opponent": "Desk",
+  "owner": "Dacz8976",
+  "opening": {
+    "source_video": "20261010_020908000_iOS.MP4",
+    "timestamp_seconds": 27,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Team Rocket's Weezing ex",
+        "variant": null,
+        "basis": "visible native hand/reveal",
+        "evidence_ids": [
+          "F0027.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Team Rocket's Koffing",
+        "variant": null,
+        "basis": "visible native hand/reveal",
+        "evidence_ids": [
+          "F0027.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Team Rocket's Koffing",
+        "variant": null,
+        "basis": "visible native hand/reveal",
+        "evidence_ids": [
+          "F0027.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Soothing Shore",
+        "variant": null,
+        "basis": "visible native hand/reveal",
+        "evidence_ids": [
+          "F0027.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Horsea",
+        "variant": null,
+        "basis": "visible native hand/reveal",
+        "evidence_ids": [
+          "F0027.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Horsea",
+      "opening_position": 5,
+      "source_video": "20261010_020908000_iOS.MP4",
+      "timestamp_seconds": 29,
+      "evidence_ids": [
+        "F0029.00"
+      ]
+    },
+    "redraw_or_replacement": [],
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "F0027.00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "worker_full_battle_review_complete_awaiting_lead_acceptance",
+  "outcome": {
+    "owner_result": "win",
+    "basis": "Opponent connection-timeout notice followed by Victory",
+    "final_points_before_timeout": {
+      "owner": 1,
+      "opponent": 0
+    },
+    "evidence_ids": [
+      "F0378.00",
+      "F0382.00",
+      "F0388.80"
+    ]
+  },
+  "limits": [
+    "No opened discard pile appears anywhere in this source; visible top discard cards and play history do not establish a full pile.",
+    "Opponent hand identities and hidden draw/search results remain unknown except publicly revealed Koffing.",
+    "Draw-end times are visual approximations; frame requested seek times are preserved, actual decoder frame PTS was not separately measured.",
+    "Opponent connection intent and actual disconnect cause are not established.",
+    "QR and live log use semantic card variants; artwork/rarity exact printings are not established."
+  ],
+  "lead_checked": false,
+  "game_mode": "Deluxe Pack: Mega Emblem Event",
+  "mode_basis": "Event selection visible at3s before matchmaking",
+  "final_result_statistics": {
+    "turn_order": "went second",
+    "turns_played": 7,
+    "owner_points": 1,
+    "opponent_points": 0,
+    "damage_done": 140,
+    "card_of_the_game": "Kingdra ex",
+    "source_seconds": 388.8,
+    "evidence_id": "F0388.80"
+  }
+}

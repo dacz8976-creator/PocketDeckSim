@@ -1,0 +1,602 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_021327000",
+  "sources": [
+    {
+      "video_basename": "20260908_021327000_iOS.MP4",
+      "sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "target_rows": 6,
+  "target_turn_numbers": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "rows": [
+    {
+      "turn_number": 2,
+      "draw_animation_end_seconds": 51.4,
+      "candidate_evidence_ids": [
+        "f0052.00",
+        "f0054.00",
+        "f0057.00"
+      ],
+      "selected_start_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Researcher",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0052.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Comfey",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0052.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Rattata",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0052.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0052.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Team Rocket's Raticate ex",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0052.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0052.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Researcher",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0083.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Raticate ex",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0083.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0083.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0083.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "first_voluntary_move_seconds": 53,
+      "candidate_limits": "Later or post-play candidates do not replace the selected untouched hand."
+    },
+    {
+      "turn_number": 4,
+      "draw_animation_end_seconds": 102,
+      "candidate_evidence_ids": [
+        "f0103.00",
+        "f0106.00",
+        "f0108.00",
+        "f0110.00"
+      ],
+      "selected_start_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Researcher",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0103.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Raticate ex",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0103.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0103.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Team Rocket's Raticate ex",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0103.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0103.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0123.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Raticate ex",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0123.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0123.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "first_voluntary_move_seconds": 105,
+      "candidate_limits": "Later or post-play candidates do not replace the selected untouched hand."
+    },
+    {
+      "turn_number": 6,
+      "draw_animation_end_seconds": 153.8,
+      "candidate_evidence_ids": [
+        "f0154.00",
+        "f0156.00",
+        "f0159.00"
+      ],
+      "selected_start_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0154.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Raticate ex",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0154.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0154.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0154.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0179.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Sightseer",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0179.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Drowzee",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0179.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0179.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "first_voluntary_move_seconds": 157,
+      "candidate_limits": "Later or post-play candidates do not replace the selected untouched hand."
+    },
+    {
+      "turn_number": 8,
+      "draw_animation_end_seconds": 210.3,
+      "candidate_evidence_ids": [
+        "f0211.00",
+        "f0213.00",
+        "f0216.00"
+      ],
+      "selected_start_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Flute",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0211.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Sightseer",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0211.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Drowzee",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0211.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0211.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0211.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Drowzee",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0249.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0249.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0249.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "first_voluntary_move_seconds": 217,
+      "candidate_limits": "Later or post-play candidates do not replace the selected untouched hand."
+    },
+    {
+      "turn_number": 10,
+      "draw_animation_end_seconds": 300.9,
+      "candidate_evidence_ids": [
+        "f0301.00",
+        "f0303.00",
+        "f0306.00"
+      ],
+      "selected_start_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Drowzee",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0303.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0303.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Goo-zooka",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0303.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0303.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Hypno",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0345.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Drowzee",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0345.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0345.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "first_voluntary_move_seconds": 304,
+      "candidate_limits": "Later or post-play candidates do not replace the selected untouched hand."
+    },
+    {
+      "turn_number": 12,
+      "draw_animation_end_seconds": 404,
+      "candidate_evidence_ids": [
+        "f0405.00",
+        "f0407.00"
+      ],
+      "selected_start_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Hypno",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0404.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Drowzee",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0404.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0404.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0404.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Hypno",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0406.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Drowzee",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0406.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_observation",
+            "evidence_ids": [
+              "f0406.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0406.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "first_voluntary_move_seconds": 405,
+      "candidate_limits": "About+3 candidate407s is after concession; retained for timing context only. +6 is after game end. Selected untouched hand404s and before-end warning hand406s are retained."
+    }
+  ],
+  "limits": [
+    "Turn12 draw +6 candidate would be after concession; no ongoing owner turn exists then.",
+    "Draw animation endpoints and source-local seeks are approximate visual timing; PTS was not independently measured.",
+    "No opened discard panel was observed in 410 reduced samples at 1 fps or retained native checkpoints. Full piles and scroll coverage remain null; brief openings between samples can be missed.",
+    "Opponent Energy Zones at98s and379s are obscured by waiting overlays; exact current and next fields at those views remain null. Owner154s and404s current sockets are empty during generation, with later candidates showing the orb.",
+    "Hidden opponent card identities and the exact historical20-card log snapshot are unavailable.",
+    "Game mode remains uncertain: no Auto control observed in sampled or retained unobscured views; card zooms and overlays obscure some UI.",
+    "Turn12 warning response is not established before opponent concession."
+  ],
+  "independent_acceptance_status": "pending"
+}

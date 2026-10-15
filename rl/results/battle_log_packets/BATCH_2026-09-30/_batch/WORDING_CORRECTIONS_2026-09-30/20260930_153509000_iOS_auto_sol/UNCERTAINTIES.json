@@ -1,0 +1,13 @@
+{
+  "video_basename": "20260930_153509000_iOS.MP4",
+  "reviewer": "sol_auto_153509000",
+  "unreviewed_intervals": [],
+  "consequential_ambiguities_requiring_escalation": [],
+  "uncertainties": [
+    {"id": "hidden_decks", "scope": "Entire battle", "description": "Unrevealed cards, exact deck order, full deck lists and hidden opponent draws are unknown. The results deck title is observed, but Mega Sceptile ex itself is never played."},
+    {"id": "printing_identifiers", "scope": "Visible cards", "description": "Exact collection numbers and cosmetic printings were not read. Mechanically relevant versions are identified by visible HP and gameplay text in REVIEW.md."},
+    {"id": "delayed_damage_not_resolved", "timestamps_seconds": [121.5, 124.5, 135, 147], "description": "Flower Trick targets the owner Active spot and its marker moves to the new Active. The battle reaches three points before any delayed 70 damage is shown, so this footage cannot verify its later resolution or damage recipient after a further state change."},
+    {"id": "timeline_precision", "description": "Timeline phase ranges are approximate. Overview labels are 3-second sample midpoints; exact extraction times are encoded in detail frame filenames."},
+    {"id": "date_provenance", "description": "Match date derives from September 30 filename and owner testimony. No independent calendar or clock verification was performed."}
+  ]
+}

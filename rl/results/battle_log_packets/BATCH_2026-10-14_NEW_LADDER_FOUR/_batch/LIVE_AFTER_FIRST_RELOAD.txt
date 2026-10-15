@@ -1,0 +1,301 @@
+- banner "Artifact controls":
+  - link "Home":
+    - /url: /
+    - generic: 
+  - button "Ladder Log":
+    - generic: Ladder Log
+    - generic: 
+  - generic: Artifact by you
+  - button "You":
+    - group "You":
+      - img "Dustin Culp": DC
+  - group "Comments":
+    - button "Comment on this artifact":
+      - generic: 
+    - button "More comment options":
+      - generic: 
+  - button "Chat with Claude":
+    - text: Chat
+  - button "Share, shared with anyone who has the link":
+    - generic: 
+    - text: Share
+  - status
+  - alert
+  - button "Open task":
+    - generic: 
+- main:
+  - iframe [active] [id="frame-content"] [name="{\"hot\":{\"k\":\"1ahqrat0fxcguc\"},\"usable\":[\"db\",\"permissions\",\"user\"],\"n\":\"t0peou34ai\"}"]:
+    - generic: Pocket Deck Lab · ranked season B4b SP, Oct 14 – 28
+    - heading "Ladder Log" [level=1]
+    - paragraph: "One entry per game: the deck you played, what you faced, win or loss, an optional note. Open a deck to log under it. Entries save on their own and Claude can read them back from here, so a sentence in chat is no longer required."
+    - paragraph:
+      - text: "Totals here count this season (games logged from Oct 14). Last season’s games stay saved and are shown separately under each table. QR codes for this season’s decks:"
+      - link "Ladder Deck Codes":
+        - /url: https://claude.ai/artifact/8Jdmsfrp1McFskC2zAycKi
+      - text: ; older lists are on the Season Brews page.
+    - generic: Saved games loaded. Entries save as you log them.
+    - heading "This season so far" [level=3]
+    - table:
+      - rowgroup:
+        - row "Deck W L Games Win %":
+          - columnheader "Deck"
+          - columnheader "W"
+          - columnheader "L"
+          - columnheader "Games"
+          - columnheader "Win %"
+      - rowgroup:
+        - row "Ariados / Whimsicott / Ogerpon 1 0 1 100%":
+          - cell "Ariados / Whimsicott / Ogerpon"
+          - cell "1"
+          - cell "0"
+          - cell "1"
+          - cell "100%"
+        - row "All decks 1 0 1 100%":
+          - cell "All decks":
+            - strong: All decks
+          - cell "1":
+            - strong: "1"
+          - cell "0":
+            - strong: "0"
+          - cell "1":
+            - strong: "1"
+          - cell "100%":
+            - strong: 100%
+    - generic "Last season (Sept 15 – Oct 13)"
+    - generic "Brew 1 Meowstic / Hatterene / Comfey (2026-09-15 list) Psychic 0–0 last season 3–3":
+      - generic: Brew 1
+      - heading "Meowstic / Hatterene / Comfey (2026-09-15 list)" [level=2]
+      - generic: Psychic
+      - generic: 0–0
+      - generic: last season 3–3
+    - generic "Brew 1b Meowstic / Hatterene / Comfey · Cape variant (1 Master Plan, Elegant Cape) Psychic 0–0 last season 1–2":
+      - generic: Brew 1b
+      - heading "Meowstic / Hatterene / Comfey · Cape variant (1 Master Plan, Elegant Cape)" [level=2]
+      - generic: Psychic
+      - generic: 0–0
+      - generic: last season 1–2
+    - generic "Brew 2 Arceus / Nihilego / Toxapex Darkness 0–0 last season 1–3":
+      - generic: Brew 2
+      - heading "Arceus / Nihilego / Toxapex" [level=2]
+      - generic: Darkness
+      - generic: 0–0
+      - generic: last season 1–3
+    - generic "Brew 3 Xatu / TR Slowking ex Psychic 0–0 last season 1–0":
+      - generic: Brew 3
+      - heading "Xatu / TR Slowking ex" [level=2]
+      - generic: Psychic
+      - generic: 0–0
+      - generic: last season 1–0
+    - generic "Brew 4 Arceus / Tandemaus / Persian Darkness 0–0":
+      - generic: Brew 4
+      - heading "Arceus / Tandemaus / Persian" [level=2]
+      - generic: Darkness
+      - generic: 0–0
+    - generic "Brew 5 Arceus / Crobat / Nihilego / Toxapex Darkness 0–0":
+      - generic: Brew 5
+      - heading "Arceus / Crobat / Nihilego / Toxapex" [level=2]
+      - generic: Darkness
+      - generic: 0–0
+    - 'generic "Retired Arceus / Crobat / Xatu (retired 9/15: went 1–3, and its core is Fighting-weak — result plus judgment) Psychic 0–0 last season 1–3"':
+      - generic: Retired
+      - 'heading "Arceus / Crobat / Xatu (retired 9/15: went 1–3, and its core is Fighting-weak — result plus judgment)" [level=2]'
+      - generic: Psychic
+      - generic: 0–0
+      - generic: last season 1–3
+    - generic "Deck 01 Muk / Glimmora / Kingambit / Regigigas Darkness 0–0":
+      - generic: Deck 01
+      - heading "Muk / Glimmora / Kingambit / Regigigas" [level=2]
+      - generic: Darkness
+      - generic: 0–0
+    - generic "Deck 02 Arceus / Crobat Darkness 0–0 last season 1–3":
+      - generic: Deck 02
+      - heading "Arceus / Crobat" [level=2]
+      - generic: Darkness
+      - generic: 0–0
+      - generic: last season 1–3
+    - generic "Deck 03 Wailord / Indeedee wall Water 0–0":
+      - generic: Deck 03
+      - heading "Wailord / Indeedee wall" [level=2]
+      - generic: Water
+      - generic: 0–0
+    - generic "Deck 04 Absol / Hoopa / Darkrai Darkness 0–0":
+      - generic: Deck 04
+      - heading "Absol / Hoopa / Darkrai" [level=2]
+      - generic: Darkness
+      - generic: 0–0
+    - generic "Deck 05 Indeedee / Stoutland Psychic 0–0":
+      - generic: Deck 05
+      - heading "Indeedee / Stoutland" [level=2]
+      - generic: Psychic
+      - generic: 0–0
+    - generic "Deck 06 Mega Blaziken (tournament list) Fire 0–0":
+      - generic: Deck 06
+      - heading "Mega Blaziken (tournament list)" [level=2]
+      - generic: Fire
+      - generic: 0–0
+    - generic "Deck 07 Skarmory stall Metal 0–0 last season 3–1":
+      - generic: Deck 07
+      - heading "Skarmory stall" [level=2]
+      - generic: Metal
+      - generic: 0–0
+      - generic: last season 3–1
+    - generic "Deck 08 Garchomp toolbox Water / Fighting 0–0":
+      - generic: Deck 08
+      - heading "Garchomp toolbox" [level=2]
+      - generic: Water / Fighting
+      - generic: 0–0
+    - generic "Deck 09 Mega Manectric / Heliolisk Lightning 0–0":
+      - generic: Deck 09
+      - heading "Mega Manectric / Heliolisk" [level=2]
+      - generic: Lightning
+      - generic: 0–0
+    - generic "Deck 10 Xatu / Oricorio / TR Weezing Psychic 0–0":
+      - generic: Deck 10
+      - heading "Xatu / Oricorio / TR Weezing" [level=2]
+      - generic: Psychic
+      - generic: 0–0
+    - generic "Deck 11 Archaludon / Haxorus / Dragonair Fighting / Metal 0–0":
+      - generic: Deck 11
+      - heading "Archaludon / Haxorus / Dragonair" [level=2]
+      - generic: Fighting / Metal
+      - generic: 0–0
+    - generic "Deck 12 Ariados / Whimsicott / Ogerpon Grass 1–0" [active]:
+      - generic: Deck 12
+      - heading "Ariados / Whimsicott / Ogerpon" [level=2]
+      - generic: Grass
+      - generic: 1–0
+    - text: Opponent’s deck
+    - combobox "Opponent’s deck"
+    - group "Result":
+      - button "Win"
+      - button "Loss"
+    - text: Note (optional)
+    - textbox "Note (optional)":
+      - /placeholder: first/second | main attacker’s first turn | opp points
+    - button "Log game" [disabled]
+    - heading "This season, by opponent" [level=3]
+    - table:
+      - rowgroup:
+        - row "Mega Sharpedo ex / Magikarp / Mantyke 1–0":
+          - cell "Mega Sharpedo ex / Magikarp / Mantyke"
+          - cell "1–0"
+    - table:
+      - rowgroup:
+        - row "Result Faced Note When":
+          - columnheader "Result"
+          - columnheader "Faced"
+          - columnheader "Note"
+          - columnheader "When"
+          - columnheader
+      - rowgroup:
+        - row "W Mega Sharpedo ex / Magikarp / Mantyke 1st | Whimsicott ex T4 | opp 0 pts | vs まいちゃん | 2026-10-14 09:25:46 CDT | 20261014_142546000_iOS.MP4 | Victory 3-0 at 04:59.8; Grass Knot160 KOs Mega Sharpedo ex. Oct 14 10:46 AM Remove this game":
+          - cell "W":
+            - generic: W
+          - cell "Mega Sharpedo ex / Magikarp / Mantyke"
+          - cell "1st | Whimsicott ex T4 | opp 0 pts | vs まいちゃん | 2026-10-14 09:25:46 CDT | 20261014_142546000_iOS.MP4 | Victory 3-0 at 04:59.8; Grass Knot160 KOs Mega Sharpedo ex."
+          - cell "Oct 14 10:46 AM"
+          - cell "Remove this game":
+            - button "Remove this game": ✕
+    - generic "Deck 13 A. Ninetales / Raticate Water 0–0":
+      - generic: Deck 13
+      - heading "A. Ninetales / Raticate" [level=2]
+      - generic: Water
+      - generic: 0–0
+    - generic "Deck 14 Comfey / Raticate / Hypno Psychic 0–0":
+      - generic: Deck 14
+      - heading "Comfey / Raticate / Hypno" [level=2]
+      - generic: Psychic
+      - generic: 0–0
+    - generic "Deck 15 Jolteon / Oricorio / Raticate Lightning 0–0":
+      - generic: Deck 15
+      - heading "Jolteon / Oricorio / Raticate" [level=2]
+      - generic: Lightning
+      - generic: 0–0
+    - 'generic "Brew 6 Payback: Pyukumuku / Silvally / TR Mewtwo / Comfey Psychic 0–0 last season 0–3"':
+      - generic: Brew 6
+      - 'heading "Payback: Pyukumuku / Silvally / TR Mewtwo / Comfey" [level=2]'
+      - generic: Psychic
+      - generic: 0–0
+      - generic: last season 0–3
+    - 'generic "Brew 6b Payback (Grass): Pyukumuku / Silvally / TR Scyther / Ogerpon ex Grass 0–0 last season 0–3"':
+      - generic: Brew 6b
+      - 'heading "Payback (Grass): Pyukumuku / Silvally / TR Scyther / Ogerpon ex" [level=2]'
+      - generic: Grass
+      - generic: 0–0
+      - generic: last season 0–3
+    - generic "Brew 7 Hoopa ex / Darkrai ex / Mega Sableye ex Darkness 0–0":
+      - generic: Brew 7
+      - heading "Hoopa ex / Darkrai ex / Mega Sableye ex" [level=2]
+      - generic: Darkness
+      - generic: 0–0
+    - generic "Brew 8 Entei ex · Rainbow Cave + Flame Patch engine Fire 0–0 last season 7–3":
+      - generic: Brew 8
+      - heading "Entei ex · Rainbow Cave + Flame Patch engine" [level=2]
+      - generic: Fire
+      - generic: 0–0
+      - generic: last season 7–3
+    - generic "Brew 9 Mega Sableye ex / Galarian Obstagoon Darkness 0–0 last season 1–0":
+      - generic: Brew 9
+      - heading "Mega Sableye ex / Galarian Obstagoon" [level=2]
+      - generic: Darkness
+      - generic: 0–0
+      - generic: last season 1–0
+    - generic "Brew 10 Mega Diancie ex / Giratina ex battery Psychic 0–0":
+      - generic: Brew 10
+      - heading "Mega Diancie ex / Giratina ex battery" [level=2]
+      - generic: Psychic
+      - generic: 0–0
+    - generic "Custom Entei ex (video-visible core) Fire 0–0":
+      - generic: Custom
+      - heading "Entei ex (video-visible core)" [level=2]
+      - generic: Fire
+      - generic: 0–0
+    - generic "Custom Hydreigon / Galarian Obstagoon (video-visible core) Darkness 0–0 last season 4–4":
+      - generic: Custom
+      - heading "Hydreigon / Galarian Obstagoon (video-visible core)" [level=2]
+      - generic: Darkness
+      - generic: 0–0
+      - generic: last season 4–4
+    - generic "Custom Mega Sharpedo ex / Gyarados (video-visible core) Water 0–0 last season 0–1":
+      - generic: Custom
+      - heading "Mega Sharpedo ex / Gyarados (video-visible core)" [level=2]
+      - generic: Water
+      - generic: 0–0
+      - generic: last season 0–1
+    - generic "Custom Skarmory ex / chandelure Metal/pschic 0–0 last season 1–0":
+      - generic: Custom
+      - heading "Skarmory ex / chandelure" [level=2]
+      - generic: Metal/pschic
+      - generic: 0–0
+      - generic: last season 1–0
+    - generic "Custom Skarmory ex / Indeedee ex / Genesect (video-visible core) Metal / Psychic 0–0 last season 2–0":
+      - generic: Custom
+      - heading "Skarmory ex / Indeedee ex / Genesect (video-visible core)" [level=2]
+      - generic: Metal / Psychic
+      - generic: 0–0
+      - generic: last season 2–0
+    - 'generic "Custom Type: Null / Silvally (video-visible core) Unverified 0–0 last season 1–0"':
+      - generic: Custom
+      - 'heading "Type: Null / Silvally (video-visible core)" [level=2]'
+      - generic: Unverified
+      - generic: 0–0
+      - generic: last season 1–0
+    - text: Add a deck not listed
+    - textbox "Add a deck not listed":
+      - /placeholder: e.g. Hydreigon / Mega Sableye / Hoopa
+    - text: Energy
+    - textbox "Energy":
+      - /placeholder: Darkness
+    - button "Add deck"
+- status
+- alert
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status
+- status

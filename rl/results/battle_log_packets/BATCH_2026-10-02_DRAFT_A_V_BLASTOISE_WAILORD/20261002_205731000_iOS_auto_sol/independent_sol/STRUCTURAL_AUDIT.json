@@ -1,0 +1,91 @@
+{
+  "checked_submission_manifest_sha256": "220c27a5b6b464dae05afe49c8d764e15063e6499378ce689d99be8d2b12ec03",
+  "checked_submission_files": {
+    "SOURCE.json": "29e9eba892891b7d3885f9460fa691c4079d74898e747fb48dc5fd84556ffbf3",
+    "ASSIGNMENT.json": "dd0afb40c9b284189bf8157fdc184e8654b0646a8bd38e0199c35deb5935109d",
+    "ASSIGNMENT.md": "f4054a97bbae25fc64c9819bb8ee259c8b0529c5e0c1e9b2d99af04302fc6dd3",
+    "REVIEW.md": "492f5aa964f039de7fbc591e42b94e49696893880852375040b8072646b642d9",
+    "COVERAGE.md": "245b7ad79a9c24974cba2f75ec1e99a063cf96df0986bd8c22823d20df3dde34",
+    "SUMMARY.json": "145c785f8eb60eb2e9dd2b11f9af11d6a01b294dc7b2ae3b802f7e751b9699bc",
+    "UNCERTAINTIES.json": "6d9d42cc1e0e4785dae7cbeec83ba4b342f0039386344dc20a1b2abe64b3902a",
+    "PAUSE_GAME.json": "7a6155c187268e56f208ec00b96b3db2843b71f6bdd3fd307691f6ece2c5566f",
+    "DECK_USED.json": "c63bccd87e093d6eb50bc55f18940236da5e42789a0afb5213c647635c4b8a08",
+    "TURN_LEDGER.json": "5dd51a9bfa639cc270b09a7d68abee7b63b28e7b38a90740a6c283b2fec42b3d",
+    "TURN_EVIDENCE.json": "b7184e2476260efb32ba62d868378a57e92b7e9b6b7d6fd7d5854fbbad800ed0",
+    "TURN_TABLE.md": "c9e63333565da945dcd57fa785d457f56b7fe296bb4fed2c0954d9decfbecabe",
+    "METRICS.json": "8f27248822215388c7656becd0fe6b2a0ed2c2cffb2003e61693b663aa3ef764",
+    "EXTRACTION_MANIFEST.json": "c8fda63adf7da149892b89268d6b71e9ba21938499fda951a10f20e8b04cc351",
+    "LOCATOR_PREPROCESSING.json": "720a430bb45e90adeca1c175787515a2b324b6f6883627bbc8b0c2a79ba8ae8c"
+  },
+  "evidence_files_hashed": 354,
+  "native_count": 118,
+  "crop_count": 236,
+  "turn_count": 18,
+  "owner_turn_count": 9,
+  "owner_timing": [
+    {
+      "turn": 2,
+      "selected": "F0029.70",
+      "draw_end": 29.7,
+      "selected_pts": 29.7133,
+      "end_hand_count": 5
+    },
+    {
+      "turn": 4,
+      "selected": "F0056.70",
+      "draw_end": 55.7,
+      "selected_pts": 56.7017,
+      "end_hand_count": 5
+    },
+    {
+      "turn": 6,
+      "selected": "F0097.70",
+      "draw_end": 96.7,
+      "selected_pts": 97.7083,
+      "end_hand_count": 5
+    },
+    {
+      "turn": 8,
+      "selected": "F0131.70",
+      "draw_end": 130.7,
+      "selected_pts": 131.705,
+      "end_hand_count": 3
+    },
+    {
+      "turn": 10,
+      "selected": "F0190.70",
+      "draw_end": 189.7,
+      "selected_pts": 190.71,
+      "end_hand_count": 3
+    },
+    {
+      "turn": 12,
+      "selected": "F0224.70",
+      "draw_end": 223.7,
+      "selected_pts": 224.708,
+      "end_hand_count": 3
+    },
+    {
+      "turn": 14,
+      "selected": "F0270.70",
+      "draw_end": 269.7,
+      "selected_pts": 270.713,
+      "end_hand_count": 4
+    },
+    {
+      "turn": 16,
+      "selected": "F0310.70",
+      "draw_end": 309.7,
+      "selected_pts": 310.703,
+      "end_hand_count": 5
+    },
+    {
+      "turn": 18,
+      "selected": "F0345.70",
+      "draw_end": 344.7,
+      "selected_pts": 345.705,
+      "end_hand_count": 5
+    }
+  ],
+  "errors": []
+}

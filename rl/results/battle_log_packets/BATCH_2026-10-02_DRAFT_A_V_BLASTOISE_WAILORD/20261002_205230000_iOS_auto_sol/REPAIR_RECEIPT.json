@@ -1,0 +1,539 @@
+{
+  "schema": "bounded-independent-repair/v1",
+  "source_video": "20261002_205230000_iOS.MP4",
+  "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+  "reviewer": "/root/astra_drafta_bounded_repairs",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "attribution_basis": "Root confirmed successful spawn arguments: model gpt-6-astra, reasoning_effort high, fork_turns none.",
+  "repaired_utc": "2026-10-03T00:26:27.177478+00:00",
+  "scope": "Only frozen independent R1-R3; no new full visual review; no movie move or external log",
+  "original_submission": {
+    "path": "SUBMISSION.json",
+    "sha256": "bc4c16968e68b5df9e5c3bf04ff1b125dc00645b8a5fb2e189bdf3746c1d78fe",
+    "preserved_copy": "worker_submission/SUBMISSION.json"
+  },
+  "frozen_files_verified_unchanged": {
+    "SUBMISSION.json": "bc4c16968e68b5df9e5c3bf04ff1b125dc00645b8a5fb2e189bdf3746c1d78fe",
+    "independent_sol/CHECK_RESULT.json": "e53f468746efec7b0e689b55838b766067ea4b75c53a77b9a276539c79d78a50",
+    "independent_sol/CHECK_RESULT.md": "77d31f8fe4a8b6220ef30df6f0858c3f267bed5fec874c2458c6bd556e95f1e7",
+    "independent_sol/EXTRACTION_MANIFEST.json": "39e857f0c70047d5c9de1e177cac3879d4a52200ce81f0e7e9e37d2e7cc9e3af"
+  },
+  "preserved_firstpass_files": {
+    "SOURCE.json": "ebb4391c909efb2e2002cc51f82be050b1c51e01512639468cd20c433c67eb75",
+    "ASSIGNMENT.json": "4a8e99e6af275bf62b2304fdf1d5dab09df8f13b93107fc5aeccb395b9d3b864",
+    "REVIEW.md": "485cb2ce8141d1bb9fccd3142ed3c19fe3327ecf46f28d7e30b92f9d9e905842",
+    "COVERAGE.md": "b3af72a50816a22296031d427d026732e2b9360a3f707dcec64e6c6e6ec643ef",
+    "SUMMARY.json": "a96923c644b4abdb81b45a65053ab886e701a6a2de9f875a76bb424c6fc3553e",
+    "UNCERTAINTIES.json": "279fa5fe5c87f83518d352013209e48738f18868c5e83b9e8b9bc5dd5aa894fe",
+    "PAUSE_GAME.json": "d7366ed6a2864a1b31831cfd1b2153cadec39c9537259c06d793d6a665374eb4",
+    "DECK_USED.json": "34a6f739586805662670aba6bd1d4c8372a87af111a12ec547164e08e9a7bb2d",
+    "TURN_LEDGER.json": "6642735dc7b7d001f5ca28d87ea69cabc9299fa6ce068910df94e185be1b7802",
+    "TURN_EVIDENCE.json": "812667642efb1d06b78b025fc460fabe5ce577b8b49908dd8d6b4c243b3f5e85",
+    "TURN_TABLE.md": "a3c94fbf019f879e23bedd482c8b4f514ed93d1dd0d73fc2876b2405aaf6f6d0",
+    "METRICS.json": "464010eb42fe4a62ce76c406da7e56635c5ce3cfb49734a694d29045e0e482e0",
+    "EXTRACTION_MANIFEST.json": "07d227e87adccbd1ec89d3b3f071d03ccc8006faa14ce54ac9fdc037a0d9c64f"
+  },
+  "changed_files": {
+    "REVIEW.md": {
+      "before_sha256": "485cb2ce8141d1bb9fccd3142ed3c19fe3327ecf46f28d7e30b92f9d9e905842",
+      "after_sha256": "94a9b10370d9219e8693848a0f0b547ca73e3360b1e99275aa81cb77857cdab6"
+    },
+    "COVERAGE.md": {
+      "before_sha256": "b3af72a50816a22296031d427d026732e2b9360a3f707dcec64e6c6e6ec643ef",
+      "after_sha256": "e41e5ba190b507e186280902a4d5ab620aea7d9d5b70337145b92ab8f560dc15"
+    },
+    "TURN_LEDGER.json": {
+      "before_sha256": "6642735dc7b7d001f5ca28d87ea69cabc9299fa6ce068910df94e185be1b7802",
+      "after_sha256": "cd57b1b7d0b4db48d494b7eb923d7d9de43a51ed7743daaa8f2bf1dbedbe74ae"
+    },
+    "TURN_EVIDENCE.json": {
+      "before_sha256": "812667642efb1d06b78b025fc460fabe5ce577b8b49908dd8d6b4c243b3f5e85",
+      "after_sha256": "421c3658744f7f6a32859cf87e68a75ecdfcfc57f9e60ba9d25d4eb536e57dc9"
+    },
+    "TURN_TABLE.md": {
+      "before_sha256": "a3c94fbf019f879e23bedd482c8b4f514ed93d1dd0d73fc2876b2405aaf6f6d0",
+      "after_sha256": "eac7a33e609072fea8246eab281d14bd02e96f63702fca0758494ced02301ad7"
+    }
+  },
+  "source_card_text": "During your opponent's next turn, they can't take any Energy from their Energy Zone to attach to their Active Pokémon.",
+  "confirmed_repairs": [
+    {
+      "id": "R1",
+      "finding": "Player-level current-Active attachment restriction, expires at next opponent turn end; terminal T16 freshly applied icon retained.",
+      "evidence_ids": [
+        "F0178.00",
+        "F0222.50",
+        "F0231.50",
+        "F0243.50",
+        "F0254.50"
+      ],
+      "removed_per_pokemon_paths": [
+        "turns/6/board_after/opponent/active/active_effects",
+        "turns/7/board_at_start/opponent/active/active_effects",
+        "turns/8/board_after/opponent/active/active_effects",
+        "turns/9/board_at_start/opponent/active/active_effects",
+        "turns/10/board_after/opponent/active/active_effects",
+        "turns/11/board_at_start/opponent/active/active_effects",
+        "turns/12/board_after/opponent/active/active_effects",
+        "turns/13/board_at_start/opponent/active/active_effects",
+        "turns/14/board_after/opponent/active/active_effects",
+        "turns/15/board_at_start/opponent/active/active_effects",
+        "turns/15/board_after/opponent/bench_in_position_order/1/active_effects",
+        "turns/16/board_at_start/opponent/bench_in_position_order/1/active_effects"
+      ],
+      "added_player_effect_paths": [
+        "turns/6/board_after/opponent/board_effects",
+        "turns/7/board_at_start/opponent/board_effects",
+        "turns/8/board_after/opponent/board_effects",
+        "turns/9/board_at_start/opponent/board_effects",
+        "turns/10/board_after/opponent/board_effects",
+        "turns/11/board_at_start/opponent/board_effects",
+        "turns/12/board_after/opponent/board_effects",
+        "turns/13/board_at_start/opponent/board_effects",
+        "turns/14/board_after/opponent/board_effects",
+        "turns/15/board_at_start/opponent/board_effects",
+        "turns/16/board_after/opponent/board_effects"
+      ]
+    },
+    {
+      "id": "R2",
+      "finding": "Scheduled T6 +1 frame preplay; visible bench onset after96.505 and by97.005; earlier selected hand retained.",
+      "evidence_ids": [
+        "F0096.00",
+        "independent_sol:F0096.50",
+        "independent_sol:F0097.00"
+      ]
+    },
+    {
+      "id": "R3",
+      "finding": "Carvanha directly exposed at152.502; F0152.00 precedes reveal. No identity/count change.",
+      "evidence_ids": [
+        "F0152.00",
+        "independent_sol:F0152.50"
+      ]
+    }
+  ],
+  "independently_inspected_image_ids": [
+    "F0178.00",
+    "F0222.50",
+    "F0231.50",
+    "F0243.50",
+    "F0254.50",
+    "F0096.00",
+    "independent_sol:F0096.50",
+    "independent_sol:F0097.00",
+    "F0152.00",
+    "independent_sol:F0152.50"
+  ],
+  "source_evidence_bindings": [
+    {
+      "evidence_id": "F0096.00",
+      "source_video": "20261002_205230000_iOS.MP4",
+      "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+      "requested_source_seconds": 96.0,
+      "actual_frame_seconds_if_measured": 96.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0096.00.jpg",
+      "full_frame_sha256": "316ba0618f78961cca3065daf01b117b302fd6aedb59119302a293aa770eb73b",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\decode_logs\\t0096.00.txt",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0096.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "764f71e9f3f2998b1432f47ed4cd6a737a13dc2634cb571bda592ecc4063837e",
+        "parent_sha256": "316ba0618f78961cca3065daf01b117b302fd6aedb59119302a293aa770eb73b",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0096.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ],
+        "sha256": "f78ba531887cb322eb09482b5c3fe5b2d53bf670a43fe091ebae40a947cd9ef0",
+        "parent_sha256": "316ba0618f78961cca3065daf01b117b302fd6aedb59119302a293aa770eb73b",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "F0152.00",
+      "source_video": "20261002_205230000_iOS.MP4",
+      "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+      "requested_source_seconds": 152.0,
+      "actual_frame_seconds_if_measured": 152.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0152.00.jpg",
+      "full_frame_sha256": "e52760c02bc61605c1f1c2e906547ecb6c70357b9c3609d71449f860512bdb7b",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\decode_logs\\t0152.00.txt",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0152.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "c2383026c33d6c877662894f7c1b5a0ce91655ecd77bb31a90c1cf00005c2436",
+        "parent_sha256": "e52760c02bc61605c1f1c2e906547ecb6c70357b9c3609d71449f860512bdb7b",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0152.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ],
+        "sha256": "d33f3fca52e8fa14dd6bd892aa0a127a111b88c9607f21e14f9658ffa754103c",
+        "parent_sha256": "e52760c02bc61605c1f1c2e906547ecb6c70357b9c3609d71449f860512bdb7b",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "F0178.00",
+      "source_video": "20261002_205230000_iOS.MP4",
+      "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+      "requested_source_seconds": 178.0,
+      "actual_frame_seconds_if_measured": 178.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0178.00.jpg",
+      "full_frame_sha256": "482079dda9f9f1951b056c339c26e63ca8c09a4a76f1093d529bedbc51fd0583",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\decode_logs\\t0178.00.txt",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0178.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "777a6e8b25c4881f954ce12c6b18500c1eb2351735952be26467078dd84572d2",
+        "parent_sha256": "482079dda9f9f1951b056c339c26e63ca8c09a4a76f1093d529bedbc51fd0583",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0178.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ],
+        "sha256": "c59ec427bf0891388efa7f0daa0e60f81a99d1736e4f1430d40406e1642c8e68",
+        "parent_sha256": "482079dda9f9f1951b056c339c26e63ca8c09a4a76f1093d529bedbc51fd0583",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "F0231.50",
+      "source_video": "20261002_205230000_iOS.MP4",
+      "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+      "requested_source_seconds": 231.5,
+      "actual_frame_seconds_if_measured": 231.508,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0231.50.jpg",
+      "full_frame_sha256": "b8240f12cd61faebb5e662d6e7d4c61ac5017f1a06d7b935b205f5d865522560",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\decode_logs\\t0231.50.txt",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0231.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "6b1ce173f6e4688919f3e384287e971b3f77fb2fdec6f0aa4a212076352a847f",
+        "parent_sha256": "b8240f12cd61faebb5e662d6e7d4c61ac5017f1a06d7b935b205f5d865522560",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0231.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ],
+        "sha256": "ae86e6b7631c2d031574638c75b37f5657fc8847bc4070258f25e5a864a80258",
+        "parent_sha256": "b8240f12cd61faebb5e662d6e7d4c61ac5017f1a06d7b935b205f5d865522560",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "F0243.50",
+      "source_video": "20261002_205230000_iOS.MP4",
+      "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+      "requested_source_seconds": 243.5,
+      "actual_frame_seconds_if_measured": 243.512,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0243.50.jpg",
+      "full_frame_sha256": "c505a2400b2328950e16931f52009fac70587b635631c02deb73b6017d118073",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\decode_logs\\t0243.50.txt",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0243.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "3eb2fc881f3f8af46026f16322bcf542f748a43b879258f6b6ac5d3751323d55",
+        "parent_sha256": "c505a2400b2328950e16931f52009fac70587b635631c02deb73b6017d118073",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0243.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ],
+        "sha256": "301611b40586d61e398d727ddd540d98f3cb748632b46233594310f80788c94b",
+        "parent_sha256": "c505a2400b2328950e16931f52009fac70587b635631c02deb73b6017d118073",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "F0254.50",
+      "source_video": "20261002_205230000_iOS.MP4",
+      "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+      "requested_source_seconds": 254.5,
+      "actual_frame_seconds_if_measured": 254.513,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0254.50.jpg",
+      "full_frame_sha256": "861297c92c92babe33869644b88d8859c75f47b256ffb75474abb073643ba83d",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\decode_logs\\t0254.50.txt",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0254.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "f7bb2e24373a461cf1872c2116ead0bf3af1a1a559dc40f901d53ea97b2b084f",
+        "parent_sha256": "861297c92c92babe33869644b88d8859c75f47b256ffb75474abb073643ba83d",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0254.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ],
+        "sha256": "b0ced2a9d83b049dc73c292a7c36e9526da3800a04b5e64e05c5d3d34b4a99a1",
+        "parent_sha256": "861297c92c92babe33869644b88d8859c75f47b256ffb75474abb073643ba83d",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "F0222.50",
+      "source_video": "20261002_205230000_iOS.MP4",
+      "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+      "requested_source_seconds": 222.5,
+      "actual_frame_seconds_if_measured": 222.505,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0222.50.jpg",
+      "full_frame_sha256": "e8d4e1f0b79e6aed04ae000b4cc7af2f67b42a78960baa70eb91a5bafa4945c1",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\decode_logs\\t0222.50.txt",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0222.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "2428cccd809bb861ba3844621101a75a2d90e94d547d434d76b4d8fe87b7cb15",
+        "parent_sha256": "e8d4e1f0b79e6aed04ae000b4cc7af2f67b42a78960baa70eb91a5bafa4945c1",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0222.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ],
+        "sha256": "e8d2767c98f10cfa85f6431784a2ffadc34bbf1a7c6e4c56e64bb36430511c7b",
+        "parent_sha256": "e8d4e1f0b79e6aed04ae000b4cc7af2f67b42a78960baa70eb91a5bafa4945c1",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "independent_sol:F0096.50",
+      "source_video": "20261002_205230000_iOS.MP4",
+      "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+      "requested_source_seconds": 96.5,
+      "actual_frame_seconds_if_measured": 96.505,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0096.50.jpg",
+      "full_frame_sha256": "a7fc57b13516b00a3eeb87a3b7385f55f291d61fec98a4c14306b346d9a767a9",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\decode_logs\\t0096.50.txt",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0096.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "723ab239ef53fdb917d1fb85f5b7545b58a3a1071feb18b20f5f1f6c3d1fda62",
+        "parent_sha256": "a7fc57b13516b00a3eeb87a3b7385f55f291d61fec98a4c14306b346d9a767a9",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0096.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ],
+        "sha256": "600bd930c7f139d7cb182413352a9a5a81e344498873a08b384e937598f4c48a",
+        "parent_sha256": "a7fc57b13516b00a3eeb87a3b7385f55f291d61fec98a4c14306b346d9a767a9",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "independent_sol:F0152.50",
+      "source_video": "20261002_205230000_iOS.MP4",
+      "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+      "requested_source_seconds": 152.5,
+      "actual_frame_seconds_if_measured": 152.502,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0152.50.jpg",
+      "full_frame_sha256": "5dd7dd17416b852019b6f9792b9e7080a5604b180920f7cf071aa2d4e45e0e6b",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\decode_logs\\t0152.50.txt",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0152.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "d7539f6aca37a155e69042b1a03515ef0757ff5ae89195879e1f8ef425e0a936",
+        "parent_sha256": "5dd7dd17416b852019b6f9792b9e7080a5604b180920f7cf071aa2d4e45e0e6b",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0152.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ],
+        "sha256": "cf551bd8c7e710bf03bc5d59a5b72447301f3f1b46f035dbdbeeffb660fcec6d",
+        "parent_sha256": "5dd7dd17416b852019b6f9792b9e7080a5604b180920f7cf071aa2d4e45e0e6b",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "independent_sol:F0097.00",
+      "source_video": "20261002_205230000_iOS.MP4",
+      "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+      "requested_source_seconds": 97.0,
+      "actual_frame_seconds_if_measured": 97.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0097.00.jpg",
+      "full_frame_sha256": "62734322eadc739e8fbcf441e1dad61998ce756c5a33926d5b34a4ca64edd7ee",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\decode_logs\\t0097.00.txt",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0097.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "55cd831fbfb292c1e7b14565e20bbeffca08d94eff16204cdd86dbcf5c52ed25",
+        "parent_sha256": "62734322eadc739e8fbcf441e1dad61998ce756c5a33926d5b34a4ca64edd7ee",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0097.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ],
+        "sha256": "8454a1305b54385acafabb0df6744f6732ec76ab6b260e1e3aeb1a656d55e198",
+        "parent_sha256": "62734322eadc739e8fbcf441e1dad61998ce756c5a33926d5b34a4ca64edd7ee",
+        "lossless": true
+      }
+    }
+  ],
+  "guards_passed": [
+    "All13 original submitted hashes matched before mutation",
+    "All primary and independent frame/crop hashes verified",
+    "All13 original files plus SUBMISSION preserved byte-for-byte",
+    "Protected source/assignment/submission and both extraction manifests unchanged",
+    "Original independent checks unchanged",
+    "All ledger evidence IDs resolve",
+    "No per-Pokemon Binding Snow copies remain",
+    "Expired T14 restriction absent after T15 and before T16",
+    "Fresh T16 terminal restriction retained with unobserved-future limit"
+  ],
+  "supplement_gaps_not_repaired": {
+    "evolution_stack": "No explicit per-Pokemon evolution-stack field; witnessed evolutions exist in plays but not the new fresh-board supplement.",
+    "seen_card_inventory": "No SEEN_CARD_INVENTORY.json or readable companion in this packet at repair time.",
+    "decision_actor": "Owner rows identify owner (Auto), and SUMMARY has whole-game authorship, but no explicit per-turn actor record with native span/override provenance.",
+    "scope": "Newest evening guide and batch GUIDE_UPDATE_REQUIREMENTS read; broad supplement remains separate from these narrow repairs."
+  },
+  "acceptance": "Requires independent repair recheck and root lead acceptance; this receipt is not self-acceptance."
+}

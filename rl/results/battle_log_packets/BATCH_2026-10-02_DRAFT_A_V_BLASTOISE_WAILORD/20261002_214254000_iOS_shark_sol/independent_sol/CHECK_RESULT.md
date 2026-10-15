@@ -1,0 +1,14 @@
+# Independent Sol check
+
+Decision: rejected pending two bounded factual repairs. Reviewed frozen SUBMISSION SHA256 79549cb7badc7ccc4741caa7648010a9178c011a3c8e8496cd307f8302dc566f. All 19 file hashes match. Reviewer /root/ind_drafta_manual1, gpt-6.1-sol, high, distinct from producer /root/drafta_auto_210952.
+
+Full coverage, Pause capture contract and new guide checks are complete. Inspected all 27 full-span locator grids, all 22 turn rows, all 11 fresh owner native boards, all 33 offset crops, all 11 before-end hand crops, all 11 opponent top fans and selected event native images. The JSON records the 113 distinct images actually inspected. Reused retained source evidence; no rehash or re-decode of the original video and no additional extraction. All 423 retained evidence file hashes match their extraction manifest.
+
+1. T18 Copycat reveals have shifted source references. Actual native center reveals are Misty F0427.40, Poké Ball F0428.40, Cyrus F0429.40, Lapras F0430.40. F0432.40 is failed Poké Ball banner with all four cards in hand. Repair TURN_LEDGER turn18 supporter draw cards, its event-level first-reveal anchor, and SEEN_CARD_INVENTORY JSON cards[6].observations[1] plus MD line17. Guide supplement contains no shifted reveal claim.
+2. T18 action order is Copycat, failed Poké Ball, ordinary fourth Water, Binding Snow. F0420.40 still has held Copycat and three attached Water; F0432.40 establishes rejection and retained Ball; F0433.40 shows later attachment, corroborated by four Water in F0434.40. Repair TURN_LEDGER turn18 plays and supporter linked_play_order, REVIEW line29 and TURN_TABLE line24. Later four-Water board totals are correct.
+
+T4/T8 ending-hand direct ID arrays are empty but selected before-end native IDs F0118.40/F0185.40 and the turn evidence support the counts and membership. No later hand-changing action occurs; this is a nonblocking provenance suggestion, not a missing footage claim.
+
+Other checked claims are supported: five-card opening and slot5 Vulpix Active; all named Research/search events; all 20 distinct owner physical cards without Copycat/Ice Pop double counting; public evolution stacks; current/max HP, typed Energy and Cape; no owner choices during opponent turns; all owner turns manual with Auto OFF; actual T14/T20/T22 unused-option warnings; failed Ball retained; final Cyrus pull of 30HP Blastoise and Binding80 KO. Result display is capped 3-0 Victory, second, 22 turns, 620 damage. Computer classification excludes both human Pause Games and Ladder Log.
+
+Recording limits remain bounded: no concealed opponent identities, no opened discard census or under-card inspection, no complete visual set-number recovery, no recorded difficulty selector, and no claim that approximate event anchors are exact input times. There are no remaining coverage gaps. Replacement acceptance requires the two corrections, a refreshed frozen manifest, and independent comparison of the bounded diff.

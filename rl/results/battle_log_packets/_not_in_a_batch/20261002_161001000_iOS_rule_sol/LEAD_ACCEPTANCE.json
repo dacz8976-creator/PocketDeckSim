@@ -1,0 +1,27 @@
+{
+  "source_video": "20261002_161001000_iOS.MP4",
+  "source_sha256": "6fd7b61e49ad599261696438f83d07da2512c790a33f5a63517dd7e558b77c30",
+  "accepted": true,
+  "coverage_checked": true,
+  "completion_status": "rule_test_review_complete",
+  "ladder_eligible": false,
+  "pause_games_eligible": false,
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "scope": "Entire available 206.873537-second source as one part of the two-recording computer rules test. Recording interruption and hidden/missing battle actions remain explicit; rule-test completion does not assert uninterrupted full-battle footage.",
+  "lead_evidence": [
+    "overview/sheet_01.jpg",
+    "overview/sheet_04.jpg",
+    "evidence/t0193.00.jpg",
+    "evidence/t0206.80.jpg"
+  ],
+  "lead_notes": "Lead read the entire source review, coverage, summary and uncertainty packet and reconciled visible turns1-7, HP, Energy and score. Independently inspected ordinary opening and middle overview sheets01 and04, native193s damage-prevention tooltip and final206.8s board. Compared that board with the continuation first frame: same public turn7 state, hand difference and unknown cut actions/duration retained. This source supplies setup and defender identification; the linked second source supplies the conclusive snipe and computer ending. The owner clarified that Tongue Whip is the filmed example of the snipe class; another Linear Attack trial is not required. Auto off during visible battle UI; blue hexagon is prevention, not Sleep. Entire available source accepted under the explicit rule-test exception, with battle_complete false and both competitive logs excluded.",
+  "astra_reports": [
+    "ASTRA_CAREFREE_CHECK.md"
+  ],
+  "review_group": "BATCH_2026-10-02_CAREFREE_SNIPES",
+  "related_source": "20261002_161342000_iOS.MP4",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_at": "2026-10-02T17:36:35.377595+00:00"
+}

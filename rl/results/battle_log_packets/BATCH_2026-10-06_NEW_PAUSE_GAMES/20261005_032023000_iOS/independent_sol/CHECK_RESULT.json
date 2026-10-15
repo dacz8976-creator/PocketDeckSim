@@ -1,0 +1,89 @@
+{
+  "schema": "bounded-independent-check-v1",
+  "source_video": "20261005_032023000_iOS.MP4",
+  "source_sha256": "6fadd948b5526f22007c2ca2b11516c27801c2fbf2af57c290b214f9327f36a9",
+  "reviewer": "/root/independent_metal",
+  "accepted": false,
+  "status": "requires_surgical_capture_repair",
+  "checked_input_sha256": {
+    "SOURCE.json": "56e9e4d1ca022efac46feaa68cd2dc413f2bdd4c1a14656cbc9617e10857a3bd",
+    "REVIEW.md": "17aadee1cfd5c6788712012b8ac3ddf95e17e0bed8d55e07c1295d8896ce3ec5",
+    "COVERAGE.md": "2429100e9086b4bbc880df23841beba6cd45f56f857e5201c04c807a775181cc",
+    "SUMMARY.json": "13348250fd442dc6a391efc2d31a8f8d185e29bd86c65aed9d8a80b439fa869d",
+    "UNCERTAINTIES.json": "06eff065b4e94546714beb3949c697e529a190db0040f23a2f934f4711473087",
+    "PAUSE_GAME.json": "ecd975053587c84ade625811d540987a8111668884db07040cc4ce218f0f24c2",
+    "DECK_USED.json": "aa8e3305559f32d4da208577120df6568fe2e05ffeec3038c65736541239b384",
+    "TURN_LEDGER.json": "a68a24d6a7897a1f61a219413fd6770fc9b8143e8038025212dda3ea26cb9396",
+    "TURN_EVIDENCE.json": "b1a7de43d42896d5db80f10bb5af3594b32cf3f62c88affbb93deffa50d2521b"
+  },
+  "hash_freeze_basis": "These hashes were calculated before evidence inspection and before any root correction. Original media bytes were not read or rehashed.",
+  "scope": "Bounded independent sampling of retained native evidence, no second full pass, no original media read/hash/extraction",
+  "required_repairs": [
+    {
+      "id": "R1",
+      "severity": "material_capture_reference_and_timing",
+      "turn_number": 12,
+      "source_seconds": [
+        397,
+        397.2,
+        397.5,
+        397.8,
+        398
+      ],
+      "finding": "Selected f0397.50 is already after Research leaves the hand, showing3cards, not the claimed intact4-card preplay hand.397.2 shows Research selected with zoom;397.0 retains all4cards. First move397.8 and card input398 are later than observed selection.",
+      "json_paths": [
+        "TURN_LEDGER.json:/turns/11/hand_at_start",
+        "TURN_LEDGER.json:/turns/11/owner_hand_start",
+        "TURN_LEDGER.json:/turns/11/timing/draw_animation_end_seconds",
+        "TURN_LEDGER.json:/turns/11/timing/first_voluntary_move_seconds",
+        "TURN_LEDGER.json:/turns/11/plays_in_order/0/timestamp_seconds",
+        "TURN_LEDGER.json:/turns/11/plays_in_order/0/input_timestamp_seconds",
+        "TURN_LEDGER.json:/turns/11/plays_in_order/0/evidence_ids",
+        "TURN_LEDGER.json:/turns/11/turn_evidence_ids",
+        "TURN_EVIDENCE.json:/frames/33/role",
+        "TURN_EVIDENCE.json:/frames/33/selected_for_start_hand",
+        "TURN_EVIDENCE.json:/frames/33/before_first_play",
+        "TURN_EVIDENCE.json:/frames/33/suitability_or_limit",
+        "TURN_EVIDENCE.json:/frames/55/draw_animation_end_seconds",
+        "TURN_EVIDENCE.json:/frames/55/offset_after_draw_seconds",
+        "TURN_EVIDENCE.json:/frames/56/draw_animation_end_seconds",
+        "TURN_EVIDENCE.json:/frames/56/offset_after_draw_seconds",
+        "TURN_EVIDENCE.json:/frames/57/draw_animation_end_seconds",
+        "TURN_EVIDENCE.json:/frames/57/offset_after_draw_seconds"
+      ],
+      "required_change": "Register existing native t0397.00.jpg and its native top/bottom crops as f0397.00, use it for owner intact preplay hand references (board references may remain397.5 if labeled correctly). Remove f0397.50 selected-hand role and mark after first selection. Bound draw end to about397.0 and first Research selection to approximately397.2 or explicit397.0-397.2 interval; treat398 as later resolution. Keep existing scheduled398.2/400.2/403.2 candidates with correctly adjusted approximate offsets and unsuitability. Reconcile affected prose/COVERAGE and local self-check receipts. Do not change actual4-card starting identities or3-card ending count.",
+      "supporting_paths": [
+        "turn_evidence/t0397.00.jpg",
+        "turn_evidence/t0397.20.jpg",
+        "turn_evidence/t0397.50.jpg",
+        "turn_evidence/t0397.50_bottom.png",
+        "turn_evidence/t0397.80.jpg",
+        "turn_evidence/t0398.00.jpg"
+      ]
+    }
+  ],
+  "checks_passed": [
+    "Source filename/SHA binding across structured packet and frozen CLI SOURCE.",
+    "13 ledger rows, contiguous turns, complete first-pass timeline0-480.65 documented.",
+    "Native opening5 and going second.",
+    "Ordinary owner first decision, Research/Poke Ball identities/order, starting/ending hand arithmetic.",
+    "Ordinary opponent turn3 evolution/attachment/attack.",
+    "Selected intact T4/T6/T8/T10 hands, sampled scheduled candidate suitability, failedBall.",
+    "T10 tail/head/tail and net hand arithmetic.",
+    "T12 consequential Research order, invalidTinkatonex selection, RareCandy evolution, finalhand arithmetic.",
+    "Both boards, typed Energy, Tools, HP, opponentfan2/3 and limited discards at sampled boundaries.",
+    "TerminalKO/removal/points separated; loss0-3,13turns,180damage.",
+    "FilmedQR20 and prepareddeck IDfilmed-qr-0fdb333134c7 exact entity/count match; missing initiallivevariant explicit."
+  ],
+  "limits": [
+    "Whole-source coverage relies on the complete first-pass account and coverage checklist; these bounded samples do not assert independently viewed full coverage.",
+    "No complete discard pile opening is established by the first pass; inspected views show top previews only.",
+    "Exact queue and hidden opponent card names remain source limits.",
+    "Initial frozen live deck lists lack this new variant; no live deck save/reload is claimed."
+  ],
+  "whole_source_second_pass_performed": false,
+  "external_actions_performed": false,
+  "source_moves_performed": false,
+  "lead_acceptance_authority": "root only",
+  "recheck_needed": "Bounded reread of correctedT12 refs/timing and native397.0 crops; no new fullpass required."
+}

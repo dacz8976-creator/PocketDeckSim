@@ -1,0 +1,24 @@
+{
+  "checked_at_utc": "2026-10-13T04:34:07.942427+00:00",
+  "source_video": "20261013_030351000_iOS.MP4",
+  "source_sha256": "d0a221cd236c620f467bbf34ad8078fd59c72323a7dca71a4af344f0489c6c7f",
+  "native_frame_sha256": "d1b577cd65dd4dc1f48c2a208f2f578b76461c9403db1e818fa481ad4e73149f",
+  "payload": "C5iWnpiWnpiYYJiYYJiapJiXrJiWqJiWqJiaXpibYpictgkACoIAQMQAQMQAPp4APp4AUSIAUSIAUSwAUSwCBgg=",
+  "decoded_byte_exactly": true,
+  "semantic_slots": 20,
+  "energy": [
+    {
+      "value": 6,
+      "name": "Fighting",
+      "selectable": true
+    },
+    {
+      "value": 8,
+      "name": "Metal",
+      "selectable": true
+    }
+  ],
+  "initial_catalog_decks": 26,
+  "absent_in_initial_catalog": true,
+  "semantic_mapping_provenance": "QR_DECODE retained entity mapping; independently verified native QR byte equality, ids/slot/count arithmetic. Exact printing/artwork/rarity unverified."
+}

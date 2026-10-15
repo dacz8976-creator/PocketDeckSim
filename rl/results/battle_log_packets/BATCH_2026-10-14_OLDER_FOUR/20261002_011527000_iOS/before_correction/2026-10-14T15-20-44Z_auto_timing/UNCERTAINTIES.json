@@ -1,0 +1,67 @@
+{
+  "source_sha256": "7cbaa7c16071389d66d14ad9fcbf55f5991b2f7703f14d85eb0af4a68ef9d778",
+  "blocking_uncertainties": [],
+  "items": [
+    {
+      "id": "control_attribution",
+      "type": "authorship_limit",
+      "seconds_interval": [
+        318,
+        338
+      ],
+      "finding": "Auto OFF318, ON321 through337, OFF338. Exact action queue attribution across toggles is unknown.",
+      "consequence": "Classify as computer with mixed owner-side control; do not call a pure manual or pure Auto run.",
+      "evidence": [
+        "native/t0318.00.jpg",
+        "native/t0321.00.jpg",
+        "native/t0334.00.jpg",
+        "native/t0337.00.jpg",
+        "native/t0338.00.jpg"
+      ]
+    },
+    {
+      "id": "skip_intent",
+      "type": "intent_unknown",
+      "seconds_interval": [
+        239,
+        242
+      ],
+      "finding": "Ready Garchomp versus Combusken80 ends T8 without attack at two owner points.",
+      "consequence": "Observe the skip and available lethal alternative; do not infer deliberate test intent or Auto authorship.",
+      "evidence": [
+        "native/t0240.00.jpg",
+        "native/t0242.00.jpg"
+      ]
+    },
+    {
+      "id": "hidden_cards",
+      "type": "hidden_information",
+      "seconds_interval": [
+        0,
+        404.598333
+      ],
+      "finding": "Exact lists, unseen opponent draws/search results and printing numbers are not established. The preset name does not prove Typhlosion ex was drawn or played.",
+      "consequence": "No full-deck reconstruction or hidden-card assumption.",
+      "evidence": [
+        "native/t0401.60.jpg"
+      ]
+    },
+    {
+      "id": "date_basis",
+      "type": "metadata_provenance",
+      "seconds_interval": [
+        0,
+        404.598333
+      ],
+      "finding": "Chicago October1 match date derives from source creation timestamp, not separately verified server time.",
+      "consequence": "Keep creation-derived date label.",
+      "evidence": [
+        "SOURCE.json",
+        "reused_intake/t0000.00.jpg"
+      ]
+    }
+  ],
+  "material_source_gaps": [],
+  "coverage_incomplete": false,
+  "battle_completion_uncertain": false
+}

@@ -1,0 +1,43 @@
+{
+  "section": "d12",
+  "deck_name": "Ariados / Whimsicott / Ogerpon",
+  "energy": "Grass",
+  "opponent": "V1PER",
+  "opponent_deck": "Indeedee ex / Bulbasaur / Ivysaur / Mega Venusaur ex",
+  "result": "win",
+  "primary_note_prefix": "second | Whimsicott ex first attack T2 | opponent points BEFORE: 0",
+  "note_prefix": "2nd | Whimsicott ex T2 | opp 0 pts",
+  "note": "2nd | Whimsicott ex T2 | opp 0 pts | vs V1PER | recorded 2026-10-14 10:39:08 CDT | 20261014_153908000_iOS.MP4 | Victory3-0 at04:17.37; Grass Knot170 KO Mega Venusaur ex at04:00.",
+  "scope": "Whole one-game ranked ladder source; all8turns and terminal victory; independent source checks and root acceptance",
+  "registration_notes": "Independent source checker and root accepted. Deck12 victory3-0 versus V1PER; second; Whimsicott ex first Grass Knot ownT2/global4 with opponent0 before. Supporting CottoneeT1 stays separate. Note prefix shortened without changing facts. External save/readback is separate.",
+  "observations": [
+    {
+      "path": "evidence/t0003.00.jpg",
+      "finding": "Ranked Match and Deck12 selected.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "evidence/t0136.00.jpg",
+      "finding": "Whimsicott ex Grass Knot130 selected before first main attack; opponent V1PER has0points.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "evidence/t0138.00.jpg",
+      "finding": "Named Whimsicott ex Grass Knot attack animation.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "evidence/t0257.37.jpg",
+      "finding": "Victory versus V1PER; went second;8turns;owner3/opponent0;490damage.",
+      "directly_viewed_by_root": true
+    }
+  ],
+  "source_filename": "20261014_153908000_iOS.MP4",
+  "source_sha256": "570b6dea5b9132ada3934fb7c9947bfc261825f0e4e83b0c8c5009028fd4a7b3",
+  "checked_utc": "2026-10-14T17:03:02.269819+00:00",
+  "lead": "/root",
+  "battle_complete": true,
+  "root_read_full_timeline_and_coverage": true,
+  "auto_option_seen": false,
+  "clarifications": []
+}

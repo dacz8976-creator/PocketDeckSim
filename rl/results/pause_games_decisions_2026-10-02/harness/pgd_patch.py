@@ -43,6 +43,7 @@ pub fn pg_label(a: &Action) -> String {
         SimpleAction::Promote { player, in_play_idx } => format!("Promote:{}@{}", player, in_play_idx),
         SimpleAction::ChooseMistyTarget { in_play_idx } => format!("MistyTarget@{}", in_play_idx),
         SimpleAction::ChooseRetreatEnergy { to_in_play_idx, .. } => format!("RetreatPay:{}", to_in_play_idx),
+        SimpleAction::AttachTypedFromDiscard { in_play_idx, energy_type, .. } => format!("AttachTypedFromDiscard:{:?}@{}", energy_type, in_play_idx),
         SimpleAction::EndTurn => "EndTurn".to_string(),
         other => format!("{:?}", other).split(|c: char| c == ' ' || c == '{' || c == '(').next().unwrap_or("?").to_string(),
     }

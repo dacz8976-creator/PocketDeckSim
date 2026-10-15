@@ -1,0 +1,87 @@
+{
+  "schema": "retrospective-history-verification-v1",
+  "checked_utc": "2026-10-02T23:33:41.040247+00:00",
+  "movie_content_reads": 0,
+  "pre_season_selected_results_checked": 8,
+  "historical_ladder_total": {
+    "games": 7,
+    "wins": 3,
+    "losses": 4
+  },
+  "computer_history_total": {
+    "games": 1,
+    "wins": 1,
+    "losses": 0
+  },
+  "classification_rule": "Any visible Auto option, including off, means computer; outcomes are retained outside ladder.",
+  "files": [
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\LADDER_HISTORY_PRE_2026-09-15.before_computer_reclassification.md",
+      "sha256": "dede384189f9b0f74a0c3baf77d11405dfec679e10363eabdb51f4011cc0008f"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\LADDER_HISTORY_PRE_2026-09-15.md",
+      "sha256": "fbe7443b77b7386692550cbb2d04a4a296f4b4c5b171ec592138b2bafb611e11"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\COMPUTER_BATTLE_HISTORY.md",
+      "sha256": "3ec1891415830e090f2c151250c18ec9b9e1c67235d56e1f1204121fc97ba443"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\HISTORY_OPPONENT_CORRECTION.json",
+      "sha256": "6fb27256ebe697ae2154ba95655d04504ae07b1bd938769a998f114c2a91c1bb"
+    }
+  ],
+  "selected_results": [
+    {
+      "source": "20260907_232617000_iOS.MP4",
+      "destination": "ladder",
+      "result_preserved": true,
+      "classification_receipt": null
+    },
+    {
+      "source": "20260908_012720000_iOS.MP4",
+      "destination": "computer",
+      "result_preserved": true,
+      "classification_receipt": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\CLASSIFICATION_RECEIPT.json"
+    },
+    {
+      "source": "20260908_021327000_iOS.MP4",
+      "destination": "ladder",
+      "result_preserved": true,
+      "classification_receipt": null
+    },
+    {
+      "source": "20260908_022627000_iOS.MP4",
+      "destination": "ladder",
+      "result_preserved": true,
+      "classification_receipt": null
+    },
+    {
+      "source": "20260908_190031000_iOS.MP4",
+      "destination": "ladder",
+      "result_preserved": true,
+      "classification_receipt": null
+    },
+    {
+      "source": "20260908_190933000_iOS.MP4",
+      "destination": "ladder",
+      "result_preserved": true,
+      "classification_receipt": null
+    },
+    {
+      "source": "20260909_023151000_iOS.MP4",
+      "destination": "ladder",
+      "result_preserved": true,
+      "classification_receipt": null
+    },
+    {
+      "source": "20260909_032418000_iOS.MP4",
+      "destination": "ladder",
+      "result_preserved": true,
+      "classification_receipt": null
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

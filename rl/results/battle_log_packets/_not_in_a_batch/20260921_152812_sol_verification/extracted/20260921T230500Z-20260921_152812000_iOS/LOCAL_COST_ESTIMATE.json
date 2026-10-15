@@ -1,0 +1,18 @@
+{
+  "method": "local_conservative_estimate",
+  "sampled_frames": 1525,
+  "video_tokens_per_frame": 280,
+  "estimated_visual_tokens": 427000,
+  "estimated_audio_tokens": 7621,
+  "approximate_prompt_tokens": 1763,
+  "margin_multiplier": 1.1,
+  "estimated_input_tokens_with_margin": 480023,
+  "max_output_tokens": 16000,
+  "input_price_usd_per_million": 0.75,
+  "output_price_usd_per_million": 3.75,
+  "estimated_input_cost_usd": 0.360017,
+  "maximum_output_cost_usd": 0.06,
+  "conservative_total_usd": 0.420017,
+  "pricing_valid_through": "2026-12-31",
+  "warning": "This is not a hard provider billing cap. It is a conservative local check before one request. Actual usage is recorded after completion."
+}

@@ -1,0 +1,193 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261012_010706000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261012_010706000_iOS.MP4",
+      "sha256": "6d6143c99e23bffe7a6feb7f01c20a112c060e13b9b9d4ebd0a25e597ca62fd0",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": null,
+  "exact_list_status": "live_log_list_missing",
+  "game_version_binding_basis": "QR at 0 s closes directly into New deck 16 in the Event queue at 2 s. No intervening deck edit is shown; all filmed owner cards agree with the semantic QR list.",
+  "conflicts_with_filmed_cards": [],
+  "filmed_deck_snapshot": {
+    "status": "verified_filmed_QR",
+    "card_slot_count": 20,
+    "cards_in_qr_order": [
+      {
+        "name": "Poké Ball",
+        "semantic_entity_id": 30
+      },
+      {
+        "name": "Poké Ball",
+        "semantic_entity_id": 30
+      },
+      {
+        "name": "Rare Candy",
+        "semantic_entity_id": 480
+      },
+      {
+        "name": "Lucky Ice Pop",
+        "semantic_entity_id": 1060
+      },
+      {
+        "name": "Lucky Ice Pop",
+        "semantic_entity_id": 1060
+      },
+      {
+        "name": "Heavy Helmet",
+        "semantic_entity_id": 930
+      },
+      {
+        "name": "Professor’s Research",
+        "semantic_entity_id": 40
+      },
+      {
+        "name": "Professor’s Research",
+        "semantic_entity_id": 40
+      },
+      {
+        "name": "Ilima",
+        "semantic_entity_id": 530
+      },
+      {
+        "name": "Copycat",
+        "semantic_entity_id": 990
+      },
+      {
+        "name": "Mesagoza",
+        "semantic_entity_id": 1220
+      },
+      {
+        "name": "Alolan Grimer",
+        "semantic_entity_id": 6910
+      },
+      {
+        "name": "Alolan Muk",
+        "semantic_entity_id": 14630
+      },
+      {
+        "name": "Glimmet",
+        "semantic_entity_id": 18590
+      },
+      {
+        "name": "Glimmet",
+        "semantic_entity_id": 18590
+      },
+      {
+        "name": "Glimmora",
+        "semantic_entity_id": 18600
+      },
+      {
+        "name": "Glimmora",
+        "semantic_entity_id": 18600
+      },
+      {
+        "name": "Pawniard",
+        "semantic_entity_id": 18560
+      },
+      {
+        "name": "Kingambit",
+        "semantic_entity_id": 18580
+      },
+      {
+        "name": "Regigigas",
+        "semantic_entity_id": 17990
+      }
+    ],
+    "counts_by_semantic_name": [
+      {
+        "name": "Poké Ball",
+        "count": 2,
+        "semantic_entity_id": 30
+      },
+      {
+        "name": "Rare Candy",
+        "count": 1,
+        "semantic_entity_id": 480
+      },
+      {
+        "name": "Lucky Ice Pop",
+        "count": 2,
+        "semantic_entity_id": 1060
+      },
+      {
+        "name": "Heavy Helmet",
+        "count": 1,
+        "semantic_entity_id": 930
+      },
+      {
+        "name": "Professor’s Research",
+        "count": 2,
+        "semantic_entity_id": 40
+      },
+      {
+        "name": "Ilima",
+        "count": 1,
+        "semantic_entity_id": 530
+      },
+      {
+        "name": "Copycat",
+        "count": 1,
+        "semantic_entity_id": 990
+      },
+      {
+        "name": "Mesagoza",
+        "count": 1,
+        "semantic_entity_id": 1220
+      },
+      {
+        "name": "Alolan Grimer",
+        "count": 1,
+        "semantic_entity_id": 6910
+      },
+      {
+        "name": "Alolan Muk",
+        "count": 1,
+        "semantic_entity_id": 14630
+      },
+      {
+        "name": "Glimmet",
+        "count": 2,
+        "semantic_entity_id": 18590
+      },
+      {
+        "name": "Glimmora",
+        "count": 2,
+        "semantic_entity_id": 18600
+      },
+      {
+        "name": "Pawniard",
+        "count": 1,
+        "semantic_entity_id": 18560
+      },
+      {
+        "name": "Kingambit",
+        "count": 1,
+        "semantic_entity_id": 18580
+      },
+      {
+        "name": "Regigigas",
+        "count": 1,
+        "semantic_entity_id": 17990
+      }
+    ],
+    "energy": "Darkness",
+    "provenance": "QR_DECODE.json binds the current filmed code. Semantic names are established; exact printing aliases are not."
+  },
+  "limits": [
+    "Live-log deck not available in the fresh owner log; no verified dated twenty-slot live snapshot.",
+    "QR aliases do not prove exact printed artwork or rarity."
+  ]
+}

@@ -1,0 +1,4032 @@
+{
+  "files": {
+    "REVIEW.md": {
+      "sha256": "57fbb0ec42abb0c996c382a0c3ce9897f6c97bb490f6c56b0036698746d0ed11",
+      "bytes": 11225,
+      "em_dash_count": 0
+    },
+    "COVERAGE.md": {
+      "sha256": "404e1f8eb0086104b0a77ce511e1249c37a46d8ae82277dc5ca701420bfdd5b1",
+      "bytes": 1000,
+      "em_dash_count": 0
+    },
+    "SUMMARY.json": {
+      "sha256": "283c187b4373fe9d857d05dad636ec06684714f0449621b91ff8232bf1ac1a3e",
+      "bytes": 1995,
+      "em_dash_count": 0
+    },
+    "UNCERTAINTIES.json": {
+      "sha256": "9be1a7eccf89ff29a50242d9642cab3ecad9a7e27fd383219836e4ba7e5e1cfa",
+      "bytes": 1975,
+      "em_dash_count": 0
+    },
+    "PAUSE_GAME.json": {
+      "sha256": "87cb3a348e3e4cfc7b1b704c062c3f7574ab87ee3c828c099e4ae58d108db15c",
+      "bytes": 3862,
+      "em_dash_count": 0
+    },
+    "DECK_USED.json": {
+      "sha256": "f984c637077832294f01d2fc46a1871b26d4dae7850649b9980fa94fe3bc48d0",
+      "bytes": 4807,
+      "em_dash_count": 0
+    },
+    "TURN_LEDGER.json": {
+      "sha256": "1acd9df6973e953edecf0eadd354af2e63c3c3e11c7309dba827348d1937e2c8",
+      "bytes": 489106,
+      "em_dash_count": 0
+    },
+    "TURN_EVIDENCE.json": {
+      "sha256": "14ea1e0a6774fc8ddac1348e3ab3b9ee50f51fe6125f9f5c61fc3c5c13e66e89",
+      "bytes": 222057,
+      "em_dash_count": 0
+    }
+  },
+  "diagnostics": [],
+  "ledger_top_keys": [
+    "is_template",
+    "schema",
+    "game_id",
+    "sources",
+    "turns",
+    "limits",
+    "basis"
+  ],
+  "turns": [
+    {
+      "turn": 1,
+      "player": "owner",
+      "timing": {
+        "start_seconds": 41,
+        "draw_animation_end_seconds": 44,
+        "draw_end_basis": "Native reveal sequence, approximately within 0.5 s",
+        "first_voluntary_move_seconds": 45,
+        "before_end_action_seconds": 63,
+        "end_after_resolution_seconds": 66
+      },
+      "hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F44_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Kingambit",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F44_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F44_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F44_50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Visible fan and named draw, duplicates preserved",
+        "evidence_ids": [
+          "F44_50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Professor's Research",
+              "reveal_position": 1,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 44,
+              "evidence_ids": [
+                "F44_00"
+              ],
+              "basis": "Filmed individual reveal or later completed same draw sequence",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 44,
+          "evidence_ids": [
+            "F44_00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Alolan Grimer",
+              "reveal_position": 1,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 48,
+              "evidence_ids": [
+                "F48_00"
+              ],
+              "basis": "Named reveal and immediate play within the same Research draw sequence",
+              "limit_reason": null
+            },
+            {
+              "name": "Poké Ball",
+              "reveal_position": 2,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 51.8,
+              "evidence_ids": [
+                "F51_80"
+              ],
+              "basis": "Named reveal and immediate play within the same Research draw sequence",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 48,
+          "evidence_ids": [
+            "F48_00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Regigigas",
+              "reveal_position": 1,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 53.8,
+              "evidence_ids": [
+                "F53_80"
+              ],
+              "basis": "Filmed individual reveal or later completed same draw sequence",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 53.8,
+          "evidence_ids": [
+            "F55_00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Professor's Research",
+          "target": null,
+          "energy": null,
+          "result": "Draw Alolan Grimer then Poké Ball; the second card is immediately played and is never held in a lasting fanned hand.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 45,
+          "evidence_ids": [
+            "F45_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": null,
+          "energy": null,
+          "result": "Search reveals Regigigas at 53.8-55 s.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 51.8,
+          "evidence_ids": [
+            "F51_80"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Alolan Grimer",
+          "target": "Bench right",
+          "energy": null,
+          "result": "Bench at 70 HP.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 57,
+          "evidence_ids": [
+            "F57_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Regigigas",
+          "target": "Bench middle",
+          "energy": null,
+          "result": "Bench at 150 HP; Seal of Antiquity cannot function without its named Regis.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 61,
+          "evidence_ids": [
+            "F61_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "attack_attempt",
+          "card_name": null,
+          "target": "Glimmet",
+          "energy": null,
+          "result": "Visible Cannot attack / Can't attack banner; no attack or damage.",
+          "prompt_text": "Can't attack",
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 64,
+          "evidence_ids": [
+            "F64_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 6,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "End turn with three cards; no Energy on first turn.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 65,
+          "evidence_ids": [
+            "F65_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F63_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Kingambit",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F63_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F63_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Directly counted visible pre-end hand; attack does not consume hand cards",
+        "evidence_ids": [
+          "F63_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 2,
+      "player": "opponent",
+      "timing": {
+        "start_seconds": 66,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "Opponent draw hidden",
+        "first_voluntary_move_seconds": 90,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 124
+      },
+      "hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Hidden opponent hand backs",
+        "evidence_ids": [
+          "F68_00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Identities hidden; only revealed plays transcribed."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "limit_reason": "Opponent card back only"
+            }
+          ],
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 66,
+          "evidence_ids": [
+            "F68_00"
+          ],
+          "limit_reason": "Hidden identity"
+        },
+        {
+          "kind": "supporter_draw",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "limit_reason": "Hidden opponent reveal"
+            },
+            {
+              "name": null,
+              "limit_reason": "Hidden opponent reveal"
+            }
+          ],
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 90,
+          "evidence_ids": [
+            "F90_00"
+          ],
+          "limit_reason": "Searched/drawn identity not exposed."
+        },
+        {
+          "kind": "search",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "limit_reason": "Hidden opponent reveal"
+            }
+          ],
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 100,
+          "evidence_ids": [
+            "F100_00"
+          ],
+          "limit_reason": "Searched/drawn identity not exposed."
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Professor's Research",
+          "target": null,
+          "energy": null,
+          "result": "Opponent Research is visibly played, with two hidden draws.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 90,
+          "evidence_ids": [
+            "F90_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Ralts",
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Ralts",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach 1 Psychic.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 94,
+          "evidence_ids": [
+            "F94_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": null,
+          "energy": null,
+          "result": "Hidden Basic search.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 100,
+          "evidence_ids": [
+            "F100_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Mega Diancie ex",
+          "target": "Bench left",
+          "energy": null,
+          "result": "Bench 170 HP.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 115,
+          "evidence_ids": [
+            "F116_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "No attack shown.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 123,
+          "evidence_ids": [
+            "F124_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "status": "not_applicable",
+        "evidence_ids": [],
+        "limit_reason": "Opponent turn"
+      }
+    },
+    {
+      "turn": 3,
+      "player": "owner",
+      "timing": {
+        "start_seconds": 124,
+        "draw_animation_end_seconds": 128,
+        "draw_end_basis": "Native reveal sequence, approximately within 0.5 s",
+        "first_voluntary_move_seconds": 128.6,
+        "before_end_action_seconds": 147,
+        "end_after_resolution_seconds": 163
+      },
+      "hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F128_40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Kingambit",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F128_40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F128_40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Glimmora",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F128_40"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Visible fan and named draw, duplicates preserved",
+        "evidence_ids": [
+          "F128_40"
+        ],
+        "status": "complete_with_recording_limits",
+        "limit_reason": "Card zoom or immediate play prevents an unzoomed complete post-draw fan; identities/count reconcile from prior hand and filmed reveal."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Glimmora",
+              "reveal_position": 1,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 128,
+              "evidence_ids": [
+                "F128_00"
+              ],
+              "basis": "Filmed individual reveal or later completed same draw sequence",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 128,
+          "evidence_ids": [
+            "F128_00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Alolan Muk",
+              "reveal_position": 1,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 137,
+              "evidence_ids": [
+                "F137_00"
+              ],
+              "basis": "Filmed individual reveal or later completed same draw sequence",
+              "limit_reason": null
+            },
+            {
+              "name": "Glimmora",
+              "reveal_position": 2,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 139,
+              "evidence_ids": [
+                "F139_00"
+              ],
+              "basis": "Filmed individual reveal or later completed same draw sequence",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 136,
+          "evidence_ids": [
+            "F136_00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Glimmora",
+          "target": "Active Glimmet",
+          "energy": null,
+          "result": "Evolve to 90 HP.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 128.6,
+          "evidence_ids": [
+            "F128_40"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Professor's Research",
+          "target": null,
+          "energy": null,
+          "result": "Draw Alolan Muk then Glimmora.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 132,
+          "evidence_ids": [
+            "F132_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "evolution",
+          "card_name": "Alolan Muk",
+          "target": "Bench Alolan Grimer",
+          "energy": null,
+          "result": "Evolve to 110 HP; Power of Alchemy suppresses Basic abilities on both boards.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 140,
+          "evidence_ids": [
+            "F140_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Active Glimmora",
+          "energy": {
+            "type": "Darkness",
+            "count": 1,
+            "destination": "Active Glimmora",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach 1 Darkness.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 145,
+          "evidence_ids": [
+            "F145_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": "Venomous Hit",
+          "target": "Ralts",
+          "energy": null,
+          "result": "50 damage including Darkness weakness; poison. Ralts 60 -> 10 then poison KO.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 148,
+          "evidence_ids": [
+            "F148_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F147_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Kingambit",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F147_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Glimmora",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F147_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Directly counted visible pre-end hand; attack does not consume hand cards",
+        "evidence_ids": [
+          "F147_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 4,
+      "player": "opponent",
+      "timing": {
+        "start_seconds": 163,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "Opponent draw hidden",
+        "first_voluntary_move_seconds": 169,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 188
+      },
+      "hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Hidden opponent hand backs",
+        "evidence_ids": [
+          "F168_00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Identities hidden; only revealed plays transcribed."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "limit_reason": "Opponent card back only"
+            }
+          ],
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 163,
+          "evidence_ids": [
+            "F168_00"
+          ],
+          "limit_reason": "Hidden identity"
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Mega Diancie ex",
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Mega Diancie ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach 1 Psychic; no attack.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 169,
+          "evidence_ids": [
+            "F168_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "Pass.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 187,
+          "evidence_ids": [
+            "F188_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "status": "not_applicable",
+        "evidence_ids": [],
+        "limit_reason": "Opponent turn"
+      }
+    },
+    {
+      "turn": 5,
+      "player": "owner",
+      "timing": {
+        "start_seconds": 188,
+        "draw_animation_end_seconds": 190,
+        "draw_end_basis": "Native reveal sequence, approximately within 0.5 s",
+        "first_voluntary_move_seconds": 191,
+        "before_end_action_seconds": 196,
+        "end_after_resolution_seconds": 206
+      },
+      "hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F190_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Kingambit",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F190_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Glimmora",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F190_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F190_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Visible fan and named draw, duplicates preserved",
+        "evidence_ids": [
+          "F190_00"
+        ],
+        "status": "complete_with_recording_limits",
+        "limit_reason": "Card zoom or immediate play prevents an unzoomed complete post-draw fan; identities/count reconcile from prior hand and filmed reveal."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Rare Candy",
+              "reveal_position": 1,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 190,
+              "evidence_ids": [
+                "F190_00"
+              ],
+              "basis": "Filmed individual reveal or later completed same draw sequence",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 190,
+          "evidence_ids": [
+            "F190_00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Rare Candy",
+          "target": "Pawniard",
+          "energy": null,
+          "result": "Select Kingambit and evolve directly; 50 HP Pawniard becomes 140 HP Kingambit.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 191,
+          "evidence_ids": [
+            "F191_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Regigigas",
+          "energy": {
+            "type": "Darkness",
+            "count": 1,
+            "destination": "Regigigas",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach 1 Darkness, first.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 196,
+          "evidence_ids": [
+            "F196_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "attack",
+          "card_name": "Venomous Hit",
+          "target": "Mega Diancie ex",
+          "energy": null,
+          "result": "30 damage and poison: 170 -> 140 -> 130.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 200,
+          "evidence_ids": [
+            "F200_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F196_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Glimmora",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F196_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "Directly counted visible pre-end hand; attack does not consume hand cards",
+        "evidence_ids": [
+          "F196_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 6,
+      "player": "opponent",
+      "timing": {
+        "start_seconds": 206,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "Opponent draw hidden",
+        "first_voluntary_move_seconds": 220,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 257
+      },
+      "hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Hidden opponent hand backs",
+        "evidence_ids": [
+          "F208_00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Identities hidden; only revealed plays transcribed."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "limit_reason": "Opponent card back only"
+            }
+          ],
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 206,
+          "evidence_ids": [
+            "F208_00"
+          ],
+          "limit_reason": "Hidden identity"
+        },
+        {
+          "kind": "search",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "limit_reason": "Hidden opponent reveal"
+            }
+          ],
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 220,
+          "evidence_ids": [
+            "F220_00"
+          ],
+          "limit_reason": "Searched/drawn identity not exposed."
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": null,
+          "energy": null,
+          "result": "Opponent hidden Basic search.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 220,
+          "evidence_ids": [
+            "F220_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Indeedee ex",
+          "target": "Bench left",
+          "energy": null,
+          "result": "Bench 130 HP. Ability unavailable while Muk suppresses Basics.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 227,
+          "evidence_ids": [
+            "F228_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Mega Diancie ex",
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Mega Diancie ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Second Psychic.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 230,
+          "evidence_ids": [
+            "F228_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "No attack; poison 130 -> 120 at checkup.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 254,
+          "evidence_ids": [
+            "F252_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "status": "not_applicable",
+        "evidence_ids": [],
+        "limit_reason": "Opponent turn"
+      }
+    },
+    {
+      "turn": 7,
+      "player": "owner",
+      "timing": {
+        "start_seconds": 257,
+        "draw_animation_end_seconds": 260,
+        "draw_end_basis": "Native reveal sequence, approximately within 0.5 s",
+        "first_voluntary_move_seconds": 261,
+        "before_end_action_seconds": 264,
+        "end_after_resolution_seconds": 271
+      },
+      "hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F260_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Glimmora",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F260_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F260_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Visible fan and named draw, duplicates preserved",
+        "evidence_ids": [
+          "F260_00"
+        ],
+        "status": "complete_with_recording_limits",
+        "limit_reason": "Card zoom or immediate play prevents an unzoomed complete post-draw fan; identities/count reconcile from prior hand and filmed reveal."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Ilima",
+              "reveal_position": 1,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 260,
+              "evidence_ids": [
+                "F260_00"
+              ],
+              "basis": "Filmed individual reveal or later completed same draw sequence",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 260,
+          "evidence_ids": [
+            "F260_00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Regigigas",
+          "energy": {
+            "type": "Darkness",
+            "count": 1,
+            "destination": "Regigigas",
+            "retreat_payment_by_type": null
+          },
+          "result": "Second Darkness.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 261,
+          "evidence_ids": [
+            "F261_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "attack",
+          "card_name": "Venomous Hit",
+          "target": "Mega Diancie ex",
+          "energy": null,
+          "result": "30 damage and poison: 120 -> 90 -> 80.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 264,
+          "evidence_ids": [
+            "F264_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F264_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Glimmora",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F264_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F264_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Directly counted visible pre-end hand; attack does not consume hand cards",
+        "evidence_ids": [
+          "F264_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 8,
+      "player": "opponent",
+      "timing": {
+        "start_seconds": 271,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "Opponent draw hidden",
+        "first_voluntary_move_seconds": 277,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 351
+      },
+      "hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Hidden opponent hand backs",
+        "evidence_ids": [
+          "F272_00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Identities hidden; only revealed plays transcribed."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "limit_reason": "Opponent card back only"
+            }
+          ],
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 271,
+          "evidence_ids": [
+            "F272_00"
+          ],
+          "limit_reason": "Hidden identity"
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Mega Diancie ex",
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Mega Diancie ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Third Psychic.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 277,
+          "evidence_ids": [
+            "F276_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Lucky Ice Pop",
+          "target": "Mega Diancie ex",
+          "energy": null,
+          "result": "Heal 20: 80 -> 100; heads returns Pop.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 292,
+          "evidence_ids": [
+            "F292_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Lucky Ice Pop",
+          "target": "Mega Diancie ex",
+          "energy": null,
+          "result": "Heal 20: 100 -> 120; tails discards Pop.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 303,
+          "evidence_ids": [
+            "F304_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Giant Cape",
+          "target": "Mega Diancie ex",
+          "energy": null,
+          "result": "Effective max 170 -> 190 and current 120 -> 140, not healing.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 326,
+          "evidence_ids": [
+            "F326_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": "Brilliant Storm",
+          "target": "Glimmora",
+          "energy": null,
+          "result": "100 damage, knockout.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 334,
+          "evidence_ids": [
+            "F334_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "status": "not_applicable",
+        "evidence_ids": [],
+        "limit_reason": "Opponent turn"
+      }
+    },
+    {
+      "turn": 9,
+      "player": "owner",
+      "timing": {
+        "start_seconds": 351,
+        "draw_animation_end_seconds": 353,
+        "draw_end_basis": "Native reveal sequence, approximately within 0.5 s",
+        "first_voluntary_move_seconds": 354,
+        "before_end_action_seconds": 369,
+        "end_after_resolution_seconds": 376
+      },
+      "hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F353_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Glimmora",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F353_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F353_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Mesagoza",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F353_50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Visible fan and named draw, duplicates preserved",
+        "evidence_ids": [
+          "F353_50"
+        ],
+        "status": "complete_with_recording_limits",
+        "limit_reason": "Card zoom or immediate play prevents an unzoomed complete post-draw fan; identities/count reconcile from prior hand and filmed reveal."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Mesagoza",
+              "reveal_position": 1,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 353,
+              "evidence_ids": [
+                "F353_00"
+              ],
+              "basis": "Filmed individual reveal or later completed same draw sequence",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 353,
+          "evidence_ids": [
+            "F353_00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "stadium_search",
+          "caused_by": "Mesagoza",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 364,
+          "evidence_ids": [
+            "F364_00"
+          ],
+          "limit_reason": "Tails, no card found."
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Mesagoza",
+          "target": null,
+          "energy": null,
+          "result": "Place Stadium.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 354,
+          "evidence_ids": [
+            "F354_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "ability",
+          "card_name": "Mesagoza",
+          "target": null,
+          "energy": null,
+          "result": "Activate Stadium: tails; no search/card found.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 360,
+          "evidence_ids": [
+            "F360_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Regigigas",
+          "energy": {
+            "type": "Darkness",
+            "count": 1,
+            "destination": "Regigigas",
+            "retreat_payment_by_type": null
+          },
+          "result": "Third Darkness.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 367,
+          "evidence_ids": [
+            "F367_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Giga Turbo",
+          "target": "Mega Diancie ex",
+          "energy": null,
+          "result": "100 damage: 130 -> 30; nested attach 1 Colorless from Energy Zone to Alolan Muk. Poison 30 -> 20.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 369,
+          "evidence_ids": [
+            "F369_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F369_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Glimmora",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F369_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F369_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Directly counted visible pre-end hand; attack does not consume hand cards",
+        "evidence_ids": [
+          "F369_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 10,
+      "player": "opponent",
+      "timing": {
+        "start_seconds": 376,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "Opponent draw hidden",
+        "first_voluntary_move_seconds": 392,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 471
+      },
+      "hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Hidden opponent hand backs",
+        "evidence_ids": [
+          "F376_00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Identities hidden; only revealed plays transcribed."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "limit_reason": "Opponent card back only"
+            }
+          ],
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 376,
+          "evidence_ids": [
+            "F376_00"
+          ],
+          "limit_reason": "Hidden identity"
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Mega Diancie ex",
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Mega Diancie ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Fourth Psychic.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 392,
+          "evidence_ids": [
+            "F392_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Peculiar Plaza",
+          "target": null,
+          "energy": null,
+          "result": "Replace Mesagoza; Psychic retreat costs 2 less.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 428,
+          "evidence_ids": [
+            "F428_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Potion",
+          "target": "Mega Diancie ex",
+          "energy": null,
+          "result": "Heal 20: 20 -> 40.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 434,
+          "evidence_ids": [
+            "F434_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Sabrina",
+          "target": "Owner Active",
+          "energy": null,
+          "result": "Owner chooses Alolan Muk to replace Regigigas at 445–447; forced switch no payment.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 439,
+          "evidence_ids": [
+            "F439_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "retreat",
+          "card_name": null,
+          "target": "Mega Diancie ex -> Indeedee ex",
+          "energy": {
+            "type": null,
+            "count": 0,
+            "destination": null,
+            "retreat_payment_by_type": {}
+          },
+          "result": "Retreat without Energy payment under Plaza; poison clears.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 464,
+          "evidence_ids": [
+            "F464_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 6,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "No attack.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 470,
+          "evidence_ids": [
+            "F468_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "status": "not_applicable",
+        "evidence_ids": [],
+        "limit_reason": "Opponent turn"
+      }
+    },
+    {
+      "turn": 11,
+      "player": "owner",
+      "timing": {
+        "start_seconds": 471,
+        "draw_animation_end_seconds": 474,
+        "draw_end_basis": "Native reveal sequence, approximately within 0.5 s",
+        "first_voluntary_move_seconds": 477,
+        "before_end_action_seconds": 484,
+        "end_after_resolution_seconds": 488
+      },
+      "hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F474_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Glimmora",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F474_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F474_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Heavy Helmet",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F474_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Visible fan and named draw, duplicates preserved",
+        "evidence_ids": [
+          "F474_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Heavy Helmet",
+              "reveal_position": 1,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 474,
+              "evidence_ids": [
+                "F474_00"
+              ],
+              "basis": "Filmed individual reveal or later completed same draw sequence",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 474,
+          "evidence_ids": [
+            "F474_00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Heavy Helmet",
+          "target": "Kingambit",
+          "energy": null,
+          "result": "Attach tool on Bench.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 477,
+          "evidence_ids": [
+            "F477_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Kingambit",
+          "energy": {
+            "type": "Darkness",
+            "count": 1,
+            "destination": "Kingambit",
+            "retreat_payment_by_type": null
+          },
+          "result": "First Darkness.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 484,
+          "evidence_ids": [
+            "F484_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "Pass; Muk has only 1 Colorless, cannot attack.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 487,
+          "evidence_ids": [
+            "F488_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F484_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Glimmora",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F484_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F484_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Directly counted visible pre-end hand; attack does not consume hand cards",
+        "evidence_ids": [
+          "F484_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 12,
+      "player": "opponent",
+      "timing": {
+        "start_seconds": 488,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "Opponent draw hidden",
+        "first_voluntary_move_seconds": 516,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 531
+      },
+      "hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Hidden opponent hand backs",
+        "evidence_ids": [
+          "F488_00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Identities hidden; only revealed plays transcribed."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "limit_reason": "Opponent card back only"
+            }
+          ],
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 488,
+          "evidence_ids": [
+            "F488_00"
+          ],
+          "limit_reason": "Hidden identity"
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Ralts",
+          "target": "Bench right",
+          "energy": null,
+          "result": "Bench at 60 HP.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 516,
+          "evidence_ids": [
+            "F516_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Ralts",
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Ralts",
+            "retreat_payment_by_type": null
+          },
+          "result": "First Psychic.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 518,
+          "evidence_ids": [
+            "F516_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "No attack; Basic abilities remain suppressed.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 530,
+          "evidence_ids": [
+            "F531_50"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "status": "not_applicable",
+        "evidence_ids": [],
+        "limit_reason": "Opponent turn"
+      }
+    },
+    {
+      "turn": 13,
+      "player": "owner",
+      "timing": {
+        "start_seconds": 531,
+        "draw_animation_end_seconds": 532,
+        "draw_end_basis": "Native reveal sequence, approximately within 0.5 s",
+        "first_voluntary_move_seconds": 533,
+        "before_end_action_seconds": 538,
+        "end_after_resolution_seconds": 540
+      },
+      "hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F532_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Glimmora",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F532_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F532_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Glimmet",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F532_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Visible fan and named draw, duplicates preserved",
+        "evidence_ids": [
+          "F532_00"
+        ],
+        "status": "complete_with_recording_limits",
+        "limit_reason": "Card zoom or immediate play prevents an unzoomed complete post-draw fan; identities/count reconcile from prior hand and filmed reveal."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Glimmet",
+              "reveal_position": 1,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 532,
+              "evidence_ids": [
+                "F532_00"
+              ],
+              "basis": "Filmed individual reveal or later completed same draw sequence",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 532,
+          "evidence_ids": [
+            "F532_00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Glimmet",
+          "target": "Bench middle",
+          "energy": null,
+          "result": "Bench 60 HP.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 533,
+          "evidence_ids": [
+            "F533_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Alolan Muk",
+          "energy": {
+            "type": "Darkness",
+            "count": 1,
+            "destination": "Alolan Muk",
+            "retreat_payment_by_type": null
+          },
+          "result": "First Darkness, total 2 Energy including Colorless.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 537,
+          "evidence_ids": [
+            "F536_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "Pass; no attack.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 539,
+          "evidence_ids": [
+            "F540_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F538_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Glimmora",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F538_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F538_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Directly counted visible pre-end hand; attack does not consume hand cards",
+        "evidence_ids": [
+          "F538_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 14,
+      "player": "opponent",
+      "timing": {
+        "start_seconds": 540,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "Opponent draw hidden",
+        "first_voluntary_move_seconds": 555,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 558
+      },
+      "hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Hidden opponent hand backs",
+        "evidence_ids": [
+          "F540_00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Identities hidden; only revealed plays transcribed."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "limit_reason": "Opponent card back only"
+            }
+          ],
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 540,
+          "evidence_ids": [
+            "F540_00"
+          ],
+          "limit_reason": "Hidden identity"
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Kirlia",
+          "target": "Ralts",
+          "energy": null,
+          "result": "Evolve 80 HP.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 555,
+          "evidence_ids": [
+            "F556_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Kirlia",
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Kirlia",
+            "retreat_payment_by_type": null
+          },
+          "result": "Second Psychic.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 557,
+          "evidence_ids": [
+            "F557_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "No attack. Owner turn 15 banner appears at 558 s. No opponent Poké Ball is played here; the Ball at 560 s belongs to the owner on turn 15.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 557.5,
+          "evidence_ids": [
+            "F557_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "status": "not_applicable",
+        "evidence_ids": [],
+        "limit_reason": "Opponent turn"
+      }
+    },
+    {
+      "turn": 15,
+      "player": "owner",
+      "timing": {
+        "start_seconds": 558,
+        "draw_animation_end_seconds": 560,
+        "draw_end_basis": "Native reveal sequence, approximately within 0.5 s",
+        "first_voluntary_move_seconds": 561.5,
+        "before_end_action_seconds": 572,
+        "end_after_resolution_seconds": 580
+      },
+      "hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F559_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Glimmora",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F559_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "Observed hand or prior visible hand plus individually revealed new card",
+            "evidence_ids": [
+              "F559_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Poké Ball",
+            "variant": null,
+            "basis": "Named normal draw before immediate play; full fan position is inferred appended slot",
+            "evidence_ids": [
+              "F560_50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Inference from observed prior three-card fan at 559.5 s plus individually revealed Poké Ball at 560.5 s",
+        "evidence_ids": [
+          "F559_50",
+          "F560_50"
+        ],
+        "status": "complete_with_recording_limits",
+        "limit_reason": "Card zoom or immediate play prevents an unzoomed complete post-draw fan; identities/count reconcile from prior hand and filmed reveal."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poké Ball",
+              "reveal_position": 1,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 560.5,
+              "evidence_ids": [
+                "F560_50"
+              ],
+              "basis": "Filmed individual reveal or later completed same draw sequence",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 560.5,
+          "evidence_ids": [
+            "F560_50"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 563,
+          "evidence_ids": [
+            "F563_00"
+          ],
+          "limit_reason": "No Basic found; no card enters hand."
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": null,
+          "energy": null,
+          "result": "No Basic found. The Ball is revealed around 560 s and immediately played. The prior three-card fan plus this named draw establishes four before the play, without a complete unzoomed four-card fan.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 561.5,
+          "evidence_ids": [
+            "F561_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "evolution",
+          "card_name": "Glimmora",
+          "target": "Bench Glimmet",
+          "energy": null,
+          "result": "Evolve 90 HP.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 567,
+          "evidence_ids": [
+            "F567_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Alolan Muk",
+          "energy": {
+            "type": "Darkness",
+            "count": 1,
+            "destination": "Alolan Muk",
+            "retreat_payment_by_type": null
+          },
+          "result": "Second Darkness, total 3 including Colorless.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 571,
+          "evidence_ids": [
+            "F572_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Sludge Bomb",
+          "target": "Indeedee ex",
+          "energy": null,
+          "result": "90 damage including weakness: 130 -> 40.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 574,
+          "evidence_ids": [
+            "F572_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F572_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F572_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "Directly counted visible pre-end hand; attack does not consume hand cards",
+        "evidence_ids": [
+          "F572_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 16,
+      "player": "opponent",
+      "timing": {
+        "start_seconds": 580,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "Opponent draw hidden",
+        "first_voluntary_move_seconds": 588,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 630
+      },
+      "hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Hidden opponent hand backs",
+        "evidence_ids": [
+          "F580_00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Identities hidden; only revealed plays transcribed."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "limit_reason": "Opponent card back only"
+            }
+          ],
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 580,
+          "evidence_ids": [
+            "F580_00"
+          ],
+          "limit_reason": "Hidden identity"
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Mega Gardevoir ex",
+          "target": "Kirlia",
+          "energy": null,
+          "result": "Evolve 210 HP.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 588,
+          "evidence_ids": [
+            "F588_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Mega Diancie ex",
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Mega Diancie ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Fifth Psychic; Mega Gardevoir carries its two inherited Psychic.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 593,
+          "evidence_ids": [
+            "F593_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "retreat",
+          "card_name": null,
+          "target": "Indeedee ex -> Mega Gardevoir ex",
+          "energy": {
+            "type": null,
+            "count": 0,
+            "destination": null,
+            "retreat_payment_by_type": {}
+          },
+          "result": "Plaza reduces retreat to 0; no Energy paid.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 595,
+          "evidence_ids": [
+            "F595_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Fantasia Force",
+          "target": "Alolan Muk",
+          "energy": null,
+          "result": "110 damage, knockout; nested take 3 Psychic from Energy Zone and attach to Indeedee ex at 614–617.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 606,
+          "evidence_ids": [
+            "F604_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "status": "not_applicable",
+        "evidence_ids": [],
+        "limit_reason": "Opponent turn"
+      }
+    },
+    {
+      "turn": 17,
+      "player": "owner",
+      "timing": {
+        "start_seconds": 630,
+        "draw_animation_end_seconds": 632,
+        "draw_end_basis": "Native reveal sequence, approximately within 0.5 s",
+        "first_voluntary_move_seconds": 633,
+        "before_end_action_seconds": 636,
+        "end_after_resolution_seconds": 645
+      },
+      "hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F632_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F632_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F632_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Visible fan and named draw, duplicates preserved",
+        "evidence_ids": [
+          "F632_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Lucky Ice Pop",
+              "reveal_position": 1,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 632,
+              "evidence_ids": [
+                "F632_00"
+              ],
+              "basis": "Filmed individual reveal or later completed same draw sequence",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 632,
+          "evidence_ids": [
+            "F632_00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Glimmora",
+          "energy": {
+            "type": "Darkness",
+            "count": 1,
+            "destination": "Glimmora",
+            "retreat_payment_by_type": null
+          },
+          "result": "First Darkness.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 633,
+          "evidence_ids": [
+            "F633_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "attack",
+          "card_name": "Venomous Hit",
+          "target": "Mega Gardevoir ex",
+          "energy": null,
+          "result": "50 damage including weakness: 210 -> 160; poison -> 150.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 637,
+          "evidence_ids": [
+            "F636_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F636_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F636_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F636_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Directly counted visible pre-end hand; attack does not consume hand cards",
+        "evidence_ids": [
+          "F636_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 18,
+      "player": "opponent",
+      "timing": {
+        "start_seconds": 645,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "Opponent draw hidden",
+        "first_voluntary_move_seconds": 652,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 708
+      },
+      "hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Hidden opponent hand backs",
+        "evidence_ids": [
+          "F644_00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Identities hidden; only revealed plays transcribed."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "limit_reason": "Opponent card back only"
+            }
+          ],
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 645,
+          "evidence_ids": [
+            "F644_00"
+          ],
+          "limit_reason": "Hidden identity"
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "ability",
+          "card_name": "Watch Over",
+          "target": "Mega Gardevoir ex",
+          "energy": null,
+          "result": "Indeedee heals 20: 150 -> 170 after Muk gone.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 652,
+          "evidence_ids": [
+            "F652_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Mega Gardevoir ex",
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Mega Gardevoir ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Third Psychic.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 666,
+          "evidence_ids": [
+            "F666_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "No attack; poison 170 -> 160.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 706,
+          "evidence_ids": [
+            "F706_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "status": "not_applicable",
+        "evidence_ids": [],
+        "limit_reason": "Opponent turn"
+      }
+    },
+    {
+      "turn": 19,
+      "player": "owner",
+      "timing": {
+        "start_seconds": 708,
+        "draw_animation_end_seconds": 710,
+        "draw_end_basis": "Native reveal sequence, approximately within 0.5 s",
+        "first_voluntary_move_seconds": 711,
+        "before_end_action_seconds": 724,
+        "end_after_resolution_seconds": 730
+      },
+      "hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F710_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F710_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F710_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F710_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Visible fan and named draw, duplicates preserved",
+        "evidence_ids": [
+          "F710_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Copycat",
+              "reveal_position": 1,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 710,
+              "evidence_ids": [
+                "F710_00"
+              ],
+              "basis": "Filmed individual reveal or later completed same draw sequence",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 710,
+          "evidence_ids": [
+            "F710_00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Copycat",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Ilima",
+              "reveal_position": 1,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 718,
+              "evidence_ids": [
+                "F718_00"
+              ],
+              "basis": "Individually revealed card in the Copycat draw sequence; final three-card fan verifies identities/order",
+              "limit_reason": null
+            },
+            {
+              "name": "Lucky Ice Pop",
+              "reveal_position": 2,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 719,
+              "evidence_ids": [
+                "F719_00"
+              ],
+              "basis": "Individually revealed card in the Copycat draw sequence; final three-card fan verifies identities/order",
+              "limit_reason": null
+            },
+            {
+              "name": "Lucky Ice Pop",
+              "reveal_position": 3,
+              "source_video": "20261012_010706000_iOS.MP4",
+              "timestamp_seconds": 719.5,
+              "evidence_ids": [
+                "F719_50"
+              ],
+              "basis": "Individually revealed card in the Copycat draw sequence; final three-card fan verifies identities/order",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [
+            "Lucky Ice Pop",
+            "Ilima",
+            "Lucky Ice Pop"
+          ],
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 721,
+          "evidence_ids": [
+            "F721_00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Copycat",
+          "target": null,
+          "energy": null,
+          "result": "Shuffle Lucky Ice Pop/Ilima/Lucky Ice Pop remaining 3; draw 3 matching opponent fan 3. New hand Ilima, Lucky Ice Pop, Lucky Ice Pop at 721.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 711,
+          "evidence_ids": [
+            "F711_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Glimmora",
+          "energy": {
+            "type": "Darkness",
+            "count": 1,
+            "destination": "Glimmora",
+            "retreat_payment_by_type": null
+          },
+          "result": "Second Darkness to the Active Glimmora. Kingambit receives its second Darkness on turn 21.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 723,
+          "evidence_ids": [
+            "F724_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "attack",
+          "card_name": "Venomous Hit",
+          "target": "Mega Gardevoir ex",
+          "energy": null,
+          "result": "50 damage: 160 -> 110; poison -> 100. Lucky Ice Pop viewed 720; not consumed or confirmed no-effect play.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 726,
+          "evidence_ids": [
+            "F724_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F724_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F724_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F724_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Directly counted visible pre-end hand; attack does not consume hand cards",
+        "evidence_ids": [
+          "F724_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 20,
+      "player": "opponent",
+      "timing": {
+        "start_seconds": 730,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "Opponent draw hidden",
+        "first_voluntary_move_seconds": 739,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 796
+      },
+      "hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Hidden opponent hand backs",
+        "evidence_ids": [
+          "F732_00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Identities hidden; only revealed plays transcribed."
+      },
+      "draws": [
+        {
+          "kind": "normal_draw",
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "limit_reason": "Opponent card back only"
+            }
+          ],
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 730,
+          "evidence_ids": [
+            "F732_00"
+          ],
+          "limit_reason": "Hidden identity"
+        }
+      ],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Indeedee ex",
+          "target": "Bench middle",
+          "energy": null,
+          "result": "Second Indeedee, 130 HP.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 739,
+          "evidence_ids": [
+            "F740_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "ability",
+          "card_name": "Watch Over",
+          "target": "Mega Gardevoir ex",
+          "energy": null,
+          "result": "First Indeedee heal 20: 100 -> 120.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 747,
+          "evidence_ids": [
+            "F748_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "ability",
+          "card_name": "Watch Over",
+          "target": "Mega Gardevoir ex",
+          "energy": null,
+          "result": "Second Indeedee heal 20: 120 -> 140.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 752,
+          "evidence_ids": [
+            "F752_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Mega Diancie ex",
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Mega Diancie ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Sixth Psychic.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 766,
+          "evidence_ids": [
+            "F766_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": "Fantasia Force",
+          "target": "Glimmora",
+          "energy": null,
+          "result": "110 damage, knockout; nested attach 3 Psychic from Energy Zone to new Indeedee ex. Shattering Crystal tails gives opponent second point.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 771,
+          "evidence_ids": [
+            "F772_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": null,
+        "count": null,
+        "status": "not_applicable",
+        "evidence_ids": [],
+        "limit_reason": "Opponent turn"
+      }
+    },
+    {
+      "turn": 21,
+      "player": "owner",
+      "timing": {
+        "start_seconds": 796,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "No normal draw on turn 21 because deck is empty",
+        "first_voluntary_move_seconds": 799,
+        "before_end_action_seconds": 802,
+        "end_after_resolution_seconds": 810
+      },
+      "hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F797_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F797_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "Observed visible hand",
+            "evidence_ids": [
+              "F797_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Visible fan and named draw, duplicates preserved",
+        "evidence_ids": [
+          "F797_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draws": [],
+      "plays": [
+        {
+          "order": 1,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Kingambit",
+          "energy": {
+            "type": "Darkness",
+            "count": 1,
+            "destination": "Kingambit",
+            "retreat_payment_by_type": null
+          },
+          "result": "Second Darkness.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 799,
+          "evidence_ids": [
+            "F799_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "attack",
+          "card_name": "Overlord's Blade",
+          "target": "Mega Gardevoir ex",
+          "energy": null,
+          "result": "Knockout from 130 HP; 180 base after three owner KOs, +20 weakness=200 inferred from filmed card text. Award 3 Mega points; score ends 3-2.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": null,
+          "source_video": "20261012_010706000_iOS.MP4",
+          "timestamp_seconds": 801,
+          "evidence_ids": [
+            "F801_00"
+          ],
+          "basis": "Observed play/transition; public attack arithmetic is identified as inference where needed.",
+          "limit_reason": null
+        }
+      ],
+      "end_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Ilima",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F802_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F802_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed visible hand",
+            "evidence_ids": [
+              "F802_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Directly counted visible pre-end hand; attack does not consume hand cards",
+        "evidence_ids": [
+          "F802_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      }
+    }
+  ],
+  "row_count": 21,
+  "missing_frame_paths": [],
+  "frame_count": 384,
+  "source_binding": {
+    "video_basename": "20261012_010706000_iOS.MP4",
+    "sha256": "6d6143c99e23bffe7a6feb7f01c20a112c060e13b9b9d4ebd0a25e597ca62fd0",
+    "bytes": 1531356838,
+    "duration_seconds": 820.845,
+    "streams": [
+      {
+        "codec_name": "hevc",
+        "width": 1170,
+        "height": 2532,
+        "start_time": "0.000000"
+      },
+      {
+        "codec_name": "aac",
+        "start_time": "0.000000"
+      }
+    ],
+    "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261012_010706000_iOS.MP4",
+    "recording_relationships": [],
+    "source_identity_basis": "CLI SHA-256 and stable size/mtime during intake",
+    "identity_verified_event_id": "01e23382-d3b9-49b7-a0f8-b0bb88efbf07",
+    "intake_utc": "2026-10-12T22:25:57.346990+00:00",
+    "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+    "classification": "awaiting_visual_verification",
+    "match_date_from_filename": "20261012",
+    "filename_clock_timezone": null
+  },
+  "deck": {
+    "is_template": false,
+    "schema": "pause-games/turn-capture-v1",
+    "game_id": "20261012_010706000_iOS_game1",
+    "sources": [
+      {
+        "video_basename": "20261012_010706000_iOS.MP4",
+        "sha256": "6d6143c99e23bffe7a6feb7f01c20a112c060e13b9b9d4ebd0a25e597ca62fd0",
+        "source_json": "SOURCE.json"
+      }
+    ],
+    "deck_name_in_log": null,
+    "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+    "captured_at": null,
+    "expected_card_count": 20,
+    "cards_in_log_order": null,
+    "counts_by_name_and_variant": null,
+    "energy_configuration_from_log": null,
+    "actual_card_count": null,
+    "capture_source_text_or_image": null,
+    "exact_list_status": "live_log_list_missing",
+    "game_version_binding_basis": "QR at 0 s closes directly into New deck 16 in the Event queue at 2 s. No intervening deck edit is shown; all filmed owner cards agree with the semantic QR list.",
+    "conflicts_with_filmed_cards": [],
+    "filmed_deck_snapshot": {
+      "status": "verified_filmed_QR",
+      "card_slot_count": 20,
+      "cards_in_qr_order": [
+        {
+          "name": "Poké Ball",
+          "semantic_entity_id": 30
+        },
+        {
+          "name": "Poké Ball",
+          "semantic_entity_id": 30
+        },
+        {
+          "name": "Rare Candy",
+          "semantic_entity_id": 480
+        },
+        {
+          "name": "Lucky Ice Pop",
+          "semantic_entity_id": 1060
+        },
+        {
+          "name": "Lucky Ice Pop",
+          "semantic_entity_id": 1060
+        },
+        {
+          "name": "Heavy Helmet",
+          "semantic_entity_id": 930
+        },
+        {
+          "name": "Professor’s Research",
+          "semantic_entity_id": 40
+        },
+        {
+          "name": "Professor’s Research",
+          "semantic_entity_id": 40
+        },
+        {
+          "name": "Ilima",
+          "semantic_entity_id": 530
+        },
+        {
+          "name": "Copycat",
+          "semantic_entity_id": 990
+        },
+        {
+          "name": "Mesagoza",
+          "semantic_entity_id": 1220
+        },
+        {
+          "name": "Alolan Grimer",
+          "semantic_entity_id": 6910
+        },
+        {
+          "name": "Alolan Muk",
+          "semantic_entity_id": 14630
+        },
+        {
+          "name": "Glimmet",
+          "semantic_entity_id": 18590
+        },
+        {
+          "name": "Glimmet",
+          "semantic_entity_id": 18590
+        },
+        {
+          "name": "Glimmora",
+          "semantic_entity_id": 18600
+        },
+        {
+          "name": "Glimmora",
+          "semantic_entity_id": 18600
+        },
+        {
+          "name": "Pawniard",
+          "semantic_entity_id": 18560
+        },
+        {
+          "name": "Kingambit",
+          "semantic_entity_id": 18580
+        },
+        {
+          "name": "Regigigas",
+          "semantic_entity_id": 17990
+        }
+      ],
+      "counts_by_semantic_name": [
+        {
+          "name": "Poké Ball",
+          "count": 2,
+          "semantic_entity_id": 30
+        },
+        {
+          "name": "Rare Candy",
+          "count": 1,
+          "semantic_entity_id": 480
+        },
+        {
+          "name": "Lucky Ice Pop",
+          "count": 2,
+          "semantic_entity_id": 1060
+        },
+        {
+          "name": "Heavy Helmet",
+          "count": 1,
+          "semantic_entity_id": 930
+        },
+        {
+          "name": "Professor’s Research",
+          "count": 2,
+          "semantic_entity_id": 40
+        },
+        {
+          "name": "Ilima",
+          "count": 1,
+          "semantic_entity_id": 530
+        },
+        {
+          "name": "Copycat",
+          "count": 1,
+          "semantic_entity_id": 990
+        },
+        {
+          "name": "Mesagoza",
+          "count": 1,
+          "semantic_entity_id": 1220
+        },
+        {
+          "name": "Alolan Grimer",
+          "count": 1,
+          "semantic_entity_id": 6910
+        },
+        {
+          "name": "Alolan Muk",
+          "count": 1,
+          "semantic_entity_id": 14630
+        },
+        {
+          "name": "Glimmet",
+          "count": 2,
+          "semantic_entity_id": 18590
+        },
+        {
+          "name": "Glimmora",
+          "count": 2,
+          "semantic_entity_id": 18600
+        },
+        {
+          "name": "Pawniard",
+          "count": 1,
+          "semantic_entity_id": 18560
+        },
+        {
+          "name": "Kingambit",
+          "count": 1,
+          "semantic_entity_id": 18580
+        },
+        {
+          "name": "Regigigas",
+          "count": 1,
+          "semantic_entity_id": 17990
+        }
+      ],
+      "energy": "Darkness",
+      "provenance": "QR_DECODE.json binds the current filmed code. Semantic names are established; exact printing aliases are not."
+    },
+    "limits": [
+      "Live-log deck not available in the fresh owner log; no verified dated twenty-slot live snapshot.",
+      "QR aliases do not prove exact printed artwork or rarity."
+    ]
+  },
+  "summary": {
+    "video_basename": "20261012_010706000_iOS.MP4",
+    "source_sha256": "6d6143c99e23bffe7a6feb7f01c20a112c060e13b9b9d4ebd0a25e597ca62fd0",
+    "game_id": "20261012_010706000_iOS_game1",
+    "source_game_count": 1,
+    "reviewer": "/root/long_010706",
+    "model": "Sol",
+    "review_date": "2026-10-12",
+    "whole_source_reviewed": true,
+    "reviewed_interval_seconds": [
+      0,
+      820.845
+    ],
+    "turn_count": 21,
+    "classification": "human_event",
+    "auto_visible": false,
+    "queue": "Deluxe Pack: Mega Emblem Event",
+    "owner": "Dacz8976",
+    "opponent": "たまご",
+    "match_date_local": "2026-10-11",
+    "deck_core": [
+      "Glimmora",
+      "Alolan Muk",
+      "Kingambit",
+      "Regigigas"
+    ],
+    "opponent_core": [
+      "Mega Gardevoir ex",
+      "Mega Diancie ex",
+      "Indeedee ex"
+    ],
+    "outcome": "win",
+    "result_method": "points",
+    "points_owner": 3,
+    "points_opponent": 2,
+    "damage_done_displayed": 600,
+    "result_evidence": [
+      "F808_00",
+      "F819_00"
+    ],
+    "qr_present": true,
+    "qr_seconds": 0,
+    "capture_status": "complete_with_recording_limits",
+    "review_status": "review_ready_pending_independent_acceptance",
+    "external_log_written": false,
+    "source_moved": false,
+    "limits": [
+      "Opponent draws/search identities hidden unless later publicly played; hand fan overlap gives ranges for large fans.",
+      "Neither opened discard pile appears in the recording. Play-derived histories are inference, not pile snapshots.",
+      "Several first moves occur immediately after a zoomed normal draw. Candidate+1/+3/+6 can already be post-play; actual pre-play evidence and limits are individually identified.",
+      "Exact filmed QR semantic list verified; dated readable Pause Games live-log deck snapshot is absent. QR does not resolve artwork/printing aliases.",
+      "Native seek requested times are retained; exact decoded PTS was not measured. Turn transition timings are bounded to nearby source frames, not frame-accurate."
+    ]
+  }
+}

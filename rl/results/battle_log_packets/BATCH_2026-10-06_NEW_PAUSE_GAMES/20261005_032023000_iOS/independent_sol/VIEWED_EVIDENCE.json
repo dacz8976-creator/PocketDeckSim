@@ -1,0 +1,125 @@
+{
+  "schema": "bounded-independent-viewed-evidence-v1",
+  "source_video": "20261005_032023000_iOS.MP4",
+  "source_sha256": "6fadd948b5526f22007c2ca2b11516c27801c2fbf2af57c290b214f9327f36a9",
+  "reviewer": "/root/independent_metal",
+  "scope": "Bounded independent sampling of retained native evidence, no second full pass, no original media read/hash/extraction",
+  "inspected_native_evidence": [
+    {
+      "topic": "opening_and_deck",
+      "paths": [
+        "qr_intake/t0001.00.png",
+        "turn_evidence/t0002.50.jpg",
+        "turn_evidence/t0004.00.jpg",
+        "turn_evidence/t0006.00.jpg",
+        "turn_evidence/t0012.00.jpg",
+        "turn_evidence/t0028.00.jpg",
+        "turn_evidence/t0028.00_bottom.png"
+      ],
+      "observation": "QR to New deck6 selection and matchmaking continuity; five-card opening visible, third card TR Tinkatink selected; going second. Exact filmed QR20 matches prepared entity/count identity, separate live snapshot unavailable."
+    },
+    {
+      "topic": "ordinary_owner_turn2",
+      "paths": [
+        "turn_evidence/t0066.60.jpg",
+        "turn_evidence/t0066.60_top.png",
+        "turn_evidence/t0067.00.jpg",
+        "turn_evidence/t0067.60.jpg",
+        "turn_evidence/t0069.60.jpg",
+        "turn_evidence/t0071.00.jpg",
+        "turn_evidence/t0072.00.jpg",
+        "turn_evidence/t0072.60.jpg",
+        "turn_evidence/t0076.00.jpg",
+        "turn_evidence/t0089.00.jpg"
+      ],
+      "observation": "Five intact starting cards at66.6, first selection Research67. Research reveal order Ball71 then Honedge72; Ball search TR Tinkatink76. Later scheduled candidates unsuitable after first card leaves hand. Two opponent backs; both boards and visible current/next Energy zones match. Ending four cards match hand arithmetic5-1+2-1+1-2=4."
+    },
+    {
+      "topic": "ordinary_opponent_turn3",
+      "paths": [
+        "turn_evidence/t0103.00.jpg",
+        "turn_evidence/t0105.00.jpg",
+        "turn_evidence/t0110.00.jpg",
+        "turn_evidence/t0112.00.jpg"
+      ],
+      "observation": "Wiglett evolves to Wugtrio ex140; Water becomes attached to Finizen; Razor Fin20 leaves owner Active40. Both boards and empty/next zones consistent; remote card input remains unobserved."
+    },
+    {
+      "topic": "selected_other_hands_no_effect",
+      "paths": [
+        "turn_evidence/t0116.00.jpg",
+        "turn_evidence/t0116.80.jpg",
+        "turn_evidence/t0184.20.jpg",
+        "turn_evidence/t0186.20.jpg",
+        "turn_evidence/t0189.00.jpg",
+        "turn_evidence/t0242.80.jpg"
+      ],
+      "observation": "T4 selected116 still five cards,116.8 Honedge leaves fan. T6 selected184.2 five cards;186.2 Ball absent and189 no target message explicit. T8 selected242.8 five cards including TR Tinkaton; opponent fan two backs. Top-only discard previews remain limited."
+    },
+    {
+      "topic": "turn10_coins_candidates_end",
+      "paths": [
+        "turn_evidence/t0295.80.jpg",
+        "turn_evidence/t0295.80_top.png",
+        "turn_evidence/t0297.80.jpg",
+        "turn_evidence/t0300.80.jpg",
+        "turn_evidence/t0320.30.jpg",
+        "turn_evidence/t0331.00.jpg",
+        "turn_evidence/t0339.70.jpg",
+        "turn_evidence/t0352.00.jpg"
+      ],
+      "observation": "Six-card start and three scheduled frames intact before retreat. Three opponent backs. Coin sequence tails/heads/tails; healed Honedge60 with Barrier and2Metal at352; Bench TRs60, right2Metal. End hand Superb Shield Aegislash/TR Tinkaton/Cursed Metal Aegislash three. Six-2Pops-1Barrier=3; returned Pop net0. Opponent Wugtrio140/3Water, Finizen60/Cape/2Water, Manaphy30 match."
+    },
+    {
+      "topic": "turn12_draw_evolution_and_capture_error",
+      "paths": [
+        "turn_evidence/t0396.00.jpg",
+        "turn_evidence/t0397.00.jpg",
+        "turn_evidence/t0397.20.jpg",
+        "turn_evidence/t0397.50.jpg",
+        "turn_evidence/t0397.50_bottom.png",
+        "turn_evidence/t0397.80.jpg",
+        "turn_evidence/t0398.00.jpg",
+        "turn_evidence/t0398.20.jpg",
+        "turn_evidence/t0401.00.jpg",
+        "turn_evidence/t0402.00.jpg",
+        "turn_evidence/t0403.20.jpg",
+        "turn_evidence/t0429.00.jpg",
+        "turn_evidence/t0435.00.jpg",
+        "turn_evidence/t0439.00.jpg"
+      ],
+      "observation": "Research normal reveal396;397.0 fan four intact cards.397.2 is selected Research zoom,397.5/397.8 only three cards.398 is card in central resolution. This contradicts selected397.5 preplay and first move397.8/398. Research draws Rare Candy401 then Tinkaton ex402;403.2 fan5.429 unable to evolve Tinkaton ex;435 Active Superb Shield Aegislash140 retains2Metal;4393Metal and three-card end hand. Arithmetic4-1+2-2=3 matches. Required surgical repair below."
+    },
+    {
+      "topic": "terminal",
+      "paths": [
+        "turn_evidence/t0462.00.jpg",
+        "turn_evidence/t0463.00.jpg",
+        "turn_evidence/t0465.00.jpg",
+        "turn_evidence/t0467.00.jpg",
+        "turn_evidence/t0476.00.jpg"
+      ],
+      "observation": "4620 Active/50 each Bench;463 both TR Tinkatink0HP;465 both Bench empty, Aegislash140/3Metal and Wugtrio40/3Water remain.467 three opponent points separate.476 Defeat vs犬いぬ, wentsecond,13turns,0-3,180damage. Final opponent board Palafin130/Cape/3Water, Comfey70/0Energy, Manaphy30/1Water."
+    }
+  ],
+  "mechanical_validation": {
+    "frame_entries": 180,
+    "all_registered_full_and_crop_files_exist": true,
+    "full_dimensions": [
+      1170,
+      2532
+    ],
+    "all_crop_dimensions_and_pixels_match_full_frame": true,
+    "all_cross_referenced_evidence_ids_exist": true,
+    "turn_rows": 13,
+    "turn_numbers_contiguous": true,
+    "filmed_QR_image_sha256_matches_retained_receipt": true,
+    "filmed_QR_prepared_and_DECK_USED_entity_counts_match": true
+  },
+  "limitations": [
+    "Whole-source coverage relies on the complete first-pass account and coverage checklist; these bounded samples do not assert independently viewed full coverage.",
+    "No complete discard pile opening is established by the first pass; inspected views show top previews only.",
+    "Exact queue and hidden opponent card names remain source limits.",
+    "Initial frozen live deck lists lack this new variant; no live deck save/reload is claimed."
+  ]
+}

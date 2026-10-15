@@ -1,0 +1,68 @@
+{
+  "reviewer": "/root/added_210823",
+  "game_id": "20261012_210823000_iOS_Hons",
+  "unresolved": [
+    {
+      "id": "live_deck_snapshot",
+      "status": "external_source_limit",
+      "detail": "Pause Games current deck definition is absent and Add Deck UI is unavailable. The filmed QR verifies all 20 semantic slots, but no live-log deck snapshot is claimed."
+    },
+    {
+      "id": "discard_views",
+      "status": "recording_limit",
+      "detail": "Neither pile is opened in the source. No full discard contents or scroll coverage is available."
+    },
+    {
+      "id": "fan_overlap",
+      "status": "recording_limit",
+      "detail": "Owner turn 2 and 4 top fans overlap; supported ranges are kept. Copycat separately reveals six owner cards."
+    },
+    {
+      "id": "opponent_colorless",
+      "status": "recording_limit",
+      "detail": "Colorless Energy icons appear on Mega Pidgeot ex evolution/attachment sequences. Exact source of the extra Colorless Energy is not established by readable source text."
+    },
+    {
+      "id": "opponent_meowth_variant",
+      "status": "recording_limit",
+      "detail": "Bench Alolan Meowth has 50 HP and Nasty Plot; its exact artwork/collection ID and small ability title are not fully readable."
+    },
+    {
+      "id": "result_stats",
+      "status": "recording_limit",
+      "detail": "Source ends on Victory and Glimmora Card of the Game. No detailed result statistics or battle-log tab is opened."
+    },
+    {
+      "id": "energy_zone_transient_preview",
+      "status": "phase_specific_recording_limit",
+      "detail": "Owner next glyphs at 117, 206.5 and 292 seconds are temporarily absent; opponent next glyph at 166 is prompt-obscured; both next glyphs at 200 are absent in the attack animation. Their type, count and availability remain null at those exact frames. Other chosen boundaries were inspected individually."
+    }
+  ],
+  "unreviewed_intervals": [],
+  "consequential_material_drafts_remaining": [],
+  "resolved_by_source": [
+    {
+      "id": "normal_draw_turn_12",
+      "finding": "Explicit empty-deck draw-failure message",
+      "evidence_ids": [
+        "native_0428.00",
+        "native_0428.50"
+      ]
+    },
+    {
+      "id": "terminal_cause",
+      "finding": "Explicit opponent concession message",
+      "evidence_ids": [
+        "native_0430.00",
+        "native_0430.50",
+        "native_0431.00"
+      ]
+    }
+  ],
+  "review_revision": {
+    "number": 2,
+    "status": "repaired_after_independent_rejection_pending_recheck",
+    "repaired_at_utc": "2026-10-12T23:49:12.387885+00:00",
+    "repair_notes": "REPAIR_NOTES.md"
+  }
+}

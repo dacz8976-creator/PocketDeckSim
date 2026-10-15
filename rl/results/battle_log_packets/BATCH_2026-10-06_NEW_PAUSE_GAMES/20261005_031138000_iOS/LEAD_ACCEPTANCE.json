@@ -1,0 +1,36 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-06T18:43:31.793601+00:00",
+  "source_video": "20261005_031138000_iOS.MP4",
+  "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 7,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_031138000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "Opened discard piles not recorded.",
+    "Opponent hidden hand/deck unknown.",
+    "Failed confusion attack identity not shown.",
+    "Exact QR printings unavailable.",
+    "Prepared new external deck entry awaits lead live-save verification."
+  ],
+  "outcome": {
+    "owner": "Dacz8976",
+    "opponent": "九兔",
+    "result": "win",
+    "method": "opponent concession",
+    "owner_points": 2,
+    "opponent_points": 0,
+    "turns_played": 7,
+    "damage_done_displayed": 180,
+    "evidence_ids": [
+      "f0214.00",
+      "f0225.00"
+    ]
+  },
+  "external_status": "Prepared for Pause Games; no new live deck or game save claimed. Missing matching current live list is preserved, filmed QR definitions prepared separately.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

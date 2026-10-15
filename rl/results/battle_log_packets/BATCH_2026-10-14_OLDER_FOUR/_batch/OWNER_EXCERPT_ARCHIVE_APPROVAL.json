@@ -1,0 +1,14 @@
+{
+  "recorded_date": "2026-10-14",
+  "authority": "Direct user reply to explicit archive/offload question",
+  "question": "May I move and offload the two September 26 clips as completed excerpt reviews, while preserving their partial-battle status and missing-opening notes? The review instructions normally allow only full-battle recordings in Reviewed.",
+  "answer": "Approve archival of these two excerpts",
+  "approved": true,
+  "source_basenames": ["20260926_211809000_iOS.MP4", "20260926_212155000_iOS.MP4"],
+  "source_sha256": {
+    "20260926_211809000_iOS.MP4": "f5b6c67fbe006c8485056d8b959a52146289cf8b95c32705b2149135b6bb6a49",
+    "20260926_212155000_iOS.MP4": "258066407acbc779da233b4ee92a6fd49b6260f35534b0e5dd84e6d9c3102683"
+  },
+  "scope": "Exactly these two completed available-footage excerpt reviews; preserve partial-battle status, source names, bytes, missing-opening notes and prior evidence; hash-preserving archive then in-sync OneDrive online-only release",
+  "does_not_authorize_other_partial_sources": true
+}

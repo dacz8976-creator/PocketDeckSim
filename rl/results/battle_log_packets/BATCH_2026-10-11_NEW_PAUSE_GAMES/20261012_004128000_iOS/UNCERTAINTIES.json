@@ -1,0 +1,65 @@
+{
+  "source_video": "20261012_004128000_iOS.MP4",
+  "source_sha256": "dbf23091859cbe159afc724f32f517f75925ab214343474285306b035ee4146e",
+  "inspected_source_limits": [
+    {
+      "id": "L1",
+      "issue": "Opponent hidden hand faces never exposed; every opponent draw name is null.",
+      "status": "explicit_recording_limit",
+      "needs_higher_reasoning": false
+    },
+    {
+      "id": "L2",
+      "issue": "Neither discard pile opened; only face-up top and public play history available.",
+      "status": "explicit_recording_limit",
+      "needs_higher_reasoning": false
+    },
+    {
+      "id": "L3",
+      "issue": "Normal draw ends are approximate observed boundaries, not measured encoded frame PTS.",
+      "status": "explicit_recording_limit",
+      "needs_higher_reasoning": false
+    },
+    {
+      "id": "L4",
+      "issue": "Queue rank/name not shown clearly; human PvP is established by opponent search, clocks, fan and no Auto control.",
+      "status": "explicit_recording_limit",
+      "needs_higher_reasoning": false
+    },
+    {
+      "id": "L5",
+      "issue": "Lead verified MP4 creation_time2026-10-12T00:41:28Z, Chicago local2026-10-11 at19:41:28. Match date2026-10-11 uses metadata plus phone clock; filename date is UTC.",
+      "status": "explicit_recording_limit",
+      "needs_higher_reasoning": false
+    },
+    {
+      "id": "L6",
+      "issue": "Exact played artwork/rarity not inferred from QR or log.",
+      "status": "explicit_recording_limit",
+      "needs_higher_reasoning": false
+    },
+    {
+      "id": "L7",
+      "issue": "At53.2s selected turn2 hand frame, current Energy rendering is incomplete; type/count/availability null. Water1 observed by55s and attached80s.",
+      "status": "explicit_recording_limit",
+      "needs_higher_reasoning": false
+    }
+  ],
+  "consequential_unresolved_claims": [],
+  "prompt_response": {
+    "at_seconds": 117.3,
+    "response": "continue attack / decline further Supporter",
+    "basis": "prompt disappears by117.6, Stormy Prison executes118.5. No graphical tap marker; outcome confirms continuation."
+  },
+  "discard_history_inference": {
+    "owner": [
+      "Professor's Research",
+      "Rare Candy"
+    ],
+    "opponent": [
+      "Slowpoke",
+      "Giant Cape"
+    ],
+    "basis": "public resolved plays and KO; this is not a full opened pile observation"
+  }
+}

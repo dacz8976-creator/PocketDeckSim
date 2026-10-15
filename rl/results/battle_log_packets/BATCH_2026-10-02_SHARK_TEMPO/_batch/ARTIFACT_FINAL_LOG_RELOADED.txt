@@ -1,0 +1,139 @@
+Browser tab: 1903386862, Title: "Pause Games", URL: "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd".
+1 AXWebArea Pause Games, URL: claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd
+	2 container
+		3 container Description: Artifact controls, ID: hdr
+			4 link Description: Home, Value: claude.ai/
+			5 pop up button (collapsed) Pause Games, ID: base-ui-_r_6_, Secondary Actions: Expand
+			6 text Artifact by you
+			7 pop up button (collapsed) Description: You, ID: base-ui-_r_1i_, Secondary Actions: Expand
+				8 container You
+					9 container Dustin Culp
+			10 container Comments
+				11 checkbox Description: Comment on this artifact, Value: 0
+				12 pop up button (collapsed) Description: More comment options, Secondary Actions: Expand
+			13 button Start chat with Claude
+			14 pop up button (collapsed) Description: Share, shared with anyone who has the link, ID: base-ui-_r_12_, Secondary Actions: Expand
+		15 container Description: User-generated artifact content, ID: frame-content
+			16 AXWebArea Pause Games, URL: c9b55931-e71a-42fe-aa8f-919f5daea128.frame.claudeusercontent.com/_f/1790906419-0188/
+				17 container
+					18 text Pause games: not ladder results
+					19 text Opponents are random testers. Read the ratings, not the record.
+					20 tab group Sections
+						21 tab (selected, settable, boolean) Log, Value: 1, ID: tab-log
+						22 tab (selectable, settable, boolean) Decks, Value: 0, ID: tab-decks
+						23 tab (selectable, settable, boolean) Summary, Value: 0, ID: tab-sum
+				24 heading Pause Games, Value: 1
+					25 text Pause Games
+				26 text Games played in competitive mode while ranked is paused, with how each deck felt. A concession by your opponent counts as a full win.
+				27 container Description: Log, ID: p-log
+					28 container gameform
+						29 heading Log a game, Value: 2
+							30 text Log a game
+						31 text DATE
+						32 date field (settable) DATE, Value: 2026-10-02, ID: f-date
+							33 container
+								34 stepper
+								35 stepper
+								36 stepper
+							37 pop up button Show date picker Show date picker
+						38 text DECK
+						39 pop up button (collapsed, settable) DECK, Value: Choose a deck, ID: f-deck, Secondary Actions: Expand
+							40 menu
+								41 (selected) Choose a deck
+								42 container Floor-cleared, never logged
+									43 Wailord / Indeedee wall
+									44 Mega Blaziken tournament list
+									45 Mega Manectric / Heliolisk
+									46 Alolan Ninetales / Raticate
+									47 Brew 7: Hoopa / Darkrai / Sableye
+								48 container Drafts, not run
+									49 Draft A: Shark Tempo
+									50 Draft B: Tide Heal
+									51 Draft C: Meowstic / Hatterene v2
+									52 Draft D: Entei / Grimhound
+						53 container RESULT
+							54 text RESULT
+							55 container f-result
+								56 radio button (settable, integer) Description: Win, Value: 0, ID: r-win
+								57 radio button (settable, integer) Description: Loss, Value: 0, ID: r-loss
+								58 radio button (settable, integer) Description: Win by concession, Value: 0, ID: r-conc
+						59 container TURN ORDER
+							60 text TURN ORDER
+							61 container f-first
+								62 radio button (settable, integer) Description: Went first, Value: 0, ID: o-first
+								63 radio button (settable, integer) Description: Went second, Value: 0, ID: o-second
+						64 text OPPONENT'S DECK, AS SEEN (OPTIONAL)
+						65 text field (settable) OPPONENT'S DECK, AS SEEN (OPTIONAL), ID: f-opp
+						66 text HOW DID THE DECK FEEL
+						67 text Tap 1 (poor) to 5 (great). Tap the same number again to clear it. All four are optional.
+						68 text Competitive
+						69 text Felt able to beat a real deck
+						70 container
+							71 checkbox Description: Competitive 1 of 5, Value: 0
+							72 checkbox Description: Competitive 2 of 5, Value: 0
+							73 checkbox Description: Competitive 3 of 5, Value: 0
+							74 checkbox Description: Competitive 4 of 5, Value: 0
+							75 checkbox Description: Competitive 5 of 5, Value: 0
+						76 text Consistent
+						77 text Did the same thing most games
+						78 container
+							79 checkbox Description: Consistent 1 of 5, Value: 0
+							80 checkbox Description: Consistent 2 of 5, Value: 0
+							81 checkbox Description: Consistent 3 of 5, Value: 0
+							82 checkbox Description: Consistent 4 of 5, Value: 0
+							83 checkbox Description: Consistent 5 of 5, Value: 0
+						84 text Playable
+						85 text Easy to pilot, few awkward turns
+						86 container
+							87 checkbox Description: Playable 1 of 5, Value: 0
+							88 checkbox Description: Playable 2 of 5, Value: 0
+							89 checkbox Description: Playable 3 of 5, Value: 0
+							90 checkbox Description: Playable 4 of 5, Value: 0
+							91 checkbox Description: Playable 5 of 5, Value: 0
+						92 text Fun
+						93 text Enjoyed playing it
+						94 container
+							95 checkbox Description: Fun 1 of 5, Value: 0
+							96 checkbox Description: Fun 2 of 5, Value: 0
+							97 checkbox Description: Fun 3 of 5, Value: 0
+							98 checkbox Description: Fun 4 of 5, Value: 0
+							99 checkbox Description: Fun 5 of 5, Value: 0
+						100 text NOTE (OPTIONAL)
+						101 text entry area (settable) NOTE (OPTIONAL), ID: f-note
+						102 button (disabled) Save game, ID: f-save
+						103 text Still needed: a deck and a result.
+					104 heading Recent games, Value: 2
+						105 text Recent games
+					106 container recent
+						107 container
+							108 text Draft A: Shark Tempo 2026-10-02 Win by concession Went first · vs 限界社会人: Teal Mask Ogerpon ex / Meowscarada ex / Sprigatito Source: 20261002_143837000_iOS.MP4. Draft A: Shark Tempo, Water Energy. Win by concession; earned score 2-1; went first; 13 turns; 300 damage. Lapras Surf70, Turbo Shark70 and two Binding Snow80 attacks reconcile. Astra confirmed Flower Trick delayed70 to the chosen Active Spot after owner turn5, not recoil or an Ability. Turbo Shark supplied benched Ninetales one Water; turn9 normal attachment and free Sharpedo switch enabled Meowscarada KO. Lucky Ice Pop heads/heads/tails healed Sharpedo110 to170. Binding Snow left Ogerpon50 and denied Active attachments; Cyrus recalled it at 6:56, opponent conceded at 6:58 before attack, Victory stats7:12. Owner feedback: fun and competitive. Wailord and Soothing Shore are untested proposals; numeric ratings not supplied. Exact queue, hidden lists and concession motive unknown.
+							109 button Delete
+						110 container
+							111 text Draft A: Shark Tempo 2026-10-02 Win Went first · vs hk2: Shaymin / Furfrou x2 / Flygon ex / Rainbow Cave Source: 20261002_132311000_iOS.MP4. Draft A: Shark Tempo, Water Energy. Win by opponent return timeout, not concession; actual score 2-0; went first; 14 turns; 390 damage. Three Turbo Shark attacks did 50 each through Fur Coat and added three Bench Water; free switches preserved energy. Ninetales KOed Shaymin then denied Active Energy attachments while Flygon ex stayed on one Fighting and fell to 20 HP. Irida/Cape cushioned Sand Slammer checkup damage. Opponent-return timeout error at 7:51; Victory stats at 8:05. No third-point knockout and no disconnect motive inferred. Owner feedback: fun and competitive. Wailord and Soothing Shore remain untested proposals; numeric ratings not supplied. Exact queue and hidden lists unknown.
+							112 button Delete
+						113 container
+							114 text Draft A: Shark Tempo 2026-10-02 Loss Went first · vs 草根: Snorlax x2 / Rampardos x2 / Rowlet / Arena of Antiquity Source: 20261002_115323000_iOS.MP4. Draft A: Shark Tempo, Water Energy. Loss 2-3; went first; 14 turns; 360 damage. Three Turbo Shark attacks supplied Bench Water, with free switches to Lapras and Ninetales. Penny returned damaged Snorlax and it reappeared at full HP; Cyrus had no damaged Bench target. Second Skull Fossil was precharged before Binding Snow, evolved with Rare Candy and Head Smash dealt 150 through Arena, KOing Ninetales at 8:34; +2 points 8:42; Defeat 8:50. Astra: a single-point Vulpix turn could extend the game; Rampardos already at 30 HP would self-KO after a direct attack KO. A likely 2-2 exchange is conditional, not a forced win; the second Fossil remains a threat. Owner feedback: fun and competitive. Wailord/Shore untested; numeric ratings not supplied. Exact queue and hidden lists unknown.
+							115 button Delete
+						116 container
+							117 text Draft A: Shark Tempo 2026-10-02 Win Went second · vs もつ: Sigilyph / Gardevoir x2 / Mewtwo ex Source: 20261002_143309000_iOS.MP4. Draft A: Shark Tempo, Water Energy. Win 3-0; went second; 10 turns; 340 damage. Vulpix/Ninetales supplied every attack; Lapras and Mega Sharpedo developed on Bench without attacking. Ninetales KOed Sigilyph and Mewtwo; final Mewtwo KO at 4:38, Victory at 4:58. Misty gave Lapras two Water; Elegant Cape and Irida protected Ninetales. Astra confirmed Binding Snow also prevents Psy Shadow Energy-Zone attachments to the Active; normal Bench attachments remain legal. No failed ability attempt or opponent intent was observed. Owner feedback: fun and competitive. Wailord and Soothing Shore are untested ideas; numeric ratings not supplied. Exact queue and hidden lists unknown.
+							118 button Delete
+						119 container
+							120 text Draft A: Shark Tempo 2026-10-02 Win Went second · vs PlumaDeArticun: Chingling / Aerodactyl / Chandelure Source: 20261002_114458000_iOS.MP4. Owner identified Draft A: Shark Tempo, Water Energy. Win 3-2; went second; 12 turns; 450 damage. Ninetales ex and Lapras supplied all attacks; no Sharpedo was played. Misty gave Lapras four Water. Will guaranteed Aerodactyl heads, shuffling Lapras without points; second Ninetales then KOed Aerodactyl at 6:34, Victory at 6:50. Astra: T8 retreat into charged Lapras could preserve points against the observed Chandelure line, with hidden responses and lost Binding Snow lock limiting the claim. Owner feedback: fun and competitive. Wailord and Soothing Shore combinations are untested proposals; numeric ratings not supplied. Exact queue and hidden lists unknown.
+							121 button Delete
+						122 container
+							123 text Wailord / Indeedee wall 2026-10-01 Loss Went first · vs だんくしゅー: Mega Altaria ex x2 / Greninja x2 / Swablu / Chingling Source: 20261002_022135000_iOS.MP4. Water Wailord deck, as identified by owner. Loss; went first; 30 turns; displayed 1–3; 120 damage. Two Wailmer attacks on turns 7 and 13, then both were knocked out before late Wailord draws. Remaining Indeedee healed and retreated with Water but needed Psychic to attack. Mega Harmony dealt 130 to Indeedee ex at 11:36; +2 points at 11:42; Defeat stats at 11:50. Three displayed point circles cap the result. No Wailord evolved. Owner feedback: slow Energy buildup; alternate Energy/Misty/Sharpedo ideas untested. Exact queue/full list/second hand whale version unknown.
+							124 button Delete
+						125 container
+							126 text Wailord / Indeedee wall 2026-10-01 Win by concession Went first · vs KO歐~YOU (separator transcribed): Bonsly / Lucario / Mega Lucario ex / Hitmonchan Source: 20261002_023418000_iOS.MP4. Wailord/Indeedee ex, Water Energy. Win by concession at 6:02; Victory at 6:10.5. Went first; actual points 0–1. Sabrina exposed an unenergized Wailmer for one point. First Wailord attack on turn 9 after four Water. Turn-9 recovery used two Indeedee heals, four favorable Ice Pop flips, then Soothing Shore. Cyrus brought Mega Lucario ex at 110 HP Active; Astra confirms Bonsly minus30 persisted, so prospective damage was 80, not guaranteed lethal. Opponent conceded before attack. Owner feedback: slow to build Energy; ramp alternatives untested. Exact queue/full lists unknown.
+							127 button Delete
+						128 container
+							129 text Wailord / Indeedee wall 2026-10-01 Loss Went first · vs ポジビン: Meloetta / Giratina ex / Mega Gardevoir ex / Mega Diancie ex Source: 20261002_021402000_iOS.MP4. Wailord/Indeedee ex, Water Energy. Loss 0–3; first; 14 turns; 110 damage. Mega Diancie ex hit for 300 twice, knocking out Wailord ex (6:26) then Wailord (6:56); Defeat stats at 7:09.9. Sabrina benched three-Water Wailord; forced-in ex received only one Water and could not attack. First attack delayed to turn 13. Owner feedback: slow to build Energy. Astra: choosing Indeedee and retreating free before replacing Peculiar Plaza could enable a turn-9 Wailord attack; no guaranteed win. Ramp/alternate Energy untested; exact queue and hidden lists unknown.
+							130 button Delete
+						131 container
+							132 text Wailord / Indeedee wall 2026-10-01 Win by concession Went second · vs おさるの上司: Charmander / Charmeleon / Entei ex Source: 20261002_020920000_iOS.MP4. Wailord/Indeedee ex, Water Energy. Win by concession at 3:58; Victory, second, 9 turns, 0–0 points and 120 damage confirmed at 4:07.4. First attack on turn 8 after four regular Water attachments, leaving Entei ex at 20 HP. Owner feedback: slow to build Energy. Astra: delaying Wailmer evolution could allow a turn-6 Charmeleon knockout under the same board continuation; a different final result is unproven. Alternate Energy or Sharpedo/Misty ramp remains untested. Exact queue and full hidden lists unknown.
+							133 button Delete
+						134 container
+							135 text Wailord / Indeedee wall 2026-10-01 Loss Went second · vs るか: Palkia ex / Baxcalibur / Milotic ex (Feebas, Frigibax) Source: 20261002_020315000_iOS.MP4. Wailmer/Wailord/Indeedee ex, Water Energy. Loss 1–3; went second. Cyrus brought damaged Indeedee ex Active (5:11), Palkia ex Dimensional Storm knocked it out (5:25.5), Defeat confirmed (5:34.5). First Wailmer lost three Energy; replacement Wailord reached only two. Owner feedback: slow to build Energy. Ideas to test: alternate Energy for non-ex Wailord or Sharpedo/Misty ramp. Exact match-mode label and full hidden deck unconfirmed.
+							136 button Delete
+
+The focused UI element is 15 container Description: User-generated artifact content, ID: frame-content

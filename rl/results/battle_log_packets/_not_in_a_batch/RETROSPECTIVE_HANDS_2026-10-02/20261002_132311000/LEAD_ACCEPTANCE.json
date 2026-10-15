@@ -1,0 +1,49 @@
+{
+  "schema": "retrospective-hand-lead-acceptance-v1",
+  "source": "20261002_132311000_iOS.MP4",
+  "source_sha256": "f3d3765ca22feb385bd540c90c916d1b039382418a0e53711bfeccbe3e240a33",
+  "accepted_at_utc": "2026-10-02T21:04:04.809354+00:00",
+  "lead": "Codex retrospective lead",
+  "worker_model": "gpt-6.1-sol",
+  "worker_effort": "high",
+  "independent_model": "gpt-6.1-sol",
+  "independent_effort": "high",
+  "verdict": "accepted_with_recording_limits",
+  "target_turns": [
+    5,
+    11
+  ],
+  "original_full_battle_status": "Reviewed; preserved",
+  "scope": "Targeted uncertain owner hands only",
+  "independent_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_sharpedo\\20261002_132311000\\SOURCE_CHECKS.json",
+  "structure_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_132311000\\STRUCTURE_CHECK.json",
+  "capture_status": "complete_with_recording_limits",
+  "source_read_basis": {
+    "status": "verified",
+    "receipt": "LOCAL_SOURCE_VERIFICATION.json",
+    "verification": {
+      "actual_source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261002_132311000_iOS.MP4",
+      "sha256": "f3d3765ca22feb385bd540c90c916d1b039382418a0e53711bfeccbe3e240a33",
+      "bytes": 886959676,
+      "verified": true,
+      "elapsed_seconds": 0.8488785999943502,
+      "verified_utc": "2026-10-02T20:53:53.042439+00:00"
+    },
+    "earlier_failed_receipts": [
+      "SOURCE_ACCESS.json",
+      "CAMERA_SOURCE_ACCESS.json"
+    ],
+    "actual_inspected_source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261002_132311000_iOS.MP4"
+  },
+  "shared_registration": "complete",
+  "accepted_packet_hashes": {
+    "REVIEW_SUPPLEMENT.md": "8433b29615f8615ced529571aa5dafe3e46873676a76ac7f132bb0c61fdc507a",
+    "HAND_SUPPLEMENT.json": "1c51246d9dd491dcff6a225f20088a0f00abe5d9706496845e92ada34cd1bf06",
+    "TURN_EVIDENCE.json": "a282b20badc3ba3243143e69ed95fd1d982983072bb204900dd0bf8571d90cbf",
+    "UNCERTAINTIES.json": "680e41f5995da3162cc837c678299892e112cb1f7d68b92aee4a6d783f900c04",
+    "DECK_USED.json": "ffdc7c90f155dcb3b6af0a765ead02ac0e5b8b3ae1f148e7b8876b7c73b384e4"
+  },
+  "retained_evidence_only": false,
+  "shared_event": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\events\\2026-10-02T210405.964573_0000_136995c2-573a-4a98-a162-f739f41367f3.json",
+  "registration_identity_provenance": "verified_by_cli_sha256"
+}

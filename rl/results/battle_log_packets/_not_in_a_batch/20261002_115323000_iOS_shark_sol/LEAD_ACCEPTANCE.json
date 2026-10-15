@@ -1,0 +1,25 @@
+{
+  "source_video": "20261002_115323000_iOS.MP4",
+  "source_sha256": "0a3c7a2dbd87adb74f2eea2d61723f5e68fd71a74f0ab80d7486a9ee1d6c6be0",
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "coverage_checked": true,
+  "completion_status": "full_battle_review_complete",
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "ranked_ladder_eligible": false,
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "scope": "Entire 532.31-second recording: setup, every supplied turn, meaningful state changes and terminal outcome",
+  "lead_evidence": [
+    "overview/sheet_05.jpg",
+    "overview/sheet_09.jpg",
+    "LEAD_END_CONTACT.jpg"
+  ],
+  "astra_reports": [
+    "ASTRA_RAMPARDOS_CHECK.md"
+  ],
+  "lead_notes": "Lead inspected ordinary early Misty and Barry resources, the middle Turbo Shark and Rare Candy development, and eight exact final-state frames through Defeat. Fourteen-turn coverage, Energy and HP changes, 360 damage and the 2-3 result reconcile. The second Fossil has Fighting before Binding Snow and retains it through Rare Candy; the final 150 hit with Arena exactly knocks out Ninetales ex for two points. Astra accepts single-point Vulpix as a conditional survival alternative; the original 30-HP Rampardos is already below its conditional 50 self-damage threshold. Hidden responses and unobserved precise simultaneous point timing prevent a forced-win claim.",
+  "checked_at": "2026-10-02T16:05:56.237685+00:00",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high"
+}

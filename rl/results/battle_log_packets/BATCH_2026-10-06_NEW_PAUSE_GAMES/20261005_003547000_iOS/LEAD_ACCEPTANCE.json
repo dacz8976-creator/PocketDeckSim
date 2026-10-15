@@ -1,0 +1,35 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-06T18:41:54.642817+00:00",
+  "source_video": "20261005_003547000_iOS.MP4",
+  "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 14,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_003547000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "Neither player opens a full discard pile. Only changing top-card pile previews and visible attack discards are filmed; periodic full-pile snapshots are unavailable.",
+    "Opponent normal draws and both Poké Ball finds are concealed. No hidden identities inferred.",
+    "Owner first plays on turns5 and7 occur during or before scheduled+1 candidate; dense settled pre-play frames227.5 and337.5 preserve the starting hand.",
+    "Turns11 and13 have deck-empty normal-draw failures, so draw-animation end is null and diagnostic candidates use the failure message anchor instead.",
+    "The exact filmed QR deck is absent from all nine current Pause Games log lists. DECK_USED retains the conflict and filmed20-slot semantic list separately.",
+    "All source-local timestamps are requested seeks. Exact decoded presentation timestamps were not measured.",
+    "No visible supporter-warning decline or zero-effect voluntary card play occurs. Card inspection zooms are not counted as plays."
+  ],
+  "outcome": {
+    "owner": "loss",
+    "opponent": "Garfield.tv",
+    "owner_points": 0,
+    "opponent_points": 3,
+    "turns_played": 14,
+    "damage_done": 240,
+    "evidence_ids": [
+      "f0557.00"
+    ]
+  },
+  "external_status": "Prepared for Pause Games; no new live deck or game save claimed. Missing matching current live list is preserved, filmed QR definitions prepared separately.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

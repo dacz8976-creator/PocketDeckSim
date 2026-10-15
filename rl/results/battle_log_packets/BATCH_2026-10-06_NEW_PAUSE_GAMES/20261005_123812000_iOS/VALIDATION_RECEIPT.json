@@ -1,0 +1,804 @@
+{
+  "schema": "pause-games/strengthened-local-validation-v1",
+  "source_video": "20261005_123812000_iOS.MP4",
+  "source_sha256": "3fb3dc25ac96c6e742f9467ba14abdbf91aff403ef2a5bdc62c7f414e775e5a0",
+  "local_pass": true,
+  "checks": [
+    {
+      "check": "Exactly nine consecutive rows including four opponent turns",
+      "pass_check": true
+    },
+    {
+      "check": "Five-card native opening before placement",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1 sequential voluntary order",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1 selected intact named native preplay hand",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1 retained approximate draw+1/+3/+6",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1 native opponent fan count",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1 end hand arithmetic reconciles",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1 before-end hand retained",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1/board_at_start/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1/board_at_start/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1/board_at_start/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1/board_at_start/opponent/Ralts Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1/board_after/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1/board_after/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1/board_after/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1/board_after/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1/board_after/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn1/board_after/opponent/Ralts Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2 sequential voluntary order",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2/board_at_start/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2/board_at_start/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2/board_at_start/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2/board_at_start/opponent/Ralts Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2/board_after/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2/board_after/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2/board_after/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2/board_after/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2/board_after/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2/board_after/opponent/Ralts Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2/board_after/opponent/Ralts Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn2/board_after/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3 sequential voluntary order",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3 selected intact named native preplay hand",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3 retained approximate draw+1/+3/+6",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3 native opponent fan count",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3 end hand arithmetic reconciles",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3 before-end hand retained",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_at_start/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_at_start/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_at_start/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_at_start/opponent/Ralts Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_at_start/opponent/Ralts Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_at_start/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_after/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_after/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_after/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_after/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_after/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_after/opponent/Ralts Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn3/board_after/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4 sequential voluntary order",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4/board_at_start/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4/board_at_start/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4/board_at_start/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4/board_at_start/opponent/Ralts Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4/board_at_start/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4/board_after/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4/board_after/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4/board_after/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4/board_after/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4/board_after/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4/board_after/opponent/Mega Gardevoir ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn4/board_after/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5 sequential voluntary order",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5 selected intact named native preplay hand",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5 retained approximate draw+1/+3/+6",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5 native opponent fan count",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5 end hand arithmetic reconciles",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5 before-end hand retained",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_at_start/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_at_start/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_at_start/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_at_start/opponent/Mega Gardevoir ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_at_start/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_after/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_after/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_after/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_after/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_after/owner/Nihilego Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_after/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_after/opponent/Mega Gardevoir ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn5/board_after/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6 sequential voluntary order",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_at_start/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_at_start/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_at_start/owner/Nihilego Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_at_start/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_at_start/opponent/Mega Gardevoir ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_at_start/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_after/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_after/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_after/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_after/owner/Nihilego Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_after/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_after/opponent/Mega Gardevoir ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_after/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn6/board_after/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7 sequential voluntary order",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7 selected intact named native preplay hand",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7 retained approximate draw+1/+3/+6",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7 native opponent fan count",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7 end hand arithmetic reconciles",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7 before-end hand retained",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_at_start/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_at_start/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_at_start/owner/Nihilego Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_at_start/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_at_start/opponent/Mega Gardevoir ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_at_start/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_at_start/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_after/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_after/owner/Nihilego Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_after/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_after/owner/Nihilego Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_after/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_after/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_after/opponent/Mega Gardevoir ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_after/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn7/board_after/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8 sequential voluntary order",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_at_start/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_at_start/owner/Nihilego Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_at_start/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_at_start/owner/Nihilego Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_at_start/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_at_start/opponent/Mega Gardevoir ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_at_start/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_at_start/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_after/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_after/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_after/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_after/owner/Nihilego Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_after/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_after/opponent/Mega Gardevoir ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_after/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn8/board_after/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9 sequential voluntary order",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9 selected intact named native preplay hand",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9 retained approximate draw+1/+3/+6",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9 native opponent fan count",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9 end hand arithmetic reconciles",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9 before-end hand retained",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_at_start/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_at_start/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_at_start/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_at_start/owner/Nihilego Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_at_start/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_at_start/opponent/Mega Gardevoir ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_at_start/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_at_start/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_after/owner full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_after/owner/Nidoran♂ Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_after/owner/Darkrai ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_after/owner/Nihilego Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_after/opponent full positional board, typed Energy, Tool/conditions",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_after/opponent/Mega Gardevoir ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_after/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Turn9/board_after/opponent/Mega Diancie ex Energy/HP arithmetic",
+      "pass_check": true
+    },
+    {
+      "check": "Early selected T1/T3/T7 current Energy absence preserved separately from Darkness next",
+      "pass_check": true
+    },
+    {
+      "check": "T9 generation glow current remains unknown",
+      "pass_check": true
+    },
+    {
+      "check": "First Fantasia assigns three Psychic to right Diancie",
+      "pass_check": true
+    },
+    {
+      "check": "Second Fantasia leaves four Psychic on center Diancie",
+      "pass_check": true
+    },
+    {
+      "check": "Retreat payment precedes new bench attachment",
+      "pass_check": true
+    },
+    {
+      "check": "Owner Research named reveal order",
+      "pass_check": true
+    },
+    {
+      "check": "No-effect final Poke Ball consumes card and finds zero",
+      "pass_check": true
+    },
+    {
+      "check": "Filmed concession loss linked separately from earned score1-2",
+      "pass_check": true
+    },
+    {
+      "check": "Frozen retained QR hash/source and exact20 intact",
+      "pass_check": true
+    },
+    {
+      "check": "Distinct two-Darkrai exact semantic20 revision",
+      "pass_check": true
+    },
+    {
+      "check": "Missing live exact deck snapshot remains explicit",
+      "pass_check": true
+    },
+    {
+      "check": "No top preview mislabeled full discard",
+      "pass_check": true
+    },
+    {
+      "check": "UTF8 authored strings SOURCE.json",
+      "pass_check": true
+    },
+    {
+      "check": "UTF8 authored strings REVIEW.md",
+      "pass_check": true
+    },
+    {
+      "check": "UTF8 authored strings COVERAGE.md",
+      "pass_check": true
+    },
+    {
+      "check": "UTF8 authored strings SUMMARY.json",
+      "pass_check": true
+    },
+    {
+      "check": "UTF8 authored strings UNCERTAINTIES.json",
+      "pass_check": true
+    },
+    {
+      "check": "UTF8 authored strings PAUSE_GAME.json",
+      "pass_check": true
+    },
+    {
+      "check": "UTF8 authored strings DECK_USED.json",
+      "pass_check": true
+    },
+    {
+      "check": "UTF8 authored strings TURN_LEDGER.json",
+      "pass_check": true
+    },
+    {
+      "check": "UTF8 authored strings TURN_EVIDENCE.json",
+      "pass_check": true
+    },
+    {
+      "check": "Shared frame/file/crop/reference/template validator",
+      "pass_check": true
+    }
+  ],
+  "issues": [],
+  "required_file_sha256": {
+    "SOURCE.json": "162668d184e4ad7b69183d01a77f2ab357b33baeb60859dcbcc2985006711372",
+    "REVIEW.md": "2b3f4377303938f491e2bc9c0ce2317b114a7c4351fcbc45d6a3c977dad13274",
+    "COVERAGE.md": "051b69cf62d245c1df606b5aa723e9328502d4788ee0b3a543d8c32ff97d6add",
+    "SUMMARY.json": "5b9c21152dab0d7357aa153b539a730cfe560e8d80bc81206b2d6589ec8f0e47",
+    "UNCERTAINTIES.json": "2871b51ef155c152fec9ff3c9aff5b5adc3eabfc4a6792fc9820a911fe4ee9c5",
+    "PAUSE_GAME.json": "e4952769f364689d98e2067171796430785115622dedf01241d7c84762398b55",
+    "DECK_USED.json": "8c55a09981102c2c939e1a1d0d5d1f98c9579322335f362576b2c85188a8b813",
+    "TURN_LEDGER.json": "507dff17ea9e3a2a82e56317d2de6b8f17264fe8f40f60d465b2d6d202de2113",
+    "TURN_EVIDENCE.json": "43067e745791046c11140a34b9d1706ba0cede6905621bb645cfe4c124609b5c"
+  },
+  "native_frame_count": 302,
+  "visual_acceptance": false,
+  "independent_acceptance": false,
+  "external_registration": false,
+  "limits": [
+    "Consistency and integrity are reviewer-authored; root independent source review remains required.",
+    "Exact live log list pending root registration."
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261006_012140000_iOS-game-1",
+  "sources": [
+    {
+      "video_basename": "20261006_012140000_iOS.MP4",
+      "sha256": "2fbf36e1f6d45a8e7fc6b1d273b0dc64c106ce1df14ac0447617e413ad79cf4e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "review_date": "2026-10-06",
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Scolipede / Mega Sableye ex (filmed deck label New deck 6; exact list unbound)",
+  "opening": {
+    "source_video": "20261006_012140000_iOS.MP4",
+    "timestamp_seconds": 23.5,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Scolipede",
+        "basis": "Native pre-placement fan, card titles/printed identity",
+        "evidence_ids": [
+          "F002300",
+          "F002350"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Poke Ball",
+        "basis": "Native pre-placement fan, card titles/printed identity",
+        "evidence_ids": [
+          "F002300",
+          "F002350"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Professor's Research",
+        "basis": "Native pre-placement fan, card titles/printed identity",
+        "evidence_ids": [
+          "F002300",
+          "F002350"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Whirlipede",
+        "basis": "Native pre-placement fan, card titles/printed identity",
+        "evidence_ids": [
+          "F002300",
+          "F002350"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Venipede",
+        "basis": "Native pre-placement fan, card titles/printed identity",
+        "evidence_ids": [
+          "F002300",
+          "F002350"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Venipede",
+      "opening_position": 5,
+      "source_video": "20261006_012140000_iOS.MP4",
+      "timestamp_seconds": 24,
+      "evidence_ids": [
+        "F002350",
+        "F002400",
+        "F002450",
+        "F002500"
+      ]
+    },
+    "redraw_or_replacement": "None observed",
+    "before_active_placement": true,
+    "status": "observed_complete",
+    "evidence_ids": [
+      "F002300",
+      "F002350",
+      "F002400",
+      "F002500"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "whole_source_first_pass_complete_awaiting_independent_acceptance",
+  "outcome": {
+    "owner": "Dacz8976",
+    "opponent": "おせち",
+    "result": "win",
+    "method": "opponent concession",
+    "points_owner": 2,
+    "points_opponent": 0,
+    "turns_played": 7,
+    "owner_went": "second",
+    "damage_done_owner_results": 160,
+    "concession_seconds": 204,
+    "victory_seconds": 214,
+    "evidence_ids": [
+      "F020400",
+      "F020500",
+      "F021400",
+      "F021480"
+    ]
+  },
+  "classification": "human event battle; Deluxe Pack: Mega Emblem Event",
+  "classification_basis": "Event lobby at source start, matchmaking and named opponent; no battle Auto control is visible anywhere in the source.",
+  "match_date_local": "2026-10-05",
+  "date_basis": "Recording UTC creation 2026-10-06T01:21:40Z converts to America/Chicago 2026-10-05 20:21:40; displayed phone clock agrees. Filename date is not assumed local.",
+  "limits": [
+    "No game-bound QR, exact deck editor list, or exact 20-card log snapshot appears in this source. A matching prior filmed QR is only a candidate because the intervening gap and deck edits are unrecorded.",
+    "Opponent hand identities and ordinary draws remain hidden. Fan counts are visible card-back counts, not inferred card identities.",
+    "Neither full discard pile is opened or scrolled. Top previews are partial views only.",
+    "Native frame filenames are requested seek times. Individual decoded frame PTS was not measured; action input times are bounded intervals and are separate from card previews/reveals/resolution.",
+    "The transient waiting-for-opponent messages do not establish why the opponent was unavailable."
+  ],
+  "lead_checked": false
+}

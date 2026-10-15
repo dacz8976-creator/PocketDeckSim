@@ -1,0 +1,3915 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261010_015452000_iOS",
+  "sources": [
+    {
+      "video_basename": "20261010_015452000_iOS.MP4",
+      "sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "default_capture_policy": {
+    "owner_turn_offsets_after_draw_seconds": [
+      1,
+      3,
+      6
+    ],
+    "before_end_action_required": true,
+    "native_resolution_required": true,
+    "bottom_crop_height_fraction": 0.2,
+    "top_crop": "Opponent hand fan, clocks and Energy Zone; save actual pixel bounds",
+    "fixed_grid_is_turn_start_evidence": false,
+    "discard_target_every_owner_turns": [
+      2,
+      3
+    ]
+  },
+  "frames": [
+    {
+      "evidence_id": "f0000.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 0.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0000.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0000.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0000.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0003.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 3.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0003.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0003.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0003.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0004.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 4.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0004.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0004.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0004.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0006.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 6.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0006.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0006.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0006.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0008.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 8.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0008.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0008.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0008.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0012.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 12.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0012.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0012.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0012.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0018.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 18.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0018.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0018.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0018.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0020.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 20.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0020.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0020.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0020.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0024.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 24.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0024.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0024.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0024.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0030.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 30.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0030.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0030.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0030.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0031.00",
+      "role": "opening",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 31.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0031.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0031.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0031.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "opening",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0032.00",
+      "role": "opening",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 32.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0032.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0032.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0032.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "opening",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0033.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 33.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0033.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0033.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0033.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0043.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 43.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0043.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0043.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0043.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0044.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 44.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0044.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0044.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0044.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0045.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 45.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0045.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0045.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0045.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0046.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 46.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0046.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0046.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0046.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0047.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 47.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0047.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0047.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0047.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0048.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 48.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0048.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0048.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0048.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0049.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 49.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0049.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0049.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0049.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0050.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 50.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0050.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0050.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0050.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0050.30",
+      "role": "selected_start_hand",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": 50.3,
+      "requested_source_seconds": 50.3,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0050.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0050.30_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0050.30_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "selected_start_hand",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0051.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 51.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0051.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0051.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0051.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0051.30",
+      "role": "draw_plus_1",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": 50.3,
+      "requested_source_seconds": 51.3,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "turn_evidence\\t0051.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0051.30_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0051.30_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "draw_plus_1",
+      "suitability_or_limit": "Already in first/later play or draw animation; not selected as pre-play hand"
+    },
+    {
+      "evidence_id": "f0052.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 52.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0052.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0052.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0052.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0053.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 53.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0053.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0053.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0053.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0053.30",
+      "role": "draw_plus_3",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": 50.3,
+      "requested_source_seconds": 53.3,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "turn_evidence\\t0053.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0053.30_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0053.30_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "draw_plus_3",
+      "suitability_or_limit": "Already in first/later play or draw animation; not selected as pre-play hand"
+    },
+    {
+      "evidence_id": "f0054.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 54.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0054.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0054.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0054.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0055.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 55.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0055.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0055.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0055.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0056.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 56.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0056.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0056.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0056.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0056.30",
+      "role": "draw_plus_6",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": 50.3,
+      "requested_source_seconds": 56.3,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "turn_evidence\\t0056.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0056.30_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0056.30_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "draw_plus_6",
+      "suitability_or_limit": "Already in first/later play or draw animation; not selected as pre-play hand"
+    },
+    {
+      "evidence_id": "f0057.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 57.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0057.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0057.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0057.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0058.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 58.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0058.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0058.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0058.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0060.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 60.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0060.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0060.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0060.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0063.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 63.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0063.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0063.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0063.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0068.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 68.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0068.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0068.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0068.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0073.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 73.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0073.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0073.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0073.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0075.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 75.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0075.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0075.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0075.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0078.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 78.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0078.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0078.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0078.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0079.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 79.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0079.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0079.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0079.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0079.30",
+      "role": "before_end",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": 50.3,
+      "requested_source_seconds": 79.3,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0079.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0079.30_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0079.30_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "before_end",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0080.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 80.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0080.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0080.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0080.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0081.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 81.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0081.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0081.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0081.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0087.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 87.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0087.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0087.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0087.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0095.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 95.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0095.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0095.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0095.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0097.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 97.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0097.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0097.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0097.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0098.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 98.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0098.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0098.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0098.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0099.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 99.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0099.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0099.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0099.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0100.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 100.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0100.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0100.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0100.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0100.30",
+      "role": "selected_start_hand",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": 100.3,
+      "requested_source_seconds": 100.3,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0100.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0100.30_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0100.30_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "selected_start_hand",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0101.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 101.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0101.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0101.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0101.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0101.30",
+      "role": "draw_plus_1",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": 100.3,
+      "requested_source_seconds": 101.3,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "turn_evidence\\t0101.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0101.30_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0101.30_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "draw_plus_1",
+      "suitability_or_limit": "Already in first/later play or draw animation; not selected as pre-play hand"
+    },
+    {
+      "evidence_id": "f0102.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 102.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0102.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0102.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0102.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0103.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 103.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0103.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0103.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0103.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0103.30",
+      "role": "draw_plus_3",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": 100.3,
+      "requested_source_seconds": 103.3,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "turn_evidence\\t0103.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0103.30_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0103.30_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "draw_plus_3",
+      "suitability_or_limit": "Already in first/later play or draw animation; not selected as pre-play hand"
+    },
+    {
+      "evidence_id": "f0105.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 105.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0105.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0105.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0105.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0106.30",
+      "role": "draw_plus_6",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": 100.3,
+      "requested_source_seconds": 106.3,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "turn_evidence\\t0106.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0106.30_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0106.30_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "draw_plus_6",
+      "suitability_or_limit": "Already in first/later play or draw animation; not selected as pre-play hand"
+    },
+    {
+      "evidence_id": "f0108.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 108.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0108.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0108.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0108.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0112.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 112.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0112.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0112.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0112.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0115.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 115.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0115.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0115.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0115.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0116.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 116.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0116.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0116.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0116.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0117.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 117.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0117.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0117.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0117.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0118.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 118.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0118.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0118.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0118.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0121.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 121.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0121.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0121.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0121.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0124.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 124.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0124.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0124.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0124.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0125.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 125.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0125.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0125.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0125.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0126.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 126.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0126.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0126.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0126.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0127.00",
+      "role": "before_end",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": 100.3,
+      "requested_source_seconds": 127.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0127.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0127.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0127.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "before_end",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0128.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 128.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0128.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0128.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0128.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0129.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 129.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0129.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0129.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0129.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0130.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 130.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0130.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0130.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0130.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0134.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 134.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0134.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0134.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0134.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0135.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 135.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0135.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0135.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0135.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0136.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 136.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0136.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0136.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0136.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0137.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 137.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0137.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0137.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0137.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0138.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 138.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0138.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0138.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0138.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0139.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 139.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0139.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0139.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0139.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0140.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 140.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0140.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0140.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0140.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0141.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 141.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0141.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0141.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0141.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0143.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 143.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0143.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0143.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0143.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0144.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 144.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0144.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0144.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0144.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0145.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 145.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0145.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0145.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0145.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0147.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 147.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0147.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0147.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0147.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0148.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 148.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0148.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0148.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0148.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0150.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 150.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0150.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0150.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0150.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0154.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 154.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0154.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0154.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0154.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0160.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 160.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0160.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0160.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0160.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0161.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 161.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0161.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0161.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0161.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0162.00",
+      "role": "concession",
+      "turn_number": 4,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 162.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0162.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0162.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0162.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "concession",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0166.00",
+      "role": "event_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 166.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0166.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0166.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0166.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "event_or_boundary",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0174.00",
+      "role": "victory",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 174.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0174.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0174.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0174.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "victory",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0083.00",
+      "role": "independent_repair_event",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 83.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0083.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0083.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0083.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Opponent turn2 normal draw settled: four visible card backs; faces hidden.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0089.00",
+      "role": "independent_repair_event",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 89.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0089.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0089.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0089.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Research has resolved by this view: five visible card backs; two drawn faces hidden.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0084.00",
+      "role": "energy_generation_boundary",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 84.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0084.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0084.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0084.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          600
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Current Water orb visible by84s after pre-generation81/83s boundary.",
+      "suitability_or_limit": null
+    }
+  ],
+  "discard_snapshots": [
+    {
+      "snapshot_id": "discard-not-shown-owner",
+      "turn_number": null,
+      "pile_owner": "owner",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": "No opened pile in inspected0–174.723333s",
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "limit_reason": "Only face-up last-discard card is visible on board; neither pile dialog is opened."
+    },
+    {
+      "snapshot_id": "discard-not-shown-opponent",
+      "turn_number": null,
+      "pile_owner": "opponent",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": "No opened pile in inspected0–174.723333s",
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "limit_reason": "Only face-up last-discard card is visible on board; neither pile dialog is opened."
+    }
+  ],
+  "scheduled_capture_limits": [
+    "Draw ends located near50.3 and100.3s using adjacent reveal/hand frames. +1/+3/+6 already contain plays; native50.3/100.3 retained as clear pre-play hand.",
+    "Requested seek times retained; actual frame PTS not measured.",
+    "Bottom fifth starts at floor(2532*0.8)=2025; full1170pixel width."
+  ]
+}

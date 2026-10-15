@@ -1,0 +1,22 @@
+{
+  "source_video": "heavyhelmetpoisontest.MP4",
+  "source_sha256": "be0cf83cc2ff34ea1b015a82bc71454855fd19d57f20f799244cba24ca6fdf7d",
+  "review_scope": "Entire 91.936667-second user-labeled Heavy Helmet and Poison rule test",
+  "lead_review": "Independent lead check accepted the bounded rule-test conclusion after reading SOURCE.json, REVIEW.md, and COVERAGE.md and inspecting retained evidence frames.",
+  "frames_independently_checked": [
+    "evidence/012p5s.jpg",
+    "evidence/041p5s.jpg",
+    "evidence/061p0s.jpg",
+    "evidence/065p5s.jpg",
+    "evidence/070p5s.jpg",
+    "evidence/072p0s.jpg",
+    "evidence/072p5s.jpg",
+    "evidence/073p5s.jpg",
+    "evidence/074p5s.jpg",
+    "evidence/080p0s.jpg",
+    "evidence/087p0s.jpg"
+  ],
+  "accepted_observation": "Retreat 3, attack-only Heavy Helmet wording, both conditions at 100 HP, Magmar's attack formula, 90 attack damage, 10 HP remaining, separate Poison 10, 0 HP before Burned 20 animation, later Burn recovery message, and Defeat match the packet.",
+  "accepted_limit": "The clip supports this one rule-test interaction and does not expose engine internals or establish all modifier-order cases.",
+  "accepted": true
+}

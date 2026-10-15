@@ -1,0 +1,19 @@
+# Independent review handoff
+
+Whole source 0–719.001667 reviewed, two separate games and continuous deck edits. Parent game 1: ElPapa, owner second, loss after 11 turns. Child game 2: たこ, owner first, win by concession after 2 turns. All nine artifacts exist for each, structural passes and worker reconciliation receipts retained. Same frozen original SHA and source-local timebase. No original archive or external save performed by worker. Do not rerun packet builder or finish scripts after this stable submission; edit accepted artifacts surgically.
+
+Independent native targets, including ordinary actions:
+
+- Original QR/deck binding 1–26; original opening 26 before placement 30. Owner first actual move and both Poké Ball searches 55–72; current circle empty 55 and generated Darkness 56.
+- Opponent ordinary turn 3: hidden draw 88, Rare Candy 103–108 consumes Item and Stage 2, Wally 112–117 adds Colorless. Owner turn 4: literal banner 118, intact hand 121, generation 122, evolves 124/130, Copycat arrivals 141/143, Terapagos 154, Darkness 166, Feelin’ Fine draw 172.
+- Owner hands 217/277/334 and exact draw offsets in evidence inventory. Turn 6 pre-End is 226.3, button disappearance 226.6; 228 visibly labels turn 7. Fixed offsets may already be postplay.
+- Opponent turn 9 294–328: source fan3 at294, moving Poké Ball/search sequence298–302, Rainbow308, Happiny310, Water314, retreat322 pays one Water. Completed fan2 at334/339 is literal; postplay animation fan counts remain unknown rather than forced arithmetic.
+- Owner turn 10 338–369: Rainbow current Metal discarded then regenerated Metal; abandoned retreat prompt346–348; Lucky heals10, heads357, returned hand358; retreat361–363 pays Grass1+Metal1, Terapagos Bench zero Energy. Metal to Snorlax365; Type: Null367; next literal banner11 at369.
+- Terminal 376–407: free Happiny retreat380, Cynthia384, Chubby Cheer+20, Land Crush190 at388; Snorlax HP0 389, removal animation392, empty Active393, readable board393.5, award two points394–396, UI capped3, Defeat398. Terminal owner Active empty.
+- Edit binding: original Brave reduction426–428, Gold face440/selected441/finalpair458–460; original Persian quantity478–498; TR Persian2 at536, first Meowth removed537, second538, final Persian removal539–540; TR Meowth1 at548 and2 at552; Terapagos2 at560, one at561, zero562; Soothing1 at580 and2 at588. Final9 Pokémon visible590, trainers source588/618. Energy transient Water595/596; final Darkness597/599/600/620. Save loading621, queue622.
+- Game 2 original opening644 before Snorlax placement646; actual displayed turn1 banner653; intact hand656; first Poké Ball consumed656–657, displayed658, search660–664; Copycat arrivals674/676/678/680; second Poké Ball682 finds Type: Null684, bench686. Before-End687 is placement zoom with end hand readable; resolved board688.
+- Game 2 opponent ordinary turn2: literal banner690, moving normal draw692/694, Research696 with two hidden arrivals696/698, Order Pad702 tails704, no search, explicit concession710, Victory718. All Pokémon remain full HP, no attached Energy, Lightning current available terminal.
+
+Exact edited semantic20 is separate staged deck ID filmed-edit-cee45d5d45cb, whose definition root prepared. Parent DECK_EDIT_LEDGER.json provides source-edit proof. No revised QR is claimed. Brave Buddies50+ and Gold Breaker60+ are explicitly readable source names; initial small-view misread is retained only in CORRECTION_LEDGER.json. Independent acceptance is still pending for each game and whole-source interlude before any source archive.
+
+Recording limits: hidden opponent identities, remote input timing, transient fan overlap, no full discard windows and no worker live exact20 log snapshot. Those limits are explicit in the packets.

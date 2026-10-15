@@ -1,0 +1,20 @@
+[
+  {
+    "start_timestamp": "04:21.000",
+    "end_timestamp": "04:58.000",
+    "claim_or_question": "Exact printed name of the Turn 9 confusion Supporter.",
+    "why_uncertain": "The card's visible effect is clear, but the printed title is not reliable enough to transcribe.",
+    "consequence_if_wrong": "Card-name metadata only. Flower Shield prevents Hypno's Special Condition, Mewtwo ex becomes Confused after the failed self-check, and the later attack failure remain established.",
+    "recommended_sol_check": "No further review needed unless exact card-name indexing is desired.",
+    "id": "U1"
+  },
+  {
+    "start_timestamp": "00:17.000",
+    "end_timestamp": "00:29.000",
+    "claim_or_question": "Optional match-mode, pilot-type, and Auto metadata are not established.",
+    "why_uncertain": "No reliable visible cue is needed or available for these metadata fields.",
+    "consequence_if_wrong": "Metadata classification only; no effect on board state, game rules, scoring, or outcome.",
+    "recommended_sol_check": "None. Leave unknown and do not spend review time on it.",
+    "id": "U2"
+  }
+]

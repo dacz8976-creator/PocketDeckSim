@@ -1,0 +1,15 @@
+{
+  "source_sha256": "258066407acbc779da233b4ee92a6fd49b6260f35534b0e5dd84e6d9c3102683",
+  "items": [
+    {"id": "initial_boundary", "status": "unavailable_in_source", "interval": "before0s", "fact": "Opening hand/setup, owner Basic placement order, earlier already-discarded Poké Ball and initial owner turn beginning are absent. No entirely missing completed turn is established."},
+    {"id": "queue_mode", "status": "unknown", "fact": "No Auto option is visible, but a ranked/Solo/PvP queue label is not recorded. Owner default Ladder routing is a convention, not independently observed mode."},
+    {"id": "club_search_targets", "status": "hidden", "interval": "approximately16-19s", "fact": "Puppy-Loving Club reaches discard and cards enter opponent hand. Their selected identities are not visibly revealed. Later plays do not prove which cards were searched."},
+    {"id": "deck_and_hidden_hand", "status": "unknown", "fact": "Known public cards and Puppy Pile reveals do not establish either exact20-card deck or all hidden choices."},
+    {"id": "result_splash", "status": "resolved", "interval": "202-205.771927s", "fact": "White transition briefly surrounds a card-back animation and readable Dacz8976 Victory at203.5/204s. Concession and Victory establish owner win. Final reward page is not recorded."},
+    {"id": "old203_frame", "status": "resolved", "fact": "Old b_203s.jpg is a card-back animation and agrees semantically with native203s. The old prose failed to follow this through Victory; the initial lead blanket-white description is also corrected."},
+    {"id": "recording_relationship", "status": "no_linked_missing_setup_identified", "fact": "Lead reports the next212545 recording starts a fresh match against izzy, not a StefaGo continuation."}
+  ],
+  "unreviewed_available_intervals": [],
+  "terminal_outcome_unknown": false,
+  "requires_fabrication_to_complete_recorded_battle": true
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "retrospective-hand-lead-acceptance-v1",
+  "source": "20261002_115323000_iOS.MP4",
+  "source_sha256": "0a3c7a2dbd87adb74f2eea2d61723f5e68fd71a74f0ab80d7486a9ee1d6c6be0",
+  "accepted_at_utc": "2026-10-02T20:50:02.153105+00:00",
+  "lead": "Codex retrospective lead",
+  "worker_model": "gpt-6.1-sol",
+  "worker_effort": "high",
+  "independent_model": "gpt-6.1-sol",
+  "independent_effort": "high",
+  "verdict": "accepted_with_recording_limits",
+  "target_turns": [
+    13
+  ],
+  "original_full_battle_status": "Reviewed; preserved",
+  "scope": "Owner-authorized targeted starting-hand additions only; accepted outcome, boards, points and unrelated turns unchanged",
+  "independent_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_sharpedo\\20261002_115323000\\SOURCE_CHECKS_ENDPOINT_REPAIR_ACCEPTANCE.json",
+  "structure_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000\\STRUCTURE_CHECK.json",
+  "capture_status": "complete_with_recording_limits",
+  "source_read_basis": "Worker verified current archived source SHA after OneDrive delivery; independent verifier reused retained native evidence",
+  "shared_registration": "complete",
+  "limits": "Exact frame PTS unmeasured; scheduled candidates after first play are unsuitable; qualified ending views preserved",
+  "accepted_packet_hashes": {
+    "HAND_SUPPLEMENT.json": "510f555425e9c2d12ca514fc892b66617c42f8319fa95f73e8615cc3243a1124",
+    "TURN_EVIDENCE.json": "aa90a8054352248d4e2332ddcae8fbada7a924f48f38e49a644cb30051d2f3b5",
+    "REVIEW_SUPPLEMENT.md": "1a1d49ec01a669d6b3b95bd1bf25ce94b71e4166bb9e8f517786db30183fcea1",
+    "UNCERTAINTIES.json": "446a0702195dde687b071ecb1ed63d8f33f16d571c3af51b181711b928cb135e"
+  },
+  "shared_event": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\events\\2026-10-02T205003.481258_0000_e9766ce1-2c2a-4943-a44c-9b904b94393c.json",
+  "cli_verified_sha256": "0a3c7a2dbd87adb74f2eea2d61723f5e68fd71a74f0ab80d7486a9ee1d6c6be0"
+}

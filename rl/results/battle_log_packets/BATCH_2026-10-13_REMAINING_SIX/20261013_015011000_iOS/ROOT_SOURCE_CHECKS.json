@@ -1,0 +1,78 @@
+{
+  "lead": "/root",
+  "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+  "updated_utc": "2026-10-13T15:02:46.013149+00:00",
+  "full_second_pass": false,
+  "checks": [
+    {
+      "path": "turn_evidence/t0027.50.jpg",
+      "sha256": "6722fce1fdad23aaf6ab3af7c180869781b3f629de42e13f16de43093af72790",
+      "observed": "Five faces before Active: Copycat art at clipped left label, Poke Ball, non-ex Alolan Muk, raised Pawniard, Alolan Grimer. Copycat name is fully readable later43.5 with matching art; no inferred hidden sixth card."
+    },
+    {
+      "path": "turn_evidence/t0043.50_bottom.jpg",
+      "sha256": "a1b913423f215a8781df814b4dc7608604acaae80ad4af12e1a509fcde6d0f46",
+      "observed": "Genuine preplay hand Copycat/PokeBall/AlolanMuk/Ilima, four cards after setup and normal Ilima draw."
+    },
+    {
+      "path": "turn_evidence/t0045.00.jpg",
+      "sha256": "265d031fe6dd2e0fb767cef202a8f8adcc2aae324c12724b5687327fefdc5001",
+      "observed": "First voluntary PokeBall displayed; remaining three-card hand Copycat/Muk/Ilima."
+    },
+    {
+      "path": "turn_evidence/t0047.00.jpg",
+      "sha256": "01b07aa9432345ac2c6b2a4b68ebb432cd43a8fc0345de35a962ea20678b9b84",
+      "observed": "Searched Regigigas revealed; literal Seal of Antiquity says cannot attack without Regirock/Regice/Registeel on Bench. It does not block attachment."
+    },
+    {
+      "path": "turn_evidence/t0067.00.jpg",
+      "sha256": "637d02f16ef187e48db3371d2603409baff7679f67db7515964241052f1f4c89",
+      "observed": "Research zoom with another Research already in hand. Submitted firstResearch67 assignment unsupported; likely second reveal, earlier first arrival requires bounded check."
+    },
+    {
+      "path": "turn_evidence/t0068.00.jpg",
+      "sha256": "481935a8a20f6eeafd689ea7a64d5452e880eaa440104e1f7e4b18f2fbac7d49",
+      "observed": "Heavy Helmet zoom, two Research already in hand. Submitted secondResearch68 assignment contradicted."
+    },
+    {
+      "path": "turn_evidence/t0068.50.jpg",
+      "sha256": "1e703a75ce7b077f54e99f35d646e875253faef407e4352fd6e70ac6f9c1b641",
+      "observed": "LuckyIcePop zoom with Helmet and twoResearch in hand. Submitted Helmet68.5 assignment contradicted."
+    },
+    {
+      "path": "turn_evidence/t0069.50.jpg",
+      "sha256": "6233e19f9f4a2e81175ce1656f2fc1bba20fa13a558270462492897bb09fcf30",
+      "observed": "All four cards settled in hand: Research,Research,HeavyHelmet,LuckyIcePop. This is a post-resolution view, not first Pop arrival."
+    },
+    {
+      "path": "turn_evidence/t0071.50_bottom.jpg",
+      "sha256": "22d0f63d64bc24ed210e7f6627c371cfdc336484abbd23f1477d80aa915ebf26",
+      "observed": "Owner ending hand Research2/HeavyHelmet/LuckyIcePop4, item remains unattached; reconciles start4,search/play/bench,Copycat return2 anddraw4."
+    },
+    {
+      "path": "turn_evidence/t0169.00.jpg",
+      "sha256": "464949df068f3486b9da8f7bc129ca2e104da4d209786286485b556ac5be7188",
+      "observed": "Explicit error opponent did not return within allowed time. Owner hand now5 including Glimmora; Darkness available unused. No third-point or explicit concession claimed."
+    },
+    {
+      "path": "turn_evidence/t0182.30.jpg",
+      "sha256": "4d9bb8c02e62a2c7e297bcdf9b41e4ab931ecdc8194762f99d92339ddabe762c",
+      "observed": "Victory vs coke, went first,3turns,0ownerpoints/0opponentpoints,damage0."
+    },
+    {
+      "path": "turn_evidence/t0066.00.jpg",
+      "sha256": "8612a8b1e37d55f9e84bb47f98bbf8257ac59af7eb54bfac913012de05fc7295",
+      "observed": "Root directly viewed corrected first Research reveal: large Research with no earlier Research in hand. Second Research67, Helmet68 and Pop68.5 already directly checked. Revised packet preserves corrected arrival versus settled-hand distinctions."
+    },
+    {
+      "path": "turn_evidence/t0167.50.jpg",
+      "sha256": "b3202a9177fb2551dba3d5b159d81fe4fc74a8d841511b03360047b46a3faee7",
+      "observed": "Root directly viewed final clear turn3 hand Research2/Helmet/Pop/Glimmora5, both boards and unused Darkness before timeout modal. Revised ledger/evidence use167.5;168.5 explicitly blurred/error."
+    }
+  ],
+  "pending_primary_repairs": [],
+  "original_findings_preserved": [
+    "Copycat actual draw arrival anchors and qualified clipped opening label"
+  ],
+  "repair_resolution": "Two independent timestamp findings resolved in revised eight-file freeze; separate checker accepted exact current hashes. Original draft observations and rejected bytes retained."
+}

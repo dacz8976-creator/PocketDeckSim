@@ -1,0 +1,43 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-12T01:41:13.169701+00:00",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "source_video": "20261012_004128000_iOS.MP4",
+  "source_sha256": "dbf23091859cbe159afc724f32f517f75925ab214343474285306b035ee4146e",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 4,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-11_NEW_PAUSE_GAMES\\20261012_004128000_iOS\\independent_sol\\CHECK_RESULT.json",
+  "basis": "Whole-source Sol review and coverage; separate bounded Sol verification of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans and outcome. Root reconciled reports and checked the terminal frame. Structure checked separately. Only lead_checked, lead_acceptance and battle_review_status administrative fields are updated after the frozen independent input.",
+  "source_limits": [
+    "Opponent hidden hand faces never exposed; every opponent draw name is null.",
+    "Neither discard pile opened; only face-up top and public play history available.",
+    "Normal draw ends are approximate observed boundaries, not measured encoded frame PTS.",
+    "Queue rank/name not shown clearly; human PvP is established by opponent search, clocks, fan and no Auto control.",
+    "Lead verified MP4 creation_time2026-10-12T00:41:28Z, Chicago local2026-10-11 at19:41:28. Match date2026-10-11 uses metadata plus phone clock; filename date is UTC.",
+    "Exact played artwork/rarity not inferred from QR or log."
+  ],
+  "outcome": {
+    "owner": "win",
+    "method": "knockout of opponent last Pokemon",
+    "concession": false,
+    "terminal_turn": 4,
+    "final_points": {
+      "owner": 1,
+      "opponent": 0
+    },
+    "evidence_ids": [
+      "t0118.50",
+      "t0121.00",
+      "t0123.00",
+      "t0128.00",
+      "t0131.00"
+    ],
+    "result_basis": "Stormy Prison90 knocks out Slowpoke80HP. Opponent Bench empty. Victory screen names Dacz8976."
+  },
+  "external_status": "Live deck snapshot retrieved for this batch. This game save is pending; dated deck retrieval and filmed QR binding are preserved in DECK_USED.json.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

@@ -1,0 +1,46 @@
+{
+  "scope": "Target hand supplement only",
+  "capture_status": "complete_with_recording_limits",
+  "unresolved_hand_identities": [],
+  "astra_question": null,
+  "limits": [
+    {
+      "field": "opponent_hand_count",
+      "turns": [
+        5,
+        7
+      ],
+      "supported_range": [
+        7,
+        8
+      ],
+      "reason": "One tightly overlapping card-back boundary cannot be cleanly separated."
+    },
+    {
+      "field": "timing",
+      "reason": "Actual frame PTS not measured. Draw-end and first-move timings bounded rather than frame-exact; late scheduled candidates may follow play."
+    },
+    {
+      "field": "discard_piles",
+      "reason": "No opened pile in retained hand evidence; intervening full turns not newly audited for discard windows."
+    },
+    {
+      "field": "boards_actions_outcome",
+      "reason": "Inherited by exact accepted-row provenance, not freshly re-reviewed."
+    },
+    {
+      "field": "ownerturn13",
+      "reason": "Explicitly outside requested first-six-owner-turn scope."
+    },
+    {
+      "field": "deck_game_version",
+      "reason": "Supplied current20-slot log snapshot preserved; unseen historical version not proven."
+    }
+  ],
+  "independent_provenance_repair": {
+    "turn_number": 7,
+    "field": "Research pair reveal provenance",
+    "reason": "Native137 shows Indeedee ex already appended in the fan and Copycat enlarged as the current Research reveal. Indeedee identity is directly observed in the fan; its first-card order is inferred from this append state preceding the displayed second card. Copycat reveal is directly observed at137 and its retained fan at139. Exact first-reveal onset is unmeasured.",
+    "worker_submission_preserved": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\worker_submission_before_research_provenance_repair"
+  }
+}

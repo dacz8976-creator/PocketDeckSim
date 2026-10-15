@@ -1,0 +1,73 @@
+{
+  "lead": "/root",
+  "source_sha256": "07937ec6622f5979fd73f65b81a6315bba5bcaadb5eb272c9b28d4b17c4bdaa4",
+  "full_second_pass": false,
+  "checks": [
+    {
+      "path": "turn_evidence/t0027.70.jpg",
+      "observed": "Root viewed five opening cards before Active: Heavy Helmet, non-ex Alolan Muk, Research, Glimmet and Kingambit. Glimmet is selected; owner goes first and phone reads 9:08.",
+      "sha256": "f6f2082e00914b583bcdee6f5791ee4a81a3941cbae63a2fc059dd1bd0d5e452"
+    },
+    {
+      "path": "turn_evidence/t0124.60_bottom.jpg",
+      "observed": "Genuine ordinary turn 3 preplay hand has six cards: Helmet, Muk, Kingambit, Ilima, Glimmora and Pawniard. This precedes the selected Glimmora evolution.",
+      "sha256": "ba3863034cc79b97cbb17e08d463cf65cbf695ce8d597ef811dfef798ce6617e"
+    },
+    {
+      "path": "turn_evidence/t0125.30.jpg",
+      "observed": "Glimmora is selected and enlarged while still highlighted in hand. This supports the first evolution choice, with completed placement requiring a following native view. Inspection and completed evolution are separate observations.",
+      "sha256": "586b671a47e91c773cd067bab10540ac25a99626f3fa8b1d0e139531d187b9ba"
+    },
+    {
+      "path": "turn_evidence/t0144.00_bottom.jpg",
+      "observed": "Ordinary ending hand is Kingambit and Ilima, two cards. Six starting cards minus Glimmora evolution, Muk evolution, Pawniard bench placement and Helmet attachment reconciles two. Regular Energy does not change the hand.",
+      "sha256": "3ccde2091a2374f86d5d30f1851f965e42e209af246ae550132b2f6444e4a469"
+    },
+    {
+      "path": "turn_evidence/t0050.10.jpg",
+      "observed": "First turn 1 Research arrival is Poke Ball, with Helmet, Muk, Kingambit and Ilima already held.",
+      "sha256": "095d23cd227076d8a4a4c08626948b5454607feef4b0d911e499ad3ac5f947ba"
+    },
+    {
+      "path": "turn_evidence/t0051.10.jpg",
+      "observed": "Second turn 1 Research arrival is Glimmora; Poke Ball is already in hand. Individual order is established.",
+      "sha256": "727631a6299c2cb933ed745200e59862c7fad2712a1fb1985b5ea6f558908e32"
+    },
+    {
+      "path": "turn_evidence/t0217.50.jpg",
+      "observed": "First turn 5 Research arrival is Glimmet, with Kingambit and Ilima already held. Muk is benched at 110 HP.",
+      "sha256": "bfe0ae741f367e9b7cc2c957abae3675105b83ce1b4e1c0b71a46507271bad6a"
+    },
+    {
+      "path": "turn_evidence/t0218.40.jpg",
+      "observed": "Second turn 5 Research arrival is Poke Ball, with the just-drawn Glimmet already in hand.",
+      "sha256": "0f862eca9c3c71f99cd517e88133ac6425edb64dcdbc5addb5514012acb8551c"
+    },
+    {
+      "path": "turn_evidence/t0224.50.jpg",
+      "observed": "Poke Ball search has added Regigigas as the fourth hand card, after Kingambit, Ilima and Glimmet. The search result is distinct from the Research draws.",
+      "sha256": "5dc5644400f447506dac555b1035b8eb44f5e4eda122ab03cb65b66c04a545fe"
+    },
+    {
+      "path": "turn_evidence/t0540.40.jpg",
+      "observed": "Detailed result versus Subbles confirms Defeat, went first, fourteen turns, owner zero points, opponent three points and 60 damage. This establishes the terminal outcome.",
+      "sha256": "70d642d3114e9b34d723f900a3329f8de98b8e3944139a4769ad5198ea52612e"
+    },
+    {
+      "path": "turn_evidence/t0514.90.jpg",
+      "observed": "Root viewed the settled final turn 13 board: Active Regigigas has 50 HP and two Darkness Energy, while benched non-ex Muk has zero Energy. The regular attachment therefore resolved on Regigigas. The earlier drag passing over Muk does not establish its destination. Owner hand is Kingambit and Glimmora; opponent has two points before the final knockout.",
+      "sha256": "0ca1c7f774878fd4b414b1fc139d5d80f18d27870fb69defc2aa56ca3779bed5"
+    },
+    {
+      "path": "turn_evidence/t0127.30.jpg",
+      "observed": "Root directly viewed Glimmora placed over the Active Glimmet at 90 HP while the hand has fallen from six to five cards. This confirms completed evolution by 127.3 seconds. Earlier 125.3 remains a selected inspection with six held cards, supporting a commit bracket rather than an invented exact instant.",
+      "sha256": "16bfeab80f8871f7b7254ee5cccf7c4ca776bb220960f2274c53b69cc47187be"
+    }
+  ],
+  "pending_primary_repairs": [],
+  "updated_utc": "2026-10-13T16:19:37.169992+00:00",
+  "original_findings_preserved": [
+    "Turn 3 selected Glimmora at 125.3 is inspection/selection with six-card hand, rather than completed evolution. Qualify earlier selection separately, source-anchor the completed first play and align coverage, timing, ledger and evidence. Await independent acceptance of revised eight hashes."
+  ],
+  "repair_resolution": "Independent corrected-input recheck accepted all eight current hashes; root retained direct source observations and reconciled repaired actions, timing and board state. Rejected bytes remain preserved."
+}

@@ -1,0 +1,28 @@
+{
+  "video_basename": "20260930_142105000_iOS.MP4",
+  "sha256": "33aa21f00544ea03546d97ebc5f0007832cf8c151a5dbc5a5de7106ea4331ee6",
+  "bytes": 293071088,
+  "duration_seconds": 159.021667,
+  "streams": [
+    {
+      "codec_name": "hevc",
+      "width": 1170,
+      "height": 2532
+    },
+    {
+      "codec_name": "aac"
+    }
+  ],
+  "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20260930_142105000_iOS.MP4",
+  "recording_relationships": [],
+  "recording_date_basis": "20260930 source filename and owner testimony; no independent clock verification",
+  "owner_testimony": "All new September 30 uploads were autopilot battles against the computer.",
+  "mode": "autopilot_vs_computer",
+  "ladder_eligible": false,
+  "ladder_action": "excluded_by_owner_instruction; no Ladder Log write",
+  "reviewer": "sol_auto_142105000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "identity_verified_event_id": "bbcbb021-0585-4075-8635-55ce206176ce",
+  "intake_utc": "2026-09-30T15:57:20.721013+00:00"
+}

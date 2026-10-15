@@ -1,0 +1,43 @@
+{
+  "source_video": "20261002_214254000_iOS.MP4",
+  "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+  "consequential_ambiguities": [],
+  "requires_astra": false,
+  "recording_limits": [
+    {
+      "topic": "concealed opponent cards",
+      "status": "hidden",
+      "limit": "All hidden draws/searches remain null; full computer deck never identifies draw"
+    },
+    {
+      "topic": "discard and evolution piles",
+      "status": "not_opened",
+      "limit": "No complete pile view or opened stack. Historical undercards proved by witnessed evolution continuity, not source detail popup."
+    },
+    {
+      "topic": "Energy generation phase",
+      "status": "qualified",
+      "limit": "Several fresh owner-start frames have empty current orb before generation; later candidates supply Water proof. Computer start generation not always native-resolved; null remains explicit."
+    },
+    {
+      "topic": "timing",
+      "status": "exact_native_approximate_events",
+      "limit": "Decoded selected-frame PTS measured; event/touch source anchors approximate. Reduced1fpsscan is locator, not continuous playback certificate."
+    },
+    {
+      "topic": "artwork",
+      "status": "set_identifiers_incomplete",
+      "limit": "Alternate physical artwork read where useful; exact deck snapshot printing label not imposed on source."
+    },
+    {
+      "topic": "Advanced",
+      "status": "separate_bound_evidence",
+      "limit": "Source opening selector has AI/deck/Auto, menu category from independently source-bound owner screenshot."
+    },
+    {
+      "topic": "final points",
+      "status": "resolved",
+      "limit": "One regular Meowth KO previously gives1; final Mega KO+3award; UI Victory displays3rather than4. Preserve displayed3–0."
+    }
+  ]
+}

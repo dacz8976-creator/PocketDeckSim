@@ -1,0 +1,91 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260929_020916000",
+  "sources": [
+    {
+      "video_basename": "20260929_020916000_iOS.MP4",
+      "sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "source_url": null,
+  "captured_at": null,
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": null,
+  "game_version_binding_basis": null,
+  "conflicts_with_filmed_cards": null,
+  "exact_list_status": "unavailable_version_bound_historical_log",
+  "filmed_visible_core": [
+    {
+      "name": "Copycat",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    },
+    {
+      "name": "Cyrus",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    },
+    {
+      "name": "Entei ex (full art)",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    },
+    {
+      "name": "Entei ex (regular art)",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    },
+    {
+      "name": "Flame Patch",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    },
+    {
+      "name": "Giant Cape",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    },
+    {
+      "name": "Poké Ball",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    },
+    {
+      "name": "Pokémon Center Lady",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    },
+    {
+      "name": "Professor's Research (full art)",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    },
+    {
+      "name": "Professor's Research (regular)",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    },
+    {
+      "name": "Rainbow Cave",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    },
+    {
+      "name": "Repel",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    },
+    {
+      "name": "Sabrina",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    },
+    {
+      "name": "Starting Plains",
+      "basis": "native observed card; minimum visible composition, not exact20 log snapshot"
+    }
+  ],
+  "filmed_energy_types": [
+    "Fire"
+  ],
+  "limits": "Historical exact20-card log snapshot unavailable without version binding. Filmed visible core is separately supported; no current deck substitution."
+}

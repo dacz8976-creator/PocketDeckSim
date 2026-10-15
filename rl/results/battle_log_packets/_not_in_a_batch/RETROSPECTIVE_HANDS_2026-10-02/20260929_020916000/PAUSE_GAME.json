@@ -1,0 +1,211 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260929_020916000",
+  "review_date": "2026-10-02",
+  "sources": [
+    {
+      "video_basename": "20260929_020916000_iOS.MP4",
+      "sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "destination": null,
+  "deck_name": "Entei ex visible core",
+  "opening": {
+    "row_kind": "setup",
+    "turn_number": 0,
+    "source_video": "20260929_020916000_iOS.MP4",
+    "timestamp_seconds": 22.5,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Rainbow Cave",
+        "basis": "direct native before Active placement",
+        "evidence_ids": [
+          "F0022.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Copycat",
+        "basis": "direct native before Active placement",
+        "evidence_ids": [
+          "F0022.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Repel",
+        "basis": "direct native before Active placement",
+        "evidence_ids": [
+          "F0022.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Entei ex (full art)",
+        "basis": "direct native before Active placement",
+        "evidence_ids": [
+          "F0022.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Giant Cape",
+        "basis": "direct native before Active placement",
+        "evidence_ids": [
+          "F0022.50"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Entei ex",
+      "opening_position": 4,
+      "source_video": "20260929_020916000_iOS.MP4",
+      "timestamp_seconds": 34,
+      "evidence_ids": [
+        "F0022.50",
+        "F0034.00"
+      ]
+    },
+    "redraw_or_replacement": "No redraw/replacement observed in sampled setup; no inferred hidden replacement",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "F0022.50"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW_SUPPLEMENT.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "historical accepted full review preserved; separate retrospective supplement",
+  "outcome": {
+    "owner_result": "win",
+    "owner_points": 3,
+    "opponent_points": 2,
+    "local_match_date": "2026-09-28",
+    "basis": "inherited accepted review; old result unchanged"
+  },
+  "mode_classification": {
+    "classification": "ladder_candidate_mode_unverified",
+    "excluded_from_ladder": null,
+    "auto_control_observed": false,
+    "auto_enabled_status": null,
+    "action_authorship": null,
+    "evidence_ids": [
+      "F0022.00",
+      "F0034.00",
+      "F0035.00",
+      "F0036.00",
+      "F0038.00",
+      "F0041.00",
+      "F0051.00",
+      "F0052.00",
+      "F0053.00",
+      "F0054.00",
+      "F0055.00",
+      "F0059.00",
+      "F0062.00",
+      "F0064.00",
+      "F0104.00",
+      "F0114.00",
+      "F0132.00",
+      "F0138.00",
+      "F0139.00",
+      "F0140.00",
+      "F0142.00",
+      "F0145.00",
+      "F0159.00",
+      "F0167.00",
+      "F0170.00",
+      "F0196.00",
+      "F0205.00",
+      "F0208.00",
+      "F0209.00",
+      "F0210.00",
+      "F0212.00",
+      "F0215.00",
+      "F0253.00",
+      "F0263.00",
+      "F0264.00",
+      "F0288.00",
+      "F0309.00",
+      "F0312.00",
+      "F0329.00",
+      "F0334.00",
+      "F0354.00",
+      "F0357.00",
+      "F0358.00",
+      "F0359.00",
+      "F0361.00",
+      "F0364.00",
+      "F0381.00",
+      "F0388.00",
+      "F0390.00",
+      "F0400.00",
+      "F0409.00",
+      "F0411.00",
+      "F0414.00",
+      "F0417.00",
+      "F0424.00",
+      "F0466.00",
+      "F0467.00",
+      "F0469.00",
+      "F0473.00",
+      "F0477.00",
+      "F0022.50",
+      "F0035.50",
+      "F0056.50",
+      "F0065.50",
+      "F0079.50",
+      "F0141.50",
+      "F0151.00",
+      "F0152.00",
+      "F0160.00",
+      "F0172.00",
+      "F0196.50",
+      "F0237.00",
+      "F0246.00",
+      "F0254.00",
+      "F0314.00",
+      "F0317.00",
+      "F0366.00",
+      "F0385.00",
+      "F0392.00",
+      "F0415.00",
+      "F0418.00",
+      "F0482.00",
+      "F0065.00",
+      "F0236.00",
+      "F0245.00"
+    ],
+    "rule": "Any visible Auto option, includingOFF, implies computer opponent and ladder exclusion, independent of enabled status.",
+    "basis": "No Auto option visible in85 inspected full native views; conventional rank match inherited from accepted review. Bounded sampled absence only.",
+    "limits": "Overlays hide some controls at some anchors; hidden menu and intervals between captures not established."
+  },
+  "limits": [
+    "Opponent cards drawn face-down cannot be named; hidden cards are null, never inferred from a presumed deck.",
+    "All 490 retained 1fps reduced samples (25 grids, nominal 0 through489 seconds) screened as action/prompt/discard locators. This does not inspect every instant; subsecond prompts or inputs can fall between samples.",
+    "No opened discard panel was observed in this sampled scan or85 native views. Periodic top-of-pile views establish only the visible top card, not full pile contents.",
+    "Source-local requested times and measured selected-frame PTS are distinct. Draw-end times are bracketed by retained views, not measured exact animation boundaries.",
+    "Start/end boards are explicitly composite source-derived boundary states with field anchors. Later endpoints and inherited accepted results are not exact simultaneous native boundary snapshots.",
+    "Historical exact20-card log snapshot unavailable without version binding. Filmed visible core is separately supported; no current deck substitution.",
+    "Auto option absent in inspected native controls, with sampled/obscured-view limits. This cannot prove absence at every instant or hidden menu. Auto enabled status and action authorship remain unknown."
+  ],
+  "lead_checked": false,
+  "independent_acceptance_status": "pending"
+}

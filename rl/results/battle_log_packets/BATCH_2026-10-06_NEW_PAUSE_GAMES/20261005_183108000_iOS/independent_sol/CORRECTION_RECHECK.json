@@ -1,0 +1,106 @@
+{
+  "schema": "bounded-independent-sol-correction-recheck-v1",
+  "reviewer": "/root/independent_183108",
+  "review_model": "gpt-6.1-sol",
+  "checked_at_utc": "2026-10-06T21:12:24.558222+00:00",
+  "source_video": "20261005_183108000_iOS.MP4",
+  "source_sha256": "94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+  "source_duration_seconds": 403.317007,
+  "status": "accepted_after_R1_R4_corrections",
+  "independent_acceptance": true,
+  "scope": "Tiny amended-field recheck after prior fresh bounded independent review; not a new whole-source/fulldecode pass. Previous full first-pass coverage and independently checked ordinary/consequential anchors carry forward.",
+  "checked_input_sha256": {
+    "SOURCE.json": "fc4a2dadc8036bf30868c012a66bb6525f9fc9ac719ab900685d201e8d309a05",
+    "REVIEW.md": "d25101139ef17cacc5b36bfc2d07d32d767f5c1935878cd6a8dd6d162148a580",
+    "COVERAGE.md": "68d52bf173620db6e2ae9b1dadbbe032e85e580fbf8e1a5ee45501fc21e7a911",
+    "SUMMARY.json": "bb449e237404fdcae45fb2f9d6fea15bfafab30bb7e4add72bf0ca234e5dd3b0",
+    "UNCERTAINTIES.json": "a9ade470133dbda11870c8740aa78df69030434c418b2906c9ecfaeeb92fa28d",
+    "PAUSE_GAME.json": "6bda95996c780a0af5ad16d6ed40f2727260153124207badb7c95ca5e9ee9512",
+    "DECK_USED.json": "442834dbdb6b104d555e2da390242164544598039c1669b5ac9c722b561b09e3",
+    "TURN_LEDGER.json": "1cd0e21efd867e4d67aa973395bbdb173d32cc7beaf1cd9db6ad37d99bebf0a6",
+    "TURN_EVIDENCE.json": "25f3afbe27b2146ae3e02e5483b2746c9bd696267e24f5a3ae84465cbcdaf234"
+  },
+  "supplemental_checked_input_sha256": {
+    "independent_sol/CHECK_RESULT.rejected_R1_R4.json": "b1fb6ca1451618e92a9b49ed0ce83d0f0423cef80bb382eeda2833513b296175",
+    "independent_sol/FROZEN_INPUT_SHA256.json": "1f5e536a37629081cc2dfe26244c04c904580a904ab1a16efcb3a4fd02729f6e",
+    "independent_sol/VIEWED_EVIDENCE.json": "cf1440ba9984dd7066a59ece20042d95482eb39c2b705ad4cfafabe3fec65643",
+    "independent_sol/CAPTURE_CHECK.json": "aa58c3bc79276280e811f0df0d23d85314613405e4956dd2321c3d84989e17f3",
+    "independent_sol/QR_RECHECK.json": "9d1cea5a4ff73d8e2f2b93003cb1c9661cec0dd2644c3853a87e23b20ccfaa38",
+    "astra_gap/CHECK_RESULT.json": "f64f18ef65ff364ede751155df7383ed3b3556dbd15e5b3c113edb375ce709f0",
+    "astra_gap/VIEWED_EVIDENCE.json": "a1b080c06eaef19a98bc9d5887962767649fbdc4b8e480b946d3c972a88fcc5e",
+    "qr_intake/QR_DECODE_0001.00.json": "46b9462c53a360b4b166b979847c9b56ccce9f73d6a69937158e31b0a44942fd",
+    "qr_intake/t0001.00.png": "094e5bffe741a905afc18805147bd8b71352e43b2384dfc22284a01747866000",
+    "RECORDING_METADATA.json": "ee2a7888ed9c86124a8b88e28a07e00eaa28d57916a9812642ca5b8d5b81f99b",
+    "ROOT_CORRECTIONS_R1_R4.json": "b37dc4ca85ff82e3af8a697ef330c7dbe948f173cebf61da06980486ac7cb500",
+    "ROOT_REPAIR_STRUCTURE_CHECK.json": "f1e94f5b49126ee49622a8742481404bfe77fa9d6a84cd6e960ce043294ff632",
+    "ROOT_VIEWED_EVIDENCE.json": "81c0e409974db45343edf666381e40d656a460582e49dd1b85f7765e5beb5b70",
+    "turn_evidence/crops/F_0203_00_top.png": "8ce28c3b97b5cc9c496cc3851311bfb86ccdb30a18a192050851d460b5f3181a",
+    "turn_evidence/crops/F_0205_00_top.png": "4498e383f72e928e70cf17474f3362bf31733489872fee4aed214f7df5d97db2",
+    "turn_evidence/t0196.50.jpg": "3ad7b37dacea6104bfcbe321e54911d17c924df9a504e3785e727b140bf4a46d",
+    "turn_evidence/t0389.00.jpg": "5037eeb19f43cf3a129a13ca8f4950636292c56193f975aeea29dddee1018704",
+    "turn_evidence/t0392.00.jpg": "a6dd93a4138df134e61f1b89396c0dc83f5deef7f4a13dd155b7b8ade0c76e05",
+    "../LIVE_DECK_SNAPSHOT.json": "f886698321bbdf67c06a17fe4d54a4ef2e1d464f02d972690383c64826432a28",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+    "../PAUSE_DECKS_IMPORT.json": "278fcaa5baffebd347323bb5f13283bbd87cc21b385924bf989a9d20efc21355"
+  },
+  "original_nine_backup_sha256": {
+    "SOURCE.json": "fc4a2dadc8036bf30868c012a66bb6525f9fc9ac719ab900685d201e8d309a05",
+    "REVIEW.md": "d25101139ef17cacc5b36bfc2d07d32d767f5c1935878cd6a8dd6d162148a580",
+    "COVERAGE.md": "68d52bf173620db6e2ae9b1dadbbe032e85e580fbf8e1a5ee45501fc21e7a911",
+    "SUMMARY.json": "bb449e237404fdcae45fb2f9d6fea15bfafab30bb7e4add72bf0ca234e5dd3b0",
+    "UNCERTAINTIES.json": "a9ade470133dbda11870c8740aa78df69030434c418b2906c9ecfaeeb92fa28d",
+    "PAUSE_GAME.json": "6bda95996c780a0af5ad16d6ed40f2727260153124207badb7c95ca5e9ee9512",
+    "DECK_USED.json": "442834dbdb6b104d555e2da390242164544598039c1669b5ac9c722b561b09e3",
+    "TURN_LEDGER.json": "a3951a9c10cd5d62f8781b2fa597545f601a9f2fe01873c376b2053b6de8660b",
+    "TURN_EVIDENCE.json": "18c8cac3edba832939d0241890630eb1b642ede97ebd5c5ee08f3f0b63a18e8a"
+  },
+  "backups_match_frozen_rejected_inputs": true,
+  "rejected_receipt_preserved_byte_identical": true,
+  "stable_current_inputs": true,
+  "repair_checks": {
+    "R1": true,
+    "R2": true,
+    "R3": true,
+    "R4": true
+  },
+  "details": {
+    "R1": "Native203/205 top crops revisited:4backs→5; hidden identity and entire buffered action/unknown order unchanged.",
+    "R2": {
+      "observed_absence_locations_corrected": 70,
+      "Needle_instances_preserved": 10,
+      "empty_slots_semantics_preserved": 83
+    },
+    "R3": "All13 specified capture flag mappings match, preplay rejection flags/selections and native references preserved.196.5 enlarged attack overlay revisited;Copycat/Scolipede ending2 unchanged and accurately limited.",
+    "R4": "Clean389 native frame revisited:owner Activeempty,centerMega170/Darkness1,opponentHoundstone60/Psychic2,rightMeloetta10,noEnergy,Plaza,owner2/opponent1. Packet explicitly separates392 awardedopponent3, with proper per-field references;removal animation388 andfirstclean389 separated."
+  },
+  "native_evidence_revisited_seconds": [
+    203,
+    205,
+    196.5,
+    389
+  ],
+  "remaining_required_repairs": [],
+  "accepted_outcome": {
+    "classification": "human_event",
+    "opponent": "ぐー、",
+    "owner_outcome": "loss",
+    "owner_points": 2,
+    "opponent_points": 3,
+    "turns": 10,
+    "damage_dealt": 470
+  },
+  "capture_status": "complete_with_recording_limits",
+  "preserved_recording_limits": [
+    "T6 buffered internal order and exact remote inputs unknown.",
+    "Opponent hidden card identities unknown.",
+    "Full discard piles not opened.",
+    "PTS/exacttouch timestamps not measured.",
+    "Exact20 filmed QR definition is prepared;live saved deck/game verification remains lead-only."
+  ],
+  "whole_source_second_pass_claim": false,
+  "media_rehashed_or_decoded": false,
+  "canonical_files_modified": false,
+  "external_or_registration_or_media_changes": false,
+  "receipt_written": "independent_sol/CORRECTION_RECHECK.json",
+  "accepted": true
+}

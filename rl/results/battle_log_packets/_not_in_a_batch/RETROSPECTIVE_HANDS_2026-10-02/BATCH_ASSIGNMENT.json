@@ -1,0 +1,69 @@
+{
+  "batch_id": "retrospective_hands_2026-10-02",
+  "owner_authorization": "Review previous videos using CODEX_REQUEST_pause_games.md, Sol agents, Astra for unclear or difficult reviews",
+  "guide": "OWNER_GUIDE.md",
+  "scope": "Separate retrospective capture supplements. Accepted reviews, outcomes, boards and plays remain unchanged. Rule-test recordings excluded.",
+  "status": "complete",
+  "pilot": {
+    "source": "20261002_132311000_iOS.MP4",
+    "target_turns": [
+      5,
+      11
+    ],
+    "reviewer": "sol_retro_132311",
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "assignment_status": "in_progress"
+  },
+  "priority_one_remaining": [
+    {
+      "source": "20261002_115323000_iOS.MP4",
+      "target_turns": [
+        13
+      ]
+    },
+    {
+      "source": "20261002_143837000_iOS.MP4",
+      "target_turns": [
+        5,
+        7
+      ]
+    }
+  ],
+  "priority_two": [
+    "20261002_021402000_iOS.MP4",
+    "20261002_022135000_iOS.MP4"
+  ],
+  "assignment_registration": "Supplement assignments are recorded here because main review index already records accepted full battle completion. No status downgrade or duplicate outcome entry.",
+  "storage": "Separate packet under this batch directory, existing source bindings and frames reused first, bounded new native extraction where necessary. Videos stay archived.",
+  "independent_checks": "Separate Sol source verification using shared retained evidence, targeted Astra only for consequential ambiguities. Lead acceptance and additive shared review events follow.",
+  "batch_limit_question": "8, 19 or 35 recordings requested asynchronously; five uncertain Sharpedo hands authorized to start while awaiting batch choice.",
+  "approved_recording_limit": 19,
+  "approved_scope": "Corrected guide:3 Sharpedo plus2 Wailord plus11 ladder,16 active recordings,within approved19 limit",
+  "active_supplement_assignments": [],
+  "active_recording_count": 16,
+  "corrected_guide_exclusions": [
+    "20261002_020315000_iOS.MP4",
+    "20261002_020920000_iOS.MP4",
+    "20261002_023418000_iOS.MP4"
+  ],
+  "updated_utc": "2026-10-02T23:38:50.353266+00:00",
+  "completed_supplements": [
+    "20261002_132311000_iOS.MP4",
+    "20261002_115323000_iOS.MP4",
+    "20261002_143837000_iOS.MP4",
+    "20261002_021402000_iOS.MP4",
+    "20261002_022135000_iOS.MP4",
+    "20260907_232617000_iOS.MP4",
+    "20260908_012720000_iOS.MP4",
+    "20260908_021327000_iOS.MP4",
+    "20260908_022627000_iOS.MP4",
+    "20260908_190031000_iOS.MP4",
+    "20260908_190933000_iOS.MP4",
+    "20260909_023151000_iOS.MP4",
+    "20260909_032418000_iOS.MP4",
+    "20260928_200654000_iOS.MP4",
+    "20260929_002539000_iOS.MP4",
+    "20260929_020916000_iOS.MP4"
+  ]
+}

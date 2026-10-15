@@ -1,0 +1,33 @@
+{
+  "coverage_gaps": [],
+  "uncertainties": [
+    {
+      "category": "hidden_information",
+      "detail": "Full deck lists and hidden opponent hand are not established."
+    },
+    {
+      "category": "timestamp_precision",
+      "detail": "Turn windows are approximate; native anchors are exact extraction times. Auto off/on instants are bounded to (127,128] and (132,133]."
+    },
+    {
+      "category": "intent",
+      "detail": "Purpose of the manual pause is unknown; Bounded Field was played during Auto off."
+    },
+    {
+      "category": "date",
+      "detail": "Filename clock basis unverified; September 30 local owner request and October 1 filename/UTC review are distinguished in SOURCE.json."
+    },
+    {
+      "category": "result_statistics",
+      "detail": "No numerical result statistics panel shown; final frame includes challenge, Defeat and Card of the Game."
+    },
+    {
+      "category": "card_identity",
+      "detail": "Playable identities/effects are visible; exact artwork numbers and hidden counts are not asserted."
+    }
+  ],
+  "consequential_unresolved_mechanics": [],
+  "lead_acceptance_pending": false,
+  "lead_acceptance": "accepted",
+  "current_status": "full_battle_review_complete"
+}

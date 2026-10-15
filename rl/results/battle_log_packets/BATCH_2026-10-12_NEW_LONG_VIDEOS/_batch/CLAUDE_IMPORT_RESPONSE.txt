@@ -1,0 +1,78 @@
+iolu, Tyrogue",
+        "ratings": {},
+        "note": "Source: 20261012_210041000_iOS.MP4; game 1; opponent: 万丈目サンダー. Deluxe Pack: Mega Emblem Event. Owner loss; ending: owner_concession. Result evidence: Concede menu 432.6 s, confirmation 433.2-433.5 s, then Defeat 434 s/result 440-443 s. Last board 0-2; final numeric statistics unavailable. Full review: 14 turns. Evidence and capture limits: Recording_QA/BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_210041000_iOS/REVIEW.md; PAUSE_GAME.json and TURN_LEDGER.json beside it. Exact 20-card filmed QR verified. Hidden opponent cards remain unknown; discard piles were not opened. Native hand/draw crops retained. Ratings unassigned."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_sha256": "ca0f516306d5ffd8bf18326d4057d357160f77aaa019efdfd87303336b1291b9",
+      "game_number_in_source": 1,
+      "game_id": "20261012_210823000_iOS_Hons",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Identical source-native QR at 0 seconds, exact semantic 20-card list and Darkness Energy.",
+      "result_evidence": "Your opponent conceded at 430-431 s; Victory versus Hons at 439 s. Last board 0-1; detailed result statistics not opened. Empty deck is explicitly shown at 428 s.",
+      "fields": {
+        "deck": "filmed-qr-d8a7167db33b",
+        "deckName": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+        "date": "2026-10-12",
+        "result": "concession",
+        "first": "second",
+        "opp": "Mega Pidgeot ex, Meowth, Alolan Meowth",
+        "ratings": {},
+        "note": "Source: 20261012_210823000_iOS.MP4; game 1; opponent: Hons. Deluxe Pack: Mega Emblem Event. Owner win; ending: opponent_concession. Result evidence: Your opponent conceded at 430-431 s; Victory versus Hons at 439 s. Last board 0-1; detailed result statistics not opened. Empty deck is explicitly shown at 428 s. Full review: 12 turns. Evidence and capture limits: Recording_QA/BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_210823000_iOS/REVIEW.md; PAUSE_GAME.json and TURN_LEDGER.json beside it. Exact 20-card filmed QR verified. Hidden opponent cards remain unknown; discard piles were not opened. Native hand/draw crops retained. Ratings unassigned."
+      },
+      "external_saved": false
+    }
+  ]
+}
+
+Message collapsed
+Show more
+10 minutes ago
+
+
+
+Claude responded: Baseline matches (25 decks, 39 games, 22–17, 13 concession wins), no deck has this QR, and none of the four sources is present.
+Used 2 tools, created a file, ran a command
+
+Used 2 tools, created a file, ran a command
+
+Baseline matches (25 decks, 39 games, 22–17, 13 concession wins), no deck has this QR, and none of the four sources is present. Saving the deck and four games in one atomic batch.
+
+Used 4 tools, ran a command
+
+Used 4 tools, ran a command
+
+I added the Glimmora / Alolan Muk / Kingambit / Regigigas deck and all four games, and a read-back confirms them. The page now has 26 decks and 43 games: 25 wins (15 by opponent concession) and 18 losses, which matches your expected result.
+
+Checks before writing. The live data matched your baseline exactly: 25 decks, 39 games, 22 wins, 17 losses and 13 concession wins. No saved deck had this QR code, so I created the deck rather than reusing one. None of the four videos or game IDs was already saved, so nothing was skipped.
+
+Saved entries (each saved ID is the deck ID or game ID you supplied):
+
+Saved ID	What it is	Result
+filmed-qr-d8a7167db33b	Deck: Glimmora / Alolan Muk / Kingambit / Regigigas, Darkness, 20 cards	—
+20261012_010706000_iOS_game1	20261012_010706000_iOS.MP4, game 1, vs たまご	win
+20261012_203719000_iOS-game-1	20261012_203719000_iOS.MP4, game 1, vs KCXPF	opponent concession (win)
+pause-20261012-210041	20261012_210041000_iOS.MP4, game 1, vs 万丈目サンダー	loss (your concession)
+20261012_210823000_iOS_Hons	20261012_210823000_iOS.MP4, game 1, vs Hons	opponent concession (win)
+Deck: saved exactly as you supplied it, at position 200 in the deck list. The code decodes to 20 cards and Darkness Energy, with the same Trainer and Pokémon counts as the list. Cards it shares with earlier filmed decks use the same code entries. I didn’t check the artwork or rarity, which you already said the QR doesn’t establish.
+Games: every prepared field is saved exactly as supplied, including the opponent decks and the notes. Ratings are empty.
+
+What I added beyond your fields blocks, matching how the earlier imported games are stored:
+
+a save time, which the page uses to order Recent games;
+your source filename, file hash, game number, game ID, deck-list match flag and deck-choice basis.
+
+What I left out:
+
+result_evidence, because each note already contains that text word for word;
+external_saved, because it described the state before saving.
+
+Unchanged: the 25 existing decks and 39 existing games are identical to my read just before the write. The page itself, its sharing and the Ladder Log weren’t touched.
+
+
+
+
+
+10 minutes ago

@@ -1,0 +1,59 @@
+{
+  "schema": "pdl-video-intake/v1",
+  "source_directory": "/mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs",
+  "hash_passes": 2,
+  "hashes_stable": true,
+  "stat_before_after_equal": true,
+  "sources": [
+    {
+      "label": "A",
+      "path": "/mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs/20260908_010207000_iOS.MP4",
+      "sha256": "f4956d25fdc445c48fec9d6705de40a4721e37367bece727aa0d7e50e09ccc1f",
+      "bytes": 448053217,
+      "mtime_local": "2026-09-07 20:35:54 -0500",
+      "creation_time_utc": "2026-09-08T01:02:07Z",
+      "duration_seconds": 240.6,
+      "container": "mov/mp4",
+      "video": {
+        "codec": "hevc Main",
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "reported_average_fps": 58.31,
+        "nominal_fps": 60,
+        "bit_rate_bps": 14886000
+      },
+      "audio": {
+        "codec": "aac LC",
+        "sample_rate_hz": 44100,
+        "channels": 2
+      }
+    },
+    {
+      "label": "B",
+      "path": "/mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs/20260908_012720000_iOS.MP4",
+      "sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085",
+      "bytes": 530226009,
+      "mtime_local": "2026-09-07 20:36:20 -0500",
+      "creation_time_utc": "2026-09-08T01:27:20Z",
+      "duration_seconds": 282.63,
+      "container": "mov/mp4",
+      "video": {
+        "codec": "hevc Main",
+        "dimensions": [
+          1170,
+          2532
+        ],
+        "reported_average_fps": 58.34,
+        "nominal_fps": 60,
+        "bit_rate_bps": 14997000
+      },
+      "audio": {
+        "codec": "aac LC",
+        "sample_rate_hz": 44100,
+        "channels": 2
+      }
+    }
+  ]
+}

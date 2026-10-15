@@ -1,0 +1,75 @@
+{
+  "remaining_coverage_gaps": [],
+  "pending_material_interpretations": [],
+  "bounded_event_details_pending": [],
+  "honestly_unknown_hidden_information": [
+    "Full decks and hidden opponent hand",
+    "Opponent identity beyond Opponent label",
+    "Opponent automation",
+    "Explicit Solo/PvP mode",
+    "Exact set numbers and alternate artwork printing identifiers",
+    "Exact recording clock/timezone basis"
+  ],
+  "not_tested": [
+    "Rainbow Cave generated-Energy replacement",
+    "Meowth incoming damage prevention coin",
+    "Lucky Ice Pop heads return or full-HP use",
+    "Random discard selection among more Energy than heads",
+    "Confusion reroll",
+    "Destructive Inferno removing Energy from a surviving Pokemon"
+  ],
+  "inspected_but_unresolved_causal_attributions": [
+    {
+      "interval_seconds": [
+        174,
+        194
+      ],
+      "detail": "Two heads equals both2Energy on0HPGabite. Energy icons disappear before card removal and point; this cannot independently distinguish Destructive Inferno discard from normal knockout cleanup.",
+      "status": "Root independent check and targeted Astra agree on attribution limit",
+      "evidence": [
+        "native/t0188.90.jpg",
+        "native/t0189.30.jpg",
+        "native/t0191.00.jpg",
+        "native/t0194.00.jpg"
+      ]
+    },
+    {
+      "interval_seconds": [
+        234,
+        251
+      ],
+      "detail": "Zero-Energy Froakie receives lethal damage, original T rerolls to HHT, and No Energy attached appears after Active spot is empty. Continued effect presentation is proved; a check on intact0HPtarget before cleanup is not.",
+      "status": "Root/Astra clarification integrated",
+      "evidence": [
+        "native/t0238.00.jpg",
+        "native/t0240.00.jpg",
+        "native/t0246.00.jpg",
+        "native/t0248.00.jpg",
+        "native/t0251.00.jpg"
+      ]
+    }
+  ],
+  "resolved_event_details": [
+    {
+      "detail": "Torchic receives turn8 ordinary Fire and retains it. Meowth receives turn10 ordinary Fire.",
+      "evidence": [
+        "native/t0230.00.jpg",
+        "native/t0231.50.jpg",
+        "native/t0318.30.jpg",
+        "native/t0319.00.jpg",
+        "native/t0322.20.jpg"
+      ]
+    }
+  ],
+  "worker_status_at_submission": "finished_first_pass",
+  "status": "full_battle_review_complete",
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "ladder_eligible": false,
+  "global_registration_complete": true,
+  "archive_receipt": "MOVE_RECEIPT.20261001_214736000_iOS.MP4.json",
+  "archive_completion_event_id": "445d467f-7f84-4500-9cb5-79fd5b2dac9e"
+}

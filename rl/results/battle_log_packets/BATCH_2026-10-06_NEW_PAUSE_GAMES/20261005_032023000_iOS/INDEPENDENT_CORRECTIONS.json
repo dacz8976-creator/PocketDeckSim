@@ -1,0 +1,12 @@
+{
+  "repair_id": "R1",
+  "initial_independent_report": "independent_sol/CHECK_RESULT.json",
+  "prior_submission": "submitted_before_independent_corrections",
+  "scope": "Only turn12 hand/board evidence references, input/draw timing, candidate offsets and associated prose corrected. Four starting identities and three ending cards unchanged. Historical CONSISTENCY_RECEIPT/VALIDATION_RECEIPT are original submission checks; ROOT_R1_STRUCTURE_CHECK is current.",
+  "current_sha256": {
+    "TURN_LEDGER.json": "1500716587b08be99f6c1715abbbc76de120c8f1f5eea199c58e6b8267e3b1b9",
+    "TURN_EVIDENCE.json": "cae43251f328edbe421e492f07422c061a702e44fef5661b1235410924b1111c",
+    "REVIEW.md": "167a1d8e2204e7f05a7afdf6258df169882b8ee8ed680400dda921ab169e7725",
+    "COVERAGE.md": "442154e949bde43308b1241ed87af485b3d0a04e8915d3446997310cfabb1716"
+  }
+}

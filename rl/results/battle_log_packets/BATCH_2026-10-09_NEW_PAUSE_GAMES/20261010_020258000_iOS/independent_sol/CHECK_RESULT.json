@@ -1,0 +1,62 @@
+{
+  "reviewer": "/root/check_020258",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "checked_at_utc": "2026-10-10T04:45:48.496112+00:00",
+  "accepted": true,
+  "status": "accepted_with_recording_limits",
+  "source_video": "20261010_020258000_iOS.MP4",
+  "source_sha256": "c5e7732cf212bd836fbcafc107b0f0d92ff43d8a8cd2f5b9f222b4fd466e5640",
+  "independently_verified_source_bytes": 628472811,
+  "independently_verified_source_sha256": "c5e7732cf212bd836fbcafc107b0f0d92ff43d8a8cd2f5b9f222b4fd466e5640",
+  "source_stable_during_hash": true,
+  "blockers": [],
+  "accepted_input_sha256": {
+    "REVIEW.md": "2c176a83462030b7e756e8901d671149e6b20f16840117a5723122214ca48b25",
+    "COVERAGE.md": "9ad7b6d4a3ed14492f071adf1743862b15c73026bc6fcab046c3deb70d88c835",
+    "SUMMARY.json": "069b9cbf921c25a183633a03d4972bb6f8f3992d87efaeea24b5bd85da051c10",
+    "UNCERTAINTIES.json": "863fd9fc5df550de82ed77849296ef4b819e4504fa6538b82aa01d26c6eff65c",
+    "PAUSE_GAME.json": "cd862ee707d833693e69981fbbea64b132bd3828d424dc87892710467b52e049",
+    "DECK_USED.json": "efaa27e7d09feb4b96d0cbd3de5d1bd60db955ea9139779988b95e39c94b8beb",
+    "TURN_LEDGER.json": "672468bbf6c64b82012613620d771934a25bb462fcf93606d1ccf0088ae8a7ea",
+    "TURN_EVIDENCE.json": "c7337df79d892d65e206a605585711bc7b32e4df00d8b90af8f8d4ca0646f68c"
+  },
+  "checked_input_sha256": {
+    "REVIEW.md": "2c176a83462030b7e756e8901d671149e6b20f16840117a5723122214ca48b25",
+    "COVERAGE.md": "9ad7b6d4a3ed14492f071adf1743862b15c73026bc6fcab046c3deb70d88c835",
+    "SUMMARY.json": "069b9cbf921c25a183633a03d4972bb6f8f3992d87efaeea24b5bd85da051c10",
+    "UNCERTAINTIES.json": "863fd9fc5df550de82ed77849296ef4b819e4504fa6538b82aa01d26c6eff65c",
+    "PAUSE_GAME.json": "cd862ee707d833693e69981fbbea64b132bd3828d424dc87892710467b52e049",
+    "DECK_USED.json": "efaa27e7d09feb4b96d0cbd3de5d1bd60db955ea9139779988b95e39c94b8beb",
+    "TURN_LEDGER.json": "672468bbf6c64b82012613620d771934a25bb462fcf93606d1ccf0088ae8a7ea",
+    "TURN_EVIDENCE.json": "c7337df79d892d65e206a605585711bc7b32e4df00d8b90af8f8d4ca0646f68c"
+  },
+  "source_json_sha256": "4eb2440bfaf148a891bf022004f8f6656ad055d78352d71ab2a8a5ceb41ac79d",
+  "scope": "Bounded independent acceptance: opening, all owner first moves/preplay hands, named consequential draw sequences, selected ordinary/decisive state and terminal result. This is not a second full visual pass.",
+  "actual_viewed_manifest": "VIEWED_EVIDENCE.json",
+  "narrative": "CHECK_NOTES.md",
+  "structural_checks": {
+    "core_files": 8,
+    "turn_rows": 8,
+    "native_full_frame_hashes_and_dimensions": 158,
+    "all_ledger_evidence_references_resolve": true,
+    "board_hp_energy_arithmetic": true,
+    "exact_deck_slots": 20,
+    "qr_snapshot_semantic_counts_match": true
+  },
+  "factual_repairs": [
+    "Opening unzoomed/spread flags",
+    "185s candidate marked already beginning Rare Candy play",
+    "Coverage result panel corrected to opponent Raticate ex"
+  ],
+  "recording_limits": [
+    "Opponent hand faces and hidden searches not fully revealed.",
+    "Neither player opens a discard pile; visible discard tops cannot establish full contents.",
+    "Normal draw end located to about0.2–0.8s precision; action timestamps approximate.",
+    "T4 mobile notification obscures upper clock and part of hand fan; three backs remain countable.",
+    "Several +3/+6 candidates show action after first play; clear earlier native selection retained.",
+    "Sabrina ends through concession with no replacement or final attack.",
+    "QR/log list functional identity verified; artwork/rarity aliases in the log do not prove filmed exact printings."
+  ],
+  "no_shared_index_log_archive_browser_or_delegation": true
+}

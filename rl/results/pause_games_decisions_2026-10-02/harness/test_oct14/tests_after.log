@@ -1,0 +1,32 @@
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:151: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_oct13/positions.json' mode='r' encoding='utf-8'>
+  bad = json.load(open(f"{T}/positions.json"))[3]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:156: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/pg_pos_bad_condition.json' mode='w' encoding='utf-8'>
+  json.dump([bad], open(path, "w"))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+..../home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:107: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_positions_kx3_2026-10/run_ids.txt' mode='r' encoding='utf-8'>
+  ids = set(open(ids_path).read().split())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:108: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_new_2026-10-12/positions_all.json' mode='r' encoding='utf-8'>
+  positions = [p for p in json.load(open(positions_path)) if p["id"] in ids]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:111: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/pg_pos_set_pause_games_new_2026-10-12.json' mode='w' encoding='utf-8'>
+  json.dump(positions, open(tmp, "w"))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+./home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:107: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_new_2026-10-13/v2/run_ids.txt' mode='r' encoding='utf-8'>
+  ids = set(open(ids_path).read().split())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:108: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_new_2026-10-13/v2/positions_all.json' mode='r' encoding='utf-8'>
+  positions = [p for p in json.load(open(positions_path)) if p["id"] in ids]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:111: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/pg_pos_set_v2.json' mode='w' encoding='utf-8'>
+  json.dump(positions, open(tmp, "w"))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+./home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:89: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_oct14/positions_plains.json' mode='r' encoding='utf-8'>
+  positions = json.load(open(f"{T14}/positions_plains.json"))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.......
+----------------------------------------------------------------------
+Ran 13 tests in 7.210s
+
+OK

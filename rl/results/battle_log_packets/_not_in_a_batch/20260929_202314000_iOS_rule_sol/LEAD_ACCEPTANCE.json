@@ -1,0 +1,15 @@
+{
+  "finding": "First manual Confusion tails stops attack without Victory Star prompt or Double Smash coins. Second Auto attempt likewise fails. Companion independently confirms attack reroll after Heads.",
+  "source_video": "20260929_202314000_iOS.MP4",
+  "first_pass": "sol_confusion_202314",
+  "source_sha256": "939ea6515dff460d3bc7c2404415f2284ec71bd706f91f0291326928e52dfac9",
+  "accepted_utc": "2026-09-29T20:51:41.1135218Z",
+  "lead_checks": [
+    "focus_50_04.jpg and focus_50_05.jpg: manual Double Smash selected, Confusion tails, attack did nothing, opponent turn, Victini Benched",
+    "t152.jpg and t153.jpg: second Confusion tails and attack failure with Auto on",
+    "sheet_05.jpg and t246.jpg: later Moltres attacks, point progression and Victory"
+  ],
+  "accepted": true,
+  "limitations": "Second attempt Auto does not independently prove manual choice availability. No simulator inspection; explicit test excluded from ladder.",
+  "scope": "Whole supplied rule-test review accepted; independent consequential evidence checks"
+}

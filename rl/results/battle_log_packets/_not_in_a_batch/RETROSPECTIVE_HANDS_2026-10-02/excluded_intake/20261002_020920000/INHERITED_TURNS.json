@@ -1,0 +1,62 @@
+{
+  "source": "20261002_020920000_iOS.MP4",
+  "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_020920000_iOS_competitive_sol\\REVIEW.md",
+  "accepted_review_sha256": "61d9963f69a6e12e111998bf72f6cc526b5f66c7f6f4ebbda5888d25325cda3d",
+  "rows": [
+    {
+      "turn_number": 1,
+      "accepted_source_line": 26,
+      "verbatim_accepted_row": "| 25-38, opponent turn 1 | Active Charmander 60 HP. Opponent uses Professor's Research. No attached Energy, Bench development or attack is shown. Wailmer remains 100 HP. Score 0-0. | overview/sheet_02.jpg; intake/t0035.00.jpg; native/t0038.00.jpg |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 2,
+      "accepted_source_line": 27,
+      "verbatim_accepted_row": "| 38-69, owner turn 2 | Draws Heavy Helmet. Poké Ball obtains Indeedee ex, then owner benches it. Professor's Research draws the second Indeedee ex and non-ex Wailord; second Indeedee ex is benched. Heavy Helmet attaches to Wailmer. First Water attaches to Active Wailmer. Owner ends the turn with Wailmer 100 HP, one Water, Helmet, two full-HP Indeedee ex on Bench. No attack. | native/t0043.00.jpg; t0046.00.jpg; t0052.00.jpg; t0059.00.jpg; t0065.00.jpg; overview/sheet_03.jpg |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 3,
+      "accepted_source_line": 28,
+      "verbatim_accepted_row": "| 70-91, opponent turn 3 | Evolves Active Charmander to Charmeleon. Ignition visibly triggers. Combined with the ordinary attachment, Charmeleon has two Fire by 86.00. Uses Slash 40. Helmet reduces damage by 20; Wailmer takes 20 and falls from100 to80. No condition or knockout. | native/t0076.00.jpg; t0079.00.jpg; t0086.00.jpg; t0088.00.jpg; t0089.50.jpg; overview/sheet_04.jpg |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 4,
+      "accepted_source_line": 29,
+      "verbatim_accepted_row": "| 91-111, owner turn 4 | Draws Wailord ex. Evolves damaged Active Wailmer into non-ex Wailord; the carried20 damage yields180 HP. Attaches second Water to Active. Uses one Indeedee ex Watch Over to heal20, restoring Wailord to200. No attack because Whale Pump needs four Energy and Wailord has two. Bench remains two Indeedee ex. | native/t0095.00.jpg; t0096.00.jpg; t0102.00.jpg; t0104.00.jpg; t0109.00.jpg |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 5,
+      "accepted_source_line": 30,
+      "verbatim_accepted_row": "| 111-125, opponent turn 5 | Uses Poké Ball to obtain a second Charmander and benches it. Attaches one Fire to that benched Charmander. Active Charmeleon remains80 HP with two Fire. No attack is observed; Wailord remains200 through the next turn banner. Score stays0-0. | native/t0113.00.jpg; t0117.00.jpg; t0120.00.jpg; t0123.00.jpg; t0124.50.jpg |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 6,
+      "accepted_source_line": 31,
+      "verbatim_accepted_row": "| 125-139, owner turn 6 | Draws second Wailmer, benches it at100 HP. Third Water attaches to Active non-ex Wailord. Ends the turn without attacking, with Wailord200 HP, Helmet and three Water. Owner Bench is now Wailmer100 and two Indeedee ex130. | native/t0126.00.jpg; overview/sheet_05.jpg; native/t0134.50.jpg; t0137.00.jpg; t0138.00.jpg |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 7,
+      "accepted_source_line": 32,
+      "verbatim_accepted_row": "| 139-190, opponent turn 7 | Plays May, whose displayed text exchanges random Pokémon from deck with selected Pokémon in hand. Hidden exchange identities are not determined. Benches Entei ex140, then retreats Charmeleon to the right Bench and promotes Entei ex. Charmeleon's two Fire are discarded for retreat, leaving it with none. Ordinary Fire attachment goes to the benched Charmander, raising it from one to two Fire (163.00 before,167.00 after). Flame Patch recoveries then supply Entei ex with two Fire: none at175.00, one at176.00, second Flame Patch card at178.00 and second attachment animation at180.00. Entei uses Blazing Beatdown60. Helmet reduces it to40; Wailord is160 by186.50. Legendary Pulse triggers at end of turn to draw a card. | native/t0143.00.jpg; t0158.00.jpg; t0163.00.jpg; t0167.00.jpg; t0175.00.jpg; t0176.00.jpg; t0178.00.jpg; t0180.00.jpg; t0181.00.jpg; t0184.50.jpg; t0186.50.jpg; t0188.00.jpg |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 8,
+      "accepted_source_line": 33,
+      "verbatim_accepted_row": "| 190-216, owner turn 8 | Draws Lucky Ice Pop. Uses both Indeedee ex Watch Over abilities: Wailord160 to180, then180 to200. Pokémon Center Lady and Lucky Ice Pop remain in hand. Evolves benched Wailmer into Wailord ex250 with no Energy. Fourth Water is attached to Active non-ex Wailord before its first attack. Whale Pump is100 from four Water, plus20 Water weakness against Entei ex, for120 damage; Entei140 falls to20. No knockout or points. Wailord remains200. | native/t0194.00.jpg; t0197.00.jpg; t0200.00.jpg; t0204.00.jpg; t0206.00.jpg; t0209.00.jpg; t0213.00.jpg; t0214.00.jpg; t0216.00.jpg |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 9,
+      "accepted_source_line": 34,
+      "verbatim_accepted_row": "| 216-240, opponent turn 9 and concession | Entei ex stays Active at20 HP, with two Fire. Opponent attaches one Fire to benched Charmeleon, which had no Energy after retreat. No further attack, healing, switch, evolution or knockout is seen. Opponent concedes; explicit banner is retained at238.00. Owner final board: Wailord200 with Helmet/four Water, Wailord ex250 with no Energy, two Indeedee ex130 with no Energy. Opponent final board: Entei ex20/two Fire, Charmander60/two Fire, Charmeleon80/one Fire. Score0-0. | native/t0216.00.jpg; t0221.00.jpg; t0236.50.jpg; t0237.50.jpg; t0238.00.jpg; t0240.00.jpg |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    }
+  ],
+  "limits": "Only explicitly turn-numbered accepted prose is copied. Zero rows means format unavailable, not zero game turns. This is reference scaffolding, not a completed capture ledger."
+}

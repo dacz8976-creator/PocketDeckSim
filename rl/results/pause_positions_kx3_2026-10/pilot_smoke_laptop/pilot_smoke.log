@@ -1,0 +1,14 @@
+nproc 16
+km3 check F KW-261005_034953000-t02: EQUAL to the laptop's K run (13 lines)
+km3 check C KW-261005_034953000-t02: EQUAL to the laptop's K run (13 lines)
+km3 check F KW-261005_034953000-t04: EQUAL to the laptop's K run (13 lines)
+km3 check C KW-261005_034953000-t04: EQUAL to the laptop's K run (13 lines)
+km3 check F KW-261005_034953000-t08: EQUAL to the laptop's K run (13 lines)
+km3 check C KW-261005_034953000-t08: EQUAL to the laptop's K run (13 lines)
+km3 check F KW-261005_034953000-t10: EQUAL to the laptop's K run (13 lines)
+km3 check C KW-261005_034953000-t10: EQUAL to the laptop's K run (13 lines)
+km3 check F KW-261005_034953000-t16: EQUAL to the laptop's K run (13 lines)
+km3 check C KW-261005_034953000-t16: EQUAL to the laptop's K run (13 lines)
+F (kx3) seed 1 on t02: exit 0, elapsed 49.28 s, user 567.62 s, sys 1.36 s, maxrss 47272 KB; lines 2
+C (kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64) seed 1 on t02: exit 0, elapsed 38.78 s, user 462.59 s, sys 0.48 s, maxrss 43708 KB; lines 2
+DONE pilot smoke

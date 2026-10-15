@@ -1,0 +1,33 @@
+{
+  "game_id": "20261002_205731000_iOS_auto",
+  "reviewer": "/root/drafta_auto_205731",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "source_duration_seconds": 371.443333,
+  "locator_rate_fps": 1,
+  "locator_frames_retained": 371,
+  "locator_samples_inspected": 371,
+  "locator_groups": 19,
+  "completed_locator_decodes": 1,
+  "native_captures_retained": 118,
+  "native_capture_cap": 160,
+  "native_dimensions": [
+    1170,
+    2532
+  ],
+  "native_images_inspected_count": null,
+  "native_images_inspected_count_limit": "Full frames and/or crops viewed throughout review; exact distinct view count was not instrumented. All mandated start candidates/preend crops were inspected. Retained capture count is measured from manifest, not inspection count.",
+  "required_owner_start_fans_inspected": 9,
+  "owner_draw_offset_candidate_sets_inspected": 9,
+  "owner_preend_crops_inspected": 9,
+  "opening_five_inspected": true,
+  "assigned_utc": "2026-10-02T23:38:55.898985+00:00",
+  "finished_first_pass_utc": "2026-10-02T23:57:09.292332+00:00",
+  "assignment_to_finish_seconds": 1093.393347,
+  "actual_active_review_elapsed_seconds": null,
+  "elapsed_limit": "Assignment-to-finish includes access/decode waits and is not measured compute time.",
+  "usage_tokens": null,
+  "usage_dollars": null,
+  "usage_limit": "No actual per-worker token or dollar receipt exposed; not estimated.",
+  "source_decode_threads": 2
+}

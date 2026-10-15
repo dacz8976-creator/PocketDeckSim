@@ -1,0 +1,56 @@
+{
+  "verdict": "accepted_with_recording_limits",
+  "scope": "Recheck of three required provenance repairs and synchronization only; original independent SOURCE_CHECKS.json preserved. No additional images or original media read. Whole-packet observations remain in original report.",
+  "source_sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085",
+  "checks": {
+    "stadium_causality_labeled_inferred": true,
+    "opponent_boundary_generation_separated": true,
+    "turn5_current_unknown": true,
+    "old_claim_ambiguity_and_omission_corrected": true,
+    "native_identities_and_locator_relative_order_separated_from_inherited_exact_times": true,
+    "prior_versions_preserved": true
+  },
+  "binding_encoding": "utf-8-sig text reads followed by raw-byte SHA256",
+  "submitted_file_binding": [
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\TURN_LEDGER.json",
+      "sha256": "3617451573ed9a9c5f08977edc3f31ce4a851b0ae10f1e7772197fd65cd44d99",
+      "bytes": 313044
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\HAND_SUPPLEMENT.json",
+      "sha256": "376652936bf93973d43faf188865aa6ac10f906e5710e0216df82e087a5560fc",
+      "bytes": 41936
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\OBSERVATIONS.json",
+      "sha256": "014779c48a20049b7efbeba18997c9f2b603240bd6702defc008dc0d6fe11185",
+      "bytes": 313859
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\ACTION_QUESTIONS.json",
+      "sha256": "a3101da395d165ad82d0589f445a5b6fbd48a164fadb85cac8a56a64a654ce1d",
+      "bytes": 3536
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\REVIEW_SUPPLEMENT.md",
+      "sha256": "2ef598f275b0476631942e48c5ae7c6a9fa7a3b4dfa305562e07572cbf6cd2fb",
+      "bytes": 9810
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\UNCERTAINTIES.json",
+      "sha256": "85d4c50ff41b0ab687a84c8d975b665b12c44ac18f52c23c88f8245f48189841",
+      "bytes": 3828
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\PROVENANCE_REPAIR_RECEIPT.json",
+      "sha256": "d5df24b323d40e97764bc3a051ce0cd8becb871444b777a97a0b6832c38b07b8",
+      "bytes": 751
+    }
+  ],
+  "limits": [
+    "Turn9 current Darkness reference is supplied by repaired native189.0 citation; no new image submission repeated this view.",
+    "Native identities and retained locator256/257 support relative turn12 action order; exact256.2/257 remain inherited requested timing, not measuredPTS.",
+    "Stadium causality remains inference."
+  ]
+}

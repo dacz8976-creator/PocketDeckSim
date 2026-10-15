@@ -1,0 +1,118 @@
+{
+  "checked_utc": "2026-10-14T15:50:43.980367+00:00",
+  "requested_games": 4,
+  "all_requested_work_complete": false,
+  "media_contents_read": false,
+  "artifact": "https://claude.ai/artifact/GHSfGSCzNiWNj8SFPXV3R1",
+  "live_verified_current_season": {
+    "wins": 1,
+    "losses": 0,
+    "games": 1
+  },
+  "historical_season_unchanged": {
+    "wins": 27,
+    "losses": 29,
+    "games": 56
+  },
+  "sources": [
+    {
+      "source": "20261014_142546000_iOS.MP4",
+      "current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261014_142546000_iOS.MP4",
+      "cloud_metadata": {
+        "logical_bytes": 549105456,
+        "allocated_bytes": 549105456,
+        "attributes": 1056,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "source_contents_read": false,
+      "review_complete": true,
+      "independently_accepted": true,
+      "registered": true,
+      "archived": true,
+      "external_saved": true,
+      "fresh_reload_verified": true,
+      "source_sha256": "71f4550d39ecf24f1b12d5ad86260e685874c24ff32822c6216368efc4ef4805",
+      "result": "win",
+      "section": "Deck 12",
+      "note_prefix": "1st | Whimsicott ex T4 | opp 0 pts",
+      "storage_complete": false
+    },
+    {
+      "source": "20261014_143111000_iOS.MP4",
+      "current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261014_143111000_iOS.MP4",
+      "cloud_metadata": {
+        "logical_bytes": 720403823,
+        "allocated_bytes": 720403823,
+        "attributes": 4724256,
+        "placeholder_state": 25,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "source_contents_read": false,
+      "review_complete": false,
+      "registered": false,
+      "archived": false,
+      "external_saved": false,
+      "source_sha256": null,
+      "remaining": "Stable complete local read, SHA256/duration binding, full review, independent acceptance, logging/readback and archival",
+      "blocker": "OneDrive source contents are not readable. Second/third hydration timed out; second/fourth bounded 32-byte reads timed out. A filesystem filename/size is not actual source availability."
+    },
+    {
+      "source": "20261014_144627000_iOS.MP4",
+      "current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261014_144627000_iOS.MP4",
+      "cloud_metadata": {
+        "logical_bytes": 863042539,
+        "allocated_bytes": 0,
+        "attributes": 4724256,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": true
+      },
+      "source_contents_read": false,
+      "review_complete": false,
+      "registered": false,
+      "archived": false,
+      "external_saved": false,
+      "source_sha256": null,
+      "remaining": "Stable complete local read, SHA256/duration binding, full review, independent acceptance, logging/readback and archival",
+      "blocker": "OneDrive source contents are not readable. Second/third hydration timed out; second/fourth bounded 32-byte reads timed out. A filesystem filename/size is not actual source availability."
+    },
+    {
+      "source": "20261014_145449000_iOS.MP4",
+      "current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261014_145449000_iOS.MP4",
+      "cloud_metadata": {
+        "logical_bytes": 637130623,
+        "allocated_bytes": 0,
+        "attributes": 4724256,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": true
+      },
+      "source_contents_read": false,
+      "review_complete": false,
+      "registered": false,
+      "archived": false,
+      "external_saved": false,
+      "source_sha256": null,
+      "remaining": "Stable complete local read, SHA256/duration binding, full review, independent acceptance, logging/readback and archival",
+      "blocker": "OneDrive source contents are not readable. Second/third hydration timed out; second/fourth bounded 32-byte reads timed out. A filesystem filename/size is not actual source availability."
+    }
+  ],
+  "reviewed_games": 1,
+  "saved_games": 1,
+  "remaining_games": 3
+}

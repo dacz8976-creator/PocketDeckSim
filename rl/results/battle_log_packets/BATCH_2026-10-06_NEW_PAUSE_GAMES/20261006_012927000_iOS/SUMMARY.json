@@ -1,0 +1,119 @@
+{
+  "schema": "video-review/summary-v1",
+  "is_template": false,
+  "game_id": "20261006_012927000_iOS_game_01",
+  "source_video": "20261006_012927000_iOS.MP4",
+  "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+  "game_number_within_source": 1,
+  "source_interval_seconds": [
+    0,
+    420
+  ],
+  "external_duplicate_key": "20261006_012927000_iOS.MP4 :: game_01 :: 0-420s",
+  "match_date": "2026-10-05",
+  "match_date_basis": "RECORDING_METADATA.json embedded creation UTC converted to America/Chicago",
+  "owner": "Dacz8976",
+  "opponent": "ElPapa",
+  "outcome": "loss",
+  "result": "loss",
+  "turn_count": 11,
+  "turns_played": 11,
+  "owner_went_first": false,
+  "points_owner": 0,
+  "points_opponent": 3,
+  "classification": "human_battle",
+  "mode": "Deluxe Pack: Mega Emblem Event",
+  "queue_basis": "Filmed event page420; continuous return to same event battle queue. Not ranked established.",
+  "auto_control_observed": false,
+  "auto_limit": "No in-battle Auto control observed; deck editor Auto-build is not a battle Auto control.",
+  "full_review_status": "complete_with_recording_limits",
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance": "pending",
+  "external_saved": false,
+  "result_evidence_ids": [
+    "f0398_00",
+    "f0407_00"
+  ],
+  "deck_core": [
+    "Snorlax ex",
+    "Meowth",
+    "Persian",
+    "Type: Null",
+    "Silvally",
+    "Terapagos ex"
+  ],
+  "limits": [
+    "Exact live log list is worker-unavailable; source deck proof is retained separately.",
+    "Remote opponent touches and hidden card identities are unavailable.",
+    "No full discard-pile views filmed."
+  ],
+  "source_game_count": 2,
+  "games": [
+    {
+      "game_id": "20261006_012927000_iOS_game_01",
+      "packet": ".",
+      "opponent": "ElPapa",
+      "result": "loss",
+      "turn_count": 11,
+      "source_interval_seconds": [
+        0,
+        420
+      ]
+    },
+    {
+      "game_id": "20261006_012927000_iOS_game_02",
+      "packet": "game_02",
+      "opponent": "たこ",
+      "result": "win",
+      "turn_count": 2,
+      "source_interval_seconds": [
+        622,
+        719.001667
+      ]
+    }
+  ],
+  "whole_source_coverage": {
+    "start_seconds": 0,
+    "end_seconds": 719.001667,
+    "review_status": "complete_with_recording_limits",
+    "includes_both_games_and_deck_edit_interlude": true
+  },
+  "source_segment_map": [
+    {
+      "start": 0,
+      "end": 38,
+      "segment": "QR, deck Save, queue, setup and original five-card opening"
+    },
+    {
+      "start": 38,
+      "end": 398,
+      "segment": "Game1 all11 turns through Defeat"
+    },
+    {
+      "start": 398,
+      "end": 420,
+      "segment": "Results and event return"
+    },
+    {
+      "start": 420,
+      "end": 622,
+      "segment": "Continuous card inspection, deck edits, Energy change, final20 Save"
+    },
+    {
+      "start": 622,
+      "end": 649,
+      "segment": "Game2 queue and original opening/setup"
+    },
+    {
+      "start": 649,
+      "end": 710,
+      "segment": "Game2 all2 turns through opponent concession"
+    },
+    {
+      "start": 710,
+      "end": 719.001667,
+      "segment": "Victory/result screen and ending"
+    }
+  ],
+  "whole_source_reviewed": true
+}

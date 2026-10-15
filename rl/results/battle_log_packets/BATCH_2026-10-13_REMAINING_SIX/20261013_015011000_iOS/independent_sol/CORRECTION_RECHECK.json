@@ -1,0 +1,45 @@
+{
+  "accepted": true,
+  "checked_utc": "2026-10-13T14:57:37.605231+00:00",
+  "checker": "/root/check_remaining_015011",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "source_video": "20261013_015011000_iOS.MP4",
+  "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+  "checked_input_sha256": {
+    "REVIEW.md": "e6a868a174deb007099982533ac617737aa66c12f48cbfb239fbe694713a82a1",
+    "COVERAGE.md": "1e2abe4ae4267397343283d93f990ec0d3cf5f0dc1eb386e2f24ddc262453af9",
+    "SUMMARY.json": "b9e50619432b7deab3339026b1541911cf641f61457126a2827553bab8b17602",
+    "UNCERTAINTIES.json": "a04892994c1fa65dfab100eeeca8ddef7b164aaede792d6aceeca2011ea10085",
+    "PAUSE_GAME.json": "9bf56fe75e934190b42709c43fdc43d213c3354c75055e8eb657d20679f0235e",
+    "DECK_USED.json": "114ace3bc20ed237c0a3501678e64b9855a0046a860cd58bc6f8caf584c95fd6",
+    "TURN_LEDGER.json": "55205af2216b1635f43c16b35174d6cc3517eeccf5bbfb7318a60dab45bee206",
+    "TURN_EVIDENCE.json": "ed013d537d82a635d5e348bbea71ccb6673ac05dd821b17360f55235d3661a43"
+  },
+  "checked_input_file_count": 8,
+  "frozen_utc": "2026-10-13T14:54:16.229713+00:00",
+  "stable_against_frozen_hashes": true,
+  "required_repairs": [],
+  "resolved_repairs": [
+    "R1",
+    "R2"
+  ],
+  "scope": "Narrow R1/R2 correction recheck plus all eight current hashes and validator. Uses native frames directly viewed during prior bounded check; no second whole-source pass.",
+  "prior_rejection": "independent_sol/CHECK_RESULT.json",
+  "rejected_originals_preserved": true,
+  "source_findings": [
+    "R1 resolved consistently in revised prose, ledger and frame roles: first Research66.00, second67.00, Helmet68.00, Pop68.50. All are observed reveal sample anchors;69.50 is settledhand only.",
+    "R2 resolved: final clear turn3 hand and board at167.50/n167_50, fivecards and unusedDarkness.168.50 explicitly terminalerror/blurred, not finalclear evidence.",
+    "OpeningCopycat name-label clipping qualified; artwork binding corroborated by named43.50.",
+    "Prior bounded-source findings remain valid: human vs coke, ownerfirst,3turns,0-0points,0damage, win for opponent-return failure; exact20 historical QR/log match with fresh_live_readback=false.",
+    "Recording limits preserved. Local semantic acceptance does not establish current external log save/readback or archival."
+  ],
+  "structural_validation": {
+    "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015011000_iOS",
+    "structural_pass": true,
+    "turn_rows": 3,
+    "issues": [],
+    "visual_acceptance": false,
+    "limit": "Integrity/template checks do not establish battle coverage or semantic correctness."
+  }
+}

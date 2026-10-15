@@ -1,0 +1,292 @@
+{
+  "reviewer": "/root/verify_pause_004128",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_at_utc": "2026-10-12T01:36:37.447547+00:00",
+  "source_video": "20261012_004128000_iOS.MP4",
+  "source_sha256": "dbf23091859cbe159afc724f32f517f75925ab214343474285306b035ee4146e",
+  "scope": "Bounded independent check of opening, ordinary first decision, draw order, turn-boundary states and terminal sequence using retained source evidence, plus two independent native seeks. This is not a second full video replay.",
+  "viewed_evidence": [
+    {
+      "path": "turn_evidence/t0001.00.jpg",
+      "sha256": "35b76ff7e35f22bc33f3f0f627f1f3c45dfffc6d8b0edd1ef2d87ef8f4aa6e00",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0007.00.jpg",
+      "sha256": "edc9c680382ad8dfbe1189382ff7c16dc062f18cf22a0553b656851c0395dc68",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0019.00.jpg",
+      "sha256": "17aa9aa2e50375779a6afa0da7a7ec5f335ecaa026d3b8d24923d1c12aeb5ee9",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0027.00.jpg",
+      "sha256": "6f3e3b5534b461d0eedd5cc4d071db7ff0aea095871adffeee6e00ef3cbaf388",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0036.00.jpg",
+      "sha256": "e93a7a3b01574fd2f4c5313825e822c062114255cafe974e711e9b887b5d062c",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0053.20.jpg",
+      "sha256": "3a55024a634105386b912d9c45890d36cfdd8e84ba425ac995526f5499abb64c",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0055.00.jpg",
+      "sha256": "5c5e9dc7cee229f3b47968821398b6d98cd112e1b357ec0c19cd7e5cd192133a",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0063.00.jpg",
+      "sha256": "f388b83b56e91d5007fdc06bd62c58fe2edf4cb1faf7fe5a76d3c65b1d80b931",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0067.00.jpg",
+      "sha256": "433109a51bd1610de872ca1f10880bd756d72da150813dae30cefafc69e41a95",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0088.00.jpg",
+      "sha256": "3a868b74174818e275def628a97141415aa69fb4622164c5b7b86bcd6ec50db9",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0092.00.jpg",
+      "sha256": "e3d1b0728be2018f221a069ab0ca9a38fc3bd14efba1a3652bab28bf7fea53d3",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0103.50.jpg",
+      "sha256": "7f9ab4b2375696e046c429d137d6b30826e0721aba4fd13023a3dd8f6ac2beb6",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0104.50.jpg",
+      "sha256": "0c943849e98c97febf6ae92516f0b2184d20101911f7fa5dd64af7483a1116fa",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0105.00.jpg",
+      "sha256": "3c10e47adb658f66e2e7b304afb3f5af440049c26bd1da918532437f304d138e",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0105.50.jpg",
+      "sha256": "fb5e7e437b7f5d5bf6267980c4eb3ae68729f2430bbd68f8716aee98e2456787",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0106.00.jpg",
+      "sha256": "d6f4c9f4f0b4b3cdc2e3d8ad392761dbcff7b23f3727d7688e370260347e5f34",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0106.40.jpg",
+      "sha256": "135e6c1eebd74a2b24c6578f951b667ba0b5a1a2625994db0f426cdf2730998e",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0107.00.jpg",
+      "sha256": "de65562a3f62187b464bbfb243df1a092a1e6b973b3c6aeb3784c4b3f9e092e2",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0107.50.jpg",
+      "sha256": "d1711e436fdaa76d54ea38983de436a2ba7fb29f01deb26e9ef15b41d6af895c",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0115.00.jpg",
+      "sha256": "f75529220374cfbed571f97ec6c8a973e96bb47e3cc26ce5b0ddcc2c2705d5f5",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0118.50.jpg",
+      "sha256": "1e47d52221f0d87d4ebe9812dfa3cc24b52a48de526101f8b41884a55534a230",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0128.00.jpg",
+      "sha256": "bf3bbb96ab6d7caf267c7a6f310c6569943100e25f3a83456d5d379ad839a20d",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0131.00.jpg",
+      "sha256": "adbc075ce41d6741e409028eabedcca6aaf28f49ca85e03df7a7cdb1dee257a5",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0053.00_top.jpg",
+      "sha256": "c3f6ab4985314d5ee20646c59901073ed8a770696953f0f8fdfe6bf830b0c586",
+      "dimensions": [
+        1170,
+        620
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/t0105.00_top.jpg",
+      "sha256": "aae94d7e7e36691caef66b7f080365eb2f5e5e1cafbf2b00e393a10f4f1112b2",
+      "dimensions": [
+        1170,
+        620
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/actions_0.jpg",
+      "sha256": "bff107ed492c05c40f5c9491dd6416333caf439d1f93ab0e0f5ab56ff42d37f0",
+      "dimensions": [
+        1170,
+        2634
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/actions_1.jpg",
+      "sha256": "c9c022447f6258c562576e28b44dce290fd35901089492742a0a05c291649365",
+      "dimensions": [
+        1170,
+        2634
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/actions_2.jpg",
+      "sha256": "37abaac309181542d99540bfaef4a5668c02384d9bbbb940cb7633d964e99474",
+      "dimensions": [
+        1170,
+        2634
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/actions_3.jpg",
+      "sha256": "5f4675c87cb336205653f80af330714391addf63dd748fb239270b4f3d9ce638",
+      "dimensions": [
+        1170,
+        2634
+      ],
+      "inspection": "visual"
+    },
+    {
+      "path": "turn_evidence/actions_4.jpg",
+      "sha256": "45f5d053d8304425fb7c2b322f8b91f6d7cd629fc83e3004ff4659f52a9175e1",
+      "dimensions": [
+        1170,
+        2634
+      ],
+      "inspection": "visual"
+    }
+  ],
+  "new_native_extractions": 2,
+  "independent_seek_seconds": [
+    27,
+    121
+  ],
+  "independent_seek_exact_jpeg_matches": true,
+  "limits": [
+    "Requested seek seconds are not exact measured video frame PTS.",
+    "Fresh QR pixel decoding was unavailable in selected runtime because cv2 is absent; retained QR was visually inspected and payload bytes, source binding, semantic slot counts and exact live code equality independently checked.",
+    "Hidden opponent identities and unshown discard dialogs remain unavailable."
+  ]
+}

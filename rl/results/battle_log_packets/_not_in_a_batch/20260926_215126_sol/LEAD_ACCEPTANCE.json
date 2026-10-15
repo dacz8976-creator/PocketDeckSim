@@ -1,0 +1,20 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-09-26T22:52:30Z",
+  "video": "20260926_215126000_iOS.MP4",
+  "first_pass_reviewer": "/root/sep26_215126 (Sol)",
+  "lead_reviewer": "/root",
+  "source_sha256_verified": "77bc5bd39a338f52730db48f26a48c4307e2b856d6171de748d62e37bc308449",
+  "scope": "One complete battle from matchmaking and setup through all 15 visible turns, 2-3 Defeat, and post-battle summary",
+  "lead_source_checks": [
+    "evidence_001_opening.jpg: DOK 19 matchup",
+    "evidence_002_player_second_point.jpg: +1 award fills the player's second marker, opponent at one",
+    "evidence_003_decisive_attack.jpg: Miraidon ex Hadron Ray deals 300 to Galarian Obstagoon with the score 2-2 before the final point",
+    "evidence_004_result.jpg: Defeat, 15 turns, player two points, opponent three points"
+  ],
+  "correction_before_acceptance": "Initial opening still showed only loading; Sol reviewer replaced it. A second-point still was renamed to avoid implying a two-point award. Lead visually rechecked final files.",
+  "audio": "Full-file AAC volume check was effectively silent; no intelligible speech to transcribe.",
+  "unreviewed_gameplay_intervals": false,
+  "lead_check_scope": "Selected source-frame checks plus turn coverage and source identity reconciliation; not a second full visual pass",
+  "disposition": "full_battle_review_complete"
+}

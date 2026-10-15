@@ -1,0 +1,32 @@
+{
+  "source_video": "20261002_215825000_iOS.MP4",
+  "source_sha256": "61fb9e041b4efa4ad31181c0cb89d94b38ad13f2bf194a48b8f606b24afb107c",
+  "items": [
+    {
+      "id": "U1",
+      "status": "source_limit",
+      "question": "Full discarded cards and hidden opponent hand",
+      "finding": "Never opened; identities and totals not reconstructed from deck snapshot."
+    },
+    {
+      "id": "U2",
+      "status": "source_limit",
+      "question": "Exact printing/set numbers",
+      "finding": "Art and mechanics visible, but log set IDs remain deck-source metadata."
+    },
+    {
+      "id": "U3",
+      "status": "source_limit",
+      "question": "Exact input times",
+      "finding": "Source-local animation timing approximately located by whole timeline; actual capture PTS are measured separately."
+    },
+    {
+      "id": "U4",
+      "status": "source_limit",
+      "question": "Evolution stack faces",
+      "finding": "History establishes genealogy; underlying faces were not exposed."
+    }
+  ],
+  "unreviewed_intervals": [],
+  "consequential_unresolved_claims": []
+}

@@ -1,0 +1,76 @@
+{
+  "schema": "battle-review-uncertainties-v1",
+  "source_video": "20261012_004435000_iOS.MP4",
+  "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+  "items": [
+    {
+      "id": "U1",
+      "status": "recording_limit",
+      "description": "Opponent deck list and hand identities not filmed; hidden draws remain null.",
+      "inspected_source_interval_seconds": [
+        0,
+        463.93
+      ],
+      "value": null,
+      "blocks_outcome": false
+    },
+    {
+      "id": "U2",
+      "status": "recording_limit",
+      "description": "No full discard-pile screens; only partial board-side top cards.",
+      "inspected_source_interval_seconds": [
+        0,
+        463.93
+      ],
+      "value": null,
+      "blocks_outcome": false
+    },
+    {
+      "id": "U3",
+      "status": "recording_limit",
+      "description": "Mega Blaster mills3 owner cards, but only final top Soothing Shore is face-up; other2 identities and reveal-slot assignment unknown.",
+      "inspected_source_interval_seconds": [
+        0,
+        463.93
+      ],
+      "value": null,
+      "blocks_outcome": false
+    },
+    {
+      "id": "U4",
+      "status": "recording_limit",
+      "description": "Exact queue subtype/ranked status unestablished; human match classification from matchmaking and absence of Auto throughout coverage.",
+      "inspected_source_interval_seconds": [
+        0,
+        463.93
+      ],
+      "value": null,
+      "blocks_outcome": false
+    },
+    {
+      "id": "U5",
+      "status": "observation_limit",
+      "description": "Frame source-local seeks are requested times; actual PTS not measured. Approximate action boundaries are marked in ledger.",
+      "value": null,
+      "blocks_outcome": false
+    },
+    {
+      "id": "U6",
+      "status": "recording_limit",
+      "description": "T10 Research zoom and unchanged final hand do not establish a resolved Trainer play or2draws.",
+      "inspected_source_interval_seconds": [
+        445,
+        453
+      ],
+      "evidence_ids": [
+        "n0450.00",
+        "n0450.50",
+        "n0451.00",
+        "n0452.00"
+      ],
+      "value": null,
+      "blocks_outcome": false
+    }
+  ],
+  "unresolved_consequential_ambiguities": []
+}

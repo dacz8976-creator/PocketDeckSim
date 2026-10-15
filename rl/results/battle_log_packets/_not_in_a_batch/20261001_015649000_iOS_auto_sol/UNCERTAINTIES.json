@@ -1,0 +1,53 @@
+{
+  "video_basename": "20261001_015649000_iOS.MP4",
+  "unreviewed_intervals": [],
+  "blocking_coverage_gaps": [],
+  "uncertainties": [
+    {
+      "topic": "Auto pause intention",
+      "seconds": [
+        188.5,
+        189.0,
+        195.0,
+        196.0,
+        197.0
+      ],
+      "finding": "The unchecked Auto state and Arena selection are visible. The owner reason for pausing and exact subsecond toggle boundaries remain unknown. Do not label the result uninterrupted Auto play."
+    },
+    {
+      "topic": "Hidden information",
+      "finding": "Opponent turn 6 Poke Ball search result and all unrevealed deck or hand cards are unknown. No complete deck list is reconstructed."
+    },
+    {
+      "topic": "Challenge label versus played cards",
+      "seconds": [
+        220.8,
+        221.08
+      ],
+      "finding": "The named challenge includes Bellibolt ex, but that card is not revealed in play."
+    },
+    {
+      "topic": "Exact artwork",
+      "finding": "Relevant functional versions are resolved by visible HP, attacks and effects. Exact set/artwork identity is left unassigned where unnecessary."
+    },
+    {
+      "topic": "Final statistics",
+      "seconds": [
+        219.0,
+        220.8,
+        221.08
+      ],
+      "finding": "Victory and challenge label appear before the recording ends. Damage-dealt, maximum damage and last-turn result statistics do not populate. Last turn 9 is confirmed from gameplay."
+    },
+    {
+      "topic": "Date clock basis",
+      "finding": "Source filename begins 20261001; upload and request are September 30 America/Chicago. Filename timezone is unverified."
+    },
+    {
+      "topic": "Independent acceptance",
+      "finding": "The complete first pass and independent lead source checks are accepted. The coordinator registered completion and archived the unchanged original."
+    }
+  ],
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted"
+}

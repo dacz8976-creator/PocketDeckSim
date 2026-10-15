@@ -1,0 +1,86 @@
+{
+  "source_video": "20261006_012927000_iOS.MP4",
+  "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+  "corrections": [
+    {
+      "field": "game2 Silvally second variant",
+      "initial_read": "Shadow Slash from small native460 view",
+      "resolved_read": "Brave Buddies, alternate artwork",
+      "basis": "450 readable related card and590 readable final saved deck agree",
+      "evidence_ids": [
+        "f0450_00",
+        "f0590_00"
+      ],
+      "status": "resolved"
+    },
+    {
+      "field": "T10 retreat payment",
+      "initial_read": "Attached energies remain on Terapagos",
+      "resolved_read": "Grass1+Metal1 discarded; Terapagos benchzero after retreat",
+      "evidence_ids": [
+        "f0361_00",
+        "f0363_00",
+        "f0370_00"
+      ],
+      "status": "resolved"
+    },
+    {
+      "field": "Rainbow Cave",
+      "initial_read": "Possible damage bonus",
+      "resolved_read": "Energy Zone discard/regeneration; +20 comes from Chubby Cheer",
+      "evidence_ids": [
+        "f0328_00",
+        "f0339_00",
+        "f0341_00",
+        "f0349_00"
+      ],
+      "status": "resolved"
+    },
+    {
+      "field": "game2 first Poké Ball phase",
+      "initial_read": "First play658, search662",
+      "resolved_read": "Ball consumed656–657, displayed658, TR Meowth revealed660;657 offset is postconsumption",
+      "evidence_ids": [
+        "f0656_00",
+        "f0657_00",
+        "f0658_00",
+        "f0660_00"
+      ],
+      "status": "resolved"
+    },
+    {
+      "field": "final Snorlax removal phase",
+      "initial_read": "392 fully removed",
+      "resolved_read": "392 removal animation;393 first empty Active;393.5 readable board,396 award2,398 Defeat separate",
+      "evidence_ids": [
+        "f0392_00",
+        "f0393_00",
+        "f0393_50",
+        "f0396_00",
+        "f0398_00"
+      ],
+      "status": "resolved"
+    },
+    {
+      "field": "game2 COVERAGE first Poke Ball prose",
+      "initial_read": "Native hand 656 is intact before the first Poké Ball selection near 658.",
+      "resolved_read": "Native hand656 is intact before the first Poké Ball consumption bounded656-657. The face-up card display658 is separate from that consuming input.",
+      "basis": "Independent bounded reviewer found stale wording; align with retained656/657/658 and corrected ledger. Original coverage preserved separately.",
+      "evidence_ids": [
+        "f0656_00",
+        "f0657_00",
+        "f0658_00"
+      ],
+      "status": "resolved",
+      "corrected_utc": "2026-10-06T20:37:32.335693+00:00"
+    },
+    {
+      "field": "game2 staged_edited_deck_file relative path",
+      "initial_read": "../EDITED_DECK_ENTRY.json",
+      "resolved_read": "../../EDITED_DECK_ENTRY.json",
+      "basis": "Independent checker identified incorrect relative depth. Actual batch-root target resolved and verified. Original child deck file preserved.",
+      "status": "resolved",
+      "corrected_utc": "2026-10-06T20:38:24.355726+00:00"
+    }
+  ]
+}

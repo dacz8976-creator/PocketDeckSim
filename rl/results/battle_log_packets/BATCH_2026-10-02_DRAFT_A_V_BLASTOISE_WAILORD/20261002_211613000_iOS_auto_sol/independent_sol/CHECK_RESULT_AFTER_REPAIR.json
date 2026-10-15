@@ -1,0 +1,278 @@
+{
+  "reviewer": "/root/ind_drafta_auto5",
+  "model": "gpt-6.1-sol",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "reviewed_utc": "2026-10-03T01:10:49.035434+00:00",
+  "source_video": "20261002_211613000_iOS.MP4",
+  "source_sha256": "8eec16e93f6e3bc1322e31bb5ff85c95a364ffb8bc14dd53427626226f1e3fd4",
+  "source_duration_seconds": 231.373333,
+  "accepted": true,
+  "full_review_coverage_checked": true,
+  "pause_contract_checked": true,
+  "guide_update_checked": true,
+  "checked_submission_manifest": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+  "checked_submission_manifest_sha256": "023e53edd194e05a78dc2fcb98f5959e31dac7fbcbde2a363231b531c8e85cfc",
+  "checked_submission_files": {
+    "SOURCE.json": "f521d838dc793bf16d18e7eda0ea9b13678e3fedc374a86d53f9334e18ccf9c7",
+    "ASSIGNMENT.json": "63cec77acf3614eb09f6a6d6528f83f73fbf7ec6ec23e0826568506b2d6bddd5",
+    "ASSIGNMENT.md": "f4054a97bbae25fc64c9819bb8ee259c8b0529c5e0c1e9b2d99af04302fc6dd3",
+    "REVIEW.md": "1dfcaa4526681b11e186eec1bce1cca12c96a7ef87ee6fd4990b8ae6b69ea128",
+    "COVERAGE.md": "fcf1c351a101a0045fd79b107cf56348472b08854e528063acb28d8071aa2985",
+    "SUMMARY.json": "26924cd089d57735d8935ffc1f6e4dc0e5aefa3f806525eccab4520838db9191",
+    "UNCERTAINTIES.json": "79c4510df6f04ec0e56828b383c2c42db00911192a8bd5436c277c0c8c8188a8",
+    "PAUSE_GAME.json": "a918117b3d67880cb859947a50fe681c9bb1cc1aee235f28c954d0a5b6c35084",
+    "DECK_USED.json": "96ea992d5e15e6ca1a81c4dfc94cf3c7b658c872e32cc0e723a932f0f7cfc9f4",
+    "TURN_LEDGER.json": "d965be4a0247aad5224b6eb311b0c666275e3c89f357236a044b183dd849f4ab",
+    "TURN_EVIDENCE.json": "9a8b834d93316fe4188f9fa6647dc7a8c762a754a8b687a0364d0c56ce808dd4",
+    "TURN_TABLE.md": "5513dbf4b9b437f066efd86538e99508247bd606786c54c0a9746a0a6e9a4c67",
+    "METRICS.json": "91155ca47559d09ae85031f03f68b6f341430611e860f4c29dc61b55a878ce4e",
+    "EXTRACTION_MANIFEST.json": "f7c026b00c8df21ee599bb46054a02e7b99c9d3a0fdbcb2f420831c23805be28",
+    "LOCATOR_PREPROCESSING.json": "a767617e56624b75616bcfd668264aad7a6eff4dc27780ad3ed88826d5b2279f",
+    "SEEN_CARD_INVENTORY.json": "a02ae57698b894cc1a6684a6be9088a509c28cbb4f38d91ce6ea542d759dff29",
+    "SEEN_CARD_INVENTORY.md": "dd21a1819387d13296353fe755e6560172445dd6cc4c4f11d4a9ced93e2b5e6d",
+    "GUIDE_UPDATE_SUPPLEMENT.json": "4db5b2ee43f201535ec7e75811ef7732ab9baa8ca3dcc575655407de7b4e12fc",
+    "GUIDE_UPDATE_SUPPLEMENT.md": "2f33b97d63c0b274272d1672d3e12dad865f632163277da5ef6acc15a8f1c8ad",
+    "REPAIR_RECEIPT.json": "cd2f942c3753cadc90dca4f455eae4bf1f21bd1ba9042c10ba4b88b8b1496737"
+  },
+  "independently_inspected_image_paths": [
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\locator_scan\\grid_000_019.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\locator_scan\\grid_020_039.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\locator_scan\\grid_040_059.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\locator_scan\\grid_060_079.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\locator_scan\\grid_080_099.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\locator_scan\\grid_100_119.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\locator_scan\\grid_120_139.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\locator_scan\\grid_140_159.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\locator_scan\\grid_160_179.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\locator_scan\\grid_180_199.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\locator_scan\\grid_200_219.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\locator_scan\\grid_220_230.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0014.20.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0015.30.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0024.80.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0045.80.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0093.20.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0137.80.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0167.20.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0208.80.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0049.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0104.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0108.30.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0109.00.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0110.20.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0111.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0141.10.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0142.20.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0142.80.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0171.00.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0172.30.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0176.00.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0139.80.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0169.20.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0158.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0211.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0230.80.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0000.00.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0074.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0121.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0133.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0156.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0162.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0058.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0063.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0066.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0068.00.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0164.00.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0025.80_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0027.80_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0030.80_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0047.80_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0050.80_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0056.50_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0095.20_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0098.20_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0118.00_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0139.80_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0142.80_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0145.00_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0169.20_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0172.20_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0183.00_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0210.80_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0213.80_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0211.50_bottom.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0024.80_top.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0045.80_top.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0093.20_top.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0137.80_top.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0167.20_top.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0208.80_top.png",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\opponent_deck\\OWNER_ADVANCED_CATEGORY.jpg"
+  ],
+  "findings": [],
+  "exact_corrections_required": [],
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "recording_limits": [
+    "Concealed opponent draws/searches not identifiable from the known deck.",
+    "Neither discard pile opened or scrolled; only visible top cards and separately labelled public discard events.",
+    "Covered evolution stacks are same-recording witnessed history; direct hidden stack reading remains unavailable.",
+    "Native candidates certify captured instants; reduced one-fps whole-timeline locators can miss subsecond invisible input.",
+    "Exact filmed collector numbers not transcribed; generic deck snapshot versions remain distinct from visible art.",
+    "One-fps timeline review does not certify every subsecond input. No raw video rehash or full re-decode performed in independent review.",
+    "Exact 20-card snapshot checked against saved batch owner snapshot, without revisiting the external site. Source SHA is supplied frozen identity; evidence is consistently bound to it."
+  ],
+  "observed_result": {
+    "owner_result": "win",
+    "owner_points": 3,
+    "opponent_points": 0,
+    "turns": 11,
+    "went_first": "owner",
+    "damage_done": 390,
+    "card_of_game": "Alolan Ninetales ex",
+    "evidence_ids": [
+      "F0230.80"
+    ]
+  },
+  "mode_classification": {
+    "battle_type": "computer",
+    "category": "Advanced",
+    "category_basis": "Separate owner category screenshot, independently inspected",
+    "owner_decision_actor_by_turn": {
+      "1": "game Auto",
+      "3": "game Auto",
+      "5": "game Auto",
+      "7": "game Auto",
+      "9": "game Auto",
+      "11": "game Auto"
+    },
+    "auto_enabled": true,
+    "manual_override": "none visible; invisible input unverified",
+    "routing": "local only; exclude human Pause Games and Ladder"
+  },
+  "verification": {
+    "submission_file_count": 20,
+    "hash_matches": true,
+    "native_full_and_crop_hashes_checked": 330,
+    "native_frame_count": 110,
+    "native_dimensions": [
+      1170,
+      2532
+    ],
+    "nested_evidence_refs_checked": true,
+    "turn_rows": 11,
+    "owner_rows": 6,
+    "locator_grids_inspected": 12,
+    "additional_native_extractions": 0,
+    "timed_hand_contract": [
+      {
+        "turn": 1,
+        "draw_end": 24.8,
+        "candidate_ids": [
+          "F0025.80",
+          "F0027.80",
+          "F0030.80"
+        ],
+        "before_end_id": "F0024.80",
+        "ending_hand_count": 5
+      },
+      {
+        "turn": 3,
+        "draw_end": 44.8,
+        "candidate_ids": [
+          "F0045.80",
+          "F0047.80",
+          "F0050.80"
+        ],
+        "before_end_id": "F0056.50",
+        "ending_hand_count": 4
+      },
+      {
+        "turn": 5,
+        "draw_end": 92.2,
+        "candidate_ids": [
+          "F0093.20",
+          "F0095.20",
+          "F0098.20"
+        ],
+        "before_end_id": "F0118.00",
+        "ending_hand_count": 3
+      },
+      {
+        "turn": 7,
+        "draw_end": 136.8,
+        "candidate_ids": [
+          "F0137.80",
+          "F0139.80",
+          "F0142.80"
+        ],
+        "before_end_id": "F0145.00",
+        "ending_hand_count": 5
+      },
+      {
+        "turn": 9,
+        "draw_end": 166.2,
+        "candidate_ids": [
+          "F0167.20",
+          "F0169.20",
+          "F0172.20"
+        ],
+        "before_end_id": "F0183.00",
+        "ending_hand_count": 6
+      },
+      {
+        "turn": 11,
+        "draw_end": 207.8,
+        "candidate_ids": [
+          "F0208.80",
+          "F0210.80",
+          "F0213.80"
+        ],
+        "before_end_id": "F0211.50",
+        "ending_hand_count": 7
+      }
+    ],
+    "original_19_files_preserved_and_hash_checked": true,
+    "bounded_changed_file_count": 4
+  },
+  "category_findings": {
+    "opening": "All five opening cards and Carvanha selected Active are directly supported at14.2/15.3.",
+    "hands": "All six starts and draw-end +1/+3/+6 candidates inspected. T1 fast End Turn substitution24.8 is valid; later candidates are appropriately marked post-play/turn. Ending hands5,4,3,5,6,7 reconcile.",
+    "draws_searches": "All owner Research/Search/Copycat individual reveal native anchors checked. Copycat Misty108.3, illustrated Research109, regular Research110.2,Vulpix111.5; T7 Cyrus142.2 then Ice Pop142.8; T9 Ball171 then Ninetales172.3; Ball searches Vulpix49.5 and Carvanha176 are valid. Reveals and fan order distinguished.",
+    "ordinary_turns": "Independently chose T7/T9 first Research plays and ending-hand reconciliations. T11 attachment goes to right Bench Sharpedo1 to2 while Active Cape Ninetales staysWater2.",
+    "boards": "All six independently reviewed owner-start boards, both physical board histories, HP, Tools, typed Energy and same-recording genealogy remain valid. Binding Snow applies to the opponent Active position, including replacement Baxcalibur, through opponent turns 6, 8 and 10. T8 now distinguishes the pre-expiry 162.5 snapshot from the native 164.002 next-turn confirmation.",
+    "fans_discards": "All six native top fans independently counted3,5,4,4,4,2. Neither pile opened; top-card observations remain partial and public-event history separate.",
+    "guide": "Six fresh start-board records and Auto actors supported. No owner choices during opponent turns appear; owner takes no damage. Inventory19 minimum physical owner copies is supported, repeated Irida/Ice Pop sightings do not add copies, second Sharpedo unseen.",
+    "mode_result": "SetupAutoOn and nativeVictory11turns3to0/390damage confirmed. Advanced is separate menu category. Local-only computer routing is correct."
+  },
+  "review_scope": "Full original independent review carried forward after preservation and unchanged-file hash verification, plus independent bounded four-file comparison and retained T8 frame reinspection. No source reread or extraction.",
+  "initial_rejection_preserved": {
+    "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\independent_sol\\CHECK_RESULT.json",
+    "sha256": "99ae9eedb477f1fb53919faf2eeea7ce00c8aea663ffcb8ec0df9453376949cf",
+    "accepted": false
+  },
+  "preserved_worker_submission_manifest": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\worker_submission\\SUBMISSION.json",
+  "preserved_worker_submission_manifest_sha256": "f517ef25c730bae74c7b80c8fae098b354a5633983351a45d11d44edcda0344c",
+  "repair_receipt_checked": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\REPAIR_RECEIPT.json",
+  "repair_receipt_sha256": "cd2f942c3753cadc90dca4f455eae4bf1f21bd1ba9042c10ba4b88b8b1496737",
+  "independently_reinspected_after_repair_image_paths": [
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0162.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_211613000_iOS_auto_sol\\turn_evidence\\t0164.00.jpg"
+  ],
+  "resolved_findings": [
+    {
+      "id": "T8_POST_RESOLUTION_EFFECT_BOUNDARY",
+      "resolved": true,
+      "basis": "Native 162.502 still shows the prohibition icon and opponent-turn background. Native 164.002 shows Current turn 9 and no icon. The repaired T8 row truthfully retains the pre-expiry board at 162.5, sets the resolved ending time to 164.0, and separately records the native next-turn confirmation. Automatic expiry and frame roles now use the correct boundary evidence; REVIEW and TURN_TABLE describe the distinction. Logical expiry remains end T8.",
+      "changed_files": [
+        "REVIEW.md",
+        "TURN_LEDGER.json",
+        "TURN_EVIDENCE.json",
+        "TURN_TABLE.md"
+      ],
+      "guide_and_inventory_semantics_unchanged": true,
+      "effective_manifest_binds_all_20_files": true
+    }
+  ]
+}

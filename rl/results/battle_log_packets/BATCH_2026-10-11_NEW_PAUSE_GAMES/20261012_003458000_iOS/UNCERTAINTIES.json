@@ -1,0 +1,86 @@
+{
+  "video_basename": "20261012_003458000_iOS.MP4",
+  "source_sha256": "399ef7e1be5545ca1284a7aedb9f6eea70abb5929ed7cbf2083d539dae64f413",
+  "items": [
+    {
+      "id": "queue",
+      "status": "recording_limit",
+      "source_seconds": [
+        4,
+        8
+      ],
+      "question": "Exact queue label",
+      "finding": "Human opponent search and named dual clocks observed; queue name not filmed."
+    },
+    {
+      "id": "hidden_opponent",
+      "status": "recording_limit",
+      "source_seconds": [
+        56,
+        196
+      ],
+      "question": "Opponent hand/search/May identities",
+      "finding": "Card faces stay hidden. Later public plays do not name their exact origin."
+    },
+    {
+      "id": "discard",
+      "status": "recording_limit",
+      "source_seconds": [
+        0,
+        363.783333
+      ],
+      "question": "Opened discard pile contents",
+      "finding": "No opened discard pile view shown."
+    },
+    {
+      "id": "printing",
+      "status": "provenance_limit",
+      "source_seconds": [
+        0
+      ],
+      "question": "Exact artwork/rarity",
+      "finding": "QR identifies semantic membership only; log labels preserved separately."
+    },
+    {
+      "id": "turn4_noeffect",
+      "status": "observed_with_mechanical_inference",
+      "source_seconds": [
+        126,
+        130,
+        134
+      ],
+      "question": "Crackly Toss effect",
+      "finding": "Attack animation shown, no Energy/HP change. Only Dragonair is benched, no Basic target; currentWater token already consumed. Do not invent an extra attachment."
+    },
+    {
+      "id": "ending",
+      "status": "recording_limit_nonblocking",
+      "source_seconds": [
+        353,
+        363.783333
+      ],
+      "question": "Full result screen",
+      "finding": "Concession banner establishes owner win, final source ends in result transition."
+    },
+    {
+      "id": "opening_zoom",
+      "status": "recording_capture_limit",
+      "source_seconds": [
+        26,
+        27,
+        30
+      ],
+      "finding": "A Horsea zoom is present at 26/27s and the right Research slot is clipped at the edge. Its visible name/art plus inspected setup continuity support the five named slots; no ideal unzoomed five-card pre-placement view is retained."
+    },
+    {
+      "id": "T1_hand_zoom",
+      "status": "recording_capture_limit",
+      "source_seconds": [
+        44,
+        45,
+        46
+      ],
+      "finding": "No unzoomed four-card pre-play view: 44s has drawn Rare Candy zoom; 45s has selected Research zoom; 46s is after Research leaves hand."
+    }
+  ]
+}

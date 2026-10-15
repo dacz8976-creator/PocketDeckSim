@@ -1,0 +1,11 @@
+{
+  "accepted": true,
+  "source_video": "20260929_192632000_iOS.MP4",
+  "source_sha256": "71c76993370de00ae20d37d479b82d4f82109215b46a23bf4f990af90aa95a22",
+  "scope": "Entire 355.828333-second user-labeled rule test; no ladder entry",
+  "first_pass": "Sol high /root/sol_rule_192632",
+  "independent_lead_checks": "Read SOURCE.json, REVIEW.md and COVERAGE.md. Inspected overview05/06 and individual poison146,152,156,158,168,170,174,182,184 source frames. Verified Poison Barb text requires attached Active Pokemon, Severe Poison40 text and enhanced icon, Gliscor100 to60, Sharp Fang knocks out Barb-holder, fresh Gliscor Poisoned popup, and next60 to50 HP transition.",
+  "finding": "Observed fresh ordinary Poison from Poison Barb replaces Severe Poison40 with a10-damage checkup in this sequence.",
+  "limits": "Simulator implementation is user-reported, not independently inspected. Later bench damage to a Poison Barb holder does not establish a fresh poison trigger. No generalization to every poisoning effect.",
+  "minor_correction": "Gliscor switching and recovery belong around04:15 in full-clip timeline."
+}

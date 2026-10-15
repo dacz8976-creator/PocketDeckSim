@@ -1,0 +1,206 @@
+{
+  "accepted": true,
+  "decision": "accepted_with_non_material_timestamp_qualification",
+  "reviewer": "/root/check_ladder_142546",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "scope": "Bounded independent source check of frozen full-battle primary packet; not a second full image-heavy review",
+  "checked_utc": "2026-10-14T15:44:17.624143+00:00",
+  "source_filename": "20261014_142546000_iOS.MP4",
+  "source_sha256": "71f4550d39ecf24f1b12d5ad86260e685874c24ff32822c6216368efc4ef4805",
+  "frozen_manifest_sha256": "a57ab13641e7151032c545d4b20545ca00fe955ba5f605616d7c2c4303815a29",
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "frozen_files_checked": 181,
+  "checked_retained_timestamps_seconds": [
+    10,
+    29,
+    33,
+    36,
+    69,
+    94,
+    129,
+    135,
+    175,
+    196,
+    202,
+    207,
+    224,
+    227,
+    269,
+    271,
+    272,
+    274,
+    277,
+    278,
+    280,
+    281,
+    287,
+    299.8
+  ],
+  "fresh_original_timestamps_seconds": [
+    62.5,
+    159.5,
+    278.5
+  ],
+  "fresh_original_paths": [
+    "independent_sol/fresh_t0062.5.jpg",
+    "independent_sol/fresh_t0159.5.jpg",
+    "independent_sol/fresh_t0278.5.jpg"
+  ],
+  "findings": [
+    {
+      "claim": "Source identity and frozen binding",
+      "timestamps": [],
+      "paths": [
+        "SOURCE.json",
+        "REVIEW_PACKET_HASHES.json",
+        "independent_sol/INTEGRITY_BEFORE.json",
+        "independent_sol/INTEGRITY_AFTER.json"
+      ],
+      "finding": "Fresh source SHA-256 71f4550d39ecf24f1b12d5ad86260e685874c24ff32822c6216368efc4ef4805 and bytes549105456 match. All181 frozen files match before and after; manifest matches supplied hash."
+    },
+    {
+      "claim": "Coverage and seven displayed turns",
+      "timestamps": [
+        69,
+        94,
+        175,
+        196,
+        202,
+        207,
+        224,
+        227,
+        299.8
+      ],
+      "paths": [
+        "COVERAGE.md",
+        "REVIEW.md"
+      ],
+      "finding": "Primary coverage spans all300.605 seconds and enumerates four owner and three opponent turns. Independent state samples and turn3/7 banners plus seven-turn result are consistent; no missing phase identified."
+    },
+    {
+      "claim": "Human ladder classification; no Auto contradiction",
+      "timestamps": [
+        29,
+        36,
+        69,
+        94,
+        175,
+        207,
+        227,
+        278.5,
+        299.8
+      ],
+      "paths": [
+        "native/t0029.0.jpg",
+        "independent_sol/fresh_t0278.5.jpg"
+      ],
+      "finding": "Both Ultra Ball Rank4 introductions visible. No Auto control in inspected retained/fresh screens. Owner ladder designation and ranked introduction support classification."
+    },
+    {
+      "claim": "Deck12 selector and visible core",
+      "timestamps": [
+        10,
+        62.5,
+        196,
+        224,
+        278.5,
+        280
+      ],
+      "paths": [
+        "native/t0010.0.jpg",
+        "independent_sol/fresh_t0062.5.jpg",
+        "independent_sol/fresh_t0278.5.jpg"
+      ],
+      "finding": "Deck12 is checked in selector. Visible core corroborates Spinarak/Ariados, Cottonee/Whimsicott ex and Teal Mask Ogerpon ex."
+    },
+    {
+      "claim": "Went first; ownT4/global7 first main attack; opponent0 before",
+      "timestamps": [
+        33,
+        36,
+        94,
+        129,
+        196,
+        202,
+        227,
+        277,
+        278,
+        278.5,
+        280,
+        299.8
+      ],
+      "paths": [
+        "native/t0033.0.jpg",
+        "native/t0036.0.jpg",
+        "native/t0227.0.jpg",
+        "native/t0277.0.jpg",
+        "independent_sol/fresh_t0278.5.jpg",
+        "native/t0280.0.jpg"
+      ],
+      "finding": "First banner/setup and result agree. Main Whimsicott ex attack is Grass Knot approximately279-280s in ownerT4/global7. Opponent0 and owner1 visible before attack at278.5s. Earlier Ariados Pierce at129s ownerT2/global3 and202s ownerT3/global5 are separate support attacks; prefix 1st | Whimsicott ex T4 | opp 0 pts is supported."
+    },
+    {
+      "claim": "Ordinary-turn independent samples",
+      "timestamps": [
+        62.5,
+        159.5,
+        175,
+        196,
+        202,
+        207,
+        224
+      ],
+      "paths": [
+        "independent_sol/fresh_t0062.5.jpg",
+        "independent_sol/fresh_t0159.5.jpg",
+        "native/t0196.0.jpg",
+        "native/t0202.0.jpg",
+        "native/t0207.0.jpg",
+        "native/t0224.0.jpg"
+      ],
+      "finding": "Fresh62.5s confirms Ariados drawn/inspected during T1 with Spinarak still Active, no premature evolution claim. Fresh159.5s corroborates opponent Carvanha development after Mantyke point. OwnerT3 grass to Cottonee and Pierce leave Carvanha20; subsequent Mega160 and Ariados20 agree with30 retained damage and70 incoming attack."
+    },
+    {
+      "claim": "Terminal note, damage and exact result",
+      "timestamps": [
+        135,
+        269,
+        271,
+        272,
+        274,
+        277,
+        278.5,
+        280,
+        281,
+        287,
+        299.8
+      ],
+      "paths": [
+        "native/t0269.0.jpg",
+        "native/t0271.0.jpg",
+        "native/t0272.0.jpg",
+        "native/t0274.0.jpg",
+        "native/t0281.0.jpg",
+        "native/t0287.0.jpg",
+        "native/t0299.8.jpg"
+      ],
+      "finding": "Two benched Ariados, successive Goo-zooka plays/notices and Grass Knot160 preview/damage corroborate finisher note. Mega160 takes160; +3 fills point track. Victory vs まいちゃん shows3-0 and220 damage.30+30+160 agrees."
+    }
+  ],
+  "material_errors": [],
+  "non_material_corrections": [
+    {
+      "path": "REVIEW.md",
+      "issue": "Two table interval labels incorrectly convert141s as02:41. OwnerT2 should read01:34-02:21; opponentT2 should read02:21-02:56. COVERAGE.md numeric intervals, row action timestamps, turn count and result are correct.",
+      "disposition": "Primary remains frozen. This independent note qualifies the prose typo; no effect on acceptance or Ladder fields."
+    }
+  ],
+  "limitations": [
+    "Bounded independent check inspected selected source frames and complete textual coverage, not every frame or every action a second time.",
+    "Hidden opponent cards and exact full deck list remain unknown.",
+    "Attack start is approximate279-280s; no frame-exact claim.",
+    "No live Ladder artifact, shared registration or archive operation performed."
+  ]
+}

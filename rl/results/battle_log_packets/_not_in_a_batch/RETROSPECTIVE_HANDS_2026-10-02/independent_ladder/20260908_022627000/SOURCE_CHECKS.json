@@ -1,0 +1,218 @@
+{
+  "schema": "independent-retrospective-source-check-v1",
+  "game_id": "20260908_022627000",
+  "reviewer": "Sol /root/sol_retro_ladder_021327",
+  "producer": "different Sol /root/sol_retro_ladder_012720",
+  "reviewer_was_primary": false,
+  "completed_utc": "2026-10-02T22:33:33.983781+00:00",
+  "status": "needs_repair",
+  "independent_acceptance": false,
+  "source_review_status": "independent_bounded_source_check_complete",
+  "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+  "source_identity_basis": "Producer verified cached-source receipt and matching oldSOURCE/PREPROCESS_LOG SHA; independent reviewer did not read or hash movie. All15 frozen small-file hashes match SUBMISSION_AFTER_ASTRA_REPAIR modified-file overrides.",
+  "submission": "SUBMISSION_AFTER_ASTRA_REPAIR.json",
+  "frozen_files_match": true,
+  "scope": {
+    "turns": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18
+    ],
+    "owner_turns": [
+      1,
+      3,
+      5,
+      7,
+      9,
+      11,
+      13,
+      15,
+      17
+    ],
+    "setup": true,
+    "canonical_json_and_prose_read": true,
+    "native_full_frames_visually_inspected": 60,
+    "frame_headers_and_crop_bounds_checked": 124,
+    "source_video_reads": 0,
+    "new_native_extractions": 0
+  },
+  "structural_results": {
+    "rows_hands_references_dimensions_crop_bounds_arithmetic_pass": true
+  },
+  "accepted_components": [
+    "Five-card setup before Active selection and first-player treatment.",
+    "Nine owner hand identity/order/count rows, named normal/Research/Researcher/Copycat/search cards and visible no-target search. Fast-play hand reconciliation is qualified.",
+    "Astra six core Energy/Tool/retreat corrections and repaired596post-retreat reference /500next-turn qualification.",
+    "Numbered source/inherited plays, warnings and inferred warning response separated; no-effect previews and menu open/close bounded.",
+    "Both-side HP/max/typedEnergy/Tools and conditions are internally consistent with inspected anchors and six Astra corrections. Boundary observation-basis repair remains required.",
+    "Periodic closed discard surfaces and opponent card-back fan counts. Full hidden piles and hidden card identities remain unavailable.",
+    "Exact historical20-card list is explicitly unavailable; no current list substituted.",
+    "Inherited owner loss retained; no new outcome review or registration performed."
+  ],
+  "mode": {
+    "auto_option_seen_in_60_inspected_frames": false,
+    "auto_enabled": null,
+    "classification": "ladder_presumed",
+    "excluded_from_ladder": false,
+    "opponent_type": null,
+    "owner_rule": "Any visible Auto control/option evenOFF makes computer battle and ladder exclusion.",
+    "basis": "Native679 menu shows Concede,Settings,BattleLog; no Auto visible in bounded inspected views. Settings submenu and continuous footage not inspected. Absence is bounded."
+  },
+  "coverage_limits": [
+    "Producer reports screening721reduced1fps samples in37grids over nominal0–720s. Independent check read scan metadata and inspected material native prompt/panel anchors; did not independently rescreen all721locators.",
+    "60retained native full frames were visually inspected.124full-frame and248crop headers/bounds checked, but remaining64native images were not visually inspected independently.",
+    "One-second locators can miss subsecond prompts/inputs. Opponent hand identities, unopened pile inventories, unsampled settings and exact input times remain unknown.",
+    "New imagePTS are producer-measured; reused frames retain nullPTS. Independent reviewer did not independently decode timestamps.",
+    "Final overlay obscures settled board; accepted outcome and attack implications remain inherited/derived rather than a new direct settled-board capture."
+  ],
+  "findings": [
+    {
+      "id": "BOUNDARY_PROVENANCE",
+      "status": "required_repair",
+      "severity": "material_evidence_qualification",
+      "files": [
+        "TURN_LEDGER.json",
+        "REVIEW_SUPPLEMENT.md"
+      ],
+      "fields": [
+        "turns[6].board_after.opponent",
+        "turns[8].board_after.opponent",
+        "turns[14].board_after.opponent",
+        "turns[16].board_after.opponent.active",
+        "board_at_start/board_after.phase and per-field basis wherever cross-turn reconstruction is used"
+      ],
+      "problem": "Boundary states are given complete/null-limit card fields with a blanket after-resolution, before-generation phase. Some cited natives show a pre-attack state or already include the following turn's plays. The Energy Zone has a generic inference warning, but Pokémon HP/positions/Energy have no equivalent boundary reconstruction basis.",
+      "decisive_examples": [
+        {
+          "turn": 7,
+          "claimed_end": {
+            "active": "Mega Absol ex",
+            "hp": 120,
+            "Darkness": 0,
+            "bench": "Skorupi60/D1"
+          },
+          "anchors": [
+            {
+              "id": "F0304.00",
+              "requested_s": 304,
+              "observed": "Before Entrap: Skorupi remains Active60/D1 and Mega Absol Benched170/E0."
+            },
+            {
+              "id": "F0339.30",
+              "requested_s": 339.3,
+              "observed": "Opponent8 after evolution and attachment: Drapion is Benched130/D1; named Giant Cape is being played onto Active Mega Absol120 with Darkness already attached."
+            }
+          ],
+          "repair": "Keep any supported end7 values as boundary-derived from accepted Entrap and surrounding native states. Name which attributes are observed directly at each anchor and which are reconstructed;339.3 is not an end7 still."
+        },
+        {
+          "turn": 9,
+          "claimed_end": "Drapion Active80/D1, Mega Absol Bench140/D1, no Deino yet",
+          "anchors": [
+            {
+              "id": "F0394.00",
+              "requested_s": 394,
+              "observed": "Opponent10: Deino60 already occupies Bench2. Drapion80/D1 and Mega Absol140/D1 are directly visible."
+            }
+          ],
+          "repair": "Excluding Deino from the earlier end9 boundary is a reconstructed chronological state. Qualify394 as later corroboration, not an exact end9 board image."
+        },
+        {
+          "turn": 15,
+          "claimed_end": "Mega Absol Active10/D1; Drapion Bench1 80/D3; Hydreigon Bench2 150/E0; no second Deino yet",
+          "anchors": [
+            {
+              "id": "F0602.00",
+              "requested_s": 602,
+              "observed": "Before Entrap: Drapion remains Active80/D3, Mega Absol Benched60/D1, Hydreigon Benched150/E0; second Psychic attachment to Hypno is in flight."
+            },
+            {
+              "id": "R0640.00",
+              "requested_s": 640,
+              "actual_pts": null,
+              "observed": "Opponent16 after promotion, new Deino and Roar: Hydreigon Active120/D3, Mega Absol Bench2 10/E0, Drapion Bench1 80/D3, second Deino Bench3 60/E0."
+            }
+          ],
+          "repair": "Explicitly distinguish end15 reconstruction from640 later corroboration. The active position, retained Absol D1, Hydreigon150/E0 and absent second Deino are not direct observations at640."
+        },
+        {
+          "turn": 17,
+          "claimed_end": "Hydreigon70/E0",
+          "anchors": [
+            {
+              "id": "F0681.00",
+              "requested_s": 681,
+              "observed": "Before Boost Dash: Hydreigon still140/E0. Comfey50/P1 is direct."
+            }
+          ],
+          "repair": "Qualify the70HP end state as accepted attack outcome/derived arithmetic or attach an existing retained direct70HP endpoint if already inspected. Do not describe681 as direct70HP evidence. R0682.00 is listed in primary evidence but was not independently viewed here."
+        }
+      ],
+      "global_repair": "Audit both boundary board objects across18 rows for anchor-phase mismatch. Add a specific observation/derivation basis for each affected attribute or board subset; preserve accepted old prose and current supported values. Update prose blanket claim that all start/end snapshots are exact generation boundaries."
+    },
+    {
+      "id": "T15_HAND_PHASE",
+      "status": "required_repair",
+      "severity": "factual_timing_qualification",
+      "files": [
+        "HAND_SUPPLEMENT.json"
+      ],
+      "fields": [
+        "target_rows[7].limits"
+      ],
+      "current_text": "Deck is empty. Retreat precedes +3 and evolution precedes +6; native start590s retains three cards.",
+      "anchors": [
+        {
+          "id": "F0593.00",
+          "requested_s": 593,
+          "observed": "Cape Raticate remains Active100/P1D1; Drowzee60/P1 is still Benched. Hand has Hypno, Flute, full-art Research."
+        },
+        {
+          "id": "F0596.00",
+          "requested_s": 596,
+          "observed": "Cape Raticate is Benched100/P1D1; Drowzee promoted and Hypno evolution in progress; hand contains Flute and Research."
+        }
+      ],
+      "repair": "Replace the stale retreat-before+3 statement with pre-switch593 and post-switch/evolution-in-progress596, preserving actual requested times and measuredPTS. No target hand changes are needed."
+    },
+    {
+      "id": "HAND_CANDIDATE_INVENTORY",
+      "status": "required_repair",
+      "severity": "coverage_metadata",
+      "files": [
+        "HAND_SUPPLEMENT.json"
+      ],
+      "fields": [
+        "target_rows[1].native_capture_times",
+        "target_rows[2].native_capture_times",
+        "target_rows[2].limits"
+      ],
+      "problem": "The hand timing inventory omits retained later offset candidates. Turn3 lists97,98,100 but omits103 and105 (TURN_EVIDENCE ranges4–5 and6–7 after the draw bracket). Turn5 lists166,168,171 but omits174 (range6–8). Its limit mentions a+6 evolution view that is not listed.",
+      "repair": "Include or separately list these actual requested offset candidate times and identify post-play phases. Keep dense pre-play anchors separate from later offset views; do not represent the later views as unchanged starting hands. Existing native evidence is sufficient, with no new extraction."
+    }
+  ],
+  "required_repairs": 3,
+  "preservation": {
+    "primary_packet_edited": false,
+    "old_packet_edited": false,
+    "source_moved": false,
+    "shared_registry_edited": false,
+    "external_artifact_edited": false,
+    "simulator_edited": false
+  }
+}

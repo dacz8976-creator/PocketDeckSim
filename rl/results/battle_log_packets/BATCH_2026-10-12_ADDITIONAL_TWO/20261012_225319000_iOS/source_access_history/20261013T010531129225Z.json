@@ -1,0 +1,31 @@
+{
+  "source": "20261012_225319000_iOS.MP4",
+  "attempt_utc": "2026-10-13T01:04:46.102538+00:00",
+  "operation": "bounded attribute-handle Cloud Files download",
+  "source_contents_modified": false,
+  "before": {
+    "logical_bytes": 808683746,
+    "allocated_bytes": 524288000,
+    "attributes": 4724256,
+    "placeholder_state": 57,
+    "cloud_placeholder": true,
+    "in_sync": true,
+    "pinned": true,
+    "unpinned": false,
+    "online_only": false
+  },
+  "exit_code": null,
+  "stdout": "Opening attribute-only handle\nRequesting complete download\n",
+  "error": "Cloud request timed out after 45 seconds; only the task-owned request process was stopped.",
+  "after": {
+    "logical_bytes": 808683746,
+    "allocated_bytes": 524288000,
+    "attributes": 4724256,
+    "placeholder_state": 57,
+    "cloud_placeholder": true,
+    "in_sync": true,
+    "pinned": true,
+    "unpinned": false,
+    "online_only": false
+  }
+}

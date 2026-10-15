@@ -1,0 +1,21 @@
+{
+  "repaired_at_utc": "2026-10-12T23:40:30.076991+00:00",
+  "source_video": "20261012_210041000_iOS.MP4",
+  "source_sha256": "6e8f59764ede0e890ac012fd4ccdd08fc7bfd480bbaae7721bd1f8046031fcc6",
+  "eight_repaired_input_sha256": {
+    "REVIEW.md": "e738c3e7f988787c2a0a353db0a3d34a6708d35337a127ad8a27870ab98ca6bb",
+    "COVERAGE.md": "52a86f3eace5398c9c68bcbd59866103e59ea1c8c54b7238d04de7815030cc1d",
+    "SUMMARY.json": "bb3737486cdc789f2c4c11375113539126fef6ec899529eacc85b1532fd82faa",
+    "UNCERTAINTIES.json": "7891abada6e47880c5b155e9f5df297998fb40106c560dec5600381f37da8d95",
+    "PAUSE_GAME.json": "784cbd733c8242ba95ea0e6271b1a941a0a7652274e4cda66f9970dbfea2dfe9",
+    "DECK_USED.json": "e8c812d17c3485b8936eac3f57a3befe5ec4889074a6ba44985fe611cf86a187",
+    "TURN_LEDGER.json": "a0d1b640a00818b10d50b5cbb88c00c69b7c40cff4d5c974b10267ff4b13bccd",
+    "TURN_EVIDENCE.json": "8ad73e46582d3da70eb03bbf25301796aa63df3034fada8768b62f41bea973dd"
+  },
+  "independent_acceptance": false,
+  "required_recheck": [
+    "R1 native241s Glimmet face",
+    "R2 hidden turn1 searches and no inferred acquisitions",
+    "R3 X Speed354s effect link"
+  ]
+}

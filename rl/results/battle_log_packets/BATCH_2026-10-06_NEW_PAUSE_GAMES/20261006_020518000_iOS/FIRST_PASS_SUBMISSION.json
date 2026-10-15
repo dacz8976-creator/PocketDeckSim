@@ -1,0 +1,18 @@
+{
+  "source_video": "20261006_020518000_iOS.MP4",
+  "source_sha256": "64968acf700ddfecc51cc5bcb01014db7afa855545057bd6934226afd35a53e7",
+  "status": "stable_full_first_pass_submitted_for_independent_acceptance",
+  "source_coverage_seconds": [
+    0,
+    616.08966
+  ],
+  "games": 1,
+  "turns": 17,
+  "owner_result": "Victory3-2 versusAdgbag",
+  "local_match_date": "2026-10-05",
+  "structural_receipt": "STRUCTURAL_CHECK.json",
+  "consistency_receipt": "CONSISTENCY_CHECK.json",
+  "limits": "Absent matching live deck list; hidden opponent identities; discard piles never opened; QR artwork printing not encoded; requested seek times rather than measuredPTS.",
+  "worker_prohibited_actions_performed": false,
+  "note": "Do not rerun build_packet.py or first-pass finalizers after lead edits."
+}

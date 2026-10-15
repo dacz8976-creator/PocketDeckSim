@@ -1,0 +1,1781 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_190031000",
+  "sources": [
+    {
+      "video_basename": "20260908_190031000_iOS.MP4",
+      "sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "default_capture_policy": {
+    "owner_turn_offsets_after_draw_seconds": [
+      1,
+      3,
+      6
+    ],
+    "before_end_action_required": true,
+    "native_resolution_required": true,
+    "bottom_crop_height_fraction": 0.2,
+    "top_crop": "Opponent hand fan, clocks and Energy Zone; save actual pixel bounds",
+    "fixed_grid_is_turn_start_evidence": false,
+    "discard_target_every_owner_turns": [
+      2,
+      3
+    ]
+  },
+  "frames": [
+    {
+      "evidence_id": "t0023.00",
+      "role": "setup",
+      "turn_number": 0,
+      "who_played": "setup",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 23.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0023.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0023.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0023.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0038.00",
+      "role": "native field capture",
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 38.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0038.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0038.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0038.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0048.00",
+      "role": "native field capture",
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 48.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0048.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0048.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0048.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0051.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 51.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 0.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0051.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0051.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0051.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0052.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 52.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0052.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0052.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0052.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0054.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 54.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0054.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0054.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0054.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0057.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 57.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0057.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0057.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0057.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0064.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 64.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 13.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0064.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0064.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0064.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0065.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 65.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 14.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0065.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0065.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0065.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0067.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 67.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 16.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0067.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0067.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0067.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0070.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 70.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 19.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0070.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0070.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0070.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0074.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 74.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 23.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0074.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0074.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0074.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0080.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 80.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 29.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0080.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0080.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0080.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0084.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 84.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 33.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0084.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0084.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0084.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0087.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 87.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 36.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0087.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0087.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0087.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0090.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 90.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 39.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0090.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0090.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0090.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0094.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 94.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 43.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0094.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0094.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0094.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0100.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 100.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 49.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0100.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0100.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0100.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0102.00",
+      "role": "native field capture",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 102.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 51,
+      "offset_after_draw_seconds": 51.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0102.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0102.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0102.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0109.00",
+      "role": "native field capture",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 109.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0109.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0109.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0109.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0112.00",
+      "role": "native field capture",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 112.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0112.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0112.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0112.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0115.00",
+      "role": "native field capture",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 115.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0115.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0115.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0115.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0116.50",
+      "role": "native field capture",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 116.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0116.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0116.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0116.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0120.00",
+      "role": "native field capture",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 120.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0120.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0120.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0120.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0122.00",
+      "role": "native field capture",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 122.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0122.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0122.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0122.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0126.00",
+      "role": "native field capture",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 126.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0126.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0126.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0126.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0130.00",
+      "role": "native field capture",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 130.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0130.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0130.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0130.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0132.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 132.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": -1.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0132.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0132.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0132.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0133.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 133.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 0.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0133.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0133.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0133.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0134.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 134.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0134.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0134.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0134.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0136.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 136.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0136.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0136.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0136.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0139.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 139.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0139.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0139.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0139.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0140.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 140.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 7.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0140.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0140.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0140.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0143.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 143.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 10.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0143.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0143.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0143.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0148.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 148.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 15.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0148.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0148.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0148.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0150.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 150.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 17.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0150.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0150.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0150.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0153.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 153.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 20.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0153.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0153.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0153.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0154.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 154.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 21.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0154.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0154.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0154.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0155.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 155.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 22.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0155.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0155.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0155.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0156.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 156.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 23.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0156.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0156.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0156.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0160.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 160.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 27.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0160.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0160.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0160.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0164.00",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 164.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 31.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0164.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0164.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0164.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    },
+    {
+      "evidence_id": "t0165.50",
+      "role": "native field capture",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "requested_source_seconds": 165.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 133,
+      "offset_after_draw_seconds": 32.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\turn_evidence\\t0165.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0165.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000\\hand_crops\\t0165.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          582
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "observation": "Direct field observations are keyed in TURN_LEDGER and HAND_SUPPLEMENT; candidate suitability is below.",
+      "suitability_or_limit": "No independently measured PTS; source-local requested seek retained."
+    }
+  ],
+  "discard_snapshots": [
+    {
+      "snapshot_id": "pile_2_owner",
+      "turn_number": 2,
+      "pile_owner": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "timestamp_seconds": 102,
+      "cards_in_view": [
+        "Professor's Research"
+      ],
+      "full_pile_established": false,
+      "scroll_coverage": "pile top only; no panel opened",
+      "evidence_ids": [
+        "t0102.00"
+      ],
+      "limit_reason": "Other cards/order concealed in stacked pile."
+    },
+    {
+      "snapshot_id": "pile_3_opponent",
+      "turn_number": 3,
+      "pile_owner": "opponent",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "timestamp_seconds": 130,
+      "cards_in_view": [
+        "Quick-Grow Extract"
+      ],
+      "full_pile_established": false,
+      "scroll_coverage": "pile top only; no panel opened",
+      "evidence_ids": [
+        "t0130.00"
+      ],
+      "limit_reason": "Other cards/order concealed in stacked pile."
+    },
+    {
+      "snapshot_id": "pile_4_owner",
+      "turn_number": 4,
+      "pile_owner": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "timestamp_seconds": 165.5,
+      "cards_in_view": [
+        "Field Blower"
+      ],
+      "full_pile_established": false,
+      "scroll_coverage": "pile top only; no panel opened",
+      "evidence_ids": [
+        "t0165.50"
+      ],
+      "limit_reason": "Other cards/order concealed in stacked pile."
+    },
+    {
+      "snapshot_id": "pile_4_opponent",
+      "turn_number": 4,
+      "pile_owner": "opponent",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "timestamp_seconds": 165.5,
+      "cards_in_view": [
+        "Ivysaur"
+      ],
+      "full_pile_established": false,
+      "scroll_coverage": "pile top only; no panel opened",
+      "evidence_ids": [
+        "t0165.50"
+      ],
+      "limit_reason": "Other cards/order concealed in stacked pile."
+    }
+  ],
+  "scheduled_capture_limits": [
+    "Opponent unplayed cards and normal draw identities are hidden by card backs.",
+    "No discard panel was opened in the retained 1 fps locator scan; visible pile-top cards are recorded separately, full pile identities and order remain null.",
+    "One reduced sample per second does not examine every instant; brief subsecond prompts or panels can be missed.",
+    "Requested source-local times are retained; actual decoded frame PTS was not independently measured.",
+    "The exact historical 20-card log list is unavailable; visible core only."
+  ],
+  "capture_status": "complete_with_recording_limits"
+}

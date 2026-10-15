@@ -1,0 +1,47 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-10-09T23:00:42.687119+00:00",
+  "lead_reviewer": "root-hitback-heavyhelmet-20261009",
+  "source_video": "20261009_223237000_iOS.MP4",
+  "source_sha256": "7766e17b4e1141a72066e101b80869550bae11f72aa064951dfd7d23e8579f3f",
+  "completion_status": "full_battle_review_complete",
+  "scope": "Entire 308.721667-second computer rules-test battle: setup, all 15 turns, positive control, primary hit-back test, later repeats and terminal result",
+  "coverage_checked": true,
+  "first_pass": {
+    "reviewer": "/root/helmet_full_review",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "high"
+  },
+  "independent_review": {
+    "reviewer": "/root/helmet_independent",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "high",
+    "decision": "ACCEPT",
+    "scope": "Bounded independent source checks and full-packet reconciliation"
+  },
+  "lead_direct_source_checks": [
+    "frames/overview_042.jpg",
+    "frames/overview_043.jpg",
+    "frames/overview_044.jpg",
+    "independent_sol/exact_77.5s.jpg",
+    "independent_sol/exact_185s.jpg",
+    "independent_sol/exact_190s.jpg",
+    "wailmer_cost_native.jpg",
+    "dense/sec_309.jpg"
+  ],
+  "lead_notes": "Same Helmet stays attached to retreat-3 Wailmer. Normal attack control100 to90 and hit-back90 to80 establish10 damage in both. Target80 to20 confirms Wave Splash60. Three Water attack cost confirmed by native Water silhouettes. Three Wave Splash attacks and two Wondrous Waves attacks sum to displayed380. Terminal Victory,15 turns,3-0 independently checked. Computer routing and Auto OFF during primary test qualified. Other defensive/return cards and hidden information remain untested.",
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "ladder_eligible": false,
+  "pause_games_eligible": false,
+  "simulator_changes_authorized": false,
+  "accepted_evidence": [
+    "SOURCE.json",
+    "REVIEW.md",
+    "COVERAGE.md",
+    "FINDINGS.json",
+    "independent_sol/VERIFICATION.md",
+    "independent_sol/VERIFICATION.json",
+    "LEAD_ACCEPTANCE.json"
+  ]
+}

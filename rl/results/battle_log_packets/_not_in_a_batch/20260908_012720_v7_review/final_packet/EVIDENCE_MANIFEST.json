@@ -1,0 +1,43 @@
+{
+  "schema": "battle-review-evidence/v1",
+  "source_sha256": "B9E76626643D8950CB7A4277487DA2262B5FA96FAF9E87454495EBE896D47085",
+  "scope": "Complete recorded battle, 00:00.000-04:42.628",
+  "primary_method": "Gemini v7 high-resolution two-pass video review covering setup, all 12 turns, visible battle-state transitions and terminal outcome",
+  "routine_verification": "Sol targeted source checks of setup, every turn boundary, evolutions, Tools, Energy and retreat ledgers, damage math, status effects, knockouts, scoring and terminal outcome",
+  "clarification_method": "No Astra clarification was needed because selective Sol verification resolved all material questions",
+  "prior_evidence": [
+    {
+      "file": "prior_evidence/FOCUSED_REVIEW.md",
+      "sha256": "A4CE3A1088A4B74CEE5264B4B8D30B7999907CF48EF6A7C1FE1DCD1D91CB62C8",
+      "scope": "Focused Cyrus, Confusion Gas, Soothing Wind, knockout and +2-point sequence"
+    },
+    {
+      "file": "prior_evidence/EVENTS.json",
+      "sha256": "2285A6C1243A40BB854CDE5614D8BE92527D55DAB2122EE4A9C711AAC918B84A",
+      "scope": "Timestamped focused-event ledger"
+    },
+    {
+      "file": "prior_evidence/ogerpon-video-review-2026-09-07-VERIFIED.json",
+      "sha256": "A26100CC7DFEE3303BD49F3FC092C9833C8C625973455EF57417085368B82CFB",
+      "scope": "Prior focused packet verification receipt"
+    }
+  ],
+  "gemini_archive": {
+    "directory": "submission-history/gemini-v7",
+    "download_zip_sha256": "D65AE449F406FE391BD706351DC86A64D9754AE60CDC68C600D4569F0B1D20F7"
+  },
+  "initial_preflight_archive": {
+    "directory": "submission-history/gemini-v7-initial-preflight-failure",
+    "download_zip_sha256": "7E4309F28F1AC96B2619E7AC0372AFE0A0246C51BFA232086A90FA3150D8B30C"
+  },
+  "final_files": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SOURCE.json",
+    "UNCERTAINTIES.json",
+    "SOL_VERIFICATION.md",
+    "GEMINI_V7_RECONCILIATION.md",
+    "SOURCE_VERIFICATION.json",
+    "LEAD_ACCEPTANCE.json"
+  ]
+}

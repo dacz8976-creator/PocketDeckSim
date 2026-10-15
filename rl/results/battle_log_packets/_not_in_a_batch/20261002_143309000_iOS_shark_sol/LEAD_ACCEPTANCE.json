@@ -1,0 +1,26 @@
+{
+  "source_video": "20261002_143309000_iOS.MP4",
+  "source_sha256": "3358738fb441f5ca54931447b3c6b11fb6063255caa13f7406f1ec0e3e29c461",
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "coverage_checked": true,
+  "completion_status": "full_battle_review_complete",
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "ranked_ladder_eligible": false,
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "scope": "Entire 299.64068-second recording: setup, every supplied turn, meaningful state changes and terminal outcome",
+  "lead_evidence": [
+    "overview/sheet_02.jpg",
+    "overview/sheet_05.jpg",
+    "native/t0278.00.jpg",
+    "native/t0298.00.jpg"
+  ],
+  "astra_reports": [
+    "ASTRA_NINETALES_CHECK.md"
+  ],
+  "lead_notes": "Lead inspected ordinary opening draw and attachment choices, middle Bench development, the actual final Mewtwo knockout and Victory screen. Ten-turn coverage, 3-0 points, 340 damage, HP and Energy ledgers reconcile. Astra checked the printed Binding Snow and Psy Shadow wording against five native frames. Energy Zone attachments to the Active are prohibited, Bench attachments remain legal and no failed ability attempt or opponent intent is claimed. Ninetales performed the attack plan; Sharpedo and Lapras were developed on Bench without attacking.",
+  "checked_at": "2026-10-02T15:58:59.171886+00:00",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high"
+}

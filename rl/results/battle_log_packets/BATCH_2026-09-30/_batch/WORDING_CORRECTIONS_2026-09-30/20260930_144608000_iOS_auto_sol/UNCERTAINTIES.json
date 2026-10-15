@@ -1,0 +1,15 @@
+{
+  "video_basename": "20260930_144608000_iOS.MP4",
+  "reviewer": "sol_auto_144608000",
+  "consequential_ambiguities": [],
+  "unreviewed_intervals": [],
+  "uncertainties": [
+    {"id": "hidden_cards", "times_seconds": [27, 48, 51, 159], "detail": "Opponent search results, draw identities, hidden hand and unseen deck cards are unknown. Later bench cards are not assigned to particular hidden draws.", "impact": "Does not affect observed actions, score or outcome."},
+    {"id": "full_deck_lists", "times_seconds": [0, 189], "detail": "Visible card cores are recorded, not full deck lists. AI deck name is directly shown but unseen Alolan Muk/evolution cards are not inferred.", "impact": "No unsupported deck completion."},
+    {"id": "printing_numbers", "times_seconds": [37, 126, 172], "detail": "Relevant versions are identified by visible name, HP, attack and ability text. Exact collector numbers are not transcribed.", "impact": "Quick Straight weakness exclusion and observed damage are directly established."},
+    {"id": "timestamp_precision", "times_seconds": [0, 189.373333], "detail": "Timeline ranges and turn boundaries are approximate. Exact-time keyframes and extractor midpoint labels are distinguished in REVIEW.md.", "impact": "No subsecond event-order claim is required."},
+    {"id": "policy_rationale", "times_seconds": [35, 183], "detail": "Reasons for Auto attachment or unused-Trainer choices are not visible. The report records behavior without attributing intent or proving optimal strategy.", "impact": "No manual-choice or strategy-quality inference."}
+  ],
+  "astra_needed": false,
+  "lead_acceptance_pending": true
+}

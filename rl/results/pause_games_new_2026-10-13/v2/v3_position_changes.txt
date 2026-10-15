@@ -1,0 +1,179 @@
+KW-261012_010706000-t01
+   opp.energy_next: Darkness  ->  Psychic
+KW-261012_010706000-t03
+   opp.energy_next: Darkness  ->  Psychic
+   opp.hand_count: 5  ->  6
+   notes: The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that l...  ->  ledger corrected from the frames: the opponent's hand at his turns 3 / 5 / 7 is 6 / 7 / 8 (the frames), not 5 / 6 / 7. The opponent's list i...
+KW-261012_010706000-t05
+   opp.energy_next: Darkness  ->  Psychic
+   opp.hand_count: 6  ->  7
+   notes: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the le...  ->  Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the le...
+KW-261012_010706000-t07
+   opp.energy_next: Darkness  ->  Psychic
+   opp.hand_count: 7  ->  8
+   notes: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the le...  ->  Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the le...
+KW-261012_010706000-t09
+   his_plan: ["Play:Mesagoza", "UseStadium", "Attach:1Darkness@0 zone", "Attack:Giga Turbo"]  ->  ["Play:Mesagoza", "UseStadium", "Attach:1Darkness@0 zone", "Attack:Giga Turbo", "Attach:1Colorless@2 fx"]
+   opp.energy_next: Darkness  ->  Psychic
+KW-261012_010706000-t11
+   opp.energy_next: Darkness  ->  Psychic
+KW-261012_010706000-t13
+   opp.energy_next: Darkness  ->  Psychic
+KW-261012_010706000-t15
+   his_plan: ["Play:Poké Ball", "Evolve:Glimmora@2", "Attach:1Darkness@0 zone", "Attack:Sludge Bomb"]  ->  ["Evolve:Glimmora@2", "Attach:1Darkness@0 zone", "Attack:Sludge Bomb"]
+   notes: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under i...  ->  Alolan Muk stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under i...
+   opp.energy_next: Darkness  ->  Psychic
+KW-261012_010706000-t17
+   opp.energy_next: Darkness  ->  Psychic
+KW-261012_010706000-t19
+   opp.energy_next: Darkness  ->  Psychic
+KW-261012_010706000-t21
+   opp.energy_next: Darkness  ->  Psychic
+KW-261012_203719000-t07
+   his_plan: ["Play:Rare Candy", "Evolve:Kingambit@3", "UseStadium", "Play:Ilima", "Place:Regigigas", "Attach:1Darkness@0 zone", "Attack:Giga Turbo"]  ->  ["Play:Rare Candy", "Evolve:Kingambit@3", "UseStadium", "Play:Ilima", "Promote:0@2", "Place:Regigigas", "Attach:1Darkness@0 zone", "Attack:V...
+   opp.hand_count: 3  ->  4
+   notes: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the l...  ->  Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the l...
+KW-261012_203719000-t09
+   notes: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the l...  ->  Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the l...
+KW-261012_203719000-t11
+   opp.hand_count: 3  ->  4
+   notes: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the l...  ->  Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the l...
+KW-261012_203719000-t13
+   opp.hand_count: 3  ->  4
+   notes: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the l...  ->  Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the l...
+KW-261012_203719000-t17
+   opp.energy_next: Darkness  ->  Lightning
+KW-261012_210041000-t08
+   his_plan: ["Play:Copycat", "Place:Glimmet", "Play:Heavy Helmet", "Tool:Heavy Helmet@2", "Play:Mesagoza", "Attach:1Darkness@0 zone", "Attack:Hang Down"...  ->  ["Play:Copycat", "Place:Glimmet", "Play:Heavy Helmet", "Tool:Heavy Helmet@2", "Play:Mesagoza", "UseStadium", "Attach:1Darkness@0 zone", "Att...
+KW-261012_210823000-t02
+   his_plan: ["Play:Professor's Research", "Play:Poké Ball", "Place:Glimmet", "Play:Mesagoza", "Attach:1Darkness@0 zone"]  ->  ["Play:Professor's Research", "Play:Poké Ball", "Place:Glimmet", "Play:Mesagoza", "UseStadium", "Attach:1Darkness@0 zone"]
+   opp.board[1].card: Alolan Meowth A3 108  ->  Meowth B2 124
+   opp_ambiguous: [{"name": "Alolan Meowth", "used": "A3 108", "could_also_be": ["A3a 037", "B2 094"]}]  ->  []
+   notes: opponent hand range [5, 6]: the lower end is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); h...  ->  ledger corrected from the frames: the opponent's left-Bench Pokémon is a Meowth B2 124 / B2 204 (Carefree Steps, Feelin' Fine, 50 HP, Colorl...
+KW-261012_210823000-t04
+   his_plan: ["Place:Regigigas", "Attach:1Darkness@0 zone", "Retreat:2", "Evolve:Alolan Muk@2", "Place:Pawniard", "Play:Copycat", "Evolve:Glimmora@1"]  ->  ["Place:Regigigas", "UseStadium", "Attach:1Darkness@0 zone", "Retreat:2", "Evolve:Alolan Muk@2", "Place:Pawniard", "Play:Copycat", "Evolve:G...
+   opp.board[1].card: Alolan Meowth A3 108  ->  Meowth B2 124
+   opp_ambiguous: [{"name": "Alolan Meowth", "used": "A3 108", "could_also_be": ["A3a 037", "B2 094"]}, {"name": "Pidgey", "used": "A1 186", "could_also_be": ...  ->  [{"name": "Pidgey", "used": "A1 186", "could_also_be": ["B1 180"]}]
+   notes: opponent hand range [6, 7]: the lower end is used. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); h...  ->  ledger corrected from the frames: the opponent's left-Bench Pokémon is a Meowth B2 124 / B2 204 (Carefree Steps, Feelin' Fine, 50 HP, Colorl...
+KW-261012_210823000-t06
+   opp.board[1].card: Alolan Meowth A3 108  ->  Meowth B2 124
+   opp_ambiguous: [{"name": "Alolan Meowth", "used": "A3 108", "could_also_be": ["A3a 037", "B2 094"]}, {"name": "Pidgey", "used": "A1 186", "could_also_be": ...  ->  [{"name": "Pidgey", "used": "A1 186", "could_also_be": ["B1 180"], "under": "Mega Pidgeot ex"}, {"name": "Pidgey", "used": "A1 186", "could_...
+   notes: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the le...  ->  Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the le...
+KW-261012_210823000-t08
+   his_plan: ["Play:Ilima", "Place:Glimmet", "Attach:1Darkness@1 zone", "Attack:Giga Turbo"]  ->  ["Play:Ilima", "Promote:0@1", "Place:Glimmet", "Attach:1Darkness@0 zone", "Attack:Venomous Hit"]
+   opp.board[1].card: Alolan Meowth A3 108  ->  Meowth B2 124
+   opp_ambiguous: [{"name": "Pidgey", "used": "A1 186", "could_also_be": ["B1 180"], "under": "Mega Pidgeot ex"}, {"name": "Alolan Meowth", "used": "A3 108", ...  ->  [{"name": "Pidgey", "used": "A1 186", "could_also_be": ["B1 180"], "under": "Mega Pidgeot ex"}, {"name": "Pidgey", "used": "A1 186", "could_...
+   notes: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the le...  ->  Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the le...
+KW-261012_210823000-t10
+   opp.board[1].card: Alolan Meowth A3 108  ->  Meowth B2 124
+   opp_ambiguous: [{"name": "Pidgey", "used": "A1 186", "could_also_be": ["B1 180"], "under": "Mega Pidgeot ex"}, {"name": "Alolan Meowth", "used": "A3 108", ...  ->  [{"name": "Pidgey", "used": "A1 186", "could_also_be": ["B1 180"], "under": "Mega Pidgeot ex"}, {"name": "Pidgey", "used": "A1 186", "could_...
+   notes: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under i...  ->  Alolan Muk stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under i...
+KW-261012_210823000-t12
+   opp.board[1].card: Alolan Meowth A3 108  ->  Meowth B2 124
+   opp_ambiguous: [{"name": "Pidgey", "used": "A1 186", "could_also_be": ["B1 180"], "under": "Mega Pidgeot ex"}, {"name": "Alolan Meowth", "used": "A3 108", ...  ->  [{"name": "Pidgey", "used": "A1 186", "could_also_be": ["B1 180"], "under": "Mega Pidgeot ex"}, {"name": "Pidgey", "used": "A1 186", "could_...
+   notes: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the le...  ->  Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the le...
+KW-261012_225319000-t08
+   opp.hand_count: 5  ->  4
+   notes: knocked out between turns: Pawniard; opponent hand range [5, 6]: the lower end is used; the opponent's Baxcalibur: a Rare Candy evolved it, ...  ->  knocked out between turns: Pawniard; ledger corrected from the frames: the opponent's hand at his turn 8 is 4 (the frames; Codex wrote 5 to ...
+KW-261012_230258000-t11
+   his_plan: ["Evolve:Alolan Muk@1", "Play:Lucky Ice Pop", "Attach:1Darkness@0 zone", "Play:Copycat", "Attack:Giga Turbo"]  ->  ["Evolve:Alolan Muk@1", "Play:Lucky Ice Pop", "Attach:1Darkness@0 zone", "Play:Copycat", "Attack:Giga Turbo", "Attach:1Colorless@1 fx"]
+KW-261013_010003000-t01
+   opp.energy_next: Darkness  ->  Lightning
+KW-261013_010003000-t03
+   opp.energy_next: Darkness  ->  Water
+KW-261013_010003000-t05
+   opp.energy_next: Darkness  ->  Water
+KW-261013_010003000-t07
+   opp.energy_next: Darkness  ->  Lightning
+KW-261013_010003000-t09
+   his_plan: ["Evolve:Alolan Muk@2", "Attach:1Darkness@0 zone", "Play:Professor's Research", "Attack:Giga Turbo"]  ->  ["Evolve:Alolan Muk@2", "Attach:1Darkness@0 zone", "Play:Professor's Research", "Attack:Giga Turbo", "Attach:1Colorless@2 fx"]
+   opp.energy_next: Darkness  ->  Water
+KW-261013_010003000-t11
+   opp.energy_next: Darkness  ->  Water
+KW-261013_015011000-t01
+   me.board: [{"card": "Pawniard B3a 041", "hp": 50}]  ->  [{"card": "Pawniard B3a 041", "hp": 50}, {"card": "Alolan Grimer A3 110", "hp": 70}]
+KW-261013_015011000-t03
+   me.board: [{"card": "Pawniard B3a 041", "hp": 50}]  ->  [{"card": "Pawniard B3a 041", "hp": 50}, {"card": "Regigigas B3 134", "hp": 150}, {"card": "Alolan Grimer A3 110", "hp": 70}]
+   opp.board: [{"card": "Falinks B2 092", "hp": 70, "energy": ["Fighting"]}]  ->  [{"card": "Falinks B2 092", "hp": 70, "energy": ["Fighting"]}, {"card": "Tyrogue A4 101", "hp": 30}]
+KW-261013_015659000-t01
+   notes: The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that l...  ->  ledger corrected from the frames: the opponent played no Rare Candy at his turn 4 (Mega Lucario ex is a Stage 1; the frames show only Resear...
+KW-261013_015659000-t03
+   notes: The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that l...  ->  ledger corrected from the frames: the opponent played no Rare Candy at his turn 4 (Mega Lucario ex is a Stage 1; the frames show only Resear...
+KW-261013_015659000-t05
+   opp.discard: ["Professor's Research A4b 373", "Rare Candy A3 144"]  ->  ["Professor's Research A4b 373"]
+   opp.hand_count: 5  ->  6
+   notes: Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (t...  ->  Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (t...
+KW-261013_015659000-t07
+   opp.discard: ["Professor's Research A4b 373", "Rare Candy A3 144"]  ->  ["Professor's Research A4b 373"]
+   opp.hand_count: 6  ->  7
+   notes: Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (t...  ->  Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (t...
+KW-261013_015659000-t09
+   opp.discard: ["Professor's Research A4b 373", "Rare Candy A3 144", "Pokémon Center Lady A2b 070"]  ->  ["Professor's Research A4b 373", "Pokémon Center Lady A2b 070"]
+   opp.hand_count: 5  ->  6
+   notes: Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (t...  ->  Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (t...
+KW-261013_015659000-t13
+   opp.discard: ["Professor's Research A4b 373", "Rare Candy A3 144", "Pokémon Center Lady A2b 070", "Lucky Ice Pop B2 145", "Poké Ball A2b 111"]  ->  ["Professor's Research A4b 373", "Pokémon Center Lady A2b 070", "Lucky Ice Pop B2 145", "Poké Ball A2b 111"]
+   notes: Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the le...  ->  Alolan Muk stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the le...
+KW-261013_020824000-t11
+   his_plan: ["Play:Lucky Ice Pop", "Play:Ilima", "Place:Regigigas", "Retreat:3"]  ->  ["Play:Lucky Ice Pop", "Play:Ilima", "Promote:0@1", "Place:Regigigas", "Retreat:1", "Attach:1Darkness@0 zone"]
+   plan_truncated_at: 4  ->  null
+KW-261013_022530000-t01
+   notes: The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that l...  ->  ledger corrected from the frames: the opponent's Tool is Elegant Cape B3b 065 (+30 HP on a Stage 1), not Giant Cape (+20 on any Pokémon): Sc...
+KW-261013_022530000-t03
+   me.board[1].card: Dratini A3b 051  ->  Dratini B4 116
+   opp.board[2].tools: ["Giant Cape A2 147"]  ->  ["Elegant Cape B3b 065"]
+   notes: The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that l...  ->  ledger corrected from the frames: the opponent's Tool is Elegant Cape B3b 065 (+30 HP on a Stage 1), not Giant Cape (+20 on any Pokémon): Sc...
+KW-261013_022530000-t05
+   me.board[2].card: Dratini A3b 051  ->  Dratini B4 116
+   me.board[3].behind: ["Dratini A3b 051"]  ->  ["Dratini B4 116"]
+   opp.board[2].tools: ["Giant Cape A2 147"]  ->  ["Elegant Cape B3b 065"]
+   opp.board[3].tools: ["Giant Cape A2 147"]  ->  ["Elegant Cape B3b 065"]
+   notes: Dragonair stack taken from the printed evolution line (the ledger gives none); Mega Scizor ex stack taken from the printed evolution line (t...  ->  Dragonair stack taken from the printed evolution line (the ledger gives none); Mega Scizor ex stack taken from the printed evolution line (t...
+KW-261013_022530000-t07
+   me.board[2].card: Dratini A3b 051  ->  Dratini B4 116
+   me.board[3].behind: ["Dratini A3b 051"]  ->  ["Dratini B4 116"]
+   opp.board[1].tools: ["Giant Cape A2 147"]  ->  ["Elegant Cape B3b 065"]
+   opp.board[2].tools: ["Giant Cape A2 147"]  ->  ["Elegant Cape B3b 065"]
+   notes: Dragonair stack taken from the printed evolution line (the ledger gives none); Mega Scizor ex stack taken from the printed evolution line (t...  ->  Dragonair stack taken from the printed evolution line (the ledger gives none); Mega Scizor ex stack taken from the printed evolution line (t...
+KW-261013_022530000-t09
+   his_plan: ["Place:Axew", "Play:Rainbow Cave", "UseStadium", "Attach:1Fighting@3 zone", "Ability", "Attack:Frenzied Blade"]  ->  ["Place:Axew", "Play:Rainbow Cave", "UseStadium", "Attach:1Fighting@3 zone", "Ability", "AttachTypedFromDiscard:Fighting@0", "Attack:Frenzie...
+   me.board[1].card: Dratini A3b 051  ->  Dratini B4 116
+   me.board[2].behind: ["Dratini A3b 051"]  ->  ["Dratini B4 116"]
+   opp.board[0].tools: ["Giant Cape A2 147"]  ->  ["Elegant Cape B3b 065"]
+   opp.board[1].tools: ["Giant Cape A2 147"]  ->  ["Elegant Cape B3b 065"]
+   notes: Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus: a Rare Candy evolved it, so no Stage 1 is under it; ...  ->  Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus: a Rare Candy evolved it, so no Stage 1 is under it; ...
+KW-261013_022530000-t11
+   me.board[2].card: Dratini A3b 051  ->  Dratini B4 116
+   me.board[3].behind: ["Dratini A3b 051"]  ->  ["Dratini B4 116"]
+   opp.board[1].tools: ["Giant Cape A2 147"]  ->  ["Elegant Cape B3b 065"]
+   opp.board[2].tools: ["Giant Cape A2 147"]  ->  ["Elegant Cape B3b 065"]
+   notes: Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus: a Rare Candy evolved it, so no Stage 1 is under it; ...  ->  Dragonair stack taken from the printed evolution line (the ledger gives none); Haxorus: a Rare Candy evolved it, so no Stage 1 is under it; ...
+KW-261013_030351000-t05
+   his_plan: ["Evolve:Dragonair@3", "UseStadium", "Attach:1Metal@1 zone", "Ability"]  ->  ["Evolve:Dragonair@3", "UseStadium", "Attach:1Metal@1 zone", "Ability", "AttachTypedFromDiscard:Metal@0"]
+KW-261013_030351000-t07
+   his_plan: ["Play:Lucky Ice Pop", "UseStadium", "Attach:1Metal@0 zone", "Ability"]  ->  ["Play:Lucky Ice Pop", "UseStadium", "Attach:1Metal@0 zone", "Ability", "AttachTypedFromDiscard:Metal@0"]
+KW-261013_030351000-t09
+   his_plan: ["Play:Lucky Ice Pop", "Play:Lucky Ice Pop", "Retreat:1", "Attach:1Metal@1 zone", "Ability"]  ->  ["Play:Lucky Ice Pop", "Play:Lucky Ice Pop", "Retreat:1", "Attach:1Metal@1 zone", "Ability", "AttachTypedFromDiscard:Metal@0"]
+   opp.board[1].card: Darkrai B1 154  ->  Darkrai B2b 040
+KW-261013_030351000-t11
+   his_plan: ["Play:Poké Ball", "Place:Axew", "Ability", "Attach:1Fighting@1 zone"]  ->  ["Play:Poké Ball", "Place:Axew", "Ability", "AttachTypedFromDiscard:Metal@0", "Attach:1Fighting@1 zone"]
+   opp.board[1].card: Darkrai B1 154  ->  Darkrai B2b 040
+KW-261013_030351000-t13
+   his_plan: ["Play:Professor's Research", "Play:Rare Candy", "Evolve:Haxorus@2", "Attach:1Fighting@2 zone", "Ability"]  ->  ["Play:Professor's Research", "Play:Rare Candy", "Evolve:Haxorus@2", "Attach:1Fighting@2 zone", "Ability", "AttachTypedFromDiscard:Metal@0"]
+   opp.board[1].card: Darkrai B1 154  ->  Darkrai B2b 040
+   opp.board[3].card: Darkrai B1 154  ->  Darkrai B2b 040
+KW-261013_030351000-t15
+   his_plan: ["Ability", "Retreat:1", "Attach:1Fighting@1 zone", "Play:Iris", "Attack:Frenzied Blade"]  ->  ["Ability", "AttachTypedFromDiscard:Metal@0", "Retreat:1", "Attach:1Fighting@1 zone", "Play:Iris", "Attack:Frenzied Blade"]
+   opp.board[1].card: Darkrai B1 154  ->  Darkrai B2b 040
+   opp.board[3].card: Darkrai B1 154  ->  Darkrai B2b 040
+
+52 of 92 positions changed (40 identical)
+   notes: 27
+   opp.board: 22
+   opp.energy_next: 18
+   his_plan: 17
+   me.board: 11
+   opp.hand_count: 10
+   opp_ambiguous: 6
+   opp.discard: 4
+   plan_truncated_at: 1

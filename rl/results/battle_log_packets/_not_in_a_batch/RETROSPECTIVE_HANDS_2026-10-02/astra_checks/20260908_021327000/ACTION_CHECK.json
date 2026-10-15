@@ -1,0 +1,242 @@
+{
+  "schema": "bounded-difficult-facts-check-v1",
+  "reviewer": "astra_mode_012720",
+  "assigned_model": "gpt-6-astra",
+  "reviewed_utc": "2026-10-02T21:38:39Z",
+  "scope": "Listed difficult facts only. No whole-packet acceptance, original-video reads, old-packet changes, outcome re-review or simulator audit.",
+  "overall": "needs_repair",
+  "reason": "C8 misreads Flower Shield: protection depends on Psychic Energy attached to each protected Pokemon, not Energy on Comfey.",
+  "source": {
+    "filename": "20260908_021327000_iOS.MP4",
+    "sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+    "bytes": 767232143,
+    "receipt": "../../20260908_021327000/ROOT_SOURCE_VERIFICATION.json",
+    "basis": "Receipt records stable verified_sha256_match completed 2026-10-02T21:06:06.891585+00:00; reviewer did not rehash original.",
+    "evidence_directory": "../../20260908_021327000/turn_evidence",
+    "timestamp_basis": "tSSSS.ss.jpg names encode requested source-local seconds; actual presentation timestamps not independently measured."
+  },
+  "checks": [
+    {
+      "id": "C2",
+      "status": "accepted",
+      "finding": "Turn 8 added Psychic goes to Comfey, not right Raticate. Right Raticate has one Psychic in checked states.",
+      "evidence": [
+        {
+          "file": "t0188.00.jpg",
+          "direct": "Comfey has zero attached Energy; center Raticate two Psychic, right Raticate one, Active Drowzee two."
+        },
+        {
+          "file": "t0239.00.jpg",
+          "direct": "Comfey still zero; right Raticate still one; Active Hypno two."
+        },
+        {
+          "file": "t0249.00.jpg",
+          "direct": "Comfey now shows one Psychic at lower left of card while Hypno attack menu is open."
+        },
+        {
+          "file": "t0267.00.jpg",
+          "direct": "Comfey one Psychic; both Raticate counts remain two and one."
+        },
+        {
+          "file": "t0408.00.jpg",
+          "direct": "Comfey one, benched Hypno one, right Raticate one, Active Raticate two."
+        }
+      ],
+      "inference": "Attachment target reconciled from before/after states in turn 8; exact event timestamp 242 seconds was not independently checked.",
+      "old_claim_relation": "Contradicts explicit right Raticate one-to-two attachment claim.",
+      "required_action": "Use Comfey zero-to-one Psychic. Do not describe this as the start of protection for all other Pokemon; see C8."
+    },
+    {
+      "id": "C3",
+      "status": "accepted",
+      "finding": "Copycat replacement is Elegant Cape, Poke Ball, Hypno, Drowzee, Poke Ball, left to right. Drowzee is the fourth replacement draw. Both Poke Balls subsequently report no eligible target.",
+      "evidence": [
+        {
+          "file": "t0310.00.jpg",
+          "direct": "Copycat displayed; existing Drowzee is still below during the shuffle/resolve transition."
+        },
+        {
+          "file": "t0318.00.jpg",
+          "direct": "Drowzee draw reveal above three replacement cards: Cape, Poke Ball, Hypno."
+        },
+        {
+          "file": "t0320.00.jpg",
+          "direct": "Five-card replacement fan: Cape, Poke Ball, Hypno, Drowzee, Poke Ball; Copycat in discard display."
+        },
+        {
+          "file": "t0323.00.jpg",
+          "direct": "Poke Ball effect display says no cards in deck can be target; four remaining cards include another Poke Ball, Cape, Hypno, Drowzee."
+        },
+        {
+          "file": "t0328.00.jpg",
+          "direct": "No-eligible-target message again; only Cape, Hypno, Drowzee remain."
+        }
+      ],
+      "inference": "Fourth-draw ordering comes from the three-card partial replacement before Drowzee and five-card completed fan. The hand reductions distinguish two Poke Ball attempts.",
+      "old_claim_relation": "First Poke Ball finding Drowzee is contradicted; missing Copycat sequence is an omission.",
+      "required_action": "Record Copycat and all five named replacement draws, followed by two no-effect Poke Ball plays; no Pokemon was found by either Ball."
+    },
+    {
+      "id": "C4",
+      "status": "accepted",
+      "finding": "Turn 10 Psychic targets the newly benched Hypno after retreat; right Raticate remains one Psychic. Elegant Cape resolves on Active Raticate during the Energy interaction.",
+      "evidence": [
+        {
+          "file": "t0343.00.jpg",
+          "direct": "Large Psychic orb is over middle Bench Hypno; Cape attached to Active Raticate and +30 HP message/animation running. Right Raticate has one Psychic."
+        },
+        {
+          "file": "t0345.00.jpg",
+          "direct": "Psychic orb remains over Hypno; Active Raticate now 150 HP with Cape and two Psychic."
+        },
+        {
+          "file": "t0399.00.jpg",
+          "direct": "Hypno settled at one Psychic; right Raticate one; Comfey one; Active Raticate two."
+        },
+        {
+          "file": "t0408.00.jpg",
+          "direct": "Same settled owner Energy counts."
+        }
+      ],
+      "inference": "Target confirmed by orb position plus resulting Hypno icon. The precise user-input order is not reconstructed from overlapping Cape and Energy animations.",
+      "old_claim_relation": "Third Energy to right Raticate is contradicted. Old strict Energy-before-Cape order is not supported by these resolving frames.",
+      "required_action": "Use Hypno zero-to-one Psychic after retreat. Preserve overlapping Cape/Energy resolution instead of claiming a fully observed strict input order. Settled counts: Active Raticate2, Comfey1, Hypno1, right Raticate1."
+    },
+    {
+      "id": "C5",
+      "status": "accepted",
+      "finding": "Turn 11 Mewtwo attempts an attack, fails the Confusion check and deals no damage. It has two attached Psychic, not three; opponent generated Energy remains available at the end of that turn.",
+      "evidence": [
+        {
+          "file": "t0391.00.jpg",
+          "direct": "Coin flip - Confused prompt during opponent turn."
+        },
+        {
+          "file": "t0396.00.jpg",
+          "direct": "The attack did nothing message; Mewtwo has two Psychic; Leftovers begins resolving at60HP."
+        },
+        {
+          "file": "t0399.00.jpg",
+          "direct": "Mewtwo70HP, two Psychic; large current Psychic orb remains in opponent Energy Zone; owner Active Raticate150HP."
+        },
+        {
+          "file": "t0404.00.jpg",
+          "direct": "Mewtwo still two Psychic, 70HP, Confused."
+        },
+        {
+          "file": "t0408.00.jpg",
+          "direct": "Mewtwo still two Psychic; owner Active Raticate remains150HP."
+        }
+      ],
+      "inference": "Failed Confusion check is supported by the prompt then explicit attack-failure message. Tails is inferred from this failure outcome, not a separately inspected landed coin/result word. Exact selected attack name is not visible in the failure frames.",
+      "old_claim_relation": "No attack occurs is contradicted if meant no attempt; replace with attempted attack failed. Third attachment is contradicted by final two attached icons and unused current Energy.",
+      "required_action": "Record failed attack attempt with zero damage and unknown selected attack name; retain Mewtwo2Psychic. Do not turn absence of damage into absence of an attempted attack."
+    },
+    {
+      "id": "C6",
+      "status": "accepted",
+      "finding": "Goo-zooka's displayed text lasts until the end of the opponent's next turn, and affects the opponent's Active Pokemon's Retreat Cost by plus one.",
+      "evidence": [
+        {
+          "file": "t0300.50.jpg",
+          "direct": "Full card text explicitly says until the end of your opponent's next turn."
+        }
+      ],
+      "inference": "This is source-visible printed wording, not a fresh simulator implementation audit.",
+      "old_claim_relation": "For the turn is incomplete or misleading if it implies expiry at the end of owner's turn.",
+      "required_action": "Use the displayed duration through end of opponent's next turn."
+    },
+    {
+      "id": "C8",
+      "status": "needs_repair",
+      "finding": "Flower Shield is conditional on each protected Pokemon having any Psychic Energy attached. It does not require Psychic attached to Comfey to protect the other eligible Pokemon.",
+      "evidence": [
+        {
+          "file": "t0188.00.jpg",
+          "direct": "Native Comfey text states each of your Pokemon that has any Psychic Energy attached recovers from all Special Conditions and cannot be affected by Special Conditions. Read in lossless native in-memory crop bounds[165,1700,440,2080]. Comfey zero Energy, while Drowzee2 and Raticates2/1 show blue protection icons."
+        },
+        {
+          "file": "t0083.00.jpg",
+          "direct": "Active Drowzee has one Psychic and blue protection icon while Comfey has zero attached Energy; no protection icon on Comfey."
+        },
+        {
+          "file": "t0249.00.jpg",
+          "direct": "Comfey now has one Psychic; this qualifies Comfey itself for the condition."
+        },
+        {
+          "file": "t0267.00.jpg",
+          "direct": "Master Plan card displayed, with Comfey one Psychic."
+        },
+        {
+          "file": "t0269.00.jpg",
+          "direct": "Hypno did not become Confused message. Hypno has two Psychic, so its own attached Energy satisfies Flower Shield."
+        }
+      ],
+      "inference": "Turn 8 Comfey attachment expands protection to Comfey; it does not activate global protection. Turn2 already has at least Drowzee eligible. Ability effect follows the card's per-Pokemon condition, corroborated by which cards display protection icons.",
+      "old_claim_relation": "The new C8 assertion contradicts the visible card wording. Old turn2 wording is broadly compatible for eligible Pokemon, but should be qualified rather than interpreted as all Pokemon regardless of their Energy.",
+      "required_action": "Remove claim protection begins globally on turn8. Replace every dynamic restriction that says while Comfey has Psychic Energy with condition on each affected Pokemon's own attached Psychic Energy. Correct turn2/turn8 commentary, C8 conflict descriptions, effects-in-force rows and any derived explanation. Preserve old packet."
+    },
+    {
+      "id": "MASTER_PLAN",
+      "status": "accepted",
+      "finding": "The previously unnamed turn9 Supporter is Team Rocket's Master Plan.",
+      "evidence": [
+        {
+          "file": "t0267.00.jpg",
+          "direct": "Full card name and printed effect are legible."
+        },
+        {
+          "file": "t0269.00.jpg",
+          "direct": "Hypno did not become Confused message."
+        },
+        {
+          "file": "t0271.00.jpg",
+          "direct": "Master Plan self-confusion conditional coin text shown."
+        },
+        {
+          "file": "t0320.00.jpg",
+          "direct": "Mewtwo later has Confused icon."
+        }
+      ],
+      "inference": "Self-check tails follows printed conditional text and later Confused state; selected coin image was not labeled with a final heads/tails result.",
+      "old_claim_relation": "Resolves an explicitly open name, not an old factual contradiction.",
+      "required_action": "Name Team Rocket's Master Plan; use corrected Flower Shield condition for Hypno's immunity."
+    }
+  ],
+  "mode": {
+    "auto_control_seen": false,
+    "basis": "No Auto control appears in any of20 checked native frames. Opponent has named player and timers. This is bounded absence, not a continuous mode audit.",
+    "user_rule": "Any visible Auto control, even OFF, requires computer classification and ladder exclusion.",
+    "action": "No new Auto-triggered exclusion is raised by this bounded check."
+  },
+  "metrics": {
+    "model": "gpt-6-astra (assigned)",
+    "unique_native_frames": 20,
+    "full_frame_presentations": 20,
+    "in_memory_native_crop_views": 1,
+    "crop_source": "t0188.00.jpg",
+    "crop_bounds": [
+      165,
+      1700,
+      440,
+      2080
+    ],
+    "new_video_extractions": 0,
+    "new_image_files": 0,
+    "original_video_reads": 0,
+    "duplicate_source_hashes": 0,
+    "mutable_packet_hashes": 0,
+    "native_dimensions": [
+      1170,
+      2532
+    ],
+    "full_frame_display_dimensions": [
+      946,
+      2048
+    ],
+    "wall_seconds": null,
+    "tokens": null,
+    "dollars": null
+  },
+  "preservation": "Old packets, accepted outcome, source, shared records and simulator files unchanged. Only the new bounded check files were written."
+}

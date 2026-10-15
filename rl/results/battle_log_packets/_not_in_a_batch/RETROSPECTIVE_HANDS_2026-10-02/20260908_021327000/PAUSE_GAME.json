@@ -1,0 +1,135 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_021327000",
+  "sources": [
+    {
+      "video_basename": "20260908_021327000_iOS.MP4",
+      "sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "review_date": "2026-10-02",
+  "destination": null,
+  "scope": "Owner-authorized retrospective ladderfieldaddition",
+  "deck_name": "Hypno / Raticate ex",
+  "who_went_first": "opponent",
+  "opening": {
+    "source_video": "20260908_021327000_iOS.MP4",
+    "timestamp_seconds": 17,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Team Rocket's Researcher",
+        "variant": null,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0017.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Comfey",
+        "variant": null,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0017.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Team Rocket's Drowzee",
+        "variant": null,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0017.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Team Rocket's Rattata",
+        "variant": null,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0017.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Professor's Research",
+        "variant": null,
+        "basis": "direct_native_observation",
+        "evidence_ids": [
+          "f0017.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Team Rocket's Drowzee",
+      "opening_position": 3,
+      "source_video": "20260908_021327000_iOS.MP4",
+      "timestamp_seconds": 23,
+      "evidence_ids": [
+        "f0017.00",
+        "f0023.00"
+      ]
+    },
+    "redraw_or_replacement": "noneobserved",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "f0017.00",
+      "f0023.00"
+    ],
+    "limit_reason": null
+  },
+  "mode": {
+    "classification": "uncertain",
+    "auto_control_present": false,
+    "auto_enabled": null,
+    "excluded_from_ladder": null,
+    "basis": "No Auto control observed in retained native full frames or 410 reduced1fps locator samples. End Turn and card inspections are visible. Some UI is covered by card zooms or overlays. Hidden mode remains uncertain; owner rule would classify any visible Auto control, even OFF, as computer and exclude ladder.",
+    "evidence_ids": [
+      "f0017.00",
+      "f0083.00",
+      "f0103.00",
+      "f0213.00",
+      "f0320.00",
+      "f0404.00",
+      "f0408.00"
+    ]
+  },
+  "packet_files": {
+    "prose": "REVIEW_SUPPLEMENT.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json",
+    "hands": "HAND_SUPPLEMENT.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "Reviewed; inheritedacceptedfullbattlecomplete",
+  "outcome": {
+    "result": "ownerwinbyopponentconcession1to0",
+    "basis": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_021327_v7_review\\final_packet\\REVIEW.md:64-70",
+    "source_evidence_reference": "f0408.00",
+    "rereviewed": false
+  },
+  "limits": [
+    "Turn12 draw +6 candidate would be after concession; no ongoing owner turn exists then.",
+    "Draw animation endpoints and source-local seeks are approximate visual timing; PTS was not independently measured.",
+    "No opened discard panel was observed in 410 reduced samples at 1 fps or retained native checkpoints. Full piles and scroll coverage remain null; brief openings between samples can be missed.",
+    "Opponent Energy Zones at98s and379s are obscured by waiting overlays; exact current and next fields at those views remain null. Owner154s and404s current sockets are empty during generation, with later candidates showing the orb.",
+    "Hidden opponent card identities and the exact historical20-card log snapshot are unavailable.",
+    "Game mode remains uncertain: no Auto control observed in sampled or retained unobscured views; card zooms and overlays obscure some UI.",
+    "Turn12 warning response is not established before opponent concession."
+  ],
+  "lead_checked": false,
+  "independent_acceptance_status": "pending"
+}

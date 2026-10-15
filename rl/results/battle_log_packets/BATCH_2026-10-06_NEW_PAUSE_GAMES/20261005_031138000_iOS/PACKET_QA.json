@@ -1,0 +1,22 @@
+{
+  "qa_utc": "2026-10-06T18:16:12.933518+00:00",
+  "status": "passed_structural_and_consistency_checks_pending_independent_visual_acceptance",
+  "native_frame_count": 124,
+  "checks": [
+    "all required artifacts exist and parse",
+    "seven chronological turn rows",
+    "ordered plays numbered from1 per turn",
+    "exact20 card slots and count sum",
+    "owner start/end5->4,5->4,5->3",
+    "HP damage and typed Energy totals",
+    "all ledger evidence IDs resolve",
+    "all native full/top/bottom images exist",
+    "native dimensions1170x2532",
+    "no template flags remain",
+    "packet names normalized and ensure_ascii checked"
+  ],
+  "limits": [
+    "Structural checks do not substitute for independent source acceptance",
+    "Original correct UTF-8 QR receipt unchanged; initial authored-copy decoding problem corrected and documented"
+  ]
+}

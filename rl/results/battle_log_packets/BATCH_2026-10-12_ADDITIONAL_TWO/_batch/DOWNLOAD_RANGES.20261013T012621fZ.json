@@ -1,0 +1,56 @@
+{
+  "checked_utc": "2026-10-13T01:26:21.468800+00:00",
+  "source_contents_read": false,
+  "documentation": "https://learn.microsoft.com/en-us/windows/win32/api/cfapi/nf-cfapi-cfgetplaceholderrangeinfo",
+  "entries": [
+    {
+      "source": "20261012_225319000_iOS.MP4",
+      "metadata": {
+        "logical_bytes": 808683746,
+        "allocated_bytes": 808683746,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "present_ranges": [
+        {
+          "offset": 0,
+          "length": 808683746
+        }
+      ],
+      "missing_ranges": [],
+      "missing_bytes": 0
+    },
+    {
+      "source": "20261012_230258000_iOS.MP4",
+      "metadata": {
+        "logical_bytes": 1045075133,
+        "allocated_bytes": 524288000,
+        "attributes": 4724256,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "present_ranges": [
+        {
+          "offset": 0,
+          "length": 524288000
+        }
+      ],
+      "missing_ranges": [
+        {
+          "offset": 524288000,
+          "length": 520787133
+        }
+      ],
+      "missing_bytes": 520787133
+    }
+  ]
+}

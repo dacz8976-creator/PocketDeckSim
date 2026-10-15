@@ -1,0 +1,124 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "pause-20261005-031138",
+  "review_date": "2026-10-06T18:15:37.308617+00:00",
+  "sources": [
+    {
+      "video_basename": "20261005_031138000_iOS.MP4",
+      "sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Hatterene / Aromatisse / Togekiss",
+  "opening": {
+    "source_video": "20261005_031138000_iOS.MP4",
+    "timestamp_seconds": 29,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Spritzee",
+        "variant": null,
+        "basis": "observed card artwork/name in source, not inferred from deck",
+        "evidence_ids": [
+          "f0029.00"
+        ],
+        "limit_reason": "Exact printing not required to establish hand name"
+      },
+      {
+        "position": 2,
+        "name": "Poke Ball",
+        "variant": null,
+        "basis": "observed card artwork/name in source, not inferred from deck",
+        "evidence_ids": [
+          "f0029.00"
+        ],
+        "limit_reason": "Exact printing not required to establish hand name"
+      },
+      {
+        "position": 3,
+        "name": "Hatenna",
+        "variant": null,
+        "basis": "observed card artwork/name in source, not inferred from deck",
+        "evidence_ids": [
+          "f0029.00"
+        ],
+        "limit_reason": "Exact printing not required to establish hand name"
+      },
+      {
+        "position": 4,
+        "name": "Hatterene",
+        "variant": null,
+        "basis": "observed card artwork/name in source, not inferred from deck",
+        "evidence_ids": [
+          "f0029.00"
+        ],
+        "limit_reason": "Exact printing not required to establish hand name"
+      },
+      {
+        "position": 5,
+        "name": "Professor's Research",
+        "variant": null,
+        "basis": "observed card artwork/name in source, not inferred from deck",
+        "evidence_ids": [
+          "f0029.00"
+        ],
+        "limit_reason": "Exact printing not required to establish hand name"
+      }
+    ],
+    "selected_active": {
+      "name": "Spritzee",
+      "opening_position": 1,
+      "source_video": "20261005_031138000_iOS.MP4",
+      "timestamp_seconds": 36,
+      "evidence_ids": [
+        "f0029.00",
+        "f0044.00"
+      ]
+    },
+    "redraw_or_replacement": "none",
+    "before_active_placement": true,
+    "status": "observed_complete",
+    "evidence_ids": [
+      "f0029.00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "worker_full_battle_review_complete_pending_independent_lead_acceptance",
+  "outcome": {
+    "owner": "Dacz8976",
+    "opponent": "\u4e5d\u5154",
+    "result": "win",
+    "method": "opponent concession",
+    "owner_points": 2,
+    "opponent_points": 0,
+    "turns_played": 7,
+    "damage_done_displayed": 180,
+    "evidence_ids": [
+      "f0214.00",
+      "f0225.00"
+    ]
+  },
+  "classification": "human opponent, Deluxe Pack: Mega Emblem Event; no Auto control shown",
+  "local_match_date": "2026-10-04",
+  "recording_metadata": "RECORDING_METADATA.json",
+  "limits": [
+    "Opened discard piles not recorded.",
+    "Opponent hidden hand/deck unknown.",
+    "Failed confusion attack identity not shown.",
+    "Exact QR printings unavailable.",
+    "Prepared new external deck entry awaits lead live-save verification."
+  ],
+  "lead_checked": false
+}

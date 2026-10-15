@@ -1,0 +1,93 @@
+{
+  "checked_at": "2026-10-02T03:49:39.262033+00:00",
+  "entries": [
+    {
+      "video": "20261002_011527000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261002_011527000_iOS.MP4",
+      "reason": "Restore original online-only preference after out-of-scope intake; no archive/completion claim",
+      "before": {
+        "logical_bytes": 748640119,
+        "allocated_bytes": 748640119,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": true,
+      "after": {
+        "logical_bytes": 748640119,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      }
+    },
+    {
+      "video": "20261002_012229000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261002_012229000_iOS.MP4",
+      "reason": "Restore original online-only preference after out-of-scope intake; no archive/completion claim",
+      "before": {
+        "logical_bytes": 570862799,
+        "allocated_bytes": 570862799,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": true,
+      "after": {
+        "logical_bytes": 570862799,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      }
+    },
+    {
+      "video": "20261002_020920000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Pictures\\Camera Roll 1\\2026\\10\\20261002_020920000_iOS.MP4",
+      "reason": "Duplicate Camera Roll source hydrated for file-access recovery; not a separate game",
+      "sha256": "a9f4cfd8c2173a889abc99ae67320174bfd83822d2027884bcb106bf19ae8514",
+      "before": {
+        "logical_bytes": 457508292,
+        "allocated_bytes": 457508292,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": true,
+      "after": {
+        "logical_bytes": 457508292,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      }
+    }
+  ],
+  "files_deleted": 0,
+  "contents_modified": false,
+  "rechecked_at": "2026-10-02T04:20:29.332217+00:00"
+}

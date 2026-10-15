@@ -1,0 +1,136 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261013_015659000_iOS",
+  "sources": [
+    {
+      "video_basename": "20261013_015659000_iOS.MP4",
+      "sha256": "6e2074461f324b9825dc0805101ba7d899933c2997709d36efc058b231dace9e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "source_sha256": "6e2074461f324b9825dc0805101ba7d899933c2997709d36efc058b231dace9e",
+  "classification": "human_battle",
+  "auto_option_visible": false,
+  "opponent": "GaboDobleT",
+  "match_date": "2026-10-12",
+  "match_date_basis": "SOURCE_TIME.json plus filmed 8:57 to 9:03 evening clock",
+  "opening": {
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Glimmet",
+        "variant": null,
+        "basis": "observed native hand, left to right",
+        "evidence_ids": [
+          "N0028_50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Poké Ball",
+        "variant": null,
+        "basis": "observed native hand, left to right",
+        "evidence_ids": [
+          "N0028_50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Pawniard",
+        "variant": null,
+        "basis": "observed native hand, left to right",
+        "evidence_ids": [
+          "N0028_50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Regigigas",
+        "variant": null,
+        "basis": "observed native hand, left to right",
+        "evidence_ids": [
+          "N0028_50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Lucky Ice Pop",
+        "variant": null,
+        "basis": "observed native hand, left to right",
+        "evidence_ids": [
+          "N0028_50"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "count": 5,
+    "selected_active": "Regigigas",
+    "selected_active_timestamp_seconds": 30,
+    "bench_setup": [
+      "Glimmet at left"
+    ],
+    "evidence_ids": [
+      "N0028_50",
+      "N0030_00"
+    ],
+    "setup_redraw_shown": false,
+    "limit_reason": null
+  },
+  "result": "loss",
+  "result_method": "owner conceded during turn 13",
+  "terminal_evidence_ids": [
+    "N0384_00",
+    "N0386_00",
+    "N0403_00"
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "packet_files": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SUMMARY.json",
+    "UNCERTAINTIES.json",
+    "DECK_USED.json",
+    "TURN_LEDGER.json",
+    "TURN_EVIDENCE.json"
+  ],
+  "capture_limits": [
+    "No opened discard-pile views in this recording.",
+    "Opponent draws and search results are hidden unless publicly placed.",
+    "T11 top fan obscured by phone notification; inferential count is separate.",
+    "Draw endpoints are approximate within observed animation windows; requested seeks do not claim exact measured frame PTS.",
+    "Exact list is historical, not a fresh live artifact retrieval.",
+    "Protective Poncho title/effect directly readable at267.8; exact printing remains unknown."
+  ],
+  "outcome": {
+    "result": "loss",
+    "method": "owner concession",
+    "points_at_concession": {
+      "owner": 0,
+      "opponent": 2
+    },
+    "turns_played": 13,
+    "evidence_ids": [
+      "N0383_50",
+      "N0384_00",
+      "N0386_00",
+      "N0403_00"
+    ]
+  },
+  "limits": [
+    "No opened discard-pile views in this recording.",
+    "Opponent draws and search results are hidden unless publicly placed.",
+    "T11 top fan obscured by phone notification; inferential count is separate.",
+    "Draw endpoints are approximate within observed animation windows; requested seeks do not claim exact measured frame PTS.",
+    "Exact list is historical, not a fresh live artifact retrieval.",
+    "Protective Poncho title/effect directly readable at267.8; exact printing remains unknown."
+  ],
+  "bounded_exception_resolution": "astra_exception/CHECK_RESULT.json",
+  "lead_checked": true,
+  "battle_review_status": "full_battle_review_complete",
+  "lead_acceptance": "LEAD_ACCEPTANCE.json"
+}

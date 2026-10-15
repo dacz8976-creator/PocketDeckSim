@@ -1,0 +1,2070 @@
+{
+  "schema": "pause-games/turn-capture-v1",
+  "is_template": false,
+  "game_id": "20261013_015011000_iOS",
+  "sources": [
+    {
+      "video_basename": "20261013_015011000_iOS.MP4",
+      "sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "turns": [
+    {
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "timing": {
+        "start_seconds": 40.5,
+        "draw_animation_end_seconds": 43.2,
+        "first_voluntary_move_seconds": 44,
+        "before_end_action_seconds": 71.5,
+        "end_after_resolution_seconds": 71.8
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "basis": "observed",
+            "evidence_ids": [
+              "n43_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Poke Ball",
+            "basis": "observed",
+            "evidence_ids": [
+              "n43_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Alolan Muk",
+            "basis": "observed",
+            "evidence_ids": [
+              "n43_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Ilima",
+            "basis": "observed",
+            "evidence_ids": [
+              "n43_50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Observed names left to right in native unzoomed hand",
+        "evidence_ids": [
+          "n43_50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "basis": "observed",
+            "evidence_ids": [
+              "n43_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Poke Ball",
+            "basis": "observed",
+            "evidence_ids": [
+              "n43_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Alolan Muk",
+            "basis": "observed",
+            "evidence_ids": [
+              "n43_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Ilima",
+            "basis": "observed",
+            "evidence_ids": [
+              "n43_50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Observed names left to right in native unzoomed hand",
+        "evidence_ids": [
+          "n43_50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "Count distinct card-back strips in native top crop",
+        "basis": "observed; public draw/play arithmetic cross-check separate",
+        "evidence_ids": [
+          "n43_50"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "Turn1",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Ilima",
+              "reveal_position": 1,
+              "source_video": "20261013_015011000_iOS.MP4",
+              "timestamp_seconds": 43.2,
+              "evidence_ids": [
+                "n43_20"
+              ],
+              "basis": "observed",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261013_015011000_iOS.MP4",
+          "timestamp_seconds": 43.2,
+          "evidence_ids": [
+            "n43_20"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poke Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Regigigas",
+              "reveal_position": 1,
+              "source_video": "20261013_015011000_iOS.MP4",
+              "timestamp_seconds": 47,
+              "evidence_ids": [
+                "n47_00"
+              ],
+              "basis": "observed",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261013_015011000_iOS.MP4",
+          "timestamp_seconds": 47,
+          "evidence_ids": [
+            "n47_00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Copycat",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": "Professor's Research",
+              "reveal_position": 1,
+              "source_video": "20261013_015011000_iOS.MP4",
+              "timestamp_seconds": 66.0,
+              "evidence_ids": [
+                "n66_00"
+              ],
+              "basis": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Professor's Research",
+              "reveal_position": 2,
+              "source_video": "20261013_015011000_iOS.MP4",
+              "timestamp_seconds": 67.0,
+              "evidence_ids": [
+                "n67_00"
+              ],
+              "basis": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Heavy Helmet",
+              "reveal_position": 3,
+              "source_video": "20261013_015011000_iOS.MP4",
+              "timestamp_seconds": 68.0,
+              "evidence_ids": [
+                "n68_00"
+              ],
+              "basis": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Lucky Ice Pop",
+              "reveal_position": 4,
+              "source_video": "20261013_015011000_iOS.MP4",
+              "timestamp_seconds": 68.5,
+              "evidence_ids": [
+                "n68_50"
+              ],
+              "basis": "observed",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 0,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [
+            {
+              "name": "Alolan Muk",
+              "destination": "deck"
+            },
+            {
+              "name": "Ilima",
+              "destination": "deck"
+            }
+          ],
+          "source_video": "20261013_015011000_iOS.MP4",
+          "timestamp_seconds": 66.0,
+          "evidence_ids": [
+            "n66_00",
+            "n67_00",
+            "n68_00",
+            "n68_50"
+          ],
+          "limit_reason": null,
+          "timing_basis": "Observed retained reveal anchors, not exact arrival onset."
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "item",
+          "card_name": "Poke Ball",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": 0,
+            "destination": null,
+            "retreat_payment_by_type": {}
+          },
+          "result": "Search succeeds: Regigigas revealed, added to hand",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Remove Poke Ball from hand 3 remaining",
+            "Reveal Regigigas",
+            "Add Regigigas: hand 4"
+          ],
+          "hand_count_after": 4,
+          "source_video": "20261013_015011000_iOS.MP4",
+          "timestamp_seconds": 45,
+          "evidence_ids": [
+            "n45_00"
+          ],
+          "basis": "observed",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "bench",
+          "card_name": "Regigigas",
+          "target": "Owner Bench position 2",
+          "energy": {
+            "type": null,
+            "count": 0,
+            "destination": null,
+            "retreat_payment_by_type": {}
+          },
+          "result": "Place Regigigas 150 on center Bench",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261013_015011000_iOS.MP4",
+          "timestamp_seconds": 50.5,
+          "evidence_ids": [
+            "n50_50"
+          ],
+          "basis": "observed",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "supporter",
+          "card_name": "Copycat",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": 0,
+            "destination": null,
+            "retreat_payment_by_type": {}
+          },
+          "result": "Shuffle Alolan Muk and Ilima into deck; draw4 matching observed opponent fan4",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Copycat leaves hand, hand 2",
+            "Shuffle Alolan Muk and Ilima, hand 0",
+            "Reveal Professor's Research 1",
+            "Reveal Professor's Research 2",
+            "Reveal Heavy Helmet",
+            "Reveal Lucky Ice Pop"
+          ],
+          "hand_count_after": 4,
+          "source_video": "20261013_015011000_iOS.MP4",
+          "timestamp_seconds": 60.5,
+          "evidence_ids": [
+            "n60_50"
+          ],
+          "basis": "observed",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": 0,
+            "destination": null,
+            "retreat_payment_by_type": {}
+          },
+          "result": "End Turn without attack or Energy attachment",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261013_015011000_iOS.MP4",
+          "timestamp_seconds": 71.5,
+          "evidence_ids": [
+            "n71_50"
+          ],
+          "basis": "observed",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "timestamp_seconds": 52,
+          "event": "Seal of Antiquity prohibits Regigigas attacks while named Regis are absent; Cannot attack banner and prohibition icon. No attack occurs.",
+          "evidence_ids": [
+            "n52_00",
+            "n53_00"
+          ]
+        }
+      ],
+      "nonplay_interactions": [
+        {
+          "timestamp_seconds": 70.5,
+          "event": "Heavy Helmet highlighted/inspected in hand. It remains in hand; no Tool attachment.",
+          "evidence_ids": [
+            "n70_50",
+            "n71_50"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 1,
+        "phase": "boundary",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Pawniard",
+            "variant": "Slash 30",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "n43_50"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+          },
+          "bench_in_position_order": [
+            {
+              "position": 1,
+              "pokemon": null
+            },
+            {
+              "position": 2,
+              "pokemon": null
+            },
+            {
+              "position": 3,
+              "pokemon": {
+                "name": "Alolan Grimer",
+                "variant": "Sludge Toss 30",
+                "bench_position": 3,
+                "hp_now": 70,
+                "hp_max": 70,
+                "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+                "damage": 0,
+                "attached_energy": {
+                  "total": 0,
+                  "by_type": {}
+                },
+                "tool": null,
+                "special_conditions": [],
+                "active_effects": [],
+                "evidence_ids": [
+                  "n43_50"
+                ],
+                "status": "observed",
+                "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+              }
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Current circle visible; small next-type icon only. Next count deliberately unknown.",
+            "evidence_ids": [
+              "n43_50"
+            ],
+            "limit_reason": "UI gives future Energy type icon, not future numeric count."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "n43_50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Falinks",
+            "variant": "Coordinated Unit / Invade 20",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "n43_50"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+          },
+          "bench_in_position_order": [
+            {
+              "position": 1,
+              "pokemon": null
+            },
+            {
+              "position": 2,
+              "pokemon": null
+            },
+            {
+              "position": 3,
+              "pokemon": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fighting",
+              "count": null,
+              "available": null
+            },
+            "basis": "Current circle visible; small next-type icon only. Next count deliberately unknown.",
+            "evidence_ids": [
+              "n43_50"
+            ],
+            "limit_reason": "UI gives future Energy type icon, not future numeric count."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "n43_50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "n43_50"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 1,
+        "phase": "After End Turn resolves, before opponent draw",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Pawniard",
+            "variant": "Slash 30",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "n71_50"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+          },
+          "bench_in_position_order": [
+            {
+              "position": 1,
+              "pokemon": null
+            },
+            {
+              "position": 2,
+              "pokemon": {
+                "name": "Regigigas",
+                "variant": "Seal of Antiquity / Giga Turbo",
+                "bench_position": 2,
+                "hp_now": 150,
+                "hp_max": 150,
+                "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+                "damage": 0,
+                "attached_energy": {
+                  "total": 0,
+                  "by_type": {}
+                },
+                "tool": null,
+                "special_conditions": [],
+                "active_effects": [
+                  {
+                    "name": "Seal of Antiquity attack prohibition",
+                    "duration": "While required Regirock, Regice and Registeel absent from Bench"
+                  }
+                ],
+                "evidence_ids": [
+                  "n71_50"
+                ],
+                "status": "observed",
+                "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+              }
+            },
+            {
+              "position": 3,
+              "pokemon": {
+                "name": "Alolan Grimer",
+                "variant": "Sludge Toss 30",
+                "bench_position": 3,
+                "hp_now": 70,
+                "hp_max": 70,
+                "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+                "damage": 0,
+                "attached_energy": {
+                  "total": 0,
+                  "by_type": {}
+                },
+                "tool": null,
+                "special_conditions": [],
+                "active_effects": [],
+                "evidence_ids": [
+                  "n71_50"
+                ],
+                "status": "observed",
+                "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+              }
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Current circle visible; small next-type icon only. Next count deliberately unknown.",
+            "evidence_ids": [
+              "n71_50"
+            ],
+            "limit_reason": "UI gives future Energy type icon, not future numeric count."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "n71_50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Falinks",
+            "variant": "Coordinated Unit / Invade 20",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "n71_50"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+          },
+          "bench_in_position_order": [
+            {
+              "position": 1,
+              "pokemon": null
+            },
+            {
+              "position": 2,
+              "pokemon": null
+            },
+            {
+              "position": 3,
+              "pokemon": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fighting",
+              "count": null,
+              "available": null
+            },
+            "basis": "Current circle visible; small next-type icon only. Next count deliberately unknown.",
+            "evidence_ids": [
+              "n71_50"
+            ],
+            "limit_reason": "UI gives future Energy type icon, not future numeric count."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "n71_50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "n71_80"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "observed",
+            "evidence_ids": [
+              "n71_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "observed",
+            "evidence_ids": [
+              "n71_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Heavy Helmet",
+            "basis": "observed",
+            "evidence_ids": [
+              "n71_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Lucky Ice Pop",
+            "basis": "observed",
+            "evidence_ids": [
+              "n71_50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Observed names left to right in native unzoomed hand",
+        "evidence_ids": [
+          "n71_50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_reconciliation": "3 after setup + Ilima 1 - Poke Ball 1 + searched Regigigas 1 - Regigigas bench 1 - Copycat 1 - shuffled 2 + Copycat draws 4 =4",
+      "discard_snapshot_ids": [
+        "discard_owner_absent",
+        "discard_opponent_absent"
+      ],
+      "turn_evidence_ids": [
+        "n43_50",
+        "n45_00",
+        "n47_00",
+        "n50_50",
+        "n52_00",
+        "n53_00",
+        "n60_50",
+        "n67_00",
+        "n68_00",
+        "n68_50",
+        "n69_50",
+        "n70_50",
+        "n71_50",
+        "n66_00"
+      ],
+      "limits": [
+        "No offered Supporter warning or voluntary decline visible.",
+        "Research cards are drawn by Copycat, not played; no Research draw2 effect occurs."
+      ]
+    },
+    {
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "timing": {
+        "start_seconds": 71.8,
+        "draw_animation_end_seconds": 74,
+        "first_voluntary_move_seconds": 78,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 162.5
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": 5,
+        "basis": "Visible opponent card backs only",
+        "evidence_ids": [
+          "n75_50"
+        ],
+        "status": "hidden_identities",
+        "limit_reason": "Opponent hand identities not revealed."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "observed",
+            "evidence_ids": [
+              "n73_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "observed",
+            "evidence_ids": [
+              "n73_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Heavy Helmet",
+            "basis": "observed",
+            "evidence_ids": [
+              "n73_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Lucky Ice Pop",
+            "basis": "observed",
+            "evidence_ids": [
+              "n73_50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Observed names left to right in native unzoomed hand",
+        "evidence_ids": [
+          "n73_50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": null,
+        "basis": "Not an owner turn",
+        "evidence_ids": [],
+        "limit_reason": "Requirement applies at owner-turn boundaries."
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "Turn2",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261013_015011000_iOS.MP4",
+              "timestamp_seconds": 73.5,
+              "evidence_ids": [
+                "n73_50"
+              ],
+              "basis": "hidden",
+              "limit_reason": "Opponent card back only."
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261013_015011000_iOS.MP4",
+          "timestamp_seconds": 73.5,
+          "evidence_ids": [
+            "n73_50"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "bench",
+          "card_name": "Tyrogue",
+          "target": "Opponent Bench position 1",
+          "energy": {
+            "type": null,
+            "count": 0,
+            "destination": null,
+            "retreat_payment_by_type": {}
+          },
+          "result": "Tyrogue 30 placed on opponent left Bench",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261013_015011000_iOS.MP4",
+          "timestamp_seconds": 79.5,
+          "evidence_ids": [
+            "n79_50"
+          ],
+          "basis": "observed",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Opponent Active Falinks",
+          "energy": {
+            "type": "Fighting",
+            "count": 1,
+            "destination": "Falinks",
+            "retreat_payment_by_type": {}
+          },
+          "result": "Attach one Fighting to Falinks",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261013_015011000_iOS.MP4",
+          "timestamp_seconds": 81.5,
+          "evidence_ids": [
+            "n81_50"
+          ],
+          "basis": "observed",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "timestamp_seconds": 75.5,
+          "event": "One Fighting generated in current Energy Zone.",
+          "evidence_ids": [
+            "n75_50"
+          ]
+        },
+        {
+          "timestamp_seconds": 107,
+          "event": "Waiting for opponent to return; subsequent board/hand remain unchanged.",
+          "evidence_ids": [
+            "n107_00"
+          ]
+        },
+        {
+          "timestamp_seconds": 162.5,
+          "event": "Opponent per-turn timer reaches zero; turn 3 starts without attack. A deliberate opponent End Turn input is not shown.",
+          "evidence_ids": [
+            "n162_50"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 2,
+        "phase": "boundary",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Pawniard",
+            "variant": "Slash 30",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "n75_50"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+          },
+          "bench_in_position_order": [
+            {
+              "position": 1,
+              "pokemon": null
+            },
+            {
+              "position": 2,
+              "pokemon": {
+                "name": "Regigigas",
+                "variant": "Seal of Antiquity / Giga Turbo",
+                "bench_position": 2,
+                "hp_now": 150,
+                "hp_max": 150,
+                "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+                "damage": 0,
+                "attached_energy": {
+                  "total": 0,
+                  "by_type": {}
+                },
+                "tool": null,
+                "special_conditions": [],
+                "active_effects": [
+                  {
+                    "name": "Seal of Antiquity attack prohibition",
+                    "duration": "While required Regirock, Regice and Registeel absent from Bench"
+                  }
+                ],
+                "evidence_ids": [
+                  "n75_50"
+                ],
+                "status": "observed",
+                "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+              }
+            },
+            {
+              "position": 3,
+              "pokemon": {
+                "name": "Alolan Grimer",
+                "variant": "Sludge Toss 30",
+                "bench_position": 3,
+                "hp_now": 70,
+                "hp_max": 70,
+                "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+                "damage": 0,
+                "attached_energy": {
+                  "total": 0,
+                  "by_type": {}
+                },
+                "tool": null,
+                "special_conditions": [],
+                "active_effects": [],
+                "evidence_ids": [
+                  "n75_50"
+                ],
+                "status": "observed",
+                "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+              }
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Current circle visible; small next-type icon only. Next count deliberately unknown.",
+            "evidence_ids": [
+              "n75_50"
+            ],
+            "limit_reason": "UI gives future Energy type icon, not future numeric count."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "n75_50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Falinks",
+            "variant": "Coordinated Unit / Invade 20",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "n75_50"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+          },
+          "bench_in_position_order": [
+            {
+              "position": 1,
+              "pokemon": null
+            },
+            {
+              "position": 2,
+              "pokemon": null
+            },
+            {
+              "position": 3,
+              "pokemon": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fighting",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Fighting",
+              "count": null,
+              "available": null
+            },
+            "basis": "Current circle visible; small next-type icon only. Next count deliberately unknown.",
+            "evidence_ids": [
+              "n75_50"
+            ],
+            "limit_reason": "UI gives future Energy type icon, not future numeric count."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "n75_50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "n75_50"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 2,
+        "phase": "Timer expiration, before owner draw",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Pawniard",
+            "variant": "Slash 30",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "n162_50"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+          },
+          "bench_in_position_order": [
+            {
+              "position": 1,
+              "pokemon": null
+            },
+            {
+              "position": 2,
+              "pokemon": {
+                "name": "Regigigas",
+                "variant": "Seal of Antiquity / Giga Turbo",
+                "bench_position": 2,
+                "hp_now": 150,
+                "hp_max": 150,
+                "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+                "damage": 0,
+                "attached_energy": {
+                  "total": 0,
+                  "by_type": {}
+                },
+                "tool": null,
+                "special_conditions": [],
+                "active_effects": [
+                  {
+                    "name": "Seal of Antiquity attack prohibition",
+                    "duration": "While required Regirock, Regice and Registeel absent from Bench"
+                  }
+                ],
+                "evidence_ids": [
+                  "n162_50"
+                ],
+                "status": "observed",
+                "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+              }
+            },
+            {
+              "position": 3,
+              "pokemon": {
+                "name": "Alolan Grimer",
+                "variant": "Sludge Toss 30",
+                "bench_position": 3,
+                "hp_now": 70,
+                "hp_max": 70,
+                "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+                "damage": 0,
+                "attached_energy": {
+                  "total": 0,
+                  "by_type": {}
+                },
+                "tool": null,
+                "special_conditions": [],
+                "active_effects": [],
+                "evidence_ids": [
+                  "n162_50"
+                ],
+                "status": "observed",
+                "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+              }
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Current circle visible; small next-type icon only. Next count deliberately unknown.",
+            "evidence_ids": [
+              "n162_50"
+            ],
+            "limit_reason": "UI gives future Energy type icon, not future numeric count."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "n162_50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Falinks",
+            "variant": "Coordinated Unit / Invade 20",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Fighting": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "n162_50"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+          },
+          "bench_in_position_order": [
+            {
+              "position": 1,
+              "pokemon": {
+                "name": "Tyrogue",
+                "variant": "Slippy Knuckles 20",
+                "bench_position": 1,
+                "hp_now": 30,
+                "hp_max": 30,
+                "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+                "damage": 0,
+                "attached_energy": {
+                  "total": 0,
+                  "by_type": {}
+                },
+                "tool": null,
+                "special_conditions": [],
+                "active_effects": [],
+                "evidence_ids": [
+                  "n162_50"
+                ],
+                "status": "observed",
+                "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+              }
+            },
+            {
+              "position": 2,
+              "pokemon": null
+            },
+            {
+              "position": 3,
+              "pokemon": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fighting",
+              "count": null,
+              "available": null
+            },
+            "basis": "Current circle visible; small next-type icon only. Next count deliberately unknown.",
+            "evidence_ids": [
+              "n162_50"
+            ],
+            "limit_reason": "UI gives future Energy type icon, not future numeric count."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "n162_50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "n162_50"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "observed",
+            "evidence_ids": [
+              "n162_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "observed",
+            "evidence_ids": [
+              "n162_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Heavy Helmet",
+            "basis": "observed",
+            "evidence_ids": [
+              "n162_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Lucky Ice Pop",
+            "basis": "observed",
+            "evidence_ids": [
+              "n162_50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Observed persistent hand throughout opponent turn",
+        "evidence_ids": [
+          "n162_50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_end": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "Count distinct card-back strips in native top crop",
+        "basis": "observed; public draw/play arithmetic cross-check separate",
+        "evidence_ids": [
+          "n162_50"
+        ],
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "discard_owner_absent",
+        "discard_opponent_absent"
+      ],
+      "turn_evidence_ids": [
+        "n72_30",
+        "n75_50",
+        "n79_50",
+        "n81_50",
+        "n107_00",
+        "n162_50"
+      ],
+      "limits": [
+        "Opponent normal-draw identity hidden.",
+        "No opponent attack or manual End Turn visible."
+      ]
+    },
+    {
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "timing": {
+        "start_seconds": 162.5,
+        "draw_animation_end_seconds": 166,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": 167.5,
+        "end_after_resolution_seconds": 169,
+        "terminal_error_visible_seconds": 168.5
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Heavy Helmet",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Lucky Ice Pop",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Glimmora",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "Observed names left to right in native unzoomed hand",
+        "evidence_ids": [
+          "n167_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Heavy Helmet",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Lucky Ice Pop",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Glimmora",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "Observed names left to right in native unzoomed hand",
+        "evidence_ids": [
+          "n167_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "Count distinct card-back strips in native top crop",
+        "basis": "observed; public draw/play arithmetic cross-check separate",
+        "evidence_ids": [
+          "n167_00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "Turn3",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Glimmora",
+              "reveal_position": 1,
+              "source_video": "20261013_015011000_iOS.MP4",
+              "timestamp_seconds": 164.5,
+              "evidence_ids": [
+                "n164_50"
+              ],
+              "basis": "observed",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261013_015011000_iOS.MP4",
+          "timestamp_seconds": 164.5,
+          "evidence_ids": [
+            "n164_50"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [],
+      "automatic_events_in_order": [
+        {
+          "timestamp_seconds": 167,
+          "event": "One Darkness generated and remains unused; next Darkness type icon visible.",
+          "evidence_ids": [
+            "n167_00"
+          ]
+        },
+        {
+          "timestamp_seconds": 169,
+          "event": "Error: opponent did not return within allowed time. Board unchanged, terminal system result.",
+          "evidence_ids": [
+            "n169_00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 3,
+        "phase": "boundary",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Pawniard",
+            "variant": "Slash 30",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "n167_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+          },
+          "bench_in_position_order": [
+            {
+              "position": 1,
+              "pokemon": null
+            },
+            {
+              "position": 2,
+              "pokemon": {
+                "name": "Regigigas",
+                "variant": "Seal of Antiquity / Giga Turbo",
+                "bench_position": 2,
+                "hp_now": 150,
+                "hp_max": 150,
+                "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+                "damage": 0,
+                "attached_energy": {
+                  "total": 0,
+                  "by_type": {}
+                },
+                "tool": null,
+                "special_conditions": [],
+                "active_effects": [
+                  {
+                    "name": "Seal of Antiquity attack prohibition",
+                    "duration": "While required Regirock, Regice and Registeel absent from Bench"
+                  }
+                ],
+                "evidence_ids": [
+                  "n167_00"
+                ],
+                "status": "observed",
+                "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+              }
+            },
+            {
+              "position": 3,
+              "pokemon": {
+                "name": "Alolan Grimer",
+                "variant": "Sludge Toss 30",
+                "bench_position": 3,
+                "hp_now": 70,
+                "hp_max": 70,
+                "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+                "damage": 0,
+                "attached_energy": {
+                  "total": 0,
+                  "by_type": {}
+                },
+                "tool": null,
+                "special_conditions": [],
+                "active_effects": [],
+                "evidence_ids": [
+                  "n167_00"
+                ],
+                "status": "observed",
+                "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+              }
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Current circle visible; small next-type icon only. Next count deliberately unknown.",
+            "evidence_ids": [
+              "n167_00"
+            ],
+            "limit_reason": "UI gives future Energy type icon, not future numeric count."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "n167_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Falinks",
+            "variant": "Coordinated Unit / Invade 20",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Fighting": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "n167_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+          },
+          "bench_in_position_order": [
+            {
+              "position": 1,
+              "pokemon": {
+                "name": "Tyrogue",
+                "variant": "Slippy Knuckles 20",
+                "bench_position": 1,
+                "hp_now": 30,
+                "hp_max": 30,
+                "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+                "damage": 0,
+                "attached_energy": {
+                  "total": 0,
+                  "by_type": {}
+                },
+                "tool": null,
+                "special_conditions": [],
+                "active_effects": [],
+                "evidence_ids": [
+                  "n167_00"
+                ],
+                "status": "observed",
+                "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+              }
+            },
+            {
+              "position": 2,
+              "pokemon": null
+            },
+            {
+              "position": 3,
+              "pokemon": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fighting",
+              "count": null,
+              "available": null
+            },
+            "basis": "Current circle visible; small next-type icon only. Next count deliberately unknown.",
+            "evidence_ids": [
+              "n167_00"
+            ],
+            "limit_reason": "UI gives future Energy type icon, not future numeric count."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "n167_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "n167_00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 3,
+        "phase": "Last clear board at 167.50 before terminal modal; no turn 3 voluntary play",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Pawniard",
+            "variant": "Slash 30",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "n167_50"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+          },
+          "bench_in_position_order": [
+            {
+              "position": 1,
+              "pokemon": null
+            },
+            {
+              "position": 2,
+              "pokemon": {
+                "name": "Regigigas",
+                "variant": "Seal of Antiquity / Giga Turbo",
+                "bench_position": 2,
+                "hp_now": 150,
+                "hp_max": 150,
+                "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+                "damage": 0,
+                "attached_energy": {
+                  "total": 0,
+                  "by_type": {}
+                },
+                "tool": null,
+                "special_conditions": [],
+                "active_effects": [
+                  {
+                    "name": "Seal of Antiquity attack prohibition",
+                    "duration": "While required Regirock, Regice and Registeel absent from Bench"
+                  }
+                ],
+                "evidence_ids": [
+                  "n167_50"
+                ],
+                "status": "observed",
+                "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+              }
+            },
+            {
+              "position": 3,
+              "pokemon": {
+                "name": "Alolan Grimer",
+                "variant": "Sludge Toss 30",
+                "bench_position": 3,
+                "hp_now": 70,
+                "hp_max": 70,
+                "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+                "damage": 0,
+                "attached_energy": {
+                  "total": 0,
+                  "by_type": {}
+                },
+                "tool": null,
+                "special_conditions": [],
+                "active_effects": [],
+                "evidence_ids": [
+                  "n167_50"
+                ],
+                "status": "observed",
+                "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+              }
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Current circle visible; small next-type icon only. Next count deliberately unknown.",
+            "evidence_ids": [
+              "n167_50"
+            ],
+            "limit_reason": "UI gives future Energy type icon, not future numeric count."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "n167_50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Falinks",
+            "variant": "Coordinated Unit / Invade 20",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Fighting": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "n167_50"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+          },
+          "bench_in_position_order": [
+            {
+              "position": 1,
+              "pokemon": {
+                "name": "Tyrogue",
+                "variant": "Slippy Knuckles 20",
+                "bench_position": 1,
+                "hp_now": 30,
+                "hp_max": 30,
+                "hp_max_basis": "Printed card HP and full green HP, no visible HP modifier",
+                "damage": 0,
+                "attached_energy": {
+                  "total": 0,
+                  "by_type": {}
+                },
+                "tool": null,
+                "special_conditions": [],
+                "active_effects": [],
+                "evidence_ids": [
+                  "n167_50"
+                ],
+                "status": "observed",
+                "limit_reason": "Exact artwork/set identifier not established unless included in QR supplement."
+              }
+            },
+            {
+              "position": 2,
+              "pokemon": null
+            },
+            {
+              "position": 3,
+              "pokemon": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fighting",
+              "count": null,
+              "available": null
+            },
+            "basis": "Current circle visible; small next-type icon only. Next count deliberately unknown.",
+            "evidence_ids": [
+              "n167_50"
+            ],
+            "limit_reason": "UI gives future Energy type icon, not future numeric count."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "n167_50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "n167_50"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Heavy Helmet",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Lucky Ice Pop",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Glimmora",
+            "basis": "observed",
+            "evidence_ids": [
+              "n167_50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "Observed names left to right in native unzoomed hand",
+        "evidence_ids": [
+          "n167_50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_reconciliation": "4 persistent cards + normal Glimmora draw1 - no voluntary removals =5",
+      "discard_snapshot_ids": [
+        "discard_owner_absent",
+        "discard_opponent_absent"
+      ],
+      "turn_evidence_ids": [
+        "n162_50",
+        "n164_50",
+        "n166_00",
+        "n167_00",
+        "n167_50",
+        "n169_00",
+        "n172_00",
+        "n182_30"
+      ],
+      "limits": [
+        "No End Turn/attack action in turn 3; before-end evidence substituted with last clear hand before terminal error.",
+        "The error modal obstructs +3 candidate and Victory animation replaces +6.",
+        "Terminal board_after uses last unobstructed frame because error supplies no new board effect."
+      ]
+    }
+  ],
+  "limits": [
+    "All 3 recorded turns represented once. No hidden identities inferred from deck membership.",
+    "All HP unchanged, both scores0; no Tools, Stadium, Special Conditions, healing, retreat or knockout shown."
+  ]
+}

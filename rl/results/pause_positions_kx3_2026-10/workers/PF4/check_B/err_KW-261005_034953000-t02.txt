@@ -1,0 +1,684 @@
+PGSTEP KW-261005_034953000-t02 seed 1 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGCAND Place:Meltan@3
+PGCAND Place:Honedge@1
+PGCAND Place:Honedge@2
+PGCAND Place:Honedge@3
+PGDUMP actor=0 candidates=9
+PGDUMP       -742.700000000000045 EndTurn
+PGDUMP        575.299999999999955 UseStadium
+PGDUMP        901.966666666666583 Attach:1Metal@0 zone
+PGDUMP        901.966666666666583 Place:Meltan@1
+PGDUMP        901.966666666666583 Place:Meltan@2
+PGDUMP        901.966666666666583 Place:Meltan@3
+PGDUMP        901.966666666666583 Place:Honedge@1
+PGDUMP        901.966666666666583 Place:Honedge@2
+PGDUMP        901.966666666666583 Place:Honedge@3
+PGSTEP KW-261005_034953000-t02 seed 1 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGDUMP actor=0 candidates=6
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        901.966666666666583 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGDUMP       1041.966666666666697 Place:Meltan@1
+PGDUMP       1041.966666666666697 Place:Meltan@2
+PGSTEP KW-261005_034953000-t02 seed 1 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        575.299999999999955 EndTurn
+PGDUMP       1041.966666666666697 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        635.299999999999955 Attach:1Metal@2 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGSTEP KW-261005_034953000-t02 seed 1 free 3
+PGCAND EndTurn
+PGCAND Attack:Tackle
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        901.966666666666583 EndTurn
+PGDUMP       1041.966666666666697 Attack:Tackle
+PGDUMP        575.299999999999955 Retreat:2
+PGDUMP        575.299999999999955 Retreat:3
+PGSTEP KW-261005_034953000-t02 seed 1 free 4
+PGSTEP KW-261005_034953000-t02 seed 2 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGCAND Place:Meltan@3
+PGCAND Place:Honedge@1
+PGCAND Place:Honedge@2
+PGCAND Place:Honedge@3
+PGDUMP actor=0 candidates=9
+PGDUMP       -742.700000000000045 EndTurn
+PGDUMP        575.299999999999955 UseStadium
+PGDUMP        901.966666666666583 Attach:1Metal@0 zone
+PGDUMP        901.966666666666583 Place:Meltan@1
+PGDUMP        901.966666666666583 Place:Meltan@2
+PGDUMP        901.966666666666583 Place:Meltan@3
+PGDUMP        901.966666666666583 Place:Honedge@1
+PGDUMP        901.966666666666583 Place:Honedge@2
+PGDUMP        901.966666666666583 Place:Honedge@3
+PGSTEP KW-261005_034953000-t02 seed 2 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGDUMP actor=0 candidates=6
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        901.966666666666583 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGDUMP       1041.966666666666697 Place:Meltan@1
+PGDUMP       1041.966666666666697 Place:Meltan@2
+PGSTEP KW-261005_034953000-t02 seed 2 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        575.299999999999955 EndTurn
+PGDUMP       1041.966666666666697 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        635.299999999999955 Attach:1Metal@2 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGSTEP KW-261005_034953000-t02 seed 2 free 3
+PGCAND EndTurn
+PGCAND Attack:Tackle
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        901.966666666666583 EndTurn
+PGDUMP       1041.966666666666697 Attack:Tackle
+PGDUMP        575.299999999999955 Retreat:2
+PGDUMP        575.299999999999955 Retreat:3
+PGSTEP KW-261005_034953000-t02 seed 2 free 4
+PGSTEP KW-261005_034953000-t02 seed 3 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGCAND Place:Meltan@3
+PGCAND Place:Honedge@1
+PGCAND Place:Honedge@2
+PGCAND Place:Honedge@3
+PGDUMP actor=0 candidates=9
+PGDUMP       -742.700000000000045 EndTurn
+PGDUMP        575.299999999999955 UseStadium
+PGDUMP        901.966666666666583 Attach:1Metal@0 zone
+PGDUMP        901.966666666666583 Place:Meltan@1
+PGDUMP        901.966666666666583 Place:Meltan@2
+PGDUMP        901.966666666666583 Place:Meltan@3
+PGDUMP        901.966666666666583 Place:Honedge@1
+PGDUMP        901.966666666666583 Place:Honedge@2
+PGDUMP        901.966666666666583 Place:Honedge@3
+PGSTEP KW-261005_034953000-t02 seed 3 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGDUMP actor=0 candidates=6
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        901.966666666666583 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGDUMP       1041.966666666666697 Place:Meltan@1
+PGDUMP       1041.966666666666697 Place:Meltan@2
+PGSTEP KW-261005_034953000-t02 seed 3 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        575.299999999999955 EndTurn
+PGDUMP       1041.966666666666697 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        635.299999999999955 Attach:1Metal@2 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGSTEP KW-261005_034953000-t02 seed 3 free 3
+PGCAND EndTurn
+PGCAND Attack:Tackle
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        901.966666666666583 EndTurn
+PGDUMP       1041.966666666666697 Attack:Tackle
+PGDUMP        575.299999999999955 Retreat:2
+PGDUMP        575.299999999999955 Retreat:3
+PGSTEP KW-261005_034953000-t02 seed 3 free 4
+PGSTEP KW-261005_034953000-t02 seed 4 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGCAND Place:Meltan@3
+PGCAND Place:Honedge@1
+PGCAND Place:Honedge@2
+PGCAND Place:Honedge@3
+PGDUMP actor=0 candidates=9
+PGDUMP       -742.700000000000045 EndTurn
+PGDUMP        575.299999999999955 UseStadium
+PGDUMP        901.966666666666583 Attach:1Metal@0 zone
+PGDUMP        901.966666666666583 Place:Meltan@1
+PGDUMP        901.966666666666583 Place:Meltan@2
+PGDUMP        901.966666666666583 Place:Meltan@3
+PGDUMP        901.966666666666583 Place:Honedge@1
+PGDUMP        901.966666666666583 Place:Honedge@2
+PGDUMP        901.966666666666583 Place:Honedge@3
+PGSTEP KW-261005_034953000-t02 seed 4 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGDUMP actor=0 candidates=6
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        901.966666666666583 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGDUMP       1041.966666666666697 Place:Meltan@1
+PGDUMP       1041.966666666666697 Place:Meltan@2
+PGSTEP KW-261005_034953000-t02 seed 4 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        575.299999999999955 EndTurn
+PGDUMP       1041.966666666666697 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        635.299999999999955 Attach:1Metal@2 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGSTEP KW-261005_034953000-t02 seed 4 free 3
+PGCAND EndTurn
+PGCAND Attack:Tackle
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        901.966666666666583 EndTurn
+PGDUMP       1041.966666666666697 Attack:Tackle
+PGDUMP        575.299999999999955 Retreat:2
+PGDUMP        575.299999999999955 Retreat:3
+PGSTEP KW-261005_034953000-t02 seed 4 free 4
+PGSTEP KW-261005_034953000-t02 seed 5 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGCAND Place:Meltan@3
+PGCAND Place:Honedge@1
+PGCAND Place:Honedge@2
+PGCAND Place:Honedge@3
+PGDUMP actor=0 candidates=9
+PGDUMP       -742.700000000000045 EndTurn
+PGDUMP        575.299999999999955 UseStadium
+PGDUMP        901.966666666666583 Attach:1Metal@0 zone
+PGDUMP        901.966666666666583 Place:Meltan@1
+PGDUMP        901.966666666666583 Place:Meltan@2
+PGDUMP        901.966666666666583 Place:Meltan@3
+PGDUMP        901.966666666666583 Place:Honedge@1
+PGDUMP        901.966666666666583 Place:Honedge@2
+PGDUMP        901.966666666666583 Place:Honedge@3
+PGSTEP KW-261005_034953000-t02 seed 5 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGDUMP actor=0 candidates=6
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        901.966666666666583 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGDUMP       1041.966666666666697 Place:Meltan@1
+PGDUMP       1041.966666666666697 Place:Meltan@2
+PGSTEP KW-261005_034953000-t02 seed 5 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        575.299999999999955 EndTurn
+PGDUMP       1041.966666666666697 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        635.299999999999955 Attach:1Metal@2 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGSTEP KW-261005_034953000-t02 seed 5 free 3
+PGCAND EndTurn
+PGCAND Attack:Tackle
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        901.966666666666583 EndTurn
+PGDUMP       1041.966666666666697 Attack:Tackle
+PGDUMP        575.299999999999955 Retreat:2
+PGDUMP        575.299999999999955 Retreat:3
+PGSTEP KW-261005_034953000-t02 seed 5 free 4
+PGSTEP KW-261005_034953000-t02 seed 6 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGCAND Place:Meltan@3
+PGCAND Place:Honedge@1
+PGCAND Place:Honedge@2
+PGCAND Place:Honedge@3
+PGDUMP actor=0 candidates=9
+PGDUMP       -742.700000000000045 EndTurn
+PGDUMP        575.299999999999955 UseStadium
+PGDUMP        901.966666666666583 Attach:1Metal@0 zone
+PGDUMP        901.966666666666583 Place:Meltan@1
+PGDUMP        901.966666666666583 Place:Meltan@2
+PGDUMP        901.966666666666583 Place:Meltan@3
+PGDUMP        901.966666666666583 Place:Honedge@1
+PGDUMP        901.966666666666583 Place:Honedge@2
+PGDUMP        901.966666666666583 Place:Honedge@3
+PGSTEP KW-261005_034953000-t02 seed 6 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGDUMP actor=0 candidates=6
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        901.966666666666583 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGDUMP       1041.966666666666697 Place:Meltan@1
+PGDUMP       1041.966666666666697 Place:Meltan@2
+PGSTEP KW-261005_034953000-t02 seed 6 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        575.299999999999955 EndTurn
+PGDUMP       1041.966666666666697 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        635.299999999999955 Attach:1Metal@2 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGSTEP KW-261005_034953000-t02 seed 6 free 3
+PGCAND EndTurn
+PGCAND Attack:Tackle
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        901.966666666666583 EndTurn
+PGDUMP       1041.966666666666697 Attack:Tackle
+PGDUMP        575.299999999999955 Retreat:2
+PGDUMP        575.299999999999955 Retreat:3
+PGSTEP KW-261005_034953000-t02 seed 6 free 4
+PGSTEP KW-261005_034953000-t02 seed 7 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGCAND Place:Meltan@3
+PGCAND Place:Honedge@1
+PGCAND Place:Honedge@2
+PGCAND Place:Honedge@3
+PGDUMP actor=0 candidates=9
+PGDUMP       -742.700000000000045 EndTurn
+PGDUMP        575.299999999999955 UseStadium
+PGDUMP        901.966666666666583 Attach:1Metal@0 zone
+PGDUMP        901.966666666666583 Place:Meltan@1
+PGDUMP        901.966666666666583 Place:Meltan@2
+PGDUMP        901.966666666666583 Place:Meltan@3
+PGDUMP        901.966666666666583 Place:Honedge@1
+PGDUMP        901.966666666666583 Place:Honedge@2
+PGDUMP        901.966666666666583 Place:Honedge@3
+PGSTEP KW-261005_034953000-t02 seed 7 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGDUMP actor=0 candidates=6
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        901.966666666666583 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGDUMP       1041.966666666666697 Place:Meltan@1
+PGDUMP       1041.966666666666697 Place:Meltan@2
+PGSTEP KW-261005_034953000-t02 seed 7 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        575.299999999999955 EndTurn
+PGDUMP       1041.966666666666697 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        635.299999999999955 Attach:1Metal@2 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGSTEP KW-261005_034953000-t02 seed 7 free 3
+PGCAND EndTurn
+PGCAND Attack:Tackle
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        901.966666666666583 EndTurn
+PGDUMP       1041.966666666666697 Attack:Tackle
+PGDUMP        575.299999999999955 Retreat:2
+PGDUMP        575.299999999999955 Retreat:3
+PGSTEP KW-261005_034953000-t02 seed 7 free 4
+PGSTEP KW-261005_034953000-t02 seed 8 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGCAND Place:Meltan@3
+PGCAND Place:Honedge@1
+PGCAND Place:Honedge@2
+PGCAND Place:Honedge@3
+PGDUMP actor=0 candidates=9
+PGDUMP       -742.700000000000045 EndTurn
+PGDUMP        575.299999999999955 UseStadium
+PGDUMP        901.966666666666583 Attach:1Metal@0 zone
+PGDUMP        901.966666666666583 Place:Meltan@1
+PGDUMP        901.966666666666583 Place:Meltan@2
+PGDUMP        901.966666666666583 Place:Meltan@3
+PGDUMP        901.966666666666583 Place:Honedge@1
+PGDUMP        901.966666666666583 Place:Honedge@2
+PGDUMP        901.966666666666583 Place:Honedge@3
+PGSTEP KW-261005_034953000-t02 seed 8 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGDUMP actor=0 candidates=6
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        901.966666666666583 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGDUMP       1041.966666666666697 Place:Meltan@1
+PGDUMP       1041.966666666666697 Place:Meltan@2
+PGSTEP KW-261005_034953000-t02 seed 8 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        575.299999999999955 EndTurn
+PGDUMP       1041.966666666666697 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        635.299999999999955 Attach:1Metal@2 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGSTEP KW-261005_034953000-t02 seed 8 free 3
+PGCAND EndTurn
+PGCAND Attack:Tackle
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        901.966666666666583 EndTurn
+PGDUMP       1041.966666666666697 Attack:Tackle
+PGDUMP        575.299999999999955 Retreat:2
+PGDUMP        575.299999999999955 Retreat:3
+PGSTEP KW-261005_034953000-t02 seed 8 free 4
+PGSTEP KW-261005_034953000-t02 seed 9 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGCAND Place:Meltan@3
+PGCAND Place:Honedge@1
+PGCAND Place:Honedge@2
+PGCAND Place:Honedge@3
+PGDUMP actor=0 candidates=9
+PGDUMP       -742.700000000000045 EndTurn
+PGDUMP        575.299999999999955 UseStadium
+PGDUMP        901.966666666666583 Attach:1Metal@0 zone
+PGDUMP        901.966666666666583 Place:Meltan@1
+PGDUMP        901.966666666666583 Place:Meltan@2
+PGDUMP        901.966666666666583 Place:Meltan@3
+PGDUMP        901.966666666666583 Place:Honedge@1
+PGDUMP        901.966666666666583 Place:Honedge@2
+PGDUMP        901.966666666666583 Place:Honedge@3
+PGSTEP KW-261005_034953000-t02 seed 9 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGDUMP actor=0 candidates=6
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        901.966666666666583 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGDUMP       1041.966666666666697 Place:Meltan@1
+PGDUMP       1041.966666666666697 Place:Meltan@2
+PGSTEP KW-261005_034953000-t02 seed 9 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        575.299999999999955 EndTurn
+PGDUMP       1041.966666666666697 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        635.299999999999955 Attach:1Metal@2 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGSTEP KW-261005_034953000-t02 seed 9 free 3
+PGCAND EndTurn
+PGCAND Attack:Tackle
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        901.966666666666583 EndTurn
+PGDUMP       1041.966666666666697 Attack:Tackle
+PGDUMP        575.299999999999955 Retreat:2
+PGDUMP        575.299999999999955 Retreat:3
+PGSTEP KW-261005_034953000-t02 seed 9 free 4
+PGSTEP KW-261005_034953000-t02 seed 10 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGCAND Place:Meltan@3
+PGCAND Place:Honedge@1
+PGCAND Place:Honedge@2
+PGCAND Place:Honedge@3
+PGDUMP actor=0 candidates=9
+PGDUMP       -742.700000000000045 EndTurn
+PGDUMP        575.299999999999955 UseStadium
+PGDUMP        901.966666666666583 Attach:1Metal@0 zone
+PGDUMP        901.966666666666583 Place:Meltan@1
+PGDUMP        901.966666666666583 Place:Meltan@2
+PGDUMP        901.966666666666583 Place:Meltan@3
+PGDUMP        901.966666666666583 Place:Honedge@1
+PGDUMP        901.966666666666583 Place:Honedge@2
+PGDUMP        901.966666666666583 Place:Honedge@3
+PGSTEP KW-261005_034953000-t02 seed 10 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGDUMP actor=0 candidates=6
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        901.966666666666583 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGDUMP       1041.966666666666697 Place:Meltan@1
+PGDUMP       1041.966666666666697 Place:Meltan@2
+PGSTEP KW-261005_034953000-t02 seed 10 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        575.299999999999955 EndTurn
+PGDUMP       1041.966666666666697 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        635.299999999999955 Attach:1Metal@2 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGSTEP KW-261005_034953000-t02 seed 10 free 3
+PGCAND EndTurn
+PGCAND Attack:Tackle
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        901.966666666666583 EndTurn
+PGDUMP       1041.966666666666697 Attack:Tackle
+PGDUMP        575.299999999999955 Retreat:2
+PGDUMP        575.299999999999955 Retreat:3
+PGSTEP KW-261005_034953000-t02 seed 10 free 4
+PGSTEP KW-261005_034953000-t02 seed 11 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGCAND Place:Meltan@3
+PGCAND Place:Honedge@1
+PGCAND Place:Honedge@2
+PGCAND Place:Honedge@3
+PGDUMP actor=0 candidates=9
+PGDUMP       -742.700000000000045 EndTurn
+PGDUMP        575.299999999999955 UseStadium
+PGDUMP        901.966666666666583 Attach:1Metal@0 zone
+PGDUMP        901.966666666666583 Place:Meltan@1
+PGDUMP        901.966666666666583 Place:Meltan@2
+PGDUMP        901.966666666666583 Place:Meltan@3
+PGDUMP        901.966666666666583 Place:Honedge@1
+PGDUMP        901.966666666666583 Place:Honedge@2
+PGDUMP        901.966666666666583 Place:Honedge@3
+PGSTEP KW-261005_034953000-t02 seed 11 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGDUMP actor=0 candidates=6
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        901.966666666666583 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGDUMP       1041.966666666666697 Place:Meltan@1
+PGDUMP       1041.966666666666697 Place:Meltan@2
+PGSTEP KW-261005_034953000-t02 seed 11 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        575.299999999999955 EndTurn
+PGDUMP       1041.966666666666697 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        635.299999999999955 Attach:1Metal@2 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGSTEP KW-261005_034953000-t02 seed 11 free 3
+PGCAND EndTurn
+PGCAND Attack:Tackle
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        901.966666666666583 EndTurn
+PGDUMP       1041.966666666666697 Attack:Tackle
+PGDUMP        575.299999999999955 Retreat:2
+PGDUMP        575.299999999999955 Retreat:3
+PGSTEP KW-261005_034953000-t02 seed 11 free 4
+PGSTEP KW-261005_034953000-t02 seed 12 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGCAND Place:Meltan@3
+PGCAND Place:Honedge@1
+PGCAND Place:Honedge@2
+PGCAND Place:Honedge@3
+PGDUMP actor=0 candidates=9
+PGDUMP       -742.700000000000045 EndTurn
+PGDUMP        575.299999999999955 UseStadium
+PGDUMP        901.966666666666583 Attach:1Metal@0 zone
+PGDUMP        901.966666666666583 Place:Meltan@1
+PGDUMP        901.966666666666583 Place:Meltan@2
+PGDUMP        901.966666666666583 Place:Meltan@3
+PGDUMP        901.966666666666583 Place:Honedge@1
+PGDUMP        901.966666666666583 Place:Honedge@2
+PGDUMP        901.966666666666583 Place:Honedge@3
+PGSTEP KW-261005_034953000-t02 seed 12 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Place:Meltan@1
+PGCAND Place:Meltan@2
+PGDUMP actor=0 candidates=6
+PGDUMP        -83.700000000000003 EndTurn
+PGDUMP        901.966666666666583 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGDUMP       1041.966666666666697 Place:Meltan@1
+PGDUMP       1041.966666666666697 Place:Meltan@2
+PGSTEP KW-261005_034953000-t02 seed 12 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=5
+PGDUMP        575.299999999999955 EndTurn
+PGDUMP       1041.966666666666697 UseStadium
+PGDUMP       1041.966666666666697 Attach:1Metal@0 zone
+PGDUMP        635.299999999999955 Attach:1Metal@2 zone
+PGDUMP        735.299999999999955 Attach:1Metal@3 zone
+PGSTEP KW-261005_034953000-t02 seed 12 free 3
+PGCAND EndTurn
+PGCAND Attack:Tackle
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGDUMP actor=0 candidates=4
+PGDUMP        901.966666666666583 EndTurn
+PGDUMP       1041.966666666666697 Attack:Tackle
+PGDUMP        575.299999999999955 Retreat:2
+PGDUMP        575.299999999999955 Retreat:3
+PGSTEP KW-261005_034953000-t02 seed 12 free 4

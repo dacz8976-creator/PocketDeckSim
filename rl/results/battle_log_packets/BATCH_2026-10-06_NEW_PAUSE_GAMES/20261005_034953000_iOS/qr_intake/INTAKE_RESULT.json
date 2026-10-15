@@ -1,0 +1,24 @@
+{
+  "source_video": "20261005_034953000_iOS.MP4",
+  "source_sha256": "85f9e3803543f512323259794b7166808e5bfd2ff5a3854d8ce1a40686075180",
+  "scan_utc": "2026-10-06T18:09:01.730583+00:00",
+  "attempts": [
+    {
+      "source_seconds": 1,
+      "image": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_034953000_iOS\\qr_intake\\t0001.00.png",
+      "detected_codes": 0
+    },
+    {
+      "source_seconds": 2,
+      "image": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_034953000_iOS\\qr_intake\\t0002.00.png",
+      "detected_codes": 0
+    },
+    {
+      "source_seconds": 5,
+      "image": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_034953000_iOS\\qr_intake\\t0005.00.png",
+      "detected_codes": 1
+    }
+  ],
+  "decoded_receipt": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_034953000_iOS\\qr_intake\\QR_DECODE_0005.00.json",
+  "scope": "Automated source-bound early QR intake only. Full Sol source review must establish displayed deck label, continuity, classification and game binding. No QR detected in these candidates does not establish absence throughout footage."
+}

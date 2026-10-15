@@ -1,0 +1,51 @@
+{
+  "evidence_id": "IC0090.50",
+  "source_video": "20260929_020916000_iOS.MP4",
+  "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+  "requested_source_seconds": 90.5,
+  "measured_pts_seconds": 90.5117,
+  "timestamp_basis": "FFmpeg -copyts showinfo first selected source decoded frame PTS",
+  "native_dimensions": [
+    1170,
+    2532
+  ],
+  "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260929_020916000\\t0090.50_decode.txt",
+  "files": [
+    {
+      "role": "full",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260929_020916000\\t0090.50.jpg",
+      "bounds": null,
+      "sha256": "55752626901eb271875602c6bc95c72143df0d506b2432e17a877f9efa224747",
+      "bytes": 399641
+    },
+    {
+      "role": "top",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260929_020916000\\p0090.50.png",
+      "bounds": [
+        0,
+        0,
+        1170,
+        550
+      ],
+      "sha256": "39a2d7e762d2136178b6db4b23eac94d8c635a9e0bdafb2f2418b35a1da8020d",
+      "bytes": 303543
+    },
+    {
+      "role": "bottom",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260929_020916000\\b0090.50.png",
+      "bounds": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "sha256": "e563f4b91d208170fb547a16c6f141efcd38ec3de39ea6a7d6201869e5d80035",
+      "bytes": 515532
+    }
+  ],
+  "source_hash_repeats": 0,
+  "locator_decode_repeats": 0,
+  "native_seek_decodes": 1,
+  "new_native_cap": 2,
+  "purpose": "T2 stable opponent Copycat five concealed backs after refill; identities/reveal order remain unknown"
+}

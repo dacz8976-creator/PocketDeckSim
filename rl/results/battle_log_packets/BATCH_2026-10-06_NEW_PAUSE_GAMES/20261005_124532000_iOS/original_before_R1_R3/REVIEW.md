@@ -1,0 +1,52 @@
+# Whole-source review: 20261005_124532000_iOS.MP4
+
+Reviewer: /root/pause_124532, GPT-6.1 Sol high. Completed first pass 2026-10-06T19:56:36.641165+00:00. Independent acceptance remains with the lead.
+
+Source: SOURCE.json, SHA-256 d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75, 622584338 bytes, 339.899138 seconds, native 1170x2532. Recording local October5,2026 at07:45:32 America/Chicago, from embedded UTC metadata.
+
+Human match against Nick in Deluxe Pack: Mega Emblem Event. No Auto control is visible. Owner Dacz 8976 goes first and loses after 8 turns, final displayed score 0 to 3. Charizard ex Crimson Storm deals 200 to Darkrai ex on turn 8. The results show 70 damage done. This does not establish ranked mode.
+
+Deck continuity: retained QR at 1 s, revised deck editor at 3 s, save transition 4 s, slot 11 New deck 6 selected at 5/6 s, matchmaking 8 s and opening 29 s form an uninterrupted chain. This deck has one Darkrai ex and one Cyrus, unlike the prior source two-Darkrai revision. Exact filmed 20 semantic cards and Darkness are retained. The initial dated live log snapshot lacks this deck version; prepared external deck data is not a saved log snapshot.
+
+Opening 29 s, before Active placement: Nidoran male, Poison Barb, Nidoran male, Lucky Ice Pop, Nidoking. The third opening slot becomes Active at 30/31 s; the first becomes Bench 1 by 32/38 s. No redraw observed.
+
+Each row below links to the corresponding numbered TURN_LEDGER.json row. Action input/selection and reveal are separate where footage supplies them; timing precision is visual and source-local, not exact touch telemetry.
+
+| Turn | Player | Source seconds | Numbered actions and resolution | Ending owner hand |
+|---|---|---|---|---|
+| 1 | owner | 50-63 | 1. Poison Barb 53.6 s: Tool attaches; no HP change; 2. end_turn 62 s: End Turn accepted; no warning dialog observed | 3 |
+| 2 | opponent | 63-87 | 1. Rainbow Cave 70 s: Stadium installed; 2. Rainbow Cave 76 s: Current Fire discarded; next Fire produced. Same-type replacement still recorded.; 3. energy_attachment 79 s: One Fire attached; Entei total 1; 4. end_turn 83 s: Turn ends without attack | n/a |
+| 3 | owner | 87-115 | 1. Professor's Research 89.6 s: Draw Wally, then Poke Ball; 2. Poke Ball 96 s: Find Darkrai ex; 3. Darkrai ex 103 s: Darkrai ex benched at 140 HP; 4. energy_attachment 109 s: One Darkness attached; Bench Nidoran total 1; 5. end_turn 114 s: End Turn accepted; no additional prompt observed | 4 |
+| 4 | opponent | 115-185 | 1. Rainbow Cave 123 s: Current Fire discarded and next Fire produced; 2. May 131 s: Add two hidden Pokemon, then choose two hidden Pokemon to shuffle from hand into deck; net hand 5 to 4 including the played Supporter; 3. Charmeleon 143 s: Evolves to 80 HP Ignition/Slash 40 Charmeleon; 4. Ignition 146 s: Fire from Energy Zone attaches to Active Entei; Entei 1 to 2. Next Fire generated afterward.; 5. Team Rocket's Thieving Machine 150 s: Recovers owner-discarded Poke Ball into opponent hand; 6. Poke Ball 155 s: Search adds 1 hidden Basic Pokemon; 7. Charmander 162 s: Second Charmander benched 70 HP; 8. energy_attachment 164 s: One Fire attached to Charmeleon; total 1, current Zone empty; 9. Blazing Beatdown 167 s: 60 damage knocks out 60 HP Nidoran; attack ends turn | n/a |
+| 5 | owner | 185-222 | 1. Professor's Research 188 s: Draw second Nidoking, then Deceptive Needle; 2. Deceptive Needle 202 s: Tool attached to benched Darkrai; no immediate damage; 3. energy_attachment 208 s: One Darkness attached; Nightmare Aura 20 lowers Entei 130 to 110; 4. Peck 216 s: Nidoran Peck 20 lowers Entei 110 to 90; attack ends turn | 5 |
+| 6 | opponent | 222-267 | 1. Poke Ball 227 s: Search adds one hidden Basic Pokemon; hand 4 to 3 to 4; 2. Entei ex 236 s: Second Entei ex benched 140 HP; 3. Pokemon Center Lady 241 s: Heals 30 HP 80 to 110 and removes Poison; 4. energy_attachment 248 s: One Fire attached; Charmeleon 1 to 2, current Zone empty afterward; 5. Blazing Beatdown 251 s: 60 damage knocks out second Nidoran; attack ends turn | n/a |
+| 7 | owner | 267-286 | 1. Nihilego 270.5 s: Benched 70 HP; More Poison applies, without creating Poison; 2. energy_attachment 275 s: Second Darkness attaches; Nightmare Aura 20 lowers Entei 110 to 90; 3. end_turn 281 s: End Turn accepted without attack or Supporter; no warning prompt observed | 5 |
+| 8 | opponent | 286-329 | 1. Professor's Research 292 s: Opponent draws 2 hidden cards; 2. Charizard ex 299 s: Evolves into 180 HP Slash 60/Crimson Storm 200 Charizard with 2 Fire; 3. retreat 305 s: Entei retreats, pays 2 Fire, Charizard becomes Active; 4. Flame Patch 312 s: Attach 1 Fire from discard; Charizard 2 to 3 Fire; 5. energy_attachment 315 s: Normal zone Fire attachment; Charizard 3 to 4 Fire; 6. Crimson Storm 319 s: 200 damage knocks out 140 HP Darkrai; Charizard discards 2 Fire. Opponent earns 2 points and wins. | n/a |
+
+Automatic effects and public ordering: turn 2 Legendary Pulse adds one concealed card after the end action. Turn 4 attack damages Nidoran 60 to 0, Poison Barb applies Poison, the KO removes Nidoran/Tool and awards one point, the owner chooses the other Nidoran without retreat cost, Legendary Pulse adds one hidden card, then Poison deals 10, Entei 140 to 130. Turn 5 Aura 20, Peck 20 and Poison 10 produce 130 ->110 ->90 ->80. Benched Needle produces no damage. Turn 6 Center Lady heals 80 ->110 and clears Poison before the attack; the second Nidoran KO awards point 2, and the owner selects Darkrai as the forced replacement. Turn 7 Aura 20 and active Needle 10 produce 110 ->90 ->80; Nihilego adds More Poison but does not itself make Entei Poisoned. Turn 8 Entei pays 2 Fire to retreat; Flame Patch adds 1 Fire to Charizard, ordinary Zone attachment adds another, Charizard reaches 4 Fire then Crimson Storm discards 2, leaving 2. Darkrai is 0 HP at 321/322 s and removed at 323/324 s. Post-removal 324 still shows opponent 2 points; separate 327/results 339.7 establishes the terminal 3-point display.
+
+Hand reconciliation: owner end counts are 3, 4, 5, 5 on turns 1, 3, 5, 7. Turn 1: setup 3 +Cyrus -Barb =3. Turn 3: start 4 -Research +Wally +Poke Ball -Poke Ball +Darkrai -bench Darkrai =4. Turn 5: start 5 -Research +Nidoking +Needle -Needle =5. Turn 7: start 6 -bench Nihilego =5. Ending identities are in the ledger, including both separate Nidoking copies. Opponent fan counts at owner starts are 3, 4, 3, 3; these are native exposed-back counts, not deck arithmetic.
+
+Draw record: Cyrus 52 s; Research 88 s; Research reveals Wally 93 s then Poke Ball 94 s; search reveals Darkrai 99 s. Research 187 s; second Research reveals Nidoking 191 s then Needle 192 s. Nihilego 269 s. Opponent normal draws, Research cards and Legendary Pulse cards stay concealed. The opponent plays May at 131.5 s on turn 4. Two concealed Pokemon are added, then two concealed Pokemon are returned to the deck by about 140 s. Their identities and private prompts are unavailable. Turn 6 includes a second Poke Ball, revealed at 227.5 s, which adds one concealed Basic Pokemon. No Copycat is played. Rainbow Cave cycles generated Energy, it does not draw a card.
+
+Hand capture: turn 1 selected 53.2 s; turn 3 selected 89.2 s; turn 5 selected 187.95 s; turn 7 selected 269.7 s. Each has retained native full frame and full-width bottom fifth/top crop. Scheduled +1/+3/+6 candidates are already after the immediate first play and are labeled unsuitable. Subsecond source inspection recovered the intact preplay hand. Turn 5 leftmost Lucky Ice Pop is partly off-screen after the fan expands, supported by nearby observed continuity. The Research preview has closed at 187.95 and all five slots remain before commit 188.0. Before-end evidence:61, 114, 215 (pre-Peck substitution), 281 s.
+
+Energy at selected frame: turn 3 at 89.2 and turn 7 at 269.7 have EMPTY large current circles, recorded absent even though Darkness generates moments later. Turn 5 at 187.95 has a present Darkness sphere. Turn 1 current is absent as the first turn. Next previews remain independently read Darkness for owner and Fire for opponent. No future Energy is inferred from deck type.
+
+Both start and end boards, ordered Bench rectangles including visibly empty positions, HP, maximum HP, typed attached Energy, Tool absence/presence, conditions, effects, Stadium and points appear in each ledger row. Current turn labels are cited separately; selected frames without labels use null plus reason instead of borrowing the ledger number.
+
+Discard views: neither complete pile is opened. Six retained top previews are explicitly limited. Thieving Machine publicly recovers the owner Poke Ball, and the removed Tool/KO states are evidenced; these transactions do not prove the whole hidden pile.
+
+Inspection coverage: whole 0-339.899 s with the continuous ordered native locating pass, denser 1-second action windows, subsecond draw/preplay checks, and native checks of selected hands/mechanics. Coarse overview is only the locator; dense source-bound native events and boundaries supply the complete account. No source cut or unreviewed game turn remains.
+
+Recording limits:
+
+- No full discard pile is opened in the source. Visible top previews and observed transactions are retained separately.
+- Hidden opponent card identities and private prompt choices remain unknown; public actions are recorded in visible resolution order.
+- Scheduled +1/+3/+6 hand candidates are post-play in all four owner turns; denser native seeks recover intact preplay fans.
+- Turn 5 selected five-slot fan has an off-screen leftmost Lucky Ice Pop. Its identity is supported by filmed continuity from the preceding hand; no deck-membership inference is used.
+- QR establishes twenty semantic card slots and Darkness, with artwork/rarity unspecified. The initial dated live log snapshot lacks this Nidoking revision; a prepared deck entry is not a saved live snapshot.
+- Input/reveal times are visually localized source-local requests, not measured PTS or exact touch telemetry.
+- Terminal board 324 is post-removal with opponent 2 visible points. The separate 327 and 339.7 frames establish awarded terminal 3 points; Darkrai 0 HP is a separate 321/322 pre-removal state.
+
+Independent targets are in SUMMARY.json, including the ordinary turn 1 first move and the full opponent turn 4. No external game write, index edit, lead acceptance or media movement performed by this worker.

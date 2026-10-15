@@ -1,0 +1,37 @@
+{
+  "source": "20260909_023151000_iOS.MP4",
+  "current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260909_023151000_iOS.MP4",
+  "started_utc": "2026-10-02T22:32:30.267769+00:00",
+  "status": "windows_delivery_error",
+  "before": {
+    "logical_bytes": 642076032,
+    "allocated_bytes": 0,
+    "attributes": 4724256,
+    "placeholder_state": 57,
+    "cloud_placeholder": true,
+    "in_sync": true,
+    "pinned": true,
+    "unpinned": false,
+    "online_only": true
+  },
+  "documentation": "https://learn.microsoft.com/en-us/windows/win32/api/cfapi/nf-cfapi-cfhydrateplaceholder",
+  "operation": "CfHydratePlaceholder for source bytes0 through EOF; no change to file contents, no hash reread",
+  "python_movie_content_reads": 0,
+  "completed_failed_content_reads_before_request": 2,
+  "hresult": "0x800701AA",
+  "win_error": 426,
+  "windows_error_text": "The cloud operation was not completed before the time-out period expired.",
+  "finished_utc": "2026-10-02T22:33:30.787703+00:00",
+  "wall_seconds": 60.52,
+  "after": {
+    "logical_bytes": 642076032,
+    "allocated_bytes": 0,
+    "attributes": 4724256,
+    "placeholder_state": 57,
+    "cloud_placeholder": true,
+    "in_sync": true,
+    "pinned": true,
+    "unpinned": false,
+    "online_only": true
+  }
+}

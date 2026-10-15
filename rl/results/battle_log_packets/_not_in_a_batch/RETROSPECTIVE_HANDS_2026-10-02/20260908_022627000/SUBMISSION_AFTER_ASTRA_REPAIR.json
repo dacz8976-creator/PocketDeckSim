@@ -1,0 +1,99 @@
+{
+  "status": "provisional_source_packet_frozen_for_independent_checks",
+  "frozen_utc": "2026-10-02T22:14:45.669048+00:00",
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance_status": "pending_separate_sol_and_bounded_astra_checks",
+  "turns": 18,
+  "owner_hands": 9,
+  "new_native_frames": 72,
+  "reused_native_frames": 52,
+  "locator_samples": 721,
+  "accepted_owner_loss": "preserved",
+  "old_packet": "untouched",
+  "files": [
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\ASSIGNMENT.json",
+      "bytes": 1241,
+      "sha256": "7799dbbb50b236363c130fa234fd21b6a4922c1a9398efbc83c8e2a56e284710"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\PAUSE_GAME.json",
+      "bytes": 9066,
+      "sha256": "9f4c41626e0d8fa3627b49c20731186655270861eb68d45ba6a60a888643e60f"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\TURN_LEDGER.json",
+      "bytes": 541457,
+      "sha256": "3b015ad45b1047c466f75a68734467c2638f9bbab2e13697255b3172ff5c6973"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\HAND_SUPPLEMENT.json",
+      "bytes": 48038,
+      "sha256": "faa4e11484d149edfbf4739e74465f33324baef747771134e48e592ea5634ce8"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\SOURCE_REFERENCE.json",
+      "bytes": 1872,
+      "sha256": "61b77e7d7783b1e585bafd7d05ad9635f2bb0e6ee4246204a4b23e50c63fc3d8"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\TURN_EVIDENCE.json",
+      "bytes": 316045,
+      "sha256": "68131799d5e4ff5c8e833c9340760c13d1b8c6fbba70b97e18ef995d1ea6e04d"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\REVIEW_SUPPLEMENT.md",
+      "bytes": 15489,
+      "sha256": "21103bfb96df5214188b789112ac73171f46267e50222bda68343bc582cc1e15"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\UNCERTAINTIES.json",
+      "bytes": 1293,
+      "sha256": "f80b00ee8c2bb23281c4a625209d54456fed4c388567f35944d44a0d24f8ae62"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\DECK_USED.json",
+      "bytes": 3446,
+      "sha256": "a736d5fdbb974d25fa87b6764a07bcb75f0e9b7976a9d21da5afacdcbc7565bc"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\METRICS.json",
+      "bytes": 914,
+      "sha256": "645ab2501412256653ca0333e03659c2884505d69d5ea002c3e88f75e2529fb9"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\MODE_QUESTION.json",
+      "bytes": 802,
+      "sha256": "a83954fc1fceaa62bc839dc0d5ae05305e15bbd1c6df45cbbd26521edb256894"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\ASTRA_QUESTIONS.json",
+      "bytes": 24884,
+      "sha256": "35094dc10b728daeace2be7f51f8ac2503f171b2b0878c35afa5e6adf814364e"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\LOCATOR_SCAN.json",
+      "bytes": 3306,
+      "sha256": "7bd8c9054dd9469783514697d11f3fde4d73dc999de9af55b2146bc2f239f317"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\SOURCE_VERIFICATION.json",
+      "bytes": 919,
+      "sha256": "238e9f3138e13f1985e00605cd6ea0829d86f8a37b85624408db063702fb0bcc"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\PACKET_VALIDATION.json",
+      "bytes": 369,
+      "sha256": "52a804d1bde61cf8dd5ad9d2366bd458752a44c60e5a7809d03f3282b88d6a75"
+    }
+  ],
+  "astra_reference_repair": {
+    "errata": "ASTRA_QUESTION_ERRATA.json",
+    "preserved_original_submission": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\before_astra_reference_repair\\SUBMISSION.json",
+    "modified_file_sha256": {
+      "TURN_LEDGER.json": "7cae59e3ed84e9b31447a5a272ca52b2804efdf507c7c38c943b789c3f829d8c",
+      "REVIEW_SUPPLEMENT.md": "78c289eee895375c3246b25ef498458778819fd677ff0904e6d539ee3198da12",
+      "UNCERTAINTIES.json": "04a5d844037bac13aa5130e0a81015431c7e944da32d3c20f9870554c422f027"
+    }
+  }
+}

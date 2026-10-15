@@ -1,0 +1,18 @@
+{
+  "source_filename": "20261014_142546000_iOS.MP4",
+  "blocking_uncertainties": [],
+  "uncertainties": [
+    {
+      "topic": "Hidden information",
+      "limitation": "Opponent unrevealed hand/deck and exact full lists are unknown. Visible versions are identified by attacks and HP. No hidden card identities inferred."
+    },
+    {
+      "topic": "Attack time precision",
+      "limitation": "First Grass Knot commits between native278 and279 seconds and its named animation is visible at280; review uses approximately279 seconds, rather than claiming a frame-exact start."
+    },
+    {
+      "topic": "Review sampling",
+      "limitation": "Full visual review used coarse discovery plus targeted native samples, not a frame-by-frame transcript. All visible turns, meaningful actions and the terminal sequence are accounted for."
+    }
+  ]
+}

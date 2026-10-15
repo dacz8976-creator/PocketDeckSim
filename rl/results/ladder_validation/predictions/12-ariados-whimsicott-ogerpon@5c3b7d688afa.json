@@ -1,0 +1,2152 @@
+{
+ "schema": "ladder-predictions v3",
+ "deck": {
+  "name": "12-ariados-whimsicott-ogerpon",
+  "file": "decks/dustin/12-ariados-whimsicott-ogerpon.txt",
+  "version_id": "5c3b7d688afa",
+  "card_list_sha256": "5c3b7d688afa36ac311ec94f3909a47bbd128b590d0809bb27bb4fe42f0d8858",
+  "file_sha256": "4d059bd2c5cba229cc025746f05dca2d03281ebe07c0712917d9fc8d53c65bd5",
+  "card_list": [
+   "energy: grass",
+   "2 ariados B1A 6",
+   "1 copycat B1 225",
+   "2 cottonee B1 15",
+   "1 hiking trail B2B 69",
+   "1 leaf cape A3 147",
+   "1 lisia B1 226",
+   "1 poké ball P-A 5",
+   "2 professor's research P-A 7",
+   "1 quick-grow extract B1A 67",
+   "2 spinarak B1A 5",
+   "1 teal mask ogerpon ex B2 17",
+   "2 team rocket's goo-zooka B4A 68",
+   "2 whimsicott ex B1 16",
+   "1 x speed P-A 2"
+  ],
+  "card_count": 20,
+  "log_docs": [
+   "d12"
+  ],
+  "log_label": null,
+  "file_versions": [
+   {
+    "sha256": "4d059bd2c5cba229cc025746f05dca2d03281ebe07c0712917d9fc8d53c65bd5",
+    "card_list_sha256": "5c3b7d688afa36ac311ec94f3909a47bbd128b590d0809bb27bb4fe42f0d8858",
+    "first_commit": "83fd3496b80ab69012c70d988c9febe2c93c96eb",
+    "first_date": "2026-09-24T19:53:03Z"
+   }
+  ],
+  "committed": true
+ },
+ "written_at": "2026-10-15T02:26:13Z",
+ "written_by": {
+  "script": "make_predictions.py",
+  "code_sha256": {
+   "make_predictions.py": "5c5db8bce50666c0ccf8de489f39d5d46c3cbbe6d16259eff2c71d407ea39931",
+   "read_ladder.py": "9064aab95d3c93c0cf2450db6016765a42caaae7ba31dbee11faaa2819983dd3"
+  },
+  "repo_head": "b97ba593df79ce34d755f5927849273259892947"
+ },
+ "first_game_already_played": "2026-10-14T14:25:46Z",
+ "games_already_read": 10,
+ "ladder_log_at_writing": {
+  "export": "ladderlog_export.json",
+  "export_sha256": "fb125b3a98fc55190cc2a71d4d85cc959f8e8d2a0368739af9758c5c1225fbea",
+  "game_keys": [
+   "brew-01/dryde5b2",
+   "brew-01/op2nw4iq",
+   "brew-01/puegkh26",
+   "brew-01/pzgxofc5",
+   "brew-03a/5j3gatiy",
+   "brew-03a/fjrp6698",
+   "brew-03a/i0b7q0aw",
+   "brew-03a/j7ygejzg",
+   "brew-04/dt62hbj1",
+   "brew-05/265qsbyq",
+   "brew-05/c3eehz66",
+   "brew-05/g4plkw2m",
+   "brew-05/inj3tqmf",
+   "brew-05/q29m429j",
+   "brew-05/sxmmfqbf",
+   "brew-05c/cgt39800",
+   "brew-05c/k4koxjza",
+   "brew-05c/sgyuq7p8",
+   "brew-06/b06l1",
+   "brew-06/b06l2",
+   "brew-06/b06l3",
+   "brew-06b/bj01ko8c",
+   "brew-06b/tpc15fb7",
+   "brew-06b/ys8h59kt",
+   "brew-08/66bj8pko",
+   "brew-08/6v6uz8f4",
+   "brew-08/6vpilygm",
+   "brew-08/b1onjy8e",
+   "brew-08/izt3v99l",
+   "brew-08/oubs7din",
+   "brew-08/oxvly9rd",
+   "brew-08/vxshsx64",
+   "brew-08/wu76b104",
+   "brew-08/xy1ivenh",
+   "brew-09/k9rp6pmw",
+   "c-hydreigon-galarian-obstagoon-video-visib/5u42iufb",
+   "c-hydreigon-galarian-obstagoon-video-visib/efkegujq",
+   "c-hydreigon-galarian-obstagoon-video-visib/gx13ee2a",
+   "c-hydreigon-galarian-obstagoon-video-visib/ile7odgu",
+   "c-hydreigon-galarian-obstagoon-video-visib/k95ae5i5",
+   "c-hydreigon-galarian-obstagoon-video-visib/l6uu55cr",
+   "c-hydreigon-galarian-obstagoon-video-visib/n85t8ocx",
+   "c-hydreigon-galarian-obstagoon-video-visib/ztoknodg",
+   "c-mega-sharpedo-ex-gyarados-video-visible-/lb8dqt2y",
+   "c-skarmory-ex-chandelure/6tycxfqa",
+   "c-skarmory-ex-indeedee-ex-genesect-video-v/69ex1k6d",
+   "c-skarmory-ex-indeedee-ex-genesect-video-v/bva14dpt",
+   "c-type-null-silvally-video-visible-core/oefujszt",
+   "d02/1hwx3rpd",
+   "d02/4a0xzylt",
+   "d02/ks7cq6me",
+   "d02/kzwhyst4",
+   "d07/k7mqsc2z",
+   "d07/pukrqofc",
+   "d07/y9vhwux3",
+   "d07/zsy3l5cr",
+   "d12/4p1dhyul",
+   "d12/ceratxro",
+   "d12/cje2afoa",
+   "d12/htcgfxoj",
+   "d12/le8qdtg1",
+   "d12/mk7rxbwl",
+   "d12/pe0sas7w",
+   "d12/x737u7z9",
+   "d12/y78azdr4",
+   "d12/zvste53r",
+   "d13/0cdbmnk8",
+   "d13/33zbl0xu",
+   "d13/8l9xp47h",
+   "d13/hfg8daaq",
+   "d13/kjyd2zt6",
+   "d13/mi3oz3p9",
+   "d13/tpjqlnr4",
+   "d13/wlfww6p5",
+   "d13/yymjb6fj",
+   "d13/zjh2t7xi"
+  ],
+  "games_logged": 76,
+  "newest_logged": "2026-10-15T01:29:58Z",
+  "newest_video": "20261014_234728000_iOS",
+  "newest_video_start": "2026-10-14T23:47:28Z"
+ },
+ "notes": [
+  "Staged Oct 15 for the ladder validation (v3 rules); every committed source of this card list is given, older-engine ones kept for the record.",
+  "The Oct 5 exam, the m64 exam and the m32 exam ran on older engines that count two Ariados as one, this deck's key damage rule: kept for the record, out of the bot comparison. So does the Sept 30 floor.",
+  "m64: raw deck-12 games first committed 2026-10-14T11:55:07Z in rl/results/exam_m32_m64_2026-10/workers/E10_reg_m64/ (cd2c05ce), merged 22:15:11Z (893434e6); no m64 figure was written until 22:28:07Z (f4c487e0), after all 10 logged games. m32: first committed 2026-10-14T20:55:09Z (f46d68f8), also after all 10.",
+  "Written after games 1-10 were read (Oct 14, videos 14:25:46-16:43:28 UTC, 2-8): the current-engine bot numbers predate game 1 (the slow report reached main 2026-10-14T13:56:46Z, 55295ea7), the forecast and matching rules do not. Games 1-10 are feedback.",
+  "What he played is unconfirmed: all 14 card names seen on his side in the video reviews, none outside the file; counts and Energy unchecked. The clips starting 14:54:49 and 16:43:28 UTC open on a deck-share QR code an agent can check."
+ ],
+ "who_plays_the_panel": "km3 plays the 8 panel lists in every run (slow reports, exams and floors). The frozen kx3 (and m64 or m32, slower kx3 settings) knows the 8 lists and expects one of them, so its number is the optimistic end; km3 on the deck v km3 on the panel is the like-for-like number. The Ladder Log's opponent field says nothing about the opponent's skill or rank.",
+ "reading_rule_version": "r2 (2026-10-15)",
+ "reading_rule": [
+  "Registration: this file counts from its first readable commit on main, made on main itself (by path), never merged or fast-forwarded from another branch. Its time is that commit's committer time (the committing machine's clock), or this file's own written_at if that is later, or the time main's reflog shows the commit arriving if that is later still.",
+  "Test or feedback: a game is a test of this file only if its play time is known from an iOS video name (in the Ladder Log note, or recovered by an agent from the Battle Logs listing into the committed version notes), it started at least 10 minutes after the registration time, it was not yet in the Ladder Log when this file was written, and its video is newer than the newest video that existed then. A game with no video name is 'time unknown' and a game whose video starts after its log time is 'time doubtful': both are feedback. Every other game is feedback.",
+  "Ties: a game is read with the version in the deck file on main when it was played ('assumed'), or with the version an agent's committed version note gives ('confirmed', citing the evidence path). If several deck files share a Ladder Log section, the file's log_label in the note decides, else the game is not read (ambiguous). Before each reading an agent compares his side's cards in each test game's review packet with the card list and notes 'checked' or 'mismatch: <card>'; mismatched games are not read, and the reading gives the record on checked games beside the record on all games. His notes help but are never required.",
+  "Each reading leads with the matched games (wins v expected wins, the chance in words), then the off-panel record with no prediction, then the level check labelled with its assumption. Exact and variant matches are shown apart.",
+  "A win by the opponent's concession is a full win in every record and check. Early concessions often hide the attacker, so they land off the panel: the matched games are short of wins and the matched check leans against the bot. Each reading counts those wins and repeats the matched check with 1 in 4 of them counted as panel wins.",
+  "Only the bots on the engine pinned when this file was written are compared. The running tally keeps one forecast per game and per bot and engine (the earliest registered): wins minus expected wins on matched test games. It says nothing about screening or ranking decks.",
+  "Verdict: the first reading with 20 test games of this version is its verdict; if the season ends or the version is retired first, the reading then is. Every other reading is interim."
+ ],
+ "sources_check": {
+  "how": "manifests on main naming this deck with this card list (slow reports and exams)",
+  "checked": true,
+  "not_given": [],
+  "other_versions": [],
+  "floor_pages_not_given": []
+ },
+ "bots": [
+  {
+   "id": "kx3_slow",
+   "role": "kx3_slow",
+   "label": "frozen kx3 (slow report, current engine)",
+   "kind": "slow_report",
+   "arm": "X",
+   "pilot": "kx3",
+   "panel_pilot": [
+    "km3"
+   ],
+   "knows_the_panel_lists": true,
+   "counts": "win 1, tie 1/2, loss 0",
+   "n": 160,
+   "wins": 98,
+   "ties": 0,
+   "losses": 62,
+   "number_pct": 61.3,
+   "ci95_wilson": [
+    53.5,
+    68.5
+   ],
+   "x": 98.0,
+   "per_opponent": [
+    {
+     "list": "t-altaria",
+     "n": 20,
+     "wins": 12,
+     "ties": 0,
+     "losses": 8,
+     "x": 12.0,
+     "pct": 60.0,
+     "ci95": [
+      38.7,
+      78.1
+     ]
+    },
+    {
+     "list": "t-blaziken",
+     "n": 20,
+     "wins": 8,
+     "ties": 0,
+     "losses": 12,
+     "x": 8.0,
+     "pct": 40.0,
+     "ci95": [
+      21.9,
+      61.3
+     ]
+    },
+    {
+     "list": "t-hydreigon",
+     "n": 20,
+     "wins": 16,
+     "ties": 0,
+     "losses": 4,
+     "x": 16.0,
+     "pct": 80.0,
+     "ci95": [
+      58.4,
+      91.9
+     ]
+    },
+    {
+     "list": "t-lucario",
+     "n": 20,
+     "wins": 9,
+     "ties": 0,
+     "losses": 11,
+     "x": 9.0,
+     "pct": 45.0,
+     "ci95": [
+      25.8,
+      65.8
+     ]
+    },
+    {
+     "list": "t-sceptile",
+     "n": 20,
+     "wins": 11,
+     "ties": 0,
+     "losses": 9,
+     "x": 11.0,
+     "pct": 55.0,
+     "ci95": [
+      34.2,
+      74.2
+     ]
+    },
+    {
+     "list": "t-suicune",
+     "n": 20,
+     "wins": 13,
+     "ties": 0,
+     "losses": 7,
+     "x": 13.0,
+     "pct": 65.0,
+     "ci95": [
+      43.3,
+      81.9
+     ]
+    },
+    {
+     "list": "t-vespiquen",
+     "n": 20,
+     "wins": 13,
+     "ties": 0,
+     "losses": 7,
+     "x": 13.0,
+     "pct": 65.0,
+     "ci95": [
+      43.3,
+      81.9
+     ]
+    },
+    {
+     "list": "t-weezing",
+     "n": 20,
+     "wins": 16,
+     "ties": 0,
+     "losses": 4,
+     "x": 16.0,
+     "pct": 80.0,
+     "ci95": [
+      58.4,
+      91.9
+     ]
+    }
+   ],
+   "wins_range_95_if_ladder_equalled_this": {
+    "10": [
+     3,
+     9
+    ],
+    "20": [
+     8,
+     17
+    ],
+    "40": [
+     18,
+     31
+    ]
+   },
+   "engine": {
+    "key": "4ebb30a94173",
+    "tree": "4ebb30a94173",
+    "current_when_written": true,
+    "label": "rules switch 2 (main-c045ede, pinned Oct 12)",
+    "text": "laptop/kx3-on-rules2 cd20a97a engine tree 4ebb30a94173: the frozen kx3's players (claude/playout-pilot d513e37b, byte for byte) on main-c045ede's engine (rules switch 2, pinned Oct 12), built on the laptop Oct 12 with rl/strength/build.sh (harness bf9c5d68)"
+   },
+   "in_bot_comparison": true,
+   "comparison_note": null,
+   "source": {
+    "folder": "rl/results/slow_reports/2026-10-13_12-ariados-whimsicott-ogerpon",
+    "manifest_name": "slow_report_12-ariados-whimsicott-ogerpon",
+    "stage": "use",
+    "registered_at": "2026-10-13T19:01:28Z",
+    "repo_commit_at_registration": "4d6128346a24f635ffa9085c2a94d320a89c67c0",
+    "program_sha256": "5011e227cf63619cc8ca9750ee69090037844f8e7abcd0432776b1e2ae3b7f0e",
+    "manifest_file_sha256": "f71d78488baba9811d68ff6191425029ff83ff8e1cfa1a9851f2cb82fc991cbf",
+    "deck_sha256_in_manifest": "4d059bd2c5cba229cc025746f05dca2d03281ebe07c0712917d9fc8d53c65bd5",
+    "tested_version": "the same file (sha256 4d059bd2c5cb)",
+    "files": [
+     {
+      "path": "rl/results/slow_reports/2026-10-13_12-ariados-whimsicott-ogerpon/games.jsonl",
+      "first_commit": {
+       "commit": "521106c2639a34166e80571d428859a1c451744a",
+       "date": "2026-10-14T06:50:11Z"
+      },
+      "first_commit_on_main": {
+       "commit": "55295ea7905367e13a6cc515dabb1173765a49af",
+       "date": "2026-10-14T13:56:46Z"
+      }
+     },
+     {
+      "path": "rl/results/slow_reports/2026-10-13_12-ariados-whimsicott-ogerpon/manifest.json",
+      "first_commit": {
+       "commit": "f5fca0363163e89350df7bfb741fd1207fd4e39c",
+       "date": "2026-10-13T19:01:29Z"
+      },
+      "first_commit_on_main": {
+       "commit": "55295ea7905367e13a6cc515dabb1173765a49af",
+       "date": "2026-10-14T13:56:46Z"
+      }
+     }
+    ]
+   },
+   "fixed_at": "2026-10-14T06:50:11Z",
+   "games_sha256": "186a9c34aea0f9ffb4e225b608bd5d5a64091e74308ebb4021488d13c067bbbb",
+   "committed_before_first_game": true
+  },
+  {
+   "id": "km3_slow_same_deals",
+   "role": "km3_slow_same_deals",
+   "label": "km3 (slow report same deals)",
+   "kind": "slow_report",
+   "arm": "ref",
+   "pilot": "km3",
+   "panel_pilot": [
+    "km3"
+   ],
+   "knows_the_panel_lists": false,
+   "counts": "win 1, tie 1/2, loss 0",
+   "n": 160,
+   "wins": 54,
+   "ties": 1,
+   "losses": 105,
+   "number_pct": 34.1,
+   "ci95_wilson": [
+    27.2,
+    41.7
+   ],
+   "x": 54.5,
+   "per_opponent": [
+    {
+     "list": "t-altaria",
+     "n": 20,
+     "wins": 8,
+     "ties": 0,
+     "losses": 12,
+     "x": 8.0,
+     "pct": 40.0,
+     "ci95": [
+      21.9,
+      61.3
+     ]
+    },
+    {
+     "list": "t-blaziken",
+     "n": 20,
+     "wins": 4,
+     "ties": 1,
+     "losses": 15,
+     "x": 4.5,
+     "pct": 22.5,
+     "ci95": [
+      9.6,
+      44.3
+     ]
+    },
+    {
+     "list": "t-hydreigon",
+     "n": 20,
+     "wins": 8,
+     "ties": 0,
+     "losses": 12,
+     "x": 8.0,
+     "pct": 40.0,
+     "ci95": [
+      21.9,
+      61.3
+     ]
+    },
+    {
+     "list": "t-lucario",
+     "n": 20,
+     "wins": 5,
+     "ties": 0,
+     "losses": 15,
+     "x": 5.0,
+     "pct": 25.0,
+     "ci95": [
+      11.2,
+      46.9
+     ]
+    },
+    {
+     "list": "t-sceptile",
+     "n": 20,
+     "wins": 8,
+     "ties": 0,
+     "losses": 12,
+     "x": 8.0,
+     "pct": 40.0,
+     "ci95": [
+      21.9,
+      61.3
+     ]
+    },
+    {
+     "list": "t-suicune",
+     "n": 20,
+     "wins": 4,
+     "ties": 0,
+     "losses": 16,
+     "x": 4.0,
+     "pct": 20.0,
+     "ci95": [
+      8.1,
+      41.6
+     ]
+    },
+    {
+     "list": "t-vespiquen",
+     "n": 20,
+     "wins": 9,
+     "ties": 0,
+     "losses": 11,
+     "x": 9.0,
+     "pct": 45.0,
+     "ci95": [
+      25.8,
+      65.8
+     ]
+    },
+    {
+     "list": "t-weezing",
+     "n": 20,
+     "wins": 8,
+     "ties": 0,
+     "losses": 12,
+     "x": 8.0,
+     "pct": 40.0,
+     "ci95": [
+      21.9,
+      61.3
+     ]
+    }
+   ],
+   "wins_range_95_if_ladder_equalled_this": {
+    "10": [
+     1,
+     7
+    ],
+    "20": [
+     3,
+     11
+    ],
+    "40": [
+     7,
+     20
+    ]
+   },
+   "engine": {
+    "key": "4ebb30a94173",
+    "tree": "4ebb30a94173",
+    "current_when_written": true,
+    "label": "rules switch 2 (main-c045ede, pinned Oct 12)",
+    "text": "laptop/kx3-on-rules2 cd20a97a engine tree 4ebb30a94173: the frozen kx3's players (claude/playout-pilot d513e37b, byte for byte) on main-c045ede's engine (rules switch 2, pinned Oct 12), built on the laptop Oct 12 with rl/strength/build.sh (harness bf9c5d68)"
+   },
+   "in_bot_comparison": true,
+   "comparison_note": null,
+   "source": {
+    "folder": "rl/results/slow_reports/2026-10-13_12-ariados-whimsicott-ogerpon",
+    "manifest_name": "slow_report_12-ariados-whimsicott-ogerpon",
+    "stage": "use",
+    "registered_at": "2026-10-13T19:01:28Z",
+    "repo_commit_at_registration": "4d6128346a24f635ffa9085c2a94d320a89c67c0",
+    "program_sha256": "5011e227cf63619cc8ca9750ee69090037844f8e7abcd0432776b1e2ae3b7f0e",
+    "manifest_file_sha256": "f71d78488baba9811d68ff6191425029ff83ff8e1cfa1a9851f2cb82fc991cbf",
+    "deck_sha256_in_manifest": "4d059bd2c5cba229cc025746f05dca2d03281ebe07c0712917d9fc8d53c65bd5",
+    "tested_version": "the same file (sha256 4d059bd2c5cb)",
+    "files": [
+     {
+      "path": "rl/results/slow_reports/2026-10-13_12-ariados-whimsicott-ogerpon/games.jsonl",
+      "first_commit": {
+       "commit": "521106c2639a34166e80571d428859a1c451744a",
+       "date": "2026-10-14T06:50:11Z"
+      },
+      "first_commit_on_main": {
+       "commit": "55295ea7905367e13a6cc515dabb1173765a49af",
+       "date": "2026-10-14T13:56:46Z"
+      }
+     },
+     {
+      "path": "rl/results/slow_reports/2026-10-13_12-ariados-whimsicott-ogerpon/manifest.json",
+      "first_commit": {
+       "commit": "f5fca0363163e89350df7bfb741fd1207fd4e39c",
+       "date": "2026-10-13T19:01:29Z"
+      },
+      "first_commit_on_main": {
+       "commit": "55295ea7905367e13a6cc515dabb1173765a49af",
+       "date": "2026-10-14T13:56:46Z"
+      }
+     }
+    ]
+   },
+   "fixed_at": "2026-10-14T06:50:11Z",
+   "games_sha256": "28ca20eb3e6d52cb8958c54bef0468b644a6dc9240179023425fa0aeb2285f24",
+   "committed_before_first_game": true
+  },
+  {
+   "id": "kx3_exam@31dbd2e6",
+   "role": "kx3_exam",
+   "label": "frozen kx3 (exam strength_2026-10-05_kx3_exam, older engine)",
+   "kind": "exam",
+   "arm": "X",
+   "pilot": "kx3",
+   "panel_pilot": [
+    "km3"
+   ],
+   "knows_the_panel_lists": true,
+   "counts": "win 1, tie 1/2, loss 0",
+   "n": 48,
+   "wins": 30,
+   "ties": 0,
+   "losses": 18,
+   "number_pct": 62.5,
+   "ci95_wilson": [
+    48.4,
+    74.8
+   ],
+   "x": 30.0,
+   "per_opponent": [
+    {
+     "list": "t-altaria",
+     "n": 6,
+     "wins": 4,
+     "ties": 0,
+     "losses": 2,
+     "x": 4.0,
+     "pct": 66.7,
+     "ci95": [
+      30.0,
+      90.3
+     ]
+    },
+    {
+     "list": "t-blaziken",
+     "n": 6,
+     "wins": 2,
+     "ties": 0,
+     "losses": 4,
+     "x": 2.0,
+     "pct": 33.3,
+     "ci95": [
+      9.7,
+      70.0
+     ]
+    },
+    {
+     "list": "t-hydreigon",
+     "n": 6,
+     "wins": 4,
+     "ties": 0,
+     "losses": 2,
+     "x": 4.0,
+     "pct": 66.7,
+     "ci95": [
+      30.0,
+      90.3
+     ]
+    },
+    {
+     "list": "t-lucario",
+     "n": 6,
+     "wins": 3,
+     "ties": 0,
+     "losses": 3,
+     "x": 3.0,
+     "pct": 50.0,
+     "ci95": [
+      18.8,
+      81.2
+     ]
+    },
+    {
+     "list": "t-sceptile",
+     "n": 6,
+     "wins": 3,
+     "ties": 0,
+     "losses": 3,
+     "x": 3.0,
+     "pct": 50.0,
+     "ci95": [
+      18.8,
+      81.2
+     ]
+    },
+    {
+     "list": "t-suicune",
+     "n": 6,
+     "wins": 4,
+     "ties": 0,
+     "losses": 2,
+     "x": 4.0,
+     "pct": 66.7,
+     "ci95": [
+      30.0,
+      90.3
+     ]
+    },
+    {
+     "list": "t-vespiquen",
+     "n": 6,
+     "wins": 5,
+     "ties": 0,
+     "losses": 1,
+     "x": 5.0,
+     "pct": 83.3,
+     "ci95": [
+      43.6,
+      97.0
+     ]
+    },
+    {
+     "list": "t-weezing",
+     "n": 6,
+     "wins": 5,
+     "ties": 0,
+     "losses": 1,
+     "x": 5.0,
+     "pct": 83.3,
+     "ci95": [
+      43.6,
+      97.0
+     ]
+    }
+   ],
+   "wins_range_95_if_ladder_equalled_this": {
+    "10": [
+     3,
+     9
+    ],
+    "20": [
+     7,
+     17
+    ],
+    "40": [
+     17,
+     33
+    ]
+   },
+   "engine": {
+    "key": "31dbd2e6e8ec",
+    "tree": "31dbd2e6e8ec",
+    "current_when_written": false,
+    "label": "older engine (before rules switch 2 (main-c045ede, pinned Oct 12))",
+    "text": "claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec (the frozen, tested development build), built on the laptop Oct 2"
+   },
+   "in_bot_comparison": false,
+   "comparison_note": "older engine: kept for the record, out of the bot comparison",
+   "source": {
+    "folder": "rl/results/strength_2026-10-05_kx3_exam",
+    "manifest_name": "kx3_exam",
+    "stage": "heldout",
+    "registered_at": "2026-10-05T08:58:37Z",
+    "repo_commit_at_registration": "cb425ca46f4873590a76698287f0c0db08d806ff",
+    "program_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2",
+    "manifest_file_sha256": "8a8397678cdb5a5df58a881714bcc4d22932b28f14158e1f5e4925a72ad694ad",
+    "deck_sha256_in_manifest": "4d059bd2c5cba229cc025746f05dca2d03281ebe07c0712917d9fc8d53c65bd5",
+    "tested_version": "the same file (sha256 4d059bd2c5cb)",
+    "files": [
+     {
+      "path": "rl/results/strength_2026-10-05_kx3_exam/games.jsonl",
+      "first_commit": {
+       "commit": "766c585fc97b9e6731f9ff08b029247d3d4e346a",
+       "date": "2026-10-06T10:11:13Z"
+      },
+      "first_commit_on_main": {
+       "commit": "766c585fc97b9e6731f9ff08b029247d3d4e346a",
+       "date": "2026-10-06T10:11:13Z"
+      }
+     },
+     {
+      "path": "rl/results/strength_2026-10-05_kx3_exam/manifest.json",
+      "first_commit": {
+       "commit": "c199284b11d2987e9b52f8afa194151ca8f76600",
+       "date": "2026-10-05T09:46:51Z"
+      },
+      "first_commit_on_main": {
+       "commit": "c199284b11d2987e9b52f8afa194151ca8f76600",
+       "date": "2026-10-05T09:46:51Z"
+      }
+     }
+    ]
+   },
+   "fixed_at": "2026-10-06T10:11:13Z",
+   "games_sha256": "1df00c50cb08ee8707511536816263bcf14e52a7cca3bbc75a360a1214b70063",
+   "committed_before_first_game": true
+  },
+  {
+   "id": "km3_exam_same_deals@31dbd2e6",
+   "role": "km3_exam_same_deals",
+   "label": "km3 (exam strength_2026-10-05_kx3_exam same deals, older engine)",
+   "kind": "exam",
+   "arm": "ref",
+   "pilot": "km3",
+   "panel_pilot": [
+    "km3"
+   ],
+   "knows_the_panel_lists": false,
+   "counts": "win 1, tie 1/2, loss 0",
+   "n": 48,
+   "wins": 13,
+   "ties": 0,
+   "losses": 35,
+   "number_pct": 27.1,
+   "ci95_wilson": [
+    16.6,
+    41.0
+   ],
+   "x": 13.0,
+   "per_opponent": [
+    {
+     "list": "t-altaria",
+     "n": 6,
+     "wins": 2,
+     "ties": 0,
+     "losses": 4,
+     "x": 2.0,
+     "pct": 33.3,
+     "ci95": [
+      9.7,
+      70.0
+     ]
+    },
+    {
+     "list": "t-blaziken",
+     "n": 6,
+     "wins": 1,
+     "ties": 0,
+     "losses": 5,
+     "x": 1.0,
+     "pct": 16.7,
+     "ci95": [
+      3.0,
+      56.4
+     ]
+    },
+    {
+     "list": "t-hydreigon",
+     "n": 6,
+     "wins": 2,
+     "ties": 0,
+     "losses": 4,
+     "x": 2.0,
+     "pct": 33.3,
+     "ci95": [
+      9.7,
+      70.0
+     ]
+    },
+    {
+     "list": "t-lucario",
+     "n": 6,
+     "wins": 2,
+     "ties": 0,
+     "losses": 4,
+     "x": 2.0,
+     "pct": 33.3,
+     "ci95": [
+      9.7,
+      70.0
+     ]
+    },
+    {
+     "list": "t-sceptile",
+     "n": 6,
+     "wins": 1,
+     "ties": 0,
+     "losses": 5,
+     "x": 1.0,
+     "pct": 16.7,
+     "ci95": [
+      3.0,
+      56.4
+     ]
+    },
+    {
+     "list": "t-suicune",
+     "n": 6,
+     "wins": 2,
+     "ties": 0,
+     "losses": 4,
+     "x": 2.0,
+     "pct": 33.3,
+     "ci95": [
+      9.7,
+      70.0
+     ]
+    },
+    {
+     "list": "t-vespiquen",
+     "n": 6,
+     "wins": 1,
+     "ties": 0,
+     "losses": 5,
+     "x": 1.0,
+     "pct": 16.7,
+     "ci95": [
+      3.0,
+      56.4
+     ]
+    },
+    {
+     "list": "t-weezing",
+     "n": 6,
+     "wins": 2,
+     "ties": 0,
+     "losses": 4,
+     "x": 2.0,
+     "pct": 33.3,
+     "ci95": [
+      9.7,
+      70.0
+     ]
+    }
+   ],
+   "wins_range_95_if_ladder_equalled_this": {
+    "10": [
+     0,
+     6
+    ],
+    "20": [
+     1,
+     10
+    ],
+    "40": [
+     4,
+     19
+    ]
+   },
+   "engine": {
+    "key": "31dbd2e6e8ec",
+    "tree": "31dbd2e6e8ec",
+    "current_when_written": false,
+    "label": "older engine (before rules switch 2 (main-c045ede, pinned Oct 12))",
+    "text": "claude/playout-pilot d513e37b engine tree 31dbd2e6e8ec (the frozen, tested development build), built on the laptop Oct 2"
+   },
+   "in_bot_comparison": false,
+   "comparison_note": "older engine: kept for the record, out of the bot comparison",
+   "source": {
+    "folder": "rl/results/strength_2026-10-05_kx3_exam",
+    "manifest_name": "kx3_exam",
+    "stage": "heldout",
+    "registered_at": "2026-10-05T08:58:37Z",
+    "repo_commit_at_registration": "cb425ca46f4873590a76698287f0c0db08d806ff",
+    "program_sha256": "5a8f5c83a7915090437e91ae7c644bdd67d1aed713f50a1f7de0bf905802a3d2",
+    "manifest_file_sha256": "8a8397678cdb5a5df58a881714bcc4d22932b28f14158e1f5e4925a72ad694ad",
+    "deck_sha256_in_manifest": "4d059bd2c5cba229cc025746f05dca2d03281ebe07c0712917d9fc8d53c65bd5",
+    "tested_version": "the same file (sha256 4d059bd2c5cb)",
+    "files": [
+     {
+      "path": "rl/results/strength_2026-10-05_kx3_exam/games.jsonl",
+      "first_commit": {
+       "commit": "766c585fc97b9e6731f9ff08b029247d3d4e346a",
+       "date": "2026-10-06T10:11:13Z"
+      },
+      "first_commit_on_main": {
+       "commit": "766c585fc97b9e6731f9ff08b029247d3d4e346a",
+       "date": "2026-10-06T10:11:13Z"
+      }
+     },
+     {
+      "path": "rl/results/strength_2026-10-05_kx3_exam/manifest.json",
+      "first_commit": {
+       "commit": "c199284b11d2987e9b52f8afa194151ca8f76600",
+       "date": "2026-10-05T09:46:51Z"
+      },
+      "first_commit_on_main": {
+       "commit": "c199284b11d2987e9b52f8afa194151ca8f76600",
+       "date": "2026-10-05T09:46:51Z"
+      }
+     }
+    ]
+   },
+   "fixed_at": "2026-10-06T10:11:13Z",
+   "games_sha256": "8560fa4e83f7eecb15e11e725863df672032b82f8de2e9226b777373b0a7bee8",
+   "committed_before_first_game": true
+  },
+  {
+   "id": "m64_exam@69a5a441",
+   "role": "m64_exam",
+   "label": "m64 (exam reg_m64, older engine)",
+   "kind": "exam",
+   "arm": "X",
+   "pilot": "kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64",
+   "panel_pilot": [
+    "km3"
+   ],
+   "knows_the_panel_lists": true,
+   "counts": "win 1, tie 1/2, loss 0",
+   "n": 48,
+   "wins": 33,
+   "ties": 0,
+   "losses": 15,
+   "number_pct": 68.8,
+   "ci95_wilson": [
+    54.7,
+    80.1
+   ],
+   "x": 33.0,
+   "per_opponent": [
+    {
+     "list": "t-altaria",
+     "n": 6,
+     "wins": 4,
+     "ties": 0,
+     "losses": 2,
+     "x": 4.0,
+     "pct": 66.7,
+     "ci95": [
+      30.0,
+      90.3
+     ]
+    },
+    {
+     "list": "t-blaziken",
+     "n": 6,
+     "wins": 4,
+     "ties": 0,
+     "losses": 2,
+     "x": 4.0,
+     "pct": 66.7,
+     "ci95": [
+      30.0,
+      90.3
+     ]
+    },
+    {
+     "list": "t-hydreigon",
+     "n": 6,
+     "wins": 5,
+     "ties": 0,
+     "losses": 1,
+     "x": 5.0,
+     "pct": 83.3,
+     "ci95": [
+      43.6,
+      97.0
+     ]
+    },
+    {
+     "list": "t-lucario",
+     "n": 6,
+     "wins": 2,
+     "ties": 0,
+     "losses": 4,
+     "x": 2.0,
+     "pct": 33.3,
+     "ci95": [
+      9.7,
+      70.0
+     ]
+    },
+    {
+     "list": "t-sceptile",
+     "n": 6,
+     "wins": 3,
+     "ties": 0,
+     "losses": 3,
+     "x": 3.0,
+     "pct": 50.0,
+     "ci95": [
+      18.8,
+      81.2
+     ]
+    },
+    {
+     "list": "t-suicune",
+     "n": 6,
+     "wins": 6,
+     "ties": 0,
+     "losses": 0,
+     "x": 6.0,
+     "pct": 100.0,
+     "ci95": [
+      61.0,
+      100.0
+     ]
+    },
+    {
+     "list": "t-vespiquen",
+     "n": 6,
+     "wins": 4,
+     "ties": 0,
+     "losses": 2,
+     "x": 4.0,
+     "pct": 66.7,
+     "ci95": [
+      30.0,
+      90.3
+     ]
+    },
+    {
+     "list": "t-weezing",
+     "n": 6,
+     "wins": 5,
+     "ties": 0,
+     "losses": 1,
+     "x": 5.0,
+     "pct": 83.3,
+     "ci95": [
+      43.6,
+      97.0
+     ]
+    }
+   ],
+   "wins_range_95_if_ladder_equalled_this": {
+    "10": [
+     4,
+     10
+    ],
+    "20": [
+     9,
+     18
+    ],
+    "40": [
+     19,
+     35
+    ]
+   },
+   "engine": {
+    "key": "69a5a4419da2",
+    "tree": "69a5a4419da2",
+    "current_when_written": false,
+    "label": "older engine (before rules switch 2 (main-c045ede, pinned Oct 12))",
+    "text": "claude/playout-pilot 172cbe9ce0f2cb7946b489422b56d3fce5ca6219 engine tree 69a5a4419da2 (kx3 with the Tool rule, the skip bar and close calls as fixed after the laptop's reviews"
+   },
+   "in_bot_comparison": false,
+   "comparison_note": "older engine: kept for the record, out of the bot comparison",
+   "source": {
+    "folder": "rl/results/exam_m32_m64_2026-10/reg_m64",
+    "manifest_name": "kx3_exam_m64",
+    "stage": "heldout",
+    "registered_at": "2026-10-13T14:39:24Z",
+    "repo_commit_at_registration": "1352203e70ce5d684a41dec6fac8df2b57e4c30e",
+    "program_sha256": "f5a6ae95051c0c673d45a6a8be9d6d840827a97bbb2feaaa0fccb4cbb8076b58",
+    "manifest_file_sha256": "13e5d4aac56a754026bc89a77629b4f2b96baffba311781d03bde26aeceead76",
+    "deck_sha256_in_manifest": "4d059bd2c5cba229cc025746f05dca2d03281ebe07c0712917d9fc8d53c65bd5",
+    "tested_version": "the same file (sha256 4d059bd2c5cb)",
+    "files": [
+     {
+      "path": "rl/results/exam_m32_m64_2026-10/reg_m64/games.jsonl",
+      "first_commit": {
+       "commit": "893434e6fe735e376c23d1dfe0f8dbb0a2b2fa67",
+       "date": "2026-10-14T22:15:11Z"
+      },
+      "first_commit_on_main": {
+       "commit": "893434e6fe735e376c23d1dfe0f8dbb0a2b2fa67",
+       "date": "2026-10-14T22:15:11Z"
+      }
+     },
+     {
+      "path": "rl/results/exam_m32_m64_2026-10/reg_m64/manifest.json",
+      "first_commit": {
+       "commit": "d961ab659307d64eec5522d89c1c78d9072530d1",
+       "date": "2026-10-13T19:52:58Z"
+      },
+      "first_commit_on_main": {
+       "commit": "d961ab659307d64eec5522d89c1c78d9072530d1",
+       "date": "2026-10-13T19:52:58Z"
+      }
+     }
+    ]
+   },
+   "fixed_at": "2026-10-14T22:15:11Z",
+   "games_sha256": "4d661f177727821d0e6e2ba2ae7e963f4188a78837c215f7bcbcd55898caae00",
+   "committed_before_first_game": false
+  },
+  {
+   "id": "m32_exam@69a5a441",
+   "role": "m32_exam",
+   "label": "m32 (exam reg_m32, older engine)",
+   "kind": "exam",
+   "arm": "X",
+   "pilot": "kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m32",
+   "panel_pilot": [
+    "km3"
+   ],
+   "knows_the_panel_lists": true,
+   "counts": "win 1, tie 1/2, loss 0",
+   "n": 48,
+   "wins": 34,
+   "ties": 0,
+   "losses": 14,
+   "number_pct": 70.8,
+   "ci95_wilson": [
+    56.8,
+    81.8
+   ],
+   "x": 34.0,
+   "per_opponent": [
+    {
+     "list": "t-altaria",
+     "n": 6,
+     "wins": 4,
+     "ties": 0,
+     "losses": 2,
+     "x": 4.0,
+     "pct": 66.7,
+     "ci95": [
+      30.0,
+      90.3
+     ]
+    },
+    {
+     "list": "t-blaziken",
+     "n": 6,
+     "wins": 2,
+     "ties": 0,
+     "losses": 4,
+     "x": 2.0,
+     "pct": 33.3,
+     "ci95": [
+      9.7,
+      70.0
+     ]
+    },
+    {
+     "list": "t-hydreigon",
+     "n": 6,
+     "wins": 4,
+     "ties": 0,
+     "losses": 2,
+     "x": 4.0,
+     "pct": 66.7,
+     "ci95": [
+      30.0,
+      90.3
+     ]
+    },
+    {
+     "list": "t-lucario",
+     "n": 6,
+     "wins": 4,
+     "ties": 0,
+     "losses": 2,
+     "x": 4.0,
+     "pct": 66.7,
+     "ci95": [
+      30.0,
+      90.3
+     ]
+    },
+    {
+     "list": "t-sceptile",
+     "n": 6,
+     "wins": 4,
+     "ties": 0,
+     "losses": 2,
+     "x": 4.0,
+     "pct": 66.7,
+     "ci95": [
+      30.0,
+      90.3
+     ]
+    },
+    {
+     "list": "t-suicune",
+     "n": 6,
+     "wins": 6,
+     "ties": 0,
+     "losses": 0,
+     "x": 6.0,
+     "pct": 100.0,
+     "ci95": [
+      61.0,
+      100.0
+     ]
+    },
+    {
+     "list": "t-vespiquen",
+     "n": 6,
+     "wins": 5,
+     "ties": 0,
+     "losses": 1,
+     "x": 5.0,
+     "pct": 83.3,
+     "ci95": [
+      43.6,
+      97.0
+     ]
+    },
+    {
+     "list": "t-weezing",
+     "n": 6,
+     "wins": 5,
+     "ties": 0,
+     "losses": 1,
+     "x": 5.0,
+     "pct": 83.3,
+     "ci95": [
+      43.6,
+      97.0
+     ]
+    }
+   ],
+   "wins_range_95_if_ladder_equalled_this": {
+    "10": [
+     4,
+     10
+    ],
+    "20": [
+     9,
+     18
+    ],
+    "40": [
+     20,
+     35
+    ]
+   },
+   "engine": {
+    "key": "69a5a4419da2",
+    "tree": "69a5a4419da2",
+    "current_when_written": false,
+    "label": "older engine (before rules switch 2 (main-c045ede, pinned Oct 12))",
+    "text": "claude/playout-pilot 172cbe9ce0f2cb7946b489422b56d3fce5ca6219 engine tree 69a5a4419da2 (kx3 with the Tool rule, the skip bar and close calls as fixed after the laptop's reviews"
+   },
+   "in_bot_comparison": false,
+   "comparison_note": "older engine: kept for the record, out of the bot comparison",
+   "source": {
+    "folder": "rl/results/exam_m32_m64_2026-10/reg_m32",
+    "manifest_name": "kx3_exam_m32",
+    "stage": "heldout",
+    "registered_at": "2026-10-13T14:39:24Z",
+    "repo_commit_at_registration": "1352203e70ce5d684a41dec6fac8df2b57e4c30e",
+    "program_sha256": "f5a6ae95051c0c673d45a6a8be9d6d840827a97bbb2feaaa0fccb4cbb8076b58",
+    "manifest_file_sha256": "110c0c93d7b35520e3b577cec8061ace3f13197e4bc225c9f6fcaf85363d6aed",
+    "deck_sha256_in_manifest": "4d059bd2c5cba229cc025746f05dca2d03281ebe07c0712917d9fc8d53c65bd5",
+    "tested_version": "the same file (sha256 4d059bd2c5cb)",
+    "files": [
+     {
+      "path": "rl/results/exam_m32_m64_2026-10/reg_m32/games.jsonl",
+      "first_commit": {
+       "commit": "ce060c0d5da577da58085fd753677d33a13bbbf5",
+       "date": "2026-10-14T20:55:57Z"
+      },
+      "first_commit_on_main": {
+       "commit": "ce060c0d5da577da58085fd753677d33a13bbbf5",
+       "date": "2026-10-14T20:55:57Z"
+      }
+     },
+     {
+      "path": "rl/results/exam_m32_m64_2026-10/reg_m32/manifest.json",
+      "first_commit": {
+       "commit": "d961ab659307d64eec5522d89c1c78d9072530d1",
+       "date": "2026-10-13T19:52:58Z"
+      },
+      "first_commit_on_main": {
+       "commit": "d961ab659307d64eec5522d89c1c78d9072530d1",
+       "date": "2026-10-13T19:52:58Z"
+      }
+     }
+    ]
+   },
+   "fixed_at": "2026-10-14T20:55:57Z",
+   "games_sha256": "6988d9b065ee3ecd5e88de4bb71076a46a79947ea99c176d96db2d5a4f251126",
+   "committed_before_first_game": false
+  },
+  {
+   "id": "km3_floor",
+   "role": "km3_floor",
+   "label": "km3 floor",
+   "kind": "floor",
+   "arm": null,
+   "pilot": "km3",
+   "panel_pilot": [
+    "km3"
+   ],
+   "knows_the_panel_lists": false,
+   "counts": "wins only (a draw is not a win), as the floor pages count",
+   "n": 1920,
+   "wins": 635,
+   "ties": 1,
+   "losses": 1284,
+   "number_pct": 33.1,
+   "ci95_wilson": [
+    31.0,
+    35.2
+   ],
+   "x": 635.0,
+   "per_opponent": [
+    {
+     "list": "t-altaria",
+     "n": 240,
+     "wins": 113,
+     "ties": 0,
+     "losses": 127,
+     "x": 113.0,
+     "pct": 47.1,
+     "ci95": [
+      40.9,
+      53.4
+     ]
+    },
+    {
+     "list": "t-blaziken",
+     "n": 240,
+     "wins": 42,
+     "ties": 1,
+     "losses": 197,
+     "x": 42.0,
+     "pct": 17.5,
+     "ci95": [
+      13.2,
+      22.8
+     ]
+    },
+    {
+     "list": "t-hydreigon",
+     "n": 240,
+     "wins": 81,
+     "ties": 0,
+     "losses": 159,
+     "x": 81.0,
+     "pct": 33.8,
+     "ci95": [
+      28.1,
+      39.9
+     ]
+    },
+    {
+     "list": "t-lucario",
+     "n": 240,
+     "wins": 58,
+     "ties": 0,
+     "losses": 182,
+     "x": 58.0,
+     "pct": 24.2,
+     "ci95": [
+      19.2,
+      30.0
+     ]
+    },
+    {
+     "list": "t-sceptile",
+     "n": 240,
+     "wins": 66,
+     "ties": 0,
+     "losses": 174,
+     "x": 66.0,
+     "pct": 27.5,
+     "ci95": [
+      22.2,
+      33.5
+     ]
+    },
+    {
+     "list": "t-suicune",
+     "n": 240,
+     "wins": 77,
+     "ties": 0,
+     "losses": 163,
+     "x": 77.0,
+     "pct": 32.1,
+     "ci95": [
+      26.5,
+      38.2
+     ]
+    },
+    {
+     "list": "t-vespiquen",
+     "n": 240,
+     "wins": 76,
+     "ties": 0,
+     "losses": 164,
+     "x": 76.0,
+     "pct": 31.7,
+     "ci95": [
+      26.1,
+      37.8
+     ]
+    },
+    {
+     "list": "t-weezing",
+     "n": 240,
+     "wins": 122,
+     "ties": 0,
+     "losses": 118,
+     "x": 122.0,
+     "pct": 50.8,
+     "ci95": [
+      44.5,
+      57.1
+     ]
+    }
+   ],
+   "wins_range_95_if_ladder_equalled_this": {
+    "10": [
+     1,
+     6
+    ],
+    "20": [
+     3,
+     11
+    ],
+    "40": [
+     8,
+     19
+    ]
+   },
+   "engine": {
+    "key": "rl/engine-2026-10-12/deckgym",
+    "path": "rl/engine-2026-10-12/deckgym",
+    "current_when_written": true,
+    "label": "rules switch 2 (main-c045ede, pinned Oct 12)"
+   },
+   "in_bot_comparison": true,
+   "comparison_note": null,
+   "source": {
+    "page": "rl/results/floor_recheck_rules2_2026-10/pages/12/12-ariados-whimsicott-ogerpon.md",
+    "games": "rl/results/floor_recheck_rules2_2026-10/pages/12/12-ariados-whimsicott-ogerpon_games.jsonl",
+    "deck_check": {
+     "how": "the deck file's card list at the commit that first holds these floor games (a floor page does not record the card list it ran, so this check cannot tell two lists apart if the deck file changed before the run)",
+     "card_list_sha256": "5c3b7d688afa36ac311ec94f3909a47bbd128b590d0809bb27bb4fe42f0d8858",
+     "matches": true,
+     "file_sha256": "4d059bd2c5cba229cc025746f05dca2d03281ebe07c0712917d9fc8d53c65bd5",
+     "commit": "7f235df3c5b62ab92de4c450243ab00903c1c2b5"
+    },
+    "files": [
+     {
+      "path": "rl/results/floor_recheck_rules2_2026-10/pages/12/12-ariados-whimsicott-ogerpon_games.jsonl",
+      "first_commit": {
+       "commit": "7f235df3c5b62ab92de4c450243ab00903c1c2b5",
+       "date": "2026-10-12T05:36:06Z"
+      },
+      "first_commit_on_main": {
+       "commit": "7f235df3c5b62ab92de4c450243ab00903c1c2b5",
+       "date": "2026-10-12T05:36:06Z"
+      }
+     },
+     {
+      "path": "rl/results/floor_recheck_rules2_2026-10/pages/12/12-ariados-whimsicott-ogerpon.md",
+      "first_commit": {
+       "commit": "7f235df3c5b62ab92de4c450243ab00903c1c2b5",
+       "date": "2026-10-12T05:36:06Z"
+      },
+      "first_commit_on_main": {
+       "commit": "7f235df3c5b62ab92de4c450243ab00903c1c2b5",
+       "date": "2026-10-12T05:36:06Z"
+      }
+     }
+    ]
+   },
+   "fixed_at": "2026-10-12T05:36:06Z",
+   "games_sha256": "7060a92f24c71454086b78d90b1779ef01c5be97b787d218d251bae37847fc5e",
+   "committed_before_first_game": true
+  },
+  {
+   "id": "km3_floor@engine-2026-09-30",
+   "role": "km3_floor",
+   "label": "km3 floor (older engine)",
+   "kind": "floor",
+   "arm": null,
+   "pilot": "km3",
+   "panel_pilot": [
+    "km3"
+   ],
+   "knows_the_panel_lists": false,
+   "counts": "wins only (a draw is not a win), as the floor pages count",
+   "n": 1920,
+   "wins": 602,
+   "ties": 0,
+   "losses": 1318,
+   "number_pct": 31.4,
+   "ci95_wilson": [
+    29.3,
+    33.5
+   ],
+   "x": 602.0,
+   "per_opponent": [
+    {
+     "list": "t-altaria",
+     "n": 240,
+     "wins": 112,
+     "ties": 0,
+     "losses": 128,
+     "x": 112.0,
+     "pct": 46.7,
+     "ci95": [
+      40.5,
+      53.0
+     ]
+    },
+    {
+     "list": "t-blaziken",
+     "n": 240,
+     "wins": 37,
+     "ties": 0,
+     "losses": 203,
+     "x": 37.0,
+     "pct": 15.4,
+     "ci95": [
+      11.4,
+      20.5
+     ]
+    },
+    {
+     "list": "t-hydreigon",
+     "n": 240,
+     "wins": 75,
+     "ties": 0,
+     "losses": 165,
+     "x": 75.0,
+     "pct": 31.3,
+     "ci95": [
+      25.7,
+      37.4
+     ]
+    },
+    {
+     "list": "t-lucario",
+     "n": 240,
+     "wins": 56,
+     "ties": 0,
+     "losses": 184,
+     "x": 56.0,
+     "pct": 23.3,
+     "ci95": [
+      18.4,
+      29.1
+     ]
+    },
+    {
+     "list": "t-sceptile",
+     "n": 240,
+     "wins": 63,
+     "ties": 0,
+     "losses": 177,
+     "x": 63.0,
+     "pct": 26.3,
+     "ci95": [
+      21.1,
+      32.2
+     ]
+    },
+    {
+     "list": "t-suicune",
+     "n": 240,
+     "wins": 71,
+     "ties": 0,
+     "losses": 169,
+     "x": 71.0,
+     "pct": 29.6,
+     "ci95": [
+      24.2,
+      35.6
+     ]
+    },
+    {
+     "list": "t-vespiquen",
+     "n": 240,
+     "wins": 66,
+     "ties": 0,
+     "losses": 174,
+     "x": 66.0,
+     "pct": 27.5,
+     "ci95": [
+      22.2,
+      33.5
+     ]
+    },
+    {
+     "list": "t-weezing",
+     "n": 240,
+     "wins": 122,
+     "ties": 0,
+     "losses": 118,
+     "x": 122.0,
+     "pct": 50.8,
+     "ci95": [
+      44.5,
+      57.1
+     ]
+    }
+   ],
+   "wins_range_95_if_ladder_equalled_this": {
+    "10": [
+     1,
+     6
+    ],
+    "20": [
+     2,
+     10
+    ],
+    "40": [
+     7,
+     18
+    ]
+   },
+   "engine": {
+    "key": "rl/engine-2026-09-30/deckgym",
+    "path": "rl/engine-2026-09-30/deckgym",
+    "current_when_written": false,
+    "label": "older engine (before rules switch 2 (main-c045ede, pinned Oct 12))"
+   },
+   "in_bot_comparison": false,
+   "comparison_note": "older engine: kept for the record, out of the bot comparison",
+   "source": {
+    "page": "rl/results/floor_dustin_2026-09-30/12-ariados-whimsicott-ogerpon.md",
+    "games": "rl/results/floor_dustin_2026-09-30/12-ariados-whimsicott-ogerpon_games.jsonl",
+    "deck_check": {
+     "how": "the deck file's card list at the commit that first holds these floor games (a floor page does not record the card list it ran, so this check cannot tell two lists apart if the deck file changed before the run)",
+     "card_list_sha256": "5c3b7d688afa36ac311ec94f3909a47bbd128b590d0809bb27bb4fe42f0d8858",
+     "matches": true,
+     "file_sha256": "4d059bd2c5cba229cc025746f05dca2d03281ebe07c0712917d9fc8d53c65bd5",
+     "commit": "4690810278b40b490d7c57aee2c7b35ae315ddab"
+    },
+    "files": [
+     {
+      "path": "rl/results/floor_dustin_2026-09-30/12-ariados-whimsicott-ogerpon_games.jsonl",
+      "first_commit": {
+       "commit": "4690810278b40b490d7c57aee2c7b35ae315ddab",
+       "date": "2026-09-30T21:34:07Z"
+      },
+      "first_commit_on_main": {
+       "commit": "4690810278b40b490d7c57aee2c7b35ae315ddab",
+       "date": "2026-09-30T21:34:07Z"
+      }
+     },
+     {
+      "path": "rl/results/floor_dustin_2026-09-30/12-ariados-whimsicott-ogerpon.md",
+      "first_commit": {
+       "commit": "4690810278b40b490d7c57aee2c7b35ae315ddab",
+       "date": "2026-09-30T21:34:07Z"
+      },
+      "first_commit_on_main": {
+       "commit": "4690810278b40b490d7c57aee2c7b35ae315ddab",
+       "date": "2026-09-30T21:34:07Z"
+      }
+     }
+    ]
+   },
+   "fixed_at": "2026-09-30T21:34:07Z",
+   "games_sha256": "f2190eb71b954c3f5d1e23ba05ac85355f3d957e525dd4fe6b25ac14322833cd",
+   "committed_before_first_game": true
+  }
+ ],
+ "duplicates": [
+  {
+   "id": "km3_exam_same_deals@69a5a441",
+   "source": "rl/results/exam_m32_m64_2026-10/reg_m64",
+   "same_games_as": "km3_exam_same_deals@31dbd2e6"
+  },
+  {
+   "id": "km3_exam_same_deals@69a5a441",
+   "source": "rl/results/exam_m32_m64_2026-10/reg_m32",
+   "same_games_as": "km3_exam_same_deals@31dbd2e6"
+  }
+ ],
+ "matching_rule": {
+  "version": "v1 (2026-10-14)",
+  "how": [
+   "Clean the text: lower case; curly quotes straightened; hyphens and dashes to spaces; spaces collapsed; 'm <name>' read as 'mega <name>' for the Pokemon whose Mega this rule names (altaria, blaziken, lucario, sceptile, charizard, sharpedo, rayquaza, absol).",
+   "A game goes on a list when the text names one of the list's 'names' alternatives (every phrase of it, as whole words) and none of its 'unless' words; the first list in order wins.",
+   "'exact' when every Pokemon the text names is in that list (from the list's file); 'variant' when anything else is named. Words in parentheses, after a ';', and the words in 'filler' are ignored for this.",
+   "A guess word ('likely', 'maybe', 'probably', 'possibly', '?') makes the game 'inferred': its record is shown apart and it is never scored.",
+   "Lists marked readout_only have no bot number: their games count with the off-panel games.",
+   "Everything else is 'unmatched' (off the panel, no prediction). A concession before the opponent's attacker showed is unmatched by construction; the game still counts in every record (see the reading rule on the bias this causes)."
+  ],
+  "guess_words": [
+   "likely",
+   "maybe",
+   "probably",
+   "possibly",
+   "?"
+  ],
+  "filler": [
+   "ex",
+   "mega",
+   "tr",
+   "team",
+   "rocket",
+   "rocket's",
+   "and",
+   "with",
+   "or",
+   "deck",
+   "list",
+   "core",
+   "build",
+   "line",
+   "pile"
+  ],
+  "lists": [
+   {
+    "list": "t-altaria",
+    "names": [
+     [
+      "mega altaria"
+     ]
+    ],
+    "unless": [],
+    "pokemon": [
+     "Swablu",
+     "Mega Altaria ex",
+     "Eevee",
+     "Espeon",
+     "Darkrai",
+     "Igglybuff"
+    ]
+   },
+   {
+    "list": "t-blaziken",
+    "names": [
+     [
+      "mega blaziken"
+     ]
+    ],
+    "unless": [],
+    "pokemon": [
+     "Torchic",
+     "Mega Blaziken ex",
+     "Heatmor",
+     "Castform Sunny Form"
+    ]
+   },
+   {
+    "list": "t-hydreigon",
+    "names": [
+     [
+      "hydreigon"
+     ]
+    ],
+    "unless": [],
+    "pokemon": [
+     "Deino",
+     "Hydreigon",
+     "Bombirdier",
+     "Mega Absol ex"
+    ]
+   },
+   {
+    "list": "t-lucario",
+    "names": [
+     [
+      "mega lucario"
+     ]
+    ],
+    "unless": [
+     "raticate"
+    ],
+    "pokemon": [
+     "Riolu",
+     "Mega Lucario ex",
+     "Lucario",
+     "Bonsly",
+     "Hitmonlee"
+    ]
+   },
+   {
+    "list": "t-sceptile",
+    "names": [
+     [
+      "mega sceptile"
+     ]
+    ],
+    "unless": [],
+    "pokemon": [
+     "Caterpie",
+     "Metapod",
+     "Butterfree",
+     "Treecko",
+     "Grovyle",
+     "Mega Sceptile ex"
+    ]
+   },
+   {
+    "list": "t-suicune",
+    "names": [
+     [
+      "suicune ex"
+     ],
+     [
+      "suicune",
+      "baxcalibur"
+     ]
+    ],
+    "unless": [],
+    "pokemon": [
+     "Frigibax",
+     "Baxcalibur",
+     "Suicune ex",
+     "Chien-Pao ex"
+    ]
+   },
+   {
+    "list": "t-vespiquen",
+    "names": [
+     [
+      "vespiquen"
+     ]
+    ],
+    "unless": [],
+    "pokemon": [
+     "Combee",
+     "Vespiquen ex",
+     "Shuckle ex",
+     "Teal Mask Ogerpon ex"
+    ]
+   },
+   {
+    "list": "t-weezing",
+    "names": [
+     [
+      "weezing ex"
+     ]
+    ],
+    "unless": [
+     "magmar"
+    ],
+    "pokemon": [
+     "Hoopa ex",
+     "Team Rocket's Koffing",
+     "Team Rocket's Weezing ex",
+     "Darkrai ex"
+    ]
+   },
+   {
+    "list": "h-charizardy_entei",
+    "names": [
+     [
+      "mega charizard y"
+     ]
+    ],
+    "unless": [],
+    "readout_only": true,
+    "pokemon": [
+     "Charmander",
+     "Charmeleon",
+     "Mega Charizard Y ex",
+     "Entei ex"
+    ]
+   },
+   {
+    "list": "l-sharpedo",
+    "names": [
+     [
+      "mega sharpedo"
+     ]
+    ],
+    "unless": [],
+    "readout_only": true,
+    "pokemon": [
+     "Carvanha",
+     "Mega Sharpedo ex",
+     "Magikarp",
+     "Gyarados",
+     "Mantyke",
+     "Chien-Pao ex"
+    ]
+   },
+   {
+    "list": "g-dragonair_mega_rayquaza",
+    "names": [
+     [
+      "mega rayquaza"
+     ]
+    ],
+    "unless": [],
+    "readout_only": true,
+    "pokemon": [
+     "Dratini",
+     "Gouging Fire",
+     "Dragonair",
+     "Mega Rayquaza ex"
+    ]
+   }
+  ],
+  "list_files": {
+   "t-altaria": "decks/screen/opponents/t-altaria.txt",
+   "t-blaziken": "decks/screen/opponents/t-blaziken.txt",
+   "t-hydreigon": "decks/screen/opponents/t-hydreigon.txt",
+   "t-lucario": "decks/screen/opponents/t-lucario.txt",
+   "t-sceptile": "decks/screen/opponents/t-sceptile.txt",
+   "t-suicune": "decks/screen/opponents/t-suicune.txt",
+   "t-vespiquen": "decks/screen/opponents/t-vespiquen.txt",
+   "t-weezing": "decks/screen/opponents/t-weezing.txt",
+   "h-charizardy_entei": "rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt",
+   "l-sharpedo": "decks/screen/panel_ladder_2026-09-26/l-sharpedo.txt",
+   "g-dragonair_mega_rayquaza": "decks/gauntlet_2026-09-26/g-dragonair_mega_rayquaza.txt"
+  }
+ },
+ "forecast": {
+  "rule": {
+   "version": "calibrated-v1",
+   "matched": "f_k = expit(logit(floor_k) + c): the km3 floor's shape across the 8 lists (240 games a list), shifted by one logit constant c, solved by bisection, so that the equal-weight mean of the 8 forecasts equals the bot's own number. The raw per-list cells (6-20 games a list) are saved, not used: mostly noise.",
+   "shape": "the newest current-engine floor given; if there is none, the newest older-engine floor, flagged. An addendum uses its base file's shape.",
+   "unmatched": "no matchup forecast; the game is in the off-panel record. The level check uses the bot's number for every game, labelled with its assumption (off-panel opponents are like the panel on average).",
+   "inferred": "not scored: the list was guessed."
+  },
+  "floor_bot": "km3_floor",
+  "floor_engine_current": true,
+  "note": null,
+  "shape": [
+   0.470833,
+   0.175,
+   0.3375,
+   0.241667,
+   0.275,
+   0.320833,
+   0.316667,
+   0.508333
+  ],
+  "per_bot": {
+   "kx3_slow": {
+    "level": 0.6125,
+    "shift_logit": 1.226873,
+    "per_list": {
+     "t-altaria": 0.752143,
+     "t-blaziken": 0.419768,
+     "t-hydreigon": 0.634696,
+     "t-lucario": 0.520815,
+     "t-sceptile": 0.564015,
+     "t-suicune": 0.617022,
+     "t-vespiquen": 0.612478,
+     "t-weezing": 0.779062
+    },
+    "per_list_pct": {
+     "t-altaria": 75.2,
+     "t-blaziken": 42.0,
+     "t-hydreigon": 63.5,
+     "t-lucario": 52.1,
+     "t-sceptile": 56.4,
+     "t-suicune": 61.7,
+     "t-vespiquen": 61.2,
+     "t-weezing": 77.9
+    },
+    "mean_of_lists_pct": 61.3
+   },
+   "km3_slow_same_deals": {
+    "level": 0.340625,
+    "shift_logit": 0.046681,
+    "per_list": {
+     "t-altaria": 0.482478,
+     "t-blaziken": 0.181842,
+     "t-hydreigon": 0.348015,
+     "t-lucario": 0.250324,
+     "t-sceptile": 0.284404,
+     "t-suicune": 0.331089,
+     "t-vespiquen": 0.326853,
+     "t-weezing": 0.519994
+    },
+    "per_list_pct": {
+     "t-altaria": 48.2,
+     "t-blaziken": 18.2,
+     "t-hydreigon": 34.8,
+     "t-lucario": 25.0,
+     "t-sceptile": 28.4,
+     "t-suicune": 33.1,
+     "t-vespiquen": 32.7,
+     "t-weezing": 52.0
+    },
+    "mean_of_lists_pct": 34.1
+   },
+   "kx3_exam@31dbd2e6": {
+    "level": 0.625,
+    "shift_logit": 1.282658,
+    "per_list": {
+     "t-altaria": 0.762396,
+     "t-blaziken": 0.433413,
+     "t-hydreigon": 0.647531,
+     "t-lucario": 0.534718,
+     "t-sceptile": 0.57768,
+     "t-suicune": 0.630116,
+     "t-vespiquen": 0.625632,
+     "t-weezing": 0.788515
+    },
+    "per_list_pct": {
+     "t-altaria": 76.2,
+     "t-blaziken": 43.3,
+     "t-hydreigon": 64.8,
+     "t-lucario": 53.5,
+     "t-sceptile": 57.8,
+     "t-suicune": 63.0,
+     "t-vespiquen": 62.6,
+     "t-weezing": 78.9
+    },
+    "mean_of_lists_pct": 62.5
+   },
+   "km3_exam_same_deals@31dbd2e6": {
+    "level": 0.270833,
+    "shift_logit": -0.299534,
+    "per_list": {
+     "t-altaria": 0.397395,
+     "t-blaziken": 0.135857,
+     "t-hydreigon": 0.274086,
+     "t-lucario": 0.191066,
+     "t-sceptile": 0.21944,
+     "t-suicune": 0.259325,
+     "t-vespiquen": 0.255657,
+     "t-weezing": 0.433841
+    },
+    "per_list_pct": {
+     "t-altaria": 39.7,
+     "t-blaziken": 13.6,
+     "t-hydreigon": 27.4,
+     "t-lucario": 19.1,
+     "t-sceptile": 21.9,
+     "t-suicune": 25.9,
+     "t-vespiquen": 25.6,
+     "t-weezing": 43.4
+    },
+    "mean_of_lists_pct": 27.1
+   },
+   "m64_exam@69a5a441": {
+    "level": 0.6875,
+    "shift_logit": 1.574214,
+    "per_list": {
+     "t-altaria": 0.811137,
+     "t-blaziken": 0.505904,
+     "t-hydreigon": 0.7109,
+     "t-lucario": 0.606029,
+     "t-sceptile": 0.646757,
+     "t-suicune": 0.695142,
+     "t-vespiquen": 0.69106,
+     "t-weezing": 0.833071
+    },
+    "per_list_pct": {
+     "t-altaria": 81.1,
+     "t-blaziken": 50.6,
+     "t-hydreigon": 71.1,
+     "t-lucario": 60.6,
+     "t-sceptile": 64.7,
+     "t-suicune": 69.5,
+     "t-vespiquen": 69.1,
+     "t-weezing": 83.3
+    },
+    "mean_of_lists_pct": 68.8
+   },
+   "m32_exam@69a5a441": {
+    "level": 0.708333,
+    "shift_logit": 1.677691,
+    "per_list": {
+     "t-altaria": 0.826481,
+     "t-blaziken": 0.531731,
+     "t-hydreigon": 0.731694,
+     "t-lucario": 0.630445,
+     "t-sceptile": 0.670023,
+     "t-suicune": 0.716618,
+     "t-vespiquen": 0.712705,
+     "t-weezing": 0.846969
+    },
+    "per_list_pct": {
+     "t-altaria": 82.6,
+     "t-blaziken": 53.2,
+     "t-hydreigon": 73.2,
+     "t-lucario": 63.0,
+     "t-sceptile": 67.0,
+     "t-suicune": 71.7,
+     "t-vespiquen": 71.3,
+     "t-weezing": 84.7
+    },
+    "mean_of_lists_pct": 70.8
+   },
+   "km3_floor": {
+    "level": 0.330729,
+    "shift_logit": -0.0,
+    "per_list": {
+     "t-altaria": 0.470833,
+     "t-blaziken": 0.175,
+     "t-hydreigon": 0.3375,
+     "t-lucario": 0.241667,
+     "t-sceptile": 0.275,
+     "t-suicune": 0.320833,
+     "t-vespiquen": 0.316667,
+     "t-weezing": 0.508333
+    },
+    "per_list_pct": {
+     "t-altaria": 47.1,
+     "t-blaziken": 17.5,
+     "t-hydreigon": 33.8,
+     "t-lucario": 24.2,
+     "t-sceptile": 27.5,
+     "t-suicune": 32.1,
+     "t-vespiquen": 31.7,
+     "t-weezing": 50.8
+    },
+    "mean_of_lists_pct": 33.1
+   },
+   "km3_floor@engine-2026-09-30": {
+    "level": 0.313542,
+    "shift_logit": -0.082733,
+    "per_list": {
+     "t-altaria": 0.450282,
+     "t-blaziken": 0.163375,
+     "t-hydreigon": 0.319257,
+     "t-lucario": 0.22683,
+     "t-sceptile": 0.258816,
+     "t-suicune": 0.303079,
+     "t-vespiquen": 0.299042,
+     "t-weezing": 0.487653
+    },
+    "per_list_pct": {
+     "t-altaria": 45.0,
+     "t-blaziken": 16.3,
+     "t-hydreigon": 31.9,
+     "t-lucario": 22.7,
+     "t-sceptile": 25.9,
+     "t-suicune": 30.3,
+     "t-vespiquen": 29.9,
+     "t-weezing": 48.8
+    },
+    "mean_of_lists_pct": 31.4
+   }
+  }
+ }
+}

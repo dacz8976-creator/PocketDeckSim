@@ -1,0 +1,41 @@
+{
+  "status": "source_work_complete_after_locator_audit_and_approved_cap86",
+  "retained_new_native_frames": 86,
+  "initial_cap": 70,
+  "source_identity": "Root receipt verified_sha256_match, no worker identity hash",
+  "completed_fields": "Opening five; native start hands for all six owner turns; normal draws Ariados, Poke Ball, Hiking Trail, Copycat, X Speed, Quick-Grow Extract; Copycat single Ariados refill; Hiking Trail end-turn X Speed and Spinarak draws; before-end hands; both board boundary anchors; mode controls",
+  "remaining_material_inspection": [],
+  "resolved_by_additional_frames": [
+    "Second Magmar placement and first Darkness attachment on opponent turn 7",
+    "Second bench Magmar Darkness attachment on opponent turn 11",
+    "Terminal board before result overlay"
+  ],
+  "requested_additional_native_cap": 12,
+  "proposed_times": [
+    20,
+    143,
+    151,
+    152,
+    238.5,
+    240,
+    241,
+    269,
+    270
+  ],
+  "action_discrepancy_status": "Bounded native hand comparisons show Hiking Trail drawn in turn6 and played in turn10; Quick-Grow Extract drawn turn12 and remains in ending hand. Accepted historical packet and outcome untouched.",
+  "lead_cap_approved": 80,
+  "additional_targeted_times": [
+    20,
+    143,
+    144,
+    151,
+    152,
+    238.5,
+    240,
+    241,
+    268.5,
+    270
+  ],
+  "lead_authorization": "Root message approved up to10 additional targeted native frames, cap80",
+  "source_audit": "LOCATOR_SCAN.json"
+}

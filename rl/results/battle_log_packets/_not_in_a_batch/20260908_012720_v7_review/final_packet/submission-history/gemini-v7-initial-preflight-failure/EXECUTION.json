@@ -1,0 +1,17 @@
+{
+  "started_utc": "2026-09-22T03:04:07.639403+00:00",
+  "sdk_version": "2.24.0",
+  "backend": "gemini-enterprise-agent-platform",
+  "project": "project-45583ef0-ed57-426c-bde",
+  "location": "global",
+  "gcs_uri": "gs://gemini-battle-pilot-117856882604/20260908_012720000_iOS.MP4",
+  "model": "gemini-3.8-flash",
+  "request_count": 1,
+  "responses_received": 1,
+  "automatic_retries_by_script": 0,
+  "independent_review_required": true,
+  "ready_for_independent_review": false,
+  "phase": "preflight",
+  "failure": "Identity preflight failed. Main request was not sent; inspect PREFLIGHT_REPORT.json. No retry.",
+  "completed_utc": "2026-09-22T03:05:47.696284+00:00"
+}

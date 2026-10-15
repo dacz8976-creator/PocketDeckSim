@@ -1,0 +1,6627 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261005_003547000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261005_003547000_iOS.MP4",
+      "sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "default_capture_policy": {
+    "owner_turn_offsets_after_draw_seconds": [
+      1,
+      3,
+      6
+    ],
+    "before_end_action_required": true,
+    "native_resolution_required": true,
+    "bottom_crop_height_fraction": 0.2,
+    "top_crop_bounds": [
+      0,
+      0,
+      1170,
+      700
+    ],
+    "fixed_grid_is_turn_start_evidence": false
+  },
+  "frames": [
+    {
+      "evidence_id": "f0068.00",
+      "role": "draw_relative_candidate",
+      "roles": [
+        "draw_relative_candidate"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 67,
+      "requested_source_seconds": 68,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1,
+      "full_frame_path": "turn_evidence/t0068.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0068.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0068.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Ball has left the fan; four-card hand during search.",
+      "suitability_or_limit": "Ball has left the fan; four-card hand during search."
+    },
+    {
+      "evidence_id": "f0092.00",
+      "role": "after_resolution_board",
+      "roles": [
+        "after_resolution_board"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 92,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0092.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0092.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0092.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Both boards after ending action and all recorded effects resolve.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0089.00",
+      "role": "before_end_hand_or_attack_substitution",
+      "roles": [
+        "before_end_hand_or_attack_substitution"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 89,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0089.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0089.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0089.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last clear hand before End Turn or attack; end-state board is captured separately.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0070.00",
+      "role": "draw_relative_candidate",
+      "roles": [
+        "draw_relative_candidate"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 67,
+      "requested_source_seconds": 70,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3,
+      "full_frame_path": "turn_evidence/t0070.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0070.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0070.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Four-card hand while Ball search resolves; not intact starting hand.",
+      "suitability_or_limit": "Four-card hand while Ball search resolves; not intact starting hand."
+    },
+    {
+      "evidence_id": "f0073.00",
+      "role": "draw_relative_candidate",
+      "roles": [
+        "draw_relative_candidate"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 67,
+      "requested_source_seconds": 73,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6,
+      "full_frame_path": "turn_evidence/t0073.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0073.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0073.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": null,
+      "suitability_or_limit": "Already playing or inspecting a card; dense settled frame selected instead."
+    },
+    {
+      "evidence_id": "f0071.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 71,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0071.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0071.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0071.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Carvanha search reveal, after Ball input bounded to67.5-68s.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0075.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 75,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0075.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0075.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0075.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Bench Carvanha50.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0079.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 79,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0079.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0079.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0079.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Draw Wallace at83, then Soothing Shore at85.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0087.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 87,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0087.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0087.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0087.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Play Stadium; no Water Energy is attached, so no heal occurs.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0090.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 90,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0090.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0090.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0090.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "End Turn; no available Energy on first turn.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0066.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 66,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0066.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0066.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0066.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0072.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 72,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0072.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0072.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0072.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0083.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 83,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0083.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0083.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0083.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "First Research reveal Soothing Shore.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0085.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 85,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0085.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0085.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0085.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Resolved five-card hand after Shore then Wallace reveals; not an individual reveal.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0094.00",
+      "role": "opponent_turn_boundary",
+      "roles": [
+        "opponent_turn_boundary"
+      ],
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 94,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0094.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0094.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0094.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Opponent hand identities hidden.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0128.00",
+      "role": "after_resolution_board",
+      "roles": [
+        "after_resolution_board",
+        "attack_discard_preview"
+      ],
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 128,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0128.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0128.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0128.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Both boards after ending action and all recorded effects resolve.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0118.00",
+      "role": "before_end_hand_or_attack_substitution",
+      "roles": [
+        "before_end_hand_or_attack_substitution"
+      ],
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 118,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0118.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0118.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0118.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last clear hand before End Turn or attack; end-state board is captured separately.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0106.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 106,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0106.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0106.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0106.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Attach1 Psychic.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0112.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 112,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0112.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0112.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0112.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Replace Soothing Shore; Psychic retreat cost2 less.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0120.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 120,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0120.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0120.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0120.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Supernatural Feather50; Wailmer100→50. Discard1 hand card after attack; top preview at128 is Klefki, confirmed in rotated native crop.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0132.00",
+      "role": "selected_preplay_hand",
+      "roles": [
+        "selected_preplay_hand",
+        "draw_relative_candidate",
+        "periodic_discard_availability_check"
+      ],
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 131,
+      "requested_source_seconds": 132,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1,
+      "full_frame_path": "turn_evidence/t0132.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0132.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0132.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Named hand and both boards before first play.",
+      "suitability_or_limit": "Clear candidate before first voluntary play."
+    },
+    {
+      "evidence_id": "f0178.00",
+      "role": "after_resolution_board",
+      "roles": [
+        "after_resolution_board"
+      ],
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 178,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0178.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0178.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0178.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Both boards after ending action and all recorded effects resolve.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0175.00",
+      "role": "before_end_hand_or_attack_substitution",
+      "roles": [
+        "before_end_hand_or_attack_substitution"
+      ],
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 175,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0175.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0175.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0175.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last clear hand before End Turn or attack; end-state board is captured separately.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0134.00",
+      "role": "draw_relative_candidate",
+      "roles": [
+        "draw_relative_candidate"
+      ],
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 131,
+      "requested_source_seconds": 134,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3,
+      "full_frame_path": "turn_evidence/t0134.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0134.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0134.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": null,
+      "suitability_or_limit": "Already playing or inspecting a card; dense settled frame selected instead."
+    },
+    {
+      "evidence_id": "f0137.00",
+      "role": "draw_relative_candidate",
+      "roles": [
+        "draw_relative_candidate"
+      ],
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 131,
+      "requested_source_seconds": 137,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6,
+      "full_frame_path": "turn_evidence/t0137.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0137.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0137.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": null,
+      "suitability_or_limit": "Clear candidate before first voluntary play."
+    },
+    {
+      "evidence_id": "f0139.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 139,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0139.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0139.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0139.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Random deck evolution is Mega Sharpedo ex at142; hand copy of Mega Sharpedo remains.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0153.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 153,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0153.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0153.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0153.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Heal20:50→70. Heads at158; card returns to hand.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0161.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 161,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0161.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0161.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0161.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Evolve manually from hand; damage30 carries over,170 HP.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0166.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 166,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0166.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0166.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0166.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Heal20:170→190. Heads at172; same card returns to hand.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0174.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 174,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0174.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0174.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0174.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Attach1 Water, total1.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0177.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 177,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0177.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0177.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0177.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "End Turn with three cards.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0130.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 130,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0130.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0130.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0130.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0142.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 142,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0142.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0142.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0142.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0180.00",
+      "role": "opponent_turn_boundary",
+      "roles": [
+        "opponent_turn_boundary"
+      ],
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 180,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0180.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0180.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0180.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Opponent hand identities hidden.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0224.00",
+      "role": "after_resolution_board",
+      "roles": [
+        "after_resolution_board",
+        "attack_discard_preview"
+      ],
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 224,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0224.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0224.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0224.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Both boards after ending action and all recorded effects resolve.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0213.00",
+      "role": "before_end_hand_or_attack_substitution",
+      "roles": [
+        "before_end_hand_or_attack_substitution"
+      ],
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 213,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0213.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0213.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0213.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last clear hand before End Turn or attack; end-state board is captured separately.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0182.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 182,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0182.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0182.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0182.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Opponent draws2 hidden cards.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0191.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 191,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0191.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0191.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0191.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Evolve into Gourgeist110.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0198.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 198,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0198.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0198.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0198.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Replace Peculiar Plaza.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0204.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 204,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0204.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0204.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0204.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Attach1 Psychic.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0212.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 212,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0212.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0212.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0212.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Pay1 Psychic from Oricorio; Gourgeist moves Active, Oricorio takes vacated Bench2.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0214.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 214,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0214.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0214.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0214.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Soul Shot70:190→120; discard1 hand card. Hiking Trail replenishes opponent hand to3.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0227.50",
+      "role": "selected_preplay_hand",
+      "roles": [
+        "selected_preplay_hand"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 227.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0227.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0227.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0227.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Named hand and both boards before first play.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0289.00",
+      "role": "after_resolution_board",
+      "roles": [
+        "after_resolution_board"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 289,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0289.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0289.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0289.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Both boards after ending action and all recorded effects resolve.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0283.00",
+      "role": "before_end_hand_or_attack_substitution",
+      "roles": [
+        "before_end_hand_or_attack_substitution",
+        "numbered_action"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 283,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0283.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0283.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0283.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last clear hand before End Turn or attack; end-state board is captured separately.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0228.00",
+      "role": "draw_relative_candidate",
+      "roles": [
+        "draw_relative_candidate"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 227,
+      "requested_source_seconds": 228,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1,
+      "full_frame_path": "turn_evidence/t0228.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0228.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0228.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": null,
+      "suitability_or_limit": "Already playing or inspecting a card; dense settled frame selected instead."
+    },
+    {
+      "evidence_id": "f0230.00",
+      "role": "draw_relative_candidate",
+      "roles": [
+        "draw_relative_candidate",
+        "numbered_action"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 227,
+      "requested_source_seconds": 230,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3,
+      "full_frame_path": "turn_evidence/t0230.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0230.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0230.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": null,
+      "suitability_or_limit": "Already playing or inspecting a card; dense settled frame selected instead."
+    },
+    {
+      "evidence_id": "f0233.00",
+      "role": "draw_relative_candidate",
+      "roles": [
+        "draw_relative_candidate"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 227,
+      "requested_source_seconds": 233,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6,
+      "full_frame_path": "turn_evidence/t0233.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0233.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0233.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": null,
+      "suitability_or_limit": "Already playing or inspecting a card; dense settled frame selected instead."
+    },
+    {
+      "evidence_id": "f0241.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 241,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0241.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0241.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0241.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Heal20:140→160. Tails at244; card discarded.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0250.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 250,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0250.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0250.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0250.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Shuffle remaining Mega Sharpedo ex and Wailord into deck; draw3 matching opponent fan: Wailord252, Suicune ex256, Poké Ball258.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0260.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 260,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0260.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0260.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0260.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Find Wailmer262.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0265.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 265,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0265.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0265.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0265.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Bench Wailmer100.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0269.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 269,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0269.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0269.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0269.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Bench Suicune ex140. Legendary Pulse does not activate from Bench.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0274.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 274,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0274.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0274.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0274.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Attach1 Water, total2.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0226.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 226,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0226.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0226.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0226.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0252.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 252,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0252.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0252.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0252.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0256.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 256,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0256.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0256.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0256.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0258.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 258,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0258.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0258.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0258.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0262.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 262,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0262.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0262.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0262.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0285.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal",
+        "automatic_draw"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 285,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0285.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0285.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0285.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0287.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal",
+        "automatic_draw"
+      ],
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 287,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0287.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0287.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0287.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0296.00",
+      "role": "opponent_turn_boundary",
+      "roles": [
+        "opponent_turn_boundary"
+      ],
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 296,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0296.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0296.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0296.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Opponent hand identities hidden.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0335.00",
+      "role": "after_resolution_board",
+      "roles": [
+        "after_resolution_board",
+        "attack_discard_preview"
+      ],
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 335,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0335.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0335.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0335.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Both boards after ending action and all recorded effects resolve.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0325.00",
+      "role": "before_end_hand_or_attack_substitution",
+      "roles": [
+        "before_end_hand_or_attack_substitution"
+      ],
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 325,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0325.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0325.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0325.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last clear hand before End Turn or attack; end-state board is captured separately.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0300.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 300,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0300.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0300.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0300.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Opponent random Basic search; found identity hidden.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0306.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 306,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0306.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0306.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0306.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Second opponent random Basic search; identity hidden.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0313.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 313,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0313.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0313.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0313.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Bench Greavard70, Oricorio remains Bench2.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0316.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 316,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0316.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0316.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0316.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Attach1 Psychic.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0319.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 319,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0319.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0319.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0319.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Attach Tool; Basic HP remains70, Stage1 gains30 when evolved.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0326.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 326,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0326.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0326.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0326.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Soul Shot70:160→90; discard1 hand card. Hiking Trail replenishes to3.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0337.50",
+      "role": "selected_preplay_hand",
+      "roles": [
+        "selected_preplay_hand",
+        "periodic_discard_availability_check"
+      ],
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 337.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0337.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0337.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0337.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Named hand and both boards before first play.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0360.00",
+      "role": "after_resolution_board",
+      "roles": [
+        "after_resolution_board"
+      ],
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 360,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0360.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0360.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0360.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Both boards after ending action and all recorded effects resolve.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0355.00",
+      "role": "before_end_hand_or_attack_substitution",
+      "roles": [
+        "before_end_hand_or_attack_substitution",
+        "numbered_action"
+      ],
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 355,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0355.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0355.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0355.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last clear hand before End Turn or attack; end-state board is captured separately.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0338.50",
+      "role": "draw_relative_candidate",
+      "roles": [
+        "draw_relative_candidate"
+      ],
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 337.5,
+      "requested_source_seconds": 338.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "turn_evidence/t0338.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0338.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0338.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": null,
+      "suitability_or_limit": "Already playing or inspecting a card; dense settled frame selected instead."
+    },
+    {
+      "evidence_id": "f0340.50",
+      "role": "draw_relative_candidate",
+      "roles": [
+        "draw_relative_candidate"
+      ],
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 337.5,
+      "requested_source_seconds": 340.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "turn_evidence/t0340.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0340.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0340.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": null,
+      "suitability_or_limit": "Already playing or inspecting a card; dense settled frame selected instead."
+    },
+    {
+      "evidence_id": "f0343.50",
+      "role": "draw_relative_candidate",
+      "roles": [
+        "draw_relative_candidate"
+      ],
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 337.5,
+      "requested_source_seconds": 343.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "turn_evidence/t0343.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0343.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0343.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": null,
+      "suitability_or_limit": "Already playing or inspecting a card; dense settled frame selected instead."
+    },
+    {
+      "evidence_id": "f0339.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 339,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0339.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0339.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0339.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Evolve second Wailmer into Wailord200.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0342.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 342,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0342.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0342.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0342.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Draw Soothing Shore344 then Irida346. Irida remains in hand.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0350.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 350,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0350.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0350.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0350.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Replace Hiking Trail.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0352.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 352,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0352.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0352.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0352.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Attach1 Water, total3.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0336.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 336,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0336.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0336.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0336.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0344.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 344,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0344.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0344.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0344.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0346.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 346,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0346.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0346.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0346.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0357.00",
+      "role": "stadium_heal",
+      "roles": [
+        "stadium_heal"
+      ],
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 357,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0357.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0357.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0357.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0362.00",
+      "role": "opponent_turn_boundary",
+      "roles": [
+        "opponent_turn_boundary"
+      ],
+      "turn_number": 8,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 362,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0362.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0362.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0362.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Opponent hand identities hidden.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0385.00",
+      "role": "after_resolution_board",
+      "roles": [
+        "after_resolution_board",
+        "attack_discard_preview"
+      ],
+      "turn_number": 8,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 385,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0385.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0385.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0385.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Both boards after ending action and all recorded effects resolve.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0375.00",
+      "role": "before_end_hand_or_attack_substitution",
+      "roles": [
+        "before_end_hand_or_attack_substitution"
+      ],
+      "turn_number": 8,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 375,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0375.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0375.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0375.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last clear hand before End Turn or attack; end-state board is captured separately.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0366.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 8,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 366,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0366.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0366.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0366.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Evolve Houndstone printed130; Elegant Cape raises effective maximum/current HP to160.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0374.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 8,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 374,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0374.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0374.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0374.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Attach1 Psychic, total2.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0376.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 8,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 376,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0376.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0376.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0376.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Soul Shot70:110→40; discard1 hand card. No Stadium refill, since Hiking Trail was replaced.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0388.00",
+      "role": "selected_preplay_hand",
+      "roles": [
+        "selected_preplay_hand",
+        "periodic_discard_availability_check"
+      ],
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 388,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0388.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0388.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0388.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Named hand and both boards before first play.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0415.00",
+      "role": "after_resolution_board",
+      "roles": [
+        "after_resolution_board",
+        "opponent_turn_boundary"
+      ],
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 415,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0415.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0415.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0415.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": null,
+      "observation": "Both boards after ending action and all recorded effects resolve.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0405.00",
+      "role": "before_end_hand_or_attack_substitution",
+      "roles": [
+        "before_end_hand_or_attack_substitution"
+      ],
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 405,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0405.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0405.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0405.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last clear hand before End Turn or attack; end-state board is captured separately.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0389.00",
+      "role": "draw_relative_candidate",
+      "roles": [
+        "draw_relative_candidate"
+      ],
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 387.5,
+      "requested_source_seconds": 389,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.5,
+      "full_frame_path": "turn_evidence/t0389.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0389.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0389.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": null,
+      "suitability_or_limit": "Clear candidate before first voluntary play."
+    },
+    {
+      "evidence_id": "f0391.00",
+      "role": "draw_relative_candidate",
+      "roles": [
+        "draw_relative_candidate"
+      ],
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 387.5,
+      "requested_source_seconds": 391,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.5,
+      "full_frame_path": "turn_evidence/t0391.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0391.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0391.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": null,
+      "suitability_or_limit": "Clear candidate before first voluntary play."
+    },
+    {
+      "evidence_id": "f0393.00",
+      "role": "draw_relative_candidate",
+      "roles": [
+        "draw_relative_candidate"
+      ],
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 387.5,
+      "requested_source_seconds": 393,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 5.5,
+      "full_frame_path": "turn_evidence/t0393.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0393.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0393.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": null,
+      "suitability_or_limit": "Already playing or inspecting a card; dense settled frame selected instead."
+    },
+    {
+      "evidence_id": "f0394.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 394,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0394.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0394.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0394.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Attach1 Water, total4.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0400.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 400,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0400.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0400.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0400.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Heal40 from damaged Water Pokemon: Wailord40→80; undamaged Bench does not gain excess HP.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0407.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 407,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0407.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0407.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0407.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Whale Pump100:110→10; ending Shore heals20:80→100.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0386.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 386,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0386.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0386.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0386.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0411.00",
+      "role": "stadium_heal",
+      "roles": [
+        "stadium_heal"
+      ],
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 411,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0411.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0411.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0411.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0454.00",
+      "role": "after_resolution_board",
+      "roles": [
+        "after_resolution_board"
+      ],
+      "turn_number": 10,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 454,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0454.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0454.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0454.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Both boards after ending action and all recorded effects resolve.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0439.00",
+      "role": "before_end_hand_or_attack_substitution",
+      "roles": [
+        "before_end_hand_or_attack_substitution"
+      ],
+      "turn_number": 10,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 439,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0439.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0439.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0439.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last clear hand before End Turn or attack; end-state board is captured separately.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0417.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 10,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 417,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0417.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0417.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0417.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Attach1 Psychic, total2.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0433.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 10,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 433,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0433.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0433.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0433.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Pay2 Psychic from Gourgeist; Houndstone moves Active. Gourgeist Bench1 now has0.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0440.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 10,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 440,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0440.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0440.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0440.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last Respects130 knocks out100-HP Wailord at444; opponent gains1 point. Owner replacement prompt selects Mega Sharpedo ex at451.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0444.00",
+      "role": "knockout",
+      "roles": [
+        "knockout"
+      ],
+      "turn_number": 10,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 444,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0444.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0444.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0444.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0451.00",
+      "role": "replacement",
+      "roles": [
+        "replacement"
+      ],
+      "turn_number": 10,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 451,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0451.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0451.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0451.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0455.50",
+      "role": "selected_preplay_hand",
+      "roles": [
+        "selected_preplay_hand",
+        "failed_draw_message"
+      ],
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 455.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0455.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0455.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0455.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Named hand and both boards before first play.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0476.00",
+      "role": "after_resolution_board",
+      "roles": [
+        "after_resolution_board",
+        "attack_nested_energy"
+      ],
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 476,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0476.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0476.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0476.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Both boards after ending action and all recorded effects resolve.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0465.00",
+      "role": "before_end_hand_or_attack_substitution",
+      "roles": [
+        "before_end_hand_or_attack_substitution"
+      ],
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 465,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0465.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0465.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0465.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last clear hand before End Turn or attack; end-state board is captured separately.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0457.00",
+      "role": "failed_draw_relative_candidate",
+      "roles": [
+        "failed_draw_relative_candidate"
+      ],
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 457,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0457.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0457.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0457.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No normal card draw exists: deck-empty message anchors these diagnostic candidates.",
+      "suitability_or_limit": "Not a valid normal-draw offset; draw timestamp remains null. Pre-play hand retained before first play."
+    },
+    {
+      "evidence_id": "f0459.00",
+      "role": "failed_draw_relative_candidate",
+      "roles": [
+        "failed_draw_relative_candidate"
+      ],
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 459,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0459.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0459.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0459.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No normal card draw exists: deck-empty message anchors these diagnostic candidates.",
+      "suitability_or_limit": "Not a valid normal-draw offset; draw timestamp remains null. Pre-play hand retained before first play."
+    },
+    {
+      "evidence_id": "f0462.00",
+      "role": "failed_draw_relative_candidate",
+      "roles": [
+        "failed_draw_relative_candidate"
+      ],
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 462,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0462.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0462.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0462.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No normal card draw exists: deck-empty message anchors these diagnostic candidates.",
+      "suitability_or_limit": "Not a valid normal-draw offset; draw timestamp remains null. Pre-play hand retained before first play."
+    },
+    {
+      "evidence_id": "f0456.50",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 456.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0456.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0456.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0456.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Bench second Carvanha50.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0460.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 460,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0460.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0460.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0460.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Attach1 Water.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0467.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 467,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0467.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0467.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0467.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Turbo Shark70:160→90; nested Energy destination prompt at472-475 selects Wailord Bench2, attach1 Water resolved at476. Carvanha remains at0 Energy.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0480.00",
+      "role": "opponent_turn_boundary",
+      "roles": [
+        "opponent_turn_boundary"
+      ],
+      "turn_number": 12,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 480,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0480.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0480.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0480.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Opponent hand identities hidden.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0502.00",
+      "role": "after_resolution_board",
+      "roles": [
+        "after_resolution_board"
+      ],
+      "turn_number": 12,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 502,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0502.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0502.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0502.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Both boards after ending action and all recorded effects resolve.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0497.00",
+      "role": "before_end_hand_or_attack_substitution",
+      "roles": [
+        "before_end_hand_or_attack_substitution"
+      ],
+      "turn_number": 12,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 497,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0497.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0497.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0497.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last clear hand before End Turn or attack; end-state board is captured separately.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0483.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 12,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 483,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0483.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0483.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0483.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Heal30:90→120; no condition removed because none was present.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0492.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 12,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 492,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0492.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0492.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0492.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Attach1 Psychic, total3.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0498.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 12,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 498,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0498.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0498.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0498.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last Respects130:190→60; no knockout.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0503.00",
+      "role": "selected_preplay_hand",
+      "roles": [
+        "selected_preplay_hand",
+        "periodic_discard_availability_check"
+      ],
+      "turn_number": 13,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 503,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0503.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0503.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0503.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Named hand and both boards before first play.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0528.00",
+      "role": "after_resolution_board",
+      "roles": [
+        "after_resolution_board"
+      ],
+      "turn_number": 13,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 528,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0528.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0528.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0528.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Both boards after ending action and all recorded effects resolve.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0515.00",
+      "role": "before_end_hand_or_attack_substitution",
+      "roles": [
+        "before_end_hand_or_attack_substitution",
+        "numbered_action"
+      ],
+      "turn_number": 13,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 515,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0515.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0515.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0515.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last clear hand before End Turn or attack; end-state board is captured separately.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0504.00",
+      "role": "failed_draw_relative_candidate",
+      "roles": [
+        "failed_draw_relative_candidate",
+        "failed_draw_message"
+      ],
+      "turn_number": 13,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 504,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0504.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0504.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0504.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No normal card draw exists: deck-empty message anchors these diagnostic candidates.",
+      "suitability_or_limit": "Not a valid normal-draw offset; draw timestamp remains null. Pre-play hand retained before first play."
+    },
+    {
+      "evidence_id": "f0506.00",
+      "role": "failed_draw_relative_candidate",
+      "roles": [
+        "failed_draw_relative_candidate",
+        "numbered_action"
+      ],
+      "turn_number": 13,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 506,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0506.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0506.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0506.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No normal card draw exists: deck-empty message anchors these diagnostic candidates.",
+      "suitability_or_limit": "Not a valid normal-draw offset; draw timestamp remains null. Pre-play hand retained before first play."
+    },
+    {
+      "evidence_id": "f0509.00",
+      "role": "failed_draw_relative_candidate",
+      "roles": [
+        "failed_draw_relative_candidate",
+        "numbered_action"
+      ],
+      "turn_number": 13,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 509,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0509.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0509.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0509.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No normal card draw exists: deck-empty message anchors these diagnostic candidates.",
+      "suitability_or_limit": "Not a valid normal-draw offset; draw timestamp remains null. Pre-play hand retained before first play."
+    },
+    {
+      "evidence_id": "f0518.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 13,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 518,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0518.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0518.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0518.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Turbo Shark70:120→50. Attack effect attaches1 Water to Suicune ex Bench3 at523. Damaged Sharpedo keeps its1 Water; Soothing Shore heals that Benched Sharpedo60→80.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0523.00",
+      "role": "attack_nested_energy",
+      "roles": [
+        "attack_nested_energy"
+      ],
+      "turn_number": 13,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 523,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0523.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0523.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0523.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0526.00",
+      "role": "stadium_heal",
+      "roles": [
+        "stadium_heal"
+      ],
+      "turn_number": 13,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 526,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0526.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0526.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0526.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0531.00",
+      "role": "opponent_turn_boundary",
+      "roles": [
+        "opponent_turn_boundary"
+      ],
+      "turn_number": 14,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 531,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0531.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0531.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0531.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Opponent hand identities hidden.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0551.00",
+      "role": "after_resolution_board",
+      "roles": [
+        "after_resolution_board"
+      ],
+      "turn_number": 14,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 551,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0551.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0551.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0551.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Both boards after ending action and all recorded effects resolve.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0539.00",
+      "role": "before_end_hand_or_attack_substitution",
+      "roles": [
+        "before_end_hand_or_attack_substitution"
+      ],
+      "turn_number": 14,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 539,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0539.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0539.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0539.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last clear hand before End Turn or attack; end-state board is captured separately.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0533.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 14,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 533,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0533.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0533.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0533.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Force damaged80-HP Mega Sharpedo Active; fresh190-HP Sharpedo takes vacated Bench1.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0541.00",
+      "role": "numbered_action",
+      "roles": [
+        "numbered_action"
+      ],
+      "turn_number": 14,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 541,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0541.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0541.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0541.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Last Respects130 knocks out80-HP Mega Sharpedo; +3 points banner548, displayed total caps at3; Defeat550.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0544.00",
+      "role": "terminal_board_after_knockout",
+      "roles": [
+        "terminal_board_after_knockout"
+      ],
+      "turn_number": 14,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 544,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0544.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0544.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0544.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0548.00",
+      "role": "terminal_points_banner",
+      "roles": [
+        "terminal_points_banner"
+      ],
+      "turn_number": 14,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 548,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0548.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0548.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0548.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0557.00",
+      "role": "result_screen",
+      "roles": [
+        "result_screen"
+      ],
+      "turn_number": 14,
+      "who_played": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 557,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0557.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0557.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0557.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": null,
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0032.00",
+      "role": "five_card_opening",
+      "roles": [
+        "five_card_opening"
+      ],
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 32,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0032.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0032.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0032.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Five original hand slots before Active placement, with Wailmer atposition2.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0036.00",
+      "role": "opening_active_selection",
+      "roles": [
+        "opening_active_selection"
+      ],
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 36,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0036.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0036.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0036.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Wailmer selected as Active.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0067.50",
+      "role": "selected_preplay_hand",
+      "roles": [
+        "selected_preplay_hand"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": 67,
+      "requested_source_seconds": 67.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.5,
+      "full_frame_path": "turn_evidence/t0067.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0067.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0067.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Intact five-card hand before Ball leaves the fan: Research, Copycat, Ball, Mega Sharpedo ex, Lucky Ice Pop.",
+      "suitability_or_limit": "Independently inspected retained native evidence."
+    },
+    {
+      "evidence_id": "f0084.00",
+      "role": "draw_or_search_reveal",
+      "roles": [
+        "draw_or_search_reveal"
+      ],
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 84,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0084.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0084.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0084.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": null,
+      "observation": "Second Research reveal Wallace; Soothing Shore is already in hand.",
+      "suitability_or_limit": "Independently inspected retained native evidence."
+    }
+  ],
+  "discard_snapshots": [
+    {
+      "snapshot_id": "discard_owner_turn3_partial",
+      "turn_number": 3,
+      "pile_owner": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "timestamp_seconds": 132,
+      "cards_in_view": [
+        {
+          "name": "Soothing Shore",
+          "basis": "only filmed top pile preview"
+        }
+      ],
+      "scroll_coverage": "No opened discard pile or scroll shown.",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "f0132.00"
+      ],
+      "limit_reason": "Only top preview available; contents beneath it are not identified."
+    },
+    {
+      "snapshot_id": "discard_opponent_turn3_partial",
+      "turn_number": 3,
+      "pile_owner": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "timestamp_seconds": 132,
+      "cards_in_view": [
+        {
+          "name": "Klefki",
+          "basis": "only filmed top pile preview"
+        }
+      ],
+      "scroll_coverage": "No opened discard pile or scroll shown.",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "f0132.00"
+      ],
+      "limit_reason": "Only top preview available; contents beneath it are not identified."
+    },
+    {
+      "snapshot_id": "discard_owner_turn7_partial",
+      "turn_number": 7,
+      "pile_owner": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "timestamp_seconds": 337.5,
+      "cards_in_view": [
+        {
+          "name": "Poké Ball",
+          "basis": "only filmed top pile preview"
+        }
+      ],
+      "scroll_coverage": "No opened discard pile or scroll shown.",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "f0337.50"
+      ],
+      "limit_reason": "Only top preview available; contents beneath it are not identified."
+    },
+    {
+      "snapshot_id": "discard_opponent_turn7_partial",
+      "turn_number": 7,
+      "pile_owner": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "timestamp_seconds": 337.5,
+      "cards_in_view": [
+        {
+          "name": "Pumpkaboo",
+          "basis": "only filmed top pile preview"
+        }
+      ],
+      "scroll_coverage": "No opened discard pile or scroll shown.",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "f0337.50"
+      ],
+      "limit_reason": "Only top preview available; contents beneath it are not identified."
+    },
+    {
+      "snapshot_id": "discard_owner_turn9_partial",
+      "turn_number": 9,
+      "pile_owner": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "timestamp_seconds": 388,
+      "cards_in_view": [
+        {
+          "name": "Professor's Research",
+          "basis": "only filmed top pile preview"
+        }
+      ],
+      "scroll_coverage": "No opened discard pile or scroll shown.",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "f0388.00"
+      ],
+      "limit_reason": "Only top preview available; contents beneath it are not identified."
+    },
+    {
+      "snapshot_id": "discard_opponent_turn9_partial",
+      "turn_number": 9,
+      "pile_owner": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "timestamp_seconds": 388,
+      "cards_in_view": [
+        {
+          "name": "Gourgeist",
+          "basis": "only filmed top pile preview"
+        }
+      ],
+      "scroll_coverage": "No opened discard pile or scroll shown.",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "f0388.00"
+      ],
+      "limit_reason": "Only top preview available; contents beneath it are not identified."
+    },
+    {
+      "snapshot_id": "discard_owner_turn13_partial",
+      "turn_number": 13,
+      "pile_owner": "owner",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "timestamp_seconds": 503,
+      "cards_in_view": [
+        {
+          "name": "Wailord",
+          "basis": "only filmed top pile preview"
+        }
+      ],
+      "scroll_coverage": "No opened discard pile or scroll shown.",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "f0503.00"
+      ],
+      "limit_reason": "Only top preview available; contents beneath it are not identified."
+    },
+    {
+      "snapshot_id": "discard_opponent_turn13_partial",
+      "turn_number": 13,
+      "pile_owner": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "timestamp_seconds": 503,
+      "cards_in_view": [
+        {
+          "name": "Pokémon Center Lady",
+          "basis": "only filmed top pile preview"
+        }
+      ],
+      "scroll_coverage": "No opened discard pile or scroll shown.",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "f0503.00"
+      ],
+      "limit_reason": "Only top preview available; contents beneath it are not identified."
+    },
+    {
+      "snapshot_id": "discard_opponent_turn2_attack_preview",
+      "turn_number": 2,
+      "pile_owner": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "timestamp_seconds": 128,
+      "cards_in_view": [
+        {
+          "name": "Klefki",
+          "basis": "new filmed top discard preview after attack"
+        }
+      ],
+      "scroll_coverage": "Top preview only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "f0128.00"
+      ],
+      "limit_reason": "Contents beneath the newly discarded card are not opened."
+    },
+    {
+      "snapshot_id": "discard_opponent_turn4_attack_preview",
+      "turn_number": 4,
+      "pile_owner": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "timestamp_seconds": 224,
+      "cards_in_view": [
+        {
+          "name": "Houndstone",
+          "basis": "new filmed top discard preview after attack"
+        }
+      ],
+      "scroll_coverage": "Top preview only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "f0224.00"
+      ],
+      "limit_reason": "Contents beneath the newly discarded card are not opened."
+    },
+    {
+      "snapshot_id": "discard_opponent_turn6_attack_preview",
+      "turn_number": 6,
+      "pile_owner": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "timestamp_seconds": 335,
+      "cards_in_view": [
+        {
+          "name": "Pumpkaboo",
+          "basis": "new filmed top discard preview after attack"
+        }
+      ],
+      "scroll_coverage": "Top preview only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "f0335.00"
+      ],
+      "limit_reason": "Contents beneath the newly discarded card are not opened."
+    },
+    {
+      "snapshot_id": "discard_opponent_turn8_attack_preview",
+      "turn_number": 8,
+      "pile_owner": "opponent",
+      "source_video": "20261005_003547000_iOS.MP4",
+      "timestamp_seconds": 385,
+      "cards_in_view": [
+        {
+          "name": "Gourgeist",
+          "basis": "new filmed top discard preview after attack"
+        }
+      ],
+      "scroll_coverage": "Top preview only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "f0385.00"
+      ],
+      "limit_reason": "Contents beneath the newly discarded card are not opened."
+    }
+  ],
+  "scheduled_capture_limits": [
+    "Neither player opens a full discard pile. Only changing top-card pile previews and visible attack discards are filmed; periodic full-pile snapshots are unavailable.",
+    "Opponent normal draws and both Poké Ball finds are concealed. No hidden identities inferred.",
+    "Owner first plays on turns5 and7 occur during or before scheduled+1 candidate; dense settled pre-play frames227.5 and337.5 preserve the starting hand.",
+    "Turns11 and13 have deck-empty normal-draw failures, so draw-animation end is null and diagnostic candidates use the failure message anchor instead.",
+    "The exact filmed QR deck is absent from all nine current Pause Games log lists. DECK_USED retains the conflict and filmed20-slot semantic list separately.",
+    "All source-local timestamps are requested seeks. Exact decoded presentation timestamps were not measured.",
+    "No visible supporter-warning decline or zero-effect voluntary card play occurs. Card inspection zooms are not counted as plays."
+  ]
+}

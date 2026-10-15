@@ -1,0 +1,156 @@
+{
+  "video_basename": "20261002_022135000_iOS.MP4",
+  "reviewer": "sol_competitive_20261002_022135000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_date_utc": "2026-10-02",
+  "status": "full_battle_review_complete",
+  "source_identity": {
+    "bytes": 1322829794,
+    "duration_seconds": 710.136848,
+    "sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+    "provenance": "Preserved SOURCE.json and lead verified identity event; present source byte count checked by worker."
+  },
+  "complete_available_footage_review": true,
+  "battle_complete": true,
+  "outcome": "loss",
+  "outcome_type": "loss",
+  "turn_order": "owner_first",
+  "turns_played": 30,
+  "owner_name": "Dacz8976",
+  "owner_energy_observed": [
+    "Water"
+  ],
+  "owner_deck_core": [
+    "Wailmer x2, actually played",
+    "Indeedee ex x2, actually played",
+    "Wailord non-ex, late hand card only",
+    "Second Wailord-named late hand card, exact version occluded",
+    "Heavy Helmet",
+    "Soothing Shore",
+    "Irida",
+    "Lucky Ice Pop"
+  ],
+  "owner_deck_name_likely": "Wailord / Indeedee wall",
+  "owner_deck_match_basis": "Played Wailmer/Indeedee core, late whale hand cards and owner Water-Wailord batch identification; full 20-card list unverified.",
+  "wailord_evolved_or_attacked": false,
+  "opponent_name": "だんくしゅー",
+  "opponent_deck_core": [
+    "Swablu x2",
+    "Mega Altaria ex x2",
+    "Froakie x2",
+    "Greninja x2, Water Shuriken",
+    "Chingling, Jingly Noise",
+    "Lucky Egg",
+    "Rare Candy"
+  ],
+  "opponent_energy_observed": [
+    "Psychic"
+  ],
+  "mode_evidence": {
+    "observed": "Search for opponent, named player profile, two player timers and online opponent turns",
+    "owner_testimony": "Competitive Water Wailord game requested for Pause Games artifact",
+    "exact_queue": "unknown_not_printed",
+    "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+    "ranked_ladder_eligible": false
+  },
+  "auto_intervals": [
+    {
+      "start_seconds": 0,
+      "end_seconds": 710.136848,
+      "state": "no_visible_Auto_control_or_transition",
+      "opponent_automation": "unknown"
+    }
+  ],
+  "final_score": {
+    "owner": 1,
+    "opponent": 3,
+    "basis": "Displayed final results, three-circle cap; terminal KO awards +2 after two earlier Wailmer points."
+  },
+  "damage_done_final_results": 120,
+  "point_progression": [
+    {
+      "turn": 7,
+      "owner": 1,
+      "opponent": 0,
+      "event": "Wave Splash KOs Chingling"
+    },
+    {
+      "turn": 8,
+      "owner": 1,
+      "opponent": 1,
+      "event": "Mega Harmony KOs first Wailmer"
+    },
+    {
+      "turn": 14,
+      "owner": 1,
+      "opponent": 2,
+      "event": "Mega Harmony KOs second Wailmer"
+    },
+    {
+      "turn": 30,
+      "owner": 1,
+      "opponent_displayed": 3,
+      "awarded_points": 2,
+      "event": "Mega Harmony KOs Indeedee ex and battle ends"
+    }
+  ],
+  "decisive_evidence": [
+    {
+      "timestamp_seconds": 694,
+      "path": "native/t0694.00.jpg",
+      "observation": "Mega Harmony attack banner, turn 30"
+    },
+    {
+      "timestamp_seconds": 696,
+      "path": "native/t0696.00.jpg",
+      "observation": "130 damage hits the 130-HP Active Indeedee ex"
+    },
+    {
+      "timestamp_seconds": 702,
+      "path": "native/t0702.00.jpg",
+      "observation": "+2 points banner and opponent three lit circles"
+    },
+    {
+      "timestamp_seconds": 710,
+      "path": "native/t0710.00.jpg",
+      "observation": "Defeat, Went first, 30 turns, owner 1 / opponent 3, damage done 120"
+    }
+  ],
+  "key_findings": [
+    "First attack is turn 7 after Water attachments on turns 3, 5 and 7; replacement Wailmer attacks on turn 13 after turns 9, 11 and 13 attachments.",
+    "Two Wailmer attacks account for all 120 owner damage. No Wailord evolves; late whale draws follow loss of both Basics.",
+    "Turn 17 actually rescues a 20-HP Indeedee using Water, retreat, both Watch Over, Ice Pop, Irida and Shore.",
+    "The remaining Indeedee can heal and retreat with Water but cannot pay their two-Psychic attack costs.",
+    "The opponent repeatedly uses Shuriken without attacking before eventually dealing the lethal 130; its reasons are unknown.",
+    "Owner testimony calls ramp slow and suggests alternate Energy or Misty/Sharpedo. Those alternatives are untested and have no invented ratings."
+  ],
+  "limitations": [
+    "Exact queue and automation unknown",
+    "Full lists and hidden hands unverified",
+    "Second hand whale exact version partly occluded",
+    "Exact Ice Pop coin faces unverified",
+    "Opponent nonattack rationale unknown",
+    "Match-date filename timezone inferred from owner/upload context"
+  ],
+  "review_coverage": {
+    "overview_step_seconds": 4,
+    "overview_frames": 178,
+    "overview_sheets": 20,
+    "decode_threads": 2,
+    "turns_covered": "1-30",
+    "unreviewed_intervals": []
+  },
+  "worker_status_at_submission": "first_pass_complete_awaiting_lead_acceptance",
+  "review_status": "full_battle_review_complete",
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "source_archived": true,
+  "source_modified": false,
+  "global_registration_complete": true,
+  "ranked_ladder_eligible": false,
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "external_log_saved": true,
+  "archive_receipt": "MOVE_RECEIPT.20261002_022135000_iOS.MP4.json",
+  "archive_completion_event_id": "83213679-df31-4e02-87ca-443920d5ac5c"
+}

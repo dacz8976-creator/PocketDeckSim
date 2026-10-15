@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/check_older_september",
+  "reviewer_role": "separate Sol bounded independent acceptance reviewer",
+  "model_configuration": "inherited parent configuration; no override",
+  "checked_utc": "2026-10-14T15:18:04.892214+00:00",
+  "decision": "accepted_available_footage_packet",
+  "material_repairs_required": [],
+  "source_basename": "20260926_211809000_iOS.MP4",
+  "source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20260926_211809000_iOS.MP4",
+  "source_sha256_initial": "f5b6c67fbe006c8485056d8b959a52146289cf8b95c32705b2149135b6bb6a49",
+  "source_sha256_final": "f5b6c67fbe006c8485056d8b959a52146289cf8b95c32705b2149135b6bb6a49",
+  "source_bytes": 79586530,
+  "source_duration_seconds": 43.463333,
+  "initial_integrity_receipt": "INTEGRITY_INITIAL.json",
+  "final_integrity_receipt": "INTEGRITY_FINAL.json",
+  "frozen_primary_manifest_sha256_initial": "820c5580bbe80ca8b7739722a318acfdc34b59a9f2cb697f2e392b6ae655229f",
+  "frozen_primary_manifest_sha256_final": "820c5580bbe80ca8b7739722a318acfdc34b59a9f2cb697f2e392b6ae655229f",
+  "evidence_manifest_sha256_initial": null,
+  "evidence_manifest_sha256_final": null,
+  "all_frozen_entries_match": true,
+  "frozen_entries_checked": 32,
+  "primary_packet_unchanged_between_checks": true,
+  "inspected_source_bound_native_evidence": [
+    {
+      "path": "evidence/native_00p000s.jpg",
+      "source_elapsed_seconds": 0,
+      "sha256": "df1c9d3a9e808a7a91c3546428c308bbb578ed121349e22fffcef7c60cb2469b",
+      "bytes": 480389,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/native_08p000s.jpg",
+      "source_elapsed_seconds": 8,
+      "sha256": "995cec066d9bb2718a4cf4bc3a1c6c7abae80724962514d924fe1da55263c915",
+      "bytes": 544634,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/native_13p000s.jpg",
+      "source_elapsed_seconds": 13,
+      "sha256": "9684d0a9ef2b43221ae009980c1551c42c9dff9c755b7d44c4ea6a4967e7fc42",
+      "bytes": 530153,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/native_20p000s.jpg",
+      "source_elapsed_seconds": 20,
+      "sha256": "5bf736efa6c7529e7d5079fb4e523fdc50a258e741cf7291b64c7737e16b128f",
+      "bytes": 163344,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/native_24p000s.jpg",
+      "source_elapsed_seconds": 24,
+      "sha256": "dd0d6d35e2c9f187d8f0fe35315ced5221fe0d1576e92df859c06924f9bb6839",
+      "bytes": 414305,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/native_27p000s.jpg",
+      "source_elapsed_seconds": 27,
+      "sha256": "b42fcf1e0aa90c7a3ffdc569c533f32b25a0d886001f1c494ad98aa1885bd7ed",
+      "bytes": 502383,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/native_34p000s.jpg",
+      "source_elapsed_seconds": 34,
+      "sha256": "eb4bad6f3fb8027ccf8116ba23fc01f1b39f1c518ae1d336a36b50ec47c5cf89",
+      "bytes": 488463,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/native_36p500s.jpg",
+      "source_elapsed_seconds": 36.5,
+      "sha256": "81ee17083ccb8d1e9d8f47f52fda0339f93ae1b7f3ccd8a4a79d334cc9c40e63",
+      "bytes": 504646,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/native_38p000s.jpg",
+      "source_elapsed_seconds": 38,
+      "sha256": "a733ea0c82677934f1e141f2e461bdeb5f0e6d7cdd4f3896999a4839769b2afe",
+      "bytes": 486177,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "evidence/native_43p400s.jpg",
+      "source_elapsed_seconds": 43.4,
+      "sha256": "575a47ca905c739fefb37c65c74966c95d3432f75419a49ddd1dd5783e449ce8",
+      "bytes": 345898,
+      "dimensions": [
+        1170,
+        2532
+      ]
+    }
+  ],
+  "critical_evidence": {
+    "beginning": "evidence/native_00p000s.jpg",
+    "second_point": "evidence/native_20p000s.jpg",
+    "concession": "evidence/native_38p000s.jpg",
+    "victory": "evidence/native_43p400s.jpg"
+  },
+  "available_footage_review_accepted": true,
+  "available_footage_review_complete": true,
+  "available_footage_interval_seconds": [
+    0,
+    43.463333
+  ],
+  "independent_check_scope": "Bounded selected beginning, ordinary actions, consequential states and terminal evidence; not a second full visual pass",
+  "battle_complete": false,
+  "recommended_machine_status": "partial",
+  "recommended_index_status": "Needs full battle review",
+  "archive_eligible": false,
+  "missing_pre_source_phases": [
+    "Opening/setup",
+    "Earlier turns/development",
+    "First owner point"
+  ],
+  "entirely_absent_completed_turns_established": null,
+  "owner": "Dacz8976",
+  "opponent": "XaBy8",
+  "owner_result": "win",
+  "result_method": "explicit_opponent_concession",
+  "victory_splash_verified": true,
+  "last_visible_score": {
+    "owner": 2,
+    "opponent": 0
+  },
+  "actual_queue": "unknown",
+  "auto_control_established": false,
+  "auto_enabled": null,
+  "mode_limit": "Bounded evidence lacks an established Auto control; absence does not independently prove PvP or ranked",
+  "external_route": "Owner-default Ladder candidate, live source-filename duplicate verification pending with lead",
+  "live_external_duplicates_checked": false,
+  "shared_registration_written": false,
+  "media_moved": false,
+  "external_log_written": false,
+  "mirror_written": false,
+  "primary_files_edited": false,
+  "notes": "CHECK_NOTES.md"
+}

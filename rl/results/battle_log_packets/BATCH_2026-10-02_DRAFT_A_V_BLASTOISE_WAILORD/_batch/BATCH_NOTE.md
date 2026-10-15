@@ -1,0 +1,9 @@
+# Draft A against the fixed computer deck
+
+Eight games: five Auto and three piloted by Dustin. All are computer battles, saved in this local batch and BATTLE_REVIEW_INDEX. They are excluded from both the human Pause Games log and ladder totals, per Dustin’s explicit routing instruction. The owner confirms the original Draft A: Shark Tempo list, including two Misty, for this comparison. Auto packets use `_auto_sol`; owner-play packets use `_shark_sol`. Original movie names are preserved.
+
+Computer deck: **Mega Blastoise ex & Wailord ex Deck (Deluxe Pack: Mega)**, Water Energy. Category: **Step-Up Battle: Advanced**, confirmed by Dustin and the [category screenshot](opponent_deck/OWNER_ADVANCED_CATEGORY.jpg). There is no separate difficulty selector. The three preserved [deck screenshots](opponent_deck/) establish twenty opponent card slots; [the deck snapshot](OPPONENT_DECK.json) records duplicates. A deck list does not reveal concealed hand cards.
+
+The full Pause Games protocol applies to all eight by the owner's explicit request. [Owner deck snapshot](OWNER_DECK_SNAPSHOT.json) was copied from the live Pause Games list. Each game carries its own snapshot and structured turn ledger. Independent acceptance, registration and safe archival remain required.
+
+The [October 2 evening guide update](GUIDE_UPDATE_REQUIREMENTS.md) applies only to these eight comparison recordings, per Dustin's explicit scope clarification. It adds fresh native owner-turn-start boards with evolution-stack provenance, owner choices during opponent turns, a complete seen-owner-card inventory with supported duplicate counts, and the decision maker on each owner turn. Already frozen first passes receive separate source-checked supplements. Older recordings and packets stay closed. Hidden evolution faces, concealed cards and unopened discard contents are kept uncertain.

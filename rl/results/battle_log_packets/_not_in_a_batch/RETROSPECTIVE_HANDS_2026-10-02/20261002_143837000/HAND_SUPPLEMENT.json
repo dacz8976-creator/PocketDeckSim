@@ -1,0 +1,496 @@
+{
+  "is_template": false,
+  "schema": "retrospective-target-hand-v1",
+  "game_id": "20261002_143837000",
+  "source_reference": "SOURCE_REFERENCE.json",
+  "scope": "Only owner turns5 and7 previously elimination-based starting hands; accepted review, outcomes and states preserved.",
+  "mode_flag": "Dustin's own play",
+  "mode_basis": "Existing accepted owner-play assignment; no fresh mode audit",
+  "target_turns": [
+    5,
+    7
+  ],
+  "turns": [
+    {
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds_approximate": 175,
+        "draw_settling_interval_seconds": [
+          174,
+          175
+        ],
+        "first_card_leaves_fan_interval_seconds": [
+          175,
+          175.5
+        ],
+        "before_end_action_seconds": 190.5,
+        "end_after_resolution_seconds": null,
+        "limits": "Timing bounds from retained seeks, not frame-perfect playback."
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Mega Sharpedo ex",
+            "basis": "direct native hand observation",
+            "evidence_ids": [
+              "t0175.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "basis": "direct native hand observation",
+            "evidence_ids": [
+              "t0175.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Copycat",
+            "basis": "direct native hand observation",
+            "evidence_ids": [
+              "t0175.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Poké Ball",
+            "basis": "direct native hand observation",
+            "evidence_ids": [
+              "t0175.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Directly read named cards in visible fan; no deck, count or later-play elimination",
+        "status": "observed",
+        "evidence_ids": [
+          "t0175.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal draw",
+          "caused_by": "turn start",
+          "cards_in_reveal_order": [
+            {
+              "name": "Poké Ball",
+              "timestamp_seconds": 174,
+              "evidence_ids": [
+                "t0174.00",
+                "t0175.00"
+              ],
+              "basis": "Direct normal draw reveal and subsequent fan"
+            }
+          ]
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Carvanha",
+              "timestamp_seconds": 180,
+              "evidence_ids": [
+                "t0180.00"
+              ],
+              "basis": "Direct search reveal and transient hand"
+            }
+          ]
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "card_name": "Poké Ball",
+          "result": "Carvanha added to hand",
+          "hand_count_after": 4,
+          "basis": "Accepted review carried forward plus targeted removal/search frames",
+          "evidence_ids": [
+            "t0175.50",
+            "t0180.00"
+          ]
+        },
+        {
+          "order": 2,
+          "card_name": "Carvanha",
+          "target": "Bench",
+          "hand_count_after": 3,
+          "basis": "Accepted review carried forward; targeted181 removal reference",
+          "evidence_ids": [
+            "t0181.00",
+            "t0188.00"
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "Energy attachment",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Lapras"
+          },
+          "hand_count_after": 3,
+          "basis": "Accepted review carried forward; no hand removal",
+          "accepted_review_reference": "../../20261002_143837000_iOS_shark_sol/REVIEW.md"
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Lapras",
+          "attack": "Surf",
+          "target": "opponent Active Meowscarada ex",
+          "hand_count_after": 3,
+          "nested_events_in_order": [
+            {
+              "kind": "visible warning",
+              "prompt_text": "End your turn? A Supporter card can be used",
+              "response": "Proceed without Supporter",
+              "basis": "Warning directly visible190.5; accepted review confirms proceed and subsequent attack"
+            }
+          ],
+          "basis": "Accepted review carried forward; warning and ending-hand references",
+          "evidence_ids": [
+            "t0190.50",
+            "t0194.00",
+            "t0197.00"
+          ]
+        }
+      ],
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Mega Sharpedo ex",
+            "basis": "direct native hand observation",
+            "evidence_ids": [
+              "t0188.00",
+              "t0190.50",
+              "t0194.00",
+              "t0197.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "basis": "direct native hand observation",
+            "evidence_ids": [
+              "t0188.00",
+              "t0190.50",
+              "t0194.00",
+              "t0197.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Copycat",
+            "basis": "direct native hand observation",
+            "evidence_ids": [
+              "t0188.00",
+              "t0190.50",
+              "t0194.00",
+              "t0197.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Directly read named cards in visible fan; no deck, count or later-play elimination",
+        "status": "observed",
+        "evidence_ids": [
+          "t0188.00",
+          "t0190.50",
+          "t0194.00",
+          "t0197.00"
+        ],
+        "limit_reason": null
+      },
+      "hand_reconciliation": {
+        "start": 4,
+        "removals": [
+          "Poké Ball",
+          "Carvanha"
+        ],
+        "additions": [
+          "Carvanha"
+        ],
+        "end": 3,
+        "equation": "4 -1 +1 -1 =3"
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 2,
+        "supported_range": null,
+        "basis": "Direct two card backs in native top crop",
+        "evidence_ids": [
+          "t0175.00"
+        ]
+      },
+      "board_at_start": null,
+      "board_after": null,
+      "energy_zones": null,
+      "accepted_state_reference": "../../20261002_143837000_iOS_shark_sol/REVIEW.md",
+      "state_limit_reason": "Owner guide prohibits redoing accepted boards, points and plays; original full review remains authoritative. Numbered actions here only reconcile target hand."
+    },
+    {
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds_approximate": 222.5,
+        "draw_settling_interval_seconds": [
+          222,
+          222.5
+        ],
+        "first_card_leaves_fan_interval_seconds": [
+          222.5,
+          223
+        ],
+        "before_end_action_seconds": 241,
+        "end_after_resolution_seconds": null,
+        "limits": "Turn7 before-attack card zoom partly overlaps hand; clear ending hand242/246 retained."
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Mega Sharpedo ex",
+            "basis": "direct native hand observation",
+            "evidence_ids": [
+              "t0222.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "basis": "direct native hand observation",
+            "evidence_ids": [
+              "t0222.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Copycat",
+            "basis": "direct native hand observation",
+            "evidence_ids": [
+              "t0222.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Misty",
+            "basis": "direct native hand observation",
+            "evidence_ids": [
+              "t0222.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Directly read named cards in visible fan; no deck, count or later-play elimination",
+        "status": "observed",
+        "evidence_ids": [
+          "t0222.50"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal draw",
+          "caused_by": "turn start",
+          "cards_in_reveal_order": [
+            {
+              "name": "Misty",
+              "timestamp_seconds": 221,
+              "evidence_ids": [
+                "t0221.00",
+                "t0222.50"
+              ],
+              "basis": "Direct draw reveal and pre-play fan"
+            }
+          ]
+        },
+        {
+          "kind": "Copycat draw",
+          "caused_by": "Copycat",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": null,
+          "cards_observed_after_draw": [
+            "Irida",
+            "Alolan Ninetales ex",
+            "Cyrus"
+          ],
+          "revealed_card_at240": {
+            "name": "Cyrus",
+            "evidence_ids": [
+              "t0240.00"
+            ],
+            "basis": "Direct reveal"
+          },
+          "evidence_ids": [
+            "t0240.00",
+            "t0242.00",
+            "t0246.00"
+          ],
+          "basis": "All three directly read from ending fan. Accepted review names draws; complete per-card reveal order not newly reviewed.",
+          "returned_or_discarded_cards": {
+            "returned_to_deck": [
+              "Lucky Ice Pop",
+              "Misty"
+            ],
+            "basis": "Observed two non-Copycat cards before shuffle plus accepted review"
+          },
+          "hand_count_after": 3,
+          "limit_reason": "Exact reveal times of Irida and Alolan Ninetales ex and reveal order remain outside this targeted capture; never infer reveal order from left-to-right fan."
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Mega Sharpedo ex",
+          "target": "Active Carvanha",
+          "hand_count_after": 3,
+          "evidence_ids": [
+            "t0222.50",
+            "t0223.00",
+            "t0228.00"
+          ],
+          "basis": "Accepted review carried forward plus direct card removal and evolved Active reference"
+        },
+        {
+          "order": 2,
+          "kind": "Energy attachment",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Mega Sharpedo ex"
+          },
+          "hand_count_after": 3,
+          "basis": "Accepted review carried forward",
+          "accepted_review_reference": "../../20261002_143837000_iOS_shark_sol/REVIEW.md"
+        },
+        {
+          "order": 3,
+          "card_name": "Copycat",
+          "result": "Shuffle remaining two cards; draw three",
+          "hand_count_after": 3,
+          "evidence_ids": [
+            "t0236.00",
+            "t0240.00",
+            "t0242.00"
+          ],
+          "basis": "Accepted review carried forward plus three named ending cards"
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Mega Sharpedo ex",
+          "attack": "Turbo Shark",
+          "target": "opponent Active Meowscarada ex",
+          "hand_count_after": 3,
+          "nested_events_in_order": [
+            {
+              "kind": "attack Energy effect",
+              "type": "Water",
+              "count": 1,
+              "destination": "benched Alolan Ninetales ex",
+              "basis": "Accepted review carried forward"
+            }
+          ],
+          "evidence_ids": [
+            "t0241.00",
+            "t0242.00",
+            "t0246.00"
+          ],
+          "basis": "Accepted review carried forward; no hand removal"
+        }
+      ],
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Irida",
+            "basis": "direct native hand observation",
+            "evidence_ids": [
+              "t0242.00",
+              "t0246.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Alolan Ninetales ex",
+            "basis": "direct native hand observation",
+            "evidence_ids": [
+              "t0242.00",
+              "t0246.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "basis": "direct native hand observation",
+            "evidence_ids": [
+              "t0242.00",
+              "t0246.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Directly read named cards in visible fan; no deck, count or later-play elimination",
+        "status": "observed",
+        "evidence_ids": [
+          "t0242.00",
+          "t0246.00"
+        ],
+        "limit_reason": null
+      },
+      "hand_reconciliation": {
+        "start": 4,
+        "evolution_removal": 1,
+        "copycat_play_removal": 1,
+        "remaining_cards_returned": 2,
+        "Copycat_additions": 3,
+        "end": 3,
+        "equation": "4 -1 -1 -2 +3 =3"
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "basis": "Direct three card backs in native top crop",
+        "evidence_ids": [
+          "t0222.50"
+        ]
+      },
+      "board_at_start": null,
+      "board_after": null,
+      "energy_zones": null,
+      "accepted_state_reference": "../../20261002_143837000_iOS_shark_sol/REVIEW.md",
+      "state_limit_reason": "Accepted states preserved by reference; no board/outcome re-review."
+    }
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "lead_checked": false,
+  "limits": [
+    "Starting identities directly resolved, no probable or null hand slots.",
+    "Normal draw endpoints approximate; acted before +1s.",
+    "Turn7 Copycat reveal order not independently reconstructed; exact ending fan directly read.",
+    "Board/Energy Zone and discard fields intentionally not retrodone under owner guide."
+  ]
+}

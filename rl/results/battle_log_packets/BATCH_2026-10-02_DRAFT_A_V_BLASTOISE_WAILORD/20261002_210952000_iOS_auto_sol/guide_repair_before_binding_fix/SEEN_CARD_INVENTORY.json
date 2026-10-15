@@ -1,0 +1,2127 @@
+{
+  "source_video": "20261002_210952000_iOS.MP4",
+  "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+  "reviewer": "/root/astra_drafta_bounded_repairs",
+  "model": "gpt-6-astra",
+  "reasoning_effort": "high",
+  "created_utc": "2026-10-03T00:40:11.572216+00:00",
+  "schema": "seen-card-inventory/v1",
+  "is_template": false,
+  "owner": "Dacz8976",
+  "cards": [
+    {
+      "name": "Irida",
+      "minimum_distinct_copies_supported": 1,
+      "maximum_simultaneously_visible_faces_or_tool_icons": 1,
+      "copy_count_basis": "Simultaneous visible copies",
+      "additional_physical_copy_evidence": [],
+      "simultaneous_duplicate_evidence": [],
+      "occurrences": [
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0031.40",
+              "source_seconds": 31.4133
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0088.40",
+              "source_seconds": 88.4133
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0141.40",
+              "source_seconds": 141.4
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "status": "fresh_native_observation"
+        }
+      ],
+      "printing_limit": "Identity is name/mechanical form; exact set, rarity and cosmetic printings are not exhaustively identified."
+    },
+    {
+      "name": "Lapras",
+      "minimum_distinct_copies_supported": 1,
+      "maximum_simultaneously_visible_faces_or_tool_icons": 1,
+      "copy_count_basis": "Simultaneous visible copies",
+      "additional_physical_copy_evidence": [],
+      "simultaneous_duplicate_evidence": [],
+      "occurrences": [
+        {
+          "context": "board top Active",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0031.40",
+              "source_seconds": 31.4133
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-L"
+        },
+        {
+          "context": "board top Active",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-L"
+        },
+        {
+          "context": "board top Active",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0088.40",
+              "source_seconds": 88.4133
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-L"
+        },
+        {
+          "context": "board top Active",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0141.40",
+              "source_seconds": 141.4
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-L"
+        },
+        {
+          "context": "board top Active",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-L"
+        },
+        {
+          "context": "board top Active",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-L"
+        },
+        {
+          "context": "board top Active",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-L"
+        },
+        {
+          "context": "visible owner discard top only",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "visible owner discard top only",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "status": "fresh_native_observation"
+        }
+      ],
+      "printing_limit": "Identity is name/mechanical form; exact set, rarity and cosmetic printings are not exhaustively identified."
+    },
+    {
+      "name": "Copycat",
+      "minimum_distinct_copies_supported": 1,
+      "maximum_simultaneously_visible_faces_or_tool_icons": 1,
+      "copy_count_basis": "Simultaneous visible copies",
+      "additional_physical_copy_evidence": [],
+      "simultaneous_duplicate_evidence": [],
+      "occurrences": [
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0031.40",
+              "source_seconds": 31.4133
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0088.40",
+              "source_seconds": 88.4133
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0141.40",
+              "source_seconds": 141.4
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "status": "fresh_native_observation"
+        }
+      ],
+      "printing_limit": "Identity is name/mechanical form; exact set, rarity and cosmetic printings are not exhaustively identified."
+    },
+    {
+      "name": "Mega Sharpedo ex",
+      "minimum_distinct_copies_supported": 2,
+      "maximum_simultaneously_visible_faces_or_tool_icons": 2,
+      "copy_count_basis": "Simultaneous visible copies",
+      "additional_physical_copy_evidence": [],
+      "simultaneous_duplicate_evidence": [
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0141.40",
+              "source_seconds": 141.4
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        }
+      ],
+      "occurrences": [
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0031.40",
+              "source_seconds": 31.4133
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0088.40",
+              "source_seconds": 88.4133
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 2,
+          "evidence": [
+            {
+              "evidence_id": "F0141.40",
+              "source_seconds": 141.4
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 2,
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "board top 2",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-S1"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "board top 2",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-S1"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "board top 2",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-S1"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "board top 1",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-S2"
+        },
+        {
+          "context": "board top 2",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-S1"
+        },
+        {
+          "context": "T6 supporter_draw transaction",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0093.00",
+              "source_seconds": 93.015
+            }
+          ],
+          "status": "source_bound_core_transaction_reconciled_to_fresh_hand_or_board",
+          "limit": "Core transaction timing/reveal order is retained; this occurrence is not asserted as a fresh inspection of every cited reveal frame."
+        },
+        {
+          "context": "T10 evolution play",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0167.40",
+              "source_seconds": 167.412
+            }
+          ],
+          "status": "fresh_anchor",
+          "limit": "Playing or moving a previously seen physical card does not add a copy."
+        },
+        {
+          "context": "T16 evolution play",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0266.40",
+              "source_seconds": 266.41
+            }
+          ],
+          "status": "fresh_anchor",
+          "limit": "Playing or moving a previously seen physical card does not add a copy."
+        },
+        {
+          "context": "physical evolution history",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0167.40",
+              "source_seconds": 167.412
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-S1"
+        },
+        {
+          "context": "physical evolution history",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0266.40",
+              "source_seconds": 266.41
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-S2"
+        }
+      ],
+      "printing_limit": "Identity is name/mechanical form; exact set, rarity and cosmetic printings are not exhaustively identified."
+    },
+    {
+      "name": "Professor's Research",
+      "minimum_distinct_copies_supported": 2,
+      "maximum_simultaneously_visible_faces_or_tool_icons": 1,
+      "copy_count_basis": "Two distinct native art printings played: full-art Research at F0033.40 and standard Research at F0090.40; the first remains in discard history. No recycling action in between.",
+      "additional_physical_copy_evidence": [
+        {
+          "evidence_id": "F0033.40",
+          "source_seconds": 33.415
+        },
+        {
+          "evidence_id": "F0090.40",
+          "source_seconds": 90.4133
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "occurrences": [
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0031.40",
+              "source_seconds": 31.4133
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0088.40",
+              "source_seconds": 88.4133
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "T2 card_play play",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0033.40",
+              "source_seconds": 33.415
+            }
+          ],
+          "status": "fresh_anchor",
+          "limit": "Playing or moving a previously seen physical card does not add a copy."
+        },
+        {
+          "context": "T6 normal_draw transaction",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0087.40",
+              "source_seconds": 87.4133
+            }
+          ],
+          "status": "source_bound_core_transaction_reconciled_to_fresh_hand_or_board",
+          "limit": "Core transaction timing/reveal order is retained; this occurrence is not asserted as a fresh inspection of every cited reveal frame."
+        },
+        {
+          "context": "T6 card_play play",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0090.40",
+              "source_seconds": 90.4133
+            }
+          ],
+          "status": "fresh_anchor",
+          "limit": "Playing or moving a previously seen physical card does not add a copy."
+        }
+      ],
+      "printing_limit": "Identity is name/mechanical form; exact set, rarity and cosmetic printings are not exhaustively identified."
+    },
+    {
+      "name": "Alolan Ninetales ex",
+      "minimum_distinct_copies_supported": 2,
+      "maximum_simultaneously_visible_faces_or_tool_icons": 2,
+      "copy_count_basis": "Simultaneous visible copies",
+      "additional_physical_copy_evidence": [],
+      "simultaneous_duplicate_evidence": [
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0088.40",
+              "source_seconds": 88.4133
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0141.40",
+              "source_seconds": 141.4
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        }
+      ],
+      "occurrences": [
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0031.40",
+              "source_seconds": 31.4133
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 2,
+          "evidence": [
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "board top 3",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0088.40",
+              "source_seconds": 88.4133
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0088.40",
+              "source_seconds": 88.4133
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "board top 3",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0141.40",
+              "source_seconds": 141.4
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0141.40",
+              "source_seconds": 141.4
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "board top 3",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "board top 3",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "board top 3",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "board top Active",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "board top Active",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "T2 normal_draw transaction",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0030.40",
+              "source_seconds": 30.4133
+            }
+          ],
+          "status": "source_bound_core_transaction_reconciled_to_fresh_hand_or_board",
+          "limit": "Core transaction timing/reveal order is retained; this occurrence is not asserted as a fresh inspection of every cited reveal frame."
+        },
+        {
+          "context": "T2 supporter_draw transaction",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0036.40",
+              "source_seconds": 36.415
+            }
+          ],
+          "status": "source_bound_core_transaction_reconciled_to_fresh_hand_or_board",
+          "limit": "Core transaction timing/reveal order is retained; this occurrence is not asserted as a fresh inspection of every cited reveal frame."
+        },
+        {
+          "context": "T4 evolution play",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0065.30",
+              "source_seconds": 65.3067
+            }
+          ],
+          "status": "fresh_anchor",
+          "limit": "Playing or moving a previously seen physical card does not add a copy."
+        },
+        {
+          "context": "T18 evolution play",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0293.40",
+              "source_seconds": 293.403
+            }
+          ],
+          "status": "fresh_anchor",
+          "limit": "Playing or moving a previously seen physical card does not add a copy."
+        },
+        {
+          "context": "physical evolution history",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0065.30",
+              "source_seconds": 65.3067
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "physical evolution history",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0293.40",
+              "source_seconds": 293.403
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-N2"
+        }
+      ],
+      "printing_limit": "Identity is name/mechanical form; exact set, rarity and cosmetic printings are not exhaustively identified."
+    },
+    {
+      "name": "Poké Ball",
+      "minimum_distinct_copies_supported": 1,
+      "maximum_simultaneously_visible_faces_or_tool_icons": 1,
+      "copy_count_basis": "Simultaneous visible copies",
+      "additional_physical_copy_evidence": [],
+      "simultaneous_duplicate_evidence": [],
+      "occurrences": [
+        {
+          "context": "visible owner discard top only",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "visible owner discard top only",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0088.40",
+              "source_seconds": 88.4133
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "T2 supporter_draw transaction",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0036.80",
+              "source_seconds": 36.815
+            }
+          ],
+          "status": "source_bound_core_transaction_reconciled_to_fresh_hand_or_board",
+          "limit": "Core transaction timing/reveal order is retained; this occurrence is not asserted as a fresh inspection of every cited reveal frame."
+        },
+        {
+          "context": "T2 card_play play",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0037.70",
+              "source_seconds": 37.715
+            }
+          ],
+          "status": "source_bound_core_play_reconciled_to_fresh_hand_or_board",
+          "limit": "Playing or moving a previously seen physical card does not add a copy."
+        }
+      ],
+      "printing_limit": "Identity is name/mechanical form; exact set, rarity and cosmetic printings are not exhaustively identified."
+    },
+    {
+      "name": "Alolan Vulpix",
+      "minimum_distinct_copies_supported": 2,
+      "maximum_simultaneously_visible_faces_or_tool_icons": 1,
+      "copy_count_basis": "Visible copy plus another retained in an independently witnessed evolution stack; hidden lower face not directly visible now",
+      "additional_physical_copy_evidence": [],
+      "simultaneous_duplicate_evidence": [
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 1,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 1,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        }
+      ],
+      "occurrences": [
+        {
+          "context": "board top 3",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "hidden lower evolution card retained in witnessed physical stack",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0088.40",
+              "source_seconds": 88.4133
+            },
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            },
+            {
+              "evidence_id": "F0065.30",
+              "source_seconds": 65.3067
+            }
+          ],
+          "status": "same_recording_evolution_history",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "hidden lower evolution card retained in witnessed physical stack",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0141.40",
+              "source_seconds": 141.4
+            },
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            },
+            {
+              "evidence_id": "F0065.30",
+              "source_seconds": 65.3067
+            }
+          ],
+          "status": "same_recording_evolution_history",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "hidden lower evolution card retained in witnessed physical stack",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            },
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            },
+            {
+              "evidence_id": "F0065.30",
+              "source_seconds": 65.3067
+            }
+          ],
+          "status": "same_recording_evolution_history",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "hidden lower evolution card retained in witnessed physical stack",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            },
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            },
+            {
+              "evidence_id": "F0065.30",
+              "source_seconds": 65.3067
+            }
+          ],
+          "status": "same_recording_evolution_history",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "hidden lower evolution card retained in witnessed physical stack",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            },
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            },
+            {
+              "evidence_id": "F0065.30",
+              "source_seconds": 65.3067
+            }
+          ],
+          "status": "same_recording_evolution_history",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "hidden lower evolution card retained in witnessed physical stack",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            },
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            },
+            {
+              "evidence_id": "F0065.30",
+              "source_seconds": 65.3067
+            }
+          ],
+          "status": "same_recording_evolution_history",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "hidden lower evolution card retained in witnessed physical stack",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            },
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            },
+            {
+              "evidence_id": "F0065.30",
+              "source_seconds": 65.3067
+            }
+          ],
+          "status": "same_recording_evolution_history",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "board top 3",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-N2"
+        },
+        {
+          "context": "T2 search transaction",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0040.00",
+              "source_seconds": 40.015
+            }
+          ],
+          "status": "source_bound_core_transaction_reconciled_to_fresh_hand_or_board",
+          "limit": "Core transaction timing/reveal order is retained; this occurrence is not asserted as a fresh inspection of every cited reveal frame."
+        },
+        {
+          "context": "T2 bench play",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0043.40",
+              "source_seconds": 43.415
+            }
+          ],
+          "status": "source_bound_core_play_reconciled_to_fresh_hand_or_board",
+          "limit": "Playing or moving a previously seen physical card does not add a copy."
+        },
+        {
+          "context": "T16 normal_draw transaction",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0260.40",
+              "source_seconds": 260.407
+            }
+          ],
+          "status": "source_bound_core_transaction_reconciled_to_fresh_hand_or_board",
+          "limit": "Core transaction timing/reveal order is retained; this occurrence is not asserted as a fresh inspection of every cited reveal frame."
+        },
+        {
+          "context": "T16 bench play",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0263.40",
+              "source_seconds": 263.408
+            }
+          ],
+          "status": "source_bound_core_play_reconciled_to_fresh_hand_or_board",
+          "limit": "Playing or moving a previously seen physical card does not add a copy."
+        },
+        {
+          "context": "physical evolution history",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-N1"
+        },
+        {
+          "context": "physical evolution history",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-N2"
+        }
+      ],
+      "printing_limit": "Identity is name/mechanical form; exact set, rarity and cosmetic printings are not exhaustively identified."
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "minimum_distinct_copies_supported": 1,
+      "maximum_simultaneously_visible_faces_or_tool_icons": 1,
+      "copy_count_basis": "Simultaneous visible copies",
+      "additional_physical_copy_evidence": [],
+      "simultaneous_duplicate_evidence": [],
+      "occurrences": [
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0088.40",
+              "source_seconds": 88.4133
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "visible owner discard top only",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0141.40",
+              "source_seconds": 141.4
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "visible owner discard top only",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "visible owner discard top only",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "visible owner discard top only",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "T4 normal_draw transaction",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0062.30",
+              "source_seconds": 62.305
+            }
+          ],
+          "status": "source_bound_core_transaction_reconciled_to_fresh_hand_or_board",
+          "limit": "Core transaction timing/reveal order is retained; this occurrence is not asserted as a fresh inspection of every cited reveal frame."
+        },
+        {
+          "context": "T6 card_play play",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0095.20",
+              "source_seconds": 95.215
+            }
+          ],
+          "status": "fresh_anchor",
+          "limit": "Playing or moving a previously seen physical card does not add a copy."
+        },
+        {
+          "context": "T6 card_play play",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0106.40",
+              "source_seconds": 106.4
+            }
+          ],
+          "status": "fresh_anchor",
+          "limit": "Playing or moving a previously seen physical card does not add a copy."
+        }
+      ],
+      "printing_limit": "Identity is name/mechanical form; exact set, rarity and cosmetic printings are not exhaustively identified."
+    },
+    {
+      "name": "Misty",
+      "minimum_distinct_copies_supported": 2,
+      "maximum_simultaneously_visible_faces_or_tool_icons": 2,
+      "copy_count_basis": "Simultaneous visible copies",
+      "additional_physical_copy_evidence": [],
+      "simultaneous_duplicate_evidence": [
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 2,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        }
+      ],
+      "occurrences": [
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0141.40",
+              "source_seconds": 141.4
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 2,
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 2,
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 2,
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 2,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "T6 supporter_draw transaction",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0092.00",
+              "source_seconds": 92.0133
+            }
+          ],
+          "status": "source_bound_core_transaction_reconciled_to_fresh_hand_or_board",
+          "limit": "Core transaction timing/reveal order is retained; this occurrence is not asserted as a fresh inspection of every cited reveal frame."
+        },
+        {
+          "context": "T12 normal_draw transaction",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0194.40",
+              "source_seconds": 194.407
+            }
+          ],
+          "status": "source_bound_core_transaction_reconciled_to_fresh_hand_or_board",
+          "limit": "Core transaction timing/reveal order is retained; this occurrence is not asserted as a fresh inspection of every cited reveal frame."
+        }
+      ],
+      "printing_limit": "Identity is name/mechanical form; exact set, rarity and cosmetic printings are not exhaustively identified."
+    },
+    {
+      "name": "Carvanha",
+      "minimum_distinct_copies_supported": 2,
+      "maximum_simultaneously_visible_faces_or_tool_icons": 1,
+      "copy_count_basis": "Visible copy plus another retained in an independently witnessed evolution stack; hidden lower face not directly visible now",
+      "additional_physical_copy_evidence": [],
+      "simultaneous_duplicate_evidence": [
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 1,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 1,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        },
+        {
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "directly_visible_named_faces_or_tool_icons": 0,
+          "count_including_retained_witnessed_evolution_stack": 2,
+          "basis": "Same-frame hand/board/Tool/discard top plus explicitly separated hidden lower evolution cards."
+        }
+      ],
+      "occurrences": [
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0141.40",
+              "source_seconds": 141.4
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "board top 2",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-S1"
+        },
+        {
+          "context": "hidden lower evolution card retained in witnessed physical stack",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            },
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            },
+            {
+              "evidence_id": "F0167.40",
+              "source_seconds": 167.412
+            }
+          ],
+          "status": "same_recording_evolution_history",
+          "physical_instance": "O-S1"
+        },
+        {
+          "context": "hidden lower evolution card retained in witnessed physical stack",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            },
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            },
+            {
+              "evidence_id": "F0167.40",
+              "source_seconds": 167.412
+            }
+          ],
+          "status": "same_recording_evolution_history",
+          "physical_instance": "O-S1"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "board top 1",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-S2"
+        },
+        {
+          "context": "hidden lower evolution card retained in witnessed physical stack",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            },
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            },
+            {
+              "evidence_id": "F0167.40",
+              "source_seconds": 167.412
+            }
+          ],
+          "status": "same_recording_evolution_history",
+          "physical_instance": "O-S1"
+        },
+        {
+          "context": "hidden lower evolution card retained in witnessed physical stack",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            },
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            },
+            {
+              "evidence_id": "F0266.40",
+              "source_seconds": 266.41
+            }
+          ],
+          "status": "same_recording_evolution_history",
+          "physical_instance": "O-S2"
+        },
+        {
+          "context": "hidden lower evolution card retained in witnessed physical stack",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            },
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            },
+            {
+              "evidence_id": "F0167.40",
+              "source_seconds": 167.412
+            }
+          ],
+          "status": "same_recording_evolution_history",
+          "physical_instance": "O-S1"
+        },
+        {
+          "context": "T8 normal_draw transaction",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0140.40",
+              "source_seconds": 140.4
+            }
+          ],
+          "status": "source_bound_core_transaction_reconciled_to_fresh_hand_or_board",
+          "limit": "Core transaction timing/reveal order is retained; this occurrence is not asserted as a fresh inspection of every cited reveal frame."
+        },
+        {
+          "context": "T8 bench play",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0143.40",
+              "source_seconds": 143.4
+            }
+          ],
+          "status": "source_bound_core_play_reconciled_to_fresh_hand_or_board",
+          "limit": "Playing or moving a previously seen physical card does not add a copy."
+        },
+        {
+          "context": "T14 normal_draw transaction",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0220.40",
+              "source_seconds": 220.413
+            }
+          ],
+          "status": "source_bound_core_transaction_reconciled_to_fresh_hand_or_board",
+          "limit": "Core transaction timing/reveal order is retained; this occurrence is not asserted as a fresh inspection of every cited reveal frame."
+        },
+        {
+          "context": "T14 bench play",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0223.40",
+              "source_seconds": 223.415
+            }
+          ],
+          "status": "source_bound_core_play_reconciled_to_fresh_hand_or_board",
+          "limit": "Playing or moving a previously seen physical card does not add a copy."
+        },
+        {
+          "context": "physical evolution history",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-S1"
+        },
+        {
+          "context": "physical evolution history",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "status": "fresh_native_observation",
+          "physical_instance": "O-S2"
+        }
+      ],
+      "printing_limit": "Identity is name/mechanical form; exact set, rarity and cosmetic printings are not exhaustively identified."
+    },
+    {
+      "name": "Elegant Cape",
+      "minimum_distinct_copies_supported": 1,
+      "maximum_simultaneously_visible_faces_or_tool_icons": 1,
+      "copy_count_basis": "Simultaneous visible copies",
+      "additional_physical_copy_evidence": [],
+      "simultaneous_duplicate_evidence": [],
+      "occurrences": [
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0165.40",
+              "source_seconds": 165.41
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0195.40",
+              "source_seconds": 195.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0221.40",
+              "source_seconds": 221.413
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0261.40",
+              "source_seconds": 261.407
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "T10 normal_draw transaction",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0164.40",
+              "source_seconds": 164.408
+            }
+          ],
+          "status": "source_bound_core_transaction_reconciled_to_fresh_hand_or_board",
+          "limit": "Core transaction timing/reveal order is retained; this occurrence is not asserted as a fresh inspection of every cited reveal frame."
+        }
+      ],
+      "printing_limit": "Identity is name/mechanical form; exact set, rarity and cosmetic printings are not exhaustively identified."
+    },
+    {
+      "name": "Cyrus",
+      "minimum_distinct_copies_supported": 1,
+      "maximum_simultaneously_visible_faces_or_tool_icons": 1,
+      "copy_count_basis": "Simultaneous visible copies",
+      "additional_physical_copy_evidence": [],
+      "simultaneous_duplicate_evidence": [],
+      "occurrences": [
+        {
+          "context": "owner hand",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "status": "fresh_native_observation"
+        },
+        {
+          "context": "T18 normal_draw transaction",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0290.40",
+              "source_seconds": 290.402
+            }
+          ],
+          "status": "source_bound_core_transaction_reconciled_to_fresh_hand_or_board",
+          "limit": "Core transaction timing/reveal order is retained; this occurrence is not asserted as a fresh inspection of every cited reveal frame."
+        },
+        {
+          "context": "T18 card_play play",
+          "count_here": 1,
+          "evidence": [
+            {
+              "evidence_id": "F0296.40",
+              "source_seconds": 296.405
+            }
+          ],
+          "status": "source_bound_core_play_reconciled_to_fresh_hand_or_board",
+          "limit": "Playing or moving a previously seen physical card does not add a copy."
+        }
+      ],
+      "printing_limit": "Identity is name/mechanical form; exact set, rarity and cosmetic printings are not exhaustively identified."
+    }
+  ],
+  "total_minimum_distinct_owner_deck_cards_seen": 19,
+  "exact_whole_deck_visually_recovered": false,
+  "exact_deck_limit": "Fewer than 20 distinct owner cards are exposed; no complete opened deck/discard census or verified empty-deck closure. DECK_USED.json is the separate supplied 20-card snapshot and is not used to inflate seen counts.",
+  "repeated_sighting_policy": "Counts are simultaneous physical lower bounds, not sums of hand draws or repeated sightings. Evolving preserves the lower card; Tools count separately once. Moving or discarding a seen card adds no copy.",
+  "copycat_and_recycling_check": "Copycat stays in hand and is never played. One Lucky Ice Pop is seen at T4/T6 starts, then used twice in T6. Heads at F0101.30 returns the same card; its second use reaches Lapras 90 HP at F0106.40, Tails at F0109.30 discards it, and F0110.60 shows it atop the owner discard. Count is one physical card, not two plays.",
+  "opponent_supplied_shared_cards": [
+    {
+      "name": "Soothing Shore",
+      "owner": "opponent",
+      "counted_in_owner_inventory": false,
+      "evidence_ids": [
+        "F0290.40"
+      ]
+    }
+  ],
+  "opened_discard_views": [],
+  "opened_discard_limit": "Neither pile is opened in the reviewed source. Exposed top cards are partial observations only.",
+  "energy_limit": "Generated Energy is not a physical deck-card slot and is recorded per Pokemon in the supplement.",
+  "scope": "Full 19-turn source-bound core supplies action coverage. Fresh native reads cover all nine owner starts, evolution anchors, both Research printings, Lucky Ice Pop resolution, T15 replacement and final bench knockout. This is not a redundant full-video pass.",
+  "recycling_events": [
+    {
+      "physical_instance": "owner_lucky_ice_pop_1",
+      "name": "Lucky Ice Pop",
+      "minimum_copies": 1,
+      "turn": 6,
+      "events": [
+        {
+          "event": "initial held card",
+          "evidence": [
+            {
+              "evidence_id": "F0063.30",
+              "source_seconds": 63.305
+            },
+            {
+              "evidence_id": "F0088.40",
+              "source_seconds": 88.4133
+            }
+          ]
+        },
+        {
+          "event": "first use, heal Lapras from 50 to 70; Heads returns this card",
+          "evidence": [
+            {
+              "evidence_id": "F0095.20",
+              "source_seconds": 95.215
+            },
+            {
+              "evidence_id": "F0101.30",
+              "source_seconds": 101.3
+            }
+          ],
+          "limit": "F0095.20 is the pre-heal play anchor, F0101.30 the Heads result. Exact completed healing frame is retained in full source chronology, not claimed visible in the pre-heal frame."
+        },
+        {
+          "event": "reused same returned card, second heal reaches 90; Tails sends to discard",
+          "evidence": [
+            {
+              "evidence_id": "F0106.40",
+              "source_seconds": 106.4
+            },
+            {
+              "evidence_id": "F0109.30",
+              "source_seconds": 109.302
+            },
+            {
+              "evidence_id": "F0110.60",
+              "source_seconds": 110.602
+            }
+          ]
+        }
+      ],
+      "no_new_copy_reason": "Only one Ice Pop in the starting hand; printed Heads return text and same-turn sequence reconcile both plays without a new draw. A second copy is not exposed."
+    }
+  ]
+}

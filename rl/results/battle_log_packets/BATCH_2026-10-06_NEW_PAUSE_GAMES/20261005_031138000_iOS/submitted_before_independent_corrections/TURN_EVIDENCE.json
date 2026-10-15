@@ -1,0 +1,5251 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "pause-20261005-031138",
+  "sources": [
+    {
+      "video_basename": "20261005_031138000_iOS.MP4",
+      "sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "default_capture_policy": {
+    "owner_turn_offsets_after_draw_seconds": [
+      1,
+      3,
+      6
+    ],
+    "before_end_action_required": true,
+    "native_resolution_required": true,
+    "bottom_crop_height_fraction": 0.2,
+    "top_crop_pixel_bounds": [
+      0,
+      130,
+      1170,
+      660
+    ],
+    "fixed_grid_is_turn_start_evidence": false,
+    "discard_target_every_owner_turns": [
+      2,
+      3
+    ]
+  },
+  "frames": [
+    {
+      "evidence_id": "f0002.00",
+      "role": "focused_action_or_board",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 2.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0002.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0002.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0002.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0005.00",
+      "role": "focused_action_or_board",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 5.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0005.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0005.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0005.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0029.00",
+      "role": "opening",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 29.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0029.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0029.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0029.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0044.00",
+      "role": "focused_action_or_board",
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 44.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0044.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0044.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0044.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0045.00",
+      "role": "focused_action_or_board",
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 45.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0045.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0045.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0045.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0046.00",
+      "role": "focused_action_or_board",
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 46.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0046.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0046.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0046.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0048.00",
+      "role": "focused_action_or_board",
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 48.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0048.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0048.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0048.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0050.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 50.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0050.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0050.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0050.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0051.50",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 51.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0051.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0051.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0051.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0052.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 52.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0052.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0052.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0052.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0052.50",
+      "role": "selected_owner_start_hand",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": 52.3,
+      "requested_source_seconds": 52.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": 0.2,
+      "full_frame_path": "turn_evidence\\t0052.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0052.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0052.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0053.00",
+      "role": "draw_candidate_approximately_plus1",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": 52.3,
+      "requested_source_seconds": 53.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": 0.7,
+      "full_frame_path": "turn_evidence\\t0053.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0053.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0053.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": "Action/card zoom has already started; retained candidate is not used as the start hand"
+    },
+    {
+      "evidence_id": "f0054.50",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 54.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0054.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0054.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0054.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0055.00",
+      "role": "draw_candidate_approximately_plus3",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": 52.3,
+      "requested_source_seconds": 55.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": 2.7,
+      "full_frame_path": "turn_evidence\\t0055.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0055.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0055.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": "Action/card zoom has already started; retained candidate is not used as the start hand"
+    },
+    {
+      "evidence_id": "f0057.50",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 57.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0057.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0057.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0057.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0058.00",
+      "role": "draw_candidate_approximately_plus6",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": 52.3,
+      "requested_source_seconds": 58.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": 5.7,
+      "full_frame_path": "turn_evidence\\t0058.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0058.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0058.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": "Action/card zoom has already started; retained candidate is not used as the start hand"
+    },
+    {
+      "evidence_id": "f0059.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 59.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0059.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0059.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0059.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0060.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 60.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0060.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0060.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0060.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0061.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 61.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0061.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0061.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0061.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0062.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 62.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0062.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0062.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0062.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0064.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 64.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0064.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0064.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0064.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0065.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 65.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0065.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0065.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0065.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0066.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 66.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0066.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0066.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0066.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0067.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 67.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0067.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0067.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0067.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0070.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 70.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0070.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0070.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0070.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0072.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 72.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0072.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0072.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0072.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0074.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 74.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0074.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0074.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0074.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0075.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 75.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0075.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0075.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0075.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0076.00",
+      "role": "before_end_hand",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": 52.3,
+      "requested_source_seconds": 76.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": 23.7,
+      "full_frame_path": "turn_evidence\\t0076.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0076.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0076.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0077.00",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 77.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0077.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0077.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0077.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0077.50",
+      "role": "focused_action_or_board",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 77.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0077.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0077.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0077.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0078.00",
+      "role": "focused_action_or_board",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 78.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0078.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0078.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0078.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0080.00",
+      "role": "focused_action_or_board",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 80.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0080.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0080.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0080.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0083.00",
+      "role": "focused_action_or_board",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 83.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0083.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0083.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0083.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0084.00",
+      "role": "focused_action_or_board",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 84.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0084.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0084.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0084.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0086.00",
+      "role": "focused_action_or_board",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 86.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0086.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0086.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0086.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0088.00",
+      "role": "focused_action_or_board",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 88.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0088.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0088.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0088.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0089.00",
+      "role": "focused_action_or_board",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 89.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0089.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0089.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0089.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0090.00",
+      "role": "focused_action_or_board",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 90.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0090.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0090.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0090.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0092.00",
+      "role": "focused_action_or_board",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 92.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0092.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0092.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0092.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0095.00",
+      "role": "focused_action_or_board",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 95.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0095.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0095.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0095.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0100.00",
+      "role": "focused_action_or_board",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 100.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0100.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0100.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0100.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0109.00",
+      "role": "focused_action_or_board",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 109.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0109.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0109.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0109.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0110.00",
+      "role": "focused_action_or_board",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 110.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0110.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0110.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0110.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0112.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 112.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0112.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0112.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0112.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0114.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 114.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0114.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0114.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0114.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0115.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 115.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0115.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0115.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0115.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0116.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 116.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0116.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0116.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0116.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0116.50",
+      "role": "draw_candidate_plus1_selected",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": 115.7,
+      "requested_source_seconds": 116.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": 0.8,
+      "full_frame_path": "turn_evidence\\t0116.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0116.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0116.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0118.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 118.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0118.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0118.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0118.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0118.50",
+      "role": "draw_candidate_plus3",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": 115.7,
+      "requested_source_seconds": 118.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": 2.8,
+      "full_frame_path": "turn_evidence\\t0118.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0118.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0118.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": "Action/card zoom has already started; retained candidate is not used as the start hand"
+    },
+    {
+      "evidence_id": "f0120.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 120.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0120.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0120.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0120.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0121.50",
+      "role": "draw_candidate_plus6",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": 115.7,
+      "requested_source_seconds": 121.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": 5.8,
+      "full_frame_path": "turn_evidence\\t0121.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0121.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0121.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": "Action/card zoom has already started; retained candidate is not used as the start hand"
+    },
+    {
+      "evidence_id": "f0124.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 124.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0124.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0124.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0124.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0126.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 126.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0126.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0126.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0126.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0128.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 128.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0128.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0128.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0128.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0130.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 130.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0130.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0130.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0130.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0132.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 132.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0132.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0132.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0132.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0134.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 134.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0134.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0134.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0134.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0134.50",
+      "role": "last_pre_attack_hand",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": 115.7,
+      "requested_source_seconds": 134.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": 18.8,
+      "full_frame_path": "turn_evidence\\t0134.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0134.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0134.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": "Clear unzoomed final four-card hand immediately before Aromatisse attack at135."
+    },
+    {
+      "evidence_id": "f0135.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 135.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0135.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0135.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0135.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0138.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 138.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0138.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0138.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0138.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0140.00",
+      "role": "focused_action_or_board",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 140.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0140.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0140.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0140.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0142.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 142.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0142.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0142.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0142.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0144.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 144.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0144.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0144.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0144.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0146.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 146.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0146.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0146.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0146.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0148.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 148.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0148.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0148.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0148.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0150.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 150.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0150.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0150.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0150.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0152.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 152.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0152.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0152.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0152.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0152.50",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 152.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0152.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0152.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0152.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0153.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 153.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0153.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0153.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0153.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0154.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 154.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0154.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0154.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0154.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0155.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 155.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0155.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0155.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0155.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0155.40",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 155.4,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0155.40.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0155.40_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0155.40_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0155.80",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 155.8,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0155.80.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0155.80_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0155.80_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0156.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 156.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0156.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0156.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0156.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0156.20",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 156.2,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0156.20.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0156.20_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0156.20_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0156.50",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 156.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0156.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0156.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0156.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0157.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 157.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0157.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0157.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0157.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0158.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 158.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0158.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0158.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0158.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0161.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 161.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0161.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0161.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0161.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0164.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 164.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0164.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0164.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0164.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0173.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 173.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0173.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0173.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0173.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0174.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 174.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0174.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0174.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0174.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0176.00",
+      "role": "focused_action_or_board",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 176.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0176.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0176.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0176.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0178.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 178.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0178.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0178.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0178.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0180.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 180.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0180.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0180.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0180.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0180.50",
+      "role": "selected_owner_start_hand_dense_early",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": 180.5,
+      "requested_source_seconds": 180.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": 0.0,
+      "full_frame_path": "turn_evidence\\t0180.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0180.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0180.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0180.70",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 180.7,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0180.70.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0180.70_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0180.70_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0180.90",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 180.9,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0180.90.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0180.90_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0180.90_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0181.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 181.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0181.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0181.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0181.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0181.20",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 181.2,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0181.20.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0181.20_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0181.20_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0181.50",
+      "role": "draw_candidate_plus1",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": 180.5,
+      "requested_source_seconds": 181.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "turn_evidence\\t0181.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0181.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0181.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": "Action/card zoom has already started; retained candidate is not used as the start hand"
+    },
+    {
+      "evidence_id": "f0181.80",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 181.8,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0181.80.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0181.80_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0181.80_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0182.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 182.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0182.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0182.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0182.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0183.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 183.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0183.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0183.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0183.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0183.50",
+      "role": "draw_candidate_plus3",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": 180.5,
+      "requested_source_seconds": 183.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "turn_evidence\\t0183.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0183.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0183.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": "Action/card zoom has already started; retained candidate is not used as the start hand"
+    },
+    {
+      "evidence_id": "f0184.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 184.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0184.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0184.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0184.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0185.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 185.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0185.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0185.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0185.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0186.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 186.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0186.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0186.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0186.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0186.50",
+      "role": "draw_candidate_plus6",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": 180.5,
+      "requested_source_seconds": 186.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "turn_evidence\\t0186.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0186.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0186.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": "Action/card zoom has already started; retained candidate is not used as the start hand"
+    },
+    {
+      "evidence_id": "f0187.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 187.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0187.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0187.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0187.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0188.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 188.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0188.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0188.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0188.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0190.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 190.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0190.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0190.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0190.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0191.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 191.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0191.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0191.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0191.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0192.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 192.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0192.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0192.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0192.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0193.50",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 193.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0193.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0193.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0193.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0194.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 194.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0194.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0194.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0194.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0195.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 195.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0195.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0195.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0195.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0195.50",
+      "role": "before_attack_hand",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": 180.5,
+      "requested_source_seconds": 195.5,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": 15.0,
+      "full_frame_path": "turn_evidence\\t0195.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0195.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0195.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0196.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 196.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0196.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0196.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0196.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0198.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 198.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0198.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0198.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0198.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0200.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 200.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0200.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0200.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0200.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0203.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 203.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0203.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0203.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0203.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0204.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 204.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0204.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0204.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0204.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0206.00",
+      "role": "focused_action_or_board",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 206.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0206.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0206.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0206.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0208.00",
+      "role": "focused_action_or_board",
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 208.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0208.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0208.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0208.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0210.00",
+      "role": "focused_action_or_board",
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 210.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0210.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0210.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0210.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0212.00",
+      "role": "focused_action_or_board",
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 212.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0212.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0212.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0212.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0213.00",
+      "role": "focused_action_or_board",
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 213.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0213.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0213.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0213.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0214.00",
+      "role": "focused_action_or_board",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 214.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0214.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0214.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0214.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0216.00",
+      "role": "focused_action_or_board",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 216.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0216.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0216.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0216.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0225.00",
+      "role": "focused_action_or_board",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 225.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0225.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0225.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0225.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0226.00",
+      "role": "focused_action_or_board",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261005_031138000_iOS.MP4",
+      "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 226.0,
+      "actual_frame_seconds_if_measured": null,
+      "actual_frame_limit_reason": "FFmpeg seek timestamp retained; decoded PTS not measured",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence\\t0226.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence\\t0226.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence\\t0226.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          130,
+          1170,
+          660
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "See ledger and prose for source-bound observation",
+      "suitability_or_limit": null
+    }
+  ],
+  "discard_snapshots": [],
+  "scheduled_capture_limits": [
+    "No opened discard-pile views anywhere in the inspected source; public top discard cards and play-derived history only.",
+    "Turn2 first play begins less than1second after draw completes; dense52.5s frame selected.",
+    "Turn6 first play begins0.7seconds after draw completes; dense180.5s frame selected.",
+    "Turn4/6 end by attack, so last pre-attack hand replaces pre-End-Turn view.",
+    "Draw-end times are visually estimated; approximately+1/+3/+6 candidates retained."
+  ]
+}

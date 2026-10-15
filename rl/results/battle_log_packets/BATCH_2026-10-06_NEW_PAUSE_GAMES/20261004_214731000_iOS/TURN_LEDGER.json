@@ -1,0 +1,5751 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261004_214731000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261004_214731000_iOS.MP4",
+      "sha256": "d363bdd1c3f4aafc5ad9423764e706f8944407d68a04c82d72317592d7e7e198",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "turns": [
+    {
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20261004_214731000_iOS.MP4",
+      "timing": {
+        "turn_start_seconds": 38,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "hidden card-back draw; identities unavailable",
+        "first_voluntary_move_seconds": 43,
+        "before_end_action_seconds": 85,
+        "end_after_resolution_seconds": 91
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0040.00"
+            ],
+            "limit_reason": "Face hidden"
+          },
+          {
+            "position": 2,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0040.00"
+            ],
+            "limit_reason": "Face hidden"
+          },
+          {
+            "position": 3,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0040.00"
+            ],
+            "limit_reason": "Face hidden"
+          },
+          {
+            "position": 4,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0040.00"
+            ],
+            "limit_reason": "Face hidden"
+          },
+          {
+            "position": 5,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0040.00"
+            ],
+            "limit_reason": "Face hidden"
+          }
+        ],
+        "count": 5,
+        "basis": "Direct opponent fan count after concealed normal draw; faces remain hidden.",
+        "evidence_ids": [
+          "e_0040.00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Opponent hand faces are concealed."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "not_applicable",
+        "limit_reason": "This is an opponent turn."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count distinct card backs and lower exposed fan edges in native top crop",
+        "basis": "not an owner-turn start",
+        "evidence_ids": null,
+        "limit_reason": "Not an owner turn."
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 40,
+              "evidence_ids": [
+                "e_0040.00"
+              ],
+              "basis": "hidden opponent card back",
+              "limit_reason": "Opponent card face is concealed."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 40,
+          "evidence_ids": [
+            "e_0040.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Copycat",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 61,
+              "evidence_ids": [
+                "e_0061.00"
+              ],
+              "basis": "hidden opponent card back",
+              "limit_reason": "Opponent card face is concealed."
+            },
+            {
+              "name": null,
+              "reveal_position": 2,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 63,
+              "evidence_ids": [
+                "e_0063.00"
+              ],
+              "basis": "hidden opponent card back",
+              "limit_reason": "Opponent card face is concealed."
+            },
+            {
+              "name": null,
+              "reveal_position": 3,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 65,
+              "evidence_ids": [
+                "e_0065.00"
+              ],
+              "basis": "hidden opponent card back",
+              "limit_reason": "Opponent card face is concealed."
+            },
+            {
+              "name": null,
+              "reveal_position": 4,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 67,
+              "evidence_ids": [
+                "e_0067.00"
+              ],
+              "basis": "hidden opponent card back",
+              "limit_reason": "Opponent card face is concealed."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 61,
+          "evidence_ids": [
+            "e_0061.00",
+            "e_0063.00",
+            "e_0065.00",
+            "e_0067.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 5,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 77,
+              "evidence_ids": [
+                "e_0077.00"
+              ],
+              "basis": "hidden opponent card back",
+              "limit_reason": "Opponent card face is concealed."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 77,
+          "evidence_ids": [
+            "e_0077.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Rainbow Cave",
+          "target": "Stadium",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Play stadium",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 43,
+          "evidence_ids": [
+            "e_0043.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Rocky Helmet",
+          "target": "Active Mega Rayquaza ex",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach tool",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 51,
+          "evidence_ids": [
+            "e_0051.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Copycat",
+          "target": "opponent hand",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Shuffle concealed remaining hand; draw four concealed cards matching owner four-card hand",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 57,
+          "evidence_ids": [
+            "e_0057.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Dratini",
+          "target": "Bench position 1",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Bench 60 HP Dratini",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 69,
+          "evidence_ids": [
+            "e_0069.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 5,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": "opponent deck",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Search one concealed Basic; face not exposed",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 73,
+          "evidence_ids": [
+            "e_0073.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 6,
+          "kind": "card_play",
+          "card_name": "Leftovers",
+          "target": "Bench Dratini",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach tool",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 83,
+          "evidence_ids": [
+            "e_0083.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "At opponent turn end Caterpie Quick Growth automatically evolves Active from deck into Metapod, 40→80 maximum/current HP; opening Metapod remains in owner hand.",
+          "seconds": [
+            86,
+            87,
+            89,
+            90,
+            91
+          ],
+          "evidence_ids": [
+            "e_0086.00",
+            "e_0089.00",
+            "e_0091.00"
+          ],
+          "basis": "visible ability banner and Metapod reveal"
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 1,
+        "phase": "resolved boundary state",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Caterpie",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 40,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0038.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0038.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0038.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 180,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0038.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fire",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0038.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0038.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0038.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 1,
+        "phase": "resolved boundary state",
+        "stadium": "Rainbow Cave",
+        "owner": {
+          "active": {
+            "name": "Metapod",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 80,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0091.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0091.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0091.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 180,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0091.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dratini",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0091.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fire",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0091.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0091.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0091.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "not_applicable",
+        "limit_reason": "Owner did not act in this turn."
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "e_0038.00",
+        "e_0043.00",
+        "e_0051.00",
+        "e_0057.00",
+        "e_0069.00",
+        "e_0073.00",
+        "e_0083.00",
+        "e_0091.00"
+      ],
+      "limits": [
+        "No opened full discard-pile view is recorded.",
+        "Opponent decisions and hand faces remain concealed where only waiting UI is shown."
+      ]
+    },
+    {
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261004_214731000_iOS.MP4",
+      "timing": {
+        "turn_start_seconds": 92,
+        "draw_animation_end_seconds": 95,
+        "draw_end_basis": "one-second retained window, estimated completion to within about 0.5 second",
+        "first_voluntary_move_seconds": 96,
+        "before_end_action_seconds": 134,
+        "end_after_resolution_seconds": 143
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Accelgor",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0095.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0095.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0095.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Metapod",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0095.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Fragrant Forest",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0095.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct native hand view",
+        "evidence_ids": [
+          "e_0095.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Accelgor",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0095.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0095.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0095.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Metapod",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0095.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Fragrant Forest",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0095.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct native hand view",
+        "evidence_ids": [
+          "e_0095.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 2,
+        "supported_range": null,
+        "count_method": "Count distinct card backs and lower exposed fan edges in native top crop",
+        "basis": "direct visual count",
+        "evidence_ids": [
+          "e_0095.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Fragrant Forest",
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 94,
+              "evidence_ids": [
+                "e_0094.00"
+              ],
+              "basis": "visible individual card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 94,
+          "evidence_ids": [
+            "e_0094.00"
+          ],
+          "limit_reason": null,
+          "count_basis": "Visible count plus observed transaction arithmetic; exact names transcribed from individual reveals."
+        },
+        {
+          "kind": "search",
+          "caused_by": "Fragrant Forest",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Caterpie",
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 106,
+              "evidence_ids": [
+                "e_0106.00"
+              ],
+              "basis": "visible individual card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 106,
+          "evidence_ids": [
+            "e_0106.00"
+          ],
+          "limit_reason": null,
+          "count_basis": "Visible count plus observed transaction arithmetic; exact names transcribed from individual reveals."
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 4,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poké Ball",
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 114,
+              "evidence_ids": [
+                "e_0114.00"
+              ],
+              "basis": "visible individual card reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Accelgor",
+              "reveal_position": 2,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 115,
+              "evidence_ids": [
+                "e_0115.00"
+              ],
+              "basis": "visible individual card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 114,
+          "evidence_ids": [
+            "e_0114.00",
+            "e_0115.00"
+          ],
+          "limit_reason": null,
+          "count_basis": "Visible count plus observed transaction arithmetic; exact names transcribed from individual reveals."
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 5,
+          "cards_in_reveal_order": [
+            {
+              "name": "Shelmet",
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 121,
+              "evidence_ids": [
+                "e_0121.00"
+              ],
+              "basis": "visible individual card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 121,
+          "evidence_ids": [
+            "e_0121.00"
+          ],
+          "limit_reason": null,
+          "count_basis": "Visible count plus observed transaction arithmetic; exact names transcribed from individual reveals."
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Fragrant Forest",
+          "target": "Stadium",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Replace Rainbow Cave; old stadium discarded",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 96,
+          "evidence_ids": [
+            "e_0096.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 2,
+          "kind": "stadium_effect",
+          "card_name": "Fragrant Forest",
+          "target": "owner deck",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Accept Yes prompt and find Caterpie",
+          "prompt_text": "Use the effect of Fragrant Forest?",
+          "response": "Yes",
+          "nested_events_in_order": [],
+          "hand_count_after": 5,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 103,
+          "evidence_ids": [
+            "e_0103.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Caterpie",
+          "target": "Bench position 3",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Bench 40 HP Caterpie",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 109,
+          "evidence_ids": [
+            "e_0109.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Professor's Research",
+          "target": "owner hand",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Draw Poké Ball then Accelgor",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 5,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 111,
+          "evidence_ids": [
+            "e_0111.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 5,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": "owner deck",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Find Shelmet",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 5,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 117,
+          "evidence_ids": [
+            "e_0117.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 6,
+          "kind": "card_play",
+          "card_name": "Shelmet",
+          "target": "Bench position 2",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Bench 70 HP Shelmet",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 127,
+          "evidence_ids": [
+            "e_0127.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 7,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Active Metapod",
+          "energy": {
+            "type": "Grass",
+            "count": 1,
+            "destination": "Active Metapod",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach one Grass from Energy Zone",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 131,
+          "evidence_ids": [
+            "e_0131.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 8,
+          "kind": "attack",
+          "card_name": "Metapod",
+          "target": "opponent Active Mega Rayquaza ex",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Ram 30: Rayquaza 180→150; Rocky Helmet deals20 to Metapod80→60",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Ram30 damage",
+            "Rocky Helmet20 retaliation",
+            "turn ends"
+          ],
+          "hand_count_after": 4,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 135,
+          "evidence_ids": [
+            "e_0135.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 2,
+        "phase": "resolved boundary state",
+        "stadium": "Rainbow Cave",
+        "owner": {
+          "active": {
+            "name": "Metapod",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 80,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0095.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0095.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0095.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 180,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0095.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dratini",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0095.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fire",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0095.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0095.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0095.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 2,
+        "phase": "resolved boundary state",
+        "stadium": "Fragrant Forest",
+        "owner": {
+          "active": {
+            "name": "Metapod",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 80,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Grass": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0143.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Shelmet",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0143.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Caterpie",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 40,
+              "hp_max": 40,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0143.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0143.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0143.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 150,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 30,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0143.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dratini",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0143.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fire",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0143.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0143.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0143.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Accelgor",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0134.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0134.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Metapod",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0134.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Accelgor",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0134.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct native hand view",
+        "evidence_ids": [
+          "e_0134.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "e_0092.00",
+        "e_0095.00",
+        "e_0096.00",
+        "e_0103.00",
+        "e_0109.00",
+        "e_0111.00",
+        "e_0117.00",
+        "e_0127.00",
+        "e_0131.00",
+        "e_0134.00",
+        "e_0135.00",
+        "e_0143.00"
+      ],
+      "limits": [
+        "No opened full discard-pile view is recorded.",
+        "Opponent decisions and hand faces remain concealed where only waiting UI is shown."
+      ]
+    },
+    {
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261004_214731000_iOS.MP4",
+      "timing": {
+        "turn_start_seconds": 144,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "hidden card-back draw; identities unavailable",
+        "first_voluntary_move_seconds": 150,
+        "before_end_action_seconds": 180,
+        "end_after_resolution_seconds": 181
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0147.00"
+            ],
+            "limit_reason": "Face hidden"
+          },
+          {
+            "position": 2,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0147.00"
+            ],
+            "limit_reason": "Face hidden"
+          },
+          {
+            "position": 3,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0147.00"
+            ],
+            "limit_reason": "Face hidden"
+          }
+        ],
+        "count": 3,
+        "basis": "Direct opponent fan count after concealed normal draw; faces remain hidden.",
+        "evidence_ids": [
+          "e_0147.00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Opponent hand faces are concealed."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "not_applicable",
+        "limit_reason": "This is an opponent turn."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count distinct card backs and lower exposed fan edges in native top crop",
+        "basis": "not an owner-turn start",
+        "evidence_ids": null,
+        "limit_reason": "Not an owner turn."
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 147,
+              "evidence_ids": [
+                "e_0147.00"
+              ],
+              "basis": "hidden opponent card back",
+              "limit_reason": "Opponent card face is concealed."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 147,
+          "evidence_ids": [
+            "e_0147.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 165,
+              "evidence_ids": [
+                "e_0165.00"
+              ],
+              "basis": "hidden opponent card back",
+              "limit_reason": "Opponent card face is concealed."
+            },
+            {
+              "name": null,
+              "reveal_position": 2,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 167,
+              "evidence_ids": [
+                "e_0167.00"
+              ],
+              "basis": "hidden opponent card back",
+              "limit_reason": "Opponent card face is concealed."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 165,
+          "evidence_ids": [
+            "e_0165.00",
+            "e_0167.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Dragonair",
+          "target": "Bench Dratini position1",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Evolve Dratini→Dragonair80HP, retain Leftovers",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 150,
+          "evidence_ids": [
+            "e_0150.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Professor's Research",
+          "target": "opponent hand",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Draw two concealed cards; name supported by new public discard top and two card-back draws",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 163,
+          "evidence_ids": [
+            "e_0163.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 3,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Active Mega Rayquaza ex",
+          "energy": {
+            "type": "Fire",
+            "count": 1,
+            "destination": "Active Mega Rayquaza ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach one Fire; no attack this turn",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 173,
+          "evidence_ids": [
+            "e_0173.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Time limit displays0 at181 during transition; turn changes182 without attack. The cause of ending the turn is not established. Do not infer a timeout or a deliberately declined attack.",
+          "evidence_ids": [
+            "e_0181.00",
+            "e_0182.00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 3,
+        "phase": "resolved boundary state",
+        "stadium": "Fragrant Forest",
+        "owner": {
+          "active": {
+            "name": "Metapod",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 80,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Grass": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0143.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Shelmet",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0143.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Caterpie",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 40,
+              "hp_max": 40,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0143.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0143.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0143.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 150,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 30,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0143.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dratini",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0143.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fire",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0147.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0143.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0143.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 3,
+        "phase": "resolved boundary state",
+        "stadium": "Fragrant Forest",
+        "owner": {
+          "active": {
+            "name": "Metapod",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 80,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Grass": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0181.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Shelmet",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0181.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Caterpie",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 40,
+              "hp_max": 40,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0181.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0181.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0181.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 150,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 30,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Fire": 1
+              }
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0181.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dragonair",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0181.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fire",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0181.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0181.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0181.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "not_applicable",
+        "limit_reason": "Owner did not act in this turn."
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "e_0144.00",
+        "e_0150.00",
+        "e_0163.00",
+        "e_0173.00",
+        "e_0181.00"
+      ],
+      "limits": [
+        "No opened full discard-pile view is recorded.",
+        "Opponent decisions and hand faces remain concealed where only waiting UI is shown."
+      ]
+    },
+    {
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261004_214731000_iOS.MP4",
+      "timing": {
+        "turn_start_seconds": 182,
+        "draw_animation_end_seconds": 185,
+        "draw_end_basis": "one-second retained window, estimated completion to within about 0.5 second",
+        "first_voluntary_move_seconds": 186,
+        "before_end_action_seconds": 217,
+        "end_after_resolution_seconds": 223
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Accelgor",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0185.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0185.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Metapod",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0185.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Accelgor",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0185.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Butterfree",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0185.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct native hand view",
+        "evidence_ids": [
+          "e_0185.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Accelgor",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0185.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0185.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Metapod",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0185.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Accelgor",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0185.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Butterfree",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0185.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct native hand view",
+        "evidence_ids": [
+          "e_0185.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count distinct card backs and lower exposed fan edges in native top crop",
+        "basis": "direct visual count",
+        "evidence_ids": [
+          "e_0185.50"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Butterfree",
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 184,
+              "evidence_ids": [
+                "e_0184.00"
+              ],
+              "basis": "visible individual card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 184,
+          "evidence_ids": [
+            "e_0184.00"
+          ],
+          "limit_reason": null,
+          "count_basis": "Visible count plus observed transaction arithmetic; exact names transcribed from individual reveals."
+        },
+        {
+          "kind": "search",
+          "caused_by": "Fragrant Forest",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": "Shelmet",
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 197,
+              "evidence_ids": [
+                "e_0197.00"
+              ],
+              "basis": "visible individual card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 197,
+          "evidence_ids": [
+            "e_0197.00"
+          ],
+          "limit_reason": null,
+          "count_basis": "Visible count plus observed transaction arithmetic; exact names transcribed from individual reveals."
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Butterfree",
+          "target": "Active Metapod",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Evolve: retain20 damage, 60/80→110/130",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 186,
+          "evidence_ids": [
+            "e_0186.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Accelgor",
+          "target": "Bench Shelmet position2",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Evolve70HP Shelmet→80HP Accelgor",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 190,
+          "evidence_ids": [
+            "e_0190.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 3,
+          "kind": "stadium_effect",
+          "card_name": "Fragrant Forest",
+          "target": "owner deck",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Find second Shelmet",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 194,
+          "evidence_ids": [
+            "e_0194.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Shelmet",
+          "target": "Bench position1",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Bench70HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 200,
+          "evidence_ids": [
+            "e_0200.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 5,
+          "kind": "card_play",
+          "card_name": "Metapod",
+          "target": "Bench Caterpie position3",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Evolve40HP Caterpie→80HP Metapod",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 202,
+          "evidence_ids": [
+            "e_0202.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 6,
+          "kind": "card_play",
+          "card_name": "Lucky Ice Pop",
+          "target": "Active Butterfree",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Heal110→130; Heads213 returns Pop to hand",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "heal20",
+            "Heads",
+            "return same Pop"
+          ],
+          "hand_count_after": 2,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 207,
+          "evidence_ids": [
+            "e_0207.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 7,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Bench Accelgor position2",
+          "energy": {
+            "type": "Grass",
+            "count": 1,
+            "destination": "Bench Accelgor position2",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach one Grass",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 214,
+          "evidence_ids": [
+            "e_0214.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 8,
+          "kind": "attack",
+          "card_name": "Butterfree",
+          "target": "opponent Active Mega Rayquaza ex",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Sunny Wind60: Ray150→90; no additional healing while full; Rocky Helmet130→110",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "damage60",
+            "Sunny Wind heal capped at maximum HP",
+            "Rocky Helmet20"
+          ],
+          "hand_count_after": 2,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 218,
+          "evidence_ids": [
+            "e_0218.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 4,
+        "phase": "resolved boundary state",
+        "stadium": "Fragrant Forest",
+        "owner": {
+          "active": {
+            "name": "Metapod",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 80,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Grass": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0181.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Shelmet",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0181.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Caterpie",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 40,
+              "hp_max": 40,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0181.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0185.50"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0181.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 150,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 30,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Fire": 1
+              }
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0181.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dragonair",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0181.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fire",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0181.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0181.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0181.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 4,
+        "phase": "resolved boundary state",
+        "stadium": "Fragrant Forest",
+        "owner": {
+          "active": {
+            "name": "Butterfree",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 110,
+            "hp_max": 130,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Grass": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0223.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Shelmet",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0223.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Accelgor",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Grass": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0223.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Metapod",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0223.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0223.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0223.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 90,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Fire": 1
+              }
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0223.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dragonair",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0223.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fire",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0223.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0223.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0223.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Accelgor",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0217.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0217.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "direct native hand view",
+        "evidence_ids": [
+          "e_0217.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "e_0182.00",
+        "e_0185.50",
+        "e_0186.00",
+        "e_0190.00",
+        "e_0194.00",
+        "e_0200.00",
+        "e_0202.00",
+        "e_0207.00",
+        "e_0214.00",
+        "e_0217.00",
+        "e_0218.00",
+        "e_0223.00"
+      ],
+      "limits": [
+        "No opened full discard-pile view is recorded.",
+        "Opponent decisions and hand faces remain concealed where only waiting UI is shown."
+      ]
+    },
+    {
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261004_214731000_iOS.MP4",
+      "timing": {
+        "turn_start_seconds": 225,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "hidden card-back draw; identities unavailable",
+        "first_voluntary_move_seconds": 230,
+        "before_end_action_seconds": 237,
+        "end_after_resolution_seconds": 240
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0228.00"
+            ],
+            "limit_reason": "Face hidden"
+          },
+          {
+            "position": 2,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0228.00"
+            ],
+            "limit_reason": "Face hidden"
+          },
+          {
+            "position": 3,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0228.00"
+            ],
+            "limit_reason": "Face hidden"
+          },
+          {
+            "position": 4,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0228.00"
+            ],
+            "limit_reason": "Face hidden"
+          }
+        ],
+        "count": 4,
+        "basis": "Direct opponent fan count after concealed normal draw; faces remain hidden.",
+        "evidence_ids": [
+          "e_0228.00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Opponent hand faces are concealed."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "not_applicable",
+        "limit_reason": "This is an opponent turn."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count distinct card backs and lower exposed fan edges in native top crop",
+        "basis": "not an owner-turn start",
+        "evidence_ids": null,
+        "limit_reason": "Not an owner turn."
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 227,
+              "evidence_ids": [
+                "e_0227.00"
+              ],
+              "basis": "hidden opponent card back",
+              "limit_reason": "Opponent card face is concealed."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 227,
+          "evidence_ids": [
+            "e_0227.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Active Mega Rayquaza ex",
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "Active Mega Rayquaza ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach Lightning, now Fire1+Lightning1",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 230,
+          "evidence_ids": [
+            "e_0230.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Cyclizar",
+          "target": "Bench position2",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Bench80HP Cyclizar",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 233,
+          "evidence_ids": [
+            "e_0233.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 3,
+          "kind": "attack",
+          "card_name": "Mega Rayquaza ex",
+          "target": "owner Active Butterfree",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Mega Burst100 discards Fire1+Lightning1; Butterfree110→10",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "discard all attached Fire/Lightning, total2",
+            "50 damage per discarded Energy =100",
+            "Butterfree survives10HP"
+          ],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 238,
+          "evidence_ids": [
+            "e_0238.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 5,
+        "phase": "resolved boundary state",
+        "stadium": "Fragrant Forest",
+        "owner": {
+          "active": {
+            "name": "Butterfree",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 110,
+            "hp_max": 130,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Grass": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0223.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Shelmet",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0223.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Accelgor",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Grass": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0223.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Metapod",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0223.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0223.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0223.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 90,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Fire": 1
+              }
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0223.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dragonair",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0223.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0228.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0223.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0223.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 5,
+        "phase": "resolved boundary state",
+        "stadium": "Fragrant Forest",
+        "owner": {
+          "active": {
+            "name": "Butterfree",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 10,
+            "hp_max": 130,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 120,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Grass": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0240.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Shelmet",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0240.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Accelgor",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Grass": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0240.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Metapod",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0240.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0240.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0240.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 90,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0240.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dragonair",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0240.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Cyclizar",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0240.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0240.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0240.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0240.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "not_applicable",
+        "limit_reason": "Owner did not act in this turn."
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "e_0225.00",
+        "e_0230.00",
+        "e_0233.00",
+        "e_0238.00",
+        "e_0240.00"
+      ],
+      "limits": [
+        "No opened full discard-pile view is recorded.",
+        "Opponent decisions and hand faces remain concealed where only waiting UI is shown."
+      ]
+    },
+    {
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261004_214731000_iOS.MP4",
+      "timing": {
+        "turn_start_seconds": 241,
+        "draw_animation_end_seconds": 244,
+        "draw_end_basis": "one-second retained window, estimated completion to within about 0.5 second",
+        "first_voluntary_move_seconds": 245,
+        "before_end_action_seconds": 278,
+        "end_after_resolution_seconds": 298,
+        "first_voluntary_move_limit": "Hiking Trail has left the hand by245s and replacement resolves246s; this is a bounded input/animation window, not exact input PTS."
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Accelgor",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0244.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0244.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0244.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct native hand view",
+        "evidence_ids": [
+          "e_0244.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Accelgor",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0244.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0244.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0244.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct native hand view",
+        "evidence_ids": [
+          "e_0244.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count distinct card backs and lower exposed fan edges in native top crop",
+        "basis": "direct visual count",
+        "evidence_ids": [
+          "e_0244.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Hiking Trail",
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 243,
+              "evidence_ids": [
+                "e_0243.00"
+              ],
+              "basis": "visible individual card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 243,
+          "evidence_ids": [
+            "e_0243.00"
+          ],
+          "limit_reason": null,
+          "count_basis": "Visible count plus observed transaction arithmetic; exact names transcribed from individual reveals."
+        },
+        {
+          "kind": "stadium_end_draw",
+          "caused_by": "Hiking Trail",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Lucky Ice Pop",
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 293,
+              "evidence_ids": [
+                "e_0293.00"
+              ],
+              "basis": "visible individual card reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Shelmet",
+              "reveal_position": 2,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 294,
+              "evidence_ids": [
+                "e_0294.00"
+              ],
+              "basis": "visible individual card reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Quick-Grow Extract",
+              "reveal_position": 3,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 295,
+              "evidence_ids": [
+                "e_0295.00"
+              ],
+              "basis": "visible individual card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 0,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 293,
+          "evidence_ids": [
+            "e_0293.00",
+            "e_0294.00",
+            "e_0295.00"
+          ],
+          "limit_reason": null,
+          "count_basis": "Visible count plus observed transaction arithmetic; exact names transcribed from individual reveals."
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Hiking Trail",
+          "target": "Stadium",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Replace Fragrant Forest",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 246,
+          "evidence_ids": [
+            "e_0246.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Accelgor",
+          "target": "Bench Shelmet position1",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Evolve left Shelmet→Accelgor80HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 1,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 253,
+          "evidence_ids": [
+            "e_0253.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Lucky Ice Pop",
+          "target": "Active Butterfree",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Heal10→30; Heads263 returns Pop",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "heal20",
+            "Heads",
+            "return Pop"
+          ],
+          "hand_count_after": 1,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 257,
+          "evidence_ids": [
+            "e_0257.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Lucky Ice Pop",
+          "target": "Active Butterfree",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Replay same card; heal30→50; Tails271 discards Pop",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "heal20",
+            "Tails",
+            "discard Pop"
+          ],
+          "hand_count_after": 0,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 266,
+          "evidence_ids": [
+            "e_0266.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 5,
+          "kind": "retreat",
+          "card_name": null,
+          "target": "Active Butterfree→Bench-middle Accelgor",
+          "energy": {
+            "type": null,
+            "count": 1,
+            "destination": "discard pile",
+            "retreat_payment_by_type": {
+              "Grass": 1
+            }
+          },
+          "result": "Pay Grass1 from Butterfree; promote middle Accelgor with existingGrass1",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 0,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 275,
+          "evidence_ids": [
+            "e_0275.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 6,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Active Accelgor",
+          "energy": {
+            "type": "Grass",
+            "count": 1,
+            "destination": "Active Accelgor",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach one Grass from zone; total2",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 0,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 277,
+          "evidence_ids": [
+            "e_0277.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 7,
+          "kind": "attack",
+          "card_name": "Accelgor",
+          "target": "opponent Active Mega Rayquaza ex",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Deck and Cover50 causes poison/paralysis, shuffles attacker and all attached cards, promotes Butterfree",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "50 damage: Ray90→40",
+            "Ray poisoned and paralyzed",
+            "Accelgor80 remains at80 before shuffle; no20 Rocky damage observed",
+            "shuffle Accelgor, underlying Shelmet and Grass2 into deck",
+            "choose Butterfree as replacement Active at289-290",
+            "Hiking Trail draws three cards",
+            "poison checkup40→30"
+          ],
+          "hand_count_after": 3,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 280,
+          "evidence_ids": [
+            "e_0280.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants.",
+          "hand_count_after_basis": "3 after required nested Hiking Trail end effect; 0 before that automatic draw."
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Hiking Trail triggers at291 with empty owner hand and draws three named cards293-295. Poison checkup297 reduces Ray40→30.",
+          "evidence_ids": [
+            "e_0291.00",
+            "e_0293.00",
+            "e_0294.00",
+            "e_0295.00",
+            "e_0297.00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 6,
+        "phase": "resolved boundary state",
+        "stadium": "Fragrant Forest",
+        "owner": {
+          "active": {
+            "name": "Butterfree",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 10,
+            "hp_max": 130,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 120,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Grass": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0240.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Shelmet",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0240.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Accelgor",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Grass": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0240.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Metapod",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0240.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0244.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0240.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 90,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0240.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dragonair",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0240.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Cyclizar",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0240.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0240.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0240.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0240.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 7,
+        "phase": "Resolved turn6 board with transition to turn7 displayed",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Butterfree",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 130,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 80,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0298.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Accelgor",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0298.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Metapod",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0298.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0298.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0298.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 150,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [
+              "Poisoned",
+              "Paralyzed"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0298.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dragonair",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0298.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Cyclizar",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0298.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0298.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0298.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0298.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0298.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Shelmet",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0298.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Quick-Grow Extract",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0298.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct native hand view",
+        "evidence_ids": [
+          "e_0298.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "e_0241.00",
+        "e_0244.00",
+        "e_0246.00",
+        "e_0253.00",
+        "e_0257.00",
+        "e_0266.00",
+        "e_0275.00",
+        "e_0277.00",
+        "e_0280.00",
+        "e_0298.00"
+      ],
+      "limits": [
+        "No opened full discard-pile view is recorded.",
+        "Opponent decisions and hand faces remain concealed where only waiting UI is shown."
+      ]
+    },
+    {
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261004_214731000_iOS.MP4",
+      "timing": {
+        "turn_start_seconds": 298,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "hidden card-back draw; identities unavailable",
+        "first_voluntary_move_seconds": 301,
+        "before_end_action_seconds": 326,
+        "end_after_resolution_seconds": 329
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0303.00"
+            ],
+            "limit_reason": "Face hidden"
+          },
+          {
+            "position": 2,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0303.00"
+            ],
+            "limit_reason": "Face hidden"
+          },
+          {
+            "position": 3,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0303.00"
+            ],
+            "limit_reason": "Face hidden"
+          },
+          {
+            "position": 4,
+            "name": null,
+            "variant": null,
+            "basis": "visible card back",
+            "evidence_ids": [
+              "e_0303.00"
+            ],
+            "limit_reason": "Face hidden"
+          }
+        ],
+        "count": 4,
+        "basis": "Direct opponent fan count after concealed normal draw; faces remain hidden.",
+        "evidence_ids": [
+          "e_0303.00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Opponent hand faces are concealed."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "not_applicable",
+        "limit_reason": "This is an opponent turn."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count distinct card backs and lower exposed fan edges in native top crop",
+        "basis": "not an owner-turn start",
+        "evidence_ids": null,
+        "limit_reason": "Not an owner turn."
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 299,
+              "evidence_ids": [
+                "e_0299.00"
+              ],
+              "basis": "hidden opponent card back",
+              "limit_reason": "Opponent card face is concealed."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 299,
+          "evidence_ids": [
+            "e_0299.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "ability",
+          "card_name": "Dragonair: Dragon's Blessing",
+          "target": "Active Mega Rayquaza ex",
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "Active Mega Rayquaza ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Recover Lightning from discard; attach Lightning1",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 301,
+          "evidence_ids": [
+            "e_0301.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Active Mega Rayquaza ex",
+          "energy": {
+            "type": "Fire",
+            "count": 1,
+            "destination": "Active Mega Rayquaza ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach one Fire from zone; total Fire1+Lightning1",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 309,
+          "evidence_ids": [
+            "e_0309.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Rocky Helmet",
+          "target": "Bench Cyclizar position2",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach second Rocky Helmet",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 319,
+          "evidence_ids": [
+            "e_0319.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "No attack while Ray is Paralyzed. Poison checkup327 lowers30→20, then paralysis clears328 before owner turn8. Do not call unseen opponent prompts declined.",
+          "evidence_ids": [
+            "e_0327.00",
+            "e_0328.00",
+            "e_0329.00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 7,
+        "phase": "resolved boundary state",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Butterfree",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 130,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 80,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0298.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Accelgor",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0298.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Metapod",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0298.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0298.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0298.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 150,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [
+              "Poisoned",
+              "Paralyzed"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0298.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dragonair",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0298.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Cyclizar",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0298.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fire",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0303.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0298.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0298.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 8,
+        "phase": "Resolved turn7 board with transition to turn8 displayed",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Butterfree",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 130,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 80,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0329.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Accelgor",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0329.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Metapod",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0329.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0329.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0329.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 160,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Fire": 1,
+                "Lightning": 1
+              }
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [
+              "Poisoned"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0329.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dragonair",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0329.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Cyclizar",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Rocky Helmet",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0329.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fire",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0329.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0329.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0329.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "not_applicable",
+        "limit_reason": "Owner did not act in this turn."
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "e_0298.00",
+        "e_0301.00",
+        "e_0309.00",
+        "e_0319.00",
+        "e_0329.00"
+      ],
+      "limits": [
+        "No opened full discard-pile view is recorded.",
+        "Opponent decisions and hand faces remain concealed where only waiting UI is shown."
+      ]
+    },
+    {
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261004_214731000_iOS.MP4",
+      "timing": {
+        "turn_start_seconds": 329,
+        "draw_animation_end_seconds": 332,
+        "draw_end_basis": "one-second retained window, estimated completion to within about 0.5 second",
+        "first_voluntary_move_seconds": 333,
+        "before_end_action_seconds": 345,
+        "end_after_resolution_seconds": 355
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0332.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Shelmet",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0332.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Quick-Grow Extract",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0332.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Accelgor",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0332.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct native hand view",
+        "evidence_ids": [
+          "e_0332.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0332.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Shelmet",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0332.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Quick-Grow Extract",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0332.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Accelgor",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0332.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct native hand view",
+        "evidence_ids": [
+          "e_0332.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count distinct card backs and lower exposed fan edges in native top crop",
+        "basis": "direct visual count",
+        "evidence_ids": [
+          "e_0332.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Accelgor",
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 331,
+              "evidence_ids": [
+                "e_0331.00"
+              ],
+              "basis": "visible individual card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 331,
+          "evidence_ids": [
+            "e_0331.00"
+          ],
+          "limit_reason": null,
+          "count_basis": "Visible count plus observed transaction arithmetic; exact names transcribed from individual reveals."
+        },
+        {
+          "kind": "evolution_search",
+          "caused_by": "Quick-Grow Extract",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Butterfree",
+              "reveal_position": 1,
+              "source_video": "20261004_214731000_iOS.MP4",
+              "timestamp_seconds": 340,
+              "evidence_ids": [
+                "e_0340.00"
+              ],
+              "basis": "visible individual card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 2,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 340,
+          "evidence_ids": [
+            "e_0340.00"
+          ],
+          "limit_reason": null,
+          "count_basis": "Visible count plus observed transaction arithmetic; exact names transcribed from individual reveals."
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Shelmet",
+          "target": "Bench position2",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Bench70HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 333,
+          "evidence_ids": [
+            "e_0333.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Quick-Grow Extract",
+          "target": "Bench Metapod position3",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Choose Metapod337; reveal Butterfree340 and evolve to130HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "select Metapod",
+            "search deck for Butterfree",
+            "evolve without adding Butterfree to hand"
+          ],
+          "hand_count_after": 2,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 337,
+          "evidence_ids": [
+            "e_0337.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 3,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Active Butterfree",
+          "energy": {
+            "type": "Grass",
+            "count": 1,
+            "destination": "Active Butterfree",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach one Grass from zone",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 341,
+          "evidence_ids": [
+            "e_0341.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Butterfree",
+          "target": "opponent Active Mega Rayquaza ex",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Sunny Wind60 knocks out20HP Ray; heal50→70 then Rocky Helmet20 returns70→50; owner receives3points and wins",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "60 attack damage Ray20→0",
+            "heal20 Butterfree50→70",
+            "Rocky Helmet20 Butterfree70→50",
+            "Mega Rayquaza ex KO awards3points",
+            "terminal victory"
+          ],
+          "hand_count_after": 2,
+          "source_video": "20261004_214731000_iOS.MP4",
+          "timestamp_seconds": 346,
+          "evidence_ids": [
+            "e_0346.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Times are retained seek labels, not measured PTS or exact input instants."
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 8,
+        "phase": "resolved boundary state",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Butterfree",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 130,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 80,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0329.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Accelgor",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0329.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Metapod",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0329.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0332.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0329.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 160,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Fire": 1,
+                "Lightning": 1
+              }
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [
+              "Poisoned"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0329.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dragonair",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0329.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Cyclizar",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Rocky Helmet",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0329.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fire",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0329.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0329.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0329.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 8,
+        "phase": "Last fully visible KO board at354s before removal and point award; not a resolved post-removal Active state",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Butterfree",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 130,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 80,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Grass": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "e_0354.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Accelgor",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0354.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Shelmet",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0354.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Butterfree",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0354.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Grass",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0354.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0354.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Rayquaza ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 0,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed HP and unmodified board",
+            "damage": 180,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Fire": 1,
+                "Lightning": 1
+              }
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [
+              "Poisoned"
+            ],
+            "active_effects": [
+              {
+                "name": "Knocked Out",
+                "source": "Sunny Wind",
+                "duration": "terminal"
+              }
+            ],
+            "evidence_ids": [
+              "e_0354.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dragonair",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Leftovers",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0354.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            },
+            {
+              "name": "Cyclizar",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible printed HP and unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Rocky Helmet",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "e_0354.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Artwork/printing identifiers are not separately established by gameplay."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fire",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": null
+            },
+            "basis": "visible large this-turn circle and small next icon; no hidden deck-type assumption",
+            "evidence_ids": [
+              "e_0354.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "e_0354.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "e_0354.00"
+        ],
+        "terminal_resolution": {
+          "owner_points_after_award": 3,
+          "opponent_points_after_award": 0,
+          "result": "victory",
+          "evidence_ids": [
+            "e_0359.00",
+            "e_0374.00"
+          ],
+          "basis": "359s displays +3points;374s displays final3-0 Victory. Rayquaza removal begins355s. No post-removal stable board is claimed here."
+        }
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0345.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Accelgor",
+            "variant": null,
+            "basis": "visible native hand",
+            "evidence_ids": [
+              "e_0345.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "direct native hand view",
+        "evidence_ids": [
+          "e_0345.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "e_0329.00",
+        "e_0332.00",
+        "e_0333.00",
+        "e_0337.00",
+        "e_0341.00",
+        "e_0345.00",
+        "e_0346.00",
+        "e_0355.00"
+      ],
+      "limits": [
+        "No opened full discard-pile view is recorded.",
+        "Opponent decisions and hand faces remain concealed where only waiting UI is shown."
+      ]
+    }
+  ],
+  "limits": [
+    "Opponent card faces remain hidden for draws/searches not revealed.",
+    "Exact input/frame PTS was not measured; retained seek times identify source-local evidence.",
+    "No opened discard-pile views in this recording.",
+    "The filmed Grass deck does not match any of the nine current live lists. Deck supplement pending lead QR/live-log reconciliation."
+  ]
+}

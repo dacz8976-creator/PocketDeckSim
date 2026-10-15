@@ -1,0 +1,35 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-10T04:09:46.976759+00:00",
+  "source_video": "20261010_014541000_iOS.MP4",
+  "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 12,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_PAUSE_GAMES\\20261010_014541000_iOS\\independent_sol\\CHECK_RESULT.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "Initial23-deck snapshot lacked this entry. Current live20 is a later QR candidate; visible Elegant Cape conflicts with it, so exact earlier game20 remains unverified.",
+    "No opened discard piles appear",
+    "Opponent draws/search faces hidden",
+    "Source-local draw-end estimates approximately0.5s; actual extracted-frame PTS not measured"
+  ],
+  "outcome": {
+    "owner": "loss",
+    "opponent": "Max Ketchum",
+    "method": "Knockouts; final Suicune ex attack",
+    "owner_points": 0,
+    "opponent_points_displayed": 3,
+    "terminal_turn": 12,
+    "evidence_ids": [
+      "f_0486.00",
+      "f_0490.00",
+      "f_0492.00",
+      "f_0501.00"
+    ]
+  },
+  "external_status": "Source-qualified live deck definitions have been saved and read back. This game save is pending; dated deck retrieval and any unverified earlier version are preserved in DECK_USED.json.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

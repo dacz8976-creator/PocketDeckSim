@@ -1,0 +1,140 @@
+{
+  "accepted": true,
+  "reviewer": "/root/check_ladder_144627",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "source_filename": "20261014_144627000_iOS.MP4",
+  "source_sha256": "87622e2457ff364815731b3994b09685127c8dbb12a44d3077e9a9c4bddfa385",
+  "frozen_manifest_sha256": "d8573a8c7182be966854899309c7046e0b63feef42ec0c979bf7f5d0f91e90c8",
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "checked_timed_findings": [
+    {
+      "timestamps_seconds": [
+        0,
+        23,
+        467
+      ],
+      "finding": "Deck 12 selected, visible Spinarak/Ariados, Cottonee/Whimsicott ex and Teal Mask Ogerpon ex core. Going second explicit at23 and result467.",
+      "status": "confirmed"
+    },
+    {
+      "timestamps_seconds": [
+        95.5,
+        100,
+        141,
+        144,
+        164,
+        166,
+        168,
+        175
+      ],
+      "finding": "Fresh95.5 shows first-turn Active Cottonee unenergized, energized Bench Cottonee and Whimsicott in hand. Global3 starts100. After Cottonee KO/replacement141, evolution144 and first Grass Knot166 occur on next owner turn T2/global4. Opponent has1 before attack164/166; Zeraora0HP168; owner1 at175.",
+      "status": "confirmed"
+    },
+    {
+      "timestamps_seconds": [
+        258.5,
+        263,
+        278
+      ],
+      "finding": "Fresh258.5 independently matches owner T3 Ariados retreat line: Ariados Active90, Cape Whimsicott Bench120 with two Grass, XSpeed in discard, Starting Plains and Zeraora110.263 shows attack HP animation;278 Volt Charge proves opponent continuation. Exact final80 is taken from primary account, not the263 animation number.",
+      "status": "consistent"
+    },
+    {
+      "timestamps_seconds": [
+        376,
+        401.5,
+        404,
+        412
+      ],
+      "finding": "Ariados absent Active and discard visible376 after opponent point2. Fresh401.5 confirms Ogerpon Energized Leaves attack;404 target gone;412 owner2/opponent2 and global11 banner. Magneton/Magnezone core readable.",
+      "status": "confirmed"
+    },
+    {
+      "timestamps_seconds": [
+        445,
+        452,
+        456,
+        467
+      ],
+      "finding": "Miraidon ex name, Legendary Drive/Overdrive120 and numeric12 visible445; Whimsicott120 to0 by452; opponent+2 reaching3 at456; Defeat vsへいちょー, went second,11 turns,2-3 and220 damage at467.",
+      "status": "confirmed"
+    },
+    {
+      "timestamps_seconds": [
+        0,
+        23,
+        100,
+        141,
+        144,
+        164,
+        166,
+        168,
+        175,
+        263,
+        278,
+        376,
+        404,
+        412,
+        445,
+        452,
+        456,
+        467,
+        95.5,
+        258.5,
+        401.5
+      ],
+      "finding": "No Auto option/control seen in inspected source-bound views; sampled interface consistent with human named-opponent battle. Specific ranked queue remains owner-designated and qualified.",
+      "status": "qualified"
+    },
+    {
+      "timestamps_seconds": [
+        0,
+        468.806667
+      ],
+      "finding": "Source probe independently gives468.806667s/863042539bytes. COVERAGE and REVIEW explicitly cover setup, all11 alternating turns, terminal and results without a missing interval. References exist within frozen native map; point progression and220 total reconcile. This checks full coverage contract plus selected source windows, not a second full visual review.",
+      "status": "accepted"
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Bounded independent check, not a second complete visual pass or simulator reconstruction. Reused18 native frames and extracted only3 fresh original-resolution samples.",
+    "Global4 at first attack is reconciled from went-second order, visible global3 banner and ensuing owner turn;166 attack frame itself does not display turn number.",
+    "Unreadable Team Rocket Supporter title, hidden cards/full lists and every intermediate Energy count remain qualified as in primary packet. Specific ranked queue label is not independently shown.",
+    "No Auto observed in samples and primary reports none throughout; this check cannot prove absence in every individual frame.",
+    "Terminal and first-attack seek times are retained frame times, not exact tap onset."
+  ],
+  "fresh_source_samples_seconds": [
+    95.5,
+    258.5,
+    401.5
+  ],
+  "reused_native_samples_seconds": [
+    0,
+    23,
+    100,
+    141,
+    144,
+    164,
+    166,
+    168,
+    175,
+    263,
+    278,
+    376,
+    404,
+    412,
+    445,
+    452,
+    456,
+    467
+  ],
+  "exact_three_item_note_prefix": "2nd | Whimsicott ex T2 | opp 1 pt",
+  "recommended_ladder_section": "deck 12 (Ariados / Whimsicott / Ogerpon)",
+  "integrity_receipts": [
+    "INTEGRITY_BEFORE.json",
+    "INTEGRITY_AFTER.json"
+  ],
+  "checked_utc": "2026-10-14T16:42:59.637056+00:00"
+}

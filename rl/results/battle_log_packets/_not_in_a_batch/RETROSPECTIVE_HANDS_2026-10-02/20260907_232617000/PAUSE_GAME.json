@@ -1,0 +1,130 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260907_232617000",
+  "review_date": "2026-10-02T21:02:47.832335+00:00",
+  "sources": [
+    {
+      "video_basename": "20260907_232617000_iOS.MP4",
+      "sha256": "0114215B1DF4E6D6DD2B21C47616B9F9486788F815BC48B978DBA06D68490166",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "destination": null,
+  "deck_name": "Eevee / Jolteon ex (pre-season visible core)",
+  "opening": {
+    "source_video": "20260907_232617000_iOS.MP4",
+    "timestamp_seconds": 13,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Professor's Research",
+        "basis": "direct_native_preplacement_fan",
+        "evidence_ids": [
+          "n13.000",
+          "n13.500"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Professor's Research",
+        "basis": "direct_native_preplacement_fan",
+        "evidence_ids": [
+          "n13.000",
+          "n13.500"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Team Rocket's Goo-zooka",
+        "basis": "direct_native_preplacement_fan",
+        "evidence_ids": [
+          "n13.000",
+          "n13.500"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Lisia",
+        "basis": "direct_native_preplacement_fan",
+        "evidence_ids": [
+          "n13.000",
+          "n13.500"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Eevee",
+        "basis": "direct_native_preplacement_fan",
+        "evidence_ids": [
+          "n13.000",
+          "n13.500"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Eevee",
+      "opening_position": 5,
+      "source_video": "20260907_232617000_iOS.MP4",
+      "timestamp_seconds": 15,
+      "evidence_ids": [
+        "f15.000"
+      ],
+      "basis": "direct native already-selected frame plus inherited accepted setup"
+    },
+    "redraw_or_replacement": {
+      "observed": false,
+      "basis": "Setup cards dealt12s, intact13s; Eevee selected15s; no redraw visible in inspected setup window"
+    },
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "n13.000",
+      "n13.500",
+      "f15.000"
+    ],
+    "limit_reason": null,
+    "identities_unordered_inherited": [
+      "Eevee",
+      "Professor's Research",
+      "Professor's Research",
+      "Team Rocket's Goo-zooka",
+      "Lisia"
+    ]
+  },
+  "packet_files": {
+    "prose": "REVIEW_SUPPLEMENT.md",
+    "accepted_prose": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260907_232617_v5_review\\final_packet\\REVIEW.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "capture_status_allowed_after_review": [
+    "complete",
+    "complete_with_recording_limits",
+    "incomplete_review"
+  ],
+  "battle_review_status": "Reviewed; inherited full_battle_review_complete",
+  "outcome": "player defeat; final visible markers player 1, opponent 3; terminal +2 points awarded for Jolteon ex KO from opponent's pre-KO 2 points",
+  "limits": [
+    "Exact historical20-card deck list unavailable from captured log/pre-season history",
+    "Hidden opponent draw/search identities remain unknown",
+    "Old/new frame names record requested source seeks; exact decoded PTS not measured",
+    "Normal draw completion is bounded by inspected frames; timing estimates not exact",
+    "T10 retained+3 candidate unavailable;360s and365s show unchanged preplay hand",
+    "One opened owner discard view at111s: Lisia, no discarded Energy; no opponent opened inventory found in retained381-frame overview; sampling does not certify absence between frames",
+    "Terminal blur conceals Energy Zone detail; final board/points inherit accepted full review"
+  ],
+  "lead_checked": false,
+  "mode_flag": "Dustin's own play",
+  "mode_evidence": "Manual drag/select/prompts in native frames; no Auto visible; accepted SOURCE matches. Opponent AI not inferred",
+  "turn_order": "owner goes second; opponent first"
+}

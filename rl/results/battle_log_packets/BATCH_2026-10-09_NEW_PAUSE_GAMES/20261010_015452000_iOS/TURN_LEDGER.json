@@ -1,0 +1,2578 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261010_015452000_iOS",
+  "sources": [
+    {
+      "video_basename": "20261010_015452000_iOS.MP4",
+      "sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "turns": [
+    {
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "timing": {
+        "source_interval_seconds": [
+          47,
+          81
+        ],
+        "draw_animation_end_seconds": 50.3,
+        "first_voluntary_move_seconds": 51.3,
+        "before_end_action_seconds": 79.3,
+        "end_after_resolution_seconds": 81
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0050.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Weezing ex",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0050.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0050.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0050.30"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Observed native source hand",
+        "evidence_ids": [
+          "f0050.30"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0050.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Weezing ex",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0050.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0050.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0050.30"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Observed native source hand",
+        "evidence_ids": [
+          "f0050.30"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count separately visible card backs in native top crop",
+        "basis": "Observed",
+        "evidence_ids": [
+          "f0050.30"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Professor's Research",
+              "reveal_position": 1,
+              "source_video": "20261010_015452000_iOS.MP4",
+              "timestamp_seconds": 49,
+              "evidence_ids": [
+                "f0049.00"
+              ],
+              "basis": "Observed card face",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 49,
+          "evidence_ids": [
+            "f0049.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Horsea",
+              "reveal_position": 1,
+              "source_video": "20261010_015452000_iOS.MP4",
+              "timestamp_seconds": 53,
+              "evidence_ids": [
+                "f0053.00"
+              ],
+              "basis": "Observed card face",
+              "limit_reason": null
+            },
+            {
+              "name": "Soothing Shore",
+              "reveal_position": 2,
+              "source_video": "20261010_015452000_iOS.MP4",
+              "timestamp_seconds": 55,
+              "evidence_ids": [
+                "f0055.00"
+              ],
+              "basis": "Observed card face",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 53,
+          "evidence_ids": [
+            "f0053.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Professor's Research",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Draws Horsea then Soothing Shore",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 5,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 51.3,
+          "evidence_ids": [
+            "f0051.30"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Horsea",
+          "target": "owner Bench position2",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Benched at50HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 57,
+          "evidence_ids": [
+            "f0057.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Soothing Shore",
+          "target": "Stadium",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Stadium installed",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 63,
+          "evidence_ids": [
+            "f0063.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Small Balloon",
+          "target": "owner Active Team Rocket's Koffing",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Tool attached; retreat cost1 less",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 68,
+          "evidence_ids": [
+            "f0068.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "retreat",
+          "card_name": null,
+          "target": "Horsea from Bench position2",
+          "energy": {
+            "type": null,
+            "count": 0,
+            "destination": null,
+            "retreat_payment_by_type": {}
+          },
+          "result": "Koffing moves to Bench position2; Horsea becomes Active; zero Energy paid",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 73,
+          "evidence_ids": [
+            "f0073.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 6,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "No attack; no additional warning/decline shown",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 80,
+          "evidence_ids": [
+            "f0080.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 1,
+        "phase": "turn boundary",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Team Rocket's Koffing",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0050.30"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "Sticky Membrane",
+              "source": "opponent Active Goomy",
+              "affected_player": "owner",
+              "restriction": "Owner Active attack cost is 1 more",
+              "expiry": "While this Goomy remains Active",
+              "basis": "Visible Goomy text and setup banner at43s"
+            }
+          ],
+          "evidence_ids": [
+            "f0050.30"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Goomy",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 40,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hoppip",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0050.30"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0050.30"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0050.30"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 1,
+        "phase": "after free retreat and End Turn; before turn2 Energy generation",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0080.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "Sticky Membrane",
+              "source": "opponent Active Goomy",
+              "affected_player": "owner",
+              "restriction": "Owner Active attack cost is 1 more",
+              "expiry": "While this Goomy remains Active",
+              "basis": "Visible Goomy text and setup banner at43s"
+            }
+          ],
+          "evidence_ids": [
+            "f0080.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Goomy",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 40,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hoppip",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0080.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0080.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "source": "Stadium",
+            "effect": "At end of each player turn, heals20 from their Pokemon with Water attached",
+            "basis": "Visible card text55s"
+          }
+        ],
+        "evidence_ids": [
+          "f0080.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0079.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Weezing ex",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0079.30"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "Observed native source hand",
+        "evidence_ids": [
+          "f0079.30"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "f0050.30",
+        "f0051.30",
+        "f0079.30",
+        "f0081.00"
+      ],
+      "limits": [
+        "No opened discard pile view is shown.",
+        "Timestamps are bounded observed seek times, not exact frame PTS."
+      ]
+    },
+    {
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "timing": {
+        "source_interval_seconds": [
+          81,
+          97
+        ],
+        "draw_animation_end_seconds": 83,
+        "first_voluntary_move_seconds": 87,
+        "before_end_action_seconds": 95,
+        "end_after_resolution_seconds": 97,
+        "draw_end_precision": "Normal draw is settled by native83s; exact animation endpoint not measured."
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": 4,
+        "basis": "Visible card backs; identities hidden",
+        "evidence_ids": [
+          "f0083.00"
+        ],
+        "status": "hidden_identities",
+        "limit_reason": "Opponent hand faces are not exposed."
+      },
+      "owner_hand_start": null,
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count separately visible card backs in native top crop",
+        "basis": "Not applicable: opponent turn",
+        "evidence_ids": [],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_015452000_iOS.MP4",
+              "timestamp_seconds": 83,
+              "evidence_ids": [
+                "f0083.00"
+              ],
+              "basis": "Hidden opponent card back",
+              "limit_reason": "Opponent draw identity hidden"
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 83,
+          "evidence_ids": [
+            "f0083.00"
+          ],
+          "limit_reason": "Settled normaldraw at83s; exact endpoint not measured."
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": null,
+              "source_video": "20261010_015452000_iOS.MP4",
+              "timestamp_seconds": null,
+              "evidence_ids": [
+                "f0087.00",
+                "f0089.00"
+              ],
+              "basis": "Hidden opponent card back",
+              "limit_reason": "Two hidden draws resolved87–89; individual reveal ordering/time unavailable."
+            },
+            {
+              "name": null,
+              "reveal_position": null,
+              "source_video": "20261010_015452000_iOS.MP4",
+              "timestamp_seconds": null,
+              "evidence_ids": [
+                "f0087.00",
+                "f0089.00"
+              ],
+              "basis": "Hidden opponent card back",
+              "limit_reason": "Two hidden draws resolved87–89; individual reveal ordering/time unavailable."
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": [
+            "f0087.00",
+            "f0089.00"
+          ],
+          "limit_reason": "Research played by87; fivebacks at89. Hidden card faces and individual reveal times unavailable.",
+          "observed_interval_seconds": [
+            87,
+            89
+          ]
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Professor's Research",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Two hidden draws; observed ending fan5",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 87,
+          "evidence_ids": [
+            "f0087.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "opponent Bench Hoppip",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Hoppip",
+            "retreat_payment_by_type": null
+          },
+          "result": "Water attached to Hoppip; no attack",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 95,
+          "evidence_ids": [
+            "f0095.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Turn passes; no attack",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 97,
+          "evidence_ids": [
+            "f0097.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "kind": "energy_generation",
+          "type": "Water",
+          "count": 1,
+          "observed_by_seconds": 84,
+          "evidence_ids": [
+            "f0084.00"
+          ],
+          "limit_reason": "Exact generation animation endpoint not measured."
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 2,
+        "phase": "Pre-generation boundary at81s; draw settled83s, current Water visible by84s.",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0081.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "Sticky Membrane",
+              "source": "opponent Active Goomy",
+              "affected_player": "owner",
+              "restriction": "Owner Active attack cost is 1 more",
+              "expiry": "While this Goomy remains Active",
+              "basis": "Visible Goomy text and setup banner at43s"
+            }
+          ],
+          "evidence_ids": [
+            "f0081.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Goomy",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 40,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hoppip",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Native81/83: no large current orb; small next Water present. Current Water appears by84, later attached95.",
+            "evidence_ids": [
+              "f0081.00",
+              "f0083.00",
+              "f0084.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0081.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "source": "Stadium",
+            "effect": "At end of each player turn, heals20 from their Pokemon with Water attached",
+            "basis": "Visible card text55s"
+          }
+        ],
+        "evidence_ids": [
+          "f0081.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 2,
+        "phase": "after attachment and End Turn; before turn3 generation",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0095.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "Sticky Membrane",
+              "source": "opponent Active Goomy",
+              "affected_player": "owner",
+              "restriction": "Owner Active attack cost is 1 more",
+              "expiry": "While this Goomy remains Active",
+              "basis": "Visible Goomy text and setup banner at43s"
+            }
+          ],
+          "evidence_ids": [
+            "f0095.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Goomy",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 40,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hoppip",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0095.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0095.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "source": "Stadium",
+            "effect": "At end of each player turn, heals20 from their Pokemon with Water attached",
+            "basis": "Visible card text55s"
+          }
+        ],
+        "evidence_ids": [
+          "f0095.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0095.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Weezing ex",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0095.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "Observed native source hand",
+        "evidence_ids": [
+          "f0095.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "f0087.00",
+        "f0095.00",
+        "f0097.00",
+        "f0083.00",
+        "f0089.00",
+        "f0084.00"
+      ],
+      "limits": [
+        "No opened discard pile view is shown.",
+        "Timestamps are bounded observed seek times, not exact frame PTS."
+      ]
+    },
+    {
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "timing": {
+        "source_interval_seconds": [
+          97,
+          137
+        ],
+        "draw_animation_end_seconds": 100.3,
+        "first_voluntary_move_seconds": 101.3,
+        "before_end_action_seconds": 127,
+        "end_after_resolution_seconds": 137
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0100.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Weezing ex",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0100.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0100.30"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Observed native source hand",
+        "evidence_ids": [
+          "f0100.30"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0100.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Weezing ex",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0100.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "Observed native source hand",
+            "evidence_ids": [
+              "f0100.30"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Observed native source hand",
+        "evidence_ids": [
+          "f0100.30"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": null,
+        "count_method": "Count separately visible card backs in native top crop",
+        "basis": "Observed",
+        "evidence_ids": [
+          "f0100.30"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Kingdra ex",
+              "reveal_position": 1,
+              "source_video": "20261010_015452000_iOS.MP4",
+              "timestamp_seconds": 99,
+              "evidence_ids": [
+                "f0099.00"
+              ],
+              "basis": "Observed card face",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 99,
+          "evidence_ids": [
+            "f0099.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Rare Candy",
+          "target": "owner Active Horsea",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Rare Candy selects Kingdra ex and evolves Horsea directly; Candy and Kingdra leave hand",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Selection panel101.3",
+            "Rare Candy103",
+            "Kingdra evolution106.3"
+          ],
+          "hand_count_after": 1,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 101.3,
+          "evidence_ids": [
+            "f0101.30"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Team Rocket's Weezing ex",
+          "target": "owner Bench position1 Team Rocket's Koffing",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Evolves to140HP Weezing ex",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 0,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 112,
+          "evidence_ids": [
+            "f0112.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "prompt_response",
+          "card_name": null,
+          "target": "opponent Active Goomy",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Boiler Smog accepted; Goomy becomes Poisoned and Burned",
+          "prompt_text": "Use the effect of Boiler Smog?",
+          "response": "Yes",
+          "nested_events_in_order": [
+            "Boiler Smog animation118",
+            "Goomy Poisoned/Burned121"
+          ],
+          "hand_count_after": null,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 117,
+          "evidence_ids": [
+            "f0117.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "owner Active Kingdra ex",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Kingdra ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "One Water attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 126,
+          "evidence_ids": [
+            "f0126.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "No attack; hand empty; no warning or declined option shown",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 128,
+          "evidence_ids": [
+            "f0128.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "order": 1,
+          "name": "Soothing Shore",
+          "result": "Kingdra already full170HP; no HP increase",
+          "evidence_ids": [
+            "f0128.00"
+          ]
+        },
+        {
+          "order": 2,
+          "name": "Poison checkup",
+          "result": "Goomy40→30;10damage",
+          "evidence_ids": [
+            "f0129.00"
+          ]
+        },
+        {
+          "order": 3,
+          "name": "Burn checkup",
+          "result": "Goomy30→10;20damage; tails; remains Burned",
+          "evidence_ids": [
+            "f0130.00",
+            "f0134.00",
+            "f0136.00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 3,
+        "phase": "turn boundary",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0100.30"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "Sticky Membrane",
+              "source": "opponent Active Goomy",
+              "affected_player": "owner",
+              "restriction": "Owner Active attack cost is 1 more",
+              "expiry": "While this Goomy remains Active",
+              "basis": "Visible Goomy text and setup banner at43s"
+            }
+          ],
+          "evidence_ids": [
+            "f0100.30"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Goomy",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 40,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hoppip",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0100.30"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0100.30"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "source": "Stadium",
+            "effect": "At end of each player turn, heals20 from their Pokemon with Water attached",
+            "basis": "Visible card text55s"
+          }
+        ],
+        "evidence_ids": [
+          "f0100.30"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 3,
+        "phase": "after End Turn and Poison/Burn checkup; tails keeps Burn",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Weezing ex",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0136.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "Sticky Membrane",
+              "source": "opponent Active Goomy",
+              "affected_player": "owner",
+              "restriction": "Owner Active attack cost is 1 more",
+              "expiry": "While this Goomy remains Active",
+              "basis": "Visible Goomy text and setup banner at43s"
+            }
+          ],
+          "evidence_ids": [
+            "f0136.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Goomy",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 10,
+            "hp_max": 40,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 30,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Poisoned",
+              "Burned"
+            ],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hoppip",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0136.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0136.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "source": "Stadium",
+            "effect": "At end of each player turn, heals20 from their Pokemon with Water attached",
+            "basis": "Visible card text55s"
+          }
+        ],
+        "evidence_ids": [
+          "f0136.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "Observed native source hand",
+        "evidence_ids": [
+          "f0127.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "f0100.30",
+        "f0101.30",
+        "f0127.00",
+        "f0137.00"
+      ],
+      "limits": [
+        "No opened discard pile view is shown.",
+        "Timestamps are bounded observed seek times, not exact frame PTS."
+      ]
+    },
+    {
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20261010_015452000_iOS.MP4",
+      "timing": {
+        "source_interval_seconds": [
+          137,
+          162
+        ],
+        "draw_animation_end_seconds": 139,
+        "first_voluntary_move_seconds": 140,
+        "before_end_action_seconds": 161,
+        "end_after_resolution_seconds": 162
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": 6,
+        "basis": "Visible card backs; identities hidden",
+        "evidence_ids": [
+          "f0139.00"
+        ],
+        "status": "hidden_identities",
+        "limit_reason": "Opponent hand faces are not exposed."
+      },
+      "owner_hand_start": null,
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count separately visible card backs in native top crop",
+        "basis": "Not applicable: opponent turn",
+        "evidence_ids": [],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_015452000_iOS.MP4",
+              "timestamp_seconds": 139,
+              "evidence_ids": [
+                "f0139.00"
+              ],
+              "basis": "Hidden opponent card back",
+              "limit_reason": "Opponent draw identity hidden"
+            }
+          ],
+          "hand_count_before": 5,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 139,
+          "evidence_ids": [
+            "f0139.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_015452000_iOS.MP4",
+              "timestamp_seconds": 147,
+              "evidence_ids": [
+                "f0147.00"
+              ],
+              "basis": "Hidden opponent card back",
+              "limit_reason": "Opponent draw identity hidden"
+            },
+            {
+              "name": null,
+              "reveal_position": 2,
+              "source_video": "20261010_015452000_iOS.MP4",
+              "timestamp_seconds": 148,
+              "evidence_ids": [
+                "f0148.00"
+              ],
+              "basis": "Hidden opponent card back",
+              "limit_reason": "Opponent draw identity hidden"
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 147,
+          "evidence_ids": [
+            "f0147.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Goomy",
+          "target": "opponent Bench position3",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Second Goomy benched at40HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 140,
+          "evidence_ids": [
+            "f0140.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Professor's Research",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Two hidden cards drawn; ending fan6",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 144,
+          "evidence_ids": [
+            "f0144.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "concede",
+          "card_name": null,
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Your opponent conceded; owner wins before turn4 checkup",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015452000_iOS.MP4",
+          "timestamp_seconds": 162,
+          "evidence_ids": [
+            "f0162.00"
+          ],
+          "basis": "Source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 4,
+        "phase": "turn boundary",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Weezing ex",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0138.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "Sticky Membrane",
+              "source": "opponent Active Goomy",
+              "affected_player": "owner",
+              "restriction": "Owner Active attack cost is 1 more",
+              "expiry": "While this Goomy remains Active",
+              "basis": "Visible Goomy text and setup banner at43s"
+            }
+          ],
+          "evidence_ids": [
+            "f0138.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Goomy",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 10,
+            "hp_max": 40,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 30,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Poisoned",
+              "Burned"
+            ],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hoppip",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0138.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0138.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "source": "Stadium",
+            "effect": "At end of each player turn, heals20 from their Pokemon with Water attached",
+            "basis": "Visible card text55s"
+          }
+        ],
+        "evidence_ids": [
+          "f0138.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 4,
+        "phase": "concession, before results overlay",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Weezing ex",
+              "variant": null,
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0162.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "Sticky Membrane",
+              "source": "opponent Active Goomy",
+              "affected_player": "owner",
+              "restriction": "Owner Active attack cost is 1 more",
+              "expiry": "While this Goomy remains Active",
+              "basis": "Visible Goomy text and setup banner at43s"
+            }
+          ],
+          "evidence_ids": [
+            "f0162.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Goomy",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 10,
+            "hp_max": 40,
+            "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+            "damage": 30,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Poisoned",
+              "Burned"
+            ],
+            "active_effects": [],
+            "evidence_ids": null,
+            "status": "observed",
+            "limit_reason": "Exact artwork/set label not independently established."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Hoppip",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            },
+            {
+              "name": "Goomy",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 40,
+              "hp_max": 40,
+              "hp_max_basis": "Visible printed card HP and unchanged unmodified board",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": null,
+              "status": "observed",
+              "limit_reason": "Exact artwork/set label not independently established."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Visible blue Water symbols; large current orb absent/present, small next icon",
+            "evidence_ids": [
+              "f0162.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0162.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "source": "Stadium",
+            "effect": "At end of each player turn, heals20 from their Pokemon with Water attached",
+            "basis": "Visible card text55s"
+          }
+        ],
+        "evidence_ids": [
+          "f0162.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "Observed native source hand",
+        "evidence_ids": [
+          "f0162.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "f0139.00",
+        "f0140.00",
+        "f0161.00",
+        "f0162.00"
+      ],
+      "limits": [
+        "No opened discard pile view is shown.",
+        "Timestamps are bounded observed seek times, not exact frame PTS."
+      ]
+    }
+  ],
+  "limits": [
+    "Opponent identities remain hidden unless played. Native hand and board views plus event-timed seeks were inspected; no discard dialog or battle-log scroll was opened."
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "checked_utc": "2026-10-13T04:54:43.412311+00:00",
+  "all_requested_reviews_complete": true,
+  "sources": [
+    {
+      "source": "20261013_022530000_iOS.MP4",
+      "sha256": "02714096351099424338ac83d3f529ef4f0e6979a978a50f48c5ff505a2b6cb7",
+      "game_id": "20261013_022530000_iOS-game1",
+      "opponent": "sadao",
+      "result": "win",
+      "turns": 12,
+      "registration_event": "37aafc75-906e-458f-9f08-2953dad79494",
+      "archive_hash_verified": true,
+      "external_saved": true,
+      "storage_online_only": true,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_NEWEST_TWO\\20261013_022530000_iOS"
+    },
+    {
+      "source": "20261013_030351000_iOS.MP4",
+      "sha256": "d0a221cd236c620f467bbf34ad8078fd59c72323a7dca71a4af344f0489c6c7f",
+      "game_id": "20261013_030351000_iOS_game_1",
+      "opponent": "ヒロ",
+      "result": "loss",
+      "turns": 16,
+      "registration_event": "24cc0b2a-8ed3-4e9d-ad61-fdc09543a817",
+      "archive_hash_verified": true,
+      "external_saved": true,
+      "storage_online_only": true,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_NEWEST_TWO\\20261013_030351000_iOS"
+    }
+  ],
+  "counts": {
+    "sources": 2,
+    "games": 2,
+    "wins": 1,
+    "losses": 1,
+    "opponent_concessions": 1,
+    "turns": 28
+  },
+  "all_source_games_covered": true,
+  "unrelated_index_rows_unchanged": true,
+  "external_saved": true,
+  "fresh_live_counts": {
+    "games": 47,
+    "wins": 26,
+    "losses": 21,
+    "concession_wins": 16,
+    "decks": 27
+  },
+  "storage_online_only_count": 2,
+  "storage_allocated_bytes": 0,
+  "source_contents_not_read_for_final_reconciliation": true,
+  "accepted_packet_semantics_unchanged": true
+}

@@ -1,0 +1,42 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-10-02T00:31:16.274001+00:00",
+  "source_video": "20261001_205658000_iOS.MP4",
+  "source_sha256": "0ffab49dc08b8b76fafe7b8f979d01007a77db016c3bff39b038dedd61d600b7",
+  "reviewer": "/root",
+  "first_pass": "sol_rules_20261001_205658000",
+  "first_pass_model": "gpt-6.1-sol",
+  "first_pass_effort": "high",
+  "completion_status": "full_battle_review_complete",
+  "scope": "Entire 409.606667-second Solo rules-test battle, loading and setup through all 14 turns and final results",
+  "coverage_checked": true,
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "ladder_eligible": false,
+  "outcome_description": "Defeat, owner 0 and opponent 4 actual awarded points, with opponent circles capped at 3;14 turns;120 displayed damage",
+  "key_findings": [
+    "Victory Star replaced Heat Charged1H/2T with another1H/2T; the Active gained one Fire rather than adding both batches. Later-turn prompts and kept original results matched settled Energy.",
+    "Netherwing required three Fire plus one Colorless. The observed attempt with only two Fire was refused.",
+    "Double Smash kept two heads for80, then replaced two tails with one head/one tail for40. Settled HP changes matched both results.",
+    "Flame Patch added discarded Fire to Active Darmanitan, while a distinct ordinary attachment went to Benched Moltres.",
+    "Two ordinary ex knockouts awarded two points each; the opponent score display stopped at three."
+  ],
+  "limitations": [
+    "Only one Victini was in play; multiple-Victini enforcement was not tested.",
+    "Will and Team Rockets Master Plan were drawn or inspected and not played.",
+    "Successful Netherwing, matching weakness multiplication, Disguise, and settled terminal Fantasia Force Energy allocation were not tested."
+  ],
+  "lead_evidence": [
+    "LEAD_CHECK_1.jpg",
+    "LEAD_CHECK_2.jpg",
+    "LEAD_CHECK_3.jpg"
+  ],
+  "lead_checks": [
+    "Read full REVIEW/COVERAGE/SUMMARY/UNCERTAINTIES and reconciled all14turns through final results.",
+    "12 setup and35 ordinary Pokeball/draw state independently checked; one bench Victini with another held.",
+    "104.7/114 original/replacement1H2T and117 settled2Fire checked;138 Active2/Bench1 and155.5/156/158/164 kept batch to3 checked.",
+    "193 printed Netherwing cost and194 refusal with2Fire;206 Victory Star text and208 settled4Fire checked.",
+    "228 retreat/promotion,246 Double Smash80,273 Patch text,277 Active2Fire/Bench3Fire,283 originalTT/287 ability/293 replacementTH/298 damage40 checked.",
+    "320 actual Bounded Field play/323 effect text,376 owner Active4Fire/Bench Darmanitan1,388 Mega evolution/printed110 attack,395 Moltres0HP,400.5 +2 points and409.5 Defeat results checked."
+  ]
+}

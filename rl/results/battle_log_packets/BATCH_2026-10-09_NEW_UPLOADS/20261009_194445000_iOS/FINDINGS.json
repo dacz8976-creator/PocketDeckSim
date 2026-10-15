@@ -1,0 +1,106 @@
+{
+  "schema": "local_computer_battle_first_pass_v1",
+  "reviewer": "review_194445",
+  "review_date": "2026-10-09",
+  "source_file": "20261009_194445000_iOS.MP4",
+  "source_sha256": "a16f4a2549d1a7b62c6324e90e7e82d1a553624e486b84a1875e597bd572ee1f",
+  "duration_seconds": 271.550158,
+  "scope": "one complete computer battle, setup through terminal result, 13 turns",
+  "classification": {
+    "computer_battle": true,
+    "evidence_seconds": [
+      4,
+      5,
+      15,
+      270.55
+    ],
+    "auto_before_battle": "OFF near 4 s, ON near 5 s",
+    "auto_during_battle": "checked",
+    "external_game_logs": "exclude from Ladder Log and human-only Pause Games log"
+  },
+  "result": {
+    "owner_deck_label": "New deck 6",
+    "visible_owner_core": [
+      "Hitmonchan ex",
+      "Sandshrew",
+      "Sandslash",
+      "Timburr",
+      "Conkeldurr"
+    ],
+    "opponent_label": "Miraidon ex Deck (Deluxe Pack: Mega)",
+    "owner_went_second": true,
+    "turns": 13,
+    "outcome": "Defeat",
+    "owner_points": 2,
+    "opponent_points": 3,
+    "damage_done_displayed": 440,
+    "points_path": [
+      "0-0",
+      "0-2 after Hitmonchan ex KO",
+      "1-2 after first Iron Thorns KO",
+      "2-2 after second Iron Thorns KO",
+      "2-3 after Conkeldurr KO"
+    ],
+    "terminal_evidence_seconds": [
+      259,
+      262,
+      265,
+      270.55
+    ]
+  },
+  "key_findings": [
+    {
+      "id": "auto_computer",
+      "type": "classification",
+      "seconds": [
+        4,
+        5,
+        15
+      ],
+      "finding": "Visible Auto option and AI badge identify a computer battle; in-battle Auto appears enabled."
+    },
+    {
+      "id": "lucky_ice_pop",
+      "type": "observation",
+      "seconds": [
+        104,
+        135.775
+      ],
+      "finding": "Four visible 20-HP heals take Hitmonchan ex from 50 to 130 HP; Tails is visible near 126 s and 135.775 s. Individual reused-copy identity and early coin faces are unresolved."
+    },
+    {
+      "id": "two_point_ex_ko",
+      "type": "observation",
+      "seconds": [
+        182,
+        190
+      ],
+      "finding": "Iron Thorns Binary Thunder knocks out 50-HP Hitmonchan ex for two opponent points."
+    },
+    {
+      "id": "closing_exchange",
+      "type": "observation",
+      "seconds": [
+        205,
+        262
+      ],
+      "finding": "Conkeldurr knocks out both Iron Thorns with displayed 120-damage Bedrock Breaker attacks; Magnezone ex Storm Blade then knocks out Conkeldurr for final 2-3."
+    },
+    {
+      "id": "bench_energy_reconciliation",
+      "type": "observation",
+      "seconds": [
+        80,
+        232,
+        240
+      ],
+      "finding": "Native evidence establishes one Fighting on Sandslash by end of turn 4 and a turn-12 attachment to Benched Sandshrew. Exact turn-4 attachment timing relative to evolution remains unclear."
+    }
+  ],
+  "uncertainties": [
+    "Hidden opponent hand and unrevealed cards remain unknown.",
+    "Complete card lists and unrevealed deck printings are not established.",
+    "Brief animations limit exact attachment ordering and individual Lucky Ice Pop copy tracking."
+  ],
+  "status": "first_pass_complete_pending_independent_verification_and_lead_acceptance"
+}

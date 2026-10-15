@@ -1,0 +1,167 @@
+{
+  "video_basename": "20260930_160256000_iOS.MP4",
+  "sha256": "e8ddb4464a188e03fdded2dc6dc14209dfb7a8ccc82affca8fd3e5cead0f9685",
+  "bytes": 593399060,
+  "duration_seconds": 320.985215,
+  "source_binding": "SOURCE.json identity supplied by lead; this worker inspected this exact source and generated source-timed evidence; no source modification or move.",
+  "reviewer": "sol_auto_160256000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "scope": "Whole single battle: loading/setup,15turns, terminal knockout and explicit Victory screen.",
+  "review_scope_complete": true,
+  "lead_acceptance": "accepted",
+  "mode": "autopilot_vs_computer",
+  "mode_evidence": "AI Opponent opening at4.5s, checkedAuto during battle, terminal Solo deck name at320.60s, owner testimony.",
+  "owner": "Dacz8976",
+  "opponent": "AI Opponent",
+  "opponent_deck_title": "Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega)",
+  "result": "owner_win",
+  "terminal_turn": 15,
+  "result_evidence": [
+    {
+      "seconds": 303,
+      "path": "targets/t0303.00.jpg",
+      "claim": "Laundry-Go-Round2heads/1tail"
+    },
+    {
+      "seconds": 309,
+      "path": "targets/t0309.00.jpg",
+      "claim": "TyphlosionexKO; opposingBenchCombusken40/MegaBlaziken30; ownerMegaSlowbro150/threeWater andGreninjaex60/zeroEnergy"
+    },
+    {
+      "seconds": 313.5,
+      "path": "overview/sheet_12.jpg",
+      "claim": "ownerpointcirclesreachthree-pointthreshold; opponentone"
+    },
+    {
+      "seconds": 320.6,
+      "path": "targets/t0320.60.jpg",
+      "claim": "ExplicitVictoryagainstnamedSoloDeck; GreninjaexCardoftheGame"
+    }
+  ],
+  "point_progression": [
+    {
+      "turn": 5,
+      "owner": 1,
+      "opponent": 0,
+      "event": "HearthflameMaskOgerponKO"
+    },
+    {
+      "turn": 7,
+      "owner": 2,
+      "opponent": 0,
+      "event": "MeowthKOafterCarefreeStepstails"
+    },
+    {
+      "turn": 8,
+      "owner": 2,
+      "opponent": 1,
+      "event": "regularGreninjaKO"
+    },
+    {
+      "turn": 15,
+      "owner_display_threshold": 3,
+      "opponent": 1,
+      "award_entitlement": 2,
+      "event": "Typhlosion ex knockout; three owner circles and one opponent circle visible; printed two-point ex rule; no retained exact award caption or internal score above three established"
+    }
+  ],
+  "important_coins": [
+    {
+      "turn": 1,
+      "effect": "Misty",
+      "heads": 0,
+      "tails": 1
+    },
+    {
+      "turn": 4,
+      "effect": "HearthflameDance",
+      "heads": 0,
+      "tails": 1
+    },
+    {
+      "turn": 7,
+      "effect": "CarefreeSteps",
+      "heads": 0,
+      "tails": 1
+    },
+    {
+      "turn": 12,
+      "effect": "DestructiveInferno",
+      "heads": 5,
+      "tails": 1,
+      "actual_energy_removed": 2
+    },
+    {
+      "turn": 14,
+      "effect": "DestructiveInferno",
+      "heads": 0,
+      "tails": 1,
+      "actual_energy_removed": 0
+    },
+    {
+      "turn": 15,
+      "effect": "LuckyIcePop",
+      "heads": 0,
+      "tails": 1
+    },
+    {
+      "turn": 15,
+      "effect": "LaundryGoRound",
+      "heads": 2,
+      "tails": 1
+    }
+  ],
+  "coverage_evidence": {
+    "overview_step_seconds": 3,
+    "overview_samples": 107,
+    "overview_sheets": 12,
+    "tail_exact_seconds": 320.6,
+    "coverage_file": "COVERAGE.md"
+  },
+  "independent_check_anchors": {
+    "opening": [
+      4.5,
+      16
+    ],
+    "ordinary": [
+      64,
+      78,
+      113,
+      117,
+      119,
+      203,
+      213,
+      219,
+      230
+    ],
+    "decisive": [
+      249,
+      258,
+      270,
+      285,
+      288,
+      303,
+      309
+    ],
+    "terminal": [
+      320.6
+    ]
+  },
+  "uncertainties_file": "UNCERTAINTIES.json",
+  "ladder_eligible": false,
+  "ladder_action": "exclude; no Ladder Log write",
+  "worker_actions_at_submission": {
+    "global_writes_or_source_changes": false
+  },
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_160256000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20260930_160256000_iOS.MP4.json",
+  "archive_completion_event_id": "4eb9f204-497f-49bc-aeaf-c5bb5a13a7bc",
+  "global_registration_complete": true,
+  "current_review_event_id": "806f3b2d-8398-4dd9-8e6d-48c0bbefa720",
+  "post_acceptance_corrections": "POST_ACCEPTANCE_CORRECTIONS.md"
+}

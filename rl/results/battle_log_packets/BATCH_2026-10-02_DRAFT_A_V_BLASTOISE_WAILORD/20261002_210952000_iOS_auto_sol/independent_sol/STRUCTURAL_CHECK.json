@@ -1,0 +1,27 @@
+{
+  "created_utc": "2026-10-03T00:54:51.994254+00:00",
+  "source_video": "20261002_210952000_iOS.MP4",
+  "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+  "reviewer": "/root/ind_drafta_auto4",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "errors": [],
+  "primary_native_frames": 142,
+  "independent_native_frames": 6,
+  "aggregate_native_frames": 148,
+  "cap": 160,
+  "turn_count": 19,
+  "owner_turn_count": 9,
+  "checks": [
+    "19sequential turns",
+    "sequential numbered plays",
+    "core refs resolve",
+    "evidence/manifest IDs identical",
+    "native1170x2532 dimensions",
+    "measured PTS agrees decoder showinfo",
+    "all148fullframe+296crop SHA values current",
+    "source bindings agree",
+    "exact supplied deck20separatefrom seen19"
+  ],
+  "semantic_acceptance_not_inferred_from_structure": true
+}

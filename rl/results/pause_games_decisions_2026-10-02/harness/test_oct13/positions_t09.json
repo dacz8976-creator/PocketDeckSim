@@ -1,0 +1,189 @@
+[
+ {
+  "id": "oct13-t09-knockouts-2",
+  "deck": "KW261013_010837000",
+  "turn_count": 9,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard": [
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Copycat B1 225",
+    "Poké Ball A2b 111",
+    "Glimmora B3a 045",
+    "Glimmet B3a 044",
+    "Rare Candy A3 144",
+    "Regigigas B3 134"
+   ],
+   "discard_energy": [
+    "Darkness"
+   ],
+   "board": [
+    {
+     "card": "Glimmet B3a 044",
+     "hp": 20,
+     "energy": [
+      "Darkness"
+     ]
+    },
+    {
+     "card": "Kingambit B3a 043",
+     "hp": 140,
+     "energy": [
+      "Darkness"
+     ],
+     "behind": [
+      "Pawniard B3a 041"
+     ]
+    },
+    {
+     "card": "Alolan Muk B2 097",
+     "hp": 110,
+     "behind": [
+      "Alolan Grimer A3 110"
+     ]
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness",
+   "knockouts": 2
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Kangaskhan ex B2 127",
+     "hp": 180,
+     "energy": [
+      "Lightning",
+      "Metal",
+      "Metal"
+     ]
+    },
+    {
+     "card": "Pichu A4 066",
+     "hp": 30
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40,
+     "energy": [
+      "Metal",
+      "Metal"
+     ]
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": null,
+  "turn_effects": []
+ },
+ {
+  "id": "oct13-t09-no-count",
+  "deck": "KW261013_010837000",
+  "turn_count": 9,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Lucky Ice Pop B2 145"
+   ],
+   "discard": [
+    "Poké Ball A2b 111",
+    "Professor's Research A4b 373",
+    "Copycat B1 225",
+    "Poké Ball A2b 111",
+    "Glimmora B3a 045",
+    "Glimmet B3a 044",
+    "Rare Candy A3 144",
+    "Regigigas B3 134"
+   ],
+   "discard_energy": [
+    "Darkness"
+   ],
+   "board": [
+    {
+     "card": "Glimmet B3a 044",
+     "hp": 20,
+     "energy": [
+      "Darkness"
+     ]
+    },
+    {
+     "card": "Kingambit B3a 043",
+     "hp": 140,
+     "energy": [
+      "Darkness"
+     ],
+     "behind": [
+      "Pawniard B3a 041"
+     ]
+    },
+    {
+     "card": "Alolan Muk B2 097",
+     "hp": 110,
+     "behind": [
+      "Alolan Grimer A3 110"
+     ]
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness"
+  },
+  "opp": {
+   "hand_count": 6,
+   "discard": [
+    "Professor's Research A4b 373",
+    "Poké Ball A2b 111"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Mega Kangaskhan ex B2 127",
+     "hp": 180,
+     "energy": [
+      "Lightning",
+      "Metal",
+      "Metal"
+     ]
+    },
+    {
+     "card": "Pichu A4 066",
+     "hp": 30
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40,
+     "energy": [
+      "Metal",
+      "Metal"
+     ]
+    },
+    {
+     "card": "Team Rocket's Rattata B4a 058",
+     "hp": 40
+    }
+   ],
+   "energy_next": "Fighting"
+  },
+  "stadium": null,
+  "turn_effects": []
+ }
+]

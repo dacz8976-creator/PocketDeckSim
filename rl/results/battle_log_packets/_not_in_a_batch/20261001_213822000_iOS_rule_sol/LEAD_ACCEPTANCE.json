@@ -1,0 +1,52 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-10-01T23:54:43.016469+00:00",
+  "source_video": "20261001_213822000_iOS.MP4",
+  "source_sha256": "3017f3abbf17846d9041177e3fce268560c4ca7ed68277b2a2972b8a90f8399b",
+  "reviewer": "/root",
+  "first_pass": "sol_rules_20261001_213822000",
+  "first_pass_model": "gpt-6.1-sol",
+  "first_pass_effort": "high",
+  "completion_status": "full_battle_review_complete",
+  "coverage_checked": true,
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "ladder_eligible": false,
+  "scope": "Entire 217.453333-second Solo rules-test battle, available setup through all nine turns and final Defeat",
+  "outcome_description": "Defeat with owner 2 points and opponent 1 after the last owner Pokemon was knocked out; nine turns; 230 displayed damage",
+  "key_findings": [
+    "Wild Swing discarded Mega Sharpedo ex and Mega Gyarados ex without awarding opponent points. Two discards produced 100 damage, matching 20 + 40 + 40.",
+    "Wild Swing still attacked with an empty Bench: 20 base plus 20 weakness dealt 40.",
+    "Wallace fetched a compatible Water evolution from the deck and evolved 50-HP Carvanha into Mega Sharpedo ex.",
+    "Turbo Shark added a third Water to benched Gyarados after knocking out Ogerpon, while Mega Sharpedo retained its attached Water.",
+    "The final knockout left the owner with no Pokemon, and Defeat followed despite a 2-1 point lead."
+  ],
+  "limitations": [
+    "Carvanha entered on an earlier turn, so same-turn Basic evolution permission was not tested.",
+    "The second Misty target was unclear; immediate tails gave no Energy to any target.",
+    "Carefree Steps heads, actual Energy discard from Destructive Inferno, and a Mega ex knockout point award were not tested."
+  ],
+  "lead_evidence": [
+    "LEAD_CHECK_1.jpg",
+    "LEAD_CHECK_2.jpg",
+    "native/t0070.50.jpg"
+  ],
+  "lead_checks": [
+    "Read the completed REVIEW, COVERAGE, SUMMARY and UNCERTAINTIES, including final Soothing Shore and turn9 attachment corrections; nine turns covered and no remaining footage gaps.",
+    "1.5 setup/owner second and Magikarp Active; 29 opening public board and 62 ordinary opponent evolution independently inspected.",
+    "Questioned initial Wallace attribution; worker retained actual70.5 play/full text. Root read its maximumHP50 Water eligibility and random compatible evolution from deck; 78 settled Mega Sharpedo190 verified. This supplies no evidence of a same-turn exception.",
+    "87 Turbo Shark printed one-Water cost/70damage/Bench acceleration and blank retreat bar; 96 settled Gyarados3 Water and Sharpedo1 Water verified.",
+    "143 Wild Swing printed20+40 per discarded Water; 145 both Mega cards selected; 147 empty Bench and opponent0; 152 Carefree Steps tails; 154 damage100; 161 owner2/opponent0 verified.",
+    "187 empty Bench/fiveWater, 189 Weakness40; 208 empty owner board with2-1 score; 215 nine-turn Defeat/230damage verified."
+  ],
+  "astra_follow_up": {
+    "report": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-01_RULES\\ASTRA_CHECK.md",
+    "model": "gpt-6-astra",
+    "effort": "high",
+    "scope": "Bounded second Misty target check",
+    "target": "unknown_after_inspection",
+    "energy_awarded": 0,
+    "added_utc": "2026-10-02T00:01:03.661496+00:00",
+    "prior_acceptance_retained": true
+  }
+}

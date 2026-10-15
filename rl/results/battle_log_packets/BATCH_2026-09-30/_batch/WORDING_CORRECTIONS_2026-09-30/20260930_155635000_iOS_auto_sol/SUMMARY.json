@@ -1,0 +1,58 @@
+{
+  "source_filename": "20260930_155635000_iOS.MP4",
+  "source_sha256": "a2bccb37d07e74872afe49c51c5ee5a6ad9199703d25a6cde6f97701ef25ff9a",
+  "source_bytes": 364552337,
+  "duration_seconds": 204.473333,
+  "reviewer": "sol_auto_155635000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_date": "2026-09-30",
+  "primary_review_status": "complete_awaiting_lead_acceptance",
+  "scope": "One full battle from setup through all 11 turns, terminal knockout, Defeat and results through file end",
+  "mode": "autopilot_vs_computer",
+  "mode_evidence": {
+    "owner_testimony": "All new September 30 uploads were autopilot battles against the computer.",
+    "visual": "Opening AI Opponent, checked Auto throughout sampled gameplay, named computer challenge on result page",
+    "evidence": ["overview/sheet_01.jpg", "targets/t0026.00.jpg", "targets/t0201.00.jpg"]
+  },
+  "ladder_eligible": false,
+  "ladder_action": "excluded_by_owner_instruction; no Ladder Log write",
+  "owner": "Dacz8976",
+  "opponent": "AI Opponent",
+  "opponent_challenge_title": "Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega)",
+  "turn_order": "owner_second",
+  "turns_played": 11,
+  "owner_result": "loss",
+  "final_score": {"owner": 1, "opponent": 3},
+  "result_page_damage_done": 190,
+  "visible_owner_core": ["Mudkip 60 HP, Tackle 20", "Mega Swampert ex 230 HP, Strong-Armed Destroyer 150", "Froakie 60 HP, Flop 10", "Froakie 60 HP, Bubble 20", "Frogadier 80 HP, Water Drip 30"],
+  "owner_hand_only_pokemon": ["Slowpoke 60 HP, Water Gun 20", "Mega Slowbro ex 200 HP, Laundry-Go-Round 90"],
+  "visible_opponent_core": ["Cyndaquil 60 HP, Singe", "Quilava 80 HP, Heat Wave 30", "Typhlosion ex 180 HP, Destructive Inferno 110", "Two Torchic 60 HP, Peck 20", "Meowth 50 HP, Carefree Steps / Feelin' Fine"],
+  "point_progression": [
+    {"time_range_seconds": [20, 94], "owner": 0, "opponent": 0},
+    {"time_range_seconds": [94, 100], "award_to": "owner", "award": 1, "reason": "Meowth knocked out by Strong-Armed Destroyer 150", "score_after": {"owner": 1, "opponent": 0}, "evidence": ["targets/t0087.00.jpg", "targets/t0089.00.jpg", "targets/t0093.00.jpg", "overview/sheet_04.jpg"]},
+    {"time_range_seconds": [186, 192], "award_to": "opponent", "award": 3, "reason": "Mega Swampert ex knocked out by third Destructive Inferno; printed Mega Evolution ex rule awards three points", "score_after": {"owner": 1, "opponent": 3}, "evidence": ["targets/t0186.00.jpg", "targets/t0189.70.jpg", "overview/sheet_08.jpg", "targets/t0201.00.jpg"]}
+  ],
+  "stable_owner_active_hp": [60, 230, 120, 10, 0],
+  "coin_results": [
+    {"turn": 4, "effect": "Misty", "heads": 1, "tails": 1, "evidence": "targets/t0071.50.jpg"},
+    {"turn": 4, "effect": "Meowth Carefree Steps", "outcome": "tails", "evidence": "targets/t0087.00.jpg"},
+    {"turn": 7, "effect": "Destructive Inferno", "heads": 3, "tails": 1, "actual_energy_removed": 2, "evidence": "targets/t0138.30.jpg"},
+    {"turn": 9, "effect": "Destructive Inferno", "heads": 0, "tails": 1, "actual_energy_removed": 0, "evidence": "overview/sheet_07.jpg"},
+    {"turn": 11, "effect": "Destructive Inferno", "heads": 1, "tails": 1, "actual_energy_removed": 1, "evidence": "overview/sheet_07.jpg"}
+  ],
+  "result_evidence": ["targets/t0186.00.jpg", "targets/t0193.00.jpg", "targets/t0201.00.jpg", "targets/t0204.40.jpg"],
+  "independent_verification_anchors": {
+    "opening": ["overview/sheet_01.jpg", "targets/t0026.00.jpg"],
+    "ordinary_turn": ["targets/t0111.00.jpg", "targets/t0114.00.jpg", "targets/t0116.50.jpg"],
+    "draw_play_distinction": ["targets/t0146.50.jpg", "targets/t0149.50.jpg", "targets/t0153.00.jpg", "targets/t0155.00.jpg"],
+    "decisive_chain": ["targets/t0125.00.jpg", "targets/t0138.30.jpg", "targets/t0139.50.jpg", "targets/t0173.50.jpg", "targets/t0186.00.jpg"],
+    "terminal": ["targets/t0193.00.jpg", "targets/t0201.00.jpg", "targets/t0204.40.jpg"]
+  },
+  "unreviewed_intervals": [],
+  "outcome_ambiguity": false,
+  "needs_higher_reasoning_clarification": false,
+  "lead_acceptance": "pending; coordinator owns independent verification, registration and archive move",
+  "shared_files_modified": false,
+  "source_moved_or_modified": false
+}

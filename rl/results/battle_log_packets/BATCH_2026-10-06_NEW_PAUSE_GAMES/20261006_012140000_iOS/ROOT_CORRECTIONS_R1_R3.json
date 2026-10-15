@@ -1,0 +1,25 @@
+{
+  "repaired_utc": "2026-10-06T21:02:32.684053+00:00",
+  "root": "/root",
+  "frozen_rejection": "independent_sol/INDEPENDENT_ACCEPTANCE.rejected.json",
+  "R1": {
+    "stadium_boundaries": 14,
+    "occupied_tool_absences": 82
+  },
+  "R2": {
+    "absent_banner_values": 13,
+    "preserved_visible_banner": "T5 board_after displayed6, F014500"
+  },
+  "R3": {
+    "same_Item_return_interval_seconds": [
+      158,
+      160
+    ],
+    "exact_instant": null,
+    "evidence_ids": [
+      "F015800",
+      "F016000"
+    ]
+  },
+  "independent_recheck_required": true
+}

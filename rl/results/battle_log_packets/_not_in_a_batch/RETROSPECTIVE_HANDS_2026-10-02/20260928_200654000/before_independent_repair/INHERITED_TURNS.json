@@ -1,0 +1,90 @@
+{
+  "source": "20260928_200654000_iOS.MP4",
+  "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\REVIEW.md",
+  "rows": [
+    {
+      "turn_number": 1,
+      "accepted_source_line": 12,
+      "verbatim_accepted_row": "| 1 opponent, ~00:36\u201300:48 | Opponent has Arceus ex Active and passes development without visible damage. The game's turn-1 banner is at 00:36. [Turn 1](evidence/t0036.0.jpg), [board](evidence/t0048.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 2,
+      "accepted_source_line": 13,
+      "verbatim_accepted_row": "| 2 owner, ~00:48\u201301:48 | Owner uses Pok\u00e9 Ball and benches Deino and another Galarian Zigzagoon, attaches Darkness Energy and Deceptive Needle. Active Zigzagoon's Tackle deals 10, then Deceptive Needle deals another 10 to Arceus ex (140 to 120). No point is awarded. [Pok\u00e9 Ball](evidence/t0066.0.jpg), [Tackle damage](evidence/t0100.0.jpg), [Needle damage](evidence/t0104.0.jpg), [Arceus 120](evidence/t0108.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 3,
+      "accepted_source_line": 14,
+      "verbatim_accepted_row": "| 3 opponent, ~01:48\u201302:18 | Opponent benches Shaymin and Dialga ex. Shaymin's Fragrant Flower Garden and a Lucky Ice Pop restore Arceus ex toward full HP. No damage to the owner is visible by the next owner turn. [Shaymin](evidence/t0120.0.jpg), [Dialga ex](evidence/t0132.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 4,
+      "accepted_source_line": 15,
+      "verbatim_accepted_row": "| 4 owner, ~02:18\u201302:42 | Owner evolves Benched Deino into Zweilous. Active Zigzagoon uses Tackle for 10, leaving Arceus ex at 120 after the opponent's healing sequence. [Zweilous](evidence/t0156.0.jpg), [Tackle](evidence/t0156.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 5,
+      "accepted_source_line": 16,
+      "verbatim_accepted_row": "| 5 opponent, ~02:42\u201303:18 | Opponent plays Professor's Research, uses Shaymin healing and Lucky Ice Pop. Arceus ex is restored to 140, while owner's Zigzagoon remains at 70. [Research](evidence/t0168.0.jpg), [Lucky Ice Pop](evidence/t0186.0.jpg), [board](evidence/t0198.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 6,
+      "accepted_source_line": 17,
+      "verbatim_accepted_row": "| 6 owner, ~03:18\u201303:48 | Owner evolves Zweilous into Hydreigon (150 HP) on Bench but leaves Zigzagoon Active. Zigzagoon's Tackle and Deceptive Needle reduce Arceus ex from 140 to 120; Rocky Helmet returns 20 to Zigzagoon (70 to 50). [Hydreigon](evidence/t0204.0.jpg), [20 return damage](evidence/t0222.0.jpg), [next turn state](evidence/t0228.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 7,
+      "accepted_source_line": 18,
+      "verbatim_accepted_row": "| 7 opponent, 03:48\u201304:42 | Shaymin repeatedly heals Arceus ex; opponent retreats it and brings Dialga ex Active. Giant Cape raises Dialga ex to 170 displayed HP. Dialga ex's Metallic Turbo deals 30 to Zigzagoon, 50 to 20. [Turn 7](evidence/t0228.0.jpg), [healing](evidence/t0240.0.jpg), [Dialga Active](evidence/t0276.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 8,
+      "accepted_source_line": 19,
+      "verbatim_accepted_row": "| 8 owner, ~04:42\u201305:42 | Owner evolves damaged Active Zigzagoon into Galarian Obstagoon (100 remaining HP). Hydreigon is switched Active, uses Roar in Unison to attach Energy at the cost of 30 self-damage (150 to 120), then Hyper Ray deals 130 to 170-HP Dialga ex (to 40). [Obstagoon](evidence/t0300.0.jpg), [Hydreigon](evidence/t0330.0.jpg), [Dialga 40](evidence/t0336.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 9,
+      "accepted_source_line": 20,
+      "verbatim_accepted_row": "| 9 opponent, ~05:42\u201306:36 | Opponent uses Lucky Ice Pop to heal Dialga ex, then retreats into Arceus ex. Arceus ex's Ultimate Force KOs Hydreigon. Opponent gains the first point at 06:30; owner promotes Obstagoon. [Lucky Ice Pop](evidence/t0354.0.jpg), [pre-KO board](evidence/t0384.0.jpg), [point](evidence/t0390.0.jpg), [promoted Obstagoon](evidence/t0396.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 10,
+      "accepted_source_line": 21,
+      "verbatim_accepted_row": "| 10 owner, ~06:36\u201307:24 | Owner plays Lillie to heal Stage 2 Obstagoon from 100 to 150. A 10-damage event lowers Arceus ex from 140 to 130, then opponent healing restores it to 140. The sampled frame does not establish that this was Merciless Strike. [Lillie](evidence/t0414.0.jpg), [150 HP](evidence/t0420.0.jpg), [10 damage](evidence/t0426.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 11,
+      "accepted_source_line": 22,
+      "verbatim_accepted_row": "| 11 opponent, ~07:24\u201307:48 | Opponent develops the second Dialga ex and Arceus ex's Ultimate Force deals 130 to Obstagoon, leaving it at 20. [Pre-attack](evidence/t0456.0.jpg), [130 damage](evidence/t0462.0.jpg), [20 HP](evidence/t0468.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 12,
+      "accepted_source_line": 23,
+      "verbatim_accepted_row": "| 12 owner, ~07:48\u201308:42 | Owner uses Rare Candy to evolve a Benched Zigzagoon directly to a second Obstagoon, then the damaged Active Obstagoon uses Merciless Strike for 70 on Arceus ex (140 to 70). Arceus ex's Rocky Helmet deals the remaining 20 to that Obstagoon, which is KO'd; opponent reaches 2 points. Owner promotes the fresh Obstagoon. [Rare Candy](evidence/t0492.0.jpg), [pre-attack](evidence/t0498.0.jpg), [Rocky Helmet](evidence/t0504.0.jpg), [second opponent point](evidence/t0510.0.jpg), [promoted Obstagoon](evidence/t0516.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 13,
+      "accepted_source_line": 24,
+      "verbatim_accepted_row": "| 13 opponent, ~08:42\u201309:06 | Shaymin heals Arceus ex from 60 to 70; other healing raises damaged Bench Dialga ex. Late in the turn Arceus ex damages the second Obstagoon from 150 to 20 HP. [Turn 13](evidence/t0522.0.jpg), [pre-attack 150 HP](evidence/t0540.0.jpg), [turn 14 state](evidence/t0552.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 14,
+      "accepted_source_line": 25,
+      "verbatim_accepted_row": "| 14 owner and result, 09:06\u201309:55.032 | Owner plays Piers and discards Energy from Arceus ex. Its second Obstagoon, already at 20 HP, uses Merciless Strike for **120 damage** against Arceus ex's **70 remaining HP**. Rocky Helmet again deals 20 back. Both are KO'd. Owner receives 2 points for Arceus ex, then opponent receives 1 point for Obstagoon and reaches 3. Explicit Defeat result follows. [Piers](evidence/t0552.0.jpg), [pre-attack board](evidence/t0558.0.jpg), [attack damage](evidence/t0572.0.jpg), [helmet](evidence/t0574.0.jpg), [both 0](evidence/t0577.0.jpg), [owner points](evidence/t0582.0.jpg), [opponent third point](evidence/t0586.0.jpg), [result](evidence/t0594.0.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    }
+  ]
+}

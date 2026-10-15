@@ -1,0 +1,57 @@
+{
+  "created_utc": "2026-10-13T03:38:09.758774+00:00",
+  "source": "20261013_022530000_iOS.MP4",
+  "source_contents_modified": false,
+  "before": {
+    "source": "20261013_022530000_iOS.MP4",
+    "metadata": {
+      "logical_bytes": 1037304261,
+      "allocated_bytes": 0,
+      "attributes": 4199968,
+      "placeholder_state": 57,
+      "cloud_placeholder": true,
+      "in_sync": true,
+      "pinned": false,
+      "unpinned": false,
+      "online_only": true
+    },
+    "present_ranges": [],
+    "missing_ranges": [
+      {
+        "offset": 0,
+        "length": 1037304261
+      }
+    ],
+    "missing_bytes": 1037304261
+  },
+  "exit_code": 1,
+  "stdout": "Requesting full download: 20261013_022530000_iOS.MP4\n",
+  "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_NEWEST_TWO\\download_selected.py\", line 37, in <module>\n    raise RuntimeError(f'Download HRESULT 0x{hr & 0xffffffff:08X}')\nRuntimeError: Download HRESULT 0x800701AA\n",
+  "after": {
+    "source": "20261013_022530000_iOS.MP4",
+    "metadata": {
+      "logical_bytes": 1037304261,
+      "allocated_bytes": 524288000,
+      "attributes": 4724256,
+      "placeholder_state": 57,
+      "cloud_placeholder": true,
+      "in_sync": true,
+      "pinned": true,
+      "unpinned": false,
+      "online_only": false
+    },
+    "present_ranges": [
+      {
+        "offset": 0,
+        "length": 524288000
+      }
+    ],
+    "missing_ranges": [
+      {
+        "offset": 524288000,
+        "length": 513016261
+      }
+    ],
+    "missing_bytes": 513016261
+  }
+}

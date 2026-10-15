@@ -1,0 +1,73 @@
+{
+  "audited_utc": "2026-10-12T03:19:49.878396+00:00",
+  "requested_sources": 3,
+  "completed_reviews": 3,
+  "accepted_registered_archived": 3,
+  "live_games_added_in_batch": 3,
+  "live_games_added_this_resume": 2,
+  "completed_sources": [
+    {
+      "source_video": "20261012_003458000_iOS.MP4",
+      "source_sha256": "399ef7e1be5545ca1284a7aedb9f6eea70abb5929ed7cbf2083d539dae64f413",
+      "capture_status": "complete_with_recording_limits",
+      "archive_identity_verified": true,
+      "storage": {
+        "logical_bytes": 673462176,
+        "allocated_bytes": 673462176,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "source_video": "20261012_004128000_iOS.MP4",
+      "source_sha256": "dbf23091859cbe159afc724f32f517f75925ab214343474285306b035ee4146e",
+      "capture_status": "complete_with_recording_limits",
+      "archive_identity_verified": true,
+      "storage": {
+        "logical_bytes": 245906067,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      }
+    },
+    {
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "capture_status": "complete_with_recording_limits",
+      "archive_identity_verified": true,
+      "storage": {
+        "logical_bytes": 861227730,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      }
+    }
+  ],
+  "pending_sources": [],
+  "current_index_and_location_map_verified": true,
+  "unrelated_index_rows_preserved": true,
+  "prior_live_games_preserved": true,
+  "live_totals": {
+    "games": 39,
+    "wins": 22,
+    "losses": 17,
+    "concession_wins": 13
+  },
+  "archived_videos_rehashed_for_this_audit": false,
+  "files_deleted": 0
+}

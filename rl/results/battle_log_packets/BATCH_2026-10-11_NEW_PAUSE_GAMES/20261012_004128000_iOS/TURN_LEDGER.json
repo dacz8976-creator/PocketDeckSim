@@ -1,0 +1,2336 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261012_004128000_iOS",
+  "sources": [
+    {
+      "video_basename": "20261012_004128000_iOS.MP4",
+      "sha256": "dbf23091859cbe159afc724f32f517f75925ab214343474285306b035ee4146e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "turns": [
+    {
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20261012_004128000_iOS.MP4",
+      "timing": {
+        "turn_start_seconds": 36,
+        "turn_end_seconds": 50,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "hidden opponent draw; exact animation end not assigned",
+        "first_voluntary_move_seconds": 47,
+        "before_end_action_seconds": 49,
+        "end_after_resolution_seconds": 49
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "variant": null,
+            "basis": "hidden card back",
+            "evidence_ids": [
+              "t0044.00"
+            ],
+            "limit_reason": "Opponent card face not exposed"
+          },
+          {
+            "position": 2,
+            "name": null,
+            "variant": null,
+            "basis": "hidden card back",
+            "evidence_ids": [
+              "t0044.00"
+            ],
+            "limit_reason": "Opponent card face not exposed"
+          },
+          {
+            "position": 3,
+            "name": null,
+            "variant": null,
+            "basis": "hidden card back",
+            "evidence_ids": [
+              "t0044.00"
+            ],
+            "limit_reason": "Opponent card face not exposed"
+          },
+          {
+            "position": 4,
+            "name": null,
+            "variant": null,
+            "basis": "hidden card back",
+            "evidence_ids": [
+              "t0044.00"
+            ],
+            "limit_reason": "Opponent card face not exposed"
+          },
+          {
+            "position": 5,
+            "name": null,
+            "variant": null,
+            "basis": "hidden card back",
+            "evidence_ids": [
+              "t0044.00"
+            ],
+            "limit_reason": "Opponent card face not exposed"
+          }
+        ],
+        "count": 5,
+        "basis": "visible distinct card backs in fan",
+        "evidence_ids": [
+          "t0044.00"
+        ],
+        "status": "complete_with_recording_limits",
+        "limit_reason": "Opponent card identities hidden"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0044.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0044.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0044.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0044.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "visible native hand slots, left to right",
+        "evidence_ids": [
+          "t0044.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "count distinct card backs in native top crop",
+        "basis": "not an owner turn",
+        "evidence_ids": null,
+        "limit_reason": "capture requirement applies at owner turn start"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261012_004128000_iOS.MP4",
+              "timestamp_seconds": 38,
+              "evidence_ids": [
+                "t0038.00"
+              ],
+              "basis": "hidden opponent normal draw",
+              "limit_reason": "Opponent draw face hidden"
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 38,
+          "evidence_ids": [
+            "t0038.00"
+          ],
+          "limit_reason": "Opponent card identity not exposed"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Giant Cape",
+          "target": "opponent Active Slowpoke",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach; HP70->90; fan5->4",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 47,
+          "evidence_ids": [
+            "t0047.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Ends without attack or Energy attachment",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 49,
+          "evidence_ids": [
+            "t0049.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 1,
+        "phase": "stable boundary after relevant animation",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30; printed HP50; artwork visible",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0036.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0036.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0036.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Slowpoke",
+            "variant": "Headbutt30; printed HP70",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0036.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0036.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0036.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0036.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 1,
+        "phase": "stable boundary after relevant animation",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30; printed HP50; artwork visible",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0049.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0049.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0049.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Slowpoke",
+            "variant": "Headbutt30; printed HP70",
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 90,
+            "hp_max_basis": "printed HP plus Giant Cape20",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Giant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0049.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0049.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0049.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0049.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0049.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0049.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0049.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0049.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "visible native hand slots, left to right",
+        "evidence_ids": [
+          "t0049.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "no_opened_piles"
+      ],
+      "turn_evidence_ids": [
+        "t0036.00",
+        "t0047.00",
+        "t0049.00"
+      ],
+      "limits": [
+        "Opponent hand card faces remain hidden; no opened discard pile shown."
+      ]
+    },
+    {
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261012_004128000_iOS.MP4",
+      "timing": {
+        "turn_start_seconds": 50,
+        "turn_end_seconds": 94,
+        "draw_animation_end_seconds": 53.2,
+        "draw_end_basis": "approximate observed animation completion, bounded by retained dense frames",
+        "first_voluntary_move_seconds": 55,
+        "before_end_action_seconds": 87,
+        "end_after_resolution_seconds": 92
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0053.20"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0053.20"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0053.20"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0053.20"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0053.20"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "visible native hand slots, left to right",
+        "evidence_ids": [
+          "t0053.20"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0053.20"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0053.20"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0053.20"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0053.20"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0053.20"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "visible native hand slots, left to right",
+        "evidence_ids": [
+          "t0053.20"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "count distinct card backs in native top crop",
+        "basis": "observation",
+        "evidence_ids": [
+          "t0053.20"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Professor's Research",
+              "reveal_position": 1,
+              "source_video": "20261012_004128000_iOS.MP4",
+              "timestamp_seconds": 52.5,
+              "evidence_ids": [
+                "t0052.50"
+              ],
+              "basis": "revealed card face",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 52.5,
+          "evidence_ids": [
+            "t0052.50"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "reveal_position": 1,
+              "source_video": "20261012_004128000_iOS.MP4",
+              "timestamp_seconds": 66,
+              "evidence_ids": [
+                "t0066.00"
+              ],
+              "basis": "revealed card face",
+              "limit_reason": null
+            },
+            {
+              "name": "Rare Candy",
+              "reveal_position": 2,
+              "source_video": "20261012_004128000_iOS.MP4",
+              "timestamp_seconds": 67,
+              "evidence_ids": [
+                "t0067.00"
+              ],
+              "basis": "revealed card face",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 66,
+          "evidence_ids": [
+            "t0066.00",
+            "t0067.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Soothing Shore",
+          "target": "Stadium",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Stadium replaces none; hand5->4",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 55,
+          "evidence_ids": [
+            "t0055.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Professor's Research",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Draw2; hand4->3->5",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Reveal Team Rocket's Koffing first (~66s)",
+            "Reveal Rare Candy second (~67s)"
+          ],
+          "hand_count_after": 5,
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 63,
+          "evidence_ids": [
+            "t0063.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Team Rocket's Koffing",
+          "target": "owner Bench position1",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Bench Koffing60HP; hand5->4",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 75,
+          "evidence_ids": [
+            "t0075.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "owner Active Horsea",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "owner Active Horsea",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach Water1; current zone consumed; Horsea Energy0->1",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 80,
+          "evidence_ids": [
+            "t0080.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "card_play",
+          "card_name": "Small Balloon",
+          "target": "owner Bench1 Team Rocket's Koffing",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach Tool; Retreat Cost1 less; hand4->3",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 83,
+          "evidence_ids": [
+            "t0083.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 6,
+          "kind": "attack",
+          "card_name": "Horsea: Hook",
+          "target": "opponent Active Slowpoke",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "30 damage; Slowpoke90->60; attack ends turn",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 88,
+          "evidence_ids": [
+            "t0088.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "order": 1,
+          "name": "Soothing Shore at owner turn end",
+          "result": "Owner Horsea full50HP, so no net healing. Opponent Slowpoke not healed at owner end.",
+          "evidence_ids": [
+            "t0092.00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 2,
+        "phase": "stable boundary after relevant animation",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30; printed HP50; artwork visible",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0053.20"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": null,
+              "available": null
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "Next Water icon observed; current Water1 observed separately after draw animation at55s, not asserted rendered53.2s",
+            "evidence_ids": [
+              "t0053.20"
+            ],
+            "limit_reason": "53.2s is before current Energy rendering completes; Water1 visibly generated by55s and attached80s. Current slot at this hand frame cannot establish its availability."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0053.20"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Slowpoke",
+            "variant": "Headbutt30; printed HP70",
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 90,
+            "hp_max_basis": "printed HP plus Giant Cape20",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Giant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0053.20"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0053.20"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0053.20"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0053.20"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 3,
+        "phase": "Resolved turn2 board while current turn3 banner appears at92s; logical ledger turn remains2",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30; printed HP50; artwork visible",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0092.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust10; printed HP60",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                {
+                  "name": "Small Balloon",
+                  "source": "Small Balloon",
+                  "restriction": "Retreat Cost is1 less",
+                  "affected_pokemon": "Team Rocket's Koffing",
+                  "expiry": "while attached"
+                }
+              ],
+              "evidence_ids": [
+                "t0092.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0092.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0092.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Slowpoke",
+            "variant": "Headbutt30; printed HP70",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 90,
+            "hp_max_basis": "printed HP plus Giant Cape20",
+            "damage": 30,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Giant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0092.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0092.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0092.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "restriction": "At end of each player turn, heal20 from each of that player Pokemon with Water Energy",
+            "expiry": "while Stadium remains"
+          }
+        ],
+        "evidence_ids": [
+          "t0092.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0087.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0087.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0087.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "visible native hand slots, left to right",
+        "evidence_ids": [
+          "t0087.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "no_opened_piles"
+      ],
+      "turn_evidence_ids": [
+        "t0053.20",
+        "t0055.00",
+        "t0063.00",
+        "t0075.00",
+        "t0080.00",
+        "t0083.00",
+        "t0088.00",
+        "t0092.00"
+      ],
+      "limits": [
+        "Opponent hand card faces remain hidden; no opened discard pile shown."
+      ]
+    },
+    {
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261012_004128000_iOS.MP4",
+      "timing": {
+        "turn_start_seconds": 94,
+        "turn_end_seconds": 104,
+        "draw_animation_end_seconds": null,
+        "draw_end_basis": "hidden opponent draw; exact animation end not assigned",
+        "first_voluntary_move_seconds": 99,
+        "before_end_action_seconds": 99,
+        "end_after_resolution_seconds": 103
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": null,
+            "variant": null,
+            "basis": "hidden card back",
+            "evidence_ids": [
+              "t0096.00"
+            ],
+            "limit_reason": "Opponent card face not exposed"
+          },
+          {
+            "position": 2,
+            "name": null,
+            "variant": null,
+            "basis": "hidden card back",
+            "evidence_ids": [
+              "t0096.00"
+            ],
+            "limit_reason": "Opponent card face not exposed"
+          },
+          {
+            "position": 3,
+            "name": null,
+            "variant": null,
+            "basis": "hidden card back",
+            "evidence_ids": [
+              "t0096.00"
+            ],
+            "limit_reason": "Opponent card face not exposed"
+          },
+          {
+            "position": 4,
+            "name": null,
+            "variant": null,
+            "basis": "hidden card back",
+            "evidence_ids": [
+              "t0096.00"
+            ],
+            "limit_reason": "Opponent card face not exposed"
+          },
+          {
+            "position": 5,
+            "name": null,
+            "variant": null,
+            "basis": "hidden card back",
+            "evidence_ids": [
+              "t0096.00"
+            ],
+            "limit_reason": "Opponent card face not exposed"
+          }
+        ],
+        "count": 5,
+        "basis": "visible distinct card backs in fan",
+        "evidence_ids": [
+          "t0096.00"
+        ],
+        "status": "complete_with_recording_limits",
+        "limit_reason": "Opponent card identities hidden"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0096.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0096.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0096.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "visible native hand slots, left to right",
+        "evidence_ids": [
+          "t0096.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "count distinct card backs in native top crop",
+        "basis": "not an owner turn",
+        "evidence_ids": null,
+        "limit_reason": "capture requirement applies at owner turn start"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261012_004128000_iOS.MP4",
+              "timestamp_seconds": 95,
+              "evidence_ids": [
+                "t0095.00"
+              ],
+              "basis": "hidden opponent normal draw",
+              "limit_reason": "Opponent draw face hidden"
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 95,
+          "evidence_ids": [
+            "t0095.00"
+          ],
+          "limit_reason": "Opponent card identity not exposed"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "opponent Active Slowpoke",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "opponent Active Slowpoke",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach Water1; Energy0->1",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 5,
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 99,
+          "evidence_ids": [
+            "t0099.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Ends without attack; owner Horsea remains50HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 5,
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 100,
+          "evidence_ids": [
+            "t0100.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "order": 1,
+          "name": "Soothing Shore",
+          "result": "At opponent end heal20 from Water-attached Slowpoke:60->80 of90HP. Damage30->10.",
+          "evidence_ids": [
+            "t0100.00",
+            "t0101.00",
+            "t0102.00",
+            "t0103.00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 3,
+        "phase": "stable boundary after relevant animation",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30; printed HP50; artwork visible",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0096.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust10; printed HP60",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                {
+                  "name": "Small Balloon",
+                  "source": "Small Balloon",
+                  "restriction": "Retreat Cost is1 less",
+                  "affected_pokemon": "Team Rocket's Koffing",
+                  "expiry": "while attached"
+                }
+              ],
+              "evidence_ids": [
+                "t0096.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0096.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0096.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Slowpoke",
+            "variant": "Headbutt30; printed HP70",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 90,
+            "hp_max_basis": "printed HP plus Giant Cape20",
+            "damage": 30,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Giant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0096.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0096.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0096.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "restriction": "At end of each player turn, heal20 from each of that player Pokemon with Water Energy",
+            "expiry": "while Stadium remains"
+          }
+        ],
+        "evidence_ids": [
+          "t0096.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 3,
+        "phase": "stable boundary after relevant animation",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30; printed HP50; artwork visible",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0103.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust10; printed HP60",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                {
+                  "name": "Small Balloon",
+                  "source": "Small Balloon",
+                  "restriction": "Retreat Cost is1 less",
+                  "affected_pokemon": "Team Rocket's Koffing",
+                  "expiry": "while attached"
+                }
+              ],
+              "evidence_ids": [
+                "t0103.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0103.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0103.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Slowpoke",
+            "variant": "Headbutt30; printed HP70",
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 90,
+            "hp_max_basis": "printed HP plus Giant Cape20",
+            "damage": 10,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "Giant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0103.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0103.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0103.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "restriction": "At end of each player turn, heal20 from each of that player Pokemon with Water Energy",
+            "expiry": "while Stadium remains"
+          }
+        ],
+        "evidence_ids": [
+          "t0103.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0103.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0103.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0103.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "visible native hand slots, left to right",
+        "evidence_ids": [
+          "t0103.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "no_opened_piles"
+      ],
+      "turn_evidence_ids": [
+        "t0096.00",
+        "t0099.00",
+        "t0100.00",
+        "t0103.00"
+      ],
+      "limits": [
+        "Opponent hand card faces remain hidden; no opened discard pile shown."
+      ]
+    },
+    {
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004128000_iOS.MP4",
+      "timing": {
+        "turn_start_seconds": 104,
+        "turn_end_seconds": 128,
+        "draw_animation_end_seconds": 106.2,
+        "draw_end_basis": "approximate observed animation completion, bounded by retained dense frames",
+        "first_voluntary_move_seconds": 107.4,
+        "before_end_action_seconds": 116,
+        "end_after_resolution_seconds": 128
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0106.40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0106.40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0106.40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0106.40"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "visible native hand slots, left to right",
+        "evidence_ids": [
+          "t0106.40"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0106.40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0106.40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0106.40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0106.40"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "visible native hand slots, left to right",
+        "evidence_ids": [
+          "t0106.40"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": null,
+        "count_method": "count distinct card backs in native top crop",
+        "basis": "observation",
+        "evidence_ids": [
+          "t0106.40"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Sabrina",
+              "reveal_position": 1,
+              "source_video": "20261012_004128000_iOS.MP4",
+              "timestamp_seconds": 105.5,
+              "evidence_ids": [
+                "t0105.50"
+              ],
+              "basis": "revealed card face",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 105.5,
+          "evidence_ids": [
+            "t0105.50"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Rare Candy",
+          "target": "owner Active Horsea -> Kingdra ex",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Rare Candy leaves hand; choose Kingdra ex; hand4->3->2. Horsea50HP becomes Kingdra170HP, retaining Water1.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Rare Candy selects Horsea",
+            "Kingdra ex selected from hand",
+            "Evolution resolves at111-114s"
+          ],
+          "hand_count_after": 2,
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 107.4,
+          "evidence_ids": [
+            "t0107.40"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "owner Active Kingdra ex",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "owner Active Kingdra ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach Water1; Energy1->2; current zone consumed",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 115,
+          "evidence_ids": [
+            "t0115.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "prompt_response",
+          "card_name": null,
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Continue to attack without using a Supporter",
+          "prompt_text": "End your turn? A Supporter card can be used",
+          "response": "OK / continue inferred from prompt disappearance and immediate attack at118.5s; tap not graphically marked",
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 117.3,
+          "evidence_ids": [
+            "t0117.30"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Kingdra ex: Stormy Prison",
+          "target": "opponent Active Slowpoke",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "90 damage; Slowpoke80->0; cannot-retreat marker resolves, KO removes lone Pokemon; owner earns1 point and wins",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Stormy Prison90",
+            "Slowpoke HP0 at121s",
+            "Cannot retreat message and marker122s",
+            "Slowpoke removed123s",
+            "Owner point1 at126-128s",
+            "Victory131s"
+          ],
+          "hand_count_after": 2,
+          "source_video": "20261012_004128000_iOS.MP4",
+          "timestamp_seconds": 118.5,
+          "evidence_ids": [
+            "t0118.50"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "order": 1,
+          "name": "Stormy Prison retreat restriction",
+          "result": "Cannot retreat during opponent next turn; marker shown before KO removes Slowpoke. No opponent turn5 occurs.",
+          "evidence_ids": [
+            "t0123.00"
+          ]
+        },
+        {
+          "order": 2,
+          "name": "Knockout and terminal",
+          "result": "Slowpoke and Giant Cape removed, Energy discarded. Opponent Bench empty. Point0->1, Victory.",
+          "evidence_ids": [
+            "t0121.00",
+            "t0123.00",
+            "t0128.00",
+            "t0131.00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 4,
+        "phase": "stable boundary after relevant animation",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30; printed HP50; artwork visible",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0106.40"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust10; printed HP60",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                {
+                  "name": "Small Balloon",
+                  "source": "Small Balloon",
+                  "restriction": "Retreat Cost is1 less",
+                  "affected_pokemon": "Team Rocket's Koffing",
+                  "expiry": "while attached"
+                }
+              ],
+              "evidence_ids": [
+                "t0106.40"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0106.40"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0106.40"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Slowpoke",
+            "variant": "Headbutt30; printed HP70",
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 90,
+            "hp_max_basis": "printed HP plus Giant Cape20",
+            "damage": 10,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "Giant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0106.40"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0106.40"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0106.40"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "restriction": "At end of each player turn, heal20 from each of that player Pokemon with Water Energy",
+            "expiry": "while Stadium remains"
+          }
+        ],
+        "evidence_ids": [
+          "t0106.40"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 4,
+        "phase": "terminal board after knockout and point",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison90; printed HP170; artwork visible",
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "visible printed HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0128.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust10; printed HP60",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                {
+                  "name": "Small Balloon",
+                  "source": "Small Balloon",
+                  "restriction": "Retreat Cost is1 less",
+                  "affected_pokemon": "Team Rocket's Koffing",
+                  "expiry": "while attached"
+                }
+              ],
+              "evidence_ids": [
+                "t0128.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0128.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0128.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": null,
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "basis": "large current slot and small next icon inspected; next is preview, not already usable Energy",
+            "evidence_ids": [
+              "t0128.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0128.00"
+          ],
+          "status": "observed",
+          "limit_reason": "Active removed after knockout; no replacement exists"
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "restriction": "At end of each player turn, heal20 from each of that player Pokemon with Water Energy",
+            "expiry": "while Stadium remains"
+          }
+        ],
+        "evidence_ids": [
+          "t0128.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0116.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "visible native source hand",
+            "evidence_ids": [
+              "t0116.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "visible native hand slots, left to right",
+        "evidence_ids": [
+          "t0116.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "no_opened_piles"
+      ],
+      "turn_evidence_ids": [
+        "t0106.40",
+        "t0107.40",
+        "t0115.00",
+        "t0117.30",
+        "t0118.50",
+        "t0128.00"
+      ],
+      "limits": [
+        "Opponent hand card faces remain hidden; no opened discard pile shown."
+      ]
+    }
+  ],
+  "limits": [
+    "Timestamps are requested native seeks; actual encoded frame PTS not separately measured. Turn/draw boundaries are approximate. Opponent faces are hidden. Discard piles never opened."
+  ]
+}

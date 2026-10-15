@@ -1,0 +1,97 @@
+{
+  "video_basename": "20260930_141742000_iOS.MP4",
+  "reviewer": "sol_auto_141742000",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_date": "2026-09-30",
+  "status": "full_battle_review_complete",
+  "scope": "Complete 165.18-second recording: loading, setup, all nine turns, terminal Victory, closing transition",
+  "mode": "autopilot_vs_computer",
+  "mode_evidence": [
+    "Opening explicitly labels opponent AI",
+    "Checked Auto during setup and sampled gameplay",
+    "Owner testimony in SOURCE.json"
+  ],
+  "owner": "Dacz8976",
+  "opponent": "AI / Opponent",
+  "outcome": "owner_win",
+  "final_points": {
+    "owner": 3,
+    "opponent": 0
+  },
+  "last_turn": 9,
+  "owner_active_final_hp": 160,
+  "owner_visible_core": [
+    "Torchic",
+    "Mega Blaziken ex",
+    "Rare Candy",
+    "Castform Sunny Form"
+  ],
+  "knockouts": [
+    {
+      "turn": 5,
+      "target": "Celebi",
+      "attack": "Mega Burning",
+      "point_award_approx_seconds": 79.5
+    },
+    {
+      "turn": 7,
+      "target": "Treecko",
+      "attack": "Mega Burning",
+      "displayed_damage": 140,
+      "weakness_label": true,
+      "point_award_approx_seconds": 124.5
+    },
+    {
+      "turn": 9,
+      "target": "Budew",
+      "attack": "Mega Burning",
+      "displayed_damage": 120,
+      "point_award_approx_seconds": 154.5
+    }
+  ],
+  "candidate_mechanics": [
+    "Rare Candy directly evolves Torchic to Mega Blaziken ex",
+    "Repeated two-Fire Mega Burning supported by normal reattachments and one-Fire discard",
+    "Scyther U-turn damage then switch preserves attached Energy",
+    "Copycat shuffles three-card hand and reveals five draws",
+    "Treecko damage140 with Weakness versus Budew damage120",
+    "Burned messages within zero-HP knockout resolution, no burn-check claim"
+  ],
+  "consequential_unresolved_count": 0,
+  "unreviewed_intervals": [],
+  "independent_check": "INDEPENDENT_CHECK.md",
+  "ladder_eligible": false,
+  "ladder_action": "excluded_by_owner_instruction; no_write",
+  "files": [
+    "SOURCE.json",
+    "REVIEW.md",
+    "COVERAGE.md",
+    "UNCERTAINTIES.json",
+    "SUMMARY.json",
+    "INDEPENDENT_CHECK.md"
+  ],
+  "evidence_directories": [
+    "overview",
+    "detail_25_65",
+    "detail_81_118",
+    "detail_128_150",
+    "evidence",
+    "independent_frames"
+  ],
+  "worker_actions_at_submission": {
+    "source_moved": false,
+    "global_log_or_index_written": false
+  },
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_141742000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20260930_141742000_iOS.MP4.json",
+  "archive_completion_event_id": "5106c268-27af-4a96-a724-627d537268a9",
+  "global_registration_complete": true,
+  "current_review_event_id": "5edd407f-3ddf-43c2-9907-206449780d6e",
+  "post_acceptance_corrections": "POST_ACCEPTANCE_CORRECTIONS.md"
+}

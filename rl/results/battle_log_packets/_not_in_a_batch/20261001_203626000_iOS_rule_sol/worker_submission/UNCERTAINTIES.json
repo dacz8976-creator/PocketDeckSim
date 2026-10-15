@@ -1,0 +1,17 @@
+{
+  "status": "Finished first pass awaiting independent lead acceptance.",
+  "remaining_coverage_gaps": [],
+  "unknown_hidden_information": [
+    "Opponent unrevealed hand and full deck order/list.",
+    "Exact set or artwork identifiers for some cards; gameplay identities are grounded in visible names, HP and effects.",
+    "Exact touch-event times within the approximate turn intervals; native evidence times are exact requested source timestamps."
+  ],
+  "untested_rule_branches": [
+    "Will with other attacks, Abilities or Trainers, including initial multi-coin outcomes beyond this one example.",
+    "Victory Star on a non-Fire attack; printed text restricts it to Fire Pokemon attacks.",
+    "A Confused Pokemon attempting an attack and a tails Master Plan result.",
+    "Bounded Field's Mega Evolution ex exception, replacement restrictions and zero-base-damage weakness handling.",
+    "Celebi Temporal Leaves devolution, Flame Patch use and Moltres attacks."
+  ],
+  "acceptance_dependency": "Lead independent source checks and acceptance remain required; worker has not registered completion or moved the recording."
+}

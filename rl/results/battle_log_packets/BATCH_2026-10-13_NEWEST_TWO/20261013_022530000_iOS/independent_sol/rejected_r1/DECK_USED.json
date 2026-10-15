@@ -1,0 +1,125 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261013_022530000_iOS-game1",
+  "sources": [
+    {
+      "video_basename": "20261013_022530000_iOS.MP4",
+      "sha256": "02714096351099424338ac83d3f529ef4f0e6979a978a50f48c5ff505a2b6cb7",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "proposed_deck_name": "Haxorus / Dragonair / Druddigon",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-13T03:40:01.324Z",
+  "log_list_version": "Initial 26-deck batch catalog",
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": 20,
+  "capture_source_text_or_image": "../LIVE_DECK_CATALOG.json",
+  "game_version_binding_basis": "Native t0 QR is byte-exactly decoded; no edit occurs between deck sharing and this one game. Initial live catalog has no matching QR.",
+  "exact_list_status": "filmed_QR_verified_live_log_snapshot_missing_initially",
+  "qr_payload": "C5iWnpiWnpiYYJiYYJiapJiXrJiWqJiWqJiaXpibYpictgkACoIAQMQAQMQAPp4APp4AUSIAUSIAUSwAUSwCBgg=",
+  "filmed_cards_in_QR_order": [
+    "Poké Ball",
+    "Poké Ball",
+    "Rare Candy",
+    "Rare Candy",
+    "Lucky Ice Pop",
+    "Rocky Helmet",
+    "Professor’s Research",
+    "Professor’s Research",
+    "Copycat",
+    "Iris",
+    "Rainbow Cave",
+    "Druddigon",
+    "Axew",
+    "Axew",
+    "Haxorus",
+    "Haxorus",
+    "Dratini",
+    "Dratini",
+    "Dragonair",
+    "Dragonair"
+  ],
+  "filmed_counts": [
+    {
+      "name": "Poké Ball",
+      "variant": "semantic entity 30",
+      "count": 2
+    },
+    {
+      "name": "Rare Candy",
+      "variant": "semantic entity 480",
+      "count": 2
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "variant": "semantic entity 1060",
+      "count": 1
+    },
+    {
+      "name": "Rocky Helmet",
+      "variant": "semantic entity 300",
+      "count": 1
+    },
+    {
+      "name": "Professor’s Research",
+      "variant": "semantic entity 40",
+      "count": 2
+    },
+    {
+      "name": "Copycat",
+      "variant": "semantic entity 990",
+      "count": 1
+    },
+    {
+      "name": "Iris",
+      "variant": "semantic entity 1250",
+      "count": 1
+    },
+    {
+      "name": "Rainbow Cave",
+      "variant": "semantic entity 1590",
+      "count": 1
+    },
+    {
+      "name": "Druddigon",
+      "variant": "semantic entity 2690",
+      "count": 1
+    },
+    {
+      "name": "Axew",
+      "variant": "semantic entity 16580",
+      "count": 2
+    },
+    {
+      "name": "Haxorus",
+      "variant": "semantic entity 16030",
+      "count": 2
+    },
+    {
+      "name": "Dratini",
+      "variant": "semantic entity 20770",
+      "count": 2
+    },
+    {
+      "name": "Dragonair",
+      "variant": "semantic entity 20780",
+      "count": 2
+    }
+  ],
+  "filmed_energy_configuration": [
+    "Fighting",
+    "Metal"
+  ],
+  "conflicts_with_filmed_cards": [],
+  "limits": [
+    "Exact artwork and rarity are not established by semantic QR IDs.",
+    "The initial live catalog lacks the filmed QR, so exact dated live-log deck snapshot requires root supplement."
+  ],
+  "pending_lead_live_supplement": true
+}

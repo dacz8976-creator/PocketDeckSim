@@ -1,0 +1,14 @@
+{
+  "source": "20260930_162102000_iOS.MP4",
+  "source_seconds": 6,
+  "one_thread_elapsed_seconds": 12.271,
+  "four_threads_elapsed_seconds": 3.895,
+  "decoded_sample_count": 2,
+  "frame_hashes_equal": true,
+  "limitation": "Short segment under concurrent reviewer load; not a whole-batch runtime prediction",
+  "decoded_audio_packet_count": 259,
+  "video_hash_records": [
+    "0,          0,          0,        1,   493740, 015d663320bacb8fcd9fc707211133cf",
+    "0,          1,          1,        1,   493740, ca37d9d235b0d14e4720ba1fabcc971a"
+  ]
+}

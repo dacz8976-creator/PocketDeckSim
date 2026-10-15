@@ -1,0 +1,115 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_022627000",
+  "sources": [
+    {
+      "video_basename": "20260908_022627000_iOS.MP4",
+      "sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": null,
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\DECK_SNAPSHOTS.json",
+  "game_version_binding_basis": "Current batch snapshots cover Sharpedo and Wailord; no exact historical Comfey20 supplied. Accepted packet establishes visible core, not complete list.",
+  "conflicts_with_filmed_cards": null,
+  "exact_list_status": "unavailable_historical_version",
+  "visible_core": [
+    {
+      "name": "Comfey",
+      "variant": "full art"
+    },
+    {
+      "name": "Team Rocket's Rattata",
+      "variant": null
+    },
+    {
+      "name": "Team Rocket's Raticate ex",
+      "variant": "full art"
+    },
+    {
+      "name": "Team Rocket's Raticate ex",
+      "variant": "gold art"
+    },
+    {
+      "name": "Team Rocket's Drowzee",
+      "variant": "full art"
+    },
+    {
+      "name": "Team Rocket's Hypno",
+      "variant": "full art"
+    },
+    {
+      "name": "Pokémon Flute",
+      "variant": null
+    },
+    {
+      "name": "Elegant Cape",
+      "variant": null
+    },
+    {
+      "name": "Sightseer",
+      "variant": null
+    },
+    {
+      "name": "Team Rocket's Researcher",
+      "variant": null
+    },
+    {
+      "name": "Professor's Research",
+      "variant": "regular art"
+    },
+    {
+      "name": "Professor's Research",
+      "variant": "full art"
+    },
+    {
+      "name": "Poké Ball",
+      "variant": null
+    },
+    {
+      "name": "Copycat",
+      "variant": null
+    },
+    {
+      "name": "Team Rocket's Goo-zooka",
+      "variant": null
+    },
+    {
+      "name": "Cyrus",
+      "variant": null
+    }
+  ],
+  "filmed_energy_configuration": "Psychic",
+  "classification": {
+    "classification": "ladder_presumed",
+    "excluded_from_ladder": false,
+    "basis": "Owner default ladder treatment; no Auto option/control visible in inspected unoccluded native anchors, including actual menu679. Mode/opponent type is not independently certified.",
+    "owner_rule": "Any visible Auto option even OFF means computer battle and ladder exclusion.",
+    "auto_control_visible_at_inspected_anchors": false,
+    "auto_enabled": null,
+    "opponent_type": null,
+    "individual_action_authorship": "not_certified",
+    "evidence_ids": [
+      "R0020.00",
+      "R0033.00",
+      "F0043.00",
+      "F0350.00",
+      "F0411.00",
+      "F0679.00",
+      "F0681.00"
+    ],
+    "limits": "No claim about every instant or hidden Settings submenu; unobscured sampled anchors and systematic1fps scan only."
+  },
+  "limits": [
+    "Visible variants and cards do not establish counts for20-card deck. Full-art and regular Research are distinguished in hand fields. Current deck snapshots not substituted."
+  ]
+}

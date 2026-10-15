@@ -1,0 +1,104 @@
+{
+  "accepted": false,
+  "reviewer": "/root/check_210041",
+  "reviewer_role": "Fresh independent Sol checker",
+  "checked_at_utc": "2026-10-12T23:29:53.697958+00:00",
+  "source_video": "20261012_210041000_iOS.MP4",
+  "source_sha256": "6e8f59764ede0e890ac012fd4ccdd08fc7bfd480bbaae7721bd1f8046031fcc6",
+  "scope": "Bounded independent source acceptance; all eight packet files, all 14 ledger rows and selected native evidence including independently chosen ordinary turns. Not a second whole-video decode.",
+  "checked_input_sha256": {
+    "REVIEW.md": "72c1ed5c845ae5b1f6c777f6f6e417f95a52bc7641574c9d957da50ef3e3ef75",
+    "COVERAGE.md": "61107a4a16805bf0a9647327a1d7b7cb1fe734b12475b38e9a2bbeedc7ecccbc",
+    "SUMMARY.json": "283a61a63d4db2db4959d3edca997141440de6b11234ae8b79bd5c431a55e0ba",
+    "UNCERTAINTIES.json": "20c28d6cc26fe81d80f61985d1cfd70399ca2514ce7ab2d5274d99d39a414c1f",
+    "PAUSE_GAME.json": "d905273f608ac0fea487633e34dc57b5ac30b7b1d1a830c4a1514dd0a59e4d93",
+    "DECK_USED.json": "e8c812d17c3485b8936eac3f57a3befe5ec4889074a6ba44985fe611cf86a187",
+    "TURN_LEDGER.json": "08887781720684e6c2531a87d7c07573b1f6f5d2b3e0c6a64401a6327bfe0646",
+    "TURN_EVIDENCE.json": "6f91d43e6770b2cbe7f9998b434aa6d2fdaf2f7dae9cba2e7c1c9c89978aa143"
+  },
+  "required_repairs": [
+    {
+      "id": "R1",
+      "turn_number": 8,
+      "source_seconds": 240,
+      "files": [
+        "REVIEW.md",
+        "TURN_LEDGER.json",
+        "TURN_EVIDENCE.json"
+      ],
+      "claim": "Copycat first Glimmet card is separately revealed at 240s, N0240_00.",
+      "observed": "Native t0240.00.jpg contains only the draw animation, no Glimmet face or owner hand. At 242s Glimmet is already in hand under the Poké Ball reveal.",
+      "required_change": "Inspect a bounded intervening source window and retain a native individual Glimmet reveal. Correct timestamp and evidence references everywhere; retain explicit unavailable status if no individual face can be established. Do not infer the reveal time from the later hand.",
+      "evidence": [
+        "turn_evidence/t0240.00.jpg",
+        "turn_evidence/t0242.00.jpg"
+      ]
+    },
+    {
+      "id": "R2",
+      "turn_number": 1,
+      "source_seconds": 96,
+      "files": [
+        "REVIEW.md",
+        "TURN_LEDGER.json",
+        "TURN_EVIDENCE.json"
+      ],
+      "claim": "Serena publicly reveals Mega Lucario ex at 96s, N0096_00.",
+      "observed": "Native t0096.00.jpg shows the stable Riolu board and Serena on the opponent discard top. There is no Mega Lucario ex reveal in that frame. Search basis also incorrectly says Riolu confirmed again by bench play.",
+      "required_change": "Inspect the actual Serena reveal window, retain its native individual reveal, correct timestamp/reference and copied basis. If no named reveal is visible, leave searched identity unknown rather than infer it from later evolution.",
+      "evidence": [
+        "turn_evidence/t0093.00.jpg",
+        "turn_evidence/t0096.00.jpg"
+      ]
+    },
+    {
+      "id": "R3",
+      "turn_number": 11,
+      "source_seconds": 350,
+      "files": [
+        "TURN_LEDGER.json"
+      ],
+      "claim": "X Speed play and retreat-cost reduction cite only N0350_00.",
+      "observed": "N0350_00 is the board before X Speed is visible. Retained N0354_00 visibly shows X Speed atop discard and the Retreat Cost is 1 less banner; N0358_00 and N0362_00 support the resulting retreat.",
+      "required_change": "Add or replace the X Speed play evidence with N0354_00, and preserve the approximate play timestamp separately from the observed effect timestamp.",
+      "evidence": [
+        "turn_evidence/t0350.00.jpg",
+        "turn_evidence/t0354.00.jpg",
+        "turn_evidence/t0358.00.jpg",
+        "turn_evidence/t0362.00.jpg"
+      ]
+    }
+  ],
+  "independent_reextraction": {
+    "decoder": "MiniTool ffmpeg, one decode/output thread",
+    "source_path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/20261012_210041000_iOS.MP4",
+    "frames": [
+      {
+        "seconds": 140,
+        "sha256": "e4695fdf50ed20fb17670ebc9e85cae46a1c747c262716cfb60e71c28b429071"
+      },
+      {
+        "seconds": 243,
+        "sha256": "e1cd11a7e6dbf9e3d3b96d5a3273445eb762f0738ee99adc2f1bb492e342cf48"
+      },
+      {
+        "seconds": 433.2,
+        "sha256": "a78c20d93b1b832bbc7001f793e64a6f079d3f00ee4daa36814e8b7ec74669d2"
+      }
+    ],
+    "comparison": "All three independently extracted native JPEG hashes equal the retained packet frames at the same requested times. Temporary provenance frames are outside packet under AppData/Local/Temp/battle_check_210041."
+  },
+  "result_verified": {
+    "owner": "loss",
+    "method": "owner_concession",
+    "last_playable_board_points": {
+      "owner": 0,
+      "opponent": 2
+    },
+    "final_numeric_result_points": null,
+    "exact_confirmation_tap": "not visible"
+  },
+  "unchanged_packet_inputs": true,
+  "external_writes": false,
+  "source_moved": false
+}

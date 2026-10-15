@@ -1,0 +1,43 @@
+import pathlib,json,hashlib,os,datetime
+P=pathlib.Path(__file__).resolve().parent.parent
+def read(p):return json.loads(p.read_text(encoding='utf-8-sig'))
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+N=['SOURCE.json','REVIEW.md','COVERAGE.md','SUMMARY.json','UNCERTAINTIES.json','PAUSE_GAME.json','DECK_USED.json','TURN_LEDGER.json','TURN_EVIDENCE.json']
+groups=[
+ ('game1 opening and first ordinary owner decisions','',[3,10,26,55,55.5,56,57,58,60,62,64,66,68,70,72,74]),
+ ('ordinary opponent turn3 and transition','',[88,90,105,108,112,114,116,117,118]),
+ ('owner selected hand/Copycat/evolutions/attack draw','',[121,122,124,130,140,141,143,154,166,170,172,173]),
+ ('middle selected hands/current generation/before-end','',[217,218,220,225,226.3,226.6,228,277,278,282,283,285]),
+ ('Rainbow/Lucky/paid retreat/full board and banner','',[334,338,339,340,346,348,354,357,358,361,363,365,367,369,370]),
+ ('terminal HP0/removal/empty board/award/result','',[376,380,384,388,389,392,393,393.5,394,396,398,407]),
+ ('edited Silvally variants and quantity changes','',[420,422,426,428,430,440,441,442,450,458,460,478]),
+ ('Persian/Meowth edits','',[478,482,494,498,532,534,536,537,538,539,540,546,548,550,552,554]),
+ ('Terapagos removals/Shore/final count/Energy/save','',[558,560,561,562,564,566,578,580,582,586,588,590,595,596,597,599,600,608,618,620,621,622]),
+ ('entire tiny game2 setup/action sequence','game_02',[622,630,638,642,644,646,653,654,656,657,658,660,662,664,666,667,668,669,670,671,672,673,674,675,676,677,678,679,680,682,684,686,687,688]),
+ ('game2 ordinary opponent turn/concession/end','game_02',[689,690,692,694,696,698,700,702,704,706,708,710,712,714,716,718])]
+repairs=[
+ {'id':'R1','paths':['DECK_EDIT_LEDGER.json:$.final_energy_configuration, $.energy_edits[1:4], $.staged_edited_deck_id','game_02/DECK_USED.json:$.source_energy_configuration, $.game_version_binding_basis, $.staged_edited_deck_id','game_02/TURN_LEDGER.json:all four board owner.energy_zone.next.type values','EDITED_DECK_ENTRY.json:$.decks[0].energy_configuration, deck_name, variant_note, id, semantic_identity_sha256 and native observations','REVIEW.md and COVERAGE.md parent/child final-Energy references','HANDOFF.md final-Energy references'],
+  'timestamps':[590,596,597,599,600,620,656,689,710],
+  'finding':'596 explicitly shows Water selected and Darkness unselected.597/599/600/620 show the same Water droplet.656 and subsequent child owner next preview show Water. Existing Darkness-only final deck and child next Energy claims are materially incorrect.',
+  'required_change':'Change only edited game2 configuration to Water; retain initial game1 Grass/Darkness/Metal QR. Preserve old Darkness definition and receipts, recompute Water semantic identity and propagate new staged ID. Do not alter frozen13 QR definitions.'},
+ {'id':'R2','paths':['game_02/TURN_LEDGER.json:$.turns[0].draws_and_searches[2].cards_in_reveal_order','game_02/TURN_LEDGER.json:$.turns[0].plays_in_order[2] consuming-input/display distinction','REVIEW.md parent game2 Copycat sentence','HANDOFF.md game2 Copycat arrivals'],
+  'timestamps':[667,668,670,674,675,676,677,678,680],
+  'finding':'Native674 reveals Ball,675 Team Rocket Meowth,676 Lucky Ice Pop,677 Cyrus. Existing order reverses Meowth/Lucky and uses post-arrival678/680.667 has intact4-card fan with selected Copycat;668 fan3 and face-up Copycat;670 shows the returned3 old cards.',
+  'required_change':'Name each arrival in the observed order674/675/676/677 with matching evidence. Separate Copycat consuming input667–668 from face display668 and return resolution670. Preserve hidden data limits.'},
+ {'id':'R3','paths':['game_02/TURN_LEDGER.json:$.turns[1].hand_at_start, opponent_hand_at_owner_turn_start','game_02/TURN_LEDGER.json:$.turns[1].board_at_start.opponent.energy_zone.this_turn','game_02/TURN_LEDGER.json:$.turns[1].draws_and_searches[0:2] and automatic energy_generation','game_02/TURN_LEDGER.json:$.turns[1].plays_in_order[1] Order Pad display','game_02/UNCERTAINTIES.json moving-opponent-normal-draw and dependent COVERAGE.md/HANDOFF.md'],
+  'timestamps':[690,692,694,696,698,700,702,704],
+  'finding':'692 has a settled FIVE-back fan and large current Lightning available.694 has FOUR fan backs plus a center played-card back, not a normal-draw arrival.696 still fan4;698 fan6, so696 cannot prove first individual Research arrival. Order Pad is face-up700,702 coin animation,704 tails.',
+  'required_change':'Use exact literal5 fan692 and observed currentLightning1 available. Bound normal draw/generation690–692; bound two hidden Research arrivals696–698 with individual times null unless denser source supports them. Keep unknown identities. Distinguish Order Pad played-card display700 from coin702 and tails704. Align dependent limitations.'}
+]
+supp=[P/'DECK_EDIT_LEDGER.json',P/'CORRECTION_LEDGER.json',P/'RELATED_GAME_PACKETS.json',P/'HANDOFF.md',P/'RECORDING_METADATA.json',P.parent/'EDITED_DECK_ENTRY.json',P/'qr_intake/QR_DECODE_0001.00.json',P/'qr_intake/t0001.00.png',pathlib.Path(r'C:\Users\dacz8\Projects\Pocket Deck Lab\s216_card_catalog_v1.json')]
+views=[]
+for label,sub,times in groups:
+ q=P/sub;frames={r['requested_source_seconds']:r for r in read(q/'TURN_EVIDENCE.json')['frames']}
+ for t in times:
+  f=frames[t];fp=(q/f['full_frame_path']).resolve();views.append({'group':label,'packet':sub or '.','evidence_id':f['evidence_id'],'requested_source_seconds':t,'actual_pts':None,'full_frame_path':str(fp),'full_frame_sha256':sha(fp),'view_method':'Native retained source inspected through source-bound contact sheet or direct native display; no new video extraction.','source_video':f['source_video'],'source_sha256':f['source_sha256']})
+for sub in ['', 'game_02']:
+ q=P/sub;o=q/'independent_sol';struct=read(o/'STRUCTURAL_CHECK.json')
+ result={'schema':'independent-acceptance-check-v1','source_video':'20261006_012927000_iOS.MP4','source_sha256':'cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2','accepted':False,'status':'rejected_narrow_repairs_required','created_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'checked_input_sha256':{n:sha(q/n) for n in N},'supplemental_checked_input_sha256':{os.path.relpath(f,q).replace('\\','/'):sha(f) for f in supp},'required_repairs':repairs,'all_source_segments_verified':False,'required_source_game_count':2,'structural_checks':{k:v for k,v in struct.items() if k not in ['checked_input_sha256','checked_supplemental_sha256','edited_semantic_mapping']},'supported_conclusions':['Game1 ElPapa loss, owner second,11 turns,0-3 UI cap; HP0/removal/empty Active/award2/Defeat phases independently supported.','Game2 human event opponentたこ, owner first,2 turns,explicit concession708–710,Victory718,0-0,0damage.','Initial QR semantic20 distinct from final edited semantic20. Final card membership/counts and catalog variants agree; final Energy must be Water. Exact printing/artwork remains null.','All selected owner hands/openings and consequential searches inspected; game1 Copycat141/143, paid Grass+Metal retreat361–363 and ordinary opponent3 assessed.','No full discard-pile windows claimed; only previews. Hidden opponents remain unknown. No source-media rehash/archive/external writes performed.'],'inspection_scope':'Bounded independent acceptance of full first-pass packets: selected opening/ordinary owner and complete ordinary opponent3; selected middle hands, consequential interaction/end; edit binding and tiny game2. Not a routine second whole-game1 pass.','resolved_before_frozen_rejection':['Child COVERAGE firstBall prose corrected to consumption656–657/display658.','Child staged_edited_deck_file corrected to ../../EDITED_DECK_ENTRY.json with prior version retained.'],'prior_frozen_rejection':'CHECK_RESULT.rejected_water_mismatch.json'}
+ (o/'CHECK_RESULT.rejected_R1_R3.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8');(o/'CHECK_RESULT.json').write_text(json.dumps(result,ensure_ascii=False,indent=2),encoding='utf-8')
+ viewed={'schema':'independent-viewed-evidence-v1','created_utc':result['created_utc'],'source_video':result['source_video'],'source_sha256':result['source_sha256'],'reviewer':'independent_012927','scope':result['inspection_scope'],'views':views if not sub else [v for v in views if v['packet']=='game_02' or 'edit' in v['group'] or 'Energy/save' in v['group']],'visual_findings':repairs,'structural_check':'STRUCTURAL_CHECK.json','source_media_rehashed':False,'exact_pts_measured':False}
+ (o/'VIEWED_EVIDENCE.json').write_text(json.dumps(viewed,ensure_ascii=False,indent=2),encoding='utf-8');print(sub,'stable rejected',len(viewed['views']),'viewed refs')

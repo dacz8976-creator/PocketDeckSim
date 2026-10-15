@@ -1,0 +1,33 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-14T15:14:20.103898+00:00",
+  "source_filename": "20261002_012229000_iOS.MP4",
+  "source_sha256": "d767c42f6e9a4e8677ae45020e7fccc2a0e9954009faf699abada5ef6c4d49c5",
+  "basis": "Direct original-resolution visual inspection, independent frozen packet and source identity reconciliation",
+  "observations": [
+    {
+      "path": "setup/t0002.00.jpg",
+      "sha256": "386e2246af3640289a1885f2626a03e14b82d6296f619a0a33db87c50f56d2e6",
+      "directly_viewed_by_root": true,
+      "finding": "Setup explicitly labels opponent AI"
+    },
+    {
+      "path": "independent_sol/evidence/fresh_74.50.jpg",
+      "sha256": "fd427c94657d01b4513e32024239d770cb2f062090940db3659ee55c1dbf1ef3",
+      "directly_viewed_by_root": true,
+      "finding": "Ordinary turn: Gabite80, two Froakie60, Water attached; Auto OFF"
+    },
+    {
+      "path": "independent_sol/evidence/fresh_206.00.jpg",
+      "sha256": "a1908e23f3ca3fcc45daaee4913bd6af5db7d539b12a9a20e76bd374d910cdd3",
+      "directly_viewed_by_root": true,
+      "finding": "Garchomp0 HP after Burn20; Heads/recovery notice does not prevent knockout; Auto OFF"
+    },
+    {
+      "path": "independent_sol/evidence/fresh_309.00.jpg",
+      "sha256": "93dbf2c491bda18843c1de6584b1e6616dcc5d329f7884ce565bdac0f2dcb9d9",
+      "directly_viewed_by_root": true,
+      "finding": "Named preset Defeat result"
+    }
+  ]
+}

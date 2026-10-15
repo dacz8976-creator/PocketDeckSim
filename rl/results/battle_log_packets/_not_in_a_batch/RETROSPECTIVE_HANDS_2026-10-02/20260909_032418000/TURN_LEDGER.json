@@ -1,0 +1,5797 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260909_032418000",
+  "sources": [
+    {
+      "video_basename": "20260909_032418000_iOS.MP4",
+      "sha256": "750514530d208e76a8fbd8fc968aa6900ef08b0a0c84d5c00ce48c656f1f9672",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "turns": [
+    {
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20260909_032418000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": 38.4,
+        "first_voluntary_move_seconds": 40.5,
+        "before_end_action_seconds": 48,
+        "end_after_resolution_seconds": 48,
+        "timing_basis": "approximate source-local intervals, no actual PTS/input timing measured"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          "Team Rocket's Goo-zooka",
+          "Hitting Hammer",
+          "Gholdengo",
+          "Poké Ball",
+          "Hitting Hammer"
+        ],
+        "count": 5,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "t0038.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Team Rocket's Goo-zooka",
+          "Hitting Hammer",
+          "Gholdengo",
+          "Poké Ball",
+          "Hitting Hammer"
+        ],
+        "count": 5,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "t0038.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "visible card backs, identity concealed",
+        "basis": "native fan at owner start or preceding boundary",
+        "evidence_ids": [
+          "t0038.50"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Hitting Hammer",
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 38,
+              "evidence_ids": [
+                "r0038.00",
+                "t0038.50",
+                "cue_00039"
+              ],
+              "basis": "native reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 38,
+          "evidence_ids": [
+            "r0038.00",
+            "t0038.50",
+            "cue_00039"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Gimmighoul",
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 43.5,
+              "evidence_ids": [
+                "t0044.00",
+                "cue_00044"
+              ],
+              "basis": "native reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 43.5,
+          "evidence_ids": [
+            "t0044.00",
+            "cue_00044"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "Item",
+          "card_name": "Poké Ball",
+          "target": "owner deck",
+          "result": "Search finds Gimmighoul",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 5,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 40.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "t0039.00",
+            "t0041.00",
+            "t0044.00",
+            "cue_00041"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 2,
+          "kind": "bench",
+          "card_name": "Gimmighoul",
+          "target": "owner Bench position3",
+          "result": "Gimmighoul60HP benched",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 4,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 45.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "t0044.00",
+            "t0048.00",
+            "cue_00046"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 3,
+          "kind": "end turn",
+          "card_name": null,
+          "target": null,
+          "result": "Owner ends without attachment or attack",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 4,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 48.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "t0048.00",
+            "cue_00049"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 1,
+        "phase": "owner postdraw before first play",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Rotom ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 120,
+            "hp_max": 120,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0038.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0038.50"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0038.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0038.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0038.50"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0038.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0038.50"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 1,
+        "phase": "after recorded resolution",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Rotom ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 120,
+            "hp_max": 120,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Gimmighoul",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0048.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0048.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0048.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0048.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          "Team Rocket's Goo-zooka",
+          "Hitting Hammer",
+          "Gholdengo",
+          "Hitting Hammer"
+        ],
+        "count": 4,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "t0048.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "cue_00039",
+        "cue_00041",
+        "cue_00044",
+        "cue_00046",
+        "cue_00049",
+        "r0038.00",
+        "t0038.50",
+        "t0039.00",
+        "t0041.00",
+        "t0044.00",
+        "t0048.00"
+      ],
+      "limits": [
+        "Opponent unplayed cards and normal/Research refill identities remain concealed by card backs.",
+        "Exact historical 20-card deck log snapshot is unavailable; visible cards are minimum observations, not a reconstructed deck.",
+        "All 345 reduced 1fps samples were screened once; this does not observe every instant, input or subsecond event.",
+        "Requested seek times and approximate midpoint locator labels are source-local. Actual decoded frame PTS and exact input times were not measured.",
+        "Opened owner discard panels are recorded at189.5 and255.0. No opened opponent pile was detected in the bounded screen; pile tops are not full pile contents.",
+        "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+      ],
+      "opponent_hand_end": {
+        "count": 4,
+        "cards_left_to_right": null,
+        "basis": "visible native fan, identities concealed",
+        "evidence_ids": [
+          "t0048.00"
+        ],
+        "limit_reason": "Unplayed identities hidden by backs"
+      }
+    },
+    {
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20260909_032418000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 54.5,
+        "before_end_action_seconds": 70,
+        "end_after_resolution_seconds": 75,
+        "timing_basis": "approximate source-local intervals, no actual PTS/input timing measured"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": 5,
+        "basis": "visible opponent fan after normal draw; concealed identities",
+        "evidence_ids": [
+          "r0050.00"
+        ],
+        "status": "hidden",
+        "limit_reason": "card backs conceal identities"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Team Rocket's Goo-zooka",
+          "Hitting Hammer",
+          "Gholdengo",
+          "Hitting Hammer"
+        ],
+        "count": 4,
+        "basis": "native owner hand carried into opponent turn",
+        "evidence_ids": [
+          "t0048.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "visible card backs, identity concealed",
+        "basis": "native fan at owner start or preceding boundary",
+        "evidence_ids": [
+          "t0048.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 51.5,
+              "evidence_ids": [
+                "r0050.00",
+                "r0055.00",
+                "cue_00052"
+              ],
+              "basis": "concealed card back",
+              "limit_reason": "hidden draw"
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 51.5,
+          "evidence_ids": [
+            "r0050.00",
+            "r0055.00",
+            "cue_00052"
+          ],
+          "limit_reason": "hidden draw"
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Tapu Koko ex",
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 64.5,
+              "evidence_ids": [
+                "r0065.00",
+                "cue_00065"
+              ],
+              "basis": "native reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 64.5,
+          "evidence_ids": [
+            "r0065.00",
+            "cue_00065"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "Tool",
+          "card_name": "Poison Barb",
+          "target": "opponent Active Tapu Koko ex",
+          "result": "Tool attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 4,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 54.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0055.00",
+            "t0069.00",
+            "cue_00055"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 2,
+          "kind": "Item",
+          "card_name": "Poké Ball",
+          "target": "opponent deck",
+          "result": "One searched Basic revealed as alternate-art Tapu Koko ex",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 4,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 58.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0060.00",
+            "r0065.00",
+            "t0069.00",
+            "cue_00059"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 3,
+          "kind": "bench",
+          "card_name": "Tapu Koko ex",
+          "target": "opponent Bench position2",
+          "result": "alternate-art Tapu Koko ex130 benched",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 3,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 66.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0065.00",
+            "t0069.00",
+            "cue_00067"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 4,
+          "kind": "manual Energy attachment",
+          "card_name": null,
+          "target": "opponent Active Tapu Koko ex",
+          "result": "one Lightning attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "opponent Active Tapu Koko ex",
+            "retreat_payment_by_type": null
+          },
+          "hand_count_after": 3,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 68.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "t0069.00",
+            "cue_00069"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": "Plasma Hurricane",
+          "target": "owner Active Rotom ex",
+          "result": "20 damage; Rotom120→100; opponent Active Lightning1→2 by after-resolution",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 3,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 71.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0070.00",
+            "r0075.00",
+            "t0079.50",
+            "cue_00072"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Plasma Hurricane adds one Lightning to opponent Active, shown by native endpoint",
+          "timestamp_seconds": 75,
+          "evidence_ids": [
+            "r0075.00",
+            "cue_00076"
+          ],
+          "basis": "native endpoints and locator cue; exact input unmeasured"
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 2,
+        "phase": "preceding boundary before current-turn generation",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Rotom ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 120,
+            "hp_max": 120,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Gimmighoul",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0048.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true,
+              "basis": "derived from next Lightning plus observed generation; separate from preceding-boundary current0"
+            }
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0048.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true,
+              "basis": "derived from next Lightning plus observed generation; separate from preceding-boundary current0"
+            }
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0048.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0048.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 2,
+        "phase": "after recorded resolution",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Rotom ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 120,
+            "hp_max_basis": "printed native card",
+            "damage": 20,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0075.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Gimmighoul",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0075.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0075.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0075.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0075.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0075.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0075.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0075.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "r0075.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          "Team Rocket's Goo-zooka",
+          "Hitting Hammer",
+          "Gholdengo",
+          "Hitting Hammer"
+        ],
+        "count": 4,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "r0075.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "cue_00052",
+        "cue_00055",
+        "cue_00059",
+        "cue_00065",
+        "cue_00067",
+        "cue_00069",
+        "cue_00072",
+        "cue_00076",
+        "r0050.00",
+        "r0055.00",
+        "r0060.00",
+        "r0065.00",
+        "r0070.00",
+        "r0075.00",
+        "t0048.00",
+        "t0069.00",
+        "t0079.50"
+      ],
+      "limits": [
+        "Opponent unplayed cards and normal/Research refill identities remain concealed by card backs.",
+        "Exact historical 20-card deck log snapshot is unavailable; visible cards are minimum observations, not a reconstructed deck.",
+        "All 345 reduced 1fps samples were screened once; this does not observe every instant, input or subsecond event.",
+        "Requested seek times and approximate midpoint locator labels are source-local. Actual decoded frame PTS and exact input times were not measured.",
+        "Opened owner discard panels are recorded at189.5 and255.0. No opened opponent pile was detected in the bounded screen; pile tops are not full pile contents.",
+        "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+      ],
+      "opponent_hand_end": {
+        "count": 3,
+        "cards_left_to_right": null,
+        "basis": "visible native fan, identities concealed",
+        "evidence_ids": [
+          "r0075.00"
+        ],
+        "limit_reason": "Unplayed identities hidden by backs"
+      }
+    },
+    {
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20260909_032418000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": 79.3,
+        "first_voluntary_move_seconds": 80.5,
+        "before_end_action_seconds": 133,
+        "end_after_resolution_seconds": 133,
+        "timing_basis": "approximate source-local intervals, no actual PTS/input timing measured"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          "Team Rocket's Goo-zooka",
+          "Hitting Hammer",
+          "Gholdengo",
+          "Hitting Hammer",
+          "Red Card"
+        ],
+        "count": 5,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "t0079.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Team Rocket's Goo-zooka",
+          "Hitting Hammer",
+          "Gholdengo",
+          "Hitting Hammer",
+          "Red Card"
+        ],
+        "count": 5,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "t0079.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "visible card backs, identity concealed",
+        "basis": "native fan at owner start or preceding boundary",
+        "evidence_ids": [
+          "t0079.50"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Red Card",
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 79,
+              "evidence_ids": [
+                "t0079.50",
+                "cue_00080"
+              ],
+              "basis": "native reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 79,
+          "evidence_ids": [
+            "t0079.50",
+            "cue_00080"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "refill",
+          "caused_by": "Red Card",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 89.5,
+              "evidence_ids": [
+                "r0090.00",
+                "cue_00090"
+              ],
+              "basis": "concealed card back",
+              "limit_reason": "Opponent three hidden cards shuffled and replaced; no visible identity"
+            },
+            {
+              "name": null,
+              "reveal_position": 2,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 89.5,
+              "evidence_ids": [
+                "r0090.00",
+                "cue_00090"
+              ],
+              "basis": "concealed card back",
+              "limit_reason": "Opponent three hidden cards shuffled and replaced; no visible identity"
+            },
+            {
+              "name": null,
+              "reveal_position": 3,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 89.5,
+              "evidence_ids": [
+                "r0090.00",
+                "cue_00090"
+              ],
+              "basis": "concealed card back",
+              "limit_reason": "Opponent three hidden cards shuffled and replaced; no visible identity"
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 3,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 89.5,
+          "evidence_ids": [
+            "r0090.00",
+            "cue_00090"
+          ],
+          "limit_reason": "Opponent three hidden cards shuffled and replaced; no visible identity"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Gholdengo",
+          "target": "owner Gimmighoul Bench3",
+          "result": "Gholdengo100HP replaces Gimmighoul",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 4,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 80.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "t0079.50",
+            "t0082.00",
+            "cue_00081"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 2,
+          "kind": "Item",
+          "card_name": "Red Card",
+          "target": "opponent hand",
+          "result": "Three cards shuffled; three card backs returned, no net fan count change",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 3,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 86.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "t0085.00",
+            "r0090.00",
+            "cue_00087"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 3,
+          "kind": "Item",
+          "card_name": "Hitting Hammer",
+          "target": "opponent Active Tapu Koko ex",
+          "result": "Two Heads; one Lightning discarded,2→1",
+          "prompt_text": "Use the effect of Luxury Coin?",
+          "response": "No/decline inferred from resolution; exact click not captured",
+          "nested_events_in_order": [
+            {
+              "event": "Two Heads initial result",
+              "timestamp_seconds": 99.5,
+              "evidence_ids": [
+                "r0100.00",
+                "cue_00100"
+              ],
+              "basis": "native endpoints and locator cue; exact input unmeasured"
+            },
+            {
+              "event": "Luxury Coin prompt appears",
+              "timestamp_seconds": 100.5,
+              "evidence_ids": [
+                "t0100.50",
+                "cue_00101"
+              ],
+              "basis": "native endpoints and locator cue; exact input unmeasured"
+            },
+            {
+              "event": "Prompt resolves without reroll; decline inferred from unchanged successful result and no Ability animation",
+              "timestamp_seconds": 102.5,
+              "evidence_ids": [
+                "t0102.50",
+                "cue_00103"
+              ],
+              "basis": "native endpoints and locator cue; exact input unmeasured"
+            }
+          ],
+          "energy": null,
+          "hand_count_after": 2,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 93.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0095.00",
+            "t0100.50",
+            "t0102.50",
+            "cue_00094"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 4,
+          "kind": "Item",
+          "card_name": "Hitting Hammer",
+          "target": "opponent Active Tapu Koko ex",
+          "result": "Initial two Tails rerolled via Luxury Coin to one Head/one Tail; no Energy discarded",
+          "prompt_text": "Use the effect of Luxury Coin?",
+          "response": "Yes/use supported by Ability animation and reroll",
+          "nested_events_in_order": [
+            {
+              "event": "Two Tails initial result",
+              "timestamp_seconds": 110.5,
+              "evidence_ids": [
+                "r0110.00",
+                "t0111.50",
+                "cue_00111"
+              ],
+              "basis": "native endpoints and locator cue; exact input unmeasured"
+            },
+            {
+              "event": "Luxury Coin used, followed by new coin flips",
+              "timestamp_seconds": 113.5,
+              "evidence_ids": [
+                "r0114.00",
+                "cue_00114"
+              ],
+              "basis": "native endpoints and locator cue; exact input unmeasured"
+            },
+            {
+              "event": "One Head and one Tail final result; no Energy change",
+              "timestamp_seconds": 119.5,
+              "evidence_ids": [
+                "r0120.00",
+                "cue_00120"
+              ],
+              "basis": "native endpoints and locator cue; exact input unmeasured"
+            }
+          ],
+          "energy": null,
+          "hand_count_after": 1,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 104.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0104.00",
+            "r0110.00",
+            "t0111.50",
+            "r0114.00",
+            "r0120.00",
+            "cue_00105"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 5,
+          "kind": "manual Energy attachment",
+          "card_name": null,
+          "target": "owner Active Rotom ex",
+          "result": "one Lightning attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "owner Active Rotom ex",
+            "retreat_payment_by_type": null
+          },
+          "hand_count_after": 1,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 121.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0125.00",
+            "t0133.00",
+            "cue_00122"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 6,
+          "kind": "Item",
+          "card_name": "Team Rocket's Goo-zooka",
+          "target": "opponent Active Tapu Koko ex",
+          "result": "Retreat Cost+1 effect; hand empty",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 0,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 130.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0130.00",
+            "t0133.00",
+            "cue_00131"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 7,
+          "kind": "end turn",
+          "card_name": null,
+          "target": null,
+          "result": "Owner ends without attack",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 0,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 133.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "t0133.00",
+            "cue_00134"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 3,
+        "phase": "owner postdraw before first play",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Rotom ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 120,
+            "hp_max_basis": "printed native card",
+            "damage": 20,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0079.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Gimmighoul",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0079.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0079.50"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0079.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0079.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0079.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0079.50"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0079.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0079.50"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 3,
+        "phase": "after recorded resolution",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Rotom ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 120,
+            "hp_max_basis": "printed native card",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0133.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Gholdengo",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0133.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0133.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0133.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [
+              "Retreat Cost +1 from Team Rocket's Goo-zooka"
+            ],
+            "evidence_ids": [
+              "t0133.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0133.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0133.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0133.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0133.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "t0133.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "cue_00080",
+        "cue_00081",
+        "cue_00087",
+        "cue_00090",
+        "cue_00094",
+        "cue_00100",
+        "cue_00101",
+        "cue_00103",
+        "cue_00105",
+        "cue_00111",
+        "cue_00114",
+        "cue_00120",
+        "cue_00122",
+        "cue_00131",
+        "cue_00134",
+        "r0090.00",
+        "r0095.00",
+        "r0100.00",
+        "r0104.00",
+        "r0110.00",
+        "r0114.00",
+        "r0120.00",
+        "r0125.00",
+        "r0130.00",
+        "t0079.50",
+        "t0082.00",
+        "t0085.00",
+        "t0100.50",
+        "t0102.50",
+        "t0111.50",
+        "t0133.00"
+      ],
+      "limits": [
+        "Opponent unplayed cards and normal/Research refill identities remain concealed by card backs.",
+        "Exact historical 20-card deck log snapshot is unavailable; visible cards are minimum observations, not a reconstructed deck.",
+        "All 345 reduced 1fps samples were screened once; this does not observe every instant, input or subsecond event.",
+        "Requested seek times and approximate midpoint locator labels are source-local. Actual decoded frame PTS and exact input times were not measured.",
+        "Opened owner discard panels are recorded at189.5 and255.0. No opened opponent pile was detected in the bounded screen; pile tops are not full pile contents.",
+        "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+      ],
+      "opponent_hand_end": {
+        "count": 3,
+        "cards_left_to_right": null,
+        "basis": "visible native fan, identities concealed",
+        "evidence_ids": [
+          "t0133.00"
+        ],
+        "limit_reason": "Unplayed identities hidden by backs"
+      }
+    },
+    {
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20260909_032418000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 141.5,
+        "before_end_action_seconds": 155,
+        "end_after_resolution_seconds": 160,
+        "timing_basis": "approximate source-local intervals, no actual PTS/input timing measured"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": 4,
+        "basis": "visible opponent fan after normal draw; concealed identities",
+        "evidence_ids": [
+          "r0140.00"
+        ],
+        "status": "hidden",
+        "limit_reason": "card backs conceal identities"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native owner hand carried into opponent turn",
+        "evidence_ids": [
+          "t0133.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "visible card backs, identity concealed",
+        "basis": "native fan at owner start or preceding boundary",
+        "evidence_ids": [
+          "t0133.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 137.5,
+              "evidence_ids": [
+                "r0140.00",
+                "t0142.00",
+                "cue_00138"
+              ],
+              "basis": "concealed card back",
+              "limit_reason": "hidden draw"
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 137.5,
+          "evidence_ids": [
+            "r0140.00",
+            "t0142.00",
+            "cue_00138"
+          ],
+          "limit_reason": "hidden draw"
+        },
+        {
+          "kind": "Research",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 147.5,
+              "evidence_ids": [
+                "r0145.00",
+                "r0150.00",
+                "cue_00148"
+              ],
+              "basis": "concealed card back",
+              "limit_reason": "two concealed opponent draws"
+            },
+            {
+              "name": null,
+              "reveal_position": 2,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 147.5,
+              "evidence_ids": [
+                "r0145.00",
+                "r0150.00",
+                "cue_00148"
+              ],
+              "basis": "concealed card back",
+              "limit_reason": "two concealed opponent draws"
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 5,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 147.5,
+          "evidence_ids": [
+            "r0145.00",
+            "r0150.00",
+            "cue_00148"
+          ],
+          "limit_reason": "two concealed opponent draws"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "manual Energy attachment",
+          "card_name": null,
+          "target": "opponent Bench2 alternate-art Tapu Koko ex",
+          "result": "one Lightning attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "opponent Bench2 alternate-art Tapu Koko ex",
+            "retreat_payment_by_type": null
+          },
+          "hand_count_after": 4,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 141.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0140.00",
+            "t0142.00",
+            "cue_00142"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 2,
+          "kind": "Supporter",
+          "card_name": "Professor's Research",
+          "target": "opponent deck",
+          "result": "Two hidden cards drawn",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 5,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 145.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0145.00",
+            "r0150.00",
+            "cue_00146"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 3,
+          "kind": "Tool",
+          "card_name": "Poison Barb",
+          "target": "opponent Bench2 alternate-art Tapu Koko ex",
+          "result": "Tool attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 4,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 151.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0155.00",
+            "r0160.00",
+            "cue_00152"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Plasma Hurricane",
+          "target": "owner Active Rotom ex",
+          "result": "20 damage; Rotom100→80; opponent Active Lightning1→2",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 4,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 157.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0155.00",
+            "r0160.00",
+            "r0166.00",
+            "cue_00158"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Plasma Hurricane adds one Lightning to opponent Active, shown by native endpoint",
+          "timestamp_seconds": 160,
+          "evidence_ids": [
+            "r0160.00",
+            "cue_00161"
+          ],
+          "basis": "native endpoints and locator cue; exact input unmeasured"
+        },
+        {
+          "event": "Goo-zooka first effect no longer shown at following owner start",
+          "timestamp_seconds": 166,
+          "evidence_ids": [
+            "r0166.00",
+            "cue_00167"
+          ],
+          "basis": "native endpoints and locator cue; exact input unmeasured"
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 4,
+        "phase": "preceding boundary before current-turn generation",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Rotom ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 120,
+            "hp_max_basis": "printed native card",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0133.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Gholdengo",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0133.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0133.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true,
+              "basis": "derived from next Lightning plus observed generation; separate from preceding-boundary current0"
+            }
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0133.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [
+              "Retreat Cost +1 from Team Rocket's Goo-zooka"
+            ],
+            "evidence_ids": [
+              "t0133.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0133.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0133.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true,
+              "basis": "derived from next Lightning plus observed generation; separate from preceding-boundary current0"
+            }
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0133.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0133.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 4,
+        "phase": "after recorded resolution",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Rotom ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 120,
+            "hp_max_basis": "printed native card",
+            "damage": 40,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0160.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Gholdengo",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0160.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0160.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0160.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0160.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": "Poison Barb",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0160.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0160.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0160.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "r0160.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "r0160.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "cue_00138",
+        "cue_00142",
+        "cue_00146",
+        "cue_00148",
+        "cue_00152",
+        "cue_00158",
+        "cue_00161",
+        "cue_00167",
+        "r0140.00",
+        "r0145.00",
+        "r0150.00",
+        "r0155.00",
+        "r0160.00",
+        "r0166.00",
+        "t0133.00",
+        "t0142.00"
+      ],
+      "limits": [
+        "Opponent unplayed cards and normal/Research refill identities remain concealed by card backs.",
+        "Exact historical 20-card deck log snapshot is unavailable; visible cards are minimum observations, not a reconstructed deck.",
+        "All 345 reduced 1fps samples were screened once; this does not observe every instant, input or subsecond event.",
+        "Requested seek times and approximate midpoint locator labels are source-local. Actual decoded frame PTS and exact input times were not measured.",
+        "Opened owner discard panels are recorded at189.5 and255.0. No opened opponent pile was detected in the bounded screen; pile tops are not full pile contents.",
+        "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+      ],
+      "opponent_hand_end": {
+        "count": 4,
+        "cards_left_to_right": null,
+        "basis": "visible native fan, identities concealed",
+        "evidence_ids": [
+          "r0160.00"
+        ],
+        "limit_reason": "Unplayed identities hidden by backs"
+      }
+    },
+    {
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20260909_032418000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": 165.5,
+        "first_voluntary_move_seconds": 168.5,
+        "before_end_action_seconds": 205,
+        "end_after_resolution_seconds": 205,
+        "timing_basis": "approximate source-local intervals, no actual PTS/input timing measured"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          "Order Pad"
+        ],
+        "count": 1,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "r0166.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Order Pad"
+        ],
+        "count": 1,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "r0166.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "visible card backs, identity concealed",
+        "basis": "native fan at owner start or preceding boundary",
+        "evidence_ids": [
+          "r0166.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Order Pad",
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 165.5,
+              "evidence_ids": [
+                "r0166.00",
+                "cue_00166"
+              ],
+              "basis": "native reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 0,
+          "hand_count_after": 1,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 165.5,
+          "evidence_ids": [
+            "r0166.00",
+            "cue_00166"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "Item",
+          "card_name": "Order Pad",
+          "target": "owner deck",
+          "result": "Initial Tails; Luxury Coin reroll Tails; no Item found, hand empty",
+          "prompt_text": "Use the effect of Luxury Coin?",
+          "response": "Yes/use supported by Ability animation and reroll",
+          "nested_events_in_order": [
+            {
+              "event": "Initial Tails",
+              "timestamp_seconds": 172.5,
+              "evidence_ids": [
+                "r0172.00",
+                "t0173.50",
+                "cue_00173"
+              ],
+              "basis": "native endpoints and locator cue; exact input unmeasured"
+            },
+            {
+              "event": "Luxury Coin used",
+              "timestamp_seconds": 175.5,
+              "evidence_ids": [
+                "r0176.00",
+                "cue_00176"
+              ],
+              "basis": "native endpoints and locator cue; exact input unmeasured"
+            },
+            {
+              "event": "Reroll Tails, no search find",
+              "timestamp_seconds": 179.5,
+              "evidence_ids": [
+                "r0180.00",
+                "cue_00180"
+              ],
+              "basis": "native endpoints and locator cue; exact input unmeasured"
+            }
+          ],
+          "energy": null,
+          "hand_count_after": 0,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 168.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0166.00",
+            "r0168.00",
+            "t0171.00",
+            "r0172.00",
+            "t0173.50",
+            "r0176.00",
+            "r0180.00",
+            "cue_00169"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 2,
+          "kind": "manual Energy attachment",
+          "card_name": null,
+          "target": "owner Bench3 Gholdengo",
+          "result": "one Lightning attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "owner Bench3 Gholdengo",
+            "retreat_payment_by_type": null
+          },
+          "hand_count_after": 0,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 190.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0185.00",
+            "r0190.00",
+            "r0205.00",
+            "cue_00191"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 3,
+          "kind": "retreat",
+          "card_name": "Rotom ex",
+          "target": "Gholdengo promoted from Bench3",
+          "result": "Rotom pays one Lightning, becomes Bench3 with0; Gholdengo100L1 becomes Active",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            {
+              "event": "Retreat payment selected",
+              "timestamp_seconds": 197.5,
+              "evidence_ids": [
+                "r0190.00",
+                "r0205.00",
+                "cue_00198"
+              ],
+              "basis": "native endpoints and locator cue; exact input unmeasured"
+            },
+            {
+              "event": "Gholdengo selected and promoted",
+              "timestamp_seconds": 203.5,
+              "evidence_ids": [
+                "r0205.00",
+                "cue_00204"
+              ],
+              "basis": "native endpoints and locator cue; exact input unmeasured"
+            }
+          ],
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": {
+              "Lightning": 1
+            }
+          },
+          "hand_count_after": 0,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 195.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0190.00",
+            "r0205.00",
+            "cue_00196"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 4,
+          "kind": "end turn",
+          "card_name": null,
+          "target": null,
+          "result": "Owner ends without attack",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 0,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 205.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0205.00",
+            "cue_00206"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 5,
+        "phase": "owner postdraw before first play",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Rotom ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 120,
+            "hp_max_basis": "printed native card",
+            "damage": 40,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0166.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Gholdengo",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0166.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0166.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0166.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0166.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": "Poison Barb",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0166.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0166.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0166.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "r0166.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 5,
+        "phase": "after recorded resolution",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Gholdengo",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 100,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0205.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Rotom ex",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 120,
+              "hp_max_basis": "printed native card",
+              "damage": 40,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0205.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0205.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0205.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0205.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": "Poison Barb",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0205.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0205.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0205.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "r0205.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "r0205.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "pile_5_owner"
+      ],
+      "turn_evidence_ids": [
+        "cue_00166",
+        "cue_00169",
+        "cue_00173",
+        "cue_00176",
+        "cue_00180",
+        "cue_00191",
+        "cue_00196",
+        "cue_00198",
+        "cue_00204",
+        "cue_00206",
+        "r0166.00",
+        "r0168.00",
+        "r0172.00",
+        "r0176.00",
+        "r0180.00",
+        "r0185.00",
+        "r0190.00",
+        "r0205.00",
+        "t0171.00",
+        "t0173.50"
+      ],
+      "limits": [
+        "Opponent unplayed cards and normal/Research refill identities remain concealed by card backs.",
+        "Exact historical 20-card deck log snapshot is unavailable; visible cards are minimum observations, not a reconstructed deck.",
+        "All 345 reduced 1fps samples were screened once; this does not observe every instant, input or subsecond event.",
+        "Requested seek times and approximate midpoint locator labels are source-local. Actual decoded frame PTS and exact input times were not measured.",
+        "Opened owner discard panels are recorded at189.5 and255.0. No opened opponent pile was detected in the bounded screen; pile tops are not full pile contents.",
+        "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+      ],
+      "opponent_hand_end": {
+        "count": 4,
+        "cards_left_to_right": null,
+        "basis": "visible native fan, identities concealed",
+        "evidence_ids": [
+          "r0205.00"
+        ],
+        "limit_reason": "Unplayed identities hidden by backs"
+      }
+    },
+    {
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20260909_032418000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 220.5,
+        "before_end_action_seconds": 225,
+        "end_after_resolution_seconds": 230,
+        "timing_basis": "approximate source-local intervals, no actual PTS/input timing measured"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": 5,
+        "basis": "visible opponent fan after normal draw; concealed identities",
+        "evidence_ids": [
+          "r0215.00"
+        ],
+        "status": "hidden",
+        "limit_reason": "card backs conceal identities"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native owner hand carried into opponent turn",
+        "evidence_ids": [
+          "r0205.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "visible card backs, identity concealed",
+        "basis": "native fan at owner start or preceding boundary",
+        "evidence_ids": [
+          "r0205.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 212.5,
+              "evidence_ids": [
+                "r0215.00",
+                "r0220.00",
+                "cue_00213"
+              ],
+              "basis": "concealed card back",
+              "limit_reason": "hidden draw"
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 212.5,
+          "evidence_ids": [
+            "r0215.00",
+            "r0220.00",
+            "cue_00213"
+          ],
+          "limit_reason": "hidden draw"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "manual Energy attachment",
+          "card_name": null,
+          "target": "opponent Bench2 alternate-art Tapu Koko ex",
+          "result": "one Lightning attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "opponent Bench2 alternate-art Tapu Koko ex",
+            "retreat_payment_by_type": null
+          },
+          "hand_count_after": 5,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 220.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0220.00",
+            "r0225.00",
+            "cue_00221"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 2,
+          "kind": "attack",
+          "card_name": "Plasma Hurricane",
+          "target": "owner Active Gholdengo",
+          "result": "20 damage; Gholdengo100→80; opponent Active Lightning2→3",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 5,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 225.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0225.00",
+            "r0230.00",
+            "t0234.00",
+            "cue_00226"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Plasma Hurricane adds one Lightning to opponent Active, shown by native endpoint",
+          "timestamp_seconds": 230,
+          "evidence_ids": [
+            "r0230.00",
+            "cue_00231"
+          ],
+          "basis": "native endpoints and locator cue; exact input unmeasured"
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 6,
+        "phase": "preceding boundary before current-turn generation",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Gholdengo",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 100,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0205.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Rotom ex",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 120,
+              "hp_max_basis": "printed native card",
+              "damage": 40,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0205.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0205.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true,
+              "basis": "derived from next Lightning plus observed generation; separate from preceding-boundary current0"
+            }
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0205.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0205.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": "Poison Barb",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0205.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0205.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true,
+              "basis": "derived from next Lightning plus observed generation; separate from preceding-boundary current0"
+            }
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0205.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "r0205.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 6,
+        "phase": "after recorded resolution",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Gholdengo",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 100,
+            "hp_max_basis": "printed native card",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0230.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Rotom ex",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 120,
+              "hp_max_basis": "printed native card",
+              "damage": 40,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0230.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0230.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0230.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Lightning": 3
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0230.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Lightning": 2
+                }
+              },
+              "tool": "Poison Barb",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0230.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0230.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0230.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "r0230.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "r0230.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "cue_00213",
+        "cue_00221",
+        "cue_00226",
+        "cue_00231",
+        "r0205.00",
+        "r0215.00",
+        "r0220.00",
+        "r0225.00",
+        "r0230.00",
+        "t0234.00"
+      ],
+      "limits": [
+        "Opponent unplayed cards and normal/Research refill identities remain concealed by card backs.",
+        "Exact historical 20-card deck log snapshot is unavailable; visible cards are minimum observations, not a reconstructed deck.",
+        "All 345 reduced 1fps samples were screened once; this does not observe every instant, input or subsecond event.",
+        "Requested seek times and approximate midpoint locator labels are source-local. Actual decoded frame PTS and exact input times were not measured.",
+        "Opened owner discard panels are recorded at189.5 and255.0. No opened opponent pile was detected in the bounded screen; pile tops are not full pile contents.",
+        "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+      ],
+      "opponent_hand_end": {
+        "count": 5,
+        "cards_left_to_right": null,
+        "basis": "visible native fan, identities concealed",
+        "evidence_ids": [
+          "r0230.00"
+        ],
+        "limit_reason": "Unplayed identities hidden by backs"
+      }
+    },
+    {
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20260909_032418000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": 233.5,
+        "first_voluntary_move_seconds": 236.5,
+        "before_end_action_seconds": 240,
+        "end_after_resolution_seconds": 240,
+        "timing_basis": "approximate source-local intervals, no actual PTS/input timing measured"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          "Team Rocket's Goo-zooka"
+        ],
+        "count": 1,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "t0234.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Team Rocket's Goo-zooka"
+        ],
+        "count": 1,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "t0234.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": null,
+        "count_method": "visible card backs, identity concealed",
+        "basis": "native fan at owner start or preceding boundary",
+        "evidence_ids": [
+          "t0234.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Team Rocket's Goo-zooka",
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 233.5,
+              "evidence_ids": [
+                "t0234.00",
+                "cue_00234"
+              ],
+              "basis": "native reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 0,
+          "hand_count_after": 1,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 233.5,
+          "evidence_ids": [
+            "t0234.00",
+            "cue_00234"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "Item",
+          "card_name": "Team Rocket's Goo-zooka",
+          "target": "opponent Active Tapu Koko ex",
+          "result": "Retreat Cost+1 effect; hand empty",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 0,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 236.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "t0234.00",
+            "t0236.00",
+            "t0239.00",
+            "r0240.00",
+            "cue_00237"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 2,
+          "kind": "manual Energy attachment",
+          "card_name": null,
+          "target": "owner Bench3 Rotom ex",
+          "result": "one Lightning attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "owner Bench3 Rotom ex",
+            "retreat_payment_by_type": null
+          },
+          "hand_count_after": 0,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 237.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "t0239.00",
+            "r0240.00",
+            "cue_00238"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 3,
+          "kind": "end turn",
+          "card_name": null,
+          "target": null,
+          "result": "Owner ends without attack",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 0,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 240.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0240.00",
+            "cue_00241"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 7,
+        "phase": "owner postdraw before first play",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Gholdengo",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 100,
+            "hp_max_basis": "printed native card",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0234.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Rotom ex",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 120,
+              "hp_max_basis": "printed native card",
+              "damage": 40,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0234.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0234.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0234.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Lightning": 3
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0234.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Lightning": 2
+                }
+              },
+              "tool": "Poison Barb",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0234.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0234.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0234.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0234.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 7,
+        "phase": "after recorded resolution",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Gholdengo",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 100,
+            "hp_max_basis": "printed native card",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0240.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Rotom ex",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 120,
+              "hp_max_basis": "printed native card",
+              "damage": 40,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0240.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0240.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0240.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Lightning": 3
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [
+              "Retreat Cost +1 from Team Rocket's Goo-zooka"
+            ],
+            "evidence_ids": [
+              "r0240.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Lightning": 2
+                }
+              },
+              "tool": "Poison Barb",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0240.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0240.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0240.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "r0240.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "r0240.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "cue_00234",
+        "cue_00237",
+        "cue_00238",
+        "cue_00241",
+        "r0240.00",
+        "t0234.00",
+        "t0236.00",
+        "t0239.00"
+      ],
+      "limits": [
+        "Opponent unplayed cards and normal/Research refill identities remain concealed by card backs.",
+        "Exact historical 20-card deck log snapshot is unavailable; visible cards are minimum observations, not a reconstructed deck.",
+        "All 345 reduced 1fps samples were screened once; this does not observe every instant, input or subsecond event.",
+        "Requested seek times and approximate midpoint locator labels are source-local. Actual decoded frame PTS and exact input times were not measured.",
+        "Opened owner discard panels are recorded at189.5 and255.0. No opened opponent pile was detected in the bounded screen; pile tops are not full pile contents.",
+        "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+      ],
+      "opponent_hand_end": {
+        "count": 5,
+        "cards_left_to_right": null,
+        "basis": "visible native fan, identities concealed",
+        "evidence_ids": [
+          "r0240.00"
+        ],
+        "limit_reason": "Unplayed identities hidden by backs"
+      }
+    },
+    {
+      "turn_number": 8,
+      "who_played": "opponent",
+      "source_video": "20260909_032418000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 247.5,
+        "before_end_action_seconds": 266,
+        "end_after_resolution_seconds": 280,
+        "timing_basis": "approximate source-local intervals, no actual PTS/input timing measured"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": 6,
+        "basis": "visible opponent fan after normal draw; concealed identities",
+        "evidence_ids": [
+          "r0245.00"
+        ],
+        "status": "hidden",
+        "limit_reason": "card backs conceal identities"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native owner hand carried into opponent turn",
+        "evidence_ids": [
+          "r0240.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": null,
+        "count_method": "visible card backs, identity concealed",
+        "basis": "native fan at owner start or preceding boundary",
+        "evidence_ids": [
+          "r0240.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 243.5,
+              "evidence_ids": [
+                "r0245.00",
+                "r0250.00",
+                "cue_00244"
+              ],
+              "basis": "concealed card back",
+              "limit_reason": "hidden draw"
+            }
+          ],
+          "hand_count_before": 5,
+          "hand_count_after": 6,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 243.5,
+          "evidence_ids": [
+            "r0245.00",
+            "r0250.00",
+            "cue_00244"
+          ],
+          "limit_reason": "hidden draw"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "manual Energy attachment",
+          "card_name": null,
+          "target": "opponent Bench2 alternate-art Tapu Koko ex",
+          "result": "one Lightning attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "opponent Bench2 alternate-art Tapu Koko ex",
+            "retreat_payment_by_type": null
+          },
+          "hand_count_after": 6,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 247.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0245.00",
+            "r0250.00",
+            "t0255.00",
+            "cue_00248"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 2,
+          "kind": "attack",
+          "card_name": "Mach Bolt",
+          "target": "owner Active Gholdengo",
+          "result": "Gholdengo80HP knocked out; Rotom80L1 promoted afterward",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 6,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 266.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0260.00",
+            "r0270.00",
+            "r0275.00",
+            "r0280.00",
+            "cue_00267"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Gholdengo knockout and one-point display",
+          "timestamp_seconds": 273.5,
+          "evidence_ids": [
+            "r0275.00",
+            "cue_00274"
+          ],
+          "basis": "native endpoints and locator cue; exact input unmeasured"
+        },
+        {
+          "event": "Rotom selected/promoted",
+          "timestamp_seconds": 277.5,
+          "evidence_ids": [
+            "r0280.00",
+            "cue_00278"
+          ],
+          "basis": "native endpoints and locator cue; exact input unmeasured"
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 8,
+        "phase": "preceding boundary before current-turn generation",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Gholdengo",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 100,
+            "hp_max_basis": "printed native card",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0240.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Rotom ex",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 120,
+              "hp_max_basis": "printed native card",
+              "damage": 40,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0240.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0240.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true,
+              "basis": "derived from next Lightning plus observed generation; separate from preceding-boundary current0"
+            }
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0240.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Lightning": 3
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [
+              "Retreat Cost +1 from Team Rocket's Goo-zooka"
+            ],
+            "evidence_ids": [
+              "r0240.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Lightning": 2
+                }
+              },
+              "tool": "Poison Barb",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0240.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0240.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true,
+              "basis": "derived from next Lightning plus observed generation; separate from preceding-boundary current0"
+            }
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0240.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "r0240.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 8,
+        "phase": "after recorded resolution",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Rotom ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 120,
+            "hp_max_basis": "printed native card",
+            "damage": 40,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0280.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0280.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0280.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Lightning": 3
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "r0280.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Lightning": 3
+                }
+              },
+              "tool": "Poison Barb",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "r0280.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "r0280.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "r0280.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "r0280.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "r0280.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "pile_8_owner"
+      ],
+      "turn_evidence_ids": [
+        "cue_00244",
+        "cue_00248",
+        "cue_00267",
+        "cue_00274",
+        "cue_00278",
+        "r0240.00",
+        "r0245.00",
+        "r0250.00",
+        "r0260.00",
+        "r0270.00",
+        "r0275.00",
+        "r0280.00",
+        "t0255.00"
+      ],
+      "limits": [
+        "Opponent unplayed cards and normal/Research refill identities remain concealed by card backs.",
+        "Exact historical 20-card deck log snapshot is unavailable; visible cards are minimum observations, not a reconstructed deck.",
+        "All 345 reduced 1fps samples were screened once; this does not observe every instant, input or subsecond event.",
+        "Requested seek times and approximate midpoint locator labels are source-local. Actual decoded frame PTS and exact input times were not measured.",
+        "Opened owner discard panels are recorded at189.5 and255.0. No opened opponent pile was detected in the bounded screen; pile tops are not full pile contents.",
+        "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+      ],
+      "opponent_hand_end": {
+        "count": 6,
+        "cards_left_to_right": null,
+        "basis": "visible native fan, identities concealed",
+        "evidence_ids": [
+          "r0280.00"
+        ],
+        "limit_reason": "Unplayed identities hidden by backs"
+      }
+    },
+    {
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20260909_032418000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": 284.4,
+        "first_voluntary_move_seconds": 284.75,
+        "before_end_action_seconds": 305,
+        "end_after_resolution_seconds": 314,
+        "timing_basis": "approximate source-local intervals, no actual PTS/input timing measured"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          "Lucky Ice Pop"
+        ],
+        "count": 1,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "t0284.40"
+        ],
+        "status": "observed",
+        "limit_reason": "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Lucky Ice Pop"
+        ],
+        "count": 1,
+        "basis": "direct native visible hand",
+        "evidence_ids": [
+          "t0284.40"
+        ],
+        "status": "observed",
+        "limit_reason": "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 6,
+        "supported_range": null,
+        "count_method": "visible card backs, identity concealed",
+        "basis": "native fan at owner start or preceding boundary",
+        "evidence_ids": [
+          "t0284.40"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Lucky Ice Pop",
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 284.4,
+              "evidence_ids": [
+                "t0284.40",
+                "t0284.45",
+                "t0284.70",
+                "cue_00285"
+              ],
+              "basis": "native reveal/hand identity",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 0,
+          "hand_count_after": 1,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 284.4,
+          "evidence_ids": [
+            "t0284.40",
+            "t0284.45",
+            "t0284.70",
+            "cue_00285"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "Item",
+          "card_name": "Lucky Ice Pop",
+          "target": "owner Active Rotom ex",
+          "result": "Heal80→100; HEADS text directly visible at292; return to hand inferred from same-card replay",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            {
+              "event": "20 heal",
+              "timestamp_seconds": 287.5,
+              "evidence_ids": [
+                "t0287.40",
+                "cue_00288"
+              ],
+              "basis": "native endpoints and locator cue; exact input unmeasured"
+            },
+            {
+              "event": "HEADS text directly visible; return to hand inferred from same-card replay",
+              "timestamp_seconds": 292,
+              "evidence_ids": [
+                "r0292.00",
+                "r0294.00",
+                "cue_00293"
+              ],
+              "basis": "native endpoints and locator cue; exact input unmeasured"
+            }
+          ],
+          "energy": null,
+          "hand_count_after": 1,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 284.75,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "t0284.40",
+            "t0284.70",
+            "t0284.75",
+            "t0287.00",
+            "t0290.40",
+            "cue_00285"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 2,
+          "kind": "Item",
+          "card_name": "Lucky Ice Pop",
+          "target": "owner Active Rotom ex",
+          "result": "Same returned card replayed; heal100→120; Tails, card discarded",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            {
+              "event": "20 heal",
+              "timestamp_seconds": 296.5,
+              "evidence_ids": [
+                "r0296.00",
+                "cue_00297"
+              ],
+              "basis": "native endpoints and locator cue; exact input unmeasured"
+            },
+            {
+              "event": "Tails and discard",
+              "timestamp_seconds": 300.5,
+              "evidence_ids": [
+                "r0300.00",
+                "r0302.00",
+                "cue_00301"
+              ],
+              "basis": "Tails result supported by coin face, sampled result cue and following discard; exact input unmeasured"
+            }
+          ],
+          "energy": null,
+          "hand_count_after": 0,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": null,
+          "timestamp_basis": "Replay committed after first Heads result and by native294; later locator card animation is not an exact input timestamp",
+          "evidence_ids": [
+            "r0294.00",
+            "r0296.00",
+            "r0300.00",
+            "r0302.00",
+            "t0305.00",
+            "cue_00295"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          },
+          "source_interval_seconds": [
+            292,
+            294.5
+          ]
+        },
+        {
+          "order": 3,
+          "kind": "manual Energy attachment",
+          "card_name": null,
+          "target": "owner Active Rotom ex",
+          "result": "one Lightning attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "owner Active Rotom ex",
+            "retreat_payment_by_type": null
+          },
+          "hand_count_after": 0,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 302.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0302.00",
+            "t0305.00",
+            "cue_00303"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Junk Spark",
+          "target": "opponent Active Tapu Koko ex",
+          "result": "110 damage; Tapu130→20; Poison Barb poisons Rotom; boundary poison10 leaves Rotom110",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 0,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 306.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "t0305.00",
+            "r0310.00",
+            "t0314.00",
+            "r0320.00",
+            "cue_00307"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Poison Barb poisons attacking Rotom",
+          "timestamp_seconds": 311.5,
+          "evidence_ids": [
+            "r0310.00",
+            "t0314.00",
+            "cue_00312"
+          ],
+          "basis": "native endpoints and locator cue; exact input unmeasured"
+        },
+        {
+          "event": "Poison10 after owner turn leaves Rotom110",
+          "timestamp_seconds": 313.5,
+          "evidence_ids": [
+            "t0314.00",
+            "r0320.00",
+            "cue_00314"
+          ],
+          "basis": "native endpoints and locator cue; exact input unmeasured"
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 9,
+        "phase": "owner postdraw before first play",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Rotom ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 120,
+            "hp_max_basis": "printed native card",
+            "damage": 40,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0284.40"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0284.40"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0284.40"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 130,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Lightning": 3
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0284.40"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Lightning": 3
+                }
+              },
+              "tool": "Poison Barb",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0284.40"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0284.40"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0284.40"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0284.40"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 9,
+        "phase": "after recorded resolution",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Rotom ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 110,
+            "hp_max": 120,
+            "hp_max_basis": "printed native card",
+            "damage": 10,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [
+              "Poisoned"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0314.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0314.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0314.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 110,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Lightning": 3
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0314.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Lightning": 3
+                }
+              },
+              "tool": "Poison Barb",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0314.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0314.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0314.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0314.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "t0314.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "cue_00285",
+        "cue_00288",
+        "cue_00293",
+        "cue_00295",
+        "cue_00297",
+        "cue_00301",
+        "cue_00303",
+        "cue_00307",
+        "cue_00312",
+        "cue_00314",
+        "r0292.00",
+        "r0294.00",
+        "r0296.00",
+        "r0300.00",
+        "r0302.00",
+        "r0310.00",
+        "r0320.00",
+        "t0284.40",
+        "t0284.45",
+        "t0284.70",
+        "t0284.75",
+        "t0287.00",
+        "t0287.40",
+        "t0290.40",
+        "t0305.00",
+        "t0314.00"
+      ],
+      "limits": [
+        "Opponent unplayed cards and normal/Research refill identities remain concealed by card backs.",
+        "Exact historical 20-card deck log snapshot is unavailable; visible cards are minimum observations, not a reconstructed deck.",
+        "All 345 reduced 1fps samples were screened once; this does not observe every instant, input or subsecond event.",
+        "Requested seek times and approximate midpoint locator labels are source-local. Actual decoded frame PTS and exact input times were not measured.",
+        "Opened owner discard panels are recorded at189.5 and255.0. No opened opponent pile was detected in the bounded screen; pile tops are not full pile contents.",
+        "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+      ],
+      "opponent_hand_end": {
+        "count": 6,
+        "cards_left_to_right": null,
+        "basis": "visible native fan, identities concealed",
+        "evidence_ids": [
+          "t0314.00"
+        ],
+        "limit_reason": "Unplayed identities hidden by backs"
+      }
+    },
+    {
+      "turn_number": 10,
+      "who_played": "opponent",
+      "source_video": "20260909_032418000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 322.5,
+        "before_end_action_seconds": 330,
+        "end_after_resolution_seconds": 337.5,
+        "timing_basis": "approximate source-local intervals, no actual PTS/input timing measured"
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": 7,
+        "basis": "visible opponent fan after normal draw; concealed identities",
+        "evidence_ids": [
+          "r0320.00"
+        ],
+        "status": "hidden",
+        "limit_reason": "card backs conceal identities"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native owner hand carried into opponent turn",
+        "evidence_ids": [
+          "t0314.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 6,
+        "supported_range": null,
+        "count_method": "visible card backs, identity concealed",
+        "basis": "native fan at owner start or preceding boundary",
+        "evidence_ids": [
+          "t0314.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20260909_032418000_iOS.MP4",
+              "timestamp_seconds": 316.5,
+              "evidence_ids": [
+                "r0320.00",
+                "cue_00317"
+              ],
+              "basis": "concealed card back",
+              "limit_reason": "hidden draw"
+            }
+          ],
+          "hand_count_before": 6,
+          "hand_count_after": 7,
+          "hand_count_basis": "counted visible boundary plus transitions; intermediate counts may be arithmetic",
+          "returned_or_discarded_cards": null,
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 316.5,
+          "evidence_ids": [
+            "r0320.00",
+            "cue_00317"
+          ],
+          "limit_reason": "hidden draw"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "Supporter",
+          "card_name": "Giovanni",
+          "target": "opponent side",
+          "result": "Attacks+10 effect displayed",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 6,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 322.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0320.00",
+            "t0326.00",
+            "cue_00323"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 2,
+          "kind": "manual Energy attachment",
+          "card_name": null,
+          "target": "opponent Bench2 alternate-art Tapu Koko ex",
+          "result": "one Lightning attached",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "opponent Bench2 alternate-art Tapu Koko ex",
+            "retreat_payment_by_type": null
+          },
+          "hand_count_after": 6,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 326.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "t0326.00",
+            "t0337.50",
+            "cue_00327"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        },
+        {
+          "order": 3,
+          "kind": "attack",
+          "card_name": "Mach Bolt",
+          "target": "owner Active Rotom ex",
+          "result": "100 damage leaves Rotom10; poison10 knocks it out; owner board empty",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "energy": null,
+          "hand_count_after": 6,
+          "hand_count_basis": "visible boundaries plus counted transitions; intermediate arithmetic inference",
+          "source_video": "20260909_032418000_iOS.MP4",
+          "timestamp_seconds": 331.5,
+          "timestamp_basis": "approximate locator interval, separate from native seek times and unmeasured PTS",
+          "evidence_ids": [
+            "r0330.00",
+            "r0334.00",
+            "r0336.00",
+            "t0337.50",
+            "cue_00332"
+          ],
+          "basis": "native identity/board anchors with reduced timeline transition cues",
+          "limit_reason": null,
+          "inherited_action_fields_preserved": {
+            "old_numbered_action_present": false,
+            "accepted_provenance": null
+          }
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Mach Bolt100 leaves Rotom10",
+          "timestamp_seconds": 333.5,
+          "evidence_ids": [
+            "r0334.00",
+            "cue_00334"
+          ],
+          "basis": "native endpoints and locator cue; exact input unmeasured"
+        },
+        {
+          "event": "Poison10 knocks out Rotom, owner board empty",
+          "timestamp_seconds": 335.5,
+          "evidence_ids": [
+            "r0336.00",
+            "t0337.50",
+            "cue_00336"
+          ],
+          "basis": "native endpoints and locator cue; exact input unmeasured"
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 10,
+        "phase": "preceding boundary before current-turn generation",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": {
+            "name": "Rotom ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 110,
+            "hp_max": 120,
+            "hp_max_basis": "printed native card",
+            "damage": 10,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [
+              "Poisoned"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0314.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0314.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true,
+              "basis": "derived from next Lightning plus observed generation; separate from preceding-boundary current0"
+            }
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0314.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 110,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Lightning": 3
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0314.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Lightning": 3
+                }
+              },
+              "tool": "Poison Barb",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0314.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0314.00"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true,
+              "basis": "derived from next Lightning plus observed generation; separate from preceding-boundary current0"
+            }
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0314.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0314.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 10,
+        "phase": "after recorded resolution; T10 pre-final-point-award",
+        "stadium": null,
+        "stadium_basis": "no Stadium visible in inspected board anchors",
+        "owner": {
+          "active": null,
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0337.50"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0337.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tapu Koko ex",
+            "variant": "regular art",
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 130,
+            "hp_max_basis": "printed native card",
+            "damage": 110,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Lightning": 3
+              }
+            },
+            "tool": "Poison Barb",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0337.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Tapu Koko ex",
+              "variant": "alternate art",
+              "bench_position": 2,
+              "hp_now": 130,
+              "hp_max": 130,
+              "hp_max_basis": "printed native card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 4,
+                "by_type": {
+                  "Lightning": 4
+                }
+              },
+              "tool": "Poison Barb",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0337.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current icon versus small next icon at the specified phase",
+            "evidence_ids": [
+              "t0337.50"
+            ],
+            "limit_reason": null,
+            "derived_after_turn_generation": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0337.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0337.50"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native end/boundary hand, empty arrays mean visible zero",
+        "evidence_ids": [
+          "t0337.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "cue_00317",
+        "cue_00323",
+        "cue_00327",
+        "cue_00332",
+        "cue_00334",
+        "cue_00336",
+        "r0320.00",
+        "r0330.00",
+        "r0334.00",
+        "r0336.00",
+        "t0314.00",
+        "t0326.00",
+        "t0337.50"
+      ],
+      "limits": [
+        "Opponent unplayed cards and normal/Research refill identities remain concealed by card backs.",
+        "Exact historical 20-card deck log snapshot is unavailable; visible cards are minimum observations, not a reconstructed deck.",
+        "All 345 reduced 1fps samples were screened once; this does not observe every instant, input or subsecond event.",
+        "Requested seek times and approximate midpoint locator labels are source-local. Actual decoded frame PTS and exact input times were not measured.",
+        "Opened owner discard panels are recorded at189.5 and255.0. No opened opponent pile was detected in the bounded screen; pile tops are not full pile contents.",
+        "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+      ],
+      "intermediate_board_effects": [
+        {
+          "effect": "Attacks +10 from Giovanni",
+          "applies_to": "opponent Active and Bench",
+          "evidence_ids": [
+            "t0326.00"
+          ],
+          "basis": "visible +10 icons on both opponent Pokemon at326; later endpoint icons are absent"
+        }
+      ],
+      "opponent_hand_end": {
+        "count": 6,
+        "cards_left_to_right": null,
+        "basis": "visible native fan, identities concealed",
+        "evidence_ids": [
+          "t0337.50"
+        ],
+        "limit_reason": "Unplayed identities hidden by backs"
+      }
+    }
+  ],
+  "limits": [
+    "Opponent unplayed cards and normal/Research refill identities remain concealed by card backs.",
+    "Exact historical 20-card deck log snapshot is unavailable; visible cards are minimum observations, not a reconstructed deck.",
+    "All 345 reduced 1fps samples were screened once; this does not observe every instant, input or subsecond event.",
+    "Requested seek times and approximate midpoint locator labels are source-local. Actual decoded frame PTS and exact input times were not measured.",
+    "Opened owner discard panels are recorded at189.5 and255.0. No opened opponent pile was detected in the bounded screen; pile tops are not full pile contents.",
+    "T9 sole Lucky Ice Pop start is directly visible before play with reveal/inspection overlay; inspected close anchors do not show a clean unselected unzoomed interval."
+  ],
+  "independent_acceptance_status": "pending"
+}

@@ -1,0 +1,42 @@
+{
+  "verified_utc": "2026-10-12T21:11:57.610199+00:00",
+  "status": "pending_readable_sources",
+  "sources": {
+    "20261012_010706000_iOS.MP4": {
+      "logical_bytes": 1531356838,
+      "allocated_bytes": 0,
+      "attributes": 4724256,
+      "placeholder_state": 57,
+      "cloud_placeholder": true,
+      "in_sync": true,
+      "pinned": true,
+      "unpinned": false,
+      "online_only": true
+    },
+    "20261012_203719000_iOS.MP4": {
+      "logical_bytes": 1496457121,
+      "allocated_bytes": 0,
+      "attributes": 4724256,
+      "placeholder_state": 57,
+      "cloud_placeholder": true,
+      "in_sync": true,
+      "pinned": true,
+      "unpinned": false,
+      "online_only": true
+    }
+  },
+  "sha256": null,
+  "duration_seconds": null,
+  "visual_review_started": false,
+  "external_writes": 0,
+  "archive_moves": 0,
+  "desktop_input_error": "GetCursorPos failed: Access is denied. (0x80070005)",
+  "shutdown_request_helper_cancelled": true,
+  "existing_sync_clients_force_stopped": false,
+  "onedrive_restarted": true,
+  "sync_client_pids": [
+    14536,
+    30280
+  ],
+  "review_log_lock_present": false
+}

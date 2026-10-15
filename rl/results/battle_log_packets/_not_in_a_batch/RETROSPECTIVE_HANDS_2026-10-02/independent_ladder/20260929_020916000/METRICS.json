@@ -1,0 +1,31 @@
+{
+  "producer_native_images_inspected": 54,
+  "independent_native_images_inspected": 1,
+  "native_image_submissions_total": 55,
+  "retained_grids_inspected": 3,
+  "reduced_samples_inspected": 60,
+  "all_producer_grids_repeated": false,
+  "producer_bounded_full_scan_receipt": "CUE_AUDIT.json:490 samples25grids; checker verifies bounded wording, not everyinstant",
+  "new_native_frames": 1,
+  "native_cap": 2,
+  "new_seek_decodes": 1,
+  "source_hash_repeats": 0,
+  "locator_decode_repeats": 0,
+  "binding_validation": {
+    "errors": [],
+    "native_file_entries_checked": 255,
+    "frames_checked": 85,
+    "rows_checked": 9,
+    "owner_hand_rows_checked": 5,
+    "discard_ids_checked": 10,
+    "jpeg_crop_alignment_mean_absolute_error_min": 0.2627589811021764,
+    "jpeg_crop_alignment_mean_absolute_error_max": 1.1514944621453498,
+    "crop_alignment_limit": "JPEG crops are recompressed; alignment comparison is approximate, not lossless equality",
+    "maximum_requested_vs_selected_pts_seconds": 0.02499999999999858,
+    "source_original_hash_reads": 0,
+    "source_decode_reads_for_this_validation": 0,
+    "encoding": "utf-8-sig"
+  },
+  "original_report_verdict": "needs_repair",
+  "encoding": "utf-8-sig"
+}

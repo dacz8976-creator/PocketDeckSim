@@ -1,0 +1,76 @@
+{
+  "schema": "bounded_correction_recheck_v1",
+  "reviewer": "/root/independent_grass_psychic",
+  "model": "gpt-6.1-sol",
+  "checked_utc": "2026-10-06T18:41:19.840216+00:00",
+  "source_video": "20261005_031138000_iOS.MP4",
+  "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+  "scope": "Only P1 Research reveal source/timing correction and newly indexed native evidence. Initial rejected submission/report remains frozen. No original media reread or decode.",
+  "status": "accepted",
+  "accepted": true,
+  "lead_acceptance": false,
+  "repairs_checked": [
+    "P1"
+  ],
+  "remaining_repairs": [],
+  "checks": [
+    "Actual124s has incoming card back.125s shows face-up named Hatterene with original Hatterene,Togetic,Togekiss below;126s shows Hattrem with added second Hatterene below. Reveal order independently supported.",
+    "Ledger first named reveal and transaction timestamp now125/f0125.00, second126/f0126.00. Prose updated;124 evidence explicitly unsuitable for named reveal.",
+    "New125 full1170x2532, bottom1170x507 and top1170x530 inspected and match indexed crop bounds. Frame source/hash matches frozen source identity.",
+    "Seven chronological rows and hand arithmetic remain unaffected; inspected current repair receipt hashes match actual files."
+  ],
+  "checked_input_sha256": {
+    "SOURCE.json": "e22f8cbf71105f015a776cf4e3cf8027910602a8fdcde25269512a090a918f00",
+    "TURN_LEDGER.json": "1dda5b5ef8ccbe14968f48501f2c48f5c1bc493a0285409b3eab866bfe9aef6f",
+    "TURN_EVIDENCE.json": "31f680f2f52f28446ebb7d8fa056ef4a55c1120830dff9cfb9782ceb3da0721d",
+    "REVIEW.md": "1d02acd08fd4c794dc77256890d2d1903017cc7700e4559812320af574fc9958",
+    "DECK_USED.json": "f160d738f7390858ab0e1db6f186e58e31c9887b28331de0eec9cb30f5d19dfe",
+    "INDEPENDENT_CORRECTIONS.json": "8d9d6d0c19c560f9dea657de3316140d88d360dacac93f1e3327194bd74b240d",
+    "QR_DECODE.json": "5c4cf5bce50bfbec5f20247876f2759f46a3b2518460a8e42be3b447d14ec82f",
+    "independent_sol/CHECK_RESULT.json": "d7a2a047a24afc3be0651b993d51b32a624a32523e41e151a5601886577e7b98"
+  },
+  "viewed_evidence": [
+    {
+      "path": "turn_evidence/t0124.00.jpg",
+      "sha256": "3165b8e2e2d1143b110aebbac1e5d91fa4c2efb095e57c51a47bc7fb2a624baa",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "turn_evidence/t0125.00.jpg",
+      "sha256": "9c456902fd656c55d14d474f804b5c38be2f1f498dc4443a2ff7795fe20f74d4",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "turn_evidence/t0125.00_bottom.png",
+      "sha256": "f091b08d83a1d30236fc946e3f679a9407c38d562dd0522d991b5b2f9065ee43",
+      "dimensions": [
+        1170,
+        507
+      ]
+    },
+    {
+      "path": "turn_evidence/t0125.00_top.png",
+      "sha256": "51ccdd5148679503f5f281710baafe7b44f0879267058ffb32691f4eab505e19",
+      "dimensions": [
+        1170,
+        530
+      ]
+    },
+    {
+      "path": "turn_evidence/t0126.00.jpg",
+      "sha256": "40a7bb24b3dfb4572f882b743a959944ea18be2c3d30737a6d51483b1b610baf",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    }
+  ],
+  "original_rejection_preserved": true,
+  "astra_escalation_required": false
+}

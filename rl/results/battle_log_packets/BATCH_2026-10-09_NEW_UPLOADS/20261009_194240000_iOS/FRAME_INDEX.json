@@ -1,0 +1,35 @@
+{
+  "source_basename": "20261009_194240000_iOS.MP4",
+  "source_sha256": "eaf837456911cdebf75c99c2b09a1f3f68bab9b2e8bfd4990cc3d4d3b648d630",
+  "source_duration_seconds": 67.645624,
+  "source_dimensions": [1170, 2532],
+  "time_basis": "elapsed seconds from recording start; ffmpeg seek positions, with the decoded frame at or just after each requested time",
+  "extraction": "ffmpeg -ss TIME -i SOURCE -frames:v 1 -q:v 3; original 1170 x 2532 size; no crop or scale",
+  "frames": [
+    {"time_seconds": 0.0, "path": "intake_frames/0_0.000s.jpg", "purpose": "deck sharing code"},
+    {"time_seconds": 16.911, "path": "intake_frames/1_16.911s.jpg", "purpose": "Auto badge and opening setup"},
+    {"time_seconds": 17.0, "path": "evidence/setup_hand.jpg", "purpose": "owner opening hand"},
+    {"time_seconds": 23.6, "path": "evidence/active_pair.jpg", "purpose": "Froakie versus Electrike, both 60 HP"},
+    {"time_seconds": 28.6, "path": "evidence/opponent_research.jpg", "purpose": "opponent plays Professor's Research"},
+    {"time_seconds": 31.8, "path": "evidence/soothing_shore.jpg", "purpose": "opponent Stadium play and printed healing text"},
+    {"time_seconds": 33.823, "path": "intake_frames/2_33.823s.jpg", "purpose": "end of opponent turn board"},
+    {"time_seconds": 34.4, "path": "evidence/owner_turn.jpg", "purpose": "owner turn two begins"},
+    {"time_seconds": 36.4, "path": "evidence/draw_mega_manectric.jpg", "purpose": "owner turn draw shown"},
+    {"time_seconds": 40.0, "path": "evidence/owner_research.jpg", "purpose": "owner plays Professor's Research from hand"},
+    {"time_seconds": 42.4, "path": "evidence/draw_cyrus.jpg", "purpose": "Cyrus arrives in hand"},
+    {"time_seconds": 43.4, "path": "evidence/draw_research.jpg", "purpose": "second Research arrives in hand"},
+    {"time_seconds": 45.2, "path": "evidence/lightning_attach.jpg", "purpose": "Lightning Energy on Electrike"},
+    {"time_seconds": 48.0, "path": "evidence/coin_heads.jpg", "purpose": "Quick Attack coin outcome"},
+    {"time_seconds": 51.2, "path": "evidence/weakness_60.jpg", "purpose": "60 weakness damage on Froakie"},
+    {"time_seconds": 56.2, "path": "evidence/point_award.jpg", "purpose": "owner point award"},
+    {"time_seconds": 61.0, "path": "evidence/victory.jpg", "purpose": "terminal victory"},
+    {"time_seconds": 66.646, "path": "intake_frames/3_66.646s.jpg", "purpose": "result summary intake image"},
+    {"time_seconds": 67.0, "path": "evidence/results.jpg", "purpose": "result summary, score and damage"}
+  ],
+  "overview": "coarse_001.jpg through coarse_068.jpg at 1 fps from t=0 to 67 seconds; contact_00.jpg through contact_08.jpg",
+  "dense_windows": [
+    {"start_seconds": 27.0, "end_seconds": 33.8, "fps": 5, "files": "dense_A_001.jpg through dense_A_035.jpg"},
+    {"start_seconds": 34.0, "end_seconds": 39.8, "fps": 5, "files": "dense_C_001.jpg through dense_C_030.jpg"},
+    {"start_seconds": 39.0, "end_seconds": 51.8, "fps": 5, "files": "dense_B_001.jpg through dense_B_065.jpg"}
+  ]
+}

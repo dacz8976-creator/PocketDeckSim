@@ -1,0 +1,219 @@
+{
+  "checked_utc": "2026-10-10T05:05:32.302042+00:00",
+  "scope": "Frozen newest8 uploads; older active assignments excluded",
+  "source_bound_count": 8,
+  "reviewed_archived_count": 8,
+  "live_verified_count": 8,
+  "videos": [
+    {
+      "video": "20261010_012303000_iOS.MP4",
+      "source_bound": true,
+      "index_status": "Reviewed",
+      "review_written": true,
+      "independent_accepted": true,
+      "lead_accepted": true,
+      "archived": true,
+      "external_verified": true,
+      "outcome": {
+        "owner_result": "win",
+        "owner_points": 3,
+        "opponent_points": 2,
+        "terminal_turn": 11,
+        "result_evidence_seconds": [
+          375,
+          388,
+          390
+        ],
+        "evidence_ids": [
+          "F037500",
+          "F038800",
+          "F039000"
+        ]
+      },
+      "deck_status": "verified_live_list_and_filmed_qr_game_binding",
+      "turn_rows": 11
+    },
+    {
+      "video": "20261010_013009000_iOS.MP4",
+      "source_bound": true,
+      "index_status": "Reviewed",
+      "review_written": true,
+      "independent_accepted": true,
+      "lead_accepted": true,
+      "archived": true,
+      "external_verified": true,
+      "outcome": {
+        "owner": "Dacz8976",
+        "opponent": "立花宗茂",
+        "result": "loss",
+        "owner_points": 0,
+        "opponent_points": 3,
+        "turns": 16,
+        "went_first": true,
+        "damage_dealt": 140,
+        "KO_seconds": 550,
+        "third_point_seconds": 554,
+        "result_screen_seconds": 565,
+        "evidence_ids": [
+          "f_0550_00",
+          "f_0554_00",
+          "f_0565_00"
+        ]
+      },
+      "deck_status": "verified_live_list_and_filmed_qr_game_binding",
+      "turn_rows": 16
+    },
+    {
+      "video": "20261010_014541000_iOS.MP4",
+      "source_bound": true,
+      "index_status": "Reviewed",
+      "review_written": true,
+      "independent_accepted": true,
+      "lead_accepted": true,
+      "archived": true,
+      "external_verified": true,
+      "outcome": {
+        "owner": "loss",
+        "opponent": "Max Ketchum",
+        "method": "Knockouts; final Suicune ex attack",
+        "owner_points": 0,
+        "opponent_points_displayed": 3,
+        "terminal_turn": 12,
+        "evidence_ids": [
+          "f_0486.00",
+          "f_0490.00",
+          "f_0492.00",
+          "f_0501.00"
+        ]
+      },
+      "deck_status": "verified_live_list_game_version_unverified",
+      "turn_rows": 12
+    },
+    {
+      "video": "20261010_015452000_iOS.MP4",
+      "source_bound": true,
+      "index_status": "Reviewed",
+      "review_written": true,
+      "independent_accepted": true,
+      "lead_accepted": true,
+      "archived": true,
+      "external_verified": true,
+      "outcome": "Win: opponent conceded on turn4;0–0points; Victory result",
+      "deck_status": "verified_live_list_and_filmed_qr_game_binding",
+      "turn_rows": 4
+    },
+    {
+      "video": "20261010_015821000_iOS.MP4",
+      "source_bound": true,
+      "index_status": "Reviewed",
+      "review_written": true,
+      "independent_accepted": true,
+      "lead_accepted": true,
+      "archived": true,
+      "external_verified": true,
+      "outcome": {
+        "result": "win",
+        "reason": "opponent conceded",
+        "opponent": "よこっぴ",
+        "owner": "Dacz8976",
+        "mode": "Deluxe Pack: Mega Emblem Event",
+        "battle_type": "human",
+        "visible_auto": "No Auto control or option observed",
+        "went_first": true,
+        "turns_played": 6,
+        "points_owner": 1,
+        "points_opponent": 0,
+        "damage_done": 120,
+        "evidence_ids": [
+          "F0003_00",
+          "F0242_00",
+          "F0253_00"
+        ]
+      },
+      "deck_status": "verified_live_list_and_filmed_qr_game_binding",
+      "turn_rows": 6
+    },
+    {
+      "video": "20261010_020258000_iOS.MP4",
+      "source_bound": true,
+      "index_status": "Reviewed",
+      "review_written": true,
+      "independent_accepted": true,
+      "lead_accepted": true,
+      "archived": true,
+      "external_verified": true,
+      "outcome": {
+        "result": "win",
+        "opponent": "Pikachu",
+        "method": "opponent concession",
+        "last_points": {
+          "owner": 2,
+          "opponent": 1
+        },
+        "evidence_ids": [
+          "F0330.00",
+          "F0340.00",
+          "F0342.00"
+        ]
+      },
+      "deck_status": "verified_live_list_and_filmed_qr_game_binding",
+      "turn_rows": 8
+    },
+    {
+      "video": "20261010_020908000_iOS.MP4",
+      "source_bound": true,
+      "index_status": "Reviewed",
+      "review_written": true,
+      "independent_accepted": true,
+      "lead_accepted": true,
+      "archived": true,
+      "external_verified": true,
+      "outcome": {
+        "owner_result": "win",
+        "basis": "Opponent connection-timeout notice followed by Victory",
+        "final_points_before_timeout": {
+          "owner": 1,
+          "opponent": 0
+        },
+        "evidence_ids": [
+          "F0378.00",
+          "F0382.00",
+          "F0388.80"
+        ]
+      },
+      "deck_status": "verified_live_list_and_filmed_qr_game_binding",
+      "turn_rows": 7
+    },
+    {
+      "video": "20261010_021629000_iOS.MP4",
+      "source_bound": true,
+      "index_status": "Reviewed",
+      "review_written": true,
+      "independent_accepted": true,
+      "lead_accepted": true,
+      "archived": true,
+      "external_verified": true,
+      "outcome": {
+        "owner": "Dacz8976",
+        "opponent": "けい",
+        "opponent_level": 60,
+        "owner_order": "second",
+        "result": "loss",
+        "points_owner": 0,
+        "points_opponent": 3,
+        "turns": 25,
+        "damage_dealt_owner": 840,
+        "result_evidence": [
+          "E_0882.00",
+          "E_0892.00"
+        ],
+        "match_date_local": "2026-10-09",
+        "classification": "human",
+        "auto_control_seen": false,
+        "mode": "human match, ladder/unranked selector not fixed from this recording"
+      },
+      "deck_status": "verified_live_list_and_filmed_qr_game_binding",
+      "turn_rows": 25
+    }
+  ]
+}

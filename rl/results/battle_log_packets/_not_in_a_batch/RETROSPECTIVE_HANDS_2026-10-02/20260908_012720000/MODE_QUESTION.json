@@ -1,0 +1,83 @@
+{
+  "source_video": "20260908_012720000_iOS.MP4",
+  "source_sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085",
+  "status": "resolved_by_bounded_astra_check",
+  "observations": [
+    {
+      "requested_source_seconds": 189.0,
+      "actual_frame_seconds_if_measured": null,
+      "basis": "direct_observation_of_source_bound_retained_native_frame",
+      "path": "C:/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/ogerpon-video-review-2026-09-07/focused/frames/native_189.0.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "observation": "Teal Auto control at middle-right shows a checkmark."
+    },
+    {
+      "requested_source_seconds": 4.4,
+      "actual_frame_seconds_if_measured": null,
+      "basis": "direct_observation_native_cached_exact_source",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0004.40.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "observation": "AI badge above Opponent on VS screen"
+    },
+    {
+      "requested_source_seconds": 10,
+      "actual_frame_seconds_if_measured": null,
+      "basis": "direct_observation_native_cached_exact_source",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0010.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "observation": "Checked teal Auto control visible; no disabling control state shown"
+    },
+    {
+      "requested_source_seconds": 41,
+      "actual_frame_seconds_if_measured": null,
+      "basis": "direct_observation_native_cached_exact_source",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0041.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "observation": "Checked teal Auto control visible; no disabling control state shown"
+    },
+    {
+      "requested_source_seconds": 212.5,
+      "actual_frame_seconds_if_measured": null,
+      "basis": "direct_observation_native_cached_exact_source",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0212.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "observation": "Checked teal Auto control visible; no disabling control state shown"
+    },
+    {
+      "requested_source_seconds": 259.5,
+      "actual_frame_seconds_if_measured": null,
+      "basis": "direct_observation_native_cached_exact_source",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0259.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "observation": "Checked teal Auto control visible; no disabling control state shown"
+    }
+  ],
+  "manual_choice_or_drag_evidence": {
+    "observed": false,
+    "limit": "Retained anchors show automatic card placement/zoom animations and checked Auto; stills alone do not independently identify user touch input."
+  },
+  "qualified_conclusion": "Checked Auto is visible before Active selection and at owner-turn anchors through turn12, with AI opponent badge. This supports Auto-enabled solo play. Lead requested bounded Astra clarification before final attribution; historical result/log category is preserved.",
+  "accepted_outcome_and_log_classification": "preserved; this supplement does not revise historical result or external logs",
+  "mode_flag": "AUTO: enabled in the checked footage against an AI opponent; individual action authorship is not certified.",
+  "classification": "computer_battle",
+  "excluded_from_ladder": true,
+  "astra_mode_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\astra_checks\\20260908_012720000\\MODE_CHECK.json"
+}

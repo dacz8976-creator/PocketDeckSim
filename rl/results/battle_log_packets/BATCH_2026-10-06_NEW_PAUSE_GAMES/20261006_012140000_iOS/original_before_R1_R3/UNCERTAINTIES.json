@@ -1,0 +1,49 @@
+{
+  "game_id": "20261006_012140000_iOS-game-1",
+  "source_video": "20261006_012140000_iOS.MP4",
+  "source_sha256": "2fbf36e1f6d45a8e7fc6b1d273b0dc64c106ce1df14ac0447617e413ad79cf4e",
+  "items": [
+    {
+      "id": "U_DECK_BINDING",
+      "severity": "recording_limit",
+      "claim": "Exact 20-card battle deck",
+      "status": "unresolved_by_source",
+      "detail": "No game-bound QR, exact deck editor list, or exact 20-card log snapshot appears in this source. A matching prior filmed QR is only a candidate because the intervening gap and deck edits are unrecorded.",
+      "impact": "No game-bound exact list asserted; qualified candidate retained separately."
+    },
+    {
+      "id": "U_HIDDEN",
+      "severity": "recording_limit",
+      "claim": "Opponent draw/hand identities",
+      "status": "hidden",
+      "detail": "Opponent hand identities and ordinary draws remain hidden. Fan counts are visible card-back counts, not inferred card identities.",
+      "impact": "Unknown identities remain null; visible fan counts retained."
+    },
+    {
+      "id": "U_DISCARD",
+      "severity": "recording_limit",
+      "claim": "Entire discard contents",
+      "status": "partial_view_only",
+      "detail": "Neither full discard pile is opened or scrolled. Top previews are partial views only.",
+      "impact": "No invented pile history or full-scroll claim."
+    },
+    {
+      "id": "U_TIME",
+      "severity": "measurement_limit",
+      "claim": "Exact input and decoded PTS",
+      "status": "bounded_or_unmeasured",
+      "detail": "Native frame filenames are requested seek times. Individual decoded frame PTS was not measured; action input times are bounded intervals and are separate from card previews/reveals/resolution.",
+      "impact": "Frame seek timestamps are source-local requests; inputs use intervals."
+    },
+    {
+      "id": "U_CONNECTION",
+      "severity": "recording_limit",
+      "claim": "Waiting-message cause",
+      "status": "unknown",
+      "detail": "The transient waiting-for-opponent messages do not establish why the opponent was unavailable.",
+      "impact": "Concession text, not presumed disconnect, establishes outcome."
+    }
+  ],
+  "astra_required": false,
+  "reason": "No consequential unresolved identity/outcome/order ambiguity; recording limits are explicit."
+}

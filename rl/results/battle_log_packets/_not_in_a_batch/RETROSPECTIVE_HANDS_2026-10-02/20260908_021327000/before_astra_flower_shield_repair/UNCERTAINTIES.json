@@ -1,0 +1,133 @@
+{
+  "capture_status": "complete_with_recording_limits",
+  "source": "20260908_021327000_iOS.MP4",
+  "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+  "recording_limits": [
+    "Turn12 draw +6 candidate would be after concession; no ongoing owner turn exists then.",
+    "Draw animation endpoints and source-local seeks are approximate visual timing; PTS was not independently measured.",
+    "No opened discard panel was observed in 410 reduced samples at 1 fps or retained native checkpoints. Full piles and scroll coverage remain null; brief openings between samples can be missed.",
+    "Opponent Energy Zones at98s and379s are obscured by waiting overlays; exact current and next fields at those views remain null. Owner154s and404s current sockets are empty during generation, with later candidates showing the orb.",
+    "Hidden opponent card identities and the exact historical20-card log snapshot are unavailable.",
+    "Game mode remains uncertain: no Auto control observed in sampled or retained unobscured views; card zooms and overlays obscure some UI.",
+    "Turn12 warning response is not established before opponent concession."
+  ],
+  "review_gaps": [],
+  "consequential_conflicts": [
+    {
+      "id": "C1",
+      "turn": 2,
+      "inherited_claim": "Benches Team Rocket’s Rattata, Comfey, and a second Team Rocket’s Rattata. Professor’s Research is played.",
+      "observation": "Second Rattata is still in hand after Research draws at72/73; it is benched after manual Energy by83.",
+      "evidence_ids": [
+        "f0072.00",
+        "f0073.00",
+        "f0076.00",
+        "f0083.00"
+      ]
+    },
+    {
+      "id": "C2",
+      "turn": 8,
+      "inherited_claim": "manually attaches Psychic Energy to the right Raticate ex (1 to2)",
+      "observation": "Comfey has no attachedEnergy at188/239, and one at343/408; rightRaticate retains1. T8 addedEnergy destination is Comfey.",
+      "evidence_ids": [
+        "f0188.00",
+        "f0239.00",
+        "f0343.00",
+        "f0408.00"
+      ]
+    },
+    {
+      "id": "C3",
+      "turn": 10,
+      "inherited_claim": "The first Poké Ball finds Drowzee. The second Poké Ball reports no eligible cards.",
+      "observation": "Drowzee is Copycat draw4 at318; untouched five-card replacement at 320; both later PokéBalls show no eligible popup323,328.",
+      "evidence_ids": [
+        "f0310.00",
+        "f0318.00",
+        "f0320.00",
+        "f0323.00",
+        "f0328.00"
+      ]
+    },
+    {
+      "id": "C4",
+      "turn": 10,
+      "inherited_claim": "manually attaches a third Psychic Energy to the right benched Raticate ex (2 to3), attaches Elegant Cape",
+      "observation": "Energy orb targets benched Hypno at343/345; finalHypno1andrightRaticate1at408. Cape is resolving as Energyorb is dragged; exact overlap order retained rather than silently replacing prose.",
+      "evidence_ids": [
+        "f0343.00",
+        "f0345.00",
+        "f0408.00"
+      ]
+    },
+    {
+      "id": "C5",
+      "turn": 11,
+      "inherited_claim": "manually attaches a third Psychic Energy to active Mewtwo ex (2 to3). No attack occurs.",
+      "observation": "Mewtwoexshows2attachedPsychicat399/404/408; confusioncheck391andattackdidnothing396 establish attemptedattack. OpponentEnergyZonecurrentremainsunused399.",
+      "evidence_ids": [
+        "f0391.00",
+        "f0396.00",
+        "f0399.00",
+        "f0404.00"
+      ]
+    },
+    {
+      "id": "C6",
+      "turn": 10,
+      "inherited_claim": "Goo-zooka increases opponentRetreatCostbyone for theturn",
+      "observation": "Printedtext300.5 says untilendofopponentnextturn.",
+      "evidence_ids": [
+        "f0300.50"
+      ]
+    },
+    {
+      "id": "C7",
+      "turn": 12,
+      "inherited_claim": "Turn12 about06:20to06:48",
+      "observation": "Actualturn12banner402;404Cyrusnormaldraw; 380to399 remainsopponentturn11.",
+      "evidence_ids": [
+        "f0379.00",
+        "f0391.00",
+        "f0399.00",
+        "f0402.00"
+      ]
+    },
+    {
+      "id": "C8",
+      "turn": 2,
+      "inherited_claim": "Flower Shield is now protecting the player’s Pokémon",
+      "observation": "PrintedabilityrequiresPsychicattachedtoComfey. Comfeyhas0at83/188; protectionstartswhenEnergyattachedT8, evidenced267prevention.",
+      "evidence_ids": [
+        "f0083.00",
+        "f0188.00",
+        "f0267.00",
+        "f0269.00"
+      ]
+    },
+    {
+      "id": "C9",
+      "turn": 12,
+      "inherited_claim": "### Turn 12 (Player), about 06:20-06:48\n\nThe active center Raticate ex has Elegant Cape and 150 maximum HP. The opponent's active Mewtwo ex is Confused, has 70 HP remaining, three Psychic Energy, and Leftovers. The player inspects Cyrus at about 06:40, but no switching effect resolves because every opposing Benched Pokémon is undamaged. No attack or score change occurs. The opponent concedes at about 06:47-06:48, and the screen states, \"Your opponent conceded.\"",
+      "observation": "Cyrus is the normal draw at404. Native405 shows the owner inspecting active Raticate attack menu, then406 Energy end-turn warning. No Cyrus effect resolves; whether a separate very brief inspection occurred between samples is not established.",
+      "evidence_ids": [
+        "f0404.00",
+        "f0405.00",
+        "f0406.00"
+      ]
+    }
+  ],
+  "resolved_bounded_observation": {
+    "turn9_supporter": "Team Rocket's Master Plan",
+    "timestamp_seconds": 267,
+    "evidence_id": "f0267.00",
+    "old_uncertainty_preserved": true
+  },
+  "no_old_files_modified": true,
+  "independent_acceptance_status": "pending",
+  "pending_acceptance": [
+    "Bounded Astra reconciliation of consequential conflicts",
+    "Independent Sol acceptance"
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "video_basename": "20261001_205658000_iOS.MP4",
+  "reviewer": "sol_rules_20261001_205658000",
+  "remaining_coverage_gaps": [],
+  "honestly_unknown_hidden_information": [
+    {
+      "item": "Opponent unrevealed hand and complete deck order or lists",
+      "reason": "Face-down cards do not identify their contents."
+    },
+    {
+      "item": "Random Psychic Pokemon obtained by Strange Singing on turns 12 and 14",
+      "reason": "Ability animation reveals the effect but its deck-to-hand card remains hidden; a subsequent play does not independently prove which draw supplied it."
+    },
+    {
+      "item": "Exact recording clock and timezone basis",
+      "reason": "Filename date is known; capture clock basis is not independently verified."
+    }
+  ],
+  "untested_mechanics": [
+    "Successful Netherwing damage and Fire discard.",
+    "Multiple Victini in play and enforcement of the printed shared one-use-per-turn limit.",
+    "Will forcing a first coin; Will is held or drawn and not played.",
+    "Team Rockets Master Plan confusion and its coin; card is drawn or inspected and not played.",
+    "Bounded Field damage multiplication on a matching weakness and its Mega-attacker exception.",
+    "Mimikyu ex Disguise prevention; Mimikyu receives no attack damage.",
+    "Brambleghast Accept Pain; ability not used.",
+    "Mega Gardevoir ex three-Psychic Fantasia Force allocation in a settled surviving-battle state.",
+    "Three-point award for knocking out a Mega Evolution Pokemon ex; the Mega is the attacker here."
+  ],
+  "observation_precision_limits": [
+    {
+      "item": "Brief declined Victory Star choices",
+      "resolution": "Prompt and immediate attack or Energy resolution with no replacement batch establish kept originals; exact finger tap timestamps are not asserted. Dense quarter-second turn-5 frames retained."
+    },
+    {
+      "item": "Transient printed HP during animations",
+      "resolution": "Only settled board HP is used; enlarged card 120 HP is not counted as healing."
+    },
+    {
+      "item": "Notifications covering portions of upper screen",
+      "resolution": "Consequential states checked in adjacent native frames; notifications do not create an unresolved available-phase coverage gap."
+    }
+  ],
+  "material_ambiguities_requiring_clarification": [],
+  "independent_acceptance_pending": false,
+  "worker_status": "Complete first pass accepted by the lead; registration and archival are complete.",
+  "worker_status_at_submission": "finished_first_pass",
+  "status": "full_battle_review_complete",
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "ladder_eligible": false,
+  "global_registration_complete": true,
+  "archive_receipt": "MOVE_RECEIPT.20261001_205658000_iOS.MP4.json",
+  "archive_completion_event_id": "738b31c1-9b03-4938-9523-9dba20c0b22c",
+  "worker_flags_at_submission": {
+    "independent_acceptance_pending": true
+  }
+}

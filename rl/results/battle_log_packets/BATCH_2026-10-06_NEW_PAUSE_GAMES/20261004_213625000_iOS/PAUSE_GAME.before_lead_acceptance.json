@@ -1,0 +1,119 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261004_213625000_iOS_game1",
+  "review_date": "2026-10-06T18:11:53.615465+00:00",
+  "sources": [
+    {
+      "video_basename": "20261004_213625000_iOS.MP4",
+      "sha256": "aa7e935b335a2dfe11e43783f260698997845f7c85de8d6b1db976b7bf794225",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "New deck 24",
+  "classification": "human_event",
+  "queue": "Deluxe Pack: Mega Emblem Event",
+  "match_date": "2026-10-04",
+  "owner": "Dacz8976",
+  "opponent": "Noytamon",
+  "opening": {
+    "source_video": "20261004_213625000_iOS.MP4",
+    "timestamp_seconds": 31,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Professor's Research",
+        "variant": null,
+        "basis": "observed native hand or reveal",
+        "evidence_ids": [
+          "F0031.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Fragrant Forest",
+        "variant": null,
+        "basis": "observed native hand or reveal",
+        "evidence_ids": [
+          "F0031.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Butterfree",
+        "variant": null,
+        "basis": "observed native hand or reveal",
+        "evidence_ids": [
+          "F0031.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Caterpie",
+        "variant": null,
+        "basis": "observed native hand or reveal",
+        "evidence_ids": [
+          "F0031.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Quick-Grow Extract",
+        "variant": null,
+        "basis": "observed native hand or reveal",
+        "evidence_ids": [
+          "F0031.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Caterpie",
+      "opening_position": 4,
+      "timestamp_seconds": 34,
+      "evidence_ids": [
+        "F0033.00",
+        "F0034.00"
+      ]
+    },
+    "redraw_or_replacement": "none",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "F0031.00",
+      "F0032.00"
+    ]
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "complete_worker_review_pending_independent_acceptance",
+  "outcome": {
+    "owner": "loss",
+    "owner_points": 2,
+    "opponent_points": 3,
+    "evidence_ids": [
+      "F0445.00",
+      "F0450.00",
+      "F0459.00"
+    ]
+  },
+  "limits": [
+    "No opened discard piles.",
+    "Opponent hidden information remains unknown.",
+    "Captured live baseline lacks matching exact deck; filmed20-card QR source saved separately, await root new-entry/readback provenance."
+  ],
+  "lead_checked": false
+}

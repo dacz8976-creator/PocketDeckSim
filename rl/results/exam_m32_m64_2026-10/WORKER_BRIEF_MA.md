@@ -22,7 +22,7 @@ from `SHARDS.md`. You have no push access, so you hand off files, not commits.
       `python3 rl/strength/split_collect.py stamp --manifest REG/manifest.json --program $HOME/kxc/172cbe9c/strength --worker WORKER --out $OUT ONLY`.
       - Run it in the background (nohup) and wait.
       - Its 12 km3 games take seconds. Its 12 kx3 games run one after another, each using several cores for its play-outs.
-      - There is no output until the end, which takes up to about 4 hours for m32 and about 7.5 for m64 on a 4-core sandbox.
+      - There is no output until the end, which takes up to about 4 hours for m32 and about 10 to 12 for m64 on a 4-core sandbox.
       - A live process using CPU is not a hang.
       - Keep checking at least every 30 minutes until the step ends. An idle session can lose its sandbox, and the stamp then starts again
         from zero.

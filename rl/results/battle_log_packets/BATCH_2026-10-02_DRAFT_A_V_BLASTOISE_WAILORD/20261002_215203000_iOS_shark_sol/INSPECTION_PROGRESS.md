@@ -1,0 +1,1 @@
+Full first pass complete; all13locatorgrids and137nativefullframes inspected;11bottom and6topcrops checked.19filesfrozeninSUBMISSION.json; independentacceptancepending.

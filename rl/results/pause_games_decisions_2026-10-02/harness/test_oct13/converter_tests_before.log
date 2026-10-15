@@ -1,0 +1,36 @@
+................................FFF................................sssssssssssss.....
+======================================================================
+FAIL: test_his_sleeping_active_is_asleep_in_the_position (test_ledger_to_positions.ConditionsAndKnockouts.test_his_sleeping_active_is_asleep_in_the_position)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/results/pause_games_new_2026-10-12/harness/test_ledger_to_positions.py", line 899, in test_his_sleeping_active_is_asleep_in_the_position
+    self.assertEqual(p['me']['board'][0].get('conditions'), ['Asleep'])
+AssertionError: None != ['Asleep']
+
+======================================================================
+FAIL: test_the_knockout_count_is_his_pokemon_knocked_out_so_far (test_ledger_to_positions.ConditionsAndKnockouts.test_the_knockout_count_is_his_pokemon_knocked_out_so_far)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/results/pause_games_new_2026-10-12/harness/test_ledger_to_positions.py", line 928, in test_the_knockout_count_is_his_pokemon_knocked_out_so_far
+    self.assertEqual([self.at(pos, t)['me'].get('knockouts') for t in (2, 4, 6)], [0, 1, 2])
+AssertionError: Lists differ: [None, None, None] != [0, 1, 2]
+
+First differing element 0:
+None
+0
+
+- [None, None, None]
++ [0, 1, 2]
+
+======================================================================
+FAIL: test_the_opponents_poisoned_active_is_poisoned_and_other_wordings_are_read (test_ledger_to_positions.ConditionsAndKnockouts.test_the_opponents_poisoned_active_is_poisoned_and_other_wordings_are_read)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/user/PocketDeckSim/rl/results/pause_games_new_2026-10-12/harness/test_ledger_to_positions.py", line 905, in test_the_opponents_poisoned_active_is_poisoned_and_other_wordings_are_read
+    self.assertEqual(p['me']['board'][0].get('conditions'), ['Paralyzed'])
+AssertionError: None != ['Paralyzed']
+
+----------------------------------------------------------------------
+Ran 85 tests in 0.900s
+
+FAILED (failures=3, skipped=13)

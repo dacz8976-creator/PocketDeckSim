@@ -1,0 +1,49 @@
+{
+  "source_video": "20261010_015452000_iOS.MP4",
+  "sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+  "reviewer": "/root/pause_015452",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "reviewed_at_utc": "2026-10-10T03:43:19.221282+00:00",
+  "review_status": "full_battle_review_complete_pending_independent_acceptance",
+  "capture_status": "complete_with_recording_limits",
+  "classification": "human_match",
+  "auto_control_seen": false,
+  "queue_mode": null,
+  "games": 1,
+  "turns": 4,
+  "owner": "Dacz8976",
+  "opponent": "msthsky",
+  "deck_core": [
+    "Kingdra ex",
+    "Team Rocket's Weezing ex",
+    "Horsea",
+    "Team Rocket's Koffing"
+  ],
+  "opponent_core": [
+    "Goomy",
+    "Hoppip"
+  ],
+  "result": "win",
+  "result_method": "opponent_concession",
+  "result_evidence_seconds": [
+    162,
+    174
+  ],
+  "points_at_terminal": {
+    "owner": 0,
+    "opponent": 0
+  },
+  "coverage_seconds": [
+    0,
+    174.723333
+  ],
+  "recording_creation_time_utc": "2026-10-10T01:54:52Z",
+  "match_date_local": "2026-10-09",
+  "material_limits": [
+    "Initial23-deck snapshot lacked this deck. Root added the source-qualified filmed QR20 and verified its saved live card list; ../LIVE_NEW_DECKS_VERIFIED.json and updated DECK_USED.json retain the dated refresh.",
+    "No opened discard views; hidden opponent cards and exact printings uncertain.",
+    "Queue subtype not shown; human matchmaking and no Auto control visible."
+  ],
+  "lead_acceptance": false
+}

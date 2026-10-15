@@ -1,0 +1,33 @@
+{
+  "source_video": "20261010_020908000_iOS.MP4",
+  "sha256": "6771089aca9afe1e952e047017c07b74964a184011832179c27fe7b7f839bffc",
+  "unreviewed_intervals": [],
+  "limits": [
+    {
+      "id": "L1",
+      "description": "No opened discard pile appears anywhere in this source; visible top discard cards and play history do not establish a full pile.",
+      "inspection_status": "inspected source limitation"
+    },
+    {
+      "id": "L2",
+      "description": "Opponent hand identities and hidden draw/search results remain unknown except publicly revealed Koffing.",
+      "inspection_status": "inspected source limitation"
+    },
+    {
+      "id": "L3",
+      "description": "Draw-end times are visual approximations; frame requested seek times are preserved, actual decoder frame PTS was not separately measured.",
+      "inspection_status": "inspected source limitation"
+    },
+    {
+      "id": "L4",
+      "description": "Opponent connection intent and actual disconnect cause are not established.",
+      "inspection_status": "inspected source limitation"
+    },
+    {
+      "id": "L5",
+      "description": "QR and live log use semantic card variants; artwork/rarity exact printings are not established.",
+      "inspection_status": "inspected source limitation"
+    }
+  ],
+  "consequential_unresolved_claims": []
+}

@@ -1,0 +1,3 @@
+# Lead correction after Astra consultation
+
+The unmodified worker report is preserved in `FIRST_PASS_REVIEW_BEFORE_LEAD_CORRECTION.md`. Astra and the lead inspected the retained native-resolution Arena card at `targets/t0144.00.jpg` and its small fist symbol. Arena's eligibility is Fighting Pokemon, not all Basic Pokemon. Drilbur is Fighting, so the conditional immediate knockout calculation remains 30 base +20 weakness +20 Arena =70 versus Bellibolt ex70HP. No actual Stadium play, alternate result, eventual win or engine test is claimed. See `ASTRA_CHECK.md` for independently bounded evidence.

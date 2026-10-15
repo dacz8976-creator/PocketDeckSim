@@ -1,0 +1,709 @@
+{
+  "issues": [],
+  "frame_count": 213,
+  "turn_count": 16,
+  "deck_slots": 20,
+  "deck_count_sum": 20,
+  "source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261010_013009000_iOS.MP4",
+  "source_bytes": 1046911287,
+  "source_sha256_verified": "80615dfc9c1e28f95434e3b4712f0540e6efc34392aef816419b6f82a0257329",
+  "input_hashes": {
+    "REVIEW.md": "176b4703694cfe61178b3a52f44880b1f182c2de0c8aef0caec4d4b2804080d1",
+    "COVERAGE.md": "6c6de0852e15f772e1294933adca5e8f3a2aad3de3a022f3f88cc2dcb8d43ca5",
+    "SUMMARY.json": "cd4e747966240e46156f80dfc792102073d51e00acdea33947cfdaf140abb0ec",
+    "UNCERTAINTIES.json": "a4f32bf566561d3373f500da5d0b0203f042ff0a602fd750d018b9ead030d19d",
+    "PAUSE_GAME.json": "934dc254e27b3f1728892e7a0acc730973afc8fa3a5541b7614ed4e319928334",
+    "DECK_USED.json": "40b44bab1ba25af4b9140c3d1a94823bbd106d15697bf7af539e18f2f106ebc4",
+    "TURN_LEDGER.json": "c309af623ceb07df4023bc2210ba01a3d2256135997c6a7fd6d013e5461df211",
+    "TURN_EVIDENCE.json": "16f2c9f75196cb1e57d960d62ae174f98570ba6458223f2371a5cb739c09769b"
+  },
+  "turn_summaries": [
+    {
+      "turn": 1,
+      "who": "owner",
+      "start": 5,
+      "end": 5,
+      "normal_draw": [
+        [
+          {
+            "name": "Professor’s Research",
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 56,
+            "evidence_ids": [
+              "f_0056_00"
+            ],
+            "basis": "Visible named zoom/reveal",
+            "limit_reason": null
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "card_play",
+        "card_name": "Professor’s Research",
+        "target": "owner hand",
+        "energy": null,
+        "result": "Draw two; Research consumed",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": 6,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 62,
+        "evidence_ids": [
+          "f_0063_00",
+          "f_0065_00",
+          "f_0066_00"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 2,
+      "who": "opponent",
+      "start": 3,
+      "end": 5,
+      "normal_draw": [
+        [
+          {
+            "name": null,
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 83,
+            "evidence_ids": [
+              "f_0083_00"
+            ],
+            "basis": "Opponent card back only",
+            "limit_reason": "Face hidden"
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "card_play",
+        "card_name": "Poké Ball",
+        "target": "opponent deck",
+        "energy": null,
+        "result": "One hidden Basic added",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": null,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 86,
+        "evidence_ids": [
+          "f_0086_00",
+          "f_0090_00"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": "Searched face hidden; later benched Tinkatink is observed but draw identity not directly shown"
+      }
+    },
+    {
+      "turn": 3,
+      "who": "owner",
+      "start": 6,
+      "end": 1,
+      "normal_draw": [
+        [
+          {
+            "name": "Naclstack",
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 112,
+            "evidence_ids": [
+              "f_0112_00"
+            ],
+            "basis": "Visible named zoom/reveal",
+            "limit_reason": null
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "card_play",
+        "card_name": "Gurdurr",
+        "target": "owner Active Timburr",
+        "energy": null,
+        "result": "Evolution",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": 5,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 118,
+        "evidence_ids": [
+          "f_0118_00",
+          "f_0119_00",
+          "f_0122_00"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 4,
+      "who": "opponent",
+      "start": null,
+      "end": 1,
+      "normal_draw": [
+        [
+          {
+            "name": null,
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 166,
+            "evidence_ids": [
+              "f_0166_00"
+            ],
+            "basis": "Opponent card back only",
+            "limit_reason": "Face hidden"
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "card_play",
+        "card_name": "Professor’s Research",
+        "target": "opponent hand",
+        "energy": null,
+        "result": "Two hidden cards drawn",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": 4,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 165,
+        "evidence_ids": [
+          "f_0166_00",
+          "f_0167_00",
+          "f_0168_00",
+          "f_0169_00"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": "Opponent reveals card backs, not faces"
+      }
+    },
+    {
+      "turn": 5,
+      "who": "owner",
+      "start": 2,
+      "end": 2,
+      "normal_draw": [
+        [
+          {
+            "name": "Wally",
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 209,
+            "evidence_ids": [
+              "f_0209_00"
+            ],
+            "basis": "Visible named zoom/reveal",
+            "limit_reason": null
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "card_play",
+        "card_name": "Professor’s Research",
+        "target": "owner hand",
+        "energy": null,
+        "result": "Draw Wally, then Naclstack; Research consumed",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": 3,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 212,
+        "evidence_ids": [
+          "f_0213_00",
+          "f_0215_00",
+          "f_0216_00",
+          "f_0217_00"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 6,
+      "who": "opponent",
+      "start": 4,
+      "end": 2,
+      "normal_draw": [
+        [
+          {
+            "name": null,
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 238,
+            "evidence_ids": [
+              "f_0238_00"
+            ],
+            "basis": "Opponent card back only",
+            "limit_reason": "Face hidden"
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "energy_attachment",
+        "card_name": null,
+        "target": "opponent left Tinkatink",
+        "energy": {
+          "type": "Metal",
+          "count": 1,
+          "destination": "opponent left Tinkatink",
+          "retreat_payment_by_type": null
+        },
+        "result": "Ordinary Metal Energy attached",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": null,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 267,
+        "evidence_ids": [
+          "f_0266_00",
+          "f_0270_00"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 7,
+      "who": "owner",
+      "start": 3,
+      "end": 2,
+      "normal_draw": [
+        [
+          {
+            "name": "Rare Candy",
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 280,
+            "evidence_ids": [
+              "f_0280_00"
+            ],
+            "basis": "Visible named zoom/reveal",
+            "limit_reason": null
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "retreat",
+        "card_name": null,
+        "target": "Gurdurr to Conkeldurr",
+        "energy": {
+          "type": null,
+          "count": 2,
+          "destination": null,
+          "retreat_payment_by_type": {
+            "Fighting": 2
+          }
+        },
+        "result": "Pay two Fighting; Gurdurr benched position1; Conkeldurr promoted",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": null,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 291,
+        "evidence_ids": [
+          "f_0291_00",
+          "f_0293_00",
+          "f_0294_00",
+          "f_0295_00"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 8,
+      "who": "opponent",
+      "start": 5,
+      "end": 2,
+      "normal_draw": [
+        [
+          {
+            "name": null,
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 306,
+            "evidence_ids": [
+              "f_0306_00"
+            ],
+            "basis": "Opponent card back only",
+            "limit_reason": "Face hidden"
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "ability",
+        "card_name": "Revavroom",
+        "target": "Dialga ex and Revavroom",
+        "energy": null,
+        "result": "Metal Transport switches Active Dialga with bench Revavroom",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": null,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 310,
+        "evidence_ids": [
+          "f_0310_00",
+          "f_0314_00",
+          "f_0315_00"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 9,
+      "who": "owner",
+      "start": 3,
+      "end": 2,
+      "normal_draw": [
+        [
+          {
+            "name": "Garganacl",
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 327,
+            "evidence_ids": [
+              "f_0327_00"
+            ],
+            "basis": "Visible named zoom/reveal",
+            "limit_reason": null
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "card_play",
+        "card_name": "Garganacl",
+        "target": "owner bench position2 Naclstack",
+        "energy": null,
+        "result": "Evolution",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": 2,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 329,
+        "evidence_ids": [
+          "f_0329_10",
+          "f_0330_00",
+          "f_0331_10"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 10,
+      "who": "opponent",
+      "start": 6,
+      "end": 2,
+      "normal_draw": [
+        [
+          {
+            "name": null,
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 350,
+            "evidence_ids": [
+              "f_0350_00"
+            ],
+            "basis": "Opponent card back only",
+            "limit_reason": "Face hidden"
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "ability",
+        "card_name": "Revavroom",
+        "target": "Revavroom and Dialga ex",
+        "energy": null,
+        "result": "Metal Transport switches Dia Active and Rev benchright",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": null,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 354,
+        "evidence_ids": [
+          "f_0354_00",
+          "f_0355_00",
+          "f_0358_00"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 11,
+      "who": "owner",
+      "start": 3,
+      "end": 2,
+      "normal_draw": [
+        [
+          {
+            "name": "Arena of Antiquity",
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 382,
+            "evidence_ids": [
+              "f_0382_00"
+            ],
+            "basis": "Visible named zoom/reveal",
+            "limit_reason": null
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "card_play_attempt",
+        "card_name": "Wally",
+        "target": "benched Garganacl",
+        "energy": null,
+        "result": "Stage2 Energy destination prompt shown",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": null,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 393,
+        "evidence_ids": [
+          "f_0393_00",
+          "f_0394_00"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 12,
+      "who": "opponent",
+      "start": 7,
+      "end": 2,
+      "normal_draw": [
+        [
+          {
+            "name": null,
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 414,
+            "evidence_ids": [
+              "f_0414_00"
+            ],
+            "basis": "Opponent card back only",
+            "limit_reason": "Face hidden"
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "card_play",
+        "card_name": "Rare Candy",
+        "target": "middle Tinkatink",
+        "energy": null,
+        "result": "Rare Candy plus Tinkaton from hand: evolve to Team Rocket Tinkaton",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": 5,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 419,
+        "evidence_ids": [
+          "f_0419_00",
+          "f_0420_00",
+          "f_0422_00",
+          "f_0426_00"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 13,
+      "who": "owner",
+      "start": 3,
+      "end": 1,
+      "normal_draw": [
+        [
+          {
+            "name": "Nacli",
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 457.5,
+            "evidence_ids": [
+              "f_0457_50"
+            ],
+            "basis": "Visible named zoom/reveal",
+            "limit_reason": null
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "card_play",
+        "card_name": "Nacli",
+        "target": "owner bench position3",
+        "energy": null,
+        "result": "Basic placed",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": 2,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 459,
+        "evidence_ids": [
+          "f_0459_10",
+          "f_0461_10"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 14,
+      "who": "opponent",
+      "start": 5,
+      "end": 1,
+      "normal_draw": [
+        [
+          {
+            "name": null,
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 474,
+            "evidence_ids": [
+              "f_0474_00"
+            ],
+            "basis": "Opponent card back only",
+            "limit_reason": "Face hidden"
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "card_play",
+        "card_name": "Rare Candy",
+        "target": "left Tinkatink",
+        "energy": null,
+        "result": "Evolve left Tinkatink into second Team Rocket Tinkaton using Rare Candy",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": 3,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 476,
+        "evidence_ids": [
+          "f_0476_00",
+          "f_0477_00",
+          "f_0479_00",
+          "f_0480_00"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 15,
+      "who": "owner",
+      "start": 2,
+      "end": 0,
+      "normal_draw": [
+        [
+          {
+            "name": "Garganacl",
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 508.5,
+            "evidence_ids": [
+              "f_0508_50"
+            ],
+            "basis": "Visible named zoom/reveal",
+            "limit_reason": null
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "card_play",
+        "card_name": "Rare Candy",
+        "target": "owner bench position3 Nacli",
+        "energy": null,
+        "result": "Rare Candy plus drawn Garganacl consumed; evolution completes by515.5",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": 0,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 510,
+        "evidence_ids": [
+          "f_0509_50",
+          "f_0510_50",
+          "f_0512_50",
+          "f_0515_50"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn": 16,
+      "who": "opponent",
+      "start": 2,
+      "end": 0,
+      "normal_draw": [
+        [
+          {
+            "name": null,
+            "reveal_position": 1,
+            "source_video": "20261010_013009000_iOS.MP4",
+            "timestamp_seconds": 534,
+            "evidence_ids": [
+              "f_0534_00"
+            ],
+            "basis": "Opponent card back only",
+            "limit_reason": "Face hidden"
+          }
+        ]
+      ],
+      "first_move": {
+        "order": 1,
+        "kind": "ability",
+        "card_name": "Revavroom",
+        "target": "Tinkaton and Dialga ex",
+        "energy": null,
+        "result": "Metal Transport swaps Active Tinkaton with benchmiddle Dialga",
+        "prompt_text": null,
+        "response": null,
+        "nested_events_in_order": [],
+        "hand_count_after": null,
+        "source_video": "20261010_013009000_iOS.MP4",
+        "timestamp_seconds": 538,
+        "evidence_ids": [
+          "f_0538_00",
+          "f_0539_00",
+          "f_0540_00",
+          "f_0542_00"
+        ],
+        "basis": "Visible action, card reveal and board/hand change",
+        "limit_reason": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "video_basename": "20261002_020315000_iOS.MP4",
+  "source_sha256": "52b7fa2fb75ddd5924d13f0cf22833d83c83118fc31a5e87be30b4949ca37fc7",
+  "source_bytes": 627828243,
+  "duration_seconds": 341.141667,
+  "reviewer": "sol_competitive_20261002_020315000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_status": "first_pass_draft_pending_independent_lead_acceptance",
+  "complete_available_footage_review": true,
+  "battle_complete": true,
+  "reviewed_interval_seconds": [0, 341.141667],
+  "reviewed_turns": [1,2,3,4,5,6,7,8,9,10,11],
+  "outcome": "loss",
+  "outcome_type": "loss",
+  "terminal_reason": "Opponent reaches three points by Palkia ex Dimensional Storm knocking out Cyrus-promoted Indeedee ex",
+  "concession_observed": false,
+  "turn_order": "owner_second_opponent_first",
+  "turn_order_evidence": "overview/sheet_02.jpg at28.5-31.5 seconds explicitly says You are going second",
+  "owner_name": "Dacz8976",
+  "owner_deck_core": ["Wailmer", "Wailord (non-ex)", "Wailord ex (visible pregame list)", "Indeedee ex"],
+  "owner_energy_types": ["Water"],
+  "owner_support_cards_observed": ["Poke Ball", "Heavy Helmet", "Lucky Ice Pop", "Irida", "Pokemon Center Lady", "Soothing Shore"],
+  "likely_artifact_deck_name": "Wailord / Indeedee wall",
+  "artifact_deck_match_limit": "Visible core matches; complete 20-card list equality is not established",
+  "pregame_deck_name": "New deck 2",
+  "opponent_name": "るか",
+  "opponent_deck_core": ["Frigibax", "Baxcalibur", "Feebas", "Milotic ex", "Palkia ex"],
+  "opponent_support_cards_observed": ["Rare Candy", "Copycat", "Poke Ball", "Soothing Shore", "Professor's Research", "Cyrus"],
+  "mode_evidence": {
+    "observed": "PvP opponent-search matchmaking; named accounts, opposing timers and Waiting for opponent",
+    "rank_indicators": "Opponent Ultra Ball Rank4 and owner Master Ball Rank at native/t0022.50.jpg",
+    "inference": "Rank indicators support ranked-match context; exact mode label not separately opened",
+    "owner_intent": "competitive_pause_games",
+    "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+    "ranked_ladder_eligible_under_assignment": false
+  },
+  "auto_intervals": [{"start_seconds":0,"end_seconds":341.141667,"owner_auto_state":"No Auto indicator or mode change visible; owner selections and confirmations visible","opponent_auto_state":"unknown"}],
+  "final_score": {"owner":1,"opponent":3},
+  "point_progression": [
+    {"seconds":166.5,"owner":1,"opponent":0,"cause":"Wailmer Wave Splash60 knocks out Feebas30"},
+    {"seconds":205.5,"owner":1,"opponent":1,"cause":"Palkia ex Dimensional Storm knocks out Wailmer100"},
+    {"seconds":331.5,"owner":1,"opponent":3,"cause":"Palkia ex Dimensional Storm knocks out Indeedee ex110 for two points"}
+  ],
+  "decisive_evidence": [
+    {"seconds":311,"path":"native/t0311.00.jpg","observation":"Cyrus revealed with switch-in-damaged-Bench text"},
+    {"seconds":322.5,"path":"native/t0322.50.jpg","observation":"Indeedee ex110 Active, Palkia ex150 with four Water, score1-1"},
+    {"seconds":325.5,"path":"native/t0325.50.jpg","observation":"150 damage to Active Indeedee ex and20 to each remaining Bench Pokemon"},
+    {"seconds":331.5,"path":"native/t0331.50.jpg","observation":"Opponent るか reaches three points"},
+    {"seconds":334.5,"path":"native/t0334.50.jpg","observation":"Defeat banner"},
+    {"seconds":340.5,"path":"native/t0340.50.jpg","observation":"Results screen Defeat versus るか"}
+  ],
+  "key_findings": [
+    "Owner first attacks on own third turn after three ordinary Water attachments; the first Storm then removes that Wailmer and all three Energy.",
+    "Replacement Wailord has one Energy on global turn8 and two on turn10, never reaches four-Energy Whale Pump before game ends.",
+    "Two Indeedee ex heal Active Wailord fully after Slash, while both remain damaged on Bench from first Storm; Cyrus selects one for terminal two-point knockout.",
+    "Baxcalibur evolves via Rare Candy on global turn3 and visibly uses Ice Maker on turns5,7,9,11; Milotic ex also uses Aqua Charge on turn9.",
+    "Non-ex Wailord has four Colorless cost and bonus damage per Water; Indeedee ex attack requires two Psychic. Water-only configuration uses Indeedee healing without its attack.",
+    "Alternate Energy and Sharpedo/Misty ramp remain owner proposals, untested in this recording; no subjective numerical ratings assigned."
+  ],
+  "owner_feedback": "Owner reports these games felt slow to build Energy; proposed alternate Energy or Sharpedo/Misty ramp are untested ideas",
+  "limitations": [
+    "Source identity adopted from supplied bound manifest and lead assignment; worker did not duplicate full-source hashing.",
+    "Three-second overview sampling makes some action boundaries approximate; consequential actions and states have targeted native evidence.",
+    "Opponent hidden cards and exact full deck lists remain unknown.",
+    "No opponent Auto state or separately opened exact mode label.",
+    "Post-battle card presentation unfinished at recording end after explicit Defeat.",
+    "Local match date October1,2026 follows assignment testimony/upload basis; exact filename timezone inferred, not printed."
+  ],
+  "material_unresolved_questions": [],
+  "shared_or_external_writes_by_worker": false
+}
