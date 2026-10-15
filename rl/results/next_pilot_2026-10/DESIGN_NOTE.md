@@ -127,6 +127,8 @@ part of phase 1, not deferred:
   Kingambit passes, and deck 13-A G5's turn 4 included (Oct 15, after his reviewed critique).** A switch that only passes
   the knock-out cases is an "always attack" bot, which recreates the planning failure he named. A failure there is still
   reported as a known limit, but it blocks adoption.
+- **So the first `_atk` may not be adoptable until a plan-aware "later" exists** (the longer watch or the plan-value term).
+  If that happens, it is the round's finding, not its failure (Fable's audit, Oct 15).
 - If `_atk` passes them, the report says why: what the watch saw. That would be unexpected.
 
 **A lesson from the Kingambit diagnosis** (`../pause_positions_kx3_2026-10/KINGAMBIT_PASS_cloud.md`): at 010837 t11, what
