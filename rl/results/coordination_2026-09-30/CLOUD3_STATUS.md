@@ -65,3 +65,4 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
 - 2026-10-15 09:27Z: 2026-10-14_draft-A-wallace: slice done, 240 of 320 games on disk, folder pushed.
 - 2026-10-15 11:51Z: 2026-10-14_draft-A-wallace: slice done, 280 of 320 games on disk, folder pushed.
 - 2026-10-15 12:51Z: 2026-10-14_draft-A-wallace: slice done, 320 of 320 games on disk, folder pushed.
+- 2026-10-15 12:53Z: draft A Wallace (current engine, slot 805) slow report FINISHED: all 320 games, 0 errors, 10.2 h over 8 sittings; kx3 66.9% over 160 games (59.3% to 73.7%), km3 on the same deals 51.2%, kx3 adds +15.6 points (8.7 to 22.5; no-gain not in range); best lists t-blaziken and t-vespiquen 80%, worst t-sceptile 45%. Folder pushed (e523e22e). Reported to Dustin in chat. Idle, waiting for Fable's next order.
