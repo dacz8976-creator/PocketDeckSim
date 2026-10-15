@@ -419,32 +419,42 @@ def _job(job, n_deals, kw):
 # ------------------------------------------------------------------------------------------------ SPEC tests 6 and 7
 def compare_consistency(path, n):
     """Kingambit in play by own turn 2-5 going first, against lib/consistency.py's solitaire model on the same list.
-    Every gap is explained by a named difference in the script; a gap is not a failure."""
+    Every gap is explained by a named difference in the script, measured by switching that part of the script off
+    (same deals); a gap is not a failure."""
     base = build_cards(path)
-    cfg = sim.load_cfg()
     ver = sim.Version(base, base, 'consistency')
-    got = [0] * 6
-    m = n
-    for i in range(0, 2 * m, 2):                           # going first only
-        tr = sim.play_deal(ver, i, True, cfg, seed_base=SEED_BASE)
-        for t in range(2, 6):
-            got[t] += 'Kingambit' in tr['turns'][t - 1]['in_play']
+
+    def run(**over):
+        cfg = sim.load_cfg(**over)
+        got = [0] * 6
+        for i in range(0, 2 * n, 2):                       # going first only
+            tr = sim.play_deal(ver, i, True, cfg, seed_base=SEED_BASE)
+            for t in range(2, 6):
+                got[t] += 'Kingambit' in tr['turns'][t - 1]['in_play']
+        return [x / n for x in got]
+
+    full = run()
+    nomesa = run(mesagoza_coin='tails')
+    nocopy = run(mesagoza_coin='tails', copycat_rule='never')
+    cfg = sim.load_cfg()
     plan = cl.Plan(path, ['Darkness'], base, main=cfg['main_attacker'])
+    note = plan.effect_notes.get('Mesagoza', '')
     sol = cl.solitaire(plan, n, 20_000_000_000)
     acc = sol[(True, 'normal')]
     rows = []
-    why = {2: 'the solitaire model plays Poke Ball / Rare Candy / Communication by its own priorities and draws Mesagoza '
-              'coins differently; this script plays Juliana and Copycat by the SPEC rules, so Kingambit reaches turn 2 '
-              'through the same Rare Candy route with different search and Copycat choices',
-           3: 'Bisharp evolution is held to the end of the turn (step 4) so a Kingambit found later in the turn can use '
-              'Rare Candy; the solitaire model evolves at once',
-           4: 'the script never retreats and sends Energy to Kingambit first; the solitaire model values Energy by '
-              'its own rule',
-           5: 'the horizon effects of the same differences, plus Communication trades (never a plan piece) and the '
-              'hand-size rules for Professor\'s Research (8 cards or fewer)'}
     for t in range(2, 6):
-        rows.append({'turn': t, 'tester': got[t] / m, 'consistency': acc['stage2'][t] / acc['n'], 'gap':
-                     got[t] / m - acc['stage2'][t] / acc['n'], 'explained': why[t]})
+        c = acc['stage2'][t] / acc['n']
+        gap = full[t] - c
+        mesa = full[t] - nomesa[t]
+        rest = nomesa[t] - c
+        why = (f"{100 * mesa:+.1f} points of the {100 * gap:+.1f} gap is Mesagoza: lib/consistency.py's note on it is "
+               f"'{note}', so the solitaire model never uses it, while this script plays it and flips each turn "
+               f"(measured by forcing the coin to tails); the remaining {100 * rest:+.1f} is Copycat and Supporter "
+               f"policy: the script plays Copycat when the hand holds no Kingambit or Rare Candy and is smaller than the "
+               f"opponent's, the solitaire model only when it holds no card the plan needs (with Copycat never played "
+               f"the script is {100 * (nocopy[t] - c):+.1f} from it)")
+        rows.append({'turn': t, 'tester': full[t], 'consistency': c, 'gap': gap, 'tester_no_mesagoza': nomesa[t],
+                     'tester_no_mesagoza_no_copycat': nocopy[t], 'explained': why})
     return rows
 
 
@@ -462,6 +472,91 @@ def compare_bots(root, n):
         cnt[tr['first_attack_turn']] += 1
     return {'games': len(turns), 'bot_first_blade': dict(collections.Counter(turns)),
             'sim_k3': {k: v / n for k, v in sorted(cnt.items(), key=lambda kv: (kv[0] is None, kv[0] or 0))}}
+
+
+
+def comparison_sections(root, n):
+    """SPEC tests 6 and 7 as printed sections of a run's RESULTS.md (a gap is printed, not a failure)."""
+    L = ['## Against lib/consistency.py on deck 01 (SPEC test 6)', '',
+         'Kingambit in play by own turn t, going first, deck 01, no clock. Gaps are explained by named differences in '
+         'the script; a gap is not a failure.', '', '| Own turn | this tester | lib/consistency.py solitaire | gap | named difference |',
+         '|---|---|---|---|---|']
+    for r in compare_consistency(DECK01, n):
+        L.append(f'| {r["turn"]} | {100 * r["tester"]:.1f}% | {100 * r["consistency"]:.1f}% | '
+                 f'{100 * r["gap"]:+.1f} | {r["explained"]} |')
+    L.append('')
+    b = compare_bots(root, n)
+    L += ['## Against the bots (SPEC test 7)', '',
+          f'Deck 01, C-bot clock, {n:,} deals: the share of deals whose first Overlord\'s Blade is on own turn t, beside '
+          f'the first Overlord\'s Blade turn in the {b["games"]} recorded games (km3 and kx3 against km3 on the 8 '
+          'panel lists, replay_b). A gap is printed, not a failure: the tester plays a fixed script and the bots do not.',
+          '', '| First Blade on own turn | this tester | the 64 bot games |', '|---|---|---|']
+    turns = sorted({k for k in b['sim_k3']} | set(b['bot_first_blade']), key=lambda k: (k is None, k or 0))
+    for t in turns:
+        L.append(f'| {"never in the horizon" if t is None else t} | {100 * b["sim_k3"].get(t, 0):.1f}% | '
+                 f'{b["bot_first_blade"].get(t, 0)} of {b["games"]} ({100 * b["bot_first_blade"].get(t, 0) / b["games"]:.0f}%) |')
+    L.append('')
+    return L
+
+
+SENS = [('lead order: Pawniard first', {'lead_order': ['Pawniard', 'Glimmet', 'Alolan Grimer', 'Regigigas']}),
+        ('promote order: Regigigas first', {'promote_order': ['Regigigas', 'Glimmet', 'Alolan Grimer', 'Glimora'.replace('Glimora', 'Glimmora'),
+                                                           'Alolan Muk', 'Bisharp', 'Pawniard', 'Kingambit']}),
+        ('Copycat whenever no Kingambit or Rare Candy is in hand', {'copycat_rule': 'always'}),
+        ('Blade target 3 (the 180 line)', {'blade_target': 3}),
+        ('Poke Ball over names, not cards', {'poke_ball_over': 'names'}),
+        ('opponent hand 2 (Copycat)', {'opp_hand': 2}),
+        ('opponent hand 6 (Copycat)', {'opp_hand': 6})]
+
+
+def sensitivity(base_path, n_deals, clock_deals, clocks, plan=None, workers=1):
+    """The base list under one alternative of each choice Dustin confirms (SPEC "Dustin confirms five choices"), on the
+    same deals. Returns RESULTS.md lines."""
+    jobs = [('default', {})] + SENS
+    kw = dict(clocks=clocks, clock_deals=clock_deals, plan=plan, keep_vectors=True)
+    if workers > 1:
+        with multiprocessing.Pool(workers) as pool:
+            rs = pool.starmap(_sens_job, [(base_path, n_deals, ov, kw) for _, ov in jobs])
+    else:
+        rs = [_sens_job(base_path, n_deals, ov, kw) for _, ov in jobs]
+    cfg = sim.load_cfg(plan)
+    d0 = rs[0]
+    L = ['## How much each confirmable choice matters (on the base list)', '',
+         'One alternative of each value Dustin confirms, run once on the base list on the same deals. Pooled, '
+         'paired differences from the default (percentage points; the range is +-1.96 sd/sqrt(n); a "*" marks a range '
+         'that excludes 0 and a difference of at least 1 point). Only measures a choice can touch are listed.', '']
+    ids = ['K1.t1', 'K1.t3', 'K2.t2', 'K2.t3', 'K2.t4', 'K2.t5', 'K6.t4', 'G5.any3', 'G6.t3', 'G6.t5']
+    L.append('| Alternative | ' + ' | '.join(ids) + ' |')
+    L.append('|---|' + '---|' * len(ids))
+    for (name, _), r in zip(jobs[1:], rs[1:]):
+        cells = []
+        for m in ids:
+            d, lo, hi = pair_stats(r['vectors'], d0['vectors'], m, 'pooled')
+            cells.append(f'{100 * d:+.1f}' + ('*' if (lo > 0 or hi < 0) and abs(d) >= 0.01 else ''))
+        L.append(f'| {name} | ' + ' | '.join(cells) + ' |')
+    L.append('')
+    cl_ids = ['K3.by3', 'K3.by5', 'K3.never', 'K4', 'K5']
+    for c in clocks:
+        if c not in ('his', 'bot', 'fast'):
+            continue
+        L.append(f'Clock measures under {CLOCK_LABEL[c]}, difference from the default (pooled points, undecided as no):')
+        L.append('')
+        L.append('| Alternative | ' + ' | '.join(cl_ids) + ' |')
+        L.append('|---|' + '---|' * len(cl_ids))
+        for (name, _), r in zip(jobs[1:], rs[1:]):
+            cells = []
+            for m in cl_ids:
+                a, b = _ints(r['vectors'][f'{c}|{m}'])[0], _ints(d0['vectors'][f'{c}|{m}'])[0]
+                mask = int.from_bytes(b'\x01' * r['clock_deals'], 'little')
+                d, lo, hi = paired_diff_bits(a, b, mask)
+                cells.append(f'{100 * d:+.1f}' + ('*' if (lo > 0 or hi < 0) and abs(d) >= 0.01 else ''))
+            L.append(f'| {name} | ' + ' | '.join(cells) + ' |')
+        L.append('')
+    return L
+
+
+def _sens_job(base_path, n_deals, over, kw):
+    return run_one(base_path, None, n_deals, cfg_over=over, **kw)
 
 
 # ------------------------------------------------------------------------------------------------ the report
@@ -486,7 +581,7 @@ def measure_label(m, cfg):
     return f'{m} {MEASURE_NAMES.get(m, "")}'.strip()
 
 
-def build_report(out_dir, deck_name, runs, args, cfg, record):
+def build_report(out_dir, deck_name, runs, args, cfg, record, extra=None):
     """results.json and RESULTS.md. `runs` is run_versions' result (with vectors)."""
     versions = runs['versions']
     base = versions['base']
@@ -539,6 +634,7 @@ def build_report(out_dir, deck_name, runs, args, cfg, record):
         for c in clocks:
             L.extend(clock_table(c, r, base if name != 'base' else None, gm[c], bc[c], cfg, cj))
         diffs = []
+        pj = {}
         if name != 'base':
             L.append('Paired against the base, same deals (mean per-deal difference, percentage points, +-1.96 sd/sqrt(n); '
                      '"flag" when the range excludes 0 and the difference is at least 1 point):')
@@ -549,6 +645,7 @@ def build_report(out_dir, deck_name, runs, args, cfg, record):
                 cells, flag = [], False
                 for s in ('first', 'second', 'pooled'):
                     d, lo, hi = pair_stats(vv, bv, m, s)
+                    pj.setdefault(m, {})[s] = [d, lo, hi]
                     f = (lo > 0 or hi < 0) and abs(d) >= 0.01
                     cells.append(f'{100 * d:+.1f} ({100 * lo:+.1f} to {100 * hi:+.1f})' + (' FLAG' if f else ''))
                     flag |= f
@@ -563,7 +660,8 @@ def build_report(out_dir, deck_name, runs, args, cfg, record):
             L.append('')
             L.extend(summary(name, r, diffs, cfg, runs))
         res_json['versions'][name] = {'label': r['label'], 'list_id': r.get('list_id'), 'diff': r.get('diff'),
-                                      'exact': r['exact'], 'setup': rj, 'clock': cj, 'seconds': r['seconds']}
+                                      'exact': r['exact'], 'setup': rj, 'clock': cj, 'paired_vs_base': pj, 'seconds': r['seconds']}
+    L.extend(extra or [])
     L.append('## The run record')
     L.append('')
     for k, v in record.items():
@@ -630,7 +728,7 @@ def clock_table(c, r, base, gm, counts, cfg, cj):
             x0 = (yes & mask[s]).bit_count()
             x1 = x0 + (und & mask[s]).bit_count()
             rng = ''
-            entry = {'x_no': x0, 'x_yes': x1, 'n': nn}
+            entry = {'x_no': x0, 'x_yes': x1, 'n': nn, 'wilson': list(wilson(x0, nn))}
             if games > 1:
                 xs = game_tallies(yes, gm, mask[s])
                 ns = [(g & mask[s]).bit_count() for g in gm]
@@ -640,7 +738,6 @@ def clock_table(c, r, base, gm, counts, cfg, cj):
             else:
                 lo, hi = wilson(x0, nn)
                 rng = f' [{100 * lo:.0f}-{100 * hi:.0f}, Wilson]'
-                entry['wilson'] = [lo, hi]
             same = x0 == x1
             cells.append(f'{100 * x0 / nn:.1f}%' + ('' if same else f' / {100 * x1 / nn:.1f}%') + rng)
             cj[c].setdefault(m, {})[s] = entry
@@ -691,8 +788,9 @@ def summary(name, r, diffs, cfg, runs):
     """A plain summary: what the version gains, what it gives up (flagged losses only), the clock used, and 'not valued
     here' for every changed card the script never plays."""
     L = [f'**Plain summary, {name}.**', '']
-    gains = [(m, d) for m, d in diffs if d > 0]
-    losses = [(m, d) for m, d in diffs if d < 0]
+    good = lambda m, d: d < 0 if m.startswith('G5') else d > 0      # an empty turn is the bad thing
+    gains = [(m, d) for m, d in diffs if good(m, d)]
+    losses = [(m, d) for m, d in diffs if not good(m, d)]
     L.append('Gains (flagged, pooled): ' + ('; '.join(f'{measure_label(m, cfg)} {100 * d:+.1f} points'
                                                       for m, d in gains[:10]) or 'none flagged') + '.')
     L.append('Gives up (flagged, pooled): ' + ('; '.join(f'{measure_label(m, cfg)} {100 * d:+.1f} points'
@@ -725,6 +823,12 @@ def code_sha():
                 h.update(f.encode() + open(p, 'rb').read())
     h.update(open(sim.DEFAULT_PLAN, 'rb').read())
     return h.hexdigest()
+
+
+def speed_line(runs):
+    deals = sum(r['n_deals'] + r['clock_deals'] * len(r['clocks']) for r in runs['versions'].values())
+    secs = sum(r['seconds'] for r in runs['versions'].values())
+    return f'{deals / secs:,.0f} deals per second per process ({deals:,} deals in {secs:.0f} s of version time)'
 
 
 def main(argv=None):
@@ -776,8 +880,14 @@ def main(argv=None):
               'clock sources': f'C-his: {clk.HIS_POS} (12 Kingambit games); C-bot: {clk.BOT_GAMES} (64 deck-01 rows); '
                                'C-fixed: fast, medium, slow (SPEC)',
               'base list': f'{vf["base"]} (card-list id {base_id})', 'plan config': vf.get('plan') or sim.DEFAULT_PLAN,
-              'plan overrides': over or 'none', 'wall time': f'{time.time() - t0:.0f} s, {a.workers} process(es)'}
-    build_report(out, a.name, runs, a, cfg, record)
+              'plan overrides': over or 'none', 'wall time': f'{time.time() - t0:.0f} s, {a.workers} process(es)',
+              'speed': speed_line(runs)}
+    extra = []
+    if a.first_run:
+        extra += comparison_sections(ROOT, a.clock_deals)
+        extra += sensitivity(vf['base'], a.deals, a.clock_deals, clocks, vf.get('plan'), a.workers)
+        record['wall time'] = f'{time.time() - t0:.0f} s, {a.workers} process(es) (comparisons and the choice runs included)'
+    build_report(out, a.name, runs, a, cfg, record, extra)
     print(f'wrote {out}/RESULTS.md and results.json in {time.time() - t0:.0f} s')
     return 0
 

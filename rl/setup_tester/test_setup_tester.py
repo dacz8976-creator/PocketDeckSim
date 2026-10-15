@@ -319,8 +319,7 @@ class T3Repro(unittest.TestCase):
 
     def test_search_without_reshuffle_matches_explicit_reshuffle(self):
         ver = version()
-        n = BIG if not FAST else 4000
-        n = min(n, 40_000)                      # the full play loop is the slow part; see REPORT.md
+        n = BIG
         a = b = 0
         for i in range(n):
             ta = sim.play_deal(ver, i, i % 2 == 0, CFG)

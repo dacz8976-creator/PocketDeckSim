@@ -422,7 +422,7 @@ class Game:
                     self.insert_random(c)
             return self.played('sightseer')
         s = self.has_in_hand('prof')
-        if s is not None and len(self.hand) <= 8:
+        if s is not None and len(self.hand) <= cfg['prof_hand_max']:
             self.discard_trainer(s)
             self.draw(2)
             return self.played('prof')
@@ -430,7 +430,8 @@ class Game:
         if s is not None:
             main_in_hand = any(v.name[h] == main or v.tkind[h] == 'candy' for h in self.hand)
             smaller = len(self.hand) - 1 < cfg['opp_hand']
-            if not main_in_hand and (smaller or cfg.get('copycat_rule') == 'always'):
+            rule = cfg.get('copycat_rule')
+            if rule != 'never' and not main_in_hand and (smaller or rule == 'always'):
                 self.discard_trainer(s)
                 for h in list(self.hand):
                     self.hand.remove(h)
