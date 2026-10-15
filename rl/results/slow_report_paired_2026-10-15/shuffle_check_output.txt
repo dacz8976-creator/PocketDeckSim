@@ -1,0 +1,11 @@
+# shuffle_check.py, run on the laptop Oct 15 with the pinned program /home/dacz8976/kx_r2/strength (km3 plays BOTH arms, so a game takes about a second): the base deck of the 13-A report, its
+# one-card variant (Ilima -> Giant Cape on Ilima's own line: card 17 of 20 keeps its place) and a NEGATIVE CONTROL (the same swap with the Cape moved to the last line, so the cards after
+# Ilima's old place move up by one), each played on seeds 24606700000 + p x 10,000 + deal, deals 0-9, both seats, against t-altaria, t-suicune, t-hydreigon and t-weezing (160 games each).
+# "identical" = the same logged moves (timings aside), result, points and turns.
+base v cape (aligned): 160 twin games; who goes first the same in 160; first logged move the same in 126; the whole game identical in 50
+   of the 56 games where neither Ilima nor Giant Cape was played in either game, identical: 50
+base v moved (not aligned): 160 twin games; who goes first the same in 160; first logged move the same in 112; the whole game identical in 8
+   of the 72 games where neither card was played, identical: 8
+# Reading: with the card in its own place, 50 of 160 twin games are the same game from start to finish and all 50 are among the games where the swapped cards never came up; with the card
+# on another line only 8 are. The pilots look at their own deck list, so even a twin where the card never came up can part (6 of the 56 did). The first player is the same in every twin
+# in both runs: the shuffles consume the random stream alike whatever the cards are (as the code says); what the card's place decides is which card lands where.
