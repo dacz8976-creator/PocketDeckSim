@@ -1,0 +1,47 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261004_214731000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261004_214731000_iOS.MP4",
+      "sha256": "d363bdd1c3f4aafc5ad9423764e706f8944407d68a04c82d72317592d7e7e198",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "filmed_core": [
+    "Caterpie",
+    "Metapod",
+    "Butterfree",
+    "Shelmet",
+    "Accelgor",
+    "Fragrant Forest",
+    "Hiking Trail",
+    "Lucky Ice Pop",
+    "Professor's Research",
+    "Poké Ball",
+    "Quick-Grow Extract"
+  ],
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-06T17:07:52.454484+00:00",
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "energy_configuration_filmed": [
+    "Grass"
+  ],
+  "actual_card_count": null,
+  "capture_source_text_or_image": "../LIVE_DECK_SNAPSHOT.json",
+  "game_version_binding_basis": "None of nine frozen live lists contains Caterpie/Butterfree/Accelgor; this source has no deck QR or named list. Lead is resolving adjacent first-use QR.",
+  "conflicts_with_filmed_cards": [
+    "All nine live lists have other Pokémon cores. Do not assign this game to Shark Tempo or any other listed deck."
+  ],
+  "exact_list_status": "missing_matching_live_log_version",
+  "limits": [
+    "No exact20-card live-log list for this filmed deck exists in initial batch snapshot.",
+    "Visible core does not prove hidden deck cards."
+  ]
+}

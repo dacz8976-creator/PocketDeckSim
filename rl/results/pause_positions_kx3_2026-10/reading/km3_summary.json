@@ -1,0 +1,6680 @@
+[
+ {
+  "id": "KW-261004_213625000-t01",
+  "game": "kw-261004_213625000",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand": [
+   "Professor's Research",
+   "Fragrant Forest",
+   "Butterfree",
+   "Quick-Grow Extract",
+   "Lucky Ice Pop"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 9,
+   "Play:Fragrant Forest": 3
+  },
+  "same_first": 9,
+  "same_plan": 9,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 9,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    9
+   ],
+   [
+    [
+     "Play:Fragrant Forest",
+     "Play:Professor's Research"
+    ],
+    3
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261004_213625000-t03",
+  "game": "kw-261004_213625000",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand": [
+   "Butterfree",
+   "Quick-Grow Extract",
+   "Lucky Ice Pop",
+   "Butterfree"
+  ],
+  "his": [
+   "Play:Quick-Grow Extract"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Quick-Grow Extract": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Quick-Grow Extract"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Quick-Grow Extract"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261004_213625000-t05",
+  "game": "kw-261004_213625000",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand": [
+   "Butterfree",
+   "Butterfree",
+   "Poké Ball"
+  ],
+  "his": [
+   "Evolve:Butterfree@0",
+   "Attach:1Grass@1 zone",
+   "Attack:Sunny Wind"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Butterfree@0": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Butterfree@0",
+   "Attach:1Grass@3 zone",
+   "Attack:Sunny Wind"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Butterfree@0",
+     "Attach:1Grass@3 zone",
+     "Attack:Sunny Wind"
+    ],
+    12
+   ]
+  ],
+  "cat": "Energy attachment target",
+  "tags": [
+   "Energy attachment target"
+  ],
+  "desc": "his [Attach:1Grass@1 zone] ↔ km3 [Attach:1Grass@3 zone]",
+  "first_div": [
+   "Attach",
+   "Attach",
+   "Attach:1Grass@1 zone",
+   "Attach:1Grass@3 zone",
+   1
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Metapod stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261004_213625000-t07",
+  "game": "kw-261004_213625000",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand": [
+   "Butterfree",
+   "Accelgor"
+  ],
+  "his": [
+   "Evolve:Accelgor@1",
+   "Attach:1Grass@1 zone",
+   "Attack:Sunny Wind"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Accelgor@1": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Evolve:Accelgor@1",
+   "Attach:1Grass@1 zone",
+   "Attack:Sunny Wind"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Accelgor@1",
+     "Attach:1Grass@1 zone",
+     "Attack:Sunny Wind"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Butterfree stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261004_213625000-t09",
+  "game": "kw-261004_213625000",
+  "his_turn": 5,
+  "turn_count": 9,
+  "hand": [
+   "Butterfree",
+   "Hiking Trail"
+  ],
+  "his": [
+   "Evolve:Butterfree@0",
+   "Play:Hiking Trail",
+   "Attach:1Grass@0 zone",
+   "Attack:Sunny Wind"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Butterfree@0": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Evolve:Butterfree@0",
+   "Play:Hiking Trail",
+   "Attach:1Grass@0 zone",
+   "Attack:Sunny Wind"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Butterfree@0",
+     "Play:Hiking Trail",
+     "Attach:1Grass@0 zone",
+     "Attack:Sunny Wind"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Accelgor stack taken from the printed evolution line (the ledger gives none); Metapod stack taken from the printed evolution line (the ledger gives none); Vespiquen ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Butterfree. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261004_213625000-t11",
+  "game": "kw-261004_213625000",
+  "his_turn": 6,
+  "turn_count": 11,
+  "hand": [
+   "Accelgor",
+   "Professor's Research",
+   "Poké Ball",
+   "Quick-Grow Extract"
+  ],
+  "his": [
+   "Attach:1Grass@1 zone",
+   "Evolve:Accelgor@1",
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Accelgor@1": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Accelgor@1",
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Accelgor@1",
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "Energy attachment timing",
+  "tags": [
+   "Energy attachment timing"
+  ],
+  "desc": "his [Attach:1Grass@1 zone] ↔ km3 [-]",
+  "first_div": [
+   "Attach",
+   "Evolve",
+   "Attach:1Grass@1 zone",
+   "Evolve:Accelgor@1",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Accelgor stack taken from the printed evolution line (the ledger gives none); Vespiquen ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it); knocked out between turns: Butterfree. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261004_215749000-t01",
+  "game": "kw-261004_215749000",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand": [
+   "Combusken",
+   "Copycat",
+   "Flame Patch",
+   "Rocky Helmet",
+   "Poké Ball"
+  ],
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Poké Ball": 8,
+   "Play:Copycat": 4
+  },
+  "same_first": 8,
+  "same_plan": 8,
+  "modal": [
+   "Play:Poké Ball"
+  ],
+  "modal_n": 8,
+  "plans": [
+   [
+    [
+     "Play:Poké Ball"
+    ],
+    8
+   ],
+   [
+    [
+     "Play:Copycat"
+    ],
+    4
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261004_215749000-t03",
+  "game": "kw-261004_215749000",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand": [
+   "Flame Patch",
+   "Professor's Research",
+   "Professor's Research",
+   "Combusken"
+  ],
+  "his": [
+   "Evolve:Combusken@0",
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "evolution timing/target",
+  "tags": [
+   "evolution timing/target"
+  ],
+  "desc": "his [Evolve:Combusken@0] ↔ km3 [-]",
+  "first_div": [
+   "Evolve",
+   "Play",
+   "Evolve:Combusken@0",
+   "Play:Professor's Research",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261004_215749000-t05",
+  "game": "kw-261004_215749000",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand": [
+   "Flame Patch",
+   "Professor's Research",
+   "Field Blower",
+   "Copycat"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Retreat:2": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Retreat:2",
+   "Play:Flame Patch",
+   "Play:Professor's Research"
+  ],
+  "modal_n": 9,
+  "plans": [
+   [
+    [
+     "Retreat:2",
+     "Play:Flame Patch",
+     "Play:Professor's Research"
+    ],
+    9
+   ],
+   [
+    [
+     "Retreat:2",
+     "Play:Flame Patch",
+     "Play:Copycat"
+    ],
+    3
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "retreat/promotion"
+  ],
+  "desc": "his [-] ↔ km3 [Retreat:2, Play:Flame Patch]",
+  "first_div": [
+   "Play",
+   "Retreat",
+   "Play:Professor's Research",
+   "Retreat:2",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Combusken stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_003547000-t01",
+  "game": "kw-261005_003547000",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand": [
+   "Professor's Research",
+   "Copycat",
+   "Poké Ball",
+   "Mega Sharpedo ex",
+   "Lucky Ice Pop"
+  ],
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Copycat": 4,
+   "Play:Poké Ball": 4,
+   "Play:Professor's Research": 4
+  },
+  "same_first": 4,
+  "same_plan": 4,
+  "modal": [
+   "Play:Copycat"
+  ],
+  "modal_n": 4,
+  "plans": [
+   [
+    [
+     "Play:Copycat"
+    ],
+    4
+   ],
+   [
+    [
+     "Play:Poké Ball"
+    ],
+    4
+   ],
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    4
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order"
+  ],
+  "desc": "his [Play:Poké Ball] ↔ km3 [Play:Copycat]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Poké Ball",
+   "Play:Copycat",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_003547000-t03",
+  "game": "kw-261005_003547000",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand": [
+   "Copycat",
+   "Mega Sharpedo ex",
+   "Lucky Ice Pop",
+   "Wallace",
+   "Wailord"
+  ],
+  "his": [
+   "Play:Wallace",
+   "Play:Lucky Ice Pop",
+   "Evolve:Wailord@0",
+   "Play:Lucky Ice Pop",
+   "Attach:1Water@0 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Wallace": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Play:Wallace",
+   "ChooseRandomEvolutionTarget",
+   "Play:Lucky Ice Pop",
+   "Evolve:Wailord@0",
+   "Attach:1Water@0 zone"
+  ],
+  "modal_n": 5,
+  "plans": [
+   [
+    [
+     "Play:Wallace",
+     "ChooseRandomEvolutionTarget",
+     "Play:Lucky Ice Pop",
+     "Evolve:Wailord@0",
+     "Attach:1Water@0 zone"
+    ],
+    5
+   ],
+   [
+    [
+     "Play:Wallace",
+     "ChooseRandomEvolutionTarget",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Evolve:Wailord@0",
+     "Attach:1Water@0 zone"
+    ],
+    5
+   ],
+   [
+    [
+     "Play:Wallace",
+     "ChooseRandomEvolutionTarget",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Evolve:Wailord@0",
+     "Attach:1Water@0 zone"
+    ],
+    2
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order"
+  ],
+  "desc": "his [-] ↔ km3 [ChooseRandomEvolutionTarget]; his [Play:Lucky Ice Pop] ↔ km3 [-]",
+  "first_div": [
+   "Play",
+   "other",
+   "Play:Lucky Ice Pop",
+   "ChooseRandomEvolutionTarget",
+   1
+  ],
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_003547000-t05",
+  "game": "kw-261005_003547000",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand": [
+   "Copycat",
+   "Mega Sharpedo ex",
+   "Lucky Ice Pop",
+   "Wailord"
+  ],
+  "his": [
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Copycat"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Lucky Ice Pop": 3,
+   "Play:Copycat": 6,
+   "Attach:1Water@1 zone": 2,
+   "Attach:1Water@0 zone": 1
+  },
+  "same_first": 3,
+  "same_plan": 0,
+  "modal": [
+   "Play:Copycat"
+  ],
+  "modal_n": 6,
+  "plans": [
+   [
+    [
+     "Play:Copycat"
+    ],
+    6
+   ],
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Attach:1Water@1 zone",
+     "Play:Copycat"
+    ],
+    1
+   ],
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Attach:1Water@0 zone",
+     "Play:Lucky Ice Pop",
+     "Play:Copycat"
+    ],
+    1
+   ],
+   [
+    [
+     "Attach:1Water@1 zone",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Copycat"
+    ],
+    1
+   ],
+   [
+    [
+     "Attach:1Water@1 zone",
+     "Play:Lucky Ice Pop",
+     "Play:Copycat"
+    ],
+    1
+   ],
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Attach:1Water@1 zone",
+     "Play:Lucky Ice Pop",
+     "Play:Copycat"
+    ],
+    1
+   ],
+   [
+    [
+     "Attach:1Water@0 zone",
+     "Play:Lucky Ice Pop",
+     "Play:Copycat"
+    ],
+    1
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order"
+  ],
+  "desc": "his [Play:Lucky Ice Pop, Play:Lucky Ice Pop] ↔ km3 [-]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Lucky Ice Pop",
+   "Play:Copycat",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_003547000-t07",
+  "game": "kw-261005_003547000",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand": [
+   "Wailord",
+   "Mega Sharpedo ex",
+   "Carvanha",
+   "Professor's Research"
+  ],
+  "his": [
+   "Evolve:Wailord@2",
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "evolution timing/target",
+  "tags": [
+   "evolution timing/target"
+  ],
+  "desc": "his [Evolve:Wailord@2] ↔ km3 [-]",
+  "first_div": [
+   "Evolve",
+   "Play",
+   "Evolve:Wailord@2",
+   "Play:Professor's Research",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_003547000-t09",
+  "game": "kw-261005_003547000",
+  "his_turn": 5,
+  "turn_count": 9,
+  "hand": [
+   "Mega Sharpedo ex",
+   "Carvanha",
+   "Irida",
+   "Suicune ex"
+  ],
+  "his": [
+   "Attach:1Water@0 zone",
+   "Play:Irida",
+   "Attack:Whale Pump"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Irida": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Irida",
+   "Attach:1Water@0 zone",
+   "Attack:Whale Pump"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Irida",
+     "Attach:1Water@0 zone",
+     "Attack:Whale Pump"
+    ],
+    12
+   ]
+  ],
+  "cat": "same actions, different order",
+  "tags": [],
+  "desc": "order: his Attach:1Water@0 zone → Play:Irida → Attack:Whale Pump | km3 Play:Irida → Attach:1Water@0 zone → Attack:Whale Pump",
+  "first_div": [
+   "Attach",
+   "Play",
+   "Attach:1Water@0 zone",
+   "Play:Irida",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Houndstone stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_003547000-t11",
+  "game": "kw-261005_003547000",
+  "his_turn": 6,
+  "turn_count": 11,
+  "hand": [
+   "Mega Sharpedo ex",
+   "Carvanha",
+   "Suicune ex"
+  ],
+  "his": [
+   "Place:Carvanha",
+   "Attach:1Water@0 zone",
+   "Attack:Turbo Shark",
+   "Attach:1Water@1 fx"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Attach:1Water@0 zone": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Attach:1Water@0 zone",
+   "Place:Suicune ex",
+   "Attack:Turbo Shark",
+   "Attach:1Water@1 fx"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Attach:1Water@0 zone",
+     "Place:Suicune ex",
+     "Attack:Turbo Shark",
+     "Attach:1Water@1 fx"
+    ],
+    12
+   ]
+  ],
+  "cat": "bench development",
+  "tags": [
+   "bench development"
+  ],
+  "desc": "his [Place:Carvanha] ↔ km3 [-]; his [-] ↔ km3 [Place:Suicune ex]",
+  "first_div": [
+   "Place",
+   "Attach",
+   "Place:Carvanha",
+   "Attach:1Water@0 zone",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Houndstone stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Wailord. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_003547000-t13",
+  "game": "kw-261005_003547000",
+  "his_turn": 7,
+  "turn_count": 13,
+  "hand": [
+   "Mega Sharpedo ex",
+   "Suicune ex"
+  ],
+  "his": [
+   "Evolve:Mega Sharpedo ex@1",
+   "Retreat:1",
+   "Attach:1Water@0 zone",
+   "Attack:Turbo Shark",
+   "Attach:1Water@3 fx"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Retreat:2": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Retreat:2",
+   "Evolve:Mega Sharpedo ex@1",
+   "Attach:1Water@0 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Retreat:2",
+     "Evolve:Mega Sharpedo ex@1",
+     "Attach:1Water@0 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "retreat/promotion",
+  "tags": [
+   "retreat/promotion",
+   "attack vs another action",
+   "Energy attachment timing"
+  ],
+  "desc": "his [-] ↔ km3 [Retreat:2]; his [Retreat:1] ↔ km3 [-]; his [Attack:Turbo Shark, Attach:1Water@3 fx] ↔ km3 [-]",
+  "first_div": [
+   "Evolve",
+   "Retreat",
+   "Evolve:Mega Sharpedo ex@1",
+   "Retreat:2",
+   0
+  ],
+  "attack_cmp": "he attacks, km3 does not",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Houndstone stack taken from the printed evolution line (the ledger gives none); Mega Sharpedo ex stack taken from the printed evolution line (the ledger gives none); Wailord stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_031138000-t02",
+  "game": "kw-261005_031138000",
+  "his_turn": 1,
+  "turn_count": 2,
+  "hand": [
+   "Poké Ball",
+   "Hatenna",
+   "Hatterene",
+   "Professor's Research",
+   "Professor's Research"
+  ],
+  "his": [
+   "Place:Hatenna",
+   "Play:Poké Ball"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Hatenna": 3,
+   "Play:Professor's Research": 9
+  },
+  "same_first": 3,
+  "same_plan": 2,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 9,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    9
+   ],
+   [
+    [
+     "Place:Hatenna",
+     "Play:Poké Ball"
+    ],
+    2
+   ],
+   [
+    [
+     "Place:Hatenna",
+     "Attach:1Psychic@0 zone",
+     "Play:Professor's Research"
+    ],
+    1
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "bench development"
+  ],
+  "desc": "his [Place:Hatenna, Play:Poké Ball] ↔ km3 [Play:Professor's Research]",
+  "first_div": [
+   "Place",
+   "Play",
+   "Place:Hatenna",
+   "Play:Professor's Research",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_031138000-t04",
+  "game": "kw-261005_031138000",
+  "his_turn": 2,
+  "turn_count": 4,
+  "hand": [
+   "Hatterene",
+   "Professor's Research",
+   "Aromatisse",
+   "Togetic",
+   "Togekiss"
+  ],
+  "his": [
+   "Evolve:Aromatisse@0",
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Aromatisse@0": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Evolve:Aromatisse@0",
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Aromatisse@0",
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "the opponent's Greninja: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_031138000-t06",
+  "game": "kw-261005_031138000",
+  "his_turn": 3,
+  "turn_count": 6,
+  "hand": [
+   "Hatterene",
+   "Togetic",
+   "Togekiss",
+   "Hatterene",
+   "Togepi"
+  ],
+  "his": [
+   "Place:Togepi",
+   "Evolve:Hatterene@1",
+   "Retreat:1",
+   "Attach:1Psychic@0 zone",
+   "Attack:Mental Crush"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Hatterene@1": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Hatterene@1",
+   "Retreat:1",
+   "Place:Togepi",
+   "Attach:1Psychic@0 zone",
+   "Attack:Mental Crush"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Hatterene@1",
+     "Retreat:1",
+     "Place:Togepi",
+     "Attach:1Psychic@0 zone",
+     "Attack:Mental Crush"
+    ],
+    12
+   ]
+  ],
+  "cat": "same actions, different order",
+  "tags": [],
+  "desc": "order: his Place:Togepi → Evolve:Hatterene@1 → Retreat:1 → Attach:1Psychic@0 zone → Attack:Mental Crush | km3 Evolve:Hatterene@1 → Retreat:1 → Place:Togepi → Attach:1Psychic@0 zone → Attack:Mental Crush",
+  "first_div": [
+   "Place",
+   "Evolve",
+   "Place:Togepi",
+   "Evolve:Hatterene@1",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Aromatisse stack taken from the printed evolution line (the ledger gives none); Hattrem stack taken from the printed evolution line (the ledger gives none); Tapu Koko ex is Confused (not represented: the harness has no condition field); the opponent's Greninja: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_032023000-t02",
+  "game": "kw-261005_032023000",
+  "his_turn": 1,
+  "turn_count": 2,
+  "hand": [
+   "Metal Core Barrier",
+   "Lucky Ice Pop",
+   "Lucky Ice Pop",
+   "Professor's Research",
+   "Aegislash"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_032023000-t04",
+  "game": "kw-261005_032023000",
+  "his_turn": 2,
+  "turn_count": 4,
+  "hand": [
+   "Metal Core Barrier",
+   "Lucky Ice Pop",
+   "Lucky Ice Pop",
+   "Aegislash",
+   "Honedge"
+  ],
+  "his": [
+   "Place:Honedge",
+   "Play:Lucky Ice Pop",
+   "Attach:1Metal@1 zone",
+   "Attack:Lunge Out"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Lucky Ice Pop": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Lucky Ice Pop",
+   "Place:Honedge",
+   "Attach:1Metal@0 zone",
+   "Play:Metal Core Barrier",
+   "Tool:Metal Core Barrier@0",
+   "Attack:Lunge Out"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Place:Honedge",
+     "Attach:1Metal@0 zone",
+     "Play:Metal Core Barrier",
+     "Tool:Metal Core Barrier@0",
+     "Attack:Lunge Out"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Tool placement",
+   "Energy attachment target"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Lucky Ice Pop]; his [Play:Lucky Ice Pop, Attach:1Metal@1 zone] ↔ km3 [Attach:1Metal@0 zone, Play:Metal Core Barrier, Tool:Metal Core Barrier@0]",
+  "first_div": [
+   "Place",
+   "Play",
+   "Place:Honedge",
+   "Play:Lucky Ice Pop",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Wugtrio ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_032023000-t06",
+  "game": "kw-261005_032023000",
+  "his_turn": 3,
+  "turn_count": 6,
+  "hand": [
+   "Metal Core Barrier",
+   "Lucky Ice Pop",
+   "Aegislash",
+   "Lucky Ice Pop",
+   "Poké Ball"
+  ],
+  "his": [
+   "Play:Lucky Ice Pop",
+   "Attach:1Metal@1 zone",
+   "Attack:Lunge Out"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Lucky Ice Pop": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Play:Lucky Ice Pop",
+   "Attach:1Metal@0 zone",
+   "Play:Metal Core Barrier",
+   "Tool:Metal Core Barrier@0",
+   "Attack:Lunge Out"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Attach:1Metal@0 zone",
+     "Play:Metal Core Barrier",
+     "Tool:Metal Core Barrier@0",
+     "Attack:Lunge Out"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Tool placement",
+   "Energy attachment target"
+  ],
+  "desc": "his [Attach:1Metal@1 zone] ↔ km3 [Attach:1Metal@0 zone, Play:Metal Core Barrier, Tool:Metal Core Barrier@0]",
+  "first_div": [
+   "Attach",
+   "Attach",
+   "Attach:1Metal@1 zone",
+   "Attach:1Metal@0 zone",
+   1
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Wugtrio ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_032023000-t08",
+  "game": "kw-261005_032023000",
+  "his_turn": 4,
+  "turn_count": 8,
+  "hand": [
+   "Metal Core Barrier",
+   "Lucky Ice Pop",
+   "Aegislash",
+   "Lucky Ice Pop",
+   "Team Rocket's Tinkaton"
+  ],
+  "his": [
+   "Attach:1Metal@2 zone",
+   "Attack:Lunge Out"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Retreat:1": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Retreat:1",
+   "Attach:1Metal@0 zone",
+   "Play:Metal Core Barrier",
+   "Tool:Metal Core Barrier@0",
+   "Attack:Pierce"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Retreat:1",
+     "Attach:1Metal@0 zone",
+     "Play:Metal Core Barrier",
+     "Tool:Metal Core Barrier@0",
+     "Attack:Pierce"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Tool placement",
+   "attack choice",
+   "retreat/promotion",
+   "Energy attachment target"
+  ],
+  "desc": "his [Attach:1Metal@2 zone, Attack:Lunge Out] ↔ km3 [Retreat:1, Attach:1Metal@0 zone, Play:Metal Core Barrier, Tool:Metal Core Barrier@0, Attack:Pierce]",
+  "first_div": [
+   "Attach",
+   "Retreat",
+   "Attach:1Metal@2 zone",
+   "Retreat:1",
+   0
+  ],
+  "attack_cmp": "different attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Wugtrio ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_032023000-t10",
+  "game": "kw-261005_032023000",
+  "his_turn": 5,
+  "turn_count": 10,
+  "hand": [
+   "Metal Core Barrier",
+   "Lucky Ice Pop",
+   "Aegislash",
+   "Lucky Ice Pop",
+   "Team Rocket's Tinkaton",
+   "Aegislash"
+  ],
+  "his": [
+   "Retreat:1",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Metal Core Barrier",
+   "Tool:Metal Core Barrier@0",
+   "Attach:1Metal@2 zone",
+   "Attack:Pierce"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Attach:1Metal@0 zone": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Attach:1Metal@0 zone",
+   "Play:Metal Core Barrier",
+   "Tool:Metal Core Barrier@0",
+   "Attack:Lunge Out"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Attach:1Metal@0 zone",
+     "Play:Metal Core Barrier",
+     "Tool:Metal Core Barrier@0",
+     "Attack:Lunge Out"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "retreat/promotion",
+   "Energy attachment timing",
+   "attack choice"
+  ],
+  "desc": "his [Retreat:1, Play:Lucky Ice Pop, Play:Lucky Ice Pop, Play:Lucky Ice Pop] ↔ km3 [Attach:1Metal@0 zone]; his [Attach:1Metal@2 zone, Attack:Pierce] ↔ km3 [Attack:Lunge Out]",
+  "first_div": [
+   "Retreat",
+   "Attach",
+   "Retreat:1",
+   "Attach:1Metal@0 zone",
+   0
+  ],
+  "attack_cmp": "different attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Wugtrio ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Honedge. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_032023000-t12",
+  "game": "kw-261005_032023000",
+  "his_turn": 6,
+  "turn_count": 12,
+  "hand": [
+   "Aegislash",
+   "Team Rocket's Tinkaton",
+   "Aegislash",
+   "Professor's Research"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Metal Core Barrier left Honedge between the turns (discarded); Wugtrio ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_032857000-t02",
+  "game": "kw-261005_032857000",
+  "his_turn": 1,
+  "turn_count": 2,
+  "hand": [
+   "Aegislash",
+   "Professor's Research",
+   "Doublade",
+   "Team Rocket's Tinkaton"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_032857000-t04",
+  "game": "kw-261005_032857000",
+  "his_turn": 2,
+  "turn_count": 4,
+  "hand": [
+   "Aegislash",
+   "Doublade",
+   "Team Rocket's Tinkaton",
+   "Rare Candy",
+   "Metal Core Barrier",
+   "Metal Core Barrier"
+  ],
+  "his": [
+   "Play:Rare Candy",
+   "Evolve:Aegislash@0",
+   "Play:Metal Core Barrier",
+   "Tool:Metal Core Barrier@0",
+   "Attach:1Metal@0 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Rare Candy": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Rare Candy",
+   "Evolve:Aegislash@0",
+   "Play:Metal Core Barrier",
+   "Tool:Metal Core Barrier@0",
+   "Attach:1Metal@0 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Rare Candy",
+     "Evolve:Aegislash@0",
+     "Play:Metal Core Barrier",
+     "Tool:Metal Core Barrier@0",
+     "Attach:1Metal@0 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Ivysaur stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_032857000-t06",
+  "game": "kw-261005_032857000",
+  "his_turn": 3,
+  "turn_count": 6,
+  "hand": [
+   "Doublade",
+   "Team Rocket's Tinkaton",
+   "Metal Core Barrier",
+   "Lucky Ice Pop"
+  ],
+  "his": [
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Metal Core Barrier",
+   "Tool:Metal Core Barrier@0",
+   "Attach:1Metal@0 zone",
+   "Attack:Slicing Blade"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Lucky Ice Pop": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Attach:1Metal@0 zone",
+   "Play:Metal Core Barrier",
+   "Tool:Metal Core Barrier@0",
+   "Attack:Slicing Blade"
+  ],
+  "modal_n": 5,
+  "plans": [
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Attach:1Metal@0 zone",
+     "Play:Metal Core Barrier",
+     "Tool:Metal Core Barrier@0",
+     "Attack:Slicing Blade"
+    ],
+    5
+   ],
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Attach:1Metal@0 zone",
+     "Play:Metal Core Barrier",
+     "Tool:Metal Core Barrier@0",
+     "Attack:Slicing Blade"
+    ],
+    4
+   ],
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Attach:1Metal@0 zone",
+     "Play:Metal Core Barrier",
+     "Tool:Metal Core Barrier@0",
+     "Attack:Slicing Blade"
+    ],
+    3
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Energy attachment timing"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Lucky Ice Pop, Play:Lucky Ice Pop, Attach:1Metal@0 zone]; his [Attach:1Metal@0 zone] ↔ km3 [-]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Metal Core Barrier",
+   "Play:Lucky Ice Pop",
+   2
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Aegislash is Poisoned (not represented: the harness has no condition field); Aegislash: a Rare Candy evolved it, so no Stage 1 is under it; Mega Venusaur ex stack taken from the printed evolution line (the ledger gives none); Metal Core Barrier left Aegislash between the turns (discarded). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_032857000-t08",
+  "game": "kw-261005_032857000",
+  "his_turn": 4,
+  "turn_count": 8,
+  "hand": [
+   "Doublade",
+   "Team Rocket's Tinkaton",
+   "Professor's Research"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Aegislash: a Rare Candy evolved it, so no Stage 1 is under it; Mega Venusaur ex stack taken from the printed evolution line (the ledger gives none); Metal Core Barrier left Aegislash between the turns (discarded); knocked out between turns: Team Rocket's Tinkatink. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_033529000-t01",
+  "game": "kw-261005_033529000",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand": [
+   "Doublade",
+   "Aegislash",
+   "Lucky Ice Pop",
+   "Rare Candy"
+  ],
+  "his": [
+   "EndTurn"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "EndTurn": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "EndTurn"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "EndTurn"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_033529000-t03",
+  "game": "kw-261005_033529000",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand": [
+   "Doublade",
+   "Aegislash",
+   "Lucky Ice Pop",
+   "Rare Candy",
+   "Honedge"
+  ],
+  "his": [
+   "Place:Honedge",
+   "Attach:1Metal@0 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Honedge": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Place:Honedge",
+   "Attach:1Metal@0 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Honedge",
+     "Attach:1Metal@0 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_033529000-t05",
+  "game": "kw-261005_033529000",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand": [
+   "Doublade",
+   "Aegislash",
+   "Lucky Ice Pop",
+   "Rare Candy",
+   "Professor's Research"
+  ],
+  "his": [
+   "Evolve:Doublade@1",
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Doublade@1": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Evolve:Doublade@1",
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Doublade@1",
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Mega Lucario ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_033529000-t07",
+  "game": "kw-261005_033529000",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand": [
+   "Aegislash",
+   "Lucky Ice Pop",
+   "Rare Candy",
+   "Professor's Research",
+   "Metal Core Barrier"
+  ],
+  "his": [
+   "Evolve:Aegislash@1",
+   "Attach:1Metal@2 zone",
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Aegislash@1": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Aegislash@1",
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Aegislash@1",
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "Energy attachment timing",
+  "tags": [
+   "Energy attachment timing"
+  ],
+  "desc": "his [Attach:1Metal@2 zone] ↔ km3 [-]",
+  "first_div": [
+   "Attach",
+   "Play",
+   "Attach:1Metal@2 zone",
+   "Play:Professor's Research",
+   1
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Doublade stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_033529000-t09",
+  "game": "kw-261005_033529000",
+  "his_turn": 5,
+  "turn_count": 9,
+  "hand": [
+   "Lucky Ice Pop",
+   "Rare Candy",
+   "Metal Core Barrier",
+   "Metal Core Barrier",
+   "Honedge",
+   "Aegislash"
+  ],
+  "his": [
+   "Place:Honedge",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Metal Core Barrier",
+   "Tool:Metal Core Barrier@0",
+   "Attach:1Metal@0 zone",
+   "Attack:Steel Wing"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Lucky Ice Pop": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Lucky Ice Pop",
+   "Place:Honedge",
+   "Play:Lucky Ice Pop",
+   "Attach:1Metal@0 zone",
+   "Play:Metal Core Barrier",
+   "Tool:Metal Core Barrier@0",
+   "Attack:Steel Wing"
+  ],
+  "modal_n": 9,
+  "plans": [
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Place:Honedge",
+     "Play:Lucky Ice Pop",
+     "Attach:1Metal@0 zone",
+     "Play:Metal Core Barrier",
+     "Tool:Metal Core Barrier@0",
+     "Attack:Steel Wing"
+    ],
+    9
+   ],
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Place:Honedge",
+     "Attach:1Metal@0 zone",
+     "Play:Metal Core Barrier",
+     "Tool:Metal Core Barrier@0",
+     "Attack:Steel Wing"
+    ],
+    3
+   ]
+  ],
+  "cat": "same actions, different order",
+  "tags": [],
+  "desc": "order: his Place:Honedge → Play:Lucky Ice Pop → Play:Lucky Ice Pop → Play:Metal Core Barrier → Tool:Metal Core Barrier@0 → Attach:1Metal@0 zone → Attack:Steel Wing | km3 Play:Lucky Ice Pop → Place:Honedge → Play:Lucky Ice Pop → Attach:1Metal@0 zone → Play:Metal Core Barrier → Tool:Metal Core Barrier@0 → Attack:Steel Wing",
+  "first_div": [
+   "Place",
+   "Play",
+   "Place:Honedge",
+   "Play:Lucky Ice Pop",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Aegislash stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Skarmory ex. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_034953000-t02",
+  "game": "kw-261005_034953000",
+  "his_turn": 1,
+  "turn_count": 2,
+  "hand": [
+   "Aegislash",
+   "Honedge",
+   "Aegislash",
+   "Melmetal ex",
+   "Meltan"
+  ],
+  "his": [
+   "Place:Meltan",
+   "Place:Honedge",
+   "Attach:1Metal@0 zone",
+   "Attack:Tackle"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Honedge": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Place:Honedge",
+   "Place:Meltan",
+   "Attach:1Metal@0 zone",
+   "Attack:Tackle"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Honedge",
+     "Place:Meltan",
+     "Attach:1Metal@0 zone",
+     "Attack:Tackle"
+    ],
+    12
+   ]
+  ],
+  "cat": "same actions, different order",
+  "tags": [],
+  "desc": "order: his Place:Meltan → Place:Honedge → Attach:1Metal@0 zone → Attack:Tackle | km3 Place:Honedge → Place:Meltan → Attach:1Metal@0 zone → Attack:Tackle",
+  "first_div": [
+   "Place",
+   "Place",
+   "Place:Meltan",
+   "Place:Honedge",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_034953000-t04",
+  "game": "kw-261005_034953000",
+  "his_turn": 2,
+  "turn_count": 4,
+  "hand": [
+   "Aegislash",
+   "Aegislash",
+   "Melmetal ex",
+   "Steel Apron"
+  ],
+  "his": [
+   "Evolve:Melmetal ex@2",
+   "Play:Steel Apron",
+   "Tool:Steel Apron@2",
+   "Attach:1Metal@2 zone",
+   "Attack:Tackle"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Steel Apron": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Steel Apron",
+   "Tool:Steel Apron@0",
+   "Evolve:Melmetal ex@2",
+   "Attach:1Metal@2 zone",
+   "Attack:Tackle"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Steel Apron",
+     "Tool:Steel Apron@0",
+     "Evolve:Melmetal ex@2",
+     "Attach:1Metal@2 zone",
+     "Attack:Tackle"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Tool placement"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Steel Apron, Tool:Steel Apron@0]; his [Play:Steel Apron, Tool:Steel Apron@2] ↔ km3 [-]",
+  "first_div": [
+   "Evolve",
+   "Play",
+   "Evolve:Melmetal ex@2",
+   "Play:Steel Apron",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Fraxure stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_034953000-t06",
+  "game": "kw-261005_034953000",
+  "his_turn": 3,
+  "turn_count": 6,
+  "hand": [
+   "Aegislash",
+   "Aegislash",
+   "Magneton"
+  ],
+  "his": [
+   "Evolve:Magneton@0",
+   "Attach:1Metal@2 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Retreat:2": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Retreat:2",
+   "Evolve:Magneton@2",
+   "Attach:1Metal@0 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Retreat:2",
+     "Evolve:Magneton@2",
+     "Attach:1Metal@0 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "evolution timing/target",
+  "tags": [
+   "evolution timing/target",
+   "retreat/promotion",
+   "Energy attachment target"
+  ],
+  "desc": "his [Evolve:Magneton@0, Attach:1Metal@2 zone] ↔ km3 [Retreat:2, Evolve:Magneton@2, Attach:1Metal@0 zone]",
+  "first_div": [
+   "Evolve",
+   "Retreat",
+   "Evolve:Magneton@0",
+   "Retreat:2",
+   0
+  ],
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Fraxure stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_034953000-t08",
+  "game": "kw-261005_034953000",
+  "his_turn": 4,
+  "turn_count": 8,
+  "hand": [
+   "Aegislash",
+   "Aegislash",
+   "Steel Apron"
+  ],
+  "his": [
+   "Attach:1Metal@0 zone",
+   "Attack:Rolling Attack"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Steel Apron": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Steel Apron",
+   "Tool:Steel Apron@0",
+   "Attach:1Metal@2 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Steel Apron",
+     "Tool:Steel Apron@0",
+     "Attach:1Metal@2 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Tool placement",
+   "attack vs another action",
+   "Energy attachment target"
+  ],
+  "desc": "his [Attach:1Metal@0 zone, Attack:Rolling Attack] ↔ km3 [Play:Steel Apron, Tool:Steel Apron@0, Attach:1Metal@2 zone]",
+  "first_div": [
+   "Attach",
+   "Play",
+   "Attach:1Metal@0 zone",
+   "Play:Steel Apron",
+   0
+  ],
+  "attack_cmp": "he attacks, km3 does not",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Haxorus stack taken from the printed evolution line (the ledger gives none); Magneton stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_034953000-t10",
+  "game": "kw-261005_034953000",
+  "his_turn": 5,
+  "turn_count": 10,
+  "hand": [
+   "Aegislash",
+   "Aegislash",
+   "Steel Apron",
+   "Doublade"
+  ],
+  "his": [
+   "Evolve:Doublade@1",
+   "Attach:1Metal@2 zone",
+   "Attack:Rolling Attack"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Retreat:2": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Retreat:2",
+   "Evolve:Doublade@1",
+   "Attach:1Metal@0 zone",
+   "Attack:Headbutt"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Retreat:2",
+     "Evolve:Doublade@1",
+     "Attach:1Metal@0 zone",
+     "Attack:Headbutt"
+    ],
+    12
+   ]
+  ],
+  "cat": "retreat/promotion",
+  "tags": [
+   "retreat/promotion",
+   "attack choice",
+   "Energy attachment target"
+  ],
+  "desc": "his [-] ↔ km3 [Retreat:2]; his [Attach:1Metal@2 zone, Attack:Rolling Attack] ↔ km3 [Attach:1Metal@0 zone, Attack:Headbutt]",
+  "first_div": [
+   "Evolve",
+   "Retreat",
+   "Evolve:Doublade@1",
+   "Retreat:2",
+   0
+  ],
+  "attack_cmp": "different attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Haxorus stack taken from the printed evolution line (the ledger gives none); Magneton stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_034953000-t12",
+  "game": "kw-261005_034953000",
+  "his_turn": 6,
+  "turn_count": 12,
+  "hand": [
+   "Aegislash",
+   "Aegislash",
+   "Steel Apron",
+   "Doublade"
+  ],
+  "his": [
+   "Evolve:Aegislash@1",
+   "Attach:1Metal@0 zone",
+   "Attack:Metal Arms"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Aegislash@1": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Aegislash@1",
+   "Attach:1Metal@1 zone",
+   "Attack:Headbutt"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Aegislash@1",
+     "Attach:1Metal@1 zone",
+     "Attack:Headbutt"
+    ],
+    12
+   ]
+  ],
+  "cat": "attack choice",
+  "tags": [
+   "attack choice",
+   "Energy attachment target"
+  ],
+  "desc": "his [Attach:1Metal@0 zone, Attack:Metal Arms] ↔ km3 [Attach:1Metal@1 zone, Attack:Headbutt]",
+  "first_div": [
+   "Attach",
+   "Attach",
+   "Attach:1Metal@0 zone",
+   "Attach:1Metal@1 zone",
+   1
+  ],
+  "attack_cmp": "different attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Doublade stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Magneton. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_034953000-t14",
+  "game": "kw-261005_034953000",
+  "his_turn": 7,
+  "turn_count": 14,
+  "hand": [
+   "Aegislash",
+   "Steel Apron",
+   "Doublade",
+   "Honedge"
+  ],
+  "his": [
+   "Place:Honedge",
+   "Play:Steel Apron",
+   "Tool:Steel Apron@2",
+   "Attach:1Metal@2 zone",
+   "Attack:Metal Arms"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Honedge": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Place:Honedge",
+   "Attach:1Metal@1 zone",
+   "Attack:Metal Arms"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Honedge",
+     "Attach:1Metal@1 zone",
+     "Attack:Metal Arms"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Tool placement",
+   "Energy attachment target"
+  ],
+  "desc": "his [Play:Steel Apron, Tool:Steel Apron@2, Attach:1Metal@2 zone] ↔ km3 [Attach:1Metal@1 zone]",
+  "first_div": [
+   "Play",
+   "Attach",
+   "Play:Steel Apron",
+   "Attach:1Metal@1 zone",
+   1
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Aegislash stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_034953000-t16",
+  "game": "kw-261005_034953000",
+  "his_turn": 8,
+  "turn_count": 16,
+  "hand": [
+   "Aegislash",
+   "Doublade",
+   "Melmetal ex"
+  ],
+  "his": [],
+  "comparable": false,
+  "n": 12,
+  "first": {
+   "Attack:Metal Arms": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Attack:Metal Arms"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Attack:Metal Arms"
+    ],
+    12
+   ]
+  ],
+  "cat": "no plan recorded (the game ended first)",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Aegislash stack taken from the printed evolution line (the ledger gives none); Haxorus stack taken from the printed evolution line (the ledger gives none); Melmetal ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_123812000-t01",
+  "game": "kw-261005_123812000",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand": [
+   "Nidoking",
+   "Poison Barb",
+   "Deceptive Needle"
+  ],
+  "his": [
+   "Play:Deceptive Needle",
+   "Tool:Deceptive Needle@0"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Deceptive Needle": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Deceptive Needle",
+   "Tool:Deceptive Needle@0"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Deceptive Needle",
+     "Tool:Deceptive Needle@0"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_123812000-t03",
+  "game": "kw-261005_123812000",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand": [
+   "Nidoking",
+   "Poison Barb",
+   "Darkrai ex"
+  ],
+  "his": [
+   "Attach:1Darkness@0 zone",
+   "Play:Poison Barb",
+   "Tool:Poison Barb@1",
+   "Attack:Peck"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Darkrai ex": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Place:Darkrai ex",
+   "Attach:1Darkness@0 zone",
+   "Attack:Peck"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Darkrai ex",
+     "Attach:1Darkness@0 zone",
+     "Attack:Peck"
+    ],
+    12
+   ]
+  ],
+  "cat": "bench development",
+  "tags": [
+   "bench development",
+   "Supporter/Item choice or order",
+   "Tool placement"
+  ],
+  "desc": "his [-] ↔ km3 [Place:Darkrai ex]; his [Play:Poison Barb, Tool:Poison Barb@1] ↔ km3 [-]",
+  "first_div": [
+   "Attach",
+   "Place",
+   "Attach:1Darkness@0 zone",
+   "Place:Darkrai ex",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_123812000-t05",
+  "game": "kw-261005_123812000",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand": [
+   "Nidoking",
+   "Darkrai ex",
+   "Poké Ball"
+  ],
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Darkrai ex": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Place:Darkrai ex",
+   "Play:Poké Ball"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Darkrai ex",
+     "Play:Poké Ball"
+    ],
+    12
+   ]
+  ],
+  "cat": "bench development",
+  "tags": [
+   "bench development"
+  ],
+  "desc": "his [-] ↔ km3 [Place:Darkrai ex]",
+  "first_div": [
+   "Play",
+   "Place",
+   "Play:Poké Ball",
+   "Place:Darkrai ex",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "the opponent's Mega Gardevoir ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_123812000-t07",
+  "game": "kw-261005_123812000",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand": [
+   "Nidoking",
+   "Darkrai ex",
+   "Professor's Research"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Darkrai ex": 8,
+   "Play:Professor's Research": 4
+  },
+  "same_first": 4,
+  "same_plan": 4,
+  "modal": [
+   "Place:Darkrai ex",
+   "Play:Professor's Research"
+  ],
+  "modal_n": 8,
+  "plans": [
+   [
+    [
+     "Place:Darkrai ex",
+     "Play:Professor's Research"
+    ],
+    8
+   ],
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    4
+   ]
+  ],
+  "cat": "bench development",
+  "tags": [
+   "bench development"
+  ],
+  "desc": "his [-] ↔ km3 [Place:Darkrai ex]",
+  "first_div": [
+   "Play",
+   "Place",
+   "Play:Professor's Research",
+   "Place:Darkrai ex",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "knocked out between turns: Nidoran♂; the opponent's Mega Gardevoir ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_123812000-t09",
+  "game": "kw-261005_123812000",
+  "his_turn": 5,
+  "turn_count": 9,
+  "hand": [
+   "Nidoking",
+   "Darkrai ex",
+   "Heavy Helmet",
+   "Poké Ball"
+  ],
+  "his": [],
+  "comparable": false,
+  "n": 12,
+  "first": {
+   "Place:Darkrai ex": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Place:Darkrai ex",
+   "Attach:1Darkness@3 zone",
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@0",
+   "Attack:Peck"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Darkrai ex",
+     "Attach:1Darkness@3 zone",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Attack:Peck"
+    ],
+    12
+   ]
+  ],
+  "cat": "no plan recorded (the game ended first)",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "a Poké Ball that found nothing is left out of his plan (the engine does not offer it); knocked out between turns: Nihilego; the opponent's Mega Gardevoir ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_124532000-t01",
+  "game": "kw-261005_124532000",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand": [
+   "Poison Barb",
+   "Lucky Ice Pop",
+   "Nidoking",
+   "Cyrus"
+  ],
+  "his": [
+   "Play:Poison Barb",
+   "Tool:Poison Barb@0"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Poison Barb": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Poison Barb",
+   "Tool:Poison Barb@0"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Poison Barb",
+     "Tool:Poison Barb@0"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_124532000-t03",
+  "game": "kw-261005_124532000",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand": [
+   "Lucky Ice Pop",
+   "Nidoking",
+   "Cyrus",
+   "Professor's Research"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_124532000-t05",
+  "game": "kw-261005_124532000",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand": [
+   "Lucky Ice Pop",
+   "Nidoking",
+   "Cyrus",
+   "Wally",
+   "Professor's Research"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Charmeleon stack taken from the printed evolution line (the ledger gives none); Entei ex is Poisoned (not represented: the harness has no condition field); knocked out between turns: Nidoran♂. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_124532000-t07",
+  "game": "kw-261005_124532000",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand": [
+   "Lucky Ice Pop",
+   "Nidoking",
+   "Cyrus",
+   "Wally",
+   "Nidoking",
+   "Nihilego"
+  ],
+  "his": [
+   "Place:Nihilego",
+   "Attach:1Darkness@0 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Nihilego": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Place:Nihilego",
+   "Attach:1Darkness@0 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Nihilego",
+     "Attach:1Darkness@0 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Charmeleon stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Nidoran♂. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_183108000-t01",
+  "game": "kw-261005_183108000",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand": [
+   "Copycat",
+   "Wally",
+   "Whirlipede",
+   "Scolipede",
+   "Scolipede"
+  ],
+  "his": [
+   "EndTurn"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Copycat": 11,
+   "EndTurn": 1
+  },
+  "same_first": 1,
+  "same_plan": 1,
+  "modal": [
+   "Play:Copycat"
+  ],
+  "modal_n": 11,
+  "plans": [
+   [
+    [
+     "Play:Copycat"
+    ],
+    11
+   ],
+   [
+    [
+     "EndTurn"
+    ],
+    1
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order"
+  ],
+  "desc": "his [EndTurn] ↔ km3 [Play:Copycat]",
+  "first_div": [
+   "EndTurn",
+   "Play",
+   "EndTurn",
+   "Play:Copycat",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_183108000-t03",
+  "game": "kw-261005_183108000",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand": [
+   "Copycat",
+   "Wally",
+   "Whirlipede",
+   "Scolipede",
+   "Scolipede",
+   "Mega Sableye ex"
+  ],
+  "his": [
+   "Place:Mega Sableye ex",
+   "Evolve:Whirlipede@0",
+   "Attach:1Darkness@0 zone",
+   "Attack:Poison Sting"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Mega Sableye ex": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Place:Mega Sableye ex",
+   "Evolve:Whirlipede@0",
+   "Play:Copycat"
+  ],
+  "modal_n": 6,
+  "plans": [
+   [
+    [
+     "Place:Mega Sableye ex",
+     "Evolve:Whirlipede@0",
+     "Play:Copycat"
+    ],
+    6
+   ],
+   [
+    [
+     "Place:Mega Sableye ex",
+     "Play:Copycat"
+    ],
+    4
+   ],
+   [
+    [
+     "Place:Mega Sableye ex",
+     "Evolve:Whirlipede@0",
+     "Attach:1Darkness@3 zone",
+     "Play:Copycat"
+    ],
+    2
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "attack vs another action",
+   "Energy attachment timing"
+  ],
+  "desc": "his [Attach:1Darkness@0 zone, Attack:Poison Sting] ↔ km3 [Play:Copycat]",
+  "first_div": [
+   "Attach",
+   "Play",
+   "Attach:1Darkness@0 zone",
+   "Play:Copycat",
+   2
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_183108000-t05",
+  "game": "kw-261005_183108000",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand": [
+   "Copycat",
+   "Wally",
+   "Scolipede",
+   "Scolipede",
+   "Deceptive Needle"
+  ],
+  "his": [
+   "Evolve:Scolipede@0",
+   "Play:Wally",
+   "Attach:1Colorless@0 fx",
+   "Play:Deceptive Needle",
+   "Tool:Deceptive Needle@1",
+   "Attach:1Darkness@1 zone",
+   "Attack:Venoshock"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Scolipede@0": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Scolipede@0",
+   "Play:Copycat"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Scolipede@0",
+     "Play:Copycat"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Tool placement",
+   "attack vs another action",
+   "Energy attachment timing"
+  ],
+  "desc": "his [Play:Wally, Attach:1Colorless@0 fx, Play:Deceptive Needle, Tool:Deceptive Needle@1, Attach:1Darkness@1 zone, Attack:Venoshock] ↔ km3 [Play:Copycat]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Wally",
+   "Play:Copycat",
+   1
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Whirlipede stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_183108000-t07",
+  "game": "kw-261005_183108000",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand": [
+   "Copycat",
+   "Scolipede",
+   "Cyrus"
+  ],
+  "his": [
+   "Attach:1Darkness@0 zone",
+   "Play:Copycat"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Attach:1Darkness@0 zone": 12
+  },
+  "same_first": 12,
+  "same_plan": 8,
+  "modal": [
+   "Attach:1Darkness@0 zone",
+   "Play:Copycat"
+  ],
+  "modal_n": 8,
+  "plans": [
+   [
+    [
+     "Attach:1Darkness@0 zone",
+     "Play:Copycat"
+    ],
+    8
+   ],
+   [
+    [
+     "Attach:1Darkness@0 zone",
+     "Attack:Cursed Jewel"
+    ],
+    4
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown; part of his discard is hidden in the ledger",
+  "notes": "Gourgeist stack taken from the printed evolution line (the ledger gives none); Houndstone stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Scolipede; the opponent's discard also holds 1 card(s) whose identity the ledger says is not readable: not in the list, so the count is a lower bound. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261005_183108000-t09",
+  "game": "kw-261005_183108000",
+  "his_turn": 5,
+  "turn_count": 9,
+  "hand": [
+   "Cyrus",
+   "Lucky Ice Pop",
+   "Mega Sableye ex"
+  ],
+  "his": [
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Place:Mega Sableye ex",
+   "Attach:1Darkness@1 zone",
+   "Attack:Cursed Jewel"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Mega Sableye ex": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Place:Mega Sableye ex",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Attach:1Darkness@3 zone",
+   "Attack:Cursed Jewel"
+  ],
+  "modal_n": 4,
+  "plans": [
+   [
+    [
+     "Place:Mega Sableye ex",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Attach:1Darkness@3 zone",
+     "Attack:Cursed Jewel"
+    ],
+    4
+   ],
+   [
+    [
+     "Place:Mega Sableye ex",
+     "Play:Lucky Ice Pop",
+     "Attach:1Darkness@3 zone",
+     "Attack:Cursed Jewel"
+    ],
+    3
+   ],
+   [
+    [
+     "Place:Mega Sableye ex",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Attach:1Darkness@3 zone",
+     "Attack:Cursed Jewel"
+    ],
+    2
+   ],
+   [
+    [
+     "Place:Mega Sableye ex",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Attach:1Darkness@3 zone",
+     "Attack:Cursed Jewel"
+    ],
+    2
+   ],
+   [
+    [
+     "Place:Mega Sableye ex",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Attach:1Darkness@3 zone",
+     "Attack:Cursed Jewel"
+    ],
+    1
+   ]
+  ],
+  "cat": "bench development",
+  "tags": [
+   "bench development",
+   "Energy attachment target"
+  ],
+  "desc": "his [-] ↔ km3 [Place:Mega Sableye ex]; his [Place:Mega Sableye ex, Attach:1Darkness@1 zone] ↔ km3 [Attach:1Darkness@3 zone]",
+  "first_div": [
+   "Play",
+   "Place",
+   "Play:Lucky Ice Pop",
+   "Place:Mega Sableye ex",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown; part of his discard is hidden in the ledger",
+  "notes": "Houndstone stack taken from the printed evolution line (the ledger gives none); the opponent's discard also holds 1 card(s) whose identity the ledger says is not readable: not in the list, so the count is a lower bound. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261006_012927000-t02",
+  "game": "kw-261006_012927000",
+  "his_turn": 1,
+  "turn_count": 2,
+  "hand": [
+   "Poké Ball",
+   "Cyrus",
+   "Poké Ball",
+   "Persian",
+   "Silvally"
+  ],
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Poké Ball": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Poké Ball"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Poké Ball"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261006_012927000-t04",
+  "game": "kw-261006_012927000",
+  "his_turn": 2,
+  "turn_count": 4,
+  "hand": [
+   "Cyrus",
+   "Persian",
+   "Silvally",
+   "Lucky Ice Pop",
+   "Copycat"
+  ],
+  "his": [
+   "Evolve:Silvally@2",
+   "Evolve:Persian@1",
+   "Play:Copycat"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Persian@0": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Persian@0",
+   "Evolve:Silvally@2",
+   "Attach:1Darkness@0 zone",
+   "Play:Copycat"
+  ],
+  "modal_n": 10,
+  "plans": [
+   [
+    [
+     "Evolve:Persian@0",
+     "Evolve:Silvally@2",
+     "Attach:1Darkness@0 zone",
+     "Play:Copycat"
+    ],
+    10
+   ],
+   [
+    [
+     "Evolve:Persian@0",
+     "Evolve:Silvally@2",
+     "Attach:1Darkness@0 zone",
+     "Attack:Shadow Claw"
+    ],
+    2
+   ]
+  ],
+  "cat": "evolution timing/target",
+  "tags": [
+   "evolution timing/target",
+   "Energy attachment timing"
+  ],
+  "desc": "his [-] ↔ km3 [Evolve:Persian@0]; his [Evolve:Persian@1] ↔ km3 [Attach:1Darkness@0 zone]",
+  "first_div": [
+   "Evolve",
+   "Evolve",
+   "Evolve:Silvally@2",
+   "Evolve:Persian@0",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "the opponent's Garchomp: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261006_012927000-t06",
+  "game": "kw-261006_012927000",
+  "his_turn": 3,
+  "turn_count": 6,
+  "hand": [
+   "Persian",
+   "Field Blower",
+   "Lucky Ice Pop"
+  ],
+  "his": [
+   "Play:Field Blower",
+   "Attach:1Grass@1 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Field Blower": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Play:Field Blower",
+   "DiscardToolFromPokemon",
+   "Attach:1Grass@0 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Field Blower",
+     "DiscardToolFromPokemon",
+     "Attach:1Grass@0 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "Energy attachment target",
+  "tags": [
+   "Energy attachment target"
+  ],
+  "desc": "his [Attach:1Grass@1 zone] ↔ km3 [DiscardToolFromPokemon, Attach:1Grass@0 zone]",
+  "first_div": [
+   "Attach",
+   "other",
+   "Attach:1Grass@1 zone",
+   "DiscardToolFromPokemon",
+   1
+  ],
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Persian stack taken from the printed evolution line (the ledger gives none); Silvally stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Meowth; the opponent's Garchomp: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261006_012927000-t08",
+  "game": "kw-261006_012927000",
+  "his_turn": 4,
+  "turn_count": 8,
+  "hand": [
+   "Persian",
+   "Lucky Ice Pop",
+   "Snorlax ex"
+  ],
+  "his": [
+   "Place:Snorlax ex",
+   "Attach:1Metal@0 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Snorlax ex": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Place:Snorlax ex",
+   "Attach:1Metal@0 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Snorlax ex",
+     "Attach:1Metal@0 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Silvally stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Persian; the opponent's Garchomp: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261006_012927000-t10",
+  "game": "kw-261006_012927000",
+  "his_turn": 5,
+  "turn_count": 10,
+  "hand": [
+   "Persian",
+   "Lucky Ice Pop",
+   "Type: Null"
+  ],
+  "his": [
+   "UseStadium",
+   "Play:Lucky Ice Pop",
+   "Retreat:1",
+   "Attach:1Metal@0 zone",
+   "Place:Type: Null"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Type: Null": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Place:Type: Null",
+   "Play:Lucky Ice Pop",
+   "Attach:1Metal@0 zone",
+   "Attack:Prism Impact"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Type: Null",
+     "Play:Lucky Ice Pop",
+     "Attach:1Metal@0 zone",
+     "Attack:Prism Impact"
+    ],
+    12
+   ]
+  ],
+  "cat": "bench development",
+  "tags": [
+   "bench development",
+   "retreat/promotion",
+   "attack vs another action"
+  ],
+  "desc": "his [UseStadium] ↔ km3 [Place:Type: Null]; his [Retreat:1] ↔ km3 [-]; his [Place:Type: Null] ↔ km3 [Attack:Prism Impact]",
+  "first_div": [
+   "UseStadium",
+   "Place",
+   "UseStadium",
+   "Place:Type: Null",
+   0
+  ],
+  "attack_cmp": "km3 attacks, he does not",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Silvally stack taken from the printed evolution line (the ledger gives none); the opponent's Garchomp: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261006_020518000-t01",
+  "game": "kw-261006_020518000",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand": [
+   "Wally",
+   "Cyrus",
+   "Lucky Ice Pop",
+   "Sandslash"
+  ],
+  "his": [
+   "EndTurn"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "EndTurn": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "EndTurn"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "EndTurn"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261006_020518000-t03",
+  "game": "kw-261006_020518000",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand": [
+   "Wally",
+   "Cyrus",
+   "Lucky Ice Pop",
+   "Sandslash",
+   "Rare Candy"
+  ],
+  "his": [
+   "Play:Lucky Ice Pop",
+   "Evolve:Sandslash@0",
+   "Attach:1Fighting@0 zone",
+   "Attack:Fury Swipes"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Sandslash@0": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Sandslash@0",
+   "Play:Lucky Ice Pop",
+   "Attach:1Fighting@0 zone",
+   "Attack:Fury Swipes"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Sandslash@0",
+     "Play:Lucky Ice Pop",
+     "Attach:1Fighting@0 zone",
+     "Attack:Fury Swipes"
+    ],
+    12
+   ]
+  ],
+  "cat": "same actions, different order",
+  "tags": [],
+  "desc": "order: his Play:Lucky Ice Pop → Evolve:Sandslash@0 → Attach:1Fighting@0 zone → Attack:Fury Swipes | km3 Evolve:Sandslash@0 → Play:Lucky Ice Pop → Attach:1Fighting@0 zone → Attack:Fury Swipes",
+  "first_div": [
+   "Play",
+   "Evolve",
+   "Play:Lucky Ice Pop",
+   "Evolve:Sandslash@0",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261006_020518000-t05",
+  "game": "kw-261006_020518000",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand": [
+   "Wally",
+   "Cyrus",
+   "Rare Candy",
+   "Lucky Ice Pop"
+  ],
+  "his": [
+   "Attach:1Fighting@1 zone",
+   "Attack:Fury Swipes"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Attach:1Fighting@1 zone": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Attach:1Fighting@1 zone",
+   "Attack:Fury Swipes"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Attach:1Fighting@1 zone",
+     "Attack:Fury Swipes"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261006_020518000-t07",
+  "game": "kw-261006_020518000",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand": [
+   "Wally",
+   "Cyrus",
+   "Rare Candy",
+   "Lucky Ice Pop",
+   "Rare Candy"
+  ],
+  "his": [
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Attach:1Fighting@0 zone",
+   "Attack:Fury Swipes"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Lucky Ice Pop": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Attack:Fury Swipes"
+  ],
+  "modal_n": 9,
+  "plans": [
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Attack:Fury Swipes"
+    ],
+    9
+   ],
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Attack:Fury Swipes"
+    ],
+    3
+   ]
+  ],
+  "cat": "Energy attachment timing",
+  "tags": [
+   "Energy attachment timing"
+  ],
+  "desc": "his [Attach:1Fighting@0 zone] ↔ km3 [-]",
+  "first_div": [
+   "Attach",
+   "Attack",
+   "Attach:1Fighting@0 zone",
+   "Attack:Fury Swipes",
+   2
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261006_020518000-t09",
+  "game": "kw-261006_020518000",
+  "his_turn": 5,
+  "turn_count": 9,
+  "hand": [
+   "Wally",
+   "Cyrus",
+   "Rare Candy",
+   "Rare Candy",
+   "Lucky Ice Pop",
+   "Poké Ball"
+  ],
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Poké Ball": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Poké Ball"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Poké Ball"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261006_020518000-t11",
+  "game": "kw-261006_020518000",
+  "his_turn": 6,
+  "turn_count": 11,
+  "hand": [
+   "Wally",
+   "Cyrus",
+   "Rare Candy",
+   "Rare Candy",
+   "Conkeldurr"
+  ],
+  "his": [
+   "Play:Rare Candy",
+   "Evolve:Conkeldurr@2",
+   "Play:Wally",
+   "Attach:1Colorless@2 fx",
+   "Attach:1Fighting@2 zone",
+   "Retreat:2",
+   "Attack:Bedrock Breaker"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Rare Candy": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Play:Rare Candy",
+   "Evolve:Conkeldurr@2",
+   "Attach:1Fighting@2 zone",
+   "Play:Wally",
+   "Attach:1Colorless@2 fx",
+   "Retreat:2",
+   "Attack:Bedrock Breaker"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Rare Candy",
+     "Evolve:Conkeldurr@2",
+     "Attach:1Fighting@2 zone",
+     "Play:Wally",
+     "Attach:1Colorless@2 fx",
+     "Retreat:2",
+     "Attack:Bedrock Breaker"
+    ],
+    12
+   ]
+  ],
+  "cat": "same actions, different order",
+  "tags": [],
+  "desc": "order: his Play:Rare Candy → Evolve:Conkeldurr@2 → Play:Wally → Attach:1Colorless@2 fx → Attach:1Fighting@2 zone → Retreat:2 → Attack:Bedrock Breaker | km3 Play:Rare Candy → Evolve:Conkeldurr@2 → Attach:1Fighting@2 zone → Play:Wally → Attach:1Colorless@2 fx → Retreat:2 → Attack:Bedrock Breaker",
+  "first_div": [
+   "Play",
+   "Attach",
+   "Play:Wally",
+   "Attach:1Fighting@2 zone",
+   2
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261006_020518000-t13",
+  "game": "kw-261006_020518000",
+  "his_turn": 7,
+  "turn_count": 13,
+  "hand": [
+   "Cyrus",
+   "Rare Candy",
+   "Conkeldurr"
+  ],
+  "his": [
+   "Attach:1Fighting@0 zone",
+   "Attack:Bedrock Breaker"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Attack:Bedrock Breaker": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Attack:Bedrock Breaker"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Attack:Bedrock Breaker"
+    ],
+    12
+   ]
+  ],
+  "cat": "Energy attachment timing",
+  "tags": [
+   "Energy attachment timing"
+  ],
+  "desc": "his [Attach:1Fighting@0 zone] ↔ km3 [-]",
+  "first_div": [
+   "Attach",
+   "Attack",
+   "Attach:1Fighting@0 zone",
+   "Attack:Bedrock Breaker",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261006_020518000-t15",
+  "game": "kw-261006_020518000",
+  "his_turn": 8,
+  "turn_count": 15,
+  "hand": [
+   "Cyrus",
+   "Rare Candy",
+   "Conkeldurr",
+   "Professor's Research"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Sandslash stack taken from the printed evolution line (the ledger gives none); Team Rocket's Tinkatuff stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Conkeldurr. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261006_020518000-t17",
+  "game": "kw-261006_020518000",
+  "his_turn": 9,
+  "turn_count": 17,
+  "hand": [
+   "Cyrus",
+   "Rare Candy",
+   "Conkeldurr",
+   "Sandslash"
+  ],
+  "his": [
+   "Attach:1Fighting@0 zone",
+   "Attack:Quick Straight"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Attach:1Fighting@0 zone": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Attach:1Fighting@0 zone",
+   "Attack:Quick Straight"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Attach:1Fighting@0 zone",
+     "Attack:Quick Straight"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Copperajah stack taken from the printed evolution line (the ledger gives none); Team Rocket's Tinkaton stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Sandslash. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_012303000-t01",
+  "game": "kw-261010_012303000",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand": [
+   "Conkeldurr",
+   "Naclstack",
+   "Copycat",
+   "Arena of Antiquity"
+  ],
+  "his": [
+   "Play:Arena of Antiquity",
+   "Play:Copycat"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Arena of Antiquity": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Arena of Antiquity",
+   "Play:Copycat"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Arena of Antiquity",
+     "Play:Copycat"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_012303000-t03",
+  "game": "kw-261010_012303000",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand": [
+   "Conkeldurr",
+   "Rare Candy",
+   "Conkeldurr",
+   "Timburr"
+  ],
+  "his": [
+   "Place:Timburr",
+   "Play:Rare Candy",
+   "Evolve:Conkeldurr@2",
+   "Attach:1Fighting@2 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Timburr": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Place:Timburr",
+   "Play:Rare Candy",
+   "Evolve:Conkeldurr@2",
+   "Attach:1Fighting@0 zone",
+   "Attack:Headbutt"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Timburr",
+     "Play:Rare Candy",
+     "Evolve:Conkeldurr@2",
+     "Attach:1Fighting@0 zone",
+     "Attack:Headbutt"
+    ],
+    12
+   ]
+  ],
+  "cat": "attack vs another action",
+  "tags": [
+   "attack vs another action",
+   "Energy attachment target"
+  ],
+  "desc": "his [Attach:1Fighting@2 zone] ↔ km3 [Attach:1Fighting@0 zone, Attack:Headbutt]",
+  "first_div": [
+   "Attach",
+   "Attach",
+   "Attach:1Fighting@2 zone",
+   "Attach:1Fighting@0 zone",
+   3
+  ],
+  "attack_cmp": "km3 attacks, he does not",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_012303000-t05",
+  "game": "kw-261010_012303000",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand": [
+   "Conkeldurr",
+   "Professor's Research"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; a Poké Ball that found nothing is left out of his plan (the engine does not offer it); knocked out between turns: Nacli. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_012303000-t07",
+  "game": "kw-261010_012303000",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand": [
+   "Conkeldurr",
+   "Wally"
+  ],
+  "his": [
+   "Play:Wally",
+   "Attach:1Colorless@0 fx",
+   "Attach:1Fighting@2 zone",
+   "Attack:Mega Punch"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Attach:1Fighting@0 zone": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Attach:1Fighting@0 zone",
+   "Attack:Mega Punch"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Attach:1Fighting@0 zone",
+     "Attack:Mega Punch"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Energy attachment target"
+  ],
+  "desc": "his [Play:Wally, Attach:1Colorless@0 fx, Attach:1Fighting@2 zone] ↔ km3 [Attach:1Fighting@0 zone]",
+  "first_div": [
+   "Play",
+   "Attach",
+   "Play:Wally",
+   "Attach:1Fighting@0 zone",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Naclstack stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_012303000-t09",
+  "game": "kw-261010_012303000",
+  "his_turn": 5,
+  "turn_count": 9,
+  "hand": [
+   "Conkeldurr",
+   "Gurdurr"
+  ],
+  "his": [
+   "Evolve:Gurdurr@0",
+   "Attach:1Fighting@0 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Gurdurr@0": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Gurdurr@0",
+   "Attach:1Fighting@0 zone",
+   "Attack:Strength"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Gurdurr@0",
+     "Attach:1Fighting@0 zone",
+     "Attack:Strength"
+    ],
+    12
+   ]
+  ],
+  "cat": "attack vs another action",
+  "tags": [
+   "attack vs another action"
+  ],
+  "desc": "his [-] ↔ km3 [Attack:Strength]",
+  "first_div": [
+   "end",
+   "Attack",
+   null,
+   "Attack:Strength",
+   2
+  ],
+  "attack_cmp": "km3 attacks, he does not",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Naclstack stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Conkeldurr. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_012303000-t11",
+  "game": "kw-261010_012303000",
+  "his_turn": 6,
+  "turn_count": 11,
+  "hand": [
+   "Conkeldurr",
+   "Garganacl"
+  ],
+  "his": [
+   "Evolve:Garganacl@1",
+   "Evolve:Conkeldurr@0",
+   "Attach:1Fighting@0 zone",
+   "Attack:Bedrock Breaker"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Conkeldurr@0": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Conkeldurr@0",
+   "Attach:1Fighting@0 zone",
+   "Attack:Bedrock Breaker"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Conkeldurr@0",
+     "Attach:1Fighting@0 zone",
+     "Attack:Bedrock Breaker"
+    ],
+    12
+   ]
+  ],
+  "cat": "evolution timing/target",
+  "tags": [
+   "evolution timing/target"
+  ],
+  "desc": "his [Evolve:Garganacl@1] ↔ km3 [-]",
+  "first_div": [
+   "Evolve",
+   "Evolve",
+   "Evolve:Garganacl@1",
+   "Evolve:Conkeldurr@0",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Gurdurr stack taken from the printed evolution line (the ledger gives none); Naclstack stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_013009000-t01",
+  "game": "kw-261010_013009000",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand": [
+   "Gurdurr",
+   "Copycat",
+   "Rare Candy",
+   "Conkeldurr",
+   "Professor's Research"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_013009000-t03",
+  "game": "kw-261010_013009000",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand": [
+   "Gurdurr",
+   "Copycat",
+   "Rare Candy",
+   "Conkeldurr",
+   "Garganacl",
+   "Naclstack"
+  ],
+  "his": [
+   "Evolve:Gurdurr@0",
+   "Attach:1Fighting@0 zone",
+   "Play:Rare Candy",
+   "Evolve:Conkeldurr@1",
+   "Play:Copycat"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Rare Candy": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Rare Candy",
+   "Evolve:Conkeldurr@0",
+   "Evolve:Gurdurr@1",
+   "Attach:1Fighting@0 zone"
+  ],
+  "modal_n": 7,
+  "plans": [
+   [
+    [
+     "Play:Rare Candy",
+     "Evolve:Conkeldurr@0",
+     "Evolve:Gurdurr@1",
+     "Attach:1Fighting@0 zone"
+    ],
+    7
+   ],
+   [
+    [
+     "Play:Rare Candy",
+     "Evolve:Conkeldurr@0",
+     "Evolve:Gurdurr@1",
+     "Attach:1Fighting@0 zone",
+     "Play:Copycat"
+    ],
+    5
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "evolution timing/target"
+  ],
+  "desc": "his [Evolve:Gurdurr@0] ↔ km3 [Play:Rare Candy, Evolve:Conkeldurr@0, Evolve:Gurdurr@1]; his [Play:Rare Candy, Evolve:Conkeldurr@1, Play:Copycat] ↔ km3 [-]",
+  "first_div": [
+   "Evolve",
+   "Play",
+   "Evolve:Gurdurr@0",
+   "Play:Rare Candy",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_013009000-t05",
+  "game": "kw-261010_013009000",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand": [
+   "Professor's Research",
+   "Wally"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Wally": 10,
+   "Play:Professor's Research": 2
+  },
+  "same_first": 2,
+  "same_plan": 2,
+  "modal": [
+   "Play:Wally",
+   "Attach:1Colorless@1 fx",
+   "Attach:1Fighting@0 zone",
+   "Attack:Strength"
+  ],
+  "modal_n": 10,
+  "plans": [
+   [
+    [
+     "Play:Wally",
+     "Attach:1Colorless@1 fx",
+     "Attach:1Fighting@0 zone",
+     "Attack:Strength"
+    ],
+    10
+   ],
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    2
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "attack vs another action",
+   "Energy attachment timing"
+  ],
+  "desc": "his [Play:Professor's Research] ↔ km3 [Play:Wally, Attach:1Colorless@1 fx, Attach:1Fighting@0 zone, Attack:Strength]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Professor's Research",
+   "Play:Wally",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Gurdurr stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_013009000-t07",
+  "game": "kw-261010_013009000",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand": [
+   "Wally",
+   "Wally",
+   "Rare Candy"
+  ],
+  "his": [
+   "Retreat:1",
+   "Attach:1Fighting@0 zone",
+   "Play:Wally",
+   "Attach:1Colorless@0 fx"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Attach:1Fighting@0 zone": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Attach:1Fighting@0 zone",
+   "Play:Wally",
+   "Attach:1Colorless@1 fx",
+   "Attack:Strength"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Attach:1Fighting@0 zone",
+     "Play:Wally",
+     "Attach:1Colorless@1 fx",
+     "Attack:Strength"
+    ],
+    12
+   ]
+  ],
+  "cat": "retreat/promotion",
+  "tags": [
+   "retreat/promotion",
+   "attack vs another action",
+   "Energy attachment target"
+  ],
+  "desc": "his [Retreat:1] ↔ km3 [-]; his [Attach:1Colorless@0 fx] ↔ km3 [Attach:1Colorless@1 fx, Attack:Strength]",
+  "first_div": [
+   "Retreat",
+   "Attach",
+   "Retreat:1",
+   "Attach:1Fighting@0 zone",
+   0
+  ],
+  "attack_cmp": "km3 attacks, he does not",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Gurdurr stack taken from the printed evolution line (the ledger gives none); Naclstack stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_013009000-t09",
+  "game": "kw-261010_013009000",
+  "his_turn": 5,
+  "turn_count": 9,
+  "hand": [
+   "Wally",
+   "Rare Candy",
+   "Garganacl"
+  ],
+  "his": [
+   "Evolve:Garganacl@2",
+   "Attach:1Fighting@0 zone",
+   "Attack:Bedrock Breaker"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Garganacl@2": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Evolve:Garganacl@2",
+   "Attach:1Fighting@0 zone",
+   "Attack:Bedrock Breaker"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Garganacl@2",
+     "Attach:1Fighting@0 zone",
+     "Attack:Bedrock Breaker"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Conkeldurr: a Rare Candy evolved it, so no Stage 1 is under it; Gurdurr stack taken from the printed evolution line (the ledger gives none); Naclstack stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_013009000-t11",
+  "game": "kw-261010_013009000",
+  "his_turn": 6,
+  "turn_count": 11,
+  "hand": [
+   "Wally",
+   "Rare Candy",
+   "Arena of Antiquity"
+  ],
+  "his": [
+   "Attach:1Fighting@1 zone",
+   "Play:Arena of Antiquity"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Arena of Antiquity": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Arena of Antiquity",
+   "Attach:1Fighting@1 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Arena of Antiquity",
+     "Attach:1Fighting@1 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "same actions, different order",
+  "tags": [],
+  "desc": "order: his Attach:1Fighting@1 zone → Play:Arena of Antiquity | km3 Play:Arena of Antiquity → Attach:1Fighting@1 zone",
+  "first_div": [
+   "Attach",
+   "Play",
+   "Attach:1Fighting@1 zone",
+   "Play:Arena of Antiquity",
+   0
+  ],
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Garganacl stack taken from the printed evolution line (the ledger gives none); Gurdurr stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Conkeldurr. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_013009000-t13",
+  "game": "kw-261010_013009000",
+  "his_turn": 7,
+  "turn_count": 13,
+  "hand": [
+   "Wally",
+   "Rare Candy",
+   "Nacli"
+  ],
+  "his": [
+   "Place:Nacli",
+   "Attach:1Fighting@0 zone",
+   "Play:Wally",
+   "Attach:1Colorless@0 fx"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Nacli": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Place:Nacli",
+   "Attach:1Fighting@0 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Nacli",
+     "Attach:1Fighting@0 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Energy attachment timing"
+  ],
+  "desc": "his [Play:Wally, Attach:1Colorless@0 fx] ↔ km3 [-]",
+  "first_div": [
+   "Play",
+   "end",
+   "Play:Wally",
+   null,
+   2
+  ],
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Garganacl stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Gurdurr; the opponent's Team Rocket's Tinkaton: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_013009000-t15",
+  "game": "kw-261010_013009000",
+  "his_turn": 8,
+  "turn_count": 15,
+  "hand": [
+   "Rare Candy",
+   "Garganacl"
+  ],
+  "his": [
+   "Play:Rare Candy",
+   "Evolve:Garganacl@1",
+   "Attach:1Fighting@0 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Rare Candy": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Rare Candy",
+   "Evolve:Garganacl@1",
+   "Attach:1Fighting@0 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Rare Candy",
+     "Evolve:Garganacl@1",
+     "Attach:1Fighting@0 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Garganacl stack taken from the printed evolution line (the ledger gives none); Revavroom stack taken from the printed evolution line (the ledger gives none); the opponent's Team Rocket's Tinkaton: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_015452000-t01",
+  "game": "kw-261010_015452000",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand": [
+   "Rare Candy",
+   "Team Rocket's Weezing ex",
+   "Small Balloon",
+   "Professor's Research"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Small Balloon": 7,
+   "Play:Professor's Research": 5
+  },
+  "same_first": 5,
+  "same_plan": 5,
+  "modal": [
+   "Play:Small Balloon",
+   "Tool:Small Balloon@0",
+   "Play:Professor's Research"
+  ],
+  "modal_n": 7,
+  "plans": [
+   [
+    [
+     "Play:Small Balloon",
+     "Tool:Small Balloon@0",
+     "Play:Professor's Research"
+    ],
+    7
+   ],
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    5
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Tool placement"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Small Balloon, Tool:Small Balloon@0]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Professor's Research",
+   "Play:Small Balloon",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_015452000-t03",
+  "game": "kw-261010_015452000",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand": [
+   "Rare Candy",
+   "Team Rocket's Weezing ex",
+   "Kingdra ex"
+  ],
+  "his": [
+   "Play:Rare Candy",
+   "Evolve:Kingdra ex@0",
+   "Evolve:Team Rocket's Weezing ex@1",
+   "Ability",
+   "Attach:1Water@0 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Rare Candy": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Play:Rare Candy",
+   "Evolve:Kingdra ex@0",
+   "Evolve:Team Rocket's Weezing ex@2",
+   "Ability",
+   "Attach:1Water@0 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Rare Candy",
+     "Evolve:Kingdra ex@0",
+     "Evolve:Team Rocket's Weezing ex@2",
+     "Ability",
+     "Attach:1Water@0 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "evolution timing/target",
+  "tags": [
+   "evolution timing/target"
+  ],
+  "desc": "his [Evolve:Team Rocket's Weezing ex@1] ↔ km3 [Evolve:Team Rocket's Weezing ex@2]",
+  "first_div": [
+   "Evolve",
+   "Evolve",
+   "Evolve:Team Rocket's Weezing ex@1",
+   "Evolve:Team Rocket's Weezing ex@2",
+   2
+  ],
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_015821000-t01",
+  "game": "kw-261010_015821000",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand": [
+   "Professor's Research",
+   "Rare Candy",
+   "Team Rocket's Weezing ex",
+   "Small Balloon",
+   "Soothing Shore"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Small Balloon": 6,
+   "Play:Professor's Research": 6
+  },
+  "same_first": 6,
+  "same_plan": 6,
+  "modal": [
+   "Play:Small Balloon",
+   "Tool:Small Balloon@0",
+   "Play:Professor's Research"
+  ],
+  "modal_n": 6,
+  "plans": [
+   [
+    [
+     "Play:Small Balloon",
+     "Tool:Small Balloon@0",
+     "Play:Professor's Research"
+    ],
+    6
+   ],
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    6
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Tool placement"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Small Balloon, Tool:Small Balloon@0]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Professor's Research",
+   "Play:Small Balloon",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_015821000-t03",
+  "game": "kw-261010_015821000",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand": [
+   "Rare Candy",
+   "Team Rocket's Weezing ex",
+   "Soothing Shore",
+   "Sabrina",
+   "Hiking Trail",
+   "Horsea"
+  ],
+  "his": [
+   "Place:Horsea",
+   "Play:Sabrina"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Horsea": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Place:Horsea",
+   "Retreat:3",
+   "Evolve:Team Rocket's Weezing ex@3",
+   "Ability",
+   "Attach:1Water@0 zone",
+   "Attack:Hook"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Horsea",
+     "Retreat:3",
+     "Evolve:Team Rocket's Weezing ex@3",
+     "Ability",
+     "Attach:1Water@0 zone",
+     "Attack:Hook"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "evolution timing/target",
+   "attack vs another action",
+   "retreat/promotion",
+   "Energy attachment timing",
+   "ability use"
+  ],
+  "desc": "his [Play:Sabrina] ↔ km3 [Retreat:3, Evolve:Team Rocket's Weezing ex@3, Ability, Attach:1Water@0 zone, Attack:Hook]",
+  "first_div": [
+   "Play",
+   "Retreat",
+   "Play:Sabrina",
+   "Retreat:3",
+   1
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_015821000-t05",
+  "game": "kw-261010_015821000",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand": [
+   "Rare Candy",
+   "Soothing Shore",
+   "Kingdra ex",
+   "Poké Ball"
+  ],
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Rare Candy": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Rare Candy",
+   "Evolve:Kingdra ex@0",
+   "Play:Poké Ball"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Rare Candy",
+     "Evolve:Kingdra ex@0",
+     "Play:Poké Ball"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "evolution timing/target"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Rare Candy, Evolve:Kingdra ex@0]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Poké Ball",
+   "Play:Rare Candy",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_020258000-t02",
+  "game": "kw-261010_020258000",
+  "his_turn": 1,
+  "turn_count": 2,
+  "hand": [
+   "Hiking Trail",
+   "Kingdra ex",
+   "Sabrina",
+   "Copycat",
+   "Small Balloon"
+  ],
+  "his": [
+   "Play:Small Balloon",
+   "Tool:Small Balloon@0",
+   "Play:Hiking Trail",
+   "Play:Copycat"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Attach:1Water@0 zone": 3,
+   "Play:Hiking Trail": 3,
+   "Play:Copycat": 5,
+   "Play:Small Balloon": 1
+  },
+  "same_first": 1,
+  "same_plan": 0,
+  "modal": [
+   "Play:Copycat"
+  ],
+  "modal_n": 5,
+  "plans": [
+   [
+    [
+     "Play:Copycat"
+    ],
+    5
+   ],
+   [
+    [
+     "Attach:1Water@0 zone",
+     "Play:Copycat"
+    ],
+    3
+   ],
+   [
+    [
+     "Play:Hiking Trail",
+     "Play:Copycat"
+    ],
+    3
+   ],
+   [
+    [
+     "Play:Small Balloon",
+     "Tool:Small Balloon@0",
+     "Play:Hiking Trail",
+     "Attach:1Water@0 zone",
+     "Play:Copycat"
+    ],
+    1
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Tool placement"
+  ],
+  "desc": "his [Play:Small Balloon, Tool:Small Balloon@0, Play:Hiking Trail] ↔ km3 [-]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Small Balloon",
+   "Play:Copycat",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_020258000-t04",
+  "game": "kw-261010_020258000",
+  "his_turn": 2,
+  "turn_count": 4,
+  "hand": [
+   "Kingdra ex",
+   "Team Rocket's Weezing ex",
+   "Rare Candy",
+   "Rare Candy"
+  ],
+  "his": [
+   "Play:Rare Candy",
+   "Evolve:Kingdra ex@0",
+   "Evolve:Team Rocket's Weezing ex@1",
+   "Ability",
+   "Attach:1Water@0 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Rare Candy": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Rare Candy",
+   "Evolve:Kingdra ex@0",
+   "Evolve:Team Rocket's Weezing ex@1",
+   "Ability",
+   "Attach:1Water@0 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Rare Candy",
+     "Evolve:Kingdra ex@0",
+     "Evolve:Team Rocket's Weezing ex@1",
+     "Ability",
+     "Attach:1Water@0 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Small Balloon left Team Rocket's Koffing between the turns (discarded); Team Rocket's Raticate ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Horsea. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_020258000-t06",
+  "game": "kw-261010_020258000",
+  "his_turn": 3,
+  "turn_count": 6,
+  "hand": [
+   "Seadra",
+   "Team Rocket's Koffing",
+   "Team Rocket's Weezing ex",
+   "Professor's Research"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Team Rocket's Koffing": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Place:Team Rocket's Koffing",
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Team Rocket's Koffing",
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "bench development",
+  "tags": [
+   "bench development"
+  ],
+  "desc": "his [-] ↔ km3 [Place:Team Rocket's Koffing]",
+  "first_div": [
+   "Play",
+   "Place",
+   "Play:Professor's Research",
+   "Place:Team Rocket's Koffing",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Team Rocket's Raticate ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Raticate ex stack taken from the printed evolution line (the ledger gives none); Team Rocket's Tinkatuff stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_020258000-t08",
+  "game": "kw-261010_020258000",
+  "his_turn": 4,
+  "turn_count": 8,
+  "hand": [
+   "Seadra",
+   "Team Rocket's Weezing ex",
+   "Sabrina",
+   "Rare Candy"
+  ],
+  "his": [
+   "Play:Sabrina"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Sabrina": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Sabrina"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Sabrina"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Team Rocket's Tinkaton stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_020908000-t02",
+  "game": "kw-261010_020908000",
+  "his_turn": 1,
+  "turn_count": 2,
+  "hand": [
+   "Team Rocket's Weezing ex",
+   "Team Rocket's Koffing",
+   "Team Rocket's Koffing",
+   "Soothing Shore",
+   "Poké Ball"
+  ],
+  "his": [
+   "Place:Team Rocket's Koffing",
+   "Place:Team Rocket's Koffing",
+   "Play:Poké Ball"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Team Rocket's Koffing": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Place:Team Rocket's Koffing",
+   "Place:Team Rocket's Koffing",
+   "Play:Soothing Shore",
+   "Play:Poké Ball"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Team Rocket's Koffing",
+     "Place:Team Rocket's Koffing",
+     "Play:Soothing Shore",
+     "Play:Poké Ball"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Soothing Shore]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Poké Ball",
+   "Play:Soothing Shore",
+   2
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_020908000-t04",
+  "game": "kw-261010_020908000",
+  "his_turn": 2,
+  "turn_count": 4,
+  "hand": [
+   "Team Rocket's Weezing ex",
+   "Seadra"
+  ],
+  "his": [
+   "Evolve:Seadra@0",
+   "Evolve:Team Rocket's Weezing ex@1",
+   "Ability",
+   "Attach:1Water@0 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Team Rocket's Weezing ex@2": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Team Rocket's Weezing ex@2",
+   "Ability",
+   "Evolve:Seadra@3",
+   "Attach:1Water@0 zone",
+   "Attack:Hook"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Team Rocket's Weezing ex@2",
+     "Ability",
+     "Evolve:Seadra@3",
+     "Attach:1Water@0 zone",
+     "Attack:Hook"
+    ],
+    12
+   ]
+  ],
+  "cat": "evolution timing/target",
+  "tags": [
+   "evolution timing/target",
+   "attack vs another action"
+  ],
+  "desc": "his [Evolve:Seadra@0, Evolve:Team Rocket's Weezing ex@1] ↔ km3 [Evolve:Team Rocket's Weezing ex@2]; his [-] ↔ km3 [Evolve:Seadra@3]; his [-] ↔ km3 [Attack:Hook]",
+  "first_div": [
+   "Evolve",
+   "Evolve",
+   "Evolve:Seadra@0",
+   "Evolve:Team Rocket's Weezing ex@2",
+   0
+  ],
+  "attack_cmp": "km3 attacks, he does not",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_020908000-t06",
+  "game": "kw-261010_020908000",
+  "his_turn": 3,
+  "turn_count": 6,
+  "hand": [
+   "Poké Ball",
+   "Hiking Trail",
+   "Rare Candy",
+   "Kingdra ex"
+  ],
+  "his": [
+   "Evolve:Kingdra ex@0",
+   "Attach:1Water@3 zone",
+   "Attack:Stormy Prison"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Kingdra ex@0": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Kingdra ex@0",
+   "Play:Poké Ball"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Kingdra ex@0",
+     "Play:Poké Ball"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "attack vs another action",
+   "Energy attachment timing"
+  ],
+  "desc": "his [Attach:1Water@3 zone, Attack:Stormy Prison] ↔ km3 [Play:Poké Ball]",
+  "first_div": [
+   "Attach",
+   "Play",
+   "Attach:1Water@3 zone",
+   "Play:Poké Ball",
+   1
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Seadra is Confused (not represented: the harness has no condition field); Seadra stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_021629000-t02",
+  "game": "kw-261010_021629000",
+  "his_turn": 1,
+  "turn_count": 2,
+  "hand": [
+   "Hiking Trail",
+   "Team Rocket's Weezing ex",
+   "Rare Candy",
+   "Small Balloon",
+   "Kingdra ex"
+  ],
+  "his": [
+   "Attach:1Water@0 zone",
+   "Attack:Hook"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Attach:1Water@0 zone": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Attach:1Water@0 zone",
+   "Play:Small Balloon",
+   "Tool:Small Balloon@0",
+   "Attack:Hook"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Attach:1Water@0 zone",
+     "Play:Small Balloon",
+     "Tool:Small Balloon@0",
+     "Attack:Hook"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "Tool placement"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Small Balloon, Tool:Small Balloon@0]",
+  "first_div": [
+   "Attack",
+   "Play",
+   "Attack:Hook",
+   "Play:Small Balloon",
+   1
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_021629000-t04",
+  "game": "kw-261010_021629000",
+  "his_turn": 2,
+  "turn_count": 4,
+  "hand": [
+   "Hiking Trail",
+   "Team Rocket's Weezing ex",
+   "Rare Candy",
+   "Small Balloon",
+   "Kingdra ex",
+   "Poké Ball"
+  ],
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Rare Candy": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Rare Candy",
+   "Evolve:Kingdra ex@0",
+   "Play:Poké Ball"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Rare Candy",
+     "Evolve:Kingdra ex@0",
+     "Play:Poké Ball"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "evolution timing/target"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Rare Candy, Evolve:Kingdra ex@0]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Poké Ball",
+   "Play:Rare Candy",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_021629000-t06",
+  "game": "kw-261010_021629000",
+  "his_turn": 3,
+  "turn_count": 6,
+  "hand": [
+   "Team Rocket's Weezing ex",
+   "Horsea",
+   "Seadra",
+   "Team Rocket's Weezing ex"
+  ],
+  "his": [
+   "Evolve:Team Rocket's Weezing ex@1",
+   "Ability",
+   "Place:Horsea",
+   "Attach:1Water@2 zone",
+   "Attack:Stormy Prison"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Team Rocket's Weezing ex@1": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Team Rocket's Weezing ex@1",
+   "Ability",
+   "Place:Horsea",
+   "Attach:1Water@3 zone",
+   "Attack:Stormy Prison"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Team Rocket's Weezing ex@1",
+     "Ability",
+     "Place:Horsea",
+     "Attach:1Water@3 zone",
+     "Attack:Stormy Prison"
+    ],
+    12
+   ]
+  ],
+  "cat": "Energy attachment target",
+  "tags": [
+   "Energy attachment target"
+  ],
+  "desc": "his [Attach:1Water@2 zone] ↔ km3 [Attach:1Water@3 zone]",
+  "first_div": [
+   "Attach",
+   "Attach",
+   "Attach:1Water@2 zone",
+   "Attach:1Water@3 zone",
+   3
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_021629000-t08",
+  "game": "kw-261010_021629000",
+  "his_turn": 4,
+  "turn_count": 8,
+  "hand": [
+   "Seadra",
+   "Team Rocket's Weezing ex",
+   "Copycat"
+  ],
+  "his": [
+   "Evolve:Seadra@2",
+   "Play:Copycat"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Seadra@2": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Evolve:Seadra@2",
+   "Play:Copycat"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Seadra@2",
+     "Play:Copycat"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Snorlax ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_021629000-t10",
+  "game": "kw-261010_021629000",
+  "his_turn": 5,
+  "turn_count": 10,
+  "hand": [
+   "Sabrina",
+   "Soothing Shore",
+   "Rare Candy",
+   "Team Rocket's Weezing ex"
+  ],
+  "his": [
+   "Play:Sabrina"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Sabrina": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Sabrina"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Sabrina"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Seadra stack taken from the printed evolution line (the ledger gives none); Snorlax ex is Poisoned/Asleep (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_021629000-t12",
+  "game": "kw-261010_021629000",
+  "his_turn": 6,
+  "turn_count": 12,
+  "hand": [
+   "Soothing Shore",
+   "Rare Candy",
+   "Team Rocket's Weezing ex",
+   "Kingdra ex"
+  ],
+  "his": [
+   "Evolve:Kingdra ex@2",
+   "Attach:1Water@0 zone",
+   "Retreat:2",
+   "Attack:Stormy Prison"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Retreat:2": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Retreat:2",
+   "Evolve:Kingdra ex@0",
+   "Attach:1Water@2 zone",
+   "Attack:Stormy Prison"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Retreat:2",
+     "Evolve:Kingdra ex@0",
+     "Attach:1Water@2 zone",
+     "Attack:Stormy Prison"
+    ],
+    12
+   ]
+  ],
+  "cat": "evolution timing/target",
+  "tags": [
+   "evolution timing/target",
+   "Energy attachment timing"
+  ],
+  "desc": "his [Evolve:Kingdra ex@2, Attach:1Water@0 zone] ↔ km3 [-]; his [-] ↔ km3 [Evolve:Kingdra ex@0, Attach:1Water@2 zone]",
+  "first_div": [
+   "Evolve",
+   "Retreat",
+   "Evolve:Kingdra ex@2",
+   "Retreat:2",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Seadra stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_021629000-t14",
+  "game": "kw-261010_021629000",
+  "his_turn": 7,
+  "turn_count": 14,
+  "hand": [
+   "Soothing Shore",
+   "Rare Candy",
+   "Team Rocket's Weezing ex",
+   "Team Rocket's Koffing"
+  ],
+  "his": [
+   "Place:Team Rocket's Koffing",
+   "Attach:1Water@2 zone",
+   "Attack:Stormy Prison"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Team Rocket's Koffing": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Place:Team Rocket's Koffing",
+   "Attack:Stormy Prison"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Team Rocket's Koffing",
+     "Attack:Stormy Prison"
+    ],
+    12
+   ]
+  ],
+  "cat": "Energy attachment timing",
+  "tags": [
+   "Energy attachment timing"
+  ],
+  "desc": "his [Attach:1Water@2 zone] ↔ km3 [-]",
+  "first_div": [
+   "Attach",
+   "Attack",
+   "Attach:1Water@2 zone",
+   "Attack:Stormy Prison",
+   1
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_021629000-t16",
+  "game": "kw-261010_021629000",
+  "his_turn": 8,
+  "turn_count": 16,
+  "hand": [
+   "Soothing Shore",
+   "Rare Candy",
+   "Team Rocket's Weezing ex",
+   "Poké Ball"
+  ],
+  "his": [
+   "Evolve:Team Rocket's Weezing ex@3",
+   "Ability",
+   "Attach:1Water@0 zone",
+   "Attack:Stormy Prison"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Team Rocket's Weezing ex@3": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Team Rocket's Weezing ex@3",
+   "Ability",
+   "Attack:Stormy Prison"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Team Rocket's Weezing ex@3",
+     "Ability",
+     "Attack:Stormy Prison"
+    ],
+    12
+   ]
+  ],
+  "cat": "Energy attachment timing",
+  "tags": [
+   "Energy attachment timing"
+  ],
+  "desc": "his [Attach:1Water@0 zone] ↔ km3 [-]",
+  "first_div": [
+   "Attach",
+   "Attack",
+   "Attach:1Water@0 zone",
+   "Attack:Stormy Prison",
+   2
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); a Poké Ball that found nothing is left out of his plan (the engine does not offer it). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_021629000-t18",
+  "game": "kw-261010_021629000",
+  "his_turn": 9,
+  "turn_count": 18,
+  "hand": [
+   "Soothing Shore",
+   "Rare Candy",
+   "Professor's Research"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Professor's Research": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Snorlax ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_021629000-t20",
+  "game": "kw-261010_021629000",
+  "his_turn": 10,
+  "turn_count": 20,
+  "hand": [
+   "Soothing Shore",
+   "Rare Candy",
+   "Professor's Research"
+  ],
+  "his": [
+   "Retreat:2",
+   "Attach:1Water@2 zone",
+   "Attack:Stormy Prison"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Retreat:2": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Retreat:2",
+   "Attack:Stormy Prison"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Retreat:2",
+     "Attack:Stormy Prison"
+    ],
+    12
+   ]
+  ],
+  "cat": "Energy attachment timing",
+  "tags": [
+   "Energy attachment timing"
+  ],
+  "desc": "his [Attach:1Water@2 zone] ↔ km3 [-]",
+  "first_div": [
+   "Attach",
+   "Attack",
+   "Attach:1Water@2 zone",
+   "Attack:Stormy Prison",
+   1
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Snorlax ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_021629000-t22",
+  "game": "kw-261010_021629000",
+  "his_turn": 11,
+  "turn_count": 22,
+  "hand": [
+   "Soothing Shore",
+   "Rare Candy",
+   "Professor's Research"
+  ],
+  "his": [
+   "Retreat:2",
+   "Attach:1Water@2 zone",
+   "Attack:Stormy Prison"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Attack:Stormy Prison": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Attack:Stormy Prison"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Attack:Stormy Prison"
+    ],
+    12
+   ]
+  ],
+  "cat": "retreat/promotion",
+  "tags": [
+   "retreat/promotion",
+   "Energy attachment timing"
+  ],
+  "desc": "his [Retreat:2, Attach:1Water@2 zone] ↔ km3 [-]",
+  "first_div": [
+   "Retreat",
+   "Attack",
+   "Retreat:2",
+   "Attack:Stormy Prison",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Kingdra ex: a Rare Candy evolved it, so no Stage 1 is under it; Snorlax ex is Poisoned (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261010_021629000-t24",
+  "game": "kw-261010_021629000",
+  "his_turn": 12,
+  "turn_count": 24,
+  "hand": [
+   "Soothing Shore",
+   "Rare Candy",
+   "Professor's Research"
+  ],
+  "his": [
+   "Attach:1Water@2 zone",
+   "Attack:Stormy Prison"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Attack:Stormy Prison": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Attack:Stormy Prison"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Attack:Stormy Prison"
+    ],
+    12
+   ]
+  ],
+  "cat": "Energy attachment timing",
+  "tags": [
+   "Energy attachment timing"
+  ],
+  "desc": "his [Attach:1Water@2 zone] ↔ km3 [-]",
+  "first_div": [
+   "Attach",
+   "Attack",
+   "Attach:1Water@2 zone",
+   "Attack:Stormy Prison",
+   0
+  ],
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Kingdra ex stack taken from the printed evolution line (the ledger gives none); Snorlax ex is Poisoned/Asleep (not represented: the harness has no condition field); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Kingdra ex. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261012_003458000-t01",
+  "game": "kw-261012_003458000",
+  "his_turn": 1,
+  "turn_count": 1,
+  "hand": [
+   "Copycat",
+   "Small Balloon",
+   "Professor's Research",
+   "Rare Candy"
+  ],
+  "his": [
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Copycat": 4,
+   "Play:Professor's Research": 7,
+   "Play:Small Balloon": 1
+  },
+  "same_first": 7,
+  "same_plan": 7,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 7,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    7
+   ],
+   [
+    [
+     "Play:Copycat"
+    ],
+    4
+   ],
+   [
+    [
+     "Play:Small Balloon",
+     "Tool:Small Balloon@0",
+     "Play:Copycat"
+    ],
+    1
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261012_003458000-t03",
+  "game": "kw-261012_003458000",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand": [
+   "Copycat",
+   "Small Balloon",
+   "Rare Candy",
+   "Professor's Research",
+   "Seadra",
+   "Team Rocket's Weezing ex"
+  ],
+  "his": [
+   "Evolve:Seadra@0",
+   "Attach:1Water@0 zone",
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Seadra@1": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Seadra@1",
+   "Play:Professor's Research"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Seadra@1",
+     "Play:Professor's Research"
+    ],
+    12
+   ]
+  ],
+  "cat": "evolution timing/target",
+  "tags": [
+   "evolution timing/target",
+   "Energy attachment timing"
+  ],
+  "desc": "his [Evolve:Seadra@0, Attach:1Water@0 zone] ↔ km3 [Evolve:Seadra@1]",
+  "first_div": [
+   "Evolve",
+   "Evolve",
+   "Evolve:Seadra@0",
+   "Evolve:Seadra@1",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261012_003458000-t05",
+  "game": "kw-261012_003458000",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand": [
+   "Copycat",
+   "Rare Candy",
+   "Team Rocket's Weezing ex",
+   "Team Rocket's Weezing ex",
+   "Sabrina",
+   "Poké Ball"
+  ],
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Retreat:1": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Retreat:1",
+   "Play:Poké Ball"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Retreat:1",
+     "Play:Poké Ball"
+    ],
+    12
+   ]
+  ],
+  "cat": "retreat/promotion",
+  "tags": [
+   "retreat/promotion"
+  ],
+  "desc": "his [-] ↔ km3 [Retreat:1]",
+  "first_div": [
+   "Play",
+   "Retreat",
+   "Play:Poké Ball",
+   "Retreat:1",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Dragonair stack taken from the printed evolution line (the ledger gives none); Seadra stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261012_003458000-t07",
+  "game": "kw-261012_003458000",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand": [
+   "Kingdra ex",
+   "Sabrina",
+   "Team Rocket's Weezing ex",
+   "Hiking Trail"
+  ],
+  "his": [
+   "Play:Hiking Trail",
+   "Evolve:Team Rocket's Weezing ex@2",
+   "Ability",
+   "Attach:1Water@1 zone",
+   "Attack:Stormy Prison"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Sabrina": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Sabrina"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Sabrina"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "evolution timing/target",
+   "attack vs another action",
+   "Energy attachment timing",
+   "ability use"
+  ],
+  "desc": "his [Play:Hiking Trail, Evolve:Team Rocket's Weezing ex@2, Ability, Attach:1Water@1 zone, Attack:Stormy Prison] ↔ km3 [Play:Sabrina]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Hiking Trail",
+   "Play:Sabrina",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Dragonite stack taken from the printed evolution line (the ledger gives none); Kingdra ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Team Rocket's Koffing. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261012_003458000-t09",
+  "game": "kw-261012_003458000",
+  "his_turn": 5,
+  "turn_count": 9,
+  "hand": [
+   "Kingdra ex",
+   "Sabrina",
+   "Rare Candy",
+   "Rare Candy"
+  ],
+  "his": [
+   "Attach:1Water@1 zone",
+   "Attack:Stormy Prison"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Sabrina": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Sabrina"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Sabrina"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "attack vs another action",
+   "Energy attachment timing"
+  ],
+  "desc": "his [Attach:1Water@1 zone, Attack:Stormy Prison] ↔ km3 [Play:Sabrina]",
+  "first_div": [
+   "Attach",
+   "Play",
+   "Attach:1Water@1 zone",
+   "Play:Sabrina",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Dragonite is Poisoned (not represented: the harness has no condition field); Dragonite stack taken from the printed evolution line (the ledger gives none); Kingdra ex stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none); knocked out between turns: Horsea. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261012_004128000-t02",
+  "game": "kw-261012_004128000",
+  "his_turn": 1,
+  "turn_count": 2,
+  "hand": [
+   "Kingdra ex",
+   "Small Balloon",
+   "Soothing Shore",
+   "Copycat",
+   "Professor's Research"
+  ],
+  "his": [
+   "Play:Soothing Shore",
+   "Play:Professor's Research"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Copycat": 3,
+   "Play:Professor's Research": 6,
+   "Attach:1Water@0 zone": 3
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Professor's Research"
+  ],
+  "modal_n": 6,
+  "plans": [
+   [
+    [
+     "Play:Professor's Research"
+    ],
+    6
+   ],
+   [
+    [
+     "Play:Copycat"
+    ],
+    3
+   ],
+   [
+    [
+     "Attach:1Water@0 zone",
+     "Play:Professor's Research"
+    ],
+    1
+   ],
+   [
+    [
+     "Attach:1Water@0 zone",
+     "Play:Copycat"
+    ],
+    1
+   ],
+   [
+    [
+     "Attach:1Water@0 zone",
+     "Play:Small Balloon",
+     "Tool:Small Balloon@0",
+     "Play:Copycat"
+    ],
+    1
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order"
+  ],
+  "desc": "his [Play:Soothing Shore] ↔ km3 [-]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Soothing Shore",
+   "Play:Professor's Research",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261012_004128000-t04",
+  "game": "kw-261012_004128000",
+  "his_turn": 2,
+  "turn_count": 4,
+  "hand": [
+   "Kingdra ex",
+   "Copycat",
+   "Rare Candy",
+   "Sabrina"
+  ],
+  "his": [
+   "Play:Rare Candy",
+   "Evolve:Kingdra ex@0",
+   "Attach:1Water@0 zone",
+   "Attack:Stormy Prison"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Rare Candy": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Play:Rare Candy",
+   "Evolve:Kingdra ex@0",
+   "Attach:1Water@0 zone",
+   "Attack:Stormy Prison"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Rare Candy",
+     "Evolve:Kingdra ex@0",
+     "Attach:1Water@0 zone",
+     "Attack:Stormy Prison"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "same attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261012_004435000-t02",
+  "game": "kw-261012_004435000",
+  "his_turn": 1,
+  "turn_count": 2,
+  "hand": [
+   "Kingdra ex",
+   "Hiking Trail",
+   "Team Rocket's Weezing ex",
+   "Rare Candy",
+   "Seadra"
+  ],
+  "his": [
+   "Attach:1Water@0 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Attach:1Water@0 zone": 12
+  },
+  "same_first": 12,
+  "same_plan": 12,
+  "modal": [
+   "Attach:1Water@0 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Attach:1Water@0 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "same plan",
+  "tags": [],
+  "desc": "",
+  "first_div": null,
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261012_004435000-t04",
+  "game": "kw-261012_004435000",
+  "his_turn": 2,
+  "turn_count": 4,
+  "hand": [
+   "Kingdra ex",
+   "Hiking Trail",
+   "Team Rocket's Weezing ex",
+   "Rare Candy",
+   "Seadra",
+   "Horsea"
+  ],
+  "his": [
+   "Place:Horsea",
+   "Evolve:Team Rocket's Weezing ex@0",
+   "Ability",
+   "Attach:1Water@1 zone",
+   "Play:Hiking Trail"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Horsea": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Place:Horsea",
+   "Retreat:3",
+   "Evolve:Team Rocket's Weezing ex@3",
+   "Ability",
+   "Attach:1Water@0 zone",
+   "Attack:Hook"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Horsea",
+     "Retreat:3",
+     "Evolve:Team Rocket's Weezing ex@3",
+     "Ability",
+     "Attach:1Water@0 zone",
+     "Attack:Hook"
+    ],
+    12
+   ]
+  ],
+  "cat": "evolution timing/target",
+  "tags": [
+   "evolution timing/target",
+   "retreat/promotion",
+   "Supporter/Item choice or order",
+   "attack vs another action",
+   "Energy attachment target"
+  ],
+  "desc": "his [Evolve:Team Rocket's Weezing ex@0] ↔ km3 [Retreat:3, Evolve:Team Rocket's Weezing ex@3]; his [Attach:1Water@1 zone, Play:Hiking Trail] ↔ km3 [Attach:1Water@0 zone, Attack:Hook]",
+  "first_div": [
+   "Evolve",
+   "Retreat",
+   "Evolve:Team Rocket's Weezing ex@0",
+   "Retreat:3",
+   1
+  ],
+  "attack_cmp": "km3 attacks, he does not",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261012_004435000-t06",
+  "game": "kw-261012_004435000",
+  "his_turn": 3,
+  "turn_count": 6,
+  "hand": [
+   "Kingdra ex",
+   "Rare Candy",
+   "Seadra",
+   "Poké Ball"
+  ],
+  "his": [
+   "Play:Poké Ball"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Rare Candy": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Rare Candy",
+   "Evolve:Kingdra ex@1",
+   "Play:Poké Ball"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Rare Candy",
+     "Evolve:Kingdra ex@1",
+     "Play:Poké Ball"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "evolution timing/target"
+  ],
+  "desc": "his [-] ↔ km3 [Play:Rare Candy, Evolve:Kingdra ex@1]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Poké Ball",
+   "Play:Rare Candy",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Glaceon ex stack taken from the printed evolution line (the ledger gives none); Mega Gyarados ex is Poisoned/Burned (not represented: the harness has no condition field); Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261012_004435000-t08",
+  "game": "kw-261012_004435000",
+  "his_turn": 4,
+  "turn_count": 8,
+  "hand": [
+   "Kingdra ex",
+   "Rare Candy",
+   "Horsea",
+   "Copycat"
+  ],
+  "his": [
+   "Place:Horsea",
+   "Evolve:Kingdra ex@1",
+   "Play:Copycat"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Kingdra ex@1": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Kingdra ex@1",
+   "Attach:1Water@0 zone",
+   "Retreat:1",
+   "Place:Horsea",
+   "Play:Copycat"
+  ],
+  "modal_n": 10,
+  "plans": [
+   [
+    [
+     "Evolve:Kingdra ex@1",
+     "Attach:1Water@0 zone",
+     "Retreat:1",
+     "Place:Horsea",
+     "Play:Copycat"
+    ],
+    10
+   ],
+   [
+    [
+     "Evolve:Kingdra ex@1",
+     "Attach:1Water@0 zone",
+     "Retreat:1",
+     "Play:Copycat"
+    ],
+    2
+   ]
+  ],
+  "cat": "evolution timing/target",
+  "tags": [
+   "evolution timing/target",
+   "retreat/promotion",
+   "Energy attachment timing"
+  ],
+  "desc": "his [-] ↔ km3 [Evolve:Kingdra ex@1, Attach:1Water@0 zone, Retreat:1]; his [Evolve:Kingdra ex@1] ↔ km3 [-]",
+  "first_div": [
+   "Place",
+   "Evolve",
+   "Place:Horsea",
+   "Evolve:Kingdra ex@1",
+   0
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Glaceon ex stack taken from the printed evolution line (the ledger gives none); Mega Gyarados ex is Poisoned (not represented: the harness has no condition field); Mega Gyarados ex stack taken from the printed evolution line (the ledger gives none); Milotic ex stack taken from the printed evolution line (the ledger gives none); Seadra stack taken from the printed evolution line (the ledger gives none); Team Rocket's Weezing ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ }
+]

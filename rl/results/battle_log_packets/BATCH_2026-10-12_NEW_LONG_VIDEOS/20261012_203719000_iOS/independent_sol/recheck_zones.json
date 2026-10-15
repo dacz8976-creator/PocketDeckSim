@@ -1,0 +1,2474 @@
+[
+  {
+    "turn": 1,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 46.65,
+    "frame": "turn_evidence/t0046.65.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 46.65,
+      "evidence_ids": [
+        "f46_65"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 1,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 46.65,
+    "frame": "turn_evidence/t0046.65.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 46.65,
+      "evidence_ids": [
+        "f46_65"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 1,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 62.0,
+    "frame": "turn_evidence/t0062.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 62,
+      "evidence_ids": [
+        "f62_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 1,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 62.0,
+    "frame": "turn_evidence/t0062.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 62,
+      "evidence_ids": [
+        "f62_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 2,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 65.0,
+    "frame": "turn_evidence/t0065.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 65,
+      "evidence_ids": [
+        "f65_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 2,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 65.0,
+    "frame": "turn_evidence/t0065.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": "Lightning",
+        "count": 1,
+        "available": true,
+        "visibility": "visible_generated_token"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "absent_or_obscured"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 65,
+      "evidence_ids": [
+        "f65_00"
+      ],
+      "limit_reason": "The small next marker is absent or obscured in this frame; its type/count are not inferred.",
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 2,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 102.0,
+    "frame": "turn_evidence/t0102.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 102,
+      "evidence_ids": [
+        "f102_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 2,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 102.0,
+    "frame": "turn_evidence/t0102.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 102,
+      "evidence_ids": [
+        "f102_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 3,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 107.2,
+    "frame": "turn_evidence/t0107.20.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "absent_or_obscured"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 107.2,
+      "evidence_ids": [
+        "f107_20"
+      ],
+      "limit_reason": "The selected hand frame is during Energy generation. The current slot is visibly empty and the next marker is absent at 107.2 s. Do not claim generated availability here. Native 107.5 s separately shows Darkness while Pok\u00e9 Ball selection has begun. The small next marker is absent or obscured in this frame; its type/count are not inferred.",
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability.",
+      "later_within_turn_observation": {
+        "source_video": "20261012_203719000_iOS.MP4",
+        "observed_at_source_seconds": 107.5,
+        "this_turn": {
+          "type": "Darkness",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Darkness",
+          "count": 1,
+          "available": null
+        },
+        "evidence_ids": [
+          "f107_50"
+        ],
+        "basis": "Visible generated token after the first card selection has begun; not substituted for the earlier preplay boundary."
+      }
+    }
+  },
+  {
+    "turn": 3,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 107.2,
+    "frame": "turn_evidence/t0107.20.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 107.2,
+      "evidence_ids": [
+        "f107_20"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 3,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 151.0,
+    "frame": "turn_evidence/t0151.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 151,
+      "evidence_ids": [
+        "f151_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 3,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 151.0,
+    "frame": "turn_evidence/t0151.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 151,
+      "evidence_ids": [
+        "f151_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 4,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 154.0,
+    "frame": "turn_evidence/t0154.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 154,
+      "evidence_ids": [
+        "f154_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 4,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 154.0,
+    "frame": "turn_evidence/t0154.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 154,
+      "evidence_ids": [
+        "f154_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 4,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 190.0,
+    "frame": "turn_evidence/t0190.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 190,
+      "evidence_ids": [
+        "f190_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 4,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 190.0,
+    "frame": "turn_evidence/t0190.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 190,
+      "evidence_ids": [
+        "f190_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 5,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 194.8,
+    "frame": "turn_evidence/t0194.80.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 194.8,
+      "evidence_ids": [
+        "f194_80"
+      ],
+      "limit_reason": "The clean hand view precedes completion of Energy generation. This current slot is empty at 194.8 s; later readiness is not substituted for the boundary.",
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 5,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 194.8,
+    "frame": "turn_evidence/t0194.80.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 194.8,
+      "evidence_ids": [
+        "f194_80"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 5,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 220.0,
+    "frame": "turn_evidence/t0220.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 220,
+      "evidence_ids": [
+        "f220_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 5,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 220.0,
+    "frame": "turn_evidence/t0220.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 220,
+      "evidence_ids": [
+        "f220_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 6,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 224.0,
+    "frame": "turn_evidence/t0224.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 224,
+      "evidence_ids": [
+        "f224_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 6,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 224.0,
+    "frame": "turn_evidence/t0224.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": "Fire",
+        "count": 1,
+        "available": true,
+        "visibility": "visible_generated_token"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 224,
+      "evidence_ids": [
+        "f224_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 6,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 252.0,
+    "frame": "turn_evidence/t0252.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 252,
+      "evidence_ids": [
+        "f252_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 6,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 252.0,
+    "frame": "turn_evidence/t0252.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 252,
+      "evidence_ids": [
+        "f252_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 7,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 257.0,
+    "frame": "turn_evidence/t0257.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true,
+        "visibility": "visible_generated_token"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 257,
+      "evidence_ids": [
+        "f257_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 7,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 257.0,
+    "frame": "turn_evidence/t0257.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 257,
+      "evidence_ids": [
+        "f257_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 7,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 292.0,
+    "frame": "turn_evidence/t0292.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 292,
+      "evidence_ids": [
+        "f292_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 7,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 292.0,
+    "frame": "turn_evidence/t0292.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "obscured"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "absent_or_obscured"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 292,
+      "evidence_ids": [
+        "f292_00"
+      ],
+      "limit_reason": "A message or animation covers the generated slot in this exact boundary frame. Current type, count and availability remain unknown. The small next marker is absent or obscured in this frame; its type/count are not inferred.",
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 8,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 296.0,
+    "frame": "turn_evidence/t0296.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 296,
+      "evidence_ids": [
+        "f296_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 8,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 296.0,
+    "frame": "turn_evidence/t0296.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": "Fire",
+        "count": 1,
+        "available": true,
+        "visibility": "visible_generated_token"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 296,
+      "evidence_ids": [
+        "f296_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 8,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 352.0,
+    "frame": "turn_evidence/t0352.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 352,
+      "evidence_ids": [
+        "f352_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 8,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 352.0,
+    "frame": "turn_evidence/t0352.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 352,
+      "evidence_ids": [
+        "f352_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 9,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 358.0,
+    "frame": "turn_evidence/t0358.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true,
+        "visibility": "visible_generated_token"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 358,
+      "evidence_ids": [
+        "f358_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 9,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 358.0,
+    "frame": "turn_evidence/t0358.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 358,
+      "evidence_ids": [
+        "f358_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 9,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 374.0,
+    "frame": "turn_evidence/t0374.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 374,
+      "evidence_ids": [
+        "f374_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 9,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 374.0,
+    "frame": "turn_evidence/t0374.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 374,
+      "evidence_ids": [
+        "f374_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 10,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 378.0,
+    "frame": "turn_evidence/t0378.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 378,
+      "evidence_ids": [
+        "f378_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 10,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 378.0,
+    "frame": "turn_evidence/t0378.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": "Fire",
+        "count": 1,
+        "available": true,
+        "visibility": "visible_generated_token"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 378,
+      "evidence_ids": [
+        "f378_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 10,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 413.0,
+    "frame": "turn_evidence/t0413.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 413,
+      "evidence_ids": [
+        "f413_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 10,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 413.0,
+    "frame": "turn_evidence/t0413.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 413,
+      "evidence_ids": [
+        "f413_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 11,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 416.5,
+    "frame": "turn_evidence/t0416.50.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "obscured"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "absent_or_obscured"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 416.5,
+      "evidence_ids": [
+        "f416_50"
+      ],
+      "limit_reason": "White generation glow covers current Energy identity and count, and obscures the preview marker. The small next marker is absent or obscured in this frame; its type/count are not inferred.",
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 11,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 416.5,
+    "frame": "turn_evidence/t0416.50.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 416.5,
+      "evidence_ids": [
+        "f416_50"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 11,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 426.0,
+    "frame": "turn_evidence/t0426.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 426,
+      "evidence_ids": [
+        "f426_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 11,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 426.0,
+    "frame": "turn_evidence/t0426.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 426,
+      "evidence_ids": [
+        "f426_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 12,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 430.0,
+    "frame": "turn_evidence/t0430.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 430,
+      "evidence_ids": [
+        "f430_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 12,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 430.0,
+    "frame": "turn_evidence/t0430.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": "Lightning",
+        "count": 1,
+        "available": true,
+        "visibility": "visible_generated_token"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 430,
+      "evidence_ids": [
+        "f430_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 12,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 463.0,
+    "frame": "turn_evidence/t0463.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 463,
+      "evidence_ids": [
+        "f463_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 12,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 463.0,
+    "frame": "turn_evidence/t0463.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 463,
+      "evidence_ids": [
+        "f463_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 13,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 466.9,
+    "frame": "turn_evidence/t0466.90.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 466.9,
+      "evidence_ids": [
+        "f466_90"
+      ],
+      "limit_reason": "The clean three-card hand at 466.9 s precedes completion of Energy generation. Current slot is visibly empty; native 468 s shows Darkness after Glimmet selection/benching has started.",
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability.",
+      "later_within_turn_observation": {
+        "source_video": "20261012_203719000_iOS.MP4",
+        "observed_at_source_seconds": 468,
+        "this_turn": {
+          "type": "Darkness",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Darkness",
+          "count": 1,
+          "available": null
+        },
+        "evidence_ids": [
+          "f468_00"
+        ],
+        "basis": "Visible generated token after the first card selection has begun; not substituted for the earlier preplay boundary."
+      }
+    }
+  },
+  {
+    "turn": 13,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 466.9,
+    "frame": "turn_evidence/t0466.90.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 466.9,
+      "evidence_ids": [
+        "f466_90"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 13,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 481.0,
+    "frame": "turn_evidence/t0481.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 481,
+      "evidence_ids": [
+        "f481_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 13,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 481.0,
+    "frame": "turn_evidence/t0481.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "obscured"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "absent_or_obscured"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 481,
+      "evidence_ids": [
+        "f481_00"
+      ],
+      "limit_reason": "A message or animation covers the generated slot in this exact boundary frame. Current type, count and availability remain unknown. The small next marker is absent or obscured in this frame; its type/count are not inferred.",
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 14,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 484.0,
+    "frame": "turn_evidence/t0484.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 484,
+      "evidence_ids": [
+        "f484_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 14,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 484.0,
+    "frame": "turn_evidence/t0484.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": "Fire",
+        "count": 1,
+        "available": true,
+        "visibility": "visible_generated_token"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 484,
+      "evidence_ids": [
+        "f484_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 14,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 531.0,
+    "frame": "turn_evidence/t0531.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 531,
+      "evidence_ids": [
+        "f531_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 14,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 531.0,
+    "frame": "turn_evidence/t0531.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 531,
+      "evidence_ids": [
+        "f531_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 15,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 535.0,
+    "frame": "turn_evidence/t0535.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true,
+        "visibility": "visible_generated_token"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 535,
+      "evidence_ids": [
+        "f535_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 15,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 535.0,
+    "frame": "turn_evidence/t0535.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 535,
+      "evidence_ids": [
+        "f535_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 15,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 596.0,
+    "frame": "turn_evidence/t0596.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 596,
+      "evidence_ids": [
+        "f596_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 15,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 596.0,
+    "frame": "turn_evidence/t0596.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 596,
+      "evidence_ids": [
+        "f596_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 16,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 598.0,
+    "frame": "turn_evidence/t0598.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 598,
+      "evidence_ids": [
+        "f598_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 16,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 598.0,
+    "frame": "turn_evidence/t0598.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": "Fire",
+        "count": 1,
+        "available": true,
+        "visibility": "visible_generated_token"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 598,
+      "evidence_ids": [
+        "f598_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 16,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 627.0,
+    "frame": "turn_evidence/t0627.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 627,
+      "evidence_ids": [
+        "f627_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 16,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 627.0,
+    "frame": "turn_evidence/t0627.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 627,
+      "evidence_ids": [
+        "f627_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 17,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 628.0,
+    "frame": "turn_evidence/t0628.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "obscured"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "absent_or_obscured"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 628,
+      "evidence_ids": [
+        "f628_00"
+      ],
+      "limit_reason": "The clean two-card hand at 628 s has a white Energy-generation glow over the owner Zone. Current and preview values are unavailable in this frame; no default availability assumed. The small next marker is absent or obscured in this frame; its type/count are not inferred.",
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 17,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 628.0,
+    "frame": "turn_evidence/t0628.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "obscured"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "absent_or_obscured"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 628,
+      "evidence_ids": [
+        "f628_00"
+      ],
+      "limit_reason": "A message or animation covers the generated slot in this exact boundary frame. Current type, count and availability remain unknown. The small next marker is absent or obscured in this frame; its type/count are not inferred.",
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 17,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 667.0,
+    "frame": "turn_evidence/t0667.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 667,
+      "evidence_ids": [
+        "f667_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 17,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 667.0,
+    "frame": "turn_evidence/t0667.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 667,
+      "evidence_ids": [
+        "f667_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 18,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 670.0,
+    "frame": "turn_evidence/t0670.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 670,
+      "evidence_ids": [
+        "f670_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 18,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 670.0,
+    "frame": "turn_evidence/t0670.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": "Lightning",
+        "count": 1,
+        "available": true,
+        "visibility": "visible_generated_token"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 670,
+      "evidence_ids": [
+        "f670_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 18,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 721.0,
+    "frame": "turn_evidence/t0721.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 721,
+      "evidence_ids": [
+        "f721_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 18,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 721.0,
+    "frame": "turn_evidence/t0721.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 721,
+      "evidence_ids": [
+        "f721_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 19,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 722.0,
+    "frame": "turn_evidence/t0722.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "absent_or_obscured"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 722,
+      "evidence_ids": [
+        "f722_00"
+      ],
+      "limit_reason": "The small next marker is absent or obscured in this frame; its type/count are not inferred.",
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 19,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 722.0,
+    "frame": "turn_evidence/t0722.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "obscured"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "visibility": "absent_or_obscured"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 722,
+      "evidence_ids": [
+        "f722_00"
+      ],
+      "limit_reason": "A message or animation covers the generated slot in this exact boundary frame. Current type, count and availability remain unknown. The small next marker is absent or obscured in this frame; its type/count are not inferred.",
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 19,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 732.0,
+    "frame": "turn_evidence/t0732.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 732,
+      "evidence_ids": [
+        "f732_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 19,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 732.0,
+    "frame": "turn_evidence/t0732.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Lightning",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 732,
+      "evidence_ids": [
+        "f732_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 20,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 734.0,
+    "frame": "turn_evidence/t0734.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 734,
+      "evidence_ids": [
+        "f734_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 20,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 734.0,
+    "frame": "turn_evidence/t0734.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": "Lightning",
+        "count": 1,
+        "available": true,
+        "visibility": "visible_generated_token"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 734,
+      "evidence_ids": [
+        "f734_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 20,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 785.0,
+    "frame": "turn_evidence/t0785.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 785,
+      "evidence_ids": [
+        "f785_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 20,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 785.0,
+    "frame": "turn_evidence/t0785.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 785,
+      "evidence_ids": [
+        "f785_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 21,
+    "phase": "board_at_start",
+    "player": "owner",
+    "time": 786.0,
+    "frame": "turn_evidence/t0786.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 786,
+      "evidence_ids": [
+        "f786_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 21,
+    "phase": "board_at_start",
+    "player": "opponent",
+    "time": 786.0,
+    "frame": "turn_evidence/t0786.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 786,
+      "evidence_ids": [
+        "f786_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 21,
+    "phase": "board_after",
+    "player": "owner",
+    "time": 790.0,
+    "frame": "turn_evidence/t0790.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true,
+        "visibility": "visible_generated_token"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 790,
+      "evidence_ids": [
+        "f790_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  },
+  {
+    "turn": 21,
+    "phase": "board_after",
+    "player": "opponent",
+    "time": 790.0,
+    "frame": "turn_evidence/t0790.00.jpg",
+    "zone": {
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "visibility": "observed_empty"
+      },
+      "next": {
+        "type": "Fire",
+        "count": 1,
+        "available": null,
+        "visibility": "visible_preview_icon"
+      },
+      "basis": "Direct visual audit of this exact native boundary frame, without turn/game-rule defaults",
+      "source_video": "20261012_203719000_iOS.MP4",
+      "observed_at_source_seconds": 790,
+      "evidence_ids": [
+        "f790_00"
+      ],
+      "limit_reason": null,
+      "preview_availability_limit": "A visible preview icon establishes its displayed type/count, not future availability."
+    }
+  }
+]

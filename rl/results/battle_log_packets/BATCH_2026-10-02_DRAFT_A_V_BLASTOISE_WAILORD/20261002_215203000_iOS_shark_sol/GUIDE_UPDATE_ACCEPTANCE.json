@@ -1,0 +1,35 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-10-03T01:22:45.823407+00:00",
+  "accepted_by": "/root",
+  "source_video": "20261002_215203000_iOS.MP4",
+  "source_sha256": "d0e031e9a27c358ad0e1590621014f2758bf80138b83c0776f9961ca34c88b7c",
+  "guide_update_checked": true,
+  "independent_reviewer": "ind_drafta_manual2",
+  "independent_model": "gpt-6.1-sol",
+  "independent_check": "independent_sol/CHECK_RESULT_AFTER_REPAIR.json",
+  "independent_check_sha256": "ec6bb21144f0ecd3ae8bc04af8395dd1369b125a6320727c7433ce62ee26dbf5",
+  "checked_submission_manifest": "SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+  "checked_submission_manifest_sha256": "8b3daf869cb180d0b022ee18b67462762d87d3d19ec09ec315c6875942a48f2a",
+  "accepted_files": {
+    "GUIDE_UPDATE_SUPPLEMENT.json": "f27ee463dcc6ae5220be7eb1f07cff0f688d7a5912b6d8d74106697ff3cfc8dd",
+    "GUIDE_UPDATE_SUPPLEMENT.md": "726c3743ff78a04d7ab528d76dd8bee462a48add3ad478f8790df834e20e4903",
+    "SEEN_CARD_INVENTORY.json": "b4ccf89a90264c184d81a764c5ce37cd90e15f7c825f4f6d430314dafb3dd8f0",
+    "SEEN_CARD_INVENTORY.md": "d4903e623360d7b4df5dd474079722f796b270514d38e0bf6c82b092ec043fe9"
+  },
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "limits": [
+    "Concealed opponent draw/search identities remain unknown; complete opponent deck snapshot does not identify hidden held copies.",
+    "Neither discard pile is opened. Only public top cards and source-witnessed transactions support partial discard histories; exact full counts remain null.",
+    "Covered evolution lower faces are not directly readable. Witnessed same-source evolution genealogy is separate from direct face observation.",
+    "Locator grids are one-fps nominal indices. They establish full-span review but may omit subsecond UI or input; selected native frames have separately measured source PTS.",
+    "Exact physical collector numbers are not transcribed. Observed alternate artwork and physical-copy lower bounds are separate from the supplied20-slot printing snapshot.",
+    "Auto OFF and manual choice prompts support user control on each owner turn, but touch telemetry is absent.",
+    "Composite resolved/terminal board states have multiple measured anchors and no single exact source time; no missing interval is reconstructed."
+  ],
+  "guide_source_receipt": "../GUIDE_UPDATE_RECEIPT.json",
+  "scope": "Only these eight current same-card computer comparison games; older packets untouched",
+  "actual_destination": "local_review_batch_and_BATTLE_REVIEW_INDEX",
+  "external_game_entry_requested": false
+}

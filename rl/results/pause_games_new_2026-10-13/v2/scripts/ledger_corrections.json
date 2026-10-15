@@ -1,0 +1,37 @@
+{
+ "_about": "Corrections to the Codex ledgers that the laptop's review of the 92 positions (REVIEW_POSITIONS_laptop.md, 'Facts only the frames show', Oct 14) settled from the video frames or from the ledgers' own numbers. normalize_ledger.py applies them to its COPY of the ledger (the Recording_QA files are never edited) and records them in the copy's `corrections`; the converter puts each `note` in the notes of the positions of its `turns` (all of the game's positions when `turns` is null). An op that changes nothing is an error. `was` is what the ledger says now (an op is refused on a ledger that says something else).",
+ "20261012_010706000_iOS": [
+  {"id": "010706-opponent-hands", "op": "set_opponent_hand", "counts": {"3": 6, "5": 7, "7": 8}, "was": {"3": 5, "5": 6, "7": [7, 8]}, "turns": [3, 5, 7],
+   "note": "the opponent's hand at his turns 3 / 5 / 7 is 6 / 7 / 8 (the frames), not 5 / 6 / 7",
+   "evidence": "REVIEW_POSITIONS_laptop.md, facts only the frames show: 010706 turn_evidence/capture_128.40_top.jpg, capture_190.00_top.jpg, capture_260.00_top.jpg"}
+ ],
+ "20261012_203719000_iOS": [
+  {"id": "203719-opponent-hands", "op": "set_opponent_hand", "counts": {"7": 4, "9": 3, "11": 4, "13": 4}, "was": {"7": [3, 4], "9": [3, 4], "11": [3, 4], "13": [3, 4]}, "turns": [7, 9, 11, 13],
+   "note": "the opponent's hand at his turns 7 / 9 / 11 / 13 is 4 / 3 / 4 / 4 (the frames); the low end of the ledger's range gave 3 at turns 7, 11 and 13",
+   "evidence": "REVIEW_POSITIONS_laptop.md, facts only the frames show: 203719 turn_evidence/t0257.00_top.jpg, t0358.00_top.jpg, t0416.50_top.jpg, t0466.90_top.jpg"}
+ ],
+ "20261012_210823000_iOS": [
+  {"id": "210823-meowth-left-bench", "op": "rename_pokemon", "side": "opponent", "name": "Alolan Meowth", "to": "Meowth", "variant": "50 HP, Carefree Steps / Feelin' Fine", "turns": null,
+   "note": "the opponent's left-Bench Pokémon is a Meowth B2 124 / B2 204 (Carefree Steps, Feelin' Fine, 50 HP, Colorless), not an Alolan Meowth (Codex wrote 'Alolan Meowth, 50 HP, Nasty Plot'; no such card exists)",
+   "evidence": "REVIEW_POSITIONS_laptop.md, facts only the frames show: 210823 turn_evidence/t0047.00_top.jpg, t0085.50_top.jpg"}
+ ],
+ "20261012_225319000_iOS": [
+  {"id": "225319-opponent-hand", "op": "set_opponent_hand", "counts": {"8": 4}, "was": {"8": [5, 6]}, "turns": [8],
+   "note": "the opponent's hand at his turn 8 is 4 (the frames; Codex wrote 5 to 6 but its own plays give 4)",
+   "evidence": "REVIEW_POSITIONS_laptop.md, facts only the frames show: 225319 turn_evidence/t0401.00_top.jpg"}
+ ],
+ "20261013_015659000_iOS": [
+  {"id": "015659-opponent-hands", "op": "set_opponent_hand", "counts": {"5": 6, "7": 7, "9": 6}, "was": {"5": 5, "7": 6, "9": 5}, "turns": [5, 7, 9],
+   "note": "the opponent's hand at his turns 5 / 7 / 9 is 6 / 7 / 6 (the frames), not 5 / 6 / 5",
+   "evidence": "REVIEW_POSITIONS_laptop.md, facts only the frames show: 015659 turn_evidence/t0114.50_top.png, t0157.80_top.png, t0208.80_top.png; overview 00047-00057, 00118-00164"},
+  {"id": "015659-no-rare-candy-turn-4", "op": "replace_play", "turn": 4, "order": 2, "expect": {"kind": "card_play", "card_name": "Rare Candy"},
+   "set": {"kind": "evolution", "card_name": "Mega Lucario ex", "target": "Active Riolu", "result": "evolve Riolu into Mega Lucario ex (not a Rare Candy: only Professor's Research left the hand)"}, "turns": null,
+   "note": "the opponent played no Rare Candy at his turn 4 (Mega Lucario ex is a Stage 1; the frames show only Research leaving the hand): it is not in his discard and his hand is one card larger",
+   "evidence": "REVIEW_POSITIONS_laptop.md, facts only the frames show: 015659 turn_evidence/t0114.50_top.png, t0157.80_top.png, t0208.80_top.png"}
+ ],
+ "20261013_022530000_iOS": [
+  {"id": "022530-elegant-cape", "op": "rename_tool", "side": "opponent", "name": "Giant Cape", "to": "Elegant Cape", "from_turn": 1, "to_turn": 99, "turns": null,
+   "note": "the opponent's Tool is Elegant Cape B3b 065 (+30 HP on a Stage 1), not Giant Cape (+20 on any Pokémon): Scyther stays at 70 and Mega Scizor ex is 230",
+   "evidence": "REVIEW_POSITIONS_laptop.md, major 9 and facts only the frames show: 022530 turn_evidence/t0190.00.jpg, t0217.00_top.jpg; the ledger's own HP numbers"}
+ ]
+}

@@ -1,0 +1,52 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-13T04:47:35.683379+00:00",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "source_video": "20261013_030351000_iOS.MP4",
+  "source_sha256": "d0a221cd236c620f467bbf34ad8078fd59c72323a7dca71a4af344f0489c6c7f",
+  "scope": "Entire supplied recording, one human battle, opening, all 16 turns and terminal result",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 16,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_NEWEST_TWO\\20261013_030351000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "accepted_input_sha256": {
+    "REVIEW.md": "9f1ab44628569c6d02e2f2c058926bd3861671f66ef067ac9b7ecdafe3ca2e6d",
+    "COVERAGE.md": "3ccf5fdfd3284ea02374b711ba9ba8e86cf2f70bb0e92073755e05d4e9ddf747",
+    "SUMMARY.json": "2e72fe83246a2d906baf9d02bc1a5432a232fc7f5da2ee90823e9a56163da5aa",
+    "UNCERTAINTIES.json": "bc1b4f317258eb8d39177342a2866c9a5c725bc142ba57b51c68021dbfc20156",
+    "PAUSE_GAME.json": "8839544c044ab517716cd5e4daf459b114a1eda1296b972ee0ffd3c763f01c6e",
+    "DECK_USED.json": "31aa412c2d23d9c47b95de955e45ca8854c15cd3c9972968d11e76fac123ee07",
+    "TURN_LEDGER.json": "98593e65bf74a607abd946d4e526a06f6bfdff253f699502f47b81fdd26795b3",
+    "TURN_EVIDENCE.json": "5458f80bb5f80156a507739cdeb10b3bee4a6d458785957bdb4e86d85bb71660"
+  },
+  "basis": "Whole-source Sol review, separately bounded Sol checks against source frames, and lead reconciliation of coverage, ordinary decisions, draws/searches, hand arithmetic, point progression, decisive sequences and terminal outcome. Structural integrity checked separately.",
+  "administrative_fields_changed_after_independent_freeze": [
+    "lead_checked",
+    "battle_review_status",
+    "lead_acceptance"
+  ],
+  "source_limits": [
+    "Specific queue title is not displayed; human battle classification is based on visible matchmaking/opponent play and no Auto option, with owner requested Pause Games routing.",
+    "Opposing hidden card identities and deck list unavailable.",
+    "T5/T7 single-card raised views and T9 inspection zoom do not prove an unzoomed spread hand.",
+    "Owner deck empty T15; no normal draw.",
+    "No opponent opened discard views and no other periodic owner pile openings.",
+    "Filmed QR exact 20 is initially absent from live 26-deck catalog; no fabricated live snapshot.",
+    "QR resolves semantic card versions and configured Fighting+Metal; exact printing/artwork/rarity remain qualified."
+  ],
+  "outcome": {
+    "result": "loss",
+    "owner_points": 2,
+    "opponent_points": 3,
+    "turns_played": 16,
+    "damage_done": 230,
+    "result_evidence_ids": [
+      "f0626.00"
+    ],
+    "concession": false
+  },
+  "deck_status": "Filmed QR proves the exact 20 semantic slots and Fighting/Metal Energy. The deck was absent from the initial live list. Proposed list is PREPARED_FILMED_DECK.json. A separate live saved-list snapshot will be appended after actual external save, preserving initial reviewer provenance.",
+  "external_status": "Prepared deck and game import pending; no external save claimed."
+}

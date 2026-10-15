@@ -1,0 +1,69 @@
+{
+  "operation": "Read-only storage inventory",
+  "created_at_utc": "2026-10-02T21:48:52.653937+00:00",
+  "videos": 2,
+  "online_only": 0,
+  "allocated_bytes_before": 1851785216,
+  "allocated_bytes_after": 1851785216,
+  "local_bytes_reclaimed": 0,
+  "files_deleted": 0,
+  "method": "Microsoft-documented attrib +U -P; only in-sync cloud placeholders are changed",
+  "verification": "Cloud placeholder metadata and actual allocated disk bytes; video contents are never read",
+  "documentation": "https://learn.microsoft.com/en-us/sharepoint/files-on-demand-windows",
+  "entries": [
+    {
+      "video": "20260908_022627000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_022627000_iOS.MP4",
+      "before": {
+        "logical_bytes": 1351891106,
+        "allocated_bytes": 1048576000,
+        "attributes": 4199968,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 1351891106,
+        "allocated_bytes": 1048576000,
+        "attributes": 4199968,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260929_020916000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260929_020916000_iOS.MP4",
+      "before": {
+        "logical_bytes": 917354837,
+        "allocated_bytes": 803209216,
+        "attributes": 4199968,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "after": {
+        "logical_bytes": 917354837,
+        "allocated_bytes": 803209216,
+        "attributes": 4199968,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      }
+    }
+  ]
+}

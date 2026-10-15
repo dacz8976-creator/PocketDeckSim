@@ -1,0 +1,13 @@
+# Targeted repairs after independent rejection
+
+The submitted eight files and hash receipt were preserved before edits in `before_independent_repairs_20261012T233338Z`. Frozen SOURCE and ASSIGNMENT files were not changed. No external writes, registration, acceptance or source movement occurred.
+
+R1: New native seeks from 466.7 through 467.5 seconds establish a clean three-card fan at 466.9 seconds: Glimmet, Glimmora, Lucky Ice Pop, left to right. Glimmet selection starts about 467.1 seconds and lift is clear at 467.2 seconds. The prior selected 468-second frame already shows Glimmet moving to the Bench and is now explicitly unsuitable for the original hand. The selected hand, board, fan count and references use f466_90. Draw end is approximately 466.85 seconds, with 0.1-second inspection precision. Candidates at 468, 470 and 473 seconds are tied to that draw and correctly marked after the first decision. Native full frames and required top/bottom crops are retained.
+
+R2: The f107_20 hand remains useful, but its current owner Energy slot is visibly empty during generation. It now records type null, count 0, availability false, and an absent next marker. A separate native f107_50 observation shows one generated Darkness during Poké Ball selection; it is not substituted for the earlier preplay boundary. Poké Ball is selected at about 107.5 seconds and leaves the fan by 107.6 seconds, while its play animation continues through 109 seconds. The late Regigigas attachment near 150 seconds remains unchanged.
+
+All 42 start/end boundary frame pairs were visually audited. The turn-based Zone helper was removed. Each Zone is now copied from a direct observation of its exact frame: visible generated token, visible empty slot, or an explicit glow/message/zoom visibility limit. Obscured values remain null. A preview icon establishes its displayed type/count only; future availability remains null. This also corrects the turn 1 empty-slot type, early generation frames, hidden next markers, and transient opponent preview differences.
+
+The audit also corrected selected hand timing without changing identities or counts: turn 17 now uses the clean two-Ice-Pop fan at 628 seconds before the first play; turns 19 and 21 use clear empty-hand views at 722 and 786 seconds. Empty-deck messages have their own correct evidence references.
+
+Entire-source and 21-turn coverage, hidden-card limits, opponent concession, final 1-to-2 score, and the verified filmed QR provenance remain unchanged. Structural validation passes with 21 rows and no issues. All eight final file hashes are in REVIEW_PACKET_HASHES.json. Fresh independent acceptance remains pending.

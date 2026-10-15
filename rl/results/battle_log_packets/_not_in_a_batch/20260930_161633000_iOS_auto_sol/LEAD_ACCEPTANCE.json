@@ -1,0 +1,25 @@
+{
+  "scope": "Complete nine-turn 169.925-second autopilot computer battle, setup through separate Riolu and Drilbur attacks, Bellibolt tool/coin effects, three knockouts and explicit Defeat",
+  "first_pass": "gpt-6.1-sol/high /root/sol_auto_161633",
+  "lead_checks": "Read full review, coverage, summary and uncertainties. Independently inspected opening Auto at10.5,39-second Riolu/oneFighting and distinct Scratch/Headbutt Bounce Drilbur versions,66-second Stage1+30HP tool caption,77-second Riolu60damage,144-second held Arena/Fighting symbol and Bellibolt70/Drilbur60,147-second Drilbur twoEnergy before Headbutt Bounce,157.5-second finalDrilbur0/Bellibolt20,169-second explicit Defeat/named computer deck. Astra independently checked Arena eligibility and conditional immediate knockout; original worker prose corrected and preserved.",
+  "outcome": "owner_loss",
+  "final_points": {
+    "owner": 0,
+    "opponent": 3
+  },
+  "owner_visible_core": "Riolu; Scratch Drilbur / Headbutt Bounce Drilbur; Garchomp ex and Mega Lucario ex held",
+  "opponent": "AI Mega Manectric ex & Bellibolt ex Deck (Deluxe Pack: Mega)",
+  "last_turn": 9,
+  "useful_finding": "Two different Drilbur versions deal different damage. Arena of Antiquity is drawn and held. Its visible Fighting bonus supports a conditional final attack of70 instead of the observed50 against Bellibolt ex70HP, which would produce an immediate knockout if played first under the shown conditions. That alternative was not executed and does not establish an eventual win.",
+  "limitations": "Root and Astra checks are bounded. The cape title, opening coin face and hidden cards remain unknown. The Arena alternative is a source-text prediction, not a verified alternate engine result.",
+  "astra_consulted": true,
+  "astra_reason": "Conflicting Stadium eligibility claims and conditional missed-knockout interpretation independently resolved in ASTRA_CHECK.md",
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20260930_161633000_iOS.MP4",
+  "source_sha256": "0795e24efb0f71c3461d23b5860a736a30755cf2071a3047eb4b90a731193a79",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; excluded by owner instruction"
+}

@@ -1,0 +1,21 @@
+{
+  "schema": "retrospective-field-supplement-v1",
+  "reviewer": "sol_retro_ladder_012720",
+  "assigned_game": "20260928_200654000_iOS.MP4",
+  "status": "source_work_complete",
+  "registered_utc": "2026-10-02T22:18:38+00:00",
+  "registration_basis": "Registered before new visual inspection; root existing verification and locator preprocessing reused",
+  "scope": "Setup and all14recorded turns, owner2,4,6,8,10,12,14",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "initial_new_native_frame_cap": 60,
+  "source_read_policy": "Root exact source already verified and cached; do not repeat hash or locator decode",
+  "main_review_status": "Reviewed unchanged",
+  "accepted_outcome": "owner2-3loss inherited",
+  "old_packet": "Recording_QA/20260928_200654000_iOS_sol",
+  "preservation": "Separate packet only; no shared registration/index/events/external/source eviction or simulator edits",
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance_status": "pending_separate_source_check",
+  "timestamp_note": "Initial future timestamp corrected to actual clock before first visual inspection.",
+  "final_new_native_cap": 64
+}

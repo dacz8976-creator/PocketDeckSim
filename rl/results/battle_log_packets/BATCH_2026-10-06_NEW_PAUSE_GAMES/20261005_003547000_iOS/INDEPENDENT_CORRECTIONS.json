@@ -1,0 +1,18 @@
+{
+  "correction_ids": [
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "source_video": "20261005_003547000_iOS.MP4",
+  "independent_report": "independent_sol/CHECK_RESULT.json",
+  "prior_submission": "submitted_before_independent_corrections",
+  "changes": "Only independently identified evidence, reveal order, observed turn labels and authored name encoding corrected; source and QR receipt unchanged.",
+  "current_sha256": {
+    "TURN_LEDGER.json": "9867b2d1515da2d5f916b6918869e533136028bd1dfb962a4633e8d6cdd737f2",
+    "TURN_EVIDENCE.json": "01df8749f6946081b5479c0c5fa51a678b09b40dbfded088c20950f98ed587ee",
+    "DECK_USED.json": "903cdfb46dde19d212f02a247394c379aa2a46c1dc4e3769563a8de0fbd5582f",
+    "REVIEW.md": "845cda69d1255563e0a331a817c0663ba4cb1aefc45b79b92584957ab9c266ea"
+  }
+}

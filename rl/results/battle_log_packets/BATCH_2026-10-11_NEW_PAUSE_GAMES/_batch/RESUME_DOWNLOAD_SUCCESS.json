@@ -1,0 +1,31 @@
+{
+  "verified_utc": "2026-10-12T03:03:54.352757+00:00",
+  "requested_retry_sources": 2,
+  "successful_downloads": 2,
+  "remaining_download_blockers": [],
+  "browser_sign_in_needed": false,
+  "originals_modified": false,
+  "sources": [
+    {
+      "source_video": "20261012_003458000_iOS.MP4",
+      "bytes": 673462176,
+      "sha256": "399ef7e1be5545ca1284a7aedb9f6eea70abb5929ed7cbf2083d539dae64f413",
+      "duration_seconds": 363.783333,
+      "intake_utc": "2026-10-12T02:49:21.133688+00:00",
+      "identity_verified_event_id": "0e6e4507-42b8-49c7-96b9-ab75cb743661",
+      "identity_basis": "CLI SHA-256 and stable size/mtime during intake",
+      "binding": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-11_NEW_PAUSE_GAMES\\20261012_003458000_iOS\\SOURCE.json"
+    },
+    {
+      "source_video": "20261012_004435000_iOS.MP4",
+      "bytes": 861227730,
+      "sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "duration_seconds": 463.93,
+      "intake_utc": "2026-10-12T02:04:12.783999+00:00",
+      "identity_verified_event_id": "f978a70d-6cd7-4e2d-8167-68cfd300fedb",
+      "identity_basis": "CLI SHA-256 and stable size/mtime during intake",
+      "binding": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-11_NEW_PAUSE_GAMES\\20261012_004435000_iOS\\SOURCE.json"
+    }
+  ],
+  "earlier_failed_attempts": "Preserved in per-source source_access_history and batch retry receipts."
+}

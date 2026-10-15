@@ -1,0 +1,106 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_210952000_iOS_auto_sol",
+  "review_date": "2026-10-02",
+  "sources": [
+    {
+      "video_basename": "20261002_210952000_iOS.MP4",
+      "sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol",
+  "deck_name": "Draft A: Shark Tempo",
+  "opening": {
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Irida",
+        "variant": null,
+        "basis": "Direct native visible left-to-right hand; public transaction counts reconcile",
+        "evidence_ids": [
+          "F0014.80"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Lapras",
+        "variant": null,
+        "basis": "Direct native visible left-to-right hand; public transaction counts reconcile",
+        "evidence_ids": [
+          "F0014.80"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Copycat",
+        "variant": null,
+        "basis": "Direct native visible left-to-right hand; public transaction counts reconcile",
+        "evidence_ids": [
+          "F0014.80"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Mega Sharpedo ex",
+        "variant": null,
+        "basis": "Direct native visible left-to-right hand; public transaction counts reconcile",
+        "evidence_ids": [
+          "F0014.80"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Professor's Research",
+        "variant": null,
+        "basis": "Direct native visible left-to-right hand; public transaction counts reconcile",
+        "evidence_ids": [
+          "F0014.80"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "count": 5,
+    "basis": "Direct native visible left-to-right hand; public transaction counts reconcile",
+    "evidence_ids": [
+      "F0014.80"
+    ],
+    "status": "observed",
+    "limit_reason": null,
+    "source_video": "20261002_210952000_iOS.MP4",
+    "timestamp_seconds": 14.8,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "selected_active": {
+      "name": "Lapras",
+      "opening_position": 2,
+      "source_video": "20261002_210952000_iOS.MP4",
+      "timestamp_seconds": 15.4,
+      "evidence_ids": [
+        "F0015.40"
+      ]
+    },
+    "redraw_or_replacement": "No redraw or replacement of opening observed",
+    "before_active_placement": true
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "first_pass_submitted_awaiting_independent_acceptance",
+  "outcome": "loss",
+  "limits": [
+    "No opened discard piles; hidden computer draws stay null.",
+    "Local computer comparison; no online game entry."
+  ],
+  "lead_checked": false
+}

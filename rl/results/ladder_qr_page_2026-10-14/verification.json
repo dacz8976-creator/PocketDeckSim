@@ -1,0 +1,1357 @@
+{
+ "commit": "f44120e9",
+ "decks": [
+  {
+   "key": "brew-07",
+   "group": "Shortlist",
+   "label": "Brew 07",
+   "title": "Hoopa, Darkrai and Sableye",
+   "file": "decks/brews/brew-07-hoopa-darkrai-sableye.txt",
+   "report": "2026-10-12_brew-07-hoopa-darkrai-sableye",
+   "pg": [
+    "b07"
+   ],
+   "png": "decks/brews/brew-07-hoopa-darkrai-sableye.png",
+   "blurb": "Hoopa ex, Darkrai ex and Mega Sableye ex, with Deceptive Needle, Lucky Ice Pop and Starting Plains.",
+   "checks": [
+    {
+     "name": "file is the one in the report manifest",
+     "ok": true,
+     "detail": "sha256 304227955001a140..., manifest says 304227955001a140... and 304227955001a140...; state: committed"
+    },
+    {
+     "name": "code decodes to 20 cards",
+     "ok": true,
+     "detail": "16 Trainers + 4 Pokémon"
+    },
+    {
+     "name": "same cards and counts as the deck file",
+     "ok": true,
+     "detail": "14 different cards"
+    },
+    {
+     "name": "same Energy as the deck file",
+     "ok": true,
+     "detail": "bytes [7] v [7]"
+    },
+    {
+     "name": "every printing in the deck file is a printing of the card the code names",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "name": "QR image (lib/encode_qr.py PNG) reads back as the code",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "name": "QR image on the page (SVG) reads back as the code",
+     "ok": true,
+     "detail": "41 x 41 modules"
+    },
+    {
+     "name": "QR image read back out of the finished page file",
+     "ok": true,
+     "detail": "/home/dacz8976/pgfix/rl/results/ladder_qr_page_2026-10-14/ladder_qr_page.html"
+    }
+   ],
+   "notes": [],
+   "sha256": "304227955001a14076eeeebf8de4d7868e4643242ca8a18e0c804c67651f6c49",
+   "code": "EJiWqJiWqJiXwJiXwJiaXpiYLpiWnpiWnpiapJiapJiY4piWlJibgJiccJiccJia/gQAUKAAUKAAD0YAS74BBw==",
+   "energy_bytes": [
+    7
+   ],
+   "energy": [
+    "Darkness"
+   ],
+   "cards": [
+    {
+     "n": 2,
+     "name": "Hoopa ex",
+     "id": "B4 103",
+     "kind": "Pokémon",
+     "entity": "pokemon:20640"
+    },
+    {
+     "n": 1,
+     "name": "Darkrai ex",
+     "id": "A2 110",
+     "kind": "Pokémon",
+     "entity": "pokemon:3910"
+    },
+    {
+     "n": 1,
+     "name": "Mega Sableye ex",
+     "id": "B3b 041",
+     "kind": "Pokémon",
+     "entity": "pokemon:19390"
+    },
+    {
+     "n": 2,
+     "name": "Professor’s Research",
+     "id": "P-A 007",
+     "kind": "Trainer",
+     "entity": "trainer:40"
+    },
+    {
+     "n": 2,
+     "name": "Cyrus",
+     "id": "A2 150",
+     "kind": "Trainer",
+     "entity": "trainer:320"
+    },
+    {
+     "n": 1,
+     "name": "Copycat",
+     "id": "B1 225",
+     "kind": "Trainer",
+     "entity": "trainer:990"
+    },
+    {
+     "n": 1,
+     "name": "Pokémon Center Lady",
+     "id": "A2b 070",
+     "kind": "Trainer",
+     "entity": "trainer:430"
+    },
+    {
+     "n": 2,
+     "name": "Poké Ball",
+     "id": "P-A 005",
+     "kind": "Trainer",
+     "entity": "trainer:30"
+    },
+    {
+     "n": 2,
+     "name": "Lucky Ice Pop",
+     "id": "B2 145",
+     "kind": "Trainer",
+     "entity": "trainer:1060"
+    },
+    {
+     "n": 1,
+     "name": "Repel",
+     "id": "A3a 064",
+     "kind": "Trainer",
+     "entity": "trainer:610"
+    },
+    {
+     "n": 1,
+     "name": "X Speed",
+     "id": "P-A 002",
+     "kind": "Trainer",
+     "entity": "trainer:20"
+    },
+    {
+     "n": 1,
+     "name": "Field Blower",
+     "id": "B3 147",
+     "kind": "Trainer",
+     "entity": "trainer:1280"
+    },
+    {
+     "n": 2,
+     "name": "Deceptive Needle",
+     "id": "B4 148",
+     "kind": "Trainer",
+     "entity": "trainer:1520"
+    },
+    {
+     "n": 1,
+     "name": "Starting Plains",
+     "id": "B2 154",
+     "kind": "Trainer",
+     "entity": "trainer:1150"
+    }
+   ],
+   "printing_notes": [],
+   "compared": [
+    {
+     "what": "Pause Games b07 \"Brew 7: Hoopa / Darkrai / Sableye\"",
+     "verdict": "same code",
+     "diff": {},
+     "energy_differs": false
+    },
+    {
+     "what": "image decks/brews/brew-07-hoopa-darkrai-sableye.png",
+     "verdict": "same code",
+     "diff": {},
+     "energy_differs": false
+    }
+   ]
+  },
+  {
+   "key": "deck-12",
+   "group": "Shortlist",
+   "label": "Deck 12",
+   "title": "Ariados, Whimsicott and Ogerpon",
+   "file": "decks/dustin/12-ariados-whimsicott-ogerpon.txt",
+   "report": "2026-10-13_12-ariados-whimsicott-ogerpon",
+   "pg": [],
+   "png": null,
+   "blurb": "Ariados and Whimsicott ex with Teal Mask Ogerpon ex, Team Rocket's Goo-zooka and Quick-Grow Extract.",
+   "checks": [
+    {
+     "name": "file is the one in the report manifest",
+     "ok": true,
+     "detail": "sha256 4d059bd2c5cba229..., manifest says 4d059bd2c5cba229... and 4d059bd2c5cba229...; state: committed"
+    },
+    {
+     "name": "code decodes to 20 cards",
+     "ok": true,
+     "detail": "11 Trainers + 9 Pokémon"
+    },
+    {
+     "name": "same cards and counts as the deck file",
+     "ok": true,
+     "detail": "14 different cards"
+    },
+    {
+     "name": "same Energy as the deck file",
+     "ok": true,
+     "detail": "bytes [1] v [1]"
+    },
+    {
+     "name": "every printing in the deck file is a printing of the card the code names",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "name": "QR image (lib/encode_qr.py PNG) reads back as the code",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "name": "QR image on the page (SVG) reads back as the code",
+     "ok": true,
+     "detail": "41 x 41 modules"
+    },
+    {
+     "name": "QR image read back out of the finished page file",
+     "ok": true,
+     "detail": "/home/dacz8976/pgfix/rl/results/ladder_qr_page_2026-10-14/ladder_qr_page.html"
+    }
+   ],
+   "notes": [],
+   "sha256": "4d059bd2c5cba229cc025746f05dca2d03281ebe07c0712917d9fc8d53c65bd5",
+   "code": "C5iWlJiWnpiafJicypicypiYfpiWqJiWqJiaXpiaaJibdgkAMzYAMzYAM0AAM0AAKtoAKtoAKuQAKuQANgYBAQ==",
+   "energy_bytes": [
+    1
+   ],
+   "energy": [
+    "Grass"
+   ],
+   "cards": [
+    {
+     "n": 2,
+     "name": "Spinarak",
+     "id": "B1a 005",
+     "kind": "Pokémon",
+     "entity": "pokemon:13110"
+    },
+    {
+     "n": 2,
+     "name": "Ariados",
+     "id": "B1a 006",
+     "kind": "Pokémon",
+     "entity": "pokemon:13120"
+    },
+    {
+     "n": 2,
+     "name": "Cottonee",
+     "id": "B1 015",
+     "kind": "Pokémon",
+     "entity": "pokemon:10970"
+    },
+    {
+     "n": 2,
+     "name": "Whimsicott ex",
+     "id": "B1 016",
+     "kind": "Pokémon",
+     "entity": "pokemon:10980"
+    },
+    {
+     "n": 1,
+     "name": "Teal Mask Ogerpon ex",
+     "id": "B2 017",
+     "kind": "Pokémon",
+     "entity": "pokemon:13830"
+    },
+    {
+     "n": 1,
+     "name": "X Speed",
+     "id": "P-A 002",
+     "kind": "Trainer",
+     "entity": "trainer:20"
+    },
+    {
+     "n": 1,
+     "name": "Poké Ball",
+     "id": "P-A 005",
+     "kind": "Trainer",
+     "entity": "trainer:30"
+    },
+    {
+     "n": 1,
+     "name": "Quick-Grow Extract",
+     "id": "B1a 067",
+     "kind": "Trainer",
+     "entity": "trainer:1020"
+    },
+    {
+     "n": 2,
+     "name": "Team Rocket’s Goo-zooka",
+     "id": "B4a 068",
+     "kind": "Trainer",
+     "entity": "trainer:1610"
+    },
+    {
+     "n": 1,
+     "name": "Leaf Cape",
+     "id": "A3 147",
+     "kind": "Trainer",
+     "entity": "trainer:510"
+    },
+    {
+     "n": 2,
+     "name": "Professor’s Research",
+     "id": "P-A 007",
+     "kind": "Trainer",
+     "entity": "trainer:40"
+    },
+    {
+     "n": 1,
+     "name": "Copycat",
+     "id": "B1 225",
+     "kind": "Trainer",
+     "entity": "trainer:990"
+    },
+    {
+     "n": 1,
+     "name": "Lisia",
+     "id": "B1 226",
+     "kind": "Trainer",
+     "entity": "trainer:1000"
+    },
+    {
+     "n": 1,
+     "name": "Hiking Trail",
+     "id": "B2b 069",
+     "kind": "Trainer",
+     "entity": "trainer:1270"
+    }
+   ],
+   "printing_notes": [],
+   "compared": []
+  },
+  {
+   "key": "deck-13a",
+   "group": "Shortlist",
+   "label": "Deck 13-a",
+   "title": "Alolan Ninetales and Raticate",
+   "file": "decks/dustin/13-a-ninetales-raticate.txt",
+   "report": "2026-10-12_13-a-ninetales-raticate",
+   "pg": [
+    "d13"
+   ],
+   "png": null,
+   "blurb": "Alolan Ninetales ex and Team Rocket's Raticate ex, with Soothing Shore and Elegant Cape.",
+   "checks": [
+    {
+     "name": "file is the one in the report manifest",
+     "ok": true,
+     "detail": "sha256 f79ad459a1188f10..., manifest says f79ad459a1188f10... and f79ad459a1188f10...; state: committed"
+    },
+    {
+     "name": "code decodes to 20 cards",
+     "ok": true,
+     "detail": "12 Trainers + 8 Pokémon"
+    },
+    {
+     "name": "same cards and counts as the deck file",
+     "ok": true,
+     "detail": "14 different cards"
+    },
+    {
+     "name": "same Energy as the deck file",
+     "ok": true,
+     "detail": "bytes [3] v [3]"
+    },
+    {
+     "name": "every printing in the deck file is a printing of the card the code names",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "name": "QR image (lib/encode_qr.py PNG) reads back as the code",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "name": "QR image on the page (SVG) reads back as the code",
+     "ok": true,
+     "detail": "41 x 41 modules"
+    },
+    {
+     "name": "QR image read back out of the finished page file",
+     "ok": true,
+     "detail": "/home/dacz8976/pgfix/rl/results/ladder_qr_page_2026-10-14/ladder_qr_page.html"
+    }
+   ],
+   "notes": [],
+   "sha256": "f79ad459a1188f10ba34be4606f3cbc60db21386e8ef91721c5506239653b6fa",
+   "code": "DJiWnpiWnpibgJicIJiWqJiWqJiXKpiXwJiYkpiaXpia1picrAgANnQANnQANn4ANn4AVLoAVLoAVMQAVMQBAw==",
+   "energy_bytes": [
+    3
+   ],
+   "energy": [
+    "Water"
+   ],
+   "cards": [
+    {
+     "n": 2,
+     "name": "Alolan Vulpix",
+     "id": "B2 028",
+     "kind": "Pokémon",
+     "entity": "pokemon:13940"
+    },
+    {
+     "n": 2,
+     "name": "Alolan Ninetales ex",
+     "id": "B2 029",
+     "kind": "Pokémon",
+     "entity": "pokemon:13950"
+    },
+    {
+     "n": 2,
+     "name": "Team Rocket’s Rattata",
+     "id": "B4a 058",
+     "kind": "Pokémon",
+     "entity": "pokemon:21690"
+    },
+    {
+     "n": 2,
+     "name": "Team Rocket’s Raticate ex",
+     "id": "B4a 059",
+     "kind": "Pokémon",
+     "entity": "pokemon:21700"
+    },
+    {
+     "n": 2,
+     "name": "Poké Ball",
+     "id": "P-A 005",
+     "kind": "Trainer",
+     "entity": "trainer:30"
+    },
+    {
+     "n": 1,
+     "name": "Field Blower",
+     "id": "B3 147",
+     "kind": "Trainer",
+     "entity": "trainer:1280"
+    },
+    {
+     "n": 1,
+     "name": "Elegant Cape",
+     "id": "B3b 065",
+     "kind": "Trainer",
+     "entity": "trainer:1440"
+    },
+    {
+     "n": 2,
+     "name": "Professor’s Research",
+     "id": "P-A 007",
+     "kind": "Trainer",
+     "entity": "trainer:40"
+    },
+    {
+     "n": 1,
+     "name": "Sabrina",
+     "id": "A1 225",
+     "kind": "Trainer",
+     "entity": "trainer:170"
+    },
+    {
+     "n": 1,
+     "name": "Cyrus",
+     "id": "A2 150",
+     "kind": "Trainer",
+     "entity": "trainer:320"
+    },
+    {
+     "n": 1,
+     "name": "Ilima",
+     "id": "A3 149",
+     "kind": "Trainer",
+     "entity": "trainer:530"
+    },
+    {
+     "n": 1,
+     "name": "Copycat",
+     "id": "B1 225",
+     "kind": "Trainer",
+     "entity": "trainer:990"
+    },
+    {
+     "n": 1,
+     "name": "Sightseer",
+     "id": "B2 150",
+     "kind": "Trainer",
+     "entity": "trainer:1110"
+    },
+    {
+     "n": 1,
+     "name": "Soothing Shore",
+     "id": "B4 154",
+     "kind": "Trainer",
+     "entity": "trainer:1580"
+    }
+   ],
+   "printing_notes": [],
+   "compared": [
+    {
+     "what": "Pause Games d13 \"Alolan Ninetales / Raticate\"",
+     "verdict": "same code",
+     "diff": {},
+     "energy_differs": false
+    }
+   ]
+  },
+  {
+   "key": "brew-08",
+   "group": "Also tested",
+   "label": "Brew 08",
+   "title": "Entei and Rainbow Cave",
+   "file": "decks/brews/brew-08-entei-rainbow-cave.txt",
+   "report": "2026-10-09_brew-08-entei-rainbow-cave",
+   "pg": [],
+   "png": "decks/brews/brew-08-entei-rainbow-cave.png",
+   "blurb": "Entei ex with Flame Patch, Giant Cape and two Rainbow Cave.",
+   "checks": [
+    {
+     "name": "file is the one in the report manifest",
+     "ok": true,
+     "detail": "sha256 b3392d82475130e4..., manifest says b3392d82475130e4... and b3392d82475130e4...; state: committed"
+    },
+    {
+     "name": "code decodes to 20 cards",
+     "ok": true,
+     "detail": "18 Trainers + 2 Pokémon"
+    },
+    {
+     "name": "same cards and counts as the deck file",
+     "ok": true,
+     "detail": "13 different cards"
+    },
+    {
+     "name": "same Energy as the deck file",
+     "ok": true,
+     "detail": "bytes [2] v [2]"
+    },
+    {
+     "name": "every printing in the deck file is a printing of the card the code names",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "name": "QR image (lib/encode_qr.py PNG) reads back as the code",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "name": "QR image on the page (SVG) reads back as the code",
+     "ok": true,
+     "detail": "41 x 41 modules"
+    },
+    {
+     "name": "QR image read back out of the finished page file",
+     "ok": true,
+     "detail": "/home/dacz8976/pgfix/rl/results/ladder_qr_page_2026-10-14/ladder_qr_page.html"
+    }
+   ],
+   "notes": [],
+   "sha256": "b3392d82475130e400887897b75e1add156ca4151f3ce85b38042233bd7336a0",
+   "code": "EpiWqJiWqJiaXpiaXpiYLpiXKpiXwJiapJiapJiaDpiaDpiY4piWnpiXopiXopictpictpia/gIAJ+IAJ+IBAg==",
+   "energy_bytes": [
+    2
+   ],
+   "energy": [
+    "Fire"
+   ],
+   "cards": [
+    {
+     "n": 2,
+     "name": "Entei ex",
+     "id": "A4a 010",
+     "kind": "Pokémon",
+     "entity": "pokemon:10210"
+    },
+    {
+     "n": 2,
+     "name": "Professor’s Research",
+     "id": "P-A 007",
+     "kind": "Trainer",
+     "entity": "trainer:40"
+    },
+    {
+     "n": 2,
+     "name": "Copycat",
+     "id": "B1 225",
+     "kind": "Trainer",
+     "entity": "trainer:990"
+    },
+    {
+     "n": 1,
+     "name": "Pokémon Center Lady",
+     "id": "A2b 070",
+     "kind": "Trainer",
+     "entity": "trainer:430"
+    },
+    {
+     "n": 1,
+     "name": "Sabrina",
+     "id": "A1 225",
+     "kind": "Trainer",
+     "entity": "trainer:170"
+    },
+    {
+     "n": 1,
+     "name": "Cyrus",
+     "id": "A2 150",
+     "kind": "Trainer",
+     "entity": "trainer:320"
+    },
+    {
+     "n": 2,
+     "name": "Lucky Ice Pop",
+     "id": "B2 145",
+     "kind": "Trainer",
+     "entity": "trainer:1060"
+    },
+    {
+     "n": 2,
+     "name": "Flame Patch",
+     "id": "B1 217",
+     "kind": "Trainer",
+     "entity": "trainer:910"
+    },
+    {
+     "n": 1,
+     "name": "Repel",
+     "id": "A3a 064",
+     "kind": "Trainer",
+     "entity": "trainer:610"
+    },
+    {
+     "n": 1,
+     "name": "Poké Ball",
+     "id": "P-A 005",
+     "kind": "Trainer",
+     "entity": "trainer:30"
+    },
+    {
+     "n": 2,
+     "name": "Giant Cape",
+     "id": "A2 147",
+     "kind": "Trainer",
+     "entity": "trainer:290"
+    },
+    {
+     "n": 2,
+     "name": "Rainbow Cave",
+     "id": "B4 155",
+     "kind": "Trainer",
+     "entity": "trainer:1590"
+    },
+    {
+     "n": 1,
+     "name": "Starting Plains",
+     "id": "B2 154",
+     "kind": "Trainer",
+     "entity": "trainer:1150"
+    }
+   ],
+   "printing_notes": [],
+   "compared": [
+    {
+     "what": "image decks/brews/brew-08-entei-rainbow-cave.png",
+     "verdict": "same code",
+     "diff": {},
+     "energy_differs": false
+    }
+   ]
+  },
+  {
+   "key": "brew-09",
+   "group": "Also tested",
+   "label": "Brew 09",
+   "title": "Sableye and Obstagoon",
+   "file": "decks/brews/brew-09-sableye-obstagoon.txt",
+   "report": "2026-10-12_brew-09-sableye-obstagoon",
+   "pg": [],
+   "png": "decks/brews/brew-09-sableye-obstagoon.png",
+   "blurb": "Mega Sableye ex and Galarian Obstagoon, with Rare Candy and Deceptive Needle.",
+   "checks": [
+    {
+     "name": "file is the one in the report manifest",
+     "ok": true,
+     "detail": "sha256 ec0a9376344eb42e..., manifest says ec0a9376344eb42e... and ec0a9376344eb42e...; state: committed"
+    },
+    {
+     "name": "code decodes to 20 cards",
+     "ok": true,
+     "detail": "14 Trainers + 6 Pokémon"
+    },
+    {
+     "name": "same cards and counts as the deck file",
+     "ok": true,
+     "detail": "13 different cards"
+    },
+    {
+     "name": "same Energy as the deck file",
+     "ok": true,
+     "detail": "bytes [7] v [7]"
+    },
+    {
+     "name": "every printing in the deck file is a printing of the card the code names",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "name": "QR image (lib/encode_qr.py PNG) reads back as the code",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "name": "QR image on the page (SVG) reads back as the code",
+     "ok": true,
+     "detail": "37 x 37 modules"
+    },
+    {
+     "name": "QR image read back out of the finished page file",
+     "ok": true,
+     "detail": "/home/dacz8976/pgfix/rl/results/ladder_qr_page_2026-10-14/ladder_qr_page.html"
+    }
+   ],
+   "notes": [
+    "B4 095: the deck file says \"Galarian Zigzagoon\", the catalog \"GalarianZigzagoon\" (spelling only; the code uses the id)"
+   ],
+   "sha256": "ec0a9376344eb42e13fac9ecb278099d43406455fbc3f8e2749f9d258c5a9a6d",
+   "code": "DpiYYJiYYJiWqJiWqJiWnpiWnpiaXpiaXpiXwJiYLpiccJiXopia/pibgAYAS74AS74AUFAAUFAAOUQAOUQBBw==",
+   "energy_bytes": [
+    7
+   ],
+   "energy": [
+    "Darkness"
+   ],
+   "cards": [
+    {
+     "n": 2,
+     "name": "Mega Sableye ex",
+     "id": "B3b 041",
+     "kind": "Pokémon",
+     "entity": "pokemon:19390"
+    },
+    {
+     "n": 2,
+     "name": "GalarianZigzagoon",
+     "id": "B4 095",
+     "kind": "Pokémon",
+     "entity": "pokemon:20560"
+    },
+    {
+     "n": 2,
+     "name": "Galarian Obstagoon",
+     "id": "B2 100",
+     "kind": "Pokémon",
+     "entity": "pokemon:14660"
+    },
+    {
+     "n": 2,
+     "name": "Rare Candy",
+     "id": "A3 144",
+     "kind": "Trainer",
+     "entity": "trainer:480"
+    },
+    {
+     "n": 2,
+     "name": "Professor’s Research",
+     "id": "P-A 007",
+     "kind": "Trainer",
+     "entity": "trainer:40"
+    },
+    {
+     "n": 2,
+     "name": "Poké Ball",
+     "id": "P-A 005",
+     "kind": "Trainer",
+     "entity": "trainer:30"
+    },
+    {
+     "n": 2,
+     "name": "Copycat",
+     "id": "B1 225",
+     "kind": "Trainer",
+     "entity": "trainer:990"
+    },
+    {
+     "n": 1,
+     "name": "Cyrus",
+     "id": "A2 150",
+     "kind": "Trainer",
+     "entity": "trainer:320"
+    },
+    {
+     "n": 1,
+     "name": "Pokémon Center Lady",
+     "id": "A2b 070",
+     "kind": "Trainer",
+     "entity": "trainer:430"
+    },
+    {
+     "n": 1,
+     "name": "Deceptive Needle",
+     "id": "B4 148",
+     "kind": "Trainer",
+     "entity": "trainer:1520"
+    },
+    {
+     "n": 1,
+     "name": "Giant Cape",
+     "id": "A2 147",
+     "kind": "Trainer",
+     "entity": "trainer:290"
+    },
+    {
+     "n": 1,
+     "name": "Starting Plains",
+     "id": "B2 154",
+     "kind": "Trainer",
+     "entity": "trainer:1150"
+    },
+    {
+     "n": 1,
+     "name": "Field Blower",
+     "id": "B3 147",
+     "kind": "Trainer",
+     "entity": "trainer:1280"
+    }
+   ],
+   "printing_notes": [],
+   "compared": [
+    {
+     "what": "image decks/brews/brew-09-sableye-obstagoon.png",
+     "verdict": "same code",
+     "diff": {},
+     "energy_differs": false
+    }
+   ]
+  },
+  {
+   "key": "draft-a",
+   "group": "Also tested",
+   "label": "Draft A",
+   "title": "Wallace (Mega Sharpedo and Ninetales)",
+   "file": "decks/brews/drafts_2026-10-01/draft-A-wallace.txt",
+   "report": "2026-10-08_draft-A-wallace",
+   "pg": [
+    "dA"
+   ],
+   "png": null,
+   "blurb": "The tested Wallace version: one Misty and one Wallace. The older two-Misty Shark Tempo version is a different list and a different code.",
+   "checks": [
+    {
+     "name": "file is the one in the report manifest",
+     "ok": true,
+     "detail": "sha256 b5b66d02a0f20da6..., manifest says b5b66d02a0f20da6... and b5b66d02a0f20da6...; state: committed"
+    },
+    {
+     "name": "code decodes to 20 cards",
+     "ok": true,
+     "detail": "11 Trainers + 9 Pokémon"
+    },
+    {
+     "name": "same cards and counts as the deck file",
+     "ok": true,
+     "detail": "14 different cards"
+    },
+    {
+     "name": "same Energy as the deck file",
+     "ok": true,
+     "detail": "bytes [3] v [3]"
+    },
+    {
+     "name": "every printing in the deck file is a printing of the card the code names",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "name": "QR image (lib/encode_qr.py PNG) reads back as the code",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "name": "QR image on the page (SVG) reads back as the code",
+     "ok": true,
+     "detail": "41 x 41 modules"
+    },
+    {
+     "name": "QR image read back out of the finished page file",
+     "ok": true,
+     "detail": "/home/dacz8976/pgfix/rl/results/ladder_qr_page_2026-10-14/ladder_qr_page.html"
+    }
+   ],
+   "notes": [],
+   "sha256": "b5b66d02a0f20da6388ed90db83e6b72eb91134070795a0be36e6d5a3b0ab504",
+   "code": "C5iW+JicPpiWqJiWqJiWnpiWnpiaXpiXwJiX/JicIJiapAkATe4ATe4ATfgATfgANnQANnQANn4ANn4AGGoBAw==",
+   "energy_bytes": [
+    3
+   ],
+   "energy": [
+    "Water"
+   ],
+   "cards": [
+    {
+     "n": 2,
+     "name": "Carvanha",
+     "id": "B4 034",
+     "kind": "Pokémon",
+     "entity": "pokemon:19950"
+    },
+    {
+     "n": 2,
+     "name": "Mega Sharpedo ex",
+     "id": "B4 035",
+     "kind": "Pokémon",
+     "entity": "pokemon:19960"
+    },
+    {
+     "n": 2,
+     "name": "Alolan Vulpix",
+     "id": "B2 028",
+     "kind": "Pokémon",
+     "entity": "pokemon:13940"
+    },
+    {
+     "n": 2,
+     "name": "Alolan Ninetales ex",
+     "id": "B2 029",
+     "kind": "Pokémon",
+     "entity": "pokemon:13950"
+    },
+    {
+     "n": 1,
+     "name": "Lapras",
+     "id": "A3 044",
+     "kind": "Pokémon",
+     "entity": "pokemon:6250"
+    },
+    {
+     "n": 1,
+     "name": "Misty",
+     "id": "A1 220",
+     "kind": "Trainer",
+     "entity": "trainer:120"
+    },
+    {
+     "n": 1,
+     "name": "Wallace",
+     "id": "B3b 068",
+     "kind": "Trainer",
+     "entity": "trainer:1470"
+    },
+    {
+     "n": 2,
+     "name": "Professor’s Research",
+     "id": "P-A 007",
+     "kind": "Trainer",
+     "entity": "trainer:40"
+    },
+    {
+     "n": 2,
+     "name": "Poké Ball",
+     "id": "P-A 005",
+     "kind": "Trainer",
+     "entity": "trainer:30"
+    },
+    {
+     "n": 1,
+     "name": "Copycat",
+     "id": "B1 225",
+     "kind": "Trainer",
+     "entity": "trainer:990"
+    },
+    {
+     "n": 1,
+     "name": "Cyrus",
+     "id": "A2 150",
+     "kind": "Trainer",
+     "entity": "trainer:320"
+    },
+    {
+     "n": 1,
+     "name": "Irida",
+     "id": "A2a 072",
+     "kind": "Trainer",
+     "entity": "trainer:380"
+    },
+    {
+     "n": 1,
+     "name": "Elegant Cape",
+     "id": "B3b 065",
+     "kind": "Trainer",
+     "entity": "trainer:1440"
+    },
+    {
+     "n": 1,
+     "name": "Lucky Ice Pop",
+     "id": "B2 145",
+     "kind": "Trainer",
+     "entity": "trainer:1060"
+    }
+   ],
+   "printing_notes": [],
+   "compared": [
+    {
+     "what": "Pause Games dA \"Draft A: Shark Tempo\"",
+     "verdict": "different",
+     "diff": {
+      "Misty": [
+       1,
+       2
+      ],
+      "Wallace": [
+       1,
+       0
+      ]
+     },
+     "energy_differs": false
+    }
+   ]
+  },
+  {
+   "key": "draft-d",
+   "group": "Also tested",
+   "label": "Draft D",
+   "title": "Entei and Houndoom",
+   "file": "decks/brews/drafts_2026-10-01/draft-D-entei-grimhound.txt",
+   "report": "2026-10-12_draft-D-entei-grimhound",
+   "pg": [
+    "dD"
+   ],
+   "png": null,
+   "blurb": "Entei ex with Houndour, one Mega Houndoom ex, Victini and Magby.",
+   "checks": [
+    {
+     "name": "file is the one in the report manifest",
+     "ok": true,
+     "detail": "sha256 31035755a6d09148..., manifest says 31035755a6d09148... and 31035755a6d09148...; state: committed"
+    },
+    {
+     "name": "code decodes to 20 cards",
+     "ok": true,
+     "detail": "11 Trainers + 9 Pokémon"
+    },
+    {
+     "name": "same cards and counts as the deck file",
+     "ok": true,
+     "detail": "12 different cards"
+    },
+    {
+     "name": "same Energy as the deck file",
+     "ok": true,
+     "detail": "bytes [2] v [2]"
+    },
+    {
+     "name": "every printing in the deck file is a printing of the card the code names",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "name": "QR image (lib/encode_qr.py PNG) reads back as the code",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "name": "QR image on the page (SVG) reads back as the code",
+     "ok": true,
+     "detail": "41 x 41 modules"
+    },
+    {
+     "name": "QR image read back out of the finished page file",
+     "ok": true,
+     "detail": "/home/dacz8976/pgfix/rl/results/ladder_qr_page_2026-10-14/ladder_qr_page.html"
+    }
+   ],
+   "notes": [],
+   "sha256": "31035755a6d09148a709dd9d869625b7e588f13d0150cac99a9c58ef5469be6f",
+   "code": "C5iWqJiWqJiWnpiWnpiaDpiaDpictpictpiXwJiXopiaXgkAJ+IAJ+IAEP4AEP4AUkQAQgQAQgQAIrAAIrABAg==",
+   "energy_bytes": [
+    2
+   ],
+   "energy": [
+    "Fire"
+   ],
+   "cards": [
+    {
+     "n": 2,
+     "name": "Entei ex",
+     "id": "A4a 010",
+     "kind": "Pokémon",
+     "entity": "pokemon:10210"
+    },
+    {
+     "n": 2,
+     "name": "Houndour",
+     "id": "A2a 011",
+     "kind": "Pokémon",
+     "entity": "pokemon:4350"
+    },
+    {
+     "n": 1,
+     "name": "Mega Houndoom ex",
+     "id": "P-B 080",
+     "kind": "Pokémon",
+     "entity": "pokemon:21060"
+    },
+    {
+     "n": 2,
+     "name": "Victini",
+     "id": "B3 025",
+     "kind": "Pokémon",
+     "entity": "pokemon:16900"
+    },
+    {
+     "n": 2,
+     "name": "Magby",
+     "id": "A4 032",
+     "kind": "Pokémon",
+     "entity": "pokemon:8880"
+    },
+    {
+     "n": 2,
+     "name": "Professor’s Research",
+     "id": "P-A 007",
+     "kind": "Trainer",
+     "entity": "trainer:40"
+    },
+    {
+     "n": 2,
+     "name": "Poké Ball",
+     "id": "P-A 005",
+     "kind": "Trainer",
+     "entity": "trainer:30"
+    },
+    {
+     "n": 2,
+     "name": "Flame Patch",
+     "id": "B1 217",
+     "kind": "Trainer",
+     "entity": "trainer:910"
+    },
+    {
+     "n": 2,
+     "name": "Rainbow Cave",
+     "id": "B4 155",
+     "kind": "Trainer",
+     "entity": "trainer:1590"
+    },
+    {
+     "n": 1,
+     "name": "Cyrus",
+     "id": "A2 150",
+     "kind": "Trainer",
+     "entity": "trainer:320"
+    },
+    {
+     "n": 1,
+     "name": "Giant Cape",
+     "id": "A2 147",
+     "kind": "Trainer",
+     "entity": "trainer:290"
+    },
+    {
+     "n": 1,
+     "name": "Copycat",
+     "id": "B1 225",
+     "kind": "Trainer",
+     "entity": "trainer:990"
+    }
+   ],
+   "printing_notes": [],
+   "compared": [
+    {
+     "what": "Pause Games dD \"Draft D: Entei / Grimhound\"",
+     "verdict": "same code",
+     "diff": {},
+     "energy_differs": false
+    }
+   ]
+  },
+  {
+   "key": "brew-10",
+   "group": "Also tested",
+   "label": "Brew 10",
+   "title": "Diancie and Giratina",
+   "file": "decks/brews/brew-10-diancie-giratina.txt",
+   "report": "2026-10-13_brew-10-diancie-giratina",
+   "pg": [],
+   "png": "decks/brews/brew-10-diancie-giratina.png",
+   "blurb": "Mega Diancie ex and Giratina ex with Carbink, Giant Cape, Starting Plains and Peculiar Plaza.",
+   "checks": [
+    {
+     "name": "file is the one in the report manifest",
+     "ok": true,
+     "detail": "sha256 e1b20886d2d4ff3c..., manifest says e1b20886d2d4ff3c... and e1b20886d2d4ff3c...; state: committed"
+    },
+    {
+     "name": "code decodes to 20 cards",
+     "ok": true,
+     "detail": "14 Trainers + 6 Pokémon"
+    },
+    {
+     "name": "same cards and counts as the deck file",
+     "ok": true,
+     "detail": "13 different cards"
+    },
+    {
+     "name": "same Energy as the deck file",
+     "ok": true,
+     "detail": "bytes [5] v [5]"
+    },
+    {
+     "name": "every printing in the deck file is a printing of the card the code names",
+     "ok": true,
+     "detail": "[]"
+    },
+    {
+     "name": "QR image (lib/encode_qr.py PNG) reads back as the code",
+     "ok": true,
+     "detail": ""
+    },
+    {
+     "name": "QR image on the page (SVG) reads back as the code",
+     "ok": true,
+     "detail": "41 x 41 modules"
+    },
+    {
+     "name": "QR image read back out of the finished page file",
+     "ok": true,
+     "detail": "/home/dacz8976/pgfix/rl/results/ladder_qr_page_2026-10-14/ladder_qr_page.html"
+    }
+   ],
+   "notes": [],
+   "sha256": "e1b20886d2d4ff3cf5719097caa327c6993cb4f0fff11f92443b8de36d34e6c9",
+   "code": "DpiWqJiWqJiWnpiWnpiaXpiaXpiXwJiYLpiXopiXopia/pibCJiapJibgAYAS2QAS2QAFZAAFZAAS1oAS1oBBQ==",
+   "energy_bytes": [
+    5
+   ],
+   "energy": [
+    "Psychic"
+   ],
+   "cards": [
+    {
+     "n": 2,
+     "name": "Mega Diancie ex",
+     "id": "B3b 032",
+     "kind": "Pokémon",
+     "entity": "pokemon:19300"
+    },
+    {
+     "n": 2,
+     "name": "Giratina ex",
+     "id": "A2b 035",
+     "kind": "Pokémon",
+     "entity": "pokemon:5520"
+    },
+    {
+     "n": 2,
+     "name": "Carbink",
+     "id": "B3b 031",
+     "kind": "Pokémon",
+     "entity": "pokemon:19290"
+    },
+    {
+     "n": 2,
+     "name": "Professor’s Research",
+     "id": "P-A 007",
+     "kind": "Trainer",
+     "entity": "trainer:40"
+    },
+    {
+     "n": 2,
+     "name": "Poké Ball",
+     "id": "P-A 005",
+     "kind": "Trainer",
+     "entity": "trainer:30"
+    },
+    {
+     "n": 2,
+     "name": "Copycat",
+     "id": "B1 225",
+     "kind": "Trainer",
+     "entity": "trainer:990"
+    },
+    {
+     "n": 1,
+     "name": "Cyrus",
+     "id": "A2 150",
+     "kind": "Trainer",
+     "entity": "trainer:320"
+    },
+    {
+     "n": 1,
+     "name": "Pokémon Center Lady",
+     "id": "A2b 070",
+     "kind": "Trainer",
+     "entity": "trainer:430"
+    },
+    {
+     "n": 2,
+     "name": "Giant Cape",
+     "id": "A2 147",
+     "kind": "Trainer",
+     "entity": "trainer:290"
+    },
+    {
+     "n": 1,
+     "name": "Starting Plains",
+     "id": "B2 154",
+     "kind": "Trainer",
+     "entity": "trainer:1150"
+    },
+    {
+     "n": 1,
+     "name": "Peculiar Plaza",
+     "id": "B2 155",
+     "kind": "Trainer",
+     "entity": "trainer:1160"
+    },
+    {
+     "n": 1,
+     "name": "Lucky Ice Pop",
+     "id": "B2 145",
+     "kind": "Trainer",
+     "entity": "trainer:1060"
+    },
+    {
+     "n": 1,
+     "name": "Field Blower",
+     "id": "B3 147",
+     "kind": "Trainer",
+     "entity": "trainer:1280"
+    }
+   ],
+   "printing_notes": [],
+   "compared": [
+    {
+     "what": "image decks/brews/brew-10-diancie-giratina.png",
+     "verdict": "same code",
+     "diff": {},
+     "energy_differs": false
+    }
+   ]
+  }
+ ],
+ "failed": []
+}

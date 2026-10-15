@@ -1,0 +1,28 @@
+{
+  "verifier": "verify_195029",
+  "model": "gpt-6-sol",
+  "reasoning_effort": "high",
+  "decision": "ACCEPT",
+  "source_filename": "20261009_195029000_iOS.MP4",
+  "source_sha256": "8b069aade34fbba5615a4f500ab0aa5a150ae8c823be6aa23ca18d5f0a9ddc48",
+  "source_bytes": 345987192,
+  "source_duration_seconds": 190.976009,
+  "source_frame_size": [1170, 2532],
+  "outcome": {
+    "classification": "computer_battle_auto_enabled",
+    "result": "defeat",
+    "opponent": "Miraidon ex Deck (Deluxe Pack: Mega)",
+    "turns": 8,
+    "owner_points": 1,
+    "opponent_points": 3
+  },
+  "required_changes": [],
+  "primary_files_read_and_reconciled": {
+    "REVIEW.md": "6c80905e8e7a4ca3cc27f9be7578495a2b365fd09196f3e4a1a585bdef7dc4fd",
+    "COVERAGE.md": "e7a3483892b98f81775500bf3f07295624843d19d28d04c86a912864bf87bf43",
+    "FINDINGS.json": "7e7d33600c13dd62397f4717450fc17b9f7d847cb18c69a62db78892ecdcd074"
+  },
+  "method": "Bounded independent check of corrected primary packet, full-file overview, selected ordinary turn and decisive sequences; native 1170x2532 source frames retained in native/.",
+  "opponent_turn_2_search_limit": "Two Poke Ball uses precede benching Iron Thorns and Magnemite; face-down search returns do not prove which search supplied which card.",
+  "external_log_routing": "Exclude from Ladder Log and human-only Pause Games log."
+}

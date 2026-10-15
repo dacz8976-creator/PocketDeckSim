@@ -1,0 +1,289 @@
+{
+  "schema": "pause_batch_retained_qr_v1",
+  "decoded_at_utc": "2026-10-06T17:24:51.632722+00:00",
+  "source_video": "20261005_003547000_iOS.MP4",
+  "source_seconds": 6.0,
+  "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+  "retained_image": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_003547000_iOS\\QR_NATIVE_t6.png",
+  "retained_image_sha256": "a26246c189bb39d6800c6d4681550be076078685096187583ae628347e073bba",
+  "native_dimensions": [
+    1170,
+    2532
+  ],
+  "scan_crop_xyxy": null,
+  "read_method": "zxingcpp_native_image",
+  "payload": "CpiWnpiWnpiapJiWqJiWqJiX/JiaXpicPpicrJicrAoATgIATgIALH4ALH4ATe4ATe4ATfgATfgAKKAAKKABAw==",
+  "payload_ascii_sha256": "2e3c1c989e19f0fb6176ab60759b1f686ca185cad142cd879081c54f6b6b8ae7",
+  "decoded": {
+    "trainerIds": [
+      30,
+      30,
+      1060,
+      40,
+      40,
+      380,
+      990,
+      1470,
+      1580,
+      1580
+    ],
+    "pokemonIds": [
+      19970,
+      19970,
+      11390,
+      11390,
+      19950,
+      19950,
+      19960,
+      19960,
+      10400,
+      10400
+    ],
+    "energyTypes": [
+      3
+    ],
+    "energy": [
+      {
+        "value": 3,
+        "name": "Water",
+        "selectable": true
+      }
+    ],
+    "roundtrip": true,
+    "roundtrip_limit": null
+  },
+  "card_slot_count": 20,
+  "cards": [
+    {
+      "entity_kind": "trainer",
+      "entity_id": 30,
+      "count": 2,
+      "name": "Poké Ball",
+      "name_candidates": [
+        "Poké Ball"
+      ],
+      "functional_ids": [
+        "1b20901befde"
+      ],
+      "printing_aliases": [
+        "A2b 111",
+        "P-A 005"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1060,
+      "count": 1,
+      "name": "Lucky Ice Pop",
+      "name_candidates": [
+        "Lucky Ice Pop"
+      ],
+      "functional_ids": [
+        "15c19aaaf9a4"
+      ],
+      "printing_aliases": [
+        "B2 145"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 40,
+      "count": 2,
+      "name": "Professor’s Research",
+      "name_candidates": [
+        "Professor’s Research"
+      ],
+      "functional_ids": [
+        "c0015440f616"
+      ],
+      "printing_aliases": [
+        "A4b 373",
+        "P-A 007"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 380,
+      "count": 1,
+      "name": "Irida",
+      "name_candidates": [
+        "Irida"
+      ],
+      "functional_ids": [
+        "c594de313052"
+      ],
+      "printing_aliases": [
+        "A2a 072",
+        "A2a 087",
+        "A4b 330",
+        "A4b 331"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 990,
+      "count": 1,
+      "name": "Copycat",
+      "name_candidates": [
+        "Copycat"
+      ],
+      "functional_ids": [
+        "d5d2b111c197"
+      ],
+      "printing_aliases": [
+        "B1 225",
+        "B1 270"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1470,
+      "count": 1,
+      "name": "Wallace",
+      "name_candidates": [
+        "Wallace"
+      ],
+      "functional_ids": [
+        "9c78b5a62950"
+      ],
+      "printing_aliases": [
+        "B3b 068",
+        "B3b 085"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1580,
+      "count": 2,
+      "name": "Soothing Shore",
+      "name_candidates": [
+        "Soothing Shore"
+      ],
+      "functional_ids": [
+        "bec1c61a5933"
+      ],
+      "printing_aliases": [
+        "B4 154"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 19970,
+      "count": 2,
+      "name": "Wailmer",
+      "name_candidates": [
+        "Wailmer"
+      ],
+      "functional_ids": [
+        "63afbb170f1c"
+      ],
+      "printing_aliases": [
+        "B4 036"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 11390,
+      "count": 2,
+      "name": "Wailord",
+      "name_candidates": [
+        "Wailord"
+      ],
+      "functional_ids": [
+        "73cca2e72be7"
+      ],
+      "printing_aliases": [
+        "B1 057"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 19950,
+      "count": 2,
+      "name": "Carvanha",
+      "name_candidates": [
+        "Carvanha"
+      ],
+      "functional_ids": [
+        "3a9b466b141e"
+      ],
+      "printing_aliases": [
+        "B4 034"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 19960,
+      "count": 2,
+      "name": "Mega Sharpedo ex",
+      "name_candidates": [
+        "Mega Sharpedo ex"
+      ],
+      "functional_ids": [
+        "de3c67ae0e58"
+      ],
+      "printing_aliases": [
+        "B4 035",
+        "B4 182",
+        "B4 196"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 10400,
+      "count": 2,
+      "name": "Suicune ex",
+      "name_candidates": [
+        "Suicune ex"
+      ],
+      "functional_ids": [
+        "1fd48c6f2cea"
+      ],
+      "printing_aliases": [
+        "A4a 020",
+        "A4a 080",
+        "A4a 090",
+        "B2a 127"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    }
+  ],
+  "all_entities_resolved": true,
+  "dependencies": {
+    "codec": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\third_party\\s216\\tcgp-deck-qr-102d75e\\src\\payload.js",
+    "codec_sha256": "7a08a1b85ba5b6044d173d7f1de3b7c21bbbdbab7b9f87e56eb109d278e12fb1",
+    "reader": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\lib\\decode_qr.py",
+    "reader_sha256": "f375891a38c3289f3fd994b62cf1a7289eb42398b54d47524619ffcbe824a603",
+    "catalog": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\s216_card_catalog_v1.json",
+    "catalog_sha256": "162dd23a116cabc87bc4404a643d7bad37480d4d44c057c5093aa114b8e45017",
+    "catalog_provenance": "pinned community-derived catalog, not an official complete card export",
+    "opencv": "5.0.0"
+  },
+  "limits": [
+    "QR is a filmed deck source, not a substitute for the required dated Pause Games log snapshot.",
+    "A deck QR does not establish hidden draws, the opening hand, or that this deck was used throughout a battle."
+  ]
+}

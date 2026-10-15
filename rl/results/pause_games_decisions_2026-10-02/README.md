@@ -198,3 +198,115 @@ Checked with the rebuilt harness: all 176 positions of `positions_A.json` reprod
 ## Files
 
 `TABLES.md` (a table per game), `TURBO_SHARK.md`, `summary.json`, `totals.json`, `positions_A.json` and `positions_A.py` (the positions with their notes), `FRAME_READS.md` (how each hand was fixed), `raw/` (stdout JSON lines and the PGSTEP/PGDUMP root scores for every position and seed), `harness/` (the example, the print-only patch, the run and report scripts), `BUILD.txt` (hashes).
+
+## Oct 13: Special Conditions and the knock-out count (the cloud; Fable via Sonnet's read of the Oct 13 games)
+
+Two things a position could not carry, found in the Oct 13 games (`rl/results/pause_games_new_2026-10-13/` on
+`sonnet/pause-games-2026-10-13`):
+- **Sleep** (and every other Special Condition). A sleeping Pokemon was played as awake. That made the two largest false gaps of that
+  read.
+- **Kingambit's Overlord's Blade** ("40 more damage for each time your Pokemon have been Knocked Out during this game") read 60. The
+  engine keeps the count per player (`own_knockouts_this_game`), and `pg_pos.rs` never set it.
+
+**The position format gains two optional fields; positions without them run exactly as before:**
+- `"conditions": ["Asleep" | "Paralyzed" | "Confused" | "Poisoned" | "Burned", ...]` on any board entry, either side. It is set on
+  that Pokemon with the engine's own `with_status_condition`. A name the engine doesn't have is a position problem.
+- `"knockouts": n` on `"me"` and/or `"opp"`: how many of that side's own Pokemon were Knocked Out earlier in the game. It is set with
+  `set_own_knockouts_this_game` before the bot moves.
+
+**The output is unchanged.** The `position`, `free` and `forced` lines have the same fields. A new flag, `--dump-state`, adds one
+`{"kind": "state", ...}` line per position: the counts and every condition, as the built engine state holds them. It is for the
+tests and adds nothing unless asked.
+
+**The converter** (`../pause_games_new_2026-10-12/harness/ledger_to_positions.py`) now writes both:
+- **Conditions:** a Pokemon's `special_conditions` from the ledger, as engine names (`asleep`/`sleep` -> Asleep, `poison` ->
+  Poisoned, and so on). A condition with no engine name stays a note, as all of them did before.
+- **Knock-outs:** `me.knockouts`, his Pokemon knocked out between his turns so far in the game.
+- **Not covered:** a Pokemon of his knocked out during his own turn (recoil, for example), and the opponent's count. `pg_pos` reads
+  `opp.knockouts`, but the converter doesn't write it yet.
+- The positions already committed don't have the fields. The laptop regenerates them from the ledgers (`regenerate.sh`).
+
+**Tests** (`harness/test_pg_pos.py`, positions in `harness/test_oct13/`, two of Sonnet's real turns):
+- **pg_pos:** 9 tests: the count, Sleep and Poison, Paralysis and Confusion carried the same way, a sleeping or paralysed Active that
+  neither attacks nor retreats, an unknown condition reported, and the output fields unchanged. 8 of the 9 fail on the old runner
+  (`test_oct13/tests_before.log`); 9 of 9 pass on the new one (`tests_after.log`).
+- **The converter:** 5 new tests in its own test file. 3 fail before (`test_oct13/converter_tests_before.log`); all 85 pass after,
+  with 13 that need the real ledgers skipped here.
+
+**km3 before and after** (seeds 1-12; `test_oct13/km3_before.jsonl`, `km3_after.jsonl`, `km3_t09_*.jsonl`, `kingambit_t09_scores.txt`):
+- **030351 turn 5, Dragonair Asleep at 20 HP.**
+  - Before: km3 attacks with Draconic Whip in 12 of 12 seeds, which a sleeping Pokemon can't do.
+  - After: it uses Dragon's Blessing, attaches to the Bench and ends the turn, 12 of 12.
+  - The opponent's Darkrai (Bad Dreams: 20 damage at the end of each turn to a sleeping Active) then knocks Dragonair out. km3's plan
+    readies the Pokemon it promotes. Paralysed: the same. Confused: it still attacks, which is legal.
+- **010837 turns 9 and 11, Kingambit with 2 knock-outs.**
+  - km3's move is the same before and after: Overlord's Blade, 12 of 12.
+  - At turn 11 the Pichu in front has 30 HP, so 60 or 140 both knock it out.
+  - At turn 9, the Blade's score rises from -9,786 to -9,339 with the count. That is the engine seeing 140 damage, not 60, on the
+    180-HP Mega Kangaskhan ex. Without the count, or on the old runner, the score is -9,786.
+- **Nothing else changed:** on all 92 of Sonnet's Oct 13 positions (which don't have the new fields), the old and new runners print
+  byte-for-byte the same output (seeds 1-3, 365 lines).
+- **Builds:** built and run on main c045ede (K). It compiles on the two kx3 merges, cd20a97a (F) and 9a0bc5ac (C), with the same
+  print-only patch. The laptop rebuilds all three from this commit.
+
+## Oct 14: HP under Starting Plains (the cloud; Fable, from the laptop's review of the Oct 12-13 positions)
+
+**The bug** (`REVIEW_POSITIONS_laptop.md` on main 373b41a6). `pg_pos.rs` set the board first and the Stadium after it. Starting
+Plains gives every Basic +20 HP, and the engine adds it when it refreshes its HP bonuses. So a damaged Basic was built with the
+right damage and then gained 20 HP: in 030351 turn 11, his Druddigon read 110 instead of 90 and the opponent's Igglybuff 30
+instead of 10 (turns 11, 13 and 15).
+
+**The fix:** the Stadium is now set before the board, and each Pokemon's recorded HP is applied after it, so the engine's refresh
+keeps it. The output format is unchanged. `--dump-state` also prints each Pokemon's `hp`, as the engine holds it after its own
+refresh.
+
+**Tests** (`harness/test_pg_pos.py`; `harness/test_oct14/`):
+- 030351 turns 11, 13 and 15: every Pokemon has its recorded HP; the turn 11 Druddigon is 90 and the Igglybuff 10.
+- The Oct 12 set (the 119 of `../pause_positions_kx3_2026-10/run_ids.txt`) and the Oct 13 v2 set (92): each loads with 0
+  problems, every Pokemon at its recorded HP.
+- 4 of the 13 tests fail on the Oct 13 runner (`tests_before.log`); 13 of 13 pass on the new one (`tests_after.log`).
+
+**A data finding for the converter:** in 022530 turns 5 and 7, the opponent's Mega Scizor ex (printed 200 HP, with Giant Cape +20)
+is recorded at 230. It can have at most 220, which is what the engine holds. The test expects 220 there.
+
+**km3 before and after** (seeds 1-12; `test_oct14/km3_compare.txt`):
+- **The 119:** byte for byte the same output (1,547 lines). Starting Plains is in none of them.
+- **The 92 (v2):** km3's plans are the same in all 1,104 runs. Only the printed board summary of 030351 turns 9, 11 and 13
+  changed (`km3_plains_before.jsonl`, `km3_plains_after.jsonl`): it now shows each Basic with the Plains bonus (turn 9's
+  undamaged Druddigon 120, not 100), as the engine plays it.
+- **Builds:** built and run on main c045ede (K); it compiles on cd20a97a (F) and 9a0bc5ac (C) with the same print-only patch.
+
+**Laptop check and integration (Oct 14).** Integrated by path from `claude/pensive-ptolemy-spwc0b` 051d6994 and 19665ec3. On the
+laptop, built on F (cd20a97a, engine tree 4ebb30a9) with the print-only patch:
+- The runner: `pg_pos_F_plains`, sha256 fa668fa863a4414f.
+- **Tests at the cloud's tip:** 2 of the 13 failed. `decks_of()` passed `test_oct14/km3_compare.txt`, added with the fix, to pg_pos as a
+  deck file ("Invalid count").
+- **Tests after the fix:** with `decks_of()` limited to `KW*.txt`, 13 of 13 pass.
+- **km3 at seeds 1-12, against the current `pg_pos_F_cond`:**
+  - all lines equal on the 8 positions of `shards/S8.txt` and on 030351 t15;
+  - on 030351 t09, t11 and t13 the plans are equal and only the printed board differs.
+- **The _cond runners:** rebuilt from this commit when the positions-v3 set lands.
+
+## Oct 14: Dragon's Blessing's choice gets a typed label (the laptop)
+
+**The change.** `harness/pgd_patch.py`'s `pg_label` names an attach-from-discard choice `AttachTypedFromDiscard:<Type>@<slot>`, for
+example `AttachTypedFromDiscard:Fighting@0`. It used to say a bare `AttachTypedFromDiscard`.
+- This is the format positions v3 writes into his plans.
+- Dragon's Blessing's two choices (Metal or Fighting in the discard) can now be told apart.
+- 022530 t09's forced replay now runs his whole line, through Frenzied Blade.
+- pg_pos takes every label from `pg_label`, so this file is the place for the change. It is a print-only patch, and no game behaves
+  differently.
+
+**Not integrated: the cloud's 70660ac5 and f068cbce** on `claude/pensive-ptolemy-spwc0b`. They put the same arm into
+`rl/strength/src/main.rs` `label()`, which pg_pos doesn't use.
+- Changing that file changes the strength harness's source hash.
+- That fails the slow-report pin's `CommittedPin` check, so re-making the pin would be a pin change.
+- Fable and the laptop agreed to leave them parked. **Do not integrate them** unless a pin change is decided for its own reasons.
+
+**The runners rebuilt from this commit** (main's `pg_pos.rs` with the Starting Plains fix, plus this `pgd_patch.py`) are recorded in
+`../pause_positions_kx3_2026-10/builds/builds_cond.txt`:
+- `pg_pos_F_cond2` on F (cd20a97a);
+- `pg_pos_C_cond2` on C (9a0bc5ac).
+
+`test_pg_pos.py` no longer exempts 022530's Mega Scizor ex. Positions v3 gives it Elegant Cape, so its recorded 230 is reachable.
+13 of 13 tests pass on both runners.

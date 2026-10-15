@@ -1,0 +1,273 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_022627000",
+  "review_date": "2026-10-02",
+  "sources": [
+    {
+      "video_basename": "20260908_022627000_iOS.MP4",
+      "sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "destination": null,
+  "destination_reason": "Local retrospective supplement only; no external write authorized for worker.",
+  "deck_name": "Comfey / Team Rocket Raticate ex / Team Rocket Hypno visible core",
+  "opening": {
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Comfey",
+        "variant": "full art",
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "R0026.00",
+          "R0029.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Pokémon Flute",
+        "variant": null,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "R0026.00",
+          "R0029.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Elegant Cape",
+        "variant": null,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "R0026.00",
+          "R0029.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Sightseer",
+        "variant": null,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "R0026.00",
+          "R0029.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Team Rocket's Researcher",
+        "variant": null,
+        "basis": "direct_native_hand_and_source_transaction_reconciliation",
+        "evidence_ids": [
+          "R0026.00",
+          "R0029.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "count": 5,
+    "basis": "direct_native_hand_and_source_transaction_reconciliation",
+    "evidence_ids": [
+      "R0026.00",
+      "R0029.00"
+    ],
+    "status": "complete",
+    "limit_reason": null,
+    "source_video": "20260908_022627000_iOS.MP4",
+    "timestamp_seconds": 26,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "selected_active": {
+      "name": "Comfey",
+      "opening_position": 1,
+      "source_video": "20260908_022627000_iOS.MP4",
+      "timestamp_seconds": 29,
+      "evidence_ids": [
+        "R0029.00",
+        "R0033.00"
+      ]
+    },
+    "redraw_or_replacement": "No replacement is visible in inspected setup evidence; five-card opening shown before selection.",
+    "before_active_placement": true
+  },
+  "setup_board": {
+    "owner": {
+      "active": {
+        "name": "Comfey",
+        "variant": "full art",
+        "bench_position": null,
+        "hp_now": 70,
+        "hp_max": 70,
+        "hp_max_basis": "printed native card HP plus named attached Tool bonus",
+        "damage": 0,
+        "attached_energy": {
+          "total": 0,
+          "by_type": {
+            "Psychic": 0,
+            "Darkness": 0
+          }
+        },
+        "tool": null,
+        "special_conditions": [],
+        "active_effects": [],
+        "evidence_ids": [
+          "R0035.00",
+          "R0039.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "bench_in_position_order": [],
+      "points": 0,
+      "energy_zone": {
+        "this_turn": {
+          "type": "Psychic",
+          "count": 0,
+          "available": false
+        },
+        "next": {
+          "type": "Psychic",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Source native start generator orb and next preview plus typed attachment transition. End boundary tracks spent normal Energy before following-turn generation; some settled-board reference frames are after next-turn regeneration and must not be read as an earlier zero-orb still.",
+        "evidence_ids": [
+          "R0035.00",
+          "R0039.00"
+        ],
+        "limit_reason": "Inactive-side preview is visible but cannot be spent this turn; exact end-zone snapshot may be transition-derived where following native anchor is after next-turn generation."
+      },
+      "board_effects": [
+        {
+          "name": "Flower Shield",
+          "condition": "each owner Pokémon with its own Psychic Energy",
+          "evidence_ids": [
+            "F0104.00"
+          ]
+        }
+      ],
+      "evidence_ids": [
+        "R0035.00",
+        "R0039.00"
+      ],
+      "status": "complete",
+      "limit_reason": null
+    },
+    "opponent": {
+      "active": {
+        "name": "Skorupi",
+        "variant": null,
+        "bench_position": null,
+        "hp_now": 60,
+        "hp_max": 60,
+        "hp_max_basis": "printed native card HP plus named attached Tool bonus",
+        "damage": 0,
+        "attached_energy": {
+          "total": 0,
+          "by_type": {
+            "Psychic": 0,
+            "Darkness": 0
+          }
+        },
+        "tool": null,
+        "special_conditions": [],
+        "active_effects": [],
+        "evidence_ids": [
+          "R0035.00",
+          "R0039.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "bench_in_position_order": [],
+      "points": 0,
+      "energy_zone": {
+        "this_turn": {
+          "type": "Darkness",
+          "count": 0,
+          "available": false
+        },
+        "next": {
+          "type": "Darkness",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Source native start generator orb and next preview plus typed attachment transition. End boundary tracks spent normal Energy before following-turn generation; some settled-board reference frames are after next-turn regeneration and must not be read as an earlier zero-orb still.",
+        "evidence_ids": [
+          "R0035.00",
+          "R0039.00"
+        ],
+        "limit_reason": "Inactive-side preview is visible but cannot be spent this turn; exact end-zone snapshot may be transition-derived where following native anchor is after next-turn generation."
+      },
+      "board_effects": [],
+      "evidence_ids": [
+        "R0035.00",
+        "R0039.00"
+      ],
+      "status": "complete",
+      "limit_reason": null
+    },
+    "evidence_ids": [
+      "R0035.00",
+      "R0039.00"
+    ],
+    "stadium": null,
+    "stadium_observation": "No Stadium visible in inspected unoccluded native anchors and systematic 1fps retained locator scan; no every-instant absence claim.",
+    "shared_effects": [],
+    "turn_number_displayed": null,
+    "phase": "setup after Active placement"
+  },
+  "classification": {
+    "classification": "ladder_presumed",
+    "excluded_from_ladder": false,
+    "basis": "Owner default ladder treatment; no Auto option/control visible in inspected unoccluded native anchors, including actual menu679. Mode/opponent type is not independently certified.",
+    "owner_rule": "Any visible Auto option even OFF means computer battle and ladder exclusion.",
+    "auto_control_visible_at_inspected_anchors": false,
+    "auto_enabled": null,
+    "opponent_type": null,
+    "individual_action_authorship": "not_certified",
+    "evidence_ids": [
+      "R0020.00",
+      "R0033.00",
+      "F0043.00",
+      "F0350.00",
+      "F0411.00",
+      "F0679.00",
+      "F0681.00"
+    ],
+    "limits": "No claim about every instant or hidden Settings submenu; unobscured sampled anchors and systematic1fps scan only."
+  },
+  "packet_files": {
+    "prose": "REVIEW_SUPPLEMENT.md",
+    "coverage": "LOCATOR_SCAN.json",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json",
+    "hands": "HAND_SUPPLEMENT.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "Reviewed; historical accepted full review preserved",
+  "independent_acceptance_status": "pending_separate_source_check",
+  "outcome": {
+    "owner": "loss",
+    "basis": "inherited_accepted_outcome",
+    "accepted_packet": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+    "terminal_evidence_ids": [
+      "R0714.00",
+      "R0719.00",
+      "R0720.00"
+    ]
+  },
+  "limits": [
+    "This is a separate field supplement; old packet and accepted loss unchanged.",
+    "Snapshot state is distinguished from current-turn Energy generation: boundary Energy Zones empty, next P/D previews1; normal attachment actions and generator events separately recorded.",
+    "Source native frames show field corrections; exact unsampled input timing is qualified."
+  ],
+  "lead_checked": false
+}

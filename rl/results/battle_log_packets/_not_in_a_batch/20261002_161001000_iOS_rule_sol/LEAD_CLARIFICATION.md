@@ -1,0 +1,5 @@
+# Independent lead check
+
+Lead read the entire source review, coverage, summary and uncertainty packet and reconciled visible turns1-7, HP, Energy and score. Independently inspected ordinary opening and middle overview sheets01 and04, native193s damage-prevention tooltip and final206.8s board. Compared that board with the continuation first frame: same public turn7 state, hand difference and unknown cut actions/duration retained. This source supplies setup and defender identification; the linked second source supplies the conclusive snipe and computer ending. The owner clarified that Tongue Whip is the filmed example of the snipe class; another Linear Attack trial is not required. Auto off during visible battle UI; blue hexagon is prevention, not Sleep. Entire available source accepted under the explicit rule-test exception, with battle_complete false and both competitive logs excluded.
+
+The two files represent one owner-declared test battle. This completed test is excluded from Pause Games and Ladder Log. No simulator change, repair pinning or training occurred.

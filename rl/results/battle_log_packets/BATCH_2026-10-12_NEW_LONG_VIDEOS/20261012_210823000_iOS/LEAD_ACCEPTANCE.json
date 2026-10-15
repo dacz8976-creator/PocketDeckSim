@@ -1,0 +1,70 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-12T23:55:39.004615+00:00",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "source_video": "20261012_210823000_iOS.MP4",
+  "source_sha256": "ca0f516306d5ffd8bf18326d4057d357160f77aaa019efdfd87303336b1291b9",
+  "scope": "Entire supplied recording, one human event battle, opening, all 12 turns and terminal result",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 12,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_NEW_LONG_VIDEOS\\20261012_210823000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "accepted_input_sha256": {
+    "REVIEW.md": "0babfb33e66b71b5678336a2f6aa1381a7b39e21f03679cceffe2feedc96d658",
+    "COVERAGE.md": "3ee0a5c1a3f22c34546d4bc676d9aeb92877812d59fac684687d99f09c35bf8c",
+    "SUMMARY.json": "8297430ccd8eab07301e1d5f1acc9244db711632039c4081c7f9bd773634c7a5",
+    "UNCERTAINTIES.json": "f9418139ad95dd178611256ecfb71650f18dd536209b1011b05372331083ad73",
+    "PAUSE_GAME.json": "97473543190b9bc56889403d405bf069fae85a1b3eabfb86e8b06976c1e6c4b9",
+    "DECK_USED.json": "fd579d65645a9b79319ef20503055c0858f0e14a62c6aa41aa37b94e72d31322",
+    "TURN_LEDGER.json": "60e10271a374f6bc201a9537eea397df9191f14bef316edd2c6bdfe7d8afa801",
+    "TURN_EVIDENCE.json": "00f9eeef75fc8df1b70cab467d5cd466e5c40db8584253d9b57e6e4a90f7e964"
+  },
+  "basis": "Whole-source Sol review, separately bounded Sol checks against source frames, and lead reconciliation of coverage, ordinary decisions, draws/searches, hand arithmetic, point progression, decisive sequences and terminal outcome. Structural integrity checked separately.",
+  "administrative_fields_changed_after_independent_freeze": [
+    "lead_checked",
+    "battle_review_status",
+    "lead_acceptance"
+  ],
+  "source_limits": [
+    {
+      "id": "live_deck_snapshot",
+      "status": "external_source_limit",
+      "detail": "Pause Games current deck definition is absent and Add Deck UI is unavailable. The filmed QR verifies all 20 semantic slots, but no live-log deck snapshot is claimed."
+    },
+    {
+      "id": "discard_views",
+      "status": "recording_limit",
+      "detail": "Neither pile is opened in the source. No full discard contents or scroll coverage is available."
+    },
+    {
+      "id": "fan_overlap",
+      "status": "recording_limit",
+      "detail": "Owner turn 2 and 4 top fans overlap; supported ranges are kept. Copycat separately reveals six owner cards."
+    },
+    {
+      "id": "opponent_colorless",
+      "status": "recording_limit",
+      "detail": "Colorless Energy icons appear on Mega Pidgeot ex evolution/attachment sequences. Exact source of the extra Colorless Energy is not established by readable source text."
+    },
+    {
+      "id": "opponent_meowth_variant",
+      "status": "recording_limit",
+      "detail": "Bench Alolan Meowth has 50 HP and Nasty Plot; its exact artwork/collection ID and small ability title are not fully readable."
+    },
+    {
+      "id": "result_stats",
+      "status": "recording_limit",
+      "detail": "Source ends on Victory and Glimmora Card of the Game. No detailed result statistics or battle-log tab is opened."
+    },
+    {
+      "id": "energy_zone_transient_preview",
+      "status": "phase_specific_recording_limit",
+      "detail": "Owner next glyphs at 117, 206.5 and 292 seconds are temporarily absent; opponent next glyph at 166 is prompt-obscured; both next glyphs at 200 are absent in the attack animation. Their type, count and availability remain null at those exact frames. Other chosen boundaries were inspected individually."
+    }
+  ],
+  "outcome": "owner_win",
+  "deck_status": "Exact filmed 20-card QR list independently bound; matching new live deck entry is not yet available.",
+  "external_status": "Prepared deck and game import pending; no external save claimed."
+}

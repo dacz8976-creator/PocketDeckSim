@@ -1,0 +1,150 @@
+{
+  "reviewer": "/root/independent_003547",
+  "source_video": "20261005_003547000_iOS.MP4",
+  "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+  "scope": "Bounded chosen source-native frames viewed via labeled derived contact sheets at490pixel tile width; individual originals additionally inspected as listed. No second full pass. All142 indexed native frame/crop dimensions checked programmatically; not all142 visually inspected.",
+  "temporary_contact_sheet_directory": "C:/Users/dacz8/AppData/Local/Temp/independent_003547_views",
+  "viewed_groups_source_seconds": {
+    "setup": [
+      32,
+      36,
+      68,
+      71,
+      72,
+      83,
+      85,
+      89,
+      92
+    ],
+    "ordinary": [
+      106,
+      112,
+      120,
+      128,
+      132,
+      139,
+      142,
+      158,
+      172
+    ],
+    "copycat": [
+      227.5,
+      236,
+      244,
+      252,
+      256,
+      258,
+      262,
+      285,
+      287
+    ],
+    "mid": [
+      337.5,
+      344,
+      346,
+      350,
+      357,
+      385,
+      388,
+      400,
+      407
+    ],
+    "late1": [
+      454,
+      455.5,
+      460,
+      472,
+      476,
+      503,
+      504,
+      506,
+      509
+    ],
+    "late2": [
+      514,
+      515,
+      516,
+      523,
+      526,
+      533,
+      541,
+      544,
+      548
+    ],
+    "ends": [
+      557,
+      224,
+      335,
+      178,
+      289,
+      360,
+      415,
+      476,
+      528
+    ],
+    "early": [
+      64,
+      65,
+      66,
+      66.5,
+      67,
+      67.5,
+      68,
+      70,
+      73
+    ],
+    "research": [
+      79,
+      80,
+      81,
+      82,
+      83,
+      84,
+      85,
+      86,
+      87
+    ]
+  },
+  "source_frame_path_resolution": "For each timestamp t, file t{t:07.2f}.jpg: prefer turn_evidence, then sequence; otherwise existing retained native frame under focus/detail/coarse. No images were extracted from source. Specific non-indexed support paths are recorded in CHECK_RESULT.required_repairs.",
+  "individual_original_resolution_views": [
+    "turn_evidence/t0068.00_bottom.png",
+    "focus/t0067.50.jpg",
+    "turn_evidence/t0544.00.jpg",
+    "discard_t128_native_crop.png"
+  ],
+  "discard_crop": {
+    "source_seconds": 128,
+    "pixel_bounds": [
+      15,
+      590,
+      240,
+      850
+    ],
+    "native_size": [
+      225,
+      260
+    ],
+    "rotation_degrees": 180,
+    "purpose": "Read upside-down Klefki preview, no inferred pile contents"
+  },
+  "QR_check": {
+    "image": "QR_NATIVE_t6.png",
+    "native_dimensions": [
+      1170,
+      2532
+    ],
+    "image_sha256": "a26246c189bb39d6800c6d4681550be076078685096187583ae628347e073bba",
+    "independent_native_scan_payload_match": true,
+    "independent_pinned_codec_roundtrip": true
+  },
+  "retained_evidence_modified": false,
+  "original_source_read_or_modified": false,
+  "checked_utc": "2026-10-06T18:13:34.889484+00:00",
+  "checked_input_sha256": {
+    "SOURCE.json": "78e9fdbbf4011e39defb0464336658e7fe228d4987e1f755c21982688821e618",
+    "TURN_LEDGER.json": "dbd95c975518e2e0e8dc93b18b33c08b66fef8decc8f0ae0f94395ed2fed6600",
+    "TURN_EVIDENCE.json": "d667526909ad3b6093c16f36c2ffa082aaa05eec57048a05df307d3177048dc1",
+    "REVIEW.md": "5dddec765c15ecd9389962594679b30713c14c492c1af6b49106491c8b0f1214",
+    "DECK_USED.json": "22c944418baa3b234134e42c18062318740f3a34edc25b4d60be222a68415636"
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "schema": "independent-viewed-evidence-v1",
+  "source_video": "20261004_214731000_iOS.MP4",
+  "source_sha256": "d363bdd1c3f4aafc5ad9423764e706f8944407d68a04c82d72317592d7e7e198",
+  "reviewer": "/root/independent_214731",
+  "checked_utc": "2026-10-06T17:52:59.212858+00:00",
+  "documents_read": [
+    "SOURCE.json",
+    "ASSIGNMENT.json",
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SUMMARY.json",
+    "UNCERTAINTIES.json",
+    "PAUSE_GAME.json",
+    "DECK_USED.json",
+    "TURN_LEDGER.json",
+    "TURN_EVIDENCE.json",
+    "../../../../START_HERE_VIDEO_REVIEW.md",
+    "../../../../Review_Log/README.md",
+    "../../../../PAUSE_GAMES_REVIEW_PROTOCOL.md",
+    "../../../../Review_Log/templates/pause_games/ASSIGNMENT.md"
+  ],
+  "submitted_document_sha256": {
+    "SOURCE.json": "d44372a4d2e4a58b56f6805456883d6586c5a4aa90ba8e381467148f3abcadaf",
+    "ASSIGNMENT.json": "1f702e191fd1fae8facaac8aae396065036100b9061bd8e54b7cd38f970c991f",
+    "REVIEW.md": "0655f0b5c821c5cb60ab45e4e89ecd3059ec109cccab5bd87002559e746b77ef",
+    "COVERAGE.md": "3e54bbca6b5bc0eb4ec1ea4e91406ad05f8288ae7d17d34e98e6d7f93f38cf54",
+    "SUMMARY.json": "fab620a1d39e264b928ea13ed095db14ef03cfeca4b8630ac6c1edfe08e0848c",
+    "UNCERTAINTIES.json": "c93971af796620be2e25be3303e0a3ed66908e76da180d8dbb43ea9e7ba21b1c",
+    "PAUSE_GAME.json": "edbee99b2b40451210cb97cd37901004e10ede3783bf71b7c4e4b9edafa81870",
+    "DECK_USED.json": "b92f0a03c64ba0da3d55fd58a9cf1816a7589633655464decca1ddb7b56ac703",
+    "TURN_LEDGER.json": "3e49c1cc633697aa9f2222d29244b130be5f460c19dbee902d70efa281539897",
+    "TURN_EVIDENCE.json": "819f468d5ed577e0da830c18a6e57545ad4673d1a182e3b4a487711d44a7e5d1"
+  },
+  "visually_viewed_native_full_frames": [
+    "turn_evidence/t0024.50.jpg",
+    "turn_evidence/t0095.00.jpg",
+    "turn_evidence/t0103.00.jpg",
+    "turn_evidence/t0106.00.jpg",
+    "turn_evidence/t0114.00.jpg",
+    "turn_evidence/t0115.00.jpg",
+    "turn_evidence/t0121.00.jpg",
+    "turn_evidence/t0374.00.jpg",
+    "turn_evidence/t0275.00.jpg",
+    "turn_evidence/t0278.00.jpg",
+    "turn_evidence/t0294.00.jpg",
+    "turn_evidence/t0329.00.jpg",
+    "turn_evidence/t0355.00.jpg",
+    "turn_evidence/t0096.00.jpg",
+    "turn_evidence/t0098.00.jpg",
+    "turn_evidence/t0143.00.jpg",
+    "turn_evidence/t0163.00.jpg",
+    "turn_evidence/t0167.00.jpg",
+    "turn_evidence/t0186.00.jpg",
+    "turn_evidence/t0245.00.jpg"
+  ],
+  "visually_viewed_native_bottom_crops": [
+    "turn_evidence/bottom/t0185.50.jpg",
+    "turn_evidence/bottom/t0217.00.jpg",
+    "turn_evidence/bottom/t0244.00.jpg",
+    "turn_evidence/bottom/t0298.00.jpg",
+    "turn_evidence/bottom/t0332.00.jpg",
+    "turn_evidence/bottom/t0345.00.jpg",
+    "turn_evidence/bottom/t0101.00.jpg",
+    "turn_evidence/bottom/t0134.00.jpg"
+  ],
+  "visually_viewed_native_top_crops": [
+    "turn_evidence/top/t0185.50.jpg",
+    "turn_evidence/top/t0244.00.jpg",
+    "turn_evidence/top/t0332.00.jpg"
+  ],
+  "visually_viewed_contact_sheets": [
+    "native_144_180_01.jpg",
+    "native_144_180_02.jpg",
+    "native_144_180_03.jpg",
+    "native_181_190_01.jpg",
+    "native_248_299_01.jpg",
+    "native_248_299_02.jpg",
+    "native_248_299_03.jpg",
+    "native_248_299_04.jpg",
+    "native_248_299_05.jpg",
+    "native_335_359_01.jpg",
+    "native_335_359_02.jpg",
+    "native_335_359_03.jpg",
+    "overview_01.jpg"
+  ],
+  "contact_sheet_limit": "Sheets are reduced views used for bounded sequence/context checks. Native opening/selectedhands/keyevidence separately inspected. Sheets do not replace requirednativecaptures.",
+  "nonvisual_checks": {
+    "batch_structural_pass": true,
+    "all252_full_top_bottom_dimensions_measured": true,
+    "full_dimensions": [
+      1170,
+      2532
+    ],
+    "bottom_dimensions": [
+      1170,
+      507
+    ],
+    "top_dimensions": [
+      1170,
+      760
+    ],
+    "ledger_reference_missing_ids": [],
+    "ordered_turn_rows": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ]
+  },
+  "did_reextract_or_rehash_source_media": false,
+  "did_modify_primary_packet_or_shared_state": false,
+  "checked_claims_beyond_worker_flags": [
+    "OrdinaryopponentT3 concealedcounts/Research/Fire/noattack",
+    "T2endinghandand30attack/20HelmetHP",
+    "T4firstevolutionandendinghand",
+    "Allselectedownerhandsandopponentfans",
+    "Bothboards/EnergyZonelines andboundarydisplayprecision",
+    "T8postKOactive/pointsevidence distinction"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "reviewer": "/root/check_014541",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_at_utc": "2026-10-10T04:09:05.262189+00:00",
+  "accepted": true,
+  "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+  "source_identity_basis": "SOURCE.json matches verified_by_cli_sha256 event ee7537c3-2b64-40eb-8552-03a6ce06b07c; no redundant full source rehash",
+  "required_repairs": [],
+  "repaired_findings": [
+    "Turn 1 start Koffing Tool corrected to none; Small Balloon is voluntary play 1.",
+    "Initial missing live deck and refreshed candidate provenance distinguished. Earlier exact 20 remains unverified because filmed Elegant Cape conflicts with later QR list.",
+    "Opening Kingdra and selected Active evidence supplemented with subsequent native confirmation.",
+    "Turn 6 pre-evolution board bound to a pre-play source view rather than the Milotic evolution animation.",
+    "Turn 8 current Energy Zone bound to actual opponent turn evidence rather than the prior owner turn end.",
+    "Research first reveal bound to native 264 Elegant Cape, followed by native 265 Soothing Shore.",
+    "Turn 9 retreat Water is discarded from Horsea, not transferred to Weezing.",
+    "Turn 12 order corrected to Feebas bench, Water to Feebas, Irida, Crystal Waltz. Final Milotic has three Water and Feebas one Water.",
+    "Terminal board is resolved after KO removal and point animation: owner Active empty, score 0-3. Native 490 and 492 establish the third point."
+  ],
+  "checked_input_sha256": {
+    "REVIEW.md": "0a2bf12a5f9266a443343ea3669924dc8fd6f0a94ebaf6fe160c23d70c44d069",
+    "COVERAGE.md": "4258a64cb51b8683b922b05cbd9c6e7cc68db9380f3a27030186d63e0d8de825",
+    "SUMMARY.json": "6ace93bb98ee50199d0fc7ae719cbe69c000acc0daf95dd43bcabfd31774d133",
+    "UNCERTAINTIES.json": "d65177974ba0e8d4ec6719ed27e6b4f766268c7c94753a77c8ff794a37ecd5e9",
+    "PAUSE_GAME.json": "5f0560d9246e94789fb30fcf5a0058f64edf030da1e52531e133dfaacd82c9ef",
+    "DECK_USED.json": "58a9be3a0af89f05784e48b677de5472a4418fb4ee9d73e4fecdc18d84829a9c",
+    "TURN_LEDGER.json": "c8002b1357148d41e9f66493fae9aa537c9bc2d70fd9eaefb8f1471c18fb0a23",
+    "TURN_EVIDENCE.json": "15e1762eb7066becc72fafa3455019f266b23627424b4f359130163e29450ead"
+  },
+  "scope": "Bounded independent acceptance using retained native frames, selected ordinary opening turn, Research/evolution, consequences and terminal state. Existing full first-pass coverage audited, not repeated.",
+  "capture_status": "complete_with_recording_limits",
+  "recording_limits": [
+    "Exact earlier 20-card game deck version unverified despite saved later live candidate",
+    "Neither opened discard pile appears according to complete first-pass account; public history is separate",
+    "Opponent hidden identities and exact queue type remain unknown",
+    "Requested source-local seeks retained; actual PTS not measured"
+  ],
+  "viewed_evidence": "VIEWED_EVIDENCE.json"
+}

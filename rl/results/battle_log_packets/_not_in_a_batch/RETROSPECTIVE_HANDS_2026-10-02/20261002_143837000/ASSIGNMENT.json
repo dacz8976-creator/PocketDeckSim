@@ -1,0 +1,21 @@
+{
+  "status": "ready_for_independent_check",
+  "old_packet": "../../20261002_143837000_iOS_shark_sol",
+  "shared_latest_event": "2026-10-02T170942.235097_0000_dc0e99bb-a012-4adc-85fb-a238f2834bff.json",
+  "guide": "../OWNER_GUIDE.md",
+  "conflict_check": "Latest shared event is accepted full completion; batch assigns this target to this reviewer; no active overlapping assignment found",
+  "model": "gpt-6.1-sol",
+  "source_video": "20261002_143837000_iOS.MP4",
+  "reviewer": "sol_retro_143837",
+  "target_owner_turns": [
+    5,
+    7
+  ],
+  "registration_note": "Lead batch reservation preceded delegation/inspection. Local python registration attempt failed; local PowerShell assignment saved after two reused frames, before new extraction. No assignment conflict.",
+  "effort": "high",
+  "new_native_frame_limit": 20,
+  "started_at_utc": "2026-10-02T20:28:13.9306944Z",
+  "scope": "Starting-hand supplement only; accepted review and main Reviewed status unchanged",
+  "finished_at_utc": "2026-10-02T20:39:26.392121+00:00",
+  "completion_scope": "Two requested starting hands directly resolved; no other turns reviewed."
+}

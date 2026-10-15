@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "source_sha256": "f5b6c67fbe006c8485056d8b959a52146289cf8b95c32705b2149135b6bb6a49",
+  "times_are_source_local_evidence_anchors": true,
+  "events": [
+    {"id": "initial_state", "seconds": 0.0, "owner_points": 1, "opponent_points": 0, "owner_active": "Galarian Obstagoon", "owner_active_hp": 140, "opponent_active": "Oricorio", "opponent_active_hp": 70, "evidence": "evidence/native_00p000s.jpg"},
+    {"id": "attach_tool", "seconds": 8.0, "actor": "Dacz8976", "card": "Deceptive Needle", "target": "Galarian Obstagoon", "evidence": "evidence/native_08p000s.jpg"},
+    {"id": "attack", "seconds": 13.0, "actor": "Galarian Obstagoon", "attack": "Merciless Strike", "target": "Oricorio", "evidence": "evidence/native_13p000s.jpg"},
+    {"id": "knockout", "seconds": 16.0, "target": "Oricorio", "hp_before": 70, "hp_after": 0, "evidence": "evidence/native_16p000s.jpg"},
+    {"id": "point_award", "seconds": 20.0, "actor": "Dacz8976", "points_awarded": 1, "score_after": 2, "evidence": "evidence/native_20p000s.jpg"},
+    {"id": "promote", "seconds": 24.0, "actor": "XaBy8", "target": "Team Rocket's Magmar", "evidence": "evidence/native_24p000s.jpg"},
+    {"id": "tool_damage", "seconds": 27.0, "card": "Deceptive Needle", "target": "Team Rocket's Magmar", "hp_before": 70, "hp_after": 60, "damage": 10, "named_effect_evidence": "evidence/native_24p000s.jpg", "evidence": "evidence/native_27p000s.jpg"},
+    {"id": "hidden_draw", "interval_seconds": [29.0, 33.0], "actor": "XaBy8", "card": null, "observation": "Three backs before draw; four in historical 30-second image; card movement by33 seconds. Identity hidden.", "evidence": "evidence/native_33p000s.jpg"},
+    {"id": "item_play", "seconds": 34.0, "actor": "XaBy8", "card": "Lucky Ice Pop", "target": "Team Rocket's Magmar", "evidence": "evidence/native_34p000s.jpg"},
+    {"id": "heal", "seconds": 36.5, "target": "Team Rocket's Magmar", "hp_before": 60, "hp_after": 70, "amount": 10, "display_evidence": "evidence/native_35p000s.jpg", "evidence": "evidence/native_36p500s.jpg"},
+    {"id": "coin_animation", "seconds": 37.5, "card": "Lucky Ice Pop", "result": null, "evidence": "evidence/native_37p500s.jpg"},
+    {"id": "concession", "seconds": 38.0, "actor": "XaBy8", "owner_result": "win", "evidence": "evidence/native_38p000s.jpg"},
+    {"id": "victory", "seconds": 43.4, "winner": "Dacz8976", "evidence": "evidence/native_43p400s.jpg"}
+  ]
+}

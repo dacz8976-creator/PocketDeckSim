@@ -1,0 +1,40 @@
+{
+  "source_sha256": "0e00fad4af7232b8b50c5cd9b946fdef9a1ac3e873166667e57ac3bce15bcc3e",
+  "source_size": 733748173,
+  "stable_during_hash": true,
+  "native_bindings": [
+    {
+      "seconds": 30,
+      "independent_decode": "source_check_30.jpg",
+      "retained_frame": "turn_evidence\\t0030.00.jpg",
+      "sha256": "11a0b81e6bb16a4e9772f35d962783978ddb7c0fa35033c0c89b8a8aa27c03f0",
+      "byte_identical": true
+    },
+    {
+      "seconds": 177,
+      "independent_decode": "source_check_177.jpg",
+      "retained_frame": "turn_evidence\\t0177.00.jpg",
+      "sha256": "1efeae98283e36384118139d03c6477a0ffc54e000896c541e29405b28c0a2a3",
+      "byte_identical": true
+    },
+    {
+      "seconds": 375,
+      "independent_decode": "source_check_375.jpg",
+      "retained_frame": "turn_evidence\\t0375.00.jpg",
+      "sha256": "fdfaf3c3d646e66c35b4c28ff03833d9893c0565afa713cc55b8641544f31408",
+      "byte_identical": true
+    }
+  ],
+  "frame_sets": 235,
+  "structural_pass": true,
+  "checked_input_sha256": {
+    "REVIEW.md": "ede40d6258ba3d39ad4accfbed64773af7450d1eae939e4009432e9bbc44c97d",
+    "COVERAGE.md": "e1cfaae99e85a86dce0c9856229c91b698a6186cbbe80b3335167b55b1431e54",
+    "SUMMARY.json": "efd83321a677edeeb03a98b638bddd7e65a2c0471f1a9a2a96498b09fb2d6aba",
+    "UNCERTAINTIES.json": "4548d449366cac9203b402c3dcdb7da97b7f30c5f4bea6c83587d471431a469f",
+    "PAUSE_GAME.json": "0268e9cb6e4cc8f6e7b98bef624fd09f5af3c3bd179e66b951ea66c67122601f",
+    "DECK_USED.json": "75c27f019fd6bc1c14b9a307f90eb8ec164e7352de96ee7b5db85e1dde5ef37c",
+    "TURN_LEDGER.json": "0462b412611cb043e3fcce86050102eb94bf7f75419d4bc48962dcf7a911de92",
+    "TURN_EVIDENCE.json": "12c301df6d159b67734090c0744aea703f77030658683821f4eadc0df11b7628"
+  }
+}

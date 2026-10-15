@@ -1,0 +1,25 @@
+{
+  "schema": "independent-retained-evidence-integrity-v1",
+  "original_video_read_count": 0,
+  "extraction_count": 0,
+  "retained_image_hash_size_dimension_checks": 173,
+  "native_frames_checked": 55,
+  "pixel_exact_crop_comparisons": 110,
+  "requested_seek_pts_checks": 55,
+  "inherited_turns_exactly_compared": 30,
+  "errors": [],
+  "packet_file_sha256": {
+    "ASSIGNMENT.json": "dd3545d4cc19a886128e5463413c2c146d6657ef370d6bf6ac325184ec80ad15",
+    "DECK_USED.json": "7cd11c7ba08876e7660fdbdb534938b4dacf483ee8e17210b52eabc003d660ca",
+    "HAND_SUPPLEMENT.json": "ad7d7efb7640decca8672a875eaad43361b4faa9be7ecb52b525357738c5a288",
+    "INHERITED_TURNS.json": "526d7831489294629906f57a2692a392007e42dd652a7dfc85af7ed8ca53a97f",
+    "METRICS.json": "a719eb0bb5ce1c21d11d275bddfa894a58adc5088069c76bcdffb027eca1efe7",
+    "PAUSE_GAME.json": "21051fe109453c73518ddd1abf3282406e4f1c32ae4c05ef5dc3dd91c9dce04f",
+    "SOURCE_HASH_VERIFICATION.json": "2d58b5ff9496dc1148d3c6f3d8be38eda397da46806ddc6b488bfb454641c4f8",
+    "SOURCE_REFERENCE.json": "83da16b2a68b608b8de4a9c6e1694d00c2073a04d0fd06a2e71718d8491de152",
+    "STRUCTURE_CHECK.json": "e2ad3035bce17500d35ec4f1c79761f7f705dc630d906347cb805dd00f2c7458",
+    "TURN_EVIDENCE.json": "42c3edd59e2cb63e0f65c63ffba68432797708f6991a103ffabf4a4ebf221f42",
+    "TURN_LEDGER.json": "58b165969d4cf0a9033ea1c87a64331c23717fe21eff1da5b277caca95ba714e",
+    "UNCERTAINTIES.json": "0a9ffea1cbddddfb1e727b67a0a2111f8915d8c7fedd338543ac081ae27a2ec7"
+  }
+}

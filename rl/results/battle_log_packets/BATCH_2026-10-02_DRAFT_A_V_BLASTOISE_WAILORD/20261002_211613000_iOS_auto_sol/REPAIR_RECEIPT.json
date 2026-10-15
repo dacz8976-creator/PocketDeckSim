@@ -1,0 +1,24 @@
+{
+  "repaired_utc": "2026-10-03T01:09:18.362218+00:00",
+  "author": "/root",
+  "source_video": "20261002_211613000_iOS.MP4",
+  "source_sha256": "8eec16e93f6e3bc1322e31bb5ff85c95a364ffb8bc14dd53427626226f1e3fd4",
+  "original_submission_preserved": "worker_submission/SUBMISSION.json",
+  "original_submission_sha256": "f517ef25c730bae74c7b80c8fae098b354a5633983351a45d11d44edcda0344c",
+  "independent_rejection_sha256": "99ae9eedb477f1fb53919faf2eeea7ce00c8aea663ffcb8ec0df9453376949cf",
+  "corrections": [
+    "T8 pre-expiry board phase and visible restriction retained at162.502",
+    "End-T8 expiry separately anchored to retained164.002 displayed T9 without restriction",
+    "Native frame roles and narrative distinguish pre-expiry and post-expiry instants"
+  ],
+  "changed_files": [
+    "TURN_LEDGER.json",
+    "TURN_EVIDENCE.json",
+    "REVIEW.md",
+    "TURN_TABLE.md"
+  ],
+  "guide_and_inventory_semantics_unchanged": true,
+  "primary_manifest_unchanged": true,
+  "no_new_extraction": true,
+  "independent_recheck_pending": true
+}

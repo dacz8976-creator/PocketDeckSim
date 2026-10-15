@@ -1,0 +1,30 @@
+{
+  "video_basename": "20260930_142105000_iOS.MP4",
+  "reviewer": "sol_auto_142105000",
+  "unreviewed_intervals": [],
+  "consequential_ambiguities_requiring_escalation": [],
+  "uncertainties": [
+    {
+      "id": "hidden_information",
+      "times_seconds": [0, 159.021667],
+      "status": "unknown_by_source",
+      "detail": "Full deck lists, unrevealed opponent cards, the specific Basic fetched by the AI Poke Ball, and bot intent are not established.",
+      "impact": "Does not affect visible mode, nine-turn coverage, HP/Energy reconciliation or 3-0 Victory."
+    },
+    {
+      "id": "timing_precision",
+      "times_seconds": [0, 159.021667],
+      "status": "bounded",
+      "detail": "Turn and phase boundaries are approximate within roughly 1.5 seconds. Targeted frames establish action ordering and state transitions without asserting subsecond timing.",
+      "impact": "No uncovered battle phase or unresolved event ordering affecting the outcome."
+    },
+    {
+      "id": "notification_occlusion",
+      "times_seconds": [127, 148],
+      "status": "source_limitation",
+      "detail": "Phone notifications partially obscure opponent hand/score header. Bench identities and attachments, Active state, final Weakness 100, third point and Victory remain readable in retained frames.",
+      "evidence": ["evidence/t0131.00.jpg", "evidence/t0140.00.jpg", "evidence/t0147.00.jpg", "evidence/t0152.00.jpg"],
+      "impact": "Hidden hand and exact draw identity remain unknown; terminal outcome is confirmed."
+    }
+  ]
+}

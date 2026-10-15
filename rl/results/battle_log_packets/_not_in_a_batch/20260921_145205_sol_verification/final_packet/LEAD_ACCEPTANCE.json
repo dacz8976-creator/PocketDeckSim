@@ -1,0 +1,16 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-09-21T19:10:53.6204335Z",
+  "first_pass_reviewer": "Gemini first-pass draft",
+  "independent_verifier": "Sol-level verifier (Codex)",
+  "video": "20260921_145205000_iOS.MP4",
+  "scope": "Gemini full-battle first pass plus bounded independent Sol verification of 02:32-02:40 and 03:38-04:02, with minimal adjacent context required to resolve boundary actions",
+  "interval_results": {
+    "02:32-02:40": "PASS with corrections integrated",
+    "03:38-04:02": "PASS"
+  },
+  "source_identity_verified": true,
+  "unresolved_placeholders": false,
+  "whole_video_independently_reviewed_by_sol": false,
+  "disposition": "COMPLETE and independently accepted"
+}

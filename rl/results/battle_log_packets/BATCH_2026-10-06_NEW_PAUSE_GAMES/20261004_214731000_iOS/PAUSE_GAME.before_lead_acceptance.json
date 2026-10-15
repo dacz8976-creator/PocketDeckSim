@@ -1,0 +1,123 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261004_214731000_iOS_game1",
+  "review_date": "2026-10-06T17:43:02.694559+00:00",
+  "sources": [
+    {
+      "video_basename": "20261004_214731000_iOS.MP4",
+      "sha256": "d363bdd1c3f4aafc5ad9423764e706f8944407d68a04c82d72317592d7e7e198",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Caterpie / Butterfree / Shelmet / Accelgor (filmed core; deck label not shown in this source)",
+  "classification": "human_opponent",
+  "classification_basis": "Searching for opponent and CloutDemon named matchmaking; no Auto option/control anywhere in inspected gameplay. Exact queue label unknown.",
+  "opening": {
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Accelgor",
+        "variant": null,
+        "basis": "visible native hand",
+        "evidence_ids": [
+          "e_0024.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Lucky Ice Pop",
+        "variant": null,
+        "basis": "visible native hand",
+        "evidence_ids": [
+          "e_0024.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Caterpie",
+        "variant": null,
+        "basis": "visible native hand",
+        "evidence_ids": [
+          "e_0024.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Professor's Research",
+        "variant": null,
+        "basis": "visible native hand",
+        "evidence_ids": [
+          "e_0024.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Metapod",
+        "variant": null,
+        "basis": "visible native hand",
+        "evidence_ids": [
+          "e_0024.50"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "count": 5,
+    "basis": "direct native hand view",
+    "evidence_ids": [
+      "e_0024.50"
+    ],
+    "status": "observed",
+    "limit_reason": null,
+    "source_video": "20261004_214731000_iOS.MP4",
+    "timestamp_seconds": 24.5,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "selected_active": {
+      "name": "Caterpie",
+      "opening_position": 3,
+      "source_video": "20261004_214731000_iOS.MP4",
+      "timestamp_seconds": 26,
+      "evidence_ids": [
+        "e_0024.50"
+      ],
+      "basis": "placement seen in overview26s, remains Active30s"
+    },
+    "redraw_or_replacement": [],
+    "before_active_placement": true
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_battle_review_submitted_for_independent_acceptance",
+  "outcome": {
+    "owner": "win",
+    "opponent": "CloutDemon",
+    "points": [
+      3,
+      0
+    ],
+    "turns_played": 8,
+    "damage_done_displayed": 200,
+    "evidence_ids": [
+      "e_0374.00"
+    ]
+  },
+  "limits": [
+    "Opponent card faces remain hidden for draws/searches not revealed.",
+    "Exact input/frame PTS was not measured; retained seek times identify source-local evidence.",
+    "No opened discard-pile views in this recording.",
+    "The filmed Grass deck does not match any of the nine current live lists. Deck supplement pending lead QR/live-log reconciliation."
+  ],
+  "lead_checked": false
+}

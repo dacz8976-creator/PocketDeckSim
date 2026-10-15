@@ -1,0 +1,56 @@
+{
+  "schema": "independent-correction-recheck-v1",
+  "reviewer": "/root/independent_003547",
+  "model": "gpt-6.1-sol",
+  "source_video": "20261004_214731000_iOS.MP4",
+  "source_sha256": "d363bdd1c3f4aafc5ad9423764e706f8944407d68a04c82d72317592d7e7e198",
+  "scope": "Tiny independent verification of R1-R4 repairs only. Earlier bounded packet check and historical CHECK_RESULT preserved. No builder or second full pass.",
+  "status": "corrections_accepted",
+  "accepted": true,
+  "checks": [
+    {
+      "id": "R1",
+      "status": "pass",
+      "basis": "278 is attackzoom; unzoomed=false and zoom substitutionlimit explicit.273 corroboration remainspriorcheckedreference, not re-reviewed this turn."
+    },
+    {
+      "id": "R2",
+      "status": "pass",
+      "basis": "354 lastfullyvisible KO Rayquaza0HP withattachments/Poison and ownerpoints0;355 removal. Correctedboard_after explicitlypre-removal354with0points; separate terminal_resolution cites359/374foraward/finalvictory. It doesnotclaim resolvedpost-removalActive."
+    },
+    {
+      "id": "R3",
+      "status": "pass",
+      "basis": "298/329 directlyshow Currentturn7/8; correctedT6/T7boundaryfields7/8 and phase labelsagree."
+    },
+    {
+      "id": "R4",
+      "status": "pass",
+      "basis": "244handhasAccelgor/Pop/Trail3;245onlyAccelgor/Pop2 while priorForeststillvisible.245before_first_play=false, selected244retained, firstplay245-246windowexplicit. NoexactinputPTSclaimed."
+    }
+  ],
+  "viewed_evidence": [
+    "turn_evidence/t0244.00.jpg",
+    "turn_evidence/t0245.00.jpg",
+    "turn_evidence/t0278.00.jpg",
+    "turn_evidence/t0298.00.jpg",
+    "turn_evidence/t0329.00.jpg",
+    "turn_evidence/t0354.00.jpg",
+    "turn_evidence/t0355.00.jpg",
+    "turn_evidence/t0359.00.jpg"
+  ],
+  "view_method": "Labeled contact sheet derived from retained1170x2532 native frames at490pixel tile width, paired with exact corrected JSON and repair script inspection.",
+  "required_repairs_remaining": [],
+  "lead_acceptance": false,
+  "shared_writes": false,
+  "external_writes": false,
+  "media_actions": false,
+  "checked_utc": "2026-10-06T18:13:34.889484+00:00",
+  "checked_input_sha256": {
+    "SOURCE.json": "d44372a4d2e4a58b56f6805456883d6586c5a4aa90ba8e381467148f3abcadaf",
+    "TURN_LEDGER.json": "7a13d756bf9719c71c09ca12cd1ef60b985f4ca917fff075f8ba7ba0a2e32025",
+    "TURN_EVIDENCE.json": "08664a613a3fdbe0118f623739c17c60447d881a2e4d7af086d8700f30fad6c9",
+    "REVIEW.md": "d0b820a9250f31865c369214976289eb85729da2653eec743a42159023da68f0",
+    "DECK_USED.json": "b92f0a03c64ba0da3d55fd58a9cf1816a7589633655464decca1ddb7b56ac703"
+  }
+}

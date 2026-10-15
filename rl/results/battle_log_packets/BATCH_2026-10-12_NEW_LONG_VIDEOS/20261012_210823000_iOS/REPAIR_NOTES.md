@@ -1,0 +1,9 @@
+# Independent repair notes
+
+Revision 2 repairs the rejected eight-file submission. Rejected inputs were copied before mutation into before_independent_repairs_20261012T234354Z. SHA-256 of every original and every archived copy matched independent_sol/CHECK_RESULT.json.
+
+The original reviewer overlooked the central ending messages while examining hand crops. The retained full native frames show the owner empty-deck draw failure at 428 and 428.5 seconds, and the opponent concession at 430, 430.5 and 431 seconds. The repaired ledger and prose record both as observed system events. Terminal-cause and deck-exhaustion uncertainties were removed. The three-card hand and no owner voluntary play remain correct. Last observed points 0-1 remain separate from unopened final statistics.
+
+Every starting and ending board Energy Zone was audited against its own native frame. The opponent current circle at 87 seconds is empty. Owner next glyphs at 117, 206.5 and 292 are absent, both next glyphs at 200 are absent during animation, and opponent next at 166 is prompt-obscured. Those next fields are null with specific reasons. Other visible current and next glyphs were transcribed individually. energy_zone_audit/ENERGY_ZONE_AUDIT.json contains 48 board/player records across 23 unique source frames, with retained native zone crops and three contact sheets.
+
+All eight files carry revision provenance or a prose repair note. The filmed QR deck binding, 12 turns, opening, owner hand reconciliation, no opened discards, unresolved Colorless origin and unreadable opponent ability limits are preserved. No source, shared log, external artifact, registration or archive location was changed. Structural validation and final hashes are saved in REPAIR_VALIDATION.json and REPAIR_FINAL_HASHES.json. This repair is pending independent recheck.

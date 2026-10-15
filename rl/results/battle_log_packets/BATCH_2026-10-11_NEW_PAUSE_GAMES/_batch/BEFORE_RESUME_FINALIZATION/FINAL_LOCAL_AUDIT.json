@@ -1,0 +1,49 @@
+{
+  "audited_utc": "2026-10-12T01:44:33.072607+00:00",
+  "requested_sources": 3,
+  "completed_reviews": 1,
+  "accepted_registered_archived": 1,
+  "live_games_added": 1,
+  "source_name": "20261012_004128000_iOS.MP4",
+  "source_sha256": "dbf23091859cbe159afc724f32f517f75925ab214343474285306b035ee4146e",
+  "archive_identity_verified": true,
+  "current_index_and_location_map_verified": true,
+  "unrelated_index_rows_preserved": true,
+  "prior_live_games_preserved": true,
+  "live_totals": {
+    "games": 37,
+    "wins": 20,
+    "losses": 17,
+    "concession_wins": 11
+  },
+  "capture_status": "complete_with_recording_limits",
+  "pending_sources": [
+    {
+      "source_video": "20261012_003458000_iOS.MP4",
+      "state": "source_unavailable_pending_review",
+      "bytes_from_metadata_only": 673462176,
+      "source_sha256": null,
+      "visual_review_started": false,
+      "external_logged": false,
+      "archived": false,
+      "blocker": "OneDrive read failures, including low-system-resource error; full and small-range hydration retries failed."
+    },
+    {
+      "source_video": "20261012_004435000_iOS.MP4",
+      "state": "source_unavailable_pending_review",
+      "bytes_from_metadata_only": 861227730,
+      "source_sha256": null,
+      "visual_review_started": false,
+      "external_logged": false,
+      "archived": false,
+      "blocker": "OneDrive read failures, including low-system-resource error; full and small-range hydration retries failed."
+    }
+  ],
+  "storage": {
+    "online_only": false,
+    "allocated_video_bytes": 245906067,
+    "pending_reason": "Waiting for OneDrive to finish uploading/syncing; local contents retained",
+    "files_deleted": 0
+  },
+  "archived_video_rehashed_for_this_audit": false
+}

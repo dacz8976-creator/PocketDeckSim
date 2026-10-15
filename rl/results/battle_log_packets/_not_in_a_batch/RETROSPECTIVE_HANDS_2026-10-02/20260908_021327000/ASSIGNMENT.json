@@ -1,0 +1,43 @@
+{
+  "target_turn_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "new_native_fullframe_cap": 108,
+  "reasoning": "high",
+  "reviewer": "/root/sol_retro_ladder_021327",
+  "model": "gpt-6.1-sol",
+  "source": "20260908_021327000_iOS.MP4",
+  "source_receipt": "ROOT_SOURCE_VERIFICATION.json",
+  "started_utc": "2026-10-02T21:09:11.0728739Z",
+  "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+  "status": "submitted_for_independent_acceptance",
+  "scope": "Authorized retrospective setup and all 12 turn field supplement; existing accepted packet and Reviewed status retained",
+  "owner_turn_numbers": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12
+  ],
+  "cap_approval_history": [
+    80,
+    96,
+    98,
+    103,
+    104,
+    108
+  ],
+  "finished_utc": "2026-10-02T21:31:28.873199+00:00"
+}

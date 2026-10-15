@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "checks": [
+    "Explicit source path hashes correct local bytes and records real location",
+    "Mismatched basename rejected without event mutation",
+    "Normal main-file registration still works"
+  ],
+  "real_index_used_for_checks": false
+}

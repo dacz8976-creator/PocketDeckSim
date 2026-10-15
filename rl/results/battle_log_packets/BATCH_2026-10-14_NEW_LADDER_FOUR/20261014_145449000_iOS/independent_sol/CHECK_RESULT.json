@@ -1,0 +1,120 @@
+{
+  "accepted": true,
+  "reviewer": "/root/check_ladder_145449",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "source_filename": "20261014_145449000_iOS.MP4",
+  "source_sha256": "14396f74a5949fe27458a2758b2eee4fad952737ca96f20839be4a1e1d0458cf",
+  "source_bytes": 637130623,
+  "recording_duration_seconds": 348.955,
+  "frozen_manifest_sha256": "f9b5635758393933092c3c6621c6028487370f58286f21844cd907ea0b9ff1ae",
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "scope": "Bounded independent acceptance of frozen packet, consequential claims, every recorded attack and Active progression, with three independently selected ordinary-turn source seeks. Not a second complete visual pass.",
+  "findings": [
+    {
+      "claim": "source and frozen identity",
+      "decision": "accepted",
+      "evidence": "Before/after receipts: source SHA / bytes / duration correct, all 80 frozen files match, manifest and primary unchanged."
+    },
+    {
+      "claim": "full primary coverage",
+      "decision": "accepted",
+      "evidence": "REVIEW.md/COVERAGE.md cover setup, all 12 displayed turns and complete ending; bounded source checks found no contradictory phase or omitted attack."
+    },
+    {
+      "claim": "second and concession loss0-0 versus opponent",
+      "decision": "accepted",
+      "evidence": "native30 explicitly going second; native335.5 menu,336.5 concession confirmation,337.5 Defeat,348 opponent/second/12turns/0-0/140damage."
+    },
+    {
+      "claim": "ranked ladder/no visible Auto",
+      "decision": "accepted",
+      "evidence": "native20 both Ultra Ball Rank 4; inspected game views no Auto control; native335.5 menu Concede/Settings/Battle Log with no Auto option; supplied owner ladder designation."
+    },
+    {
+      "claim": "deck12 visible core and opponent core",
+      "decision": "accepted_with_limits",
+      "evidence": "native198 Whimsicott ex Grass Knot, Ariados Trap Territory/Pierce, Teal Mask Ogerpon ex Soothing Wind/Energized Leaves; fresh304.5/native330/332 show Oricorio, two Indeedee ex, Dedenne ex. Exact selected deck label/full lists unrecorded."
+    },
+    {
+      "claim": "Whimsicott ex no attack",
+      "decision": "accepted",
+      "evidence": "detail02 Cottonee Razor Leaf 20; detail03/fresh129 retreat to Ariados then benched Whimsicott evolution; native139/140/144 first Pierce30; detail05 Pierce 207; detail06/fresh246 Pierce 249; detail08/fresh304.5 Pierce 306; native282 and330 both Zzzap hit Active Ariados; native332/335.5/336.5 Whimsicott stillBench through concession. Total20+4x30=140 matches result. No main attack moment exists."
+    },
+    {
+      "claim": "first supporting Ariados Pierce",
+      "decision": "accepted",
+      "evidence": "detail03 currentturn4; native139 opponent points 0; native140 Pierce/Ariados; native144 next turn 5 and Oricorio 40. OwnT2/global 4/time140s/opp 0 stays separate."
+    }
+  ],
+  "exact_three_item_note_prefix": "2nd | Whimsicott ex no attack | opp pts N/A",
+  "main_attacker_interpretation": "Whimsicott ex per supplied established deck12 interpretation; supporting Ariados attacks logged separately.",
+  "corrections": [],
+  "limits": [
+    "Bounded independent acceptance is not a second whole-video visual review or simulator replay.",
+    "Full20-card lists/selected deck-number label/unrevealed cards unknown. Visible core and supplied established section interpretation support deck12 routing.",
+    "No Auto is visible in inspected views/menu; hidden menu contents are not inferred.",
+    "Dedenne HP Tool printed name remains unverified; Tool/+20HP observed.",
+    "Action onset times retain primary approximate1-3seconds limit."
+  ],
+  "errors": [],
+  "operational_errors": [
+    {
+      "error": "Report write initially failed with Windows cp1252 encoding of opponent Japanese identifier.",
+      "resolution": "Recovered with explicit UTF-8/ASCII JSON encoding before delivery; primary files unaffected."
+    }
+  ],
+  "inspected_native_timestamps": [
+    20,
+    30,
+    139,
+    140,
+    144,
+    198,
+    282,
+    330,
+    332,
+    335.5,
+    336.5,
+    337.5,
+    348
+  ],
+  "inspected_retained_sheets": {
+    "detail_sheet_02.jpg": "63-99s",
+    "detail_sheet_03.jpg": "102-135s",
+    "detail_sheet_05.jpg": "177-213s",
+    "detail_sheet_06.jpg": "216-252s",
+    "detail_sheet_08.jpg": "294-333s"
+  },
+  "fresh_source_seeks": [
+    {
+      "source_time_seconds": 129.0,
+      "path": "fresh_native_0129.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_time_seconds": 246.0,
+      "path": "fresh_native_0246.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_time_seconds": 304.5,
+      "path": "fresh_native_0304.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    }
+  ],
+  "integrity_receipts": [
+    "INTEGRITY_BEFORE.json",
+    "INTEGRITY_AFTER.json"
+  ]
+}

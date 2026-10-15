@@ -1,0 +1,59 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260929_002539000",
+  "sources": [
+    {
+      "video_basename": "20260929_002539000_iOS.MP4",
+      "sha256": "a951746c8a5226b0f575405e985c72cc3af249da0a757e0712b621d82b85aa06",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "source_url": null,
+  "captured_at": "2026-10-02T23:14:34.059723+00:00",
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\DECK_LOG_CAPTURE.txt",
+  "game_version_binding_basis": "Batch live Pause Games snapshots do not include a source-bound exact historical Entei list; currentdecks cannotreplace it",
+  "conflicts_with_filmed_cards": null,
+  "exact_list_status": "unavailable_historical_version",
+  "limits": [
+    "Minimumvisiblecards are not exact20slots; one or more hidden identities/version remain unknown. Ladyshuffledin T6 may be same card drawn T8. No currentdecksubstitution."
+  ],
+  "classification": "ladder_presumed",
+  "excluded_from_ladder": false,
+  "visible_core_counts_minimum": {
+    "Entei ex": 2,
+    "Giant Cape": 1,
+    "Flame Patch": 2,
+    "Professor's Research": 2,
+    "Copycat": 2,
+    "Poké Ball": 1,
+    "Lucky Ice Pop": 2,
+    "Sabrina": 1,
+    "Rainbow Cave": 2,
+    "Starting Plains": 1,
+    "Pokémon Center Lady": 1,
+    "Cyrus": 1,
+    "Repel": 1
+  },
+  "visible_core_evidence_ids": [
+    "F0022.00",
+    "F0065.50",
+    "F0078.00",
+    "R0090.00",
+    "F0138.00",
+    "F0223.00",
+    "F0251.00",
+    "F0293.00",
+    "F0376.00",
+    "F0383.00",
+    "F0395.00"
+  ],
+  "visible_energy_configuration": "Fire only observed for owner"
+}

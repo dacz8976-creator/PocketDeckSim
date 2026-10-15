@@ -1,0 +1,696 @@
+PGSTEP KW-261013_030351000-t05 seed 1 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Evolve:Dragonair@3
+PGDUMP actor=0 candidates=7
+PGDUMP       2059.099999999999909 EndTurn
+PGDUMP      11137.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Evolve:Dragonair@3
+PGSTEP KW-261013_030351000-t05 seed 1 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2078.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGSTEP KW-261013_030351000-t05 seed 1 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2093.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2598.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2548.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2528.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 1 free 3
+PGCAND EndTurn
+PGCAND Attack:Draconic Whip
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2463.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attack:Draconic Whip
+PGDUMP       2984.766666666666424 Retreat:1
+PGDUMP       2794.766666666666424 Retreat:2
+PGDUMP       2828.099999999999909 Retreat:3
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 2 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Evolve:Dragonair@3
+PGDUMP actor=0 candidates=7
+PGDUMP       2059.099999999999909 EndTurn
+PGDUMP      11137.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Evolve:Dragonair@3
+PGSTEP KW-261013_030351000-t05 seed 2 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2078.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGSTEP KW-261013_030351000-t05 seed 2 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2093.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2598.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2548.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2528.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 2 free 3
+PGCAND EndTurn
+PGCAND Attack:Draconic Whip
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2463.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attack:Draconic Whip
+PGDUMP       2984.766666666666424 Retreat:1
+PGDUMP       2794.766666666666424 Retreat:2
+PGDUMP       2828.099999999999909 Retreat:3
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 3 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Evolve:Dragonair@3
+PGDUMP actor=0 candidates=7
+PGDUMP       2059.099999999999909 EndTurn
+PGDUMP      11137.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Evolve:Dragonair@3
+PGSTEP KW-261013_030351000-t05 seed 3 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2078.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGSTEP KW-261013_030351000-t05 seed 3 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2093.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2598.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2548.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2528.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 3 free 3
+PGCAND EndTurn
+PGCAND Attack:Draconic Whip
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2463.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attack:Draconic Whip
+PGDUMP       2984.766666666666424 Retreat:1
+PGDUMP       2794.766666666666424 Retreat:2
+PGDUMP       2828.099999999999909 Retreat:3
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 4 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Evolve:Dragonair@3
+PGDUMP actor=0 candidates=7
+PGDUMP       2059.099999999999909 EndTurn
+PGDUMP      11137.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Evolve:Dragonair@3
+PGSTEP KW-261013_030351000-t05 seed 4 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2078.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGSTEP KW-261013_030351000-t05 seed 4 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2093.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2598.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2548.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2528.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 4 free 3
+PGCAND EndTurn
+PGCAND Attack:Draconic Whip
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2463.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attack:Draconic Whip
+PGDUMP       2984.766666666666424 Retreat:1
+PGDUMP       2794.766666666666424 Retreat:2
+PGDUMP       2828.099999999999909 Retreat:3
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 5 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Evolve:Dragonair@3
+PGDUMP actor=0 candidates=7
+PGDUMP       2059.099999999999909 EndTurn
+PGDUMP      11137.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Evolve:Dragonair@3
+PGSTEP KW-261013_030351000-t05 seed 5 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2078.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGSTEP KW-261013_030351000-t05 seed 5 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2093.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2598.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2548.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2528.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 5 free 3
+PGCAND EndTurn
+PGCAND Attack:Draconic Whip
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2463.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attack:Draconic Whip
+PGDUMP       2984.766666666666424 Retreat:1
+PGDUMP       2794.766666666666424 Retreat:2
+PGDUMP       2828.099999999999909 Retreat:3
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 6 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Evolve:Dragonair@3
+PGDUMP actor=0 candidates=7
+PGDUMP       2059.099999999999909 EndTurn
+PGDUMP      11137.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Evolve:Dragonair@3
+PGSTEP KW-261013_030351000-t05 seed 6 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2078.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGSTEP KW-261013_030351000-t05 seed 6 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2093.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2598.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2548.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2528.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 6 free 3
+PGCAND EndTurn
+PGCAND Attack:Draconic Whip
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2463.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attack:Draconic Whip
+PGDUMP       2984.766666666666424 Retreat:1
+PGDUMP       2794.766666666666424 Retreat:2
+PGDUMP       2828.099999999999909 Retreat:3
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 7 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Evolve:Dragonair@3
+PGDUMP actor=0 candidates=7
+PGDUMP       2059.099999999999909 EndTurn
+PGDUMP      11137.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Evolve:Dragonair@3
+PGSTEP KW-261013_030351000-t05 seed 7 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2078.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGSTEP KW-261013_030351000-t05 seed 7 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2093.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2598.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2548.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2528.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 7 free 3
+PGCAND EndTurn
+PGCAND Attack:Draconic Whip
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2463.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attack:Draconic Whip
+PGDUMP       2984.766666666666424 Retreat:1
+PGDUMP       2794.766666666666424 Retreat:2
+PGDUMP       2828.099999999999909 Retreat:3
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 8 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Evolve:Dragonair@3
+PGDUMP actor=0 candidates=7
+PGDUMP       2059.099999999999909 EndTurn
+PGDUMP      11137.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Evolve:Dragonair@3
+PGSTEP KW-261013_030351000-t05 seed 8 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2078.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGSTEP KW-261013_030351000-t05 seed 8 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2093.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2598.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2548.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2528.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 8 free 3
+PGCAND EndTurn
+PGCAND Attack:Draconic Whip
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2463.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attack:Draconic Whip
+PGDUMP       2984.766666666666424 Retreat:1
+PGDUMP       2794.766666666666424 Retreat:2
+PGDUMP       2828.099999999999909 Retreat:3
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 9 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Evolve:Dragonair@3
+PGDUMP actor=0 candidates=7
+PGDUMP       2059.099999999999909 EndTurn
+PGDUMP      11137.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Evolve:Dragonair@3
+PGSTEP KW-261013_030351000-t05 seed 9 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2078.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGSTEP KW-261013_030351000-t05 seed 9 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2093.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2598.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2548.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2528.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 9 free 3
+PGCAND EndTurn
+PGCAND Attack:Draconic Whip
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2463.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attack:Draconic Whip
+PGDUMP       2984.766666666666424 Retreat:1
+PGDUMP       2794.766666666666424 Retreat:2
+PGDUMP       2828.099999999999909 Retreat:3
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 10 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Evolve:Dragonair@3
+PGDUMP actor=0 candidates=7
+PGDUMP       2059.099999999999909 EndTurn
+PGDUMP      11137.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Evolve:Dragonair@3
+PGSTEP KW-261013_030351000-t05 seed 10 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2078.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGSTEP KW-261013_030351000-t05 seed 10 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2093.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2598.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2548.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2528.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 10 free 3
+PGCAND EndTurn
+PGCAND Attack:Draconic Whip
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2463.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attack:Draconic Whip
+PGDUMP       2984.766666666666424 Retreat:1
+PGDUMP       2794.766666666666424 Retreat:2
+PGDUMP       2828.099999999999909 Retreat:3
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 11 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Evolve:Dragonair@3
+PGDUMP actor=0 candidates=7
+PGDUMP       2059.099999999999909 EndTurn
+PGDUMP      11137.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Evolve:Dragonair@3
+PGSTEP KW-261013_030351000-t05 seed 11 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2078.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGSTEP KW-261013_030351000-t05 seed 11 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2093.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2598.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2548.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2528.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 11 free 3
+PGCAND EndTurn
+PGCAND Attack:Draconic Whip
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2463.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attack:Draconic Whip
+PGDUMP       2984.766666666666424 Retreat:1
+PGDUMP       2794.766666666666424 Retreat:2
+PGDUMP       2828.099999999999909 Retreat:3
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 12 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Evolve:Dragonair@3
+PGDUMP actor=0 candidates=7
+PGDUMP       2059.099999999999909 EndTurn
+PGDUMP      11137.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Evolve:Dragonair@3
+PGSTEP KW-261013_030351000-t05 seed 12 free 1
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       2078.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 UseStadium
+PGDUMP      11141.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2228.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2178.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2158.099999999999909 Attach:1Metal@3 zone
+PGSTEP KW-261013_030351000-t05 seed 12 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Attach:1Metal@2 zone
+PGCAND Attach:1Metal@3 zone
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2093.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attach:1Metal@0 zone
+PGDUMP       2598.099999999999909 Attach:1Metal@1 zone
+PGDUMP       2548.099999999999909 Attach:1Metal@2 zone
+PGDUMP       2528.099999999999909 Attach:1Metal@3 zone
+PGDUMP      11141.533333333334667 Ability@3
+PGSTEP KW-261013_030351000-t05 seed 12 free 3
+PGCAND EndTurn
+PGCAND Attack:Draconic Whip
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Retreat:3
+PGCAND Ability@3
+PGDUMP actor=0 candidates=6
+PGDUMP       2463.099999999999909 EndTurn
+PGDUMP      11156.533333333334667 Attack:Draconic Whip
+PGDUMP       2984.766666666666424 Retreat:1
+PGDUMP       2794.766666666666424 Retreat:2
+PGDUMP       2828.099999999999909 Retreat:3
+PGDUMP      11141.533333333334667 Ability@3

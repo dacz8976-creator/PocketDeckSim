@@ -1,0 +1,49 @@
+{
+  "coverage_gaps": [],
+  "unresolved": [
+    {
+      "topic": "Hidden information",
+      "detail": "Full owner/opponent lists, hidden cards, exact alternate artwork IDs and opponent turn2 Poke Ball search result remain unknown."
+    },
+    {
+      "topic": "Opening pause",
+      "detail": "Auto is unchecked during Helmet/Bounded Field plays. Purpose and exact user tap frames are not established; do not attribute all opening actions to Auto."
+    },
+    {
+      "topic": "Recording date",
+      "detail": "Filename starts20261001 while owner upload occurred September30 America/Chicago. Source filename clock basis remains unverified."
+    },
+    {
+      "topic": "Results statistics",
+      "detail": "No damage totals/statistics appear through native224.50; only Defeat, challenge title and task are shown."
+    },
+    {
+      "topic": "Strategy",
+      "detail": "Resource timing prevents a Mega Diancie attack. This review does not prove a winning alternative from the visible hand."
+    },
+    {
+      "topic": "Sampling precision",
+      "detail": "Exact native seek times are preserved; approximate action intervals based on midpoint overview samples do not claim exact starts."
+    }
+  ],
+  "resolved_consequential_checks": [
+    {
+      "topic": "190 terminal damage",
+      "resolution": "Korrina native202.00 gives30, Arena20, thirdFighting50, printed90. Mega Diancie Metal weakness contributes0."
+    },
+    {
+      "topic": "Gengar identity",
+      "resolution": "Gengar ex170HP Shadowy Spellbind is drawn on turn1; not Mega Gengar."
+    },
+    {
+      "topic": "Five opponent award points",
+      "resolution": "Mew+2 at182, Mega Diancie+3 at214; display caps3."
+    },
+    {
+      "topic": "Lucky Ice Pop reuse",
+      "resolution": "Turn3 Tails at81.50; turn5 Heads129, Heads138, Tails146, for80 total healing."
+    }
+  ],
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted"
+}

@@ -1,0 +1,51 @@
+{
+  "schema": "retrospective-astra-wording-repair-v1",
+  "source": "20260929_020916000_iOS.MP4",
+  "repaired_utc": "2026-10-02T23:02:17.885894+00:00",
+  "original_submission": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\before_astra_wording_repair\\SUBMISSION.json",
+  "astra_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\astra_checks\\20260929_020916000\\ASTRA_CHECK.json",
+  "changed_fields": [
+    {
+      "file": "TURN_LEDGER.json",
+      "json_path": "$.turns[7].plays_in_order[3].basis",
+      "old": "derived paid retreat: direct Fire2input414 andFire0endpoint418 plus printedretreatcost2; native415\u2013417switch animation; selection/payment touch hidden",
+      "new": "derived paid retreat: direct two-Fire pre-switch state at 414.008 PTS and zero-Fire benched endpoint at 418.010 PTS plus printed retreat cost 2; native switch animation at 415.008-417.010 PTS; selection/payment touch hidden"
+    },
+    {
+      "file": "REVIEW_SUPPLEMENT.json",
+      "json_path": "$.rows[7].plays_in_order[3].basis",
+      "old": "derived paid retreat: direct Fire2input414 andFire0endpoint418 plus printedretreatcost2; native415\u2013417switch animation; selection/payment touch hidden",
+      "new": "derived paid retreat: direct two-Fire pre-switch state at 414.008 PTS and zero-Fire benched endpoint at 418.010 PTS plus printed retreat cost 2; native switch animation at 415.008-417.010 PTS; selection/payment touch hidden"
+    }
+  ],
+  "source_facts_actions_counts_boards_outcome_changed": false,
+  "new_native_frames": 0,
+  "file_sha256": {
+    "ASSIGNMENT.json": "d6ff206d98a68c1bb910b6856ec227c39f065535d43c3ceed86ba17deb323ff5",
+    "ASTRA_QUESTIONS.json": "a117ab0b8df4948398036b7ecba23c96be8312c1531d9e4cf7c5a80e173f22ed",
+    "CHECKPOINTS.json": "7d98b39595a18beea2a218378e417365b6b9bfcab6417168e8f79c1bdcb23d2f",
+    "COVERAGE.md": "81fc727521c60d2f5773096dbc932625e7c160ba8347d686a78e5a9d16b92ea6",
+    "CUE_AUDIT.json": "0780b10484aebab9fd19c84b85cc84e1783c61492c841883db63371c40745642",
+    "DECK_USED.json": "ec26e321fa0da6efd72f317ddd2cf2386bfeb538673e120b6a7df81d7d47c1b8",
+    "EXTRACTION_MANIFEST.json": "8b20c6af62d0acf790285bff30a20c63d0926b8052d2a19efb70480e8bf7d353",
+    "EXTRACTION_PLAN.json": "337dabe17a13eb7980721db3a0eb96733974c1a8df8a95ccb79d9893e937ebce",
+    "extract_native.py": "34f8478165b97738e5b38ac7edeb2c2849062d3b3c0fe34c0be4e0583b9a83b8",
+    "finish_packet.py": "c1961569ab3c57d5edd7f080da6a24b81fc54c0daad859bdbe889822240f1914",
+    "FROZEN_FOR_INDEPENDENT_REVIEW.json": "aa388963a7dd025514757e21b457475551e8bdff2aa8a25dab29bdf7b281f463",
+    "HAND_SUPPLEMENT.json": "5bd514107b4a139ff2c9a6182e1653b52f46bbe1340882cbaf65236f7530c487",
+    "INHERITED_TURNS.json": "3781aee236a37e7ace654f62ffda6f3f2633e4bdad534c91d2eb930d298cb8e2",
+    "LOCATOR_PREPROCESSING.json": "15b208bfb4c9a73e8b0e30f72d94a79b6fbe6db30a61d6599311abc70b929d7c",
+    "METRICS.json": "723ee56999978b857e91a7cbc82bc0601e039c053770fa3242b778e46c3915ab",
+    "NATIVE_FILE_MANIFEST.json": "9f375bdb5ab44b18753a5791c0e86c94690a9bf5aeedbd992a41079f8934fb5c",
+    "PACKET_VALIDATION.json": "cac88753adfdce0146bff3bd804c98deeada1d86113f4c81c68e2fdd7a5911a7",
+    "PAUSE_GAME.json": "61e7b62f691839fcdfcc7595641389a94aafddc7f194d0c5aa1c9576d0e69c50",
+    "REVIEW_SUPPLEMENT.json": "593fd0c81ef264a726484a791f5c5af70baab766b82aaff9b09d2007149abd7a",
+    "REVIEW_SUPPLEMENT.md": "71a8c2392835924eb287d8aec886df1b9c3bc017241a19afdff354a3bb0dcc11",
+    "ROOT_SOURCE_VERIFICATION.json": "a6eefa294a80f9a3928107ed2c2bd4eef2ae4510e215f3f611be1e3b26db54a2",
+    "SOURCE_REFERENCE.json": "21b41c47c70fad50539a42ad8c4510f919487b14d382f1cad4732418c373db7a",
+    "TURN_EVIDENCE.json": "3c64420991e2ed5fa8fc6d5a68fdd30acdcbd6c847a6408e6ec92568292ffb8d",
+    "TURN_LEDGER.json": "5d609d19f8c67850939bfe3e1d17fc3baa9989aae8b6d3a0cdb4c8f51f4a6a6d",
+    "UNCERTAINTIES.json": "311533fb3680efbdb81b6170360410d3a2b8a09b53f44aa01ec39664be92d542"
+  },
+  "independent_acceptance_status": "different Sol full check still required"
+}

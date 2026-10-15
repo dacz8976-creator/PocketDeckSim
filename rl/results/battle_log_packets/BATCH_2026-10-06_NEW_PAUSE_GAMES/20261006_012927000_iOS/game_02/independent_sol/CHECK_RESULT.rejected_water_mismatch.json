@@ -1,0 +1,48 @@
+{
+  "schema": "independent-acceptance-check-v1",
+  "source_video": "20261006_012927000_iOS.MP4",
+  "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+  "accepted": false,
+  "status": "rejected_narrow_repairs_required",
+  "created_utc": "2026-10-06T20:38:52.860514+00:00",
+  "checked_input_sha256": {
+    "SOURCE.json": "349cbbc3c86cd70047aee5ac616e4120518a2d3003640af4c57ba7e3989b5ebf",
+    "REVIEW.md": "6657bf8442d4fe15ef493bc19b40a3e50d2fedeb6afdaebff6fb274216846210",
+    "COVERAGE.md": "8e12352e775f686954d0f5555edfb684f373f477d94a79c3e513388ff3cb999c",
+    "SUMMARY.json": "462f214f1c1e9fc1ceb4d4452ddaf8c933d1af44dae4489bcb273fd731d0d5b6",
+    "UNCERTAINTIES.json": "b7ae24645164e195dc3c640e5b11e2e6df07bd40d0eeabe655e0e641427d2192",
+    "PAUSE_GAME.json": "fc729074fa7a094c7229769774a4ff5cdf29ec6c09e6af51684ff53c55944db6",
+    "DECK_USED.json": "5735ca52a85980d6b1fb1605efe4e5796fbb23c966481da2f0c1a7f2b3079cac",
+    "TURN_LEDGER.json": "fd37adc607657e930c014400e2177cef4a729d81dc59b84f4678f795261c8d7a",
+    "TURN_EVIDENCE.json": "e9edd0fb2f04d49e43417490615d0b594f25cd3d0db9ab5dce9f2460c3e5630c"
+  },
+  "required_repairs": [
+    {
+      "id": "R1",
+      "paths": [
+        "DECK_EDIT_LEDGER.json:final_energy_configuration",
+        "game_02/DECK_USED.json:source_energy_configuration",
+        "game_02/TURN_LEDGER.json:all owner next Energy lines",
+        "EDITED_DECK_ENTRY.json:energy_configuration and identity",
+        "REVIEW.md and COVERAGE.md parent/child references"
+      ],
+      "timestamps": [
+        596,
+        597,
+        599,
+        600,
+        620
+      ],
+      "finding": "Water labeled selected at596, Darkness labeled unselected; native597/599/600/620 all show black droplet Water icon. Final saved edited deck is Water only. Existing Darkness-only claims are materially incorrect.",
+      "required_change": "Preserve existing files/receipt, correct all propagated source-bound and prepared definition Energy labels; recalculate identity without reusing the old Darkness identity. Verify child next icon separately."
+    }
+  ],
+  "all_source_segments_verified": false,
+  "required_source_game_count": 2,
+  "scope": "Review still in progress; frozen rejection precedes Energy repairs. No archive/external authority.",
+  "checked_supplemental_sha256": {
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_012927000_iOS\\DECK_EDIT_LEDGER.json": "1ea0245a67e5f6f64f0fc715495f8b8dd0ff7c8f982fbf5953ff3dae864dca5d",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_012927000_iOS\\CORRECTION_LEDGER.json": "c739e3c83a0d1e8232033c88b02c55e9e58acf4659bb3dca8a0364c82c1171f8",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\EDITED_DECK_ENTRY.json": "82ce26b526bf0194036254de227924f70e349be56a332a5983a011fa9f44148d"
+  }
+}

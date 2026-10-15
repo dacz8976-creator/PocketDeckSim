@@ -1,0 +1,70 @@
+{
+  "accepted": true,
+  "status": "accepted_with_recording_limits",
+  "source_video": "20261012_004128000_iOS.MP4",
+  "source_sha256": "dbf23091859cbe159afc724f32f517f75925ab214343474285306b035ee4146e",
+  "reviewer": "/root/verify_pause_004128",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_at_utc": "2026-10-12T01:40:34.302014+00:00",
+  "acceptance_scope": "Bounded independent verification of completed full-review packet using selected source evidence, not a second full decode or replay. Lead remains responsible for registration, archival and external logging.",
+  "required_repairs": [],
+  "resolved_repairs": [
+    "Added dense native106.4 unzoomed preplay hand and crops for owner turn4.",
+    "Corrected turn2 ending boundary displayed turn number to3, retaining logical resolved turn2.",
+    "Qualified current Energy slot at selected53.2 frame before generation animation settled.",
+    "Normalized deck count field and rebuilt imported deck text/names from the correct UTF-8 live snapshot."
+  ],
+  "accepted_input_sha256": {
+    "REVIEW.md": "ef0defb3097d8e094f854cf82a2d3fbc81f01bf3fd0e3d030268b34034bd36f0",
+    "COVERAGE.md": "000f590e761a246e7f6639f72e443198399c356ffae56b17edd6848b0dac63ae",
+    "SUMMARY.json": "744f12dc35324f320ec967329027071211fd194133bd515b37ea2a15f490f468",
+    "UNCERTAINTIES.json": "045caca766d958e5473a5fede73acf98674b8ee366fb123404fd89bb776b27e4",
+    "PAUSE_GAME.json": "6f97a6f35c99f8ae94fb08b28ae8c7505664e71700540093023a47943e8b8c8a",
+    "DECK_USED.json": "f0493830c95280f45382f843cb961226b70f109ff3bbfd5c550ac0d5c3089439",
+    "TURN_LEDGER.json": "2f58c8d1d56d25b780e9d86795fb4be7e3529448fb3300e5dee9791c1e8ae664",
+    "TURN_EVIDENCE.json": "b730876c89334dc6ddcde7be40038f11365280a8525ec86a1869d43ac411a031"
+  },
+  "checked_supporting_sha256": {
+    "SOURCE.json": "97f207c5ab885d6a2e877542a0df255e3d2bec640c1c2a41fb1995793f02d297",
+    "QR_DECODE.json": "2eab262615f633c5a2e2db77db1f3f3c05f455637468bb849547dca4596c1571",
+    "../LIVE_DECK_SNAPSHOT.json": "3204f64173bc724259a4c4bbe05f59a308e3dd0e66f3e1aab4152195a975f304",
+    "independent_sol/VIEWED_EVIDENCE.json": "3783c7b5fccc924989c892d400657733b68f4520cbc078916ed6f54a5903e21f"
+  },
+  "source_identity_checks": {
+    "independent_source_rehash_match": true,
+    "size_bytes": 245906067,
+    "native_dimensions": [
+      1170,
+      2532
+    ],
+    "independent_native_seeks": [
+      27,
+      121
+    ],
+    "seek_jpeg_hash_matches": true
+  },
+  "outcome_verified": {
+    "owner": "Dacz8976",
+    "opponent": "ユオカ",
+    "result": "win",
+    "method": "last opposing Pokemon knocked out",
+    "concession": false,
+    "final_points": {
+      "owner": 1,
+      "opponent": 0
+    },
+    "victory_source_seconds": 131,
+    "turn_count": 4
+  },
+  "capture_status": "complete_with_recording_limits",
+  "viewed_manifest": "VIEWED_EVIDENCE.json",
+  "limits": [
+    "Hidden opponent identities and unopened discard piles are unavailable.",
+    "Draw/turn timings are approximate requested seeks, not separately measured encoded PTS.",
+    "Queue rank/casual label remains unknown; no Auto option was observed.",
+    "Warning response is supported by prompt disappearance and immediate attack, without an on-screen tap marker.",
+    "Fresh QR pixel reread was unavailable because selected runtime lacks cv2. Retained image was visually inspected; payload binary decode,20 slots,Water,receipt image/source hashes and exact live payload/count equality were independently checked.",
+    "Match date2026-10-11 uses creation_time verified by lead and Chicago conversion corroborated by phone clock."
+  ]
+}

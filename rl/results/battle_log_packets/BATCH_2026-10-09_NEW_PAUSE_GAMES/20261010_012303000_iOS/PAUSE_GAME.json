@@ -1,0 +1,133 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261010_012303000_iOS_game1",
+  "review_date": "2026-10-10",
+  "sources": [
+    {
+      "video_basename": "20261010_012303000_iOS.MP4",
+      "sha256": "0e00fad4af7232b8b50c5cd9b946fdef9a1ac3e873166667e57ac3bce15bcc3e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Conkeldurr / Garganacl",
+  "match_date": "2026-10-09",
+  "match_date_basis": "Filename UTC2026-10-10T01:23:03; independently batch-verified creation timezone => America/Chicago2026-10-09T20:23:03",
+  "opponent": "ナチョス",
+  "mode": "human online battle; specific queue label not established",
+  "auto_control_visible": false,
+  "opening": {
+    "source_video": "20261010_012303000_iOS.MP4",
+    "timestamp_seconds": 30,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Nacli",
+        "basis": "Direct native pre-Active view; Guts variant confirmed35s",
+        "evidence_ids": [
+          "F003000",
+          "F003500"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Conkeldurr (Guts / Mega Punch)",
+        "basis": "Direct native pre-Active view; Guts variant confirmed35s",
+        "evidence_ids": [
+          "F003000",
+          "F003500"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Nacli",
+        "basis": "Direct native pre-Active view; Guts variant confirmed35s",
+        "evidence_ids": [
+          "F003000",
+          "F003500"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Naclstack",
+        "basis": "Direct native pre-Active view; Guts variant confirmed35s",
+        "evidence_ids": [
+          "F003000",
+          "F003500"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Copycat",
+        "basis": "Direct native pre-Active view; Guts variant confirmed35s",
+        "evidence_ids": [
+          "F003000",
+          "F003500"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Nacli",
+      "opening_position": 3,
+      "source_video": "20261010_012303000_iOS.MP4",
+      "timestamp_seconds": 31,
+      "evidence_ids": [
+        "F003000",
+        "F003100",
+        "F003150",
+        "F003200"
+      ],
+      "basis": "Position3 Nacli goes Active; position1 Nacli remains leftmost in native31/31.5 four-card hand, then is benched32s."
+    },
+    "redraw_or_replacement": [],
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "F003000",
+      "F003500"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_battle_review_complete",
+  "outcome": {
+    "owner_result": "win",
+    "owner_points": 3,
+    "opponent_points": 2,
+    "terminal_turn": 11,
+    "result_evidence_seconds": [
+      375,
+      388,
+      390
+    ],
+    "evidence_ids": [
+      "F037500",
+      "F038800",
+      "F039000"
+    ]
+  },
+  "limits": [
+    "No discard pile opened; periodic pile-content snapshots unavailable.",
+    "Opponent hidden draws and full deck remain unknown.",
+    "Exact artwork/rarity not encoded by QR; deck snapshot preserves log variant labels.",
+    "Final results loading continues to398.13s; terminal3point/Victory already clear388-390s.",
+    "Source timestamps are local seeks; frame PTS not separately measured."
+  ],
+  "lead_checked": true,
+  "lead_acceptance": "LEAD_ACCEPTANCE.json"
+}

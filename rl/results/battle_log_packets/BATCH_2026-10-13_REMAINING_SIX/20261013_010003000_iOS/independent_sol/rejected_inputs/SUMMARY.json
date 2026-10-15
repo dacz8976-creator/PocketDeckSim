@@ -1,0 +1,47 @@
+{
+  "source_video": "20261013_010003000_iOS.MP4",
+  "source_sha256": "3e2fc4897a2f9de4f03899a643a0c32e3bf46b5cc1f56a87d182dff9ceb9072b",
+  "game_id": "20261013_010003000_iOS_game_1",
+  "classification": "human_battle",
+  "auto_option_visible": false,
+  "queue": "B4b emblem event progress shown after match; exact matchmaking queue text not separately visible",
+  "opponent": "gimt",
+  "owner": "Dacz8976",
+  "result": "win",
+  "method": "opponent_concession",
+  "turn_count": 11,
+  "source_game_count": 1,
+  "match_date": "2026-10-12",
+  "match_date_basis": "SOURCE_TIME.json UTC creation metadata converted to Chicago; filmed20:00 clock corroborates",
+  "owner_points": 2,
+  "opponent_points": 0,
+  "damage_done": 190,
+  "result_evidence": [
+    {
+      "source_seconds": 452,
+      "text": "Your opponent conceded",
+      "evidence_id": "f0452_00"
+    },
+    {
+      "source_seconds": 456,
+      "text": "Victory!",
+      "evidence_id": "f0456_00"
+    },
+    {
+      "source_seconds": 472,
+      "text": "vs.gimt Victory; turns11; points2-0; damage190",
+      "evidence_id": "f0472_00"
+    }
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "review_status": "submitted_for_independent_acceptance",
+  "deck_status": "filmed_exact20_resolved; fresh live retrieval pending",
+  "visible_core": [
+    "Glimmora",
+    "Glimmet",
+    "Alolan Muk",
+    "Alolan Grimer",
+    "Regigigas"
+  ],
+  "full_filmed_deck_receipt": "QR_DECODE.json"
+}

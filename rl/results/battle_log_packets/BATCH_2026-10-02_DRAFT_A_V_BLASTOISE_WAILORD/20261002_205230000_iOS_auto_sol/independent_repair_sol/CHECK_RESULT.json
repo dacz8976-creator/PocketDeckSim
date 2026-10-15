@@ -1,0 +1,78 @@
+{
+  "reviewer": "/root/ind_drafta_205731",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "game_id": "20261002_205230000_iOS_auto_sol",
+  "source_video": "20261002_205230000_iOS.MP4",
+  "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+  "accepted": true,
+  "full_review_coverage_checked": true,
+  "pause_contract_checked": true,
+  "checked_submission_manifest": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+  "checked_submission_manifest_sha256": "6a3dd52586d7c5d38b4a3fae3c9e76029d1c75107ee6dfd780ac134795157a9c",
+  "checked_submission_files": {
+    "SOURCE.json": "ebb4391c909efb2e2002cc51f82be050b1c51e01512639468cd20c433c67eb75",
+    "ASSIGNMENT.json": "4a8e99e6af275bf62b2304fdf1d5dab09df8f13b93107fc5aeccb395b9d3b864",
+    "REVIEW.md": "94a9b10370d9219e8693848a0f0b547ca73e3360b1e99275aa81cb77857cdab6",
+    "COVERAGE.md": "e41e5ba190b507e186280902a4d5ab620aea7d9d5b70337145b92ab8f560dc15",
+    "SUMMARY.json": "a96923c644b4abdb81b45a65053ab886e701a6a2de9f875a76bb424c6fc3553e",
+    "UNCERTAINTIES.json": "279fa5fe5c87f83518d352013209e48738f18868c5e83b9e8b9bc5dd5aa894fe",
+    "PAUSE_GAME.json": "d7366ed6a2864a1b31831cfd1b2153cadec39c9537259c06d793d6a665374eb4",
+    "DECK_USED.json": "34a6f739586805662670aba6bd1d4c8372a87af111a12ec547164e08e9a7bb2d",
+    "TURN_LEDGER.json": "cd57b1b7d0b4db48d494b7eb923d7d9de43a51ed7743daaa8f2bf1dbedbe74ae",
+    "TURN_EVIDENCE.json": "421c3658744f7f6a32859cf87e68a75ecdfcfc57f9e60ba9d25d4eb536e57dc9",
+    "TURN_TABLE.md": "eac7a33e609072fea8246eab281d14bd02e96f63702fca0758494ced02301ad7",
+    "METRICS.json": "464010eb42fe4a62ce76c406da7e56635c5ce3cfb49734a694d29045e0e482e0",
+    "EXTRACTION_MANIFEST.json": "07d227e87adccbd1ec89d3b3f071d03ccc8006faa14ce54ac9fdc037a0d9c64f"
+  },
+  "checked_additional_files": {
+    "REPAIR_RECEIPT.json": "9477b59571d1b41c945c42f860e14ed7ae35223e96b5aa25b623580487a8cf7c"
+  },
+  "independently_inspected_image_paths": [
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0096.00.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0178.00.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0222.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0231.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0096.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0097.00.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0152.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0243.50.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\turn_evidence\\t0277.50.jpg"
+  ],
+  "findings": [
+    "R1 passed: Binding Snow is a player-level restriction on Energy Zone attachment to whichever Pokemon occupies the Active position during the next opponent turn. Printed wording at178.00; the global icon persists after T15 retreat at222.50 while Wailord is benched. It is absent at231.50 after the opponent turn and243.50 on the subsequent owner turn. Current JSON removes all per-Pokemon copies and expired effects at T15 end/T16 start; a freshly applied terminal T16 effect is explicitly pending an unrecorded next turn.",
+    "R2 passed:96.00 and independent96.505 retain Cyrus,Copycat,Misty,Vulpix with Bench1 empty.97.005 shows Vulpix moving onto Bench1. +1 is usable preplay; voluntary move onset is bracketed after96.505 by97.005 rather than incorrectly claimed before+1.",
+    "R3 passed: Carvanha is directly readable in the Poké Ball reveal at measured152.502. Current ledger references this immutable independent frame and resulting hand154.00;152.00 is correctly identified as preceding the reveal.",
+    "Victory native277.50 confirms owner second,16turns,3-0,580damage. Native243.50 shows final Cyrus brought Wailord70HP Active with1Water;Mega230HP remains bench3Water, owner Ninetales20HP2Water. Prior complete review established final BindingSnow80 KO.",
+    "All effective files, original preserved files and original submission hashes passed. Protected original independent receipt/extraction manifests remain unchanged; retained native full frames and lossless crops pass SHA checks. JSON and prose diffs are bounded to declared repairs. All ledger evidence IDs resolve against primary/independent union.",
+    "Full coverage and Pause contract were independently completed in the original CHECK_RESULT, whose only rejection grounds were the bounded corrections now checked. This recheck reviews that complete receipt and preserved coverage rather than claiming a second whole-video visual pass. Latest evening-guide supplement requires a separate check.",
+    "Computer Auto battle; local batch/index only under LOG_ROUTING/ROUTING. No human Pause or Ladder entry."
+  ],
+  "prior_independent_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_205230000_iOS_auto_sol\\independent_sol\\CHECK_RESULT.json",
+  "prior_independent_check_sha256": "e53f468746efec7b0e689b55838b766067ea4b75c53a77b9a276539c79d78a50",
+  "coverage_reuse_basis": {
+    "prior_full_review_coverage_checked": true,
+    "prior_pause_contract_checked": true,
+    "original_files_byte_preserved": 13,
+    "current_frozen_files_verified": 13,
+    "native_frames_union": 141,
+    "evidence_image_hashes_verified": 423,
+    "missing_ledger_evidence_ids": [],
+    "turn_rows": 16,
+    "scope": "prior full independent receipt plus independently observed bounded repairs; no movie rehash/redecode"
+  },
+  "exact_corrections": [],
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "recording_limits": [
+    "No opened discard piles in supplied source; visible top cards are partial.",
+    "Opponent concealed draws and searches remain unnamed.",
+    "Game opening lacks Advanced category label; Advanced comes from owner-supplied category confirmation, no separate difficulty selector.",
+    "Approximate event onset timestamps do not equal measured selected-frame PTS.",
+    "Combined endpoint/action provenance supplies some board attributes obscured by animation; no single-frame direct-observation claim for every field.",
+    "Retained sampling cannot exclude every unseen manual input; Auto enabled with no observed change.",
+    "Supplied log printing labels are not physical-printing identifications."
+  ],
+  "classification": "computer Auto / local only",
+  "checked_utc": "2026-10-03T00:38:24.422152+00:00"
+}

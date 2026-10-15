@@ -1,0 +1,105 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260928_200654000",
+  "sources": [
+    {
+      "video_basename": "20260928_200654000_iOS.MP4",
+      "sha256": "d4d0dd51f309c05abcdb6b1f04a75c036ca3e59b4abee3f6ce542b2d56149fd6",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "source_url": null,
+  "captured_at": null,
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": null,
+  "game_version_binding_basis": "Historical exact20card source-bound log snapshot was not supplied; live/current deck must not replace historical list",
+  "conflicts_with_filmed_cards": [
+    {
+      "old_claim": "Old accepted deck core includes Lucky Ice Pop",
+      "new_observation": "All native Lucky Ice Pop actions in this recording belong to opponent; owner visible cards do not establish an owner copy",
+      "status": "Unsupported owner deck attribution retained separately; not evidence that an unseen owner copy is absent"
+    }
+  ],
+  "exact_list_status": "unavailable_historical_snapshot",
+  "limits": [
+    "Visible minimum copies total18; remaining two slots unknown. Counts are not reconstructed from a current deck.",
+    "Owner Lucky Ice Pop is not established by footage; opponent uses are separate."
+  ],
+  "classification": "ladder_presumed",
+  "visible_owner_core": [
+    {
+      "name": "Galarian Zigzagoon",
+      "minimum_visible_copies": 2
+    },
+    {
+      "name": "Deino",
+      "minimum_visible_copies": 2
+    },
+    {
+      "name": "Zweilous",
+      "minimum_visible_copies": 1
+    },
+    {
+      "name": "Hydreigon",
+      "minimum_visible_copies": 1
+    },
+    {
+      "name": "Galarian Obstagoon",
+      "minimum_visible_copies": 2
+    },
+    {
+      "name": "Deceptive Needle",
+      "minimum_visible_copies": 2
+    },
+    {
+      "name": "Poké Ball",
+      "minimum_visible_copies": 2
+    },
+    {
+      "name": "Professor's Research",
+      "minimum_visible_copies": 2
+    },
+    {
+      "name": "Rare Candy",
+      "minimum_visible_copies": 2
+    },
+    {
+      "name": "Lillie",
+      "minimum_visible_copies": 1
+    },
+    {
+      "name": "Piers",
+      "minimum_visible_copies": 1
+    }
+  ],
+  "visible_energy": "Darkness",
+  "excluded_from_ladder": false,
+  "classification_details": {
+    "classification": "ladder_presumed",
+    "excluded_from_ladder": false,
+    "classification_basis": "Owner default ladder rule applies: no Auto option observed in inspected controls or complete 1fps locator scan. Any visible Auto option, even OFF, means computer battle.",
+    "visible_rank_badge": "Master Ball Rank for both players at10seconds",
+    "ranked_queue_independently_certified": false,
+    "auto_option_observed": false,
+    "auto_enabled": null,
+    "action_authorship": "not independently certified",
+    "limits": "Master Ball badge is direct; queue selection is not separately established. Sampled screening does not certify absence every instant; no inspected source evidence triggers Auto-option exclusion.",
+    "evidence_ids": [
+      "F0010.00",
+      "F0033.00",
+      "F0055.00",
+      "F0139.00",
+      "F0285.00",
+      "F0422.00",
+      "F0550.00",
+      "F0564.00"
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "video_basename": "20260930_155152000_iOS.MP4",
+  "reviewer": "sol_auto_155152000",
+  "unreviewed_phases": [],
+  "consequential_mechanics_awaiting_clarification": [],
+  "uncertainties": [
+    {"kind":"hidden_information","time_seconds":[109,168],"detail":"Opponent ordinary draws, Research draws and Juliana's searched Stage2 identity are not publicly revealed; full decks and later draws remain unknown.","impact":"No effect on observed HP, energy, points or outcome; no guaranteed alternative line asserted."},
+    {"kind":"draw_origin_and_micro_order","time_seconds":[49,59],"detail":"Owner Turn3 exposes regular Greninja, shiny Froakie and Rare Candy while Research is consumed. Exact attribution of each to ordinary draw versus the two Research cards is not asserted.","impact":"Observed cards in hand and actual Froakie play/Rare Candy evolution are established."},
+    {"kind":"printing","detail":"Exact set and collector numbers are unconfirmed. Mechanically relevant versions are identified by visible HP, attacks, costs and ability text.","impact":"No cross-version Greninja ability is applied; Water Shuriken regular Greninja stays in hand."},
+    {"kind":"mode_label","time_seconds":[0,10],"detail":"Do Not Disturb obscures the upper intro label. No independently readable AI intro label is claimed. Checked Auto is observed; owner testimony and named result challenge support autopilot computer mode.","impact":"Ladder exclusion is explicit and unconditional under owner instruction."},
+    {"kind":"fine_text","time_seconds":[117,123],"detail":"Flame Patch name is readable in the discard/crop and its one-Fire acceleration onto Active Mega is reconciled. Small discard effect text is not fully transcribed or used as an external rules citation.","impact":"No unexplained Fire remains: recovered one plus ordinary attachment supplies Mega's two-Fire cost."},
+    {"kind":"recording_time","detail":"Date basis is filename and owner testimony from SOURCE.json; no independent match-clock verification. Screen clock is 10:51-10:55 but not treated as verified recording timestamp.","impact":"Review date and event timestamps are kept separate."},
+    {"kind":"post_result","time_seconds":[223.5,225.33],"detail":"Terminal defeat is established before EOF; the entire post-match interface has not necessarily completed loading.","impact":"No missing battle phase or outcome uncertainty."}
+  ]
+}

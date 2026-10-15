@@ -1,0 +1,2091 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_190031000",
+  "sources": [
+    {
+      "video_basename": "20260908_190031000_iOS.MP4",
+      "sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "turns": [
+    {
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 44,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 48
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "inspected hidden opponent fan",
+        "evidence_ids": null,
+        "status": "hidden",
+        "limit_reason": "Card backs conceal opponent hand identities; no reconstruction."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Small Balloon",
+          "Copycat",
+          "Professor's Research",
+          "Poké Ball"
+        ],
+        "count": 4,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0038.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": null,
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "cards_in_reveal_order": null,
+          "limit_reason": "Opponent normal draw is face down."
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "tool",
+          "card_name": "Heavy Helmet",
+          "target": "Bulbasaur",
+          "result": "Attached; reduction condition not active at retreat cost 1.",
+          "timestamp_seconds": 48,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0048.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "phase": "settled boundary",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Eevee",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0038.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0038.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0038.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Bulbasaur",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0038.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0038.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0038.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0038.00"
+        ]
+      },
+      "board_after": {
+        "phase": "turn banner/generation transition",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Eevee",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "limit_reason": "Generation pending at turn transition; zero is observed at this instant, not an inferred inability to generate."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0048.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Bulbasaur",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Heavy Helmet",
+            "special_conditions": [],
+            "active_effects": [
+              "Heavy Helmet: reduce attack damage by 20 while retreat cost is at least 3. Active on Ivysaur; inactive on Bulbasaur."
+            ],
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0048.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0048.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Small Balloon",
+            "basis": "native full-width ending hand",
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "basis": "native full-width ending hand",
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "basis": "native full-width ending hand",
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Poké Ball",
+            "basis": "native full-width ending hand",
+            "evidence_ids": [
+              "t0048.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Direct native ending fan at cited boundary.",
+        "evidence_ids": [
+          "t0048.00"
+        ],
+        "status": "observed",
+        "limit_reason": null,
+        "source_video": "20260908_190031000_iOS.MP4",
+        "requested_source_seconds": 48,
+        "actual_frame_seconds_if_measured": null
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": [
+        "t0048.00"
+      ],
+      "limits": [
+        "Opponent unplayed cards and normal draw identities are hidden by card backs.",
+        "No discard panel was opened in the retained 1 fps locator scan; visible pile-top cards are recorded separately, full pile identities and order remain null.",
+        "One reduced sample per second does not examine every instant; brief subsecond prompts or panels can be missed.",
+        "Requested source-local times are retained; actual decoded frame PTS was not independently measured.",
+        "The exact historical 20-card log list is unavailable; visible core only."
+      ],
+      "inherited_accepted_turn": {
+        "turn_number": 1,
+        "accepted_source_line": 17,
+        "verbatim_accepted_section": "### Matchmaking and setup, about 0–38 seconds\n\nDacz8976 matches with Cool Hand and is assigned second turn. The owner's opening hand is visibly **Eevee, Small Balloon, Copycat, Professor's Research, and Poke Ball** (`024-opening-hand-going-second.jpg`). The owner sets the only Basic, Eevee, Active; Cool Hand sets a lone Bulbasaur Active and has no Benched Pokémon.\n\nThe enlarged Eevee at about 28 seconds and Bulbasaur at about 32 seconds are setup inspections, not plays (`029-eevee-setup-inspection.jpg`, `033-bulbasaur-setup-inspection.jpg`). Both boards begin with no Energy and the score is 0–0.\n\n### Cool Hand turn 1, about 39–49 seconds\n\nThe opponent's turn draw is hidden. Cool Hand plays **Heavy Helmet** onto Bulbasaur (`045-heavy-helmet-play.jpg`). Bulbasaur receives no Energy and makes no attack; the opponent ends the turn with the same lone Active and no Bench. Heavy Helmet is attached, but its damage-reduction condition is not yet active on Bulbasaur.",
+        "basis": "inherited accepted prose, not completed new source observation"
+      },
+      "capture_status": "complete_with_recording_limits",
+      "fresh_observation_conflicts_with_inherited": [],
+      "hand_before_end": null,
+      "owner_hand_before_end": null,
+      "declines_and_no_effect_actions": {
+        "observed": [],
+        "basis": "Full recording 1 fps reduced prompt locator plus targeted native warning frame155; subsecond limitation remains."
+      }
+    },
+    {
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": 51,
+        "first_voluntary_move_seconds": 54,
+        "before_end_action_seconds": 87,
+        "end_after_resolution_seconds": 102
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          "Small Balloon",
+          "Copycat",
+          "Professor's Research",
+          "Poké Ball",
+          "Mega Altaria ex"
+        ],
+        "count": 5,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0051.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Small Balloon",
+          "Copycat",
+          "Professor's Research",
+          "Poké Ball",
+          "Mega Altaria ex"
+        ],
+        "count": 5,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0051.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": null,
+        "count_method": "five distinct visible card backs",
+        "basis": "direct native fan",
+        "evidence_ids": [
+          "t0051.00",
+          "t0052.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Mega Altaria ex",
+              "reveal_position": 1,
+              "source_video": "20260908_190031000_iOS.MP4",
+              "timestamp_seconds": 51,
+              "evidence_ids": [
+                "t0051.00"
+              ],
+              "basis": "direct native reveal",
+              "limit_reason": null
+            }
+          ],
+          "timestamp_seconds": 51,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0051.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Darkrai",
+              "reveal_position": 1,
+              "source_video": "20260908_190031000_iOS.MP4",
+              "timestamp_seconds": 57,
+              "evidence_ids": [
+                "t0057.00"
+              ],
+              "basis": "direct native reveal",
+              "limit_reason": null
+            }
+          ],
+          "timestamp_seconds": 57,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0057.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Swablu",
+              "reveal_position": 1,
+              "source_video": "20260908_190031000_iOS.MP4",
+              "timestamp_seconds": 64,
+              "evidence_ids": [
+                "t0064.00"
+              ],
+              "basis": "direct native reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Training Area",
+              "reveal_position": 2,
+              "source_video": "20260908_190031000_iOS.MP4",
+              "timestamp_seconds": 65,
+              "evidence_ids": [
+                "t0065.00"
+              ],
+              "basis": "direct native reveal",
+              "limit_reason": null
+            }
+          ],
+          "timestamp_seconds": 64,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0064.00",
+            "t0065.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "item",
+          "card_name": "Poké Ball",
+          "target": "deck",
+          "result": "Search reveals Darkrai.",
+          "timestamp_seconds": 54,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0054.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "supporter",
+          "card_name": "Professor's Research",
+          "target": "owner",
+          "result": "Draw Swablu then Training Area.",
+          "timestamp_seconds": 64,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0064.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "bench",
+          "card_name": "Swablu",
+          "target": "bench slot2",
+          "result": "Placed.",
+          "timestamp_seconds": 74,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0074.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "bench",
+          "card_name": "Darkrai",
+          "target": "bench slot3",
+          "result": "Placed.",
+          "timestamp_seconds": 74,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0074.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "tool",
+          "card_name": "Small Balloon",
+          "target": "Eevee",
+          "result": "Attached.",
+          "timestamp_seconds": 80,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0080.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null
+        },
+        {
+          "order": 6,
+          "kind": "retreat",
+          "card_name": "Eevee",
+          "target": "Swablu",
+          "result": "Free retreat with Small Balloon; paid zero Energy.",
+          "timestamp_seconds": 84,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0084.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null,
+          "retreat_payment_by_type": {}
+        },
+        {
+          "order": 7,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Swablu",
+          "result": "Attach 1 Psychic Energy.",
+          "timestamp_seconds": 87,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0087.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null,
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Swablu"
+          }
+        },
+        {
+          "order": 8,
+          "kind": "attack",
+          "card_name": "Sing",
+          "target": "Bulbasaur",
+          "result": "Asleep applied.",
+          "timestamp_seconds": 90,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0090.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "order": 1,
+          "event": "Bad Dreams",
+          "result": "20 damage; Bulbasaur60 to40",
+          "evidence_ids": [
+            "t0094.00",
+            "t0102.00"
+          ],
+          "basis": "native settled HP plus inherited accepted sequence"
+        },
+        {
+          "order": 2,
+          "event": "Sleep check",
+          "result": "Tails; remains Asleep",
+          "evidence_ids": [
+            "t0100.00",
+            "t0102.00"
+          ],
+          "basis": "inherited accepted result and native settled condition"
+        }
+      ],
+      "board_at_start": {
+        "phase": "settled boundary",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Eevee",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0052.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Psychic",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0052.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0052.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Bulbasaur",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Heavy Helmet",
+            "special_conditions": [],
+            "active_effects": [
+              "Heavy Helmet: reduce attack damage by 20 while retreat cost is at least 3. Active on Ivysaur; inactive on Bulbasaur."
+            ],
+            "evidence_ids": [
+              "t0052.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0052.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0052.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0052.00"
+        ]
+      },
+      "board_after": {
+        "phase": "turn banner/generation transition",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Swablu",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0102.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Eevee",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible card face and inherited accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0102.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible card face and inherited accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal 20 damage to it."
+              ],
+              "evidence_ids": [
+                "t0102.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0102.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0102.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Bulbasaur",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 60,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 20,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Heavy Helmet",
+            "special_conditions": [
+              "Asleep"
+            ],
+            "active_effects": [
+              "Heavy Helmet: reduce attack damage by 20 while retreat cost is at least 3. Active on Ivysaur; inactive on Bulbasaur."
+            ],
+            "evidence_ids": [
+              "t0102.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0102.00"
+            ],
+            "limit_reason": "Generation pending at turn transition; zero is observed at this instant, not an inferred inability to generate."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0102.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0102.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "basis": "native full-width ending hand",
+            "evidence_ids": [
+              "t0102.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Mega Altaria ex",
+            "basis": "native full-width ending hand",
+            "evidence_ids": [
+              "t0102.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Training Area",
+            "basis": "native full-width ending hand",
+            "evidence_ids": [
+              "t0102.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Direct native ending fan at cited boundary.",
+        "evidence_ids": [
+          "t0102.00"
+        ],
+        "status": "observed",
+        "limit_reason": null,
+        "source_video": "20260908_190031000_iOS.MP4",
+        "requested_source_seconds": 102,
+        "actual_frame_seconds_if_measured": null
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": [
+        "t0102.00"
+      ],
+      "limits": [
+        "Opponent unplayed cards and normal draw identities are hidden by card backs.",
+        "No discard panel was opened in the retained 1 fps locator scan; visible pile-top cards are recorded separately, full pile identities and order remain null.",
+        "One reduced sample per second does not examine every instant; brief subsecond prompts or panels can be missed.",
+        "Requested source-local times are retained; actual decoded frame PTS was not independently measured.",
+        "The exact historical 20-card log list is unavailable; visible core only."
+      ],
+      "inherited_accepted_turn": {
+        "turn_number": 2,
+        "accepted_source_line": 27,
+        "verbatim_accepted_section": "### Dacz8976 turn 2, about 50–102 seconds\n\nThe owner's visible turn draw is **Mega Altaria ex** (`051-owner-turn-draw-mega-altaria.jpg`). The following sequence is directly observable:\n\n1. **Poke Ball** is played and returns **Darkrai** from the deck (`055-owner-poke-ball-play.jpg`, `058-owner-poke-ball-darkrai.jpg`).\n2. **Professor's Research** is played and draws **Swablu** and **Training Area** (`061-owner-research-play.jpg`, `065-owner-research-swablu.jpg`, `066-owner-research-training-area.jpg`).\n3. The owner Benches Swablu and then Darkrai (`075-owner-developed-board.jpg`).\n4. **Small Balloon** is attached to Eevee (`081-small-balloon-attached.jpg`). Its retreat reduction makes Eevee's one-Energy retreat cost zero, so Eevee retreats for Swablu without an Energy discard (`085-free-retreat-prompt.jpg`).\n5. The owner's first generated **Psychic Energy** is attached to Active Swablu (`088-first-psychic-to-swablu.jpg`).\n6. Swablu uses **Sing**, making Bulbasaur Asleep (`093-sing-asleep.jpg`).\n7. At the end of the turn, Benched Darkrai's **Bad Dreams** places 20 damage on the opponent's Active Pokémon, moving Bulbasaur from 60 to 40 HP. The settled 40-HP state is visible (`102-bad-dreams-settled-40hp.jpg`).\n8. The between-turns Sleep check is **Tails**, so Bulbasaur remains Asleep (`101-sleep-check-tails.jpg`).\n\nEnd state: Active Swablu has 50 HP and one Psychic Energy; Benched Eevee has 50 HP and Small Balloon; Benched Darkrai has 100 HP and no Energy. The owner holds Copycat, Mega Altaria ex, and Training Area. Cool Hand has lone Active Bulbasaur at 40 HP, Asleep, with Heavy Helmet attached and no Energy. Score remains 0–0.",
+        "basis": "inherited accepted prose, not completed new source observation"
+      },
+      "capture_status": "complete_with_recording_limits",
+      "fresh_observation_conflicts_with_inherited": [],
+      "hand_before_end": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Mega Altaria ex",
+          "Training Area"
+        ],
+        "count": 3,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0087.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_before_end": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Mega Altaria ex",
+          "Training Area"
+        ],
+        "count": 3,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0087.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "declines_and_no_effect_actions": {
+        "observed": [],
+        "basis": "Full recording 1 fps reduced prompt locator plus targeted native warning frame155; subsecond limitation remains."
+      }
+    },
+    {
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 106,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 130
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "inspected hidden opponent fan",
+        "evidence_ids": null,
+        "status": "hidden",
+        "limit_reason": "Card backs conceal opponent hand identities; no reconstruction."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Mega Altaria ex",
+          "Training Area"
+        ],
+        "count": 3,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0102.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": null,
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "cards_in_reveal_order": null,
+          "limit_reason": "Opponent draw face down."
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "item",
+          "card_name": "Lucky Ice Pop",
+          "target": "Bulbasaur",
+          "result": "Heal20:40to60; heads returns Ice Pop to hidden hand.",
+          "timestamp_seconds": 112,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0112.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Bulbasaur",
+          "result": "Attach1Grass.",
+          "timestamp_seconds": 115,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0115.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null,
+          "energy": {
+            "type": "Grass",
+            "count": 1,
+            "destination": "Bulbasaur"
+          }
+        },
+        {
+          "order": 3,
+          "kind": "item",
+          "card_name": "Quick-Grow Extract",
+          "target": "Bulbasaur",
+          "result": "Evolve to Ivysaur; Sleep removed.",
+          "timestamp_seconds": 116.5,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0116.50",
+            "t0120.00",
+            "t0126.00"
+          ],
+          "basis": "Native116.5 is preceding Bulbasaur state. Native120 shows evolution/recovery; native126 corroborates Ivysaur and closed Quick-Grow discard. Inherited exact input anchor remains unmeasured.",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Evolution and recovery directly supported by120/126; exact Item input time not certified.",
+          "timestamp_basis": "116.5 is preceding-state requested seek, not a measured resolved-action instant."
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Synthesis",
+          "target": "Ivysaur",
+          "result": "Take2Grass from Energy Zone and attach; total3.",
+          "timestamp_seconds": 126,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0126.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "order": 1,
+          "event": "Heavy Helmet condition activated",
+          "result": "Retreat cost3 activates reduction20",
+          "evidence_ids": [
+            "t0122.00"
+          ],
+          "basis": "native printed notice"
+        }
+      ],
+      "board_at_start": {
+        "phase": "turn banner/generation transition",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Swablu",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0102.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Eevee",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible card face and inherited accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0102.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible card face and inherited accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal 20 damage to it."
+              ],
+              "evidence_ids": [
+                "t0102.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0102.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0102.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Bulbasaur",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 60,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 20,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Heavy Helmet",
+            "special_conditions": [
+              "Asleep"
+            ],
+            "active_effects": [
+              "Heavy Helmet: reduce attack damage by 20 while retreat cost is at least 3. Active on Ivysaur; inactive on Bulbasaur."
+            ],
+            "evidence_ids": [
+              "t0102.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0102.00"
+            ],
+            "limit_reason": "Generation pending at turn transition; zero is observed at this instant, not an inferred inability to generate."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0102.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0102.00"
+        ]
+      },
+      "board_after": {
+        "phase": "turn banner/generation transition",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Swablu",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0130.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Eevee",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible card face and inherited accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0130.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible card face and inherited accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal 20 damage to it."
+              ],
+              "evidence_ids": [
+                "t0130.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0130.00"
+            ],
+            "limit_reason": "Generation pending at turn transition; zero is observed at this instant, not an inferred inability to generate."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0130.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Ivysaur",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 100,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Grass": 3
+              }
+            },
+            "tool": "Heavy Helmet",
+            "special_conditions": [],
+            "active_effects": [
+              "Heavy Helmet: reduce attack damage by 20 while retreat cost is at least 3. Active on Ivysaur; inactive on Bulbasaur."
+            ],
+            "evidence_ids": [
+              "t0130.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0130.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0130.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0130.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "basis": "native full-width ending hand",
+            "evidence_ids": [
+              "t0130.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Mega Altaria ex",
+            "basis": "native full-width ending hand",
+            "evidence_ids": [
+              "t0130.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Training Area",
+            "basis": "native full-width ending hand",
+            "evidence_ids": [
+              "t0130.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Direct native ending fan at cited boundary.",
+        "evidence_ids": [
+          "t0130.00"
+        ],
+        "status": "observed",
+        "limit_reason": null,
+        "source_video": "20260908_190031000_iOS.MP4",
+        "requested_source_seconds": 130,
+        "actual_frame_seconds_if_measured": null
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": [
+        "t0130.00"
+      ],
+      "limits": [
+        "Opponent unplayed cards and normal draw identities are hidden by card backs.",
+        "No discard panel was opened in the retained 1 fps locator scan; visible pile-top cards are recorded separately, full pile identities and order remain null.",
+        "One reduced sample per second does not examine every instant; brief subsecond prompts or panels can be missed.",
+        "Requested source-local times are retained; actual decoded frame PTS was not independently measured.",
+        "The exact historical 20-card log list is unavailable; visible core only."
+      ],
+      "inherited_accepted_turn": {
+        "turn_number": 3,
+        "accepted_source_line": 42,
+        "verbatim_accepted_section": "### Cool Hand turn 3, about 103–131 seconds\n\nThe opponent's turn draw and hand identities remain hidden except when cards are played. The complete action chain is:\n\n1. Cool Hand plays **Lucky Ice Pop** (`107-lucky-ice-pop-play.jpg`). It heals the 40-HP Bulbasaur to 60 HP (`110-lucky-ice-pop-heal-60hp.jpg`). The coin result is visibly **Heads**, so Lucky Ice Pop returns to the opponent's hand instead of being discarded (`113-lucky-ice-pop-heads.jpg`, `114-lucky-ice-pop-returned.jpg`).\n2. Cool Hand attaches one generated **Grass Energy** to Bulbasaur (`116-opponent-grass-attachment.jpg`).\n3. Cool Hand plays **Quick-Grow Extract** (`117-quick-grow-extract-play.jpg`). Its displayed text says to choose a Grass Pokémon in play and put a random Grass Pokémon from the deck that evolves from it onto it. The resulting animation evolves Bulbasaur into **Ivysaur** (`120-quick-grow-extract-evolves-ivysaur.jpg`). The new stable state is 100-HP Ivysaur, and the game explicitly reports that Ivysaur recovered from being Asleep (`121-ivysaur-evolution-clears-sleep.jpg`).\n4. Ivysaur's higher retreat cost now satisfies **Heavy Helmet**, whose “take 20 less damage” effect visibly activates (`123-heavy-helmet-effect-active.jpg`).\n5. Ivysaur uses **Synthesis**. Its readable attack text takes two Grass Energy from the Energy Zone and attaches them to Ivysaur (`127-ivysaur-synthesis.jpg`). The settled board shows three Grass Energy total: the ordinary attachment plus the two from Synthesis (`130-ivysaur-three-grass.jpg`). Synthesis deals no attack damage.\n\nEnd state: Cool Hand has lone Active Ivysaur at 100 HP, three Grass Energy, and an active Heavy Helmet; there is still no opposing Bench. The owner's board is unchanged: Swablu Active with one Psychic, Eevee with Small Balloon and Darkrai on the Bench. Score remains 0–0.",
+        "basis": "inherited accepted prose, not completed new source observation"
+      },
+      "capture_status": "complete_with_recording_limits",
+      "fresh_observation_conflicts_with_inherited": [],
+      "hand_before_end": null,
+      "owner_hand_before_end": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Mega Altaria ex",
+          "Training Area"
+        ],
+        "count": 3,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0130.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "declines_and_no_effect_actions": {
+        "observed": [],
+        "basis": "Full recording 1 fps reduced prompt locator plus targeted native warning frame155; subsecond limitation remains."
+      }
+    },
+    {
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20260908_190031000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": 133,
+        "first_voluntary_move_seconds": 134,
+        "before_end_action_seconds": 153,
+        "end_after_resolution_seconds": 165.5
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Mega Altaria ex",
+          "Training Area",
+          "Field Blower"
+        ],
+        "count": 4,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0133.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Mega Altaria ex",
+          "Training Area",
+          "Field Blower"
+        ],
+        "count": 4,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0133.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": null,
+        "count_method": "five distinct visible card backs",
+        "basis": "native fan",
+        "evidence_ids": [
+          "t0133.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Field Blower",
+              "reveal_position": 1,
+              "source_video": "20260908_190031000_iOS.MP4",
+              "timestamp_seconds": 132,
+              "evidence_ids": [
+                "t0132.00"
+              ],
+              "basis": "direct native reveal",
+              "limit_reason": null
+            }
+          ],
+          "timestamp_seconds": 132,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0132.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "item",
+          "card_name": "Field Blower",
+          "target": "Heavy Helmet on Ivysaur",
+          "result": "Helmet discarded; no reduction after removal.",
+          "timestamp_seconds": 139,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0139.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "evolution",
+          "card_name": "Mega Altaria ex",
+          "target": "Swablu",
+          "result": "Evolves to190HP with carried Psychic1.",
+          "timestamp_seconds": 143,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0143.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "stadium",
+          "card_name": "Training Area",
+          "target": "shared Stadium",
+          "result": "Stage1 attacks+10 to Active.",
+          "timestamp_seconds": 148,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0148.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Mega Altaria ex",
+          "result": "Attach1Psychic; total2.",
+          "timestamp_seconds": 150,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0150.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null,
+          "energy": {
+            "type": "Psychic",
+            "count": 1,
+            "destination": "Mega Altaria ex"
+          }
+        },
+        {
+          "order": 5,
+          "kind": "attack_selection",
+          "card_name": "Mega Harmony",
+          "target": "Ivysaur",
+          "result": "Displayed110.",
+          "timestamp_seconds": 154,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0154.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": null
+        },
+        {
+          "order": 6,
+          "kind": "prompt_response",
+          "card_name": null,
+          "target": "Supporter-unused warning",
+          "result": "OK confirms ending attack; Copycat stays unplayed.",
+          "timestamp_seconds": 155,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0155.00"
+          ],
+          "basis": "native observation with inherited accepted account retained separately",
+          "prompt_text": "End your turn? A Supporter card can be used",
+          "response": "OK highlighted/tapped",
+          "limit_reason": null,
+          "nested_events_in_order": [
+            {
+              "event": "Mega Harmony resolves",
+              "damage": 110,
+              "result": "Ivysaur100 to knockout; point1 awarded."
+            }
+          ]
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "phase": "turn banner/generation transition",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Swablu",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0133.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Eevee",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible card face and inherited accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0133.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible card face and inherited accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal 20 damage to it."
+              ],
+              "evidence_ids": [
+                "t0133.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0133.00"
+            ],
+            "limit_reason": "Generation pending at turn transition; zero is observed at this instant, not an inferred inability to generate."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0133.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Ivysaur",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 100,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Grass": 3
+              }
+            },
+            "tool": "Heavy Helmet",
+            "special_conditions": [],
+            "active_effects": [
+              "Heavy Helmet: reduce attack damage by 20 while retreat cost is at least 3. Active on Ivysaur; inactive on Bulbasaur."
+            ],
+            "evidence_ids": [
+              "t0133.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0133.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0133.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0133.00"
+        ]
+      },
+      "board_after": {
+        "phase": "settled boundary",
+        "stadium": "Training Area",
+        "owner": {
+          "active": {
+            "name": "Mega Altaria ex",
+            "variant": "ex",
+            "bench_position": null,
+            "hp_now": 190,
+            "hp_max": 190,
+            "hp_max_basis": "visible card face and inherited accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Psychic": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0165.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Eevee",
+              "variant": null,
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible card face and inherited accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0165.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible card face and inherited accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams conditional on sleeping opposing Active; no target after knockout."
+              ],
+              "evidence_ids": [
+                "t0165.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0165.50"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0165.50"
+          ],
+          "status": "observed",
+          "limit_reason": null,
+          "points_basis": {
+            "basis": "visible point award at 164 s and unchanged accepted result",
+            "evidence_ids": [
+              "t0164.00"
+            ],
+            "accepted_provenance": "INHERITED_TURNS.json turn 4"
+          }
+        },
+        "opponent": {
+          "active": null,
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Grass",
+              "count": 1,
+              "available": false
+            },
+            "basis": "direct large current circle and small next-type indicator",
+            "evidence_ids": [
+              "t0165.50"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0165.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Training Area: Stage 1 attacks deal +10 to opponent Active."
+        ],
+        "evidence_ids": [
+          "t0165.50"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "basis": "native full-width ending hand",
+            "evidence_ids": [
+              "t0165.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 1,
+        "basis": "Direct native ending fan at cited boundary.",
+        "evidence_ids": [
+          "t0165.50"
+        ],
+        "status": "observed",
+        "limit_reason": null,
+        "source_video": "20260908_190031000_iOS.MP4",
+        "requested_source_seconds": 165.5,
+        "actual_frame_seconds_if_measured": null
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": [
+        "t0165.50"
+      ],
+      "limits": [
+        "Opponent unplayed cards and normal draw identities are hidden by card backs.",
+        "No discard panel was opened in the retained 1 fps locator scan; visible pile-top cards are recorded separately, full pile identities and order remain null.",
+        "One reduced sample per second does not examine every instant; brief subsecond prompts or panels can be missed.",
+        "Requested source-local times are retained; actual decoded frame PTS was not independently measured.",
+        "The exact historical 20-card log list is unavailable; visible core only."
+      ],
+      "inherited_accepted_turn": {
+        "turn_number": 4,
+        "accepted_source_line": 54,
+        "verbatim_accepted_section": "### Dacz8976 turn 4, about 132–161 seconds\n\nThe owner's visible turn draw is **Field Blower** (`133-owner-turn-draw-field-blower.jpg`). The exact order is decisive:\n\n1. The owner plays **Field Blower**, selects the attached Heavy Helmet, and discards it (`136-field-blower-play.jpg`, `138-field-blower-targets-helmet.jpg`, `140-heavy-helmet-discarded.jpg`). Heavy Helmet is readable in the opponent's discard; its identity is no longer uncertain.\n2. Active Swablu evolves into **Mega Altaria ex**, carrying forward its first Psychic Energy (`144-mega-altaria-evolution.jpg`).\n3. The owner plays **Training Area**, which settles into the Stadium zone (`149-training-area-play.jpg`).\n4. The second generated **Psychic Energy** is attached to Mega Altaria ex, leaving it with two Psychic Energy (`150-second-psychic-attachment.jpg`, `154-mega-harmony-displays-110.jpg`).\n5. The attack interface displays **Mega Harmony — 110**. Mega Harmony deals 40 plus 30 for each owner Benched Pokémon. Eevee and Darkrai are the two Benched Pokémon, so its base result is `40 + 30 + 30 = 100`; Training Area adds 10 for the displayed 110 (`154-mega-harmony-displays-110.jpg`).\n6. The game warns that a Supporter remains usable. **Copycat** is visibly the owner's only hand card; the owner leaves it unplayed and confirms the attack (`155-copycat-unused-warning.jpg`).\n7. Mega Harmony hits for 110 and Ivysaur reaches 0 HP (`159-mega-harmony-damage.jpg`, `160-ivysaur-zero-hp.jpg`).",
+        "basis": "inherited accepted prose, not completed new source observation"
+      },
+      "capture_status": "complete_with_recording_limits",
+      "fresh_observation_conflicts_with_inherited": [],
+      "hand_before_end": {
+        "cards_left_to_right": [
+          "Copycat"
+        ],
+        "count": 1,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0153.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_before_end": {
+        "cards_left_to_right": [
+          "Copycat"
+        ],
+        "count": 1,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0153.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "declines_and_no_effect_actions": {
+        "observed": [
+          {
+            "action": "Decline using Copycat",
+            "basis": "Copycat visible in one-card hand and Supporter warning OK",
+            "evidence_ids": [
+              "t0153.00",
+              "t0155.00"
+            ]
+          }
+        ],
+        "basis": "Full recording 1 fps reduced prompt locator plus targeted native warning frame155; subsecond limitation remains."
+      }
+    }
+  ],
+  "limits": null,
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance_status": "pending"
+}

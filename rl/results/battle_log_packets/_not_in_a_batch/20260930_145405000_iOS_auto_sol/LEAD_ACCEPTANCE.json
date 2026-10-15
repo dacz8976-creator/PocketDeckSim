@@ -1,0 +1,23 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20260930_145405000_iOS.MP4",
+  "source_sha256": "5ffb8cd9f98fc90eedcb61778bc3c9716caffdbf84714eb92883a59993f9eac8",
+  "scope": "Complete eight-turn 147.196667-second autopilot computer battle, setup through four owner attacks, terminal recoil and explicit results",
+  "first_pass": "gpt-6.1-sol/high /root/sol_auto_145405",
+  "lead_checks": "Root read full source-bound narrative, coverage, summary and uncertainties and reconciled scores, attack damage, evolution damage carryover, recoil and attachments. Separate Sol verifier inspected opening sheet, ordinary38-second attack, reconciliation sheet,129-second pre-final state,132.5-second knockout/recoil and147-second results as documented in INDEPENDENT_CHECK.md. Animated intermediate HP was distinguished from stable states. No consequential discrepancy found.",
+  "independent_check": "INDEPENDENT_CHECK.md",
+  "outcome": "owner_win",
+  "final_points": {"owner": 3, "opponent": 0},
+  "owner_visible_core": "Growlithe / Arcanine ex / Magmar / Charcadet",
+  "opponent": "AI Aegislash Deck (Deluxe Pack: Mega)",
+  "last_turn": 8,
+  "useful_finding": "Evolution preserves Growlithe's accumulated damage, leaving Arcanine ex at 110 HP. Two Inferno Onrush attacks each cause 20 recoil; Arcanine finishes at 50 HP. Only three Fire are attached, with turn 8's generated Fire unused. Four attacks match 360 result damage.",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "limitations": "Independent verification is a bounded visual check. Hidden cards, complete decks and fine timing remain unknown; a challenge title does not establish an Aegislash play.",
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; excluded by owner instruction",
+  "astra_consulted": false,
+  "astra_reason": "No consequential ambiguity remained after full source review and independent visual checks"
+}

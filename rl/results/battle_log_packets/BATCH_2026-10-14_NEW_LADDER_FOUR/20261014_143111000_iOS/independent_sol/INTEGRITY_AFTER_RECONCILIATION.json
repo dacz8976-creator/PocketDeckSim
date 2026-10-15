@@ -1,0 +1,590 @@
+{
+  "checked_utc": "2026-10-14T16:49:08.4693436Z",
+  "frozen_manifest_sha256": "c1eeeb5fa19bb9d713a4b7e8ef779bba0c9e6c79dfee1c9bddaa8e74d4de1e4c",
+  "frozen_file_count": 96,
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "entries": [
+    {
+      "file": "ASSIGNMENT.json",
+      "expected": "ecc4581930c48a10af22f42ce9e81227dd71d094ba2b4f699549c87d14c7a014",
+      "actual": "ecc4581930c48a10af22f42ce9e81227dd71d094ba2b4f699549c87d14c7a014",
+      "match": true
+    },
+    {
+      "file": "ASSIGNMENT_REGISTRATION.json",
+      "expected": "6376cc7751ae0c5b5ac8e093ed43fb83fe18e885275b0eef87324dd2d281a50a",
+      "actual": "6376cc7751ae0c5b5ac8e093ed43fb83fe18e885275b0eef87324dd2d281a50a",
+      "match": true
+    },
+    {
+      "file": "AVAILABILITY_RECOVERED.json",
+      "expected": "3fce77791a7090003a3241532b70e50fe9cbbf1ae25e6ba30192172275fb3584",
+      "actual": "3fce77791a7090003a3241532b70e50fe9cbbf1ae25e6ba30192172275fb3584",
+      "match": true
+    },
+    {
+      "file": "COVERAGE.md",
+      "expected": "891cd896717bc2cf6624efec4faca605a47dda49ead7d7cc34385514ff6d78c0",
+      "actual": "891cd896717bc2cf6624efec4faca605a47dda49ead7d7cc34385514ff6d78c0",
+      "match": true
+    },
+    {
+      "file": "native/t0000.00.jpg",
+      "expected": "fc048c0395720119589b18faa6f53b23a2b1cfb48f99daaf9921856b1ec62a37",
+      "actual": "fc048c0395720119589b18faa6f53b23a2b1cfb48f99daaf9921856b1ec62a37",
+      "match": true
+    },
+    {
+      "file": "native/t0003.00.jpg",
+      "expected": "444f7e412ed3c2b6f86d3cfd6148dbf86e359938e8903bb601f2dbbc9c751bc5",
+      "actual": "444f7e412ed3c2b6f86d3cfd6148dbf86e359938e8903bb601f2dbbc9c751bc5",
+      "match": true
+    },
+    {
+      "file": "native/t0010.00.jpg",
+      "expected": "bcae6dc6ce7be4c3ce90ecbc11c3a41fef69755d3651de2f03a02c943cbf5104",
+      "actual": "bcae6dc6ce7be4c3ce90ecbc11c3a41fef69755d3651de2f03a02c943cbf5104",
+      "match": true
+    },
+    {
+      "file": "native/t0028.00.jpg",
+      "expected": "4a969872ec42d23e68c118d70383866d795dff38f28583907235376ecd77874e",
+      "actual": "4a969872ec42d23e68c118d70383866d795dff38f28583907235376ecd77874e",
+      "match": true
+    },
+    {
+      "file": "native/t0035.00.jpg",
+      "expected": "ee37033744f1090f5950bf94d0b1e9197d87ae4a853f3a211dbc453dd4f66837",
+      "actual": "ee37033744f1090f5950bf94d0b1e9197d87ae4a853f3a211dbc453dd4f66837",
+      "match": true
+    },
+    {
+      "file": "native/t0040.00.jpg",
+      "expected": "0a8f53658159c822d3dd2d546cee4477dd341a5c53b96c67f039fecbf7a19156",
+      "actual": "0a8f53658159c822d3dd2d546cee4477dd341a5c53b96c67f039fecbf7a19156",
+      "match": true
+    },
+    {
+      "file": "native/t0045.00.jpg",
+      "expected": "0553e9e8e45122c6fe3123cbad69c326f62f9bc5abbcb89ea6df824270e2694f",
+      "actual": "0553e9e8e45122c6fe3123cbad69c326f62f9bc5abbcb89ea6df824270e2694f",
+      "match": true
+    },
+    {
+      "file": "native/t0050.00.jpg",
+      "expected": "4487c9fbae1c962b691a364cff3ef3b800742033cf25085d2d6c9720eae5a8ed",
+      "actual": "4487c9fbae1c962b691a364cff3ef3b800742033cf25085d2d6c9720eae5a8ed",
+      "match": true
+    },
+    {
+      "file": "native/t0053.00.jpg",
+      "expected": "dc9164c46a4411134976e4041183be99a014fb342932f5f46283d4d5831012ae",
+      "actual": "dc9164c46a4411134976e4041183be99a014fb342932f5f46283d4d5831012ae",
+      "match": true
+    },
+    {
+      "file": "native/t0056.00.jpg",
+      "expected": "954c588ccfbbdbf747ede03813b727e60aacd575b10c9a805b7cdc28b4393154",
+      "actual": "954c588ccfbbdbf747ede03813b727e60aacd575b10c9a805b7cdc28b4393154",
+      "match": true
+    },
+    {
+      "file": "native/t0064.00.jpg",
+      "expected": "722b8457ae3a28a635daead41a3a166fc31aa52e45979452236facad175ac440",
+      "actual": "722b8457ae3a28a635daead41a3a166fc31aa52e45979452236facad175ac440",
+      "match": true
+    },
+    {
+      "file": "native/t0073.00.jpg",
+      "expected": "c2f61294c51f0b857fad0dfde93bb4f9fb8ba2fa4b1d64bff0c13cbb207f9720",
+      "actual": "c2f61294c51f0b857fad0dfde93bb4f9fb8ba2fa4b1d64bff0c13cbb207f9720",
+      "match": true
+    },
+    {
+      "file": "native/t0080.00.jpg",
+      "expected": "751a73d4b64fdad942a0376e7b3608a741dc7384eaf6d8a58c97f89ecc64d3f8",
+      "actual": "751a73d4b64fdad942a0376e7b3608a741dc7384eaf6d8a58c97f89ecc64d3f8",
+      "match": true
+    },
+    {
+      "file": "native/t0088.00.jpg",
+      "expected": "b10fbfe7769f32e1f82062fa03a7370227d6a3e95ca9756006773b29dcf5f0d8",
+      "actual": "b10fbfe7769f32e1f82062fa03a7370227d6a3e95ca9756006773b29dcf5f0d8",
+      "match": true
+    },
+    {
+      "file": "native/t0100.00.jpg",
+      "expected": "44851f6bfe9bb28ac8f24056aa272eb3251731b40d441d5faafa0f1359ab5644",
+      "actual": "44851f6bfe9bb28ac8f24056aa272eb3251731b40d441d5faafa0f1359ab5644",
+      "match": true
+    },
+    {
+      "file": "native/t0103.00.jpg",
+      "expected": "7664cc084999299f6f8a99c8d607a356f4a96d41468bdd939aa5415079ff1eec",
+      "actual": "7664cc084999299f6f8a99c8d607a356f4a96d41468bdd939aa5415079ff1eec",
+      "match": true
+    },
+    {
+      "file": "native/t0107.00.jpg",
+      "expected": "6753569fbce9dc7db72b384768ae1e74c239b8cfa4102161c117957a25c777ef",
+      "actual": "6753569fbce9dc7db72b384768ae1e74c239b8cfa4102161c117957a25c777ef",
+      "match": true
+    },
+    {
+      "file": "native/t0110.00.jpg",
+      "expected": "f7ff61ebb4f3ecd22357d79d9f4c4837ae097417d45c24ae14705e4080d91e0e",
+      "actual": "f7ff61ebb4f3ecd22357d79d9f4c4837ae097417d45c24ae14705e4080d91e0e",
+      "match": true
+    },
+    {
+      "file": "native/t0118.00.jpg",
+      "expected": "8315155cc8c88f9d719d5afc2f8419d69af83ec219fa367f82e22bb828e0b3f0",
+      "actual": "8315155cc8c88f9d719d5afc2f8419d69af83ec219fa367f82e22bb828e0b3f0",
+      "match": true
+    },
+    {
+      "file": "native/t0121.00.jpg",
+      "expected": "3d2be5d67e0c2daf38fad737625dd4207155d194c14ec849f3c4fce4b7b787e1",
+      "actual": "3d2be5d67e0c2daf38fad737625dd4207155d194c14ec849f3c4fce4b7b787e1",
+      "match": true
+    },
+    {
+      "file": "native/t0130.00.jpg",
+      "expected": "af7b0f2b5a2482ea8eb5d3640e3e134ffdcb997bfc765f3ec6b259644f3c6875",
+      "actual": "af7b0f2b5a2482ea8eb5d3640e3e134ffdcb997bfc765f3ec6b259644f3c6875",
+      "match": true
+    },
+    {
+      "file": "native/t0140.00.jpg",
+      "expected": "47e184085dcfd0cec713c4e62cb051a21e6737425c7171a8d636fe02e27e6913",
+      "actual": "47e184085dcfd0cec713c4e62cb051a21e6737425c7171a8d636fe02e27e6913",
+      "match": true
+    },
+    {
+      "file": "native/t0143.00.jpg",
+      "expected": "c5d81f6942a4412d5644ea2ce71cccb14352fbd92343b17e2ee5e8e92fd4e487",
+      "actual": "c5d81f6942a4412d5644ea2ce71cccb14352fbd92343b17e2ee5e8e92fd4e487",
+      "match": true
+    },
+    {
+      "file": "native/t0148.00.jpg",
+      "expected": "7f37a7de6dfe4cfb9e454a5477c5742e3ee0aea965df23cb6dd51a4f18bdc77a",
+      "actual": "7f37a7de6dfe4cfb9e454a5477c5742e3ee0aea965df23cb6dd51a4f18bdc77a",
+      "match": true
+    },
+    {
+      "file": "native/t0153.00.jpg",
+      "expected": "aaf1be943ebf72c2e2f72db0962a97ab5f9434178ad42e6f3889b5d20b633150",
+      "actual": "aaf1be943ebf72c2e2f72db0962a97ab5f9434178ad42e6f3889b5d20b633150",
+      "match": true
+    },
+    {
+      "file": "native/t0157.00.jpg",
+      "expected": "59b160258b40ba7f75f6848384e2fbe153d0b1e58d61afe69feac498352a3d2a",
+      "actual": "59b160258b40ba7f75f6848384e2fbe153d0b1e58d61afe69feac498352a3d2a",
+      "match": true
+    },
+    {
+      "file": "native/t0161.00.jpg",
+      "expected": "44cf3021b71823fff793ffee2e7d7abeac73f666b42bdf5a2339965c303263da",
+      "actual": "44cf3021b71823fff793ffee2e7d7abeac73f666b42bdf5a2339965c303263da",
+      "match": true
+    },
+    {
+      "file": "native/t0165.00.jpg",
+      "expected": "1e63d8cc412ff1f4113173c617d27bffc656c21faa28ee6aa251af050841b81a",
+      "actual": "1e63d8cc412ff1f4113173c617d27bffc656c21faa28ee6aa251af050841b81a",
+      "match": true
+    },
+    {
+      "file": "native/t0169.00.jpg",
+      "expected": "cea7e7b4f9db5eabad3df3db751c85d82e80ab46830e811125247330b8e80a7c",
+      "actual": "cea7e7b4f9db5eabad3df3db751c85d82e80ab46830e811125247330b8e80a7c",
+      "match": true
+    },
+    {
+      "file": "native/t0170.00.jpg",
+      "expected": "2dc1333b0a11d8ed1d05b2d8aaa221793e1b6e5e25112b262612dbe154d6e436",
+      "actual": "2dc1333b0a11d8ed1d05b2d8aaa221793e1b6e5e25112b262612dbe154d6e436",
+      "match": true
+    },
+    {
+      "file": "native/t0172.00.jpg",
+      "expected": "bf5fe1c5cce0c02b64aaf5f78fc4052c643a891309a85b9264448b6f73cfea9c",
+      "actual": "bf5fe1c5cce0c02b64aaf5f78fc4052c643a891309a85b9264448b6f73cfea9c",
+      "match": true
+    },
+    {
+      "file": "native/t0181.00.jpg",
+      "expected": "7f69faceec3c7e78fada41ca0490898f31d1ba9ad19d8ce23bf76ab3db669a0d",
+      "actual": "7f69faceec3c7e78fada41ca0490898f31d1ba9ad19d8ce23bf76ab3db669a0d",
+      "match": true
+    },
+    {
+      "file": "native/t0193.00.jpg",
+      "expected": "0eb1dba36ae68d3c0116d522cc98e1eab1b845eb242bec5750e699351c328a04",
+      "actual": "0eb1dba36ae68d3c0116d522cc98e1eab1b845eb242bec5750e699351c328a04",
+      "match": true
+    },
+    {
+      "file": "native/t0199.00.jpg",
+      "expected": "f9e50fb6b4118c9029537556591f4dffea8ba5cbafa499a5adc59ae5d1c24363",
+      "actual": "f9e50fb6b4118c9029537556591f4dffea8ba5cbafa499a5adc59ae5d1c24363",
+      "match": true
+    },
+    {
+      "file": "native/t0202.00.jpg",
+      "expected": "eb71b456e1f557242158bcf39924df9956d255ec6e60a244331418e14852d354",
+      "actual": "eb71b456e1f557242158bcf39924df9956d255ec6e60a244331418e14852d354",
+      "match": true
+    },
+    {
+      "file": "native/t0208.00.jpg",
+      "expected": "e184f2f969ce7407cbecf98d720928cae01a8220e33a3e0245794b3a2b75397d",
+      "actual": "e184f2f969ce7407cbecf98d720928cae01a8220e33a3e0245794b3a2b75397d",
+      "match": true
+    },
+    {
+      "file": "native/t0215.00.jpg",
+      "expected": "2b42127022bdb835c521de35ae304305351fa28d7b3ff8eafbf58b07596d53c6",
+      "actual": "2b42127022bdb835c521de35ae304305351fa28d7b3ff8eafbf58b07596d53c6",
+      "match": true
+    },
+    {
+      "file": "native/t0217.00.jpg",
+      "expected": "8c86c3aa23aa29ca9fbeb8f88de9c8a9b0ff062f4cdbf2bea2773b69b66b6b3b",
+      "actual": "8c86c3aa23aa29ca9fbeb8f88de9c8a9b0ff062f4cdbf2bea2773b69b66b6b3b",
+      "match": true
+    },
+    {
+      "file": "native/t0219.00.jpg",
+      "expected": "294d1b0fa99cfec57293a2402a6247dacc7b18879d7070fbc463e481208cbf6e",
+      "actual": "294d1b0fa99cfec57293a2402a6247dacc7b18879d7070fbc463e481208cbf6e",
+      "match": true
+    },
+    {
+      "file": "native/t0226.00.jpg",
+      "expected": "9ad2ba920cb40615fd162500c95720e02759e9b841b759acafeb181cdf777fef",
+      "actual": "9ad2ba920cb40615fd162500c95720e02759e9b841b759acafeb181cdf777fef",
+      "match": true
+    },
+    {
+      "file": "native/t0228.00.jpg",
+      "expected": "a8448f65f24a54165c938a180dd244d9d7c2fc676677aa362ae5901b5df6949e",
+      "actual": "a8448f65f24a54165c938a180dd244d9d7c2fc676677aa362ae5901b5df6949e",
+      "match": true
+    },
+    {
+      "file": "native/t0232.00.jpg",
+      "expected": "94cd80bc36e69987eb8c2f730635fd39d064e2ada04a510201b21c49e935b610",
+      "actual": "94cd80bc36e69987eb8c2f730635fd39d064e2ada04a510201b21c49e935b610",
+      "match": true
+    },
+    {
+      "file": "native/t0239.00.jpg",
+      "expected": "45ca58e939cc2697547515e8ada3d3c038fdf314bed49b053ab12feb4d6b9eb2",
+      "actual": "45ca58e939cc2697547515e8ada3d3c038fdf314bed49b053ab12feb4d6b9eb2",
+      "match": true
+    },
+    {
+      "file": "native/t0246.00.jpg",
+      "expected": "7e4b95970839338cec166a2b4fe01355cf96fa34647dc5a55177cc648326dac9",
+      "actual": "7e4b95970839338cec166a2b4fe01355cf96fa34647dc5a55177cc648326dac9",
+      "match": true
+    },
+    {
+      "file": "native/t0250.00.jpg",
+      "expected": "a68e70cc5c4239f419626df36cc46f558f1cfb05626a4133f0ea5086bc54c005",
+      "actual": "a68e70cc5c4239f419626df36cc46f558f1cfb05626a4133f0ea5086bc54c005",
+      "match": true
+    },
+    {
+      "file": "native/t0251.00.jpg",
+      "expected": "afdde22d4508d1739af0e6e12c2f94fb3435cbb75ee41dc691f99c0b97a880b6",
+      "actual": "afdde22d4508d1739af0e6e12c2f94fb3435cbb75ee41dc691f99c0b97a880b6",
+      "match": true
+    },
+    {
+      "file": "native/t0254.00.jpg",
+      "expected": "a3fb16b2b59fc3a8f4297378cfe2eb710d3b0062328a5ba3632e093865444414",
+      "actual": "a3fb16b2b59fc3a8f4297378cfe2eb710d3b0062328a5ba3632e093865444414",
+      "match": true
+    },
+    {
+      "file": "native/t0260.00.jpg",
+      "expected": "cab2f62812bd2cc45a070ed5e5e6dfc4070e219fc26afcf8c667491fd89e8bb3",
+      "actual": "cab2f62812bd2cc45a070ed5e5e6dfc4070e219fc26afcf8c667491fd89e8bb3",
+      "match": true
+    },
+    {
+      "file": "native/t0261.00.jpg",
+      "expected": "1da605e0ec16e8868d7eeb98561b74a356b3329f949384f46d2565e72b03d9f1",
+      "actual": "1da605e0ec16e8868d7eeb98561b74a356b3329f949384f46d2565e72b03d9f1",
+      "match": true
+    },
+    {
+      "file": "native/t0267.00.jpg",
+      "expected": "6361e29e405d1ee37027a9c30299f89c450cd8340c22b2db9ed99bc0c4a8f089",
+      "actual": "6361e29e405d1ee37027a9c30299f89c450cd8340c22b2db9ed99bc0c4a8f089",
+      "match": true
+    },
+    {
+      "file": "native/t0274.00.jpg",
+      "expected": "48e78fd4e1d0bdc81d12b2ba8a5ff36bd81e871b700d560d1f48853bac6e52cf",
+      "actual": "48e78fd4e1d0bdc81d12b2ba8a5ff36bd81e871b700d560d1f48853bac6e52cf",
+      "match": true
+    },
+    {
+      "file": "native/t0279.00.jpg",
+      "expected": "20ddf5a1a3c24a564d49fcb6bdfe9ee105bb60e2981c99e993dfcbce8ce53251",
+      "actual": "20ddf5a1a3c24a564d49fcb6bdfe9ee105bb60e2981c99e993dfcbce8ce53251",
+      "match": true
+    },
+    {
+      "file": "native/t0284.00.jpg",
+      "expected": "47d625552d739122fe35f9be539cff78fb051615a96d678e3853f158cb862919",
+      "actual": "47d625552d739122fe35f9be539cff78fb051615a96d678e3853f158cb862919",
+      "match": true
+    },
+    {
+      "file": "native/t0289.00.jpg",
+      "expected": "2302c69403e0231bff147ee8b44ff20bfd95e53a150dc80e1de239c3d0725417",
+      "actual": "2302c69403e0231bff147ee8b44ff20bfd95e53a150dc80e1de239c3d0725417",
+      "match": true
+    },
+    {
+      "file": "native/t0298.00.jpg",
+      "expected": "fcce793675cffdf55c481b48f2c2a673ed77e17cb80a66e7df41f70166fb2c73",
+      "actual": "fcce793675cffdf55c481b48f2c2a673ed77e17cb80a66e7df41f70166fb2c73",
+      "match": true
+    },
+    {
+      "file": "native/t0300.00.jpg",
+      "expected": "89fba851332c6017cfe965c7fe17e05c4673ffa2961992628a91b3e775fafcad",
+      "actual": "89fba851332c6017cfe965c7fe17e05c4673ffa2961992628a91b3e775fafcad",
+      "match": true
+    },
+    {
+      "file": "native/t0306.00.jpg",
+      "expected": "15ac201db5ffecbf51253512a9d6f0696454bbfe890e1ccc8e7e6cf08c089741",
+      "actual": "15ac201db5ffecbf51253512a9d6f0696454bbfe890e1ccc8e7e6cf08c089741",
+      "match": true
+    },
+    {
+      "file": "native/t0309.00.jpg",
+      "expected": "eee9604118ffca88f5f6cdb8e295ede679d9db1a5735636b2cbea2052fcc33b5",
+      "actual": "eee9604118ffca88f5f6cdb8e295ede679d9db1a5735636b2cbea2052fcc33b5",
+      "match": true
+    },
+    {
+      "file": "native/t0312.00.jpg",
+      "expected": "abe8d72285f7e95083c28ee50c7e50950691c49c0698fb441fbc72bc70e6bf70",
+      "actual": "abe8d72285f7e95083c28ee50c7e50950691c49c0698fb441fbc72bc70e6bf70",
+      "match": true
+    },
+    {
+      "file": "native/t0316.00.jpg",
+      "expected": "547cd62bd709110b01e453269513be2452538bfcbc8fae6a6ef0afa239d0a4a3",
+      "actual": "547cd62bd709110b01e453269513be2452538bfcbc8fae6a6ef0afa239d0a4a3",
+      "match": true
+    },
+    {
+      "file": "native/t0325.00.jpg",
+      "expected": "65c9a981e62afd19f9fa1f7c832dd52afecbb0a5fcd274c923432f72760970ee",
+      "actual": "65c9a981e62afd19f9fa1f7c832dd52afecbb0a5fcd274c923432f72760970ee",
+      "match": true
+    },
+    {
+      "file": "native/t0327.00.jpg",
+      "expected": "1f9dac43b52ac9f4a20a84bc0dc84b98766a0a390cb04c3f8e4e14a5436765c6",
+      "actual": "1f9dac43b52ac9f4a20a84bc0dc84b98766a0a390cb04c3f8e4e14a5436765c6",
+      "match": true
+    },
+    {
+      "file": "native/t0331.00.jpg",
+      "expected": "de56643eadfb1780a1adb229aefd77c207d7c8f94012adaa59717f5cd49ecaea",
+      "actual": "de56643eadfb1780a1adb229aefd77c207d7c8f94012adaa59717f5cd49ecaea",
+      "match": true
+    },
+    {
+      "file": "native/t0334.00.jpg",
+      "expected": "bef00a5372935b38fb2d1daf353712d08321da8edad66664664f0fe967ba7c41",
+      "actual": "bef00a5372935b38fb2d1daf353712d08321da8edad66664664f0fe967ba7c41",
+      "match": true
+    },
+    {
+      "file": "native/t0343.00.jpg",
+      "expected": "eaace44f27ab59fddf2729ac216b226fc48bf031319bd95c45d18320c6c457b7",
+      "actual": "eaace44f27ab59fddf2729ac216b226fc48bf031319bd95c45d18320c6c457b7",
+      "match": true
+    },
+    {
+      "file": "native/t0348.00.jpg",
+      "expected": "69aabe0d19a355de35bcf3cc54daf5c7b003dfbff214f9b97fb324a31a03fa16",
+      "actual": "69aabe0d19a355de35bcf3cc54daf5c7b003dfbff214f9b97fb324a31a03fa16",
+      "match": true
+    },
+    {
+      "file": "native/t0356.00.jpg",
+      "expected": "933fd932d48c67f464ef2045e56dfa12c67dee38f468e7c348b94390f3d151eb",
+      "actual": "933fd932d48c67f464ef2045e56dfa12c67dee38f468e7c348b94390f3d151eb",
+      "match": true
+    },
+    {
+      "file": "native/t0358.00.jpg",
+      "expected": "99a3b3e0fae7184eac338dc474b6f108f3f1ac67a71c7d2c58714c0dd2ed90a9",
+      "actual": "99a3b3e0fae7184eac338dc474b6f108f3f1ac67a71c7d2c58714c0dd2ed90a9",
+      "match": true
+    },
+    {
+      "file": "native/t0360.00.jpg",
+      "expected": "a0b80fac7e71918ae7bba78d7c4de98a20a406a3ebab189c397b5874db3d00d8",
+      "actual": "a0b80fac7e71918ae7bba78d7c4de98a20a406a3ebab189c397b5874db3d00d8",
+      "match": true
+    },
+    {
+      "file": "native/t0362.00.jpg",
+      "expected": "d25f6382ff929a30746b3638b74b5c80d7830176b43acd70fa8063f1228966e4",
+      "actual": "d25f6382ff929a30746b3638b74b5c80d7830176b43acd70fa8063f1228966e4",
+      "match": true
+    },
+    {
+      "file": "native/t0368.00.jpg",
+      "expected": "75708311a61ae84a98aec14ad22d794edc6a8390ecf38caa38782f03b7ebc8f6",
+      "actual": "75708311a61ae84a98aec14ad22d794edc6a8390ecf38caa38782f03b7ebc8f6",
+      "match": true
+    },
+    {
+      "file": "native/t0370.00.jpg",
+      "expected": "9a194f6a635d4f8c6826df3bfdc528d11074ad4596256b75fbeed92dc79536a0",
+      "actual": "9a194f6a635d4f8c6826df3bfdc528d11074ad4596256b75fbeed92dc79536a0",
+      "match": true
+    },
+    {
+      "file": "native/t0372.00.jpg",
+      "expected": "3b879a6488fedd6c512bfd67e54756e35a9e5eebd278b08529ecc5579a4cbb1e",
+      "actual": "3b879a6488fedd6c512bfd67e54756e35a9e5eebd278b08529ecc5579a4cbb1e",
+      "match": true
+    },
+    {
+      "file": "native/t0373.00.jpg",
+      "expected": "c5e49bedab9457ec6561bd809c41e5e906f355b977bf7edc7e16bee018e68584",
+      "actual": "c5e49bedab9457ec6561bd809c41e5e906f355b977bf7edc7e16bee018e68584",
+      "match": true
+    },
+    {
+      "file": "native/t0375.00.jpg",
+      "expected": "08d93af2367465424302b9b91e81cf46a10e3c567aa6c4af0a601329e8f065e8",
+      "actual": "08d93af2367465424302b9b91e81cf46a10e3c567aa6c4af0a601329e8f065e8",
+      "match": true
+    },
+    {
+      "file": "native/t0380.00.jpg",
+      "expected": "33225485b5009710d97825c1be6c42fa72d29e0b53932b1332cde943ab15b686",
+      "actual": "33225485b5009710d97825c1be6c42fa72d29e0b53932b1332cde943ab15b686",
+      "match": true
+    },
+    {
+      "file": "native/t0390.00.jpg",
+      "expected": "4c835037348c49884300152786c17f11a4241674ccfaeae16602ce966a4f24e9",
+      "actual": "4c835037348c49884300152786c17f11a4241674ccfaeae16602ce966a4f24e9",
+      "match": true
+    },
+    {
+      "file": "native/t0393.00.jpg",
+      "expected": "1e557b5d753558c8e41de6cebefe18d4cdda9c7e5d14c8ddc0e7ef7f6f7228c6",
+      "actual": "1e557b5d753558c8e41de6cebefe18d4cdda9c7e5d14c8ddc0e7ef7f6f7228c6",
+      "match": true
+    },
+    {
+      "file": "overview/contact_01.jpg",
+      "expected": "53075ead3cef1fbba5e4141887338988e54a1d051977928bed7b1a224b133299",
+      "actual": "53075ead3cef1fbba5e4141887338988e54a1d051977928bed7b1a224b133299",
+      "match": true
+    },
+    {
+      "file": "overview/contact_02.jpg",
+      "expected": "311cb3fbc1525233eae3f87e16eb474827489fdedf5b86c2e5754b7c1bf303aa",
+      "actual": "311cb3fbc1525233eae3f87e16eb474827489fdedf5b86c2e5754b7c1bf303aa",
+      "match": true
+    },
+    {
+      "file": "overview/contact_03.jpg",
+      "expected": "895c768a2fd3df3f29e29dc983c7700a54799b6cff06a0516d20dbed7841dce7",
+      "actual": "895c768a2fd3df3f29e29dc983c7700a54799b6cff06a0516d20dbed7841dce7",
+      "match": true
+    },
+    {
+      "file": "overview/target_1.jpg",
+      "expected": "233223becd07a1711da500d7514f8403af05414ec8287defb339ad20952c2a8c",
+      "actual": "233223becd07a1711da500d7514f8403af05414ec8287defb339ad20952c2a8c",
+      "match": true
+    },
+    {
+      "file": "overview/target_2.jpg",
+      "expected": "bcc74623b0abe732a24ec6ddaa9a5d65b1a7dc8a4679351b97dd454b6e711ceb",
+      "actual": "bcc74623b0abe732a24ec6ddaa9a5d65b1a7dc8a4679351b97dd454b6e711ceb",
+      "match": true
+    },
+    {
+      "file": "overview/target_3.jpg",
+      "expected": "eb2a65b1e5eb631212c8cadbf625b84417d15b3848c0bae3095883cfdadb3b8b",
+      "actual": "eb2a65b1e5eb631212c8cadbf625b84417d15b3848c0bae3095883cfdadb3b8b",
+      "match": true
+    },
+    {
+      "file": "overview/target_4.jpg",
+      "expected": "9f46be31527de99438cfe9cac7083c095b0375bf578a45d18f51e7617f789b6d",
+      "actual": "9f46be31527de99438cfe9cac7083c095b0375bf578a45d18f51e7617f789b6d",
+      "match": true
+    },
+    {
+      "file": "overview/target_5.jpg",
+      "expected": "2fc87a6bcbdc5863583a9f357a4ded1564084008087dfaa974c6eaaa5817c34e",
+      "actual": "2fc87a6bcbdc5863583a9f357a4ded1564084008087dfaa974c6eaaa5817c34e",
+      "match": true
+    },
+    {
+      "file": "overview/target_6.jpg",
+      "expected": "903c1456f339dec4c1710c1af4b32a4d8a018b1a53acd406d879328cb236d9b9",
+      "actual": "903c1456f339dec4c1710c1af4b32a4d8a018b1a53acd406d879328cb236d9b9",
+      "match": true
+    },
+    {
+      "file": "PROBE.json",
+      "expected": "0913f50f380f3cf2d0e0e5871a74f0ea0427c9e3ae13c45c933034d3475f6dca",
+      "actual": "0913f50f380f3cf2d0e0e5871a74f0ea0427c9e3ae13c45c933034d3475f6dca",
+      "match": true
+    },
+    {
+      "file": "REVIEW.md",
+      "expected": "886dd01b8ddb68bf3ee05b5edb2367bbb4392c1fc67b63a93c7a722619a795f1",
+      "actual": "886dd01b8ddb68bf3ee05b5edb2367bbb4392c1fc67b63a93c7a722619a795f1",
+      "match": true
+    },
+    {
+      "file": "SOURCE.json",
+      "expected": "af3814ee8412ddfef9faf93e1514abe266e9cc1031cb31bfa590bc28ba8d8c50",
+      "actual": "af3814ee8412ddfef9faf93e1514abe266e9cc1031cb31bfa590bc28ba8d8c50",
+      "match": true
+    },
+    {
+      "file": "SUMMARY.json",
+      "expected": "a4a5ca4bcf2f3f37f2845ea60cfde44f9dd247174ecee6c8a4f9b2dcda2f480d",
+      "actual": "a4a5ca4bcf2f3f37f2845ea60cfde44f9dd247174ecee6c8a4f9b2dcda2f480d",
+      "match": true
+    },
+    {
+      "file": "UNCERTAINTIES.json",
+      "expected": "4d5934bd41cf0fa4644a105157fe33f10941a9fec4a4cb59c7d889019effd5f5",
+      "actual": "4d5934bd41cf0fa4644a105157fe33f10941a9fec4a4cb59c7d889019effd5f5",
+      "match": true
+    }
+  ],
+  "source_filename": "20261014_143111000_iOS.MP4",
+  "source_bytes": 720403823,
+  "source_sha256": "dc9cc6c586e8ffa160f3ba3eb159420d72c48104a3e58000b76e260869078517",
+  "lead_clarification_sha256": "ddcba75480ad619c9b6b3efe25d735835a21c000e2b1766cb4fa97f9b690fa9a",
+  "initial_rejection_sha256": "8b22e92a5ba888b4221bdc722b80152a21aa887b7d318e11e94650415d06ab5e"
+}

@@ -1,0 +1,99 @@
+{
+  "schema": "bounded-action-check-v1",
+  "reviewer": "astra_mode_012720",
+  "assigned_model": "gpt-6-astra",
+  "reviewed_utc": "2026-10-02T21:28:34Z",
+  "status": "bounded_questions_resolved",
+  "scope": "Four inherited-prose discrepancies only. No complete packet acceptance, outcome review, simulator audit or historical packet modification.",
+  "source": {
+    "filename": "20260908_012720000_iOS.MP4",
+    "sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085",
+    "bytes": 530226009,
+    "verification_receipt": "../../20260908_012720000/ROOT_SOURCE_VERIFICATION.json",
+    "verification_basis": "Lead receipt reports verified_sha256_match and stable original, completed 2026-10-02T21:07:52.397177+00:00. No original read or duplicate hash by this reviewer.",
+    "evidence_directory": "../../20260908_012720000/turn_evidence",
+    "timestamp_basis": "Filenames encode requested source-local seconds; actual presentation timestamps not independently measured."
+  },
+  "questions": [
+    {
+      "id": "HIKING_TIMING",
+      "supplemental_claim_status": "supported",
+      "old_claim_status": "contradicted",
+      "finding": "Hiking Trail is the turn 6 draw and remains in hand after that turn. It is played on turn 10, after Goo-zooka and before Copycat.",
+      "evidence": [
+        {"file": "t0124.50.jpg", "seconds": 124.5, "direct": "Turn 6 banner; four-card hand: Whimsicott ex, Ariados regular art, Team Rocket's Goo-zooka, Ariados alternate art. No Hiking Trail or Stadium on board."},
+        {"file": "t0126.50.jpg", "seconds": 126.5, "direct": "Hiking Trail raised in draw/reveal position above the same four-card hand."},
+        {"file": "t0128.00.jpg", "seconds": 128.0, "direct": "Hiking Trail now rightmost in five-card hand. No Stadium on board."},
+        {"file": "t0134.80.jpg", "seconds": 134.8, "direct": "Whimsicott has evolved on Bench; four remaining cards include Hiking Trail. No Stadium on board."},
+        {"file": "t0162.00.jpg", "seconds": 162.0, "direct": "Hiking Trail remains in owner hand alongside both Ariados, Goo-zooka and Copycat; no Stadium on board."},
+        {"file": "t0212.50.jpg", "seconds": 212.5, "direct": "Six-card hand includes both Ariados, Goo-zooka, Hiking Trail, Copycat and X Speed; no Stadium on board."},
+        {"file": "t0218.50.jpg", "seconds": 218.5, "direct": "Hiking Trail displayed centrally; remaining hand contains both Ariados, Copycat and X Speed. Goo-zooka is visible in the owner's discard display."},
+        {"file": "t0236.50.jpg", "seconds": 236.5, "direct": "Hiking Trail is on the Stadium field; Copycat is visible in the discard display."}
+      ],
+      "direct_vs_inferred": "Turn 6 draw is reconciled across before, reveal and after states. Turn 10 play order Goo-zooka -> Hiking Trail -> Copycat is inferred from the hand reductions, discard displays and later Stadium state, rather than a continuous replay of every animation. The inspected frames do not independently certify uninterrupted retention in every moment of turns 8-9, but do establish retention at the listed anchors.",
+      "required_repair": "In the new supplement, remove the inherited turn 6 Stadium-play event; record Hiking Trail as the turn 6 normal draw and as a turn 10 Stadium play after Goo-zooka and before Copycat. Preserve the old prose with an explicit discrepancy citation."
+    },
+    {
+      "id": "QUICK_GROW_DRAW",
+      "supplemental_claim_status": "supported",
+      "old_claim_status": "contradicted",
+      "finding": "Spinarak enters the hand at the end of turn 10, consistent with Hiking Trail's refill. Quick-Grow Extract is the turn 12 normal draw and is retained. Spinarak is placed from the existing hand, not obtained or benched by Quick-Grow Extract.",
+      "evidence": [
+        {"file": "t0236.50.jpg", "seconds": 236.5, "direct": "Spinarak enlarged as a reveal; hand below has Ariados alternate art and X Speed; Hiking Trail is in play."},
+        {"file": "t0238.50.jpg", "seconds": 238.5, "direct": "Turn 11 banner; owner's three-card hand is Ariados alternate art, X Speed, Spinarak."},
+        {"file": "t0253.00.jpg", "seconds": 253.0, "direct": "Quick-Grow Extract enlarged above unchanged three-card hand Ariados alternate art, X Speed, Spinarak."},
+        {"file": "t0254.50.jpg", "seconds": 254.5, "direct": "Four-card hand is Ariados alternate art, X Speed, Spinarak, Quick-Grow Extract; Bench still empty."},
+        {"file": "t0259.50.jpg", "seconds": 259.5, "direct": "Spinarak is on Bench; remaining hand is Ariados alternate art and Quick-Grow Extract. Retreat-cost reduction message is visible."},
+        {"file": "t0268.50.jpg", "seconds": 268.5, "direct": "Spinarak is still unevolved and now Active; hand still contains Ariados alternate art and Quick-Grow Extract; X Speed is visible in discard display."}
+      ],
+      "direct_vs_inferred": "Card identities, before/after hand counts, Bench presence and retained Quick-Grow are direct observations. Attribution of Spinarak's end-turn draw to Hiking Trail is a supported inference from two-to-three hand refill at the turn boundary and the Stadium's visible text. Ordinary placement from hand is established by the before/after states; the exact instant of placement and its order relative to X Speed are not independently resolved by these selected stills. The enlarged Quick-Grow at 253 seconds is a draw reveal, not evidence of a play, as the next frame adds it to the hand.",
+      "required_repair": "New supplement: turn 10 end-turn Stadium refill draws Spinarak, with causal attribution labeled inference; turn 12 normal draw Quick-Grow Extract; bench Spinarak from hand; retain Quick-Grow Extract alongside Ariados in ending hand. Remove inherited claim that Quick-Grow benched Spinarak. Any precise Spinarak/X Speed ordering needs the primary review's closer frame evidence."
+    },
+    {
+      "id": "MAGMAR_DUPLICATE_ENERGY",
+      "supplemental_claim_status": "supported",
+      "old_claim_status": "contradicted_if_interpreted_as_two_energy_on_active_magmar",
+      "finding": "Two distinct Team Rocket's Magmar are present on turn 7. The new Benched copy receives one Darkness Energy; the damaged Active copy retains one Darkness Energy.",
+      "evidence": [
+        {"file": "t0144.00.jpg", "seconds": 144.0, "direct": "A second Magmar is raised above the empty middle opponent Bench slot while the original Magmar remains Active at 10 HP with Poison Barb and one Darkness."},
+        {"file": "t0145.50.jpg", "seconds": 145.5, "direct": "New Magmar occupies middle Bench at 70 HP without visible Energy or Tool; Team Rocket's Master Plan is displayed. Owner hand remains both Ariados, Goo-zooka, Hiking Trail."},
+        {"file": "t0153.00.jpg", "seconds": 153.0, "direct": "Middle Benched Magmar at 70 HP has one Darkness with an attachment glow. Active Magmar at 10 HP has its own one Darkness and Poison Barb. Energy Zone is now empty."},
+        {"file": "t0162.00.jpg", "seconds": 162.0, "direct": "Both Magmar remain simultaneously visible with one Darkness each, differentiated by 10 HP plus Tool Active versus 70 HP no Tool Bench."}
+      ],
+      "direct_vs_inferred": "Duplicate identity is direct, not inferred from cumulative Energy counts. Benching precedes the Master Plan display. The new Energy is observed at the Benched copy after that display. Exact unseen animation details are not needed to distinguish targets.",
+      "required_repair": "Track separate Magmar entities in the new board/action fields: original Active 10 HP, Poison Barb, one Darkness; new middle-Bench Magmar 70 HP, no Tool, one Darkness after attachment. Record new bench placement before Master Plan and Energy attachment after the Master Plan display. If old prose merely says 'second Energy to Magmar', retain it as ambiguous rather than pretending it explicitly names Active."
+    },
+    {
+      "id": "TURN11_EXTRA_ATTACHMENT",
+      "supplemental_claim_status": "supported",
+      "old_claim_status": "incomplete_if_only_confusion_gas_is_listed",
+      "finding": "Turn 11 includes a Darkness attachment to the surviving Benched Magmar before Confusion Gas. Magmar increases from one to two Darkness; Active Weezing remains at two.",
+      "evidence": [
+        {"file": "t0238.50.jpg", "seconds": 238.5, "direct": "Turn 11 banner; Benched Magmar has one Darkness; Active Weezing has two. Owner Whimsicott has 140 HP."},
+        {"file": "t0241.00.jpg", "seconds": 241.0, "direct": "New attachment glow appears beside the existing Darkness icon on Benched Magmar; Whimsicott still has 140 HP and Weezing still has two Darkness."},
+        {"file": "t0249.50.jpg", "seconds": 249.5, "direct": "Benched Magmar now has two clear Darkness icons; Weezing still has two. Whimsicott now has 80 HP and the Confused icon."}
+      ],
+      "direct_vs_inferred": "Energy destination and one-to-two count change are supported by target-local animation and before/after icons. Attachment before the attack effect follows from Whimsicott remaining at 140 HP during the attachment and being at 80 HP/Confused afterward. Confusion Gas name is inherited from the accepted account and visible attack text, not a newly inspected attack-name animation.",
+      "required_repair": "Add Darkness attachment to the surviving Benched Magmar before the inherited Confusion Gas event in turn 11; update post-turn opponent Bench Magmar to two Darkness while Weezing remains two. Treat old turn summary as an omission rather than an explicit denial of the attachment."
+    }
+  ],
+  "preservation": "Only this new bounded check was written. Old packets, source, outcomes, logs and simulator files were not changed. Mode/history classification follows the owner's later instruction via lead; this action check makes no independent log mutation.",
+  "metrics": {
+    "model": "gpt-6-astra (assigned)",
+    "unique_images_inspected_this_action_check": 18,
+    "question_referenced_images": 16,
+    "additional_retained_images": ["t0124.50.jpg", "t0126.50.jpg"],
+    "additional_images_reason": "Resolve Hiking Trail draw versus play by inspecting turn 6 pre-draw and reveal states.",
+    "new_extractions": 0,
+    "original_video_content_reads": 0,
+    "duplicate_video_hash_reads": 0,
+    "mutable_packet_hashes": 0,
+    "native_file_dimensions": [1170, 2532],
+    "tool_display_dimensions": [946, 2048],
+    "display_note": "Tool resized the retained native files for display; relevant names, hand counts and Energy icons were legible.",
+    "wall_seconds": null,
+    "tokens": null,
+    "dollars": null,
+    "measurement_limit": "Wall time, tokens and cost not independently measured."
+  }
+}

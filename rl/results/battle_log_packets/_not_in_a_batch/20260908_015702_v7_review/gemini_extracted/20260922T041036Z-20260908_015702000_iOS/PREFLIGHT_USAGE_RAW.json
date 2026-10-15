@@ -1,0 +1,31 @@
+{
+  "cache_tokens_details": null,
+  "cached_content_token_count": null,
+  "candidates_token_count": 363,
+  "candidates_tokens_details": [
+    {
+      "modality": "TEXT",
+      "token_count": 363
+    }
+  ],
+  "prompt_token_count": 79482,
+  "prompt_tokens_details": [
+    {
+      "modality": "AUDIO",
+      "token_count": 6820
+    },
+    {
+      "modality": "TEXT",
+      "token_count": 590
+    },
+    {
+      "modality": "VIDEO",
+      "token_count": 72072
+    }
+  ],
+  "thoughts_token_count": 1496,
+  "tool_use_prompt_token_count": null,
+  "tool_use_prompt_tokens_details": null,
+  "total_token_count": 81341,
+  "traffic_type": "ON_DEMAND"
+}

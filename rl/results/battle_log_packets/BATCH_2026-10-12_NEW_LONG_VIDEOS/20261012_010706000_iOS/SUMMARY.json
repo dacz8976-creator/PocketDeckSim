@@ -1,0 +1,54 @@
+{
+  "video_basename": "20261012_010706000_iOS.MP4",
+  "source_sha256": "6d6143c99e23bffe7a6feb7f01c20a112c060e13b9b9d4ebd0a25e597ca62fd0",
+  "game_id": "20261012_010706000_iOS_game1",
+  "source_game_count": 1,
+  "reviewer": "/root/long_010706",
+  "model": "Sol",
+  "review_date": "2026-10-12",
+  "whole_source_reviewed": true,
+  "reviewed_interval_seconds": [
+    0,
+    820.845
+  ],
+  "turn_count": 21,
+  "classification": "human_event",
+  "auto_visible": false,
+  "queue": "Deluxe Pack: Mega Emblem Event",
+  "owner": "Dacz8976",
+  "opponent": "たまご",
+  "match_date_local": "2026-10-11",
+  "deck_core": [
+    "Glimmora",
+    "Alolan Muk",
+    "Kingambit",
+    "Regigigas"
+  ],
+  "opponent_core": [
+    "Mega Gardevoir ex",
+    "Mega Diancie ex",
+    "Indeedee ex"
+  ],
+  "outcome": "win",
+  "result_method": "points",
+  "points_owner": 3,
+  "points_opponent": 2,
+  "damage_done_displayed": 600,
+  "result_evidence": [
+    "F808_00",
+    "F819_00"
+  ],
+  "qr_present": true,
+  "qr_seconds": 0,
+  "capture_status": "complete_with_recording_limits",
+  "review_status": "review_ready_pending_independent_acceptance",
+  "external_log_written": false,
+  "source_moved": false,
+  "limits": [
+    "Opponent draws/search identities hidden unless later publicly played; hand fan overlap gives ranges for large fans.",
+    "Neither opened discard pile appears in the recording. Play-derived histories are inference, not pile snapshots.",
+    "Several first moves occur immediately after a zoomed normal draw. Candidate+1/+3/+6 can already be post-play; actual pre-play evidence and limits are individually identified.",
+    "Exact filmed QR semantic list verified; dated readable Pause Games live-log deck snapshot is absent. QR does not resolve artwork/printing aliases.",
+    "Native seek requested times are retained; exact decoded PTS was not measured. Turn transition timings are bounded to nearby source frames, not frame-accurate."
+  ]
+}

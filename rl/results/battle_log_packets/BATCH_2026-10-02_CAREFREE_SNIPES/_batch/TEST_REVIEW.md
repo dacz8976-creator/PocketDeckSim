@@ -1,0 +1,46 @@
+# Carefree Steps bench-snipe rules test
+
+**Current status: both source reviews independently accepted, registered as rule_test_review_complete and archived unchanged. One computer test battle; no Pause Games or Ladder Log entry.**
+
+The filmed snipe is conclusive: Heatmor's Tongue Whip targets benched Meowth, Carefree Steps triggers, heads prevents all 30 damage, and Meowth stays at 50 HP. The battle later ends in a computer-battle Victory, 3-1. Registered completion: `rule_test_review_complete`. This acknowledges complete review of both available recordings and a concluded test, without asserting uninterrupted whole-battle footage.
+
+## Sources and scope
+
+| Source | Frozen identity | Review |
+| --- | --- | --- |
+| 20261002_161001000_iOS.MP4 | 387811231 bytes; 206.873537s; SHA256 `6fd7b61e49ad599261696438f83d07da2512c790a33f5a63517dd7e558b77c30` | [Review](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161001000_iOS_rule_sol/REVIEW.md); [coverage](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161001000_iOS_rule_sol/COVERAGE.md) |
+| 20261002_161342000_iOS.MP4 | 417877242 bytes; 227.676667s; SHA256 `3db01a8db2f4229fd3327591a6012fe38da60e16fa47e71d0875c866bfbfd475` | [Review](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/REVIEW.md); [coverage](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/COVERAGE.md) |
+
+These are two recordings of one owner-requested computer rules test. Both are excluded from Pause Games and Ladder Log. Each frozen source binding was read before its decode; part 2 intake was confirmed before review. Every shared four-second overview sheet was inspected, with native targeted evidence for meaningful actions, text, coins, HP, the cut and final result. No simulator edits, training, source moves or shared-record writes were performed by this reviewer.
+
+## Directly filmed rule result
+
+All timestamps below are local to part 2. Tongue Whip's inspected text at [19.00s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0019.00.jpg) says it costs one Fire Energy and does 30 damage to one opponent Benched Pokémon. At [86.00s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0086.00.jpg), Meowth is benched at 50 HP and is selected for the ensuing resolution. At [87.00s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0087.00.jpg), the named Carefree Steps Ability appears. Its coin text at [89.00s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0089.00.jpg) specifies attack damage and heads prevention. The result is heads at [91.00s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0091.00.jpg). Tongue Whip resolves at [92.00s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0092.00.jpg), then a shield is visible and Meowth remains 50 HP at [94.00s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0094.00.jpg). Torchic stays 60 and Victini stays 40. This establishes prevented damage, not merely a coin with an unknown consequence.
+
+Normal Tongue Whip damage is recorded earlier in part 2: benched Combusken 20 HP is knocked out by 30 at [27.00s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0027.00.jpg), and benched Victini falls from 70 to 40 HP at [56.00s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0056.00.jpg). Meowth is active during those controls. They establish the attack's ordinary Bench damage but do not test its defensive Ability.
+
+The damage source is an attack; Carefree Steps is the defender Ability that prevents it. Victory Star is separately identified in the Victini tooltip in part 1 at [17.00s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161001000_iOS_rule_sol/evidence/t0017.00.jpg) and concerns its side's Fire-attack coin flips. The Meowth defense sequence names Carefree Steps and shows no Victory Star reroll. Burn recovery coins and the later attack-effect coins are separately contextualized. The Meowth blue hexagonal icon is not called Sleep or assigned any other unestablished Special Condition.
+
+## Owner prediction compared with observation
+
+[Owner rule context](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/BATCH_2026-10-02_CAREFREE_SNIPES/OWNER_RULE_UNDER_TEST.md) describes an engine behavior in which queued snipe-choice damage skips the defender coin and Tongue Whip always deals 30. The observed Carefree Steps coin and full heads prevention contradict that supplied prediction for this filmed case. They agree with the described intended behavior of proposed repair B. Current engine code, pinned state and repair implementation were not inspected, so the result does not assert that a present simulator version behaves this way or that any repair is complete.
+
+The requested test concerns snipe attacks on benched Meowth; Tongue Whip is the concrete recorded example. Linear Attack is not filmed and its absence does not leave the requested test incomplete. One heads trial supports this observed trigger and prevention. No tails trial, damaging Ability trial, Absol Leap Over or Team Rocket's Hypno Entrap is established, and no broad engine-correctness claim follows.
+
+## Recording interruption
+
+The last frame of part 1 (206.80s) and first frame of part 2 (0.00s) show the same public board at owner turn 7: owner Entei ex 70 HP active with two Fire Energy and Lum Berry, Heatmor 100 HP with Giant Cape and Houndour 60 HP with Elegant Cape on the Bench; opponent Meowth 50 HP active with one Fire Energy, Combusken 20 HP with two Fire Energy and Victini 70 HP on the Bench; Rainbow Cave and a 0-0 score. Both show Dacz8976 and phone time 11:13. This supports the owner testimony that these are two parts of one battle. The visible hand differs, so no unseen draw or action is reconstructed. The recording cut is real; its duration and intervening actions are not established. All timestamps stay local to each file.
+
+The two endpoint images are part 1 [206.80s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161001000_iOS_rule_sol/evidence/t0206.80.jpg) and part 2 [0.00s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0000.00.jpg). The visible board supports the same battle; it does not prove nothing happened in the missing interval. No continuous combined timestamp axis or guessed gap duration is assigned. Both sources have complete available-footage review; `battle_complete` remains false in their summaries for uninterrupted whole-battle footage. The terminal result is nevertheless directly observed.
+
+## Auto, terminal outcome and reconciliation
+
+Owner Auto is off in part 1 and the early portion of part 2. It is off at part 2 [105.00s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0105.00.jpg) and on at [106.00s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0106.00.jpg), staying on through the concluding owner turns. The main Carefree Steps trial at 86-94s occurs before this toggle. This is evidence about the owner's displayed control, not an independently displayed opponent toggle.
+
+Victory appears at part 2 [221.00s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0221.00.jpg). Terminal results at [227.60s](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0227.60.jpg) name `Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega)`, show the owner went first, 15 turns, points 3-1 and damage 360. The filmed damage reconciles: Entei ex 60; Tongue Whip 30 to Combusken, 30 to Victini, 0 to Meowth; Mega Houndoom ex 160 and 80, totaling 360. Final Cyrus promotes damaged Typhlosion ex before its knockout and the last two points. These outcome observations do not make the missing recording interval complete.
+
+## Evidence classification and completion
+
+Direct observations: source-local card text, target choice, Ability name, coin text and heads, shield, HP, Auto control and terminal result. Inference: public-board continuity supports the owner-stated same-battle relationship. Owner testimony: two files from one computer rules test interrupted by screen-recording failure, with both excluded from result logs. Unverified claim: the supplied simulator description and proposed repair's code behavior.
+
+No material evidence is missing for the filmed snipe test. The recording interruption remains a battle-coverage limitation. Accepting `rule_test_review_complete` is appropriate for the concluded owner-requested test without changing `battle_complete` to true. Source-specific SUMMARY.json and UNCERTAINTIES.json preserve these distinctions.

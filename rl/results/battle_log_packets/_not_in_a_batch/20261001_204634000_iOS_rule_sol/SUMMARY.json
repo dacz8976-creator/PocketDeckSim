@@ -1,0 +1,356 @@
+{
+  "video_basename": "20261001_204634000_iOS.MP4",
+  "source_sha256": "7693308ac52a431bddecd470e405bc47da01ba484f987a3f5595c9a541ca69c2",
+  "reviewer": "sol_rules_20261001_204634000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "status": "full_battle_review_complete",
+  "recording_type": "one_complete_battle_owner_designated_rules_test",
+  "complete_available_footage_review": true,
+  "battle_complete": true,
+  "proposed_completion_status": "full_battle_review_complete",
+  "duration_seconds": 577.671667,
+  "reviewed_intervals_seconds": [
+    [
+      0,
+      577.671667
+    ]
+  ],
+  "battle_count": 1,
+  "turn_count": 22,
+  "mode": "Solo Random Battle (Advanced), AI Opponent",
+  "ladder_eligible": false,
+  "owner_auto": [
+    {
+      "approximately_seconds": [
+        0,
+        270
+      ],
+      "enabled": false
+    },
+    {
+      "approximately_seconds": [
+        271,
+        275
+      ],
+      "enabled": true
+    },
+    {
+      "approximately_seconds": [
+        277,
+        336
+      ],
+      "enabled": false
+    },
+    {
+      "approximately_seconds": [
+        337,
+        577.671667
+      ],
+      "enabled": true
+    }
+  ],
+  "outcomes": [
+    {
+      "battle": 1,
+      "owner": "Dacz8976",
+      "opponent": "AI Opponent",
+      "result": "owner_victory",
+      "owner_awarded_points": 4,
+      "opponent_awarded_points": 2,
+      "visible_final_owner_score_circles": 3,
+      "score_basis": "Owner Umbreon1 + Greedent1 + Snorlax ex2; opponent two Darmanitan KOs1 each; final +2 points and Victory visible.",
+      "ending_evidence_seconds": [
+        552,
+        556,
+        559,
+        566,
+        577
+      ]
+    }
+  ],
+  "key_findings": [
+    {
+      "finding": "Victory Star rerolls the entire Heat Charged batch from0heads/3tails to2heads/1tail; starting1Fire becomes3Fire. It also replaces Double Smash0H/2T with1H/1T for40damage.",
+      "observation_or_inference": "direct_observation",
+      "evidence_seconds": [
+        179,
+        184,
+        195,
+        196,
+        198,
+        204,
+        205,
+        342,
+        344,
+        350,
+        354
+      ]
+    },
+    {
+      "finding": "Confused check is separate from attack effect coins. Master Plan tails confuses both actives; later heads only confuses the opponent. No supporter Victory Star prompt shown. Failed Confused reroll is untested.",
+      "observation_or_inference": "observation_with_printed_text_boundary",
+      "evidence_seconds": [
+        148,
+        151,
+        157,
+        161,
+        184,
+        195,
+        335,
+        338,
+        384
+      ]
+    },
+    {
+      "finding": "Dark Binding blocks Basics from attacking, not retreating. Replacing the locked active permits the new Pokemon to attack. Evolution clears the existing block while retaining damage; later Stage1 Darmanitan is not given the Basic-only prohibition.",
+      "observation_or_inference": "observation_with_printed_text_interpretation",
+      "evidence_seconds": [
+        216,
+        228,
+        232,
+        289,
+        301,
+        303,
+        308,
+        324,
+        326,
+        329,
+        338,
+        364,
+        397
+      ]
+    },
+    {
+      "finding": "Flame Patch actually powers active Fire Pokemon from discarded Fire separately from normal attachment. Earlier enlarged Patch inspections are not plays. At turn18 Patch plus normal attachment gives Moltres2 to4Fire, allowing Netherwing.",
+      "observation_or_inference": "direct_observation",
+      "evidence_seconds": [
+        289,
+        299,
+        301,
+        303,
+        386,
+        504,
+        509,
+        512,
+        516
+      ]
+    },
+    {
+      "finding": "Will's first-effect-coin guarantee is announced before turn14 Double Smash; result2H/0T does80. The second heads is not evidence that Will guarantees more than the first coin. Earlier Will occurs on an attack-blocked turn with no coin use.",
+      "observation_or_inference": "direct_observation_with_printed_text_limit",
+      "evidence_seconds": [
+        224,
+        228,
+        232,
+        236,
+        383,
+        438,
+        440,
+        442,
+        446,
+        447,
+        453
+      ]
+    },
+    {
+      "finding": "Leftovers heals active Greedent10 at end of its turn; injured benched Liepard does not heal then. Snorlax ex Full-Mouth Manner heals20 at its turn start. Bounded Field is active but its numerical weakness multiplier is untested here.",
+      "observation_or_inference": "direct_observation_with_explicit_untested_branch",
+      "evidence_seconds": [
+        257,
+        375,
+        384,
+        496,
+        501,
+        504,
+        543,
+        547
+      ]
+    },
+    {
+      "finding": "Empty decks skip draws without immediately ending this game. Netherwing130 repeatedly discards one Fire after using four Energy. Final Snorlax exKO awards2points, yielding actual owner total4 despite the three-circle display.",
+      "observation_or_inference": "direct_observation",
+      "evidence_seconds": [
+        475,
+        504,
+        509,
+        512,
+        516,
+        521,
+        533,
+        539,
+        543,
+        547,
+        552,
+        556,
+        559,
+        566
+      ]
+    }
+  ],
+  "independent_check_times": [
+    {
+      "purpose": "opening and ordinary phase",
+      "seconds": [
+        16,
+        25,
+        52,
+        64,
+        70
+      ]
+    },
+    {
+      "purpose": "Victini retreat payment",
+      "seconds": [
+        87,
+        113,
+        136
+      ]
+    },
+    {
+      "purpose": "Master Plan and separate confusion",
+      "seconds": [
+        148,
+        151,
+        157,
+        161,
+        179,
+        184
+      ]
+    },
+    {
+      "purpose": "Heat Charged full batch replacement and settled Energy",
+      "seconds": [
+        195,
+        196,
+        198,
+        204,
+        205
+      ]
+    },
+    {
+      "purpose": "Dark Binding text and blocked Will turn",
+      "seconds": [
+        216,
+        224,
+        228,
+        232,
+        236
+      ]
+    },
+    {
+      "purpose": "temporary Auto and retreat/Patch",
+      "seconds": [
+        270,
+        274,
+        277,
+        289,
+        292,
+        299,
+        301,
+        303,
+        308
+      ]
+    },
+    {
+      "purpose": "evolution and Double Smash reroll",
+      "seconds": [
+        324,
+        326,
+        329,
+        335,
+        338,
+        342,
+        344,
+        350,
+        354
+      ]
+    },
+    {
+      "purpose": "Stage1 distinction and stadium",
+      "seconds": [
+        360,
+        364,
+        375,
+        384,
+        392,
+        397
+      ]
+    },
+    {
+      "purpose": "actual Will application",
+      "seconds": [
+        436,
+        438,
+        440,
+        442,
+        446,
+        447,
+        453
+      ]
+    },
+    {
+      "purpose": "Leftovers and late Energy/attack",
+      "seconds": [
+        257,
+        467,
+        490,
+        496,
+        501,
+        504,
+        509,
+        512,
+        516,
+        521
+      ]
+    },
+    {
+      "purpose": "Snorlax damage and healing",
+      "seconds": [
+        524,
+        533,
+        539,
+        543,
+        547
+      ]
+    },
+    {
+      "purpose": "terminal exKO and Solo results",
+      "seconds": [
+        552,
+        556,
+        559,
+        566,
+        577
+      ]
+    }
+  ],
+  "reports": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "UNCERTAINTIES.json"
+  ],
+  "evidence": {
+    "overview_directory": "overview",
+    "overview_frame_count": 193,
+    "overview_sheet_count": 22,
+    "overview_step_seconds": 3,
+    "native_directory": "native",
+    "native_filename_pattern": "t0000.00.jpg",
+    "readable_composites": [
+      "details_probes.jpg",
+      "details_late.jpg"
+    ]
+  },
+  "lead_acceptance": "accepted",
+  "source_moved_by_worker": false,
+  "global_records_changed_by_worker": false,
+  "worker_status_at_submission": "Finished first pass awaiting independent lead acceptance.",
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "global_registration_complete": true,
+  "archive_receipt": "MOVE_RECEIPT.20261001_204634000_iOS.MP4.json",
+  "archive_completion_event_id": "85ca7952-2401-40e8-b7ac-0d67f86cccb0"
+}

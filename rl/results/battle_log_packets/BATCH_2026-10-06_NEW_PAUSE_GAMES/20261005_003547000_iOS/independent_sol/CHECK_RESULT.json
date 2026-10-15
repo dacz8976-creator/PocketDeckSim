@@ -1,0 +1,150 @@
+{
+  "schema": "independent-pause-games-acceptance-v1",
+  "reviewer": "/root/independent_003547",
+  "model": "gpt-6.1-sol",
+  "checked_utc": "2026-10-06T18:13:34.889484+00:00",
+  "source_video": "20261005_003547000_iOS.MP4",
+  "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+  "scope": "Bounded independent checks of submitted whole-game first pass, not a second full visual pass. Retained source evidence reused; no media rehash or extraction.",
+  "status": "gameplay_supported_pending_narrow_packet_repairs",
+  "accepted": false,
+  "independent_capture_acceptance": false,
+  "gameplay_outcome_verified": {
+    "owner": "Dacz8976",
+    "opponent": "Garfield.tv",
+    "owner_points": 0,
+    "opponent_points": 3,
+    "outcome": "loss",
+    "turns": 14,
+    "damage_done": 240
+  },
+  "required_repairs": [
+    {
+      "id": "C1",
+      "kind": "preplay_evidence_and_first_action_window",
+      "severity": "required_capture_correction",
+      "json_paths": [
+        "TURN_LEDGER.json $.turns[0].owner_hand_start",
+        "TURN_LEDGER.json $.turns[0].hand_at_start",
+        "TURN_LEDGER.json $.turns[0].board_at_start",
+        "TURN_LEDGER.json $.turns[0].timing.first_voluntary_move_seconds",
+        "TURN_LEDGER.json $.turns[0].plays_in_order[0].timestamp_seconds/evidence_ids",
+        "TURN_LEDGER.json $.turns[0].draws_and_searches[1].cards_in_reveal_order[0].timestamp_seconds/evidence_ids",
+        "TURN_EVIDENCE.json $.frames[evidence_id=f0068.00].selected_for_start_hand/before_first_play/observation/suitability_or_limit",
+        "TURN_EVIDENCE.json $.frames[evidence_id=f0070.00].before_first_play/suitability_or_limit",
+        "REVIEW.md Turn1 first move and selected hand"
+      ],
+      "finding": "Native68s has four cards: Research, Copycat, Mega Sharpedo ex, Lucky Ice Pop. Ball has already left the hand. Native70s still has four cards during search effect. Native71s is Carvanha reveal, not earliest Ball input. Therefore68 is not intact5-card preplay evidence.",
+      "required_repair": "Select retained focus/t0067.00.jpg or focus/t0067.50.jpg, directly exposing all5 named cards before Ball leaves the fan; retain/index its native bottom and top crops. Mark68/70 before_first_play=false and explain play in progress. Bound Ball play to67.5-68s, retain71s as Carvanha reveal. Correct hand/board references and prose without changing the5-card starting count.",
+      "inspected_support": [
+        "focus/t0067.00.jpg",
+        "focus/t0067.50.jpg",
+        "turn_evidence/t0068.00.jpg",
+        "turn_evidence/t0068.00_bottom.png",
+        "turn_evidence/t0070.00.jpg",
+        "turn_evidence/t0071.00.jpg",
+        "turn_evidence/t0072.00.jpg"
+      ]
+    },
+    {
+      "id": "C2",
+      "kind": "Research_reveal_order",
+      "severity": "required_draw_order_correction",
+      "json_paths": [
+        "TURN_LEDGER.json $.turns[0].draws_and_searches[2].cards_in_reveal_order",
+        "TURN_LEDGER.json $.turns[0].draws_and_searches[2].timestamp_seconds/evidence_ids",
+        "TURN_LEDGER.json $.turns[0].plays_in_order[2].result",
+        "TURN_EVIDENCE.json named reveal descriptions and new84s indexed evidence",
+        "REVIEW.md Turn1 Research draw sequence"
+      ],
+      "finding": "Research order Wallace83 then Shore85 is reversed. Native83 reveals Soothing Shore with three existing cards below. Native84 reveals Wallace with Shore already in hand. Native85 is the resolved5-card hand.",
+      "required_repair": "Record reveal1 Soothing Shore83s and reveal2 Wallace84s with corresponding retained indexed evidence. Keep85s for resolved hand. Update play result/prose. Arithmetic remains3+2=5 and Stadium play leaves4.",
+      "inspected_support": [
+        "turn_evidence/t0079.00.jpg",
+        "coarse/t0080.00.jpg",
+        "focus/t0081.00.jpg",
+        "detail/t0082.00.jpg",
+        "turn_evidence/t0083.00.jpg",
+        "detail/t0084.00.jpg",
+        "turn_evidence/t0085.00.jpg",
+        "detail/t0086.00.jpg",
+        "turn_evidence/t0087.00.jpg"
+      ]
+    },
+    {
+      "id": "C3",
+      "kind": "displayed_turn_boundary",
+      "severity": "required_boundary_metadata_correction",
+      "json_paths": [
+        "TURN_LEDGER.json $.turns[1].board_after.turn_number_displayed",
+        "TURN_LEDGER.json $.turns[3].board_after.turn_number_displayed",
+        "TURN_LEDGER.json $.turns[5].board_after.turn_number_displayed",
+        "TURN_LEDGER.json $.turns[6].board_after.turn_number_displayed",
+        "TURN_LEDGER.json $.turns[9].board_after.turn_number_displayed",
+        "TURN_LEDGER.json $.turns[12].board_after.turn_number_displayed",
+        "all board_at_start/board_after displayed-number fields whose supporting frame lacks a readable Current turn label"
+      ],
+      "finding": "128/224/335/360/454/528s show Current turn3/5/7/8/11/14 while corresponding board_after fields store concluded row2/4/6/7/10/13. Other stable frames do not necessarily show a number, so observed display must not be filled from row number.",
+      "required_repair": "Use visible transition numbers3/5/7/8/11/14 at listed frames and name concluded turn separately in phase/basis. Use null with specific reason where no readable Current turn display is shown. Preserve14 chronological rows and gameplay states.",
+      "inspected_support": [
+        "turn_evidence/t0128.00.jpg",
+        "turn_evidence/t0224.00.jpg",
+        "turn_evidence/t0335.00.jpg",
+        "turn_evidence/t0360.00.jpg",
+        "turn_evidence/t0454.00.jpg",
+        "turn_evidence/t0528.00.jpg"
+      ]
+    },
+    {
+      "id": "C4",
+      "kind": "stored_mojibake",
+      "severity": "required_text_encoding_correction",
+      "json_paths": [
+        "DECK_USED.json $.filmed_cards_20_slots[0].name",
+        "DECK_USED.json $.filmed_cards_20_slots[1].name",
+        "DECK_USED.json $.filmed_cards_20_slots[3].name",
+        "DECK_USED.json $.filmed_cards_20_slots[4].name",
+        "DECK_USED.json $.filmed_counts[0].name",
+        "DECK_USED.json $.filmed_counts[2].name"
+      ],
+      "finding": "UTF-8 parsed strings actually contain Pok\\u00c3\\u00a9 Ball and Professor\\u00e2\\u20ac\\u2122s Research. Stored character corruption, not terminal display corruption.",
+      "required_repair": "Normalize deck display names to correct Unicode or ASCII Poke Ball and Professor's Research. Preserve20 slots, duplicate quantities, entity IDs and original QR receipt provenance.",
+      "inspected_support": [
+        "DECK_USED.json",
+        "QR_DECODE.json",
+        "../NEW_DECK_ENTRIES.json"
+      ]
+    }
+  ],
+  "verified_checks": [
+    "Read SOURCE/SUMMARY/REVIEW/COVERAGE/UNCERTAINTIES/INDEPENDENT_HANDOFF and mandatory structured files. Frozen lead CLI source binding accepted without repeated media hash. Whole-worker coverage reports0-558.038333;14 alternating rows match prose table. Bounded independent check does not repeat full pass.",
+    "32 original5 are Research,Wailmer,Copycat,Ball,Mega;36 Wailmer selected. Nearby67/67.5 intact5 after normal IcePop draw support hand identity, subjectC1 selection repair.",
+    "Ordinary opponentT2 independently checked beyond flagged issues:106 Psychic attachment sequence,112 Plaza replacing Shore,120 SupernaturalFeather,128 Wailmer50, Oricorio80/Psychic1 and Pumpkaboo60. Hidden hand faces remain unknown.",
+    "Wallace139 intact Mega hand copy;142 deck evolution on Bench and178 hand still has Mega. IcePop158/172 heads;236 heads then244 tails. Copycat252 shuffle remainingWailord+Mega;256Suicune and258Ball draws distinct from Trail285Mega/287Carvanha.262Ball revealsWailmer. No hand copy consumed byWallace.",
+    "T7 Research Shore344 thenIrida346 supported. T1 Research needsC2 actual Shore83/Wallace84 order correction.",
+    "Owner ending counts4,3,3,3,3,2,1 agree92/178/289/360/415/476/528. T5 pre-End1+Trail2=3; T11 failed draw3-Carvanha=2; T13 failed draw2-Mega=1. Opponent fan counts3,2,3,3,2,3,3 countable at selected owner start views.",
+    "LateEnergy:476 ActiveMega1Water, Carvanha0, Wailord1, Suicune0.514 selection/515 resolved/516 zoom gives freshActive1Water;523 TurboShark givesSuicune1 while damagedBenchMega1/Wailord1 persist.526 healing animation and528 settled80HP damagedMega.533Cyrus,541LastRespects,544emptyActive withthree remainingBenches eachWater1,548+3 and557Defeat14turns0-3/240damage supported.",
+    "Both boards, HP, positions, typed attachments, Cape effective160HPHoundstone, Stadium, current/nextEnergy represented and checked at selected consequential boundaries. KnownemptyBench objects and none Tool/Stadium distinguish absence. Displayed turn labels needC3. No consequential gameplay state contradiction remains in inspected sequences.",
+    "142 indexed fullframes measured1170x2532, bottom1170x507 bounds[0,2025,1170,2532], top1170x700 bounds[0,0,1170,700]. All JSON evidence IDs resolve and sourcehash bindings consistent. Scheduled candidates and before-End views retained. T5/T7 early actions and T11/T13 no-normal-draw anchors are explicit. Retention does not validateC1 mislabeled68/70.",
+    "No opened full discardpile per fullworker inspection, no contrary pile view in bounded samples. Native rotated225x260 crop128 confirmsKlefki;224Houndstone,335Pumpkaboo,385Gourgeist changing top previews supported. Hidden draws/searches, exact printing and unseen pile contents remain unknown.",
+    "Independently ZXing-scanned nativeQR, onepayload matchesreceipt and imageSHAa26246c189bb39d6800c6d4681550be076078685096187583ae628347e073bba. Direct pinnedNodecodec independently returns trainerIDs[30,30,1060,40,40,380,990,1470,1580,1580], PokemonIDs[19970,19970,11390,11390,19950,19950,19960,19960,10400,10400], Energy[3]=Water, byte-exactroundtriptrue.20semantic slots conflictwithall9livebaseline lists. PreparedNEW_DECK_ENTRIES Wailord/MegaSharpedo/Suicune external_savedfalse verified. Artwork/printing unresolved."
+  ],
+  "consequential_gameplay_uncertainty": null,
+  "astra_escalation_needed": false,
+  "lead_only_remaining_actions": [
+    "Preserve submission and repairC1-C4",
+    "Tiny independent repair recheck",
+    "Lead deck definition/external save/acceptance/registration/archive"
+  ],
+  "shared_writes": false,
+  "external_writes": false,
+  "media_actions": false,
+  "lead_acceptance_written": false,
+  "checked_input_sha256": {
+    "SOURCE.json": "78e9fdbbf4011e39defb0464336658e7fe228d4987e1f755c21982688821e618",
+    "TURN_LEDGER.json": "dbd95c975518e2e0e8dc93b18b33c08b66fef8decc8f0ae0f94395ed2fed6600",
+    "TURN_EVIDENCE.json": "d667526909ad3b6093c16f36c2ffa082aaa05eec57048a05df307d3177048dc1",
+    "REVIEW.md": "5dddec765c15ecd9389962594679b30713c14c492c1af6b49106491c8b0f1214",
+    "DECK_USED.json": "22c944418baa3b234134e42c18062318740f3a34edc25b4d60be222a68415636"
+  }
+}

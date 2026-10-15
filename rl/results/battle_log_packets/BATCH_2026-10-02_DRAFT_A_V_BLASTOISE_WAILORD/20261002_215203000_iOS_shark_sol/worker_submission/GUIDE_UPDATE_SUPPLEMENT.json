@@ -1,0 +1,223 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_215203000_iOS_shark_sol",
+  "sources": [
+    {
+      "video_basename": "20261002_215203000_iOS.MP4",
+      "sha256": "d0e031e9a27c358ad0e1590621014f2758bf80138b83c0776f9961ca34c88b7c",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "request_source": "C:\\Users\\dacz8\\Projects\\CODEX_REQUEST_pause_games.md",
+  "addendum": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\GUIDE_UPDATE_REQUIREMENTS.md",
+  "status": "complete_with_recording_limits",
+  "integrated_in_first_pass": true,
+  "source_observed_owner_start_boards": [
+    {
+      "turn_number": 2,
+      "ledger_pointer": "TURN_LEDGER.json#/turns/1/board_at_start",
+      "fresh_native_evidence_ids": [
+        "F0043.50"
+      ],
+      "evolution_stack_basis": "Witnessed source genealogy; hidden lower faces unknown directly"
+    },
+    {
+      "turn_number": 4,
+      "ledger_pointer": "TURN_LEDGER.json#/turns/3/board_at_start",
+      "fresh_native_evidence_ids": [
+        "F0070.20"
+      ],
+      "evolution_stack_basis": "Witnessed source genealogy; hidden lower faces unknown directly"
+    },
+    {
+      "turn_number": 6,
+      "ledger_pointer": "TURN_LEDGER.json#/turns/5/board_at_start",
+      "fresh_native_evidence_ids": [
+        "F0127.50",
+        "F0128.50"
+      ],
+      "evolution_stack_basis": "Witnessed source genealogy; hidden lower faces unknown directly"
+    },
+    {
+      "turn_number": 8,
+      "ledger_pointer": "TURN_LEDGER.json#/turns/7/board_at_start",
+      "fresh_native_evidence_ids": [
+        "F0164.80"
+      ],
+      "evolution_stack_basis": "Witnessed source genealogy; hidden lower faces unknown directly"
+    },
+    {
+      "turn_number": 10,
+      "ledger_pointer": "TURN_LEDGER.json#/turns/9/board_at_start",
+      "fresh_native_evidence_ids": [
+        "F0193.80"
+      ],
+      "evolution_stack_basis": "Witnessed source genealogy; hidden lower faces unknown directly"
+    },
+    {
+      "turn_number": 12,
+      "ledger_pointer": "TURN_LEDGER.json#/turns/11/board_at_start",
+      "fresh_native_evidence_ids": [
+        "F0226.20"
+      ],
+      "evolution_stack_basis": "Witnessed source genealogy; hidden lower faces unknown directly"
+    }
+  ],
+  "owner_choices_during_opponent_turns": [],
+  "choice_absence_basis": "All source grids and opponent events inspected: no owner damage/KO, no forced-switch/Sabrina prompt, no owner choice during any opponent turn.",
+  "opponent_own_KO_promotions": [
+    {
+      "turn_number": 4,
+      "source_video": "20261002_215203000_iOS.MP4",
+      "timestamp_seconds": 112.507,
+      "eligible_board_options": [
+        "Frigibax left Bench",
+        "Squirtle center Bench",
+        "Wailmer right Bench"
+      ],
+      "options_UI_observed": false,
+      "selected": "Wailmer right to Active",
+      "decision_maker": "computer opponent",
+      "evidence_ids": [
+        "F0108.50",
+        "F0112.50",
+        "F0114.50"
+      ],
+      "limit": "Eligible board options derived from visible board, not an exposed opponent choice UI"
+    }
+  ],
+  "owner_choices_during_owner_turns": [
+    {
+      "turn": 2,
+      "kind": "Misty target",
+      "options": [
+        "Lapras Active",
+        "Carvanha right"
+      ],
+      "selected": "Lapras",
+      "evidence_ids": [
+        "F0045.50",
+        "F0054.50"
+      ]
+    },
+    {
+      "turn": 6,
+      "kind": "retreat replacement",
+      "options": [
+        "Ninetales left",
+        "Sharpedo right"
+      ],
+      "selected": "Sharpedo",
+      "evidence_ids": [
+        "F0135.50",
+        "F0139.50"
+      ]
+    },
+    {
+      "turn": 6,
+      "kind": "Turbo Shark target",
+      "options": [
+        "Ninetales left",
+        "Lapras right"
+      ],
+      "selected": "Ninetales",
+      "evidence_ids": [
+        "F0146.50",
+        "F0148.50"
+      ]
+    },
+    {
+      "turn": 8,
+      "kind": "retreat replacement",
+      "options": [
+        "Ninetales left",
+        "Lapras right"
+      ],
+      "selected": "Ninetales",
+      "evidence_ids": [
+        "F0167.50",
+        "F0171.50"
+      ]
+    }
+  ],
+  "seen_inventory_file": "SEEN_CARD_INVENTORY.json",
+  "per_owner_turn_decision_maker": [
+    {
+      "turn_number": 2,
+      "decision_maker": "user",
+      "visible_status": "Auto grey unchecked OFF",
+      "evidence_ids": [
+        "F0043.50",
+        "F0059.50"
+      ],
+      "change_evidence": [],
+      "limit": "No enabled span or override shown; touch/input telemetry absent"
+    },
+    {
+      "turn_number": 4,
+      "decision_maker": "user",
+      "visible_status": "Auto grey unchecked OFF",
+      "evidence_ids": [
+        "F0070.20",
+        "F0114.50"
+      ],
+      "change_evidence": [],
+      "limit": "No enabled span or override shown; touch/input telemetry absent"
+    },
+    {
+      "turn_number": 6,
+      "decision_maker": "user",
+      "visible_status": "Auto grey unchecked OFF",
+      "evidence_ids": [
+        "F0128.50",
+        "F0148.50"
+      ],
+      "change_evidence": [],
+      "limit": "No enabled span or override shown; touch/input telemetry absent"
+    },
+    {
+      "turn_number": 8,
+      "decision_maker": "user",
+      "visible_status": "Auto grey unchecked OFF",
+      "evidence_ids": [
+        "F0164.80",
+        "F0176.50"
+      ],
+      "change_evidence": [],
+      "limit": "No enabled span or override shown; touch/input telemetry absent"
+    },
+    {
+      "turn_number": 10,
+      "decision_maker": "user",
+      "visible_status": "Auto grey unchecked OFF",
+      "evidence_ids": [
+        "F0193.80",
+        "F0211.50"
+      ],
+      "change_evidence": [],
+      "limit": "No enabled span or override shown; touch/input telemetry absent"
+    },
+    {
+      "turn_number": 12,
+      "decision_maker": "user",
+      "visible_status": "Auto grey unchecked OFF",
+      "evidence_ids": [
+        "F0226.20",
+        "F0239.00"
+      ],
+      "change_evidence": [],
+      "limit": "No enabled span or override shown; touch/input telemetry absent"
+    }
+  ],
+  "routing": "local batch/index only; excluded human Pause Games and Ladder",
+  "limits": [
+    "Hidden opponent draws/search faces remain null; supplied deck is not evidence of held card names.",
+    "Both discard piles stay unopened/unscrolled; only visible top faces and separately public played/KO events, not a complete pile census.",
+    "Covered lower evolution faces are unknown directly; same source witnessed genealogy is identified explicitly.",
+    "All one-fps source locator cells inspected plus 137 native views; no claim of every unrecorded subsecond input.",
+    "Exact collector numbers not transcribed; visible art differences do not change separate supplied 20-card log snapshot.",
+    "Auto OFF plus visible manual choice screens supports owner manual decisions; touch/input telemetry is not recorded.",
+    "Composite boundary states have source_seconds null and separate measured anchor ranges; earliest anchor may precede some final attributes and does not establish an exact state instant."
+  ]
+}

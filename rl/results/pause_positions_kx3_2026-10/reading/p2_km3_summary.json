@@ -1,0 +1,521 @@
+[
+ {
+  "id": "KW-261013_010837000-t03",
+  "game": "kw-261013_010837000",
+  "his_turn": 2,
+  "turn_count": 3,
+  "hand": [
+   "Glimmora",
+   "Alolan Muk",
+   "Copycat",
+   "Rare Candy",
+   "Glimmora"
+  ],
+  "his": [
+   "Evolve:Glimmora@1",
+   "Attach:1Darkness@0 zone",
+   "Retreat:1",
+   "Play:Copycat"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Glimmora@1": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Glimmora@1",
+   "Attach:1Darkness@0 zone",
+   "Play:Copycat"
+  ],
+  "modal_n": 10,
+  "plans": [
+   [
+    [
+     "Evolve:Glimmora@1",
+     "Attach:1Darkness@0 zone",
+     "Play:Copycat"
+    ],
+    10
+   ],
+   [
+    [
+     "Evolve:Glimmora@1",
+     "Attach:1Darkness@0 zone",
+     "Attack:Slash"
+    ],
+    2
+   ]
+  ],
+  "cat": "retreat/promotion",
+  "tags": [
+   "retreat/promotion"
+  ],
+  "desc": "his [Retreat:1] ↔ km3 [-]",
+  "first_div": [
+   "Retreat",
+   "Play",
+   "Retreat:1",
+   "Play:Copycat",
+   2
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261013_010837000-t09",
+  "game": "kw-261013_010837000",
+  "his_turn": 5,
+  "turn_count": 9,
+  "hand": [
+   "Lucky Ice Pop"
+  ],
+  "his": [
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Attach:1Darkness@1 zone",
+   "Attack:Hang Down"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Retreat:1": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Retreat:1",
+   "Attach:1Darkness@0 zone",
+   "Attack:Overlord's Blade"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Retreat:1",
+     "Attach:1Darkness@0 zone",
+     "Attack:Overlord's Blade"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "attack choice",
+   "retreat/promotion",
+   "Energy attachment target"
+  ],
+  "desc": "his [Play:Lucky Ice Pop, Play:Lucky Ice Pop, Attach:1Darkness@1 zone, Attack:Hang Down] ↔ km3 [Retreat:1, Attach:1Darkness@0 zone, Attack:Overlord's Blade]",
+  "first_div": [
+   "Play",
+   "Retreat",
+   "Play:Lucky Ice Pop",
+   "Retreat:1",
+   0
+  ],
+  "attack_cmp": "different attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it; knocked out between turns: Regigigas. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261013_010837000-t11",
+  "game": "kw-261013_010837000",
+  "his_turn": 6,
+  "turn_count": 11,
+  "hand": [
+   "Heavy Helmet"
+  ],
+  "his": [
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@1",
+   "Attach:1Darkness@2 zone",
+   "Attack:Hang Down"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Retreat:1": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Retreat:1",
+   "Play:Heavy Helmet",
+   "Tool:Heavy Helmet@0",
+   "Attach:1Darkness@2 zone",
+   "Attack:Overlord's Blade"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Retreat:1",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Attach:1Darkness@2 zone",
+     "Attack:Overlord's Blade"
+    ],
+    12
+   ]
+  ],
+  "cat": "retreat/promotion",
+  "tags": [
+   "retreat/promotion",
+   "Tool placement",
+   "attack choice"
+  ],
+  "desc": "his [-] ↔ km3 [Retreat:1]; his [Tool:Heavy Helmet@1] ↔ km3 [Tool:Heavy Helmet@0]; his [Attack:Hang Down] ↔ km3 [Attack:Overlord's Blade]",
+  "first_div": [
+   "Play",
+   "Retreat",
+   "Play:Heavy Helmet",
+   "Retreat:1",
+   0
+  ],
+  "attack_cmp": "different attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261012_203719000-t17",
+  "game": "kw-261012_203719000",
+  "his_turn": 9,
+  "turn_count": 17,
+  "hand": [
+   "Lucky Ice Pop",
+   "Lucky Ice Pop"
+  ],
+  "his": [
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Attach:1Darkness@2 zone",
+   "Attack:Venomous Hit"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Attach:1Darkness@0 zone": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Attach:1Darkness@0 zone",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Retreat:3",
+   "Attack:Overlord's Blade"
+  ],
+  "modal_n": 5,
+  "plans": [
+   [
+    [
+     "Attach:1Darkness@0 zone",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Retreat:3",
+     "Attack:Overlord's Blade"
+    ],
+    5
+   ],
+   [
+    [
+     "Attach:1Darkness@0 zone",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Retreat:3",
+     "Attack:Overlord's Blade"
+    ],
+    5
+   ],
+   [
+    [
+     "Attach:1Darkness@0 zone",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Retreat:3",
+     "Attack:Overlord's Blade"
+    ],
+    2
+   ]
+  ],
+  "cat": "Energy attachment timing",
+  "tags": [
+   "Energy attachment timing",
+   "Supporter/Item choice or order",
+   "attack choice",
+   "retreat/promotion"
+  ],
+  "desc": "his [-] ↔ km3 [Attach:1Darkness@0 zone]; his [Attach:1Darkness@2 zone, Attack:Venomous Hit] ↔ km3 [Play:Lucky Ice Pop, Retreat:3, Attack:Overlord's Blade]",
+  "first_div": [
+   "Play",
+   "Attach",
+   "Play:Lucky Ice Pop",
+   "Attach:1Darkness@0 zone",
+   0
+  ],
+  "attack_cmp": "different attack",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Dragonair stack taken from the printed evolution line (the ledger gives none); Glimmora stack taken from the printed evolution line (the ledger gives none); Kingambit: a Rare Candy evolved it, so no Stage 1 is under it. The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261013_020824000-t11",
+  "game": "kw-261013_020824000",
+  "his_turn": 6,
+  "turn_count": 11,
+  "hand": [
+   "Kingambit",
+   "Ilima",
+   "Lucky Ice Pop",
+   "Glimmora"
+  ],
+  "his": [
+   "Play:Lucky Ice Pop",
+   "Play:Ilima",
+   "Place:Regigigas",
+   "Retreat:3"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Lucky Ice Pop": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop",
+   "Play:Lucky Ice Pop"
+  ],
+  "modal_n": 5,
+  "plans": [
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop"
+    ],
+    5
+   ],
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Play:Lucky Ice Pop",
+     "Attach:1Darkness@0 zone",
+     "UseStadium"
+    ],
+    4
+   ],
+   [
+    [
+     "Play:Lucky Ice Pop",
+     "Attach:1Darkness@0 zone",
+     "UseStadium"
+    ],
+    3
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "retreat/promotion",
+   "bench development"
+  ],
+  "desc": "his [Play:Ilima, Place:Regigigas, Retreat:3] ↔ km3 [Play:Lucky Ice Pop, Play:Lucky Ice Pop, Play:Lucky Ice Pop]",
+  "first_div": [
+   "Play",
+   "Play",
+   "Play:Ilima",
+   "Play:Lucky Ice Pop",
+   1
+  ],
+  "attack_cmp": "unknown (a plan is cut before its end)",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Vespiquen ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261013_014423000-t07",
+  "game": "kw-261013_014423000",
+  "his_turn": 4,
+  "turn_count": 7,
+  "hand": [
+   "Glimmora",
+   "Glimmora"
+  ],
+  "his": [
+   "Evolve:Glimmora@2",
+   "Attach:1Darkness@1 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Evolve:Glimmora@2": 12
+  },
+  "same_first": 12,
+  "same_plan": 0,
+  "modal": [
+   "Evolve:Glimmora@2",
+   "Attach:1Darkness@0 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Evolve:Glimmora@2",
+     "Attach:1Darkness@0 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "Energy attachment target",
+  "tags": [
+   "Energy attachment target"
+  ],
+  "desc": "his [Attach:1Darkness@1 zone] ↔ km3 [Attach:1Darkness@0 zone]",
+  "first_div": [
+   "Attach",
+   "Attach",
+   "Attach:1Darkness@1 zone",
+   "Attach:1Darkness@0 zone",
+   1
+  ],
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261013_015659000-t05",
+  "game": "kw-261013_015659000",
+  "his_turn": 3,
+  "turn_count": 5,
+  "hand": [
+   "Pawniard",
+   "Alolan Muk",
+   "Glimmora"
+  ],
+  "his": [
+   "Evolve:Glimmora@2",
+   "Place:Pawniard",
+   "Attach:1Darkness@3 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Place:Pawniard": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Place:Pawniard",
+   "Evolve:Glimmora@2",
+   "Attach:1Darkness@0 zone"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Place:Pawniard",
+     "Evolve:Glimmora@2",
+     "Attach:1Darkness@0 zone"
+    ],
+    12
+   ]
+  ],
+  "cat": "bench development",
+  "tags": [
+   "bench development",
+   "Energy attachment target"
+  ],
+  "desc": "his [-] ↔ km3 [Place:Pawniard]; his [Place:Pawniard, Attach:1Darkness@3 zone] ↔ km3 [Attach:1Darkness@0 zone]",
+  "first_div": [
+   "Evolve",
+   "Place",
+   "Evolve:Glimmora@2",
+   "Place:Pawniard",
+   0
+  ],
+  "attack_cmp": "neither attacks",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Glimmora stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ },
+ {
+  "id": "KW-261012_210041000-t06",
+  "game": "kw-261012_210041000",
+  "his_turn": 3,
+  "turn_count": 6,
+  "hand": [
+   "Ilima",
+   "Kingambit",
+   "Lucky Ice Pop"
+  ],
+  "his": [
+   "Attach:1Darkness@3 zone"
+  ],
+  "comparable": true,
+  "n": 12,
+  "first": {
+   "Play:Ilima": 12
+  },
+  "same_first": 0,
+  "same_plan": 0,
+  "modal": [
+   "Play:Ilima",
+   "ReturnPokemonToHand",
+   "Promote:0@3",
+   "Place:Regigigas",
+   "Attach:1Darkness@0 zone",
+   "Attack:Slash"
+  ],
+  "modal_n": 12,
+  "plans": [
+   [
+    [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas",
+     "Attach:1Darkness@0 zone",
+     "Attack:Slash"
+    ],
+    12
+   ]
+  ],
+  "cat": "Supporter/Item choice or order",
+  "tags": [
+   "Supporter/Item choice or order",
+   "attack vs another action",
+   "retreat/promotion",
+   "Energy attachment target",
+   "bench development"
+  ],
+  "desc": "his [Attach:1Darkness@3 zone] ↔ km3 [Play:Ilima, ReturnPokemonToHand, Promote:0@3, Place:Regigigas, Attach:1Darkness@0 zone, Attack:Slash]",
+  "first_div": [
+   "Attach",
+   "Play",
+   "Attach:1Darkness@3 zone",
+   "Play:Ilima",
+   0
+  ],
+  "attack_cmp": "km3 attacks, he does not",
+  "approximate_reason": "opponent's list unknown",
+  "notes": "Alolan Muk stack taken from the printed evolution line (the ledger gives none); Mega Lucario ex stack taken from the printed evolution line (the ledger gives none). The opponent's list is unknown (his hidden cards are filled from the pilot's own list); his discard is what the ledger names (Pokémon that left the board, Items and Supporters played, Energy paid or discarded), so cards the ledger does not show are missing from it.",
+  "problems": []
+ }
+]

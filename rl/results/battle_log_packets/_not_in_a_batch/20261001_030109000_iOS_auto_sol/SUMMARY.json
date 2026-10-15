@@ -1,0 +1,100 @@
+{
+  "video_basename": "20261001_030109000_iOS.MP4",
+  "reviewer": "sol_auto_evening_030109000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "status": "full_battle_review_complete",
+  "independently_accepted": true,
+  "review_scope": "Complete single battle, loading/setup, turns 1-8, terminal populated result",
+  "mode": "autopilot_vs_computer",
+  "auto_observed": true,
+  "auto_disabled_observed": false,
+  "ladder_eligible": false,
+  "owner": "Dacz8976",
+  "owner_went_second": true,
+  "outcome": "victory",
+  "opponent_challenge": "Mega Scizor ex & Gholdengo ex Deck (Deluxe Pack: Mega)",
+  "owner_visible_core": [
+    "Victini",
+    "Pansear",
+    "Charmander x2",
+    "Ignition Charmeleon x2",
+    "Mega Charizard Y ex"
+  ],
+  "opponent_visible_core": [
+    "Honedge",
+    "Scyther",
+    "Mega Scizor ex",
+    "Gimmighoul"
+  ],
+  "last_turn": 8,
+  "displayed_owner_points": 3,
+  "displayed_opponent_points": 0,
+  "owner_point_awards": [
+    1,
+    3
+  ],
+  "owner_total_points_awarded": 4,
+  "opponent_total_points_awarded": 0,
+  "displayed_damage_done": 370,
+  "attack_damage": [
+    60,
+    40,
+    270
+  ],
+  "final_owner_active": "Mega Charizard Y ex",
+  "final_owner_active_hp": 170,
+  "full_battle_coverage": true,
+  "remaining_coverage_gaps": [],
+  "lead_anchor_seconds": {
+    "opening": [
+      18,
+      25
+    ],
+    "ordinary_turn": [
+      65,
+      77,
+      79
+    ],
+    "opponent_decision": [
+      112,
+      116
+    ],
+    "decisive_sequence": [
+      129.5,
+      131,
+      134,
+      140
+    ],
+    "terminal_result": [
+      148.55
+    ]
+  },
+  "key_findings": [
+    "Double Ignition feeds Victini; normal attachments develop Mega Charizard.",
+    "Victini retreat payment supplies Flame Patch and fourth Fire enables terminal Crimson Dive.",
+    "Opponent turn7 spends new Metal on Gimmighoul retreat and exposes Scizor with only two Energy, short of attack cost3.",
+    "Honedge1-point KO plus Mega Scizor3-point KO award4, while results circles display3.",
+    "Native attack sums60+40+270 reconcile final damage370 with overkill."
+  ],
+  "evidence_paths": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "UNCERTAINTIES.json",
+    "overview",
+    "native"
+  ],
+  "source_binding": "SOURCE.json",
+  "source_identity_reverification": "Used immutable coordinator-verified intake identity; no source modification or new hash claim",
+  "created_utc": "2026-10-01T04:27:51.762780+00:00",
+  "worker_actions_at_submission": {},
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261001_030109000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20261001_030109000_iOS.MP4.json",
+  "archive_completion_event_id": "221887a5-388b-4348-865d-2da3c12fefc6",
+  "global_registration_complete": true
+}

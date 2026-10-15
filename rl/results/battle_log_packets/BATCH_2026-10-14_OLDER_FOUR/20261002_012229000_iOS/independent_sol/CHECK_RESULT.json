@@ -1,0 +1,412 @@
+{
+  "decision": "accepted",
+  "accepted": true,
+  "independent_acceptance": true,
+  "reviewer": "/root/check_older_012229",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_utc": "2026-10-14T15:06:05.745474+00:00",
+  "source": {
+    "filename": "20261002_012229000_iOS.MP4",
+    "sha256": "d767c42f6e9a4e8677ae45020e7fccc2a0e9954009faf699abada5ef6c4d49c5",
+    "bytes": 570862799,
+    "duration_seconds": 309.766667,
+    "actual_sha256_rechecked": true
+  },
+  "scope": "Separate bounded independent source check of complete frozen computer-battle packet; not a second full pass",
+  "initial_input_hashes": {
+    "SOURCE.json": "8356a54ff34a2fbeb93d5a8a48d09f4aa3f6141852f4ac3bd699a0623ce3abb4",
+    "ASSIGNMENT.json": "ff780d668f2537ff5b8d899d36a054b14f8e3669625bc2d5781176af5aca5aa3",
+    "REVIEW.md": "fb532f893821247c8610b82bcff1844fa8fc01189f1fa9e23bc52cd5c8cc301d",
+    "COVERAGE.md": "59492c3bcfeeedec8d2ed2424feadd6fcad6369a01119d8011cf9120f32adb47",
+    "SUMMARY.json": "147b97f8aaa9b9bbcd0c899dc570ab9f5757ecfd3df43cac9f81d440f720f3e2",
+    "UNCERTAINTIES.json": "92f75c5d20cb535ed9fb35bdf57ba7f43cdd804ab83da519884854ed5ecb5235",
+    "EVENTS.json": "c09c1ee9d9d11fd990b009c24d0c60697085a11bbc0fd24871f8460f4f79929d",
+    "REVIEW_PACKET_HASHES.json": "68eb07fef9fe789fa3c1535c1ed425bee6f964867855478f51f462f93ff3e70f"
+  },
+  "final_input_hashes": {
+    "SOURCE.json": "8356a54ff34a2fbeb93d5a8a48d09f4aa3f6141852f4ac3bd699a0623ce3abb4",
+    "ASSIGNMENT.json": "ff780d668f2537ff5b8d899d36a054b14f8e3669625bc2d5781176af5aca5aa3",
+    "REVIEW.md": "fb532f893821247c8610b82bcff1844fa8fc01189f1fa9e23bc52cd5c8cc301d",
+    "COVERAGE.md": "59492c3bcfeeedec8d2ed2424feadd6fcad6369a01119d8011cf9120f32adb47",
+    "SUMMARY.json": "147b97f8aaa9b9bbcd0c899dc570ab9f5757ecfd3df43cac9f81d440f720f3e2",
+    "UNCERTAINTIES.json": "92f75c5d20cb535ed9fb35bdf57ba7f43cdd804ab83da519884854ed5ecb5235",
+    "EVENTS.json": "c09c1ee9d9d11fd990b009c24d0c60697085a11bbc0fd24871f8460f4f79929d",
+    "REVIEW_PACKET_HASHES.json": "68eb07fef9fe789fa3c1535c1ed425bee6f964867855478f51f462f93ff3e70f"
+  },
+  "frozen_inputs_unchanged": true,
+  "manifest_verification": {
+    "file_count": 363,
+    "mismatches": [],
+    "checked_twice": true,
+    "sha256": "68eb07fef9fe789fa3c1535c1ed425bee6f964867855478f51f462f93ff3e70f"
+  },
+  "recorded_coverage": {
+    "phases": 14,
+    "turns": 12,
+    "recorded_start": 0,
+    "recorded_end": 309.766667,
+    "all_turn_banners_checked": true,
+    "turn_start_seconds": [
+      15,
+      41,
+      59,
+      77,
+      87,
+      138,
+      156,
+      187,
+      215,
+      249,
+      269,
+      288
+    ]
+  },
+  "reviewed_windows": [
+    {
+      "start": 0,
+      "end": 41,
+      "method": "selected retained setup/search frames"
+    },
+    {
+      "start": 59,
+      "end": 87,
+      "method": "selected ordinary Turn3/4 native frames plus fresh74.50"
+    },
+    {
+      "start": 117,
+      "end": 124,
+      "method": "selected Shearing/card frames"
+    },
+    {
+      "start": 150,
+      "end": 174,
+      "method": "selected burn recovery and Energy/attachment frames"
+    },
+    {
+      "start": 194,
+      "end": 211,
+      "method": "retained burn KO sequence plus three fresh native seeks"
+    },
+    {
+      "start": 215,
+      "end": 249,
+      "method": "selected ordinary Turn9 action/HP/Energy frames"
+    },
+    {
+      "start": 255,
+      "end": 269,
+      "method": "selected attack, point and turn boundary frames"
+    },
+    {
+      "start": 269,
+      "end": 309.766667,
+      "method": "selected final Greninja/end sequence plus fresh295/309"
+    }
+  ],
+  "checked_assertions": [
+    {
+      "assertion": "Complete recorded scope and turn coverage",
+      "result": "pass",
+      "finding": "EVENTS has contiguous Setup, Turns 1-12, Result over 0-309.766667 s. All 12 consecutive turn banners were separately inspected against source-bound retained frames. Setup and terminal page bound the same battle; sampled board/hand states reconcile the account without a skipped material phase.",
+      "evidence_group": "transitions"
+    },
+    {
+      "assertion": "Setup, classification and visible preset",
+      "result": "pass",
+      "finding": "AI label at 2 s. Initial five cards at 8 s are Rainbow Cave, Gible, Poke Ball, Professor's Research, Gabite. Gible/Torchic are starting Actives. Auto toggle left/grey in checked board frames. Defeat page names Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega); Typhlosion remains label-only.",
+      "evidence_group": "setup_points"
+    },
+    {
+      "assertion": "Ordinary Turn 3",
+      "result": "pass",
+      "finding": "Lucky Ice Pop drawn; healing raises Gible 40 to 60; Heads returns Pop. Gabite evolution raises HP to 80, then Water attaches. Linear Attack needs Water plus Fighting; end occurs with just Water and no attack. Fresh 74.50 s confirms evolution before attachment. No retreat or switch.",
+      "evidence_group": "ordinary3_4"
+    },
+    {
+      "assertion": "Ordinary Turn 4",
+      "result": "pass",
+      "finding": "Victini benches; Victory Star notice is visible. Active Torchic has existing Fire; benched Torchic receives Fire. Peck20 lowers Gabite80 to60. Both Froakie remain60; no KO, point, retreat or reroll.",
+      "evidence_group": "ordinary3_4"
+    },
+    {
+      "assertion": "Ordinary Turn 9",
+      "result": "pass",
+      "finding": "Research draw/use precedes Greninja and Rare Candy reveal. Earlier shiny Candy evolves Active Froakie to Greninja120; prior Fighting persists, then Water attaches. Shuriken20 makes Mega210 to190; Slash80 makes190 to110. Bench Victini remains70. No retreat or switch. Exact hidden search/draw contents are not inferred.",
+      "evidence_group": "ordinary9"
+    },
+    {
+      "assertion": "Relevant intermediate hand and Energy ordering",
+      "result": "pass",
+      "finding": "Reckless Shearing discards hand Rainbow Cave, draws shiny Candy. Turn6 burn lowers Garchomp140 to120 and Heads clears Burn. Turn7 current Energy is Fighting, next preview Water; Fighting is attached to Froakie. Later Greninja retains Fighting before Water. No Water attachment is invented for Turn7.",
+      "evidence_group": "additional_state"
+    },
+    {
+      "assertion": "Garchomp burn knockout",
+      "result": "pass",
+      "finding": "140 to20 after Mega Burning120. One Fire remains after discard. Fresh201.00 shows Burn20 animation at20 HP; Heads205 and recovery notice206 are followed by visible0 HP and removal207. Heads does not save the KO. Opponent first point211.",
+      "evidence_group": "burn"
+    },
+    {
+      "assertion": "All point progression",
+      "result": "pass",
+      "finding": "Torchic/Cyndaquil yield owner points1/2; Garchomp yields opponent1; first Greninja attack KO yields2; final Greninja attack KO yields3. Visible award and board checkpoints reconcile0-0,1-0,2-0,2-1,2-2,2-3.",
+      "evidence_group": "setup_points"
+    },
+    {
+      "assertion": "Final Greninja sequence",
+      "result": "pass",
+      "finding": "Second Candy evolves final Froakie to Greninja120. Only Water is attached; Shuriken makes Mega110 to90. Two-Energy Mist Slash is unavailable and no attack occurs before End Turn. Opponent Fire restores two; Mega Burning120 makes Greninja0 before Burn notice; third point301 and Defeat follow. Fresh295/309 confirm knockout and named result.",
+      "evidence_group": "ending"
+    }
+  ],
+  "retained_evidence_groups": {
+    "transitions": [
+      "setup/t0015.00.jpg",
+      "dense/t0041.00.jpg",
+      "setup/t0059.00.jpg",
+      "dense/t0077.00.jpg",
+      "dense/t0087.00.jpg",
+      "dense/t0138.00.jpg",
+      "native/t0156.00.jpg",
+      "dense/t0187.00.jpg",
+      "dense/t0215.00.jpg",
+      "dense/t0249.00.jpg",
+      "dense/t0269.00.jpg",
+      "native/t0288.00.jpg"
+    ],
+    "setup_points": [
+      "setup/t0002.00.jpg",
+      "native/t0008.00.jpg",
+      "setup/t0013.00.jpg",
+      "dense/t0022.00.jpg",
+      "native/t0032.00.jpg",
+      "dense/t0134.00.jpg",
+      "dense/t0185.00.jpg",
+      "dense/t0211.00.jpg",
+      "dense/t0262.00.jpg",
+      "dense/t0301.00.jpg",
+      "native/t0304.00.jpg",
+      "dense/t0309.00.jpg"
+    ],
+    "ordinary3_4": [
+      "dense/t0061.00.jpg",
+      "dense/t0066.00.jpg",
+      "dense/t0070.00.jpg",
+      "native/t0072.00.jpg",
+      "dense/t0074.00.jpg",
+      "native/t0076.00.jpg",
+      "native/t0080.00.jpg",
+      "dense/t0081.00.jpg",
+      "dense/t0083.00.jpg",
+      "native/t0084.00.jpg",
+      "dense/t0086.00.jpg",
+      "dense/t0087.00.jpg"
+    ],
+    "burn": [
+      "dense/t0194.00.jpg",
+      "dense/t0199.00.jpg",
+      "native/t0200.00.jpg",
+      "dense/t0202.00.jpg",
+      "dense/t0205.00.jpg",
+      "dense/t0206.00.jpg",
+      "dense/t0207.00.jpg",
+      "dense/t0211.00.jpg"
+    ],
+    "ordinary9": [
+      "dense/t0217.00.jpg",
+      "dense/t0222.00.jpg",
+      "dense/t0223.00.jpg",
+      "dense/t0229.00.jpg",
+      "dense/t0233.00.jpg",
+      "dense/t0235.00.jpg",
+      "native/t0236.00.jpg",
+      "dense/t0242.00.jpg",
+      "native/t0248.00.jpg"
+    ],
+    "ending": [
+      "dense/t0271.00.jpg",
+      "dense/t0275.00.jpg",
+      "dense/t0277.00.jpg",
+      "dense/t0279.00.jpg",
+      "dense/t0281.00.jpg",
+      "dense/t0286.00.jpg",
+      "dense/t0287.00.jpg",
+      "dense/t0291.00.jpg",
+      "dense/t0294.00.jpg",
+      "dense/t0295.00.jpg",
+      "dense/t0298.00.jpg",
+      "dense/t0301.00.jpg"
+    ],
+    "additional_state": [
+      "dense/t0117.00.jpg",
+      "dense/t0122.00.jpg",
+      "native/t0124.00.jpg",
+      "dense/t0150.00.jpg",
+      "dense/t0155.00.jpg",
+      "dense/t0173.00.jpg",
+      "dense/t0174.00.jpg",
+      "dense/t0255.00.jpg"
+    ]
+  },
+  "retained_checked_evidence_hashes": {
+    "dense/t0022.00.jpg": "90212781bc7be188a9f998fa738fdf7bec833f101a11c55dfd5f695fa42b4afa",
+    "dense/t0041.00.jpg": "df72a3150dd689e6759eab9aaee64f48014661175339aac897e1901874946bd7",
+    "dense/t0061.00.jpg": "a59a7682f0891a05432df486e97c089cdcfc6a00ae74fc7cc127848fc73c9b8e",
+    "dense/t0066.00.jpg": "8d13f5240264ede366078d14b73910795e56d74c7eea8ea69b41101986b852dd",
+    "dense/t0070.00.jpg": "68666a3620aba4fd3f159756f5e3e206bb7f3ead84d9265a54a61777df8cbcfc",
+    "dense/t0074.00.jpg": "5756d83d7e406bd2b540f949ed88acd776f898a7e0090ec767c26a2fd88653b9",
+    "dense/t0077.00.jpg": "29221ee52f679338381fa66ae751044e6f695bc292db0739780344f15daa4cfd",
+    "dense/t0081.00.jpg": "6dd26811cfb34102e961137131692ca2cd3ebc12dbbaf1fb198a437962eb4f27",
+    "dense/t0083.00.jpg": "96b07806320d5546232d4d37cf06a4bbe1f6001f497303b4d453c6e7a0af6036",
+    "dense/t0086.00.jpg": "74af276597df5081764601460b0464c631337cfaa74f5544c1819233238f2380",
+    "dense/t0087.00.jpg": "712d40d542439a2bb04a03b8f472fa9c66957029f6dd071562d72221fb9858af",
+    "dense/t0117.00.jpg": "2e517276cddca70b53d200732f04061cd55387b096e3e2c8c9c047681b2db56c",
+    "dense/t0122.00.jpg": "6407a926a1af8f49c9c12b80d9437c713e33e2c2c607d2a46f4eff0afd9856f6",
+    "dense/t0134.00.jpg": "06354e00150693edd1a591bb1c2fd2017f72c3f8fcc20e51df615c49c693ff96",
+    "dense/t0138.00.jpg": "ce119615e14486c306ee92f48dd294758e758af926babf33e3284ca058a5e6b7",
+    "dense/t0150.00.jpg": "c617567d2b0b1abe40af97edcacdc291b1de4939257f33d27d8ef2a4ecda3790",
+    "dense/t0155.00.jpg": "a4ec48579393ae965ef738d9b440dc4e78275155574851c99e394390884c82f2",
+    "dense/t0173.00.jpg": "d787a02a7f566cbc8b6ab70722dedc62f711f181851ced13d8cca834da2b058b",
+    "dense/t0174.00.jpg": "ec25e2ef4918c9dfb8c9dc3d226bb1cc6bac21987d8d44d858416b3061dc9438",
+    "dense/t0185.00.jpg": "f1179f6b6c92c542882f30d21d07ebaca607f2cabcef526235ed64a81c0f70b0",
+    "dense/t0187.00.jpg": "a5e5484c34a64d55ec419d924e0561e098f534214ba7466ae0dba3b2a16c522d",
+    "dense/t0194.00.jpg": "a4b5a50ae507ece54d0935c93d8c4f6faaaf536ee12deb884bc5a0ac0db1588d",
+    "dense/t0199.00.jpg": "f09d7b85c8d99de6f0aca32db8ed7f3cd811f28f1aca6c3068d672ab706d58b5",
+    "dense/t0202.00.jpg": "d5324330fceaf1d965aeb5259e991b12165573d4e78e37fdcff10c66a659219c",
+    "dense/t0205.00.jpg": "0194c2923282f1b5b092ab0d789e8e7e65a78d71fa7e7c66ece552ad25869773",
+    "dense/t0206.00.jpg": "a1908e23f3ca3fcc45daaee4913bd6af5db7d539b12a9a20e76bd374d910cdd3",
+    "dense/t0207.00.jpg": "231c7921414ec615ebfbb1579f72f9a34237c58363aa8ab992fff376e032e359",
+    "dense/t0211.00.jpg": "b6148ae8b96b4b19aa6dd9034d53cdb4faa4456d9aea3ff613eaea78651b39d1",
+    "dense/t0215.00.jpg": "3cae75eb435faf8a2df89157dc9cb60971078865b9f0e124de9f0628979030bc",
+    "dense/t0217.00.jpg": "efe00495e40066e8e88e46bff8b309eaeb82208c9cabf4ecf5d509514e980b90",
+    "dense/t0222.00.jpg": "43ea68b01b47296a58e6c6371fed6d82129435202bf04f546f9a980084502dd8",
+    "dense/t0223.00.jpg": "1e1f0d149f2497184ff6e280b47069c9ac007a8a047759355d40cd0999c11ff6",
+    "dense/t0229.00.jpg": "babb193170c8cd7b485b69be5af737cf363a1e6b4152d2a2d72e3a4a7d008b54",
+    "dense/t0233.00.jpg": "59d4301bf2a9966d65e754feaff8ba6e0840d70116b86620efa1916c62ee3c58",
+    "dense/t0235.00.jpg": "66304370d22793080c4c819262ff504912b8d8911a68655e0ae02e4f242c57ed",
+    "dense/t0242.00.jpg": "9d28c7d656eaf62921c56e84bb28174ec80a9354704e1b4193be6cbe06446525",
+    "dense/t0249.00.jpg": "5f7eba8fbf08dec4196b8bbd5f2363a0a510f25db61e8edd486c442c2c1ec9a2",
+    "dense/t0255.00.jpg": "564f3d48baa6d32f7161b947f6efd58f867a854981d16e412d9ac3c0130e349a",
+    "dense/t0262.00.jpg": "4bf12462e3c13874a165183612f639e1f506e78f64d78b8044e2dc52df6f6ef2",
+    "dense/t0269.00.jpg": "da6857a93c21fbd3ce2c30ea5d635c32f33edee3224828a7c1d004edb5833945",
+    "dense/t0271.00.jpg": "401ac9d11977460bef20090b517edaed0d39379e90446b75c247ac9adbd17ee4",
+    "dense/t0275.00.jpg": "5bebae452078817fc4baf304e95d6bfcb7be23a71912c11fa4e9db9d62c5101b",
+    "dense/t0277.00.jpg": "3f646dc23783b7a89bbe102b79b624dd9b19a40d124bf1a26e4e599aafee00ad",
+    "dense/t0279.00.jpg": "441be6d8fed9cdd9b076614bc6bda3573f9e5ec9abdd01a43379d3d5ff15dbb8",
+    "dense/t0281.00.jpg": "10252bd27e669200fd76ba2ea7f578554e08875e132e5d00bc7ac9992467cb81",
+    "dense/t0286.00.jpg": "49c3db95579b9636880d69db3d650d2852d7cc628698b3b012f332947d17bf25",
+    "dense/t0287.00.jpg": "5f5a3b03337aa259623feae2d4762cbd113abda84ee9d4f3b0f2ba3f91ecdc75",
+    "dense/t0291.00.jpg": "2e8cfafeca50e1cb1dc0c864df951af940fb69beb7816cae9819a9cca9720830",
+    "dense/t0294.00.jpg": "e54608bd9a6246e7704afd2904998ef4a95a60c5aad6e9b4cd3b3ba791ede39f",
+    "dense/t0295.00.jpg": "abaf83f50d64f9f0868dc06fb90a8396a56e516c9c95a93618ef8be4655b29c3",
+    "dense/t0298.00.jpg": "ff7fc61d59fdd97927f665be698a801204a6fd6e64b31641bb35f0c3346eaf23",
+    "dense/t0301.00.jpg": "4d606c4dd775ac5a7302b28633c17e53779a5e1c2d4b0e60c331c9f2d0e80cb3",
+    "dense/t0309.00.jpg": "93dbf2c491bda18843c1de6584b1e6616dcc5d329f7884ce565bdac0f2dcb9d9",
+    "native/t0008.00.jpg": "1d413884fc617909323960cb8e8b045f951b13928d6750b87e2d865cae376fd6",
+    "native/t0032.00.jpg": "25dee9cdc911d1792cb716bc1f71bc8460ddcf3077b66ad055bc8c1d348684e9",
+    "native/t0072.00.jpg": "df27806a6a5486ad09373d85e746d49285d19754fba34c52287f0d2631e14f33",
+    "native/t0076.00.jpg": "60071509a251a3492bf6aefa1c41ea2eaa5b690e779359ac5c54e621527a2c19",
+    "native/t0080.00.jpg": "caab28af2fbf126971934438d2d5da36f8421c1a1d2b722a6768837779908ff4",
+    "native/t0084.00.jpg": "604b9cd209dc8ed14b12e9111714ca08e4cff80b5484c5ea594433f9ee0c4e79",
+    "native/t0124.00.jpg": "ada8e68be4a771dac7e0ae5cc539c7efdb91e1728890dbf504aa0f7f0324a744",
+    "native/t0156.00.jpg": "56ae4b836872166c7bb3c038dc1fb11be6d6518eeb743d7fce7ed2a5087b7577",
+    "native/t0200.00.jpg": "42e24728d6f4c330dec8231198299847901cb496cecb7a39bf1f4cce4600bb09",
+    "native/t0236.00.jpg": "0fc32d176c351f70a0938f8cdcf0a2a613f243c606fa53efe86a181773ec6af4",
+    "native/t0248.00.jpg": "18499eac43157a4ad1163c6b528ee6a7d216948e867cfcebd84429a39fbd385b",
+    "native/t0288.00.jpg": "e3abf97a93b61d08827e0414d46c4365f956ad9f8ecd4e09ea5111469f7bac4b",
+    "native/t0304.00.jpg": "6021546739b51560b410119419dad37c1c2374c1fe85d06badd8516a384ec667",
+    "setup/t0002.00.jpg": "386e2246af3640289a1885f2626a03e14b82d6296f619a0a33db87c50f56d2e6",
+    "setup/t0013.00.jpg": "0d6bff7108999fd8320382644c49a2feb67e81a55e85aeaba11666f64c4e2d54",
+    "setup/t0015.00.jpg": "ccf3868d4fd6afa12b3efff74cbdf19373fdd590c927a2764a5c58a466056f9a",
+    "setup/t0059.00.jpg": "49bbec677100cb5960d752477099c56f13a487f767ed473f3f6b3144e6b8e27a"
+  },
+  "fresh_source_seeks": [
+    {
+      "seconds": 199.25,
+      "path": "independent_sol/evidence/fresh_199.25.jpg",
+      "sha256": "d7247dbe91c27123e54186120c4917b8300a1dcf57f66e99a1cf8696476ac105",
+      "bytes": 510576,
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "source_sha256": "d767c42f6e9a4e8677ae45020e7fccc2a0e9954009faf699abada5ef6c4d49c5",
+      "ffmpeg_threads": 1
+    },
+    {
+      "seconds": 201.0,
+      "path": "independent_sol/evidence/fresh_201.00.jpg",
+      "sha256": "6c8f1ac43b01a5a5bd0472954dfa1f328a4b08b1e4be530efdf080e29d73597f",
+      "bytes": 478826,
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "source_sha256": "d767c42f6e9a4e8677ae45020e7fccc2a0e9954009faf699abada5ef6c4d49c5",
+      "ffmpeg_threads": 1
+    },
+    {
+      "seconds": 206.0,
+      "path": "independent_sol/evidence/fresh_206.00.jpg",
+      "sha256": "a1908e23f3ca3fcc45daaee4913bd6af5db7d539b12a9a20e76bd374d910cdd3",
+      "bytes": 481364,
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "source_sha256": "d767c42f6e9a4e8677ae45020e7fccc2a0e9954009faf699abada5ef6c4d49c5",
+      "ffmpeg_threads": 1
+    },
+    {
+      "seconds": 295.0,
+      "path": "independent_sol/evidence/fresh_295.00.jpg",
+      "sha256": "abaf83f50d64f9f0868dc06fb90a8396a56e516c9c95a93618ef8be4655b29c3",
+      "bytes": 423754,
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "source_sha256": "d767c42f6e9a4e8677ae45020e7fccc2a0e9954009faf699abada5ef6c4d49c5",
+      "ffmpeg_threads": 1
+    },
+    {
+      "seconds": 309.0,
+      "path": "independent_sol/evidence/fresh_309.00.jpg",
+      "sha256": "93dbf2c491bda18843c1de6584b1e6616dcc5d329f7884ce565bdac0f2dcb9d9",
+      "bytes": 80044,
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "source_sha256": "d767c42f6e9a4e8677ae45020e7fccc2a0e9954009faf699abada5ef6c4d49c5",
+      "ffmpeg_threads": 1
+    },
+    {
+      "seconds": 74.5,
+      "path": "independent_sol/evidence/fresh_74.50.jpg",
+      "sha256": "fd427c94657d01b4513e32024239d770cb2f062090940db3659ee55c1dbf1ef3",
+      "bytes": 443799,
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "source_sha256": "d767c42f6e9a4e8677ae45020e7fccc2a0e9954009faf699abada5ef6c4d49c5",
+      "ffmpeg_threads": 1
+    }
+  ],
+  "check_notes_sha256": "d6c30c2cce8bcd4f4536eba200ab465a0e8d413027537bca5d7393d9372798b5",
+  "missing_material_phases": [],
+  "consequential_contradictions": [],
+  "required_repairs": [],
+  "limits": [
+    "Bounded subset checking; no second full playback/image pass",
+    "Hidden opponent hands and full lists remain unknown",
+    "Controller identity and exact collection printings unestablished",
+    "Creation-derived date is not explicit on-screen date",
+    "Auto OFF observation limited to inspected frames"
+  ],
+  "primary_files_edited": false,
+  "shared_or_external_writes": false,
+  "archive_performed": false
+}

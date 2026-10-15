@@ -1,0 +1,73 @@
+{
+  "video_basename": "20261002_012229000_iOS.MP4",
+  "sha256": "d767c42f6e9a4e8677ae45020e7fccc2a0e9954009faf699abada5ef6c4d49c5",
+  "bytes": 570862799,
+  "duration_seconds": 309.766667,
+  "reviewer": "/root/older_012229",
+  "review_date": "2026-10-14",
+  "classification": "computer",
+  "auto_option_visible": true,
+  "auto_enabled_observed": false,
+  "auto_state_observation": "OFF at observed board frames; no enabled transition observed",
+  "owner_control": "Visible interactive choices; identity of human or external controller cannot be established",
+  "external_log_eligibility": {
+    "Ladder_Log": false,
+    "Pause_Games": false
+  },
+  "game_count": 1,
+  "battle_complete": true,
+  "available_source_review_complete": true,
+  "independent_acceptance": "pending",
+  "apparent_recording_cuts": [],
+  "opponent": "Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega)",
+  "owner": "Dacz8976",
+  "outcome": "loss",
+  "outcome_evidence": [
+    {
+      "seconds": 295,
+      "fact": "Final Greninja reaches 0 HP",
+      "frame": "dense/t0295.00.jpg"
+    },
+    {
+      "seconds": 301,
+      "fact": "Opponent third point",
+      "frame": "dense/t0301.00.jpg"
+    },
+    {
+      "seconds": 304,
+      "fact": "Defeat",
+      "frame": "native/t0304.00.jpg"
+    },
+    {
+      "seconds": 309,
+      "fact": "Named result page",
+      "frame": "dense/t0309.00.jpg"
+    }
+  ],
+  "final_turn": 12,
+  "final_points": {
+    "owner": 2,
+    "opponent": 3
+  },
+  "owner_visible_core": [
+    "Gible",
+    "Gabite",
+    "Garchomp",
+    "Froakie",
+    "Greninja"
+  ],
+  "opponent_visible_core": [
+    "Torchic",
+    "Combusken",
+    "Mega Blaziken ex",
+    "Cyndaquil",
+    "Victini"
+  ],
+  "source_creation_utc": "2026-10-02T01:22:29.000000Z",
+  "creation_derived_match_date_chicago": "2026-10-01",
+  "creation_derived_start_chicago": "2026-10-01T20:22:29-05:00",
+  "match_date_provenance": "source creation metadata; screen clock consistent, no explicit match date shown",
+  "scope": "Ordinary full source review, no future Pause Games supplement",
+  "source_relationships": [],
+  "review_ready_for_independent_check": true
+}

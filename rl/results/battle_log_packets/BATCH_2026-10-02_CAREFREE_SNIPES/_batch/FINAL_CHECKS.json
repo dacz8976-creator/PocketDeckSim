@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-10-02T17:40:51.831040+00:00",
+  "baseline_rows_preserved": 127,
+  "indexed_videos": 129,
+  "accepted_full_reviews": 111,
+  "completed_rule_tests": 10,
+  "archived_videos": 121,
+  "pending_indexed_videos": 8,
+  "recordings_reviewed": 2,
+  "battles": 1,
+  "all_coverage_lead_event_hash_location_checks_passed": true,
+  "raw_first_passes_preserved": true,
+  "pause_games_entries": 0,
+  "ladder_log_entries": 0,
+  "simulator_changes": false,
+  "repair_pinning": false,
+  "fixture_ingestion": false,
+  "training": false,
+  "storage": {
+    "checked_at": "2026-10-02T17:40:51.831040+00:00",
+    "videos": 2,
+    "online_only": 0,
+    "allocated_bytes": 805688473,
+    "entries": [
+      {
+        "video": "20261002_161001000_iOS.MP4",
+        "logical_bytes": 387811231,
+        "allocated_bytes": 387811231,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      {
+        "video": "20261002_161342000_iOS.MP4",
+        "logical_bytes": 417877242,
+        "allocated_bytes": 417877242,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    ],
+    "files_deleted": 0,
+    "originals_modified": false,
+    "verification": "Metadata only; archived originals were not reopened or rehashed"
+  }
+}

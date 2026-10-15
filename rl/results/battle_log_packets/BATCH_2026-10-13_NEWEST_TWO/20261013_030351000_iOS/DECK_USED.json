@@ -1,0 +1,338 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261013_030351000_iOS_game_1",
+  "sources": [
+    {
+      "video_basename": "20261013_030351000_iOS.MP4",
+      "sha256": "d0a221cd236c620f467bbf34ad8078fd59c72323a7dca71a4af344f0489c6c7f",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "proposed_deck_name": "Haxorus / Dragonair / Druddigon",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-13T03:40:01.324Z",
+  "log_list_version": "Initial 26-deck live catalog; this filmed QR absent",
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": "../LIVE_DECK_CATALOG.json",
+  "game_version_binding_basis": "Filmed QR 0 → direct matchmaking at 4; no deck edit shown. Every filmed owner semantic card agrees with decoded 20.",
+  "conflicts_with_filmed_cards": [],
+  "exact_list_status": "live_version_initially_absent",
+  "filmed_qr_exact20": {
+    "payload": "C5iWnpiWnpiYYJiYYJiapJiXrJiWqJiWqJiaXpibYpictgkACoIAQMQAQMQAPp4APp4AUSIAUSIAUSwAUSwCBgg=",
+    "card_slot_count": 20,
+    "cards_in_qr_order": [
+      {
+        "name": "Poké Ball",
+        "variant": "semantic Trainer entity",
+        "entity_id": 30,
+        "slot": 1,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Poké Ball",
+        "variant": "semantic Trainer entity",
+        "entity_id": 30,
+        "slot": 2,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Rare Candy",
+        "variant": "semantic Trainer entity",
+        "entity_id": 480,
+        "slot": 3,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Rare Candy",
+        "variant": "semantic Trainer entity",
+        "entity_id": 480,
+        "slot": 4,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Lucky Ice Pop",
+        "variant": "semantic Trainer entity",
+        "entity_id": 1060,
+        "slot": 5,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Rocky Helmet",
+        "variant": "semantic Trainer entity",
+        "entity_id": 300,
+        "slot": 6,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Professor’s Research",
+        "variant": "semantic Trainer entity",
+        "entity_id": 40,
+        "slot": 7,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Professor’s Research",
+        "variant": "semantic Trainer entity",
+        "entity_id": 40,
+        "slot": 8,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Copycat",
+        "variant": "semantic Trainer entity",
+        "entity_id": 990,
+        "slot": 9,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Iris",
+        "variant": "semantic Trainer entity",
+        "entity_id": 1250,
+        "slot": 10,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Rainbow Cave",
+        "variant": "semantic Trainer entity",
+        "entity_id": 1590,
+        "slot": 11,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Druddigon",
+        "variant": "Rough Skin / Dragon Claw 90; printed 100 HP",
+        "entity_id": 2690,
+        "slot": 12,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Axew",
+        "variant": "Sharp Fang 40; printed 70 HP",
+        "entity_id": 16580,
+        "slot": 13,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Axew",
+        "variant": "Sharp Fang 40; printed 70 HP",
+        "entity_id": 16580,
+        "slot": 14,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Haxorus",
+        "variant": "Frenzied Blade 50+; printed 150 HP",
+        "entity_id": 16030,
+        "slot": 15,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Haxorus",
+        "variant": "Frenzied Blade 50+; printed 150 HP",
+        "entity_id": 16030,
+        "slot": 16,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Dratini",
+        "variant": "Slam 20 x; printed 60 HP",
+        "entity_id": 20770,
+        "slot": 17,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Dratini",
+        "variant": "Slam 20 x; printed 60 HP",
+        "entity_id": 20770,
+        "slot": 18,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Dragonair",
+        "variant": "Dragon’s Blessing / Draconic Whip 40; printed 80 HP",
+        "entity_id": 20780,
+        "slot": 19,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "name": "Dragonair",
+        "variant": "Dragon’s Blessing / Draconic Whip 40; printed 80 HP",
+        "entity_id": 20780,
+        "slot": 20,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      }
+    ],
+    "counts_by_name_and_variant": [
+      {
+        "name": "Poké Ball",
+        "variant": "semantic Trainer entity",
+        "entity_id": 30,
+        "count": 2,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "printing_aliases": [
+          "A2b 111",
+          "P-A 005"
+        ]
+      },
+      {
+        "name": "Rare Candy",
+        "variant": "semantic Trainer entity",
+        "entity_id": 480,
+        "count": 2,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "printing_aliases": [
+          "A3 144",
+          "A4b 314",
+          "A4b 315",
+          "A4b 379"
+        ]
+      },
+      {
+        "name": "Lucky Ice Pop",
+        "variant": "semantic Trainer entity",
+        "entity_id": 1060,
+        "count": 1,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "printing_aliases": [
+          "B2 145"
+        ]
+      },
+      {
+        "name": "Rocky Helmet",
+        "variant": "semantic Trainer entity",
+        "entity_id": 300,
+        "count": 1,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "printing_aliases": [
+          "A2 148",
+          "A4b 322",
+          "A4b 323"
+        ]
+      },
+      {
+        "name": "Professor’s Research",
+        "variant": "semantic Trainer entity",
+        "entity_id": 40,
+        "count": 2,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "printing_aliases": [
+          "A4b 373",
+          "P-A 007"
+        ]
+      },
+      {
+        "name": "Copycat",
+        "variant": "semantic Trainer entity",
+        "entity_id": 990,
+        "count": 1,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "printing_aliases": [
+          "B1 225",
+          "B1 270"
+        ]
+      },
+      {
+        "name": "Iris",
+        "variant": "semantic Trainer entity",
+        "entity_id": 1250,
+        "count": 1,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "printing_aliases": [
+          "B2b 067",
+          "B2b 081"
+        ]
+      },
+      {
+        "name": "Rainbow Cave",
+        "variant": "semantic Trainer entity",
+        "entity_id": 1590,
+        "count": 1,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "printing_aliases": [
+          "B4 155"
+        ]
+      },
+      {
+        "name": "Druddigon",
+        "variant": "Rough Skin / Dragon Claw 90; printed 100 HP",
+        "entity_id": 2690,
+        "count": 1,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "printing_aliases": [
+          "A1a 056"
+        ]
+      },
+      {
+        "name": "Axew",
+        "variant": "Sharp Fang 40; printed 70 HP",
+        "entity_id": 16580,
+        "count": 2,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "printing_aliases": [
+          "B2b 054",
+          "B2b 108"
+        ]
+      },
+      {
+        "name": "Haxorus",
+        "variant": "Frenzied Blade 50+; printed 150 HP",
+        "entity_id": 16030,
+        "count": 2,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "printing_aliases": [
+          "B2b 056",
+          "B2b 110",
+          "P-B 045"
+        ]
+      },
+      {
+        "name": "Dratini",
+        "variant": "Slam 20 x; printed 60 HP",
+        "entity_id": 20770,
+        "count": 2,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "printing_aliases": [
+          "B4 116"
+        ]
+      },
+      {
+        "name": "Dragonair",
+        "variant": "Dragon’s Blessing / Draconic Whip 40; printed 80 HP",
+        "entity_id": 20780,
+        "count": 2,
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "printing_aliases": [
+          "B4 117",
+          "B4 175",
+          "B4 233"
+        ]
+      }
+    ],
+    "energy_configuration": [
+      {
+        "value": 6,
+        "name": "Fighting",
+        "selectable": true
+      },
+      {
+        "value": 8,
+        "name": "Metal",
+        "selectable": true
+      }
+    ],
+    "receipt": "QR_DECODE.json",
+    "native_frame": "turn_evidence/t0000.00.jpg",
+    "all_entities_resolved": true,
+    "roundtrip": true
+  },
+  "limits": [
+    "Dated live list missing at initial retrieval. Filmed exact 20 is retained separately and must not be described as copied from live Pause Games.",
+    "QR does not specify exact artwork or rarity. A later live deck registration/snapshot is appended by lead, not retroactively substituted for initial absence."
+  ]
+}

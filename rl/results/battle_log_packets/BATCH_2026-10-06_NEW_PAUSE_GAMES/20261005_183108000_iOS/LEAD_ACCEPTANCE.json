@@ -1,0 +1,20 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-06T21:14:43.520066+00:00",
+  "source_video": "20261005_183108000_iOS.MP4",
+  "source_sha256": "94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 10,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_183108000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "T6 buffered3-action order unavailable; opponent hidden draws/searches and full discard piles unavailable.",
+    "Exact20 source-bound QR prepared definition retained; live saved-deck verification is lead-only pending."
+  ],
+  "outcome": "loss",
+  "external_status": "Prepared for Pause Games; no new live deck or game save claimed. Missing matching current live list is preserved, filmed QR definitions prepared separately.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

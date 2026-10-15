@@ -1,0 +1,141 @@
+{
+  "checked_utc": "2026-10-10T05:05:32.056840+00:00",
+  "complete": true,
+  "sources": [
+    {
+      "source": "20261010_012303000_iOS.MP4",
+      "checks": {
+        "index_reviewed": true,
+        "index_location": true,
+        "original_exists": true,
+        "original_size": true,
+        "lead_accepted": true,
+        "archive_identity": true,
+        "current_mapping": true,
+        "external_reload": true
+      },
+      "source_sha256": "0e00fad4af7232b8b50c5cd9b946fdef9a1ac3e873166667e57ac3bce15bcc3e"
+    },
+    {
+      "source": "20261010_013009000_iOS.MP4",
+      "checks": {
+        "index_reviewed": true,
+        "index_location": true,
+        "original_exists": true,
+        "original_size": true,
+        "lead_accepted": true,
+        "archive_identity": true,
+        "current_mapping": true,
+        "external_reload": true
+      },
+      "source_sha256": "80615dfc9c1e28f95434e3b4712f0540e6efc34392aef816419b6f82a0257329"
+    },
+    {
+      "source": "20261010_014541000_iOS.MP4",
+      "checks": {
+        "index_reviewed": true,
+        "index_location": true,
+        "original_exists": true,
+        "original_size": true,
+        "lead_accepted": true,
+        "archive_identity": true,
+        "current_mapping": true,
+        "external_reload": true
+      },
+      "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae"
+    },
+    {
+      "source": "20261010_015452000_iOS.MP4",
+      "checks": {
+        "index_reviewed": true,
+        "index_location": true,
+        "original_exists": true,
+        "original_size": true,
+        "lead_accepted": true,
+        "archive_identity": true,
+        "current_mapping": true,
+        "external_reload": true
+      },
+      "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2"
+    },
+    {
+      "source": "20261010_015821000_iOS.MP4",
+      "checks": {
+        "index_reviewed": true,
+        "index_location": true,
+        "original_exists": true,
+        "original_size": true,
+        "lead_accepted": true,
+        "archive_identity": true,
+        "current_mapping": true,
+        "external_reload": true
+      },
+      "source_sha256": "8d64e896d3125e504b7186754cbf2c21c0b5fcbc61f65524f6de27a2effd2a38"
+    },
+    {
+      "source": "20261010_020258000_iOS.MP4",
+      "checks": {
+        "index_reviewed": true,
+        "index_location": true,
+        "original_exists": true,
+        "original_size": true,
+        "lead_accepted": true,
+        "archive_identity": true,
+        "current_mapping": true,
+        "external_reload": true
+      },
+      "source_sha256": "c5e7732cf212bd836fbcafc107b0f0d92ff43d8a8cd2f5b9f222b4fd466e5640"
+    },
+    {
+      "source": "20261010_020908000_iOS.MP4",
+      "checks": {
+        "index_reviewed": true,
+        "index_location": true,
+        "original_exists": true,
+        "original_size": true,
+        "lead_accepted": true,
+        "archive_identity": true,
+        "current_mapping": true,
+        "external_reload": true
+      },
+      "source_sha256": "6771089aca9afe1e952e047017c07b74964a184011832179c27fe7b7f839bffc"
+    },
+    {
+      "source": "20261010_021629000_iOS.MP4",
+      "checks": {
+        "index_reviewed": true,
+        "index_location": true,
+        "original_exists": true,
+        "original_size": true,
+        "lead_accepted": true,
+        "archive_identity": true,
+        "current_mapping": true,
+        "external_reload": true
+      },
+      "source_sha256": "c6780bc6ef6fe89e7db6ccee1f4d06e3ff3b0bc8a9db488a76345b5a46ee185d"
+    }
+  ],
+  "issues": [],
+  "concurrent_updates": [
+    {
+      "source": "20261009_195432000_iOS.MP4",
+      "current_status": "Reviewed",
+      "separate_batch_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_UPLOADS\\20261009_195432000_iOS\\LEAD_ACCEPTANCE.json",
+      "attributed_to_existing_assignment": true
+    },
+    {
+      "source": "20261009_222100000_iOS.MP4",
+      "current_status": "Reviewed",
+      "separate_batch_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_UPLOADS\\20261009_222100000_iOS\\LEAD_ACCEPTANCE.json",
+      "attributed_to_existing_assignment": true
+    },
+    {
+      "source": "20261009_222740000_iOS.MP4",
+      "current_status": "Reviewed",
+      "separate_batch_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_UPLOADS\\20261009_222740000_iOS\\LEAD_ACCEPTANCE.json",
+      "attributed_to_existing_assignment": true
+    }
+  ],
+  "original_video_contents_read": false,
+  "basis": "Initial frozen SOURCE plus pre/post move SHA receipts, file metadata, shared index/map and live-reload receipts. Other assignments compared with intake rows; concurrent completions attributed to their separate accepted batch and preserved."
+}

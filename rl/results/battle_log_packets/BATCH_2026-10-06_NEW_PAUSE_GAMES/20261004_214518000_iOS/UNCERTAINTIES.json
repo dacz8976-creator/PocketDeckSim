@@ -1,0 +1,44 @@
+{
+  "source_video": "20261004_214518000_iOS.MP4",
+  "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+  "reviewer": "/root/pause_214518",
+  "unreviewed_intervals": [],
+  "consequential_ambiguities_requiring_astra": [],
+  "items": [
+    {
+      "id": "termination-cause",
+      "question": "Why was the setup match awarded Victory?",
+      "status": "unresolved_recording_limit",
+      "observed": "Connection is unstable at 45-45.5 s; Victory at 48-49 s and final results at 55 s.",
+      "not_established": "Concession, opponent fault, network adjudication or server reason.",
+      "evidence_ids": [
+        "f0045_50",
+        "f0049_00",
+        "f0055_00"
+      ]
+    },
+    {
+      "id": "exact-deck-version",
+      "status": "unresolved_recording_limit",
+      "question": "Did the earlier New deck 24 QR remain unchanged for this game?",
+      "observed": "Lobby label and opening core agree.",
+      "not_established": "Exact 20-card list, intervening edits or direct same-source QR.",
+      "evidence_ids": [
+        "f0000_00",
+        "f0023_00"
+      ]
+    },
+    {
+      "id": "opponent-cards",
+      "status": "hidden_information",
+      "question": "Opponent Active and hand identities?",
+      "observed": "Five card backs during setup; face-down Active in terminal transition.",
+      "not_established": "Any opponent card name.",
+      "evidence_ids": [
+        "f0023_00",
+        "f0044_00",
+        "f0046_00"
+      ]
+    }
+  ]
+}

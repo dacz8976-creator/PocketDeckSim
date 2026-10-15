@@ -1,0 +1,66 @@
+{
+  "video_basename": "20260930_143535000_iOS.MP4",
+  "reviewer": "sol_auto_143535000",
+  "consequential_unresolved": [],
+  "uncertainties": [
+    {
+      "id": "hidden_lists",
+      "time_seconds": [
+        0,
+        191.185
+      ],
+      "question": "What are the full deck lists and hidden opponent hand?",
+      "finding": "Unknown. Only publicly visible field, hand and played cards are recorded.",
+      "blocks_completion": false
+    },
+    {
+      "id": "ai_search_outputs",
+      "time_seconds": [
+        46,
+        57,
+        126,
+        130
+      ],
+      "question": "Which exact Pokemon came from AI Poke Ball and Strange Singing?",
+      "finding": "Search effects and subsequent field cards are visible, but the individual search-to-placement mapping is not independently established. Do not infer it from later placement.",
+      "evidence": [
+        "keyframes/t0054.00.jpg",
+        "keyframes/t0126.00.jpg",
+        "keyframes/t0131.00.jpg"
+      ],
+      "blocks_completion": false
+    },
+    {
+      "id": "fleeting_order",
+      "time_seconds": [
+        17,
+        182
+      ],
+      "question": "What is the exact subsecond ordering of all animations and draws?",
+      "finding": "Not reconstructed. The report uses meaningful action windows, settled state, visible card effects and before/after Energy counts.",
+      "blocks_completion": false
+    },
+    {
+      "id": "phone_banner",
+      "time_seconds": [
+        154,
+        159
+      ],
+      "question": "Did the notification obscure important turn 10 evidence?",
+      "finding": "It partly obscures the top hand region. The promoted Active, Energy, HP, later evolution, attack and final result are visible; no hidden hand claim is made.",
+      "evidence": [
+        "keyframes/t0158.00.jpg",
+        "keyframes/t0159.00.jpg"
+      ],
+      "blocks_completion": false
+    }
+  ],
+  "resolved_checks": [
+    "Full-resolution Meloetta identity replaces provisional coarse Phantump guess.",
+    "Swablu and Klefki names are established by full-resolution cards.",
+    "Dialga 150 to 100 is one Psyshot50, intermediate 120 was count animation.",
+    "Big Malasada heals 100 to110, followed by Spooky Shot60 to50.",
+    "Active Dialga normal attachments and two Metallic Turbo bench recipients reconcile.",
+    "Final Heavy Impact100 takes Brambleghast90 to knockout; transient10 is count animation."
+  ]
+}

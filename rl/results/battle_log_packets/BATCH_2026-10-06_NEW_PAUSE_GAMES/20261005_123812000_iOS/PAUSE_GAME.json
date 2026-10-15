@@ -1,0 +1,151 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "pause-20261005-123812",
+  "review_date": "2026-10-06",
+  "sources": [
+    {
+      "video_basename": "20261005_123812000_iOS.MP4",
+      "sha256": "3fb3dc25ac96c6e742f9467ba14abdbf91aff403ef2a5bdc62c7f414e775e5a0",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "New deck 6 / two-Darkrai QR revision",
+  "opening": {
+    "source_video": "20261005_123812000_iOS.MP4",
+    "timestamp_seconds": 28,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Darkrai ex",
+        "basis": "Native five-card fan before Active placement",
+        "evidence_ids": [
+          "f-0028.00",
+          "f-0029.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Nidoking",
+        "basis": "Native five-card fan before Active placement",
+        "evidence_ids": [
+          "f-0028.00",
+          "f-0029.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Nidoran♂",
+        "basis": "Native five-card fan before Active placement",
+        "evidence_ids": [
+          "f-0028.00",
+          "f-0029.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Nidoran♂",
+        "basis": "Native five-card fan before Active placement",
+        "evidence_ids": [
+          "f-0028.00",
+          "f-0029.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Poison Barb",
+        "basis": "Native five-card fan before Active placement",
+        "evidence_ids": [
+          "f-0028.00",
+          "f-0029.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Nidoran♂",
+      "opening_position": null,
+      "source_video": "20261005_123812000_iOS.MP4",
+      "timestamp_seconds": 30,
+      "evidence_ids": [
+        "f-0029.00",
+        "f-0040.00"
+      ],
+      "limit_reason": "Two same-name opening Nidoran; exact duplicate slot not resolved"
+    },
+    "redraw_or_replacement": "none observed",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "f-0028.00",
+      "f-0029.00"
+    ],
+    "limit_reason": null
+  },
+  "setup_actions": [
+    {
+      "action": "Nidoran Active",
+      "timestamp_seconds": 30
+    },
+    {
+      "action": "Darkrai left Bench",
+      "timestamp_seconds": 33
+    },
+    {
+      "action": "Second Nidoran center Bench",
+      "timestamp_seconds": 35
+    }
+  ],
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_battle_review_complete",
+  "outcome": {
+    "owner_result": "loss",
+    "method": "owner_concession",
+    "opponent": "Sofii",
+    "owner": "Dacz8976",
+    "last_visible_earned_points": {
+      "owner": 1,
+      "opponent": 2
+    },
+    "concede_seconds": 325,
+    "result_seconds": 327,
+    "evidence_ids": [
+      "f-0323.00",
+      "f-0324.00",
+      "f-0325.00",
+      "f-0327.00",
+      "f-0336.00"
+    ]
+  },
+  "classification": {
+    "type": "human_match",
+    "basis": "Filmed searching/handshake; named opponent; no Auto option in gameplay or menu",
+    "specific_queue": "Deluxe Pack: Mega Emblem Event",
+    "limit": "Visible event title established; unstated ranked status and concession reason remain unknown.",
+    "queue_evidence_ids": [
+      "f-0004.00",
+      "f-0005.00"
+    ]
+  },
+  "limits": [
+    "Required live exact20 snapshot absent for this filmed revision; root owns registration.",
+    "Hidden opponent identities, full discards, exact printings and touch timing remain bounded.",
+    "Concession reason not established."
+  ],
+  "lead_checked": true,
+  "lead_acceptance": "LEAD_ACCEPTANCE.json"
+}

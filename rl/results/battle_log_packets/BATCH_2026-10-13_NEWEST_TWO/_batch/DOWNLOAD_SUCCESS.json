@@ -1,0 +1,64 @@
+{
+  "confirmed_utc": "2026-10-13T04:02:31.977444+00:00",
+  "all_sources_readable_and_hash_bound": true,
+  "sources": [
+    {
+      "video_basename": "20261013_022530000_iOS.MP4",
+      "sha256": "02714096351099424338ac83d3f529ef4f0e6979a978a50f48c5ff505a2b6cb7",
+      "bytes": 1037304261,
+      "duration_seconds": 559.935,
+      "streams": [
+        {
+          "codec_name": "hevc",
+          "width": 1170,
+          "height": 2532,
+          "start_time": "0.000000"
+        },
+        {
+          "codec_name": "aac",
+          "start_time": "0.000000"
+        }
+      ],
+      "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261013_022530000_iOS.MP4",
+      "recording_relationships": [],
+      "source_identity_basis": "CLI SHA-256 and stable size/mtime during intake",
+      "identity_verified_event_id": "1bb2a91a-8252-49c7-922d-90ef79699cd5",
+      "intake_utc": "2026-10-13T03:54:55.704324+00:00",
+      "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+      "classification": "awaiting_visual_verification",
+      "match_date_from_filename": "20261013",
+      "filename_clock_timezone": null
+    },
+    {
+      "video_basename": "20261013_030351000_iOS.MP4",
+      "sha256": "d0a221cd236c620f467bbf34ad8078fd59c72323a7dca71a4af344f0489c6c7f",
+      "bytes": 1165999932,
+      "duration_seconds": 627.503333,
+      "streams": [
+        {
+          "codec_name": "hevc",
+          "width": 1170,
+          "height": 2532,
+          "start_time": "0.000000"
+        },
+        {
+          "codec_name": "aac",
+          "start_time": "0.000000"
+        }
+      ],
+      "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261013_030351000_iOS.MP4",
+      "recording_relationships": [],
+      "source_identity_basis": "CLI SHA-256 and stable size/mtime during intake",
+      "identity_verified_event_id": "dec808e9-9037-4aad-b580-5db193955ef7",
+      "intake_utc": "2026-10-13T03:55:55.195796+00:00",
+      "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+      "classification": "awaiting_visual_verification",
+      "match_date_from_filename": "20261013",
+      "filename_clock_timezone": null
+    }
+  ],
+  "source_contents_rewritten": false,
+  "files_deleted": 0,
+  "recovery_basis": "Both cloud-only files initially stopped at500MiB. Full and64MiB hydration requests timed out. One graceful client restart was followed by a successful ordinary read in the first missing range; both were then fully resident and successfully hashed/probed. Causality of individual recovery steps is not established.",
+  "source_access_history_preserved": true
+}

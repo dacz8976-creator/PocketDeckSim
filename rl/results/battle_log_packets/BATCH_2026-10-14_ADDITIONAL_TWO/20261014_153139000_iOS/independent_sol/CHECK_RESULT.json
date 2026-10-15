@@ -1,0 +1,85 @@
+{
+  "accepted": true,
+  "reviewer": "/root/check_ladder_153139",
+  "checked_utc": "2026-10-14T16:54:18.297748+00:00",
+  "source_filename": "20261014_153139000_iOS.MP4",
+  "source_sha256": "dde0bb5dbbc34e46973dc7b09498faa6f67c142c7be0023054b612f090800fae",
+  "frozen_manifest_sha256": "560b6ba6509b9feb779a47b9cdd611bcc5553f89026034dd42886b2ac7125a30",
+  "frozen_files_match": true,
+  "frozen_file_count": 245,
+  "primary_unchanged": true,
+  "checked_findings": [
+    {
+      "claim": "Source identity and frozen integrity",
+      "finding": "773924031 bytes; 421.308333 seconds; expected source SHA and expected manifest SHA; all 245 frozen files match before and after."
+    },
+    {
+      "claim": "Full primary coverage",
+      "finding": "REVIEW.md and COVERAGE.md cover queue/setup, all 12 global turns, and result through source end. Six owner turns map to global1/3/5/7/9/11. No unreviewed phase or internal contradiction identified; this acceptance is bounded independent verification, not a second whole-video visual pass."
+    },
+    {
+      "claim": "Mode and deck",
+      "finding": "3 seconds shows ranked Season B4b SP, Ultra Ball Rank4, 690 points and Deck12. Sampled gameplay shows no Auto option and no evidence contradicting the primary whole-source no-Auto observation. Visible core Whimsicott ex/Ariados/Teal Mask Ogerpon ex supports Deck12 section."
+    },
+    {
+      "claim": "Exact note prefix",
+      "finding": "Accepted: 1st | Whimsicott ex T4 (missed) | opp 0 pts. First Grass Knot declaration is the global7/ownT4 attempt selected at238seconds with opponent0points; tails243 then explicit attack-did-nothing245, Magnezone170HP unchanged. This is not the first landed hit."
+    },
+    {
+      "claim": "Separate first landed attack",
+      "finding": "Global9/ownT5 is shown at279; Grass Knot130 panel303 and declaration304, heads308, 130 damage311. First landed hit belongs to ownT5, while required first-attempt note remains ownT4."
+    },
+    {
+      "claim": "Terminal and results",
+      "finding": "405: Magneton80HP with four Lightning uses Spinning Attack60 against Whimsicott ex50HP. 420.90: Defeat versus Chacho; Went first;12turns;owner1/opponent3;damage260. Two landed130hits reconcile260."
+    },
+    {
+      "claim": "Independent ordinary samples",
+      "finding": "Fresh113.5 with retained116/120 verifies original Whimsicott evolution,110HP, one Grass by120 and Cottonee/Ogerpon Bench. Fresh158.5 with167 verifies fresh Cottonee/secondWhimsicott evolution and Spinarak Bench while originalWhimsicott110 remains Bench. Fresh356.5 plus349/353/357/359 verifies Spinarak benching, OgerponGrass attachment visible357, ActiveWhimsicott50 with twoGrass, and held extraAriados/Goo-zooka/Quick-Grow Extract.365/373 reconcile MagnezoneKO and ownerfirstpoint."
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "No second full visual pass or broad decode; inspected 23 retained native frames and exactly three fresh bounded original seeks (113.5,158.5,356.5 seconds).",
+    "Primary setup-through-ending coverage is accepted via account/coverage reconciliation and bounded source evidence, not independent continuous playback.",
+    "No exact hidden deck lists or opponent hand contents inferred; opponent Tool title remains unknown; existing timing and phone-notification limits retained.",
+    "No strategy optimization, rules research, external log save, shared registration, source archive or source move performed. Root remains sole acceptance/registration writer."
+  ],
+  "inspected_retained_timestamps_seconds": [
+    3,
+    40,
+    116,
+    120,
+    167,
+    209,
+    211,
+    238,
+    243,
+    245,
+    279,
+    303,
+    304,
+    308,
+    311,
+    349,
+    353,
+    357,
+    359,
+    365,
+    373,
+    405,
+    420.9
+  ],
+  "fresh_original_seek_timestamps_seconds": [
+    113.5,
+    158.5,
+    356.5
+  ],
+  "exact_three_item_note_prefix": "1st | Whimsicott ex T4 (missed) | opp 0 pts",
+  "corrections_required": [],
+  "integrity_receipts": [
+    "INTEGRITY_BEFORE.json",
+    "INTEGRITY_AFTER.json",
+    "SOURCE_PROBE.json"
+  ]
+}

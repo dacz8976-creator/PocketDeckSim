@@ -1,0 +1,37 @@
+{
+  "source_filename": "20261014_144627000_iOS.MP4",
+  "source_sha256": "87622e2457ff364815731b3994b09685127c8dbb12a44d3077e9a9c4bddfa385",
+  "uncertainties": [
+    {
+      "category": "hidden_information",
+      "status": "unresolved",
+      "description": "Opponent hidden cards and exact full deck lists are not asserted."
+    },
+    {
+      "category": "trainer_identity",
+      "status": "unresolved",
+      "source_timestamps": [
+        212,
+        216,
+        218,
+        220
+      ],
+      "description": "Team Rocket Supporter title is not readable in the inspected full-screen action frames. The effect explicitly Confuses Whimsicott ex; heads leaves opponent Active unconfused."
+    },
+    {
+      "category": "timing_precision",
+      "status": "qualified",
+      "description": "Turn boundaries are approximate source intervals; attack animation at166 and knockout at168 are exact retained seeks, rather than a claimed exact tap frame."
+    },
+    {
+      "category": "energy_detail",
+      "status": "qualified",
+      "description": "Repeated Volt Charge and stacked bench Lightning buildup are established, but every intermediate attachment count is not transcribed. Terminal Miraidon ex numeric12 is directly visible."
+    },
+    {
+      "category": "queue_label",
+      "status": "qualified",
+      "description": "Owner designation is ladder. Matchmaking/named opponent visible and no Auto option observed; specific ranked queue/rank label is not independently readable in retained setup."
+    }
+  ]
+}

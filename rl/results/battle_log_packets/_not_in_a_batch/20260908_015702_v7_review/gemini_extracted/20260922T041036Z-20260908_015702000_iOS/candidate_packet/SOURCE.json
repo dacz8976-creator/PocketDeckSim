@@ -1,0 +1,719 @@
+{
+  "filename": "20260908_015702000_iOS.MP4",
+  "source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20260908_015702000_iOS.MP4",
+  "sha256": "3FBD29A85A17B5F4B4F7DDD3D7EE15B2177503FF3E15C56314DE9CC60EDCFB2D",
+  "bytes": 507514203,
+  "duration_seconds": 272.803,
+  "review_status": "partial",
+  "index_update_performed": false,
+  "media_move_performed": false,
+  "model": "gemini-3.8-flash",
+  "reviewer": "Gemini 3.8 Flash API first-pass draft",
+  "battle_identity": {
+    "opponent_label": {
+      "state": "observed",
+      "value": "Opponent",
+      "timestamp_seconds": 0.8,
+      "observation": "Opponent nameplate shows 'Opponent'"
+    },
+    "opening_player": {
+      "state": "observed",
+      "value": "Duraludon",
+      "timestamp_seconds": 0.0,
+      "observation": "Player's active spot has Duraludon (100 HP)"
+    },
+    "opening_opponent": {
+      "state": "observed",
+      "value": "Team Rocket's Rattata",
+      "timestamp_seconds": 0.0,
+      "observation": "Opponent's active spot has Team Rocket's Rattata (40 HP)"
+    },
+    "outcome": {
+      "state": "observed",
+      "value": "player_win",
+      "timestamp_seconds": 269.0,
+      "observation": "Player reaches 3 points after knocking out Chien-Pao ex, screen fades to victory transition"
+    },
+    "result_text": {
+      "state": "not_shown",
+      "value": null,
+      "timestamp_seconds": 272.8,
+      "observation": "Video cuts to white screen before the final 'VICTORY' banner renders"
+    },
+    "version": 1
+  },
+  "evidence_audit": {
+    "version": 1,
+    "opponent_label": "Opponent",
+    "match_mode": {
+      "value": "unknown",
+      "evidence": [
+        {
+          "timestamp": "00:00.800",
+          "observation": "Opponent label displays generic 'Opponent' nameplate"
+        }
+      ],
+      "uncertainty_id": "U1"
+    },
+    "opponent_ai": {
+      "value": "unknown",
+      "evidence": [
+        {
+          "timestamp": "00:00.800",
+          "observation": "Generic 'Opponent' label without explicit AI or Solo indicator tag"
+        }
+      ],
+      "uncertainty_id": "U1"
+    },
+    "auto": {
+      "value": "off",
+      "evidence": [
+        {
+          "timestamp": "00:00.000",
+          "observation": "Auto button visible on right side of opponent board, untoggled (white circle left/off)"
+        },
+        {
+          "timestamp": "00:54.000",
+          "observation": "Auto toggle tapped to 'On' (green checkmark)"
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "terminal": {
+      "outcome": "player_win",
+      "outcome_evidence": [
+        {
+          "timestamp": "04:29.000",
+          "observation": "Player score circle 3 animates active; '+2 points!' popup displays over player's avatar"
+        }
+      ],
+      "result_text": null,
+      "result_text_evidence": [
+        {
+          "timestamp": "04:32.600",
+          "observation": "Video terminates on full white screen before victory banner appears"
+        }
+      ],
+      "last_frame": {
+        "timestamp": "04:32.600",
+        "observation": "Pure white screen at video end"
+      },
+      "uncertainty_id": null
+    },
+    "pokemon": [
+      {
+        "id": "player-1",
+        "owner": "player",
+        "initial": {
+          "Metal": 1
+        },
+        "initial_evidence": {
+          "timestamp": "00:00.000",
+          "observation": "Active Duraludon with 1 Metal Energy attached"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "01:31.600",
+          "observation": "Duraludon knocked out by Chien-Pao ex Diving Icicles and sent to discard"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-2",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:00.000",
+          "observation": "Bench Axew (70 HP) with 0 Energy"
+        },
+        "final": {
+          "Fighting": 2,
+          "Metal": 1
+        },
+        "final_evidence": {
+          "timestamp": "04:28.000",
+          "observation": "Haxorus evolved from Fraxure in active spot with 2 Fighting and 1 Metal Energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-3",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:00.000",
+          "observation": "Bench Dratini (60 HP) with 0 Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "03:30.000",
+          "observation": "Dratini on bench knocked out by Chien-Pao ex Diving Icicles"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-4",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:43.000",
+          "observation": "Second Dratini played onto bench"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "04:31.000",
+          "observation": "Dragonair (evolved from Dratini) on bench with 0 Energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-5",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "02:44.200",
+          "observation": "Second Axew played onto bench"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "04:31.000",
+          "observation": "Axew on bench with 0 Energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-1",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:00.000",
+          "observation": "Active Team Rocket's Rattata (40 HP) with 0 Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "00:04.600",
+          "observation": "Team Rocket's Rattata retreats to bench"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-2",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:00.000",
+          "observation": "Bench Chien-Pao ex (130 HP) with 0 Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "04:26.600",
+          "observation": "Chien-Pao ex knocked out by Haxorus Frenzied Blade and sent to discard"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-3",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:00.000",
+          "observation": "Bench Corphish (60 HP) with 0 Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "02:54.600",
+          "observation": "Crawdaunt (evolved from Corphish) knocked out by Haxorus Frenzied Blade"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-4",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:00.000",
+          "observation": "Second Bench Team Rocket's Rattata (40 HP) with 0 Energy"
+        },
+        "final": {
+          "Water": 1
+        },
+        "final_evidence": {
+          "timestamp": "04:31.000",
+          "observation": "Team Rocket's Raticate ex evolved on bench with 1 Water Energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-5",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "03:22.800",
+          "observation": "Corphish (60 HP) played onto opponent bench"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "04:31.000",
+          "observation": "Corphish on bench with 0 Energy"
+        },
+        "uncertainty_id": null
+      }
+    ],
+    "energy_events": [
+      {
+        "turn": 3,
+        "pokemon_id": "opp-2",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Water": 1
+        },
+        "before_evidence": {
+          "timestamp": "00:06.000",
+          "observation": "Chien-Pao ex in active spot with 0 Energy"
+        },
+        "action_evidence": {
+          "timestamp": "00:07.000",
+          "observation": "Water Energy moves from opponent Energy Zone to active Chien-Pao ex"
+        },
+        "after_evidence": {
+          "timestamp": "00:07.400",
+          "observation": "Chien-Pao ex has 1 Water Energy icon attached"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 4,
+        "pokemon_id": "player-1",
+        "kind": "manual",
+        "before": {
+          "Metal": 1
+        },
+        "after": {
+          "Fighting": 1,
+          "Metal": 1
+        },
+        "before_evidence": {
+          "timestamp": "00:46.000",
+          "observation": "Duraludon has 1 Metal Energy attached"
+        },
+        "action_evidence": {
+          "timestamp": "00:47.000",
+          "observation": "Fighting Energy dragged from player Energy Zone onto active Duraludon"
+        },
+        "after_evidence": {
+          "timestamp": "00:48.200",
+          "observation": "Duraludon shows 1 Fighting and 1 Metal Energy attached"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 5,
+        "pokemon_id": "opp-2",
+        "kind": "manual",
+        "before": {
+          "Water": 1
+        },
+        "after": {
+          "Water": 2
+        },
+        "before_evidence": {
+          "timestamp": "01:01.000",
+          "observation": "Chien-Pao ex has 1 Water Energy attached"
+        },
+        "action_evidence": {
+          "timestamp": "01:02.000",
+          "observation": "Water Energy moves from opponent Energy Zone to active Chien-Pao ex"
+        },
+        "after_evidence": {
+          "timestamp": "01:02.400",
+          "observation": "Chien-Pao ex has 2 Water Energy attached"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "player-1",
+        "kind": "manual",
+        "before": {
+          "Fighting": 1,
+          "Metal": 1
+        },
+        "after": {
+          "Fighting": 1,
+          "Metal": 2
+        },
+        "before_evidence": {
+          "timestamp": "01:12.400",
+          "observation": "Duraludon has 1 Fighting and 1 Metal Energy"
+        },
+        "action_evidence": {
+          "timestamp": "01:13.000",
+          "observation": "Metal Energy attached to Duraludon"
+        },
+        "after_evidence": {
+          "timestamp": "01:13.400",
+          "observation": "Duraludon has 1 Fighting and 2 Metal Energy"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 7,
+        "pokemon_id": "opp-2",
+        "kind": "manual",
+        "before": {
+          "Water": 2
+        },
+        "after": {
+          "Water": 3
+        },
+        "before_evidence": {
+          "timestamp": "01:20.400",
+          "observation": "Chien-Pao ex has 2 Water Energy"
+        },
+        "action_evidence": {
+          "timestamp": "01:21.000",
+          "observation": "Water Energy attaches to Chien-Pao ex"
+        },
+        "after_evidence": {
+          "timestamp": "01:21.400",
+          "observation": "Chien-Pao ex has 3 Water Energy"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 7,
+        "pokemon_id": "opp-2",
+        "kind": "discard",
+        "before": {
+          "Water": 3
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "01:26.400",
+          "observation": "Chien-Pao ex has 3 Water Energy"
+        },
+        "action_evidence": {
+          "timestamp": "01:26.800",
+          "observation": "Chien-Pao ex uses Diving Icicles (Discard all Water Energy)"
+        },
+        "after_evidence": {
+          "timestamp": "01:30.000",
+          "observation": "Chien-Pao ex has 0 Energy attached"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 7,
+        "pokemon_id": "player-1",
+        "kind": "discard",
+        "before": {
+          "Fighting": 1,
+          "Metal": 2
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "01:28.000",
+          "observation": "Duraludon has 3 Energy attached"
+        },
+        "action_evidence": {
+          "timestamp": "01:29.400",
+          "observation": "Duraludon takes 130 damage, HP drops to 0"
+        },
+        "after_evidence": {
+          "timestamp": "01:31.400",
+          "observation": "Duraludon knocked out to discard pile, energy lost"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "player-3",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Fighting": 1
+        },
+        "before_evidence": {
+          "timestamp": "01:39.000",
+          "observation": "Active Dratini has 0 Energy"
+        },
+        "action_evidence": {
+          "timestamp": "01:48.400",
+          "observation": "Fighting Energy dragged onto active Dratini"
+        },
+        "after_evidence": {
+          "timestamp": "01:49.000",
+          "observation": "Active Dratini shows 1 Fighting Energy"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 9,
+        "pokemon_id": "opp-4",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Water": 1
+        },
+        "before_evidence": {
+          "timestamp": "01:58.000",
+          "observation": "Bench Team Rocket's Raticate ex has 0 Energy"
+        },
+        "action_evidence": {
+          "timestamp": "02:00.000",
+          "observation": "Water Energy attaches to bench Team Rocket's Raticate ex"
+        },
+        "after_evidence": {
+          "timestamp": "02:00.400",
+          "observation": "Team Rocket's Raticate ex has 1 Water Energy"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 10,
+        "pokemon_id": "player-2",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Fighting": 1
+        },
+        "before_evidence": {
+          "timestamp": "02:08.800",
+          "observation": "Bench Haxorus has 0 Energy"
+        },
+        "action_evidence": {
+          "timestamp": "02:09.400",
+          "observation": "Fighting Energy attached to bench Haxorus"
+        },
+        "after_evidence": {
+          "timestamp": "02:10.000",
+          "observation": "Bench Haxorus shows 1 Fighting Energy"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 11,
+        "pokemon_id": "opp-3",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Water": 1
+        },
+        "before_evidence": {
+          "timestamp": "02:12.600",
+          "observation": "Crawdaunt in active spot has 0 Energy"
+        },
+        "action_evidence": {
+          "timestamp": "02:13.200",
+          "observation": "Water Energy attaches to Crawdaunt"
+        },
+        "after_evidence": {
+          "timestamp": "02:13.600",
+          "observation": "Crawdaunt shows 1 Water Energy attached"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 12,
+        "pokemon_id": "player-3",
+        "kind": "retreat",
+        "before": {
+          "Fighting": 1
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "02:19.400",
+          "observation": "Active Dratini has 1 Fighting Energy"
+        },
+        "action_evidence": {
+          "timestamp": "02:20.000",
+          "observation": "Player retreats Dratini by paying 1 Energy"
+        },
+        "after_evidence": {
+          "timestamp": "02:20.600",
+          "observation": "Dratini moves to bench with 0 Energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 12,
+        "pokemon_id": "player-2",
+        "kind": "manual",
+        "before": {
+          "Fighting": 1
+        },
+        "after": {
+          "Fighting": 2
+        },
+        "before_evidence": {
+          "timestamp": "02:44.800",
+          "observation": "Haxorus has 1 Fighting Energy"
+        },
+        "action_evidence": {
+          "timestamp": "02:45.400",
+          "observation": "Fighting Energy attached to active Haxorus"
+        },
+        "after_evidence": {
+          "timestamp": "02:45.800",
+          "observation": "Active Haxorus shows 2 Fighting Energy"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 12,
+        "pokemon_id": "opp-3",
+        "kind": "discard",
+        "before": {
+          "Water": 1
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "02:51.600",
+          "observation": "Crawdaunt has 1 Water Energy"
+        },
+        "action_evidence": {
+          "timestamp": "02:52.400",
+          "observation": "Crawdaunt takes 170 damage from Frenzied Blade and is knocked out"
+        },
+        "after_evidence": {
+          "timestamp": "02:54.600",
+          "observation": "Crawdaunt sent to discard pile"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 13,
+        "pokemon_id": "opp-2",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Water": 1
+        },
+        "before_evidence": {
+          "timestamp": "03:02.400",
+          "observation": "Chien-Pao ex in active spot has 0 Energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:06.200",
+          "observation": "Water Energy attaches to Chien-Pao ex"
+        },
+        "after_evidence": {
+          "timestamp": "03:06.600",
+          "observation": "Chien-Pao ex shows 1 Water Energy"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 14,
+        "pokemon_id": "player-2",
+        "kind": "manual",
+        "before": {
+          "Fighting": 2
+        },
+        "after": {
+          "Fighting": 2,
+          "Metal": 1
+        },
+        "before_evidence": {
+          "timestamp": "03:44.800",
+          "observation": "Haxorus has 2 Fighting Energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:45.200",
+          "observation": "Metal Energy attached to active Haxorus"
+        },
+        "after_evidence": {
+          "timestamp": "03:45.600",
+          "observation": "Haxorus shows 2 Fighting and 1 Metal Energy attached"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 15,
+        "pokemon_id": "opp-2",
+        "kind": "manual",
+        "before": {
+          "Water": 1
+        },
+        "after": {
+          "Water": 2
+        },
+        "before_evidence": {
+          "timestamp": "03:53.600",
+          "observation": "Chien-Pao ex has 1 Water Energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:54.400",
+          "observation": "Water Energy attaches to Chien-Pao ex"
+        },
+        "after_evidence": {
+          "timestamp": "03:54.800",
+          "observation": "Chien-Pao ex shows 2 Water Energy attached"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 16,
+        "pokemon_id": "player-2",
+        "kind": "effect",
+        "before": {
+          "Fighting": 2,
+          "Metal": 1
+        },
+        "after": {
+          "Fighting": 2,
+          "Metal": 2
+        },
+        "before_evidence": {
+          "timestamp": "04:18.200",
+          "observation": "Haxorus has 2 Fighting and 1 Metal Energy"
+        },
+        "action_evidence": {
+          "timestamp": "04:19.000",
+          "observation": "Dragonair uses Ability Dragon's Blessing to attach Metal Energy from discard pile to active Haxorus"
+        },
+        "after_evidence": {
+          "timestamp": "04:20.000",
+          "observation": "Haxorus shows 2 Fighting and 2 Metal Energy attached"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 16,
+        "pokemon_id": "opp-2",
+        "kind": "discard",
+        "before": {
+          "Water": 2
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "04:24.000",
+          "observation": "Chien-Pao ex has 2 Water Energy"
+        },
+        "action_evidence": {
+          "timestamp": "04:24.400",
+          "observation": "Haxorus uses Frenzied Blade for 150 damage, knocking out Chien-Pao ex"
+        },
+        "after_evidence": {
+          "timestamp": "04:26.600",
+          "observation": "Chien-Pao ex sent to discard pile"
+        },
+        "uncertainty_id": null
+      }
+    ]
+  }
+}

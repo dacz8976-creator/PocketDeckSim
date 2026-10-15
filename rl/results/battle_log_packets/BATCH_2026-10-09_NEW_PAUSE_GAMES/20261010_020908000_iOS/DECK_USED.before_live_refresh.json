@@ -1,0 +1,180 @@
+{
+  "is_template": false,
+  "schema": "pause-games/deck-used-v1",
+  "game_id": "20261010_020908000_iOS_game1",
+  "deck_name": "Kingdra ex / Team Rocket's Weezing ex",
+  "deck_id": "filmed-qr-b649812c0d42",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "retrieved_at_utc": "2026-10-10T03:46:03.247Z",
+  "retrieval_local_date": "2026-10-09",
+  "captured_source_text": "LIVE_DECK_SOURCE.txt",
+  "shared_snapshot": "../LIVE_NEW_DECKS_VERIFIED.json",
+  "exact_list_status": "verified_20_semantic_cards_live_log_matches_filmed_QR",
+  "card_slot_count": 20,
+  "cards_in_log_order": [
+    {
+      "name": "Team Rocket’s Koffing",
+      "variant": "B4a 042"
+    },
+    {
+      "name": "Team Rocket’s Koffing",
+      "variant": "B4a 042"
+    },
+    {
+      "name": "Team Rocket’s Weezing ex",
+      "variant": "B4a 043"
+    },
+    {
+      "name": "Team Rocket’s Weezing ex",
+      "variant": "B4a 043"
+    },
+    {
+      "name": "Horsea",
+      "variant": "A4 041"
+    },
+    {
+      "name": "Horsea",
+      "variant": "A4 041"
+    },
+    {
+      "name": "Seadra",
+      "variant": "A1 071"
+    },
+    {
+      "name": "Kingdra ex",
+      "variant": "A4 043"
+    },
+    {
+      "name": "Kingdra ex",
+      "variant": "A4 043"
+    },
+    {
+      "name": "Poké Ball",
+      "variant": "A2b 111"
+    },
+    {
+      "name": "Poké Ball",
+      "variant": "A2b 111"
+    },
+    {
+      "name": "Rare Candy",
+      "variant": "A3 144"
+    },
+    {
+      "name": "Rare Candy",
+      "variant": "A3 144"
+    },
+    {
+      "name": "Small Balloon",
+      "variant": "B3b 064"
+    },
+    {
+      "name": "Professor’s Research",
+      "variant": "A4b 373"
+    },
+    {
+      "name": "Professor’s Research",
+      "variant": "A4b 373"
+    },
+    {
+      "name": "Sabrina",
+      "variant": "A1 225"
+    },
+    {
+      "name": "Copycat",
+      "variant": "B1 225"
+    },
+    {
+      "name": "Hiking Trail",
+      "variant": "B2b 069"
+    },
+    {
+      "name": "Soothing Shore",
+      "variant": "B4 154"
+    }
+  ],
+  "counts_by_name_and_variant": [
+    {
+      "name": "Team Rocket’s Koffing",
+      "variant": "B4a 042",
+      "count": 2
+    },
+    {
+      "name": "Team Rocket’s Weezing ex",
+      "variant": "B4a 043",
+      "count": 2
+    },
+    {
+      "name": "Horsea",
+      "variant": "A4 041",
+      "count": 2
+    },
+    {
+      "name": "Seadra",
+      "variant": "A1 071",
+      "count": 1
+    },
+    {
+      "name": "Kingdra ex",
+      "variant": "A4 043",
+      "count": 2
+    },
+    {
+      "name": "Poké Ball",
+      "variant": "A2b 111",
+      "count": 2
+    },
+    {
+      "name": "Rare Candy",
+      "variant": "A3 144",
+      "count": 2
+    },
+    {
+      "name": "Small Balloon",
+      "variant": "B3b 064",
+      "count": 1
+    },
+    {
+      "name": "Professor’s Research",
+      "variant": "A4b 373",
+      "count": 2
+    },
+    {
+      "name": "Sabrina",
+      "variant": "A1 225",
+      "count": 1
+    },
+    {
+      "name": "Copycat",
+      "variant": "B1 225",
+      "count": 1
+    },
+    {
+      "name": "Hiking Trail",
+      "variant": "B2b 069",
+      "count": 1
+    },
+    {
+      "name": "Soothing Shore",
+      "variant": "B4 154",
+      "count": 1
+    }
+  ],
+  "energy_configuration": "Water only",
+  "filmed_deck_label": "New deck13",
+  "film_qr": "qr_intake/QR_DECODE_0001.00.json",
+  "film_continuity": {
+    "evidence_ids": [
+      "F0002.00",
+      "F0003.00",
+      "F0004.00",
+      "F0005.00",
+      "F0027.00"
+    ],
+    "observation": "Source starts with QR, closes to same New deck13 and visible20/20 list, then matchmaking without a visible deck change. Gameplay Horsea/Koffing/Weezing/Kingdra core and filmed cards agree.",
+    "qr_code_matches_live": true
+  },
+  "limits": [
+    "QR and live log use semantic card variants; artwork/rarity exact printings are not established."
+  ]
+}

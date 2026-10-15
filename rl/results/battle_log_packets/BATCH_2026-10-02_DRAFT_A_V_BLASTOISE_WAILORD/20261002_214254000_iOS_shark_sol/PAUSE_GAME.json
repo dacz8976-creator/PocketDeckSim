@@ -1,0 +1,131 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_214254000_iOS_shark_sol",
+  "review_date": "2026-10-02",
+  "sources": [
+    {
+      "video_basename": "20261002_214254000_iOS.MP4",
+      "sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_214254000_iOS_shark_sol",
+  "deck_name": "Draft A: Shark Tempo",
+  "opening": {
+    "count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Mega Sharpedo ex",
+        "variant": null,
+        "basis": "Native visible hand including inspected card still owned; transaction history reconciles count",
+        "source_video": "20261002_214254000_iOS.MP4",
+        "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+        "timestamp_seconds": 14.5,
+        "decoded_pts_seconds": 14.515,
+        "evidence_ids": [
+          "F0014.50"
+        ],
+        "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors"
+      },
+      {
+        "position": 2,
+        "name": "Irida",
+        "variant": null,
+        "basis": "Native visible hand including inspected card still owned; transaction history reconciles count",
+        "source_video": "20261002_214254000_iOS.MP4",
+        "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+        "timestamp_seconds": 14.5,
+        "decoded_pts_seconds": 14.515,
+        "evidence_ids": [
+          "F0014.50"
+        ],
+        "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors"
+      },
+      {
+        "position": 3,
+        "name": "Misty",
+        "variant": null,
+        "basis": "Native visible hand including inspected card still owned; transaction history reconciles count",
+        "source_video": "20261002_214254000_iOS.MP4",
+        "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+        "timestamp_seconds": 14.5,
+        "decoded_pts_seconds": 14.515,
+        "evidence_ids": [
+          "F0014.50"
+        ],
+        "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors"
+      },
+      {
+        "position": 4,
+        "name": "Elegant Cape",
+        "variant": null,
+        "basis": "Native visible hand including inspected card still owned; transaction history reconciles count",
+        "source_video": "20261002_214254000_iOS.MP4",
+        "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+        "timestamp_seconds": 14.5,
+        "decoded_pts_seconds": 14.515,
+        "evidence_ids": [
+          "F0014.50"
+        ],
+        "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors"
+      },
+      {
+        "position": 5,
+        "name": "Alolan Vulpix",
+        "variant": null,
+        "basis": "Native visible hand including inspected card still owned; transaction history reconciles count",
+        "source_video": "20261002_214254000_iOS.MP4",
+        "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+        "timestamp_seconds": 14.5,
+        "decoded_pts_seconds": 14.515,
+        "evidence_ids": [
+          "F0014.50"
+        ],
+        "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors"
+      }
+    ],
+    "basis": "Native visible hand including inspected card still owned; transaction history reconciles count",
+    "status": "observed",
+    "limit_reason": null,
+    "evidence_ids": [
+      "F0014.50"
+    ],
+    "source_video": "20261002_214254000_iOS.MP4",
+    "timestamp_seconds": 14.5,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "selected_active": {
+      "name": "Alolan Vulpix",
+      "opening_position": 5,
+      "source_video": "20261002_214254000_iOS.MP4",
+      "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+      "timestamp_seconds": 18.4,
+      "decoded_pts_seconds": 18.415,
+      "evidence_ids": [
+        "F0018.40"
+      ],
+      "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors"
+    },
+    "redraw_or_replacement": "No redraw observed",
+    "before_active_placement": true
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json",
+    "guide_supplement": "GUIDE_UPDATE_SUPPLEMENT.json",
+    "seen_inventory": "SEEN_CARD_INVENTORY.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "first_pass_submitted_awaiting_independent_acceptance",
+  "outcome": "win",
+  "lead_checked": false,
+  "limits": [
+    "Computer battle local only; no online games",
+    "No opened discard piles; hidden opponent identities null"
+  ]
+}

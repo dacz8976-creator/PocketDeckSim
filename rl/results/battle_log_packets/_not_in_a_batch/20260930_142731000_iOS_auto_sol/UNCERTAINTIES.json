@@ -1,0 +1,64 @@
+{
+  "reviewer": "sol_auto_142731000",
+  "unreviewed_intervals": [],
+  "consequential_ambiguities_requiring_astra": [],
+  "uncertainties": [
+    {
+      "id": "hidden_information",
+      "times_seconds": [
+        0,
+        143.435
+      ],
+      "finding": "Full deck lists, unshown copies, hidden opposing hand and unshown draws are unknown. Challenge deck name is not evidence that Inteleon was played.",
+      "impact": "Does not affect the visible outcome; limits policy alternatives."
+    },
+    {
+      "id": "printing_identifiers",
+      "times_seconds": [
+        13,
+        131
+      ],
+      "finding": "Card names, relevant HP, attacks and Trainer text are visible; exact set/card identifiers are not claimed.",
+      "impact": "Mechanics are qualified to visible versions."
+    },
+    {
+      "id": "setup_bench_order",
+      "times_seconds": [
+        21,
+        25.5
+      ],
+      "finding": "Final opponent turn-1 Bench is two Froakie and Squirtle. Exact order of three fast placement animations is not fully transcribed.",
+      "impact": "No effect on end-of-turn board or outcome."
+    },
+    {
+      "id": "overkill_damage_number",
+      "times_seconds": [
+        89,
+        92,
+        128,
+        131
+      ],
+      "finding": "Active knockouts and Bench HP losses are visible. Printed attack plus Backpack plus weakness predicts 80 Active damage; exact animation numeral is not separately asserted.",
+      "impact": "No outcome ambiguity; formula is interpretation from visible card text."
+    },
+    {
+      "id": "score_threshold",
+      "times_seconds": [
+        133,
+        136
+      ],
+      "finding": "Final animation says +2 points after two existing points, but the UI displays only three filled point circles and Victory. No displayed fourth score is invented.",
+      "evidence": "keyframes/t0135.00.jpg",
+      "impact": "Outcome confirmed; report literal display."
+    },
+    {
+      "id": "cape_intent",
+      "times_seconds": [
+        72,
+        143.435
+      ],
+      "finding": "Cape is attached to Basic Electrike without immediate HP gain. Preparing a later Stage 1 is plausible, but no such evolution appears.",
+      "impact": "Intent and future value unknown; not treated as a rule defect."
+    }
+  ]
+}

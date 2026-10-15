@@ -1,0 +1,149 @@
+{
+  "video_basename": "20261001_024616000_iOS.MP4",
+  "reviewer": "sol_auto_evening_024616000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "status": "full_battle_review_complete",
+  "scope": "Complete single battle, setup through all ten turns and terminal result",
+  "full_coverage_first_pass": true,
+  "lead_accepted": true,
+  "outcome": "defeat",
+  "last_turn": 10,
+  "opponent_challenge": "Mega Scizor ex & Gholdengo ex Deck (Deluxe Pack: Mega)",
+  "mode": "Owner Auto versus AI opponent, with owner turn-7 manual pause and Bounded Field play",
+  "auto_pause": {
+    "off_transition_seconds": [
+      127,
+      128
+    ],
+    "confirmed_off_seconds": [
+      128,
+      128.5,
+      129.5,
+      130,
+      132
+    ],
+    "on_transition_seconds": [
+      132,
+      133
+    ]
+  },
+  "ladder_eligible": false,
+  "displayed_points": {
+    "owner": 2,
+    "opponent": 3
+  },
+  "point_awards_total": {
+    "owner": 2,
+    "opponent": 5
+  },
+  "knockouts": [
+    {
+      "turn": 4,
+      "victim": "owner Pansear",
+      "attack": "Spending Rush",
+      "displayed_damage": 80,
+      "award_to": "opponent",
+      "points": 1
+    },
+    {
+      "turn": 6,
+      "victim": "owner Victini",
+      "attack": "Spending Rush",
+      "displayed_damage": 80,
+      "award_to": "opponent",
+      "points": 1
+    },
+    {
+      "turn": 9,
+      "victim": "opponent Gholdengo ex",
+      "attack": "Volcanic Kaboom",
+      "displayed_damage": 180,
+      "award_to": "owner",
+      "points": 2
+    },
+    {
+      "turn": 10,
+      "victim": "owner Mega Camerupt ex",
+      "attack": "Stompy Jammer",
+      "displayed_damage": 10,
+      "award_to": "opponent",
+      "points": 3
+    }
+  ],
+  "owner_visible_played_core": [
+    "Victini",
+    "Pansear",
+    "Numel",
+    "Mega Camerupt ex"
+  ],
+  "owner_drawn_not_played": [
+    "Simisear"
+  ],
+  "opponent_visible_played_core": [
+    "Wynaut",
+    "Gimmighoul",
+    "Gholdengo ex",
+    "Honedge",
+    "Doublade"
+  ],
+  "numeric_result_statistics_shown": false,
+  "card_of_game": "Gholdengo ex",
+  "lead_anchors_seconds": {
+    "opening": [
+      13,
+      16.5
+    ],
+    "ordinary_turn_5": [
+      80,
+      83,
+      87,
+      90,
+      91,
+      93
+    ],
+    "pause": [
+      127,
+      128,
+      132,
+      133
+    ],
+    "decisive": [
+      152,
+      159,
+      162.5,
+      168,
+      174,
+      176,
+      177,
+      178,
+      184
+    ],
+    "terminal": [
+      186,
+      192.74
+    ]
+  },
+  "findings": [
+    "Spending Rush target splits and Energy counts reconcile.",
+    "Two Flame Patch recover Victini Fire for evolved Mega before normal turn-7 attachment.",
+    "Bounded Field was played with Auto off and excludes Mega attackers; Volcanic Kaboom visibly does 180, not doubled damage.",
+    "Wynaut uses zero-Energy Stompy Jammer for the last 10 HP; turn-10 Metal goes to left benched Doublade.",
+    "Opponent receives five total points despite three-circle display."
+  ],
+  "remaining_coverage_gaps": [],
+  "original_preserved": true,
+  "source_json_preserved": true,
+  "worker_actions_at_submission": {
+    "global_mutations_performed": false
+  },
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261001_024616000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20261001_024616000_iOS.MP4.json",
+  "archive_completion_event_id": "e11e8b9d-3c02-4232-9e0a-fdf723d25dd7",
+  "global_registration_complete": true
+}

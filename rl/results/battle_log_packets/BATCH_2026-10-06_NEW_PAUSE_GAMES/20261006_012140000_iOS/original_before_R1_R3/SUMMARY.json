@@ -1,0 +1,113 @@
+{
+  "schema": "battle-review/summary-v1",
+  "game_id": "20261006_012140000_iOS-game-1",
+  "source_video": "20261006_012140000_iOS.MP4",
+  "source_sha256": "2fbf36e1f6d45a8e7fc6b1d273b0dc64c106ce1df14ac0447617e413ad79cf4e",
+  "reviewed_utc": "2026-10-06T20:49:05.466865+00:00",
+  "first_pass_status": "complete_awaiting_independent_acceptance",
+  "lead_accepted": false,
+  "game_count": 1,
+  "reviewed_source_interval_seconds": [
+    0,
+    215.053333
+  ],
+  "source_ending_reviewed": true,
+  "classification": "human event battle",
+  "event": "Deluxe Pack: Mega Emblem Event",
+  "battle_auto_visible": false,
+  "deck_editor_auto_build_visible": false,
+  "external_eligibility": "human Pause Games candidate; external writing requires lead acceptance/registration",
+  "owner": "Dacz8976",
+  "opponent": "おせち",
+  "match_date_local": "2026-10-05",
+  "match_date_basis": "UTC recording creation 2026-10-06T01:21:40Z converted to America/Chicago; phone clock 20:21-20:25 agrees. Filename date was not assumed local.",
+  "owner_deck_core": "Venipede / Whirlipede / Scolipede; two Mega Sableye ex",
+  "opponent_deck_core": "Dialga ex / Honedge / Tinkatink / Alolan Diglett",
+  "outcome": "owner_win",
+  "result_basis": "Your opponent conceded at 204-206, Victory results at 214-214.8",
+  "points": {
+    "owner": 2,
+    "opponent": 0
+  },
+  "turns": 7,
+  "went": "second",
+  "owner_damage_done_results": 160,
+  "exact_deck_list_status": "qualified_candidate_only",
+  "qr_in_this_source": false,
+  "interludes": [
+    {
+      "seconds": [
+        0,
+        20
+      ],
+      "kind": "event lobby and matchmaking/loading"
+    },
+    {
+      "seconds": [
+        93,
+        96
+      ],
+      "kind": "waiting for opponent to return message"
+    },
+    {
+      "seconds": [
+        193,
+        203
+      ],
+      "kind": "waiting for opponent before concession"
+    },
+    {
+      "seconds": [
+        207,
+        215.053333
+      ],
+      "kind": "terminal transition and Victory results"
+    }
+  ],
+  "independent_check_targets": [
+    {
+      "seconds": [
+        23,
+        25
+      ],
+      "reason": "Opening five and selected Active"
+    },
+    {
+      "seconds": [
+        59,
+        66
+      ],
+      "reason": "Ordinary first owner move: exact intact hand, Poke Ball input versus reveal/search/bench timing"
+    },
+    {
+      "seconds": [
+        90,
+        104
+      ],
+      "reason": "One full ordinary opponent turn, hidden draw/fan count, Diglett bench and Metal attachment"
+    },
+    {
+      "seconds": [
+        147,
+        183
+      ],
+      "reason": "Lucky Ice Pop heal/Heads return, evolution, Wally before normal Darkness, KO lifecycle and promotion"
+    },
+    {
+      "seconds": [
+        203,
+        215
+      ],
+      "reason": "Concession and final Victory"
+    }
+  ],
+  "limitations": [
+    "No game-bound QR, exact deck editor list, or exact 20-card log snapshot appears in this source. A matching prior filmed QR is only a candidate because the intervening gap and deck edits are unrecorded.",
+    "Opponent hand identities and ordinary draws remain hidden. Fan counts are visible card-back counts, not inferred card identities.",
+    "Neither full discard pile is opened or scrolled. Top previews are partial views only.",
+    "Native frame filenames are requested seek times. Individual decoded frame PTS was not measured; action input times are bounded intervals and are separate from card previews/reveals/resolution.",
+    "The transient waiting-for-opponent messages do not establish why the opponent was unavailable."
+  ],
+  "archive_authorized_by_worker": false,
+  "external_written_by_worker": false
+}

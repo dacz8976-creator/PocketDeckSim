@@ -1,0 +1,60 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261010_014541000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261010_014541000_iOS.MP4",
+      "sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "filmed_deck_label": "New deck13",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-10T03:20:04.384Z",
+  "log_list_version": "Shared LIVE_DECK_SNAPSHOT.json,23decks",
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "energy_configuration_filmed": "Water only in inspected this/next Energy Zone previews",
+  "actual_card_count": null,
+  "capture_source_text_or_image": "../LIVE_DECK_SNAPSHOT.json",
+  "game_version_binding_basis": "No matching named live deck; no QR or full list filmed in this source. Later015452QR can be candidate only, not proof of earlier game version.",
+  "conflicts_with_filmed_cards": "Later015452QR candidate lacks Elegant Cape, which is visibly drawn and played in this earlier game. Exact earlier20 remains unverified.",
+  "exact_list_status": "unverified_game_version_no_matching_current_live_deck",
+  "visible_cards_minimum_counts": {
+    "Horsea": 2,
+    "Team Rocket's Koffing": 2,
+    "Kingdra ex": 2,
+    "Team Rocket's Weezing ex": 1,
+    "Sabrina": 1,
+    "Small Balloon": 1,
+    "Hiking Trail": 1,
+    "Poké Ball": 1,
+    "Rare Candy": 1,
+    "Professor's Research": 1,
+    "Elegant Cape": 1,
+    "Soothing Shore": 1
+  },
+  "limits": [
+    "The named live snapshot has23decks but lacks this Kingdra/Team Rocket's Weezing deck; exact20-card game version unverified",
+    "No opened discard piles appear",
+    "Opponent draws/search faces hidden",
+    "Source-local draw-end estimates approximately0.5s; actual extracted-frame PTS not measured"
+  ],
+  "later_QR_candidate_source": "../20261010_015452000_iOS/QR_DECODE.json",
+  "later_QR_candidate_conflicts": [
+    {
+      "card": "Elegant Cape",
+      "basis": "Owner draws Elegant Cape from Research on turn7, retains it in hand, and attaches it to Koffing on turn11. Root reports later015452QR20 excludes Elegant Cape.",
+      "evidence_ids": [
+        "f_0264.00",
+        "f_0268.00",
+        "f_0439.00"
+      ],
+      "status": "Visible earlier-game card conflicts with later QR candidate"
+    }
+  ]
+}

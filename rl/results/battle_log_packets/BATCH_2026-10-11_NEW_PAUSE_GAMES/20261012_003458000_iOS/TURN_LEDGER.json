@@ -1,0 +1,6287 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261012_003458000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261012_003458000_iOS.MP4",
+      "sha256": "399ef7e1be5545ca1284a7aedb9f6eea70abb5929ed7cbf2083d539dae64f413",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "turns": [
+    {
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261012_003458000_iOS.MP4",
+      "timing": {
+        "start_seconds": 45,
+        "draw_animation_end_seconds": 44.5,
+        "first_voluntary_move_seconds": 46,
+        "before_end_action_seconds": 53,
+        "end_after_resolution_seconds": 54
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "native normal draw reveal plus exposed four-card selection view before Research leaves hand",
+            "evidence_ids": [
+              "N044p000",
+              "N045p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "native normal draw reveal plus exposed four-card selection view before Research leaves hand",
+            "evidence_ids": [
+              "N044p000",
+              "N045p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor’s Research",
+            "variant": null,
+            "basis": "native normal draw reveal plus exposed four-card selection view before Research leaves hand",
+            "evidence_ids": [
+              "N044p000",
+              "N045p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "native normal draw reveal plus exposed four-card selection view before Research leaves hand",
+            "evidence_ids": [
+              "N044p000",
+              "N045p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "native normal draw reveal plus exposed four-card selection view before Research leaves hand",
+        "evidence_ids": [
+          "N044p000",
+          "N045p000"
+        ],
+        "status": "observed_with_recording_limits",
+        "limit_reason": "No unzoomed four-card pre-play view: 44s has drawn Rare Candy zoom; 45s has selected Research zoom; 46s is after Research leaves hand."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "native normal draw reveal plus exposed four-card selection view before Research leaves hand",
+            "evidence_ids": [
+              "N044p000",
+              "N045p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "native normal draw reveal plus exposed four-card selection view before Research leaves hand",
+            "evidence_ids": [
+              "N044p000",
+              "N045p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor’s Research",
+            "variant": null,
+            "basis": "native normal draw reveal plus exposed four-card selection view before Research leaves hand",
+            "evidence_ids": [
+              "N044p000",
+              "N045p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "native normal draw reveal plus exposed four-card selection view before Research leaves hand",
+            "evidence_ids": [
+              "N044p000",
+              "N045p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "native normal draw reveal plus exposed four-card selection view before Research leaves hand",
+        "evidence_ids": [
+          "N044p000",
+          "N045p000"
+        ],
+        "status": "observed_with_recording_limits",
+        "limit_reason": "No unzoomed four-card pre-play view: 44s has drawn Rare Candy zoom; 45s has selected Research zoom; 46s is after Research leaves hand."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "Count distinct upper/right card edges and card backs in the native top fan",
+        "basis": "observed native top fan",
+        "evidence_ids": [
+          "N046p000"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Rare Candy",
+              "reveal_position": 1,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 44,
+              "evidence_ids": [
+                "N044p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 44,
+          "evidence_ids": [
+            "N044p000"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor’s Research",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Professor’s Research",
+              "reveal_position": 1,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 49,
+              "evidence_ids": [
+                "N049p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Seadra",
+              "reveal_position": 2,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 50,
+              "evidence_ids": [
+                "N050p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 49,
+          "evidence_ids": [
+            "N049p000",
+            "N050p000"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Professor’s Research",
+          "target": null,
+          "energy": null,
+          "result": "Draw two cards",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 46,
+          "evidence_ids": [
+            "N045p000",
+            "N046p000",
+            "N047p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "End turn with no Energy generated on first turn",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 53,
+          "evidence_ids": [
+            "N053p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 1,
+        "phase": "owner Research selection, after normal draw",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30; 50 HP",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N045p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N045p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N045p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N045p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Pichu",
+            "variant": "Crackly Toss; 30 HP",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N045p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N045p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N045p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N045p000"
+        ],
+        "timestamp_seconds": 45
+      },
+      "board_after": {
+        "turn_number_displayed": 2,
+        "phase": "turn2 banner after owner ending action; before opponent Energy generation",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30; 50 HP",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N054p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N054p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N054p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N054p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Pichu",
+            "variant": "Crackly Toss; 30 HP",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N054p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N054p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N054p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N054p000"
+        ],
+        "timestamp_seconds": 54
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N053p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N053p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N053p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor’s Research",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N053p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Seadra",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N053p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "observed native exposed hand",
+        "evidence_ids": [
+          "N053p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "discard_not_opened_owner",
+        "discard_not_opened_opponent"
+      ],
+      "turn_evidence_ids": [
+        "N045p000",
+        "N054p000"
+      ],
+      "limits": [
+        "T1 +1/+3/+6 candidates are all after Research starts. N044/N045 qualify the four-card pre-play hand; they do not meet the ideal unzoomed criterion."
+      ]
+    },
+    {
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261012_003458000_iOS.MP4",
+      "timing": {
+        "start_seconds": 60,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 64,
+        "before_end_action_seconds": 78,
+        "end_after_resolution_seconds": 82
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "opponent faces hidden; exact acting-hand count not separately asserted",
+        "evidence_ids": [
+          "N060p000"
+        ],
+        "status": "hidden",
+        "limit_reason": "Required observed opponent fan counts are preserved independently at owner-turn starts. No arithmetic count substitutes for a fan."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Owner hand requirement applies to owner turns; visible continuity retained",
+        "status": "not_applicable",
+        "evidence_ids": [
+          "N056p000"
+        ],
+        "limit_reason": "See preceding owner ending hand; no owner card plays during opponent turn."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count distinct upper/right card edges and card backs in the native top fan",
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "limit_reason": "Required count is at owner turn start."
+      },
+      "draws_and_searches": [],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": null,
+          "energy": null,
+          "result": "One hidden Basic search result; Dratini subsequently played",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 64,
+          "evidence_ids": [],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Dratini",
+          "target": "opponent Bench 3",
+          "energy": null,
+          "result": "Place Dratini in right Bench position",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 72,
+          "evidence_ids": [],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Dratini Bench 3",
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "Dratini Bench 3",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach one Lightning to Dratini",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 76,
+          "evidence_ids": [
+            "N076p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Pichu",
+          "target": "Dratini Bench 3",
+          "energy": null,
+          "result": "Crackly Toss attaches another Lightning to benched Dratini",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            {
+              "event": "Crackly Toss generated Lightning attachment",
+              "energy_type": "Lightning",
+              "count": 1,
+              "result": "Dratini ends with two Lightning"
+            }
+          ],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 78,
+          "evidence_ids": [
+            "N078p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "normal draw",
+          "cards_added": 1,
+          "identities": null,
+          "limit": "Opponent draw/search faces hidden; do not infer search identity from later play."
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 2,
+        "phase": "settled opponent turn2, after draw and generation, before first play",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30; 50 HP",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N060p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N060p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N060p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N060p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Pichu",
+            "variant": "Crackly Toss; 30 HP",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N060p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N060p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N060p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N060p000"
+        ],
+        "timestamp_seconds": 60
+      },
+      "board_after": {
+        "turn_number_displayed": 2,
+        "phase": "Crackly Toss resolved, before turn3",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30; 50 HP",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N082p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N082p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N082p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N082p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Pichu",
+            "variant": "Crackly Toss; 30 HP",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N082p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dratini",
+              "variant": "Slam 20x; 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Lightning": 2
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N082p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N082p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N082p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N082p000"
+        ],
+        "timestamp_seconds": 82
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Owner did not take a turn",
+        "status": "not_applicable",
+        "evidence_ids": [
+          "N082p000"
+        ],
+        "limit_reason": "Named owner end-hand is recorded on owner rows."
+      },
+      "discard_snapshot_ids": [
+        "discard_not_opened_owner",
+        "discard_not_opened_opponent"
+      ],
+      "turn_evidence_ids": [
+        "N060p000",
+        "N082p000"
+      ],
+      "limits": []
+    },
+    {
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261012_003458000_iOS.MP4",
+      "timing": {
+        "start_seconds": 88,
+        "draw_animation_end_seconds": 86,
+        "first_voluntary_move_seconds": 90,
+        "before_end_action_seconds": 106,
+        "end_after_resolution_seconds": 107
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor’s Research",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Seadra",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "observed clear unzoomed native six-card hand at88s",
+        "evidence_ids": [
+          "N088p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor’s Research",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Seadra",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "observed clear unzoomed native six-card hand at88s",
+        "evidence_ids": [
+          "N088p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": null,
+        "count_method": "Count distinct upper/right card edges and card backs in the native top fan",
+        "basis": "observed native top fan",
+        "evidence_ids": [
+          "N086p000"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "reveal_position": 1,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 85,
+              "evidence_ids": [
+                "N085p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 5,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 85,
+          "evidence_ids": [
+            "N085p000"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor’s Research",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "reveal_position": 1,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 97,
+              "evidence_ids": [
+                "N097p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Sabrina",
+              "reveal_position": 2,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 98,
+              "evidence_ids": [
+                "N098p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 97,
+          "evidence_ids": [
+            "N097p000",
+            "N098p000"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Seadra",
+          "target": "owner Active",
+          "energy": null,
+          "result": "Evolve Active Horsea into Seadra 70 HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 90,
+          "evidence_ids": [
+            "N090p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Seadra",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Active Seadra",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach Water to Active Seadra",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 92,
+          "evidence_ids": [
+            "N092p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Professor’s Research",
+          "target": null,
+          "energy": null,
+          "result": "Draw two cards",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 96,
+          "evidence_ids": [
+            "N096p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "tool",
+          "card_name": "Small Balloon",
+          "target": "Seadra",
+          "energy": null,
+          "result": "Attach Small Balloon to Active Seadra",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 106,
+          "evidence_ids": [
+            "N106p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "End turn; Water Arrow requires three Water and is not used",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 107,
+          "evidence_ids": [
+            "N107p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 3,
+        "phase": "settled owner turn3, after draw and Energy generation, before first play",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30; 50 HP",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N088p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N088p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Pichu",
+            "variant": "Crackly Toss; 30 HP",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dratini",
+              "variant": "Slam 20x; 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Lightning": 2
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N088p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N088p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N088p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N088p000"
+        ],
+        "timestamp_seconds": 88
+      },
+      "board_after": {
+        "turn_number_displayed": 3,
+        "phase": "owner end turn, before turn4 generation",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Seadra",
+            "variant": "Water Arrow 50; 70 HP",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N107p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N107p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N107p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N107p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Pichu",
+            "variant": "Crackly Toss; 30 HP",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N107p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dratini",
+              "variant": "Slam 20x; 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Lightning": 2
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N107p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N107p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N107p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N107p000"
+        ],
+        "timestamp_seconds": 107
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N106p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N106p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N106p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N106p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N106p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "observed native exposed hand",
+        "evidence_ids": [
+          "N106p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "discard_not_opened_owner",
+        "discard_not_opened_opponent"
+      ],
+      "turn_evidence_ids": [
+        "N088p000",
+        "N107p000"
+      ],
+      "limits": []
+    },
+    {
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20261012_003458000_iOS.MP4",
+      "timing": {
+        "start_seconds": 112,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 120,
+        "before_end_action_seconds": 130,
+        "end_after_resolution_seconds": 132
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "opponent faces hidden; exact acting-hand count not separately asserted",
+        "evidence_ids": [
+          "D112p000"
+        ],
+        "status": "hidden",
+        "limit_reason": "Required observed opponent fan counts are preserved independently at owner-turn starts. No arithmetic count substitutes for a fan."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Owner hand requirement applies to owner turns; visible continuity retained",
+        "status": "not_applicable",
+        "evidence_ids": [
+          "N107p000"
+        ],
+        "limit_reason": "See preceding owner ending hand; no owner card plays during opponent turn."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count distinct upper/right card edges and card backs in the native top fan",
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "limit_reason": "Required count is at owner turn start."
+      },
+      "draws_and_searches": [],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Dragonair",
+          "target": "opponent Bench 3",
+          "energy": null,
+          "result": "Evolve right Bench Dratini into Dragonair 80 HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 122,
+          "evidence_ids": [
+            "N122p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Dragonair Bench 3",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Dragonair Bench 3",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach Water to Dragonair, leaving Water + two Lightning",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 126,
+          "evidence_ids": [
+            "N126p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "attack",
+          "card_name": "Pichu",
+          "target": null,
+          "energy": null,
+          "result": "Crackly Toss animation is shown; no additional Energy attachment resolves",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            {
+              "event": "no-effect attack resolution",
+              "basis": "No Benched Basic remains; only Dragonair is benched and board remains at three Energy. Current zone had already been consumed."
+            }
+          ],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 130,
+          "evidence_ids": [
+            "N130p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "normal draw",
+          "cards_added": 1,
+          "identities": null
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 4,
+        "phase": "settled opponent turn4 before evolution; reduced frame used only for board",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Seadra",
+            "variant": "Water Arrow 50; 70 HP",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "D112p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "D112p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "D112p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "D112p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Pichu",
+            "variant": "Crackly Toss; 30 HP",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "D112p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dratini",
+              "variant": "Slam 20x; 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Lightning": 2
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "D112p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "D112p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "D112p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "D112p000"
+        ],
+        "timestamp_seconds": 112
+      },
+      "board_after": {
+        "turn_number_displayed": 4,
+        "phase": "Crackly Toss resolved; no effect; before turn5",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Seadra",
+            "variant": "Water Arrow 50; 70 HP",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "D132p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "D132p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "D132p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "D132p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Pichu",
+            "variant": "Crackly Toss; 30 HP",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "D132p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dragonair",
+              "variant": "Dragon’s Blessing / Draconic Whip 40; 80 HP",
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Water": 1,
+                  "Lightning": 2
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "D132p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "D132p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "D132p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "D132p000"
+        ],
+        "timestamp_seconds": 132
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Owner did not take a turn",
+        "status": "not_applicable",
+        "evidence_ids": [
+          "N134p000"
+        ],
+        "limit_reason": "Named owner end-hand is recorded on owner rows."
+      },
+      "discard_snapshot_ids": [
+        "discard_not_opened_owner",
+        "discard_not_opened_opponent"
+      ],
+      "turn_evidence_ids": [
+        "D112p000",
+        "D132p000"
+      ],
+      "limits": []
+    },
+    {
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261012_003458000_iOS.MP4",
+      "timing": {
+        "start_seconds": 136,
+        "draw_animation_end_seconds": 136,
+        "first_voluntary_move_seconds": 137,
+        "before_end_action_seconds": 174,
+        "end_after_resolution_seconds": 190
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Poké Ball",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "observed native exposed hand",
+        "evidence_ids": [
+          "N136p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Poké Ball",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "observed native exposed hand",
+        "evidence_ids": [
+          "N136p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": null,
+        "count_method": "Count distinct upper/right card edges and card backs in the native top fan",
+        "basis": "observed native top fan",
+        "evidence_ids": [
+          "N136p000"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poké Ball",
+              "reveal_position": 1,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 136,
+              "evidence_ids": [
+                "N136p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 5,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 136,
+          "evidence_ids": [
+            "N136p000"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Team Rocket’s Koffing",
+              "reveal_position": 1,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 140,
+              "evidence_ids": [
+                "N140p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 5,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 140,
+          "evidence_ids": [
+            "N140p000"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Copycat",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": "Kingdra ex",
+              "reveal_position": 1,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 156,
+              "evidence_ids": [
+                "N156p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Kingdra ex",
+              "reveal_position": 2,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 157,
+              "evidence_ids": [
+                "N157p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Koffing",
+              "reveal_position": 3,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 158,
+              "evidence_ids": [
+                "N158p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Sabrina",
+              "reveal_position": 4,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 159,
+              "evidence_ids": [
+                "N159p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "reveal_position": 5,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 160,
+              "evidence_ids": [
+                "N160p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 5,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": {
+            "names": [
+              "Rare Candy",
+              "Team Rocket’s Weezing ex",
+              "Team Rocket’s Weezing ex",
+              "Sabrina"
+            ],
+            "basis": "exposed selection/return animation at152 before redraw"
+          },
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 156,
+          "evidence_ids": [
+            "N156p000",
+            "N157p000",
+            "N158p000",
+            "N159p000",
+            "N160p000"
+          ],
+          "limit_reason": null,
+          "hand_count_after_supporter_consumption_before_shuffle": 4,
+          "hand_count_after_shuffle_before_draw": 0
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": null,
+          "energy": null,
+          "result": "Find Team Rocket’s Koffing; add to hand",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 137,
+          "evidence_ids": [
+            "N137p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Team Rocket’s Koffing",
+          "target": "owner Bench 3",
+          "energy": null,
+          "result": "Place found Koffing in right Bench",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 140,
+          "evidence_ids": [
+            "N140p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Copycat",
+          "target": null,
+          "energy": null,
+          "result": "Shuffle four remaining cards into deck; draw five cards matching opponent hand count",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            {
+              "event": "Copycat consumed",
+              "hand_count_before_play": 5,
+              "hand_count_after_consumption": 4
+            },
+            {
+              "order": 1,
+              "event": "return Rare Candy, two Weezing ex and Sabrina to deck"
+            },
+            {
+              "order": 2,
+              "event": "five individual reveals recorded below"
+            }
+          ],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 150,
+          "evidence_ids": [
+            "N150p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Team Rocket’s Koffing",
+          "target": "owner Bench 2",
+          "energy": null,
+          "result": "Place second Koffing into middle Bench",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 162,
+          "evidence_ids": [
+            "N162p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "evolution",
+          "card_name": "Kingdra ex",
+          "target": "owner Active",
+          "energy": null,
+          "result": "Evolve Active Seadra into Kingdra ex 170 HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 166,
+          "evidence_ids": [
+            "N166p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 6,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Kingdra ex",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Active Kingdra ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach second Water to Active Kingdra ex",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 170,
+          "evidence_ids": [
+            "N170p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 7,
+          "kind": "attack",
+          "card_name": "Kingdra ex",
+          "target": "Pichu",
+          "energy": null,
+          "result": "Stormy Prison 90 knocks out Pichu; owner gains one point",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 174,
+          "evidence_ids": [
+            "N174p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Pichu knocked out",
+          "owner_point_change": 1,
+          "source_seconds": 178
+        },
+        {
+          "event": "opponent promotes only benched Dragonair",
+          "source_seconds": 184
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 5,
+        "phase": "normal Poké Ball draw resolved; pre-play hand",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Seadra",
+            "variant": "Water Arrow 50; 70 HP",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N136p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N136p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Pichu",
+            "variant": "Crackly Toss; 30 HP",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dragonair",
+              "variant": "Dragon’s Blessing / Draconic Whip 40; 80 HP",
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Water": 1,
+                  "Lightning": 2
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N136p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N136p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N136p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N136p000"
+        ],
+        "timestamp_seconds": 136
+      },
+      "board_after": {
+        "turn_number_displayed": 6,
+        "phase": "post-Pichu knockout and Dragonair promotion; next turn6 Energy is generating; small next token unreadable during glare",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90; 170 HP",
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N190p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N190p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "Reverse Thrust 10; 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N190p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "Reverse Thrust 10; 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N190p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N190p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "N190p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Dragonair",
+            "variant": "Dragon’s Blessing / Draconic Whip 40; 80 HP",
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 80,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Water": 1,
+                "Lightning": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N190p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": null,
+              "count": null,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N190p000"
+            ],
+            "limit_reason": "Small next icon is unreadable during generation glare."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N190p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N190p000"
+        ],
+        "timestamp_seconds": 190
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N174p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N174p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N174p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "observed native exposed hand",
+        "evidence_ids": [
+          "N174p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "discard_not_opened_owner",
+        "discard_not_opened_opponent"
+      ],
+      "turn_evidence_ids": [
+        "N136p000",
+        "N190p000"
+      ],
+      "limits": [
+        "Owner begins Poké Ball before +1-second candidate; use native136 hand before play. Candidate137 already shows the Item play.",
+        "End boundary uses190s after Dragonair replacement; turn6 banner/generation has begun, but no opponent voluntary move yet. Small opponent next symbol remains unreadable until194s."
+      ]
+    },
+    {
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20261012_003458000_iOS.MP4",
+      "timing": {
+        "start_seconds": 194,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 196,
+        "before_end_action_seconds": 218,
+        "end_after_resolution_seconds": 229
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "opponent faces hidden; exact acting-hand count not separately asserted",
+        "evidence_ids": [
+          "N194p000"
+        ],
+        "status": "hidden",
+        "limit_reason": "Required observed opponent fan counts are preserved independently at owner-turn starts. No arithmetic count substitutes for a fan."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Owner hand requirement applies to owner turns; visible continuity retained",
+        "status": "not_applicable",
+        "evidence_ids": [
+          "N184p000"
+        ],
+        "limit_reason": "See preceding owner ending hand; no owner card plays during opponent turn."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count distinct upper/right card edges and card backs in the native top fan",
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "limit_reason": "Required count is at owner turn start."
+      },
+      "draws_and_searches": [],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "May",
+          "target": null,
+          "energy": null,
+          "result": "Put two random Pokémon into hidden opponent hand and choose two Pokémon to shuffle back; identities are hidden",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            {
+              "event": "two hidden searches and two hidden returns",
+              "limit": "No reveal faces available; cannot name them from subsequent Dragonite or Dratini play."
+            }
+          ],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 196,
+          "evidence_ids": [
+            "N196p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Dragonair",
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "Active Dragonair",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach Lightning to Active Dragonair",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 208,
+          "evidence_ids": [
+            "N208p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "evolution",
+          "card_name": "Dragonite",
+          "target": "opponent Active",
+          "energy": null,
+          "result": "Evolve Active Dragonair into Dragonite 160 HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 212,
+          "evidence_ids": [
+            "D212p000",
+            "N214p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Dratini",
+          "target": "opponent Bench 3",
+          "energy": null,
+          "result": "Place Dratini in right Bench",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 214,
+          "evidence_ids": [
+            "N214p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": "Dragonite",
+          "target": "owner board",
+          "energy": null,
+          "result": "Draco Meteor distributes 200 damage: middle Koffing receives 150 and is knocked out; right Koffing receives 50 and remains at10HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            {
+              "event": "four random 50-damage allocations",
+              "middle_Koffing": 150,
+              "right_Koffing": 50,
+              "basis": "resolved board plus filmed attack sequence; individual allocation order not separately reconstructable"
+            }
+          ],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 218,
+          "evidence_ids": [
+            "N218p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "normal draw",
+          "cards_added": 1,
+          "identities": null
+        },
+        {
+          "event": "middle Koffing knocked out",
+          "opponent_point_change": 1,
+          "source_seconds": 226
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 6,
+        "phase": "settled opponent turn6 before May",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90; 170 HP",
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N194p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N194p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "Reverse Thrust 10; 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N194p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "Reverse Thrust 10; 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N194p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N194p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "N194p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Dragonair",
+            "variant": "Dragon’s Blessing / Draconic Whip 40; 80 HP",
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 80,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Water": 1,
+                "Lightning": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N194p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N194p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "N194p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N194p000"
+        ],
+        "timestamp_seconds": 194
+      },
+      "board_after": {
+        "turn_number_displayed": 7,
+        "phase": "first Draco Meteor/KO resolved; turn7 banner before owner generation",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90; 170 HP",
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N229p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N229p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "Reverse Thrust 10; 60 HP",
+              "bench_position": 3,
+              "hp_now": 10,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 50,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N229p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N229p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "N229p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Dragonite",
+            "variant": "Draco Meteor; 160 HP",
+            "bench_position": null,
+            "hp_now": 160,
+            "hp_max": 160,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 4,
+              "by_type": {
+                "Water": 1,
+                "Lightning": 3
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N229p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dratini",
+              "variant": "Slam 20x; 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N229p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N229p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "N229p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N229p000"
+        ],
+        "timestamp_seconds": 229
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Owner did not take a turn",
+        "status": "not_applicable",
+        "evidence_ids": [
+          "N229p000"
+        ],
+        "limit_reason": "Named owner end-hand is recorded on owner rows."
+      },
+      "discard_snapshot_ids": [
+        "discard_not_opened_owner",
+        "discard_not_opened_opponent"
+      ],
+      "turn_evidence_ids": [
+        "N194p000",
+        "N229p000"
+      ],
+      "limits": [
+        "Evolution and Dratini bench animations occur close together; exact subsecond boundary is approximate. May does not reveal the searched/returned Pokémon identities."
+      ]
+    },
+    {
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261012_003458000_iOS.MP4",
+      "timing": {
+        "start_seconds": 232,
+        "draw_animation_end_seconds": 232,
+        "first_voluntary_move_seconds": 233,
+        "before_end_action_seconds": 254,
+        "end_after_resolution_seconds": 270
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N232p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N232p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N232p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N232p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "observed native exposed hand",
+        "evidence_ids": [
+          "N232p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N232p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N232p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N232p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N232p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "observed native exposed hand",
+        "evidence_ids": [
+          "N232p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count distinct upper/right card edges and card backs in the native top fan",
+        "basis": "observed native top fan",
+        "evidence_ids": [
+          "N232p000"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Hiking Trail",
+              "reveal_position": 1,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 232,
+              "evidence_ids": [
+                "N232p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 232,
+          "evidence_ids": [
+            "N232p000"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "stadium_draw",
+          "caused_by": "Hiking Trail",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Rare Candy",
+              "reveal_position": 1,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 262,
+              "evidence_ids": [
+                "N262p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 262,
+          "evidence_ids": [
+            "N262p000"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "stadium",
+          "card_name": "Hiking Trail",
+          "target": null,
+          "energy": null,
+          "result": "Put Hiking Trail into play",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 233,
+          "evidence_ids": [
+            "N233p000",
+            "N234p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "evolution",
+          "card_name": "Team Rocket’s Weezing ex",
+          "target": "owner Bench 3",
+          "energy": null,
+          "result": "Evolve right Bench Koffing carrying50damage into Weezing ex90/140HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 238,
+          "evidence_ids": [
+            "N238p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "ability",
+          "card_name": "Team Rocket’s Weezing ex",
+          "target": "Dragonite",
+          "energy": null,
+          "result": "Accept Boiler Smog and make Dragonite Poisoned and Burned",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            {
+              "event": "evolution-triggered ability chosen",
+              "source_seconds": 242
+            }
+          ],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 242,
+          "evidence_ids": [
+            "N242p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Horsea Bench 1",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Horsea Bench 1",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach Water to benched Horsea",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 250,
+          "evidence_ids": [
+            "N250p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": "Kingdra ex",
+          "target": "Dragonite",
+          "energy": null,
+          "result": "Confirm Stormy Prison attack; accept offered Supporter warning and decline using a Supporter. Deal90 to Dragonite and impose retreat block",
+          "prompt_text": "End your turn? A Supporter card can be used",
+          "response": "OK",
+          "nested_events_in_order": [
+            {
+              "event": "warning confirmation",
+              "source_seconds": 254,
+              "response": "OK"
+            },
+            {
+              "event": "Stormy Prison damage",
+              "source_seconds": 257,
+              "damage": 90
+            },
+            {
+              "event": "Can’t retreat status message",
+              "source_seconds": 260,
+              "limit": "Attack effect announcement, not a failed owner retreat."
+            }
+          ],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 254,
+          "evidence_ids": [
+            "N254p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Hiking Trail end draw",
+          "source_seconds": 262,
+          "card": "Rare Candy"
+        },
+        {
+          "event": "Poison and Burn checkup",
+          "damage": 30,
+          "Dragonite_hp_after": 40,
+          "source_seconds": 264
+        },
+        {
+          "event": "Burn coin heads; Burn clears, Poison remains",
+          "source_seconds": 266
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 7,
+        "phase": "normal Hiking Trail draw/owner Energy generation before first play",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90; 170 HP",
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N232p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N232p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "Reverse Thrust 10; 60 HP",
+              "bench_position": 3,
+              "hp_now": 10,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 50,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N232p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N232p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "N232p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Dragonite",
+            "variant": "Draco Meteor; 160 HP",
+            "bench_position": null,
+            "hp_now": 160,
+            "hp_max": 160,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 4,
+              "by_type": {
+                "Water": 1,
+                "Lightning": 3
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N232p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dratini",
+              "variant": "Slam 20x; 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N232p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N232p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "N232p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N232p000"
+        ],
+        "timestamp_seconds": 232
+      },
+      "board_after": {
+        "turn_number_displayed": 8,
+        "phase": "attack, Stadium draw and checkups resolved; turn8 banner before opponent generation",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90; 170 HP",
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N270p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N270p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60; 140 HP",
+              "bench_position": 3,
+              "hp_now": 90,
+              "hp_max": 140,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 50,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N270p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N270p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "N270p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Dragonite",
+            "variant": "Draco Meteor; 160 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 160,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 120,
+            "attached_energy": {
+              "total": 4,
+              "by_type": {
+                "Water": 1,
+                "Lightning": 3
+              }
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Poisoned"
+            ],
+            "active_effects": [
+              {
+                "name": "Stormy Prison",
+                "source": "Kingdra ex",
+                "restriction": "cannot retreat",
+                "affected": "opponent Active Dragonite",
+                "expires": "end of opponent turn 8"
+              }
+            ],
+            "evidence_ids": [
+              "N270p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dratini",
+              "variant": "Slam 20x; 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N270p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N270p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "N270p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N270p000"
+        ],
+        "timestamp_seconds": 270
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N270p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N270p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N270p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "observed native exposed hand",
+        "evidence_ids": [
+          "N270p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "discard_not_opened_owner",
+        "discard_not_opened_opponent"
+      ],
+      "turn_evidence_ids": [
+        "N232p000",
+        "N270p000"
+      ],
+      "limits": [
+        "Scheduled +3 and +6 candidates show played Stadium/evolution, so selected native232 is the pre-play hand."
+      ]
+    },
+    {
+      "turn_number": 8,
+      "who_played": "opponent",
+      "source_video": "20261012_003458000_iOS.MP4",
+      "timing": {
+        "start_seconds": 272,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 280,
+        "before_end_action_seconds": 290,
+        "end_after_resolution_seconds": 301
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "opponent faces hidden; exact acting-hand count not separately asserted",
+        "evidence_ids": [
+          "N272p000"
+        ],
+        "status": "hidden",
+        "limit_reason": "Required observed opponent fan counts are preserved independently at owner-turn starts. No arithmetic count substitutes for a fan."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Owner hand requirement applies to owner turns; visible continuity retained",
+        "status": "not_applicable",
+        "evidence_ids": [
+          "N270p000"
+        ],
+        "limit_reason": "See preceding owner ending hand; no owner card plays during opponent turn."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count distinct upper/right card edges and card backs in the native top fan",
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "limit_reason": "Required count is at owner turn start."
+      },
+      "draws_and_searches": [],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Dratini Bench 3",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Dratini Bench 3",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach Water to benched Dratini",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 280,
+          "evidence_ids": [
+            "N280p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "attack",
+          "card_name": "Dragonite",
+          "target": "owner board",
+          "energy": null,
+          "result": "Draco Meteor:150 damage to Active Kingdra ex, leaving20HP;50 to benched Horsea, knocking it out",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 290,
+          "evidence_ids": [
+            "N290p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "normal draw",
+          "cards_added": 1,
+          "identities": null
+        },
+        {
+          "event": "Horsea knocked out",
+          "opponent_point_change": 1,
+          "source_seconds": 296
+        },
+        {
+          "event": "Poison checkup on Dragonite",
+          "damage": 10,
+          "Dragonite_hp_after": 30,
+          "source_seconds": 298
+        },
+        {
+          "event": "Stormy Prison retreat block expires at end of turn8"
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 8,
+        "phase": "opponent turn8 before large Energy generation settles; next symbol not legible",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90; 170 HP",
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N272p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Horsea",
+              "variant": "Hook 30; 50 HP",
+              "bench_position": 1,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N272p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60; 140 HP",
+              "bench_position": 3,
+              "hp_now": 90,
+              "hp_max": 140,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 50,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N272p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N272p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "N272p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Dragonite",
+            "variant": "Draco Meteor; 160 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 160,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 120,
+            "attached_energy": {
+              "total": 4,
+              "by_type": {
+                "Water": 1,
+                "Lightning": 3
+              }
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Poisoned"
+            ],
+            "active_effects": [
+              {
+                "name": "Stormy Prison",
+                "source": "Kingdra ex",
+                "restriction": "cannot retreat",
+                "affected": "opponent Active Dragonite",
+                "expires": "end of opponent turn 8"
+              }
+            ],
+            "evidence_ids": [
+              "N272p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dratini",
+              "variant": "Slam 20x; 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N272p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": null,
+              "count": null,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N272p000"
+            ],
+            "limit_reason": "N272 generation is starting; no settled current token and small next symbol is unreadable."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "N272p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N272p000"
+        ],
+        "timestamp_seconds": 272
+      },
+      "board_after": {
+        "turn_number_displayed": 9,
+        "phase": "second Draco Meteor, Horsea KO and Poison resolved; turn9 before owner normal draw",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90; 170 HP",
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 170,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 150,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N301p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60; 140 HP",
+              "bench_position": 3,
+              "hp_now": 90,
+              "hp_max": 140,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 50,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N301p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N301p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "N301p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Dragonite",
+            "variant": "Draco Meteor; 160 HP",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 160,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 130,
+            "attached_energy": {
+              "total": 4,
+              "by_type": {
+                "Water": 1,
+                "Lightning": 3
+              }
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Poisoned"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "N301p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dratini",
+              "variant": "Slam 20x; 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N301p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N301p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "N301p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N301p000"
+        ],
+        "timestamp_seconds": 301
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Owner did not take a turn",
+        "status": "not_applicable",
+        "evidence_ids": [
+          "N301p000"
+        ],
+        "limit_reason": "Named owner end-hand is recorded on owner rows."
+      },
+      "discard_snapshot_ids": [
+        "discard_not_opened_owner",
+        "discard_not_opened_opponent"
+      ],
+      "turn_evidence_ids": [
+        "N272p000",
+        "N301p000"
+      ],
+      "limits": []
+    },
+    {
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261012_003458000_iOS.MP4",
+      "timing": {
+        "start_seconds": 304,
+        "draw_animation_end_seconds": 303,
+        "first_voluntary_move_seconds": 307,
+        "before_end_action_seconds": 309,
+        "end_after_resolution_seconds": 324
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N303p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N303p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N303p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N303p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "observed native exposed hand",
+        "evidence_ids": [
+          "N303p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N303p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N303p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N303p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N303p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "observed native exposed hand",
+        "evidence_ids": [
+          "N303p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "Count distinct upper/right card edges and card backs in the native top fan",
+        "basis": "observed native top fan",
+        "evidence_ids": [
+          "N303p000"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Rare Candy",
+              "reveal_position": 1,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 302,
+              "evidence_ids": [
+                "N302p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 302,
+          "evidence_ids": [
+            "N302p000"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Weezing ex Bench 3",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Weezing ex Bench 3",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach one Water to benched Weezing ex",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 307,
+          "evidence_ids": [
+            "N307p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "attack",
+          "card_name": "Kingdra ex",
+          "target": "Dragonite",
+          "energy": null,
+          "result": "Stormy Prison90 knocks out Dragonite30HP; owner reaches two points",
+          "prompt_text": "End your turn? A Supporter card can be used",
+          "response": "OK",
+          "nested_events_in_order": [
+            {
+              "event": "offered Supporter warning",
+              "source_seconds": 309,
+              "evidence_ids": [
+                "N309p000"
+              ],
+              "response": "OK confirms attack while declining to use a Supporter"
+            },
+            {
+              "event": "Stormy Prison attack resolves",
+              "source_seconds": 312,
+              "evidence_ids": [
+                "N312p000"
+              ]
+            }
+          ],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 310,
+          "evidence_ids": [
+            "N310p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Dragonite knocked out",
+          "owner_point_change": 1,
+          "source_seconds": 318
+        },
+        {
+          "event": "opponent promotes only Dratini",
+          "source_seconds": 322
+        },
+        {
+          "event": "Hiking Trail draws zero; owner already has four cards"
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 9,
+        "phase": "settled owner turn9 normal draw and Energy generation",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90; 170 HP",
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 170,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 150,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N304p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60; 140 HP",
+              "bench_position": 3,
+              "hp_now": 90,
+              "hp_max": 140,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 50,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N304p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N304p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "N304p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Dragonite",
+            "variant": "Draco Meteor; 160 HP",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 160,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 130,
+            "attached_energy": {
+              "total": 4,
+              "by_type": {
+                "Water": 1,
+                "Lightning": 3
+              }
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Poisoned"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "N304p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Dratini",
+              "variant": "Slam 20x; 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N304p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N304p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "N304p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N304p000"
+        ],
+        "timestamp_seconds": 304
+      },
+      "board_after": {
+        "turn_number_displayed": 10,
+        "phase": "Dragonite knockout and Dratini replacement resolved; turn10 banner before generation",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90; 170 HP",
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 170,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 150,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N324p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60; 140 HP",
+              "bench_position": 3,
+              "hp_now": 90,
+              "hp_max": 140,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 50,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N324p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N324p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "N324p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Dratini",
+            "variant": "Slam 20x; 60 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N324p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N324p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "N324p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N324p000"
+        ],
+        "timestamp_seconds": 324
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N322p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N322p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N322p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N322p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "observed native exposed hand",
+        "evidence_ids": [
+          "N322p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "discard_not_opened_owner",
+        "discard_not_opened_opponent"
+      ],
+      "turn_evidence_ids": [
+        "N304p000",
+        "N324p000"
+      ],
+      "limits": []
+    },
+    {
+      "turn_number": 10,
+      "who_played": "opponent",
+      "source_video": "20261012_003458000_iOS.MP4",
+      "timing": {
+        "start_seconds": 328,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 334,
+        "before_end_action_seconds": 338,
+        "end_after_resolution_seconds": 348
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "opponent faces hidden; exact acting-hand count not separately asserted",
+        "evidence_ids": [
+          "N328p000"
+        ],
+        "status": "hidden",
+        "limit_reason": "Required observed opponent fan counts are preserved independently at owner-turn starts. No arithmetic count substitutes for a fan."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Owner hand requirement applies to owner turns; visible continuity retained",
+        "status": "not_applicable",
+        "evidence_ids": [
+          "N324p000"
+        ],
+        "limit_reason": "See preceding owner ending hand; no owner card plays during opponent turn."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count distinct upper/right card edges and card backs in the native top fan",
+        "basis": "not applicable to opponent turn",
+        "evidence_ids": [],
+        "limit_reason": "Required count is at owner turn start."
+      },
+      "draws_and_searches": [],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Dratini",
+          "energy": {
+            "type": "Lightning",
+            "count": 1,
+            "destination": "Active Dratini",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach Lightning to Active Dratini; it now has Water + Lightning",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 334,
+          "evidence_ids": [
+            "N334p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "attack",
+          "card_name": "Dratini",
+          "target": "Kingdra ex",
+          "energy": null,
+          "result": "Slam flips two tails and deals zero damage. Kingdra ex stays20HP",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            {
+              "event": "coin results",
+              "heads": 0,
+              "tails": 2,
+              "source_seconds": 342
+            },
+            {
+              "event": "damage display",
+              "damage": 0,
+              "source_seconds": 346
+            }
+          ],
+          "hand_count_after": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 338,
+          "evidence_ids": [
+            "N338p000"
+          ],
+          "basis": "observed source sequence; action timestamp approximate seek-local seconds",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "normal draw",
+          "cards_added": 1,
+          "identities": null
+        },
+        {
+          "event": "Hiking Trail draws zero; opponent fan remains five"
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 10,
+        "phase": "settled opponent turn10 before attachment",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90; 170 HP",
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 170,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 150,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N328p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60; 140 HP",
+              "bench_position": 3,
+              "hp_now": 90,
+              "hp_max": 140,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 50,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N328p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N328p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "N328p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Dratini",
+            "variant": "Slam 20x; 60 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N328p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N328p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "N328p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N328p000"
+        ],
+        "timestamp_seconds": 328
+      },
+      "board_after": {
+        "turn_number_displayed": 11,
+        "phase": "Slam two tails/zero damage resolved; turn11 banner before owner draw/generation",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90; 170 HP",
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 170,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 150,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N348p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60; 140 HP",
+              "bench_position": 3,
+              "hp_now": 90,
+              "hp_max": 140,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 50,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N348p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N348p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "N348p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Dratini",
+            "variant": "Slam 20x; 60 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 1,
+                "Lightning": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N348p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N348p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "N348p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N348p000"
+        ],
+        "timestamp_seconds": 348
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Owner did not take a turn",
+        "status": "not_applicable",
+        "evidence_ids": [
+          "N348p000"
+        ],
+        "limit_reason": "Named owner end-hand is recorded on owner rows."
+      },
+      "discard_snapshot_ids": [
+        "discard_not_opened_owner",
+        "discard_not_opened_opponent"
+      ],
+      "turn_evidence_ids": [
+        "N328p000",
+        "N348p000"
+      ],
+      "limits": []
+    },
+    {
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261012_003458000_iOS.MP4",
+      "timing": {
+        "start_seconds": 351,
+        "draw_animation_end_seconds": 351,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": 352,
+        "end_after_resolution_seconds": 353
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N351p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N351p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N351p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N351p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N351p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "observed native exposed hand",
+        "evidence_ids": [
+          "N351p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N351p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N351p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N351p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N351p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N351p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "observed native exposed hand",
+        "evidence_ids": [
+          "N351p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": null,
+        "count_method": "Count distinct upper/right card edges and card backs in the native top fan",
+        "basis": "observed native top fan",
+        "evidence_ids": [
+          "N351p000"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "reveal_position": 1,
+              "source_video": "20261012_003458000_iOS.MP4",
+              "timestamp_seconds": 350,
+              "evidence_ids": [
+                "N350p000"
+              ],
+              "basis": "observed card reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261012_003458000_iOS.MP4",
+          "timestamp_seconds": 350,
+          "evidence_ids": [
+            "N350p000"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [],
+      "automatic_events_in_order": [
+        {
+          "event": "Your opponent conceded",
+          "source_seconds": 353,
+          "result": "owner win",
+          "points_at_concession": [
+            2,
+            2
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 11,
+        "phase": "owner turn11 normal draw resolved; before large Water token generation; no voluntary play",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90; 170 HP",
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 170,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 150,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N351p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60; 140 HP",
+              "bench_position": 3,
+              "hp_now": 90,
+              "hp_max": 140,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 50,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N351p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N351p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "N351p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Dratini",
+            "variant": "Slam 20x; 60 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 1,
+                "Lightning": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N351p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N351p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "N351p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N351p000"
+        ],
+        "timestamp_seconds": 351
+      },
+      "board_after": {
+        "turn_number_displayed": 11,
+        "phase": "concession; no owner action; final battlefield",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90; 170 HP",
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 170,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 150,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N353p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60; 140 HP",
+              "bench_position": 3,
+              "hp_now": 90,
+              "hp_max": 140,
+              "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+              "damage": 50,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "N353p000"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N353p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "N353p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Dratini",
+            "variant": "Slam 20x; 60 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "filmed printed HP and visible remaining HP; no maximum-HP modifiers shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 1,
+                "Lightning": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "N353p000"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Observed large current token and small next symbol in cited boundary frame",
+            "evidence_ids": [
+              "N353p000"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "N353p000"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "N353p000"
+        ],
+        "timestamp_seconds": 353
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N353p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N353p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N353p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N353p000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "observed native exposed hand",
+            "evidence_ids": [
+              "N353p000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "observed native exposed hand",
+        "evidence_ids": [
+          "N353p000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "discard_not_opened_owner",
+        "discard_not_opened_opponent"
+      ],
+      "turn_evidence_ids": [
+        "N351p000",
+        "N353p000"
+      ],
+      "limits": [
+        "Concession interrupts turn11 before any voluntary play. The +1/+3/+6 frames exist but latter frames are post-concession/transition, not turn-start choices. There is no End Turn action."
+      ]
+    }
+  ],
+  "limits": [
+    "All action times are approximate source seek seconds, not measured decoded PTS. Hidden opponent card faces and unopened discard piles remain unavailable."
+  ]
+}

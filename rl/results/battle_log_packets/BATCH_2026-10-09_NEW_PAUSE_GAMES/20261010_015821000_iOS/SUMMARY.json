@@ -1,0 +1,56 @@
+{
+  "is_template": false,
+  "source_video": "20261010_015821000_iOS.MP4",
+  "source_sha256": "8d64e896d3125e504b7186754cbf2c21c0b5fcbc61f65524f6de27a2effd2a38",
+  "source_json": "SOURCE.json",
+  "review_status": "reviewer_complete_pending_independent_acceptance",
+  "game_count": 1,
+  "recording_coverage_seconds": [
+    0,
+    254.015
+  ],
+  "games": [
+    {
+      "game_id": "20261010_015821000_iOS-game1",
+      "match_date": "2026-10-09",
+      "owner": "Dacz8976",
+      "opponent": "よこっぴ",
+      "mode": "Deluxe Pack: Mega Emblem Event",
+      "battle_type": "human",
+      "auto_control_observed": false,
+      "owner_deck": "Kingdra ex / Team Rocket's Weezing ex",
+      "opponent_visible_core": [
+        "Frigibax",
+        "Suicune ex",
+        "Baxcalibur"
+      ],
+      "outcome": "win",
+      "finish": "opponent concession",
+      "turns_played": 6,
+      "owner_points": 1,
+      "opponent_points": 0,
+      "damage_done": 120,
+      "ending_evidence": {
+        "concession_seconds": 242,
+        "victory_result_seconds": 253,
+        "evidence_ids": [
+          "F0242_00",
+          "F0253_00"
+        ]
+      },
+      "external_log_eligibility": "Human-only Pause Games candidate; root controls deduplication, entry and reload verification",
+      "ladder_entry": "Do not claim ranked; visible event mode"
+    }
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance": "pending",
+  "packet_only": true,
+  "limits": [
+    "Opponent hand identities and hidden normal/Research/Poké Ball/Legendary Pulse draws are unavailable. A later Basic play does not identify an earlier search result.",
+    "No discard-pile window or scrolling was opened. Public top cards and known transactions do not establish either complete discard pile.",
+    "Normal draw-end anchors are visually estimated source seconds. Actual decoded frame PTS was not measured; requested seek times remain separate.",
+    "The +1/+3/+6 candidates sometimes follow the first voluntary play. Dense earlier native frames supply the owner start hand; no future hand is substituted.",
+    "Notifications temporarily cover upper-screen information around112–118,149–156 and175–176 seconds. Clear adjacent frames establish the cited board and actions.",
+    "Filmed QR and log establish semantic deck composition; exact artwork/rarity of every hidden card is not established. No hidden identities were supplied from the deck."
+  ]
+}

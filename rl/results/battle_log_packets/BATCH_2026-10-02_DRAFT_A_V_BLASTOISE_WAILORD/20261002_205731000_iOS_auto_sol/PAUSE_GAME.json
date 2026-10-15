@@ -1,0 +1,126 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_205731000_iOS_auto",
+  "sources": [
+    {
+      "video_basename": "20261002_205731000_iOS.MP4",
+      "sha256": "f1ce8e51bc351fc008563c73a72aa7915f0389707375437068c998afd0190199",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "review_date": "2026-10-02",
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Draft A: Shark Tempo",
+  "opening": {
+    "source_video": "20261002_205731000_iOS.MP4",
+    "timestamp_seconds": 13.9,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Mega Sharpedo ex [illustrated art]",
+        "basis": "Native pre-Active fan",
+        "evidence_ids": [
+          "F0013.90"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Lucky Ice Pop",
+        "basis": "Native pre-Active fan",
+        "evidence_ids": [
+          "F0013.90"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Irida",
+        "basis": "Native pre-Active fan",
+        "evidence_ids": [
+          "F0013.90"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Alolan Ninetales ex [pink illustrated art]",
+        "basis": "Native pre-Active fan",
+        "evidence_ids": [
+          "F0013.90"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Carvanha",
+        "basis": "Native pre-Active fan",
+        "evidence_ids": [
+          "F0013.90"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Carvanha",
+      "opening_position": 5,
+      "source_video": "20261002_205731000_iOS.MP4",
+      "timestamp_seconds": 14,
+      "evidence_ids": [
+        "F0014.00",
+        "F0015.00"
+      ]
+    },
+    "redraw_or_replacement": false,
+    "before_active_placement": true,
+    "status": "complete",
+    "evidence_ids": [
+      "F0013.90",
+      "F0014.00",
+      "F0015.00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json",
+    "table": "TURN_TABLE.md"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "first_pass_complete_pending_independent_acceptance",
+  "outcome": "win",
+  "limits": [
+    "Concealed opponent normal/Research/Meowth draws and Poké Ball searches have unknown identities.",
+    "No opened discard pile; partial visible top snapshots only.",
+    "Original encoded movie was covered using all371 retained1fps locator samples and118 targeted native captures, not an assertion of every encoded frame inspection.",
+    "Action timestamps approximate; native selected-frame PTS remains measured.",
+    "Source selection shows AI deck and Auto On but lacks Advanced category label; Advanced is bound to separate owner-supplied category screenshot receipt.",
+    "No independent input telemetry; Auto checked UI and automatic sequence support authorship."
+  ],
+  "lead_checked": false,
+  "classification": "Computer Step-Up Battle",
+  "difficulty_category": "Advanced",
+  "difficulty_receipt": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\ADVANCED_CATEGORY_CONFIRMATION.json",
+  "auto": {
+    "control_present": true,
+    "enabled": true,
+    "changes_observed": false,
+    "opening_evidence_ids": [
+      "F0000.00"
+    ],
+    "game_evidence_ids": [
+      "F0049.00",
+      "F0196.30",
+      "F0340.00",
+      "F0352.00"
+    ],
+    "action_authorship": "Enabled Auto throughout observed play; no separately measured physical input trace"
+  },
+  "ranked_ladder_eligible": false
+}

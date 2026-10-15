@@ -1,0 +1,143 @@
+{
+  "video_basename": "20261001_021304000_iOS.MP4",
+  "source_sha256": "92d20b8ed17b2c2716adb2f31e4c187b3fdb24d46af41e078aa77fa7d61b8fef",
+  "source_duration_seconds": 244.25,
+  "reviewer": "sol_auto_evening_021304000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "status": "full_battle_review_complete",
+  "scope": "Complete visible battle: loading and setup, all 12 turns, terminal knockout and result title",
+  "coverage_complete_first_pass": true,
+  "lead_accepted": true,
+  "mode": "autopilot_vs_computer",
+  "auto_visually_checked": true,
+  "observed_auto_pause_or_toggle": false,
+  "ladder_eligible": false,
+  "ladder_action": "excluded_by_owner_instruction; no write",
+  "owner_name": "Dacz8976",
+  "opponent_challenge": "Mega Gardevoir ex & Mimikyu ex Deck (Deluxe Pack: Mega)",
+  "outcome": "owner_victory",
+  "last_turn": 12,
+  "last_turn_basis": "Continuous alternating turn coverage and numbered prior turn banners",
+  "final_displayed_points": {
+    "owner": 3,
+    "opponent": 1
+  },
+  "point_award_totals": {
+    "owner": 5,
+    "opponent": 1
+  },
+  "point_awards": [
+    {
+      "turn": 7,
+      "recipient": "opponent",
+      "points": 1,
+      "knocked_out": "Eevee"
+    },
+    {
+      "turn": 8,
+      "recipient": "owner",
+      "points": 2,
+      "knocked_out": "Mimikyu ex"
+    },
+    {
+      "turn": 12,
+      "recipient": "owner",
+      "points": 3,
+      "knocked_out": "Mega Gardevoir ex"
+    }
+  ],
+  "owner_visible_core": [
+    "Eevee (Boosted Evolution, 50 HP)",
+    "Gastly (Mumble, 60 HP), two visible",
+    "Haunter (Spin Turn, 80 HP)",
+    "Mega Gengar ex (Labyrinth of Shadows, 210 HP)",
+    "Guzzlord ex (Grindcore/Tyrannical Hole, 170 HP)"
+  ],
+  "opponent_visible_core": [
+    "Ralts (Lead, 60 HP)",
+    "Kirlia (Double Spin, 80 HP)",
+    "Mega Gardevoir ex (Fantasia Force, 210 HP)",
+    "Mimikyu ex (Disguise/Claw Slash, 120 HP)",
+    "Chingling (Jingly Noise, 30 HP)",
+    "Bramblin (Petty Grudge, 60 HP)",
+    "Brambleghast (Accept Pain, 90 HP)"
+  ],
+  "owner_surviving_active": {
+    "name": "Mega Gengar ex",
+    "hp": 50,
+    "energy": {
+      "Darkness": 3,
+      "Colorless": 1
+    }
+  },
+  "result_statistics_shown": false,
+  "result_card_of_game_shown": {
+    "side": "opponent",
+    "name": "Mega Gardevoir ex",
+    "source_time": 244.22
+  },
+  "key_findings": [
+    "Eevee's first Stampede consumes Disguise, leaving Mimikyu at 120 HP for a later unprotected knockout.",
+    "Wally supplies Colorless, not Darkness; the turn 8 settled Mega Gengar Energy is three Darkness plus one Colorless.",
+    "Lillie heals Mega Gengar 100 to 160 on turn 10 and lets it survive the next 110 hit at 50 HP.",
+    "Brambleghast transfers 30 damage from Mega Gardevoir to itself on turn 11, producing 100 and 60 HP.",
+    "Trainer lock does not stop Mega Gardevoir evolution, ordinary Energy attachments, Accept Pain or Fantasia Force.",
+    "Displayed score caps at 3, but the owner's two then three point awards total 5."
+  ],
+  "independent_lead_anchor_times": {
+    "opening": [
+      19.0,
+      24.0,
+      29.0,
+      32.0
+    ],
+    "ordinary_turn": [
+      93.0,
+      94.5,
+      96.0,
+      109.0
+    ],
+    "first_decisive_sequence": [
+      149.0,
+      154.5,
+      159.0,
+      164.0
+    ],
+    "healing_and_ability": [
+      195.0,
+      197.0,
+      203.0,
+      209.0,
+      212.0,
+      213.0
+    ],
+    "terminal_result": [
+      221.0,
+      224.5,
+      228.0,
+      231.0,
+      235.0,
+      239.0,
+      244.22
+    ]
+  },
+  "report_paths": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "UNCERTAINTIES.json",
+    "CARD_CROSSCHECK.json"
+  ],
+  "remaining_battle_coverage_gaps": [],
+  "global_or_source_mutations_by_worker": [],
+  "worker_actions_at_submission": {},
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261001_021304000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20261001_021304000_iOS.MP4.json",
+  "archive_completion_event_id": "4e806bea-aaac-4ccb-aa74-6c0f77653cba",
+  "global_registration_complete": true
+}

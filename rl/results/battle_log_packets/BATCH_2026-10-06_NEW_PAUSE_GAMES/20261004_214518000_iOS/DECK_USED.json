@@ -1,0 +1,43 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261004_214518000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261004_214518000_iOS.MP4",
+      "sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "filmed_deck_label": "New deck 24",
+  "visible_core": [
+    "Caterpie (Quick Growth)",
+    "Butterfree (Sunny Wind)",
+    "Quick-Grow Extract",
+    "Lucky Ice Pop",
+    "Accelgor (Deck and Cover; result animation only)"
+  ],
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-06T17:07:52.454484+00:00",
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "observed_energy_preview": [
+    "Grass"
+  ],
+  "actual_card_count": null,
+  "capture_source_text_or_image": "../LIVE_DECK_SNAPSHOT.json",
+  "game_version_binding_basis": "New deck 24 label and visible core agree with earlier 213625 QR candidate. This source starts at an event lobby; intervening deck edits are unrecorded. Candidate is not a verified exact game list.",
+  "conflicts_with_filmed_cards": "No filmed conflict with candidate; no current nine-list live snapshot fully matches the Grass core.",
+  "exact_list_status": "unavailable_game_version_unverified",
+  "candidate_deck_reference": "DECK_CANDIDATE_EARLIER_QR.json",
+  "candidate_20_card_slots_verified_in_earlier_source": true,
+  "candidate_exact_game_binding_verified": false,
+  "limits": [
+    "No deck QR or complete list is shown in this source. A same-label earlier source QR is a candidate only; no uninterrupted recording proves the list was unchanged across sources.",
+    "Earlier candidate is prepared as a new deck entry, external_saved false in frozen NEW_DECK_ENTRIES.json. It is not an exact live-log snapshot for this game."
+  ]
+}

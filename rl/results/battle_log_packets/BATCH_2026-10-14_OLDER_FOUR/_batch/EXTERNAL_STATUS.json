@@ -1,0 +1,26 @@
+{
+  "recorded_utc": "2026-10-14T15:33:36.041753+00:00",
+  "artifact_url": "https://claude.ai/artifact/GHSfGSCzNiWNj8SFPXV3R1",
+  "owner_authorized_retry_and_verified_saves": true,
+  "owner_answer": "Approve browser retry and verified saves",
+  "initial_auto_review_rejection": "Earlier Computer Use stop after browser URL verification failed was cited; explicit fresh retry approval requested and granted",
+  "fresh_browser_inventory": "Succeeded after approval; one returned Chrome window, Pause Games title",
+  "initial_capture": "Returned null accessibility and wallpaper; no usable browser contents",
+  "initial_activation_error": "GetCursorPos failed: Access is denied. (0x80070005)",
+  "bounded_recovery": "Fresh list_windows and uniquely returned Chrome selection; one activation/state recovery attempt",
+  "recovery_error": "computer-use request timed out: get_window_state",
+  "browser_inputs_after_recovery_failure": 0,
+  "current_live_source_filename_duplicate_check": false,
+  "external_entries_written_this_turn": 0,
+  "current_totals_verified": false,
+  "status": "prepared_pending_browser_availability",
+  "next_step": "When browser control is available, check source filename duplicates, save only absent prepared results, reload and verify entries/totals; user authorization persists",
+  "candidates": [
+    "20260926_211809000_iOS.MP4",
+    "20260926_212155000_iOS.MP4"
+  ],
+  "computer_sources_excluded": [
+    "20261002_011527000_iOS.MP4",
+    "20261002_012229000_iOS.MP4"
+  ]
+}

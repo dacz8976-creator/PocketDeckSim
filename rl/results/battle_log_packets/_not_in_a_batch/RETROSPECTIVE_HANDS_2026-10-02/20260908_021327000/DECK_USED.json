@@ -1,0 +1,46 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_021327000",
+  "sources": [
+    {
+      "video_basename": "20260908_021327000_iOS.MP4",
+      "sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "requested_deck_label": "Hypno / Raticate ex",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": null,
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\DECK_LOG_CAPTURE.txt",
+  "game_version_binding_basis": "No exacthistorical 20-cardlistin the dated batch log capture; no current deck substitution",
+  "exact_list_status": "historical_list_unavailable",
+  "visible_core": [
+    "Team Rocket's Drowzee",
+    "Team Rocket's Hypno",
+    "Team Rocket's Rattata",
+    "Team Rocket's Raticate ex",
+    "Comfey"
+  ],
+  "visible_owner_trainers": [
+    "Team Rocket's Researcher",
+    "Professor's Research",
+    "Pokémon Flute",
+    "Sightseer",
+    "Copycat",
+    "Team Rocket's Goo-zooka",
+    "Poké Ball",
+    "Elegant Cape",
+    "Cyrus"
+  ],
+  "limits": [
+    "Visible cards are not an exact 20-card snapshot. Duplicate counts remain unknown beyond recorded hand and board observations."
+  ]
+}

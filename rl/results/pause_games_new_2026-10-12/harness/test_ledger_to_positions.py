@@ -881,5 +881,543 @@ class ReviewExamples(unittest.TestCase):
         self.assertEqual(got, [('Darkness', 'Grass'), ('Grass', 'Metal'), ('Metal', 'Metal')])
 
 
+
+# ------------------------------------------------------------------------------------------------------------- Oct 13: conditions and knock-outs
+class ConditionsAndKnockouts(unittest.TestCase):
+    """Fable via Sonnet's read of the Oct 13 games: pg_pos had no Special Condition and no knock-out count, so a sleeping Pokemon was
+    played as awake and Kingambit's Overlord's Blade read 60. The converter now writes them into the position (pg_pos.rs reads them)."""
+
+    def convert(self, deck, turns):
+        return MadeUpGame(self, deck, turns).convert({})[0]
+
+    def at(self, pos, turn):
+        return next(p for p in pos if p['turn_count'] == turn)
+
+    def test_his_sleeping_active_is_asleep_in_the_position(self):
+        t = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60, conds=['Asleep']), []), board(mon('Stakataka', 110), []), [play('end_turn')])
+        p = self.convert(fighting_deck(), [t])[0]
+        self.assertEqual(p['me']['board'][0].get('conditions'), ['Asleep'])
+        self.assertNotIn('not represented', p['notes'])
+
+    def test_the_opponents_poisoned_active_is_poisoned_and_other_wordings_are_read(self):
+        t = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60, conds=['paralyzed']), []), board(mon('Stakataka', 110, conds=['Poison', 'Confusion']), []), [play('end_turn')])
+        p = self.convert(fighting_deck(), [t])[0]
+        self.assertEqual(p['me']['board'][0].get('conditions'), ['Paralyzed'])
+        self.assertEqual(p['opp']['board'][0].get('conditions'), ['Poisoned', 'Confused'])
+
+    def test_a_pokemon_with_no_condition_has_no_conditions_key(self):
+        t = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60), []), board(mon('Stakataka', 110), []), [play('end_turn')])
+        p = self.convert(fighting_deck(), [t])[0]
+        self.assertNotIn('conditions', p['me']['board'][0])
+
+    def test_a_condition_the_engine_does_not_have_stays_a_note(self):
+        t = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60, conds=['Frozen']), []), board(mon('Stakataka', 110), []), [play('end_turn')])
+        p = self.convert(fighting_deck(), [t])[0]
+        self.assertNotIn('conditions', p['me']['board'][0])
+        self.assertIn('Frozen', p['notes'])
+
+    def test_the_knockout_count_is_his_pokemon_knocked_out_so_far(self):
+        deck = real_deck(('Honedge', 'B2 118', 2), ('Horsea', 'A4 041', 2))
+        h1, h3 = mon('Honedge', 70, pos=1), mon('Honedge', 70, pos=3)
+        turns = [owner_turn(2, ['Poké Ball'], board(mon('Horsea', 50), [h1, h3]), board(mon('Stakataka', 110), []), [play('end_turn')]),
+                 opp_turn(3, [play('attack', 'Stakataka: Brass Rock', 'owner Bench3', 'Bench3 removed')]),
+                 owner_turn(4, ['Poké Ball'], board(mon('Horsea', 50), [mon('Honedge', 70, pos=1)]), board(mon('Stakataka', 110), []), [play('end_turn')]),
+                 opp_turn(5, [play('attack', 'Stakataka: Brass Rock', 'owner Active', 'knocks out Active Horsea')]),
+                 owner_turn(6, ['Poké Ball'], board(mon('Honedge', 70)), board(mon('Stakataka', 110), []), [play('end_turn')])]
+        pos = self.convert(deck, turns)
+        self.assertEqual([self.at(pos, t)['me'].get('knockouts') for t in (2, 4, 6)], [0, 1, 2])
+
+
+# ------------------------------------------------------------------------------------------------------------- Oct 13: a checkup knock-out after his turn
+def cards_shown(p):
+    """how many cards of his deck a position shows: the board with what is under and on it, his hand and his discard"""
+    n = len(p['me']['hand']) + len(p['me']['discard'])
+    for pk in p['me']['board']:
+        n += 1 + len(pk.get('behind', [])) + len(pk.get('tools', []))
+    return n
+
+
+class CheckupKnockouts(unittest.TestCase):
+    """Fable's job after the v2 read of the Oct 13 games: a Pokemon of his that the checkup (Poison, Burn, Bad Dreams on a sleeping one) knocks out AFTER his turn ended. The ledger logs the
+    knock-out and his promotion at the end of his own row and that row's `board_after` is already past it, so comparing the end of one of his rows with the start of the next (which finds
+    what the opponent's turn knocked out) never saw it: the Pokemon, what was under it, its Tool and its Energy were missing from his discard, `me.knockouts` stayed 0 and the position
+    showed too few cards (game 20261013_030351000: 4 cards short at turn 15, so turn 15 could not run)."""
+    DECK = real_deck(('Timburr', 'A3 094', 2), ('Gurdurr', 'A3 095', 1), ('Conkeldurr', 'A3 096', 1), ('Rocky Helmet', 'A2 148', 1))
+    OPP = board(mon('Stakataka', 110), [])
+
+    def gurdurr(self, **kw):
+        d = dict(hp=20, variant='Strength40', energy={'Fighting': 1}, tool='Rocky Helmet', conds=['Asleep'], instance_id='G', stack=['Timburr', 'Gurdurr'])
+        d.update(kw)
+        return mon('Gurdurr', 90, **d)
+
+    def game(self, plays, auto, active=None, bench=None, after_active=None, after_bench=(), hand2=('Poké Ball',)):
+        """row 2 is his turn that ends in a checkup knock-out of his Active, row 3 the opponent's, row 4 his next turn (a position is made at 2 and 4);
+        `after_bench` is what row 2's `board_after` lists besides the new Active (the next turn starts without it)"""
+        start = board(active or self.gurdurr(), bench if bench is not None else [mon('Timburr', 60, pos=1, instance_id='T')])
+        new_active = after_active or mon('Timburr', 60, instance_id='T')
+        row2 = owner_turn(2, list(hand2), start, self.OPP, plays, after=board(new_active, list(after_bench)))
+        row2['automatic_events_in_order'] = auto
+        row4 = owner_turn(4, ['Poké Ball'], board(new_active, []), self.OPP, [play('end_turn')])
+        return MadeUpGame(self, self.DECK, [row2, opp_turn(3, []), row4]).convert({})[0]
+
+    def p4(self, pos):
+        return next(p for p in pos if p['turn_count'] == 4)
+
+    KO_EVENTS = ['Bad Dreams knocks out 20-HP Gurdurr.', 'Gurdurr, Rocky Helmet and 2 Fighting are discarded; owner promotes Timburr.']
+
+    def test_a_pokemon_the_checkup_knocked_out_after_he_ended_his_turn_reaches_his_discard_with_its_stack_tool_and_energy(self):
+        plays = [play('energy_attachment', None, 'G', 'Attach Fighting from zone', energy={'type': 'Fighting', 'count': 1, 'destination': 'G'}),
+                 play('end_turn'), play('promotion', None, 'T', 'Choose Timburr as replacement after Gurdurr KO')]
+        p = self.p4(self.game(plays, self.KO_EVENTS))
+        self.assertEqual(sorted(p['me']['discard']), ['Gurdurr A3 095', 'Rocky Helmet A2 148', 'Timburr A3 094'])
+        self.assertEqual(sorted(p['me']['discard_energy']), ['Fighting', 'Fighting'], 'the Energy it had at the start and the one he attached this turn')
+        self.assertEqual(p['me']['knockouts'], 1)
+        self.assertIn('checkup', p['notes'])
+        self.assertEqual(cards_shown(p), 5, 'the Timburr on the board, the Poké Ball in hand, and the three cards of the knocked-out Pokémon')
+
+    def test_an_ability_the_knocked_out_pokemon_used_this_turn_does_not_make_it_an_evolved_one(self):
+        # 030351: Dragonair used Dragon's Blessing (card_name Dragonair, target its own id) and was knocked out by Bad Dreams after the turn
+        plays = [play('ability', 'Gurdurr', 'G', "Gurdurr's Ability"), play('end_turn'), play('promotion', None, 'T', '')]
+        p = self.p4(self.game(plays, self.KO_EVENTS))
+        self.assertEqual(sorted(p['me']['discard']), ['Gurdurr A3 095', 'Rocky Helmet A2 148', 'Timburr A3 094'])
+        self.assertEqual(p['me']['knockouts'], 1)
+
+    def test_the_same_when_his_turn_ended_with_an_attack_and_not_an_end_turn(self):
+        plays = [play('attack', 'Gurdurr', 'opponent Active', 'Strength40'), play('promotion', None, 'T', 'Choose Timburr as replacement')]
+        p = self.p4(self.game(plays, self.KO_EVENTS))
+        self.assertEqual(sorted(p['me']['discard']), ['Gurdurr A3 095', 'Rocky Helmet A2 148', 'Timburr A3 094'])
+        self.assertEqual(p['me']['knockouts'], 1)
+
+    def test_the_count_in_the_ledgers_text_wins_when_it_differs_from_what_the_plays_add_up_to(self):
+        events = ['Poison checkup knocks out Gurdurr.', 'Gurdurr and three Fighting Energy leave board.']
+        p = self.p4(self.game([play('end_turn'), play('promotion', None, 'T', '')], events))
+        self.assertEqual(p['me']['discard_energy'], ['Fighting'] * 3)
+        self.assertIn("in the ledger's text (3)", p['notes'])
+
+    def test_the_energy_the_text_gives_the_promoted_pokemon_is_not_the_knocked_out_ones(self):
+        # 030351 turn 13: "Druddigon, Rocky Helmet and 3 Metal are discarded. Owner promotes second Haxorus 150 HP with 1 Fighting."
+        events = ['Poison checkup knocks out Gurdurr.', 'Gurdurr, Rocky Helmet and 2 Fighting are discarded. Owner promotes Timburr 60 HP with 1 Fighting.']
+        plays = [play('energy_attachment', None, 'G', 'Attach Fighting from zone', energy={'type': 'Fighting', 'count': 1, 'destination': 'G'}), play('end_turn'), play('promotion', None, 'T', '')]
+        p = self.p4(self.game(plays, events))
+        self.assertEqual(p['me']['discard_energy'], ['Fighting'] * 2)
+        self.assertNotIn("in the ledger's text", p['notes'])
+
+    def test_a_pokemon_that_left_the_board_without_a_knock_out_in_the_text_is_not_in_the_discard(self):
+        # a bounce (Ilima-like): the Pokemon is gone at the end of his row and a promotion follows, but the ledger says it went back to his hand
+        events = ['Gurdurr returns to hand; owner promotes Timburr.']
+        p = self.p4(self.game([play('end_turn'), play('promotion', None, 'T', '')], events))
+        self.assertEqual(p['me']['discard'], [])
+        self.assertEqual(p['me']['knockouts'], 0)
+
+    def test_a_pokemon_that_shuffled_itself_into_the_deck_is_not_in_the_discard_even_with_a_promotion_play_after_the_attack(self):
+        # Accelgor's Deck and Cover (213625 turn 11, 214731 turn 6): the attacker and what is on it go back to the deck and another Pokemon is promoted
+        plays = [play('attack', 'Gurdurr', 'opponent Active', 'Strength40; shuffles attacker and all attached cards into the deck'), play('promotion', None, 'T', 'promote Timburr')]
+        events = ['Active Gurdurr and attached Pokemon stack return to deck; its 1 Fighting leave board', 'Select Timburr as replacement']
+        p = self.p4(self.game(plays, events))
+        self.assertEqual(p['me']['discard'], [])
+        self.assertEqual(p['me']['knockouts'], 0)
+
+    def test_a_pokemon_gone_with_no_promotion_after_his_turn_is_not_a_checkup_knock_out(self):
+        p = self.p4(self.game([play('end_turn')], self.KO_EVENTS))
+        self.assertEqual(p['me']['discard'], [])
+        self.assertEqual(p['me']['knockouts'], 0)
+
+    def test_the_knocked_out_one_is_told_from_a_pokemon_of_its_name_that_is_still_there_by_its_instance_id(self):
+        a = mon('Timburr', 60, hp=10, conds=['Poisoned'], instance_id='A')
+        b = mon('Timburr', 60, pos=1, instance_id='B')
+        plays = [play('end_turn'), play('promotion', None, 'B', 'Choose Timburr as replacement')]
+        pos = self.game(plays, ['Poison checkup knocks out Timburr.'], active=a, bench=[b], after_active=mon('Timburr', 60, instance_id='B'))
+        p = self.p4(pos)
+        self.assertEqual(p['me']['discard'], ['Timburr A3 094'])
+        self.assertEqual(p['me']['knockouts'], 1)
+        self.assertEqual(p['me']['board'][0]['card'].split(' ')[0], 'Timburr')
+
+    def test_a_pokemon_of_the_same_name_that_evolved_this_turn_is_not_the_knocked_out_one(self):
+        # the bench Timburr A evolves (the ledger gives the evolved one a new id) while the Active Timburr B is knocked out by the Poison
+        b = mon('Timburr', 60, hp=10, conds=['Poisoned'], instance_id='B')
+        a = mon('Timburr', 60, pos=1, instance_id='A')
+        evolved = mon('Gurdurr', 90, variant='Strength40', instance_id='A2', stack=['Timburr', 'Gurdurr'])
+        plays = [play('evolution', 'Gurdurr', 'A → A2', 'Evolve Timburr A'), play('end_turn'), play('promotion', None, 'A2', 'Choose Gurdurr as replacement')]
+        pos = self.game(plays, ['Poison checkup knocks out Timburr.'], active=b, bench=[a], after_active=evolved, hand2=('Gurdurr',))
+        p = self.p4(pos)
+        self.assertEqual(p['me']['discard'], ['Timburr A3 094'], 'one Timburr, the one that was Active')
+        self.assertEqual(p['me']['knockouts'], 1)
+
+    def test_a_knock_out_the_opponents_attack_made_between_the_turns_is_still_found_and_not_counted_twice(self):
+        # the existing between-turns path: the Pokemon is in the row's `board_after` and gone from the next start
+        g = self.gurdurr(conds=[])
+        row2 = owner_turn(2, ['Poké Ball'], board(g, [mon('Timburr', 60, pos=1, instance_id='T')]), self.OPP, [play('end_turn')])
+        row4 = owner_turn(4, ['Poké Ball'], board(mon('Timburr', 60, instance_id='T'), []), self.OPP, [play('end_turn')])
+        opp3 = opp_turn(3, [play('attack', 'Stakataka: Brass Rock', 'owner Active', 'knocks out Active Gurdurr')])
+        p = self.p4(MadeUpGame(self, self.DECK, [row2, opp3, row4]).convert({})[0])
+        self.assertEqual(sorted(p['me']['discard']), ['Gurdurr A3 095', 'Rocky Helmet A2 148', 'Timburr A3 094'])
+        self.assertEqual(p['me']['knockouts'], 1)
+        self.assertIn('between turns', p['notes'])
+
+    def test_a_ledger_that_already_shows_the_knocked_out_pokemon_in_its_board_after_does_not_count_it_twice(self):
+        # (the Oct 13 v2 read put it there by a copy of the ledger; the same rows must give the same positions)
+        ko = self.gurdurr(hp=0)
+        plays = [play('end_turn'), play('promotion', None, 'T', '')]
+        pos = self.game(plays, self.KO_EVENTS, after_active=mon('Timburr', 60, instance_id='T'), after_bench=[ko])
+        p = self.p4(pos)
+        self.assertEqual(sorted(p['me']['discard']), ['Gurdurr A3 095', 'Rocky Helmet A2 148', 'Timburr A3 094'])
+        self.assertEqual(p['me']['knockouts'], 1)
+
+
+# ------------------------------------------------------------------------------------------------------------- Oct 14: the laptop's review of the 92 positions of the Oct 12-13 games
+# (REVIEW_POSITIONS_laptop.md, main 373b41a6: three blockers and nine majors; every one has a test here)
+HIDDEN_ZONE = {'this_turn': {'type': None, 'count': 0, 'available': False}, 'next': {'type': None, 'count': None, 'available': None}}
+
+
+def zone_of(this=None, nxt=None):
+    return {'this_turn': {'type': this, 'count': 1 if this else 0, 'available': bool(this)}, 'next': {'type': nxt, 'count': 1 if nxt else None, 'available': None}}
+
+
+def nested(position, pokemon):
+    """a Bench entry the way game 20261013_015011000 writes it: {position, pokemon: {...} or null}"""
+    return {'position': position, 'pokemon': pokemon}
+
+
+class NestedBench(unittest.TestCase):
+    """blocker 1: 015011 nests every Bench entry as {position, pokemon}; the converter kept only entries with a `name`, so both Benches were empty (Grimer and Regigigas were dealt back into his deck)"""
+
+    def convert(self, own, opp):
+        t = owner_turn(2, ['Gurdurr'], own, opp, [play('end_turn')])
+        return MadeUpGame(self, fighting_deck(), [t]).convert(GLOBAL)[0][0]
+
+    def test_a_nested_bench_is_read_on_both_sides_and_empty_slots_are_skipped(self):
+        own = board(mon('Timburr', 60), [nested(1, None), nested(2, mon('Timburr', 60, pos=2))])
+        opp = board(mon('Stakataka', 110), [nested(1, mon('Stakataka', 110, pos=1)), nested(2, None), nested(3, None)])
+        p = self.convert(own, opp)
+        self.assertEqual([b['card'].split(' ')[0] for b in p['me']['board']], ['Timburr', 'Timburr'])
+        self.assertEqual(len(p['opp']['board']), 2)
+
+    def test_the_slot_of_a_nested_entry_is_the_outer_position_when_the_pokemon_does_not_carry_one(self):
+        inner = mon('Timburr', 60)
+        inner['bench_position'] = None
+        own = board(mon('Timburr', 60), [nested(1, None), nested(2, inner), nested(3, mon('Timburr', 60, pos=3))])
+        got = L.instances(own)
+        self.assertEqual([L.bpos(x) for x in got], [None, 2, 3])
+
+    def test_a_nested_bench_does_not_change_the_cards_the_deck_has_left(self):
+        own = board(mon('Timburr', 60), [nested(2, mon('Timburr', 60, pos=2))])
+        p = self.convert(own, board(mon('Stakataka', 110), []))
+        shown = len(p['me']['hand']) + sum(1 + len(b.get('behind', [])) for b in p['me']['board'])
+        self.assertEqual(shown, 3, 'two Timburr on the board, one Gurdurr in hand')
+
+    def test_a_plain_bench_is_read_as_before(self):
+        own = board(mon('Timburr', 60), [mon('Timburr', 60, pos=1)])
+        self.assertEqual(len(L.instances(own)), 2)
+
+
+class BoostedHP(unittest.TestCase):
+    """blocker 2: 030351 under Starting Plains shows the opponent's Darkrai at 120 HP (printed 100 + 20); opp_pick kept only printings whose printed HP is 120, so Bad Dreams / Dark Slumber
+    (B2b 040, 100 HP) lost to Shadow Cage (B1 154, 120 HP) and nothing was flagged. The HP a Stadium or a Tool adds comes from the card texts of the database."""
+
+    def test_what_a_stadium_or_a_tool_adds_comes_from_the_card_text_and_the_card_it_is_on(self):
+        darkrai, scizor, scyther = C.BYID['B2b 040'], C.BYID['B2b 047'], C.BYID['B2b 001']
+        self.assertEqual(C.hp_boost(darkrai, stadium='Starting Plains'), 20)
+        self.assertEqual(C.hp_boost(scizor, stadium='Starting Plains'), 0, 'a Stage 1')
+        self.assertEqual(C.hp_boost(scizor, tool='Elegant Cape'), 30)
+        self.assertEqual(C.hp_boost(scyther, tool='Elegant Cape'), 0, 'a Basic')
+        self.assertEqual(C.hp_boost(scyther, tool='Giant Cape'), 20)
+        self.assertEqual(C.hp_boost(scizor, tool='Elegant Cape', stadium='Starting Plains'), 30)
+        self.assertEqual(C.hp_boost(darkrai), 0)
+        self.assertEqual(C.hp_boost(darkrai, tool='Rocky Helmet', stadium='Rainbow Cave'), 0)
+
+    def test_a_grass_pokemon_gets_a_leaf_cape_and_a_darkness_pokemon_does_not(self):
+        grass = next(c for c in C.CARDS if C.is_pokemon(c) and c.get('energy_type') == 'Grass')
+        self.assertEqual(C.hp_boost(grass, tool='Leaf Cape'), 30)
+        self.assertEqual(C.hp_boost(C.BYID['B2b 040'], tool='Leaf Cape'), 0)
+
+    def convert_opp(self, hp_max, variant, stadium):
+        t = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60), []), board(mon('Darkrai', hp_max, variant=variant), []), [play('end_turn')], stadium=stadium)
+        return MadeUpGame(self, fighting_deck(), [t]).convert(GLOBAL)[0][0]
+
+    def test_the_opponents_darkrai_under_starting_plains_is_the_100_hp_card_with_bad_dreams(self):
+        p = self.convert_opp(120, 'Bad Dreams / Dark Slumber 40; printed 100 HP', 'Starting Plains')
+        self.assertEqual(p['opp']['board'][0]['card'], 'Darkrai B2b 040')
+        self.assertEqual(p['opp']['board'][0]['hp'], 120)
+
+    def test_the_hp_alone_settles_it_when_the_ledger_names_no_attack(self):
+        p = self.convert_opp(120, '', 'Starting Plains')
+        self.assertEqual(p['opp']['board'][0]['card'], 'Darkrai B2b 040')
+
+    def test_without_the_stadium_120_hp_is_the_card_printed_with_120(self):
+        p = self.convert_opp(120, 'Shadow Cage', 'none')
+        self.assertEqual(p['opp']['board'][0]['card'], 'Darkrai B1 154')
+
+    def test_a_ledger_that_did_not_add_the_boost_is_still_read_by_its_printed_hp(self):
+        p = self.convert_opp(100, 'Bad Dreams', 'Starting Plains')
+        self.assertEqual(p['opp']['board'][0]['card'], 'Darkrai B2b 040')
+
+    def test_a_tool_that_adds_hp_is_taken_off_before_the_printings_are_compared(self):
+        # a Stage 1 Dragonair at 110 with an Elegant Cape (+30) is the 80-HP card, not one of the 90 / 100 ones
+        chosen, alts = L.opp_pick('Dragonair', 110, [], tool='Elegant Cape')
+        self.assertEqual(C.BYID[chosen]['hp'], 80)
+        self.assertEqual(L.opp_pick('Dragonair', 80, [])[0] in [c['id'] for c in C.BYNAME['Dragonair'] if c['hp'] == 80], True)
+
+    def test_his_own_darkrai_under_starting_plains_is_the_function_of_the_right_printed_hp(self):
+        deck = real_deck(('Darkrai', 'B2b 040', 1), ('Darkrai', 'B1 154', 1))
+        t = owner_turn(2, ['Poké Ball'], board(mon('Darkrai', 120, variant=''), []), board(mon('Stakataka', 110), []), [play('end_turn')], stadium='Starting Plains')
+        p = MadeUpGame(self, deck, [t]).convert({})[0][0]
+        self.assertEqual(p['me']['board'][0]['card'], 'Darkrai B2b 040')
+
+
+class SemanticEntityStrings(unittest.TestCase):
+    """blocker 3: 022530's DECK_USED.json writes each entry as {name, variant: 'semantic entity 20770', count}; deckspec read no entity from the string, so Dratini was settled on an HP tie
+    (A3b 051 Beat instead of B4 116 Slam)"""
+
+    def deck(self):
+        return deck_json(qr=None, filmed_cards_in_QR_order=['Dratini'] * 2 + ['Poké Ball'] * 18,
+                         filmed_counts=[{'name': 'Dratini', 'variant': 'semantic entity 20770', 'count': 2}, {'name': 'Poké Ball', 'variant': 'semantic entity 30', 'count': 18}], energy='Fighting')
+
+    def test_the_entity_is_read_from_the_string(self):
+        self.assertEqual(D.entry_entity({'name': 'Dratini', 'variant': 'semantic entity 20770'}), 20770)
+        self.assertEqual(D.entry_entity({'name': 'Dratini', 'variant_as_shown_in_log': 'semantic entity 20770'}), 20770)
+        self.assertEqual(D.entry_entity({'name': 'Dratini', 'entity_id': 5, 'variant': 'semantic entity 20770'}), 5, 'an entity id the file gives wins')
+        self.assertIsNone(D.entry_entity({'name': 'Dratini', 'variant': 'B4 116'}))
+
+    def test_a_printing_beside_the_entity_still_counts_as_a_printing(self):
+        d = {'name': 'Dratini', 'variant': 'B4 116 semantic entity 20770'}
+        self.assertEqual(D.entry_ids(d), ['B4 116'])
+        self.assertEqual(D.entry_entity(d), 20770)
+
+    def test_an_entity_another_game_gave_its_printing_settles_the_entry(self):
+        s = D.read_deck(self.deck(), {20770: ['B4 116'], 30: ['A2b 111']})
+        dratini = next(e for e in s.entries if e.name == 'Dratini')
+        self.assertEqual((dratini.entity, dratini.ids, dratini.ambiguous), (20770, ['B4 116'], False))
+        self.assertEqual(dratini.how, 'entity seen in another game')
+
+    def test_the_global_entity_map_reads_entities_from_strings_too(self):
+        m = D.global_entity_map([deck_json(qr=[{'name': 'Dratini', 'variant': 'semantic entity 20770 B4 116', 'count': 2}] + [entry('Poké Ball', 30, variant='A2b 111')] * 18)])
+        self.assertEqual(m.get(20770), ['B4 116'])
+
+
+class OpponentNextEnergy(unittest.TestCase):
+    """major 1: when the opponent's zone is hidden at his turn start the position took HIS deck's Energy (18 positions: 010706 Psychic, 010003 Water / Lightning, 203719 t17 Lightning); the
+    type is on the same row after his turn, or on his next row"""
+
+    def energy_next(self, start, after, next_row):
+        t = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60), []), board(mon('Stakataka', 110), [], zone=start), [play('end_turn')])
+        t['board_after']['opponent'] = board(mon('Stakataka', 110), [], zone=after)
+        rows = [t] + ([opp_turn(3, [], opp_board=board(mon('Stakataka', 110), [], zone=next_row))] if next_row is not None else [])
+        p = MadeUpGame(self, fighting_deck(), rows).convert(GLOBAL)[0][0]
+        return p['opp']['energy_next'], p['notes']
+
+    def test_a_type_the_zone_shows_at_the_start_is_used(self):
+        self.assertEqual(self.energy_next(zone_of(nxt='Water'), HIDDEN_ZONE, zone_of(this='Psychic'))[0], 'Water')
+
+    def test_a_hidden_zone_takes_the_type_the_same_row_shows_after_his_turn(self):
+        self.assertEqual(self.energy_next(HIDDEN_ZONE, zone_of(nxt='Lightning'), None)[0], 'Lightning')
+
+    def test_a_zone_hidden_at_start_and_after_takes_the_type_of_his_next_turn(self):
+        self.assertEqual(self.energy_next(HIDDEN_ZONE, HIDDEN_ZONE, zone_of(this='Psychic'))[0], 'Psychic')
+
+    def test_the_energy_the_opponent_attached_from_his_zone_on_his_next_row_counts_too(self):
+        nxt = opp_turn(3, [play('energy_attachment', None, 'opponent Active', 'attach from zone', energy={'type': 'Water', 'count': 1})], opp_board=board(mon('Stakataka', 110), [], zone=HIDDEN_ZONE))
+        t = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60), []), board(mon('Stakataka', 110), [], zone=HIDDEN_ZONE), [play('end_turn')])
+        p = MadeUpGame(self, fighting_deck(), [t, nxt]).convert(GLOBAL)[0][0]
+        self.assertEqual(p['opp']['energy_next'], 'Water')
+
+    def test_the_last_turn_takes_the_only_type_his_zone_ever_showed_in_the_game(self):
+        # 010706 turn 21: no later row, nothing on its own row, but his zone is Psychic every time it is shown
+        t2 = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60), []), board(mon('Stakataka', 110), [], zone=HIDDEN_ZONE), [play('end_turn')])
+        o3 = opp_turn(3, [], opp_board=board(mon('Stakataka', 110), [], zone=zone_of(this='Psychic')))
+        t4 = owner_turn(4, ['Poké Ball'], board(mon('Timburr', 60), []), board(mon('Stakataka', 110), [], zone=HIDDEN_ZONE), [play('end_turn')])
+        pos = {p['turn_count']: p for p in MadeUpGame(self, fighting_deck(), [t2, o3, t4]).convert(GLOBAL)[0]}
+        self.assertEqual(pos[4]['opp']['energy_next'], 'Psychic')
+        self.assertNotIn("opponent's next Energy", pos[4]['notes'])
+
+    def test_two_types_in_his_zone_leave_the_last_turn_to_the_decks_energy(self):
+        t2 = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60), []), board(mon('Stakataka', 110), [], zone=HIDDEN_ZONE), [play('end_turn')])
+        t2['board_after']['opponent'] = board(mon('Stakataka', 110), [], zone=zone_of(nxt='Water'))
+        o3 = opp_turn(3, [], opp_board=board(mon('Stakataka', 110), [], zone=zone_of(this='Psychic')))
+        t4 = owner_turn(4, ['Poké Ball'], board(mon('Timburr', 60), []), board(mon('Stakataka', 110), [], zone=HIDDEN_ZONE), [play('end_turn')])
+        pos = {p['turn_count']: p for p in MadeUpGame(self, fighting_deck(), [t2, o3, t4]).convert(GLOBAL)[0]}
+        self.assertEqual(pos[4]['opp']['energy_next'], 'Fighting')
+        self.assertIn("opponent's next Energy", pos[4]['notes'])
+
+    def test_nothing_known_falls_back_to_his_decks_energy_and_says_so(self):
+        got, notes = self.energy_next(HIDDEN_ZONE, HIDDEN_ZONE, None)
+        self.assertEqual(got, 'Fighting')
+        self.assertIn("opponent's next Energy", notes)
+
+    def test_a_known_type_leaves_no_such_note(self):
+        self.assertNotIn("opponent's next Energy", self.energy_next(HIDDEN_ZONE, zone_of(nxt='Water'), None)[1])
+
+
+class StadiumActivationPlay(unittest.TestCase):
+    """major 3: Mesagoza logged as `stadium_activation` mapped to `other` and was dropped (210041 t08, 210823 t02 and t04)"""
+
+    def plan(self, kind, card='Mesagoza'):
+        t = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60), []), board(mon('Stakataka', 110), []), [play(kind, card, None, 'Activate search coin; tails, no card found'), play('end_turn')], stadium='Mesagoza')
+        return MadeUpGame(self, fighting_deck(), [t]).convert(GLOBAL)[0][0]['his_plan']
+
+    def test_a_stadium_activation_is_a_use_stadium_step(self):
+        self.assertEqual(self.plan('stadium_activation'), ['UseStadium'])
+
+    def test_the_other_spellings_still_are(self):
+        for kind in ('stadium_ability', 'stadium_effect', 'ability'):
+            self.assertEqual(self.plan(kind), ['UseStadium'], kind)
+
+    def test_nk_maps_the_kind(self):
+        self.assertEqual(L.nk('stadium_activation'), 'ability')
+        self.assertEqual(L.nk('Stadium Activation'), 'ability')
+
+
+class GigaTurboTarget(unittest.TestCase):
+    """major 4: Giga Turbo attaches an Energy from the zone to a Benched Pokemon like Turbo Shark, but only Turbo Shark got the `fx` step (010706 t09, 230258 t11, 010003 t09)"""
+    DECK = real_deck(('Regigigas', 'B3 134', 2), ('Alolan Grimer', 'A3 110', 2), ('Alolan Muk', 'B2 097', 2), energy='Colorless')
+
+    def plan(self, bench, plays, hand=('Poké Ball',)):
+        own = board(mon('Regigigas', 150, variant='Seal of Antiquity / Giga Turbo', energy={'Colorless': 3}), bench)
+        t = owner_turn(9, list(hand), own, board(mon('Stakataka', 110), []), plays)
+        return MadeUpGame(self, self.DECK, [t]).convert({})[0][0]['his_plan']
+
+    def test_the_energy_goes_to_the_benched_pokemon_the_text_names(self):
+        plan = self.plan([mon('Alolan Muk', 110, pos=1)], [play('attack', 'Giga Turbo', 'Mega Diancie ex', '100 damage: 130 -> 30; nested attach 1 Colorless from Energy Zone to Alolan Muk. Poison 30 -> 20.')])
+        self.assertEqual(plan, ['Attack:Giga Turbo', 'Attach:1Colorless@1 fx'])
+
+    def test_a_pokemon_that_evolved_this_turn_is_found_under_its_new_name(self):
+        plan = self.plan([mon('Alolan Grimer', 70, pos=1)], [play('evolution', 'Alolan Muk', 'Alolan Grimer', 'Evolve'),
+                                                              play('attack', 'Regigigas Giga Turbo', 'Starmie ex Active', '100 damage 130->30 HP; generate Colorless 1 and attach to Alolan Muk Bench 1 at 432.')],
+                         hand=('Alolan Muk',))
+        self.assertEqual(plan, ['Evolve:Alolan Muk@1', 'Attack:Giga Turbo', 'Attach:1Colorless@1 fx'])
+
+    def test_a_target_the_text_does_not_name_cuts_the_plan_at_the_step(self):
+        t = owner_turn(9, ['Poké Ball'], board(mon('Regigigas', 150, variant='Giga Turbo', energy={'Colorless': 3}), [mon('Alolan Muk', 110, pos=1), mon('Alolan Grimer', 70, pos=2)]), board(mon('Stakataka', 110), []),
+                       [play('attack', 'Giga Turbo', 'Mega Diancie ex', '100 damage; one Colorless attached to a Benched Pokémon')])
+        p = MadeUpGame(self, self.DECK, [t]).convert({})
+        self.assertEqual(p[0][0]['his_plan'], ['Attack:Giga Turbo'])
+        self.assertTrue(p[0][0]['unresolved'])
+
+
+class IlimaPromotion(unittest.TestCase):
+    """major 2: Ilima puts his damaged Active into his hand and he must promote another Pokemon; the plan had no Promote step and kept the returned Pokemon in its slot list, so every later
+    slot was wrong (203719 t07, 210823 t08, 020824 t11)"""
+    DECK = real_deck(('Regigigas', 'B3 134', 1), ('Pawniard', 'B3a 041', 2), ('Glimmet', 'B3a 044', 1), ('Ilima', 'A3 149', 1), energy='Darkness')
+
+    def plan(self, plays, bench=None, active=None, hand=('Ilima', 'Poké Ball')):
+        bench = bench if bench is not None else [mon('Pawniard', 50, pos=2), mon('Glimmet', 60, pos=3)]
+        own = board(active or mon('Regigigas', 150, hp=80, variant='Seal of Antiquity / Giga Turbo', energy={'Darkness': 1}), bench)
+        t = owner_turn(11, list(hand), own, board(mon('Stakataka', 110), []), plays)
+        p = MadeUpGame(self, self.DECK, [t]).convert({})[0][0]
+        return p['his_plan'], p
+
+    def test_a_separate_promotion_row_gives_a_promote_step_and_the_slots_after_it_follow_the_engine(self):
+        plan, _ = self.plan([play('card_play', 'Ilima', None, 'Return damaged Colorless Regigigas to hand; its 1 Darkness discarded'),
+                             play('prompt_response', None, None, 'Choose Pawniard as replacement Active'),
+                             play('card_play', 'Regigigas', None, 'Bench returned Regigigas center, fresh 150 HP'),
+                             play('retreat', None, 'Regigigas', 'paid 1 Darkness; Pawniard retreats; Regigigas becomes Active', energy={'type': None, 'destination': 'Regigigas', 'retreat_payment_by_type': {'Darkness': 1}}),
+                             play('energy_attachment', None, 'Regigigas', 'Attach 1 Darkness from Energy Zone to Regigigas', energy={'type': 'Darkness', 'count': 1, 'destination': 'Regigigas'}),
+                             play('end_turn')])
+        self.assertEqual(plan, ['Play:Ilima', 'Promote:0@1', 'Place:Regigigas', 'Retreat:1', 'Attach:1Darkness@0 zone'])
+
+    def test_the_promoted_pokemon_named_in_the_ilima_row_is_enough(self):
+        plan, _ = self.plan([play('card_play', 'Ilima', 'owner active Regigigas', 'Return 10 HP Regigigas to hand; discard its Darkness. Promote Glimmet.'),
+                             play('card_play', 'Regigigas', 'owner bench middle', 'Rebench Regigigas at 150 HP.'),
+                             play('energy_attachment', None, 'owner active Glimmet', 'Attach 1 Darkness.', energy={'type': 'Darkness', 'count': 1, 'destination': 'owner active Glimmet'}),
+                             play('end_turn')])
+        self.assertEqual(plan, ['Play:Ilima', 'Promote:0@2', 'Place:Regigigas', 'Attach:1Darkness@0 zone'])
+
+    def test_a_promotion_the_ilima_row_words_as_promotes_full_art_is_read(self):
+        plan, _ = self.plan([play('card_play', 'Ilima', None, 'Returns damaged 50/150 HP Regigigas to hand; no Energy attached; promotes full-art Glimmet'),
+                             play('card_play', 'Pawniard', None, 'Places second Pawniard in left Bench slot'),
+                             play('end_turn')], hand=('Ilima', 'Pawniard'))
+        self.assertEqual(plan, ['Play:Ilima', 'Promote:0@2', 'Place:Pawniard'])
+
+    def test_with_one_pokemon_on_the_bench_it_is_the_one_promoted(self):
+        plan, _ = self.plan([play('card_play', 'Ilima', None, 'Return damaged Regigigas to hand'), play('end_turn')], bench=[mon('Pawniard', 50, pos=1)])
+        self.assertEqual(plan, ['Play:Ilima', 'Promote:0@1'])
+
+    def test_when_the_ledger_does_not_say_which_one_the_plan_stops_there_and_the_target_is_unresolved(self):
+        plan, p = self.plan([play('card_play', 'Ilima', None, 'Return damaged Regigigas to hand'), play('card_play', 'Regigigas', None, 'Bench Regigigas'), play('end_turn')])
+        self.assertEqual(plan, ['Play:Ilima'])
+        self.assertTrue(p['unresolved'])
+
+    def test_ilima_on_a_benched_pokemon_leaves_a_hole_that_the_next_pokemon_he_benches_fills(self):
+        plan, _ = self.plan([play('card_play', 'Ilima', None, 'Return damaged benched Pawniard from the Bench to hand'),
+                             play('card_play', 'Pawniard', None, 'Bench Pawniard again'),
+                             play('energy_attachment', None, 'Pawniard', 'Attach 1 Darkness to Pawniard', energy={'type': 'Darkness', 'count': 1, 'destination': 'Pawniard'}),
+                             play('end_turn')],
+                            bench=[mon('Pawniard', 50, hp=20, pos=1), mon('Glimmet', 60, pos=2)])
+        self.assertEqual(plan, ['Play:Ilima', 'Place:Pawniard', 'Attach:1Darkness@1 zone'])
+
+    def test_a_turn_without_ilima_keeps_its_slots(self):
+        plan, _ = self.plan([play('energy_attachment', None, 'Pawniard', 'Attach', energy={'type': 'Darkness', 'count': 1, 'destination': 'Pawniard'}), play('end_turn')])
+        self.assertEqual(plan, ['Attach:1Darkness@1 zone'])
+
+    def test_a_promotion_after_the_attack_is_not_a_step_of_his_turn(self):
+        plan, _ = self.plan([play('attack', 'Regigigas', 'opponent Active', 'Raging Hammer'), play('promotion', None, 'Pawniard', 'Choose Pawniard after the knock-out')])
+        self.assertEqual(plan, ['Attack:Giga Turbo'])
+
+
+class DragonsBlessingChoice(unittest.TestCase):
+    """major 7: Dragon's Blessing takes an Energy from the discard and the engine asks which type (one choice per distinct type); the plan had the Ability but not the choice (022530 t09)"""
+    DECK = real_deck(('Axew', 'B2b 054', 2), ('Dratini', 'B4 116', 2), energy='Fighting')
+
+    def plan(self, ability_play):
+        t = owner_turn(9, ['Poké Ball'], board(mon('Axew', 70, variant='Sharp Fang'), [mon('Dratini', 60, pos=2)]), board(mon('Stakataka', 110), []), [ability_play, play('end_turn')])
+        return MadeUpGame(self, self.DECK, [t]).convert(GLOBAL)[0][0]['his_plan']
+
+    def test_the_type_he_chose_is_a_step_after_the_ability(self):
+        plan = self.plan(play('ability', 'Dragon’s Blessing', 'Active Axew', 'Right Bench Dragonair recovers 1 Fighting from discard onto Axew.', energy={'type': 'Fighting', 'count': 1, 'destination': 'Active Axew'}))
+        self.assertEqual(plan, ['Ability', 'AttachTypedFromDiscard:Fighting@0'])
+
+    def test_the_target_slot_is_the_pokemon_the_energy_went_to(self):
+        plan = self.plan(play('ability', 'Dragon’s Blessing', 'Dratini', 'Dragonair recovers 1 Metal from discard onto Dratini.', energy={'type': 'Metal', 'count': 1, 'destination': 'Dratini'}))
+        self.assertEqual(plan, ['Ability', 'AttachTypedFromDiscard:Metal@1'])
+
+    def test_an_ability_that_moves_no_energy_from_the_discard_is_just_an_ability(self):
+        plan = self.plan(play('ability', 'Sharp Fang', 'Active Axew', 'does something else'))
+        self.assertEqual(plan, ['Ability'])
+
+
+class NoBasicFound(unittest.TestCase):
+    """major 8: 'No Basic found' did not match the NOTHING_FOUND pattern, so a Poké Ball that found nothing stayed as his first move (010706 t15)"""
+
+    def test_the_pattern_reads_no_basic_found(self):
+        for text in ('No Basic found', 'no Basic Pokémon found', 'No basic pokemon found in deck', 'No effect: no target in deck'):
+            self.assertTrue(L.NOTHING_FOUND.search(text), text)
+        self.assertFalse(L.NOTHING_FOUND.search('Search finds Horsea'))
+        self.assertFalse(L.NOTHING_FOUND.search('finds a Basic Pokémon: Basic Dratini'))
+
+    def test_such_a_poke_ball_is_not_in_his_plan(self):
+        t = owner_turn(15, ['Poké Ball', 'Wally'], board(mon('Timburr', 60), []), board(mon('Stakataka', 110), []), [play('card_play', 'Poké Ball', None, 'No Basic found'), play('end_turn')])
+        p = MadeUpGame(self, fighting_deck(), [t]).convert(GLOBAL)[0][0]
+        self.assertEqual(p['his_plan'], [])
+        self.assertIn('found nothing', p['notes'])
+
+
+class RecordedCorrections(unittest.TestCase):
+    """the frame-only corrections the review settled are applied to the ledger copy by normalize_ledger.py and recorded in it; the converter says so in the notes of the positions they cover"""
+
+    def convert(self, corrections):
+        t2 = owner_turn(2, ['Poké Ball'], board(mon('Timburr', 60), []), board(mon('Stakataka', 110), []), [play('end_turn')])
+        t4 = owner_turn(4, ['Poké Ball'], board(mon('Timburr', 60), []), board(mon('Stakataka', 110), []), [play('end_turn')])
+        game = MadeUpGame(self, fighting_deck(), [t2, opp_turn(3, []), t4])
+        path = os.path.join(game.path, 'TURN_LEDGER.json')
+        with open(path, encoding='utf-8') as f:
+            led = json.load(f)
+        led['corrections'] = corrections
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump(led, f)
+        return {p['turn_count']: p for p in game.convert(GLOBAL)[0]}
+
+    def test_a_correction_is_a_note_in_the_positions_of_its_turns_only(self):
+        pos = self.convert([{'id': 'x', 'turns': [4], 'note': 'the opponent hand at turn 4 is 6 (the frames), not 5'}])
+        self.assertIn('the opponent hand at turn 4 is 6', pos[4]['notes'])
+        self.assertNotIn('the opponent hand at turn 4', pos[2]['notes'])
+
+    def test_a_correction_without_turns_covers_every_position_of_the_game(self):
+        pos = self.convert([{'id': 'y', 'note': 'the left Bench Pokemon is a Meowth B2 124'}])
+        self.assertTrue(all('the left Bench Pokemon is a Meowth' in p['notes'] for p in pos.values()))
+
+    def test_a_ledger_without_corrections_has_none(self):
+        pos = self.convert([])
+        self.assertNotIn('corrected', pos[2]['notes'])
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -1,0 +1,3 @@
+# Corrections before acceptance
+
+The lead requested clearer Energy progression and native evidence for the first-pass account. The report now states one Fighting on Timburr by turn 6, two on Conkeldurr after turn 8, and three after turn 10. The separate verifier also confirmed two omitted Bench allocations: Sandslash has one Fighting by the end of turn 4, while Sandshrew receives one on turn 12. Native source frames at 80, 193, 207, 232 and 240 seconds support the reconciled visible states. The precise turn-4 attachment timing relative to evolution remains uncertain. The timeline and findings were updated before final independent acceptance, registration or archival.

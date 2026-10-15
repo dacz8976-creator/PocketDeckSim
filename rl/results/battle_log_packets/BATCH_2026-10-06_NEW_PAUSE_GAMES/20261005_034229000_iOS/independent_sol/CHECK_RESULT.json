@@ -1,0 +1,521 @@
+{
+  "game_id": "20261005_034229000_iOS",
+  "source_video": "20261005_034229000_iOS.MP4",
+  "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+  "checked_at_utc": "2026-10-06T19:41:21.749666+00:00",
+  "checked_input_sha256": {
+    "SOURCE.json": "b31e89789db63fbbe9ec64ff20df069733742765591c2bf81b22b495bebe085a",
+    "REVIEW.md": "7d63cda3a22b6eb04dbf643bd007549bb4014cdf9d6f031d575b68bdca27e6f2",
+    "COVERAGE.md": "08e8ca2fa98981a9c14c7d96c7be0ba06f2d31ce47fd0c2ccc780f63eadbab6d",
+    "SUMMARY.json": "e8d09f6c9911ae85bed215ed142bda07649074f10eec1077e24ee48ce06e5b77",
+    "UNCERTAINTIES.json": "53e64e2a854de67ddd2e5cf5c49720158860530d85b163d97b1d7fab3d60ed3a",
+    "PAUSE_GAME.json": "dd91a480943091aa1ecc06cfb15331854a38bb1abbac57a0837c3d3cb7fd2d23",
+    "DECK_USED.json": "d6477769fab59ae75c3f058f69558b473ab1038a2b4f161f1e0ced18174540f2",
+    "TURN_LEDGER.json": "169bef5cdf8c3fd1050bd9ee016e366c2051e941be5f08b8b1abf4a02d4add2b",
+    "TURN_EVIDENCE.json": "cf676cb82035a1394a585f707d3008109bf9964616775bf443d4cfe6a057560a"
+  },
+  "supplemental_checked_input_sha256": {
+    "RECORDING_METADATA.json": "2938ea58a0ca11616734e03ead15ea67e1e86b058c09ac8c3d0835a943064ed4",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900"
+  },
+  "scope": "Bounded independent acceptance sample of the completed source-wide first pass. No routine second full visual pass, source media hash reread or duplicate extraction.",
+  "accepted": false,
+  "status": "required_repairs",
+  "required_repairs": [
+    {
+      "id": "R1",
+      "file": "TURN_LEDGER.json",
+      "issue": "Three intact owner start-hand frames show an empty current Energy slot, while the schema prematurely reports available Metal1. The small Metal icon is the next preview.",
+      "affected_fields": [
+        {
+          "json_path": "$.turns[2].board_at_start.owner.energy_zone.this_turn",
+          "selected_seconds": 111,
+          "selected_evidence_id": "f_0111_00",
+          "first_later_generated_evidence_id": "f_0112_00",
+          "generation_interval_seconds": [
+            111,
+            112
+          ],
+          "original_value": {
+            "type": "Metal",
+            "count": 1,
+            "available": true
+          }
+        },
+        {
+          "json_path": "$.turns[4].board_at_start.owner.energy_zone.this_turn",
+          "selected_seconds": 213.7,
+          "selected_evidence_id": "f_0213_70",
+          "first_later_generated_evidence_id": "f_0214_50",
+          "generation_interval_seconds": [
+            213.7,
+            214.5
+          ],
+          "original_value": {
+            "type": "Metal",
+            "count": 1,
+            "available": true
+          }
+        },
+        {
+          "json_path": "$.turns[6].board_at_start.owner.energy_zone.this_turn",
+          "selected_seconds": 283,
+          "selected_evidence_id": "f_0283_00",
+          "first_later_generated_evidence_id": "f_0283_80",
+          "generation_interval_seconds": [
+            283,
+            283.8
+          ],
+          "original_value": {
+            "type": "Metal",
+            "count": 1,
+            "available": true
+          }
+        }
+      ],
+      "required_change": "Preserve the selected intact hands and next Metal preview. Record observed empty current slot explicitly with count0/availablefalse and separately bounded later Metal generation. Correct generic basis/prose if it implies current availability at these selected times."
+    },
+    {
+      "id": "R2",
+      "file": "TURN_LEDGER.json",
+      "issue": "77 tool:null fields on named visible Pokemon and seven early stadium:null fields have generic visible status but no field-specific observed absence or unknown reason.",
+      "json_paths": [
+        "$.turns[0].board_at_start.stadium",
+        "$.turns[0].board_at_start.owner.active.tool",
+        "$.turns[0].board_at_start.owner.bench_in_position_order[0].tool",
+        "$.turns[0].board_at_start.opponent.active.tool",
+        "$.turns[0].board_after.stadium",
+        "$.turns[0].board_after.owner.active.tool",
+        "$.turns[0].board_after.owner.bench_in_position_order[0].tool",
+        "$.turns[0].board_after.owner.bench_in_position_order[1].tool",
+        "$.turns[0].board_after.opponent.active.tool",
+        "$.turns[1].board_at_start.stadium",
+        "$.turns[1].board_at_start.owner.active.tool",
+        "$.turns[1].board_at_start.owner.bench_in_position_order[0].tool",
+        "$.turns[1].board_at_start.owner.bench_in_position_order[1].tool",
+        "$.turns[1].board_at_start.opponent.active.tool",
+        "$.turns[1].board_after.stadium",
+        "$.turns[1].board_after.owner.active.tool",
+        "$.turns[1].board_after.owner.bench_in_position_order[0].tool",
+        "$.turns[1].board_after.owner.bench_in_position_order[1].tool",
+        "$.turns[1].board_after.opponent.active.tool",
+        "$.turns[2].board_at_start.stadium",
+        "$.turns[2].board_at_start.owner.active.tool",
+        "$.turns[2].board_at_start.owner.bench_in_position_order[0].tool",
+        "$.turns[2].board_at_start.owner.bench_in_position_order[1].tool",
+        "$.turns[2].board_at_start.opponent.active.tool",
+        "$.turns[2].board_after.stadium",
+        "$.turns[2].board_after.owner.bench_in_position_order[0].tool",
+        "$.turns[2].board_after.owner.bench_in_position_order[1].tool",
+        "$.turns[2].board_after.opponent.active.tool",
+        "$.turns[3].board_at_start.stadium",
+        "$.turns[3].board_at_start.owner.bench_in_position_order[0].tool",
+        "$.turns[3].board_at_start.owner.bench_in_position_order[1].tool",
+        "$.turns[3].board_at_start.opponent.active.tool",
+        "$.turns[3].board_after.owner.active.tool",
+        "$.turns[3].board_after.owner.bench_in_position_order[0].tool",
+        "$.turns[3].board_after.opponent.active.tool",
+        "$.turns[3].board_after.opponent.bench_in_position_order[0].tool",
+        "$.turns[3].board_after.opponent.bench_in_position_order[1].tool",
+        "$.turns[3].board_after.opponent.bench_in_position_order[2].tool",
+        "$.turns[4].board_at_start.owner.active.tool",
+        "$.turns[4].board_at_start.owner.bench_in_position_order[0].tool",
+        "$.turns[4].board_at_start.opponent.active.tool",
+        "$.turns[4].board_at_start.opponent.bench_in_position_order[0].tool",
+        "$.turns[4].board_at_start.opponent.bench_in_position_order[1].tool",
+        "$.turns[4].board_at_start.opponent.bench_in_position_order[2].tool",
+        "$.turns[4].board_after.owner.bench_in_position_order[0].tool",
+        "$.turns[4].board_after.opponent.active.tool",
+        "$.turns[4].board_after.opponent.bench_in_position_order[0].tool",
+        "$.turns[4].board_after.opponent.bench_in_position_order[1].tool",
+        "$.turns[4].board_after.opponent.bench_in_position_order[2].tool",
+        "$.turns[5].board_at_start.owner.bench_in_position_order[0].tool",
+        "$.turns[5].board_at_start.opponent.active.tool",
+        "$.turns[5].board_at_start.opponent.bench_in_position_order[0].tool",
+        "$.turns[5].board_at_start.opponent.bench_in_position_order[1].tool",
+        "$.turns[5].board_at_start.opponent.bench_in_position_order[2].tool",
+        "$.turns[5].board_after.owner.active.tool",
+        "$.turns[5].board_after.owner.bench_in_position_order[0].tool",
+        "$.turns[5].board_after.opponent.active.tool",
+        "$.turns[5].board_after.opponent.bench_in_position_order[0].tool",
+        "$.turns[5].board_after.opponent.bench_in_position_order[1].tool",
+        "$.turns[5].board_after.opponent.bench_in_position_order[2].tool",
+        "$.turns[6].board_at_start.owner.active.tool",
+        "$.turns[6].board_at_start.owner.bench_in_position_order[0].tool",
+        "$.turns[6].board_at_start.opponent.active.tool",
+        "$.turns[6].board_at_start.opponent.bench_in_position_order[0].tool",
+        "$.turns[6].board_at_start.opponent.bench_in_position_order[1].tool",
+        "$.turns[6].board_at_start.opponent.bench_in_position_order[2].tool",
+        "$.turns[6].board_after.owner.bench_in_position_order[0].tool",
+        "$.turns[6].board_after.owner.bench_in_position_order[2].tool",
+        "$.turns[6].board_after.opponent.active.tool",
+        "$.turns[6].board_after.opponent.bench_in_position_order[0].tool",
+        "$.turns[6].board_after.opponent.bench_in_position_order[1].tool",
+        "$.turns[6].board_after.opponent.bench_in_position_order[2].tool",
+        "$.turns[7].board_at_start.owner.bench_in_position_order[0].tool",
+        "$.turns[7].board_at_start.owner.bench_in_position_order[2].tool",
+        "$.turns[7].board_at_start.opponent.active.tool",
+        "$.turns[7].board_at_start.opponent.bench_in_position_order[0].tool",
+        "$.turns[7].board_at_start.opponent.bench_in_position_order[1].tool",
+        "$.turns[7].board_at_start.opponent.bench_in_position_order[2].tool",
+        "$.turns[7].board_after.owner.bench_in_position_order[0].tool",
+        "$.turns[7].board_after.owner.bench_in_position_order[2].tool",
+        "$.turns[7].board_after.opponent.active.tool",
+        "$.turns[7].board_after.opponent.bench_in_position_order[0].tool",
+        "$.turns[7].board_after.opponent.bench_in_position_order[1].tool",
+        "$.turns[7].board_after.opponent.bench_in_position_order[2].tool"
+      ],
+      "required_change": "Make observed absence explicit with evidence and field-specific status/basis, or retain null only with a specific unknown/unreadable reason. Leave visibly empty Pokemon slots explicitly empty. Stadium is empty before the observed Turn4 Plaza play, then Peculiar Plaza remains."
+    },
+    {
+      "id": "R3",
+      "file": "TURN_LEDGER.json",
+      "json_paths": [
+        "$.turns[1].turn_label_evidence.timestamp_seconds",
+        "$.turns[1].turn_label_evidence.evidence_ids",
+        "$.turns[1].turn_label_evidence.basis"
+      ],
+      "timestamp_seconds": 64,
+      "evidence_ids": [
+        "f_0064_00"
+      ],
+      "issue": "Native64 has no displayed Current turn2 banner;63 and63.5 also show the plain owner End Turn board. The claimed direct label read is unsupported.",
+      "required_change": "Retain and reference a genuine readable transition label frame from a bounded64.5-66 window, or explicitly qualify displayed label as unverified with reason while keeping the concluded turn separately. Update REVIEW/COVERAGE claims that label2 was visibly read at64."
+    },
+    {
+      "id": "R4",
+      "file": "TURN_LEDGER.json",
+      "issue": "Several displayed action/draw or owner input timestamps precede the cited native state. Overall opponent action order agrees, but the current cited timing and fan-phase evidence do not.",
+      "affected_fields": [
+        {
+          "json_paths": [
+            "$.turns[1].draws_and_searches[1].timestamp_seconds",
+            "$.turns[1].draws_and_searches[1].cards_in_reveal_order[0].timestamp_seconds",
+            "$.turns[1].draws_and_searches[1].evidence_ids"
+          ],
+          "seconds": 83,
+          "evidence_ids": [
+            "f_0083_00",
+            "f_0090_00"
+          ],
+          "observation": "83 is Poke Ball reveal with four fan cards;90 shows returned five-card fan. Do not label83 an observed search-card arrival."
+        },
+        {
+          "json_paths": [
+            "$.turns[1].plays_in_order[2].timestamp_seconds",
+            "$.turns[1].plays_in_order[2].evidence_ids",
+            "$.turns[1].draws_and_searches[2].timestamp_seconds",
+            "$.turns[1].draws_and_searches[2].cards_in_reveal_order",
+            "$.turns[1].draws_and_searches[2].evidence_ids"
+          ],
+          "seconds": [
+            86,
+            90
+          ],
+          "evidence_ids": [
+            "f_0086_00",
+            "f_0090_00",
+            "f_0093_00"
+          ],
+          "observation": "86 and90 show prior Poke Ball on top of discard with five-card fan;93 shows Research on top with six. Research play/draw resolution must be bounded later with correct fan phases."
+        },
+        {
+          "json_paths": [
+            "$.turns[1].plays_in_order[3].timestamp_seconds",
+            "$.turns[1].plays_in_order[3].evidence_ids",
+            "$.turns[1].draws_and_searches[3].timestamp_seconds",
+            "$.turns[1].draws_and_searches[3].cards_in_reveal_order[0].timestamp_seconds",
+            "$.turns[1].draws_and_searches[3].evidence_ids"
+          ],
+          "seconds": [
+            93,
+            96
+          ],
+          "evidence_ids": [
+            "f_0093_00",
+            "f_0096_00",
+            "f_0107_00"
+          ],
+          "observation": "93 and96 still have Research top and six-card fan;107 has the later Poke Ball top and six-card fan. Second Ball play/search must be retimed to actual later evidence."
+        },
+        {
+          "json_paths": [
+            "$.turns[3].plays_in_order[2].timestamp_seconds",
+            "$.turns[3].plays_in_order[2].evidence_ids"
+          ],
+          "seconds": 150,
+          "evidence_ids": [
+            "f_0150_00",
+            "f_0169_00"
+          ],
+          "observation": "150 is before Plaza appears; prose correctly bounds150-154. Add equivalent bounded visible action/resolution evidence in JSON instead of claiming native150 directly shows the Stadium play."
+        },
+        {
+          "json_paths": [
+            "$.turns[6].plays_in_order[4].timestamp_seconds",
+            "$.turns[6].plays_in_order[4].input_interval_seconds",
+            "$.turns[6].plays_in_order[4].evidence_ids"
+          ],
+          "seconds": [
+            312,
+            313,
+            315
+          ],
+          "evidence_ids": [
+            "f_0312_00",
+            "f_0313_00",
+            "f_0315_00"
+          ],
+          "observation": "312 is Heads and313 has intact Core+Pop hand, no attached Core.315 shows Core reveal and one-card hand. Bound voluntary Core selection after313 separately from its later reveal."
+        }
+      ],
+      "required_change": "Make a focused native timing recheck of these short intervals. Repair play/reveal/search/draw timestamps, evidence IDs and hand-count phases together, with bounded intervals when exact input is hidden. Update repeated Turn2 prose and dependent TURN_EVIDENCE observations/capture claims. Do not invent hidden opponent card names."
+    }
+  ],
+  "original_input_hashes_verified_unchanged_at_report": true,
+  "checked_source_identity": {
+    "binding": "Frozen CLI SOURCE event00b0225e-aa04-433b-acc9-51ea3126e31b",
+    "bytes": 684713902,
+    "duration_seconds": 374.588333,
+    "native_dimensions": [
+      1170,
+      2532
+    ],
+    "source_media_rehashed": false
+  },
+  "structural_checks": {
+    "native_frames": 202,
+    "unique_evidence_ids": 202,
+    "crops": 404,
+    "all_files_exist": true,
+    "native_dimensions_and_crop_bounds": true,
+    "all_referenced_evidence_ids_resolve": true,
+    "all_frame_source_hashes_agree": true,
+    "jpeg_crop_correspondence_max_channel_MAE": 1.783981523626494,
+    "jpeg_crop_correspondence_limit_MAE": 8,
+    "jpeg_exact_pixel_identity_claimed": false
+  },
+  "passed_native_samples": [
+    "Opening five and initial placement core; owner first input46.5-47 separate from PokeBall reveal50; Research Aegislash60.5 then Pop61.5.",
+    "All four selected intact owner hands,1/3/6-second candidates and before-end views sampled; post-play candidate limits retained.",
+    "Steel Apron recovery and ordinary attachment before Iron Supply extra Metal to left Honedge; evolved Aegislash retains Metal.",
+    "Both boards with positional benches, typed Energy, HP, conditions/effects; gold Core before Metal, later expiry; triple Heads and60 healing; standard Core later; SteelWing100 and its incoming reduction.",
+    "T6 regular Psychic targets dark Mewtwo, then attack adds three; final ten Psychic3+3+4+0 independently read.",
+    "Brilliant Storm rule counts all attacker Pokemon.240 raw minus20 SteelWing minus50 Core=170, separately displayed at356. HP0 at357, removal358/359, point award361, Defeat364, result374: wentfirst/eightturns/0-3/110damage.",
+    "Discard top previews and KO transfer limits remain explicit; no opened complete discard piles claimed.",
+    "No filmed QR/list in this source; exact20 remains null with reason, nearby033529 entryfilmed-qr-b599dd4e7e1c remains a qualified candidate only, with no live-save claim."
+  ],
+  "initial_rejected_input_excerpts": {
+    "energy_starts": [
+      {
+        "json_path": "$.turns[2].board_at_start.owner.energy_zone.this_turn",
+        "selected_seconds": 111,
+        "selected_evidence_id": "f_0111_00",
+        "first_later_generated_evidence_id": "f_0112_00",
+        "generation_interval_seconds": [
+          111,
+          112
+        ],
+        "original_value": {
+          "type": "Metal",
+          "count": 1,
+          "available": true
+        }
+      },
+      {
+        "json_path": "$.turns[4].board_at_start.owner.energy_zone.this_turn",
+        "selected_seconds": 213.7,
+        "selected_evidence_id": "f_0213_70",
+        "first_later_generated_evidence_id": "f_0214_50",
+        "generation_interval_seconds": [
+          213.7,
+          214.5
+        ],
+        "original_value": {
+          "type": "Metal",
+          "count": 1,
+          "available": true
+        }
+      },
+      {
+        "json_path": "$.turns[6].board_at_start.owner.energy_zone.this_turn",
+        "selected_seconds": 283,
+        "selected_evidence_id": "f_0283_00",
+        "first_later_generated_evidence_id": "f_0283_80",
+        "generation_interval_seconds": [
+          283,
+          283.8
+        ],
+        "original_value": {
+          "type": "Metal",
+          "count": 1,
+          "available": true
+        }
+      }
+    ],
+    "opponent_turn2_draws_and_searches": [
+      {
+        "kind": "normal",
+        "caused_by": "turn start",
+        "linked_play_order": null,
+        "cards_in_reveal_order": [
+          {
+            "name": null,
+            "reveal_position": 1,
+            "source_video": "20261005_034229000_iOS.MP4",
+            "timestamp_seconds": 67,
+            "evidence_ids": [
+              "f_0067_00"
+            ],
+            "basis": "Hidden opponent card back",
+            "limit_reason": "Opponent identities are not exposed."
+          }
+        ],
+        "hand_count_before": 4,
+        "hand_count_after": 5,
+        "returned_or_discarded_cards": null,
+        "source_video": "20261005_034229000_iOS.MP4",
+        "timestamp_seconds": 67,
+        "evidence_ids": [
+          "f_0067_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "kind": "search",
+        "caused_by": "Poke Ball",
+        "linked_play_order": 2,
+        "cards_in_reveal_order": [
+          {
+            "name": null,
+            "reveal_position": 1,
+            "source_video": "20261005_034229000_iOS.MP4",
+            "timestamp_seconds": 83,
+            "evidence_ids": [
+              "f_0083_00"
+            ],
+            "basis": "Hidden opponent card back",
+            "limit_reason": "Opponent identities are not exposed."
+          }
+        ],
+        "hand_count_before": 4,
+        "hand_count_after": 5,
+        "returned_or_discarded_cards": null,
+        "source_video": "20261005_034229000_iOS.MP4",
+        "timestamp_seconds": 83,
+        "evidence_ids": [
+          "f_0083_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "kind": "supporter_draw",
+        "caused_by": "Professor's Research",
+        "linked_play_order": 3,
+        "cards_in_reveal_order": [
+          {
+            "name": null,
+            "reveal_position": 1,
+            "source_video": "20261005_034229000_iOS.MP4",
+            "timestamp_seconds": 90,
+            "evidence_ids": [
+              "f_0090_00"
+            ],
+            "basis": "Hidden opponent card back",
+            "limit_reason": "Opponent identities are not exposed."
+          },
+          {
+            "name": null,
+            "reveal_position": 2,
+            "source_video": "20261005_034229000_iOS.MP4",
+            "timestamp_seconds": 90,
+            "evidence_ids": [
+              "f_0090_00"
+            ],
+            "basis": "Hidden opponent card back",
+            "limit_reason": "Opponent identities are not exposed."
+          }
+        ],
+        "hand_count_before": 4,
+        "hand_count_after": 6,
+        "returned_or_discarded_cards": null,
+        "source_video": "20261005_034229000_iOS.MP4",
+        "timestamp_seconds": 90,
+        "evidence_ids": [
+          "f_0090_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "kind": "search",
+        "caused_by": "Poke Ball",
+        "linked_play_order": 4,
+        "cards_in_reveal_order": [
+          {
+            "name": null,
+            "reveal_position": 1,
+            "source_video": "20261005_034229000_iOS.MP4",
+            "timestamp_seconds": 96,
+            "evidence_ids": [
+              "f_0096_00"
+            ],
+            "basis": "Hidden opponent card back",
+            "limit_reason": "Opponent identities are not exposed."
+          }
+        ],
+        "hand_count_before": 5,
+        "hand_count_after": 6,
+        "returned_or_discarded_cards": null,
+        "source_video": "20261005_034229000_iOS.MP4",
+        "timestamp_seconds": 96,
+        "evidence_ids": [
+          "f_0096_00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "turn2_label": {
+      "displayed_current_turn": 2,
+      "timestamp_seconds": 64,
+      "evidence_ids": [
+        "f_0064_00"
+      ],
+      "basis": "Actual visible Current turn transition label, read separately from ordinary snapshots."
+    },
+    "owner_turn7_core_play": {
+      "order": 5,
+      "kind": "tool",
+      "card_name": "Metal Core Barrier (standard art)",
+      "target": "Skarmory ex Active",
+      "energy": null,
+      "result": "Standard-art Core Barrier attached after all three Pop uses",
+      "prompt_text": "Please choose a Pokemon to attach the Pokemon Tool to",
+      "response": "Skarmory ex Active",
+      "nested_events_in_order": [],
+      "hand_count_after": 1,
+      "source_video": "20261005_034229000_iOS.MP4",
+      "timestamp_seconds": 313,
+      "input_interval_seconds": [
+        312,
+        313
+      ],
+      "input_vs_resolution_basis": "Input/selection bracket is bounded independently of reveal/animation; see nested resolution and evidence.",
+      "evidence_ids": [
+        "f_0313_00"
+      ],
+      "basis": "Visible input/card destination and native resolution",
+      "limit_reason": null
+    }
+  },
+  "inspected_native_evidence_count": 90,
+  "viewed_evidence_report": "VIEWED_EVIDENCE.json",
+  "recording_limits_accepted": [
+    "Hidden opponent identities and finger inputs remain unknown.",
+    "No exact played20 binding is available without filmed QR/list; nearby candidate is qualified.",
+    "Actual decoded frame PTS not measured; timestamps remain source-local requested seeks.",
+    "Full discard piles not opened; preview observations do not establish ordered full contents.",
+    "Specific queue not visible; no Auto control observed."
+  ],
+  "external_actions": false,
+  "worker_or_source_edits": false
+}

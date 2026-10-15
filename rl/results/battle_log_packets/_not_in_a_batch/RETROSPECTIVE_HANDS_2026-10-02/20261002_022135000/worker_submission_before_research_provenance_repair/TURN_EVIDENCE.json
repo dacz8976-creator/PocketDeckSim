@@ -1,0 +1,2392 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_022135000_iOS.MP4",
+  "sources": [
+    {
+      "video_basename": "20261002_022135000_iOS.MP4",
+      "sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "source_json": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_022135000_iOS_competitive_sol\\SOURCE.json"
+    }
+  ],
+  "default_capture_policy": {
+    "owner_turn_offsets_after_draw_seconds": [
+      1,
+      3,
+      6
+    ],
+    "before_end_action_required": true,
+    "native_resolution_required": true,
+    "bottom_crop_height_fraction": 0.2,
+    "top_crop_pixel_bounds": [
+      0,
+      0,
+      1170,
+      820
+    ],
+    "fixed_grid_is_turn_start_evidence": false
+  },
+  "frames": [
+    {
+      "evidence_id": "f_0020.00",
+      "role": "setup",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 20.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0020.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0020.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0020.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0021.00",
+      "role": "opening",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 21.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0021.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0021.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0021.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0023.00",
+      "role": "setup",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 23.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0023.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0023.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0023.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0035.00",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 35.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": -2.1,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0035.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0035.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0035.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0036.00",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 36.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": -1.1,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0036.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0036.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0036.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0036.85",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 36.85,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": -0.25,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0036.85.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0036.85_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0036.85_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0037.00",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 37.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": -0.1,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0037.06",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 37.06,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": -0.04,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.06.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.06_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.06_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0037.12",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 37.12,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.02,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.12.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.12_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.12_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0037.18",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 37.18,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.08,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.18.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.18_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.18_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0037.24",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 37.24,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.14,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.24.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.24_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.24_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0037.30",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 37.3,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.2,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.30_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.30_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0037.50",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 37.5,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.4,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0037.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0038.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 38.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.9,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0038.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0038.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0038.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0040.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 40.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 2.9,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0040.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0040.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0040.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0043.30",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 43.3,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 6.2,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0043.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0043.30_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0043.30_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0048.00",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 48.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 10.9,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0048.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0048.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0048.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0050.00",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 50.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 12.9,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0050.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0050.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0050.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0052.00",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 52.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 14.9,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0052.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0052.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0052.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0054.00",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 54.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 16.9,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0054.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0054.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0054.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0057.00",
+      "role": "targeted_native_inspection",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 57.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 19.9,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0057.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0057.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0057.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0059.00",
+      "role": "before_end_action_hand",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 37.1,
+      "requested_source_seconds": 59.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 21.9,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0059.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0059.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0059.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+      "suitability_or_limit": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five."
+    },
+    {
+      "evidence_id": "f_0089.00",
+      "role": "selected_pre_removal_hand",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 89,
+      "requested_source_seconds": 89.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0089.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0089.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0089.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0090.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 89,
+      "requested_source_seconds": 90.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0090.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0090.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0090.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0092.00",
+      "role": "before_end_action_hand",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 89,
+      "requested_source_seconds": 92.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0092.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0092.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0092.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0095.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 89,
+      "requested_source_seconds": 95.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0095.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0095.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0095.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0120.50",
+      "role": "targeted_native_inspection",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 121.35,
+      "requested_source_seconds": 120.5,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": -0.85,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0120.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0120.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0120.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0121.00",
+      "role": "targeted_native_inspection",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 121.35,
+      "requested_source_seconds": 121.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": -0.35,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0121.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0121.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0121.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0121.35",
+      "role": "selected_pre_removal_hand",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 121.35,
+      "requested_source_seconds": 121.35,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0121.35.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0121.35_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0121.35_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0122.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 121.35,
+      "requested_source_seconds": 122.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.65,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0122.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0122.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0122.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0124.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 121.35,
+      "requested_source_seconds": 124.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 2.65,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0124.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0124.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0124.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0127.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 121.35,
+      "requested_source_seconds": 127.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 5.65,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0127.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0127.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0127.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0129.00",
+      "role": "before_end_action_hand",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 121.35,
+      "requested_source_seconds": 129.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 7.65,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0129.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0129.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0129.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0156.50",
+      "role": "targeted_native_inspection",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 157.35,
+      "requested_source_seconds": 156.5,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": -0.85,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0156.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0156.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0156.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0157.00",
+      "role": "targeted_native_inspection",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 157.35,
+      "requested_source_seconds": 157.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": -0.35,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0157.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0157.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0157.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0157.35",
+      "role": "selected_pre_removal_hand",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 157.35,
+      "requested_source_seconds": 157.35,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0157.35.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0157.35_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0157.35_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0158.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 157.35,
+      "requested_source_seconds": 158.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.65,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0158.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0158.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0158.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0160.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 157.35,
+      "requested_source_seconds": 160.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 2.65,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0160.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0160.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0160.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0163.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 157.35,
+      "requested_source_seconds": 163.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 5.65,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0163.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0163.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0163.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0168.50",
+      "role": "before_end_action_hand",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 157.35,
+      "requested_source_seconds": 168.5,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 11.15,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0168.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0168.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0168.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0235.50",
+      "role": "targeted_native_inspection",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 236.35,
+      "requested_source_seconds": 235.5,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": -0.85,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0235.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0235.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0235.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0236.00",
+      "role": "targeted_native_inspection",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 236.35,
+      "requested_source_seconds": 236.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": -0.35,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0236.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0236.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0236.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0236.35",
+      "role": "selected_pre_removal_hand",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 236.35,
+      "requested_source_seconds": 236.35,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0236.35.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0236.35_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0236.35_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0237.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 236.35,
+      "requested_source_seconds": 237.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.65,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0237.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0237.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0237.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0239.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 236.35,
+      "requested_source_seconds": 239.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 2.65,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0239.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0239.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0239.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0242.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 236.35,
+      "requested_source_seconds": 242.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 5.65,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0242.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0242.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0242.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0270.50",
+      "role": "targeted_native_inspection",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 270.65,
+      "requested_source_seconds": 270.5,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": -0.15,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0270.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0270.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0270.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0270.65",
+      "role": "selected_pre_removal_hand",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 270.65,
+      "requested_source_seconds": 270.65,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0270.65.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0270.65_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0270.65_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0270.80",
+      "role": "targeted_native_inspection",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 270.65,
+      "requested_source_seconds": 270.8,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.15,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0270.80.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0270.80_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0270.80_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0271.00",
+      "role": "targeted_native_inspection",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 270.65,
+      "requested_source_seconds": 271.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 0.35,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0271.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0271.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0271.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0272.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 270.65,
+      "requested_source_seconds": 272.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 1.35,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0272.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0272.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0272.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0274.00",
+      "role": "before_end_action_hand",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 270.65,
+      "requested_source_seconds": 274.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 3.35,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0274.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0274.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0274.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0277.00",
+      "role": "scheduled_draw_offset_candidate",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 270.65,
+      "requested_source_seconds": 277.0,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 6.35,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0277.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0277.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0277.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn.",
+      "suitability_or_limit": "Candidate inspected; after rapid first play unless turn3. Turn3 at95 and turn11 at277 already show next turn."
+    },
+    {
+      "evidence_id": "f_0277.50",
+      "role": "targeted_native_inspection",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "draw_animation_end_seconds": 270.65,
+      "requested_source_seconds": 277.5,
+      "actual_frame_seconds_if_measured": null,
+      "pts_limit_reason": "Actual decoded PTS not measured; filename gives requested source seek.",
+      "offset_after_draw_seconds": 6.85,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0277.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0277.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\t0277.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Retained native evidence; see target row for named observations.",
+      "suitability_or_limit": "Retained native evidence; see target row for named observations."
+    },
+    {
+      "evidence_id": "f_0244.00",
+      "role": "before_end_action_hand",
+      "turn_number": 9,
+      "source_video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "requested_source_seconds": 244,
+      "actual_frame_seconds_if_measured": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_022135000_iOS_competitive_sol\\native\\t0244.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\reused_t0244.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000\\turn_evidence\\reused_t0244.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          820
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Three cards before pass: Lucky Ice Pop, Lucky Ice Pop, Irida.",
+      "suitability_or_limit": "Reused accepted original native frame; timestamp is requested seek, actual PTS not measured."
+    }
+  ],
+  "discard_snapshots": [
+    {
+      "turn_number": 1,
+      "pile_owner": "both",
+      "cards_in_view": null,
+      "full_pile_established": false,
+      "limit_reason": "No opened discard-pile panel is established within these inspected owner windows. A visible last-discard card is not an opened pile or full discard list. Intervening opponent turns and later hands are inherited only."
+    },
+    {
+      "turn_number": 3,
+      "pile_owner": "both",
+      "cards_in_view": null,
+      "full_pile_established": false,
+      "limit_reason": "No opened discard-pile panel is established within these inspected owner windows. A visible last-discard card is not an opened pile or full discard list. Intervening opponent turns and later hands are inherited only."
+    },
+    {
+      "turn_number": 5,
+      "pile_owner": "both",
+      "cards_in_view": null,
+      "full_pile_established": false,
+      "limit_reason": "No opened discard-pile panel is established within these inspected owner windows. A visible last-discard card is not an opened pile or full discard list. Intervening opponent turns and later hands are inherited only."
+    },
+    {
+      "turn_number": 7,
+      "pile_owner": "both",
+      "cards_in_view": null,
+      "full_pile_established": false,
+      "limit_reason": "No opened discard-pile panel is established within these inspected owner windows. A visible last-discard card is not an opened pile or full discard list. Intervening opponent turns and later hands are inherited only."
+    },
+    {
+      "turn_number": 9,
+      "pile_owner": "both",
+      "cards_in_view": null,
+      "full_pile_established": false,
+      "limit_reason": "No opened discard-pile panel is established within these inspected owner windows. A visible last-discard card is not an opened pile or full discard list. Intervening opponent turns and later hands are inherited only."
+    },
+    {
+      "turn_number": 11,
+      "pile_owner": "both",
+      "cards_in_view": null,
+      "full_pile_established": false,
+      "limit_reason": "No opened discard-pile panel is established within these inspected owner windows. A visible last-discard card is not an opened pile or full discard list. Intervening opponent turns and later hands are inherited only."
+    }
+  ],
+  "scheduled_capture_limits": [
+    "Scope is opening and first six owner turns 1,3,5,7,9,11 only. Later owner hands and all accepted boards/outcomes/actions are outside fresh inspection scope.",
+    "All30 turn narratives and approximate intervals are inherited from the independently accepted full review; no complete fresh board capture is asserted.",
+    "Turn1 Indeedee ex reveal is directly readable at37s and is immediately played. Dense37.06/37.12/37.18/37.24 frames do not show a settled five-card fan. The four retained card positions are observed; the drawn card name is observed but its settled physical fan position is unavailable.",
+    "Turn7 fifth card and turn11 fourth card are shown arriving/lifting at the fan edge. These are native fully named pre-removal views, not a claim of a long settled fan.",
+    "Draw-end bounds and first-action times are observation estimates from discrete frame seeks, not exact decoded PTS. Requested seek times are preserved; actual PTS was not measured.",
+    "Candidates at approximately draw+1,+3,+6 often follow a fast first play. Turn3+6 and turn11+6 are already opponent-turn transitions and are not pre-end/start-hand evidence.",
+    "No opened discard-pile panel is established within these inspected owner windows. A visible last-discard card is not an opened pile or full discard list. Intervening opponent turns and later hands are inherited only.",
+    "Research first draw Poké Ball is directly visible at52s; Pokémon Center Lady is directly present by54s after the quick Poké Ball play. Its identity as the second Research addition is transaction-reconciled, not an isolated readable second-draw animation.",
+    "Current live20-card deck snapshot is saved separately. Historical exact version remains unverified, and deck membership was never used to fill a hand."
+  ]
+}

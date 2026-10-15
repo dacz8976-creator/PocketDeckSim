@@ -1,0 +1,44 @@
+{
+  "verifier": "/root/verify_194445",
+  "model": "gpt-6-sol",
+  "reasoning_effort": "high",
+  "decision": "ACCEPT",
+  "source_basename": "20261009_194445000_iOS.MP4",
+  "source_sha256": "a16f4a2549d1a7b62c6324e90e7e82d1a553624e486b84a1875e597bd572ee1f",
+  "source_bytes": 501342096,
+  "source_duration_seconds": 271.550158,
+  "classification": "computer battle, AI opponent, Auto ON during play, excluded from Ladder Log and human-only Pause Games log",
+  "outcome": {
+    "owner_result": "Defeat",
+    "opponent_label": "Miraidon ex Deck (Deluxe Pack: Mega)",
+    "turns_played": 13,
+    "owner_points": 2,
+    "opponent_points": 3,
+    "damage_done_displayed": 440,
+    "points_path": ["0-0", "0-2", "1-2", "2-2", "2-3"]
+  },
+  "independent_checks": [
+    "Setup: AI badge, deck labels, Auto enabled, owner went second",
+    "Ordinary owner turn 4: Sandshrew bench and Sandslash evolution, Quick Straight 50, Fighting on Sandslash by turn end",
+    "Four Lucky Ice Pop heals: Hitmonchan ex 50 to 70 to 90 to 110 to 130; two visible Tails, early coin faces and reused-copy identity unresolved",
+    "Opponent Poké Ball followed by Magnemite on Bench; owner Poké Ball followed by Timburr in hand and on Bench",
+    "Conkeldurr two Fighting by turn 9 transition and three by first Bedrock Breaker",
+    "Every knockout and score transition: Hitmonchan ex, first Iron Thorns, second Iron Thorns, Conkeldurr",
+    "Displayed Bedrock Breaker weakness damage 120 twice and final Storm Blade 130",
+    "Turn-12 Fighting attachment to Benched Sandshrew",
+    "Terminal Defeat, 2-3, 13 turns, 440 damage"
+  ],
+  "coverage_decision": "complete source-bound first-pass review accepted after bounded independent verification",
+  "correction_reconciled": "Lead added one Fighting on Sandslash by turn 4 and the turn-12 Fighting attachment to Sandshrew before final acceptance.",
+  "unknowns": [
+    "Hidden opponent hand and complete deck lists",
+    "Unshown early Lucky Ice Pop coin faces and individual reused-copy tracking",
+    "Exact timing of turn-4 Fighting attachment relative to Sandslash evolution"
+  ],
+  "required_changes": [],
+  "primary_files_read_and_reconciled": {
+    "REVIEW.md": "dddaec892a6d8d850906fc43dfaa046d25aec494ecd5d33a388a924b11cb5f07",
+    "COVERAGE.md": "f1a45934813f120291b265b307df5a8674eca86a87a7fc653e1637722e56f138",
+    "FINDINGS.json": "2dc5fdeb321c17f66e5395c0756116098f170b2b910e31dc7204559c4ec364ea"
+  }
+}

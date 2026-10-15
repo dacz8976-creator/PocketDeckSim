@@ -1,0 +1,60 @@
+{
+  "updated_utc": "2026-10-13T00:27:07.712103+00:00",
+  "purpose": "Complete local storage status after OneDrive synchronization finished; preserve historical snapshots.",
+  "all_four_sources_in_sync_online_only_zero_allocated": true,
+  "accepted_review_packets_changed": false,
+  "video_contents_read": false,
+  "external_saved": false,
+  "external_message_sent": false,
+  "current_owner_authorization_pending": true,
+  "source": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_NEW_LONG_VIDEOS",
+  "destination": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\BATCH_2026-10-12_NEW_LONG_VIDEOS",
+  "changed_admin_files": [
+    {
+      "path": "README.md",
+      "prior_sha256": "3964e627b8b654a06fb18a912b91d93c6957eae192d7a88921e78cc500ca073b",
+      "current_sha256": "ca09a33e4cf7ae40f50bcd679941d403e8a76134b4fa464069a2648d2ea2a88a",
+      "preserved_prior_path": "README.before_storage_release_20261013T002408Z.md"
+    },
+    {
+      "path": "BATCH_COMPLETION_CHECK.json",
+      "prior_sha256": "e0657e6b4b885719e2a8ec11d53e97875a90445000fdb9d6dc68e13556e4e364",
+      "current_sha256": "86eb9076cbea3a7e7ac1819bd307d18a8fa86a498961b1c7e24b05af079ef087",
+      "preserved_prior_path": "BATCH_COMPLETION_CHECK.before_storage_release_20261013T002408Z.json"
+    }
+  ],
+  "all_copy_hashes_match": true,
+  "copied_files": [
+    {
+      "path": "README.md",
+      "sha256": "ca09a33e4cf7ae40f50bcd679941d403e8a76134b4fa464069a2648d2ea2a88a",
+      "bytes": 1893
+    },
+    {
+      "path": "BATCH_COMPLETION_CHECK.json",
+      "sha256": "86eb9076cbea3a7e7ac1819bd307d18a8fa86a498961b1c7e24b05af079ef087",
+      "bytes": 3936
+    },
+    {
+      "path": "FINAL_STORAGE_RELEASE_RECEIPT.json",
+      "sha256": "0300dc27c511d582678ad297ca595be7a72c3fd10ce612a13b56c04093b37137",
+      "bytes": 3887
+    },
+    {
+      "path": "finalize_storage_status.py",
+      "sha256": "a05e9ce146f4a53a260ce14b313c4e5fb1433873ba293d12989e672cad81776b",
+      "bytes": 4910
+    },
+    {
+      "path": "README.before_storage_release_20261013T002408Z.md",
+      "sha256": "3964e627b8b654a06fb18a912b91d93c6957eae192d7a88921e78cc500ca073b",
+      "bytes": 1762
+    },
+    {
+      "path": "BATCH_COMPLETION_CHECK.before_storage_release_20261013T002408Z.json",
+      "sha256": "e0657e6b4b885719e2a8ec11d53e97875a90445000fdb9d6dc68e13556e4e364",
+      "bytes": 3763
+    }
+  ],
+  "prior_mirror_receipt_preserved": "MIRROR_RECEIPT.json"
+}

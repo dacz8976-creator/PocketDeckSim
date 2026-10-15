@@ -1,0 +1,23 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-09-27T21:24:55Z",
+  "video": "20260927_205715000_iOS.MP4",
+  "first_pass_reviewer": "/root/sep27_205715 (Sol)",
+  "lead_reviewer": "/root",
+  "source_sha256_verified": "4cb248eba2c3d1b49c986fe3e00b91270444f0dfa84d5f5331f6940ee3955e4c",
+  "scope": "Complete 102.06-second battle from setup through all four visible turns, opponent concession, and Victory result",
+  "lead_source_checks": [
+    "t012.jpg: first-player setup, Zigzagoon Active, Deino Bench, lone Magikarp opposite",
+    "t038.jpg: Magikarp takes 10 Tool damage",
+    "t073.jpg: Magikarp healed to 30 HP",
+    "t088.jpg: Active Galarian Obstagoon evolution",
+    "t097_concession.jpg: explicit opponent concession",
+    "t101_victory.jpg: explicit Victory result"
+  ],
+  "point_reconciliation": "Both sides remain at 0 points; concession ends the battle before any knockout.",
+  "audio": "Decoded AAC track is effectively silent, with no speech to transcribe.",
+  "remaining_uncertainty": "Opponent motive for concession and hidden hand/deck are not shown; player-vs-player or AI control mode is not established.",
+  "unreviewed_gameplay_intervals": false,
+  "lead_check_scope": "Targeted source-frame checks, report/coverage/source identity reconciliation; not a second full visual pass",
+  "disposition": "full_battle_review_complete"
+}

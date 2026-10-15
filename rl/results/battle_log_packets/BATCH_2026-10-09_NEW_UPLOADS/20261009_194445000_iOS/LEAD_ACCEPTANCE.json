@@ -1,0 +1,52 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "accepted_at_utc": "2026-10-10T02:02:36.504974+00:00",
+  "lead": "/root",
+  "source_filename": "20261009_194445000_iOS.MP4",
+  "source_sha256": "a16f4a2549d1a7b62c6324e90e7e82d1a553624e486b84a1875e597bd572ee1f",
+  "source_bytes": 501342096,
+  "duration_seconds": 271.550158,
+  "first_pass_model": "gpt-6-sol",
+  "first_pass_reasoning_effort": "high",
+  "independent_model": "gpt-6-sol",
+  "independent_reasoning_effort": "high",
+  "primary_files_read_and_checked_by_lead": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "FINDINGS.json"
+  ],
+  "independent_verification": "independent_sol/VERIFICATION.json",
+  "verified_primary_hashes": {
+    "REVIEW.md": "dddaec892a6d8d850906fc43dfaa046d25aec494ecd5d33a388a924b11cb5f07",
+    "COVERAGE.md": "f1a45934813f120291b265b307df5a8674eca86a87a7fc653e1637722e56f138",
+    "FINDINGS.json": "2dc5fdeb321c17f66e5395c0756116098f170b2b910e31dc7204559c4ec364ea"
+  },
+  "lead_direct_visual_checks": [
+    "independent_sol/native_checks/native_5.jpg",
+    "independent_sol/native_checks/native_166.jpg",
+    "independent_sol/native_checks/native_207.jpg",
+    "independent_sol/native_checks/native_257.jpg",
+    "intake_frames/3_270.550s.jpg"
+  ],
+  "full_source_and_turn_coverage_accepted": true,
+  "classification_and_outcome_reconciled": true,
+  "source_limits_preserved": true,
+  "outcome": {
+    "owner_result": "Defeat",
+    "opponent_label": "Miraidon ex Deck (Deluxe Pack: Mega)",
+    "turns_played": 13,
+    "owner_points": 2,
+    "opponent_points": 3,
+    "damage_done_displayed": 440,
+    "points_path": [
+      "0-0",
+      "0-2",
+      "1-2",
+      "2-2",
+      "2-3"
+    ]
+  },
+  "external_log_routing": "Computer battle excluded from Ladder and Pause Games",
+  "archive_identity_and_registration": "Required next; acceptance alone does not claim movement"
+}

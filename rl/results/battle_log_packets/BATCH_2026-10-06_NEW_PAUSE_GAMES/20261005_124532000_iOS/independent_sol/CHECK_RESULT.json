@@ -1,0 +1,223 @@
+{
+  "schema": "bounded_independent_pause_acceptance_v1",
+  "checked_utc": "2026-10-06T20:23:48.794163+00:00",
+  "source_video": "20261005_124532000_iOS.MP4",
+  "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+  "accepted": false,
+  "status": "rejected_pending_narrow_R1_R3_repairs",
+  "checked_input_sha256": {
+    "SOURCE.json": "c4de73742daeab8880cab0dbf96ac48241d73140e1875b4f75060b86d92a786e",
+    "REVIEW.md": "16cb679cef3639bbded7ebf87a94c203a2f38f470a801a48e1024d4387dcc40b",
+    "COVERAGE.md": "4d2981a51690a1b3679b88bbc5d5c4c2f44c3f4570feb8289d93429254c640ad",
+    "SUMMARY.json": "5dc40a38c479e133bd8ed2b9e290fc0dd46f0305731e076ee11f676588a41e2d",
+    "UNCERTAINTIES.json": "13223346b41b56fa61d77b504a6b341ddbe3c57230bacd6ba5c94f79c239e7e3",
+    "PAUSE_GAME.json": "cd3c2629b21eef72759dd17197b2dc81432a19a70ddf0146b2b2c269fd404d17",
+    "DECK_USED.json": "772b5b99f4f0fc216fa52219b8a7adf128946acad5a7a3633aafa14388486797",
+    "TURN_LEDGER.json": "632e2baba7eadc0d57080c4f2c473e565191fbf3e04640e6c01c0f1168709c93",
+    "TURN_EVIDENCE.json": "ed4625730a47da31a60485e1461dab90adbbfa2ac20f593b219a679269096731",
+    "RECORDING_METADATA.json": "a76904af3aaabe9309f73c22fa64335b3525be5eaaa426a6ec21c81fc4d715d8",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+    "qr_intake/INTAKE_RESULT.json": "4847a696538f0aaa33cc5f0437ac315b95646da0cd72c43db7a15351dbe9d93f",
+    "qr_intake/QR_DECODE_0001.00.json": "9849afd523ae83db43743a52ff00de9915784cfe51e1ea854e8ac318b3b7bb9b"
+  },
+  "required_repairs": [
+    {
+      "id": "R1",
+      "paths": [
+        "TURN_EVIDENCE.json:$.frames[0].observation",
+        "TURN_EVIDENCE.json:$.frames[24].observation",
+        "TURN_EVIDENCE.json:$.frames[163].observation"
+      ],
+      "source_seconds": [
+        53.2,
+        89.2,
+        269.7
+      ],
+      "finding": "Turn5 Research/partly-offscreen-slot boilerplate is incorrectly repeated on selected T1, T3 and T7 frames. T1 shows Barb, T3 has four readable slots, T7 Nihilego.",
+      "required_change": "Give each selected record its own observed description. Preserve the correct intact selection and genuine Turn5 continuity qualification."
+    },
+    {
+      "id": "R2",
+      "paths": [
+        "TURN_LEDGER.json:$.turns[0].timing.first_voluntary_move_seconds",
+        "TURN_LEDGER.json:$.turns[0].plays_in_order[0]",
+        "TURN_LEDGER.json:$.turns[2].timing.first_voluntary_move_seconds",
+        "TURN_LEDGER.json:$.turns[2].plays_in_order[0]",
+        "TURN_EVIDENCE.json:$.frames[222]",
+        "TURN_EVIDENCE.json:$.frames[225]",
+        "REVIEW.md:lines17,19,32",
+        "SUMMARY.json:dependent timing targets as applicable"
+      ],
+      "source_seconds": [
+        53.6,
+        53.8,
+        54,
+        55,
+        89.6,
+        90,
+        90.2,
+        91
+      ],
+      "finding": "53.6/53.8/54 retain all four cards, Poison Barb highlighted/zoomed. Consumption/target animation is visible by55. Research89.6 is a four-card preview,90 consumed3, but scheduled requested90.2 again shows4 highlighted; requested seeks have unmeasured actual PTS, so these assets do not justify a single exact consuming time or post-consumption label for90.2.",
+      "required_change": "Separate preview selection from consuming input. Use source-supported bounded consuming windows and qualify requested-seek ordering, or one narrow measured-PTS recheck if needed. Mark53.8 and90.2 as intact-card preview/selection rather than after committed play; zoom suitability is independent. Preserve53.2/89.2 selected hands. Do not claim exact touch telemetry. Align dependent prose/summary."
+    },
+    {
+      "id": "R3",
+      "paths": [
+        "TURN_LEDGER.json:$.turns[7].draws_and_searches[1].cards_in_reveal_order[0].timestamp_seconds",
+        "TURN_LEDGER.json:$.turns[7].draws_and_searches[1].cards_in_reveal_order[1].timestamp_seconds",
+        "TURN_LEDGER.json:$.turns[7].draws_and_searches[1].evidence_ids"
+      ],
+      "source_seconds": [
+        292,
+        293,
+        294,
+        295
+      ],
+      "finding": "Research is revealed292;293 shows a concealed back entering, and294 already shows all5 card backs, unchanged295. There is no second draw at295.",
+      "required_change": "Bound the two concealed Research additions to the observed292-294 effect/result window with individual exact times null unless measured, or use genuine distinct addition frames. Keep both identities hidden and the supported3-to5 fan arithmetic."
+    }
+  ],
+  "inspection_scope": "Read final nine artifacts, copied assignment/protocol/templates; bounded retained native inspection beyond unusual flags, not a full redundant pass; no media hash reread or extraction.",
+  "native_frames_inspected_count": 124,
+  "structural_check": {
+    "native_frames": 251,
+    "decoded_native_and_crop_assets": 753,
+    "errors": [],
+    "crop_correspondence_samples": [
+      {
+        "evidence_id": "f0053p20",
+        "crop": "bottom_crop",
+        "mean_absolute_pixel_difference": 0.9835381580943711
+      },
+      {
+        "evidence_id": "f0053p20",
+        "crop": "top_crop",
+        "mean_absolute_pixel_difference": 0.5793040293040294
+      },
+      {
+        "evidence_id": "f0089p20",
+        "crop": "bottom_crop",
+        "mean_absolute_pixel_difference": 0.885052006945498
+      },
+      {
+        "evidence_id": "f0089p20",
+        "crop": "top_crop",
+        "mean_absolute_pixel_difference": 0.5855754985754986
+      },
+      {
+        "evidence_id": "f0131p50",
+        "crop": "bottom_crop",
+        "mean_absolute_pixel_difference": 1.1434436408795383
+      },
+      {
+        "evidence_id": "f0131p50",
+        "crop": "top_crop",
+        "mean_absolute_pixel_difference": 0.8006874236874237
+      },
+      {
+        "evidence_id": "f0187p95",
+        "crop": "bottom_crop",
+        "mean_absolute_pixel_difference": 1.1301376175143434
+      },
+      {
+        "evidence_id": "f0187p95",
+        "crop": "top_crop",
+        "mean_absolute_pixel_difference": 0.7342507122507121
+      },
+      {
+        "evidence_id": "f0241p00",
+        "crop": "bottom_crop",
+        "mean_absolute_pixel_difference": 1.062212219805908
+      },
+      {
+        "evidence_id": "f0241p00",
+        "crop": "top_crop",
+        "mean_absolute_pixel_difference": 0.9685551485551486
+      },
+      {
+        "evidence_id": "f0269p70",
+        "crop": "bottom_crop",
+        "mean_absolute_pixel_difference": 1.1240563731687991
+      },
+      {
+        "evidence_id": "f0269p70",
+        "crop": "top_crop",
+        "mean_absolute_pixel_difference": 0.9116625966625967
+      },
+      {
+        "evidence_id": "f0324p00",
+        "crop": "bottom_crop",
+        "mean_absolute_pixel_difference": 1.051837803514332
+      },
+      {
+        "evidence_id": "f0324p00",
+        "crop": "top_crop",
+        "mean_absolute_pixel_difference": 1.0308404558404558
+      },
+      {
+        "evidence_id": "f0339p70",
+        "crop": "bottom_crop",
+        "mean_absolute_pixel_difference": 0.10874986654079356
+      },
+      {
+        "evidence_id": "f0339p70",
+        "crop": "top_crop",
+        "mean_absolute_pixel_difference": 0.20903703703703702
+      },
+      {
+        "evidence_id": "f0053p80",
+        "crop": "bottom_crop",
+        "mean_absolute_pixel_difference": 1.1432862994993174
+      },
+      {
+        "evidence_id": "f0053p80",
+        "crop": "top_crop",
+        "mean_absolute_pixel_difference": 0.6507964997964998
+      },
+      {
+        "evidence_id": "f0090p20",
+        "crop": "bottom_crop",
+        "mean_absolute_pixel_difference": 0.9136375641306608
+      },
+      {
+        "evidence_id": "f0090p20",
+        "crop": "top_crop",
+        "mean_absolute_pixel_difference": 0.5591831501831502
+      },
+      {
+        "evidence_id": "f0188p80",
+        "crop": "bottom_crop",
+        "mean_absolute_pixel_difference": 1.0679012345679013
+      },
+      {
+        "evidence_id": "f0188p80",
+        "crop": "top_crop",
+        "mean_absolute_pixel_difference": 0.7221538461538461
+      },
+      {
+        "evidence_id": "f0270p60",
+        "crop": "bottom_crop",
+        "mean_absolute_pixel_difference": 0.7613361654781773
+      },
+      {
+        "evidence_id": "f0270p60",
+        "crop": "top_crop",
+        "mean_absolute_pixel_difference": 0.5510809930809931
+      }
+    ]
+  },
+  "accepted_observations": [
+    "QR1/editor3/save4/event5/search8 continuity matches exact20 prepared filmed-qr-852c4769df62, one Darkrai and Cyrus, Darkness; initial live list/version missing explicit, external_saved false",
+    "Opening29 all five and selected third Nidoran; ordinary owner T1 and complete opponent T4 actions incl May/Ignition/Thieving/Ball/Fire/attack verified",
+    "All four intact starting hands and scheduled/pre-end captures inspected; T5 partial left Pop continuity explicit. Fan arithmetic and named owner Research draws Wally then Ball, Nidoking then Needle supported",
+    "Both positional boards, HP, typed Energy, observed Tool/Stadium absence and selected current/next timing supported; no Poison invented from More Poison",
+    "KO removal/promotion, Fire retreat/payment/Flame Patch, four Fire before Crimson Storm and two afterward verified;324 points still2,327 award3,328 Defeat,339.7 results loss0-3 first8turns70damage"
+  ],
+  "limits": [
+    "Hidden opponent identities and order among concealed identities remain unknown",
+    "Exact decoded PTS not measured; observed inspection windows must not be represented as exact touches",
+    "Full piles unopened; six visible top discard previews only",
+    "Independent accepted whole-source status remains conditional on required narrow repairs plus lead acceptance"
+  ]
+}

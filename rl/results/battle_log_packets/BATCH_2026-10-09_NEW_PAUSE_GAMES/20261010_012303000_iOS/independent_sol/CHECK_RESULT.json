@@ -1,0 +1,89 @@
+{
+  "schema": "independent-sol-bounded-acceptance-v1",
+  "reviewer": "/root/check_012303",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_at_utc": "2026-10-10T04:44:00.490883+00:00",
+  "source_video": "20261010_012303000_iOS.MP4",
+  "source_sha256": "0e00fad4af7232b8b50c5cd9b946fdef9a1ac3e873166667e57ac3bce15bcc3e",
+  "accepted": true,
+  "status": "accepted_with_recording_limits",
+  "blockers": [],
+  "packet_corrections": [],
+  "checked_input_sha256": {
+    "REVIEW.md": "ede40d6258ba3d39ad4accfbed64773af7450d1eae939e4009432e9bbc44c97d",
+    "COVERAGE.md": "e1cfaae99e85a86dce0c9856229c91b698a6186cbbe80b3335167b55b1431e54",
+    "SUMMARY.json": "efd83321a677edeeb03a98b638bddd7e65a2c0471f1a9a2a96498b09fb2d6aba",
+    "UNCERTAINTIES.json": "4548d449366cac9203b402c3dcdb7da97b7f30c5f4bea6c83587d471431a469f",
+    "PAUSE_GAME.json": "0268e9cb6e4cc8f6e7b98bef624fd09f5af3c3bd179e66b951ea66c67122601f",
+    "DECK_USED.json": "75c27f019fd6bc1c14b9a307f90eb8ec164e7352de96ee7b5db85e1dde5ef37c",
+    "TURN_LEDGER.json": "0462b412611cb043e3fcce86050102eb94bf7f75419d4bc48962dcf7a911de92",
+    "TURN_EVIDENCE.json": "12c301df6d159b67734090c0744aea703f77030658683821f4eadc0df11b7628"
+  },
+  "accepted_input_sha256": {
+    "REVIEW.md": "ede40d6258ba3d39ad4accfbed64773af7450d1eae939e4009432e9bbc44c97d",
+    "COVERAGE.md": "e1cfaae99e85a86dce0c9856229c91b698a6186cbbe80b3335167b55b1431e54",
+    "SUMMARY.json": "efd83321a677edeeb03a98b638bddd7e65a2c0471f1a9a2a96498b09fb2d6aba",
+    "UNCERTAINTIES.json": "4548d449366cac9203b402c3dcdb7da97b7f30c5f4bea6c83587d471431a469f",
+    "PAUSE_GAME.json": "0268e9cb6e4cc8f6e7b98bef624fd09f5af3c3bd179e66b951ea66c67122601f",
+    "DECK_USED.json": "75c27f019fd6bc1c14b9a307f90eb8ec164e7352de96ee7b5db85e1dde5ef37c",
+    "TURN_LEDGER.json": "0462b412611cb043e3fcce86050102eb94bf7f75419d4bc48962dcf7a911de92",
+    "TURN_EVIDENCE.json": "12c301df6d159b67734090c0744aea703f77030658683821f4eadc0df11b7628"
+  },
+  "source_identity_sha256": "a6c512e6db963c4749ce29c976884d0dcc141dad400beba1bfd6a52bb037cbb1",
+  "viewed_manifest": "independent_sol/VIEWED_MANIFEST.json",
+  "integrity_receipt": "independent_sol/INTEGRITY_CHECK.json",
+  "native_binding_checks": [
+    {
+      "seconds": 30,
+      "independent_decode": "source_check_30.jpg",
+      "retained_frame": "turn_evidence\\t0030.00.jpg",
+      "sha256": "11a0b81e6bb16a4e9772f35d962783978ddb7c0fa35033c0c89b8a8aa27c03f0",
+      "byte_identical": true
+    },
+    {
+      "seconds": 177,
+      "independent_decode": "source_check_177.jpg",
+      "retained_frame": "turn_evidence\\t0177.00.jpg",
+      "sha256": "1efeae98283e36384118139d03c6477a0ffc54e000896c541e29405b28c0a2a3",
+      "byte_identical": true
+    },
+    {
+      "seconds": 375,
+      "independent_decode": "source_check_375.jpg",
+      "retained_frame": "turn_evidence\\t0375.00.jpg",
+      "sha256": "fdfaf3c3d646e66c35b4c28ff03833d9893c0565afa713cc55b8641544f31408",
+      "byte_identical": true
+    }
+  ],
+  "checks": [
+    "Source SHA-256 and byte count independently verified at original root path; size and mtime stable during hash.",
+    "Fresh native decodes at30/177/375 seconds are byte-identical to retained source frames. One additional288.25-second frame directly resolves full Tails! text.",
+    "All eight final core files read and hashed;11 unique contiguous turn rows;235 full native1170x2532 frame sets and bottom1170x507/top1170x620 crops exist; every ledger evidence ID resolves.",
+    "Opening30/31/31.5 verifies Nacli,Guts Conkeldurr,Nacli,Naclstack,Copycat and third-slot Nacli selected Active.",
+    "All six owner rows have draw-relative+1/+3/+6 native candidates, selected dense pre-play hands and before-end records. Turn9+1/+3/+6 inspected; later candidates show evolution/attachment rather than the initial hand as declared.",
+    "Ordinary turn1 first action Arena then Copycat directly checked47/53; Copycat four revealed cards60-63 checked in order. Turn5 first action Research167, two draws169/170.5 and failed Poke Ball177 checked. T7 Wally Stage2 Colorless effect221 precedes normal Fighting attachment; resolved2F+1Colorless Active and1F Timburr checked237.",
+    "Owner starting hands selected by name; all six ending counts3,1,1,1,1,0 visually checked and reconciled. Opponent fan counts4,1,3,4,4,5 directly checked from native top crops.",
+    "Both players start/end board fields, typed Energy, HP/max/damage, Tool/conditions/effects, Stadium, points and both current/next Energy Zone lines are populated with source-qualified limits. Selected ordinary and consequential boards checked; no contradictory HP/Energy/point arithmetic found.",
+    "Guts70HP after80 damage215; Poisoned50HP after turn7 checked237; lethal attack285, Tails288.25 and second opponent point294 verified.",
+    "Turn9 attack warning319 and turn10 banner320 confirm pass, no attack. Gurdurr10HP after next Darkness Claw359 and evolution carry-over to Conkeldurr70HP371 checked.",
+    "Final Bedrock Breaker120 damage375, Arena removed/Poison/owner3points versus opponent2 at388, and Victory390 verified.",
+    "Exact20-slot deck in DECK_USED matches retained live deck rows and identical QR payload. Local verifier rechecked saved provenance; did not access browser or independently refresh live artifact.",
+    "Whole-source coverage table0-398.131667 and prose all11 turns/terminal/loading tail consistent with ledger. No second review or source-wide decoding performed by checker; primary full-review coverage plus bounded independent checks form acceptance basis."
+  ],
+  "accepted_limits": [
+    "No opened discard-pile panels; no full discard contents invented.",
+    "Opponent hidden draw identities/full deck and exact human queue unknown.",
+    "QR/log establish semantic deck variants; exact artwork/rarity unverified.",
+    "Source-local seek timestamps retained, exact frame PTS not independently measured.",
+    "Loading tail continues after established Victory; no additional gameplay claimed."
+  ],
+  "outcome": {
+    "opponent": "ナチョス",
+    "owner_result": "win",
+    "owner_points": 3,
+    "opponent_points": 2,
+    "terminal_turn": 11
+  },
+  "shared_or_external_mutations": false
+}

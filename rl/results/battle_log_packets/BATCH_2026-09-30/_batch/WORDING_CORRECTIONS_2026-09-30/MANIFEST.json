@@ -1,0 +1,497 @@
+{
+  "completed_at_utc": "2026-09-30T18:30:33.945153+00:00",
+  "passed": true,
+  "packets_refreshed": 15,
+  "content_corrected_packets": 5,
+  "outcomes_scores_ladder_source_unchanged": true,
+  "existing_events_preserved": true,
+  "videos": [
+    {
+      "video": "20260930_141742000_iOS.MP4",
+      "source_sha256": "978030c0bf7cb869a52d1b24da9aeea3c47c9c83acc0711a060ae4e4693d5490",
+      "changes": [
+        "Prickly Powder is an Ability lock, not an Item restriction; Budew never attacked.",
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "2119efe90b11be4175ae45d1bb7dd1dab9fcc773a11632f5b800c4b074e78c72",
+          "after_sha256": "ab4a9bf6e6786eff2a8fd8720a87b82fb26027a4e7cc4a10c1743fcd4a709e98"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "7bbec36ad7add2e23683081c04f46fb03ff4e3be2ec0535c321a43a8972dce9c",
+          "after_sha256": "96cfe2890d7e65f6db02b449b0450d699890e00865045c600558a1dbfc1fb9e2"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "67e14ea91352ae488bd04821b44637e03134a77b192d4d49612136cae32b9561",
+          "after_sha256": "762146f66134c3b3c37277c8dd02e77c74a0d5416080a018401e6a9e13b240e2"
+        },
+        {
+          "file": "UNCERTAINTIES.json",
+          "before_sha256": "bc5e47f160a7a52b0f3cefcbffb1511dd567cf1db1a329eaff962a0c0f8a310b",
+          "after_sha256": "8c1ac860e37783a95c91eafc6d663c7e2b8b8691c4e42f96b962685c2812a352"
+        }
+      ],
+      "follow_up_event_id": "5edd407f-3ddf-43c2-9907-206449780d6e",
+      "supersedes_event_id": "5106c268-27af-4a96-a724-627d537268a9",
+      "protected_source_acceptance_receipt_unchanged": true
+    },
+    {
+      "video": "20260930_142105000_iOS.MP4",
+      "source_sha256": "33aa21f00544ea03546d97ebc5f0007832cf8c151a5dbc5a5de7106ea4331ee6",
+      "changes": [
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "6335a126c8d0235b98c24d98a9419ce9cd49fdfbf4636a61d5d9d0195cb9abe2",
+          "after_sha256": "f26543c02920b4e2a550b31f55d8e40c420d99fff1c2d931a9388ea388306360"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "2471cf9f99a3286d093028392e2a93dd848292a7ffc587a0c2bb86db6b475f16",
+          "after_sha256": "f6591edf44662fef7576a796d8a9db07a36f7e2711259d7341156a9b22153129"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "8a92c361ef396f73c14ac2854ec369b82229bde534a684dc0cf4451b074d71ad",
+          "after_sha256": "4edf1f2cf1244e79ece70616f0aa7ccdddd5d0c4ca8b50761a10c5afc1a50554"
+        },
+        {
+          "file": "UNCERTAINTIES.json",
+          "before_sha256": "a9454695db499fa141db065cbacbc63f226781d607a7c9c126e1f3894bdcdcf0",
+          "after_sha256": "82ea32e8f1c43009c75e915c28937c6ac400ead884c57b86efb65895bd8efb28"
+        }
+      ],
+      "follow_up_event_id": "17273c47-bce0-4b3f-bb20-98a8dc53b1c0",
+      "supersedes_event_id": "dfedb1c2-b443-48c9-84e3-e0b392ca0402",
+      "protected_source_acceptance_receipt_unchanged": true
+    },
+    {
+      "video": "20260930_142731000_iOS.MP4",
+      "source_sha256": "7ee762613746327a0048caf31d73c7629396a60bdc9d666e71a2b8676750e81e",
+      "changes": [
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "3b41e0f529cd153e12510d319fe88decfc3fad2ef5c66711cb79533d9878c586",
+          "after_sha256": "9851863a4b41404e0644858ec3bef04cc395e2eecfca4ce2452bbd9a1213975f"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "422f6fa88666955e72ffd985a3c2dccd4bc3cf753479033e16d8c77d73c3d8e4",
+          "after_sha256": "6e2c09592c828ee52cafa65b5818363ca57baeedde66b8ac35a1998ab842d428"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "7e20ce0793827fc17f95de7eda945f4e2dcbba2ecc600f3f71c2ce4d3c7424e8",
+          "after_sha256": "e02f8cedb4bcfda2a75a96627cf2652abb3dcea1c6cd09420326e553a377284a"
+        },
+        {
+          "file": "UNCERTAINTIES.json",
+          "before_sha256": "bb437514f3e947f01c37fa40877ec036273a0b0f2e6e973a4c0868b92d52d365",
+          "after_sha256": "7c4bb950d21fbf42fd5df71ba125a4d3b8e511555eed2a5111409c62749aa13b"
+        }
+      ],
+      "follow_up_event_id": "dac1ef9c-f116-428a-a1dd-35b15b384d6c",
+      "supersedes_event_id": "8f6d4251-3841-47cb-b1ac-cf9473a2a670",
+      "protected_source_acceptance_receipt_unchanged": true
+    },
+    {
+      "video": "20260930_143122000_iOS.MP4",
+      "source_sha256": "f207da9093a5b579f0fc79b0993e7132f9e17e78c219790de8547163e6c59847",
+      "changes": [
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "1f01fa61124fd1bef54ff3ce3210a58f4ff81d46444da9db1f3e462ac2663637",
+          "after_sha256": "560d4d7da318791e62f55e50c8740152f98bbfa77404c5cc5073255937a30bf3"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "709c1827c137b870a19c15f642f977957c7177af5a8b1d29534530606edbf5c0",
+          "after_sha256": "eaa1bc5cbc5047ff742e18950cc91c7b04a6894ceb4aff5b7d66349d61b080b2"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "da0ae4475525a506736c5b4433f598b2c0e3b82ae180df517284e8336c69e9e8",
+          "after_sha256": "5e81d66840b32af7bd531910c6a779c78fc5d3d732c83c59b2cf2e7a83f2724e"
+        },
+        {
+          "file": "UNCERTAINTIES.json",
+          "before_sha256": "9915175628c6580e088eb91c7e0dfe9a8bc40affa60818e30d8a0359555b4f83",
+          "after_sha256": "84c04ad51f0d3309f1f9c9ec6eb5e7b49a4eb3cb912c73c43c2fcf136f01ae05"
+        }
+      ],
+      "follow_up_event_id": "c127d1fc-caa1-432f-a664-7442fdbdd07f",
+      "supersedes_event_id": "6855550a-e67a-4839-922c-61f3498aa07e",
+      "protected_source_acceptance_receipt_unchanged": true
+    },
+    {
+      "video": "20260930_143535000_iOS.MP4",
+      "source_sha256": "a9f997cedf71b6c7e2a4834c4282a657a183aa2e26dd01af605449cf1490a9de",
+      "changes": [
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "c4a9a4186585e06f15b224f1e84cbdc5e8cac7fb0ad098d80821068ff446de67",
+          "after_sha256": "c1066b0d9cdbaa3c56cf582ffff3203f51c850a483103a2c3c99facb1a3872af"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "1e7aea3ee69441a02d27192e61ea40be5f1690124b0deee2c077a1a79c344810",
+          "after_sha256": "4a3f39eb3e844f9fab4da31363dd0bdb56447f701e032e6c08cee10bf5e637cd"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "7ab0c9835de71cd88c42531dba45b54e21e91800862a8cb37dabb0a61604b734",
+          "after_sha256": "ae1ef34323696c8b0343c60fe7934990f488496e7eefe93ed9a10b341d862638"
+        },
+        {
+          "file": "UNCERTAINTIES.json",
+          "before_sha256": "f4837f718d4a69d3e93e26531e07fc23a2f1e83539f7f051a294b2ce7786c008",
+          "after_sha256": "6231e511b8caedf9e83ba4038aada71921df54bbb3db2d2504a9db829958d2b7"
+        }
+      ],
+      "follow_up_event_id": "d6059c69-074f-44f6-9946-424a57197c40",
+      "supersedes_event_id": "a0b452ef-a67c-4c8b-9f38-d9ed36589d1a",
+      "protected_source_acceptance_receipt_unchanged": true
+    },
+    {
+      "video": "20260930_144608000_iOS.MP4",
+      "source_sha256": "e048a913159ad112f1ed57a05abd21107a6775c95fb2be80dd19f647e787295b",
+      "changes": [
+        "Bombirdier is Lightning-weak; only the Fighting-weak Alolan Grimer and Gastly hits test Quick Straight ignoring Weakness.",
+        "Card lookup also confirms the untriggered Bombirdier Ability is named Villainous Delivery; its previously described effect was unchanged.",
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "7a63823158089f4477965fbb6a2889425e2a843393c926ea203cd1dacd4d652b",
+          "after_sha256": "97c2816b8893169131742ebdb1a2a1d9a29d7e4b7448b32ae1c20ab0f07cb58b"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "c62ad4cfc88533d99cb308036e1b7603c33b30ce2c9281bf95905166363ee706",
+          "after_sha256": "a2c827c3ce0e1fd5fbc84d8349b7ab3779baa64780c436cb74319d20863389c5"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "b28ea6a03b64553ceba4591563c00a51512a82be879d0cf013c8a80438332d26",
+          "after_sha256": "815aa6ce844e3a98e134c32e41fedd3e83ae4b20e97eb3837ac7565d86104844"
+        },
+        {
+          "file": "UNCERTAINTIES.json",
+          "before_sha256": "24b68bb07a8225e03d7002a0720d7bf104685d252b7d5a23f3a4e8699da1e707",
+          "after_sha256": "804efefae2bccd0cd27bb56e04412b8f09ab3357d4e57ce5411d5897d3945356"
+        }
+      ],
+      "follow_up_event_id": "280c3a31-c4c9-44f1-ad9c-3b3ea9d57c43",
+      "supersedes_event_id": "37b165af-8d01-480d-9b3a-ddaaf4141a20",
+      "protected_source_acceptance_receipt_unchanged": true
+    },
+    {
+      "video": "20260930_145405000_iOS.MP4",
+      "source_sha256": "5ffb8cd9f98fc90eedcb61778bc3c9716caffdbf84714eb92883a59993f9eac8",
+      "changes": [
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "486472fb8f6b1fe1a8e006e63849b13076c324c513a91d48117c34123c65bfbb",
+          "after_sha256": "bb7c08d191232f3dfbf91125479d7049eb8fe7ef60a1c5134966426e10713417"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "05b6a73f5c32847c0b6bfcae1786f01e5cc2000ee73098bba82f807e622d7442",
+          "after_sha256": "1854f2fdb6bace5136ab39606cf1c013e62c2125900fd860827b7af5115ef758"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "badc8ca82c8b5adee17a2d8eaf1828cfa8184698f648c1535ce54032e55407ad",
+          "after_sha256": "5883344b58cd3d9a79032e8b68abf590a50824df88d1ecdfcbb24916d3c42e3e"
+        },
+        {
+          "file": "UNCERTAINTIES.json",
+          "before_sha256": "819dbd85c54468a65fff7eec988a1183242be0a3fc3f1f880476c589aeea3048",
+          "after_sha256": "b810ebb1e1d202948a6b9a1b4cd3d907caa237ebf370282a47697211b20a7aa7"
+        }
+      ],
+      "follow_up_event_id": "427145e4-11e7-4edf-a791-3b308f2ebbb3",
+      "supersedes_event_id": "c7b14650-1e8a-4187-80dd-d1b63adce412",
+      "protected_source_acceptance_receipt_unchanged": true
+    },
+    {
+      "video": "20260930_153142000_iOS.MP4",
+      "source_sha256": "7b2083a31e6949035824d9c9a71605a9b48fb4f5c5d7695aa8eed4b30f42d601",
+      "changes": [
+        "Corvisquire attack is Joust 30 [CC], with the printed pre-damage Tool-discard effect.",
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "03b2e91ae576611356162b3d5311dbc64ea45f03ac33f3c00a806d195f55183f",
+          "after_sha256": "02de0e0ddc73e21cbd5cd53a4a38766d778c8a3403e7bc7c185a6c0bd4a9c86f"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "72b5f42a10096848aa995d0f3594486fb7c2292093a26d459f47e065599ceb05",
+          "after_sha256": "c3c3ba2fed67532c7ac84a30df73f29be7431305ff69902cd43c37f85e9d0bc3"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "acc17a01134edef398b7a354a19951abc4e7df717036bcc2987fcecd76873dfd",
+          "after_sha256": "0f9e9a4469c522b9fc362af0e72cf0967bd27f81cac7be21ac397581333df157"
+        },
+        {
+          "file": "UNCERTAINTIES.json",
+          "before_sha256": "1f8eea4e9deced86824604286a81d2a3588d9ec91c484e737c95db861723ddec",
+          "after_sha256": "df74621a8a8b1cdd0aa00df5f77214f6cc75da162e66be2411267bcfbbf404b4"
+        }
+      ],
+      "follow_up_event_id": "8c576308-4d02-4fe7-b102-23e25950abfc",
+      "supersedes_event_id": "533e0442-b1d6-4977-8ecb-8debbc3abd7f",
+      "protected_source_acceptance_receipt_unchanged": true
+    },
+    {
+      "video": "20260930_153509000_iOS.MP4",
+      "source_sha256": "a5f612912532832d4e23f1849edc39a4220dd0e9a65dec0db8eae82f3dc37274",
+      "changes": [
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "9ff994490679ac6b12deef28d9703521bc6a192916f298588ab15df53532cabf",
+          "after_sha256": "be5db199d5b805fbf165188afa8f1d9d6740df2d4bde8ba450bb7047e6710317"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "63816aff8a7b7e24dcbcf34fb6c9bb333251b766ec9ff8be835f1d16dc3b1c76",
+          "after_sha256": "7b6493e1661ae64aef9b4df3d6b5e9ae64126bdd2b1a44ea94e2bb02cf75bf0e"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "e348196f57a7cd252b8181fb1be63f01c034751f8cda6de5d59d8323ba091fd3",
+          "after_sha256": "7528a75421cedc3c3e767018d2774a5f2507036460df9083892a06f41bed9996"
+        },
+        {
+          "file": "UNCERTAINTIES.json",
+          "before_sha256": "7f107c12da27e159661981659d682936b7ba4e2089c3d3cd7b12266baf19f061",
+          "after_sha256": "5d4e036050ee1d3c8fa97a5ad207e6fb63e9370c00dd71023d9f73d7091176f9"
+        }
+      ],
+      "follow_up_event_id": "733c05f2-b31d-48df-a820-28c93a152db0",
+      "supersedes_event_id": "fdf0d673-7bfc-43cc-948d-8eac56ab922f",
+      "protected_source_acceptance_receipt_unchanged": true
+    },
+    {
+      "video": "20260930_155152000_iOS.MP4",
+      "source_sha256": "322b05db48b1bbd870186f56d1b59a1e1e75dea224a1ca6faa8720ef6730be65",
+      "changes": [
+        "Bubble costs two Water [WW].",
+        "Root 52-second anchor is owner turn 3 development before Rare Candy, not an Ogerpon attack.",
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "84c99d596785c0ff8db67e6441ca9dd478853fce101bff5093f51f5e3af3dd7b",
+          "after_sha256": "643be474caa8cbf1f095406acaefed886fb20122e92e7fde0f674d3967879344"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "3347c00d952fd33936e89efe6201c9eb129b3efdd724e9cb54a4fe8e21ce804a",
+          "after_sha256": "324544a77741962fd1abf9406a936989f1a186a8591765eb9e186e3c2705bda6"
+        },
+        {
+          "file": "ROOT_SPOT_CHECK.md",
+          "before_sha256": "c39440f4f7b46735aad51a23cccf89efd38678d5e8ee3830e9589a33f30777f8",
+          "after_sha256": "96f820eda7d9df22e7f7b1018206fc3759d86004449b1082b56407023f7d766d"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "65eaf95839e68423e395e19edcfb63fdf63280a29be602a4044d43c8203e1bc8",
+          "after_sha256": "32b1eaf6bb3b8d170db25c45763c1623f6a5bf8bf0a6710d40119f540d55a01c"
+        },
+        {
+          "file": "UNCERTAINTIES.json",
+          "before_sha256": "ba54e2a00d7aaf4e38251d7f5e5ccdfb3bdcb9d36cc4edc48ad2c71930911366",
+          "after_sha256": "801abe21005f0c0fb0825725a2302c931aed4e9e864c9abe724eea6089409bbc"
+        }
+      ],
+      "follow_up_event_id": "f9c0ce1f-6e0b-4b8e-b572-1ea52a835259",
+      "supersedes_event_id": "2fef10d9-b5f6-4541-9045-69de2cc31638",
+      "protected_source_acceptance_receipt_unchanged": true
+    },
+    {
+      "video": "20260930_155635000_iOS.MP4",
+      "source_sha256": "a2bccb37d07e74872afe49c51c5ee5a6ad9199703d25a6cde6f97701ef25ff9a",
+      "changes": [
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "1b006f0648ffc0bd729ed7fdcaebbcb4be1e38d4e6b4167c380cb99ebc4a33aa",
+          "after_sha256": "12076e87bdf252232692d0f1afe347a113806dbddf32bf47cd4028b3723a8981"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "f026a7d3d57cfb242fc9c374828a2f16ffef754bdd2d935775d07af87e3fc5dc",
+          "after_sha256": "3b9595ff719bb22d426933f67bf418f79ed78a95e8d9555f757c390f93186b56"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "de2d5ed4075fc1e20c0f9b1e42501dae48b85c0e4b950e2d3567aa5f5b995f1e",
+          "after_sha256": "339ef74393bd213199d22dac4e790b60a1cb2cd8422a55b339f91597618413f6"
+        },
+        {
+          "file": "UNCERTAINTIES.json",
+          "before_sha256": "09ded2a822f2590ece8592b1676be8171e966cef1564bd106bd4dd6646c172c0",
+          "after_sha256": "dff6d8a201c9d25fe87e372337c23d564707367c4b1a9ef765a8717268259d71"
+        }
+      ],
+      "follow_up_event_id": "d4d33568-bba2-4fbe-9dc3-1a9861d3cb12",
+      "supersedes_event_id": "dbbd61ae-28e0-4a23-be5d-c77402ac6951",
+      "protected_source_acceptance_receipt_unchanged": true
+    },
+    {
+      "video": "20260930_160256000_iOS.MP4",
+      "source_sha256": "e8ddb4464a188e03fdded2dc6dc14209dfb7a8ccc82affca8fd3e5cead0f9685",
+      "changes": [
+        "Bubble costs two Water [WW].",
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "5647315a05e7c37e7ea27ee48b7c71a0727de778aae2ec8bbe70aea9bce29d61",
+          "after_sha256": "881a799045835f7eae6f364f7651a32a9eccb9dcb0b873e0181ea5d91c64dd24"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "8edc4622e4767f98ff226b1b977219fbf8d7e5f5648cfdac7e05d0d8a7593c27",
+          "after_sha256": "5c64e1d5dc31da1f0ec24fcda8644763f36ea2f386518682ad5d504c80a05bb2"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "2f3f9ef42891a12c7a620499c7d9ccaaceff2c95483f23977707daec9851fc69",
+          "after_sha256": "2169359be4996f0e70dfbff36fc9b8e96566dded84769205b6363b6d3f9cd4be"
+        },
+        {
+          "file": "UNCERTAINTIES.json",
+          "before_sha256": "e67c8f5362b726f8132f86e00544c8b276b0b81756a9b1ed8a46aae9a43d75a8",
+          "after_sha256": "9d48c0dd5c009570c68fd1e69e81b8de7dcc9643ff17807fe2ebc63b326264eb"
+        }
+      ],
+      "follow_up_event_id": "806f3b2d-8398-4dd9-8e6d-48c0bbefa720",
+      "supersedes_event_id": "4eb9f204-497f-49bc-aeaf-c5bb5a13a7bc",
+      "protected_source_acceptance_receipt_unchanged": true
+    },
+    {
+      "video": "20260930_161055000_iOS.MP4",
+      "source_sha256": "6b0b2ed06036cd8d4fd21e84c600e6f43a6851d8120eb02610f045d5d116f4b5",
+      "changes": [
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "3fdd1b1de63d686cfdce7b9d73d90a4b4a74641ad812265b73a2dd56128fddad",
+          "after_sha256": "8a5e549a8d7867a2e818bee8a5c6c09df74bd002ccf293ded3c3de3e9261e70e"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "f2794c0907597d5e368fc052a84c56a12a88de6a546311d4d34d3a072867f96b",
+          "after_sha256": "a69f49dacdcb04b88c5c39c9d28a27a32d7887eeae5d0cb9df8c844602ab706b"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "f63ce00d9797f6553ca79d66ac52471b3ced4aabec8407e85a26ea249abcf032",
+          "after_sha256": "d92f416af48de40527d8da7912cbda793e6ead5bef1edc28f93d138082b7e164"
+        },
+        {
+          "file": "UNCERTAINTIES.json",
+          "before_sha256": "e82b6ae5ed8d7e23586394d23753480e2bffdbfb598a879673c6c4b2cf0f634b",
+          "after_sha256": "f5ff1d29719bc48d24a1fabb62e8fd68931b4450e3f89e3082b239b4f27eb028"
+        }
+      ],
+      "follow_up_event_id": "d339d3c4-e05c-4be1-a483-7a0780e0f4b5",
+      "supersedes_event_id": "59b5ecc2-fc7f-449c-a554-f1b0b17c0394",
+      "protected_source_acceptance_receipt_unchanged": true
+    },
+    {
+      "video": "20260930_161633000_iOS.MP4",
+      "source_sha256": "0795e24efb0f71c3461d23b5860a736a30755cf2071a3047eb4b90a731193a79",
+      "changes": [
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "6543fe5f0a7baddd590f85dad12e3b463daf5365150fe528299397b08aef2d62",
+          "after_sha256": "c036fb2a0e16ae95c7d5c6710836c1d5143d742af5d5ad1bba0f7a64a2baca4f"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "f12a53f0763f78a5420b7f3dfc506188b76a54de3838f90e347b065a8cc444a8",
+          "after_sha256": "ce55311b19380229fc97ea38e8b21bb26e078e03e2b09d1e01fd175d1c65b0d7"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "12f5787770449f9ea42b31be1285e110cf2cd35685902500f792327eae0954b8",
+          "after_sha256": "683f472b82c4987c825f108ecc25744aa78497a8670141c8ab6d9b7d9d049fec"
+        },
+        {
+          "file": "UNCERTAINTIES.json",
+          "before_sha256": "ffe41437b677057f88c04ca73873ec0471f0f918640ae5d1e49e880b95bb9064",
+          "after_sha256": "03f72bde2c67b0a004ab1c562301013df570c481fef0c53949f464f9a33588a4"
+        }
+      ],
+      "follow_up_event_id": "f7a3bb37-775e-40ae-a5ae-6abe94ac4a4d",
+      "supersedes_event_id": "084c8e98-2065-48b2-8e34-06a413b3ffbb",
+      "protected_source_acceptance_receipt_unchanged": true
+    },
+    {
+      "video": "20260930_162102000_iOS.MP4",
+      "source_sha256": "e23850f05a3e9a8b1b838c190a17cecfd88a50e7359013ffaee15c8c9a2758a5",
+      "changes": [
+        "Current status refreshed from lead acceptance and the matching archive receipt. Historical worker-only actions remain explicitly separate."
+      ],
+      "modified_files": [
+        {
+          "file": "COVERAGE.md",
+          "before_sha256": "9fd12cc04b1bf5dfee05ccd5de2e0cda88ef6dcad8fa7e9a4d025d3874b573d9",
+          "after_sha256": "f5f59aca1c3a334795c5b77146a12ae4dd869dbe4b08c68694955986754b0a40"
+        },
+        {
+          "file": "REVIEW.md",
+          "before_sha256": "05966c7892da0f5831331fb2b1f0e6cacdf36dd793387f42e8c479fc22b3163e",
+          "after_sha256": "80786a881aafaba775601947e8fb82e8cae61df8d464637ed0f3a8f55c3d03a7"
+        },
+        {
+          "file": "SUMMARY.json",
+          "before_sha256": "784d19fe976268f6101cd69a77daa4030bda443ce83140c5be5c15ddf397025c",
+          "after_sha256": "84620980d3ab3a9051ac4ae596a1e3391fcc6d196bb7296fa276ce018bb4f664"
+        }
+      ],
+      "follow_up_event_id": "67203912-55ca-4670-8cd3-6e25fbbeaf3e",
+      "supersedes_event_id": "4554fac9-5626-471f-840e-e1312d5d5add",
+      "protected_source_acceptance_receipt_unchanged": true
+    }
+  ]
+}

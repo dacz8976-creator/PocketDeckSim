@@ -1,0 +1,167 @@
+{
+  "schema": "independent_bounded_source_check_v1",
+  "reviewer": "/root/check_010706",
+  "model": "Sol",
+  "checkpoint_utc": "2026-10-12T22:56:02.435231+00:00",
+  "source_video": "20261012_010706000_iOS.MP4",
+  "source_sha256": "6d6143c99e23bffe7a6feb7f01c20a112c060e13b9b9d4ebd0a25e597ca62fd0",
+  "duration_seconds": 820.845,
+  "accepted": false,
+  "status": "checkpoint_pending_primary_repairs_and_final_recheck",
+  "accepted_input_sha256": {},
+  "inspected_input_sha256_checkpoint_only": {
+    "REVIEW.md": "57fbb0ec42abb0c996c382a0c3ce9897f6c97bb490f6c56b0036698746d0ed11",
+    "COVERAGE.md": "404e1f8eb0086104b0a77ce511e1249c37a46d8ae82277dc5ca701420bfdd5b1",
+    "SUMMARY.json": "283c187b4373fe9d857d05dad636ec06684714f0449621b91ff8232bf1ac1a3e",
+    "UNCERTAINTIES.json": "9be1a7eccf89ff29a50242d9642cab3ecad9a7e27fd383219836e4ba7e5e1cfa",
+    "PAUSE_GAME.json": "87cb3a348e3e4cfc7b1b704c062c3f7574ab87ee3c828c099e4ae58d108db15c",
+    "DECK_USED.json": "f984c637077832294f01d2fc46a1871b26d4dae7850649b9980fa94fe3bc48d0",
+    "TURN_LEDGER.json": "1acd9df6973e953edecf0eadd354af2e63c3c3e11c7309dba827348d1937e2c8",
+    "TURN_EVIDENCE.json": "14ea1e0a6774fc8ddac1348e3ab3b9ee50f51fe6125f9f5c61fc3c5c13e66e89"
+  },
+  "required_repairs": [
+    {
+      "id": "turn15_start_hand_observation",
+      "material": true,
+      "finding": "Turn15 start hand at559.5 is incorrectly declared a fully observed unzoomed four-card fan. The native frame contains only Lucky Ice Pop, Glimmora and Ilima, with the new card entering its reveal sequence.",
+      "source_evidence": [
+        "turn_evidence/t0559.50.jpg",
+        "dense_native/t0560.00.jpg"
+      ],
+      "repair": "Bind the named Poké Ball to its transient reveal/play, retain prior-three plus draw arithmetic, and mark the full post-draw four-card fan unavailable or complete_with_recording_limits in both ledger and evidence. Do not claim all four observed atF559_50."
+    },
+    {
+      "id": "named_draw_individual_binding",
+      "material": true,
+      "finding": "Individual second Research cards reference the first card zoom: Poké Ball usesF48_00 and second Glimmora usesF136_00. Those frames do not show those second cards. Generic group timestamps must not appear as precise individual card observations.",
+      "source_evidence": [
+        "dense_native/t0048.00.jpg",
+        "turn_evidence/t0051.80.jpg",
+        "dense_native/t0136.00.jpg",
+        "turn_evidence/t0139.00.jpg",
+        "turn_evidence/t0721.00.jpg"
+      ],
+      "repair": "Use individually supporting later reveal/completed-sequence/play timestamps and refs for each named card, or explicitly label the exact-reveal timing/identity basis as sequence inference. Preserve reveal ordering without asserting unseen card slots. Check all three Copycat cards similarly; completed721hand supports Ilima/Pop/Pop, while precise separate reveal times need their actual frames."
+    },
+    {
+      "id": "readable_prose_spacing",
+      "material": false,
+      "finding": "Prose contains compressed phrases such as handfan, PauseGames and secondpoint, and missing spaces after some semicolons. No em dashes were present in the eight inspected files.",
+      "source_evidence": [
+        "REVIEW.md",
+        "SUMMARY.json",
+        "UNCERTAINTIES.json"
+      ],
+      "repair": "Complete readable spacing cleanup requested by lead before final hash freeze."
+    }
+  ],
+  "resolved_draft_repairs": [
+    {
+      "id": "deck_queue_label",
+      "repair": "Newdeck18 corrected to New deck16, matching native2s tile."
+    },
+    {
+      "id": "turn15_boundary",
+      "repair": "Turn15 start moved to558 and draw to559, rather than placing owner draw/play560–562 inside opponentturn14."
+    },
+    {
+      "id": "turn13_fast_play_limit",
+      "repair": "Turn13 now explicitly limits complete post-draw fan; selected pre-play evidence is no longer an unsupported full unzoomedfan."
+    }
+  ],
+  "scope": {
+    "kind": "bounded independent source acceptance check",
+    "second_full_source_pass": false,
+    "checked": [
+      "opening five/Active/Bench and first-player setup",
+      "Event queue and opponent identity",
+      "filmed QR native context and20slot resolved decoder/count provenance; no independent fresh raw QR decode",
+      "early Research/search sequences and hand arithmetic",
+      "independently selected ordinary ownerturns11 and13 first moves",
+      "Copycat three-card reshuffle/redraw and hand counts",
+      "both selected boards/EnergyZones/HP/Energy/point transitions",
+      "both Shattering Crystal coin/point sequences",
+      "terminal poison/Kingambit sequence and819results",
+      "three independent one-thread source re-extractions",
+      "eight current files read/structurally inspected with21ledger rows and384native frame refs; no missing frame paths"
+    ]
+  },
+  "evidence_manifest": {
+    "notes": "independent_sol/SOURCE_CHECK_NOTES.md",
+    "checked_native_frame_hashes": "independent_sol/CHECKED_FRAME_HASHES.json",
+    "checkpoint_structural_file_inspection": "independent_sol/FINAL_FILE_INSPECTION.json",
+    "reextract": [
+      {
+        "requested_source_seconds": 25,
+        "decode_threads": 1,
+        "native_dimensions": [
+          1170,
+          2532
+        ],
+        "independent_image_path": "independent_sol/source_reextract/t0025.00.jpg",
+        "independent_image_sha256": "ea99b8d854ca9919e52307489c165979218d538d8432be991c6960c76eaeb00f",
+        "retained_image_path": "turn_evidence/t0025.00.jpg",
+        "retained_image_sha256": "ea99b8d854ca9919e52307489c165979218d538d8432be991c6960c76eaeb00f",
+        "byte_hash_match": true
+      },
+      {
+        "requested_source_seconds": 536,
+        "decode_threads": 1,
+        "native_dimensions": [
+          1170,
+          2532
+        ],
+        "independent_image_path": "independent_sol/source_reextract/t0536.00.jpg",
+        "independent_image_sha256": "d38036b04efb101a9013af9dbabba0e2d97c19cb2f1d735f67c002af8ca8c9a2",
+        "retained_image_path": "dense_native/t0536.00.jpg",
+        "retained_image_sha256": "d38036b04efb101a9013af9dbabba0e2d97c19cb2f1d735f67c002af8ca8c9a2",
+        "byte_hash_match": true
+      },
+      {
+        "requested_source_seconds": 819,
+        "decode_threads": 1,
+        "native_dimensions": [
+          1170,
+          2532
+        ],
+        "independent_image_path": "independent_sol/source_reextract/t0819.00.jpg",
+        "independent_image_sha256": "4566da82655381ee2d7369281518c26409a2dfddf26c874f8db2e7d5c7aa41e6",
+        "retained_image_path": "turn_evidence/t0819.00.jpg",
+        "retained_image_sha256": "4566da82655381ee2d7369281518c26409a2dfddf26c874f8db2e7d5c7aa41e6",
+        "byte_hash_match": true
+      }
+    ],
+    "derived_check_sheets": [
+      "independent_sol/early_draw_search_1.jpg",
+      "independent_sol/early_draw_search_2.jpg",
+      "independent_sol/early_draw_search_3.jpg",
+      "independent_sol/early_draw_search_4.jpg",
+      "independent_sol/first_crystal_1.jpg",
+      "independent_sol/first_crystal_2.jpg"
+    ]
+  },
+  "confirmed_result": {
+    "opponent": "たまご",
+    "owner": "Dacz8976",
+    "outcome": "Victory",
+    "method": "normal point victory",
+    "score": [
+      3,
+      2
+    ],
+    "turns": 21,
+    "damage_done_displayed": 600,
+    "terminal_evidence": "turn_evidence/t0819.00.jpg",
+    "local_match_date": "2026-10-11",
+    "date_basis": "SOURCE_TIME.json container UTC creation01:07 convertedAmerica/Chicago"
+  },
+  "limits": [
+    "Acceptance deliberately false; primary was still editing and final files were not frozen.",
+    "Re-extractions confirm same-time byte source binding at three selected times, not every retained frame or every event.",
+    "Full-source coverage is primary review; this independent pass is bounded.",
+    "Filmed QR semantic20slot list is distinct from the missing dated live Pause Games deck snapshot. No current live20-card definition was accepted.",
+    "Hidden opponent identities, large overlapping fan ranges, unopened discard piles and precise frame PTS remain limited.",
+    "Raw independent zxingcpp QR retry could not run because the selected runtime lacks that module; no independent raw decoder success claimed.",
+    "No shared log, source move, external game/deck mutation or simulator edit performed."
+  ]
+}

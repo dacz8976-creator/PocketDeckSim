@@ -1,0 +1,11 @@
+[
+  {
+    "start_timestamp": "00:00.000",
+    "end_timestamp": "00:01.000",
+    "claim_or_question": "Optional pilot-type metadata is not shown.",
+    "why_uncertain": "The recording begins after the match setup screen, so AI versus human control is not established.",
+    "consequence_if_wrong": "Metadata classification only; does not affect board state, game rules, scoring, or battle outcome.",
+    "recommended_sol_check": "None. Leave unknown unless a mode screen is available; do not spend review time on this metadata.",
+    "id": "U1"
+  }
+]

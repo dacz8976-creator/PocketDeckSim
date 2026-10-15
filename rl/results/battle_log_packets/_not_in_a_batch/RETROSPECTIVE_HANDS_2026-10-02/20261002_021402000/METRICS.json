@@ -1,0 +1,22 @@
+{
+  "new_extracted_full_frames": 48,
+  "new_full_frame_cap": 48,
+  "new_full_frame_bytes": 21886671,
+  "retained_crop_count": 128,
+  "retained_crop_bytes": 18420244,
+  "referenced_existing_native_frames": 16,
+  "source_full_hash_reads_completed": 1,
+  "source_hash_match": true,
+  "default_source_read_denied_attempts": 1,
+  "default_extraction_denied_attempts": 1,
+  "new_extraction_passes_completed": 3,
+  "source_read_notes": "One escalated SHA256 read hydrated the archived online-only source.38+8+2 targeted extractions used the hydrated file; no source copies or moves.",
+  "started_at_utc": "2026-10-02T20:41:27.8172414Z",
+  "submitted_at_utc": "2026-10-02T20:53:38.738762+00:00",
+  "wall_seconds": 730.921521,
+  "hydration_wait_seconds_estimate": 390,
+  "source_decoding_threads": 2,
+  "token_usage": null,
+  "dollar_usage": null,
+  "usage_limit_reason": "Not measured or available in this worker."
+}

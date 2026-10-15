@@ -1,0 +1,178 @@
+{
+  "schema": "whole-source-review-summary-v1",
+  "source_video": "20261005_124532000_iOS.MP4",
+  "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+  "reviewer": "/root/pause_124532",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "reviewed_at_utc": "2026-10-06T19:56:36.641165+00:00",
+  "scope": "Whole source0 to339.899138seconds; one complete human event match",
+  "classification": "human_event_battle",
+  "auto_control_observed": false,
+  "queue": "Deluxe Pack: Mega Emblem Event",
+  "opponent": "Nick",
+  "owner_name": "Dacz8976",
+  "match_date_local": "2026-10-05",
+  "recording_local": "2026-10-05T07:45:32-05:00",
+  "owner_went_first": true,
+  "outcome": "loss",
+  "turn_count": 8,
+  "final_points": {
+    "owner": 0,
+    "opponent": 3
+  },
+  "deck_core": [
+    "Nidoran male",
+    "Nidoking",
+    "Darkrai ex",
+    "Nihilego"
+  ],
+  "deck_version": "One Darkrai ex plus Cyrus revision",
+  "capture_status": "complete_with_recording_limits",
+  "review_status": "first_pass_complete_pending_independent_acceptance",
+  "full_source_review_complete": true,
+  "battle_completion_established": true,
+  "independent_acceptance": false,
+  "outcome_evidence_ids": [
+    "f0319p00",
+    "f0320p00",
+    "f0321p00",
+    "f0323p00",
+    "f0327p00",
+    "f0328p00",
+    "f0339p70"
+  ],
+  "limits": [
+    "No full discard pile is opened in the source. Visible top previews and observed transactions are retained separately.",
+    "Hidden opponent card identities and private prompt choices remain unknown; public actions are recorded in visible resolution order.",
+    "Candidates are individually qualified:53.8 is intact but zoomed before consumption;90.2 is a consumed three-card hand. Later offset candidates are post-play. Selected53.2/89.2/187.95/269.7 remain intact native preplay hands; exact decoded PTS unmeasured.",
+    "Turn5 selected five-slot fan has a partly off-screen leftmost Lucky Ice Pop. Its identity is supported by filmed continuity from the preceding hand; no deck-membership inference is used.",
+    "QR establishes twenty semantic card slots and Darkness, with artwork/rarity unspecified. The initial dated live log snapshot lacks this Nidoking revision; a prepared deck entry is not a saved live snapshot.",
+    "Input/reveal times are visually localized source-local requests, not measured PTS or exact touch telemetry.",
+    "Terminal board324 is post-removal with opponent2 visible points. The separate327 and339.7 frames establish awarded terminal3 points; Darkrai0HP is a separate321/322 pre-removal state."
+  ],
+  "suggested_independent_checks": [
+    {
+      "seconds": [
+        29,
+        30,
+        31,
+        32
+      ],
+      "target": "Original five and Active/Bench mapping"
+    },
+    {
+      "seconds": [
+        53.2,
+        53.6,
+        55,
+        58,
+        61,
+        63
+      ],
+      "target": "Ordinary first owner decision and turn1"
+    },
+    {
+      "seconds": [
+        88,
+        89.2,
+        89.6,
+        93,
+        94,
+        96,
+        99,
+        103,
+        109,
+        114
+      ],
+      "target": "Turn3 normal draw, Research order, Poke Ball search, intact hand and ending arithmetic"
+    },
+    {
+      "seconds": [
+        123,
+        131,
+        131.5,
+        133,
+        134,
+        135,
+        140,
+        143,
+        146,
+        148,
+        150,
+        155,
+        162,
+        164,
+        167,
+        171,
+        177,
+        179,
+        181,
+        184
+      ],
+      "target": "Opponent turn 4: Rainbow cycle, May add two and return two concealed Pokemon, Ignition, item theft/search, Energy attachment, KO and Poison order"
+    },
+    {
+      "seconds": [
+        187.95,
+        188,
+        191,
+        192,
+        202,
+        208,
+        215,
+        221
+      ],
+      "target": "Turn5 intact preplay, Research order and5-card ending"
+    },
+    {
+      "seconds": [
+        269.7,
+        270.5,
+        275,
+        281,
+        282,
+        285
+      ],
+      "target": "Turn7 early empty Energy, first play, Needle resolution"
+    },
+    {
+      "seconds": [
+        299,
+        305,
+        312,
+        315,
+        319,
+        321,
+        323,
+        327,
+        339.7
+      ],
+      "target": "Turn8 Energy accounting, pre-removal KO vs post-removal board and final result"
+    },
+    {
+      "seconds": [
+        224,
+        225,
+        227,
+        227.5,
+        228,
+        229,
+        231,
+        236,
+        241,
+        248,
+        251,
+        265,
+        269.7
+      ],
+      "target": "Opponent turn 6 normal draw, brief Poke Ball reveal and hidden search, bench Entei, heal/cure, attachment, KO and final three-back fan"
+    }
+  ],
+  "opponent_fan_counts_at_selected_owner_start": [
+    3,
+    4,
+    3,
+    3
+  ]
+}

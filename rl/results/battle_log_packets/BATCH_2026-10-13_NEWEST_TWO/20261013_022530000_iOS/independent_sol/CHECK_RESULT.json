@@ -1,0 +1,22 @@
+{
+  "accepted": false,
+  "reviewer": "/root/check_newest_022530",
+  "checked_utc": "2026-10-13T04:27:55.012838+00:00",
+  "source_sha256": "02714096351099424338ac83d3f529ef4f0e6979a978a50f48c5ff505a2b6cb7",
+  "checked_input_sha256": {
+    "REVIEW.md": "c830b53f852ebc514e50bfb9934a891f3aff1ae633cf12816a193cc24615765a",
+    "COVERAGE.md": "693ab0357387470aaa1642737919f6af729a30e8beadc7ce899b4089f9efced8",
+    "SUMMARY.json": "372362f458770f004c0f20a2e9488bae3022df6a78f5cf370fec09632bcff5c0",
+    "UNCERTAINTIES.json": "7dc18a785c6c71656f9b49ffea12f50f70461dca7704b56e4b02dd7cf0950a54",
+    "PAUSE_GAME.json": "7ad025a54199f8b5da6be9ed81c166e100787b780748631fedb2c86d23081455",
+    "DECK_USED.json": "ef2953bd2cc3534ede7a28791ed9b4a7904ac2acbe53e06b91f87f4d81e6518e",
+    "TURN_LEDGER.json": "d9c8e00f9ac0f578d8e92000f42b81f791cd3ad42195e88b69b18ed2a1a5e505",
+    "TURN_EVIDENCE.json": "37a046ad9ed32f2199cae4a2406ff4dea42a6e045a3f4f1a61647e61ca34cf2a"
+  },
+  "issues": [
+    "Copycat all names established by 141 claim unsupported by current native t141 empty hand; later inspections t142-144 establish names. Correct all relevant prose/limits/ledger entries.",
+    "Normal spacing is missing in generated prose; repair readability."
+  ],
+  "status": "material repair required before acceptance",
+  "preserved_rejected_inputs": "rejected_r1"
+}

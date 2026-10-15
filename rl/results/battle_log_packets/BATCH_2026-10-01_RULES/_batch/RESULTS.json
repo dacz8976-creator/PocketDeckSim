@@ -1,0 +1,171 @@
+{
+  "checked_at_utc": "2026-10-02T00:49:36.334158+00:00",
+  "batch_complete": true,
+  "completed_recordings": 7,
+  "unchanged_previous_index_rows": 109,
+  "packet_references_valid": true,
+  "source_hashes_unique": 7,
+  "archive_identity_verified_by_matching_pre_post_move_receipts": true,
+  "ladder_entries_created": 0,
+  "records": [
+    {
+      "video": "20261001_203626000_iOS.MP4",
+      "sha256": "4e6dd60d8827f7818f028cb29757200061ab9ace7dde2e772a5358d7a0c0c6fa",
+      "bytes": 675738932,
+      "duration_seconds": 365.95,
+      "completion_status": "full_battle_review_complete",
+      "scope": "Entire 365.95-second Solo rules-test battle, setup through all 12 turns and final results",
+      "outcome_description": "Victory, 3-1 points; 12 turns; 250 displayed damage",
+      "key_findings": [
+        "After Will guaranteed the initial first coin as heads, Victory Star rerolled it to tails. The guarantee was not applied again to the replacement sequence.",
+        "Zangoose Counterattack returned 20 damage after a lethal hit, producing two knockouts and one point each. A zero-damage attack produced no return damage.",
+        "With two Victini present, an attack received one Victory Star reroll. Printed text explicitly limits the ability to one use per turn.",
+        "Bounded Field doubled a one-head Double Smash from 40 to 80 against Fire-weak ordinary Pokemon."
+      ],
+      "limitations": [
+        "No Confused Pokemon attempts an attack in this recording.",
+        "The Mega Evolution ex exception, non-Fire attacks and broader Will interactions were not tested.",
+        "Hidden cards remain unknown; test choices are not competitive-policy grades."
+      ],
+      "review_path": "Recording_QA/20261001_203626000_iOS_rule_sol/REVIEW.md",
+      "event_id": "c0921e7f-4277-4d3e-bfc6-51d8aedcd586"
+    },
+    {
+      "video": "20261001_204634000_iOS.MP4",
+      "sha256": "7693308ac52a431bddecd470e405bc47da01ba484f987a3f5595c9a541ca69c2",
+      "bytes": 1073987519,
+      "duration_seconds": 577.671667,
+      "completion_status": "full_battle_review_complete",
+      "scope": "Entire 577.671667-second Solo rules-test battle, setup through all 22 turns and final Victory",
+      "outcome_description": "Victory; 4-2 actual awarded points, with owner circles capped at three; 22 turns",
+      "key_findings": [
+        "Victory Star replaced Heat Charged 0 heads/3 tails with 2 heads/1 tail. One starting Fire became three; the original coin batch did not add Energy.",
+        "Umbreon Dark Binding blocked a Basic from attacking. A new Active could attack after retreat, and evolving the affected Darumaka to Darmanitan cleared its block while preserving 40 damage.",
+        "Flame Patch supplied discarded Fire to the new Active Darumaka after the normal turn attachment had already been used.",
+        "Greedent healed from 80 to 90 with Leftovers at the end of its turn while active."
+      ],
+      "limitations": [
+        "Failed Confusion checks and Will with Victory Star were not tested here.",
+        "Bounded Field was present, but this recording did not test its numerical weakness multiplier.",
+        "Hidden cards and exact obstructed animation digits remain qualified."
+      ],
+      "review_path": "Recording_QA/20261001_204634000_iOS_rule_sol/REVIEW.md",
+      "event_id": "85ca7952-2401-40e8-b7ac-0d67f86cccb0"
+    },
+    {
+      "video": "20261001_205658000_iOS.MP4",
+      "sha256": "0ffab49dc08b8b76fafe7b8f979d01007a77db016c3bff39b038dedd61d600b7",
+      "bytes": 756720360,
+      "duration_seconds": 409.606667,
+      "completion_status": "full_battle_review_complete",
+      "scope": "Entire 409.606667-second Solo rules-test battle, loading and setup through all 14 turns and final results",
+      "outcome_description": "Defeat, owner 0 and opponent 4 actual awarded points, with opponent circles capped at 3;14 turns;120 displayed damage",
+      "key_findings": [
+        "Victory Star replaced Heat Charged1H/2T with another1H/2T; the Active gained one Fire rather than adding both batches. Later-turn prompts and kept original results matched settled Energy.",
+        "Netherwing required three Fire plus one Colorless. The observed attempt with only two Fire was refused.",
+        "Double Smash kept two heads for80, then replaced two tails with one head/one tail for40. Settled HP changes matched both results.",
+        "Flame Patch added discarded Fire to Active Darmanitan, while a distinct ordinary attachment went to Benched Moltres.",
+        "Two ordinary ex knockouts awarded two points each; the opponent score display stopped at three."
+      ],
+      "limitations": [
+        "Only one Victini was in play; multiple-Victini enforcement was not tested.",
+        "Will and Team Rockets Master Plan were drawn or inspected and not played.",
+        "Successful Netherwing, matching weakness multiplication, Disguise, and settled terminal Fantasia Force Energy allocation were not tested."
+      ],
+      "review_path": "Recording_QA/20261001_205658000_iOS_rule_sol/REVIEW.md",
+      "event_id": "738b31c1-9b03-4938-9523-9dba20c0b22c"
+    },
+    {
+      "video": "20261001_210403000_iOS.MP4",
+      "sha256": "57dd0af85e1ae6c148dea79e6dcab38cdfdede707f15d25d468b821a1d55c993",
+      "bytes": 862523863,
+      "duration_seconds": 465.875488,
+      "completion_status": "full_battle_review_complete",
+      "scope": "Entire 465.875488-second Solo rules-test battle, setup through all 20 turns and final Victory",
+      "outcome_description": "Victory, 3-2 points; 20 turns",
+      "key_findings": [
+        "Will did not force the separate Confusion check to heads. The check was tails and the selected attack failed.",
+        "No Victory Star reroll was offered after the observed failed Confusion check; HP and seven Fire Energy stayed unchanged.",
+        "Double Smash dealt 60 with one head against Bronzong: 40 doubled by Bounded Field, then reduced by Guard Press 20. The reversed order would have produced 40.",
+        "Bounded Field's Mega exception concerns the attacker. Both attackers tested here were non-Mega Pokemon.",
+        "An empty deck skipped the draw while play continued to the knockout win."
+      ],
+      "limitations": [
+        "This recording does not test Will on an accepted Victory Star replacement sequence; the separate first recording does.",
+        "No Mega-attacker interaction or general ordering of every damage modifier was tested.",
+        "Hidden cards and policy intentions beyond the stated test scope remain unknown."
+      ],
+      "review_path": "Recording_QA/20261001_210403000_iOS_rule_sol/REVIEW.md",
+      "event_id": "ac1fddfe-de76-4f33-9d4c-b76bca482d6a"
+    },
+    {
+      "video": "20261001_213034000_iOS.MP4",
+      "sha256": "cdf8a7e08e68bd58d8f0c2b380e96eec4b28e758ad3a5affde9ff7ef76a3941b",
+      "bytes": 391695549,
+      "duration_seconds": 212.071667,
+      "completion_status": "full_battle_review_complete",
+      "scope": "Entire 212.071667-second AI Solo rules-test battle, loading and setup through all eight turns and final results",
+      "outcome_description": "Victory; owner four actual awarded points versus opponent two, with owner circles capped at three; eight turns; 320 displayed damage",
+      "key_findings": [
+        "Two benched Ariados increased the retreat-cost amount used by Grass Knot: 40 + 30 x (Moltres printed two + one + one) = 160. Actual retreat payment was not tested.",
+        "Infernape Flare Blitz used two Fire and displayed 160 including weakness against each Whimsicott ex. All attached Fire were discarded after each attack.",
+        "One Flame Patch plus the ordinary attachment restored the two Fire needed for the final Flare Blitz. A second Patch was drawn and remained in hand.",
+        "Each Whimsicott ex knockout awarded two points; the owner earned four total while score circles capped at three. The 320 displayed damage included overkill."
+      ],
+      "limitations": [
+        "No paid retreat or Leaf/X Speed interaction was tested.",
+        "No Grass Knot was used against Infernape; the second Whimsicott had only one Grass and did not attack.",
+        "Quick-Grow first-turn/newly-played restrictions, hidden decks and random-selection distribution were not tested."
+      ],
+      "review_path": "Recording_QA/20261001_213034000_iOS_rule_sol/REVIEW.md",
+      "event_id": "a2bcf074-3a1a-42fa-a675-848e757c48a3"
+    },
+    {
+      "video": "20261001_213822000_iOS.MP4",
+      "sha256": "3017f3abbf17846d9041177e3fce268560c4ca7ed68277b2a2972b8a90f8399b",
+      "bytes": 387819155,
+      "duration_seconds": 217.453333,
+      "completion_status": "full_battle_review_complete",
+      "scope": "Entire 217.453333-second Solo rules-test battle, available setup through all nine turns and final Defeat",
+      "outcome_description": "Defeat with owner 2 points and opponent 1 after the last owner Pokemon was knocked out; nine turns; 230 displayed damage",
+      "key_findings": [
+        "Wild Swing discarded Mega Sharpedo ex and Mega Gyarados ex without awarding opponent points. Two discards produced 100 damage, matching 20 + 40 + 40.",
+        "Wild Swing still attacked with an empty Bench: 20 base plus 20 weakness dealt 40.",
+        "Wallace fetched a compatible Water evolution from the deck and evolved 50-HP Carvanha into Mega Sharpedo ex.",
+        "Turbo Shark added a third Water to benched Gyarados after knocking out Ogerpon, while Mega Sharpedo retained its attached Water.",
+        "The final knockout left the owner with no Pokemon, and Defeat followed despite a 2-1 point lead."
+      ],
+      "limitations": [
+        "Carvanha entered on an earlier turn, so same-turn Basic evolution permission was not tested.",
+        "The second Misty target was unclear; immediate tails gave no Energy to any target.",
+        "Carefree Steps heads, actual Energy discard from Destructive Inferno, and a Mega ex knockout point award were not tested."
+      ],
+      "review_path": "Recording_QA/20261001_213822000_iOS_rule_sol/REVIEW.md",
+      "event_id": "9211def3-5bad-473a-ba16-b9502c6513d7"
+    },
+    {
+      "video": "20261001_214736000_iOS.MP4",
+      "sha256": "fed3727e102145e326fd09847e5062ae37321f45310e885333ddfb6b2cd2d02a",
+      "bytes": 674613872,
+      "duration_seconds": 363.465,
+      "completion_status": "full_battle_review_complete",
+      "scope": "Entire 363.465-second rules-test battle, loading and setup through all 11 turns, Victory and final loading",
+      "outcome_description": "Victory, 3-2 points, after Greninja Water Shuriken knocked out Typhlosion ex; 11 global turns",
+      "key_findings": [
+        "Destructive Inferno effect coins and Victory Star resolved after Gabite displayed zero HP and before the knockout point. Original tails became two heads then tails.",
+        "Against the initially zero-Energy Froakie, tails again became two heads then tails. The No Energy attached message appeared after its Active spot was empty.",
+        "The surviving Garchomp took 110 once, then original and replacement tails left both Water and Fighting Energy attached.",
+        "Gible evolution cleared Burned while preserving 20 damage. Lucky Ice Pop then healed 20 and was discarded after tails.",
+        "Greninja Water Shuriken dealt 20 to selected targets; its final knockout of an ex awarded two points and the win.",
+        "Gabite Linear Attack dealt 50 to Active Quilava. Dragon Gabite did not match Water weakness, so this does not establish a weakness-bypass rule."
+      ],
+      "limitations": [
+        "The lethal two-head result equaled all two attached Energy. Their disappearance cannot be independently attributed to attack discard versus knockout cleanup.",
+        "Random Energy selection and positive-head discard from a surviving target were not tested.",
+        "Explicit Solo/PvP mode, opponent automation and full hidden decks remain unknown. The final Battle Results page was not supplied, but Victory and 3-2 points were established."
+      ],
+      "review_path": "Recording_QA/20261001_214736000_iOS_rule_sol/REVIEW.md",
+      "event_id": "445d467f-7f84-4500-9cb5-79fd5b2dac9e"
+    }
+  ]
+}

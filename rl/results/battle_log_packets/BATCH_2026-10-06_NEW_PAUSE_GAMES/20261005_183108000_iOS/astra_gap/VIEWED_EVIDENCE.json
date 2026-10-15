@@ -1,0 +1,210 @@
+{
+  "schema": "bounded-independent-clarification-v1",
+  "reviewer": "/root/astra_183108_gap",
+  "model_role": "Astra consequential ambiguity clarification",
+  "checked_at_utc": "2026-10-06T20:56:35.563470+00:00",
+  "source_video": "20261005_183108000_iOS.MP4",
+  "source_sha256": "94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+  "source_duration_seconds": 403.317007,
+  "scope": "Bounded independent clarification of buffered opponent T6 transition and literal opponent name only; not whole-source review or acceptance.",
+  "current_inputs_checked": [
+    {
+      "path": "SOURCE.json",
+      "sha256": "fc4a2dadc8036bf30868c012a66bb6525f9fc9ac719ab900685d201e8d309a05"
+    },
+    {
+      "path": "TURN_LEDGER.json",
+      "sha256": "a3951a9c10cd5d62f8781b2fa597545f601a9f2fe01873c376b2053b6de8660b"
+    },
+    {
+      "path": "TURN_EVIDENCE.json",
+      "sha256": "18c8cac3edba832939d0241890630eb1b642ede97ebd5c5ee08f3f0b63a18e8a"
+    },
+    {
+      "path": "REVIEW.md",
+      "sha256": "d25101139ef17cacc5b36bfc2d07d32d767f5c1935878cd6a8dd6d162148a580"
+    },
+    {
+      "path": "COVERAGE.md",
+      "sha256": "68d52bf173620db6e2ae9b1dadbbe032e85e580fbf8e1a5ee45501fc21e7a911"
+    },
+    {
+      "path": "UNCERTAINTIES.json",
+      "sha256": "a9ade470133dbda11870c8740aa78df69030434c418b2906c9ecfaeeb92fa28d"
+    }
+  ],
+  "media_rehashed": false,
+  "identity_basis": "Frozen SOURCE.json binding; retained evidence hashed in this check; original media not decoded or changed.",
+  "viewed_evidence": [
+    {
+      "path": "turn_evidence/t0016.00.jpg",
+      "sha256": "20e2a786d265ea328cc7154365365bc9141e0649ea52c3ae01f17edd45e83b9b",
+      "source_local_requested_seconds": 16,
+      "kind": "retained_native_full_frame",
+      "actually_viewed": true
+    },
+    {
+      "path": "turn_evidence/t0207.00.jpg",
+      "sha256": "327ad7daa87b9c31f47213f4a6bcf5508d7364fd57949da2c110cd2824170290",
+      "source_local_requested_seconds": 207,
+      "kind": "retained_native_full_frame",
+      "actually_viewed": true
+    },
+    {
+      "path": "turn_evidence/t0217.00.jpg",
+      "sha256": "72cf754b417ffbf1c56ae8add31cdf7ec1371a5d35c8d67c797ad6cb26a51143",
+      "source_local_requested_seconds": 217,
+      "kind": "retained_native_full_frame",
+      "actually_viewed": true
+    },
+    {
+      "path": "turn_evidence/t0217.50.jpg",
+      "sha256": "7f079eef8f318db1fb7d71bbe23417a23c6e0820c9cd1f0a71488de600b42a30",
+      "source_local_requested_seconds": 217.5,
+      "kind": "retained_native_full_frame",
+      "actually_viewed": true
+    },
+    {
+      "path": "turn_evidence/t0218.00.jpg",
+      "sha256": "d18989e905dd80cd346fdb90246c9935efe1bcf4b47d94960befb130dd46a8ea",
+      "source_local_requested_seconds": 218,
+      "kind": "retained_native_full_frame",
+      "actually_viewed": true
+    },
+    {
+      "path": "turn_evidence/t0218.50.jpg",
+      "sha256": "78c4603a81843f14869086eaa9fbdf8bba1a51ccb3cf30a18b3133de30eb1f0a",
+      "source_local_requested_seconds": 218.5,
+      "kind": "retained_native_full_frame",
+      "actually_viewed": true
+    },
+    {
+      "path": "turn_evidence/t0219.00.jpg",
+      "sha256": "f49e14e5cbe3accf6516f171bedf6b8aa12dd7fedc7db0190e9175f100530d21",
+      "source_local_requested_seconds": 219,
+      "kind": "retained_native_full_frame",
+      "actually_viewed": true
+    },
+    {
+      "path": "turn_evidence/t0219.50.jpg",
+      "sha256": "7b434fad114308a6244a0ba3c4aa9f8f3195fa23d1e20eedfa14c444428e85a4",
+      "source_local_requested_seconds": 219.5,
+      "kind": "retained_native_full_frame",
+      "actually_viewed": true
+    },
+    {
+      "path": "turn_evidence/t0220.00.jpg",
+      "sha256": "1a6466208c5b306f2a3ce1eb2d5a85e8baecd2ed0994b34378e59ea5d732ddfa",
+      "source_local_requested_seconds": 220,
+      "kind": "retained_native_full_frame",
+      "actually_viewed": true
+    },
+    {
+      "path": "turn_evidence/t0221.00.jpg",
+      "sha256": "49190d6b90df78d78c3aa3fa1d1fd1810f4f53919d5a287a6dbf7a69a090b17a",
+      "source_local_requested_seconds": 221,
+      "kind": "retained_native_full_frame",
+      "actually_viewed": true
+    },
+    {
+      "path": "turn_evidence/t0222.00.jpg",
+      "sha256": "95712fc28410fc0b04a244c4aee33fae16e9418b3fac831046dcea22af677c9d",
+      "source_local_requested_seconds": 222,
+      "kind": "retained_native_full_frame",
+      "actually_viewed": true
+    },
+    {
+      "path": "turn_evidence/t0223.00.jpg",
+      "sha256": "a5db8ac53388f1a40dbf17f5f4fa1c812ed8ddab6cf17f30c07a3dd080e77291",
+      "source_local_requested_seconds": 223,
+      "kind": "retained_native_full_frame",
+      "actually_viewed": true
+    },
+    {
+      "path": "turn_evidence/t0224.00.jpg",
+      "sha256": "256864f5c5f64ea9f250ed7715f18c5a54bc2b74ccecb512a85b80e6b5c77a28",
+      "source_local_requested_seconds": 224,
+      "kind": "retained_native_full_frame",
+      "actually_viewed": true
+    },
+    {
+      "path": "turn_evidence/t0402.00.jpg",
+      "sha256": "727e0d4dc614b7959bd4cb6571f5245b7fa74e3aa37c338ac07815251618768d",
+      "source_local_requested_seconds": 402,
+      "kind": "retained_native_full_frame",
+      "actually_viewed": true
+    },
+    {
+      "path": "turn_evidence/crops/F_0203_00_top.png",
+      "sha256": "8ce28c3b97b5cc9c496cc3851311bfb86ccdb30a18a192050851d460b5f3181a",
+      "source_local_requested_seconds": 203,
+      "kind": "retained_native_top_crop",
+      "actually_viewed": true,
+      "crop_bounds": [
+        0,
+        0,
+        1170,
+        720
+      ]
+    },
+    {
+      "path": "turn_evidence/crops/F_0205_00_top.png",
+      "sha256": "4498e383f72e928e70cf17474f3362bf31733489872fee4aed214f7df5d97db2",
+      "source_local_requested_seconds": 205,
+      "kind": "retained_native_top_crop",
+      "actually_viewed": true,
+      "crop_bounds": [
+        0,
+        0,
+        1170,
+        720
+      ]
+    },
+    {
+      "path": "turn_evidence/crops/F_0207_00_top.png",
+      "sha256": "445af1809db5001452277ffaf3b2aac360ae4ecc68c742a9ab1116b096be073c",
+      "source_local_requested_seconds": 207,
+      "kind": "retained_native_top_crop",
+      "actually_viewed": true,
+      "crop_bounds": [
+        0,
+        0,
+        1170,
+        720
+      ]
+    },
+    {
+      "path": "turn_evidence/crops/F_0217_00_top.png",
+      "sha256": "cae30d352c28bc37a5e7cb7be00546d8e508741d4ae3cba5b0f3e70720326163",
+      "source_local_requested_seconds": 217,
+      "kind": "retained_native_top_crop",
+      "actually_viewed": true,
+      "crop_bounds": [
+        0,
+        0,
+        1170,
+        720
+      ]
+    },
+    {
+      "path": "turn_evidence/crops/F_0219_50_top.png",
+      "sha256": "28761dcb42449b81ce5203154739052ee9ef703e32e57c76cac7f181d6e0ff73",
+      "source_local_requested_seconds": 219.5,
+      "kind": "retained_native_top_crop",
+      "actually_viewed": true,
+      "crop_bounds": [
+        0,
+        0,
+        1170,
+        720
+      ]
+    }
+  ],
+  "viewed_count": 19,
+  "limits": [
+    "Only listed images were visually inspected in this bounded check.",
+    "Frame timestamps are requested seeks, not measured decoded PTS.",
+    "Native crops were viewed at original resolution; some full frames were displayed scaled by the image viewer.",
+    "No new images, source decode or external app changes."
+  ]
+}

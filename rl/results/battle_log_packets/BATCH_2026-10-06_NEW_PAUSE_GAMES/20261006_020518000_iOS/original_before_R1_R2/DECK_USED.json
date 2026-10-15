@@ -1,0 +1,696 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261006_020518000_iOS",
+  "sources": [
+    {
+      "video_basename": "20261006_020518000_iOS.MP4",
+      "sha256": "64968acf700ddfecc51cc5bcb01014db7afa855545057bd6934226afd35a53e7",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-06T17:07:52.454484+00:00",
+  "log_list_version": "batch native live snapshot, nine decks; exact matching list absent",
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": "../LIVE_DECK_SNAPSHOT.json (frozen nine-deck live retrieval; exact matching deck absent)",
+  "game_version_binding_basis": {
+    "filmed_deck_title": "New deck 6",
+    "review_label": "Conkeldurr / Sandslash / Hitmonchan ex",
+    "continuity": "QR popup closes to same selected deck, then Battle and human matchmaking. No intervening edit or deck selection change.",
+    "evidence_ids": [
+      "f0000_00",
+      "f0004_00",
+      "f0005_00",
+      "f0006_00",
+      "f0007_00",
+      "f0012_00",
+      "f0018_00",
+      "f0020_00",
+      "f0022_00",
+      "f0024_00"
+    ],
+    "qr_image": "qr_intake/t0002.00.png",
+    "qr_receipt": "qr_intake/QR_DECODE_0002.00.json"
+  },
+  "conflicts_with_filmed_cards": [],
+  "exact_list_status": "filmed_QR_exact20_resolved; matching_live_log_version_absent",
+  "filmed_qr": {
+    "payload_ascii_sha256": "913d34a7e9b532fd5ab9d4fca76b194e6b9e9a013ecd9de7d90bb19b2412da2b",
+    "cards_in_payload_order": [
+      {
+        "entity_kind": "trainer",
+        "entity_id": 30,
+        "count": 1,
+        "name": "Poké Ball",
+        "name_candidates": [
+          "Poké Ball"
+        ],
+        "functional_ids": [
+          "1b20901befde"
+        ],
+        "printing_aliases": [
+          "A2b 111",
+          "P-A 005"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 1
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 30,
+        "count": 1,
+        "name": "Poké Ball",
+        "name_candidates": [
+          "Poké Ball"
+        ],
+        "functional_ids": [
+          "1b20901befde"
+        ],
+        "printing_aliases": [
+          "A2b 111",
+          "P-A 005"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 2
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 480,
+        "count": 1,
+        "name": "Rare Candy",
+        "name_candidates": [
+          "Rare Candy"
+        ],
+        "functional_ids": [
+          "87829fe1a8c1"
+        ],
+        "printing_aliases": [
+          "A3 144",
+          "A4b 314",
+          "A4b 315",
+          "A4b 379"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 3
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 480,
+        "count": 1,
+        "name": "Rare Candy",
+        "name_candidates": [
+          "Rare Candy"
+        ],
+        "functional_ids": [
+          "87829fe1a8c1"
+        ],
+        "printing_aliases": [
+          "A3 144",
+          "A4b 314",
+          "A4b 315",
+          "A4b 379"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 4
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 1060,
+        "count": 1,
+        "name": "Lucky Ice Pop",
+        "name_candidates": [
+          "Lucky Ice Pop"
+        ],
+        "functional_ids": [
+          "15c19aaaf9a4"
+        ],
+        "printing_aliases": [
+          "B2 145"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 5
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 1060,
+        "count": 1,
+        "name": "Lucky Ice Pop",
+        "name_candidates": [
+          "Lucky Ice Pop"
+        ],
+        "functional_ids": [
+          "15c19aaaf9a4"
+        ],
+        "printing_aliases": [
+          "B2 145"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 6
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 40,
+        "count": 1,
+        "name": "Professor’s Research",
+        "name_candidates": [
+          "Professor’s Research"
+        ],
+        "functional_ids": [
+          "c0015440f616"
+        ],
+        "printing_aliases": [
+          "A4b 373",
+          "P-A 007"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 7
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 40,
+        "count": 1,
+        "name": "Professor’s Research",
+        "name_candidates": [
+          "Professor’s Research"
+        ],
+        "functional_ids": [
+          "c0015440f616"
+        ],
+        "printing_aliases": [
+          "A4b 373",
+          "P-A 007"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 8
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 320,
+        "count": 1,
+        "name": "Cyrus",
+        "name_candidates": [
+          "Cyrus"
+        ],
+        "functional_ids": [
+          "fff346783fd6"
+        ],
+        "printing_aliases": [
+          "A2 150",
+          "A2 190",
+          "A4b 326",
+          "A4b 327"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 9
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 990,
+        "count": 1,
+        "name": "Copycat",
+        "name_candidates": [
+          "Copycat"
+        ],
+        "functional_ids": [
+          "d5d2b111c197"
+        ],
+        "printing_aliases": [
+          "B1 225",
+          "B1 270"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 10
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 1570,
+        "count": 1,
+        "name": "Wally",
+        "name_candidates": [
+          "Wally"
+        ],
+        "functional_ids": [
+          "abd4b4c27504"
+        ],
+        "printing_aliases": [
+          "B4 153",
+          "B4 193"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 11
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 6750,
+        "count": 1,
+        "name": "Timburr",
+        "name_candidates": [
+          "Timburr"
+        ],
+        "functional_ids": [
+          "f48da41f51f4"
+        ],
+        "printing_aliases": [
+          "A3 094"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 12
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 6750,
+        "count": 1,
+        "name": "Timburr",
+        "name_candidates": [
+          "Timburr"
+        ],
+        "functional_ids": [
+          "f48da41f51f4"
+        ],
+        "printing_aliases": [
+          "A3 094"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 13
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 6770,
+        "count": 1,
+        "name": "Conkeldurr",
+        "name_candidates": [
+          "Conkeldurr"
+        ],
+        "functional_ids": [
+          "c6f4aa29339a"
+        ],
+        "printing_aliases": [
+          "A3 096"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 14
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 20500,
+        "count": 1,
+        "name": "Conkeldurr",
+        "name_candidates": [
+          "Conkeldurr"
+        ],
+        "functional_ids": [
+          "8a6b7cc51886"
+        ],
+        "printing_aliases": [
+          "B4 089"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 15
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 12060,
+        "count": 1,
+        "name": "Hitmonchan ex",
+        "name_candidates": [
+          "Hitmonchan ex"
+        ],
+        "functional_ids": [
+          "87b76e60aad5"
+        ],
+        "printing_aliases": [
+          "B1 124",
+          "B1 261",
+          "B1 279",
+          "B3 229"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 16
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 14430,
+        "count": 1,
+        "name": "Sandshrew",
+        "name_candidates": [
+          "Sandshrew"
+        ],
+        "functional_ids": [
+          "15dbff518780"
+        ],
+        "printing_aliases": [
+          "B2 077",
+          "B2 170"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 17
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 14430,
+        "count": 1,
+        "name": "Sandshrew",
+        "name_candidates": [
+          "Sandshrew"
+        ],
+        "functional_ids": [
+          "15dbff518780"
+        ],
+        "printing_aliases": [
+          "B2 077",
+          "B2 170"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 18
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 14440,
+        "count": 1,
+        "name": "Sandslash",
+        "name_candidates": [
+          "Sandslash"
+        ],
+        "functional_ids": [
+          "48ea836574eb"
+        ],
+        "printing_aliases": [
+          "B2 078"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 19
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 1380,
+        "count": 1,
+        "name": "Sandslash",
+        "name_candidates": [
+          "Sandslash"
+        ],
+        "functional_ids": [
+          "b4a4b56e0216"
+        ],
+        "printing_aliases": [
+          "A1 138"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing",
+        "slot": 20
+      }
+    ],
+    "counts_by_semantic_entity": [
+      {
+        "entity_kind": "trainer",
+        "entity_id": 30,
+        "count": 2,
+        "name": "Poké Ball",
+        "name_candidates": [
+          "Poké Ball"
+        ],
+        "functional_ids": [
+          "1b20901befde"
+        ],
+        "printing_aliases": [
+          "A2b 111",
+          "P-A 005"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 480,
+        "count": 2,
+        "name": "Rare Candy",
+        "name_candidates": [
+          "Rare Candy"
+        ],
+        "functional_ids": [
+          "87829fe1a8c1"
+        ],
+        "printing_aliases": [
+          "A3 144",
+          "A4b 314",
+          "A4b 315",
+          "A4b 379"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 1060,
+        "count": 2,
+        "name": "Lucky Ice Pop",
+        "name_candidates": [
+          "Lucky Ice Pop"
+        ],
+        "functional_ids": [
+          "15c19aaaf9a4"
+        ],
+        "printing_aliases": [
+          "B2 145"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 40,
+        "count": 2,
+        "name": "Professor’s Research",
+        "name_candidates": [
+          "Professor’s Research"
+        ],
+        "functional_ids": [
+          "c0015440f616"
+        ],
+        "printing_aliases": [
+          "A4b 373",
+          "P-A 007"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 320,
+        "count": 1,
+        "name": "Cyrus",
+        "name_candidates": [
+          "Cyrus"
+        ],
+        "functional_ids": [
+          "fff346783fd6"
+        ],
+        "printing_aliases": [
+          "A2 150",
+          "A2 190",
+          "A4b 326",
+          "A4b 327"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 990,
+        "count": 1,
+        "name": "Copycat",
+        "name_candidates": [
+          "Copycat"
+        ],
+        "functional_ids": [
+          "d5d2b111c197"
+        ],
+        "printing_aliases": [
+          "B1 225",
+          "B1 270"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 1570,
+        "count": 1,
+        "name": "Wally",
+        "name_candidates": [
+          "Wally"
+        ],
+        "functional_ids": [
+          "abd4b4c27504"
+        ],
+        "printing_aliases": [
+          "B4 153",
+          "B4 193"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 6750,
+        "count": 2,
+        "name": "Timburr",
+        "name_candidates": [
+          "Timburr"
+        ],
+        "functional_ids": [
+          "f48da41f51f4"
+        ],
+        "printing_aliases": [
+          "A3 094"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 6770,
+        "count": 1,
+        "name": "Conkeldurr",
+        "name_candidates": [
+          "Conkeldurr"
+        ],
+        "functional_ids": [
+          "c6f4aa29339a"
+        ],
+        "printing_aliases": [
+          "A3 096"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 20500,
+        "count": 1,
+        "name": "Conkeldurr",
+        "name_candidates": [
+          "Conkeldurr"
+        ],
+        "functional_ids": [
+          "8a6b7cc51886"
+        ],
+        "printing_aliases": [
+          "B4 089"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 12060,
+        "count": 1,
+        "name": "Hitmonchan ex",
+        "name_candidates": [
+          "Hitmonchan ex"
+        ],
+        "functional_ids": [
+          "87b76e60aad5"
+        ],
+        "printing_aliases": [
+          "B1 124",
+          "B1 261",
+          "B1 279",
+          "B3 229"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 14430,
+        "count": 2,
+        "name": "Sandshrew",
+        "name_candidates": [
+          "Sandshrew"
+        ],
+        "functional_ids": [
+          "15dbff518780"
+        ],
+        "printing_aliases": [
+          "B2 077",
+          "B2 170"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 14440,
+        "count": 1,
+        "name": "Sandslash",
+        "name_candidates": [
+          "Sandslash"
+        ],
+        "functional_ids": [
+          "48ea836574eb"
+        ],
+        "printing_aliases": [
+          "B2 078"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 1380,
+        "count": 1,
+        "name": "Sandslash",
+        "name_candidates": [
+          "Sandslash"
+        ],
+        "functional_ids": [
+          "b4a4b56e0216"
+        ],
+        "printing_aliases": [
+          "A1 138"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      }
+    ],
+    "card_count": 20,
+    "energy_configuration": [
+      {
+        "name": "Fighting",
+        "value": 6
+      }
+    ],
+    "binding_limit": "Payload ordering groups trainers then Pokemon; it is not the missing live log display order.",
+    "catalog_provenance": "pinned community-derived catalog, not an official complete card export",
+    "printing_limit": "QR artwork/rarity is not encoded. Functional distinctions Conkeldurr A3/B4 and Sandslash B2/A1 are explicit."
+  },
+  "limits": [
+    "Matching exact20 list is absent from retrieved live Pause Games deck snapshot; QR establishes filmed semantic entities and Energy, not an existing live log version.",
+    "QR functional entities do not encode exact artwork/rarity. Hitmonchan ex artwork printing remains qualified."
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "source": "20260909_023151000_iOS.MP4",
+  "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+  "producer_freeze": "2026-10-02T23:06:07.632501+00:00",
+  "checker": "Sol, different producer",
+  "completed_utc": "2026-10-02T23:21:02.362586+00:00",
+  "status": "repair_required_minor_packaging_only",
+  "substantive_source_fields": "accepted_with_recording_limits",
+  "consequential_items": [],
+  "required_repairs": [
+    {
+      "file": "HAND_SUPPLEMENT.json",
+      "paths": [
+        "target_rows",
+        "target_turn_numbers",
+        "capture_status"
+      ],
+      "action": "Add required canonical aliases from existing five owner_turns, [1,3,5,7,9] and complete_with_recording_limits. No new source work."
+    },
+    {
+      "file": "SOURCE_REFERENCE.json",
+      "path": "sha256",
+      "action": "Add requested top-level sha256 alias equal to source_sha256."
+    },
+    {
+      "file": "HAND_SUPPLEMENT.json",
+      "path": "owner_turns[3].before_end_hand",
+      "action": "t0241.50 is an attack-selection overlay with the sole Helioptile partly covered. Qualify basis/limit explicitly or use clean t0240.00 as primary before-end reference, retain t0241.50 as secondary. Count/identity one Helioptile accepted."
+    }
+  ],
+  "owner_hands": [
+    {
+      "turn": 1,
+      "start": [
+        "Elegant Cape",
+        "Poké Ball",
+        "Heliolisk",
+        "Clemont's Backpack",
+        "Mega Manectric ex"
+      ],
+      "end": [
+        "Elegant Cape",
+        "Heliolisk",
+        "Clemont's Backpack",
+        "Mega Manectric ex"
+      ],
+      "start_ids": [
+        "t0046.80"
+      ],
+      "end_ids": [
+        "t0059.50"
+      ],
+      "result": "identity/count accepted; phase qualification retained"
+    },
+    {
+      "turn": 3,
+      "start": [
+        "Elegant Cape",
+        "Heliolisk",
+        "Clemont's Backpack",
+        "Mega Manectric ex",
+        "Electrike"
+      ],
+      "end": [
+        "Clemont's Backpack",
+        "Mega Manectric ex"
+      ],
+      "start_ids": [
+        "t0114.60"
+      ],
+      "end_ids": [
+        "t0128.50"
+      ],
+      "result": "identity/count accepted; phase qualification retained"
+    },
+    {
+      "turn": 5,
+      "start": [
+        "Clemont's Backpack",
+        "Mega Manectric ex",
+        "Training Area"
+      ],
+      "end": [],
+      "start_ids": [
+        "t0181.20"
+      ],
+      "end_ids": [
+        "t0197.50"
+      ],
+      "result": "identity/count accepted; phase qualification retained"
+    },
+    {
+      "turn": 7,
+      "start": [
+        "Poké Ball"
+      ],
+      "end": [
+        "Helioptile"
+      ],
+      "start_ids": [
+        "t0234.20"
+      ],
+      "end_ids": [
+        "t0241.50"
+      ],
+      "result": "identity/count accepted; phase qualification retained"
+    },
+    {
+      "turn": 9,
+      "start": [
+        "Helioptile",
+        "Professor's Research"
+      ],
+      "end": [
+        "Helioptile",
+        "Professor's Research"
+      ],
+      "start_ids": [
+        "t0329.40"
+      ],
+      "end_ids": [
+        "t0332.00"
+      ],
+      "result": "identity/count accepted; phase qualification retained"
+    }
+  ],
+  "checks": [
+    "Opening five and slot4 Electrike Active verified at native23.5; owner first.",
+    "All 59 catalogued native frames independently viewed, including five starts, before-end anchors and timed candidates. 40 new and19 reused catalogue records; capture inventory may retain one unused old anchor.",
+    "All nine structured turns inspected; both boards, typed Energy, tools, effects, Stadium, points and Zones reconcile with sampled native endpoints. Start current-empty states are separately qualified as preceding generation where appropriate.",
+    "T2 Research fan6 native85, concealed Ball native95 and subsequent Entei bench native99 support null find identity. Later Entei is not a named search reveal.",
+    "T3 Lightning/Cape to healthy Bench1 Electrike; T5 Mega inherits Lightning1, Elegant Cape30 raises180 to210; Heliolisk receives Lightning1 and Backpack effect +20 against opponent Pokemon. T7 extra Lightning to Bench Mega1→2.",
+    "T5 damage endpoints70 Active/30 each Bench; T6 High Jump Kick60; T7 displayed50 and endpoints CombuskenKO/bench10; T8 Rare Candy then damaged Mega Blaziken200/210, EnteiFire1→2, HelioliskKO and Legendary Pulse fan3→4.",
+    "T9 warning text is direct, OK input inference retained; Research remains in hand and generated Lightning unused. Displayed120 attack precedes settled3–2 native342.",
+    "No Auto option observed in these sampled native control anchors. Owner rule any visible option evenOFF retained; enabled state/authorship uncertified. Default ladder candidate acceptable with sampled-absence limit.",
+    "No source movie hash/read/decode or repeated locator pass; root completed verification reused. Seven existing reduced cues viewed for phase/animation only, not new card identities.",
+    "Periodic closed discard tops and hidden opponent cards remain qualified; exact historical20 remains unavailable. No outcome/rules audit or shared changes."
+  ],
+  "viewed_native_evidence_ids": [
+    "t0046.80",
+    "t0114.60",
+    "t0181.20",
+    "t0234.20",
+    "t0329.40",
+    "t0047.70",
+    "t0049.70",
+    "t0051.50",
+    "t0052.70",
+    "t0059.50",
+    "r_t2-research-in-discard",
+    "t0095.00",
+    "r_t2-pokeball-entei-result",
+    "t0111.20",
+    "r_t2-torkoal-benched",
+    "t0110.00",
+    "t0117.00",
+    "t0128.50",
+    "t0120.00",
+    "r_t4-combusken-two-fire",
+    "r_t5-owner-banner",
+    "t0182.00",
+    "t0184.00",
+    "t0187.00",
+    "r_t5-heliolisk-one-mega-one-energy",
+    "r_t5-first-spread-settled",
+    "t0197.50",
+    "r_t6-entei-one-fire-settled",
+    "t0230.50",
+    "r_t6-heliolisk-twenty",
+    "t0235.00",
+    "t0237.00",
+    "r_t7-helioptile-search-result",
+    "t0240.00",
+    "r_t7-mega-two-lightning",
+    "t0241.50",
+    "r_t8-entei-promoted",
+    "r_t8-rare-candy-play",
+    "r_t8-mega-blaziken-printed-210",
+    "r_t8-mega-blaziken-200-remaining",
+    "r_t8-entei-two-fire",
+    "r_t8-legendary-pulse",
+    "t0325.50",
+    "t0332.00",
+    "r_t9-unused-action-warning",
+    "t0335.00",
+    "r_terminal-settled-three-two",
+    "t0330.00",
+    "t0331.50",
+    "t0177.50",
+    "t0115.00",
+    "t0023.50",
+    "t0046.20",
+    "t0046.50",
+    "t0046.70",
+    "t0048.50",
+    "t0114.20",
+    "t0114.40",
+    "t0114.80"
+  ],
+  "viewed_reduced_cue_ids": [
+    "cue_122",
+    "cue_125",
+    "cue_167",
+    "cue_191",
+    "cue_198",
+    "cue_250",
+    "cue_310"
+  ],
+  "limits": [
+    "Actual PTS is unmeasured in producer captures and kept distinct from requested/nominal seeks.",
+    "The producer screened all344 reduced samples; checker reviewed the frozen audit and selected cues without claiming to repeat its systematic scan. Subsecond events/unsampled controls remain limited.",
+    "T7 selected ending view is an attack-selection overlay; T9 ending candidate is warning overlay with full lower hand visible. Neither should be called a clean unoccluded preselection board."
+  ],
+  "producer_files_modified": false
+}

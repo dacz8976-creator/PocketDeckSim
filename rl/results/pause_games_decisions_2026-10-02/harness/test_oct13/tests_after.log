@@ -1,0 +1,20 @@
+test_an_unknown_condition_is_a_position_problem (test_pg_pos.Format.test_an_unknown_condition_is_a_position_problem) ... /home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:77: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_oct13/positions.json' mode='r' encoding='utf-8'>
+  bad = json.load(open(f"{T}/positions.json"))[3]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/user/PocketDeckSim/rl/results/pause_games_decisions_2026-10-02/harness/test_pg_pos.py:82: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/pg_pos_bad_condition.json' mode='w' encoding='utf-8'>
+  json.dump([bad], open(path, "w"))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_the_normal_output_is_unchanged (test_pg_pos.Format.test_the_normal_output_is_unchanged) ... ok
+test_a_paralyzed_active_neither_attacks_nor_retreats (test_pg_pos.Play.test_a_paralyzed_active_neither_attacks_nor_retreats) ... ok
+test_a_sleeping_active_neither_attacks_nor_retreats (test_pg_pos.Play.test_a_sleeping_active_neither_attacks_nor_retreats) ... ok
+test_a_position_without_conditions_has_none (test_pg_pos.State.test_a_position_without_conditions_has_none) ... ok
+test_a_position_without_the_count_keeps_zero (test_pg_pos.State.test_a_position_without_the_count_keeps_zero) ... ok
+test_paralysis_and_confusion_are_carried_the_same_way (test_pg_pos.State.test_paralysis_and_confusion_are_carried_the_same_way) ... ok
+test_sleep_is_set_on_the_pokemon_that_carries_it (test_pg_pos.State.test_sleep_is_set_on_the_pokemon_that_carries_it) ... ok
+test_the_knockout_count_is_set_from_the_position (test_pg_pos.State.test_the_knockout_count_is_set_from_the_position) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.789s
+
+OK

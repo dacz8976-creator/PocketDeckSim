@@ -9,6 +9,9 @@ position carries no "filler" key (his hidden cards are cycled from the pilot's o
 attack/Ability titles the ledger shows, and a card that cannot be told from the ledger is listed in the position's `opp_ambiguous`.
 A turn is LEFT OUT (and counted, with the reason) when its hand is not fully named, a card cannot be mapped, or points are missing. A position of a game whose
 deck version is not verified (DECK_USED says the list is a different version from the game's) is marked `usable: false`.
+A Pokemon of his that the CHECKUP knocked out after his turn ended (Poison, Burn, Bad Dreams on a sleeping one) is read from its own row: the ledger's `board_after` of that row is
+already past the knock-out, so checkup_knockouts() finds it from the promotion that follows the turn's last end_turn / attack and the row's text, and it reaches his discard (with what
+was under it, its Tool and its Energy) and `me.knockouts` like one the opponent's attack made.
 usage: ledger_to_positions.py OUT.json REPORT.json GAMEDIR [GAMEDIR ...]   (GAMEDIR = a Recording_QA game folder; DECK_USED.json of every game is read first)"""
 import collections, itertools, json, os, re, sys
 
@@ -73,7 +76,7 @@ def nk(kind):
         return 'tool'
     if k in ('stadium', 'item_evolution', 'retreat', 'attack', 'prompt_response'):
         return k
-    if k in ('ability', 'stadium_ability', 'stadium_effect'):
+    if k in ('ability', 'stadium_ability', 'stadium_effect', 'stadium_activation'):
         return 'ability'
     if k in ('end_turn', 'end_turn_request'):
         return 'end'
@@ -82,8 +85,8 @@ def nk(kind):
 
 NUMW = {'one': 1, 'two': 2, 'three': 3, 'four': 4}
 
-# a Poké Ball (or other search) that found nothing: the ledgers write 'no effect', 'no target', 'no-target', 'No eligible Basic remains'
-NOTHING_FOUND = re.compile(r'no[\s-]*effect|no[\s-]*target|no eligible|nothing|no card', re.I)
+# a Poké Ball (or other search) that found nothing: the ledgers write 'no effect', 'no target', 'no-target', 'No eligible Basic remains', 'No Basic found'
+NOTHING_FOUND = re.compile(r'no[\s-]*effect|no[\s-]*target|no eligible|nothing|no card|no\s+basic', re.I)
 
 
 def pop_returned(result):
@@ -109,6 +112,43 @@ def zone_now(trow):
     return etype((z.get('this_turn') or {}).get('type')) or att or etype((z.get('next') or {}).get('type'))
 
 
+def opp_zone_types(turns):
+    """every Energy type the opponent's zone shows anywhere in the game (its circles on any row, the Energy he attached from it)"""
+    out = set()
+    for r in turns:
+        for key in ('board_at_start', 'board_after'):
+            z = (((r.get(key) or {}).get('opponent') or {}).get('energy_zone')) or {}
+            out |= {etype((z.get(c) or {}).get('type')) for c in ('this_turn', 'next')}
+        if not str(r.get('who_played', '')).startswith('owner'):
+            out |= {etype(p['energy'].get('type')) for p in r.get('plays_in_order') or [] if nk(p.get('kind')) == 'energy_attachment' and isinstance(p.get('energy'), dict)}
+    out.discard(None)
+    return out
+
+
+def opp_energy_next(turns, ti):
+    """the type of the Energy the opponent's zone gives him on his next turn, for the position at the row turns[ti] of his: the zone's `next` circle (or this-turn circle) at the turn start, else
+    the `next` circle on the same row after his turn, else what his next row shows (its this-turn circle, or the type he attached from the zone), else (the last turn: no later row) the only type
+    his zone ever shows in the game. None when the ledger shows none: at his turn start the opponent's zone is often hidden (010706: all 11 positions, 010003: all 6, 203719 t17), and his
+    deck's Energy is not his zone's"""
+    t = turns[ti]
+    z0 = ((t.get('board_at_start') or {}).get('opponent') or {}).get('energy_zone') or {}
+    z1 = ((t.get('board_after') or {}).get('opponent') or {}).get('energy_zone') or {}
+    got = etype((z0.get('next') or {}).get('type')) or etype((z0.get('this_turn') or {}).get('type')) or etype((z1.get('next') or {}).get('type'))
+    if got:
+        return got
+    for r in turns[ti + 1:]:
+        if not str(r.get('who_played', '')).startswith('owner'):
+            zr = ((r.get('board_at_start') or {}).get('opponent') or {}).get('energy_zone') or {}
+            att = next((etype(p['energy'].get('type')) for p in r.get('plays_in_order') or []
+                        if nk(p.get('kind')) == 'energy_attachment' and isinstance(p.get('energy'), dict) and etype(p['energy'].get('type'))), None)
+            got = etype((zr.get('this_turn') or {}).get('type')) or att
+            if got:
+                return got
+            break
+    seen = opp_zone_types(turns)
+    return next(iter(seen)) if len(seen) == 1 else None
+
+
 def hp_in(text):
     """the printed HP a ledger text names ('..., HP140', '60 HP'), or None"""
     m = re.search(r'\bHP\s*(\d+)|(\d+)\s*HP\b', str(text or ''))
@@ -132,14 +172,37 @@ def _real(p):
     return bool(p) and isinstance(p, dict) and bool(p.get('name')) and not p.get('empty') and str(p['name']).strip().lower() not in ('none', 'empty', 'null', 'n/a')
 
 
+def bench_entry(x):
+    """a Bench entry as the ledger writes it: the Pokemon itself, or (game 20261013_015011000) {position, pokemon: {...} or null}; the Pokemon then takes the entry's position when it has none"""
+    if isinstance(x, dict) and 'pokemon' in x and not x.get('name'):
+        inner = x['pokemon']
+        if isinstance(inner, dict) and inner.get('bench_position') is None and x.get('position') is not None:
+            inner = dict(inner, bench_position=x['position'])
+        return inner
+    return x
+
+
 def instances(side):
     out = []
     act = side.get('active')
     if _real(act):
         out.append(act)
-    bench = [p for p in (side.get('bench_in_position_order') or []) if _real(p)]
+    bench = [p for p in (bench_entry(x) for x in (side.get('bench_in_position_order') or [])) if _real(p)]
     bench.sort(key=lambda p: (bpos(p) if bpos(p) is not None else 99))
     return out + bench
+
+
+def stadium_name(board_):
+    """the Stadium in play at one board reading ('Starting Plains'), or None"""
+    st = (board_ or {}).get('stadium')
+    if isinstance(st, dict):
+        st = st.get('name') or st.get('card')
+    return nname(st) if st and str(st).strip().lower() not in ('none', 'null', 'empty', 'no stadium') else None
+
+
+def shown_hp(p, stadium):
+    """the HP the ledger shows for one Pokemon with the Tool on it and the Stadium in play, to be compared with printed HP (cardlib.HP); None when it shows none"""
+    return C.HP(p.get('hp_max'), tool_of(p), stadium) if p.get('hp_max') is not None else None
 
 
 def stack_under(p):
@@ -217,13 +280,109 @@ def match_boards(after, now):
     return pairs, [after[i] for i in sorted(ua)]
 
 
+# ---------------------------------------------------------------------------------------------------------------- knocked out after his turn ended
+
+POST_KO_KIND = re.compile(r'promot|replac', re.I)            # a play of kind promotion / replacement / forced_replacement ...: he had to put a new Active in front
+KO_WORDS = re.compile(r"knock\w*[\s-]*out|\bKO\b|\bKO'?d\b|leaves?\s+(?:the\s+)?board|(?:is|are)\s+discarded", re.I)
+RETURNED = re.compile(r"return\w*\s+(?:\w+\s+){0,6}?(?:to|into)\s+(?:the\s+|his\s+|owner\s+)*(?:hand|deck)|back\s+to\s+(?:the\s+|his\s+|owner\s+)*hand|shuffl", re.I)
+ENERGY_COUNT = re.compile(r'\b(\d+|one|two|three|four)\s+([A-Za-z]+)')
+
+
+def _norm(s):
+    return str(s or '').replace('’', "'").lower()
+
+
+def _id_in(text, ids):
+    """does a ledger target text name one of these instance ids as a word ('Dratini-2 → Dragonair-2' names Dratini-2 and Dragonair-2, not Dragonair-22)?"""
+    return any(re.search(r'(?<![A-Za-z0-9\-])' + re.escape(i) + r'(?![A-Za-z0-9\-])', str(text or '')) for i in ids)
+
+
+def _is_evolution_play(p):
+    """an evolution: a Stage 1 or 2 played from the hand, or a Rare Candy / Quick-Grow Extract (not an Ability or an attack, whose card_name is the Pokemon using it)"""
+    k, card = nk(p.get('kind')), nname(p.get('card_name'))
+    if k in ('evolution', 'item_evolution'):
+        return True
+    return k == 'card_play' and (card in ('Rare Candy', 'Quick-Grow Extract') or any(C.is_pokemon(c) and c.get('stage', 0) >= 1 for c in C.BYNAME.get(card, [])))
+
+
+def checkup_knockouts(row):
+    """-> (the Pokemon of his that were knocked out AFTER his turn ended, each as it stood when the turn ended; notes) for one row of his.
+    The checkup after his turn (Poison, Burn, Bad Dreams on a sleeping Pokemon) can knock out his Active. The ledgers log the knock-out and his promotion at the end of his own row, and
+    that row's `board_after` is already past it, so the comparison of the end of one of his rows with the start of his next (which finds what the OPPONENT's turn knocked out) never sees it:
+    the Pokemon, what is under it, its Tool and its Energy were missing from his discard and the knock-out from `me.knockouts`.
+    A Pokemon is one of these when (1) a promotion/replacement play comes after the last play that ended his turn (an end_turn, or an attack), (2) it was on his board at the start of
+    the row and is gone at its end (by instance id; without ids, by the number of its name), (3) it did not evolve in the row (an evolved Pokemon is a new instance), and (4) the row's
+    automatic events or the promotion's text say it was knocked out / left the board / was discarded, and say nothing of it going back to his hand or deck (a bounce also ends in a
+    promotion). Exactly one Pokemon must fit: with two, none is taken and a note says so. Its Energy is what it had at the start plus what the row attached to it, unless the ledger's text
+    gives a count (then the text's); its Tool the one it had, or one the row attached"""
+    plays = row.get('plays_in_order') or []
+    ends = [i for i, p in enumerate(plays) if nk(p.get('kind')) in ('end', 'attack')]
+    after_end = plays[ends[-1] + 1:] if ends else []
+    if not any(POST_KO_KIND.search(str(p.get('kind') or '')) for p in after_end):
+        return [], []
+    pre = instances((row.get('board_at_start') or {}).get('owner') or {})
+    post = instances((row.get('board_after') or {}).get('owner') or {})
+    post_ids = set().union(*[pids(p) for p in post]) if post else set()
+    texts = [str(ev.get('event') or ev.get('description') or '') if isinstance(ev, dict) else str(ev) for ev in row.get('automatic_events_in_order') or []]
+    texts += [str(p.get(x) or '') for p in after_end if POST_KO_KIND.search(str(p.get('kind') or '')) for x in ('result', 'details')]
+    texts = [t for t in texts if t]
+    evo_targets = [str(p.get('target') or '') for p in plays if _is_evolution_play(p)]
+    cands = []
+    for i, p in enumerate(pre):
+        ids, nm = pids(p), nname(p['name'])
+        if ids:
+            gone = not (ids & post_ids) and not any(_id_in(t, ids) for t in evo_targets)
+        else:
+            # no ids: the Active at the start, when fewer of its name are left and no evolution of its name was played
+            gone = (i == 0 and sum(1 for q in pre if nname(q['name']) == nm) > sum(1 for q in post if nname(q['name']) == nm)
+                    and not any(evolves_into(nm, nname(q.get('card_name'))) for q in plays if _is_evolution_play(q)))
+        if not gone:
+            continue
+        said = [t for t in texts if _norm(nm) in _norm(t)]
+        if any(KO_WORDS.search(t) for t in said) and not any(RETURNED.search(t) for t in said):
+            cands.append((p, said))
+    if len(cands) != 1:
+        if len(cands) > 1:
+            return [], [f'a Pokémon of his was knocked out after his turn ended, but the ledger does not tell which of {" / ".join(sorted(nname(c[0]["name"]) for c in cands))}: none is put in his discard']
+        return [], []
+    p, said = cands[0]
+    ids = pids(p)
+    by = collections.Counter(dict(ebt(p)))
+    for q in plays:
+        e = q.get('energy')
+        if isinstance(e, dict) and etype(e.get('type')) and e.get('count') and ids and _id_in(e.get('destination') or q.get('target'), ids):
+            by[etype(e['type'])] += int(e['count'])
+    told = collections.Counter()
+    nm_ = _norm(nname(p['name']))
+    for t in said:
+        # only the clause that says it was knocked out / left the board / was discarded and names it ("Druddigon, Rocky Helmet and 3 Metal are discarded."): the next one often
+        # says what he promoted, with ITS Energy ("Owner promotes second Haxorus 150 HP with 1 Fighting.")
+        for clause in re.split(r'(?<=[.;])\s+|;', t):
+            if nm_ in _norm(clause) and KO_WORDS.search(clause):
+                for m in ENERGY_COUNT.finditer(clause):
+                    if etype(m.group(2)):
+                        told[etype(m.group(2))] += int(m.group(1)) if m.group(1).isdigit() else NUMW[m.group(1).lower()]
+    notes = []
+    if told and sum(told.values()) != sum(by.values()):
+        notes.append(f'the Energy of the knocked-out {nname(p["name"])} is the count in the ledger\'s text ({sum(told.values())}), not the one the plays add up to ({sum(by.values())})')
+        by = told
+    ko = json.loads(json.dumps(p))
+    ko['hp_now'] = 0
+    ko['attached_energy'] = {'total': sum(by.values()), 'by_type': dict(by)}
+    for q in plays:
+        card = nname(q.get('card_name'))
+        if card and ids and any('Tool' in str(c.get('trainer_card_type', '')) for c in C.BYNAME.get(card, [])) and _id_in(q.get('target'), ids) and nk(q.get('kind')) != 'attempt':
+            ko['tool'] = card
+    return [ko], notes
+
+
 def resolve(items, text):
-    """index in the compact board list from a ledger target text ('owner Active', 'owner Bench 3', 'Seadra', 'Horsea Bench 1', 'Weezing ex Bench 3')"""
+    """index in the board list (the engine's slot) from a ledger target text ('owner Active', 'owner Bench 3', 'Seadra', 'Horsea Bench 1', 'Weezing ex Bench 3'); a slot Ilima emptied (None) is skipped"""
     if text is None:
         return None
     t = str(text).replace('’', "'")
     tl = t.lower()
-    cand = list(range(len(items)))
+    cand = [i for i, x in enumerate(items) if x is not None]
     # an instance id the ledger gives its Pokemon ('A', 'B', 'W1' ...): the whole target text, a short text containing it as a word, or a text that begins with it ('B on bench2')
     hits = [i for i in cand for tok in items[i].get('ids', ()) if t.strip() == tok or (len(t) <= 8 and re.search(r'(?<![A-Za-z0-9])' + re.escape(tok) + r'(?![A-Za-z0-9])', t))
             or re.match(re.escape(tok) + r'\s+(?:on|at|in)\b', t.strip())]
@@ -261,10 +420,11 @@ def evidence_texts(led, name):
     for t in led['turns']:
         if not str(t.get('who_played', '')).startswith('owner'):
             continue
+        stad = stadium_name(t.get('board_at_start'))
         for key in ('board_at_start', 'board_after'):
             for p in instances((t.get(key) or {}).get('owner') or {}):
                 if nname(p.get('name')) == name:
-                    out.append((str(p.get('variant') or ''), p.get('hp_max')))
+                    out.append((str(p.get('variant') or ''), shown_hp(p, stad)))
     return out
 
 
@@ -347,13 +507,22 @@ class Alloc:
 
 # ---------------------------------------------------------------------------------------------------------------- the opponent's cards
 
-def opp_pick(name, hp_max, texts):
-    """-> (printing id, [other printings of other functions that fit equally]) among the database's cards of this name: printed HP, then the attack / Ability
-    titles the ledger shows for it"""
+PRINTED_HP = re.compile(r'printed\s+(?:HP\s*)?(\d+)\s*(?:HP)?', re.I)
+
+
+def opp_pick(name, hp_max, texts, tool=None, stadium=None):
+    """-> (printing id, [other printings of other functions that fit equally]) among the database's cards of this name: the HP the ledger shows (a card fits when its printed HP plus what the Tool on
+    it and the Stadium in play add is that HP; else when its printed HP is that HP although they would have added to it), the printed HP the ledger's text states ('printed 100 HP'), then the attack /
+    Ability titles the ledger shows for it. `hp_max` is the HP shown, or a cardlib.HP that carries its own Tool and Stadium (030351: Darkrai at 120 under Starting Plains is the 100-HP card)"""
     cands = [c['id'] for c in C.BYNAME.get(name, []) if C.is_pokemon(c)] or [c['id'] for c in C.BYNAME.get(name, [])]
     if not cands:
         return None, []
-    by_hp = [i for i in cands if hp_max is not None and C.BYID[i].get('hp') == hp_max] or cands
+    hpc = hp_max if isinstance(hp_max, C.HP) else (C.HP(hp_max, tool, stadium) if hp_max is not None else None)
+    by_hp = cands
+    if hpc is not None:
+        by_hp = [i for i in cands if hpc.score(C.BYID[i]) == 2] or [i for i in cands if hpc.score(C.BYID[i]) >= 1] or cands
+    printed = {int(m) for t_ in texts for m in PRINTED_HP.findall(str(t_ or ''))}
+    by_hp = [i for i in by_hp if C.BYID[i].get('hp') in printed] or by_hp if printed else by_hp
     text = ' | '.join(texts)
     sc = sorted(((C.score_text(C.BYID[i], text, None), -n, i) for n, i in enumerate(by_hp)), reverse=True)
     top = sc[0][0]
@@ -593,7 +762,7 @@ def opp_history(led):
                         stk = stk[:1]
                 if not pids(p):
                     rc_take(st['rc_names'], nm)
-                st['cards'] += [(nm, str(p.get('variant') or ''), p.get('hp_max'))] + [(s, None, None) for s in stk]
+                st['cards'] += [(nm, str(p.get('variant') or ''), shown_hp(p, stadium_name(b0)))] + [(s, None, None) for s in stk]
                 st['ko_points'] += 3 if (nm.startswith('Mega ') and nm.endswith(' ex')) else (2 if nm.endswith(' ex') else 1)      # what knocking it out scores (used to check the list)
                 if tool_of(p) and C.BYNAME.get(tool_of(p)):
                     st['cards'].append((tool_of(p), None, None))
@@ -608,6 +777,15 @@ def opp_history(led):
 
 
 # ---------------------------------------------------------------------------------------------------------------- one game
+
+# the ledger's wordings of a Special Condition -> the engine's name (StatusCondition in engine/src/models/card.rs)
+CONDITIONS = {'asleep': 'Asleep', 'sleep': 'Asleep', 'paralyzed': 'Paralyzed', 'paralysed': 'Paralyzed', 'paralysis': 'Paralyzed',
+              'confused': 'Confused', 'confusion': 'Confused', 'poisoned': 'Poisoned', 'poison': 'Poisoned', 'burned': 'Burned', 'burn': 'Burned'}
+
+
+def condition_key(x):
+    return str(x).strip().lower()
+
 
 def convert_game(gdir, global_entities):
     gname = os.path.basename(gdir.rstrip('/'))
@@ -673,10 +851,14 @@ def convert_game(gdir, global_entities):
         if ids:
             return bool(ids & rc_ids)
         return rc_names[name] > 0 and n_named <= rc_names[name]
+    knockouts = 0      # his own Pokemon knocked out so far this game (Kingambit's Overlord's Blade; pg_pos.rs reads me.knockouts), Oct 13
     for k, ti in enumerate(owner_idx):
         t = turns[ti]
         tn = t['turn_number']
         notes = []
+        for cor in led.get('corrections') or []:      # what normalize_ledger.py corrected in this ledger from the frames (recorded overrides)
+            if not cor.get('turns') or tn in cor['turns']:
+                notes.append('ledger corrected from the frames: ' + str(cor.get('note') or cor.get('id')))
         b = t['board_at_start']
         own_inst, opp_inst = instances(b['owner']), instances(b['opponent'])
         pt = turns[owner_idx[k - 1]] if k > 0 else None
@@ -717,6 +899,11 @@ def convert_game(gdir, global_entities):
             after = instances(pt.get('board_after', {}).get('owner') or {})
             # which of his Pokemon the opponent's turn knocked out (by instance id, evolution, or what is on it: not by name alone), and what left the others
             pairs, kos = match_boards(after, own_inst)
+            # and what the checkup after his own previous turn knocked out: that row's `board_after` is already past it (Oct 13)
+            ckos, cnotes = checkup_knockouts(pt)
+            notes += cnotes
+            ck_ids = {id(x) for x in ckos}
+            kos = kos + ckos
             between = [x for x in turns[owner_idx[k - 1] + 1:ti] if not str(x.get('who_played', '')).startswith('owner')]
             moved = []      # Energy the opponent MOVED off one of his Pokemon (Thieving Incisors): it is on the opponent's Pokemon, not in his discard
             for x in between:
@@ -728,25 +915,27 @@ def convert_game(gdir, global_entities):
                 nm = nname(p['name'])
                 if nm not in names_in_deck:
                     continue
-                lost_mine = True
+                at_checkup = id(p) in ck_ids      # knocked out after his own turn ended, not by the opponent's attack: no Mach Stealth, and nothing of it was moved by the opponent
+                lost_mine = lost_mine or not at_checkup
+                knockouts += 1
                 st = stack_under(p)
                 if st is None:
                     st = chain_names(nm)
-                    if st and rc_flag(p, nm, sum(1 for q in after if nname(q['name']) == nm)):
+                    if st and rc_flag(p, nm, sum(1 for q in after + ckos if nname(q['name']) == nm)):
                         st = st[:1]
                 if not pids(p) and rc_names[nm] > 0:
                     rc_names[nm] -= 1
-                disc += [(nm, str(p.get('variant') or ''), p.get('hp_max'))] + [(s, None, None) for s in st if s in names_in_deck]
+                disc += [(nm, str(p.get('variant') or ''), shown_hp(p, stadium_name(pt.get('board_at_start'))))] + [(s, None, None) for s in st if s in names_in_deck]
                 tool = tool_of(p)
                 if tool and tool in names_in_deck:
                     disc.append((tool, None, None))
                 en_ = [tt for tt, n in ebt(p) for _ in range(int(n or 0))]
-                for mvd in list(moved):
+                for mvd in ([] if at_checkup else list(moved)):
                     if mvd[1] == nm and mvd[0] in en_:
                         en_.remove(mvd[0])
                         moved.remove(mvd)
                 disc_energy += en_
-                notes.append(f'knocked out between turns: {nm}')
+                notes.append(f'knocked out at the checkup after his turn ended: {nm}' if at_checkup else f'knocked out between turns: {nm}')
             for x in between:
                 for p in x.get('plays_in_order') or []:
                     for ev in p.get('nested_events_in_order') or []:
@@ -786,13 +975,15 @@ def convert_game(gdir, global_entities):
                 return bool(ids & ohist['rc_ids'])
             return rc_count(ohist['rc_names'], name) > 0 and n_named <= rc_count(ohist['rc_names'], name)
         try:
+            stad_now = stadium_name(b)
+
             def mk(p, mine):
                 name = nname(p['name'])
                 text = ' | '.join([str(p.get('variant') or '')] + ([] if mine else opp_ev.get(name, [])))
                 if mine:
-                    cid_ = alloc.take(name, text=str(p.get('variant') or ''), hp=p.get('hp_max'))
+                    cid_ = alloc.take(name, text=str(p.get('variant') or ''), hp=shown_hp(p, stad_now))
                 else:
-                    cid_, alts = opp_pick(name, p.get('hp_max'), [str(p.get('variant') or '')] + opp_ev.get(name, []))
+                    cid_, alts = opp_pick(name, shown_hp(p, stad_now), [str(p.get('variant') or '')] + opp_ev.get(name, []))
                     if alts:
                         opp_alts.append({'name': name, 'used': cid_, 'could_also_be': alts})
                 if cid_ is None:
@@ -840,9 +1031,15 @@ def convert_game(gdir, global_entities):
                                 opp_alts.append({'name': u, 'used': uid, 'could_also_be': alts_u, 'under': name})
                             behind.append(f'{u} {uid}')
                     d['behind'] = list(reversed(behind))
+                # Special Conditions (Oct 13): the engine's names, which pg_pos.rs sets on the Pokemon; a condition the engine has no name for
+                # stays a note
                 conds = p.get('special_conditions') or []
-                if conds:
-                    notes.append(f'{name} is {"/".join(map(str, conds))} (not represented: the harness has no condition field)')
+                known = [CONDITIONS[c] for c in (condition_key(x) for x in conds) if c in CONDITIONS]
+                if known:
+                    d['conditions'] = list(dict.fromkeys(known))
+                unknown = [x for x in conds if condition_key(x) not in CONDITIONS]
+                if unknown:
+                    notes.append(f'{name} is {"/".join(map(str, unknown))} (not represented: the engine has no such condition)')
                 d['_name'] = name
                 return d
             me_board = [mk(p, True) for p in own_inst]
@@ -944,13 +1141,61 @@ def convert_game(gdir, global_entities):
             pk.pop('_name', None)
         # ---- his plan, with indices resolved against the board as it changes during the turn
         plan, unresolved = [], []
+        # (the engine's slots: [Active, Bench 1..3]. A slot Ilima emptied is None until a Pokemon is benched into it or promoted out of another one)
         items = [{'name': nname(p['name']), 'bench_position': bpos(p), 'ids': {x for x in (p.get('instance_id'), p.get('physical_instance')) if x}} for p in own_inst]
         ended = False
+        pending_promote = False      # Ilima put his Active into his hand and the ledger has not yet said which Pokemon he promoted
         plays = list(t.get('plays_in_order') or [])
+
+        def place(new):
+            """a Pokemon he benches goes to the first empty Bench slot (the engine's choice; Ilima leaves one open)"""
+            for si_ in range(1, len(items)):
+                if items[si_] is None:
+                    items[si_] = new
+                    return si_
+            items.append(new)
+            return len(items) - 1
+
+        def promote(j):
+            plan.append(f'Promote:0@{j}')
+            items[0], items[j] = items[j], None
+            items[0]['bench_position'] = None
+
+        def promoted_in(txt, whole):
+            """the Benched Pokemon a text says he promoted: the one named after the word 'promotes' (the whole text of a promotion row), else the only one on the Bench; None when it is not told"""
+            rest = txt
+            if not whole:
+                m_ = re.search(r'promot', txt, re.I)
+                if not m_:
+                    live_ = [i_ for i_ in range(1, len(items)) if items[i_] is not None]
+                    return live_[0] if len(live_) == 1 else None
+                rest = txt[m_.start():]
+            hits_ = [i_ for i_ in range(1, len(items)) if items[i_] is not None and items[i_]['name'].lower() in rest.lower()]
+            return hits_[0] if len(hits_) == 1 else None
+
+        def ilima_returned(txt):
+            """the slot of the Pokemon Ilima put into his hand: his Active when the text names it, else the one Pokemon it names"""
+            named_ = [i_ for i_, x in enumerate(items) if x is not None and x['name'].lower() in txt.lower()]
+            if 0 in named_:
+                return 0
+            return named_[0] if len(named_) == 1 else None
         for p in plays:
             kind, card, res, tg = nk(p.get('kind')), nname(p.get('card_name')), str(p.get('result') or ''), p.get('target')
             resp = str(p.get('response') or '')
             ptxt = ' '.join(str(x or '') for x in (p.get('prompt_text'), p.get('response'), tg, res))
+            if pending_promote and kind != 'attempt':
+                if re.search(r'promot|replace', str(p.get('kind') or ''), re.I) or (kind == 'prompt_response' and re.search(r'replacement|promot', ptxt, re.I)):
+                    j_ = promoted_in(ptxt, True)
+                    if j_ is None:
+                        plan.append('Promote:0@?')
+                        unresolved.append(f'promotion after Ilima {ptxt!r}')
+                    else:
+                        promote(j_)
+                    pending_promote = False
+                    continue
+                plan.append('Promote:0@?')      # something else came first: the ledger does not say which Pokemon he promoted
+                unresolved.append('Ilima: the Pokemon he promoted is not told')
+                pending_promote = False
             if kind in ('end',):
                 ended = True
             elif kind == 'attempt':
@@ -964,7 +1209,22 @@ def convert_game(gdir, global_entities):
                 mm = re.search(r'bench\s*(?:position\s*)?(\d)', str(tg).lower())
                 bp = int(mm.group(1)) if mm else next((k2 for w, k2 in (('left', 1), ('middle', 2), ('center', 2), ('right', 3)) if w in str(tg).lower()), None)
                 new_id = re.search(r'\bPlace\s+([A-Za-z]\d?)\b', res)
-                items.append({'name': card, 'bench_position': bp, 'ids': {new_id.group(1)} if new_id else set()})
+                place({'name': card, 'bench_position': bp, 'ids': {new_id.group(1)} if new_id else set()})
+            elif kind == 'card_play' and card == 'Ilima' and card in names_in_deck:
+                plan.append('Play:Ilima')
+                itxt = ' '.join(str(x or '') for x in (tg, res, p.get('details')))
+                ri = ilima_returned(itxt)
+                if ri is None:
+                    plan.append('Promote:0@?')
+                    unresolved.append(f'Ilima: the Pokemon that went back to his hand is not told ({itxt!r})')
+                else:
+                    items[ri] = None
+                    if ri == 0:
+                        j_ = promoted_in(itxt, False)
+                        if j_ is None:
+                            pending_promote = True
+                        else:
+                            promote(j_)
             elif kind in ('card_play', 'item_evolution', 'stadium') and card == 'Rare Candy':
                 mm = re.search(r'(.*?)\s*->\s*(.+)$', str(tg or ''))
                 plan.append('Play:Rare Candy')
@@ -1043,7 +1303,7 @@ def convert_game(gdir, global_entities):
                         i = i2
                         break
                 if i is None:
-                    hits = [j for j in range(1, len(items)) if re.search(r'(?:promot\w*|becomes?|new)\s+(?:the\s+)?(?:Active\s+)?' + re.escape(items[j]['name']) + r'|' + re.escape(items[j]['name']) + r'\s+(?:is\s+)?(?:promoted|becomes Active|Active|to Active)', res + ' ' + str(tg), re.I)]
+                    hits = [j for j in range(1, len(items)) if items[j] is not None and re.search(r'(?:promot\w*|becomes?|new)\s+(?:the\s+)?(?:Active\s+)?' + re.escape(items[j]['name']) + r'|' + re.escape(items[j]['name']) + r'\s+(?:is\s+)?(?:promoted|becomes Active|Active|to Active)', res + ' ' + str(tg), re.I)]
                     if len(hits) == 1:
                         i = hits[0]
                 plan.append(f'Retreat:{i}' if i is not None else 'Retreat:?')
@@ -1058,10 +1318,17 @@ def convert_game(gdir, global_entities):
             elif kind == 'ability':
                 if not (plan and plan[-1] == 'Ability' and re.search(r'boiler smog', card + ' ' + res, re.I)):
                     plan.append('Ability')
+                # an Ability that takes an Energy of a chosen type from his discard (Dragon's Blessing): the engine asks which type, and the choice is a step of its own
+                e_ = p.get('energy') if isinstance(p.get('energy'), dict) else {}
+                if etype(e_.get('type')) and re.search(r'discard', res + ' ' + str(p.get('details') or ''), re.I):
+                    i = resolve(items, e_.get('destination') or tg)
+                    plan.append(f'AttachTypedFromDiscard:{etype(e_["type"])}@{i if i is not None else "?"}')
+                    if i is None:
+                        unresolved.append(f'Energy target of the Ability {e_.get("destination") or tg!r}')
             elif kind in ('card_play', 'stadium', 'tool', 'bench', 'evolution') and card and card not in names_in_deck:
                 notes.append(f'a play of {card!r}, which is not in the deck list, is left out of his plan')
             elif kind == 'attack':
-                act = items[0]['name'] if items else None
+                act = items[0]['name'] if items and items[0] is not None else None
                 act_cards = [C.BYID[e.rid] for e in spec.entries if e.name == act]
                 tl = list(dict.fromkeys(a.get('title') for c in act_cards for a in (c.get('attacks') or []) if a.get('title')))
                 named = str(p.get('card_name') or '').replace('’', "'")
@@ -1070,7 +1337,13 @@ def convert_game(gdir, global_entities):
                 plan.append(f'Attack:{hit[0] if hit else (tl[-1] if tl else act)}')
                 if not hit:
                     notes.append(f'attack title of {act} not named in the ledger: the last printed attack is used')
-                if hit and hit[0] == 'Turbo Shark':
+                # an attack that takes an Energy from the zone and attaches it to a Benched Pokemon (Turbo Shark, Giga Turbo): the engine asks where, and the choice is a step of its own
+                fx_m = None
+                for c_ in (act_cards if hit else []):
+                    for a_ in c_.get('attacks') or []:
+                        if a_.get('title') == hit[0]:
+                            fx_m = fx_m or re.search(r'Take an? \[(\w)\] Energy from your Energy Zone and attach it to 1 of your Benched', a_.get('effect') or '')
+                if fx_m:
                     tail = re.split(r'attach', res, maxsplit=1, flags=re.I)
                     tail = tail[1] if len(tail) > 1 else res
                     sel = re.search(r'select\w*\s+([^,;]+)', res, re.I)     # "... prompt selects Wailord Bench2, attach1 Water resolved ..."
@@ -1078,17 +1351,20 @@ def convert_game(gdir, global_entities):
                     for txt_ in ([sel.group(1)] if sel else []) + [tail]:
                         j = resolve(items, txt_)
                         if j in (None, 0):
-                            names_hit = [x for x in range(1, len(items)) if items[x]['name'].lower() in txt_.lower()]
+                            names_hit = [x for x in range(1, len(items)) if items[x] is not None and items[x]['name'].lower() in txt_.lower()]
                             j = names_hit[0] if len(names_hit) == 1 else None
                         if j not in (None, 0):
                             break
                     if j == 0:
                         j = None     # it goes to a Benched Pokemon
-                    en = etype(next(iter(re.findall(r'\b(' + '|'.join(ETYPES) + r')\b', res)), None)) or 'Water'
+                    en = C.TYPE_LETTERS.get(fx_m.group(1)) or etype(next(iter(re.findall(r'\b(' + '|'.join(ETYPES) + r')\b', res)), None)) or 'Water'
                     plan.append(f'Attach:1{en}@{j if j is not None else "?"} fx')
                     if j is None:
-                        unresolved.append(f'Turbo Shark Energy target in {res!r}')
+                        unresolved.append(f'{hit[0]} Energy target in {res!r}')
                 ended = True
+        if pending_promote:
+            plan.append('Promote:0@?')
+            unresolved.append('Ilima: the Pokemon he promoted is not told')
         known_prefix = None
         for si, s_ in enumerate(plan):
             if '?' in s_:
@@ -1103,8 +1379,10 @@ def convert_game(gdir, global_entities):
         a_zone = ((t.get('board_after') or {}).get('owner') or {}).get('energy_zone') or {}
         my_now = zone_now(t)
         my_next = etype((a_zone.get('next') or {}).get('type')) or (zone_now(turns[owner_idx[k + 1]]) if k + 1 < len(owner_idx) else None) or (etype(nxt.get('type')) if etype(this.get('type')) else None)
-        o_zone = b['opponent'].get('energy_zone') or {}
-        o_next = etype((o_zone.get('next') or {}).get('type')) or etype((o_zone.get('this_turn') or {}).get('type')) or decks_energy
+        o_next = opp_energy_next(turns, ti)
+        if o_next is None:
+            o_next = decks_energy
+            notes.append(f"the opponent's next Energy is not told by the ledger: his deck's Energy ({decks_energy}) is used")
         # the opponent's discard: the cards the ledger names (his Pokemon that left the board with what was under them, the Items and Supporters he played, ...)
         opp_disc = []
         for nm_, tx_, hp_ in ohist['cards']:
@@ -1124,6 +1402,7 @@ def convert_game(gdir, global_entities):
                    'energy_now': None if (first_player and tn == 1) else (my_now or decks_energy),
                    'energy_next': my_next or decks_energy}
         opp_side = {'hand_count': opp_hand, 'discard': opp_disc, 'discard_energy': list(ohist['energy']), 'board': opp_board, 'energy_next': o_next}
+        me_side['knockouts'] = knockouts
         if me_deck_empty:
             me_side['deck_count'] = 0      # the ledger says his deck is empty: the position runner checks this against the list minus what it shows
         if ohist['deck_empty']:

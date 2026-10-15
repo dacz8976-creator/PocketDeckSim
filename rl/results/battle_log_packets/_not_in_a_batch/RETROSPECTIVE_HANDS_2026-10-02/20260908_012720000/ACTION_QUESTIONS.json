@@ -1,0 +1,60 @@
+{
+  "schema": "bounded-inherited-prose-discrepancies-v1",
+  "source_sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085",
+  "old_packet_preserved": true,
+  "accepted_outcome_preserved": "owner3-2Victory",
+  "questions": [
+    {
+      "id": "HIKING_TIMING",
+      "old_claim": "Turn6 playsHikingTrail at126s",
+      "direct_field_value": "Turn6 drawsHikingTrail; it remains in hand through turn8/9. Turn10 plays it afterGoo-zooka and beforeCopycat.",
+      "evidence": [
+        "turn_evidence/t0128.00.jpg",
+        "turn_evidence/t0134.80.jpg",
+        "turn_evidence/t0212.50.jpg",
+        "turn_evidence/t0218.50.jpg"
+      ],
+      "reconciliation": "One visible HikingTrail in turn6start/end hands, same slot through turn8/9. Stadium field empty until turn10; no substitute deck-based inference."
+    },
+    {
+      "id": "QUICK_GROW_DRAW",
+      "old_claim": "Turn12 playsQuick-Grow Extract benchingSpinarak",
+      "direct_field_value": "Turn12 normal draw Quick-Grow Extract; existing Spinarak is ordinarily Benched and Quick-Grow remains in the ending hand. Spinarak was directly seen in the turn10 end refill; Hiking Trail causation is inferred.",
+      "evidence": [
+        "turn_evidence/t0236.50.jpg",
+        "turn_evidence/t0253.00.jpg",
+        "turn_evidence/t0254.50.jpg",
+        "turn_evidence/t0259.50.jpg",
+        "turn_evidence/t0268.50.jpg"
+      ],
+      "reconciliation": "Ending two-card hand isAriados+Quick-Grow; Spinarak ordinary bench placement andXSpeed consume two of starting four. NoQuick-Grow search or evolution occurs.",
+      "causal_qualification": "Inferred from the end-turn timing, refill from one to three cards, Hiking Trail in play and its printed effect; the named card identities and reveal order are directly visible. No native message explicitly attributes the Spinarak draw to the Stadium."
+    },
+    {
+      "id": "MAGMAR_DUPLICATE_ENERGY",
+      "old_claim": "Old turn7 prose says a second Darkness Energy was attached to Magmar; the target is ambiguous because there are two Magmar, rather than an explicit claim that Active Magmar holds two.",
+      "direct_field_value": "SecondMagmar benched onTurn7 beforeMasterPlan; Darkness attaches to newBenchedMagmar, leavingActiveMagmar1Darkness.",
+      "evidence": [
+        "turn_evidence/t0144.00.jpg",
+        "turn_evidence/t0145.50.jpg",
+        "turn_evidence/t0153.00.jpg",
+        "turn_evidence/t0162.00.jpg"
+      ],
+      "reconciliation": "TwoMagmar simultaneously present: Active10HPwithPoisonBarb/1Darkness andBenched70HPwithoutTool/1Darkness.",
+      "historical_difference_type": "ambiguous_target_resolved_by_native_evidence"
+    },
+    {
+      "id": "TURN11_EXTRA_ATTACHMENT",
+      "old_claim": "Old turn11 summary records Confusion Gas but omits the preceding Bench Magmar attachment; it does not explicitly deny that attachment.",
+      "direct_field_value": "BeforeConfusionGas, Darkness attaches to survivingBenchedMagmar, increasingit1to2Darkness.",
+      "evidence": [
+        "turn_evidence/t0238.50.jpg",
+        "turn_evidence/t0241.00.jpg",
+        "turn_evidence/t0249.50.jpg"
+      ],
+      "reconciliation": "ActiveWeezing stays2Darkness; BenchMagmar shows2by ownerTurn12start.",
+      "historical_difference_type": "omission"
+    }
+  ],
+  "lead_question": "Independently confirm these bounded supplemental field values; retain old conflicting prose as provenance and accepted outcome. No historical packet overwrite."
+}

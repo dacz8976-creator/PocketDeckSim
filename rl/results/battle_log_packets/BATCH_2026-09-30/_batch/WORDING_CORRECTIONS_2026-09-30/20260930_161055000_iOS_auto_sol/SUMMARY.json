@@ -1,0 +1,42 @@
+{
+  "video_basename": "20260930_161055000_iOS.MP4",
+  "source_binding": {
+    "sha256": "6b0b2ed06036cd8d4fd21e84c600e6f43a6851d8120eb02610f045d5d116f4b5",
+    "bytes": 476901875,
+    "duration_seconds": 259.13,
+    "identity_basis": "root verified intake SOURCE.json read first; worker did not independently rehash or move"
+  },
+  "reviewer": "sol_auto_161055000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_date": "2026-09-30",
+  "status": "full_review_ready_for_lead_acceptance",
+  "scope": "One complete battle, setup through terminal victory; all14 turns and meaningful visible actions",
+  "full_scope_reviewed": true,
+  "overview": {"step_seconds": 3, "frames_inspected": 86, "contact_sheets_inspected": 10},
+  "mode": "autopilot_vs_computer_with_visible_Auto_unchecked_interval",
+  "mode_basis": "owner testimony plus Auto control and terminal computer deck label",
+  "auto_unchecked_seconds_approx": [110, 129.5],
+  "unchecked_interval_actor": "unknown",
+  "ladder_eligible": false,
+  "ladder_action": "excluded_by_owner_instruction; no Ladder Log write",
+  "outcome": "owner_win",
+  "owner": "Dacz8976",
+  "opponent": "Mega Blastoise ex & Wailord ex Deck (Deluxe Pack: Mega)",
+  "outcome_evidence": ["targets/t0246.00.jpg", "targets/t0250.00.jpg", "targets/t0258.80.jpg"],
+  "point_progression": {"owner": [0, 1, 2, "victory_threshold_reached_after_plus2"], "opponent": [0, 1], "display_limit": "three victory circles; no displayed4-1 claim"},
+  "visible_owner_core": ["Alolan Geodude", "Alolan Graveler", "Alolan Golem", "Electrike", "Mega Manectric ex", "Professor's Research", "Poke Ball", "Rare Candy", "Electrical Cord", "Electric Generator", "Lucky Ice Pop held unused"],
+  "visible_opponent_core": ["Wailmer", "Wailord ex", "Squirtle", "Wartortle", "Mega Blastoise ex", "Frigibax", "Arctibax", "Baxcalibur", "Professor's Research", "Soothing Shore"],
+  "full_deck_inferred": false,
+  "anchors": {
+    "opening_mode": ["overview/sheet_01.jpg", "targets/t0027.00.jpg"],
+    "ordinary_state": ["targets/t0056.00.jpg", "targets/t0061.00.jpg"],
+    "mode_pause_resume": ["targets/t0129.00.jpg", "targets/t0130.00.jpg"],
+    "decisive": ["targets/t0122.00.jpg", "targets/t0128.50.jpg", "targets/t0155.00.jpg", "targets/t0163.00.jpg", "targets/t0185.00.jpg", "targets/t0194.00.jpg", "targets/t0203.00.jpg", "targets/t0231.00.jpg"],
+    "terminal": ["targets/t0246.00.jpg", "targets/t0250.00.jpg", "targets/t0258.80.jpg"]
+  },
+  "consequential_unresolved_count": 0,
+  "astra_question_required": false,
+  "reports": ["REVIEW.md", "COVERAGE.md", "UNCERTAINTIES.json", "SUMMARY.json"],
+  "shared_registration_or_move_performed": false
+}

@@ -1,0 +1,65 @@
+{
+  "source_video": "20261005_034953000_iOS.MP4",
+  "source_sha256": "85f9e3803543f512323259794b7166808e5bfd2ff5a3854d8ce1a40686075180",
+  "status": "bounded recording_limits",
+  "items": [
+    {
+      "id": "U1",
+      "category": "hidden_information",
+      "timestamps": [
+        55,
+        61,
+        71,
+        104
+      ],
+      "description": "Opponent search and draw identities concealed. Visible later cards do not prove search-to-card mapping.",
+      "disposition": "retain unknown"
+    },
+    {
+      "id": "U2",
+      "category": "absent_view",
+      "timestamps": [
+        0,
+        410.035
+      ],
+      "description": "No opened discard piles in full recording; partial top previews only.",
+      "disposition": "source limit"
+    },
+    {
+      "id": "U3",
+      "category": "deck_snapshot",
+      "timestamps": [
+        5
+      ],
+      "description": "QR20 is verified and bound continuously to game; matching newly prepared deck not in frozen initial live snapshot.",
+      "disposition": "lead external deck-save check pending"
+    },
+    {
+      "id": "U4",
+      "category": "opponent_choice",
+      "timestamps": [
+        173,
+        213
+      ],
+      "description": "Rainbow Cave activation is visible; exact type-choice UI is hidden. Metal attachments are directly observed afterward.",
+      "disposition": "no guessed selection"
+    },
+    {
+      "id": "U5",
+      "category": "timing",
+      "timestamps": [
+        83,
+        113.8,
+        149.5,
+        184,
+        223,
+        267.5,
+        333,
+        388.3
+      ],
+      "description": "Animation-end estimates are bracketed native seeks, not measured PTS. Scheduled candidates carry suitability limits.",
+      "disposition": "explicit timing bound"
+    }
+  ],
+  "consequential_ambiguities_requiring_astra": []
+}

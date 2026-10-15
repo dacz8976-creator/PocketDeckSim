@@ -1,0 +1,44 @@
+{
+  "checked_utc": "2026-10-13T01:45:07.444763+00:00",
+  "source_video": "20261012_225319000_iOS.MP4",
+  "source_sha256": "10908103247750567923e0899770318a2e53821055d7a2d464ab8d8a2b12dd70",
+  "reviewer": "/root",
+  "evidence": [
+    {
+      "requested_source_seconds": 28.0,
+      "file": "turn_evidence/t0028.00.jpg",
+      "observed": "Five opening slots left to right: Rare Candy, Pawniard, Ilima, Professor Research, Heavy Helmet.",
+      "image_sha256": "3b7c5ebbc326fe0eef59f9acacdbc4013a57f7aa0f32f952dbe1d9f5ffbec676",
+      "frame_pts_measured": false
+    },
+    {
+      "requested_source_seconds": 88.0,
+      "file": "turn_evidence/t0088.00.jpg",
+      "observed": "Played Poke Ball face before Alolan Grimer search reveal t90 and Research play t95.",
+      "image_sha256": "a0d474c7a274b51d021241afb5f6403c90d052164466bffb3fc46a761e7b99e4",
+      "frame_pts_measured": false
+    },
+    {
+      "requested_source_seconds": 90.0,
+      "file": "turn_evidence/t0090.00.jpg",
+      "observed": "Alolan Grimer 70 HP search result is individually face-revealed.",
+      "image_sha256": "d036fd25f2005e56895c30822db2088623abb752dfc033e886cdfdeb6df4588a",
+      "frame_pts_measured": false
+    },
+    {
+      "requested_source_seconds": 95.0,
+      "file": "turn_evidence/t0095.00.jpg",
+      "observed": "Research played after Grimer is benched.",
+      "image_sha256": "51796a64b17998fb4e250bcbfaec020494ac5221714571024e318df3cfd41b56",
+      "frame_pts_measured": false
+    },
+    {
+      "requested_source_seconds": 336.5,
+      "file": "independent_sol/t6_019.jpg",
+      "observed": "Pawniard zoom shows one attached Darkness beside 50 HP, with retreat cost one Colorless. This rejects the early zero-payment and unused-Energy account.",
+      "image_sha256": "c3ac3760b669f65fb74276acd414382a2dfded268b96ebaae4f9c22b537ef18c",
+      "frame_pts_measured": false
+    }
+  ],
+  "final_packet_acceptance_pending": true
+}

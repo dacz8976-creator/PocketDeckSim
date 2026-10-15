@@ -1,0 +1,1611 @@
+{
+  "updated_utc": "2026-10-06T21:16:39.448899+00:00",
+  "source_count": 17,
+  "source_bound_count": 17,
+  "sources": [
+    {
+      "source_video": "20261004_213625000_iOS.MP4",
+      "sha256": "aa7e935b335a2dfe11e43783f260698997845f7c85de8d6b1db976b7bf794225",
+      "duration_seconds": 460.651667,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261004_213625000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "is_template": false,
+        "source_video": "20261004_213625000_iOS.MP4",
+        "source_sha256": "aa7e935b335a2dfe11e43783f260698997845f7c85de8d6b1db976b7bf794225",
+        "reviewer": "/root/pause_20261004_213625000_iOS",
+        "model": "gpt-6.1-sol",
+        "scope": "Whole source0-460.651667s; setup, all12turns, terminal result",
+        "classification": "human_event",
+        "auto_control_observed": false,
+        "game_count": 1,
+        "recording_cuts_observed": false,
+        "queue": "Deluxe Pack: Mega Emblem Event",
+        "owner": "Dacz8976",
+        "opponent": "Noytamon",
+        "deck_name": "New deck 24",
+        "owner_visible_core": [
+          "Caterpie",
+          "Metapod",
+          "Butterfree",
+          "Shelmet",
+          "Accelgor"
+        ],
+        "opponent_visible_core": [
+          "Exeggcute",
+          "Budew",
+          "Pinsir",
+          "Combee",
+          "Vespiquen ex",
+          "Teal Mask Ogerpon ex"
+        ],
+        "outcome": "loss",
+        "owner_points": 2,
+        "opponent_points": 3,
+        "result_seconds": [
+          445,
+          451,
+          459
+        ],
+        "capture_status": "complete_with_recording_limits",
+        "status": "ready_for_independent_review",
+        "consequential_checks": [
+          {
+            "seconds": [
+              189,
+              410
+            ],
+            "claim": "Soothing Wind makes Energy-bearing Vespiquen ex immune to Poison/Paralysis"
+          },
+          {
+            "seconds": [
+              401,
+              402,
+              403,
+              404
+            ],
+            "claim": "Research only draws one Ice Pop, deck exhausted"
+          },
+          {
+            "seconds": [
+              444,
+              445,
+              450,
+              459
+            ],
+            "claim": "Chase Order140KO and Defeat establish loss"
+          }
+        ]
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261004_214518000_iOS.MP4",
+      "sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "duration_seconds": 55.216667,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261004_214518000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "game_id": "20261004_214518000_iOS_game1",
+        "source_video": "20261004_214518000_iOS.MP4",
+        "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+        "reviewer": "/root/pause_214518",
+        "review_model": "gpt-6.1-sol",
+        "reasoning_effort": "high",
+        "review_date": "2026-10-06T18:21:06.897647+00:00",
+        "scope": "Entire 55.216667-second source: event lobby, new matchmaking, opening setup, waiting/connection transition, Victory and final results.",
+        "classification": "human_opponent",
+        "recording_type": "complete_setup_only_match_with_terminal_result",
+        "mode": "Deluxe Pack: Mega Emblem Event",
+        "auto_control_observed": false,
+        "auto_enabled": null,
+        "auto_limit": "No Auto control or option appears; no menu is opened. Human event matchmaking/profile is visible.",
+        "opponent": "ゆうぜん",
+        "opponent_level": 60,
+        "owner": "Dacz8976",
+        "match_date": "2026-10-04",
+        "outcome": "win",
+        "points": [
+          0,
+          0
+        ],
+        "turn_count": 0,
+        "damage_done": 0,
+        "source_continuity": "New match from event lobby through final Victory. No linked continuation needed. No visible recording cut.",
+        "source_relationships": [
+          {
+            "other_source": "20261004_213625000_iOS.MP4",
+            "relationship": "separate_previous_match",
+            "basis": "Peer native frame at local 459 s explicitly shows Defeat versus Noytamon; this source begins new event matchmaking and introduces ゆうぜん.",
+            "evidence_path": "../20261004_213625000_iOS/turn_evidence/t0459.00.png"
+          },
+          {
+            "other_source": "20261004_214731000_iOS.MP4",
+            "relationship": "separate_later_match",
+            "basis": "Peer native_01 contact sheet includes new five-card setup at local 24.5 s, going second, different opening and opponent red-R sleeves; subsequent ordinary board names CloutDemon. This source ends Victory versus ゆうぜん.",
+            "evidence_path": "../20261004_214731000_iOS/native_01.jpg"
+          }
+        ],
+        "capture_status": "complete_with_recording_limits",
+        "worker_disposition": "ready_for_bounded_independent_check_and_lead_acceptance",
+        "acceptance_status": "awaiting_independent_review",
+        "full_source_review_complete": true,
+        "independent_check_candidates_seconds": [
+          0,
+          9,
+          17,
+          23,
+          24,
+          27,
+          30,
+          44,
+          44.5,
+          45.5,
+          46,
+          49,
+          55
+        ],
+        "important_findings": [
+          "Results explicitly show 0 turns, 0 damage and 0-0 points with Victory. No fabricated turn ledger rows.",
+          "All five opening card names and chosen Active slot are visible.",
+          "Connection instability precedes Victory; the exact termination cause is unknown.",
+          "Exact 20-card game deck cannot be bound from this source; earlier QR candidate retained separately."
+        ],
+        "limits": [
+          "The game awarded Victory before a turn began. Results explicitly show 0 turns played and 0 damage. There are no owner/opponent game-turn rows or draw-relative captures to create.",
+          "Connection instability is directly visible before Victory. Its exact server cause, and whether any player deliberately conceded, are not shown.",
+          "Opponent Pokemon identities are never revealed. One face-down Active appears during the terminal transition.",
+          "No opened discard piles or battle-log scroll are shown. No in-turn card play, search, normal draw, attachment or attack occurs.",
+          "No deck QR or complete list is shown in this source. A same-label earlier source QR is a candidate only; no uninterrupted recording proves the list was unchanged across sources.",
+          "Seek times are source-local requested positions. Exact decoded frame PTS has not been measured."
+        ]
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261004_214731000_iOS.MP4",
+      "sha256": "d363bdd1c3f4aafc5ad9423764e706f8944407d68a04c82d72317592d7e7e198",
+      "duration_seconds": 374.945,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261004_214731000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "game_id": "20261004_214731000_iOS_game1",
+        "source_video": "20261004_214731000_iOS.MP4",
+        "source_sha256": "d363bdd1c3f4aafc5ad9423764e706f8944407d68a04c82d72317592d7e7e198",
+        "reviewer": "/root/pause_20261004_214731000_iOS",
+        "review_date": "2026-10-06T17:43:02.694559+00:00",
+        "scope": "Whole source matchmaking, setup, all8turns, terminal result",
+        "classification": "human_opponent",
+        "outcome": "win",
+        "opponent": "CloutDemon",
+        "points": [
+          3,
+          0
+        ],
+        "turn_count": 8,
+        "source_continuity": "One continuous match from matchmaking through result; no visible recording cut.",
+        "capture_status": "complete_with_recording_limits",
+        "acceptance_status": "awaiting_independent_review",
+        "important_findings": [
+          "Opening all5cards and chosenActive captured.",
+          "Research draws Poké Ball then Accelgor; searches Caterpie then Shelmet.",
+          "Three Lucky Ice Pop uses: T4 Heads, T6 Heads then Tails.",
+          "T6 retreat costs1Grass; Accelgor shuffles itself plus underlyingShelmet and2Grass before HikingTrail replenishes3namedcards.",
+          "Poison ticks Ray40→30 and30→20; paralysis prevents attackT7.",
+          "T8 SunnyWind60 KO awards3points; victory3-0,200damage displayed."
+        ],
+        "limits": [
+          "Opponent card faces remain hidden for draws/searches not revealed.",
+          "Exact input/frame PTS was not measured; retained seek times identify source-local evidence.",
+          "No opened discard-pile views in this recording.",
+          "The filmed Grass deck does not match any of the nine current live lists. Deck supplement pending lead QR/live-log reconciliation."
+        ]
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261004_215749000_iOS.MP4",
+      "sha256": "2015607dfe613e8bf71f4637d5d26ed625d8a451b0541b93b3a82bf0457126af",
+      "duration_seconds": 257.066667,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261004_215749000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "video_basename": "20261004_215749000_iOS.MP4",
+        "source_sha256": "2015607dfe613e8bf71f4637d5d26ed625d8a451b0541b93b3a82bf0457126af",
+        "reviewer": "/root/pause_20261004_215749000_iOS",
+        "review_model": "gpt-6.1-sol",
+        "reasoning_effort": "high",
+        "review_status": "full_source_review_submitted_for_independent_acceptance",
+        "capture_status": "complete_with_recording_limits",
+        "game_count": 1,
+        "recorded_turn_count": 6,
+        "classification": "human",
+        "auto_control_observed": false,
+        "queue_label": "Online opponent matchmaking; precise ranked/private queue label not established",
+        "match_date_local": "2026-10-04",
+        "match_date_basis": "RECORDING_METADATA.json embedded UTC creation time converted to America/Chicago",
+        "owner": "Dacz8976",
+        "opponent": "Sherwin",
+        "visible_deck_core": [
+          "Torchic",
+          "Combusken",
+          "Castform Sunny Form",
+          "Mega Blaziken ex drawn at end turn5"
+        ],
+        "owner_result": "win",
+        "outcome_evidence": [
+          {
+            "seconds": 244,
+            "text": "Your opponent conceded"
+          },
+          {
+            "seconds": 256,
+            "text": "vs. Sherwin Victory!"
+          }
+        ],
+        "points_at_concession": {
+          "owner": 1,
+          "opponent": 0
+        },
+        "continuity": "One source, continuous setup through victory; no observed recording cut",
+        "QR_times": [
+          1
+        ],
+        "deck_version_conflict": "Live Mega Blaziken list has Rare Candy2; filmed QR instead has Combusken2. Both20-slot snapshots retained.",
+        "external_writes_performed": false,
+        "source_moved": false,
+        "independent_acceptance_pending": true
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_003547000_iOS.MP4",
+      "sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+      "duration_seconds": 558.038333,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_003547000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "source_video": "20261005_003547000_iOS.MP4",
+        "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+        "reviewer": "/root/pause_003547",
+        "model": "Sol",
+        "review_date": "2026-10-06T17:59:23.996656+00:00",
+        "game_count": 1,
+        "turn_count": 14,
+        "classification": "human_event_battle",
+        "mode": "Deluxe Pack: Mega Emblem Event",
+        "opponent": "Garfield.tv",
+        "match_date": "2026-10-04",
+        "deck_core": [
+          "Wailmer",
+          "Wailord",
+          "Carvanha",
+          "Mega Sharpedo ex",
+          "Suicune ex"
+        ],
+        "outcome": "loss",
+        "owner_points": 0,
+        "opponent_points": 3,
+        "source_coverage_seconds": [
+          0,
+          558.038333
+        ],
+        "continuity": "No observed cuts; continuous setup-through-result footage.",
+        "packet_status": "submitted_for_independent_acceptance",
+        "capture_status": "complete_with_recording_limits",
+        "critical_ambiguity": "No matching live-log deck list, despite fully decoded filmed QR.",
+        "result_evidence": [
+          "f0557.00"
+        ]
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_031138000_iOS.MP4",
+      "sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+      "duration_seconds": 226.181667,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_031138000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "source_video": "20261005_031138000_iOS.MP4",
+        "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+        "reviewer": "Sol / root/pause_031138",
+        "review_utc": "2026-10-06T18:15:37.308617+00:00",
+        "scope": "entire226.181667s source: QR/intake, setup, all7turns, terminal concession and result screen through source end",
+        "status": "worker_full_battle_review_complete_pending_independent_lead_acceptance",
+        "capture_status": "complete_with_recording_limits",
+        "reviewed_intervals_seconds": [
+          [
+            0,
+            226.181667
+          ]
+        ],
+        "uninspected_intervals_seconds": [],
+        "classification": "human event battle; no Auto visible",
+        "owner": "Dacz8976",
+        "opponent": "九兔",
+        "local_date": "2026-10-04",
+        "owner_deck": "Hatterene / Aromatisse / Togekiss",
+        "visible_opponent_core": [
+          "Tapu Koko ex",
+          "Froakie -> Greninja",
+          "Zeraora",
+          "Rare Candy",
+          "Electric Generator"
+        ],
+        "outcome": "win by opponent concession",
+        "owner_points": 2,
+        "opponent_points": 0,
+        "turns": 7,
+        "owner_turns": [
+          2,
+          4,
+          6
+        ],
+        "fullreview_accepted_by_lead": false,
+        "recommended_independent_checks": [
+          29,
+          52.5,
+          57.5,
+          60,
+          64,
+          66,
+          67,
+          116.5,
+          124,
+          126,
+          156.2,
+          180.5,
+          191,
+          193.5,
+          195.5,
+          196,
+          204,
+          206,
+          214,
+          225
+        ]
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_032023000_iOS.MP4",
+      "sha256": "6fadd948b5526f22007c2ca2b11516c27801c2fbf2af57c290b214f9327f36a9",
+      "duration_seconds": 480.65,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_032023000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "game_id": "20261005_032023000_iOS_game1",
+        "source_video": "20261005_032023000_iOS.MP4",
+        "source_sha256": "6fadd948b5526f22007c2ca2b11516c27801c2fbf2af57c290b214f9327f36a9",
+        "reviewer": "/root/pause_032023",
+        "model": "gpt-6.1-sol",
+        "reasoning_effort": "high",
+        "reviewed_utc": "2026-10-06T18:41:29.466977+00:00",
+        "scope": "Complete first pass of whole480.65-second recording; one game, setup through result and postgame overlay.",
+        "review_status": "first_pass_full_battle_review_complete_pending_independent_acceptance",
+        "capture_status": "complete_with_recording_limits",
+        "match_date_local": "2026-10-04",
+        "recording_time_local": "2026-10-04T22:20:23-05:00",
+        "classification": "human_matchmaking",
+        "queue": null,
+        "auto_control_observed": false,
+        "owner": "Dacz8976",
+        "opponent": "犬いぬ",
+        "went": "second",
+        "outcome": "loss",
+        "points": {
+          "owner": 0,
+          "opponent": 3
+        },
+        "turns": 13,
+        "damage_done_result_screen": 180,
+        "visible_opponent_core": [
+          "Finizen / Palafin [Jet Punch]",
+          "Wiglett / Wugtrio ex [Pop Out Throughout]",
+          "Manaphy [Oceanic Gift]",
+          "Comfey [Flower Shield]"
+        ],
+        "deck": "Aegislash / Tinkaton ex / Team Rocket's Tinkaton",
+        "external_eligible": true,
+        "external_write_performed": false,
+        "source_move_performed": false,
+        "independent_check_timestamps_seconds": [
+          28,
+          66.6,
+          67,
+          71,
+          72,
+          73,
+          76,
+          103,
+          105,
+          110,
+          189,
+          285,
+          308,
+          320.3,
+          331,
+          339.7,
+          387,
+          389,
+          401,
+          402,
+          427,
+          429,
+          435,
+          437,
+          462,
+          463,
+          465,
+          467,
+          476
+        ],
+        "limits": [
+          "Opponent identities remain hidden unless played or publicly shown. Remote card input timestamps are not visible; listed reveal/resolution timestamps are not inputs.",
+          "The recording never opens a full discard pile. Top previews are limited observations.",
+          "Seek seconds are requested source-local positions; exact decoded PTS was not measured.",
+          "Random attack resolutions show aggregate damage at once; the order of individual random target selections is not exposed.",
+          "Exact human queue/ranked mode is not shown. Human matchmaking is established; no Auto control/option appears in inspected source.",
+          "Exact new-variant live Pause Games list not supplied; separate exact20 filmed QR retained.",
+          "Original five-card opening and all owner hand identities/draws are captured."
+        ]
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_032857000_iOS.MP4",
+      "sha256": "a7aa71ededa0f2372282f5ba1ff0620b1fed9cedec8bb71101aee1db6eba297e",
+      "duration_seconds": 305.965,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_032857000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "source_video": "20261005_032857000_iOS.MP4",
+        "source_sha256": "a7aa71ededa0f2372282f5ba1ff0620b1fed9cedec8bb71101aee1db6eba297e",
+        "reviewer": "/root/pause_032857",
+        "review_model": "gpt-6.1-sol",
+        "reasoning_effort": "high",
+        "review_completed_utc": "2026-10-06T18:50:01.641947+00:00",
+        "scope": "Entire305.965s source: filmed deck/QR, event matching, setup, all9turns, terminal removal and results.",
+        "coverage_status": "full_source_first_pass_complete_pending_independent_acceptance",
+        "capture_status": "complete_with_recording_limits",
+        "mode": "human_event",
+        "queue": "Deluxe Pack: Mega Emblem Event",
+        "match_date_local": "2026-10-04",
+        "opponent": "Friendlike_Andy",
+        "outcome": {
+          "owner_result": "loss",
+          "screen_result": "Defeat",
+          "opponent": "Friendlike_Andy",
+          "owner_points": 0,
+          "opponent_points": 2,
+          "turns_played": 9,
+          "damage_done_displayed": 220,
+          "cause_observed": "Last owner Pokemon knocked out; Active and all Bench slots empty.",
+          "evidence_ids": [
+            "E0287_00",
+            "E0288_00",
+            "E0292_00",
+            "E0297_00",
+            "E0298_00",
+            "E0304_00"
+          ]
+        },
+        "turn_count": 9,
+        "owner_turns": [
+          2,
+          4,
+          6,
+          8
+        ],
+        "auto_option_seen": false,
+        "source_modified": false,
+        "external_writes_performed": false,
+        "archive_performed": false,
+        "independent_check_targets": {
+          "opening": 26,
+          "ordinary_owner_first_decision": [
+            70.25,
+            70.75,
+            74.75,
+            79
+          ],
+          "ordinary_opponent_turn": [
+            90,
+            102.25,
+            108.25,
+            111,
+            114
+          ],
+          "consequential": [
+            183.5,
+            184,
+            192,
+            194,
+            202,
+            213,
+            216,
+            223.25,
+            246,
+            247
+          ],
+          "draw_order_and_end_hand": [
+            253.5,
+            253.75,
+            257.25,
+            258.25,
+            272,
+            274,
+            278
+          ],
+          "ending": [
+            287,
+            292,
+            297,
+            298,
+            304
+          ]
+        },
+        "limits": [
+          "Live snapshot of new Metal deck unavailable in initial nine-deck snapshot; exact filmedQR20 retained.",
+          "Opponent pile never opened."
+        ]
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_033529000_iOS.MP4",
+      "sha256": "e272b0c74f6a863c68811a235d7b9611b14994611365e58694028f323afaea3d",
+      "duration_seconds": 400.856667,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_033529000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "schema": "battle-video-review-summary-v1",
+        "is_template": false,
+        "game_id": "20261005_033529000_iOS",
+        "source_video": "20261005_033529000_iOS.MP4",
+        "source_sha256": "e272b0c74f6a863c68811a235d7b9611b14994611365e58694028f323afaea3d",
+        "duration_seconds": 400.856667,
+        "review_status": "worker_complete_pending_independent_acceptance",
+        "coverage_status": "entire_supplied_source_reviewed",
+        "owner": "Dacz8976",
+        "opponent": "ゆぬ",
+        "match_date_local": "2026-10-04",
+        "match_datetime_local": "2026-10-04T22:35:29-05:00",
+        "datetime_basis": "Metadata creation_time UTC converted to America/Chicago; phone clock reads 10:35–10:41",
+        "visible_deck_label": "New deck 6",
+        "visible_deck_core": [
+          "Skarmory ex",
+          "Honedge",
+          "Doublade",
+          "Aegislash Cursed Metal",
+          "Aegislash Superb Shield",
+          "Orthworm"
+        ],
+        "mode": "Deluxe Pack: Mega Emblem Event",
+        "mode_basis": "Event selection screen at 4s; opponent search at 5s; uninterrupted sequence",
+        "computer_battle": false,
+        "auto_control_visible": false,
+        "auto_enabled": null,
+        "owner_choices_basis": "Owner-side touch selection, zooms, plays and End Turn visibly enacted; no Auto option shown",
+        "outcome": "loss",
+        "owner_points": 1,
+        "opponent_points": 3,
+        "actual_turns": 10,
+        "damage_done": 270,
+        "result_evidence_seconds": [
+          379,
+          390,
+          395
+        ],
+        "deck_list_status": "20 semantic cards decoded from filmed QR and game-bound; required matching live-log list/version missing",
+        "external_action_taken": false,
+        "lead_accepted": false,
+        "recommended_independent_checks": [
+          {
+            "seconds": [
+              26,
+              28,
+              34
+            ],
+            "reason": "Original five and setup binding"
+          },
+          {
+            "seconds": [
+              42.8,
+              43.5,
+              44
+            ],
+            "reason": "Intact T1 hand and End Turn input"
+          },
+          {
+            "seconds": [
+              81.5,
+              82,
+              87
+            ],
+            "reason": "Ordinary owner T3 first move and Metal attachment"
+          },
+          {
+            "seconds": [
+              173,
+              181,
+              182,
+              183,
+              184,
+              194,
+              204,
+              208,
+              210,
+              216,
+              226
+            ],
+            "reason": "Opponent T6 repeated Ice Pop, interleaved Energy attachment, Copycat count and attack"
+          },
+          {
+            "seconds": [
+              232.8,
+              233.5,
+              234,
+              241,
+              247,
+              248,
+              253,
+              260
+            ],
+            "reason": "T7 intact hand, evolution, silver attachment and named reveal order"
+          },
+          {
+            "seconds": [
+              310.8,
+              311.8,
+              312.5,
+              324,
+              332,
+              337,
+              340,
+              344.2,
+              348
+            ],
+            "reason": "T9 no-effect inspection, intact six and Tool/hand arithmetic"
+          },
+          {
+            "seconds": [
+              357,
+              360,
+              363,
+              368,
+              372,
+              390
+            ],
+            "reason": "Cyrus switch, second Mega Lucario, terminal KO/results"
+          }
+        ]
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_034229000_iOS.MP4",
+      "sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "duration_seconds": 374.588333,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_034229000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "is_template": false,
+        "game_id": "20261005_034229000_iOS",
+        "source_video": "20261005_034229000_iOS.MP4",
+        "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+        "worker": "pause_034229 Sol",
+        "review_status": "worker_complete_pending_independent_acceptance",
+        "classification": "human_online_battle_specific_queue_unverified",
+        "auto_control_visible": false,
+        "owner": "Dacz8976",
+        "opponent": "Tideisrising91",
+        "opponent_level": 60,
+        "match_date_local": "2026-10-04",
+        "match_local_recording_start": "2026-10-04T22:42:29-05:00",
+        "visible_deck_core": "Skarmory ex / Aegislash / Orthworm",
+        "exact_deck_status": "unverified_game_deck_recording_limit",
+        "outcome": "loss",
+        "points": [
+          0,
+          3
+        ],
+        "actual_turns": 8,
+        "went_first": true,
+        "damage_done": 110,
+        "result_evidence_seconds": [
+          355,
+          358,
+          361,
+          364,
+          374
+        ],
+        "coverage_source_interval_seconds": [
+          0,
+          374.588333
+        ],
+        "external_registered": false,
+        "source_archived": false,
+        "uncertainties_file": "UNCERTAINTIES.json",
+        "terminal_summary": "Brilliant Storm KO removes Skarmory; opponent earns its second KO reward of2points, reaching3. Defeat and final0-3/8turn screen establish loss."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_034953000_iOS.MP4",
+      "sha256": "85f9e3803543f512323259794b7166808e5bfd2ff5a3854d8ce1a40686075180",
+      "duration_seconds": 410.035,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_034953000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "source_video": "20261005_034953000_iOS.MP4",
+        "source_sha256": "85f9e3803543f512323259794b7166808e5bfd2ff5a3854d8ce1a40686075180",
+        "reviewer": "/root/pause_034953",
+        "model": "Sol",
+        "review_date": "2026-10-06",
+        "review_scope": "Entire source 0..410.035s; setup, all 16 turns, terminal concession and results",
+        "review_status": "full_source_first_pass_complete_pending_independent_acceptance",
+        "capture_status": "complete_with_recording_limits",
+        "classification": "human_event_battle",
+        "auto_control_visible": false,
+        "mode": "Deluxe Pack: Mega Emblem Event",
+        "mode_evidence_ids": [
+          "f0000_00",
+          "f0007_00"
+        ],
+        "opponent": "MIYA",
+        "owner": "Dacz8976",
+        "local_match_date": "2026-10-04",
+        "local_match_date_basis": "RECORDING_METADATA.json embedded UTC creation time converts to America/Chicago",
+        "outcome": "win",
+        "result_evidence_ids": [
+          "f0390_00",
+          "f0391_00",
+          "f0395_00",
+          "f0409_00"
+        ],
+        "method": "opponent conceded",
+        "points": {
+          "owner": 2,
+          "opponent": 1
+        },
+        "turns": 16,
+        "damage_done": 460,
+        "deck_label": "New deck 6",
+        "deck_name": "Aegislash / Melmetal ex / Magnezone",
+        "external_eligibility": "human Pause Games eligible; lead only registers/saves",
+        "independent_targets": [
+          {
+            "seconds": [
+              31,
+              35,
+              40
+            ],
+            "purpose": "Original opening five and selected Active"
+          },
+          {
+            "seconds": [
+              82,
+              83,
+              83.8,
+              86,
+              87,
+              91,
+              93
+            ],
+            "purpose": "Ordinary owner first move, draw, fan and Tackle ending hand"
+          },
+          {
+            "seconds": [
+              95,
+              99,
+              100,
+              102,
+              104,
+              109
+            ],
+            "purpose": "Ordinary opponent turn3 action order and concealed Research draw"
+          },
+          {
+            "seconds": [
+              222,
+              223,
+              223.5,
+              228,
+              233,
+              235
+            ],
+            "purpose": "Immediate evolution after owner turn10 draw and exact version"
+          },
+          {
+            "seconds": [
+              267,
+              268,
+              272,
+              274,
+              281,
+              283,
+              284,
+              288,
+              294
+            ],
+            "purpose": "Owner turn12 draw, Cursed Metal, Metal Arms180 and point/promotion"
+          },
+          {
+            "seconds": [
+              377,
+              381,
+              382,
+              384,
+              387,
+              388,
+              390,
+              409
+            ],
+            "purpose": "Final opponent turn, 160 damage, last draw, explicit concession and results"
+          }
+        ],
+        "limits": [
+          "Opponent identities remain hidden for normal and Research draws and both Poke Ball searches.",
+          "No player opens a discard pile anywhere in this source; visible top cards are partial previews.",
+          "Source-local timestamp estimates use native FFmpeg seeks; no separate frame PTS measurement.",
+          "Initial live deck snapshot has no matching new metal list; exact QR semantic list preserved, live saving pending lead.",
+          "Later +1/+3/+6 owner candidates can already show immediate plays; selected earlier intact frames are retained.",
+          "Rainbow Cave activation choice is not exposed from opponent perspective; subsequent attachments are observed Metal."
+        ]
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_123812000_iOS.MP4",
+      "sha256": "3fb3dc25ac96c6e742f9467ba14abdbf91aff403ef2a5bdc62c7f414e775e5a0",
+      "duration_seconds": 336.981928,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_123812000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "schema": "battle-review-summary-v1",
+        "game_id": "pause-20261005-123812",
+        "source_video": "20261005_123812000_iOS.MP4",
+        "source_sha256": "3fb3dc25ac96c6e742f9467ba14abdbf91aff403ef2a5bdc62c7f414e775e5a0",
+        "duration_seconds": 336.981928,
+        "local_match_date": "2026-10-05",
+        "local_recording_start": "2026-10-05T07:38:12-05:00",
+        "classification": "human_match",
+        "auto_control_observed": false,
+        "queue": "Deluxe Pack: Mega Emblem Event",
+        "owner": "Dacz8976",
+        "opponent": "Sofii",
+        "result": "loss",
+        "result_reason": "Owner selected Concede at325; Defeat327/result336",
+        "last_earned_score": "1-2",
+        "turn_count": 9,
+        "whole_source_reviewed": true,
+        "opening_captured": true,
+        "qr_bound": true,
+        "exact_filmed_semantic_deck_count": 20,
+        "live_deck_snapshot_matches": false,
+        "sol_first_pass_complete": true,
+        "independent_acceptance": false,
+        "external_registration_status": "pending root",
+        "suggested_independent_targets": [
+          {
+            "seconds": [
+              0,
+              40
+            ],
+            "purpose": "QR/version continuity and opening"
+          },
+          {
+            "seconds": [
+              43,
+              64
+            ],
+            "purpose": "Ordinary first move; Needle target/End Turn"
+          },
+          {
+            "seconds": [
+              64,
+              108
+            ],
+            "purpose": "Opponent full turn including short Research82 and hidden Lead search"
+          },
+          {
+            "seconds": [
+              180,
+              192
+            ],
+            "purpose": "Immediate Poke Ball and intact hand183.2"
+          },
+          {
+            "seconds": [
+              210,
+              248
+            ],
+            "purpose": "Fantasia KO and3 Psychic right Diancie"
+          },
+          {
+            "seconds": [
+              249,
+              281
+            ],
+            "purpose": "Intact hand before generation, draw order, retreat payment, new attachment"
+          },
+          {
+            "seconds": [
+              313,
+              336
+            ],
+            "purpose": "Poke Ball no-effect, menu Concede and Defeat"
+          }
+        ],
+        "queue_evidence_ids": [
+          "f-0004.00",
+          "f-0005.00"
+        ]
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_124532000_iOS.MP4",
+      "sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "duration_seconds": 339.899138,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_124532000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "schema": "whole-source-review-summary-v1",
+        "source_video": "20261005_124532000_iOS.MP4",
+        "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+        "reviewer": "/root/pause_124532",
+        "review_model": "gpt-6.1-sol",
+        "reasoning_effort": "high",
+        "reviewed_at_utc": "2026-10-06T19:56:36.641165+00:00",
+        "scope": "Whole source0 to339.899138seconds; one complete human event match",
+        "classification": "human_event_battle",
+        "auto_control_observed": false,
+        "queue": "Deluxe Pack: Mega Emblem Event",
+        "opponent": "Nick",
+        "owner_name": "Dacz8976",
+        "match_date_local": "2026-10-05",
+        "recording_local": "2026-10-05T07:45:32-05:00",
+        "owner_went_first": true,
+        "outcome": "loss",
+        "turn_count": 8,
+        "final_points": {
+          "owner": 0,
+          "opponent": 3
+        },
+        "deck_core": [
+          "Nidoran male",
+          "Nidoking",
+          "Darkrai ex",
+          "Nihilego"
+        ],
+        "deck_version": "One Darkrai ex plus Cyrus revision",
+        "capture_status": "complete_with_recording_limits",
+        "review_status": "first_pass_complete_pending_independent_acceptance",
+        "full_source_review_complete": true,
+        "battle_completion_established": true,
+        "independent_acceptance": false,
+        "outcome_evidence_ids": [
+          "f0319p00",
+          "f0320p00",
+          "f0321p00",
+          "f0323p00",
+          "f0327p00",
+          "f0328p00",
+          "f0339p70"
+        ],
+        "limits": [
+          "No full discard pile is opened in the source. Visible top previews and observed transactions are retained separately.",
+          "Hidden opponent card identities and private prompt choices remain unknown; public actions are recorded in visible resolution order.",
+          "Candidates are individually qualified:53.8 is intact but zoomed before consumption;90.2 is a consumed three-card hand. Later offset candidates are post-play. Selected53.2/89.2/187.95/269.7 remain intact native preplay hands; exact decoded PTS unmeasured.",
+          "Turn5 selected five-slot fan has a partly off-screen leftmost Lucky Ice Pop. Its identity is supported by filmed continuity from the preceding hand; no deck-membership inference is used.",
+          "QR establishes twenty semantic card slots and Darkness, with artwork/rarity unspecified. The initial dated live log snapshot lacks this Nidoking revision; a prepared deck entry is not a saved live snapshot.",
+          "Input/reveal times are visually localized source-local requests, not measured PTS or exact touch telemetry.",
+          "Terminal board324 is post-removal with opponent2 visible points. The separate327 and339.7 frames establish awarded terminal3 points; Darkrai0HP is a separate321/322 pre-removal state."
+        ],
+        "suggested_independent_checks": [
+          {
+            "seconds": [
+              29,
+              30,
+              31,
+              32
+            ],
+            "target": "Original five and Active/Bench mapping"
+          },
+          {
+            "seconds": [
+              53.2,
+              53.6,
+              55,
+              58,
+              61,
+              63
+            ],
+            "target": "Ordinary first owner decision and turn1"
+          },
+          {
+            "seconds": [
+              88,
+              89.2,
+              89.6,
+              93,
+              94,
+              96,
+              99,
+              103,
+              109,
+              114
+            ],
+            "target": "Turn3 normal draw, Research order, Poke Ball search, intact hand and ending arithmetic"
+          },
+          {
+            "seconds": [
+              123,
+              131,
+              131.5,
+              133,
+              134,
+              135,
+              140,
+              143,
+              146,
+              148,
+              150,
+              155,
+              162,
+              164,
+              167,
+              171,
+              177,
+              179,
+              181,
+              184
+            ],
+            "target": "Opponent turn 4: Rainbow cycle, May add two and return two concealed Pokemon, Ignition, item theft/search, Energy attachment, KO and Poison order"
+          },
+          {
+            "seconds": [
+              187.95,
+              188,
+              191,
+              192,
+              202,
+              208,
+              215,
+              221
+            ],
+            "target": "Turn5 intact preplay, Research order and5-card ending"
+          },
+          {
+            "seconds": [
+              269.7,
+              270.5,
+              275,
+              281,
+              282,
+              285
+            ],
+            "target": "Turn7 early empty Energy, first play, Needle resolution"
+          },
+          {
+            "seconds": [
+              299,
+              305,
+              312,
+              315,
+              319,
+              321,
+              323,
+              327,
+              339.7
+            ],
+            "target": "Turn8 Energy accounting, pre-removal KO vs post-removal board and final result"
+          },
+          {
+            "seconds": [
+              224,
+              225,
+              227,
+              227.5,
+              228,
+              229,
+              231,
+              236,
+              241,
+              248,
+              251,
+              265,
+              269.7
+            ],
+            "target": "Opponent turn 6 normal draw, brief Poke Ball reveal and hidden search, bench Entei, heal/cure, attachment, KO and final three-back fan"
+          }
+        ],
+        "opponent_fan_counts_at_selected_owner_start": [
+          3,
+          4,
+          3,
+          3
+        ]
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261005_183108000_iOS.MP4",
+      "sha256": "94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+      "duration_seconds": 403.317007,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_183108000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "source_video": "20261005_183108000_iOS.MP4",
+        "source_sha256": "94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+        "game_id": "20261005_183108000_iOS_game_1",
+        "review_status": "fresh_full_visual_first_pass_complete_pending_independent_acceptance",
+        "source_coverage_seconds": [
+          0,
+          403.317007
+        ],
+        "games_in_source": 1,
+        "classification": "human_event",
+        "auto_control_observed": false,
+        "match_date": "2026-10-05",
+        "owner": "Dacz8976",
+        "opponent": "ぐー、",
+        "owner_deck_core": "Venipede / Whirlipede / Scolipede / Mega Sableye ex",
+        "opponent_deck_core": "Pumpkaboo / Gourgeist, Meloetta, Greavard / Houndstone, Chingling discard",
+        "outcome": "loss",
+        "result_evidence_ids": [
+          "F_0392_00",
+          "F_0394_00",
+          "F_0402_00",
+          "F_0403_00"
+        ],
+        "final_points_owner_opponent": [
+          2,
+          3
+        ],
+        "total_turns": 10,
+        "damage_dealt": 470,
+        "external_written": false,
+        "independent_acceptance": false,
+        "capture_status": "complete_with_recording_limits",
+        "suggested_independent_targets": [
+          {
+            "seconds": [
+              32,
+              40
+            ],
+            "purpose": "Five-card opening and placement"
+          },
+          {
+            "seconds": [
+              53,
+              91
+            ],
+            "purpose": "Ordinary full opponent turn Research/Stadium/bench/retreat/attachment ordering"
+          },
+          {
+            "seconds": [
+              93.5,
+              104
+            ],
+            "purpose": "Ordinary first owner move, exact preplay six-card hand and later generation"
+          },
+          {
+            "seconds": [
+              173,
+              198
+            ],
+            "purpose": "Needle normal draw, rapid evolution, Wally Colorless target, Tool/normalEnergy targets"
+          },
+          {
+            "seconds": [
+              217,
+              224
+            ],
+            "purpose": "Consequential bufferedT6 order limit"
+          },
+          {
+            "seconds": [
+              255,
+              263
+            ],
+            "purpose": "Copycat consumption vs reveal and named order"
+          },
+          {
+            "seconds": [
+              312,
+              368
+            ],
+            "purpose": "Two distinct Ice Pop uses, Energy toBench, attack/KO/promotion/Needle"
+          },
+          {
+            "seconds": [
+              370,
+              403
+            ],
+            "purpose": "Final evolution, attack170, retaliation60, removedActive,+3points,loss"
+          }
+        ]
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261006_012140000_iOS.MP4",
+      "sha256": "2fbf36e1f6d45a8e7fc6b1d273b0dc64c106ce1df14ac0447617e413ad79cf4e",
+      "duration_seconds": 215.053333,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_012140000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "schema": "battle-review/summary-v1",
+        "game_id": "20261006_012140000_iOS-game-1",
+        "source_video": "20261006_012140000_iOS.MP4",
+        "source_sha256": "2fbf36e1f6d45a8e7fc6b1d273b0dc64c106ce1df14ac0447617e413ad79cf4e",
+        "reviewed_utc": "2026-10-06T20:49:05.466865+00:00",
+        "first_pass_status": "complete_awaiting_independent_acceptance",
+        "lead_accepted": false,
+        "game_count": 1,
+        "reviewed_source_interval_seconds": [
+          0,
+          215.053333
+        ],
+        "source_ending_reviewed": true,
+        "classification": "human event battle",
+        "event": "Deluxe Pack: Mega Emblem Event",
+        "battle_auto_visible": false,
+        "deck_editor_auto_build_visible": false,
+        "external_eligibility": "human Pause Games candidate; external writing requires lead acceptance/registration",
+        "owner": "Dacz8976",
+        "opponent": "おせち",
+        "match_date_local": "2026-10-05",
+        "match_date_basis": "UTC recording creation 2026-10-06T01:21:40Z converted to America/Chicago; phone clock 20:21-20:25 agrees. Filename date was not assumed local.",
+        "owner_deck_core": "Venipede / Whirlipede / Scolipede; two Mega Sableye ex",
+        "opponent_deck_core": "Dialga ex / Honedge / Tinkatink / Alolan Diglett",
+        "outcome": "owner_win",
+        "result_basis": "Your opponent conceded at 204-206, Victory results at 214-214.8",
+        "points": {
+          "owner": 2,
+          "opponent": 0
+        },
+        "turns": 7,
+        "went": "second",
+        "owner_damage_done_results": 160,
+        "exact_deck_list_status": "qualified_candidate_only",
+        "qr_in_this_source": false,
+        "interludes": [
+          {
+            "seconds": [
+              0,
+              20
+            ],
+            "kind": "event lobby and matchmaking/loading"
+          },
+          {
+            "seconds": [
+              93,
+              96
+            ],
+            "kind": "waiting for opponent to return message"
+          },
+          {
+            "seconds": [
+              193,
+              203
+            ],
+            "kind": "waiting for opponent before concession"
+          },
+          {
+            "seconds": [
+              207,
+              215.053333
+            ],
+            "kind": "terminal transition and Victory results"
+          }
+        ],
+        "independent_check_targets": [
+          {
+            "seconds": [
+              23,
+              25
+            ],
+            "reason": "Opening five and selected Active"
+          },
+          {
+            "seconds": [
+              59,
+              66
+            ],
+            "reason": "Ordinary first owner move: exact intact hand, Poke Ball input versus reveal/search/bench timing"
+          },
+          {
+            "seconds": [
+              90,
+              104
+            ],
+            "reason": "One full ordinary opponent turn, hidden draw/fan count, Diglett bench and Metal attachment"
+          },
+          {
+            "seconds": [
+              147,
+              183
+            ],
+            "reason": "Lucky Ice Pop heal/Heads return, evolution, Wally before normal Darkness, KO lifecycle and promotion"
+          },
+          {
+            "seconds": [
+              203,
+              215
+            ],
+            "reason": "Concession and final Victory"
+          }
+        ],
+        "limitations": [
+          "No game-bound QR, exact deck editor list, or exact 20-card log snapshot appears in this source. A matching prior filmed QR is only a candidate because the intervening gap and deck edits are unrecorded.",
+          "Opponent hand identities and ordinary draws remain hidden. Fan counts are visible card-back counts, not inferred card identities.",
+          "Neither full discard pile is opened or scrolled. Top previews are partial views only.",
+          "Native frame filenames are requested seek times. Individual decoded frame PTS was not measured; action input times are bounded intervals and are separate from card previews/reveals/resolution.",
+          "The transient waiting-for-opponent messages do not establish why the opponent was unavailable."
+        ],
+        "archive_authorized_by_worker": false,
+        "external_written_by_worker": false
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261006_012927000_iOS.MP4",
+      "sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "duration_seconds": 719.001667,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_012927000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "schema": "video-review/summary-v1",
+        "is_template": false,
+        "game_id": "20261006_012927000_iOS_game_01",
+        "source_video": "20261006_012927000_iOS.MP4",
+        "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+        "game_number_within_source": 1,
+        "source_interval_seconds": [
+          0,
+          420
+        ],
+        "external_duplicate_key": "20261006_012927000_iOS.MP4 :: game_01 :: 0-420s",
+        "match_date": "2026-10-05",
+        "match_date_basis": "RECORDING_METADATA.json embedded creation UTC converted to America/Chicago",
+        "owner": "Dacz8976",
+        "opponent": "ElPapa",
+        "outcome": "loss",
+        "result": "loss",
+        "turn_count": 11,
+        "turns_played": 11,
+        "owner_went_first": false,
+        "points_owner": 0,
+        "points_opponent": 3,
+        "classification": "human_battle",
+        "mode": "Deluxe Pack: Mega Emblem Event",
+        "queue_basis": "Filmed event page420; continuous return to same event battle queue. Not ranked established.",
+        "auto_control_observed": false,
+        "auto_limit": "No in-battle Auto control observed; deck editor Auto-build is not a battle Auto control.",
+        "full_review_status": "complete_with_recording_limits",
+        "capture_status": "complete_with_recording_limits",
+        "independent_acceptance": "pending",
+        "external_saved": false,
+        "result_evidence_ids": [
+          "f0398_00",
+          "f0407_00"
+        ],
+        "deck_core": [
+          "Snorlax ex",
+          "Meowth",
+          "Persian",
+          "Type: Null",
+          "Silvally",
+          "Terapagos ex"
+        ],
+        "limits": [
+          "Exact live log list is worker-unavailable; source deck proof is retained separately.",
+          "Remote opponent touches and hidden card identities are unavailable.",
+          "No full discard-pile views filmed."
+        ],
+        "source_game_count": 2,
+        "games": [
+          {
+            "game_id": "20261006_012927000_iOS_game_01",
+            "packet": ".",
+            "opponent": "ElPapa",
+            "result": "loss",
+            "turn_count": 11,
+            "source_interval_seconds": [
+              0,
+              420
+            ]
+          },
+          {
+            "game_id": "20261006_012927000_iOS_game_02",
+            "packet": "game_02",
+            "opponent": "たこ",
+            "result": "win",
+            "turn_count": 2,
+            "source_interval_seconds": [
+              622,
+              719.001667
+            ]
+          }
+        ],
+        "whole_source_coverage": {
+          "start_seconds": 0,
+          "end_seconds": 719.001667,
+          "review_status": "complete_with_recording_limits",
+          "includes_both_games_and_deck_edit_interlude": true
+        },
+        "source_segment_map": [
+          {
+            "start": 0,
+            "end": 38,
+            "segment": "QR, deck Save, queue, setup and original five-card opening"
+          },
+          {
+            "start": 38,
+            "end": 398,
+            "segment": "Game1 all11 turns through Defeat"
+          },
+          {
+            "start": 398,
+            "end": 420,
+            "segment": "Results and event return"
+          },
+          {
+            "start": 420,
+            "end": 622,
+            "segment": "Continuous card inspection, deck edits, Energy change, final20 Save"
+          },
+          {
+            "start": 622,
+            "end": 649,
+            "segment": "Game2 queue and original opening/setup"
+          },
+          {
+            "start": 649,
+            "end": 710,
+            "segment": "Game2 all2 turns through opponent concession"
+          },
+          {
+            "start": 710,
+            "end": 719.001667,
+            "segment": "Victory/result screen and ending"
+          }
+        ],
+        "whole_source_reviewed": true
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261006_020518000_iOS.MP4",
+      "sha256": "64968acf700ddfecc51cc5bcb01014db7afa855545057bd6934226afd35a53e7",
+      "duration_seconds": 616.08966,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_020518000_iOS",
+      "persisted_status": "accepted_registered_archived",
+      "review_summary": {
+        "source_video": "20261006_020518000_iOS.MP4",
+        "source_sha256": "64968acf700ddfecc51cc5bcb01014db7afa855545057bd6934226afd35a53e7",
+        "review_status": "whole_source_first_pass_complete_pending_independent_acceptance",
+        "game_count": 1,
+        "games": [
+          {
+            "game_id": "20261006_020518000_iOS",
+            "match_date_local": "2026-10-05",
+            "outcome": {
+              "result": "win",
+              "owner": "Dacz8976",
+              "opponent": "Adgbag",
+              "points_owner": 3,
+              "points_opponent": 2,
+              "turns": 17,
+              "basis": "Third knockout of opponent Copperajah by Hitmonchan ex Quick Straight, then owner third point, Victory vs Adgbag.",
+              "evidence_ids": [
+                "f0573_00",
+                "f0574_00",
+                "f0577_00",
+                "f0578_00",
+                "f0579_00",
+                "f0582_00",
+                "f0583_00",
+                "f0590_00",
+                "f0591_00",
+                "f0594_00"
+              ],
+              "concession": "none established",
+              "mode": "Deluxe Pack: Mega Emblem Event human matchmaking",
+              "ranked_status": "not established as ranked; event menu visible",
+              "auto_control": "No Auto control/option visible during setup, all battle turns or result. Human matchmaking shown."
+            },
+            "deck": "Conkeldurr / Sandslash / Hitmonchan ex"
+          }
+        ],
+        "coverage_seconds": [
+          0,
+          616.08966
+        ],
+        "review_method": "Full-source visual traversal using locator grids followed by native setup, ordinary-turn action, draw and result inspection. Grids are locators only.",
+        "external_registration_status": "not_performed_by_worker",
+        "archive_status": "not_performed_by_worker",
+        "limits": [
+          "Matching exact20 list is absent from retrieved live Pause Games deck snapshot; QR establishes filmed semantic entities and Energy, not an existing live log version.",
+          "Opponent normal draws, May search/shuffle identities and hidden hand faces are unknown.",
+          "Neither discard pile is opened anywhere. Full pile content/order cannot be established.",
+          "QR functional entities do not encode exact artwork/rarity. Hitmonchan ex artwork printing remains qualified.",
+          "Frame times are source-local requested seek values; actual decoded presentation timestamps were not measured.",
+          "This is the first-pass packet. Independent visual acceptance, duplicate check, registration and external save verification belong to the lead."
+        ],
+        "independent_acceptance_targets": [
+          {
+            "interval_seconds": [
+              28,
+              33
+            ],
+            "claim": "Original5 and Active opening position4"
+          },
+          {
+            "interval_seconds": [
+              56,
+              65
+            ],
+            "claim": "Ordinary first decision: no development, End Turn; selected hand59.5"
+          },
+          {
+            "interval_seconds": [
+              65,
+              93
+            ],
+            "claim": "Full ordinary opponent turn2: Metal before Research, Cufant bench, LungeOut20"
+          },
+          {
+            "interval_seconds": [
+              176,
+              194
+            ],
+            "claim": "Full opponent turn6: Copperajah evolution before second Metal Stakataka"
+          },
+          {
+            "interval_seconds": [
+              194,
+              230
+            ],
+            "claim": "Two Lucky Ice Pops, both heads, Energy attachment and reduced10damage"
+          },
+          {
+            "interval_seconds": [
+              330,
+              367
+            ],
+            "claim": "Candy, Wally Colorless, normalFighting, retreatcost1, damage80, separatedKO/score/promotion"
+          },
+          {
+            "interval_seconds": [
+              367,
+              429
+            ],
+            "claim": "Full opponent turn12, May hidden search/shuffle, two benches, HeavyImpact"
+          },
+          {
+            "interval_seconds": [
+              484,
+              518
+            ],
+            "claim": "Research reveals Poké Ball then Timburr, searchHitmonchan, Energy goesTimburr"
+          },
+          {
+            "interval_seconds": [
+              518,
+              594
+            ],
+            "claim": "Two Metal onTinkaton; SandslashKO; promotion; currentEnergy generation; terminalHP0/removal/point/Victory"
+          }
+        ]
+      },
+      "external_saved": false
+    }
+  ],
+  "status_definition": "Source identity/intake is separate from full visual review, independent acceptance, registration, external save and archival."
+}

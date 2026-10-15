@@ -1,0 +1,31 @@
+{
+  "source_video": "20261004_214731000_iOS.MP4",
+  "source_sha256": "d363bdd1c3f4aafc5ad9423764e706f8944407d68a04c82d72317592d7e7e198",
+  "captured_utc": "2026-10-06T17:28:08.016504+00:00",
+  "raw_probe": {
+    "streams": [
+      {
+        "tags": {
+          "creation_time": "2026-10-04T21:47:31.000000Z"
+        }
+      },
+      {
+        "tags": {
+          "creation_time": "2026-10-04T21:47:31.000000Z"
+        }
+      }
+    ],
+    "format": {
+      "tags": {
+        "creation_time": "2026-10-04T21:47:31.000000Z"
+      }
+    }
+  },
+  "embedded_creation_time_utc": "2026-10-04T21:47:31.000000Z",
+  "recording_time_america_chicago": "2026-10-04T16:47:31-05:00",
+  "match_date_local": "2026-10-04",
+  "basis": "Embedded movie creation_time establishes recording clock. Match date uses local recording date unless filmed evidence contradicts it.",
+  "limits": [
+    "Source filename itself does not establish a local date; this companion preserves the frozen SOURCE.json."
+  ]
+}

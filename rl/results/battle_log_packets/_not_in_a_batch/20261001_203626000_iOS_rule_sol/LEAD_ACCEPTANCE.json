@@ -1,0 +1,52 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-10-01T23:43:21.045168+00:00",
+  "source_video": "20261001_203626000_iOS.MP4",
+  "source_sha256": "4e6dd60d8827f7818f028cb29757200061ab9ace7dde2e772a5358d7a0c0c6fa",
+  "reviewer": "/root",
+  "first_pass": "sol_rules_20261001_203626000",
+  "first_pass_model": "gpt-6.1-sol",
+  "first_pass_effort": "high",
+  "completion_status": "full_battle_review_complete",
+  "scope": "Entire 365.95-second Solo rules-test battle, setup through all 12 turns and final results",
+  "coverage_checked": true,
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "ladder_eligible": false,
+  "outcome_description": "Victory, 3-1 points; 12 turns; 250 displayed damage",
+  "key_findings": [
+    "After Will guaranteed the initial first coin as heads, Victory Star rerolled it to tails. The guarantee was not applied again to the replacement sequence.",
+    "Zangoose Counterattack returned 20 damage after a lethal hit, producing two knockouts and one point each. A zero-damage attack produced no return damage.",
+    "With two Victini present, an attack received one Victory Star reroll. Printed text explicitly limits the ability to one use per turn.",
+    "Bounded Field doubled a one-head Double Smash from 40 to 80 against Fire-weak ordinary Pokemon."
+  ],
+  "limitations": [
+    "No Confused Pokemon attempts an attack in this recording.",
+    "The Mega Evolution ex exception, non-Fire attacks and broader Will interactions were not tested.",
+    "Hidden cards remain unknown; test choices are not competitive-policy grades."
+  ],
+  "lead_evidence": [
+    "LEAD_CHECK_1.jpg",
+    "LEAD_CHECK_2.jpg",
+    "LEAD_CHECK_3.jpg",
+    "evidence/t0139.50.jpg",
+    "evidence/t0346.50.jpg"
+  ],
+  "lead_checks": [
+    "Read full REVIEW, COVERAGE, SUMMARY and UNCERTAINTIES; all 12 turns and end-to-end available coverage reconciled.",
+    "21/16.5: Darumaka versus Hoppip opening, Victini printed effect, Auto off; 106.5/114/165 ordinary evolution and Energy states independently inspected.",
+    "139.5: Zangoose settled 40 HP and Darmanitan settled 70 HP; printed Counterattack and attack damage independently read.",
+    "171/180.5: original and rerolled Double Smash both 0 heads/2 tails. Darmanitan remains present for later Slash 50 and settles 20 HP.",
+    "220.5/223.5/226.5/235.5/238.5/241.5: 1-head attack, reroll declined, two empty Active spots and one point to each player verified.",
+    "210 printed Bounded Field plus 350 weakness damage 80 verified.",
+    "327/332 Will text/effect; 336.3 initial heads; 338 initial HT; 343 Victory Star; native346.5 registers first replacement tails as 0H/1T; 350 80 damage; 365.8 final Victory/12 turns/3-1/250 verified."
+  ],
+  "astra_follow_up": {
+    "report": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-01_RULES\\ASTRA_CHECK.md",
+    "model": "gpt-6-astra",
+    "effort": "high",
+    "scope": "Bounded inference check and attacker-side Mega exception clarification",
+    "added_utc": "2026-10-01T23:59:45.771559+00:00",
+    "prior_acceptance_retained": true
+  }
+}

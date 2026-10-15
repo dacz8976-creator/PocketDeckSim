@@ -1,0 +1,28 @@
+{
+  "frozen_utc": "2026-10-14T15:18:04.951901+00:00",
+  "reviewer": "/root/check_older_september",
+  "source_sha256": "258066407acbc779da233b4ee92a6fd49b6260f35534b0e5dd84e6d9c3102683",
+  "self_excluded": true,
+  "files": [
+    {
+      "path": "CHECK_RESULT.json",
+      "sha256": "bd32f7a95ae3493a529209f039c9f771b225fc5090055ff1ea703fc2e988b965",
+      "bytes": 8458
+    },
+    {
+      "path": "CHECK_NOTES.md",
+      "sha256": "5540c89031969c433986c3846f9b30ae4381518f22b9e94c26eb1ec3e33d29ce",
+      "bytes": 3924
+    },
+    {
+      "path": "INTEGRITY_INITIAL.json",
+      "sha256": "4227f6c90bd484f8043e8a259a50e4a560d2c14b1661da503b729b22d367f588",
+      "bytes": 36138
+    },
+    {
+      "path": "INTEGRITY_FINAL.json",
+      "sha256": "578179a59e8c12ceea0c3eb38eaca9fc695ce497129acdbfdd9cd5e88d6f4d58",
+      "bytes": 36138
+    }
+  ]
+}

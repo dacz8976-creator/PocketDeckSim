@@ -1,0 +1,163 @@
+{
+  "video_basename": "20261002_161342000_iOS.MP4",
+  "complete_available_footage_review": true,
+  "reviewed_range_seconds": [
+    0,
+    227.676667
+  ],
+  "battle_complete": false,
+  "battle_complete_definition": "Uninterrupted whole-battle footage is not established; recording cut remains unobserved.",
+  "battle_concluded_in_source": true,
+  "recording_relationships": [
+    {
+      "other_source": "20261002_161001000_iOS.MP4",
+      "other_sha256": "6fd7b61e49ad599261696438f83d07da2512c790a33f5a63517dd7e558b77c30",
+      "other_review": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161001000_iOS_rule_sol/REVIEW.md",
+      "relationship": "two recordings of one owner-designated battle",
+      "owner_testimony": true,
+      "public_board_continuity_verified": true,
+      "uninterrupted_recording": false,
+      "gap_duration_seconds": null,
+      "gap_actions_reconstructed": false,
+      "continuity_evidence": {
+        "local_timestamp_seconds": 0,
+        "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0000.00.jpg"
+      },
+      "continuity_notes": "The last frame of part 1 (206.80s) and first frame of part 2 (0.00s) show the same public board at owner turn 7: owner Entei ex 70 HP active with two Fire Energy and Lum Berry, Heatmor 100 HP with Giant Cape and Houndour 60 HP with Elegant Cape on the Bench; opponent Meowth 50 HP active with one Fire Energy, Combusken 20 HP with two Fire Energy and Victini 70 HP on the Bench; Rainbow Cave and a 0-0 score. Both show Dacz8976 and phone time 11:13. This supports the owner testimony that these are two parts of one battle. The visible hand differs, so no unseen draw or action is reconstructed. The recording cut is real; its duration and intervening actions are not established. All timestamps stay local to each file."
+    }
+  ],
+  "mode_evidence": {
+    "owner_testimony": "Computer rules-test battle, two recordings of one battle.",
+    "observed_in_source": "Terminal names Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega).",
+    "computer_mode_confirmed_in_combined_review": true,
+    "ladder_eligible": false,
+    "pause_games_eligible": false
+  },
+  "auto_intervals": [
+    {
+      "start_seconds": 0,
+      "end_seconds": 105,
+      "state": "off"
+    },
+    {
+      "start_seconds": 105,
+      "end_seconds": 106,
+      "state": "transition bounded by native frames"
+    },
+    {
+      "start_seconds": 106,
+      "end_seconds": 227.676667,
+      "state": "on"
+    }
+  ],
+  "outcome": {
+    "result": "victory",
+    "owner_points": 3,
+    "opponent_points": 1,
+    "went_first": true,
+    "turns_played": 15,
+    "damage_dealt": 360,
+    "opponent": "Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega)",
+    "terminal_timestamp_seconds": 227.6
+  },
+  "decisive_evidence": [
+    {
+      "timestamp_seconds": 19,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0019.00.jpg",
+      "observation": "Heatmor Tongue Whip, one Fire cost, 30 damage to one opposing Benched Pokemon."
+    },
+    {
+      "timestamp_seconds": 86,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0086.00.jpg",
+      "observation": "Target choice; benched Meowth 50 HP selected in ensuing sequence."
+    },
+    {
+      "timestamp_seconds": 87,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0087.00.jpg",
+      "observation": "Ability Carefree Steps named."
+    },
+    {
+      "timestamp_seconds": 89,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0089.00.jpg",
+      "observation": "Attack-damage prevention coin prompt."
+    },
+    {
+      "timestamp_seconds": 91,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0091.00.jpg",
+      "observation": "Heads result."
+    },
+    {
+      "timestamp_seconds": 92,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0092.00.jpg",
+      "observation": "Tongue Whip attack resolves."
+    },
+    {
+      "timestamp_seconds": 94,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0094.00.jpg",
+      "observation": "Shield; Meowth remains 50 HP and 30 damage is prevented."
+    },
+    {
+      "timestamp_seconds": 105,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0105.00.jpg",
+      "observation": "Owner Auto off."
+    },
+    {
+      "timestamp_seconds": 106,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0106.00.jpg",
+      "observation": "Owner Auto on."
+    },
+    {
+      "timestamp_seconds": 221,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0221.00.jpg",
+      "observation": "Victory."
+    },
+    {
+      "timestamp_seconds": 227.6,
+      "path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_161342000_iOS_rule_sol/evidence/t0227.60.jpg",
+      "observation": "Computer deck terminal result, 3-1, first, 15 turns, 360 damage."
+    }
+  ],
+  "key_findings": [
+    "Tongue Whip targets benched Meowth 50 HP, triggers named Carefree Steps, gives heads and prevents all 30 damage; HP remains 50.",
+    "This is attack damage activating a defender Ability. The coin is not assigned to Victory Star or Burn recovery.",
+    "Normal Tongue Whip controls damage benched Combusken and Victini while Meowth is active.",
+    "Observed behavior contradicts the supplied no-coin engine prediction for this concrete case, without verifying current simulator code.",
+    "Victory 3-1 is directly recorded. Owner damage totals reconcile to terminal 360."
+  ],
+  "limitations": [
+    "There is a recording cut between the sources. Public-board continuity is supported, but uninterrupted whole-battle coverage is not established. No missing action or gap duration is invented.",
+    "One filmed Tongue Whip attempt targets benched Meowth and yields heads. There is no tails test against Meowth.",
+    "Linear Attack, Absol Leap Over and Team Rocket's Hypno Entrap are not filmed. Their absence is a scope limit, not an unfinished intended test.",
+    "Current simulator source, pinned repair state, code paths and training were not inspected or changed. The engine description is owner-provided context.",
+    "The Meowth light-blue hexagonal icon is not identified as a Special Condition. Named Carefree Steps text supplies the Ability evidence."
+  ],
+  "source_identity": {
+    "video_basename": "20261002_161342000_iOS.MP4",
+    "sha256": "3db01a8db2f4229fd3327591a6012fe38da60e16fa47e71d0875c866bfbfd475",
+    "bytes": 417877242,
+    "duration_seconds": 227.676667,
+    "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261002_161342000_iOS.MP4",
+    "streams": [
+      {
+        "codec_name": "hevc",
+        "width": 1170,
+        "height": 2532
+      },
+      {
+        "codec_name": "aac"
+      }
+    ],
+    "identity_verified_event_id": "6a48ae5b-8789-4db2-8b3d-d315b835ab72",
+    "reviewer": "sol_rules_20261002_carefree_steps",
+    "review_model": "gpt-6.1-sol",
+    "reasoning_effort": "high"
+  },
+  "proposed_completion_status": "rule_test_review_complete",
+  "completion_scope": "Both available source portions fully reviewed; owner-requested filmed snipe test conclusive. No claim of uninterrupted complete battle.",
+  "observations_inferences_testimony": {
+    "observed": "See source-local decisive_evidence and REVIEW.md timeline.",
+    "inferred": "Public-board match supports the owner-stated same-battle relationship, without reconstructing missing events.",
+    "owner_testimony": "Two files form one computer rules-test battle; screen recording cut out.",
+    "unverified_engine_claim": "Owner says current queued snipe choice damage skips Carefree Steps and proposed repair B restores flip/heads prevention."
+  }
+}

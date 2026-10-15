@@ -1,0 +1,47 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "accepted_at_utc": "2026-10-10T03:29:50.069360+00:00",
+  "lead": "/root",
+  "source_filename": "20261009_222100000_iOS.MP4",
+  "source_sha256": "859e3f21a9966e99716f8b137f1eaadecf46aa097316ac082ffcae3d2f6b286a",
+  "source_bytes": 328393746,
+  "duration_seconds": 195.989909,
+  "first_pass_model": "gpt-6-sol",
+  "first_pass_reasoning_effort": "high",
+  "independent_model": "gpt-6-sol",
+  "independent_reasoning_effort": "high",
+  "primary_files_read_and_checked_by_lead": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "FINDINGS.json"
+  ],
+  "independent_verification": "independent_sol/VERIFICATION.json",
+  "verified_primary_hashes": {
+    "REVIEW.md": "fc0696359817d1413496f9d2194430fecf1cee0ab7f3fb3c7dbb5623a9edb702",
+    "COVERAGE.md": "7472022a2124f1d096798948ad5f28fdd46326aa8fd4689fe860432500e9f11c",
+    "FINDINGS.json": "dda8032b68174952326afbbfb796871063c06bff2d2236fe2aeb00365a4a51ea"
+  },
+  "lead_direct_visual_checks": [
+    "proof/t027.jpg",
+    "proof/t161.jpg",
+    "proof/t168.jpg",
+    "proof/t194.jpg"
+  ],
+  "full_source_and_turn_coverage_accepted": true,
+  "classification_and_outcome_reconciled": true,
+  "source_limits_preserved": true,
+  "outcome": {
+    "owner_result": "Defeat",
+    "owner_points": 0,
+    "opponent_points": 2,
+    "turns": 7,
+    "owner_damage_done": 0,
+    "match_count": 1,
+    "game_type": "computer",
+    "auto_option_visible": true,
+    "auto_enabled_observed": false
+  },
+  "external_log_routing": "Computer battle excluded from Ladder and Pause Games",
+  "archive_identity_and_registration": "Required next; acceptance alone does not claim movement"
+}

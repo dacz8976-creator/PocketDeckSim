@@ -1,0 +1,34 @@
+{
+  "passes": {
+    "preflight": {
+      "usage_fields_are_provider_reported": true,
+      "usage_available": true,
+      "observed_input_tokens": 75293,
+      "observed_tool_use_tokens": 0,
+      "observed_output_tokens": 250,
+      "observed_thought_tokens": 0,
+      "estimated_billed_input_tokens": 75293,
+      "cost_usd_lower_bound": 0.057407,
+      "cost_usd_upper_bound": 0.057407,
+      "note": "A range is reported because SDK usage schemas may count thought tokens inside or outside total output tokens. Check the Google billing console for final billing."
+    },
+    "main": {
+      "usage_fields_are_provider_reported": true,
+      "usage_available": true,
+      "observed_input_tokens": 351787,
+      "observed_tool_use_tokens": 0,
+      "observed_output_tokens": 21186,
+      "observed_thought_tokens": 7871,
+      "estimated_billed_input_tokens": 351787,
+      "cost_usd_lower_bound": 0.343288,
+      "cost_usd_upper_bound": 0.372804,
+      "note": "A range is reported because SDK usage schemas may count thought tokens inside or outside total output tokens. Check the Google billing console for final billing."
+    }
+  },
+  "requests_attempted": 2,
+  "responses_received": 2,
+  "usage_incomplete": false,
+  "reported_cost_usd_lower_bound": 0.400695,
+  "reported_cost_usd_upper_bound": 0.430211,
+  "note": "Sum of returned usage only; missing/error responses may still incur charges. See raw usage and provider billing."
+}

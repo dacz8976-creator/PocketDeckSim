@@ -1,0 +1,15 @@
+{
+  "source_filename": "20260927_170847000_iOS.MP4",
+  "source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20260927_170847000_iOS.MP4",
+  "bytes": 759878429,
+  "sha256": "22b3acf9d34122ba915baf9b1fdd9f2c2737cd62bf33eb7169419329277adbf7",
+  "duration_seconds": 406.027075,
+  "video": "HEVC 1170x2532, approximately 60 fps",
+  "audio": "AAC stereo 44100 Hz stream present but effectively silent throughout: full-file ffmpeg volumedetect mean/max -91.0 dB; silencedetect at -45 dB marks silence from 0 through 406.046 s. No audible speech to transcribe.",
+  "creation_time_utc_from_container": "2026-09-27T17:08:47Z",
+  "verification": "Review_Log record command hashed the stable local source and recorded verified_by_cli_sha256; ffprobe decoded video and audio metadata.",
+  "recording_relationships": "One continuous match from setup to Victory screen. No linked continuation or derivative was identified in the workspace filename search; this is not a global content-duplicate hash audit.",
+  "source_preserved": true,
+  "reviewer": "/root/sep27_new_video",
+  "review_status": "worker_packet_pending_lead_acceptance"
+}

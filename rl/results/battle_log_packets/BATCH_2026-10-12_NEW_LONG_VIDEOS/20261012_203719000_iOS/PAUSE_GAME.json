@@ -1,0 +1,125 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261012_203719000_iOS-game-1",
+  "review_date": "2026-10-12",
+  "sources": [
+    {
+      "video_basename": "20261012_203719000_iOS.MP4",
+      "sha256": "e85ac056e49ababe79fbd0388e8b132f3cc984a5deb445390a2f4df7b0137869",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "New deck 16",
+  "opening": {
+    "source_video": "20261012_203719000_iOS.MP4",
+    "timestamp_seconds": 28,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Copycat",
+        "basis": "Observed before Active placement",
+        "evidence_ids": [
+          "f28_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Regigigas",
+        "basis": "Observed before Active placement",
+        "evidence_ids": [
+          "f28_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Kingambit",
+        "basis": "Observed before Active placement",
+        "evidence_ids": [
+          "f28_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Professor's Research",
+        "basis": "Observed before Active placement",
+        "evidence_ids": [
+          "f28_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Pawniard",
+        "basis": "Observed before Active placement",
+        "evidence_ids": [
+          "f28_00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Regigigas",
+      "opening_position": 2,
+      "source_video": "20261012_203719000_iOS.MP4",
+      "timestamp_seconds": 29,
+      "evidence_ids": [
+        "f28_00",
+        "f30_00"
+      ]
+    },
+    "redraw_or_replacement": "none observed",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "f28_00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "capture_status_allowed_after_review": [
+    "complete",
+    "complete_with_recording_limits",
+    "incomplete_review"
+  ],
+  "battle_review_status": "full_battle_review_complete",
+  "outcome": {
+    "owner": "win",
+    "cause": "opponent conceded",
+    "owner_points": 1,
+    "opponent_points": 2,
+    "turns_played": 21,
+    "evidence_ids": [
+      "f790_00",
+      "f800_50"
+    ]
+  },
+  "limits": [
+    "Live Pause Games deck list missing; filmed QR list separately verified.",
+    "Discard piles never opened.",
+    "Some opponent fan overlap counts remain ranges.",
+    "Source seek times approximate, actual PTS not measured."
+  ],
+  "lead_checked": true,
+  "classification": {
+    "opponent_type": "human",
+    "auto_visible": false,
+    "queue": "Deluxe Pack: Mega Emblem Event",
+    "queue_evidence": "f2_00",
+    "number_of_games": 1
+  },
+  "lead_acceptance": "LEAD_ACCEPTANCE.json"
+}

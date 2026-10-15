@@ -1,0 +1,141 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261006_020518000_iOS",
+  "review_date": "2026-10-06",
+  "sources": [
+    {
+      "video_basename": "20261006_020518000_iOS.MP4",
+      "sha256": "64968acf700ddfecc51cc5bcb01014db7afa855545057bd6934226afd35a53e7",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Conkeldurr / Sandslash / Hitmonchan ex",
+  "opening": {
+    "source_video": "20261006_020518000_iOS.MP4",
+    "timestamp_seconds": 28,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Wally",
+        "basis": "Original five-card fan before any Active placement",
+        "evidence_ids": [
+          "f0028_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Sandshrew",
+        "basis": "Original five-card fan before any Active placement",
+        "evidence_ids": [
+          "f0028_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Cyrus",
+        "basis": "Original five-card fan before any Active placement",
+        "evidence_ids": [
+          "f0028_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Sandshrew",
+        "basis": "Original five-card fan before any Active placement",
+        "evidence_ids": [
+          "f0028_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Lucky Ice Pop",
+        "basis": "Original five-card fan before any Active placement",
+        "evidence_ids": [
+          "f0028_00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Sandshrew",
+      "opening_position": 4,
+      "source_video": "20261006_020518000_iOS.MP4",
+      "timestamp_seconds": 29,
+      "evidence_ids": [
+        "f0029_00"
+      ]
+    },
+    "initial_bench_placement": {
+      "name": "Sandshrew",
+      "opening_position": 2,
+      "bench_position": "left",
+      "evidence_ids": [
+        "f0031_00",
+        "f0033_00"
+      ]
+    },
+    "redraw_or_replacement": "none visible",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "f0028_00",
+      "f0029_00",
+      "f0031_00",
+      "f0033_00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_first_pass_pending_independent_acceptance",
+  "outcome": {
+    "result": "win",
+    "owner": "Dacz8976",
+    "opponent": "Adgbag",
+    "points_owner": 3,
+    "points_opponent": 2,
+    "turns": 17,
+    "basis": "Third knockout of opponent Copperajah by Hitmonchan ex Quick Straight, then owner third point, Victory vs Adgbag.",
+    "evidence_ids": [
+      "f0573_00",
+      "f0574_00",
+      "f0577_00",
+      "f0578_00",
+      "f0579_00",
+      "f0582_00",
+      "f0583_00",
+      "f0590_00",
+      "f0591_00",
+      "f0594_00"
+    ],
+    "concession": "none established",
+    "mode": "Deluxe Pack: Mega Emblem Event human matchmaking",
+    "ranked_status": "not established as ranked; event menu visible",
+    "auto_control": "No Auto control/option visible during setup, all battle turns or result. Human matchmaking shown."
+  },
+  "limits": [
+    "Matching exact20 list is absent from retrieved live Pause Games deck snapshot; QR establishes filmed semantic entities and Energy, not an existing live log version.",
+    "Opponent normal draws, May search/shuffle identities and hidden hand faces are unknown.",
+    "Neither discard pile is opened anywhere. Full pile content/order cannot be established.",
+    "QR functional entities do not encode exact artwork/rarity. Hitmonchan ex artwork printing remains qualified.",
+    "Frame times are source-local requested seek values; actual decoded presentation timestamps were not measured.",
+    "This is the first-pass packet. Independent visual acceptance, duplicate check, registration and external save verification belong to the lead."
+  ],
+  "lead_checked": false,
+  "match_date_local": "2026-10-05",
+  "game_count_in_source": 1
+}

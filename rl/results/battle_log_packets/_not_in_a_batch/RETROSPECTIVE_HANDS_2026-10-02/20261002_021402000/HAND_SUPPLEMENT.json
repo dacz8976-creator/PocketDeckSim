@@ -1,0 +1,1248 @@
+{
+  "is_template": false,
+  "schema": "retrospective-hand-supplement-v1",
+  "game_id": "20261002_021402000_iOS.MP4",
+  "sources": [
+    {
+      "video_basename": "20261002_021402000_iOS.MP4",
+      "sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "source_json": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\SOURCE.json"
+    }
+  ],
+  "target_turn_numbers": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "capture_scope": "Opening and six specified owner hands only. This is not a fresh full-battle capture.",
+  "target_rows": [
+    {
+      "turn_number": 1,
+      "owner_turn_ordinal": 1,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Poké Ball",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Heavy Helmet",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Wailord",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0037.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0050.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0050.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Wailord",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0050.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0050.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "normal_draw": "Wailord",
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Wailord",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 37.5,
+              "evidence_ids": [
+                "f0037.50"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 37.5,
+          "evidence_ids": [
+            "f0037.50"
+          ],
+          "limit_reason": "Draw identity directly observed during reveal or subsequent fan; animation-end time bounded separately."
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Wailmer",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 48,
+              "evidence_ids": [
+                "f0048.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 48,
+          "evidence_ids": [
+            "f0048.00"
+          ],
+          "limit_reason": "Found Wailmer visibly in hand at48, then benched by50.5; exact search-reveal instant not measured."
+        }
+      ],
+      "first_voluntary_play": {
+        "order": 1,
+        "kind": "card_play",
+        "card_name": "Heavy Helmet",
+        "target": "Active Wailmer",
+        "result": "Attached",
+        "basis": "inherited_accepted_review_not_new_visual_observation",
+        "source_video": "20261002_021402000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": null,
+        "accepted_source_line": 26,
+        "prompt_text": null,
+        "response": null,
+        "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+      },
+      "first_move_supported_interval_seconds": [
+        37.5,
+        39.5
+      ],
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Visible separate card-back faces and bottom boundaries in native top crop",
+        "basis": "direct_visual_count",
+        "evidence_ids": [
+          "f0037.50"
+        ],
+        "limit_reason": null
+      },
+      "hand_count_reconciliation": {
+        "expression": "5 - Helmet1 - Poké Ball1 + found Wailmer1 - benched Wailmer1 =3.",
+        "basis": "inference_using_direct_counts_and_inherited_accepted_transactions",
+        "consistent": true
+      },
+      "evidence_ids": [
+        "f0037.50",
+        "f0039.50",
+        "f0042.50",
+        "f0050.50",
+        "f0036.00",
+        "f0037.00",
+        "f0048.00"
+      ],
+      "scope": "Only missing first-six-owner-turn hand fields, no fresh board/result/accepted-play review."
+    },
+    {
+      "turn_number": 3,
+      "owner_turn_ordinal": 2,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0072.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0072.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Wailord",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0072.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0072.30"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0072.30"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0077.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0077.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0077.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0077.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "normal_draw": "Cyrus",
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Cyrus",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 72.3,
+              "evidence_ids": [
+                "f0072.30"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 72.3,
+          "evidence_ids": [
+            "f0072.30"
+          ],
+          "limit_reason": "Draw identity directly observed during reveal or subsequent fan; animation-end time bounded separately."
+        }
+      ],
+      "first_voluntary_play": {
+        "order": 1,
+        "kind": "evolution",
+        "card_name": "Wailord",
+        "target": "Active Wailmer",
+        "result": "Non-ex Wailord 200 HP",
+        "basis": "inherited_accepted_review_not_new_visual_observation",
+        "source_video": "20261002_021402000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": null,
+        "accepted_source_line": 28,
+        "prompt_text": null,
+        "response": null,
+        "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+      },
+      "first_move_supported_interval_seconds": [
+        72.3,
+        74
+      ],
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": null,
+        "count_method": "Visible separate card-back faces and bottom boundaries in native top crop",
+        "basis": "direct_visual_count",
+        "evidence_ids": [
+          "f0072.30"
+        ],
+        "limit_reason": null
+      },
+      "hand_count_reconciliation": {
+        "expression": "4 - evolution Wailord1 =3.",
+        "basis": "inference_using_direct_counts_and_inherited_accepted_transactions",
+        "consistent": true
+      },
+      "evidence_ids": [
+        "f0072.30",
+        "f0072.00",
+        "f0074.00",
+        "f0077.00",
+        "f0071.00"
+      ],
+      "scope": "Only missing first-six-owner-turn hand fields, no fresh board/result/accepted-play review."
+    },
+    {
+      "turn_number": 5,
+      "owner_turn_ordinal": 3,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0100.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0100.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0100.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Wailord ex",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0100.80"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0100.80"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0108.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0108.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0108.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0108.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "normal_draw": "Wailord ex",
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Wailord ex",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 100.8,
+              "evidence_ids": [
+                "f0100.80"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 100.8,
+          "evidence_ids": [
+            "f0100.80"
+          ],
+          "limit_reason": "Draw identity directly observed during reveal or subsequent fan; animation-end time bounded separately."
+        }
+      ],
+      "first_voluntary_play": {
+        "order": 1,
+        "kind": "evolution",
+        "card_name": "Wailord ex",
+        "target": "Benched Wailmer",
+        "result": "Wailord ex 250 HP",
+        "basis": "inherited_accepted_review_not_new_visual_observation",
+        "source_video": "20261002_021402000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": null,
+        "accepted_source_line": 30,
+        "prompt_text": null,
+        "response": null,
+        "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+      },
+      "first_move_supported_interval_seconds": [
+        100.8,
+        101.2
+      ],
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": [
+          7,
+          8
+        ],
+        "count_method": "Visible separate card-back faces and bottom boundaries in native top crop",
+        "basis": "direct_visual_supported_range",
+        "evidence_ids": [
+          "f0100.80"
+        ],
+        "limit_reason": "Tight overlapping card backs obscure one boundary; no bookkeeping substituted for visual count."
+      },
+      "hand_count_reconciliation": {
+        "expression": "4 - evolution Wailord ex1 =3.",
+        "basis": "inference_using_direct_counts_and_inherited_accepted_transactions",
+        "consistent": true
+      },
+      "evidence_ids": [
+        "f0100.80",
+        "f0102.00",
+        "f0105.00",
+        "f0108.00",
+        "f0099.60",
+        "f0100.00"
+      ],
+      "scope": "Only missing first-six-owner-turn hand fields, no fresh board/result/accepted-play review."
+    },
+    {
+      "turn_number": 7,
+      "owner_turn_ordinal": 4,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0132.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0132.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0132.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0132.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0132.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0146.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "normal_draw": "Professor's Research",
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Professor's Research",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 132,
+              "evidence_ids": [
+                "f0132.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 132,
+          "evidence_ids": [
+            "f0132.00"
+          ],
+          "limit_reason": "Draw identity directly observed during reveal or subsequent fan; animation-end time bounded separately."
+        },
+        {
+          "kind": "research",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Indeedee ex",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 137,
+              "evidence_ids": [
+                "f0137.00"
+              ],
+              "basis": "direct_fan_identity_with_order_inferred_from_second_reveal_and_append_state",
+              "limit_reason": "At137 Indeedee is already in the fan; its first reveal is not directly captured in this cited frame."
+            },
+            {
+              "name": "Copycat",
+              "reveal_position": 2,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 137,
+              "evidence_ids": [
+                "f0137.00",
+                "f0139.00"
+              ],
+              "basis": "direct_enlarged_reveal_at137_and_retained_fan_at139",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 137,
+          "evidence_ids": [
+            "f0137.00",
+            "f0139.00"
+          ],
+          "limit_reason": "Native137 shows Indeedee ex already appended in the fan and Copycat enlarged as the current Research reveal. Indeedee identity is directly observed in the fan; its first-card order is inferred from this append state preceding the displayed second card. Copycat reveal is directly observed at137 and its retained fan at139. Exact first-reveal onset is unmeasured.",
+          "reveal_order_basis": "append_state_at137_with_Copycat_displayed_as_second_Research_card"
+        }
+      ],
+      "first_voluntary_play": {
+        "order": 1,
+        "kind": "card_play",
+        "card_name": "Professor's Research",
+        "target": null,
+        "result": "Draws two cards",
+        "basis": "inherited_accepted_review_not_new_visual_observation",
+        "source_video": "20261002_021402000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": null,
+        "accepted_source_line": 32,
+        "prompt_text": null,
+        "response": null,
+        "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+      },
+      "first_move_supported_interval_seconds": [
+        132,
+        134
+      ],
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": [
+          7,
+          8
+        ],
+        "count_method": "Visible separate card-back faces and bottom boundaries in native top crop",
+        "basis": "direct_visual_supported_range",
+        "evidence_ids": [
+          "f0132.00"
+        ],
+        "limit_reason": "Tight overlapping card backs obscure one boundary; no bookkeeping substituted for visual count."
+      },
+      "hand_count_reconciliation": {
+        "expression": "4 - Research1 + Research draws2 - benched Indeedee1 =4.",
+        "basis": "inference_using_direct_counts_and_inherited_accepted_transactions",
+        "consistent": true
+      },
+      "evidence_ids": [
+        "f0132.00",
+        "f0134.00",
+        "f0137.00",
+        "f0146.00",
+        "f0131.00",
+        "f0139.00"
+      ],
+      "scope": "Only missing first-six-owner-turn hand fields, no fresh board/result/accepted-play review."
+    },
+    {
+      "turn_number": 9,
+      "owner_turn_ordinal": 5,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0205.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0275.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0275.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0275.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "normal_draw": "Lucky Ice Pop",
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Lucky Ice Pop",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 205,
+              "evidence_ids": [
+                "f0205.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 205,
+          "evidence_ids": [
+            "f0205.00"
+          ],
+          "limit_reason": "Draw identity directly observed during reveal or subsequent fan; animation-end time bounded separately."
+        },
+        {
+          "kind": "copycat",
+          "caused_by": "Copycat",
+          "linked_play_order": 4,
+          "cards_in_reveal_order": [
+            {
+              "name": "Heavy Helmet",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 249,
+              "evidence_ids": [
+                "f0249.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            },
+            {
+              "name": "Indeedee ex",
+              "reveal_position": 2,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 249.5,
+              "evidence_ids": [
+                "f0249.50"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            },
+            {
+              "name": "Soothing Shore",
+              "reveal_position": 3,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 249.5,
+              "evidence_ids": [
+                "f0249.50"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            },
+            {
+              "name": "Lucky Ice Pop",
+              "reveal_position": 4,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 250,
+              "evidence_ids": [
+                "f0250.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            },
+            {
+              "name": "Soothing Shore",
+              "reveal_position": 5,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 252,
+              "evidence_ids": [
+                "f0252.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": [
+            "Pokémon Center Lady",
+            "Irida",
+            "Cyrus"
+          ],
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 249,
+          "evidence_ids": [
+            "f0249.00",
+            "f0249.50",
+            "f0249.50",
+            "f0250.00",
+            "f0252.00"
+          ],
+          "limit_reason": "All five names and duplicate Shores directly preserved together at252. Reveal positions follow append order; times are retained reveal/fan anchors rather than exact onset. Earlier accepted native249 is a reveal anchor with approximate original seek provenance.",
+          "hand_count_before": 3,
+          "hand_count_after": 5,
+          "all_five_in_one_fan_evidence_ids": [
+            "f0252.00"
+          ]
+        }
+      ],
+      "first_voluntary_play": {
+        "order": 1,
+        "kind": "ability",
+        "card_name": "Indeedee ex",
+        "target": "Active Wailord ex",
+        "result": "First Watch Over heals 140 to 160",
+        "basis": "inherited_accepted_review_not_new_visual_observation",
+        "source_video": "20261002_021402000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": null,
+        "accepted_source_line": 34,
+        "prompt_text": null,
+        "response": null,
+        "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+      },
+      "first_move_supported_interval_seconds": [
+        205,
+        206
+      ],
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": null,
+        "count_method": "Visible separate card-back faces and bottom boundaries in native top crop",
+        "basis": "direct_visual_count",
+        "evidence_ids": [
+          "f0205.00"
+        ],
+        "limit_reason": null
+      },
+      "hand_count_reconciliation": {
+        "expression": "5 - Pop1 + returned Pop1 - reused Pop1 - Copycat1 - three shuffled cards3 + five Copycat draws5 - Shore1 - Indeedee1 - Helmet1 =2.",
+        "basis": "inference_using_direct_counts_and_inherited_accepted_transactions",
+        "consistent": true
+      },
+      "evidence_ids": [
+        "f0205.00",
+        "f0207.00",
+        "f0210.00",
+        "f0275.00",
+        "f0203.00",
+        "f0204.00",
+        "f0211.00",
+        "f0232.00",
+        "f0236.00",
+        "f0241.00",
+        "f0246.00",
+        "f0247.50",
+        "f0248.00",
+        "f0249.00",
+        "f0249.50",
+        "f0250.00",
+        "f0251.00",
+        "f0252.00",
+        "f0254.00",
+        "f0263.00",
+        "f0265.00",
+        "f0268.00",
+        "f0272.00"
+      ],
+      "scope": "Only missing first-six-owner-turn hand fields, no fresh board/result/accepted-play review."
+    },
+    {
+      "turn_number": 11,
+      "owner_turn_ordinal": 6,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0316.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0316.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0316.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0316.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0362.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0362.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0362.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "normal_draw": "Professor's Research",
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Professor's Research",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 316.5,
+              "evidence_ids": [
+                "f0316.50"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 316.5,
+          "evidence_ids": [
+            "f0316.50"
+          ],
+          "limit_reason": "Draw identity directly observed during reveal or subsequent fan; animation-end time bounded separately."
+        },
+        {
+          "kind": "research",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": "Cyrus",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 330,
+              "evidence_ids": [
+                "f0330.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            },
+            {
+              "name": "Poké Ball",
+              "reveal_position": 2,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 331,
+              "evidence_ids": [
+                "f0331.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 330,
+          "evidence_ids": [
+            "f0330.00",
+            "f0331.00"
+          ],
+          "limit_reason": "Observed reveal order Cyrus then Poké Ball supplements the accepted unordered pair."
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 4,
+          "cards_in_reveal_order": [],
+          "basis": "inherited_no_target_message_with_native336_reference",
+          "hand_count_after": 3,
+          "evidence_ids": [
+            "f0336.00"
+          ],
+          "limit_reason": "Known unsuccessful search; empty revealed-card array means no card obtained, not uninspected."
+        }
+      ],
+      "first_voluntary_play": {
+        "order": 1,
+        "kind": "ability",
+        "card_name": "Indeedee ex",
+        "target": "Active Wailord ex",
+        "result": "First Watch Over heals 150 to 170",
+        "basis": "inherited_accepted_review_not_new_visual_observation",
+        "source_video": "20261002_021402000_iOS.MP4",
+        "timestamp_seconds": null,
+        "evidence_ids": null,
+        "accepted_source_line": 36,
+        "prompt_text": null,
+        "response": null,
+        "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+      },
+      "first_move_supported_interval_seconds": [
+        316.5,
+        319.5
+      ],
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "Visible separate card-back faces and bottom boundaries in native top crop",
+        "basis": "direct_visual_count",
+        "evidence_ids": [
+          "f0316.50"
+        ],
+        "limit_reason": null
+      },
+      "hand_count_reconciliation": {
+        "expression": "3 - Research1 + Research draws2 - no-target Poké Ball1 - Pop1 =2.",
+        "basis": "inference_using_direct_counts_and_inherited_accepted_transactions",
+        "consistent": true
+      },
+      "evidence_ids": [
+        "f0316.50",
+        "f0314.50",
+        "f0319.50",
+        "f0362.00",
+        "f0313.00",
+        "f0330.00",
+        "f0331.00",
+        "f0336.00",
+        "f0350.00"
+      ],
+      "scope": "Only missing first-six-owner-turn hand fields, no fresh board/result/accepted-play review."
+    }
+  ],
+  "late_owner_hand_status": "Turn13 not requested and not freshly transcribed."
+}

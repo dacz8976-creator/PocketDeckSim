@@ -1,0 +1,102 @@
+{
+  "video_basename": "20261002_022135000_iOS.MP4",
+  "reviewer": "sol_competitive_20261002_022135000",
+  "material_unreviewed_intervals": [],
+  "requires_astra_before_observed_account_complete": false,
+  "items": [
+    {
+      "category": "mode",
+      "question": "Exact queue label",
+      "finding": "Online named-opponent battle is visible; competitive intent is owner testimony. Exact ranked, random or private queue label is not printed."
+    },
+    {
+      "category": "automation",
+      "question": "Owner and opponent Auto status",
+      "finding": "No Auto control or change indicator is visible throughout this recording. Opponent automation cannot be inferred."
+    },
+    {
+      "category": "card_identity",
+      "timestamp_seconds": 682,
+      "evidence": "native/t0682_hand_crop.jpg",
+      "question": "Version of the second Wailord-named card",
+      "finding": "One non-ex Wailord is clearly named; neighboring whale card's suffix and most printed text are occluded. Neither enters play. Preserve its exact version as unknown."
+    },
+    {
+      "category": "hidden_information",
+      "question": "Complete owner and opponent deck lists and hidden hands",
+      "finding": "Visible cards and owner testimony support likely Wailord / Indeedee wall match, not full-list proof."
+    },
+    {
+      "category": "coin_result",
+      "timestamp_intervals_seconds": [
+        [
+          386,
+          394
+        ],
+        [
+          458,
+          466
+        ]
+      ],
+      "question": "Exact Lucky Ice Pop coin faces",
+      "finding": "Healing and resulting HP are observed; coin-face outcomes are not independently established. No extra future Ice Pop reuse is claimed."
+    },
+    {
+      "category": "opponent_decision",
+      "timestamp_intervals_seconds": [
+        [
+          246,
+          329
+        ],
+        [
+          404,
+          689
+        ]
+      ],
+      "question": "Why did the opponent repeatedly use Shuriken and end without attacking?",
+      "finding": "Nonattacks are observed. Intent, automation, hidden constraints and rationale remain unknown. Do not credit the wall with forcing these waits."
+    },
+    {
+      "category": "damage_precision",
+      "timestamp_seconds": 224,
+      "question": "First Wailmer damage number",
+      "finding": "Knockout is visible. Printed Mega Harmony and three Bench occupants yield 130 before Helmet, consistent with 110 after Helmet. Report the KO as observed and the 110 as a supported calculation."
+    },
+    {
+      "category": "source_date",
+      "question": "Filename clock basis",
+      "finding": "Assignment labels match date October 1 local from owner/upload context. The October 2 filename's timezone is inferred, not printed."
+    },
+    {
+      "category": "energy_microtiming",
+      "timestamp_intervals_seconds": [
+        [
+          570,
+          660
+        ]
+      ],
+      "question": "Exact allocation of each late Water attachment",
+      "finding": "Retreats and Water development are covered. Some late attachment microtiming is less certain than the directly inspected state of two Water on each Indeedee at 658/660 and 682 seconds. No Psychic is seen; this does not alter the unavailable Psychic attack or outcome."
+    }
+  ],
+  "resolved": [
+    "Terminal outcome is an explicit defeat, despite loading at approximately 707 seconds; final results are visible at 710 seconds.",
+    "Final knockout awards two points; results display owner 1 and opponent 3 circles.",
+    "Indeedee Psychic costs two Psychic, not two Colorless. Water attachments cannot power it; displayed 120 is prospective damage, not an executed attack.",
+    "Turn 17 rescue is actually performed: Water to 20-HP benched Indeedee, retreat it Active, two Watch Over, Lucky Ice Pop, Irida and Shore.",
+    "The recording contains no Wailord evolution or Wailord attack; both Wailmer are gone before Copycat supplies the late whale cards."
+  ],
+  "worker_status_at_submission": "complete_first_pass",
+  "status": "full_battle_review_complete",
+  "review_status": "full_battle_review_complete",
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "source_archived": true,
+  "source_modified": false,
+  "global_registration_complete": true,
+  "ranked_ladder_eligible": false,
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "external_log_saved": true,
+  "archive_receipt": "MOVE_RECEIPT.20261002_022135000_iOS.MP4.json",
+  "archive_completion_event_id": "83213679-df31-4e02-87ca-443920d5ac5c"
+}

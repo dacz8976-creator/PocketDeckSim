@@ -1,0 +1,121 @@
+{
+  "reviewer": "/root/ladder_143111",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "source_filename": "20261014_143111000_iOS.MP4",
+  "source_sha256": "dc9cc6c586e8ffa160f3ba3eb159420d72c48104a3e58000b76e260869078517",
+  "source_creation_utc": "2026-10-14T14:31:11.000000Z",
+  "battle_complete": true,
+  "primary_review_complete": true,
+  "independent_acceptance": false,
+  "lead_acceptance": false,
+  "recording_duration_seconds": 394.146667,
+  "match_count": 1,
+  "match_date": "2026-10-14",
+  "owner_identifier": "Dacz8976",
+  "opponent_identifier": "Ghezzuka",
+  "owner_visible_deck_core": [
+    "Spinarak",
+    "Ariados (Trap Territory)",
+    "Cottonee",
+    "Whimsicott ex (Grass Knot)",
+    "Teal Mask Ogerpon ex"
+  ],
+  "opponent_visible_deck_core": [
+    "Mudkip",
+    "Marshtomp",
+    "Mega Swampert ex (Strong-Armed Destroyer)",
+    "Mantyke",
+    "Cramorant"
+  ],
+  "selected_deck_name": "Deck 12",
+  "mode": "Ranked Match, Season B4b SP",
+  "auto_option_visible": false,
+  "outcome": "loss",
+  "terminal_score": {
+    "owner": 2,
+    "opponent": 3
+  },
+  "terminal_timestamp_seconds": 373,
+  "terminal_evidence_paths": [
+    "native/t0373.00.jpg",
+    "native/t0375.00.jpg",
+    "native/t0380.00.jpg",
+    "native/t0390.00.jpg"
+  ],
+  "first_or_second": "second",
+  "first_or_second_evidence_timestamps_seconds": [
+    50,
+    53,
+    327,
+    390
+  ],
+  "first_or_second_evidence_paths": [
+    "native/t0050.00.jpg",
+    "native/t0053.00.jpg",
+    "native/t0327.00.jpg",
+    "native/t0390.00.jpg"
+  ],
+  "first_main_attacker_attack": {
+    "pokemon": "Whimsicott ex",
+    "attack_name": "Grass Knot",
+    "own_turn_number": 2,
+    "global_displayed_turn": 4,
+    "global_turn_basis": "Reconciled from complete alternation, second-player results and explicit global10 owner banner; global4 banner not retained.",
+    "source_time_seconds": 169,
+    "animation_time_seconds": 170,
+    "opponent_points_before_attack": 0,
+    "damage": 70,
+    "target": "Mantyke",
+    "evidence_paths": [
+      "native/t0165.00.jpg",
+      "native/t0169.00.jpg",
+      "native/t0170.00.jpg",
+      "native/t0172.00.jpg",
+      "native/t0181.00.jpg"
+    ]
+  },
+  "main_attacker_interpretation": "Whimsicott ex is the Deck12 main attacker and makes all three owner main attacks. Cottonee Razor Leaf on ownT1 is a supporting attack, not substituted for main-attacker timing. Ogerpon never attacks.",
+  "earlier_supporting_attack": {
+    "pokemon": "Cottonee",
+    "attack_name": "Razor Leaf",
+    "own_turn_number": 1,
+    "global_turn": 2,
+    "source_time_seconds": 107,
+    "damage": 20,
+    "evidence_paths": [
+      "native/t0107.00.jpg",
+      "native/t0110.00.jpg"
+    ]
+  },
+  "recommended_ladder_section": "deck 12 (Ariados / Whimsicott / Ogerpon)",
+  "exact_three_item_note_prefix": "2nd | Whimsicott ex T2 | opp 0 pts",
+  "result_statistics": {
+    "turns_played": 11,
+    "damage_done": 410
+  },
+  "uncertainties": [
+    {
+      "category": "hidden_information",
+      "description": "Exact full deck lists and hidden opponent draws/hand contents are unknown. Visible core only is asserted."
+    },
+    {
+      "category": "tool_identity",
+      "timestamps_seconds": [
+        298,
+        300,
+        306
+      ],
+      "description": "Opponent blue tool visibly reduces active retreat cost by one; exact printed name is unreadable. No guessed name used."
+    },
+    {
+      "category": "event_timing",
+      "description": "Attack/event times are source-local visual bounds. First main attack transition169s and named card animation170s are distinguished; global4 is reconciled from full alternation, second-player order and explicit global10 banner."
+    },
+    {
+      "category": "occlusion",
+      "description": "Phone notifications briefly obscure the upper interface around40-45s,143-153s. Consequential claims have unobscured retained frames."
+    }
+  ],
+  "unreviewed_intervals": []
+}

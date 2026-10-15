@@ -1,0 +1,81 @@
+{
+  "accepted": false,
+  "reviewer": "/root/check_210823",
+  "checked_at_utc": "2026-10-12T23:39:45.643542+00:00",
+  "source_sha256": "ca0f516306d5ffd8bf18326d4057d357160f77aaa019efdfd87303336b1291b9",
+  "video_basename": "20261012_210823000_iOS.MP4",
+  "check_scope": "Bounded independent source-bound semantic acceptance audit",
+  "required_repairs": [
+    {
+      "id": "terminal_cause",
+      "severity": "material",
+      "source_seconds": [
+        430,
+        430.5,
+        431
+      ],
+      "evidence": [
+        "turn_evidence/t0430.00.jpg",
+        "turn_evidence/t0430.50.jpg",
+        "turn_evidence/t0431.00.jpg",
+        "independent_sol/direct_source_t0430.00.png"
+      ],
+      "finding": "The source explicitly displays Your opponent conceded. The packet incorrectly says no explicit concession wording exists and terminal cause is unknown.",
+      "required_change": "Record observed opponent concession consistently in REVIEW, COVERAGE, SUMMARY, PAUSE_GAME, UNCERTAINTIES and turn 12 automatic events/evidence. Preserve last observed points 0-1 separately from any final score and keep result-statistics limit."
+    },
+    {
+      "id": "turn12_draw_failure",
+      "severity": "material",
+      "source_seconds": [
+        428,
+        428.5
+      ],
+      "evidence": [
+        "turn_evidence/t0428.00.jpg",
+        "turn_evidence/t0428.50.jpg"
+      ],
+      "finding": "The source explicitly displays No cards left in deck; unable to draw cards. Deck exhaustion is observed, not merely a plausible arithmetic explanation.",
+      "required_change": "Record failed normal draw due to empty owner deck as an observed system event and update turn 12 limits/prose. No normal card enters hand and no owner voluntary play is shown; the three-card hand remains correct."
+    },
+    {
+      "id": "energy_zone_phase_binding",
+      "severity": "material",
+      "source_seconds": [
+        87,
+        117,
+        200,
+        206.5,
+        292
+      ],
+      "evidence": [
+        "turn_evidence/t0087.00_top.jpg",
+        "turn_evidence/t0117.00_bottom.jpg",
+        "turn_evidence/t0200.00.jpg",
+        "turn_evidence/t0206.50_bottom.jpg",
+        "turn_evidence/t0292.00_bottom.jpg",
+        "independent_sol/direct_source_t0206.50.png"
+      ],
+      "finding": "Several zone records import Energy icons from a different phase. At 87 seconds the opponent large current circle is empty, but turn 3 start says one available Darkness. At 117, 206.5 and 292 the owner small next icon is not visible; each says one next Darkness. At 200 both small next icons are absent during the attack animation, yet both next records say one Darkness.",
+      "required_change": "Recheck both Energy Zone lines at every chosen start/end frame. Preserve zero/absent or unreadable values with phase-specific limits; alternatively cite a separate directly observed later pre-action zone frame with its own timestamp. Do not fill a transiently absent current/next icon from deck configuration or a subsequent glyph. Reconcile prose and TURN_EVIDENCE suitability/observations with corrected ledger."
+    }
+  ],
+  "checked_input_sha256": {
+    "REVIEW.md": "28f3a0b19cd4bdba36dbfacd5addc243a66b70e78675d962aa05ace6b8f74b1e",
+    "COVERAGE.md": "85c88f4c53c4135267136ee455584127362ea671736f789470a988f66eff8d45",
+    "SUMMARY.json": "20cf6267725a9129cadacb27283b36576418793ada990755b5cef3b8ac18b0bd",
+    "UNCERTAINTIES.json": "d6a2710a8017a8246b8c0989501150549735dee457bac2f9e2e176eacaf16e7a",
+    "PAUSE_GAME.json": "4942d9a80333ed0b126ac29a4d9ed394578fdf2fea4b07b8caf0caeaeecb1a8c",
+    "DECK_USED.json": "7dbce1d872f88ca8ea6e47d3799adc657f362c98c5205170b80b9bfbfe2d9031",
+    "TURN_LEDGER.json": "16825e9e00f89dcf899f8909adfd3366d3087d4ff76a24a5b052e1b6e53a25e1",
+    "TURN_EVIDENCE.json": "f621388358eabdeab97afd6a8e426a77c92fee8836517fa4616baa92ac0504e3"
+  },
+  "source_rehashed": false,
+  "fresh_direct_source_frames_seconds": [
+    25.5,
+    206.5,
+    355.5,
+    430
+  ],
+  "receipt_status": "rejected_material_repairs_required",
+  "primary_files_mutated": false
+}

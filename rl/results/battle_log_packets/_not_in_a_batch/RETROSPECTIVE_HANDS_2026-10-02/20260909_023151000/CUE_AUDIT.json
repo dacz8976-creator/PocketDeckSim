@@ -1,0 +1,24 @@
+{
+  "source": "20260909_023151000_iOS.MP4",
+  "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+  "root_preprocessing_receipt": "LOCATOR_PREPROCESSING.json",
+  "samples": 344,
+  "samples_inspected": 344,
+  "grids_inspected": 18,
+  "all_samples_screened_once": true,
+  "auto_option_observed": false,
+  "opened_discard_panels_detected": false,
+  "source_interval_seconds": [
+    0,
+    343
+  ],
+  "basis": "Direct visual inspection of all18retained grids; reducedcues locate transitions and nativecaptures establishidentity",
+  "limits": [
+    "Hidden opponent normal/Research/Legendary Pulse draws and concealed search identities remain null; subsequent bench cards do not identify a concealed search result.",
+    "Exact historical 20-card deck snapshot unavailable; nearby QR is separate unbound evidence and no full deck is reconstructed.",
+    "All344 reduced1fps samples were inspected through18 grids once. This bounds sampled cues, not every instant, input or subsecond event.",
+    "Requested native seek times and inherited nominal native times are source-local. Actual frame PTS and exact input times unmeasured; inherited anchors have their retained tolerance.",
+    "No opened full discard panel detected in bounded timeline screening. Periodic visible tops and overlapping cards are recorded; hidden contents/order and discarded Energy totals not reconstructed.",
+    "No Auto control observed in sampled controls. This is not proof of every-instant absence; any visible Auto option, even OFF, means computer battle under owner rule."
+  ]
+}

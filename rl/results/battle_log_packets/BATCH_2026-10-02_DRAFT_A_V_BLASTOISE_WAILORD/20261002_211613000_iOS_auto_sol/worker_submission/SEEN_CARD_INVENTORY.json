@@ -1,0 +1,538 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_211613000_iOS_auto_sol",
+  "sources": [
+    {
+      "video_basename": "20261002_211613000_iOS.MP4",
+      "sha256": "8eec16e93f6e3bc1322e31bb5ff85c95a364ffb8bc14dd53427626226f1e3fd4",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "owner_cards": [
+    {
+      "name": "Carvanha",
+      "minimum_distinct_copies_observed": 2,
+      "observations": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 14.2,
+          "context": "opening/Active O1",
+          "evidence_ids": [
+            "F0014.20"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 183,
+          "context": "second Carvanha in hand while O1 is under Sharpedo",
+          "evidence_ids": [
+            "F0183.00"
+          ]
+        }
+      ],
+      "simultaneous_duplicate_evidence": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 183,
+          "evidence_ids": [
+            "F0183.00"
+          ],
+          "basis": "O1 witnessed under Sharpedo plus second Carvanha in hand"
+        }
+      ],
+      "distinct_copy_basis": "O1 witnessed under Sharpedo plus second Carvanha in hand",
+      "exact_deck_count_basis": "Supplied list kept separately in DECK_USED.json; not used to increase seen count",
+      "limits": "Repeated sightings/reveals after shuffle counted once unless distinct copies evidenced."
+    },
+    {
+      "name": "Mega Sharpedo ex",
+      "minimum_distinct_copies_observed": 1,
+      "observations": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 14.2,
+          "context": "opening",
+          "evidence_ids": [
+            "F0014.20"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 54.5,
+          "context": "O1 evolution",
+          "evidence_ids": [
+            "F0054.50"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 222.5,
+          "context": "right Bench O1",
+          "evidence_ids": [
+            "F0222.50"
+          ]
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "Only one physical Sharpedo observed",
+      "exact_deck_count_basis": "Supplied list kept separately in DECK_USED.json; not used to increase seen count",
+      "limits": "Repeated sightings/reveals after shuffle counted once unless distinct copies evidenced."
+    },
+    {
+      "name": "Alolan Vulpix",
+      "minimum_distinct_copies_observed": 2,
+      "observations": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 49.5,
+          "context": "searched stamped Vulpix",
+          "evidence_ids": [
+            "F0049.50"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 111.5,
+          "context": "regular Vulpix Copycat draw",
+          "evidence_ids": [
+            "F0111.50"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 118,
+          "context": "O2 beneath Cape Ninetales and O3 center Bench",
+          "evidence_ids": [
+            "F0118.00"
+          ]
+        }
+      ],
+      "simultaneous_duplicate_evidence": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 118,
+          "evidence_ids": [
+            "F0118.00"
+          ],
+          "basis": "Distinct board instances and different observed art"
+        }
+      ],
+      "distinct_copy_basis": "Distinct board instances and different observed art",
+      "exact_deck_count_basis": "Supplied list kept separately in DECK_USED.json; not used to increase seen count",
+      "limits": "Repeated sightings/reveals after shuffle counted once unless distinct copies evidenced."
+    },
+    {
+      "name": "Alolan Ninetales ex",
+      "minimum_distinct_copies_observed": 2,
+      "observations": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 14.2,
+          "context": "opening pink",
+          "evidence_ids": [
+            "F0014.20"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 95.2,
+          "context": "O2 evolution",
+          "evidence_ids": [
+            "F0095.20"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 172.3,
+          "context": "white Research draw",
+          "evidence_ids": [
+            "F0172.30"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 183,
+          "context": "O2 Active and O3 center Bench",
+          "evidence_ids": [
+            "F0183.00"
+          ]
+        }
+      ],
+      "simultaneous_duplicate_evidence": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 183,
+          "evidence_ids": [
+            "F0183.00"
+          ],
+          "basis": "Two Ninetales on board simultaneously"
+        }
+      ],
+      "distinct_copy_basis": "Two Ninetales on board simultaneously",
+      "exact_deck_count_basis": "Supplied list kept separately in DECK_USED.json; not used to increase seen count",
+      "limits": "Repeated sightings/reveals after shuffle counted once unless distinct copies evidenced."
+    },
+    {
+      "name": "Lapras",
+      "minimum_distinct_copies_observed": 1,
+      "observations": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 167.2,
+          "context": "normal draw",
+          "evidence_ids": [
+            "F0167.20"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 222.5,
+          "context": "held",
+          "evidence_ids": [
+            "F0222.50"
+          ]
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "Repeated hand card",
+      "exact_deck_count_basis": "Supplied list kept separately in DECK_USED.json; not used to increase seen count",
+      "limits": "Repeated sightings/reveals after shuffle counted once unless distinct copies evidenced."
+    },
+    {
+      "name": "Misty",
+      "minimum_distinct_copies_observed": 2,
+      "observations": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 108.3,
+          "context": "Copycat reveal",
+          "evidence_ids": [
+            "F0108.30"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 137.8,
+          "context": "second normal draw; two Misty in fan",
+          "evidence_ids": [
+            "F0137.80"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 222.5,
+          "context": "two retained",
+          "evidence_ids": [
+            "F0222.50"
+          ]
+        }
+      ],
+      "simultaneous_duplicate_evidence": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 137.8,
+          "evidence_ids": [
+            "F0137.80"
+          ],
+          "basis": "Two Misty simultaneously visible in hand"
+        }
+      ],
+      "distinct_copy_basis": "Two Misty simultaneously visible in hand",
+      "exact_deck_count_basis": "Supplied list kept separately in DECK_USED.json; not used to increase seen count",
+      "limits": "Repeated sightings/reveals after shuffle counted once unless distinct copies evidenced."
+    },
+    {
+      "name": "Professor's Research",
+      "minimum_distinct_copies_observed": 2,
+      "observations": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 109,
+          "context": "illustrated Copycat reveal",
+          "evidence_ids": [
+            "F0109.00"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 110.2,
+          "context": "regular Copycat reveal",
+          "evidence_ids": [
+            "F0110.20"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 118,
+          "context": "both Research in hand",
+          "evidence_ids": [
+            "F0118.00"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 139.8,
+          "context": "illustrated played",
+          "evidence_ids": [
+            "F0139.80"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 169.2,
+          "context": "regular played",
+          "evidence_ids": [
+            "F0169.20"
+          ]
+        }
+      ],
+      "simultaneous_duplicate_evidence": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 118,
+          "evidence_ids": [
+            "F0118.00"
+          ],
+          "basis": "Two distinct Research in one fan before either play"
+        }
+      ],
+      "distinct_copy_basis": "Two distinct Research in one fan before either play",
+      "exact_deck_count_basis": "Supplied list kept separately in DECK_USED.json; not used to increase seen count",
+      "limits": "Repeated sightings/reveals after shuffle counted once unless distinct copies evidenced."
+    },
+    {
+      "name": "Poké Ball",
+      "minimum_distinct_copies_observed": 2,
+      "observations": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 45.8,
+          "context": "first normal draw",
+          "evidence_ids": [
+            "F0045.80"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 47.8,
+          "context": "first played and discarded",
+          "evidence_ids": [
+            "F0047.80"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 171,
+          "context": "second Research draw",
+          "evidence_ids": [
+            "F0171.00"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 183,
+          "context": "second played/discarded",
+          "evidence_ids": [
+            "F0183.00"
+          ]
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "First discarded before distinct second draw; no recovery of that discard filmed",
+      "exact_deck_count_basis": "Supplied list kept separately in DECK_USED.json; not used to increase seen count",
+      "limits": "Repeated sightings/reveals after shuffle counted once unless distinct copies evidenced."
+    },
+    {
+      "name": "Copycat",
+      "minimum_distinct_copies_observed": 1,
+      "observations": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 14.2,
+          "context": "opening",
+          "evidence_ids": [
+            "F0014.20"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 102.5,
+          "context": "played",
+          "evidence_ids": [
+            "F0102.50"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 121.5,
+          "context": "discard top",
+          "evidence_ids": [
+            "F0121.50"
+          ]
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "Same held then played physical copy",
+      "exact_deck_count_basis": "Supplied list kept separately in DECK_USED.json; not used to increase seen count",
+      "limits": "Repeated sightings/reveals after shuffle counted once unless distinct copies evidenced."
+    },
+    {
+      "name": "Cyrus",
+      "minimum_distinct_copies_observed": 1,
+      "observations": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 142.2,
+          "context": "Research reveal",
+          "evidence_ids": [
+            "F0142.20"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 222.5,
+          "context": "held",
+          "evidence_ids": [
+            "F0222.50"
+          ]
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "Repeated held card",
+      "exact_deck_count_basis": "Supplied list kept separately in DECK_USED.json; not used to increase seen count",
+      "limits": "Repeated sightings/reveals after shuffle counted once unless distinct copies evidenced."
+    },
+    {
+      "name": "Irida",
+      "minimum_distinct_copies_observed": 1,
+      "observations": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 14.2,
+          "context": "opening",
+          "evidence_ids": [
+            "F0014.20"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 104.5,
+          "context": "returned by Copycat",
+          "evidence_ids": [
+            "F0104.50"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 208.8,
+          "context": "normal draw from shuffled deck",
+          "evidence_ids": [
+            "F0208.80"
+          ]
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "Return and later redraw do not establish a second copy",
+      "exact_deck_count_basis": "Supplied list kept separately in DECK_USED.json; not used to increase seen count",
+      "limits": "Repeated sightings/reveals after shuffle counted once unless distinct copies evidenced."
+    },
+    {
+      "name": "Elegant Cape",
+      "minimum_distinct_copies_observed": 1,
+      "observations": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 24.5,
+          "context": "normal draw",
+          "evidence_ids": [
+            "F0024.50"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 98.2,
+          "context": "Tool played",
+          "evidence_ids": [
+            "F0098.20"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 222.5,
+          "context": "O2 attached",
+          "evidence_ids": [
+            "F0222.50"
+          ]
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "Same hand to attached Tool",
+      "exact_deck_count_basis": "Supplied list kept separately in DECK_USED.json; not used to increase seen count",
+      "limits": "Repeated sightings/reveals after shuffle counted once unless distinct copies evidenced."
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "minimum_distinct_copies_observed": 1,
+      "observations": [
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 93.2,
+          "context": "normal draw",
+          "evidence_ids": [
+            "F0093.20"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 104.5,
+          "context": "returned by Copycat",
+          "evidence_ids": [
+            "F0104.50"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 142.8,
+          "context": "Research reveal",
+          "evidence_ids": [
+            "F0142.80"
+          ]
+        },
+        {
+          "source_video": "20261002_211613000_iOS.MP4",
+          "timestamp_seconds": 222.5,
+          "context": "held",
+          "evidence_ids": [
+            "F0222.50"
+          ]
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "Shuffle return and later draw do not establish another copy",
+      "exact_deck_count_basis": "Supplied list kept separately in DECK_USED.json; not used to increase seen count",
+      "limits": "Repeated sightings/reveals after shuffle counted once unless distinct copies evidenced."
+    }
+  ],
+  "minimum_distinct_owner_cards_observed": 19,
+  "exact_whole_deck_visually_recovered": false,
+  "why_not": "19 minimum distinct owner card copies observed; second Mega Sharpedo never exposed; deck does not run visibly empty and full piles not opened.",
+  "shared_stadium_observation": {
+    "name": "Soothing Shore",
+    "played_by": "opponent",
+    "counts_as_owner_card": false,
+    "evidence_ids": [
+      "F0087.00",
+      "F0222.50"
+    ]
+  },
+  "owner_discard_opened": false,
+  "opponent_discard_opened": false,
+  "limits": [
+    "Concealed opponent draws/searches not identifiable from the known deck.",
+    "Neither discard pile opened or scrolled; only visible top cards and separately labelled public discard events.",
+    "Covered evolution stacks are same-recording witnessed history; direct hidden stack reading remains unavailable.",
+    "Native candidates certify captured instants; reduced one-fps whole-timeline locators can miss subsecond invisible input.",
+    "Exact filmed collector numbers not transcribed; generic deck snapshot versions remain distinct from visible art."
+  ]
+}

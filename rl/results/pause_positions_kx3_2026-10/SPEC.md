@@ -32,6 +32,15 @@ must equal Sonnet's km3 runs at the same seeds (the engine is identical outside 
 - **Rules switch 2:** the 35 positions flagged in `position_list.tsv` are read separately. In those, the engines differ by design.
 - **The opponent:** unknown in every game (hidden cards filled from the pilot's own list), so every row stays "approximate", as in
   Sonnet's read. Status conditions are not represented (15 positions).
+- **Status conditions, read separately (added Oct 13, before any kx3 position game):**
+  - 14 of the 119 carry a Special Condition the harness can't hold, named in their notes. The 15th, 004435 t10, is not run.
+  - The 14: 031138 t06, 032857 t06, 124532 t05, 020258 t06, 020908 t06, 021629 t08 t10 t18 t20 t22 t24, 003458 t09, 004435 t06
+    t08. Of their conditions, two are Confused, two are Asleep, and the rest are Poisoned or Burned.
+  - The bots play these positions without the condition, so a difference there can come from the missing condition. They get their
+    own table, like the switch-2 flags, and are not counted in the main one.
+- **Overlord's Blade (checked Oct 13):** `pg_pos.rs` never sets the own knock-out count (Sonnet, Oct 13), so Kingambit's Overlord's Blade
+  reads 60 there. None of the 119 has a Kingambit on his side (board or hand) after a knock-out of his, so no position here is affected.
+  Any later run on such a turn needs the count added to the harness first.
 
 ## Cost first: a measured pilot before the shards
 

@@ -1,0 +1,1684 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261006_012927000_iOS_game_02",
+  "sources": [
+    {
+      "video_basename": "20261006_012927000_iOS.MP4",
+      "sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "turns": [
+    {
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_interval_seconds": [
+        649,
+        689
+      ],
+      "timing": {
+        "draw_animation_end_seconds": 656,
+        "first_voluntary_move_seconds": 657,
+        "before_end_action_seconds": 687,
+        "end_after_resolution_seconds": 689,
+        "precision_limit": "Approximate source-local seconds; seek target PTS not separately measured.",
+        "first_voluntary_input_interval_seconds": [
+          656,
+          657
+        ]
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          "Team Rocket’s Persian [Dangerous Rogue, 100 HP]",
+          "Poké Ball",
+          "Copycat",
+          "Lucky Ice Pop",
+          "Silvally [Gold Breaker, 110 HP]"
+        ],
+        "count": 5,
+        "basis": "Native bottom crop and named arrivals; literal left-to-right fan order at cited view.",
+        "evidence_ids": [
+          "f0656_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Team Rocket’s Persian [Dangerous Rogue, 100 HP]",
+          "Poké Ball",
+          "Copycat",
+          "Lucky Ice Pop",
+          "Silvally [Gold Breaker, 110 HP]"
+        ],
+        "count": 5,
+        "basis": "Native bottom crop and named arrivals; literal left-to-right fan order at cited view.",
+        "evidence_ids": [
+          "f0656_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": [
+          4,
+          4
+        ],
+        "count_method": "Count visible distinct backs in native top crop",
+        "basis": "Literal visible fan at selected frame; no inferred count from deck total.",
+        "evidence_ids": [
+          "f0656_00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Silvally [Gold Breaker, 110 HP]",
+              "reveal_position": 1,
+              "source_video": "20261006_012927000_iOS.MP4",
+              "timestamp_seconds": 654,
+              "evidence_ids": [
+                "f0654_00"
+              ],
+              "basis": "Named card face or arrival fan visible.",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": 654,
+          "evidence_ids": [
+            "f0654_00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Team Rocket’s Meowth [Scratch, 50 HP]",
+              "reveal_position": 1,
+              "source_video": "20261006_012927000_iOS.MP4",
+              "timestamp_seconds": 660,
+              "evidence_ids": [
+                "f0660_00"
+              ],
+              "basis": "Named card face or arrival fan visible.",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": 660,
+          "evidence_ids": [
+            "f0660_00",
+            "f0662_00"
+          ],
+          "limit_reason": null,
+          "reveal_timestamp_seconds": 660,
+          "hand_arrival_evidence_ids": [
+            "f0662_00"
+          ]
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Copycat",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poké Ball",
+              "reveal_position": 1,
+              "source_video": "20261006_012927000_iOS.MP4",
+              "timestamp_seconds": 674,
+              "evidence_ids": [
+                "f0674_00"
+              ],
+              "basis": "Distinct named native Copycat reveal face observed in this source order.",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Meowth [Scratch, 50 HP]",
+              "reveal_position": 2,
+              "source_video": "20261006_012927000_iOS.MP4",
+              "timestamp_seconds": 675,
+              "evidence_ids": [
+                "f0675_00"
+              ],
+              "basis": "Distinct named native Copycat reveal face observed in this source order.",
+              "limit_reason": null
+            },
+            {
+              "name": "Lucky Ice Pop",
+              "reveal_position": 3,
+              "source_video": "20261006_012927000_iOS.MP4",
+              "timestamp_seconds": 676,
+              "evidence_ids": [
+                "f0676_00"
+              ],
+              "basis": "Distinct named native Copycat reveal face observed in this source order.",
+              "limit_reason": null
+            },
+            {
+              "name": "Cyrus",
+              "reveal_position": 4,
+              "source_video": "20261006_012927000_iOS.MP4",
+              "timestamp_seconds": 677,
+              "evidence_ids": [
+                "f0677_00"
+              ],
+              "basis": "Distinct named native Copycat reveal face observed in this source order.",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 0,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": 674,
+          "evidence_ids": [
+            "f0674_00",
+            "f0675_00",
+            "f0676_00",
+            "f0677_00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 5,
+          "cards_in_reveal_order": [
+            {
+              "name": "Type: Null [Quick Blow, 80 HP]",
+              "reveal_position": 1,
+              "source_video": "20261006_012927000_iOS.MP4",
+              "timestamp_seconds": 684,
+              "evidence_ids": [
+                "f0684_00"
+              ],
+              "basis": "Named card face or arrival fan visible.",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": 684,
+          "evidence_ids": [
+            "f0684_00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "kind": "item",
+          "card_name": "Poké Ball",
+          "target": "owner deck",
+          "energy": null,
+          "result": "Poké Ball consumed656–657, face-up Ball display658, Team Rocket’s Meowth search reveal660, then hand arrival/placement.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": 657,
+          "evidence_ids": [
+            "f0656_00",
+            "f0657_00",
+            "f0658_00",
+            "f0660_00"
+          ],
+          "basis": "Visible owner selection or resulting resolution, bounded by native adjacent frames.",
+          "limit_reason": "Timestamp locates display/resolution; exact touch may precede it.",
+          "order": 1,
+          "input_interval_seconds": [
+            656,
+            657
+          ],
+          "input_timing_limit": "Intact five-card hand656, Ball consumed and handfour657. Exact touch bounded by those frames.",
+          "display_or_resolution_timestamp_seconds": 658,
+          "card_reveal_timestamp_seconds": 658,
+          "search_reveal_timestamp_seconds": 660
+        },
+        {
+          "kind": "bench",
+          "card_name": "Team Rocket’s Meowth [Scratch, 50 HP]",
+          "target": "right Bench",
+          "energy": null,
+          "result": "First Team Rocket’s Meowth placed.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": 664,
+          "evidence_ids": [
+            "f0664_00"
+          ],
+          "basis": "Visible owner selection or resulting resolution, bounded by native adjacent frames.",
+          "limit_reason": "Timestamp locates display/resolution; exact touch may precede it.",
+          "order": 2,
+          "input_interval_seconds": null,
+          "input_timing_limit": "Exact touch time was not measured; cited frame locates observed selection/display/resolution only.",
+          "display_or_resolution_timestamp_seconds": 664
+        },
+        {
+          "kind": "supporter",
+          "card_name": "Copycat",
+          "target": "owner hand",
+          "energy": null,
+          "result": "Remaining Persian, Lucky Ice Pop and Silvally Gold Breaker shuffled; draws4 to match four visible opponent backs.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 0,
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": 670,
+          "evidence_ids": [
+            "f0667_00",
+            "f0668_00",
+            "f0670_00"
+          ],
+          "basis": "Visible owner selection or resulting resolution, bounded by native adjacent frames.",
+          "limit_reason": "Timestamp locates display/resolution; exact touch may precede it.",
+          "order": 3,
+          "input_interval_seconds": [
+            667,
+            668
+          ],
+          "input_timing_limit": "667 intact four-card selection;668 consumed Copycat and three remaining cards;670 old three return. Actual PTS and exact touch unmeasured.",
+          "display_or_resolution_timestamp_seconds": 670,
+          "card_reveal_timestamp_seconds": 668,
+          "returned_hand_timestamp_seconds": 670
+        },
+        {
+          "kind": "bench",
+          "card_name": "Team Rocket’s Meowth [Scratch, 50 HP]",
+          "target": "left Bench",
+          "energy": null,
+          "result": "Second Team Rocket’s Meowth placed.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": 680,
+          "evidence_ids": [
+            "f0680_00"
+          ],
+          "basis": "Visible owner selection or resulting resolution, bounded by native adjacent frames.",
+          "limit_reason": "Timestamp locates display/resolution; exact touch may precede it.",
+          "order": 4,
+          "input_interval_seconds": null,
+          "input_timing_limit": "Exact touch time was not measured; cited frame locates observed selection/display/resolution only.",
+          "display_or_resolution_timestamp_seconds": 680
+        },
+        {
+          "kind": "item",
+          "card_name": "Poké Ball",
+          "target": "owner deck",
+          "energy": null,
+          "result": "Type: Null search arrives.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": 682,
+          "evidence_ids": [
+            "f0682_00"
+          ],
+          "basis": "Visible owner selection or resulting resolution, bounded by native adjacent frames.",
+          "limit_reason": "Timestamp locates display/resolution; exact touch may precede it.",
+          "order": 5,
+          "input_interval_seconds": null,
+          "input_timing_limit": "Exact touch time was not measured; cited frame locates observed selection/display/resolution only.",
+          "display_or_resolution_timestamp_seconds": 682
+        },
+        {
+          "kind": "bench",
+          "card_name": "Type: Null [Quick Blow, 80 HP]",
+          "target": "middle Bench",
+          "energy": null,
+          "result": "Type: Null placed.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": 686,
+          "evidence_ids": [
+            "f0686_00"
+          ],
+          "basis": "Visible owner selection or resulting resolution, bounded by native adjacent frames.",
+          "limit_reason": "Timestamp locates display/resolution; exact touch may precede it.",
+          "order": 6,
+          "input_interval_seconds": null,
+          "input_timing_limit": "Exact touch time was not measured; cited frame locates observed selection/display/resolution only.",
+          "display_or_resolution_timestamp_seconds": 686
+        },
+        {
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "Owner selects End Turn; no attack.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": 688,
+          "evidence_ids": [
+            "f0688_00"
+          ],
+          "basis": "Visible owner selection or resulting resolution, bounded by native adjacent frames.",
+          "limit_reason": "Timestamp locates display/resolution; exact touch may precede it.",
+          "order": 7,
+          "input_interval_seconds": null,
+          "input_timing_limit": "Exact touch time was not measured; cited frame locates observed selection/display/resolution only.",
+          "display_or_resolution_timestamp_seconds": 688
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "kind": "Full-Mouth Manner",
+          "result": "Already full160; no actual healing.",
+          "evidence_ids": [
+            "f0689_00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "turn_number_displayed_limit_reason": "No persistent turn number is visible in this board view; row number follows actual turn transitions. Separate cited banners establish displayed labels.",
+        "phase": "after draw or resolved action as specified by snapshot timestamp",
+        "stadium": {
+          "name": "none",
+          "status": "visibly_absent"
+        },
+        "owner": {
+          "active": {
+            "name": "Snorlax ex",
+            "variant": "Full-Mouth Manner / Flop-Down Punch, 160 HP",
+            "hp_now": 160,
+            "hp_max": 160,
+            "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "status": "observed",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0656_00"
+            ]
+          },
+          "bench_in_position_order": [
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 1,
+              "position_label": "left",
+              "evidence_ids": [
+                "f0656_00"
+              ]
+            },
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 2,
+              "position_label": "middle",
+              "evidence_ids": [
+                "f0656_00"
+              ]
+            },
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 3,
+              "position_label": "right",
+              "evidence_ids": [
+                "f0656_00"
+              ]
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Large current circle and separate small next icon read independently. An empty current circle is not the small next icon.",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0656_00"
+            ]
+          },
+          "points": 0,
+          "board_effects": [],
+          "status": "observed",
+          "limit_reason": null,
+          "evidence_ids": [
+            "f0656_00"
+          ]
+        },
+        "opponent": {
+          "active": {
+            "name": "Zeraora",
+            "variant": "Thunderclap Flash / Lightning Claw, 90 HP",
+            "hp_now": 90,
+            "hp_max": 90,
+            "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "status": "observed",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0656_00"
+            ]
+          },
+          "bench_in_position_order": [
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 1,
+              "position_label": "left",
+              "evidence_ids": [
+                "f0656_00"
+              ]
+            },
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 2,
+              "position_label": "middle",
+              "evidence_ids": [
+                "f0656_00"
+              ]
+            },
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 3,
+              "position_label": "right",
+              "evidence_ids": [
+                "f0656_00"
+              ]
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Large current circle and separate small next icon read independently. An empty current circle is not the small next icon.",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0656_00"
+            ]
+          },
+          "points": 0,
+          "board_effects": [],
+          "status": "observed",
+          "limit_reason": null,
+          "evidence_ids": [
+            "f0656_00"
+          ]
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0656_00"
+        ],
+        "displayed_turn_banner": {
+          "number": 1,
+          "evidence_ids": [
+            "f0653_00"
+          ],
+          "scope": "Separate transient banner, not persistent selected board view."
+        }
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "turn_number_displayed_limit_reason": "No persistent turn number is visible in this board view; row number follows actual turn transitions. Separate cited banners establish displayed labels.",
+        "phase": "after draw or resolved action as specified by snapshot timestamp",
+        "stadium": {
+          "name": "none",
+          "status": "visibly_absent"
+        },
+        "owner": {
+          "active": {
+            "name": "Snorlax ex",
+            "variant": "Full-Mouth Manner / Flop-Down Punch, 160 HP",
+            "hp_now": 160,
+            "hp_max": 160,
+            "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "status": "observed",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0689_00"
+            ]
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Meowth",
+              "variant": "Scratch, 50 HP",
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "status": "observed",
+              "limit_reason": null,
+              "bench_position": 1,
+              "position_label": "left",
+              "evidence_ids": [
+                "f0689_00"
+              ]
+            },
+            {
+              "name": "Type: Null",
+              "variant": "Quick Blow, 80 HP",
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "status": "observed",
+              "limit_reason": null,
+              "bench_position": 2,
+              "position_label": "middle",
+              "evidence_ids": [
+                "f0689_00"
+              ]
+            },
+            {
+              "name": "Team Rocket’s Meowth",
+              "variant": "Scratch, 50 HP",
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "status": "observed",
+              "limit_reason": null,
+              "bench_position": 3,
+              "position_label": "right",
+              "evidence_ids": [
+                "f0689_00"
+              ]
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Large current circle and separate small next icon read independently. An empty current circle is not the small next icon.",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0689_00"
+            ]
+          },
+          "points": 0,
+          "board_effects": [],
+          "status": "observed",
+          "limit_reason": null,
+          "evidence_ids": [
+            "f0689_00"
+          ]
+        },
+        "opponent": {
+          "active": {
+            "name": "Zeraora",
+            "variant": "Thunderclap Flash / Lightning Claw, 90 HP",
+            "hp_now": 90,
+            "hp_max": 90,
+            "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "status": "observed",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0689_00"
+            ]
+          },
+          "bench_in_position_order": [
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 1,
+              "position_label": "left",
+              "evidence_ids": [
+                "f0689_00"
+              ]
+            },
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 2,
+              "position_label": "middle",
+              "evidence_ids": [
+                "f0689_00"
+              ]
+            },
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 3,
+              "position_label": "right",
+              "evidence_ids": [
+                "f0689_00"
+              ]
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Large current circle and separate small next icon read independently. An empty current circle is not the small next icon.",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0689_00"
+            ]
+          },
+          "points": 0,
+          "board_effects": [],
+          "status": "observed",
+          "limit_reason": null,
+          "evidence_ids": [
+            "f0689_00"
+          ]
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0689_00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          "Lucky Ice Pop",
+          "Cyrus"
+        ],
+        "count": 2,
+        "basis": "Native bottom crop and named arrivals; literal left-to-right fan order at cited view.",
+        "evidence_ids": [
+          "f0689_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "discard_1_owner"
+      ],
+      "turn_evidence_ids": [
+        "f0656_00",
+        "f0689_00",
+        "f0660_00",
+        "f0664_00",
+        "f0670_00",
+        "f0680_00",
+        "f0684_00",
+        "f0686_00",
+        "f0688_00",
+        "f0654_00",
+        "f0662_00",
+        "f0674_00",
+        "f0656_00",
+        "f0657_00",
+        "f0658_00",
+        "f0660_00"
+      ],
+      "limits": [
+        "Hidden opponent card identities and remote touch timing are not visible.",
+        "No discard-pile window was opened during this turn; top-card previews are partial only.",
+        "Before-end687 is still a Type: Null placement zoom, with the end hand visible; full board resolves688. It is not labeled an unzoomed complete board capture.",
+        "Before-end687 is still a Type: Null placement zoom, with the end hand visible; full board resolves688. It is not labeled an unzoomed complete board capture."
+      ]
+    },
+    {
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_interval_seconds": [
+        690,
+        710
+      ],
+      "timing": {
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 694,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 710,
+        "precision_limit": "Approximate source-local seconds; seek target PTS not separately measured."
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": 5,
+        "basis": "Five distinct settled backs at692 after hidden normal draw.",
+        "status": "observed_concealed_faces",
+        "evidence_ids": [
+          "f0692_00"
+        ],
+        "limit_reason": "Count observed, identities concealed; individual normal draw animation time unresolved within690-692."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Lucky Ice Pop",
+          "Cyrus"
+        ],
+        "count": 2,
+        "basis": "Native bottom crop and named arrivals; literal left-to-right fan order at cited view.",
+        "evidence_ids": [
+          "f0692_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": [
+          5,
+          5
+        ],
+        "count_method": "Count visible distinct backs in native top crop",
+        "basis": "Literal visible fan at selected frame; no inferred count from deck total.",
+        "evidence_ids": [
+          "f0692_00"
+        ],
+        "limit_reason": "Five literal settled backs at opponent turn2 start; identities hidden."
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261006_012927000_iOS.MP4",
+              "timestamp_seconds": null,
+              "evidence_ids": [
+                "f0690_00",
+                "f0692_00"
+              ],
+              "basis": "Completed fan expands4 to5; no individual face exposed.",
+              "limit_reason": "One hidden normal draw completed by692; exact arrival within690-692 unresolved.",
+              "displayed_draw_result_window_seconds": [
+                690,
+                692
+              ]
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": [
+            "f0690_00",
+            "f0692_00"
+          ],
+          "limit_reason": "One hidden normal draw completed by692; exact arrival within690-692 unresolved.",
+          "displayed_draw_result_window_seconds": [
+            690,
+            692
+          ]
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor’s Research",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261006_012927000_iOS.MP4",
+              "timestamp_seconds": null,
+              "evidence_ids": [
+                "f0696_00",
+                "f0698_00"
+              ],
+              "basis": "Opaque schema slot in combined two-card result; separately timed hidden reveals not established.",
+              "limit_reason": "Individual identity and reveal time unknown.",
+              "displayed_draw_result_window_seconds": [
+                696,
+                698
+              ]
+            },
+            {
+              "name": null,
+              "reveal_position": 2,
+              "source_video": "20261006_012927000_iOS.MP4",
+              "timestamp_seconds": null,
+              "evidence_ids": [
+                "f0696_00",
+                "f0698_00"
+              ],
+              "basis": "Opaque schema slot in combined two-card result; separately timed hidden reveals not established.",
+              "limit_reason": "Individual identity and reveal time unknown.",
+              "displayed_draw_result_window_seconds": [
+                696,
+                698
+              ]
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": [
+            "f0696_00",
+            "f0698_00"
+          ],
+          "limit_reason": "Four backs696 and six698 establish the combined two hidden additions, not individual reveal times.",
+          "displayed_draw_result_window_seconds": [
+            696,
+            698
+          ]
+        }
+      ],
+      "plays_in_order": [
+        {
+          "kind": "supporter",
+          "card_name": "Professor’s Research",
+          "target": "opponent deck",
+          "energy": null,
+          "result": "Two hidden draws; fan reaches6.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 6,
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": 696,
+          "evidence_ids": [
+            "f0696_00"
+          ],
+          "basis": "Display/reveal/resolution order; remote input and exact touch time are not observable.",
+          "limit_reason": "Remote opponent input timing is unknown.",
+          "order": 1,
+          "input_interval_seconds": null,
+          "input_timing_limit": "Exact remote input unavailable.",
+          "display_or_resolution_timestamp_seconds": 696
+        },
+        {
+          "kind": "item",
+          "card_name": "Order Pad",
+          "target": "opponent deck",
+          "energy": null,
+          "result": "Coin tails; no search or card arrival.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            {
+              "event": "tails",
+              "evidence_ids": [
+                "f0704_00"
+              ]
+            }
+          ],
+          "hand_count_after": 5,
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": 700,
+          "evidence_ids": [
+            "f0700_00",
+            "f0702_00",
+            "f0704_00"
+          ],
+          "basis": "Display/reveal/resolution order; remote input and exact touch time are not observable.",
+          "limit_reason": "Remote opponent input timing is unknown.",
+          "order": 2,
+          "input_interval_seconds": null,
+          "input_timing_limit": "Exact remote input unavailable.",
+          "display_or_resolution_timestamp_seconds": 700,
+          "card_reveal_timestamp_seconds": 700,
+          "coin_animation_timestamp_seconds": 702
+        },
+        {
+          "kind": "concede",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "Opponent conceded, explicit message. No attack or Energy attachment.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261006_012927000_iOS.MP4",
+          "timestamp_seconds": 710,
+          "evidence_ids": [
+            "f0710_00"
+          ],
+          "basis": "Display/reveal/resolution order; remote input and exact touch time are not observable.",
+          "limit_reason": "Remote opponent input timing is unknown.",
+          "order": 3,
+          "input_interval_seconds": null,
+          "input_timing_limit": "Exact remote input unavailable.",
+          "display_or_resolution_timestamp_seconds": 710
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "kind": "energy_generation",
+          "type": "Lightning",
+          "next": "Lightning",
+          "evidence_ids": [
+            "f0690_00",
+            "f0692_00"
+          ],
+          "observed_window_seconds": [
+            690,
+            692
+          ]
+        },
+        {
+          "kind": "result",
+          "outcome": "Opponent conceded",
+          "evidence_ids": [
+            "f0710_00"
+          ]
+        },
+        {
+          "kind": "result",
+          "outcome": "Victory",
+          "evidence_ids": [
+            "f0718_00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "turn_number_displayed_limit_reason": "No persistent turn number is visible in this board view; row number follows actual turn transitions. Separate cited banners establish displayed labels.",
+        "phase": "after draw or resolved action as specified by snapshot timestamp",
+        "stadium": {
+          "name": "none",
+          "status": "visibly_absent"
+        },
+        "owner": {
+          "active": {
+            "name": "Snorlax ex",
+            "variant": "Full-Mouth Manner / Flop-Down Punch, 160 HP",
+            "hp_now": 160,
+            "hp_max": 160,
+            "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "status": "observed",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0692_00"
+            ]
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Meowth",
+              "variant": "Scratch, 50 HP",
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "status": "observed",
+              "limit_reason": null,
+              "bench_position": 1,
+              "position_label": "left",
+              "evidence_ids": [
+                "f0692_00"
+              ]
+            },
+            {
+              "name": "Type: Null",
+              "variant": "Quick Blow, 80 HP",
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "status": "observed",
+              "limit_reason": null,
+              "bench_position": 2,
+              "position_label": "middle",
+              "evidence_ids": [
+                "f0692_00"
+              ]
+            },
+            {
+              "name": "Team Rocket’s Meowth",
+              "variant": "Scratch, 50 HP",
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "status": "observed",
+              "limit_reason": null,
+              "bench_position": 3,
+              "position_label": "right",
+              "evidence_ids": [
+                "f0692_00"
+              ]
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Large current circle and separate small next icon read independently. An empty current circle is not the small next icon.",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0692_00"
+            ]
+          },
+          "points": 0,
+          "board_effects": [],
+          "status": "observed",
+          "limit_reason": null,
+          "evidence_ids": [
+            "f0692_00"
+          ]
+        },
+        "opponent": {
+          "active": {
+            "name": "Zeraora",
+            "variant": "Thunderclap Flash / Lightning Claw, 90 HP",
+            "hp_now": 90,
+            "hp_max": 90,
+            "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "status": "observed",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0692_00"
+            ]
+          },
+          "bench_in_position_order": [
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 1,
+              "position_label": "left",
+              "evidence_ids": [
+                "f0692_00"
+              ]
+            },
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 2,
+              "position_label": "middle",
+              "evidence_ids": [
+                "f0692_00"
+              ]
+            },
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 3,
+              "position_label": "right",
+              "evidence_ids": [
+                "f0692_00"
+              ]
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Large current Lightning and separate small next Lightning both visible692; generation occurred by692, not deferred to698.",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0692_00"
+            ],
+            "generation_window_seconds": [
+              690,
+              692
+            ]
+          },
+          "points": 0,
+          "board_effects": [],
+          "status": "observed",
+          "limit_reason": null,
+          "evidence_ids": [
+            "f0692_00"
+          ]
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0692_00"
+        ],
+        "displayed_turn_banner": {
+          "number": 2,
+          "evidence_ids": [
+            "f0690_00"
+          ],
+          "scope": "Separate transient banner, not persistent selected board view."
+        }
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "turn_number_displayed_limit_reason": "No persistent turn number is visible in this board view; row number follows actual turn transitions. Separate cited banners establish displayed labels.",
+        "phase": "after draw or resolved action as specified by snapshot timestamp",
+        "stadium": {
+          "name": "none",
+          "status": "visibly_absent"
+        },
+        "owner": {
+          "active": {
+            "name": "Snorlax ex",
+            "variant": "Full-Mouth Manner / Flop-Down Punch, 160 HP",
+            "hp_now": 160,
+            "hp_max": 160,
+            "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "status": "observed",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0710_00"
+            ]
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Meowth",
+              "variant": "Scratch, 50 HP",
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "status": "observed",
+              "limit_reason": null,
+              "bench_position": 1,
+              "position_label": "left",
+              "evidence_ids": [
+                "f0710_00"
+              ]
+            },
+            {
+              "name": "Type: Null",
+              "variant": "Quick Blow, 80 HP",
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "status": "observed",
+              "limit_reason": null,
+              "bench_position": 2,
+              "position_label": "middle",
+              "evidence_ids": [
+                "f0710_00"
+              ]
+            },
+            {
+              "name": "Team Rocket’s Meowth",
+              "variant": "Scratch, 50 HP",
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "status": "observed",
+              "limit_reason": null,
+              "bench_position": 3,
+              "position_label": "right",
+              "evidence_ids": [
+                "f0710_00"
+              ]
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "none",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Large current circle and separate small next icon read independently. An empty current circle is not the small next icon.",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0710_00"
+            ]
+          },
+          "points": 0,
+          "board_effects": [],
+          "status": "observed",
+          "limit_reason": null,
+          "evidence_ids": [
+            "f0710_00"
+          ]
+        },
+        "opponent": {
+          "active": {
+            "name": "Zeraora",
+            "variant": "Thunderclap Flash / Lightning Claw, 90 HP",
+            "hp_now": 90,
+            "hp_max": 90,
+            "hp_max_basis": "Printed card maximum and undamaged starting display; no maximum-HP modifier observed.",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "status": "observed",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0710_00"
+            ]
+          },
+          "bench_in_position_order": [
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 1,
+              "position_label": "left",
+              "evidence_ids": [
+                "f0710_00"
+              ]
+            },
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 2,
+              "position_label": "middle",
+              "evidence_ids": [
+                "f0710_00"
+              ]
+            },
+            {
+              "name": "empty",
+              "status": "visibly_empty",
+              "hp_now": null,
+              "hp_max": null,
+              "damage": null,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "limit_reason": "Empty position has no Pokémon HP.",
+              "bench_position": 3,
+              "position_label": "right",
+              "evidence_ids": [
+                "f0710_00"
+              ]
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Lightning",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Large current circle and separate small next icon read independently. An empty current circle is not the small next icon.",
+            "limit_reason": null,
+            "evidence_ids": [
+              "f0710_00"
+            ]
+          },
+          "points": 0,
+          "board_effects": [],
+          "status": "observed",
+          "limit_reason": null,
+          "evidence_ids": [
+            "f0710_00"
+          ]
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0710_00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          "Lucky Ice Pop",
+          "Cyrus"
+        ],
+        "count": 2,
+        "basis": "Native bottom crop and named arrivals; literal left-to-right fan order at cited view.",
+        "evidence_ids": [
+          "f0710_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "discard_2_opponent"
+      ],
+      "turn_evidence_ids": [
+        "f0692_00",
+        "f0710_00",
+        "f0696_00",
+        "f0702_00"
+      ],
+      "limits": [
+        "Hidden opponent card identities and remote touch timing are not visible.",
+        "No discard-pile window was opened during this turn; top-card previews are partial only."
+      ]
+    }
+  ],
+  "limits": [
+    "Opponent hidden identities and remote touches not visible.",
+    "Full discard piles not filmed."
+  ]
+}

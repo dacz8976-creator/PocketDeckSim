@@ -1,0 +1,3376 @@
+{
+  "schema": "pause-games/turn-capture-v1",
+  "is_template": false,
+  "game_id": "20261013_015011000_iOS",
+  "sources": [
+    {
+      "video_basename": "20261013_015011000_iOS.MP4",
+      "sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+  "default_capture_policy": {
+    "owner_turn_offsets_after_draw_seconds": [
+      1,
+      3,
+      6
+    ],
+    "before_end_action_required": true,
+    "native_resolution_required": true,
+    "bottom_crop_height_fraction": 0.2,
+    "top_crop": "[0,0,1170,760]",
+    "fixed_grid_is_turn_start_evidence": false,
+    "discard_target_every_owner_turns": [
+      2,
+      3
+    ]
+  },
+  "frames": [
+    {
+      "evidence_id": "n1_00",
+      "role": "native_action_or_board",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 1.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0001.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0001.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0001.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Source-bound native evidence supporting adjacent timeline phase.",
+      "suitability_or_limit": "Additional action/boundary evidence; not automatically start-hand evidence."
+    },
+    {
+      "evidence_id": "n27_50",
+      "role": "opening_hand",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 27.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0027.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0027.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0027.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "All five opening cards visible before Active placement.",
+      "suitability_or_limit": "All five opening cards visible before Active placement."
+    },
+    {
+      "evidence_id": "n28_50",
+      "role": "native_action_or_board",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 28.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0028.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0028.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0028.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Source-bound native evidence supporting adjacent timeline phase.",
+      "suitability_or_limit": "Additional action/boundary evidence; not automatically start-hand evidence."
+    },
+    {
+      "evidence_id": "n34_50",
+      "role": "native_action_or_board",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 34.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0034.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0034.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0034.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Source-bound native evidence supporting adjacent timeline phase.",
+      "suitability_or_limit": "Additional action/boundary evidence; not automatically start-hand evidence."
+    },
+    {
+      "evidence_id": "n37_00",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 37.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0037.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0037.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0037.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Source-bound native evidence supporting adjacent timeline phase.",
+      "suitability_or_limit": "Additional action/boundary evidence; not automatically start-hand evidence."
+    },
+    {
+      "evidence_id": "n42_00",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 42.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0042.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0042.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0042.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Source-bound native evidence supporting adjacent timeline phase.",
+      "suitability_or_limit": "Additional action/boundary evidence; not automatically start-hand evidence."
+    },
+    {
+      "evidence_id": "n43_20",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 43.2,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0043.20.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0043.20_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0043.20_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Ilima draw settled; four-card unzoomed owner hand before Poke Ball.",
+      "suitability_or_limit": "Ilima draw settled; four-card unzoomed owner hand before Poke Ball."
+    },
+    {
+      "evidence_id": "n43_50",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 43.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0043.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0043.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0043.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Clear pre-play four-card hand: Copycat, Poke Ball, Alolan Muk, Ilima.",
+      "suitability_or_limit": "Clear pre-play four-card hand: Copycat, Poke Ball, Alolan Muk, Ilima."
+    },
+    {
+      "evidence_id": "n44_20",
+      "role": "draw_timed_candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 44.2,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 43.2,
+      "offset_after_draw_seconds": 1,
+      "full_frame_path": "turn_evidence/t0044.20.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0044.20_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0044.20_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Poke Ball has already left hand; unsuitable start hand.",
+      "suitability_or_limit": "Poke Ball has already left hand; unsuitable start hand."
+    },
+    {
+      "evidence_id": "n45_00",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 45.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0045.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0045.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0045.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Source-bound native evidence supporting adjacent timeline phase.",
+      "suitability_or_limit": "Additional action/boundary evidence; not automatically start-hand evidence."
+    },
+    {
+      "evidence_id": "n46_20",
+      "role": "draw_timed_candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 46.2,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 43.2,
+      "offset_after_draw_seconds": 3,
+      "full_frame_path": "turn_evidence/t0046.20.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0046.20_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0046.20_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Poke Ball effect/search animation already underway.",
+      "suitability_or_limit": "Poke Ball effect/search animation already underway."
+    },
+    {
+      "evidence_id": "n47_00",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 47.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0047.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0047.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0047.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Poke Ball reveals Regigigas 150 with Seal of Antiquity.",
+      "suitability_or_limit": "Poke Ball reveals Regigigas 150 with Seal of Antiquity."
+    },
+    {
+      "evidence_id": "n48_50",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 48.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0048.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0048.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0048.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Source-bound native evidence supporting adjacent timeline phase.",
+      "suitability_or_limit": "Additional action/boundary evidence; not automatically start-hand evidence."
+    },
+    {
+      "evidence_id": "n49_20",
+      "role": "draw_timed_candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 49.2,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 43.2,
+      "offset_after_draw_seconds": 6,
+      "full_frame_path": "turn_evidence/t0049.20.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0049.20_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0049.20_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Regigigas search already resolved; unsuitable start hand.",
+      "suitability_or_limit": "Regigigas search already resolved; unsuitable start hand."
+    },
+    {
+      "evidence_id": "n50_50",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 50.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0050.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0050.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0050.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Regigigas now benched center; owner hand 3.",
+      "suitability_or_limit": "Regigigas now benched center; owner hand 3."
+    },
+    {
+      "evidence_id": "n52_00",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 52.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0052.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0052.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0052.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Seal of Antiquity attack prohibition visible.",
+      "suitability_or_limit": "Seal of Antiquity attack prohibition visible."
+    },
+    {
+      "evidence_id": "n53_00",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 53.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0053.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0053.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0053.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Same attack-prohibition banner; no attack or state change.",
+      "suitability_or_limit": "Same attack-prohibition banner; no attack or state change."
+    },
+    {
+      "evidence_id": "n59_50",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 59.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0059.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0059.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0059.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Source-bound native evidence supporting adjacent timeline phase.",
+      "suitability_or_limit": "Additional action/boundary evidence; not automatically start-hand evidence."
+    },
+    {
+      "evidence_id": "n60_00",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 60.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0060.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0060.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0060.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Copycat already removed from hand for play.",
+      "suitability_or_limit": "Copycat already removed from hand for play."
+    },
+    {
+      "evidence_id": "n60_50",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 60.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0060.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0060.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0060.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Source-bound native evidence supporting adjacent timeline phase.",
+      "suitability_or_limit": "Additional action/boundary evidence; not automatically start-hand evidence."
+    },
+    {
+      "evidence_id": "n65_50",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 65.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0065.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0065.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0065.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Copycat draw transition before first Research zoom; no settled Research yet.",
+      "suitability_or_limit": "Copycat draw transition before first Research zoom; no settled Research yet."
+    },
+    {
+      "evidence_id": "n66_00",
+      "role": "native_individual_Copycat_reveal",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 66.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0066.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0066.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0066.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Copycat FIRST Professor's Research reveal zoom, no prior Research settled in hand.",
+      "suitability_or_limit": "Copycat FIRST Professor's Research reveal zoom, no prior Research settled in hand."
+    },
+    {
+      "evidence_id": "n66_50",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 66.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0066.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0066.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0066.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Copycat two Research cards in transition; first beneath second arriving card.",
+      "suitability_or_limit": "Copycat two Research cards in transition; first beneath second arriving card."
+    },
+    {
+      "evidence_id": "n67_00",
+      "role": "native_individual_Copycat_reveal",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 67.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0067.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0067.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0067.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Copycat SECOND Professor's Research reveal zoom, first Research already in hand.",
+      "suitability_or_limit": "Copycat SECOND Professor's Research reveal zoom, first Research already in hand."
+    },
+    {
+      "evidence_id": "n67_50",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 67.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0067.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0067.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0067.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Copycat arrival transition; not selected as individual reveal anchor.",
+      "suitability_or_limit": "Copycat arrival transition; not selected as individual reveal anchor."
+    },
+    {
+      "evidence_id": "n68_00",
+      "role": "native_individual_Copycat_reveal",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 68.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0068.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0068.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0068.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Copycat THIRD reveal Heavy Helmet zoom, two Research cards settled underneath.",
+      "suitability_or_limit": "Copycat THIRD reveal Heavy Helmet zoom, two Research cards settled underneath."
+    },
+    {
+      "evidence_id": "n68_50",
+      "role": "native_individual_Copycat_reveal",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 68.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0068.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0068.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0068.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Copycat FOURTH reveal Lucky Ice Pop zoom, Helmet and two Research beneath it.",
+      "suitability_or_limit": "Copycat FOURTH reveal Lucky Ice Pop zoom, Helmet and two Research beneath it."
+    },
+    {
+      "evidence_id": "n69_00",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 69.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0069.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0069.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0069.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Copycat post-arrival transition into four-card hand.",
+      "suitability_or_limit": "Copycat post-arrival transition into four-card hand."
+    },
+    {
+      "evidence_id": "n69_50",
+      "role": "native_post_Copycat_settled_hand",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 69.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0069.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0069.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0069.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Copycat settled four-card hand after all four reveals; not Pop arrival anchor.",
+      "suitability_or_limit": "Copycat settled four-card hand after all four reveals; not Pop arrival anchor."
+    },
+    {
+      "evidence_id": "n70_00",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 70.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0070.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0070.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0070.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Source-bound native evidence supporting adjacent timeline phase.",
+      "suitability_or_limit": "Additional action/boundary evidence; not automatically start-hand evidence."
+    },
+    {
+      "evidence_id": "n70_50",
+      "role": "native_action_or_board",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 70.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0070.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0070.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0070.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Four-card resulting hand, Heavy Helmet glow is inspection/selection, not a Tool attachment.",
+      "suitability_or_limit": "Four-card resulting hand, Heavy Helmet glow is inspection/selection, not a Tool attachment."
+    },
+    {
+      "evidence_id": "n71_50",
+      "role": "before_end_hand",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 71.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0071.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0071.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0071.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Final clear four-card hand immediately before End Turn.",
+      "suitability_or_limit": "Final clear four-card hand immediately before End Turn."
+    },
+    {
+      "evidence_id": "n71_80",
+      "role": "native_action_or_board",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 71.8,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0071.80.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0071.80_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0071.80_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Opponent turn 2 transition; too late for before-end hand.",
+      "suitability_or_limit": "Opponent turn 2 transition; too late for before-end hand."
+    },
+    {
+      "evidence_id": "n72_30",
+      "role": "native_action_or_board",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 72.3,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0072.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0072.30_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0072.30_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Current turn 2 displayed; owner still holds four cards.",
+      "suitability_or_limit": "Current turn 2 displayed; owner still holds four cards."
+    },
+    {
+      "evidence_id": "n73_50",
+      "role": "native_action_or_board",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 73.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0073.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0073.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0073.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Source-bound native evidence supporting adjacent timeline phase.",
+      "suitability_or_limit": "Additional action/boundary evidence; not automatically start-hand evidence."
+    },
+    {
+      "evidence_id": "n75_50",
+      "role": "native_action_or_board",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 75.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0075.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0075.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0075.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Opponent fan5 and one available Fighting Energy before first play.",
+      "suitability_or_limit": "Opponent fan5 and one available Fighting Energy before first play."
+    },
+    {
+      "evidence_id": "n79_50",
+      "role": "native_action_or_board",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 79.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0079.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0079.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0079.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Tyrogue benched left; Fighting Energy attachment to Falinks animating.",
+      "suitability_or_limit": "Tyrogue benched left; Fighting Energy attachment to Falinks animating."
+    },
+    {
+      "evidence_id": "n81_50",
+      "role": "native_action_or_board",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 81.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0081.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0081.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0081.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Falinks has one Fighting, Tyrogue 30 left Bench; opponent fan4.",
+      "suitability_or_limit": "Falinks has one Fighting, Tyrogue 30 left Bench; opponent fan4."
+    },
+    {
+      "evidence_id": "n107_00",
+      "role": "native_action_or_board",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 107.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0107.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0107.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0107.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Waiting for opponent to return; board unchanged.",
+      "suitability_or_limit": "Waiting for opponent to return; board unchanged."
+    },
+    {
+      "evidence_id": "n162_50",
+      "role": "native_action_or_board",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 162.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0162.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0162.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0162.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Turn3 begins after opponent timer expires.",
+      "suitability_or_limit": "Turn3 begins after opponent timer expires."
+    },
+    {
+      "evidence_id": "n164_50",
+      "role": "native_action_or_board",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 164.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0164.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0164.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0164.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Glimmora normal draw animation.",
+      "suitability_or_limit": "Glimmora normal draw animation."
+    },
+    {
+      "evidence_id": "n164_80",
+      "role": "native_action_or_board",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 164.8,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0164.80.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0164.80_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0164.80_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Source-bound native evidence supporting adjacent timeline phase.",
+      "suitability_or_limit": "Additional action/boundary evidence; not automatically start-hand evidence."
+    },
+    {
+      "evidence_id": "n165_50",
+      "role": "native_action_or_board",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 165.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0165.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0165.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0165.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Glimmora draw reveal, not a voluntary card play.",
+      "suitability_or_limit": "Glimmora draw reveal, not a voluntary card play."
+    },
+    {
+      "evidence_id": "n166_00",
+      "role": "native_action_or_board",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 166.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0166.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0166.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0166.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Five-card hand settled after draw, before any voluntary play.",
+      "suitability_or_limit": "Five-card hand settled after draw, before any voluntary play."
+    },
+    {
+      "evidence_id": "n166_50",
+      "role": "native_action_or_board",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 166.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0166.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0166.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0166.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Source-bound native evidence supporting adjacent timeline phase.",
+      "suitability_or_limit": "Additional action/boundary evidence; not automatically start-hand evidence."
+    },
+    {
+      "evidence_id": "n167_00",
+      "role": "draw_timed_candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 167.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 166,
+      "offset_after_draw_seconds": 1,
+      "full_frame_path": "turn_evidence/t0167.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0167.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0167.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Darkness Energy generated; unzoomed hand5 before voluntary play.",
+      "suitability_or_limit": "Darkness Energy generated; unzoomed hand5 before voluntary play."
+    },
+    {
+      "evidence_id": "n167_50",
+      "role": "before_end_hand",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 167.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0167.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0167.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0167.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Last clear five-card hand and both boards before terminal modal; one unused Darkness visible.",
+      "suitability_or_limit": "Last clear five-card hand and both boards before terminal modal; one unused Darkness visible."
+    },
+    {
+      "evidence_id": "n168_50",
+      "role": "native_terminal_error",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 168.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0168.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0168.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0168.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Terminal error modal already enlarged over blurred board/hand; unsuitable for final hand or board evidence.",
+      "suitability_or_limit": "Terminal error modal already enlarged over blurred board/hand; unsuitable for final hand or board evidence."
+    },
+    {
+      "evidence_id": "n169_00",
+      "role": "draw_timed_candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 169.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 166,
+      "offset_after_draw_seconds": 3,
+      "full_frame_path": "turn_evidence/t0169.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0169.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0169.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Opponent did not return error; +3 candidate is obstructed.",
+      "suitability_or_limit": "Opponent did not return error; +3 candidate is obstructed."
+    },
+    {
+      "evidence_id": "n169_50",
+      "role": "native_action_or_board",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 169.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0169.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0169.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0169.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Same explicit opponent-return error.",
+      "suitability_or_limit": "Same explicit opponent-return error."
+    },
+    {
+      "evidence_id": "n170_50",
+      "role": "native_action_or_board",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 170.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0170.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0170.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0170.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Source-bound native evidence supporting adjacent timeline phase.",
+      "suitability_or_limit": "Additional action/boundary evidence; not automatically start-hand evidence."
+    },
+    {
+      "evidence_id": "n172_00",
+      "role": "draw_timed_candidate",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 172.0,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": 166,
+      "offset_after_draw_seconds": 6,
+      "full_frame_path": "turn_evidence/t0172.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0172.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0172.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Victory animation; +6 candidate no longer gameplay.",
+      "suitability_or_limit": "Victory animation; +6 candidate no longer gameplay."
+    },
+    {
+      "evidence_id": "n181_50",
+      "role": "native_action_or_board",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 181.5,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0181.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0181.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0181.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Victory vs coke.",
+      "suitability_or_limit": "Victory vs coke."
+    },
+    {
+      "evidence_id": "n182_30",
+      "role": "native_action_or_board",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "requested_source_seconds": 182.3,
+      "actual_frame_seconds_if_measured": null,
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0182.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0182.30_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0182.30_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          760
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": true,
+      "hand_spread": false,
+      "observation": "Victory detail: went first, turns3, both points0, damage0.",
+      "suitability_or_limit": "Victory detail: went first, turns3, both points0, damage0."
+    }
+  ],
+  "overview_frames": [
+    {
+      "evidence_id": "o001",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00001.jpg",
+      "timestamp_seconds": 1.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o002",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00002.jpg",
+      "timestamp_seconds": 3.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o003",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00003.jpg",
+      "timestamp_seconds": 5.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o004",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00004.jpg",
+      "timestamp_seconds": 7.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o005",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00005.jpg",
+      "timestamp_seconds": 9.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o006",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00006.jpg",
+      "timestamp_seconds": 11.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o007",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00007.jpg",
+      "timestamp_seconds": 13.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o008",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00008.jpg",
+      "timestamp_seconds": 15.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o009",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00009.jpg",
+      "timestamp_seconds": 17.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o010",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00010.jpg",
+      "timestamp_seconds": 19.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o011",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00011.jpg",
+      "timestamp_seconds": 21.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o012",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00012.jpg",
+      "timestamp_seconds": 23.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o013",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00013.jpg",
+      "timestamp_seconds": 25.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o014",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00014.jpg",
+      "timestamp_seconds": 27.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o015",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00015.jpg",
+      "timestamp_seconds": 29.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o016",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00016.jpg",
+      "timestamp_seconds": 31.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o017",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00017.jpg",
+      "timestamp_seconds": 33.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o018",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00018.jpg",
+      "timestamp_seconds": 35.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o019",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00019.jpg",
+      "timestamp_seconds": 37.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o020",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00020.jpg",
+      "timestamp_seconds": 39.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o021",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00021.jpg",
+      "timestamp_seconds": 41.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o022",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00022.jpg",
+      "timestamp_seconds": 43.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o023",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00023.jpg",
+      "timestamp_seconds": 45.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o024",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00024.jpg",
+      "timestamp_seconds": 47.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o025",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00025.jpg",
+      "timestamp_seconds": 49.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o026",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00026.jpg",
+      "timestamp_seconds": 51.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o027",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00027.jpg",
+      "timestamp_seconds": 53.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o028",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00028.jpg",
+      "timestamp_seconds": 55.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o029",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00029.jpg",
+      "timestamp_seconds": 57.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o030",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00030.jpg",
+      "timestamp_seconds": 59.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o031",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00031.jpg",
+      "timestamp_seconds": 61.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o032",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00032.jpg",
+      "timestamp_seconds": 63.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o033",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00033.jpg",
+      "timestamp_seconds": 65.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o034",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00034.jpg",
+      "timestamp_seconds": 67.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o035",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00035.jpg",
+      "timestamp_seconds": 69.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o036",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00036.jpg",
+      "timestamp_seconds": 71.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o037",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00037.jpg",
+      "timestamp_seconds": 73.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o038",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00038.jpg",
+      "timestamp_seconds": 75.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o039",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00039.jpg",
+      "timestamp_seconds": 77.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o040",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00040.jpg",
+      "timestamp_seconds": 79.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o041",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00041.jpg",
+      "timestamp_seconds": 81.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o042",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00042.jpg",
+      "timestamp_seconds": 83.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o043",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00043.jpg",
+      "timestamp_seconds": 85.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o044",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00044.jpg",
+      "timestamp_seconds": 87.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o045",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00045.jpg",
+      "timestamp_seconds": 89.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o046",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00046.jpg",
+      "timestamp_seconds": 91.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o047",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00047.jpg",
+      "timestamp_seconds": 93.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o048",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00048.jpg",
+      "timestamp_seconds": 95.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o049",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00049.jpg",
+      "timestamp_seconds": 97.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o050",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00050.jpg",
+      "timestamp_seconds": 99.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o051",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00051.jpg",
+      "timestamp_seconds": 101.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o052",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00052.jpg",
+      "timestamp_seconds": 103.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o053",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00053.jpg",
+      "timestamp_seconds": 105.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o054",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00054.jpg",
+      "timestamp_seconds": 107.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o055",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00055.jpg",
+      "timestamp_seconds": 109.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o056",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00056.jpg",
+      "timestamp_seconds": 111.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o057",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00057.jpg",
+      "timestamp_seconds": 113.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o058",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00058.jpg",
+      "timestamp_seconds": 115.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o059",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00059.jpg",
+      "timestamp_seconds": 117.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o060",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00060.jpg",
+      "timestamp_seconds": 119.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o061",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00061.jpg",
+      "timestamp_seconds": 121.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o062",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00062.jpg",
+      "timestamp_seconds": 123.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o063",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00063.jpg",
+      "timestamp_seconds": 125.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o064",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00064.jpg",
+      "timestamp_seconds": 127.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o065",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00065.jpg",
+      "timestamp_seconds": 129.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o066",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00066.jpg",
+      "timestamp_seconds": 131.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o067",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00067.jpg",
+      "timestamp_seconds": 133.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o068",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00068.jpg",
+      "timestamp_seconds": 135.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o069",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00069.jpg",
+      "timestamp_seconds": 137.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o070",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00070.jpg",
+      "timestamp_seconds": 139.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o071",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00071.jpg",
+      "timestamp_seconds": 141.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o072",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00072.jpg",
+      "timestamp_seconds": 143.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o073",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00073.jpg",
+      "timestamp_seconds": 145.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o074",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00074.jpg",
+      "timestamp_seconds": 147.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o075",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00075.jpg",
+      "timestamp_seconds": 149.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o076",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00076.jpg",
+      "timestamp_seconds": 151.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o077",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00077.jpg",
+      "timestamp_seconds": 153.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o078",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00078.jpg",
+      "timestamp_seconds": 155.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o079",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00079.jpg",
+      "timestamp_seconds": 157.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o080",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00080.jpg",
+      "timestamp_seconds": 159.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o081",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00081.jpg",
+      "timestamp_seconds": 161.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o082",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00082.jpg",
+      "timestamp_seconds": 163.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o083",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00083.jpg",
+      "timestamp_seconds": 165.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o084",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00084.jpg",
+      "timestamp_seconds": 167.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o085",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00085.jpg",
+      "timestamp_seconds": 169.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o086",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00086.jpg",
+      "timestamp_seconds": 171.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o087",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00087.jpg",
+      "timestamp_seconds": 173.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o088",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00088.jpg",
+      "timestamp_seconds": 175.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o089",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00089.jpg",
+      "timestamp_seconds": 177.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o090",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00090.jpg",
+      "timestamp_seconds": 179.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    },
+    {
+      "evidence_id": "o091",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "source_sha256": "7394580c71facb269a7c6703e890ff1eb360ffd509875eb09d03343f43b4fe7a",
+      "path": "overview/sample_frames/00091.jpg",
+      "timestamp_seconds": 181.0,
+      "dimensions": {
+        "width": 390,
+        "height": 844
+      },
+      "role": "reduced locating and continuity only"
+    }
+  ],
+  "discard_snapshots": [
+    {
+      "snapshot_id": "discard_owner_absent",
+      "turn_number": null,
+      "pile_owner": "owner",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": null,
+      "full_pile_established": false,
+      "evidence_ids": [
+        "n71_50",
+        "n167_50"
+      ],
+      "limit_reason": "No opened owner discard pile anywhere in supplied source; side discard displays Poke Ball then Copycat only."
+    },
+    {
+      "snapshot_id": "discard_opponent_absent",
+      "turn_number": null,
+      "pile_owner": "opponent",
+      "source_video": "20261013_015011000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": null,
+      "full_pile_established": false,
+      "evidence_ids": [
+        "n81_50",
+        "n167_50"
+      ],
+      "limit_reason": "No opened opponent discard pile anywhere in supplied source."
+    }
+  ],
+  "scheduled_capture_limits": [
+    "Turn1 first play occurs before +1; native 43.5 supplies dense pre-play evidence.",
+    "Turn 3 +3 is error modal and +6 is Victory animation; native 167 and 167.50 preserve hand before terminal error. Native 168.50 is already the enlarged error modal.",
+    "Source timestamps are requested seek seconds; exact decoded presentation timestamps not separately measured."
+  ]
+}

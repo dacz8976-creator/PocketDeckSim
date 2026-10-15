@@ -1,0 +1,228 @@
+{
+  "verified_utc": "2026-10-03T01:25:57.812464+00:00",
+  "passed": true,
+  "scope": "Only eight selected current computer comparison recordings",
+  "accepted_games": 8,
+  "accepted_latest_guide_supplements": 8,
+  "turn_rows": 129,
+  "owner_turns": 65,
+  "native_frames": 1047,
+  "lossless_native_crops": 2094,
+  "index_total_rows": 137,
+  "unrelated_index_rows_verified_unchanged": 129,
+  "online_game_entries_created": 0,
+  "movie_contents_read_by_this_verification": false,
+  "original_movie_integrity_basis": "Verified before/after SHA256 archive receipts plus exact current filename and logical size; no movie rehydration",
+  "results": [
+    {
+      "source": "20261002_205230000_iOS.MP4",
+      "pilot": "Auto",
+      "outcome": {
+        "result": "win",
+        "owner_points": 3,
+        "opponent_points": 0,
+        "turns": 16,
+        "damage_done": 580,
+        "went": "second"
+      },
+      "turn_rows": 16,
+      "owner_turns": 8,
+      "native_frames": 141,
+      "native_lossless_crops": 282,
+      "minimum_distinct_owner_cards_seen": 16,
+      "accepted_core_manifest": "SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+      "accepted_guide_manifest": "GUIDE_UPDATE_SUBMISSION.json",
+      "preserved_prior_submissions": [
+        "worker_submission"
+      ],
+      "movie_bytes": 515194073,
+      "movie_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+      "archive_identity_verified": true,
+      "latest_index_and_event_verified": true
+    },
+    {
+      "source": "20261002_205731000_iOS.MP4",
+      "pilot": "Auto",
+      "outcome": {
+        "result": "win",
+        "owner_points": 3,
+        "opponent_points": 2,
+        "turns": 18,
+        "damage_done": 610,
+        "went": "second"
+      },
+      "turn_rows": 18,
+      "owner_turns": 9,
+      "native_frames": 118,
+      "native_lossless_crops": 236,
+      "minimum_distinct_owner_cards_seen": 20,
+      "accepted_core_manifest": "SUBMISSION.json",
+      "accepted_guide_manifest": "GUIDE_UPDATE_SUBMISSION.json",
+      "preserved_prior_submissions": [
+        "guide_submission_before_timing_repair"
+      ],
+      "movie_bytes": 687571248,
+      "movie_sha256": "f1ce8e51bc351fc008563c73a72aa7915f0389707375437068c998afd0190199",
+      "archive_identity_verified": true,
+      "latest_index_and_event_verified": true
+    },
+    {
+      "source": "20261002_210612000_iOS.MP4",
+      "pilot": "Auto",
+      "outcome": {
+        "result": "win",
+        "owner_points": 3,
+        "opponent_points": 0,
+        "turns": 13,
+        "damage_done": null,
+        "went": "first"
+      },
+      "turn_rows": 13,
+      "owner_turns": 7,
+      "native_frames": 113,
+      "native_lossless_crops": 226,
+      "minimum_distinct_owner_cards_seen": 17,
+      "accepted_core_manifest": "SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+      "accepted_guide_manifest": "GUIDE_UPDATE_SUBMISSION.json",
+      "preserved_prior_submissions": [
+        "worker_submission"
+      ],
+      "movie_bytes": 376952925,
+      "movie_sha256": "9dcc8b0fab462433546cc35161d2a5e92ada7a571f4bbff6020ad99fbb72ad03",
+      "archive_identity_verified": true,
+      "latest_index_and_event_verified": true
+    },
+    {
+      "source": "20261002_210952000_iOS.MP4",
+      "pilot": "Auto",
+      "outcome": {
+        "result": "loss",
+        "owner_points": 2,
+        "opponent_points": 3,
+        "turns": 19,
+        "damage_done": 500,
+        "went": "second"
+      },
+      "turn_rows": 19,
+      "owner_turns": 9,
+      "native_frames": 148,
+      "native_lossless_crops": 296,
+      "minimum_distinct_owner_cards_seen": 19,
+      "accepted_core_manifest": "SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+      "accepted_guide_manifest": "GUIDE_UPDATE_SUBMISSION_AFTER_REPAIR.json",
+      "preserved_prior_submissions": [
+        "worker_submission",
+        "guide_submission_before_repair",
+        "guide_repair_before_binding_fix"
+      ],
+      "movie_bytes": 652990464,
+      "movie_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+      "archive_identity_verified": true,
+      "latest_index_and_event_verified": true
+    },
+    {
+      "source": "20261002_211613000_iOS.MP4",
+      "pilot": "Auto",
+      "outcome": {
+        "result": "win",
+        "owner_points": 3,
+        "opponent_points": 0,
+        "turns": 11,
+        "damage_done": 390,
+        "went": "first"
+      },
+      "turn_rows": 11,
+      "owner_turns": 6,
+      "native_frames": 110,
+      "native_lossless_crops": 220,
+      "minimum_distinct_owner_cards_seen": 19,
+      "accepted_core_manifest": "SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+      "accepted_guide_manifest": "SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+      "preserved_prior_submissions": [
+        "worker_submission"
+      ],
+      "movie_bytes": 424678684,
+      "movie_sha256": "8eec16e93f6e3bc1322e31bb5ff85c95a364ffb8bc14dd53427626226f1e3fd4",
+      "archive_identity_verified": true,
+      "latest_index_and_event_verified": true
+    },
+    {
+      "source": "20261002_214254000_iOS.MP4",
+      "pilot": "Dustin",
+      "outcome": {
+        "result": "win",
+        "owner_points": 3,
+        "opponent_points": 0,
+        "turns": 22,
+        "damage_done": 620,
+        "went": "second"
+      },
+      "turn_rows": 22,
+      "owner_turns": 11,
+      "native_frames": 141,
+      "native_lossless_crops": 282,
+      "minimum_distinct_owner_cards_seen": 20,
+      "accepted_core_manifest": "SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+      "accepted_guide_manifest": "SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+      "preserved_prior_submissions": [
+        "worker_submission"
+      ],
+      "movie_bytes": 993476066,
+      "movie_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+      "archive_identity_verified": true,
+      "latest_index_and_event_verified": true
+    },
+    {
+      "source": "20261002_215203000_iOS.MP4",
+      "pilot": "Dustin",
+      "outcome": {
+        "result": "win",
+        "owner_points": 3,
+        "opponent_points": 0,
+        "turns": 12,
+        "damage_done": 380,
+        "went": "second"
+      },
+      "turn_rows": 12,
+      "owner_turns": 6,
+      "native_frames": 141,
+      "native_lossless_crops": 282,
+      "minimum_distinct_owner_cards_seen": 16,
+      "accepted_core_manifest": "SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+      "accepted_guide_manifest": "SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+      "preserved_prior_submissions": [
+        "worker_submission"
+      ],
+      "movie_bytes": 455918694,
+      "movie_sha256": "d0e031e9a27c358ad0e1590621014f2758bf80138b83c0776f9961ca34c88b7c",
+      "archive_identity_verified": true,
+      "latest_index_and_event_verified": true
+    },
+    {
+      "source": "20261002_215825000_iOS.MP4",
+      "pilot": "Dustin",
+      "outcome": {
+        "result": "win",
+        "owner_points": 3,
+        "opponent_points": 0,
+        "turns": 18,
+        "damage_done": 580,
+        "went": "second"
+      },
+      "turn_rows": 18,
+      "owner_turns": 9,
+      "native_frames": 135,
+      "native_lossless_crops": 270,
+      "minimum_distinct_owner_cards_seen": 20,
+      "accepted_core_manifest": "SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+      "accepted_guide_manifest": "SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+      "preserved_prior_submissions": [
+        "worker_submission"
+      ],
+      "movie_bytes": 666110542,
+      "movie_sha256": "61fb9e041b4efa4ad31181c0cb89d94b38ad13f2bf194a48b8f606b24afb107c",
+      "archive_identity_verified": true,
+      "latest_index_and_event_verified": true
+    }
+  ]
+}

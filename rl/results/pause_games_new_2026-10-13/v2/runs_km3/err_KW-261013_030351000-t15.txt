@@ -1,0 +1,672 @@
+PGSTEP KW-261013_030351000-t15 seed 1 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=6
+PGDUMP     -20306.033333333332848 EndTurn
+PGDUMP      -9902.600000000000364 Attach:1Fighting@0 zone
+PGDUMP     -20039.366666666668607 Attach:1Fighting@1 zone
+PGDUMP     -19959.366666666668607 Attach:1Fighting@2 zone
+PGDUMP     -19943.700000000000728 Play:Iris
+PGDUMP     -19772.700000000000728 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 1 free 1
+PGCAND EndTurn
+PGCAND Play:Iris
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP     -20039.366666666668607 EndTurn
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP        196.400000000000006 Retreat:1
+PGDUMP     -20692.700000000000728 Retreat:2
+PGDUMP      -9732.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 1 free 2
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=4
+PGDUMP     -19942.700000000000728 EndTurn
+PGDUMP      -9902.600000000000364 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP      -9902.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 1 free 3
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Ability@2
+PGDUMP actor=0 candidates=3
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 1 free 4
+PGCAND AttachTypedFromDiscard
+PGCAND AttachTypedFromDiscard
+PGDUMP actor=0 candidates=2
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGSTEP KW-261013_030351000-t15 seed 1 free 5
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGDUMP actor=0 candidates=2
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGSTEP KW-261013_030351000-t15 seed 2 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=6
+PGDUMP     -20306.033333333332848 EndTurn
+PGDUMP      -9902.600000000000364 Attach:1Fighting@0 zone
+PGDUMP     -20039.366666666668607 Attach:1Fighting@1 zone
+PGDUMP     -19959.366666666668607 Attach:1Fighting@2 zone
+PGDUMP     -19943.700000000000728 Play:Iris
+PGDUMP     -19772.700000000000728 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 2 free 1
+PGCAND EndTurn
+PGCAND Play:Iris
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP     -20039.366666666668607 EndTurn
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP        196.400000000000006 Retreat:1
+PGDUMP     -20692.700000000000728 Retreat:2
+PGDUMP      -9732.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 2 free 2
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=4
+PGDUMP     -19942.700000000000728 EndTurn
+PGDUMP      -9902.600000000000364 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP      -9902.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 2 free 3
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Ability@2
+PGDUMP actor=0 candidates=3
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 2 free 4
+PGCAND AttachTypedFromDiscard
+PGCAND AttachTypedFromDiscard
+PGDUMP actor=0 candidates=2
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGSTEP KW-261013_030351000-t15 seed 2 free 5
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGDUMP actor=0 candidates=2
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGSTEP KW-261013_030351000-t15 seed 3 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=6
+PGDUMP     -20306.033333333332848 EndTurn
+PGDUMP      -9902.600000000000364 Attach:1Fighting@0 zone
+PGDUMP     -20039.366666666668607 Attach:1Fighting@1 zone
+PGDUMP     -19959.366666666668607 Attach:1Fighting@2 zone
+PGDUMP     -19943.700000000000728 Play:Iris
+PGDUMP     -19772.700000000000728 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 3 free 1
+PGCAND EndTurn
+PGCAND Play:Iris
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP     -20039.366666666668607 EndTurn
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP        196.400000000000006 Retreat:1
+PGDUMP     -20692.700000000000728 Retreat:2
+PGDUMP      -9732.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 3 free 2
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=4
+PGDUMP     -19942.700000000000728 EndTurn
+PGDUMP      -9902.600000000000364 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP      -9902.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 3 free 3
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Ability@2
+PGDUMP actor=0 candidates=3
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 3 free 4
+PGCAND AttachTypedFromDiscard
+PGCAND AttachTypedFromDiscard
+PGDUMP actor=0 candidates=2
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGSTEP KW-261013_030351000-t15 seed 3 free 5
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGDUMP actor=0 candidates=2
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGSTEP KW-261013_030351000-t15 seed 4 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=6
+PGDUMP     -20306.033333333332848 EndTurn
+PGDUMP      -9902.600000000000364 Attach:1Fighting@0 zone
+PGDUMP     -20039.366666666668607 Attach:1Fighting@1 zone
+PGDUMP     -19959.366666666668607 Attach:1Fighting@2 zone
+PGDUMP     -19943.700000000000728 Play:Iris
+PGDUMP     -19772.700000000000728 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 4 free 1
+PGCAND EndTurn
+PGCAND Play:Iris
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP     -20039.366666666668607 EndTurn
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP        196.400000000000006 Retreat:1
+PGDUMP     -20692.700000000000728 Retreat:2
+PGDUMP      -9732.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 4 free 2
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=4
+PGDUMP     -19942.700000000000728 EndTurn
+PGDUMP      -9902.600000000000364 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP      -9902.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 4 free 3
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Ability@2
+PGDUMP actor=0 candidates=3
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 4 free 4
+PGCAND AttachTypedFromDiscard
+PGCAND AttachTypedFromDiscard
+PGDUMP actor=0 candidates=2
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGSTEP KW-261013_030351000-t15 seed 4 free 5
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGDUMP actor=0 candidates=2
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGSTEP KW-261013_030351000-t15 seed 5 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=6
+PGDUMP     -20306.033333333332848 EndTurn
+PGDUMP      -9902.600000000000364 Attach:1Fighting@0 zone
+PGDUMP     -20039.366666666668607 Attach:1Fighting@1 zone
+PGDUMP     -19959.366666666668607 Attach:1Fighting@2 zone
+PGDUMP     -19943.700000000000728 Play:Iris
+PGDUMP     -19772.700000000000728 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 5 free 1
+PGCAND EndTurn
+PGCAND Play:Iris
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP     -20039.366666666668607 EndTurn
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP        196.400000000000006 Retreat:1
+PGDUMP     -20692.700000000000728 Retreat:2
+PGDUMP      -9732.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 5 free 2
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=4
+PGDUMP     -19942.700000000000728 EndTurn
+PGDUMP      -9902.600000000000364 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP      -9902.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 5 free 3
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Ability@2
+PGDUMP actor=0 candidates=3
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 5 free 4
+PGCAND AttachTypedFromDiscard
+PGCAND AttachTypedFromDiscard
+PGDUMP actor=0 candidates=2
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGSTEP KW-261013_030351000-t15 seed 5 free 5
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGDUMP actor=0 candidates=2
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGSTEP KW-261013_030351000-t15 seed 6 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=6
+PGDUMP     -20306.033333333332848 EndTurn
+PGDUMP      -9902.600000000000364 Attach:1Fighting@0 zone
+PGDUMP     -20039.366666666668607 Attach:1Fighting@1 zone
+PGDUMP     -19959.366666666668607 Attach:1Fighting@2 zone
+PGDUMP     -19943.700000000000728 Play:Iris
+PGDUMP     -19772.700000000000728 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 6 free 1
+PGCAND EndTurn
+PGCAND Play:Iris
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP     -20039.366666666668607 EndTurn
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP        196.400000000000006 Retreat:1
+PGDUMP     -20692.700000000000728 Retreat:2
+PGDUMP      -9732.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 6 free 2
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=4
+PGDUMP     -19942.700000000000728 EndTurn
+PGDUMP      -9902.600000000000364 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP      -9902.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 6 free 3
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Ability@2
+PGDUMP actor=0 candidates=3
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 6 free 4
+PGCAND AttachTypedFromDiscard
+PGCAND AttachTypedFromDiscard
+PGDUMP actor=0 candidates=2
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGSTEP KW-261013_030351000-t15 seed 6 free 5
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGDUMP actor=0 candidates=2
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGSTEP KW-261013_030351000-t15 seed 7 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=6
+PGDUMP     -20306.033333333332848 EndTurn
+PGDUMP      -9902.600000000000364 Attach:1Fighting@0 zone
+PGDUMP     -20039.366666666668607 Attach:1Fighting@1 zone
+PGDUMP     -19959.366666666668607 Attach:1Fighting@2 zone
+PGDUMP     -19943.700000000000728 Play:Iris
+PGDUMP     -19772.700000000000728 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 7 free 1
+PGCAND EndTurn
+PGCAND Play:Iris
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP     -20039.366666666668607 EndTurn
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP        196.400000000000006 Retreat:1
+PGDUMP     -20692.700000000000728 Retreat:2
+PGDUMP      -9732.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 7 free 2
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=4
+PGDUMP     -19942.700000000000728 EndTurn
+PGDUMP      -9902.600000000000364 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP      -9902.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 7 free 3
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Ability@2
+PGDUMP actor=0 candidates=3
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 7 free 4
+PGCAND AttachTypedFromDiscard
+PGCAND AttachTypedFromDiscard
+PGDUMP actor=0 candidates=2
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGSTEP KW-261013_030351000-t15 seed 7 free 5
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGDUMP actor=0 candidates=2
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGSTEP KW-261013_030351000-t15 seed 8 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=6
+PGDUMP     -20306.033333333332848 EndTurn
+PGDUMP      -9902.600000000000364 Attach:1Fighting@0 zone
+PGDUMP     -20039.366666666668607 Attach:1Fighting@1 zone
+PGDUMP     -19959.366666666668607 Attach:1Fighting@2 zone
+PGDUMP     -19943.700000000000728 Play:Iris
+PGDUMP     -19772.700000000000728 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 8 free 1
+PGCAND EndTurn
+PGCAND Play:Iris
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP     -20039.366666666668607 EndTurn
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP        196.400000000000006 Retreat:1
+PGDUMP     -20692.700000000000728 Retreat:2
+PGDUMP      -9732.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 8 free 2
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=4
+PGDUMP     -19942.700000000000728 EndTurn
+PGDUMP      -9902.600000000000364 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP      -9902.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 8 free 3
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Ability@2
+PGDUMP actor=0 candidates=3
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 8 free 4
+PGCAND AttachTypedFromDiscard
+PGCAND AttachTypedFromDiscard
+PGDUMP actor=0 candidates=2
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGSTEP KW-261013_030351000-t15 seed 8 free 5
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGDUMP actor=0 candidates=2
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGSTEP KW-261013_030351000-t15 seed 9 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=6
+PGDUMP     -20306.033333333332848 EndTurn
+PGDUMP      -9902.600000000000364 Attach:1Fighting@0 zone
+PGDUMP     -20039.366666666668607 Attach:1Fighting@1 zone
+PGDUMP     -19959.366666666668607 Attach:1Fighting@2 zone
+PGDUMP     -19943.700000000000728 Play:Iris
+PGDUMP     -19772.700000000000728 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 9 free 1
+PGCAND EndTurn
+PGCAND Play:Iris
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP     -20039.366666666668607 EndTurn
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP        196.400000000000006 Retreat:1
+PGDUMP     -20692.700000000000728 Retreat:2
+PGDUMP      -9732.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 9 free 2
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=4
+PGDUMP     -19942.700000000000728 EndTurn
+PGDUMP      -9902.600000000000364 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP      -9902.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 9 free 3
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Ability@2
+PGDUMP actor=0 candidates=3
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 9 free 4
+PGCAND AttachTypedFromDiscard
+PGCAND AttachTypedFromDiscard
+PGDUMP actor=0 candidates=2
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGSTEP KW-261013_030351000-t15 seed 9 free 5
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGDUMP actor=0 candidates=2
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGSTEP KW-261013_030351000-t15 seed 10 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=6
+PGDUMP     -20306.033333333332848 EndTurn
+PGDUMP      -9902.600000000000364 Attach:1Fighting@0 zone
+PGDUMP     -20039.366666666668607 Attach:1Fighting@1 zone
+PGDUMP     -19959.366666666668607 Attach:1Fighting@2 zone
+PGDUMP     -19943.700000000000728 Play:Iris
+PGDUMP     -19772.700000000000728 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 10 free 1
+PGCAND EndTurn
+PGCAND Play:Iris
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP     -20039.366666666668607 EndTurn
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP        196.400000000000006 Retreat:1
+PGDUMP     -20692.700000000000728 Retreat:2
+PGDUMP      -9732.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 10 free 2
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=4
+PGDUMP     -19942.700000000000728 EndTurn
+PGDUMP      -9902.600000000000364 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP      -9902.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 10 free 3
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Ability@2
+PGDUMP actor=0 candidates=3
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 10 free 4
+PGCAND AttachTypedFromDiscard
+PGCAND AttachTypedFromDiscard
+PGDUMP actor=0 candidates=2
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGSTEP KW-261013_030351000-t15 seed 10 free 5
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGDUMP actor=0 candidates=2
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGSTEP KW-261013_030351000-t15 seed 11 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=6
+PGDUMP     -20306.033333333332848 EndTurn
+PGDUMP      -9902.600000000000364 Attach:1Fighting@0 zone
+PGDUMP     -20039.366666666668607 Attach:1Fighting@1 zone
+PGDUMP     -19959.366666666668607 Attach:1Fighting@2 zone
+PGDUMP     -19943.700000000000728 Play:Iris
+PGDUMP     -19772.700000000000728 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 11 free 1
+PGCAND EndTurn
+PGCAND Play:Iris
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP     -20039.366666666668607 EndTurn
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP        196.400000000000006 Retreat:1
+PGDUMP     -20692.700000000000728 Retreat:2
+PGDUMP      -9732.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 11 free 2
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=4
+PGDUMP     -19942.700000000000728 EndTurn
+PGDUMP      -9902.600000000000364 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP      -9902.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 11 free 3
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Ability@2
+PGDUMP actor=0 candidates=3
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 11 free 4
+PGCAND AttachTypedFromDiscard
+PGCAND AttachTypedFromDiscard
+PGDUMP actor=0 candidates=2
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGSTEP KW-261013_030351000-t15 seed 11 free 5
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGDUMP actor=0 candidates=2
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGSTEP KW-261013_030351000-t15 seed 12 free 0
+PGCAND EndTurn
+PGCAND Attach:1Fighting@0 zone
+PGCAND Attach:1Fighting@1 zone
+PGCAND Attach:1Fighting@2 zone
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=6
+PGDUMP     -20306.033333333332848 EndTurn
+PGDUMP      -9902.600000000000364 Attach:1Fighting@0 zone
+PGDUMP     -20039.366666666668607 Attach:1Fighting@1 zone
+PGDUMP     -19959.366666666668607 Attach:1Fighting@2 zone
+PGDUMP     -19943.700000000000728 Play:Iris
+PGDUMP     -19772.700000000000728 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 12 free 1
+PGCAND EndTurn
+PGCAND Play:Iris
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGCAND Ability@2
+PGDUMP actor=0 candidates=5
+PGDUMP     -20039.366666666668607 EndTurn
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP        196.400000000000006 Retreat:1
+PGDUMP     -20692.700000000000728 Retreat:2
+PGDUMP      -9732.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 12 free 2
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Play:Iris
+PGCAND Ability@2
+PGDUMP actor=0 candidates=4
+PGDUMP     -19942.700000000000728 EndTurn
+PGDUMP      -9902.600000000000364 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Play:Iris
+PGDUMP      -9902.600000000000364 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 12 free 3
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGCAND Ability@2
+PGDUMP actor=0 candidates=3
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
+PGDUMP        196.400000000000006 Ability@2
+PGSTEP KW-261013_030351000-t15 seed 12 free 4
+PGCAND AttachTypedFromDiscard
+PGCAND AttachTypedFromDiscard
+PGDUMP actor=0 candidates=2
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGDUMP        196.400000000000006 AttachTypedFromDiscard
+PGSTEP KW-261013_030351000-t15 seed 12 free 5
+PGCAND EndTurn
+PGCAND Attack:Frenzied Blade
+PGDUMP actor=0 candidates=2
+PGDUMP     -19943.700000000000728 EndTurn
+PGDUMP        196.400000000000006 Attack:Frenzied Blade
