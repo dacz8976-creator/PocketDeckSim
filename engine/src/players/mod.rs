@@ -287,6 +287,11 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
     if let Some(rest) = lower.strip_prefix("kx") {
         return playout_player::PlayoutParams::parse(rest).map(|params| PlayerCode::KX { params });
     }
+    // 'ky<N>...': kx's parts, spelled ky, with the closest-list fallback (PlayoutParams::closest); a KX pilot. No other code
+    // starts with 'ky'.
+    if let Some(rest) = lower.strip_prefix("ky") {
+        return playout_player::PlayoutParams::parse_ky(rest).map(|params| PlayerCode::KX { params });
+    }
     // 'km<N>' (see PlayerCode::KM): kta + N2. Before 'k<N>', which would reject it. No other code starts with 'km'.
     if let Some(depth) = lower.strip_prefix("km") {
         if let Ok(max_depth) = depth.parse::<usize>() {

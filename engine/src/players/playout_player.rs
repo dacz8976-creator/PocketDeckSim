@@ -166,6 +166,9 @@ pub struct PlayoutParams {
     /// play rounds R to R_max, from the same worlds and seeds a larger R would use, and the decision is made once, at the
     /// end, among them on their rounds. Above R; not with a time budget.
     pub max_rounds: Option<usize>,
+    /// ky (`ky<depth>...`; Oct 14; the next pilot, no switch yet): the pilot is spelled ky, and with no list consistent
+    /// REALISTIC draws the closest pooled list, as F did, instead of inferring one. Everything else is kx's.
+    pub closest: bool,
 }
 
 impl PlayoutParams {
@@ -184,7 +187,13 @@ impl PlayoutParams {
             z_attack: None,
             z_skip: None,
             max_rounds: None,
+            closest: false,
         }
+    }
+
+    /// Parses the code after the `ky` prefix (lowercase): the `kx` parts, with the closest-list fallback.
+    pub fn parse_ky(rest: &str) -> Result<Self, String> {
+        Self::parse(rest).map(|params| PlayoutParams { closest: true, ..params }).map_err(|e| e.replacen("kx", "ky", 3))
     }
 
     /// Parses the code after the `kx` prefix (lowercase), e.g. `3_r8_c5_z1.5_lab_t30_trace`.
@@ -254,7 +263,8 @@ impl PlayoutParams {
     /// them are as before).
     pub fn code(&self) -> String {
         format!(
-            "kx{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}{}{}",
+            "{}{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}{}{}",
+            if self.closest { "ky" } else { "kx" },
             self.depth,
             self.rollouts,
             self.cap,
@@ -530,6 +540,8 @@ struct Core {
     depth: usize,
     /// The Tool-placement rule in the play-outs.
     tools: bool,
+    /// ky: with no list consistent, the closest pooled list rather than an inferred one.
+    closest: bool,
 }
 
 impl PlayoutPlayer {
@@ -579,7 +591,7 @@ impl PlayoutPlayer {
                 pool.iter().find(|(_, d)| id_multiset(d) == target).map(|(name, _)| (name.clone(), opponent_list.clone()))
             })
             .flatten();
-        let core = Core { deck, pool, meta, listed, extras, lab, depth: params.depth, tools: params.tools };
+        let core = Core { deck, pool, meta, listed, extras, lab, depth: params.depth, tools: params.tools, closest: params.closest };
         PlayoutPlayer { params, km, core, printed: false, decisions: 0, millis: 0.0, omniscient: 0 }
     }
 
@@ -864,9 +876,37 @@ impl Core {
         out
     }
 
-    /// REALISTIC: a consistent list, uniformly, with the seen printings adopted; with none, an inferred list.
+    /// ky's fallback, F's (d513e37b): the closest pooled list: fewest seen cards it can't account for, then fewest zone types
+    /// it lacks; at random among the equally close (with the world's own rng). Then the seen printings are adopted.
+    fn closest_list(&self, seen: &[Card], zone: &[EnergyType], rng: &mut StdRng) -> (Deck, String) {
+        let mut seen_names: BTreeMap<String, usize> = BTreeMap::new();
+        for c in seen {
+            *seen_names.entry(c.get_name()).or_default() += 1;
+        }
+        let distance = |deck: &Deck| -> (usize, usize) {
+            let missing = seen_names
+                .iter()
+                .map(|(name, n)| n.saturating_sub(deck.cards.iter().filter(|c| c.get_name() == *name).count()))
+                .sum();
+            let energy = zone.iter().filter(|t| !deck.energy_types.contains(t)).count();
+            (missing, energy)
+        };
+        let distances: Vec<(usize, usize)> = self.pool.iter().map(|(_, d)| distance(d)).collect();
+        let best = *distances.iter().min().expect("a non-empty pool");
+        let nearest: Vec<usize> = (0..self.pool.len()).filter(|&i| distances[i] == best).collect();
+        let i = nearest[rng.gen_range(0..nearest.len())];
+        let mut deck = self.pool[i].1.clone();
+        Self::adopt_seen_printings(&mut deck, seen);
+        (deck, format!("{} (closest, 1 of {} tied; no list consistent)", self.pool[i].0, nearest.len()))
+    }
+
+    /// REALISTIC: a consistent list, uniformly, with the seen printings adopted; with none, an inferred list (ky: the
+    /// closest).
     fn sample_list(&self, seen: &[Card], zone: &[EnergyType], rng: &mut StdRng) -> (Deck, String) {
         let consistent = self.consistent_lists(seen, zone);
+        if consistent.is_empty() && self.closest {
+            return self.closest_list(seen, zone, rng);
+        }
         if consistent.is_empty() {
             return self.inferred_list(seen, zone, rng);
         }
@@ -1634,6 +1674,58 @@ mod tests {
     fn meta_pilot() -> PlayoutPlayer {
         let (deck_a, deck_b) = crate::test_support::load_test_decks();
         PlayoutPlayer::with_extra_lists(deck_a, deck_b, PlayoutParams { pool: PoolSet::Meta, ..PlayoutParams::new(3) }, Vec::new())
+    }
+
+    /// ky3 (no switch) as the meta-pool pilot.
+    fn ky_pilot() -> PlayoutPlayer {
+        let (deck_a, deck_b) = crate::test_support::load_test_decks();
+        let params = PlayoutParams::parse_ky("3_r16_c12_z2_real_t0_poolmeta").unwrap();
+        PlayoutPlayer::with_extra_lists(deck_a, deck_b, params, Vec::new())
+    }
+
+    /// `ky<N>` parses like `kx<N>`, with the same parts; its canonical code says ky; kx codes are unchanged.
+    #[test]
+    fn ky_parses_like_kx_and_names_itself() {
+        let ky = crate::players::parse_player_code("ky3_r16_c12_z2_real_t0_poolmeta").unwrap();
+        let kx = crate::players::parse_player_code("kx3_r16_c12_z2_real_t0_poolmeta").unwrap();
+        let (crate::players::PlayerCode::KX { params: ky }, crate::players::PlayerCode::KX { params: kx }) = (ky, kx) else {
+            panic!("ky and kx both build the play-out pilot");
+        };
+        assert!(ky.closest && !kx.closest);
+        assert_eq!(ky.code(), "ky3_r16_c12_z2_real_t0_poolmeta");
+        assert_eq!(kx.code(), "kx3_r16_c12_z2_real_t0_poolmeta");
+        assert_eq!(PlayoutParams { closest: false, ..ky.clone() }, kx);
+        assert_eq!(PlayoutParams::parse_ky("3").unwrap().code(), PlayoutParams::new(3).code().replacen("kx", "ky", 1));
+        assert!(crate::players::parse_player_code("ky0").is_err());
+        assert!(crate::players::parse_player_code("ky3_bogus").is_err());
+        assert!(crate::players::parse_player_code("KY3_ZS3_M64").is_ok());
+    }
+
+    /// ky3 restores the closest-list fallback of F: with no list consistent, one of the closest (fewest seen cards
+    /// unaccounted for, then fewest zone types missing), at random among the tied; nothing inferred.
+    #[test]
+    fn ky_draws_the_closest_list_when_none_is_consistent() {
+        let p = ky_pilot();
+        let bulbasaur = vec![get_card_by_enum(CardId::A1001Bulbasaur)];
+        let names: BTreeSet<String> = (0..80)
+            .map(|seed| p.core.sample_list(&bulbasaur, &[EnergyType::Metal], &mut StdRng::seed_from_u64(seed)).1)
+            .collect();
+        assert_eq!(names.len(), 8, "{names:?}");
+        assert!(names.iter().all(|n| n.ends_with("(closest, 1 of 8 tied; no list consistent)")), "{names:?}");
+        let swablu = vec![get_card_by_enum(CardId::B1196Swablu)];
+        let (deck, label) = p.core.sample_list(&swablu, &[EnergyType::Metal], &mut StdRng::seed_from_u64(1));
+        assert_eq!(label, "t-altaria (closest, 1 of 1 tied; no list consistent)");
+        assert!(deck.cards.contains(&swablu[0]));
+        // Where a list is consistent, ky3 and kx3 draw the same list from the same seed.
+        let k = meta_pilot();
+        for seed in 0..20 {
+            let a = p.core.sample_list(&[], &[EnergyType::Water], &mut StdRng::seed_from_u64(seed));
+            let b = k.core.sample_list(&[], &[EnergyType::Water], &mut StdRng::seed_from_u64(seed));
+            assert_eq!((a.1, a.0.cards), (b.1, b.0.cards));
+        }
+        // kx3 still infers where ky3 takes the closest.
+        let (_, label) = k.core.sample_list(&bulbasaur, &[EnergyType::Metal], &mut StdRng::seed_from_u64(1));
+        assert!(label.starts_with("inferred from"), "{label}");
     }
 
     /// The meta pool loads 8 lists: each research/X holds the same cards and Energy as t-X.
