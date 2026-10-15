@@ -680,9 +680,9 @@ MEASURE_NAMES = {
 CLOCK_MEASURE_NAMES = {
     'P2.any': 'P2 at least one Glimmora had its turn', 'P2.both': 'P2 both Glimmora had their turn',
     'P2.g1': 'P2 the first Glimmora placed had its turn', 'P2.g2': 'P2 the second Glimmora placed had its turn',
-    'P3': 'P3 plan broken in front: Muk or Pawniard Active at any point',
-    'P3.opening': 'P3, cause: the opening (still the starting Active)',
-    'P3.promo': 'P3, cause: promoted, nothing else left',
+    'P3.pawn_lead': 'P3 plan broken in front, cause: Pawniard forced to lead',
+    'P3.pawn_promo': 'P3 plan broken in front, cause: a Pawniard-line Pokémon promoted, nothing else left',
+    'P3.grimer_muk': 'P3 plan broken in front, cause: Alolan Grimer or Muk in front (lead or promotion)',
     'P4.ko': 'P4 ready at the winning moment: Knocks out their strongest',
     'P4.win': 'P4 ready at the winning moment: Wins outright (a lower bound)',
     'P4.late1': 'P4 not ready, ready 1 turn late', 'P4.late2p': 'P4 not ready, ready 2 or more turns late',

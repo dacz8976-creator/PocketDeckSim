@@ -525,29 +525,23 @@ class Game:
         cfg, names = self.cfg, [m.name for m in self.play]
         glim_root = cfg['coin_pokemon_root']
         line = cfg['pawniard_line']
-        return {'names': names,
-                'pawniard_line_in_play': any(n in line for n in names), 'pawniard_in_play': cfg['pawniard'] in names,
-                'kingambit_in_play': cfg['main_attacker'] in names,
+        in_line = any(n in line for n in names)
+        return {'pawniard_line_in_play': in_line, 'kingambit_needed': cfg['main_attacker'] not in names,
+                'no_pawniard_line_in_play': not in_line, 'pawniard_in_play': cfg['pawniard'] in names,
                 'bisharp_line_missing': not any(n in line[1:] for n in names),
                 'glimmora_lines_lt2': sum(m.root == glim_root for m in self.play) < 2,
                 'glimmet_waits': any(m.name == glim_root for m in self.play),
-                'muk_in_play': cfg['muk'] in names, 'grimer_in_play': 'Alolan Grimer' in names,
-                'regigigas_in_play': cfg['muk_partner'] in names, 'bench_room': self.room(),
+                'muk_needed': cfg['muk'] not in names, 'grimer_in_play': 'Alolan Grimer' in names,
+                'regigigas_missing': cfg['muk_partner'] not in names, 'bench_room': self.room(),
                 'no_stadium': self.stadium is None}
 
-    def hand_value(self, hand, deck_names, st):
-        """The value of a hand under the plan table (copycat_values): each card's first row whose conditions hold."""
+    def hand_value(self, hand, king_in_deck, st):
+        """The value of a hand under the plan table (copycat_values): each card's first row whose conditions hold.
+        `king_in_deck`: Kingambit is still in the deck when this hand is the one held."""
         cfg, v = self.cfg, self.ver
         hn = [v.name[h] for h in hand]
-        main = cfg['main_attacker']
-        due = st['pawniard_line_in_play'] or self.pawniard_ok(hand)
-        facts = {'pawniard_due': due, 'kingambit_held': main in hn, 'kingambit_needed': not st['kingambit_in_play'],
-                 'no_pawniard_line_in_play': not st['pawniard_line_in_play'],
-                 'pawniard_in_play': st['pawniard_in_play'], 'bisharp_line_missing': st['bisharp_line_missing'],
-                 'glimmora_lines_lt2': st['glimmora_lines_lt2'], 'glimmet_waits': st['glimmet_waits'],
-                 'muk_needed': not st['muk_in_play'], 'grimer_in_play': st['grimer_in_play'],
-                 'regigigas_missing': not st['regigigas_in_play'], 'kingambit_in_deck': main in deck_names,
-                 'bench_room': st['bench_room'], 'no_stadium': st['no_stadium']}
+        facts = dict(st, pawniard_due=st['pawniard_line_in_play'] or self.pawniard_ok(hand),
+                     kingambit_held=cfg['main_attacker'] in hn, kingambit_in_deck=king_in_deck)
         table, default = cfg['copycat_values'], cfg['copycat_default_value']
         total = 0
         for n in hn:
@@ -568,8 +562,10 @@ class Game:
         got = self.cc_cache.get(key)
         if got is None:
             st = self.valuation_state()
-            cur = self.hand_value(hand, {v.name[c] for c in self.deck}, st)
+            main = cfg['main_attacker']
+            cur = self.hand_value(hand, any(v.name[c] == main for c in self.deck), st)
             pool = self.deck + hand
+            kings = {c for c in pool if v.name[c] == main}
             n = min(self.opp_hand, HAND_LIMIT, len(pool))
             rng = self.stream('copycat')
             tot = 0
@@ -579,7 +575,7 @@ class Game:
                 for i in range(n):
                     j = i + rng.below(len(p) - i)
                     p[i], p[j] = p[j], p[i]
-                tot += self.hand_value(p[:n], {v.name[c] for c in p[n:]}, st)
+                tot += self.hand_value(p[:n], any(c in kings for c in p[n:]), st)
             keep = any(v.name[h] in cfg['copycat_fallback']['must_keep'] for h in hand)
             got = (tot > cur * samples, fallback_wanted(self.opp_hand, len(hand), keep, cfg))
             self.cc_cache[key] = got

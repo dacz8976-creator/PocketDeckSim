@@ -290,6 +290,7 @@ class T3Repro(unittest.TestCase):
     def test_same_seed_byte_identical(self):
         a = st.run_one(HIS, [], self.N, seed_base=24_700_000_000, clocks=[], clock_deals=0)
         b = st.run_one(HIS, [], self.N, seed_base=24_700_000_000, clocks=[], clock_deals=0)
+        a.pop('seconds'), b.pop('seconds')                     # timings are the one thing that may differ (C9)
         self.assertEqual(json.dumps(a, sort_keys=True), json.dumps(b, sort_keys=True))
 
     def test_reordering_versions_changes_nothing(self):
@@ -371,7 +372,9 @@ class T4Direction(unittest.TestCase):
         self.assertGreater(self.rate(self.bish, 'K2.t3'), self.rate(self.base, 'K2.t3'))
 
     def test_bisharp_turn_two_identical_deal_by_deal_with_mesagoza_tails(self):
-        kw = dict(clocks=[], clock_deals=0, keep_vectors=True, cfg_over={'mesagoza_coin': 'tails'})
+        # Copycat is off here: by his valuation it reads the cards in hand, so a Bisharp in place of a Lucky Ice Pop can
+        # change a Copycat decision, which is the pilot reacting to the card, not Bisharp helping Kingambit
+        kw = dict(clocks=[], clock_deals=0, keep_vectors=True, cfg_over={'mesagoza_coin': 'tails', 'copycat_rule': 'never'})
         a = st.run_one(HIS, [], 4000, **kw)
         b = st.run_one(HIS, VERSIONS['bisharp'], 4000, **kw)
         self.assertEqual(a['vectors']['K2.t2'], b['vectors']['K2.t2'])
