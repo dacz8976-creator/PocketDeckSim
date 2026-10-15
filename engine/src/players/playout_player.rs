@@ -459,6 +459,23 @@ pub struct AtkLine {
     pub is_km_line: bool,
 }
 
+/// The lines `_atk` weighs besides the chosen move: each attack that damages or wins, the one equal to km's own move flagged
+/// as the km line (km proposed an attack); else km's non-attack move joined as a line when its line attacks this turn
+/// (`km_chosen_away`: the pilot chose something other than km's move).
+pub fn atk_moves(attacks: &[Action], effects: &[AttackEffect], km: &CandidateReport, km_chosen_away: bool) -> Vec<(Action, AttackEffect, bool)> {
+    let km_attacks = matches!(km.action.action, crate::actions::SimpleAction::Attack(_));
+    let mut moves: Vec<(Action, AttackEffect, bool)> = attacks
+        .iter()
+        .zip(effects)
+        .filter(|(_, e)| e.damages || e.wins)
+        .map(|(a, e)| (a.clone(), *e, km_attacks && *a == km.action))
+        .collect();
+    if km_chosen_away && !km_attacks && km.attacks_this_turn * 2 >= km.rounds && km.rounds > 0 {
+        moves.push((km.action.clone(), AttackEffect { damages: true, wins: false }, true));
+    }
+    moves
+}
+
 /// The line `_atk` plays instead of the chosen move, if any: an attack that wins the game outright, else among the lines
 /// that do something and whose skip does not stand, km's own move, else the best score (the first on a tie).
 pub fn atk_pick(lines: &[AtkLine], threshold: f64) -> Option<usize> {
@@ -1664,14 +1681,9 @@ impl PlayoutPlayer {
             attacks.iter().map(|a| attack_effects(&world, a)).collect::<Vec<AttackEffect>>()
         }));
         let Ok(effects) = effects else { return };
-        // km's own move joins as a line when its line attacks and it is not itself one of the attacks.
+        // km's own move is the km line: its attack among the attacks, else its move joined as a line when its line attacks.
         let km = report.candidates[0].clone();
-        let km_line = report.chosen != 0 && !is_attack(&km.action) && km.attacks_this_turn * 2 >= km.rounds && km.rounds > 0;
-        let mut moves: Vec<(Action, AttackEffect, bool)> =
-            attacks.iter().cloned().zip(effects).filter(|(_, e)| e.damages || e.wins).map(|(a, e)| (a, e, false)).collect();
-        if km_line {
-            moves.push((km.action.clone(), AttackEffect { damages: true, wins: false }, true));
-        }
+        let moves = atk_moves(&attacks, &effects, &km, report.chosen != 0);
         if moves.is_empty() {
             return;
         }
@@ -2202,6 +2214,40 @@ mod tests {
         let gap = [line(0.5, 0.3, false, false)];
         assert_eq!((atk_pick(&gap, 0.15), atk_pick(&gap, 0.25), atk_pick(&gap, 0.5)), (None, None, Some(0)));
         assert_eq!(atk_pick(&[], t), None);
+    }
+
+    /// M1: km3's own attack is km's move. Two free attacks, km3's scoring lower than the other: the pick is km3's. The
+    /// lines come from `atk_moves` as `atk_review` builds them.
+    #[test]
+    fn km_threes_own_attack_is_flagged_as_the_km_line() {
+        use crate::models::EnergyType;
+        let state = board(
+            vec![mon(CardId::A1001Bulbasaur).with_energy(vec![EnergyType::Grass, EnergyType::Grass]).with_energy(vec![EnergyType::Grass, EnergyType::Grass])],
+            vec![mon(CardId::B3b055Snorlax)],
+        );
+        // Two attacks of one Pokémon: Vine Whip and a copy that hits harder.
+        let whip = attack_of(&state, "Vine Whip");
+        let mut hard = whip.clone();
+        if let crate::actions::SimpleAction::Attack(a) = &mut hard.action {
+            a.title = "Hard Whip".to_string();
+            a.fixed_damage = 80;
+        }
+        let attacks = vec![whip, hard];
+        let effects = vec![AttackEffect { damages: true, wins: false }; attacks.len()];
+        let km = |a: &Action| CandidateReport { action: a.clone(), label: String::new(), score: 0.0, diff: 0.0, se: 0.0, attacks_this_turn: 1, rounds: 1 };
+        let moves = atk_moves(&attacks, &effects, &km(&attacks[1]), true);
+        assert_eq!(moves.iter().map(|m| m.2).collect::<Vec<_>>(), vec![false, true], "km's attack alone is the km line");
+        let lines: Vec<AtkLine> = moves
+            .iter()
+            .enumerate()
+            .map(|(i, m)| AtkLine { does_something: true, wins: false, score: if i == 0 { 0.9 } else { 0.4 }, opponent_points_diff: vec![0.0; 8], is_km_line: m.2 })
+            .collect();
+        assert_eq!(atk_pick(&lines, 0.25), Some(1), "km's lower-scoring attack is picked over the better-scoring one");
+        // A km move that is not an attack still joins as its own line, when its line attacks.
+        let end = state.generate_possible_actions().1.into_iter().find(|a| !matches!(a.action, crate::actions::SimpleAction::Attack(_))).unwrap();
+        let moves = atk_moves(&attacks, &effects, &km(&end), true);
+        assert_eq!(moves.iter().map(|m| m.2).collect::<Vec<_>>(), vec![false, false, true]);
+        assert_eq!(atk_moves(&attacks, &effects, &km(&end), false).len(), 2, "not km's line, no extra line");
     }
 
     fn attack_of(state: &State, title: &str) -> Action {
