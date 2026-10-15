@@ -1,0 +1,24 @@
+{
+ "manifest_sha256": "dfb0219986f54ef3d9d08d7783f0cfaa71b6e517221cfc84b2553f8aac1a8f4d",
+ "stage": "use",
+ "pilot": "kx3",
+ "reference": "km3",
+ "registration_changed": false,
+ "registration_problems": [],
+ "paired_games": 20,
+ "pooled": {
+  "n": 20,
+  "mean": 0.35,
+  "sd": 0.4893604849295929,
+  "half": 0.21447168872174688
+ },
+ "per_deck": {
+  "brew-08-entei-rainbow-cave": {
+   "n": 20,
+   "mean": 0.35,
+   "sd": 0.4893604849295929,
+   "half": 0.21447168872174688
+  }
+ },
+ "exactly_zero": false
+}
