@@ -35,6 +35,9 @@ the kx players. Read the corrected positions and main's `pg_pos.rs` by path from
 
 Then STOP. Gates 0-2 run only after the laptop has reviewed the code diffs (Fable audits that review).
 
+**Item 7, the Kingambit pilot (approved Oct 15):** see `KINGAMBIT_ITEM7.md`. It is a separate launch by Fable after items 1-6
+and `EXPECTED.md`, and it runs only once C: has 15 GB free. The driver running items 1-6 does not start it.
+
 **Rules:**
 - Never set `DECKGYM_*`.
 - No change to `rl/strength/src/main.rs` or the slow-report pin.

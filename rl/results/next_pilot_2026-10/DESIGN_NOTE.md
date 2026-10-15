@@ -123,6 +123,12 @@ part of phase 1, not deferred:
 - `EXPECTED.md` records them as a known limit.
 - If `_atk` fails them, the next iteration tries a longer watch (through two opponent turns) or a plan-value term, never a special
   case for one card.
+- **No switch is adopted, or offered to Dustin for adoption, while it breaks any right-to-pass case: his two plan passes, the
+  Kingambit passes, and deck 13-A G5's turn 4 included (Oct 15, after his reviewed critique).** A switch that only passes
+  the knock-out cases is an "always attack" bot, which recreates the planning failure he named. A failure there is still
+  reported as a known limit, but it blocks adoption.
+- **So the first `_atk` may not be adoptable until a plan-aware "later" exists** (the longer watch or the plan-value term).
+  If that happens, it is the round's finding, not its failure (Fable's audit, Oct 15).
 - If `_atk` passes them, the report says why: what the watch saw. That would be unexpected.
 
 **A lesson from the Kingambit diagnosis** (`../pause_positions_kx3_2026-10/KINGAMBIT_PASS_cloud.md`): at 010837 t11, what
@@ -162,6 +168,17 @@ fix. In the next iterations, that comes before any longer search.
     - Spurt Fire counting the attacker's own Bench in n;
     - with the flag off, every clock and value is byte-for-byte unchanged.
   - **Identity:** bit-equal on every deck without these 22 printings, which is the whole current panel.
+
+**The Kingambit challenge (Dustin, Oct 15).** The next round's concrete test: can the bot recognize and carry out Kingambit's
+plan, including when sacrificing or waiting is right?
+- **The evidence it can't yet:** deck 01's only bot number is the km3 floor, 16% (Sept 30 engine, "fail"). That same page flags
+  that km3 prices Overlord's Blade at its printed damage: `ExtraDamagePerOwnKnockoutThisGame` is estimated without the
+  knock-out count. That count is exactly what his plan builds.
+- **The measure:** every Kingambit turn in his pause-game positions (010837 t03, t09 and t11, 203719 t17, and the rest of those
+  games), with km3, F, C and ky3, scored against his own plan. Add piece 2 of the Kingambit diagnosis: km3 sees that its own
+  knock-out raises the Blade count, gated like any km3 change.
+- **Until a pilot passes, any bot score for deck 01 is reported as "the bot can't carry out this deck's plan"** and gets
+  little weight in his deck choice. The simulation also can't show how real opponents react to a plan they don't recognize.
 
 **The round is not done until** each failure has a measured baseline (km3, F, ky3 with no switch, on its cases) and, wherever a
 clean positive exists, a switch tested both ways like `_atk`.

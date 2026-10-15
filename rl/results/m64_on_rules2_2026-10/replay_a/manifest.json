@@ -1,0 +1,124 @@
+{
+ "name": "m64_replay_rules2_a",
+ "question": "m64's REPLAY CHECK on the current engine (rl/results/m64_on_rules2_2026-10/SPEC.md section 3): do the combined run's m64 games replay exactly on the rules-switch-2 engine, except deck 10 against t-weezing, where each changed game must show Will's new rule acting? This registration: 09-mega-manectric-heliolisk, 06-mega-blaziken-tournament-list, 10-xatu-oricorio-tr-weezing v the 8 panel lists, deals 0-1, seed_base 24400000000 (each key the combined run's own seed).",
+ "repo_commit": "bacf6c6af71a24a32bf1f8502f15771a13070a51",
+ "selfcheck": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64": "selfcheck pilot=kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64 games=12 seat0_wins=9 seat1_wins=3 ties=0 turns=132 digest=724e581a9c51711f"
+ },
+ "selfcheck_source": {
+  "km3": "run by strength_prereg.py",
+  "kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64": "run by strength_prereg.py"
+ },
+ "created_at": "2026-10-15T00:32:42Z",
+ "stage": "dev",
+ "repo_root": ".",
+ "pilot": "kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64",
+ "reference": "km3",
+ "decks": [
+  {
+   "name": "09-mega-manectric-heliolisk",
+   "path": "decks/dustin/09-mega-manectric-heliolisk.txt",
+   "sha256": "48ca6b6c6aeefb36678abff741896ad4931ae101e9e4a698f1faefb3f3e4f91e"
+  },
+  {
+   "name": "06-mega-blaziken-tournament-list",
+   "path": "decks/dustin/06-mega-blaziken-tournament-list.txt",
+   "sha256": "69c521a33339a45633c5770b3e4acad5b8912f9367288a3044147e7fa45d5800"
+  },
+  {
+   "name": "10-xatu-oricorio-tr-weezing",
+   "path": "decks/dustin/10-xatu-oricorio-tr-weezing.txt",
+   "sha256": "a9cf8f1998a56316ceb466e7d9ec479f103c757fdfce89a91151248f641624af"
+  }
+ ],
+ "opponents": [
+  {
+   "name": "t-altaria",
+   "path": "decks/screen/opponents/t-altaria.txt",
+   "sha256": "c3a57b9c835be77ba864514e2636645885c4f22d75028c5f29e2686edcbe171f"
+  },
+  {
+   "name": "t-blaziken",
+   "path": "decks/screen/opponents/t-blaziken.txt",
+   "sha256": "d88a70e56dae8f8500d539348223b5fee5eaba705667578a8fcbca95963fd7ed"
+  },
+  {
+   "name": "t-hydreigon",
+   "path": "decks/screen/opponents/t-hydreigon.txt",
+   "sha256": "18688bd9ab09f2638538006590767a5750abe763572c0fb636c47eec93155f3b"
+  },
+  {
+   "name": "t-lucario",
+   "path": "decks/screen/opponents/t-lucario.txt",
+   "sha256": "76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634"
+  },
+  {
+   "name": "t-sceptile",
+   "path": "decks/screen/opponents/t-sceptile.txt",
+   "sha256": "fe0b7fc4de2f9dff0268a65d30dd39bfd5b73e7e5115b48e59f3975777018cd2"
+  },
+  {
+   "name": "t-suicune",
+   "path": "decks/screen/opponents/t-suicune.txt",
+   "sha256": "639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783"
+  },
+  {
+   "name": "t-vespiquen",
+   "path": "decks/screen/opponents/t-vespiquen.txt",
+   "sha256": "8356844fd2d143a44c547356ff5a32b74977478fbb1f9fc2a716a7f2233f8255"
+  },
+  {
+   "name": "t-weezing",
+   "path": "decks/screen/opponents/t-weezing.txt",
+   "sha256": "26cb869fe5f2c7cd79f8b974bf7667f802837bdb6ec9442db5360aef490ce5a1"
+  }
+ ],
+ "deals": 2,
+ "seats": [
+  0,
+  1
+ ],
+ "seed_base": 24400000000,
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "heldout_decks": [
+  "02-arceus-crobat",
+  "04-absol-hoopa-darkrai",
+  "07-skarmory-stall",
+  "08-garchomp-toolbox",
+  "11-archaludon-haxorus-dragonair",
+  "12-ariados-whimsicott-ogerpon",
+  "13-a-ninetales-raticate",
+  "14-comfey-raticate-hypno",
+  "15-jolteon-oricorio-raticate",
+  "draft-C-meowstic-hatterene-v2",
+  "draft-D-entei-grimhound"
+ ],
+ "heldout_locked": true,
+ "heldout_registry": [
+  "02-arceus-crobat",
+  "04-absol-hoopa-darkrai",
+  "07-skarmory-stall",
+  "08-garchomp-toolbox",
+  "11-archaludon-haxorus-dragonair",
+  "12-ariados-whimsicott-ogerpon",
+  "13-a-ninetales-raticate",
+  "14-comfey-raticate-hypno",
+  "15-jolteon-oricorio-raticate",
+  "draft-C-meowstic-hatterene-v2",
+  "draft-D-entei-grimhound"
+ ],
+ "heldout_in_run": [],
+ "intended_lines": "rl/strength/intended_lines.json",
+ "intended_lines_sha256": "80778f3c4a58aa11d8a10fd96196110177dcc20d240d24f9351798eda4dae5a1",
+ "program": "/home/dacz8976/kx_r2c/strength",
+ "program_sha256": "6798e33cb355ac00e0bd83fcae8aa01ed9385752ce7695025c234e78faa5e5c0",
+ "engine": "laptop/kx3cand-on-rules2 9a0bc5ac28ccf421044c3c68dc2779123b607bca engine tree 5d557d350b6d (the candidate kx3's players, claude/playout-pilot 172cbe9c byte for byte, on main-c045ede's engine, rules switch 2), built on the laptop Oct 14 with rl/strength/build.sh (harness bf9c5d6814007f1f)",
+ "pilot_provenance": "kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64 from claude/playout-pilot@172cbe9c (the combined run's and the held-out exam's m64), its players byte for byte on main-c045ede's engine",
+ "reference_provenance": "km3 in the same build; its self-check must be the pinned km3's (81b572198c04d5d1)",
+ "planned_pairs": 24,
+ "planned_games": 192
+}
