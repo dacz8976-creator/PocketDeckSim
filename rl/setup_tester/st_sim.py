@@ -46,6 +46,10 @@ def load_cfg(path=None, **over):
     with open(path or DEFAULT_PLAN, encoding='utf-8') as f:
         cfg = json.load(f)
     cfg.update(over)
+    if cfg.get('legacy_script'):         # d0eb22eb's script: with pawniard_bench 'now' it reproduces that commit's numbers
+        cfg.update(promote_order=['Glimmora', 'Glimmet', 'Alolan Grimer', 'Regigigas', 'Alolan Muk', 'Bisharp',
+                                  'Pawniard', 'Kingambit'], copycat_rule='smaller', energy_line=['Bisharp', 'Pawniard'])
+        cfg.update(over)
     if 'attacker_cost' not in cfg:       # the main attack's Energy cost, from lib/card.py's database
         atk = next(a for a in cl.db()['name'][cfg['main_attacker']].attacks if a['title'] == cfg['attack'])
         cfg['attacker_cost'] = len(atk['cost'])
@@ -130,13 +134,29 @@ def deal_cards(ver, deal, order=None, seed_base=SEED_BASE):
     return opening(ver, deal, order, seed_base)
 
 
+_UID = [0]
+
+
 class Mon:
-    __slots__ = ('slot', 'name', 'stage', 'placed', 'evolved', 'energy', 'root', 'hp')
+    __slots__ = ('slot', 'name', 'stage', 'placed', 'evolved', 'energy', 'root', 'hp', 'uid', 'turned')
 
     def __init__(self, ver, slot, turn):
         self.slot, self.name, self.stage = slot, ver.name[slot], ver.stage[slot]
         self.placed, self.evolved, self.energy = turn, -1, 0
         self.root, self.hp = ver.root[slot], ver.hp[slot]
+        _UID[0] += 1
+        self.uid = _UID[0]                 # creation order (only the order matters)
+        self.turned = False                # a Glimmora's turn: Active at the start of our turn with [D] attached
+
+
+def winning_moment(turns, hp):
+    """SPEC_AMENDMENT_1 P4. `turns` are the own-turn records ('k_start': our knock-outs when the turn began, 'kgdd':
+    Kingambit in play with [DD] at the end of it). W is the first own turn at which the Blade (60 + 40 k) is at least
+    their strongest Pokémon's HP; R the first turn from W on with Kingambit ready (None if never). Points are the
+    caller's: the 'wins outright' column also needs the Pokémon's points to be 3."""
+    W = next((t for t, r in enumerate(turns, 1) if blade_damage(r['k_start']) >= hp), None)
+    R = None if W is None else next((t for t in range(W, len(turns) + 1) if turns[t - 1]['kgdd']), None)
+    return {'W': W, 'R': R}
 
 
 class Game:
@@ -161,6 +181,12 @@ class Game:
         self.copycat_draws = []
         self.pawniard_lost_j = None
         self.first_attack_turn = None
+        self.tl = None                            # the clock's reading for this deal (set by play_deal)
+        self.first_ko_t = None                    # our own-turn count when our first Pokémon was knocked out
+        self.promotions = 0
+        self.p3 = None                            # {'turn', 'cause'}: Muk or Pawniard Active (SPEC_AMENDMENT_1 P3)
+        self.glim_lines = []                      # uids of the Glimmet/Glimmora Pokémon, in the order placed
+        self.glim = {}                            # Glimmora uid -> own turn it first had its turn
         self.hold = {tuple(x) for x in cfg['hold_evolutions']}
         self.cost = cfg['attacker_cost']
         self.cur = {}
@@ -216,7 +242,10 @@ class Game:
     # ---- placing ----
     def place(self, slot):
         self.hand.remove(slot)
-        self.play.append(Mon(self.ver, slot, self.t))
+        m = Mon(self.ver, slot, self.t)
+        self.play.append(m)
+        if m.root == self.cfg['coin_pokemon_root']:
+            self.glim_lines.append(m.uid)
         if self.t > 0:
             self.cur['placed'] += 1
 
@@ -225,19 +254,36 @@ class Game:
         n = self.ver.name[slot]
         return lead.index(n) if n in lead else len(lead)
 
+    def pawniard_ok(self):
+        """May a Pawniard in hand be benched now? The config's bench trigger (SPEC_AMENDMENT_1 script change 2)."""
+        mode = self.cfg.get('pawniard_bench', 'now')
+        if mode == 'now':
+            return True
+        if mode == 'first_ko':                    # our first turn after one of ours was knocked out
+            return self.ko >= 1
+        if mode == 'late':                        # one own turn later than first_ko
+            return self.first_ko_t is not None and self.t >= self.first_ko_t + 2
+        if mode == 'pieces':                      # Kingambit and Rare Candy both in hand
+            v = self.ver
+            return any(v.name[h] == self.cfg['main_attacker'] for h in self.hand) and self.has_in_hand('candy') is not None
+        raise ValueError(mode)
+
     def place_basics(self):
         v, did = self.ver, False
-        reserve = self.cfg['bench_reserved_for']
+        cfg = self.cfg
+        reserve = cfg['bench_reserved_for']
+        now = cfg.get('pawniard_bench', 'now') == 'now'
+        ok = self.pawniard_ok()
         while len(self.play) < BENCH + 1:
-            cands = [s for s in self.hand if v.is_basic[s]]
+            cands = [s for s in self.hand if v.is_basic[s] and (ok or v.name[s] != reserve)]
             if not cands:
                 break
             pr = [s for s in cands if v.name[s] == reserve]
             if pr:
                 self.place(pr[0])
             else:
-                # keep one Bench slot free while the plan Basic is still in the deck
-                if len(self.play) >= BENCH and any(v.name[s] == reserve for s in self.deck):
+                # T-now: keep one Bench slot free while the plan Basic is still in the deck
+                if now and len(self.play) >= BENCH and any(v.name[s] == reserve for s in self.deck):
                     break
                 self.place(min(cands, key=self.lead_rank))
             did = True
@@ -257,6 +303,14 @@ class Game:
         self.cur = {'placed': 0, 'evolved': 0, 'drawsearch': False, 'supporters': [], 'stadium': False,
                     'mesagoza': False}
         cfg = self.cfg
+        self.cur['k_start'] = self.ko
+        if self.play and self.play[0].name == cfg['coin_pokemon'] and self.play[0].energy >= 1:
+            a = self.play[0]
+            a.turned = True
+            self.glim.setdefault(a.uid, t)
+        self.opp_hand = self.tl.opp_hand(t) if self.tl is not None else None
+        if self.opp_hand is None:
+            self.opp_hand = cfg['opp_hand']
         self.draw(1)                                       # the first player's turn 1 included
         natural = cfg.get('natural_only')
         while True:
@@ -273,6 +327,7 @@ class Game:
         self.end_evolve()
         self.energy()
         self.attack()
+        self.note_front()
         self.record()
 
     def items(self):
@@ -427,7 +482,16 @@ class Game:
             self.draw(2)
             return self.played('prof')
         s = self.has_in_hand('copycat')
-        if s is not None:
+        if s is not None and cfg.get('copycat_rule') == 'NM':
+            if self.copycat_wanted():
+                self.discard_trainer(s)
+                for h in list(self.hand):
+                    self.hand.remove(h)
+                    self.insert_random(h)
+                self.copycat_draws.append(self.opp_hand)
+                self.draw(self.opp_hand)
+                return self.played('copycat')
+        elif s is not None:
             main_in_hand = any(v.name[h] == main or v.tkind[h] == 'candy' for h in self.hand)
             smaller = len(self.hand) - 1 < cfg['opp_hand']
             rule = cfg.get('copycat_rule')
@@ -441,6 +505,31 @@ class Game:
                 return self.played('copycat')
         return False
 
+    def needed_in_hand(self):
+        """Plan cards in hand that are still needed (SPEC_AMENDMENT_1 script change 7): Pawniard, Rare Candy and
+        Kingambit while no Kingambit is in play; Glimmet and Glimmora while fewer than two Glimmora lines are in play;
+        Alolan Grimer and Muk while no Muk is in play."""
+        v, cfg = self.ver, self.cfg
+        main = cfg['main_attacker']
+        names = [m.name for m in self.play]
+        n = 0
+        for h in self.hand:
+            nm = v.name[h]
+            if nm in (cfg['pawniard'], main) or v.tkind[h] == 'candy':
+                n += main not in names
+            elif nm in ('Glimmet', cfg['coin_pokemon']):
+                n += sum(m.root == 'Glimmet' for m in self.play) < 2
+            elif nm in ('Alolan Grimer', cfg['muk']):
+                n += cfg['muk'] not in names
+        return n
+
+    def copycat_wanted(self):
+        """Fewer than N plan cards still needed in hand, and the opponent's hand at least M larger than ours without
+        the Copycat. N and M are the config's copycat_n and copycat_m."""
+        cfg = self.cfg
+        return (self.needed_in_hand() < cfg['copycat_n']
+                and self.opp_hand - (len(self.hand) - 1) >= cfg['copycat_m'])
+
     def played(self, kind):
         self.cur['supporters'].append(kind)
         self.cur['drawsearch'] = True
@@ -453,7 +542,20 @@ class Game:
         main = cfg['main_attacker']
         play = self.play
         pick = next((m for m in play if m.name == main and m.energy < self.cost), None)
-        if pick is None:
+        if pick is None and not cfg.get('legacy_script'):
+            # Dustin's order: the Pawniard line up to [DD], the Active Glimmora up to [D], Regigigas (Giga Turbo [CCC])
+            # while Muk is in play, otherwise the Active
+            for nm in cfg['energy_line']:
+                pick = next((m for m in play if m.name == nm and m.energy < self.cost), None)
+                if pick:
+                    break
+            if pick is None and play[0].name == cfg['coin_pokemon'] and play[0].energy < 1:
+                pick = play[0]
+            if pick is None and any(m.name == cfg['muk'] for m in play):
+                pick = next((m for m in play if m.name == cfg['muk_partner'] and m.energy < 3), None)
+            if pick is None:
+                pick = play[0]
+        elif pick is None:
             for nm in cfg['energy_line']:             # Bisharp, then Pawniard: fewer than 2
                 pick = next((m for m in play if m.name == nm and m.energy < 2), None)
                 if pick:
@@ -483,31 +585,59 @@ class Game:
                'kg_energy': max((m.energy for m in play if m.name == main), default=-1),
                'supporters': list(self.cur['supporters']), 'placed': self.cur['placed'],
                'evolved': self.cur['evolved'], 'hand': len(self.hand),
+               'energies': [m.energy for m in play], 'k_start': self.cur['k_start'],
+               'kgdd': any(m.name == main and m.energy >= self.cost for m in play),
                'empty': not (self.cur['placed'] or self.cur['evolved'] or self.cur['drawsearch'])}
         if cfg.get('natural_only') or cfg.get('detail'):
             rec['seen_names'] = [self.ver.name[s] for s in self.seen]
         self.turns.append(rec)
 
     # ---- the opponent's turn ----
+    def note_front(self, promoted=False):
+        """P3: Muk or Pawniard Active. 'opening' if it is still the starting Active, else the cause is a promotion with
+        nothing else left (the promotion order puts them last)."""
+        if self.p3 is None and self.play and self.play[0].name in self.cfg.get('front_break', ()):
+            self.p3 = {'turn': self.t + 1 if promoted else self.t, 'cause': 'promotion' if self.promotions else 'opening',
+                       'name': self.play[0].name}
+
+    def blade_needed(self):
+        """The Blade's damage that knocks out their strongest Pokémon; the config's blade_target (a count of
+        knock-outs) when the clock does not carry one."""
+        st = self.tl.strongest if self.tl is not None else None
+        return st[0] if st else blade_damage(self.cfg['blade_target'])
+
     def promote(self):
         v, cfg = self.ver, self.cfg
         if not self.play:
             return
         main = cfg['main_attacker']
+        prom = cfg['promote_order']
         ready = [m for m in self.play if m.name == main and m.energy >= self.cost]
-        if ready and self.ko >= cfg['blade_target']:
+        if cfg.get('legacy_script'):
+            if ready and self.ko >= cfg['blade_target']:
+                pick = ready[0]
+            else:
+                pick = min(self.play, key=lambda m: prom.index(m.name) if m.name in prom else len(prom))
+        elif ready and blade_damage(self.ko) >= self.blade_needed():
             pick = ready[0]
         else:
-            prom = cfg['promote_order']
-            pick = min(self.play, key=lambda m: prom.index(m.name) if m.name in prom else len(prom))
+            # a Glimmora that has not had its turn comes ahead of the other Glimmora, then the order list
+            def key(m):
+                r = prom.index(m.name) if m.name in prom else len(prom)
+                return r - 0.5 if m.name == cfg['coin_pokemon'] and not m.turned else r
+            pick = min(self.play, key=key)
         self.play.remove(pick)
         self.play.insert(0, pick)
+        self.promotions += 1
+        self.note_front(promoted=True)
 
     def knock_out(self, j):
         if not self.play:
             return
         dead = self.play.pop(0)
         self.ko += 1
+        if self.first_ko_t is None:
+            self.first_ko_t = self.t
         if dead.name == self.cfg['pawniard'] and self.pawniard_lost_j is None:
             self.pawniard_lost_j = j
         gain = 1
@@ -540,8 +670,12 @@ class Game:
 
 def play_deal(ver, deal, first, cfg, clock=None, order=None, seed_base=SEED_BASE):
     """One deal: the opening, then `horizon` own turns (`setup_horizon` with no clock). Returns the trace."""
+    if clock is None and cfg.get('pawniard_bench') in ('first_ko', 'late'):
+        cfg = dict(cfg, pawniard_bench='now')    # no knock-outs happen with no clock, so the trigger could never fire
     g = Game(ver, deal, first, cfg, order, seed_base)
     tl = clock.timeline(deal, first) if clock is not None else None
+    g.tl = tl
+    g.note_front()
     horizon = cfg['horizon'] if clock is not None else cfg['setup_horizon']
     setup = {'in_play': g.in_play_names(), 'roots': [m.root for m in g.play]}
     for t in range(1, horizon + 1):
@@ -557,7 +691,14 @@ def play_deal(ver, deal, first, cfg, clock=None, order=None, seed_base=SEED_BASE
     und_own = None
     if g.und_j is not None:
         und_own = g.und_j + (1 if first else 0)
-    return {'setup': setup, 'turns': g.turns, 'first_attack_turn': g.first_attack_turn, 'blades': g.blades,
+    strongest = tl.strongest if tl is not None else None
+    p4 = None
+    if strongest:
+        p4 = dict(winning_moment(g.turns, strongest[0]), hp=strongest[0], pts=strongest[1])
+    glim = sorted(g.glim.items())                 # by creation order of the Pokémon
+    return {'setup': setup, 'turns': g.turns, 'strongest': strongest, 'p4': p4, 'p3': g.p3,
+            'glimmora_turns': [t for _, t in glim], 'glimmora_uids': [u for u, _ in glim],
+            'glimmora_lines': [g.glim.get(u) for u in g.glim_lines], 'first_attack_turn': g.first_attack_turn, 'blades': g.blades,
             'ko': g.ko, 'opp_points': g.opp_points, 'ended': g.ended, 'und_j': g.und_j, 'und_own': und_own,
             'pawniard_lost_j': g.pawniard_lost_j, 'copycat_draws': g.copycat_draws,
             'game': tl.game if tl is not None else None, 'horizon': horizon, 'first': first}

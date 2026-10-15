@@ -137,3 +137,25 @@ def forced_active(cards):
         if len(held) == 1:
             out[held[0][0]] += p
     return out
+
+
+def lead_chance(cards, lead_order):
+    """Exact chance that each Pokémon name is the starting Active: the first Basic in the opening hand by `lead_order`
+    (names not listed rank last). Enumerates the C(20,5) equally likely hands; a hand with no Basic gets one random
+    Basic of the other 15 swapped into a random slot (deck.rs:129-153), which then is the only Basic in it."""
+    import itertools
+    rank = lambda nm: lead_order.index(nm) if nm in lead_order else len(lead_order)
+    n = len(cards)
+    out = {}
+    total = 0
+    for hand in itertools.combinations(range(n), 5):
+        total += 1
+        bs = [i for i in hand if cards[i].is_basic]
+        if bs:
+            nm = min((cards[i].name for i in bs), key=rank)
+            out[nm] = out.get(nm, 0) + 1
+        else:
+            rest = [i for i in range(n) if i not in hand and cards[i].is_basic]
+            for i in rest:
+                out[cards[i].name] = out.get(cards[i].name, 0) + 1 / len(rest)
+    return {k: v / total for k, v in out.items()}

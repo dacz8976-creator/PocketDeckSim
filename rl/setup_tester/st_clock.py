@@ -10,8 +10,12 @@ C-fixed (set paces: fast, medium, slow).
 """
 import json
 import os
+import sys
 
 from st_rng import Stream
+
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), 'lib'))
+import consistency as cl   # noqa: E402  (read_deck, resolve: card facts through lib/card.py's database)
 
 HIS_DIR = os.path.join('rl', 'results', 'pause_games_new_2026-10-13')
 HIS_POS = os.path.join(HIS_DIR, 'v2', 'positions_all.json')
@@ -20,12 +24,29 @@ HIS_DECKS = os.path.join(HIS_DIR, 'decks')
 BOT_GAMES = os.path.join('rl', 'results', 'kx3_on_rules2_2026-10', 'replay_b', 'games.jsonl')
 
 
-class Timeline:
-    """One deal's clock. ko(j) is an int, None (undecided) or, past the record, None unless complete."""
-    __slots__ = ('kos', 'complete_at', 'game')
+def points_of(card):
+    """3 for a Mega ex, 2 for an ex, 1 otherwise (SPEC_AMENDMENT_1 P4)."""
+    return 3 if card.name.startswith('Mega ') and card.ex else 2 if card.ex else 1
 
-    def __init__(self, kos, complete_at, game):
+
+def strongest_of(cards):
+    """(HP, points) of the highest-HP Pokémon in `cards` (more points on a tie), or None."""
+    best = [(c.hp, points_of(c)) for c in cards if c.kind == 'P']
+    return max(best) if best else None
+
+
+class Timeline:
+    """One deal's clock. ko(j) is an int, None (undecided) or, past the record, None unless complete. `strongest` is
+    the opponent's strongest Pokémon (HP, points) or None; opp_hand(t) is the recorded opponent hand at the start of
+    our own turn t or None."""
+    __slots__ = ('kos', 'complete_at', 'game', 'strongest', 'hands')
+
+    def __init__(self, kos, complete_at, game, strongest=None, hands=None):
         self.kos, self.complete_at, self.game = kos, complete_at, game
+        self.strongest, self.hands = strongest, hands or {}
+
+    def opp_hand(self, t):
+        return self.hands.get(t)
 
     def ko(self, j):
         if j <= len(self.kos):
@@ -38,9 +59,17 @@ class Timeline:
 class Fixed:
     """C-fixed: set paces, no sampling. `kos` is a dict {opponent turn: knock-outs} or a function of j."""
 
-    def __init__(self, name, kos):
+    def __init__(self, name, kos, hp=None, pts=None, hand=None):
         self.name, self._kos = name, kos
+        self.hp, self.pts, self.hand = hp, pts, hand
         self.games = [{'name': name}]
+
+    @property
+    def strongest(self):
+        return (self.hp, self.pts) if self.hp is not None else None
+
+    def opp_hand(self, t):
+        return self.hand
 
     def ko(self, j):
         return self._kos(j) if callable(self._kos) else self._kos.get(j, 0)
@@ -55,10 +84,14 @@ class Fixed:
     complete_at = None
 
 
+# Each pace carries an assumed strongest opponent (SPEC_AMENDMENT_1): fast a 180-HP Mega ex (3 points, the Blade needs
+# k=3), medium a 150-HP ex (2 points, k=3), slow a 220-HP Mega ex (3 points, k=4). 'ref190' (fast pace, a 190-HP Mega,
+# k=4 without Red) is a reference row.
 FIXED = {
-    'fast': Fixed('C-fixed fast', lambda j: 1 if j >= 2 else 0),        # one knock-out each opponent turn from turn 2
-    'medium': Fixed('C-fixed medium', lambda j: 1 if j >= 3 else 0),    # the same from turn 3
-    'slow': Fixed('C-fixed slow', lambda j: 1 if j in (3, 5, 7) else 0),
+    'fast': Fixed('C-fixed fast', lambda j: 1 if j >= 2 else 0, 180, 3),   # one knock-out each opponent turn from turn 2
+    'medium': Fixed('C-fixed medium', lambda j: 1 if j >= 3 else 0, 150, 2),    # the same from turn 3
+    'slow': Fixed('C-fixed slow', lambda j: 1 if j in (3, 5, 7) else 0, 220, 3),
+    'ref190': Fixed('C-fixed reference: fast pace, 190-HP Mega ex', lambda j: 1 if j >= 2 else 0, 190, 3),
 }
 
 
@@ -77,7 +110,7 @@ class Sampled:
     def timeline(self, deal, first):
         gi = self.pick(deal, first)
         g = self.games[gi]
-        return Timeline(g['ko'], g['complete_at'], gi)
+        return Timeline(g['ko'], g['complete_at'], gi, g.get('strongest'), g.get('hands'))
 
 
 def k_at_own_turn(game, turn):
@@ -90,7 +123,7 @@ def k_at_own_turn(game, turn):
     return sum(kos)
 
 
-def _his_game(name, positions, outcome_complete):
+def _his_game(name, positions, outcome_complete, strongest=None, hands=None):
     positions = sorted(positions, key=lambda p: p['his_turn'])
     first = positions[0]['turn_count'] == 1
     s = 1 if first else 0                       # k at his turn t covers opponent turns 1..t-s
@@ -118,7 +151,7 @@ def _his_game(name, positions, outcome_complete):
     last = known[-1][0] - s
     complete_at = len(kos) + 1 if outcome_complete else None
     return {'name': name, 'first': first, 'ko': kos, 'complete_at': complete_at,
-            'recorded_k': known, 'n_known': last}
+            'recorded_k': known, 'n_known': last, 'strongest': strongest, 'hands': hands or {}}
 
 
 def load_his(root, seat_matched=False):
@@ -138,7 +171,9 @@ def load_his(root, seat_matched=False):
         title = meta[deck.lower().replace('kw', 'kw-')]['title'].lower() if deck.lower().replace('kw', 'kw-') in meta \
             else ''
         complete = 'loss' in title and 'concession' not in title
-        games.append(_his_game(deck, ps, complete))
+        seen = [cl.resolve(' '.join(b['card'].split()[-2:])) for p in ps for b in p['opp']['board']]
+        hands = {p['his_turn']: p['opp']['hand_count'] for p in ps if p['opp'].get('hand_count') is not None}
+        games.append(_his_game(deck, ps, complete, strongest_of([c for c in seen if c]), hands))
     return Sampled('C-his (seat-matched)' if seat_matched else 'C-his', games, seat_matched)
 
 
@@ -146,7 +181,7 @@ def own_turn(t, deck_first):
     return (t + 1) // 2 if deck_first else t // 2
 
 
-def _bot_game(r):
+def _bot_game(r, strongest=None):
     first = r['first'] == 'deck'
     log = r['log']
     last = r['turns'] // 2 if first else (r['turns'] + 1) // 2
@@ -160,7 +195,8 @@ def _bot_game(r):
         cum = new
     complete = r['winner'] == 'opp'
     return {'name': r['key'], 'first': first, 'ko': kos, 'complete_at': last if complete else None,
-            'recorded_k': []}
+            'recorded_k': [], 'strongest': strongest, 'strongest_flag': 'the panel list\'s biggest Pokémon (the '
+            'logs do not show the opponent\'s HP)'}
 
 
 def _bot_rows(root):
@@ -171,7 +207,12 @@ def _bot_rows(root):
 def load_bot(root):
     rows = _bot_rows(root)
     rows = [r for r in rows if r['deck'].startswith('01')]
-    return Sampled('C-bot', [_bot_game(r) for r in rows])
+    lists = {}
+    for r in rows:
+        if r['opp'] not in lists:
+            _, cards = cl.read_deck(os.path.join(root, 'decks', 'screen', 'opponents', r['opp'] + '.txt'))
+            lists[r['opp']] = strongest_of(cards)
+    return Sampled('C-bot', [_bot_game(r, lists[r['opp']]) for r in rows])
 
 
 def bot_first_blade_turns(root):

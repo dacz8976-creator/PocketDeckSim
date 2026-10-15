@@ -1,25 +1,70 @@
 {
-  "name": "Kingambit (Dustin's Muk / Glimmora / Kingambit / Regigigas deck)",
-  "main_attacker": "Kingambit",
-  "attack": "Overlord's Blade",
-  "key_pokemon": ["Pawniard", "Bisharp", "Kingambit", "Alolan Grimer", "Alolan Muk", "Glimmet", "Glimmora", "Regigigas"],
-  "plan_pieces": ["Pawniard", "Bisharp", "Kingambit"],
-  "lead_order": ["Regigigas", "Glimmet", "Alolan Grimer", "Pawniard"],
-  "promote_order": ["Glimmora", "Glimmet", "Alolan Grimer", "Regigigas", "Alolan Muk", "Bisharp", "Pawniard", "Kingambit"],
-  "blade_target": 2,
-  "copycat_rule": "smaller",
-  "opp_hand": 4,
-  "prof_hand_max": 8,
-  "bench_reserved_for": "Pawniard",
-  "pawniard": "Pawniard",
-  "hold_evolutions": [["Pawniard", "Bisharp"]],
-  "energy_line": ["Bisharp", "Pawniard"],
-  "muk": "Alolan Muk",
-  "muk_partner": "Regigigas",
-  "coin_pokemon": "Glimmora",
-  "horizon": 8,
-  "setup_horizon": 6,
-  "poke_ball_over": "cards",
-  "mesagoza_coin": "random",
-  "glimmora_coin": "random"
+ "name": "Kingambit (Dustin's Muk / Glimmora / Kingambit / Regigigas deck)",
+ "main_attacker": "Kingambit",
+ "attack": "Overlord's Blade",
+ "key_pokemon": [
+  "Pawniard",
+  "Bisharp",
+  "Kingambit",
+  "Alolan Grimer",
+  "Alolan Muk",
+  "Glimmet",
+  "Glimmora",
+  "Regigigas"
+ ],
+ "plan_pieces": [
+  "Pawniard",
+  "Bisharp",
+  "Kingambit"
+ ],
+ "lead_order": [
+  "Regigigas",
+  "Glimmet",
+  "Alolan Grimer",
+  "Pawniard"
+ ],
+ "promote_order": [
+  "Glimmora",
+  "Glimmet",
+  "Regigigas",
+  "Bisharp",
+  "Kingambit",
+  "Alolan Grimer",
+  "Alolan Muk",
+  "Pawniard"
+ ],
+ "blade_target": 2,
+ "copycat_rule": "NM",
+ "opp_hand": 4,
+ "prof_hand_max": 8,
+ "bench_reserved_for": "Pawniard",
+ "pawniard": "Pawniard",
+ "hold_evolutions": [
+  [
+   "Pawniard",
+   "Bisharp"
+  ]
+ ],
+ "energy_line": [
+  "Kingambit",
+  "Bisharp",
+  "Pawniard"
+ ],
+ "muk": "Alolan Muk",
+ "muk_partner": "Regigigas",
+ "coin_pokemon": "Glimmora",
+ "horizon": 8,
+ "setup_horizon": 6,
+ "poke_ball_over": "cards",
+ "mesagoza_coin": "random",
+ "glimmora_coin": "random",
+ "pawniard_bench": "first_ko",
+ "front_break": [
+  "Alolan Muk",
+  "Pawniard"
+ ],
+ "coin_pokemon_root": "Glimmet",
+ "copycat_n": 2,
+ "copycat_m": 1,
+ "legacy_script": false
 }
