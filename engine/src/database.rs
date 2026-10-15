@@ -86355,6 +86355,32 @@ fn populate_database_chunk_30(map: &mut HashMap<CardId, Card>) {
             booster_pack: "Promo B (P-B)".to_string(),
         }),
     );
+    map.insert(
+        CardId::PB099MegaGarchompEx,
+        Card::Pokemon(PokemonCard {
+            id: "P-B 099".to_string(),
+            name: "Mega Garchomp ex".to_string(),
+            stage: 2,
+            evolves_from: Some("Gabite".to_string()),
+            hp: 220,
+            energy_type: EnergyType::Dragon,
+            ability: None,
+            attacks: vec![Attack {
+                energy_required: vec![
+                    EnergyType::Water,
+                    EnergyType::Fighting,
+                    EnergyType::Colorless,
+                ],
+                title: "Falling Edge".to_string(),
+                fixed_damage: 190,
+                effect: Some("Discard 2 random Energy from this Pokémon.".to_string()),
+            }],
+            weakness: None,
+            retreat_cost: vec![EnergyType::Colorless, EnergyType::Colorless],
+            rarity: "◊◊◊◊".to_string(),
+            booster_pack: "Promo B (P-B)".to_string(),
+        }),
+    );
 }
 
 pub fn get_card_by_enum(id: CardId) -> Card {

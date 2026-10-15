@@ -3886,6 +3886,7 @@ pub enum CardId {
     PB092Marowak,
     PB093Fennekin,
     PB094Meowstic,
+    PB099MegaGarchompEx,
 }
 
 static CARD_ID_MAP: LazyLock<HashMap<&'static str, CardId>> = LazyLock::new(|| {
@@ -7769,6 +7770,7 @@ static CARD_ID_MAP: LazyLock<HashMap<&'static str, CardId>> = LazyLock::new(|| {
     map.insert("P-B 092", CardId::PB092Marowak);
     map.insert("P-B 093", CardId::PB093Fennekin);
     map.insert("P-B 094", CardId::PB094Meowstic);
+    map.insert("P-B 099", CardId::PB099MegaGarchompEx);
     map
 });
 

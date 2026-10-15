@@ -87479,5 +87479,28 @@
       "rarity": "◊◊◊",
       "booster_pack": "Promo B (P-B)"
     }
+  },
+  {
+    "Pokemon": {
+      "id": "P-B 099",
+      "name": "Mega Garchomp ex",
+      "stage": 2,
+      "evolves_from": "Gabite",
+      "hp": 220,
+      "energy_type": "Dragon",
+      "ability": null,
+      "attacks": [
+        {
+          "energy_required": ["Water", "Fighting", "Colorless"],
+          "title": "Falling Edge",
+          "fixed_damage": 190,
+          "effect": "Discard 2 random Energy from this Pokémon."
+        }
+      ],
+      "weakness": null,
+      "retreat_cost": ["Colorless", "Colorless"],
+      "rarity": "◊◊◊◊",
+      "booster_pack": "Promo B (P-B)"
+    }
   }
 ]
