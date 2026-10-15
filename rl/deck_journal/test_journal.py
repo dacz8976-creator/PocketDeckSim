@@ -510,11 +510,13 @@ class SetupRefusals(unittest.TestCase):
         return str(cm.exception)
 
     def test_amendment1_folder_is_not_on_main(self):
+        # Before the laptop's merge (main 02e4ed8b) the folder was not on main; since then it is on main and marked SUPERSEDED
+        # (made before fix brief 1). Either way it is refused and the journal is unchanged.
         doc = run_doc()
         before = snap(doc)
         with self.assertRaises(J.Refused) as cm:
             J.add_setup_run(doc, ROOT, AMEND1, by="test", main_ref="origin/main", reviewed=reviewed_file())
-        self.assertIn("not on main", str(cm.exception))
+        self.assertTrue("not on main" in str(cm.exception) or "SUPERSEDED" in str(cm.exception), str(cm.exception))
         self.assertEqual(snap(doc), before)
 
     def test_v1_results_json_is_refused_by_schema(self):
