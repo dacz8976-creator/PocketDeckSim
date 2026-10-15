@@ -30,6 +30,13 @@ for one clean positive, and `_bench` waits for an F failure. Promotions after a 
 the turn while a legal attack costs nothing and the attacker isn't needed elsewhere". "Free" means by consequences as well as
 cost, and "needed elsewhere" is judged only from what the bot could know. `_atk` tests his rule, not the narrower "follow km's
 attack" (km3 proposed no attack at 10 of the 13 same-position turns), so it also fires where km3 itself would skip.
+
+**Dustin, Oct 15, on knockouts:** "Take the knockout if you win or it helps you, but 1 point early doesn't help if it puts you in a
+worse position later."
+- **A knockout that wins the game is always taken.** No exception applies to it.
+- **Any other knockout is judged by where it leaves the game,** not by the point. Taking it is "free" only if it doesn't leave ky3
+  worse off: losing the deck's win condition (his Pawniard), or a bigger attack later (his Blade), counts as worse.
+- **The one-turn watch is the first approximation of "later".** Section 5 says what follows if it is too short.
 - **When it looks:** an attack is legal now, and ky3's chosen move leads to no attack this turn. That means its line attacks in
   fewer than half its play-outs, a count `_zs3` already keeps (playout_player.rs:1211).
 - **"Does something":** each legal attack is applied to a copy of the board, with every branch and every target, and queued
