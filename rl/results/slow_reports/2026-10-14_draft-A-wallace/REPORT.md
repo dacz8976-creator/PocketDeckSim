@@ -10,21 +10,21 @@ Pre-registration order: registered 2026-10-15T02:39:55Z; first game started 2026
 
 Self-check digests recorded at registration: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit b89b7ebea31d): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration); `selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit b89b7ebea31d): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration)
 
-- Planned 320 games; finished 80; complete pairs 40 (= 80 games); unpaired games 0; errors 0.
+- Planned 320 games; finished 120; complete pairs 60 (= 120 games); unpaired games 0; errors 0.
 - Paired difference = score(arm X) − score(arm ref) per (deck, opponent, deal, seat), in percentage points of score (win 1, tie ½). Intervals are mean ± 1.96·sd/√n over paired games. No pass/fail threshold.
 
 ## Result
 
-**Pooled over all 40 paired games: +17.5 ± 11.9 points** (arm X 70.0% vs arm ref 52.5% score).
+**Pooled over all 60 paired games: +11.7 ± 9.4 points** (arm X 68.3% vs arm ref 56.7% score).
 
 
 ### Per deck, pooled over its opponents
 
 | deck | paired games | arm X score | arm ref score | paired difference (points) | went first: diff | went second: diff |
 |---|---|---|---|---|---|---|
-| draft-A-wallace | 40 | 70.0% | 52.5% | +17.5 ± 11.9 | +22.7 ± 17.9 | +11.1 ± 14.9 |
+| draft-A-wallace | 60 | 68.3% | 56.7% | +11.7 ± 9.4 | +19.4 ± 14.1 | +3.4 ± 11.8 |
 
-Overall by who went first (identical in both arms): deck first +22.7 ± 17.9 (n=22); deck second +11.1 ± 14.9 (n=18).
+Overall by who went first (identical in both arms): deck first +19.4 ± 14.1 (n=31); deck second +3.4 ± 11.8 (n=29).
 
 ### Per (deck, opponent) pair
 
@@ -32,6 +32,7 @@ Overall by who went first (identical in both arms): deck first +22.7 ± 17.9 (n=
 |---|---|---|---|---|---|
 | draft-A-wallace | t-altaria | 20 | 60.0% | 35.0% | +25.0 ± 19.5 |
 | draft-A-wallace | t-blaziken | 20 | 80.0% | 70.0% | +10.0 ± 13.5 |
+| draft-A-wallace | t-hydreigon | 20 | 65.0% | 65.0% | +0.0 ± 14.2 |
 
 ## Runtime and cost
 
@@ -39,10 +40,10 @@ Wall time is per game on this machine with the threads the run used; it includes
 
 | arm | role | pilot | games | wall per game: mean / median / p95 / max | games per second (1 thread) | decisions per game | ms per decision: mean / median / p95 / max | decision time per game |
 |---|---|---|---|---|---|---|---|---|
-| X | deck seat | `kx3` | 40 | 561.86 / 531.61 / 1083.41 / 1274.68 s | 0.00 | 24.1 | 23346.9 / 22732.9 / 42156.4 / 86635.7 | 9 min |
-| X | opponent seat | `km3` | 40 |  |  | 24.9 | 14.2 / 6.8 / 53.0 / 200.3 | 0.35 s |
-| ref | deck seat | `km3` | 40 | 0.55 / 0.51 / 1.26 / 1.44 s | 1.80 | 23.5 | 11.9 / 5.0 / 46.4 / 178.2 | 0.28 s |
-| ref | opponent seat | `km3` | 40 |  |  | 24.3 | 10.8 / 5.6 / 38.7 / 164.1 | 0.26 s |
+| X | deck seat | `kx3` | 60 | 540.26 / 523.56 / 1006.74 / 1274.68 s | 0.00 | 23.3 | 23139.6 / 22537.7 / 43613.4 / 86635.7 | 9 min |
+| X | opponent seat | `km3` | 60 |  |  | 24.1 | 13.2 / 6.5 / 51.2 / 200.3 | 0.32 s |
+| ref | deck seat | `km3` | 60 | 0.53 / 0.51 / 0.98 / 1.44 s | 1.89 | 23.4 | 11.5 / 5.1 / 44.9 / 178.2 | 0.27 s |
+| ref | opponent seat | `km3` | 60 |  |  | 24.4 | 10.1 / 5.4 / 37.0 / 164.1 | 0.25 s |
 
 One paired game (both arms) took 9 min on average; the run used 4 thread(s).
 
@@ -52,8 +53,8 @@ At the sd reached, the number of paired games for a given half-width is `(1.96·
 
 | scope | paired games so far | sd | interval now (points) | for ±5 points: total / more games, time | for ±3 points: total / more games, time |
 |---|---|---|---|---|---|
-| all decks pooled | 40 | 38.5 | +17.5 ± 11.9 | 228 / 188, 7.3 h | 633 / 593, 23.2 h |
-| draft-A-wallace | 40 | 38.5 | +17.5 ± 11.9 | 228 / 188, 7.3 h | 633 / 593, 23.2 h |
+| all decks pooled | 60 | 37.2 | +11.7 ± 9.4 | 214 / 154, 5.8 h | 593 / 533, 20.0 h |
+| draft-A-wallace | 60 | 37.2 | +11.7 ± 9.4 | 214 / 154, 5.8 h | 593 / 533, 20.0 h |
 
 ## Intended lines
 

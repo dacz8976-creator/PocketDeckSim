@@ -59,3 +59,4 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
 - 2026-10-15: draft A Wallace on the current engine registered (rl/results/slow_reports/2026-10-14_draft-A-wallace; seed_base 24,681,500,000 = slot 805 as expected; deck sha256 b5b66d02a0f2…; 320 games, --deals 10 --threads 4 --school-rule off; self-check from the committed record). The Oct 8 report (older engine, slot 804) keeps its label. Pushed before any game; then slices of 40 under the driver.
 - 2026-10-15 03:41Z: 2026-10-14_draft-A-wallace: slice done, 40 of 320 games on disk, folder pushed.
 - 2026-10-15 04:19Z: 2026-10-14_draft-A-wallace: slice done, 80 of 320 games on disk, folder pushed.
+- 2026-10-15 05:01Z: 2026-10-14_draft-A-wallace: slice done, 120 of 320 games on disk, folder pushed.
