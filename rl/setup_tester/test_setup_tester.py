@@ -502,7 +502,7 @@ class T8Amendment(unittest.TestCase):
     def mons(self, names, first_active=True):
         ver = version()
         g = sim.Game(ver, 0, True, CFG, order=sim.order_for(ver, [REGI]))
-        slot = {'Pawniard': PAWN, 'Alolan Muk': MUK, 'Alolan Grimer': GRIMER, 'Glimmet': GLIMMET,
+        slot = {'Pawniard': PAWN, 'Bisharp': BISH, 'Alolan Muk': MUK, 'Alolan Grimer': GRIMER, 'Glimmet': GLIMMET,
                 'Glimmora': GLIMMORA, 'Regigigas': REGI, 'Kingambit': KING}
         g.play = [sim.Mon(ver, next(i for i in range(ver.n) if ver.id[i] == slot[n]), 0) for n in names]
         return g
@@ -511,16 +511,20 @@ class T8Amendment(unittest.TestCase):
         g = self.mons(['Pawniard', 'Alolan Muk', 'Alolan Grimer', 'Regigigas'])   # the dead Active is already out
         g.promote()
         self.assertEqual(g.play[0].name, 'Regigigas')
-        self.assertIsNone(g.p3)
+        self.assertEqual(g.p3, {})
         g = self.mons(['Pawniard', 'Alolan Muk'])
         g.promote()
-        self.assertIn(g.play[0].name, ('Pawniard', 'Alolan Muk'))
-        self.assertEqual(g.p3['cause'], 'promotion')            # nothing else left to promote
+        self.assertEqual(g.play[0].name, 'Alolan Muk')
+        self.assertEqual(list(g.p3), ['grimer_muk'])            # nothing else left to promote
+        g = self.mons(['Pawniard', 'Bisharp'])
+        g.promote()
+        self.assertEqual(g.play[0].name, 'Bisharp')
+        self.assertEqual(list(g.p3), ['pawn_promo'])
 
     def test_opening_pawniard_forced_active_counts_under_p3(self):
         top = [PAWN, KING, CANDY, POP, HELM, ILIMA, POP]
         _, tr = hand_deck(top, first=False, clock=clk.Fixed('t', {}))
-        self.assertEqual(tr['p3']['cause'], 'opening')
+        self.assertEqual(tr['p3'], {'pawn_lead': 0})
 
     def test_promotion_prefers_glimmora_that_has_not_had_its_turn(self):
         g = self.mons(['Glimmet', 'Glimmora', 'Glimmora', 'Regigigas'])
@@ -537,12 +541,12 @@ class T8Amendment(unittest.TestCase):
         top = [GLIMMET, GLIMMORA, HELM, ILIMA, POP, POP]
         for first in (True, False):
             _, tr = hand_deck(top, first=first, natural_only=True)
-            self.assertEqual(tr['glimmora_turns'], [3], msg=first)   # Active with [D] at the start of own turn 3
+            self.assertEqual(tr['glimmora_turns'], [2], msg=first)   # R1: it attacked (evolved and attacked on turn 2)
         _, tr = hand_deck([REGI, GLIMMET, HELM, ILIMA, POP, POP], first=True, natural_only=True)
         self.assertEqual(tr['glimmora_turns'], [])
 
     # --- the winning moment ---
-    PACES = [('fast', 180, 3, 3), ('medium', 150, 2, 3), ('slow', 220, 3, 4)]
+    PACES = [('fast', 180, 3, 3), ('medium', 150, 2, 3), ('slow', 180, 3, 3)]   # R3: slow is a 180-HP Mega ex
 
     def k_starts(self, clock, first, n=8):
         return [sum(clock.ko(j) for j in range(1, (t - 1 if first else t) + 1)) for t in range(1, n + 1)]
@@ -587,26 +591,11 @@ class T8Amendment(unittest.TestCase):
         self.assertEqual((vals['P4.ko'], vals['P5.ko']), (1, 1))
         self.assertEqual(vals['P4.win'], 0)  # a 2-point Pokémon cannot win from zero: the model gap, shown apart
 
-    # --- the Copycat grid ---
-    def copy_turns(self, top, first=True, **over):
-        _, tr = hand_deck(top, first=first, copycat_rule='NM', **over)
-        return [t['supporters'] for t in tr['turns']]
-
-    def test_copycat_n0_never_plays_it_and_huge_n_m_minus20_always_does(self):
-        top = [REGI, COPY, HELM, ILIMA, POP, POP, PAWN]
-        for sup in self.copy_turns(top, copycat_n=0, copycat_m=-20):
-            self.assertNotIn('copycat', sup)
-        self.assertIn('copycat', self.copy_turns(top, copycat_n=99, copycat_m=-20)[0])
-        # (b): the opponent's hand (4) must be at least M larger than ours without the Copycat (4 on turn 1: the
-        # Regigigas went to the Active spot, the turn's draw came in)
-        self.assertIn('copycat', self.copy_turns(top, copycat_n=99, copycat_m=0)[0])
-        self.assertNotIn('copycat', self.copy_turns(top, copycat_n=99, copycat_m=1)[0])
-
     def test_copycat_uses_the_clock_records_hand(self):
         c = clk.Fixed('t', {}, hand=7)
         ver = version()
         order = sim.order_for(ver, [REGI, COPY, HELM, ILIMA, POP, POP, PAWN])
-        tr = sim.play_deal(ver, 0, True, dict(CFG, copycat_rule='NM', copycat_n=99, copycat_m=0), clock=c, order=order)
+        tr = sim.play_deal(ver, 0, True, dict(CFG, copycat_rule='always'), clock=c, order=order)
         self.assertEqual(tr['copycat_draws'][:1], [7])
 
     # --- P1 and the exact lead chance ---
@@ -631,11 +620,338 @@ class T8Amendment(unittest.TestCase):
             st.main(['--versions', vf, '--deals', '300', '--clock-deals', '300', '--clocks', 'fast,medium,his',
                      '--out', out])
             txt = open(os.path.join(out, 'RESULTS.md'), encoding='utf-8').read()
-        for needle in ('descriptive (speed is not the goal)', 'Knocks out their strongest', 'Wins outright',
+        for needle in ('descriptive (speed is not the goal)', 'descriptive (no knockouts)', 'Knocks out their strongest', 'Wins outright',
                        'lower bound', 'P1', 'P2', 'P3', 'P5', 'not valued here', "Ilima's pull-back",
                        'strongest Pokémon'):
             self.assertIn(needle, txt, msg=needle)
         self.assertLess(txt.index('P1'), txt.index('descriptive (speed is not the goal)'))
+
+
+COMM = 'A2 146'
+
+
+class T9Rulings(unittest.TestCase):
+    """TESTER_FIX_BRIEF sections A and B: R1 (a Glimmora's turn), R2 (Muk off the front, P3 by cause), R3 (slow pace),
+    and Copycat by his valuation."""
+
+    def game(self, top, first=True, ver=None, **over):
+        ver = ver or version()
+        return sim.Game(ver, 0, first, dict(CFG, **over), order=sim.order_for(ver, top))
+
+    def mon(self, g, cid):
+        return sim.Mon(g.ver, next(i for i in range(g.ver.n) if g.ver.id[i] == cid), 0)
+
+    # --- R1 ---
+    def test_r1_glimmora_that_evolved_and_attacked_has_had_its_turn(self):
+        top = [GLIMMET, GLIMMORA, HELM, ILIMA, POP, POP]
+        for first in (True, False):
+            _, tr = hand_deck(top, first=first, natural_only=True)
+            self.assertEqual(tr['glimmora_turns'], [2], msg=first)
+
+    def test_r1_a_glimmora_with_energy_that_is_not_active_has_not_had_its_turn(self):
+        _, tr = hand_deck([REGI, GLIMMET, GLIMMORA, HELM, ILIMA, POP], first=False, natural_only=True)
+        self.assertEqual(tr['glimmora_turns'], [])
+
+    def test_r1_an_active_glimmora_without_energy_gets_it_before_the_pawniard_line(self):
+        for first_energy, want in ((True, 'Glimmora'), (False, 'Pawniard')):
+            g = self.game([REGI], first=False, glimmora_energy_first=first_energy)
+            g.play = [self.mon(g, GLIMMORA), self.mon(g, PAWN)]
+            g.t = 2
+            g.energy()
+            got = next(m.name for m in g.play if m.energy == 1)
+            self.assertEqual(got, want, msg=first_energy)
+
+    def test_r1_an_active_glimmora_with_energy_attacks_and_that_is_its_turn(self):
+        g = self.game([REGI], first=False)
+        g.play = [self.mon(g, GLIMMORA)]
+        g.play[0].energy = 1
+        g.t = 3
+        g.cur = {'placed': 0}
+        g.attack()
+        self.assertEqual(list(g.glim.values()), [3])
+        self.assertTrue(g.play[0].turned)
+
+    # --- R2 ---
+    def test_r2_an_active_grimer_is_never_evolved_into_muk(self):
+        _, tr = hand_deck([GRIMER, MUK, HELM, ILIMA, POP, POP], first=False, natural_only=True)
+        for t in tr['turns']:
+            self.assertEqual(t['in_play'][0], 'Alolan Grimer')
+            self.assertNotIn('Alolan Muk', t['in_play'])
+
+    def test_r2_a_benched_grimer_still_evolves(self):
+        _, tr = hand_deck([REGI, GRIMER, MUK, HELM, ILIMA, POP], first=False, natural_only=True)
+        self.assertIn('Alolan Muk', tr['turns'][1]['in_play'])
+        self.assertEqual(tr['turns'][1]['in_play'][0], 'Regigigas')
+
+    def test_r2_p3_is_reported_by_cause_never_pooled(self):
+        ids = st.clock_ids(8)
+        for m in ('P3.pawn_lead', 'P3.pawn_promo', 'P3.grimer_muk'):
+            self.assertIn(m, ids)
+        for m in ('P3', 'P3.opening', 'P3.promo'):
+            self.assertNotIn(m, ids)
+
+    def test_r2_causes(self):
+        _, tr = hand_deck([GRIMER, HELM, ILIMA, POP, POP], first=False, clock=clk.Fixed('t', {}))
+        self.assertEqual(tr['p3'], {'grimer_muk': 0})
+        _, tr = hand_deck([REGI, HELM, ILIMA, POP, POP], first=False, clock=clk.Fixed('t', {}))
+        self.assertEqual(tr['p3'], {})
+
+    # --- R3 ---
+    def test_r3_slow_is_a_180_hp_mega_ex_and_220_is_a_reference_with_horizon_10(self):
+        s, r = clk.FIXED['slow'], clk.FIXED['ref220']
+        self.assertEqual((s.hp, s.pts), (180, 3))
+        self.assertEqual((r.hp, r.pts, r.horizon), (220, 3, 10))
+        self.assertIn('ref220', st.CLOCK_NAMES)
+        self.assertEqual([s.ko(j) for j in range(1, 10)], [0, 0, 1, 0, 1, 0, 1, 0, 0])
+        _, tr = hand_deck([REGI, GLIMMET, HELM, ILIMA, POP, POP], first=True, clock=clk.Fixed('t', {}, horizon=10),
+                          natural_only=True)
+        self.assertEqual(len(tr['turns']), 10)
+
+    def test_r3_zero_by_construction_is_labelled_from_the_pace(self):
+        cfg = dict(CFG)
+        self.assertEqual(st.zero_by_construction(clk.FIXED['fast'], cfg), {})
+        med = st.zero_by_construction(clk.FIXED['medium'], cfg)         # a 2-point Pokémon cannot win from zero
+        self.assertEqual(med, {'P4.win': ['first', 'second'], 'P5.win': ['first', 'second']})
+        short = st.zero_by_construction(clk.Fixed('x', {3: 1, 5: 1, 7: 1}, hp=220, pts=3), cfg)   # k = 4 never comes
+        for m in ('P4.ko', 'P4.win', 'P4.late1', 'P4.late2p', 'P4.never', 'P5.ko', 'P5.win'):
+            self.assertEqual(short[m], ['first', 'second'], msg=m)
+        self.assertNotIn('P4.nomoment', short)
+
+    def test_rulings_are_written_as_the_coordinator_approved_them(self):
+        self.assertEqual(st.RULINGS, {'R1': 'glimmora_turn=attacked_once',
+                                      'R2': 'never_evolve_active_grimer; P3_by_cause',
+                                      'R3': 'slow=180hp_k3_turns_3_5_7; 220hp_reference_horizon_10',
+                                      'by': 'coordinator, Oct 15'})
+
+    # --- B: Copycat ---
+    def test_b_the_plan_carries_a_written_value_table_and_no_n_m_grid(self):
+        self.assertEqual(CFG['copycat_rule'], 'valuation')
+        self.assertNotIn('copycat_n', CFG)
+        self.assertNotIn('copycat_m', CFG)
+        self.assertIsInstance(CFG['copycat_samples'], int)
+        table = CFG['copycat_values']
+        for card in ('Rare Candy', 'Kingambit', 'Pawniard', 'Glimmora', 'Glimmet'):
+            self.assertIn(card, table)
+            self.assertEqual(table[card][-1]['when'], [])            # every row ends in an unconditional value
+        self.assertEqual(table['Rare Candy'][0]['when'], ['pawniard_due', 'kingambit_held', 'kingambit_needed'])
+
+    def test_b_the_fallback_rule_is_two_v_eight(self):
+        fb = sim.fallback_wanted
+        self.assertTrue(fb(4, 2, False, CFG))        # gap 2, nothing to keep
+        self.assertFalse(fb(4, 3, False, CFG))       # gap 1
+        self.assertFalse(fb(7, 3, True, CFG))        # a must-keep card: a gap of 4 is not enough
+        self.assertTrue(fb(8, 3, True, CFG))         # a gap of 5 is
+
+    def test_b_a_poor_hand_is_replaced_and_a_hand_with_the_pieces_is_kept(self):
+        _, tr = hand_deck([REGI, COPY, HELM, ILIMA, POP, POP, PAWN], first=True)
+        self.assertIn('copycat', tr['turns'][0]['supporters'])
+        self.assertEqual(tr['copycat_draws'][0], 4)
+        _, tr = hand_deck([REGI, COPY, KING, CANDY, PAWN, HELM, POP, POP], first=True, pawniard_bench='now')
+        self.assertNotIn('copycat', tr['turns'][0]['supporters'])
+
+    def test_b_it_counts_decisions_and_disagreements_with_the_fallback_rule(self):
+        _, tr = hand_deck([REGI, COPY, HELM, ILIMA, POP, POP, PAWN], first=True)
+        self.assertGreaterEqual(tr['copycat']['decisions'], 1)
+        self.assertGreaterEqual(tr['copycat']['disagree'], 1)       # a 4-card hand v 4: the fallback rule keeps it
+        _, tr = hand_deck([REGI, HELM, ILIMA, POP, POP, PAWN], first=True)
+        self.assertEqual(tr['copycat'], {'decisions': 0, 'disagree': 0})
+
+    def test_b_the_decision_is_repeatable(self):
+        a = hand_deck([REGI, COPY, HELM, ILIMA, POP, POP, PAWN], first=True)[1]
+        b = hand_deck([REGI, COPY, HELM, ILIMA, POP, POP, PAWN], first=True)[1]
+        self.assertEqual(a['turns'], b['turns'])
+
+
+class T10Fixes(unittest.TestCase):
+    """TESTER_FIX_BRIEF section C items 1-8 and 10."""
+
+    def test_c1_evolution_only_falls_are_dropped_from_the_summary(self):
+        diffs = [('G3.Pawniard.t3', -0.05), ('G3.Glimmet.t2', -0.04), ('G3.Kingambit.t3', 0.02),
+                 ('G3.Regigigas.t2', -0.03), ('K2.t3', 0.03)]
+        kept = st.drop_evolution_falls(diffs, CFG)
+        self.assertEqual([m for m, _ in kept], ['G3.Kingambit.t3', 'G3.Regigigas.t2', 'K2.t3'])
+
+    def test_c2_p1_is_regigigas_leads_not_the_first_name_of_the_lead_order(self):
+        cfg = dict(CFG, lead_order=['Pawniard', 'Regigigas', 'Glimmet', 'Alolan Grimer'])
+        self.assertEqual(cfg['p1_lead'], 'Regigigas')
+        ver = version()
+        tr = sim.play_deal(ver, 0, True, cfg, order=sim.order_for(ver, [REGI, GLIMMET, HELM, ILIMA, POP]))
+        v, _ = st.setup_values(tr, cfg, cfg['attacker_cost'])
+        self.assertEqual(v[st.measure_ids(cfg).index('P1')], 1)
+
+    def test_c4_p4_given_the_moment_came(self):
+        self.assertIn('P4.ko', st.GIVEN_MOMENT)
+        self.assertNotIn('P4.nomoment', st.GIVEN_MOMENT)
+
+    def test_c5_a_line_settled_at_turn_zero_is_never_undecided(self):
+        r = st.run_one(HIS, [], 50, clocks=['his'], clock_deals=1500, keep_vectors=True)
+        self.assertNotIn(2, r['vectors']['his|P3.pawn_lead'])
+        self.assertIn(2, r['vectors']['his|P2.any'])          # a line that can still happen is undecided
+
+    def test_c6_no_knockout_runs_reserve_no_bench_slot(self):
+        top = [REGI, GLIMMET, GLIMMET, GRIMER, HELM, PAWN, POP]
+        _, tr = hand_deck(top, first=True, natural_only=True)
+        self.assertEqual(len(tr['setup']['in_play']), 4)
+
+    def test_c7_a_knockout_gives_the_opponent_the_dead_cards_points(self):
+        ver = version(['-1 Lucky Ice Pop B2 145', '+1 Alolan Muk ex A3 111'])
+        g = sim.Game(ver, 0, True, CFG, order=sim.order_for(ver, [REGI]))
+        muk_ex = next(i for i in range(ver.n) if ver.id[i] == 'A3 111')
+        g.play = [sim.Mon(ver, muk_ex, 0), sim.Mon(ver, next(i for i in range(ver.n) if ver.id[i] == REGI), 0)]
+        g.t = 3
+        g.knock_out(1)
+        self.assertEqual(g.opp_points, 2)
+
+    def test_c7_a_version_that_adds_an_ex_is_refused(self):
+        base = deck(HIS)
+        new = st.build_cards(HIS, ['-1 Lucky Ice Pop B2 145', '+1 Alolan Muk ex A3 111'])
+        with self.assertRaises(SystemExit):
+            st.refuse_new_ex(base, new)
+        st.refuse_new_ex(base, base)
+
+    def test_c8_communication_never_trades_away_a_plan_card(self):
+        ver = version(['-1 Lucky Ice Pop B2 145', '+1 Pokémon Communication A2 146'])
+        g = sim.Game(ver, 0, True, CFG, order=sim.order_for(ver, [REGI, COMM, GLIMMORA, MUK, HELM, PAWN]))
+        g.t = 1
+        g.items()
+        names = [ver.name[h] for h in g.hand]
+        self.assertIn('Pokémon Communication', names)
+        self.assertIn('Glimmora', names)
+        self.assertIn('Alolan Muk', names)
+
+    def test_c10_the_first_run_folder_is_marked_superseded(self):
+        self.assertTrue(os.path.exists(os.path.join(HERE, 'runs', '2026-10-15_kingambit_first_run', 'SUPERSEDED.md')))
+
+
+class T11Report(unittest.TestCase):
+    """The written files: RESULTS.md and results.json v2 (C1, C3, C4, C6, C9, Part A), from one small run."""
+
+    @classmethod
+    def setUpClass(cls):
+        import tempfile
+        cls.tmp = tempfile.TemporaryDirectory()
+        vf = os.path.join(cls.tmp.name, 'v.json')
+        json.dump({'base': HIS, 'versions': {'juliana': ['-1 Copycat B1 225', '+1 Juliana B3a 071']}}, open(vf, 'w'))
+        cls.out = os.path.join(cls.tmp.name, 'out')
+        st.main(['--versions', vf, '--deals', '300', '--clock-deals', '300', '--out', cls.out,
+                 '--clocks', 'fast,medium,slow,ref220,his,bot'])
+        cls.txt = open(os.path.join(cls.out, 'RESULTS.md'), encoding='utf-8').read()
+        cls.js = json.load(open(os.path.join(cls.out, 'results.json'), encoding='utf-8'))
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
+
+    def test_c1_the_summary_leads_with_the_p_line_differences_per_clock(self):
+        i = self.txt.index('**Plain summary, juliana.**')
+        s = self.txt[i:i + 6000]
+        self.assertIn('Plan-line differences from the base', s)
+        self.assertIn('descriptive (no knockouts)', s)
+        self.assertLess(s.index('Plan-line differences from the base'), s.index('descriptive (no knockouts)'))
+
+    def test_c3_the_choices_rows_run_in_a_versions_run(self):
+        t = self.txt
+        i = t.index('## How much each open choice matters')
+        sec = t[i:]
+        for needle in ('Copycat: the fallback rule (his 2 v 8), approximated', 'Copycat never played',
+                       'Energy order: the Pawniard line before an Active Glimmora', 'promotion order: Regigigas first',
+                       "opponent's hand 2", "opponent's hand 6", 'bootstrap over the recorded games'):
+            self.assertIn(needle, sec, msg=needle)
+        self.assertNotIn('N=2', t)
+        self.assertNotIn('N x M', t)
+
+    def test_c4_p4_has_a_given_the_moment_column_and_p5_a_note(self):
+        self.assertIn('given the moment came', self.txt)
+        self.assertIn("ready at the moment or later, before the opponent's third point", self.txt)
+
+    def test_c6_the_no_knockout_header_states_its_trigger(self):
+        self.assertIn('no Bench slot is reserved', self.txt)
+
+    def test_b_copycat_is_labelled_his_rule_approximated_and_the_table_is_printed(self):
+        t = self.txt
+        self.assertIn('his rule, approximated', t)
+        self.assertIn('Copycat value table', t)
+        self.assertIn('Rare Candy', t[t.index('Copycat value table'):])
+        self.assertIn('disagree', t)
+
+    def test_zero_by_construction_is_printed_for_medium(self):
+        self.assertIn('Zero by construction at this pace', self.txt)
+
+    def test_c9_results_json_v2(self):
+        js = self.js
+        self.assertEqual(js['schema'], 'setup-tester results v2')
+        r = js['run']
+        for k in ('code_sha256', 'tester_commit', 'tree_clean', 'plan_path', 'plan_sha256', 'rules_commit',
+                  'engine_note', 'seed_base', 'deal_rule', 'deals_no_knockout', 'deals_per_clock', 'config',
+                  'setup_bench_trigger', 'setup_bench_reserved', 'copycat', 'copycat_opp_hand', 'undecided_rule',
+                  'rulings', 'not_played_by_script', 'acts_on_damage', 'clocks'):
+            self.assertIn(k, r, msg=k)
+        self.assertIsInstance(r['tree_clean'], bool)
+        self.assertFalse(r['plan_path'].startswith('/'))
+        self.assertEqual(r['rules_commit'], '70319c3d')
+        self.assertEqual(r['seed_base'], 24700000000)
+        self.assertEqual(r['rulings'], st.RULINGS)
+        self.assertEqual((r['setup_bench_trigger'], r['setup_bench_reserved']), ('at_once', False))
+        self.assertEqual(r['config']['p1_lead'], 'Regigigas')
+        self.assertEqual(r['acts_on_damage'], ['Ilima', 'Lucky Ice Pop', 'Heavy Helmet'])
+        self.assertEqual(r['plan_sha256'], st.sha256_file(sim.DEFAULT_PLAN))
+        cc = r['copycat']
+        for k in ('rule', 'value_table', 'fallback', 'samples', 'disagreement'):
+            self.assertIn(k, cc, msg=k)
+        self.assertEqual(cc['rule'], 'valuation')
+        c = r['clocks']
+        self.assertEqual(sorted(c), sorted('fast,medium,slow,ref220,his,bot'.split(',')))
+        for name, row in c.items():
+            for k in ('label', 'kind', 'games', 'source', 'source_sha256', 'range_method', 'strongest',
+                      'strongest_source', 'zero_by_construction'):
+                self.assertIn(k, row, msg=(name, k))
+        self.assertEqual(c['slow']['strongest'], [{'hp': 180, 'points': 3, 'assumed': True}])
+        self.assertEqual(c['medium']['zero_by_construction'], {'P4.win': ['first', 'second'],
+                                                              'P5.win': ['first', 'second']})
+        self.assertEqual(c['his']['kind'], 'recorded')
+        self.assertIn('strongest_flag', c['bot'])
+        self.assertTrue(all('hp' in s and 'games' in s for s in c['his']['strongest']))
+        self.assertIn('seconds', js['run_info'])
+        self.assertIn('wall_time_s', js['run_info'])
+
+    def test_c9_versions_carry_the_list_and_ids(self):
+        for name, v in self.js['versions'].items():
+            for k in ('path', 'diff', 'list', 'card_list_sha256', 'list_id', 'p1_exact'):
+                self.assertIn(k, v, msg=(name, k))
+            self.assertEqual(v['list_id'], v['card_list_sha256'][:12])
+            self.assertEqual(sum(int(l.split()[0]) for l in v['list'] if l[0].isdigit()), 20)
+            self.assertEqual(v['list'][0], 'Energy: Darkness')
+            self.assertNotIn('seconds', v)
+            self.assertEqual(st.list_sha256(v['list']), v['card_list_sha256'])
+        base = self.js['versions']['base']
+        self.assertEqual(base['list_id'], '73dfed58d1d6')
+        self.assertAlmostEqual(base['p1_exact'], base['exact']['lead']['Regigigas'], places=12)
+        self.assertIsNone(base['diff'])
+        self.assertEqual(self.js['versions']['juliana']['diff'], ['-1 Copycat B1 225', '+1 Juliana B3a 071'])
+
+
+class T12Bytes(unittest.TestCase):
+    def test_c9_the_written_files_are_byte_identical_apart_from_timings(self):
+        import subprocess
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            vf = os.path.join(d, 'v.json')
+            json.dump({'base': HIS, 'versions': {'juliana': ['-1 Copycat B1 225', '+1 Juliana B3a 071']}}, open(vf, 'w'))
+            got = []
+            for seed in ('1', '2'):
+                out = os.path.join(d, 'out' + seed)
+                env = dict(os.environ, PYTHONHASHSEED=seed)
+                subprocess.run([sys.executable, os.path.join(HERE, 'setup_tester.py'), '--versions', vf, '--deals', '150',
+                                '--clock-deals', '150', '--clocks', 'fast,his', '--out', out], check=True, env=env,
+                               stdout=subprocess.DEVNULL)
+                js = json.load(open(os.path.join(out, 'results.json'), encoding='utf-8'))
+                had = js.pop('run_info', None) is not None
+                md = [l for l in open(os.path.join(out, 'RESULTS.md'), encoding='utf-8').read().splitlines()
+                      if not l.startswith('- **wall time**') and not l.startswith('- **speed**')]
+                got.append((json.dumps(js, sort_keys=True, indent=1), md, had))
+            self.assertEqual(got[0][0], got[1][0])
+            self.assertEqual(got[0][1], got[1][1])
+            self.assertTrue(got[0][2])
 
 
 if __name__ == '__main__':
