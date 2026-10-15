@@ -6,34 +6,34 @@
 
 Question: how does 13-a-big-malasada do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
 
-**PARTIAL: 60 kx3 games + 60 cheap km3 baseline games so far (120 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
+**PARTIAL: 80 kx3 games + 80 cheap km3 baseline games so far (160 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
 
-Size: 60 kx3 games + 60 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
+Size: 80 kx3 games + 80 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
 
-13-a-big-malasada scored **71.7%** over **60 games** (games from 3 of the 8 public lists so far): probably between 59.2% and 81.5% (95% interval; this range refers to these 60 kx3 games). A win counts 1, a tie 1/2, a loss 0.
+13-a-big-malasada scored **70.0%** over **80 games** (games from 4 of the 8 public lists so far): probably between 59.2% and 78.9% (95% interval; this range refers to these 80 kx3 games). A win counts 1, a tie 1/2, a loss 0.
 
 ### How much better kx3 plays this deck than km3
 
-On the same deals, kx3 scored **+21.7 points** compared with km3 piloting this deck (kx3 71.7%, km3 on this deck 50.0%, over 60 paired games: each a deal and seat played by both pilots, so 60 kx3 games + 60 cheap km3 baseline games), probably between +9.9 and +33.4 points (95% interval; this range refers to those 60 paired games).
+On the same deals, kx3 scored **+22.5 points** compared with km3 piloting this deck (kx3 70.0%, km3 on this deck 47.5%, over 80 paired games: each a deal and seat played by both pilots, so 80 kx3 games + 80 cheap km3 baseline games), probably between +12.5 and +32.5 points (95% interval; this range refers to those 80 paired games).
 
-That range does not include no gain: on these 60 paired games kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 60 paired games make it.
+That range does not include no gain: on these 80 paired games kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 80 paired games make it.
 
 ## Compared with the base report
 
 Base: `rl/results/slow_reports/2026-10-12_13-a-ninetales-raticate` (13-a-ninetales-raticate). This deck, 13-a-big-malasada, differs from it by -1 Ilima A3 149, +1 Big Malasada A3 142. Each game below is set against its twin in the base report: the same opponent, deal, seat and pilot, so the same seed. The replaced card keeps its place in the deck file (card 17 of 20), and so in the shuffle: the deals differ only in that card.
 
-Only games played in both reports are compared: 120 of the 120 games of this report have a twin in the base report (320 games there).
+Only games played in both reports are compared: 160 of the 160 games of this report have a twin in the base report (320 games there).
 
 ### What the change did to the score
 
 | pilot | twin games | base | 13-a-big-malasada | 13-a-big-malasada minus base |
 |---|---|---|---|---|
-| kx3 | 60 | 65.0% | 71.7% | +6.7 |
-| km3 | 60 | 45.0% | 50.0% | +5.0 |
+| kx3 | 80 | 65.0% | 70.0% | +5.0 |
+| km3 | 80 | 43.8% | 47.5% | +3.8 |
 
-kx3: +6.7 points on the same deals, probably between -3.8 and +17.2 points (95% interval; this range refers to those 60 twin games). 50 of the 60 kx3 twins ended the same way (win, tie or loss); of the 60 with a log on both sides, 16 were the same game from start to finish. Who went first was the same in all 60 kx3 twins. That range includes no change at all: these 60 twin games do not show that the change helped kx3 or that it hurt. They argue against a change much larger than 17.2 points; a smaller one needs more deals.
+kx3: +5.0 points on the same deals, probably between -3.6 and +13.6 points (95% interval; this range refers to those 80 twin games). 68 of the 80 kx3 twins ended the same way (win, tie or loss); of the 80 with a log on both sides, 19 were the same game from start to finish. Who went first was the same in all 80 kx3 twins. That range includes no change at all: these 80 twin games do not show that the change helped kx3 or that it hurt. They argue against a change much larger than 13.6 points; a smaller one needs more deals.
 
-km3: +5.0 points on the same deals, probably between -2.4 and +12.4 points (95% interval; this range refers to those 60 twin games). 55 of the 60 km3 twins ended the same way (win, tie or loss); of the 60 with a log on both sides, 24 were the same game from start to finish. Who went first was the same in all 60 km3 twins. That range includes no change at all: these 60 twin games do not show that the change helped km3 or that it hurt. They argue against a change much larger than 12.4 points; a smaller one needs more deals.
+km3: +3.8 points on the same deals, probably between -1.8 and +9.3 points (95% interval; this range refers to those 80 twin games). 75 of the 80 km3 twins ended the same way (win, tie or loss); of the 80 with a log on both sides, 30 were the same game from start to finish. Who went first was the same in all 80 km3 twins. That range includes no change at all: these 80 twin games do not show that the change helped km3 or that it hurt. They argue against a change much larger than 9.3 points; a smaller one needs more deals.
 
 A change of one card is usually too small for these ranges to show it; the counts further down, of whether the card did its job, say more.
 
@@ -44,7 +44,7 @@ A change of one card is usually too small for these ranges to show it; the count
 | t-altaria | 20 | 40.0% | 55.0% | +15.0 (-2.1 to +32.1) | 20.0% | 20.0% | +0.0 (+0.0 to +0.0) |
 | t-blaziken | 20 | 75.0% | 85.0% | +10.0 (-4.4 to +24.4) | 60.0% | 75.0% | +15.0 (-2.1 to +32.1) |
 | t-hydreigon | 20 | 80.0% | 75.0% | -5.0 (-28.9 to +18.9) | 55.0% | 55.0% | +0.0 (-15.2 to +15.2) |
-| t-lucario | 0 | n/a | n/a | n/a | n/a | n/a | n/a |
+| t-lucario | 20 | 65.0% | 65.0% | +0.0 (-15.2 to +15.2) | 40.0% | 40.0% | +0.0 (+0.0 to +0.0) |
 | t-sceptile | 0 | n/a | n/a | n/a | n/a | n/a | n/a |
 | t-suicune | 0 | n/a | n/a | n/a | n/a | n/a | n/a |
 | t-vespiquen | 0 | n/a | n/a | n/a | n/a | n/a | n/a |
@@ -56,35 +56,35 @@ Each range refers to the twins on its row (the t range of their score difference
 
 Counted from the logged moves of the deck's side, which hold the deck's own moves and the points and nothing else (no Hit Points, damage, Special Conditions or opponent moves). A game without a log counts as no play.
 
-#### kx3 (60 twin games)
+#### kx3 (80 twin games)
 
 | | base | this deck |
 |---|---|---|
-| Ilima played | 1 time in 1 of 60 games | 0 times in 0 of 60 games |
-| Big Malasada played | 0 times in 0 of 60 games | 28 times in 28 of 60 games |
-| games where the opponent scored | 37 | 36 |
-| games where the opponent's first point was a knock-out of our opening Pokémon (never evolved or moved) | 14 | 12 |
-| games where the opponent's first point was the opening Pokémon or a benched Pokémon of the same name (cannot be told apart) | 5 | 5 |
+| Ilima played | 1 time in 1 of 80 games | 0 times in 0 of 80 games |
+| Big Malasada played | 0 times in 0 of 80 games | 38 times in 38 of 80 games |
+| games where the opponent scored | 52 | 52 |
+| games where the opponent's first point was a knock-out of our opening Pokémon (never evolved or moved) | 15 | 13 |
+| games where the opponent's first point was the opening Pokémon or a benched Pokémon of the same name (cannot be told apart) | 6 | 6 |
 | turns a charged Pokémon did not attack, all lists | 14 | 11 |
 | turns a charged Pokémon did not attack, against t-altaria | 10 | 7 |
-| our turns in all, for scale | 299 | 321 |
+| our turns in all, for scale | 407 | 428 |
 
-The replay of the moves lost track of the board 3 times in these 120 games (kx3); it sees only the deck's own moves, so a benched Pokémon from the setup is unknown to it.
+The replay of the moves lost track of the board 17 times in these 160 games (kx3); it sees only the deck's own moves, so a benched Pokémon from the setup is unknown to it.
 
-#### km3 (60 twin games)
+#### km3 (80 twin games)
 
 | | base | this deck |
 |---|---|---|
-| Ilima played | 1 time in 1 of 60 games | 0 times in 0 of 60 games |
-| Big Malasada played | 0 times in 0 of 60 games | 30 times in 30 of 60 games |
-| games where the opponent scored | 41 | 39 |
-| games where the opponent's first point was a knock-out of our opening Pokémon (never evolved or moved) | 16 | 15 |
-| games where the opponent's first point was the opening Pokémon or a benched Pokémon of the same name (cannot be told apart) | 5 | 5 |
+| Ilima played | 1 time in 1 of 80 games | 0 times in 0 of 80 games |
+| Big Malasada played | 0 times in 0 of 80 games | 38 times in 38 of 80 games |
+| games where the opponent scored | 57 | 55 |
+| games where the opponent's first point was a knock-out of our opening Pokémon (never evolved or moved) | 19 | 18 |
+| games where the opponent's first point was the opening Pokémon or a benched Pokémon of the same name (cannot be told apart) | 6 | 6 |
 | turns a charged Pokémon did not attack, all lists | 9 | 7 |
 | turns a charged Pokémon did not attack, against t-altaria | 9 | 7 |
-| our turns in all, for scale | 285 | 295 |
+| our turns in all, for scale | 386 | 396 |
 
-The replay of the moves lost track of the board 6 times in these 120 games (km3); it sees only the deck's own moves, so a benched Pokémon from the setup is unknown to it.
+The replay of the moves lost track of the board 16 times in these 160 games (km3); it sees only the deck's own moves, so a benched Pokémon from the setup is unknown to it.
 
 Not countable from these records:
 
@@ -98,7 +98,7 @@ Not countable from these records:
 | t-altaria | 20 | 55.0% | 34.2% to 74.2% |
 | t-blaziken | 20 | 85.0% | 64.0% to 94.8% |
 | t-hydreigon | 20 | 75.0% | 53.1% to 88.8% |
-| t-lucario | 0 | n/a | n/a |
+| t-lucario | 20 | 65.0% | 43.3% to 81.9% |
 | t-sceptile | 0 | n/a | n/a |
 | t-suicune | 0 | n/a | n/a |
 | t-vespiquen | 0 | n/a | n/a |
@@ -108,25 +108,25 @@ Each row's range refers only to the kx3 games against that list (the row's games
 
 ## Who went first
 
-- When 13-a-big-malasada went first: 75.0% over 28 games (56.6% to 87.3%)
-- When 13-a-big-malasada went second: 68.8% over 32 games (51.4% to 82.0%)
+- When 13-a-big-malasada went first: 75.0% over 40 games (59.8% to 85.8%)
+- When 13-a-big-malasada went second: 65.0% over 40 games (49.5% to 77.9%)
 
 Each range refers only to the kx3 games on its line; a few dozen games can show a large first-or-second difference, not a small one.
 
 ## The time it took
 
-kx3 took 412 s a game on average (about 7 min), median 347 s, slowest 983 s, with 4 threads going at once. km3 playing this deck took 0.5 s a game.
-Running time from the run log: 1.8 h over 3 sittings, for 120 games in all: 60 kx3 games + 60 cheap km3 baseline games.
+kx3 took 396 s a game on average (about 7 min), median 349 s, slowest 983 s, with 4 threads going at once. km3 playing this deck took 0.4 s a game.
+Running time from the run log: 2.2 h over 4 sittings, for 160 games in all: 80 kx3 games + 80 cheap km3 baseline games.
 
 ## What these numbers can and can't say
 
-**These numbers say how 13-a-big-malasada did in simulated games with kx3 playing it against the 8 public lists, probably between 59.2% and 81.5%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
+**These numbers say how 13-a-big-malasada did in simulated games with kx3 playing it against the 8 public lists, probably between 59.2% and 78.9%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
 
 In more detail:
 
 - kx3, a strong but slow pilot, plays your deck knowing its own cards. It does not know which of the 8 public lists it faces, but its opponent is always one of them and always plays like the program kx3 imagines when it looks ahead, so it is better informed here than it would be against a person on the ladder or a deck outside the 8 lists. Read the score as the optimistic end.
 - The 8 lists count equally here, not by how common they are on the ladder.
-- The range covers only the luck of the shuffles and coin flips in these 60 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays 13-a-big-malasada clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (22.3 points here), and more deals narrow it.
+- The range covers only the luck of the shuffles and coin flips in these 80 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays 13-a-big-malasada clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (19.7 points here), and more deals narrow it.
 - There is no pass or fail line: whether 13-a-big-malasada is worth playing is a call for the player.
 
 ## What was run
