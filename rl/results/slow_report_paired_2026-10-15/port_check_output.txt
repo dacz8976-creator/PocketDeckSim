@@ -1,0 +1,44 @@
+# the port (slow_report_paired.py: charged_idle_turns, first_point; after the review's fixes) against the two throwaway scripts of the deck-13 analysis (Oct 15), on the real base games of rl/results/slow_reports/2026-10-12_13-a-ninetales-raticate/games.jsonl
+# columns of the NEW lines: games, own_turns (our turns), NOATK = idle (a charged Pokemon did not attack), NOATK_ex = idle_ex, atk = attacked, warn = warnings, scored = games where the opponent scored, open_ko = first point was a knock-out of the opening Active
+('t-altaria', 'X') {'games': 20, 'own_turns': 96, 'NOATK': 10, 'NOATK_ex': 8, 'atk': 65, 'warn': 0, 'scored': 17, 'open_ko': 8}
+('t-blaziken', 'X') {'games': 20, 'own_turns': 105, 'NOATK': 4, 'NOATK_ex': 2, 'atk': 83, 'warn': 1, 'scored': 10, 'open_ko': 3}
+('t-hydreigon', 'X') {'games': 20, 'own_turns': 98, 'NOATK': 0, 'NOATK_ex': 0, 'atk': 76, 'warn': 1, 'scored': 10, 'open_ko': 3}
+('t-lucario', 'X') {'games': 20, 'own_turns': 108, 'NOATK': 0, 'NOATK_ex': 0, 'atk': 85, 'warn': 6, 'scored': 15, 'open_ko': 1}
+('t-sceptile', 'X') {'games': 20, 'own_turns': 113, 'NOATK': 0, 'NOATK_ex': 0, 'atk': 96, 'warn': 3, 'scored': 11, 'open_ko': 5}
+('t-suicune', 'X') {'games': 20, 'own_turns': 119, 'NOATK': 0, 'NOATK_ex': 0, 'atk': 99, 'warn': 0, 'scored': 9, 'open_ko': 2}
+('t-vespiquen', 'X') {'games': 20, 'own_turns': 123, 'NOATK': 2, 'NOATK_ex': 0, 'atk': 103, 'warn': 0, 'scored': 11, 'open_ko': 3}
+('t-weezing', 'X') {'games': 20, 'own_turns': 98, 'NOATK': 2, 'NOATK_ex': 1, 'atk': 69, 'warn': 3, 'scored': 15, 'open_ko': 5}
+('t-altaria', 'ref') {'games': 20, 'own_turns': 97, 'NOATK': 9, 'NOATK_ex': 8, 'atk': 69, 'warn': 0, 'scored': 16, 'open_ko': 8}
+('t-blaziken', 'ref') {'games': 20, 'own_turns': 96, 'NOATK': 0, 'NOATK_ex': 0, 'atk': 75, 'warn': 1, 'scored': 12, 'open_ko': 5}
+('t-hydreigon', 'ref') {'games': 20, 'own_turns': 92, 'NOATK': 0, 'NOATK_ex': 0, 'atk': 69, 'warn': 2, 'scored': 13, 'open_ko': 3}
+('t-lucario', 'ref') {'games': 20, 'own_turns': 101, 'NOATK': 0, 'NOATK_ex': 0, 'atk': 78, 'warn': 5, 'scored': 16, 'open_ko': 3}
+('t-sceptile', 'ref') {'games': 20, 'own_turns': 101, 'NOATK': 1, 'NOATK_ex': 1, 'atk': 84, 'warn': 3, 'scored': 11, 'open_ko': 8}
+('t-suicune', 'ref') {'games': 20, 'own_turns': 115, 'NOATK': 0, 'NOATK_ex': 0, 'atk': 92, 'warn': 0, 'scored': 11, 'open_ko': 2}
+('t-vespiquen', 'ref') {'games': 20, 'own_turns': 120, 'NOATK': 0, 'NOATK_ex': 0, 'atk': 99, 'warn': 2, 'scored': 13, 'open_ko': 5}
+('t-weezing', 'ref') {'games': 20, 'own_turns': 90, 'NOATK': 1, 'NOATK_ex': 1, 'atk': 60, 'warn': 5, 'scored': 16, 'open_ko': 7}
+
+# OLD (port_check_old_charged_idle.py): the summary line of each list/arm
+t-altaria X {'games': 20, 'win': 8, 'own_turns': 96, 'NOATK': 10, 'atk': 65, 'NOATK_ex': 8, 'opp_win_on_own_turn': 2, 'deck+3': 2, 'warn': 0, 'noen': 21}
+t-blaziken X {'games': 20, 'win': 15, 'own_turns': 105, 'atk': 83, 'NOATK_ex': 2, 'opp_win_on_own_turn': 0, 'deck+3': 5, 'warn': 1, 'noen': 18, 'NOATK': 4}
+t-hydreigon X {'games': 20, 'win': 16, 'own_turns': 98, 'noen': 22, 'atk': 76, 'NOATK_ex': 0, 'opp_win_on_own_turn': 0, 'deck+3': 4, 'warn': 1}
+t-lucario X {'games': 20, 'win': 13, 'own_turns': 108, 'atk': 85, 'NOATK_ex': 0, 'opp_win_on_own_turn': 0, 'deck+3': 8, 'warn': 6, 'noen': 23}
+t-sceptile X {'games': 20, 'win': 14, 'own_turns': 113, 'atk': 96, 'NOATK_ex': 0, 'opp_win_on_own_turn': 0, 'deck+3': 3, 'warn': 3, 'noen': 17}
+t-suicune X {'games': 20, 'win': 18, 'own_turns': 119, 'noen': 20, 'atk': 99, 'NOATK_ex': 0, 'opp_win_on_own_turn': 0, 'deck+3': 0, 'warn': 0}
+t-vespiquen X {'games': 20, 'win': 16, 'own_turns': 123, 'atk': 103, 'NOATK_ex': 0, 'opp_win_on_own_turn': 0, 'deck+3': 0, 'warn': 0, 'noen': 18, 'NOATK': 2}
+t-weezing X {'games': 20, 'win': 13, 'own_turns': 98, 'noen': 27, 'atk': 69, 'NOATK_ex': 1, 'opp_win_on_own_turn': 0, 'deck+3': 0, 'warn': 3, 'NOATK': 2}
+t-altaria ref {'games': 20, 'win': 4, 'own_turns': 97, 'NOATK': 9, 'atk': 69, 'NOATK_ex': 8, 'opp_win_on_own_turn': 1, 'deck+3': 0, 'warn': 1, 'noen': 19}
+t-blaziken ref {'games': 20, 'win': 12, 'own_turns': 96, 'noen': 21, 'atk': 75, 'NOATK_ex': 0, 'opp_win_on_own_turn': 0, 'deck+3': 2, 'warn': 1}
+t-hydreigon ref {'games': 20, 'win': 11, 'own_turns': 92, 'noen': 23, 'atk': 69, 'NOATK_ex': 0, 'opp_win_on_own_turn': 0, 'deck+3': 3, 'warn': 2}
+t-lucario ref {'games': 20, 'win': 8, 'own_turns': 101, 'atk': 78, 'NOATK_ex': 0, 'opp_win_on_own_turn': 0, 'deck+3': 6, 'warn': 5, 'noen': 23}
+t-sceptile ref {'games': 20, 'win': 11, 'own_turns': 101, 'noen': 16, 'atk': 84, 'NOATK_ex': 1, 'opp_win_on_own_turn': 0, 'deck+3': 1, 'warn': 3, 'NOATK': 1}
+t-suicune ref {'games': 20, 'win': 14, 'own_turns': 115, 'noen': 23, 'atk': 92, 'NOATK_ex': 0, 'opp_win_on_own_turn': 0, 'deck+3': 0, 'warn': 0}
+t-vespiquen ref {'games': 20, 'win': 14, 'own_turns': 120, 'atk': 99, 'NOATK_ex': 0, 'opp_win_on_own_turn': 0, 'deck+3': 0, 'warn': 2, 'noen': 21}
+t-weezing ref {'games': 20, 'win': 8, 'own_turns': 90, 'noen': 29, 'atk': 60, 'NOATK_ex': 1, 'opp_win_on_own_turn': 0, 'deck+3': 0, 'warn': 5, 'NOATK': 1}
+
+# OLD (port_check_old_first_point.py): opening Basic as first point / opp scored / games, and wins in those games
+per opponent: opening Basic as first point / opp scored / games, and wins in those games
+  kx3 t-altaria 8/17/20 (W 1); t-blaziken 3/10/20 (W 2); t-hydreigon 3/10/20 (W 2); t-lucario 1/15/20 (W 0); t-sceptile 5/11/20 (W 3); t-suicune 2/9/20 (W 2); t-vespiquen 3/11/20 (W 1); t-weezing 5/15/20 (W 3)
+  km3 t-altaria 8/16/20 (W 0); t-blaziken 5/12/20 (W 2); t-hydreigon 3/13/20 (W 1); t-lucario 3/16/20 (W 0); t-sceptile 8/11/20 (W 0); t-suicune 2/11/20 (W 0); t-vespiquen 5/13/20 (W 2); t-weezing 7/16/20 (W 1)
+
+# The numbers agree: NOATK, NOATK_ex, atk and own_turns are equal on every line, also after the opponent's own Activate moves (7 of 65 in these games) stopped being replayed as ours and Energy amounts are read;
+# the old script's warn also counts every Ilima move (so t-altaria/ref has 1 there, 0 here); open_ko = the old script's 'opening Basic as first point' on every line (kx3: 8,3,3,1,5,2,3,5 of 17,10,10,15,11,9,11,15 scored; km3: 8,5,3,3,8,2,5,7 of 16,12,13,16,11,11,13,16).
