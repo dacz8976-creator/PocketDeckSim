@@ -49,7 +49,14 @@ is kept only if km3 makes its recorded move there.
 | deck 12 game 3 T4 (Dustin: "delaying was my only chance") | keep the 40-HP Ariados in front (Pierce), no retreat into Whimsicott ex for the knockout | no: his line attacks, so the rule is "not exercised" | A keep check for every switch, and the `_expo` negative later. Built by hand, with the opponent's Miraidon ex given to F and ky3 through `KX_EXTRA_LISTS`. | n/a |
 
 **Reported, not judged:**
-- 010837 t03 and 203719 t17 (contested; Dustin's word first)
+- **010837 t03 and 203719 t17: Dustin's ruling (Oct 15, from memory, before re-watching):**
+  - 010837 t03: "kingambit is the way to win, so protecting pawniard is what I favor". Retreating Pawniard instead of taking the
+    Slash knockout on the 30-HP Pichu was deliberate: it keeps the future Kingambit safe.
+  - 203719 t17: "use venomous hit and let glimmora die to raise kingambit's attack in the future". Passing up the exact-100 Blade
+    knockout was a deliberate sacrifice to grow Overlord's Blade.
+  - **Both are now negatives for `_atk`, correct passes by a sacrifice or a delay.** Neither case is about the opponent's next turn;
+    each is about the deck's plan, a future Kingambit and a bigger Blade. So the one-turn points exception may NOT hold them. They
+    are reported, with that risk stated in `EXPECTED.md`, and a failure there is a known limit of `_atk`, not a pass.
 - 09 v Altaria 0|0 t3 (UNCLEAR ×2; km3 proposed no attack)
 - draft A v Lucario 3|0 t2 (UNCLEAR ×2)
 

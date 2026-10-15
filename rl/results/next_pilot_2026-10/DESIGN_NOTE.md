@@ -111,5 +111,12 @@ part of phase 1, not deferred:
   - the setup-deck gap in the exam: m64 − F +1.6 (−3.6 to +6.7);
   - the development decks: F − km3 +20.4 ± 5.8, while more thinking time adds nothing there.
 
+**Dustin's two plan passes** (010837 t03, protecting Pawniard; 203719 t17, letting Glimmora fall to grow Overlord's Blade; see
+`DESIGN_NOTE_CASES.md`) are `_atk` negatives that a one-turn points watch can't see.
+- `EXPECTED.md` records them as a known limit.
+- If `_atk` fails them, the next iteration tries a longer watch (through two opponent turns) or a plan-value term, never a special
+  case for one card.
+- If `_atk` passes them, the report says why: what the watch saw. That would be unexpected.
+
 **The round is not done until** each failure has a measured baseline (km3, F, ky3 with no switch, on its cases) and, wherever a
 clean positive exists, a switch tested both ways like `_atk`.
