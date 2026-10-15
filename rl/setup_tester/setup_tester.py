@@ -594,6 +594,9 @@ def build_report(out_dir, deck_name, runs, args, cfg, record, extra=None):
     L.append('')
     L.append('Not a ranking and not a ladder forecast: it shows what the cards allow under a written script (SPEC.md), on '
              'the same deals for every version. It does not say who wins.')
+    L.append('**PROPOSED, not yet confirmed by Dustin:** the plan lines K1-K6, the lead order, the promote order, the '
+             'Copycat rule, the Blade target and what "a fast deck" means (C-fixed fast). None of this is to be reported '
+             'to him as settled until he confirms or rewrites each.')
     L.append('')
     # exact part for every version
     for name, r in versions.items():
