@@ -52,7 +52,7 @@ def hand_deck(top_ids, first, cfg=None, clock=None, **over):
 PAWN, KING, BISH = 'B3a 041', 'B3a 043', 'B3a 042'
 CANDY, JULI, LISIA, POP = 'A3 144', 'B3a 071', 'B1 226', 'B2 145'
 HELM, ILIMA, PROF, COPY = 'B1 219', 'A3 149', 'A4b 373', 'B1 225'
-GLIMMET, GLIMMORA, GRIMER, MUK, REGI, MESA = 'B3a 044', 'B3a 045', 'B2 096', 'B2 097', 'B3 134', 'B2a 093'
+GLIMMET, GLIMMORA, GRIMER, MUK, REGI, MESA = 'B3a 044', 'B3a 045', 'A3 110', 'B2 097', 'B3 134', 'B2a 093'
 
 
 class T1Exact(unittest.TestCase):
@@ -91,7 +91,7 @@ class T1Exact(unittest.TestCase):
 
     def test_against_consistency_opening_exact(self):
         """The helper in lib/consistency.py already does single cards; the two must agree."""
-        plan = cl.classify(self.cards)
+        plan = cl.Plan(HIS, ['Darkness'], self.cards, main='Kingambit')
         oe = cl.opening_exact(plan)
         self.assertAlmostEqual(ex.in_hand(self.cards, 'Pawniard'), oe['present']['Pawniard'], places=9)
         self.assertAlmostEqual(ex.in_hand(self.cards, 'Kingambit'), oe['present']['Kingambit'], places=9)
@@ -160,7 +160,7 @@ class T2Hand(unittest.TestCase):
 
     def test_candy_refused_turn1_and_on_a_pawniard_placed_that_turn(self):
         # Pawniard the only Basic (so Active); Kingambit and Rare Candy in hand. Going second.
-        top = [PAWN, KING, CANDY, POP, HELM, ILIMA, ILIMA, POP]
+        top = [PAWN, KING, CANDY, POP, HELM, ILIMA, POP]
         _, tr = hand_deck(top, first=False)
         self.assertNotIn('Kingambit', self.in_play(tr, 1))          # refused on own turn 1
         self.assertIn('Kingambit', self.in_play(tr, 2))             # played on own turn 2
@@ -173,7 +173,7 @@ class T2Hand(unittest.TestCase):
         self.assertIn('Kingambit', self.in_play(tr, 3))
 
     def test_first_attack_turn_pawniard_only_basic(self):
-        top = [PAWN, KING, CANDY, POP, HELM, ILIMA, ILIMA, POP]
+        top = [PAWN, KING, CANDY, POP, HELM, ILIMA, POP]
         _, tr = hand_deck(top, first=False)
         self.assertEqual(tr['first_attack_turn'], 2)
         _, tr = hand_deck(top, first=True)
@@ -231,7 +231,7 @@ class T2Hand(unittest.TestCase):
         self.assertEqual(len(g.hand), 1)
 
     def test_energy_n_minus_one_going_first(self):
-        top = [REGI, GLIMMET, HELM, ILIMA, POP, HELM, ILIMA, POP, HELM, ILIMA]
+        top = [REGI, GLIMMET, HELM, ILIMA, POP, POP]
         for first in (True, False):
             _, tr = hand_deck(top, first=first, natural_only=True)
             for n in range(1, 6):
@@ -242,7 +242,7 @@ class T2Hand(unittest.TestCase):
         self.assertEqual([sim.blade_damage(k) for k in range(4)], [60, 100, 140, 180])
 
     def test_blade_in_play_uses_knockouts_so_far(self):
-        top = [PAWN, KING, CANDY, POP, HELM, ILIMA, ILIMA, POP]
+        top = [PAWN, KING, CANDY, POP, HELM, ILIMA, POP]
         fixed = clk.Fixed('t', {1: 0, 2: 0, 3: 0, 4: 0, 5: 0})
         _, tr = hand_deck(top, first=False, clock=fixed)
         self.assertEqual(tr['blades'][0]['damage'], 60)
@@ -256,7 +256,7 @@ class T2Hand(unittest.TestCase):
 
     def test_glimmora_heads_gives_no_point_tails_one(self):
         # Glimmet Active, Glimmora drawn turn 1 (Glimmet evolves turn 2); one knock-out on opponent turn 2
-        top = [GLIMMET, GLIMMORA, HELM, ILIMA, POP, HELM, ILIMA]
+        top = [GLIMMET, GLIMMORA, HELM, ILIMA, POP, POP]
         one = clk.Fixed('t', {2: 1})
         _, heads = hand_deck(top, first=True, clock=one, glimmora_coin='heads')
         _, tails = hand_deck(top, first=True, clock=one, glimmora_coin='tails')
@@ -264,13 +264,13 @@ class T2Hand(unittest.TestCase):
         self.assertEqual((tails['ko'], tails['opp_points']), (1, 1))
 
     def test_losing_the_last_pokemon_ends_the_deal(self):
-        top = [PAWN, KING, HELM, ILIMA, POP, HELM, ILIMA, POP]        # one Basic, no Bench
+        top = [PAWN, KING, HELM, ILIMA, POP, POP]        # one Basic, no Bench
         _, tr = hand_deck(top, first=True, clock=clk.Fixed('t', {1: 1}), natural_only=True)
         self.assertEqual(tr['ended'], 'wiped')
         self.assertEqual(len(tr['turns']), 1)
 
     def test_three_points_end_the_deal(self):
-        top = [REGI, GLIMMET, GLIMMET, GRIMER, HELM, ILIMA, POP, HELM, ILIMA, POP]
+        top = [REGI, GLIMMET, GLIMMET, GRIMER, HELM, ILIMA, POP, POP]
         _, tr = hand_deck(top, first=True, clock=clk.Fixed('t', {1: 1, 2: 1, 3: 1, 4: 1}), natural_only=True,
                           glimmora_coin='tails')
         self.assertEqual(tr['ended'], 'points')
