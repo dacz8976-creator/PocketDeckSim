@@ -1,0 +1,211 @@
+{
+ "name": "slow_report_13-a-giant-cape",
+ "question": "kx3 (d513e37b, on main-c045ede) on 13-a-giant-cape v km3 on the public panel. A slow report on one deck, not development: how does 13-a-giant-cape do when the strong, slow pilot kx3 plays it against the eight public panel lists played by km3, 10 deals x 2 seats each? Primary: the deck's score (win 1, tie 1/2, loss 0) overall and against each list, with 95% ranges; and how much better kx3 plays this deck than km3 on the same deals. Realistic knowledge: kx3 plays the deck knowing its own cards; the deck is never one of the lists kx3 guesses its opponent from, and the panel side is never handed it. No pass or fail line; time per game is reported as a fact. This is a PAIRED VARIANT, paired with rl/results/slow_reports/2026-10-12_13-a-ninetales-raticate, which played 13-a-ninetales-raticate: 13-a-giant-cape differs from it by -1 Ilima A3 149, +1 Giant Cape A2 147 (the replaced card keeps its place in the deck file (card 17 of 20), and so in the shuffle: the deals differ only in that card). It plays the very same deals, with the same program and pin: the same seed base 24606700000 (no new seed slot is taken), seats, opponents and panel lists.",
+ "repo_commit": "a8e7e5a4554305f9380080e2655836e44cf7fa43",
+ "selfcheck": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kx3": "selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa"
+ },
+ "selfcheck_source": {
+  "km3": "accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit 381f955b7f7c): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration",
+  "kx3": "accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit 381f955b7f7c): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration"
+ },
+ "created_at": "2026-10-15T18:29:56Z",
+ "stage": "use",
+ "repo_root": "/home/user/PocketDeckSim",
+ "pilot": "kx3",
+ "reference": "km3",
+ "decks": [
+  {
+   "name": "13-a-giant-cape",
+   "path": "decks/variants-2026-10-15/13-a-giant-cape.txt",
+   "sha256": "75097ab4fd8515b2bbad8f8ed4f6fc74805139553a7c9b27ddcff8dd60e32639"
+  }
+ ],
+ "opponents": [
+  {
+   "name": "t-altaria",
+   "path": "decks/screen/opponents/t-altaria.txt",
+   "sha256": "c3a57b9c835be77ba864514e2636645885c4f22d75028c5f29e2686edcbe171f"
+  },
+  {
+   "name": "t-blaziken",
+   "path": "decks/screen/opponents/t-blaziken.txt",
+   "sha256": "d88a70e56dae8f8500d539348223b5fee5eaba705667578a8fcbca95963fd7ed"
+  },
+  {
+   "name": "t-hydreigon",
+   "path": "decks/screen/opponents/t-hydreigon.txt",
+   "sha256": "18688bd9ab09f2638538006590767a5750abe763572c0fb636c47eec93155f3b"
+  },
+  {
+   "name": "t-lucario",
+   "path": "decks/screen/opponents/t-lucario.txt",
+   "sha256": "76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634"
+  },
+  {
+   "name": "t-sceptile",
+   "path": "decks/screen/opponents/t-sceptile.txt",
+   "sha256": "fe0b7fc4de2f9dff0268a65d30dd39bfd5b73e7e5115b48e59f3975777018cd2"
+  },
+  {
+   "name": "t-suicune",
+   "path": "decks/screen/opponents/t-suicune.txt",
+   "sha256": "639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783"
+  },
+  {
+   "name": "t-vespiquen",
+   "path": "decks/screen/opponents/t-vespiquen.txt",
+   "sha256": "8356844fd2d143a44c547356ff5a32b74977478fbb1f9fc2a716a7f2233f8255"
+  },
+  {
+   "name": "t-weezing",
+   "path": "decks/screen/opponents/t-weezing.txt",
+   "sha256": "26cb869fe5f2c7cd79f8b974bf7667f802837bdb6ec9442db5360aef490ce5a1"
+  }
+ ],
+ "deals": 10,
+ "seats": [
+  0,
+  1
+ ],
+ "seed_base": 24606700000,
+ "pair_stride": 10000,
+ "threads": 4,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "heldout_decks": [],
+ "heldout_locked": true,
+ "heldout_registry": [
+  "02-arceus-crobat",
+  "04-absol-hoopa-darkrai",
+  "07-skarmory-stall",
+  "08-garchomp-toolbox",
+  "11-archaludon-haxorus-dragonair",
+  "12-ariados-whimsicott-ogerpon",
+  "13-a-ninetales-raticate",
+  "14-comfey-raticate-hypno",
+  "15-jolteon-oricorio-raticate",
+  "draft-C-meowstic-hatterene-v2",
+  "draft-D-entei-grimhound"
+ ],
+ "heldout_in_run": [],
+ "intended_lines": "rl/strength/intended_lines.json",
+ "intended_lines_sha256": "80778f3c4a58aa11d8a10fd96196110177dcc20d240d24f9351798eda4dae5a1",
+ "program": "/root/slow_report_kx3/strength",
+ "program_sha256": "5011e227cf63619cc8ca9750ee69090037844f8e7abcd0432776b1e2ae3b7f0e",
+ "engine": "laptop/kx3-on-rules2 cd20a97a engine tree 4ebb30a94173: the frozen kx3's players (claude/playout-pilot d513e37b, byte for byte) on main-c045ede's engine (rules switch 2, pinned Oct 12), built on the laptop Oct 12 with rl/strength/build.sh (harness bf9c5d68); gate 1: km3's self-check 81b572198c04d5d1, the pinned km3; kx3's self-check 31d638dbc818b0fa, equal to the old pin's; KX_EXTRA_LISTS unset. Replaces the Oct 2 build (d513e37b on its own engine, tree 31dbd2e6e8ec, program 5a8f5c83); spec rl/results/kx3_on_rules2_2026-10/SPEC.md; THIS PROGRAM (/root/slow_report_kx3/strength, sha256 5011e227cf63) is NOT the pinned binary: its build record (written by rl/strength/build.sh, not signed) says it is a rebuild of that source (build record sha256 a20475b7438b: engine tree as archived 4ebb30a94173, harness source bf9c5d681400, rustc 1.97.0 (2d8144b78 2026-07-07)), accepted because both self-checks equal the committed pin's digests: replayed by slow_report.py on vm and recorded in rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit 381f955b7f7c), for a program with this same sha256; the record is a committed file, not signed, and this registration did not replay them again",
+ "pilot_provenance": "kx3 from claude/playout-pilot@d513e37b, frozen Oct 4-5; on rules switch 2's engine since Oct 12 (laptop/kx3-on-rules2 cd20a97a)",
+ "reference_provenance": "km3 in the same build; it equals the pinned km3 (step 10's 240 games field for field, self-check 81b572198c04d5d1)",
+ "planned_pairs": 8,
+ "planned_games": 320,
+ "deck_files": [
+  {
+   "name": "13-a-giant-cape",
+   "path": "decks/variants-2026-10-15/13-a-giant-cape.txt"
+  }
+ ],
+ "slow_report": {
+  "version": 1,
+  "headline": "kx3 (d513e37b, on main-c045ede) on 13-a-giant-cape v km3 on the public panel",
+  "summary": "Stage use. 10 deals x 2 seats against each of the eight public lists. No pass or fail line; not development evidence. Self-check: accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit 381f955b7f7c), not replayed at registration. Paired with rl/results/slow_reports/2026-10-12_13-a-ninetales-raticate: the same seeds and deals as that report of 13-a-ninetales-raticate.",
+  "deck_name": "13-a-giant-cape",
+  "deck_file": "decks/variants-2026-10-15/13-a-giant-cape.txt",
+  "deck_file_sha256": "75097ab4fd8515b2bbad8f8ed4f6fc74805139553a7c9b27ddcff8dd60e32639",
+  "deck_file_state": "committed",
+  "deals": 10,
+  "paired": true,
+  "pin": {
+   "path": "rl/strength/slow_report_pin.json",
+   "sha256": "1fc30ce48e364f0669c4840c98f26fe31dbc35708007e977e9ccc2e8d2a050a1"
+  },
+  "pilot_label": "kx3 (d513e37b, on main-c045ede)",
+  "reference_label": "km3",
+  "panel_label": "the public panel",
+  "scrub_env_prefixes": [
+   "KX_",
+   "PDL_",
+   "DECKGYM_",
+   "JEV_",
+   "PG_"
+  ],
+  "resume_command": "python3 rl/strength/slow_report.py --dir /home/user/PocketDeckSim/rl/results/slow_reports/2026-10-15_13-a-giant-cape --school-rule off",
+  "program_route": "rebuilt",
+  "pinned_program": "/home/dacz8976/kx_r2/strength",
+  "pinned_program_sha256": "76df495bef0b057fd28b4991dce76d3e3e1772667694161c945f17364f9c4e08",
+  "harness_source_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+  "harness_source_checkout_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+  "engine_ref": "cd20a97a2e76897fae9883389cee4bf7ce5b3d97",
+  "engine_tree": "4ebb30a941737d16b80adddbd1466761e0670e63",
+  "pin_committed": "yes",
+  "pin_committed_detail": null,
+  "registered_on": "vm",
+  "build_record": {
+   "schema": 1,
+   "program": "/root/slow_report_kx3/strength",
+   "program_sha256": "5011e227cf63619cc8ca9750ee69090037844f8e7abcd0432776b1e2ae3b7f0e",
+   "engine_arg": "cd20a97a2e76897fae9883389cee4bf7ce5b3d97",
+   "engine": "cd20a97a2e76897fae9883389cee4bf7ce5b3d97 engine tree 4ebb30a941737d16b80adddbd1466761e0670e63",
+   "engine_ref": "cd20a97a2e76897fae9883389cee4bf7ce5b3d97",
+   "engine_tree_archived": "4ebb30a941737d16b80adddbd1466761e0670e63",
+   "harness_source_sha256": "bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e",
+   "rustc": "rustc 1.97.0 (2d8144b78 2026-07-07)\nbinary: rustc\ncommit-hash: 2d8144b7880597b6e6d3dfd63a9a9efae3f533d3\ncommit-date: 2026-07-07\nhost: x86_64-unknown-linux-gnu\nrelease: 1.97.0\nLLVM version: 22.1.6",
+   "cargo": "cargo 1.97.0 (c980f4866 2026-06-30)",
+   "machine": "Linux 6.18.44-fc-v114 x86_64",
+   "libc": "ldd (Ubuntu GLIBC 2.39-0ubuntu8.9) 2.39",
+   "host": "vm",
+   "home": "/root",
+   "cargo_home": "/root/.cargo",
+   "build_dir": "/root/slow_report_kx3/build",
+   "target_dir": "/root/slow_report_kx3/target",
+   "build_fs": "ext2/ext3",
+   "jobs": "8",
+   "build_env_unset": [],
+   "cargo_config_files": [],
+   "built_at": "2026-10-12T18:38:54Z",
+   "rebuild_command": "env HOME=/root CARGO_HOME=/root/.cargo STRENGTH_BUILD_DIR=/root/slow_report_kx3/build STRENGTH_TARGET_DIR=/root/slow_report_kx3/target STRENGTH_JOBS=8 STRENGTH_REPO=/home/user/PocketDeckSim bash /home/user/PocketDeckSim/rl/strength/build.sh cd20a97a2e76897fae9883389cee4bf7ce5b3d97 /root/slow_report_kx3/strength",
+   "record_file": "/root/slow_report_kx3/strength.build.json",
+   "record_sha256": "a20475b7438b55fd257c7ad2f0636b16e39c3c5468e4c93b72fca9ff073e695b"
+  },
+  "school_rule": "off",
+  "school_days": "mon,tue,wed,thu,fri",
+  "expected_hours": {
+   "typical_low": 4.705882352941177,
+   "typical_high": 6.153846153846154,
+   "wall": 17.77777777777778
+  },
+  "selfcheck_how": "record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json 381f955b7f7c66dd94cfba917025a8f658fcf6cb",
+  "selfcheck_record": {
+   "path": "rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json",
+   "commit": "381f955b7f7c66dd94cfba917025a8f658fcf6cb",
+   "file_sha256": "c1f87d78ba051c93597b9dd7e72ecbaabfd738344e8f87086c3363d5990ba884",
+   "program_sha256": "5011e227cf63619cc8ca9750ee69090037844f8e7abcd0432776b1e2ae3b7f0e",
+   "replayed_at": "2026-10-12T20:47:46Z",
+   "host": "vm",
+   "boot_id": "d7f94bb5-50fd-4d4c-af09-abef7e79d0d5",
+   "tool_commit": "396a424c1ba9474ec27d258e658d772dd249a4f6"
+  },
+  "paired_with": {
+   "folder": "rl/results/slow_reports/2026-10-12_13-a-ninetales-raticate",
+   "manifest_sha256": "f3dacac4e1315d8c83b75bb8b035f2a9e82aa581db6487d8aa9157a4bccbda02",
+   "base_deck_name": "13-a-ninetales-raticate",
+   "base_deck_file": "decks/dustin/13-a-ninetales-raticate.txt",
+   "base_deck_sha256": "f79ad459a1188f10ba34be4606f3cbc60db21386e8ef91721c5506239653b6fa",
+   "swaps": 1,
+   "removed": [
+    "1 Ilima A3 149"
+   ],
+   "added": [
+    "1 Giant Cape A2 147"
+   ],
+   "slots": [
+    16
+   ],
+   "aligned": true,
+   "basic_shape": true,
+   "cards": 20,
+   "pin_note": null,
+   "seed_base": 24606700000
+  }
+ }
+}
