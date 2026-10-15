@@ -21,15 +21,32 @@ is kept only if km3 makes its recorded move there.
 - 05 v Suicune 0|1 t12 (Sharp Fang)
 - 06 v Hydreigon 1|0 t5 (Tongue Whip on the Benched Deino: tests the board copy's every-target read)
 - 09 v Sceptile 4|0 t11 (Electrispark)
-- 010837 t09 (C ended the turn in 11 of 12 with no Energy)
+- 010837 t09: moved to the negatives below, after the cloud's diagnosis.
 - B-210952 t14: an attack this turn that knocks out the 50-HP Wailmer, either Surf after benching Carvanha, or Binding Snow
   after the retreat. These are the game's Auto decisions, so the expected move comes from card text.
 
 ## B. Keep checks (the baseline should already pass; no switch may lower them)
 
 - **213625 t07:** Sunny Wind knocks out Pinsir. F made his line in 11-12 of 12.
-- **010837 t11:** property "doesn't end the turn with nothing". F took the knockout in 12 of 12. Which move is best is
-  contested; this property is not.
+- **010837 t09 and t11 are now NEGATIVES (correct passes), after the cloud's diagnosis**
+  (`../pause_positions_kx3_2026-10/KINGAMBIT_PASS_cloud.md`, Oct 15):
+  - At t11, C passes the Pichu knockout on its play-out scores alone. The knockout line wins 33% (25-44%), because the Blade stays at
+    140 and can't knock out the 180-HP Mega Kangaskhan ex. Passing lets Glimmet be knocked out, so the count is 3 and the Blade is 180,
+    exactly the Kangaskhan's HP: a 3-point win. The lead is 4.4-6.7 SE against a bar of 2.
+  - At t09, `_m64` tips a close call (C passes in 2 of 12 seeds without it, 11 of 12 with it).
+  - F doesn't really choose: its play-outs score almost every move 94-100%, because its worlds lack this opponent's deck.
+  - Dustin himself declined the knockout (Hang Down), had count 3 by t13 and 2 points by t15, which matches his ruling.
+  - **The open doubt:** C's 100% for passing assumes the opponent walks the Kangaskhan into the count-3 Blade. The real opponent did
+    not.
+  - **The gate that settles it** (the cloud's proposal; no new bot code; `playout_continuation` on 9a0bc5ac):
+    - Compare, paired over the same worlds with R = 128: (a) km3's Kingambit line, against (b) Hang Down or EndTurn.
+    - Use three play-out opponents: km3, km4, and a Blade-aware damage estimate.
+    - Use C's inferred worlds, plus a world with his opponent's list rebuilt from the ledger where it shows enough.
+    - If (b) still leads beyond 2 SE against the careful opponents, the pass is a real find: no change, and the position counts
+      against km3 and F.
+    - If the lead collapses, km3 needs to see that its own knockout raises the Blade count. That change is gated like any km3 change.
+  - For `_atk`, both are negatives. Expect `_atk` to leave the pass alone: the play-outs carry the plan here, unlike Dustin's two
+    other plan passes.
 - **The 13 same-position turns** where F attacked and C didn't. The property is "an attack this turn"; any attack counts,
   because in 5 of the 13 F's attack came by another route. A turn both readers judged MISTAKE becomes a positive if F fails it.
   - Judged MISTAKE: 03 v Blaziken 3|1 t8; 06 v Blaziken 0|0 t3; 06 v Hydreigon 1|1 t2; 06 v Lucario 4|0 t4; 09 v Altaria

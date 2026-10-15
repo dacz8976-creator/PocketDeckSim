@@ -125,5 +125,10 @@ part of phase 1, not deferred:
   case for one card.
 - If `_atk` passes them, the report says why: what the watch saw. That would be unexpected.
 
+**A lesson from the Kingambit diagnosis** (`../pause_positions_kx3_2026-10/KINGAMBIT_PASS_cloud.md`): at 010837 t11, what
+mattered was the candidate's model of the opponent, not more thinking. Its worlds held a list like his opponent's; F's pool didn't, so
+F's play-outs scored almost every move alike. Where a planning case turns on the opponent's deck, the play-out worlds are part of the
+fix. In the next iterations, that comes before any longer search.
+
 **The round is not done until** each failure has a measured baseline (km3, F, ky3 with no switch, on its cases) and, wherever a
 clean positive exists, a switch tested both ways like `_atk`.
