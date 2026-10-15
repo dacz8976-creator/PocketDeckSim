@@ -123,6 +123,10 @@ part of phase 1, not deferred:
 - `EXPECTED.md` records them as a known limit.
 - If `_atk` fails them, the next iteration tries a longer watch (through two opponent turns) or a plan-value term, never a special
   case for one card.
+- **No switch is adopted, or offered to Dustin for adoption, while it breaks any right-to-pass case: his two plan passes, the
+  Kingambit passes, and deck 13-A G5's turn 4 included (Oct 15, after his reviewed critique).** A switch that only passes
+  the knock-out cases is an "always attack" bot, which recreates the planning failure he named. A failure there is still
+  reported as a known limit, but it blocks adoption.
 - If `_atk` passes them, the report says why: what the watch saw. That would be unexpected.
 
 **A lesson from the Kingambit diagnosis** (`../pause_positions_kx3_2026-10/KINGAMBIT_PASS_cloud.md`): at 010837 t11, what
