@@ -179,6 +179,11 @@ pub struct PlayoutParams {
     /// ky `_queue` (off by default): on ky's own seat, km<depth> resolves a frame where every choice is a from-attack
     /// `ApplyDamage` before scoring (expectiminimax_player.rs `resolve_queued_damage`). Only ky codes take it.
     pub queue: bool,
+    /// ky `_atk[<t>]` (off by default; bare it is [`ATK_DEFAULT`]): Dustin's free-attack rule. When an attack is legal and the
+    /// pilot's chosen move leads to none this turn, each legal attack is applied to a copy of the board, and one that damages
+    /// is played unless skipping it stands: attacking gives the opponent at least `t` more points by the checkup after their
+    /// next turn, by more than 2 standard errors ([`PlayoutPlayer::atk_review`]). Only ky codes take it.
+    pub atk: Option<f64>,
 }
 
 impl PlayoutParams {
@@ -201,16 +206,33 @@ impl PlayoutParams {
             infer: false,
             punch: false,
             queue: false,
+            atk: None,
         }
     }
 
     /// Parses the code after the `ky` prefix (lowercase): the `kx` parts, with the closest-list fallback.
     pub fn parse_ky(rest: &str) -> Result<Self, String> {
         let (mut infer, mut punch, mut queue) = (false, false, false);
+        let mut atk: Option<f64> = None;
+        let mut atk_twice = false;
         let kept: Vec<&str> = rest
             .split('_')
             .enumerate()
             .filter(|&(i, part)| {
+                if i > 0 && part.starts_with("atk") {
+                    let threshold = match &part[3..] {
+                        "" => Some(ATK_DEFAULT),
+                        number => number.parse::<f64>().ok().filter(|t| t.is_finite() && *t >= 0.0),
+                    };
+                    // A bad number stays in the kept parts, where `parse` refuses it as an unknown part.
+                    return match threshold {
+                        Some(t) => {
+                            atk_twice |= atk.replace(t).is_some();
+                            false
+                        }
+                        None => true,
+                    };
+                }
                 let switch = match part {
                     "infer" => Some(&mut infer),
                     "punch" => Some(&mut punch),
@@ -227,8 +249,11 @@ impl PlayoutParams {
             })
             .map(|(_, part)| part)
             .collect();
+        if atk_twice {
+            return Err("Invalid player code: ky (_atk twice)".to_string());
+        }
         Self::parse(&kept.join("_"))
-            .map(|params| PlayoutParams { closest: true, infer, punch, queue, ..params })
+            .map(|params| PlayoutParams { closest: true, infer, punch, queue, atk, ..params })
             .map_err(|e| e.replacen("kx", "ky", 3))
     }
 
@@ -299,7 +324,7 @@ impl PlayoutParams {
     /// them are as before).
     pub fn code(&self) -> String {
         format!(
-            "{}{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}{}{}{}{}{}",
+            "{}{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}{}{}{}{}{}{}",
             if self.closest { "ky" } else { "kx" },
             self.depth,
             self.rollouts,
@@ -316,9 +341,138 @@ impl PlayoutParams {
             self.max_rounds.map_or(String::new(), |m| format!("_m{m}")),
             if self.infer { "_infer" } else { "" },
             if self.punch { "_punch" } else { "" },
-            if self.queue { "_queue" } else { "" }
+            if self.queue { "_queue" } else { "" },
+            self.atk.map_or(String::new(), |t| format!("_atk{t}"))
         )
     }
+}
+
+/// The `_atk` threshold of a bare `_atk`: the opponent's extra points by the checkup after their next turn that let a skip
+/// stand (Oct 15 design note: 0.25; 0.15 and 0.5 are swept on the negatives).
+pub const ATK_DEFAULT: f64 = 0.25;
+
+/// What one legal attack does, read on a copy of the board (`attack_effects`).
+#[derive(Debug, Clone, Copy, PartialEq)]
+pub struct AttackEffect {
+    /// Some branch or target of the attack damages or knocks out an opposing Pokémon, the Bench included.
+    pub damages: bool,
+    /// The attacker can force the game's end in its favour: every chance branch wins under its best choice of targets.
+    pub wins: bool,
+}
+
+fn opposing_hp(state: &State, opponent: usize) -> (u32, usize) {
+    state.enumerate_in_play_pokemon(opponent).fold((0, 0), |(hp, n), (_, p)| (hp + p.get_remaining_hp(), n + 1))
+}
+
+/// Every branch of `action` applied to a copy of `state`, with its probability.
+fn branches_of(state: &State, action: &Action) -> Vec<(f64, State)> {
+    let Ok(outcomes) = crate::actions::try_forecast_action(state, action) else {
+        return Vec::new();
+    };
+    let (probabilities, mutations) = outcomes.into_branches();
+    probabilities
+        .into_iter()
+        .zip(mutations)
+        .map(|(p, mutation)| {
+            let mut copy = state.clone();
+            mutation(&mut StdRng::seed_from_u64(0xA7C), &mut copy, action);
+            (p, copy)
+        })
+        .collect()
+}
+
+/// `attack` applied to a copy of `state` (an attack the actor can play now): every chance branch, and every target of the
+/// queued damage that the attacker chooses (the second punch, Tongue Whip, Diving Icicles), settled until the next real
+/// decision or the end of the game. Nothing in `state` changes.
+pub fn attack_effects(state: &State, attack: &Action) -> AttackEffect {
+    let me = attack.actor;
+    let (hp, n) = opposing_hp(state, 1 - me);
+    let (win_probability, damages) = settle_attack(branches_of(state, attack), me, (hp, n), 0);
+    AttackEffect { damages, wins: win_probability > 1.0 - 1e-9 }
+}
+
+/// The chance branches of one step, each settled: (probability the attacker wins, whether any leaf damaged).
+fn settle_attack(branches: Vec<(f64, State)>, me: usize, before: (u32, usize), depth: usize) -> (f64, bool) {
+    let mut win = 0.0;
+    let mut damages = false;
+    for (p, state) in branches {
+        let (w, d) = settle_state(state, me, before, depth);
+        win += p * w;
+        damages |= d;
+    }
+    (win, damages)
+}
+
+/// One state after the attack's step: over (win probability, damaged). Forced single steps are taken; a frame of the
+/// attacker's own stack choices is a choice (best for the win, any for the damage); anything else ends the settling.
+fn settle_state(state: State, me: usize, before: (u32, usize), depth: usize) -> (f64, bool) {
+    let damaged = |s: &State| {
+        let (hp, n) = opposing_hp(s, 1 - me);
+        hp < before.0 || n < before.1
+    };
+    let won = |s: &State| if s.winner == Some(crate::state::GameOutcome::Win(me)) { 1.0 } else { 0.0 };
+    if state.is_game_over() || state.move_generation_stack.is_empty() || depth >= 12 {
+        return (won(&state), damaged(&state));
+    }
+    let (actor, actions) = state.generate_possible_actions();
+    if actions.len() == 1 && actions[0].is_stack {
+        let (w, d) = settle_attack(branches_of(&state, &actions[0]), me, before, depth + 1);
+        return (w, d || damaged(&state));
+    }
+    if actor == me && actions.len() > 1 && actions.iter().all(|a| a.is_stack) {
+        let mut best = 0.0f64;
+        let mut damages = damaged(&state);
+        for action in &actions {
+            let (w, d) = settle_attack(branches_of(&state, action), me, before, depth + 1);
+            best = best.max(w);
+            damages |= d;
+        }
+        return (best, damages);
+    }
+    (won(&state), damaged(&state))
+}
+
+/// Whether a skip stands: attacking gives the opponent at least `threshold` more points than the skip (the mean of the
+/// paired per-round differences), by more than 2 standard errors. No evidence (fewer than 2 rounds) does not stand.
+pub fn skip_stands(diffs: &[f64], threshold: f64) -> bool {
+    let n = diffs.len() as f64;
+    if diffs.len() < 2 {
+        return false;
+    }
+    let mean = diffs.iter().sum::<f64>() / n;
+    let se = (diffs.iter().map(|d| (d - mean).powi(2)).sum::<f64>() / (n - 1.0)).sqrt() / n.sqrt();
+    mean >= threshold && mean > 2.0 * se
+}
+
+/// One line `_atk` weighs against the pilot's chosen move: a legal attack, or km's own move when its line attacks.
+#[derive(Debug, Clone)]
+pub struct AtkLine {
+    /// The attack damages (`attack_effects`); km's own non-attack move counts as doing something.
+    pub does_something: bool,
+    /// The attack wins the game outright.
+    pub wins: bool,
+    /// Mean play-out score (win 1, tie ½, loss 0).
+    pub score: f64,
+    /// The opponent's points at the checkup after their next turn, this line minus the chosen move's, per round.
+    pub opponent_points_diff: Vec<f64>,
+    /// This line is km's own move (its line attacks).
+    pub is_km_line: bool,
+}
+
+/// The line `_atk` plays instead of the chosen move, if any: an attack that wins the game outright, else among the lines
+/// that do something and whose skip does not stand, km's own move, else the best score (the first on a tie).
+pub fn atk_pick(lines: &[AtkLine], threshold: f64) -> Option<usize> {
+    let doing = || lines.iter().enumerate().filter(|(_, l)| l.does_something);
+    if let Some((i, _)) = doing().find(|(_, l)| l.wins) {
+        return Some(i);
+    }
+    let free: Vec<usize> = doing().filter(|(_, l)| !skip_stands(&l.opponent_points_diff, threshold)).map(|(i, _)| i).collect();
+    free.iter().copied().find(|&i| lines[i].is_km_line).or_else(|| {
+        free.iter().copied().fold(None, |best: Option<usize>, i| match best {
+            Some(b) if lines[b].score >= lines[i].score => Some(b),
+            _ => Some(i),
+        })
+    })
 }
 
 /// The bar a switch from km<N>'s move `km` to `best` must clear, in standard errors: `z_attack` when `km` is an attack and
@@ -1040,6 +1194,35 @@ impl Core {
         plan: Option<(&Plan, usize)>,
         tools: bool,
     ) -> (State, Option<(PlanTally, Vec<String>)>, usize, bool) {
+        self.play_out_watched(state, opponent_list, me, action, seed, plan, tools, None)
+    }
+
+    /// `play_out`, and with `watch` the opponent's points at the checkup after their next turn (`_atk`'s watch): the
+    /// moment the turn count reaches the decision's plus 2, or the game ends first (an opponent win counts as at least
+    /// 3). It only reads the state; the play is `play_out`'s, move for move.
+    fn play_out_watched(
+        &self,
+        state: &State,
+        opponent_list: &Deck,
+        me: usize,
+        action: &Action,
+        seed: u64,
+        plan: Option<(&Plan, usize)>,
+        tools: bool,
+        watch: Option<&Cell<Option<f64>>>,
+    ) -> (State, Option<(PlanTally, Vec<String>)>, usize, bool) {
+        let read_watch = |game: &Game| {
+            if let Some(cell) = watch.filter(|c| c.get().is_none()) {
+                let now = game.get_state_clone();
+                if now.is_game_over() || now.turn_count >= state.turn_count + 2 {
+                    let mut points = now.points[1 - me] as f64;
+                    if now.winner == Some(crate::state::GameOutcome::Win(1 - me)) {
+                        points = points.max(3.0);
+                    }
+                    cell.set(Some(points));
+                }
+            }
+        };
         let code = PlayerCode::KM { max_depth: self.depth };
         let (d0, d1) = if me == 0 { (self.deck.clone(), opponent_list.clone()) } else { (opponent_list.clone(), self.deck.clone()) };
         let mut players = create_players(d0, d1, vec![code.clone(), code]);
@@ -1066,6 +1249,7 @@ impl Core {
         let is_attack = |a: &Action| a.actor == me && matches!(a.action, crate::actions::SimpleAction::Attack(_));
         let mut attacked = is_attack(action);
         game.apply_action(action);
+        read_watch(&game);
         // Watched only while the decision's turn lasts (and no attack yet): it reads the state, it changes nothing.
         let mut in_turn = !attacked && game.get_state_clone().turn_count == state.turn_count;
         let mut ticks = 0;
@@ -1075,11 +1259,13 @@ impl Core {
             }
             let a = game.play_tick();
             ticks += 1;
+            read_watch(&game);
             if in_turn {
                 attacked = is_attack(&a);
                 in_turn = !attacked && game.get_state_clone().turn_count == state.turn_count;
             }
         }
+        read_watch(&game);
         let end = game.get_state_clone();
         let tally = progress.map(|p| {
             let mut p = p.borrow_mut();
@@ -1440,8 +1626,129 @@ impl PlayoutPlayer {
             let n = report.candidates.iter().filter(|c| c.rounds > from).count();
             report.reason = format!("{}; close call: play-outs extended from {from} to {to} rounds for {n} candidates", report.reason);
         }
+        if let Some(threshold) = self.params.atk {
+            self.atk_review(&mut report, observation, actions, base, threshold);
+        }
         report.millis = start.elapsed().as_secs_f64() * 1000.0;
         report
+    }
+
+    /// `_atk`, Dustin's free-attack rule, after the decision is made. It looks only when a legal attack of the pilot's
+    /// exists and the chosen move is not an attack and leads to none this turn (an attack in fewer than half its
+    /// play-outs). Each legal attack is applied to a copy of a sampled world (`attack_effects`); the ones that damage, and
+    /// km's own move if its line attacks, are played out against the chosen move from the same worlds and seeds, watching
+    /// the opponent's points through the checkup after their next turn. A skip stands for a line that gives the opponent at
+    /// least `threshold` more points, by more than 2 standard errors (`skip_stands`); an attack that wins the game is
+    /// always taken (`atk_pick`). The pick replaces the chosen move; otherwise nothing changes.
+    fn atk_review(&self, report: &mut DecisionReport, observation: &PlayerObservation, actions: &[Action], base: u64, threshold: f64) {
+        let me = observation.actor;
+        let chosen = report.candidates[report.chosen].clone();
+        let is_attack = |a: &Action| a.actor == me && matches!(a.action, crate::actions::SimpleAction::Attack(_));
+        if is_attack(&chosen.action) || chosen.attacks_this_turn * 2 >= chosen.rounds {
+            return;
+        }
+        let mut attacks: Vec<Action> = Vec::new();
+        for a in actions.iter().filter(|a| is_attack(a)) {
+            if !attacks.contains(a) {
+                attacks.push(a.clone());
+            }
+        }
+        if attacks.is_empty() {
+            return;
+        }
+        let core = &self.core;
+        let sample = |j: usize| core.sample_round(observation, base, j);
+        // What each attack does, on a copy of the first sampled world (the board is the same in every world).
+        let effects = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+            let (world, _, _, _) = sample(0);
+            attacks.iter().map(|a| attack_effects(&world, a)).collect::<Vec<AttackEffect>>()
+        }));
+        let Ok(effects) = effects else { return };
+        // km's own move joins as a line when its line attacks and it is not itself one of the attacks.
+        let km = report.candidates[0].clone();
+        let km_line = report.chosen != 0 && !is_attack(&km.action) && km.attacks_this_turn * 2 >= km.rounds && km.rounds > 0;
+        let mut moves: Vec<(Action, AttackEffect, bool)> =
+            attacks.iter().cloned().zip(effects).filter(|(_, e)| e.damages || e.wins).map(|(a, e)| (a, e, false)).collect();
+        if km_line {
+            moves.push((km.action.clone(), AttackEffect { damages: true, wins: false }, true));
+        }
+        if moves.is_empty() {
+            return;
+        }
+        // The chosen move and each line, played from every sampled world and seed, with the opponent's points watched.
+        let rounds: Vec<Option<Vec<(f64, bool, f64)>>> = (0..self.params.rollouts)
+            .into_par_iter()
+            .map(|j| {
+                std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                    let (world, list, _, seed) = sample(j);
+                    std::iter::once(&chosen.action)
+                        .chain(moves.iter().map(|m| &m.0))
+                        .map(|a| {
+                            let cell = Cell::new(None);
+                            let (end, _, _, attacked) = core.play_out_watched(&world, &list, me, a, seed, None, core.tools, Some(&cell));
+                            (score(&end, me), attacked, cell.get().unwrap_or(end.points[1 - me] as f64))
+                        })
+                        .collect::<Vec<_>>()
+                }))
+                .ok()
+            })
+            .collect();
+        let rounds: Vec<Vec<(f64, bool, f64)>> = rounds.into_iter().flatten().collect();
+        if rounds.is_empty() {
+            return;
+        }
+        let n = rounds.len() as f64;
+        let lines: Vec<AtkLine> = moves
+            .iter()
+            .enumerate()
+            .map(|(i, (_, effect, is_km))| AtkLine {
+                does_something: effect.damages || effect.wins,
+                wins: effect.wins,
+                score: rounds.iter().map(|r| r[i + 1].0).sum::<f64>() / n,
+                opponent_points_diff: rounds.iter().map(|r| r[i + 1].2 - r[0].2).collect(),
+                is_km_line: *is_km,
+            })
+            .collect();
+        let verdict = |i: usize| {
+            let d = &lines[i].opponent_points_diff;
+            format!("{:+.2} opponent points", d.iter().sum::<f64>() / d.len() as f64)
+        };
+        let Some(pick) = atk_pick(&lines, threshold) else {
+            report.reason = format!(
+                "{}; _atk looked ({} line{}), every skip stands at {threshold}: {}",
+                report.reason,
+                lines.len(),
+                if lines.len() == 1 { "" } else { "s" },
+                (0..lines.len()).map(verdict).collect::<Vec<_>>().join(", ")
+            );
+            return;
+        };
+        let action = moves[pick].0.clone();
+        let (attacked, rounds_n) = (rounds.iter().filter(|r| r[pick + 1].1).count(), rounds.len());
+        let index = match report.candidates.iter().position(|c| c.action == action) {
+            Some(i) => i,
+            None => {
+                report.candidates.push(CandidateReport {
+                    action: action.clone(),
+                    label: format!("{:?}", action.action).chars().take(160).collect(),
+                    score: lines[pick].score,
+                    diff: f64::NAN,
+                    se: f64::NAN,
+                    attacks_this_turn: attacked,
+                    rounds: rounds_n,
+                });
+                report.candidates.len() - 1
+            }
+        };
+        report.reason = format!(
+            "{}; _atk: {} played instead of the chosen move ({}, threshold {threshold}, score {:.3} v {:.3})",
+            report.reason,
+            if lines[pick].wins { "the game-winning attack" } else { "the free attack" },
+            verdict(pick),
+            lines[pick].score,
+            rounds.iter().map(|r| r[0].0).sum::<f64>() / n
+        );
+        report.chosen = index;
     }
 
     /// The continuation study (Oct 5; a diagnostic, not a decision): each of `moves` is played out `rounds` times from
@@ -1825,6 +2132,174 @@ mod tests {
         assert!(crate::players::parse_player_code("kx3_punch").is_err());
         assert!(crate::players::parse_player_code("kx3_queue").is_err());
         assert!(crate::players::parse_player_code("ky3_punchx").is_err());
+    }
+
+    /// `_atk` (ky only, off by default): bare it is 0.25, `_atk<t>` sets the threshold; spelled back in the code after
+    /// `_queue`, in any order with the other ky switches, refused on kx, and a bad number is refused.
+    #[test]
+    fn ky_atk_parses_with_its_threshold_round_trips_and_is_off_by_default() {
+        let base = "3_r16_c12_z2_real_t0_poolmeta";
+        assert_eq!(PlayoutParams::parse_ky(base).unwrap().atk, None);
+        for (suffix, threshold) in [("_atk", 0.25), ("_atk0.25", 0.25), ("_atk0.15", 0.15), ("_atk0.5", 0.5)] {
+            let on = PlayoutParams::parse_ky(&format!("{base}{suffix}")).unwrap();
+            assert_eq!(on.atk, Some(threshold), "{suffix}");
+            let code = on.code();
+            assert_eq!(code, format!("ky{base}_atk{threshold}"));
+            assert_eq!(PlayoutParams::parse_ky(&code["ky".len()..]).unwrap(), on, "round trip {code}");
+            assert_eq!(PlayoutParams { atk: None, ..on.clone() }, PlayoutParams::parse_ky(base).unwrap());
+        }
+        let all = PlayoutParams::parse_ky("3_m64_queue_atk0.5_punch_infer").unwrap();
+        assert_eq!((all.atk, all.punch, all.queue, all.infer), (Some(0.5), true, true, true));
+        assert_eq!(all.code(), "ky3_r16_c12_z2_real_t0_poolwide_m64_infer_punch_queue_atk0.5");
+        assert!(crate::players::parse_player_code("kx3_atk").is_err());
+        for bad in ["ky3_atkx", "ky3_atk-1", "ky3_atkNaN", "ky3_atk0.25x", "ky3_atk_atk"] {
+            assert!(crate::players::parse_player_code(bad).is_err(), "{bad}");
+        }
+    }
+
+    /// The skip stands only if attacking gives the opponent at least the threshold more points, by more than 2 standard
+    /// errors (paired rounds); with no evidence the skip does not stand.
+    #[test]
+    fn a_skip_stands_only_at_the_threshold_and_beyond_two_standard_errors() {
+        // Mean 0.5, sd 0.5, n 16: se 0.125, 4 standard errors.
+        let steady: Vec<f64> = (0..16).map(|i| if i % 2 == 0 { 1.0 } else { 0.0 }).collect();
+        assert!(skip_stands(&steady, 0.25));
+        assert!(skip_stands(&steady, 0.5), "the threshold itself counts");
+        assert!(!skip_stands(&steady, 0.51), "mean 0.5 is under 0.51");
+        // The same mean with a large spread is within 2 standard errors: n 4, values 2, 0, 0, 0 (mean 0.5, se 0.5).
+        assert!(!skip_stands(&[2.0, 0.0, 0.0, 0.0], 0.25));
+        // No gap, and one round (no standard error), do not stand.
+        assert!(!skip_stands(&[0.0; 16], 0.15));
+        assert!(!skip_stands(&[3.0], 0.15));
+        assert!(!skip_stands(&[], 0.15));
+        // Zero spread at or above the threshold stands.
+        assert!(skip_stands(&[0.25; 8], 0.25));
+        assert!(!skip_stands(&[0.2; 8], 0.25));
+    }
+
+    fn line(score: f64, diff: f64, wins: bool, km: bool) -> AtkLine {
+        AtkLine { does_something: true, wins, score, opponent_points_diff: vec![diff; 8], is_km_line: km }
+    }
+
+    /// The pick: a winning knock-out is always taken; a line that does nothing never; a held skip leaves the choice alone;
+    /// among the free lines km's own move, else the best score.
+    #[test]
+    fn the_free_attack_is_picked_by_the_rule() {
+        let t = 0.25;
+        // The skip stands for every line: no pick.
+        assert_eq!(atk_pick(&[line(0.9, 0.5, false, false), line(0.8, 1.0, false, false)], t), None);
+        // The free one among them, by score.
+        assert_eq!(atk_pick(&[line(0.9, 0.5, false, false), line(0.4, 0.0, false, false), line(0.6, 0.1, false, false)], t), Some(2));
+        // km's own line wins over a better-scoring free attack.
+        assert_eq!(atk_pick(&[line(0.9, 0.0, false, false), line(0.5, 0.0, false, true)], t), Some(1));
+        // A win is taken even where the skip stands, and before a better-scoring free line.
+        assert_eq!(atk_pick(&[line(0.9, 0.0, false, false), line(0.1, 3.0, true, false)], t), Some(1));
+        // A line that does nothing is never picked.
+        let mut idle = line(0.9, 0.0, false, false);
+        idle.does_something = false;
+        assert_eq!(atk_pick(&[idle], t), None);
+        // The threshold is a parameter: a 0.3 gap is held at 0.15 and 0.25, and taken at 0.5.
+        let gap = [line(0.5, 0.3, false, false)];
+        assert_eq!((atk_pick(&gap, 0.15), atk_pick(&gap, 0.25), atk_pick(&gap, 0.5)), (None, None, Some(0)));
+        assert_eq!(atk_pick(&[], t), None);
+    }
+
+    fn attack_of(state: &State, title: &str) -> Action {
+        state
+            .generate_possible_actions()
+            .1
+            .into_iter()
+            .find(|a| matches!(&a.action, crate::actions::SimpleAction::Attack(attack) if attack.title == title))
+            .unwrap_or_else(|| panic!("{title} is playable"))
+    }
+
+    fn mon(id: CardId) -> crate::models::PlayedCard {
+        crate::models::PlayedCard::from_id(id)
+    }
+
+    fn board(mine: Vec<crate::models::PlayedCard>, theirs: Vec<crate::models::PlayedCard>) -> State {
+        let mut state = State::default();
+        state.set_board(mine, theirs);
+        state.current_player = 0;
+        state.turn_count = 3;
+        state
+    }
+
+    /// "Does something" is read on a copy of the board, every target of a queued hit included.
+    #[test]
+    fn an_attack_is_applied_to_a_copy_with_every_target() {
+        use crate::models::EnergyType;
+        let heatmor = || mon(CardId::B1044Heatmor).with_energy(vec![EnergyType::Fire]);
+        // Tongue Whip with 2 Benched targets: damages, and the copy is the only board touched.
+        let state = board(vec![heatmor()], vec![mon(CardId::B3b055Snorlax), mon(CardId::B1180Pidgey), mon(CardId::A1001Bulbasaur)]);
+        let before = state.clone();
+        let whip = attack_of(&state, "Tongue Whip");
+        let e = attack_effects(&state, &whip);
+        assert!(e.damages && !e.wins, "{e:?}");
+        assert_eq!(state.enumerate_in_play_pokemon(1).map(|(_, p)| p.get_remaining_hp()).sum::<u32>(), before.enumerate_in_play_pokemon(1).map(|(_, p)| p.get_remaining_hp()).sum::<u32>());
+        // With 1 Benched target as well.
+        let one = board(vec![heatmor()], vec![mon(CardId::B3b055Snorlax), mon(CardId::B1180Pidgey)]);
+        assert!(attack_effects(&one, &attack_of(&one, "Tongue Whip")).damages);
+        // With no Benched target Tongue Whip has nobody to hit: it does nothing.
+        let none = board(vec![heatmor()], vec![mon(CardId::B3b055Snorlax)]);
+        if let Some(a) = none.generate_possible_actions().1.into_iter().find(|a| matches!(&a.action, crate::actions::SimpleAction::Attack(x) if x.title == "Tongue Whip")) {
+            assert!(!attack_effects(&none, &a).damages);
+        }
+        // A plain hit on the Active damages.
+        let hit = board(vec![mon(CardId::A1001Bulbasaur).with_energy(vec![EnergyType::Grass, EnergyType::Grass])], vec![mon(CardId::B3b055Snorlax)]);
+        assert!(attack_effects(&hit, &attack_of(&hit, "Vine Whip")).damages);
+        // Sing is only a status: nothing is damaged.
+        let sing = board(vec![mon(CardId::PA022Jigglypuff).with_energy(vec![EnergyType::Colorless])], vec![mon(CardId::B3b055Snorlax)]);
+        assert!(!attack_effects(&sing, &attack_of(&sing, "Sing")).damages);
+    }
+
+    /// A knock-out that ends the game is recognised on the copy (the third point), and only where it ends it.
+    #[test]
+    fn a_game_winning_knock_out_is_seen_on_the_copy() {
+        use crate::models::EnergyType;
+        let bulbasaur = || mon(CardId::A1001Bulbasaur).with_energy(vec![EnergyType::Grass, EnergyType::Grass]);
+        let mut state = board(vec![bulbasaur()], vec![mon(CardId::B1180Pidgey).with_remaining_hp(30), mon(CardId::B3b055Snorlax)]);
+        state.points = [2, 0];
+        let e = attack_effects(&state, &attack_of(&state, "Vine Whip"));
+        assert!(e.damages && e.wins, "a knock-out at 2 points wins: {e:?}");
+        state.points = [1, 0];
+        let e = attack_effects(&state, &attack_of(&state, "Vine Whip"));
+        assert!(e.damages && !e.wins, "at 1 point it does not: {e:?}");
+    }
+
+    /// The watch reads the opponent's points at the checkup after their next turn and changes no move: the final state and
+    /// the attack flag of a watched play-out are the unwatched one's.
+    #[test]
+    fn the_watch_reads_the_opponents_points_without_changing_the_play() {
+        let state = pool_midgame("t-suicune", "t-blaziken", 3);
+        let p = ky_pilot();
+        let opponent = Deck::from_file("../decks/screen/opponents/t-blaziken.txt").unwrap();
+        let action = state.generate_possible_actions().1[0].clone();
+        for seed in [5u64, 6, 7] {
+            let cell = Cell::new(None);
+            let watched = p.core.play_out_watched(&state, &opponent, 0, &action, seed, None, false, Some(&cell));
+            let plain = p.core.play_out(&state, &opponent, 0, &action, seed, None, false);
+            assert_eq!((watched.0.points, watched.0.turn_count, watched.3), (plain.0.points, plain.0.turn_count, plain.3));
+            let seen = cell.get().expect("the game runs past the opponent's next turn");
+            assert!(seen >= 0.0 && seen <= watched.0.points[1].max(3) as f64, "{seen} v final {:?}", watched.0.points);
+        }
+    }
+
+    /// `_atk` on: the decision runs through the review on real positions and always names one of its candidates; where it
+    /// plays an attack instead of the chosen move the report says so.
+    #[test]
+    fn atk_decides_on_real_positions_and_names_a_candidate() {
+        let (deck_a, deck_b) = crate::test_support::load_test_decks();
+        let params = PlayoutParams::parse_ky("3_r4_c12_z2_real_t0_poolmeta_atk").unwrap();
+        let mut p = PlayoutPlayer::with_extra_lists(deck_a, deck_b, params, Vec::new());
+        for seed in 1..4u64 {
+            let state = pool_midgame("t-suicune", "t-blaziken", seed);
+            let observation = PlayerObservation::from_state(&state, 0, &crate::observation::RevealedKnowledge::default());
+            let actions = state.generate_possible_actions().1;
+            let report = p.evaluate(&mut StdRng::seed_from_u64(seed), &observation, &actions);
+            assert!(report.chosen < report.candidates.len(), "{}", report.reason);
+            assert!(actions.contains(&report.candidates[report.chosen].action), "{}", report.reason);
+        }
     }
 
     /// With `_infer` on, ky3 builds an inferred list where none is consistent (as kx3 does); off, it takes the closest.
