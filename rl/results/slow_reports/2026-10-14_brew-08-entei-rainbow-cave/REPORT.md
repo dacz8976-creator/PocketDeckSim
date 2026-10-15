@@ -10,21 +10,21 @@ Pre-registration order: registered 2026-10-15T02:40:06Z; first game started 2026
 
 Self-check digests recorded at registration: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit 381f955b7f7c): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration); `selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit 381f955b7f7c): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration)
 
-- Planned 320 games; finished 240; complete pairs 120 (= 240 games); unpaired games 0; errors 0.
+- Planned 320 games; finished 280; complete pairs 140 (= 280 games); unpaired games 0; errors 0.
 - Paired difference = score(arm X) − score(arm ref) per (deck, opponent, deal, seat), in percentage points of score (win 1, tie ½). Intervals are mean ± 1.96·sd/√n over paired games. No pass/fail threshold.
 
 ## Result
 
-**Pooled over all 120 paired games: +30.0 ± 8.6 points** (arm X 78.3% vs arm ref 48.3% score).
+**Pooled over all 140 paired games: +27.9 ± 7.7 points** (arm X 80.0% vs arm ref 52.1% score).
 
 
 ### Per deck, pooled over its opponents
 
 | deck | paired games | arm X score | arm ref score | paired difference (points) | went first: diff | went second: diff |
 |---|---|---|---|---|---|---|
-| brew-08-entei-rainbow-cave | 120 | 78.3% | 48.3% | +30.0 ± 8.6 | +27.0 ± 11.0 | +33.3 ± 13.3 |
+| brew-08-entei-rainbow-cave | 140 | 80.0% | 52.1% | +27.9 ± 7.7 | +25.7 ± 10.0 | +30.3 ± 11.9 |
 
-Overall by who went first (identical in both arms): deck first +27.0 ± 11.0 (n=63); deck second +33.3 ± 13.3 (n=57).
+Overall by who went first (identical in both arms): deck first +25.7 ± 10.0 (n=74); deck second +30.3 ± 11.9 (n=66).
 
 ### Per (deck, opponent) pair
 
@@ -36,6 +36,7 @@ Overall by who went first (identical in both arms): deck first +27.0 ± 11.0 (n=
 | brew-08-entei-rainbow-cave | t-lucario | 20 | 80.0% | 55.0% | +25.0 ± 19.5 |
 | brew-08-entei-rainbow-cave | t-sceptile | 20 | 95.0% | 55.0% | +40.0 ± 22.0 |
 | brew-08-entei-rainbow-cave | t-suicune | 20 | 70.0% | 35.0% | +35.0 ± 21.4 |
+| brew-08-entei-rainbow-cave | t-vespiquen | 20 | 90.0% | 75.0% | +15.0 ± 16.1 |
 
 ## Runtime and cost
 
@@ -43,12 +44,12 @@ Wall time is per game on this machine with the threads the run used; it includes
 
 | arm | role | pilot | games | wall per game: mean / median / p95 / max | games per second (1 thread) | decisions per game | ms per decision: mean / median / p95 / max | decision time per game |
 |---|---|---|---|---|---|---|---|---|
-| X | deck seat | `kx3` | 120 | 908.20 / 883.96 / 1582.19 / 1932.21 s | 0.00 | 24.2 | 37424.0 / 34480.4 / 75606.1 / 163158.9 | 15 min |
-| X | opponent seat | `km3` | 120 |  |  | 26.3 | 24.5 / 10.0 / 93.1 / 368.3 | 0.64 s |
-| ref | deck seat | `km3` | 120 | 0.96 / 0.90 / 1.83 / 2.61 s | 1.04 | 24.8 | 17.3 / 8.2 / 68.2 / 215.3 | 0.43 s |
-| ref | opponent seat | `km3` | 120 |  |  | 27.5 | 18.7 / 8.1 / 70.3 / 441.0 | 0.51 s |
+| X | deck seat | `kx3` | 140 | 984.60 / 915.11 / 1849.07 / 2447.75 s | 0.00 | 24.0 | 41044.5 / 37022.6 / 84172.1 / 172869.6 | 16 min |
+| X | opponent seat | `km3` | 140 |  |  | 26.2 | 25.9 / 10.6 / 99.3 / 368.3 | 0.68 s |
+| ref | deck seat | `km3` | 140 | 1.03 / 0.94 / 2.05 / 3.46 s | 0.97 | 24.5 | 18.3 / 8.4 / 70.4 / 285.0 | 0.45 s |
+| ref | opponent seat | `km3` | 140 |  |  | 27.4 | 20.6 / 8.8 / 77.2 / 441.0 | 0.56 s |
 
-One paired game (both arms) took 15 min on average; the run used 4 thread(s).
+One paired game (both arms) took 16 min on average; the run used 4 thread(s).
 
 ## What more precision would take
 
@@ -56,8 +57,8 @@ At the sd reached, the number of paired games for a given half-width is `(1.96·
 
 | scope | paired games so far | sd | interval now (points) | for ±5 points: total / more games, time | for ±3 points: total / more games, time |
 |---|---|---|---|---|---|
-| all decks pooled | 120 | 47.8 | +30.0 ± 8.6 | 352 / 232, 14.6 h | 976 / 856, 2.3 days |
-| brew-08-entei-rainbow-cave | 120 | 47.8 | +30.0 ± 8.6 | 352 / 232, 14.6 h | 976 / 856, 2.3 days |
+| all decks pooled | 140 | 46.6 | +27.9 ± 7.7 | 334 / 194, 13.3 h | 926 / 786, 2.2 days |
+| brew-08-entei-rainbow-cave | 140 | 46.6 | +27.9 ± 7.7 | 334 / 194, 13.3 h | 926 / 786, 2.2 days |
 
 ## Intended lines
 
